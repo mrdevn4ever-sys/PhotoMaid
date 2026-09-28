@@ -463,6 +463,17 @@
         }
       }
     },
+    "Alle Regeln laufen lokal und werden beim Öffnen der App geprüft.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle Regeln laufen lokal und werden beim Öffnen der App geprüft."
+          }
+        }
+      }
+    },
     "Alle Regeln laufen lokal. Hintergrundausführung ist von iOS nicht garantiert; die Prüfung erfolgt sicher beim Öffnen der App.": {
       "extractionState": "manual",
       "localizations": {

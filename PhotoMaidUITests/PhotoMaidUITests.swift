@@ -2,10 +2,11 @@ import XCTest
 
 /// UI-Tests laufen ausschließlich mit synthetischen QA-Medien (siehe docs/QA_MATRIX.md,
 /// `scripts/qa_seed_simulator.sh`). Keine echten Käufe, keine Live-Ads.
+@MainActor
 final class PhotoMaidUITests: XCTestCase {
     private var app: XCUIApplication!
 
-    override func setUp() {
+    override func setUp() async throws {
         continueAfterFailure = false
         app = XCUIApplication()
         app.launchArguments = ["-qa-fixtures", "-qa-unconfigured-purchases"]

@@ -38,7 +38,8 @@ final class DuplicateScanModel {
         let entries = index.entries
         let candidates = entries.map { DuplicateCandidate(item: $0.reference, size: $0.size, aliasKey: $0.aliasKey) }
         let provider = ConnectedSourceByteProvider(roots: roots, entries: entries)
-        if let r = try? await Task.detached(priority: .utility) { try DuplicateFinder().scan(candidates, source: provider) }.value {
+        let scan = Task.detached(priority: .utility) { try DuplicateFinder().scan(candidates, source: provider) }
+        if let r = try? await scan.value {
             found += r.groups
             skipped += r.notComparable.count
         }

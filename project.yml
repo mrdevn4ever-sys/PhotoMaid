@@ -55,10 +55,6 @@ targets:
           - UIInterfaceOrientationLandscapeRight
         NSPhotoLibraryUsageDescription: "PhotoMaid zeigt deine Fotos und Videos zum Sortieren an und entfernt nur Medien, die du ausdrücklich auswählst und in der Systemabfrage bestätigst. Die Analyse erfolgt auf diesem iPhone."
         PHPhotoLibraryPreventAutomaticLimitedAccessAlert: true
-        UIBackgroundModes:
-          - fetch
-        BGTaskSchedulerPermittedIdentifiers:
-          - $(PRODUCT_BUNDLE_IDENTIFIER).rules.refresh
         UIFileSharingEnabled: false
         LSSupportsOpeningDocumentsInPlace: false
         ITSAppUsesNonExemptEncryption: false

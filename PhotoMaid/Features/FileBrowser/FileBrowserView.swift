@@ -138,10 +138,10 @@ struct FileBrowserView: View {
                 if state == .kept { Image(systemName: "checkmark").foregroundStyle(AppColors.keep) }
             }
         }
-        .swipeActions(edge: .leading) {
+        .swipeActions(edge: .leading, allowsFullSwipe: false) {
             Button("Behalten") { Task { await decide(e, .keep) } }.tint(AppColors.keep)
         }
-        .swipeActions(edge: .trailing) {
+        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
             Button("Vormerken") { Task { await decide(e, .markForCleanup) } }.tint(AppColors.cleanup)
             Button("Später") { Task { await decide(e, .later(session: ReviewSessionID())) } }.tint(AppColors.later)
         }

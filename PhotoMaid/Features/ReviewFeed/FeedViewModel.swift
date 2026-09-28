@@ -26,6 +26,9 @@ final class FeedViewModel {
     private(set) var bumpCount = 0
     private(set) var commitCount = 0
     private(set) var errorMessage: String?
+    /// Synchron gesetzt, solange ein Commit läuft: Buttons, VoiceOver-Aktionen, Zurück und
+    /// Überspringen können das sichtbare Item währenddessen nicht verschieben.
+    private(set) var isCommitting = false
 
     @ObservationIgnored private let app: AppModel
     @ObservationIgnored private var loadTasks: [ItemReference: Task<Void, Never>] = [:]
@@ -136,6 +139,7 @@ final class FeedViewModel {
 
     /// Gemeinsamer Pfad für Gesten, Buttons und VoiceOver-Aktionen.
     func perform(_ intent: FeedIntent, reduceMotion: Bool) {
+        guard !isCommitting else { return }
         if intent == .previous {
             let nav = session.goBack()
             machine.finishCommit()
@@ -146,12 +150,17 @@ final class FeedViewModel {
             return
         }
         guard let item = current else { machine.finishCommit(); return }
+        isCommitting = true
         Task { await commit(intent, item: item, reduceMotion: reduceMotion) }
     }
 
     private func commit(_ intent: FeedIntent, item: ItemReference, reduceMotion: Bool) async {
+        defer { isCommitting = false }
         let revision = await app.ledger.record(for: item).revision
-        guard let pending = session.requestDecision(intent, currentRevision: revision) else {
+        // Entscheidung nur für das Item, auf dem die Aktion ausgelöst wurde.
+        guard session.current == item,
+              let pending = session.requestDecision(intent, currentRevision: revision),
+              pending.command.item == item else {
             machine.finishCommit()
             withAnimation(AppMotion.standard(reduceMotion)) { offset = .zero }
             return
@@ -183,6 +192,7 @@ final class FeedViewModel {
 
     /// Nicht lokal verfügbare Items überspringen – ausdrücklich OHNE Entscheidung.
     func skipWithoutDecision() {
+        guard !isCommitting else { return }
         session.jump(to: session.index + 1)
         app.player.stop()
         refreshWindow()
@@ -209,6 +219,7 @@ final class FeedViewModel {
     // MARK: Undo
 
     func undo() async {
+        guard !isCommitting else { return }
         guard let record = await app.undo() else { return }
         session.applyUndo(record)
         refreshWindow()

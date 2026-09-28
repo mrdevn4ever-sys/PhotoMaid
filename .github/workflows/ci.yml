@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  core:
+    name: PhotoMaidCore (Linux, swift test)
+    runs-on: ubuntu-24.04
+    container: swift:6.2-noble
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift --version
+      - run: swift test
+
+  ios:
+    name: iOS App (xcodebuild build + test)
+    runs-on: macos-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Stabiles Xcode mit neuestem SDK wählen
+        run: |
+          ls -d /Applications/Xcode*.app
+          XCODE=$(ls -d /Applications/Xcode_*.app | grep -viE 'beta|rc' | sort -V | tail -1)
+          sudo xcode-select -s "$XCODE"
+          xcodebuild -version
+          xcodebuild -showsdks
+      - name: Simulator wählen
+        id: sim
+        run: |
+          xcrun simctl list devices available
+          UDID=$(xcrun simctl list devices available -j | python3 -c '
+          import json,sys
+          d=json.load(sys.stdin)["devices"]
+          best=None
+          for rt,devs in d.items():
+              if "iOS" not in rt: continue
+              ver=tuple(int(x) for x in rt.split("iOS-")[-1].split("-"))
+              for dev in devs:
+                  if dev["name"].startswith("iPhone") and (best is None or ver>best[0]):
+                      best=(ver,dev["udid"],dev["name"])
+          print(best[1] if best else "")
+          ')
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+      - name: String Catalog vollständig
+        run: python3 scripts/extract_strings.py --check
+      - name: Build und Tests
+        run: |
+          set -o pipefail
+          xcodebuild -project PhotoMaid.xcodeproj -scheme PhotoMaid \
+            -destination "id=${{ steps.sim.outputs.udid }}" \
+            -skipPackagePluginValidation -skipMacroValidation \
+            CODE_SIGNING_ALLOWED=NO \
+            build test 2>&1 | tee xcodebuild.log | grep -E "error:|warning: .*(Sendable|isolat)|\*\* (BUILD|TEST)|Test Case .* (passed|failed)|Executed" || true
+          grep -q "\*\* TEST SUCCEEDED \*\*" xcodebuild.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: xcodebuild-log
+          path: xcodebuild.log

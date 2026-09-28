@@ -57,7 +57,7 @@ struct RulesView: View {
                 }
             }
             Section {
-                Label("Alle Regeln laufen lokal. Hintergrundausführung ist von iOS nicht garantiert; die Prüfung erfolgt sicher beim Öffnen der App.",
+                Label("Alle Regeln laufen lokal und werden beim Öffnen der App geprüft.",
                       systemImage: "checkmark.shield")
                     .font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
             }

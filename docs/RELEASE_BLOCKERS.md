@@ -18,4 +18,4 @@ Kein Release, kein TestFlight-Upload und keine Fertigmeldung, solange ein Punkt 
 | 12 | Finales App-Icon (aktuell generierter Platzhalter) | Design | Inhaber |
 | 13 | Datenschutzerklärung-URL, Privacy Labels, App-Review-Guidelines, DACH-Rechtsprüfung, Altersfreigabe, Marken-/Store-Konflikt „PhotoMaid“ | Recht/Compliance | Inhaber |
 | 14 | String Catalog: Format-Spezifizierer interpolierter Texte von Xcode-Extraktion bestätigen lassen | Verifikation | Build auf macOS |
-| 15 | Zweiter unabhängiger Read-only-Review (Phase 10) | Abnahme | zweite Person/Agent |
+| 15 | Menschliche Code-Review des PR #1 | Abnahme | Inhaber |

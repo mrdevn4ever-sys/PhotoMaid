@@ -47,7 +47,7 @@ final class PreviewPipeline {
         return await withTaskCancellationHandler {
             await withCheckedContinuation { (cont: CheckedContinuation<PreviewResult, Never>) in
                 let id = manager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit,
-                                              options: options()) { image, info in
+                                              options: options()) { @Sendable image, info in
                     if let image { cont.resume(returning: .image(image)); return }
                     let inCloud = (info?[PHImageResultIsInCloudKey] as? Bool) ?? false
                     cont.resume(returning: inCloud ? .notLocallyAvailable : .failed)
@@ -87,7 +87,7 @@ final class PreviewPipeline {
         o.deliveryMode = .automatic
         o.version = .current
         return await withCheckedContinuation { cont in
-            PHImageManager.default().requestPlayerItem(forVideo: asset, options: o) { item, info in
+            PHImageManager.default().requestPlayerItem(forVideo: asset, options: o) { @Sendable item, info in
                 if let item { cont.resume(returning: .item(UncheckedBox(item))); return }
                 let inCloud = (info?[PHImageResultIsInCloudKey] as? Bool) ?? false
                 cont.resume(returning: inCloud ? .notLocallyAvailable : .failed)

@@ -41,7 +41,7 @@ enum VideoSizeProbe {
         o.isNetworkAccessAllowed = false
         o.version = .original
         return await withCheckedContinuation { cont in
-            PHImageManager.default().requestAVAsset(forVideo: asset, options: o) { av, _, _ in
+            PHImageManager.default().requestAVAsset(forVideo: asset, options: o) { @Sendable av, _, _ in
                 guard let url = (av as? AVURLAsset)?.url,
                       let size = try? url.resourceValues(forKeys: [.fileSizeKey]).fileSize else {
                     cont.resume(returning: .unknown); return

@@ -38,7 +38,7 @@ bestätigt werden (Phase-0-Spikes, siehe unten).
 | Gerätespeicher | `volumeTotalCapacity`, `volumeAvailableCapacityForImportantUsage` | nur Anzeige (Reason 85F4.1) | NOT RUN |
 | Liquid Glass | `glassEffect(_:in:)`, `GlassEffectContainer`, `.buttonStyle(.glass/.glassProminent)` | nur Navigation/schwebende Controls; Listen ruhig | NOT RUN |
 | Tabs | `TabView` + `Tab(_:systemImage:value:)`, `tabBarMinimizeBehavior` | 4 Tabs | NOT RUN |
-| Hintergrund | `BGTaskScheduler` / `BGAppRefreshTask` | best effort; Kernprüfung bei Start/Resume | NOT RUN |
+| Hintergrund | `BGTaskScheduler` | bewusst **nicht** verwendet (kein sinnvoller Hintergrundlauf ohne AppModel); Prüfung bei Start/Resume | Entscheidung |
 | Mitteilungen | `UNUserNotificationCenter`, `UNCalendarNotificationTrigger` | opt-in, max. 8 ausstehend, keine Dateinamen | NOT RUN |
 | Käufe | RevenueCat 5.91.0 (`purchases-ios-spm`) | einzige Entitlement-Wahrheit | BLOCKED (keine Konfiguration) |
 | Rewarded | Anbieter offen | Protokoll + „nicht konfiguriert“ | BLOCKED |

@@ -42,9 +42,9 @@ struct PhotoResourceHasher: Sendable {
         let managerBox = UncheckedBox(manager)
         return await withTaskCancellationHandler {
             await withCheckedContinuation { (cont: CheckedContinuation<Outcome, Never>) in
-                let id = manager.requestData(for: resource, options: options) { chunk in
+                let id = manager.requestData(for: resource, options: options) { @Sendable chunk in
                     state.update(chunk)
-                } completionHandler: { error in
+                } completionHandler: { @Sendable error in
                     if let error = error as NSError? {
                         // PHPhotosError.networkAccessRequired: nur in iCloud vorhanden.
                         if error.domain == PHPhotosErrorDomain, error.code == PHPhotosError.Code.networkAccessRequired.rawValue {

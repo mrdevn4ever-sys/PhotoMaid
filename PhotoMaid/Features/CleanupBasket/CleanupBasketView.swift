@@ -114,7 +114,7 @@ struct CleanupBasketView: View {
             }
             Spacer()
         }
-        .swipeActions {
+        .swipeActions(allowsFullSwipe: false) {
             Button("Behalten") { Task { await app.decide(r.item, .keep) } }.tint(AppColors.keep)
             Button("Abwählen") { Task { await app.decide(r.item, .unmark) } }.tint(.gray)
         }

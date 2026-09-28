@@ -178,7 +178,7 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
         let requested = Set(assets.map(\.localIdentifier))
         let targets = UncheckedBox(assets as NSArray)
         do {
-            try await PHPhotoLibrary.shared().performChanges {
+            try await PHPhotoLibrary.shared().performChanges { @Sendable in
                 PHAssetChangeRequest.deleteAssets(targets.value)
             }
             if requested.count == ids.count { return .succeeded }

@@ -33,7 +33,8 @@ final class UnconfiguredRewardedAdGateway: RewardedAdGateway {
 @Observable
 final class EntitlementCenter {
     private(set) var rewards: RewardLedger
-    /// Wird minütlich bzw. bei Resume aktualisiert, damit Restzeit/Ablauf sichtbar werden.
+    /// Beobachtbarer Zeitstempel: `RootView` erhöht ihn alle 30 s und bei Resume,
+    /// damit Restzeit und Ablauf in der UI sichtbar werden.
     private(set) var now = Date()
     @ObservationIgnored private let store: CoreDataStore
     @ObservationIgnored let purchases: any PurchaseGateway
@@ -47,15 +48,18 @@ final class EntitlementCenter {
         rewards = store.value(RewardLedger.self, forKey: Self.key) ?? RewardLedger()
     }
 
+    /// Wird immer mit der aktuellen Uhrzeit aufgelöst (Ablauf der Vorschau greift sofort).
+    /// `now` wird gelesen, damit SwiftUI bei `tick()` neu rendert.
     var capabilities: Capabilities {
-        Capabilities.resolve(purchase: purchases.state, rewards: rewards, now: now)
+        _ = now
+        return Capabilities.resolve(purchase: purchases.state, rewards: rewards, now: Date())
     }
 
     func tick() { now = Date() }
 
     var canOfferReward: Bool {
         ads.isConfigured && capabilities.adsAllowed
-            && rewards.canOfferReward(now: now, timeZone: .autoupdatingCurrent, purchase: purchases.state)
+            && rewards.canOfferReward(now: Date(), timeZone: .autoupdatingCurrent, purchase: purchases.state)
     }
 
     /// Zeigt eine freiwillige Anzeige; schaltet nur nach Reward-Callback frei.

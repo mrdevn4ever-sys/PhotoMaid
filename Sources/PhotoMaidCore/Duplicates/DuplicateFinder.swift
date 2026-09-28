@@ -51,6 +51,12 @@ public struct DuplicateGroup: Hashable, Sendable, Identifiable {
     public let sizeEach: Int64
     public let members: [ItemReference]
 
+    public init(sha256: String, sizeEach: Int64, members: [ItemReference]) {
+        self.sha256 = sha256
+        self.sizeEach = sizeEach
+        self.members = members
+    }
+
     /// Alle identischen Dateien zusammen (z. B. 3 × 14 MB = 42 MB).
     public var totalBytes: Int64 { sizeEach * Int64(members.count) }
     /// Zusätzliche Kopien, wenn genau eine bleibt (z. B. 28 MB). Keine garantierte Ersparnis.

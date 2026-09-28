@@ -198,14 +198,21 @@ enum FileScanner {
         return result
     }
 
-    /// Löst einen relativen Pfad sicher innerhalb der Quelle auf. Manipulierte Pfade
-    /// (`..`, Symlinks, Ziele außerhalb der Quelle) werden abgelehnt.
-    static func safeURL(root: URL, relativePath: String) -> URL? {
+    /// Nur Pfadprüfung (ohne Existenz): kein `..`, nicht absolut, Ziel liegt innerhalb der Quelle.
+    static func containedURL(root: URL, relativePath: String) -> URL? {
         guard !relativePath.isEmpty, !relativePath.hasPrefix("/"),
               !relativePath.split(separator: "/").contains("..") else { return nil }
         let rootPath = root.standardizedFileURL.resolvingSymlinksInPath().path
         let url = root.appendingPathComponent(relativePath).standardizedFileURL
-        guard url.resolvingSymlinksInPath().path.hasPrefix(rootPath + "/") else { return nil }
+        let parent = url.deletingLastPathComponent().resolvingSymlinksInPath().path
+        guard parent == rootPath || parent.hasPrefix(rootPath + "/") else { return nil }
+        return url
+    }
+
+    /// Löst einen relativen Pfad sicher innerhalb der Quelle auf. Manipulierte Pfade
+    /// (`..`, Symlinks, Ziele außerhalb der Quelle) werden abgelehnt.
+    static func safeURL(root: URL, relativePath: String) -> URL? {
+        guard let url = containedURL(root: root, relativePath: relativePath) else { return nil }
         guard let v = try? url.resourceValues(forKeys: [.isSymbolicLinkKey, .isRegularFileKey]),
               v.isSymbolicLink != true, v.isRegularFile == true else { return nil }
         return url
@@ -249,7 +256,8 @@ enum FileOperations {
         for (sourceID, files) in split(items) {
             _ = try? sources.withAccess(sourceID) { root in
                 for f in files {
-                    let url = root.appendingPathComponent(f.localIdentifier)
+                    // Manipulierte Pfade sind kein Löschbeweis.
+                    guard let url = FileScanner.containedURL(root: root, relativePath: f.localIdentifier) else { continue }
                     out[f] = FileManager.default.fileExists(atPath: url.path) ? .exists : .missingWithFullAccess
                 }
             }

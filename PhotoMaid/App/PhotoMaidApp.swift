@@ -5,12 +5,6 @@ import SwiftUI
 struct PhotoMaidApp: App {
     @State private var boot = AppBoot()
 
-    init() {
-        RulesBackgroundTask.register {
-            // Best effort; die eigentliche Prüfung läuft bei Start/Resume.
-        }
-    }
-
     var body: some Scene {
         WindowGroup {
             switch boot.state {

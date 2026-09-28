@@ -46,6 +46,13 @@ struct RootView: View {
             }
         }
         .task { await app.onForeground() }
+        .task {
+            // Rewarded-Vorschau: Restzeit/Ablauf sichtbar halten.
+            while !Task.isCancelled {
+                try? await Task.sleep(for: .seconds(30))
+                app.entitlements.tick()
+            }
+        }
         .onChange(of: scenePhase) { _, phase in
             privacyShield = phase != .active
             switch phase {

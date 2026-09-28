@@ -113,7 +113,7 @@ struct LargeFilesView: View {
             SizeText.size(r.size).font(AppTypography.subheadline.monospacedDigit())
         }
         .accessibilityElement(children: .combine)
-        .swipeActions {
+        .swipeActions(allowsFullSwipe: false) {
             Button("Vormerken") { Task { await app.decide(r.id, .markForCleanup) } }.tint(AppColors.cleanup)
             Button("Behalten") { Task { await app.decide(r.id, .keep) } }.tint(AppColors.keep)
         }

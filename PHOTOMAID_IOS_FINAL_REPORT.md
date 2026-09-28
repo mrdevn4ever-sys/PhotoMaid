@@ -31,7 +31,8 @@ Es gibt hier kein macOS/Xcode. Ein Build ist keine Geräteabnahme, und hier gab 
 | Instruments (Hitches, Memory, Player-Lifecycle), 100 Entscheidungen, 30 Videowechsel | NOT RUN |
 | Kauf / Restore (RevenueCat) | BLOCKED – keine Konfiguration |
 | Rewarded-Werbung | BLOCKED – Anbieter nicht entschieden |
-| Unabhängiger Read-only-Review (Phase 10) | siehe Abschnitt unten |
+| Unabhängiger Read-only-Review (Phase 10) | durchgeführt; 9 Befunde, alle behoben (siehe unten) |
+| CI (GitHub Actions: Linux `swift test`, macOS `xcodebuild build test`) | eingerichtet, Ergebnis im PR |
 
 ## Was umgesetzt ist
 
@@ -61,6 +62,20 @@ keine Permission-Toggles, kein Beispielpreis, keine „Similar/Blurry“-Erkennu
 
 - Commit: siehe `git log` auf Branch `claude/photomaid-ios-phase0` (lokal, **nicht gepusht**).
 - Kein App-Build-Artefakt (kein Xcode). Quellstand-Hash: `git archive HEAD | sha256sum`.
+
+## Unabhängiger Review – Befunde und Behebung
+
+| # | Befund | Behebung |
+|---|---|---|
+| 1 | `DuplicateGroup` ohne public init (Compilerfehler) | public init in PhotoMaidCore |
+| 2 | Trailing Closure in `if let … await Task.detached {}.value` (Parse-Fehler) | Task vorher binden |
+| 3 | UI-Tests nicht `@MainActor` (Swift 6) | Klasse `@MainActor`, `setUp() async throws` |
+| 4 | PhotoKit-Callbacks auf Hintergrundqueues in MainActor-Kontext (Laufzeit-Assert) | Closures explizit `@Sendable` |
+| 5 | Schneller zweiter Tap konnte Entscheidung auf falsches Item legen | `isCommitting`-Sperre + Item-Gleichheitsprüfung |
+| 6 | Vollständiger Seitwärts-Swipe in Listen löste „Behalten“ aus | `allowsFullSwipe: false` |
+| 7 | Rewarded-Vorschau lief bis zum nächsten Resume weiter | Capabilities mit aktueller Zeit, 30-s-Tick |
+| 8 | Existenzprüfung umging Pfadschutz | `containedURL`, sonst `unknown` |
+| 9 | Hintergrundaufgabe registriert, aber wirkungslos | entfernt; Prüfung bei Start/Resume |
 
 ## Restpunkte
 

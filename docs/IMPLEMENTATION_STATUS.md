@@ -32,6 +32,9 @@ aber **nicht kompiliert**.
 - `xcodegen generate` – **PASS** (Projekt mit Shared Scheme, StoreKit-Testdatei im Scheme).
 - `scripts/extract_strings.py --check` – **PASS** (361 Einträge, Quellsprache de).
 
+- Unabhängiger Read-only-Review: 9 Befunde, alle behoben.
+- CI-Workflow `.github/workflows/ci.yml`: Linux-Kern-Tests + macOS-Build/Test des App-Targets (erste echte Typprüfung, Ergebnis im PR #1).
+
 ## Nächster konkreter Schritt
 
 Auf einem Mac mit stabilem Xcode (iOS-27-SDK):
