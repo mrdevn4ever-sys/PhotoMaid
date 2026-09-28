@@ -41,7 +41,10 @@ final class PhotoMaidUITests: XCTestCase {
 
     func testProWithoutConfigurationShowsNoInventedPrice() {
         app.buttons["Einstellungen"].firstMatch.tap()
-        app.buttons["PhotoMaid Pro"].firstMatch.tap()
+        // Zeile fasst Titel und Status zusammen („PhotoMaid Pro, Einmalkauf“).
+        let pro = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'PhotoMaid Pro'")).firstMatch
+        XCTAssertTrue(pro.waitForExistence(timeout: 5))
+        pro.tap()
         XCTAssertTrue(app.staticTexts["Käufe sind in dieser Version noch nicht verfügbar."].waitForExistence(timeout: 5))
         XCTAssertFalse(app.staticTexts.containing(NSPredicate(format: "label CONTAINS '9.99'")).firstMatch.exists)
     }

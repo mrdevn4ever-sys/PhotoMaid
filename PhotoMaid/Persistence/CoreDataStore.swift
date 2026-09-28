@@ -50,7 +50,7 @@ final class CoreDataStore: @unchecked Sendable {
 
     // MARK: Key-Value (App-Zustand)
 
-    func value<T: Decodable>(_ type: T.Type, forKey key: String) -> T? {
+    func value<T: Decodable & Sendable>(_ type: T.Type, forKey key: String) -> T? {
         context.performAndWait {
             let req = NSFetchRequest<NSManagedObject>(entityName: "CDKeyValue")
             req.predicate = NSPredicate(format: "key == %@", key)
