@@ -165,15 +165,20 @@ final class ScreenshotTests: XCTestCase {
                     if waitFor(remove, 6, "Entfernen-Button im Auswahlkorb") {
                         remove.tap()
                         snap("08_cleanup_confirm")
-                        // Niemals bestätigen: Dialog abbrechen.
-                        for label in ["Abbrechen", "Cancel"] where app.buttons[label].exists {
-                            app.buttons[label].firstMatch.tap(); break
+                        // Niemals bestätigen: Dialog abbrechen (Button oder Tipp außerhalb des Popovers).
+                        let cancel = app.buttons["Abbrechen"].firstMatch
+                        if cancel.exists && cancel.isHittable { cancel.tap() }
+                        else { app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.12)).tap() }
+                        settle(1)
+                        if app.buttons.matching(NSPredicate(format: "label CONTAINS 'über die Fotos-App entfernen'")).firstMatch.exists {
+                            app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.12)).tap()
+                            settle(1)
                         }
-                        settle(0.8)
                     }
                     let done = app.buttons["Fertig"].firstMatch
                     if done.waitForExistence(timeout: 3) { done.tap() } else { app.swipeDown(velocity: .fast) }
-                    settle(0.8)
+                    settle(1.2)
+                    waitFor(element("feed.stage"), 5, "Feed nach Schließen des Auswahlkorbs")
                 }
             }
             closeFeed()

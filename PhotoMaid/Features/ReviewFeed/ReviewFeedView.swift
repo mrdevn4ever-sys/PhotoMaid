@@ -65,7 +65,7 @@ struct ReviewFeedView: View {
             Button("OK", role: .cancel) { model.clearError() }
         } message: { Text(model.errorMessage ?? "") }
         .sheet(item: $customDateItem) { receipt in
-            LaterDateSheet(title: "Wunschdatum wählen") { day in
+            LaterDateSheet(title: "Datum wählen") { day in
                 Task { await model.schedule(day) }
             }
             .presentationDetents([.medium, .large])
@@ -230,15 +230,14 @@ struct LaterReceiptBar: View {
     let close: () -> Void
 
     var body: some View {
-        StatusReceipt(message: Text("Zurückgestellt. Wann wieder zeigen?")) {
+        StatusReceipt(message: Text("Zurückgestellt. Wann wieder zeigen?"), close: close) {
             ForEach(LaterPreset.allCases, id: \.self) { preset in
                 Button(label(preset)) { choose(preset.dueDay(from: today)) }
                     .buttonStyle(.glass)
+                    .lineLimit(1)
             }
             Button("…", action: more).buttonStyle(.glass).accessibilityLabel(Text("Anderes Datum"))
                 .accessibilityIdentifier("later.more")
-            Button(action: close) { Image(systemName: "xmark") }
-                .buttonStyle(.glass).accessibilityLabel(Text("Leiste schließen"))
         }
     }
 

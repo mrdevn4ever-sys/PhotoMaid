@@ -160,13 +160,31 @@ struct ReviewDock: View {
 /// Kurze Quittung in einer stabilen Bedienzone (z. B. Terminleiste nach „Später“).
 struct StatusReceipt<Actions: View>: View {
     let message: Text
+    var close: (() -> Void)?
     @ViewBuilder var actions: Actions
 
     var body: some View {
         VStack(alignment: .leading, spacing: AppSpacing.xs) {
-            message.font(AppTypography.caption.weight(.semibold)).foregroundStyle(AppColors.textPrimary)
-            ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                message.font(AppTypography.caption.weight(.semibold)).foregroundStyle(AppColors.textPrimary)
+                Spacer(minLength: AppSpacing.xs)
+                if let close {
+                    Button(action: close) {
+                        Image(systemName: "xmark").font(.caption.weight(.bold))
+                            .frame(width: 28, height: 28)
+                            .contentShape(.rect.inset(by: -8)) // Trefferfläche ≥ 44 pt
+                    }
+                    .buttonStyle(.plain)
+                    .foregroundStyle(AppColors.textSecondary)
+                    .accessibilityLabel(Text("Leiste schließen"))
+                }
+            }
+            // Passt ohne Scrollen in eine Zeile; bei großer Schrift umbrechen statt abschneiden.
+            ViewThatFits(in: .horizontal) {
                 GlassEffectContainer(spacing: AppSpacing.xs) {
+                    HStack(spacing: AppSpacing.xs) { actions }
+                }
+                ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: AppSpacing.xs) { actions }
                 }
             }

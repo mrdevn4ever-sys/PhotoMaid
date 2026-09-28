@@ -77,6 +77,7 @@ struct CleanupBasketView: View {
             Button("\(selectedPhotos.count) über die Fotos-App entfernen", role: .destructive) {
                 Task { await run(selectedPhotos, kind: .photoLibraryDelete) }
             }
+            Button("Abbrechen", role: .cancel) {}
         } message: {
             Text("Danach bestätigst du im Systemdialog. Die Medien kommen in „Zuletzt gelöscht“.")
         }
@@ -84,6 +85,7 @@ struct CleanupBasketView: View {
             Button("\(selectedFiles.count) endgültig löschen", role: .destructive) {
                 Task { await run(selectedFiles, kind: .fileDeletePermanently) }
             }
+            Button("Abbrechen", role: .cancel) {}
         } message: {
             Text("Das kann nicht rückgängig gemacht werden.")
         }

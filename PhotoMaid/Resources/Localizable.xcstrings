@@ -1035,6 +1035,17 @@
         }
       }
     },
+    "Datum wählen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datum wählen"
+          }
+        }
+      }
+    },
     "Datum ändern": {
       "extractionState": "manual",
       "localizations": {
@@ -3583,17 +3594,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Wochentag"
-          }
-        }
-      }
-    },
-    "Wunschdatum wählen": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wunschdatum wählen"
           }
         }
       }

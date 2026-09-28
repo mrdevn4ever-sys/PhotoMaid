@@ -32,13 +32,20 @@ struct PrivacyAccessView: View {
                 }
                 Text("Käufe laufen über den App Store und RevenueCat. Freiwillige Werbung stammt von einem Werbeanbieter. Dabei werden keine Fotos, Dateinamen, Pfade oder Hashes übertragen.")
                     .font(AppTypography.caption).foregroundStyle(AppColors.textSecondary).multilineTextAlignment(.center)
-                Button("Weiter") {
-                    app.updateSettings { $0.privacyIntroSeen = true }
-                    dismiss()
-                }
-                .buttonStyle(.glassProminent).controlSize(.large)
             }
             .padding(AppSpacing.pageMargin)
+        }
+        // „Weiter“ immer sichtbar, auch auf kleinen iPhones und bei großer Schrift.
+        .safeAreaInset(edge: .bottom) {
+            Button {
+                app.updateSettings { $0.privacyIntroSeen = true }
+                dismiss()
+            } label: {
+                Text("Weiter").frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.glassProminent).controlSize(.large)
+            .padding(.horizontal, AppSpacing.pageMargin)
+            .padding(.bottom, AppSpacing.xs)
         }
         .background(AppBackground())
         .task { await app.reminders.refresh() }
