@@ -1,0 +1,134 @@
+import Testing
+@testable import PhotoMaidCore
+
+@Suite("Gesten-State-Machine")
+struct GestureMachineTests {
+    func swipe(_ m: inout FeedGestureMachine, _ t: Vector2, velocity: Vector2 = .zero, steps: Int = 8) -> FeedGestureMachine.Resolution {
+        for i in 1...steps {
+            let f = Double(i) / Double(steps)
+            m.update(translation: Vector2(t.dx * f, t.dy * f))
+        }
+        return m.end(translation: t, velocity: velocity)
+    }
+
+    @Test("Jede Richtung entspricht der tatsächlichen Fingerbewegung",
+          arguments: [(Vector2(0, -200), SwipeDirection.up), (Vector2(0, 200), .down),
+                      (Vector2(-200, 0), .left), (Vector2(200, 0), .right)])
+    func directions(_ t: Vector2, _ expected: SwipeDirection) {
+        var m = FeedGestureMachine()
+        #expect(swipe(&m, t) == .commit(expected))
+        #expect(m.phase == .commitRequested(expected))
+    }
+
+    @Test("Feste Bedeutung: hoch=Behalten, links=Vormerken, rechts=Später, runter=Vorheriges")
+    func mapping() {
+        #expect(FeedIntent(.up) == .keep)
+        #expect(FeedIntent(.left) == .markForCleanup)
+        #expect(FeedIntent(.right) == .later)
+        #expect(FeedIntent(.down) == .previous)
+        #expect(!FeedIntent.previous.isDecision)
+    }
+
+    @Test("Diagonale nach links (oben/unten) löst keine Aktion aus")
+    func diagonalLeft() {
+        var m = FeedGestureMachine()
+        #expect(swipe(&m, Vector2(-150, -150)) == .cancelled)
+        #expect(swipe(&m, Vector2(-150, 150)) == .cancelled)
+        #expect(m.phase == .idle)
+    }
+
+    @Test("Rechts schräg nach oben = Termin selbst wählen; nach unten = Später mit Standard",
+          arguments: [(Vector2(180, -130), SwipeDirection.rightUp),   // ≈ 36°
+                      (Vector2(200, -100), .rightUp),                 // ≈ 27°
+                      (Vector2(200, -60), .right),                    // ≈ 17°: noch gerade
+                      (Vector2(180, 120), .right),                    // ≈ 34° nach unten
+                      (Vector2(200, 0), .right)])
+    func rightVariants(_ t: Vector2, _ expected: SwipeDirection) {
+        var m = FeedGestureMachine()
+        #expect(swipe(&m, t) == .commit(expected))
+    }
+
+    @Test("Totzonen zwischen rechts-oben und hoch sowie rechts-unten und runter")
+    func rightDeadZones() {
+        var m = FeedGestureMachine()
+        #expect(swipe(&m, Vector2(120, -160)) == .cancelled)  // ≈ 53°: weder Später noch Behalten
+        #expect(swipe(&m, Vector2(120, 170)) == .cancelled)   // ≈ 55° nach unten
+        #expect(FeedIntent(.rightUp) == .laterCustom)
+    }
+
+    @Test("Rechts-oben folgt diagonal, rechts nur waagrecht")
+    func diagonalOffset() {
+        var m = FeedGestureMachine()
+        m.update(translation: Vector2(90, -60))
+        #expect(m.lockedDirection == .rightUp)
+        #expect(m.displayOffset == Vector2(90, -60))
+        m.cancel()
+        m.update(translation: Vector2(90, 30))
+        #expect(m.lockedDirection == .right)
+        #expect(m.displayOffset == Vector2(90, 0))
+    }
+
+    @Test("Zu kurze Bewegung wird abgebrochen, keine Entscheidung")
+    func tooShort() {
+        var m = FeedGestureMachine()
+        #expect(swipe(&m, Vector2(0, -60)) == .cancelled)
+        #expect(m.phase == .idle)
+    }
+
+    @Test("Schwung genügt bei Mindeststrecke")
+    func flick() {
+        var m = FeedGestureMachine()
+        #expect(swipe(&m, Vector2(-50, 0), velocity: Vector2(-900, 0)) == .commit(.left))
+    }
+
+    @Test("Schwung gegen die gebundene Richtung committet nicht")
+    func flickOpposite() {
+        var m = FeedGestureMachine()
+        #expect(swipe(&m, Vector2(-50, 0), velocity: Vector2(900, 0)) == .cancelled)
+    }
+
+    @Test("Hysterese: Umkehr über den Nullpunkt wechselt die Richtung, nicht zwei Aktionen")
+    func reversal() {
+        var m = FeedGestureMachine()
+        m.update(translation: Vector2(0, -80))
+        #expect(m.lockedDirection == .up)
+        m.update(translation: Vector2(0, -10))
+        #expect(m.lockedDirection == .up) // noch über unlockDistance
+        m.update(translation: Vector2(0, 40))
+        #expect(m.lockedDirection == .down)
+        #expect(m.end(translation: Vector2(0, 160), velocity: .zero) == .commit(.down))
+    }
+
+    @Test("Medium folgt nach Bindung nur der Achse")
+    func axisOffset() {
+        var m = FeedGestureMachine()
+        m.update(translation: Vector2(8, -90))
+        #expect(m.displayOffset == Vector2(0, -90))
+    }
+
+    @Test("Während Zoom/Control/VoiceOver: keine Entscheidungsgesten")
+    func suspended() {
+        var m = FeedGestureMachine()
+        m.isSuspended = true
+        #expect(swipe(&m, Vector2(0, -300)) == .ignored)
+        #expect(m.phase == .idle)
+    }
+
+    @Test("Während commitRequested werden weitere Gesten ignoriert (max. ein Schritt)")
+    func noDoubleCommit() {
+        var m = FeedGestureMachine()
+        #expect(swipe(&m, Vector2(0, -200)) == .commit(.up))
+        #expect(swipe(&m, Vector2(0, -200)) == .ignored)
+        m.finishCommit()
+        #expect(m.phase == .idle)
+    }
+
+    @Test("Systemabbruch führt zurück nach idle")
+    func systemCancel() {
+        var m = FeedGestureMachine()
+        m.update(translation: Vector2(0, -200))
+        m.cancel()
+        #expect(m.phase == .idle)
+        #expect(m.end(translation: Vector2(0, -200), velocity: .zero) == .ignored)
+    }
+}

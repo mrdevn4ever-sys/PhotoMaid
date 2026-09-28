@@ -1,0 +1,32 @@
+{
+  "identifier" : "7C1E4E0A-2B8B-4D55-9F41-6B1C9E0D4A11",
+  "nonRenewingSubscriptions" : [ ],
+  "products" : [
+    {
+      "displayPrice" : "3.99",
+      "familyShareable" : false,
+      "internalID" : "6A1F2C3D",
+      "localizations" : [
+        {
+          "description" : "NUR LOKALER TEST – kein echtes Produkt",
+          "displayName" : "PhotoMaid Pro (Test)",
+          "locale" : "de_CH"
+        }
+      ],
+      "productID" : "test.photomaid.pro.lifetime",
+      "referenceName" : "PhotoMaid Pro – lokaler StoreKit-Test",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_askToBuyEnabled" : false,
+    "_billingIssuesEnabled" : false,
+    "_disableDialogs" : false,
+    "_failTransactionsEnabled" : false,
+    "_locale" : "de_CH",
+    "_storefront" : "CHE",
+    "_storeKitErrors" : [ ]
+  },
+  "subscriptionGroups" : [ ],
+  "version" : { "major" : 4, "minor" : 0 }
+}

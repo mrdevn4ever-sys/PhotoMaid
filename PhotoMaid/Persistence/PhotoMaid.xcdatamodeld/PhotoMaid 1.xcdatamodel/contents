@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="1" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="1">
+    <entity name="CDItemRecord" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="itemKey" attributeType="String"/>
+        <attribute name="revision" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="disposition" attributeType="String"/>
+        <attribute name="dueDayKey" optional="YES" attributeType="String"/>
+        <attribute name="payload" attributeType="Binary"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="itemKey"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+        <fetchIndex name="byDisposition">
+            <fetchIndexElement property="disposition" type="Binary" order="ascending"/>
+        </fetchIndex>
+    </entity>
+    <entity name="CDEvent" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="itemKey" attributeType="String"/>
+        <attribute name="kind" attributeType="String"/>
+        <attribute name="at" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="sequence" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="payload" attributeType="Binary"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+        <fetchIndex name="bySequence">
+            <fetchIndexElement property="sequence" type="Binary" order="ascending"/>
+        </fetchIndex>
+    </entity>
+    <entity name="CDIntent" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="state" attributeType="String"/>
+        <attribute name="payload" attributeType="Binary"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="CDDayUsage" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="dayKey" attributeType="String"/>
+        <attribute name="payload" attributeType="Binary"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="dayKey"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="CDKeyValue" representedClassName="NSManagedObject" syncable="YES">
+        <attribute name="key" attributeType="String"/>
+        <attribute name="payload" attributeType="Binary"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="key"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+</model>

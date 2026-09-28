@@ -1,0 +1,220 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  core:
+    name: PhotoMaidCore (Linux, swift test)
+    runs-on: ubuntu-24.04
+    container: swift:6.2-noble
+    steps:
+      - uses: actions/checkout@v4
+      - run: swift --version
+      - run: swift test
+
+  ios:
+    name: iOS App (xcodebuild build + test)
+    runs-on: macos-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Stabiles Xcode mit neuestem SDK wählen
+        run: |
+          ls -d /Applications/Xcode*.app
+          XCODE=$(ls -d /Applications/Xcode_*.app | grep -viE 'beta|rc' | sort -V | tail -1)
+          sudo xcode-select -s "$XCODE"
+          xcodebuild -version
+          xcodebuild -showsdks
+      - name: Simulator wählen
+        id: sim
+        run: |
+          xcrun simctl list devices available
+          UDID=$(xcrun simctl list devices available -j | python3 -c '
+          import json,sys
+          d=json.load(sys.stdin)["devices"]
+          best=None
+          for rt,devs in d.items():
+              if "iOS" not in rt: continue
+              ver=tuple(int(x) for x in rt.split("iOS-")[-1].split("-"))
+              for dev in devs:
+                  if dev["name"].startswith("iPhone") and (best is None or ver>best[0]):
+                      best=(ver,dev["udid"],dev["name"])
+          print(best[1] if best else "")
+          ')
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+      - name: String Catalog vollständig
+        run: python3 scripts/extract_strings.py --check
+      - name: Build und Tests
+        run: |
+          set -o pipefail
+          # Ohne iOS-27-SDK auf dem Runner: Typprüfung und Tests gegen das neueste vorhandene SDK,
+          # Deployment Target nur für diesen Lauf auf dessen Hauptversion gesenkt.
+          SDK=$(xcrun --sdk iphonesimulator --show-sdk-version)
+          TARGET=27.0
+          if [ "${SDK%%.*}" -lt 27 ]; then
+            TARGET="${SDK%%.*}.0"
+            echo "::warning::Kein iOS-27-SDK auf dem Runner (vorhanden: $SDK). Prüfung mit Deployment Target $TARGET (nur in dieser CI-Arbeitskopie)."
+            # xcodebuild wählt Ziele anhand der Projektdatei, daher dort (nur lokal im Runner) ersetzen.
+            sed -i '' "s/IPHONEOS_DEPLOYMENT_TARGET = 27.0;/IPHONEOS_DEPLOYMENT_TARGET = $TARGET;/g" PhotoMaid.xcodeproj/project.pbxproj
+          fi
+          xcodebuild -project PhotoMaid.xcodeproj -scheme PhotoMaid \
+            -destination "id=${{ steps.sim.outputs.udid }}" \
+            -skipPackagePluginValidation -skipMacroValidation \
+            CODE_SIGNING_ALLOWED=NO IPHONEOS_DEPLOYMENT_TARGET=$TARGET \
+            -skip-testing:PhotoMaidUITests/ScreenshotTests \
+            build test 2>&1 | tee xcodebuild.log | grep -E "error:|warning: .*(Sendable|isolat)|\*\* (BUILD|TEST)|Test Case .* (passed|failed)|Executed" || true
+          grep -q "\*\* TEST SUCCEEDED \*\*" xcodebuild.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: xcodebuild-log
+          path: xcodebuild.log
+
+  screenshots:
+    name: iOS 27 Screenshots (${{ matrix.device }})
+    runs-on: xcode-27
+    timeout-minutes: 90
+    continue-on-error: ${{ !matrix.required }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - device: iPhone 18 Pro
+            slug: iphone18pro
+            required: true
+          - device: iPhone 17e
+            slug: iphone17e
+            required: false
+          - device: iPad Air 11-inch (M4)
+            slug: ipadair11m4
+            required: false
+    env:
+      SHOTS: artifacts/screenshots/${{ matrix.slug }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Xcode 27 wählen
+        run: |
+          ls -d /Applications/Xcode*.app || true
+          XCODE=$(ls -d /Applications/Xcode_27*.app 2>/dev/null | grep -viE 'beta|rc' | sort -V | tail -1)
+          [ -z "$XCODE" ] && XCODE=/Applications/Xcode.app
+          sudo xcode-select -s "$XCODE"
+          xcodebuild -version | tee xcode-version.txt
+          xcodebuild -showsdks | grep -i ios
+
+      - name: iOS-27-Simulator anlegen und booten
+        id: sim
+        run: |
+          RUNTIME=$(xcrun simctl list runtimes -j | python3 -c '
+          import json,sys
+          rts=[r for r in json.load(sys.stdin)["runtimes"] if r["platform"]=="iOS" and r["isAvailable"] and r["version"].startswith("27.")]
+          rts.sort(key=lambda r: [int(x) for x in r["version"].split(".")])
+          print(rts[0]["identifier"] + " " + rts[0]["version"] if rts else "")')
+          [ -z "$RUNTIME" ] && { echo "::error::Keine iOS-27-Runtime verfügbar"; xcrun simctl list runtimes; exit 1; }
+          RT_ID=${RUNTIME% *}; RT_VER=${RUNTIME#* }
+          DEVTYPE=$(xcrun simctl list devicetypes -j | python3 -c '
+          import json,sys
+          name=sys.argv[1]
+          print(next((d["identifier"] for d in json.load(sys.stdin)["devicetypes"] if d["name"]==name), ""))' "${{ matrix.device }}")
+          [ -z "$DEVTYPE" ] && { echo "::error::Gerätetyp ${{ matrix.device }} nicht verfügbar"; exit 1; }
+          UDID=$(xcrun simctl create "PM ${{ matrix.device }}" "$DEVTYPE" "$RT_ID")
+          xcrun simctl boot "$UDID"
+          xcrun simctl bootstatus "$UDID" -b
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+          echo "ios=$RT_VER" >> "$GITHUB_OUTPUT"
+          echo "Gerät: ${{ matrix.device }} · iOS $RT_VER · $UDID" | tee sim-info.txt
+
+      - name: Deterministische QA-Medien erzeugen und importieren
+        run: |
+          swift scripts/qa_media.swift "$RUNNER_TEMP/qa-media"
+          xcrun simctl addmedia "${{ steps.sim.outputs.udid }}" "$RUNNER_TEMP"/qa-media/*
+
+      - name: Build (Xcode 27, iOS 27)
+        run: |
+          set -o pipefail
+          xcodebuild -project PhotoMaid.xcodeproj -scheme PhotoMaid -configuration Debug \
+            -destination "id=${{ steps.sim.outputs.udid }}" \
+            -derivedDataPath "$RUNNER_TEMP/dd" \
+            -skipPackagePluginValidation -skipMacroValidation CODE_SIGNING_ALLOWED=NO \
+            build-for-testing 2>&1 | tee build.log | grep -E "error:|\*\* (BUILD|TEST)" || true
+          grep -q "\*\* TEST BUILD SUCCEEDED \*\*" build.log
+
+      - name: App installieren und starten (Smoke)
+        run: |
+          APP=$(find "$RUNNER_TEMP/dd/Build/Products" -maxdepth 2 -name "PhotoMaid.app" -path "*iphonesimulator*" | head -1)
+          BID=$(/usr/libexec/PlistBuddy -c "Print :CFBundleIdentifier" "$APP/Info.plist")
+          xcrun simctl install "${{ steps.sim.outputs.udid }}" "$APP"
+          xcrun simctl launch "${{ steps.sim.outputs.udid }}" "$BID" -qa-fixtures
+          sleep 5
+          xcrun simctl terminate "${{ steps.sim.outputs.udid }}" "$BID" || true
+
+      - name: Screenshots aufnehmen (UI-Test)
+        run: |
+          set -o pipefail
+          mkdir -p "$SHOTS"
+          TEST_RUNNER_SCREENSHOT_DIR="$PWD/$SHOTS" xcodebuild \
+            -project PhotoMaid.xcodeproj -scheme PhotoMaid -configuration Debug \
+            -destination "id=${{ steps.sim.outputs.udid }}" \
+            -derivedDataPath "$RUNNER_TEMP/dd" \
+            -resultBundlePath "$RUNNER_TEMP/screenshots.xcresult" \
+            -only-testing:PhotoMaidUITests/ScreenshotTests \
+            test-without-building 2>&1 | tee uitest.log | grep -E "error:|Test Case .* (passed|failed)|XCTAssert|Nicht gefunden|\*\* TEST" || true
+          grep -q "\*\* TEST SUCCEEDED \*\*" uitest.log
+
+      - name: Kontaktblatt und automatische Prüfung
+        if: always()
+        run: |
+          ls -la "$SHOTS" || true
+          swift scripts/contact_sheet.swift "$SHOTS" "$SHOTS/screenshots-contact-sheet.png" || true
+          {
+            echo "## Screenshots ${{ matrix.device }}"
+            cat sim-info.txt 2>/dev/null; cat xcode-version.txt 2>/dev/null
+            echo; echo "Aufgenommen:"; ls "$SHOTS" 2>/dev/null | sed 's/^/- /'
+            echo; echo "UI-Testfehler:"; grep -E "error:|Nicht gefunden" uitest.log 2>/dev/null | sed 's/^/- /' | head -40
+          } | tee "$SHOTS/REPORT.md" >> "$GITHUB_STEP_SUMMARY"
+          cp uitest.log build.log sim-info.txt xcode-version.txt "$SHOTS/" 2>/dev/null || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: photomaid-ios27-screenshots-${{ matrix.slug }}
+          path: artifacts/screenshots/${{ matrix.slug }}
+          if-no-files-found: warn
+
+  screenshots-merge:
+    name: Screenshots zusammenführen
+    needs: screenshots
+    if: always()
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/upload-artifact/merge@v4
+        continue-on-error: true   # keine Screenshots (z. B. abgebrochener Lauf) ist kein eigener Fehler
+        with:
+          name: photomaid-ios27-screenshots
+          pattern: photomaid-ios27-screenshots-*
+          separate-directories: true
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: photomaid-ios27-screenshots
+          path: shots
+      # Screenshots zusätzlich auf einen CI-eigenen Branch legen, damit sie ohne Download sichtbar sind.
+      - name: Auf Branch ci-screenshots veröffentlichen
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        run: |
+          [ -d shots ] && [ -n "$(ls -A shots)" ] || { echo "Keine Screenshots"; exit 0; }
+          cd shots
+          git init -q -b ci-screenshots
+          git config user.name "photomaid-ci"; git config user.email "ci@users.noreply.github.com"
+          echo "Screenshots aus Lauf ${{ github.run_id }} (Commit ${{ github.event.pull_request.head.sha }})" > README.md
+          git add -A && git commit -qm "Screenshots ${{ github.event.pull_request.head.sha }}"
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" ci-screenshots

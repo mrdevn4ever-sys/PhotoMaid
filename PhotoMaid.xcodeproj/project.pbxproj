@@ -1,0 +1,968 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03A57C87B44C901AE9A84F10 /* ScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BF4EE1EBE388D702DF63A /* ScreenshotTests.swift */; };
+		0612EA07554E84CB3862C65C /* ReminderScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C145D86644DDF54540F9B09 /* ReminderScheduler.swift */; };
+		0E6FE22F172BCB1CE408DC3C /* PhotoMaidCore in Frameworks */ = {isa = PBXBuildFile; productRef = 1808082F5D10D07F464C8581 /* PhotoMaidCore */; };
+		109C17BDB7E942F2C8988D49 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F83C901C10F614F635F501 /* AppModel.swift */; };
+		17E2F83952C16B8D729EA528 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B026AD203468F5A7F3FC351B /* Assets.xcassets */; };
+		2B0D93967605CF825746CF50 /* ReviewFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B34998F31BB236D41E6AE /* ReviewFeedView.swift */; };
+		2D4139A44E6CB9F5F32543A6 /* FileBrowserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756F8263B75A4807BC54E57A /* FileBrowserView.swift */; };
+		2D7B6B741960908EB687D565 /* FileIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EFA424D116ABB8F6AC38AE /* FileIndex.swift */; };
+		33821624039834704173F901 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0089A9D2A6E74F8DB521F0 /* HistoryView.swift */; };
+		354C7E89036819CE133D4B70 /* Tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993BC640BF7FD7218C5E9B96 /* Tokens.swift */; };
+		38BDCD188A144D919BBCF03B /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED38856788B73C3C32E5E1A5 /* Formatting.swift */; };
+		3A18258F703B3B1FCF4D4BDD /* LargeFilesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323BA230D3A6847994404505 /* LargeFilesView.swift */; };
+		40D7CE7127CAB3F7E46D1E67 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083CC65F05C72ABF07960770 /* SettingsView.swift */; };
+		4687F6E6342EB87694B85D82 /* FeedPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202C3C241A5D676DECFFF6BE /* FeedPlayer.swift */; };
+		59416E6E5362475C5DFD59A4 /* PreviewPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03259A471BEA2823A6FF9616 /* PreviewPipeline.swift */; };
+		5D260106861117E7B82C989F /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 54D3841339DD52615AF28BE5 /* RevenueCat */; };
+		63F01D33C08907774E4F0F15 /* QAFixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BC505FFFF9E08AD1441F7D /* QAFixtures.swift */; };
+		670079069C21DF40F39D5ED5 /* RewardedAdGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = C282FC0C6A8B6BDFBC51E715 /* RewardedAdGateway.swift */; };
+		7597641FC8DC548F0DE9C8A3 /* PhotoResourceHasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891799BD5D3F02B0B20C20D4 /* PhotoResourceHasher.swift */; };
+		86CBCDF8396F8F44C5FA8456 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6114458A5DBC3E54D164A663 /* RulesView.swift */; };
+		892DF4FD9843285B7083B03B /* PhotoMaidApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A248213FE6F2830CAC26700 /* PhotoMaidApp.swift */; };
+		89769B47281D3360F616FF3C /* PhotoMaid.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F2B1414A9DF96D04E5279FF6 /* PhotoMaid.xcdatamodeld */; };
+		8F23C369A82EB5FB34E2ADF4 /* ProView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B509F38D9F3F94469799908D /* ProView.swift */; };
+		921E144DBB4246C2AB179447 /* ConnectedSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE80B46783D3034F1204F80B /* ConnectedSources.swift */; };
+		92E6EDE14E1CE2D8D7E9450B /* PhotoLibraryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3205E0CEB83FD22A9748A3C2 /* PhotoLibraryService.swift */; };
+		9FC3A4D642ACC4B06AAF6FA2 /* LaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1569CF6261DFB39BA2DF00AE /* LaterView.swift */; };
+		A153DA8A93B9EF773A21DFB4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 2759AAAAD83991A4B9C63E7F /* PrivacyInfo.xcprivacy */; };
+		A26245C070CEA7315AA7C49F /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF05F218DD3D22662777181 /* RootView.swift */; };
+		A60DCB2C1E61EA573BC9A85B /* PhotoMaidCore in Frameworks */ = {isa = PBXBuildFile; productRef = F9C599BFD2479EB292A8B8A2 /* PhotoMaidCore */; };
+		A64E781B220F299AAFFC2EE4 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DB7F3940DF906A234BBEFA /* TodayView.swift */; };
+		A7850950B925B7F6E51685E9 /* PurchaseGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97551D5B2CFF0C321CD89855 /* PurchaseGateway.swift */; };
+		A9841667C381E0C9370BCA35 /* MediaPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA2D387C0F34535C4590914 /* MediaPage.swift */; };
+		A98D6C2BACC8777A397A1FFA /* RulesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911C06E4788698A5D7E9629A /* RulesStore.swift */; };
+		B6254E3906A80FF97057C3E3 /* PhotoMaidUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EB6665A60E5FA7A483D624 /* PhotoMaidUITests.swift */; };
+		CAAA6748E600D6787423880E /* CleanupBasketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19566D44ED7171A2D9EF525 /* CleanupBasketView.swift */; };
+		CE9E2F5092EEC1A4E2985590 /* PrivacyAccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE05857C08C496456F7D969 /* PrivacyAccessView.swift */; };
+		D03DBFDCFC6A47A509F22227 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B268DE7FE54566492381961C /* FeedViewModel.swift */; };
+		D3384C41D34AB08B6C66FC8F /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755AD98C1DFB50952CDDFC4E /* CoreDataStore.swift */; };
+		DD72E20F2B5B69D034D40E54 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6BB9BC7BC3C097756DBF9A /* Components.swift */; };
+		E4FA1DFDAE9181DB8663BAAA /* CoreDataLedgerPersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F9A32C5BCE38242E0068A4 /* CoreDataLedgerPersistenceTests.swift */; };
+		F2CC2ACF4C52B71281BE57C4 /* CleanUpHubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D2A088CF67C7FDFD64AF7F /* CleanUpHubView.swift */; };
+		FD004200D996F7BDA0BB14A1 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D69A0C2E4852352F49FCA711 /* Localizable.xcstrings */; };
+		FD2443A6DB3F63C11F0DEC37 /* DuplicatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EB48B9BD50CB12126B9A47 /* DuplicatesView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D7A3F5E97B36FC5E2A050DD5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAE66433A04E1915908E3009 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7F5CF4509DEF5A9A0E1F7A24;
+			remoteInfo = PhotoMaid;
+		};
+		D8FA3E68688BB3CEC827F3C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FAE66433A04E1915908E3009 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7F5CF4509DEF5A9A0E1F7A24;
+			remoteInfo = PhotoMaid;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03259A471BEA2823A6FF9616 /* PreviewPipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPipeline.swift; sourceTree = "<group>"; };
+		083CC65F05C72ABF07960770 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		0C145D86644DDF54540F9B09 /* ReminderScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderScheduler.swift; sourceTree = "<group>"; };
+		1569CF6261DFB39BA2DF00AE /* LaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaterView.swift; sourceTree = "<group>"; };
+		1966A973D3AD07D75C132BCA /* PhotoMaid.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PhotoMaid.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BF05F218DD3D22662777181 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		202C3C241A5D676DECFFF6BE /* FeedPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPlayer.swift; sourceTree = "<group>"; };
+		2759AAAAD83991A4B9C63E7F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		2EBB9F28C15B7F07FDD6900B /* PhotoMaidTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PhotoMaidTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3205E0CEB83FD22A9748A3C2 /* PhotoLibraryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryService.swift; sourceTree = "<group>"; };
+		323BA230D3A6847994404505 /* LargeFilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeFilesView.swift; sourceTree = "<group>"; };
+		34BC505FFFF9E08AD1441F7D /* QAFixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAFixtures.swift; sourceTree = "<group>"; };
+		3C9BF4EE1EBE388D702DF63A /* ScreenshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotTests.swift; sourceTree = "<group>"; };
+		41DB7F3940DF906A234BBEFA /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		4A248213FE6F2830CAC26700 /* PhotoMaidApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMaidApp.swift; sourceTree = "<group>"; };
+		4A6BB9BC7BC3C097756DBF9A /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		4D0089A9D2A6E74F8DB521F0 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		58EFA424D116ABB8F6AC38AE /* FileIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileIndex.swift; sourceTree = "<group>"; };
+		5D7B34998F31BB236D41E6AE /* ReviewFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewFeedView.swift; sourceTree = "<group>"; };
+		6114458A5DBC3E54D164A663 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
+		755AD98C1DFB50952CDDFC4E /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
+		756F8263B75A4807BC54E57A /* FileBrowserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileBrowserView.swift; sourceTree = "<group>"; };
+		86D2A088CF67C7FDFD64AF7F /* CleanUpHubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanUpHubView.swift; sourceTree = "<group>"; };
+		891799BD5D3F02B0B20C20D4 /* PhotoResourceHasher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResourceHasher.swift; sourceTree = "<group>"; };
+		8FA2D387C0F34535C4590914 /* MediaPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPage.swift; sourceTree = "<group>"; };
+		911C06E4788698A5D7E9629A /* RulesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesStore.swift; sourceTree = "<group>"; };
+		97551D5B2CFF0C321CD89855 /* PurchaseGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseGateway.swift; sourceTree = "<group>"; };
+		993BC640BF7FD7218C5E9B96 /* Tokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokens.swift; sourceTree = "<group>"; };
+		A79B7D715B7187AB56BD459F /* PhotoMaid */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PhotoMaid; path = .; sourceTree = SOURCE_ROOT; };
+		AC6766CE7AC6CDC3701ED6ED /* PhotoMaid.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PhotoMaid.entitlements; sourceTree = "<group>"; };
+		AE9C12FE5E798972B41D7ACF /* PhotoMaid 1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "PhotoMaid 1.xcdatamodel"; sourceTree = "<group>"; };
+		B026AD203468F5A7F3FC351B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B19566D44ED7171A2D9EF525 /* CleanupBasketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanupBasketView.swift; sourceTree = "<group>"; };
+		B268DE7FE54566492381961C /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		B509F38D9F3F94469799908D /* ProView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProView.swift; sourceTree = "<group>"; };
+		B55809B18FB973E0C29A30AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BDE05857C08C496456F7D969 /* PrivacyAccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyAccessView.swift; sourceTree = "<group>"; };
+		C282FC0C6A8B6BDFBC51E715 /* RewardedAdGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardedAdGateway.swift; sourceTree = "<group>"; };
+		C4F83C901C10F614F635F501 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		CE80B46783D3034F1204F80B /* ConnectedSources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedSources.swift; sourceTree = "<group>"; };
+		D30A33B383BB9736D7052B0C /* PhotoMaidUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PhotoMaidUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D69A0C2E4852352F49FCA711 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		ED38856788B73C3C32E5E1A5 /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
+		F1F9A32C5BCE38242E0068A4 /* CoreDataLedgerPersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataLedgerPersistenceTests.swift; sourceTree = "<group>"; };
+		F3EB48B9BD50CB12126B9A47 /* DuplicatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicatesView.swift; sourceTree = "<group>"; };
+		F5EB6665A60E5FA7A483D624 /* PhotoMaidUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMaidUITests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		10BB5CB66B64EF0B294064E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A60DCB2C1E61EA573BC9A85B /* PhotoMaidCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2852BCC7D5851AC0B3E21C29 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E6FE22F172BCB1CE408DC3C /* PhotoMaidCore in Frameworks */,
+				5D260106861117E7B82C989F /* RevenueCat in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00A0EB63CF62D46888661360 /* Playback */ = {
+			isa = PBXGroup;
+			children = (
+				202C3C241A5D676DECFFF6BE /* FeedPlayer.swift */,
+			);
+			path = Playback;
+			sourceTree = "<group>";
+		};
+		01E7B661E6B54513411BBF7D /* LocalFiles */ = {
+			isa = PBXGroup;
+			children = (
+				CE80B46783D3034F1204F80B /* ConnectedSources.swift */,
+			);
+			path = LocalFiles;
+			sourceTree = "<group>";
+		};
+		02A5B8CE0E8EB2ED025066A1 /* PhotoMaidTests */ = {
+			isa = PBXGroup;
+			children = (
+				F1F9A32C5BCE38242E0068A4 /* CoreDataLedgerPersistenceTests.swift */,
+			);
+			path = PhotoMaidTests;
+			sourceTree = "<group>";
+		};
+		04F38D9CBE994E8CAA939794 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1966A973D3AD07D75C132BCA /* PhotoMaid.app */,
+				2EBB9F28C15B7F07FDD6900B /* PhotoMaidTests.xctest */,
+				D30A33B383BB9736D7052B0C /* PhotoMaidUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		105CD5BE619B24CDD9241F3A /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C4F83C901C10F614F635F501 /* AppModel.swift */,
+				B55809B18FB973E0C29A30AA /* Info.plist */,
+				AC6766CE7AC6CDC3701ED6ED /* PhotoMaid.entitlements */,
+				4A248213FE6F2830CAC26700 /* PhotoMaidApp.swift */,
+				34BC505FFFF9E08AD1441F7D /* QAFixtures.swift */,
+				1BF05F218DD3D22662777181 /* RootView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		234EAFB2E3088507223DFC82 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				01E7B661E6B54513411BBF7D /* LocalFiles */,
+				B220F909BD54957874C9C24C /* Notifications */,
+				582EEEB65DE0678115A75CE4 /* PhotoLibrary */,
+				00A0EB63CF62D46888661360 /* Playback */,
+				C13B47ACD900432CF14C902B /* Purchases */,
+				FD76439F00ABE1D61388DBED /* RewardedAds */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		2569CCC96A7393E5CD9E4E16 /* Rules */ = {
+			isa = PBXGroup;
+			children = (
+				911C06E4788698A5D7E9629A /* RulesStore.swift */,
+				6114458A5DBC3E54D164A663 /* RulesView.swift */,
+			);
+			path = Rules;
+			sourceTree = "<group>";
+		};
+		2965FB323E403B2AD4E008A3 /* PhotoMaid */ = {
+			isa = PBXGroup;
+			children = (
+				105CD5BE619B24CDD9241F3A /* App */,
+				75CA21D44F825D57876710FE /* DesignSystem */,
+				494C75AF4330EF8C13B15205 /* Features */,
+				234EAFB2E3088507223DFC82 /* Infrastructure */,
+				57B050CCFA6E135E2583F6AC /* Persistence */,
+				449125BC52B9BA8D83210E2F /* Resources */,
+			);
+			path = PhotoMaid;
+			sourceTree = "<group>";
+		};
+		31BF66A10E73302B63FF0569 /* CleanUpHub */ = {
+			isa = PBXGroup;
+			children = (
+				86D2A088CF67C7FDFD64AF7F /* CleanUpHubView.swift */,
+			);
+			path = CleanUpHub;
+			sourceTree = "<group>";
+		};
+		449125BC52B9BA8D83210E2F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B026AD203468F5A7F3FC351B /* Assets.xcassets */,
+				D69A0C2E4852352F49FCA711 /* Localizable.xcstrings */,
+				2759AAAAD83991A4B9C63E7F /* PrivacyInfo.xcprivacy */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		494C75AF4330EF8C13B15205 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				88B0A38115A29CC14E3EF43A /* CleanupBasket */,
+				31BF66A10E73302B63FF0569 /* CleanUpHub */,
+				E205A938C5AD7349465C33F2 /* Duplicates */,
+				E61D24C8DAC45608C46B1FBA /* FileBrowser */,
+				D888876196117F12BA4B2EE9 /* History */,
+				876DE4C59F58C72672F4A6E3 /* Later */,
+				C100B30F1DC72396999E91BF /* Onboarding */,
+				57573D53D87CFED8A5DD5CB9 /* Pro */,
+				DB183214B956CFE350C841A6 /* ReviewFeed */,
+				2569CCC96A7393E5CD9E4E16 /* Rules */,
+				9BEE307A558F8FCD43F6E2F5 /* Settings */,
+				81BCD25EF25C75EA066791FD /* Storage */,
+				C614D4351DDC1095376904DA /* Today */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		57573D53D87CFED8A5DD5CB9 /* Pro */ = {
+			isa = PBXGroup;
+			children = (
+				B509F38D9F3F94469799908D /* ProView.swift */,
+			);
+			path = Pro;
+			sourceTree = "<group>";
+		};
+		57B050CCFA6E135E2583F6AC /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				F2B1414A9DF96D04E5279FF6 /* PhotoMaid.xcdatamodeld */,
+				755AD98C1DFB50952CDDFC4E /* CoreDataStore.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		582EEEB65DE0678115A75CE4 /* PhotoLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				3205E0CEB83FD22A9748A3C2 /* PhotoLibraryService.swift */,
+				891799BD5D3F02B0B20C20D4 /* PhotoResourceHasher.swift */,
+				03259A471BEA2823A6FF9616 /* PreviewPipeline.swift */,
+			);
+			path = PhotoLibrary;
+			sourceTree = "<group>";
+		};
+		75CA21D44F825D57876710FE /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				4A6BB9BC7BC3C097756DBF9A /* Components.swift */,
+				ED38856788B73C3C32E5E1A5 /* Formatting.swift */,
+				993BC640BF7FD7218C5E9B96 /* Tokens.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		81BCD25EF25C75EA066791FD /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				323BA230D3A6847994404505 /* LargeFilesView.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		876DE4C59F58C72672F4A6E3 /* Later */ = {
+			isa = PBXGroup;
+			children = (
+				1569CF6261DFB39BA2DF00AE /* LaterView.swift */,
+			);
+			path = Later;
+			sourceTree = "<group>";
+		};
+		88B0A38115A29CC14E3EF43A /* CleanupBasket */ = {
+			isa = PBXGroup;
+			children = (
+				B19566D44ED7171A2D9EF525 /* CleanupBasketView.swift */,
+			);
+			path = CleanupBasket;
+			sourceTree = "<group>";
+		};
+		9BEE307A558F8FCD43F6E2F5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				083CC65F05C72ABF07960770 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		B220F909BD54957874C9C24C /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				0C145D86644DDF54540F9B09 /* ReminderScheduler.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		B544C3D69416DB3DFF3E5BE5 /* PhotoMaidUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F5EB6665A60E5FA7A483D624 /* PhotoMaidUITests.swift */,
+				3C9BF4EE1EBE388D702DF63A /* ScreenshotTests.swift */,
+			);
+			path = PhotoMaidUITests;
+			sourceTree = "<group>";
+		};
+		C100B30F1DC72396999E91BF /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				BDE05857C08C496456F7D969 /* PrivacyAccessView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		C13B47ACD900432CF14C902B /* Purchases */ = {
+			isa = PBXGroup;
+			children = (
+				97551D5B2CFF0C321CD89855 /* PurchaseGateway.swift */,
+			);
+			path = Purchases;
+			sourceTree = "<group>";
+		};
+		C614D4351DDC1095376904DA /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				41DB7F3940DF906A234BBEFA /* TodayView.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		D0557F65FCDE1276FC64E424 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				A79B7D715B7187AB56BD459F /* PhotoMaid */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		D888876196117F12BA4B2EE9 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				4D0089A9D2A6E74F8DB521F0 /* HistoryView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		DB183214B956CFE350C841A6 /* ReviewFeed */ = {
+			isa = PBXGroup;
+			children = (
+				B268DE7FE54566492381961C /* FeedViewModel.swift */,
+				8FA2D387C0F34535C4590914 /* MediaPage.swift */,
+				5D7B34998F31BB236D41E6AE /* ReviewFeedView.swift */,
+			);
+			path = ReviewFeed;
+			sourceTree = "<group>";
+		};
+		E205A938C5AD7349465C33F2 /* Duplicates */ = {
+			isa = PBXGroup;
+			children = (
+				F3EB48B9BD50CB12126B9A47 /* DuplicatesView.swift */,
+			);
+			path = Duplicates;
+			sourceTree = "<group>";
+		};
+		E61D24C8DAC45608C46B1FBA /* FileBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				756F8263B75A4807BC54E57A /* FileBrowserView.swift */,
+				58EFA424D116ABB8F6AC38AE /* FileIndex.swift */,
+			);
+			path = FileBrowser;
+			sourceTree = "<group>";
+		};
+		F988AC04FBA025C50B076D94 = {
+			isa = PBXGroup;
+			children = (
+				D0557F65FCDE1276FC64E424 /* Packages */,
+				2965FB323E403B2AD4E008A3 /* PhotoMaid */,
+				02A5B8CE0E8EB2ED025066A1 /* PhotoMaidTests */,
+				B544C3D69416DB3DFF3E5BE5 /* PhotoMaidUITests */,
+				04F38D9CBE994E8CAA939794 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FD76439F00ABE1D61388DBED /* RewardedAds */ = {
+			isa = PBXGroup;
+			children = (
+				C282FC0C6A8B6BDFBC51E715 /* RewardedAdGateway.swift */,
+			);
+			path = RewardedAds;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2541FF2664BEA9742822A77D /* PhotoMaidTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A69E6B6A6107CF9115FC5EE6 /* Build configuration list for PBXNativeTarget "PhotoMaidTests" */;
+			buildPhases = (
+				A3C1D453E71FC233F5246786 /* Sources */,
+				10BB5CB66B64EF0B294064E6 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BBA4767593E6922D9167AF99 /* PBXTargetDependency */,
+			);
+			name = PhotoMaidTests;
+			packageProductDependencies = (
+				F9C599BFD2479EB292A8B8A2 /* PhotoMaidCore */,
+			);
+			productName = PhotoMaidTests;
+			productReference = 2EBB9F28C15B7F07FDD6900B /* PhotoMaidTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7F5CF4509DEF5A9A0E1F7A24 /* PhotoMaid */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81E582FB16779EF76F4E57ED /* Build configuration list for PBXNativeTarget "PhotoMaid" */;
+			buildPhases = (
+				C3F4AC1CB07DE03C4C07D9D3 /* Sources */,
+				E572FCD6B12CE904C944891A /* Resources */,
+				2852BCC7D5851AC0B3E21C29 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PhotoMaid;
+			packageProductDependencies = (
+				1808082F5D10D07F464C8581 /* PhotoMaidCore */,
+				54D3841339DD52615AF28BE5 /* RevenueCat */,
+			);
+			productName = PhotoMaid;
+			productReference = 1966A973D3AD07D75C132BCA /* PhotoMaid.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C3D4EB670BE61B3CEEE6B9C4 /* PhotoMaidUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E1AB9CB637FEC176B430AB3 /* Build configuration list for PBXNativeTarget "PhotoMaidUITests" */;
+			buildPhases = (
+				533D312D1711D680DA31AF1A /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0AD4726445144914C0DB881C /* PBXTargetDependency */,
+			);
+			name = PhotoMaidUITests;
+			packageProductDependencies = (
+			);
+			productName = PhotoMaidUITests;
+			productReference = D30A33B383BB9736D7052B0C /* PhotoMaidUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FAE66433A04E1915908E3009 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					2541FF2664BEA9742822A77D = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					7F5CF4509DEF5A9A0E1F7A24 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+					C3D4EB670BE61B3CEEE6B9C4 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7F5CF4509DEF5A9A0E1F7A24;
+					};
+				};
+			};
+			buildConfigurationList = EC6808318DCAB2262FEA466F /* Build configuration list for PBXProject "PhotoMaid" */;
+			developmentRegion = de;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				de,
+			);
+			mainGroup = F988AC04FBA025C50B076D94;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CD9156F9CF27AA4BB16087F3 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
+				FDD187219E2C755D8A72CEA8 /* XCLocalSwiftPackageReference "." */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 04F38D9CBE994E8CAA939794 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7F5CF4509DEF5A9A0E1F7A24 /* PhotoMaid */,
+				2541FF2664BEA9742822A77D /* PhotoMaidTests */,
+				C3D4EB670BE61B3CEEE6B9C4 /* PhotoMaidUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E572FCD6B12CE904C944891A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17E2F83952C16B8D729EA528 /* Assets.xcassets in Resources */,
+				FD004200D996F7BDA0BB14A1 /* Localizable.xcstrings in Resources */,
+				A153DA8A93B9EF773A21DFB4 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		533D312D1711D680DA31AF1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6254E3906A80FF97057C3E3 /* PhotoMaidUITests.swift in Sources */,
+				03A57C87B44C901AE9A84F10 /* ScreenshotTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3C1D453E71FC233F5246786 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4FA1DFDAE9181DB8663BAAA /* CoreDataLedgerPersistenceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3F4AC1CB07DE03C4C07D9D3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				109C17BDB7E942F2C8988D49 /* AppModel.swift in Sources */,
+				F2CC2ACF4C52B71281BE57C4 /* CleanUpHubView.swift in Sources */,
+				CAAA6748E600D6787423880E /* CleanupBasketView.swift in Sources */,
+				DD72E20F2B5B69D034D40E54 /* Components.swift in Sources */,
+				921E144DBB4246C2AB179447 /* ConnectedSources.swift in Sources */,
+				D3384C41D34AB08B6C66FC8F /* CoreDataStore.swift in Sources */,
+				FD2443A6DB3F63C11F0DEC37 /* DuplicatesView.swift in Sources */,
+				4687F6E6342EB87694B85D82 /* FeedPlayer.swift in Sources */,
+				D03DBFDCFC6A47A509F22227 /* FeedViewModel.swift in Sources */,
+				2D4139A44E6CB9F5F32543A6 /* FileBrowserView.swift in Sources */,
+				2D7B6B741960908EB687D565 /* FileIndex.swift in Sources */,
+				38BDCD188A144D919BBCF03B /* Formatting.swift in Sources */,
+				33821624039834704173F901 /* HistoryView.swift in Sources */,
+				3A18258F703B3B1FCF4D4BDD /* LargeFilesView.swift in Sources */,
+				9FC3A4D642ACC4B06AAF6FA2 /* LaterView.swift in Sources */,
+				A9841667C381E0C9370BCA35 /* MediaPage.swift in Sources */,
+				92E6EDE14E1CE2D8D7E9450B /* PhotoLibraryService.swift in Sources */,
+				89769B47281D3360F616FF3C /* PhotoMaid.xcdatamodeld in Sources */,
+				892DF4FD9843285B7083B03B /* PhotoMaidApp.swift in Sources */,
+				7597641FC8DC548F0DE9C8A3 /* PhotoResourceHasher.swift in Sources */,
+				59416E6E5362475C5DFD59A4 /* PreviewPipeline.swift in Sources */,
+				CE9E2F5092EEC1A4E2985590 /* PrivacyAccessView.swift in Sources */,
+				8F23C369A82EB5FB34E2ADF4 /* ProView.swift in Sources */,
+				A7850950B925B7F6E51685E9 /* PurchaseGateway.swift in Sources */,
+				63F01D33C08907774E4F0F15 /* QAFixtures.swift in Sources */,
+				0612EA07554E84CB3862C65C /* ReminderScheduler.swift in Sources */,
+				2B0D93967605CF825746CF50 /* ReviewFeedView.swift in Sources */,
+				670079069C21DF40F39D5ED5 /* RewardedAdGateway.swift in Sources */,
+				A26245C070CEA7315AA7C49F /* RootView.swift in Sources */,
+				A98D6C2BACC8777A397A1FFA /* RulesStore.swift in Sources */,
+				86CBCDF8396F8F44C5FA8456 /* RulesView.swift in Sources */,
+				40D7CE7127CAB3F7E46D1E67 /* SettingsView.swift in Sources */,
+				A64E781B220F299AAFFC2EE4 /* TodayView.swift in Sources */,
+				354C7E89036819CE133D4B70 /* Tokens.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0AD4726445144914C0DB881C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7F5CF4509DEF5A9A0E1F7A24 /* PhotoMaid */;
+			targetProxy = D7A3F5E97B36FC5E2A050DD5 /* PBXContainerItemProxy */;
+		};
+		BBA4767593E6922D9167AF99 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7F5CF4509DEF5A9A0E1F7A24 /* PhotoMaid */;
+			targetProxy = D8FA3E68688BB3CEC827F3C0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1F4A0DB5BF4E20923068E975 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.photomaid.PhotoMaidUITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PhotoMaid;
+			};
+			name = Debug;
+		};
+		35431335250A1EE1BB8EEB9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PhotoMaid/App/PhotoMaid.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = PhotoMaid/App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PM_PRIVACY_POLICY_URL = "";
+				PM_PRO_ENTITLEMENT_ID = "";
+				PM_REVENUECAT_API_KEY = "";
+				PM_REWARDED_AD_UNIT_ID = "";
+				PRODUCT_BUNDLE_IDENTIFIER = app.photomaid.ios;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG QA_FIXTURES";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A57F8908D7D81847EABCFEB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.photomaid.PhotoMaidTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoMaid.app/PhotoMaid";
+			};
+			name = Debug;
+		};
+		B9E9CEFC7855D117A364A7B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.photomaid.PhotoMaidTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoMaid.app/PhotoMaid";
+			};
+			name = Release;
+		};
+		BBDFE889FFA9A84959B3D42B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		D8F12EFC7FE36B90600F039B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = app.photomaid.PhotoMaidUITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PhotoMaid;
+			};
+			name = Release;
+		};
+		E1E32C3911DA81A578D860F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		F9164292A3E1CB463911AA5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PhotoMaid/App/PhotoMaid.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = PhotoMaid/App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PM_PRIVACY_POLICY_URL = "";
+				PM_PRO_ENTITLEMENT_ID = "";
+				PM_REVENUECAT_API_KEY = "";
+				PM_REWARDED_AD_UNIT_ID = "";
+				PRODUCT_BUNDLE_IDENTIFIER = app.photomaid.ios;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		81E582FB16779EF76F4E57ED /* Build configuration list for PBXNativeTarget "PhotoMaid" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35431335250A1EE1BB8EEB9A /* Debug */,
+				F9164292A3E1CB463911AA5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8E1AB9CB637FEC176B430AB3 /* Build configuration list for PBXNativeTarget "PhotoMaidUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F4A0DB5BF4E20923068E975 /* Debug */,
+				D8F12EFC7FE36B90600F039B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A69E6B6A6107CF9115FC5EE6 /* Build configuration list for PBXNativeTarget "PhotoMaidTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A57F8908D7D81847EABCFEB5 /* Debug */,
+				B9E9CEFC7855D117A364A7B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		EC6808318DCAB2262FEA466F /* Build configuration list for PBXProject "PhotoMaid" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBDFE889FFA9A84959B3D42B /* Debug */,
+				E1E32C3911DA81A578D860F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		FDD187219E2C755D8A72CEA8 /* XCLocalSwiftPackageReference "." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = .;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CD9156F9CF27AA4BB16087F3 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios-spm.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.91.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1808082F5D10D07F464C8581 /* PhotoMaidCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PhotoMaidCore;
+		};
+		54D3841339DD52615AF28BE5 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CD9156F9CF27AA4BB16087F3 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCat;
+		};
+		F9C599BFD2479EB292A8B8A2 /* PhotoMaidCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PhotoMaidCore;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		F2B1414A9DF96D04E5279FF6 /* PhotoMaid.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AE9C12FE5E798972B41D7ACF /* PhotoMaid 1.xcdatamodel */,
+			);
+			currentVersion = AE9C12FE5E798972B41D7ACF /* PhotoMaid 1.xcdatamodel */;
+			path = PhotoMaid.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = FAE66433A04E1915908E3009 /* Project object */;
+}
