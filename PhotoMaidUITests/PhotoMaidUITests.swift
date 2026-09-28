@@ -44,6 +44,8 @@ final class PhotoMaidUITests: XCTestCase {
         app.buttons["Einstellungen"].firstMatch.tap()
         // Zeile fasst Titel und Status zusammen („PhotoMaid Pro, Einmalkauf“).
         let pro = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'PhotoMaid Pro'")).firstMatch
+        // Listenzeilen außerhalb des Bildschirms existieren erst nach dem Scrollen.
+        for _ in 0..<5 where !pro.waitForExistence(timeout: 1) { app.swipeUp() }
         XCTAssertTrue(pro.waitForExistence(timeout: 5))
         pro.tap()
         XCTAssertTrue(app.staticTexts["Käufe sind in dieser Version noch nicht verfügbar."].waitForExistence(timeout: 5))

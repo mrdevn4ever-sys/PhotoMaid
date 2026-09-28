@@ -234,6 +234,7 @@ final class ScreenshotTests: XCTestCase {
         guard waitFor(gear, 8, "Einstellungen-Zahnrad") else { return }
         gear.tap()
         let pro = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'PhotoMaid Pro'")).firstMatch
+        for _ in 0..<5 where !pro.waitForExistence(timeout: 1) { app.swipeUp() }
         if waitFor(pro, 6, "PhotoMaid Pro in Einstellungen") {
             pro.tap()
             settle(2)
