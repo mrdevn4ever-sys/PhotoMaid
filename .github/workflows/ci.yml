@@ -58,7 +58,12 @@ jobs:
           # Deployment Target nur für diesen Lauf auf dessen Hauptversion gesenkt.
           SDK=$(xcrun --sdk iphonesimulator --show-sdk-version)
           TARGET=27.0
-          if [ "${SDK%%.*}" -lt 27 ]; then TARGET="${SDK%%.*}.0"; echo "::warning::Kein iOS-27-SDK auf dem Runner (vorhanden: $SDK). Prüfung mit Deployment Target $TARGET."; fi
+          if [ "${SDK%%.*}" -lt 27 ]; then
+            TARGET="${SDK%%.*}.0"
+            echo "::warning::Kein iOS-27-SDK auf dem Runner (vorhanden: $SDK). Prüfung mit Deployment Target $TARGET (nur in dieser CI-Arbeitskopie)."
+            # xcodebuild wählt Ziele anhand der Projektdatei, daher dort (nur lokal im Runner) ersetzen.
+            sed -i '' "s/IPHONEOS_DEPLOYMENT_TARGET = 27.0;/IPHONEOS_DEPLOYMENT_TARGET = $TARGET;/g" PhotoMaid.xcodeproj/project.pbxproj
+          fi
           xcodebuild -project PhotoMaid.xcodeproj -scheme PhotoMaid \
             -destination "id=${{ steps.sim.outputs.udid }}" \
             -skipPackagePluginValidation -skipMacroValidation \
