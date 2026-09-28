@@ -144,35 +144,24 @@
         }
       }
     },
-    "%lld Elemente vorgemerkt": {
+    "%lld Elemente, noch nicht gelöscht": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld Elemente vorgemerkt"
+            "value": "%lld Elemente, noch nicht gelöscht"
           }
         }
       }
     },
-    "%lld Fotos/Videos prüfen und entfernen": {
+    "%lld Kopien in den Papierkorb": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld Fotos/Videos prüfen und entfernen"
-          }
-        }
-      }
-    },
-    "%lld Kopien vormerken": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld Kopien vormerken"
+            "value": "%lld Kopien in den Papierkorb"
           }
         }
       }
@@ -232,6 +221,17 @@
         }
       }
     },
+    "%lld im Papierkorb": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld im Papierkorb"
+          }
+        }
+      }
+    },
     "%lld von %lld": {
       "extractionState": "manual",
       "localizations": {
@@ -243,24 +243,13 @@
         }
       }
     },
-    "%lld von %lld Elementen wurden entfernt. Der Rest bleibt vorgemerkt.": {
+    "%lld von %lld Elementen wurden entfernt. Der Rest bleibt im Papierkorb.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld von %lld Elementen wurden entfernt. Der Rest bleibt vorgemerkt."
-          }
-        }
-      }
-    },
-    "%lld vorgemerkt": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld vorgemerkt"
+            "value": "%lld von %lld Elementen wurden entfernt. Der Rest bleibt im Papierkorb."
           }
         }
       }
@@ -294,28 +283,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "-qa-fixtures"
-          }
-        }
-      }
-    },
-    "30 Tage": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "30 Tage"
-          }
-        }
-      }
-    },
-    "7 Tage": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "7 Tage"
           }
         }
       }
@@ -386,13 +353,13 @@
         }
       }
     },
-    "Abwählen": {
+    "Abstand wählen": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Abwählen"
+            "value": "Abstand wählen"
           }
         }
       }
@@ -496,17 +463,6 @@
         }
       }
     },
-    "Anderes Datum": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Anderes Datum"
-          }
-        }
-      }
-    },
     "Ansehen, sortieren und später prüfen ist unbegrenzt. Bestätigte Bereinigungen sind auf 15 pro Tag begrenzt.": {
       "extractionState": "manual",
       "localizations": {
@@ -514,6 +470,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ansehen, sortieren und später prüfen ist unbegrenzt. Bestätigte Bereinigungen sind auf 15 pro Tag begrenzt."
+          }
+        }
+      }
+    },
+    "Anzahl": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anzahl"
           }
         }
       }
@@ -573,13 +540,13 @@
         }
       }
     },
-    "Aus Auswahl entfernt": {
+    "Aus dem Papierkorb zurückgelegt": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aus Auswahl entfernt"
+            "value": "Aus dem Papierkorb zurückgelegt"
           }
         }
       }
@@ -617,28 +584,6 @@
         }
       }
     },
-    "Auswahl prüfen": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Auswahl prüfen"
-          }
-        }
-      }
-    },
-    "Auswahl prüfen (%lld)": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Auswahl prüfen (%lld)"
-          }
-        }
-      }
-    },
     "Auswahl verwalten": {
       "extractionState": "manual",
       "localizations": {
@@ -646,39 +591,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Auswahl verwalten"
-          }
-        }
-      }
-    },
-    "Auswahlkorb": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Auswahlkorb"
-          }
-        }
-      }
-    },
-    "Auswahlkorb ist leer": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Auswahlkorb ist leer"
-          }
-        }
-      }
-    },
-    "Auswahlkorb: %lld Elemente": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Auswahlkorb: %lld Elemente"
           }
         }
       }
@@ -723,17 +635,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Behalten"
-          }
-        }
-      }
-    },
-    "Behalten + weiter": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Behalten + weiter"
           }
         }
       }
@@ -811,6 +712,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bereinigung nicht ausgeführt"
+          }
+        }
+      }
+    },
+    "Bestimmtes Datum …": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bestimmtes Datum …"
           }
         }
       }
@@ -1031,6 +943,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Datenschutzerklärung"
+          }
+        }
+      }
+    },
+    "Datum": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datum"
           }
         }
       }
@@ -1354,6 +1277,17 @@
         }
       }
     },
+    "Einheit": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einheit"
+          }
+        }
+      }
+    },
     "Einmaliger Kauf": {
       "extractionState": "manual",
       "localizations": {
@@ -1515,17 +1449,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Erweiterte Datei- und Speicherwerkzeuge"
-          }
-        }
-      }
-    },
-    "Es wird nichts gelöscht, bevor du die Auswahl prüfst und bestätigst.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Es wird nichts gelöscht, bevor du die Auswahl prüfst und bestätigst."
           }
         }
       }
@@ -1728,6 +1651,17 @@
         }
       }
     },
+    "Gelöscht wird erst, wenn du den Papierkorb leerst und bestätigst.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gelöscht wird erst, wenn du den Papierkorb leerst und bestätigst."
+          }
+        }
+      }
+    },
     "Gerade ist keine Anzeige verfügbar.": {
       "extractionState": "manual",
       "localizations": {
@@ -1750,24 +1684,24 @@
         }
       }
     },
-    "Gestenhilfe anzeigen": {
+    "Gestenhilfe beim Öffnen zeigen": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gestenhilfe anzeigen"
+            "value": "Gestenhilfe beim Öffnen zeigen"
           }
         }
       }
     },
-    "Gestenhilfe erneut anzeigen": {
+    "Gestenhilfe zeigen": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gestenhilfe erneut anzeigen"
+            "value": "Gestenhilfe zeigen"
           }
         }
       }
@@ -1937,6 +1871,94 @@
         }
       }
     },
+    "Im Papierkorb": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Im Papierkorb"
+          }
+        }
+      }
+    },
+    "In %@ Monaten wieder": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In %@ Monaten wieder"
+          }
+        }
+      }
+    },
+    "In %@ Tagen wieder": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In %@ Tagen wieder"
+          }
+        }
+      }
+    },
+    "In %@ Wochen wieder": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In %@ Wochen wieder"
+          }
+        }
+      }
+    },
+    "In %lld Tagen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In %lld Tagen"
+          }
+        }
+      }
+    },
+    "In 1 Monat wieder": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In 1 Monat wieder"
+          }
+        }
+      }
+    },
+    "In 1 Woche wieder": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In 1 Woche wieder"
+          }
+        }
+      }
+    },
+    "In den Papierkorb": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In den Papierkorb"
+          }
+        }
+      }
+    },
     "In den nächsten 7 Tagen · %lld": {
       "extractionState": "manual",
       "localizations": {
@@ -1966,6 +1988,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "In dieser Auswahl warten gerade keine Elemente auf eine Entscheidung."
+          }
+        }
+      }
+    },
+    "Infos": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Infos"
           }
         }
       }
@@ -2069,13 +2102,24 @@
         }
       }
     },
-    "Kopie zum Vormerken ausgewählt": {
+    "Kopie für den Papierkorb ausgewählt": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kopie zum Vormerken ausgewählt"
+            "value": "Kopie für den Papierkorb ausgewählt"
+          }
+        }
+      }
+    },
+    "Korrigiert: Papierkorb": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Korrigiert: Papierkorb"
           }
         }
       }
@@ -2098,17 +2142,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Korrigiert: später"
-          }
-        }
-      }
-    },
-    "Korrigiert: vorgemerkt": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Korrigiert: vorgemerkt"
           }
         }
       }
@@ -2300,6 +2333,28 @@
         }
       }
     },
+    "Monat": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monat"
+          }
+        }
+      }
+    },
+    "Monate": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monate"
+          }
+        }
+      }
+    },
     "Morgen": {
       "extractionState": "manual",
       "localizations": {
@@ -2307,6 +2362,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Morgen"
+          }
+        }
+      }
+    },
+    "Morgen wieder": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Morgen wieder"
           }
         }
       }
@@ -2428,6 +2494,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Nichts zurückgestellt. Wische im Feed nach rechts, um etwas auf später zu legen."
+          }
+        }
+      }
+    },
+    "Noch ist nichts gelöscht. Prüfe den Papierkorb und leere ihn, wenn alles passt. Abgewählte Elemente bleiben erhalten.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch ist nichts gelöscht. Prüfe den Papierkorb und leere ihn, wenn alles passt. Abgewählte Elemente bleiben erhalten."
           }
         }
       }
@@ -2608,6 +2685,72 @@
         }
       }
     },
+    "Papierkorb": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Papierkorb"
+          }
+        }
+      }
+    },
+    "Papierkorb ansehen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Papierkorb ansehen"
+          }
+        }
+      }
+    },
+    "Papierkorb ansehen (%lld)": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Papierkorb ansehen (%lld)"
+          }
+        }
+      }
+    },
+    "Papierkorb ist leer": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Papierkorb ist leer"
+          }
+        }
+      }
+    },
+    "Papierkorb leeren: %lld Fotos/Videos": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Papierkorb leeren: %lld Fotos/Videos"
+          }
+        }
+      }
+    },
+    "Papierkorb: %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Papierkorb: %lld"
+          }
+        }
+      }
+    },
     "Pause": {
       "extractionState": "manual",
       "localizations": {
@@ -2696,13 +2839,13 @@
         }
       }
     },
-    "PhotoMaid löscht nie automatisch. Vorgemerkte Elemente prüfst du im Auswahlkorb. Fotos und Videos entfernt iOS nach deiner Bestätigung in „Zuletzt gelöscht“. Dateien werden endgültig gelöscht.": {
+    "PhotoMaid löscht nie automatisch. Was du nach links wischst, landet im PhotoMaid-Papierkorb; gelöscht wird erst, wenn du ihn leerst. Fotos und Videos entfernt iOS nach deiner Bestätigung in „Zuletzt gelöscht“. Dateien werden endgültig gelöscht.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "PhotoMaid löscht nie automatisch. Vorgemerkte Elemente prüfst du im Auswahlkorb. Fotos und Videos entfernt iOS nach deiner Bestätigung in „Zuletzt gelöscht“. Dateien werden endgültig gelöscht."
+            "value": "PhotoMaid löscht nie automatisch. Was du nach links wischst, landet im PhotoMaid-Papierkorb; gelöscht wird erst, wenn du ihn leerst. Fotos und Videos entfernt iOS nach deiner Bestätigung in „Zuletzt gelöscht“. Dateien werden endgültig gelöscht."
           }
         }
       }
@@ -2791,17 +2934,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Prüfaufgaben automatisch vorbereiten."
-          }
-        }
-      }
-    },
-    "Prüfe die Auswahl, bevor etwas entfernt wird. Abgewählte Elemente bleiben erhalten.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Prüfe die Auswahl, bevor etwas entfernt wird. Abgewählte Elemente bleiben erhalten."
           }
         }
       }
@@ -2993,6 +3125,17 @@
         }
       }
     },
+    "Schräg hoch": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schräg hoch"
+          }
+        }
+      }
+    },
     "Screenshot": {
       "extractionState": "manual",
       "localizations": {
@@ -3103,6 +3246,39 @@
         }
       }
     },
+    "Später (Wisch nach rechts)": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Später (Wisch nach rechts)"
+          }
+        }
+      }
+    },
+    "Später · Datum wählen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Später · Datum wählen"
+          }
+        }
+      }
+    },
+    "Später, Datum wählen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Später, Datum wählen"
+          }
+        }
+      }
+    },
     "Startet die Prüfung deiner Fotos": {
       "extractionState": "manual",
       "localizations": {
@@ -3143,6 +3319,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Systemwert des Geräts, nicht nur Fotos"
+          }
+        }
+      }
+    },
+    "Tag": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tag"
+          }
+        }
+      }
+    },
+    "Tage": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tage"
           }
         }
       }
@@ -3301,17 +3499,6 @@
         }
       }
     },
-    "Verstanden": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verstanden"
-          }
-        }
-      }
-    },
     "Video": {
       "extractionState": "manual",
       "localizations": {
@@ -3367,17 +3554,6 @@
         }
       }
     },
-    "Vorgemerkt": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vorgemerkt"
-          }
-        }
-      }
-    },
     "Vorheriges": {
       "extractionState": "manual",
       "localizations": {
@@ -3385,17 +3561,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Vorheriges"
-          }
-        }
-      }
-    },
-    "Vormerken": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Vormerken"
           }
         }
       }
@@ -3477,6 +3642,17 @@
         }
       }
     },
+    "Wieder zeigen am %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wieder zeigen am %@"
+          }
+        }
+      }
+    },
     "Wiedergabeposition": {
       "extractionState": "manual",
       "localizations": {
@@ -3521,68 +3697,46 @@
         }
       }
     },
-    "Wisch nach links": {
+    "Wisch nach oben, um ein Medium zu behalten. Nach links kommt es in den Papierkorb, nach rechts auf später (Standard: in 2 Tagen), schräg nach rechts oben wählst du das Datum selbst. Nach unten kommst du zum vorherigen Medium – ohne etwas zu entscheiden.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wisch nach links"
+            "value": "Wisch nach oben, um ein Medium zu behalten. Nach links kommt es in den Papierkorb, nach rechts auf später (Standard: in 2 Tagen), schräg nach rechts oben wählst du das Datum selbst. Nach unten kommst du zum vorherigen Medium – ohne etwas zu entscheiden."
           }
         }
       }
     },
-    "Wisch nach oben": {
+    "Wische im Feed nach links, um etwas in den Papierkorb zu legen.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wisch nach oben"
+            "value": "Wische im Feed nach links, um etwas in den Papierkorb zu legen."
           }
         }
       }
     },
-    "Wisch nach oben, um ein Medium zu behalten. Nach links merkst du es zur Bereinigung vor, nach rechts legst du es auf später. Nach unten kommst du zum vorherigen Medium – ohne etwas zu entscheiden.": {
+    "Woche": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wisch nach oben, um ein Medium zu behalten. Nach links merkst du es zur Bereinigung vor, nach rechts legst du es auf später. Nach unten kommst du zum vorherigen Medium – ohne etwas zu entscheiden."
+            "value": "Woche"
           }
         }
       }
     },
-    "Wisch nach rechts": {
+    "Wochen": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wisch nach rechts"
-          }
-        }
-      }
-    },
-    "Wisch nach unten": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wisch nach unten"
-          }
-        }
-      }
-    },
-    "Wische im Feed nach links, um Elemente vorzumerken.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wische im Feed nach links, um Elemente vorzumerken."
+            "value": "Wochen"
           }
         }
       }
@@ -3675,17 +3829,6 @@
         }
       }
     },
-    "Zur Bereinigung vormerken": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zur Bereinigung vormerken"
-          }
-        }
-      }
-    },
     "Zurück": {
       "extractionState": "manual",
       "localizations": {
@@ -3697,13 +3840,13 @@
         }
       }
     },
-    "Zurückgestellt. Wann wieder zeigen?": {
+    "Zurücklegen": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zurückgestellt. Wann wieder zeigen?"
+            "value": "Zurücklegen"
           }
         }
       }
@@ -3961,13 +4104,24 @@
         }
       }
     },
-    "Öffnet die vorgemerkten Elemente zur Prüfung": {
+    "Ändern": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Öffnet die vorgemerkten Elemente zur Prüfung"
+            "value": "Ändern"
+          }
+        }
+      }
+    },
+    "Öffnet den Papierkorb. Gelöscht wird erst nach deiner Bestätigung.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öffnet den Papierkorb. Gelöscht wird erst nach deiner Bestätigung."
           }
         }
       }

@@ -17,10 +17,27 @@ enum AppearanceChoice: String, Codable, CaseIterable, Identifiable, Sendable {
 
 struct AppSettingsData: Codable, Equatable, Sendable {
     var haptics = true
-    var gestureHintSeen = false
+    /// Gestenhilfe bei jedem Öffnen des Feeds kurz einblenden (abwählbar).
+    var showGestureHintOnOpen = true
     var appearance: AppearanceChoice = .system
     var largeFileThresholdMB = 100
     var privacyIntroSeen = false
+    /// Standardabstand beim Wisch nach rechts (Tage).
+    var laterDefaultDays = LaterInterval.defaultQuick.value
+
+    init() {}
+
+    // Tolerant: fehlende/neue Felder behalten ihren Standard statt die Einstellungen zu verwerfen.
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        let d = AppSettingsData()
+        haptics = try c.decodeIfPresent(Bool.self, forKey: .haptics) ?? d.haptics
+        showGestureHintOnOpen = try c.decodeIfPresent(Bool.self, forKey: .showGestureHintOnOpen) ?? d.showGestureHintOnOpen
+        appearance = try c.decodeIfPresent(AppearanceChoice.self, forKey: .appearance) ?? d.appearance
+        largeFileThresholdMB = try c.decodeIfPresent(Int.self, forKey: .largeFileThresholdMB) ?? d.largeFileThresholdMB
+        privacyIntroSeen = try c.decodeIfPresent(Bool.self, forKey: .privacyIntroSeen) ?? d.privacyIntroSeen
+        laterDefaultDays = try c.decodeIfPresent(Int.self, forKey: .laterDefaultDays) ?? d.laterDefaultDays
+    }
 }
 
 /// Zentrale App-Instanz: Abhängigkeiten (DI) und abgeleitete Lesemodelle.
@@ -142,7 +159,7 @@ final class AppModel {
     // MARK: Bereinigung
 
     /// Führt eine bestätigte Bereinigung für EINEN Provider durch.
-    /// Entdecken → Entscheiden → Auswahl prüfen → Bestätigen → Provider-Operation → Abgleichen → Verlauf.
+    /// Entdecken → Entscheiden → Papierkorb prüfen → Bestätigen → Provider-Operation → Abgleichen → Verlauf.
     func runCleanup(_ items: [ItemReference], kind: CleanupOperationKind) async -> CleanupRunResult {
         let limit = capabilities.dailyCleanupLimit
         let intent: OperationIntent

@@ -142,7 +142,7 @@ struct FileBrowserView: View {
             Button("Behalten") { Task { await decide(e, .keep) } }.tint(AppColors.keep)
         }
         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-            Button("Vormerken") { Task { await decide(e, .markForCleanup) } }.tint(AppColors.cleanup)
+            Button("Papierkorb") { Task { await decide(e, .markForCleanup) } }.tint(AppColors.cleanup)
             Button("Später") { Task { await decide(e, .later(session: ReviewSessionID())) } }.tint(AppColors.later)
         }
     }

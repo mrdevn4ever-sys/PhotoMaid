@@ -25,8 +25,8 @@ final class ScreenshotTests: XCTestCase {
 
     private func settle(_ seconds: TimeInterval = 1.2) { Thread.sleep(forTimeInterval: seconds) }
 
-    private func snap(_ name: String) {
-        settle()
+    private func snap(_ name: String, settleFor seconds: TimeInterval = 1.2) {
+        settle(seconds)
         let shot = XCUIScreen.main.screenshot()
         let attachment = XCTAttachment(screenshot: shot)
         attachment.name = name
@@ -80,14 +80,6 @@ final class ScreenshotTests: XCTestCase {
         settle(0.8)
     }
 
-    private func dismissGestureHintIfShown(snapshot: String? = nil) {
-        let ok = app.buttons["Verstanden"]
-        if ok.waitForExistence(timeout: 6) {
-            if let snapshot { snap(snapshot) }
-            ok.tap()
-        }
-    }
-
     /// Systemabfrage Fotozugriff (Sprache des Simulators).
     private func allowPhotosAlert() {
         let labels = ["Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos",
@@ -132,37 +124,41 @@ final class ScreenshotTests: XCTestCase {
         // Foto-Feed mit echter Gestenlogik
         tab("Aufräumen")
         if tap("hub.photos", "Fotos im Aufräumen-Hub") {
-            dismissGestureHintIfShown(snapshot: "04a_gesture_hints")
             let stage = element("feed.stage")
             if waitFor(stage, 10, "Feed-Bühne") {
-                settle(2.5)                          // Vorschau laden
+                snap("04a_gesture_hints", settleFor: 0.9)   // Gestenhilfe blendet nach ~2,6 s aus
+                settle(2.5)                                 // Hilfe weg, Vorschau geladen
                 snap("04_review_photo")
                 stage.swipeUp()                      // HOCH = Behalten + weiter
                 settle(1.5)
                 snap("04b_after_up_keep")
-                stage.swipeLeft()                    // LINKS = Vormerken + weiter
+                stage.swipeLeft()                    // LINKS = Papierkorb + weiter
                 settle(1.5)
                 snap("04c_after_left_cleanup")
                 stage.swipeLeft()
                 settle(1.5)
-                stage.swipeRight()                   // RECHTS = Später + weiter, Terminleiste
-                settle(1.5)
-                snap("06_later_sheet")
-                if tap("later.more", "Terminleiste „…“") {
-                    snap("06b_later_date_picker")
-                    let cancel = app.buttons["Abbrechen"].firstMatch
-                    if cancel.waitForExistence(timeout: 4) { cancel.tap() }
-                    settle(0.8)
+                stage.swipeRight()                   // RECHTS = Später mit Standardtermin + weiter
+                snap("06_later_pill", settleFor: 0.9) // Pille „In 2 Tagen wieder · Ändern“
+                settle(2.5)
+                // SCHRÄG RECHTS OBEN = Später, Datum im Drehrad wählen
+                let from = stage.coordinate(withNormalizedOffset: CGVector(dx: 0.25, dy: 0.65))
+                let to = stage.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.4))
+                from.press(forDuration: 0.05, thenDragTo: to, withVelocity: .fast, thenHoldForDuration: 0)
+                let done = app.buttons["Fertig"].firstMatch
+                if waitFor(done, 6, "Drehrad nach Wisch schräg rechts oben") {
+                    snap("06b_later_picker")
+                    done.tap()
+                    settle(1)
                 }
                 stage.swipeDown()                    // RUNTER = Vorheriges, keine Entscheidung
                 settle(1.5)
                 snap("04d_after_down_previous")
 
-                if tap("feed.dock", "Auswahlkorb-Dock") {
+                if tap("feed.dock", "Papierkorb-Leiste") {
                     settle(1.5)
                     snap("07_cleanup_basket")
-                    let remove = app.buttons.matching(NSPredicate(format: "label CONTAINS 'prüfen und entfernen'")).firstMatch
-                    if waitFor(remove, 6, "Entfernen-Button im Auswahlkorb") {
+                    let remove = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Papierkorb leeren'")).firstMatch
+                    if waitFor(remove, 6, "Papierkorb leeren") {
                         remove.tap()
                         snap("08_cleanup_confirm")
                         // Niemals bestätigen: Dialog abbrechen (Button oder Tipp außerhalb des Popovers).
@@ -178,7 +174,7 @@ final class ScreenshotTests: XCTestCase {
                     let done = app.buttons["Fertig"].firstMatch
                     if done.waitForExistence(timeout: 3) { done.tap() } else { app.swipeDown(velocity: .fast) }
                     settle(1.2)
-                    waitFor(element("feed.stage"), 5, "Feed nach Schließen des Auswahlkorbs")
+                    waitFor(element("feed.stage"), 5, "Feed nach Schließen des Papierkorbs")
                 }
             }
             closeFeed()
@@ -186,7 +182,6 @@ final class ScreenshotTests: XCTestCase {
 
         // 05 Video-Feed
         if tap("hub.videos", "Videos im Aufräumen-Hub") {
-            dismissGestureHintIfShown()
             if waitFor(element("feed.stage"), 10, "Video-Feed") {
                 settle(3.5)
                 snap("05_review_video")
@@ -267,8 +262,7 @@ final class ScreenshotTests: XCTestCase {
         snap("18_dark_home")
         tab("Aufräumen")
         if tap("hub.photos", "Fotos (dunkel)") {
-            dismissGestureHintIfShown()
-            settle(2.5)
+            settle(3.5)
             snap("19_dark_review_photo")
             closeFeed()
         }

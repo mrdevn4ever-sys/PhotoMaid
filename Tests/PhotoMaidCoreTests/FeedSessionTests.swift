@@ -117,6 +117,20 @@ struct FeedSessionTests {
         #expect(s.scheduleCommand(receiptID: receipt.id, day: LocalDay(year: 2026, month: 7, day: 1)) == nil)
     }
 
+    @Test("Schräg rechts oben: Später mit Wunsch nach eigenem Datum, zählt als Später")
+    func laterCustom() async throws {
+        let ledger = try makeLedger()
+        var s = session(2)
+        try await perform(.laterCustom, &s, ledger)
+        let r = try #require(s.receipt)
+        #expect(r.wantsCustomDate)
+        #expect(r.item == photo(0))
+        #expect(s.summary.later == 1)
+        #expect(await ledger.record(for: photo(0)).disposition == .later)
+        try await perform(.later, &s, ledger)
+        #expect(s.receipt?.wantsCustomDate == false)
+    }
+
     @Test("Korrektur eines früheren Items: kein Doppelzählen in der Zusammenfassung")
     func correctionSummary() async throws {
         let ledger = try makeLedger()

@@ -32,7 +32,14 @@ struct SettingsView: View {
             Section("Bedienung") {
                 Toggle("Haptisches Feedback", isOn: Binding(get: { app.settings.haptics },
                                                             set: { v in app.updateSettings { $0.haptics = v } }))
-                Button("Gestenhilfe erneut anzeigen") { app.updateSettings { $0.gestureHintSeen = false } }
+                Toggle("Gestenhilfe beim Öffnen zeigen", isOn: Binding(get: { app.settings.showGestureHintOnOpen },
+                                                                     set: { v in app.updateSettings { $0.showGestureHintOnOpen = v } }))
+                Picker("Später (Wisch nach rechts)", selection: Binding(get: { app.settings.laterDefaultDays },
+                                                                        set: { v in app.updateSettings { $0.laterDefaultDays = v } })) {
+                    ForEach(LaterInterval.allowedQuickDays, id: \.self) { d in
+                        Text(d == 1 ? "Morgen" : "In \(d) Tagen").tag(d)
+                    }
+                }
                 Picker("Erscheinungsbild", selection: Binding(get: { app.settings.appearance },
                                                               set: { v in app.updateSettings { $0.appearance = v } })) {
                     Text("System").tag(AppearanceChoice.system)
@@ -42,10 +49,11 @@ struct SettingsView: View {
             }
             Section("So wischst du") {
                 HStack(spacing: AppSpacing.xs) {
-                    swipeTile("arrow.up", "Hoch", "Behalten + weiter", AppColors.keep)
-                    swipeTile("arrow.left", "Links", "Vormerken", AppColors.cleanup)
+                    swipeTile("arrow.up", "Hoch", "Behalten", AppColors.keep)
+                    swipeTile("arrow.left", "Links", "Papierkorb", AppColors.cleanup)
                     swipeTile("arrow.right", "Rechts", "Später", AppColors.later)
-                    swipeTile("arrow.down", "Runter", "Vorheriges", AppColors.textSecondary)
+                    swipeTile("arrow.up.right", "Schräg hoch", "Datum wählen", AppColors.later)
+                    swipeTile("arrow.down", "Runter", "Zurück", AppColors.textSecondary)
                 }
                 .listRowBackground(Color.clear)
             }
@@ -99,10 +107,10 @@ struct HelpView: View {
     var body: some View {
         List {
             Section("Entscheiden") {
-                Text("Wisch nach oben, um ein Medium zu behalten. Nach links merkst du es zur Bereinigung vor, nach rechts legst du es auf später. Nach unten kommst du zum vorherigen Medium – ohne etwas zu entscheiden.")
+                Text("Wisch nach oben, um ein Medium zu behalten. Nach links kommt es in den Papierkorb, nach rechts auf später (Standard: in 2 Tagen), schräg nach rechts oben wählst du das Datum selbst. Nach unten kommst du zum vorherigen Medium – ohne etwas zu entscheiden.")
             }
             Section("Löschen") {
-                Text("PhotoMaid löscht nie automatisch. Vorgemerkte Elemente prüfst du im Auswahlkorb. Fotos und Videos entfernt iOS nach deiner Bestätigung in „Zuletzt gelöscht“. Dateien werden endgültig gelöscht.")
+                Text("PhotoMaid löscht nie automatisch. Was du nach links wischst, landet im PhotoMaid-Papierkorb; gelöscht wird erst, wenn du ihn leerst. Fotos und Videos entfernt iOS nach deiner Bestätigung in „Zuletzt gelöscht“. Dateien werden endgültig gelöscht.")
             }
             Section("iCloud") {
                 Text("Wenn iCloud-Fotos aktiv ist, wirken Löschungen auf allen deinen Geräten. Medien, die nur in iCloud liegen, lädt PhotoMaid nicht herunter.")

@@ -8,9 +8,14 @@ Kein Flutter, Dart, Kotlin, React Native, keine WebView-Oberfläche.
 | Finger | Bedeutung | Danach |
 |---|---|---|
 | hoch | **Behalten** (echte Entscheidung) | nächstes Medium |
-| links | **Zur Bereinigung vormerken** (nicht löschen) | nächstes Medium |
-| rechts | **Später** (nicht Behalten) | nächstes Medium + Terminleiste für das zurückgestellte Medium |
+| links | **Papierkorb** (PhotoMaid-eigen, nichts gelöscht) | nächstes Medium |
+| rechts (gerade oder schräg nach unten, ≤ 45°) | **Später** mit Standardtermin (Einstellung, Vorgabe 2 Tage) | nächstes Medium + kurze Pille „In 2 Tagen wieder · Ändern“ |
+| schräg rechts oben (≈ 25°–50°) | **Später, Datum selbst wählen** | nächstes Medium + Drehrad (Tage/Wochen/Monate oder Kalender); Abbrechen = Standardtermin |
 | runter | **Vorheriges Medium** (keine Entscheidung, kein Undo) | – |
+
+- Zwischen rechts-oben und hoch sowie rechts-unten und runter liegen Totzonen (keine Aktion).
+- Keine Aktions-Buttons im Feed (nur bei VoiceOver/Schaltersteuerung). Gestenhilfe blendet beim
+  Öffnen kurz ein und von selbst aus (abwählbar); Rückgängig oben in der Kopfzeile.
 
 - Nichts tun = keine Entscheidung. Kein Keep aus onAppear/onDisappear, Scrolloffset,
   programmatischem Springen, Rotation, Hintergrund, Videoende.

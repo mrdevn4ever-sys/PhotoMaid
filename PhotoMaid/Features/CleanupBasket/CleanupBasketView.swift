@@ -1,7 +1,7 @@
 import PhotoMaidCore
 import SwiftUI
 
-/// Screen 5 – Auswahlkorb. Reale Kandidaten, Vorschau, Abwahl, genaue Beschreibung der Operation.
+/// Screen 5 – Papierkorb (PhotoMaid-eigen, nichts ist bisher gelöscht). Reale Kandidaten, Vorschau, Abwahl, genaue Beschreibung der Operation.
 /// Gemischter Korb wird nach Provider/Operation getrennt bestätigt.
 struct CleanupBasketView: View {
     @Environment(AppModel.self) private var app
@@ -23,8 +23,8 @@ struct CleanupBasketView: View {
         List {
             Section {
                 VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                    Text("\(app.basket.count) Elemente vorgemerkt").font(AppTypography.title)
-                    Text("Prüfe die Auswahl, bevor etwas entfernt wird. Abgewählte Elemente bleiben erhalten.")
+                    Text("\(app.basket.count) im Papierkorb").font(AppTypography.title)
+                    Text("Noch ist nichts gelöscht. Prüfe den Papierkorb und leere ihn, wenn alles passt. Abgewählte Elemente bleiben erhalten.")
                         .font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
                     if let a = app.allowance, let available = a.available {
                         Text("Heute noch \(available) von \(a.limit ?? 0) Bereinigungen frei")
@@ -55,12 +55,12 @@ struct CleanupBasketView: View {
         }
         .scrollContentBackground(.hidden)
         .background(AppBackground())
-        .navigationTitle(Text("Auswahlkorb"))
+        .navigationTitle(Text("Papierkorb"))
         .navigationBarTitleDisplayMode(.inline)
         .overlay {
             if app.basket.isEmpty {
-                EmptyState(symbol: "tray", title: "Auswahlkorb ist leer",
-                           message: "Wische im Feed nach links, um Elemente vorzumerken.")
+                EmptyState(symbol: "tray", title: "Papierkorb ist leer",
+                           message: "Wische im Feed nach links, um etwas in den Papierkorb zu legen.")
             }
         }
         .safeAreaInset(edge: .bottom) { actions }
@@ -125,7 +125,7 @@ struct CleanupBasketView: View {
         }
         .swipeActions(allowsFullSwipe: false) {
             Button("Behalten") { Task { await app.decide(r.item, .keep) } }.tint(AppColors.keep)
-            Button("Abwählen") { Task { await app.decide(r.item, .unmark) } }.tint(.gray)
+            Button("Zurücklegen") { Task { await app.decide(r.item, .unmark) } }.tint(.gray)
         }
     }
 
@@ -144,7 +144,7 @@ struct CleanupBasketView: View {
         VStack(spacing: AppSpacing.xs) {
             if !selectedPhotos.isEmpty {
                 Button { confirmPhotos = true } label: {
-                    Text("\(selectedPhotos.count) Fotos/Videos prüfen und entfernen").frame(maxWidth: .infinity)
+                    Text("Papierkorb leeren: \(selectedPhotos.count) Fotos/Videos").frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.glassProminent).controlSize(.large)
             }
@@ -172,7 +172,7 @@ struct CleanupBasketView: View {
                     ? String(localized: "\(intent.confirmedRemoved.count) Medien wurden in „Zuletzt gelöscht“ verschoben.")
                     : String(localized: "\(intent.confirmedRemoved.count) Dateien wurden endgültig gelöscht.")
             case .partiallySucceeded:
-                resultMessage = String(localized: "\(intent.confirmedRemoved.count) von \(intent.items.count) Elementen wurden entfernt. Der Rest bleibt vorgemerkt.")
+                resultMessage = String(localized: "\(intent.confirmedRemoved.count) von \(intent.items.count) Elementen wurden entfernt. Der Rest bleibt im Papierkorb.")
             case .cancelled:
                 resultMessage = String(localized: "Abgebrochen. Es wurde nichts entfernt.")
             default:

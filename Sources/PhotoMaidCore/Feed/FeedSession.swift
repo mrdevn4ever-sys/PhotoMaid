@@ -16,6 +16,8 @@ public struct LaterReceipt: Hashable, Sendable, Identifiable {
     public let laterCommandID: CommandID
     /// Revision nach der Später-Aktion.
     public let revision: Int
+    /// `true` nach Wisch schräg nach rechts oben: Termin im Drehrad selbst wählen.
+    public let wantsCustomDate: Bool
 }
 
 public enum BackNavigation: Hashable, Sendable {
@@ -59,7 +61,7 @@ public struct FeedSession: Hashable, Sendable {
             switch d {
             case .keep: s.kept += 1
             case .markForCleanup: s.marked += 1
-            case .later: s.later += 1
+            case .later, .laterCustom: s.later += 1
             case .previous: break
             }
         }
@@ -79,7 +81,7 @@ public struct FeedSession: Hashable, Sendable {
         switch intent {
         case .keep: action = .keep
         case .markForCleanup: action = .markForCleanup
-        case .later: action = .later(session: id)
+        case .later, .laterCustom: action = .later(session: id)
         case .previous: return nil
         }
         let p = PendingCommit(
@@ -97,9 +99,10 @@ public struct FeedSession: Hashable, Sendable {
         guard let p = pending, p.command.id == commandID, record.item == p.command.item else { return false }
         pending = nil
         decisions[p.command.item] = p.intent
-        if p.intent == .later {
+        if p.intent == .later || p.intent == .laterCustom {
             receipt = LaterReceipt(id: UUID(), item: p.command.item,
-                                   laterCommandID: commandID, revision: record.revision)
+                                   laterCommandID: commandID, revision: record.revision,
+                                   wantsCustomDate: p.intent == .laterCustom)
         }
         index = min(p.index + 1, items.count) // Genau ein Medium weiter.
         return true
@@ -133,6 +136,13 @@ public struct FeedSession: Hashable, Sendable {
         guard let r = receipt, r.id == receiptID else { return nil }
         return DecisionCommand(item: r.item, expectedRevision: r.revision,
                                action: .schedule(day), amends: r.laterCommandID)
+    }
+
+    /// Nach gespeichertem Termin: Leiste/Pille bleibt änderbar, jetzt auf der neuen Revision.
+    public mutating func receiptScheduled(_ receiptID: UUID, revision: Int) {
+        guard let r = receipt, r.id == receiptID else { return }
+        receipt = LaterReceipt(id: r.id, item: r.item, laterCommandID: r.laterCommandID,
+                               revision: revision, wantsCustomDate: false)
     }
 
     public mutating func dismissReceipt(_ receiptID: UUID) {

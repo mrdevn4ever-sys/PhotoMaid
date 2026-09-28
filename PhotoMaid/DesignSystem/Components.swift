@@ -131,7 +131,7 @@ struct MetricCard: View {
     }
 }
 
-/// Schmaler Auswahlkorb unten im Feed.
+/// Schmale Papierkorb-Leiste unten im Feed.
 struct ReviewDock: View {
     let count: Int
     let sizeText: Text?
@@ -141,7 +141,7 @@ struct ReviewDock: View {
         Button(action: action) {
             HStack(spacing: AppSpacing.s) {
                 Image(systemName: "trash").foregroundStyle(AppColors.cleanup).accessibilityHidden(true)
-                Text("Auswahlkorb: \(count) Elemente")
+                Text("Papierkorb: \(count)")
                     .font(AppTypography.subheadline.weight(.medium))
                 if let sizeText { sizeText.font(AppTypography.caption).foregroundStyle(AppColors.textSecondary) }
                 Spacer()
@@ -153,11 +153,11 @@ struct ReviewDock: View {
         }
         .buttonStyle(.plain)
         .glassCapsule(interactive: true)
-        .accessibilityHint(Text("Öffnet die vorgemerkten Elemente zur Prüfung"))
+        .accessibilityHint(Text("Öffnet den Papierkorb. Gelöscht wird erst nach deiner Bestätigung."))
     }
 }
 
-/// Kurze Quittung in einer stabilen Bedienzone (z. B. Terminleiste nach „Später“).
+/// Kurze Quittung in einer stabilen Bedienzone (z. B. nach einer Aktion).
 struct StatusReceipt<Actions: View>: View {
     let message: Text
     var close: (() -> Void)?

@@ -114,7 +114,7 @@ struct LargeFilesView: View {
         }
         .accessibilityElement(children: .combine)
         .swipeActions(allowsFullSwipe: false) {
-            Button("Vormerken") { Task { await app.decide(r.id, .markForCleanup) } }.tint(AppColors.cleanup)
+            Button("Papierkorb") { Task { await app.decide(r.id, .markForCleanup) } }.tint(AppColors.cleanup)
             Button("Behalten") { Task { await app.decide(r.id, .keep) } }.tint(AppColors.keep)
         }
     }

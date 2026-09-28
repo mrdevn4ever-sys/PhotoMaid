@@ -18,6 +18,40 @@ public enum LaterPreset: String, Hashable, Sendable, CaseIterable {
     public func dueDay(from today: LocalDay) -> LocalDay { today.adding(days: days) }
 }
 
+/// Selbst gewählter Abstand im Drehrad: „In [n] [Tagen | Wochen | Monaten]“.
+public struct LaterInterval: Hashable, Codable, Sendable {
+    public enum Unit: String, Hashable, Codable, Sendable, CaseIterable { case days, weeks, months }
+    public var value: Int
+    public var unit: Unit
+
+    public init(value: Int, unit: Unit) {
+        self.value = max(1, value)
+        self.unit = unit
+    }
+
+    /// Standard beim Wisch nach rechts (einstellbar, Vorgabe: 2 Tage).
+    public static let defaultQuick = LaterInterval(value: 2, unit: .days)
+    public static let allowedQuickDays = [1, 2, 3, 7]
+
+    /// Wertebereich des Drehrads je Einheit.
+    public static func range(for unit: Unit) -> ClosedRange<Int> {
+        switch unit {
+        case .days: 1...30
+        case .weeks: 1...12
+        case .months: 1...12
+        }
+    }
+
+    /// Kalenderarithmetik auf dem lokalen Tag (nie `n × 24 h`).
+    public func dueDay(from today: LocalDay) -> LocalDay {
+        switch unit {
+        case .days: today.adding(days: value)
+        case .weeks: today.adding(days: 7 * value)
+        case .months: today.adding(months: value)
+        }
+    }
+}
+
 public enum LaterStatus: Hashable, Sendable {
     /// Nur in einer Session übersprungen, kein Termin.
     case sessionOnly

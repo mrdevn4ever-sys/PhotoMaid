@@ -53,7 +53,7 @@ struct CleanUpHubView: View {
                     link("storage", symbol: "chart.bar.fill", title: "Speicherübersicht", subtitle: "Was PhotoMaid sehen kann") {
                         StorageInsightsView()
                     }
-                    link("basket", symbol: "trash", title: "Auswahlkorb", subtitle: "\(app.basket.count) vorgemerkt") {
+                    link("basket", symbol: "trash", title: "Papierkorb", subtitle: "\(app.basket.count) Elemente, noch nicht gelöscht") {
                         CleanupBasketView()
                     }
                 }

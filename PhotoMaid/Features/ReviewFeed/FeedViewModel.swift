@@ -29,6 +29,10 @@ final class FeedViewModel {
     /// Synchron gesetzt, solange ein Commit läuft: Buttons, VoiceOver-Aktionen, Zurück und
     /// Überspringen können das sichtbare Item währenddessen nicht verschieben.
     private(set) var isCommitting = false
+    /// Kurze Info nach Wisch rechts („In 2 Tagen wieder“), gehört zum zurückgestellten Item.
+    private(set) var laterPill: LaterPill?
+    /// Drehrad-Sheet nach Wisch schräg rechts oben (oder „Ändern“ in der Pille).
+    var pickerReceipt: LaterReceipt?
 
     @ObservationIgnored private let app: AppModel
     @ObservationIgnored private var loadTasks: [ItemReference: Task<Void, Never>] = [:]
@@ -172,6 +176,14 @@ final class FeedViewModel {
             session.commitSucceeded(pending.command.id, record: out.record)
             commitCount += 1
             offset = .zero
+            laterPill = nil
+            if let receipt = session.receipt, receipt.item == item {
+                if receipt.wantsCustomDate {
+                    pickerReceipt = receipt
+                } else {
+                    await applyDefaultLater(receipt)
+                }
+            }
         } catch {
             session.commitFailed(pending.command.id)
             errorMessage = String(localized: "Die Entscheidung wurde nicht gespeichert. Bitte erneut versuchen.")
@@ -186,6 +198,7 @@ final class FeedViewModel {
         case .keep: CGSize(width: 0, height: -size.height * 1.2)
         case .markForCleanup: CGSize(width: -size.width * 1.3, height: 0)
         case .later: CGSize(width: size.width * 1.3, height: 0)
+        case .laterCustom: CGSize(width: size.width * 1.3, height: -size.height * 0.6)
         case .previous: .zero
         }
     }
@@ -198,32 +211,72 @@ final class FeedViewModel {
         refreshWindow()
     }
 
-    // MARK: Terminleiste
+    // MARK: Später-Termin
 
-    func schedule(_ day: LocalDay) async {
-        guard let receipt = session.receipt,
-              let cmd = session.scheduleCommand(receiptID: receipt.id, day: day) else { return }
-        do {
-            _ = try await app.apply(cmd)
-            session.dismissReceipt(receipt.id)
-            await app.reminders.scheduleDueReminder(for: day)
-        } catch {
-            errorMessage = String(localized: "Der Termin wurde nicht gespeichert.")
+    var defaultLaterInterval: LaterInterval {
+        LaterInterval(value: app.settings.laterDefaultDays, unit: .days)
+    }
+
+    /// Wisch nach rechts: sofort Standardtermin setzen und kurz als Pille zeigen.
+    private func applyDefaultLater(_ receipt: LaterReceipt) async {
+        let interval = defaultLaterInterval
+        guard await schedule(receipt, day: interval.dueDay(from: app.today)) else { return }
+        let pill = LaterPill(receiptID: receipt.id, interval: interval)
+        laterPill = pill
+        try? await Task.sleep(for: .seconds(2.4))
+        if laterPill?.id == pill.id { laterPill = nil }
+    }
+
+    /// Ergebnis des Drehrads. Abbrechen = Standardtermin (ein Später hat immer einen Termin).
+    func pickerFinished(_ receipt: LaterReceipt, day: LocalDay?) async {
+        pickerReceipt = nil
+        if let day {
+            _ = await schedule(receipt, day: day)
+            laterPill = nil
+        } else if session.receipt?.id == receipt.id {
+            await applyDefaultLater(session.receipt ?? receipt)
         }
     }
 
-    func dismissReceipt() {
-        if let r = session.receipt { session.dismissReceipt(r.id) }
+    /// „Ändern“ in der Pille.
+    func editLater() {
+        guard let pill = laterPill, let r = session.receipt, r.id == pill.receiptID else { return }
+        laterPill = nil
+        pickerReceipt = r
+    }
+
+    /// Speichert den Termin als Ergänzung der ursprünglichen Später-Aktion (gemeinsames Undo).
+    @discardableResult
+    private func schedule(_ receipt: LaterReceipt, day: LocalDay) async -> Bool {
+        guard let current = session.receipt, current.id == receipt.id,
+              let cmd = session.scheduleCommand(receiptID: current.id, day: day) else { return false }
+        do {
+            let out = try await app.apply(cmd)
+            session.receiptScheduled(current.id, revision: out.record.revision)
+            await app.reminders.scheduleDueReminder(for: day)
+            return true
+        } catch {
+            errorMessage = String(localized: "Der Termin wurde nicht gespeichert.")
+            return false
+        }
     }
 
     // MARK: Undo
 
     func undo() async {
         guard !isCommitting else { return }
+        laterPill = nil
         guard let record = await app.undo() else { return }
         session.applyUndo(record)
         refreshWindow()
     }
 
     func clearError() { errorMessage = nil }
+}
+
+/// Kurze Bestätigung nach „Später“. Nur Anzeige; der Termin ist bereits gespeichert.
+struct LaterPill: Identifiable, Equatable {
+    let id = UUID()
+    let receiptID: UUID
+    let interval: LaterInterval
 }

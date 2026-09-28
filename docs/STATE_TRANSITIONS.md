@@ -15,6 +15,10 @@ commitRequested ──(weitere Gesten ignoriert)── finishCommit ──▶ id
 isSuspended (Zoom, VoiceOver, Control-Bedienung) ⇒ keine Entscheidungsgesten
 ```
 
+Richtungswinkel rechts: gerade bis 25° nach oben und bis 45° nach unten = `right`;
+25°–50° nach oben = `rightUp` (Datum wählen); 50°–58° oben bzw. 45°–58° unten = Totzone;
+ab 58° = `up`/`down`. Bei `right`/`rightUp` entscheidet der Winkel beim Loslassen.
+
 Werte: deadZone 14 pt, lockRatio 1,6, unlockDistance 6 pt, commitDistance 110 pt,
 flickVelocity 650 pt/s, flickMinDistance 36 pt.
 

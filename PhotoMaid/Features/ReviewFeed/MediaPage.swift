@@ -18,10 +18,9 @@ struct MediaPage: View {
                 .fill(AppColors.surface)
             imageLayer
                 .clipShape(.rect(cornerRadius: AppRadii.sheet))
+            // Keine Foto-Angaben über dem Motiv; Datum/Maße gibt es im ⋯-Menü unter „Infos“.
             if asset.kind == .video, case .ready = preview {
                 VideoOverlay(asset: asset)
-            } else {
-                metadata.padding(AppSpacing.m)
             }
         }
         .accessibilityElement(children: .contain)
@@ -75,19 +74,6 @@ struct MediaPage: View {
             .onEnded { _ in
                 if scale <= 1.05 { withAnimation(AppMotion.standard(reduceMotion)) { scale = 1 }; zoomed = false }
             }
-    }
-
-    private var metadata: some View {
-        VStack(alignment: .leading, spacing: 2) {
-            if let d = asset.creationDate {
-                Text(d.formatted(date: .abbreviated, time: .omitted)).font(AppTypography.subheadline.weight(.semibold))
-            }
-            Text("\(asset.pixelWidth) × \(asset.pixelHeight)").font(AppTypography.caption).monospacedDigit()
-        }
-        .foregroundStyle(AppColors.textPrimary)
-        .padding(.horizontal, AppSpacing.s).padding(.vertical, AppSpacing.xs)
-        .glassEffect(.regular, in: .rect(cornerRadius: AppRadii.small))
-        .accessibilityHidden(true)
     }
 
     private var accessibilityDescription: Text {

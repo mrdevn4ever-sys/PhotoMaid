@@ -81,7 +81,7 @@ final class DuplicateScanModel {
     }
 }
 
-/// Screen 9 – Exakte Duplikate. Eine Kopie bleibt; andere ausdrücklich vormerken. Kein Auto-Delete.
+/// Screen 9 – Exakte Duplikate. Eine Kopie bleibt; andere ausdrücklich in den Papierkorb. Kein Auto-Delete.
 struct DuplicatesView: View {
     @Environment(AppModel.self) private var app
     @State private var model = DuplicateScanModel()
@@ -163,11 +163,11 @@ struct DuplicatesView: View {
                             }
                         }
                         .buttonStyle(.plain)
-                        .accessibilityLabel(Text(sel.contains(m) ? "Kopie zum Vormerken ausgewählt" : "Wird behalten"))
+                        .accessibilityLabel(Text(sel.contains(m) ? "Kopie für den Papierkorb ausgewählt" : "Wird behalten"))
                     }
                 }
             }
-            Button("\(sel.count) Kopien vormerken") {
+            Button("\(sel.count) Kopien in den Papierkorb") {
                 Task { for m in sel { await app.decide(m, .markForCleanup) } }
             }
             .disabled(!g.isValidSelection(sel) || sel.isEmpty)

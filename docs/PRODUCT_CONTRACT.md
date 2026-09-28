@@ -14,8 +14,9 @@ keine privaten APIs, keine automatische Löschung.
 | Finger | Aktion | Persistiert | Danach |
 |---|---|---|---|
 | hoch | Behalten | `kept` | nächstes Medium |
-| links | Vormerken | `markedForCleanup` (Auswahlkorb) | nächstes Medium |
-| rechts | Später | `later` + Session-Skip; Termin optional | nächstes Medium + Terminleiste des zurückgestellten Mediums |
+| links | Papierkorb | `markedForCleanup` (PhotoMaid-Papierkorb, nichts gelöscht) | nächstes Medium |
+| rechts (gerade/schräg unten) | Später | `later` + Standardtermin (Vorgabe 2 Tage, einstellbar 1/2/3/7) | nächstes Medium + Pille „In 2 Tagen wieder · Ändern“ |
+| schräg rechts oben | Später, Datum wählen | `later` + Termin aus Drehrad (Tage/Wochen/Monate) oder Kalender | nächstes Medium + Drehrad-Sheet; Abbrechen = Standardtermin |
 | runter | Vorheriges | nichts | vorheriges Medium |
 
 - Nichts tun = keine Entscheidung. Passive Navigation, Scrolloffset, onAppear/onDisappear,
@@ -28,7 +29,9 @@ keine privaten APIs, keine automatische Löschung.
 
 ## Später 2.0
 
-- Swipe rechts stellt nur für diese Session zurück; Terminleiste „Morgen · 7 Tage · 30 Tage · …“.
+- Swipe rechts setzt sofort den Standardtermin (Pille mit „Ändern“, blendet nach ~2,4 s aus);
+  schräg rechts oben öffnet das Drehrad. Ein Später hat damit immer einen Termin.
+  Die Pille gehört zum zurückgestellten Item; eine neue Entscheidung schließt sie.
 - Termin = lokaler Kalendertag (`LocalDay`, gregorianisch), Audit = UTC-Instant. Kalenderarithmetik.
 - Pro Item max. ein aktiver Termin. Vor Fälligkeit aus normalen Queues ausgeschlossen, ab Fälligkeit
   nur im Wieder-fällig-Bereich. Fällig + erneut rechts ohne Datum: nur Session-Skip, Termin bleibt.
@@ -57,4 +60,4 @@ Gemischter Korb wird nach Provider getrennt bestätigt. Operation-Journal vor je
 
 ## Nordstern
 
-HOCH BEHALTEN. LINKS VORMERKEN. RECHTS SPÄTER. RUNTER ZURÜCK.
+HOCH BEHALTEN. LINKS PAPIERKORB. RECHTS SPÄTER (SCHRÄG HOCH: DATUM WÄHLEN). RUNTER ZURÜCK.

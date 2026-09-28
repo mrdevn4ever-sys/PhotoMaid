@@ -13,6 +13,18 @@ struct LaterTests {
         #expect(LocalDay(year: 2028, month: 2, day: 28).adding(days: 1) == LocalDay(year: 2028, month: 2, day: 29))
     }
 
+    @Test("Drehrad-Intervalle: Tage, Wochen, Monate (Monatsende gekürzt)")
+    func intervals() {
+        let d = LocalDay(year: 2026, month: 1, day: 31)
+        #expect(LaterInterval(value: 2, unit: .days).dueDay(from: d) == LocalDay(year: 2026, month: 2, day: 2))
+        #expect(LaterInterval(value: 3, unit: .weeks).dueDay(from: d) == LocalDay(year: 2026, month: 2, day: 21))
+        #expect(LaterInterval(value: 1, unit: .months).dueDay(from: d) == LocalDay(year: 2026, month: 2, day: 28))
+        #expect(LaterInterval(value: 1, unit: .months).dueDay(from: LocalDay(year: 2028, month: 1, day: 31))
+                == LocalDay(year: 2028, month: 2, day: 29))
+        #expect(LaterInterval(value: 0, unit: .days).value == 1, "mindestens 1")
+        #expect(LaterInterval.defaultQuick == LaterInterval(value: 2, unit: .days))
+    }
+
     @Test("Sommerzeit: kurz vor Mitternacht vor der Umstellung ist 'Morgen' der nächste Kalendertag")
     func daylightSaving() {
         let clock = TestClock("2026-03-28T23:30") // Europe/Zurich, Umstellung am 29.03.

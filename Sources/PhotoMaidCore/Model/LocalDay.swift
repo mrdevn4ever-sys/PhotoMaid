@@ -43,6 +43,17 @@ public struct LocalDay: Hashable, Codable, Sendable, Comparable, CustomStringCon
         return LocalDay(moved, timeZone: utc)
     }
 
+    /// `n` Kalendermonate später. Ein nicht existierender Tag wird auf das Monatsende gekürzt
+    /// (31. Jan. + 1 Monat = 28./29. Feb.).
+    public func adding(months n: Int) -> LocalDay {
+        let utc = TimeZone(identifier: "UTC")!
+        let cal = LocalDay.gregorian(utc)
+        var c = DateComponents()
+        c.year = year; c.month = month; c.day = day; c.hour = 12
+        let moved = cal.date(byAdding: .month, value: n, to: cal.date(from: c)!)!
+        return LocalDay(moved, timeZone: utc)
+    }
+
     /// Anzahl Kalendertage von `self` bis `other` (positiv, wenn `other` später liegt).
     public func days(until other: LocalDay) -> Int {
         let utc = TimeZone(identifier: "UTC")!

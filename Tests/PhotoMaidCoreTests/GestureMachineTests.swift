@@ -29,11 +29,43 @@ struct GestureMachineTests {
         #expect(!FeedIntent.previous.isDecision)
     }
 
-    @Test("Diagonale Bewegung löst keine Aktion aus")
-    func diagonal() {
+    @Test("Diagonale nach links (oben/unten) löst keine Aktion aus")
+    func diagonalLeft() {
         var m = FeedGestureMachine()
-        #expect(swipe(&m, Vector2(150, -150)) == .cancelled)
+        #expect(swipe(&m, Vector2(-150, -150)) == .cancelled)
+        #expect(swipe(&m, Vector2(-150, 150)) == .cancelled)
         #expect(m.phase == .idle)
+    }
+
+    @Test("Rechts schräg nach oben = Termin selbst wählen; nach unten = Später mit Standard",
+          arguments: [(Vector2(180, -130), SwipeDirection.rightUp),   // ≈ 36°
+                      (Vector2(200, -100), .rightUp),                 // ≈ 27°
+                      (Vector2(200, -60), .right),                    // ≈ 17°: noch gerade
+                      (Vector2(180, 120), .right),                    // ≈ 34° nach unten
+                      (Vector2(200, 0), .right)])
+    func rightVariants(_ t: Vector2, _ expected: SwipeDirection) {
+        var m = FeedGestureMachine()
+        #expect(swipe(&m, t) == .commit(expected))
+    }
+
+    @Test("Totzonen zwischen rechts-oben und hoch sowie rechts-unten und runter")
+    func rightDeadZones() {
+        var m = FeedGestureMachine()
+        #expect(swipe(&m, Vector2(120, -160)) == .cancelled)  // ≈ 53°: weder Später noch Behalten
+        #expect(swipe(&m, Vector2(120, 170)) == .cancelled)   // ≈ 55° nach unten
+        #expect(FeedIntent(.rightUp) == .laterCustom)
+    }
+
+    @Test("Rechts-oben folgt diagonal, rechts nur waagrecht")
+    func diagonalOffset() {
+        var m = FeedGestureMachine()
+        m.update(translation: Vector2(90, -60))
+        #expect(m.lockedDirection == .rightUp)
+        #expect(m.displayOffset == Vector2(90, -60))
+        m.cancel()
+        m.update(translation: Vector2(90, 30))
+        #expect(m.lockedDirection == .right)
+        #expect(m.displayOffset == Vector2(90, 0))
     }
 
     @Test("Zu kurze Bewegung wird abgebrochen, keine Entscheidung")

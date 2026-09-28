@@ -2,17 +2,20 @@ import PhotoMaidCore
 import SwiftUI
 
 /// Vertikaler Entscheidungs-Feed (Screens 2 und 3).
-/// HOCH = Behalten · LINKS = Vormerken · RECHTS = Später · RUNTER = Zurück.
+/// HOCH = Behalten · LINKS = Papierkorb · RECHTS = Später (Standardtermin) ·
+/// SCHRÄG RECHTS OBEN = Später mit Drehrad · RUNTER = Zurück.
 struct ReviewFeedView: View {
     @Environment(AppModel.self) private var app
     @Environment(\.dismiss) private var dismiss
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
+    @Environment(\.accessibilitySwitchControlEnabled) private var switchControl
     @Environment(\.displayScale) private var displayScale
     @State private var model: FeedViewModel?
     @State private var showBasket = false
     @State private var showHints = false
-    @State private var customDateItem: LaterReceipt?
+    @State private var hintToken = 0
+    @State private var showInfo = false
     @State private var zoomed = false
     let request: FeedRequest
 
@@ -29,13 +32,33 @@ struct ReviewFeedView: View {
             let m = FeedViewModel(request: request, app: app)
             model = m
             await m.load()
-            showHints = !app.settings.gestureHintSeen && !m.session.items.isEmpty
+            if app.settings.showGestureHintOnOpen && !m.session.items.isEmpty { flashHints() }
         }
         .onDisappear { app.player.stop() }
         .sheet(isPresented: $showBasket) {
             NavigationStack { CleanupBasketView(showsDone: true) }.environment(app)
         }
     }
+
+    /// Gestenhilfe kurz einblenden und von selbst ausblenden. Blockiert keine Geste.
+    private func flashHints() {
+        hintToken += 1
+        let token = hintToken
+        withAnimation(AppMotion.standard(reduceMotion) ?? .default) { showHints = true }
+        Task {
+            try? await Task.sleep(for: .seconds(2.6))
+            if hintToken == token { withAnimation(.easeOut(duration: 0.6)) { showHints = false } }
+        }
+    }
+
+    private func hideHints() {
+        guard showHints else { return }
+        hintToken += 1
+        withAnimation(.easeOut(duration: 0.25)) { showHints = false }
+    }
+
+    /// Mit VoiceOver oder Schaltersteuerung bleiben die Aktions-Buttons sichtbar.
+    private var needsButtons: Bool { voiceOver || switchControl }
 
     @ViewBuilder
     private func content(_ model: FeedViewModel) -> some View {
@@ -64,12 +87,25 @@ struct ReviewFeedView: View {
         .alert("Hinweis", isPresented: Binding(get: { model.errorMessage != nil }, set: { if !$0 { model.clearError() } })) {
             Button("OK", role: .cancel) { model.clearError() }
         } message: { Text(model.errorMessage ?? "") }
-        .sheet(item: $customDateItem) { receipt in
-            LaterDateSheet(title: "Datum wählen") { day in
-                Task { await model.schedule(day) }
+        .alert("Infos", isPresented: $showInfo) {
+            Button("OK", role: .cancel) {}
+        } message: { Text(infoText(model)) }
+        .sheet(item: Binding(get: { model.pickerReceipt }, set: { model.pickerReceipt = $0 })) { receipt in
+            LaterPickerSheet(initial: model.defaultLaterInterval, today: app.today) { day in
+                Task { await model.pickerFinished(receipt, day: day) }
             }
             .presentationDetents([.medium, .large])
+            .interactiveDismissDisabled()
         }
+    }
+
+    private func infoText(_ model: FeedViewModel) -> String {
+        guard let a = model.currentAsset else { return "" }
+        var parts: [String] = []
+        if let d = a.creationDate { parts.append(d.formatted(date: .long, time: .shortened)) }
+        parts.append("\(a.pixelWidth) × \(a.pixelHeight)")
+        if a.kind == .video { parts.append(Duration.seconds(a.duration).formatted(.time(pattern: .minuteSecond))) }
+        return parts.joined(separator: "\n")
     }
 
     private func header(_ model: FeedViewModel) -> some View {
@@ -78,18 +114,23 @@ struct ReviewFeedView: View {
                         : "\(model.session.position.current) von \(model.session.position.total)") {
             GlassIconButton(symbol: "xmark", label: "Schließen") { dismiss() }
         } trailing: {
-            Menu {
-                Button("Rückgängig", systemImage: "arrow.uturn.backward") { Task { await model.undo() } }
+            HStack(spacing: AppSpacing.xs) {
+                GlassIconButton(symbol: "arrow.uturn.backward", label: "Rückgängig") { Task { await model.undo() } }
                     .disabled(!app.canUndo)
-                Button("Auswahl prüfen", systemImage: "trash") { showBasket = true }
-                Button("Gestenhilfe anzeigen", systemImage: "hand.draw") { showHints = true }
-            } label: {
-                Image(systemName: "ellipsis").font(.body.weight(.semibold))
-                    .frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch)
+                    .opacity(app.canUndo ? 1 : 0.45)
+                Menu {
+                    Button("Papierkorb ansehen", systemImage: "trash") { showBasket = true }
+                    Button("Infos", systemImage: "info.circle") { showInfo = true }
+                        .disabled(model.currentAsset == nil)
+                    Button("Gestenhilfe zeigen", systemImage: "hand.draw") { flashHints() }
+                } label: {
+                    Image(systemName: "ellipsis").font(.body.weight(.semibold))
+                        .frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch)
+                }
+                .buttonStyle(.glass)
+                .buttonBorderShape(.circle)
+                .accessibilityLabel(Text("Weitere Aktionen"))
             }
-            .buttonStyle(.glass)
-            .buttonBorderShape(.circle)
-            .accessibilityLabel(Text("Weitere Aktionen"))
         }
     }
 
@@ -108,9 +149,20 @@ struct ReviewFeedView: View {
                         .overlay { directionTint(model) }
                 }
                 if showHints {
-                    GestureHintOverlay { showHints = false; app.updateSettings { $0.gestureHintSeen = true } }
+                    GestureHintOverlay()
+                        .allowsHitTesting(false)
+                        .transition(.opacity)
+                }
+                if let pill = model.laterPill {
+                    VStack {
+                        Spacer()
+                        LaterPillView(pill: pill) { model.editLater() }
+                            .padding(.bottom, AppSpacing.l)
+                    }
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
                 }
             }
+            .animation(AppMotion.standard(reduceMotion), value: model.laterPill?.id)
             .frame(width: geo.size.width, height: geo.size.height)
             .contentShape(.rect)
             .gesture(feedDrag(model), including: gestureEnabled ? .all : .subviews)
@@ -127,20 +179,21 @@ struct ReviewFeedView: View {
         .accessibilityElement(children: .contain)
         .accessibilityLabel(Text("Aktuelles Medium"))
         .accessibilityIdentifier("feed.stage")
-        // Zugängliche Aktionen zusätzlich zu Gesten. Keine Scroll-Aktion (verhindert unbemerktes Vormerken).
+        // Zugängliche Aktionen zusätzlich zu Gesten. Keine Scroll-Aktion (verhindert unbemerkte Entscheidungen).
         .accessibilityAction(named: Text("Behalten und weiter")) { model.perform(.keep, reduceMotion: true) }
-        .accessibilityAction(named: Text("Zur Bereinigung vormerken")) { model.perform(.markForCleanup, reduceMotion: true) }
+        .accessibilityAction(named: Text("In den Papierkorb")) { model.perform(.markForCleanup, reduceMotion: true) }
         .accessibilityAction(named: Text("Später")) { model.perform(.later, reduceMotion: true) }
+        .accessibilityAction(named: Text("Später, Datum wählen")) { model.perform(.laterCustom, reduceMotion: true) }
         .accessibilityAction(named: Text("Vorheriges")) { model.perform(.previous, reduceMotion: true) }
         .accessibilityAction(named: Text("Rückgängig")) { Task { await model.undo() } }
-        .accessibilityAction(named: Text("Auswahl prüfen")) { showBasket = true }
+        .accessibilityAction(named: Text("Papierkorb ansehen")) { showBasket = true }
     }
 
-    private var gestureEnabled: Bool { !zoomed && !voiceOver && !showHints }
+    private var gestureEnabled: Bool { !zoomed && !voiceOver }
 
     private func feedDrag(_ model: FeedViewModel) -> some Gesture {
         DragGesture(minimumDistance: 8, coordinateSpace: .local)
-            .onChanged { v in model.dragChanged(v.translation) }
+            .onChanged { v in hideHints(); model.dragChanged(v.translation) }
             .onEnded { v in model.dragEnded(v.translation, velocity: v.velocity, reduceMotion: reduceMotion) }
     }
 
@@ -150,8 +203,9 @@ struct ReviewFeedView: View {
         if let d = model.machine.lockedDirection {
             let (color, label, symbol): (Color, LocalizedStringKey, String) = switch FeedIntent(d) {
             case .keep: (AppColors.keep, "Behalten", "arrow.up")
-            case .markForCleanup: (AppColors.cleanup, "Vormerken", "arrow.left")
+            case .markForCleanup: (AppColors.cleanup, "Papierkorb", "trash")
             case .later: (AppColors.later, "Später", "arrow.right")
+            case .laterCustom: (AppColors.later, "Später · Datum wählen", "arrow.up.right")
             case .previous: (AppColors.textSecondary, "Zurück", "arrow.down")
             }
             Label(label, systemImage: symbol)
@@ -164,26 +218,13 @@ struct ReviewFeedView: View {
         }
     }
 
-    // MARK: Untere Bedienzone (stabile Höhe, kein Layoutspringen)
+    // MARK: Untere Zone
 
     private func bottomZone(_ model: FeedViewModel) -> some View {
         VStack(spacing: AppSpacing.xs) {
-            ZStack {
-                if let receipt = model.session.receipt {
-                    LaterReceiptBar(receipt: receipt, today: app.today,
-                                    choose: { day in Task { await model.schedule(day) } },
-                                    more: { customDateItem = receipt },
-                                    close: { model.dismissReceipt() })
-                        .transition(.opacity)
-                }
+            if needsButtons {
+                CompactActions(act: { model.perform($0, reduceMotion: reduceMotion) })
             }
-            .frame(height: 84)
-            .animation(AppMotion.standard(reduceMotion), value: model.session.receipt?.id)
-
-            CompactActions(canUndo: app.canUndo,
-                           act: { model.perform($0, reduceMotion: reduceMotion) },
-                           undo: { Task { await model.undo() } })
-
             ReviewDock(count: app.basket.count, sizeText: nil) { showBasket = true }
                 .accessibilityIdentifier("feed.dock")
         }
@@ -191,21 +232,18 @@ struct ReviewFeedView: View {
     }
 }
 
-/// Kompakte native Controls (zusätzlich zu Gesten). Keine sechs riesigen Buttons.
+/// Aktions-Buttons nur für VoiceOver/Schaltersteuerung (sonst reine Gestenbedienung).
 struct CompactActions: View {
-    let canUndo: Bool
     let act: (FeedIntent) -> Void
-    let undo: () -> Void
 
     var body: some View {
         GlassEffectContainer(spacing: AppSpacing.xs) {
             HStack(spacing: AppSpacing.xs) {
                 button("arrow.down", "Vorheriges", AppColors.textSecondary) { act(.previous) }
-                button("arrow.left", "Vormerken", AppColors.cleanup) { act(.markForCleanup) }
+                button("trash", "In den Papierkorb", AppColors.cleanup) { act(.markForCleanup) }
                 button("arrow.up", "Behalten und weiter", AppColors.keep) { act(.keep) }
                 button("arrow.right", "Später", AppColors.later) { act(.later) }
-                button("arrow.uturn.backward", "Rückgängig", AppColors.textSecondary, action: undo)
-                    .disabled(!canUndo)
+                button("calendar", "Später, Datum wählen", AppColors.later) { act(.laterCustom) }
             }
         }
     }
@@ -221,31 +259,109 @@ struct CompactActions: View {
     }
 }
 
-/// Terminleiste nach Swipe rechts: Morgen · 7 Tage · 30 Tage · …
-struct LaterReceiptBar: View {
-    let receipt: LaterReceipt
-    let today: LocalDay
-    let choose: (LocalDay) -> Void
-    let more: () -> Void
-    let close: () -> Void
+/// Kleine Glas-Pille nach „Später“: „In 2 Tagen wieder · Ändern“.
+struct LaterPillView: View {
+    let pill: LaterPill
+    let edit: () -> Void
 
     var body: some View {
-        StatusReceipt(message: Text("Zurückgestellt. Wann wieder zeigen?"), close: close) {
-            ForEach(LaterPreset.allCases, id: \.self) { preset in
-                Button(label(preset)) { choose(preset.dueDay(from: today)) }
-                    .buttonStyle(.glass)
-                    .lineLimit(1)
-            }
-            Button("…", action: more).buttonStyle(.glass).accessibilityLabel(Text("Anderes Datum"))
-                .accessibilityIdentifier("later.more")
+        HStack(spacing: AppSpacing.s) {
+            Image(systemName: "clock.arrow.circlepath").foregroundStyle(AppColors.later)
+                .accessibilityHidden(true)
+            Text(LaterText.inInterval(pill.interval))
+                .font(AppTypography.subheadline.weight(.semibold))
+                .foregroundStyle(AppColors.textPrimary)
+            Button("Ändern", action: edit)
+                .font(AppTypography.subheadline.weight(.semibold))
+                .buttonStyle(.plain)
+                .foregroundStyle(AppColors.accent)
+                .frame(minHeight: AppSpacing.minTouch)
+                .accessibilityIdentifier("later.edit")
+        }
+        .padding(.horizontal, AppSpacing.m)
+        .glassCapsule(interactive: true)
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("later.pill")
+    }
+}
+
+enum LaterText {
+    static func inInterval(_ i: LaterInterval) -> String {
+        switch i.unit {
+        case .days: i.value == 1 ? String(localized: "Morgen wieder") : String(localized: "In \(i.value) Tagen wieder")
+        case .weeks: i.value == 1 ? String(localized: "In 1 Woche wieder") : String(localized: "In \(i.value) Wochen wieder")
+        case .months: i.value == 1 ? String(localized: "In 1 Monat wieder") : String(localized: "In \(i.value) Monaten wieder")
         }
     }
 
-    private func label(_ p: LaterPreset) -> LocalizedStringKey {
-        switch p {
-        case .tomorrow: "Morgen"
-        case .sevenDays: "7 Tage"
-        case .thirtyDays: "30 Tage"
+    static func unit(_ u: LaterInterval.Unit, _ n: Int) -> String {
+        switch u {
+        case .days: n == 1 ? String(localized: "Tag") : String(localized: "Tage")
+        case .weeks: n == 1 ? String(localized: "Woche") : String(localized: "Wochen")
+        case .months: n == 1 ? String(localized: "Monat") : String(localized: "Monate")
+        }
+    }
+}
+
+/// Drehrad im Apple-Stil wie beim Timer: „In [n] [Tagen | Wochen | Monaten]“,
+/// optional ein bestimmtes Datum im Kalender. Abbrechen = Standardtermin.
+struct LaterPickerSheet: View {
+    let today: LocalDay
+    let finish: (LocalDay?) -> Void
+    @Environment(\.dismiss) private var dismiss
+    @State private var value: Int
+    @State private var unit: LaterInterval.Unit
+    @State private var useDate = false
+    @State private var date = Calendar.current.date(byAdding: .day, value: 14, to: Date()) ?? Date()
+
+    init(initial: LaterInterval, today: LocalDay, finish: @escaping (LocalDay?) -> Void) {
+        self.today = today
+        self.finish = finish
+        _value = State(initialValue: initial.value)
+        _unit = State(initialValue: initial.unit)
+    }
+
+    private var interval: LaterInterval { LaterInterval(value: value, unit: unit) }
+    private var resultDay: LocalDay { useDate ? LocalDay(date, timeZone: .autoupdatingCurrent) : interval.dueDay(from: today) }
+
+    var body: some View {
+        NavigationStack {
+            VStack(spacing: AppSpacing.m) {
+                if useDate {
+                    DatePicker("Datum", selection: $date, in: Date()..., displayedComponents: .date)
+                        .datePickerStyle(.graphical)
+                } else {
+                    HStack(spacing: 0) {
+                        Picker("Anzahl", selection: $value) {
+                            ForEach(Array(LaterInterval.range(for: unit)), id: \.self) { n in Text("\(n)").tag(n) }
+                        }
+                        .pickerStyle(.wheel)
+                        Picker("Einheit", selection: $unit) {
+                            ForEach(LaterInterval.Unit.allCases, id: \.self) { u in Text(LaterText.unit(u, value)).tag(u) }
+                        }
+                        .pickerStyle(.wheel)
+                    }
+                    .onChange(of: unit) { _, u in value = min(value, LaterInterval.range(for: u).upperBound) }
+                }
+                Text("Wieder zeigen am \(DayText.string(resultDay))")
+                    .font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
+                Button(useDate ? "Abstand wählen" : "Bestimmtes Datum …") {
+                    withAnimation { useDate.toggle() }
+                }
+                .buttonStyle(.glass)
+                Spacer(minLength: 0)
+            }
+            .padding()
+            .navigationTitle(Text("Später"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Abbrechen") { finish(nil); dismiss() }
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Fertig") { finish(resultDay); dismiss() }
+                }
+            }
         }
     }
 }
@@ -276,37 +392,38 @@ struct LaterDateSheet: View {
     }
 }
 
-/// Einstiegshilfe: vier Richtungen einmal erklären. Über Einstellungen erneut abrufbar.
+/// Gestenhilfe: erscheint beim Öffnen kurz, blendet von selbst aus, blockiert nichts.
 struct GestureHintOverlay: View {
-    let done: () -> Void
-
     var body: some View {
         ZStack {
-            Color.black.opacity(0.25).ignoresSafeArea().accessibilityHidden(true)
-            VStack(spacing: AppSpacing.l) {
-                hint("arrow.up", "Wisch nach oben", "Behalten + weiter", AppColors.keep)
-                HStack(spacing: AppSpacing.l) {
-                    hint("arrow.left", "Wisch nach links", "Vormerken", AppColors.cleanup)
-                    hint("arrow.right", "Wisch nach rechts", "Später", AppColors.later)
+            Color.black.opacity(0.18).accessibilityHidden(true)
+            VStack(spacing: AppSpacing.m) {
+                hint("arrow.up", "Hoch", "Behalten", AppColors.keep)
+                HStack(spacing: AppSpacing.m) {
+                    hint("arrow.left", "Links", "Papierkorb", AppColors.cleanup)
+                    VStack(spacing: AppSpacing.s) {
+                        hint("arrow.up.right", "Schräg hoch", "Später, Datum wählen", AppColors.later)
+                        hint("arrow.right", "Rechts", "Später", AppColors.later)
+                    }
                 }
-                hint("arrow.down", "Wisch nach unten", "Vorheriges", AppColors.textSecondary)
-                Button("Verstanden", action: done).buttonStyle(.glassProminent).controlSize(.large)
+                hint("arrow.down", "Runter", "Zurück", AppColors.textSecondary)
             }
             .padding()
         }
-        .accessibilityElement(children: .contain)
+        .clipShape(.rect(cornerRadius: AppRadii.sheet))
+        .accessibilityHidden(true) // Bedienung per VoiceOver über die Aktionen, nicht über das Overlay
     }
 
     private func hint(_ symbol: String, _ title: LocalizedStringKey, _ meaning: LocalizedStringKey, _ tint: Color) -> some View {
-        VStack(spacing: 4) {
-            Image(systemName: symbol).font(.title2.weight(.bold)).foregroundStyle(tint)
+        VStack(spacing: 2) {
+            Image(systemName: symbol).font(.title3.weight(.bold)).foregroundStyle(tint)
             Text(title).font(AppTypography.caption)
-            Text(meaning).font(AppTypography.subheadline.weight(.semibold)).foregroundStyle(tint)
+            Text(meaning).font(AppTypography.caption.weight(.semibold)).foregroundStyle(tint)
+                .multilineTextAlignment(.center)
         }
-        .padding(AppSpacing.s)
-        .frame(minWidth: 120)
+        .padding(.horizontal, AppSpacing.s).padding(.vertical, AppSpacing.xs)
+        .frame(minWidth: 116)
         .glassEffect(.regular, in: .rect(cornerRadius: AppRadii.card))
-        .accessibilityElement(children: .combine)
     }
 }
 
@@ -326,16 +443,16 @@ struct SessionSummaryView: View {
                 SurfaceCard {
                     VStack(alignment: .leading, spacing: AppSpacing.s) {
                         row("arrow.up", "Behalten", summary.kept, AppColors.keep)
-                        row("arrow.left", "Vorgemerkt", summary.marked, AppColors.cleanup)
+                        row("trash", "Im Papierkorb", summary.marked, AppColors.cleanup)
                         row("arrow.right", "Später", summary.later, AppColors.later)
                     }
                 }
                 if basketCount > 0 {
                     Button(action: reviewBasket) {
-                        Text("Auswahl prüfen (\(basketCount))").frame(maxWidth: .infinity)
+                        Text("Papierkorb ansehen (\(basketCount))").frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.glassProminent).controlSize(.large)
-                    Text("Es wird nichts gelöscht, bevor du die Auswahl prüfst und bestätigst.")
+                    Text("Gelöscht wird erst, wenn du den Papierkorb leerst und bestätigst.")
                         .font(AppTypography.caption).foregroundStyle(AppColors.textSecondary).multilineTextAlignment(.center)
                 }
                 Button("Zum letzten Element", action: goBack).buttonStyle(.glass)

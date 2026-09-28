@@ -3,16 +3,20 @@ import Foundation
 /// Tatsächliche Fingerbewegung (Bildschirmkoordinaten: y wächst nach unten).
 public enum SwipeDirection: String, Hashable, Codable, Sendable, CaseIterable {
     case up, down, left, right
+    /// Schräg nach rechts oben (ca. 25°–50° über der Waagrechten).
+    case rightUp
 }
 
 /// Bedeutung einer Fingerbewegung im Entscheidungs-Feed. FEST verdrahtet.
 public enum FeedIntent: Hashable, Sendable {
     /// hoch: Behalten, danach nächstes Medium.
     case keep
-    /// links: Zur Bereinigung vormerken, danach nächstes Medium.
+    /// links: In den PhotoMaid-Papierkorb (nichts wird gelöscht), danach nächstes Medium.
     case markForCleanup
-    /// rechts: Später, danach nächstes Medium und Terminleiste.
+    /// rechts (gerade oder schräg nach unten): Später mit Standardtermin, danach nächstes Medium.
     case later
+    /// schräg nach rechts oben: Später, Termin selbst wählen (Drehrad), danach nächstes Medium.
+    case laterCustom
     /// runter: vorheriges Medium. Keine Entscheidung.
     case previous
 
@@ -21,6 +25,7 @@ public enum FeedIntent: Hashable, Sendable {
         case .up: self = .keep
         case .left: self = .markForCleanup
         case .right: self = .later
+        case .rightUp: self = .laterCustom
         case .down: self = .previous
         }
     }
@@ -49,6 +54,12 @@ public struct GestureConfig: Hashable, Sendable {
     /// Schwung (pt/s) entlang der Richtung, der zusammen mit `flickMinDistance` genügt.
     public var flickVelocity: Double = 650
     public var flickMinDistance: Double = 36
+    /// Rechts schräg nach oben ab diesem Verhältnis |dy|/|dx| (≈ 25°) = Termin selbst wählen.
+    public var rightUpMinRatio: Double = 0.47
+    /// … bis zu diesem Verhältnis (≈ 50°). Darüber bis zur Senkrechten: Totzone, dann „hoch“.
+    public var rightUpMaxRatio: Double = 1.2
+    /// Rechts schräg nach unten bis zu diesem Verhältnis (45°) zählt noch als „rechts“.
+    public var rightDownMaxRatio: Double = 1.0
     public init() {}
 }
 
@@ -90,6 +101,7 @@ public struct FeedGestureMachine: Hashable, Sendable {
             switch d {
             case .up, .down: return Vector2(0, t.dy)
             case .left, .right: return Vector2(t.dx, 0)
+            case .rightUp: return t   // folgt diagonal: sichtbarer Unterschied zu „rechts“
             }
         }
     }
@@ -108,6 +120,11 @@ public struct FeedGestureMachine: Hashable, Sendable {
             return
         case .idle, .dragging:
             if let d = lockCandidate(t) { phase = .directionLocked(d, t) } else { phase = .dragging(t) }
+        case .directionLocked(let d, _) where d == .right || d == .rightUp:
+            // Rechts / rechts-oben: der aktuelle Winkel entscheidet; Totzonen lösen die Bindung.
+            if t.dx < config.unlockDistance { phase = .dragging(t) }
+            else if let nd = lockCandidate(t) { phase = .directionLocked(nd, t) }
+            else { phase = .dragging(t) }
         case .directionLocked(let d, _):
             if along(d, t) < config.unlockDistance {
                 // Hysterese: erst deutlich zurück, dann ggf. neue Richtung.
@@ -134,7 +151,9 @@ public struct FeedGestureMachine: Hashable, Sendable {
             let distance = along(d, t)
             let speed = along(d, v)
             let offAxis = across(d, t)
-            let clearlyDirected = offAxis * config.lockRatio <= max(distance, 0)
+            let clearlyDirected = (d == .right || d == .rightUp)
+                ? lockCandidate(t) == d
+                : offAxis * config.lockRatio <= max(distance, 0)
             if clearlyDirected && (distance >= config.commitDistance
                 || (speed >= config.flickVelocity && distance >= config.flickMinDistance)) {
                 phase = .commitRequested(d)
@@ -157,8 +176,13 @@ public struct FeedGestureMachine: Hashable, Sendable {
         let ax = abs(t.dx), ay = abs(t.dy)
         guard max(ax, ay) >= config.deadZone else { return nil }
         if ay >= ax * config.lockRatio { return t.dy < 0 ? .up : .down }
-        if ax >= ay * config.lockRatio { return t.dx < 0 ? .left : .right }
-        return nil
+        if t.dx < 0 { return ax >= ay * config.lockRatio ? .left : nil }
+        let ratio = ay / ax
+        if t.dy < 0 {
+            if ratio < config.rightUpMinRatio { return .right }
+            return ratio <= config.rightUpMaxRatio ? .rightUp : nil
+        }
+        return ratio <= config.rightDownMaxRatio ? .right : nil
     }
 
     /// Strecke in Richtung `d` (negativ bei Gegenrichtung).
@@ -167,14 +191,14 @@ public struct FeedGestureMachine: Hashable, Sendable {
         case .up: -t.dy
         case .down: t.dy
         case .left: -t.dx
-        case .right: t.dx
+        case .right, .rightUp: t.dx
         }
     }
 
     private func across(_ d: SwipeDirection, _ t: Vector2) -> Double {
         switch d {
         case .up, .down: abs(t.dx)
-        case .left, .right: abs(t.dy)
+        case .left, .right, .rightUp: abs(t.dy)
         }
     }
 }

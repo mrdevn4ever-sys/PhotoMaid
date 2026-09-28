@@ -80,12 +80,12 @@ struct HistoryView: View {
         case .undo: return ("arrow.uturn.backward", AppColors.textSecondary, "Rückgängig gemacht")
         case .scheduleChanged: return ("calendar", AppColors.later, "Termin gesetzt")
         case .deferralRemoved: return ("bookmark.slash", AppColors.textSecondary, "Zurückstellung entfernt")
-        case .unmarked: return ("minus.circle", AppColors.textSecondary, "Aus Auswahl entfernt")
+        case .unmarked: return ("minus.circle", AppColors.textSecondary, "Aus dem Papierkorb zurückgelegt")
         case .decision, .correction:
             let corr = e.kind == .correction
             switch e.to.disposition {
             case .kept: return ("checkmark.circle.fill", AppColors.keep, corr ? "Korrigiert: behalten" : "Behalten")
-            case .markedForCleanup: return ("trash", AppColors.cleanup, corr ? "Korrigiert: vorgemerkt" : "Vorgemerkt")
+            case .markedForCleanup: return ("trash", AppColors.cleanup, corr ? "Korrigiert: Papierkorb" : "In den Papierkorb")
             case .later: return ("clock", AppColors.later, corr ? "Korrigiert: später" : "Auf später gelegt")
             default: return ("circle", AppColors.textSecondary, "Geändert")
             }
