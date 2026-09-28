@@ -1,0 +1,673 @@
+Command line invocation:
+    /Applications/Xcode_27.2_beta.app/Contents/Developer/usr/bin/xcodebuild -project PhotoMaid.xcodeproj -scheme PhotoMaid -configuration Debug -destination id=E7DB51ED-0B9E-464A-A97B-9F5A4F227184 -derivedDataPath /Users/runner/work/_temp/dd -resultBundlePath /Users/runner/work/_temp/screenshots.xcresult "-only-testing:PhotoMaidUITests/ScreenshotTests" test-without-building
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  RevenueCat: https://github.com/RevenueCat/purchases-ios-spm.git @ 5.91.0
+  PhotoMaidCore: /Users/runner/work/PhotoMaid/PhotoMaid
+  swift-asn1: https://github.com/apple/swift-asn1.git @ 1.7.3
+  swift-crypto: https://github.com/apple/swift-crypto.git @ 4.5.2
+
+Writing result bundle at path:
+	/Users/runner/work/_temp/screenshots.xcresult
+
+2026-09-28 21:15:13.192245+0000 PhotoMaidUITests-Runner[9413:34596] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-28 21:15:16.172.
+Test Suite 'PhotoMaidUITests.xctest' started at 2026-09-28 21:15:16.173.
+Test Suite 'ScreenshotTests' started at 2026-09-28 21:15:16.173.
+Test Case '-[PhotoMaidUITests.ScreenshotTests testDarkModeScreens]' started.
+    t =     0.00s Start Test at 2026-09-28 21:15:16.175
+    t =     0.19s Set Up
+    t =     0.20s Open app.photomaid.ios
+    t =     0.20s     Launch app.photomaid.ios
+2026-09-28 21:15:17.033 xcodebuild[8650:32618] [MT] IDELaunchParametersSnapshot: debugger version lookup failed for path '<nil>': noURL
+2026-09-28 21:15:17.033 xcodebuild[8650:32618] [MT] IDELaunchParametersSnapshot: no debugger version
+objc[9413]: Class UIAccessibilityLoaderWebShared is implemented in both /private/var/run/com.apple.security.cryptexd/mnt/com.apple.iPhoneOS.SimulatorRuntime-v24.1.434.0.XEOf6U/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.0.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebKit.axbundle/WebKit (0x1077dc398) and /private/var/run/com.apple.security.cryptexd/mnt/com.apple.iPhoneOS.SimulatorRuntime-v24.1.434.0.XEOf6U/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.0.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebCore.axbundle/WebCore (0x107da4310). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+    t =     1.70s         Setting up automation session
+    t =     4.71s         Wait for app.photomaid.ios to idle
+    t =     6.98s Waiting 15.0s for "Deine Privatsphäre zuerst" StaticText to exist
+    t =     8.00s     Checking `Expect predicate `existsNoRetry == 1` for object "Deine Privatsphäre zuerst" StaticText`
+    t =     8.00s         Checking existence of `"Deine Privatsphäre zuerst" StaticText`
+    t =     8.16s Checking existence of `"Zugriff erlauben" Button`
+    t =     8.21s Tap "Zugriff erlauben" Button
+    t =     8.21s     Wait for app.photomaid.ios to idle
+    t =     8.22s     Find the "Zugriff erlauben" Button
+    t =     8.27s     Check for interrupting elements affecting "Zugriff erlauben" Button
+    t =     8.34s     Synthesize event
+    t =     8.82s     Wait for app.photomaid.ios to idle
+    t =     9.52s Waiting 2.0s for "Allow Full Access" Button to exist
+    t =    10.58s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow Full Access" Button`
+    t =    10.58s         Checking existence of `"Allow Full Access" Button`
+    t =    10.68s         Capturing element debug description
+    t =    11.53s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow Full Access" Button`
+    t =    11.53s         Checking existence of `"Allow Full Access" Button`
+    t =    11.56s         Capturing element debug description
+    t =    11.57s     Checking existence of `"Allow Full Access" Button`
+    t =    11.59s Collecting debug information to assist test failure triage
+    t =    11.59s     Requesting snapshot of accessibility hierarchy for app with pid 1338
+    t =    11.64s Waiting 2.0s for "Vollen Zugriff erlauben" Button to exist
+    t =    12.68s     Checking `Expect predicate `existsNoRetry == 1` for object "Vollen Zugriff erlauben" Button`
+    t =    12.68s         Checking existence of `"Vollen Zugriff erlauben" Button`
+    t =    12.73s         Capturing element debug description
+    t =    13.65s     Checking `Expect predicate `existsNoRetry == 1` for object "Vollen Zugriff erlauben" Button`
+    t =    13.65s         Checking existence of `"Vollen Zugriff erlauben" Button`
+    t =    13.72s         Capturing element debug description
+    t =    13.72s     Checking existence of `"Vollen Zugriff erlauben" Button`
+    t =    13.76s Collecting debug information to assist test failure triage
+    t =    13.76s     Requesting snapshot of accessibility hierarchy for app with pid 1338
+    t =    13.84s Waiting 2.0s for "Allow Access to All Photos" Button to exist
+    t =    14.88s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow Access to All Photos" Button`
+    t =    14.88s         Checking existence of `"Allow Access to All Photos" Button`
+    t =    14.92s         Capturing element debug description
+    t =    15.85s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow Access to All Photos" Button`
+    t =    15.85s         Checking existence of `"Allow Access to All Photos" Button`
+    t =    15.89s         Capturing element debug description
+    t =    15.89s     Checking existence of `"Allow Access to All Photos" Button`
+    t =    15.94s Collecting debug information to assist test failure triage
+    t =    15.94s     Requesting snapshot of accessibility hierarchy for app with pid 1338
+    t =    16.03s Waiting 2.0s for "Zugriff auf alle Fotos erlauben" Button to exist
+    t =    17.08s     Checking `Expect predicate `existsNoRetry == 1` for object "Zugriff auf alle Fotos erlauben" Button`
+    t =    17.08s         Checking existence of `"Zugriff auf alle Fotos erlauben" Button`
+    t =    17.12s         Capturing element debug description
+    t =    18.03s     Checking `Expect predicate `existsNoRetry == 1` for object "Zugriff auf alle Fotos erlauben" Button`
+    t =    18.03s         Checking existence of `"Zugriff auf alle Fotos erlauben" Button`
+    t =    18.08s         Capturing element debug description
+    t =    18.08s     Checking existence of `"Zugriff auf alle Fotos erlauben" Button`
+    t =    18.12s Collecting debug information to assist test failure triage
+    t =    18.12s     Requesting snapshot of accessibility hierarchy for app with pid 1338
+    t =    18.21s Waiting 2.0s for "Allow" Button to exist
+    t =    19.26s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    19.26s         Checking existence of `"Allow" Button`
+    t =    19.31s         Capturing element debug description
+    t =    20.22s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    20.22s         Checking existence of `"Allow" Button`
+    t =    20.26s         Capturing element debug description
+    t =    20.26s     Checking existence of `"Allow" Button`
+    t =    20.30s Collecting debug information to assist test failure triage
+    t =    20.30s     Requesting snapshot of accessibility hierarchy for app with pid 1338
+    t =    20.37s Waiting 2.0s for "Erlauben" Button to exist
+    t =    21.42s     Checking `Expect predicate `existsNoRetry == 1` for object "Erlauben" Button`
+    t =    21.42s         Checking existence of `"Erlauben" Button`
+    t =    21.46s         Capturing element debug description
+    t =    22.38s     Checking `Expect predicate `existsNoRetry == 1` for object "Erlauben" Button`
+    t =    22.38s         Checking existence of `"Erlauben" Button`
+    t =    22.42s         Capturing element debug description
+    t =    22.42s     Checking existence of `"Erlauben" Button`
+    t =    22.46s Collecting debug information to assist test failure triage
+    t =    22.46s     Requesting snapshot of accessibility hierarchy for app with pid 1338
+    t =    22.53s Waiting 2.0s for "Allow Full Access" Button to exist
+    t =    23.58s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow Full Access" Button`
+    t =    23.58s         Checking existence of `"Allow Full Access" Button`
+    t =    23.65s Tap "Allow Full Access" Button
+    t =    23.65s     Wait for com.apple.springboard to idle
+    t =    23.65s     Find the "Allow Full Access" Button
+    t =    23.70s     Check for interrupting elements affecting "Allow Full Access" Button
+    t =    23.78s     Synthesize event
+    t =    24.10s     Wait for com.apple.springboard to idle
+    t =    25.38s Waiting 5.0s for "Weiter" Button to exist
+    t =    26.44s     Checking `Expect predicate `existsNoRetry == 1` for object "Weiter" Button`
+    t =    26.44s         Checking existence of `"Weiter" Button`
+    t =    26.50s Find the "Weiter" Button
+    t =    26.58s Tap "Weiter" Button
+    t =    26.58s     Wait for app.photomaid.ios to idle
+    t =    26.59s     Find the "Weiter" Button
+    t =    26.65s     Check for interrupting elements affecting "Weiter" Button
+    t =    26.70s     Synthesize event
+    t =    27.01s     Wait for app.photomaid.ios to idle
+    t =    28.89s Waiting 8.0s for "Einstellungen" Button to exist
+    t =    29.95s     Checking `Expect predicate `existsNoRetry == 1` for object "Einstellungen" Button`
+    t =    29.95s         Checking existence of `"Einstellungen" Button`
+    t =    30.05s Tap "Einstellungen" Button
+    t =    30.05s     Wait for app.photomaid.ios to idle
+    t =    30.06s     Find the "Einstellungen" Button
+    t =    30.15s     Check for interrupting elements affecting "gearshape" Button
+    t =    30.20s     Synthesize event
+    t =    30.52s     Wait for app.photomaid.ios to idle
+    t =    31.56s Waiting 6.0s for Button (First Match) to exist
+    t =    32.61s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    32.61s         Checking existence of `Button (First Match)`
+    t =    32.89s Tap Button (First Match)
+    t =    32.89s     Wait for app.photomaid.ios to idle
+    t =    32.90s     Find the Button (First Match)
+    t =    33.09s     Check for interrupting elements affecting "Erscheinungsbild, System" Button
+    t =    33.17s     Synthesize event
+    t =    33.48s     Wait for app.photomaid.ios to idle
+    t =    34.77s Waiting 4.0s for "Dunkel" Button to exist
+    t =    35.81s     Checking `Expect predicate `existsNoRetry == 1` for object "Dunkel" Button`
+    t =    35.81s         Checking existence of `"Dunkel" Button`
+    t =    35.93s Tap "Dunkel" Button
+    t =    35.94s     Wait for app.photomaid.ios to idle
+    t =    35.94s     Find the "Dunkel" Button
+    t =    36.05s     Check for interrupting elements affecting "Dunkel" Button
+    t =    36.17s     Synthesize event
+    t =    36.48s     Wait for app.photomaid.ios to idle
+    t =    40.99s Added attachment named '17_dark_settings'
+    t =    40.99s Checking existence of `"Fertig" Button`
+    t =    41.03s Tap "Fertig" Button
+    t =    41.04s     Wait for app.photomaid.ios to idle
+    t =    41.04s     Find the "Fertig" Button
+    t =    41.09s     Check for interrupting elements affecting "Fertig" Button
+    t =    41.17s     Synthesize event
+    t =    41.47s     Wait for app.photomaid.ios to idle
+Resolve Package Graph
+
+    t =    44.76s Added attachment named '18_dark_home'
+    t =    44.76s Waiting 2.0s for "Aufräumen" Button to exist
+Resolve Package Graph
+
+    t =    45.81s     Checking `Expect predicate `existsNoRetry == 1` for object "Aufräumen" Button`
+    t =    45.81s         Checking existence of `"Aufräumen" Button`
+    t =    45.86s Tap "Aufräumen" Button
+    t =    45.86s     Wait for app.photomaid.ios to idle
+    t =    45.87s     Find the "Aufräumen" Button
+    t =    45.93s     Check for interrupting elements affecting "square.stack.3d.up" Button
+    t =    45.98s     Synthesize event
+    t =    46.28s     Wait for app.photomaid.ios to idle
+    t =    49.10s Waiting 10.0s for "hub.photos" Any to exist
+    t =    50.11s     Checking `Expect predicate `existsNoRetry == 1` for object "hub.photos" Any`
+    t =    50.11s         Checking existence of `"hub.photos" Any`
+    t =    50.29s Tap "hub.photos" Any
+    t =    50.29s     Wait for app.photomaid.ios to idle
+    t =    50.30s     Find the "hub.photos" Any
+    t =    50.47s     Check for interrupting elements affecting "hub.photos" Button
+    t =    50.56s     Synthesize event
+    t =    50.91s     Wait for app.photomaid.ios to idle
+    t =    51.29s Waiting 6.0s for "Verstanden" Button to exist
+    t =    52.35s     Checking `Expect predicate `existsNoRetry == 1` for object "Verstanden" Button`
+    t =    52.35s         Checking existence of `"Verstanden" Button`
+    t =    52.43s Tap "Verstanden" Button
+    t =    52.43s     Wait for app.photomaid.ios to idle
+    t =    52.43s     Find the "Verstanden" Button
+    t =    52.49s     Check for interrupting elements affecting "Verstanden" Button
+    t =    52.55s     Synthesize event
+    t =    52.87s     Wait for app.photomaid.ios to idle
+    t =    56.75s Added attachment named '19_dark_review_photo'
+    t =    56.75s Waiting 3.0s for "Schließen" Button to exist
+Resolve Package Graph
+
+    t =    57.80s     Checking `Expect predicate `existsNoRetry == 1` for object "Schließen" Button`
+    t =    57.80s         Checking existence of `"Schließen" Button`
+    t =    57.82s Tap "Schließen" Button
+    t =    57.82s     Wait for app.photomaid.ios to idle
+    t =    57.83s     Find the "Schließen" Button
+    t =    57.85s     Check for interrupting elements affecting "xmark" Button
+    t =    57.92s     Synthesize event
+    t =    58.22s     Wait for app.photomaid.ios to idle
+    t =    59.39s Tear Down
+Test Case '-[PhotoMaidUITests.ScreenshotTests testDarkModeScreens]' passed (59.712 seconds).
+Test Case '-[PhotoMaidUITests.ScreenshotTests testMainScreens]' started.
+    t =     0.00s Start Test at 2026-09-28 21:16:15.888
+    t =     0.02s Set Up
+    t =     0.03s Open app.photomaid.ios
+    t =     0.03s     Launch app.photomaid.ios
+    t =     0.03s         Terminate app.photomaid.ios:9438
+2026-09-28 21:16:16.958 xcodebuild[8650:32618] [MT] IDELaunchParametersSnapshot: debugger version lookup failed for path '<nil>': noURL
+2026-09-28 21:16:16.959 xcodebuild[8650:32618] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     1.31s         Setting up automation session
+    t =     4.81s         Wait for app.photomaid.ios to idle
+    t =     7.27s Waiting 15.0s for "Deine Privatsphäre zuerst" StaticText to exist
+    t =     8.28s     Checking `Expect predicate `existsNoRetry == 1` for object "Deine Privatsphäre zuerst" StaticText`
+    t =     8.28s         Checking existence of `"Deine Privatsphäre zuerst" StaticText`
+    t =     9.81s Added attachment named '01_onboarding'
+    t =     9.81s Checking existence of `"Zugriff erlauben" Button`
+Resolve Package Graph
+
+    t =    11.21s Added attachment named '02_permissions'
+    t =    11.21s Waiting 5.0s for "Weiter" Button to exist
+Resolve Package Graph
+
+    t =    12.23s     Checking `Expect predicate `existsNoRetry == 1` for object "Weiter" Button`
+    t =    12.23s         Checking existence of `"Weiter" Button`
+    t =    12.30s Find the "Weiter" Button
+    t =    12.41s Tap "Weiter" Button
+    t =    12.42s     Wait for app.photomaid.ios to idle
+    t =    12.42s     Find the "Weiter" Button
+    t =    12.48s     Check for interrupting elements affecting "Weiter" Button
+    t =    12.54s     Synthesize event
+    t =    12.85s     Wait for app.photomaid.ios to idle
+    t =    14.74s Waiting 10.0s for "PhotoMaid" StaticText to exist
+    t =    15.75s     Checking `Expect predicate `existsNoRetry == 1` for object "PhotoMaid" StaticText`
+    t =    15.75s         Checking existence of `"PhotoMaid" StaticText`
+    t =    19.69s Added attachment named '03_home'
+    t =    19.69s Waiting 2.0s for "Aufräumen" Button to exist
+Resolve Package Graph
+
+    t =    20.75s     Checking `Expect predicate `existsNoRetry == 1` for object "Aufräumen" Button`
+    t =    20.75s         Checking existence of `"Aufräumen" Button`
+    t =    20.80s Tap "Aufräumen" Button
+    t =    20.80s     Wait for app.photomaid.ios to idle
+    t =    20.81s     Find the "Aufräumen" Button
+    t =    20.87s     Check for interrupting elements affecting "square.stack.3d.up" Button
+    t =    20.93s     Synthesize event
+    t =    21.24s     Wait for app.photomaid.ios to idle
+    t =    24.01s Waiting 10.0s for "hub.photos" Any to exist
+    t =    25.05s     Checking `Expect predicate `existsNoRetry == 1` for object "hub.photos" Any`
+    t =    25.05s         Checking existence of `"hub.photos" Any`
+    t =    25.25s Tap "hub.photos" Any
+    t =    25.25s     Wait for app.photomaid.ios to idle
+    t =    25.26s     Find the "hub.photos" Any
+    t =    25.43s     Check for interrupting elements affecting "hub.photos" Button
+    t =    25.56s     Synthesize event
+    t =    25.88s     Wait for app.photomaid.ios to idle
+    t =    26.31s Waiting 6.0s for "Verstanden" Button to exist
+    t =    27.35s     Checking `Expect predicate `existsNoRetry == 1` for object "Verstanden" Button`
+    t =    27.35s         Checking existence of `"Verstanden" Button`
+    t =    28.93s Added attachment named '04a_gesture_hints'
+    t =    28.93s Tap "Verstanden" Button
+    t =    28.93s     Wait for app.photomaid.ios to idle
+    t =    28.94s     Find the "Verstanden" Button
+Resolve Package Graph
+    t =    29.01s     Check for interrupting elements affecting "Verstanden" Button
+    t =    29.09s     Synthesize event
+    t =    29.40s     Wait for app.photomaid.ios to idle
+    t =    29.40s Waiting 10.0s for "feed.stage" Any to exist
+
+    t =    30.43s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.stage" Any`
+    t =    30.43s         Checking existence of `"feed.stage" Any`
+    t =    34.39s Added attachment named '04_review_photo'
+    t =    34.39s Swipe up "feed.stage" Any
+    t =    34.39s     Wait for app.photomaid.ios to idle
+    t =    34.40s     Find the "feed.stage" Any
+Resolve Package Graph
+    t =    34.44s     Check for interrupting elements affecting "feed.stage" Other
+    t =    34.52s     Synthesize event
+
+    t =    34.97s     Wait for app.photomaid.ios to idle
+    t =    37.94s Added attachment named '04b_after_up_keep'
+    t =    37.95s Swipe left "feed.stage" Other
+    t =    37.95s     Wait for app.photomaid.ios to idle
+    t =    37.95s     Find the "feed.stage" Other
+Resolve Package Graph
+    t =    38.06s     Check for interrupting elements affecting "feed.stage" Other
+    t =    38.16s     Synthesize event
+
+    t =    38.60s     Wait for app.photomaid.ios to idle
+    t =    41.52s Added attachment named '04c_after_left_cleanup'
+    t =    41.52s Swipe left "feed.stage" Other
+    t =    41.52s     Wait for app.photomaid.ios to idle
+    t =    41.52s     Find the "feed.stage" Other
+Resolve Package Graph
+    t =    41.56s     Check for interrupting elements affecting "feed.stage" Other
+    t =    41.65s     Synthesize event
+
+    t =    42.10s     Wait for app.photomaid.ios to idle
+    t =    43.61s Swipe right "feed.stage" Other
+    t =    43.61s     Wait for app.photomaid.ios to idle
+    t =    43.62s     Find the "feed.stage" Other
+    t =    43.66s     Check for interrupting elements affecting "feed.stage" Other
+    t =    43.72s     Synthesize event
+    t =    44.19s     Wait for app.photomaid.ios to idle
+    t =    47.12s Added attachment named '06_later_sheet'
+    t =    47.12s Waiting 10.0s for "later.more" Any to exist
+Resolve Package Graph
+
+    t =    48.15s     Checking `Expect predicate `existsNoRetry == 1` for object "later.more" Any`
+    t =    48.15s         Checking existence of `"later.more" Any`
+    t =    48.24s Tap "later.more" Any
+    t =    48.24s     Wait for app.photomaid.ios to idle
+    t =    48.24s     Find the "later.more" Any
+    t =    48.32s     Check for interrupting elements affecting "later.more" Button
+    t =    48.39s     Synthesize event
+    t =    48.69s     Wait for app.photomaid.ios to idle
+    t =    51.08s Added attachment named '06b_later_date_picker'
+    t =    51.08s Waiting 4.0s for "Abbrechen" Button to exist
+Resolve Package Graph
+
+    t =    52.12s     Checking `Expect predicate `existsNoRetry == 1` for object "Abbrechen" Button`
+    t =    52.12s         Checking existence of `"Abbrechen" Button`
+    t =    52.30s Tap "Abbrechen" Button
+    t =    52.30s     Wait for app.photomaid.ios to idle
+    t =    52.32s     Find the "Abbrechen" Button
+    t =    52.47s     Check for interrupting elements affecting "Abbrechen" Button
+    t =    52.60s     Synthesize event
+    t =    52.91s     Wait for app.photomaid.ios to idle
+    t =    54.19s Swipe down "feed.stage" Other
+    t =    54.19s     Wait for app.photomaid.ios to idle
+    t =    54.20s     Find the "feed.stage" Other
+    t =    54.24s     Check for interrupting elements affecting "feed.stage" Other
+    t =    54.32s     Synthesize event
+    t =    54.77s     Wait for app.photomaid.ios to idle
+    t =    57.69s Added attachment named '04d_after_down_previous'
+    t =    57.69s Waiting 10.0s for "feed.dock" Any to exist
+Resolve Package Graph
+
+    t =    58.73s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.dock" Any`
+    t =    58.73s         Checking existence of `"feed.dock" Any`
+    t =    58.80s Tap "feed.dock" Any
+    t =    58.80s     Wait for app.photomaid.ios to idle
+    t =    58.80s     Find the "feed.dock" Any
+    t =    58.86s     Check for interrupting elements affecting "feed.dock" Button
+    t =    58.93s     Synthesize event
+    t =    59.23s     Wait for app.photomaid.ios to idle
+    t =    62.89s Added attachment named '07_cleanup_basket'
+    t =    62.90s Waiting 6.0s for Button (First Match) to exist
+Resolve Package Graph
+
+    t =    63.94s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    63.94s         Checking existence of `Button (First Match)`
+    t =    64.09s Tap Button (First Match)
+    t =    64.09s     Wait for app.photomaid.ios to idle
+    t =    64.09s     Find the Button (First Match)
+    t =    64.22s     Check for interrupting elements affecting "2 Fotos/Videos prüfen und entfernen" Button
+    t =    64.32s     Synthesize event
+    t =    64.64s     Wait for app.photomaid.ios to idle
+    t =    66.83s Added attachment named '08_cleanup_confirm'
+    t =    66.84s Checking existence of `"Abbrechen" Button`
+Resolve Package Graph
+    t =    67.34s Tap Target Application 'app.photomaid.ios'[0.50, 0.12]
+    t =    67.34s     Wait for app.photomaid.ios to idle
+    t =    67.35s     Find the Target Application 'app.photomaid.ios'
+
+    t =    67.45s     Check for interrupting elements affecting "PhotoMaid" Application
+    t =    67.54s     Synthesize event
+    t =    67.55s         Find the Target Application 'app.photomaid.ios'
+    t =    67.62s         Find the Target Application 'app.photomaid.ios'
+    t =    67.71s         Find the Target Application 'app.photomaid.ios'
+    t =    68.08s     Wait for app.photomaid.ios to idle
+    t =    69.29s Checking existence of `Button (First Match)`
+    t =    69.58s Waiting 3.0s for "Fertig" Button to exist
+    t =    70.62s     Checking `Expect predicate `existsNoRetry == 1` for object "Fertig" Button`
+    t =    70.62s         Checking existence of `"Fertig" Button`
+    t =    70.75s Tap "Fertig" Button
+    t =    70.75s     Wait for app.photomaid.ios to idle
+    t =    70.75s     Find the "Fertig" Button
+    t =    70.87s     Check for interrupting elements affecting "Fertig" Button
+    t =    70.94s     Synthesize event
+    t =    71.25s     Wait for app.photomaid.ios to idle
+    t =    73.16s Waiting 5.0s for "feed.stage" Any to exist
+    t =    74.18s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.stage" Any`
+    t =    74.18s         Checking existence of `"feed.stage" Any`
+    t =    74.24s Waiting 3.0s for "Schließen" Button to exist
+    t =    75.28s     Checking `Expect predicate `existsNoRetry == 1` for object "Schließen" Button`
+    t =    75.28s         Checking existence of `"Schließen" Button`
+    t =    75.32s Tap "Schließen" Button
+    t =    75.32s     Wait for app.photomaid.ios to idle
+    t =    75.32s     Find the "Schließen" Button
+    t =    75.35s     Check for interrupting elements affecting "xmark" Button
+    t =    75.40s     Synthesize event
+    t =    75.70s     Wait for app.photomaid.ios to idle
+    t =    76.87s Waiting 10.0s for "hub.videos" Any to exist
+    t =    77.90s     Checking `Expect predicate `existsNoRetry == 1` for object "hub.videos" Any`
+    t =    77.90s         Checking existence of `"hub.videos" Any`
+    t =    78.10s Tap "hub.videos" Any
+    t =    78.10s     Wait for app.photomaid.ios to idle
+    t =    78.11s     Find the "hub.videos" Any
+    t =    78.29s     Check for interrupting elements affecting "hub.videos" Button
+    t =    78.38s     Synthesize event
+    t =    78.69s     Wait for app.photomaid.ios to idle
+<unknown>:0: warning: -[PhotoMaidUITests.ScreenshotTests testMainScreens] :     AVAudioSession_iOS.mm:978   This method can lead to UI unresponsiveness if called on the main thread. Consider using the asynchronous activate/deactivate API instead for calls from the main thread.
+    t =    79.06s Waiting 6.0s for "Verstanden" Button to exist
+    t =    80.12s     Checking `Expect predicate `existsNoRetry == 1` for object "Verstanden" Button`
+    t =    80.12s         Checking existence of `"Verstanden" Button`
+    t =    80.21s         Capturing element debug description
+    t =    81.07s     Checking `Expect predicate `existsNoRetry == 1` for object "Verstanden" Button`
+    t =    81.07s         Checking existence of `"Verstanden" Button`
+    t =    81.13s         Capturing element debug description
+    t =    82.07s     Checking `Expect predicate `existsNoRetry == 1` for object "Verstanden" Button`
+    t =    82.07s         Checking existence of `"Verstanden" Button`
+    t =    82.12s         Capturing element debug description
+    t =    83.07s     Checking `Expect predicate `existsNoRetry == 1` for object "Verstanden" Button`
+    t =    83.07s         Checking existence of `"Verstanden" Button`
+    t =    83.13s         Capturing element debug description
+    t =    84.07s     Checking `Expect predicate `existsNoRetry == 1` for object "Verstanden" Button`
+    t =    84.07s         Checking existence of `"Verstanden" Button`
+    t =    84.14s         Capturing element debug description
+    t =    85.06s     Checking `Expect predicate `existsNoRetry == 1` for object "Verstanden" Button`
+    t =    85.06s         Checking existence of `"Verstanden" Button`
+    t =    85.12s         Capturing element debug description
+    t =    85.12s     Checking existence of `"Verstanden" Button`
+    t =    85.19s Collecting debug information to assist test failure triage
+    t =    85.19s     Requesting snapshot of accessibility hierarchy for app with pid 12932
+    t =    85.28s Waiting 10.0s for "feed.stage" Any to exist
+    t =    86.30s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.stage" Any`
+    t =    86.30s         Checking existence of `"feed.stage" Any`
+    t =    91.29s Added attachment named '05_review_video'
+    t =    91.29s Waiting 3.0s for "Schließen" Button to exist
+Resolve Package Graph
+    t =    92.32s     Checking `Expect predicate `existsNoRetry == 1` for object "Schließen" Button`
+    t =    92.32s         Checking existence of `"Schließen" Button`
+    t =    92.35s Tap "Schließen" Button
+    t =    92.35s     Wait for app.photomaid.ios to idle
+    t =    92.35s     Find the "Schließen" Button
+    t =    92.38s     Check for interrupting elements affecting "xmark" Button
+    t =    92.44s     Synthesize event
+
+    t =    92.76s     Wait for app.photomaid.ios to idle
+    t =    93.93s Waiting 10.0s for "hub.duplicates" Any to exist
+    t =    94.95s     Checking `Expect predicate `existsNoRetry == 1` for object "hub.duplicates" Any`
+    t =    94.95s         Checking existence of `"hub.duplicates" Any`
+    t =    95.18s Tap "hub.duplicates" Any
+    t =    95.18s     Wait for app.photomaid.ios to idle
+    t =    95.19s     Find the "hub.duplicates" Any
+    t =    95.42s     Check for interrupting elements affecting "hub.duplicates" Button
+    t =    95.52s     Synthesize event
+    t =    95.85s     Wait for app.photomaid.ios to idle
+    t =    96.24s Waiting 8.0s for "Prüfung starten" Button to exist
+    t =    97.30s     Checking `Expect predicate `existsNoRetry == 1` for object "Prüfung starten" Button`
+    t =    97.30s         Checking existence of `"Prüfung starten" Button`
+    t =    97.38s Tap "Prüfung starten" Button
+    t =    97.38s     Wait for app.photomaid.ios to idle
+    t =    97.39s     Find the "Prüfung starten" Button
+    t =    97.45s     Check for interrupting elements affecting "Prüfung starten" Button
+    t =    97.51s     Synthesize event
+    t =    97.83s     Wait for app.photomaid.ios to idle
+    t =    98.11s Waiting 90.0s for "Erneut prüfen" Button to exist
+    t =    99.16s     Checking `Expect predicate `existsNoRetry == 1` for object "Erneut prüfen" Button`
+    t =    99.16s         Checking existence of `"Erneut prüfen" Button`
+    t =   102.13s Added attachment named '09_duplicates'
+    t =   102.13s Waiting 3.0s for Button (Element at index 0) to exist
+Resolve Package Graph
+
+    t =   103.17s     Checking `Expect predicate `existsNoRetry == 1` for object Button (Element at index 0)`
+    t =   103.17s         Checking existence of `Button (Element at index 0)`
+    t =   103.22s Tap Button (Element at index 0)
+    t =   103.22s     Wait for app.photomaid.ios to idle
+    t =   103.23s     Find the Button (Element at index 0)
+    t =   103.31s     Check for interrupting elements affecting "BackButton" Button
+    t =   103.37s     Synthesize event
+    t =   103.71s     Wait for app.photomaid.ios to idle
+    t =   104.66s Waiting 10.0s for "hub.large" Any to exist
+    t =   105.70s     Checking `Expect predicate `existsNoRetry == 1` for object "hub.large" Any`
+    t =   105.70s         Checking existence of `"hub.large" Any`
+    t =   105.92s Tap "hub.large" Any
+    t =   105.92s     Wait for app.photomaid.ios to idle
+    t =   105.93s     Find the "hub.large" Any
+    t =   106.15s     Check for interrupting elements affecting "hub.large" Button
+    t =   106.26s     Synthesize event
+    t =   106.59s     Wait for app.photomaid.ios to idle
+    t =   112.48s Added attachment named '10_large_files'
+    t =   112.48s Waiting 3.0s for Button (Element at index 0) to exist
+Resolve Package Graph
+    t =   113.52s     Checking `Expect predicate `existsNoRetry == 1` for object Button (Element at index 0)`
+    t =   113.53s         Checking existence of `Button (Element at index 0)`
+    t =   113.64s Tap Button (Element at index 0)
+    t =   113.64s     Wait for app.photomaid.ios to idle
+    t =   113.65s     Find the Button (Element at index 0)
+    t =   113.73s     Check for interrupting elements affecting "BackButton" Button
+
+    t =   113.81s     Synthesize event
+    t =   114.14s     Wait for app.photomaid.ios to idle
+    t =   115.17s Waiting 10.0s for "hub.storage" Any to exist
+    t =   116.22s     Checking `Expect predicate `existsNoRetry == 1` for object "hub.storage" Any`
+    t =   116.22s         Checking existence of `"hub.storage" Any`
+    t =   116.45s Tap "hub.storage" Any
+    t =   116.45s     Wait for app.photomaid.ios to idle
+    t =   116.46s     Find the "hub.storage" Any
+    t =   116.69s     Check for interrupting elements affecting "hub.storage" Button
+    t =   116.80s     Synthesize event
+    t =   117.12s     Wait for app.photomaid.ios to idle
+    t =   121.44s Added attachment named '11_storage_insights'
+    t =   121.45s Waiting 3.0s for Button (Element at index 0) to exist
+Resolve Package Graph
+
+    t =   122.50s     Checking `Expect predicate `existsNoRetry == 1` for object Button (Element at index 0)`
+    t =   122.50s         Checking existence of `Button (Element at index 0)`
+    t =   122.58s Tap Button (Element at index 0)
+    t =   122.58s     Wait for app.photomaid.ios to idle
+    t =   122.59s     Find the Button (Element at index 0)
+    t =   122.70s     Check for interrupting elements affecting "BackButton" Button
+    t =   122.79s     Synthesize event
+    t =   123.12s     Wait for app.photomaid.ios to idle
+    t =   124.07s Waiting 10.0s for "hub.files" Any to exist
+    t =   125.10s     Checking `Expect predicate `existsNoRetry == 1` for object "hub.files" Any`
+    t =   125.10s         Checking existence of `"hub.files" Any`
+    t =   125.32s Tap "hub.files" Any
+    t =   125.32s     Wait for app.photomaid.ios to idle
+    t =   125.33s     Find the "hub.files" Any
+    t =   125.59s     Check for interrupting elements affecting "hub.files" Button
+    t =   125.71s     Synthesize event
+    t =   126.04s     Wait for app.photomaid.ios to idle
+    t =   130.18s Added attachment named '11b_downloads'
+    t =   130.19s Waiting 3.0s for Button (Element at index 0) to exist
+Resolve Package Graph
+
+    t =   131.23s     Checking `Expect predicate `existsNoRetry == 1` for object Button (Element at index 0)`
+    t =   131.23s         Checking existence of `Button (Element at index 0)`
+    t =   131.34s Tap Button (Element at index 0)
+    t =   131.34s     Wait for app.photomaid.ios to idle
+    t =   131.34s     Find the Button (Element at index 0)
+    t =   131.42s     Check for interrupting elements affecting "BackButton" Button
+    t =   131.50s     Synthesize event
+    t =   131.84s     Wait for app.photomaid.ios to idle
+    t =   132.82s Waiting 2.0s for "Ordnen" Button to exist
+    t =   133.86s     Checking `Expect predicate `existsNoRetry == 1` for object "Ordnen" Button`
+    t =   133.86s         Checking existence of `"Ordnen" Button`
+    t =   133.93s Tap "Ordnen" Button
+    t =   133.93s     Wait for app.photomaid.ios to idle
+    t =   133.93s     Find the "Ordnen" Button
+    t =   133.99s     Check for interrupting elements affecting "folder" Button
+    t =   134.04s     Synthesize event
+    t =   134.36s     Wait for app.photomaid.ios to idle
+    t =   138.02s Waiting 10.0s for "organize.later" Any to exist
+    t =   139.04s     Checking `Expect predicate `existsNoRetry == 1` for object "organize.later" Any`
+    t =   139.04s         Checking existence of `"organize.later" Any`
+    t =   139.20s Tap "organize.later" Any
+    t =   139.21s     Wait for app.photomaid.ios to idle
+    t =   139.21s     Find the "organize.later" Any
+    t =   139.39s     Check for interrupting elements affecting "organize.later" Button
+    t =   139.48s     Synthesize event
+    t =   139.80s     Wait for app.photomaid.ios to idle
+    t =   143.57s Added attachment named '12_later'
+    t =   143.57s Waiting 3.0s for Button (Element at index 0) to exist
+Resolve Package Graph
+
+    t =   144.58s     Checking `Expect predicate `existsNoRetry == 1` for object Button (Element at index 0)`
+    t =   144.58s         Checking existence of `Button (Element at index 0)`
+    t =   144.62s Tap Button (Element at index 0)
+    t =   144.62s     Wait for app.photomaid.ios to idle
+    t =   144.63s     Find the Button (Element at index 0)
+    t =   144.68s     Check for interrupting elements affecting "BackButton" Button
+    t =   144.74s     Synthesize event
+    t =   145.07s     Wait for app.photomaid.ios to idle
+    t =   145.98s Waiting 10.0s for "organize.rules" Any to exist
+    t =   147.03s     Checking `Expect predicate `existsNoRetry == 1` for object "organize.rules" Any`
+    t =   147.03s         Checking existence of `"organize.rules" Any`
+    t =   147.22s Tap "organize.rules" Any
+    t =   147.22s     Wait for app.photomaid.ios to idle
+    t =   147.22s     Find the "organize.rules" Any
+    t =   147.40s     Check for interrupting elements affecting "organize.rules" Button
+    t =   147.50s     Synthesize event
+    t =   147.83s     Wait for app.photomaid.ios to idle
+    t =   151.12s Added attachment named '13_rules'
+    t =   151.12s Waiting 3.0s for Button (Element at index 0) to exist
+Resolve Package Graph
+
+    t =   152.17s     Checking `Expect predicate `existsNoRetry == 1` for object Button (Element at index 0)`
+    t =   152.17s         Checking existence of `Button (Element at index 0)`
+    t =   152.22s Tap Button (Element at index 0)
+    t =   152.22s     Wait for app.photomaid.ios to idle
+    t =   152.23s     Find the Button (Element at index 0)
+    t =   152.28s     Check for interrupting elements affecting "BackButton" Button
+    t =   152.33s     Synthesize event
+    t =   152.65s     Wait for app.photomaid.ios to idle
+    t =   153.57s Waiting 2.0s for "Verlauf" Button to exist
+    t =   154.63s     Checking `Expect predicate `existsNoRetry == 1` for object "Verlauf" Button`
+    t =   154.63s         Checking existence of `"Verlauf" Button`
+    t =   154.67s Tap "Verlauf" Button
+    t =   154.67s     Wait for app.photomaid.ios to idle
+    t =   154.68s     Find the "Verlauf" Button
+    t =   154.71s     Check for interrupting elements affecting "clock.arrow.circlepath" Button
+    t =   154.75s     Synthesize event
+    t =   155.07s     Wait for app.photomaid.ios to idle
+    t =   160.60s Added attachment named '14_history'
+    t =   160.60s Waiting 2.0s for "Heute" Button to exist
+Resolve Package Graph
+
+    t =   161.64s     Checking `Expect predicate `existsNoRetry == 1` for object "Heute" Button`
+    t =   161.64s         Checking existence of `"Heute" Button`
+    t =   161.70s Tap "Heute" Button
+    t =   161.70s     Wait for app.photomaid.ios to idle
+    t =   161.71s     Find the "Heute" Button
+    t =   161.78s     Check for interrupting elements affecting "house.fill" Button
+    t =   161.86s     Synthesize event
+    t =   162.18s     Wait for app.photomaid.ios to idle
+    t =   164.72s Waiting 5.0s for "Einstellungen" Button to exist
+    t =   165.77s     Checking `Expect predicate `existsNoRetry == 1` for object "Einstellungen" Button`
+    t =   165.77s         Checking existence of `"Einstellungen" Button`
+    t =   165.85s Tap "Einstellungen" Button
+    t =   165.85s     Wait for app.photomaid.ios to idle
+    t =   165.86s     Find the "Einstellungen" Button
+    t =   165.95s     Check for interrupting elements affecting "gearshape" Button
+    t =   165.99s     Synthesize event
+    t =   166.32s     Wait for app.photomaid.ios to idle
+    t =   169.83s Added attachment named '16_settings'
+    t =   169.84s Tear Down
+Resolve Package Graph
+
+Test Case '-[PhotoMaidUITests.ScreenshotTests testMainScreens]' passed (170.225 seconds).
+Test Case '-[PhotoMaidUITests.ScreenshotTests testProScreen]' started.
+    t =     0.00s Start Test at 2026-09-28 21:19:06.114
+    t =     0.04s Set Up
+    t =     0.04s Open app.photomaid.ios
+    t =     0.04s     Launch app.photomaid.ios
+    t =     0.04s         Terminate app.photomaid.ios:12932
+2026-09-28 21:19:07.180 xcodebuild[8650:32618] [MT] IDELaunchParametersSnapshot: debugger version lookup failed for path '<nil>': noURL
+2026-09-28 21:19:07.180 xcodebuild[8650:32618] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     1.56s         Setting up automation session
+    t =     5.33s         Wait for app.photomaid.ios to idle
+    t =     7.91s Waiting 15.0s for "Deine Privatsphäre zuerst" StaticText to exist
+    t =     8.94s     Checking `Expect predicate `existsNoRetry == 1` for object "Deine Privatsphäre zuerst" StaticText`
+    t =     8.95s         Checking existence of `"Deine Privatsphäre zuerst" StaticText`
+    t =     9.15s Checking existence of `"Zugriff erlauben" Button`
+    t =     9.21s Waiting 5.0s for "Weiter" Button to exist
+    t =    10.26s     Checking `Expect predicate `existsNoRetry == 1` for object "Weiter" Button`
+    t =    10.26s         Checking existence of `"Weiter" Button`
+    t =    10.34s Find the "Weiter" Button
+    t =    10.52s Tap "Weiter" Button
+    t =    10.52s     Wait for app.photomaid.ios to idle
+    t =    10.52s     Find the "Weiter" Button
+    t =    10.79s     Check for interrupting elements affecting "Weiter" Button
+    t =    10.90s     Synthesize event
+    t =    11.25s     Wait for app.photomaid.ios to idle
+    t =    13.13s Waiting 8.0s for "Einstellungen" Button to exist
+    t =    14.14s     Checking `Expect predicate `existsNoRetry == 1` for object "Einstellungen" Button`
+    t =    14.14s         Checking existence of `"Einstellungen" Button`
+    t =    14.26s Tap "Einstellungen" Button
+    t =    14.26s     Wait for app.photomaid.ios to idle
+    t =    14.27s     Find the "Einstellungen" Button
+    t =    14.39s     Check for interrupting elements affecting "gearshape" Button
+    t =    14.45s     Synthesize event
+    t =    14.76s     Wait for app.photomaid.ios to idle
+    t =    15.64s Waiting 6.0s for Button (First Match) to exist
+    t =    16.70s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    16.70s         Checking existence of `Button (First Match)`
+    t =    17.08s Tap Button (First Match)
+    t =    17.08s     Wait for app.photomaid.ios to idle
+    t =    17.08s     Find the Button (First Match)
+    t =    17.40s     Check for interrupting elements affecting "PhotoMaid Pro, Einmalkauf" Button
+    t =    17.52s     Synthesize event
+    t =    17.83s     Wait for app.photomaid.ios to idle
+    t =    21.40s Added attachment named '15_pro'
+    t =    21.40s Tear Down
+Resolve Package Graph
+
+Test Case '-[PhotoMaidUITests.ScreenshotTests testProScreen]' passed (24.618 seconds).
+Test Suite 'ScreenshotTests' passed at 2026-09-28 21:19:30.734.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 254.556 (254.561) seconds
+Test Suite 'PhotoMaidUITests.xctest' passed at 2026-09-28 21:19:30.735.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 254.556 (254.562) seconds
+Test Suite 'Selected tests' passed at 2026-09-28 21:19:30.736.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 254.556 (254.564) seconds

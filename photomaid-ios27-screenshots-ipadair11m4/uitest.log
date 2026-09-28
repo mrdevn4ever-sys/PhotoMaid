@@ -1,0 +1,867 @@
+Command line invocation:
+    /Applications/Xcode_27.2_beta.app/Contents/Developer/usr/bin/xcodebuild -project PhotoMaid.xcodeproj -scheme PhotoMaid -configuration Debug -destination id=0F971625-8BA8-4213-A9F2-55BD887DFE8E -derivedDataPath /Users/runner/work/_temp/dd -resultBundlePath /Users/runner/work/_temp/screenshots.xcresult "-only-testing:PhotoMaidUITests/ScreenshotTests" test-without-building
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  RevenueCat: https://github.com/RevenueCat/purchases-ios-spm.git @ 5.91.0
+  swift-asn1: https://github.com/apple/swift-asn1.git @ 1.7.3
+  PhotoMaidCore: /Users/runner/work/PhotoMaid/PhotoMaid
+  swift-crypto: https://github.com/apple/swift-crypto.git @ 4.5.2
+
+Writing result bundle at path:
+	/Users/runner/work/_temp/screenshots.xcresult
+
+2026-09-28 21:16:56.399818+0000 PhotoMaidUITests-Runner[11544:41187] [Default] Running tests...
+2026-09-28 21:16:56.481908+0000 PhotoMaidUITests-Runner[11544:41187] [UIKit App Config] Update the Info.plist: Launch screens will soon be required.
+objc[11544]: Class UIAccessibilityLoaderWebShared is implemented in both /private/var/run/com.apple.security.cryptexd/mnt/com.apple.iPhoneOS.SimulatorRuntime-v24.1.434.0.BhTqzA/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.0.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebKit.axbundle/WebKit (0x10978c398) and /private/var/run/com.apple.security.cryptexd/mnt/com.apple.iPhoneOS.SimulatorRuntime-v24.1.434.0.BhTqzA/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 27.0.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebCore.axbundle/WebCore (0x109ce4310). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-09-28 21:17:01.235.
+Test Suite 'PhotoMaidUITests.xctest' started at 2026-09-28 21:17:01.236.
+Test Suite 'ScreenshotTests' started at 2026-09-28 21:17:01.237.
+Test Case '-[PhotoMaidUITests.ScreenshotTests testDarkModeScreens]' started.
+    t =     0.02s Start Test at 2026-09-28 21:17:01.251
+    t =     0.50s Set Up
+    t =     0.50s Open app.photomaid.ios
+    t =     0.51s     Launch app.photomaid.ios
+2026-09-28 21:17:02.810 xcodebuild[11020:39459] [MT] IDELaunchParametersSnapshot: debugger version lookup failed for path '<nil>': noURL
+2026-09-28 21:17:02.810 xcodebuild[11020:39459] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     2.84s         Setting up automation session
+    t =     7.13s         Wait for app.photomaid.ios to idle
+<unknown>:0: warning: -[PhotoMaidUITests.ScreenshotTests testDarkModeScreens] : Update the Info.plist: Support for all orientations will soon be required.
+    t =     9.95s Waiting 15.0s for "Deine Privatsphäre zuerst" StaticText to exist
+    t =    10.95s     Checking `Expect predicate `existsNoRetry == 1` for object "Deine Privatsphäre zuerst" StaticText`
+    t =    10.95s         Checking existence of `"Deine Privatsphäre zuerst" StaticText`
+    t =    11.34s Checking existence of `"Zugriff erlauben" Button`
+    t =    11.39s Tap "Zugriff erlauben" Button
+    t =    11.39s     Wait for app.photomaid.ios to idle
+    t =    11.40s     Find the "Zugriff erlauben" Button
+    t =    11.45s     Check for interrupting elements affecting "Zugriff erlauben" Button
+    t =    11.53s         Wait for com.apple.springboard to idle
+    t =    11.65s     Synthesize event
+    t =    12.12s     Wait for app.photomaid.ios to idle
+    t =    12.85s Waiting 2.0s for "Allow Full Access" Button to exist
+    t =    13.89s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow Full Access" Button`
+    t =    13.89s         Checking existence of `"Allow Full Access" Button`
+    t =    13.95s         Capturing element debug description
+    t =    14.86s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow Full Access" Button`
+    t =    14.86s         Checking existence of `"Allow Full Access" Button`
+    t =    14.89s         Capturing element debug description
+    t =    14.89s     Checking existence of `"Allow Full Access" Button`
+    t =    14.91s Collecting debug information to assist test failure triage
+    t =    14.91s     Requesting snapshot of accessibility hierarchy for app with pid 1465
+    t =    14.97s Waiting 2.0s for "Vollen Zugriff erlauben" Button to exist
+    t =    16.02s     Checking `Expect predicate `existsNoRetry == 1` for object "Vollen Zugriff erlauben" Button`
+    t =    16.02s         Checking existence of `"Vollen Zugriff erlauben" Button`
+    t =    16.05s         Capturing element debug description
+    t =    16.98s     Checking `Expect predicate `existsNoRetry == 1` for object "Vollen Zugriff erlauben" Button`
+    t =    16.98s         Checking existence of `"Vollen Zugriff erlauben" Button`
+    t =    17.00s         Capturing element debug description
+    t =    17.00s     Checking existence of `"Vollen Zugriff erlauben" Button`
+    t =    17.03s Collecting debug information to assist test failure triage
+    t =    17.03s     Requesting snapshot of accessibility hierarchy for app with pid 1465
+    t =    17.09s Waiting 2.0s for "Allow Access to All Photos" Button to exist
+    t =    18.15s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow Access to All Photos" Button`
+    t =    18.15s         Checking existence of `"Allow Access to All Photos" Button`
+    t =    18.25s         Capturing element debug description
+    t =    19.09s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow Access to All Photos" Button`
+    t =    19.09s         Checking existence of `"Allow Access to All Photos" Button`
+    t =    19.14s         Capturing element debug description
+    t =    19.14s     Checking existence of `"Allow Access to All Photos" Button`
+    t =    19.19s Collecting debug information to assist test failure triage
+    t =    19.19s     Requesting snapshot of accessibility hierarchy for app with pid 1465
+    t =    19.29s Waiting 2.0s for "Zugriff auf alle Fotos erlauben" Button to exist
+    t =    20.33s     Checking `Expect predicate `existsNoRetry == 1` for object "Zugriff auf alle Fotos erlauben" Button`
+    t =    20.33s         Checking existence of `"Zugriff auf alle Fotos erlauben" Button`
+    t =    20.39s         Capturing element debug description
+    t =    21.30s     Checking `Expect predicate `existsNoRetry == 1` for object "Zugriff auf alle Fotos erlauben" Button`
+    t =    21.30s         Checking existence of `"Zugriff auf alle Fotos erlauben" Button`
+    t =    21.34s         Capturing element debug description
+    t =    21.34s     Checking existence of `"Zugriff auf alle Fotos erlauben" Button`
+    t =    21.39s Collecting debug information to assist test failure triage
+    t =    21.39s     Requesting snapshot of accessibility hierarchy for app with pid 1465
+    t =    21.48s Waiting 2.0s for "Allow" Button to exist
+    t =    22.53s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    22.53s         Checking existence of `"Allow" Button`
+    t =    22.59s         Capturing element debug description
+    t =    23.49s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow" Button`
+    t =    23.49s         Checking existence of `"Allow" Button`
+    t =    23.54s         Capturing element debug description
+    t =    23.54s     Checking existence of `"Allow" Button`
+    t =    23.59s Collecting debug information to assist test failure triage
+    t =    23.59s     Requesting snapshot of accessibility hierarchy for app with pid 1465
+    t =    23.69s Waiting 2.0s for "Erlauben" Button to exist
+    t =    24.74s     Checking `Expect predicate `existsNoRetry == 1` for object "Erlauben" Button`
+    t =    24.74s         Checking existence of `"Erlauben" Button`
+    t =    24.79s         Capturing element debug description
+    t =    25.70s     Checking existence of `"Erlauben" Button`
+    t =    25.74s Collecting debug information to assist test failure triage
+    t =    25.74s     Requesting snapshot of accessibility hierarchy for app with pid 1465
+    t =    25.82s Waiting 2.0s for "Allow Full Access" Button to exist
+    t =    26.87s     Checking `Expect predicate `existsNoRetry == 1` for object "Allow Full Access" Button`
+    t =    26.87s         Checking existence of `"Allow Full Access" Button`
+    t =    26.92s Tap "Allow Full Access" Button
+    t =    26.93s     Wait for com.apple.springboard to idle
+    t =    26.93s     Find the "Allow Full Access" Button
+    t =    26.98s     Check for interrupting elements affecting "Allow Full Access" Button
+    t =    27.05s     Synthesize event
+    t =    27.38s     Wait for com.apple.springboard to idle
+    t =    28.66s Waiting 5.0s for "Weiter" Button to exist
+    t =    29.72s     Checking `Expect predicate `existsNoRetry == 1` for object "Weiter" Button`
+    t =    29.72s         Checking existence of `"Weiter" Button`
+    t =    29.79s Find the "Weiter" Button
+    t =    29.87s Tap "Weiter" Button
+    t =    29.87s     Wait for app.photomaid.ios to idle
+    t =    29.87s     Find the "Weiter" Button
+    t =    29.94s     Check for interrupting elements affecting "Weiter" Button
+    t =    30.00s         Wait for com.apple.springboard to idle
+    t =    30.03s     Synthesize event
+    t =    30.33s     Wait for app.photomaid.ios to idle
+    t =    32.26s Waiting 8.0s for "Einstellungen" Button to exist
+    t =    33.30s     Checking `Expect predicate `existsNoRetry == 1` for object "Einstellungen" Button`
+    t =    33.30s         Checking existence of `"Einstellungen" Button`
+    t =    33.38s Tap "Einstellungen" Button
+    t =    33.38s     Wait for app.photomaid.ios to idle
+    t =    33.38s     Find the "Einstellungen" Button
+    t =    33.46s     Check for interrupting elements affecting "gearshape" Button
+    t =    33.51s         Wait for com.apple.springboard to idle
+    t =    33.55s     Synthesize event
+    t =    33.85s     Wait for app.photomaid.ios to idle
+    t =    34.90s Waiting 6.0s for Button (First Match) to exist
+    t =    35.94s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    35.94s         Checking existence of `Button (First Match)`
+    t =    36.19s Tap Button (First Match)
+    t =    36.19s     Wait for app.photomaid.ios to idle
+    t =    36.20s     Find the Button (First Match)
+    t =    36.43s     Check for interrupting elements affecting "Erscheinungsbild, System" Button
+    t =    36.54s         Wait for com.apple.springboard to idle
+    t =    36.57s     Synthesize event
+    t =    36.88s     Wait for app.photomaid.ios to idle
+    t =    38.09s Waiting 4.0s for "Dunkel" Button to exist
+    t =    39.13s     Checking `Expect predicate `existsNoRetry == 1` for object "Dunkel" Button`
+    t =    39.13s         Checking existence of `"Dunkel" Button`
+    t =    39.25s Tap "Dunkel" Button
+    t =    39.25s     Wait for app.photomaid.ios to idle
+    t =    39.26s     Find the "Dunkel" Button
+    t =    39.38s     Check for interrupting elements affecting "Dunkel" Button
+    t =    39.47s         Wait for com.apple.springboard to idle
+    t =    39.50s     Synthesize event
+    t =    39.81s     Wait for app.photomaid.ios to idle
+    t =    44.39s Added attachment named '17_dark_settings'
+    t =    44.39s Checking existence of `"Fertig" Button`
+    t =    44.48s Tap "Fertig" Button
+    t =    44.48s     Wait for app.photomaid.ios to idle
+    t =    44.48s     Find the "Fertig" Button
+    t =    44.58s     Check for interrupting elements affecting "Fertig" Button
+    t =    44.67s         Wait for com.apple.springboard to idle
+    t =    44.70s     Synthesize event
+    t =    45.01s     Wait for app.photomaid.ios to idle
+Resolve Package Graph
+
+    t =    48.52s Added attachment named '18_dark_home'
+    t =    48.52s Waiting 2.0s for "Aufräumen" Button to exist
+Resolve Package Graph
+
+    t =    49.55s     Checking `Expect predicate `existsNoRetry == 1` for object "Aufräumen" Button`
+    t =    49.56s         Checking existence of `"Aufräumen" Button`
+    t =    49.62s         Capturing element debug description
+    t =    50.52s     Checking `Expect predicate `existsNoRetry == 1` for object "Aufräumen" Button`
+    t =    50.52s         Checking existence of `"Aufräumen" Button`
+    t =    50.58s         Capturing element debug description
+    t =    50.58s     Checking existence of `"Aufräumen" Button`
+    t =    50.63s Collecting debug information to assist test failure triage
+    t =    50.63s     Requesting snapshot of accessibility hierarchy for app with pid 11891
+    t =    50.72s Waiting 5.0s for "Aufräumen" Button to exist
+    t =    51.75s     Checking `Expect predicate `existsNoRetry == 1` for object "Aufräumen" Button`
+    t =    51.75s         Checking existence of `"Aufräumen" Button`
+    t =    51.77s Tap "Aufräumen" Button
+    t =    51.77s     Wait for app.photomaid.ios to idle
+    t =    51.78s     Find the "Aufräumen" Button
+    t =    51.82s     Check for interrupting elements affecting "square.stack.3d.up" Button
+    t =    51.87s         Wait for com.apple.springboard to idle
+    t =    51.90s     Synthesize event
+    t =    52.22s     Wait for app.photomaid.ios to idle
+    t =    54.54s Waiting 10.0s for "hub.photos" Any to exist
+    t =    55.59s     Checking `Expect predicate `existsNoRetry == 1` for object "hub.photos" Any`
+    t =    55.59s         Checking existence of `"hub.photos" Any`
+    t =    55.74s Tap "hub.photos" Any
+    t =    55.74s     Wait for app.photomaid.ios to idle
+    t =    55.75s     Find the "hub.photos" Any
+    t =    55.89s     Check for interrupting elements affecting "hub.photos" Button
+    t =    55.95s         Wait for com.apple.springboard to idle
+    t =    56.02s     Synthesize event
+    t =    56.34s     Wait for app.photomaid.ios to idle
+    t =    56.78s Waiting 6.0s for "Verstanden" Button to exist
+    t =    57.82s     Checking `Expect predicate `existsNoRetry == 1` for object "Verstanden" Button`
+    t =    57.82s         Checking existence of `"Verstanden" Button`
+    t =    57.95s Tap "Verstanden" Button
+    t =    57.95s     Wait for app.photomaid.ios to idle
+    t =    57.96s     Find the "Verstanden" Button
+    t =    58.04s     Check for interrupting elements affecting "Verstanden" Button
+    t =    58.18s         Wait for com.apple.springboard to idle
+    t =    58.21s     Synthesize event
+    t =    58.53s     Wait for app.photomaid.ios to idle
+    t =    62.52s Added attachment named '19_dark_review_photo'
+    t =    62.53s Waiting 3.0s for "Schließen" Button to exist
+Resolve Package Graph
+
+    t =    63.55s     Checking `Expect predicate `existsNoRetry == 1` for object "Schließen" Button`
+    t =    63.55s         Checking existence of `"Schließen" Button`
+    t =    63.59s Tap "Schließen" Button
+    t =    63.59s     Wait for app.photomaid.ios to idle
+    t =    63.60s     Find the "Schließen" Button
+    t =    63.63s     Check for interrupting elements affecting "xmark" Button
+    t =    63.71s         Wait for com.apple.springboard to idle
+    t =    63.74s     Synthesize event
+    t =    64.05s     Wait for app.photomaid.ios to idle
+    t =    65.23s Tear Down
+Test Case '-[PhotoMaidUITests.ScreenshotTests testDarkModeScreens]' passed (65.564 seconds).
+Test Case '-[PhotoMaidUITests.ScreenshotTests testMainScreens]' started.
+    t =     0.00s Start Test at 2026-09-28 21:18:06.816
+    t =     0.03s Set Up
+    t =     0.04s Open app.photomaid.ios
+    t =     0.04s     Launch app.photomaid.ios
+    t =     0.04s         Terminate app.photomaid.ios:11891
+2026-09-28 21:18:07.942 xcodebuild[11020:39459] [MT] IDELaunchParametersSnapshot: debugger version lookup failed for path '<nil>': noURL
+2026-09-28 21:18:07.942 xcodebuild[11020:39459] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     1.59s         Setting up automation session
+    t =     5.61s         Wait for app.photomaid.ios to idle
+<unknown>:0: warning: -[PhotoMaidUITests.ScreenshotTests testMainScreens] : Update the Info.plist: Support for all orientations will soon be required.
+    t =     8.53s Waiting 15.0s for "Deine Privatsphäre zuerst" StaticText to exist
+    t =     9.56s     Checking `Expect predicate `existsNoRetry == 1` for object "Deine Privatsphäre zuerst" StaticText`
+    t =     9.56s         Checking existence of `"Deine Privatsphäre zuerst" StaticText`
+    t =    11.33s Added attachment named '01_onboarding'
+    t =    11.34s Checking existence of `"Zugriff erlauben" Button`
+    t =    12.82s Added attachment named '02_permissions'
+    t =    12.82s Waiting 5.0s for "Weiter" Button to exist
+Resolve Package Graph
+
+    t =    13.85s     Checking `Expect predicate `existsNoRetry == 1` for object "Weiter" Button`
+    t =    13.85s         Checking existence of `"Weiter" Button`
+    t =    13.92s Find the "Weiter" Button
+    t =    14.01s Tap "Weiter" Button
+    t =    14.01s     Wait for app.photomaid.ios to idle
+    t =    14.01s     Find the "Weiter" Button
+    t =    14.08s     Check for interrupting elements affecting "Weiter" Button
+    t =    14.14s         Wait for com.apple.springboard to idle
+    t =    14.18s     Synthesize event
+    t =    14.49s     Wait for app.photomaid.ios to idle
+    t =    16.41s Waiting 10.0s for "PhotoMaid" StaticText to exist
+    t =    17.44s     Checking `Expect predicate `existsNoRetry == 1` for object "PhotoMaid" StaticText`
+    t =    17.44s         Checking existence of `"PhotoMaid" StaticText`
+    t =    21.43s Added attachment named '03_home'
+    t =    21.43s Waiting 2.0s for "Aufräumen" Button to exist
+Resolve Package Graph
+    t =    22.45s     Checking `Expect predicate `existsNoRetry == 1` for object "Aufräumen" Button`
+    t =    22.46s         Checking existence of `"Aufräumen" Button`
+
+    t =    22.51s         Capturing element debug description
+    t =    23.44s     Checking `Expect predicate `existsNoRetry == 1` for object "Aufräumen" Button`
+    t =    23.44s         Checking existence of `"Aufräumen" Button`
+    t =    23.49s         Capturing element debug description
+    t =    23.49s     Checking existence of `"Aufräumen" Button`
+    t =    23.53s Collecting debug information to assist test failure triage
+    t =    23.54s     Requesting snapshot of accessibility hierarchy for app with pid 15788
+    t =    23.61s Waiting 5.0s for "Aufräumen" Button to exist
+    t =    24.64s     Checking `Expect predicate `existsNoRetry == 1` for object "Aufräumen" Button`
+    t =    24.64s         Checking existence of `"Aufräumen" Button`
+    t =    24.67s Tap "Aufräumen" Button
+    t =    24.67s     Wait for app.photomaid.ios to idle
+    t =    24.68s     Find the "Aufräumen" Button
+    t =    24.71s     Check for interrupting elements affecting "square.stack.3d.up" Button
+    t =    24.78s         Wait for com.apple.springboard to idle
+    t =    24.81s     Synthesize event
+    t =    25.13s     Wait for app.photomaid.ios to idle
+    t =    27.39s Waiting 10.0s for "hub.photos" Any to exist
+    t =    28.42s     Checking `Expect predicate `existsNoRetry == 1` for object "hub.photos" Any`
+    t =    28.42s         Checking existence of `"hub.photos" Any`
+    t =    28.55s Tap "hub.photos" Any
+    t =    28.55s     Wait for app.photomaid.ios to idle
+    t =    28.55s     Find the "hub.photos" Any
+    t =    28.70s     Check for interrupting elements affecting "hub.photos" Button
+    t =    28.76s         Wait for com.apple.springboard to idle
+    t =    28.80s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    28.81s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    28.87s     Synthesize event
+    t =    29.24s     Wait for app.photomaid.ios to idle
+    t =    29.60s Waiting 6.0s for "Verstanden" Button to exist
+    t =    30.62s     Checking `Expect predicate `existsNoRetry == 1` for object "Verstanden" Button`
+    t =    30.62s         Checking existence of `"Verstanden" Button`
+    t =    32.27s Added attachment named '04a_gesture_hints'
+    t =    32.27s Tap "Verstanden" Button
+    t =    32.27s     Wait for app.photomaid.ios to idle
+    t =    32.27s     Find the "Verstanden" Button
+    t =    32.35s     Check for interrupting elements affecting "Verstanden" Button
+    t =    32.41s         Wait for com.apple.springboard to idle
+    t =    32.44s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    32.45s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    32.45s     Synthesize event
+    t =    32.77s     Wait for app.photomaid.ios to idle
+    t =    32.78s Waiting 10.0s for "feed.stage" Any to exist
+Resolve Package Graph
+
+    t =    33.84s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.stage" Any`
+    t =    33.84s         Checking existence of `"feed.stage" Any`
+    t =    37.86s Added attachment named '04_review_photo'
+    t =    37.87s Swipe up "feed.stage" Any
+    t =    37.87s     Wait for app.photomaid.ios to idle
+    t =    37.87s     Find the "feed.stage" Any
+    t =    37.94s     Check for interrupting elements affecting "feed.stage" Other
+    t =    38.01s         Wait for com.apple.springboard to idle
+    t =    38.04s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    38.04s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    38.06s     Synthesize event
+Resolve Package Graph
+    t =    38.52s     Wait for app.photomaid.ios to idle
+
+    t =    41.49s Added attachment named '04b_after_up_keep'
+    t =    41.49s Swipe left "feed.stage" Other
+    t =    41.49s     Wait for app.photomaid.ios to idle
+    t =    41.50s     Find the "feed.stage" Other
+Resolve Package Graph
+    t =    41.55s     Check for interrupting elements affecting "feed.stage" Other
+    t =    41.62s         Wait for com.apple.springboard to idle
+    t =    41.65s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    41.65s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    41.68s     Synthesize event
+
+    t =    42.14s     Wait for app.photomaid.ios to idle
+    t =    45.10s Added attachment named '04c_after_left_cleanup'
+    t =    45.10s Swipe left "feed.stage" Other
+    t =    45.10s     Wait for app.photomaid.ios to idle
+    t =    45.11s     Find the "feed.stage" Other
+Resolve Package Graph
+    t =    45.15s     Check for interrupting elements affecting "feed.stage" Other
+    t =    45.22s         Wait for com.apple.springboard to idle
+    t =    45.25s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    45.26s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    45.27s     Synthesize event
+
+    t =    45.74s     Wait for app.photomaid.ios to idle
+    t =    47.26s Swipe right "feed.stage" Other
+    t =    47.26s     Wait for app.photomaid.ios to idle
+    t =    47.27s     Find the "feed.stage" Other
+    t =    47.30s     Check for interrupting elements affecting "feed.stage" Other
+    t =    47.35s         Wait for com.apple.springboard to idle
+    t =    47.38s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    47.38s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    47.40s     Synthesize event
+    t =    47.85s     Wait for app.photomaid.ios to idle
+    t =    50.84s Added attachment named '06_later_sheet'
+    t =    50.84s Waiting 10.0s for "later.more" Any to exist
+Resolve Package Graph
+
+    t =    51.90s     Checking `Expect predicate `existsNoRetry == 1` for object "later.more" Any`
+    t =    51.90s         Checking existence of `"later.more" Any`
+    t =    51.98s Tap "later.more" Any
+    t =    51.98s     Wait for app.photomaid.ios to idle
+    t =    51.98s     Find the "later.more" Any
+    t =    52.06s     Check for interrupting elements affecting "later.more" Button
+    t =    52.14s         Wait for com.apple.springboard to idle
+    t =    52.17s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    52.17s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    52.20s     Synthesize event
+    t =    52.51s     Wait for app.photomaid.ios to idle
+    t =    54.82s Added attachment named '06b_later_date_picker'
+    t =    54.82s Waiting 4.0s for "Abbrechen" Button to exist
+Resolve Package Graph
+
+    t =    55.83s     Checking `Expect predicate `existsNoRetry == 1` for object "Abbrechen" Button`
+    t =    55.83s         Checking existence of `"Abbrechen" Button`
+    t =    56.00s Tap "Abbrechen" Button
+    t =    56.00s     Wait for app.photomaid.ios to idle
+    t =    56.01s     Find the "Abbrechen" Button
+    t =    56.16s     Check for interrupting elements affecting "Abbrechen" Button
+    t =    56.30s         Wait for com.apple.springboard to idle
+    t =    56.33s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    56.34s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    56.35s     Synthesize event
+    t =    56.67s     Wait for app.photomaid.ios to idle
+    t =    58.22s Swipe down "feed.stage" Other
+    t =    58.22s     Wait for app.photomaid.ios to idle
+    t =    58.22s     Find the "feed.stage" Other
+    t =    58.26s     Check for interrupting elements affecting "feed.stage" Other
+    t =    58.31s         Wait for com.apple.springboard to idle
+    t =    58.35s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    58.35s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    58.36s     Synthesize event
+    t =    58.82s     Wait for app.photomaid.ios to idle
+    t =    61.77s Added attachment named '04d_after_down_previous'
+    t =    61.77s Waiting 10.0s for "feed.dock" Any to exist
+Resolve Package Graph
+
+    t =    62.82s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.dock" Any`
+    t =    62.82s         Checking existence of `"feed.dock" Any`
+    t =    62.88s Tap "feed.dock" Any
+    t =    62.88s     Wait for app.photomaid.ios to idle
+    t =    62.88s     Find the "feed.dock" Any
+    t =    62.94s     Check for interrupting elements affecting "feed.dock" Button
+    t =    63.00s         Wait for com.apple.springboard to idle
+    t =    63.04s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    63.04s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    63.06s     Synthesize event
+    t =    63.37s     Wait for app.photomaid.ios to idle
+    t =    67.15s Added attachment named '07_cleanup_basket'
+    t =    67.15s Waiting 6.0s for Button (First Match) to exist
+Resolve Package Graph
+
+    t =    68.21s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    68.21s         Checking existence of `Button (First Match)`
+    t =    68.45s Tap Button (First Match)
+    t =    68.45s     Wait for app.photomaid.ios to idle
+    t =    68.45s     Find the Button (First Match)
+    t =    68.64s     Check for interrupting elements affecting "2 Fotos/Videos prüfen und entfernen" Button
+    t =    68.75s         Wait for com.apple.springboard to idle
+    t =    68.78s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    68.78s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    68.79s     Synthesize event
+    t =    69.11s     Wait for app.photomaid.ios to idle
+    t =    71.73s Added attachment named '08_cleanup_confirm'
+    t =    71.73s Checking existence of `"Abbrechen" Button`
+Resolve Package Graph
+    t =    72.15s Tap Target Application 'app.photomaid.ios'[0.50, 0.12]
+    t =    72.15s     Wait for app.photomaid.ios to idle
+    t =    72.15s     Find the Target Application 'app.photomaid.ios'
+
+    t =    72.24s     Check for interrupting elements affecting "PhotoMaid" Application
+    t =    72.33s         Wait for com.apple.springboard to idle
+    t =    72.36s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    72.37s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    72.37s     Synthesize event
+    t =    72.38s         Find the Target Application 'app.photomaid.ios'
+    t =    72.45s         Find the Target Application 'app.photomaid.ios'
+    t =    72.52s         Find the Target Application 'app.photomaid.ios'
+    t =    72.90s     Wait for app.photomaid.ios to idle
+    t =    73.91s Checking existence of `Button (First Match)`
+    t =    74.26s Tap Target Application 'app.photomaid.ios'[0.50, 0.12]
+    t =    74.26s     Wait for app.photomaid.ios to idle
+    t =    74.26s     Find the Target Application 'app.photomaid.ios'
+    t =    74.34s     Check for interrupting elements affecting "PhotoMaid" Application
+    t =    74.42s         Wait for com.apple.springboard to idle
+    t =    74.46s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    74.46s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    74.47s     Synthesize event
+    t =    74.48s         Find the Target Application 'app.photomaid.ios'
+    t =    74.54s         Find the Target Application 'app.photomaid.ios'
+    t =    74.62s         Find the Target Application 'app.photomaid.ios'
+    t =    74.97s     Wait for app.photomaid.ios to idle
+    t =    75.99s Waiting 3.0s for "Fertig" Button to exist
+    t =    77.06s     Checking `Expect predicate `existsNoRetry == 1` for object "Fertig" Button`
+    t =    77.06s         Checking existence of `"Fertig" Button`
+    t =    77.23s Tap "Fertig" Button
+    t =    77.23s     Wait for app.photomaid.ios to idle
+    t =    77.23s     Find the "Fertig" Button
+    t =    77.39s     Check for interrupting elements affecting "Fertig" Button
+    t =    77.47s         Wait for com.apple.springboard to idle
+    t =    77.50s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    77.50s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    77.51s     Synthesize event
+    t =    77.52s         Scroll element to visible
+    t =    77.53s         Find the "Fertig" Button
+    t =    77.71s         Computed hit point {-1, -1} after scrolling to visible
+    t =    78.02s     Wait for app.photomaid.ios to idle
+    t =    79.94s Waiting 5.0s for "feed.stage" Any to exist
+    t =    81.01s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.stage" Any`
+    t =    81.01s         Checking existence of `"feed.stage" Any`
+    t =    81.07s Waiting 3.0s for "Schließen" Button to exist
+    t =    82.12s     Checking `Expect predicate `existsNoRetry == 1` for object "Schließen" Button`
+    t =    82.12s         Checking existence of `"Schließen" Button`
+    t =    82.16s Tap "Schließen" Button
+    t =    82.16s     Wait for app.photomaid.ios to idle
+    t =    82.16s     Find the "Schließen" Button
+    t =    82.20s     Check for interrupting elements affecting "xmark" Button
+    t =    82.30s         Wait for com.apple.springboard to idle
+    t =    82.33s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    82.33s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    82.33s     Synthesize event
+    t =    82.36s         Scroll element to visible
+    t =    82.36s         Find the "xmark" Button
+    t =    82.40s         Computed hit point {-1, -1} after scrolling to visible
+    t =    82.70s     Wait for app.photomaid.ios to idle
+    t =    84.23s Waiting 10.0s for "hub.videos" Any to exist
+    t =    85.25s     Checking `Expect predicate `existsNoRetry == 1` for object "hub.videos" Any`
+    t =    85.25s         Checking existence of `"hub.videos" Any`
+    t =    85.61s Tap "hub.videos" Any
+    t =    85.61s     Wait for app.photomaid.ios to idle
+    t =    85.62s     Find the "hub.videos" Any
+    t =    85.89s     Check for interrupting elements affecting "hub.videos" Button
+    t =    85.95s         Wait for com.apple.springboard to idle
+    t =    85.98s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    85.98s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    86.04s     Synthesize event
+    t =    86.07s         Scroll element to visible
+    t =    86.07s         Find the "hub.videos" Button
+    t =    86.36s         Computed hit point {-1, -1} after scrolling to visible
+    t =    86.71s     Wait for app.photomaid.ios to idle
+    t =    86.71s Waiting 6.0s for "Verstanden" Button to exist
+    t =    87.79s     Checking `Expect predicate `existsNoRetry == 1` for object "Verstanden" Button`
+    t =    87.79s         Checking existence of `"Verstanden" Button`
+    t =    87.92s         Capturing element debug description
+    t =    88.74s     Checking `Expect predicate `existsNoRetry == 1` for object "Verstanden" Button`
+    t =    88.74s         Checking existence of `"Verstanden" Button`
+    t =    88.81s         Capturing element debug description
+    t =    89.74s     Checking `Expect predicate `existsNoRetry == 1` for object "Verstanden" Button`
+    t =    89.74s         Checking existence of `"Verstanden" Button`
+    t =    89.82s         Capturing element debug description
+    t =    90.74s     Checking `Expect predicate `existsNoRetry == 1` for object "Verstanden" Button`
+    t =    90.74s         Checking existence of `"Verstanden" Button`
+    t =    90.80s         Capturing element debug description
+    t =    91.74s     Checking `Expect predicate `existsNoRetry == 1` for object "Verstanden" Button`
+    t =    91.74s         Checking existence of `"Verstanden" Button`
+    t =    91.80s         Capturing element debug description
+    t =    92.72s     Checking `Expect predicate `existsNoRetry == 1` for object "Verstanden" Button`
+    t =    92.72s         Checking existence of `"Verstanden" Button`
+    t =    92.80s         Capturing element debug description
+    t =    92.80s     Checking existence of `"Verstanden" Button`
+    t =    92.86s Collecting debug information to assist test failure triage
+    t =    92.86s     Requesting snapshot of accessibility hierarchy for app with pid 15788
+    t =    92.95s Waiting 10.0s for "feed.stage" Any to exist
+    t =    93.98s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.stage" Any`
+    t =    93.98s         Checking existence of `"feed.stage" Any`
+    t =    99.01s Added attachment named '05_review_video'
+    t =    99.02s Waiting 3.0s for "Schließen" Button to exist
+Resolve Package Graph
+    t =   100.07s     Checking `Expect predicate `existsNoRetry == 1` for object "Schließen" Button`
+    t =   100.07s         Checking existence of `"Schließen" Button`
+    t =   100.11s Tap "Schließen" Button
+    t =   100.11s     Wait for app.photomaid.ios to idle
+    t =   100.12s     Find the "Schließen" Button
+    t =   100.15s     Check for interrupting elements affecting "xmark" Button
+    t =   100.23s         Wait for com.apple.springboard to idle
+    t =   100.27s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   100.27s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   100.28s     Synthesize event
+
+    t =   100.59s     Wait for app.photomaid.ios to idle
+    t =   101.79s Waiting 10.0s for "hub.duplicates" Any to exist
+    t =   102.81s     Checking `Expect predicate `existsNoRetry == 1` for object "hub.duplicates" Any`
+    t =   102.82s         Checking existence of `"hub.duplicates" Any`
+    t =   102.97s Tap "hub.duplicates" Any
+    t =   102.97s     Wait for app.photomaid.ios to idle
+    t =   102.98s     Find the "hub.duplicates" Any
+    t =   103.13s     Check for interrupting elements affecting "hub.duplicates" Button
+    t =   103.20s         Wait for com.apple.springboard to idle
+    t =   103.23s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   103.23s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   103.29s     Synthesize event
+    t =   103.61s     Wait for app.photomaid.ios to idle
+    t =   104.09s Waiting 8.0s for "Prüfung starten" Button to exist
+    t =   105.12s     Checking `Expect predicate `existsNoRetry == 1` for object "Prüfung starten" Button`
+    t =   105.13s         Checking existence of `"Prüfung starten" Button`
+    t =   105.19s Tap "Prüfung starten" Button
+    t =   105.19s     Wait for app.photomaid.ios to idle
+    t =   105.19s     Find the "Prüfung starten" Button
+    t =   105.24s     Check for interrupting elements affecting "Prüfung starten" Button
+    t =   105.29s         Wait for com.apple.springboard to idle
+    t =   105.33s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   105.33s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   105.34s     Synthesize event
+    t =   105.66s     Wait for app.photomaid.ios to idle
+    t =   106.00s Waiting 90.0s for "Erneut prüfen" Button to exist
+    t =   107.03s     Checking `Expect predicate `existsNoRetry == 1` for object "Erneut prüfen" Button`
+    t =   107.03s         Checking existence of `"Erneut prüfen" Button`
+    t =   110.27s Added attachment named '09_duplicates'
+    t =   110.27s Waiting 3.0s for Button (Element at index 0) to exist
+Resolve Package Graph
+    t =   111.31s     Checking `Expect predicate `existsNoRetry == 1` for object Button (Element at index 0)`
+    t =   111.32s         Checking existence of `Button (Element at index 0)`
+    t =   111.38s Tap Button (Element at index 0)
+    t =   111.38s     Wait for app.photomaid.ios to idle
+    t =   111.38s     Find the Button (Element at index 0)
+    t =   111.45s     Check for interrupting elements affecting "BackButton" Button
+    t =   111.53s         Wait for com.apple.springboard to idle
+
+    t =   111.57s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   111.57s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   111.58s     Synthesize event
+    t =   111.93s     Wait for app.photomaid.ios to idle
+    t =   113.04s Waiting 10.0s for "hub.large" Any to exist
+    t =   114.08s     Checking `Expect predicate `existsNoRetry == 1` for object "hub.large" Any`
+    t =   114.08s         Checking existence of `"hub.large" Any`
+    t =   114.40s Tap "hub.large" Any
+    t =   114.40s     Wait for app.photomaid.ios to idle
+    t =   114.41s     Find the "hub.large" Any
+    t =   114.63s     Check for interrupting elements affecting "hub.large" Button
+    t =   114.73s         Wait for com.apple.springboard to idle
+    t =   114.78s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   114.78s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   114.86s     Synthesize event
+    t =   115.22s     Wait for app.photomaid.ios to idle
+    t =   120.96s Added attachment named '10_large_files'
+    t =   120.96s Waiting 3.0s for Button (Element at index 0) to exist
+Resolve Package Graph
+
+    t =   122.00s     Checking `Expect predicate `existsNoRetry == 1` for object Button (Element at index 0)`
+    t =   122.00s         Checking existence of `Button (Element at index 0)`
+    t =   122.09s Tap Button (Element at index 0)
+    t =   122.09s     Wait for app.photomaid.ios to idle
+    t =   122.10s     Find the Button (Element at index 0)
+    t =   122.16s     Check for interrupting elements affecting "BackButton" Button
+    t =   122.23s         Wait for com.apple.springboard to idle
+    t =   122.27s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   122.27s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   122.28s     Synthesize event
+    t =   122.62s     Wait for app.photomaid.ios to idle
+    t =   123.74s Waiting 10.0s for "hub.storage" Any to exist
+    t =   124.75s     Checking `Expect predicate `existsNoRetry == 1` for object "hub.storage" Any`
+    t =   124.75s         Checking existence of `"hub.storage" Any`
+    t =   124.93s Tap "hub.storage" Any
+    t =   124.93s     Wait for app.photomaid.ios to idle
+    t =   124.93s     Find the "hub.storage" Any
+    t =   125.09s     Check for interrupting elements affecting "hub.storage" Button
+    t =   125.14s         Wait for com.apple.springboard to idle
+    t =   125.18s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   125.18s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   125.24s     Synthesize event
+    t =   125.57s     Wait for app.photomaid.ios to idle
+    t =   129.98s Added attachment named '11_storage_insights'
+    t =   129.98s Waiting 3.0s for Button (Element at index 0) to exist
+Resolve Package Graph
+
+    t =   131.02s     Checking `Expect predicate `existsNoRetry == 1` for object Button (Element at index 0)`
+    t =   131.02s         Checking existence of `Button (Element at index 0)`
+    t =   131.10s Tap Button (Element at index 0)
+    t =   131.10s     Wait for app.photomaid.ios to idle
+    t =   131.10s     Find the Button (Element at index 0)
+    t =   131.17s     Check for interrupting elements affecting "BackButton" Button
+    t =   131.23s         Wait for com.apple.springboard to idle
+    t =   131.26s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   131.27s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   131.27s     Synthesize event
+    t =   131.60s     Wait for app.photomaid.ios to idle
+    t =   132.57s Waiting 10.0s for "hub.files" Any to exist
+    t =   133.61s     Checking `Expect predicate `existsNoRetry == 1` for object "hub.files" Any`
+    t =   133.61s         Checking existence of `"hub.files" Any`
+    t =   133.77s Tap "hub.files" Any
+    t =   133.77s     Wait for app.photomaid.ios to idle
+    t =   133.78s     Find the "hub.files" Any
+    t =   133.94s     Check for interrupting elements affecting "hub.files" Button
+    t =   133.99s         Wait for com.apple.springboard to idle
+    t =   134.03s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   134.03s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   134.08s     Synthesize event
+    t =   134.40s     Wait for app.photomaid.ios to idle
+    t =   138.59s Added attachment named '11b_downloads'
+    t =   138.59s Waiting 3.0s for Button (Element at index 0) to exist
+Resolve Package Graph
+
+    t =   139.65s     Checking `Expect predicate `existsNoRetry == 1` for object Button (Element at index 0)`
+    t =   139.65s         Checking existence of `Button (Element at index 0)`
+    t =   139.80s Tap Button (Element at index 0)
+    t =   139.80s     Wait for app.photomaid.ios to idle
+    t =   139.80s     Find the Button (Element at index 0)
+    t =   139.90s     Check for interrupting elements affecting "BackButton" Button
+    t =   140.00s         Wait for com.apple.springboard to idle
+    t =   140.03s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   140.03s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   140.04s     Synthesize event
+    t =   140.39s     Wait for app.photomaid.ios to idle
+    t =   141.44s Waiting 2.0s for "Ordnen" Button to exist
+    t =   142.47s     Checking `Expect predicate `existsNoRetry == 1` for object "Ordnen" Button`
+    t =   142.47s         Checking existence of `"Ordnen" Button`
+    t =   142.53s         Capturing element debug description
+    t =   143.45s     Checking `Expect predicate `existsNoRetry == 1` for object "Ordnen" Button`
+    t =   143.45s         Checking existence of `"Ordnen" Button`
+    t =   143.51s         Capturing element debug description
+    t =   143.51s     Checking existence of `"Ordnen" Button`
+    t =   143.56s Collecting debug information to assist test failure triage
+    t =   143.56s     Requesting snapshot of accessibility hierarchy for app with pid 15788
+    t =   143.65s Waiting 5.0s for "Ordnen" Button to exist
+    t =   144.69s     Checking `Expect predicate `existsNoRetry == 1` for object "Ordnen" Button`
+    t =   144.69s         Checking existence of `"Ordnen" Button`
+    t =   144.74s Tap "Ordnen" Button
+    t =   144.74s     Wait for app.photomaid.ios to idle
+    t =   144.74s     Find the "Ordnen" Button
+    t =   144.78s     Check for interrupting elements affecting "folder" Button
+    t =   144.84s         Wait for com.apple.springboard to idle
+    t =   144.87s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   144.87s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   144.88s     Synthesize event
+    t =   145.20s     Wait for app.photomaid.ios to idle
+    t =   148.33s Waiting 10.0s for "organize.later" Any to exist
+    t =   149.34s     Checking `Expect predicate `existsNoRetry == 1` for object "organize.later" Any`
+    t =   149.34s         Checking existence of `"organize.later" Any`
+    t =   149.49s Tap "organize.later" Any
+    t =   149.49s     Wait for app.photomaid.ios to idle
+    t =   149.49s     Find the "organize.later" Any
+    t =   149.65s     Check for interrupting elements affecting "organize.later" Button
+    t =   149.71s         Wait for com.apple.springboard to idle
+    t =   149.75s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   149.75s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   149.81s     Synthesize event
+    t =   150.13s     Wait for app.photomaid.ios to idle
+    t =   154.02s Added attachment named '12_later'
+    t =   154.02s Waiting 3.0s for Button (Element at index 0) to exist
+    t =   155.08s     Checking `Expect predicate `existsNoRetry == 1` for object Button (Element at index 0)`
+    t =   155.08s         Checking existence of `Button (Element at index 0)`
+    t =   155.15s Tap Button (Element at index 0)
+    t =   155.15s     Wait for app.photomaid.ios to idle
+    t =   155.16s     Find the Button (Element at index 0)
+    t =   155.20s     Check for interrupting elements affecting "BackButton" Button
+Resolve Package Graph
+    t =   155.25s         Wait for com.apple.springboard to idle
+    t =   155.28s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   155.28s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   155.29s     Synthesize event
+
+    t =   155.62s     Wait for app.photomaid.ios to idle
+    t =   156.58s Waiting 10.0s for "organize.rules" Any to exist
+    t =   157.63s     Checking `Expect predicate `existsNoRetry == 1` for object "organize.rules" Any`
+    t =   157.63s         Checking existence of `"organize.rules" Any`
+    t =   157.75s Tap "organize.rules" Any
+    t =   157.75s     Wait for app.photomaid.ios to idle
+    t =   157.76s     Find the "organize.rules" Any
+    t =   157.88s     Check for interrupting elements affecting "organize.rules" Button
+    t =   157.92s         Wait for com.apple.springboard to idle
+    t =   157.95s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   157.95s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   158.01s     Synthesize event
+    t =   158.32s     Wait for app.photomaid.ios to idle
+    t =   161.65s Added attachment named '13_rules'
+    t =   161.65s Waiting 3.0s for Button (Element at index 0) to exist
+Resolve Package Graph
+
+    t =   162.70s     Checking `Expect predicate `existsNoRetry == 1` for object Button (Element at index 0)`
+    t =   162.70s         Checking existence of `Button (Element at index 0)`
+    t =   162.79s Tap Button (Element at index 0)
+    t =   162.79s     Wait for app.photomaid.ios to idle
+    t =   162.79s     Find the Button (Element at index 0)
+    t =   162.86s     Check for interrupting elements affecting "BackButton" Button
+    t =   162.91s         Wait for com.apple.springboard to idle
+    t =   162.95s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   162.95s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   162.96s     Synthesize event
+    t =   163.29s     Wait for app.photomaid.ios to idle
+    t =   164.29s Waiting 2.0s for "Verlauf" Button to exist
+    t =   165.30s     Checking `Expect predicate `existsNoRetry == 1` for object "Verlauf" Button`
+    t =   165.30s         Checking existence of `"Verlauf" Button`
+    t =   165.34s         Capturing element debug description
+    t =   166.29s     Checking `Expect predicate `existsNoRetry == 1` for object "Verlauf" Button`
+    t =   166.29s         Checking existence of `"Verlauf" Button`
+    t =   166.33s         Capturing element debug description
+    t =   166.33s     Checking existence of `"Verlauf" Button`
+    t =   166.36s Collecting debug information to assist test failure triage
+    t =   166.36s     Requesting snapshot of accessibility hierarchy for app with pid 15788
+    t =   166.40s Waiting 5.0s for "Verlauf" Button to exist
+    t =   167.46s     Checking `Expect predicate `existsNoRetry == 1` for object "Verlauf" Button`
+    t =   167.46s         Checking existence of `"Verlauf" Button`
+    t =   167.51s Tap "Verlauf" Button
+    t =   167.51s     Wait for app.photomaid.ios to idle
+    t =   167.51s     Find the "Verlauf" Button
+    t =   167.56s     Check for interrupting elements affecting "clock.arrow.circlepath" Button
+    t =   167.60s         Wait for com.apple.springboard to idle
+    t =   167.64s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   167.64s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   167.65s     Synthesize event
+    t =   167.98s     Wait for app.photomaid.ios to idle
+    t =   173.01s Added attachment named '14_history'
+    t =   173.01s Waiting 2.0s for "Heute" Button to exist
+Resolve Package Graph
+    t =   174.02s     Checking `Expect predicate `existsNoRetry == 1` for object "Heute" Button`
+    t =   174.02s         Checking existence of `"Heute" Button`
+
+    t =   174.10s         Capturing element debug description
+    t =   175.01s     Checking existence of `"Heute" Button`
+    t =   175.07s Collecting debug information to assist test failure triage
+    t =   175.07s     Requesting snapshot of accessibility hierarchy for app with pid 15788
+    t =   175.16s Waiting 5.0s for "Heute" Button to exist
+    t =   176.17s     Checking `Expect predicate `existsNoRetry == 1` for object "Heute" Button`
+    t =   176.17s         Checking existence of `"Heute" Button`
+    t =   176.20s Tap "Heute" Button
+    t =   176.21s     Wait for app.photomaid.ios to idle
+    t =   176.21s     Find the "Heute" Button
+    t =   176.25s     Check for interrupting elements affecting "house.fill" Button
+    t =   176.32s         Wait for com.apple.springboard to idle
+    t =   176.35s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   176.35s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   176.36s     Synthesize event
+    t =   176.68s     Wait for app.photomaid.ios to idle
+    t =   178.74s Waiting 5.0s for "Einstellungen" Button to exist
+    t =   179.78s     Checking `Expect predicate `existsNoRetry == 1` for object "Einstellungen" Button`
+    t =   179.78s         Checking existence of `"Einstellungen" Button`
+    t =   179.86s Tap "Einstellungen" Button
+    t =   179.86s     Wait for app.photomaid.ios to idle
+    t =   179.86s     Find the "Einstellungen" Button
+    t =   179.93s     Check for interrupting elements affecting "gearshape" Button
+    t =   179.99s         Wait for com.apple.springboard to idle
+    t =   180.02s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   180.02s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =   180.03s     Synthesize event
+    t =   180.35s     Wait for app.photomaid.ios to idle
+    t =   183.87s Added attachment named '16_settings'
+    t =   183.87s Tear Down
+Resolve Package Graph
+
+Test Case '-[PhotoMaidUITests.ScreenshotTests testMainScreens]' passed (184.234 seconds).
+Test Case '-[PhotoMaidUITests.ScreenshotTests testProScreen]' started.
+    t =     0.00s Start Test at 2026-09-28 21:21:11.051
+    t =     0.03s Set Up
+    t =     0.04s Open app.photomaid.ios
+    t =     0.04s     Launch app.photomaid.ios
+    t =     0.04s         Terminate app.photomaid.ios:15788
+2026-09-28 21:21:12.098 xcodebuild[11020:39459] [MT] IDELaunchParametersSnapshot: debugger version lookup failed for path '<nil>': noURL
+2026-09-28 21:21:12.098 xcodebuild[11020:39459] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     1.26s         Setting up automation session
+    t =     4.84s         Wait for app.photomaid.ios to idle
+<unknown>:0: warning: -[PhotoMaidUITests.ScreenshotTests testProScreen] : Update the Info.plist: Support for all orientations will soon be required.
+    t =     7.48s Waiting 15.0s for "Deine Privatsphäre zuerst" StaticText to exist
+    t =     8.55s     Checking `Expect predicate `existsNoRetry == 1` for object "Deine Privatsphäre zuerst" StaticText`
+    t =     8.55s         Checking existence of `"Deine Privatsphäre zuerst" StaticText`
+    t =     8.85s Checking existence of `"Zugriff erlauben" Button`
+    t =     8.91s Waiting 5.0s for "Weiter" Button to exist
+    t =     9.95s     Checking `Expect predicate `existsNoRetry == 1` for object "Weiter" Button`
+    t =     9.95s         Checking existence of `"Weiter" Button`
+    t =    10.00s Find the "Weiter" Button
+    t =    10.08s Tap "Weiter" Button
+    t =    10.08s     Wait for app.photomaid.ios to idle
+    t =    10.08s     Find the "Weiter" Button
+    t =    10.14s     Check for interrupting elements affecting "Weiter" Button
+    t =    10.20s         Wait for com.apple.springboard to idle
+    t =    10.23s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    10.23s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    10.24s     Synthesize event
+    t =    10.55s     Wait for app.photomaid.ios to idle
+    t =    12.46s Waiting 8.0s for "Einstellungen" Button to exist
+    t =    13.53s     Checking `Expect predicate `existsNoRetry == 1` for object "Einstellungen" Button`
+    t =    13.53s         Checking existence of `"Einstellungen" Button`
+    t =    13.60s Tap "Einstellungen" Button
+    t =    13.60s     Wait for app.photomaid.ios to idle
+    t =    13.61s     Find the "Einstellungen" Button
+    t =    13.68s     Check for interrupting elements affecting "gearshape" Button
+    t =    13.74s         Wait for com.apple.springboard to idle
+    t =    13.77s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    13.77s Ignoring failure to get hierarchy for remote element in process 17041 (Error getting main window kAXErrorServerNotFound)
+    t =    13.78s     Synthesize event
+    t =    14.09s     Wait for app.photomaid.ios to idle
+    t =    14.96s Waiting 6.0s for Button (First Match) to exist
+    t =    16.00s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    16.00s         Checking existence of `Button (First Match)`
+    t =    16.39s         Capturing element debug description
+    t =    17.00s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    17.00s         Checking existence of `Button (First Match)`
+    t =    17.35s         Capturing element debug description
+    t =    17.98s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    17.98s         Checking existence of `Button (First Match)`
+    t =    18.31s         Capturing element debug description
+    t =    19.00s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    19.00s         Checking existence of `Button (First Match)`
+    t =    19.33s         Capturing element debug description
+    t =    20.05s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    20.05s         Checking existence of `Button (First Match)`
+    t =    20.38s         Capturing element debug description
+    t =    20.97s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    20.97s         Checking existence of `Button (First Match)`
+    t =    21.27s         Capturing element debug description
+    t =    21.27s     Checking existence of `Button (First Match)`
+    t =    21.62s Collecting debug information to assist test failure triage
+    t =    21.62s     Requesting snapshot of accessibility hierarchy for app with pid 26207
+/Users/runner/work/PhotoMaid/PhotoMaid/PhotoMaidUITests/ScreenshotTests.swift:45: error: -[PhotoMaidUITests.ScreenshotTests testProScreen] : failed - Nicht gefunden: PhotoMaid Pro in Einstellungen
+    t =    22.03s Tear Down
+Test Case '-[PhotoMaidUITests.ScreenshotTests testProScreen]' failed (22.291 seconds).
+Test Suite 'ScreenshotTests' failed at 2026-09-28 21:21:33.341.
+	 Executed 3 tests, with 1 failure (0 unexpected) in 272.089 (272.105) seconds
+Test Suite 'PhotoMaidUITests.xctest' failed at 2026-09-28 21:21:33.342.
+	 Executed 3 tests, with 1 failure (0 unexpected) in 272.089 (272.105) seconds
+Test Suite 'Selected tests' failed at 2026-09-28 21:21:33.342.
+	 Executed 3 tests, with 1 failure (0 unexpected) in 272.089 (272.107) seconds
