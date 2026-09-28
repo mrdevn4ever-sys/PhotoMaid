@@ -10,7 +10,9 @@ import PackageDescription
 let package = Package(
     name: "PhotoMaidCore",
     defaultLocalization: "de",
-    platforms: [.iOS("27.0"), .macOS(.v15)],
+    // Das App-Target verlangt iOS 27 (project.yml). Das Paket selbst nutzt nur ältere APIs
+    // und erlaubt iOS 26, damit CI-Runner ohne iOS-27-SDK den App-Code typprüfen können.
+    platforms: [.iOS("26.0"), .macOS(.v15)],
     products: [
         .library(name: "PhotoMaidCore", targets: ["PhotoMaidCore"]),
     ],

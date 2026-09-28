@@ -54,10 +54,15 @@ jobs:
       - name: Build und Tests
         run: |
           set -o pipefail
+          # Ohne iOS-27-SDK auf dem Runner: Typprüfung und Tests gegen das neueste vorhandene SDK,
+          # Deployment Target nur für diesen Lauf auf dessen Hauptversion gesenkt.
+          SDK=$(xcrun --sdk iphonesimulator --show-sdk-version)
+          TARGET=27.0
+          if [ "${SDK%%.*}" -lt 27 ]; then TARGET="${SDK%%.*}.0"; echo "::warning::Kein iOS-27-SDK auf dem Runner (vorhanden: $SDK). Prüfung mit Deployment Target $TARGET."; fi
           xcodebuild -project PhotoMaid.xcodeproj -scheme PhotoMaid \
             -destination "id=${{ steps.sim.outputs.udid }}" \
             -skipPackagePluginValidation -skipMacroValidation \
-            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_ALLOWED=NO IPHONEOS_DEPLOYMENT_TARGET=$TARGET \
             build test 2>&1 | tee xcodebuild.log | grep -E "error:|warning: .*(Sendable|isolat)|\*\* (BUILD|TEST)|Test Case .* (passed|failed)|Executed" || true
           grep -q "\*\* TEST SUCCEEDED \*\*" xcodebuild.log
       - uses: actions/upload-artifact@v4
