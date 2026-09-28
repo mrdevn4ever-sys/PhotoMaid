@@ -1,0 +1,8 @@
+.build/
+.swiftpm/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+PhotoMaid.xcodeproj/
+Artifacts/private/
+.DS_Store
