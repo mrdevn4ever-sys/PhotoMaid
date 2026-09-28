@@ -2663,13 +2663,13 @@
         }
       }
     },
-    "PhotoMaid analysiert deine Fotos, Videos und freigegebenen Dateien auf diesem iPhone. Es gibt keinen PhotoMaid-Server und kein Konto. Wenn du iCloud-Fotos nutzt, synchronisiert Apple deine Mediathek – auch Löschungen können dann andere Geräte betreffen.": {
+    "PhotoMaid analysiert deine Fotos, Videos und freigegebenen Dateien auf diesem Gerät. Es gibt keinen PhotoMaid-Server und kein Konto. Wenn du iCloud-Fotos nutzt, synchronisiert Apple deine Mediathek – auch Löschungen können dann andere Geräte betreffen.": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "PhotoMaid analysiert deine Fotos, Videos und freigegebenen Dateien auf diesem iPhone. Es gibt keinen PhotoMaid-Server und kein Konto. Wenn du iCloud-Fotos nutzt, synchronisiert Apple deine Mediathek – auch Löschungen können dann andere Geräte betreffen."
+            "value": "PhotoMaid analysiert deine Fotos, Videos und freigegebenen Dateien auf diesem Gerät. Es gibt keinen PhotoMaid-Server und kein Konto. Wenn du iCloud-Fotos nutzt, synchronisiert Apple deine Mediathek – auch Löschungen können dann andere Geräte betreffen."
           }
         }
       }
@@ -3125,13 +3125,13 @@
         }
       }
     },
-    "Systemwert des iPhones, nicht nur Fotos": {
+    "Systemwert des Geräts, nicht nur Fotos": {
       "extractionState": "manual",
       "localizations": {
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Systemwert des iPhones, nicht nur Fotos"
+            "value": "Systemwert des Geräts, nicht nur Fotos"
           }
         }
       }

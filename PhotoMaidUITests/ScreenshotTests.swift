@@ -57,6 +57,17 @@ final class ScreenshotTests: XCTestCase {
         return true
     }
 
+    /// Tab wechseln: iPhone = Tab-Leiste unten, iPad = Tab-Leiste oben (kein XCUI-TabBar-Typ).
+    private func tab(_ name: String) {
+        let bar = app.tabBars.buttons[name]
+        if bar.waitForExistence(timeout: 2) { bar.tap() }
+        else {
+            let top = app.buttons[name].firstMatch
+            if waitFor(top, 5, "Tab \(name)") { top.tap() }
+        }
+        settle(0.8)
+    }
+
     private func back() {
         let b = app.navigationBars.buttons.element(boundBy: 0)
         if b.waitForExistence(timeout: 3) { b.tap() }
@@ -119,7 +130,7 @@ final class ScreenshotTests: XCTestCase {
         snap("03_home")
 
         // Foto-Feed mit echter Gestenlogik
-        app.tabBars.buttons["Aufräumen"].tap()
+        tab("Aufräumen")
         if tap("hub.photos", "Fotos im Aufräumen-Hub") {
             dismissGestureHintIfShown(snapshot: "04a_gesture_hints")
             let stage = element("feed.stage")
@@ -195,18 +206,18 @@ final class ScreenshotTests: XCTestCase {
         if tap("hub.files", "Downloads") { settle(2.5); snap("11b_downloads"); back() }
 
         // Ordnen
-        app.tabBars.buttons["Ordnen"].tap()
+        tab("Ordnen")
         settle(1)
         if tap("organize.later", "Später") { settle(2); snap("12_later"); back() }
         if tap("organize.rules", "Regeln & Routinen") { settle(1.5); snap("13_rules"); back() }
 
         // Verlauf
-        app.tabBars.buttons["Verlauf"].tap()
+        tab("Verlauf")
         settle(1.5)
         snap("14_history")
 
         // Einstellungen
-        app.tabBars.buttons["Heute"].tap()
+        tab("Heute")
         let gear = app.buttons["Einstellungen"].firstMatch
         if waitFor(gear, 5, "Einstellungen-Zahnrad") {
             gear.tap()
@@ -249,7 +260,7 @@ final class ScreenshotTests: XCTestCase {
         if done.exists { done.tap() }
         settle(1.5)
         snap("18_dark_home")
-        app.tabBars.buttons["Aufräumen"].tap()
+        tab("Aufräumen")
         if tap("hub.photos", "Fotos (dunkel)") {
             dismissGestureHintIfShown()
             settle(2.5)

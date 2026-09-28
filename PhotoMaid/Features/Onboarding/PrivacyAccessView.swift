@@ -15,7 +15,7 @@ struct PrivacyAccessView: View {
                     .padding(AppSpacing.l).glassEffect(.regular, in: .rect(cornerRadius: AppRadii.card))
                     .accessibilityHidden(true)
                 Text("Deine Privatsphäre zuerst").font(AppTypography.title).multilineTextAlignment(.center)
-                Text("PhotoMaid analysiert deine Fotos, Videos und freigegebenen Dateien auf diesem iPhone. Es gibt keinen PhotoMaid-Server und kein Konto. Wenn du iCloud-Fotos nutzt, synchronisiert Apple deine Mediathek – auch Löschungen können dann andere Geräte betreffen.")
+                Text("PhotoMaid analysiert deine Fotos, Videos und freigegebenen Dateien auf diesem Gerät. Es gibt keinen PhotoMaid-Server und kein Konto. Wenn du iCloud-Fotos nutzt, synchronisiert Apple deine Mediathek – auch Löschungen können dann andere Geräte betreffen.")
                     .font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary).multilineTextAlignment(.center)
 
                 SurfaceCard { photosRow }

@@ -91,7 +91,7 @@ struct TodayView: View {
         MetricCard(value: Text(SizeText.bytes(d.usedBytes)),
                    caption: Text("von \(SizeText.bytes(d.totalBytes)) belegt"),
                    progress: d.totalBytes > 0 ? Double(d.usedBytes) / Double(d.totalBytes) : nil,
-                   footnote: Text("Systemwert des iPhones, nicht nur Fotos"))
+                   footnote: Text("Systemwert des Geräts, nicht nur Fotos"))
     }
 
     private var reviewCard: some View {
