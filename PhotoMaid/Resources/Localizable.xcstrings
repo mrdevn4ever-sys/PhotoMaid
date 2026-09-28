@@ -1,0 +1,3977 @@
+{
+  "sourceLanguage": "de",
+  "strings": {
+    "%@ Elemente": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ Elemente"
+          }
+        }
+      }
+    },
+    "%@ Elemente nicht vergleichbar (z. B. Live Photos, RAW+JPEG, bearbeitete Medien).": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ Elemente nicht vergleichbar (z. B. Live Photos, RAW+JPEG, bearbeitete Medien)."
+          }
+        }
+      }
+    },
+    "%@ Elemente nur in iCloud – nicht geprüft.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ Elemente nur in iCloud – nicht geprüft."
+          }
+        }
+      }
+    },
+    "%@ ab %@ zeigen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ ab %@ zeigen"
+          }
+        }
+      }
+    },
+    "%@ prüfen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ prüfen"
+          }
+        }
+      }
+    },
+    "%@ verbunden": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ verbunden"
+          }
+        }
+      }
+    },
+    "%@ verfügbar (Systemwert)": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ verfügbar (Systemwert)"
+          }
+        }
+      }
+    },
+    "%@ · %lld Einträge": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · %lld Einträge"
+          }
+        }
+      }
+    },
+    "%@ · Einmalkauf": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ · Einmalkauf"
+          }
+        }
+      }
+    },
+    "%@ älter als %lld Tage prüfen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ älter als %lld Tage prüfen"
+          }
+        }
+      }
+    },
+    "%lld Dateien endgültig löschen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Dateien endgültig löschen"
+          }
+        }
+      }
+    },
+    "%lld Dateien wurden endgültig gelöscht.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Dateien wurden endgültig gelöscht."
+          }
+        }
+      }
+    },
+    "%lld Elemente": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Elemente"
+          }
+        }
+      }
+    },
+    "%lld Elemente vorgemerkt": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Elemente vorgemerkt"
+          }
+        }
+      }
+    },
+    "%lld Fotos/Videos prüfen und entfernen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Fotos/Videos prüfen und entfernen"
+          }
+        }
+      }
+    },
+    "%lld Kopien vormerken": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Kopien vormerken"
+          }
+        }
+      }
+    },
+    "%lld MB": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld MB"
+          }
+        }
+      }
+    },
+    "%lld Medien wurden in „Zuletzt gelöscht“ verschoben.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Medien wurden in „Zuletzt gelöscht“ verschoben."
+          }
+        }
+      }
+    },
+    "%lld Tage": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld Tage"
+          }
+        }
+      }
+    },
+    "%lld endgültig löschen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld endgültig löschen"
+          }
+        }
+      }
+    },
+    "%lld identische Dateien · %@ gesamt": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld identische Dateien · %@ gesamt"
+          }
+        }
+      }
+    },
+    "%lld von %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld von %lld"
+          }
+        }
+      }
+    },
+    "%lld von %lld Elementen wurden entfernt. Der Rest bleibt vorgemerkt.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld von %lld Elementen wurden entfernt. Der Rest bleibt vorgemerkt."
+          }
+        }
+      }
+    },
+    "%lld vorgemerkt": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld vorgemerkt"
+          }
+        }
+      }
+    },
+    "%lld zurückgestellte Elemente sind wieder fällig": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld zurückgestellte Elemente sind wieder fällig"
+          }
+        }
+      }
+    },
+    "%lld über die Fotos-App entfernen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld über die Fotos-App entfernen"
+          }
+        }
+      }
+    },
+    "-qa-fixtures": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "-qa-fixtures"
+          }
+        }
+      }
+    },
+    "-qa-unconfigured-purchases": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "-qa-unconfigured-purchases"
+          }
+        }
+      }
+    },
+    "30 Tage": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 Tage"
+          }
+        }
+      }
+    },
+    "7 Tage": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "7 Tage"
+          }
+        }
+      }
+    },
+    "A · Gerät": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A · Gerät"
+          }
+        }
+      }
+    },
+    "Ab %lld · %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ab %lld · %lld"
+          }
+        }
+      }
+    },
+    "Abbrechen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abbrechen"
+          }
+        }
+      }
+    },
+    "Abgebrochen. Es wurde nichts entfernt.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abgebrochen. Es wurde nichts entfernt."
+          }
+        }
+      }
+    },
+    "Abgelehnt": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abgelehnt"
+          }
+        }
+      }
+    },
+    "Abspielen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abspielen"
+          }
+        }
+      }
+    },
+    "Abwählen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abwählen"
+          }
+        }
+      }
+    },
+    "Aktionen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktionen"
+          }
+        }
+      }
+    },
+    "Aktiv": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktiv"
+          }
+        }
+      }
+    },
+    "Aktuelles Medium": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aktuelles Medium"
+          }
+        }
+      }
+    },
+    "Alle": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle"
+          }
+        }
+      }
+    },
+    "Alle Analysen laufen auf deinem Gerät.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle Analysen laufen auf deinem Gerät."
+          }
+        }
+      }
+    },
+    "Alle Regeln laufen lokal. Hintergrundausführung ist von iOS nicht garantiert; die Prüfung erfolgt sicher beim Öffnen der App.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alle Regeln laufen lokal. Hintergrundausführung ist von iOS nicht garantiert; die Prüfung erfolgt sicher beim Öffnen der App."
+          }
+        }
+      }
+    },
+    "Analyse und Sortierung erfolgen auf deinem Gerät. Für Kauf und Werbung werden technische Daten an Apple, RevenueCat bzw. den Werbeanbieter übertragen – keine Fotos, Dateinamen oder Hashes.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Analyse und Sortierung erfolgen auf deinem Gerät. Für Kauf und Werbung werden technische Daten an Apple, RevenueCat bzw. den Werbeanbieter übertragen – keine Fotos, Dateinamen oder Hashes."
+          }
+        }
+      }
+    },
+    "Andere": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Andere"
+          }
+        }
+      }
+    },
+    "Andere Apps, System, iCloud-Inhalte und nicht freigegebene Ordner kann PhotoMaid nicht einsehen. Dafür zeigen wir bewusst keine Zahl.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Andere Apps, System, iCloud-Inhalte und nicht freigegebene Ordner kann PhotoMaid nicht einsehen. Dafür zeigen wir bewusst keine Zahl."
+          }
+        }
+      }
+    },
+    "Anderes Datum": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anderes Datum"
+          }
+        }
+      }
+    },
+    "Ansehen, sortieren und später prüfen ist unbegrenzt. Bestätigte Bereinigungen sind auf 15 pro Tag begrenzt.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ansehen, sortieren und später prüfen ist unbegrenzt. Bestätigte Bereinigungen sind auf 15 pro Tag begrenzt."
+          }
+        }
+      }
+    },
+    "Archive": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Archive"
+          }
+        }
+      }
+    },
+    "Auch keine freiwillige Werbung mehr.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auch keine freiwillige Werbung mehr."
+          }
+        }
+      }
+    },
+    "Auf später gelegt": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auf später gelegt"
+          }
+        }
+      }
+    },
+    "Aufräumen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aufräumen"
+          }
+        }
+      }
+    },
+    "Aus": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aus"
+          }
+        }
+      }
+    },
+    "Aus Auswahl entfernt": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aus Auswahl entfernt"
+          }
+        }
+      }
+    },
+    "Ausgewählt": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ausgewählt"
+          }
+        }
+      }
+    },
+    "Ausgewählte Fotos": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ausgewählte Fotos"
+          }
+        }
+      }
+    },
+    "Auslöser": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auslöser"
+          }
+        }
+      }
+    },
+    "Auswahl prüfen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auswahl prüfen"
+          }
+        }
+      }
+    },
+    "Auswahl prüfen (%lld)": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auswahl prüfen (%lld)"
+          }
+        }
+      }
+    },
+    "Auswahl verwalten": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auswahl verwalten"
+          }
+        }
+      }
+    },
+    "Auswahlkorb": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auswahlkorb"
+          }
+        }
+      }
+    },
+    "Auswahlkorb ist leer": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auswahlkorb ist leer"
+          }
+        }
+      }
+    },
+    "Auswahlkorb: %lld Elemente": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auswahlkorb: %lld Elemente"
+          }
+        }
+      }
+    },
+    "B · Für PhotoMaid sichtbar": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "B · Für PhotoMaid sichtbar"
+          }
+        }
+      }
+    },
+    "Bearbeiten": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bearbeiten"
+          }
+        }
+      }
+    },
+    "Bedienung": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bedienung"
+          }
+        }
+      }
+    },
+    "Behalten": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Behalten"
+          }
+        }
+      }
+    },
+    "Behalten + weiter": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Behalten + weiter"
+          }
+        }
+      }
+    },
+    "Behalten und weiter": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Behalten und weiter"
+          }
+        }
+      }
+    },
+    "Bekannte Größe": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bekannte Größe"
+          }
+        }
+      }
+    },
+    "Bekannte Größe ab einem Filterwert": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bekannte Größe ab einem Filterwert"
+          }
+        }
+      }
+    },
+    "Bekannte Größe ab …": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bekannte Größe ab …"
+          }
+        }
+      }
+    },
+    "Bereinigt": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bereinigt"
+          }
+        }
+      }
+    },
+    "Bereinigt (bestätigt)": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bereinigt (bestätigt)"
+          }
+        }
+      }
+    },
+    "Bereinigung nicht ausgeführt": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bereinigung nicht ausgeführt"
+          }
+        }
+      }
+    },
+    "Bilder": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bilder"
+          }
+        }
+      }
+    },
+    "Byte-identische Dateien per SHA-256, auf deinem Gerät. Gleiche Vorschaubilder allein gelten nicht als Duplikat.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Byte-identische Dateien per SHA-256, auf deinem Gerät. Gleiche Vorschaubilder allein gelten nicht als Duplikat."
+          }
+        }
+      }
+    },
+    "Byte-identische Kopien per SHA-256.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Byte-identische Kopien per SHA-256."
+          }
+        }
+      }
+    },
+    "C · Nicht einsehbar": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "C · Nicht einsehbar"
+          }
+        }
+      }
+    },
+    "CFBundleShortVersionString": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CFBundleShortVersionString"
+          }
+        }
+      }
+    },
+    "CFBundleVersion": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CFBundleVersion"
+          }
+        }
+      }
+    },
+    "Cloud-Ordner (z. B. iCloud Drive) werden nicht als lokale Quelle unterstützt.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cloud-Ordner (z. B. iCloud Drive) werden nicht als lokale Quelle unterstützt."
+          }
+        }
+      }
+    },
+    "Danach bestätigst du im Systemdialog. Die Medien kommen in „Zuletzt gelöscht“.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Danach bestätigst du im Systemdialog. Die Medien kommen in „Zuletzt gelöscht“."
+          }
+        }
+      }
+    },
+    "Das Ergebnis wird beim nächsten Start abgeglichen. Es wird nichts erneut gelöscht.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Ergebnis wird beim nächsten Start abgeglichen. Es wird nichts erneut gelöscht."
+          }
+        }
+      }
+    },
+    "Das Tageslimit von 15 Bereinigungen bleibt auch in der Vorschau bestehen.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das Tageslimit von 15 Bereinigungen bleibt auch in der Vorschau bestehen."
+          }
+        }
+      }
+    },
+    "Das kann nicht rückgängig gemacht werden.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Das kann nicht rückgängig gemacht werden."
+          }
+        }
+      }
+    },
+    "Dateien": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dateien"
+          }
+        }
+      }
+    },
+    "Dateien aus verbundenen Ordnern": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dateien aus verbundenen Ordnern"
+          }
+        }
+      }
+    },
+    "Dateien durchsuchen …": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dateien durchsuchen …"
+          }
+        }
+      }
+    },
+    "Dateien endgültig löschen?": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dateien endgültig löschen?"
+          }
+        }
+      }
+    },
+    "Dateien siehst du nur aus Ordnern, die du selbst auswählst. Das geht jederzeit unter Aufräumen › Dateien.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dateien siehst du nur aus Ordnern, die du selbst auswählst. Das geht jederzeit unter Aufräumen › Dateien."
+          }
+        }
+      }
+    },
+    "Dateien werden endgültig gelöscht. Dafür gibt es keinen Papierkorb und kein Rückgängig.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dateien werden endgültig gelöscht. Dafür gibt es keinen Papierkorb und kein Rückgängig."
+          }
+        }
+      }
+    },
+    "Dateityp": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dateityp"
+          }
+        }
+      }
+    },
+    "Datenschutz & Zugriff": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datenschutz & Zugriff"
+          }
+        }
+      }
+    },
+    "Datenschutzerklärung": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datenschutzerklärung"
+          }
+        }
+      }
+    },
+    "Datum ändern": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Datum ändern"
+          }
+        }
+      }
+    },
+    "Dauerhaft aktive Regeln & Routinen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dauerhaft aktive Regeln & Routinen"
+          }
+        }
+      }
+    },
+    "Dauerhaft aktive Routinen sind Teil von PhotoMaid Pro. Regeln kannst du trotzdem anlegen.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dauerhaft aktive Routinen sind Teil von PhotoMaid Pro. Regeln kannst du trotzdem anlegen."
+          }
+        }
+      }
+    },
+    "Dein Kauf wurde wiederhergestellt.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dein Kauf wurde wiederhergestellt."
+          }
+        }
+      }
+    },
+    "Deine Privatsphäre zuerst": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deine Privatsphäre zuerst"
+          }
+        }
+      }
+    },
+    "Der Kauf ist ausstehend. Pro wird aktiv, sobald er genehmigt ist.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Kauf ist ausstehend. Pro wird aktiv, sobald er genehmigt ist."
+          }
+        }
+      }
+    },
+    "Der Kauf konnte nicht abgeschlossen werden.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Kauf konnte nicht abgeschlossen werden."
+          }
+        }
+      }
+    },
+    "Der Ordner konnte nicht verbunden werden.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Ordner konnte nicht verbunden werden."
+          }
+        }
+      }
+    },
+    "Der Termin wurde nicht gespeichert.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Termin wurde nicht gespeichert."
+          }
+        }
+      }
+    },
+    "Der Zugriff ist auf diesem Gerät eingeschränkt (z. B. durch Bildschirmzeit).": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Zugriff ist auf diesem Gerät eingeschränkt (z. B. durch Bildschirmzeit)."
+          }
+        }
+      }
+    },
+    "Der Zugriff wurde abgelehnt. Du kannst ihn in den iOS-Einstellungen für PhotoMaid ändern.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Zugriff wurde abgelehnt. Du kannst ihn in den iOS-Einstellungen für PhotoMaid ändern."
+          }
+        }
+      }
+    },
+    "Der lokale Speicher konnte nicht geöffnet werden.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der lokale Speicher konnte nicht geöffnet werden."
+          }
+        }
+      }
+    },
+    "Die Anzeige wurde vorzeitig geschlossen. Es wurde nichts freigeschaltet.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Anzeige wurde vorzeitig geschlossen. Es wurde nichts freigeschaltet."
+          }
+        }
+      }
+    },
+    "Die Auswahl hat sich geändert. Bitte prüfe sie erneut.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Auswahl hat sich geändert. Bitte prüfe sie erneut."
+          }
+        }
+      }
+    },
+    "Die Entscheidung wurde nicht gespeichert. Bitte erneut versuchen.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Entscheidung wurde nicht gespeichert. Bitte erneut versuchen."
+          }
+        }
+      }
+    },
+    "Die Werbe-Vorschau ist gerade nicht verfügbar.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Werbe-Vorschau ist gerade nicht verfügbar."
+          }
+        }
+      }
+    },
+    "Die Werbe-Vorschau ist in dieser Version noch nicht verfügbar.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Werbe-Vorschau ist in dieser Version noch nicht verfügbar."
+          }
+        }
+      }
+    },
+    "Die Änderung wurde nicht gespeichert.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Änderung wurde nicht gespeichert."
+          }
+        }
+      }
+    },
+    "Dieses Medium liegt nur in iCloud. PhotoMaid lädt es nicht automatisch herunter und trifft ohne Vorschau keine Entscheidung.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dieses Medium liegt nur in iCloud. PhotoMaid lädt es nicht automatisch herunter und trifft ohne Vorschau keine Entscheidung."
+          }
+        }
+      }
+    },
+    "Dokumente": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dokumente"
+          }
+        }
+      }
+    },
+    "Downloads": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Downloads"
+          }
+        }
+      }
+    },
+    "Dunkel": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dunkel"
+          }
+        }
+      }
+    },
+    "Duplikate": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Duplikate"
+          }
+        }
+      }
+    },
+    "Durchgang abgeschlossen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Durchgang abgeschlossen"
+          }
+        }
+      }
+    },
+    "Ein früherer Kauf wurde erstattet oder widerrufen.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ein früherer Kauf wurde erstattet oder widerrufen."
+          }
+        }
+      }
+    },
+    "Eine aufgeräumte Galerie für das, was zählt": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eine aufgeräumte Galerie für das, was zählt"
+          }
+        }
+      }
+    },
+    "Eine frühere Bereinigung konnte nicht eindeutig abgeglichen werden. Es wird nichts erneut gelöscht.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eine frühere Bereinigung konnte nicht eindeutig abgeglichen werden. Es wird nichts erneut gelöscht."
+          }
+        }
+      }
+    },
+    "Eingeschränkt": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eingeschränkt"
+          }
+        }
+      }
+    },
+    "Einmaliger Kauf": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einmaliger Kauf"
+          }
+        }
+      }
+    },
+    "Einmalkauf": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einmalkauf"
+          }
+        }
+      }
+    },
+    "Einrichten und vergessen – nur Review-Aufgaben": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einrichten und vergessen – nur Review-Aufgaben"
+          }
+        }
+      }
+    },
+    "Einrichten und vergessen. PhotoMaid arbeitet auf deinem Gerät und erstellt nur Prüfaufgaben.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einrichten und vergessen. PhotoMaid arbeitet auf deinem Gerät und erstellt nur Prüfaufgaben."
+          }
+        }
+      }
+    },
+    "Einstellung konnte nicht gespeichert werden.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einstellung konnte nicht gespeichert werden."
+          }
+        }
+      }
+    },
+    "Einstellungen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Einstellungen"
+          }
+        }
+      }
+    },
+    "Elemente": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elemente"
+          }
+        }
+      }
+    },
+    "Entscheiden": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entscheiden"
+          }
+        }
+      }
+    },
+    "Ergebnis": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ergebnis"
+          }
+        }
+      }
+    },
+    "Erinnerung senden": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erinnerung senden"
+          }
+        }
+      }
+    },
+    "Erlaubt": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erlaubt"
+          }
+        }
+      }
+    },
+    "Erneut prüfen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erneut prüfen"
+          }
+        }
+      }
+    },
+    "Erneut versuchen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erneut versuchen"
+          }
+        }
+      }
+    },
+    "Erscheinungsbild": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erscheinungsbild"
+          }
+        }
+      }
+    },
+    "Erweiterte Datei- und Speicherwerkzeuge": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erweiterte Datei- und Speicherwerkzeuge"
+          }
+        }
+      }
+    },
+    "Es wird nichts gelöscht, bevor du die Auswahl prüfst und bestätigst.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Es wird nichts gelöscht, bevor du die Auswahl prüfst und bestätigst."
+          }
+        }
+      }
+    },
+    "Es wurde kein Kauf zum Wiederherstellen gefunden.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Es wurde kein Kauf zum Wiederherstellen gefunden."
+          }
+        }
+      }
+    },
+    "Es wurde nichts entfernt.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Es wurde nichts entfernt."
+          }
+        }
+      }
+    },
+    "Etwas hat nicht funktioniert": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Etwas hat nicht funktioniert"
+          }
+        }
+      }
+    },
+    "Exakt identische Kopien": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exakt identische Kopien"
+          }
+        }
+      }
+    },
+    "Exakte Duplikate finden": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exakte Duplikate finden"
+          }
+        }
+      }
+    },
+    "Exakte Kopien (Hash-bestätigt)": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exakte Kopien (Hash-bestätigt)"
+          }
+        }
+      }
+    },
+    "Fertig": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fertig"
+          }
+        }
+      }
+    },
+    "Filter": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Filter"
+          }
+        }
+      }
+    },
+    "Filter: ab %lld MB": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Filter: ab %lld MB"
+          }
+        }
+      }
+    },
+    "Finde und entferne, was du nicht brauchst – auf deinem Gerät.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finde und entferne, was du nicht brauchst – auf deinem Gerät."
+          }
+        }
+      }
+    },
+    "Foto": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto"
+          }
+        }
+      }
+    },
+    "Fotos": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotos"
+          }
+        }
+      }
+    },
+    "Fotos & Videos": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotos & Videos"
+          }
+        }
+      }
+    },
+    "Fotos & Videos entfernen?": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotos & Videos entfernen?"
+          }
+        }
+      }
+    },
+    "Fotos prüfen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotos prüfen"
+          }
+        }
+      }
+    },
+    "Freiwillig: 30 Minuten Pro-Werkzeuge, einmal pro Tag.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freiwillig: 30 Minuten Pro-Werkzeuge, einmal pro Tag."
+          }
+        }
+      }
+    },
+    "Für diese Regel ist aktuell kein Lauf möglich.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Für diese Regel ist aktuell kein Lauf möglich."
+          }
+        }
+      }
+    },
+    "Für verbundene Ordner.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Für verbundene Ordner."
+          }
+        }
+      }
+    },
+    "Gerade ist keine Anzeige verfügbar.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gerade ist keine Anzeige verfügbar."
+          }
+        }
+      }
+    },
+    "Gerätespeicher nicht verfügbar": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gerätespeicher nicht verfügbar"
+          }
+        }
+      }
+    },
+    "Gestenhilfe anzeigen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gestenhilfe anzeigen"
+          }
+        }
+      }
+    },
+    "Gestenhilfe erneut anzeigen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gestenhilfe erneut anzeigen"
+          }
+        }
+      }
+    },
+    "Geändert": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geändert"
+          }
+        }
+      }
+    },
+    "Große Dateien": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Große Dateien"
+          }
+        }
+      }
+    },
+    "Große und unnötige Videos": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Große und unnötige Videos"
+          }
+        }
+      }
+    },
+    "Größe unbekannt": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Größe unbekannt"
+          }
+        }
+      }
+    },
+    "Größe unbekannt (%lld)": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Größe unbekannt (%lld)"
+          }
+        }
+      }
+    },
+    "Größte": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Größte"
+          }
+        }
+      }
+    },
+    "Haptisches Feedback": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haptisches Feedback"
+          }
+        }
+      }
+    },
+    "Hell": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hell"
+          }
+        }
+      }
+    },
+    "Heute": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heute"
+          }
+        }
+      }
+    },
+    "Heute noch %lld von %lld Bereinigungen frei": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heute noch %lld von %lld Bereinigungen frei"
+          }
+        }
+      }
+    },
+    "Heute sind noch %lld Bereinigungen frei, ausgewählt sind %lld. Wähle bis zu %lld Elemente aus – oder hol dir PhotoMaid Pro.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heute sind noch %lld Bereinigungen frei, ausgewählt sind %lld. Wähle bis zu %lld Elemente aus – oder hol dir PhotoMaid Pro."
+          }
+        }
+      }
+    },
+    "Heute sind zurückgestellte Elemente wieder fällig.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Heute sind zurückgestellte Elemente wieder fällig."
+          }
+        }
+      }
+    },
+    "Hilfe": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hilfe"
+          }
+        }
+      }
+    },
+    "Hinweis": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hinweis"
+          }
+        }
+      }
+    },
+    "Hoch": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hoch"
+          }
+        }
+      }
+    },
+    "In den nächsten 7 Tagen · %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In den nächsten 7 Tagen · %lld"
+          }
+        }
+      }
+    },
+    "In der Pro-Vorschau ist je Regel ein einmaliger Testlauf möglich.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In der Pro-Vorschau ist je Regel ein einmaliger Testlauf möglich."
+          }
+        }
+      }
+    },
+    "In dieser Auswahl warten gerade keine Elemente auf eine Entscheidung.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In dieser Auswahl warten gerade keine Elemente auf eine Entscheidung."
+          }
+        }
+      }
+    },
+    "Jeden %@ – erstellt eine Prüfaufgabe": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jeden %@ – erstellt eine Prüfaufgabe"
+          }
+        }
+      }
+    },
+    "Jetzt ausführen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jetzt ausführen"
+          }
+        }
+      }
+    },
+    "Jetzt prüfen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jetzt prüfen"
+          }
+        }
+      }
+    },
+    "Jetzt prüfen (%lld)": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jetzt prüfen (%lld)"
+          }
+        }
+      }
+    },
+    "Kauf ausstehend (z. B. Genehmigung durch Familie).": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kauf ausstehend (z. B. Genehmigung durch Familie)."
+          }
+        }
+      }
+    },
+    "Kein Abo.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kein Abo."
+          }
+        }
+      }
+    },
+    "Keine Dateien über dem Filterwert gefunden.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Dateien über dem Filterwert gefunden."
+          }
+        }
+      }
+    },
+    "Keine Werbung": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine Werbung"
+          }
+        }
+      }
+    },
+    "Keine exakten Duplikate gefunden.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keine exakten Duplikate gefunden."
+          }
+        }
+      }
+    },
+    "Kopie zum Vormerken ausgewählt": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kopie zum Vormerken ausgewählt"
+          }
+        }
+      }
+    },
+    "Korrigiert: behalten": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Korrigiert: behalten"
+          }
+        }
+      }
+    },
+    "Korrigiert: später": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Korrigiert: später"
+          }
+        }
+      }
+    },
+    "Korrigiert: vorgemerkt": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Korrigiert: vorgemerkt"
+          }
+        }
+      }
+    },
+    "Kostenlos": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kostenlos"
+          }
+        }
+      }
+    },
+    "Käufe laufen über den App Store und RevenueCat. Freiwillige Werbung stammt von einem Werbeanbieter. Dabei werden keine Fotos, Dateinamen, Pfade oder Hashes übertragen.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Käufe laufen über den App Store und RevenueCat. Freiwillige Werbung stammt von einem Werbeanbieter. Dabei werden keine Fotos, Dateinamen, Pfade oder Hashes übertragen."
+          }
+        }
+      }
+    },
+    "Käufe sind in dieser Version noch nicht verfügbar.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Käufe sind in dieser Version noch nicht verfügbar."
+          }
+        }
+      }
+    },
+    "Käufe wiederherstellen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Käufe wiederherstellen"
+          }
+        }
+      }
+    },
+    "Leiste schließen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Leiste schließen"
+          }
+        }
+      }
+    },
+    "Lesen und Löschen möglich": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lesen und Löschen möglich"
+          }
+        }
+      }
+    },
+    "Letzte 30 Tage": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Letzte 30 Tage"
+          }
+        }
+      }
+    },
+    "Links": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Links"
+          }
+        }
+      }
+    },
+    "Löschen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Löschen"
+          }
+        }
+      }
+    },
+    "Mach Platz und behalte, was du liebst.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mach Platz und behalte, was du liebst."
+          }
+        }
+      }
+    },
+    "Medien": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Medien"
+          }
+        }
+      }
+    },
+    "Medium": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Medium"
+          }
+        }
+      }
+    },
+    "Mehr Werkzeuge für das, was zählt.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mehr Werkzeuge für das, was zählt."
+          }
+        }
+      }
+    },
+    "Mehr erfahren": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mehr erfahren"
+          }
+        }
+      }
+    },
+    "Mindestens eine Quelle ist nicht erreichbar. Verbinde den Ordner erneut.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mindestens eine Quelle ist nicht erreichbar. Verbinde den Ordner erneut."
+          }
+        }
+      }
+    },
+    "Mitteilungen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mitteilungen"
+          }
+        }
+      }
+    },
+    "Mitteilungen erlauben": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mitteilungen erlauben"
+          }
+        }
+      }
+    },
+    "Morgen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Morgen"
+          }
+        }
+      }
+    },
+    "Morgen · %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Morgen · %lld"
+          }
+        }
+      }
+    },
+    "Nach neu entdeckten Elementen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nach neu entdeckten Elementen"
+          }
+        }
+      }
+    },
+    "Neue Regel hinzufügen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neue Regel hinzufügen"
+          }
+        }
+      }
+    },
+    "Neueste": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neueste"
+          }
+        }
+      }
+    },
+    "Nicht angefragt": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nicht angefragt"
+          }
+        }
+      }
+    },
+    "Nicht ausgewählt": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nicht ausgewählt"
+          }
+        }
+      }
+    },
+    "Nicht erreichbar – bitte erneut verbinden": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nicht erreichbar – bitte erneut verbinden"
+          }
+        }
+      }
+    },
+    "Nicht lokal verfügbar": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nicht lokal verfügbar"
+          }
+        }
+      }
+    },
+    "Nicht mehr vorhanden (abgeglichen)": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nicht mehr vorhanden (abgeglichen)"
+          }
+        }
+      }
+    },
+    "Nichts zu prüfen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nichts zu prüfen"
+          }
+        }
+      }
+    },
+    "Nichts zurückgestellt. Wische im Feed nach rechts, um etwas auf später zu legen.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nichts zurückgestellt. Wische im Feed nach rechts, um etwas auf später zu legen."
+          }
+        }
+      }
+    },
+    "Noch kein Ordner verbunden": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch kein Ordner verbunden"
+          }
+        }
+      }
+    },
+    "Noch keine Einträge.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noch keine Einträge."
+          }
+        }
+      }
+    },
+    "Nur Dateien mit bekannter Größe ab %lld MB. Kein Versprechen über freiwerdenden Speicher.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nur Dateien mit bekannter Größe ab %lld MB. Kein Versprechen über freiwerdenden Speicher."
+          }
+        }
+      }
+    },
+    "Nur lesen (schreibgeschützt)": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nur lesen (schreibgeschützt)"
+          }
+        }
+      }
+    },
+    "OK": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        }
+      }
+    },
+    "Offene Aufgaben": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Offene Aufgaben"
+          }
+        }
+      }
+    },
+    "Ohne Datum · %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ohne Datum · %lld"
+          }
+        }
+      }
+    },
+    "Ohne Entscheidung überspringen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ohne Entscheidung überspringen"
+          }
+        }
+      }
+    },
+    "Optional: Erinnerungen an fällige Wiedervorlagen. Ohne Dateinamen auf dem Sperrbildschirm.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Optional: Erinnerungen an fällige Wiedervorlagen. Ohne Dateinamen auf dem Sperrbildschirm."
+          }
+        }
+      }
+    },
+    "Ordnen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ordnen"
+          }
+        }
+      }
+    },
+    "Ordner (optional)": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ordner (optional)"
+          }
+        }
+      }
+    },
+    "Ordner auswählen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ordner auswählen"
+          }
+        }
+      }
+    },
+    "Ordner hinzufügen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ordner hinzufügen"
+          }
+        }
+      }
+    },
+    "Ordner, die PhotoMaid sehen darf": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ordner, die PhotoMaid sehen darf"
+          }
+        }
+      }
+    },
+    "Ordnerzugriff": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ordnerzugriff"
+          }
+        }
+      }
+    },
+    "PDFs": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PDFs"
+          }
+        }
+      }
+    },
+    "Pause": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pause"
+          }
+        }
+      }
+    },
+    "PhotoMaid": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid"
+          }
+        }
+      }
+    },
+    "PhotoMaid Pro": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid Pro"
+          }
+        }
+      }
+    },
+    "PhotoMaid Pro ansehen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid Pro ansehen"
+          }
+        }
+      }
+    },
+    "PhotoMaid Pro freischalten": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid Pro freischalten"
+          }
+        }
+      }
+    },
+    "PhotoMaid Pro ist jetzt aktiv.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid Pro ist jetzt aktiv."
+          }
+        }
+      }
+    },
+    "PhotoMaid analysiert deine Fotos, Videos und freigegebenen Dateien auf diesem iPhone. Es gibt keinen PhotoMaid-Server und kein Konto. Wenn du iCloud-Fotos nutzt, synchronisiert Apple deine Mediathek – auch Löschungen können dann andere Geräte betreffen.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid analysiert deine Fotos, Videos und freigegebenen Dateien auf diesem iPhone. Es gibt keinen PhotoMaid-Server und kein Konto. Wenn du iCloud-Fotos nutzt, synchronisiert Apple deine Mediathek – auch Löschungen können dann andere Geräte betreffen."
+          }
+        }
+      }
+    },
+    "PhotoMaid braucht Zugriff auf deine Mediathek, um Fotos und Videos zum Sortieren anzuzeigen.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid braucht Zugriff auf deine Mediathek, um Fotos und Videos zum Sortieren anzuzeigen."
+          }
+        }
+      }
+    },
+    "PhotoMaid löscht nie automatisch. Vorgemerkte Elemente prüfst du im Auswahlkorb. Fotos und Videos entfernt iOS nach deiner Bestätigung in „Zuletzt gelöscht“. Dateien werden endgültig gelöscht.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid löscht nie automatisch. Vorgemerkte Elemente prüfst du im Auswahlkorb. Fotos und Videos entfernt iOS nach deiner Bestätigung in „Zuletzt gelöscht“. Dateien werden endgültig gelöscht."
+          }
+        }
+      }
+    },
+    "Preis wird geladen …": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preis wird geladen …"
+          }
+        }
+      }
+    },
+    "Pro": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pro"
+          }
+        }
+      }
+    },
+    "Pro ist aktiv. Danke!": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pro ist aktiv. Danke!"
+          }
+        }
+      }
+    },
+    "Pro mit einer Werbe-Vorschau testen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pro mit einer Werbe-Vorschau testen"
+          }
+        }
+      }
+    },
+    "Pro-Vorschau aktiv: noch %lld Min.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pro-Vorschau aktiv: noch %lld Min."
+          }
+        }
+      }
+    },
+    "Pro-Vorschau für 30 Minuten aktiv.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pro-Vorschau für 30 Minuten aktiv."
+          }
+        }
+      }
+    },
+    "Prüfaufgabe": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prüfaufgabe"
+          }
+        }
+      }
+    },
+    "Prüfaufgaben automatisch vorbereiten.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prüfaufgaben automatisch vorbereiten."
+          }
+        }
+      }
+    },
+    "Prüfe die Auswahl, bevor etwas entfernt wird. Abgewählte Elemente bleiben erhalten.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prüfe die Auswahl, bevor etwas entfernt wird. Abgewählte Elemente bleiben erhalten."
+          }
+        }
+      }
+    },
+    "Prüfe …": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prüfe …"
+          }
+        }
+      }
+    },
+    "Prüfung abgeschlossen. Neue Aufgaben findest du unter Ordnen.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prüfung abgeschlossen. Neue Aufgaben findest du unter Ordnen."
+          }
+        }
+      }
+    },
+    "Prüfung starten": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prüfung starten"
+          }
+        }
+      }
+    },
+    "Quelle": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quelle"
+          }
+        }
+      }
+    },
+    "Rechts": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rechts"
+          }
+        }
+      }
+    },
+    "Regel": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regel"
+          }
+        }
+      }
+    },
+    "Regel-Aufgabe": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regel-Aufgabe"
+          }
+        }
+      }
+    },
+    "Regeln & Routinen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regeln & Routinen"
+          }
+        }
+      }
+    },
+    "Regeln erzeugen nur Prüfaufgaben. Es wird nie automatisch gelöscht.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regeln erzeugen nur Prüfaufgaben. Es wird nie automatisch gelöscht."
+          }
+        }
+      }
+    },
+    "Runter": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Runter"
+          }
+        }
+      }
+    },
+    "Rückgängig": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rückgängig"
+          }
+        }
+      }
+    },
+    "Rückgängig gemacht": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rückgängig gemacht"
+          }
+        }
+      }
+    },
+    "Rückgängig nicht möglich, solange eine Bereinigung läuft.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rückgängig nicht möglich, solange eine Bereinigung läuft."
+          }
+        }
+      }
+    },
+    "Rückgängig nicht möglich.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rückgängig nicht möglich."
+          }
+        }
+      }
+    },
+    "Rückgängig nicht möglich: Das Element wurde inzwischen verändert.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rückgängig nicht möglich: Das Element wurde inzwischen verändert."
+          }
+        }
+      }
+    },
+    "Schließen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schließen"
+          }
+        }
+      }
+    },
+    "Schnappschüsse aufräumen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schnappschüsse aufräumen"
+          }
+        }
+      }
+    },
+    "Screenshot": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Screenshot"
+          }
+        }
+      }
+    },
+    "Screenshots": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Screenshots"
+          }
+        }
+      }
+    },
+    "Screenshots prüfen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Screenshots prüfen"
+          }
+        }
+      }
+    },
+    "Screenshots sind eine Teilmenge der Fotos. Große Dateien und Duplikate sind überlappende Ansichten und werden nicht addiert. Mediengrößen sind ohne vollständiges Einlesen nicht bekannt und werden deshalb nicht geschätzt.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Screenshots sind eine Teilmenge der Fotos. Große Dateien und Duplikate sind überlappende Ansichten und werden nicht addiert. Mediengrößen sind ohne vollständiges Einlesen nicht bekannt und werden deshalb nicht geschätzt."
+          }
+        }
+      }
+    },
+    "So wischst du": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "So wischst du"
+          }
+        }
+      }
+    },
+    "Sobald %lld neu entdeckte Elemente warten": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sobald %lld neu entdeckte Elemente warten"
+          }
+        }
+      }
+    },
+    "Sortierung": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sortierung"
+          }
+        }
+      }
+    },
+    "Speichern": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Speichern"
+          }
+        }
+      }
+    },
+    "Speicherübersicht": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Speicherübersicht"
+          }
+        }
+      }
+    },
+    "Später": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Später"
+          }
+        }
+      }
+    },
+    "Startet die Prüfung deiner Fotos": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Startet die Prüfung deiner Fotos"
+          }
+        }
+      }
+    },
+    "Statt 15 bestätigten Bereinigungen pro Tag.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Statt 15 bestätigten Bereinigungen pro Tag."
+          }
+        }
+      }
+    },
+    "System": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System"
+          }
+        }
+      }
+    },
+    "Systemwert des iPhones, nicht nur Fotos": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Systemwert des iPhones, nicht nur Fotos"
+          }
+        }
+      }
+    },
+    "Termin gesetzt": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Termin gesetzt"
+          }
+        }
+      }
+    },
+    "Ton ausschalten": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ton ausschalten"
+          }
+        }
+      }
+    },
+    "Ton einschalten": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ton einschalten"
+          }
+        }
+      }
+    },
+    "Täglich": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Täglich"
+          }
+        }
+      }
+    },
+    "Täglich beim Öffnen – erstellt eine Prüfaufgabe": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Täglich beim Öffnen – erstellt eine Prüfaufgabe"
+          }
+        }
+      }
+    },
+    "Unbegrenzt bereinigen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unbegrenzt bereinigen"
+          }
+        }
+      }
+    },
+    "Verarbeitung auf dem Gerät": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verarbeitung auf dem Gerät"
+          }
+        }
+      }
+    },
+    "Verbindung entfernen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbindung entfernen"
+          }
+        }
+      }
+    },
+    "Verbindung entfernen löscht keine Dateien. PhotoMaid sieht nur Ordner, die du hier auswählst.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbindung entfernen löscht keine Dateien. PhotoMaid sieht nur Ordner, die du hier auswählst."
+          }
+        }
+      }
+    },
+    "Verbundene Ordner": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbundene Ordner"
+          }
+        }
+      }
+    },
+    "Verbundene Quellen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbundene Quellen"
+          }
+        }
+      }
+    },
+    "Verbundener Ordner": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verbundener Ordner"
+          }
+        }
+      }
+    },
+    "Verlauf": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verlauf"
+          }
+        }
+      }
+    },
+    "Version": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Version"
+          }
+        }
+      }
+    },
+    "Verstanden": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verstanden"
+          }
+        }
+      }
+    },
+    "Video": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Video"
+          }
+        }
+      }
+    },
+    "Video nur in iCloud – nicht lokal verfügbar": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Video nur in iCloud – nicht lokal verfügbar"
+          }
+        }
+      }
+    },
+    "Videos": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Videos"
+          }
+        }
+      }
+    },
+    "Videos prüfen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Videos prüfen"
+          }
+        }
+      }
+    },
+    "Voller Zugriff": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Voller Zugriff"
+          }
+        }
+      }
+    },
+    "Vorgemerkt": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vorgemerkt"
+          }
+        }
+      }
+    },
+    "Vorheriges": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vorheriges"
+          }
+        }
+      }
+    },
+    "Vormerken": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vormerken"
+          }
+        }
+      }
+    },
+    "Vorschau konnte nicht geladen werden": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vorschau konnte nicht geladen werden"
+          }
+        }
+      }
+    },
+    "Was PhotoMaid sehen kann": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Was PhotoMaid sehen kann"
+          }
+        }
+      }
+    },
+    "Weiter": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weiter"
+          }
+        }
+      }
+    },
+    "Weitere Aktionen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weitere Aktionen"
+          }
+        }
+      }
+    },
+    "Wenn iCloud-Fotos aktiv ist, wirken Löschungen auf allen deinen Geräten. Medien, die nur in iCloud liegen, lädt PhotoMaid nicht herunter.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn iCloud-Fotos aktiv ist, wirken Löschungen auf allen deinen Geräten. Medien, die nur in iCloud liegen, lädt PhotoMaid nicht herunter."
+          }
+        }
+      }
+    },
+    "Wieder fällig": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wieder fällig"
+          }
+        }
+      }
+    },
+    "Wieder fällig · %lld": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wieder fällig · %lld"
+          }
+        }
+      }
+    },
+    "Wiedergabeposition": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wiedergabeposition"
+          }
+        }
+      }
+    },
+    "Wiedervorlagen verwalten": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wiedervorlagen verwalten"
+          }
+        }
+      }
+    },
+    "Wird behalten": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wird behalten"
+          }
+        }
+      }
+    },
+    "Wird über die Fotos-App entfernt. iOS fragt dich zur Bestätigung. Die Medien landen in „Zuletzt gelöscht“ und können dort in der Regel noch 30 Tage wiederhergestellt werden. Mit iCloud-Fotos gilt das für alle deine Geräte.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wird über die Fotos-App entfernt. iOS fragt dich zur Bestätigung. Die Medien landen in „Zuletzt gelöscht“ und können dort in der Regel noch 30 Tage wiederhergestellt werden. Mit iCloud-Fotos gilt das für alle deine Geräte."
+          }
+        }
+      }
+    },
+    "Wisch nach links": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wisch nach links"
+          }
+        }
+      }
+    },
+    "Wisch nach oben": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wisch nach oben"
+          }
+        }
+      }
+    },
+    "Wisch nach oben, um ein Medium zu behalten. Nach links merkst du es zur Bereinigung vor, nach rechts legst du es auf später. Nach unten kommst du zum vorherigen Medium – ohne etwas zu entscheiden.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wisch nach oben, um ein Medium zu behalten. Nach links merkst du es zur Bereinigung vor, nach rechts legst du es auf später. Nach unten kommst du zum vorherigen Medium – ohne etwas zu entscheiden."
+          }
+        }
+      }
+    },
+    "Wisch nach rechts": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wisch nach rechts"
+          }
+        }
+      }
+    },
+    "Wisch nach unten": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wisch nach unten"
+          }
+        }
+      }
+    },
+    "Wische im Feed nach links, um Elemente vorzumerken.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wische im Feed nach links, um Elemente vorzumerken."
+          }
+        }
+      }
+    },
+    "Wochentag": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wochentag"
+          }
+        }
+      }
+    },
+    "Wunschdatum wählen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wunschdatum wählen"
+          }
+        }
+      }
+    },
+    "Wöchentlich": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wöchentlich"
+          }
+        }
+      }
+    },
+    "Z. B. Videos, die nur in iCloud liegen. PhotoMaid lädt sie nicht herunter.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Z. B. Videos, die nur in iCloud liegen. PhotoMaid lädt sie nicht herunter."
+          }
+        }
+      }
+    },
+    "Zeit für deine geplante Prüfung.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zeit für deine geplante Prüfung."
+          }
+        }
+      }
+    },
+    "Zugriff auf Fotos erforderlich": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zugriff auf Fotos erforderlich"
+          }
+        }
+      }
+    },
+    "Zugriff erlauben": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zugriff erlauben"
+          }
+        }
+      }
+    },
+    "Zum Anzeigen, Sortieren und – nur nach deiner Bestätigung – Entfernen ausgewählter Medien.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zum Anzeigen, Sortieren und – nur nach deiner Bestätigung – Entfernen ausgewählter Medien."
+          }
+        }
+      }
+    },
+    "Zum letzten Element": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zum letzten Element"
+          }
+        }
+      }
+    },
+    "Zur Bereinigung vormerken": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zur Bereinigung vormerken"
+          }
+        }
+      }
+    },
+    "Zurück": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zurück"
+          }
+        }
+      }
+    },
+    "Zurückgestellt. Wann wieder zeigen?": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zurückgestellt. Wann wieder zeigen?"
+          }
+        }
+      }
+    },
+    "Zurückstellung entfernen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zurückstellung entfernen"
+          }
+        }
+      }
+    },
+    "Zurückstellung entfernt": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zurückstellung entfernt"
+          }
+        }
+      }
+    },
+    "Zusätzliche Kopien: höchstens %@ ausgewählt. Das ist keine garantierte Speicherersparnis. Favoriten, Alben und Bearbeitungen können trotz gleicher Bytes relevant sein.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zusätzliche Kopien: höchstens %@ ausgewählt. Das ist keine garantierte Speicherersparnis. Favoriten, Alben und Bearbeitungen können trotz gleicher Bytes relevant sein."
+          }
+        }
+      }
+    },
+    "davon Screenshots": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "davon Screenshots"
+          }
+        }
+      }
+    },
+    "iOS erlaubt PhotoMaid keinen Zugriff auf alle Dateien. Wähle einen Ordner aus, z. B. deinen Downloads-Ordner in der Dateien-App.": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS erlaubt PhotoMaid keinen Zugriff auf alle Dateien. Wähle einen Ordner aus, z. B. deinen Downloads-Ordner in der Dateien-App."
+          }
+        }
+      }
+    },
+    "iOS-Einstellungen öffnen": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS-Einstellungen öffnen"
+          }
+        }
+      }
+    },
+    "in %lld großen Dateien": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "in %lld großen Dateien"
+          }
+        }
+      }
+    },
+    "later.%@": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "later.%@"
+          }
+        }
+      }
+    },
+    "mind. %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mind. %@"
+          }
+        }
+      }
+    },
+    "no-deletable-assets": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "no-deletable-assets"
+          }
+        }
+      }
+    },
+    "no-product": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "no-product"
+          }
+        }
+      }
+    },
+    "nothing-removed": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "nothing-removed"
+          }
+        }
+      }
+    },
+    "nothing-to-restore": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "nothing-to-restore"
+          }
+        }
+      }
+    },
+    "purchase.cachedState": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "purchase.cachedState"
+          }
+        }
+      }
+    },
+    "rule.%@": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "rule.%@"
+          }
+        }
+      }
+    },
+    "trash-not-supported": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "trash-not-supported"
+          }
+        }
+      }
+    },
+    "von %@ belegt": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "von %@ belegt"
+          }
+        }
+      }
+    },
+    "warten auf eine Entscheidung": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "warten auf eine Entscheidung"
+          }
+        }
+      }
+    },
+    "Ähnliches prüfst du selbst im Feed": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ähnliches prüfst du selbst im Feed"
+          }
+        }
+      }
+    },
+    "Älter": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Älter"
+          }
+        }
+      }
+    },
+    "Älter als …": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Älter als …"
+          }
+        }
+      }
+    },
+    "Älteste": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Älteste"
+          }
+        }
+      }
+    },
+    "Öffnet die vorgemerkten Elemente zur Prüfung": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Öffnet die vorgemerkten Elemente zur Prüfung"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

@@ -3,6 +3,6 @@
 DerivedData/
 xcuserdata/
 *.xcuserstate
-PhotoMaid.xcodeproj/
+PhotoMaid.xcodeproj/project.xcworkspace/xcuserdata/
 Artifacts/private/
 .DS_Store

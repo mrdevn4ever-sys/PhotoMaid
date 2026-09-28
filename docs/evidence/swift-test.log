@@ -1,0 +1,87 @@
+◇ Test run started.
+↳ Testing Library Version: 6.4 (efd8d65801f569d)
+↳ Target Platform: x86_64-unknown-linux-gnu
+✔ Test "Später-Gruppen nach echten Daten" passed after 0.029 seconds.
+✔ Test "Arbeitseinheit startet nur mit Fähigkeit und läuft nach Ablauf zu Ende" passed after 0.029 seconds.
+✔ Test "Zeitzonenwechsel: Fälligkeit folgt dem lokalen Kalendertag" passed after 0.029 seconds.
+✔ Test "Speicherübersicht addiert keine überlappenden Kategorien" passed after 0.029 seconds.
+✔ Test "Reward: 30 reale Minuten, idempotent, einmal pro Tag, Limit bleibt 15" passed after 0.029 seconds.
+✔ Test "Kaufzustände" with 5 test cases passed after 0.029 seconds.
+✔ Test "Pro: kein Reward, keine Ads" passed after 0.029 seconds.
+✔ Test "Uhr zurückgestellt: Vorschau konservativ abgelaufen" passed after 0.029 seconds.
+✔ Test "Vor Fälligkeit aus normalen Queues ausgeschlossen, ab Fälligkeit nur im Wieder-fällig-Bereich" passed after 0.029 seconds.
+✔ Test "Neustart: Termin bleibt erhalten, kein Auto-Delete" passed after 0.029 seconds.
+✔ Test "Sommerzeit: kurz vor Mitternacht vor der Umstellung ist 'Morgen' der nächste Kalendertag" passed after 0.029 seconds.
+✔ Test "Voreinstellungen: Morgen, 7 Tage, 30 Tage (Kalenderarithmetik)" passed after 0.029 seconds.
+✔ Test "Wiederholte Callbacks werden genau einmal abgeglichen" passed after 0.029 seconds.
+✔ Test "Mitternacht: fällig ab 00:00 des Termintags" passed after 0.029 seconds.
+✔ Test "Pro: unbegrenzt, keine Reservierung, kein Zählerstand" passed after 0.029 seconds.
+✔ Test "Dateien: belegter Teilerfolg zählt nur tatsächlich entfernte Dateien" passed after 0.029 seconds.
+✔ Test "Erneut dieselbe Entscheidung: keine doppelten Zähler oder Korbeinträge" passed after 0.029 seconds.
+✔ Test "Alias: dieselbe Ressource über zwei Quellen wird nicht doppelt gelöscht/gezählt" passed after 0.029 seconds.
+✔ Test "Zeitzonen-/Uhrwechsel: keine negativen oder doppelten Zähler" passed after 0.029 seconds.
+✔ Test "Doppeltap: dasselbe Item kann nicht zweimal in eine laufende Operation" passed after 0.029 seconds.
+✔ Test "Free-Limit an den Grenzen 0/1/14/15/16" with 5 test cases passed after 0.029 seconds.
+✔ Test "Fehler ohne belegten Teilerfolg wird nicht als Teilerfolg gewertet" passed after 0.029 seconds.
+✔ Test "Wiederholte Command-ID wird nicht doppelt angewendet" passed after 0.029 seconds.
+✔ Test "Veraltete Revision wird abgelehnt" passed after 0.030 seconds.
+✔ Test "PhotoKit-Erfolg: Items entfernt, Limit verbraucht, Verlauf ergänzt" passed after 0.030 seconds.
+✔ Test "Behalten oder Vormerken löst einen aktiven Termin im selben Commit auf" passed after 0.030 seconds.
+✔ Test "Vorbereitet, aber nie gestartet: nach Neustart abgebrochen, Kapazität frei" passed after 0.030 seconds.
+✔ Test "Abbruch der System-Bestätigung: kein verbrauchtes Limit, Items bleiben vorgemerkt" passed after 0.030 seconds.
+✔ Test "Verlorener Callback: nach Neustart reconciliationRequired, keine automatische Wiederholung" passed after 0.030 seconds.
+✔ Test "Screenshots älter als 30 Tage → Review-Aufgabe, idempotent pro Tag, keine Löschung" passed after 0.030 seconds.
+✔ Test "Wöchentlich nur am Wochentag; deaktiviert: nichts" passed after 0.030 seconds.
+✔ Test "Systemoperation erfolgreich, DB-Save fehlgeschlagen: kein Verlust, erneuter Abgleich möglich" passed after 0.030 seconds.
+✔ Test "Medium folgt nach Bindung nur der Achse" passed after 0.030 seconds.
+✔ Test "Diagonale Bewegung löst keine Aktion aus" passed after 0.030 seconds.
+✔ Test "Schwung genügt bei Mindeststrecke" passed after 0.030 seconds.
+✔ Test "Feste Bedeutung: hoch=Behalten, links=Vormerken, rechts=Später, runter=Vorheriges" passed after 0.030 seconds.
+✔ Test "Hysterese: Umkehr über den Nullpunkt wechselt die Richtung, nicht zwei Aktionen" passed after 0.030 seconds.
+✔ Test "Bereits entschiedene Items und unbekannte Größen werden nicht erfasst" passed after 0.030 seconds.
+✔ Test "Nach zehn neu entdeckten Items eine Aufgabe" passed after 0.030 seconds.
+✔ Test "40 Kandidaten, 7 verfügbar: Nutzer wählt sieben, Rest bleibt vorgemerkt" passed after 0.030 seconds.
+✔ Test "Undo stellt exakt den vorherigen Zustand wieder her" passed after 0.030 seconds.
+✔ Test "Terminwahl gehört zur Später-Aktion: Undo nimmt beides zurück" passed after 0.030 seconds.
+✔ Test "Schwung gegen die gebundene Richtung committet nicht" passed after 0.030 seconds.
+✔ Test "Jede Richtung entspricht der tatsächlichen Fingerbewegung" with 4 test cases passed after 0.030 seconds.
+✔ Test "Während commitRequested werden weitere Gesten ignoriert (max. ein Schritt)" passed after 0.030 seconds.
+✔ Test "Während Zoom/Control/VoiceOver: keine Entscheidungsgesten" passed after 0.030 seconds.
+✔ Test "Zu kurze Bewegung wird abgebrochen, keine Entscheidung" passed after 0.030 seconds.
+✔ Test "Systemabbruch führt zurück nach idle" passed after 0.030 seconds.
+✔ Test "Undo überschreibt keine neuere Entscheidung (Bereinigung) und keine laufende Operation" passed after 0.030 seconds.
+✔ Test "Neustart: Zustand wird vollständig aus der Persistenz geladen" passed after 0.030 seconds.
+✔ Test "Behalten, Vormerken, Später erzeugen je einen Verlaufseintrag" passed after 0.030 seconds.
+✔ Test "Zurückstellung entfernen macht Item wieder unentschieden (keine Löschung)" passed after 0.030 seconds.
+✔ Test "Korrektur eines früheren Items: kein Doppelzählen in der Zusammenfassung" passed after 0.030 seconds.
+✔ Test "Undo eines anderen Items nach Korrektur: Reihenfolge bleibt korrekt" passed after 0.030 seconds.
+✔ Test "Korrektur ersetzt den Stand atomar und ist als Korrektur im Verlauf" passed after 0.030 seconds.
+✔ Test "Persistenzfehler: keine stille Erfolgsmeldung, Zustand unverändert" passed after 0.030 seconds.
+✔ Test "Terminleiste gehört zum zurückgestellten Item und wird durch neue Entscheidung geschlossen" passed after 0.030 seconds.
+✔ Test "Persistenzfehler setzt die visuelle Aktion zurück" passed after 0.030 seconds.
+✔ Test "Passive Navigation erzeugt kein Behalten" passed after 0.030 seconds.
+✔ Test "Aliasquellen zählen nicht als eigene Kopie" passed after 0.030 seconds.
+✔ Test "Nullbyte, unbekannte Größe, nicht vergleichbare Assets und nicht lokale Bytes" passed after 0.030 seconds.
+✔ Test "SHA-256 entspricht Testvektor" passed after 0.030 seconds.
+✔ Test "Runter navigiert zurück, ohne Entscheidung; am Anfang: Anschlag" passed after 0.031 seconds.
+✔ Test "100 schnelle Entscheidungen: Zählung entspricht dem Ledger" passed after 0.031 seconds.
+✔ Test "Callback A verändert niemals B" passed after 0.031 seconds.
+✔ Test "Genau ein Behalten pro Wischen nach oben, genau ein Schritt weiter" passed after 0.031 seconds.
+✔ Test "Gleiche Bytes, anderer Name → eine Gruppe; Mathematik 3 × 14 MB" passed after 0.031 seconds.
+✔ Test "Schnelle Folge: zweiter Request während offenem Commit wird verworfen" passed after 0.031 seconds.
+✔ Test "Session-Ende: echte Zusammenfassung, keine Endlosschleife" passed after 0.031 seconds.
+✔ Test "Nicht geladene Vorschau darf nicht entschieden werden" passed after 0.031 seconds.
+✔ Suite "Später 2.0" passed after 0.033 seconds.
+✔ Suite "Free, Pro, Rewarded" passed after 0.033 seconds.
+✔ Test "Gleichzeitige Operationen reservieren Kapazität atomar" passed after 0.032 seconds.
+✔ Suite "Regeln und Routinen" passed after 0.033 seconds.
+✔ Suite "Feed-Session" passed after 0.033 seconds.
+✔ Suite "Gesten-State-Machine" passed after 0.033 seconds.
+✔ Test "Generierte Aktionsfolgen erhalten die Invarianten" with 5 test cases passed after 0.032 seconds.
+✔ Suite "Bereinigung, Journal, Free-Limit" passed after 0.033 seconds.
+✔ Suite "Entscheidungs-Ledger" passed after 0.033 seconds.
+✔ Test "Scan ist abbrechbar" passed after 0.034 seconds.
+✔ Test "Große Dateien werden gestreamt; Teilhash sortiert nur aus" passed after 0.045 seconds.
+✔ Suite "Exakte Duplikate" passed after 0.046 seconds.
+✔ Test run with 74 tests in 8 suites passed after 0.047 seconds.
+Swift version 6.4 (swift-6.4-RELEASE)
