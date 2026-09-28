@@ -1,6 +1,7 @@
 import Foundation
 import Observation
 import Photos
+import PhotosUI
 import PhotoMaidCore
 import UIKit
 
@@ -77,7 +78,7 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
     /// Auswahl bei eingeschränktem Zugriff verwalten (Systemdialog).
     func presentLimitedLibraryPicker() {
         guard access == .limited, let root = UIApplication.shared.topViewController else { return }
-        PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: root) { [weak self] _ in
+        PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: root) { [weak self] (_: [String]) in
             Task { @MainActor in self?.changeToken += 1 }
         }
     }
