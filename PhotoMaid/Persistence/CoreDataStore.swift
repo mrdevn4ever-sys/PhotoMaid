@@ -37,7 +37,7 @@ final class CoreDataStore: @unchecked Sendable {
         container.loadPersistentStores { _, error in loadError = error }
         if let loadError { throw StoreError.loadFailed(String(describing: loadError)) }
         context = container.newBackgroundContext()
-        context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        context.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         context.undoManager = nil
     }
 
