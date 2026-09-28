@@ -33,7 +33,9 @@ final class AppBoot {
             #if QA_FIXTURES
             let qa = ProcessInfo.processInfo.arguments.contains("-qa-fixtures")
             let store = try CoreDataStore(inMemory: qa)
-            state = .ready(try AppModel(store: store, qaFixtures: qa))
+            let app = try AppModel(store: store, qaFixtures: qa)
+            if qa { QAFixtures.install(into: app) }
+            state = .ready(app)
             #else
             state = .ready(try AppModel(store: CoreDataStore()))
             #endif

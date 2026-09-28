@@ -35,6 +35,12 @@ struct RootView: View {
             ReviewFeedView(request: request)
                 .environment(app)
         }
+        // Onboarding beim ersten Start: Datenschutz und echte Zugriffszustände.
+        .fullScreenCover(isPresented: Binding(
+            get: { !app.settings.privacyIntroSeen },
+            set: { shown in if !shown { app.updateSettings { $0.privacyIntroSeen = true } } })) {
+            PrivacyAccessView().environment(app)
+        }
         .sheet(isPresented: $showSettings) {
             NavigationStack { SettingsView() }.environment(app)
         }

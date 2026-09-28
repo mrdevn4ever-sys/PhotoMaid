@@ -13,6 +13,8 @@ struct CleanupBasketView: View {
     @State private var running = false
     @State private var resultMessage: String?
     @State private var showPro = false
+    /// Als Sheet (aus dem Feed) mit „Fertig“-Button.
+    var showsDone = false
 
     private var photoItems: [ItemRecord] { app.basket.filter { $0.item.provider == .photoLibrary } }
     private var fileItems: [ItemRecord] { app.basket.filter { $0.item.provider != .photoLibrary } }
@@ -62,6 +64,11 @@ struct CleanupBasketView: View {
             }
         }
         .safeAreaInset(edge: .bottom) { actions }
+        .toolbar {
+            if showsDone {
+                ToolbarItem(placement: .confirmationAction) { Button("Fertig") { dismiss() } }
+            }
+        }
         .task(id: app.basket.count) {
             for a in app.photos.assets(ids: photoItems.map(\.item.localIdentifier)) { assets[a.id] = a }
             selection = Set(app.basket.map(\.item))

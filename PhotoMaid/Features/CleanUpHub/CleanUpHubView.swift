@@ -39,21 +39,21 @@ struct CleanUpHubView: View {
                         media(.screenshots, "camera.viewfinder", "Screenshots", "Schnappschüsse aufräumen")
                     }
                     if filter != .media {
-                        link(symbol: "arrow.down.circle.fill", title: app.sources.downloadsSource == nil ? "Dateien" : "Downloads",
+                        link("files", symbol: "arrow.down.circle.fill", title: app.sources.downloadsSource == nil ? "Dateien" : "Downloads",
                              subtitle: app.sources.sources.isEmpty ? "Ordner auswählen" : "Dateien aus verbundenen Ordnern") {
                             FileBrowserView()
                         }
                     }
-                    link(symbol: "doc.fill", title: "Große Dateien", subtitle: "Bekannte Größe ab einem Filterwert") {
+                    link("large", symbol: "doc.fill", title: "Große Dateien", subtitle: "Bekannte Größe ab einem Filterwert") {
                         LargeFilesView()
                     }
-                    link(symbol: "square.on.square.fill", title: "Duplikate", subtitle: "Exakte Kopien (Hash-bestätigt)") {
+                    link("duplicates", symbol: "square.on.square.fill", title: "Duplikate", subtitle: "Exakte Kopien (Hash-bestätigt)") {
                         DuplicatesView()
                     }
-                    link(symbol: "chart.bar.fill", title: "Speicherübersicht", subtitle: "Was PhotoMaid sehen kann") {
+                    link("storage", symbol: "chart.bar.fill", title: "Speicherübersicht", subtitle: "Was PhotoMaid sehen kann") {
                         StorageInsightsView()
                     }
-                    link(symbol: "trash", title: "Auswahlkorb", subtitle: "\(app.basket.count) vorgemerkt") {
+                    link("basket", symbol: "trash", title: "Auswahlkorb", subtitle: "\(app.basket.count) vorgemerkt") {
                         CleanupBasketView()
                     }
                 }
@@ -79,14 +79,16 @@ struct CleanUpHubView: View {
         }
         .buttonStyle(.plain)
         .disabled(!app.photos.access.canRead)
+        .accessibilityIdentifier("hub.\(c.rawValue)")
     }
 
-    private func link<D: View>(symbol: String, title: LocalizedStringKey, subtitle: LocalizedStringKey,
+    private func link<D: View>(_ id: String, symbol: String, title: LocalizedStringKey, subtitle: LocalizedStringKey,
                                @ViewBuilder destination: @escaping () -> D) -> some View {
         NavigationLink(destination: destination) {
             SurfaceCard { SourceRow(symbol: symbol, tint: .blue, title: title, subtitle: Text(subtitle)) }
         }
         .buttonStyle(.plain)
+        .accessibilityIdentifier("hub.\(id)")
     }
 }
 
@@ -104,11 +106,11 @@ struct OrganizeView: View {
                     SurfaceCard { SourceRow(symbol: "bookmark.fill", tint: .teal, title: "Später",
                                             subtitle: Text("Wiedervorlagen verwalten"),
                                             value: Text("\(app.laterRecords.count)")) }
-                }.buttonStyle(.plain)
+                }.buttonStyle(.plain).accessibilityIdentifier("organize.later")
                 NavigationLink { RulesView(openFeed: openFeed) } label: {
                     SurfaceCard { SourceRow(symbol: "gearshape.2.fill", tint: .blue, title: "Regeln & Routinen",
                                             subtitle: Text("Einrichten und vergessen – nur Review-Aufgaben")) }
-                }.buttonStyle(.plain)
+                }.buttonStyle(.plain).accessibilityIdentifier("organize.rules")
                 NavigationLink { SourcesView() } label: {
                     SurfaceCard { SourceRow(symbol: "folder.fill", tint: .blue, title: "Verbundene Quellen",
                                             subtitle: Text("Ordner, die PhotoMaid sehen darf"),

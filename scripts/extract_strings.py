@@ -36,6 +36,8 @@ def extract():
     keys = set()
     for base in SRC:
         for f in base.rglob("*.swift"):
+            if f.name == "QAFixtures.swift":
+                continue  # nur QA-Builds, keine UI-Texte
             for line in f.read_text().splitlines():
                 s = line.strip()
                 if s.startswith("//") or SKIP_LINE.search(s):
@@ -61,6 +63,9 @@ def main():
     if "--check" in sys.argv:
         for k in missing: print("MISSING:", k)
         sys.exit(1 if missing else 0)
+    # Veraltete, von diesem Skript angelegte Einträge entfernen.
+    for k in [k for k, v in catalog["strings"].items() if k not in keys and v.get("extractionState") == "manual"]:
+        del catalog["strings"][k]
     for k in missing:
         catalog["strings"][k] = {"extractionState": "manual",
                                  "localizations": {"de": {"stringUnit": {"state": "translated", "value": k}}}}

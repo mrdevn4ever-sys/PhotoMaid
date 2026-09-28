@@ -123,7 +123,7 @@ enum PurchaseGatewayFactory {
         let key = (info["PMRevenueCatAPIKey"] as? String) ?? ""
         let entitlement = (info["PMProEntitlementID"] as? String) ?? ""
         #if QA_FIXTURES
-        if ProcessInfo.processInfo.arguments.contains("-qa-unconfigured-purchases") { return UnconfiguredPurchaseGateway() }
+        if QAFixtures.isActive { return QAPurchaseGateway(pro: QAFixtures.proEnabled) }
         #endif
         guard !key.isEmpty, !entitlement.isEmpty else { return UnconfiguredPurchaseGateway() }
         return RevenueCatPurchaseGateway(apiKey: key, entitlementID: entitlement, cache: store)

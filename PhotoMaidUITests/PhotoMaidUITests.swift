@@ -9,7 +9,7 @@ final class PhotoMaidUITests: XCTestCase {
     override func setUp() async throws {
         continueAfterFailure = false
         app = XCUIApplication()
-        app.launchArguments = ["-qa-fixtures", "-qa-unconfigured-purchases"]
+        app.launchArguments = ["-qa-fixtures", "-AppleLanguages", "(de)"]
         addUIInterruptionMonitor(withDescription: "Fotozugriff") { alert in
             for label in ["Vollen Zugriff erlauben", "Allow Full Access", "Zugriff auf alle Fotos erlauben"] {
                 if alert.buttons[label].exists { alert.buttons[label].tap(); return true }
@@ -17,6 +17,12 @@ final class PhotoMaidUITests: XCTestCase {
             return false
         }
         app.launch()
+        // Onboarding beim ersten Start schließen.
+        let next = app.buttons["Weiter"]
+        if next.waitForExistence(timeout: 8) {
+            if !next.isHittable { app.swipeUp() }
+            next.tap()
+        }
     }
 
     func testFourTabsExist() {

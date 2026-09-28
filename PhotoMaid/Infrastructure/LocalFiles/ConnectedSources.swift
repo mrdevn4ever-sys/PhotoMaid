@@ -74,7 +74,8 @@ final class ConnectedSourceStore {
             problems[id] = .unavailable
             return nil
         }
-        guard url.startAccessingSecurityScopedResource() else {
+        // App-eigene Ordner (Container) brauchen keinen security-scoped Zugriff.
+        guard url.startAccessingSecurityScopedResource() || Self.isInsideAppContainer(url) else {
             problems[id] = .accessDenied
             return nil
         }
@@ -89,7 +90,14 @@ final class ConnectedSourceStore {
         return url
     }
 
-    func endAccess(_ url: URL) { url.stopAccessingSecurityScopedResource() }
+    func endAccess(_ url: URL) {
+        if !Self.isInsideAppContainer(url) { url.stopAccessingSecurityScopedResource() }
+    }
+
+    static func isInsideAppContainer(_ url: URL) -> Bool {
+        let home = URL(fileURLWithPath: NSHomeDirectory()).standardizedFileURL.resolvingSymlinksInPath().path
+        return url.standardizedFileURL.resolvingSymlinksInPath().path.hasPrefix(home + "/")
+    }
 
     /// Führt `body` mit ausgeglichenem start/stop-Zugriff aus. Stale Bookmarks werden erneuert.
     func withAccess<T>(_ id: ConnectedSourceID, _ body: (URL) throws -> T) throws -> T {
@@ -103,11 +111,12 @@ final class ConnectedSourceStore {
             problems[id] = .unavailable
             throw SourceProblem.unavailable
         }
-        guard url.startAccessingSecurityScopedResource() else {
+        let scoped = url.startAccessingSecurityScopedResource()
+        guard scoped || Self.isInsideAppContainer(url) else {
             problems[id] = .accessDenied
             throw SourceProblem.accessDenied
         }
-        defer { url.stopAccessingSecurityScopedResource() }
+        defer { if scoped { url.stopAccessingSecurityScopedResource() } }
         if stale, let fresh = try? url.bookmarkData(options: [], includingResourceValuesForKeys: nil, relativeTo: nil) {
             var list = sources
             list[idx].bookmark = fresh

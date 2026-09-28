@@ -298,17 +298,6 @@
         }
       }
     },
-    "-qa-unconfigured-purchases": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "-qa-unconfigured-purchases"
-          }
-        }
-      }
-    },
     "30 Tage": {
       "extractionState": "manual",
       "localizations": {
@@ -470,17 +459,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Alle Regeln laufen lokal und werden beim Öffnen der App geprüft."
-          }
-        }
-      }
-    },
-    "Alle Regeln laufen lokal. Hintergrundausführung ist von iOS nicht garantiert; die Prüfung erfolgt sicher beim Öffnen der App.": {
-      "extractionState": "manual",
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alle Regeln laufen lokal. Hintergrundausführung ist von iOS nicht garantiert; die Prüfung erfolgt sicher beim Öffnen der App."
           }
         }
       }
@@ -3770,6 +3748,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "davon Screenshots"
+          }
+        }
+      }
+    },
+    "hub.%@": {
+      "extractionState": "manual",
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "hub.%@"
           }
         }
       }

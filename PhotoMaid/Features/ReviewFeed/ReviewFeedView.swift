@@ -33,7 +33,7 @@ struct ReviewFeedView: View {
         }
         .onDisappear { app.player.stop() }
         .sheet(isPresented: $showBasket) {
-            NavigationStack { CleanupBasketView() }.environment(app)
+            NavigationStack { CleanupBasketView(showsDone: true) }.environment(app)
         }
     }
 
@@ -126,6 +126,7 @@ struct ReviewFeedView: View {
         .padding(.horizontal, AppSpacing.pageMargin)
         .accessibilityElement(children: .contain)
         .accessibilityLabel(Text("Aktuelles Medium"))
+        .accessibilityIdentifier("feed.stage")
         // Zugängliche Aktionen zusätzlich zu Gesten. Keine Scroll-Aktion (verhindert unbemerktes Vormerken).
         .accessibilityAction(named: Text("Behalten und weiter")) { model.perform(.keep, reduceMotion: true) }
         .accessibilityAction(named: Text("Zur Bereinigung vormerken")) { model.perform(.markForCleanup, reduceMotion: true) }
@@ -184,6 +185,7 @@ struct ReviewFeedView: View {
                            undo: { Task { await model.undo() } })
 
             ReviewDock(count: app.basket.count, sizeText: nil) { showBasket = true }
+                .accessibilityIdentifier("feed.dock")
         }
         .padding(.horizontal, AppSpacing.pageMargin)
     }
@@ -234,6 +236,7 @@ struct LaterReceiptBar: View {
                     .buttonStyle(.glass)
             }
             Button("…", action: more).buttonStyle(.glass).accessibilityLabel(Text("Anderes Datum"))
+                .accessibilityIdentifier("later.more")
             Button(action: close) { Image(systemName: "xmark") }
                 .buttonStyle(.glass).accessibilityLabel(Text("Leiste schließen"))
         }

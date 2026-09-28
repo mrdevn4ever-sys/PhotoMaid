@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03A57C87B44C901AE9A84F10 /* ScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9BF4EE1EBE388D702DF63A /* ScreenshotTests.swift */; };
 		0612EA07554E84CB3862C65C /* ReminderScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C145D86644DDF54540F9B09 /* ReminderScheduler.swift */; };
 		0E6FE22F172BCB1CE408DC3C /* PhotoMaidCore in Frameworks */ = {isa = PBXBuildFile; productRef = 1808082F5D10D07F464C8581 /* PhotoMaidCore */; };
 		109C17BDB7E942F2C8988D49 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F83C901C10F614F635F501 /* AppModel.swift */; };
@@ -22,6 +23,7 @@
 		4687F6E6342EB87694B85D82 /* FeedPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202C3C241A5D676DECFFF6BE /* FeedPlayer.swift */; };
 		59416E6E5362475C5DFD59A4 /* PreviewPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03259A471BEA2823A6FF9616 /* PreviewPipeline.swift */; };
 		5D260106861117E7B82C989F /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 54D3841339DD52615AF28BE5 /* RevenueCat */; };
+		63F01D33C08907774E4F0F15 /* QAFixtures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BC505FFFF9E08AD1441F7D /* QAFixtures.swift */; };
 		670079069C21DF40F39D5ED5 /* RewardedAdGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = C282FC0C6A8B6BDFBC51E715 /* RewardedAdGateway.swift */; };
 		7597641FC8DC548F0DE9C8A3 /* PhotoResourceHasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891799BD5D3F02B0B20C20D4 /* PhotoResourceHasher.swift */; };
 		86CBCDF8396F8F44C5FA8456 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6114458A5DBC3E54D164A663 /* RulesView.swift */; };
@@ -79,6 +81,8 @@
 		2EBB9F28C15B7F07FDD6900B /* PhotoMaidTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PhotoMaidTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3205E0CEB83FD22A9748A3C2 /* PhotoLibraryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryService.swift; sourceTree = "<group>"; };
 		323BA230D3A6847994404505 /* LargeFilesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeFilesView.swift; sourceTree = "<group>"; };
+		34BC505FFFF9E08AD1441F7D /* QAFixtures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAFixtures.swift; sourceTree = "<group>"; };
+		3C9BF4EE1EBE388D702DF63A /* ScreenshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotTests.swift; sourceTree = "<group>"; };
 		41DB7F3940DF906A234BBEFA /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		4A248213FE6F2830CAC26700 /* PhotoMaidApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMaidApp.swift; sourceTree = "<group>"; };
 		4A6BB9BC7BC3C097756DBF9A /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 				B55809B18FB973E0C29A30AA /* Info.plist */,
 				AC6766CE7AC6CDC3701ED6ED /* PhotoMaid.entitlements */,
 				4A248213FE6F2830CAC26700 /* PhotoMaidApp.swift */,
+				34BC505FFFF9E08AD1441F7D /* QAFixtures.swift */,
 				1BF05F218DD3D22662777181 /* RootView.swift */,
 			);
 			path = App;
@@ -335,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				F5EB6665A60E5FA7A483D624 /* PhotoMaidUITests.swift */,
+				3C9BF4EE1EBE388D702DF63A /* ScreenshotTests.swift */,
 			);
 			path = PhotoMaidUITests;
 			sourceTree = "<group>";
@@ -555,6 +561,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6254E3906A80FF97057C3E3 /* PhotoMaidUITests.swift in Sources */,
+				03A57C87B44C901AE9A84F10 /* ScreenshotTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,6 +601,7 @@
 				CE9E2F5092EEC1A4E2985590 /* PrivacyAccessView.swift in Sources */,
 				8F23C369A82EB5FB34E2ADF4 /* ProView.swift in Sources */,
 				A7850950B925B7F6E51685E9 /* PurchaseGateway.swift in Sources */,
+				63F01D33C08907774E4F0F15 /* QAFixtures.swift in Sources */,
 				0612EA07554E84CB3862C65C /* ReminderScheduler.swift in Sources */,
 				2B0D93967605CF825746CF50 /* ReviewFeedView.swift in Sources */,
 				670079069C21DF40F39D5ED5 /* RewardedAdGateway.swift in Sources */,
