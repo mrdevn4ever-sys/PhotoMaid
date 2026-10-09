@@ -37442,6 +37442,107 @@
         }
       }
     },
+    "edit_adj_noise": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تقليل التشويش"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rauschreduzierung"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Noise reduction"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reducción de ruido"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Réduction du bruit"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Riduzione rumore"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ノイズ除去"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "노이즈 감소"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ruisonderdrukking"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Redukcja szumów"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Redução de ruído"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reducere zgomot"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Шумоподавление"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gürültü azaltma"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зменшення шуму"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "降噪"
+          }
+        }
+      }
+    },
     "edit_adj_saturation": {
       "extractionState": "manual",
       "localizations": {
@@ -41886,103 +41987,305 @@
         }
       }
     },
+    "edit_done_original": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تم تعديل الأصل · يمكن الرجوع عنه في تطبيق الصور"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original bearbeitet · in der Fotos-App rücksetzbar"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original edited · can be reverted in the Photos app"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original editado · se puede restaurar en la app Fotos"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original modifié · réversible dans l’app Photos"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Originale modificato · ripristinabile nell’app Foto"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "オリジナルを編集しました · 写真アプリで元に戻せます"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "원본을 편집함 · 사진 앱에서 되돌릴 수 있음"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Origineel bewerkt · terug te zetten in de Foto’s-app"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oryginał edytowany · można przywrócić w aplikacji Zdjęcia"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original editado · pode ser revertido na app Fotografias"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original editat · se poate reveni în aplicația Poze"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оригинал изменён · можно вернуть в приложении «Фото»"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orijinal düzenlendi · Fotoğraflar uygulamasında geri alınabilir"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оригінал змінено · можна повернути в програмі «Фото»"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已编辑原件 · 可在“照片”App 中复原"
+          }
+        }
+      }
+    },
     "edit_done_replaced": {
       "extractionState": "manual",
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "تم استبدال الأصل · موجود في سلة مهملات Android"
+            "value": "تم استبدال الأصل · موجود في «المحذوفة مؤخرًا»"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Original ersetzt · liegt im Android-Papierkorb"
+            "value": "Original ersetzt · liegt in „Zuletzt gelöscht“"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Original replaced · it’s in the Android trash"
+            "value": "Original replaced · it’s in “Recently Deleted”"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Original sustituido · está en la papelera de Android"
+            "value": "Original sustituido · está en «Eliminado»"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Original remplacé · il est dans la corbeille Android"
+            "value": "Original remplacé · il est dans « Suppressions récentes »"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Originale sostituito · è nel cestino di Android"
+            "value": "Originale sostituito · è in «Eliminati di recente»"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "元の写真を置き換えました・Androidのゴミ箱にあります"
+            "value": "オリジナルを置き換えました · 「最近削除した項目」にあります"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "원본을 바꿨어요 · Android 휴지통에 있어요"
+            "value": "원본을 대체함 · '최근 삭제된 항목'에 있음"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Origineel vervangen · staat in de Android-prullenbak"
+            "value": "Origineel vervangen · staat in ‘Recent verwijderd’"
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Oryginał zastąpiony · jest w koszu Androida"
+            "value": "Oryginał zastąpiony · jest w „Ostatnio usunięte”"
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Original substituído · está no lixo do Android"
+            "value": "Original substituído · está em «Apagados recentemente»"
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Original înlocuit · e în coșul Android"
+            "value": "Original înlocuit · se află în „Șterse recent”"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Оригинал заменён · он в корзине Android"
+            "value": "Оригинал заменён · он в «Недавно удаленных»"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Orijinal değiştirildi · Android çöp kutusunda"
+            "value": "Orijinal değiştirildi · \"Son Silinenler\"de"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Оригінал замінено · він у кошику Android"
+            "value": "Оригінал замінено · він у «Нещодавно видалених»"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已替换原图 · 原图在 Android 回收站"
+            "value": "已替换原件 · 位于“最近删除”中"
+          }
+        }
+      }
+    },
+    "edit_err_declined": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لم يتم التغيير – لم يحصل iOS على الإذن. الأصل بلا تغيير."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nicht geändert – iOS hat keine Erlaubnis erhalten. Das Original ist unverändert."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not changed – iOS didn’t get permission. The original is unchanged."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sin cambios: iOS no recibió permiso. El original no ha cambiado."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rien n’a changé – iOS n’a pas reçu l’autorisation. L’original est inchangé."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nessuna modifica: iOS non ha ricevuto il permesso. L’originale è invariato."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "変更されていません。iOSで許可されませんでした。オリジナルはそのままです。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "변경되지 않음 – iOS에서 허용되지 않았습니다. 원본은 그대로입니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Niet gewijzigd – iOS kreeg geen toestemming. Het origineel is ongewijzigd."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bez zmian – iOS nie otrzymał zgody. Oryginał pozostał bez zmian."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sem alterações – o iOS não recebeu autorização. O original não foi alterado."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nemodificat – iOS nu a primit permisiunea. Originalul a rămas neschimbat."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Без изменений – iOS не получил разрешение. Оригинал не изменён."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Değiştirilmedi – iOS izin almadı. Orijinal değişmedi."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Без змін – iOS не отримав дозволу. Оригінал не змінено."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "未更改 – iOS 未获得许可。原件保持不变。"
           }
         }
       }
@@ -51487,97 +51790,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "القص والتدوير والتقويم مجانية. تُحفظ أدوات الضبط والفلاتر والحجم وقص الفيديو باستخدام Pro أو أثناء تجربة 30 دقيقة."
+            "value": "القص والتدوير والتسوية مجانية. تُحفظ التعديلات والفلاتر والحجم وقص الفيديو مع Pro. التجربة مجانية دائمًا."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zuschneiden, Drehen und Begradigen sind kostenlos. Regler, Filter, Größe und Video kürzen speicherst du mit Pro oder im 30-Minuten-Test."
+            "value": "Zuschneiden, Drehen und Begradigen sind kostenlos. Regler, Filter, Größe und Video kürzen speicherst du mit Pro. Ausprobieren ist immer kostenlos."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cropping, rotating and straightening are free. Adjustments, filters, size and video trimming save with Pro or during the 30-minute test."
+            "value": "Cropping, rotating and straightening are free. Adjustments, filters, size and video trimming save with Pro. Trying them out is always free."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Recortar, girar y enderezar es gratis. Ajustes, filtros, tamaño y recorte de vídeo se guardan con Pro o durante la prueba de 30 minutos."
+            "value": "Recortar, girar y enderezar es gratis. Los ajustes, filtros, tamaño y recorte de vídeo se guardan con Pro. Probarlos siempre es gratis."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Recadrer, pivoter et redresser sont gratuits. Réglages, filtres, taille et découpe vidéo s’enregistrent avec Pro ou pendant l’essai de 30 minutes."
+            "value": "Recadrer, faire pivoter et redresser est gratuit. Les réglages, filtres, la taille et le découpage vidéo s’enregistrent avec Pro. Les essayer est toujours gratuit."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ritagliare, ruotare e raddrizzare è gratis. Regolazioni, filtri, dimensioni e taglio video si salvano con Pro o durante la prova di 30 minuti."
+            "value": "Ritagliare, ruotare e raddrizzare è gratis. Regolazioni, filtri, dimensioni e taglio video si salvano con Pro. Provarli è sempre gratis."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "切り抜き・回転・傾き補正は無料です。調整、フィルタ、サイズ、動画のトリミングはProまたは30分お試し中に保存できます。"
+            "value": "切り取り、回転、傾き補正は無料です。調整、フィルタ、サイズ、ビデオのトリミングはProで保存できます。試すのはいつでも無料です。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "자르기, 회전, 수평 맞추기는 무료예요. 조정, 필터, 크기, 동영상 다듬기는 Pro 또는 30분 체험 중에 저장할 수 있어요."
+            "value": "자르기, 회전, 수평 맞추기는 무료입니다. 조정, 필터, 크기, 비디오 다듬기는 Pro로 저장합니다. 사용해 보는 것은 언제나 무료입니다."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bijsnijden, draaien en rechtzetten zijn gratis. Aanpassingen, filters, formaat en video inkorten sla je op met Pro of tijdens de test van 30 minuten."
+            "value": "Bijsnijden, draaien en rechtzetten is gratis. Aanpassingen, filters, formaat en video inkorten bewaar je met Pro. Uitproberen is altijd gratis."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kadrowanie, obracanie i prostowanie są bezpłatne. Ustawienia, filtry, rozmiar i przycinanie wideo zapiszesz z Pro lub podczas 30-minutowego testu."
+            "value": "Kadrowanie, obracanie i prostowanie są bezpłatne. Regulacje, filtry, rozmiar i przycinanie filmów zapiszesz z Pro. Wypróbowanie jest zawsze bezpłatne."
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Recortar, rodar e endireitar é grátis. Ajustes, filtros, tamanho e corte de vídeo guardam-se com Pro ou durante o teste de 30 minutos."
+            "value": "Recortar, rodar e endireitar é gratuito. Ajustes, filtros, tamanho e corte de vídeo guardam-se com o Pro. Experimentar é sempre gratuito."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Decuparea, rotirea și îndreptarea sunt gratuite. Ajustările, filtrele, mărimea și scurtarea video se salvează cu Pro sau în testul de 30 de minute."
+            "value": "Decuparea, rotirea și îndreptarea sunt gratuite. Reglajele, filtrele, dimensiunea și scurtarea video se salvează cu Pro. Încercarea e mereu gratuită."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Обрезка, поворот и выравнивание бесплатны. Настройки, фильтры, размер и обрезку видео можно сохранить с Pro или во время 30-минутного теста."
+            "value": "Обрезка, поворот и выравнивание бесплатны. Настройки, фильтры, размер и обрезка видео сохраняются с Pro. Попробовать можно всегда бесплатно."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kırpma, döndürme ve düzeltme ücretsizdir. Ayarlar, filtreler, boyut ve video kırpma Pro ile veya 30 dakikalık deneme sırasında kaydedilir."
+            "value": "Kırpma, döndürme ve düzleştirme ücretsizdir. Ayarlar, filtreler, boyut ve video kırpma Pro ile kaydedilir. Denemek her zaman ücretsizdir."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Обрізання, поворот і вирівнювання безкоштовні. Налаштування, фільтри, розмір і обрізання відео зберігаються з Pro або під час 30-хвилинного тесту."
+            "value": "Обрізання, поворот і вирівнювання безкоштовні. Налаштування, фільтри, розмір і обрізання відео зберігаються з Pro. Спробувати завжди безкоштовно."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "裁剪、旋转和拉直免费。调整、滤镜、尺寸和视频剪辑需 Pro 或在 30 分钟试用期间保存。"
+            "value": "裁剪、旋转和拉直是免费的。调整、滤镜、尺寸和视频修剪需 Pro 才能存储。试用始终免费。"
           }
         }
       }
@@ -53602,6 +53905,208 @@
         }
       }
     },
+    "edit_save_original": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تعديل الأصل"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original bearbeiten"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit original"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Editar original"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Modifier l’original"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Modifica originale"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "オリジナルを編集"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "원본 편집"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Origineel bewerken"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edytuj oryginał"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Editar original"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Editează originalul"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Изменить оригинал"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orijinali düzenle"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Редагувати оригінал"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "编辑原件"
+          }
+        }
+      }
+    },
+    "edit_save_original_text": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يطلب iOS الإذن أولًا. يُحفظ التعديل كتعديل في تطبيق الصور، ويمكنك التراجع عنه هناك في أي وقت عبر «الرجوع إلى الأصل»."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS fragt vorher nach. Die Bearbeitung wird wie in der Fotos-App gespeichert – dort jederzeit mit „Original wiederherstellen“ rückgängig."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS asks first. The edit is saved like an edit in the Photos app – you can undo it there anytime with “Revert”."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS pregunta antes. La edición se guarda como en la app Fotos y puedes deshacerla allí cuando quieras con «Original»."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS demande d’abord. La modification est enregistrée comme dans l’app Photos – annulable à tout moment avec « Revenir à l’original »."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS chiede prima. La modifica viene salvata come nell’app Foto e puoi annullarla lì in qualsiasi momento con «Ripristina»."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "先にiOSが確認します。編集は写真アプリの編集と同じように保存され、そこでいつでも「元に戻す」で取り消せます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS가 먼저 묻습니다. 편집은 사진 앱의 편집처럼 저장되며, 그곳에서 언제든 '원본으로 복귀'로 되돌릴 수 있습니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS vraagt eerst toestemming. De bewerking wordt opgeslagen zoals in de Foto’s-app – daar altijd terug te draaien met ‘Origineel’."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS najpierw zapyta. Edycja zostanie zapisana jak w aplikacji Zdjęcia – możesz ją tam w każdej chwili cofnąć opcją „Przywróć oryginał”."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O iOS pergunta primeiro. A edição é guardada como na app Fotografias – pode anulá-la aí a qualquer momento com «Reverter»."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS întreabă mai întâi. Editarea se salvează ca în aplicația Poze – o poți anula oricând acolo cu „Revino la original”."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сначала iOS спросит разрешение. Правка сохранится как в приложении «Фото» – там её всегда можно отменить через «Вернуть оригинал»."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS önce sorar. Düzenleme Fotoğraflar uygulamasındaki gibi kaydedilir; orada istediğin zaman \"Orijinale Döndür\" ile geri alabilirsin."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Спершу iOS запитає дозвіл. Редагування збережеться як у програмі «Фото» – там його завжди можна скасувати через «Повернути оригінал»."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS 会先征求你的同意。编辑会像在“照片”App 中一样存储，可随时在那里通过“复原”撤销。"
+          }
+        }
+      }
+    },
     "edit_save_replace": {
       "extractionState": "manual",
       "localizations": {
@@ -53810,97 +54315,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "ينتقل الأصل إلى سلة مهملات Android ويمكن استعادته منها ما دام Android يحتفظ به. تتحرر المساحة بعد ذلك فقط."
+            "value": "يطلب iOS التأكيد. ينتقل الأصل إلى «المحذوفة مؤخرًا» في تطبيق الصور ويمكن عادةً استعادته من هناك خلال 30 يومًا. لا تتحرر المساحة إلا بعد ذلك."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Das Original kommt in den Android-Papierkorb und lässt sich dort wiederherstellen, solange Android es aufbewahrt. Speicher wird erst danach frei."
+            "value": "iOS fragt nach. Das Original kommt in „Zuletzt gelöscht“ der Fotos-App und lässt sich dort normalerweise 30 Tage wiederherstellen. Speicher wird erst danach frei."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The original goes to the Android trash and can be restored there for as long as Android keeps it. Space is freed only after that."
+            "value": "iOS asks to confirm. The original goes to “Recently Deleted” in the Photos app and can usually be restored there for 30 days. Space is freed only after that."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "El original va a la papelera de Android y se puede recuperar mientras Android lo conserve. El espacio se libera después."
+            "value": "iOS pide confirmación. El original pasa a «Eliminado» en la app Fotos y normalmente se puede recuperar allí durante 30 días. El espacio se libera solo después."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "L’original va dans la corbeille Android et peut y être restauré tant qu’Android le conserve. L’espace n’est libéré qu’ensuite."
+            "value": "iOS demande confirmation. L’original va dans « Suppressions récentes » de l’app Photos et peut généralement y être récupéré pendant 30 jours. L’espace n’est libéré qu’ensuite."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "L’originale va nel cestino di Android e si può ripristinare finché Android lo conserva. Lo spazio si libera solo dopo."
+            "value": "iOS chiede conferma. L’originale finisce in «Eliminati di recente» nell’app Foto e di solito si può recuperare lì per 30 giorni. Lo spazio si libera solo dopo."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "元のファイルはAndroidのゴミ箱に移動し、Androidが保管している間は復元できます。空き容量が増えるのはその後です。"
+            "value": "iOSが確認します。オリジナルは写真アプリの「最近削除した項目」に移動し、通常は30日間そこから復元できます。空き容量が増えるのはその後です。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "원본은 Android 휴지통으로 이동하며 Android가 보관하는 동안 복원할 수 있어요. 공간은 그 후에 확보돼요."
+            "value": "iOS가 확인을 요청합니다. 원본은 사진 앱의 '최근 삭제된 항목'으로 이동하며 보통 30일 동안 그곳에서 복구할 수 있습니다. 공간은 그 이후에 확보됩니다."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Het origineel gaat naar de Android-prullenbak en is te herstellen zolang Android het bewaart. Ruimte komt pas daarna vrij."
+            "value": "iOS vraagt om bevestiging. Het origineel gaat naar ‘Recent verwijderd’ in de Foto’s-app en is daar meestal 30 dagen te herstellen. Pas daarna komt ruimte vrij."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Oryginał trafia do kosza Androida i można go przywrócić, dopóki Android go przechowuje. Miejsce zwalnia się dopiero potem."
+            "value": "iOS poprosi o potwierdzenie. Oryginał trafi do „Ostatnio usunięte” w aplikacji Zdjęcia i zwykle można go tam odzyskać przez 30 dni. Miejsce zwolni się dopiero potem."
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "O original vai para o lixo do Android e pode ser recuperado enquanto o Android o guardar. O espaço só é libertado depois."
+            "value": "O iOS pede confirmação. O original passa para «Apagados recentemente» na app Fotografias e normalmente pode ser recuperado aí durante 30 dias. O espaço só é libertado depois."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Originalul ajunge în coșul Android și poate fi restaurat cât timp Android îl păstrează. Spațiul se eliberează abia după aceea."
+            "value": "iOS cere confirmarea. Originalul ajunge în „Șterse recent” din aplicația Poze și de obicei poate fi recuperat de acolo timp de 30 de zile. Spațiul se eliberează abia după aceea."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Оригинал попадёт в корзину Android, его можно восстановить, пока Android его хранит. Место освободится только потом."
+            "value": "iOS попросит подтверждение. Оригинал попадёт в «Недавно удаленные» приложения «Фото», обычно его можно восстановить там в течение 30 дней. Место освободится только после этого."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Orijinal Android çöp kutusuna gider ve Android sakladığı sürece geri yüklenebilir. Alan ancak sonra boşalır."
+            "value": "iOS onay ister. Orijinal Fotoğraflar uygulamasındaki \"Son Silinenler\"e taşınır ve genellikle orada 30 gün boyunca geri yüklenebilir. Alan ancak bundan sonra boşalır."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Оригінал потрапить у кошик Android, його можна відновити, доки Android його зберігає. Місце звільниться лише потім."
+            "value": "iOS попросить підтвердження. Оригінал потрапить до «Нещодавно видалених» у програмі «Фото», зазвичай його можна відновити там протягом 30 днів. Місце звільниться лише після цього."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "原文件会移到 Android 回收站，在 Android 保留期间可以恢复。空间要到那之后才会释放。"
+            "value": "iOS 会请你确认。原件将移到“照片”App 的“最近删除”中，通常可在 30 天内从那里恢复。之后才会释放空间。"
           }
         }
       }
@@ -59548,6 +60053,107 @@
           "stringUnit": {
             "state": "translated",
             "value": "原图在 Android 回收站"
+          }
+        }
+      }
+    },
+    "edits_orig_trashed_ios": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "الأصل في «المحذوفة مؤخرًا»"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original liegt in „Zuletzt gelöscht“"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original is in “Recently Deleted”"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "El original está en «Eliminado»"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L’original est dans « Suppressions récentes »"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L’originale è in «Eliminati di recente»"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "オリジナルは「最近削除した項目」にあります"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "원본은 '최근 삭제된 항목'에 있음"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Origineel staat in ‘Recent verwijderd’"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oryginał jest w „Ostatnio usunięte”"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O original está em «Apagados recentemente»"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Originalul este în „Șterse recent”"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оригинал в «Недавно удаленных»"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orijinal \"Son Silinenler\"de"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оригінал у «Нещодавно видалених»"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "原件在“最近删除”中"
           }
         }
       }
@@ -160211,97 +160817,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "احفظ كنسخة – يبقى الأصل دون تغيير. إذا أردت، ينتقل الأصل إلى سلة مهملات Android."
+            "value": "احفظ كنسخة – يبقى الأصل دون تغيير. إن أردت، ينتقل الأصل إلى «المحذوفة مؤخرًا»."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Als Kopie speichern – das Original bleibt unverändert. Auf Wunsch kommt das Original in den Android-Papierkorb."
+            "value": "Als Kopie speichern – das Original bleibt unverändert. Auf Wunsch kommt das Original in „Zuletzt gelöscht“."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Save as a copy – the original stays unchanged. If you choose, the original goes to the Android trash."
+            "value": "Save as a copy – the original stays unchanged. If you choose, the original goes to “Recently Deleted”."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Guarda como copia: el original no cambia. Si quieres, el original va a la papelera de Android."
+            "value": "Guarda como copia: el original no cambia. Si quieres, el original pasa a «Eliminado»."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Enregistre une copie – l’original reste inchangé. Si tu le souhaites, l’original va dans la corbeille Android."
+            "value": "Enregistrez une copie – l’original reste inchangé. Si vous le souhaitez, l’original va dans « Suppressions récentes »."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Salva come copia: l’originale resta invariato. Se vuoi, l’originale va nel cestino di Android."
+            "value": "Salva come copia: l’originale resta invariato. Se vuoi, l’originale finisce in «Eliminati di recente»."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "コピーとして保存すると元のファイルは変更されません。必要なら元のファイルをAndroidのゴミ箱に移せます。"
+            "value": "コピーとして保存 – オリジナルはそのままです。選べばオリジナルは「最近削除した項目」に移動します。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "사본으로 저장하면 원본은 그대로예요. 원하면 원본을 Android 휴지통으로 옮길 수 있어요."
+            "value": "사본으로 저장 – 원본은 그대로입니다. 원하면 원본이 '최근 삭제된 항목'으로 이동합니다."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sla op als kopie – het origineel blijft ongewijzigd. Als je wilt, gaat het origineel naar de Android-prullenbak."
+            "value": "Bewaar als kopie – het origineel blijft ongewijzigd. Als je wilt, gaat het origineel naar ‘Recent verwijderd’."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zapisz jako kopię – oryginał pozostaje bez zmian. Jeśli chcesz, oryginał trafi do kosza Androida."
+            "value": "Zapisz jako kopię – oryginał pozostaje bez zmian. Na życzenie oryginał trafi do „Ostatnio usunięte”."
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Guarda como cópia – o original fica inalterado. Se quiseres, o original vai para o lixo do Android."
+            "value": "Guarde como cópia – o original fica inalterado. Se quiser, o original passa para «Apagados recentemente»."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Salvează ca o copie – originalul rămâne neschimbat. Dacă vrei, originalul ajunge în coșul Android."
+            "value": "Salvează ca copie – originalul rămâne neschimbat. Dacă vrei, originalul ajunge în „Șterse recent”."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Сохрани как копию – оригинал не изменится. По желанию оригинал попадёт в корзину Android."
+            "value": "Сохраните копию – оригинал не изменится. По желанию оригинал попадёт в «Недавно удаленные»."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kopya olarak kaydet – orijinal değişmez. İstersen orijinal Android çöp kutusuna gider."
+            "value": "Kopya olarak kaydet – orijinal değişmez. İstersen orijinal \"Son Silinenler\"e taşınır."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Збережи як копію – оригінал не зміниться. За бажанням оригінал потрапить у кошик Android."
+            "value": "Збережіть копію – оригінал не зміниться. За бажанням оригінал потрапить до «Нещодавно видалених»."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "另存为副本，原文件保持不变。如有需要，可将原文件移到 Android 回收站。"
+            "value": "存储为副本 – 原件保持不变。如果你愿意，原件会移到“最近删除”中。"
           }
         }
       }
