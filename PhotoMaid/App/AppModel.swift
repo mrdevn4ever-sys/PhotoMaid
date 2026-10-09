@@ -228,6 +228,36 @@ final class AppModel {
 
     func record(_ item: ItemReference) -> ItemRecord { read.records[item] ?? ItemRecord(item: item) }
 
+    func makeBackup() async -> PhotoMaidBackup {
+        let state = await ledger.snapshotState()
+        var backup = PhotoMaidBackup(createdAt: Int64(Date().timeIntervalSince1970 * 1000), appVersion: AppConfig.appVersion)
+        var table = BackupRefTable()
+        for record in state.records.values where record.item.provider == .photoLibrary {
+            guard let backupState = BackupRules.state(record.disposition) else { continue }
+            let media = organize.refs[record.item.localIdentifier]
+                ?? MediaRef(id: record.item.localIdentifier, name: nil, size: nil, takenMillis: nil)
+            let index = table.add(media)
+            backup.decisions.append(BackupDecision(ref: index, state: backupState, due: record.dueDay,
+                                                   bookmarked: record.bookmarked))
+        }
+        for (id, tags) in organize.tags {
+            let index = table.add(organize.refs[id] ?? MediaRef(id: id, name: nil, size: nil, takenMillis: nil))
+            backup.tags[index] = tags
+        }
+        for (id, note) in organize.notes {
+            let index = table.add(organize.refs[id] ?? MediaRef(id: id, name: nil, size: nil, takenMillis: nil))
+            backup.notes[index] = note
+        }
+        backup.basket = organize.basket.map {
+            table.add(organize.refs[$0] ?? MediaRef(id: $0, name: nil, size: nil, takenMillis: nil))
+        }
+        backup.hiddenMedia = settings.hiddenMedia.map {
+            table.add(organize.refs[$0] ?? MediaRef(id: $0, name: nil, size: nil, takenMillis: nil))
+        }
+        backup.refs = table.refs
+        return backup
+    }
+
     var dueCount: Int {
         read.laterRecords.filter { if case .due = ReviewQueues.laterStatus($0, today: today) { true } else { false } }.count
     }
