@@ -102,7 +102,7 @@ public enum CleanupError: Error, Hashable, Sendable {
     case persistenceFailed(String)
 }
 
-/// Tageskontingent für bestätigte Bereinigungen (Free: 15 pro lokalem Kalendertag).
+/// Tageskontingent für bestätigte Bereinigungen (Free: 20 pro lokalem Kalendertag).
 public struct DayUsage: Hashable, Codable, Sendable {
     public var confirmed: Int = 0
     public var reservations: [OperationID: Int] = [:]

@@ -112,138 +112,161 @@ struct DuplicateTests {
         }
         await #expect(throws: CancellationError.self) { try await task.value }
     }
+
+    /// Masterprompt: 50 000 Metadaten, nur Kandidaten mit gleicher Größe werden gelesen.
+    @Test("50 000 Einträge: nur Kandidaten werden gelesen")
+    func fiftyThousandEntriesHashOnlyCandidates() throws {
+        let src = MemoryByteSource()
+        var candidates = (0..<50_000).map { DuplicateCandidate(item: file("m\($0)"), size: .known(1_000 + Int64($0))) }
+        candidates += [DuplicateCandidate(item: file("dupA"), size: .known(5)), DuplicateCandidate(item: file("dupB"), size: .known(5))]
+        src.contents[file("dupA")] = Data([1, 2, 3, 4, 5])
+        src.contents[file("dupB")] = Data([1, 2, 3, 4, 5])
+        let r = try DuplicateFinder().scan(candidates, source: src)
+        #expect(r.groups.count == 1)
+        #expect(src.opened == 2, "kein Full-Hash ohne Kandidatenfilter")
+    }
 }
 
-@Suite("Regeln und Routinen")
-struct RuleTests {
+@Suite("Sammlungen")
+struct CollectionTests {
     let tz = TimeZone(identifier: "Europe/Zurich")!
+    var now: Date { TestClock.date("2026-06-10T09:00", tz: "Europe/Zurich") }
 
-    func inv(_ n: Int, daysOld: Int, size: KnownSize = .known(1), now: Date, firstSeen: Date? = nil) -> InventoryItem {
-        InventoryItem(item: photo(n), source: .screenshots, createdAt: now.addingTimeInterval(Double(-daysOld) * 86_400),
-                      size: size, firstSeenAt: firstSeen ?? now)
+    func cand(_ n: Int, _ daysOld: Double?, _ size: KnownSize = .known(1)) -> CollectionCandidate {
+        CollectionCandidate(item: photo(n), createdAt: daysOld.map { now.addingTimeInterval(-$0 * 86_400) }, size: size)
     }
 
-    @Test("Screenshots älter als 30 Tage → Review-Aufgabe, idempotent pro Tag, keine Löschung")
-    func olderThan() {
-        let now = TestClock.date("2026-06-10T09:00", tz: tz.identifier)
-        let rule = ReviewRule(source: .screenshots, filter: .olderThan(days: 30), trigger: .daily)
-        let items = [inv(1, daysOld: 45, now: now), inv(2, daysOld: 5, now: now)]
-        let task = RuleEvaluator.evaluate(rule, inventory: items, records: [:], existingTaskIDs: [],
-                                          lastEvaluatedAt: nil, now: now, timeZone: tz)
-        #expect(task?.items == [photo(1)])
-        let again = RuleEvaluator.evaluate(rule, inventory: items, records: [:], existingTaskIDs: [task!.id],
-                                           lastEvaluatedAt: now, now: now.addingTimeInterval(3600), timeZone: tz)
-        #expect(again == nil, "Keine doppelte Aufgabe am selben Tag")
+    @Test func olderThan() {
+        let c = SmartCollection(source: .screenshots, filter: .olderThan(days: 30))
+        let r = SmartCollections.evaluate(c, candidates: [cand(1, 45), cand(2, 5), cand(3, nil)], records: [:], now: now, timeZone: tz)
+        #expect(r.items == [photo(1)]) // ohne Datum nicht enthalten
     }
 
-    @Test("Bereits entschiedene Items und unbekannte Größen werden nicht erfasst")
-    func filters() {
-        let now = TestClock.date("2026-06-10T09:00", tz: tz.identifier)
-        let rule = ReviewRule(source: .screenshots, filter: .knownSizeAtLeast(bytes: 1_000_000_000), trigger: .daily)
-        var kept = ItemRecord(item: photo(1)); kept.disposition = .kept
-        let task = RuleEvaluator.evaluate(rule, inventory: [
-            inv(1, daysOld: 1, size: .known(2_000_000_000), now: now),
-            inv(2, daysOld: 1, size: .unknown, now: now),
-            inv(3, daysOld: 1, size: .known(1_500_000_000), now: now),
-        ], records: [photo(1): kept], existingTaskIDs: [], lastEvaluatedAt: nil, now: now, timeZone: tz)
-        #expect(task?.items == [photo(3)])
+    @Test func largerThanExcludesDecidedAndUnknownButReportsUnknown() {
+        let c = SmartCollection(source: .videos, filter: .largerThan(bytes: 50_000_000))
+        let kept = ItemRecord(item: photo(1), disposition: .kept)
+        let r = SmartCollections.evaluate(c, candidates: [
+            cand(1, 1, .known(80_000_000)), cand(2, 1, .unknown), cand(3, 1, .known(60_000_000)),
+            cand(4, 1, .known(50_000_000)), // genau 50 MB ist nicht „größer als“
+        ], records: [photo(1): kept], now: now, timeZone: tz)
+        #expect(r.items == [photo(3)])
+        #expect(r.knownBytes == 60_000_000)
+        #expect(r.unknownSizeCount == 1)
     }
 
-    @Test("Wöchentlich nur am Wochentag; deaktiviert: nichts")
-    func weekly() {
-        let sunday = TestClock.date("2026-06-14T09:00", tz: tz.identifier)
-        let monday = TestClock.date("2026-06-15T09:00", tz: tz.identifier)
-        var rule = ReviewRule(source: .screenshots, filter: .all, trigger: .weekly(weekday: 1))
-        let items = [inv(1, daysOld: 1, now: sunday)]
-        #expect(RuleEvaluator.evaluate(rule, inventory: items, records: [:], existingTaskIDs: [], lastEvaluatedAt: nil, now: sunday, timeZone: tz) != nil)
-        #expect(RuleEvaluator.evaluate(rule, inventory: items, records: [:], existingTaskIDs: [], lastEvaluatedAt: nil, now: monday, timeZone: tz) == nil)
-        rule.isEnabled = false
-        #expect(RuleEvaluator.evaluate(rule, inventory: items, records: [:], existingTaskIDs: [], lastEvaluatedAt: nil, now: sunday, timeZone: tz) == nil)
+    @Test func alwaysCurrentNoTrigger() {
+        let c = SmartCollections.builtIns[0]
+        let items = [cand(1, 1, .known(200_000_000))]
+        #expect(SmartCollections.evaluate(c, candidates: items, records: [:], now: now, timeZone: tz).items.count == 1)
+        #expect(SmartCollections.evaluate(c, candidates: items, records: [:], now: now.addingTimeInterval(60), timeZone: tz).items.count == 1)
+        let later = ItemRecord(item: photo(1), disposition: .later, dueDay: LocalDay(now, timeZone: tz).adding(days: 2))
+        #expect(SmartCollections.evaluate(c, candidates: items, records: [photo(1): later], now: now, timeZone: tz).items.isEmpty)
     }
 
-    @Test("Nach zehn neu entdeckten Items eine Aufgabe")
-    func newlyDiscovered() {
-        let last = TestClock.date("2026-06-09T09:00", tz: tz.identifier)
-        let now = TestClock.date("2026-06-10T09:00", tz: tz.identifier)
-        let rule = ReviewRule(source: .screenshots, filter: .all, trigger: .newlyDiscovered(count: 10))
-        let nine = (0..<9).map { inv($0, daysOld: 0, now: now) }
-        let old = (100..<120).map { inv($0, daysOld: 3, now: now, firstSeen: last.addingTimeInterval(-60)) }
-        #expect(RuleEvaluator.evaluate(rule, inventory: nine + old, records: [:], existingTaskIDs: [], lastEvaluatedAt: last, now: now, timeZone: tz) == nil)
-        let ten = (0..<10).map { inv($0, daysOld: 0, now: now) }
-        #expect(RuleEvaluator.evaluate(rule, inventory: ten + old, records: [:], existingTaskIDs: [], lastEvaluatedAt: last, now: now, timeZone: tz)?.items.count == 10)
+    @Test func builtInsAreStableAndSizeChoicesFitMediaType() {
+        #expect(SmartCollections.builtIns.allSatisfy { $0.builtIn })
+        #expect(Set(SmartCollections.builtIns.map(\.id)).count == SmartCollections.builtIns.count)
+        #expect(SmartCollections.sizeChoices(.photos).allSatisfy { $0 <= 20_000_000 })
+        #expect(SmartCollections.sizeChoices(.videos)[0] >= 50_000_000)
+        // Gleiche feste IDs wie Android (UUID(0x50686f746f4d6169, 1)).
+        #expect(SmartCollections.builtIns[0].id.rawValue.uuidString.lowercased() == "50686f74-6f4d-6169-0000-000000000001")
+    }
+
+    @Test func codableRoundTrip() throws {
+        let c = SmartCollection(source: .photos, filter: .largerThan(bytes: 5_000_000))
+        let back = try JSONDecoder().decode(SmartCollection.self, from: JSONEncoder().encode(c))
+        #expect(back == c)
     }
 }
 
-@Suite("Free, Pro, Rewarded")
+@Suite("Free, Pro-Test, Lifetime Pro")
 struct CapabilityTests {
     let tz = TimeZone(identifier: "Europe/Zurich")!
+    var now: Date { TestClock.date("2026-06-10T09:00", tz: "Europe/Zurich") }
 
-    @Test("Kaufzustände", arguments: [PurchaseState.unknown, .notPurchased, .pending, .purchased, .revoked])
-    func purchaseStates(_ state: PurchaseState) {
-        let caps = Capabilities.resolve(purchase: state, rewards: RewardLedger(), now: Date())
-        if state == .purchased {
-            #expect(caps.tier == .pro && caps.dailyCleanupLimit == nil && !caps.adsAllowed && caps.exactDuplicates)
-        } else {
-            #expect(caps.tier == .free && caps.dailyCleanupLimit == 15 && !caps.exactDuplicates)
-            #expect(caps.adsAllowed == (state != .unknown))
+    @Test func purchaseStates() {
+        for state in [PurchaseState.unknown, .notPurchased, .pending, .purchased, .revoked] {
+            let caps = Capabilities.resolve(purchase: state, rewards: RewardLedger(), now: now, timeZone: tz)
+            if state == .purchased {
+                #expect(caps.tier == .lifetimePro && caps.dailyCleanupLimit == nil && !caps.adsAllowed && caps.exactDuplicates)
+                #expect(caps.batchLimit == nil)
+            } else {
+                #expect(caps.tier == .free && caps.dailyCleanupLimit == 20 && !caps.exactDuplicates)
+                #expect(caps.adsAllowed == (state != .unknown))
+                #expect(caps.batchLimit == 10)
+            }
         }
     }
 
-    @Test("Reward: 30 reale Minuten, idempotent, einmal pro Tag, Limit bleibt 15")
-    func reward() throws {
-        let now = TestClock.date("2026-06-10T09:00", tz: tz.identifier)
+    @Test func reward() throws {
         var ledger = RewardLedger()
         let w = try ledger.grant(rewardID: "r1", now: now, timeZone: tz, purchase: .notPurchased)
         #expect(try ledger.grant(rewardID: "r1", now: now.addingTimeInterval(5), timeZone: tz, purchase: .notPurchased) == w)
         #expect(throws: RewardError.dailyUnlockUsed) {
             try ledger.grant(rewardID: "r2", now: now.addingTimeInterval(3600), timeZone: tz, purchase: .notPurchased)
         }
-        let during = Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now.addingTimeInterval(10 * 60))
-        #expect(during.tier == .rewardedPreview && during.exactDuplicates && during.dailyCleanupLimit == 15)
-        #expect(!during.persistentRoutines && during.oneTimeRuleTestScan)
-        #expect(abs((during.rewardRemaining ?? 0) - 20 * 60) < 0.001)
-        let after = Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now.addingTimeInterval(30 * 60 + 1))
-        #expect(after.tier == .free)
-        // Nächster Tag: erneut möglich.
+        let during = Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now.addingTimeInterval(600), timeZone: tz)
+        #expect(during.tier == .temporaryPro && during.exactDuplicates && during.dailyCleanupLimit == 20)
+        #expect(during.hasProToolsAccess && !during.hasUnlimitedTrashAccess)
+        #expect(during.customCollections)
+        #expect(abs((during.rewardRemaining ?? 0) - 20 * 60) < 1)
+        #expect(Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now.addingTimeInterval(30 * 60 + 1), timeZone: tz).tier == .free)
         #expect(ledger.canOfferReward(now: now.addingTimeInterval(86_400), timeZone: tz, purchase: .notPurchased))
     }
 
-    @Test("Uhr zurückgestellt: Vorschau konservativ abgelaufen")
-    func clockBack() throws {
-        let now = TestClock.date("2026-06-10T09:00", tz: tz.identifier)
+    @Test func limitBonusOnlyToday() throws {
         var ledger = RewardLedger()
-        _ = try ledger.grant(rewardID: "r1", now: now, timeZone: tz, purchase: .notPurchased)
-        #expect(ledger.active(at: now.addingTimeInterval(-60)) == nil)
+        try ledger.grantBonus(rewardID: "b1", now: now, timeZone: tz, purchase: .notPurchased)
+        #expect(throws: RewardError.dailyBonusUsed) {
+            try ledger.grantBonus(rewardID: "b2", now: now.addingTimeInterval(60), timeZone: tz, purchase: .notPurchased)
+        }
+        #expect(Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now, timeZone: tz).dailyCleanupLimit == 40)
+        #expect(Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now.addingTimeInterval(86_400), timeZone: tz).dailyCleanupLimit == 20)
+        // Pro-Test und Bonus sind getrennt; der Test hebt das Limit nie auf.
+        try ledger.grant(rewardID: "t1", now: now, timeZone: tz, purchase: .notPurchased)
+        let both = Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now.addingTimeInterval(60), timeZone: tz)
+        #expect(both.tier == .temporaryPro && both.dailyCleanupLimit == 40)
     }
 
-    @Test("Pro: kein Reward, keine Ads")
-    func proNoAds() {
+    @Test func clockBackExpiresConservatively() throws {
+        var ledger = RewardLedger()
+        try ledger.grant(rewardID: "r1", now: now, timeZone: tz, purchase: .notPurchased)
+        #expect(ledger.active(at: now.addingTimeInterval(-60)) == nil)
+        #expect(ledger.usedToday(now: now.addingTimeInterval(-86_400 * 2), timeZone: tz))
+    }
+
+    @Test func proNoRewardNoAds() {
         var ledger = RewardLedger()
         #expect(throws: RewardError.alreadyPurchased) {
-            try ledger.grant(rewardID: "r", now: Date(), timeZone: tz, purchase: .purchased)
+            try ledger.grant(rewardID: "r", now: now, timeZone: tz, purchase: .purchased)
         }
-        #expect(!ledger.canOfferReward(now: Date(), timeZone: tz, purchase: .purchased))
+        #expect(!RewardLedger().canOfferReward(now: now, timeZone: tz, purchase: .purchased))
     }
 
-    @Test("Arbeitseinheit startet nur mit Fähigkeit und läuft nach Ablauf zu Ende")
-    func workUnit() throws {
-        let now = TestClock.date("2026-06-10T09:00", tz: tz.identifier)
+    @Test func workUnit() throws {
         var ledger = RewardLedger()
-        _ = try ledger.grant(rewardID: "r1", now: now, timeZone: tz, purchase: .notPurchased)
-        let caps = Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now.addingTimeInterval(29 * 60))
+        try ledger.grant(rewardID: "r1", now: now, timeZone: tz, purchase: .notPurchased)
+        let caps = Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now.addingTimeInterval(29 * 60), timeZone: tz)
         #expect(WorkUnitGrant.begin(requires: \.exactDuplicates, in: caps, now: now) != nil)
-        let expired = Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now.addingTimeInterval(31 * 60))
+        let expired = Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now.addingTimeInterval(31 * 60), timeZone: tz)
         #expect(WorkUnitGrant.begin(requires: \.exactDuplicates, in: expired, now: now) == nil)
     }
 
-    @Test("Speicherübersicht addiert keine überlappenden Kategorien")
-    func storage() {
-        let o = StorageOverview(device: DeviceCapacity(totalBytes: 128, availableForImportantUsageBytes: 64),
-                                categories: [.photos: SizeTally([.known(10), .unknown]), .videos: SizeTally([.known(20)]),
-                                             .screenshots: SizeTally([.known(5)]), .duplicates: SizeTally([.known(10)])],
-                                scannedAt: nil)
+    @Test func storageDoesNotAddOverlappingCategories() {
+        let o = StorageOverview(device: DeviceCapacity(totalBytes: 128, availableForImportantUsageBytes: 64), categories: [
+            .photos: SizeTally([.known(10), .unknown]),
+            .videos: SizeTally([.known(20)]),
+            .screenshots: SizeTally([.known(5)]),
+            .duplicates: SizeTally([.known(10)]),
+        ], scannedAt: nil)
         #expect(o.scannedTotal.knownBytes == 30)
         #expect(o.scannedTotal.isLowerBound)
         #expect(StorageCategory.screenshots.isOverlappingView)
+    }
+
+    @Test func rewardLedgerDecodesOlderFormat() throws {
+        let old = #"{"windows":[]}"#
+        let l = try JSONDecoder().decode(RewardLedger.self, from: Data(old.utf8))
+        #expect(l.bonuses.isEmpty)
     }
 }

@@ -4,8 +4,13 @@ import Foundation
 public enum DecisionRules {
     public static func transition(_ record: ItemRecord, _ action: DecisionAction) -> Result<DecisionSnapshot, DecisionError> {
         let from = record.disposition
+        // `.removed` ist endgültig – außer das Medium ist wieder da (aus „Zuletzt gelöscht“ zurückgeholt,
+        // gleiche ID). Dann darf es neu entschieden werden; Termin- und Markierungsaktionen bleiben ungültig.
         if from == .removed {
-            return .failure(.invalidTransition(from: from, action: name(action)))
+            switch action {
+            case .keep, .markForCleanup, .later: break
+            default: return .failure(.invalidTransition(from: from, action: name(action)))
+            }
         }
         switch action {
         case .keep:
@@ -19,6 +24,10 @@ public enum DecisionRules {
         case .schedule(let day):
             guard from == .later else { return .failure(.invalidTransition(from: from, action: name(action))) }
             return .success(DecisionSnapshot(disposition: .later, dueDay: day, skippedInSession: record.skippedInSession))
+        case .bookmark:
+            guard from == .later else { return .failure(.invalidTransition(from: from, action: name(action))) }
+            return .success(DecisionSnapshot(disposition: .later, dueDay: nil,
+                                             skippedInSession: record.skippedInSession, bookmarked: true))
         case .removeDeferral:
             guard from == .later else { return .failure(.invalidTransition(from: from, action: name(action))) }
             return .success(DecisionSnapshot(disposition: .undecided))
@@ -31,8 +40,8 @@ public enum DecisionRules {
     static func historyKind(from: DecisionSnapshot, action: DecisionAction) -> HistoryKind {
         switch action {
         case .keep, .markForCleanup, .later:
-            return from.disposition == .undecided ? .decision : .correction
-        case .schedule: return .scheduleChanged
+            return from.disposition == .undecided || from.disposition == .removed ? .decision : .correction
+        case .schedule, .bookmark: return .scheduleChanged
         case .removeDeferral: return .deferralRemoved
         case .unmark: return .unmarked
         }
@@ -44,6 +53,7 @@ public enum DecisionRules {
         case .markForCleanup: "markForCleanup"
         case .later: "later"
         case .schedule: "schedule"
+        case .bookmark: "bookmark"
         case .removeDeferral: "removeDeferral"
         case .unmark: "unmark"
         }
@@ -105,7 +115,11 @@ public actor DecisionLedger {
     }
 
     public func allowance(limit: Int?) -> AllowanceSnapshot {
-        let day = clock.today
+        Self.allowance(in: state, day: clock.today, limit: limit)
+    }
+
+    /// Tageskontingent aus einem bereits gelesenen Zustand (Lesemodelle der UI).
+    public nonisolated static func allowance(in state: LedgerState, day: LocalDay, limit: Int?) -> AllowanceSnapshot {
         let u = state.usage[day] ?? DayUsage()
         return AllowanceSnapshot(day: day, limit: limit, confirmed: u.confirmed, reserved: u.reserved)
     }

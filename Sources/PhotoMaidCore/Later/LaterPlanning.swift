@@ -57,12 +57,15 @@ public enum LaterStatus: Hashable, Sendable {
     case sessionOnly
     case upcoming(LocalDay)
     case due(LocalDay)
+    /// Ohne Termin beiseitegelegt: kommt nie von selbst zurück.
+    case bookmarked
 }
 
 /// Aufbau der Review-Warteschlangen aus Kandidaten und gespeicherten Entscheidungen.
 public enum ReviewQueues {
     public static func laterStatus(_ record: ItemRecord, today: LocalDay) -> LaterStatus? {
         guard record.disposition == .later else { return nil }
+        if record.bookmarked { return .bookmarked }
         guard let day = record.dueDay else { return .sessionOnly }
         return day <= today ? .due(day) : .upcoming(day)
     }
@@ -76,10 +79,11 @@ public enum ReviewQueues {
             guard let r = records[item] else { return true }
             switch r.disposition {
             case .undecided: return true
-            case .kept, .markedForCleanup, .removed: return false
+            // Kandidaten sind nur vorhandene Medien: ein entferntes Item hier wurde zurückgeholt → wieder offen.
+            case .removed: return true
+            case .kept, .markedForCleanup: return false
             case .later:
-                if r.dueDay != nil { return false }
-                return r.skippedInSession != session
+                return r.dueDay == nil && !r.bookmarked && r.skippedInSession != session
             }
         }
     }
@@ -103,6 +107,7 @@ public enum ReviewQueues {
             let key: LaterGroup
             switch status {
             case .sessionOnly: key = .noDate
+            case .bookmarked: key = .bookmarked
             case .due: key = .due
             case .upcoming(let d):
                 let n = today.days(until: d)
@@ -120,6 +125,8 @@ public enum LaterGroup: Hashable, Sendable, Comparable {
     case withinSevenDays
     case later(LocalDay)
     case noDate
+    /// „Ohne Termin“ (Lesezeichen): nur hier zu finden.
+    case bookmarked
 
     private var order: (Int, LocalDay?) {
         switch self {
@@ -128,6 +135,7 @@ public enum LaterGroup: Hashable, Sendable, Comparable {
         case .withinSevenDays: (2, nil)
         case .later(let d): (3, d)
         case .noDate: (4, nil)
+        case .bookmarked: (5, nil)
         }
     }
 

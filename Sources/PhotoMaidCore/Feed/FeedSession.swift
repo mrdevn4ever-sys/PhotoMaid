@@ -16,7 +16,7 @@ public struct LaterReceipt: Hashable, Sendable, Identifiable {
     public let laterCommandID: CommandID
     /// Revision nach der Später-Aktion.
     public let revision: Int
-    /// `true` nach Wisch schräg nach rechts oben: Termin im Drehrad selbst wählen.
+    /// `true` nach „Später mit Termin“ (VoiceOver-Aktion): Termin sofort selbst wählen.
     public let wantsCustomDate: Bool
 }
 
@@ -36,7 +36,7 @@ public struct SessionSummary: Hashable, Sendable {
 /// Eine Review-Session im Feed. Reiner Wert, testbar ohne UI.
 public struct FeedSession: Hashable, Sendable {
     public let id: ReviewSessionID
-    public let items: [ItemReference]
+    public private(set) var items: [ItemReference]
     public private(set) var index: Int = 0
     public private(set) var pending: PendingCommit?
     public private(set) var receipt: LaterReceipt?
@@ -128,6 +128,44 @@ public struct FeedSession: Hashable, Sendable {
     public mutating func jump(to newIndex: Int) {
         guard pending == nil else { return }
         index = max(0, min(newIndex, items.count))
+    }
+
+    /// Kommende Medien (ab dem aktuellen) aus der Warteschlange nehmen – ausdrücklich OHNE Entscheidung,
+    /// z. B. nach „Album ausnehmen“ oder nach einer Serienauswahl. Gesehene Medien bleiben (Zurück funktioniert).
+    public mutating func dropUpcoming(_ remove: Set<ItemReference>) {
+        guard pending == nil, !remove.isEmpty else { return }
+        items = items.enumerated().filter { $0.offset < index || !remove.contains($0.element) }.map(\.element)
+        index = min(index, items.count)
+    }
+
+    /// Kommende Medien neu ordnen (Reihenfolge-Wechsel). Gesehene bleiben vorne, nichts wird entschieden.
+    public mutating func reorderUpcoming(_ order: ([ItemReference]) -> [ItemReference]) {
+        guard pending == nil else { return }
+        let rest = Array(items[min(index, items.count)...])
+        let sorted = order(rest)
+        guard Set(sorted) == Set(rest), sorted.count == rest.count else { return }
+        items = Array(items[..<min(index, items.count)]) + sorted
+    }
+
+    /// Bearbeitet mit „Kopie speichern und Original in den Papierkorb“: das Medium an derselben Stelle gegen die neue
+    /// Datei tauschen. Keine Entscheidung (die neue Datei ist im Ledger bereits „Behalten“).
+    public mutating func replaceItem(_ old: ItemReference, with new: ItemReference) {
+        guard pending == nil, old != new, !items.contains(new), let i = items.firstIndex(of: old) else { return }
+        items[i] = new
+        if let d = decisions.removeValue(forKey: old) { decisions[new] = d }
+        previewReady.remove(old)
+        if receipt?.item == old { receipt = nil }
+    }
+
+    /// Außerhalb des Wischens getroffene Entscheidung (Serienauswahl) für die Zusammenfassung zählen.
+    public mutating func recordDecision(_ item: ItemReference, intent: FeedIntent) {
+        if intent.isDecision { decisions[item] = intent }
+    }
+
+    /// „Ohne Termin“ aus der Pille (gemeinsames Undo mit der Später-Aktion).
+    public func bookmarkCommand(receiptID: UUID) -> DecisionCommand? {
+        guard let r = receipt, r.id == receiptID else { return nil }
+        return DecisionCommand(item: r.item, expectedRevision: r.revision, action: .bookmark, amends: r.laterCommandID)
     }
 
     /// Befehl für einen Termin aus der Terminleiste.

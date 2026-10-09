@@ -33,24 +33,48 @@ public struct ItemRecord: Hashable, Codable, Sendable {
     public var dueDay: LocalDay?
     /// Nur in dieser Review-Session übersprungen (Wischen nach rechts ohne neues Datum).
     public var skippedInSession: ReviewSessionID?
+    /// Nur bei `.later`: ohne Termin beiseitegelegt (siehe `DecisionSnapshot.bookmarked`).
+    public var bookmarked: Bool
 
-    public init(item: ItemReference) {
+    public init(item: ItemReference, revision: Int = 0, disposition: Disposition = .undecided,
+                dueDay: LocalDay? = nil, skippedInSession: ReviewSessionID? = nil, bookmarked: Bool = false) {
         self.item = item
-        self.revision = 0
-        self.disposition = .undecided
-        self.dueDay = nil
-        self.skippedInSession = nil
+        self.revision = revision
+        self.disposition = disposition
+        self.dueDay = dueDay
+        self.skippedInSession = skippedInSession
+        self.bookmarked = bookmarked
     }
 
     /// Der fachliche Anteil ohne Revision (für Idempotenz- und Undo-Vergleiche).
     public var snapshot: DecisionSnapshot {
-        DecisionSnapshot(disposition: disposition, dueDay: dueDay, skippedInSession: skippedInSession)
+        DecisionSnapshot(disposition: disposition, dueDay: dueDay, skippedInSession: skippedInSession,
+                         bookmarked: bookmarked)
+    }
+
+    public func applying(_ s: DecisionSnapshot) -> ItemRecord {
+        var r = self
+        r.apply(s)
+        return r
     }
 
     mutating func apply(_ s: DecisionSnapshot) {
         disposition = s.disposition
         dueDay = s.dueDay
         skippedInSession = s.skippedInSession
+        bookmarked = s.bookmarked
+    }
+
+    private enum CodingKeys: String, CodingKey { case item, revision, disposition, dueDay, skippedInSession, bookmarked }
+
+    public init(from decoder: any Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        item = try c.decode(ItemReference.self, forKey: .item)
+        revision = try c.decodeIfPresent(Int.self, forKey: .revision) ?? 0
+        disposition = try c.decodeIfPresent(Disposition.self, forKey: .disposition) ?? .undecided
+        dueDay = try c.decodeIfPresent(LocalDay.self, forKey: .dueDay)
+        skippedInSession = try c.decodeIfPresent(ReviewSessionID.self, forKey: .skippedInSession)
+        bookmarked = try c.decodeIfPresent(Bool.self, forKey: .bookmarked) ?? false
     }
 }
 
@@ -58,11 +82,25 @@ public struct DecisionSnapshot: Hashable, Codable, Sendable {
     public var disposition: Disposition
     public var dueDay: LocalDay?
     public var skippedInSession: ReviewSessionID?
+    /// „Später ohne Termin“: kommt nie von selbst zurück, nur über die Liste „Beiseitegelegt“.
+    public var bookmarked: Bool
 
-    public init(disposition: Disposition, dueDay: LocalDay? = nil, skippedInSession: ReviewSessionID? = nil) {
+    public init(disposition: Disposition, dueDay: LocalDay? = nil, skippedInSession: ReviewSessionID? = nil,
+                bookmarked: Bool = false) {
         self.disposition = disposition
         self.dueDay = dueDay
         self.skippedInSession = skippedInSession
+        self.bookmarked = bookmarked
+    }
+
+    private enum CodingKeys: String, CodingKey { case disposition, dueDay, skippedInSession, bookmarked }
+
+    public init(from decoder: any Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        disposition = try c.decode(Disposition.self, forKey: .disposition)
+        dueDay = try c.decodeIfPresent(LocalDay.self, forKey: .dueDay)
+        skippedInSession = try c.decodeIfPresent(ReviewSessionID.self, forKey: .skippedInSession)
+        bookmarked = try c.decodeIfPresent(Bool.self, forKey: .bookmarked) ?? false
     }
 }
 
@@ -70,15 +108,17 @@ public struct DecisionSnapshot: Hashable, Codable, Sendable {
 public enum DecisionAction: Hashable, Codable, Sendable {
     /// Finger nach oben.
     case keep
-    /// Finger nach links. Vormerken, nicht löschen.
+    /// Finger nach links. In den PhotoMaid-Papierkorb, nicht löschen.
     case markForCleanup
     /// Finger nach rechts. Nur diese Session zurückstellen; ein vorhandener Termin bleibt.
     case later(session: ReviewSessionID)
-    /// Termin für ein zurückgestelltes Item setzen/ändern (Receipt-Leiste oder Später-Verwaltung).
+    /// Termin für ein zurückgestelltes Item setzen/ändern (Pille „Ändern“ oder Später-Verwaltung).
     case schedule(LocalDay)
+    /// Zurückgestelltes Item ohne Termin beiseitelegen: kommt nicht von selbst zurück.
+    case bookmark
     /// Zurückstellung entfernen. Löscht keine Datei; Item wird wieder unentschieden.
     case removeDeferral
-    /// Aus dem Auswahlkorb abwählen. Item wird wieder unentschieden.
+    /// Aus dem PhotoMaid-Papierkorb zurücklegen. Item wird wieder unentschieden.
     case unmark
 }
 
