@@ -1,3 +1,4 @@
+import QuickLook
 import SwiftUI
 
 struct ReceivedView: View {

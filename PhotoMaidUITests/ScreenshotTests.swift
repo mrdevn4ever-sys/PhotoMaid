@@ -140,16 +140,6 @@ final class ScreenshotTests: XCTestCase {
                 stage.swipeRight()                   // RECHTS = Später mit Standardtermin + weiter
                 snap("06_later_pill", settleFor: 0.9) // Pille „In 2 Tagen wieder · Ändern“
                 settle(2.5)
-                // SCHRÄG RECHTS OBEN = Später, Datum im Drehrad wählen
-                let from = stage.coordinate(withNormalizedOffset: CGVector(dx: 0.25, dy: 0.65))
-                let to = stage.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.4))
-                from.press(forDuration: 0.05, thenDragTo: to, withVelocity: .fast, thenHoldForDuration: 0)
-                let done = app.buttons["Fertig"].firstMatch
-                if waitFor(done, 6, "Drehrad nach Wisch schräg rechts oben") {
-                    snap("06b_later_picker")
-                    done.tap()
-                    settle(1)
-                }
                 stage.swipeDown()                    // RUNTER = Vorheriges, keine Entscheidung
                 settle(1.5)
                 snap("04d_after_down_previous")
@@ -171,8 +161,8 @@ final class ScreenshotTests: XCTestCase {
                             settle(1)
                         }
                     }
-                    let done = app.buttons["Fertig"].firstMatch
-                    if done.waitForExistence(timeout: 3) { done.tap() } else { app.swipeDown(velocity: .fast) }
+                    let closeDone = app.buttons["Fertig"].firstMatch
+                    if closeDone.waitForExistence(timeout: 3) { closeDone.tap() } else { app.swipeDown(velocity: .fast) }
                     settle(1.2)
                     waitFor(element("feed.stage"), 5, "Feed nach Schließen des Papierkorbs")
                 }
@@ -205,11 +195,10 @@ final class ScreenshotTests: XCTestCase {
         if tap("hub.storage", "Speicherübersicht") { settle(2.5); snap("11_storage_insights"); back() }
         if tap("hub.files", "Downloads") { settle(2.5); snap("11b_downloads"); back() }
 
-        // Ordnen
-        tab("Ordnen")
+        // Studio
+        tab("Studio")
         settle(1)
-        if tap("organize.later", "Später") { settle(2); snap("12_later"); back() }
-        if tap("organize.rules", "Regeln & Routinen") { settle(1.5); snap("13_rules"); back() }
+        snap("13_studio")
 
         // Verlauf
         tab("Verlauf")

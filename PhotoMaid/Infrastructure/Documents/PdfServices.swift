@@ -20,9 +20,10 @@ enum PdfServices {
                     let source = images[placed.index]
                     guard let cg = source.cgImage else { continue }
                     let crop = placed.crop
-                    let rect = CGRect(x: crop.left * Double(cg.width), y: crop.top * Double(cg.height),
-                                      width: (crop.right - crop.left) * Double(cg.width),
-                                      height: (crop.bottom - crop.top) * Double(cg.height)).integral
+                    let rect = CGRect(x: CGFloat(crop.left * Double(cg.width)),
+                                      y: CGFloat(crop.top * Double(cg.height)),
+                                      width: CGFloat((crop.right - crop.left) * Double(cg.width)),
+                                      height: CGFloat((crop.bottom - crop.top) * Double(cg.height))).integral
                     guard let cropped = cg.cropping(to: rect) else { continue }
                     let destination = CGRect(x: CGFloat(placed.rect.x), y: CGFloat(placed.rect.y),
                                              width: CGFloat(placed.rect.w), height: CGFloat(placed.rect.h))

@@ -1,5 +1,6 @@
 import Accelerate
 import CoreImage
+import ImageIO
 import Photos
 import PhotoMaidCore
 import Vision

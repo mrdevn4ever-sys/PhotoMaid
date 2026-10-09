@@ -16,6 +16,13 @@ Spalten:
 
 Ein Status ist nie eine Geräteabnahme. Simulator- und iPhone-Prüfungen: `docs/QA_MATRIX.md`.
 
+**A1–A9-Nachtrag (09.10.2026):** Die zuvor fehlenden App-Ansichten und ihre lokalen Framework-Pfade sind nun als
+`APP CODE` vorhanden: Studio/Collage, Film/Diashow, Werkzeuge/Stapel/GIF, Abläufe, PDF/Scanner/PDF-Studio,
+Smart Review, Archiv/Sicherung, Einstellungen/Pro/Datenschutz/Hilfe, ausgeschlossene Alben, Sammlungen,
+„Öffnen in“ und Onboarding sowie aktualisierte Tests. Die älteren zeilenweisen `OFFEN`-Markierungen unten bleiben als
+Ausgangsmatrix lesbar, sind für diese Bereiche aber durch diesen Nachtrag ersetzt. Da kein Apple-Compiler verfügbar
+ist, bedeutet `APP CODE` ausschließlich geschrieben und statisch geprüft; Build, Simulator und Gerät sind `NOT RUN`.
+
 ## 0. Grundsätze (gelten überall)
 
 | Android | iOS |

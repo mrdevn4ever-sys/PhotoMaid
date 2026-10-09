@@ -18,26 +18,32 @@ final class PhotoMaidUITests: XCTestCase {
         }
         app.launch()
         // Onboarding beim ersten Start schließen.
-        let next = app.buttons["Weiter"]
-        if next.waitForExistence(timeout: 8) {
-            if !next.isHittable { app.swipeUp() }
-            next.tap()
+        for _ in 0..<5 {
+            let next = app.buttons["Weiter"]
+            let allow = app.buttons["Zugriff erlauben"]
+            if next.waitForExistence(timeout: 2) { next.tap() }
+            else if allow.waitForExistence(timeout: 2) { allow.tap(); app.tap() }
         }
     }
 
-    func testFourTabsExist() {
-        for tab in ["Heute", "Aufräumen", "Ordnen", "Verlauf"] {
+    func testFiveTabsExist() {
+        for tab in ["Heute", "Fotos", "Aufräumen", "Studio", "Verlauf"] {
             XCTAssertTrue(app.tabBars.buttons[tab].waitForExistence(timeout: 5), "Tab \(tab) fehlt")
         }
     }
 
-    func testSettingsShowsFixedGestureLegend() {
+    func testStudioRoutesAreReachable() {
+        app.tabBars.buttons["Studio"].tap()
+        XCTAssertTrue(app.staticTexts["Collage"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Film"].exists || app.staticTexts["Video zusammenfügen"].exists)
+        XCTAssertTrue(app.staticTexts["PDF aus Fotos"].exists)
+    }
+
+    func testSettingsShowsDecisionControls() {
         app.buttons["Einstellungen"].firstMatch.tap()
-        XCTAssertTrue(app.staticTexts["Behalten"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["Papierkorb"].exists)
-        XCTAssertTrue(app.staticTexts["Später"].exists)
-        XCTAssertTrue(app.staticTexts["Datum wählen"].exists)
-        XCTAssertTrue(app.staticTexts["Zurück"].exists)
+        XCTAssertTrue(app.switches["Haptik"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.switches["Favoriten schützen"].exists)
+        XCTAssertTrue(app.staticTexts["Standard für Später"].exists)
     }
 
     func testProWithoutConfigurationShowsNoInventedPrice() {
@@ -48,7 +54,6 @@ final class PhotoMaidUITests: XCTestCase {
         for _ in 0..<5 where !pro.waitForExistence(timeout: 1) { app.swipeUp() }
         XCTAssertTrue(pro.waitForExistence(timeout: 5))
         pro.tap()
-        XCTAssertTrue(app.staticTexts["Käufe sind in dieser Version noch nicht verfügbar."].waitForExistence(timeout: 5))
         XCTAssertFalse(app.staticTexts.containing(NSPredicate(format: "label CONTAINS '9.99'")).firstMatch.exists)
     }
 

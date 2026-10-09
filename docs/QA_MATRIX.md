@@ -2,7 +2,10 @@
 
 Status: PASS / FAIL / NOT RUN / BLOCKED. Stand: siehe `IMPLEMENTATION_STATUS.md`.
 
-## Automatisiert – PhotoMaidCore (Linux, Swift 6.4, `swift test`)
+## Automatisiert – PhotoMaidCore
+
+Die folgende Tabelle ist historische Evidenz des Ausgangsstands. Für den aktuellen A1–A9-Commit ist `swift test`
+**BLOCKED**, weil in der lokalen Windows-Umgebung keine Swift-Toolchain installiert ist.
 
 | Bereich (Suite) | Status |
 |---|---|
@@ -21,10 +24,13 @@ Gesamt: **74 Testfunktionen in 8 Suites PASS** (parametrisierte Fälle zählen a
 
 | Test | Status |
 |---|---|
-| `PhotoMaidTests` (Core-Data-Roundtrip, Journal nach Neustart, Key-Value, `safeURL` Traversal/Symlink, Scanner) | NOT RUN (kein Xcode) |
-| `PhotoMaidUITests` (4 Tabs, Gestenlegende, Pro ohne erfundenen Preis, Feed-Gesten mit QA-Medien) | NOT RUN |
-| Syntaxprüfung aller 35 App-/Test-Dateien (`swiftc -parse`) | PASS |
-| Typprüfung gegen iOS-27-SDK | BLOCKED |
+| `PhotoMaidTests` (Ledger/Core Data, Dateisicherheit, Studio-/Film-/Workflow-/PDF-/Backup-Pläne) | NOT RUN (kein Xcode) |
+| `PhotoMaidUITests` (5 Tabs, Studio-Routen, Pro ohne erfundenen Preis, Feed-Gesten mit QA-Medien) | NOT RUN |
+| Syntaxprüfung aller 96 App-/Test-Dateien (`swiftc -parse`) | BLOCKED: `swiftc` fehlt |
+| Typprüfung gegen iOS-26-SDK | NOT RUN: kein macOS/Xcode |
+| i18n-Aufbau + Katalog-Check | PASS: 1008 verwendete Kennungen, 2092 Einträge, 16 Sprachen |
+| Statische View-Auflösung (alle 19 zuvor fehlenden Typen) | PASS |
+| Statische Verbotsprüfung: private PhotoKit-KVC, `if`/`switch` als Argument, Tupel-Binding | PASS; Core-Data-KVC auf eigenen Entitäten ist vorhanden und keine private Apple-Medien-API |
 
 ## Manuell / Gerät (alle NOT RUN)
 
