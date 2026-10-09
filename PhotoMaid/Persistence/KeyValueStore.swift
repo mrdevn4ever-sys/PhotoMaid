@@ -51,6 +51,16 @@ struct AnalysisCacheEntry: Codable, Hashable, Sendable {
     var aesthetics: Float?
     var isUtility: Bool?
     var text: String?
+
+    init(modified: Date? = nil, sharpness: Double? = nil, category: PhotoCategory? = nil,
+         aesthetics: Float? = nil, isUtility: Bool? = nil, text: String? = nil) {
+        self.modified = modified
+        self.sharpness = sharpness
+        self.category = category
+        self.aesthetics = aesthetics
+        self.isUtility = isUtility
+        self.text = text
+    }
 }
 
 /// Zugriff auf `CDKeyValue` mit Typen. Lesen nach dem Start einmal, Schreiben atomar je Schlüssel.
