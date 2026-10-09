@@ -34,7 +34,7 @@ struct MovieView: View {
                 Stepper(L("movie_photo_duration") + " · " + String(photoSeconds), value: $photoSeconds, in: 1...10)
                     .onChange(of: photoSeconds) { _, seconds in setPhotoDuration(seconds) }
                 Toggle(L("movie_kenburns"), isOn: Binding(get: {
-                    project.clips.filter(\.isPhoto).allSatisfy(\.kenBurns)
+                    project.clips.filter(\.isPhoto).allSatisfy { $0.kenBurns }
                 }, set: { enabled in setKenBurns(enabled) }))
                 Toggle(L("movie_fade_black"), isOn: Binding(get: {
                     !project.transitions.isEmpty && project.transitions.allSatisfy { $0 == .fadeBlack }

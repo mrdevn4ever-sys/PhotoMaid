@@ -310,7 +310,8 @@ final class EditRenderer: @unchecked Sendable {
 
     /// Kodiert das Ergebnis neu. Metadaten des Originals bleiben (Aufnahmedatum, Kamera); Standort nur auf Wunsch.
     /// Ausrichtung ist bereits angewendet (Orientierung = 1).
-    func encode(_ img: CIImage, format: EditFormat, metadata: [String: Any]?, removeLocation: Bool) -> Data? {
+    func encode(_ img: CIImage, format: EditFormat, metadata: [String: Any]?, removeLocation: Bool,
+                quality: Double = EditFormat.quality) -> Data? {
         guard let cg = cgImage(img) else { return nil }
         let out = NSMutableData()
         let type = (UTType(format.utType) ?? .jpeg).identifier as CFString
@@ -325,7 +326,7 @@ final class EditRenderer: @unchecked Sendable {
             tiff[kCGImagePropertyTIFFSoftware as String] = "PhotoMaid"
             props[kCGImagePropertyTIFFDictionary as String] = tiff
         }
-        if format != .png { props[kCGImageDestinationLossyCompressionQuality as String] = EditFormat.quality }
+        if format != .png { props[kCGImageDestinationLossyCompressionQuality as String] = min(max(quality, 0.3), 1) }
         CGImageDestinationAddImage(dest, cg, props as CFDictionary)
         guard CGImageDestinationFinalize(dest) else { return nil }
         return out as Data
