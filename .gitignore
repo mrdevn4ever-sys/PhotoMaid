@@ -6,3 +6,13 @@ xcuserdata/
 PhotoMaid.xcodeproj/project.xcworkspace/xcuserdata/
 Artifacts/private/
 .DS_Store
+PhotoMaid.xcodeproj/
+build/
+fastlane/report.xml
+fastlane/README.md
+*.ipa
+*.dSYM.zip
+*.p8
+*.p12
+*.mobileprovision
+*.cer

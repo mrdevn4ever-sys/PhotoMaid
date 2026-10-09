@@ -1,0 +1,3 @@
+# Alle Werte kommen aus Umgebungsvariablen (GitHub-Secrets/-Variablen). Nichts Geheimes im Repo.
+app_identifier(ENV["PM_BUNDLE_ID"])
+team_id(ENV["PM_TEAM_ID"])

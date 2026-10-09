@@ -1,0 +1,94 @@
+name: TestFlight
+
+# Nur manuell starten – und nur auf ausdrückliche Anweisung (GitHub-Actions-Minuten, Apple-Upload).
+# Signierung ausschließlich aus GitHub-Secrets; nichts davon liegt im Repository (docs/CI_TESTFLIGHT.md).
+on:
+  workflow_dispatch:
+    inputs:
+      changelog:
+        description: "Was testen? (erscheint in TestFlight unter „Was ist zu testen“)"
+        type: string
+        default: "Interner Testbuild"
+      run_tests:
+        description: "Vor dem Upload Unit-Tests ausführen"
+        type: boolean
+        default: true
+
+concurrency:
+  group: testflight
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  beta:
+    name: Archivieren, signieren, hochladen
+    runs-on: macos-26
+    timeout-minutes: 90
+    environment: testflight   # Secrets nur in dieser Umgebung; optional mit Freigabe-Pflicht
+    env:
+      ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+      ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+      ASC_KEY_P8_BASE64: ${{ secrets.ASC_KEY_P8_BASE64 }}
+      PM_TEAM_ID: ${{ secrets.PM_TEAM_ID }}
+      PM_BUNDLE_ID: ${{ vars.PM_BUNDLE_ID }}
+      PM_PRO_PRODUCT_ID: ${{ vars.PM_PRO_PRODUCT_ID }}
+      PM_PRIVACY_POLICY_URL: ${{ vars.PM_PRIVACY_POLICY_URL }}
+      # Optional (manuelle Signierung). Fehlen sie, signiert Xcode automatisch über den API-Schlüssel.
+      DIST_CERT_P12_BASE64: ${{ secrets.DIST_CERT_P12_BASE64 }}
+      DIST_CERT_PASSWORD: ${{ secrets.DIST_CERT_PASSWORD }}
+      PROVISIONING_PROFILE_BASE64: ${{ secrets.PROVISIONING_PROFILE_BASE64 }}
+      CHANGELOG: ${{ inputs.changelog }}
+      RUN_TESTS: ${{ inputs.run_tests }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pflicht-Secrets vorhanden?
+        run: |
+          missing=""
+          for v in ASC_KEY_ID ASC_ISSUER_ID ASC_KEY_P8_BASE64 PM_TEAM_ID PM_BUNDLE_ID; do
+            [ -z "${!v}" ] && missing="$missing $v"
+          done
+          if [ -n "$missing" ]; then
+            echo "::error::Fehlende Secrets/Variablen:$missing (siehe docs/CI_TESTFLIGHT.md)"; exit 1
+          fi
+      - name: Xcode wählen
+        run: scripts/ci/select_xcode.sh
+      - name: Werkzeuge
+        run: |
+          brew install xcodegen
+          gem install fastlane --no-document
+          xcodegen generate
+      - name: Unit-Tests
+        if: env.RUN_TESTS == 'true'
+        run: |
+          set -o pipefail
+          UDID=$(scripts/ci/pick_simulator.sh)
+          xcodebuild -project PhotoMaid.xcodeproj -scheme PhotoMaid -destination "id=$UDID" \
+            CODE_SIGNING_ALLOWED=NO -skip-testing:PhotoMaidUITests \
+            -skipPackagePluginValidation -skipMacroValidation test 2>&1 | tee unit-tests.log | grep -E "error:|\*\* TEST" || true
+          grep -q "\*\* TEST SUCCEEDED \*\*" unit-tests.log
+      - name: fastlane beta
+        run: fastlane ios beta
+      - name: Bericht
+        if: always()
+        run: |
+          LOG=$(ls -t ~/Library/Logs/gym/*.log 2>/dev/null | head -1 || true)
+          [ -n "$LOG" ] && cp "$LOG" gym.log
+          python3 scripts/ci/ci_report.py gym.log > ci-report.md || true
+          cat ci-report.md >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: testflight-report
+          path: |
+            gym.log
+            unit-tests.log
+            ci-report.md
+            fastlane/report.xml
+          if-no-files-found: warn
+      - name: Schlüsselbund und Schlüssel entfernen
+        if: always()
+        run: |
+          security delete-keychain "$RUNNER_TEMP/photomaid-ci.keychain-db" 2>/dev/null || true
+          rm -f "$RUNNER_TEMP"/AuthKey_*.p8 "$RUNNER_TEMP"/dist.p12 "$RUNNER_TEMP"/profile.mobileprovision

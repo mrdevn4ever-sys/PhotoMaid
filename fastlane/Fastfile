@@ -1,0 +1,98 @@
+# PhotoMaid iOS – TestFlight ohne eigenen Mac (GitHub Actions, macOS-Runner).
+# Anleitung: docs/CI_TESTFLIGHT.md. Keine Zertifikate/Schlüssel im Repository.
+require "base64"
+require "securerandom"
+require "tmpdir"
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Archiv bauen, signieren und zu TestFlight hochladen"
+  lane :beta do
+    bundle_id = ENV.fetch("PM_BUNDLE_ID")
+    team_id = ENV.fetch("PM_TEAM_ID")
+    runner_temp = ENV.fetch("RUNNER_TEMP", Dir.tmpdir)
+
+    api_key = app_store_connect_api_key(
+      key_id: ENV.fetch("ASC_KEY_ID"),
+      issuer_id: ENV.fetch("ASC_ISSUER_ID"),
+      key_content: ENV.fetch("ASC_KEY_P8_BASE64"),
+      is_key_content_base64: true,
+      in_house: false
+    )
+    # Für xcodebuild -allowProvisioningUpdates braucht es den Schlüssel als Datei (nur im Runner-Temp).
+    key_path = File.join(runner_temp, "AuthKey_#{ENV.fetch('ASC_KEY_ID')}.p8")
+    File.write(key_path, Base64.decode64(ENV.fetch("ASC_KEY_P8_BASE64")))
+    File.chmod(0600, key_path)
+
+    # Buildnummer = letzte TestFlight-Nummer + 1 (keine Nummer im Repo pflegen).
+    build_number = latest_testflight_build_number(api_key: api_key, app_identifier: bundle_id,
+                                                  initial_build_number: 0) + 1
+
+    common_xcargs = [
+      "PRODUCT_BUNDLE_IDENTIFIER=#{bundle_id}",
+      "DEVELOPMENT_TEAM=#{team_id}",
+      "CURRENT_PROJECT_VERSION=#{build_number}",
+      "PM_PRO_PRODUCT_ID=#{ENV.fetch('PM_PRO_PRODUCT_ID', '')}",
+      "PM_PRIVACY_POLICY_URL=#{ENV.fetch('PM_PRIVACY_POLICY_URL', '')}"
+    ]
+
+    manual = !ENV.fetch("DIST_CERT_P12_BASE64", "").empty? && !ENV.fetch("PROVISIONING_PROFILE_BASE64", "").empty?
+    if manual
+      # Variante B: eigenes Distributionszertifikat + Profil aus Secrets, temporärer Schlüsselbund.
+      keychain = File.join(runner_temp, "photomaid-ci.keychain-db")
+      keychain_password = SecureRandom.hex(24)
+      create_keychain(path: keychain, password: keychain_password, default_keychain: false,
+                      unlock: true, timeout: 3600, lock_when_sleeps: false)
+      p12 = File.join(runner_temp, "dist.p12")
+      File.binwrite(p12, Base64.decode64(ENV.fetch("DIST_CERT_P12_BASE64")))
+      import_certificate(certificate_path: p12, certificate_password: ENV.fetch("DIST_CERT_PASSWORD", ""),
+                         keychain_path: keychain, keychain_password: keychain_password)
+      profile = File.join(runner_temp, "profile.mobileprovision")
+      File.binwrite(profile, Base64.decode64(ENV.fetch("PROVISIONING_PROFILE_BASE64")))
+      install_provisioning_profile(path: profile)
+      profile_uuid = sh("security cms -D -i '#{profile}' | plutil -extract UUID raw -o - -", log: false).strip
+      signing_xcargs = common_xcargs + [
+        "CODE_SIGN_STYLE=Manual",
+        "CODE_SIGN_IDENTITY=Apple Distribution",
+        "PROVISIONING_PROFILE_SPECIFIER=#{profile_uuid}",
+        "OTHER_CODE_SIGN_FLAGS=--keychain=#{keychain}"
+      ]
+      export_options = {
+        signingStyle: "manual",
+        teamID: team_id,
+        provisioningProfiles: { bundle_id => profile_uuid }
+      }
+      export_xcargs = nil
+    else
+      # Variante A (empfohlen): automatische Signierung über den App-Store-Connect-API-Schlüssel.
+      auth = "-allowProvisioningUpdates -authenticationKeyPath #{key_path} " \
+             "-authenticationKeyID #{ENV.fetch('ASC_KEY_ID')} -authenticationKeyIssuerID #{ENV.fetch('ASC_ISSUER_ID')}"
+      signing_xcargs = common_xcargs + ["CODE_SIGN_STYLE=Automatic"]
+      export_options = { signingStyle: "automatic", teamID: team_id }
+      export_xcargs = auth
+    end
+
+    build_app(
+      project: "PhotoMaid.xcodeproj",
+      scheme: "PhotoMaid",
+      configuration: "Release",
+      clean: true,
+      output_directory: "build",
+      output_name: "PhotoMaid.ipa",
+      xcargs: ([signing_xcargs.join(" "), export_xcargs].compact.join(" ")),
+      export_method: "app-store",
+      export_xcargs: export_xcargs,
+      export_options: export_options,
+      include_symbols: true
+    )
+
+    upload_to_testflight(
+      api_key: api_key,
+      app_identifier: bundle_id,
+      changelog: ENV.fetch("CHANGELOG", "Interner Testbuild"),
+      skip_waiting_for_build_processing: true,
+      distribute_external: false
+    )
+  end
+end

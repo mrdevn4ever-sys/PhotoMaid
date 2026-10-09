@@ -1,31 +1,30 @@
-# XcodeGen-Spezifikation. `xcodegen generate` erzeugt PhotoMaid.xcodeproj (nicht eingecheckt).
-# Bundle-ID, Team und RevenueCat-/Ad-Konfiguration sind Release-Blocker (docs/RELEASE_BLOCKERS.md).
+# XcodeGen-Spezifikation. `xcodegen generate` erzeugt PhotoMaid.xcodeproj (nicht eingecheckt; CI erzeugt es).
+# Bundle-ID, Team und Kauf-Produkt kommen in CI aus GitHub-Secrets/-Variablen (docs/CI_TESTFLIGHT.md).
 name: PhotoMaid
 options:
   bundleIdPrefix: app.photomaid
   deploymentTarget:
-    iOS: "27.0"
-  developmentLanguage: de
+    iOS: "26.0"
+  developmentLanguage: en
   createIntermediateGroups: true
   groupSortPosition: top
 settings:
   base:
     SWIFT_VERSION: "6.0"
     SWIFT_STRICT_CONCURRENCY: complete
-    SWIFT_EMIT_LOC_STRINGS: YES
+    SWIFT_EMIT_LOC_STRINGS: NO          # Texte kommen aus scripts/android_strings_to_xcstrings.py
     LOCALIZATION_PREFERS_STRING_CATALOGS: YES
     STRING_CATALOG_GENERATE_SYMBOLS: NO
     ENABLE_USER_SCRIPT_SANDBOXING: YES
     DEAD_CODE_STRIPPING: YES
     TARGETED_DEVICE_FAMILY: "1"
+    MARKETING_VERSION: "0.2.0"
+    CURRENT_PROJECT_VERSION: "1"
     CODE_SIGN_STYLE: Automatic
-    DEVELOPMENT_TEAM: ""   # Release-Blocker: Team-ID fehlt
+    DEVELOPMENT_TEAM: ""   # in CI aus dem Secret PM_TEAM_ID
 packages:
   PhotoMaidCore:
     path: .
-  RevenueCat:
-    url: https://github.com/RevenueCat/purchases-ios-spm.git
-    exactVersion: 5.91.0
 targets:
   PhotoMaid:
     type: application
@@ -35,17 +34,31 @@ targets:
         excludes:
           - "**/*.md"
           - "**/*.storekit"   # nur Scheme-Konfiguration, nicht ins App-Bundle
+          - "Resources/ios_strings.json"
     dependencies:
       - package: PhotoMaidCore
-      - package: RevenueCat
-        product: RevenueCat
+      - sdk: StoreKit.framework
+      - sdk: Photos.framework
+      - sdk: PhotosUI.framework
+      - sdk: AVFoundation.framework
+      - sdk: AVKit.framework
+      - sdk: CoreImage.framework
+      - sdk: PDFKit.framework
+      - sdk: Vision.framework
+      - sdk: VisionKit.framework
+      - sdk: PencilKit.framework
+      - sdk: QuickLook.framework
+      - sdk: MediaPlayer.framework
+      - sdk: MetricKit.framework
+      - sdk: UserNotifications.framework
     info:
       path: PhotoMaid/App/Info.plist
       properties:
         CFBundleDisplayName: PhotoMaid
-        CFBundleDevelopmentRegion: de
-        CFBundleShortVersionString: "0.1.0"
-        CFBundleVersion: "1"
+        CFBundleDevelopmentRegion: en
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleAllowMixedLocalizations: false
         UILaunchScreen: {}
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: false
@@ -53,30 +66,40 @@ targets:
           - UIInterfaceOrientationPortrait
           - UIInterfaceOrientationLandscapeLeft
           - UIInterfaceOrientationLandscapeRight
-        NSPhotoLibraryUsageDescription: "PhotoMaid zeigt deine Fotos und Videos zum Sortieren an und entfernt nur Medien, die du ausdrücklich auswählst und in der Systemabfrage bestätigst. Die Analyse erfolgt auf diesem iPhone."
+        NSPhotoLibraryUsageDescription: "PhotoMaid shows your photos and videos for sorting on this iPhone and only removes items you choose and confirm in the system dialog."
+        NSPhotoLibraryAddUsageDescription: "PhotoMaid saves edited copies, collages, videos and PDFs as new items in your library."
+        NSCameraUsageDescription: "PhotoMaid uses the camera only to scan documents when you tap Scan."
         PHPhotoLibraryPreventAutomaticLimitedAccessAlert: true
         UIFileSharingEnabled: false
         LSSupportsOpeningDocumentsInPlace: false
         ITSAppUsesNonExemptEncryption: false
-        PMRevenueCatAPIKey: $(PM_REVENUECAT_API_KEY)
-        PMProEntitlementID: $(PM_PRO_ENTITLEMENT_ID)
-        PMRewardedAdUnitID: $(PM_REWARDED_AD_UNIT_ID)
+        BGTaskSchedulerPermittedIdentifiers:
+          - $(PRODUCT_BUNDLE_IDENTIFIER).export.*
+        CFBundleDocumentTypes:
+          - CFBundleTypeName: Images and Videos
+            CFBundleTypeRole: Viewer
+            LSHandlerRank: Alternate
+            LSItemContentTypes: [public.image, public.movie]
+          - CFBundleTypeName: PDF
+            CFBundleTypeRole: Editor
+            LSHandlerRank: Alternate
+            LSItemContentTypes: [com.adobe.pdf]
+        PMProProductID: $(PM_PRO_PRODUCT_ID)
         PMPrivacyPolicyURL: $(PM_PRIVACY_POLICY_URL)
     entitlements:
       path: PhotoMaid/App/PhotoMaid.entitlements
-      properties: {}   # bewusst leer: kein CloudKit, kein iCloud, keine App Groups
+      properties: {}   # bewusst leer: kein CloudKit, kein iCloud, keine App Groups (E9)
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: app.photomaid.ios   # Platzhalter, Release-Blocker
+        PRODUCT_BUNDLE_IDENTIFIER: app.photomaid.ios   # Platzhalter; CI setzt PM_BUNDLE_ID
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
-        PM_REVENUECAT_API_KEY: ""
-        PM_PRO_ENTITLEMENT_ID: ""
-        PM_REWARDED_AD_UNIT_ID: ""
+        PM_PRO_PRODUCT_ID: ""
         PM_PRIVACY_POLICY_URL: ""
       configs:
         Debug:
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG QA_FIXTURES
+          PM_PRO_PRODUCT_ID: test.photomaid.pro.lifetime   # nur lokaler StoreKit-Test (PhotoMaid.storekit)
   PhotoMaidTests:
     type: bundle.unit-test
     platform: iOS
@@ -101,6 +124,8 @@ schemes:
     test:
       config: Debug
       gatherCoverageData: true
+      language: de
+      region: DE
       targets:
         - PhotoMaidTests
         - PhotoMaidUITests
