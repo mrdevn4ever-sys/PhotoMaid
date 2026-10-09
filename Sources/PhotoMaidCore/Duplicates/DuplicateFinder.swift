@@ -1,9 +1,4 @@
 import Foundation
-#if canImport(CryptoKit)
-import CryptoKit
-#else
-import Crypto
-#endif
 
 /// Lesbare Byte-Quelle, die in Blöcken gestreamt wird. Große Dateien werden nie
 /// vollständig in den Speicher geladen.
@@ -176,7 +171,7 @@ public struct DuplicateFinder: Sendable {
     public func hash(_ item: ItemReference, source: any ByteSourceProvider, limit: Int?) throws -> String? {
         guard let stream = try source.openStream(for: item) else { return nil }
         defer { stream.close() }
-        var hasher = SHA256()
+        var hasher = CoreSHA256()
         var remaining = limit ?? Int.max
         while remaining > 0 {
             try Task.checkCancellation()
