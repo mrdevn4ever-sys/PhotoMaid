@@ -1,9 +1,9 @@
 name: CI
 
+# Nur manuell starten (Nutzervorgabe 2026-10-09: GitHub-Actions-Minuten NUR auf ausdrückliche Anweisung).
+# Kein push-/pull_request-Auslöser – ein Push oder PR verbraucht keine Minuten.
 on:
-  pull_request:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 concurrency:
   group: ci-${{ github.ref }}
