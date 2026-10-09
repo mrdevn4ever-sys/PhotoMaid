@@ -1,62 +1,110 @@
-# Architektur
+# Architektur (iOS)
+
+Stand 09.10.2026. Ziel: native iOS-App (iOS 26+, Swift 6 mit strikter Concurrency, SwiftUI + Observation,
+Liquid Glass) mit der Produktlogik der Android-App (`photomaid-android`, Funktionsmatrix `docs/IOS_FUNKTIONSMATRIX.md`).
+
+## Schichten
 
 ```
-PhotoMaid/                      (Repo-Wurzel)
-├─ Package.swift                PhotoMaidCore (Swift Package, plattformneutral, Linux-testbar)
-├─ Sources/PhotoMaidCore/
-│  ├─ Model/                    ItemReference, LocalDay, Clock, KnownSize/SizeTally
-│  ├─ Decisions/                DecisionModel, LedgerState/LedgerPersistence, DecisionLedger (actor)
-│  ├─ Feed/                     FeedGestureMachine (einzige Gesten-State-Machine), FeedSession
-│  ├─ Later/                    LaterPreset, ReviewQueues, LaterGroup
-│  ├─ Cleanup/                  OperationIntent/Outcome, DayUsage, AllowanceSnapshot
-│  ├─ Duplicates/               DuplicateFinder (Größe → Teilhash → SHA-256), DuplicateGroup
-│  ├─ Rules/                    ReviewRule, RuleEvaluator, ReviewTask
-│  ├─ Capabilities/             PurchaseState, RewardLedger, Capabilities.resolve, WorkUnitGrant
-│  └─ Storage/                  DeviceCapacity, StorageOverview
-├─ Tests/PhotoMaidCoreTests/    Swift Testing (74 Tests)
-├─ project.yml                  XcodeGen → PhotoMaid.xcodeproj
-├─ PhotoMaid/                   iOS-App-Target
-│  ├─ App/                      PhotoMaidApp, AppModel (DI + Lesemodelle), RootView (4 Tabs)
-│  ├─ DesignSystem/             Tokens, Components, Formatting
-│  ├─ Persistence/              Core-Data-Modell (versioniert) + CoreDataLedgerPersistence
-│  ├─ Infrastructure/           PhotoLibrary, LocalFiles, Playback, Purchases, RewardedAds,
-│  │                            Notifications, Background
-│  ├─ Features/                 Today, ReviewFeed, CleanupBasket, CleanUpHub, FileBrowser,
-│  │                            Duplicates, Storage, Later, Rules, History, Settings, Pro, Onboarding
-│  └─ Resources/                Localizable.xcstrings, PrivacyInfo.xcprivacy, Assets, PhotoMaid.storekit
-├─ PhotoMaidTests/              XCTest: Core-Data-Integration, Dateisicherheit
-└─ PhotoMaidUITests/            XCUITest mit QA-Medien
+PhotoMaid/                         (Repo-Wurzel)
+├─ Package.swift                   PhotoMaidCore – plattformneutral, auf Linux getestet (swift test)
+├─ Sources/PhotoMaidCore/          Port von photomaid-android/core (gleiche Typen, gleiche Regeln)
+│  ├─ Model/                       ItemReference, LocalDay, KnownSize/SizeTally, Ids
+│  ├─ Decisions/                   DecisionModel, LedgerState, LedgerPersistence, DecisionLedger (actor)
+│  ├─ Feed/                        FeedGestureMachine (einzige Gesten-State-Machine), FeedSession, FeedOrder
+│  ├─ Later/ Cleanup/ Capabilities/ Duplicates/ Storage/ Ads/
+│  ├─ Library/                     Timeline, AlbumTree (Android FolderTree), Slideshow, Search
+│  ├─ Organize/                    Tags, Notes, Basket, Rematch, PhotoSeries
+│  ├─ Collections/ Progress/ QuickAccess/ Share/
+│  ├─ Edit/                        EditRecipe, EditGeometry, ColorMatrices, Layers, ResizeRules
+│  ├─ Studio/                      Collage, VideoPlan, MoviePlan
+│  ├─ Batch/                       BatchPlan, Workflow, TargetSize, VideoTarget
+│  ├─ Document/                    PdfLayout, PdfEdit (Seitenplan)
+│  ├─ Archive/                     Archive (Plan, Journal, Zielart), Backup (photomaid-backup v1)
+│  ├─ Analysis/                    Gruppierung ähnlicher Fotos, Schärfe-Schwellen (nur Logik, keine Pixel)
+│  └─ Localization/                PluralRules (CLDR-Ganzzahlregeln der 16 Sprachen)
+├─ Tests/PhotoMaidCoreTests/       Swift Testing, Port der Android-core-Tests
+├─ project.yml                     XcodeGen → PhotoMaid.xcodeproj
+├─ PhotoMaid/                      App-Target (nur iOS)
+│  ├─ App/                         PhotoMaidApp, AppModel (@Observable, @MainActor), RootView (5 Tabs), AppConfig, Strings
+│  ├─ DesignSystem/                Tokens, Glass-Bausteine, Formatting, Haptics
+│  ├─ Persistence/                 Core Data (Ledger + Schlüssel/Wert), KeyValueStore
+│  ├─ Infrastructure/
+│  │  ├─ PhotoLibrary/             PhotoLibraryService, ThumbnailCache, SizeMeter, AlbumService, ResourceHasher
+│  │  ├─ Playback/                 FeedPlayer (ein AVPlayer), RemoteCommands
+│  │  ├─ Media/                    ImageRenderer (Core Image), VideoComposer/Exporter, MovieExporter,
+│  │  │                            CollageRenderer, PdfRenderer, GifWriter, BatchRunner
+│  │  ├─ Analysis/                 VisionService (Vision/VisionKit, nur lokal)
+│  │  ├─ Files/                    ConnectedSources (Bookmarks), FileIndex
+│  │  ├─ Archive/                  ArchiveEngine, BackupService
+│  │  ├─ Purchases/                StoreKitGateway (StoreKit 2)
+│  │  └─ Notifications/            ReminderScheduler
+│  ├─ Features/                    Onboarding, Today, ReviewFeed, Library, Organize, CleanUp, Later,
+│  │                               History, Studio, Editor, VideoEditor, PdfStudio, Analysis, Archive,
+│  │                               Settings, Pro, Files
+│  └─ Resources/                   Localizable.xcstrings (16 Sprachen), InfoPlist.xcstrings, PrivacyInfo, Assets
+├─ PhotoMaidTests/                 XCTest: Core Data, Dateisicherheit, Renderer
+└─ PhotoMaidUITests/               XCUITest mit QA-Medien (nur Build-Bedingung QA_FIXTURES)
 ```
 
-## Prinzipien
+## Grundsätze
 
-- **Eine Wahrheit je Zustand.** Entscheidungen, Verlauf, Undo, Journal und Tageskontingent liegen
-  gemeinsam in `LedgerState` und werden über `LedgerPersistence.commit(LedgerChange)` atomar in
-  Core Data geschrieben. Keine parallele JSON-/SQLite-Quelle.
-- **Actor-geschützte Commands.** `DecisionLedger` ist ein `actor`; `commit` ist synchron, damit
-  zwischen Berechnung und Speicherung keine Reentrancy möglich ist.
-- **Commit erst nach Persistenz.** Der Speicherzustand wird erst nach erfolgreichem Save übernommen.
-  Fehler → Zustand unverändert → UI setzt die Aktion zurück.
-- **Eine Gesten-State-Machine** (`FeedGestureMachine`) und **eine Feed-Session** (`FeedSession`),
-  beide reine Werte ohne UI-Abhängigkeit. SwiftUI verdrahtet nur (`FeedViewModel`).
-- **Eine Delete-Orchestrierung** (`AppModel.runCleanup`), aber provider-spezifische Operationen
-  (PhotoKit vs. Dateien).
-- **Eine Entitlement-Wahrheit** (`PurchaseGateway` → RevenueCat) und **eine Capability-Auflösung**
-  (`Capabilities.resolve`).
-- **MainActor für UI**, Swift Concurrency für Hintergrundarbeit, keine Hashes/Scans auf dem Main Thread
-  (Dateiscan/Hash per `Task.detached`; PhotoKit-Callbacks auf Systemqueues).
+- **Eine Wahrheit je Zustand.** Entscheidungen, Verlauf, Undo, Journal und Tageskontingent liegen in `LedgerState`
+  und werden über `LedgerPersistence.commit(LedgerChange)` in **einer** Core-Data-Transaktion geschrieben.
+  Alles Übrige (Einstellungen, Schlagwörter, Notizen, Auswahlkorb, Abläufe, Entwürfe, Größen- und Analyse-Cache)
+  liegt als JSON in `CDKeyValue` über `KeyValueStore`.
+- **Kern zuerst.** Jede Regel, die sich ohne Apple-SDK formulieren lässt, liegt in `PhotoMaidCore` und ist auf Linux
+  getestet. Die App verdrahtet nur.
+- **Eine Gesten-State-Machine** (`FeedGestureMachine`), eine Feed-Session (`FeedSession`), ein Feed-Weg
+  (`FeedViewModel.perform` – Geste, VoiceOver-Aktion und Taste rufen dieselbe Funktion).
+- **Eine Capability-Auflösung** (`Capabilities.resolve`), eine Kauf-Wahrheit (`StoreKitGateway`).
+  Keine View deutet den Kaufstatus selbst.
+- **Concurrency.** `AppModel` und alle ViewModels `@MainActor @Observable`. Schwere Arbeit (Hash, Größen messen,
+  Core Image, Export, Vision) in `actor`s oder `Task.detached` mit `Sendable`-Werten; Fortschritt über
+  `AsyncStream`; jeder lange Vorgang abbrechbar (`Task.checkCancellation`).
+- **Vorschau = Export.** Foto-Editor: ein Core-Image-Graph (`ImageRenderer.render(recipe:source:)`) für Bildschirm und
+  Datei. Video: eine `AVVideoComposition` für `AVPlayerItem` und `AVAssetExportSession`. Collage/PDF: ein Renderer.
+- **Nie verzerren.** Bilder `.scaledToFit()`/`.scaledToFill()` + `.clipped()`, Video `resizeAspect`, Größe nur proportional.
+- **Medien von iCloud.** Vorschauen mit `isNetworkAccessAllowed = false`; fehlt das Original, zeigt die App
+  „Nicht auf diesem iPhone“. Laden aus iCloud nur auf ausdrücklichen Tipp (Bearbeiten, Auslagern, Export).
+
+## Navigation
+
+`TabView` mit fünf `Tab`s wie Android: **Heute · Fotos · Aufräumen · Studio · Verlauf**, Tab-Leiste in Liquid Glass,
+`tabBarMinimizeBehavior(.onScrollDown)`. Je Tab ein `NavigationStack` mit typisierten Routen (`AppRoute`).
+Feed, Betrachter und Editoren als `fullScreenCover` (Tab-Leiste aus). Einstellungen und Pro als Sheet.
+
+## Liquid Glass
+
+Nur öffentliche iOS-26-APIs, keine nachgebauten Glas-Effekte:
+
+| Baustein | API | Einsatz |
+|---|---|---|
+| Tab-Leiste, Navigationsleisten, Toolbars, Sheets | Systemstandard (iOS 26 rendert sie in Glas) | überall |
+| Schwebende Kapseln (Feed-Kopf, Richtungs-Pille, Später-Pille, Editor ✕/✓) | `.glassEffect(.regular, in: .capsule)` in `GlassEffectContainer` | über Fotos |
+| Schaltflächen | `.buttonStyle(.glass)` / `.buttonStyle(.glassProminent)` | Hauptaktionen über Medien |
+| Interaktive Kapseln | `.glassEffect(.regular.interactive())` | Werkzeugleisten im Editor |
+| Übergänge | `.glassEffectID(_:in:)` | Kopfzeile ↔ Auswahl-Leiste |
+
+Listen, Raster und Fotos selbst bleiben ohne Glas (Masterprompt: „Fotos und Videos im Mittelpunkt“).
+Reduce Transparency/Increase Contrast übernimmt das System. Touch-Ziele ≥ 44 pt (`Tokens.touch = 48`).
 
 ## Abhängigkeiten
 
 | Paket | Grund | Pin |
 |---|---|---|
-| RevenueCat (`purchases-ios-spm`) | vom Auftrag vorgegeben: Apple-IAP-Käufe, Restore, Revocation | exakt 5.91.0 |
-| swift-crypto | nur Linux-Tests (CryptoKit-kompatible SHA-256-API); wird auf iOS nicht gelinkt | exakt 4.5.2 |
+| swift-crypto | nur Linux-Tests (CryptoKit-kompatibles SHA-256); auf iOS nicht gelinkt | exakt 4.5.2 |
 
-Rewarded-Werbe-SDK: bewusst **nicht** hinzugefügt, bis der Anbieter entschieden ist.
+Keine weiteren. RevenueCat entfällt (StoreKit 2, Entscheidung E3). Kein Werbe-SDK (E1).
 
-## Schema
+## Lokalisierung
 
-`PhotoMaid.xcdatamodeld` Version 1: `CDItemRecord` (eindeutig `itemKey`), `CDEvent` (eindeutig `id`,
-Reihenfolge `sequence`), `CDIntent`, `CDDayUsage`, `CDKeyValue` (Undo-Stack, Einstellungen, Quellen,
-Regeln, Rewards, Kauf-Cache). Payloads als JSON-kodierte Domainwerte. Lightweight Migration aktiv.
+`scripts/android_strings_to_xcstrings.py` erzeugt `Localizable.xcstrings` aus den 16 Android-`strings.xml`
+(gleiche Kennungen, `%1$s` → `%1$@`, `%d` → `%lld`, `plurals` → Einträge `kennung#one|few|many|…`) und ergänzt
+iOS-eigene Texte aus `PhotoMaid/Resources/ios_strings.json`. Mengen wählt `PluralRules` (Kern, getestet).
+In Swift nur über `L("kennung")`, `L("kennung", args…)` und `LP("kennung", anzahl, args…)`.
+
+## Persistenz-Schema
+
+`PhotoMaid.xcdatamodeld` Version 1 (unverändert): `CDItemRecord`, `CDEvent`, `CDIntent`, `CDDayUsage`, `CDKeyValue`.
+Neue Daten nur als neue Schlüssel in `CDKeyValue`, damit keine Migration nötig ist.
