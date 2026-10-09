@@ -48148,6 +48148,208 @@
         }
       }
     },
+    "edit_mk_hint_ios": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اضغط على نص أو ملصق لتحديده، ثم اسحبه إلى المكان الذي تريده."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tippe auf einen Text oder Sticker, um ihn auszuwählen, und zieh ihn an die gewünschte Stelle."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tap a text or sticker to select it, then drag it where you want it."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toca un texto o sticker para seleccionarlo y arrástralo adonde quieras."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Touchez un texte ou un autocollant pour le sélectionner, puis faites-le glisser à l’endroit voulu."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tocca un testo o uno sticker per selezionarlo, poi trascinalo dove vuoi."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "テキストやステッカーをタップして選択し、好きな位置へドラッグします。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "텍스트나 스티커를 탭해 선택한 다음 원하는 위치로 드래그하세요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tik op een tekst of sticker om hem te selecteren en sleep hem naar de gewenste plek."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stuknij tekst lub naklejkę, aby ją zaznaczyć, i przeciągnij w wybrane miejsce."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Toque num texto ou autocolante para o selecionar e arraste-o para onde quiser."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atinge un text sau un sticker pentru a-l selecta, apoi trage-l unde vrei."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Коснитесь текста или стикера, чтобы выбрать его, и перетащите в нужное место."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seçmek için bir metne veya çıkartmaya dokun, ardından istediğin yere sürükle."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Торкніться тексту чи наліпки, щоб вибрати, і перетягніть у потрібне місце."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "轻点文字或贴纸将其选中，然后拖到想要的位置。"
+          }
+        }
+      }
+    },
+    "edit_mk_larger": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أكبر"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Größer"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Larger"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Más grande"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plus grand"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Più grande"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "大きく"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "크게"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Groter"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Większy"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maior"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mai mare"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Больше"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Büyüt"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Більше"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "放大"
+          }
+        }
+      }
+    },
     "edit_mk_opacity": {
       "extractionState": "manual",
       "localizations": {
@@ -49154,6 +49356,107 @@
           "stringUnit": {
             "state": "translated",
             "value": "大小"
+          }
+        }
+      }
+    },
+    "edit_mk_smaller": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أصغر"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kleiner"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Smaller"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Más pequeño"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plus petit"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Più piccolo"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "小さく"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "작게"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kleiner"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mniejszy"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mais pequeno"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mai mic"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Меньше"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Küçült"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Менше"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "缩小"
           }
         }
       }
@@ -62885,6 +63188,309 @@
         }
       }
     },
+    "export_bg_subtitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يستمر حتى إذا انتقلت إلى تطبيق آخر."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Läuft weiter, auch wenn du die App wechselst."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keeps running if you switch apps."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sigue aunque cambies de app."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue même si vous changez d’app."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continua anche se passi a un’altra app."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ほかのアプリに切り替えても続行します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다른 앱으로 전환해도 계속 진행됩니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gaat door, ook als je van app wisselt."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Działa dalej, nawet gdy przełączysz aplikację."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continua mesmo que mude de app."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuă și dacă schimbi aplicația."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Продолжается, даже если переключиться на другое приложение."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Başka bir uygulamaya geçsen de devam eder."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Триває, навіть якщо перейти до іншої програми."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切换到其他 App 时也会继续。"
+          }
+        }
+      }
+    },
+    "export_busy": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هناك تصدير آخر قيد التشغيل. انتظر حتى ينتهي."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gerade läuft schon ein Export. Warte bitte, bis er fertig ist."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Another export is already running. Please wait until it’s finished."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ya hay otra exportación en curso. Espera a que termine."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un autre export est déjà en cours. Attendez qu’il soit terminé."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "È già in corso un’altra esportazione. Attendi che finisca."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "別の書き出しを実行中です。終わるまでお待ちください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다른 내보내기가 이미 진행 중입니다. 끝날 때까지 기다려 주세요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Er loopt al een andere export. Wacht tot die klaar is."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trwa już inny eksport. Poczekaj, aż się zakończy."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Já está a decorrer outra exportação. Aguarde até terminar."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rulează deja un alt export. Așteaptă să se termine."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Уже идёт другой экспорт. Дождитесь его завершения."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zaten başka bir dışa aktarma sürüyor. Bitmesini bekle."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Уже триває інший експорт. Зачекайте, доки він завершиться."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已有另一个导出正在进行。请等待其完成。"
+          }
+        }
+      }
+    },
+    "export_cancelled": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تم الإلغاء. لم يُحفظ شيء."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Abgebrochen. Es wurde nichts gespeichert."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelled. Nothing was saved."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelado. No se ha guardado nada."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annulé. Rien n’a été enregistré."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Annullato. Non è stato salvato nulla."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "中止しました。何も保存されていません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "취소했습니다. 아무것도 저장되지 않았습니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geannuleerd. Er is niets bewaard."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anulowano. Nic nie zostało zapisane."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancelado. Nada foi guardado."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anulat. Nu s-a salvat nimic."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Отменено. Ничего не сохранено."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "İptal edildi. Hiçbir şey kaydedilmedi."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Скасовано. Нічого не збережено."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已取消。未存储任何内容。"
+          }
+        }
+      }
+    },
     "export_channel": {
       "extractionState": "manual",
       "localizations": {
@@ -63083,6 +63689,208 @@
           "stringUnit": {
             "state": "translated",
             "value": "已保存"
+          }
+        }
+      }
+    },
+    "export_expired": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "أنهى iOS التصدير في الخلفية. لم يُحفظ شيء – ابدأه من جديد وأبقِ PhotoMaid مفتوحًا."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS hat den Export im Hintergrund beendet. Es wurde nichts gespeichert – starte ihn erneut und lass PhotoMaid geöffnet."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS ended the export in the background. Nothing was saved – start it again and keep PhotoMaid open."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS ha detenido la exportación en segundo plano. No se ha guardado nada: vuelve a empezar y deja PhotoMaid abierta."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS a arrêté l’export en arrière-plan. Rien n’a été enregistré – relancez-le et laissez PhotoMaid ouverte."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS ha interrotto l’esportazione in background. Non è stato salvato nulla: riavviala e lascia PhotoMaid aperta."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOSがバックグラウンドで書き出しを終了しました。何も保存されていません。もう一度開始し、PhotoMaidを開いたままにしてください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS가 백그라운드에서 내보내기를 종료했습니다. 아무것도 저장되지 않았습니다. 다시 시작하고 PhotoMaid를 열어 두세요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS heeft de export op de achtergrond beëindigd. Er is niets bewaard – start opnieuw en houd PhotoMaid open."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS zakończył eksport w tle. Nic nie zapisano – uruchom go ponownie i nie zamykaj PhotoMaid."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O iOS terminou a exportação em segundo plano. Nada foi guardado – comece de novo e mantenha o PhotoMaid aberto."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS a oprit exportul în fundal. Nu s-a salvat nimic – pornește-l din nou și lasă PhotoMaid deschisă."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS прервал экспорт в фоне. Ничего не сохранено – запустите заново и не закрывайте PhotoMaid."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS dışa aktarmayı arka planda sonlandırdı. Hiçbir şey kaydedilmedi; yeniden başlat ve PhotoMaid’i açık tut."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS перервав експорт у фоні. Нічого не збережено – запустіть знову й не закривайте PhotoMaid."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS 在后台结束了导出。未存储任何内容 – 请重新开始并保持 PhotoMaid 打开。"
+          }
+        }
+      }
+    },
+    "export_keep_open": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يمكنك الانتقال إلى تطبيق آخر لفترة قصيرة. إذا أنهى iOS الوقت، يتوقف PhotoMaid بشكل سليم ولا يُحفظ شيء غير مكتمل."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Du kannst kurz in eine andere App wechseln. Beendet iOS die Zeit, bricht PhotoMaid sauber ab – es wird nichts Halbes gespeichert."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can briefly switch to another app. If iOS ends the time, PhotoMaid stops cleanly – nothing half-finished is saved."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puedes cambiar un momento a otra app. Si iOS agota el tiempo, PhotoMaid se detiene sin problemas y no se guarda nada a medias."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vous pouvez passer brièvement à une autre app. Si iOS met fin au délai, PhotoMaid s’arrête proprement – rien d’inachevé n’est enregistré."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Puoi passare per poco a un’altra app. Se iOS esaurisce il tempo, PhotoMaid si ferma in modo pulito e non salva nulla a metà."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "少しの間ならほかのアプリに切り替えられます。iOSが時間を打ち切った場合、PhotoMaidは安全に中止し、途中までのものは保存しません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "잠시 다른 앱으로 전환해도 됩니다. iOS가 시간을 종료하면 PhotoMaid는 깔끔하게 중단하며 반쯤 된 결과는 저장하지 않습니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Je kunt even naar een andere app gaan. Beëindigt iOS de tijd, dan stopt PhotoMaid netjes – er wordt niets half bewaard."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Możesz na chwilę przejść do innej aplikacji. Jeśli iOS zakończy czas, PhotoMaid przerwie bezpiecznie – nic niedokończonego nie zostanie zapisane."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pode mudar por pouco tempo para outra app. Se o iOS terminar o tempo, o PhotoMaid para em segurança – nada incompleto é guardado."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Poți trece scurt în altă aplicație. Dacă iOS încheie timpul, PhotoMaid se oprește curat – nu se salvează nimic pe jumătate."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Можно ненадолго переключиться на другое приложение. Если iOS прервёт время, PhotoMaid аккуратно остановится – ничего недоделанного не сохранится."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kısa süreliğine başka bir uygulamaya geçebilirsin. iOS süreyi sonlandırırsa PhotoMaid düzgünce durur, yarım kalan hiçbir şey kaydedilmez."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Можна ненадовго перейти до іншої програми. Якщо iOS завершить час, PhotoMaid акуратно зупиниться – нічого незавершеного не збережеться."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你可以短暂切换到其他 App。如果 iOS 结束了时间，PhotoMaid 会干净地停止，不会存储未完成的内容。"
           }
         }
       }
@@ -99567,97 +100375,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "حُفظ كفيديو جديد في Movies/PhotoMaid. تبقى الأصول دون تغيير."
+            "value": "تم الحفظ كفيديو جديد في مكتبتك. تبقى الملفات الأصلية دون تغيير."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Als neues Video in Movies/PhotoMaid gespeichert. Die Originale bleiben unverändert."
+            "value": "Als neues Video in der Mediathek gespeichert. Die Originale bleiben unverändert."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saved as a new video in Movies/PhotoMaid. The originals stay unchanged."
+            "value": "Saved as a new video in your library. The originals stay unchanged."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Guardado como vídeo nuevo en Movies/PhotoMaid. Los originales no cambian."
+            "value": "Guardado como vídeo nuevo en tu fototeca. Los originales no cambian."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Enregistrée comme nouvelle vidéo dans Movies/PhotoMaid. Les originaux restent intacts."
+            "value": "Enregistrée comme nouvelle vidéo dans votre photothèque. Les originaux restent inchangés."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Salvato come nuovo video in Movies/PhotoMaid. Gli originali restano invariati."
+            "value": "Salvato come nuovo video nella libreria. Gli originali restano invariati."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Movies/PhotoMaid に新しい動画として保存しました。元のファイルは変わりません。"
+            "value": "新しいビデオとしてライブラリに保存しました。元のファイルはそのままです。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Movies/PhotoMaid에 새 동영상으로 저장했습니다. 원본은 그대로입니다."
+            "value": "보관함에 새 비디오로 저장했습니다. 원본은 그대로입니다."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Opgeslagen als nieuwe video in Movies/PhotoMaid. De originelen blijven ongewijzigd."
+            "value": "Bewaard als nieuwe video in je bibliotheek. De originelen blijven ongewijzigd."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zapisano jako nowy film w Movies/PhotoMaid. Oryginały pozostają bez zmian."
+            "value": "Zapisano jako nowy film w bibliotece. Oryginały pozostają bez zmian."
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Guardado como novo vídeo em Movies/PhotoMaid. Os originais ficam inalterados."
+            "value": "Guardado como novo vídeo na fototeca. Os originais ficam inalterados."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Salvat ca videoclip nou în Movies/PhotoMaid. Originalele rămân neschimbate."
+            "value": "Salvat ca videoclip nou în bibliotecă. Originalele rămân neschimbate."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Сохранено как новое видео в Movies/PhotoMaid. Оригиналы не изменены."
+            "value": "Сохранено как новое видео в медиатеке. Оригиналы не изменены."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Movies/PhotoMaid içine yeni video olarak kaydedildi. Orijinaller değişmedi."
+            "value": "Arşivine yeni bir video olarak kaydedildi. Orijinaller değişmeden kalır."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Збережено як нове відео в Movies/PhotoMaid. Оригінали не змінено."
+            "value": "Збережено як нове відео в медіатеці. Оригінали не змінено."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已作为新视频保存到 Movies/PhotoMaid，原文件保持不变。"
+            "value": "已作为新视频存储到图库。原件保持不变。"
           }
         }
       }
@@ -166749,97 +167557,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "حُفظ «%1$@» في Music/PhotoMaid."
+            "value": "تم حفظ «%1$@»."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "„%1$@“ in Music/PhotoMaid gespeichert."
+            "value": "„%1$@“ gesichert."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Saved “%1$@” in Music/PhotoMaid."
+            "value": "“%1$@” saved."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "«%1$@» guardado en Music/PhotoMaid."
+            "value": "«%1$@» guardado."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "« %1$@ » enregistré dans Music/PhotoMaid."
+            "value": "« %1$@ » enregistré."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "«%1$@» salvato in Music/PhotoMaid."
+            "value": "«%1$@» salvato."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "「%1$@」をMusic/PhotoMaidに保存しました。"
+            "value": "「%1$@」を保存しました。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "'%1$@'을(를) Music/PhotoMaid에 저장했어요."
+            "value": "'%1$@' 저장됨."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "‘%1$@’ opgeslagen in Music/PhotoMaid."
+            "value": "‘%1$@’ bewaard."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zapisano „%1$@” w Music/PhotoMaid."
+            "value": "Zapisano „%1$@”."
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "«%1$@» guardado em Music/PhotoMaid."
+            "value": "«%1$@» guardado."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "„%1$@” a fost salvat în Music/PhotoMaid."
+            "value": "„%1$@” salvat."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "«%1$@» сохранён в Music/PhotoMaid."
+            "value": "«%1$@» сохранён."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "„%1$@” Music/PhotoMaid içine kaydedildi."
+            "value": "\"%1$@\" kaydedildi."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "«%1$@» збережено в Music/PhotoMaid."
+            "value": "«%1$@» збережено."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已将“%1$@”保存到 Music/PhotoMaid。"
+            "value": "已存储“%1$@”。"
           }
         }
       }
@@ -168870,97 +169678,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "حُفظت اللقطة كصورة جديدة بجانب الفيديو."
+            "value": "تم حفظ اللقطة كصورة جديدة."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Standbild als neues Foto neben dem Video gespeichert."
+            "value": "Standbild als neues Foto gespeichert."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Still image saved as a new photo next to the video."
+            "value": "Still saved as a new photo."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Fotograma guardado como foto nueva junto al vídeo."
+            "value": "Fotograma guardado como foto nueva."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Image fixe enregistrée comme nouvelle photo à côté de la vidéo."
+            "value": "Image fixe enregistrée comme nouvelle photo."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Fotogramma salvato come nuova foto accanto al video."
+            "value": "Fotogramma salvato come nuova foto."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "静止画を新しい写真として動画の隣に保存しました。"
+            "value": "静止画を新しい写真として保存しました。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "정지 이미지를 동영상 옆에 새 사진으로 저장했어요."
+            "value": "정지 화면을 새 사진으로 저장했습니다."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Still als nieuwe foto naast de video opgeslagen."
+            "value": "Still bewaard als nieuwe foto."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kadr zapisano jako nowe zdjęcie obok filmu."
+            "value": "Kadr zapisany jako nowe zdjęcie."
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Fotograma guardado como nova foto junto ao vídeo."
+            "value": "Fotograma guardado como nova fotografia."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cadrul a fost salvat ca fotografie nouă lângă videoclip."
+            "value": "Cadru salvat ca poză nouă."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Кадр сохранён как новое фото рядом с видео."
+            "value": "Кадр сохранён как новое фото."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kare, videonun yanına yeni fotoğraf olarak kaydedildi."
+            "value": "Kare yeni bir fotoğraf olarak kaydedildi."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Кадр збережено як нове фото поруч із відео."
+            "value": "Кадр збережено як нове фото."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "静帧已作为新照片保存在视频旁边。"
+            "value": "已将静帧存储为新照片。"
           }
         }
       }
@@ -169167,6 +169975,107 @@
         }
       }
     },
+    "vid_hdr_hint_ios": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يحتوي هذا الفيديو على ألوان ساطعة بشكل خاص (HDR). عند إعادة حسابه يُحفظ بألوان عادية. إذا قصصته فقط، يبقى HDR."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dieses Video hat besonders leuchtende Farben (HDR). Beim Neuberechnen wird es mit normalen Farben gespeichert. Nur gekürzt bleibt HDR erhalten."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This video has especially bright colours (HDR). When it’s recalculated, it’s saved with normal colours. If you only trim it, HDR is kept."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Este vídeo tiene colores especialmente intensos (HDR). Al recalcularlo se guarda con colores normales. Si solo lo recortas, se mantiene el HDR."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cette vidéo a des couleurs particulièrement lumineuses (HDR). Recalculée, elle est enregistrée avec des couleurs normales. Si vous la raccourcissez seulement, le HDR est conservé."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Questo video ha colori particolarmente luminosi (HDR). Quando viene ricalcolato, si salva con colori normali. Se lo accorci soltanto, l’HDR resta."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "このビデオは特に明るい色（HDR）です。再計算すると通常の色で保存されます。トリミングだけならHDRのままです。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 비디오는 특히 밝은 색상(HDR)입니다. 다시 계산하면 일반 색상으로 저장됩니다. 다듬기만 하면 HDR이 유지됩니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deze video heeft extra heldere kleuren (HDR). Bij opnieuw berekenen wordt hij met normale kleuren bewaard. Alleen inkorten houdt HDR."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ten film ma wyjątkowo jaskrawe kolory (HDR). Po ponownym przeliczeniu zostanie zapisany w zwykłych kolorach. Samo przycięcie zachowuje HDR."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Este vídeo tem cores especialmente vivas (HDR). Ao ser recalculado, é guardado com cores normais. Se apenas o cortar, o HDR mantém-se."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Acest videoclip are culori deosebit de luminoase (HDR). La recalculare se salvează cu culori normale. Dacă doar îl scurtezi, HDR rămâne."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "У этого видео особенно яркие цвета (HDR). При пересчёте оно сохранится с обычными цветами. Если только обрезать, HDR сохранится."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu videonun renkleri özellikle parlak (HDR). Yeniden hesaplanınca normal renklerle kaydedilir. Yalnızca kırparsan HDR korunur."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Це відео має особливо яскраві кольори (HDR). Після перерахунку воно збережеться зі звичайними кольорами. Якщо лише обрізати, HDR залишиться."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此视频的色彩特别明亮（HDR）。重新计算后将以普通色彩存储。只修剪则保留 HDR。"
+          }
+        }
+      }
+    },
     "vid_layer_time": {
       "extractionState": "manual",
       "localizations": {
@@ -169369,103 +170278,204 @@
         }
       }
     },
+    "vid_preview_failed": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تعذّر حساب المعاينة."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Die Vorschau konnte nicht berechnet werden."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The preview couldn’t be calculated."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No se ha podido calcular la vista previa."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L’aperçu n’a pas pu être calculé."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossibile calcolare l’anteprima."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "プレビューを計算できませんでした。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "미리보기를 계산할 수 없습니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De voorvertoning kon niet worden berekend."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nie udało się obliczyć podglądu."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não foi possível calcular a pré-visualização."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previzualizarea nu a putut fi calculată."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не удалось рассчитать предпросмотр."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Önizleme hesaplanamadı."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Не вдалося розрахувати попередній перегляд."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "无法计算预览。"
+          }
+        }
+      }
+    },
     "vid_pro_needed": {
       "extractionState": "manual",
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "تعديل الفيديو ضمن Pro. يمكنك تجربة كل شيء؛ للحفظ تحتاج Pro أو التجربة المجانية لمدة 30 دقيقة."
+            "value": "تحرير الفيديو جزء من Pro. يمكنك تجربة كل شيء؛ وللحفظ تحتاج إلى Pro."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Video-Bearbeitung gehört zu Pro. Ausprobieren kannst du alles; zum Speichern brauchst du Pro oder den kostenlosen 30-Minuten-Test."
+            "value": "Video-Bearbeitung gehört zu Pro. Ausprobieren kannst du alles; zum Speichern brauchst du Pro."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Video editing is part of Pro. You can try everything; saving needs Pro or the free 30-minute test."
+            "value": "Video editing is part of Pro. You can try everything; to save, you need Pro."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La edición de vídeo es parte de Pro. Puedes probarlo todo; para guardar necesitas Pro o la prueba gratuita de 30 minutos."
+            "value": "La edición de vídeo forma parte de Pro. Puedes probarlo todo; para guardar necesitas Pro."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Le montage vidéo fait partie de Pro. Tu peux tout essayer ; pour enregistrer, il faut Pro ou l’essai gratuit de 30 minutes."
+            "value": "Le montage vidéo fait partie de Pro. Vous pouvez tout essayer ; pour enregistrer, il faut Pro."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "La modifica video fa parte di Pro. Puoi provare tutto; per salvare serve Pro o la prova gratuita di 30 minuti."
+            "value": "La modifica video fa parte di Pro. Puoi provare tutto; per salvare ti serve Pro."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "動画編集はProの機能です。試すのは自由で、保存にはProか30分の無料お試しが必要です。"
+            "value": "ビデオ編集はProの機能です。すべて試せますが、保存にはProが必要です。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "동영상 편집은 Pro 기능이에요. 모두 미리 써 볼 수 있고, 저장하려면 Pro나 30분 무료 체험이 필요해요."
+            "value": "비디오 편집은 Pro 기능입니다. 모두 사용해 볼 수 있지만 저장하려면 Pro가 필요합니다."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Videobewerking hoort bij Pro. Uitproberen kan altijd; opslaan kan met Pro of de gratis test van 30 minuten."
+            "value": "Video bewerken hoort bij Pro. Je kunt alles uitproberen; om te bewaren heb je Pro nodig."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Edycja filmów należy do Pro. Wypróbować możesz wszystko; do zapisu potrzebujesz Pro lub darmowego 30-minutowego testu."
+            "value": "Edycja filmów należy do Pro. Możesz wszystko wypróbować; do zapisania potrzebujesz Pro."
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "A edição de vídeo faz parte do Pro. Podes experimentar tudo; para guardar precisas do Pro ou do teste gratuito de 30 minutos."
+            "value": "A edição de vídeo faz parte do Pro. Pode experimentar tudo; para guardar precisa do Pro."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Editarea video face parte din Pro. Poți încerca orice; pentru salvare ai nevoie de Pro sau de testul gratuit de 30 de minute."
+            "value": "Editarea video face parte din Pro. Poți încerca totul; pentru salvare ai nevoie de Pro."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Редактирование видео входит в Pro. Попробовать можно всё; для сохранения нужен Pro или бесплатный 30-минутный тест."
+            "value": "Редактирование видео входит в Pro. Попробовать можно всё; для сохранения нужен Pro."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Video düzenleme Pro’ya dahildir. Her şeyi deneyebilirsin; kaydetmek için Pro ya da ücretsiz 30 dakikalık deneme gerekir."
+            "value": "Video düzenleme Pro’ya dahildir. Her şeyi deneyebilirsin; kaydetmek için Pro gerekir."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Редагування відео входить у Pro. Спробувати можна все; для збереження потрібен Pro або безкоштовний 30-хвилинний тест."
+            "value": "Редагування відео входить до Pro. Спробувати можна все; для збереження потрібен Pro."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "视频编辑属于 Pro 功能。你可以随意试用；保存需要 Pro 或 30 分钟免费试用。"
+            "value": "视频编辑属于 Pro 功能。你可以试用所有功能；存储需要 Pro。"
           }
         }
       }

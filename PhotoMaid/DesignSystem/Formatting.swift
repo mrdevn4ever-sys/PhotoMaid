@@ -87,4 +87,6 @@ enum LaterText {
 enum CountText {
     /// Zahl in der Schreibweise der App-Sprache (z. B. arabische Ziffern bleiben Systemsache).
     static func number(_ n: Int) -> String { n.formatted(.number) }
+    /// Anteil 0…1 als ganze Prozent in der Schreibweise der App-Sprache.
+    static func percent(_ p: Double) -> String { min(1, max(0, p)).formatted(.percent.precision(.fractionLength(0))) }
 }

@@ -328,7 +328,7 @@ struct MarkupPanel: View {
                 Text(key: MarkupStyle.shared.redact == .solid ? "edit_mk_redact_solid_hint" : "edit_mk_redact_hint")
                     .font(AppTypography.caption).foregroundStyle(.white.opacity(0.8)).multilineTextAlignment(.center)
             } else {
-                Text(key: "edit_mk_hint").font(AppTypography.caption).foregroundStyle(.white.opacity(0.7))
+                Text(key: "edit_mk_hint_ios").font(AppTypography.caption).foregroundStyle(.white.opacity(0.7))
             }
         }
         .alert(L("edit_mk_text"), isPresented: $askText) {
