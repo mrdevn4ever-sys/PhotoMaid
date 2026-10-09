@@ -3,8 +3,8 @@ import Observation
 import PhotoMaidCore
 import UserNotifications
 
-/// Opt-in-Erinnerungen. Begrenzte Anzahl, keine privaten Dateinamen auf dem Sperrbildschirm,
-/// keine Fundzahlen ohne tatsächlichen Scan.
+/// Opt-in-Erinnerungen (Einstellung „Mitteilungen“, Standard aus). Nur „Später ist wieder dran“ – keine Dateinamen,
+/// keine Zahlen auf dem Sperrbildschirm. Höchstens `maxPending` geplante Erinnerungen.
 @MainActor
 @Observable
 final class ReminderScheduler {
@@ -29,31 +29,22 @@ final class ReminderScheduler {
     }
 
     /// Erinnerung an fällige Wiedervorlagen am Termintag (09:00 lokal). Idempotent je Tag.
-    func scheduleDueReminder(for day: LocalDay) async {
-        guard access == .allowed else { return }
+    func scheduleDueReminder(for day: LocalDay, optedIn: Bool) async {
+        guard optedIn, access == .allowed else { return }
         let id = "later.\(day)"
         var comps = DateComponents()
         comps.year = day.year; comps.month = day.month; comps.day = day.day; comps.hour = 9
         let content = UNMutableNotificationContent()
-        content.title = String(localized: "PhotoMaid")
-        content.body = String(localized: "Heute sind zurückgestellte Elemente wieder fällig.")
+        content.title = L("app_name")
+        content.body = L("notif_due_body")
         await add(id: id, content: content, trigger: UNCalendarNotificationTrigger(dateMatching: comps, repeats: false))
     }
 
-    /// Wöchentliche Erinnerung einer Regel. Enthält nur den Hinweis, keine Fundzahl.
-    func scheduleRuleReminder(ruleID: ReviewRuleID, weekday: Int) async {
-        guard access == .allowed else { return }
-        var comps = DateComponents()
-        comps.weekday = weekday; comps.hour = 10
-        let content = UNMutableNotificationContent()
-        content.title = String(localized: "PhotoMaid")
-        content.body = String(localized: "Zeit für deine geplante Prüfung.")
-        await add(id: "rule.\(ruleID.rawValue.uuidString)", content: content,
-                  trigger: UNCalendarNotificationTrigger(dateMatching: comps, repeats: true))
-    }
-
-    func removeRuleReminder(ruleID: ReviewRuleID) {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["rule.\(ruleID.rawValue.uuidString)"])
+    /// Alle Später-Erinnerungen entfernen (Mitteilungen ausgeschaltet).
+    func removeDueReminders() async {
+        let center = UNUserNotificationCenter.current()
+        let ids = await center.pendingNotificationRequests().map(\.identifier).filter { $0.hasPrefix("later.") }
+        center.removePendingNotificationRequests(withIdentifiers: ids)
     }
 
     private func add(id: String, content: UNMutableNotificationContent, trigger: UNNotificationTrigger) async {

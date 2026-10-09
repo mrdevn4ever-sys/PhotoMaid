@@ -10,7 +10,6 @@ import PhotoMaidCore
 /// keine Downloads) und verbindet sie als Downloads-Quelle.
 @MainActor
 enum QAFixtures {
-    static var isActive: Bool { ProcessInfo.processInfo.arguments.contains("-qa-fixtures") }
     static var proEnabled: Bool { ProcessInfo.processInfo.arguments.contains("-qa-pro") }
 
     static func install(into app: AppModel) {
@@ -50,13 +49,10 @@ enum QAFixtures {
         }
         try? app.sources.add(folderURL: dir, asDownloads: true)
 
-        // Eine lokale Beispielregel, damit „Regeln & Routinen“ nicht leer ist.
-        Task {
-            await app.rules.upsert(ReviewRule(source: .screenshots, filter: .olderThan(days: 30), trigger: .daily),
-                                   reminders: app.reminders)
-            await app.rules.upsert(ReviewRule(source: .videos, filter: .knownSizeAtLeast(bytes: 1_000_000_000),
-                                              trigger: .weekly(weekday: 1)), reminders: app.reminders)
-        }
+        Task { await app.files.scan(app.sources) }
+        // Eigene Sammlung als Beispiel (Pro-Ansicht), keine Medien-IDs.
+        app.setCustomCollections([SmartCollection(source: .videos, filter: .largerThan(bytes: 500 * SmartCollections.mb))])
+        if proEnabled { app.purchases.qaOverride(.purchased) }
     }
 
     private static func header(for name: String) -> Data {
@@ -64,18 +60,5 @@ enum QAFixtures {
         if name.hasSuffix(".zip") { return Data([0x50, 0x4B, 0x03, 0x04]) }
         return Data("PHOTOMAID QA \(name)\n".utf8)
     }
-}
-
-/// Kaufstatus für Screenshots von Pro-Werkzeugen. Nur QA-Builds, nur mit `-qa-pro`.
-@MainActor
-@Observable
-final class QAPurchaseGateway: PurchaseGateway {
-    let state: PurchaseState
-    let product: StoreProductInfo? = nil
-    let isConfigured = false
-    init(pro: Bool) { state = pro ? .purchased : .notPurchased }
-    func refresh() async {}
-    func purchasePro() async -> PurchaseResult { .notConfigured }
-    func restore() async -> PurchaseResult { .notConfigured }
 }
 #endif

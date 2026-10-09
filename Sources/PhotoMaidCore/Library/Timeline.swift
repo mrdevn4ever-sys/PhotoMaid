@@ -42,6 +42,10 @@ public struct TimelineSection<T>: Identifiable {
     public let key: TimelineKey
     public let items: [T]
     public var id: TimelineKey { key }
+    public init(key: TimelineKey, items: [T]) {
+        self.key = key
+        self.items = items
+    }
 }
 
 extension TimelineSection: Sendable where T: Sendable {}

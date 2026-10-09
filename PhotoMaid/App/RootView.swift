@@ -1,99 +1,188 @@
 import PhotoMaidCore
 import SwiftUI
 
-enum AppTab: Hashable { case today, cleanup, organize, history }
-
-/// Vier Haupttabs entsprechend den Mockups. Jeder Tab besitzt einen eigenen NavigationStack
-/// und bewahrt seinen Zustand. Einstellungen über das Zahnrad, Pro kontextuell.
+/// Wurzel: fünf Tabs (Heute · Fotos · Aufräumen · Studio · Verlauf) mit Liquid-Glass-Tableiste, darüber der Feed
+/// als Vollbild-Ebene (kurzes Einblenden wie Android, ohne Animation bei „Bewegung reduzieren“).
 struct RootView: View {
     @Environment(AppModel.self) private var app
     @Environment(\.scenePhase) private var scenePhase
-    @State private var tab: AppTab = .today
-    @State private var feed: FeedRequest?
-    @State private var showSettings = false
-    @State private var privacyShield = false
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var shielded = false
+    @State private var quick = QuickActions.shared
 
     var body: some View {
-        TabView(selection: $tab) {
-            Tab("Heute", systemImage: "house.fill", value: AppTab.today) {
-                NavigationStack { TodayView(openFeed: { feed = $0 }, openSettings: { showSettings = true }) }
+        @Bindable var app = app
+        ZStack {
+            if app.settings.onboardingVersion < OnboardingFlow.version {
+                OnboardingFlow()
+                    .transition(.opacity)
+            } else {
+                tabs
+                if let request = app.feed {
+                    FeedView(request: request, app: app)
+                        .id(request.id)
+                        .transition(.opacity)
+                        .zIndex(1)
+                }
             }
-            Tab("Aufräumen", systemImage: "square.stack.3d.up", value: AppTab.cleanup) {
-                NavigationStack { CleanUpHubView(openFeed: { feed = $0 }, openSettings: { showSettings = true }) }
-            }
-            Tab("Ordnen", systemImage: "folder", value: AppTab.organize) {
-                NavigationStack { OrganizeView(openFeed: { feed = $0 }) }
-            }
-            Tab("Verlauf", systemImage: "clock.arrow.circlepath", value: AppTab.history) {
-                NavigationStack { HistoryView() }
+            if shielded {
+                PrivacyShield().zIndex(3)
             }
         }
-        .tint(AppColors.accent)
-        .tabBarMinimizeBehavior(.onScrollDown)
-        // Fokussierter Feed: normale Tabbar ausgeblendet (Vollbild).
-        .fullScreenCover(item: $feed) { request in
-            ReviewFeedView(request: request)
+        .animation(AppMotion.open(reduceMotion), value: app.feed?.id)
+        .overlay(alignment: .bottom) {
+            if let toast = app.toast {
+                ToastView(toast: toast) { app.toast = nil }
+                    .padding(.bottom, app.feed == nil ? 72 : AppSpacing.xl)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                    .zIndex(2)
+            }
+        }
+        .animation(AppMotion.standard(reduceMotion), value: app.toast?.id)
+        .fullScreenCover(item: $app.fullScreen) { request in
+            FullScreenHost(request: request)
                 .environment(app)
         }
-        // Onboarding beim ersten Start: Datenschutz und echte Zugriffszustände.
-        .fullScreenCover(isPresented: Binding(
-            get: { !app.settings.privacyIntroSeen },
-            set: { shown in if !shown { app.updateSettings { $0.privacyIntroSeen = true } } })) {
-            PrivacyAccessView().environment(app)
-        }
-        .sheet(isPresented: $showSettings) {
-            NavigationStack { SettingsView() }.environment(app)
-        }
-        .overlay {
-            // App-Umschalter-Vorschau neutralisieren.
-            if privacyShield {
-                ZStack { AppBackground(); Image(systemName: "photo.stack").font(.largeTitle).foregroundStyle(AppColors.accent) }
-                    .accessibilityHidden(true)
-            }
-        }
+        .preferredColorScheme(app.settings.appearance.colorScheme)
         .task { await app.onForeground() }
         .task {
-            // Rewarded-Vorschau: Restzeit/Ablauf sichtbar halten.
+            // Uhr für Tageswechsel (Limit, Später fällig) und Restzeiten.
             while !Task.isCancelled {
                 try? await Task.sleep(for: .seconds(30))
-                app.entitlements.tick()
+                app.tick()
             }
         }
         .onChange(of: scenePhase) { _, phase in
-            privacyShield = phase != .active
             switch phase {
-            case .active: Task { await app.onForeground() }
-            case .background, .inactive: app.player.stop()
-            @unknown default: break
+            case .active:
+                shielded = false
+                Task { await app.onForeground() }
+            case .background:
+                shielded = true
+                app.player.stop()
+            default:
+                app.player.pause()
             }
         }
-        .alert("Hinweis", isPresented: Binding(get: { app.lastError != nil }, set: { if !$0 { app.clearError() } })) {
-            Button("OK", role: .cancel) { app.clearError() }
-        } message: {
-            Text(app.lastError ?? "")
+        .onChange(of: app.library.changeToken) { _, _ in app.reloadLibraryIfNeeded() }
+        .onChange(of: quick.pending) { _, route in
+            guard let route else { return }
+            quick.pending = nil
+            handle(route)
+        }
+        .onChange(of: app.pendingRoute) { _, route in
+            guard let route else { return }
+            app.pendingRoute = nil
+            handle(route)
+        }
+        .onOpenURL { url in handle(.openFiles([url])) }
+        .onAppear {
+            if let route = quick.pending { quick.pending = nil; handle(route) }
+        }
+    }
+
+    private var tabs: some View {
+        @Bindable var app = app
+        return TabView(selection: $app.selectedTab) {
+            Tab(L("tab_today"), systemImage: "house", value: AppTab.today) {
+                stack(.today) { TodayView() }
+            }
+            Tab(L("tab_library"), systemImage: "photo.on.rectangle.angled", value: AppTab.library) {
+                stack(.library) { LibraryView() }
+            }
+            Tab(L("tab_cleanup"), systemImage: "square.stack.3d.up", value: AppTab.cleanup) {
+                stack(.cleanup) { CleanUpHubView() }
+            }
+            Tab(L("tab_studio"), systemImage: "paintpalette", value: AppTab.studio) {
+                stack(.studio) { StudioView() }
+            }
+            Tab(L("tab_history"), systemImage: "clock.arrow.circlepath", value: AppTab.history) {
+                stack(.history) { HistoryView() }
+            }
+        }
+        .tabBarMinimizeBehavior(.onScrollDown)
+        .tint(AppColors.accent)
+    }
+
+    private func stack<Content: View>(_ tab: AppTab, @ViewBuilder content: () -> Content) -> some View {
+        NavigationStack(path: Binding(get: { app.paths[tab] ?? [] }, set: { app.paths[tab] = $0 })) {
+            content()
+                .navigationDestination(for: Route.self) { RouteDestination(route: $0) }
+        }
+    }
+
+    /// Einstiege öffnen nur Ansichten – nie eine Entscheidung, nie ein Löschen, nie ein Start ohne Tipp.
+    private func handle(_ route: AppRoute) {
+        guard app.settings.onboardingVersion >= OnboardingFlow.version else { return }
+        switch route {
+        case .startReview:
+            app.selectedTab = .today
+            if app.library.access.canRead { app.open(FeedRequest(.allMedia)) }
+        case .trash:
+            app.feed = nil
+            app.popToRoot(.cleanup)
+            app.navigate(.trash, in: .cleanup)
+        case .later:
+            app.feed = nil
+            app.popToRoot(.cleanup)
+            app.navigate(.later, in: .cleanup)
+        case .studio:
+            app.feed = nil
+            app.selectedTab = .studio
+        case .openFiles(let urls):
+            app.feed = nil
+            app.popToRoot(.studio)
+            app.navigate(.received(urls), in: .studio)
         }
     }
 }
 
-/// Anfrage an den Feed: Quelle + Warteschlange.
-struct FeedRequest: Identifiable, Hashable {
-    enum Source: Hashable {
-        case category(MediaCategory)
-        case due
-        case task(ReviewTask)
-        case items([ItemReference], title: String)
-    }
-    let id = UUID()
-    let source: Source
-
-    var title: LocalizedStringKey {
-        switch source {
-        case .category(.photos): "Fotos prüfen"
-        case .category(.videos): "Videos prüfen"
-        case .category(.screenshots): "Screenshots prüfen"
-        case .due: "Wieder fällig"
-        case .task: "Regel-Aufgabe"
-        case .items(_, let title): LocalizedStringKey(title)
+/// Sichtschutz im App-Umschalter: keine Fotos in der Vorschau des Systems.
+struct PrivacyShield: View {
+    var body: some View {
+        ZStack {
+            AppBackground()
+            Image(systemName: "sparkles.rectangle.stack")
+                .font(.system(size: 56, weight: .semibold))
+                .foregroundStyle(AppColors.accent)
+                .accessibilityHidden(true)
         }
+        .ignoresSafeArea()
+    }
+}
+
+/// Vollbild-Seiten (Betrachter, Editor, Diashow, Scanner).
+struct FullScreenHost: View {
+    let request: FullScreenRequest
+
+    var body: some View {
+        switch request {
+        case .viewer(let ids, let index): ViewerView(ids: ids, startIndex: index)
+        case .editor(let id): PhotoEditorView(assetID: id)
+        case .videoEditor(let id): VideoEditorView(assetID: id)
+        case .slideshow(let ids): SlideshowView(ids: ids)
+        case .scanner: DocumentScannerHost()
+        }
+    }
+}
+
+/// Start gescheitert (Datenbank nicht ladbar): keine Ersatz-Wahrheit, damit keine Entscheidung verloren geht.
+struct StartupErrorView: View {
+    @State private var report: URL?
+
+    var body: some View {
+        ZStack {
+            AppBackground()
+            VStack(spacing: AppSpacing.l) {
+                EmptyState(symbol: "externaldrive.badge.exclamationmark", title: L("startup_failed_title"),
+                           message: L("startup_failed_text"))
+                if let report {
+                    ShareLink(item: report) { Text(key: "diag_share") }
+                        .buttonStyle(.glassProminent)
+                }
+            }
+            .padding(AppSpacing.pageMargin)
+        }
+        .task { report = await Diagnostics.makeReport(appVersion: AppConfig.appVersion, build: AppConfig.buildNumber) }
     }
 }

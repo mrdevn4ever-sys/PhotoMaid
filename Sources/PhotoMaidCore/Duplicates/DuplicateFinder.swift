@@ -92,6 +92,10 @@ public struct DuplicateScanResult: Hashable, Sendable {
 public struct DuplicateScanProgress: Hashable, Sendable {
     public let processed: Int
     public let total: Int
+    public init(processed: Int, total: Int) {
+        self.processed = processed
+        self.total = total
+    }
 }
 
 /// Deterministische, unterbrechbare Pipeline ohne KI:

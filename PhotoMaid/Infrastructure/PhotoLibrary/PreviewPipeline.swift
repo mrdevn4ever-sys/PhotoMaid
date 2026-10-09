@@ -30,9 +30,10 @@ final class PreviewPipeline {
         return CGSize(width: max(1, w.rounded()), height: max(1, h.rounded()))
     }
 
-    private func options() -> PHImageRequestOptions {
+    private func options(allowNetwork: Bool = false) -> PHImageRequestOptions {
         let o = PHImageRequestOptions()
-        o.isNetworkAccessAllowed = false
+        // iCloud nur nach ausdrücklichem Tipp („Aus iCloud laden“), nie automatisch.
+        o.isNetworkAccessAllowed = allowNetwork
         o.deliveryMode = .highQualityFormat // genau ein Callback
         o.resizeMode = .fast
         o.version = .current
@@ -40,14 +41,14 @@ final class PreviewPipeline {
     }
 
     /// Lädt eine Vorschau. Abbruch des Tasks bricht den PhotoKit-Request ab.
-    func image(for assetID: String, targetSize: CGSize) async -> PreviewResult {
+    func image(for assetID: String, targetSize: CGSize, allowNetwork: Bool = false) async -> PreviewResult {
         guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [assetID], options: nil).firstObject else { return .failed }
         let box = RequestBox()
         let managerBox = UncheckedBox(manager)
         return await withTaskCancellationHandler {
             await withCheckedContinuation { (cont: CheckedContinuation<PreviewResult, Never>) in
                 let id = manager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit,
-                                              options: options()) { @Sendable image, info in
+                                              options: options(allowNetwork: allowNetwork)) { @Sendable image, info in
                     if let image { cont.resume(returning: .image(image)); return }
                     let inCloud = (info?[PHImageResultIsInCloudKey] as? Bool) ?? false
                     cont.resume(returning: inCloud ? .notLocallyAvailable : .failed)
@@ -80,10 +81,10 @@ final class PreviewPipeline {
     }
 
     /// Lokales Video als PlayerItem, ohne Netzwerkfreigabe.
-    func playerItem(for assetID: String) async -> PlayerItemResult {
+    func playerItem(for assetID: String, allowNetwork: Bool = false) async -> PlayerItemResult {
         guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [assetID], options: nil).firstObject else { return .failed }
         let o = PHVideoRequestOptions()
-        o.isNetworkAccessAllowed = false
+        o.isNetworkAccessAllowed = allowNetwork
         o.deliveryMode = .automatic
         o.version = .current
         return await withCheckedContinuation { cont in

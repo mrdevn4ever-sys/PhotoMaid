@@ -1,93 +1,111 @@
 import PhotoMaidCore
 import SwiftUI
 
-/// Screen 13 – Verlauf. Alle / Behalten / Bereinigt / Später. Echte Events, keine erfundenen Statistiken.
+/// Verlauf: Alle / Behalten / Bereinigt / Später. Echte Ereignisse, keine erfundenen Statistiken. Später-Liste oben.
 struct HistoryView: View {
     @Environment(AppModel.self) private var app
-    @State private var filter: Filter = .all
-
-    enum Filter: Hashable { case all, kept, cleaned, later }
-
-    private var filtered: [DecisionEvent] {
-        app.events.reversed().filter { e in
-            switch filter {
-            case .all: true
-            case .kept: e.to.disposition == .kept && e.kind != .undo
-            case .cleaned: e.kind == .cleanupConfirmed || e.kind == .reconciledMissing
-            case .later: e.to.disposition == .later && e.kind != .undo
-            }
-        }
-    }
+    @State private var filter = 0
 
     var body: some View {
-        let days = Dictionary(grouping: filtered) { Calendar.current.startOfDay(for: $0.at) }
-        let keys = days.keys.sorted(by: >)
+        let events = app.read.events.filter { e in
+            switch filter {
+            case 1: e.to.disposition == .kept && e.kind != .undo
+            case 2: e.kind == .cleanupConfirmed || e.kind == .reconciledMissing
+            case 3: e.to.disposition == .later && e.kind != .undo
+            default: true
+            }
+        }
+        let entries = Array(HistoryGrouping.group(events).reversed())
+        let cal = Calendar.current
+        let days = Dictionary(grouping: entries) { cal.startOfDay(for: $0.primary.at) }
+        let keys = days.keys.sorted(by: >).prefix(60)
         List {
             Section {
-                Picker("Filter", selection: $filter) {
-                    Text("Alle").tag(Filter.all)
-                    Text("Behalten").tag(Filter.kept)
-                    Text("Bereinigt").tag(Filter.cleaned)
-                    Text("Später").tag(Filter.later)
+                Button { app.navigate(.later, in: .history) } label: {
+                    NavRow(symbol: "clock", tint: AppColors.later, title: L("later"), value: CountText.number(app.read.laterRecords.count))
+                }
+                .buttonStyle(.plain)
+                Picker("", selection: $filter) {
+                    Text(key: "history_all").tag(0)
+                    Text(key: "history_kept").tag(1)
+                    Text(key: "history_cleaned").tag(2)
+                    Text(key: "history_later").tag(3)
                 }
                 .pickerStyle(.segmented)
                 .listRowBackground(Color.clear)
             }
             if keys.isEmpty {
-                Section { Text("Noch keine Einträge.").foregroundStyle(AppColors.textSecondary) }
+                if app.read.events.isEmpty {
+                    EmptyState(symbol: "clock.arrow.circlepath", title: L("history_empty_title"), message: L("history_empty"))
+                        .listRowBackground(Color.clear)
+                } else {
+                    EmptyState(symbol: "line.3.horizontal.decrease.circle", title: L("history_filter_empty_title"),
+                               message: L("history_filter_empty"))
+                        .listRowBackground(Color.clear)
+                }
             }
-            ForEach(keys.prefix(60), id: \.self) { day in
-                let items = days[day] ?? []
-                Section {
-                    ForEach(items.prefix(300)) { e in row(e) }
-                } header: {
-                    Text("\(day.formatted(date: .complete, time: .omitted)) · \(items.count) Einträge")
+            ForEach(Array(keys), id: \.self) { day in
+                let list = days[day] ?? []
+                Section(LP("history_day_header", list.count, DateText.complete(day), list.count)) {
+                    ForEach(list.prefix(300)) { HistoryRow(entry: $0) }
                 }
             }
         }
-        .scrollContentBackground(.hidden)
-        .background(AppBackground())
-        .navigationTitle(Text("Verlauf"))
+        .appPage()
+        .navigationTitle(L("tab_history"))
         .toolbar {
-            ToolbarItem(placement: .primaryAction) {
-                Button("Rückgängig", systemImage: "arrow.uturn.backward") { Task { _ = await app.undo() } }
-                    .disabled(!app.canUndo)
+            ToolbarItem(placement: .topBarTrailing) {
+                Button { Task { _ = await app.undo() } } label: { Image(systemName: "arrow.uturn.backward") }
+                    .disabled(!app.read.canUndo)
+                    .accessibilityLabel(Text(key: "undo"))
             }
         }
     }
+}
 
-    private func row(_ e: DecisionEvent) -> some View {
-        let (symbol, tint, title) = describe(e)
-        return HStack(spacing: AppSpacing.s) {
-            if e.item.provider == .photoLibrary {
-                ThumbnailView(assetID: e.item.localIdentifier).frame(width: 44, height: 44)
-            }
-            Image(systemName: symbol).foregroundStyle(tint).frame(width: 28).accessibilityHidden(true)
-            VStack(alignment: .leading, spacing: 2) {
-                Text(title).font(AppTypography.subheadline.weight(.semibold))
-                Text(e.at.formatted(date: .omitted, time: .shortened)).font(AppTypography.caption)
-                    .foregroundStyle(AppColors.textSecondary)
-            }
+struct HistoryRow: View {
+    let entry: HistoryEntry
+
+    var body: some View {
+        let e = entry.primary
+        let (symbol, tint, key) = Self.describe(e)
+        let day = (entry.schedule ?? (e.kind == .scheduleChanged ? e : nil))?.to.dueDay
+        let text: String = if let day {
+            L("history_with_day", L(key), DayText.string(day))
+        } else if entry.itemCount > 1 {
+            L("history_with_day", L(key), LP("items_count", entry.itemCount))
+        } else {
+            L(key)
         }
+        HStack(spacing: AppSpacing.s) {
+            if e.item.provider == .photoLibrary { AssetThumbnail(assetID: e.item.localIdentifier, side: 44) }
+            Image(systemName: symbol).foregroundStyle(tint).frame(width: 24).accessibilityHidden(true)
+            VStack(alignment: .leading) {
+                Text(verbatim: text).font(AppTypography.subheadline.weight(.semibold))
+                Text(verbatim: DateText.time(e.at)).font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
+            }
+            Spacer(minLength: 0)
+        }
+        .frame(minHeight: 56)
         .accessibilityElement(children: .combine)
     }
 
-    private func describe(_ e: DecisionEvent) -> (String, Color, LocalizedStringKey) {
+    static func describe(_ e: DecisionEvent) -> (String, Color, String) {
         switch e.kind {
-        case .cleanupConfirmed: return ("trash.fill", AppColors.cleanup, "Bereinigt (bestätigt)")
-        case .reconciledMissing: return ("questionmark.circle", AppColors.warning, "Nicht mehr vorhanden (abgeglichen)")
-        case .cleanupNotPerformed: return ("xmark.circle", AppColors.textSecondary, "Bereinigung nicht ausgeführt")
-        case .undo: return ("arrow.uturn.backward", AppColors.textSecondary, "Rückgängig gemacht")
-        case .scheduleChanged: return ("calendar", AppColors.later, "Termin gesetzt")
-        case .deferralRemoved: return ("bookmark.slash", AppColors.textSecondary, "Zurückstellung entfernt")
-        case .unmarked: return ("minus.circle", AppColors.textSecondary, "Aus dem Papierkorb zurückgelegt")
+        case .cleanupConfirmed: return ("trash.slash", AppColors.cleanup, "h_cleaned")
+        case .reconciledMissing: return ("questionmark.circle", AppColors.warning, "h_reconciled")
+        case .cleanupNotPerformed: return ("xmark.circle", AppColors.textSecondary, "h_not_performed")
+        case .undo: return ("arrow.uturn.backward", AppColors.textSecondary, "h_undo")
+        case .scheduleChanged: return ("calendar", AppColors.later, "h_schedule")
+        case .deferralRemoved: return ("calendar.badge.minus", AppColors.textSecondary, "h_deferral_removed")
+        case .unmarked: return ("minus.circle", AppColors.textSecondary, "h_unmarked")
         case .decision, .correction:
             let corr = e.kind == .correction
             switch e.to.disposition {
-            case .kept: return ("checkmark.circle.fill", AppColors.keep, corr ? "Korrigiert: behalten" : "Behalten")
-            case .markedForCleanup: return ("trash", AppColors.cleanup, corr ? "Korrigiert: Papierkorb" : "In den Papierkorb")
-            case .later: return ("clock", AppColors.later, corr ? "Korrigiert: später" : "Auf später gelegt")
-            default: return ("circle", AppColors.textSecondary, "Geändert")
+            case .kept: return ("checkmark.circle", AppColors.keep, corr ? "h_kept_corr" : "h_kept")
+            case .markedForCleanup: return ("trash", AppColors.cleanup, corr ? "h_trash_corr" : "h_trash")
+            case .later: return ("clock", AppColors.later, corr ? "h_later_corr" : "h_later")
+            default: return ("circle", AppColors.textSecondary, "h_changed")
             }
         }
     }

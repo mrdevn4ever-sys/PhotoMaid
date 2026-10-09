@@ -29,12 +29,15 @@ enum SourceProblem: Error, Equatable, Sendable {
 final class ConnectedSourceStore {
     private(set) var sources: [ConnectedSource] = []
     private(set) var problems: [ConnectedSourceID: SourceProblem] = [:]
-    @ObservationIgnored private let store: CoreDataStore
-    private static let key = "sources.connected"
+    @ObservationIgnored private let kv: KeyValueStore?
 
-    init(store: CoreDataStore) {
-        self.store = store
-        sources = store.value([ConnectedSource].self, forKey: Self.key) ?? []
+    init(kv: KeyValueStore?) {
+        self.kv = kv
+        sources = kv?.get(StoreKeys.sources) ?? []
+    }
+
+    private func save(_ list: [ConnectedSource]) throws {
+        try kv?.set(StoreKeys.sources, list)
     }
 
     var downloadsSource: ConnectedSource? { sources.first { $0.isDownloads } }
@@ -52,14 +55,14 @@ final class ConnectedSourceStore {
         list.append(ConnectedSource(id: ConnectedSourceID(), displayName: values.localizedName ?? url.lastPathComponent,
                                     bookmark: bookmark, addedAt: Date(), isWritable: values.isWritable ?? false,
                                     isDownloads: asDownloads))
-        try store.setValue(list, forKey: Self.key)
+        try save(list)
         sources = list
     }
 
     /// Entfernt nur die Verbindung. Keine Datei wird gelöscht.
     func remove(_ id: ConnectedSourceID) throws {
         let list = sources.filter { $0.id != id }
-        try store.setValue(list, forKey: Self.key)
+        try save(list)
         sources = list
         problems[id] = nil
     }
@@ -84,7 +87,7 @@ final class ConnectedSourceStore {
            let idx = sources.firstIndex(where: { $0.id == id }) {
             var list = sources
             list[idx].bookmark = fresh
-            try? store.setValue(list, forKey: Self.key)
+            try? save(list)
             sources = list
         }
         return url
@@ -120,14 +123,14 @@ final class ConnectedSourceStore {
         if stale, let fresh = try? url.bookmarkData(options: [], includingResourceValuesForKeys: nil, relativeTo: nil) {
             var list = sources
             list[idx].bookmark = fresh
-            try? store.setValue(list, forKey: Self.key)
+            try? save(list)
             sources = list
         }
         let writable = (try? url.resourceValues(forKeys: [.isWritableKey]).isWritable) ?? false
         if sources[idx].isWritable != writable {
             var list = sources
             list[idx].isWritable = writable
-            try? store.setValue(list, forKey: Self.key)
+            try? save(list)
             sources = list
         }
         problems[id] = nil

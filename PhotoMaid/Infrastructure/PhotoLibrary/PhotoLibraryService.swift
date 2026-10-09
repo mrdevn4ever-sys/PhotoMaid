@@ -1,3 +1,4 @@
+import CoreLocation
 import Foundation
 import Observation
 import Photos
@@ -24,36 +25,69 @@ enum PhotoAccess: Equatable, Sendable {
     var canRead: Bool { self == .authorized || self == .limited }
 }
 
-enum MediaCategory: String, CaseIterable, Sendable, Identifiable {
+enum MediaCategory: String, CaseIterable, Sendable, Identifiable, Codable {
     case photos, videos, screenshots
     var id: String { rawValue }
 }
 
-/// Leichtgewichtige, Sendable-Beschreibung eines PhotoKit-Assets.
+/// Leichtgewichtige, Sendable-Beschreibung eines PhotoKit-Assets. Größe steht hier bewusst NICHT: PhotoKit liefert
+/// keine öffentliche Dateigröße; gemessen wird getrennt (`MediaSizer`), unbekannt bleibt unbekannt.
 struct MediaAsset: Hashable, Sendable, Identifiable {
     let id: String
     let kind: MediaKind
     let creationDate: Date?
+    let modificationDate: Date?
     let duration: TimeInterval
     let pixelWidth: Int
     let pixelHeight: Int
     let isLivePhoto: Bool
     let isFavorite: Bool
     let canDelete: Bool
+    let canEditProperties: Bool
+    let latitude: Double?
+    let longitude: Double?
+    let subtypes: UInt
+    let burstIdentifier: String?
 
     var reference: ItemReference { .photo(id) }
-    var aspectRatio: CGFloat { pixelHeight > 0 ? CGFloat(pixelWidth) / CGFloat(pixelHeight) : 1 }
+    var aspectRatio: CGFloat { pixelHeight > 0 && pixelWidth > 0 ? CGFloat(pixelWidth) / CGFloat(pixelHeight) : 1 }
+    var isVideo: Bool { kind == .video }
+    var hasLocation: Bool { latitude != nil && longitude != nil }
+    var isPanorama: Bool { subtypes & PHAssetMediaSubtype.photoPanorama.rawValue != 0 }
+    var isHDR: Bool { subtypes & PHAssetMediaSubtype.photoHDR.rawValue != 0 }
+    var isPortrait: Bool { subtypes & PHAssetMediaSubtype.photoDepthEffect.rawValue != 0 }
+    var isSlowMotion: Bool { subtypes & PHAssetMediaSubtype.videoHighFrameRate.rawValue != 0 }
+    var isTimelapse: Bool { subtypes & PHAssetMediaSubtype.videoTimelapse.rawValue != 0 }
+    var isCinematic: Bool { subtypes & PHAssetMediaSubtype.videoCinematic.rawValue != 0 }
 }
 
-/// Einziger Zugang zu PhotoKit. Alle Requests ohne automatische Netzwerkfreigabe.
+/// Album oder Ordner der Fotos-App (E5: an Stelle der Android-Ordner).
+struct PhotoAlbum: Hashable, Sendable, Identifiable {
+    let id: String
+    let title: String
+    let isFolder: Bool
+    let count: Int
+    let latest: Date?
+    let canAddAssets: Bool
+    let children: [PhotoAlbum]
+}
+
+/// Ergebnis eines Schreibwunschs an die Mediathek (Favorit, Album). Erfolg nur nach erneutem Lesen.
+enum MediaWriteResult: Equatable, Sendable {
+    case done
+    case cancelled
+    /// Technisch gescheitert oder nicht belegbar (Grund nur fürs Protokoll, nie im UI).
+    case failed
+}
+
+/// Einziger Zugang zu PhotoKit. Alle Requests ohne automatische Netzwerkfreigabe (iCloud nur auf Tipp).
 @MainActor
 @Observable
 final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
     private(set) var access: PhotoAccess = .init(PHPhotoLibrary.authorizationStatus(for: .readWrite))
-    /// Erhöht sich bei jeder Mediatheksänderung (Screens laden daraufhin neu).
+    /// Erhöht sich bei jeder Mediatheksänderung (Seiten laden daraufhin neu).
     private(set) var changeToken = 0
     @ObservationIgnored private var observing = false
-    @ObservationIgnored let imageManager = PHCachingImageManager()
 
     override init() {
         super.init()
@@ -66,6 +100,8 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
         if new != access { access = new; changeToken += 1 }
         startObservingIfAllowed()
     }
+
+    func bumpChangeToken() { changeToken += 1 }
 
     /// Kontextuelle Anfrage – nur nach einer Nutzeraktion aufrufen.
     func requestAccess() async {
@@ -95,7 +131,7 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
 
     // MARK: Abfragen
 
-    private func fetchResult(_ category: MediaCategory) -> PHFetchResult<PHAsset> {
+    nonisolated static func fetchOptions(_ category: MediaCategory?) -> PHFetchOptions {
         let options = PHFetchOptions()
         options.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         options.includeHiddenAssets = false
@@ -107,25 +143,29 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
         case .screenshots:
             options.predicate = NSPredicate(format: "mediaType == %d AND (mediaSubtypes & %d) != 0",
                                             PHAssetMediaType.image.rawValue, PHAssetMediaSubtype.photoScreenshot.rawValue)
+        case nil:
+            options.predicate = NSPredicate(format: "mediaType == %d OR mediaType == %d",
+                                            PHAssetMediaType.image.rawValue, PHAssetMediaType.video.rawValue)
         }
-        return PHAsset.fetchAssets(with: options)
+        return options
+    }
+
+    /// Alle prüfbaren Medien (Fotos inkl. Screenshots + Videos), neueste zuerst. Abseits des Main-Threads
+    /// (PhotoKit-Abfragen sind threadsicher); bei 50 000 Medien dauert das spürbar.
+    nonisolated static func loadAll() async -> [MediaAsset] {
+        await Task.detached(priority: .userInitiated) {
+            guard PhotoAccess(PHPhotoLibrary.authorizationStatus(for: .readWrite)).canRead else { return [] }
+            let result = PHAsset.fetchAssets(with: PhotoLibraryService.fetchOptions(nil))
+            var out: [MediaAsset] = []
+            out.reserveCapacity(result.count)
+            result.enumerateObjects { a, _, _ in out.append(PhotoLibraryService.describe(a)) }
+            return out
+        }.value
     }
 
     func count(_ category: MediaCategory) -> Int {
         guard access.canRead else { return 0 }
-        return fetchResult(category).count
-    }
-
-    func assets(_ category: MediaCategory, limit: Int? = nil) -> [MediaAsset] {
-        guard access.canRead else { return [] }
-        let result = fetchResult(category)
-        var out: [MediaAsset] = []
-        out.reserveCapacity(min(result.count, limit ?? result.count))
-        result.enumerateObjects { asset, idx, stop in
-            if let limit, idx >= limit { stop.pointee = true; return }
-            out.append(Self.describe(asset))
-        }
-        return out
+        return PHAsset.fetchAssets(with: Self.fetchOptions(category)).count
     }
 
     func assets(ids: [String]) -> [MediaAsset] {
@@ -136,17 +176,193 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
         return ids.compactMap { byID[$0] }
     }
 
-    func phAsset(_ id: String) -> PHAsset? {
+    func asset(_ id: String) -> MediaAsset? { assets(ids: [id]).first }
+
+    nonisolated static func phAsset(_ id: String) -> PHAsset? {
         PHAsset.fetchAssets(withLocalIdentifiers: [id], options: nil).firstObject
     }
 
-    static func describe(_ a: PHAsset) -> MediaAsset {
+    nonisolated static func describe(_ a: PHAsset) -> MediaAsset {
         let isScreenshot = a.mediaSubtypes.contains(.photoScreenshot)
         let kind: MediaKind = a.mediaType == .video ? .video : (isScreenshot ? .screenshot : .photo)
+        let coord = a.location?.coordinate
         return MediaAsset(id: a.localIdentifier, kind: kind, creationDate: a.creationDate,
-                          duration: a.duration, pixelWidth: a.pixelWidth, pixelHeight: a.pixelHeight,
+                          modificationDate: a.modificationDate, duration: a.duration,
+                          pixelWidth: a.pixelWidth, pixelHeight: a.pixelHeight,
                           isLivePhoto: a.mediaSubtypes.contains(.photoLive), isFavorite: a.isFavorite,
-                          canDelete: a.canPerform(.delete))
+                          canDelete: a.canPerform(.delete), canEditProperties: a.canPerform(.properties),
+                          latitude: coord?.latitude, longitude: coord?.longitude,
+                          subtypes: a.mediaSubtypes.rawValue, burstIdentifier: a.burstIdentifier)
+    }
+
+    /// Originaler Dateiname (für Suche, Info und den Fingerabdruck bei Schlagwörtern/Sicherung). Nie übertragen.
+    nonisolated static func originalFilename(_ id: String) -> String? {
+        guard let a = phAsset(id) else { return nil }
+        let resources = PHAssetResource.assetResources(for: a)
+        let main = resources.first { $0.type == .photo || $0.type == .video } ?? resources.first
+        return main?.originalFilename
+    }
+
+    /// RAW + JPEG in einem Asset (iOS speichert beide als ein Medium – sie bleiben immer zusammen).
+    nonisolated static func hasRawAlternate(_ id: String) -> Bool {
+        guard let a = phAsset(id) else { return false }
+        return PHAssetResource.assetResources(for: a).contains { $0.type == .alternatePhoto }
+    }
+
+    // MARK: Alben (E5)
+
+    /// Alben und Ordner des Nutzers als Baum. Geteilte Alben und intelligente Alben bleiben außen vor
+    /// (nicht beschreibbar bzw. vom System verwaltet).
+    nonisolated static func loadAlbums() async -> [PhotoAlbum] {
+        await Task.detached(priority: .userInitiated) {
+            guard PhotoAccess(PHPhotoLibrary.authorizationStatus(for: .readWrite)).canRead else { return [] }
+            return PhotoLibraryService.collect(PHCollectionList.fetchTopLevelUserCollections(with: nil), depth: 0)
+        }.value
+    }
+
+    nonisolated private static func collect(_ result: PHFetchResult<PHCollection>, depth: Int) -> [PhotoAlbum] {
+        var out: [PhotoAlbum] = []
+        result.enumerateObjects { c, _, _ in
+            if let album = c as? PHAssetCollection {
+                let o = PHFetchOptions()
+                o.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+                o.includeHiddenAssets = false
+                let assets = PHAsset.fetchAssets(in: album, options: o)
+                out.append(PhotoAlbum(id: album.localIdentifier, title: album.localizedTitle ?? "",
+                                      isFolder: false, count: assets.count, latest: assets.firstObject?.creationDate,
+                                      canAddAssets: album.canPerform(.addContent), children: []))
+            } else if let list = c as? PHCollectionList, depth < 8 {
+                let children = PhotoLibraryService.collect(PHCollection.fetchCollections(in: list, options: nil), depth: depth + 1)
+                out.append(PhotoAlbum(id: list.localIdentifier, title: list.localizedTitle ?? "", isFolder: true,
+                                      count: children.reduce(0) { $0 + $1.count },
+                                      latest: children.compactMap(\.latest).max(), canAddAssets: false,
+                                      children: children))
+            }
+        }
+        return out
+    }
+
+    nonisolated static func albumTitle(_ id: String) -> String? {
+        if let a = PHAssetCollection.fetchAssetCollections(withLocalIdentifiers: [id], options: nil).firstObject {
+            return a.localizedTitle
+        }
+        return PHCollectionList.fetchCollectionLists(withLocalIdentifiers: [id], options: nil).firstObject?.localizedTitle
+    }
+
+    // MARK: „Neu seit dem letzten Aufräumen“ (dauerhafte Änderungshistorie, iOS 16+)
+
+    /// Aktueller Stand der Änderungshistorie als Daten (gespeichert am Sitzungsende, keine Medien-IDs).
+    nonisolated static func currentChangeTokenData() -> Data? {
+        try? NSKeyedArchiver.archivedData(withRootObject: PHPhotoLibrary.shared().currentChangeToken,
+                                          requiringSecureCoding: true)
+    }
+
+    /// Seit dem gespeicherten Stand hinzugefügte Medien. `nil`, wenn die Historie nicht mehr so weit zurückreicht
+    /// (dann gilt ersatzweise das Aufnahmedatum).
+    nonisolated static func insertedSince(_ data: Data) -> Set<String>? {
+        guard let token = try? NSKeyedUnarchiver.unarchivedObject(ofClass: PHPersistentChangeToken.self, from: data)
+        else { return nil }
+        do {
+            let changes = try PHPhotoLibrary.shared().fetchPersistentChanges(since: token)
+            var ids = Set<String>()
+            for change in changes {
+                if let details = try? change.changeDetails(for: .asset) {
+                    ids.formUnion(details.insertedLocalIdentifiers)
+                    ids.subtract(details.deletedLocalIdentifiers)
+                }
+            }
+            return ids
+        } catch {
+            return nil
+        }
+    }
+
+    /// Mitglieder eines Albums bzw. aller Alben eines Ordners (inkl. Unterordner).
+    nonisolated static func assetIDs(inCollection id: String) -> Set<String> {
+        var ids = Set<String>()
+        if let album = PHAssetCollection.fetchAssetCollections(withLocalIdentifiers: [id], options: nil).firstObject {
+            PHAsset.fetchAssets(in: album, options: nil).enumerateObjects { a, _, _ in ids.insert(a.localIdentifier) }
+        } else if let list = PHCollectionList.fetchCollectionLists(withLocalIdentifiers: [id], options: nil).firstObject {
+            PHCollection.fetchCollections(in: list, options: nil).enumerateObjects { c, _, _ in
+                ids.formUnion(PhotoLibraryService.assetIDs(inCollection: c.localIdentifier))
+            }
+        }
+        return ids
+    }
+
+    /// Mitglieder eines Albums in Album-Reihenfolge.
+    nonisolated static func orderedAssetIDs(inAlbum id: String) -> [String] {
+        guard let album = PHAssetCollection.fetchAssetCollections(withLocalIdentifiers: [id], options: nil).firstObject
+        else { return [] }
+        var ids: [String] = []
+        PHAsset.fetchAssets(in: album, options: nil).enumerateObjects { a, _, _ in ids.append(a.localIdentifier) }
+        return ids
+    }
+
+    /// Zu einem Album hinzufügen. Änderung ist in der Fotos-App sichtbar (und mit iCloud-Fotos synchronisiert).
+    func add(_ ids: [String], toAlbum albumID: String) async -> MediaWriteResult {
+        guard let album = PHAssetCollection.fetchAssetCollections(withLocalIdentifiers: [albumID], options: nil).firstObject,
+              album.canPerform(.addContent) else { return .failed }
+        let assets = PHAsset.fetchAssets(withLocalIdentifiers: ids, options: nil)
+        let box = UncheckedBox((album, assets))
+        do {
+            try await PHPhotoLibrary.shared().performChanges { @Sendable in
+                PHAssetCollectionChangeRequest(for: box.value.0)?.addAssets(box.value.1)
+            }
+        } catch {
+            return Self.writeResult(error)
+        }
+        let members = Self.assetIDs(inCollection: albumID)
+        return Set(ids).isSubset(of: members) ? .done : .failed
+    }
+
+    func remove(_ ids: [String], fromAlbum albumID: String) async -> MediaWriteResult {
+        guard let album = PHAssetCollection.fetchAssetCollections(withLocalIdentifiers: [albumID], options: nil).firstObject,
+              album.canPerform(.removeContent) else { return .failed }
+        let assets = PHAsset.fetchAssets(withLocalIdentifiers: ids, options: nil)
+        let box = UncheckedBox((album, assets))
+        do {
+            try await PHPhotoLibrary.shared().performChanges { @Sendable in
+                PHAssetCollectionChangeRequest(for: box.value.0)?.removeAssets(box.value.1)
+            }
+        } catch {
+            return Self.writeResult(error)
+        }
+        return Self.assetIDs(inCollection: albumID).isDisjoint(with: ids) ? .done : .failed
+    }
+
+    /// Neues Album der Fotos-App anlegen; liefert dessen Kennung.
+    func createAlbum(named name: String) async -> String? {
+        let holder = PlaceholderBox()
+        do {
+            try await PHPhotoLibrary.shared().performChanges { @Sendable in
+                let r = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: name)
+                holder.set(r.placeholderForCreatedAssetCollection.localIdentifier)
+            }
+        } catch {
+            Diagnostics.error(.library, "album-create-failed", error)
+            return nil
+        }
+        return holder.value
+    }
+
+    // MARK: Favoriten
+
+    func setFavorite(_ ids: [String], _ favorite: Bool) async -> MediaWriteResult {
+        let assets = PHAsset.fetchAssets(withLocalIdentifiers: ids, options: nil)
+        var targets: [PHAsset] = []
+        assets.enumerateObjects { a, _, _ in if a.canPerform(.properties) { targets.append(a) } }
+        guard !targets.isEmpty else { return .failed }
+        let box = UncheckedBox(targets)
+        do {
+            try await PHPhotoLibrary.shared().performChanges { @Sendable in
+                for a in box.value { PHAssetChangeRequest(for: a).isFavorite = favorite }
+            }
+        } catch {
+            return Self.writeResult(error)
+        }
+        let after = self.assets(ids: ids)
+        return after.count == ids.count && after.allSatisfy({ $0.isFavorite == favorite }) ? .done : .failed
     }
 
     // MARK: Existenzprüfung für den Abgleich
@@ -166,30 +382,97 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
         return out
     }
 
-    // MARK: Löschung (nur nach ausdrücklicher Review-Aktion)
+    // MARK: Löschen (nur nach ausdrücklicher Bestätigung im PhotoMaid-Papierkorb)
 
-    /// `PHPhotoLibrary.performChanges` + `PHAssetChangeRequest.deleteAssets`.
-    /// Das System zeigt seine eigene Bestätigung; sie wird nicht unterdrückt.
-    /// PhotoKit belegt keinen Teilerfolg einzelner IDs: Erfolg gilt für den gesamten Request.
+    /// `PHAssetChangeRequest.deleteAssets` – das System zeigt seine eigene Bestätigung (nicht unterdrückbar);
+    /// Medien landen 30 Tage in „Zuletzt gelöscht“. Danach wird jedes Medium einzeln nachgeprüft: nur, was wirklich
+    /// fehlt, gilt als entfernt.
     func delete(ids: [String]) async -> OperationOutcome {
         let result = PHAsset.fetchAssets(withLocalIdentifiers: ids, options: nil)
         var assets: [PHAsset] = []
         result.enumerateObjects { a, _, _ in if a.canPerform(.delete) { assets.append(a) } }
         guard !assets.isEmpty else { return .failed(reason: "no-deletable-assets") }
-        let requested = Set(assets.map(\.localIdentifier))
         let targets = UncheckedBox(assets as NSArray)
         do {
             try await PHPhotoLibrary.shared().performChanges { @Sendable in
                 PHAssetChangeRequest.deleteAssets(targets.value)
             }
-            if requested.count == ids.count { return .succeeded }
-            return .partial(removed: Set(requested.map { ItemReference.photo($0) }))
         } catch let error as PHPhotosError where error.code == .userCancelled {
             return .cancelled
         } catch {
+            Diagnostics.error(.cleanup, "delete-failed", error)
             return .failed(reason: (error as NSError).domain + ":\((error as NSError).code)")
         }
+        let stillThere = Set(self.assets(ids: ids).map(\.id))
+        let removed = Set(ids).subtracting(stillThere)
+        if removed.count == ids.count { return .succeeded }
+        return .partial(removed: Set(removed.map { ItemReference.photo($0) }))
     }
+
+    // MARK: Neue Medien speichern (Bearbeitungen, Collagen, Videos)
+
+    struct SaveRequest: Sendable {
+        var fileURL: URL
+        var isVideo: Bool
+        var creationDate: Date?
+        var latitude: Double?
+        var longitude: Double?
+        var favorite: Bool = false
+        var albumID: String?
+        /// Originaler Dateiname für die neue Datei (z. B. „IMG_1234 bearbeitet.heic“).
+        var filename: String?
+    }
+
+    enum SaveResult: Equatable, Sendable {
+        case saved(id: String)
+        case failed
+    }
+
+    /// Legt ein neues Medium an (nie Überschreiben). Erfolg nur, wenn das neue Asset danach lesbar ist.
+    func save(_ r: SaveRequest) async -> SaveResult {
+        let holder = PlaceholderBox()
+        let albumID = r.albumID
+        do {
+            try await PHPhotoLibrary.shared().performChanges { @Sendable in
+                let req = PHAssetCreationRequest.forAsset()
+                let options = PHAssetResourceCreationOptions()
+                options.originalFilename = r.filename
+                options.shouldMoveFile = false
+                req.addResource(with: r.isVideo ? .video : .photo, fileURL: r.fileURL, options: options)
+                req.creationDate = r.creationDate ?? Date()
+                if let lat = r.latitude, let lon = r.longitude { req.location = CLLocation(latitude: lat, longitude: lon) }
+                req.isFavorite = r.favorite
+                if let placeholder = req.placeholderForCreatedAsset {
+                    holder.set(placeholder.localIdentifier)
+                    if let albumID,
+                       let album = PHAssetCollection.fetchAssetCollections(withLocalIdentifiers: [albumID], options: nil).firstObject,
+                       album.canPerform(.addContent) {
+                        PHAssetCollectionChangeRequest(for: album)?.addAssets([placeholder] as NSArray)
+                    }
+                }
+            }
+        } catch {
+            Diagnostics.error(.library, "save-failed", error)
+            return .failed
+        }
+        guard let id = holder.value, Self.phAsset(id) != nil else { return .failed }
+        changeToken += 1
+        return .saved(id: id)
+    }
+
+    private static func writeResult(_ error: any Error) -> MediaWriteResult {
+        if let e = error as? PHPhotosError, e.code == .userCancelled { return .cancelled }
+        Diagnostics.error(.library, "write-failed", error)
+        return .failed
+    }
+}
+
+/// Kennung aus einem `performChanges`-Block nach außen reichen.
+final class PlaceholderBox: @unchecked Sendable {
+    private let lock = NSLock()
+    private var _value: String?
+    var value: String? { lock.withLock { _value } }
+    func set(_ v: String) { lock.withLock { _value = v } }
 }
 
 extension UIApplication {
