@@ -10742,97 +10742,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "انسخ إلى بطاقة SD أو ذاكرة USB وتحقق من كل نسخة"
+            "value": "النسخ إلى مجلد مختار والتحقق من كل نسخة"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Auf SD-Karte oder USB-Stick kopieren und jede Kopie prüfen"
+            "value": "In einen gewählten Ordner kopieren und jede Kopie prüfen"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Copy to an SD card or USB drive and check every copy"
+            "value": "Copy to a chosen folder and verify every copy"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Copia a una tarjeta SD o memoria USB y comprueba cada copia"
+            "value": "Copiar a una carpeta elegida y verificar cada copia"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Copier sur une carte SD ou une clé USB et vérifier chaque copie"
+            "value": "Copier dans un dossier choisi et vérifier chaque copie"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Copia su scheda SD o chiavetta USB e controlla ogni copia"
+            "value": "Copia in una cartella scelta e verifica ogni copia"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "SDカードやUSBメモリにコピーし、すべてのコピーを確認"
+            "value": "選択したフォルダにコピーし、各コピーを検証"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "SD 카드나 USB에 복사하고 모든 사본을 확인해요"
+            "value": "선택한 폴더에 복사하고 각 사본 확인"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kopiëren naar een SD-kaart of USB-stick en elke kopie controleren"
+            "value": "Naar een gekozen map kopiëren en elke kopie controleren"
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Skopiuj na kartę SD lub pendrive i sprawdź każdą kopię"
+            "value": "Skopiuj do wybranego folderu i sprawdź każdą kopię"
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Copiar para um cartão SD ou pen USB e verificar cada cópia"
+            "value": "Copiar para uma pasta escolhida e verificar cada cópia"
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Copiază pe card SD sau stick USB și verifică fiecare copie"
+            "value": "Copiază într-un dosar ales și verifică fiecare copie"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Скопировать на SD-карту или USB-накопитель и проверить каждую копию"
+            "value": "Скопировать в выбранную папку и проверить каждую копию"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "SD karta veya USB belleğe kopyala ve her kopyayı kontrol et"
+            "value": "Seçilen klasöre kopyala ve her kopyayı doğrula"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Скопіювати на SD-картку чи USB-накопичувач і перевірити кожну копію"
+            "value": "Копіювати до вибраної папки й перевірити кожну копію"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "复制到 SD 卡或 U 盘，并检查每份副本"
+            "value": "复制到所选文件夹并验证每个副本"
           }
         }
       }
@@ -74277,97 +74277,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "التمرير لا يحذف أي شيء أبدًا. ما تستبعده يذهب أولًا إلى سلة مهملات PhotoMaid. لا يُزال شيء إلا عند إفراغها – وتنتقل الصور والفيديوهات إلى سلة مهملات Android بعد أن يسألك Android مرة أخرى. أما الملفات من المجلدات المرتبطة فتُحذف نهائيًا."
+            "value": "لا يؤدي السحب إلى حذف أي شيء. تنتقل العناصر أولاً إلى سلة PhotoMaid، وبعد تأكيدك ينقلها iOS إلى «المحذوفة مؤخراً»."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Beim Wischen wird nie etwas gelöscht. Was du aussortierst, kommt erst in den PhotoMaid-Papierkorb. Erst wenn du ihn leerst, wird wirklich entfernt – Fotos und Videos landen dann im Android-Papierkorb, nachdem Android noch einmal nachgefragt hat. Dateien aus verbundenen Ordnern werden endgültig gelöscht."
+            "value": "Beim Wischen wird nie etwas gelöscht. Medien landen zuerst im PhotoMaid-Papierkorb. Erst nach deiner Bestätigung verschiebt iOS Fotos und Videos in ‚Zuletzt gelöscht‘."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Swiping never deletes anything. What you set aside goes to the PhotoMaid trash first. Only when you empty it is anything removed – photos and videos then go to the Android trash after Android asks once more. Files from linked folders are deleted for good."
+            "value": "Swiping never deletes anything. Items first enter PhotoMaid’s trash. Only after you confirm there does iOS move photos and videos to Recently Deleted."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Deslizar nunca borra nada. Lo que apartas va primero a la papelera de PhotoMaid. Solo se elimina al vaciarla: las fotos y vídeos pasan entonces a la papelera de Android después de que Android vuelva a preguntar. Los archivos de carpetas vinculadas se eliminan definitivamente."
+            "value": "Deslizar nunca elimina nada. Los elementos van primero a la papelera de PhotoMaid; tras confirmarlo, iOS los mueve a Eliminado recientemente."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Balayer ne supprime jamais rien. Ce que vous écartez va d’abord dans la corbeille PhotoMaid. Rien n’est retiré tant que vous ne la videz pas – les photos et vidéos vont alors dans la corbeille Android, après une nouvelle confirmation d’Android. Les fichiers des dossiers associés sont supprimés définitivement."
+            "value": "Un balayage ne supprime rien. Les éléments vont d’abord dans la corbeille PhotoMaid ; après confirmation, iOS les place dans Suppressions récentes."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Scorrere non elimina mai nulla. Ciò che scarti va prima nel cestino di PhotoMaid. Si rimuove solo quando lo svuoti: foto e video passano allora nel cestino di Android, dopo che Android lo chiede ancora una volta. I file delle cartelle collegate vengono eliminati definitivamente."
+            "value": "Lo scorrimento non elimina nulla. Gli elementi vanno prima nel cestino PhotoMaid; dopo la conferma iOS li sposta in Eliminati di recente."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "スワイプで削除されることはありません。外したものはまず PhotoMaid のゴミ箱に入ります。ゴミ箱を空にしたときだけ削除され、写真と動画は Android がもう一度確認した後に Android のゴミ箱へ移ります。連携フォルダのファイルは完全に削除されます。"
+            "value": "スワイプだけでは削除されません。まずPhotoMaidのゴミ箱に入り、確認後にiOSの「最近削除した項目」へ移動します。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "넘기기만으로는 아무것도 지워지지 않아요. 골라낸 것은 먼저 PhotoMaid 휴지통에 들어가요. 휴지통을 비울 때만 실제로 지워지고, 사진과 동영상은 Android가 한 번 더 물어본 뒤 Android 휴지통으로 옮겨져요. 연결된 폴더의 파일은 완전히 삭제돼요."
+            "value": "쓸어 넘기기만으로 삭제되지 않습니다. 먼저 PhotoMaid 휴지통에 들어가며 확인 후 iOS의 최근 삭제된 항목으로 이동합니다."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Vegen verwijdert nooit iets. Wat je apart zet, gaat eerst naar de PhotoMaid-prullenbak. Pas als je die leegt, wordt er echt iets verwijderd – foto’s en video’s gaan dan naar de Android-prullenbak, nadat Android het nog een keer vraagt. Bestanden uit gekoppelde mappen worden definitief verwijderd."
+            "value": "Vegen verwijdert niets. Items gaan eerst naar de PhotoMaid-prullenbak; na bevestiging verplaatst iOS ze naar Recent verwijderd."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Przesuwanie nigdy niczego nie usuwa. To, co odkładasz, trafia najpierw do kosza PhotoMaid. Usuwane jest dopiero po opróżnieniu kosza – zdjęcia i filmy trafiają wtedy do kosza Androida, gdy Android zapyta jeszcze raz. Pliki z połączonych folderów są usuwane na stałe."
+            "value": "Przesunięcie niczego nie usuwa. Elementy trafiają najpierw do kosza PhotoMaid; po potwierdzeniu iOS przenosi je do Ostatnio usuniętych."
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Deslizar nunca elimina nada. O que põe de lado vai primeiro para o lixo do PhotoMaid. Só é removido quando o esvazia – as fotos e vídeos vão então para o lixo do Android, depois de o Android perguntar mais uma vez. Os ficheiros de pastas ligadas são eliminados definitivamente."
+            "value": "Deslizar não elimina nada. Os itens vão primeiro para o lixo do PhotoMaid; após confirmar, o iOS move-os para Apagados recentemente."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Glisarea nu șterge niciodată nimic. Ce pui deoparte ajunge mai întâi în coșul PhotoMaid. Abia când îl golești se elimină ceva – fotografiile și videoclipurile ajung atunci în coșul Android, după ce Android mai întreabă o dată. Fișierele din dosarele conectate se șterg definitiv."
+            "value": "Glisarea nu șterge nimic. Elementele ajung întâi în coșul PhotoMaid; după confirmare, iOS le mută în Șterse recent."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Пролистывание никогда ничего не удаляет. Отложенное сначала попадает в корзину PhotoMaid. Удаляется что-то только при её очистке – фото и видео уходят в корзину Android после повторного вопроса Android. Файлы из подключённых папок удаляются навсегда."
+            "value": "Смахивание ничего не удаляет. Объекты сначала попадают в корзину PhotoMaid; после подтверждения iOS перемещает их в «Недавно удалённые»."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kaydırmak hiçbir zaman bir şey silmez. Ayırdığın şeyler önce PhotoMaid çöp kutusuna gider. Ancak onu boşalttığında gerçekten silinir – fotoğraflar ve videolar, Android bir kez daha sorduktan sonra Android çöp kutusuna taşınır. Bağlı klasörlerdeki dosyalar kalıcı olarak silinir."
+            "value": "Kaydırma hiçbir şeyi silmez. Öğeler önce PhotoMaid çöpüne gider; onaydan sonra iOS onları Son Silinenler’e taşır."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Гортання ніколи нічого не видаляє. Відкладене спершу потрапляє в кошик PhotoMaid. Видаляється щось лише під час його очищення – фото й відео переходять у кошик Android після повторного запиту Android. Файли з підключених папок видаляються назавжди."
+            "value": "Гортання нічого не видаляє. Об’єкти спочатку потрапляють у кошик PhotoMaid; після підтвердження iOS переміщує їх у «Недавно видалені»."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "滑动永远不会删除任何内容。你挑出的内容会先进入 PhotoMaid 回收站。只有清空它时才会真正删除——照片和视频会在 Android 再次确认后移入 Android 回收站。已连接文件夹中的文件会被永久删除。"
+            "value": "轻扫不会删除任何内容。项目会先进入 PhotoMaid 废纸篓，确认后 iOS 才会将其移到“最近删除”。"
           }
         }
       }
@@ -105526,97 +105526,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "تنتقل العناصر أولًا إلى سلة مهملات PhotoMaid. تؤكد إزالتها هناك. يطلب Android تأكيدًا إضافيًا للصور والفيديوهات."
+            "value": "تنتقل العناصر أولاً إلى سلة PhotoMaid. تؤكد الإزالة هناك، ويسألك iOS مرة أخرى قبل نقل الصور والفيديوهات."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aussortiertes landet zuerst im PhotoMaid-Papierkorb. Dort bestätigst du das Entfernen. Bei Fotos und Videos fragt Android zusätzlich nach."
+            "value": "Medien landen zuerst im PhotoMaid-Papierkorb. Dort bestätigst du das Entfernen; iOS fragt vor ‚Zuletzt gelöscht‘ noch einmal nach."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Items go to the PhotoMaid trash first. You confirm their removal there. Android asks you to confirm photos and videos again."
+            "value": "Items first go to PhotoMaid’s trash. You confirm removal there, and iOS asks again before moving photos and videos to Recently Deleted."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Los elementos van primero a la papelera de PhotoMaid. Allí confirmas que quieres quitarlos. Android pide otra confirmación para las fotos y los vídeos."
+            "value": "Los elementos van primero a la papelera de PhotoMaid. Confirmas allí y iOS vuelve a preguntar antes de mover fotos y vídeos."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Les éléments vont d’abord dans la corbeille PhotoMaid. Tu y confirmes leur retrait. Android demande une confirmation supplémentaire pour les photos et vidéos."
+            "value": "Les éléments vont d’abord dans la corbeille PhotoMaid. Vous confirmez, puis iOS redemande avant de déplacer photos et vidéos."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gli elementi vanno prima nel cestino di PhotoMaid. Lì confermi la rimozione. Android chiede un’altra conferma per foto e video."
+            "value": "Gli elementi vanno prima nel cestino PhotoMaid. Confermi lì e iOS chiede di nuovo prima di spostare foto e video."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "選んだものは、まずPhotoMaidのゴミ箱に入ります。そこで削除を確認します。写真と動画は、Androidでもう一度確認します。"
+            "value": "まずPhotoMaidのゴミ箱に入ります。そこで確認し、写真やビデオを移動する前にiOSがもう一度確認します。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "선택한 항목은 먼저 PhotoMaid 휴지통에 들어가요. 그곳에서 삭제를 확인해요. 사진과 동영상은 Android가 한 번 더 확인을 요청해요."
+            "value": "먼저 PhotoMaid 휴지통에 들어갑니다. 여기서 확인하면 사진과 비디오를 옮기기 전에 iOS가 다시 묻습니다."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Items gaan eerst naar de PhotoMaid-prullenbak. Daar bevestig je het verwijderen. Android vraagt bij foto’s en video’s nogmaals om bevestiging."
+            "value": "Items gaan eerst naar de PhotoMaid-prullenbak. Je bevestigt daar; iOS vraagt opnieuw voordat foto’s en video’s worden verplaatst."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Elementy najpierw trafiają do kosza PhotoMaid. Tam potwierdzasz usunięcie. Android dodatkowo pyta o zgodę przy zdjęciach i filmach."
+            "value": "Elementy trafiają najpierw do kosza PhotoMaid. Tam potwierdzasz; iOS pyta ponownie przed przeniesieniem zdjęć i filmów."
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Os itens vão primeiro para o lixo do PhotoMaid. Aí confirmas a remoção. O Android pede outra confirmação para fotos e vídeos."
+            "value": "Os itens vão primeiro para o lixo do PhotoMaid. Confirma aí; o iOS volta a perguntar antes de mover fotos e vídeos."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Elementele ajung mai întâi în coșul PhotoMaid. Acolo confirmi eliminarea. Android cere o confirmare în plus pentru fotografii și videoclipuri."
+            "value": "Elementele ajung întâi în coșul PhotoMaid. Confirmi acolo; iOS întreabă din nou înainte de a muta pozele și clipurile."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Элементы сначала попадают в корзину PhotoMaid. Там ты подтверждаешь удаление. Для фото и видео Android просит дополнительное подтверждение."
+            "value": "Объекты сначала попадают в корзину PhotoMaid. Вы подтверждаете там; iOS спросит ещё раз перед перемещением фото и видео."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Öğeler önce PhotoMaid çöp kutusuna gider. Kaldırmayı orada onaylarsın. Fotoğraf ve videolar için Android ayrıca onay ister."
+            "value": "Öğeler önce PhotoMaid çöpüne gider. Orada onaylarsın; iOS fotoğraf ve videoları taşımadan önce tekrar sorar."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Елементи спочатку потрапляють у кошик PhotoMaid. Там ти підтверджуєш видалення. Для фото й відео Android просить додаткове підтвердження."
+            "value": "Об’єкти спочатку потрапляють у кошик PhotoMaid. Там ви підтверджуєте; iOS перепитає перед переміщенням фото й відео."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "内容会先进入 PhotoMaid 回收站，再由你确认移除。对于照片和视频，Android 还会请你再次确认。"
+            "value": "项目会先进入 PhotoMaid 废纸篓。你在其中确认；iOS 在移动照片和视频前还会再次询问。"
           }
         }
       }
@@ -120678,97 +120678,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "فتح إعدادات Android"
+            "value": "فتح إعدادات iOS"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Android-Einstellungen öffnen"
+            "value": "iOS-Einstellungen öffnen"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Open Android settings"
+            "value": "Open iOS Settings"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Abrir ajustes de Android"
+            "value": "Abrir Ajustes de iOS"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ouvrir les paramètres Android"
+            "value": "Ouvrir les réglages iOS"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Apri impostazioni Android"
+            "value": "Apri Impostazioni iOS"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Androidの設定を開く"
+            "value": "iOS設定を開く"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Android 설정 열기"
+            "value": "iOS 설정 열기"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Android-instellingen openen"
+            "value": "iOS-instellingen openen"
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Otwórz ustawienia Android"
+            "value": "Otwórz ustawienia iOS"
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Abrir definições Android"
+            "value": "Abrir Definições do iOS"
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Deschide setările Android"
+            "value": "Deschide configurările iOS"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Открыть настройки Android"
+            "value": "Открыть настройки iOS"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Android ayarlarını aç"
+            "value": "iOS Ayarlarını aç"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Відкрити налаштування Android"
+            "value": "Відкрити параметри iOS"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "打开 Android 设置"
+            "value": "打开 iOS 设置"
           }
         }
       }
@@ -120880,97 +120880,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "تتم عمليات الشراء عبر Google Play. لا تُرسل صورك أو أسماؤها أو مجلداتها أو أي بيانات مستخلصة منها لهذا الغرض أبدًا."
+            "value": "تتم المشتريات عبر App Store من Apple. لا يرسل PhotoMaid صورك أو أسماءها أو بياناتها الوصفية."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Käufe laufen über Google Play. Deine Fotos, ihre Namen, Ordner oder Angaben daraus werden dafür nie übertragen."
+            "value": "Käufe laufen über Apples App Store. PhotoMaid überträgt dafür nie Fotos, Namen oder Metadaten."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Purchases go through Google Play. Your photos, their names, folders or anything derived from them are never sent for this."
+            "value": "Purchases use Apple’s App Store. PhotoMaid never sends your photos, names or metadata for this."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Las compras se hacen con Google Play. Para ello nunca se envían tus fotos, sus nombres, carpetas ni nada que se obtenga de ellas."
+            "value": "Las compras usan el App Store de Apple. PhotoMaid nunca envía tus fotos, nombres ni metadatos."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Les achats passent par Google Play. Vos photos, leurs noms, dossiers ou toute information qui en est tirée ne sont jamais envoyés pour cela."
+            "value": "Les achats passent par l’App Store d’Apple. PhotoMaid n’envoie jamais vos photos, noms ou métadonnées."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gli acquisti passano da Google Play. Le tue foto, i loro nomi, le cartelle o dati ricavati da esse non vengono mai inviati."
+            "value": "Gli acquisti usano l’App Store di Apple. PhotoMaid non invia mai foto, nomi o metadati."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "購入は Google Play で行います。写真、その名前やフォルダ、写真から得た情報が送られることはありません。"
+            "value": "購入にはAppleのApp Storeを使用します。PhotoMaidが写真、名前、メタデータを送信することはありません。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "구매는 Google Play에서 이뤄져요. 사진, 사진 이름, 폴더나 사진에서 얻은 정보는 절대 보내지 않아요."
+            "value": "구매는 Apple App Store를 사용합니다. PhotoMaid는 사진, 이름 또는 메타데이터를 전송하지 않습니다."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aankopen lopen via Google Play. Je foto’s, hun namen, mappen of iets wat eruit is afgeleid, worden daarvoor nooit verstuurd."
+            "value": "Aankopen lopen via Apples App Store. PhotoMaid verstuurt hiervoor nooit foto’s, namen of metadata."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zakupy odbywają się przez Google Play. Twoje zdjęcia, ich nazwy, foldery ani nic z nich wyliczonego nigdy nie są w tym celu wysyłane."
+            "value": "Zakupy odbywają się przez App Store Apple. PhotoMaid nigdy nie wysyła zdjęć, nazw ani metadanych."
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "As compras são feitas pelo Google Play. As suas fotos, os nomes, pastas ou dados obtidos a partir delas nunca são enviados para isso."
+            "value": "As compras usam a App Store da Apple. O PhotoMaid nunca envia fotografias, nomes ou metadados."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cumpărăturile se fac prin Google Play. Fotografiile tale, numele lor, dosarele sau ceva derivat din ele nu se trimit niciodată pentru asta."
+            "value": "Achizițiile folosesc App Store Apple. PhotoMaid nu trimite niciodată poze, nume sau metadate."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Покупки проходят через Google Play. Ваши фото, их названия, папки и любые данные из них для этого никогда не передаются."
+            "value": "Покупки проходят через App Store Apple. PhotoMaid никогда не отправляет фотографии, имена или метаданные."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Satın almalar Google Play üzerinden yapılır. Fotoğrafların, adları, klasörleri veya onlardan elde edilen hiçbir bilgi bunun için gönderilmez."
+            "value": "Satın alımlar Apple App Store üzerinden yapılır. PhotoMaid fotoğraf, ad veya meta veri göndermez."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Покупки проходять через Google Play. Ваші фото, їхні назви, папки чи будь-які дані з них для цього ніколи не передаються."
+            "value": "Покупки здійснюються через App Store Apple. PhotoMaid ніколи не надсилає фото, назви чи метадані."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "购买通过 Google Play 完成。你的照片、照片名称、文件夹或由其得出的任何信息都不会因此被发送。"
+            "value": "购买通过 Apple App Store 完成。PhotoMaid 绝不会为此发送照片、名称或元数据。"
           }
         }
       }
