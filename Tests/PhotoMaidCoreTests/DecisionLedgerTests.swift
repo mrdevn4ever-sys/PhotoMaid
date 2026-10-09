@@ -200,3 +200,46 @@ struct DecisionLedgerTests {
         }
     }
 }
+
+@Suite("Ledger: Ergänzungen aus Android")
+struct LedgerAndroidPortTests {
+    /// Gerätetest K5: aus „Zuletzt gelöscht“ zurückgeholt (gleiche ID) → wieder offen und neu entscheidbar.
+    @Test func restoredFromRecentlyDeletedIsPendingAgain() async throws {
+        let ledger = try makeLedger()
+        try await ledger.decide(photo(1), .markForCleanup)
+        let intent = try await ledger.prepareCleanup([photo(1)], kind: .photoLibraryDelete, dailyLimit: 20)
+        try await ledger.markSubmitted(intent.id)
+        try await ledger.reconcile(intent.id, outcome: .succeeded)
+        #expect(await ledger.record(for: photo(1)).disposition == .removed)
+        let records = await ledger.records(for: [photo(1), photo(2)])
+        #expect(ReviewQueues.normalQueue(candidates: [photo(1), photo(2)], records: records, session: ReviewSessionID(),
+                                         today: LocalDay(year: 2026, month: 10, day: 2)) == [photo(1), photo(2)])
+        try await ledger.decide(photo(1), .keep)
+        #expect(await ledger.record(for: photo(1)).disposition == .kept)
+        #expect(await ledger.events().last?.kind == .decision)
+        #expect(try await ledger.undo().disposition == .removed)
+        let r = await ledger.record(for: photo(1))
+        guard case .failure = DecisionRules.transition(r, .unmark), case .failure = DecisionRules.transition(r, .removeDeferral) else {
+            Issue.record("Markierungs-/Terminaktionen auf entferntem Item müssen ungültig bleiben"); return
+        }
+    }
+
+    /// Gleichzeitige Reservierungen sind atomar (Actor): 6 × 5 bei Limit 15 → genau 3 gelingen.
+    @Test func concurrentReservationsAreAtomic() async throws {
+        let ledger = try makeLedger()
+        for i in 0..<30 { try await ledger.decide(photo(i), .markForCleanup) }
+        let ok = await withTaskGroup(of: Bool.self) { group -> Int in
+            for batch in 0..<6 {
+                group.addTask {
+                    (try? await ledger.prepareCleanup((batch * 5..<(batch + 1) * 5).map(photo), kind: .photoLibraryDelete,
+                                                      dailyLimit: 15)) != nil
+                }
+            }
+            var n = 0
+            for await r in group where r { n += 1 }
+            return n
+        }
+        #expect(ok == 3)
+        #expect(await ledger.allowance(limit: 15).available == 0)
+    }
+}

@@ -70,6 +70,24 @@ public enum ColorMatrices {
         }
     }
 
+    /// Gesamtmatrix wie Android: erst Filter (mit Stärke), dann Regler (Wärme, Sättigung, Kontrast, Helligkeit).
+    public static func forRecipe(_ r: EditRecipe) -> [Float] {
+        let f = lerp(identity, filter(r.filter), r.filter == .none ? 0 : r.filterIntensity)
+        let adj = concat(brightness(r.adjust.brightness), concat(contrast(r.adjust.contrast),
+                         concat(saturation(r.adjust.saturation), warmth(r.adjust.warmth))))
+        return concat(adj, f)
+    }
+
+    /// Auf einen 8-Bit-Farbwert anwenden (Tests).
+    public static func apply(_ m: [Float], r: Int, g: Int, b: Int, a: Int = 255) -> (Int, Int, Int, Int) {
+        func ch(_ row: Int) -> Int {
+            let v = m[row * 5] * Float(r) + m[row * 5 + 1] * Float(g) + m[row * 5 + 2] * Float(b)
+                + m[row * 5 + 3] * Float(a) + m[row * 5 + 4]
+            return min(max(Int(v), 0), 255)
+        }
+        return (ch(0), ch(1), ch(2), ch(3))
+    }
+
     /// Versätze von 0…255 nach 0…1.
     public static func normalized(_ m: [Float]) -> [Float] {
         var o = m

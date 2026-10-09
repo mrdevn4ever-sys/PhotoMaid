@@ -162,6 +162,18 @@ public struct EditGeometry: Sendable {
             * Affine.translate(-cropLeft, -cropTop) * toFrame
     }
 
+    /// Benötigter Bereich der Quelle (Pixel, l t r b), gerundet nach außen.
+    public func sourceBounds() -> (Int, Int, Int, Int) {
+        guard let inv = sourceToOutput.inverse() else { return (0, 0, src.width, src.height) }
+        let w = Double(output.width), h = Double(output.height)
+        let pts = [(0.0, 0.0), (w, 0), (0, h), (w, h)].map { inv.map($0.0, $0.1) }
+        let l = min(max(Int(pts.map(\.0).min()!), 0), src.width - 1)
+        let t = min(max(Int(pts.map(\.1).min()!), 0), src.height - 1)
+        let r = min(max(Int(pts.map(\.0).max()!.rounded(.up)), l + 1), src.width)
+        let b = min(max(Int(pts.map(\.1).max()!.rounded(.up)), t + 1), src.height)
+        return (l, t, r, b)
+    }
+
     /// Kleinste Vergrößerung, mit der ein um `deg` gedrehtes W × H-Bild das W × H-Rechteck vollständig deckt.
     public static func coverScale(_ w: Double, _ h: Double, _ deg: Double) -> Double {
         let r = abs(deg) * .pi / 180, c = cos(r), s = sin(r)

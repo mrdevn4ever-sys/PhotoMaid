@@ -21,7 +21,7 @@ public enum PluralRules {
             return i != 0 && i % 1_000_000 == 0 ? .many : .other
         case "ro":
             if i == 1 { return .one }
-            if i == 0 || (2...19).contains(i % 100) { return .few }
+            if i == 0 || (1...19).contains(i % 100) { return .few }
             return .other
         case "ru", "uk":
             if i % 10 == 1 && i % 100 != 11 { return .one }
