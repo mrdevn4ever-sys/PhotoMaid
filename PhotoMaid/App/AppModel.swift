@@ -163,14 +163,22 @@ final class AppModel {
     func onForeground() async {
         now = Date()
         library.refreshAccess()
+        // The persisted review decisions must be published before requesting
+        // StoreKit products or refreshing reminders. Either may suspend while
+        // PhotoKit finishes loading: without this order, a briefly empty read
+        // model can make every photo appear as "not reviewed" on Today.
+        await publishRead()
+        reloadLibraryIfNeeded()
+
         await reminders.refresh()
         await purchases.refresh()
         if !recoveredThisProcess && !cleanupInFlight {
             recoveredThisProcess = true
             await recoverOperations()
         }
+        // Entitlements and recovered cleanup intents can change capabilities,
+        // allowances and records. Reconcile the read model before returning.
         await publishRead()
-        reloadLibraryIfNeeded()
     }
 
     func tick() { now = Date() }
