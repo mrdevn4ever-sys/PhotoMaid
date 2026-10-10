@@ -40,15 +40,33 @@ platform :ios do
                     unlock: true, timeout: 3600, lock_when_sleeps: false)
     p12 = File.join(runner_temp, "dist.p12")
     File.binwrite(p12, Base64.decode64(ENV.fetch("APPLE_CERTIFICATE_BASE64")))
-    import_certificate(certificate_path: p12, certificate_password: ENV.fetch("APPLE_CERTIFICATE_PASSWORD"),
+    # macOS `security import` liest nur PKCS12 mit 3DES und SHA1-MAC. Mit OpenSSL 3 exportierte Dateien
+    # (AES-256, SHA-256-MAC) scheitern mit „MAC verification failed“. Daher umpacken; die Schlüsseldatei
+    # existiert nur kurz (0600) und wird sofort gelöscht.
+    legacy_p12 = File.join(runner_temp, "dist-legacy.p12")
+    key_pem = File.join(runner_temp, "dist-key.pem")
+    begin
+      sh("umask 077; openssl pkcs12 -in #{p12.shellescape} -nodes -passin env:APPLE_CERTIFICATE_PASSWORD " \
+         "-out #{key_pem.shellescape}", log: false)
+      sh("openssl pkcs12 -export -in #{key_pem.shellescape} -certpbe PBE-SHA1-3DES -keypbe PBE-SHA1-3DES " \
+         "-macalg sha1 -passout env:APPLE_CERTIFICATE_PASSWORD -out #{legacy_p12.shellescape}", log: false)
+    ensure
+      File.delete(key_pem) if File.exist?(key_pem)
+    end
+    import_certificate(certificate_path: legacy_p12, certificate_password: ENV.fetch("APPLE_CERTIFICATE_PASSWORD"),
                        keychain_path: keychain, keychain_password: keychain_password)
+    # Tatsächlichen Zertifikatsnamen verwenden (Apple Distribution oder älteres iPhone Distribution).
+    identities = sh("security find-identity -v -p codesigning #{keychain.shellescape}", log: false)
+    identity = identities[/"((?:Apple|iPhone|iOS) Distribution[^"]*)"/, 1]
+    UI.user_error!("Kein Distributions-Zertifikat mit privatem Schlüssel im Schlüsselbund – " \
+                   "Secret APPLE_CERTIFICATE_BASE64 (.p12 mit Schlüssel) prüfen") unless identity
     profile = File.join(runner_temp, "profile.mobileprovision")
     File.binwrite(profile, Base64.decode64(ENV.fetch("APPLE_PROVISIONING_PROFILE_BASE64")))
     install_provisioning_profile(path: profile)
     profile_uuid = sh("security cms -D -i '#{profile}' | plutil -extract UUID raw -o - -", log: false).strip
     signing_xcargs = common_xcargs + [
       "CODE_SIGN_STYLE=Manual",
-      "CODE_SIGN_IDENTITY=Apple Distribution",
+      "CODE_SIGN_IDENTITY=#{identity}",
       # Nur das App-Target liest PM_PROVISIONING_PROFILE (project.yml); ein globaler
       # PROVISIONING_PROFILE_SPECIFIER träfe auch das Paket PhotoMaidCore.
       "PM_PROVISIONING_PROFILE=#{profile_uuid}",
@@ -56,6 +74,7 @@ platform :ios do
     ]
     export_options = {
       signingStyle: "manual",
+      signingCertificate: identity,
       teamID: team_id,
       provisioningProfiles: { bundle_id => profile_uuid }
     }

@@ -142,4 +142,4 @@ jobs:
         if: always()
         run: |
           security delete-keychain "$RUNNER_TEMP/photomaid-ci.keychain-db" 2>/dev/null || true
-          rm -f "$RUNNER_TEMP"/AuthKey_*.p8 "$RUNNER_TEMP"/dist.p12 "$RUNNER_TEMP"/profile.mobileprovision
+          rm -f "$RUNNER_TEMP"/AuthKey_*.p8 "$RUNNER_TEMP"/dist.p12 "$RUNNER_TEMP"/dist-legacy.p12 "$RUNNER_TEMP"/dist-key.pem "$RUNNER_TEMP"/profile.mobileprovision
