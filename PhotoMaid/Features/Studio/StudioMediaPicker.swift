@@ -38,21 +38,32 @@ struct StudioMediaPicker: View {
                                 app.showError(L("studio_free_limit"))
                             }
                         } label: {
+                            // Quadratische Zelle (.fit, nicht .fill) mit genau dieser Trefferfläche: ein Tipp wählt nie
+                            // die Nachbarzelle (AssetCell nimmt mit dem Bildüberstand keine Tipps an).
                             AssetCell(assetID: asset.id)
-                                .aspectRatio(1, contentMode: .fill)
+                                .aspectRatio(1, contentMode: .fit)
                                 .overlay(alignment: .topTrailing) {
                                     Image(systemName: selected ? "checkmark.circle.fill" : "circle")
                                         .font(.title3)
                                         .foregroundStyle(selected ? AppColors.accentFill : .white)
+                                        .background(Circle().fill(.black.opacity(0.25)))
                                         .padding(4)
                                 }
                                 .overlay(alignment: .bottomLeading) {
                                     if asset.isVideo {
-                                        Image(systemName: "video.fill").foregroundStyle(.white).padding(5)
+                                        Text(verbatim: DateText.duration(asset.duration)).monospacedDigit()
+                                            .font(.caption2.weight(.semibold))
+                                            .foregroundStyle(.white)
+                                            .shadow(radius: 2)
+                                            .padding(4)
                                     }
                                 }
+                                .overlay { if selected { Rectangle().fill(.white.opacity(0.18)).allowsHitTesting(false) } }
+                                .clipped()
+                                .contentShape(.rect)
                         }
                         .buttonStyle(.plain)
+                        .accessibilityLabel(Text(verbatim: MediaInfoLine.describe(asset)))
                         .accessibilityAddTraits(selected ? .isSelected : [])
                     }
                 }

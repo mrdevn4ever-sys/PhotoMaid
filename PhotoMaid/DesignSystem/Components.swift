@@ -267,7 +267,7 @@ struct ToggleRow: View {
     }
 }
 
-/// Vorschaubild eines PhotoKit-Assets (quadratisch beschnitten, nie verzerrt). Lädt nur lokal Vorhandenes.
+/// Vorschaubild eines PhotoKit-Assets (quadratisch beschnitten, nie verzerrt). Bei Bedarf aus iCloud geladen.
 struct AssetThumbnail: View {
     let assetID: String
     var side: CGFloat = 80
@@ -280,45 +280,101 @@ struct AssetThumbnail: View {
         ZStack {
             Rectangle().fill(AppColors.backgroundTint)
             if let image {
-                Image(uiImage: image).resizable().scaledToFill()
+                // Überstand des beschnittenen Bildes nimmt keine Tipps an (siehe AssetCell).
+                Image(uiImage: image).resizable().scaledToFill().allowsHitTesting(false)
             } else if failed {
                 Image(systemName: "photo").foregroundStyle(AppColors.textSecondary).accessibilityHidden(true)
             }
         }
         .frame(width: side, height: side)
         .clipShape(.rect(cornerRadius: cornerRadius))
+        .contentShape(.rect(cornerRadius: cornerRadius))
         .task(id: assetID) {
             image = nil
             failed = false
             let size = CGSize(width: side * scale, height: side * scale)
-            if let img = await ThumbnailLoader.shared.image(assetID, size: size) { image = img } else { failed = true }
+            let img = await ThumbnailLoader.shared.image(assetID, size: size)
+            guard !Task.isCancelled else { return }
+            if let img { image = img } else { failed = true }
         }
     }
 }
 
 /// Flexible Variante für Raster (füllt die vorgegebene Zelle).
+///
+/// Trefferfläche = genau die Zelle: `.clipped()` beschneidet nur die Darstellung, nicht das Hit-Testing. Ein
+/// hochformatiges Bild (3:4, 9:16) ragt mit `scaledToFill` unsichtbar über die Zelle hinaus; weil spätere Zellen über
+/// früheren liegen, fing der Überstand der Zelle darunter Tipps auf den unteren Teil der getippten Zelle ab
+/// („wählt das Bild darunter aus“). Deshalb nimmt das Bild selbst keine Berührungen an und die Form ist das Rechteck.
 struct AssetCell: View {
     let assetID: String
     @Environment(\.displayScale) private var scale
-    @State private var image: UIImage?
+    @State private var loaded: Loaded?
+    @State private var failedID: String?
+    @State private var size: CGSize = .zero
+
+    private struct Loaded {
+        let id: String
+        let image: UIImage
+    }
+
+    /// Neu laden, wenn sich Medium oder Pixelgröße der Zelle ändern (Raster-Stufe, Drehen).
+    private struct LoadKey: Equatable {
+        let assetID: String
+        let width: Int
+        let height: Int
+    }
+
+    private var image: UIImage? { loaded?.id == assetID ? loaded?.image : nil }
 
     var body: some View {
-        GeometryReader { geo in
-            ZStack {
-                Rectangle().fill(AppColors.backgroundTint)
-                if let image { Image(uiImage: image).resizable().scaledToFill() }
+        Rectangle()
+            .fill(AppColors.backgroundTint)
+            .overlay {
+                if let image {
+                    Image(uiImage: image).resizable().scaledToFill().allowsHitTesting(false)
+                } else {
+                    placeholder
+                }
             }
-            .frame(width: geo.size.width, height: geo.size.height)
             .clipped()
-            .task(id: assetID) {
-                let s = CGSize(width: geo.size.width * scale, height: geo.size.height * scale)
-                image = await ThumbnailLoader.shared.image(assetID, size: s)
+            .contentShape(.rect)
+            .onGeometryChange(for: CGSize.self) { proxy in proxy.size } action: { size = $0 }
+            .task(id: LoadKey(assetID: assetID, width: Int((size.width * scale).rounded(.up)),
+                              height: Int((size.height * scale).rounded(.up)))) {
+                await load()
             }
+    }
+
+    /// Platzhalter statt leerer Fläche: dezentes Symbol beim Laden, deutliches bei einem Fehler.
+    private var placeholder: some View {
+        let failed = failedID == assetID
+        return Image(systemName: failed ? "photo.badge.exclamationmark" : "photo")
+            .font(.body)
+            .foregroundStyle(AppColors.textSecondary.opacity(failed ? 0.8 : 0.35))
+            .allowsHitTesting(false)
+            .accessibilityHidden(true)
+    }
+
+    private func load() async {
+        guard size.width >= 1, size.height >= 1 else { return }
+        let id = assetID
+        let pixels = CGSize(width: (size.width * scale).rounded(.up), height: (size.height * scale).rounded(.up))
+        let img = await ThumbnailLoader.shared.image(id, size: pixels)
+        // Abgebrochen (aus dem Bild gescrollt) oder inzwischen ein anderes Medium: nichts anzeigen, nicht als Fehler werten.
+        guard !Task.isCancelled, id == assetID else { return }
+        if let img {
+            loaded = Loaded(id: id, image: img)
+            failedID = nil
+        } else if image == nil {
+            failedID = id
         }
     }
 }
 
-/// Gemeinsamer Lader für kleine Vorschauen (schnelles Format; fehlt die kleine Fassung, aus iCloud).
+/// Gemeinsamer Lader für kleine Vorschauen: volle Vorschauqualität, bei Bedarf aus iCloud (wie die Fotos-App); gelingt
+/// das nicht (z. B. offline), die lokal vorhandene kleine Fassung statt nichts. Abbruch der Aufgabe (Zelle aus dem
+/// Bild gescrollt) bricht auch den PhotoKit-Request samt Download ab.
 @MainActor
 final class ThumbnailLoader {
     static let shared = ThumbnailLoader()
@@ -328,24 +384,50 @@ final class ThumbnailLoader {
     init() { cache.countLimit = 600 }
 
     func image(_ assetID: String, size: CGSize) async -> UIImage? {
+        guard size.width >= 1, size.height >= 1 else { return nil }
         let key = "\(assetID)|\(Int(size.width))x\(Int(size.height))" as NSString
         if let hit = cache.object(forKey: key) { return hit }
         guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [assetID], options: nil).firstObject else { return nil }
-        let o = PHImageRequestOptions()
-        o.isNetworkAccessAllowed = true
-        o.deliveryMode = .highQualityFormat
-        o.resizeMode = .fast
-        let box = UncheckedBox(manager)
-        let result: UncheckedBox<UIImage?> = await withCheckedContinuation { cont in
-            box.value.requestImage(for: asset, targetSize: size, contentMode: .aspectFill, options: o) { @Sendable img, _ in
-                cont.resume(returning: UncheckedBox(img))
-            }
+        if let img = await request(asset, size: size, network: true, mode: .highQualityFormat) {
+            cache.setObject(img, forKey: key)
+            return img
         }
-        if let img = result.value { cache.setObject(img, forKey: key) }
+        guard !Task.isCancelled else { return nil }
+        // Ersatz ohne Netz; nicht zwischengespeichert, damit beim nächsten Mal die volle Fassung versucht wird.
+        return await request(asset, size: size, network: false, mode: .fastFormat)
+    }
+
+    private func request(_ asset: PHAsset, size: CGSize, network: Bool,
+                         mode: PHImageRequestOptionsDeliveryMode) async -> UIImage? {
+        let o = PHImageRequestOptions()
+        o.isNetworkAccessAllowed = network
+        o.deliveryMode = mode // genau ein Callback
+        o.resizeMode = .fast
+        let box = ThumbnailRequestBox()
+        let managerBox = UncheckedBox(manager)
+        let result: UncheckedBox<UIImage?> = await withTaskCancellationHandler {
+            await withCheckedContinuation { (cont: CheckedContinuation<UncheckedBox<UIImage?>, Never>) in
+                let id = manager.requestImage(for: asset, targetSize: size, contentMode: .aspectFill,
+                                              options: o) { @Sendable img, _ in
+                    cont.resume(returning: UncheckedBox(img))
+                }
+                box.set(id)
+            }
+        } onCancel: {
+            if let id = box.id { managerBox.value.cancelImageRequest(id) }
+        }
         return result.value
     }
 
     func clear() { cache.removeAllObjects() }
+}
+
+/// Kennung eines laufenden Vorschau-Requests, damit ein Abbruch ihn beenden kann.
+private final class ThumbnailRequestBox: @unchecked Sendable {
+    private let lock = NSLock()
+    private var _id: PHImageRequestID?
+    var id: PHImageRequestID? { lock.withLock { _id } }
+    func set(_ id: PHImageRequestID) { lock.withLock { _id = id } }
 }
 
 /// Kurze Meldung unten (Fehler, „Gespeichert“, Rückgängig). Verschwindet von selbst; VoiceOver liest sie vor.

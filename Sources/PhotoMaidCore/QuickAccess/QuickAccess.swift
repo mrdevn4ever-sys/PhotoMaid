@@ -2,10 +2,30 @@ import Foundation
 
 /// Art einer Review-Quelle für Schnellzugriffe. Eine Quelle ist nur eine Abfrage; sie hat KEINEN eigenen
 /// Entscheidungszustand. Entscheidungen hängen am Medium (Ledger).
+/// Neue Arten nur ANHÄNGEN: gespeichert wird der Rohwert, vorhandene Schnellzugriffe bleiben lesbar.
 public enum QuickSourceKind: String, Hashable, Codable, Sendable, CaseIterable {
     case photos, videos, screenshots, latestPhotos, latestVideos, thisWeek
     /// iOS: ein Album der Fotos-App (Android: Ordner).
     case album
+    /// Zufällige Auswahl offener Medien, bei jedem Öffnen neu gemischt.
+    case random
+    /// Aufnahmen vom heutigen Kalendertag aus früheren Jahren.
+    case onThisDay
+    /// Videos ab `QuickAccess.longVideoSeconds` (Länge aus PhotoKit, keine geschätzte Dateigröße).
+    case longVideos
+    /// Smart-Album „Selfies“ der Fotos-App (Frontkamera laut PhotoKit, keine Bildanalyse).
+    case selfies
+    /// Fotos im Porträtmodus (PhotoKit-Untertyp Tiefeneffekt).
+    case portraits
+    case livePhotos
+    /// Favoriten der Fotos-App.
+    case favorites
+
+    /// Mitglieder kommen aus einer Sammlung der Fotos-App (Album bzw. Smart-Album) und werden je Abfrage gelesen.
+    public var readsCollection: Bool { self == .album || self == .selfies }
+
+    /// Der Feed darf die Reihenfolge wechseln. „Zufällig“ behält die gemischte Reihenfolge.
+    public var isOrderable: Bool { self != .random }
 }
 
 /// Ein Schnellzugriff. `album` nur bei `.album` (`PHAssetCollection.localIdentifier`, keine Medien-IDs).
@@ -27,6 +47,16 @@ public enum QuickAccess {
     public static let maxItems = 6
     public static let latestPhotosLimit = 50
     public static let latestVideosLimit = 20
+    /// „Zufällig“: so viele offene Medien je Öffnen.
+    public static let randomLimit = 50
+    /// „Lange Videos“: ab dieser Länge in Sekunden.
+    public static let longVideoSeconds: Double = 60
+
+    /// Reihenfolge im Katalog „Schnellzugriff hinzufügen“ (Alben folgen darunter).
+    public static let catalogue: [QuickSourceKind] = [
+        .random, .photos, .videos, .screenshots, .latestPhotos, .latestVideos, .thisWeek,
+        .onThisDay, .longVideos, .selfies, .portraits, .livePhotos, .favorites,
+    ]
 
     public static let defaults = [QuickAccessItem(kind: .photos), QuickAccessItem(kind: .videos)]
 

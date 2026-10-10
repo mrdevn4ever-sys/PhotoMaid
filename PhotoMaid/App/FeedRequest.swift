@@ -35,6 +35,8 @@ struct FeedRequest: Identifiable, Hashable, Sendable {
     var isOrderable: Bool {
         switch source {
         case .items, .due: false
+        // „Zufällig“ behält die gemischte Reihenfolge.
+        case .quick(let q): q.kind.isOrderable
         default: true
         }
     }

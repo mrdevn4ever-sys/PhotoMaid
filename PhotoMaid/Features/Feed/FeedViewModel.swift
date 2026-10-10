@@ -108,7 +108,8 @@ final class FeedViewModel {
         case .allMedia:
             candidates = open(media)
         case .quick(let q):
-            candidates = open(QuickAccessQuery.assets(q, in: media, now: app.now))
+            // „Zufällig“ wählt nur aus offenen Medien und mischt bei jedem Öffnen neu.
+            candidates = open(QuickAccessQuery.assets(q, in: media, now: app.now, open: Set(app.pending.map(\.localIdentifier))))
         case .due:
             candidates = ReviewQueues.dueQueue(records: Array(records.values), session: s, today: today)
                 .filter { $0.provider == .photoLibrary }
@@ -589,26 +590,6 @@ final class FeedViewModel {
 
     func close() {
         app.closeFeed(reviewed: session.summary.reviewed)
-    }
-}
-
-/// Quellen der Schnellzugriffe (nur Abfragen; ohne Medien-IDs gespeichert).
-enum QuickAccessQuery {
-    static func assets(_ q: QuickAccessItem, in media: [MediaAsset], now: Date) -> [MediaAsset] {
-        switch q.kind {
-        case .photos: return media.filter { $0.kind == .photo || $0.kind == .screenshot }
-        case .videos: return media.filter(\.isVideo)
-        case .screenshots: return media.filter { $0.kind == .screenshot }
-        case .latestPhotos: return Array(media.filter { $0.kind == .photo }.prefix(QuickAccess.latestPhotosLimit))
-        case .latestVideos: return Array(media.filter(\.isVideo).prefix(QuickAccess.latestVideosLimit))
-        case .thisWeek:
-            let w = QuickAccess.thisWeek(now: now, timeZone: .autoupdatingCurrent, firstWeekday: Calendar.current.firstWeekday)
-            return media.filter { a in a.creationDate.map { $0 >= w.start && $0 < w.end } ?? false }
-        case .album:
-            guard let id = q.album else { return [] }
-            let members = PhotoLibraryService.assetIDs(inCollection: id)
-            return media.filter { members.contains($0.id) }
-        }
     }
 }
 

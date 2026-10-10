@@ -1,3 +1,4 @@
+import Photos
 import PhotoMaidCore
 import SwiftUI
 
@@ -52,11 +53,12 @@ struct QuickAccessSection: View {
 enum QuickAccessUI {
     static func tint(_ k: QuickSourceKind) -> Color {
         switch k {
-        case .photos, .latestPhotos: AppColors.accent
-        case .videos, .latestVideos: AppColors.amber
-        case .screenshots: AppColors.later
-        case .thisWeek: AppColors.success
-        case .album: AppColors.indigo
+        case .photos, .latestPhotos, .portraits: AppColors.accent
+        case .videos, .latestVideos, .longVideos: AppColors.amber
+        case .screenshots, .livePhotos, .selfies: AppColors.later
+        case .thisWeek, .onThisDay: AppColors.success
+        case .album, .random: AppColors.indigo
+        case .favorites: AppColors.warning
         }
     }
 
@@ -72,20 +74,69 @@ enum QuickAccessUI {
         case .latestPhotos: LP("qa_latest_photos_sub", QuickAccess.latestPhotosLimit)
         case .latestVideos: LP("qa_latest_videos_sub", QuickAccess.latestVideosLimit)
         case .thisWeek: L("qa_this_week_sub")
-        default: nil
+        case .random: L("qa_random_sub", QuickAccess.randomLimit)
+        case .onThisDay: L("qa_on_this_day_sub")
+        case .longVideos: L("qa_long_videos_sub")
+        case .selfies: L("qa_selfies_sub")
+        case .portraits: L("qa_portraits_sub")
+        case .livePhotos: L("qa_live_photos_sub")
+        case .favorites: L("qa_favorites_sub")
+        case .photos, .videos, .screenshots, .album: nil
         }
     }
 
-    /// Reine Filter im Speicher (Album-Mitglieder einmal je Album gelesen), abseits des Main-Threads.
+    /// Reine Filter im Speicher (Sammlungen einmal je Quelle gelesen), abseits des Main-Threads.
     static func status(for items: [QuickAccessItem], media: [MediaAsset], pending: Set<String>, now: Date) async -> [String: QuickStatus] {
         await Task.detached(priority: .utility) {
             var out: [String: QuickStatus] = [:]
             for q in items {
-                let list = QuickAccessQuery.assets(q, in: media, now: now)
-                out[q.key] = QuickStatus(members: list.count, pending: list.filter { pending.contains($0.id) }.count)
+                let c = QuickAccessQuery.count(q, in: media, now: now, open: pending)
+                out[q.key] = QuickStatus(members: c.members, pending: c.open)
             }
             return out
         }.value
+    }
+}
+
+/// Quellen der Schnellzugriffe (nur Abfragen; ohne Medien-IDs gespeichert). Die Regeln stehen im Kern
+/// (`QuickSourceFilter`); hier kommen nur Uhr, Region, Zufall und die Sammlungen der Fotos-App dazu.
+enum QuickAccessQuery {
+    /// `open`: noch offene Medien – „Zufällig“ wählt nur daraus. `seed`: bei jedem Aufruf neu gemischt.
+    static func assets(_ q: QuickAccessItem, in media: [MediaAsset], now: Date, open: Set<String>? = nil,
+                       seed: UInt64 = UInt64.random(in: 1...UInt64.max)) -> [MediaAsset] {
+        QuickSourceFilter.select(q, in: media, facts: { $0.quickFacts }, context: context(q, now: now, open: open, seed: seed))
+    }
+
+    static func count(_ q: QuickAccessItem, in media: [MediaAsset], now: Date, open: Set<String>) -> QuickSourceCount {
+        QuickSourceFilter.count(q, in: media, facts: { $0.quickFacts }, context: context(q, now: now, open: open, seed: 0))
+    }
+
+    private static func context(_ q: QuickAccessItem, now: Date, open: Set<String>?, seed: UInt64) -> QuickQueryContext {
+        QuickQueryContext(now: now, timeZone: .autoupdatingCurrent, firstWeekday: Calendar.current.firstWeekday,
+                          members: q.kind.readsCollection ? members(q) : nil, open: open, seed: seed)
+    }
+
+    /// Mitglieder eines Albums bzw. des Smart-Albums „Selfies“ (PhotoKit, keine Bildanalyse).
+    private static func members(_ q: QuickAccessItem) -> Set<String>? {
+        switch q.kind {
+        case .album:
+            guard let id = q.album else { return nil }
+            return PhotoLibraryService.assetIDs(inCollection: id)
+        case .selfies:
+            let albums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumSelfPortraits, options: nil)
+            guard let selfies = albums.firstObject else { return nil }
+            return PhotoLibraryService.assetIDs(inCollection: selfies.localIdentifier)
+        default:
+            return nil
+        }
+    }
+}
+
+extension MediaAsset {
+    /// Was die Schnellzugriffe über ein Medium wissen dürfen (nur Metadaten aus PhotoKit).
+    var quickFacts: QuickMediaFacts {
+        QuickMediaFacts(id: id, kind: kind, creationDate: creationDate, duration: duration, isFavorite: isFavorite,
+                        isLivePhoto: isLivePhoto, isPortrait: isPortrait)
     }
 }
 
@@ -97,8 +148,7 @@ struct QuickAccessAddSheet: View {
     @State private var albums: [PhotoAlbum]?
     @State private var status: [String: QuickStatus] = [:]
 
-    private let catalogue: [QuickAccessItem] = [QuickSourceKind.photos, .videos, .screenshots, .latestPhotos, .latestVideos, .thisWeek]
-        .map { QuickAccessItem(kind: $0) }
+    private let catalogue: [QuickAccessItem] = QuickAccess.catalogue.map { QuickAccessItem(kind: $0) }
 
     private var albumItems: [(PhotoAlbum, QuickAccessItem)] {
         func walk(_ l: [PhotoAlbum]) -> [PhotoAlbum] { l.flatMap { $0.isFolder ? walk($0.children) : [$0] } }

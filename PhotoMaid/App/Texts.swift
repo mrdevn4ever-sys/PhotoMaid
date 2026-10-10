@@ -44,6 +44,13 @@ enum QuickAccessText {
         case .latestVideos: L("qa_latest_videos")
         case .thisWeek: L("qa_this_week")
         case .album: AlbumNames.title(q.album) ?? L("qa_folder")
+        case .random: L("qa_random")
+        case .onThisDay: L("qa_on_this_day")
+        case .longVideos: L("qa_long_videos")
+        case .selfies: L("qa_selfies")
+        case .portraits: L("qa_portraits")
+        case .livePhotos: L("qa_live_photos")
+        case .favorites: L("qa_favorites")
         }
     }
 
@@ -56,6 +63,13 @@ enum QuickAccessText {
         case .latestVideos: "play.rectangle"
         case .thisWeek: "calendar"
         case .album: "rectangle.stack"
+        case .random: "shuffle"
+        case .onThisDay: "calendar.badge.clock"
+        case .longVideos: "film"
+        case .selfies: "person.crop.square"
+        case .portraits: "cube"
+        case .livePhotos: "livephoto"
+        case .favorites: "heart"
         }
     }
 
@@ -68,6 +82,13 @@ enum QuickAccessText {
         case .latestVideos: L("feed_empty_latest_videos")
         case .thisWeek: L("feed_empty_this_week")
         case .album: L("feed_empty_folder")
+        case .random: L("feed_empty_random")
+        case .onThisDay: L("feed_empty_on_this_day")
+        case .longVideos: L("feed_empty_long_videos")
+        case .selfies: L("feed_empty_selfies")
+        case .portraits: L("feed_empty_portraits")
+        case .livePhotos: L("feed_empty_live_photos")
+        case .favorites: L("feed_empty_favorites")
         }
     }
 }
