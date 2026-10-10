@@ -57,6 +57,18 @@ final class PreviewPipeline {
         return o
     }
 
+    /// Keep the four-item swipe cache local and small. The *visible* image still
+    /// uses progressiveImage(), including its full-quality/iCloud loading path.
+    /// Prefetching offscreen originals from iCloud wastes bandwidth and memory.
+    private func cacheOptions() -> PHImageRequestOptions {
+        let o = PHImageRequestOptions()
+        o.isNetworkAccessAllowed = false
+        o.deliveryMode = .opportunistic
+        o.resizeMode = .fast
+        o.version = .current
+        return o
+    }
+
     /// Stufenweise Vorschau wie in der Fotos-App, in zwei Schritten:
     /// 1. Nur was auf dem iPhone liegt (ohne Netz): erscheint sofort, auch wenn das Original in iCloud liegt.
     /// 2. Fehlt die volle Qualität lokal, wird sie aus iCloud geladen (`progress`). Gelingt das nicht (offline,
@@ -141,23 +153,39 @@ final class PreviewPipeline {
 
     /// Vorheriges, aktuelles und wenige nächste Items vorhalten (auch aus iCloud vorladen); Rest freigeben.
     func updateCache(window ids: [String], targetSize: CGSize) {
+        // Previews under the top card never need full-resolution bitmaps.
+        let longSide = max(targetSize.width, targetSize.height)
+        let cacheSize: CGSize
+        if longSide > 1280 {
+            let factor = 1280 / longSide
+            cacheSize = CGSize(width: max(1, (targetSize.width * factor).rounded()),
+                               height: max(1, (targetSize.height * factor).rounded()))
+        } else {
+            cacheSize = targetSize
+        }
         let wanted = Set(ids)
-        if targetSize != cachedSize {
+        if cacheSize != cachedSize {
             manager.stopCachingImagesForAllAssets()
             cachedIDs = []
-            cachedSize = targetSize
+            cachedSize = cacheSize
         }
         let add = wanted.subtracting(cachedIDs), remove = cachedIDs.subtracting(wanted)
+        guard !add.isEmpty || !remove.isEmpty else { return }
         func fetch(_ s: Set<String>) -> [PHAsset] {
             guard !s.isEmpty else { return [] }
             var out: [PHAsset] = []
             PHAsset.fetchAssets(withLocalIdentifiers: Array(s), options: nil).enumerateObjects { a, _, _ in out.append(a) }
             return out
         }
-        manager.stopCachingImages(for: fetch(remove), targetSize: targetSize, contentMode: .aspectFit,
-                                  options: progressiveOptions())
-        manager.startCachingImages(for: fetch(add), targetSize: targetSize, contentMode: .aspectFit,
-                                   options: progressiveOptions())
+        let options = cacheOptions()
+        if !remove.isEmpty {
+            manager.stopCachingImages(for: fetch(remove), targetSize: cacheSize, contentMode: .aspectFit,
+                                      options: options)
+        }
+        if !add.isEmpty {
+            manager.startCachingImages(for: fetch(add), targetSize: cacheSize, contentMode: .aspectFit,
+                                       options: options)
+        }
         cachedIDs = wanted
     }
 
