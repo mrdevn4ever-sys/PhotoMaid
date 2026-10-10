@@ -14,6 +14,9 @@ public struct CleanupSavings: Hashable, Codable, Sendable {
     }
 
     public var isLowerBound: Bool { unknownCount > 0 }
+    /// True only when at least one removed item's size was actually measured.
+    /// All-unknown batches must display "size unknown", never "0 KB saved".
+    public var hasKnownSizes: Bool { removedCount > unknownCount }
 
     public static func of(removed: Set<ItemReference>, sizes: [ItemReference: KnownSize]) -> CleanupSavings {
         var bytes: Int64 = 0

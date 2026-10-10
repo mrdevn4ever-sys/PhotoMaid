@@ -200,6 +200,36 @@ struct CleanupOperationTests {
         #expect(await relaunched.allowance(limit: 15).confirmed == 2)
     }
 
+    @Test("Bei ausschließlich unbekannten Mediengrößen keine gemessene Ersparnis behaupten")
+    func allUnknownSavings() {
+        let removed: Set<ItemReference> = [photo(0), photo(1), photo(2)]
+        let savings = CleanupSavings.of(removed: removed, sizes: [:])
+        #expect(savings.removedCount == 3)
+        #expect(savings.unknownCount == 3)
+        #expect(savings.bytes == 0)
+        #expect(savings.isLowerBound)
+        #expect(!savings.hasKnownSizes)
+    }
+
+    @Test("Gemessene Bytes und unbekannte Medien bleiben getrennt")
+    func mixedSavings() {
+        let removed: Set<ItemReference> = [photo(0), photo(1)]
+        let savings = CleanupSavings.of(removed: removed, sizes: [photo(0): .known(8192)])
+        #expect(savings.unknownCount == 1)
+        #expect(savings.bytes == 8192)
+        #expect(savings.isLowerBound)
+        #expect(savings.hasKnownSizes)
+    }
+
+    @Test("Tatsächlich gemessene Größe 0 ist nicht gleich unbekannt")
+    func zeroByteKnownSavings() {
+        let removed: Set<ItemReference> = [photo(0)]
+        let savings = CleanupSavings.of(removed: removed, sizes: [photo(0): .known(0)])
+        #expect(savings.unknownCount == 0)
+        #expect(savings.hasKnownSizes)
+        #expect(!savings.isLowerBound)
+    }
+
     @Test("Alias: dieselbe Ressource über zwei Quellen wird nicht doppelt gelöscht/gezählt")
     func alias() async throws {
         let ledger = try await markedLedger(2)
