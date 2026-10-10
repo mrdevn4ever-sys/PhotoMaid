@@ -19,13 +19,21 @@ struct MovieView: View {
     @State private var editMode: EditMode = .inactive
     @State private var loadedInitial = false
     @State private var errorKey: String?
+    @State private var errorDetail: String?
+    @State private var preparingExport = false
 
     var body: some View {
         content
             .appPage()
             .navigationTitle(L("movie_title"))
             .safeAreaInset(edge: .bottom) { saveBar }
-            .overlay { if ExportCoordinator.shared.isBusy { ExportProgressOverlay(coordinator: ExportCoordinator.shared) } }
+            .overlay {
+                if preparingExport {
+                    LoadingState(message: L("movie_running")).background(.ultraThinMaterial)
+                } else if ExportCoordinator.shared.isBusy {
+                    ExportProgressOverlay(coordinator: ExportCoordinator.shared)
+                }
+            }
             .sheet(isPresented: $picker) {
                 StudioMediaPicker(allowsVideos: true, limit: VideoRules.maxClips, initial: Set(project.clips.map(\.mediaId))) { ids in
                     merge(ids)
@@ -38,7 +46,10 @@ struct MovieView: View {
             }
             .alert(L("error_title"), isPresented: Binding(get: { errorKey != nil }, set: { if !$0 { errorKey = nil } })) {
                 Button(L("ok")) { errorKey = nil }
-            } message: { Text(key: errorKey ?? "movie_failed") }
+            } message: {
+                Text(verbatim: L(errorKey ?? "movie_failed") +
+                    (errorDetail.map { "\n[\($0)]" } ?? ""))
+            }
             .task {
                 guard !loadedInitial else { return }
                 loadedInitial = true
@@ -277,7 +288,7 @@ struct MovieView: View {
                           symbol: app.capabilities.hasProToolsAccess ? "square.and.arrow.down" : "crown") {
                 Task { await export() }
             }
-            .disabled(saveBlockedReason != nil || ExportCoordinator.shared.isBusy)
+            .disabled(saveBlockedReason != nil || preparingExport || ExportCoordinator.shared.isBusy)
         }
         .padding(.horizontal, AppSpacing.pageMargin)
         .padding(.vertical, AppSpacing.xs)
@@ -369,6 +380,7 @@ struct MovieView: View {
     // MARK: Export
 
     private func export() async {
+        errorDetail = nil
         guard app.capabilities.hasProToolsAccess else { app.navigate(.pro); return }
         if let problem = MoviePlan.problem(project) {
             switch problem {
@@ -378,7 +390,10 @@ struct MovieView: View {
             }
             return
         }
+        preparingExport = true
+        defer { preparingExport = false }
         do {
+            Diagnostics.log(.video, "movie-export-start")
             var assets: [String: AVAsset] = [:]
             var infos: [String: VideoInfo] = [:]
             for clip in project.clips where !clip.isPhoto {
@@ -398,6 +413,7 @@ struct MovieView: View {
             let boxedAssets = UncheckedBox(assets)
             let boxedInfos = UncheckedBox(infos)
             let selectedMusic = musicURL
+            preparingExport = false
             let url = try await ExportCoordinator.shared.run(title: L("movie_running")) { progress in
                 try await VideoExportJob.renderMovie(project: p, assets: boxedAssets.value, infos: boxedInfos.value,
                                                      frame: frame, fps: 30, musicURL: selectedMusic, allowNetwork: true,
@@ -408,10 +424,17 @@ struct MovieView: View {
             guard case .saved(let newID) = await app.library.save(request) else { throw VideoError.write }
             _ = await EditSaver.finish(app: app, original: nil, newID: newID, mode: .copy, video: true,
                                        kind: .merge, count: project.clips.count, bytes: VideoExportJob.fileSize(url))
+            Diagnostics.log(.video, "movie-export-saved")
             app.showToast(L("movie_saved"))
         } catch is CancellationError {
+            Diagnostics.log(.video, "movie-export-cancelled")
             return
         } catch {
+            // Suppress potentially private paths from error.localizedDescription.
+            // The domain and numeric code distinguish PhotoKit/save, disk and writer failures.
+            let ns = error as NSError
+            Diagnostics.error(.video, "movie-export-failed", error)
+            errorDetail = "\(ns.domain):\(ns.code)"
             errorKey = "movie_failed"
         }
     }

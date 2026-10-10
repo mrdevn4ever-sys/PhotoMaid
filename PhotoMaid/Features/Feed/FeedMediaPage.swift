@@ -18,6 +18,7 @@ struct FeedMediaPage: View {
     let onSkip: () -> Void
 
     @State private var image: UIImage?
+    @State private var gifData: Data?
     /// Volle Qualität kommt gerade aus iCloud (0…1); die schnelle Vorschau ist schon sichtbar.
     @State private var downloadProgress: Double?
     /// Video wird vorbereitet (bei iCloud-Videos gestreamt).
@@ -34,7 +35,12 @@ struct FeedMediaPage: View {
         GeometryReader { geo in
             ZStack {
                 AppColors.stage
-                if let image {
+                if let gifData, isTop {
+                    AnimatedGIFView(data: gifData)
+                        .frame(width: geo.size.width, height: geo.size.height)
+                        .allowsHitTesting(false)
+                        .accessibilityHidden(true)
+                } else if let image {
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFit()
@@ -63,6 +69,10 @@ struct FeedMediaPage: View {
                 }
             }
             .task(id: "\(asset.id)-\(retry)-\(reload)") { await load(size: geo.size) }
+            .task(id: "\(asset.id)-gif-\(isTop)") {
+                guard isTop else { gifData = nil; return }
+                if let data = await GIFPlayback.data(for: asset.id), !Task.isCancelled { gifData = data }
+            }
             .task(id: "\(asset.id)-\(isTop)-\(state == .ready)-\(reload)") { await startVideoIfNeeded() }
         }
     }
