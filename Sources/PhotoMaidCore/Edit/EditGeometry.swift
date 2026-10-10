@@ -49,7 +49,11 @@ public struct Homography: Hashable, Sendable {
     public static func * (s: Homography, o: Homography) -> Homography {
         var r = [Double](repeating: 0, count: 9)
         for i in 0..<3 {
-            for j in 0..<3 { r[i * 3 + j] = (0..<3).reduce(0) { $0 + s.m[i * 3 + $1] * o.m[$1 * 3 + j] } }
+            for j in 0..<3 {
+                var sum: Double = 0
+                for k in 0..<3 { sum += s.m[i * 3 + k] * o.m[k * 3 + j] }
+                r[i * 3 + j] = sum
+            }
         }
         return Homography(r)
     }

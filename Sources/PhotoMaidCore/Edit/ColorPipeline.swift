@@ -10,10 +10,14 @@ public enum ColorMatrices {
     public static func concat(_ a: [Float], _ b: [Float]) -> [Float] {
         var out = [Float](repeating: 0, count: 20)
         for r in 0..<4 {
-            for c in 0..<4 {
-                out[r * 5 + c] = Float((0..<4).reduce(0.0) { $0 + Double(a[r * 5 + $1] * b[$1 * 5 + c]) })
+            for c in 0..<5 {
+                var sum: Double = 0
+                for k in 0..<4 {
+                    let product: Float = a[r * 5 + k] * b[k * 5 + c]
+                    sum += Double(product)
+                }
+                out[r * 5 + c] = c == 4 ? Float(sum) + a[r * 5 + 4] : Float(sum)
             }
-            out[r * 5 + 4] = Float((0..<4).reduce(0.0) { $0 + Double(a[r * 5 + $1] * b[$1 * 5 + 4]) }) + a[r * 5 + 4]
         }
         return out
     }
