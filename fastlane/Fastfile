@@ -2,6 +2,7 @@
 # Anleitung: docs/CI_TESTFLIGHT.md. Keine Zertifikate/Schlüssel im Repository.
 require "base64"
 require "securerandom"
+require "shellwords"
 require "tmpdir"
 
 default_platform(:ios)
@@ -67,7 +68,9 @@ platform :ios do
       clean: true,
       output_directory: "build",
       output_name: "PhotoMaid.ipa",
-      xcargs: ([signing_xcargs.join(" "), export_xcargs].compact.join(" ")),
+      # gym reicht xcargs an die Shell weiter: Werte escapen ("Apple Distribution" enthält ein Leerzeichen).
+      xcargs: ([signing_xcargs.map { |a| k, v = a.split("=", 2); "#{k}=#{Shellwords.escape(v)}" }.join(" "),
+                export_xcargs].compact.join(" ")),
       export_method: "app-store",
       export_xcargs: export_xcargs,
       export_options: export_options,
