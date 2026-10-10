@@ -92,6 +92,9 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.mrdevn4ever.photomaid
+        # Nur iPhone. Am Target nötig: XcodeGens iOS-Voreinstellung (1,2) überschreibt sonst den Projektwert,
+        # und Apple verlangt dann für iPad-Multitasking alle vier Ausrichtungen (ITMS-90474).
+        TARGETED_DEVICE_FAMILY: "1"
         PM_PROVISIONING_PROFILE: ""   # TestFlight: fastlane setzt die Profil-UUID
         PROVISIONING_PROFILE_SPECIFIER: $(PM_PROVISIONING_PROFILE)
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
