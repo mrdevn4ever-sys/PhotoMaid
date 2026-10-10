@@ -59,6 +59,8 @@ final class AppModel {
     private(set) var rewards: RewardLedger
     private(set) var customCollections: [SmartCollection]
     private(set) var read = LedgerReadModel()
+    /// Never show an all-open library before persistent decisions have been loaded.
+    private(set) var readReady = false
     private(set) var snapshot = LibrarySnapshot()
     /// Tab „Fotos“: alles außer „In PhotoMaid ausgeblendet“.
     private(set) var visibleMedia: [MediaAsset] = []
@@ -215,6 +217,7 @@ final class AppModel {
     }
 
     private func rebuildPending() {
+        guard readReady else { pending = []; return }
         pending = ReviewQueues.normalQueue(candidates: cleanupMedia.map(\.reference), records: read.records,
                                            session: ReviewSessionID(), today: today)
     }
@@ -297,6 +300,7 @@ final class AppModel {
         }.value
         guard generation == readGeneration else { return }
         read = derived.0
+        readReady = true
         // PhotoKit may have reloaded the library while the detached queue was
         // building. In that rare case use the latest visible media and ledger.
         if queueInputsRevision == queueRevision {
