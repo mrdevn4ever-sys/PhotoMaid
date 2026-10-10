@@ -2,7 +2,7 @@ import StoreKit
 import SwiftUI
 
 struct OnboardingFlow: View {
-    static let version = 1
+    static let version = 2 // 2: neue Einführung mit Bildern und Übungskarten (wird nach dem Update einmal gezeigt)
     @Environment(AppModel.self) private var app
     @Environment(\.purchase) private var purchase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
