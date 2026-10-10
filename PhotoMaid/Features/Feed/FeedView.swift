@@ -64,7 +64,15 @@ struct FeedView: View {
                 content
             }
             .padding(.bottom, AppSpacing.xs)
-            if let step = activeTourStep { tourCard(step) }
+        }
+        .tourOverlay(step: activeTourStep, isLast: tourStep == tourSteps.count - 1) {
+            if tourStep >= tourSteps.count - 1 {
+                app.updateSettings { $0.feedTourSeen = true }
+            } else {
+                tourStep += 1
+            }
+        } skip: {
+            app.updateSettings { $0.feedTourSeen = true }
         }
         .task {
             model.reduceMotion = reduceMotion
@@ -183,6 +191,7 @@ struct FeedView: View {
                 }
                 GlassIconButton(symbol: "arrow.uturn.backward", label: L("undo")) { Task { await model.undo() } }
                     .disabled(!app.read.canUndo)
+                    .tourTarget("feed.undo")
             }
         }
         .padding(.horizontal, AppSpacing.pageMargin)
@@ -213,7 +222,7 @@ struct FeedView: View {
             }
             VStack(spacing: AppSpacing.xs) {
                 if needsButtons { DecisionButtons { model.perform($0) } }
-                actionBar
+                actionBar.tourTarget("feed.actions")
             }
             .padding(.horizontal, AppSpacing.pageMargin)
         }
@@ -435,6 +444,7 @@ struct FeedView: View {
             }
             Spacer(minLength: 0)
             TrashChip(count: app.read.basket.count) { showTrash = true }
+                .tourTarget("feed.basket")
         }
     }
 
@@ -475,30 +485,16 @@ struct FeedView: View {
 
     // MARK: Rundgang (einmal beim ersten Feed)
 
-    private var tourSteps: [(key: String, text: String)] {
-        [("tour_feed_basket_title", "tour_feed_basket_text"),
-         ("tour_feed_undo_title", "tour_feed_undo_text"),
-         ("tour_feed_actions_title", "tour_feed_actions_text")]
+    private var tourSteps: [TourStep] {
+        [TourStep(titleKey: "tour_feed_basket_title", textKey: "tour_feed_basket_text", target: .anchor("feed.basket")),
+         TourStep(titleKey: "tour_feed_undo_title", textKey: "tour_feed_undo_text", target: .anchor("feed.undo")),
+         TourStep(titleKey: "tour_feed_actions_title", textKey: "tour_feed_actions_text", target: .anchor("feed.actions"))]
     }
 
-    private var activeTourStep: (key: String, text: String)? {
+    private var activeTourStep: TourStep? {
         guard !app.settings.feedTourSeen, !showHints, model.isLoaded, !model.session.isFinished,
               model.currentAsset != nil, !voiceOver, tourStep < tourSteps.count else { return nil }
         return tourSteps[tourStep]
-    }
-
-    private func tourCard(_ step: (key: String, text: String)) -> some View {
-        CoachCard(title: L(step.key), text: L(step.text), isLast: tourStep == tourSteps.count - 1) {
-            if tourStep >= tourSteps.count - 1 {
-                app.updateSettings { $0.feedTourSeen = true }
-            } else {
-                tourStep += 1
-            }
-        } skip: {
-            app.updateSettings { $0.feedTourSeen = true }
-        }
-        .frame(maxHeight: .infinity, alignment: .bottom)
-        .padding(.bottom, 120)
     }
 }
 

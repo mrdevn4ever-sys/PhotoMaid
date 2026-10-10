@@ -13,46 +13,56 @@ struct TodayView: View {
     private var access: PhotoAccess { app.library.access }
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: AppSpacing.xl) {
-                header
-                if !access.canRead { accessCard }
-                if access.canRead {
-                    ReviewHero(pending: app.snapshot.loaded ? app.pending : nil, hasHistory: !app.read.events.isEmpty,
-                               showGestures: !app.settings.gestureHintSeen) {
-                        app.open(FeedRequest(.allMedia))
+        ScrollViewReader { scroller in
+            ScrollView {
+                VStack(alignment: .leading, spacing: AppSpacing.xl) {
+                    header.id("today.header")
+                    if !access.canRead { accessCard }
+                    if access.canRead {
+                        ReviewHero(pending: app.snapshot.loaded ? app.pending : nil, hasHistory: !app.read.events.isEmpty,
+                                   showGestures: !app.settings.gestureHintSeen) {
+                            app.open(FeedRequest(.allMedia))
+                        }
+                        .tourTarget("today.hero")
+                        .id("today.hero")
                     }
-                }
-                progressRows
-                if access == .limited {
-                    InfoBanner(symbol: "photo.badge.checkmark", title: L("today_limited_title"), text: L("today_limited_text"),
-                               actionTitle: L("today_limited_action")) { app.library.presentLimitedLibraryPicker() }
-                }
-                if !app.read.reconciliationNeeded.isEmpty {
-                    InfoBanner(symbol: "arrow.triangle.2.circlepath", tint: AppColors.warning, text: L("today_reconciliation"))
-                }
-                statusGroup
-                if access.canRead { QuickAccessSection() }
-                if app.capabilities.tier == .free, let first = app.settings.firstSeenDay, app.today > first {
-                    Button { app.navigate(.pro) } label: {
-                        NavRow(symbol: "crown", title: L("today_pro_title"), subtitle: L("today_pro_text"))
+                    progressRows
+                    if access == .limited {
+                        InfoBanner(symbol: "photo.badge.checkmark", title: L("today_limited_title"), text: L("today_limited_text"),
+                                   actionTitle: L("today_limited_action")) { app.library.presentLimitedLibraryPicker() }
                     }
-                    .buttonStyle(.plain)
-                    .padding(.horizontal, AppSpacing.m)
-                    .background(AppColors.surface, in: .rect(cornerRadius: AppRadii.card))
+                    if !app.read.reconciliationNeeded.isEmpty {
+                        InfoBanner(symbol: "arrow.triangle.2.circlepath", tint: AppColors.warning, text: L("today_reconciliation"))
+                    }
+                    statusGroup.tourTarget("today.status").id("today.status")
+                    if access.canRead { QuickAccessSection().tourTarget("today.quick").id("today.quick") }
+                    if app.capabilities.tier == .free, let first = app.settings.firstSeenDay, app.today > first {
+                        Button { app.navigate(.pro) } label: {
+                            NavRow(symbol: "crown", title: L("today_pro_title"), subtitle: L("today_pro_text"))
+                        }
+                        .buttonStyle(.plain)
+                        .padding(.horizontal, AppSpacing.m)
+                        .background(AppColors.surface, in: .rect(cornerRadius: AppRadii.card))
+                    }
+                    if let device { StorageLine(device: device) { app.navigate(.storage) } }
                 }
-                if let device { StorageLine(device: device) { app.navigate(.storage) } }
+                .padding(.horizontal, AppSpacing.pageMargin)
+                .padding(.bottom, AppSpacing.xxl)
             }
-            .padding(.horizontal, AppSpacing.pageMargin)
-            .padding(.bottom, AppSpacing.xxl)
+            .appPage()
+            .toolbar(.hidden, for: .navigationBar)
+            .task(id: app.library.changeToken) { device = DeviceStorage.read() }
+            .task(id: "\(app.pending.count)-\(app.cleanupMedia.count)-\(app.settings.continueMonth ?? "")-\(app.settings.lastSessionEnd?.timeIntervalSince1970 ?? 0)") {
+                await countProgress()
+            }
+            .tourOverlay(step: activeTourStep, isLast: tourStep == tourSteps.count - 1) {
+                if tourStep >= tourSteps.count - 1 { app.updateSettings { $0.todayTourSeen = true } } else { tourStep += 1 }
+            } skip: {
+                app.updateSettings { $0.todayTourSeen = true }
+            }
+            .onChange(of: activeTourStep, initial: true) { _, step in scrollToTourTarget(step, scroller) }
+            .onChange(of: app.settings.todayTourSeen) { _, seen in if !seen { tourStep = 0 } }
         }
-        .appPage()
-        .toolbar(.hidden, for: .navigationBar)
-        .task(id: app.library.changeToken) { device = DeviceStorage.read() }
-        .task(id: "\(app.pending.count)-\(app.cleanupMedia.count)-\(app.settings.continueMonth ?? "")-\(app.settings.lastSessionEnd?.timeIntervalSince1970 ?? 0)") {
-            await countProgress()
-        }
-        .overlay(alignment: .bottom) { tour }
     }
 
     private var greeting: String {
@@ -73,6 +83,7 @@ struct TodayView: View {
             }
             Spacer()
             GlassIconButton(symbol: "gearshape", label: L("settings")) { app.navigate(.settings) }
+                .tourTarget("today.settings")
         }
         .padding(.top, AppSpacing.m)
     }
@@ -166,24 +177,31 @@ struct TodayView: View {
 
     // MARK: Rundgang (einmal: Heute, Status, Schnellzugriffe, Tabs)
 
-    private var tourSteps: [(String, String)] {
-        [("tour_today_hero_title", "tour_today_hero_text"), ("tour_today_status_title", "tour_today_status_text"),
-         ("tour_today_quick_title", "tour_today_quick_text"), ("tour_today_tab_title", "tour_today_tab_text"),
-         ("tour_lib_title", "tour_lib_text"), ("tour_studio_title", "tour_studio_text"),
-         ("tour_history_title", "tour_history_text"), ("tour_settings_title", "tour_settings_text")]
+    /// Ziel sichtbar machen, bevor Spotlight und Karte darauf zeigen.
+    private func scrollToTourTarget(_ step: TourStep?, _ scroller: ScrollViewProxy) {
+        guard let step, case .anchor(let anchor) = step.target else { return }
+        let id = anchor == "today.settings" ? "today.header" : anchor
+        withAnimation(.snappy) { scroller.scrollTo(id, anchor: .center) }
     }
 
-    @ViewBuilder
-    private var tour: some View {
-        if !app.settings.todayTourSeen && access.canRead && app.feed == nil && tourStep < tourSteps.count {
-            let step = tourSteps[tourStep]
-            CoachCard(title: L(step.0), text: L(step.1), isLast: tourStep == tourSteps.count - 1) {
-                if tourStep >= tourSteps.count - 1 { app.updateSettings { $0.todayTourSeen = true } } else { tourStep += 1 }
-            } skip: {
-                app.updateSettings { $0.todayTourSeen = true }
-            }
-            .padding(.bottom, 80)
-        }
+    private var tourSteps: [TourStep] {
+        [TourStep(titleKey: "tour_today_hero_title", textKey: "tour_today_hero_text", target: .anchor("today.hero")),
+         TourStep(titleKey: "tour_today_status_title", textKey: "tour_today_status_text", target: .anchor("today.status")),
+         TourStep(titleKey: "tour_today_quick_title", textKey: "tour_today_quick_text", target: .anchor("today.quick")),
+         TourStep(titleKey: "tour_today_tab_title", textKey: "tour_today_tab_text",
+                  target: .tab(2, titleKey: "tab_cleanup", symbol: "square.stack.3d.up")),
+         TourStep(titleKey: "tour_lib_title", textKey: "tour_lib_text",
+                  target: .tab(1, titleKey: "tab_library", symbol: "photo.on.rectangle.angled")),
+         TourStep(titleKey: "tour_studio_title", textKey: "tour_studio_text",
+                  target: .tab(3, titleKey: "tab_studio", symbol: "paintpalette")),
+         TourStep(titleKey: "tour_history_title", textKey: "tour_history_text",
+                  target: .tab(4, titleKey: "tab_history", symbol: "clock.arrow.circlepath")),
+         TourStep(titleKey: "tour_settings_title", textKey: "tour_settings_text", target: .anchor("today.settings"))]
+    }
+
+    private var activeTourStep: TourStep? {
+        guard !app.settings.todayTourSeen && access.canRead && app.feed == nil && tourStep < tourSteps.count else { return nil }
+        return tourSteps[tourStep]
     }
 }
 

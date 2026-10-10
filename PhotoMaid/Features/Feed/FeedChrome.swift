@@ -290,33 +290,3 @@ struct SessionSummaryView: View {
         .accessibilityElement(children: .combine)
     }
 }
-
-/// Hinweiskarte eines Rundgangs (einmal, abwählbar, kein Blockieren der Bedienung außerhalb der Karte).
-struct CoachCard: View {
-    let title: String
-    let text: String
-    let isLast: Bool
-    let next: () -> Void
-    let skip: () -> Void
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: AppSpacing.s) {
-            Text(verbatim: title).font(AppTypography.headline).foregroundStyle(AppColors.textPrimary)
-            Text(verbatim: text).font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
-                .fixedSize(horizontal: false, vertical: true)
-            HStack {
-                if !isLast {
-                    Button(action: skip) { Text(key: "tour_skip") }.frame(minHeight: AppSpacing.minTouch)
-                }
-                Spacer()
-                Button(action: next) { Text(key: isLast ? "done" : "tour_next") }
-                    .buttonStyle(.glassProminent)
-            }
-        }
-        .padding(AppSpacing.m)
-        .glassPanel()
-        .padding(.horizontal, AppSpacing.pageMargin)
-        .accessibilityElement(children: .contain)
-        .accessibilityAddTraits(.isModal)
-    }
-}
