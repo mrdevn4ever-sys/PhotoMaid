@@ -171,14 +171,19 @@ final class AppModel {
         reloadLibraryIfNeeded()
 
         await reminders.refresh()
+        let previousPurchase = purchases.state
         await purchases.refresh()
+        var didRecover = false
         if !recoveredThisProcess && !cleanupInFlight {
             recoveredThisProcess = true
             await recoverOperations()
+            didRecover = true
         }
-        // Entitlements and recovered cleanup intents can change capabilities,
-        // allowances and records. Reconcile the read model before returning.
-        await publishRead()
+        // Skip a second full 37k-asset queue rebuild if neither the purchase
+        // capabilities nor the operation journal could have changed.
+        if didRecover || purchases.state != previousPurchase {
+            await publishRead()
+        }
     }
 
     func tick() { now = Date() }
