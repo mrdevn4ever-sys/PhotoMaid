@@ -306,7 +306,11 @@ struct TrashView: View {
                 } else if intent.state == .cancelled {
                     result = ResultMessage(title: L("result_title_not_done"), text: L("result_cancelled"), openPro: false)
                 } else {
-                    result = ResultMessage(title: L("result_title_not_done"), text: L("result_nothing"), openPro: false)
+                    // Show only a safe error category/domain/code, never file names or paths.
+                    // The exact provider error is additionally available in "Diagnose teilen".
+                    let code = kind == .photoLibraryDelete ? nil : app.lastFileCleanupFailureCode
+                    let message = L("result_nothing") + (code.map { "\n[\($0)]" } ?? "")
+                    result = ResultMessage(title: L("result_title_not_done"), text: message, openPro: false)
                 }
             case .rejected(let e):
                 if case .allowanceExceeded(let requested, let available) = e {
