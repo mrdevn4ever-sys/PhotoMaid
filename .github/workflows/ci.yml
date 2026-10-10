@@ -57,6 +57,8 @@ jobs:
       - name: Build und Unit-Tests
         run: |
           set -o pipefail
+          # Alle Compilerfehler in einem Lauf sammeln, statt nach dem ersten Batch abzubrechen.
+          defaults write com.apple.dt.Xcode IDEBuildingContinueBuildingAfterErrors -bool YES
           SKIP="-skip-testing:PhotoMaidUITests"
           [ "${{ inputs.ui_tests }}" = "true" ] && SKIP=""
           xcodebuild -project PhotoMaid.xcodeproj -scheme PhotoMaid \

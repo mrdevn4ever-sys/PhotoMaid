@@ -48,7 +48,9 @@ platform :ios do
     signing_xcargs = common_xcargs + [
       "CODE_SIGN_STYLE=Manual",
       "CODE_SIGN_IDENTITY=Apple Distribution",
-      "PROVISIONING_PROFILE_SPECIFIER=#{profile_uuid}",
+      # Nur das App-Target liest PM_PROVISIONING_PROFILE (project.yml); ein globaler
+      # PROVISIONING_PROFILE_SPECIFIER träfe auch das Paket PhotoMaidCore.
+      "PM_PROVISIONING_PROFILE=#{profile_uuid}",
       "OTHER_CODE_SIGN_FLAGS=--keychain=#{keychain}"
     ]
     export_options = {

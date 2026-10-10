@@ -31,7 +31,7 @@ struct ArchiveView: View {
                 Section(L("archive_result_title")) {
                     Text(verbatim: LP("archive_part_verified", journal.summary.verified))
                     Text(verbatim: LP("archive_part_failed", journal.summary.failed))
-                    Text(verbatim: ByteText.format(journal.summary.verifiedBytes))
+                    Text(verbatim: SizeText.bytes(journal.summary.verifiedBytes))
                 }
             }
         }

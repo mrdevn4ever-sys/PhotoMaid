@@ -26,7 +26,7 @@ enum BatchProcessor {
     static func process(app: AppModel, ids: [String], options: BatchOptions, recipe: EditRecipe? = nil) async -> BatchSummary {
         var summary = BatchSummary()
         for id in ids {
-            guard let asset = app.asset(id), !asset.isVideo else { summary.skipped += 1; continue }
+            guard let asset = await app.asset(id), !asset.isVideo else { summary.skipped += 1; continue }
             do {
                 let input = try await imageData(id)
                 guard var image = EditRenderer.source(input) else { throw Failure.render }

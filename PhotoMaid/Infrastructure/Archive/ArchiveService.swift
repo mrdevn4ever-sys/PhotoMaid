@@ -13,7 +13,7 @@ enum ArchiveService {
                                      targetKind: ArchiveTargets.classify(facts),
                                      startedAt: Int64(Date().timeIntervalSince1970 * 1000), options: options)
         for (index, id) in ids.enumerated() {
-            guard let asset = app.asset(id), let ph = PhotoLibraryService.phAsset(id),
+            guard let asset = await app.asset(id), let ph = PhotoLibraryService.phAsset(id),
                   let resource = PHAssetResource.assetResources(for: ph).first else { continue }
             let measured = await app.sizer.size(of: asset)
             let size: Int64?
@@ -27,6 +27,8 @@ enum ArchiveService {
             var entry = JournalEntry(sourceId: id, name: name, folder: folderParts, size: size)
             entry.state = .copying
             journal.entries.append(entry)
+            // Übersprungene IDs legen keinen Eintrag an: Index des Eintrags, nicht der ID.
+            let entryIndex = journal.entries.count - 1
             do {
                 let folder = folderParts.reduce(target) { $0.appendingPathComponent($1, isDirectory: true) }
                 try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
@@ -40,18 +42,18 @@ enum ArchiveService {
                 let copied = try Data(contentsOf: output, options: .mappedIfSafe)
                 let targetHash = SHA256.hash(data: copied).hexString
                 if sourceHash == targetHash {
-                    journal.entries[index].state = .verified
-                    journal.entries[index].bytes = Int64(copied.count)
-                    journal.entries[index].sha256 = targetHash
-                    journal.entries[index].targetUri = (folderParts + [unique]).joined(separator: "/")
+                    journal.entries[entryIndex].state = .verified
+                    journal.entries[entryIndex].bytes = Int64(copied.count)
+                    journal.entries[entryIndex].sha256 = targetHash
+                    journal.entries[entryIndex].targetUri = (folderParts + [unique]).joined(separator: "/")
                 } else {
                     try? FileManager.default.removeItem(at: output)
-                    journal.entries[index].state = .failed
-                    journal.entries[index].reason = .mismatch
+                    journal.entries[entryIndex].state = .failed
+                    journal.entries[entryIndex].reason = .mismatch
                 }
             } catch {
-                journal.entries[index].state = .failed
-                journal.entries[index].reason = .writeFailed
+                journal.entries[entryIndex].state = .failed
+                journal.entries[entryIndex].reason = .writeFailed
             }
         }
         journal.finishedAt = Int64(Date().timeIntervalSince1970 * 1000)
