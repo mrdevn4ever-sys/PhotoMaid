@@ -32,7 +32,31 @@ struct FeedView: View {
     private var needsButtons: Bool { voiceOver || switchControl || app.settings.decisionButtons }
     private var zoomed: Bool { zoom > 1.01 }
 
+    // Aufgeteilt (Bühne, Blätter, Hinweise), damit der Type-Checker jede Kette einzeln prüft.
     var body: some View {
+        withSheets(stage)
+            .alert(protectedTitle, isPresented: protectedFavoriteShown) {
+                Button(L("fav_remove")) { Task { await model.unfavoriteProtected() } }
+                Button(L("cancel"), role: .cancel) { model.protectedFavorite = nil }
+            } message: {
+                Text(key: "fav_protected_text")
+            }
+            .alert(L("info"), isPresented: $showInfo) {
+                Button(L("ok"), role: .cancel) {}
+            } message: {
+                Text(verbatim: infoText)
+            }
+            .alert(excludeTitle, isPresented: $confirmExclude) {
+                Button(L("excl_confirm_action")) {
+                    if case .album(let id, let title) = model.request.source { Task { await model.excludeAlbum(id, title: title) } }
+                }
+                Button(L("cancel"), role: .cancel) {}
+            } message: {
+                Text(key: "excl_confirm_text")
+            }
+    }
+
+    private var stage: some View {
         ZStack {
             AppColors.background.ignoresSafeArea()
             VStack(spacing: AppSpacing.s) {
@@ -66,54 +90,59 @@ struct FeedView: View {
             if !isDragging, case .directionLocked = model.machine.phase { model.dragCancelled() }
         }
         .onDisappear { app.player.stop() }
-        .sheet(item: Binding(get: { model.pickerReceipt }, set: { model.pickerReceipt = $0 })) { receipt in
-            LaterPickerSheet(initial: model.defaultLaterInterval, today: model.today, allowsNoDate: true) { result in
-                Task {
-                    switch result {
-                    case .day(let d): await model.pickerFinished(receipt, day: d)
-                    case .noDate: await model.pickerNoDate(receipt)
-                    case .cancelled: await model.pickerFinished(receipt, day: nil)
+    }
+
+    private func withSheets(_ content: some View) -> some View {
+        content
+            .sheet(item: pickerReceiptItem) { receipt in
+                LaterPickerSheet(initial: model.defaultLaterInterval, today: model.today, allowsNoDate: true) { result in
+                    Task {
+                        switch result {
+                        case .day(let d): await model.pickerFinished(receipt, day: d)
+                        case .noDate: await model.pickerNoDate(receipt)
+                        case .cancelled: await model.pickerFinished(receipt, day: nil)
+                        }
                     }
                 }
             }
-        }
-        .sheet(item: Binding(get: { model.customLater }, set: { if $0 == nil, let r = model.customLater { model.customLaterFinished(r, day: nil) } })) { req in
-            LaterPickerSheet(initial: model.defaultLaterInterval, today: model.today, allowsNoDate: false) { result in
-                if case .day(let d) = result { model.customLaterFinished(req, day: d) } else { model.customLaterFinished(req, day: nil) }
+            .sheet(item: customLaterItem) { req in
+                LaterPickerSheet(initial: model.defaultLaterInterval, today: model.today, allowsNoDate: false) { result in
+                    if case .day(let d) = result { model.customLaterFinished(req, day: d) } else { model.customLaterFinished(req, day: nil) }
+                }
             }
-        }
-        .sheet(item: Binding(get: { model.albumSheetFor }, set: { model.albumSheetFor = $0 })) { asset in
-            AlbumPickerSheet(assetIDs: [asset.id]) { id, title in Task { await model.addCurrent(toAlbum: id, title: title) } }
-        }
-        .sheet(item: Binding(get: { model.seriesOpen.map(SeriesBox.init) }, set: { model.seriesOpen = $0?.members })) { box in
-            SeriesCompareView(members: box.members) { keep in Task { await model.confirmSeries(box.members, keep: keep) } }
-        }
-        .sheet(isPresented: $showTrash) {
-            NavigationStack { TrashView(inSheet: true) }
-        }
-        .sheet(isPresented: $showGrid) {
-            NavigationStack { MediaGridView(source: .items(model.session.items.dropFirst(model.session.index).map(\.localIdentifier), titleKey: "grid_open")) }
-        }
-        .sheet(item: $shareItem) { item in ShareSheet(items: item.items) }
-        .alert(protectedTitle, isPresented: Binding(get: { model.protectedFavorite != nil }, set: { if !$0 { model.protectedFavorite = nil } })) {
-            Button(L("fav_remove")) { Task { await model.unfavoriteProtected() } }
-            Button(L("cancel"), role: .cancel) { model.protectedFavorite = nil }
-        } message: {
-            Text(key: "fav_protected_text")
-        }
-        .alert(L("info"), isPresented: $showInfo) {
-            Button(L("ok"), role: .cancel) {}
-        } message: {
-            Text(verbatim: infoText)
-        }
-        .alert(excludeTitle, isPresented: $confirmExclude) {
-            Button(L("excl_confirm_action")) {
-                if case .album(let id, let title) = model.request.source { Task { await model.excludeAlbum(id, title: title) } }
+            .sheet(item: albumSheetItem) { asset in
+                AlbumPickerSheet(assetIDs: [asset.id]) { id, title in Task { await model.addCurrent(toAlbum: id, title: title) } }
             }
-            Button(L("cancel"), role: .cancel) {}
-        } message: {
-            Text(key: "excl_confirm_text")
-        }
+            .sheet(item: seriesItem) { box in
+                SeriesCompareView(members: box.members) { keep in Task { await model.confirmSeries(box.members, keep: keep) } }
+            }
+            .sheet(isPresented: $showTrash) {
+                NavigationStack { TrashView(inSheet: true) }
+            }
+            .sheet(isPresented: $showGrid) {
+                NavigationStack { MediaGridView(source: .items(model.session.items.dropFirst(model.session.index).map(\.localIdentifier), titleKey: "grid_open")) }
+            }
+            .sheet(item: $shareItem) { item in ShareSheet(items: item.items) }
+    }
+
+    private var pickerReceiptItem: Binding<LaterReceipt?> {
+        Binding(get: { model.pickerReceipt }, set: { model.pickerReceipt = $0 })
+    }
+
+    private var customLaterItem: Binding<CustomLaterRequest?> {
+        Binding(get: { model.customLater }, set: { if $0 == nil, let r = model.customLater { model.customLaterFinished(r, day: nil) } })
+    }
+
+    private var albumSheetItem: Binding<MediaAsset?> {
+        Binding(get: { model.albumSheetFor }, set: { model.albumSheetFor = $0 })
+    }
+
+    private var seriesItem: Binding<SeriesBox?> {
+        Binding(get: { model.seriesOpen.map(SeriesBox.init) }, set: { model.seriesOpen = $0?.members })
+    }
+
+    private var protectedFavoriteShown: Binding<Bool> {
+        Binding(get: { model.protectedFavorite != nil }, set: { if !$0 { model.protectedFavorite = nil } })
     }
 
     // MARK: Kopf

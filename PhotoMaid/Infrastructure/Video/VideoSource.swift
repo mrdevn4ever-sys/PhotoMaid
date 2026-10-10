@@ -87,6 +87,15 @@ enum VideoSource {
         return UncheckedBox(result.image)
     }
 
+    /// Für Aufrufer auf dem Main Actor, die das AVAsset halten: AVAsset ist nicht Sendable, ausgepackt wird erst hier.
+    static func frame(_ asset: UncheckedBox<AVAsset>, sourceMs: Int64, maxEdge: CGFloat? = nil) async -> UncheckedBox<CGImage>? {
+        await frame(asset.value, sourceMs: sourceMs, maxEdge: maxEdge)
+    }
+
+    static func thumbnails(_ asset: UncheckedBox<AVAsset>, durationMs: Int64, count: Int, height: CGFloat) async -> [UIImage] {
+        await thumbnails(asset.value, durationMs: durationMs, count: count, height: height)
+    }
+
     /// Kleine Bilder gleichmäßig über die ganze Dauer (Zeitleiste beim Kürzen).
     static func thumbnails(_ asset: AVAsset, durationMs: Int64, count: Int, height: CGFloat) async -> [UIImage] {
         let g = AVAssetImageGenerator(asset: asset)
