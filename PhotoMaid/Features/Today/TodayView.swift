@@ -19,7 +19,7 @@ struct TodayView: View {
                     header.id("today.header")
                     if !access.canRead { accessCard }
                     if access.canRead {
-                        ReviewHero(pending: app.snapshot.loaded ? app.pending : nil, hasHistory: !app.read.events.isEmpty,
+                        ReviewHero(pending: app.snapshot.loaded && app.readReady ? app.pending : nil, hasHistory: !app.read.events.isEmpty,
                                    showGestures: !app.settings.gestureHintSeen) {
                             app.open(FeedRequest(.allMedia))
                         }
@@ -35,7 +35,7 @@ struct TodayView: View {
                         InfoBanner(symbol: "arrow.triangle.2.circlepath", tint: AppColors.warning, text: L("today_reconciliation"))
                     }
                     statusGroup.tourTarget("today.status").id("today.status")
-                    if access.canRead { QuickAccessSection().tourTarget("today.quick").id("today.quick") }
+                    if access.canRead && app.readReady { QuickAccessSection().tourTarget("today.quick").id("today.quick") }
                     if app.capabilities.tier == .free, let first = app.settings.firstSeenDay, app.today > first {
                         Button { app.navigate(.pro) } label: {
                             NavRow(symbol: "crown", title: L("today_pro_title"), subtitle: L("today_pro_text"))

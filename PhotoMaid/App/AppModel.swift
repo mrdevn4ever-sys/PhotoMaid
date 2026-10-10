@@ -59,6 +59,8 @@ final class AppModel {
     private(set) var rewards: RewardLedger
     private(set) var customCollections: [SmartCollection]
     private(set) var read = LedgerReadModel()
+    /// Never show an all-open library before persistent decisions have been loaded.
+    private(set) var readReady = false
     private(set) var snapshot = LibrarySnapshot()
     /// Tab „Fotos“: alles außer „In PhotoMaid ausgeblendet“.
     private(set) var visibleMedia: [MediaAsset] = []
@@ -161,14 +163,27 @@ final class AppModel {
     func onForeground() async {
         now = Date()
         library.refreshAccess()
+        // The persisted review decisions must be published before requesting
+        // StoreKit products or refreshing reminders. Either may suspend while
+        // PhotoKit finishes loading: without this order, a briefly empty read
+        // model can make every photo appear as "not reviewed" on Today.
+        await publishRead()
+        reloadLibraryIfNeeded()
+
         await reminders.refresh()
+        let previousPurchase = purchases.state
         await purchases.refresh()
+        var didRecover = false
         if !recoveredThisProcess && !cleanupInFlight {
             recoveredThisProcess = true
             await recoverOperations()
+            didRecover = true
         }
-        await publishRead()
-        reloadLibraryIfNeeded()
+        // Skip a second full 37k-asset queue rebuild if neither the purchase
+        // capabilities nor the operation journal could have changed.
+        if didRecover || purchases.state != previousPurchase {
+            await publishRead()
+        }
     }
 
     func tick() { now = Date() }
@@ -215,6 +230,7 @@ final class AppModel {
     }
 
     private func rebuildPending() {
+        guard readReady else { pending = []; return }
         pending = ReviewQueues.normalQueue(candidates: cleanupMedia.map(\.reference), records: read.records,
                                            session: ReviewSessionID(), today: today)
     }
@@ -297,6 +313,7 @@ final class AppModel {
         }.value
         guard generation == readGeneration else { return }
         read = derived.0
+        readReady = true
         // PhotoKit may have reloaded the library while the detached queue was
         // building. In that rare case use the latest visible media and ledger.
         if queueInputsRevision == queueRevision {
