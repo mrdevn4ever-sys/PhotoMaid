@@ -455,9 +455,21 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
             Diagnostics.error(.library, "save-failed", error)
             return .failed
         }
-        guard let id = holder.value, Self.phAsset(id) != nil else { return .failed }
-        changeToken += 1
-        return .saved(id: id)
+        guard let id = holder.value else {
+            Diagnostics.log(.library, "save-missing-placeholder")
+            return .failed
+        }
+        // PhotoKit may finish the write before its read-side fetch index is updated.
+        // Retry visibility for a bounded period rather than reporting a false save failure.
+        for attempt in 0..<12 {
+            if Self.phAsset(id) != nil {
+                changeToken += 1
+                return .saved(id: id)
+            }
+            if attempt < 11 { try? await Task.sleep(for: .milliseconds(150)) }
+        }
+        Diagnostics.log(.library, "save-asset-not-yet-visible")
+        return .failed
     }
 
     private static func writeResult(_ error: any Error) -> MediaWriteResult {
