@@ -20,13 +20,20 @@ struct MovieView: View {
     @State private var loadedInitial = false
     @State private var errorKey: String?
     @State private var errorDetail: String?
+    @State private var preparingExport = false
 
     var body: some View {
         content
             .appPage()
             .navigationTitle(L("movie_title"))
             .safeAreaInset(edge: .bottom) { saveBar }
-            .overlay { if ExportCoordinator.shared.isBusy { ExportProgressOverlay(coordinator: ExportCoordinator.shared) } }
+            .overlay {
+                if preparingExport {
+                    LoadingState(message: L("movie_running")).background(.ultraThinMaterial)
+                } else if ExportCoordinator.shared.isBusy {
+                    ExportProgressOverlay(coordinator: ExportCoordinator.shared)
+                }
+            }
             .sheet(isPresented: $picker) {
                 StudioMediaPicker(allowsVideos: true, limit: VideoRules.maxClips, initial: Set(project.clips.map(\.mediaId))) { ids in
                     merge(ids)
@@ -281,7 +288,7 @@ struct MovieView: View {
                           symbol: app.capabilities.hasProToolsAccess ? "square.and.arrow.down" : "crown") {
                 Task { await export() }
             }
-            .disabled(saveBlockedReason != nil || ExportCoordinator.shared.isBusy)
+            .disabled(saveBlockedReason != nil || preparingExport || ExportCoordinator.shared.isBusy)
         }
         .padding(.horizontal, AppSpacing.pageMargin)
         .padding(.vertical, AppSpacing.xs)
@@ -383,6 +390,8 @@ struct MovieView: View {
             }
             return
         }
+        preparingExport = true
+        defer { preparingExport = false }
         do {
             Diagnostics.log(.video, "movie-export-start")
             var assets: [String: AVAsset] = [:]
@@ -404,6 +413,7 @@ struct MovieView: View {
             let boxedAssets = UncheckedBox(assets)
             let boxedInfos = UncheckedBox(infos)
             let selectedMusic = musicURL
+            preparingExport = false
             let url = try await ExportCoordinator.shared.run(title: L("movie_running")) { progress in
                 try await VideoExportJob.renderMovie(project: p, assets: boxedAssets.value, infos: boxedInfos.value,
                                                      frame: frame, fps: 30, musicURL: selectedMusic, allowNetwork: true,
