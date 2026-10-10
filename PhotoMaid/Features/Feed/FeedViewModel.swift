@@ -42,7 +42,9 @@ final class FeedViewModel {
     private let app: AppModel
 
     private(set) var session = FeedSession(items: [])
-    private(set) var machine = FeedGestureMachine()
+    // Pure gesture bookkeeping changes on every touch sample. The UI observes
+    // lockedDirection, readyDirection and offset instead of invalidating for machine state.
+    @ObservationIgnored private(set) var machine = FeedGestureMachine()
     private(set) var assets: [String: MediaAsset] = [:]
     private(set) var previews: [ItemReference: PreviewState] = [:]
     private(set) var retries: [ItemReference: Int] = [:]
@@ -67,6 +69,9 @@ final class FeedViewModel {
     @ObservationIgnored private var sizes: [String: KnownSize] = [:]
     @ObservationIgnored private let shuffleSeed = UInt64.random(in: 1...UInt64.max)
     @ObservationIgnored private var seriesByID: [String: [PhotoSeries.Member]] = [:]
+    @ObservationIgnored private var sessionIndexByID: [String: Int] = [:]
+    /// The active series changes only when the visible item or queue changes, not on every touch frame.
+    private(set) var currentSeries: [MediaAsset]?
     @ObservationIgnored private var pillTask: Task<Void, Never>?
     @ObservationIgnored private var noticeTask: Task<Void, Never>?
 
@@ -170,6 +175,7 @@ final class FeedViewModel {
             sizes = await app.sizer.cachedSizes(Array(upcoming))
         }
         session.reorderUpcoming { self.ordered($0, order) }
+        rebuildSessionIndex()
         app.player.stop()
         refreshWindow()
     }
@@ -185,6 +191,7 @@ final class FeedViewModel {
             previews[ref] = .failed
             session.markPreviewUnavailable(ref)
         }
+        refreshCurrentSeries()
     }
 
     // MARK: Fotoserien (nur Erkennung, Auswahl trifft der Nutzer)
@@ -194,14 +201,25 @@ final class FeedViewModel {
             // iOS kennt keine Speicherordner: Kamera-Fotos und Bildschirmfotos bilden getrennte Gruppen.
             .map { PhotoSeries.Member(id: $0.id, group: $0.kind == .screenshot ? "screenshots" : "camera", takenAt: $0.creationDate) }
         seriesByID = PhotoSeries.index(members)
+        rebuildSessionIndex()
     }
 
-    /// Serie des aktuellen Mediums (nur Mitglieder, die in diesem Feed noch kommen), sonst `nil`.
-    var currentSeries: [MediaAsset]? {
-        guard let id = current?.localIdentifier, let g = seriesByID[id] else { return nil }
-        let inFeed = Set(session.items.dropFirst(session.index).map(\.localIdentifier)).union([id])
-        let list = g.filter { inFeed.contains($0.id) }.compactMap { assets[$0.id] }
-        return list.count >= PhotoSeries.minSize ? list : nil
+    private func rebuildSessionIndex() {
+        sessionIndexByID = Dictionary(uniqueKeysWithValues:
+            session.items.enumerated().map { ($0.element.localIdentifier, $0.offset) })
+    }
+
+    /// Compute once per card, never when the finger merely moves the visible card.
+    private func refreshCurrentSeries() {
+        guard let id = current?.localIdentifier, let group = seriesByID[id] else {
+            currentSeries = nil
+            return
+        }
+        let list = group.compactMap { member -> MediaAsset? in
+            guard let position = sessionIndexByID[member.id], position >= session.index else { return nil }
+            return assets[member.id]
+        }
+        currentSeries = list.count >= PhotoSeries.minSize ? list : nil
     }
 
     func openSeries() {
@@ -231,6 +249,7 @@ final class FeedViewModel {
         await app.publishRead()
         laterPill = nil
         session.dropUpcoming(Set(members.map(\.reference)))
+        rebuildSessionIndex()
         app.player.stop()
         refreshWindow()
         Haptics.commit()
@@ -245,6 +264,7 @@ final class FeedViewModel {
         app.setExcluded(album: albumID, true)
         let members = await Task.detached { PhotoLibraryService.assetIDs(inCollection: albumID) }.value
         session.dropUpcoming(Set(session.items.filter { members.contains($0.localIdentifier) }))
+        rebuildSessionIndex()
         app.player.stop()
         refreshWindow()
         showNotice(L("excl_done", title))
@@ -261,6 +281,7 @@ final class FeedViewModel {
     }
 
     func refreshWindow() {
+        refreshCurrentSeries()
         let window = Set(windowItems())
         for ref in previews.keys where !window.contains(ref) {
             previews[ref] = nil
@@ -289,12 +310,14 @@ final class FeedViewModel {
     func dragChanged(_ t: CGSize) {
         guard customLater == nil else { return }
         machine.update(translation: Vector2(t.width, t.height))
-        lockedDirection = machine.lockedDirection
-        let ready = machine.readyToCommit ? machine.lockedDirection : nil
+        let locked = machine.lockedDirection
+        if lockedDirection != locked { lockedDirection = locked }
+        let ready = machine.readyToCommit ? locked : nil
         if let ready, ready != readyDirection { Haptics.threshold() }
-        readyDirection = ready
+        if readyDirection != ready { readyDirection = ready }
         let o = machine.displayOffset
-        offset = CGSize(width: o.dx, height: o.dy)
+        let nextOffset = CGSize(width: o.dx, height: o.dy)
+        if offset != nextOffset { offset = nextOffset }
     }
 
     func dragEnded(_ t: CGSize, velocity v: CGSize) {
@@ -395,11 +418,15 @@ final class FeedViewModel {
         }
         let target = exitOffset(intent)
         let duration = reduceMotion ? 0.01 : flyDuration(velocity)
+        let animationStarted = ProcessInfo.processInfo.systemUptime
         withAnimation(.easeOut(duration: duration)) { offset = target }
         app.player.stop()
         do {
             let out = try await app.apply(pending.command, session: session.id)
-            try? await Task.sleep(for: .seconds(duration))
+            // Persistence can overlap the exit animation. Never add the *full*
+            // animation duration on top of the actual commit latency.
+            let remaining = max(0, duration - (ProcessInfo.processInfo.systemUptime - animationStarted))
+            if remaining > 0 { try? await Task.sleep(for: .seconds(remaining)) }
             var t = Transaction()
             t.disablesAnimations = true
             withTransaction(t) {
