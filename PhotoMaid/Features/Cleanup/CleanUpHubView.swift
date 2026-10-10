@@ -43,11 +43,11 @@ struct CleanUpHubView: View {
             SectionHeader(title: L("hub_media_header"))
             RowGroup {
                 media(.photos, "photo", "cat_photos", AppColors.accent)
-                Divider().padding(.leading, 52)
+                SwiftUI.Divider().padding(.leading, 52)
                 media(.videos, "video", "cat_videos", AppColors.amber)
-                Divider().padding(.leading, 52)
+                SwiftUI.Divider().padding(.leading, 52)
                 media(.screenshots, "camera.viewfinder", "cat_screenshots", AppColors.later)
-                Divider().padding(.leading, 52)
+                SwiftUI.Divider().padding(.leading, 52)
                 link(.months, "calendar", AppColors.amber, L("months_title"), L("hub_months_sub"))
             }
         }
@@ -56,15 +56,15 @@ struct CleanUpHubView: View {
             RowGroup {
                 link(.largeFiles, "doc.badge.arrow.up", AppColors.amber, L("large_files"),
                      L("hub_large_from", SizeText.bytes(Int64(app.settings.largeFileThresholdMB) * 1_000_000)))
-                Divider().padding(.leading, 52)
+                SwiftUI.Divider().padding(.leading, 52)
                 link(.duplicates, "square.on.square", AppColors.success, L("duplicates"), L("hub_dup_sub"),
                      badge: app.capabilities.exactDuplicates ? nil : L("pro_badge"))
-                Divider().padding(.leading, 52)
+                SwiftUI.Divider().padding(.leading, 52)
                 link(.series, "square.stack.3d.forward.dottedline", AppColors.accent, L("series_title"), L("hub_series_sub"),
                      badge: app.capabilities.seriesCompare ? nil : L("pro_badge"))
-                Divider().padding(.leading, 52)
+                SwiftUI.Divider().padding(.leading, 52)
                 link(.files, "folder", AppColors.amber, L("files"), L("hub_files_sub"))
-                Divider().padding(.leading, 52)
+                SwiftUI.Divider().padding(.leading, 52)
                 link(.storage, "chart.bar", AppColors.accent, L("storage_overview"), nil)
             }
         }
@@ -73,7 +73,7 @@ struct CleanUpHubView: View {
                 SectionHeader(title: L("ana_header"))
                 RowGroup {
                     ForEach(Array(SmartReviewKind.allCases.enumerated()), id: \.element) { i, kind in
-                        if i > 0 { Divider().padding(.leading, 52) }
+                        if i > 0 { SwiftUI.Divider().padding(.leading, 52) }
                         link(.smartReview(kind), SmartReviewText.symbol(kind), AppColors.indigo, SmartReviewText.title(kind),
                              SmartReviewText.subtitle(kind), badge: app.capabilities.smartReview ? nil : L("pro_badge"))
                     }
@@ -159,7 +159,7 @@ struct CollectionsContent: View {
                 SectionHeader(title: L("col_builtin_header"))
                 RowGroup {
                     ForEach(Array(SmartCollections.builtIns.enumerated()), id: \.element.id) { i, c in
-                        if i > 0 { Divider().padding(.leading, 52) }
+                        if i > 0 { SwiftUI.Divider().padding(.leading, 52) }
                         row(c)
                     }
                 }
@@ -168,13 +168,13 @@ struct CollectionsContent: View {
                 SectionHeader(title: L("col_custom_header"))
                 RowGroup {
                     ForEach(Array(app.customCollections.enumerated()), id: \.element.id) { i, c in
-                        if i > 0 { Divider().padding(.leading, 52) }
+                        if i > 0 { SwiftUI.Divider().padding(.leading, 52) }
                         row(c)
                             .contextMenu {
                                 Button { isNew = false; editing = c } label: { Label(L("col_edit"), systemImage: "pencil") }
                             }
                     }
-                    if !app.customCollections.isEmpty { Divider().padding(.leading, 52) }
+                    if !app.customCollections.isEmpty { SwiftUI.Divider().padding(.leading, 52) }
                     Button {
                         if app.capabilities.customCollections {
                             isNew = true

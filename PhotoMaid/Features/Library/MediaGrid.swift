@@ -128,7 +128,7 @@ struct SelectionBar: View {
                     let n = app.organize.addToBasket(assets)
                     app.showToast(n > 0 ? LP("org_basket_added", n) : L("org_basket_already"))
                 } label: { Label(L("org_basket_add"), systemImage: "basket") }
-                Divider()
+                SwiftUI.Divider()
                 Button { app.navigate(.collage(draftID: nil), in: .studio); StudioHandoff.shared.ids = ids } label: {
                     Label(L("grid_collage"), systemImage: "rectangle.3.group")
                 }
@@ -139,7 +139,7 @@ struct SelectionBar: View {
                 Button { StudioHandoff.shared.ids = ids; app.navigate(.workflows, in: .studio) } label: {
                     Label(L("wf_apply"), systemImage: "wand.and.stars")
                 }
-                Divider()
+                SwiftUI.Divider()
                 Button { app.open(FeedRequest(.items(ids.map(ItemReference.photo), titleKey: "lib_feed_title"))) } label: {
                     Label(L("lib_review_from_here"), systemImage: "rectangle.stack")
                 }

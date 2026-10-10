@@ -90,7 +90,7 @@ struct MovieView: View {
         .fileImporter(isPresented: $importingMusic, allowedContentTypes: [.audio], allowsMultipleSelection: false) { result in
             guard case .success(let urls) = result, let url = urls.first else { return }
             musicURL = url
-            project.music = MusicTrack(uri: url.absoluteString, name: url.lastPathComponent)
+            project.music = PhotoMaidCore.MusicTrack(uri: url.absoluteString, name: url.lastPathComponent)
         }
         .alert(L("error_title"), isPresented: Binding(get: { errorKey != nil }, set: { if !$0 { errorKey = nil } })) {
             Button(L("ok")) { errorKey = nil }

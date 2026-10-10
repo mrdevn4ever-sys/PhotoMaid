@@ -129,7 +129,7 @@ struct TodayView: View {
                                subtitle: LP("hub_pending", continueOpen))
                     }
                     .buttonStyle(.plain)
-                    if newSince > 0 { Divider().padding(.leading, 52) }
+                    if newSince > 0 { SwiftUI.Divider().padding(.leading, 52) }
                 }
                 if newSince > 0 {
                     Button { app.open(FeedRequest(.newSince)) } label: {
@@ -148,14 +148,14 @@ struct TodayView: View {
                     NavRow(symbol: "calendar.badge.clock", tint: AppColors.later, title: LP("today_due", app.dueCount))
                 }
                 .buttonStyle(.plain)
-                Divider().padding(.leading, 52)
+                SwiftUI.Divider().padding(.leading, 52)
             }
             Button { app.navigate(.trash) } label: {
                 NavRow(symbol: "trash", tint: AppColors.cleanup, title: L("basket"), value: CountText.number(app.read.basket.count))
             }
             .buttonStyle(.plain)
             .accessibilityLabel(Text(verbatim: L("basket") + ", " + LP("items_count", app.read.basket.count)))
-            Divider().padding(.leading, 52)
+            SwiftUI.Divider().padding(.leading, 52)
             Button { app.navigate(.later) } label: {
                 NavRow(symbol: "clock", tint: AppColors.later, title: L("later"), value: CountText.number(app.read.laterRecords.count))
             }

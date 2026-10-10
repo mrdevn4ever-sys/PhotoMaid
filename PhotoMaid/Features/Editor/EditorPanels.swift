@@ -34,7 +34,7 @@ struct CropPanel: View {
                                 if model.aspect == p { Label(aspectName(p), systemImage: "checkmark") } else { Text(verbatim: aspectName(p)) }
                             }
                         }
-                        Divider()
+                        SwiftUI.Divider()
                         Button(L(model.landscape ? "edit_portrait" : "edit_landscape")) {
                             model.landscape.toggle()
                             model.applyAspect(model.aspect)

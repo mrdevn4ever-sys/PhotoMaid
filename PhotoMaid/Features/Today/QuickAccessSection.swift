@@ -19,7 +19,7 @@ struct QuickAccessSection: View {
             SectionHeader(title: L("qa_title"), actionTitle: app.quickAccess.isEmpty ? nil : L("qa_edit")) { editing = true }
             RowGroup {
                 ForEach(Array(app.quickAccess.enumerated()), id: \.element.key) { i, q in
-                    if i > 0 { Divider().padding(.leading, 52) }
+                    if i > 0 { SwiftUI.Divider().padding(.leading, 52) }
                     let st = status[q.key]
                     Button {
                         if st?.members == 0 { editing = true } else { app.open(FeedRequest(.quick(q))) }
@@ -30,7 +30,7 @@ struct QuickAccessSection: View {
                     .buttonStyle(.plain)
                 }
                 if app.quickAccess.count < QuickAccess.maxItems {
-                    if !app.quickAccess.isEmpty { Divider().padding(.leading, 52) }
+                    if !app.quickAccess.isEmpty { SwiftUI.Divider().padding(.leading, 52) }
                     Button { adding = true } label: {
                         NavRow(symbol: "plus", title: L("qa_add"), showsChevron: false)
                     }

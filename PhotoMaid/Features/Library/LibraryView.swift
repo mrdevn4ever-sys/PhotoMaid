@@ -54,7 +54,7 @@ struct LibraryView: View {
                     Button { app.fullScreen = .slideshow(ids: visible.map(\.id)) } label: {
                         Label(L("slideshow_start"), systemImage: "play.rectangle")
                     }
-                    Divider()
+                    SwiftUI.Divider()
                     Button { app.navigate(.settings) } label: { Label(L("settings"), systemImage: "gearshape") }
                 } label: {
                     Image(systemName: "ellipsis.circle")

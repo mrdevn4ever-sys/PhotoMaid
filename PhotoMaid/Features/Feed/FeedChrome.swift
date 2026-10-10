@@ -221,9 +221,9 @@ struct SessionSummaryView: View {
                 SurfaceCard {
                     VStack(spacing: AppSpacing.s) {
                         row(.up, "summary_kept", summary.kept, AppColors.keep)
-                        Divider()
+                        SwiftUI.Divider()
                         row(.left, "summary_trash", summary.marked, AppColors.cleanup)
-                        Divider()
+                        SwiftUI.Divider()
                         row(.right, "summary_later", summary.later, AppColors.later)
                     }
                 }
