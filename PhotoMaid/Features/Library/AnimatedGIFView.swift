@@ -56,10 +56,21 @@ struct AnimatedGIFView: UIViewRepresentable {
         view.scrollView.backgroundColor = .clear
         view.scrollView.isScrollEnabled = false
         view.isUserInteractionEnabled = false
-        view.load(data, mimeType: "image/gif", characterEncodingName: "utf-8",
-                  baseURL: URL(fileURLWithPath: "/"))
         return view
     }
 
-    func updateUIView(_ uiView: WKWebView, context: Context) {}
+    final class Coordinator {
+        var currentDataHash: Int?
+    }
+
+    func makeCoordinator() -> Coordinator { Coordinator() }
+
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        // SwiftUI can reuse this view for a different media item: reload its GIF.
+        let hash = data.hashValue
+        guard context.coordinator.currentDataHash != hash else { return }
+        context.coordinator.currentDataHash = hash
+        uiView.load(data, mimeType: "image/gif", characterEncodingName: "utf-8",
+                    baseURL: URL(fileURLWithPath: "/"))
+    }
 }
