@@ -68,6 +68,9 @@ final class AppModel {
     private(set) var pending: [ItemReference] = []
     private(set) var now = Date()
     private(set) var isLoadingLibrary = false
+    /// Last non-sensitive file-provider failure code, reset before each cleanup request.
+    /// Exposed only to explain failures; never contains file names or paths.
+    private(set) var lastFileCleanupFailureCode: String?
 
     var toast: ToastMessage?
     var selectedTab: AppTab = .today
@@ -392,6 +395,7 @@ final class AppModel {
     /// Je Aufruf genau EIN Anbieter: Fotos (`deleteAssets`, Systembestätigung, „Zuletzt gelöscht“) oder Dateien
     /// (endgültig, nach eigener deutlicher Bestätigung).
     func runCleanup(_ items: [ItemReference], kind: CleanupOperationKind) async -> CleanupRunResult {
+        lastFileCleanupFailureCode = nil
         cleanupInFlight = true
         defer { cleanupInFlight = false }
         let selected = items.filter { kind == .photoLibraryDelete ? $0.provider == .photoLibrary : $0.provider != .photoLibrary }
@@ -415,6 +419,9 @@ final class AppModel {
             outcome = await library.delete(ids: selected.map(\.localIdentifier))
         case .fileDeletePermanently, .fileMoveToTrash:
             outcome = FileOperations.deletePermanently(selected, sources: sources)
+            if case .failed(let reason) = outcome {
+                lastFileCleanupFailureCode = reason
+            }
         }
         do {
             let done = try await ledger.reconcile(intent.id, outcome: outcome)
