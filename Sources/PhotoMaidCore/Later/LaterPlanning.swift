@@ -79,9 +79,11 @@ public enum ReviewQueues {
             guard let r = records[item] else { return true }
             switch r.disposition {
             case .undecided: return true
-            // Kandidaten sind nur vorhandene Medien: ein entferntes Item hier wurde zurückgeholt → wieder offen.
-            case .removed: return true
-            case .kept, .markedForCleanup: return false
+            // Das Foto-Backend kann bestätigte Löschungen verzögert anzeigen.
+            // Ein entfernten Eintrag nie allein wegen der PhotoKit-Sichtbarkeit
+            // erneut als unentschieden behandeln. Wiederherstellen und neu
+            // prüfen bleibt eine ausdrückliche Nutzerentscheidung.
+            case .kept, .markedForCleanup, .removed: return false
             case .later:
                 return r.dueDay == nil && !r.bookmarked && r.skippedInSession != session
             }
