@@ -57,8 +57,11 @@ final class PreviewPipeline {
         return o
     }
 
-    /// Stufenweise Vorschau. Endet nach der vollen Qualität oder einem Fehler; Abbruch des Tasks bricht den
-    /// PhotoKit-Request (und einen laufenden iCloud-Download) ab.
+    /// Stufenweise Vorschau wie in der Fotos-App, in zwei Schritten:
+    /// 1. Nur was auf dem iPhone liegt (ohne Netz): erscheint sofort, auch wenn das Original in iCloud liegt.
+    /// 2. Fehlt die volle Qualität lokal, wird sie aus iCloud geladen (`progress`). Gelingt das nicht (offline,
+    ///    mobile Daten für Fotos aus), meldet der Strom `.failed(inCloud: true)` – die Vorschau aus Schritt 1 bleibt.
+    /// Abbruch des Tasks bricht beide PhotoKit-Requests (und einen laufenden Download) ab.
     func progressiveImage(for assetID: String, targetSize: CGSize) -> AsyncStream<PreviewUpdate> {
         AsyncStream { cont in
             guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [assetID], options: nil).firstObject else {
@@ -66,23 +69,52 @@ final class PreviewPipeline {
                 cont.finish()
                 return
             }
-            let o = progressiveOptions()
-            o.progressHandler = { @Sendable progress, _, _, _ in cont.yield(.progress(progress)) }
-            let id = manager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit,
-                                          options: o) { @Sendable image, info in
+            let requests = RequestIDs()
+            let managerBox = UncheckedBox(manager)
+            let assetBox = UncheckedBox(asset)
+            let local = PHImageRequestOptions()
+            local.isNetworkAccessAllowed = false
+            local.deliveryMode = .opportunistic
+            local.resizeMode = .fast
+            local.version = .current
+            let first = manager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit,
+                                             options: local) { @Sendable image, info in
                 let degraded = (info?[PHImageResultIsDegradedKey] as? Bool) ?? false
                 if let image {
                     cont.yield(.image(image, isFinal: !degraded))
                     if !degraded { cont.finish() }
                     return
                 }
+                if degraded { return }
                 if (info?[PHImageCancelledKey] as? Bool) == true { cont.finish(); return }
-                let inCloud = (info?[PHImageResultIsInCloudKey] as? Bool) ?? false
-                cont.yield(.failed(inCloud: inCloud))
-                cont.finish()
+                guard (info?[PHImageResultIsInCloudKey] as? Bool) == true else {
+                    cont.yield(.failed(inCloud: false))
+                    cont.finish()
+                    return
+                }
+                // Schritt 2: volle Qualität aus iCloud.
+                let remote = PHImageRequestOptions()
+                remote.isNetworkAccessAllowed = true
+                remote.deliveryMode = .highQualityFormat // genau ein Callback
+                remote.resizeMode = .fast
+                remote.version = .current
+                remote.progressHandler = { @Sendable progress, _, _, _ in cont.yield(.progress(progress)) }
+                cont.yield(.progress(0))
+                let second = managerBox.value.requestImage(for: assetBox.value, targetSize: targetSize,
+                                                           contentMode: .aspectFit, options: remote) { @Sendable image, info in
+                    if let image {
+                        cont.yield(.image(image, isFinal: true))
+                    } else if (info?[PHImageCancelledKey] as? Bool) != true {
+                        cont.yield(.failed(inCloud: true))
+                    }
+                    cont.finish()
+                }
+                requests.add(second) { managerBox.value.cancelImageRequest($0) }
             }
-            let managerBox = UncheckedBox(manager)
-            cont.onTermination = { @Sendable _ in managerBox.value.cancelImageRequest(id) }
+            requests.add(first) { managerBox.value.cancelImageRequest($0) }
+            cont.onTermination = { @Sendable _ in
+                for id in requests.terminate() { managerBox.value.cancelImageRequest(id) }
+            }
         }
     }
 
@@ -163,4 +195,28 @@ private final class RequestBox: @unchecked Sendable {
     private var _id: PHImageRequestID?
     var id: PHImageRequestID? { lock.withLock { _id } }
     func set(_ id: PHImageRequestID) { lock.withLock { _id = id } }
+}
+
+/// Laufende Requests eines Vorschau-Stroms. Nach dem Ende hinzugekommene werden sofort abgebrochen.
+private final class RequestIDs: @unchecked Sendable {
+    private let lock = NSLock()
+    private var ids: [PHImageRequestID] = []
+    private var terminated = false
+
+    func add(_ id: PHImageRequestID, cancel: (PHImageRequestID) -> Void) {
+        let late = lock.withLock { () -> Bool in
+            if terminated { return true }
+            ids.append(id)
+            return false
+        }
+        if late { cancel(id) }
+    }
+
+    func terminate() -> [PHImageRequestID] {
+        lock.withLock {
+            terminated = true
+            defer { ids = [] }
+            return ids
+        }
+    }
 }

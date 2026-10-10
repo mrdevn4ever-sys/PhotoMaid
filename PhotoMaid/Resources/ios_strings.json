@@ -1369,6 +1369,24 @@
   "uk": "Оригінал зберігається в iCloud.",
   "zh-Hans": "原件存储在 iCloud 中。"
  },
+ "feed_icloud_retry_hint": {
+  "ar": "يعيد تحميل الجودة الكاملة من iCloud. يمكنك اتخاذ القرار بالمعاينة في أي وقت.",
+  "de": "Lädt die volle Qualität erneut aus iCloud. Entscheiden kannst du jederzeit mit der Vorschau.",
+  "en": "Loads the full quality from iCloud again. You can decide with the preview at any time.",
+  "es": "Vuelve a cargar la calidad completa desde iCloud. Puedes decidir con la vista previa en cualquier momento.",
+  "fr": "Recharge la qualité maximale depuis iCloud. Tu peux décider avec l’aperçu à tout moment.",
+  "it": "Ricarica la qualità piena da iCloud. Puoi decidere con l’anteprima in qualsiasi momento.",
+  "ja": "iCloudからフル画質をもう一度読み込みます。プレビューのままいつでも判断できます。",
+  "ko": "iCloud에서 원본 화질을 다시 불러와요. 미리보기로 언제든 결정할 수 있어요.",
+  "nl": "Laadt de volledige kwaliteit opnieuw uit iCloud. Je kunt altijd met de voorvertoning beslissen.",
+  "pl": "Ponownie wczytuje pełną jakość z iCloud. Możesz zdecydować na podstawie podglądu w każdej chwili.",
+  "pt-PT": "Volta a carregar a qualidade total do iCloud. Podes decidir com a pré-visualização a qualquer momento.",
+  "ro": "Reîncarcă la calitate maximă din iCloud. Poți decide oricând pe baza previzualizării.",
+  "ru": "Снова загружает полное качество из iCloud. Решать можно в любой момент по превью.",
+  "tr": "Tam kaliteyi iCloud’dan yeniden yükler. Önizlemeyle istediğin zaman karar verebilirsin.",
+  "uk": "Знову завантажує повну якість з iCloud. Вирішувати можна будь-коли за попереднім переглядом.",
+  "zh-Hans": "重新从 iCloud 载入完整画质。你随时都可以根据预览做决定。"
+ },
  "folder_action": {
   "ar": "إضافة إلى ألبوم",
   "de": "Zu Album hinzufügen",

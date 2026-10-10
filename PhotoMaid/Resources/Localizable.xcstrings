@@ -68642,6 +68642,107 @@
         }
       }
     },
+    "feed_icloud_retry_hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يعيد تحميل الجودة الكاملة من iCloud. يمكنك اتخاذ القرار بالمعاينة في أي وقت."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lädt die volle Qualität erneut aus iCloud. Entscheiden kannst du jederzeit mit der Vorschau."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loads the full quality from iCloud again. You can decide with the preview at any time."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vuelve a cargar la calidad completa desde iCloud. Puedes decidir con la vista previa en cualquier momento."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recharge la qualité maximale depuis iCloud. Tu peux décider avec l’aperçu à tout moment."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ricarica la qualità piena da iCloud. Puoi decidere con l’anteprima in qualsiasi momento."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloudからフル画質をもう一度読み込みます。プレビューのままいつでも判断できます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud에서 원본 화질을 다시 불러와요. 미리보기로 언제든 결정할 수 있어요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Laadt de volledige kwaliteit opnieuw uit iCloud. Je kunt altijd met de voorvertoning beslissen."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ponownie wczytuje pełną jakość z iCloud. Możesz zdecydować na podstawie podglądu w każdej chwili."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Volta a carregar a qualidade total do iCloud. Podes decidir com a pré-visualização a qualquer momento."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reîncarcă la calitate maximă din iCloud. Poți decide oricând pe baza previzualizării."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Снова загружает полное качество из iCloud. Решать можно в любой момент по превью."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tam kaliteyi iCloud’dan yeniden yükler. Önizlemeyle istediğin zaman karar verebilirsin."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Знову завантажує повну якість з iCloud. Вирішувати можна будь-коли за попереднім переглядом."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新从 iCloud 载入完整画质。你随时都可以根据预览做决定。"
+          }
+        }
+      }
+    },
     "feed_loading": {
       "extractionState": "manual",
       "localizations": {

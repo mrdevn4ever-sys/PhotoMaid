@@ -25,6 +25,10 @@ struct FeedMediaPage: View {
     /// Nichts ließ sich anzeigen und das Original liegt in iCloud (z. B. ohne Netz).
     @State private var cloudFailed = false
     @State private var videoFailed = false
+    /// Vorschau sichtbar, volle Qualität aus iCloud aber nicht geladen: „!“ unten rechts wie in der Fotos-App.
+    @State private var qualityFailed = false
+    /// Erneuter Versuch über „!“ (ändert nichts am Prüfstand, die Vorschau bleibt stehen).
+    @State private var reload = 0
 
     var body: some View {
         GeometryReader { geo in
@@ -50,7 +54,7 @@ struct FeedMediaPage: View {
                 default:
                     EmptyView()
                 }
-                if isTop, image != nil, downloadProgress != nil || videoLoading { loadingBadge }
+                if isTop, image != nil { cloudBadge }
             }
             .clipShape(.rect(cornerRadius: AppRadii.card))
             .overlay {
@@ -58,8 +62,8 @@ struct FeedMediaPage: View {
                     RoundedRectangle(cornerRadius: AppRadii.card).strokeBorder(intentColor, lineWidth: 3)
                 }
             }
-            .task(id: "\(asset.id)-\(retry)") { await load(size: geo.size) }
-            .task(id: "\(asset.id)-\(isTop)-\(state == .ready)") { await startVideoIfNeeded() }
+            .task(id: "\(asset.id)-\(retry)-\(reload)") { await load(size: geo.size) }
+            .task(id: "\(asset.id)-\(isTop)-\(state == .ready)-\(reload)") { await startVideoIfNeeded() }
         }
     }
 
@@ -88,56 +92,52 @@ struct FeedMediaPage: View {
         .accessibilityElement(children: .contain)
     }
 
-    /// Kleine Anzeige oben rechts, solange die volle Qualität oder das Video aus iCloud kommt (wie in der Fotos-App).
-    private var loadingBadge: some View {
-        VStack {
-            HStack {
-                Spacer()
-                HStack(spacing: 6) {
-                    Image(systemName: "icloud.and.arrow.down")
-                    if let downloadProgress {
-                        Text(verbatim: downloadProgress.formatted(.percent.precision(.fractionLength(0))))
-                            .monospacedDigit()
-                    } else {
-                        ProgressView().controlSize(.small).tint(.white)
-                    }
-                }
-                .font(AppTypography.caption.weight(.semibold))
-                .foregroundStyle(.white)
-                .padding(.horizontal, AppSpacing.s)
-                .padding(.vertical, 6)
-                .glassCapsule()
-                .accessibilityElement(children: .ignore)
-                .accessibilityLabel(Text(key: "feed_loading"))
-                .padding(AppSpacing.s)
+    /// Unten rechts wie in der Fotos-App: Fortschritt, solange die volle Qualität oder das Video aus iCloud kommt;
+    /// „!“, wenn das nicht geklappt hat (offline, mobile Daten für Fotos aus) – Tippen lädt erneut. Entschieden
+    /// werden kann die ganze Zeit mit der sichtbaren Vorschau.
+    @ViewBuilder
+    private var cloudBadge: some View {
+        Group {
+            if downloadProgress != nil || videoLoading {
+                CloudProgressBadge(progress: downloadProgress)
+                    .allowsHitTesting(false)
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel(Text(key: "feed_loading"))
+            } else if qualityFailed || videoFailed {
+                CloudRetryBadge { reload += 1 }
             }
-            Spacer()
         }
-        .allowsHitTesting(false)
+        .padding(AppSpacing.s)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+        .environment(\.layoutDirection, .leftToRight)
     }
 
-    /// Wie die Fotos-App: sofort die schnelle (ggf. unscharfe) Fassung zeigen – Entscheiden ist damit möglich –,
-    /// danach automatisch die volle Qualität, bei Bedarf aus iCloud.
+    /// Wie die Fotos-App: sofort die Vorschau, die auf dem iPhone liegt – Entscheiden ist damit möglich –, danach
+    /// automatisch die volle Qualität aus iCloud. Klappt das nicht, bleibt die Vorschau und unten rechts steht „!“.
     private func load(size: CGSize) async {
         let target = PreviewPipeline.targetSize(for: size, scale: scale)
         cloudFailed = false
+        qualityFailed = false
+        videoFailed = false
         var shown = false
         defer { downloadProgress = nil }
         for await update in app.previews.progressiveImage(for: asset.id, targetSize: target) {
             switch update {
-            case .image(let img, _):
+            case .image(let img, let isFinal):
                 image = img
+                if isFinal { downloadProgress = nil }
                 if !shown { shown = true; onResult(true) }
             case .progress(let p):
                 downloadProgress = p < 1 ? p : nil
             case .failed(let inCloud):
-                cloudFailed = inCloud && !shown
+                if shown { qualityFailed = inCloud } else { cloudFailed = inCloud }
             }
         }
         guard !shown, !Task.isCancelled else { return }
-        // Kam gar nichts an (z. B. ohne Netz): wenigstens die kleine Vorschau zeigen.
+        // Kam gar nichts an: wenigstens die kleine Vorschau zeigen (wie die Fotos-App), „!“ lädt das Original.
         if let thumb = await ThumbnailLoader.shared.image(asset.id, size: CGSize(width: 600, height: 600)) {
             image = thumb
+            qualityFailed = cloudFailed
             onResult(true)
         } else {
             onResult(false)
@@ -190,5 +190,47 @@ struct FeedVideoControls: View {
         .glassCapsule()
         .environment(\.layoutDirection, .leftToRight) // Zeitleisten werden in RTL nicht gespiegelt
         .opacity(app.player.itemID == asset.id ? 1 : 0)
+    }
+}
+
+/// Kleiner Kreis mit Ladefortschritt (wie in der Fotos-App unten rechts).
+struct CloudProgressBadge: View {
+    let progress: Double?
+
+    var body: some View {
+        ZStack {
+            if let progress {
+                Circle().stroke(.white.opacity(0.3), lineWidth: 2.5)
+                Circle().trim(from: 0, to: max(0.03, progress))
+                    .stroke(.white, style: StrokeStyle(lineWidth: 2.5, lineCap: .round))
+                    .rotationEffect(.degrees(-90))
+            } else {
+                ProgressView().controlSize(.small).tint(.white)
+            }
+        }
+        .frame(width: 18, height: 18)
+        .padding(9)
+        .background(.black.opacity(0.35), in: .circle)
+    }
+}
+
+/// „!“ unten rechts: volle Qualität aus iCloud ließ sich nicht laden. Tippen versucht es erneut. Nie eine Entscheidung.
+struct CloudRetryBadge: View {
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            Image(systemName: "exclamationmark")
+                .font(.system(size: 15, weight: .bold))
+                .foregroundStyle(.white)
+                .frame(width: 30, height: 30)
+                .background(.black.opacity(0.35), in: .circle)
+                .overlay(Circle().strokeBorder(.white.opacity(0.9), lineWidth: 1.5))
+                .frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch)
+                .contentShape(.circle)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(Text(key: "feed_icloud_load"))
+        .accessibilityHint(Text(key: "feed_icloud_retry_hint"))
     }
 }

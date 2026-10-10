@@ -163,6 +163,9 @@ struct ViewerPage: View {
     /// Volle Qualität oder Video kommt noch (ggf. aus iCloud); `downloadProgress` nur bei iCloud-Fotos.
     @State private var loading = false
     @State private var downloadProgress: Double?
+    /// Vorschau sichtbar, volle Qualität bzw. Video aus iCloud nicht geladen: „!“ unten rechts, Tippen lädt erneut.
+    @State private var cloudFailed = false
+    @State private var reload = 0
 
     var body: some View {
         GeometryReader { geo in
@@ -191,31 +194,24 @@ struct ViewerPage: View {
                 } else {
                     ProgressView().tint(.white)
                 }
-                if loading && image != nil && player == nil {
-                    VStack {
-                        Spacer()
-                        HStack(spacing: 6) {
-                            Image(systemName: "icloud.and.arrow.down")
-                            if let downloadProgress {
-                                Text(verbatim: downloadProgress.formatted(.percent.precision(.fractionLength(0))))
-                                    .monospacedDigit()
-                            } else {
-                                ProgressView().controlSize(.small).tint(.white)
-                            }
+                if image != nil && player == nil && (loading || cloudFailed) {
+                    Group {
+                        if cloudFailed && !loading {
+                            CloudRetryBadge { reload += 1 }
+                        } else {
+                            CloudProgressBadge(progress: downloadProgress)
+                                .allowsHitTesting(false)
+                                .accessibilityElement(children: .ignore)
+                                .accessibilityLabel(Text(key: "feed_loading"))
                         }
-                        .font(AppTypography.caption.weight(.semibold))
-                        .foregroundStyle(.white)
-                        .padding(.horizontal, AppSpacing.s)
-                        .padding(.vertical, 6)
-                        .glassCapsule()
-                        .accessibilityElement(children: .ignore)
-                        .accessibilityLabel(Text(key: "feed_loading"))
-                        .padding(.bottom, 120)
                     }
-                    .allowsHitTesting(false)
+                    .padding(.trailing, AppSpacing.m)
+                    .padding(.bottom, 120)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                    .environment(\.layoutDirection, .leftToRight)
                 }
             }
-            .task(id: assetID) { await load(geo.size) }
+            .task(id: "\(assetID)-\(reload)") { await load(geo.size) }
             .onChange(of: isCurrent) { _, cur in
                 if !cur { player?.pause(); reset() }
             }
@@ -226,15 +222,18 @@ struct ViewerPage: View {
         zoom = 1; zoomBase = 1; pan = .zero; panBase = .zero; zoomed = false
     }
 
-    /// Wie die Fotos-App: sofort eine Vorschau, danach volle Qualität bzw. das Video – bei Bedarf aus iCloud.
+    /// Wie die Fotos-App: sofort die Vorschau vom iPhone, danach volle Qualität bzw. das Video aus iCloud. Klappt das
+    /// nicht, bleibt die Vorschau stehen und unten rechts erscheint „!“.
     private func load(_ size: CGSize) async {
         guard let a = app.asset(assetID) else { return }
         loading = true
+        cloudFailed = false
         defer { loading = false; downloadProgress = nil }
         if a.isVideo {
-            image = await ThumbnailLoader.shared.image(assetID, size: CGSize(width: 800, height: 800))
-            if case .item(let box) = await app.previews.playerItem(for: assetID) {
-                player = AVPlayer(playerItem: box.value)
+            if image == nil { image = await ThumbnailLoader.shared.image(assetID, size: CGSize(width: 800, height: 800)) }
+            switch await app.previews.playerItem(for: assetID) {
+            case .item(let box): player = AVPlayer(playerItem: box.value)
+            case .notLocallyAvailable, .failed: cloudFailed = !Task.isCancelled
             }
             return
         }
@@ -243,11 +242,12 @@ struct ViewerPage: View {
             switch update {
             case .image(let img, _): image = img
             case .progress(let p): downloadProgress = p < 1 ? p : nil
-            case .failed: break
+            case .failed(let inCloud): cloudFailed = inCloud
             }
         }
         if image == nil, !Task.isCancelled {
             image = await ThumbnailLoader.shared.image(assetID, size: CGSize(width: 800, height: 800))
+            cloudFailed = image != nil
         }
     }
 }
