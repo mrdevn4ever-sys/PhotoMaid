@@ -160,7 +160,9 @@ struct ViewerPage: View {
     @State private var zoomBase: CGFloat = 1
     @State private var pan: CGSize = .zero
     @State private var panBase: CGSize = .zero
-    @State private var cloudOnly = false
+    /// Volle Qualität oder Video kommt noch (ggf. aus iCloud); `downloadProgress` nur bei iCloud-Fotos.
+    @State private var loading = false
+    @State private var downloadProgress: Double?
 
     var body: some View {
         GeometryReader { geo in
@@ -189,15 +191,28 @@ struct ViewerPage: View {
                 } else {
                     ProgressView().tint(.white)
                 }
-                if cloudOnly && player == nil {
+                if loading && image != nil && player == nil {
                     VStack {
                         Spacer()
-                        Button { Task { await loadCloud(geo.size) } } label: {
-                            Label(L("feed_icloud_load"), systemImage: "icloud.and.arrow.down")
+                        HStack(spacing: 6) {
+                            Image(systemName: "icloud.and.arrow.down")
+                            if let downloadProgress {
+                                Text(verbatim: downloadProgress.formatted(.percent.precision(.fractionLength(0))))
+                                    .monospacedDigit()
+                            } else {
+                                ProgressView().controlSize(.small).tint(.white)
+                            }
                         }
-                        .buttonStyle(.glass)
+                        .font(AppTypography.caption.weight(.semibold))
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, AppSpacing.s)
+                        .padding(.vertical, 6)
+                        .glassCapsule()
+                        .accessibilityElement(children: .ignore)
+                        .accessibilityLabel(Text(key: "feed_loading"))
                         .padding(.bottom, 120)
                     }
+                    .allowsHitTesting(false)
                 }
             }
             .task(id: assetID) { await load(geo.size) }
@@ -211,41 +226,28 @@ struct ViewerPage: View {
         zoom = 1; zoomBase = 1; pan = .zero; panBase = .zero; zoomed = false
     }
 
+    /// Wie die Fotos-App: sofort eine Vorschau, danach volle Qualität bzw. das Video – bei Bedarf aus iCloud.
     private func load(_ size: CGSize) async {
         guard let a = app.asset(assetID) else { return }
+        loading = true
+        defer { loading = false; downloadProgress = nil }
         if a.isVideo {
+            image = await ThumbnailLoader.shared.image(assetID, size: CGSize(width: 800, height: 800))
             if case .item(let box) = await app.previews.playerItem(for: assetID) {
                 player = AVPlayer(playerItem: box.value)
-            } else {
-                cloudOnly = true
-                image = await ThumbnailLoader.shared.image(assetID, size: CGSize(width: 800, height: 800))
             }
             return
         }
         let target = PreviewPipeline.targetSize(for: CGSize(width: size.width * 2, height: size.height * 2), scale: scale)
-        switch await app.previews.image(for: assetID, targetSize: target) {
-        case .image(let img): image = img
-        case .notLocallyAvailable:
-            cloudOnly = true
-            image = await ThumbnailLoader.shared.image(assetID, size: CGSize(width: 800, height: 800))
-        case .failed:
-            image = await ThumbnailLoader.shared.image(assetID, size: CGSize(width: 800, height: 800))
+        for await update in app.previews.progressiveImage(for: assetID, targetSize: target) {
+            switch update {
+            case .image(let img, _): image = img
+            case .progress(let p): downloadProgress = p < 1 ? p : nil
+            case .failed: break
+            }
         }
-    }
-
-    private func loadCloud(_ size: CGSize) async {
-        guard let a = app.asset(assetID) else { return }
-        if a.isVideo {
-            if case .item(let box) = await app.previews.playerItem(for: assetID, allowNetwork: true) {
-                player = AVPlayer(playerItem: box.value)
-                cloudOnly = false
-            }
-        } else {
-            let target = PreviewPipeline.targetSize(for: CGSize(width: size.width * 2, height: size.height * 2), scale: scale)
-            if case .image(let img) = await app.previews.image(for: assetID, targetSize: target, allowNetwork: true) {
-                image = img
-                cloudOnly = false
-            }
+        if image == nil, !Task.isCancelled {
+            image = await ThumbnailLoader.shared.image(assetID, size: CGSize(width: 800, height: 800))
         }
     }
 }

@@ -155,7 +155,7 @@ final class EditorModel {
 
     // MARK: Laden
 
-    func load(app: AppModel, allowNetwork: Bool = false) async {
+    func load(app: AppModel, allowNetwork: Bool = true) async {
         loadState = .loading
         asset = app.asset(assetID)
         guard let ph = PhotoLibraryService.phAsset(assetID) else { loadState = .failed; return }

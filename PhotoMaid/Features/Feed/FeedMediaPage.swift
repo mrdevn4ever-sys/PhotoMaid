@@ -18,9 +18,12 @@ struct FeedMediaPage: View {
     let onSkip: () -> Void
 
     @State private var image: UIImage?
-    /// Nur eine kleine Vorschau liegt auf dem iPhone; das Original ist in iCloud.
-    @State private var cloudOnly = false
-    @State private var loadingCloud = false
+    /// Volle Qualität kommt gerade aus iCloud (0…1); die schnelle Vorschau ist schon sichtbar.
+    @State private var downloadProgress: Double?
+    /// Video wird vorbereitet (bei iCloud-Videos gestreamt).
+    @State private var videoLoading = false
+    /// Nichts ließ sich anzeigen und das Original liegt in iCloud (z. B. ohne Netz).
+    @State private var cloudFailed = false
     @State private var videoFailed = false
 
     var body: some View {
@@ -47,7 +50,7 @@ struct FeedMediaPage: View {
                 default:
                     EmptyView()
                 }
-                if isTop && cloudOnly && state == .ready { cloudBadge }
+                if isTop, image != nil, downloadProgress != nil || videoLoading { loadingBadge }
             }
             .clipShape(.rect(cornerRadius: AppRadii.card))
             .overlay {
@@ -64,16 +67,15 @@ struct FeedMediaPage: View {
         VStack(spacing: AppSpacing.s) {
             Image(systemName: "exclamationmark.triangle").font(.largeTitle).foregroundStyle(.white.opacity(0.8))
                 .accessibilityHidden(true)
-            Text(key: cloudOnly ? "feed_icloud_only" : "preview_failed")
+            Text(key: cloudFailed ? "feed_icloud_only" : "preview_failed")
                 .font(AppTypography.headline).foregroundStyle(.white).multilineTextAlignment(.center)
-            Text(key: cloudOnly ? "feed_icloud_hint" : "preview_failed_hint")
+            Text(key: cloudFailed ? "feed_icloud_hint" : "preview_failed_hint")
                 .font(AppTypography.footnote).foregroundStyle(.white.opacity(0.75)).multilineTextAlignment(.center)
             if isTop {
                 GlassEffectContainer(spacing: AppSpacing.xs) {
                     HStack(spacing: AppSpacing.xs) {
-                        if cloudOnly {
-                            Button { Task { await loadFromCloud() } } label: { Text(key: "feed_icloud_load") }
-                                .buttonStyle(.glassProminent).disabled(loadingCloud)
+                        if cloudFailed {
+                            Button(action: onRetry) { Text(key: "feed_icloud_load") }.buttonStyle(.glassProminent)
                         } else {
                             Button(action: onRetry) { Text(key: "retry") }.buttonStyle(.glass)
                         }
@@ -86,83 +88,73 @@ struct FeedMediaPage: View {
         .accessibilityElement(children: .contain)
     }
 
-    private var cloudBadge: some View {
+    /// Kleine Anzeige oben rechts, solange die volle Qualität oder das Video aus iCloud kommt (wie in der Fotos-App).
+    private var loadingBadge: some View {
         VStack {
             HStack {
                 Spacer()
-                Button { Task { await loadFromCloud() } } label: {
-                    HStack(spacing: 4) {
-                        if loadingCloud { ProgressView().controlSize(.small) } else { Image(systemName: "icloud.and.arrow.down") }
-                        Text(key: "feed_icloud_load").font(AppTypography.caption.weight(.semibold))
+                HStack(spacing: 6) {
+                    Image(systemName: "icloud.and.arrow.down")
+                    if let downloadProgress {
+                        Text(verbatim: downloadProgress.formatted(.percent.precision(.fractionLength(0))))
+                            .monospacedDigit()
+                    } else {
+                        ProgressView().controlSize(.small).tint(.white)
                     }
-                    .padding(.horizontal, AppSpacing.s)
-                    .frame(minHeight: AppSpacing.minTouch)
                 }
-                .buttonStyle(.plain)
+                .font(AppTypography.caption.weight(.semibold))
                 .foregroundStyle(.white)
-                .glassCapsule(interactive: true)
-                .disabled(loadingCloud)
+                .padding(.horizontal, AppSpacing.s)
+                .padding(.vertical, 6)
+                .glassCapsule()
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel(Text(key: "feed_loading"))
                 .padding(AppSpacing.s)
             }
             Spacer()
         }
+        .allowsHitTesting(false)
     }
 
+    /// Wie die Fotos-App: sofort die schnelle (ggf. unscharfe) Fassung zeigen – Entscheiden ist damit möglich –,
+    /// danach automatisch die volle Qualität, bei Bedarf aus iCloud.
     private func load(size: CGSize) async {
         let target = PreviewPipeline.targetSize(for: size, scale: scale)
-        switch await app.previews.image(for: asset.id, targetSize: target) {
-        case .image(let img):
-            image = img
-            cloudOnly = false
+        cloudFailed = false
+        var shown = false
+        defer { downloadProgress = nil }
+        for await update in app.previews.progressiveImage(for: asset.id, targetSize: target) {
+            switch update {
+            case .image(let img, _):
+                image = img
+                if !shown { shown = true; onResult(true) }
+            case .progress(let p):
+                downloadProgress = p < 1 ? p : nil
+            case .failed(let inCloud):
+                cloudFailed = inCloud && !shown
+            }
+        }
+        guard !shown, !Task.isCancelled else { return }
+        // Kam gar nichts an (z. B. ohne Netz): wenigstens die kleine Vorschau zeigen.
+        if let thumb = await ThumbnailLoader.shared.image(asset.id, size: CGSize(width: 600, height: 600)) {
+            image = thumb
             onResult(true)
-        case .notLocallyAvailable:
-            cloudOnly = true
-            // Kleine lokale Vorschau zeigt das Medium ehrlich (Entscheiden möglich); Original nur auf Tipp aus iCloud.
-            if let thumb = await ThumbnailLoader.shared.image(asset.id, size: CGSize(width: 600, height: 600)) {
-                image = thumb
-                onResult(true)
-            } else {
-                onResult(false)
-            }
-        case .failed:
-            if asset.isVideo, let thumb = await ThumbnailLoader.shared.image(asset.id, size: CGSize(width: 600, height: 600)) {
-                image = thumb
-                onResult(true)
-            } else {
-                onResult(false)
-            }
+        } else {
+            onResult(false)
         }
     }
 
-    /// Ausdrücklicher Tipp: Original aus iCloud laden (PhotoKit, nur Download aus der eigenen Mediathek).
-    private func loadFromCloud() async {
-        loadingCloud = true
-        defer { loadingCloud = false }
-        if asset.isVideo {
-            if case .item(let box) = await app.previews.playerItem(for: asset.id, allowNetwork: true) {
-                cloudOnly = false
-                app.player.load(itemID: asset.id, item: box.value, autoplay: true, duration: asset.duration)
-            }
-            return
-        }
-        let target = PreviewPipeline.targetSize(for: CGSize(width: 1200, height: 1600), scale: scale)
-        if case .image(let img) = await app.previews.image(for: asset.id, targetSize: target, allowNetwork: true) {
-            image = img
-            cloudOnly = false
-            onResult(true)
-        }
-    }
-
-    /// Video des obersten Mediums laden (stumm, ohne Netzwerk). Videoende bleibt beim Medium – keine Entscheidung.
+    /// Video des obersten Mediums laden (stumm; iCloud-Videos werden gestreamt). Videoende bleibt beim Medium –
+    /// keine Entscheidung.
     private func startVideoIfNeeded() async {
         guard isTop, asset.isVideo, state == .ready, app.player.itemID != asset.id else { return }
+        videoLoading = true
+        defer { videoLoading = false }
         switch await app.previews.playerItem(for: asset.id) {
         case .item(let box):
             guard isTop else { return }
             app.player.load(itemID: asset.id, item: box.value, autoplay: true, duration: asset.duration)
-        case .notLocallyAvailable:
-            cloudOnly = true
-        case .failed:
+        case .notLocallyAvailable, .failed:
             videoFailed = true
         }
     }

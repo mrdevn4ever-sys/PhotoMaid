@@ -73873,97 +73873,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "قد تزامن خدمات سحابية مثل صور Google عمليات الحذف مع أجهزة أخرى. راجع إعداداتها. لا ينزّل PhotoMaid المحتوى الموجود في السحابة فقط."
+            "value": "قد تزامن خدمات سحابية مثل صور Google عمليات الحذف مع أجهزة أخرى. راجع إعداداتها. يحمّل PhotoMaid الصور والفيديوهات من صور iCloud تلقائيًا عند الحاجة، تمامًا مثل تطبيق الصور."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cloud-Dienste wie Google Fotos können Löschungen auf andere Geräte übertragen. Prüfe dazu ihre Einstellungen. Inhalte, die nur in der Cloud liegen, lädt PhotoMaid nicht herunter."
+            "value": "Cloud-Dienste wie Google Fotos können Löschungen auf andere Geräte übertragen. Prüfe dazu ihre Einstellungen. Fotos und Videos aus iCloud-Fotos lädt PhotoMaid bei Bedarf automatisch – wie die Fotos-App."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cloud services such as Google Photos may sync deletions to other devices. Check their settings. PhotoMaid doesn’t download content stored only in the cloud."
+            "value": "Cloud services such as Google Photos may sync deletions to other devices. Check their settings. PhotoMaid loads photos and videos from iCloud Photos automatically when needed, just like the Photos app."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Los servicios en la nube, como Google Fotos, pueden sincronizar los borrados con otros dispositivos. Revisa sus ajustes. PhotoMaid no descarga contenido que solo está en la nube."
+            "value": "Los servicios en la nube, como Google Fotos, pueden sincronizar los borrados con otros dispositivos. Revisa sus ajustes. PhotoMaid carga automáticamente las fotos y los vídeos de Fotos de iCloud cuando hace falta, igual que la app Fotos."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Les services cloud comme Google Photos peuvent répercuter les suppressions sur d’autres appareils. Vérifie leurs paramètres. PhotoMaid ne télécharge pas le contenu stocké uniquement dans le cloud."
+            "value": "Les services cloud comme Google Photos peuvent répercuter les suppressions sur d’autres appareils. Vérifie leurs paramètres. PhotoMaid charge automatiquement les photos et vidéos de Photos iCloud si nécessaire, comme l’app Photos."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "I servizi cloud, come Google Foto, possono sincronizzare le eliminazioni con altri dispositivi. Controlla le loro impostazioni. PhotoMaid non scarica contenuti presenti solo nel cloud."
+            "value": "I servizi cloud, come Google Foto, possono sincronizzare le eliminazioni con altri dispositivi. Controlla le loro impostazioni. PhotoMaid carica automaticamente foto e video da Foto di iCloud quando serve, proprio come l’app Foto."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Google フォトなどのクラウドサービスでは、削除が他の端末に同期される場合があります。各サービスの設定を確認してください。PhotoMaidはクラウドにしかないデータをダウンロードしません。"
+            "value": "Google フォトなどのクラウドサービスでは、削除が他の端末に同期される場合があります。各サービスの設定を確認してください。PhotoMaidは写真アプリと同じように、必要に応じてiCloud写真の写真やビデオを自動的に読み込みます。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Google 포토 같은 클라우드 서비스가 삭제 내용을 다른 기기에 동기화할 수 있어요. 각 서비스의 설정을 확인하세요. PhotoMaid는 클라우드에만 있는 콘텐츠를 다운로드하지 않아요."
+            "value": "Google 포토 같은 클라우드 서비스가 삭제 내용을 다른 기기에 동기화할 수 있어요. 각 서비스의 설정을 확인하세요. PhotoMaid는 사진 앱처럼 필요할 때 iCloud 사진의 사진과 동영상을 자동으로 불러와요."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Clouddiensten zoals Google Foto’s kunnen verwijderingen synchroniseren met andere apparaten. Controleer hun instellingen. PhotoMaid downloadt geen inhoud die alleen in de cloud staat."
+            "value": "Clouddiensten zoals Google Foto’s kunnen verwijderingen synchroniseren met andere apparaten. Controleer hun instellingen. PhotoMaid laadt foto’s en video’s uit iCloud-foto’s automatisch wanneer nodig, net als de Foto’s-app."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Usługi chmurowe, takie jak Zdjęcia Google, mogą synchronizować usunięcia z innymi urządzeniami. Sprawdź ich ustawienia. PhotoMaid nie pobiera treści zapisanych wyłącznie w chmurze."
+            "value": "Usługi chmurowe, takie jak Zdjęcia Google, mogą synchronizować usunięcia z innymi urządzeniami. Sprawdź ich ustawienia. PhotoMaid w razie potrzeby automatycznie wczytuje zdjęcia i filmy ze Zdjęć iCloud – tak jak aplikacja Zdjęcia."
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Serviços na nuvem, como o Google Fotos, podem sincronizar eliminações com outros dispositivos. Verifica as respetivas definições. O PhotoMaid não transfere conteúdo que exista apenas na nuvem."
+            "value": "Serviços na nuvem, como o Google Fotos, podem sincronizar eliminações com outros dispositivos. Verifica as respetivas definições. O PhotoMaid carrega automaticamente fotografias e vídeos das Fotografias em iCloud quando necessário, tal como a app Fotografias."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Serviciile cloud precum Google Foto pot sincroniza ștergerile cu alte dispozitive. Verifică-le setările. PhotoMaid nu descarcă elemente aflate doar în cloud."
+            "value": "Serviciile cloud precum Google Foto pot sincroniza ștergerile cu alte dispozitive. Verifică-le setările. PhotoMaid încarcă automat, la nevoie, fotografiile și videoclipurile din Poze iCloud, la fel ca aplicația Poze."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Облачные сервисы, например Google Фото, могут синхронизировать удаления с другими устройствами. Проверь их настройки. PhotoMaid не загружает содержимое, которое есть только в облаке."
+            "value": "Облачные сервисы, например Google Фото, могут синхронизировать удаления с другими устройствами. Проверь их настройки. При необходимости PhotoMaid автоматически загружает фото и видео из Фото iCloud — как приложение «Фото»."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Google Fotoğraflar gibi bulut hizmetleri silme işlemlerini diğer cihazlarla eşitleyebilir. Ayarlarını kontrol et. PhotoMaid yalnızca bulutta bulunan içerikleri indirmez."
+            "value": "Google Fotoğraflar gibi bulut hizmetleri silme işlemlerini diğer cihazlarla eşitleyebilir. Ayarlarını kontrol et. PhotoMaid, Fotoğraflar uygulaması gibi gerektiğinde iCloud Fotoğrafları’ndaki fotoğraf ve videoları otomatik olarak yükler."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Хмарні сервіси, як-от Google Фото, можуть синхронізувати видалення з іншими пристроями. Перевір їхні налаштування. PhotoMaid не завантажує вміст, який є лише в хмарі."
+            "value": "Хмарні сервіси, як-от Google Фото, можуть синхронізувати видалення з іншими пристроями. Перевір їхні налаштування. За потреби PhotoMaid автоматично завантажує фото й відео з Фото iCloud — як програма «Фото»."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Google 相册等云服务可能将删除操作同步到其他设备。请检查各服务的设置。PhotoMaid 不会下载仅存于云端的内容。"
+            "value": "Google 相册等云服务可能将删除操作同步到其他设备。请检查各服务的设置。PhotoMaid 会像“照片”App 一样，在需要时自动载入 iCloud 照片中的照片和视频。"
           }
         }
       }

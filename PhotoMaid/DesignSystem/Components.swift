@@ -318,7 +318,7 @@ struct AssetCell: View {
     }
 }
 
-/// Gemeinsamer Lader für kleine Vorschauen (schnelles Format, ohne Netzwerk).
+/// Gemeinsamer Lader für kleine Vorschauen (schnelles Format; fehlt die kleine Fassung, aus iCloud).
 @MainActor
 final class ThumbnailLoader {
     static let shared = ThumbnailLoader()
@@ -332,7 +332,7 @@ final class ThumbnailLoader {
         if let hit = cache.object(forKey: key) { return hit }
         guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [assetID], options: nil).firstObject else { return nil }
         let o = PHImageRequestOptions()
-        o.isNetworkAccessAllowed = false
+        o.isNetworkAccessAllowed = true
         o.deliveryMode = .highQualityFormat
         o.resizeMode = .fast
         let box = UncheckedBox(manager)

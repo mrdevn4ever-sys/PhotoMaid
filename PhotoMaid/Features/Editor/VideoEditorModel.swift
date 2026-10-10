@@ -95,7 +95,7 @@ final class VideoEditorModel {
 
     // MARK: Laden
 
-    func load(app: AppModel, allowNetwork: Bool = false) async {
+    func load(app: AppModel, allowNetwork: Bool = true) async {
         loadState = .loading
         app.player.stop()
         guard let a = app.library.asset(assetID), a.isVideo else { loadState = .failed; return }

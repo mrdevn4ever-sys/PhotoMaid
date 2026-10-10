@@ -10,9 +10,17 @@ enum PreviewResult: Sendable {
     case failed
 }
 
+/// Stufenweise Vorschau wie in der Fotos-App: erst die schnell verfügbare (ggf. unscharfe) Fassung, danach die volle
+/// Qualität – bei Bedarf automatisch aus iCloud. `progress` kommt nur, während aus iCloud geladen wird.
+enum PreviewUpdate: Sendable {
+    case image(UIImage, isFinal: Bool)
+    case progress(Double)
+    case failed(inCloud: Bool)
+}
+
 /// Begrenzte Preview-Pipeline: Auflösung an sichtbare Fläche × Display-Skalierung,
-/// Puffer für vorheriges/aktuelles/wenige nächste Items, keine Originale im RAM,
-/// keine automatische iCloud-Freigabe.
+/// Puffer für vorheriges/aktuelles/wenige nächste Items, keine Originale im RAM.
+/// Medien aus iCloud-Fotos werden wie in der Fotos-App automatisch geladen (nur Download aus der eigenen Mediathek).
 @MainActor
 final class PreviewPipeline {
     private let manager: PHCachingImageManager
@@ -30,9 +38,8 @@ final class PreviewPipeline {
         return CGSize(width: max(1, w.rounded()), height: max(1, h.rounded()))
     }
 
-    private func options(allowNetwork: Bool = false) -> PHImageRequestOptions {
+    private func options(allowNetwork: Bool = true) -> PHImageRequestOptions {
         let o = PHImageRequestOptions()
-        // iCloud nur nach ausdrücklichem Tipp („Aus iCloud laden“), nie automatisch.
         o.isNetworkAccessAllowed = allowNetwork
         o.deliveryMode = .highQualityFormat // genau ein Callback
         o.resizeMode = .fast
@@ -40,8 +47,48 @@ final class PreviewPipeline {
         return o
     }
 
-    /// Lädt eine Vorschau. Abbruch des Tasks bricht den PhotoKit-Request ab.
-    func image(for assetID: String, targetSize: CGSize, allowNetwork: Bool = false) async -> PreviewResult {
+    /// Für Feed und Betrachter: zuerst die schnelle Fassung, dann die volle Qualität (auch aus iCloud).
+    private func progressiveOptions() -> PHImageRequestOptions {
+        let o = PHImageRequestOptions()
+        o.isNetworkAccessAllowed = true
+        o.deliveryMode = .opportunistic
+        o.resizeMode = .fast
+        o.version = .current
+        return o
+    }
+
+    /// Stufenweise Vorschau. Endet nach der vollen Qualität oder einem Fehler; Abbruch des Tasks bricht den
+    /// PhotoKit-Request (und einen laufenden iCloud-Download) ab.
+    func progressiveImage(for assetID: String, targetSize: CGSize) -> AsyncStream<PreviewUpdate> {
+        AsyncStream { cont in
+            guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [assetID], options: nil).firstObject else {
+                cont.yield(.failed(inCloud: false))
+                cont.finish()
+                return
+            }
+            let o = progressiveOptions()
+            o.progressHandler = { @Sendable progress, _, _, _ in cont.yield(.progress(progress)) }
+            let id = manager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit,
+                                          options: o) { @Sendable image, info in
+                let degraded = (info?[PHImageResultIsDegradedKey] as? Bool) ?? false
+                if let image {
+                    cont.yield(.image(image, isFinal: !degraded))
+                    if !degraded { cont.finish() }
+                    return
+                }
+                if (info?[PHImageCancelledKey] as? Bool) == true { cont.finish(); return }
+                let inCloud = (info?[PHImageResultIsInCloudKey] as? Bool) ?? false
+                cont.yield(.failed(inCloud: inCloud))
+                cont.finish()
+            }
+            let managerBox = UncheckedBox(manager)
+            cont.onTermination = { @Sendable _ in managerBox.value.cancelImageRequest(id) }
+        }
+    }
+
+    /// Lädt eine Vorschau in einem Schritt (volle Qualität, bei Bedarf aus iCloud). Abbruch des Tasks bricht den
+    /// PhotoKit-Request ab.
+    func image(for assetID: String, targetSize: CGSize, allowNetwork: Bool = true) async -> PreviewResult {
         guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [assetID], options: nil).firstObject else { return .failed }
         let box = RequestBox()
         let managerBox = UncheckedBox(manager)
@@ -60,7 +107,7 @@ final class PreviewPipeline {
         }
     }
 
-    /// Vorheriges, aktuelles und wenige nächste Items vorhalten; Rest freigeben.
+    /// Vorheriges, aktuelles und wenige nächste Items vorhalten (auch aus iCloud vorladen); Rest freigeben.
     func updateCache(window ids: [String], targetSize: CGSize) {
         let wanted = Set(ids)
         if targetSize != cachedSize {
@@ -75,13 +122,15 @@ final class PreviewPipeline {
             PHAsset.fetchAssets(withLocalIdentifiers: Array(s), options: nil).enumerateObjects { a, _, _ in out.append(a) }
             return out
         }
-        manager.stopCachingImages(for: fetch(remove), targetSize: targetSize, contentMode: .aspectFit, options: options())
-        manager.startCachingImages(for: fetch(add), targetSize: targetSize, contentMode: .aspectFit, options: options())
+        manager.stopCachingImages(for: fetch(remove), targetSize: targetSize, contentMode: .aspectFit,
+                                  options: progressiveOptions())
+        manager.startCachingImages(for: fetch(add), targetSize: targetSize, contentMode: .aspectFit,
+                                   options: progressiveOptions())
         cachedIDs = wanted
     }
 
-    /// Lokales Video als PlayerItem, ohne Netzwerkfreigabe.
-    func playerItem(for assetID: String, allowNetwork: Bool = false) async -> PlayerItemResult {
+    /// Video als PlayerItem; liegt es nur in iCloud, streamt PhotoKit es (wie die Fotos-App).
+    func playerItem(for assetID: String, allowNetwork: Bool = true) async -> PlayerItemResult {
         guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [assetID], options: nil).firstObject else { return .failed }
         let o = PHVideoRequestOptions()
         o.isNetworkAccessAllowed = allowNetwork

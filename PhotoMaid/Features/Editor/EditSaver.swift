@@ -91,7 +91,7 @@ enum EditSaver {
     static func editOriginal(app: AppModel, asset: MediaAsset, recipe: EditRecipe) async throws -> EditSaveOutcome {
         guard let ph = PhotoLibraryService.phAsset(asset.id), ph.canPerform(.content) else { throw EditSaveError.gone }
         let options = PHContentEditingInputRequestOptions()
-        options.isNetworkAccessAllowed = false
+        options.isNetworkAccessAllowed = true
         options.canHandleAdjustmentData = { _ in false }
         let box = UncheckedBox(ph)
         let input: UncheckedBox<PHContentEditingInput>? = await withCheckedContinuation { cont in

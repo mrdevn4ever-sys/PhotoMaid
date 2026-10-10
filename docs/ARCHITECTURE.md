@@ -65,8 +65,11 @@ PhotoMaid/                         (Repo-Wurzel)
 - **Vorschau = Export.** Foto-Editor: ein Core-Image-Graph (`ImageRenderer.render(recipe:source:)`) für Bildschirm und
   Datei. Video: eine `AVVideoComposition` für `AVPlayerItem` und `AVAssetExportSession`. Collage/PDF: ein Renderer.
 - **Nie verzerren.** Bilder `.scaledToFit()`/`.scaledToFill()` + `.clipped()`, Video `resizeAspect`, Größe nur proportional.
-- **Medien von iCloud.** Vorschauen mit `isNetworkAccessAllowed = false`; fehlt das Original, zeigt die App
-  „Nicht auf diesem iPhone“. Laden aus iCloud nur auf ausdrücklichen Tipp (Bearbeiten, Auslagern, Export).
+- **Medien von iCloud (wie die Fotos-App, Nutzerentscheidung 2026-10-10).** Feed und Betrachter zeigen sofort die
+  schnelle, ggf. unscharfe Fassung (`deliveryMode = .opportunistic`) und laden die volle Qualität automatisch aus iCloud
+  (`isNetworkAccessAllowed = true`, Fortschritt als kleine Anzeige); Videos werden gestreamt; die nächsten Medien werden
+  vorgeladen. „Aus iCloud laden“ gibt es nur noch als Rückfall, wenn nichts ankommt (z. B. ohne Netz). Größen werden
+  weiterhin nur lokal gemessen (unbekannt bleibt unbekannt, kein Download nur zum Messen).
 
 ## Navigation
 

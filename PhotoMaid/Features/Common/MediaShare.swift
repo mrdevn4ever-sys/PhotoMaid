@@ -11,7 +11,7 @@ struct MediaShareItem: Identifiable, Sendable {
     let cleanup: [URL]
 }
 
-/// Teilen von Medien über das System-Teilen-Blatt. Nur lokal vorhandene Originale (kein heimlicher iCloud-Download).
+/// Teilen von Medien über das System-Teilen-Blatt. Originale aus iCloud-Fotos werden dafür geladen (wie in der Fotos-App).
 /// Teilen ist nie eine Entscheidung und ändert nichts am Prüfstand.
 enum MediaShare {
     static var directory: URL {
@@ -42,7 +42,7 @@ enum MediaShare {
         let box = UncheckedBox(asset)
         if asset.mediaType == .video {
             let o = PHVideoRequestOptions()
-            o.isNetworkAccessAllowed = false
+            o.isNetworkAccessAllowed = true
             o.version = .current
             let source: URL? = await withCheckedContinuation { cont in
                 PHImageManager.default().requestAVAsset(forVideo: box.value, options: o) { @Sendable av, _, _ in
@@ -55,7 +55,7 @@ enum MediaShare {
             return target
         }
         let o = PHImageRequestOptions()
-        o.isNetworkAccessAllowed = false
+        o.isNetworkAccessAllowed = true
         o.version = .current
         o.deliveryMode = .highQualityFormat
         let result: (Data, String?)? = await withCheckedContinuation { cont in
