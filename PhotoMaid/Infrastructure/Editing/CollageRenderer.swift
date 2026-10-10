@@ -37,7 +37,7 @@ final class CollageRenderer: @unchecked Sendable {
 
     func jpeg(_ image: CGImage, quality: CGFloat = 0.92) throws -> Data {
         let data = NSMutableData()
-        guard let destination = CGImageDestinationCreateWithData(data, UTType.jpeg.identifier as CFString, 1, nil) else {
+        guard let destination = CGImageDestinationCreateWithData(data as CFMutableData, UTType.jpeg.identifier as CFString, 1, nil) else {
             throw Failure.encodeFailed
         }
         CGImageDestinationAddImage(destination, image, [kCGImageDestinationLossyCompressionQuality: quality] as CFDictionary)

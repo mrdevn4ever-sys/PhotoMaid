@@ -125,12 +125,11 @@ struct WorkflowRunResult: Identifiable, Sendable {
     let status: String
 }
 
-@MainActor
 enum WorkflowProcessor {
     static func run(app: AppModel, workflow: Workflow, ids: [String]) async -> [WorkflowRunResult] {
         var results: [WorkflowRunResult] = []
         for (index, id) in ids.enumerated() {
-            guard let asset = app.asset(id), !asset.isVideo else {
+            guard let asset = await app.asset(id), !asset.isVideo else {
                 results.append(WorkflowRunResult(name: String(index + 1), status: L("wf_status_skipped")))
                 continue
             }

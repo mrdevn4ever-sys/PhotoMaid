@@ -96,7 +96,7 @@ enum BatchProcessor {
         guard let first = images.first, images.count == ids.count else { throw Failure.render }
         let frame = GifPlan.frame(firstW: first.width, firstH: first.height, maxEdge: maxEdge)
         let data = NSMutableData()
-        guard let destination = CGImageDestinationCreateWithData(data, UTType.gif.identifier as CFString, images.count, nil) else {
+        guard let destination = CGImageDestinationCreateWithData(data as CFMutableData, UTType.gif.identifier as CFString, images.count, nil) else {
             throw Failure.write
         }
         let gifProperties = [kCGImagePropertyGIFDictionary: [kCGImagePropertyGIFLoopCount: 0]] as CFDictionary
