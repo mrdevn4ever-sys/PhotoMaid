@@ -88,6 +88,46 @@ struct LaterTests {
         #expect(ReviewQueues.dueQueue(records: Array(recs.values), session: ReviewSessionID(), today: clock.today) == [photo(1)])
     }
 
+    @Test("Erledigte Bilder bleiben bei PhotoKit-Verzögerung dauerhaft aus dem normalen Feed")
+    func completedDoNotReappear() {
+        let today = LocalDay(year: 2026, month: 10, day: 11)
+        let session = ReviewSessionID()
+        let refs = (1...7).map(photo)
+        var records: [ItemReference: ItemRecord] = [:]
+        records[photo(1)] = ItemRecord(item: photo(1), revision: 1, disposition: .kept)
+        records[photo(2)] = ItemRecord(item: photo(2), revision: 1, disposition: .markedForCleanup)
+        // Can still be visible briefly in PhotoKit after the delete was confirmed.
+        records[photo(3)] = ItemRecord(item: photo(3), revision: 2, disposition: .removed)
+        records[photo(4)] = ItemRecord(item: photo(4), revision: 1, disposition: .later,
+                                       dueDay: today.adding(days: 2))
+        records[photo(5)] = ItemRecord(item: photo(5), revision: 1, disposition: .later,
+                                       dueDay: today.adding(days: -1))
+        records[photo(6)] = ItemRecord(item: photo(6), revision: 1, disposition: .undecided)
+
+        let visible = ReviewQueues.normalQueue(candidates: refs, records: records,
+                                                session: session, today: today)
+        #expect(visible == [photo(6), photo(7)])
+        #expect(ReviewQueues.dueQueue(records: Array(records.values), session: session,
+                                      today: today) == [photo(5)])
+    }
+
+    @Test("Nach Neustart kommt Behalten nicht zurück und neue Asset-ID bleibt neu")
+    func completedAfterRestart() async throws {
+        let store = InMemoryLedgerPersistence()
+        let clock = TestClock("2026-10-11T09:00")
+        let first = try makeLedger(clock: clock, persistence: store)
+        try await first.decide(photo(1), .keep)
+        try await first.decide(photo(2), .markForCleanup)
+        let reloaded = try makeLedger(clock: clock, persistence: store)
+        let records = await reloaded.records(for: [photo(1), photo(2), photo(3)])
+        let visible = ReviewQueues.normalQueue(candidates: [photo(1), photo(2), photo(3)],
+                                                records: records, session: ReviewSessionID(),
+                                                today: clock.today)
+        #expect(visible == [photo(3)])
+        #expect(records[photo(1)]?.disposition == .kept)
+        #expect(records[photo(2)]?.disposition == .markedForCleanup)
+    }
+
     @Test("Neustart: Termin bleibt erhalten, kein Auto-Delete")
     func restartKeepsSchedule() async throws {
         let p = InMemoryLedgerPersistence()
