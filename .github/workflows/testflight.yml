@@ -13,6 +13,11 @@ on:
         description: "Vor dem Upload Unit-Tests ausführen"
         type: boolean
         default: true
+      confirm_upload:
+        description: "Sicherheitsbestätigung: exakt UPLOAD eingeben"
+        type: string
+        required: true
+        default: ""
 
 concurrency:
   group: testflight
@@ -26,27 +31,35 @@ jobs:
     name: Archivieren, signieren, hochladen
     runs-on: macos-26
     timeout-minutes: 90
-    environment: testflight   # Secrets nur in dieser Umgebung; optional mit Freigabe-Pflicht
+    environment: testflight   # Environment; confirm_upload ist eine zusätzliche manuelle Bedienungssicherung
     env:
-      ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
-      ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
-      ASC_KEY_P8_BASE64: ${{ secrets.ASC_KEY_P8_BASE64 }}
-      PM_TEAM_ID: ${{ secrets.PM_TEAM_ID }}
-      PM_BUNDLE_ID: ${{ vars.PM_BUNDLE_ID }}
-      PM_PRO_PRODUCT_ID: ${{ vars.PM_PRO_PRODUCT_ID }}
-      PM_PRIVACY_POLICY_URL: ${{ vars.PM_PRIVACY_POLICY_URL }}
-      # Optional (manuelle Signierung). Fehlen sie, signiert Xcode automatisch über den API-Schlüssel.
-      DIST_CERT_P12_BASE64: ${{ secrets.DIST_CERT_P12_BASE64 }}
-      DIST_CERT_PASSWORD: ${{ secrets.DIST_CERT_PASSWORD }}
-      PROVISIONING_PROFILE_BASE64: ${{ secrets.PROVISIONING_PROFILE_BASE64 }}
+      APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+      APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+      APP_STORE_CONNECT_API_KEY_BASE64: ${{ secrets.APP_STORE_CONNECT_API_KEY_BASE64 }}
+      APPLE_CERTIFICATE_PASSWORD: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
+      APPLE_CERTIFICATE_BASE64: ${{ secrets.APPLE_CERTIFICATE_BASE64 }}
+      APPLE_PROVISIONING_PROFILE_BASE64: ${{ secrets.APPLE_PROVISIONING_PROFILE_BASE64 }}
+      PM_TEAM_ID: ${{ vars.PM_TEAM_ID || 'HUN9MS832X' }}
+      PM_BUNDLE_ID: ${{ vars.PM_BUNDLE_ID || 'com.mrdevn4ever.photomaid' }}
+      PM_PRO_PRODUCT_ID: ${{ vars.PM_PRO_PRODUCT_ID || '' }}
+      PM_PRIVACY_POLICY_URL: ${{ vars.PM_PRIVACY_POLICY_URL || 'https://mrdevn4ever-sys.github.io/photomaid-website/' }}
       CHANGELOG: ${{ inputs.changelog }}
       RUN_TESTS: ${{ inputs.run_tests }}
     steps:
       - uses: actions/checkout@v4
+      - name: Upload-Bestätigung prüfen
+        env:
+          CONFIRM_UPLOAD: ${{ inputs.confirm_upload }}
+        run: |
+          set -euo pipefail
+          if [ "$CONFIRM_UPLOAD" != "UPLOAD" ]; then
+            echo "::error::Upload blockiert: confirm_upload muss exakt UPLOAD sein."
+            exit 1
+          fi
       - name: Pflicht-Secrets vorhanden?
         run: |
           missing=""
-          for v in ASC_KEY_ID ASC_ISSUER_ID ASC_KEY_P8_BASE64 PM_TEAM_ID PM_BUNDLE_ID; do
+          for v in APP_STORE_CONNECT_KEY_ID APP_STORE_CONNECT_ISSUER_ID APP_STORE_CONNECT_API_KEY_BASE64 APPLE_CERTIFICATE_PASSWORD APPLE_CERTIFICATE_BASE64 APPLE_PROVISIONING_PROFILE_BASE64 PM_TEAM_ID PM_BUNDLE_ID PM_PRIVACY_POLICY_URL; do
             [ -z "${!v}" ] && missing="$missing $v"
           done
           if [ -n "$missing" ]; then
@@ -59,6 +72,44 @@ jobs:
           brew install xcodegen
           gem install fastlane --no-document
           xcodegen generate
+      - name: Manuelles Signing prüfen
+        run: |
+          set -euo pipefail
+          umask 077
+          p12="$RUNNER_TEMP/dist.p12"
+          profile="$RUNNER_TEMP/profile.mobileprovision"
+          p8="$RUNNER_TEMP/AuthKey_${APP_STORE_CONNECT_KEY_ID}.p8"
+          printf '%s' "$APPLE_CERTIFICATE_BASE64" | base64 --decode > "$p12"
+          printf '%s' "$APPLE_PROVISIONING_PROFILE_BASE64" | base64 --decode > "$profile"
+          printf '%s' "$APP_STORE_CONNECT_API_KEY_BASE64" | base64 --decode > "$p8"
+          openssl pkey -in "$p8" -noout -check >/dev/null 2>&1
+          security cms -D -i "$profile" > "$RUNNER_TEMP/profile.plist"
+          python3 - "$RUNNER_TEMP/profile.plist" "$p12" <<'PY'
+          import hashlib
+          import plistlib
+          import subprocess
+          import sys
+
+          profile_path, p12_path = sys.argv[1:]
+          with open(profile_path, "rb") as f:
+              profile = plistlib.load(f)
+          team = "HUN9MS832X"
+          bundle = "com.mrdevn4ever.photomaid"
+          entitlements = profile.get("Entitlements", {})
+          assert profile.get("TeamIdentifier") == [team]
+          assert entitlements.get("application-identifier") == f"{team}.{bundle}"
+          assert entitlements.get("get-task-allow") is False
+          assert "ProvisionedDevices" not in profile
+          p12_pem = subprocess.check_output([
+              "openssl", "pkcs12", "-in", p12_path, "-clcerts", "-nokeys",
+              "-passin", "env:APPLE_CERTIFICATE_PASSWORD"
+          ], stderr=subprocess.DEVNULL)
+          p12_der = subprocess.check_output(["openssl", "x509", "-outform", "DER"], input=p12_pem)
+          expected = hashlib.sha256(p12_der).hexdigest()
+          embedded = [hashlib.sha256(cert).hexdigest() for cert in profile.get("DeveloperCertificates", [])]
+          assert expected in embedded
+          print("Signing preflight: PASS")
+          PY
       - name: Unit-Tests
         if: env.RUN_TESTS == 'true'
         run: |

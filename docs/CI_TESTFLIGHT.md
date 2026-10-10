@@ -30,22 +30,33 @@ gh api repos/mrdevn4ever-sys/photomaid/actions/runs/<RUN_ID>/artifacts  # Artefa
 4. **In-App-Kauf**: App › Monetarisierung › In-App-Käufe › „Nicht verbrauchbar“, Produkt-ID z. B.
    `photomaid.pro.lifetime`, Preis wählen (E4), Beschreibung in den Sprachen.
 5. **API-Schlüssel**: App Store Connect › Benutzer und Zugriff › Integrationen › App Store Connect API ›
-   Teamschlüssel „+“, Rolle **App-Manager** (für automatische Signierung: **Admin**). Die `.p8`-Datei kann nur
+   Teamschlüssel „+“, Rolle **App-Manager**. Der vorbereitete Workflow signiert manuell mit dem vorhandenen
+   Zertifikat und Profil; automatische Apple-Provisionierung wird nicht verwendet. Die `.p8`-Datei kann nur
    einmal geladen werden. Notiere Key-ID und Issuer-ID.
-6. **GitHub** › Repository › Settings › Environments › „New environment“ `testflight`
-   (optional „Required reviewers“ = du, dann startet ein Upload nur nach deiner Freigabe).
-   Darin **Secrets**:
+6. **GitHub** › Repository › Settings › Environments › `testflight`.
+   Required Reviewers sind für dieses private Repository im aktuellen Tarif nicht verfügbar.
+   Die zusätzliche Workflow-Eingabe `confirm_upload` muss deshalb exakt `UPLOAD` lauten.
+   Das ist eine Bedienungssicherung, keine echte Berechtigungsgrenze.
+   Die sechs Repository-Secrets werden exakt unter diesen Namen verwendet:
 
    | Secret | Inhalt | Windows-Befehl |
    |---|---|---|
-   | `ASC_KEY_ID` | Key-ID des API-Schlüssels | – |
-   | `ASC_ISSUER_ID` | Issuer-ID | – |
-   | `ASC_KEY_P8_BASE64` | `.p8`-Datei Base64 | PowerShell: `[Convert]::ToBase64String([IO.File]::ReadAllBytes("AuthKey_XXXX.p8"))` |
-   | `PM_TEAM_ID` | Team-ID (10 Zeichen, Membership-Seite) | – |
+   | `APP_STORE_CONNECT_KEY_ID` | Key-ID des API-Schlüssels | – |
+   | `APP_STORE_CONNECT_ISSUER_ID` | Issuer-ID | – |
+   | `APP_STORE_CONNECT_API_KEY_BASE64` | `.p8`-Datei Base64 | PowerShell: `[Convert]::ToBase64String([IO.File]::ReadAllBytes("AuthKey_XXXX.p8"))` |
+   | `APPLE_CERTIFICATE_PASSWORD` | Passwort der `.p12` | – |
+   | `APPLE_CERTIFICATE_BASE64` | `.p12`-Datei Base64 | – |
+   | `APPLE_PROVISIONING_PROFILE_BASE64` | App-Store-Profil Base64 | – |
 
-   und **Variablen** (nicht geheim): `PM_BUNDLE_ID`, `PM_PRO_PRODUCT_ID`, `PM_PRIVACY_POLICY_URL`.
+   Optional können als Repository-Variablen gesetzt werden: `PM_TEAM_ID`, `PM_BUNDLE_ID`,
+   `PM_PRIVACY_POLICY_URL` und `PM_PRO_PRODUCT_ID`. Der Workflow verwendet für die ersten
+   drei Werte sichere PhotoMaid-Fallbacks (`HUN9MS832X`, `com.mrdevn4ever.photomaid` und die
+   veröffentlichte Datenschutz-URL), falls die Variablen leer sind. `PM_PRO_PRODUCT_ID` bleibt
+   leer, damit der erste technische Build keine echten Pro-Käufe auslöst.
 
-7. Nur falls die automatische Signierung nicht geht (Variante B): Distributionszertifikat und App-Store-Profil.
+7. Die TestFlight-Aktion verwendet ausschließlich die manuelle Signierung mit dem vorhandenen
+   Distributionszertifikat und App-Store-Profil. Es werden keine Apple-Zertifikate automatisch
+   erstellt oder widerrufen.
    Auf Windows ohne Mac:
    ```powershell
    # OpenSSL ist bei Git für Windows dabei: "C:\Program Files\Git\usr\bin\openssl.exe"
@@ -56,7 +67,7 @@ gh api repos/mrdevn4ever-sys/photomaid/actions/runs/<RUN_ID>/artifacts  # Artefa
    openssl pkcs12 -export -inkey dist.key -in dist.pem -out dist.p12 -legacy
    ```
    Profil: Profiles › „App Store Connect“ › App-ID › Zertifikat wählen › `.mobileprovision` laden.
-   Secrets: `DIST_CERT_P12_BASE64`, `DIST_CERT_PASSWORD`, `PROVISIONING_PROFILE_BASE64` (Base64 wie oben).
+   Die vorhandenen Secrets `APPLE_CERTIFICATE_BASE64`, `APPLE_CERTIFICATE_PASSWORD` und `APPLE_PROVISIONING_PROFILE_BASE64` werden direkt für die manuelle Signierung verwendet.
    `dist.key` und `dist.p12` danach sicher verwahren, **nie** ins Repository.
 
 ## Ablauf pro Testbuild
