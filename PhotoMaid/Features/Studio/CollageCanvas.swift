@@ -200,7 +200,9 @@ struct CollageCanvas: View {
             .onChanged { value in
                 if !pinchActive {
                     pinchActive = true
-                    beginPinch(at: value.startLocation)
+                    // `startAnchor` (UnitPoint, iOS 17+) relativ zur Bühne → Punkt in derselben Fläche.
+                    let anchor = value.startAnchor
+                    beginPinch(at: CGPoint(x: anchor.x * size.width, y: anchor.y * size.height))
                 }
                 pinchScale = value.magnification
                 applyPinch()
@@ -272,9 +274,11 @@ struct CollageCanvas: View {
         let item = p.items[i]
         let aspects = model.imageAspects
         let img = CollageGeometry.turnedAspect(i < aspects.count ? aspects[i] : 1, quarterTurns: item.quarterTurns)
-        let r = CellFit.panned(panX: startX, panY: startY, zoom: item.zoom, imgAspect: img,
-                               cellAspect: Float(cell.width / max(cell.height, 1)),
-                               dx: Float(translation.width / max(cell.width, 1)), dy: Float(translation.height / max(cell.height, 1)))
+        let cellAspect = Float(cell.width / max(cell.height, 1))
+        let dx = Float(translation.width / max(cell.width, 1))
+        let dy = Float(translation.height / max(cell.height, 1))
+        let r = CellFit.panned(panX: startX, panY: startY, zoom: item.zoom, imgAspect: img, cellAspect: cellAspect,
+                               dx: dx, dy: dy)
         model.update { proj in
             proj.items[i].panX = r.x
             proj.items[i].panY = r.y
@@ -574,8 +578,9 @@ private struct CollageLayerHandle: View {
                     choose()
                 }
                 guard let s = start else { return }
-                let c = NormPoint(min(max(s.x + Float(v.translation.width / max(canvas.width, 1)), 0), 1),
-                                  min(max(s.y + Float(v.translation.height / max(canvas.height, 1)), 0), 1))
+                let dx = Float(v.translation.width / max(canvas.width, 1))
+                let dy = Float(v.translation.height / max(canvas.height, 1))
+                let c = NormPoint(min(max(s.x + dx, 0), 1), min(max(s.y + dy, 0), 1))
                 let id = layer.id
                 model.update { proj in
                     proj.layers = proj.layers.map { $0.id == id ? CollageLayerEdit.withCenter($0, c) : $0 }

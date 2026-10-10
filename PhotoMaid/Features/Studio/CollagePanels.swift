@@ -28,6 +28,7 @@ enum CollagePalette {
 
     static func color(_ argb: ARGB) -> Color { Color(uiColor: CollageRenderer.uiColor(argb)) }
 
+    @MainActor
     static func argb(_ color: Color) -> ARGB {
         var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
         UIColor(color).getRed(&r, green: &g, blue: &b, alpha: &a)
