@@ -442,7 +442,7 @@ enum VideoBuilder {
     }
 
     /// Musik aus eigener Datei: ab Versatz, bei Bedarf wiederholt, mit Ein-/Ausblenden (wie `MoviePlan.musicGain`).
-    private static func addMusic(_ url: URL, music m: MusicTrack, to comp: AVMutableComposition, total: CMTime,
+    private static func addMusic(_ url: URL, music m: PhotoMaidCore.MusicTrack, to comp: AVMutableComposition, total: CMTime,
                                  boost: Float) async throws -> AVMutableAudioMixInputParameters? {
         let asset = AVURLAsset(url: url)
         guard let src = try await asset.loadTracks(withMediaType: .audio).first,
