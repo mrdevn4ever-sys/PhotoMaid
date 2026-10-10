@@ -34,7 +34,7 @@ struct FeedView: View {
 
     // Aufgeteilt (Bühne, Blätter, Hinweise), damit der Type-Checker jede Kette einzeln prüft.
     var body: some View {
-        withSheets(stage)
+        withSheets(feedScene)
             .alert(protectedTitle, isPresented: protectedFavoriteShown) {
                 Button(L("fav_remove")) { Task { await model.unfavoriteProtected() } }
                 Button(L("cancel"), role: .cancel) { model.protectedFavorite = nil }
@@ -56,7 +56,7 @@ struct FeedView: View {
             }
     }
 
-    private var stage: some View {
+    private var feedScene: some View {
         ZStack {
             AppColors.background.ignoresSafeArea()
             VStack(spacing: AppSpacing.s) {
