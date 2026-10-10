@@ -243,21 +243,59 @@ enum FileOperations {
 
     /// Löscht einzelne reguläre Dateien endgültig. Kein rekursives Ordnerlöschen, keine Symlinks,
     /// keine Ziele außerhalb der Quelle. Ergebnis belegt pro Datei, was tatsächlich entfernt wurde.
+    ///
+    /// Das Schreibrecht des *Ordners* ist kein verlässlicher Indikator für das Recht, eine
+    /// einzelne Datei zu löschen (insbesondere bei File Providern). Deshalb wird jede
+    /// zuvor sicher aufgelöste Datei einzeln über NSFileCoordinator angefragt.
+    /// Fehler werden ohne Dateinamen oder Pfade im lokalen Diagnoseprotokoll festgehalten.
     static func deletePermanently(_ items: [ItemReference], sources: ConnectedSourceStore) -> OperationOutcome {
         var removed: Set<ItemReference> = []
+        var firstFailure = "nothing-removed"
         for (sourceID, files) in split(items) {
-            _ = try? sources.withAccess(sourceID) { root in
-                guard (try? root.resourceValues(forKeys: [.isWritableKey]).isWritable) == true else { return }
-                for f in files {
-                    guard let url = FileScanner.safeURL(root: root, relativePath: f.localIdentifier) else { continue }
-                    var err: NSError?
-                    NSFileCoordinator().coordinate(writingItemAt: url, options: [.forDeleting], error: &err) { target in
-                        if (try? FileManager.default.removeItem(at: target)) != nil { removed.insert(f) }
+            do {
+                try sources.withAccess(sourceID) { root in
+                    for f in files {
+                        guard let url = FileScanner.safeURL(root: root, relativePath: f.localIdentifier) else {
+                            firstFailure = "file-inaccessible"
+                            Diagnostics.log(.files, "delete-file-inaccessible")
+                            continue
+                        }
+                        var coordinatorError: NSError?
+                        var deletionError: (any Error)?
+                        var deletionSucceeded = false
+                        NSFileCoordinator().coordinate(writingItemAt: url, options: [.forDeleting],
+                                                       error: &coordinatorError) { target in
+                            do {
+                                // FileCoordinator liefert die koordinierte URL; keine Ordner rekursiv löschen.
+                                guard let values = try? target.resourceValues(forKeys: [.isRegularFileKey, .isSymbolicLinkKey]),
+                                      values.isRegularFile == true, values.isSymbolicLink != true else {
+                                    firstFailure = "file-inaccessible"
+                                    Diagnostics.log(.files, "delete-target-not-regular-file")
+                                    return
+                                }
+                                try FileManager.default.removeItem(at: target)
+                                deletionSucceeded = true
+                            } catch {
+                                deletionError = error
+                            }
+                        }
+                        if let coordinatorError {
+                            firstFailure = "file-coordination-failed"
+                            Diagnostics.error(.files, "delete-coordination-failed", coordinatorError)
+                        } else if let deletionError {
+                            firstFailure = "file-delete-denied"
+                            Diagnostics.error(.files, "delete-item-failed", deletionError)
+                        } else if deletionSucceeded {
+                            removed.insert(f)
+                        }
                     }
                 }
+            } catch {
+                firstFailure = "source-access-failed"
+                Diagnostics.error(.files, "delete-source-access-failed", error)
             }
         }
-        if removed.isEmpty { return .failed(reason: "nothing-removed") }
+        if removed.isEmpty { return .failed(reason: firstFailure) }
         return removed.count == items.count ? .succeeded : .partial(removed: removed)
     }
 
