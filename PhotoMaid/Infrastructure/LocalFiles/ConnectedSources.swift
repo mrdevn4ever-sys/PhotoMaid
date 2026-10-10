@@ -280,10 +280,11 @@ enum FileOperations {
                             }
                         }
                         if let coordinatorError {
-                            firstFailure = "file-coordination-failed"
+                            firstFailure = "coordination:\(coordinatorError.domain):\(coordinatorError.code)"
                             Diagnostics.error(.files, "delete-coordination-failed", coordinatorError)
                         } else if let deletionError {
-                            firstFailure = "file-delete-denied"
+                            let ns = deletionError as NSError
+                            firstFailure = "delete:\(ns.domain):\(ns.code)"
                             Diagnostics.error(.files, "delete-item-failed", deletionError)
                         } else if deletionSucceeded {
                             removed.insert(f)
@@ -291,7 +292,8 @@ enum FileOperations {
                     }
                 }
             } catch {
-                firstFailure = "source-access-failed"
+                let ns = error as NSError
+                firstFailure = "source:\(ns.domain):\(ns.code)"
                 Diagnostics.error(.files, "delete-source-access-failed", error)
             }
         }
