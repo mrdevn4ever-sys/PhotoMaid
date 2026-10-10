@@ -88,6 +88,7 @@ final class AppModel {
     @ObservationIgnored private var loadTask: Task<Void, Never>?
     @ObservationIgnored private var loadedToken = -1
     @ObservationIgnored private var readGeneration = 0
+    @ObservationIgnored private var queueInputsRevision = 0
     @ObservationIgnored private var toastTask: Task<Void, Never>?
 
     var today: LocalDay { LocalDay(now, timeZone: .autoupdatingCurrent) }
@@ -204,6 +205,7 @@ final class AppModel {
     }
 
     private func rebuildFiltered() {
+        queueInputsRevision += 1
         let hiddenIDs = Set(settings.hiddenMedia)
         let hiddenAlbum = snapshot.hiddenAlbumMembers
         let excluded = snapshot.excludedAlbumMembers
@@ -278,6 +280,7 @@ final class AppModel {
         // it alongside the ledger projection off the main actor rather than
         // blocking SwiftUI while the swipe-out animation is running.
         let candidates = cleanupMedia.map(\.reference)
+        let queueRevision = queueInputsRevision
         let derived = await Task.detached(priority: .userInitiated) { () -> (LedgerReadModel, [ItemReference]) in
             let view = LedgerReadModel(
                 records: state.records,
@@ -294,7 +297,13 @@ final class AppModel {
         }.value
         guard generation == readGeneration else { return }
         read = derived.0
-        pending = derived.1
+        // PhotoKit may have reloaded the library while the detached queue was
+        // building. In that rare case use the latest visible media and ledger.
+        if queueInputsRevision == queueRevision {
+            pending = derived.1
+        } else {
+            rebuildPending()
+        }
     }
 
     // MARK: Einstellungen und kleine Stores
