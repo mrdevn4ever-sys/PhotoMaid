@@ -14,6 +14,8 @@ struct CollageView: View {
     @State private var started = false
     @State private var picker = false
     @State private var replaceIndex: Int?
+    /// Keep the editing canvas large; advanced settings stay one tap away.
+    @State private var showTools = false
     @State private var saveSheet = false
     @State private var options = CollageSaveOptions()
     @State private var pendingSave: CollageSaveOptions?
@@ -84,30 +86,52 @@ struct CollageView: View {
 
     private func editor(_ size: CGSize) -> some View {
         let boxWidth = max(0, size.width - 2 * AppSpacing.pageMargin)
-        let boxHeight = max(150, min(size.height * 0.46, boxWidth * 1.3))
+        // In the default editing mode the actual photo canvas owns most of the
+        // screen. Advanced controls are expandable, not permanently stacked below it.
+        let boxHeight = max(150, min(size.height * (showTools ? 0.46 : 0.82), boxWidth * 1.55))
         return VStack(spacing: AppSpacing.s) {
             CollageStage(model: model, box: CGSize(width: boxWidth, height: boxHeight))
                 .frame(width: size.width, height: boxHeight)
-            Text(verbatim: hint)
-                .font(AppTypography.caption)
-                .foregroundStyle(AppColors.textSecondary)
-                .multilineTextAlignment(.center)
-                .lineLimit(3)
-                .padding(.horizontal, AppSpacing.pageMargin)
-            kindPicker
-            tabStrip
-            ScrollView {
-                VStack(alignment: .leading, spacing: AppSpacing.m) {
-                    panel
-                    if !model.missing.isEmpty {
-                        InfoBanner(symbol: "exclamationmark.triangle", tint: AppColors.warning, text: L("col_missing"))
-                    }
-                }
-                .padding(.horizontal, AppSpacing.pageMargin)
-                .padding(.top, AppSpacing.xxs)
-                .padding(.bottom, AppSpacing.l)
+            if showTools {
+                Text(verbatim: hint)
+                    .font(AppTypography.caption)
+                    .foregroundStyle(AppColors.textSecondary)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .padding(.horizontal, AppSpacing.pageMargin)
             }
-            .scrollBounceBehavior(.basedOnSize)
+            Button {
+                withAnimation(.easeInOut(duration: 0.2)) { showTools.toggle() }
+            } label: {
+                HStack(spacing: AppSpacing.s) {
+                    Label(L("tools_header"), systemImage: "slider.horizontal.3")
+                    Spacer()
+                    Image(systemName: showTools ? "chevron.down" : "chevron.up")
+                }
+                .font(AppTypography.subheadline.weight(.semibold))
+                .frame(minHeight: AppSpacing.minTouch)
+                .contentShape(.rect)
+            }
+            .buttonStyle(.plain)
+            .padding(.horizontal, AppSpacing.pageMargin)
+            if showTools {
+                kindPicker
+                tabStrip
+                ScrollView {
+                    VStack(alignment: .leading, spacing: AppSpacing.m) {
+                        panel
+                        if !model.missing.isEmpty {
+                            InfoBanner(symbol: "exclamationmark.triangle", tint: AppColors.warning, text: L("col_missing"))
+                        }
+                    }
+                    .padding(.horizontal, AppSpacing.pageMargin)
+                    .padding(.top, AppSpacing.xxs)
+                    .padding(.bottom, AppSpacing.l)
+                }
+                .scrollBounceBehavior(.basedOnSize)
+            } else {
+                Spacer(minLength: 0)
+            }
         }
         .padding(.top, AppSpacing.xs)
     }
