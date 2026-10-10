@@ -274,8 +274,12 @@ final class AppModel {
         let state = await ledger.snapshotState()
         let limit = capabilities.dailyCleanupLimit
         let day = today
-        let derived = await Task.detached(priority: .userInitiated) { () -> LedgerReadModel in
-            LedgerReadModel(
+        // Rebuilding the full review queue for a large library is O(n). Perform
+        // it alongside the ledger projection off the main actor rather than
+        // blocking SwiftUI while the swipe-out animation is running.
+        let candidates = cleanupMedia.map(\.reference)
+        let derived = await Task.detached(priority: .userInitiated) { () -> (LedgerReadModel, [ItemReference]) in
+            let view = LedgerReadModel(
                 records: state.records,
                 basket: state.records.values.filter { $0.disposition == .markedForCleanup }
                     .sorted { $0.item.description < $1.item.description },
@@ -284,10 +288,13 @@ final class AppModel {
                 allowance: DecisionLedger.allowance(in: state, day: day, limit: limit),
                 canUndo: !state.undoStack.isEmpty,
                 reconciliationNeeded: state.intents.values.filter { $0.state == .reconciliationRequired })
+            let queue = ReviewQueues.normalQueue(candidates: candidates, records: state.records,
+                                                 session: ReviewSessionID(), today: day)
+            return (view, queue)
         }.value
         guard generation == readGeneration else { return }
-        read = derived
-        rebuildPending()
+        read = derived.0
+        pending = derived.1
     }
 
     // MARK: Einstellungen und kleine Stores
