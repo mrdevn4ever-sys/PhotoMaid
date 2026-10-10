@@ -4,9 +4,10 @@ import SwiftUI
 import UIKit
 import UniformTypeIdentifiers
 
-struct MediaShareItem: Identifiable {
+/// Sendable, weil `prepare` nicht isoliert läuft und das Ergebnis auf den Main Actor zurückgibt.
+struct MediaShareItem: Identifiable, Sendable {
     let id = UUID()
-    let items: [Any]
+    let items: [URL]
     let cleanup: [URL]
 }
 
