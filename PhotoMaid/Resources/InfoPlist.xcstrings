@@ -203,6 +203,107 @@
         }
       }
     },
+    "NSFaceIDUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يستخدم PhotoMaid بصمة الوجه فقط لفتح المحتوى الذي حميته برمز."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid nutzt Face ID nur, um Inhalte zu öffnen, die du mit einem Code geschützt hast."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid uses Face ID only to open content you protected with a code."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid usa Face ID solo para abrir el contenido que protegiste con un código."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid utilise Face ID uniquement pour ouvrir le contenu que tu as protégé par un code."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid usa Face ID solo per aprire i contenuti che hai protetto con un codice."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaidは、コードで保護したコンテンツを開くためだけにFace IDを使用します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid는 코드로 보호한 콘텐츠를 열 때만 Face ID를 사용해요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid gebruikt Face ID alleen om inhoud te openen die je met een code hebt beveiligd."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid używa Face ID tylko do otwierania treści chronionych kodem."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O PhotoMaid usa o Face ID apenas para abrir conteúdo que protegeste com um código."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid folosește Face ID doar pentru a deschide conținutul protejat de tine cu un cod."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid использует Face ID только для открытия содержимого, защищённого кодом."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid, Face ID’yi yalnızca kodla koruduğun içeriği açmak için kullanır."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid використовує Face ID лише для відкриття вмісту, захищеного кодом."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid 仅使用面容 ID 打开你用密码保护的内容。"
+          }
+        }
+      }
+    },
     "NSPhotoLibraryAddUsageDescription": {
       "extractionState": "manual",
       "localizations": {
