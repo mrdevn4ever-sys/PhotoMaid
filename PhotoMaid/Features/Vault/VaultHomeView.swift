@@ -1,0 +1,405 @@
+import PhotoMaidCore
+import SwiftUI
+
+/// Inhalt des Tresors: Ordner, Raster, Sortieren, Auswahl (Verschieben, Zurück in Fotos, Teilen, Löschen) und Ablegen.
+/// Meldungen erscheinen hier als Hinweis (die Toasts der App liegen unter dieser Ebene).
+struct VaultHomeView: View {
+    @Environment(AppModel.self) private var app
+    @State private var vault = VaultStore.shared
+    @State private var folderID: String?
+    @State private var selecting = false
+    @State private var selection: Set<String> = []
+    @State private var picking = false
+    @State private var pendingImport: [String] = []
+    @State private var confirmImport = false
+    @State private var confirmDelete = false
+    @State private var confirmRestore = false
+    @State private var moveSheet = false
+    @State private var settingsSheet = false
+    @State private var newFolder = false
+    @State private var folderName = ""
+    @State private var renaming: VaultFolder?
+    @State private var deletingFolder: VaultFolder?
+    @State private var share: VaultShare?
+    @State private var viewer: VaultViewerRequest?
+    @State private var notice: String?
+
+    private var sort: VaultSort { vault.settings?.sort ?? .captured }
+    private var items: [VaultItem] { sort.sorted(vault.index.items(inFolder: folderID)) }
+    private var unlimited: Bool { app.capabilities.hasProToolsAccess }
+    private var remaining: Int? { VaultPolicy.remaining(existing: vault.index.items.count, unlimited: unlimited) }
+
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: AppSpacing.m) {
+                    summary
+                    if vault.stillInLibraryCount > 0 { stillInPhotosBanner }
+                    folderBar
+                    if items.isEmpty {
+                        EmptyState(symbol: "lock.rectangle.stack", title: L(folderID == nil ? "vault_empty_title" : "vault_folder_empty"),
+                                   message: L("vault_empty_text"))
+                    } else {
+                        grid
+                    }
+                }
+                .padding(.horizontal, AppSpacing.pageMargin)
+                .padding(.bottom, AppSpacing.xxl)
+            }
+            .appPage()
+            .navigationTitle(L("vault_title"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar { toolbar }
+            .safeAreaInset(edge: .bottom) { if selecting { selectionBar } }
+            .overlay { progressOverlay }
+            // Rückfrage erst, wenn die Auswahl ganz geschlossen ist (sonst erscheint der Dialog nicht).
+            .sheet(isPresented: $picking, onDismiss: { confirmImport = !pendingImport.isEmpty }) {
+                StudioMediaPicker(allowsVideos: true, limit: remaining ?? 10_000) { ids in pendingImport = ids }
+            }
+            .sheet(isPresented: $moveSheet) { VaultMoveSheet(ids: selection) { selecting = false; selection = [] } }
+            .sheet(isPresented: $settingsSheet) { VaultSettingsView() }
+            .sheet(item: $share) { item in
+                ShareSheet(items: item.urls) { vault.removeTempFiles(item.urls) }
+            }
+            .fullScreenCover(item: $viewer) { request in
+                VaultViewer(ids: request.ids, start: request.index)
+            }
+            .alert(L("vault_import_confirm_title", pendingImport.count), isPresented: $confirmImport) {
+                Button(L("vault_import_action")) { Task { await runImport() } }
+                Button(L("cancel"), role: .cancel) { pendingImport = [] }
+            } message: {
+                Text(key: "vault_import_confirm_text")
+            }
+            .alert(L("vault_delete_title", selection.count), isPresented: $confirmDelete) {
+                Button(L("vault_delete"), role: .destructive) {
+                    vault.delete(selection)
+                    selection = []
+                    selecting = false
+                }
+                Button(L("cancel"), role: .cancel) {}
+            } message: {
+                Text(key: "vault_delete_text")
+            }
+            .confirmationDialog(L("vault_restore"), isPresented: $confirmRestore, titleVisibility: .visible) {
+                Button(L("vault_restore_move")) { Task { await restore(remove: true) } }
+                Button(L("vault_restore_copy")) { Task { await restore(remove: false) } }
+                Button(L("cancel"), role: .cancel) {}
+            } message: {
+                Text(key: "vault_restore_text")
+            }
+            .alert(L("vault_new_folder"), isPresented: $newFolder) {
+                TextField(L("vault_folder_name"), text: $folderName)
+                Button(L("save")) {
+                    if let f = vault.createFolder(folderName) { folderID = f.id } else { notice = L("vault_folder_invalid") }
+                    folderName = ""
+                }
+                Button(L("cancel"), role: .cancel) { folderName = "" }
+            }
+            .alert(L("vault_rename_folder"), isPresented: Binding(get: { renaming != nil }, set: { if !$0 { renaming = nil } })) {
+                TextField(L("vault_folder_name"), text: $folderName)
+                Button(L("save")) {
+                    if let r = renaming, !vault.renameFolder(r.id, to: folderName) { notice = L("vault_folder_invalid") }
+                    renaming = nil
+                    folderName = ""
+                }
+                Button(L("cancel"), role: .cancel) { renaming = nil; folderName = "" }
+            }
+            .alert(L("vault_delete_folder"), isPresented: Binding(get: { deletingFolder != nil }, set: { if !$0 { deletingFolder = nil } })) {
+                Button(L("vault_delete_folder"), role: .destructive) {
+                    if let f = deletingFolder { vault.deleteFolder(f.id); if folderID == f.id { folderID = nil } }
+                    deletingFolder = nil
+                }
+                Button(L("cancel"), role: .cancel) { deletingFolder = nil }
+            } message: {
+                Text(key: "vault_delete_folder_text")
+            }
+            .alert(L("vault_title"), isPresented: Binding(get: { notice != nil }, set: { if !$0 { notice = nil } })) {
+                Button(L("ok")) { notice = nil }
+            } message: {
+                Text(verbatim: notice ?? "")
+            }
+        }
+    }
+
+    // MARK: Teile
+
+    private var summary: some View {
+        HStack(spacing: AppSpacing.xs) {
+            Image(systemName: "lock.fill").foregroundStyle(AppColors.accent).accessibilityHidden(true)
+            Text(verbatim: summaryText).font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
+            Spacer(minLength: 0)
+        }
+        .padding(.top, AppSpacing.s)
+    }
+
+    private var summaryText: String {
+        let count = vault.index.items.count
+        let size = SizeText.bytes(vault.index.totalSize)
+        if unlimited { return L("vault_summary", count, size) }
+        return L("vault_summary_free", count, VaultPolicy.freeItemLimit, size)
+    }
+
+    private var stillInPhotosBanner: some View {
+        InfoBanner(symbol: "photo.on.rectangle", tint: AppColors.warning,
+                   text: L("vault_still_in_photos", vault.stillInLibraryCount), actionTitle: L("vault_still_in_photos_action")) {
+            Task {
+                let removed = await vault.retryLibraryRemoval(app: app)
+                if removed > 0 { notice = L("vault_removed_from_photos", removed) }
+            }
+        }
+    }
+
+    private var folderBar: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: AppSpacing.xs) {
+                chip(title: L("vault_all"), count: vault.index.items.count, selected: folderID == nil) { folderID = nil }
+                ForEach(vault.index.folders) { f in
+                    chip(title: f.name, count: vault.index.count(inFolder: f.id), selected: folderID == f.id) { folderID = f.id }
+                        .contextMenu {
+                            Button { folderName = f.name; renaming = f } label: { Label(L("vault_rename_folder"), systemImage: "pencil") }
+                            Button(role: .destructive) { deletingFolder = f } label: { Label(L("vault_delete_folder"), systemImage: "trash") }
+                        }
+                }
+                Button { newFolder = true } label: {
+                    Label(L("vault_new_folder"), systemImage: "folder.badge.plus")
+                        .font(AppTypography.subheadline.weight(.semibold))
+                        .padding(.horizontal, AppSpacing.s)
+                        .frame(minHeight: AppSpacing.minTouch)
+                }
+                .buttonStyle(.glass)
+            }
+        }
+    }
+
+    private func chip(title: String, count: Int, selected: Bool, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            HStack(spacing: 4) {
+                Text(verbatim: title)
+                Text(verbatim: "\(count)").foregroundStyle(selected ? .white.opacity(0.85) : AppColors.textSecondary).monospacedDigit()
+            }
+            .font(AppTypography.subheadline.weight(.semibold))
+            .padding(.horizontal, AppSpacing.s)
+            .frame(minHeight: AppSpacing.minTouch)
+        }
+        .modifier(GlassButtonStyleModifier(prominent: selected))
+        .accessibilityAddTraits(selected ? .isSelected : [])
+    }
+
+    private var grid: some View {
+        let columns = Array(repeating: GridItem(.flexible(), spacing: 2), count: 3)
+        let list = items
+        return LazyVGrid(columns: columns, spacing: 2) {
+            ForEach(Array(list.enumerated()), id: \.element.id) { index, item in
+                Button {
+                    if selecting {
+                        if selection.contains(item.id) { selection.remove(item.id) } else { selection.insert(item.id) }
+                    } else {
+                        viewer = VaultViewerRequest(ids: list.map(\.id), index: index)
+                    }
+                } label: {
+                    VaultCell(item: item, selected: selection.contains(item.id), selecting: selecting)
+                }
+                .buttonStyle(.plain)
+                .accessibilityAddTraits(selection.contains(item.id) ? .isSelected : [])
+            }
+        }
+    }
+
+    @ToolbarContentBuilder
+    private var toolbar: some ToolbarContent {
+        ToolbarItem(placement: .topBarLeading) {
+            Button { vault.lock() } label: { Image(systemName: "xmark") }
+                .accessibilityLabel(Text(key: "vault_close"))
+        }
+        ToolbarItemGroup(placement: .topBarTrailing) {
+            if selecting {
+                Button(L("done")) { selecting = false; selection = [] }
+            } else {
+                Menu {
+                    Picker(L("vault_sort"), selection: Binding(get: { sort }, set: { vault.setSort($0) })) {
+                        Text(key: "vault_sort_captured").tag(VaultSort.captured)
+                        Text(key: "vault_sort_added").tag(VaultSort.added)
+                        Text(key: "vault_sort_name").tag(VaultSort.name)
+                        Text(key: "vault_sort_size").tag(VaultSort.size)
+                    }
+                    Button { selecting = true } label: { Label(L("vault_select"), systemImage: "checkmark.circle") }
+                        .disabled(items.isEmpty)
+                    Button { settingsSheet = true } label: { Label(L("vault_settings"), systemImage: "gearshape") }
+                } label: {
+                    Image(systemName: "ellipsis.circle")
+                }
+                .accessibilityLabel(Text(key: "more_actions"))
+                Button { startImport() } label: { Image(systemName: "plus") }
+                    .accessibilityLabel(Text(key: "vault_add"))
+            }
+        }
+    }
+
+    private var selectionBar: some View {
+        HStack(spacing: AppSpacing.xs) {
+            Text(verbatim: LP("grid_selected", selection.count)).font(AppTypography.subheadline.weight(.semibold))
+            Spacer()
+            barButton("folder", "vault_move") { moveSheet = true }
+            barButton("square.and.arrow.up", "share") { Task { await shareSelection() } }
+            barButton("photo.badge.arrow.down", "vault_restore") { confirmRestore = true }
+            barButton("trash", "vault_delete", tint: AppColors.cleanup) { confirmDelete = true }
+        }
+        .disabled(selection.isEmpty)
+        .padding(.horizontal, AppSpacing.m)
+        .glassCapsule()
+        .padding(.horizontal, AppSpacing.pageMargin)
+        .padding(.bottom, AppSpacing.s)
+    }
+
+    private func barButton(_ symbol: String, _ key: String, tint: Color = AppColors.accent, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Image(systemName: symbol).foregroundStyle(tint).frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch)
+        }
+        .accessibilityLabel(Text(key: key))
+    }
+
+    @ViewBuilder
+    private var progressOverlay: some View {
+        if let p = vault.progress {
+            VStack(spacing: AppSpacing.s) {
+                ProgressView(value: Double(p.done), total: Double(max(1, p.total)))
+                    .frame(maxWidth: 220)
+                Text(verbatim: L("vault_progress", p.done, p.total)).font(AppTypography.footnote).monospacedDigit()
+                Text(key: "vault_progress_hint").font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
+                    .multilineTextAlignment(.center)
+            }
+            .padding(AppSpacing.l)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.ultraThinMaterial)
+        }
+    }
+
+    // MARK: Aktionen
+
+    private func startImport() {
+        if let remaining, remaining == 0 {
+            notice = L("vault_limit_reached", VaultPolicy.freeItemLimit)
+            return
+        }
+        picking = true
+    }
+
+    private func runImport() async {
+        let ids = pendingImport
+        pendingImport = []
+        let report = await vault.importAssets(ids, app: app)
+        var lines: [String] = []
+        if report.imported > 0 { lines.append(L("vault_import_done", report.imported, report.removedFromLibrary)) }
+        if report.imported > report.removedFromLibrary { lines.append(L("vault_import_declined")) }
+        if report.failed > 0 { lines.append(L("vault_import_failed", report.failed)) }
+        if report.skippedByLimit > 0 { lines.append(L("vault_import_limit", report.skippedByLimit, VaultPolicy.freeItemLimit)) }
+        if report.removedFromLibrary > 0 { lines.append(L("vault_import_recently_deleted")) }
+        notice = lines.isEmpty ? nil : lines.joined(separator: "\n\n")
+    }
+
+    private func restore(remove: Bool) async {
+        let ids = selection
+        let result = await vault.restore(ids, removeFromVault: remove, app: app)
+        selection = []
+        selecting = false
+        var text = L("vault_restore_done", result.restored)
+        if result.failed > 0 { text += "\n\n" + L("vault_restore_failed", result.failed) }
+        notice = text
+    }
+
+    private func shareSelection() async {
+        let urls = await vault.shareFiles(selection)
+        if urls.isEmpty { notice = L("share_failed") } else { share = VaultShare(urls: urls) }
+    }
+}
+
+struct VaultShare: Identifiable {
+    let id = UUID()
+    let urls: [URL]
+}
+
+struct VaultViewerRequest: Identifiable {
+    let id = UUID()
+    let ids: [String]
+    let index: Int
+}
+
+/// Rasterzelle: entschlüsseltes Vorschaubild (nur im Speicher), quadratisch beschnitten, nie verzerrt.
+struct VaultCell: View {
+    @State private var vault = VaultStore.shared
+    let item: VaultItem
+    let selected: Bool
+    let selecting: Bool
+
+    var body: some View {
+        Rectangle()
+            .fill(AppColors.backgroundTint)
+            .overlay {
+                if let image = vault.thumbnails[item.id] {
+                    Image(uiImage: image).resizable().scaledToFill().allowsHitTesting(false)
+                } else {
+                    Image(systemName: item.isVideo ? "video" : "photo").foregroundStyle(AppColors.textSecondary.opacity(0.4))
+                        .accessibilityHidden(true)
+                }
+            }
+            .aspectRatio(1, contentMode: .fit)
+            .overlay(alignment: .bottomLeading) {
+                if item.isVideo {
+                    Text(verbatim: DateText.duration(item.duration)).monospacedDigit()
+                        .font(.caption2.weight(.semibold)).foregroundStyle(.white).shadow(radius: 2).padding(4)
+                } else if item.kind == .livePhoto {
+                    Image(systemName: "livephoto").font(.caption).foregroundStyle(.white).shadow(radius: 2).padding(4)
+                }
+            }
+            .overlay(alignment: .topTrailing) {
+                if selecting {
+                    Image(systemName: selected ? "checkmark.circle.fill" : "circle")
+                        .font(.title3)
+                        .foregroundStyle(selected ? AppColors.accentFill : .white)
+                        .background(Circle().fill(.black.opacity(0.25)))
+                        .padding(4)
+                }
+            }
+            .overlay { if selected { Rectangle().fill(.white.opacity(0.18)).allowsHitTesting(false) } }
+            .clipped()
+            .contentShape(.rect)
+            .task(id: item.id) { await vault.thumbnail(item) }
+            .accessibilityElement(children: .ignore)
+            .accessibilityLabel(Text(verbatim: accessibilityText))
+    }
+
+    private var accessibilityText: String {
+        let kind = L(item.isVideo ? "vault_kind_video" : "vault_kind_photo")
+        guard let ms = item.creationMs else { return kind }
+        return kind + " · " + DateText.longWithTime(Date(timeIntervalSince1970: Double(ms) / 1000))
+    }
+}
+
+/// Ziel zum Verschieben: Ordner oder „Ohne Ordner“.
+struct VaultMoveSheet: View {
+    @Environment(\.dismiss) private var dismiss
+    @State private var vault = VaultStore.shared
+    let ids: Set<String>
+    let done: () -> Void
+
+    var body: some View {
+        NavigationStack {
+            List {
+                Button { move(nil) } label: { Label(L("vault_no_folder"), systemImage: "tray") }
+                ForEach(vault.index.folders) { f in
+                    Button { move(f.id) } label: { Label(f.name, systemImage: "folder") }
+                }
+            }
+            .navigationTitle(L("vault_move"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar { ToolbarItem(placement: .cancellationAction) { Button(L("cancel")) { dismiss() } } }
+        }
+        .presentationDetents([.medium, .large])
+    }
+
+    private func move(_ folderID: String?) {
+        vault.move(ids, to: folderID)
+        done()
+        dismiss()
+    }
+}

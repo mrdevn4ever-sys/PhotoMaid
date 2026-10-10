@@ -37,6 +37,16 @@ struct SettingsView: View {
             } footer: {
                 Text(key: "set_language_hint")
             }
+            if !VaultStore.shared.hidesEntry {
+                Section {
+                    Button { VaultStore.shared.present() } label: {
+                        Label(L("vault_title"), systemImage: "lock.rectangle.stack")
+                    }
+                    .foregroundStyle(AppColors.textPrimary)
+                } footer: {
+                    Text(key: "vault_settings_row_hint")
+                }
+            }
             Section {
                 NavigationLink(value: Route.excludedAlbums) { Text(key: "set_excluded_folders") }
                 NavigationLink(value: Route.backup) { Text(key: "backup_title") }

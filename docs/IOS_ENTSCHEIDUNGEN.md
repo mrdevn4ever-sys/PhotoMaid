@@ -26,7 +26,7 @@ iOS-Unterlagen sich widersprechen.
 | E13 | Rückfallsprache | Alte iOS-Regel „Deutsch zuerst“; Android: Englisch als Rückfall für nicht unterstützte Sprachen, Deutsch Leitsprache | **Angewendet** (wie Android) | `CFBundleDevelopmentRegion = en`, Texte in 16 Sprachen aus den Android-Übersetzungen, Tests laufen auf Deutsch |
 | E14 | „Endgültig löschen“ und Android-Papierkorb-Ansicht | iOS hat keine öffentliche API dafür | **Plattformgrenze** | nicht angeboten; Hinweis „liegt 30 Tage in ‚Zuletzt gelöscht‘ der Fotos-App“ |
 | E15 | Bearbeiten am Original | Android: nur Kopie oder Kopie + Original in den Papierkorb. iOS kann nicht destruktiv am Original speichern (`PHContentEditingOutput`, in der Fotos-App rücksetzbar, Systembestätigung) | **Vorläufig** | Vorauswahl bleibt „Als Kopie speichern“; „Original bearbeiten (rücksetzbar)“ nur auf ausdrückliche Wahl |
-| E16 | Versteckter Tresor mit Code | Neuer Wunsch des Nutzers (10.10.2026): versteckter, geschützter Ordner; Medien verlassen die Fotos-App. Konflikte: App-Review-Regel 2.3.1 (keine versteckten Funktionen), Löschen nur mit Systembestätigung, Datenverlust bei App-Löschung | **Offen** | nichts gebaut; Plan und Fragen V1–V8 in `docs/PLAN_TRESOR.md` |
+| E16 | Versteckter Tresor mit Code | Wunsch des Nutzers (10.10.2026). Konflikte: App-Review-Regel 2.3.1 (keine verborgenen Funktionen), Löschen nur mit Systembestätigung, Datenverlust bei App-Löschung | **Entschieden** (10.10.2026) | Eingang: Einrichten in Einstellungen, danach ausblendbar – öffnen mit 2 s „Heute“ halten; Backup: im iPhone-Backup (verschlüsselt); optionaler Notfallschlüssel; Free 50 Medien, Pro unbegrenzt; kein Täusch-Code; Fehlversuche nur Wartezeit; alle Teile sichern. Siehe `docs/PLAN_TRESOR.md` |
 
 ## Was du entscheiden musst (Kurzfassung)
 
@@ -37,4 +37,4 @@ iOS-Unterlagen sich widersprechen.
 5. **E9/E12** Apple-Developer-Konto, Bundle-ID, App Group anlegen; Secrets in GitHub hinterlegen.
 6. **E10** Aufteilung Free/Pro der neuen iOS-Funktionen.
 7. **E11** Wann ein macOS-CI-Lauf gestartet werden darf.
-8. **E16** Tresor: Fragen V1–V8 in `docs/PLAN_TRESOR.md` (Eingang, Code, Backup, Free/Pro …).
+8. **E16** Tresor: entschieden und gebaut; vor dem App-Store-Release Exportkonformität prüfen und Tresor in Beschreibung/Prüfnotizen nennen (`docs/PLAN_TRESOR.md`).

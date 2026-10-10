@@ -9,6 +9,7 @@ struct RootView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var shielded = false
     @State private var quick = QuickActions.shared
+    @State private var vault = VaultStore.shared
 
     var body: some View {
         @Bindable var app = app
@@ -60,6 +61,7 @@ struct RootView: View {
             case .background:
                 shielded = true
                 app.player.stop()
+                vault.lock() // Tresor beim Verlassen der App immer sperren und schließen
             default:
                 app.player.pause()
             }
@@ -83,6 +85,7 @@ struct RootView: View {
 
     private var tabs: some View {
         @Bindable var app = app
+        @Bindable var vault = vault
         return TabView(selection: $app.selectedTab) {
             Tab(L("tab_today"), systemImage: "house", value: AppTab.today) {
                 stack(.today) { TodayView() }
@@ -101,6 +104,10 @@ struct RootView: View {
             }
         }
         .tint(AppColors.accent)
+        .fullScreenCover(isPresented: $vault.isPresented, onDismiss: { vault.lock() }) {
+            VaultRootView()
+                .environment(app)
+        }
     }
 
     private func stack<Content: View>(_ tab: AppTab, @ViewBuilder content: () -> Content) -> some View {

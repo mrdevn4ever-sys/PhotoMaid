@@ -1,7 +1,11 @@
-# Plan: versteckter Tresor (E16, offen)
+# Versteckter Tresor (E16, entschieden und gebaut)
 
-Stand 10.10.2026. Noch nichts gebaut. Dieses Dokument beschreibt, was technisch und nach den App-Store-Regeln
-möglich ist, wie wir es bauen würden und was du vorher entscheiden musst (V1–V8 am Ende).
+Stand 10.10.2026. Entscheidungen des Inhabers: V1 Eingang „Heute“ 2 Sekunden halten (Einrichten über die
+Einstellungen, Eintrag danach ausblendbar), V2 PIN oder Passwort wählbar plus optional Face ID/Touch ID, V3 im
+iPhone-Backup (Variante A), V4 optionaler Notfallschlüssel, V5 Free 50 Medien / Pro unbegrenzt, V6 kein Täusch-Code,
+V7 nur Wartezeit, V8 alle Teile sichern. Code: `Sources/PhotoMaidCore/Vault/Vault.swift` (Regeln, Tests in
+`Tests/PhotoMaidCoreTests/VaultTests.swift`), `PhotoMaid/Infrastructure/Vault/`, `PhotoMaid/Features/Vault/`.
+Prüfstatus: Kern-Tests PASS; iOS-Build NOT RUN; Geräteabnahme NOT RUN.
 
 ## Wunsch
 
@@ -106,3 +110,27 @@ Geschätzter Umfang: groß (etwa so viel wie das PDF-Studio). Erst nach Freigabe
 | V6 | Täusch-Code, der einen leeren Tresor zeigt? | nicht in der ersten Version |
 | V7 | Viele Fehlversuche: nur Wartezeit oder Tresor löschen? | nur Wartezeit |
 | V8 | Was sichern: nur die aktuelle Fassung oder alle Teile (Original + Bearbeitung, Live-Photo-Video, RAW)? | alle Teile |
+
+## Umsetzung (Stand Build 3)
+
+- Ablage: `Application Support/.pmv/` – `state.json` (unverschlüsselte Einstellungen inkl. mit dem Notfallschlüssel
+  verpacktem Hauptschlüssel), `index.bin` (AES-GCM-verschlüsseltes Inhaltsverzeichnis), `o/` (Dateien, AES-GCM in
+  1-MiB-Blöcken, Schlüssel je Datei per HKDF), `t/` (verschlüsselte Vorschaubilder). Dateischutz `.complete`.
+- Hauptschlüssel: 256 Bit zufällig; mit dem Code per PBKDF2-SHA256 (600 000 Runden) verpackt im Schlüsselbund
+  (`WhenUnlocked`, wandert mit verschlüsselten Backups); Face ID: Kopie mit `biometryCurrentSet`, nur dieses Gerät.
+- Ablegen: Auswahl im Tresor → Rückfrage → alle Teile laden (auch iCloud), verschlüsselt schreiben, Prüfsumme gegen
+  den gelesenen Strom → erst dann iOS-Löschabfrage. Abgelehnt: Hinweis „liegen noch zusätzlich in der Fotos-App“
+  mit „Dort löschen“. Papierkorb- und Später-Einträge werden aufgehoben.
+- Zurücklegen: zuerst mit allen Teilen (Original + Bearbeitung + Anpassungsdaten), sonst aktuelle Fassung mit
+  Live-Photo-Video und RAW; Datum, Ort und Favorit wie vorher.
+- Sperren: beim Wechsel in den Hintergrund und beim Schließen; Schlüssel, Inhaltsverzeichnis, Vorschaubilder und
+  entschlüsselte Temp-Dateien werden verworfen. Im App-Umschalter abgedeckt.
+- Nicht protokolliert (keine Diagnose-Einträge), keine Mitteilungen, kein Spotlight, keine Kurzbefehle.
+
+## Vor dem App-Store-Release (nicht für TestFlight intern nötig)
+
+1. App-Beschreibung: „Privater Tresor mit Code für Fotos und Videos“ erwähnen (Regel 2.3.1).
+2. Prüfnotizen für App Review: „Einstellungen › Privater Tresor einrichten. Danach kann der Eintrag ausgeblendet
+   werden; geöffnet wird dann durch 2 Sekunden langes Drücken auf ‚Heute‘ oben auf der Startseite.“ Test-PIN angeben.
+3. Exportkonformität: Standard-AES über Apple CryptoKit nur auf dem Gerät. `ITSAppUsesNonExemptEncryption` steht auf
+   `false`; vor dem Release in App Store Connect bestätigen, dass die Ausnahme greift (sonst Wert anpassen).

@@ -80,6 +80,10 @@ struct TodayView: View {
                 Text(verbatim: greeting).font(AppTypography.subheadline.weight(.semibold)).foregroundStyle(AppColors.textSecondary)
                 Text(key: "tab_today").font(AppTypography.largeTitle).foregroundStyle(AppColors.textPrimary)
                     .accessibilityAddTraits(.isHeader)
+                    // Geheimer Eingang zum Tresor (E16): 2 Sekunden halten. Ohne eingerichteten Tresor passiert nichts.
+                    .onLongPressGesture(minimumDuration: 2) {
+                        if VaultStore.shared.openFromHiddenEntry() { Haptics.commit() }
+                    }
             }
             Spacer()
             GlassIconButton(symbol: "gearshape", label: L("settings")) { app.navigate(.settings) }
