@@ -7,7 +7,7 @@ Kein Release, kein TestFlight-Upload und keine Fertigmeldung, solange ein Punkt 
 | 0 | **App-Target unvollständig**: 19 verlinkte Ansichten fehlen (`docs/PLAN_WEITER.md` §1) – nicht baubar | Implementierung | Claude (Schritte A1–A8) |
 | 1 | **Keine macOS/Xcode-Umgebung genutzt**: App-Target nie kompiliert/typgeprüft, keine Simulator- oder Geräteläufe | Verifikation | macOS-CI-Lauf nach Freigabe (E11) oder Mac mit Xcode (iOS-26-SDK) |
 | 2 | Liquid-Glass-, AVFoundation- und BackgroundTasks-APIs gegen iOS-26-SDK nicht bestätigt (`glassEffect`, `GlassEffectContainer`, `.glass`, `.glassProminent`, `tabBarMinimizeBehavior`) | Verifikation | Build auf macOS |
-| 3 | Bundle-ID (`app.photomaid.ios` = Platzhalter), Development Team leer | Konfiguration | Inhaber |
+| 3 | ~~Bundle-ID, Development Team~~ erledigt: `com.mrdevn4ever.photomaid`, Team `HUN9MS832X`; `PM_BUNDLE_ID`/`PM_TEAM_ID` in GitHub gleich setzen | Konfiguration | Inhaber |
 | 4 | StoreKit 2: App-Store-Connect-Produkt (Non-Consumable) anlegen, Produkt-ID als Variable; Preis (E4) | Konfiguration | Inhaber |
 | 5 | Werbung/Rewarded (E1) nicht entschieden – derzeit ganz ohne, damit auch kein Pro-Test und kein Video-Bonus | Entscheidung | Inhaber |
 | 6 | Dritt-Anbieter-Ordner (File Provider): Offline-Verhalten unbelegt; derzeit nur `isUbiquitousItem` geprüft | Technik/Spike | Entwickler |

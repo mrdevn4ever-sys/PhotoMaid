@@ -21,7 +21,7 @@ settings:
     MARKETING_VERSION: "0.2.0"
     CURRENT_PROJECT_VERSION: "1"
     CODE_SIGN_STYLE: Automatic
-    DEVELOPMENT_TEAM: ""   # in CI aus dem Secret PM_TEAM_ID
+    DEVELOPMENT_TEAM: "HUN9MS832X"
 packages:
   PhotoMaidCore:
     path: .
@@ -91,7 +91,7 @@ targets:
       properties: {}   # bewusst leer: kein CloudKit, kein iCloud, keine App Groups (E9)
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: app.photomaid.ios   # Platzhalter; CI setzt PM_BUNDLE_ID
+        PRODUCT_BUNDLE_IDENTIFIER: com.mrdevn4ever.photomaid
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         PM_PRO_PRODUCT_ID: ""
