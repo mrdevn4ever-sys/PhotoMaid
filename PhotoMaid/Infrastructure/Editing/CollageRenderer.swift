@@ -4,73 +4,172 @@ import PhotoMaidCore
 import UIKit
 import UniformTypeIdentifiers
 
+/// Zeichnet eine Collage – mit derselben Geometrie (`CollageGeometry`) wie die Vorschau. Fotos werden nur gleichmäßig
+/// skaliert und beschnitten (nie verzerrt, nie gestreckt). Text und Sticker zeichnet derselbe `LayerRenderer` wie im
+/// Foto-Editor. Die Originale bleiben unberührt; das Ergebnis ist immer eine neue Datei.
 final class CollageRenderer: @unchecked Sendable {
     enum Failure: Error { case missingImage, renderFailed, encodeFailed }
 
+    static let shared = CollageRenderer()
+
     private let context = CIContext()
 
-    func render(project: CollageProject, images: [String: CGImage], longEdge: Int) throws -> CGImage {
-        guard !project.items.isEmpty else { throw Failure.missingImage }
-        let size = CollageExport.size(aspect: project.aspect, longEdge: CollageExport.clampLong(longEdge))
-        let color = UIColor(argb: project.background.color)
+    /// Unschärfe des Foto-Hintergrunds relativ zur kürzeren Kante (Vorschau nutzt denselben Wert).
+    static let blurFraction: CGFloat = 0.03
+
+    /// `images`: aufrechte Fotos je Medien-ID (ohne Vierteldrehung/Spiegeln). `scene` und `size` stammen aus
+    /// `CollageGeometry` – dieselben Werte wie in der Vorschau.
+    func render(project: CollageProject, scene: CollageScene, size: PxSize, images: [String: CGImage]) throws -> CGImage {
+        guard !project.items.isEmpty, size.width > 0, size.height > 0 else { throw Failure.missingImage }
+        var oriented: [Int: CGImage] = [:]
+        for (i, item) in project.items.enumerated() {
+            guard let src = images[item.mediaId] else { continue }
+            oriented[i] = Self.oriented(src, quarterTurns: item.quarterTurns, flipH: item.flipH)
+        }
+        let w = CGFloat(size.width), h = CGFloat(size.height)
         let format = UIGraphicsImageRendererFormat()
         format.scale = 1
         format.opaque = true
-        let renderer = UIGraphicsImageRenderer(size: CGSize(width: size.width, height: size.height), format: format)
-        let output = renderer.image { drawing in
-            color.setFill()
-            drawing.fill(CGRect(x: 0, y: 0, width: size.width, height: size.height))
-            let rects = project.cellRects()
-            for index in project.items.indices {
-                guard let source = images[project.items[index].mediaId] else { continue }
-                let normalized = rects[index]
-                let cell = CGRect(x: CGFloat(normalized.left) * CGFloat(size.width),
-                                  y: CGFloat(normalized.top) * CGFloat(size.height),
-                                  width: CGFloat(normalized.width) * CGFloat(size.width),
-                                  height: CGFloat(normalized.height) * CGFloat(size.height))
-                draw(source, item: project.items[index], in: cell, context: drawing.cgContext)
+        format.preferredRange = .standard
+        let base = UIGraphicsImageRenderer(size: CGSize(width: w, height: h), format: format).image { drawing in
+            let c = drawing.cgContext
+            drawBackground(project, oriented: oriented, in: c, width: w, height: h)
+            for placement in scene.placements {
+                guard let image = oriented[placement.index] else { continue }
+                Self.draw(image, placement: placement, in: c, width: w, height: h)
             }
         }
-        guard let result = output.cgImage else { throw Failure.renderFailed }
-        return result
+        guard let cg = base.cgImage else { throw Failure.renderFailed }
+        let decor = project.layers.filter { if case .redact = $0 { false } else { true } }
+        guard !decor.isEmpty else { return cg }
+        let composed = LayerRenderer.draw(decor, over: CIImage(cgImage: cg), size: size)
+        guard let out = context.createCGImage(composed, from: CGRect(x: 0, y: 0, width: w, height: h)) else {
+            throw Failure.renderFailed
+        }
+        return out
     }
 
-    func jpeg(_ image: CGImage, quality: CGFloat = 0.92) throws -> Data {
+    /// JPEG (Standard, kleiner) oder PNG (verlustfrei).
+    func encode(_ image: CGImage, format: EditFormat) throws -> Data {
         let data = NSMutableData()
-        guard let destination = CGImageDestinationCreateWithData(data as CFMutableData, UTType.jpeg.identifier as CFString, 1, nil) else {
+        let type = format == .png ? UTType.png.identifier : UTType.jpeg.identifier
+        guard let destination = CGImageDestinationCreateWithData(data as CFMutableData, type as CFString, 1, nil) else {
             throw Failure.encodeFailed
         }
-        CGImageDestinationAddImage(destination, image, [kCGImageDestinationLossyCompressionQuality: quality] as CFDictionary)
+        let props: [CFString: Any] = format == .png ? [:] : [kCGImageDestinationLossyCompressionQuality: 0.92]
+        CGImageDestinationAddImage(destination, image, props as CFDictionary)
         guard CGImageDestinationFinalize(destination) else { throw Failure.encodeFailed }
         return data as Data
     }
 
-    private func draw(_ image: CGImage, item: CollageItem, in cell: CGRect, context: CGContext) {
-        let imageAspect = Float(image.width) / Float(max(1, image.height))
-        let cellAspect = Float(cell.width / max(1, cell.height))
-        let source = CellFit.source(imgAspect: imageAspect, cellAspect: cellAspect, zoom: item.zoom,
-                                    panX: item.panX, panY: item.panY, fit: item.fit)
-        let crop = CGRect(x: CGFloat(source.left) * CGFloat(image.width),
-                          y: CGFloat(source.top) * CGFloat(image.height),
-                          width: CGFloat(source.width) * CGFloat(image.width),
-                          height: CGFloat(source.height) * CGFloat(image.height)).integral
-        guard let cropped = image.cropping(to: crop) else { return }
-        context.saveGState()
-        context.clip(to: cell)
-        context.interpolationQuality = .high
-        context.translateBy(x: 0, y: cell.midY * 2)
-        context.scaleBy(x: 1, y: -1)
-        context.draw(cropped, in: cell)
-        context.restoreGState()
+    /// Text und Sticker als durchsichtiges Bild für die Vorschau (derselbe `LayerRenderer` wie im Export).
+    func layerOverlay(_ layers: [PhotoMaidCore.Layer], size: PxSize) -> CGImage? {
+        let decor = layers.filter { if case .redact = $0 { false } else { true } }
+        guard !decor.isEmpty, size.width >= 2, size.height >= 2 else { return nil }
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        let out = LayerRenderer.draw(decor, over: CIImage(color: .clear).cropped(to: rect), size: size)
+        return context.createCGImage(out, from: rect)
     }
-}
 
-private extension UIColor {
-    convenience init(argb: ARGB) {
-        let value = UInt32(truncatingIfNeeded: argb)
-        self.init(red: CGFloat((value >> 16) & 255) / 255,
-                  green: CGFloat((value >> 8) & 255) / 255,
-                  blue: CGFloat(value & 255) / 255,
-                  alpha: CGFloat((value >> 24) & 255) / 255)
+    // MARK: Zeichnen
+
+    /// Ein Foto: gleichmäßiger Maßstab aus `source` → `photo`, beschnitten auf die (abgerundete) Fotofläche.
+    static func draw(_ image: CGImage, placement pl: CollagePlacement, in c: CGContext, width w: CGFloat, height h: CGFloat) {
+        let short = min(w, h)
+        let frame = rect(pl.frame, w, h), photo = rect(pl.photo, w, h)
+        c.saveGState()
+        if abs(pl.rotation) > 0.001 {
+            c.translateBy(x: frame.midX, y: frame.midY)
+            c.rotate(by: CGFloat(pl.rotation) * .pi / 180)
+            c.translateBy(x: -frame.midX, y: -frame.midY)
+        }
+        if pl.polaroid {
+            c.saveGState()
+            c.setShadow(offset: CGSize(width: 0, height: short * 0.006), blur: short * 0.024,
+                        color: UIColor.black.withAlphaComponent(0.3).cgColor)
+            UIColor.white.setFill()
+            UIBezierPath(roundedRect: frame, cornerRadius: CGFloat(pl.frameCorner) * short).fill()
+            c.restoreGState()
+        }
+        c.addPath(UIBezierPath(roundedRect: photo, cornerRadius: CGFloat(pl.photoCorner) * short).cgPath)
+        c.clip()
+        c.interpolationQuality = .high
+        UIImage(cgImage: image).draw(in: drawRect(image, source: pl.source, photo: photo))
+        c.restoreGState()
+    }
+
+    /// Lage des ganzen Fotos, sodass `source` genau die Fotofläche füllt – Breite und Höhe mit demselben Faktor.
+    static func drawRect(_ image: CGImage, source: NormRect, photo: CGRect) -> CGRect {
+        let iw = CGFloat(image.width), ih = CGFloat(image.height)
+        let k = photo.width / max(CGFloat(source.width) * iw, 0.0001)
+        return CGRect(x: photo.minX - CGFloat(source.left) * iw * k, y: photo.minY - CGFloat(source.top) * ih * k,
+                      width: iw * k, height: ih * k)
+    }
+
+    static func rect(_ r: NormRect, _ w: CGFloat, _ h: CGFloat) -> CGRect {
+        CGRect(x: CGFloat(r.left) * w, y: CGFloat(r.top) * h, width: CGFloat(r.width) * w, height: CGFloat(r.height) * h)
+    }
+
+    private func drawBackground(_ project: CollageProject, oriented: [Int: CGImage], in c: CGContext, width w: CGFloat,
+                                height h: CGFloat) {
+        let full = CGRect(x: 0, y: 0, width: w, height: h)
+        Self.uiColor(project.background.color).setFill()
+        c.fill(full)
+        guard project.background.kind == .blur, !project.items.isEmpty else { return }
+        let index = min(max(project.background.blurIndex, 0), project.items.count - 1)
+        guard let src = oriented[index], let blurred = blurredFill(src, width: w, height: h) else { return }
+        UIImage(cgImage: blurred).draw(in: full)
+    }
+
+    /// Foto füllend (beschnitten, nie gestreckt) und weichgezeichnet.
+    private func blurredFill(_ image: CGImage, width w: CGFloat, height h: CGFloat) -> CGImage? {
+        let iw = CGFloat(image.width), ih = CGFloat(image.height)
+        guard iw > 0, ih > 0 else { return nil }
+        let s = max(w / iw, h / ih)
+        let tx = (w - iw * s) / 2, ty = (h - ih * s) / 2
+        let scaled = CIImage(cgImage: image).transformed(by: CGAffineTransform(scaleX: s, y: s).concatenating(
+            CGAffineTransform(translationX: tx, y: ty)))
+        let radius = Double(min(w, h) * Self.blurFraction)
+        let blurred = scaled.clampedToExtent().applyingGaussianBlur(sigma: radius)
+        return context.createCGImage(blurred, from: CGRect(x: 0, y: 0, width: w, height: h))
+    }
+
+    // MARK: Quellen
+
+    /// Aufrechte Fassung (Ausrichtung des `UIImage` eingerechnet).
+    static func upright(_ image: UIImage) -> CGImage? {
+        if image.imageOrientation == .up, let cg = image.cgImage { return cg }
+        let size = CGSize(width: image.size.width * image.scale, height: image.size.height * image.scale)
+        guard size.width >= 1, size.height >= 1 else { return nil }
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = 1
+        format.preferredRange = .standard
+        return UIGraphicsImageRenderer(size: size, format: format).image { _ in
+            image.draw(in: CGRect(origin: .zero, size: size))
+        }.cgImage
+    }
+
+    /// Vierteldrehungen im Uhrzeigersinn, danach waagerecht spiegeln – für Vorschau und Export dieselbe Funktion.
+    static func oriented(_ image: CGImage, quarterTurns: Int, flipH: Bool) -> CGImage {
+        let q = ((quarterTurns % 4) + 4) % 4
+        guard q != 0 || flipH else { return image }
+        let w = CGFloat(image.width), h = CGFloat(image.height)
+        let out = q % 2 == 0 ? CGSize(width: w, height: h) : CGSize(width: h, height: w)
+        let format = UIGraphicsImageRendererFormat()
+        format.scale = 1
+        format.preferredRange = .standard
+        let rendered = UIGraphicsImageRenderer(size: out, format: format).image { drawing in
+            let c = drawing.cgContext
+            c.translateBy(x: out.width / 2, y: out.height / 2)
+            if flipH { c.scaleBy(x: -1, y: 1) }
+            c.rotate(by: CGFloat(q) * .pi / 2)
+            UIImage(cgImage: image).draw(in: CGRect(x: -w / 2, y: -h / 2, width: w, height: h))
+        }
+        return rendered.cgImage ?? image
+    }
+
+    static func uiColor(_ argb: ARGB) -> UIColor {
+        let c = ARGBColor.components(argb)
+        return UIColor(red: CGFloat(c.r), green: CGFloat(c.g), blue: CGFloat(c.b), alpha: CGFloat(c.a))
     }
 }
