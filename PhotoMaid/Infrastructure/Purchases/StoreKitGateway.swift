@@ -44,7 +44,7 @@ final class StoreKitGateway {
         state = productID == nil ? .notPurchased : (kv?.get(StoreKeys.purchaseCache) ?? .unknown)
         guard productID != nil else { return }
         updates = Task { [weak self] in
-            for await result in Transaction.updates {
+            for await result in StoreKit.Transaction.updates {
                 guard case .verified(let t) = result else { continue }
                 await t.finish()
                 await self?.refresh()
@@ -66,11 +66,11 @@ final class StoreKitGateway {
             if let p = storeProduct { product = StoreProductInfo(displayPrice: p.displayPrice, displayName: p.displayName) }
         }
         var found: PurchaseState = .notPurchased
-        for await result in Transaction.currentEntitlements {
+        for await result in StoreKit.Transaction.currentEntitlements {
             guard case .verified(let t) = result, t.productID == productID else { continue }
             if t.revocationDate == nil { found = .purchased }
         }
-        if found != .purchased, let latest = await Transaction.latest(for: productID),
+        if found != .purchased, let latest = await StoreKit.Transaction.latest(for: productID),
            case .verified(let t) = latest, t.revocationDate != nil {
             found = .revoked
         }

@@ -33,9 +33,10 @@ final class CoreDataStore: @unchecked Sendable {
         description.shouldInferMappingModelAutomatically = true
         description.cloudKitContainerOptions = nil // ausdrücklich kein CloudKit
         container.persistentStoreDescriptions = [description]
-        var loadError: Error?
-        container.loadPersistentStores { _, error in loadError = error }
-        if let loadError { throw StoreError.loadFailed(String(describing: loadError)) }
+        // Box statt erfasster `var`: kompiliert auch, falls das SDK den Handler als @Sendable markiert.
+        let loadResult = LoadErrorBox()
+        container.loadPersistentStores { _, error in loadResult.error = error }
+        if let loadError = loadResult.error { throw StoreError.loadFailed(String(describing: loadError)) }
         context = container.newBackgroundContext()
         context.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         context.undoManager = nil
@@ -172,4 +173,9 @@ final class CoreDataLedgerPersistence: LedgerPersistence, @unchecked Sendable {
 private struct DayUsageEntry: Codable {
     let day: LocalDay
     let usage: DayUsage
+}
+
+/// Ladefehler aus `loadPersistentStores` (der Handler läuft bei SQLite-Stores synchron).
+private final class LoadErrorBox: @unchecked Sendable {
+    var error: Error?
 }
