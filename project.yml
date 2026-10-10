@@ -48,6 +48,7 @@ targets:
       - sdk: VisionKit.framework
       - sdk: PencilKit.framework
       - sdk: QuickLook.framework
+      - sdk: WebKit.framework
       - sdk: MediaPlayer.framework
       - sdk: MetricKit.framework
       - sdk: UserNotifications.framework
