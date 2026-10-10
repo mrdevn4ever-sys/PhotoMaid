@@ -402,11 +402,18 @@ struct CleanupDoneView: View {
                 Image(systemName: "sparkles").font(.system(size: 52)).foregroundStyle(AppColors.accent).accessibilityHidden(true)
                 Text(key: "done_title").font(AppTypography.title).accessibilityAddTraits(.isHeader)
                 VStack(spacing: 2) {
-                    if s.isLowerBound {
-                        Text(verbatim: L("done_at_least", "").trimmingCharacters(in: .whitespaces))
-                            .font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
+                    if s.hasKnownSizes {
+                        if s.isLowerBound {
+                            Text(verbatim: L("done_at_least", "").trimmingCharacters(in: .whitespaces))
+                                .font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
+                        }
+                        Text(verbatim: SizeText.bytes(s.bytes))
+                            .font(.system(.largeTitle, design: .rounded).weight(.heavy))
+                    } else {
+                        // Bei ausschließlich unbekannten Größen nie "mind. 0 KB gespart" behaupten.
+                        Text(key: "size_unknown")
+                            .font(.system(.largeTitle, design: .rounded).weight(.heavy))
                     }
-                    Text(verbatim: SizeText.bytes(s.bytes)).font(.system(.largeTitle, design: .rounded).weight(.heavy))
                     Text(key: "done_saved").font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
                 }
                 .accessibilityElement(children: .combine)
