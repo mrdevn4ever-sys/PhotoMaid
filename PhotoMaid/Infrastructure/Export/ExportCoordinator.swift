@@ -79,19 +79,38 @@ final class ExportCoordinator {
         cancelWork?()
     }
 
-    private func beginBackground(title: String) {
-        let id = (Bundle.main.bundleIdentifier ?? "app.photomaid") + ".export." + UUID().uuidString
-        let coordinator = self
-        let registered = BGTaskScheduler.shared.register(forTaskWithIdentifier: id, using: nil) { task in
-            guard let task = task as? BGContinuedProcessingTask else { task.setTaskCompleted(success: false); return }
+    nonisolated private static func continuedHandler(for coordinator: ExportCoordinator) -> @Sendable (BGTask) -> Void {
+        { @Sendable task in
+            guard let task = task as? BGContinuedProcessingTask else {
+                task.setTaskCompleted(success: false)
+                return
+            }
             let box = UncheckedBox(task)
-            task.expirationHandler = { Task { @MainActor in coordinator.onExpired() } }
+            task.expirationHandler = { @Sendable in Task { @MainActor in coordinator.onExpired() } }
             Task { @MainActor in
                 guard coordinator.title != nil else { box.value.setTaskCompleted(success: false); return }
                 coordinator.continued = box
                 coordinator.report(coordinator.progress)
             }
         }
+    }
+
+    nonisolated private static func legacyHandler(for coordinator: ExportCoordinator) -> @Sendable () -> Void {
+        { @Sendable in
+            Task { @MainActor in
+                coordinator.onExpired()
+                if coordinator.legacyTask != .invalid {
+                    UIApplication.shared.endBackgroundTask(coordinator.legacyTask)
+                    coordinator.legacyTask = .invalid
+                }
+            }
+        }
+    }
+
+    private func beginBackground(title: String) {
+        let id = (Bundle.main.bundleIdentifier ?? "app.photomaid") + ".export." + UUID().uuidString
+        let registered = BGTaskScheduler.shared.register(forTaskWithIdentifier: id, using: nil,
+                                                        launchHandler: Self.continuedHandler(for: self))
         if registered {
             let request = BGContinuedProcessingTaskRequest(identifier: id, title: title, subtitle: L("export_bg_subtitle"))
             request.strategy = .fail
@@ -102,15 +121,8 @@ final class ExportCoordinator {
                 Diagnostics.log(.video, "continued-task-refused")
             }
         }
-        legacyTask = UIApplication.shared.beginBackgroundTask(withName: "PhotoMaid export") {
-            MainActor.assumeIsolated {
-                coordinator.onExpired()
-                if coordinator.legacyTask != .invalid {
-                    UIApplication.shared.endBackgroundTask(coordinator.legacyTask)
-                    coordinator.legacyTask = .invalid
-                }
-            }
-        }
+        legacyTask = UIApplication.shared.beginBackgroundTask(withName: "PhotoMaid export",
+                                                                 expirationHandler: Self.legacyHandler(for: self))
     }
 }
 
