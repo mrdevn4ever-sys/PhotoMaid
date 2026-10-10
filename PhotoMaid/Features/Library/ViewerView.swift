@@ -155,6 +155,7 @@ struct ViewerPage: View {
     @Binding var zoomed: Bool
     let toggleChrome: () -> Void
     @State private var image: UIImage?
+    @State private var gifData: Data?
     @State private var player: AVPlayer?
     @State private var zoom: CGFloat = 1
     @State private var zoomBase: CGFloat = 1
@@ -173,6 +174,12 @@ struct ViewerPage: View {
                 if let player {
                     VideoPlayer(player: player)
                         .environment(\.layoutDirection, .leftToRight)
+                } else if let gifData {
+                    AnimatedGIFView(data: gifData)
+                        .frame(width: geo.size.width, height: geo.size.height)
+                        .contentShape(.rect)
+                        .onTapGesture { toggleChrome() }
+                        .accessibilityLabel(Text(verbatim: app.asset(assetID).map(MediaInfoLine.describe) ?? ""))
                 } else if let image {
                     Image(uiImage: image)
                         .resizable()
@@ -212,8 +219,12 @@ struct ViewerPage: View {
                 }
             }
             .task(id: "\(assetID)-\(reload)") { await load(geo.size) }
+            .task(id: "\(assetID)-\(isCurrent)") {
+                guard isCurrent else { return }
+                if let data = await GIFPlayback.data(for: assetID), !Task.isCancelled { gifData = data }
+            }
             .onChange(of: isCurrent) { _, cur in
-                if !cur { player?.pause(); reset() }
+                if !cur { player?.pause(); gifData = nil; reset() }
             }
         }
     }
