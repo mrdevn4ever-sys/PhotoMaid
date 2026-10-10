@@ -17,3 +17,4 @@ fastlane/README.md
 *.mobileprovision
 *.cer
 __pycache__/
+.claude/worktrees/
