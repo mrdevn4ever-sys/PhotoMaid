@@ -15,11 +15,23 @@ struct EditsView: View {
                 EmptyState(symbol: "pencil.and.outline", title: L("edits_empty_title"), message: L("edits_empty_text"))
                     .listRowBackground(Color.clear)
             }
-            ForEach(records) { r in row(r) }
+            ForEach(records) { r in
+                row(r)
+                    .swipeActions {
+                        // Nur der Listeneintrag verschwindet; das gespeicherte Foto/Video bleibt in der Fotos-App.
+                        Button { forget(r) } label: { Label(L("edits_forget"), systemImage: "minus.circle") }
+                            .tint(AppColors.textSecondary)
+                    }
+            }
         }
         .appPage()
         .navigationTitle(L("edits_title"))
         .task(id: app.library.changeToken) { records = app.kv?.get(StoreKeys.edits) ?? [] }
+    }
+
+    private func forget(_ r: EditRecord) {
+        records.removeAll { $0.id == r.id }
+        try? app.kv?.set(StoreKeys.edits, records)
     }
 
     private func row(_ r: EditRecord) -> some View {
@@ -27,10 +39,19 @@ struct EditsView: View {
         let original = r.sourceId.isEmpty ? nil : app.asset(r.sourceId)
         let badge: String = switch r.kind {
         case .collage: L("edits_badge_collage")
-        default: r.mode == .replace ? L("edits_badge_replaced") : L("edits_badge_copy")
+        case .merge, .slideshow: L("edits_badge_movie")
+        case .compress: L("edits_badge_resized")
+        case .convert: L("edits_badge_converted")
+        case .frame: L("edits_badge_frame")
+        case .cutout: L("edits_badge_cutout")
+        case .gif: "GIF"
+        case .pdf: "PDF"
+        case .edit: r.mode == .replace ? L("edits_badge_replaced") : L("edits_badge_copy")
         }
         let status: String? = if r.kind == .collage {
             LP("edits_collage_from", r.count)
+        } else if !exists {
+            L("edits_result_gone")
         } else if r.sourceId.isEmpty {
             nil
         } else if original != nil {

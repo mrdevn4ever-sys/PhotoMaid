@@ -10,6 +10,16 @@ struct StoreProductInfo: Equatable, Sendable {
     let displayName: String
 }
 
+/// Was die Kaufseite zeigen kann: nie ein endloses „Preis wird geladen“.
+enum StoreOffer: Equatable, Sendable {
+    /// Dieser Build kennt keine Produkt-ID (`PM_PRO_PRODUCT_ID` leer).
+    case notConfigured
+    case loading
+    /// App Store liefert das Produkt nicht (offline, Produkt in App Store Connect fehlt oder ist nicht freigegeben).
+    case unavailable
+    case ready(StoreProductInfo)
+}
+
 enum PurchaseResult: Equatable, Sendable {
     case purchased
     case pending
@@ -30,8 +40,15 @@ final class StoreKitGateway {
     private(set) var isBusy = false
     /// Laden des Produkts gescheitert (offline, Produkt nicht freigegeben). Kein erfundener Preis.
     private(set) var productUnavailable = false
+    /// Produkt wird gerade beim App Store angefragt (nur dann „Preis wird geladen“ anzeigen).
+    private(set) var isLoadingProduct = false
     let productID: String?
     var isConfigured: Bool { productID != nil }
+    var offer: StoreOffer {
+        guard isConfigured else { return .notConfigured }
+        if let product { return .ready(product) }
+        return productUnavailable && !isLoadingProduct ? .unavailable : .loading
+    }
 
     @ObservationIgnored private var storeProduct: Product?
     @ObservationIgnored private var updates: Task<Void, Never>?
@@ -56,6 +73,8 @@ final class StoreKitGateway {
     func refresh() async {
         guard let productID else { set(.notPurchased); return }
         if storeProduct == nil {
+            isLoadingProduct = true
+            defer { isLoadingProduct = false }
             do {
                 storeProduct = try await Product.products(for: [productID]).first
                 productUnavailable = storeProduct == nil

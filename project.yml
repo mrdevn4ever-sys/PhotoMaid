@@ -59,6 +59,8 @@ targets:
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         CFBundleAllowMixedLocalizations: false
+        # Alle 16 Sprachen des Katalogs: iOS zeigt dann unter Einstellungen › PhotoMaid › Sprache die App-Sprache.
+        CFBundleLocalizations: [en, de, ar, es, fr, it, ja, ko, nl, pl, pt-PT, ro, ru, tr, uk, zh-Hans]
         UILaunchScreen: {}
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: false

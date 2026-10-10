@@ -1,5 +1,6 @@
 import PhotoMaidCore
 import SwiftUI
+import UIKit
 
 struct SettingsView: View {
     @Environment(AppModel.self) private var app
@@ -24,6 +25,19 @@ struct SettingsView: View {
                 }
             }
             Section {
+                // App-Sprache stellt iOS ein (Einstellungen › PhotoMaid › Sprache); kein eigener Sprachumschalter.
+                Button {
+                    if let url = URL(string: UIApplication.openSettingsURLString) { UIApplication.shared.open(url) }
+                } label: {
+                    LabeledContent(L("set_language"), value: languageName)
+                }
+                .foregroundStyle(AppColors.textPrimary)
+            } header: {
+                Text(key: "set_language")
+            } footer: {
+                Text(key: "set_language_hint")
+            }
+            Section {
                 NavigationLink(value: Route.excludedAlbums) { Text(key: "set_excluded_folders") }
                 NavigationLink(value: Route.backup) { Text(key: "backup_title") }
                 NavigationLink(value: Route.privacy) { Text(key: "privacy_title") }
@@ -32,6 +46,12 @@ struct SettingsView: View {
             }
         }
         .appPage().navigationTitle(L("settings"))
+    }
+
+    /// Name der aktuell verwendeten App-Sprache in dieser Sprache („Deutsch“, „English“ …).
+    private var languageName: String {
+        let id = Strings.language
+        return Locale(identifier: id).localizedString(forIdentifier: id)?.capitalized(with: Locale(identifier: id)) ?? id
     }
 
     private func setting<T>(_ path: WritableKeyPath<AppSettingsData, T>) -> Binding<T> {

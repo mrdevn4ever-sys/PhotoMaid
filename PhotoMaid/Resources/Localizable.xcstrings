@@ -59157,6 +59157,107 @@
         }
       }
     },
+    "edits_badge_converted": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "محوّلة"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Umgewandelt"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Converted"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Convertida"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Convertie"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Convertita"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "変換済み"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "변환됨"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Omgezet"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Przekonwertowane"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Convertida"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Convertită"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Преобразовано"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dönüştürüldü"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Перетворено"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已转换"
+          }
+        }
+      }
+    },
     "edits_badge_copy": {
       "extractionState": "manual",
       "localizations": {
@@ -59258,6 +59359,309 @@
         }
       }
     },
+    "edits_badge_cutout": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مقصوصة"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freigestellt"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cutout"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recorte"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Détourée"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scontornata"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "切り抜き"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "배경 제거됨"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uitgesneden"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wycięte"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recortada"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Decupată"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вырезано"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dekupe"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вирізано"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "抠图"
+          }
+        }
+      }
+    },
+    "edits_badge_frame": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لقطة ثابتة"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Standbild"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Still frame"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotograma"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Image fixe"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotogramma"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "静止画"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "정지 화면"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Still"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Klatka"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotograma"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cadru"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кадр"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kare"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Кадр"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "静帧"
+          }
+        }
+      }
+    },
+    "edits_badge_movie": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "فيلم"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Film"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Movie"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Película"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Film"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Filmato"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ムービー"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "영상"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Film"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Film"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Filme"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Film"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Фильм"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Film"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Фільм"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "影片"
+          }
+        }
+      }
+    },
     "edits_badge_replaced": {
       "extractionState": "manual",
       "localizations": {
@@ -59355,6 +59759,107 @@
           "stringUnit": {
             "state": "translated",
             "value": "原图已修改"
+          }
+        }
+      }
+    },
+    "edits_badge_resized": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مصغّرة"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verkleinert"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resized"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reducida"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Réduite"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ridotta"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "縮小"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "축소됨"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verkleind"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pomniejszone"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reduzida"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Micșorată"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Уменьшено"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Küçültüldü"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зменшено"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已缩小"
           }
         }
       }
@@ -59659,97 +60164,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "اضغط على القلم أسفل صورة أو فيديو أثناء المراجعة لقصه أو ضبطه أو اقتطاعه."
+            "value": "عندما تعدّل صورة أو تحفظ كولاجًا أو فيلمًا أو صورًا مصغّرة، تظهر النتيجة هنا."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tippe beim Durchsehen auf den Stift unter einem Foto oder Video, um es zuzuschneiden, anzupassen oder zu kürzen."
+            "value": "Wenn du ein Foto bearbeitest oder eine Collage, einen Film oder verkleinerte Bilder speicherst, erscheint das Ergebnis hier."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tap the pencil below a photo or video in the review to crop, adjust or trim it."
+            "value": "When you edit a photo or save a collage, a movie or resized images, the result appears here."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Toca el lápiz debajo de una foto o un vídeo durante la revisión para recortarlo, ajustarlo o acortarlo."
+            "value": "Cuando editas una foto o guardas un collage, una película o imágenes reducidas, el resultado aparece aquí."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Touche le crayon sous une photo ou une vidéo pendant le tri pour la recadrer, la régler ou la couper."
+            "value": "Quand tu modifies une photo ou enregistres un collage, un film ou des images réduites, le résultat apparaît ici."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tocca la matita sotto una foto o un video durante la revisione per ritagliarlo, regolarlo o tagliarlo."
+            "value": "Quando modifichi una foto o salvi un collage, un filmato o immagini ridotte, il risultato compare qui."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "見直し中に写真や動画の下にある鉛筆をタップすると、切り抜き・調整・トリミングができます。"
+            "value": "写真を編集したり、コラージュ、ムービー、縮小した画像を保存したりすると、ここに表示されます。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "검토 중 사진이나 동영상 아래의 연필을 누르면 자르기, 조정, 다듬기를 할 수 있어요."
+            "value": "사진을 편집하거나 콜라주, 영상, 축소한 이미지를 저장하면 결과가 여기에 표시돼요."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tik tijdens het doornemen op het potlood onder een foto of video om bij te snijden, aan te passen of in te korten."
+            "value": "Als je een foto bewerkt of een collage, film of verkleinde afbeeldingen bewaart, verschijnt het resultaat hier."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Podczas przeglądania dotknij ołówka pod zdjęciem lub filmem, aby je przyciąć, dostosować lub skrócić."
+            "value": "Gdy edytujesz zdjęcie lub zapiszesz kolaż, film albo pomniejszone obrazy, wynik pojawi się tutaj."
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Durante a revisão, toca no lápis por baixo de uma foto ou vídeo para recortar, ajustar ou cortar."
+            "value": "Quando editas uma fotografia ou guardas uma colagem, um filme ou imagens reduzidas, o resultado aparece aqui."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "În timpul verificării, atinge creionul de sub o fotografie sau un videoclip pentru a decupa, ajusta sau scurta."
+            "value": "Când editezi o poză sau salvezi un colaj, un film ori imagini micșorate, rezultatul apare aici."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Во время просмотра нажми на карандаш под фото или видео, чтобы обрезать, настроить или укоротить."
+            "value": "Когда ты редактируешь фото или сохраняешь коллаж, фильм или уменьшенные изображения, результат появится здесь."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "İnceleme sırasında bir fotoğraf veya videonun altındaki kaleme dokunarak kırpabilir, ayarlayabilir veya kısaltabilirsin."
+            "value": "Bir fotoğrafı düzenlediğinde ya da kolaj, film veya küçültülmüş görseller kaydettiğinde sonuç burada görünür."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Під час перегляду торкнися олівця під фото чи відео, щоб обрізати, налаштувати або вкоротити."
+            "value": "Коли ти редагуєш фото або зберігаєш колаж, фільм чи зменшені зображення, результат з’явиться тут."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "浏览时点按照片或视频下方的铅笔，即可裁剪、调整或剪辑。"
+            "value": "当你编辑照片或保存拼贴、影片或缩小的图片时，结果会显示在这里。"
           }
         }
       }
@@ -59855,103 +60360,204 @@
         }
       }
     },
+    "edits_forget": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إزالة من القائمة"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aus Liste entfernen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remove from list"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quitar de la lista"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retirer de la liste"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rimuovi dall’elenco"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "リストから削除"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "목록에서 제거"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uit lijst verwijderen"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Usuń z listy"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remover da lista"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elimină din listă"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Убрать из списка"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Listeden kaldır"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Прибрати зі списку"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "从列表中移除"
+          }
+        }
+      }
+    },
     "edits_intro": {
       "extractionState": "manual",
       "localizations": {
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "كل ما حفظته في محرر PhotoMaid، الأحدث أولًا. محفوظ على هذا الجهاز فقط."
+            "value": "كل ما حفظه PhotoMaid لك: الصور والفيديوهات المعدّلة والكولاجات والأفلام والصور المصغّرة، الأحدث أولاً. الملفات موجودة في تطبيق الصور؛ هذه القائمة تتذكر فقط ما جاء من PhotoMaid. اضغط على عنصر لعرضه."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Alles, was du im Editor von PhotoMaid gespeichert hast, neueste zuerst. Nur auf diesem Gerät gespeichert."
+            "value": "Hier findest du alles, was PhotoMaid für dich gespeichert hat: bearbeitete Fotos und Videos, Collagen, Filme und verkleinerte Bilder – neueste zuerst. Die Dateien liegen in deiner Fotos-App; diese Liste merkt sich nur, was von PhotoMaid stammt. Tippe auf einen Eintrag, um ihn anzusehen."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Everything you saved in PhotoMaid’s editor, newest first. Stored only on this device."
+            "value": "Everything PhotoMaid saved for you: edited photos and videos, collages, movies and resized images, newest first. The files are in your Photos app; this list only remembers what came from PhotoMaid. Tap an entry to view it."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Todo lo que guardaste en el editor de PhotoMaid, lo más reciente primero. Solo en este dispositivo."
+            "value": "Todo lo que PhotoMaid guardó para ti: fotos y vídeos editados, collages, películas e imágenes reducidas, lo más reciente primero. Los archivos están en tu app Fotos; esta lista solo recuerda lo que viene de PhotoMaid. Toca una entrada para verla."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tout ce que tu as enregistré dans l’éditeur de PhotoMaid, du plus récent au plus ancien. Uniquement sur cet appareil."
+            "value": "Tout ce que PhotoMaid a enregistré pour toi : photos et vidéos modifiées, collages, films et images réduites, les plus récents d’abord. Les fichiers se trouvent dans l’app Photos ; cette liste retient seulement ce qui vient de PhotoMaid. Touche une entrée pour l’afficher."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tutto ciò che hai salvato nell’editor di PhotoMaid, dal più recente. Solo su questo dispositivo."
+            "value": "Tutto ciò che PhotoMaid ha salvato per te: foto e video modificati, collage, filmati e immagini ridotte, dai più recenti. I file sono nell’app Foto; questo elenco ricorda solo ciò che proviene da PhotoMaid. Tocca una voce per vederla."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "PhotoMaidのエディタで保存したもの（新しい順）。この端末にのみ保存されます。"
+            "value": "PhotoMaidが保存したものすべて：編集した写真やビデオ、コラージュ、ムービー、縮小した画像を新しい順に表示します。ファイルは写真アプリにあり、このリストはPhotoMaidで作成したものだけを記録します。項目をタップすると表示されます。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "PhotoMaid 편집기에서 저장한 항목이에요(최신순). 이 기기에만 저장돼요."
+            "value": "PhotoMaid가 저장한 모든 것: 편집한 사진과 동영상, 콜라주, 영상, 축소한 이미지를 최신순으로 보여줘요. 파일은 사진 앱에 있고, 이 목록은 PhotoMaid에서 만든 것만 기억해요. 항목을 탭하면 볼 수 있어요."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Alles wat je in de editor van PhotoMaid hebt opgeslagen, nieuwste eerst. Alleen op dit apparaat."
+            "value": "Alles wat PhotoMaid voor je heeft bewaard: bewerkte foto’s en video’s, collages, films en verkleinde afbeeldingen, nieuwste eerst. De bestanden staan in je Foto’s-app; deze lijst onthoudt alleen wat van PhotoMaid komt. Tik op een item om het te bekijken."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Wszystko, co zapisano w edytorze PhotoMaid, od najnowszych. Tylko na tym urządzeniu."
+            "value": "Wszystko, co PhotoMaid dla Ciebie zapisał: edytowane zdjęcia i filmy, kolaże, filmy i pomniejszone obrazy, od najnowszych. Pliki są w aplikacji Zdjęcia; ta lista pamięta tylko to, co pochodzi z PhotoMaid. Stuknij wpis, aby go zobaczyć."
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tudo o que guardaste no editor do PhotoMaid, do mais recente. Só neste dispositivo."
+            "value": "Tudo o que o PhotoMaid guardou para ti: fotografias e vídeos editados, colagens, filmes e imagens reduzidas, os mais recentes primeiro. Os ficheiros estão na app Fotografias; esta lista só lembra o que veio do PhotoMaid. Toca numa entrada para a ver."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tot ce ai salvat în editorul PhotoMaid, cele mai noi primele. Doar pe acest dispozitiv."
+            "value": "Tot ce a salvat PhotoMaid pentru tine: poze și clipuri editate, colaje, filme și imagini micșorate, cele mai noi primele. Fișierele sunt în aplicația Poze; lista doar ține minte ce provine din PhotoMaid. Atinge o intrare pentru a o vedea."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Всё, что ты сохранил в редакторе PhotoMaid, сначала новые. Хранится только на этом устройстве."
+            "value": "Всё, что PhotoMaid сохранил для тебя: отредактированные фото и видео, коллажи, фильмы и уменьшенные изображения, сначала новые. Файлы лежат в приложении «Фото»; этот список лишь запоминает, что создано в PhotoMaid. Нажми на запись, чтобы открыть её."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "PhotoMaid düzenleyicisinde kaydettiğin her şey, en yeniler önce. Yalnızca bu cihazda saklanır."
+            "value": "PhotoMaid’in senin için kaydettiği her şey: düzenlenmiş fotoğraf ve videolar, kolajlar, filmler ve küçültülmüş görseller, en yeniler önce. Dosyalar Fotoğraflar uygulamasında; bu liste yalnızca PhotoMaid’den geleni hatırlar. Görmek için bir öğeye dokun."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Усе, що ти зберіг у редакторі PhotoMaid, спочатку нові. Зберігається лише на цьому пристрої."
+            "value": "Усе, що PhotoMaid зберіг для тебе: відредаговані фото й відео, колажі, фільми та зменшені зображення, спершу нові. Файли лежать у програмі «Фото»; цей список лише пам’ятає, що створено в PhotoMaid. Торкнись запису, щоб переглянути його."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "你在 PhotoMaid 编辑器中保存的所有内容，最新的在前。仅保存在此设备上。"
+            "value": "PhotoMaid 为你保存的所有内容：编辑过的照片和视频、拼贴、影片和缩小的图片，最新的在前。文件位于“照片”App 中；此列表只记录来自 PhotoMaid 的内容。轻点条目即可查看。"
           }
         }
       }
@@ -60760,6 +61366,107 @@
           "stringUnit": {
             "state": "translated",
             "value": "原图已恢复，编辑后的版本也会保留。"
+          }
+        }
+      }
+    },
+    "edits_result_gone": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "لم يعد موجودًا في تطبيق الصور"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nicht mehr in der Fotos-App"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No longer in the Photos app"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ya no está en la app Fotos"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "N’est plus dans l’app Photos"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Non è più nell’app Foto"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "写真アプリにもうありません"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "사진 앱에 더 이상 없음"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Niet meer in de Foto’s-app"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nie ma już w aplikacji Zdjęcia"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Já não está na app Fotografias"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nu mai este în aplicația Poze"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Больше нет в приложении «Фото»"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Artık Fotoğraflar uygulamasında yok"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Більше немає в програмі «Фото»"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已不在“照片”App 中"
           }
         }
       }
@@ -124611,6 +125318,107 @@
         }
       }
     },
+    "pro_store_unavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تعذّر تحميل Pro من App Store حاليًا. تحقّق من اتصالك بالإنترنت وحاول مرة أخرى."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pro lässt sich gerade nicht aus dem App Store laden. Prüfe die Internetverbindung und versuche es erneut."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pro can’t be loaded from the App Store right now. Check your internet connection and try again."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ahora no se puede cargar Pro desde el App Store. Comprueba tu conexión a internet e inténtalo de nuevo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Impossible de charger Pro depuis l’App Store pour le moment. Vérifie ta connexion Internet et réessaie."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Al momento non è possibile caricare Pro dall’App Store. Controlla la connessione a Internet e riprova."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "現在App StoreからProを読み込めません。インターネット接続を確認して、もう一度お試しください。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지금은 App Store에서 Pro를 불러올 수 없어요. 인터넷 연결을 확인하고 다시 시도하세요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pro kan nu niet uit de App Store worden geladen. Controleer je internetverbinding en probeer het opnieuw."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nie można teraz wczytać Pro z App Store. Sprawdź połączenie z internetem i spróbuj ponownie."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não é possível carregar o Pro da App Store neste momento. Verifica a ligação à internet e tenta novamente."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pro nu poate fi încărcat acum din App Store. Verifică conexiunea la internet și încearcă din nou."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Сейчас не удаётся загрузить Pro из App Store. Проверь подключение к интернету и попробуй ещё раз."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pro şu anda App Store’dan yüklenemiyor. İnternet bağlantını kontrol edip tekrar dene."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Зараз не вдається завантажити Pro з App Store. Перевір з’єднання з інтернетом і спробуй ще раз."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "目前无法从 App Store 载入 Pro。请检查网络连接后重试。"
+          }
+        }
+      }
+    },
     "pro_subtitle": {
       "extractionState": "manual",
       "localizations": {
@@ -124910,6 +125718,107 @@
           "stringUnit": {
             "state": "translated",
             "value": "此版本暂不支持购买。"
+          }
+        }
+      }
+    },
+    "pro_unavailable_detail": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هذا الإصدار غير مرتبط بعد بالشراء عبر App Store. يمكنك استخدام جميع الميزات الأخرى كالمعتاد."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese Version ist noch nicht mit dem Kauf im App Store verbunden. Alle anderen Funktionen kannst du wie gewohnt nutzen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This version isn’t connected to App Store purchases yet. You can use all other features as usual."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Esta versión aún no está conectada a las compras del App Store. Puedes usar todas las demás funciones con normalidad."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cette version n’est pas encore reliée aux achats de l’App Store. Tu peux utiliser toutes les autres fonctions comme d’habitude."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Questa versione non è ancora collegata agli acquisti dell’App Store. Puoi usare tutte le altre funzioni come sempre."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "このバージョンはまだApp Storeでの購入に接続されていません。その他の機能は通常どおり使えます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 버전은 아직 App Store 구매와 연결되지 않았어요. 다른 모든 기능은 평소처럼 사용할 수 있어요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deze versie is nog niet gekoppeld aan aankopen in de App Store. Alle andere functies kun je gewoon gebruiken."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ta wersja nie jest jeszcze połączona z zakupami w App Store. Wszystkich innych funkcji możesz używać jak zwykle."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Esta versão ainda não está ligada às compras da App Store. Podes usar todas as outras funções normalmente."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Această versiune nu este încă legată de achizițiile din App Store. Poți folosi toate celelalte funcții ca de obicei."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Эта версия пока не подключена к покупкам в App Store. Всеми остальными функциями можно пользоваться как обычно."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu sürüm henüz App Store satın alımlarına bağlı değil. Diğer tüm özellikleri her zamanki gibi kullanabilirsin."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ця версія ще не підключена до покупок в App Store. Усіма іншими функціями можна користуватися як завжди."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "此版本尚未接入 App Store 购买。其他所有功能都可以照常使用。"
           }
         }
       }
@@ -137647,6 +138556,208 @@
           "stringUnit": {
             "state": "translated",
             "value": "بعد %1$lld يوم"
+          }
+        }
+      }
+    },
+    "set_language": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اللغة"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprache"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Language"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Idioma"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Langue"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lingua"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "言語"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "언어"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Taal"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Język"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Idioma"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Limbă"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Язык"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dil"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Мова"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "语言"
+          }
+        }
+      }
+    },
+    "set_language_hint": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يستخدم PhotoMaid لغة iPhone. اضغط لاختيار لغة أخرى لـ PhotoMaid فقط من «اللغة» في إعدادات iOS."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid nutzt die Sprache deines iPhones. Tippe hier, um in den iOS-Einstellungen unter „Sprache“ eine andere Sprache nur für PhotoMaid zu wählen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid uses your iPhone’s language. Tap to choose a different language just for PhotoMaid under “Language” in iOS Settings."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid usa el idioma de tu iPhone. Toca para elegir otro idioma solo para PhotoMaid en «Idioma» de los Ajustes de iOS."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid utilise la langue de ton iPhone. Touche ici pour choisir une autre langue rien que pour PhotoMaid sous « Langue » dans les réglages iOS."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid usa la lingua del tuo iPhone. Tocca per scegliere un’altra lingua solo per PhotoMaid in «Lingua» nelle Impostazioni di iOS."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaidはiPhoneの言語を使います。タップすると、iOSの設定の「言語」でPhotoMaidだけ別の言語を選べます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid는 iPhone의 언어를 사용해요. 탭하면 iOS 설정의 ‘언어’에서 PhotoMaid에만 다른 언어를 선택할 수 있어요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid gebruikt de taal van je iPhone. Tik om bij ‘Taal’ in iOS-instellingen een andere taal alleen voor PhotoMaid te kiezen."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid używa języka iPhone’a. Stuknij, aby w ustawieniach iOS w sekcji „Język” wybrać inny język tylko dla PhotoMaid."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O PhotoMaid usa o idioma do teu iPhone. Toca para escolher outro idioma só para o PhotoMaid em “Idioma” nas Definições do iOS."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid folosește limba iPhone-ului. Atinge pentru a alege altă limbă doar pentru PhotoMaid la „Limbă” în configurările iOS."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid использует язык iPhone. Нажми, чтобы выбрать другой язык только для PhotoMaid в разделе «Язык» в настройках iOS."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid iPhone’unun dilini kullanır. Yalnızca PhotoMaid için başka bir dil seçmek üzere iOS Ayarları’nda “Dil”e gitmek için dokun."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid використовує мову iPhone. Торкнись, щоб у параметрах iOS у розділі «Мова» вибрати іншу мову лише для PhotoMaid."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid 使用 iPhone 的语言。轻点后可在 iOS 设置的“语言”中只为 PhotoMaid 选择其他语言。"
           }
         }
       }

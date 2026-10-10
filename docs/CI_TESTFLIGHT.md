@@ -27,8 +27,12 @@ gh api repos/mrdevn4ever-sys/photomaid/actions/runs/<RUN_ID>/artifacts  # Artefa
    „App IDs“, Bundle-ID z. B. `ch.deinname.photomaid` (endgültig, später nicht änderbar).
    Capability „In-App Purchase“ ist Standard.
 3. **App in App Store Connect** anlegen (Meine Apps › „+“), dieselbe Bundle-ID, Primärsprache Deutsch.
-4. **In-App-Kauf**: App › Monetarisierung › In-App-Käufe › „Nicht verbrauchbar“, Produkt-ID z. B.
-   `photomaid.pro.lifetime`, Preis wählen (E4), Beschreibung in den Sprachen.
+4. **In-App-Kauf**: App › Monetarisierung › In-App-Käufe › „Nicht verbrauchbar“, Produkt-ID exakt
+   `com.mrdevn4ever.photomaid.pro` (Standard des TestFlight-Workflows; endgültig, später nicht änderbar),
+   Referenzname „PhotoMaid Pro“, Preis wählen (E4), Anzeigename und Beschreibung mindestens in einer Sprache.
+   Voraussetzung: Vereinbarung „Kostenpflichtige Apps“ unter Geschäftlich aktiv (Steuer- und Bankdaten),
+   sonst liefert StoreKit kein Produkt und die App zeigt „Pro ist im App Store gerade nicht erreichbar“.
+   In TestFlight sind Käufe Sandbox-Käufe und kosten nichts.
 5. **API-Schlüssel**: App Store Connect › Benutzer und Zugriff › Integrationen › App Store Connect API ›
    Teamschlüssel „+“, Rolle **App-Manager**. Der vorbereitete Workflow signiert manuell mit dem vorhandenen
    Zertifikat und Profil; automatische Apple-Provisionierung wird nicht verwendet. Die `.p8`-Datei kann nur
@@ -51,8 +55,9 @@ gh api repos/mrdevn4ever-sys/photomaid/actions/runs/<RUN_ID>/artifacts  # Artefa
    Optional können als Repository-Variablen gesetzt werden: `PM_TEAM_ID`, `PM_BUNDLE_ID`,
    `PM_PRIVACY_POLICY_URL` und `PM_PRO_PRODUCT_ID`. Der Workflow verwendet für die ersten
    drei Werte sichere PhotoMaid-Fallbacks (`HUN9MS832X`, `com.mrdevn4ever.photomaid` und die
-   veröffentlichte Datenschutz-URL), falls die Variablen leer sind. `PM_PRO_PRODUCT_ID` bleibt
-   leer, damit der erste technische Build keine echten Pro-Käufe auslöst.
+   veröffentlichte Datenschutz-URL), falls die Variablen leer sind. `PM_PRO_PRODUCT_ID` fällt auf
+   `com.mrdevn4ever.photomaid.pro` zurück (TestFlight-Käufe sind Sandbox-Käufe). Ohne Produkt-ID zeigt die App
+   „Käufe sind in dieser Version noch nicht verfügbar“, nie einen erfundenen Preis.
 
 7. Die TestFlight-Aktion verwendet ausschließlich die manuelle Signierung mit dem vorhandenen
    Distributionszertifikat und App-Store-Profil. Es werden keine Apple-Zertifikate automatisch

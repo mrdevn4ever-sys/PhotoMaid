@@ -5,6 +5,7 @@ struct StudioView: View {
     @Environment(AppModel.self) private var app
     @State private var drafts: [CollageProject] = []
     @State private var pickingCollage = false
+    @State private var draftToDelete: CollageProject?
 
     var body: some View {
         ScrollView {
@@ -24,11 +25,25 @@ struct StudioView: View {
                 if !drafts.isEmpty {
                     SectionHeader(title: L("studio_drafts_header"))
                     ForEach(drafts) { draft in
-                        Button { app.navigate(.collage(draftID: UUID(uuidString: draft.id)), in: .studio) } label: {
-                            NavRow(symbol: "rectangle.3.group", title: L("studio_collage"),
-                                   subtitle: LP("studio_draft_collage", draft.items.count), showsChevron: true)
+                        HStack(spacing: AppSpacing.xs) {
+                            Button { app.navigate(.collage(draftID: UUID(uuidString: draft.id)), in: .studio) } label: {
+                                NavRow(symbol: "rectangle.3.group", title: L("studio_collage"),
+                                       subtitle: LP("studio_draft_collage", draft.items.count), showsChevron: true)
+                            }
+                            .buttonStyle(.plain)
+                            Button { draftToDelete = draft } label: {
+                                Image(systemName: "trash")
+                                    .foregroundStyle(AppColors.cleanup)
+                                    .frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch)
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityLabel(Text(key: "studio_draft_delete"))
                         }
-                        .buttonStyle(.plain)
+                        .contextMenu {
+                            Button(role: .destructive) { draftToDelete = draft } label: {
+                                Label(L("studio_draft_delete"), systemImage: "trash")
+                            }
+                        }
                     }
                     Text(key: "studio_drafts_free_note").font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
                 }
@@ -45,6 +60,21 @@ struct StudioView: View {
             }
         }
         .onAppear { drafts = app.kv?.get(StoreKeys.collageDrafts) ?? [] }
+        .confirmationDialog(L("studio_draft_delete"), isPresented: Binding(get: { draftToDelete != nil },
+                                                                           set: { if !$0 { draftToDelete = nil } }),
+                            titleVisibility: .visible, presenting: draftToDelete) { draft in
+            Button(L("studio_draft_delete"), role: .destructive) { deleteDraft(draft) }
+            Button(L("cancel"), role: .cancel) {}
+        } message: { _ in
+            Text(key: "studio_draft_delete_text")
+        }
+    }
+
+    /// Entfernt nur den Entwurf (Layout und Auswahl); Fotos und gespeicherte Collagen bleiben unverändert.
+    private func deleteDraft(_ draft: CollageProject) {
+        drafts.removeAll { $0.id == draft.id }
+        try? app.kv?.set(StoreKeys.collageDrafts, drafts)
+        draftToDelete = nil
     }
 
     private func studioButton(_ symbol: String, _ title: String, _ subtitle: String, action: @escaping () -> Void) -> some View {

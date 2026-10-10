@@ -100,7 +100,6 @@ struct RootView: View {
                 stack(.history) { HistoryView() }
             }
         }
-        .tabBarMinimizeBehavior(.onScrollDown)
         .tint(AppColors.accent)
     }
 

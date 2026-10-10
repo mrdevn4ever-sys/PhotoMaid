@@ -41,7 +41,7 @@ jobs:
       APPLE_PROVISIONING_PROFILE_BASE64: ${{ secrets.APPLE_PROVISIONING_PROFILE_BASE64 }}
       PM_TEAM_ID: ${{ vars.PM_TEAM_ID || 'HUN9MS832X' }}
       PM_BUNDLE_ID: ${{ vars.PM_BUNDLE_ID || 'com.mrdevn4ever.photomaid' }}
-      PM_PRO_PRODUCT_ID: ${{ vars.PM_PRO_PRODUCT_ID || '' }}
+      PM_PRO_PRODUCT_ID: ${{ vars.PM_PRO_PRODUCT_ID || 'com.mrdevn4ever.photomaid.pro' }}
       PM_PRIVACY_POLICY_URL: ${{ vars.PM_PRIVACY_POLICY_URL || 'https://mrdevn4ever-sys.github.io/photomaid-website/' }}
       CHANGELOG: ${{ inputs.changelog }}
       RUN_TESTS: ${{ inputs.run_tests }}

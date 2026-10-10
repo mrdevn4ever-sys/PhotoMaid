@@ -32,14 +32,15 @@ struct OnboardingFlow: View {
                 .scrollDisabled(page == 1) // Übungskarten: senkrechte Wische gehören dem Stapel
                 .scrollBounceBehavior(.basedOnSize)
                 pageDots
-                if page == 3, !app.capabilities.hasProToolsAccess {
+                // Kaufknopf nur mit echtem Preis aus dem App Store; sonst kein toter Knopf.
+                if page == 3, !app.capabilities.hasProToolsAccess, case .ready = app.purchases.offer {
                     Button {
                         Task { _ = await app.purchases.purchasePro(using: purchase) }
                     } label: {
                         Text(verbatim: offerLabel)
                     }
                     .buttonStyle(.glass)
-                    .disabled(!app.purchases.isConfigured || app.purchases.isBusy)
+                    .disabled(app.purchases.isBusy)
                 }
                 HStack {
                     if page > 0 {

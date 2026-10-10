@@ -58,6 +58,8 @@ enum BatchProcessor {
                 try? FileManager.default.removeItem(at: folder)
                 guard case .saved(let newID) = saved else { throw Failure.write }
                 _ = await app.decide(.photo(newID), .keep)
+                let kind: EditKind = recipe != nil ? .edit : (options.tool == .convert ? .convert : .compress)
+                await EditSaver.remember(app: app, newID: newID, sourceID: id, kind: kind)
                 let before: Int64?
                 let measured = await app.sizer.size(of: asset)
                 if case .known(let bytes) = measured { before = bytes } else { before = nil }

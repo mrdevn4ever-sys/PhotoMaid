@@ -206,5 +206,6 @@ enum WorkflowProcessor {
                                                       albumID: workflow.album, filename: url.lastPathComponent)
         guard case .saved(let newID) = await app.library.save(request) else { throw BatchProcessor.Failure.write }
         _ = await app.decide(.photo(newID), .keep)
+        await EditSaver.remember(app: app, newID: newID, sourceID: asset.id, kind: .edit)
     }
 }

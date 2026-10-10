@@ -77,13 +77,20 @@ enum EditSaver {
                 }
             }
         }
-        var list = app.kv?.get(StoreKeys.edits) ?? []
-        list.insert(EditRecord(newId: newID, sourceId: original?.id ?? "", mode: replaced ? .replace : .copy, video: video,
-                               atMs: Int64(Date().timeIntervalSince1970 * 1000), kind: kind, count: count), at: 0)
-        try? app.kv?.set(StoreKeys.edits, Array(list.prefix(500)))
+        remember(app: app, newID: newID, sourceID: original?.id, mode: replaced ? .replace : .copy, video: video,
+                 kind: kind, count: count)
         app.reloadLibraryIfNeeded(force: true)
         if mode == .replace { return replaced ? .replaced(newID: newID) : .replaceDeclined(newID: newID) }
         return .copy(newID: newID, bytes: bytes)
+    }
+
+    /// Nur in die Liste „Bearbeitet“ eintragen (Stapelwerkzeuge und Abläufe: Behalten und Neuladen erledigt der Aufrufer).
+    static func remember(app: AppModel, newID: String, sourceID: String?, mode: SaveMode = .copy, video: Bool = false,
+                         kind: EditKind, count: Int = 1) {
+        var list = app.kv?.get(StoreKeys.edits) ?? []
+        list.insert(EditRecord(newId: newID, sourceId: sourceID ?? "", mode: mode, video: video,
+                               atMs: Int64(Date().timeIntervalSince1970 * 1000), kind: kind, count: count), at: 0)
+        try? app.kv?.set(StoreKeys.edits, Array(list.prefix(500)))
     }
 
     /// Original nicht destruktiv bearbeiten: `PHContentEditingOutput` mit gerendertem Ergebnis und dem Rezept als
