@@ -58,7 +58,15 @@ struct PdfFromPhotosView: View {
         if PdfRules.needsPro(options, count: ids.count) && !app.capabilities.hasProToolsAccess { app.navigate(.pro); return }
         exporting = true
         defer { exporting = false }
-        do { exportURL = try await PdfServices.fromPhotos(ids: ids, options: options); app.showToast(L("pdf_saved")) }
-        catch { app.showError(L("pdf_failed")) }
+        do {
+            let saved = try await PdfServices.fromPhotos(ids: ids, options: options)
+            exportURL = saved
+            // pdf_saved has a positional filename placeholder in all localizations.
+            // Never show success before the document was durably written.
+            app.showToast(L("pdf_saved", saved.lastPathComponent))
+        } catch {
+            Diagnostics.error(.pdf, "pdf-create-save-failed", error)
+            app.showError(L("pdf_failed"))
+        }
     }
 }

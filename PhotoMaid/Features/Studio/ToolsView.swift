@@ -18,6 +18,7 @@ struct ToolsView: View {
     @State private var exposure: Float = 0
     @State private var summary: BatchSummary?
     @State private var busy = false
+    @State private var noWorkMessage: String?
 
     init(kind: ToolKind) {
         _kind = State(initialValue: kind)
@@ -32,6 +33,12 @@ struct ToolsView: View {
             .overlay { if busy { LoadingState(message: L("tools_running")).background(.ultraThinMaterial) } }
             .sheet(isPresented: $picker) {
                 StudioMediaPicker(allowsVideos: false, limit: selectionLimit, initial: Set(ids)) { ids = $0 }
+            }
+            .alert(L("notice"), isPresented: Binding(get: { noWorkMessage != nil },
+                                                     set: { if !$0 { noWorkMessage = nil } })) {
+                Button(L("ok"), role: .cancel) { noWorkMessage = nil }
+            } message: {
+                Text(verbatim: noWorkMessage ?? "")
             }
             .onChange(of: kind) { _, newKind in
                 summary = nil
@@ -303,6 +310,8 @@ struct ToolsView: View {
 
     private func run() async {
         if needsPro { app.navigate(.pro); return }
+        noWorkMessage = nil
+        summary = nil
         busy = true
         defer { busy = false }
         do {
@@ -339,9 +348,26 @@ struct ToolsView: View {
             }
             let selected = Array(ids.prefix(selectionLimit))
             let todo = kind == .batchEdit ? selected : selected.filter { needsWork($0, options) }
+            if todo.isEmpty {
+                var result = BatchSummary()
+                result.skipped = selected.count
+                summary = result
+                // The result section may be far below the visible button. Explain
+                // immediately that all images already meet the chosen settings.
+                let hint = kind == .resize ? "\n" + L("tools_size_note") : ""
+                noWorkMessage = LP("tools_skipped", selected.count) + hint
+                return
+            }
             var result = await BatchProcessor.process(app: app, ids: todo, options: options, recipe: recipe)
             result.skipped += selected.count - todo.count
             summary = result
+            if result.done == 0 && result.failed == 0 {
+                noWorkMessage = LP("tools_skipped", result.skipped)
+            } else if result.failed > 0 {
+                app.showError(LP("tools_failed_n", result.failed))
+            } else {
+                app.showToast(LP("tools_done", result.done))
+            }
         } catch {
             app.showError(L("tools_failed"))
         }

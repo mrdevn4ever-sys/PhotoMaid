@@ -33,6 +33,22 @@ final class StudioDocumentPlanTests: XCTestCase {
         XCTAssertGreaterThan(attempts, 0)
     }
 
+    func testPdfStorageIsDurableUniqueAndVerifiable() throws {
+        let root = FileManager.default.temporaryDirectory.appendingPathComponent("PhotoMaid-PDF-QA-" + UUID().uuidString,
+                                                                                  isDirectory: true)
+        defer { try? FileManager.default.removeItem(at: root) }
+        let firstBytes = Data("%PDF-1.4\nfirst".utf8)
+        let secondBytes = Data("%PDF-1.4\nsecond".utf8)
+        let first = try PdfServices.saveDocument(firstBytes, documentsDirectory: root)
+        let second = try PdfServices.saveDocument(secondBytes, documentsDirectory: root)
+        XCTAssertNotEqual(first, second, "New exports must not silently overwrite older PDFs")
+        XCTAssertEqual(first.deletingLastPathComponent().lastPathComponent, "PhotoMaid")
+        XCTAssertEqual(first.pathExtension, "pdf")
+        XCTAssertEqual(try Data(contentsOf: first), firstBytes)
+        XCTAssertEqual(try Data(contentsOf: second), secondBytes)
+        XCTAssertThrowsError(try PdfServices.saveDocument(Data(), documentsDirectory: root))
+    }
+
     func testPdfEditNeverRemovesLastPage() {
         let pages = [PdfPageRef(document: 0, page: 0)]
         XCTAssertEqual(PdfEdit.remove(pages, at: [0]), pages)

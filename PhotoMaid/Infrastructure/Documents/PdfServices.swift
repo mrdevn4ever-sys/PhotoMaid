@@ -5,6 +5,28 @@ import UIKit
 enum PdfServices {
     enum Failure: Error { case noImages, render, write }
 
+    /// Durable, user-visible storage: Files → On My iPhone → PhotoMaid → PhotoMaid.
+    /// Only generated PDFs live here. Encrypted vault data stays in Application Support.
+    /// A unique file name prevents an older PDF from being overwritten.
+    static func saveDocument(_ data: Data, documentsDirectory: URL? = nil) throws -> URL {
+        guard !data.isEmpty else { throw Failure.write }
+        let documents: URL
+        if let documentsDirectory {
+            documents = documentsDirectory
+        } else {
+            documents = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask,
+                                                    appropriateFor: nil, create: true)
+        }
+        let folder = documents.appendingPathComponent("PhotoMaid", isDirectory: true)
+        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        let filename = "PhotoMaid-\(UUID().uuidString.prefix(8)).pdf"
+        let url = folder.appendingPathComponent(filename)
+        try data.write(to: url, options: .atomic)
+        let recordedSize = try url.resourceValues(forKeys: [.fileSizeKey]).fileSize
+        guard recordedSize == data.count else { throw Failure.write }
+        return url
+    }
+
     static func fromPhotos(ids: [String], options: PdfOptions) async throws -> URL {
         let data = try await ids.asyncMapPdf { try await BatchProcessor.imageData($0) }
         let images = data.compactMap(UIImage.init(data:))
@@ -31,9 +53,7 @@ enum PdfServices {
                 }
             }
         }
-        let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".pdf")
-        try pdf.write(to: url, options: .atomic)
-        return url
+        return try saveDocument(pdf)
     }
 
     static func edited(documents: [PDFDocument], pages: [PdfPageRef]) throws -> URL {
@@ -45,9 +65,7 @@ enum PdfServices {
             output.insert(copy, at: output.pageCount)
         }
         guard output.pageCount > 0, let data = output.dataRepresentation() else { throw Failure.write }
-        let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".pdf")
-        try data.write(to: url, options: .atomic)
-        return url
+        return try saveDocument(data)
     }
 }
 
