@@ -19,8 +19,8 @@ enum PdfServices {
         }
         let folder = documents.appendingPathComponent("PhotoMaid", isDirectory: true)
         try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
-        let filename = "PhotoMaid-" + UUID().uuidString.prefix(8) + ".pdf"
-        let url = folder.appendingPathComponent(String(filename))
+        let filename = "PhotoMaid-\(UUID().uuidString.prefix(8)).pdf"
+        let url = folder.appendingPathComponent(filename)
         try data.write(to: url, options: .atomic)
         let recordedSize = try url.resourceValues(forKeys: [.fileSizeKey]).fileSize
         guard recordedSize == data.count else { throw Failure.write }
