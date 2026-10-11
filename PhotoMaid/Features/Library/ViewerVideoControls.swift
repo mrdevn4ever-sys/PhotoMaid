@@ -32,7 +32,7 @@ struct ViewerVideoControls: View {
                 .tint(.white)
                 .accessibilityLabel(Text(key: "playback_position"))
 
-                Text(verbatim: DateText.duration(duration))
+                Text(verbatim: DateText.duration(duration.isFinite && duration > 0 ? duration : 0))
                     .font(AppTypography.caption.monospacedDigit())
                     .foregroundStyle(.white)
                     .frame(minWidth: 37, alignment: .trailing)
@@ -59,8 +59,8 @@ struct ViewerVideoControls: View {
         .background(.black.opacity(0.82), in: .rect(cornerRadius: AppRadii.card))
         .overlay(RoundedRectangle(cornerRadius: AppRadii.card)
                     .strokeBorder(.white.opacity(0.2), lineWidth: 1))
-        .task {
-            // Cancellation is automatic when changing pages or hiding this dock.
+        .task(id: ObjectIdentifier(player)) {
+            // Cancellation is automatic when changing the player, page or dock.
             // No persistent timer observer, unsafe executor assumption or busy loop.
             while !Task.isCancelled {
                 let t = player.currentTime().seconds
