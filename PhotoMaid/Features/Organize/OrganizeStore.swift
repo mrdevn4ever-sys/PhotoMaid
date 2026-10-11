@@ -2,138 +2,191 @@ import Foundation
 import Observation
 import PhotoMaidCore
 
-/// Durable metadata is preserved. Only a privacy-filtered projection is public;
-/// locking/importing must not turn old notes/tags into a second vault index.
-@MainActor @Observable
+/// Schlagwörter, Notizen und Auswahlkorb – reine PhotoMaid-Verwaltungsdaten (Port von Android `OrganizeStore`).
+/// Ändern nie eine Datei, sind nie eine Entscheidung (kein Ledger), beruhen nur auf Eingaben des Nutzers.
+/// Bezüge über `localIdentifier` + Fingerabdruck (`MediaRef`), damit sie eine Neuindizierung überstehen.
+@MainActor
+@Observable
 final class OrganizeStore {
-    private var storedTags: [String: [String]]
-    private var storedNotes: [String: String]
-    private var storedRefs: [String: MediaRef]
-    private var storedBasket: [String]
-    private var storedMissing: [String] = []
-    private var privacyRevision = UUID()
+    private(set) var tags: [String: [String]]
+    private(set) var notes: [String: String]
+    private(set) var refs: [String: MediaRef]
+    private(set) var basket: [String]
+    /// Nicht mehr auffindbare Bezüge (sichtbar gezählt, nur auf Wunsch entfernt).
+    private(set) var missing: [String] = []
     @ObservationIgnored private let kv: KeyValueStore?
-
-    var tags: [String: [String]] { _ = privacyRevision; return storedTags.filter { VaultIsolation.shared.allows($0.key) } }
-    var notes: [String: String] { _ = privacyRevision; return storedNotes.filter { VaultIsolation.shared.allows($0.key) } }
-    var refs: [String: MediaRef] { _ = privacyRevision; return storedRefs.filter { VaultIsolation.shared.allows($0.key) } }
-    var basket: [String] { _ = privacyRevision; return storedBasket.filter { VaultIsolation.shared.allows($0) } }
-    var missing: [String] { _ = privacyRevision; return storedMissing.filter { VaultIsolation.shared.allows($0) } }
 
     init(kv: KeyValueStore?) {
         self.kv = kv
-        // Storage ownership, not a UI read: public getters above apply the gate.
-        storedTags = kv?.vaultMigrationValue(StoreKeys.tags) ?? [:]
-        storedNotes = kv?.vaultMigrationValue(StoreKeys.notes) ?? [:]
-        storedRefs = kv?.vaultMigrationValue(StoreKeys.refs) ?? [:]
-        storedBasket = kv?.vaultMigrationValue(StoreKeys.selectionBasket) ?? []
+        tags = kv?.get(StoreKeys.tags) ?? [:]
+        notes = kv?.get(StoreKeys.notes) ?? [:]
+        refs = kv?.get(StoreKeys.refs) ?? [:]
+        basket = kv?.get(StoreKeys.selectionBasket) ?? []
     }
-    func refreshPrivacy() { privacyRevision = UUID() }
-    func tags(of id: String) -> [String] { VaultIsolation.shared.allows(id) ? storedTags[id] ?? [] : [] }
+
+    // MARK: Schlagwörter
+
+    func tags(of id: String) -> [String] { tags[id] ?? [] }
+
     var allTags: [(tag: String, count: Int)] { TagRules.counts(tags) }
 
-    @discardableResult func addTags(_ raw: [String], to assets: [MediaAsset]) -> Bool {
+    @discardableResult
+    func addTags(_ raw: [String], to assets: [MediaAsset]) -> Bool {
         let clean = raw.compactMap(TagRules.normalize)
-        let safe = assets.filter { VaultIsolation.shared.allows($0.id) }
-        guard !clean.isEmpty, !safe.isEmpty else { return false }
-        var proposed = storedTags
-        for asset in safe { proposed[asset.id] = TagRules.merge(proposed[asset.id] ?? [], clean) }
-        return save(tags: proposed, touching: safe)
+        guard !clean.isEmpty, !assets.isEmpty else { return false }
+        var t = tags
+        for a in assets { t[a.id] = TagRules.merge(t[a.id] ?? [], clean) }
+        return save(tags: t, touching: assets)
     }
-    @discardableResult func removeTag(_ tag: String, from ids: [String]) -> Bool {
-        var proposed = storedTags
-        for id in ids where VaultIsolation.shared.allows(id) {
-            let rest = TagRules.remove(proposed[id] ?? [], tag)
-            proposed[id] = rest.isEmpty ? nil : rest
+
+    @discardableResult
+    func removeTag(_ tag: String, from ids: [String]) -> Bool {
+        var t = tags
+        for id in ids {
+            let rest = TagRules.remove(t[id] ?? [], tag)
+            t[id] = rest.isEmpty ? nil : rest
         }
-        return save(tags: proposed, touching: [])
+        return save(tags: t, touching: [])
     }
+
+    /// Medien mit diesem Schlagwort (für Suche und die Schlagwort-Ansicht).
     func ids(withTag tag: String) -> [String] {
         let key = TagRules.key(tag)
         return tags.filter { $0.value.contains { TagRules.key($0) == key } }.map(\.key)
     }
-    func note(of id: String) -> String? { VaultIsolation.shared.allows(id) ? storedNotes[id] : nil }
-    @discardableResult func setNote(_ raw: String, for asset: MediaAsset) -> Bool {
-        guard VaultIsolation.shared.allows(asset.id) else { return false }
-        var proposed = storedNotes
-        proposed[asset.id] = NoteRules.normalize(raw)
-        do { try kv?.set(StoreKeys.notes, proposed); storedNotes = proposed; remember([asset]); return true }
-        catch { return false }
-    }
-    func addToBasket(_ assets: [MediaAsset]) -> Int {
-        let safe = assets.filter { VaultIsolation.shared.allows($0.id) }
-        let (list, added) = BasketRules.add(storedBasket, safe.map(\.id))
-        guard added > 0 else { return 0 }
-        do { try kv?.set(StoreKeys.selectionBasket, list); storedBasket = list; remember(safe); return added }
-        catch { return 0 }
-    }
-    func removeFromBasket(_ ids: [String]) {
-        let remove = Set(ids.filter { VaultIsolation.shared.allows($0) })
-        let proposed = storedBasket.filter { !remove.contains($0) }
-        do { try kv?.set(StoreKeys.selectionBasket, proposed); storedBasket = proposed } catch {}
-    }
-    func clearBasket() { removeFromBasket(basket) }
 
+    // MARK: Notizen
+
+    func note(of id: String) -> String? { notes[id] }
+
+    @discardableResult
+    func setNote(_ raw: String, for asset: MediaAsset) -> Bool {
+        var n = notes
+        n[asset.id] = NoteRules.normalize(raw)
+        do {
+            try kv?.set(StoreKeys.notes, n)
+            notes = n
+            remember([asset])
+            return true
+        } catch {
+            return false
+        }
+    }
+
+    // MARK: Auswahlkorb (≠ Papierkorb)
+
+    /// Fügt hinzu (Reihenfolge des Hinzufügens, höchstens `BasketRules.max`). Gibt die Zahl der neuen Einträge zurück.
+    func addToBasket(_ assets: [MediaAsset]) -> Int {
+        let (list, added) = BasketRules.add(basket, assets.map(\.id))
+        guard added > 0 else { return 0 }
+        do {
+            try kv?.set(StoreKeys.selectionBasket, list)
+            basket = list
+            remember(assets)
+            return added
+        } catch {
+            return 0
+        }
+    }
+
+    func removeFromBasket(_ ids: [String]) {
+        let remove = Set(ids)
+        let list = basket.filter { !remove.contains($0) }
+        if (try? kv?.set(StoreKeys.selectionBasket, list)) != nil || kv == nil { basket = list }
+    }
+
+    func clearBasket() {
+        if (try? kv?.set(StoreKeys.selectionBasket, [String]())) != nil || kv == nil { basket = [] }
+    }
+
+    // MARK: Wiederfinden
+
+    /// Bezüge gegen die aktuelle Mediathek prüfen: verschobene IDs übernehmen, Fehlendes zählen (nie still löschen).
     func rematch(current: [MediaAsset]) {
         let stored = Array(refs.values)
-        guard !stored.isEmpty else { storedMissing = []; return }
-        let safe = current.filter { VaultIsolation.shared.allows($0.id) }
-        let present = Set(safe.map(\.id))
+        guard !stored.isEmpty else { missing = []; return }
+        let present = Set(current.map(\.id))
+        // Dateinamen nur für Kandidaten lesen, deren Aufnahmezeit zu einem fehlenden Bezug passt (teuer je Medium).
         let wantedTimes = Set(stored.filter { !present.contains($0.id) }.compactMap(\.takenMillis))
-        let result = Rematch.resolve(stored: stored, current: safe) { asset in
-            let millis = asset.creationDate.map { Int64($0.timeIntervalSince1970 * 1000) }
-            let name = millis.map { wantedTimes.contains($0) } == true ? PhotoLibraryService.originalFilename(asset.id) : nil
-            return MediaRef(id: asset.id, name: name, size: nil, takenMillis: millis)
+        let result = Rematch.resolve(stored: stored, current: current) { a in
+            let millis = a.creationDate.map { Int64($0.timeIntervalSince1970 * 1000) }
+            let name = millis.map { wantedTimes.contains($0) } == true ? PhotoLibraryService.originalFilename(a.id) : nil
+            return MediaRef(id: a.id, name: name, size: nil, takenMillis: millis)
         }
         if !result.moved.isEmpty { applyMoves(result.moved) }
-        storedMissing = result.missing
+        missing = result.missing
     }
+
+    /// „Nicht auffindbare entfernen“ – nur auf ausdrücklichen Wunsch.
     func forgetMissing() {
         let gone = Set(missing)
         guard !gone.isEmpty else { return }
-        var t = storedTags, n = storedNotes, r = storedRefs
+        var t = tags, n = notes, r = refs
         for id in gone { t[id] = nil; n[id] = nil; r[id] = nil }
-        let b = storedBasket.filter { !gone.contains($0) }
+        let b = basket.filter { !gone.contains($0) }
         do {
-            try kv?.set(StoreKeys.tags, t); try kv?.set(StoreKeys.notes, n)
-            try kv?.set(StoreKeys.refs, r); try kv?.set(StoreKeys.selectionBasket, b)
-            storedTags = t; storedNotes = n; storedRefs = r; storedBasket = b; storedMissing = []
+            try kv?.set(StoreKeys.tags, t)
+            try kv?.set(StoreKeys.notes, n)
+            try kv?.set(StoreKeys.refs, r)
+            try kv?.set(StoreKeys.selectionBasket, b)
+            tags = t; notes = n; refs = r; basket = b; missing = []
         } catch {}
     }
+
+    /// Nach einer Wiederherstellung aus der Sicherung (Werte bereits zugeordnet). Überschreibt nie Hiesiges.
     func mergeRestored(tags newTags: [String: [String]], notes newNotes: [String: String], basket newBasket: [String]) {
-        var t = storedTags, n = storedNotes
-        for (id, list) in newTags where VaultIsolation.shared.allows(id) { t[id] = TagRules.merge(t[id] ?? [], list) }
-        for (id, note) in newNotes where VaultIsolation.shared.allows(id) && n[id] == nil { n[id] = note }
-        let b = BasketRules.add(storedBasket, newBasket.filter { VaultIsolation.shared.allows($0) }).list
+        var t = tags, n = notes
+        for (id, list) in newTags { t[id] = TagRules.merge(t[id] ?? [], list) }
+        for (id, note) in newNotes where n[id] == nil { n[id] = note }
+        let b = BasketRules.add(basket, newBasket).list
         do {
-            try kv?.set(StoreKeys.tags, t); try kv?.set(StoreKeys.notes, n); try kv?.set(StoreKeys.selectionBasket, b)
-            storedTags = t; storedNotes = n; storedBasket = b
+            try kv?.set(StoreKeys.tags, t)
+            try kv?.set(StoreKeys.notes, n)
+            try kv?.set(StoreKeys.selectionBasket, b)
+            tags = t; notes = n; basket = b
         } catch {}
     }
-    private func save(tags proposed: [String: [String]], touching assets: [MediaAsset]) -> Bool {
-        do { try kv?.set(StoreKeys.tags, proposed); storedTags = proposed; if !assets.isEmpty { remember(assets) }; return true }
-        catch { return false }
-    }
-    private func remember(_ assets: [MediaAsset]) {
-        var proposed = storedRefs
-        for asset in assets where VaultIsolation.shared.allows(asset.id) && proposed[asset.id] == nil {
-            proposed[asset.id] = MediaRef(id: asset.id, name: PhotoLibraryService.originalFilename(asset.id), size: nil,
-                                         takenMillis: asset.creationDate.map { Int64($0.timeIntervalSince1970 * 1000) })
+
+    // MARK: Intern
+
+    private func save(tags t: [String: [String]], touching assets: [MediaAsset]) -> Bool {
+        do {
+            try kv?.set(StoreKeys.tags, t)
+            tags = t
+            if !assets.isEmpty { remember(assets) }
+            return true
+        } catch {
+            return false
         }
-        guard proposed != storedRefs else { return }
-        do { try kv?.set(StoreKeys.refs, proposed); storedRefs = proposed } catch {}
     }
+
+    /// Fingerabdruck merken (Dateiname nur lokal, nie übertragen).
+    private func remember(_ assets: [MediaAsset]) {
+        var r = refs
+        for a in assets where r[a.id] == nil {
+            r[a.id] = MediaRef(id: a.id, name: PhotoLibraryService.originalFilename(a.id), size: nil,
+                               takenMillis: a.creationDate.map { Int64($0.timeIntervalSince1970 * 1000) })
+        }
+        if r != refs, (try? kv?.set(StoreKeys.refs, r)) != nil || kv == nil { refs = r }
+    }
+
     private func applyMoves(_ moved: [String: String]) {
-        var t = storedTags, n = storedNotes, r = storedRefs, b = storedBasket
-        for (old, new) in moved where VaultIsolation.shared.allows(old) && VaultIsolation.shared.allows(new) {
-            if let value = t.removeValue(forKey: old) { t[new] = TagRules.merge(t[new] ?? [], value) }
-            if let value = n.removeValue(forKey: old), n[new] == nil { n[new] = value }
-            if let value = r.removeValue(forKey: old) { r[new] = MediaRef(id: new, name: value.name, size: value.size, takenMillis: value.takenMillis) }
+        var t = tags, n = notes, r = refs
+        var b = basket
+        for (old, new) in moved {
+            if let v = t.removeValue(forKey: old) { t[new] = TagRules.merge(t[new] ?? [], v) }
+            if let v = n.removeValue(forKey: old), n[new] == nil { n[new] = v }
+            if let v = r.removeValue(forKey: old) {
+                r[new] = MediaRef(id: new, name: v.name, size: v.size, takenMillis: v.takenMillis)
+            }
             b = b.map { $0 == old ? new : $0 }
         }
         do {
-            try kv?.set(StoreKeys.tags, t); try kv?.set(StoreKeys.notes, n); try kv?.set(StoreKeys.refs, r); try kv?.set(StoreKeys.selectionBasket, b)
-            storedTags = t; storedNotes = n; storedRefs = r; storedBasket = b
+            try kv?.set(StoreKeys.tags, t)
+            try kv?.set(StoreKeys.notes, n)
+            try kv?.set(StoreKeys.refs, r)
+            try kv?.set(StoreKeys.selectionBasket, b)
+            tags = t; notes = n; refs = r; basket = b
         } catch {}
     }
 }
