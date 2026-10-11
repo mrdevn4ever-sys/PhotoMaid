@@ -304,6 +304,107 @@
         }
       }
     },
+    "NSMicrophoneUsageDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يحتاج PhotoMaid إلى الميكروفون لملاحظة صوتية. لا يبدأ التسجيل إلا عند الضغط."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Für eine Sprachnotiz braucht PhotoMaid Zugriff auf das Mikrofon. Die Aufnahme beginnt nur nach deinem Tippen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid needs microphone access for a voice note. Recording starts only when you tap."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid necesita el micrófono para una nota de voz. La grabación empieza solo al tocar."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid a besoin du microphone pour une note vocale. L’enregistrement commence uniquement à votre demande."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid richiede il microfono per una nota vocale. La registrazione inizia solo al tuo tocco."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "音声メモにはマイクへのアクセスが必要です。タップしたときだけ録音を開始します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "음성 메모를 위해 마이크 접근이 필요합니다. 탭해야 녹음이 시작됩니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid heeft microfoontoegang nodig voor een spraaknotitie. Opname begint alleen na je tik."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid potrzebuje mikrofonu do notatki głosowej. Nagrywanie zaczyna się tylko po stuknięciu."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O PhotoMaid precisa do microfone para uma nota de voz. A gravação só começa ao tocares."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid are nevoie de microfon pentru o notiță vocală. Înregistrarea începe doar la atingere."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для голосовой заметки PhotoMaid нужен микрофон. Запись начинается только по нажатию."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid, sesli not için mikrofon erişimine ihtiyaç duyar. Kayıt yalnızca dokunduğunda başlar."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Для голосової нотатки PhotoMaid потрібен мікрофон. Запис починається лише після натискання."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid需要访问麦克风来录制语音备忘录。仅在你点击后开始录音。"
+          }
+        }
+      }
+    },
     "NSPhotoLibraryAddUsageDescription": {
       "extractionState": "manual",
       "localizations": {

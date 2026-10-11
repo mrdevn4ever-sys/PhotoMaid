@@ -243,5 +243,69 @@ import Foundation
         #expect(r.sources == nil)
         #expect(VaultDerivation.parents(of: r) == ["S"])
     }
-}
 
+    // MARK: Schnappschuss (Medien + Notizen/Dateien + Tresor-Papierkorb)
+
+    @Test func altesInhaltsverzeichnisWirdOhneVerlustUebernommen() throws {
+        let legacy = VaultIndex(folders: [VaultFolder(id: UUID().uuidString, name: "Urlaub", createdMs: 1)],
+                                items: [VaultItem(id: UUID().uuidString, kind: .photo, resources: [res(.photo)], creationMs: 1,
+                                                  addedMs: 1, sourceID: "P1")])
+        let snapshot = try VaultSnapshot.decode(JSONEncoder().encode(legacy))
+        #expect(snapshot.media == legacy)
+        #expect(snapshot.workspace == VaultWorkspace())
+        #expect(snapshot.sequence == 0)
+        try snapshot.validate()
+        #expect(snapshot.originalIDs == ["P1"])
+    }
+
+    @Test func schnappschussRundreiseUndUnbekannteVersion() throws {
+        var snapshot = VaultSnapshot(sequence: 7)
+        snapshot.media.items = [item(UUID().uuidString)]
+        var note = VaultNote(title: "Privat", nowMs: 1)
+        note.blocks = [VaultNoteBlock(style: .checklist, text: "Pass", checked: true)]
+        try snapshot.workspace.saveNote(note, expectedRevision: nil, nowMs: 1)
+        let data = try JSONEncoder().encode(snapshot)
+        #expect(try VaultSnapshot.decode(data) == snapshot)
+        var future = try JSONSerialization.jsonObject(with: data) as! [String: Any]
+        future["version"] = 3
+        #expect(throws: VaultWorkspaceError.unsupportedVersion) {
+            try VaultSnapshot.decode(JSONSerialization.data(withJSONObject: future))
+        }
+    }
+
+    @Test func papierkorbBleibtVerborgenUndBelegtPlaetze() throws {
+        let trashed = VaultItem(id: UUID().uuidString, kind: .photo, resources: [res(.photo)], creationMs: 1, addedMs: 1,
+                                originalID: "P2")
+        var snapshot = VaultSnapshot()
+        snapshot.media.items = [VaultItem(id: UUID().uuidString, kind: .photo, resources: [res(.photo)], creationMs: 1,
+                                          addedMs: 1, originalID: "P1")]
+        snapshot.workspace.mediaTrash = [VaultTrashedMedia(id: trashed.id, deletedMs: 2,
+                                                           encodedItem: try JSONEncoder().encode(trashed))]
+        try snapshot.validate()
+        #expect(snapshot.originalIDs == ["P1", "P2"])
+        #expect(snapshot.mediaSlotsUsed == 2)
+        #expect(snapshot.allMedia.map(\.id).contains(trashed.id))
+    }
+
+    @Test func endgueltigesLoeschenNieAktiverDateien() throws {
+        let live = item(UUID().uuidString)
+        var snapshot = VaultSnapshot()
+        snapshot.media.items = [live]
+        snapshot.workspace.pendingObjectPurges = [live.resources[0].file]
+        #expect(throws: VaultWorkspaceError.invalidData) { try snapshot.validate() }
+    }
+
+    @Test func dateienAusVerbundenenOrdnernBleibenVerborgen() throws {
+        var snapshot = VaultSnapshot()
+        let doc = VaultDocument(name: "Vertrag.pdf", objectName: UUID().uuidString, typeIdentifier: "com.adobe.pdf",
+                                byteCount: 7, sha256: String(repeating: "a", count: 64), nowMs: 1, sourceKey: "<0a0b>")
+        try snapshot.workspace.addFile(doc)
+        #expect(snapshot.fileConcealmentKeys == ["file:<0a0b>"])
+        try snapshot.workspace.trash([doc.id], scope: .files, nowMs: 2)
+        #expect(snapshot.fileConcealmentKeys == ["file:<0a0b>"]) // im Tresor-Papierkorb weiter verborgen
+        try snapshot.workspace.permanentlyRemove([doc.id], scope: .files)
+        #expect(snapshot.fileConcealmentKeys.isEmpty)
+        let decoded = try JSONDecoder().decode(VaultDocument.self, from: JSONEncoder().encode(doc))
+        #expect(decoded.sourceKey == "<0a0b>")
+    }
+}

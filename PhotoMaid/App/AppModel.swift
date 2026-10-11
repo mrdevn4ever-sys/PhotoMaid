@@ -332,6 +332,20 @@ final class AppModel {
         ThumbnailLoader.shared.clear()
         previews.forgetCache()
         reloadLibraryIfNeeded(force: true)
+        await refreshVaultConcealment()
+    }
+
+    /// Nach Änderungen am Tresor (z. B. beim Schließen): Dateien im Tresor im Bereich „Dateien“ ausblenden bzw. wieder
+    /// zeigen; ihre Papierkorb-/Später-Einträge aufheben. Danach Lesemodell neu.
+    func refreshVaultConcealment() async {
+        files.applyConcealment()
+        for ref in files.concealedReferences {
+            switch record(ref).disposition {
+            case .markedForCleanup: await decide(ref, .unmark)
+            case .later: await decide(ref, .removeDeferral)
+            default: break
+            }
+        }
         await publishRead()
     }
 
@@ -353,11 +367,12 @@ final class AppModel {
         // blocking SwiftUI while the swipe-out animation is running.
         let candidates = cleanupMedia.map(\.reference)
         let queueRevision = queueInputsRevision
+        let hiddenFiles = files.concealedReferences
         let derived = await Task.detached(priority: .userInitiated) { () -> (LedgerReadModel, [ItemReference]) in
-            // Medien im Tresor erscheinen weder im Papierkorb noch unter „Später“ noch im Verlauf (E16).
+            // Medien und Dateien im Tresor erscheinen weder im Papierkorb noch unter „Später“ noch im Verlauf (E16).
             let concealment = VaultConcealment.shared
             let hidden: (ItemReference) -> Bool = { ref in
-                ref.provider == .photoLibrary && concealment.isConcealed(ref.localIdentifier)
+                ref.provider == .photoLibrary ? concealment.isConcealed(ref.localIdentifier) : hiddenFiles.contains(ref)
             }
             let anyHidden = !concealment.isEmpty
             let view = LedgerReadModel(

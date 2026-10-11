@@ -15,7 +15,7 @@ struct VaultRootView: View {
             case .locked:
                 VaultLockView()
             case .unlocked:
-                if vault.needsNewCode { VaultNewCodeView() } else { VaultHomeView() }
+                if vault.needsNewCode { VaultNewCodeView() } else { VaultWorkspaceHomeView() }
             }
             if scenePhase != .active {
                 PrivacyShield().zIndex(5)

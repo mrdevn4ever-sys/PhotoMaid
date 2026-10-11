@@ -90,13 +90,13 @@ struct VaultViewer: View {
 
     private func shareCurrent() async {
         guard let item = current else { return }
-        let urls = await vault.shareFiles([item.id])
+        guard let urls = await vault.shareFiles([item.id]) else { return }
         if urls.isEmpty { notice = L("share_failed") } else { share = VaultShare(urls: urls) }
     }
 
     private func deleteCurrent() {
         guard let item = current else { return }
-        guard vault.delete([item.id], app: app) else {
+        guard vault.moveToTrash([item.id]) else {
             notice = L("vault_error_generic")
             return
         }

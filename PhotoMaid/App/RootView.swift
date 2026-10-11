@@ -72,6 +72,10 @@ struct RootView: View {
             }
         }
         .onChange(of: app.library.changeToken) { _, _ in app.reloadLibraryIfNeeded() }
+        // Tresor geschlossen: Ablagen und Löschungen darin auch im Bereich „Dateien“ abgleichen.
+        .onChange(of: vault.isPresented) { _, presented in
+            if !presented { Task { await app.refreshVaultConcealment() } }
+        }
         .onChange(of: quick.pending) { _, route in
             guard let route else { return }
             quick.pending = nil

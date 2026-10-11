@@ -29,7 +29,7 @@ struct VaultHomeView: View {
     private var sort: VaultSort { vault.settings?.sort ?? .captured }
     private var items: [VaultItem] { sort.sorted(vault.index.items(inFolder: folderID)) }
     private var unlimited: Bool { app.capabilities.hasProToolsAccess }
-    private var remaining: Int? { VaultPolicy.remaining(existing: vault.index.items.count, unlimited: unlimited) }
+    private var remaining: Int? { VaultPolicy.remaining(existing: vault.mediaSlotsUsed, unlimited: unlimited) }
 
     var body: some View {
         NavigationStack {
@@ -88,7 +88,7 @@ struct VaultHomeView: View {
             }
             .alert(L("vault_delete_title", selection.count), isPresented: $confirmDelete) {
                 Button(L("vault_delete"), role: .destructive) {
-                    if vault.delete(selection, app: app) {
+                    if vault.moveToTrash(selection) {
                         selection = []
                         selecting = false
                     } else {
@@ -155,7 +155,7 @@ struct VaultHomeView: View {
         let count = vault.index.items.count
         let size = SizeText.bytes(vault.index.totalSize)
         if unlimited { return L("vault_summary", count, size) }
-        return L("vault_summary_free", count, VaultPolicy.freeItemLimit, size)
+        return L("vault_summary_free", vault.mediaSlotsUsed, VaultPolicy.freeItemLimit, size)
     }
 
     private var stillInPhotosBanner: some View {
@@ -329,7 +329,7 @@ struct VaultHomeView: View {
     }
 
     private func shareSelection() async {
-        let urls = await vault.shareFiles(selection)
+        guard let urls = await vault.shareFiles(selection) else { return }
         if urls.isEmpty { notice = L("share_failed") } else { share = VaultShare(urls: urls) }
     }
 }

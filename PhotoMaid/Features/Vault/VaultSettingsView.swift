@@ -69,7 +69,8 @@ struct VaultSettingsView: View {
                 Button(L("vault_delete_all"), role: .destructive) { vault.deleteVault(app: app) }
                 Button(L("cancel"), role: .cancel) {}
             } message: {
-                Text(verbatim: L("vault_delete_all_text", vault.index.items.count))
+                Text(verbatim: L("vault_delete_all_text",
+                                 vault.mediaSlotsUsed + vault.workspace.notes.count + vault.workspace.files.count))
             }
             .alert(L("vault_title"), isPresented: Binding(get: { notice != nil }, set: { if !$0 { notice = nil } })) {
                 Button(L("ok")) { notice = nil }

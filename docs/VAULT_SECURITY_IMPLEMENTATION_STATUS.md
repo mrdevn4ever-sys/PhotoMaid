@@ -60,6 +60,29 @@ Echte Lücken waren:
 8. **Sichtschutz über allem**: eigenes Fenster über allen Ebenen (Betrachter, Blätter, Teilen-Fenster), bei offenem
    Tresor schon beim Wechsel in den App-Umschalter, sonst beim Wechsel in den Hintergrund.
 
+## Erweiterung Notizen · Dateien · Tresor-Papierkorb (Branch `claude/vault-workspace-20261011`)
+
+Paket-Prüfung: Der Kern (VaultWorkspace, Notiz-Journal, Audioformat, Sitzung; 32 Tests) wurde unverändert übernommen.
+Die App-Seite des Pakets war ein Parallel-Neubau auf Build-4-Stand ohne diese Isolation (eigener VaultStore,
+`privateSourceIDs` ohne Verbraucher, „Dort löschen“ über die gefilterte PhotoKit-Abfrage). Eingebaut wurde deshalb von
+Hand in den isolierten VaultStore:
+
+- Ein Schnappschuss (`VaultSnapshot`, Kern, getestet) statt getrennter Inhaltsverzeichnisse; Version 1 wird übernommen.
+- Sitzung: `VaultSessionLease` (Paket) ersetzt die Sitzungsmarke; Temp-Ordner nur über die Sitzung angelegt.
+  Inaktivitätssperre über die Systemlaufzeit; laufende gezählte Aktionen gelten als Bedienung.
+- Medien löschen = Tresor-Papierkorb; endgültiges Löschen gibt Originale in PhotoMaid frei, Wiederherstellen verbirgt
+  sie wieder. „Zurück in Fotos verschieben“ legt die Tresor-Kopie in den Papierkorb (umkehrbar).
+- Dateien aus verbundenen Ordnern: Verbergen-Liste per System-Datei-ID (siehe oben).
+- Korrekturen am Paket: Aufnahme endete bei jeder Audio-Routenänderung (schon beim Start) → nur bei Unterbrechung oder
+  entferntem Mikrofon; Benachrichtigungen auf dem Main Actor; überlappender Zugriff im Journal; Inaktivität zählte
+  Berührungen in Blättern/Vorschauen nicht; Abbruch im Teilen-Hinweis meldete „Teilen fehlgeschlagen“; Backup verlor
+  die Original-Kennung; dynamische Textkennungen; eigene Texttabelle → `Localizable.xcstrings` (16 Sprachen).
+- Nicht übernommen: eigener Sichtschutz (vorhanden), eigener Medien-Import/-Rücklage (vorhanden, mit Isolation),
+  Code-Art im Schlüsselbund.
+
+Offen in der Erweiterung: Rettungsoberfläche für unvollständige Aufnahmen nach Absturz; Notizexport als TXT/PDF;
+Office-/ZIP-Vorschau; Bildanhang direkt aus PhotoKit in Notizen; Geräteprüfung von Kamera, Mikrofon, Backup.
+
 ## Bewusst NICHT umgesetzt / Grenzen
 
 - Erneute Code-Abfrage für sensible Tresor-Einstellungen: nicht umgesetzt (Tresor ist ohnehin nur offen benutzbar und

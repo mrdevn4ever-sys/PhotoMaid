@@ -8,7 +8,11 @@ import PhotoMaidCore
 @MainActor
 @Observable
 final class FileIndex {
+    /// Ohne Dateien, die im Tresor liegen (E16).
     private(set) var entries: [FileEntry] = []
+    /// Dateien im Tresor, deren Original noch in einem verbundenen Ordner liegt (nur zum Ausfiltern).
+    private(set) var concealedReferences: Set<ItemReference> = []
+    @ObservationIgnored private var all: [FileEntry] = []
     private(set) var isScanning = false
     private(set) var failedSources: [ConnectedSourceID] = []
     private(set) var scannedAt: Date?
@@ -26,8 +30,18 @@ final class FileIndex {
             if let result { all.append(contentsOf: result) } else { failed.append(source.id) }
             if Task.isCancelled { break }
         }
-        entries = all
+        self.all = all
+        applyConcealment()
         failedSources = failed
         scannedAt = Date()
+    }
+
+    /// Nach Änderungen am Tresor: Dateien im Tresor nicht zeigen, auch wenn das Original im verbundenen Ordner liegt.
+    func applyConcealment() {
+        let concealment = VaultConcealment.shared
+        let visible = concealment.visible(all) { $0.aliasKey.map(VaultSnapshot.fileConcealmentKey) ?? "" }
+        let hidden = visible.count == all.count ? [] : Set(all.map(\.reference)).subtracting(visible.map(\.reference))
+        if visible != entries { entries = visible }
+        if hidden != concealedReferences { concealedReferences = hidden }
     }
 }

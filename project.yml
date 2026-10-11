@@ -73,6 +73,7 @@ targets:
         NSPhotoLibraryAddUsageDescription: "PhotoMaid saves edited copies, collages, videos and PDFs as new items in your library."
         NSCameraUsageDescription: "PhotoMaid uses the camera only to scan documents when you tap Scan."
         NSFaceIDUsageDescription: "PhotoMaid uses Face ID only to open content you protected with a code."
+        NSMicrophoneUsageDescription: "PhotoMaid needs microphone access for a voice note. Recording starts only when you tap."
         PHPhotoLibraryPreventAutomaticLimitedAccessAlert: true
         UIFileSharingEnabled: true
         LSSupportsOpeningDocumentsInPlace: true

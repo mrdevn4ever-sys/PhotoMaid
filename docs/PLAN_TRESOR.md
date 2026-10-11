@@ -138,6 +138,29 @@ Geschätzter Umfang: groß (etwa so viel wie das PDF-Studio). Erst nach Freigabe
   vollständige Original im Tresor; Sichtschutz über allen Ebenen.
 - Details, Grenzen und Prüfstand: `docs/VAULT_SECURITY_IMPLEMENTATION_STATUS.md`.
 
+## Erweiterung Notizen · Dateien · Tresor-Papierkorb (Branch `claude/vault-workspace-20261011`)
+
+Grundlage: Tresor-Paket vom 11.10.2026 (anderer Agent), von Hand in den isolierten VaultStore eingebaut (das
+Einbauskript des Pakets hätte VaultStore auf Build-4-Stand ersetzt und eine zweite Texttabelle eingeführt).
+
+- Tresor-interne Reiter **Medien · Notizen · Dateien**; die Hauptnavigation der App bleibt unverändert.
+- Notizen: Titel, Absätze, Überschrift, Fett, Aufzählung, Checkliste, Anheften, Ordner, Suche, Anhänge aus dem
+  Tresor; jede Eingabe sofort verschlüsselt (Notiz-Journal), Revisionsprüfung gegen Überschreiben, „Als neue Notiz
+  speichern“ / „Verwerfen“ bei Konflikt.
+- Dateien: Mehrfachimport (verschlüsselt, Prüfsumme), Ordner, Umbenennen, Sortieren, Suche, Auswahl, private Vorschau
+  (PDF, Bild, Audio, Video, Text); Dokumentenscan direkt als PDF in den Tresor; Sprachnotiz direkt verschlüsselt
+  (ohne Klartext-Zwischendatei). „Original entfernen“ nur nach Bestätigung und erneuter Prüfung.
+- **Tresor-Papierkorb** für Medien, Notizen, Dateien: Löschen im Tresor verschiebt dorthin; endgültig nur ausdrücklich;
+  keine automatische Löschung. Medien im Papierkorb belegen weiter Plätze (Free 50) und bleiben in PhotoMaid verborgen.
+- Werkzeuge: Inaktivitätssperre (30 s – 10 min, Standard 2 min; jede Berührung zählt), verschlüsseltes Backup mit
+  eigenem Passwort (mind. 12 Zeichen), additive Wiederherstellung (nie überschreiben).
+- Hinweis vor jedem Teilen/Export: die Kopie liegt dann außerhalb des Tresorschutzes.
+- Speicherformat: ein verschlüsselter Schnappschuss (Version 2: Medien + Notizen/Dateien + Papierkorb); Tresore aus
+  Build 3–5 (Version 1) werden beim Öffnen übernommen.
+- Isolation: Dateien aus in PhotoMaid verbundenen Ordnern werden nach dem Import im Bereich „Dateien“, im Papierkorb,
+  unter „Später“ und im Verlauf ausgeblendet (System-Datei-ID, nur als Prüfsumme in der Verbergen-Liste).
+- Neue Berechtigung: Mikrofon (nur beim Tippen auf „Sprachnotiz aufnehmen“; Text ohne Hinweis auf den Tresor).
+
 ## Vor dem App-Store-Release (nicht für TestFlight intern nötig)
 
 1. App-Beschreibung: „Privater Tresor mit Code für Fotos und Videos“ erwähnen (Regel 2.3.1).
