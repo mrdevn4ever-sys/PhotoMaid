@@ -74,8 +74,8 @@ targets:
         NSCameraUsageDescription: "PhotoMaid uses the camera only to scan documents when you tap Scan."
         NSFaceIDUsageDescription: "PhotoMaid uses Face ID only to open content you protected with a code."
         PHPhotoLibraryPreventAutomaticLimitedAccessAlert: true
-        UIFileSharingEnabled: false
-        LSSupportsOpeningDocumentsInPlace: false
+        UIFileSharingEnabled: true
+        LSSupportsOpeningDocumentsInPlace: true
         ITSAppUsesNonExemptEncryption: false
         BGTaskSchedulerPermittedIdentifiers:
           - $(PRODUCT_BUNDLE_IDENTIFIER).export.*
