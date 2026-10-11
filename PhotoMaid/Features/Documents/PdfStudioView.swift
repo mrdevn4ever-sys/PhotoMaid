@@ -51,5 +51,14 @@ struct PdfStudioView: View {
 
     private func toggle(_ index: Int) { if selected.contains(index) { selected.remove(index) } else { selected.insert(index) } }
     private func search() { matches = documents.reduce(0) { $0 + $1.findString(query, withOptions: .caseInsensitive).count } }
-    private func export() { do { output = try PdfServices.edited(documents: documents, pages: pages) } catch { app.showError(L("pdf_failed")) } }
+    private func export() {
+        do {
+            let saved = try PdfServices.edited(documents: documents, pages: pages)
+            output = saved
+            app.showToast(L("pdf_saved", saved.lastPathComponent))
+        } catch {
+            Diagnostics.error(.pdf, "pdf-edit-save-failed", error)
+            app.showError(L("pdf_failed"))
+        }
+    }
 }
