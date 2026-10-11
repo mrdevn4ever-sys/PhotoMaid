@@ -181,7 +181,7 @@ final class AnalysisDatabase: @unchecked Sendable {
         }
     }
 
-    func hits(kind: AnalysisKind, query: String, category: String?, limit: Int) throws -> AnalysisHitPage {
+    func hits(kind: AnalysisKind, query: String, category: String?, limit: Int, offset: Int = 0) throws -> AnalysisHitPage {
         try lock.withLock {
             let criterion: String
             switch kind {
@@ -208,7 +208,8 @@ final class AnalysisDatabase: @unchecked Sendable {
             guard try step(count) else { throw AnalysisDatabaseError.read }
             let total = Int(sqlite3_column_int64(count, 0))
             let order = kind == .blurry ? "sharpness ASC,id" : "captured DESC,id"
-            let s = try prepare("SELECT id FROM items" + whereSQL + " ORDER BY " + order + " LIMIT \(max(1, min(10000, limit)))")
+            let s = try prepare("SELECT id FROM items" + whereSQL + " ORDER BY " + order
+                                + " LIMIT \(max(1, min(10000, limit))) OFFSET \(max(0, offset))")
             defer { sqlite3_finalize(s) }; try bindings(s)
             var ids: [String] = []
             while try step(s) { if let id = string(s, 0) { ids.append(id) } }

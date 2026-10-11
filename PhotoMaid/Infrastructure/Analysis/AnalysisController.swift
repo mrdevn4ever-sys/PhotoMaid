@@ -28,19 +28,11 @@ final class AnalysisController {
     private(set) var running = false
     private(set) var reading = false
     private(set) var downloadFraction: Double?
-    private(set) var schedulingFailed = false
     private(set) var scopeRevision: UInt64 = 0
     var hasScope: Bool { validScope }
     var includeCloud = false
     var query = ""
     var category: String?
-    var backgroundAllowed = UserDefaults.standard.bool(forKey: "analysis.backgroundAllowed") {
-        didSet {
-            UserDefaults.standard.set(backgroundAllowed, forKey: "analysis.backgroundAllowed")
-            if backgroundAllowed { schedulingFailed = !AnalysisBackground.schedule() }
-            else { AnalysisBackground.cancel(); stopBackgroundRun(); schedulingFailed = false }
-        }
-    }
     @ObservationIgnored private weak var app: AppModel?
     @ObservationIgnored private var work: Task<Void, Never>?
     @ObservationIgnored private var runID: UUID?
@@ -74,8 +66,9 @@ final class AnalysisController {
     }
     private nonisolated static func backgroundHandler(_ owner: AnalysisController) -> @Sendable (Notification) -> Void {
         { [weak owner] _ in Task { @MainActor in
+            // Keine Hintergrundanalyse (noch nicht freigegeben): beim Verlassen anhalten, beim nächsten Start fortsetzen.
             guard let owner, !owner.backgroundRun else { return }
-            owner.pause(); _ = AnalysisBackground.schedule()
+            owner.pause()
         } }
     }
     private nonisolated static func foregroundHandler(_ owner: AnalysisController) -> @Sendable (Notification) -> Void {
