@@ -165,8 +165,20 @@ private struct VaultCaptureCheckpoint: Codable {
                 let value = try JSONDecoder().decode(VaultCaptureCheckpoint.self, from: plain)
                 guard value.id == url.lastPathComponent, VaultWorkspace.isOpaqueName(value.object) else { throw VaultWorkspaceError.invalidData }
                 try complete(value, lease: lease, store: store)
-            } catch { store.operationFailed = true } // Preserve encrypted data; never claim an incomplete recording was saved.
+            } catch {
+                // Unvollständige Aufnahme (z. B. App beendet): verschlüsselt aufbewahren, nie als fertig zeigen, und nur
+                // einmal melden – der Merkzettel wird beiseitegelegt statt bei jedem Öffnen erneut versucht.
+                park(url)
+                store.operationFailed = true
+            }
         }
+    }
+
+    private static func park(_ url: URL) {
+        let parked = directory.appendingPathComponent("p", isDirectory: true)
+        try? FileManager.default.createDirectory(at: parked, withIntermediateDirectories: true,
+                                                  attributes: [.protectionKey: FileProtectionType.complete])
+        try? FileManager.default.moveItem(at: url, to: parked.appendingPathComponent(url.lastPathComponent))
     }
 }
 

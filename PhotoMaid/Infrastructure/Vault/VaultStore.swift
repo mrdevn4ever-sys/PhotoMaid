@@ -475,7 +475,14 @@ final class VaultStore {
         var candidate = workspace
         try candidate.saveNote(draft, expectedRevision: expectedRevision, nowMs: nowMs)
         guard let saved = candidate.notes.first(where: { $0.id == draft.id }) else { throw VaultWorkspaceError.missingItem }
-        let baseRevision = noteJournals[draft.id]?.baseRevision ?? workspace.notes.first(where: { $0.id == draft.id })?.revision
+        // Basis bleibt die des ersten Journals seit dem letzten Schnappschuss – auch `nil` für eine neue Notiz (sonst
+        // passt das Journal beim nächsten Öffnen nicht mehr zum gespeicherten Stand).
+        let baseRevision: UInt64?
+        if let pending = noteJournals[draft.id] {
+            baseRevision = pending.baseRevision
+        } else {
+            baseRevision = workspace.notes.first(where: { $0.id == draft.id })?.revision
+        }
         let journal = VaultNoteJournal(snapshotSequence: sequence, baseRevision: baseRevision, note: saved)
         try VaultNoteJournalIO.save(journal, root: Self.root, lease: activeLease)
         workspace = candidate
@@ -514,12 +521,18 @@ final class VaultStore {
 
     /// In den Tresor-Papierkorb (umkehrbar, bleibt verschlüsselt und in PhotoMaid verborgen). Gelöscht wird nur
     /// ausdrücklich im Tresor-Papierkorb.
+    /// `forgetOriginals`: das Medium liegt wieder in der Fotos-App (Zurücklegen) – die Kopie im Papierkorb verbirgt
+    /// das Original dort nicht mehr.
     @discardableResult
-    func moveToTrash(_ ids: Set<String>) -> Bool {
+    func moveToTrash(_ ids: Set<String>, forgetOriginals: Bool = false) -> Bool {
         let now = nowMs
         do {
             try commitSnapshot { s in
-                for item in s.media.remove(ids: ids) {
+                for var item in s.media.remove(ids: ids) {
+                    if forgetOriginals {
+                        item.originalID = nil
+                        item.sourceID = nil
+                    }
                     s.workspace.mediaTrash.append(VaultTrashedMedia(id: item.id, deletedMs: now,
                                                                     encodedItem: try JSONEncoder().encode(item)))
                 }
@@ -887,9 +900,10 @@ final class VaultStore {
             progress = VaultProgress(done: i + 1, total: items.count)
         }
         progress = nil
-        if removeFromVault && lease.isValid && !leaveVault.isEmpty, moveToTrash(Set(leaveVault.map(\.id))) {
+        if removeFromVault && lease.isValid && !leaveVault.isEmpty,
+           moveToTrash(Set(leaveVault.map(\.id)), forgetOriginals: true) {
             // Das Medium ist wieder in der Fotos-App: dort auch in PhotoMaid zeigen.
-            let stillHidden = Set(index.items.compactMap { $0.originalID ?? $0.sourceID })
+            let stillHidden = snapshot.originalIDs
             reveal(leaveVault.compactMap { $0.originalID ?? $0.sourceID }.filter { !stillHidden.contains($0) }, app: app)
         }
         app.reloadLibraryIfNeeded(force: true)
