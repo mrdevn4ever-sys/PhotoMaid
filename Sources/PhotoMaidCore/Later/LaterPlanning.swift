@@ -79,11 +79,11 @@ public enum ReviewQueues {
             guard let r = records[item] else { return true }
             switch r.disposition {
             case .undecided: return true
-            // Das Foto-Backend kann bestätigte Löschungen verzögert anzeigen.
-            // Ein entfernten Eintrag nie allein wegen der PhotoKit-Sichtbarkeit
-            // erneut als unentschieden behandeln. Wiederherstellen und neu
-            // prüfen bleibt eine ausdrückliche Nutzerentscheidung.
-            case .kept, .markedForCleanup, .removed: return false
+            // Android K5 (entschieden 11.10.2026): Kandidaten sind nur vorhandene Medien – ein entferntes Item hier
+            // wurde aus „Zuletzt gelöscht“ zurückgeholt und ist wieder offen. Veraltete Mediathek-Stände, die ein
+            // gerade gelöschtes Foto noch enthalten, hält die App zurück (`AppModel.removedAwaitingReload`).
+            case .removed: return true
+            case .kept, .markedForCleanup: return false
             case .later:
                 return r.dueDay == nil && !r.bookmarked && r.skippedInSession != session
             }

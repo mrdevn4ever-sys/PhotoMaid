@@ -77,9 +77,10 @@ Echte Lücken waren:
 
 ## Tatsächlich ausgeführte Prüfung (Linux-Container)
 
-- `swift build && swift test` (PhotoMaidCore, Swift 6.4): 276 Tests; **2 FAIL**, beide schon vor diesen Änderungen auf
-  Build-4-Stand rot (`restoredFromRecentlyDeletedIsPendingAgain`, `removedItemThatIsBackCanBeDecidedAgain`, aus Commit
-  `9ea3a0e` „entfernte Medien nie erneut einreihen“, widerspricht Android K5) – Produktentscheidung offen.
+- `swift build && swift test` (PhotoMaidCore, Swift 6.4): 276 Tests PASS (+ 24 XCTest Retusche). Die zwei früher
+  roten Tests (`9ea3a0e` „entfernte Medien nie erneut einreihen“) sind mit der Entscheidung K5 vom 11.10.2026 grün:
+  aus „Zuletzt gelöscht“ zurückgeholte Medien sind wieder offen; veraltete Mediathek-Stände direkt nach dem Löschen
+  hält `AppModel.removedAwaitingReload` zurück.
   Neue Tresor-Tests (Verbergen-Liste, Original-Kennung, Übernahme alter Einträge, Kopien über mehrere Stufen,
   Gespeichert ohne Quellen): PASS.
 - `swiftc -parse` aller geänderten App-Dateien: PASS (nur Syntax).

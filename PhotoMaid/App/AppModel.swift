@@ -89,6 +89,12 @@ final class AppModel {
     @ObservationIgnored private var cleanupInFlight = false
     @ObservationIgnored private var loadTask: Task<Void, Never>?
     @ObservationIgnored private var loadedToken = -1
+    /// Gestartete Mediathek-Abfragen (fortlaufend).
+    @ObservationIgnored private var loadGeneration = 0
+    /// Gerade bestätigt gelöschte Fotos: keine Kandidaten, bis eine NACH der Löschung gestartete Abfrage vorliegt –
+    /// ältere Stände enthalten sie noch. Danach gilt K5: Ist ein Foto wieder da, wurde es zurückgeholt und ist offen.
+    @ObservationIgnored private var removedAwaitingReload: Set<ItemReference> = []
+    @ObservationIgnored private var removedHeldAtGeneration = 0
     @ObservationIgnored private var readGeneration = 0
     @ObservationIgnored private var queueInputsRevision = 0
     @ObservationIgnored private var toastTask: Task<Void, Never>?
@@ -200,6 +206,8 @@ final class AppModel {
         loadedToken = token
         loadTask?.cancel()
         isLoadingLibrary = true
+        loadGeneration += 1
+        let generation = loadGeneration
         let hiddenAlbums = settings.hiddenAlbums
         let excluded = settings.excludedAlbums
         loadTask = Task { [weak self] in
@@ -215,6 +223,7 @@ final class AppModel {
             s.byID = Dictionary(all.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
             self.snapshot = s
             self.isLoadingLibrary = false
+            if generation > self.removedHeldAtGeneration { self.removedAwaitingReload = [] }
             self.rebuildFiltered()
         }
     }
@@ -225,7 +234,9 @@ final class AppModel {
         let hiddenAlbum = snapshot.hiddenAlbumMembers
         let excluded = snapshot.excludedAlbumMembers
         visibleMedia = snapshot.all.filter { !hiddenIDs.contains($0.id) && !hiddenAlbum.contains($0.id) }
-        cleanupMedia = excluded.isEmpty ? visibleMedia : visibleMedia.filter { !excluded.contains($0.id) }
+        let held = removedAwaitingReload
+        cleanupMedia = excluded.isEmpty && held.isEmpty ? visibleMedia
+            : visibleMedia.filter { !excluded.contains($0.id) && !held.contains($0.reference) }
         rebuildPending()
     }
 
@@ -510,6 +521,11 @@ final class AppModel {
         do {
             let done = try await ledger.reconcile(intent.id, outcome: outcome)
             Diagnostics.log(.cleanup, "reconciled \(done.state.rawValue)")
+            if kind == .photoLibraryDelete {
+                removedAwaitingReload.formUnion(selected)
+                removedHeldAtGeneration = loadGeneration
+                rebuildFiltered()
+            }
             await publishRead()
             if kind == .photoLibraryDelete {
                 library.bumpChangeToken()

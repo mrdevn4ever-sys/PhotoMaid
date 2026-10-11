@@ -88,7 +88,9 @@ struct LaterTests {
         #expect(ReviewQueues.dueQueue(records: Array(recs.values), session: ReviewSessionID(), today: clock.today) == [photo(1)])
     }
 
-    @Test("Erledigte Bilder bleiben bei PhotoKit-Verzögerung dauerhaft aus dem normalen Feed")
+    /// Entfernte Medien, die wieder Kandidaten sind, wurden aus „Zuletzt gelöscht“ zurückgeholt (K5, entschieden
+    /// 11.10.2026). Veraltete PhotoKit-Stände direkt nach dem Löschen hält `AppModel.removedAwaitingReload` zurück.
+    @Test("Erledigte Bilder bleiben aus dem normalen Feed, zurückgeholte sind wieder offen (K5)")
     func completedDoNotReappear() {
         let today = LocalDay(year: 2026, month: 10, day: 11)
         let session = ReviewSessionID()
@@ -96,7 +98,7 @@ struct LaterTests {
         var records: [ItemReference: ItemRecord] = [:]
         records[photo(1)] = ItemRecord(item: photo(1), revision: 1, disposition: .kept)
         records[photo(2)] = ItemRecord(item: photo(2), revision: 1, disposition: .markedForCleanup)
-        // Can still be visible briefly in PhotoKit after the delete was confirmed.
+        // Wieder in der Mediathek (aus „Zuletzt gelöscht“ zurückgeholt).
         records[photo(3)] = ItemRecord(item: photo(3), revision: 2, disposition: .removed)
         records[photo(4)] = ItemRecord(item: photo(4), revision: 1, disposition: .later,
                                        dueDay: today.adding(days: 2))
@@ -106,7 +108,7 @@ struct LaterTests {
 
         let visible = ReviewQueues.normalQueue(candidates: refs, records: records,
                                                 session: session, today: today)
-        #expect(visible == [photo(6), photo(7)])
+        #expect(visible == [photo(3), photo(6), photo(7)])
         #expect(ReviewQueues.dueQueue(records: Array(records.values), session: session,
                                       today: today) == [photo(5)])
     }
