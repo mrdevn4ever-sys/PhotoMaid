@@ -381,29 +381,53 @@ struct AssetCell: View {
     }
 }
 
-/// Gemeinsamer Lader für kleine Vorschauen: volle Vorschauqualität, bei Bedarf aus iCloud (wie die Fotos-App); gelingt
-/// das nicht (z. B. offline), die lokal vorhandene kleine Fassung statt nichts. Abbruch der Aufgabe (Zelle aus dem
-/// Bild gescrollt) bricht auch den PhotoKit-Request samt Download ab.
+/// Gemeinsamer Lader für kleine Vorschaubilder: lokale PhotoKit-Previews
+/// immer zuerst und ohne Netz, iCloud erst wenn lokal tatsächlich nichts
+/// lieferbar ist. Kein Originaldownload für bereits sichtbare Kacheln.
+/// Cancellation beim Scrollen bricht die Requests ab.
 @MainActor
 final class ThumbnailLoader {
     static let shared = ThumbnailLoader()
     let manager = PHCachingImageManager()
     private let cache = NSCache<NSString, UIImage>()
 
-    init() { cache.countLimit = 600 }
+    init() {
+        cache.countLimit = 350
+        // NSCache evicts automatically when memory is scarce. Use a byte budget
+        // in addition to count, otherwise hundreds of large thumbnails can
+        // evict visible cells and cause a black/empty-grid reload storm.
+        cache.totalCostLimit = 48 * 1024 * 1024
+    }
 
     func image(_ assetID: String, size: CGSize) async -> UIImage? {
         guard size.width >= 1, size.height >= 1 else { return nil }
         let key = "\(assetID)|\(Int(size.width))x\(Int(size.height))" as NSString
         if let hit = cache.object(forKey: key) { return hit }
-        guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [assetID], options: nil).firstObject else { return nil }
-        if let img = await request(asset, size: size, network: true, mode: .highQualityFormat) {
-            cache.setObject(img, forKey: key)
-            return img
+        guard !Task.isCancelled,
+              let asset = PHAsset.fetchAssets(withLocalIdentifiers: [assetID], options: nil).firstObject else { return nil }
+
+        // A remote high-quality request for EVERY onscreen cell can cause the
+        // entire grid to go blank while the requests wait for iCloud.
+        // The local fast result is enough for a small scrolling thumbnail;
+        // only genuinely unavailable assets need a remote fallback.
+        if let local = await request(asset, size: size, network: false, mode: .fastFormat) {
+            guard !Task.isCancelled else { return nil }
+            store(local, key: key, size: size)
+            return local
         }
         guard !Task.isCancelled else { return nil }
-        // Ersatz ohne Netz; nicht zwischengespeichert, damit beim nächsten Mal die volle Fassung versucht wird.
-        return await request(asset, size: size, network: false, mode: .fastFormat)
+        if let remote = await request(asset, size: size, network: true, mode: .highQualityFormat) {
+            guard !Task.isCancelled else { return nil }
+            store(remote, key: key, size: size)
+            return remote
+        }
+        return nil
+    }
+
+    private func store(_ image: UIImage, key: NSString, size: CGSize) {
+        let cost = image.cgImage.map { $0.bytesPerRow * $0.height }
+            ?? Int(max(1, size.width) * max(1, size.height) * 4)
+        cache.setObject(image, forKey: key, cost: cost)
     }
 
     private func request(_ asset: PHAsset, size: CGSize, network: Bool,
