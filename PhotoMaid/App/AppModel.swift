@@ -4,18 +4,8 @@ import Photos
 import PhotoMaidCore
 import SwiftUI
 
-enum AppTab: String, Hashable, CaseIterable, Sendable {
-    case today, library, cleanup, studio, history
-}
-
-enum CleanupRunResult: Sendable {
-    case finished(OperationIntent)
-    case rejected(CleanupError)
-    /// Systemoperation lief, das Ergebnis ist unklar: beim nächsten Start ohne erneutes Löschen abgleichen.
-    case needsReconciliation
-}
-
-/// Abgeleitete Lesemodelle (nach jeder Mutation aus dem Ledger neu berechnet, abseits des Main-Threads).
+enum AppTab: String, Hashable, CaseIterable, Sendable { case today, library, cleanup, studio, history }
+enum CleanupRunResult: Sendable { case finished(OperationIntent), rejected(CleanupError), needsReconciliation }
 struct LedgerReadModel: Sendable {
     var records: [ItemReference: ItemRecord] = [:]
     var basket: [ItemRecord] = []
@@ -25,8 +15,6 @@ struct LedgerReadModel: Sendable {
     var canUndo = false
     var reconciliationNeeded: [OperationIntent] = []
 }
-
-/// Stand der Mediathek (einmal geladen, nach jeder Änderung neu). Nur Beschreibungen, keine Bilder.
 struct LibrarySnapshot: Sendable {
     var all: [MediaAsset] = []
     var byID: [String: MediaAsset] = [:]
@@ -35,10 +23,7 @@ struct LibrarySnapshot: Sendable {
     var loaded = false
 }
 
-/// Zentrale App-Instanz: Abhängigkeiten und abgeleitete Lesemodelle (Port von Android `AppModel`).
-/// Zustandsändernde Entscheidungen laufen ausschließlich über den `DecisionLedger`.
-@MainActor
-@Observable
+@MainActor @Observable
 final class AppModel {
     @ObservationIgnored let kv: KeyValueStore?
     @ObservationIgnored let ledger: DecisionLedger
@@ -53,38 +38,28 @@ final class AppModel {
     let sources: ConnectedSourceStore
     let files = FileIndex()
     let isQAFixtureMode: Bool
-
     private(set) var settings: AppSettingsData
     private(set) var quickAccess: [QuickAccessItem]
     private(set) var rewards: RewardLedger
     private(set) var customCollections: [SmartCollection]
     private(set) var read = LedgerReadModel()
-    /// Never show an all-open library before persistent decisions have been loaded.
     private(set) var readReady = false
     private(set) var snapshot = LibrarySnapshot()
-    /// Tab „Fotos“: alles außer „In PhotoMaid ausgeblendet“.
     private(set) var visibleMedia: [MediaAsset] = []
-    /// Aufräumen, Zahlen, Sammlungen, Monate: zusätzlich ohne ausgenommene Alben.
     private(set) var cleanupMedia: [MediaAsset] = []
-    /// Noch zu prüfen – dieselbe Regel wie der Feed (`ReviewQueues.normalQueue`). Einzige Quelle für „Heute“.
     private(set) var pending: [ItemReference] = []
     private(set) var now = Date()
     private(set) var isLoadingLibrary = false
-    /// Last non-sensitive file-provider failure code, reset before each cleanup request.
-    /// Exposed only to explain failures; never contains file names or paths.
     private(set) var lastFileCleanupFailureCode: String?
-
+    /// Recreates PUBLIC view state only; vault presentation lives outside this identity.
+    private(set) var privacyRevision = UUID()
+    var publicMediaReady: Bool { VaultIsolation.shared.snapshot.ready }
     var toast: ToastMessage?
     var selectedTab: AppTab = .today
-    /// Geöffneter Entscheidungs-Feed (Vollbild über den Tabs).
     var feed: FeedRequest?
-    /// Einmaliger Wunsch aus Schnellaktion/„Öffnen in“ (wird von RootView ausgewertet).
     var pendingRoute: AppRoute?
-    /// Vollbild über den Tabs (Betrachter, Editor, Diashow, Scanner).
     var fullScreen: FullScreenRequest?
-    /// Navigationsverlauf je Tab (eigener Zurück-Stapel, bleibt beim Tabwechsel erhalten).
     var paths: [AppTab: [Route]] = [:]
-
     @ObservationIgnored private var recoveredThisProcess = false
     @ObservationIgnored private var cleanupInFlight = false
     @ObservationIgnored private var loadTask: Task<Void, Never>?
@@ -92,20 +67,16 @@ final class AppModel {
     @ObservationIgnored private var readGeneration = 0
     @ObservationIgnored private var queueInputsRevision = 0
     @ObservationIgnored private var toastTask: Task<Void, Never>?
-
     var today: LocalDay { LocalDay(now, timeZone: .autoupdatingCurrent) }
 
     init(kv: KeyValueStore?, persistence: any LedgerPersistence, qa: Bool) throws {
-        self.kv = kv
-        self.isQAFixtureMode = qa
+        self.kv = kv; isQAFixtureMode = qa
         ledger = try DecisionLedger(persistence: persistence)
         library = PhotoLibraryService()
         purchases = StoreKitGateway(productID: AppConfig.proProductID, kv: kv)
-        reminders = ReminderScheduler()
-        player = FeedPlayer()
+        reminders = ReminderScheduler(); player = FeedPlayer()
         previews = PreviewPipeline(manager: PHCachingImageManager())
-        organize = OrganizeStore(kv: kv)
-        sources = ConnectedSourceStore(kv: kv)
+        organize = OrganizeStore(kv: kv); sources = ConnectedSourceStore(kv: kv)
         settings = kv?.get(StoreKeys.settings) ?? AppSettingsData()
         quickAccess = QuickAccess.sanitize(kv?.get(StoreKeys.quickAccess) ?? QuickAccess.defaults)
         rewards = kv?.get(StoreKeys.rewards) ?? RewardLedger()
@@ -114,94 +85,79 @@ final class AppModel {
         sizer = MediaSizer(initial: kv?.get(StoreKeys.sizeCache) ?? [:]) { cache in
             await MainActor.run { try? store?.set(StoreKeys.sizeCache, cache) }
         }
-        if settings.firstSeenDay == nil {
-            settings.firstSeenDay = today
-            try? kv?.set(StoreKeys.settings, settings)
-        }
+        if settings.firstSeenDay == nil { settings.firstSeenDay = today; try? kv?.set(StoreKeys.settings, settings) }
         Haptics.enabled = settings.haptics
+        VaultStore.shared.attach(app: self)
     }
 
-    /// Produktion: Core Data. Schlägt das Laden fehl, gibt es keine Ersatz-Wahrheit (sonst gingen Entscheidungen verloren).
     static func bootstrap() -> Result<AppModel, BootstrapError> {
         #if QA_FIXTURES
         if ProcessInfo.processInfo.arguments.contains("-qa-fixtures") {
-            do {
-                let model = try AppModel(kv: nil, persistence: InMemoryLedgerPersistence(), qa: true)
-                return .success(model)
-            } catch {
-                return .failure(.ledger)
-            }
+            do { return .success(try AppModel(kv: nil, persistence: InMemoryLedgerPersistence(), qa: true)) }
+            catch { return .failure(.ledger) }
         }
         #endif
         do {
             let core = try CoreDataStore()
-            let model = try AppModel(kv: KeyValueStore(core: core), persistence: CoreDataLedgerPersistence(store: core), qa: false)
-            return .success(model)
+            return .success(try AppModel(kv: KeyValueStore(core: core), persistence: CoreDataLedgerPersistence(store: core), qa: false))
         } catch is CoreDataStore.StoreError {
-            Diagnostics.log(.persistence, "store-load-failed")
-            return .failure(.store)
+            Diagnostics.log(.persistence, "store-load-failed"); return .failure(.store)
         } catch {
-            Diagnostics.error(.persistence, "ledger-load-failed", error)
-            return .failure(.ledger)
+            Diagnostics.error(.persistence, "ledger-load-failed", error); return .failure(.ledger)
         }
     }
-
     enum BootstrapError: Error { case store, ledger }
-
-    // MARK: Fähigkeiten
-
-    /// Einzige Stelle für Free/Pro in der App. Werbung/Rewarded sind auf iOS aus (E1).
     var capabilities: Capabilities {
         let c = Capabilities.resolve(purchase: purchases.state, rewards: rewards, now: now)
         return Capabilities(tier: c.tier, adsAllowed: c.adsAllowed && AppConfig.adsEnabled,
                             rewardRemaining: c.rewardRemaining, cleanupBonus: c.cleanupBonus)
     }
 
-    // MARK: Lebenszyklus
-
-    /// Start/Resume: Berechtigungen neu prüfen, Kaufstatus, offene Operationen klären, Lesemodelle laden.
     func onForeground() async {
-        now = Date()
-        library.refreshAccess()
-        // The persisted review decisions must be published before requesting
-        // StoreKit products or refreshing reminders. Either may suspend while
-        // PhotoKit finishes loading: without this order, a briefly empty read
-        // model can make every photo appear as "not reviewed" on Today.
-        await publishRead()
-        reloadLibraryIfNeeded()
-
+        now = Date(); library.refreshAccess()
+        if !publicMediaReady { VaultIsolation.shared.reload(); applyVaultIsolation() }
+        await publishRead(); reloadLibraryIfNeeded()
         await reminders.refresh()
         let previousPurchase = purchases.state
         await purchases.refresh()
         var didRecover = false
         if !recoveredThisProcess && !cleanupInFlight {
-            recoveredThisProcess = true
-            await recoverOperations()
-            didRecover = true
+            recoveredThisProcess = true; await recoverOperations(); didRecover = true
         }
-        // Skip a second full 37k-asset queue rebuild if neither the purchase
-        // capabilities nor the operation journal could have changed.
-        if didRecover || purchases.state != previousPurchase {
-            await publishRead()
+        if didRecover || purchases.state != previousPurchase { await publishRead() }
+    }
+    func tick() { now = Date() }
+
+    /// Synchronous privacy boundary: no old photo, player, sheet, selection, draft
+    /// or toast survives an import/migration in a public presentation tree.
+    func applyVaultIsolation() {
+        loadTask?.cancel(); loadTask = nil; loadedToken = -1
+        readGeneration += 1; queueInputsRevision += 1
+        player.stop(); previews.clear(); ThumbnailLoader.shared.clear()
+        feed = nil; fullScreen = nil; pendingRoute = nil; paths = [:]
+        toastTask?.cancel(); toast = nil
+        StudioHandoff.shared.ids = []
+        organize.refreshPrivacy()
+        let policy = VaultIsolation.shared.snapshot
+        snapshot = LibrarySnapshot()
+        visibleMedia = []; cleanupMedia = []; pending = []
+        read = LedgerReadModel(); readReady = false
+        settings.hiddenMedia = settings.hiddenMedia.filter(policy.allows)
+        privacyRevision = UUID()
+        if policy.ready {
+            reloadLibraryIfNeeded(force: true)
+            Task { await publishRead() }
         }
     }
 
-    func tick() { now = Date() }
-
-    /// Mediathek neu lesen, wenn sie sich geändert hat (Änderungsbeobachter) oder noch nicht geladen ist.
     func reloadLibraryIfNeeded(force: Bool = false) {
-        guard library.access.canRead else {
-            snapshot = LibrarySnapshot(loaded: true)
-            rebuildFiltered()
-            return
-        }
+        guard publicMediaReady else { isLoadingLibrary = false; return }
+        guard library.access.canRead else { snapshot = LibrarySnapshot(loaded: true); rebuildFiltered(); return }
         let token = library.changeToken
         guard force || token != loadedToken || !snapshot.loaded else { return }
-        loadedToken = token
-        loadTask?.cancel()
-        isLoadingLibrary = true
-        let hiddenAlbums = settings.hiddenAlbums
-        let excluded = settings.excludedAlbums
+        loadedToken = token; loadTask?.cancel(); isLoadingLibrary = true
+        let hiddenAlbums = settings.hiddenAlbums, excluded = settings.excludedAlbums
+        let policy = VaultIsolation.shared.snapshot
         loadTask = Task { [weak self] in
             let all = await PhotoLibraryService.loadAll()
             let (hidden, excl) = await Task.detached(priority: .userInitiated) { () -> (Set<String>, Set<String>) in
@@ -210,357 +166,238 @@ final class AppModel {
                 for id in excluded { e.formUnion(PhotoLibraryService.assetIDs(inCollection: id)) }
                 return (h, e)
             }.value
-            guard let self, !Task.isCancelled else { return }
-            var s = LibrarySnapshot(all: all, hiddenAlbumMembers: hidden, excludedAlbumMembers: excl, loaded: true)
-            s.byID = Dictionary(all.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
-            self.snapshot = s
-            self.isLoadingLibrary = false
-            self.rebuildFiltered()
+            guard let self, !Task.isCancelled, VaultIsolation.shared.snapshot.epoch == policy.epoch else { return }
+            let safe = all.filter { policy.allows($0.id) }
+            var s = LibrarySnapshot(all: safe, hiddenAlbumMembers: hidden, excludedAlbumMembers: excl, loaded: true)
+            s.byID = Dictionary(safe.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
+            self.snapshot = s; self.isLoadingLibrary = false; self.rebuildFiltered()
+            await self.publishRead()
         }
     }
-
     private func rebuildFiltered() {
         queueInputsRevision += 1
-        let hiddenIDs = Set(settings.hiddenMedia)
-        let hiddenAlbum = snapshot.hiddenAlbumMembers
-        let excluded = snapshot.excludedAlbumMembers
-        visibleMedia = snapshot.all.filter { !hiddenIDs.contains($0.id) && !hiddenAlbum.contains($0.id) }
+        let policy = VaultIsolation.shared.snapshot
+        let hiddenIDs = Set(settings.hiddenMedia), hiddenAlbum = snapshot.hiddenAlbumMembers, excluded = snapshot.excludedAlbumMembers
+        visibleMedia = snapshot.all.filter { policy.allows($0.id) && !hiddenIDs.contains($0.id) && !hiddenAlbum.contains($0.id) }
         cleanupMedia = excluded.isEmpty ? visibleMedia : visibleMedia.filter { !excluded.contains($0.id) }
         rebuildPending()
     }
-
     private func rebuildPending() {
-        guard readReady else { pending = []; return }
-        pending = ReviewQueues.normalQueue(candidates: cleanupMedia.map(\.reference), records: read.records,
-                                           session: ReviewSessionID(), today: today)
+        guard readReady, publicMediaReady else { pending = []; return }
+        pending = ReviewQueues.normalQueue(candidates: cleanupMedia.map(\.reference), records: read.records, session: ReviewSessionID(), today: today)
     }
-
-    func asset(_ id: String) -> MediaAsset? { snapshot.byID[id] ?? library.asset(id) }
-
+    func asset(_ id: String) -> MediaAsset? {
+        guard VaultIsolation.shared.allows(id) else { return nil }
+        return snapshot.byID[id] ?? library.asset(id)
+    }
     func assets(_ refs: [ItemReference]) -> [MediaAsset] {
-        var missing: [String] = []
-        var out: [String: MediaAsset] = [:]
-        for r in refs where r.provider == .photoLibrary {
+        var missing: [String] = []; var out: [String: MediaAsset] = [:]
+        let safe = refs.filter { $0.provider == .photoLibrary && VaultIsolation.shared.allows($0) }
+        for r in safe {
             if let a = snapshot.byID[r.localIdentifier] { out[a.id] = a } else { missing.append(r.localIdentifier) }
         }
         for a in library.assets(ids: missing) { out[a.id] = a }
-        return refs.compactMap { out[$0.localIdentifier] }
+        return safe.compactMap { out[$0.localIdentifier] }
     }
-
     func record(_ item: ItemReference) -> ItemRecord { read.records[item] ?? ItemRecord(item: item) }
 
     func makeBackup() async -> PhotoMaidBackup {
         let state = await ledger.snapshotState()
+        let policy = VaultIsolation.shared.snapshot
+        let publicIDs = Set(snapshot.byID.keys)
+        func allowed(_ id: String) -> Bool { policy.allows(id) && (!policy.hasPrivateMedia || publicIDs.contains(id)) }
         var backup = PhotoMaidBackup(createdAt: Int64(Date().timeIntervalSince1970 * 1000), appVersion: AppConfig.appVersion)
         var table = BackupRefTable()
-        for record in state.records.values where record.item.provider == .photoLibrary {
+        for record in state.records.values where record.item.provider == .photoLibrary && allowed(record.item.localIdentifier) {
             guard let backupState = BackupRules.state(record.disposition) else { continue }
-            let media = organize.refs[record.item.localIdentifier]
-                ?? MediaRef(id: record.item.localIdentifier, name: nil, size: nil, takenMillis: nil)
+            let media = organize.refs[record.item.localIdentifier] ?? MediaRef(id: record.item.localIdentifier, name: nil, size: nil, takenMillis: nil)
             let index = table.add(media)
-            backup.decisions.append(BackupDecision(ref: index, state: backupState, due: record.dueDay,
-                                                   bookmarked: record.bookmarked))
+            backup.decisions.append(BackupDecision(ref: index, state: backupState, due: record.dueDay, bookmarked: record.bookmarked))
         }
-        for (id, tags) in organize.tags {
-            let index = table.add(organize.refs[id] ?? MediaRef(id: id, name: nil, size: nil, takenMillis: nil))
-            backup.tags[index] = tags
+        for (id, tags) in organize.tags where allowed(id) {
+            backup.tags[table.add(organize.refs[id] ?? MediaRef(id: id, name: nil, size: nil, takenMillis: nil))] = tags
         }
-        for (id, note) in organize.notes {
-            let index = table.add(organize.refs[id] ?? MediaRef(id: id, name: nil, size: nil, takenMillis: nil))
-            backup.notes[index] = note
+        for (id, note) in organize.notes where allowed(id) {
+            backup.notes[table.add(organize.refs[id] ?? MediaRef(id: id, name: nil, size: nil, takenMillis: nil))] = note
         }
-        backup.basket = organize.basket.map {
-            table.add(organize.refs[$0] ?? MediaRef(id: $0, name: nil, size: nil, takenMillis: nil))
-        }
-        backup.hiddenMedia = settings.hiddenMedia.map {
-            table.add(organize.refs[$0] ?? MediaRef(id: $0, name: nil, size: nil, takenMillis: nil))
-        }
+        backup.basket = organize.basket.filter(allowed).map { table.add(organize.refs[$0] ?? MediaRef(id: $0, name: nil, size: nil, takenMillis: nil)) }
+        backup.hiddenMedia = settings.hiddenMedia.filter(allowed).map { table.add(organize.refs[$0] ?? MediaRef(id: $0, name: nil, size: nil, takenMillis: nil)) }
         backup.refs = table.refs
         return backup
     }
+    var dueCount: Int { read.laterRecords.filter { if case .due = ReviewQueues.laterStatus($0, today: today) { true } else { false } }.count }
 
-    var dueCount: Int {
-        read.laterRecords.filter { if case .due = ReviewQueues.laterStatus($0, today: today) { true } else { false } }.count
-    }
-
-    // MARK: Lesemodell
-
-    /// Serialisiert über eine Generation: ein langsamerer, älterer Lauf überschreibt nie einen neueren.
     func publishRead() async {
-        readGeneration += 1
-        let generation = readGeneration
+        readGeneration += 1; let generation = readGeneration
         let state = await ledger.snapshotState()
-        let limit = capabilities.dailyCleanupLimit
-        let day = today
-        // Rebuilding the full review queue for a large library is O(n). Perform
-        // it alongside the ledger projection off the main actor rather than
-        // blocking SwiftUI while the swipe-out animation is running.
-        let candidates = cleanupMedia.map(\.reference)
-        let queueRevision = queueInputsRevision
+        let policy = VaultIsolation.shared.snapshot
+        let publicIDs = Set(snapshot.byID.keys)
+        let limit = capabilities.dailyCleanupLimit, day = today
+        let candidates = cleanupMedia.map(\.reference), queueRevision = queueInputsRevision
         let derived = await Task.detached(priority: .userInitiated) { () -> (LedgerReadModel, [ItemReference]) in
-            let view = LedgerReadModel(
-                records: state.records,
-                basket: state.records.values.filter { $0.disposition == .markedForCleanup }
-                    .sorted { $0.item.description < $1.item.description },
-                laterRecords: state.records.values.filter { $0.disposition == .later },
-                events: state.events,
+            func allowed(_ ref: ItemReference) -> Bool {
+                policy.allows(ref) && (ref.provider != .photoLibrary || !policy.hasPrivateMedia || publicIDs.contains(ref.localIdentifier))
+            }
+            let records = state.records.filter { allowed($0.key) }
+            let view = LedgerReadModel(records: records,
+                basket: records.values.filter { $0.disposition == .markedForCleanup }.sorted { $0.item.description < $1.item.description },
+                laterRecords: records.values.filter { $0.disposition == .later },
+                events: state.events.filter { allowed($0.item) },
                 allowance: DecisionLedger.allowance(in: state, day: day, limit: limit),
-                canUndo: !state.undoStack.isEmpty,
-                reconciliationNeeded: state.intents.values.filter { $0.state == .reconciliationRequired })
-            let queue = ReviewQueues.normalQueue(candidates: candidates, records: state.records,
-                                                 session: ReviewSessionID(), today: day)
+                canUndo: state.undoStack.last.map { allowed($0.item) } ?? false,
+                reconciliationNeeded: state.intents.values.filter { $0.state == .reconciliationRequired && $0.items.keys.allSatisfy(allowed) })
+            let queue = ReviewQueues.normalQueue(candidates: candidates.filter(allowed), records: records, session: ReviewSessionID(), today: day)
             return (view, queue)
         }.value
-        guard generation == readGeneration else { return }
-        read = derived.0
-        readReady = true
-        // PhotoKit may have reloaded the library while the detached queue was
-        // building. In that rare case use the latest visible media and ledger.
-        if queueInputsRevision == queueRevision {
-            pending = derived.1
-        } else {
-            rebuildPending()
-        }
+        guard generation == readGeneration, VaultIsolation.shared.snapshot.epoch == policy.epoch else { return }
+        read = derived.0; readReady = policy.ready
+        if queueInputsRevision == queueRevision { pending = derived.1 } else { rebuildPending() }
     }
 
-    // MARK: Einstellungen und kleine Stores
-
     func updateSettings(_ change: (inout AppSettingsData) -> Void) {
-        var s = settings
-        change(&s)
-        guard s != settings else { return }
+        var s = settings; change(&s); guard s != settings else { return }
         do {
             try kv?.set(StoreKeys.settings, s)
             let filterChanged = s.hiddenMedia != settings.hiddenMedia
             let albumsChanged = s.hiddenAlbums != settings.hiddenAlbums || s.excludedAlbums != settings.excludedAlbums
-            settings = s
-            Haptics.enabled = s.haptics
+            settings = s; Haptics.enabled = s.haptics
             if albumsChanged { reloadLibraryIfNeeded(force: true) } else if filterChanged { rebuildFiltered() }
-        } catch {
-            showError(L("error_settings_not_saved"))
-        }
+        } catch { showError(L("error_settings_not_saved")) }
     }
-
     func setQuickAccess(_ list: [QuickAccessItem]) {
         let clean = QuickAccess.sanitize(list)
         do { try kv?.set(StoreKeys.quickAccess, clean); quickAccess = clean } catch { showError(L("error_settings_not_saved")) }
     }
-
     func setCustomCollections(_ list: [SmartCollection]) {
         do { try kv?.set(StoreKeys.collections, list); customCollections = list } catch { showError(L("error_settings_not_saved")) }
     }
-
-    // MARK: Meldungen
-
     func showToast(_ text: String, actionTitle: String? = nil, action: (@MainActor () -> Void)? = nil) {
         present(ToastMessage(text: text, actionTitle: actionTitle, action: action))
     }
-
-    func showError(_ text: String) {
-        Haptics.error()
-        present(ToastMessage(text: text, isError: true))
-    }
-
+    func showError(_ text: String) { Haptics.error(); present(ToastMessage(text: text, isError: true)) }
     private func present(_ t: ToastMessage) {
-        toast = t
-        toastTask?.cancel()
+        toast = t; toastTask?.cancel()
         toastTask = Task { [weak self] in
             try? await Task.sleep(for: .seconds(t.actionTitle == nil ? 3 : 5))
             guard !Task.isCancelled, self?.toast?.id == t.id else { return }
             self?.toast = nil
         }
     }
-
-    // MARK: Entscheidungen
-
-    @discardableResult
-    func apply(_ command: DecisionCommand, session: ReviewSessionID? = nil) async throws -> CommitOutcome {
+    @discardableResult func apply(_ command: DecisionCommand, session: ReviewSessionID? = nil) async throws -> CommitOutcome {
+        guard VaultIsolation.shared.allows(command.item) else { throw VaultIsolationError.privateMedia }
         let out = try await ledger.apply(command, sessionID: session)
-        await publishRead()
-        return out
+        await publishRead(); return out
     }
-
-    /// Entscheidung außerhalb des Feeds (Papierkorb zurücklegen, Später entfernen). Immer mit aktueller Revision.
     func decide(_ item: ItemReference, _ action: DecisionAction) async {
+        guard VaultIsolation.shared.allows(item) else { return }
         do {
             let r = await ledger.record(for: item)
             try await apply(DecisionCommand(item: item, expectedRevision: r.revision, action: action))
-        } catch {
-            showError(L("error_change_not_saved"))
-            await publishRead()
-        }
+        } catch { showError(L("error_change_not_saved")); await publishRead() }
     }
-
     func decideMany(_ items: [ItemReference], _ action: DecisionAction) async -> Int {
-        var failed = 0
-        for item in items {
+        var succeeded = 0
+        for item in items where VaultIsolation.shared.allows(item) {
             do {
                 let r = await ledger.record(for: item)
+                guard VaultIsolation.shared.allows(item) else { continue }
                 _ = try await ledger.apply(DecisionCommand(item: item, expectedRevision: r.revision, action: action))
-            } catch {
-                failed += 1
-            }
+                succeeded += 1
+            } catch { showError(L("error_change_not_saved")) }
         }
-        await publishRead()
-        if failed > 0 { showError(L("error_change_not_saved")) }
-        return items.count - failed
+        await publishRead(); return succeeded
     }
-
     func undo() async -> ItemRecord? {
+        let state = await ledger.snapshotState()
+        guard let top = state.undoStack.last, VaultIsolation.shared.allows(top.item) else { return nil }
         do {
-            let r = try await ledger.undo()
-            await publishRead()
-            return r
-        } catch DecisionError.undoConflict {
-            showError(L("error_undo_conflict"))
-        } catch DecisionError.itemBusy {
-            showError(L("error_undo_busy"))
-        } catch {
-            showError(L("error_undo_generic"))
-        }
-        await publishRead()
-        return nil
+            let r = try await ledger.undo(); await publishRead()
+            return r.flatMap { VaultIsolation.shared.allows($0.item) ? $0 : nil }
+        } catch DecisionError.undoConflict { showError(L("error_undo_conflict")) }
+        catch DecisionError.itemBusy { showError(L("error_undo_busy")) }
+        catch { showError(L("error_undo_generic")) }
+        await publishRead(); return nil
     }
 
-    // MARK: Bereinigung
-
-    /// Entdecken → Entscheiden → Papierkorb prüfen → Bestätigen → Systemoperation → Nachprüfen → Abgleichen → Verlauf.
-    /// Je Aufruf genau EIN Anbieter: Fotos (`deleteAssets`, Systembestätigung, „Zuletzt gelöscht“) oder Dateien
-    /// (endgültig, nach eigener deutlicher Bestätigung).
     func runCleanup(_ items: [ItemReference], kind: CleanupOperationKind) async -> CleanupRunResult {
-        lastFileCleanupFailureCode = nil
-        cleanupInFlight = true
+        guard items.allSatisfy({ VaultIsolation.shared.allows($0) }) else { return .rejected(.emptySelection) }
+        lastFileCleanupFailureCode = nil; cleanupInFlight = true
         defer { cleanupInFlight = false }
         let selected = items.filter { kind == .photoLibraryDelete ? $0.provider == .photoLibrary : $0.provider != .photoLibrary }
         let intent: OperationIntent
         do {
-            intent = try await ledger.prepareCleanup(selected, kind: kind, dailyLimit: capabilities.dailyCleanupLimit,
-                                                     aliasKeys: aliasKeys(selected))
+            intent = try await ledger.prepareCleanup(selected, kind: kind, dailyLimit: capabilities.dailyCleanupLimit, aliasKeys: aliasKeys(selected))
             try await ledger.markSubmitted(intent.id)
-        } catch let e as CleanupError {
-            await publishRead()
-            return .rejected(e)
-        } catch {
-            await publishRead()
-            return .rejected(.persistenceFailed(String(describing: error)))
-        }
+        } catch let e as CleanupError { await publishRead(); return .rejected(e) }
+        catch { await publishRead(); return .rejected(.persistenceFailed(String(describing: error))) }
         player.stop()
         Diagnostics.log(.cleanup, "submitted kind=\(kind.rawValue) n=\(selected.count)")
         let outcome: OperationOutcome
         switch kind {
-        case .photoLibraryDelete:
-            outcome = await library.delete(ids: selected.map(\.localIdentifier))
+        case .photoLibraryDelete: outcome = await library.delete(ids: selected.map(\.localIdentifier))
         case .fileDeletePermanently, .fileMoveToTrash:
             outcome = FileOperations.deletePermanently(selected, sources: sources)
-            if case .failed(let reason) = outcome {
-                lastFileCleanupFailureCode = reason
-            }
+            if case .failed(let reason) = outcome { lastFileCleanupFailureCode = reason }
         }
         do {
             let done = try await ledger.reconcile(intent.id, outcome: outcome)
-            Diagnostics.log(.cleanup, "reconciled \(done.state.rawValue)")
-            await publishRead()
-            if kind == .photoLibraryDelete {
-                library.bumpChangeToken()
-                reloadLibraryIfNeeded()
-            } else {
-                await files.scan(sources)
-            }
+            Diagnostics.log(.cleanup, "reconciled \(done.state.rawValue)"); await publishRead()
+            if kind == .photoLibraryDelete { library.bumpChangeToken(); reloadLibraryIfNeeded() }
+            else { await files.scan(sources) }
             return .finished(done)
-        } catch {
-            Diagnostics.error(.cleanup, "reconcile-failed", error)
-            await publishRead()
-            return .needsReconciliation
-        }
+        } catch { Diagnostics.error(.cleanup, "reconcile-failed", error); await publishRead(); return .needsReconciliation }
     }
-
-    /// Dieselbe Datei über mehrere verbundene Ordner zählt nur einmal (Datei-Ressourcen-ID).
     private func aliasKeys(_ items: [ItemReference]) -> [ItemReference: String] {
         var out: [ItemReference: String] = [:]
-        for e in files.entries where items.contains(e.reference) {
-            if let key = e.aliasKey { out[e.reference] = key }
-        }
+        for e in files.entries where items.contains(e.reference) { if let key = e.aliasKey { out[e.reference] = key } }
         return out
     }
-
-    /// Nach Absturz während einer Löschung: nur über Existenzprüfung klären, nie automatisch erneut löschen.
     private func recoverOperations() async {
         guard let open = try? await ledger.recoverAfterLaunch() else { return }
         for intent in open where intent.state == .reconciliationRequired {
             let refs = Array(intent.items.keys)
             var probes = library.probe(refs.filter { $0.provider == .photoLibrary }.map(\.localIdentifier))
             for (k, v) in FileOperations.probe(refs.filter { $0.provider != .photoLibrary }, sources: sources) { probes[k] = v }
+            for ref in refs where !VaultIsolation.shared.allows(ref) { probes[ref] = .unknown }
             _ = try? await ledger.resolveReconciliation(intent.id, probes: probes)
         }
     }
-
-    /// Gesparte Bytes der bestätigt entfernten Medien (nur gemessene Größen; unbekannt zählt nicht als 0).
     func recordSavings(_ removed: Set<ItemReference>, sizes: [ItemReference: KnownSize]) -> CleanupSavings {
         let s = CleanupSavings.of(removed: removed, sizes: sizes)
         let total = SavingsTotal(bytes: settings.savedTotalBytes, lowerBound: settings.savedTotalLowerBound).adding(s)
         updateSettings { $0.savedTotalBytes = total.bytes; $0.savedTotalLowerBound = total.lowerBound }
         return s
     }
-
-    // MARK: Größen
-
-    func size(_ asset: MediaAsset) async -> KnownSize { await sizer.size(of: asset) }
-
+    func size(_ asset: MediaAsset) async -> KnownSize {
+        guard VaultIsolation.shared.allows(asset.id) else { return .unknown }
+        return await sizer.size(of: asset)
+    }
     func sizes(_ assets: [MediaAsset], progress: (@Sendable (Int, Int) -> Void)? = nil) async -> [String: KnownSize] {
-        await sizer.sizes(of: assets, progress: progress)
+        await sizer.sizes(of: assets.filter { VaultIsolation.shared.allows($0.id) }, progress: progress)
     }
-
-    // MARK: Ausblenden und Ausnehmen (nie eine Entscheidung, Datei unverändert)
-
     func hide(_ ids: [String]) {
-        updateSettings { s in s.hiddenMedia = Array(Set(s.hiddenMedia).union(ids)).sorted() }
+        let safe = ids.filter { VaultIsolation.shared.allows($0) }
+        updateSettings { $0.hiddenMedia = Array(Set($0.hiddenMedia).union(safe)).sorted() }
     }
-
     func unhide(_ ids: [String]) {
         let remove = Set(ids)
-        updateSettings { s in s.hiddenMedia = s.hiddenMedia.filter { !remove.contains($0) } }
+        updateSettings { $0.hiddenMedia = $0.hiddenMedia.filter { !remove.contains($0) } }
     }
-
     func setExcluded(album id: String, _ excluded: Bool) {
-        updateSettings { s in
-            var set = Set(s.excludedAlbums)
-            if excluded { set.insert(id) } else { set.remove(id) }
-            s.excludedAlbums = set.sorted()
-        }
+        updateSettings { s in var set = Set(s.excludedAlbums); if excluded { set.insert(id) } else { set.remove(id) }; s.excludedAlbums = set.sorted() }
     }
-
-    func rememberRecentAlbum(_ id: String) {
-        updateSettings { s in s.recentAlbums = Array(([id] + s.recentAlbums.filter { $0 != id }).prefix(5)) }
-    }
-
+    func rememberRecentAlbum(_ id: String) { updateSettings { $0.recentAlbums = Array(([id] + $0.recentAlbums.filter { $0 != id }).prefix(5)) } }
     func togglePinnedAlbum(_ id: String) {
-        updateSettings { s in
-            if s.pinnedAlbums.contains(id) { s.pinnedAlbums.removeAll { $0 == id } }
-            else { s.pinnedAlbums = Array((s.pinnedAlbums + [id]).prefix(8)) }
-        }
+        updateSettings { s in if s.pinnedAlbums.contains(id) { s.pinnedAlbums.removeAll { $0 == id } } else { s.pinnedAlbums = Array((s.pinnedAlbums + [id]).prefix(8)) } }
     }
-
-    // MARK: Navigation
-
     func navigate(_ route: Route, in tab: AppTab? = nil) {
-        let t = tab ?? selectedTab
-        selectedTab = t
-        paths[t, default: []].append(route)
+        guard publicMediaReady else { VaultStore.shared.present(); return }
+        let t = tab ?? selectedTab; selectedTab = t; paths[t, default: []].append(route)
     }
-
     func popToRoot(_ tab: AppTab) { paths[tab] = [] }
-
-    // MARK: Feed
-
-    func open(_ request: FeedRequest) {
-        player.stop()
-        feed = request
-    }
-
+    func open(_ request: FeedRequest) { guard publicMediaReady else { return }; player.stop(); feed = request }
     func closeFeed(reviewed: Int) {
-        player.stop()
-        feed = nil
-        // „Neu seit dem letzten Aufräumen“: nur nach einer Sitzung mit mindestens einer Entscheidung.
+        player.stop(); feed = nil
         if reviewed > 0 {
             let token = PhotoLibraryService.currentChangeTokenData()
             updateSettings { $0.lastSessionEnd = Date(); $0.lastSessionChangeToken = token }
@@ -568,11 +405,4 @@ final class AppModel {
     }
 }
 
-/// Einstiege von außen (Schnellaktionen, „Öffnen in“). Öffnen nur Ansichten – nie Entscheidung oder Löschen.
-enum AppRoute: Equatable, Sendable {
-    case startReview
-    case trash
-    case later
-    case studio
-    case openFiles([URL])
-}
+enum AppRoute: Equatable, Sendable { case startReview, trash, later, studio, openFiles([URL]) }
