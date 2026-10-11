@@ -318,11 +318,21 @@ struct AssetCell: View {
         let image: UIImage
     }
 
-    /// Neu laden, wenn sich Medium oder Pixelgröße der Zelle ändern (Raster-Stufe, Drehen).
+    /// Quantize pixel requests: fractional layout changes must not cancel an
+    /// in-flight PhotoKit request and briefly blank the same cell.
     private struct LoadKey: Equatable {
         let assetID: String
         let width: Int
         let height: Int
+    }
+
+    private static func bucket(_ pixels: CGFloat) -> Int {
+        guard pixels.isFinite, pixels > 0 else { return 0 }
+        return min(1024, max(64, Int((pixels / 64).rounded(.up)) * 64))
+    }
+
+    private var pixelSize: CGSize {
+        CGSize(width: Self.bucket(size.width * scale), height: Self.bucket(size.height * scale))
     }
 
     private var image: UIImage? { loaded?.id == assetID ? loaded?.image : nil }
@@ -340,8 +350,8 @@ struct AssetCell: View {
             .clipped()
             .contentShape(.rect)
             .onGeometryChange(for: CGSize.self) { proxy in proxy.size } action: { size = $0 }
-            .task(id: LoadKey(assetID: assetID, width: Int((size.width * scale).rounded(.up)),
-                              height: Int((size.height * scale).rounded(.up)))) {
+            .task(id: LoadKey(assetID: assetID, width: Int(pixelSize.width),
+                              height: Int(pixelSize.height))) {
                 await load()
             }
     }
@@ -359,8 +369,7 @@ struct AssetCell: View {
     private func load() async {
         guard size.width >= 1, size.height >= 1 else { return }
         let id = assetID
-        let pixels = CGSize(width: (size.width * scale).rounded(.up), height: (size.height * scale).rounded(.up))
-        let img = await ThumbnailLoader.shared.image(id, size: pixels)
+        let img = await ThumbnailLoader.shared.image(id, size: pixelSize)
         // Abgebrochen (aus dem Bild gescrollt) oder inzwischen ein anderes Medium: nichts anzeigen, nicht als Fehler werten.
         guard !Task.isCancelled, id == assetID else { return }
         if let img {
