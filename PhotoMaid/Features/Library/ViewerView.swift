@@ -24,17 +24,22 @@ struct ViewerView: View {
 
     private var current: MediaAsset? { ids.indices.contains(index) ? app.asset(ids[index]) : nil }
 
+    @State private var activeVideoPlayer: AVPlayer?
+
     var body: some View {
-        ZStack {
-            Color.black.ignoresSafeArea()
+        VStack(spacing: 0) {
+            // Reserve real layout space for all controls. Neither native video
+            // playback chrome nor PhotoMaid's action dock may cover the media.
+            if chrome { headerBar }
             TabView(selection: $index) {
                 ForEach(Array(ids.enumerated()), id: \.offset) { i, id in
-                    ViewerPage(assetID: id, isCurrent: i == index, zoomed: $zoomed) { chrome.toggle() }
+                    ViewerPage(assetID: id, isCurrent: i == index, zoomed: $zoomed,
+                               activeVideoPlayer: $activeVideoPlayer) { chrome.toggle() }
                         .tag(i)
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
-            .ignoresSafeArea()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .offset(y: dragDown)
             .opacity(1 - Double(min(dragDown, 300)) / 600)
             .simultaneousGesture(
@@ -51,8 +56,20 @@ struct ViewerView: View {
                         }
                     }
             )
-            if chrome { overlay }
+            if chrome, let a = current {
+                VStack(spacing: AppSpacing.s) {
+                    if a.isVideo, let activeVideoPlayer {
+                        ViewerVideoControls(player: activeVideoPlayer, duration: a.duration)
+                    }
+                    bottomBar(a)
+                }
+                .padding(.horizontal, AppSpacing.pageMargin)
+                .padding(.top, AppSpacing.xs)
+                .padding(.bottom, AppSpacing.s)
+                .background(Color.black)
+            }
         }
+        .background(Color.black.ignoresSafeArea())
         .statusBarHidden(!chrome)
         .preferredColorScheme(.dark)
         .sheet(isPresented: $showInfo) { if let a = current { MediaInfoSheet(asset: a) } }
@@ -74,32 +91,30 @@ struct ViewerView: View {
         .accessibilityAction(.escape) { dismiss() }
     }
 
-    private var overlay: some View {
-        VStack {
-            GlassEffectContainer(spacing: AppSpacing.s) {
-                HStack {
-                    GlassIconButton(symbol: "xmark", label: L("close")) { dismiss() }
-                    Spacer()
-                    if let a = current {
-                        VStack(spacing: 0) {
-                            if let d = a.creationDate {
-                                Text(verbatim: DateText.long(d)).font(AppTypography.subheadline.weight(.semibold))
-                                Text(verbatim: DateText.time(d)).font(AppTypography.caption)
-                            }
-                        }
-                        .foregroundStyle(.white)
-                        .padding(.horizontal, AppSpacing.s)
-                        .padding(.vertical, 4)
-                        .glassCapsule()
+    private var headerBar: some View {
+        GlassEffectContainer(spacing: AppSpacing.s) {
+            HStack {
+                GlassIconButton(symbol: "xmark", label: L("close")) { dismiss() }
+                Spacer(minLength: AppSpacing.xs)
+                if let d = current?.creationDate {
+                    VStack(spacing: 0) {
+                        Text(verbatim: DateText.long(d)).font(AppTypography.subheadline.weight(.semibold))
+                        Text(verbatim: DateText.time(d)).font(AppTypography.caption)
                     }
-                    Spacer()
-                    GlassIconButton(symbol: "info.circle", label: L("info")) { showInfo = true }
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, AppSpacing.s)
+                    .padding(.vertical, 4)
+                    .glassCapsule()
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
                 }
+                Spacer(minLength: AppSpacing.xs)
+                GlassIconButton(symbol: "info.circle", label: L("info")) { showInfo = true }
             }
-            .padding(.horizontal, AppSpacing.pageMargin)
-            Spacer()
-            if let a = current { bottomBar(a) }
         }
+        .padding(.horizontal, AppSpacing.pageMargin)
+        .padding(.top, AppSpacing.xs)
+        .padding(.bottom, AppSpacing.xs)
     }
 
     private func bottomBar(_ a: MediaAsset) -> some View {
@@ -142,7 +157,6 @@ struct ViewerView: View {
                 }
             }
         }
-        .padding(.bottom, AppSpacing.s)
     }
 }
 
