@@ -6,15 +6,23 @@ import SwiftUI
 struct PhotoEditorView: View {
     @Environment(AppModel.self) private var app
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.scenePhase) private var scenePhase
     @State private var model: EditorModel
     @State private var zoom: CGFloat = 1
     @State private var confirmDiscard = false
     @State private var saveSheet = false
     @State private var proSheet = false
-    @State private var retouchMode: RetouchMode = .redEye
     @State private var markupMode: MarkupMode = .select
     @State private var stroke: [NormPoint] = []
-    @State private var dragStart: CGPoint?
+    @GestureState private var stageGestureActive = false
+    @State private var stageContext: StageContext?
+
+    private struct StageContext {
+        let tool: EditorTool
+        let mode: RetouchMode
+        var revision: UUID
+        var target: RetouchTarget?
+    }
     @State private var dragLayer: Layer?
     @State private var cropHandle: CropMath.Handle?
     @State private var cropStart: NormRect?
@@ -31,6 +39,14 @@ struct PhotoEditorView: View {
             }
         }
         .preferredColorScheme(.dark)
+        .onDisappear { model.finishRetouchInteraction(); clearStageGesture() }
+        .onChange(of: scenePhase) { _, phase in
+            if phase != .active { model.finishRetouchInteraction(); clearStageGesture() }
+        }
+        .onChange(of: stageGestureActive) { _, active in
+            // DragGesture.onEnded is not called on cancellation (e.g. a second-finger zoom).
+            if !active { clearStageGesture() }
+        }
         .task {
             await model.load(app: app)
             if model.loadState == .ready { model.tool = .adjust }
@@ -57,8 +73,10 @@ struct PhotoEditorView: View {
 
     private var header: some View {
         EditorHeader(cancel: {
+            model.finishRetouchInteraction()
             if model.hasChanges { confirmDiscard = true } else { dismiss() }
         }, confirm: {
+            model.finishRetouchInteraction()
             guard model.hasChanges else { dismiss(); return }
             if model.recipe.usesProTools && !app.capabilities.hasProToolsAccess { proSheet = true } else { saveSheet = true }
         }, confirmEnabled: model.loadState == .ready && !model.saving) {
@@ -147,7 +165,7 @@ struct PhotoEditorView: View {
                 cropHandle = nil; cropStart = nil; model.endChange()
             }
         case .retouch:
-            RetouchOverlay(recipe: model.recipe, rect: rect, selected: model.selectedLocal)
+            RetouchOverlay(recipe: model.recipe, rect: rect, selected: model.selectedLocalID)
         case .markup:
             MarkupOverlay(recipe: model.recipe, rect: rect, selected: model.selectedLayer, stroke: stroke)
         default:
@@ -155,21 +173,32 @@ struct PhotoEditorView: View {
         }
     }
 
-    /// Tippen/Ziehen auf der Bühne je Werkzeug. Ziehen ist hier nie eine Entscheidung.
+    /// A physical gesture keeps its original context even if SwiftUI reevaluates this view.
     private func stageGesture(_ rect: CGRect) -> some Gesture {
         DragGesture(minimumDistance: 0)
+            .updating($stageGestureActive) { _, active, _ in active = true }
             .onChanged { v in
+                guard scenePhase == .active else { return }
+                if stageContext == nil {
+                    stageContext = StageContext(tool: model.tool, mode: model.retouchMode,
+                                                revision: model.retouchRevision)
+                }
+                guard let context = stageContext, context.tool == model.tool,
+                      context.revision == model.retouchRevision else { return }
                 let p = norm(v.location, rect)
-                switch model.tool {
+                switch context.tool {
                 case .retouch: retouchDrag(p, start: norm(v.startLocation, rect), translation: v.translation)
                 case .markup: markupDrag(p, start: norm(v.startLocation, rect), rect: rect, translation: v.translation)
                 default: break
                 }
             }
             .onEnded { v in
+                defer { clearStageGesture() }
+                guard scenePhase == .active, let context = stageContext, context.tool == model.tool,
+                      context.revision == model.retouchRevision else { return }
                 let p = norm(v.location, rect)
                 let isTap = hypot(v.translation.width, v.translation.height) < 6
-                switch model.tool {
+                switch context.tool {
                 case .retouch: retouchEnd(p, isTap: isTap)
                 case .markup: markupEnd(p, start: norm(v.startLocation, rect), isTap: isTap)
                 default: break
@@ -177,28 +206,50 @@ struct PhotoEditorView: View {
             }
     }
 
+    private func clearStageGesture() {
+        if let context = stageContext, context.revision == model.retouchRevision {
+            if let target = context.target { model.endLocalChange(target) }
+            else if context.tool == .markup { model.endChange() }
+        }
+        stageContext = nil
+        stroke = []
+        dragLayer = nil
+    }
+
     // MARK: Retusche
 
     private func retouchDrag(_ p: NormPoint, start: NormPoint, translation: CGSize) {
-        switch retouchMode {
+        guard var context = stageContext, context.mode == model.retouchMode,
+              context.revision == model.retouchRevision else { return }
+        switch context.mode {
         case .brush:
-            if stroke.isEmpty { model.beginChange() }
+            if context.target == nil {
+                context.target = model.beginLocalGesture(mask: .brush(strokes: []), reuseBrush: true)
+                context.revision = model.retouchRevision
+                stageContext = context
+            }
+            guard let target = context.target, model.local(target) != nil else { return }
             stroke.append(p)
-            ensureBrushLocal()
-            if let i = model.selectedLocal, case .brush(var strokes) = model.recipe.locals[i].mask {
-                let s = BrushStroke(points: stroke, radius: 0.04, hardness: 0.5, erase: false)
-                if strokes.isEmpty || stroke.count == 1 { strokes.append(s) } else { strokes[strokes.count - 1] = s }
-                model.recipe.locals[i].mask = .brush(strokes: strokes)
+            let points = stroke
+            model.changeLocal(target) { local in
+                guard case .brush(var strokes) = local.mask else { return }
+                let next = BrushStroke(points: points, radius: 0.04, hardness: 0.5, erase: false)
+                if points.count == 1 { strokes.append(next) }
+                else if let last = strokes.indices.last { strokes[last] = next }
+                else { return }
+                local.mask = .brush(strokes: strokes)
             }
         case .linear:
             guard hypot(translation.width, translation.height) > 6 else { return }
-            if dragStart == nil {
-                dragStart = .zero
-                model.beginChange()
-                model.recipe.locals.append(LocalAdjustment(mask: .linear(start: start, end: p)))
-                model.selectedLocal = model.recipe.locals.count - 1
-            } else if let i = model.selectedLocal {
-                model.recipe.locals[i].mask = .linear(start: start, end: p)
+            if context.target == nil {
+                context.target = model.beginLocalGesture(mask: .linear(start: start, end: p))
+                context.revision = model.retouchRevision
+                stageContext = context
+            }
+            guard let target = context.target else { return }
+            model.changeLocal(target) { local in
+                guard case .linear = local.mask else { return }
+                local.mask = .linear(start: start, end: p)
             }
         default:
             break
@@ -206,24 +257,18 @@ struct PhotoEditorView: View {
     }
 
     private func retouchEnd(_ p: NormPoint, isTap: Bool) {
-        defer { stroke = []; dragStart = nil }
-        switch retouchMode {
+        guard let context = stageContext, context.mode == model.retouchMode,
+              context.revision == model.retouchRevision else { return }
+        switch context.mode {
         case .redEye where isTap:
             model.update { $0.redEyes.append(RedEyeSpot(center: p, radius: 0.018)) }
         case .radial where isTap:
-            model.update { $0.locals.append(LocalAdjustment(mask: .radial(center: p, rx: 0.18, ry: 0.18, feather: 0.6, invert: false))) }
-            model.selectedLocal = model.recipe.locals.count - 1
+            model.addLocal(mask: .radial(center: p, rx: 0.18, ry: 0.18, feather: 0.6, invert: false))
         case .brush, .linear:
-            model.endChange()
+            if let target = context.target { model.endLocalChange(target) }
         default:
             break
         }
-    }
-
-    private func ensureBrushLocal() {
-        if let i = model.selectedLocal, model.recipe.locals.indices.contains(i), case .brush = model.recipe.locals[i].mask { return }
-        model.recipe.locals.append(LocalAdjustment(mask: .brush(strokes: [])))
-        model.selectedLocal = model.recipe.locals.count - 1
     }
 
     // MARK: Markieren
@@ -312,7 +357,7 @@ struct PhotoEditorView: View {
                 case .crop: CropPanel(model: model)
                 case .adjust: AdjustPanel(model: model)
                 case .filter: FilterPanel(model: model)
-                case .retouch: RetouchPanel(model: model, mode: $retouchMode)
+                case .retouch: RetouchPanel(model: model)
                 case .markup: MarkupPanel(model: model, mode: $markupMode)
                 case .frame: FramePanel(model: model)
                 case .resize: ResizePanel(model: model)
@@ -437,7 +482,7 @@ struct CropOverlay: View {
 struct RetouchOverlay: View {
     let recipe: EditRecipe
     let rect: CGRect
-    let selected: Int?
+    let selected: UUID?
 
     var body: some View {
         ZStack(alignment: .topLeading) {
@@ -447,8 +492,8 @@ struct RetouchOverlay: View {
                     .frame(width: rad * 2, height: rad * 2)
                     .position(x: rect.minX + CGFloat(s.center.x) * rect.width, y: rect.minY + CGFloat(s.center.y) * rect.height)
             }
-            ForEach(Array(recipe.locals.enumerated()), id: \.offset) { i, l in
-                let tint = i == selected ? Color.yellow : Color.white.opacity(0.7)
+            ForEach(recipe.locals) { l in
+                let tint = l.id == selected ? Color.yellow : Color.white.opacity(0.7)
                 switch l.mask {
                 case .radial(let c, let rx, let ry, _, _):
                     Ellipse().strokeBorder(tint, style: StrokeStyle(lineWidth: 1.5, dash: [5]))

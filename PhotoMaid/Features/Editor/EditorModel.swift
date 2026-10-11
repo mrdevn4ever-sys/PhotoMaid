@@ -4,6 +4,7 @@ import Observation
 import Photos
 import PhotoMaidCore
 import UIKit
+import SwiftUI
 
 enum EditorTool: String, CaseIterable, Identifiable, Hashable {
     case crop, adjust, filter, retouch, markup, frame, resize
@@ -122,16 +123,41 @@ final class EditorModel {
     let assetID: String
     private(set) var asset: MediaAsset?
     private(set) var loadState: LoadState = .loading
-    var recipe = EditRecipe() { didSet { if recipe != oldValue { schedulePreview() } } }
+    var recipe = EditRecipe() {
+        didSet {
+            if recipe.locals.map(\.id) != oldValue.locals.map(\.id) {
+                retouchSelection.invalidate()
+                retouchSelection.reconcile(recipe.locals)
+            }
+            if recipe != oldValue { schedulePreview() }
+        }
+    }
     private(set) var history: [EditRecipe] = []
     private(set) var future: [EditRecipe] = []
-    var tool: EditorTool = .crop { didSet { schedulePreview() } }
+    var tool: EditorTool = .crop {
+        willSet { if newValue != tool { finishRetouchInteraction() } }
+        didSet { schedulePreview() }
+    }
+    var retouchMode: RetouchMode = .redEye {
+        willSet {
+            if newValue != retouchMode {
+                finishRetouchInteraction()
+                retouchSelection.select(nil)
+            }
+        }
+    }
+    var localParam: AdjustParam = .exposure {
+        willSet { if newValue != localParam { finishRetouchInteraction() } }
+    }
     var param: AdjustParam = .exposure
     var comparing = false
     var aspect: AspectPreset = .free
     var landscape = true
     var selectedLayer: String?
-    var selectedLocal: Int?
+    private(set) var retouchSelection = RetouchSelection()
+    var selectedLocalID: UUID? { retouchSelection.selectedID }
+    var retouchRevision: UUID { retouchSelection.revision }
+    var retouchTarget: RetouchTarget? { retouchSelection.target(in: recipe.locals) }
     var cropEditing: Bool { tool == .crop }
     private(set) var preview: UIImage?
     private(set) var original: UIImage?
@@ -150,8 +176,9 @@ final class EditorModel {
     init(assetID: String) { self.assetID = assetID }
 
     var hasChanges: Bool { !recipe.isIdentity }
-    var canUndo: Bool { !history.isEmpty }
-    var canRedo: Bool { !future.isEmpty }
+    private var hasPendingChange: Bool { gestureStart.map { $0 != recipe } ?? false }
+    var canUndo: Bool { !history.isEmpty || hasPendingChange }
+    var canRedo: Bool { !future.isEmpty && !hasPendingChange }
 
     // MARK: Laden
 
@@ -208,25 +235,119 @@ final class EditorModel {
         gestureStart = nil
         if start != recipe {
             history.append(start)
+            if history.count > 100 { history.removeFirst() }
             future = []
         }
     }
 
     func undo() {
+        finishRetouchInteraction()
         guard let prev = history.popLast() else { return }
         future.append(recipe)
         recipe = prev
     }
 
     func redo() {
+        finishRetouchInteraction()
         guard let next = future.popLast() else { return }
         history.append(recipe)
         recipe = next
     }
 
     func update(_ change: (inout EditRecipe) -> Void) {
+        finishRetouchInteraction()
+        var next = recipe
+        change(&next)
+        guard next != recipe else { return }
         checkpoint()
-        change(&recipe)
+        recipe = next
+    }
+
+    // MARK: Retouch identity, binding lifetime and gesture transactions
+
+    /// Settle an in-flight edit BEFORE replacing its recipe or editing context.
+    /// Delayed callbacks retain their old revision and cannot reopen this undo group.
+    func finishRetouchInteraction() {
+        endChange()
+        retouchSelection.invalidate()
+    }
+
+    func selectLocal(_ id: UUID?) {
+        guard id != selectedLocalID else { return }
+        finishRetouchInteraction()
+        retouchSelection.select(id)
+        retouchSelection.reconcile(recipe.locals)
+    }
+
+    func local(_ target: RetouchTarget) -> LocalAdjustment? {
+        retouchSelection.local(target, in: recipe.locals)
+    }
+
+    func beginLocalChange(_ target: RetouchTarget) {
+        guard tool == .retouch, local(target) != nil else { return }
+        beginChange()
+    }
+
+    func endLocalChange(_ target: RetouchTarget) {
+        guard local(target) != nil else { return }
+        endChange()
+    }
+
+    func adjustmentBinding(_ target: RetouchTarget, parameter: AdjustParam) -> Binding<Float> {
+        // Both target and parameter are immutable snapshots; the array position is not.
+        let keyPath = parameter.keyPath
+        return Binding(get: {
+            self.retouchSelection.adjustment(target, in: self.recipe.locals, keyPath: keyPath)
+        }, set: { value in
+            guard self.tool == .retouch else { return }
+            var locals = self.recipe.locals
+            if self.retouchSelection.setAdjustment(value, target: target, in: &locals, keyPath: keyPath) {
+                self.recipe.locals = locals
+            }
+        })
+    }
+
+    func radialSizeBinding(_ target: RetouchTarget) -> Binding<Float> {
+        Binding(get: {
+            self.retouchSelection.radialSize(target, in: self.recipe.locals)
+        }, set: { value in
+            guard self.tool == .retouch else { return }
+            var locals = self.recipe.locals
+            if self.retouchSelection.setRadialSize(value, target: target, in: &locals) {
+                self.recipe.locals = locals
+            }
+        })
+    }
+
+    func changeLocal(_ target: RetouchTarget, _ change: (inout LocalAdjustment) -> Void) {
+        guard tool == .retouch else { return }
+        var locals = recipe.locals
+        if retouchSelection.update(target, in: &locals, change) { recipe.locals = locals }
+    }
+
+    func deleteLocal(_ target: RetouchTarget) {
+        guard tool == .retouch, local(target) != nil else { return }
+        update { $0.locals.removeAll { $0.id == target.id } }
+    }
+
+    func addLocal(mask: Mask) {
+        let local = LocalAdjustment(mask: mask)
+        update { $0.locals.append(local) }
+        retouchSelection.select(local.id)
+    }
+
+    /// The pre-creation snapshot belongs to the same undo step as the complete stroke.
+    func beginLocalGesture(mask: Mask, reuseBrush: Bool = false) -> RetouchTarget? {
+        guard tool == .retouch else { return nil }
+        finishRetouchInteraction()
+        beginChange()
+        if reuseBrush, let target = retouchTarget, let current = local(target), case .brush = current.mask {
+            return target
+        }
+        let local = LocalAdjustment(mask: mask)
+        recipe.locals.append(local)
+        retouchSelection.select(local.id)
+        return retouchTarget
     }
 
     // MARK: Vorschau (gleicher Graph wie der Export)
@@ -275,5 +396,5 @@ final class EditorModel {
         if aspect != .free && aspect != .original { landscape.toggle() }
     }
 
-    func setSaving(_ v: Bool) { saving = v }
+    func setSaving(_ v: Bool) { if v { finishRetouchInteraction() }; saving = v }
 }

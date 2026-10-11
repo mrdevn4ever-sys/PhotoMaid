@@ -204,55 +204,58 @@ struct FilterPanel: View {
     }
 }
 
-/// Retusche: Rote Augen (kostenlos), Bereiche Kreis/Verlauf/Pinsel (rein manuell, Speichern mit Pro).
+/// Retusche: stable identities; no binding or button retains a locals array index.
 struct RetouchPanel: View {
     @Bindable var model: EditorModel
-    @Binding var mode: RetouchMode
-    @State private var param: AdjustParam = .exposure
 
+    private struct ControlID: Hashable {
+        let target: RetouchTarget
+        let isSize: Bool
+    }
     private static let localParams: [AdjustParam] = [.exposure, .brightness, .contrast, .saturation, .warmth]
 
     var body: some View {
         VStack(spacing: AppSpacing.s) {
-            Picker("", selection: $mode) {
+            Picker("", selection: $model.retouchMode) {
                 Text(key: "ret_red_eye").tag(RetouchMode.redEye)
                 Text(key: "ret_radial").tag(RetouchMode.radial)
                 Text(key: "ret_linear").tag(RetouchMode.linear)
                 Text(key: "ret_brush").tag(RetouchMode.brush)
             }
             .pickerStyle(.segmented)
-            if mode == .redEye {
+            if model.retouchMode == .redEye {
                 Text(key: "ret_red_eye_hint").font(AppTypography.caption).foregroundStyle(.white.opacity(0.8))
                     .multilineTextAlignment(.center)
                 if !model.recipe.redEyes.isEmpty {
                     Button(L("ret_red_eye_undo")) { model.update { _ = $0.redEyes.popLast() } }.foregroundStyle(.yellow)
                 }
-            } else if let i = model.selectedLocal, model.recipe.locals.indices.contains(i) {
+            } else if let target = model.retouchTarget, let local = model.local(target) {
                 HStack {
                     ForEach(Self.localParams) { p in
-                        Button { param = p } label: { Image(systemName: p.symbol).frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch) }
-                            .foregroundStyle(param == p ? .yellow : .white)
-                            .accessibilityLabel(Text(key: p.titleKey))
+                        Button { model.localParam = p } label: {
+                            Image(systemName: p.symbol).frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch)
+                        }
+                        .foregroundStyle(model.localParam == p ? .yellow : .white)
+                        .accessibilityLabel(Text(key: p.titleKey))
                     }
                     Spacer()
-                    Button(role: .destructive) {
-                        model.update { $0.locals.remove(at: i) }
-                        model.selectedLocal = nil
-                    } label: { Image(systemName: "trash").frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch) }
-                        .accessibilityLabel(Text(key: "ret_delete"))
+                    Button(role: .destructive) { model.deleteLocal(target) } label: {
+                        Image(systemName: "trash").frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch)
+                    }
+                    .accessibilityLabel(Text(key: "ret_delete"))
                 }
-                EditorRuler(title: L(param.titleKey),
-                            value: Binding(get: { model.recipe.locals[i].adjust[keyPath: param.keyPath] },
-                                           set: { model.recipe.locals[i].adjust[keyPath: param.keyPath] = $0 }),
-                            range: -100...100, onBegin: model.beginChange, onEnd: model.endChange)
-                if case .radial(let c, let rx, let ry, let feather, let invert) = model.recipe.locals[i].mask {
-                    EditorRuler(title: L("ret_size"), value: Binding(get: { rx * 200 }, set: { v in
-                        let k = max(0.02, v / 200)
-                        model.recipe.locals[i].mask = .radial(center: c, rx: k, ry: k * (ry / max(rx, 0.0001)), feather: feather, invert: invert)
-                    }), range: 4...100, onBegin: model.beginChange, onEnd: model.endChange)
+                EditorRuler(title: L(model.localParam.titleKey),
+                            value: model.adjustmentBinding(target, parameter: model.localParam),
+                            range: -100...100,
+                            onBegin: { model.beginLocalChange(target) }, onEnd: { model.endLocalChange(target) })
+                    .id(ControlID(target: target, isSize: false))
+                if case .radial = local.mask {
+                    EditorRuler(title: L("ret_size"), value: model.radialSizeBinding(target), range: 4...100,
+                                onBegin: { model.beginLocalChange(target) }, onEnd: { model.endLocalChange(target) })
+                        .id(ControlID(target: target, isSize: true))
                 }
             } else {
-                Text(key: mode == .brush ? "ret_hint_brush" : "ret_hint_tap").font(AppTypography.caption)
+                Text(key: model.retouchMode == .brush ? "ret_hint_brush" : "ret_hint_tap").font(AppTypography.caption)
                     .foregroundStyle(.white.opacity(0.8)).multilineTextAlignment(.center)
             }
         }

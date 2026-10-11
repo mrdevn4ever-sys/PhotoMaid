@@ -29,62 +29,6 @@ public struct NormRect: Hashable, Codable, Sendable {
     public func flippedV() -> NormRect { NormRect(left: left, top: 1 - bottom, right: right, bottom: 1 - top) }
 }
 
-/// Regler −100…+100 (Schärfe, Körnung 0…100). 0 = keine Änderung.
-public struct Adjustments: Hashable, Codable, Sendable {
-    public var brightness: Float = 0
-    public var contrast: Float = 0
-    public var saturation: Float = 0
-    public var warmth: Float = 0
-    public var sharpness: Float = 0
-    public var exposure: Float = 0
-    public var highlights: Float = 0
-    public var shadows: Float = 0
-    public var whites: Float = 0
-    public var blacks: Float = 0
-    public var tint: Float = 0
-    public var vibrance: Float = 0
-    public var vignette: Float = 0
-    public var grain: Float = 0
-    public var clarity: Float = 0
-    /// Schärfen: Radius 0…100 (0 = automatisch nach Bildgröße) und Schwelle 0…100.
-    public var sharpenRadius: Float = 0
-    public var sharpenThreshold: Float = 0
-    /// Rauschreduzierung 0…100 (iOS-Ergänzung, Masterprompt §4).
-    public var noiseReduction: Float = 0
-
-    public init() {}
-
-    private static func nz(_ v: Float) -> Bool { abs(v) >= 0.5 }
-
-    /// Punktweise Tonwert-/Farbänderung (unabhängig von Nachbarpixeln und Position).
-    public var pointNeutral: Bool {
-        ![brightness, contrast, saturation, warmth, exposure, highlights, shadows, whites, blacks, tint, vibrance]
-            .contains(where: Self.nz)
-    }
-    /// Positionsabhängig (Vignette, Körnung).
-    public var spatialNeutral: Bool { !Self.nz(vignette) && grain < 0.5 }
-    public var detailNeutral: Bool { sharpness < 0.5 && !Self.nz(clarity) && noiseReduction < 0.5 }
-    public var isNeutral: Bool { pointNeutral && spatialNeutral && detailNeutral }
-    public var colorNeutral: Bool { pointNeutral && spatialNeutral }
-
-    private enum CodingKeys: String, CodingKey {
-        case brightness, contrast, saturation, warmth, sharpness, exposure, highlights, shadows, whites, blacks, tint,
-             vibrance, vignette, grain, clarity, sharpenRadius, sharpenThreshold, noiseReduction
-    }
-
-    /// Fehlende Felder (ältere Sicherungen, Android-Vorlagen) = 0.
-    public init(from decoder: any Decoder) throws {
-        let c = try decoder.container(keyedBy: CodingKeys.self)
-        func f(_ k: CodingKeys) throws -> Float { try c.decodeIfPresent(Float.self, forKey: k) ?? 0 }
-        brightness = try f(.brightness); contrast = try f(.contrast); saturation = try f(.saturation)
-        warmth = try f(.warmth); sharpness = try f(.sharpness); exposure = try f(.exposure)
-        highlights = try f(.highlights); shadows = try f(.shadows); whites = try f(.whites); blacks = try f(.blacks)
-        tint = try f(.tint); vibrance = try f(.vibrance); vignette = try f(.vignette); grain = try f(.grain)
-        clarity = try f(.clarity); sharpenRadius = try f(.sharpenRadius); sharpenThreshold = try f(.sharpenThreshold)
-        noiseReduction = try f(.noiseReduction)
-    }
-}
-
 /// Ein Farbbereich des Farbmischers: Farbton ±100 (= ±30°), Sättigung, Helligkeit −100…+100.
 public struct HslShift: Hashable, Codable, Sendable {
     public var hue: Float = 0
@@ -126,46 +70,6 @@ public struct ColorMix: Hashable, Codable, Sendable {
         var m = shifts
         m[b] = s
         return ColorMix(shifts: m)
-    }
-}
-
-/// Normierter Punkt (0…1) im Ausgabebild.
-public struct NormPoint: Hashable, Codable, Sendable {
-    public var x: Float
-    public var y: Float
-    public init(_ x: Float, _ y: Float) { self.x = x; self.y = y }
-}
-
-/// Pinselstrich (Ausgabekoordinaten 0…1, Radius relativ zur langen Kante, Härte 0…1).
-public struct BrushStroke: Hashable, Codable, Sendable {
-    public var points: [NormPoint]
-    public var radius: Float
-    public var hardness: Float = 0.5
-    public var erase = false
-    public init(points: [NormPoint], radius: Float, hardness: Float = 0.5, erase: Bool = false) {
-        self.points = points
-        self.radius = radius
-        self.hardness = hardness
-        self.erase = erase
-    }
-}
-
-/// Maske einer lokalen Anpassung. Rein manuell (keine Erkennung).
-public enum Mask: Hashable, Codable, Sendable {
-    /// Ellipse um `center` mit Halbachsen relativ zur Bildbreite/-höhe, `feather` 0…1 weiche Kante.
-    case radial(center: NormPoint, rx: Float, ry: Float, feather: Float, invert: Bool)
-    /// Verlauf von `start` (voll) nach `end` (null).
-    case linear(start: NormPoint, end: NormPoint)
-    case brush(strokes: [BrushStroke])
-}
-
-/// Lokale Anpassung: Maske + Regler (nur punktweise Regler wirken lokal).
-public struct LocalAdjustment: Hashable, Codable, Sendable {
-    public var mask: Mask
-    public var adjust: Adjustments
-    public init(mask: Mask, adjust: Adjustments = Adjustments()) {
-        self.mask = mask
-        self.adjust = adjust
     }
 }
 
