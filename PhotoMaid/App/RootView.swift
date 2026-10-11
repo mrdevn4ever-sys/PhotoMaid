@@ -57,12 +57,17 @@ struct RootView: View {
             switch phase {
             case .active:
                 shielded = false
+                PrivacyCover.hide()
                 Task { await app.onForeground() }
             case .background:
                 shielded = true
+                PrivacyCover.show()
                 app.player.stop()
                 vault.lock() // Tresor beim Verlassen der App immer sperren und schließen
             default:
+                // Tresor offen: schon beim Wechsel in den App-Umschalter alles abdecken – auch Betrachter, Blätter und
+                // Teilen-Fenster, die über der Tresor-Ebene liegen.
+                if vault.isPresented { PrivacyCover.show() }
                 app.player.pause()
             }
         }
@@ -154,6 +159,31 @@ struct PrivacyShield: View {
                 .accessibilityHidden(true)
         }
         .ignoresSafeArea()
+    }
+}
+
+/// Sichtschutz in einem eigenen Fenster über allem, was die App zeigt (Vollbild-Ebenen, Blätter, Teilen-Fenster).
+/// Systemabfragen (Face ID, Löschen in der Fotos-App) liegen außerhalb der App und bleiben bedienbar.
+@MainActor
+enum PrivacyCover {
+    private static var window: UIWindow?
+
+    static func show() {
+        guard window == nil,
+              let scene = UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene }).first
+        else { return }
+        let cover = UIWindow(windowScene: scene)
+        cover.windowLevel = .alert + 1
+        cover.overrideUserInterfaceStyle = scene.windows.first { $0.isKeyWindow }?.overrideUserInterfaceStyle ?? .unspecified
+        let host = UIHostingController(rootView: PrivacyShield())
+        cover.rootViewController = host
+        cover.isHidden = false
+        window = cover
+    }
+
+    static func hide() {
+        window?.isHidden = true
+        window = nil
     }
 }
 

@@ -26,17 +26,26 @@ struct EditsView: View {
         }
         .appPage()
         .navigationTitle(L("edits_title"))
-        .task(id: app.library.changeToken) { records = app.kv?.get(StoreKeys.edits) ?? [] }
+        .task(id: app.library.changeToken) { records = Self.visible(app.kv?.get(StoreKeys.edits) ?? []) }
+    }
+
+    /// Ergebnisse, die selbst im Tresor liegen, erscheinen hier nicht (E16). Gespeichert bleibt die volle Liste.
+    private static func visible(_ list: [EditRecord]) -> [EditRecord] {
+        VaultConcealment.shared.visible(list) { $0.newId }
     }
 
     private func forget(_ r: EditRecord) {
-        records.removeAll { $0.id == r.id }
-        try? app.kv?.set(StoreKeys.edits, records)
+        var full = app.kv?.get(StoreKeys.edits) ?? []
+        full.removeAll { $0.id == r.id }
+        try? app.kv?.set(StoreKeys.edits, full)
+        records = Self.visible(full)
     }
 
     private func row(_ r: EditRecord) -> some View {
         let exists = app.asset(r.newId) != nil
         let original = r.sourceId.isEmpty ? nil : app.asset(r.sourceId)
+        // Liegt das Original im Tresor, sagt die Liste nichts darüber.
+        let originalPrivate = !r.sourceId.isEmpty && VaultConcealment.shared.isConcealed(r.sourceId)
         let badge: String = switch r.kind {
         case .collage: L("edits_badge_collage")
         case .merge, .slideshow: L("edits_badge_movie")
@@ -52,7 +61,7 @@ struct EditsView: View {
             LP("edits_collage_from", r.count)
         } else if !exists {
             L("edits_result_gone")
-        } else if r.sourceId.isEmpty {
+        } else if r.sourceId.isEmpty || originalPrivate {
             nil
         } else if original != nil {
             L("edits_orig_present")

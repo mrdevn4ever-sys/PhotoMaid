@@ -253,7 +253,10 @@ final class AppModel {
         let state = await ledger.snapshotState()
         var backup = PhotoMaidBackup(createdAt: Int64(Date().timeIntervalSince1970 * 1000), appVersion: AppConfig.appVersion)
         var table = BackupRefTable()
-        for record in state.records.values where record.item.provider == .photoLibrary {
+        // Medien im Tresor gehören in keine öffentliche Sicherung (auch nicht als Kennung).
+        let concealment = VaultConcealment.shared
+        let visible: (String) -> Bool = { !concealment.isConcealed($0) }
+        for record in state.records.values where record.item.provider == .photoLibrary && visible(record.item.localIdentifier) {
             guard let backupState = BackupRules.state(record.disposition) else { continue }
             let media = organize.refs[record.item.localIdentifier]
                 ?? MediaRef(id: record.item.localIdentifier, name: nil, size: nil, takenMillis: nil)
@@ -261,22 +264,64 @@ final class AppModel {
             backup.decisions.append(BackupDecision(ref: index, state: backupState, due: record.dueDay,
                                                    bookmarked: record.bookmarked))
         }
-        for (id, tags) in organize.tags {
+        for (id, tags) in organize.tags where visible(id) {
             let index = table.add(organize.refs[id] ?? MediaRef(id: id, name: nil, size: nil, takenMillis: nil))
             backup.tags[index] = tags
         }
-        for (id, note) in organize.notes {
+        for (id, note) in organize.notes where visible(id) {
             let index = table.add(organize.refs[id] ?? MediaRef(id: id, name: nil, size: nil, takenMillis: nil))
             backup.notes[index] = note
         }
-        backup.basket = organize.basket.map {
+        backup.basket = organize.basket.filter(visible).map {
             table.add(organize.refs[$0] ?? MediaRef(id: $0, name: nil, size: nil, takenMillis: nil))
         }
-        backup.hiddenMedia = settings.hiddenMedia.map {
+        backup.hiddenMedia = settings.hiddenMedia.filter(visible).map {
             table.add(organize.refs[$0] ?? MediaRef(id: $0, name: nil, size: nil, takenMillis: nil))
         }
         backup.refs = table.refs
         return backup
+    }
+
+    /// Medien liegen jetzt im Tresor (E16): in PhotoMaid nirgends mehr zeigen. Papierkorb- und Später-Einträge
+    /// aufheben, aus Auswahlkorb und Entwürfen nehmen, Vorschaubilder vergessen, Mediathek und Lesemodell neu laden.
+    /// Gilt auch, wenn iOS das Löschen in der Fotos-App nicht bestätigt hat.
+    func applyVaultConcealment(_ ids: Set<String>) async {
+        guard !ids.isEmpty else { return }
+        for id in ids {
+            let ref = ItemReference.photo(id)
+            switch record(ref).disposition {
+            case .markedForCleanup: await decide(ref, .unmark)
+            case .later: await decide(ref, .removeDeferral)
+            default: break
+            }
+        }
+        organize.removeFromBasket(Array(ids))
+        if let kv {
+            let collages = kv.get(StoreKeys.collageDrafts)
+            let cleanedCollages = collages.compactMap { draft -> CollageProject? in
+                guard draft.items.contains(where: { ids.contains($0.mediaId) }) else { return draft }
+                var p = draft
+                for i in p.items.indices.reversed() where ids.contains(p.items[i].mediaId) { p = p.removeItem(i) }
+                return p.items.contains(where: { ids.contains($0.mediaId) }) ? nil : p
+            }
+            if cleanedCollages != collages { try? kv.set(StoreKeys.collageDrafts, cleanedCollages) }
+            let movies = kv.get(StoreKeys.videoDrafts)
+            let cleanedMovies = movies.map { project in
+                project.clips.contains(where: { ids.contains($0.mediaId) })
+                    ? project.withClips(project.clips.filter { !ids.contains($0.mediaId) }) : project
+            }
+            if cleanedMovies != movies { try? kv.set(StoreKeys.videoDrafts, cleanedMovies) }
+            // Ergebnisse der Bildanalyse (u. a. erkannter Text) der verborgenen Medien verwerfen.
+            var analysis = kv.get(StoreKeys.analysisCache)
+            if analysis.keys.contains(where: ids.contains) {
+                for id in ids { analysis[id] = nil }
+                try? kv.set(StoreKeys.analysisCache, analysis)
+            }
+        }
+        ThumbnailLoader.shared.clear()
+        previews.forgetCache()
+        reloadLibraryIfNeeded(force: true)
+        await publishRead()
     }
 
     var dueCount: Int {
@@ -298,12 +343,18 @@ final class AppModel {
         let candidates = cleanupMedia.map(\.reference)
         let queueRevision = queueInputsRevision
         let derived = await Task.detached(priority: .userInitiated) { () -> (LedgerReadModel, [ItemReference]) in
+            // Medien im Tresor erscheinen weder im Papierkorb noch unter „Später“ noch im Verlauf (E16).
+            let concealment = VaultConcealment.shared
+            let hidden: (ItemReference) -> Bool = { ref in
+                ref.provider == .photoLibrary && concealment.isConcealed(ref.localIdentifier)
+            }
+            let anyHidden = !concealment.isEmpty
             let view = LedgerReadModel(
                 records: state.records,
-                basket: state.records.values.filter { $0.disposition == .markedForCleanup }
+                basket: state.records.values.filter { $0.disposition == .markedForCleanup && !(anyHidden && hidden($0.item)) }
                     .sorted { $0.item.description < $1.item.description },
-                laterRecords: state.records.values.filter { $0.disposition == .later },
-                events: state.events,
+                laterRecords: state.records.values.filter { $0.disposition == .later && !(anyHidden && hidden($0.item)) },
+                events: anyHidden ? state.events.filter { !hidden($0.item) } : state.events,
                 allowance: DecisionLedger.allowance(in: state, day: day, limit: limit),
                 canUndo: !state.undoStack.isEmpty,
                 reconciliationNeeded: state.intents.values.filter { $0.state == .reconciliationRequired })

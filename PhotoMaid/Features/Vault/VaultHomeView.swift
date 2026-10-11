@@ -11,6 +11,8 @@ struct VaultHomeView: View {
     @State private var selection: Set<String> = []
     @State private var picking = false
     @State private var pendingImport: [String] = []
+    /// Von PhotoMaid erstellte Kopien der Auswahl (Bearbeitungen, Collagen, Filme, GIFs) zum Mit-Ablegen.
+    @State private var pendingCopies: [String] = []
     @State private var confirmImport = false
     @State private var confirmDelete = false
     @State private var confirmRestore = false
@@ -47,13 +49,18 @@ struct VaultHomeView: View {
                 .padding(.bottom, AppSpacing.xxl)
             }
             .appPage()
+            // Einträge älterer Fassungen und eine beschädigte Verbergen-Liste beim Öffnen abgleichen.
+            .task { await vault.syncConcealment(app: app) }
             .navigationTitle(L("vault_title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { toolbar }
             .safeAreaInset(edge: .bottom) { if selecting { selectionBar } }
             .overlay { progressOverlay }
             // Rückfrage erst, wenn die Auswahl ganz geschlossen ist (sonst erscheint der Dialog nicht).
-            .sheet(isPresented: $picking, onDismiss: { confirmImport = !pendingImport.isEmpty }) {
+            .sheet(isPresented: $picking, onDismiss: {
+                pendingCopies = pendingImport.isEmpty ? [] : vault.derivedCopies(of: pendingImport, app: app)
+                confirmImport = !pendingImport.isEmpty
+            }) {
                 StudioMediaPicker(allowsVideos: true, limit: remaining ?? 10_000) { ids in pendingImport = ids }
             }
             .sheet(isPresented: $moveSheet) { VaultMoveSheet(ids: selection) { selecting = false; selection = [] } }
@@ -65,16 +72,28 @@ struct VaultHomeView: View {
                 VaultViewer(ids: request.ids, start: request.index)
             }
             .alert(L("vault_import_confirm_title", pendingImport.count), isPresented: $confirmImport) {
-                Button(L("vault_import_action")) { Task { await runImport() } }
-                Button(L("cancel"), role: .cancel) { pendingImport = [] }
+                if pendingCopies.isEmpty {
+                    Button(L("vault_import_action")) { Task { await runImport(withCopies: false) } }
+                } else {
+                    Button(L("vault_import_with_copies", pendingCopies.count)) { Task { await runImport(withCopies: true) } }
+                    Button(L("vault_import_without_copies")) { Task { await runImport(withCopies: false) } }
+                }
+                Button(L("cancel"), role: .cancel) { pendingImport = []; pendingCopies = [] }
             } message: {
-                Text(key: "vault_import_confirm_text")
+                if pendingCopies.isEmpty {
+                    Text(key: "vault_import_confirm_text")
+                } else {
+                    Text(verbatim: L("vault_import_confirm_text") + "\n\n" + L("vault_import_copies_text", pendingCopies.count))
+                }
             }
             .alert(L("vault_delete_title", selection.count), isPresented: $confirmDelete) {
                 Button(L("vault_delete"), role: .destructive) {
-                    vault.delete(selection)
-                    selection = []
-                    selecting = false
+                    if vault.delete(selection, app: app) {
+                        selection = []
+                        selecting = false
+                    } else {
+                        notice = L("vault_error_generic")
+                    }
                 }
                 Button(L("cancel"), role: .cancel) {}
             } message: {
@@ -284,9 +303,10 @@ struct VaultHomeView: View {
         picking = true
     }
 
-    private func runImport() async {
-        let ids = pendingImport
+    private func runImport(withCopies: Bool) async {
+        let ids = pendingImport + (withCopies ? pendingCopies : [])
         pendingImport = []
+        pendingCopies = []
         let report = await vault.importAssets(ids, app: app)
         var lines: [String] = []
         if report.imported > 0 { lines.append(L("vault_import_done", report.imported, report.removedFromLibrary)) }
@@ -299,11 +319,12 @@ struct VaultHomeView: View {
 
     private func restore(remove: Bool) async {
         let ids = selection
-        let result = await vault.restore(ids, removeFromVault: remove, app: app)
+        let report = await vault.restore(ids, removeFromVault: remove, app: app)
         selection = []
         selecting = false
-        var text = L("vault_restore_done", result.restored)
-        if result.failed > 0 { text += "\n\n" + L("vault_restore_failed", result.failed) }
+        var text = L("vault_restore_done", report.restored)
+        if report.keptComplete > 0 { text += "\n\n" + L("vault_restore_kept_complete", report.keptComplete) }
+        if report.failed > 0 { text += "\n\n" + L("vault_restore_failed", report.failed) }
         notice = text
     }
 

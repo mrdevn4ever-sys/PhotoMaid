@@ -9,8 +9,7 @@ import WebKit
 @MainActor
 enum GIFPlayback {
     static func isGIF(_ id: String) -> Bool {
-        guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [id], options: nil).firstObject,
-              asset.mediaType == .image else { return false }
+        guard let asset = PhotoLibraryService.phAsset(id), asset.mediaType == .image else { return false }
         return PHAssetResource.assetResources(for: asset).contains {
             $0.uniformTypeIdentifier.lowercased().contains("gif") ||
             $0.originalFilename.lowercased().hasSuffix(".gif")
@@ -20,8 +19,7 @@ enum GIFPlayback {
     /// PhotoKit may need to fetch the current source from iCloud. Keep a strict byte cap:
     /// a huge GIF must fall back to its static thumbnail, never crash the viewer.
     static func data(for id: String) async -> Data? {
-        guard isGIF(id), let asset = PHAsset.fetchAssets(withLocalIdentifiers: [id], options: nil).firstObject
-        else { return nil }
+        guard isGIF(id), let asset = PhotoLibraryService.phAsset(id) else { return nil }
         let options = PHImageRequestOptions()
         options.version = .original
         options.deliveryMode = .highQualityFormat

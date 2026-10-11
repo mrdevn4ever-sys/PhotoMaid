@@ -60,7 +60,8 @@ Apps › Fotos ganz ausblendbar). Das ist kostenlos und ohne Datenverlust-Risiko
    sie 30 Tage in ‚Zuletzt gelöscht‘. Leere diesen Ordner in der Fotos-App, wenn sie dort auch verschwinden sollen.“
 4. Entscheidungen, Später-Termine und Papierkorb-Einträge von PhotoMaid zu diesen Medien werden entfernt; dadurch
    tauchen sie nirgends mehr auf.
-5. Lehnt man die iOS-Abfrage ab: Medien bleiben auch in Fotos; die App sagt das und bietet „Erneut fragen“ an.
+5. Lehnt man die iOS-Abfrage ab: Medien bleiben auch in Fotos (in PhotoMaid trotzdem verborgen); die App sagt das
+   und bietet „Erneut fragen“ an.
 
 ### Im Tresor
 - Raster mit Ordnern, Sortieren nach Aufnahmedatum, Ablagedatum, Name, Größe (gemessen, unbekannt ≠ 0).
@@ -126,6 +127,16 @@ Geschätzter Umfang: groß (etwa so viel wie das PDF-Studio). Erst nach Freigabe
 - Sperren: beim Wechsel in den Hintergrund und beim Schließen; Schlüssel, Inhaltsverzeichnis, Vorschaubilder und
   entschlüsselte Temp-Dateien werden verworfen. Im App-Umschalter abgedeckt.
 - Nicht protokolliert (keine Diagnose-Einträge), keine Mitteilungen, kein Spotlight, keine Kurzbefehle.
+
+## Isolation „nur im Tresor“ (nach Build 4, Branch `claude/vault-isolation-20261011`)
+
+- Abgelegte Medien sind in PhotoMaid sofort und überall verborgen – auch wenn iOS das Löschen in der Fotos-App nicht
+  bestätigt oder ein Original aus „Zuletzt gelöscht“ zurückkommt (Verbergen-Liste aus gesalzenen Prüfsummen).
+- Spuren werden entfernt (Papierkorb, Später, Verlauf, Auswahlkorb, Entwürfe, Analyse, Vorschau-Caches, Sicherung).
+- Von PhotoMaid erstellte Kopien (Bearbeitungen, Collagen, Filme, GIFs) werden beim Ablegen zum Mitnehmen angeboten.
+- Sitzung wird beim Sperren widerrufen; Index erst gespeichert, dann gültig; vereinfachtes Zurücklegen behält das
+  vollständige Original im Tresor; Sichtschutz über allen Ebenen.
+- Details, Grenzen und Prüfstand: `docs/VAULT_SECURITY_IMPLEMENTATION_STATUS.md`.
 
 ## Vor dem App-Store-Release (nicht für TestFlight intern nötig)
 

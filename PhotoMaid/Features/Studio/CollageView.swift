@@ -359,10 +359,12 @@ struct CollageView: View {
         }
         switch o.destination {
         case .photos:
-            await saveToLibrary(url: url, name: name, albumID: nil, albumTitle: nil, bytes: data.count, count: p.items.count)
+            await saveToLibrary(url: url, name: name, albumID: nil, albumTitle: nil, bytes: data.count, count: p.items.count,
+                                sources: p.items.map(\.mediaId))
             try? FileManager.default.removeItem(at: folder)
         case .album(let id, let title):
-            await saveToLibrary(url: url, name: name, albumID: id, albumTitle: title, bytes: data.count, count: p.items.count)
+            await saveToLibrary(url: url, name: name, albumID: id, albumTitle: title, bytes: data.count, count: p.items.count,
+                                sources: p.items.map(\.mediaId))
             try? FileManager.default.removeItem(at: folder)
         case .files:
             exportFolder = folder
@@ -396,7 +398,8 @@ struct CollageView: View {
         return images
     }
 
-    private func saveToLibrary(url: URL, name: String, albumID: String?, albumTitle: String?, bytes: Int, count: Int) async {
+    private func saveToLibrary(url: URL, name: String, albumID: String?, albumTitle: String?, bytes: Int, count: Int,
+                               sources: [String]) async {
         let request = PhotoLibraryService.SaveRequest(fileURL: url, isVideo: false, creationDate: Date(), latitude: nil,
                                                       longitude: nil, albumID: albumID, filename: name)
         guard case .saved(let newID) = await app.library.save(request) else {
@@ -405,7 +408,7 @@ struct CollageView: View {
         }
         // Gespeicherte Collage = behalten und in „Bearbeitet“ (sonst erschiene sie als neues offenes Medium).
         _ = await EditSaver.finish(app: app, original: nil, newID: newID, mode: .copy, video: false, kind: .collage,
-                                   count: count, bytes: Int64(bytes))
+                                   count: count, sources: sources, bytes: Int64(bytes))
         persistDraft()
         Haptics.success()
         if let albumTitle {

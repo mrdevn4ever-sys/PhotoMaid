@@ -228,15 +228,23 @@ enum VaultKeychain {
     static let biometricAccount = "vault.biometric"
     private static var service: String { (Bundle.main.bundleIdentifier ?? "photomaid") + ".vault" }
 
+    /// Ersetzt den Eintrag in einem Schritt (nie erst löschen: scheitert das Neuanlegen, wäre der Code sonst weg).
     static func set(_ data: Data, account: String) throws {
-        delete(account)
-        let query: [String: Any] = [
+        let match: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
             kSecAttrAccount as String: account,
-            kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlocked,
-            kSecValueData as String: data,
         ]
+        let update: [String: Any] = [
+            kSecValueData as String: data,
+            kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlocked,
+        ]
+        let status = SecItemUpdate(match as CFDictionary, update as CFDictionary)
+        if status == errSecSuccess { return }
+        guard status == errSecItemNotFound else { throw VaultCryptoError.io }
+        var query = match
+        query[kSecAttrAccessible as String] = kSecAttrAccessibleWhenUnlocked
+        query[kSecValueData as String] = data
         guard SecItemAdd(query as CFDictionary, nil) == errSecSuccess else { throw VaultCryptoError.io }
     }
 

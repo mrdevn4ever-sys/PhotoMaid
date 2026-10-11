@@ -58,7 +58,7 @@ enum EditSaver {
 
     /// Gemeinsamer Abschluss für Foto, Video, Collage, Film: Ledger, Liste „Bearbeitet“, ggf. Original ersetzen.
     static func finish(app: AppModel, original: MediaAsset?, newID: String, mode: SaveMode, video: Bool, kind: EditKind,
-                       count: Int = 1, bytes: Int64?) async -> EditSaveOutcome {
+                       count: Int = 1, sources: [String]? = nil, bytes: Int64?) async -> EditSaveOutcome {
         // Ausdrücklich gespeichert = behalten (sonst erschiene die Fassung als neues offenes Medium).
         await app.decide(.photo(newID), .keep)
         var replaced = false
@@ -78,18 +78,20 @@ enum EditSaver {
             }
         }
         remember(app: app, newID: newID, sourceID: original?.id, mode: replaced ? .replace : .copy, video: video,
-                 kind: kind, count: count)
+                 kind: kind, count: count, sources: sources)
         app.reloadLibraryIfNeeded(force: true)
         if mode == .replace { return replaced ? .replaced(newID: newID) : .replaceDeclined(newID: newID) }
         return .copy(newID: newID, bytes: bytes)
     }
 
     /// Nur in die Liste „Bearbeitet“ eintragen (Stapelwerkzeuge und Abläufe: Behalten und Neuladen erledigt der Aufrufer).
+    /// `sources`: alle Quellmedien (Collage, Film, GIF) – damit Kopien von Medien im Tresor erkannt werden (E16).
     static func remember(app: AppModel, newID: String, sourceID: String?, mode: SaveMode = .copy, video: Bool = false,
-                         kind: EditKind, count: Int = 1) {
+                         kind: EditKind, count: Int = 1, sources: [String]? = nil) {
         var list = app.kv?.get(StoreKeys.edits) ?? []
         list.insert(EditRecord(newId: newID, sourceId: sourceID ?? "", mode: mode, video: video,
-                               atMs: Int64(Date().timeIntervalSince1970 * 1000), kind: kind, count: count), at: 0)
+                               atMs: Int64(Date().timeIntervalSince1970 * 1000), kind: kind, count: count,
+                               sources: sources), at: 0)
         try? app.kv?.set(StoreKeys.edits, Array(list.prefix(500)))
     }
 

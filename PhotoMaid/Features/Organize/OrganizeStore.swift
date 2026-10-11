@@ -28,7 +28,11 @@ final class OrganizeStore {
 
     func tags(of id: String) -> [String] { tags[id] ?? [] }
 
-    var allTags: [(tag: String, count: Int)] { TagRules.counts(tags) }
+    /// Ohne Medien im Tresor (auch nicht mitgezählt).
+    var allTags: [(tag: String, count: Int)] {
+        let visible = VaultConcealment.shared.visible(Set(tags.keys))
+        return TagRules.counts(visible.count == tags.count ? tags : tags.filter { visible.contains($0.key) })
+    }
 
     @discardableResult
     func addTags(_ raw: [String], to assets: [MediaAsset]) -> Bool {

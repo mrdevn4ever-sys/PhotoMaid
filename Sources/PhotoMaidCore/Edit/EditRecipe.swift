@@ -441,9 +441,11 @@ public struct EditRecord: Hashable, Codable, Sendable, Identifiable {
     public let atMs: Int64
     public let kind: EditKind
     public let count: Int
+    /// Alle Quellmedien (Collage, Film, GIF, Stapel). Ältere Einträge haben nur `sourceId` bzw. nichts (`nil`).
+    public let sources: [String]?
 
     public init(newId: String, sourceId: String, mode: SaveMode, video: Bool, atMs: Int64, kind: EditKind = .edit,
-                count: Int = 0) {
+                count: Int = 0, sources: [String]? = nil) {
         self.newId = newId
         self.sourceId = sourceId
         self.mode = mode
@@ -451,6 +453,7 @@ public struct EditRecord: Hashable, Codable, Sendable, Identifiable {
         self.atMs = atMs
         self.kind = kind
         self.count = count
+        self.sources = sources
     }
 
     public var id: String { newId }

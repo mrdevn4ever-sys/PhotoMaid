@@ -123,6 +123,8 @@ struct VaultLockView: View {
             refreshLockout()
         case .unavailable:
             message = L("vault_code_unavailable")
+        case .cancelled:
+            message = nil // inzwischen gesperrt (App verlassen): kein Fehlversuch, keine Meldung
         }
     }
 
@@ -158,7 +160,11 @@ struct VaultRecoveryUnlockSheet: View {
                             busy = true
                             let result = await vault.unlock(recoveryKey: input)
                             busy = false
-                            if result == .opened { dismiss() } else { wrong = true }
+                            switch result {
+                            case .opened: dismiss()
+                            case .cancelled: break
+                            default: wrong = true
+                            }
                         }
                     }
                     .disabled(VaultRecoveryKey.normalize(input) == nil || busy)

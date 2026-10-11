@@ -3,6 +3,7 @@ import SwiftUI
 
 /// Einstellungen im Tresor: Code ändern, Face ID, Eingang verstecken, Notfallschlüssel, Tresor löschen.
 struct VaultSettingsView: View {
+    @Environment(AppModel.self) private var app
     @Environment(\.dismiss) private var dismiss
     @State private var vault = VaultStore.shared
     @State private var changingCode = false
@@ -65,7 +66,7 @@ struct VaultSettingsView: View {
                 Text(key: "vault_recovery_skip_text")
             }
             .alert(L("vault_delete_all_title"), isPresented: $confirmDeleteVault) {
-                Button(L("vault_delete_all"), role: .destructive) { vault.deleteVault() }
+                Button(L("vault_delete_all"), role: .destructive) { vault.deleteVault(app: app) }
                 Button(L("cancel"), role: .cancel) {}
             } message: {
                 Text(verbatim: L("vault_delete_all_text", vault.index.items.count))

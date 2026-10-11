@@ -76,7 +76,7 @@ final class PreviewPipeline {
     /// Abbruch des Tasks bricht beide PhotoKit-Requests (und einen laufenden Download) ab.
     func progressiveImage(for assetID: String, targetSize: CGSize) -> AsyncStream<PreviewUpdate> {
         AsyncStream { cont in
-            guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [assetID], options: nil).firstObject else {
+            guard let asset = PhotoLibraryService.phAsset(assetID) else { // Tresor-Medien: nie
                 cont.yield(.failed(inCloud: false))
                 cont.finish()
                 return
@@ -133,7 +133,7 @@ final class PreviewPipeline {
     /// Lädt eine Vorschau in einem Schritt (volle Qualität, bei Bedarf aus iCloud). Abbruch des Tasks bricht den
     /// PhotoKit-Request ab.
     func image(for assetID: String, targetSize: CGSize, allowNetwork: Bool = true) async -> PreviewResult {
-        guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [assetID], options: nil).firstObject else { return .failed }
+        guard let asset = PhotoLibraryService.phAsset(assetID) else { return .failed }
         let box = RequestBox()
         let managerBox = UncheckedBox(manager)
         return await withTaskCancellationHandler {
@@ -149,6 +149,12 @@ final class PreviewPipeline {
         } onCancel: {
             if let id = box.id { managerBox.value.cancelImageRequest(id) }
         }
+    }
+
+    /// Alles Vorgehaltene vergessen (z. B. nachdem Medien in den Tresor gelegt wurden).
+    func forgetCache() {
+        manager.stopCachingImagesForAllAssets()
+        cachedIDs = []
     }
 
     /// Vorheriges, aktuelles und wenige nächste Items vorhalten (auch aus iCloud vorladen); Rest freigeben.
@@ -174,7 +180,9 @@ final class PreviewPipeline {
         func fetch(_ s: Set<String>) -> [PHAsset] {
             guard !s.isEmpty else { return [] }
             var out: [PHAsset] = []
-            PHAsset.fetchAssets(withLocalIdentifiers: Array(s), options: nil).enumerateObjects { a, _, _ in out.append(a) }
+            let ids = Array(VaultConcealment.shared.visible(s))
+            guard !ids.isEmpty else { return [] }
+            PHAsset.fetchAssets(withLocalIdentifiers: ids, options: nil).enumerateObjects { a, _, _ in out.append(a) }
             return out
         }
         let options = cacheOptions()
@@ -191,7 +199,7 @@ final class PreviewPipeline {
 
     /// Video als PlayerItem; liegt es nur in iCloud, streamt PhotoKit es (wie die Fotos-App).
     func playerItem(for assetID: String, allowNetwork: Bool = true) async -> PlayerItemResult {
-        guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [assetID], options: nil).firstObject else { return .failed }
+        guard let asset = PhotoLibraryService.phAsset(assetID) else { return .failed }
         let o = PHVideoRequestOptions()
         o.isNetworkAccessAllowed = allowNetwork
         o.deliveryMode = .automatic

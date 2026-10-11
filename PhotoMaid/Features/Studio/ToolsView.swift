@@ -318,14 +318,14 @@ struct ToolsView: View {
             if kind == .stitch {
                 let sources = chronological
                 let data = try await BatchProcessor.stitch(ids: sources)
-                try await save(data, fileExtension: "jpg", editKind: .frame, count: sources.count)
+                try await save(data, fileExtension: "jpg", editKind: .frame, sources: sources)
                 app.showToast(L("tools_stitch_saved"))
                 return
             }
             if kind == .gif {
                 let sources = chronological
                 let data = try await BatchProcessor.gif(ids: sources, maxEdge: gifEdge, delay: gifDelay)
-                try await save(data, fileExtension: "gif", editKind: .gif, count: sources.count)
+                try await save(data, fileExtension: "gif", editKind: .gif, sources: sources)
                 app.showToast(L("tools_gif_saved", SizeText.bytes(Int64(data.count))))
                 return
             }
@@ -394,7 +394,7 @@ struct ToolsView: View {
         return (resources.first { $0.type == .photo } ?? resources.first)?.uniformTypeIdentifier
     }
 
-    private func save(_ data: Data, fileExtension: String, editKind: EditKind, count: Int) async throws {
+    private func save(_ data: Data, fileExtension: String, editKind: EditKind, sources: [String]) async throws {
         let folder = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString, isDirectory: true)
         try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
         defer { try? FileManager.default.removeItem(at: folder) }
@@ -405,7 +405,7 @@ struct ToolsView: View {
         guard case .saved(let newID) = await app.library.save(request) else { throw BatchProcessor.Failure.write }
         // Ergebnis erscheint unter „Gespeichert“; finish übernimmt auch das Behalten im Ledger.
         _ = await EditSaver.finish(app: app, original: nil, newID: newID, mode: .copy, video: false, kind: editKind,
-                                   count: count, bytes: Int64(data.count))
+                                   count: sources.count, sources: sources, bytes: Int64(data.count))
     }
 }
 

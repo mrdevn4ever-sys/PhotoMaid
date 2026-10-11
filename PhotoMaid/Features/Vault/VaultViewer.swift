@@ -96,15 +96,24 @@ struct VaultViewer: View {
 
     private func deleteCurrent() {
         guard let item = current else { return }
-        vault.delete([item.id])
+        guard vault.delete([item.id], app: app) else {
+            notice = L("vault_error_generic")
+            return
+        }
         if vault.index.items.isEmpty || !ids.contains(where: { id in vault.index.items.contains { $0.id == id } }) { dismiss() }
     }
 
     private func restoreCurrent(remove: Bool) async {
         guard let item = current else { return }
-        let result = await vault.restore([item.id], removeFromVault: remove, app: app)
-        if result.restored == 1 {
-            if remove { dismiss() } else { notice = L("vault_restore_done", 1) }
+        let report = await vault.restore([item.id], removeFromVault: remove, app: app)
+        if report.restored == 1 {
+            if report.keptComplete > 0 {
+                notice = L("vault_restore_done", 1) + "\n\n" + L("vault_restore_kept_complete", report.keptComplete)
+            } else if remove {
+                dismiss()
+            } else {
+                notice = L("vault_restore_done", 1)
+            }
         } else {
             notice = L("vault_restore_failed", 1)
         }

@@ -400,24 +400,25 @@ final class ThumbnailLoader {
     }
 
     func image(_ assetID: String, size: CGSize) async -> UIImage? {
-        guard size.width >= 1, size.height >= 1 else { return nil }
+        guard size.width >= 1, size.height >= 1, !VaultConcealment.shared.isConcealed(assetID) else { return nil }
         let key = "\(assetID)|\(Int(size.width))x\(Int(size.height))" as NSString
         if let hit = cache.object(forKey: key) { return hit }
         guard !Task.isCancelled,
-              let asset = PHAsset.fetchAssets(withLocalIdentifiers: [assetID], options: nil).firstObject else { return nil }
+              let asset = PhotoLibraryService.phAsset(assetID) else { return nil } // Tresor-Medien: nie
 
         // A remote high-quality request for EVERY onscreen cell can cause the
         // entire grid to go blank while the requests wait for iCloud.
         // The local fast result is enough for a small scrolling thumbnail;
         // only genuinely unavailable assets need a remote fallback.
         if let local = await request(asset, size: size, network: false, mode: .fastFormat) {
-            guard !Task.isCancelled else { return nil }
+            // Inzwischen in den Tresor gelegt: verspätetes Ergebnis verwerfen.
+            guard !Task.isCancelled, !VaultConcealment.shared.isConcealed(assetID) else { return nil }
             store(local, key: key, size: size)
             return local
         }
         guard !Task.isCancelled else { return nil }
         if let remote = await request(asset, size: size, network: true, mode: .highQualityFormat) {
-            guard !Task.isCancelled else { return nil }
+            guard !Task.isCancelled, !VaultConcealment.shared.isConcealed(assetID) else { return nil }
             store(remote, key: key, size: size)
             return remote
         }

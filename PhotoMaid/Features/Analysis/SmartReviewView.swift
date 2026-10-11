@@ -68,7 +68,13 @@ struct SmartReviewView: View {
         running = true
         let result = await LocalPhotoAnalyzer.analyze(app.visibleMedia)
         cache.merge(result.cache) { _, new in new }
-        groups = result.similarGroups
+        // Inzwischen in den Tresor gelegte Medien nicht speichern (erkannter Text bleibt nirgends sonst liegen).
+        let keep = VaultConcealment.shared.visible(Set(cache.keys))
+        if keep.count != cache.count { cache = cache.filter { keep.contains($0.key) } }
+        groups = result.similarGroups.compactMap { group in
+            let ids = VaultConcealment.shared.visible(group) { $0 }
+            return ids.count == group.count || ids.count > 1 ? ids : nil
+        }
         try? app.kv?.set(StoreKeys.analysisCache, cache)
         running = false
     }

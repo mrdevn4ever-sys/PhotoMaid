@@ -166,4 +166,82 @@ import Foundation
         let i2 = try JSONDecoder().decode(VaultIndex.self, from: JSONEncoder().encode(index))
         #expect(i2 == index)
     }
+
+    // MARK: Isolation (nur im Tresor, nirgendwo sonst)
+
+    /// Einfache Ersatz-Prüfsumme für Linux-Tests (die App nutzt SHA-256).
+    func fakeDigest(_ salt: Data, _ id: String) -> String { salt.map { String($0) }.joined() + "|" + id }
+
+    @Test func verbergenListeEnthaeltNurPruefsummen() throws {
+        var set = VaultConcealmentSet(salt: Data([7, 8]))
+        #expect(set.isEmpty)
+        #expect(!set.contains("A", digest: fakeDigest))
+        let added = set.insert(["A", "B", ""], digest: fakeDigest)
+        #expect(added)
+        let again = set.insert(["A"], digest: fakeDigest) // schon enthalten
+        #expect(!again)
+        #expect(set.contains("A", digest: fakeDigest))
+        #expect(!set.contains("C", digest: fakeDigest))
+        #expect(!set.digests.contains("A")) // keine Klartext-Kennung
+        #expect(set.digests.count == 2) // leere Kennung wird ignoriert
+        let removed = set.remove(["A"], digest: fakeDigest)
+        #expect(removed)
+        #expect(!set.contains("A", digest: fakeDigest))
+        let decoded = try JSONDecoder().decode(VaultConcealmentSet.self, from: JSONEncoder().encode(set))
+        #expect(decoded == set)
+    }
+
+    @Test func originalKennungBleibtNachLoeschbestaetigung() {
+        var index = VaultIndex(items: [VaultItem(id: "V1", kind: .photo, resources: [res(.photo)], creationMs: 1, addedMs: 1,
+                                                 sourceID: "P1")])
+        #expect(index.items[0].originalID == "P1")
+        index.markRemovedFromLibrary(sourceIDs: ["P1"])
+        #expect(index.items[0].sourceID == nil)
+        #expect(index.originalIDs == ["P1"]) // bleibt für die Verbergen-Liste
+    }
+
+    @Test func alteEintraegeWerdenOhneRatenUebernommen() throws {
+        // Build 3/4: kein originalID-Feld. Mit sourceID → übernommen; ohne → bleibt unbekannt (nie geraten).
+        let old = """
+        {"version":1,"folders":[],"items":[
+         {"id":"V1","kind":"photo","resources":[],"addedMs":1,"isFavorite":false,"duration":0,"pixelWidth":0,
+          "pixelHeight":0,"sourceID":"P1"},
+         {"id":"V2","kind":"photo","resources":[],"addedMs":1,"isFavorite":false,"duration":0,"pixelWidth":0,
+          "pixelHeight":0}]}
+        """
+        var index = try JSONDecoder().decode(VaultIndex.self, from: Data(old.utf8))
+        #expect(index.items.allSatisfy { $0.originalID == nil })
+        let migrated = index.migrateOriginalIDs()
+        #expect(migrated)
+        #expect(index.items[0].originalID == "P1")
+        #expect(index.items[1].originalID == nil)
+        let migratedAgain = index.migrateOriginalIDs()
+        #expect(!migratedAgain)
+        #expect(index.originalIDs == ["P1"])
+    }
+
+    @Test func abgeleiteteKopienUeberMehrereStufen() {
+        let records = [
+            EditRecord(newId: "E1", sourceId: "P1", mode: .copy, video: false, atMs: 1),                     // Bearbeitung
+            EditRecord(newId: "C1", sourceId: "", mode: .copy, video: false, atMs: 2, kind: .collage, count: 2,
+                       sources: ["E1", "P9"]),                                                                 // Collage
+            EditRecord(newId: "M1", sourceId: "", mode: .copy, video: true, atMs: 3, kind: .merge, count: 1,
+                       sources: ["C1"]),                                                                       // Film
+            EditRecord(newId: "X1", sourceId: "P2", mode: .copy, video: false, atMs: 4),                     // fremd
+            EditRecord(newId: "OLD", sourceId: "", mode: .copy, video: false, atMs: 5, kind: .collage, count: 3), // alt
+        ]
+        #expect(VaultDerivation.copies(of: ["P1"], records: records) == ["E1", "C1", "M1"])
+        #expect(VaultDerivation.copies(of: ["P9"], records: records) == ["C1", "M1"])
+        #expect(VaultDerivation.copies(of: ["P3"], records: records).isEmpty)
+    }
+
+    @Test func gespeichertOhneQuellenBleibtLesbar() throws {
+        let old = """
+        {"newId":"N","sourceId":"S","mode":"COPY","video":false,"atMs":1,"kind":"EDIT","count":1}
+        """
+        let r = try JSONDecoder().decode(EditRecord.self, from: Data(old.utf8))
+        #expect(r.sources == nil)
+        #expect(VaultDerivation.parents(of: r) == ["S"])
+    }
 }
+

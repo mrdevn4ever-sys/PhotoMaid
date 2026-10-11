@@ -51,11 +51,15 @@ public struct VaultItem: Codable, Sendable, Hashable, Identifiable {
     public var thumbnail: String?
     /// Kennung in der Fotos-App, solange iOS das Löschen dort noch nicht bestätigt hat; danach `nil`.
     public var sourceID: String?
+    /// Ursprüngliche Kennung in der Fotos-App – bleibt dauerhaft (nur im verschlüsselten Index), damit das Medium in
+    /// PhotoMaid verborgen bleibt, auch wenn es in der Fotos-App noch liegt oder aus „Zuletzt gelöscht“ zurückkommt.
+    /// Einträge aus Build 3/4 haben sie nur, solange `sourceID` gesetzt war (siehe `migrateOriginalIDs`).
+    public var originalID: String?
 
     public init(id: String, kind: VaultMediaKind, folderID: String? = nil, resources: [VaultResource], creationMs: Int64?,
                 addedMs: Int64, latitude: Double? = nil, longitude: Double? = nil, isFavorite: Bool = false,
                 duration: Double = 0, pixelWidth: Int = 0, pixelHeight: Int = 0, thumbnail: String? = nil,
-                sourceID: String? = nil) {
+                sourceID: String? = nil, originalID: String? = nil) {
         self.id = id
         self.kind = kind
         self.folderID = folderID
@@ -70,6 +74,7 @@ public struct VaultItem: Codable, Sendable, Hashable, Identifiable {
         self.pixelHeight = pixelHeight
         self.thumbnail = thumbnail
         self.sourceID = sourceID
+        self.originalID = originalID ?? sourceID
     }
 
     /// Summe der gemessenen Dateigrößen.
@@ -161,6 +166,23 @@ public struct VaultIndex: Codable, Sendable, Equatable {
 
     /// Noch zusätzlich in der Fotos-App (iOS-Löschabfrage abgelehnt).
     public var stillInLibrary: [String] { items.compactMap(\.sourceID) }
+
+    /// Alle bekannten Kennungen der Originale in der Fotos-App (für die Verbergen-Liste).
+    public var originalIDs: Set<String> { Set(items.compactMap { $0.originalID ?? $0.sourceID }) }
+
+    /// Einträge älterer Fassungen: ursprüngliche Kennung aus `sourceID` übernehmen, solange sie noch bekannt ist.
+    /// Fehlt beides, wird nichts geraten (keine unsichere Zuordnung zu fremden Medien).
+    @discardableResult
+    public mutating func migrateOriginalIDs() -> Bool {
+        var changed = false
+        for i in items.indices where items[i].originalID == nil {
+            if let source = items[i].sourceID {
+                items[i].originalID = source
+                changed = true
+            }
+        }
+        return changed
+    }
 
     private func hasFolder(named name: String, except id: String?) -> Bool {
         folders.contains { $0.id != id && $0.name.compare(name, options: .caseInsensitive) == .orderedSame }
@@ -473,5 +495,60 @@ public enum VaultRestorePlan {
         case .fullSizePairedVideo: .pairedVideo
         default: role
         }
+    }
+}
+
+/// Verbergen-Liste: Kennungen der Originale von Medien im Tresor – gesalzene Prüfsummen, keine Klartext-Kennungen.
+/// Muss auch bei gesperrtem Tresor lesbar sein, damit PhotoMaid diese Medien nirgends zeigt (auch wenn iOS das
+/// Löschen nicht bestätigt hat oder ein Original aus „Zuletzt gelöscht“ zurückkommt). Die Prüfsumme berechnet die
+/// App (SHA-256 über Salz und Kennung); der Kern kennt nur die Regeln.
+public struct VaultConcealmentSet: Codable, Sendable, Equatable {
+    public static let currentVersion = 1
+    public var version = VaultConcealmentSet.currentVersion
+    public var salt: Data
+    public private(set) var digests: Set<String>
+
+    public init(salt: Data, digests: Set<String> = []) {
+        self.salt = salt
+        self.digests = digests
+    }
+
+    public var isEmpty: Bool { digests.isEmpty }
+
+    public func contains(_ id: String, digest: (Data, String) -> String) -> Bool {
+        !digests.isEmpty && digests.contains(digest(salt, id))
+    }
+
+    /// `true`, wenn sich etwas geändert hat.
+    @discardableResult
+    public mutating func insert(_ ids: some Sequence<String>, digest: (Data, String) -> String) -> Bool {
+        let before = digests.count
+        for id in ids where !id.isEmpty { digests.insert(digest(salt, id)) }
+        return digests.count != before
+    }
+
+    @discardableResult
+    public mutating func remove(_ ids: some Sequence<String>, digest: (Data, String) -> String) -> Bool {
+        let before = digests.count
+        for id in ids { digests.remove(digest(salt, id)) }
+        return digests.count != before
+    }
+}
+
+/// Von PhotoMaid erzeugte Kopien (Bearbeitungen, Collagen, Filme, GIFs), die ein Medium enthalten – auch über mehrere
+/// Stufen (Kopie einer Kopie). Grundlage ist die Liste „Gespeichert“; ältere Collagen/Filme ohne gespeicherte Quellen
+/// lassen sich nicht zuordnen und werden nie geraten.
+public enum VaultDerivation {
+    public static func parents(of record: EditRecord) -> Set<String> {
+        var out = Set(record.sources ?? [])
+        if !record.sourceId.isEmpty { out.insert(record.sourceId) }
+        return out
+    }
+
+    /// Kennungen aller abgeleiteten Kopien von `roots` (ohne die Wurzeln selbst).
+    public static func copies(of roots: Set<String>, records: [EditRecord]) -> Set<String> {
+        var parents: [String: Set<String>] = [:]
+        for r in records { parents[r.newId, default: []].formUnion(Self.parents(of: r)) }
+        return VaultVisibilityPolicy.closure(roots: roots, parentsByOutput: parents).subtracting(roots)
     }
 }
