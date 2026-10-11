@@ -23,7 +23,7 @@
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSSupportsOpeningDocumentsInPlace</key>
-	<false/>
+	<true/>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>PhotoMaid zeigt deine Fotos und Videos zum Sortieren an und entfernt nur Medien, die du ausdrücklich auswählst und in der Systemabfrage bestätigst. Die Analyse erfolgt auf diesem iPhone.</string>
 	<key>PHPhotoLibraryPreventAutomaticLimitedAccessAlert</key>
@@ -42,7 +42,7 @@
 		<false/>
 	</dict>
 	<key>UIFileSharingEnabled</key>
-	<false/>
+	<true/>
 	<key>UILaunchScreen</key>
 	<dict/>
 	<key>UISupportedInterfaceOrientations</key>
