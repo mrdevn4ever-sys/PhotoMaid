@@ -88,6 +88,16 @@ struct ViewerView: View {
             }
         }
         .sheet(item: $shareItem) { ShareSheet(items: $0.items) }
+        .onChange(of: index) { _, _ in
+            // Stop audio as soon as the selected page changes, even before
+            // the previous page's own lifecycle callback is delivered.
+            activeVideoPlayer?.pause()
+            activeVideoPlayer = nil
+        }
+        .onDisappear {
+            activeVideoPlayer?.pause()
+            activeVideoPlayer = nil
+        }
         .accessibilityAction(.escape) { dismiss() }
     }
 
