@@ -167,6 +167,7 @@ struct ViewerPage: View {
     let assetID: String
     let isCurrent: Bool
     @Binding var zoomed: Bool
+    @Binding var activeVideoPlayer: AVPlayer?
     let toggleChrome: () -> Void
     @State private var image: UIImage?
     @State private var gifData: Data?
@@ -186,8 +187,12 @@ struct ViewerPage: View {
         GeometryReader { geo in
             ZStack {
                 if let player {
-                    VideoPlayer(player: player)
-                        .environment(\.layoutDirection, .leftToRight)
+                    // Bare AVPlayerLayer: the system VideoPlayer would paint a
+                    // second set of controls over the PhotoMaid action dock.
+                    PlayerLayerView(player: player)
+                        .frame(width: geo.size.width, height: geo.size.height)
+                        .contentShape(.rect)
+                        .onTapGesture { toggleChrome() }
                 } else if let gifData {
                     AnimatedGIFView(data: gifData)
                         .frame(width: geo.size.width, height: geo.size.height)
@@ -232,13 +237,21 @@ struct ViewerPage: View {
                     .environment(\.layoutDirection, .leftToRight)
                 }
             }
-            .task(id: "\(assetID)-\(reload)") { await load(geo.size) }
+            .task(id: "\(assetID)-\(reload)-\(isCurrent)") {
+                if isCurrent { await load(geo.size) }
+            }
             .task(id: "\(assetID)-\(isCurrent)") {
                 guard isCurrent else { return }
                 if let data = await GIFPlayback.data(for: assetID), !Task.isCancelled { gifData = data }
             }
             .onChange(of: isCurrent) { _, cur in
-                if !cur { player?.pause(); gifData = nil; reset() }
+                if !cur {
+                    player?.pause()
+                    if let player, activeVideoPlayer === player { activeVideoPlayer = nil }
+                    player = nil
+                    gifData = nil
+                    reset()
+                }
             }
         }
     }
@@ -257,7 +270,11 @@ struct ViewerPage: View {
         if a.isVideo {
             if image == nil { image = await ThumbnailLoader.shared.image(assetID, size: CGSize(width: 800, height: 800)) }
             switch await app.previews.playerItem(for: assetID) {
-            case .item(let box): player = AVPlayer(playerItem: box.value)
+            case .item(let box):
+                guard isCurrent, !Task.isCancelled else { return }
+                let loaded = AVPlayer(playerItem: box.value)
+                player = loaded
+                activeVideoPlayer = loaded
             case .notLocallyAvailable, .failed: cloudFailed = !Task.isCancelled
             }
             return
