@@ -124,7 +124,7 @@ enum AnalysisRunner {
         let queued = items
         do {
             try await ThrottledWork.run(
-                indices, maxParallel: cloud ? 3 : 2, thermal: { Self.thermalLevel() },
+                indices, maxParallel: cloud ? 3 : 2, thermal: { ForegroundActivity.workLevel() },
                 beforeStart: { try Self.checkConditions(cloud: cloud, includeCloud: includeCloud) },
                 waiting: { await emit(.counts(counts, .cooling)) },
                 work: { index -> AnalysisOutput in

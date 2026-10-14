@@ -134,11 +134,19 @@ struct FeedMediaPage: View {
         for await update in app.previews.progressiveImage(for: asset.id, targetSize: target) {
             switch update {
             case .image(let img, let isFinal):
-                image = img
+                // Abseits des Hauptthreads dekodieren: sonst dekodiert SwiftUI ein frisch aus iCloud geladenes Bild
+                // beim Zeichnen – genau während der Wisch-Animation (Ruckeln bei schnellem Wischen).
+                let prepared = await img.byPreparingForDisplay() ?? img
+                guard !Task.isCancelled else { return }
+                image = prepared
                 if isFinal { downloadProgress = nil }
                 if !shown { shown = true; onResult(true) }
             case .progress(let p):
-                downloadProgress = p < 1 ? p : nil
+                // Fortschritt nur in sichtbaren Schritten (PhotoKit meldet sehr oft; jede Meldung zeichnet neu).
+                let value: Double? = p < 1 ? p : nil
+                if value == nil || downloadProgress == nil || abs((downloadProgress ?? 0) - p) >= 0.05 {
+                    downloadProgress = value
+                }
             case .failed(let inCloud):
                 if shown { qualityFailed = inCloud } else { cloudFailed = inCloud }
             }

@@ -28,6 +28,16 @@ Auf Nutzermeldung (Bildschirmaufnahmen Build 6: „Analyse blockt weiterhin“, 
   App-Start weiter, ohne die Ansicht zu öffnen; nach Speicherwarnung nach 15 s. 6 Texte, 16 Sprachen.
 - **Gestenhilfe:** Der Zeitgeber nutzte `try? await Task.sleep` – jeder Abbruch der Aufgabe blendete sofort aus. Jetzt
   blendet nur die abgelaufene Zeit (6 s), Antippen oder ein echter Wisch (> 24 pt) aus, beides frühestens nach 1 s.
+- **Tresor:** ✕ zum Schließen auch auf „Notizen“ und „Dateien“ (gemeinsames `VaultCloseToolbarItem`, sperrt sofort).
+- **Feed stockt bei schnellem Wischen (iCloud):** (1) Jeder Wisch wartete auf das komplette neue Lesemodell
+  (`publishRead`: Projektion + Warteschlange über alle Medien, danach Neuzeichnen aller beobachtenden Ansichten); bis
+  dahin galt `isCommitting` und der nächste Wisch sprang zurück – bei „Später“ sogar zweimal. Jetzt: gespeichert wird
+  sofort, das Lesemodell nach 0,6 s Ruhe einmal für alle schnellen Wische (`schedulePublishRead`, spätestens 2,5 s;
+  beim Schließen des Feeds sofort). (2) Aus iCloud geladene Bilder wurden beim Zeichnen auf dem Hauptthread dekodiert
+  (während der Animation) → jetzt `byPreparingForDisplay()` vorab. (3) PhotoKit-Abfragen der Vorschau und das
+  Vorhalten der Nachbarn liefen auf dem Hauptthread → jetzt im Hintergrund (seriell). (4) iCloud-Fortschritt nur in
+  5-%-Schritten. (5) Solange der Feed offen ist, treten Analyse, Größen-Messen und Duplikat-Suche zurück
+  (`ForegroundActivity`: halbe Parallelität + Pause, wie bei warmem iPhone).
 
 | Prüfung | Ergebnis |
 |---|---|
@@ -36,7 +46,8 @@ Auf Nutzermeldung (Bildschirmaufnahmen Build 6: „Analyse blockt weiterhin“, 
 | `swiftc -parse` geänderter App-Dateien | PASS |
 | `android_strings_to_xcstrings.py --check` | PASS: 1549 benutzte Kennungen, 2536 Einträge, 16 Sprachen |
 | App-Target bauen (`xcodebuild`), SwiftUI-Dateien typgeprüft | NOT RUN: kein macOS/Xcode (nur über GitHub Actions auf Anweisung) |
-| Gerät: Analyse-Tempo bei 30k Medien/iCloud, Häufigkeit der Fotos-Meldungen, Gestenhilfe 6 s | NOT RUN |
+| Typprüfung gegen Platzhalter: `PreviewPipeline`, `ForegroundActivity`, aufgeschobenes `publishRead` | PASS (nur Linux-Platzhalter) |
+| Gerät: Analyse-Tempo bei 30k Medien/iCloud, Häufigkeit der Fotos-Meldungen, Gestenhilfe 6 s, flüssiges Wischen mit iCloud-Fotos, ✕ im Tresor | NOT RUN |
 
 ## Fixes nach Build 5 (14.10.2026, Branch `claude/fixes-analysis-library-vault-20261014`)
 

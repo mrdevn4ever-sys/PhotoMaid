@@ -226,10 +226,7 @@ struct VaultHomeView: View {
 
     @ToolbarContentBuilder
     private var toolbar: some ToolbarContent {
-        ToolbarItem(placement: .topBarLeading) {
-            Button { vault.lock() } label: { Image(systemName: "xmark") }
-                .accessibilityLabel(Text(key: "vault_close"))
-        }
+        VaultCloseToolbarItem()
         ToolbarItemGroup(placement: .topBarTrailing) {
             if selecting {
                 Button(L("done")) { selecting = false; selection = [] }

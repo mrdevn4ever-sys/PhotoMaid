@@ -112,7 +112,7 @@ final class DuplicateScanner {
             }
             do {
                 try await ThrottledWork.run(
-                    toMeasure, maxParallel: 4, thermal: { AnalysisRunner.thermalLevel() },
+                    toMeasure, maxParallel: 4, thermal: { ForegroundActivity.workLevel() },
                     work: { a -> MeasuredPair in
                         MeasuredPair(id: a.id, record: await sizer.measured(a, prefetched: fetched[a.id]))
                     },

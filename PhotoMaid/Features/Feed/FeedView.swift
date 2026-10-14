@@ -111,7 +111,9 @@ struct FeedView: View {
             if !isDragging, case .dragging = model.machine.phase { model.dragCancelled() }
             if !isDragging, case .directionLocked = model.machine.phase { model.dragCancelled() }
         }
-        .onDisappear { app.player.stop() }
+        // Solange gewischt wird, treten Analyse und Messen zurück (Netz und Rechenzeit für die Vorschauen).
+        .onAppear { ForegroundActivity.feedAppeared() }
+        .onDisappear { app.player.stop(); ForegroundActivity.feedDisappeared() }
     }
 
     private func withSheets(_ content: some View) -> some View {

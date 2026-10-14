@@ -472,7 +472,7 @@ final class FeedViewModel {
         withAnimation(.easeOut(duration: duration)) { offset = target }
         app.player.stop()
         do {
-            let out = try await app.apply(pending.command, session: session.id)
+            let out = try await app.apply(pending.command, session: session.id, deferPublish: true)
             // Persistence can overlap the exit animation. Never add the *full*
             // animation duration on top of the actual commit latency.
             let remaining = max(0, duration - (ProcessInfo.processInfo.systemUptime - animationStarted))
@@ -568,7 +568,7 @@ final class FeedViewModel {
         laterPill = nil
         guard let cur = session.receipt, cur.id == receipt.id, let cmd = session.bookmarkCommand(receiptID: cur.id) else { return }
         do {
-            let out = try await app.apply(cmd)
+            let out = try await app.apply(cmd, deferPublish: true)
             session.receiptScheduled(cur.id, revision: out.record.revision)
             Haptics.tick()
             showNotice(L("later_nodate_done"))
@@ -589,7 +589,7 @@ final class FeedViewModel {
         guard let cur = session.receipt, cur.id == receipt.id,
               let cmd = session.scheduleCommand(receiptID: cur.id, day: day) else { return false }
         do {
-            let out = try await app.apply(cmd)
+            let out = try await app.apply(cmd, deferPublish: true)
             session.receiptScheduled(cur.id, revision: out.record.revision)
             await app.reminders.scheduleDueReminder(for: day, optedIn: app.settings.notificationsOptIn)
             return true

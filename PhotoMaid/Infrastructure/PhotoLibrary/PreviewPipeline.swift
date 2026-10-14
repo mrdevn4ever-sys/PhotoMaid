@@ -26,6 +26,8 @@ final class PreviewPipeline {
     private let manager: PHCachingImageManager
     private var cachedIDs: Set<String> = []
     private var cachedSize: CGSize = .zero
+    /// Vorhalten der Nachbarn: seriell (Freigeben vor Vorhalten), nie auf dem Hauptthread.
+    private let cacheQueue = DispatchQueue(label: "PhotoMaid.preview.cache", qos: .userInitiated)
 
     init(manager: PHCachingImageManager) { self.manager = manager }
 
@@ -60,7 +62,7 @@ final class PreviewPipeline {
     /// Keep the four-item swipe cache local and small. The *visible* image still
     /// uses progressiveImage(), including its full-quality/iCloud loading path.
     /// Prefetching offscreen originals from iCloud wastes bandwidth and memory.
-    private func cacheOptions() -> PHImageRequestOptions {
+    nonisolated private static func cacheOptions() -> PHImageRequestOptions {
         let o = PHImageRequestOptions()
         o.isNetworkAccessAllowed = false
         o.deliveryMode = .opportunistic
@@ -74,60 +76,73 @@ final class PreviewPipeline {
     /// 2. Fehlt die volle Qualität lokal, wird sie aus iCloud geladen (`progress`). Gelingt das nicht (offline,
     ///    mobile Daten für Fotos aus), meldet der Strom `.failed(inCloud: true)` – die Vorschau aus Schritt 1 bleibt.
     /// Abbruch des Tasks bricht beide PhotoKit-Requests (und einen laufenden Download) ab.
+    /// PhotoKit-Abfrage und Anfragen laufen abseits des Hauptthreads: Lädt Fotos gerade viel aus iCloud, kann schon
+    /// das Nachschlagen eines Mediums warten – das darf das Wischen nie anhalten.
     func progressiveImage(for assetID: String, targetSize: CGSize) -> AsyncStream<PreviewUpdate> {
-        AsyncStream { cont in
-            guard let asset = PhotoLibraryService.phAsset(assetID) else { // Tresor-Medien: nie
-                cont.yield(.failed(inCloud: false))
-                cont.finish()
-                return
-            }
+        let managerBox = UncheckedBox(manager)
+        return AsyncStream { cont in
             let requests = RequestIDs()
-            let managerBox = UncheckedBox(manager)
-            let assetBox = UncheckedBox(asset)
-            let local = PHImageRequestOptions()
-            local.isNetworkAccessAllowed = false
-            local.deliveryMode = .opportunistic
-            local.resizeMode = .fast
-            local.version = .current
-            let first = manager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit,
-                                             options: local) { @Sendable image, info in
-                let degraded = (info?[PHImageResultIsDegradedKey] as? Bool) ?? false
-                if let image {
-                    cont.yield(.image(image, isFinal: !degraded))
-                    if !degraded { cont.finish() }
-                    return
-                }
-                if degraded { return }
-                if (info?[PHImageCancelledKey] as? Bool) == true { cont.finish(); return }
-                guard (info?[PHImageResultIsInCloudKey] as? Bool) == true else {
+            cont.onTermination = { @Sendable _ in
+                for id in requests.terminate() { managerBox.value.cancelImageRequest(id) }
+            }
+            Task.detached(priority: .userInitiated) {
+                guard !requests.isTerminated else { return }
+                guard let asset = PhotoLibraryService.phAsset(assetID) else { // Tresor-Medien: nie
                     cont.yield(.failed(inCloud: false))
                     cont.finish()
                     return
                 }
-                // Schritt 2: volle Qualität aus iCloud.
-                let remote = PHImageRequestOptions()
-                remote.isNetworkAccessAllowed = true
-                remote.deliveryMode = .highQualityFormat // genau ein Callback
-                remote.resizeMode = .fast
-                remote.version = .current
-                remote.progressHandler = { @Sendable progress, _, _, _ in cont.yield(.progress(progress)) }
-                cont.yield(.progress(0))
-                let second = managerBox.value.requestImage(for: assetBox.value, targetSize: targetSize,
-                                                           contentMode: .aspectFit, options: remote) { @Sendable image, info in
-                    if let image {
-                        cont.yield(.image(image, isFinal: true))
-                    } else if (info?[PHImageCancelledKey] as? Bool) != true {
-                        cont.yield(.failed(inCloud: true))
-                    }
-                    cont.finish()
-                }
-                requests.add(second) { managerBox.value.cancelImageRequest($0) }
-            }
-            requests.add(first) { managerBox.value.cancelImageRequest($0) }
-            cont.onTermination = { @Sendable _ in
-                for id in requests.terminate() { managerBox.value.cancelImageRequest(id) }
+                Self.startProgressive(asset: UncheckedBox(asset), manager: managerBox, targetSize: targetSize,
+                                      cont: cont, requests: requests)
             }
         }
+    }
+
+    nonisolated private static func startProgressive(asset assetBox: UncheckedBox<PHAsset>,
+                                                     manager managerBox: UncheckedBox<PHCachingImageManager>,
+                                                     targetSize: CGSize, cont: AsyncStream<PreviewUpdate>.Continuation,
+                                                     requests: RequestIDs) {
+        let local = PHImageRequestOptions()
+        local.isNetworkAccessAllowed = false
+        local.deliveryMode = .opportunistic
+        local.resizeMode = .fast
+        local.version = .current
+        let first = managerBox.value.requestImage(for: assetBox.value, targetSize: targetSize, contentMode: .aspectFit,
+                                                  options: local) { @Sendable image, info in
+            let degraded = (info?[PHImageResultIsDegradedKey] as? Bool) ?? false
+            if let image {
+                cont.yield(.image(image, isFinal: !degraded))
+                if !degraded { cont.finish() }
+                return
+            }
+            if degraded { return }
+            if (info?[PHImageCancelledKey] as? Bool) == true { cont.finish(); return }
+            guard (info?[PHImageResultIsInCloudKey] as? Bool) == true else {
+                cont.yield(.failed(inCloud: false))
+                cont.finish()
+                return
+            }
+            guard !requests.isTerminated else { cont.finish(); return }
+            // Schritt 2: volle Qualität aus iCloud.
+            let remote = PHImageRequestOptions()
+            remote.isNetworkAccessAllowed = true
+            remote.deliveryMode = .highQualityFormat // genau ein Callback
+            remote.resizeMode = .fast
+            remote.version = .current
+            remote.progressHandler = { @Sendable progress, _, _, _ in cont.yield(.progress(progress)) }
+            cont.yield(.progress(0))
+            let second = managerBox.value.requestImage(for: assetBox.value, targetSize: targetSize,
+                                                       contentMode: .aspectFit, options: remote) { @Sendable image, info in
+                if let image {
+                    cont.yield(.image(image, isFinal: true))
+                } else if (info?[PHImageCancelledKey] as? Bool) != true {
+                    cont.yield(.failed(inCloud: true))
+                }
+                cont.finish()
+            }
+            requests.add(second) { managerBox.value.cancelImageRequest($0) }
+        }
+        requests.add(first) { managerBox.value.cancelImageRequest($0) }
     }
 
     /// Lädt eine Vorschau in einem Schritt (volle Qualität, bei Bedarf aus iCloud). Abbruch des Tasks bricht den
@@ -153,7 +168,8 @@ final class PreviewPipeline {
 
     /// Alles Vorgehaltene vergessen (z. B. nachdem Medien in den Tresor gelegt wurden).
     func forgetCache() {
-        manager.stopCachingImagesForAllAssets()
+        let managerBox = UncheckedBox(manager)
+        cacheQueue.async { managerBox.value.stopCachingImagesForAllAssets() }
         cachedIDs = []
     }
 
@@ -170,31 +186,36 @@ final class PreviewPipeline {
             cacheSize = targetSize
         }
         let wanted = Set(ids)
-        if cacheSize != cachedSize {
-            manager.stopCachingImagesForAllAssets()
+        let resetAll = cacheSize != cachedSize
+        if resetAll {
             cachedIDs = []
             cachedSize = cacheSize
         }
         let add = wanted.subtracting(cachedIDs), remove = cachedIDs.subtracting(wanted)
-        guard !add.isEmpty || !remove.isEmpty else { return }
-        func fetch(_ s: Set<String>) -> [PHAsset] {
-            guard !s.isEmpty else { return [] }
-            var out: [PHAsset] = []
-            let ids = Array(VaultConcealment.shared.visible(s))
-            guard !ids.isEmpty else { return [] }
-            PHAsset.fetchAssets(withLocalIdentifiers: ids, options: nil).enumerateObjects { a, _, _ in out.append(a) }
-            return out
-        }
-        let options = cacheOptions()
-        if !remove.isEmpty {
-            manager.stopCachingImages(for: fetch(remove), targetSize: cacheSize, contentMode: .aspectFit,
-                                      options: options)
-        }
-        if !add.isEmpty {
-            manager.startCachingImages(for: fetch(add), targetSize: cacheSize, contentMode: .aspectFit,
-                                       options: options)
-        }
+        guard resetAll || !add.isEmpty || !remove.isEmpty else { return }
         cachedIDs = wanted
+        // PhotoKit-Abfragen und Vorhalten in fester Reihenfolge abseits des Hauptthreads (nach jedem Wisch).
+        let managerBox = UncheckedBox(manager)
+        cacheQueue.async {
+            func fetch(_ s: Set<String>) -> [PHAsset] {
+                guard !s.isEmpty else { return [] }
+                var out: [PHAsset] = []
+                let ids = Array(VaultConcealment.shared.visible(s))
+                guard !ids.isEmpty else { return [] }
+                PHAsset.fetchAssets(withLocalIdentifiers: ids, options: nil).enumerateObjects { a, _, _ in out.append(a) }
+                return out
+            }
+            let options = PreviewPipeline.cacheOptions()
+            if resetAll { managerBox.value.stopCachingImagesForAllAssets() }
+            if !remove.isEmpty {
+                managerBox.value.stopCachingImages(for: fetch(remove), targetSize: cacheSize, contentMode: .aspectFit,
+                                                   options: options)
+            }
+            if !add.isEmpty {
+                managerBox.value.startCachingImages(for: fetch(add), targetSize: cacheSize, contentMode: .aspectFit,
+                                                    options: options)
+            }
+        }
     }
 
     /// Video als PlayerItem; liegt es nur in iCloud, streamt PhotoKit es (wie die Fotos-App).
@@ -247,6 +268,8 @@ private final class RequestIDs: @unchecked Sendable {
         }
         if late { cancel(id) }
     }
+
+    var isTerminated: Bool { lock.withLock { terminated } }
 
     func terminate() -> [PHImageRequestID] {
         lock.withLock {

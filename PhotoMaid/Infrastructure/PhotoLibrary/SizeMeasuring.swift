@@ -137,7 +137,7 @@ final class SizeMeasuring {
             let fetched = PhotoLibraryService.phAssetBoxes(chunk.map(\.id))
             do {
                 try await ThrottledWork.run(
-                    chunk, maxParallel: 4, thermal: { AnalysisRunner.thermalLevel() },
+                    chunk, maxParallel: 4, thermal: { ForegroundActivity.workLevel() },
                     work: { asset -> MeasuredPair in
                         MeasuredPair(id: asset.id, record: await sizer.measured(asset, prefetched: fetched[asset.id]))
                     },

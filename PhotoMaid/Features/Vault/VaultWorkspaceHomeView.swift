@@ -46,6 +46,16 @@ struct VaultWorkspaceHomeView: View {
     }
 }
 
+/// ✕ oben links: Tresor schließen (sperrt sofort). Auf allen drei Reitern (Medien, Notizen, Dateien) gleich.
+struct VaultCloseToolbarItem: ToolbarContent {
+    var body: some ToolbarContent {
+        ToolbarItem(placement: .topBarLeading) {
+            Button { VaultStore.shared.lock() } label: { Image(systemName: "xmark") }
+                .accessibilityLabel(Text(key: "vault_close"))
+        }
+    }
+}
+
 struct VaultNotesView: View {
     @State private var vault = VaultStore.shared
     @State private var query = ""
@@ -82,6 +92,7 @@ struct VaultNotesView: View {
             .searchable(text: $query, prompt: L("vault2_search"))
             .onChange(of: query) { _, _ in vault.touch() }
             .toolbar {
+                VaultCloseToolbarItem()
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(L("vault2_new_note"), systemImage: "square.and.pencil") {
                         var note = VaultNote(nowMs: vault.nowMs); note.folderID = folder
@@ -322,6 +333,7 @@ struct VaultFilesView: View {
             .onChange(of: query) { _, _ in selection = []; vault.touch() }
             .onChange(of: folder) { _, _ in selection = [] }
             .toolbar {
+                VaultCloseToolbarItem()
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu {
                         Button(L(selecting ? "done" : "vault_select")) { selecting.toggle(); selection = [] }

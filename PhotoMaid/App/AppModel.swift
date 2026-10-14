@@ -93,6 +93,8 @@ final class AppModel {
     @ObservationIgnored private var loadTask: Task<Void, Never>?
     @ObservationIgnored private var patchTask: Task<Void, Never>?
     @ObservationIgnored private var reloadAfterLoad = false
+    @ObservationIgnored private var publishDebounce: Task<Void, Never>?
+    @ObservationIgnored private var publishCoalescer = ChangeCoalescer(quiet: 0.6, maxDelay: 2.5)
     @ObservationIgnored private var loadedToken = -1
     /// Gestartete Mediathek-Abfragen (fortlaufend).
     @ObservationIgnored private var loadGeneration = 0
@@ -496,10 +498,39 @@ final class AppModel {
     // MARK: Entscheidungen
 
     @discardableResult
-    func apply(_ command: DecisionCommand, session: ReviewSessionID? = nil) async throws -> CommitOutcome {
+    /// - Parameter deferPublish: Feed: nicht auf das neue Lesemodell warten (bei 30 000 Medien spürbar), sondern es
+    ///   nach kurzer Ruhe einmal für alle schnellen Entscheidungen berechnen (`schedulePublishRead`). Gespeichert ist
+    ///   die Entscheidung in beiden Fällen, bevor diese Funktion zurückkehrt.
+    func apply(_ command: DecisionCommand, session: ReviewSessionID? = nil,
+               deferPublish: Bool = false) async throws -> CommitOutcome {
         let out = try await ledger.apply(command, sessionID: session)
-        await publishRead()
+        if deferPublish { schedulePublishRead() } else { await publishRead() }
         return out
+    }
+
+    /// Lesemodell bald neu berechnen: nach 0,6 s Ruhe, spätestens nach 2,5 s. Viele schnelle Wische ergeben eine
+    /// Berechnung – der Hauptthread bleibt während des Wischens frei.
+    func schedulePublishRead() {
+        let wait = publishCoalescer.register(now: ProcessInfo.processInfo.systemUptime)
+        publishDebounce?.cancel()
+        publishDebounce = Task { [weak self] in
+            if wait > 0 {
+                do { try await Task.sleep(for: .seconds(wait)) } catch { return }
+            }
+            guard let self else { return }
+            self.publishCoalescer.flushed()
+            self.publishDebounce = nil
+            await self.publishRead()
+        }
+    }
+
+    /// Noch ausstehende, aufgeschobene Berechnung sofort ausführen (z. B. beim Schließen des Feeds).
+    func flushPendingPublish() {
+        guard let pending = publishDebounce else { return }
+        pending.cancel()
+        publishDebounce = nil
+        publishCoalescer.flushed()
+        Task { await publishRead() }
     }
 
     /// Entscheidung außerhalb des Feeds (Papierkorb zurücklegen, Später entfernen). Immer mit aktueller Revision.
@@ -719,6 +750,7 @@ final class AppModel {
     func closeFeed(reviewed: Int) {
         player.stop()
         feed = nil
+        flushPendingPublish()
         // „Neu seit dem letzten Aufräumen“: nur nach einer Sitzung mit mindestens einer Entscheidung.
         if reviewed > 0 {
             let token = PhotoLibraryService.currentChangeTokenData()
