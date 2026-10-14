@@ -139,6 +139,9 @@ targets:
   PhotoMaidTests:
     type: bundle.unit-test
     platform: iOS
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
     sources: [PhotoMaidTests]
     dependencies:
       - target: PhotoMaid
@@ -146,6 +149,9 @@ targets:
   PhotoMaidUITests:
     type: bundle.ui-testing
     platform: iOS
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
     sources:
       - path: PhotoMaidUITests
       - path: PhotoMaid/Resources/PhotoMaid.storekit
