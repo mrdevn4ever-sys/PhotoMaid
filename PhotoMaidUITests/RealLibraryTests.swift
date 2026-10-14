@@ -54,15 +54,18 @@ final class RealLibraryTests: XCTestCase {
         if skip.waitForExistence(timeout: 1) { tap(skip, "tour_skip") }
     }
     private func ready() {
-        finishIntroduction(in: app, prefix: "real_launch")
+        // From cold start four onward, the SDK can cover the tabs before any test navigation.
+        // Close that start ad before requiring the root tab bar.
         consent()
         dismissTestAdIfPresent()
+        finishIntroduction(in: app, prefix: "real_launch")
+        consent()
         skipTour()
         XCTAssertTrue(app.tabBars.buttons["Heute"].waitForExistence(timeout: 15))
     }
     private func consent() {
         // UMP is an SDK sheet/web view; ATT/Photos are handled by the interruption monitor.
-        for title in ["Consent", "I consent", "Zustimmen", "Agree"] {
+        for title in ["Consent", "I consent", "Zustimmen", "Einwilligen", "Agree"] {
             let consent = app.webViews.buttons[title].firstMatch
             if consent.exists && consent.isHittable { tap(consent, "consent_" + title) }
         }

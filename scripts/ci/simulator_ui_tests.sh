@@ -5,6 +5,8 @@ set -euo pipefail
 udid="$1"
 derived="$2"
 out="$3"
+phase="${4:-all}"
+case "$phase" in all|fixtures|real) ;; *) echo "Unknown UI phase: $phase" >&2; exit 2 ;; esac
 mkdir -p "$out"
 app="$derived/Build/Products/Debug-iphonesimulator/PhotoMaid.app"
 
@@ -41,23 +43,36 @@ run_tests() {
     > "$out/$mode-tests.json" || true
 }
 
-reset_simulator
-swift scripts/qa_media.swift "$out/qa-media"
-xcrun simctl addmedia "$udid" "$out/qa-media"/*
-run_tests fixtures -only-testing:PhotoMaidUITests/PhotoMaidUITests -only-testing:PhotoMaidUITests/ScreenshotTests
+pack_result() {
+  local mode="$1"
+  if [ -d "$out/$mode.xcresult" ]; then
+    ditto -c -k --keepParent "$out/$mode.xcresult" "$out/$mode.xcresult.zip"
+    rm -rf "$out/$mode.xcresult"
+  fi
+}
 
-reset_simulator
-xcrun simctl io "$udid" screenshot "$out/simulator-source.png"
-python3 scripts/ci/real_test_media.py "$out/real-media" --screenshot "$out/simulator-source.png"
-find "$out/real-media" -type f \( -name '*.jpg' -o -name '*.png' -o -name '*.mp4' \) -print0 |
-  xargs -0 xcrun simctl addmedia "$udid"
-# Allow Photos to finish indexing before launch (no mocked permission or library).
-xcrun simctl spawn "$udid" log show --last 1s --style compact > "$out/seed.log" || true
-run_tests real -only-testing:PhotoMaidUITests/RealLibraryTests
-xcrun simctl spawn "$udid" log show --last 2h --style compact \
-  --predicate 'process == "PhotoMaid"' > "$out/app.log" || true
-# xcresult remains available in the artifact, alongside exported PNG attachments.
-ditto -c -k --keepParent "$out/fixtures.xcresult" "$out/fixtures.xcresult.zip"
-ditto -c -k --keepParent "$out/real.xcresult" "$out/real.xcresult.zip"
-rm -rf "$out/fixtures.xcresult" "$out/real.xcresult" "$out/qa-media"
+if [ "$phase" = all ] || [ "$phase" = fixtures ]; then
+  reset_simulator
+  swift scripts/qa_media.swift "$out/qa-media"
+  xcrun simctl addmedia "$udid" "$out/qa-media"/*
+  run_tests fixtures -only-testing:PhotoMaidUITests/PhotoMaidUITests -only-testing:PhotoMaidUITests/ScreenshotTests
+  pack_result fixtures
+  rm -rf "$out/qa-media"
+fi
+
+if [ "$phase" = all ] || [ "$phase" = real ]; then
+  reset_simulator
+  xcrun simctl io "$udid" screenshot "$out/simulator-source.png"
+  python3 scripts/ci/real_test_media.py "$out/real-media" --screenshot "$out/simulator-source.png"
+  find "$out/real-media" -type f \( -name '*.jpg' -o -name '*.png' -o -name '*.mp4' \) -print0 |
+    xargs -0 xcrun simctl addmedia "$udid"
+  xcrun simctl spawn "$udid" log show --last 1s --style compact > "$out/seed.log" || true
+  run_tests real -only-testing:PhotoMaidUITests/RealLibraryTests
+  xcrun simctl spawn "$udid" log show --last 2h --style compact \
+    --predicate 'process == "PhotoMaid"' > "$out/app.log" || true
+  pack_result real
+fi
+
+[ "$phase" != fixtures ] || { [ "$(cat "$out/fixtures.exit")" = 0 ]; exit; }
+[ "$phase" != real ] || { [ "$(cat "$out/real.exit")" = 0 ]; exit; }
 [ "$(cat "$out/fixtures.exit")" = 0 ] && [ "$(cat "$out/real.exit")" = 0 ]

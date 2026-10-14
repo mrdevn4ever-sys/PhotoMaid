@@ -35,7 +35,7 @@ extension XCTestCase {
             }
             for label in ["Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos",
                           "Zugriff auf alle Fotos erlauben", "Allow Tracking", "Tracking erlauben",
-                          "Ask App Not to Track", "App-Tracking ablehnen", "Consent", "Zustimmen"] {
+                          "Ask App Not to Track", "App-Tracking ablehnen", "Consent", "Zustimmen", "Einwilligen"] {
                 if alert.buttons[label].exists { alert.buttons[label].tap(); return true }
             }
             return false
@@ -50,7 +50,10 @@ extension XCTestCase {
             XCTAssertTrue(next.isEnabled)
             next.tap()
         }
-        if !app.tabBars.firstMatch.waitForExistence(timeout: 5) { app.tap() }
+        if !app.tabBars.firstMatch.waitForExistence(timeout: 5),
+           XCUIApplication(bundleIdentifier: "com.apple.springboard").alerts.firstMatch.exists {
+            app.tap() // Only trigger the monitor for a real system alert.
+        }
         XCTAssertTrue(app.tabBars.firstMatch.waitForExistence(timeout: 20), "Introduction must reach Today")
         checkpoint(prefix + "_today", app: app)
     }

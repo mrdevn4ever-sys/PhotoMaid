@@ -29,7 +29,9 @@ neu gestartet: zuerst synthetische QA-Medien mit `-qa-fixtures`, danach 150 impo
 ohne dieses Startargument. Der zweite Durchlauf verwendet PhotoKit/Core Data, vorab erlaubten Fotozugriff,
 Googles öffentliche Testanzeigen, PIN-Tresor und `PhotoMaid.storekit`. Keine Systemlöschung wird bestätigt.
 Das Artefakt `simulator-ui-evidence` enthält PNGs, Accessibility-Bäume, zwei `.xcresult.zip`, Logs,
-Testübersichten und das Medienmanifest (Herkunft/SHA-256). Der Linux-Job verwendet Swift 6.4.
+Testübersichten und das Medienmanifest (Herkunft/SHA-256). Die QA-Belege erscheinen bereits vor dem zweiten
+Durchlauf zusätzlich als `simulator-fixtures-evidence`; ein fehlgeschlagener QA-Lauf verhindert den echten
+Durchlauf nicht. Die abschließende Prüfung verlangt für beide Durchläufe Exitcode 0. Der Linux-Job verwendet Swift 6.4.
 
 Optional exportiert `baseline_run=<CI-Lauf-ID>` auch Screenshots aus einem älteren `ios-build-report`-Ergebnisbündel.
 Alle Läufe bleiben manuell; Pushes starten keine Tests. Unterschiedliche Commits behalten ihre eigenen CI-Belege.

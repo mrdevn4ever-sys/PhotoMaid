@@ -65,6 +65,7 @@ jobs:
           xcrun simctl boot "$udid" 2>/dev/null || true
           xcrun simctl bootstatus "$udid" -b
       - name: Build und Unit-Tests
+        id: build
         run: |
           set -o pipefail
           # Alle Compilerfehler in einem Lauf sammeln, statt nach dem ersten Batch abzubrechen.
@@ -80,15 +81,33 @@ jobs:
           grep -Eq '\*\* TEST( EXECUTE)? SUCCEEDED \*\*' xcodebuild.log
           ! grep -Eq '\*\* (BUILD|TEST( BUILD| EXECUTE)?) FAILED \*\*' xcodebuild.log
       - name: UI-Tests vorbereiten (öffentliche Testbilder)
+        id: media
         if: inputs.ui_tests
         run: |
           python3 -m venv "$RUNNER_TEMP/media-venv"
           "$RUNNER_TEMP/media-venv/bin/pip" install Pillow==12.3.0
           echo "$RUNNER_TEMP/media-venv/bin" >> "$GITHUB_PATH"
           brew install ffmpeg
-      - name: UI-Tests (QA und echte PhotoKit-Mediathek, nur Testanzeigen)
+      - name: UI-Tests mit QA-Daten
         if: inputs.ui_tests
-        run: bash scripts/ci/simulator_ui_tests.sh '${{ steps.sim.outputs.udid }}' "$RUNNER_TEMP/PhotoMaidDerived" "$RUNNER_TEMP/simulator-ui"
+        continue-on-error: true
+        run: bash scripts/ci/simulator_ui_tests.sh '${{ steps.sim.outputs.udid }}' "$RUNNER_TEMP/PhotoMaidDerived" "$RUNNER_TEMP/simulator-ui" fixtures
+      - name: QA-Belege sofort bereitstellen
+        uses: actions/upload-artifact@v4
+        if: always() && inputs.ui_tests
+        with:
+          name: simulator-fixtures-evidence
+          path: ${{ runner.temp }}/simulator-ui/fixtures*
+          if-no-files-found: warn
+      - name: UI-Tests mit echter PhotoKit-Mediathek (nur Testanzeigen)
+        if: always() && inputs.ui_tests && steps.build.outcome == 'success' && steps.media.outcome == 'success'
+        continue-on-error: true
+        run: bash scripts/ci/simulator_ui_tests.sh '${{ steps.sim.outputs.udid }}' "$RUNNER_TEMP/PhotoMaidDerived" "$RUNNER_TEMP/simulator-ui" real
+      - name: Beide UI-Ergebnisse prüfen
+        if: always() && inputs.ui_tests && steps.build.outcome == 'success'
+        run: |
+          test "$(cat "$RUNNER_TEMP/simulator-ui/fixtures.exit")" = 0
+          test "$(cat "$RUNNER_TEMP/simulator-ui/real.exit")" = 0
       - name: Ältere Simulator-Belege exportieren
         if: always() && inputs.baseline_run != ''
         env:
