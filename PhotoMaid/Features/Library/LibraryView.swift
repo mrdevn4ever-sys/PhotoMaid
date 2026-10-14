@@ -3,8 +3,9 @@ import PhotoMaidCore
 import SwiftUI
 
 /// Tab „Fotos“: Zeitachse Tag/Monat/Jahr (zwei Finger), Alben der Fotos-App, Favoriten, Suche, Auswahl.
-/// Filter wie in der Fotos-App (Alle · Favoriten · Bearbeitet · Fotos · Videos · Bildschirmfotos, dazu Medienarten)
-/// und Ansicht quadratisch/Seitenverhältnis – beides bleibt gespeichert und gilt auch für Betrachter, Auswahl, Diashow.
+/// Filter wie in der Fotos-App (Alle · Favoriten · Bearbeitet · Fotos · Videos · Bildschirmfotos, dazu Medienarten),
+/// Sortierung nach Aufnahmedatum oder „Zuletzt hinzugefügt“ und Ansicht quadratisch/Seitenverhältnis – alles bleibt
+/// gespeichert und gilt auch für Betrachter, Auswahl, Diashow.
 /// Ansehen ist NIE eine Entscheidung. Zeigt alles außer „In PhotoMaid ausgeblendet“.
 struct LibraryView: View {
     @Environment(AppModel.self) private var app
@@ -14,9 +15,12 @@ struct LibraryView: View {
     @State private var selection: Set<String> = []
     /// Mitglieder des Smart-Albums für „Selfies“/„RAW“ (`nil` = wird geladen).
     @State private var members: Set<String>?
+    /// Hinzufüge-Reihenfolge der Fotos-App für „Zuletzt hinzugefügt“ (`nil` = wird geladen).
+    @State private var addedRank: [String: Int]?
     @State private var pinchBase: CGFloat = 1
 
     private var filter: LibraryFilter { app.settings.libraryFilter }
+    private var order: LibraryOrder { app.settings.libraryOrder }
 
     var body: some View {
         Group {
@@ -87,6 +91,8 @@ struct LibraryView: View {
                                                    set: { f in app.updateSettings { $0.libraryFilter = f } })
         let fitBinding = Binding<Bool>(get: { app.settings.libraryAspectFit },
                                        set: { v in app.updateSettings { $0.libraryAspectFit = v } })
+        let orderBinding = Binding<LibraryOrder>(get: { app.settings.libraryOrder },
+                                                 set: { o in app.updateSettings { $0.libraryOrder = o } })
         return Menu {
             Picker(L("lib_filter_title"), selection: filterBinding) {
                 ForEach(LibraryFilter.main, id: \.self) { f in
@@ -103,6 +109,10 @@ struct LibraryView: View {
                 Label(L("lib_media_types"), systemImage: "square.stack.3d.down.right")
             }
             SwiftUI.Divider()
+            Picker(L("lib_sort"), selection: orderBinding) {
+                Label(L("basket_sort_taken"), systemImage: "calendar").tag(LibraryOrder.captured)
+                Label(L("lib_sort_added"), systemImage: "clock.arrow.circlepath").tag(LibraryOrder.added)
+            }
             Picker(L("lib_view_options"), selection: fitBinding) {
                 Label(L("lib_view_square"), systemImage: "square.grid.3x3").tag(false)
                 Label(L("lib_view_aspect"), systemImage: "rectangle.grid.3x2").tag(true)
@@ -132,33 +142,46 @@ struct LibraryView: View {
     }
 
     private var timeline: some View {
-        let list = visible
-        let sections = Timeline.sections(list, date: \.creationDate, level: level, timeZone: .autoupdatingCurrent)
+        let byAdded = order == .added
+        let list = byAdded ? LibraryOrder.addedFirst(visible, id: \.id, rank: addedRank ?? [:]) : visible
+        // Zuletzt hinzugefügt: eine durchgehende Fläche ohne Datumsüberschriften (wie in der Fotos-App).
+        let sections = byAdded
+            ? [TimelineSection(key: TimelineKey(year: 0, unknown: true), items: list)]
+            : Timeline.sections(list, date: \.creationDate, level: level, timeZone: .autoupdatingCurrent)
+        let header: ((TimelineKey) -> String)? = byAdded ? nil : { TimelineText.header($0, level: level) }
         return ScrollView {
             if app.visibleMedia.isEmpty && app.snapshot.loaded {
                 EmptyState(symbol: "photo", title: L("grid_empty_title"), message: L("lib_empty_text"))
-            } else if !app.snapshot.loaded || (filter.readsCollection && members == nil) {
+            } else if !app.snapshot.loaded || (filter.readsCollection && members == nil) || (byAdded && addedRank == nil) {
                 LoadingState(message: L("feed_loading")).frame(minHeight: 300)
             } else {
-                Picker(L("lib_sort"), selection: $level) {
-                    Text(key: "lib_level_day").tag(TimelineLevel.day)
-                    Text(key: "lib_level_month").tag(TimelineLevel.month)
-                    Text(key: "lib_level_year").tag(TimelineLevel.year)
+                if byAdded {
+                    Text(key: "lib_order_added_note")
+                        .font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, AppSpacing.pageMargin)
+                } else {
+                    Picker(L("lib_sort"), selection: $level) {
+                        Text(key: "lib_level_day").tag(TimelineLevel.day)
+                        Text(key: "lib_level_month").tag(TimelineLevel.month)
+                        Text(key: "lib_level_year").tag(TimelineLevel.year)
+                    }
+                    .pickerStyle(.segmented)
+                    .padding(.horizontal, AppSpacing.pageMargin)
                 }
-                .pickerStyle(.segmented)
-                .padding(.horizontal, AppSpacing.pageMargin)
                 if filter != .all { filterChip(count: list.count) }
                 if list.isEmpty {
                     EmptyState(symbol: LibraryFilterText.symbol(filter), title: L("grid_empty_title"),
                                message: L("lib_filter_empty", LibraryFilterText.title(filter)))
                 } else {
                     MediaGrid(sections: sections, columns: level.columns, selecting: selecting, selection: $selection,
-                              open: { a in open(a, in: list) }, header: { TimelineText.header($0, level: level) },
+                              open: { a in open(a, in: list) }, header: header,
                               fit: app.settings.libraryAspectFit)
                 }
             }
         }
         .task(id: "\(filter.rawValue)-\(app.library.changeToken)") { await loadMembers() }
+        .task(id: "\(order.rawValue)-\(app.library.changeToken)") { await loadAddedRank() }
         .simultaneousGesture(
             MagnifyGesture()
                 .onEnded { v in
@@ -172,6 +195,14 @@ struct LibraryView: View {
     private func open(_ a: MediaAsset, in list: [MediaAsset]) {
         let ids = list.map(\.id)
         app.fullScreen = .viewer(ids: ids, index: ids.firstIndex(of: a.id) ?? 0)
+    }
+
+    /// „Zuletzt hinzugefügt“: Reihenfolge des Systemalbums der Fotos-App (vorheriger Stand bleibt beim Neuladen sichtbar).
+    private func loadAddedRank() async {
+        guard order == .added else { return }
+        let rank = await Task.detached(priority: .userInitiated) { PhotoLibraryService.addedRank() }.value
+        guard !Task.isCancelled else { return }
+        addedRank = rank
     }
 
     /// Selfies und RAW kennt nur das Smart-Album der Fotos-App (keine Bildanalyse).
@@ -203,6 +234,7 @@ enum LibraryFilterText {
         case .slowMotion: L("lib_filter_slowmo")
         case .timelapse: L("lib_filter_timelapse")
         case .cinematic: L("lib_filter_cinematic")
+        case .screenRecordings: L("lib_filter_screenrec")
         case .raw: L("lib_filter_raw")
         }
     }
@@ -222,6 +254,7 @@ enum LibraryFilterText {
         case .slowMotion: "slowmo"
         case .timelapse: "timelapse"
         case .cinematic: "film"
+        case .screenRecordings: "record.circle"
         case .raw: "r.square"
         }
     }
@@ -232,7 +265,7 @@ extension MediaAsset {
     var libraryFacts: LibraryMediaFacts {
         LibraryMediaFacts(id: id, kind: kind, isFavorite: isFavorite, isEdited: isEdited, isLivePhoto: isLivePhoto,
                           isPortrait: isPortrait, isPanorama: isPanorama, isSlowMotion: isSlowMotion,
-                          isTimelapse: isTimelapse, isCinematic: isCinematic)
+                          isTimelapse: isTimelapse, isCinematic: isCinematic, isScreenRecording: isScreenRecording)
     }
 }
 

@@ -72,6 +72,8 @@ struct AppSettingsData: Codable, Equatable, Sendable {
     /// Tab „Fotos“: Filter wie in der Fotos-App (nur Ansicht) und Raster quadratisch oder im Seitenverhältnis.
     var libraryFilter: LibraryFilter = .all
     var libraryAspectFit = false
+    /// Tab „Fotos“: nach Aufnahmedatum (Zeitachse) oder zuletzt hinzugefügt zuerst.
+    var libraryOrder: LibraryOrder = .captured
 
     init() {}
 
@@ -118,6 +120,7 @@ struct AppSettingsData: Codable, Equatable, Sendable {
         analysisEnabled = v(.analysisEnabled, d.analysisEnabled)
         libraryFilter = v(.libraryFilter, d.libraryFilter)
         libraryAspectFit = v(.libraryAspectFit, d.libraryAspectFit)
+        libraryOrder = v(.libraryOrder, d.libraryOrder)
     }
 
     /// Später-Intervall beim Wisch nach rechts (nur erlaubte Werte).

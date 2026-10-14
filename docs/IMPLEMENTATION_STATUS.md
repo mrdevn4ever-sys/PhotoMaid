@@ -34,16 +34,21 @@ Auf Nutzermeldung (Screenshots Build 5) – alles ohne neue Netzwerk-, Konto- od
   Selfies, Live Photos, Porträts, Panoramen, Zeitlupe, Zeitraffer, Kinomodus, RAW) und Ansicht quadratisch/Seitenverhältnis
   (`LibraryFilter`, gespeichert). Aktiver Filter als Chip mit Anzahl und ✕; gilt für Betrachter, Auswahl, Diashow.
 - 33 neue Texte in 16 Sprachen (`ios_strings.json`), `ana2_stage_thermal` angepasst.
+- Nachtrag C: `AppModel.sizes` (Papierkorb, Sammlungen) misst über `SizeMeasuring.measureParallel` (gespeicherte Werte
+  sofort, Rest parallel in Paketen, Wärme-Drosselung). „Speicher“ nutzt den app-weiten Mess-Auftrag (läuft beim
+  Verlassen weiter, zeigt „mind.“, solange noch gemessen wird); ein zweiter Auftrag bricht den ersten nicht mehr ab.
+- Nachtrag B: Medienart „Bildschirmaufnahmen“ (`videoScreenRecording`) und Sortierung „Zuletzt hinzugefügt“
+  (`LibraryOrder`, Reihenfolge des Systemalbums „Aufnahmen“/`smartAlbumUserLibrary`; ohne Datumsüberschriften). 2 Texte.
 
 | Prüfung | Ergebnis |
 |---|---|
-| `swift build` / `swift test` (Linux, Swift 6.4) | PASS: 352 Tests (19 neu: Ergebnisse/Drosselung, Inventur/Vorfilter/Prüfsummen, Filter) |
+| `swift build` / `swift test` (Linux, Swift 6.4) | PASS: 354 Tests (21 neu: Ergebnisse/Drosselung, Inventur/Vorfilter/Prüfsummen, Filter/Reihenfolge) |
 | Typprüfung neuer Infrastruktur gegen Platzhalter (Swift 6 strikt: `MediaSizer`, `SizeMeasuring`, `SizeIndexDatabase`, `DuplicateScanner`, `AnalysisRunner`, `AnalysisController`, `AnalysisDatabase`) | PASS (nur Linux-Platzhalter für Photos/UIKit/BackgroundTasks, kein Apple-SDK) |
 | `SizeIndexDatabase` mit echtem SQLite (Linux) | PASS |
 | `swiftc -parse` aller 123 App-Dateien | PASS |
-| `android_strings_to_xcstrings.py --check` | PASS: 1513 benutzte Kennungen, 2498 Einträge, 16 Sprachen |
+| `android_strings_to_xcstrings.py --check` | PASS: 1516 benutzte Kennungen, 2500 Einträge, 16 Sprachen |
 | App-Target bauen (`xcodebuild`), SwiftUI-Dateien typgeprüft | NOT RUN: kein macOS/Xcode; kein GitHub-Actions-Lauf ohne Freigabe |
-| Gerät: Geschwindigkeit bei 30k Medien, Wärme, Face ID beim Schließen, PhotoKit-Fehlercode „nur in iCloud“ | NOT RUN |
+| Gerät: Geschwindigkeit bei 30k Medien, Wärme, Face ID beim Schließen, PhotoKit-Fehlercode „nur in iCloud“, Reihenfolge „Zuletzt hinzugefügt“ | NOT RUN |
 
 ## Build 5 (11.10.2026, Branch `claude/build5-all-20261011`)
 

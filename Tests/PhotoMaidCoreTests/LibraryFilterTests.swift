@@ -29,6 +29,20 @@ import Testing
         #expect(LibraryFilter.raw.readsCollection && !LibraryFilter.videos.readsCollection)
     }
 
+    @Test func screenRecordingsAreVideosOnly() {
+        let rec = LibraryMediaFacts(id: "r", kind: .video, isScreenRecording: true)
+        #expect(LibraryFilter.screenRecordings.accepts(rec))
+        #expect(!LibraryFilter.screenRecordings.accepts(slowmo))
+        #expect(!LibraryFilter.screenRecordings.accepts(shot))
+    }
+
+    @Test func addedFirstKeepsUnknownAtEnd() {
+        let ids = ["a", "b", "c", "d", "e"]
+        let sorted = LibraryOrder.addedFirst(ids, id: { $0 }, rank: ["a": 1, "b": 5, "d": 3])
+        #expect(sorted == ["b", "d", "a", "c", "e"])
+        #expect(LibraryOrder.addedFirst(ids, id: { $0 }, rank: [:]) == ids)
+    }
+
     @Test func everyFilterIsOffered() {
         #expect(Set(LibraryFilter.main + LibraryFilter.mediaTypes) == Set(LibraryFilter.allCases))
     }

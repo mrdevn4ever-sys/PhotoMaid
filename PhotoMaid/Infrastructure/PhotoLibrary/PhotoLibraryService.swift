@@ -61,6 +61,7 @@ struct MediaAsset: Hashable, Sendable, Identifiable {
     var isSlowMotion: Bool { subtypes & PHAssetMediaSubtype.videoHighFrameRate.rawValue != 0 }
     var isTimelapse: Bool { subtypes & PHAssetMediaSubtype.videoTimelapse.rawValue != 0 }
     var isCinematic: Bool { subtypes & PHAssetMediaSubtype.videoCinematic.rawValue != 0 }
+    var isScreenRecording: Bool { subtypes & PHAssetMediaSubtype.videoScreenRecording.rawValue != 0 }
 }
 
 /// Album oder Ordner der Fotos-App (E5: an Stelle der Android-Ordner).
@@ -203,6 +204,18 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
         let albums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: subtype, options: nil)
         guard let album = albums.firstObject else { return [] }
         return assetIDs(inCollection: album.localIdentifier)
+    }
+
+    /// Hinzufüge-Reihenfolge der Fotos-App: das System-Album „Aufnahmen“ (`smartAlbumUserLibrary`) ist nach dem
+    /// Hinzufügen geordnet. Rang = Position (größer = später hinzugefügt). Öffentliche API, kein Datum erfunden.
+    nonisolated static func addedRank() -> [String: Int] {
+        let albums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
+        guard let library = albums.firstObject else { return [:] }
+        let result = PHAsset.fetchAssets(in: library, options: nil)
+        var rank: [String: Int] = [:]
+        rank.reserveCapacity(result.count)
+        for i in 0..<result.count { rank[result.object(at: i).localIdentifier] = i }
+        return rank
     }
 
     /// Mehrere Assets mit EINER Abfrage (statt einer je Medium) – für Messungen über die ganze Mediathek.

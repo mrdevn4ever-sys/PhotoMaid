@@ -42,10 +42,16 @@ final class SizeMeasuring {
         { [weak owner] _ in Task { @MainActor in owner?.resume() } }
     }
 
-    /// Diese Medien messen lassen (gültig Gemessenes wird übersprungen).
+    /// Diese Medien messen lassen (gültig Gemessenes wird übersprungen). Läuft schon ein Auftrag (z. B. „Speicher“),
+    /// werden dessen übrige Medien behalten – eine zweite Seite bricht die erste nicht ab.
     func ensure(_ assets: [MediaAsset], sizer: MediaSizer) {
         self.sizer = sizer
-        wanted = assets
+        if task != nil {
+            let ids = Set(assets.map(\.id))
+            wanted = assets + wanted.filter { !ids.contains($0.id) }
+        } else {
+            wanted = assets
+        }
         restart()
     }
 
@@ -81,7 +87,7 @@ final class SizeMeasuring {
         done = 0
         total = todo.count
         if !todo.isEmpty {
-            await Self.measureAll(todo, sizer: sizer) { [weak self] batch, done in
+            _ = await Self.measureAll(todo, sizer: sizer) { [weak self] batch, done in
                 await self?.publish(batch, done: done)
             }
         }
@@ -96,9 +102,31 @@ final class SizeMeasuring {
         self.done = done
     }
 
+    /// Parallel messen, was noch fehlt, und für alle Medien die gültige Messung liefern – derselbe Weg wie der
+    /// Mess-Auftrag (Videos zuerst, Pakete, bis zu 4 gleichzeitig, Wärme). Für `AppModel.sizes` (Papierkorb, Sammlungen).
+    nonisolated static func measureParallel(_ assets: [MediaAsset], sizer: MediaSizer,
+                                            progress: (@Sendable (Int, Int) -> Void)? = nil) async -> [String: SizeRecord] {
+        var out = await sizer.records(for: assets)
+        let now = Date()
+        let byID = Dictionary(assets.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
+        let todo = SizeInventory.order(assets.map { InventoryItem($0) })
+            .filter { SizeInventory.needsMeasure($0, record: out[$0.id], now: now) }
+            .compactMap { byID[$0.id] }
+        let already = assets.count - todo.count
+        let total = assets.count
+        progress?(already, total)
+        guard !todo.isEmpty else { return out }
+        let measured = await measureAll(todo, sizer: sizer) { _, done in progress?(already + done, total) }
+        out.merge(measured) { _, new in new }
+        return out
+    }
+
     /// In Paketen zu 200 (eine PhotoKit-Abfrage je Paket), je Paket bis zu 4 Messungen gleichzeitig.
+    @discardableResult
     nonisolated private static func measureAll(_ todo: [MediaAsset], sizer: MediaSizer,
-                                               report: @escaping @Sendable ([String: SizeRecord], Int) async -> Void) async {
+                                               report: @escaping @Sendable ([String: SizeRecord], Int) async -> Void)
+        async -> [String: SizeRecord] {
+        var all: [String: SizeRecord] = [:]
         var batch: [String: SizeRecord] = [:]
         var done = 0
         var last = ProcessInfo.processInfo.systemUptime
@@ -115,6 +143,7 @@ final class SizeMeasuring {
                     },
                     result: { _, pair in
                         batch[pair.id] = pair.record
+                        all[pair.id] = pair.record
                         done += 1
                         let now = ProcessInfo.processInfo.systemUptime
                         if now - last >= 0.5 {
@@ -129,5 +158,6 @@ final class SizeMeasuring {
         }
         await sizer.flush()
         await report(batch, done)
+        return all
     }
 }

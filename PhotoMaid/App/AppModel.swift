@@ -589,8 +589,12 @@ final class AppModel {
 
     func size(_ asset: MediaAsset) async -> KnownSize { await sizer.size(of: asset) }
 
+    /// Gemessene Größen (gespeichert oder neu, parallel gemessen). Unbekannt bleibt unbekannt, nie 0.
     func sizes(_ assets: [MediaAsset], progress: (@Sendable (Int, Int) -> Void)? = nil) async -> [String: KnownSize] {
-        await sizer.sizes(of: assets, progress: progress)
+        let records = await SizeMeasuring.measureParallel(assets, sizer: sizer, progress: progress)
+        var out: [String: KnownSize] = [:]
+        for a in assets { out[a.id] = records[a.id]?.size ?? .unknown }
+        return out
     }
 
     // MARK: Ausblenden und Ausnehmen (nie eine Entscheidung, Datei unverändert)

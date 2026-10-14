@@ -3709,6 +3709,24 @@
   "uk": "RAW",
   "zh-Hans": "RAW"
  },
+ "lib_filter_screenrec": {
+  "ar": "تسجيلات الشاشة",
+  "de": "Bildschirmaufnahmen",
+  "en": "Screen recordings",
+  "es": "Grabaciones de pantalla",
+  "fr": "Enregistrements de l’écran",
+  "it": "Registrazioni schermo",
+  "ja": "画面収録",
+  "ko": "화면 기록",
+  "nl": "Schermopnamen",
+  "pl": "Nagrania ekranu",
+  "pt-PT": "Gravações de ecrã",
+  "ro": "Înregistrări ecran",
+  "ru": "Записи экрана",
+  "tr": "Ekran kayıtları",
+  "uk": "Записи екрана",
+  "zh-Hans": "录屏"
+ },
  "lib_filter_slowmo": {
   "ar": "حركة بطيئة",
   "de": "Zeitlupe",
@@ -3870,6 +3888,24 @@
   "tr": "Medya türleri",
   "uk": "Типи медіа",
   "zh-Hans": "媒体类型"
+ },
+ "lib_order_added_note": {
+  "ar": "الأحدث إضافةً أولًا – بترتيب تطبيق الصور.",
+  "de": "Zuletzt hinzugefügt zuerst – in der Reihenfolge der Fotos-App.",
+  "en": "Recently added first – in the order of the Photos app.",
+  "es": "Añadidos recientemente primero, en el orden de la app Fotos.",
+  "fr": "Ajouts récents en premier – dans l’ordre de l’app Photos.",
+  "it": "Aggiunti di recente per primi, nell’ordine dell’app Foto.",
+  "ja": "最近追加した項目が先頭 –「写真」アプリの順序です。",
+  "ko": "최근 추가한 항목 먼저 – 사진 앱의 순서예요.",
+  "nl": "Recent toegevoegd eerst – in de volgorde van de Foto’s-app.",
+  "pl": "Ostatnio dodane najpierw – w kolejności aplikacji Zdjęcia.",
+  "pt-PT": "Adicionados recentemente primeiro – pela ordem da app Fotografias.",
+  "ro": "Adăugate recent primele – în ordinea aplicației Poze.",
+  "ru": "Недавно добавленные сначала – в порядке приложения «Фото».",
+  "tr": "Son eklenenler önce – Fotoğraflar uygulamasındaki sırayla.",
+  "uk": "Нещодавно додані спочатку – у порядку застосунку «Фото».",
+  "zh-Hans": "最近添加的在前 – 与“照片”App 的顺序一致。"
  },
  "lib_search_hint": {
   "ar": "الاسم، الشهر، السنة، الوسم …",

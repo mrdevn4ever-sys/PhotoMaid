@@ -12,10 +12,11 @@ public struct LibraryMediaFacts: Sendable, Equatable {
     public let isSlowMotion: Bool
     public let isTimelapse: Bool
     public let isCinematic: Bool
+    public let isScreenRecording: Bool
 
     public init(id: String, kind: MediaKind, isFavorite: Bool = false, isEdited: Bool = false, isLivePhoto: Bool = false,
                 isPortrait: Bool = false, isPanorama: Bool = false, isSlowMotion: Bool = false, isTimelapse: Bool = false,
-                isCinematic: Bool = false) {
+                isCinematic: Bool = false, isScreenRecording: Bool = false) {
         self.id = id
         self.kind = kind
         self.isFavorite = isFavorite
@@ -26,6 +27,7 @@ public struct LibraryMediaFacts: Sendable, Equatable {
         self.isSlowMotion = isSlowMotion
         self.isTimelapse = isTimelapse
         self.isCinematic = isCinematic
+        self.isScreenRecording = isScreenRecording
     }
 }
 
@@ -33,11 +35,11 @@ public struct LibraryMediaFacts: Sendable, Equatable {
 /// darunter „Medienarten“. Nur Ansicht: ändert nichts, entscheidet nichts.
 public enum LibraryFilter: String, Codable, Sendable, CaseIterable {
     case all, favorites, edited, photos, videos, screenshots
-    case selfies, livePhotos, portraits, panoramas, slowMotion, timelapse, cinematic, raw
+    case selfies, livePhotos, portraits, panoramas, slowMotion, timelapse, cinematic, screenRecordings, raw
 
     public static let main: [LibraryFilter] = [.all, .favorites, .edited, .photos, .videos, .screenshots]
     public static let mediaTypes: [LibraryFilter] = [.selfies, .livePhotos, .portraits, .panoramas, .slowMotion, .timelapse,
-                                                     .cinematic, .raw]
+                                                     .cinematic, .screenRecordings, .raw]
 
     /// Selfies und RAW kennt nur das jeweilige Smart-Album der Fotos-App: dessen Mitglieder werden übergeben.
     public var readsCollection: Bool { self == .selfies || self == .raw }
@@ -57,6 +59,7 @@ public enum LibraryFilter: String, Codable, Sendable, CaseIterable {
         case .slowMotion: return f.isSlowMotion && f.kind == .video
         case .timelapse: return f.isTimelapse && f.kind == .video
         case .cinematic: return f.isCinematic && f.kind == .video
+        case .screenRecordings: return f.isScreenRecording && f.kind == .video
         case .selfies, .raw: return members?.contains(f.id) ?? false
         }
     }
@@ -65,5 +68,24 @@ public enum LibraryFilter: String, Codable, Sendable, CaseIterable {
     public static func apply<T>(_ filter: LibraryFilter, to items: [T], facts: (T) -> LibraryMediaFacts,
                                 members: Set<String>? = nil) -> [T] {
         filter == .all ? items : items.filter { filter.accepts(facts($0), members: members) }
+    }
+}
+
+/// Reihenfolge im Tab „Fotos“ wie in der Fotos-App: nach Aufnahmedatum (Zeitachse) oder zuletzt hinzugefügt zuerst.
+public enum LibraryOrder: String, Codable, Sendable, CaseIterable {
+    case captured, added
+
+    /// Zuletzt hinzugefügt zuerst. `rank`: Position in der Hinzufüge-Reihenfolge der Fotos-App (größer = später
+    /// hinzugefügt). Ohne bekannte Position ans Ende, dort in der bisherigen Reihenfolge – nichts wird erfunden.
+    public static func addedFirst<T>(_ items: [T], id: (T) -> String, rank: [String: Int]) -> [T] {
+        let indexed = items.enumerated().map { (offset: $0.offset, item: $0.element, rank: rank[id($0.element)]) }
+        return indexed.sorted { a, b in
+            switch (a.rank, b.rank) {
+            case let (x?, y?): return x == y ? a.offset < b.offset : x > y
+            case (_?, nil): return true
+            case (nil, _?): return false
+            case (nil, nil): return a.offset < b.offset
+            }
+        }.map(\.item)
     }
 }

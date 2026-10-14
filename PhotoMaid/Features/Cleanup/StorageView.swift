@@ -6,10 +6,10 @@ import SwiftUI
 struct StorageView: View {
     @Environment(AppModel.self) private var app
     @State private var device: DeviceCapacity?
-    @State private var tallies: [StorageCategory: SizeTally] = [:]
-    @State private var measuring = false
+    @State private var measuring = SizeMeasuring.shared
 
     var body: some View {
+        let tallies = currentTallies()
         List {
             Section(L("storage_a")) {
                 if let d = device {
@@ -30,7 +30,12 @@ struct StorageView: View {
                 row("camera.viewfinder", L("storage_of_which_screens"), tallies[.screenshots], indent: true)
                 row("video", L("cat_videos"), tallies[.videos])
                 if !app.sources.sources.isEmpty { row("folder", L("storage_connected_folders"), tallies[.connectedFiles]) }
-                if measuring { ProgressView() }
+                if measuring.running && measuring.total > 0 {
+                    ProgressView(value: Double(measuring.done), total: Double(max(1, measuring.total))) {
+                        Text(verbatim: L("large_measuring", measuring.done, measuring.total)).font(AppTypography.caption)
+                            .monospacedDigit()
+                    }
+                }
             } header: {
                 Text(key: "storage_b")
             } footer: {
@@ -47,7 +52,8 @@ struct StorageView: View {
         .navigationTitle(L("storage_overview"))
         .task {
             device = DeviceStorage.read()
-            await measure()
+            // App-weiter Mess-Auftrag: parallel, Videos zuerst, läuft weiter, wenn diese Seite verlassen wird.
+            measuring.ensure(app.visibleMedia, sizer: app.sizer)
         }
     }
 
@@ -63,31 +69,17 @@ struct StorageView: View {
         .frame(minHeight: AppSpacing.minTouch)
     }
 
-    private func measure() async {
-        measuring = true
-        defer { measuring = false }
-        let media = app.visibleMedia
-        var sizes = await app.sizer.cachedSizes(media)
-        publish(media, sizes)
-        var i = 0
-        while i < media.count && !Task.isCancelled {
-            let j = min(media.count, i + 60)
-            for (k, v) in await app.sizes(Array(media[i..<j])) { sizes[k] = v }
-            publish(media, sizes)
-            i = j
-        }
-    }
-
-    private func publish(_ media: [MediaAsset], _ sizes: [String: KnownSize]) {
+    /// Summen aus den Messungen. Noch nicht Gemessenes zählt wie Unbekanntes: die Summe heißt dann „mind.“ –
+    /// nie geschätzt, nie 0.
+    private func currentTallies() -> [StorageCategory: SizeTally] {
         var photos = SizeTally(), videos = SizeTally(), screens = SizeTally()
-        for a in media {
-            let s = sizes[a.id] ?? .unknown
+        let records = measuring.records
+        for a in app.visibleMedia {
+            let s = records[a.id].flatMap { $0.isCurrent(modified: a.modificationDate) ? $0.size : nil } ?? .unknown
             if a.isVideo { videos.add(s) } else { photos.add(s) }
             if a.kind == .screenshot { screens.add(s) }
         }
-        tallies[.photos] = photos
-        tallies[.videos] = videos
-        tallies[.screenshots] = screens
-        tallies[.connectedFiles] = SizeTally(app.files.entries.map(\.size))
+        return [.photos: photos, .videos: videos, .screenshots: screens,
+                .connectedFiles: SizeTally(app.files.entries.map(\.size))]
     }
 }
