@@ -13,10 +13,14 @@ on:
         description: "Optional: CI-Lauf-ID für den Export älterer xcresult-Screenshots"
         type: string
         default: ""
+      collect_run:
+        description: "Nur vorhandene UI-Belege aufteilen (Lauf-ID; keine App-Tests)"
+        type: string
+        default: ""
 
 concurrency:
   # Keep evidence from the previous commit while validating a fix on the same branch.
-  group: ci-${{ github.ref }}-${{ github.sha }}
+  group: ci-${{ github.ref }}-${{ github.sha }}-${{ inputs.collect_run || 'tests' }}
   cancel-in-progress: true
 
 permissions:
@@ -25,6 +29,7 @@ permissions:
 
 jobs:
   core:
+    if: inputs.collect_run == ''
     name: PhotoMaidCore (Linux, swift test)
     runs-on: ubuntu-24.04
     container: swift:6.4-noble
@@ -44,6 +49,7 @@ jobs:
           path: core-test.log
 
   ios:
+    if: inputs.collect_run == ''
     name: iOS App (xcodebuild build + test)
     runs-on: macos-26
     timeout-minutes: 75
@@ -147,3 +153,84 @@ jobs:
           name: simulator-ui-evidence
           path: ${{ runner.temp }}/simulator-ui
           if-no-files-found: warn
+
+  evidence:
+    name: Vorhandene Simulatorbelege aufteilen
+    if: inputs.collect_run != ''
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lauf-ID prüfen
+        env:
+          COLLECT_RUN: ${{ inputs.collect_run }}
+        run: '[[ "$COLLECT_RUN" =~ ^[0-9]+$ ]]'
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.collect_run }}
+          name: simulator-ui-evidence
+          path: evidence-source
+      - run: python3 scripts/ci/collect_ui_evidence.py evidence-source evidence-review
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ui-review-logs
+          path: evidence-review/logs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ui-review-images-1
+          path: evidence-review/images-1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ui-review-images-2
+          path: evidence-review/images-2
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ui-review-images-3
+          path: evidence-review/images-3
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ui-review-images-4
+          path: evidence-review/images-4
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ui-review-xcresult-1
+          path: evidence-review/xcresult-parts/*.part001
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ui-review-xcresult-2
+          path: evidence-review/xcresult-parts/*.part002
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ui-review-xcresult-3
+          path: evidence-review/xcresult-parts/*.part003
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ui-review-xcresult-4
+          path: evidence-review/xcresult-parts/*.part004
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ui-review-xcresult-5
+          path: evidence-review/xcresult-parts/*.part005
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ui-review-xcresult-6
+          path: evidence-review/xcresult-parts/*.part006
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ui-review-xcresult-7
+          path: evidence-review/xcresult-parts/*.part007
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ui-review-xcresult-8
+          path: evidence-review/xcresult-parts/*.part008
+          if-no-files-found: ignore

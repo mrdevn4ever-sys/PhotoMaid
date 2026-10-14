@@ -34,6 +34,12 @@ Durchlauf zusätzlich als `simulator-fixtures-evidence`; ein fehlgeschlagener QA
 Durchlauf nicht. Die abschließende Prüfung verlangt für beide Durchläufe Exitcode 0. Der Linux-Job verwendet Swift 6.4.
 
 Optional exportiert `baseline_run=<CI-Lauf-ID>` auch Screenshots aus einem älteren `ios-build-report`-Ergebnisbündel.
+`collect_run=<CI-Lauf-ID>` führt ausschließlich einen Linux-Sammeljob aus (keine App-Tests): Bilder und
+Logs werden getrennt bereitgestellt, die vollständigen `.xcresult`-Daten in 200-MiB-Teilen. Damit bleiben auch
+Belege über dem 512-MiB-Limit des GitHub-Connectors herunterladbar. `index.json` ordnet alle ursprünglichen
+Screenshot-Namen den unveränderten PNG-Dateien per SHA-256 zu. Die Ergebnis-Teile werden nach Nummer
+zusammengefügt und als `tar` entpackt (Befehl in `README.txt`).
+
 Alle Läufe bleiben manuell; Pushes starten keine Tests. Unterschiedliche Commits behalten ihre eigenen CI-Belege.
 
 ### Einrichtung für TestFlight

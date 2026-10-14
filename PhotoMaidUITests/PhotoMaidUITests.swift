@@ -76,6 +76,6 @@ final class PhotoMaidUITests: XCTestCase {
         XCTAssertTrue(app.descendants(matching: .any)["later.pill"].waitForExistence(timeout: 3))
         stage.swipeDown()   // Zurück, keine Entscheidung
         checkpoint("qa_feed_previous", app: app)
-        XCTAssertTrue(app.staticTexts.containing(NSPredicate(format: "label CONTAINS 'Papierkorb: 1'")).firstMatch.exists)
+        XCTAssertEqual(app.descendants(matching: .any)["feed.dock"].firstMatch.label, "Papierkorb: 1")
     }
 }
