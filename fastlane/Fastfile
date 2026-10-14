@@ -102,10 +102,14 @@ platform :ios do
       include_symbols: true
     )
 
+    # App Store Connect lehnt Symbole wie „✕“ oder Emojis in „Was ist zu testen“ ab (Build 7: Upload ok, Text fehlte).
+    changelog = ENV.fetch("CHANGELOG", "").dup.force_encoding(Encoding::UTF_8).scrub("").gsub(/[^\p{L}\p{M}\p{N}\p{P}\p{Zs}\n+=<>%&]/, "").squeeze(" ").strip
+    changelog = "Interner Testbuild" if changelog.empty?
+
     upload_to_testflight(
       api_key: api_key,
       app_identifier: bundle_id,
-      changelog: ENV.fetch("CHANGELOG", "Interner Testbuild"),
+      changelog: changelog,
       skip_waiting_for_build_processing: true,
       distribute_external: false
     )
