@@ -3,16 +3,18 @@ import XCTest
 @MainActor
 extension XCTestCase {
     /// Every checkpoint keeps the image AND the accessibility tree for review.
-    func checkpoint(_ name: String, app: XCUIApplication) {
+    func checkpoint(_ name: String, app: XCUIApplication, hierarchy: Bool = true) {
         let shot = XCUIScreen.main.screenshot()
         let attachment = XCTAttachment(screenshot: shot)
         attachment.name = name
         attachment.lifetime = .keepAlways
         add(attachment)
-        let tree = XCTAttachment(string: app.debugDescription)
-        tree.name = name + ".hierarchy"
-        tree.lifetime = .keepAlways
-        add(tree)
+        if hierarchy {
+            let tree = XCTAttachment(string: app.debugDescription)
+            tree.name = name + ".hierarchy"
+            tree.lifetime = .keepAlways
+            add(tree)
+        }
         if let dir = ProcessInfo.processInfo.environment["SCREENSHOT_DIR"], !dir.isEmpty {
             do {
                 let url = URL(fileURLWithPath: dir, isDirectory: true)
@@ -43,7 +45,7 @@ extension XCTestCase {
     func finishIntroduction(in app: XCUIApplication, prefix: String) {
         for page in 0..<5 {
             let next = app.buttons["onboarding.next"]
-            if !next.waitForExistence(timeout: 3) { break }
+            if !next.exists && !next.waitForExistence(timeout: 3) { break }
             checkpoint("\(prefix)_intro_\(page + 1)", app: app)
             XCTAssertTrue(next.isEnabled)
             next.tap()

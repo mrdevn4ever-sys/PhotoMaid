@@ -31,8 +31,11 @@ for f, line, col, kind, msg in diag.findall(text):
 other_errors = sorted({m.strip() for m in re.findall(r"^error: (.+)$", text, re.M)})
 failed_tests = sorted(set(re.findall(r"Test Case '-\[(\S+ \S+)\]' failed", text)) |
                       set(re.findall(r"✘ Test (\S+)\(\) .*failed", text)))
-result = "SUCCEEDED" if "** TEST SUCCEEDED **" in text else ("BUILD FAILED" if "** BUILD FAILED **" in text else
-         ("TEST FAILED" if "** TEST FAILED **" in text else "UNBEKANNT"))
+outcomes = re.findall(r"\*\* ((?:BUILD|TEST(?: BUILD| EXECUTE)?) (?:SUCCEEDED|FAILED)) \*\*", text)
+failures = [outcome for outcome in outcomes if outcome.endswith("FAILED")]
+result = failures[-1] if failures else ("SUCCEEDED" if any(
+    outcome in ("TEST SUCCEEDED", "TEST EXECUTE SUCCEEDED") for outcome in outcomes
+) else (outcomes[-1] if outcomes else "UNBEKANNT"))
 
 print("## CI-Bericht iOS\n")
 print(f"Ergebnis: **{result}** · Fehler: {len(errors) + len(other_errors)} · Warnungen: {len(warnings)} · "

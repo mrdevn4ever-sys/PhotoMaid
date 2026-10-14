@@ -59,7 +59,11 @@ jobs:
         run: python3 scripts/android_strings_to_xcstrings.py --check
       - name: Simulator wählen
         id: sim
-        run: echo "udid=$(scripts/ci/pick_simulator.sh)" >> "$GITHUB_OUTPUT"
+        run: |
+          udid=$(scripts/ci/pick_simulator.sh)
+          echo "udid=$udid" >> "$GITHUB_OUTPUT"
+          xcrun simctl boot "$udid" 2>/dev/null || true
+          xcrun simctl bootstatus "$udid" -b
       - name: Build und Unit-Tests
         run: |
           set -o pipefail
@@ -73,7 +77,8 @@ jobs:
             -skipPackagePluginValidation -skipMacroValidation \
             CODE_SIGNING_ALLOWED=NO -skip-testing:PhotoMaidUITests \
             build-for-testing test-without-building 2>&1 | tee xcodebuild.log | grep -E "error:|\*\* (BUILD|TEST)|Test (Case|Suite) .* (passed|failed)|Executed" || true
-          grep -q "\*\* TEST SUCCEEDED \*\*" xcodebuild.log
+          grep -Eq '\*\* TEST( EXECUTE)? SUCCEEDED \*\*' xcodebuild.log
+          ! grep -Eq '\*\* (BUILD|TEST( BUILD| EXECUTE)?) FAILED \*\*' xcodebuild.log
       - name: UI-Tests vorbereiten (öffentliche Testbilder)
         if: inputs.ui_tests
         run: |

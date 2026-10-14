@@ -32,18 +32,18 @@ final class RealLibraryTests: XCTestCase {
         app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", prefix)).firstMatch
     }
     private func tap(_ element: XCUIElement, _ name: String, timeout: Double = 10) {
-        XCTAssertTrue(element.waitForExistence(timeout: timeout), name)
-        if !element.isHittable {
-            for _ in 0..<7 where !element.isHittable { app.swipeUp() }
-        }
+        XCTAssertTrue(element.exists || element.waitForExistence(timeout: timeout), name)
+        if !element.isHittable { scrollTo(element) }
         XCTAssertTrue(element.isHittable, name)
         element.tap()
         snap(name)
     }
     private func scrollTo(_ element: XCUIElement) {
-        for _ in 0..<9 {
-            if element.exists && element.isHittable { return }
-            app.swipeUp()
+        for upwards in [true, false] {
+            for _ in 0..<10 {
+                if element.exists && element.isHittable { return }
+                if upwards { app.swipeUp() } else { app.swipeDown() }
+            }
         }
         XCTAssertTrue(element.exists && element.isHittable)
     }
@@ -100,16 +100,21 @@ final class RealLibraryTests: XCTestCase {
         scrollTo(target)
         tap(target, "hub_" + id)
     }
-    private func feed(dismissHints: Bool = true) {
-        tab("Aufräumen")
-        hub("photos")
-        XCTAssertTrue(e("feed.stage").waitForExistence(timeout: 15))
+    private func feed(dismissHints: Bool = true, allMedia: Bool = false) {
+        if allMedia {
+            tab("Heute")
+            tap(e("today.review"), "all_media_feed")
+        } else {
+            tab("Aufräumen")
+            hub("photos")
+        }
+        XCTAssertTrue(e("feed.stage").exists || e("feed.stage").waitForExistence(timeout: 15))
         if dismissHints, e("feed.hints").exists {
             Thread.sleep(forTimeInterval: 1.2)
             e("feed.stage").tap()
             snap("hints_dismissed_for_gesture_test")
         }
-        skipTour()
+        if dismissHints { skipTour() }
     }
     private func closeFeed() { tap(app.buttons["Schließen"].firstMatch, "feed_closed") }
     private func settings() {
@@ -224,6 +229,33 @@ final class RealLibraryTests: XCTestCase {
         snap("history_exactly_50_no_ad")
         feed()
 
+        // A second fifty-decision interval tests the other dismiss path independently.
+        for index in 1...50 {
+            let before = position()
+            e("feed.stage").swipeLeft(velocity: .fast)
+            if index == 50 {
+                checkpoint("real_second_ad_arrived", app: app, hierarchy: false)
+            } else {
+                snap(String(format: "second_rapid_%02d", index))
+                XCTAssertEqual(position(), before + 1)
+            }
+        }
+        XCTAssertTrue(e("feed.ad").exists)
+        e("feed.ad").swipeLeft(velocity: .fast)
+        XCTAssertTrue(e("feed.ad").exists, "Before 1.5 seconds, a sideways swipe must leave the card open")
+        snap("ad_early_swipe_blocked")
+        Thread.sleep(forTimeInterval: 1.6)
+        XCTAssertTrue(e("feed.ad.skip").exists)
+        let secondAdPosition = position()
+        e("feed.ad").swipeLeft(velocity: .fast)
+        XCTAssertFalse(e("feed.ad").exists)
+        XCTAssertEqual(position(), secondAdPosition)
+        snap("ad_after_1_5s_dismissed_no_decision")
+        closeFeed(); tab("Verlauf")
+        XCTAssertEqual(e("history.events").value as? String, "100")
+        snap("history_exactly_100_no_ad")
+        feed()
+
         var before = position()
         e("feed.stage").swipeUp()
         snap("up_keep")
@@ -270,7 +302,7 @@ final class RealLibraryTests: XCTestCase {
         XCTAssertTrue(button("Tasten anzeigen").label.contains("Immer"))
         back("controls_back"); back("settings_back")
         feed(dismissHints: false)
-        XCTAssertTrue(e("feed.hints").waitForExistence(timeout: 2))
+        XCTAssertTrue(e("feed.hints").exists)
         snap("hints_on_open")
         Thread.sleep(forTimeInterval: 3)
         XCTAssertTrue(e("feed.hints").exists, "Help must remain visible for about six seconds")
@@ -278,6 +310,7 @@ final class RealLibraryTests: XCTestCase {
         Thread.sleep(forTimeInterval: 4)
         XCTAssertFalse(e("feed.hints").exists)
         snap("hints_gone_after_7s")
+        skipTour()
         tap(app.buttons["Weitere Aktionen"].firstMatch, "feed_more")
         tap(app.buttons["Wischhilfe zeigen"], "show_hints_menu")
         Thread.sleep(forTimeInterval: 3)
@@ -300,6 +333,8 @@ final class RealLibraryTests: XCTestCase {
         app.terminate(); app.launch()
         ready()
         tab("Fotos")
+        tap(e("library.filter"), "trash_setup_sort_menu")
+        tap(app.buttons["Aufnahmedatum"].firstMatch, "trash_setup_capture_order")
         tap(app.buttons["Auswählen"].firstMatch, "library_select")
         let all = app.buttons["Alle"].firstMatch
         tap(all, "library_select_all")
@@ -307,6 +342,7 @@ final class RealLibraryTests: XCTestCase {
         // This is PhotoMaid's reversible mark, never PHAsset deletion.
         let mark = app.alerts.buttons["In den Papierkorb"].firstMatch
         if mark.waitForExistence(timeout: 3) { tap(mark, "mark_confirmed_reversible") }
+        XCTAssertTrue(app.buttons["Auswählen"].firstMatch.waitForExistence(timeout: 15), "Bulk marking finished")
         tab("Heute")
         let basket = button("Papierkorb")
         scrollTo(basket)
@@ -493,7 +529,7 @@ final class RealLibraryTests: XCTestCase {
         XCTAssertTrue(app.tabBars.firstMatch.waitForExistence(timeout: 15))
         XCTAssertFalse(testAd.waitForExistence(timeout: 8))
         snap("pro_cold_start_without_ad")
-        feed()
+        feed(allMedia: true)
         for index in 1...50 {
             let before = position()
             e("feed.stage").swipeUp(velocity: .fast)

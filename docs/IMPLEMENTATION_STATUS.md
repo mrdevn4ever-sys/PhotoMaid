@@ -1,6 +1,6 @@
 # Implementierungsstatus
 
-Stand: 14.10.2026 · Branch `claude/fixes-analysis-library-vault-20261014` (auf Build 5) · kein PR, kein GitHub-Actions-Lauf.
+Stand: 14.10.2026 · Branch `claude/fixes-analysis-library-vault-20261014` · Build-7-Ausgangsstand, Simulator-Prüfung läuft.
 
 ## Simulator-Prüfung über GitHub Actions (14.10.2026, Build-7-Stand)
 
@@ -8,7 +8,11 @@ Freigabe des Inhabers: nur `ci.yml` und Simulator-Prüfungen auf
 `claude/fixes-analysis-library-vault-20261014`. Keine Änderungen an E1–E19, kein TestFlight/Release/Merge.
 
 - Ausgangslauf: [38633721469](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38633721469),
-  Commit `269eaa6`, `ui_tests=true`; Auswertung läuft.
+  Commit `269eaa6`, `ui_tests=true`: Build PASS; 22 iOS-Unit-Tests PASS (11 XCTest + 11 Swift Testing),
+  8 UI-Tests FAIL. Belege heruntergeladen; alle 2 unterschiedlichen PNGs angesehen (3 Anhänge: `03_home`,
+  `13_studio`, `14_history` – zeigen noch die Einführung). Die Videos zeigen zusätzlich: der blinde
+  `app.tap()` nach dem Fotozugriff öffnet teilweise schon den Feed; dadurch sind die erwarteten Tabs verdeckt.
+  Neuer Aufbau wartet auf die Tabs und tippt nur bei tatsächlich ausstehender Berechtigung.
 - Prüfaufbau ergänzt: getrennte, zurückgesetzte Simulator-Durchläufe mit QA-Daten und ohne `-qa-fixtures`.
   Der zweite importiert 150 Bilder (130 öffentliche Fotos, 5 exakte Kopien, 10 unscharfe Ableitungen,
   5 Simulator-Screenshots) plus 3 Videos über PhotoKit; Herkunft und SHA-256 stehen im Artefakt-Manifest.
@@ -19,7 +23,15 @@ Freigabe des Inhabers: nur `ci.yml` und Simulator-Prüfungen auf
   stabile Kennungen an vorhandenen Bedienelementen ergänzt.
 - Lokal: Swift **6.4.1**, Linux: **381/381 PASS**; Mediengenerator: **153 Importe, exakt 5 zusätzliche Kopien PASS**;
   Strings `--check`: **PASS**, 1563 Kennungen / 2548 Einträge / 16 Sprachen.
-- iOS- und visuelle Ergebnisse: **NOT RUN**, bis die CI-Artefakte geprüft sind. Ein grüner Build allein gilt nicht
+- Erweiterter Lauf [38635318023](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38635318023):
+  Kern PASS, iOS-Build FAIL: zu großer SwiftUI-Ausdruck der Feed-Bühne; synchroner UI-Test-Abbau verletzt
+  MainActor-Isolation. Korrektur: Bühnen-Layer und einzelne Medienseite separat typprüfen; Abbau asynchron.
+  Keine Gesten-/Ledger-/Produktregel geändert. Danach erneut 381 Kern-Tests PASS.
+- Wiederholung [38636571661](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38636571661) läuft mit
+  Export der Ausgangsbelege: **Build PASS, 22 iOS-Unit-Tests PASS**, keine Compilerfehler. UI wurde wegen
+  eines Workflow-Fehlers übersprungen: Xcode meldet `TEST EXECUTE SUCCEEDED` statt `TEST SUCCEEDED`.
+  Erfolgserkennung/Bericht korrigiert; getrennte Fehlermarker werden ebenfalls geprüft. Endgültige UI-/visuelle
+  Ergebnisse weiterhin **NOT RUN**. Ein grüner Build allein gilt nicht
   als Geräteabnahme. Die abschließende Tabelle und Fehlerkorrekturen folgen hier nach den Simulator-Läufen.
 
 ## Neues Pro-Modell E19 + Werbung (14.10.2026, gleicher Branch)

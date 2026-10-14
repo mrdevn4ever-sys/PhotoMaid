@@ -24,6 +24,7 @@ struct TodayView: View {
                             app.open(FeedRequest(.allMedia))
                         }
                         .tourTarget("today.hero")
+                        .accessibilityIdentifier("today.review")
                         .id("today.hero")
                     }
                     progressRows
