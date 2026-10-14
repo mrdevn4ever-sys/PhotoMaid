@@ -72,6 +72,10 @@ struct RootView: View {
             }
         }
         .onChange(of: app.library.changeToken) { _, _ in app.reloadLibraryIfNeeded() }
+        // Unterbrochene Analyse (nicht ausdrücklich angehalten) nach dem Start weiterlaufen lassen.
+        .onChange(of: app.snapshot.loaded) { _, loaded in
+            if loaded { AnalysisController.shared.resumeAfterLaunch(app: app) }
+        }
         // Tresor geschlossen: Ablagen und Löschungen darin auch im Bereich „Dateien“ abgleichen.
         .onChange(of: vault.isPresented) { _, presented in
             if !presented { Task { await app.refreshVaultConcealment() } }

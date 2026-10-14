@@ -16,8 +16,8 @@ enum LocalPhotoAnalyzer {
         switch kind {
         case .blurry: "blur-aspect512-v2"
         case .documents: "ocr1600-accurate-v2-\(VNRecognizeTextRequest.defaultRevision)"
-        case .categories: "classify1024-v2-\(VNClassifyImageRequest.defaultRevision)"
-        case .similar: "feature1024-v2-\(VNGenerateImageFeaturePrintRequest.defaultRevision)"
+        case .categories: "classify512-v3-\(VNClassifyImageRequest.defaultRevision)"
+        case .similar: "feature512-v3-\(VNGenerateImageFeaturePrintRequest.defaultRevision)"
         }
     }
     /// `background`: läuft als fortgesetzte Aufgabe außerhalb der App. Scheitert Vision dort (z. B. ohne GPU), gilt das

@@ -94,6 +94,22 @@ final class AnalysisDatabase: @unchecked Sendable {
         }
     }
 
+    /// Nur Kennung und Zustand (ohne JSON) – schnell auch bei 30 000 Fotos. Nur Zeilen des aktuellen Verfahrens.
+    func states(_ kind: AnalysisKind, algorithm: String) throws -> [String: AnalysisItemState] {
+        try lock.withLock {
+            let s = try prepare("SELECT id,state FROM items WHERE kind=? AND algorithm=?"); defer { sqlite3_finalize(s) }
+            try bind(kind.rawValue, to: s, at: 1); try bind(algorithm, to: s, at: 2)
+            var output: [String: AnalysisItemState] = [:]
+            while try step(s) {
+                guard let id = string(s, 0), let state = string(s, 1).flatMap(AnalysisItemState.init(rawValue:)) else {
+                    throw AnalysisDatabaseError.corrupt
+                }
+                output[id] = state
+            }
+            return output
+        }
+    }
+
     /// Caller must hold its visibility gate while committing. Feature bytes are not copied into queue metadata.
     func save(_ item: AnalysisItem, feature: Data? = nil) throws {
         try lock.withLock {
@@ -124,14 +140,22 @@ final class AnalysisDatabase: @unchecked Sendable {
         try lock.withLock {
             try transaction {
                 let s = try prepare("DELETE FROM items WHERE id=?" + (kind == nil ? "" : " AND kind=?")); defer { sqlite3_finalize(s) }
+                var linked = false
+                let probe = try prepare("SELECT 1 FROM links WHERE a=? OR b=? LIMIT 1"); defer { sqlite3_finalize(probe) }
                 for id in ids {
                     sqlite3_reset(s); sqlite3_clear_bindings(s); try bind(id, to: s, at: 1)
                     if let kind { try bind(kind.rawValue, to: s, at: 2) }
                     guard sqlite3_step(s) == SQLITE_DONE else { throw AnalysisDatabaseError.write }
+                    if !linked, kind == nil || kind == .similar {
+                        sqlite3_reset(probe); sqlite3_clear_bindings(probe)
+                        try bind(id, to: probe, at: 1); try bind(id, to: probe, at: 2)
+                        linked = try step(probe)
+                    }
                 }
                 // Removing a bridge can split a group. Rebuild comparisons from the cached features,
                 // not by downloading photographs again; never retain a group containing an excluded item.
-                if kind == nil || kind == .similar {
+                // Gehörte keines der entfernten Fotos zu einer Gruppe, bleiben alle Vergleiche gültig.
+                if linked {
                     try execute("DELETE FROM links; UPDATE items SET state='featuresReady' WHERE kind='similar' AND feature IS NOT NULL;")
                 }
             }
@@ -183,7 +207,8 @@ final class AnalysisDatabase: @unchecked Sendable {
 
     /// Treffer in Anzeigereihenfolge (unscharf: am unschärfsten zuerst, sonst neueste zuerst). `limit == nil` = alle
     /// (nur Kennungen; die Ansicht filtert offen/sichtbar und blättert selbst).
-    func hits(kind: AnalysisKind, query: String, category: String?, limit: Int?, offset: Int = 0) throws -> AnalysisHitPage {
+    func hits(kind: AnalysisKind, algorithm: String, query: String, category: String?, limit: Int?,
+              offset: Int = 0) throws -> AnalysisHitPage {
         try lock.withLock {
             let criterion: String
             switch kind {
@@ -194,10 +219,11 @@ final class AnalysisDatabase: @unchecked Sendable {
             }
             let search = query.isEmpty ? "" : " AND recognized LIKE ? ESCAPE '\\'"
             let filter = category == nil ? "" : " AND category=?"
-            let whereSQL = " WHERE kind=? AND state='complete' AND " + criterion + search + filter
+            let whereSQL = " WHERE kind=? AND algorithm=? AND state='complete' AND " + criterion + search + filter
             func bindings(_ s: OpaquePointer?) throws {
                 try bind(kind.rawValue, to: s, at: 1)
-                var i: Int32 = 2
+                try bind(algorithm, to: s, at: 2)
+                var i: Int32 = 3
                 if !query.isEmpty {
                     let escaped = query.replacingOccurrences(of: "\\", with: "\\\\")
                         .replacingOccurrences(of: "%", with: "\\%").replacingOccurrences(of: "_", with: "\\_")

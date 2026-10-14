@@ -13,6 +13,7 @@ struct FeedView: View {
     @State private var model: FeedViewModel
     @State private var showHints = false
     @State private var hintToken = 0
+    @State private var hintShownAt: TimeInterval = 0
     @State private var zoom: CGFloat = 1
     @State private var zoomBase: CGFloat = 1
     @State private var pan: CGSize = .zero
@@ -94,8 +95,10 @@ struct FeedView: View {
         }
         .task(id: hintToken) {
             guard showHints else { return }
-            // Lange genug zum Lesen; Wischen oder Antippen blendet sie früher aus.
-            try? await Task.sleep(for: .seconds(GestureHintOverlay.duration))
+            // Lange genug zum Lesen; ein echter Wisch oder Antippen blendet sie früher aus. Wird die Aufgabe
+            // abgebrochen (neu eingeblendet, Ansicht neu aufgebaut), blendet das nie aus – früher verschwand die
+            // Hilfe dadurch sofort.
+            do { try await Task.sleep(for: .seconds(GestureHintOverlay.duration)) } catch { return }
             withAnimation(.easeOut(duration: 0.6)) { showHints = false }
         }
         .onChange(of: reduceMotion) { _, v in model.reduceMotion = v }
@@ -346,7 +349,8 @@ struct FeedView: View {
         DragGesture(minimumDistance: 6, coordinateSpace: .local)
             .updating($dragging) { _, state, _ in state = true }
             .onChanged { v in
-                hideHints()
+                // Erst ein echter Wisch blendet die Gestenhilfe aus, kein leichtes Aufsetzen oder Zittern.
+                if hypot(v.translation.width, v.translation.height) > GestureHintOverlay.dismissDistance { hideHints() }
                 if zoomed {
                     pan = CGSize(width: panBase.width + v.translation.width, height: panBase.height + v.translation.height)
                 } else if !voiceOver {
@@ -392,12 +396,16 @@ struct FeedView: View {
     }
 
     private func flashHints() {
+        hintShownAt = ProcessInfo.processInfo.systemUptime
         withAnimation(.easeOut(duration: 0.2)) { showHints = true }
         hintToken += 1
     }
 
+    /// Ausblenden durch Tippen/Wischen – nicht in der ersten Sekunde (ein noch laufender Tipp vom Öffnen o. Ä.
+    /// soll die Hilfe nicht gleich wieder wegnehmen).
     private func hideHints() {
-        if showHints { withAnimation(.easeOut(duration: 0.2)) { showHints = false } }
+        guard showHints, ProcessInfo.processInfo.systemUptime - hintShownAt >= GestureHintOverlay.minimumVisible else { return }
+        withAnimation(.easeOut(duration: 0.2)) { showHints = false }
     }
 
     // MARK: Aktionsleiste (nie eine Entscheidung)

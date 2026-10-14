@@ -126,7 +126,7 @@ private final class Probe: @unchecked Sendable {
     @Test func resolutionDependsOnlyOnSelectedTask() {
         #expect(AnalysisKind.blurry.pixelLimit == 512)
         #expect(AnalysisKind.documents.pixelLimit == 1600)
-        #expect(AnalysisKind.similar.pixelLimit == 1024)
-        #expect(AnalysisKind.categories.pixelLimit == 1024)
+        #expect(AnalysisKind.similar.pixelLimit == 512)
+        #expect(AnalysisKind.categories.pixelLimit == 512)
     }
 }

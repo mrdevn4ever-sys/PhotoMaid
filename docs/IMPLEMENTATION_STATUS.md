@@ -2,6 +2,42 @@
 
 Stand: 14.10.2026 · Branch `claude/fixes-analysis-library-vault-20261014` (auf Build 5) · kein PR, kein GitHub-Actions-Lauf.
 
+## Fixes nach Build 6 (14.10.2026, gleicher Branch)
+
+Auf Nutzermeldung (Bildschirmaufnahmen Build 6: „Analyse blockt weiterhin“, „Gestenhilfe verschwindet sofort“):
+
+- **Ursache Analyse:** Jede Meldung von Fotos (bei 30k Medien laufend: iCloud-Abgleich, eigene Analyse von Fotos,
+  geladene Vorschauen) erhöhte `changeToken` → die App las alle Medien neu → `AnalysisController` setzte die Analyse
+  zurück (anhalten, Ergebnisse leeren, alle Arten neu abgleichen, neu vorbereiten). Ergebnis in der Aufnahme: ~1 Foto je
+  Zyklus („10'570 → 10'571 → 10'572“), „Fotos und Videos werden geladen …“, leere Trefferliste, grauer Start-Knopf.
+- **Mediathek-Änderungen:** `LibraryChangeTracker` wertet `PHChange.changeDetails` gegen die Abfrage aller Medien aus
+  (`LibraryChangeSummary`, Kern): nur bei neuen/entfernten Medien (oder ohne Einzelheiten, oder Album-Änderung bei
+  ausgeblendeten/ausgenommenen Alben) wird neu gelesen – im Hintergrund, ohne laufendes Neuladen abzubrechen; sonst
+  werden nur die geänderten Medien neu beschrieben (`patchAssets`). Meldungen werden zusammengefasst (`ChangeCoalescer`:
+  0,8 s Ruhe, spätestens 3 s). Neues `AppModel.mediaRevision` nur bei Bestandsänderungen.
+- **Analyse:** reagiert nur noch auf `mediaRevision`, Zugriff und „Analyse an/aus“ – Umfang wird angepasst, der Lauf
+  läuft weiter. Ein gelöschtes/geändertes Foto hält den Lauf nicht mehr an (übersprungen, nächstes Mal neu).
+  Öffnen einer anderen Analyse hält die laufende nicht mehr an: Warteschlange (`AnalysisPlan`, Kern) mit „Danach
+  analysieren“, „Jetzt zuerst“ (die bisherige wartet danach vorne weiter) und „Nicht mehr warten“; fertig → nächste.
+  Vorbereiten liest nur noch die eigene Analyse einmal (statt 6× alle), Anzeige über `states()` ohne JSON.
+  „Nur in iCloud“ wird zwischen Analysen geteilt (`AnalysisAvailability`): Ähnliche/Motive nutzen jetzt 512 px wie
+  „Unscharf“ (Vision rechnet intern kleiner; liegt bei „Speicher optimieren“ öfter lokal) und überspringen bekannte
+  iCloud-Fotos sofort; bisherige Ergebnisse dieser zwei Analysen werden einmal neu berechnet (neues Verfahren).
+  iCloud-Schalter auch während des Laufs. Zähler-Meldungen höchstens alle 0,25 s. Gruppen ähnlicher Aufnahmen werden
+  nur noch zurückgesetzt, wenn ein entferntes Foto zu einer Gruppe gehörte. Unterbrochene Analyse läuft nach dem
+  App-Start weiter, ohne die Ansicht zu öffnen; nach Speicherwarnung nach 15 s. 6 Texte, 16 Sprachen.
+- **Gestenhilfe:** Der Zeitgeber nutzte `try? await Task.sleep` – jeder Abbruch der Aufgabe blendete sofort aus. Jetzt
+  blendet nur die abgelaufene Zeit (6 s), Antippen oder ein echter Wisch (> 24 pt) aus, beides frühestens nach 1 s.
+
+| Prüfung | Ergebnis |
+|---|---|
+| `swift build` / `swift test` (Linux, Swift 6.4) | PASS: 378 Tests (10 neu: Warteschlange, iCloud-Wissen, Änderungsauswertung, Zusammenfassen) |
+| Typprüfung gegen Platzhalter (Swift 6 strikt): `AnalysisController`, `AnalysisRunner`, `AnalysisDatabase`, `LibraryChangeTracker` + Änderungsweg `PhotoLibraryService`/`AppModel` (Auszug) | PASS (nur Linux-Platzhalter, kein Apple-SDK) |
+| `swiftc -parse` geänderter App-Dateien | PASS |
+| `android_strings_to_xcstrings.py --check` | PASS: 1549 benutzte Kennungen, 2536 Einträge, 16 Sprachen |
+| App-Target bauen (`xcodebuild`), SwiftUI-Dateien typgeprüft | NOT RUN: kein macOS/Xcode (nur über GitHub Actions auf Anweisung) |
+| Gerät: Analyse-Tempo bei 30k Medien/iCloud, Häufigkeit der Fotos-Meldungen, Gestenhilfe 6 s | NOT RUN |
+
 ## Fixes nach Build 5 (14.10.2026, Branch `claude/fixes-analysis-library-vault-20261014`)
 
 Auf Nutzermeldung (Screenshots Build 5) – alles ohne neue Netzwerk-, Konto- oder Löschwege:

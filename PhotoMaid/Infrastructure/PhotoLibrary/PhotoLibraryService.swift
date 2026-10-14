@@ -83,14 +83,54 @@ enum MediaWriteResult: Equatable, Sendable {
     case failed
 }
 
+/// Merkt sich die Abfrage aller Medien (aus `loadAll`) und fasst die Meldungen von Fotos zusammen: Was kam dazu, was
+/// fiel weg, welche Medien wurden nur geändert (`LibraryChangeSummary`). Meldungen kommen auf einer Hintergrund-Queue.
+final class LibraryChangeTracker: @unchecked Sendable {
+    static let shared = LibraryChangeTracker()
+    private let lock = NSLock()
+    private var fetch: PHFetchResult<PHAsset>?
+    private var summary = LibraryChangeSummary()
+
+    func track(_ result: PHFetchResult<PHAsset>) { lock.withLock { fetch = result } }
+
+    func absorb(_ change: PHChange) {
+        lock.withLock {
+            guard let current = fetch else { summary.membership = true; return }
+            guard let details = change.changeDetails(for: current) else {
+                summary.add(incremental: nil, inserted: 0, removed: 0, changed: [])
+                return
+            }
+            fetch = details.fetchResultAfterChanges
+            summary.add(incremental: details.hasIncrementalChanges, inserted: details.insertedObjects.count,
+                        removed: details.removedObjects.count, changed: details.changedObjects.map(\.localIdentifier))
+        }
+    }
+
+    /// Eigene Änderung oder Berechtigung geändert: beim nächsten Mal alles neu lesen.
+    func markAll() { lock.withLock { summary.membership = true } }
+
+    /// Bisher Gesammeltes abholen (danach beginnt eine neue Sammlung).
+    func take() -> LibraryChangeSummary {
+        lock.withLock {
+            let value = summary
+            summary = LibraryChangeSummary()
+            return value
+        }
+    }
+}
+
 /// Einziger Zugang zu PhotoKit. Alle Requests ohne automatische Netzwerkfreigabe (iCloud nur auf Tipp).
 @MainActor
 @Observable
 final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
     private(set) var access: PhotoAccess = .init(PHPhotoLibrary.authorizationStatus(for: .readWrite))
-    /// Erhöht sich bei jeder Mediatheksänderung (Seiten laden daraufhin neu).
+    /// Erhöht sich nach Mediatheksänderungen – zusammengefasst (`ChangeCoalescer`): Fotos meldet bei großen
+    /// Mediatheken laufend Änderungen (iCloud-Abgleich, eigene Analyse, geladene Vorschauen). Was sich genau geändert
+    /// hat, sammelt `LibraryChangeTracker`; die App liest nur bei neuen/entfernten Medien alles neu.
     private(set) var changeToken = 0
     @ObservationIgnored private var observing = false
+    @ObservationIgnored private var coalescer = ChangeCoalescer()
+    @ObservationIgnored private var changeFlush: Task<Void, Never>?
 
     override init() {
         super.init()
@@ -100,17 +140,21 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
     /// Bei Resume erneut prüfen (Berechtigung kann in den Einstellungen geändert worden sein).
     func refreshAccess() {
         let new = PhotoAccess(PHPhotoLibrary.authorizationStatus(for: .readWrite))
-        if new != access { access = new; changeToken += 1 }
+        if new != access { access = new; bumpChangeToken() }
         startObservingIfAllowed()
     }
 
-    func bumpChangeToken() { changeToken += 1 }
+    /// Sofort melden, dass alles neu gelesen werden soll (eigene Änderung, Berechtigung).
+    func bumpChangeToken() {
+        LibraryChangeTracker.shared.markAll()
+        changeToken += 1
+    }
 
     /// Kontextuelle Anfrage – nur nach einer Nutzeraktion aufrufen.
     func requestAccess() async {
         let status = await PHPhotoLibrary.requestAuthorization(for: .readWrite)
         access = PhotoAccess(status)
-        changeToken += 1
+        bumpChangeToken()
         startObservingIfAllowed()
     }
 
@@ -118,12 +162,27 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
     func presentLimitedLibraryPicker() {
         guard access == .limited, let root = UIApplication.shared.topViewController else { return }
         PHPhotoLibrary.shared().presentLimitedLibraryPicker(from: root) { [weak self] (_: [String]) in
-            Task { @MainActor in self?.changeToken += 1 }
+            Task { @MainActor in self?.bumpChangeToken() }
         }
     }
 
     nonisolated func photoLibraryDidChange(_ changeInstance: PHChange) {
-        Task { @MainActor in self.changeToken += 1 }
+        LibraryChangeTracker.shared.absorb(changeInstance)
+        Task { @MainActor in self.scheduleChange() }
+    }
+
+    /// Nach kurzer Ruhe (spätestens nach 3 s) einmal melden statt bei jeder einzelnen Änderung.
+    private func scheduleChange() {
+        let wait = coalescer.register(now: ProcessInfo.processInfo.systemUptime)
+        changeFlush?.cancel()
+        changeFlush = Task { [weak self] in
+            if wait > 0 {
+                do { try await Task.sleep(for: .seconds(wait)) } catch { return }
+            }
+            guard let self, !Task.isCancelled else { return }
+            self.coalescer.flushed()
+            self.changeToken += 1
+        }
     }
 
     private func startObservingIfAllowed() {
@@ -159,6 +218,8 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
         await Task.detached(priority: .userInitiated) {
             guard PhotoAccess(PHPhotoLibrary.authorizationStatus(for: .readWrite)).canRead else { return [] }
             let result = PHAsset.fetchAssets(with: PhotoLibraryService.fetchOptions(nil))
+            // Grundlage für die Änderungsdetails späterer Meldungen (neu/entfernt/nur geändert).
+            LibraryChangeTracker.shared.track(result)
             var out: [MediaAsset] = []
             out.reserveCapacity(result.count)
             result.enumerateObjects { a, _, _ in out.append(PhotoLibraryService.describe(a)) }
@@ -180,6 +241,17 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
         var n = 0
         result.enumerateObjects { a, _, _ in if !concealment.isConcealed(a.localIdentifier) { n += 1 } }
         return n
+    }
+
+    /// Aktuelle Beschreibung geänderter Medien (abseits des Main-Threads; Medien im Tresor nie).
+    nonisolated static func describeAssets(_ ids: [String]) -> [MediaAsset] {
+        let visible = VaultConcealment.shared.visible(ids) { $0 }
+        guard !visible.isEmpty else { return [] }
+        let result = PHAsset.fetchAssets(withLocalIdentifiers: visible, options: nil)
+        var out: [MediaAsset] = []
+        out.reserveCapacity(result.count)
+        result.enumerateObjects { a, _, _ in out.append(Self.describe(a)) }
+        return out
     }
 
     func assets(ids: [String]) -> [MediaAsset] {
@@ -537,7 +609,7 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
         // Retry visibility for a bounded period rather than reporting a false save failure.
         for attempt in 0..<12 {
             if Self.phAsset(id) != nil {
-                changeToken += 1
+                bumpChangeToken()
                 return .saved(id: id)
             }
             if attempt < 11 { try? await Task.sleep(for: .milliseconds(150)) }

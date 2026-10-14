@@ -96,7 +96,12 @@ struct DirectionPill: View {
 /// Gestenhilfe beim Öffnen – zeigt die eigene Belegung. Jede Richtung steht an ihrem Rand des Fotos (oben, unten,
 /// links, rechts), damit sie klar auseinanderliegen; bleibt `duration` Sekunden, Antippen oder Wischen blendet sie aus.
 struct GestureHintOverlay: View {
-    static let duration: Double = 5
+    /// So lange bleibt die Hilfe stehen (Sekunden), wenn nichts passiert.
+    static let duration: Double = 6
+    /// Frühestens nach dieser Zeit blendet Tippen/Wischen sie aus.
+    static let minimumVisible: TimeInterval = 1
+    /// Ab dieser Fingerstrecke (pt) gilt eine Bewegung als Wisch.
+    static let dismissDistance: CGFloat = 24
     let controls: FeedControls
 
     var body: some View {

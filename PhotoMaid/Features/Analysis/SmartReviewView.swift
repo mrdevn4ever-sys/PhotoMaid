@@ -46,7 +46,7 @@ struct SmartReviewView: View {
         .appPage()
         .navigationTitle(title)
         .task(id: kind) { await analysis.select(analysisKind, app: app) }
-        // Mediathek oder Verbergen-Liste geändert: Umfang neu bestimmen (bisherige Ergebnisse bleiben gespeichert).
+        // Tresor geändert oder Mediathek beim Öffnen noch nicht geladen: Umfang neu bestimmen (Ergebnisse bleiben).
         .onChange(of: analysis.scopeRevision) { _, _ in
             Task { await analysis.select(analysisKind, app: app) }
         }
@@ -73,6 +73,7 @@ struct SmartReviewView: View {
                 if let stage = stageText {
                     Text(verbatim: stage).font(AppTypography.subheadline.weight(.semibold))
                         .foregroundStyle(AppColors.textPrimary)
+                        .fixedSize(horizontal: false, vertical: true)
                 }
                 if counts.total > 0 {
                     ProgressView(value: counts.fraction)
@@ -82,11 +83,11 @@ struct SmartReviewView: View {
                     if counts.quality > 0 { detail(L("ana2_quality", counts.quality)) }
                     if counts.failed > 0 { detail(L("ana2_failed", counts.failed)) }
                 }
-                if analysis.running, analysis.stage == .cloud, let fraction = analysis.downloadFraction {
+                if analysis.isRunningShown, analysis.stage == .cloud, let fraction = analysis.downloadFraction {
                     ProgressView(value: fraction).tint(AppColors.accent)
                 }
+                // Gilt auch für einen laufenden Lauf (der iCloud-Teil kommt nach den Fotos auf dem iPhone).
                 Toggle(L("ana2_include_cloud"), isOn: $analysis.includeCloud)
-                    .disabled(analysis.running)
                     .font(AppTypography.subheadline)
                     .onChange(of: analysis.includeCloud) { _, _ in analysis.optionsChanged() }
                 if analysis.includeCloud { detail(L("ana2_cloud_note")) }
@@ -94,24 +95,49 @@ struct SmartReviewView: View {
                     .font(AppTypography.subheadline)
                     .onChange(of: analysis.continueInBackground) { _, _ in analysis.optionsChanged() }
                 if analysis.continueInBackground { detail(L("ana2_background_note")) }
+                controls(counts)
+                    .frame(minHeight: AppSpacing.minTouch)
+            }
+        }
+    }
+
+    /// Läuft diese Analyse: Anhalten. Läuft eine andere: einreihen oder vorziehen (die andere läuft weiter bzw.
+    /// danach weiter). Sonst: starten/fortsetzen.
+    @ViewBuilder
+    private func controls(_ counts: AnalysisCounts) -> some View {
+        let disabled = !isCurrent || analysis.reading
+        if analysis.isRunningShown {
+            Button { analysis.pause() } label: { Label(L("ana2_pause"), systemImage: "pause.fill") }
+                .buttonStyle(.glass)
+        } else if analysis.running {
+            VStack(alignment: .leading, spacing: AppSpacing.xs) {
                 HStack(spacing: AppSpacing.s) {
-                    if analysis.running {
-                        Button { analysis.pause() } label: { Label(L("ana2_pause"), systemImage: "pause.fill") }
-                            .buttonStyle(.glass)
+                    if analysis.queuePosition == nil {
+                        Button { start(retry: false) } label: { Label(L("ana2_queue"), systemImage: "text.badge.plus") }
+                            .buttonStyle(.glassProminent)
+                            .disabled(disabled)
                     } else {
-                        Button { start(retry: false) } label: {
-                            Label(L(counts.complete > 0 ? "ana2_resume" : "ana2_start"), systemImage: "viewfinder")
-                        }
-                        .buttonStyle(.glassProminent)
-                        .disabled(!isCurrent || analysis.reading)
-                        if counts.failed > 0 {
-                            Button { start(retry: true) } label: { Text(verbatim: L("ana2_retry_failed", counts.failed)) }
-                                .buttonStyle(.glass)
-                                .disabled(!isCurrent || analysis.reading)
-                        }
+                        Button { analysis.unqueue() } label: { Label(L("ana2_unqueue"), systemImage: "xmark") }
+                            .buttonStyle(.glass)
                     }
+                    Button { prioritize() } label: { Label(L("ana2_first"), systemImage: "arrow.up.to.line") }
+                        .buttonStyle(.glass)
+                        .disabled(disabled)
                 }
-                .frame(minHeight: AppSpacing.minTouch)
+                detail(L("ana2_queue_note"))
+            }
+        } else {
+            HStack(spacing: AppSpacing.s) {
+                Button { start(retry: false) } label: {
+                    Label(L(counts.complete > 0 ? "ana2_resume" : "ana2_start"), systemImage: "viewfinder")
+                }
+                .buttonStyle(.glassProminent)
+                .disabled(disabled)
+                if counts.failed > 0 {
+                    Button { start(retry: true) } label: { Text(verbatim: L("ana2_retry_failed", counts.failed)) }
+                        .buttonStyle(.glass)
+                        .disabled(disabled)
+                }
             }
         }
     }
@@ -126,8 +152,27 @@ struct SmartReviewView: View {
         analysis.start(app: app, retryFailures: retry)
     }
 
+    private func prioritize() {
+        guard app.capabilities.smartReview else { app.navigate(.pro); return }
+        analysis.prioritize(app: app)
+    }
+
+    private static func title(_ kind: AnalysisKind) -> String {
+        switch kind {
+        case .blurry: L("ana_blurry")
+        case .similar: L("ana_similar")
+        case .documents: L("ana_documents")
+        case .categories: L("ana_categories")
+        }
+    }
+
     private var stageText: String? {
         guard isCurrent || analysis.stage == .privacy else { return nil }
+        // Eine andere Analyse läuft: sagen, welche – diese wartet oder kann danach/zuerst starten.
+        if !analysis.isRunningShown, let other = analysis.runKind {
+            if analysis.queuePosition != nil { return L("ana2_waiting_after", Self.title(other)) }
+            return L("ana2_running_other", Self.title(other))
+        }
         switch analysis.stage {
         case .idle: return nil
         case .preparing: return L("ana2_stage_preparing")

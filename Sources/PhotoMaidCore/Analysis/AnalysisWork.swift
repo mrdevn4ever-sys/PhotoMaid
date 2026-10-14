@@ -2,7 +2,10 @@ import Foundation
 
 public enum AnalysisKind: String, Codable, Sendable, CaseIterable {
     case blurry, similar, documents, categories
-    public var pixelLimit: Int { self == .documents ? 1600 : (self == .blurry ? 512 : 1024) }
+    /// Vorschaugröße je Analyse. Merkmale und Motive rechnet Vision intern ohnehin klein (unter 512 px) – 512 reicht,
+    /// liegt bei „iPhone-Speicher optimieren“ viel öfter schon auf dem Gerät und ist dieselbe Anfrage wie bei
+    /// „Unscharf“ (so gilt „nur in iCloud“ gleich für alle drei). Nur die Texterkennung braucht mehr.
+    public var pixelLimit: Int { self == .documents ? 1600 : 512 }
 }
 
 public enum AnalysisItemState: String, Codable, Sendable {

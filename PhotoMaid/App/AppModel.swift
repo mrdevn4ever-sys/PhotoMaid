@@ -70,6 +70,9 @@ final class AppModel {
     private(set) var pending: [ItemReference] = []
     private(set) var now = Date()
     private(set) var isLoadingLibrary = false
+    /// Erhöht sich, wenn sich der Bestand der Medien ändert (neu/entfernt/ausgeblendet/ausgenommen) – nicht bei bloßen
+    /// Inhaltsänderungen einzelner Medien. Langlaufende Arbeit (Analyse) passt nur ihren Umfang an und läuft weiter.
+    private(set) var mediaRevision = 0
     /// Last non-sensitive file-provider failure code, reset before each cleanup request.
     /// Exposed only to explain failures; never contains file names or paths.
     private(set) var lastFileCleanupFailureCode: String?
@@ -88,6 +91,8 @@ final class AppModel {
     @ObservationIgnored private var recoveredThisProcess = false
     @ObservationIgnored private var cleanupInFlight = false
     @ObservationIgnored private var loadTask: Task<Void, Never>?
+    @ObservationIgnored private var patchTask: Task<Void, Never>?
+    @ObservationIgnored private var reloadAfterLoad = false
     @ObservationIgnored private var loadedToken = -1
     /// Gestartete Mediathek-Abfragen (fortlaufend).
     @ObservationIgnored private var loadGeneration = 0
@@ -205,7 +210,24 @@ final class AppModel {
         let token = library.changeToken
         guard force || token != loadedToken || !snapshot.loaded else { return }
         loadedToken = token
+        let changes = LibraryChangeTracker.shared.take()
+        if !force, snapshot.loaded {
+            // Läuft schon ein Neuladen: nicht abbrechen (bei Dauermeldungen würde es nie fertig), danach noch einmal.
+            if isLoadingLibrary {
+                if !changes.isEmpty { reloadAfterLoad = true }
+                return
+            }
+            // Nur geänderte Medien (Favorit, bearbeitet, iCloud-Abgleich …): diese aktualisieren, nichts neu laden.
+            let albumsMatter = !settings.hiddenAlbums.isEmpty || !settings.excludedAlbums.isEmpty
+            switch changes.reaction(albumsMatter: albumsMatter) {
+            case .none: return
+            case .patch(let ids): patchAssets(ids); return
+            case .reload: break
+            }
+        }
+        reloadAfterLoad = false
         loadTask?.cancel()
+        patchTask?.cancel()
         isLoadingLibrary = true
         loadGeneration += 1
         let generation = loadGeneration
@@ -226,11 +248,33 @@ final class AppModel {
             self.isLoadingLibrary = false
             if generation > self.removedHeldAtGeneration { self.removedAwaitingReload = [] }
             self.rebuildFiltered()
+            if self.reloadAfterLoad { self.reloadLibraryIfNeeded(force: true) }
+        }
+    }
+
+    /// Geänderte Medien neu beschreiben, ohne die Mediathek neu zu laden (Bestand und Warteschlange bleiben gleich).
+    private func patchAssets(_ ids: Set<String>) {
+        let generation = loadGeneration
+        let previous = patchTask
+        patchTask = Task { [weak self] in
+            await previous?.value // der Reihe nach: ein älterer Stand überschreibt nie einen neueren
+            let fresh = await Task.detached(priority: .utility) { PhotoLibraryService.describeAssets(Array(ids)) }.value
+            guard let self, !Task.isCancelled, generation == self.loadGeneration, !fresh.isEmpty else { return }
+            var updates: [String: MediaAsset] = [:]
+            for a in fresh where self.snapshot.byID[a.id] != nil && self.snapshot.byID[a.id] != a { updates[a.id] = a }
+            guard !updates.isEmpty else { return }
+            var s = self.snapshot
+            for i in s.all.indices { if let a = updates[s.all[i].id] { s.all[i] = a } }
+            for (id, a) in updates { s.byID[id] = a }
+            self.snapshot = s
+            self.visibleMedia = self.visibleMedia.map { updates[$0.id] ?? $0 }
+            self.cleanupMedia = self.cleanupMedia.map { updates[$0.id] ?? $0 }
         }
     }
 
     private func rebuildFiltered() {
         queueInputsRevision += 1
+        mediaRevision += 1
         let hiddenIDs = Set(settings.hiddenMedia)
         let hiddenAlbum = snapshot.hiddenAlbumMembers
         let excluded = snapshot.excludedAlbumMembers
