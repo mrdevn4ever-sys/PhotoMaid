@@ -142,18 +142,20 @@ final class ScreenshotTests: XCTestCase {
         // 05 Video-Feed
         if tap("hub.videos", "Videos im Aufräumen-Hub") {
             if waitFor(element("feed.stage"), 10, "Video-Feed") {
+                let skip = app.buttons["Tutorial überspringen"].firstMatch
+                if skip.waitForExistence(timeout: 2) { skip.tap() }
                 settle(3.5)
                 snap("05_review_video")
             }
             closeFeed()
         }
 
-        // 09 Duplikate (Pro-Werkzeug; QA-Modus mit -qa-pro)
+        // 09 Duplikate (wie alle Werkzeuge kostenlos)
         if tap("hub.duplicates", "Duplikate") {
-            let start = app.buttons["Prüfung starten"]
-            if waitFor(start, 8, "Prüfung starten") {
+            let start = app.buttons["Kopien suchen"]
+            if waitFor(start, 8, "Kopien suchen") {
                 start.tap()
-                _ = app.buttons["Erneut prüfen"].waitForExistence(timeout: 90)
+                _ = app.buttons["Erneut suchen"].waitForExistence(timeout: 90)
             }
             settle(1.5)
             snap("09_duplicates")

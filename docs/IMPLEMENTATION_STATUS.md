@@ -44,6 +44,15 @@ Freigabe des Inhabers: nur `ci.yml` und Simulator-Prüfungen auf
   App-eigene Entfernungsbestätigung wird im QA-Fotolauf durch Beenden/Neustart sicher verworfen;
   niemals die echte Löschung ausgelöst. Ergebnis der nächsten Wiederholung steht noch aus.
 
+- QA-Wiederholung [38646080655](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38646080655),
+  Commit `07ead15`: **6 PASS, 1 FAIL, 1 übersprungen**. Build/iOS-Unit-Tests und Linux-Kern grün.
+  Alle **33 unterschiedlichen PNGs** angesehen; `15_pro` zusätzlich in voller Auflösung: „ohne das Tageslimit
+  von 100“, alle drei E19-Vorteile und Kostenlos-Hinweis korrekt, kein Platzhalter. Einstellungen/Studio/Pro
+  und Dunkelmodus bestehen. Restliche QA-Ursachen: Fotos-Selektor traf den Tab statt `hub.photos` (übersprungen),
+  Duplikat-Button heißt „Kopien suchen“/„Erneut suchen“. Selektoren angepasst; fehlende vorbereitete Medien
+  führen jetzt zu FAIL statt zu einem verdeckenden Skip. Video-Tutorial vor der Aufnahme gezielt geschlossen.
+  Noch kein abschließendes PASS für die echte Mediathek; deren Läufe laufen weiter.
+
 ## Neues Pro-Modell E19 + Werbung (14.10.2026, gleicher Branch)
 
 Nutzerentscheidung (14.10.2026; Rückfragen: Tresor nur Ordner, Feed-Werbekarte wie Android, iOS-Tracking-Abfrage ja):

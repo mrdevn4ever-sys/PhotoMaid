@@ -55,13 +55,13 @@ final class PhotoMaidUITests: XCTestCase {
     /// Feed-Flow mit QA-Medien: hoch behalten, links Papierkorb, rechts später, runter zurück.
     func testFeedGesturesWithQAMedia() throws {
         app.tabBars.buttons["Aufräumen"].tap()
-        let photos = app.buttons.containing(NSPredicate(format: "label BEGINSWITH 'Fotos'")).firstMatch
-        guard photos.waitForExistence(timeout: 5), photos.isEnabled else {
-            throw XCTSkip("Keine QA-Medien bzw. kein Fotozugriff im Simulator")
-        }
+        let photos = app.buttons["hub.photos"].firstMatch
+        XCTAssertTrue(photos.waitForExistence(timeout: 10))
+        XCTAssertTrue(photos.isEnabled)
         photos.tap()
-        let stage = app.otherElements["feed.stage"]
-        guard stage.waitForExistence(timeout: 5) else { throw XCTSkip("Keine Medien im Feed") }
+        let stage = app.descendants(matching: .any)["feed.stage"].firstMatch
+        XCTAssertTrue(stage.waitForExistence(timeout: 15), "Seeded QA photos must open the feed")
+        checkpoint("qa_feed_opened", app: app)
         Thread.sleep(forTimeInterval: 1.2)
         stage.tap()
         let skip = app.buttons["Tutorial überspringen"].firstMatch
