@@ -1,0 +1,34 @@
+name: PhotoKit-Fachprüfung mit sofortigen Belegen
+description: Ein UI-Test im bereits eingerichteten Simulator; keine neue Mediathek.
+inputs:
+  udid:
+    description: Simulator-UDID
+    required: true
+  test_case:
+    description: Methode aus RealLibraryTests
+    required: true
+runs:
+  using: composite
+  steps:
+    - id: test
+      shell: bash
+      env:
+        SIMULATOR_UDID: ${{ inputs.udid }}
+        UI_TEST_CASE: ${{ inputs.test_case }}
+      run: |
+        set +e
+        bash scripts/ci/simulator_ui_tests.sh "$SIMULATOR_UDID" "$RUNNER_TEMP/PhotoMaidDerived" "$RUNNER_TEMP/simulator-ui" real-case "$UI_TEST_CASE"
+        status=$?
+        echo "status=$status" >> "$GITHUB_OUTPUT"
+        exit 0
+    - uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: simulator-${{ inputs.test_case }}
+        path: ${{ runner.temp }}/simulator-ui/real-${{ inputs.test_case }}*
+        if-no-files-found: warn
+    - shell: bash
+      if: always()
+      env:
+        TEST_EXIT_STATUS: ${{ steps.test.outputs.status }}
+      run: test "$TEST_EXIT_STATUS" = 0

@@ -6,7 +6,7 @@ udid="$1"
 derived="$2"
 out="$3"
 phase="${4:-all}"
-case "$phase" in all|fixtures|real|real-start|real-rest) ;; *) echo "Unknown UI phase: $phase" >&2; exit 2 ;; esac
+case "$phase" in all|fixtures|real|real-start|real-rest|real-case) ;; *) echo "Unknown UI phase: $phase" >&2; exit 2 ;; esac
 mkdir -p "$out"
 app="$derived/Build/Products/Debug-iphonesimulator/PhotoMaid.app"
 
@@ -73,6 +73,19 @@ if [ "$phase" = real-start ]; then
   run_tests real-start -only-testing:PhotoMaidUITests/RealLibraryTests/test00IntroductionAndFourColdStarts
   pack_result real-start
   [ "$(cat "$out/real-start.exit")" = 0 ]
+  exit
+fi
+
+if [ "$phase" = real-case ]; then
+  test_case="${5:?Missing real-library test method}"
+  [[ "$test_case" =~ ^test[0-9]{2}[A-Za-z0-9]+$ ]]
+  test -f "$out/real-start.exit"
+  mode="real-$test_case"
+  run_tests "$mode" "-only-testing:PhotoMaidUITests/RealLibraryTests/$test_case"
+  xcrun simctl spawn "$udid" log show --last 20m --style compact \
+    --predicate 'process == "PhotoMaid"' > "$out/$mode-app.log" || true
+  pack_result "$mode"
+  [ "$(cat "$out/$mode.exit")" = 0 ]
   exit
 fi
 

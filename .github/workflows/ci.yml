@@ -24,8 +24,7 @@ on:
         default: ""
       collect_artifact:
         description: "Vorhandenes Belegartefakt für collect_run"
-        type: choice
-        options: [simulator-ui-evidence, simulator-fixtures-evidence, simulator-real-start-evidence]
+        type: string
         default: simulator-ui-evidence
 
 concurrency:
@@ -126,10 +125,76 @@ jobs:
           name: simulator-real-start-evidence
           path: ${{ runner.temp }}/simulator-ui/real-start*
           if-no-files-found: warn
-      - name: Übrige PhotoKit-UI-Tests (nur Testanzeigen)
+      - name: Analyse-Warteschlange
         if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success'
         continue-on-error: true
-        run: bash scripts/ci/simulator_ui_tests.sh '${{ steps.sim.outputs.udid }}' "$RUNNER_TEMP/PhotoMaidDerived" "$RUNNER_TEMP/simulator-ui" real-rest
+        uses: ./.github/actions/simulator-case
+        with:
+          udid: ${{ steps.sim.outputs.udid }}
+          test_case: test10AnalysisQueueProgressAndGrid
+      - name: Feed, Werbekarte und Verlauf
+        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success'
+        continue-on-error: true
+        uses: ./.github/actions/simulator-case
+        with:
+          udid: ${{ steps.sim.outputs.udid }}
+          test_case: test20FiftyFastSwipesAdAndDirections
+      - name: Wischhilfe und eigene Tasten
+        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success'
+        continue-on-error: true
+        uses: ./.github/actions/simulator-case
+        with:
+          udid: ${{ steps.sim.outputs.udid }}
+          test_case: test30GestureHelpAndCustomControls
+      - name: Große Dateien, Duplikate, Speicher
+        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success'
+        continue-on-error: true
+        uses: ./.github/actions/simulator-case
+        with:
+          udid: ${{ steps.sim.outputs.udid }}
+          test_case: test50LargeDuplicatesAndStorage
+      - name: "Fotos: Filter und Ansicht"
+        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success'
+        continue-on-error: true
+        uses: ./.github/actions/simulator-case
+        with:
+          udid: ${{ steps.sim.outputs.udid }}
+          test_case: test60LibraryFiltersSortAndAspect
+      - name: Studio ohne Pro
+        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success'
+        continue-on-error: true
+        uses: ./.github/actions/simulator-case
+        with:
+          udid: ${{ steps.sim.outputs.udid }}
+          test_case: test70StudioFreeTools
+      - name: Tresor mit PIN und Gratis-Ordner
+        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success'
+        continue-on-error: true
+        uses: ./.github/actions/simulator-case
+        with:
+          udid: ${{ steps.sim.outputs.udid }}
+          test_case: test80VaultPINCloseAllTabsAndFreeFolder
+      - name: StoreKit-Kauf und Pro ohne Werbung
+        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success'
+        continue-on-error: true
+        uses: ./.github/actions/simulator-case
+        with:
+          udid: ${{ steps.sim.outputs.udid }}
+          test_case: test90ProStoreKitPurchaseNoAdsAndFolder
+      - name: Englisch und Arabisch
+        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success'
+        continue-on-error: true
+        uses: ./.github/actions/simulator-case
+        with:
+          udid: ${{ steps.sim.outputs.udid }}
+          test_case: test95EnglishAndArabicPlaceholdersAndArrows
+      - name: Papierkorb und Tagesbonus ohne Löschung
+        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success'
+        continue-on-error: true
+        uses: ./.github/actions/simulator-case
+        with:
+          udid: ${{ steps.sim.outputs.udid }}
+          test_case: test98TrashLimitRewardAndSizes
       - name: UI-Ergebnisse prüfen
         if: always() && inputs.ui_tests && steps.build.outcome == 'success'
         run: |
@@ -139,7 +204,9 @@ jobs:
           if [ '${{ inputs.ui_phase }}' != fixtures ]; then
             test "$(cat "$RUNNER_TEMP/simulator-ui/real-start.exit")" = 0
             if [ '${{ inputs.ui_phase }}' != start ]; then
-              test "$(cat "$RUNNER_TEMP/simulator-ui/real.exit")" = 0
+              for method in test10AnalysisQueueProgressAndGrid test20FiftyFastSwipesAdAndDirections test30GestureHelpAndCustomControls test50LargeDuplicatesAndStorage test60LibraryFiltersSortAndAspect test70StudioFreeTools test80VaultPINCloseAllTabsAndFreeFolder test90ProStoreKitPurchaseNoAdsAndFolder test95EnglishAndArabicPlaceholdersAndArrows test98TrashLimitRewardAndSizes; do
+                test "$(cat "$RUNNER_TEMP/simulator-ui/real-$method.exit")" = 0
+              done
             fi
           fi
       - name: Ältere Simulator-Belege exportieren

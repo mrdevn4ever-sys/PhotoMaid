@@ -32,7 +32,8 @@ Das Artefakt `simulator-ui-evidence` enthält PNGs, Accessibility-Bäume, `.xcre
 Testübersichten und das Medienmanifest (Herkunft/SHA-256). Die QA-Belege erscheinen bereits vor dem zweiten
 Durchlauf zusätzlich als `simulator-fixtures-evidence`; ein fehlgeschlagener QA-Lauf verhindert den echten
 Durchlauf nicht. Der PhotoKit-Starttest wird separat ausgeführt und früh als `simulator-real-start-evidence`
-hochgeladen; die übrigen Tests behalten dieselbe Mediathek und dieselben App-Daten. Die abschließende
+hochgeladen; die übrigen Tests laufen einzeln, behalten dieselbe Mediathek und dieselben App-Daten und
+veröffentlichen nach jedem Fall ein Artefakt `simulator-test…`. Ein Fehler hält die nächsten Fälle nicht auf. Die abschließende
 Prüfung verlangt für QA, PhotoKit-Starttest und übrige PhotoKit-Tests jeweils Exitcode 0. Mit `ui_phase=fixtures` oder `ui_phase=real`
 lässt sich nach der ersten Gesamtprüfung gezielt ein Durchlauf wiederholen; dann wird dessen Exitcode geprüft.
 `ui_phase=start` führt ausschließlich die Startprüfung mit echter Mediathek aus. Standard bleibt `all`. Build, Unit-Tests und Linux-Kernprüfung laufen weiterhin. Der Linux-Job verwendet Swift 6.4.
