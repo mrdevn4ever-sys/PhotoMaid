@@ -1,6 +1,49 @@
 # Implementierungsstatus
 
-Stand: 09.10.2026 · Branch `claude/ios-native-liquid-glass` · A1–A9 gepusht, kein PR, kein GitHub-Actions-Lauf.
+Stand: 14.10.2026 · Branch `claude/fixes-analysis-library-vault-20261014` (auf Build 5) · kein PR, kein GitHub-Actions-Lauf.
+
+## Fixes nach Build 5 (14.10.2026, Branch `claude/fixes-analysis-library-vault-20261014`)
+
+Auf Nutzermeldung (Screenshots Build 5) – alles ohne neue Netzwerk-, Konto- oder Löschwege:
+
+- **Tresor:** Schließen löste Face ID aus. Ursache: `lock()` setzte erst „gesperrt“, die Vollbild-Ebene zeigte während
+  des Ausblendens kurz den Sperrbildschirm, dessen `.task` Face ID startete (Bestätigen entsperrte unsichtbar). Jetzt:
+  beim Schließen nur Abdeckung, Face ID startet nur bei sichtbarem Tresor und aktiver App, Entsperren bei geschlossenem
+  Tresor wird abgelehnt. Regel „sperrt sofort beim Verlassen“ unverändert.
+- **Analyse-Ergebnisse:** Raster war unsichtbar nach Monaten gruppiert (Reihen mit 1/2/3 Bildern) → ein durchgehendes
+  Raster (`AnalysisResultPage`), Reihenfolge der Analyse. Nur noch offene Fotos (Schalter „Auch entschiedene zeigen“).
+  „Durchwischen (n)“ öffnet alle Treffer im normalen Feed (Gesten, Ledger); Tipp auf ein Foto startet dort.
+  Ähnliche Aufnahmen als Gruppen mit „Vergleichen“ (`SeriesCompareView`, nie „bestes Foto“). Gilt für alle vier Analysen.
+- **Analyse-Ablauf:** Wärme drosselt statt abzubrechen (`ThrottledWork`/`WorkThrottle`: warm → warten und von selbst
+  weiter, nur kritisch → anhalten); Fortsetzen nach Rückkehr in die App, nach dem Abkühlen und nach App-Neustart, außer
+  der Nutzer hat selbst angehalten (`AnalysisAutoResume`). iCloud bis 3 Fotos gleichzeitig (WLAN). „iCloud einbeziehen“
+  bleibt gespeichert. Neue Option „Weiterlaufen, wenn ich die App verlasse“ (Standard aus, Nutzerwunsch 14.10.2026):
+  `BGContinuedProcessingTask` mit iOS-Fortschritt; endet die Aufgabe, geht es beim nächsten Öffnen weiter. Bildschirm
+  bleibt an, solange die Analyse sichtbar läuft.
+- **Große Dateien:** „Größe unbekannt (31'951)“ zählte noch nicht Gemessenes mit. Jetzt getrennt: gemessen / wird noch
+  gemessen / nur in iCloud / nicht lesbar (`SizeInventory`, `MeasureState`). Größen in SQLite (`SizeIndexDatabase`)
+  statt eines JSON-Blocks, der bei jeder Messung komplett neu geschrieben wurde; „nur in iCloud“ wird gespeichert und
+  erst nach 12 h erneut geprüft. App-weiter Mess-Auftrag (`SizeMeasuring`): Videos zuerst (Dateigröße ohne Lesen),
+  bis 4 parallel, PhotoKit-Abfragen in Paketen, läuft weiter beim Verlassen der Seite. Abschnitt „Videos nur in iCloud –
+  längste zuerst“ (keine Größe, nichts geschätzt). iOS nennt die Größe von iCloud-Originalen ohne Download nicht
+  öffentlich; private API bleibt verboten.
+- **Duplikate:** hing bei „0 / 1“, weil vorher ALLE Größen gemessen wurden (ohne Fortschritt). Jetzt: Vorfilter
+  (gleiche Art + Pixelmaße + Dauer, `DuplicatePrefilter`), nur vergleichbare Assets messen, Fortschritt je Phase,
+  Prüfsummen gespeichert (`DuplicateHashCache`) – zweiter Lauf liest kaum noch; Suchlauf läuft weiter beim Verlassen.
+- **Fotos-Tab:** Filter wie in der Fotos-App (Alle · Favoriten · Bearbeitet · Fotos · Videos · Bildschirmfotos, Medienarten:
+  Selfies, Live Photos, Porträts, Panoramen, Zeitlupe, Zeitraffer, Kinomodus, RAW) und Ansicht quadratisch/Seitenverhältnis
+  (`LibraryFilter`, gespeichert). Aktiver Filter als Chip mit Anzahl und ✕; gilt für Betrachter, Auswahl, Diashow.
+- 33 neue Texte in 16 Sprachen (`ios_strings.json`), `ana2_stage_thermal` angepasst.
+
+| Prüfung | Ergebnis |
+|---|---|
+| `swift build` / `swift test` (Linux, Swift 6.4) | PASS: 352 Tests (19 neu: Ergebnisse/Drosselung, Inventur/Vorfilter/Prüfsummen, Filter) |
+| Typprüfung neuer Infrastruktur gegen Platzhalter (Swift 6 strikt: `MediaSizer`, `SizeMeasuring`, `SizeIndexDatabase`, `DuplicateScanner`, `AnalysisRunner`, `AnalysisController`, `AnalysisDatabase`) | PASS (nur Linux-Platzhalter für Photos/UIKit/BackgroundTasks, kein Apple-SDK) |
+| `SizeIndexDatabase` mit echtem SQLite (Linux) | PASS |
+| `swiftc -parse` aller 123 App-Dateien | PASS |
+| `android_strings_to_xcstrings.py --check` | PASS: 1513 benutzte Kennungen, 2498 Einträge, 16 Sprachen |
+| App-Target bauen (`xcodebuild`), SwiftUI-Dateien typgeprüft | NOT RUN: kein macOS/Xcode; kein GitHub-Actions-Lauf ohne Freigabe |
+| Gerät: Geschwindigkeit bei 30k Medien, Wärme, Face ID beim Schließen, PhotoKit-Fehlercode „nur in iCloud“ | NOT RUN |
 
 ## Build 5 (11.10.2026, Branch `claude/build5-all-20261011`)
 

@@ -78,7 +78,7 @@ final class VaultConcealment: @unchecked Sendable {
             var set = try existing ?? VaultConcealmentSet(salt: Data(VaultCrypto.randomBytes(32)))
             let list = Array(ids)
             // Auch bei erneutem Ablegen: alte Analyse-Ergebnisse (erkannter Text, Merkmale, Gruppen) verwerfen.
-            defer { try? AnalysisDatabase.purgeStored(Set(list)) }
+            defer { try? AnalysisDatabase.purgeStored(Set(list)); SizeIndexDatabase.purge(Set(list)) }
             guard set.insert(list, digest: Self.digest) else { return false }
             try write(set)
             cached = set

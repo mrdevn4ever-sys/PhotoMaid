@@ -20,7 +20,9 @@ enum LocalPhotoAnalyzer {
         case .similar: "feature1024-v2-\(VNGenerateImageFeaturePrintRequest.defaultRevision)"
         }
     }
-    static func analyze(_ source: AnalysisItem, cloud: Bool,
+    /// `background`: läuft als fortgesetzte Aufgabe außerhalb der App. Scheitert Vision dort (z. B. ohne GPU), gilt das
+    /// als Unterbrechung (weiter beim nächsten Öffnen), nicht als Fehler des Fotos.
+    static func analyze(_ source: AnalysisItem, cloud: Bool, background: Bool = false,
                         progress: @escaping @Sendable (Double) -> Void) async -> AnalysisOutput {
         var item = source
         let outcome = await AnalysisImageLoader.load(id: item.id, kind: item.kind, allowCloud: cloud, progress: progress)
@@ -35,7 +37,10 @@ enum LocalPhotoAnalyzer {
                 let (updated, feature) = try autoreleasepool { try evaluate(item, image: image) }
                 return AnalysisOutput(item: updated, feature: feature)
             } catch is CancellationError { return AnalysisOutput(item: item, interrupted: true) }
-            catch { item.fail(now: Date()) }
+            catch {
+                if background && item.kind != .blurry { return AnalysisOutput(item: item, interrupted: true) }
+                item.fail(now: Date())
+            }
         }
         return AnalysisOutput(item: item)
     }

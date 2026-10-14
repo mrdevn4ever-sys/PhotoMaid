@@ -48,6 +48,8 @@ struct MediaAsset: Hashable, Sendable, Identifiable {
     let longitude: Double?
     let subtypes: UInt
     let burstIdentifier: String?
+    /// In der Fotos-App bearbeitet (`hasAdjustments`) – nur für den Filter „Bearbeitet“.
+    var isEdited = false
 
     var reference: ItemReference { .photo(id) }
     var aspectRatio: CGFloat { pixelHeight > 0 && pixelWidth > 0 ? CGFloat(pixelWidth) / CGFloat(pixelHeight) : 1 }
@@ -196,6 +198,27 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
         return PHAsset.fetchAssets(withLocalIdentifiers: [id], options: nil).firstObject
     }
 
+    /// Mitglieder eines Smart-Albums der Fotos-App (z. B. Selfies, RAW) – für den Mediathek-Filter.
+    nonisolated static func smartAlbumIDs(_ subtype: PHAssetCollectionSubtype) -> Set<String> {
+        let albums = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: subtype, options: nil)
+        guard let album = albums.firstObject else { return [] }
+        return assetIDs(inCollection: album.localIdentifier)
+    }
+
+    /// Mehrere Assets mit EINER Abfrage (statt einer je Medium) – für Messungen über die ganze Mediathek.
+    /// Tresor-Medien werden nie geliefert.
+    nonisolated static func phAssetBoxes(_ ids: [String]) -> [String: UncheckedBox<PHAsset>] {
+        let visible = ids.filter { !VaultConcealment.shared.isConcealed($0) }
+        guard !visible.isEmpty else { return [:] }
+        let result = PHAsset.fetchAssets(withLocalIdentifiers: visible, options: nil)
+        var out: [String: UncheckedBox<PHAsset>] = [:]
+        for i in 0..<result.count {
+            let asset = result.object(at: i)
+            out[asset.localIdentifier] = UncheckedBox(asset)
+        }
+        return out
+    }
+
     /// Nur für den Tresor selbst (Ablegen, „Dort löschen“) und Existenzprüfungen: auch verborgene Originale.
     nonisolated static func phAssetIncludingConcealed(_ id: String) -> PHAsset? {
         PHAsset.fetchAssets(withLocalIdentifiers: [id], options: nil).firstObject
@@ -211,7 +234,8 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
                           isLivePhoto: a.mediaSubtypes.contains(.photoLive), isFavorite: a.isFavorite,
                           canDelete: a.canPerform(.delete), canEditProperties: a.canPerform(.properties),
                           latitude: coord?.latitude, longitude: coord?.longitude,
-                          subtypes: a.mediaSubtypes.rawValue, burstIdentifier: a.burstIdentifier)
+                          subtypes: a.mediaSubtypes.rawValue, burstIdentifier: a.burstIdentifier,
+                          isEdited: a.hasAdjustments)
     }
 
     /// Originaler Dateiname (für Suche, Info und den Fingerabdruck bei Schlagwörtern/Sicherung). Nie übertragen.

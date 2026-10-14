@@ -93,6 +93,14 @@ public struct DuplicateScanProgress: Hashable, Sendable {
     }
 }
 
+/// Zwischenspeicher für Prüfsummen (je Medium, nur gültig, solange es unverändert ist). Spart beim nächsten Durchlauf
+/// das erneute Lesen. Bleibt lokal.
+public protocol DuplicateHashCache: Sendable {
+    func partialHash(_ item: ItemReference) -> String?
+    func fullHash(_ item: ItemReference) -> String?
+    func store(_ item: ItemReference, partial: String?, full: String?)
+}
+
 /// Deterministische, unterbrechbare Pipeline ohne KI:
 /// 1. Inventar, 2. bekannte Größen als Filter, 3. Teilhash nur zum Aussortieren,
 /// 4. vollständiges Streaming-SHA-256.
@@ -103,6 +111,7 @@ public struct DuplicateFinder: Sendable {
     public init() {}
 
     public func scan(_ candidates: [DuplicateCandidate], source: any ByteSourceProvider,
+                     cache: (any DuplicateHashCache)? = nil,
                      progress: (@Sendable (DuplicateScanProgress) -> Void)? = nil) throws -> DuplicateScanResult {
         var result = DuplicateScanResult()
         var bySize: [Int64: [DuplicateCandidate]] = [:]
@@ -131,7 +140,10 @@ public struct DuplicateFinder: Sendable {
             var byPartial: [String: [DuplicateCandidate]] = [:]
             for c in bucket {
                 try Task.checkCancellation()
-                if let h = try hash(c.item, source: source, limit: partialHashBytes) {
+                if let cached = cache?.partialHash(c.item) {
+                    byPartial[cached, default: []].append(c)
+                } else if let h = try hash(c.item, source: source, limit: partialHashBytes) {
+                    cache?.store(c.item, partial: h, full: size <= Int64(partialHashBytes) ? h : nil)
                     byPartial[h, default: []].append(c)
                 } else {
                     result.notChecked.append(c.item)
@@ -148,7 +160,11 @@ public struct DuplicateFinder: Sendable {
                 var byFull: [String: [ItemReference]] = [:]
                 for c in sub {
                     try Task.checkCancellation()
-                    if let h = try hash(c.item, source: source, limit: nil) {
+                    if let cached = cache?.fullHash(c.item) {
+                        byFull[cached, default: []].append(c.item)
+                        result.hashedCount += 1
+                    } else if let h = try hash(c.item, source: source, limit: nil) {
+                        cache?.store(c.item, partial: partial, full: h)
                         byFull[h, default: []].append(c.item)
                         result.hashedCount += 1
                     } else {

@@ -69,6 +69,9 @@ struct AppSettingsData: Codable, Equatable, Sendable {
     var basketSort: BasketSort = .added
     /// Bildanalyse-Funktionen anbieten (lokal, Vision). Standard an; jede Analyse startet erst auf Tipp.
     var analysisEnabled = true
+    /// Tab „Fotos“: Filter wie in der Fotos-App (nur Ansicht) und Raster quadratisch oder im Seitenverhältnis.
+    var libraryFilter: LibraryFilter = .all
+    var libraryAspectFit = false
 
     init() {}
 
@@ -113,6 +116,8 @@ struct AppSettingsData: Codable, Equatable, Sendable {
         slideshow = v(.slideshow, d.slideshow)
         basketSort = v(.basketSort, d.basketSort)
         analysisEnabled = v(.analysisEnabled, d.analysisEnabled)
+        libraryFilter = v(.libraryFilter, d.libraryFilter)
+        libraryAspectFit = v(.libraryAspectFit, d.libraryAspectFit)
     }
 
     /// Später-Intervall beim Wisch nach rechts (nur erlaubte Werte).

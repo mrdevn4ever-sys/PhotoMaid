@@ -196,7 +196,7 @@ final class VaultStore {
               let wrapped = try? JSONDecoder().decode(VaultWrappedKey.self, from: data) else { return .unavailable }
         let attempt = lockCount
         let key = await Task.detached(priority: .userInitiated) { try? VaultCrypto.unwrap(wrapped, secret: code) }.value
-        guard attempt == lockCount else { return .cancelled }
+        guard attempt == lockCount, isPresented else { return .cancelled }
         guard let key else {
             s.lockout.registerFailure(nowMs: now)
             store(s)
@@ -209,9 +209,11 @@ final class VaultStore {
     }
 
     func unlockWithBiometrics() async -> Bool {
-        guard settings?.biometrics == true else { return false }
+        // Nur bei sichtbar geöffnetem Tresor: nie im Hintergrund oder während des Schließens entsperren.
+        guard settings?.biometrics == true, isPresented else { return false }
         let attempt = lockCount
-        guard let key = await VaultKeychain.readBiometric(reason: L("vault_biometric_reason")), attempt == lockCount
+        guard let key = await VaultKeychain.readBiometric(reason: L("vault_biometric_reason")), attempt == lockCount,
+              isPresented
         else { return false }
         return open(with: key)
     }
@@ -222,7 +224,7 @@ final class VaultStore {
               let normalized = VaultRecoveryKey.normalize(recoveryKey) else { return .wrong }
         let attempt = lockCount
         let key = await Task.detached(priority: .userInitiated) { try? VaultCrypto.unwrap(wrapped, secret: normalized) }.value
-        guard attempt == lockCount else { return .cancelled }
+        guard attempt == lockCount, isPresented else { return .cancelled }
         guard let key, open(with: key) else { return .wrong }
         s.lockout.registerSuccess()
         store(s)

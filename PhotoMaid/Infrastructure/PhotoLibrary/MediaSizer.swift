@@ -7,22 +7,49 @@ import PhotoMaidCore
 /// - Videos: Datei des lokalen Originals (`requestAVAsset` → `URLResourceValues.fileSize`), plus übrige Ressourcen.
 /// - Fotos: Bytes aller lokalen Ressourcen per `PHAssetResourceManager.requestData` (Original, Bearbeitung, Live-Video,
 ///   RAW) – dasselbe, was „Löschen“ auf diesem Gerät frei machen kann.
-/// Nicht lokal vorhanden (iCloud „Speicher optimieren“) oder Fehler → `.unknown`, nie 0, nie geschätzt.
-/// Ergebnisse werden je Medium + Änderungsdatum zwischengespeichert (`StoreKeys.sizeCache`, nur lokal).
+/// Nie geschätzt, nie 0 für unbekannt. Unterschieden wird aber, WARUM unbekannt: nur in iCloud („iPhone-Speicher
+/// optimieren“ – iOS nennt die Größe ohne Download nicht öffentlich) oder lokal nicht lesbar. Beides wird gespeichert
+/// und erst nach einer Wartezeit erneut geprüft (`SizeInventory`), damit nicht jedes Öffnen tausende Anfragen startet.
+/// Ablage: SQLite (`SizeIndexDatabase`), Einträge einzeln und gebündelt geschrieben – nicht mehr als ein großer Block.
+/// Mehrere Messungen dürfen gleichzeitig laufen (der Actor wartet während PhotoKit liest).
 actor MediaSizer {
-    private var cache: [String: SizeCacheEntry]
-    private var dirty = false
-    private let persist: @Sendable ([String: SizeCacheEntry]) async -> Void
+    private var stored: [String: SizeRecord] = [:]
+    private var loaded = false
+    private var legacy: [String: SizeCacheEntry]
+    private var dirty: [String: SizeRecord] = [:]
+    private let db: SizeIndexDatabase?
 
-    init(initial: [String: SizeCacheEntry], persist: @escaping @Sendable ([String: SizeCacheEntry]) async -> Void) {
-        self.cache = initial
-        self.persist = persist
+    /// `legacy`: Einträge des früheren Zwischenspeichers (nur bekannte Größen) werden einmalig übernommen.
+    /// Gelesen wird erst beim ersten Zugriff – außerhalb des Hauptthreads (kein Ruckeln beim App-Start).
+    init(db: SizeIndexDatabase?, legacy: [String: SizeCacheEntry]) {
+        self.db = db
+        self.legacy = legacy
+    }
+
+    private func ensureLoaded() {
+        if !loaded { load() }
+    }
+
+    private func load() {
+        loaded = true
+        var all = (try? db?.all()) ?? [:]
+        var migrated: [String: SizeRecord] = [:]
+        let now = Date()
+        for (id, entry) in legacy where all[id] == nil {
+            let record = SizeRecord(modified: entry.modified, state: .known, bytes: entry.bytes, checkedAt: now)
+            all[id] = record
+            migrated[id] = record
+        }
+        legacy = [:]
+        if !migrated.isEmpty { try? db?.upsert(migrated) }
+        stored = all
     }
 
     /// Nur Zwischenspeicher, ohne zu messen.
     func cached(_ id: String, modified: Date?) -> KnownSize {
-        if let e = cache[id], e.modified == modified { return .known(e.bytes) }
-        return .unknown
+        ensureLoaded()
+        guard let r = stored[id], r.isCurrent(modified: modified), !VaultConcealment.shared.isConcealed(id) else { return .unknown }
+        return r.size
     }
 
     func cachedSizes(_ assets: [MediaAsset]) -> [String: KnownSize] {
@@ -31,14 +58,41 @@ actor MediaSizer {
         return out
     }
 
-    func size(of asset: MediaAsset) async -> KnownSize {
-        if let e = cache[asset.id], e.modified == asset.modificationDate { return .known(e.bytes) }
-        let measured = await Self.measure(asset.id, isVideo: asset.isVideo)
-        if case .known(let b) = measured {
-            cache[asset.id] = SizeCacheEntry(bytes: b, modified: asset.modificationDate)
-            dirty = true
+    /// Gespeicherte Messungen (auch „nur in iCloud“/„nicht lesbar“), nur für aktuelle, sichtbare Medien.
+    func records(for assets: [MediaAsset]) -> [String: SizeRecord] {
+        ensureLoaded()
+        var out: [String: SizeRecord] = [:]
+        for a in assets {
+            if let r = stored[a.id], r.isCurrent(modified: a.modificationDate), !VaultConcealment.shared.isConcealed(a.id) {
+                out[a.id] = r
+            }
         }
-        return measured
+        return out
+    }
+
+    func size(of asset: MediaAsset) async -> KnownSize {
+        await measured(asset).size
+    }
+
+    /// Messung (oder gültiger gespeicherter Stand). `prefetched`: bereits geladenes PHAsset (Abfragen in Paketen).
+    func measured(_ asset: MediaAsset, prefetched: UncheckedBox<PHAsset>? = nil) async -> SizeRecord {
+        ensureLoaded()
+        let now = Date()
+        if let r = stored[asset.id], !SizeInventory.needsMeasure(InventoryItem(asset), record: r, now: now) { return r }
+        guard let probe = await Self.probe(asset.id, box: prefetched, isVideo: asset.isVideo) else {
+            // Nicht (mehr) vorhanden, im Tresor oder abgebrochen: nichts speichern.
+            return SizeRecord(modified: asset.modificationDate, state: .unreadable, checkedAt: now)
+        }
+        var record = SizeRecord(modified: asset.modificationDate, state: probe.state, bytes: probe.bytes, checkedAt: now)
+        if let old = stored[asset.id], old.isCurrent(modified: asset.modificationDate), old.state == .known,
+           record.state == .known, old.bytes == record.bytes {
+            record.partialHash = old.partialHash
+            record.fullHash = old.fullHash
+        }
+        stored[asset.id] = record
+        dirty[asset.id] = record
+        if dirty.count >= 100 { flush() }
+        return record
     }
 
     /// Mehrere messen, mit Fortschritt. Abbruch über die Task.
@@ -48,65 +102,92 @@ actor MediaSizer {
             if Task.isCancelled { break }
             out[a.id] = await size(of: a)
             progress?(i + 1, assets.count)
-            if (i + 1) % 200 == 0 { await flush() }
         }
-        await flush()
+        flush()
         return out
     }
 
-    func flush() async {
-        guard dirty else { return }
-        dirty = false
-        // Gelöschte Medien müssen nicht ewig im Speicher bleiben: auf die jüngsten 60 000 Einträge begrenzen.
-        if cache.count > 60_000 { cache = Dictionary(uniqueKeysWithValues: cache.prefix(60_000).map { ($0.key, $0.value) }) }
-        await persist(cache)
+    /// Prüfsummen aus der Duplikatsuche merken (nur, solange das Medium unverändert ist).
+    func storeHashes(_ updates: [String: DuplicateHashes]) {
+        ensureLoaded()
+        for (id, h) in updates {
+            guard var r = stored[id], r.state == .known, r.isCurrent(modified: h.modified) else { continue }
+            if let p = h.partial { r.partialHash = p }
+            if let f = h.full { r.fullHash = f }
+            stored[id] = r
+            dirty[id] = r
+        }
+        flush()
+    }
+
+    func flush() {
+        guard !dirty.isEmpty else { return }
+        let pending = dirty.filter { !VaultConcealment.shared.isConcealed($0.key) }
+        dirty = [:]
+        try? db?.upsert(pending)
     }
 
     // MARK: Messung
 
-    private static func measure(_ id: String, isVideo: Bool) async -> KnownSize {
-        guard let asset = PhotoLibraryService.phAsset(id) else { return .unknown }
-        let resources = PHAssetResource.assetResources(for: asset)
-        guard !resources.isEmpty else { return .unknown }
-        var total: Int64 = 0
-        for r in resources {
-            if Task.isCancelled { return .unknown }
-            let bytes: Int64?
-            if isVideo && (r.type == .video || r.type == .fullSizeVideo) && r === resources.first(where: { $0.type == .video }) {
-                bytes = await videoFileSize(asset)
-            } else {
-                bytes = await streamedSize(r)
-            }
-            guard let bytes else { return .unknown }
-            total += bytes
-        }
-        return .known(total)
+    private struct Probe: Sendable {
+        let state: MeasureState
+        let bytes: Int64?
     }
 
-    /// Größe der lokalen Originaldatei eines Videos (ohne Netzwerk). Fällt auf das Streamen zurück, wenn PhotoKit
-    /// keine Datei-URL liefert (z. B. Slow-Motion als Komposition).
-    private static func videoFileSize(_ asset: PHAsset) async -> Int64? {
+    private enum Part: Sendable {
+        case bytes(Int64)
+        case notLocal
+        case failed
+    }
+
+    /// `nil` = Medium nicht gefunden (gelöscht, im Tresor) oder abgebrochen.
+    private static func probe(_ id: String, box: UncheckedBox<PHAsset>?, isVideo: Bool) async -> Probe? {
+        guard !VaultConcealment.shared.isConcealed(id), let asset = box?.value ?? PhotoLibraryService.phAsset(id) else { return nil }
+        let resources = PHAssetResource.assetResources(for: asset)
+        guard !resources.isEmpty else { return Probe(state: .unreadable, bytes: nil) }
+        var total: Int64 = 0
+        for r in resources {
+            if Task.isCancelled { return nil }
+            let part: Part
+            if isVideo && (r.type == .video || r.type == .fullSizeVideo) && r === resources.first(where: { $0.type == .video }) {
+                part = await videoFileSize(asset)
+            } else {
+                part = await streamedSize(r)
+            }
+            switch part {
+            case .bytes(let b): total += b
+            case .notLocal: return Probe(state: .notLocal, bytes: nil)
+            case .failed: return Task.isCancelled ? nil : Probe(state: .unreadable, bytes: nil)
+            }
+        }
+        return Probe(state: .known, bytes: total)
+    }
+
+    /// Größe der lokalen Originaldatei eines Videos (ohne Netzwerk, ohne die Daten zu lesen). Fällt auf das Streamen
+    /// zurück, wenn PhotoKit keine Datei-URL liefert (z. B. Slow-Motion als Komposition).
+    private static func videoFileSize(_ asset: PHAsset) async -> Part {
         let o = PHVideoRequestOptions()
         o.isNetworkAccessAllowed = false
         o.version = .original
         o.deliveryMode = .highQualityFormat
         let box = UncheckedBox(asset)
-        let fromURL: Int64? = await withCheckedContinuation { cont in
-            PHImageManager.default().requestAVAsset(forVideo: box.value, options: o) { @Sendable av, _, _ in
-                guard let url = (av as? AVURLAsset)?.url,
-                      let size = try? url.resourceValues(forKeys: [.fileSizeKey]).fileSize else {
-                    cont.resume(returning: nil); return
+        let fromURL: Part? = await withCheckedContinuation { cont in
+            PHImageManager.default().requestAVAsset(forVideo: box.value, options: o) { @Sendable av, _, info in
+                if let url = (av as? AVURLAsset)?.url, let size = try? url.resourceValues(forKeys: [.fileSizeKey]).fileSize {
+                    cont.resume(returning: .bytes(Int64(size))); return
                 }
-                cont.resume(returning: Int64(size))
+                let inCloud = (info?[PHImageResultIsInCloudKey] as? NSNumber)?.boolValue == true
+                cont.resume(returning: av == nil && inCloud ? .notLocal : nil)
             }
         }
         if let fromURL { return fromURL }
-        guard let r = PHAssetResource.assetResources(for: asset).first(where: { $0.type == .video }) else { return nil }
+        guard let r = PHAssetResource.assetResources(for: asset).first(where: { $0.type == .video }) else { return .failed }
         return await streamedSize(r)
     }
 
-    /// Zählt die Bytes einer Ressource beim Lesen (keine Kopie im Speicher). `nil`, wenn nicht lokal verfügbar.
-    private static func streamedSize(_ resource: PHAssetResource) async -> Int64? {
+    /// Zählt die Bytes einer Ressource beim Lesen (keine Kopie im Speicher). Liegt sie nur in iCloud, meldet PhotoKit
+    /// „Netzwerkzugriff nötig“ – das wird als „nur in iCloud“ gespeichert, jeder andere Fehler als „nicht lesbar“.
+    private static func streamedSize(_ resource: PHAssetResource) async -> Part {
         let o = PHAssetResourceRequestOptions()
         o.isNetworkAccessAllowed = false
         let counter = ByteCounter()
@@ -115,9 +196,26 @@ actor MediaSizer {
             PHAssetResourceManager.default().requestData(for: box.value, options: o) { @Sendable data in
                 counter.add(Int64(data.count))
             } completionHandler: { @Sendable error in
-                cont.resume(returning: error == nil ? counter.total : nil)
+                guard let error else { cont.resume(returning: .bytes(counter.total)); return }
+                let ns = error as NSError
+                let notLocal = ns.domain == PHPhotosErrorDomain && ns.code == PHPhotosError.Code.networkAccessRequired.rawValue
+                cont.resume(returning: notLocal ? .notLocal : .failed)
             }
         }
+    }
+}
+
+/// Vorbereitete Prüfsummen für `MediaSizer.storeHashes` (mit Änderungsdatum zur Gültigkeitsprüfung).
+struct DuplicateHashes: Sendable {
+    let modified: Date?
+    var partial: String?
+    var full: String?
+}
+
+extension InventoryItem {
+    init(_ a: MediaAsset) {
+        self.init(id: a.id, modified: a.modificationDate, isVideo: a.isVideo, width: a.pixelWidth, height: a.pixelHeight,
+                  duration: a.duration)
     }
 }
 

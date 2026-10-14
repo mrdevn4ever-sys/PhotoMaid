@@ -4,6 +4,7 @@ import SwiftUI
 /// Sperrbildschirm: Code, auf Wunsch Face ID/Touch ID, „Code vergessen?“ mit Notfallschlüssel. Nach Fehlversuchen
 /// nur Wartezeit, nie Löschen.
 struct VaultLockView: View {
+    @Environment(\.scenePhase) private var scenePhase
     @State private var vault = VaultStore.shared
     @State private var code = ""
     @State private var message: String?
@@ -81,7 +82,10 @@ struct VaultLockView: View {
             .sheet(isPresented: $recoverySheet) { VaultRecoveryUnlockSheet() }
             .task {
                 refreshLockout()
-                if vault.settings?.biometrics == true, vault.biometryName != nil {
+                // Face ID nur von selbst starten, wenn der Tresor wirklich sichtbar geöffnet wird (nicht beim Schließen
+                // und nicht, solange die App nicht aktiv ist).
+                if vault.isPresented, scenePhase == .active,
+                   vault.settings?.biometrics == true, vault.biometryName != nil {
                     await unlockWithBiometrics()
                 } else {
                     focused = true

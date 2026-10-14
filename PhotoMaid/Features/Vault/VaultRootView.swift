@@ -9,13 +9,19 @@ struct VaultRootView: View {
 
     var body: some View {
         ZStack {
-            switch vault.phase {
-            case .notSetUp:
-                VaultSetupView()
-            case .locked:
-                VaultLockView()
-            case .unlocked:
-                if vault.needsNewCode { VaultNewCodeView() } else { VaultWorkspaceHomeView() }
+            if !vault.isPresented {
+                // Schließen läuft (Ausblende-Animation): nicht kurz den Sperrbildschirm zeigen – der würde sonst
+                // Face ID von selbst starten und den Tresor unsichtbar wieder öffnen.
+                PrivacyShield()
+            } else {
+                switch vault.phase {
+                case .notSetUp:
+                    VaultSetupView()
+                case .locked:
+                    VaultLockView()
+                case .unlocked:
+                    if vault.needsNewCode { VaultNewCodeView() } else { VaultWorkspaceHomeView() }
+                }
             }
             if scenePhase != .active {
                 PrivacyShield().zIndex(5)

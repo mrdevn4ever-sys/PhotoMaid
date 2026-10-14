@@ -3,15 +3,20 @@ import SwiftUI
 
 /// Fotoserie vergleichen (Pro): kurz hintereinander aufgenommen – nie „ähnlich“ oder „bestes Foto“.
 /// Erst „n behalten · m in den Papierkorb“ entscheidet (ein Befehl je Medium). Nichts wird gelöscht.
+/// Auch für „Ähnliche Aufnahmen“ aus der Analyse (eigener Titel/Untertitel, ebenfalls nie „bestes Foto“).
 struct SeriesCompareView: View {
     let members: [MediaAsset]
+    let title: String
+    let subtitle: String
     let confirm: (Set<String>) -> Void
     @Environment(\.dismiss) private var dismiss
     @State private var keep: Set<String>
     @State private var focus: String
 
-    init(members: [MediaAsset], confirm: @escaping (Set<String>) -> Void) {
+    init(members: [MediaAsset], title: String? = nil, subtitle: String? = nil, confirm: @escaping (Set<String>) -> Void) {
         self.members = members
+        self.title = title ?? L("series_title")
+        self.subtitle = subtitle ?? L("series_subtitle", members.count)
         self.confirm = confirm
         _keep = State(initialValue: Set(members.map(\.id)))
         _focus = State(initialValue: members.first?.id ?? "")
@@ -20,7 +25,7 @@ struct SeriesCompareView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: AppSpacing.s) {
-                Text(verbatim: L("series_subtitle", members.count))
+                Text(verbatim: subtitle)
                     .font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
                 ZStack {
                     AppColors.stage
@@ -71,7 +76,7 @@ struct SeriesCompareView: View {
             }
             .padding(.vertical, AppSpacing.s)
             .background(AppBackground())
-            .navigationTitle(L("series_title"))
+            .navigationTitle(title)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { ToolbarItem(placement: .cancellationAction) { Button(L("cancel")) { dismiss() } } }
         }

@@ -116,10 +116,11 @@ final class AppModel {
         quickAccess = QuickAccess.sanitize(kv?.get(StoreKeys.quickAccess) ?? QuickAccess.defaults)
         rewards = kv?.get(StoreKeys.rewards) ?? RewardLedger()
         customCollections = kv?.get(StoreKeys.collections) ?? []
-        let store = kv
-        sizer = MediaSizer(initial: kv?.get(StoreKeys.sizeCache) ?? [:]) { cache in
-            await MainActor.run { try? store?.set(StoreKeys.sizeCache, cache) }
-        }
+        // Größen in SQLite (einzelne Einträge statt eines großen JSON-Blocks); der alte Block wird einmal übernommen.
+        let sizeIndex = SizeIndexDatabase.shared()
+        let legacySizes = kv?.get(StoreKeys.sizeCache) ?? [:]
+        sizer = MediaSizer(db: sizeIndex, legacy: legacySizes)
+        if sizeIndex != nil, !legacySizes.isEmpty { try? kv?.set(StoreKeys.sizeCache, [:]) }
         if settings.firstSeenDay == nil {
             settings.firstSeenDay = today
             try? kv?.set(StoreKeys.settings, settings)

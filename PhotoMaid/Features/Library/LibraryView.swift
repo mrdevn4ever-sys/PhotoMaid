@@ -1,7 +1,10 @@
+import Photos
 import PhotoMaidCore
 import SwiftUI
 
 /// Tab „Fotos“: Zeitachse Tag/Monat/Jahr (zwei Finger), Alben der Fotos-App, Favoriten, Suche, Auswahl.
+/// Filter wie in der Fotos-App (Alle · Favoriten · Bearbeitet · Fotos · Videos · Bildschirmfotos, dazu Medienarten)
+/// und Ansicht quadratisch/Seitenverhältnis – beides bleibt gespeichert und gilt auch für Betrachter, Auswahl, Diashow.
 /// Ansehen ist NIE eine Entscheidung. Zeigt alles außer „In PhotoMaid ausgeblendet“.
 struct LibraryView: View {
     @Environment(AppModel.self) private var app
@@ -9,8 +12,11 @@ struct LibraryView: View {
     @State private var level: TimelineLevel = .day
     @State private var selecting = false
     @State private var selection: Set<String> = []
-    @State private var filter = 0
+    /// Mitglieder des Smart-Albums für „Selfies“/„RAW“ (`nil` = wird geladen).
+    @State private var members: Set<String>?
     @State private var pinchBase: CGFloat = 1
+
+    private var filter: LibraryFilter { app.settings.libraryFilter }
 
     var body: some View {
         Group {
@@ -41,6 +47,7 @@ struct LibraryView: View {
             }
             ToolbarItemGroup(placement: .topBarTrailing) {
                 if mode == 0 {
+                    filterMenu
                     Button(L(selecting ? "done" : "grid_select")) {
                         selecting.toggle()
                         if !selecting { selection = [] }
@@ -71,15 +78,66 @@ struct LibraryView: View {
     }
 
     private var visible: [MediaAsset] {
-        filter == 1 ? app.visibleMedia.filter(\.isFavorite) : app.visibleMedia
+        LibraryFilter.apply(filter, to: app.visibleMedia, facts: { $0.libraryFacts }, members: members)
+    }
+
+    /// Filter und Ansicht wie in der Fotos-App (Menü oben rechts).
+    private var filterMenu: some View {
+        let filterBinding = Binding<LibraryFilter>(get: { app.settings.libraryFilter },
+                                                   set: { f in app.updateSettings { $0.libraryFilter = f } })
+        let fitBinding = Binding<Bool>(get: { app.settings.libraryAspectFit },
+                                       set: { v in app.updateSettings { $0.libraryAspectFit = v } })
+        return Menu {
+            Picker(L("lib_filter_title"), selection: filterBinding) {
+                ForEach(LibraryFilter.main, id: \.self) { f in
+                    Label(LibraryFilterText.title(f), systemImage: LibraryFilterText.symbol(f)).tag(f)
+                }
+            }
+            Menu {
+                Picker(L("lib_media_types"), selection: filterBinding) {
+                    ForEach(LibraryFilter.mediaTypes, id: \.self) { f in
+                        Label(LibraryFilterText.title(f), systemImage: LibraryFilterText.symbol(f)).tag(f)
+                    }
+                }
+            } label: {
+                Label(L("lib_media_types"), systemImage: "square.stack.3d.down.right")
+            }
+            SwiftUI.Divider()
+            Picker(L("lib_view_options"), selection: fitBinding) {
+                Label(L("lib_view_square"), systemImage: "square.grid.3x3").tag(false)
+                Label(L("lib_view_aspect"), systemImage: "rectangle.grid.3x2").tag(true)
+            }
+        } label: {
+            Image(systemName: filter == .all ? "line.3.horizontal.decrease.circle" : "line.3.horizontal.decrease.circle.fill")
+        }
+        .accessibilityLabel(Text(key: "lib_filter_title"))
+        .accessibilityValue(Text(verbatim: LibraryFilterText.title(filter)))
+    }
+
+    /// Aktiver Filter als Chip mit Anzahl und ✕ (damit nie vergessen wird, dass gefiltert ist).
+    private func filterChip(count: Int) -> some View {
+        HStack(spacing: AppSpacing.xs) {
+            Label(LibraryFilterText.title(filter), systemImage: LibraryFilterText.symbol(filter))
+                .font(AppTypography.subheadline.weight(.semibold))
+            Text(verbatim: CountText.number(count))
+                .font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary).monospacedDigit()
+            Spacer()
+            Button { app.updateSettings { $0.libraryFilter = .all } } label: {
+                Image(systemName: "xmark.circle.fill").font(.title3).foregroundStyle(AppColors.textSecondary)
+                    .frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch)
+            }
+            .accessibilityLabel(Text(key: "lib_filter_clear"))
+        }
+        .padding(.horizontal, AppSpacing.pageMargin)
     }
 
     private var timeline: some View {
-        let sections = Timeline.sections(visible, date: \.creationDate, level: level, timeZone: .autoupdatingCurrent)
+        let list = visible
+        let sections = Timeline.sections(list, date: \.creationDate, level: level, timeZone: .autoupdatingCurrent)
         return ScrollView {
             if app.visibleMedia.isEmpty && app.snapshot.loaded {
                 EmptyState(symbol: "photo", title: L("grid_empty_title"), message: L("lib_empty_text"))
-            } else if !app.snapshot.loaded {
+            } else if !app.snapshot.loaded || (filter.readsCollection && members == nil) {
                 LoadingState(message: L("feed_loading")).frame(minHeight: 300)
             } else {
                 Picker(L("lib_sort"), selection: $level) {
@@ -89,10 +147,18 @@ struct LibraryView: View {
                 }
                 .pickerStyle(.segmented)
                 .padding(.horizontal, AppSpacing.pageMargin)
-                MediaGrid(sections: sections, columns: level.columns, selecting: selecting, selection: $selection,
-                          open: { a in open(a, in: visible) }, header: { TimelineText.header($0, level: level) })
+                if filter != .all { filterChip(count: list.count) }
+                if list.isEmpty {
+                    EmptyState(symbol: LibraryFilterText.symbol(filter), title: L("grid_empty_title"),
+                               message: L("lib_filter_empty", LibraryFilterText.title(filter)))
+                } else {
+                    MediaGrid(sections: sections, columns: level.columns, selecting: selecting, selection: $selection,
+                              open: { a in open(a, in: list) }, header: { TimelineText.header($0, level: level) },
+                              fit: app.settings.libraryAspectFit)
+                }
             }
         }
+        .task(id: "\(filter.rawValue)-\(app.library.changeToken)") { await loadMembers() }
         .simultaneousGesture(
             MagnifyGesture()
                 .onEnded { v in
@@ -106,6 +172,67 @@ struct LibraryView: View {
     private func open(_ a: MediaAsset, in list: [MediaAsset]) {
         let ids = list.map(\.id)
         app.fullScreen = .viewer(ids: ids, index: ids.firstIndex(of: a.id) ?? 0)
+    }
+
+    /// Selfies und RAW kennt nur das Smart-Album der Fotos-App (keine Bildanalyse).
+    private func loadMembers() async {
+        guard filter.readsCollection else { members = nil; return }
+        members = nil
+        let selfies = filter == .selfies
+        let ids = await Task.detached(priority: .userInitiated) {
+            PhotoLibraryService.smartAlbumIDs(selfies ? .smartAlbumSelfPortraits : .smartAlbumRAW)
+        }.value
+        guard !Task.isCancelled else { return }
+        members = ids
+    }
+}
+
+enum LibraryFilterText {
+    static func title(_ f: LibraryFilter) -> String {
+        switch f {
+        case .all: L("lib_filter_all")
+        case .favorites: L("lib_filter_favorites")
+        case .edited: L("lib_filter_edited")
+        case .photos: L("cat_photos")
+        case .videos: L("cat_videos")
+        case .screenshots: L("cat_screenshots")
+        case .selfies: L("qa_selfies")
+        case .livePhotos: L("qa_live_photos")
+        case .portraits: L("qa_portraits")
+        case .panoramas: L("lib_filter_panoramas")
+        case .slowMotion: L("lib_filter_slowmo")
+        case .timelapse: L("lib_filter_timelapse")
+        case .cinematic: L("lib_filter_cinematic")
+        case .raw: L("lib_filter_raw")
+        }
+    }
+
+    static func symbol(_ f: LibraryFilter) -> String {
+        switch f {
+        case .all: "photo.on.rectangle"
+        case .favorites: "heart"
+        case .edited: "slider.horizontal.3"
+        case .photos: "photo"
+        case .videos: "video"
+        case .screenshots: "camera.viewfinder"
+        case .selfies: "person.crop.square"
+        case .livePhotos: "livephoto"
+        case .portraits: "cube"
+        case .panoramas: "pano"
+        case .slowMotion: "slowmo"
+        case .timelapse: "timelapse"
+        case .cinematic: "film"
+        case .raw: "r.square"
+        }
+    }
+}
+
+extension MediaAsset {
+    /// Was der Mediathek-Filter wissen darf (nur Metadaten der Fotos-App).
+    var libraryFacts: LibraryMediaFacts {
+        LibraryMediaFacts(id: id, kind: kind, isFavorite: isFavorite, isEdited: isEdited, isLivePhoto: isLivePhoto,
+                          isPortrait: isPortrait, isPanorama: isPanorama, isSlowMotion: isSlowMotion,
+                          isTimelapse: isTimelapse, isCinematic: isCinematic)
     }
 }
 

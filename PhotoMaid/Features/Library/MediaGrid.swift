@@ -9,6 +9,8 @@ struct MediaGrid: View {
     @Binding var selection: Set<String>
     let open: (MediaAsset) -> Void
     var header: ((TimelineKey) -> String)?
+    /// Seitenverhältnis statt quadratisch beschnitten (Ansicht „Fotos“).
+    var fit = false
 
     var body: some View {
         let cols = Array(repeating: GridItem(.flexible(), spacing: 2), count: max(1, columns))
@@ -48,7 +50,7 @@ struct MediaGrid: View {
             }
         } label: {
             // Trefferfläche = genau diese quadratische Zelle (AssetCell nimmt mit dem Bildüberstand keine Tipps an).
-            AssetCell(assetID: a.id)
+            AssetCell(assetID: a.id, fit: fit)
                 .aspectRatio(1, contentMode: .fit)
                 .overlay(alignment: .bottomLeading) {
                     HStack(spacing: 2) {

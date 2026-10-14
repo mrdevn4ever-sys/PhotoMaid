@@ -80,6 +80,7 @@ targets:
         ITSAppUsesNonExemptEncryption: false
         BGTaskSchedulerPermittedIdentifiers:
           - $(PRODUCT_BUNDLE_IDENTIFIER).export.*
+          - $(PRODUCT_BUNDLE_IDENTIFIER).analysis.*
         CFBundleDocumentTypes:
           - CFBundleTypeName: Images and Videos
             CFBundleTypeRole: Viewer

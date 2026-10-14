@@ -308,6 +308,8 @@ struct AssetThumbnail: View {
 /// („wählt das Bild darunter aus“). Deshalb nimmt das Bild selbst keine Berührungen an und die Form ist das Rechteck.
 struct AssetCell: View {
     let assetID: String
+    /// Ganzes Bild im Seitenverhältnis zeigen (einpassen) statt quadratisch zu beschneiden. Nie verzerrt.
+    var fit = false
     @Environment(\.displayScale) private var scale
     @State private var loaded: Loaded?
     @State private var failedID: String?
@@ -341,7 +343,9 @@ struct AssetCell: View {
         Rectangle()
             .fill(AppColors.backgroundTint)
             .overlay {
-                if let image {
+                if let image, fit {
+                    Image(uiImage: image).resizable().scaledToFit().allowsHitTesting(false)
+                } else if let image {
                     Image(uiImage: image).resizable().scaledToFill().allowsHitTesting(false)
                 } else {
                     placeholder
