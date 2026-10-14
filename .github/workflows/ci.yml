@@ -9,6 +9,10 @@ on:
         description: "UI-Tests und Screenshots ausführen (länger)"
         type: boolean
         default: false
+      baseline_run:
+        description: "Optional: CI-Lauf-ID für den Export älterer xcresult-Screenshots"
+        type: string
+        default: ""
 
 concurrency:
   # Keep evidence from the previous commit while validating a fix on the same branch.
@@ -17,6 +21,7 @@ concurrency:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   core:
@@ -79,6 +84,19 @@ jobs:
       - name: UI-Tests (QA und echte PhotoKit-Mediathek, nur Testanzeigen)
         if: inputs.ui_tests
         run: bash scripts/ci/simulator_ui_tests.sh '${{ steps.sim.outputs.udid }}' "$RUNNER_TEMP/PhotoMaidDerived" "$RUNNER_TEMP/simulator-ui"
+      - name: Ältere Simulator-Belege exportieren
+        if: always() && inputs.baseline_run != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BASELINE_RUN: ${{ inputs.baseline_run }}
+        run: |
+          [[ "$BASELINE_RUN" =~ ^[0-9]+$ ]]
+          baseline="$RUNNER_TEMP/simulator-ui/baseline-$BASELINE_RUN"
+          gh run download "$BASELINE_RUN" --repo "$GITHUB_REPOSITORY" -n ios-build-report -D "$baseline"
+          unzip -q "$baseline/tests.xcresult.zip" -d "$baseline"
+          xcrun xcresulttool export attachments --path "$baseline/tests.xcresult" --output-path "$baseline/attachments"
+          xcrun xcresulttool get test-results summary --path "$baseline/tests.xcresult" > "$baseline/summary.json"
+          rm -rf "$baseline/tests.xcresult"
       - name: Bericht für den nächsten Korrekturdurchlauf
         if: always()
         run: |

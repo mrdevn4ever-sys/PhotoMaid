@@ -22,6 +22,20 @@ gh api repos/mrdevn4ever-sys/photomaid/actions/runs/<RUN_ID>/artifacts  # Artefa
 
 ## Einmalige Einrichtung (alles im Browser)
 
+### Simulator-Belege (nur CI, ohne TestFlight)
+
+`ui_tests=true` führt nach den Unit-Tests zwei getrennte Durchläufe aus. Der Simulator wird jeweils gelöscht und
+neu gestartet: zuerst synthetische QA-Medien mit `-qa-fixtures`, danach 150 importierte Testbilder plus 3 Videos
+ohne dieses Startargument. Der zweite Durchlauf verwendet PhotoKit/Core Data, vorab erlaubten Fotozugriff,
+Googles öffentliche Testanzeigen, PIN-Tresor und `PhotoMaid.storekit`. Keine Systemlöschung wird bestätigt.
+Das Artefakt `simulator-ui-evidence` enthält PNGs, Accessibility-Bäume, zwei `.xcresult.zip`, Logs,
+Testübersichten und das Medienmanifest (Herkunft/SHA-256). Der Linux-Job verwendet Swift 6.4.
+
+Optional exportiert `baseline_run=<CI-Lauf-ID>` auch Screenshots aus einem älteren `ios-build-report`-Ergebnisbündel.
+Alle Läufe bleiben manuell; Pushes starten keine Tests. Unterschiedliche Commits behalten ihre eigenen CI-Belege.
+
+### Einrichtung für TestFlight
+
 1. **Apple Developer Program** (kostenpflichtig, 99 USD/Jahr) – Pflicht für TestFlight.
 2. **App-ID** anlegen: developer.apple.com › Certificates, Identifiers & Profiles › Identifiers ›
    „App IDs“, Bundle-ID z. B. `ch.deinname.photomaid` (endgültig, später nicht änderbar).

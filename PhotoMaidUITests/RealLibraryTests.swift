@@ -19,7 +19,7 @@ final class RealLibraryTests: XCTestCase {
         app.launch()
     }
 
-    override func tearDown() {
+    override func tearDown() async throws {
         if let app { snap("\(name)_end") }
     }
 

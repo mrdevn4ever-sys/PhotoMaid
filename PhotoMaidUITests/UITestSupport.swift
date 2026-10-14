@@ -27,6 +27,10 @@ extension XCTestCase {
             let text = alert.label.lowercased()
             // Explicitly refuse system deletion; no generic first-button/Allow fallback.
             if text.contains("delete") || text.contains("löschen") { return false }
+            if text.contains("track"), alert.buttons["Allow"].exists {
+                alert.buttons["Allow"].tap()
+                return true
+            }
             for label in ["Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos",
                           "Zugriff auf alle Fotos erlauben", "Allow Tracking", "Tracking erlauben",
                           "Ask App Not to Track", "App-Tracking ablehnen", "Consent", "Zustimmen"] {
