@@ -43,6 +43,8 @@ struct AppSettingsData: Codable, Equatable, Sendable {
     /// Summe „gespart“ über alle Leerungen (nur bekannte Größen bestätigt entfernter Medien).
     var savedTotalBytes: Int64 = 0
     var savedTotalLowerBound = false
+    /// Summe enthält geschätzte Größen (Anzeige „ca.“, E17).
+    var savedTotalApproximate = false
     /// Vom Aufräumen ausgenommene Alben der Fotos-App (`localIdentifier`, inkl. Unteralben eines Ordners). E5.
     var excludedAlbums: [String] = []
     /// Bedienungshilfe: Tasten zum Entscheiden unter dem Medium (Standard aus; Gesten bleiben aktiv).
@@ -101,6 +103,7 @@ struct AppSettingsData: Codable, Equatable, Sendable {
         editorTourSeen = v(.editorTourSeen, d.editorTourSeen)
         savedTotalBytes = v(.savedTotalBytes, d.savedTotalBytes)
         savedTotalLowerBound = v(.savedTotalLowerBound, d.savedTotalLowerBound)
+        savedTotalApproximate = v(.savedTotalApproximate, d.savedTotalApproximate)
         excludedAlbums = v(.excludedAlbums, d.excludedAlbums)
         decisionButtons = v(.decisionButtons, d.decisionButtons)
         feedOrder = v(.feedOrder, d.feedOrder)

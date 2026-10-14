@@ -48,14 +48,28 @@ struct TrashView: View {
                 }
             }
         case .largest:
-            return p.sorted { a, b in
-                switch (sizes[a.item.localIdentifier]?.bytes, sizes[b.item.localIdentifier]?.bytes) {
-                case let (x?, y?): x > y
-                case (nil, _): false
-                case (_, nil): true
-                }
-            }
+            // Gemessen oder geschätzt („ca.“): jede Zeile hat eine Zahl, also auch eine Position.
+            let bytes = Dictionary(p.map { ($0.item, value($0.item).bytes) }, uniquingKeysWith: { a, _ in a })
+            return p.sorted { (bytes[$0.item] ?? 0) > (bytes[$1.item] ?? 0) }
         }
+    }
+
+    /// Größe für die Anzeige beim Löschen: gemessen, sonst geschätzt („ca.“) – nie ohne Zahl (E17).
+    private func value(_ ref: ItemReference) -> SizeValue {
+        if ref.provider == .photoLibrary {
+            let measured = sizes[ref.localIdentifier] ?? .unknown
+            guard let a = app.asset(ref.localIdentifier) else {
+                return SizeValue.of(measured, estimate: app.estimator.estimate(EstimateInput(kind: .photo)))
+            }
+            return app.sizeValue(a, measured: measured)
+        }
+        let entry = app.files.entries.first { $0.reference == ref }
+        return SizeValue.of(entry?.size ?? .unknown,
+                            estimate: app.estimator.estimate(entry?.estimateInput ?? EstimateInput(kind: .file)))
+    }
+
+    private func total(_ refs: [ItemReference]) -> String {
+        SizeText.value(SizeSum(refs.map(value)).value)
     }
 
     private var fileItems: [ItemRecord] { basket.filter { $0.item.provider != .photoLibrary } }
@@ -85,7 +99,7 @@ struct TrashView: View {
             }
             Button(L("cancel"), role: .cancel) { confirmPhotos = nil }
         } message: {
-            Text(key: "basket_confirm_media_message")
+            Text(verbatim: L("basket_confirm_media_message") + "\n\n" + L("basket_selection_size", total(confirmPhotos ?? [])))
         }
         .confirmationDialog(L("basket_confirm_files_title"), isPresented: Binding(get: { confirmFiles != nil }, set: { if !$0 { confirmFiles = nil } }),
                             titleVisibility: .visible) {
@@ -94,7 +108,7 @@ struct TrashView: View {
             }
             Button(L("cancel"), role: .cancel) { confirmFiles = nil }
         } message: {
-            Text(key: "basket_confirm_files_message")
+            Text(verbatim: L("basket_confirm_files_message") + "\n\n" + L("basket_selection_size", total(confirmFiles ?? [])))
         }
         .sheet(item: $limitFor) { req in
             LimitSheet(available: app.read.allowance?.available ?? 0, limit: app.read.allowance?.limit ?? 0, selected: req.items.count) {
@@ -179,7 +193,7 @@ struct TrashView: View {
         case .screenshot: L("screenshot")
         default: L("photo")
         }
-        let sub = [a?.creationDate.map(DateText.abbreviated), sizes[r.item.localIdentifier].map(SizeText.size)]
+        let sub = [a?.creationDate.map(DateText.abbreviated), SizeText.value(value(r.item))]
             .compactMap { $0 }.joined(separator: " · ")
         return row(r, title: title, subtitle: sub) {
             Button { preview = a } label: { AssetThumbnail(assetID: r.item.localIdentifier, side: 56) }
@@ -192,7 +206,7 @@ struct TrashView: View {
     private func fileRow(_ r: ItemRecord) -> some View {
         let entry = app.files.entries.first { $0.reference == r.item }
         let name = entry?.name ?? (r.item.localIdentifier as NSString).lastPathComponent
-        return row(r, title: name, subtitle: entry.map { SizeText.size($0.size) } ?? "") {
+        return row(r, title: name, subtitle: SizeText.value(value(r.item))) {
             Image(systemName: "doc").font(.title2).foregroundStyle(AppColors.textSecondary).frame(width: 56, height: 56)
         }
     }
@@ -236,6 +250,10 @@ struct TrashView: View {
     private var bottomBar: some View {
         if !basket.isEmpty {
             VStack(spacing: AppSpacing.xs) {
+                if !selectedPhotos.isEmpty || !selectedFiles.isEmpty {
+                    Text(verbatim: L("basket_selection_size", total(selectedPhotos + selectedFiles)))
+                        .font(AppTypography.subheadline.weight(.semibold)).monospacedDigit()
+                }
                 if !selectedPhotos.isEmpty {
                     PrimaryButton(title: LP("basket_empty_media", selectedPhotos.count), role: .destructive) {
                         request(selectedPhotos, kind: .photoLibraryDelete)
@@ -263,6 +281,7 @@ struct TrashView: View {
         known = all
         let assets = app.assets(photoItems.map(\.item))
         sizes = await app.sizer.cachedSizes(assets)
+        await app.refreshSizeEstimator()
         let measured = await app.sizes(assets)
         sizes = measured
     }
@@ -286,12 +305,15 @@ struct TrashView: View {
             defer { running = false }
             // Größen VOR dem Löschen festhalten (danach gibt es sie nicht mehr). Fehlende = unbekannt, nie 0.
             var before: [ItemReference: KnownSize] = [:]
+            // Ohne Messung (z. B. nur in iCloud): die angezeigte Schätzung, im Ergebnis als „ca.“.
+            var estimates: [ItemReference: Int64] = [:]
             for ref in items {
                 if ref.provider == .photoLibrary {
                     before[ref] = sizes[ref.localIdentifier] ?? .unknown
                 } else {
                     before[ref] = app.files.entries.first { $0.reference == ref }?.size ?? .unknown
                 }
+                if case .approximate(let b) = value(ref) { estimates[ref] = b }
             }
             let r = await app.runCleanup(items, kind: kind)
             switch r {
@@ -299,10 +321,11 @@ struct TrashView: View {
                 let removed = intent.confirmedRemoved
                 if !removed.isEmpty && (intent.state == .succeeded || intent.state == .partiallySucceeded) {
                     Haptics.success()
-                    let saving = app.recordSavings(removed, sizes: before)
+                    let saving = app.recordSavings(removed, sizes: before, estimates: estimates)
                     done = CleanupDone(savings: saving, kind: kind, partial: intent.state == .partiallySucceeded,
                                        keptToday: keptToday(), totalBytes: app.settings.savedTotalBytes,
-                                       totalLowerBound: app.settings.savedTotalLowerBound)
+                                       totalLowerBound: app.settings.savedTotalLowerBound,
+                                       totalApproximate: app.settings.savedTotalApproximate)
                 } else if intent.state == .cancelled {
                     result = ResultMessage(title: L("result_title_not_done"), text: L("result_cancelled"), openPro: false)
                 } else {
@@ -390,9 +413,10 @@ struct CleanupDone: Identifiable {
     let keptToday: Int
     let totalBytes: Int64
     let totalLowerBound: Bool
+    let totalApproximate: Bool
 }
 
-/// „Papierkorb geleert“: nur gemessene Größen bestätigt entfernter Medien, „mind.“ bei unbekannten.
+/// „Papierkorb geleert“: gemessene Größen bestätigt entfernter Medien; ohne Messung die Schätzung – dann „ca.“ (E17).
 struct CleanupDoneView: View {
     let done: CleanupDone
     let close: () -> Void
@@ -406,7 +430,10 @@ struct CleanupDoneView: View {
                 Image(systemName: "sparkles").font(.system(size: 52)).foregroundStyle(AppColors.accent).accessibilityHidden(true)
                 Text(key: "done_title").font(AppTypography.title).accessibilityAddTraits(.isHeader)
                 VStack(spacing: 2) {
-                    if s.hasKnownSizes {
+                    if s.display.isApproximate {
+                        Text(verbatim: SizeText.value(s.display))
+                            .font(.system(.largeTitle, design: .rounded).weight(.heavy))
+                    } else if s.hasKnownSizes {
                         if s.isLowerBound {
                             Text(verbatim: L("done_at_least", "").trimmingCharacters(in: .whitespaces))
                                 .font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
@@ -425,11 +452,17 @@ struct CleanupDoneView: View {
                     tile(s.removedCount, "trash", L("done_removed"), AppColors.cleanup)
                     tile(done.keptToday, "arrow.up", L("done_kept"), AppColors.keep)
                 }
-                Text(verbatim: L(done.totalLowerBound ? "done_total_at_least" : "done_total", SizeText.bytes(done.totalBytes)))
+                Text(verbatim: done.totalApproximate
+                     ? L("done_total", SizeText.value(.approximate(done.totalBytes)))
+                     : L(done.totalLowerBound ? "done_total_at_least" : "done_total", SizeText.bytes(done.totalBytes)))
                     .font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
                 VStack(spacing: AppSpacing.xs) {
                     Text(key: done.kind == .photoLibraryDelete ? "done_note_media" : "done_note_files")
-                    if s.unknownCount > 0 { Text(verbatim: LP("done_unknown", s.unknownCount)) }
+                    if s.display.isApproximate {
+                        Text(verbatim: L("done_estimated", s.unknownCount))
+                    } else if s.unknownCount > 0 {
+                        Text(verbatim: LP("done_unknown", s.unknownCount))
+                    }
                     if done.partial { Text(key: "done_partial") }
                 }
                 .font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary).multilineTextAlignment(.center)

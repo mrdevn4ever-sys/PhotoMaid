@@ -30,6 +30,8 @@ Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E15) – ni
   Vorschläge/Filter, nie Entscheidung oder Löschung. Kein LLM, keine Cloud-KI, keine Zusatzmodelle ohne Freigabe (E8).
 - Keine privaten APIs (z. B. `value(forKey: "fileSize")`), keine undokumentierten URL-Schemata.
 - Keine erfundenen Zahlen: Größen nur gemessen, unbekannt ≠ 0. Keine simulierten Scans, Berechtigungen, Käufe.
+  Ausnahme E17 (Nutzerentscheidung 14.10.2026): beim Löschen, in „Große Dateien“ und „Dateien“ steht immer eine Zahl –
+  ohne Messung (z. B. nur in iCloud) eine Schätzung aus den eigenen Messungen (`SizeEstimator`), immer als „ca.“.
   Keine toten Buttons in Produktion. Synthetische Daten nur in Previews, Tests, `QA_FIXTURES`.
 - Nie verzerren: einpassen oder beschneiden; Größe nur proportional; nie hochskalieren.
 - Originale nie ohne ausdrückliche Wahl ändern. Vorauswahl immer „Als Kopie speichern“.

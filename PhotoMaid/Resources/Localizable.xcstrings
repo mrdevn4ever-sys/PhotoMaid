@@ -28819,6 +28819,107 @@
         }
       }
     },
+    "basket_selection_size": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "التحديد: %1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Auswahl: %1$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selection: %1$@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selección: %1$@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sélection : %1$@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selezione: %1$@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "選択：%1$@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "선택: %1$@"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selectie: %1$@"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wybrane: %1$@"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seleção: %1$@"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selecție: %1$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбрано: %1$@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seçim: %1$@"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вибрано: %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已选：%1$@"
+          }
+        }
+      }
+    },
     "basket_sort_added": {
       "extractionState": "manual",
       "localizations": {
@@ -43837,6 +43938,107 @@
           "stringUnit": {
             "state": "translated",
             "value": "完成"
+          }
+        }
+      }
+    },
+    "done_estimated": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تقديري («حوالي»): %1$lld – لا يكشف iOS حجمها الدقيق إلا بعد التنزيل."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geschätzt („ca.“): %1$lld – ihre genaue Größe nennt iOS erst nach dem Herunterladen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estimated (“approx.”): %1$lld – iOS only reveals their exact size after downloading."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estimados («aprox.»): %1$lld; iOS solo indica su tamaño exacto tras descargarlos."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estimés (« env. ») : %1$lld – iOS n’indique leur taille exacte qu’après téléchargement."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Stimati («circa»): %1$lld – iOS ne indica la dimensione esatta solo dopo il download."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "推定（「約」）：%1$lld – 正確なサイズはダウンロード後にのみiOSが示します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "추정(‘약’): %1$lld – 정확한 크기는 다운로드한 후에만 iOS가 알려 줘요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Geschat (‘ca.’): %1$lld – de exacte grootte geeft iOS pas na het downloaden."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Szacowane („ok.”): %1$lld – dokładny rozmiar iOS podaje dopiero po pobraniu."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estimados («aprox.»): %1$lld – o iOS só indica o tamanho exato depois de os descarregar."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estimate („cca.”): %1$lld – iOS arată dimensiunea exactă abia după descărcare."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оценка («≈»): %1$lld – точный размер iOS сообщает только после загрузки."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tahmini (“yaklaşık”): %1$lld – iOS tam boyutu ancak indirdikten sonra gösterir."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оцінка («≈»): %1$lld – точний розмір iOS повідомляє лише після завантаження."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "估算（“约”）：%1$lld – 只有下载后 iOS 才会提供确切大小。"
           }
         }
       }
@@ -92026,97 +92228,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "مع «تحسين تخزين الـ iPhone» تكون هذه الأصول في iCloud فقط. لا يكشف iOS حجمها دون تنزيلها، لذا لا يحسبها PhotoMaid ولا يقدّرها. يمكن بدلًا من ذلك مراجعة الفيديوهات مرتبة حسب الطول."
+            "value": "مع «تحسين تخزين الـ iPhone» تكون هذه الأصول في iCloud فقط. لا يكشف iOS حجمها الدقيق دون تنزيلها، لذا يقدّره PhotoMaid من صورك وفيديوهاتك المقاسة ويعرضه بعبارة «حوالي»."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mit „iPhone-Speicher optimieren“ liegen diese Originale nur in iCloud. iOS nennt ihre Größe nicht, ohne sie herunterzuladen – deshalb zählt PhotoMaid sie nicht mit und schätzt nichts. Videos lassen sich stattdessen nach Länge sortiert durchsehen."
+            "value": "Mit „iPhone-Speicher optimieren“ liegen diese Originale nur in iCloud. iOS nennt ihre genaue Größe nicht, ohne sie herunterzuladen – PhotoMaid schätzt sie deshalb aus deinen gemessenen Fotos und Videos und zeigt sie als „ca.“."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "With “Optimize iPhone Storage”, these originals are only in iCloud. iOS doesn’t reveal their size without downloading them, so PhotoMaid doesn’t count or estimate them. Videos are sorted by length instead."
+            "value": "With “Optimize iPhone Storage”, these originals are only in iCloud. iOS doesn’t reveal their exact size without downloading them, so PhotoMaid estimates it from your measured photos and videos and shows it as “approx.”."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Con «Optimizar almacenamiento del iPhone», estos originales solo están en iCloud. iOS no indica su tamaño sin descargarlos, así que PhotoMaid no los cuenta ni los estima. En su lugar, puedes repasar los vídeos ordenados por duración."
+            "value": "Con «Optimizar almacenamiento del iPhone», estos originales solo están en iCloud. iOS no indica su tamaño exacto sin descargarlos, así que PhotoMaid lo estima a partir de tus fotos y vídeos medidos y lo muestra como «aprox.»."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Avec « Optimiser le stockage de l’iPhone », ces originaux sont uniquement dans iCloud. iOS n’indique pas leur taille sans les télécharger : PhotoMaid ne les compte donc pas et n’estime rien. Les vidéos peuvent être parcourues triées par durée."
+            "value": "Avec « Optimiser le stockage de l’iPhone », ces originaux sont uniquement dans iCloud. iOS n’indique pas leur taille exacte sans les télécharger : PhotoMaid l’estime donc d’après tes photos et vidéos mesurées et l’affiche avec « env. »."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Con «Ottimizza spazio su iPhone» questi originali sono solo in iCloud. iOS non ne indica la dimensione senza scaricarli, quindi PhotoMaid non li conta e non stima nulla. I video si possono invece rivedere ordinati per durata."
+            "value": "Con «Ottimizza spazio su iPhone» questi originali sono solo in iCloud. iOS non ne indica la dimensione esatta senza scaricarli, quindi PhotoMaid la stima dalle tue foto e dai tuoi video misurati e la mostra come «circa»."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "「iPhoneのストレージを最適化」が有効な場合、これらのオリジナルはiCloudにのみあります。iOSはダウンロードしないとサイズを教えないため、PhotoMaidは合計に含めず推定もしません。動画は代わりに長さ順で確認できます。"
+            "value": "「iPhoneのストレージを最適化」が有効な場合、これらのオリジナルはiCloudにのみあります。iOSはダウンロードしないと正確なサイズを教えないため、PhotoMaidは計測済みの写真や動画から推定し、「約」として表示します。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "‘iPhone 저장 공간 최적화’를 사용하면 이 원본은 iCloud에만 있어요. iOS는 다운로드하지 않으면 크기를 알려 주지 않으므로 PhotoMaid는 합계에 넣거나 추정하지 않아요. 대신 동영상은 길이순으로 정리할 수 있어요."
+            "value": "‘iPhone 저장 공간 최적화’를 사용하면 이 원본은 iCloud에만 있어요. iOS는 다운로드하지 않으면 정확한 크기를 알려 주지 않으므로 PhotoMaid가 측정한 사진과 동영상을 바탕으로 추정해 ‘약’으로 표시해요."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Met ‘Optimaliseer iPhone-opslag’ staan deze originelen alleen in iCloud. iOS geeft hun grootte niet zonder ze te downloaden, dus telt PhotoMaid ze niet mee en schat niets. Video’s kun je in plaats daarvan op lengte gesorteerd doorlopen."
+            "value": "Met ‘Optimaliseer iPhone-opslag’ staan deze originelen alleen in iCloud. iOS geeft hun exacte grootte niet zonder ze te downloaden, dus schat PhotoMaid die op basis van je gemeten foto’s en video’s en toont ze als ‘ca.’."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Przy „Optymalizuj pamięć iPhone’a” te oryginały są tylko w iCloud. iOS nie podaje ich rozmiaru bez pobierania, więc PhotoMaid ich nie liczy ani nie szacuje. Zamiast tego filmy można przejrzeć posortowane według długości."
+            "value": "Przy „Optymalizuj pamięć iPhone’a” te oryginały są tylko w iCloud. iOS nie podaje ich dokładnego rozmiaru bez pobierania, więc PhotoMaid szacuje go na podstawie zmierzonych zdjęć i filmów i pokazuje jako „ok.”."
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Com «Otimizar armazenamento do iPhone», estes originais estão apenas no iCloud. O iOS não indica o tamanho sem os descarregar, por isso o PhotoMaid não os conta nem estima. Em vez disso, podes rever os vídeos ordenados por duração."
+            "value": "Com «Otimizar armazenamento do iPhone», estes originais estão apenas no iCloud. O iOS não indica o tamanho exato sem os descarregar, por isso o PhotoMaid estima-o a partir das tuas fotografias e vídeos medidos e mostra-o como «aprox.»."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Cu „Optimizează spațiul iPhone-ului”, aceste originale sunt doar în iCloud. iOS nu le arată dimensiunea fără descărcare, așa că PhotoMaid nu le numără și nu estimează nimic. Videoclipurile pot fi parcurse sortate după durată."
+            "value": "Cu „Optimizează spațiul iPhone-ului”, aceste originale sunt doar în iCloud. iOS nu le arată dimensiunea exactă fără descărcare, așa că PhotoMaid o estimează din fotografiile și videoclipurile tale măsurate și o afișează cu „cca.”."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "При «Оптимизации хранилища iPhone» эти оригиналы есть только в iCloud. iOS не сообщает их размер без загрузки, поэтому PhotoMaid их не учитывает и ничего не оценивает. Вместо этого видео можно просмотреть по длительности."
+            "value": "При «Оптимизации хранилища iPhone» эти оригиналы есть только в iCloud. iOS не сообщает их точный размер без загрузки, поэтому PhotoMaid оценивает его по измеренным фото и видео и показывает со знаком «≈»."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "“iPhone Saklama Alanını Optimize Et” açıkken bu orijinaller yalnızca iCloud’dadır. iOS boyutlarını indirmeden göstermez; bu yüzden PhotoMaid onları saymaz ve tahmin etmez. Bunun yerine videolar uzunluğa göre sıralanarak incelenebilir."
+            "value": "“iPhone Saklama Alanını Optimize Et” açıkken bu orijinaller yalnızca iCloud’dadır. iOS tam boyutlarını indirmeden göstermez; bu yüzden PhotoMaid boyutu ölçülmüş fotoğraf ve videolarından tahmin eder ve “yaklaşık” olarak gösterir."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "З «Оптимізацією сховища iPhone» ці оригінали є лише в iCloud. iOS не повідомляє їхній розмір без завантаження, тому PhotoMaid їх не враховує й нічого не оцінює. Натомість відео можна переглянути за тривалістю."
+            "value": "З «Оптимізацією сховища iPhone» ці оригінали є лише в iCloud. iOS не повідомляє їхній точний розмір без завантаження, тому PhotoMaid оцінює його за виміряними фото й відео та показує зі знаком «≈»."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "开启“优化 iPhone 储存空间”后，这些原件只在 iCloud 中。iOS 不下载就不会提供其大小，因此 PhotoMaid 不计入也不估算。视频可改为按时长排序查看。"
+            "value": "开启“优化 iPhone 储存空间”后，这些原件只在 iCloud 中。iOS 不下载就不会提供其确切大小，因此 PhotoMaid 会根据你已测量的照片和视频进行估算，并显示为“约”。"
           }
         }
       }
@@ -92613,6 +92815,107 @@
           "stringUnit": {
             "state": "translated",
             "value": "عدد الملفات الكبيرة: %1$lld"
+          }
+        }
+      }
+    },
+    "large_in_icloud_a11y": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "في iCloud فقط، الحجم تقديري"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nur in iCloud, Größe geschätzt"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only in iCloud, size estimated"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Solo en iCloud, tamaño estimado"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uniquement dans iCloud, taille estimée"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Solo in iCloud, dimensione stimata"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloudのみ、サイズは推定"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud에만 있음, 크기 추정"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alleen in iCloud, grootte geschat"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tylko w iCloud, rozmiar szacowany"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apenas no iCloud, tamanho estimado"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doar în iCloud, dimensiune estimată"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Только в iCloud, размер оценён"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yalnızca iCloud’da, boyut tahmini"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Лише в iCloud, розмір оцінено"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "仅在 iCloud 中，大小为估算"
           }
         }
       }
@@ -93421,6 +93724,107 @@
           "stringUnit": {
             "state": "translated",
             "value": "无法读取：%1$lld"
+          }
+        }
+      }
+    },
+    "large_unreadable_footer": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هذه العناصر على هذا الـ iPhone لكن تعذّرت قراءتها. تظهر في القائمة بحجم تقديري («حوالي»)."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diese Medien liegen auf dem iPhone, ließen sich aber nicht lesen. In der Liste stehen sie mit geschätzter Größe („ca.“)."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "These items are on this iPhone but couldn’t be read. In the list, they appear with an estimated size (“approx.”)."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estos elementos están en el iPhone, pero no se pudieron leer. En la lista aparecen con un tamaño estimado («aprox.»)."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ces éléments sont sur l’iPhone mais n’ont pas pu être lus. Dans la liste, ils apparaissent avec une taille estimée (« env. »)."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Questi elementi sono sull’iPhone ma non è stato possibile leggerli. Nell’elenco compaiono con una dimensione stimata («circa»)."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "これらの項目はこのiPhoneにありますが、読み取れませんでした。リストには推定サイズ（「約」）で表示されます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "이 항목은 iPhone에 있지만 읽을 수 없었어요. 목록에는 추정 크기(‘약’)로 표시돼요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deze items staan op de iPhone, maar konden niet worden gelezen. In de lijst staan ze met een geschatte grootte (‘ca.’)."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Te elementy są na iPhonie, ale nie dało się ich odczytać. Na liście mają szacowany rozmiar („ok.”)."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estes itens estão no iPhone, mas não foi possível lê-los. Na lista aparecem com um tamanho estimado («aprox.»)."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aceste elemente sunt pe iPhone, dar nu au putut fi citite. În listă apar cu dimensiune estimată („cca.”)."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Эти объекты есть на iPhone, но их не удалось прочитать. В списке они показаны с оценкой размера («≈»)."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bu öğeler iPhone’da ama okunamadı. Listede tahmini boyutla (“yaklaşık”) görünürler."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ці об’єкти є на iPhone, але їх не вдалося прочитати. У списку вони мають оцінений розмір («≈»)."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "这些项目在这台 iPhone 上，但无法读取。它们在列表中以估算大小（“约”）显示。"
           }
         }
       }
@@ -160437,6 +160841,208 @@
           "stringUnit": {
             "state": "translated",
             "value": "此工作流程已删除。"
+          }
+        }
+      }
+    },
+    "size_approx": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حوالي %1$@"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ca. %1$@"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "approx. %1$@"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "aprox. %1$@"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "env. %1$@"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "circa %1$@"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "約%1$@"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "약 %1$@"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ca. %1$@"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ok. %1$@"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "aprox. %1$@"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "cca. %1$@"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "≈ %1$@"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "yaklaşık %1$@"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "≈ %1$@"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "约 %1$@"
+          }
+        }
+      }
+    },
+    "size_approx_note": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "«حوالي» = تقدير من صورك وفيديوهاتك المقاسة. لا يكشف iOS الحجم الدقيق لأصول iCloud إلا بعد التنزيل."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "„ca.“ = geschätzt aus deinen gemessenen Fotos und Videos. Die genaue Größe von iCloud-Originalen nennt iOS erst nach dem Herunterladen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“approx.” = estimated from your measured photos and videos. iOS only reveals the exact size of iCloud originals after downloading."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "«aprox.» = estimado a partir de tus fotos y vídeos medidos. iOS solo indica el tamaño exacto de los originales de iCloud tras descargarlos."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "« env. » = estimé d’après tes photos et vidéos mesurées. iOS n’indique la taille exacte des originaux iCloud qu’après téléchargement."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "«circa» = stimato dalle tue foto e dai tuoi video misurati. iOS indica la dimensione esatta degli originali iCloud solo dopo il download."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "「約」＝計測済みの写真や動画からの推定です。iCloudのオリジナルの正確なサイズは、ダウンロード後にのみiOSが示します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "‘약’ = 측정한 사진과 동영상을 바탕으로 한 추정치예요. iCloud 원본의 정확한 크기는 다운로드한 후에만 iOS가 알려 줘요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "‘ca.’ = geschat op basis van je gemeten foto’s en video’s. De exacte grootte van iCloud-originelen geeft iOS pas na het downloaden."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "„ok.” = szacunek na podstawie zmierzonych zdjęć i filmów. Dokładny rozmiar oryginałów z iCloud iOS podaje dopiero po pobraniu."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "«aprox.» = estimado a partir das tuas fotografias e vídeos medidos. O iOS só indica o tamanho exato dos originais do iCloud depois de os descarregar."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "„cca.” = estimat din fotografiile și videoclipurile tale măsurate. iOS arată dimensiunea exactă a originalelor din iCloud abia după descărcare."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "«≈» = оценка по измеренным фото и видео. Точный размер оригиналов в iCloud iOS сообщает только после загрузки."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“yaklaşık” = ölçülmüş fotoğraf ve videolarından tahmin edilir. iOS, iCloud orijinallerinin tam boyutunu ancak indirdikten sonra gösterir."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "«≈» = оцінка за виміряними фото й відео. Точний розмір оригіналів в iCloud iOS повідомляє лише після завантаження."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "“约”= 根据你已测量的照片和视频估算。iCloud 原件的确切大小只有下载后 iOS 才会提供。"
           }
         }
       }

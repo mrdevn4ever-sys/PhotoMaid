@@ -8,6 +8,14 @@ enum SizeText {
         ByteCountFormatter.string(fromByteCount: max(0, b), countStyle: .file)
     }
 
+    /// Gemessen: „4,9 MB“. Geschätzt: „ca. 4,9 MB“ (auf zwei Stellen gerundet – eine Schätzung ist keine Messung).
+    static func value(_ v: SizeValue) -> String {
+        switch v {
+        case .exact(let b): bytes(b)
+        case .approximate(let b): L("size_approx", bytes(SizeEstimator.rounded(b)))
+        }
+    }
+
     static func size(_ s: KnownSize) -> String {
         switch s {
         case .known(let b): bytes(b)

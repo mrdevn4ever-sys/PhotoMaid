@@ -85,6 +85,7 @@ struct FilesView: View {
         }
         .task { if app.files.scannedAt == nil { await app.files.scan(app.sources) } }
         .refreshable { await app.files.scan(app.sources) }
+        .task(id: app.files.entries.count) { await app.refreshSizeEstimator() }
     }
 
     private var visible: [FileEntry] {
@@ -119,7 +120,9 @@ struct FilesView: View {
                 .foregroundStyle(AppColors.textSecondary).frame(width: 32)
             VStack(alignment: .leading, spacing: 2) {
                 Text(verbatim: f.name).lineLimit(1).truncationMode(.middle)
-                Text(verbatim: [SizeText.size(f.size), f.modified.map(DateText.abbreviated)].compactMap { $0 }.joined(separator: " · "))
+                // Ohne lesbare Größe: Schätzung „ca.“ (Median gleicher Dateitypen, E17) – nie ohne Zahl.
+                Text(verbatim: [SizeText.value(SizeValue.of(f.size, estimate: app.estimator.estimate(f.estimateInput))),
+                                f.modified.map(DateText.abbreviated)].compactMap { $0 }.joined(separator: " · "))
                     .font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
             }
             Spacer(minLength: 0)

@@ -174,7 +174,7 @@ enum FileKindFilter: String, CaseIterable, Identifiable, Sendable {
 
 /// Inventarisiert eine Quelle koordiniert, ohne Symlinks zu folgen und ohne Pakete zu öffnen.
 enum FileScanner {
-    static let keys: [URLResourceKey] = [.isRegularFileKey, .isSymbolicLinkKey, .fileSizeKey,
+    static let keys: [URLResourceKey] = [.isRegularFileKey, .isSymbolicLinkKey, .fileSizeKey, .totalFileSizeKey,
                                          .contentModificationDateKey, .creationDateKey, .contentTypeKey,
                                          .fileResourceIdentifierKey, .nameKey]
 
@@ -196,7 +196,8 @@ enum FileScanner {
                 let path = url.standardizedFileURL.path
                 guard path.hasPrefix(rootPath + "/") else { continue }
                 let rel = String(path.dropFirst(rootPath.count + 1))
-                let size: KnownSize = v.fileSize.map { .known(Int64($0)) } ?? .unknown
+                // Logische Dateigröße; Dateien, die nur in iCloud Drive liegen, melden sie meist ebenfalls.
+                let size: KnownSize = (v.fileSize ?? v.totalFileSize).map { .known(Int64($0)) } ?? .unknown
                 let alias = v.fileResourceIdentifier.map { String(describing: $0) }
                 result.append(FileEntry(
                     reference: ItemReference(provider: .connectedSource(sourceID), localIdentifier: rel),

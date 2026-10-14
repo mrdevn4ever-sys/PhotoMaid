@@ -1,9 +1,9 @@
 import PhotoMaidCore
 import SwiftUI
 
-/// Große Dateien: nur gemessene Größen ab der Schwelle (Einstellung). Was noch nicht gemessen ist, heißt so – nicht
-/// „unbekannt“. Unbekannt wird nach Grund getrennt gezeigt: nur in iCloud (iOS nennt die Größe ohne Download nicht) oder
-/// nicht lesbar – nie geschätzt, nie 0. Gemessen wird app-weit im Hintergrund (`SizeMeasuring`), Videos zuerst.
+/// Große Dateien ab der Schwelle (Einstellung): gemessene Größen; wo iOS keine Größe nennt (nur in iCloud, nicht
+/// lesbar), die Schätzung aus den eigenen Messungen – immer als „ca.“ und mit iCloud-Symbol (E17), nie 0. Was noch
+/// nicht gemessen ist, heißt so. Gemessen wird app-weit im Hintergrund (`SizeMeasuring`), Videos zuerst.
 /// Öffnen führt in denselben Feed (Entscheidung nur per Geste).
 struct LargeFilesView: View {
     @Environment(AppModel.self) private var app
@@ -12,9 +12,14 @@ struct LargeFilesView: View {
 
     private static let choices = [25, 50, 100, 250, 500, 1000]
 
+    private struct Entry {
+        let asset: MediaAsset
+        let size: SizeValue
+        let inCloud: Bool
+    }
+
     private struct Summary {
-        var large: [(MediaAsset, Int64)] = []
-        var cloudVideos: [MediaAsset] = []
+        var large: [Entry] = []
         var counts = SizeCounts()
     }
 
@@ -31,16 +36,16 @@ struct LargeFilesView: View {
             switch r.state {
             case .known:
                 s.counts.known += 1
-                if let b = r.bytes, b >= limit { s.large.append((a, b)) }
-            case .notLocal:
-                s.counts.notLocal += 1
-                if a.isVideo { s.cloudVideos.append(a) }
-            case .unreadable:
-                s.counts.unreadable += 1
+                if let b = r.bytes, b >= limit { s.large.append(Entry(asset: a, size: .exact(b), inCloud: false)) }
+            case .notLocal, .unreadable:
+                if r.state == .notLocal { s.counts.notLocal += 1 } else { s.counts.unreadable += 1 }
+                let estimate = app.estimator.estimate(a.estimateInput)
+                if estimate >= limit {
+                    s.large.append(Entry(asset: a, size: .approximate(estimate), inCloud: r.state == .notLocal))
+                }
             }
         }
-        s.large.sort { $0.1 > $1.1 }
-        s.cloudVideos.sort { $0.duration > $1.duration }
+        s.large.sort { $0.size.bytes > $1.size.bytes }
         return s
     }
 
@@ -74,20 +79,27 @@ struct LargeFilesView: View {
             if !large.isEmpty {
                 Section {
                     Button {
-                        app.open(FeedRequest(.items(large.map(\.0.reference), titleKey: "large_files")))
+                        app.open(FeedRequest(.items(large.map(\.asset.reference), titleKey: "large_files")))
                     } label: {
                         Label(L("today_start_cta"), systemImage: "rectangle.stack")
                     }
-                    ForEach(large, id: \.0.id) { a, bytes in
+                    ForEach(large, id: \.asset.id) { e in
                         Button {
-                            let refs = large.map(\.0.reference)
-                            app.open(FeedRequest(.items(Array(refs.drop(while: { $0 != a.reference })), titleKey: "large_files")))
+                            let refs = large.map(\.asset.reference)
+                            app.open(FeedRequest(.items(Array(refs.drop(while: { $0 != e.asset.reference })), titleKey: "large_files")))
                         } label: {
                             HStack(spacing: AppSpacing.s) {
-                                AssetThumbnail(assetID: a.id, side: 56)
+                                AssetThumbnail(assetID: e.asset.id, side: 56)
                                 VStack(alignment: .leading) {
-                                    Text(verbatim: MediaInfoLine.describe(a)).font(AppTypography.subheadline).lineLimit(1)
-                                    Text(verbatim: SizeText.bytes(bytes)).font(AppTypography.headline).monospacedDigit()
+                                    Text(verbatim: MediaInfoLine.describe(e.asset)).font(AppTypography.subheadline).lineLimit(1)
+                                    HStack(spacing: 4) {
+                                        Text(verbatim: SizeText.value(e.size)).font(AppTypography.headline).monospacedDigit()
+                                        if e.inCloud {
+                                            Image(systemName: "icloud").font(AppTypography.footnote)
+                                                .foregroundStyle(AppColors.textSecondary)
+                                                .accessibilityLabel(Text(key: "large_in_icloud_a11y"))
+                                        }
+                                    }
                                 }
                                 Spacer()
                             }
@@ -95,8 +107,9 @@ struct LargeFilesView: View {
                         .buttonStyle(.plain)
                     }
                 } header: {
-                    let total = large.reduce(Int64(0)) { $0 + $1.1 }
-                    Text(verbatim: SizeText.bytes(total) + " " + LP("large_in_files", large.count))
+                    Text(verbatim: SizeText.value(SizeSum(large.map(\.size)).value) + " " + LP("large_in_files", large.count))
+                } footer: {
+                    if large.contains(where: { $0.size.isApproximate }) { Text(key: "size_approx_note") }
                 }
             }
             if !fileLarge.isEmpty {
@@ -114,14 +127,6 @@ struct LargeFilesView: View {
             if s.counts.notLocal > 0 {
                 Section {
                     Text(verbatim: L("large_icloud_header", s.counts.notLocal))
-                    if !s.cloudVideos.isEmpty {
-                        // Nach Länge, nicht nach Größe: die Größe ist unbekannt und wird nicht geschätzt.
-                        Button {
-                            app.open(FeedRequest(.items(s.cloudVideos.map(\.reference), titleKey: "large_files")))
-                        } label: {
-                            Label(L("large_icloud_videos", s.cloudVideos.count), systemImage: "video")
-                        }
-                    }
                 } footer: {
                     Text(key: "large_icloud_footer")
                 }
@@ -130,7 +135,7 @@ struct LargeFilesView: View {
                 Section {
                     Text(verbatim: L("large_unreadable", s.counts.unreadable))
                 } footer: {
-                    Text(key: "large_unknown_footer")
+                    Text(key: "large_unreadable_footer")
                 }
             }
         }
@@ -138,6 +143,9 @@ struct LargeFilesView: View {
         .navigationTitle(L("large_files"))
         .onAppear { threshold = app.settings.largeFileThresholdMB }
         .onChange(of: threshold) { _, v in app.updateSettings { $0.largeFileThresholdMB = v } }
-        .task(id: app.cleanupMedia.count) { measuring.ensure(openCandidates, sizer: app.sizer) }
+        .task(id: app.cleanupMedia.count) {
+            measuring.ensure(openCandidates, sizer: app.sizer)
+            await app.refreshSizeEstimator()
+        }
     }
 }

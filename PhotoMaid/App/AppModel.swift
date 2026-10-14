@@ -577,12 +577,40 @@ final class AppModel {
         }
     }
 
-    /// Gesparte Bytes der bestätigt entfernten Medien (nur gemessene Größen; unbekannt zählt nicht als 0).
-    func recordSavings(_ removed: Set<ItemReference>, sizes: [ItemReference: KnownSize]) -> CleanupSavings {
-        let s = CleanupSavings.of(removed: removed, sizes: sizes)
-        let total = SavingsTotal(bytes: settings.savedTotalBytes, lowerBound: settings.savedTotalLowerBound).adding(s)
-        updateSettings { $0.savedTotalBytes = total.bytes; $0.savedTotalLowerBound = total.lowerBound }
+    /// Gesparte Bytes der bestätigt entfernten Medien: gemessene Größen; ohne Messung (z. B. nur in iCloud) die
+    /// Schätzung, dann ist die Zahl „ca.“ (E17). Unbekannt zählt nie als 0.
+    func recordSavings(_ removed: Set<ItemReference>, sizes: [ItemReference: KnownSize],
+                       estimates: [ItemReference: Int64] = [:]) -> CleanupSavings {
+        let s = CleanupSavings.of(removed: removed, sizes: sizes, estimates: estimates)
+        let total = SavingsTotal(bytes: settings.savedTotalBytes, lowerBound: settings.savedTotalLowerBound,
+                                 approximate: settings.savedTotalApproximate).adding(s)
+        updateSettings {
+            $0.savedTotalBytes = total.bytes
+            $0.savedTotalLowerBound = total.lowerBound
+            $0.savedTotalApproximate = total.approximate
+        }
         return s
+    }
+
+    /// Größenschätzung für Medien/Dateien ohne Messung (immer als „ca.“ gezeigt, E17). Kalibriert aus den eigenen
+    /// Messungen, höchstens alle 10 Minuten neu; bis dahin gelten Richtwerte.
+    private(set) var estimator = SizeEstimator()
+    @ObservationIgnored private var estimatorAt: Date?
+
+    func refreshSizeEstimator() async {
+        if let at = estimatorAt, Date().timeIntervalSince(at) < 600 { return }
+        estimatorAt = Date()
+        let media = visibleMedia
+        let records = await sizer.records(for: media)
+        let files = self.files.entries
+        estimator = await Task.detached(priority: .utility) {
+            SizeEstimator.calibrated(media: media, records: records, files: files)
+        }.value
+    }
+
+    /// Gemessen, sonst geschätzt („ca.“) – für Anzeigen beim Löschen.
+    func sizeValue(_ asset: MediaAsset, measured: KnownSize?) -> SizeValue {
+        SizeValue.of(measured ?? .unknown, estimate: estimator.estimate(asset.estimateInput))
     }
 
     // MARK: Größen

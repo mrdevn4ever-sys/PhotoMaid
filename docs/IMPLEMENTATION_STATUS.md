@@ -37,18 +37,24 @@ Auf Nutzermeldung (Screenshots Build 5) – alles ohne neue Netzwerk-, Konto- od
 - Nachtrag C: `AppModel.sizes` (Papierkorb, Sammlungen) misst über `SizeMeasuring.measureParallel` (gespeicherte Werte
   sofort, Rest parallel in Paketen, Wärme-Drosselung). „Speicher“ nutzt den app-weiten Mess-Auftrag (läuft beim
   Verlassen weiter, zeigt „mind.“, solange noch gemessen wird); ein zweiter Auftrag bricht den ersten nicht mehr ab.
+- E17 (Nutzerentscheidung 14.10.2026): beim Löschen steht immer eine Zahl. `SizeEstimator` (Kern) kalibriert sich aus
+  den gemessenen Medien dieser Mediathek (Median Bytes/Pixel bzw. Bytes/(Pixel·s), Dateien: Median je Typ; zu wenige
+  Messungen → Richtwerte HEIC/HEVC). Papierkorb: Größe je Eintrag, „Auswahl: …“, Bestätigungsdialog, „Gespart“ und
+  Gesamtsumme mit „ca.“, sobald ein Teil geschätzt ist (`SizeValue`, `SizeSum`, `CleanupSavings.display`,
+  `savedTotalApproximate`). „Große Dateien“: Medien nur in iCloud/nicht lesbar mit „ca.“ und iCloud-Symbol in der Liste.
+  „Dateien“: ohne lesbare Größe „ca.“; Dateigröße zusätzlich über `totalFileSize`. 7 Texte (davon 1 geändert).
 - Nachtrag B: Medienart „Bildschirmaufnahmen“ (`videoScreenRecording`) und Sortierung „Zuletzt hinzugefügt“
   (`LibraryOrder`, Reihenfolge des Systemalbums „Aufnahmen“/`smartAlbumUserLibrary`; ohne Datumsüberschriften). 2 Texte.
 
 | Prüfung | Ergebnis |
 |---|---|
-| `swift build` / `swift test` (Linux, Swift 6.4) | PASS: 354 Tests (21 neu: Ergebnisse/Drosselung, Inventur/Vorfilter/Prüfsummen, Filter/Reihenfolge) |
+| `swift build` / `swift test` (Linux, Swift 6.4) | PASS: 361 Tests (28 neu: Ergebnisse/Drosselung, Inventur/Vorfilter/Prüfsummen, Filter/Reihenfolge, Schätzung/„ca.“-Summen) |
 | Typprüfung neuer Infrastruktur gegen Platzhalter (Swift 6 strikt: `MediaSizer`, `SizeMeasuring`, `SizeIndexDatabase`, `DuplicateScanner`, `AnalysisRunner`, `AnalysisController`, `AnalysisDatabase`) | PASS (nur Linux-Platzhalter für Photos/UIKit/BackgroundTasks, kein Apple-SDK) |
 | `SizeIndexDatabase` mit echtem SQLite (Linux) | PASS |
 | `swiftc -parse` aller 123 App-Dateien | PASS |
-| `android_strings_to_xcstrings.py --check` | PASS: 1516 benutzte Kennungen, 2500 Einträge, 16 Sprachen |
+| `android_strings_to_xcstrings.py --check` | PASS: 1520 benutzte Kennungen, 2506 Einträge, 16 Sprachen |
 | App-Target bauen (`xcodebuild`), SwiftUI-Dateien typgeprüft | NOT RUN: kein macOS/Xcode; kein GitHub-Actions-Lauf ohne Freigabe |
-| Gerät: Geschwindigkeit bei 30k Medien, Wärme, Face ID beim Schließen, PhotoKit-Fehlercode „nur in iCloud“, Reihenfolge „Zuletzt hinzugefügt“ | NOT RUN |
+| Gerät: Geschwindigkeit bei 30k Medien, Wärme, Face ID beim Schließen, PhotoKit-Fehlercode „nur in iCloud“, Reihenfolge „Zuletzt hinzugefügt“, Plausibilität der „ca.“-Schätzung gegenüber der Fotos-App | NOT RUN |
 
 ## Build 5 (11.10.2026, Branch `claude/build5-all-20261011`)
 
