@@ -11,7 +11,8 @@ on:
         default: false
 
 concurrency:
-  group: ci-${{ github.ref }}
+  # Keep evidence from the previous commit while validating a fix on the same branch.
+  group: ci-${{ github.ref }}-${{ github.sha }}
   cancel-in-progress: true
 
 permissions:
