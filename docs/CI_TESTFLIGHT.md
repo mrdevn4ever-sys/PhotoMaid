@@ -31,7 +31,9 @@ Googles öffentliche Testanzeigen, PIN-Tresor und `PhotoMaid.storekit`. Keine Sy
 Das Artefakt `simulator-ui-evidence` enthält PNGs, Accessibility-Bäume, zwei `.xcresult.zip`, Logs,
 Testübersichten und das Medienmanifest (Herkunft/SHA-256). Die QA-Belege erscheinen bereits vor dem zweiten
 Durchlauf zusätzlich als `simulator-fixtures-evidence`; ein fehlgeschlagener QA-Lauf verhindert den echten
-Durchlauf nicht. Die abschließende Prüfung verlangt für beide Durchläufe Exitcode 0. Der Linux-Job verwendet Swift 6.4.
+Durchlauf nicht. Die abschließende Prüfung verlangt für beide Durchläufe Exitcode 0. Mit `ui_phase=fixtures` oder `ui_phase=real`
+lässt sich nach der ersten Gesamtprüfung gezielt ein Durchlauf wiederholen; dann wird dessen Exitcode geprüft.
+Standard bleibt `all`. Build, Unit-Tests und Linux-Kernprüfung laufen weiterhin. Der Linux-Job verwendet Swift 6.4.
 
 Optional exportiert `baseline_run=<CI-Lauf-ID>` auch Screenshots aus einem älteren `ios-build-report`-Ergebnisbündel.
 `collect_run=<CI-Lauf-ID>` führt ausschließlich einen Linux-Sammeljob aus (keine App-Tests): Bilder und

@@ -9,6 +9,11 @@ on:
         description: "UI-Tests und Screenshots ausführen (länger)"
         type: boolean
         default: false
+      ui_phase:
+        description: "UI-Durchlauf (gezielte Wiederholung nach der ersten Gesamtprüfung)"
+        type: choice
+        options: [all, fixtures, real]
+        default: all
       baseline_run:
         description: "Optional: CI-Lauf-ID für den Export älterer xcresult-Screenshots"
         type: string
@@ -95,25 +100,29 @@ jobs:
           echo "$RUNNER_TEMP/media-venv/bin" >> "$GITHUB_PATH"
           brew install ffmpeg
       - name: UI-Tests mit QA-Daten
-        if: inputs.ui_tests
+        if: inputs.ui_tests && inputs.ui_phase != 'real'
         continue-on-error: true
         run: bash scripts/ci/simulator_ui_tests.sh '${{ steps.sim.outputs.udid }}' "$RUNNER_TEMP/PhotoMaidDerived" "$RUNNER_TEMP/simulator-ui" fixtures
       - name: QA-Belege sofort bereitstellen
         uses: actions/upload-artifact@v4
-        if: always() && inputs.ui_tests
+        if: always() && inputs.ui_tests && inputs.ui_phase != 'real'
         with:
           name: simulator-fixtures-evidence
           path: ${{ runner.temp }}/simulator-ui/fixtures*
           if-no-files-found: warn
       - name: UI-Tests mit echter PhotoKit-Mediathek (nur Testanzeigen)
-        if: always() && inputs.ui_tests && steps.build.outcome == 'success' && steps.media.outcome == 'success'
+        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && steps.build.outcome == 'success' && steps.media.outcome == 'success'
         continue-on-error: true
         run: bash scripts/ci/simulator_ui_tests.sh '${{ steps.sim.outputs.udid }}' "$RUNNER_TEMP/PhotoMaidDerived" "$RUNNER_TEMP/simulator-ui" real
       - name: Beide UI-Ergebnisse prüfen
         if: always() && inputs.ui_tests && steps.build.outcome == 'success'
         run: |
-          test "$(cat "$RUNNER_TEMP/simulator-ui/fixtures.exit")" = 0
-          test "$(cat "$RUNNER_TEMP/simulator-ui/real.exit")" = 0
+          if [ '${{ inputs.ui_phase }}' != real ]; then
+            test "$(cat "$RUNNER_TEMP/simulator-ui/fixtures.exit")" = 0
+          fi
+          if [ '${{ inputs.ui_phase }}' != fixtures ]; then
+            test "$(cat "$RUNNER_TEMP/simulator-ui/real.exit")" = 0
+          fi
       - name: Ältere Simulator-Belege exportieren
         if: always() && inputs.baseline_run != ''
         env:
