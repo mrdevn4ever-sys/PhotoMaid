@@ -43,17 +43,18 @@ extension XCTestCase {
     }
 
     func finishIntroduction(in app: XCUIApplication, prefix: String) {
+        var requestedPhotos = false
         for page in 0..<5 {
-            resolvePrivacyPrompts(in: app, prefix: prefix)
             let next = app.buttons["onboarding.next"]
             if !next.exists && !next.waitForExistence(timeout: 3) { break }
             checkpoint("\(prefix)_intro_\(page + 1)", app: app)
             XCTAssertTrue(next.isEnabled)
             next.tap()
+            if page == 4 { requestedPhotos = true }
         }
         let deadline = Date().addingTimeInterval(25)
         repeat {
-            resolvePrivacyPrompts(in: app, prefix: prefix)
+            resolvePrivacyPrompts(in: app, prefix: prefix, photos: requestedPhotos)
             if app.tabBars.firstMatch.exists { break }
             Thread.sleep(forTimeInterval: 0.5)
         } while Date() < deadline
@@ -64,12 +65,14 @@ extension XCTestCase {
         checkpoint(prefix + "_today", app: app)
     }
 
-    func resolvePrivacyPrompts(in app: XCUIApplication, prefix: String) {
+    func resolvePrivacyPrompts(in app: XCUIApplication, prefix: String, photos: Bool = false) {
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        var systemPromptExpected = photos
         for step in 0..<4 {
             var handled = false
             // iOS 26's rich Photos sheet is not always exposed as an XCUI Alert.
-            for title in ["Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos",
+            if photos {
+              for title in ["Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos",
                           "Zugriff auf alle Fotos erlauben"] {
                 let allow = springboard.buttons[title].firstMatch
                 if allow.exists && allow.isHittable {
@@ -78,6 +81,7 @@ extension XCTestCase {
                     handled = true
                     break
                 }
+              }
             }
             let explainer = app.staticTexts["Our app wants to stay free for you"].firstMatch
             if explainer.exists {
@@ -86,10 +90,21 @@ extension XCTestCase {
                     checkpoint("\(prefix)_tracking_explainer_\(step)", app: app)
                     next.tap()
                     handled = true
+                    systemPromptExpected = true
+                }
+            }
+            for title in ["Consent", "I consent", "Zustimmen", "Einwilligen", "Agree"] {
+                let consent = app.webViews.buttons[title].firstMatch
+                if consent.exists && consent.isHittable {
+                    checkpoint("\(prefix)_consent_\(step)", app: app)
+                    consent.tap()
+                    handled = true
+                    systemPromptExpected = true
+                    break
                 }
             }
             let alert = springboard.alerts.firstMatch
-            if alert.exists {
+            if systemPromptExpected && alert.exists {
                 let text = alert.label.lowercased() + alert.staticTexts.allElementsBoundByIndex.map(\.label).joined().lowercased()
                 if !text.contains("delete") && !text.contains("löschen") && (text.contains("track") || text.contains("verfolg")) {
                     for title in ["Allow", "Erlauben", "Allow Tracking", "Tracking erlauben"] {
@@ -101,15 +116,6 @@ extension XCTestCase {
                             break
                         }
                     }
-                }
-            }
-            for title in ["Consent", "I consent", "Zustimmen", "Einwilligen", "Agree"] {
-                let consent = app.webViews.buttons[title].firstMatch
-                if consent.exists && consent.isHittable {
-                    checkpoint("\(prefix)_consent_\(step)", app: app)
-                    consent.tap()
-                    handled = true
-                    break
                 }
             }
             if !handled { break }
