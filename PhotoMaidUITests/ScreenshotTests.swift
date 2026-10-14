@@ -142,9 +142,13 @@ final class ScreenshotTests: XCTestCase {
         // 05 Video-Feed
         if tap("hub.videos", "Videos im Aufräumen-Hub") {
             if waitFor(element("feed.stage"), 10, "Video-Feed") {
+                // This fresh QA launch shows the hints before the delayed feed tutorial.
+                // Waiting only for the tutorial immediately after opening misses it.
+                settle(6.5)
                 let skip = app.buttons["Tutorial überspringen"].firstMatch
                 if skip.waitForExistence(timeout: 2) { skip.tap() }
-                settle(3.5)
+                XCTAssertFalse(skip.exists)
+                settle(1)
                 snap("05_review_video")
             }
             closeFeed()

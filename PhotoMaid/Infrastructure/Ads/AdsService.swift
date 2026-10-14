@@ -108,21 +108,36 @@ final class AdsService: NSObject {
         guard !appOpenHandled else { return }
         appOpenHandled = true
         guard let units = AppConfig.adMob,
-              AppOpenAdPolicy.shouldShow(launchNumber: launchNumber, adsAllowed: app.capabilities.adsAllowed) else { return }
+              AppOpenAdPolicy.shouldShow(launchNumber: launchNumber, adsAllowed: app.capabilities.adsAllowed) else {
+            Diagnostics.log(.ads, "app-open-not-due")
+            return
+        }
         // Nur direkt nach dem Start (nicht, wenn der Kaufstatus erst viel später geklärt wird).
         let started = ProcessInfo.processInfo.systemUptime
-        guard started - launchedAt < 15 else { return }
+        guard started - launchedAt < 15 else {
+            Diagnostics.log(.ads, "app-open-start-window-expired")
+            return
+        }
         await prepare(app: app)
-        guard canRequestAds else { return }
+        guard canRequestAds else {
+            Diagnostics.log(.ads, "app-open-no-consent")
+            return
+        }
         let ad: AppOpenAd
         do { ad = try await AppOpenAd.load(with: units.appOpen, request: Request()) } catch {
             Diagnostics.error(.ads, "app-open-load-failed", error)
             return
         }
-        guard ProcessInfo.processInfo.systemUptime - started < 4, UIApplication.shared.applicationState == .active,
-              app.capabilities.adsAllowed, app.feed == nil, app.fullScreen == nil, !VaultStore.shared.isPresented else {
+        guard ProcessInfo.processInfo.systemUptime - started < 4 else {
+            Diagnostics.log(.ads, "app-open-load-window-expired")
             return
         }
+        guard UIApplication.shared.applicationState == .active,
+              app.capabilities.adsAllowed, app.feed == nil, app.fullScreen == nil, !VaultStore.shared.isPresented else {
+            Diagnostics.log(.ads, "app-open-presentation-unavailable")
+            return
+        }
+        Diagnostics.log(.ads, "app-open-presenting")
         await presentFullScreen(ad) { ad.present(from: nil) }
     }
 

@@ -299,7 +299,7 @@ final class RealLibraryTests: XCTestCase {
         XCTAssertTrue(e("feed.stage").exists)
         closeFeed()
         tab("Verlauf")
-        XCTAssertEqual(e("history.events").value as? String, "101", "Undo removes exactly one of the two later decisions")
+        XCTAssertEqual(e("history.events").value as? String, "103", "100 decisions + keep + later + undo audit event; ads and down add no event")
         snap("history_no_ad_decision")
         XCTAssertFalse(app.staticTexts["Anzeige"].exists)
         XCTAssertTrue(contains("Papierkorb").exists)
