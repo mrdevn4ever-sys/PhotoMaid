@@ -266,49 +266,7 @@ struct FeedView: View {
 
     private var stage: some View {
         GeometryReader { geo in
-            let refs = [model.next, model.current].compactMap { $0 }
-            ZStack {
-                ForEach(refs, id: \.self) { ref in
-                    if let asset = model.assets[ref.localIdentifier] {
-                        let top = ref == model.current
-                        FeedMediaPage(asset: asset, isTop: top, state: model.previews[ref] ?? .loading,
-                                      retry: model.retries[ref] ?? 0, intentColor: top ? intentColor : nil,
-                                      onResult: { ok in model.previewResult(ref, ok: ok) },
-                                      onRetry: { model.retryPreview(ref) },
-                                      onSkip: { model.skipWithoutDecision() })
-                            .scaleEffect(top ? zoom : underScale(geo.size))
-                            .offset(top ? CGSize(width: model.offset.width + pan.width, height: model.offset.height + pan.height) : .zero)
-                            .rotationEffect(top && !reduceMotion ? .degrees(model.offset.width / 40) : .zero)
-                            .opacity(top ? 1 : underOpacity(geo.size))
-                            .zIndex(top ? 1 : 0)
-                            .allowsHitTesting(top)
-                    }
-                }
-                DirectionPill(direction: model.lockedDirection, action: model.lockedDirection.map { controls.action(for: $0) },
-                              ready: model.readyDirection != nil)
-                    .frame(maxHeight: .infinity, alignment: .top)
-                    .padding(.top, AppSpacing.s)
-                    .zIndex(2)
-                if showHints {
-                    GestureHintOverlay(controls: controls)
-                        .transition(.opacity)
-                        .zIndex(3)
-                        .onTapGesture { hideHints() }
-                }
-                VStack {
-                    Spacer()
-                    if let pill = model.laterPill {
-                        LaterPillView(pill: pill) { model.editLater() }
-                            .transition(.move(edge: .bottom).combined(with: .opacity))
-                    } else if let notice = model.notice {
-                        NoticePill(text: notice.text).transition(.opacity)
-                    }
-                }
-                .padding(.bottom, AppSpacing.l)
-                .animation(AppMotion.standard(reduceMotion), value: model.laterPill?.id)
-                .animation(AppMotion.standard(reduceMotion), value: model.notice?.id)
-                .zIndex(4)
-            }
+            stageLayers(size: geo.size)
             .contentShape(.rect)
             .gesture(dragGesture)
             .simultaneousGesture(magnifyGesture)
@@ -345,6 +303,58 @@ struct FeedView: View {
             .animation(AppMotion.standard(reduceMotion), value: model.adCard?.id)
         }
         .padding(.horizontal, AppSpacing.xs)
+    }
+
+    /// Small builders keep the compiler's constraint search bounded (Xcode 26.6).
+    private func stageLayers(size: CGSize) -> some View {
+        let refs = [model.next, model.current].compactMap { $0 }
+        return ZStack {
+            ForEach(refs, id: \.self) { ref in
+                stageMedia(ref, size: size)
+            }
+            DirectionPill(direction: model.lockedDirection, action: model.lockedDirection.map { controls.action(for: $0) },
+                          ready: model.readyDirection != nil)
+                .frame(maxHeight: .infinity, alignment: .top)
+                .padding(.top, AppSpacing.s)
+                .zIndex(2)
+            if showHints {
+                GestureHintOverlay(controls: controls)
+                    .transition(.opacity)
+                    .zIndex(3)
+                    .onTapGesture { hideHints() }
+            }
+            VStack {
+                Spacer()
+                if let pill = model.laterPill {
+                    LaterPillView(pill: pill) { model.editLater() }
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                } else if let notice = model.notice {
+                    NoticePill(text: notice.text).transition(.opacity)
+                }
+            }
+            .padding(.bottom, AppSpacing.l)
+            .animation(AppMotion.standard(reduceMotion), value: model.laterPill?.id)
+            .animation(AppMotion.standard(reduceMotion), value: model.notice?.id)
+            .zIndex(4)
+        }
+    }
+
+    @ViewBuilder
+    private func stageMedia(_ ref: ItemReference, size: CGSize) -> some View {
+        if let asset = model.assets[ref.localIdentifier] {
+            let top: Bool = ref == model.current
+            FeedMediaPage(asset: asset, isTop: top, state: model.previews[ref] ?? .loading,
+                          retry: model.retries[ref] ?? 0, intentColor: top ? intentColor : nil,
+                          onResult: { ok in model.previewResult(ref, ok: ok) },
+                          onRetry: { model.retryPreview(ref) },
+                          onSkip: { model.skipWithoutDecision() })
+                .scaleEffect(top ? zoom : underScale(size))
+                .offset(top ? CGSize(width: model.offset.width + pan.width, height: model.offset.height + pan.height) : .zero)
+                .rotationEffect(top && !reduceMotion ? .degrees(model.offset.width / 40) : .zero)
+                .opacity(top ? 1 : underOpacity(size))
+                .zIndex(top ? 1 : 0)
+                .allowsHitTesting(top)
+        }
     }
 
     /// Färbung beim Wischen nach der belegten Aktion (nur Entscheidungen).

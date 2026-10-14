@@ -93,10 +93,12 @@ jobs:
           [[ "$BASELINE_RUN" =~ ^[0-9]+$ ]]
           baseline="$RUNNER_TEMP/simulator-ui/baseline-$BASELINE_RUN"
           gh run download "$BASELINE_RUN" --repo "$GITHUB_REPOSITORY" -n ios-build-report -D "$baseline"
-          unzip -q "$baseline/tests.xcresult.zip" -d "$baseline"
-          xcrun xcresulttool export attachments --path "$baseline/tests.xcresult" --output-path "$baseline/attachments"
-          xcrun xcresulttool get test-results summary --path "$baseline/tests.xcresult" > "$baseline/summary.json"
-          rm -rf "$baseline/tests.xcresult"
+          if [ -f "$baseline/tests.xcresult.zip" ]; then
+            unzip -q "$baseline/tests.xcresult.zip" -d "$baseline"
+            xcrun xcresulttool export attachments --path "$baseline/tests.xcresult" --output-path "$baseline/attachments" || true
+            xcrun xcresulttool get test-results summary --path "$baseline/tests.xcresult" > "$baseline/summary.json" || true
+            rm -rf "$baseline/tests.xcresult"
+          fi
       - name: Bericht für den nächsten Korrekturdurchlauf
         if: always()
         run: |
