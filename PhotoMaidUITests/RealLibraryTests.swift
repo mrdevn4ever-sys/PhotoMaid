@@ -64,20 +64,29 @@ final class RealLibraryTests: XCTestCase {
         XCTAssertTrue(app.tabBars.buttons["Heute"].waitForExistence(timeout: 15))
     }
     private func consent() {
-        // UMP is an SDK sheet/web view; ATT/Photos are handled by the interruption monitor.
-        for title in ["Consent", "I consent", "Zustimmen", "Einwilligen", "Agree"] {
-            let consent = app.webViews.buttons[title].firstMatch
-            if consent.exists && consent.isHittable { tap(consent, "consent_" + title) }
-        }
-        if XCUIApplication(bundleIdentifier: "com.apple.springboard").alerts.firstMatch.exists { app.tap() }
+        resolvePrivacyPrompts(in: app, prefix: "real_privacy")
     }
-    private var testAd: XCUIElement {
-        app.webViews.firstMatch
+    private var testAd: XCUIElement? {
+        // The SDK also creates a hidden 1-point preloader containing a full-size WebView.
+        // Only a hittable creative can be an on-screen ad; UMP is handled separately.
+        if app.staticTexts["Our app wants to stay free for you"].exists { return nil }
+        return app.webViews.allElementsBoundByIndex.first {
+            $0.isHittable && $0.frame.width > app.frame.width * 0.8 && $0.frame.height > app.frame.height * 0.5
+        }
+    }
+    private func waitForTestAd(timeout: TimeInterval) -> Bool {
+        let deadline = Date().addingTimeInterval(timeout)
+        repeat {
+            consent()
+            if testAd != nil { return true }
+            Thread.sleep(forTimeInterval: 0.5)
+        } while Date() < deadline
+        return false
     }
     private func dismissTestAdIfPresent() {
         // Wait through the allowed four-second app-open load window.
         Thread.sleep(forTimeInterval: 5)
-        guard testAd.exists else { return }
+        guard testAd != nil else { return }
         snap("startup_test_ad")
         closeTestAd()
     }
@@ -106,7 +115,7 @@ final class RealLibraryTests: XCTestCase {
     private func feed(dismissHints: Bool = true, allMedia: Bool = false) {
         if allMedia {
             tab("Heute")
-            tap(e("today.review"), "all_media_feed")
+            tap(app.buttons["today.review"], "all_media_feed")
         } else {
             tab("Aufräumen")
             hub("photos")
@@ -119,11 +128,11 @@ final class RealLibraryTests: XCTestCase {
         }
         if dismissHints { skipTour() }
     }
-    private func closeFeed() { tap(app.buttons["Schließen"].firstMatch, "feed_closed") }
+    private func closeFeed() { tap(app.buttons["feed.close"].firstMatch, "feed_closed") }
     private func settings() {
         tab("Heute")
         tap(app.buttons["Einstellungen"].firstMatch, "settings")
-        XCTAssertTrue(app.switches["Haptik"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.switches["Vibration bei Aktionen"].waitForExistence(timeout: 5))
     }
     private func position() -> Int {
         let label = e("feed.position").label
@@ -148,7 +157,7 @@ final class RealLibraryTests: XCTestCase {
                 app.launch()
                 consent()
             }
-            let shown = testAd.waitForExistence(timeout: 8)
+            let shown = waitForTestAd(timeout: 8)
             snap("cold_start_\(start)")
             if start < 4 {
                 XCTAssertFalse(shown, "Starts 1–3 must not present app-open ads")
@@ -359,7 +368,7 @@ final class RealLibraryTests: XCTestCase {
         XCTAssertTrue(app.buttons.matching(NSPredicate(format: "label CONTAINS 'mit Pro'")).firstMatch.exists)
         snap("limit_100")
         tap(button("Werbung ansehen: heute 100 mehr entfernen"), "bonus_video_requested")
-        XCTAssertTrue(testAd.waitForExistence(timeout: 30), "Google rewarded TEST video")
+        XCTAssertTrue(waitForTestAd(timeout: 30), "Google rewarded TEST video")
         snap("bonus_test_video")
         Thread.sleep(forTimeInterval: 32)
         closeTestAd()
@@ -457,7 +466,7 @@ final class RealLibraryTests: XCTestCase {
         if rewarded {
             XCTAssertTrue(app.buttons["Video ansehen und Ordner anlegen"].waitForExistence(timeout: 5))
             tap(app.buttons["Video ansehen und Ordner anlegen"], "vault_reward_requested")
-            XCTAssertTrue(testAd.waitForExistence(timeout: 30))
+            XCTAssertTrue(waitForTestAd(timeout: 30))
             snap("vault_test_video")
             Thread.sleep(forTimeInterval: 32)
             closeTestAd()
@@ -511,7 +520,7 @@ final class RealLibraryTests: XCTestCase {
     func test90ProStoreKitPurchaseNoAdsAndFolder() {
         ready()
         settings()
-        let pro = button("PhotoMaid Pro")
+        let pro = app.buttons["settings.pro"].firstMatch
         scrollTo(pro)
         tap(pro, "pro_free")
         XCTAssertTrue(contains("ohne das Tageslimit von 100").waitForExistence(timeout: 10))
@@ -530,7 +539,7 @@ final class RealLibraryTests: XCTestCase {
         back("pro_back"); back("pro_settings_back")
         app.terminate(); app.launch()
         XCTAssertTrue(app.tabBars.firstMatch.waitForExistence(timeout: 15))
-        XCTAssertFalse(testAd.waitForExistence(timeout: 8))
+        XCTAssertFalse(waitForTestAd(timeout: 8))
         snap("pro_cold_start_without_ad")
         feed(allMedia: true)
         for index in 1...50 {
@@ -564,7 +573,7 @@ final class RealLibraryTests: XCTestCase {
             // Physical arrow rendering is reviewed in the PNGs; no locale-dependent swipe reversal.
             tap(app.buttons.element(matching: NSPredicate(format: "identifier == 'feed.close'")), language + "_feed_close")
             tap(app.tabBars.buttons.element(boundBy: 0), language + "_today_tab")
-            tap(e("today.settings"), language + "_settings")
+            tap(app.buttons["today.settings"], language + "_settings")
             let pro = e("settings.pro")
             scrollTo(pro); tap(pro, language + "_pro")
             snap(language + "_pro_text")

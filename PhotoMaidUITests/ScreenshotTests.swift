@@ -28,16 +28,7 @@ final class ScreenshotTests: XCTestCase {
 
     private func snap(_ name: String, settleFor seconds: TimeInterval = 1.2) {
         settle(seconds)
-        let shot = XCUIScreen.main.screenshot()
-        let attachment = XCTAttachment(screenshot: shot)
-        attachment.name = name
-        attachment.lifetime = .keepAlways
-        add(attachment)
-        guard let dir = ProcessInfo.processInfo.environment["SCREENSHOT_DIR"], !dir.isEmpty else { return }
-        let url = URL(fileURLWithPath: dir, isDirectory: true)
-        try? FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
-        do { try shot.pngRepresentation.write(to: url.appendingPathComponent("\(name).png")) }
-        catch { XCTFail("Screenshot \(name) nicht gespeichert: \(error)") }
+        checkpoint(name, app: app)
     }
 
     @discardableResult
@@ -54,6 +45,8 @@ final class ScreenshotTests: XCTestCase {
     private func tap(_ id: String, _ what: String) -> Bool {
         let e = element(id)
         guard waitFor(e, 10, what) else { return false }
+        for _ in 0..<6 where !e.isHittable { app.swipeUp() }
+        guard e.isHittable else { XCTFail("Nicht erreichbar: \(what)"); return false }
         e.tap()
         return true
     }
@@ -76,22 +69,9 @@ final class ScreenshotTests: XCTestCase {
     }
 
     private func closeFeed() {
-        let close = app.buttons["Schließen"].firstMatch
+        let close = app.buttons["feed.close"].firstMatch
         if close.waitForExistence(timeout: 3) { close.tap() }
         settle(0.8)
-    }
-
-    /// Systemabfrage Fotozugriff (Sprache des Simulators).
-    private func allowPhotosAlert() {
-        let labels = ["Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos",
-                      "Zugriff auf alle Fotos erlauben", "Allow", "Erlauben"]
-        for _ in 0..<2 {
-            for l in labels where springboard.buttons[l].waitForExistence(timeout: 2) {
-                springboard.buttons[l].tap()
-                settle(1)
-                break
-            }
-        }
     }
 
     private func onboarding(capture: Bool) {
@@ -146,20 +126,14 @@ final class ScreenshotTests: XCTestCase {
                     if waitFor(remove, 6, "Papierkorb leeren") {
                         remove.tap()
                         snap("08_cleanup_confirm")
-                        // Niemals bestätigen: Dialog abbrechen (Button oder Tipp außerhalb des Popovers).
-                        let cancel = app.buttons["Abbrechen"].firstMatch
-                        if cancel.exists && cancel.isHittable { cancel.tap() }
-                        else { app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.12)).tap() }
-                        settle(1)
-                        if app.buttons.matching(NSPredicate(format: "label CONTAINS 'über die Fotos-App entfernen'")).firstMatch.exists {
-                            app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.12)).tap()
-                            settle(1)
-                        }
+                        // iOS 26 can expose this as a popover without a hittable Cancel.
+                        // Termination dismisses it safely, without touching the destructive action.
+                        XCTAssertTrue(app.buttons.matching(NSPredicate(format: "label CONTAINS 'entfernen'")).firstMatch.exists)
+                        app.terminate()
+                        launch(pro: true)
+                        onboarding(capture: false)
+                        tab("Aufräumen")
                     }
-                    let closeDone = app.buttons["Fertig"].firstMatch
-                    if closeDone.waitForExistence(timeout: 3) { closeDone.tap() } else { app.swipeDown(velocity: .fast) }
-                    settle(1.2)
-                    waitFor(element("feed.stage"), 5, "Feed nach Schließen des Papierkorbs")
                 }
             }
             closeFeed()
@@ -217,7 +191,7 @@ final class ScreenshotTests: XCTestCase {
         let gear = app.buttons["Einstellungen"].firstMatch
         guard waitFor(gear, 8, "Einstellungen-Zahnrad") else { return }
         gear.tap()
-        let pro = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'PhotoMaid Pro'")).firstMatch
+        let pro = app.buttons["settings.pro"].firstMatch
         for _ in 0..<5 where !pro.waitForExistence(timeout: 1) { app.swipeUp() }
         if waitFor(pro, 6, "PhotoMaid Pro in Einstellungen") {
             pro.tap()

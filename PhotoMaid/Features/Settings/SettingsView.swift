@@ -58,7 +58,9 @@ struct SettingsView: View {
                     Button(L("set_ad_privacy")) { Task { await AdsService.shared.presentPrivacyOptions() } }
                 }
                 NavigationLink(value: Route.help) { Text(key: "help") }
-                NavigationLink(value: Route.pro) { Text(key: app.capabilities.isLifetimePro ? "set_pro_active" : "set_pro_once") }
+                NavigationLink(value: Route.pro) {
+                    LabeledContent(L("pro_title"), value: L(app.capabilities.isLifetimePro ? "set_pro_active" : "set_pro_once"))
+                }
                     .accessibilityIdentifier("settings.pro")
             }
         }

@@ -28,22 +28,22 @@ final class PhotoMaidUITests: XCTestCase {
         app.tabBars.buttons["Studio"].tap()
         XCTAssertTrue(app.staticTexts["Collage"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["Film"].exists || app.staticTexts["Video zusammenfügen"].exists)
-        XCTAssertTrue(app.staticTexts["PDF aus Fotos"].exists)
+        XCTAssertTrue(app.staticTexts["PDF erstellen"].exists)
         checkpoint("qa_studio", app: app)
     }
 
     func testSettingsShowsDecisionControls() {
         app.buttons["Einstellungen"].firstMatch.tap()
-        XCTAssertTrue(app.switches["Haptik"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.switches["Vibration bei Aktionen"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.switches["Favoriten schützen"].exists)
-        XCTAssertTrue(app.staticTexts["Standard für Später"].exists)
+        XCTAssertTrue(app.staticTexts["Später: Standardabstand"].exists)
         checkpoint("qa_settings_controls", app: app)
     }
 
     func testProWithoutConfigurationShowsNoInventedPrice() {
         app.buttons["Einstellungen"].firstMatch.tap()
         // Zeile fasst Titel und Status zusammen („PhotoMaid Pro, Einmalkauf“).
-        let pro = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'PhotoMaid Pro'")).firstMatch
+        let pro = app.buttons["settings.pro"].firstMatch
         // Listenzeilen außerhalb des Bildschirms existieren erst nach dem Scrollen.
         for _ in 0..<5 where !pro.waitForExistence(timeout: 1) { app.swipeUp() }
         XCTAssertTrue(pro.waitForExistence(timeout: 5))
@@ -60,7 +60,6 @@ final class PhotoMaidUITests: XCTestCase {
             throw XCTSkip("Keine QA-Medien bzw. kein Fotozugriff im Simulator")
         }
         photos.tap()
-        app.tap() // Interruption-Monitor auslösen
         let stage = app.otherElements["feed.stage"]
         guard stage.waitForExistence(timeout: 5) else { throw XCTSkip("Keine Medien im Feed") }
         Thread.sleep(forTimeInterval: 1.2)

@@ -34,6 +34,16 @@ Freigabe des Inhabers: nur `ci.yml` und Simulator-Prüfungen auf
   Ergebnisse weiterhin **NOT RUN**. Ein grüner Build allein gilt nicht
   als Geräteabnahme. Die abschließende Tabelle und Fehlerkorrekturen folgen hier nach den Simulator-Läufen.
 
+- Weitere Belege: Lauf `38638077269` (abgebrochen), alle **31 unterschiedlichen PNGs** geprüft;
+  Lauf `38642182043`, QA: **2/8 PASS, 6/8 FAIL**, alle **25 unterschiedlichen PNGs** geprüft.
+  Rich-Photos-Systemblatt trotz `simctl privacy`; explizite sichere Freigabe ergänzt.
+  UMP zeigt „Our app wants to stay free for you“ / „Continue“; zuvor fälschlich als Anzeige erkannt.
+  Einwilligung und sichtbare Anzeigen werden nun getrennt erkannt (versteckter SDK-Preloader zählt nicht).
+  Veraltete Einstellungen-/Studio-Texte und Pro-Selektor korrigiert. Pro-Einstellungenzeile zeigt jetzt
+  „PhotoMaid Pro“ neben dem Kaufstatus (bestehende Texte aller 16 Sprachen).
+  App-eigene Entfernungsbestätigung wird im QA-Fotolauf durch Beenden/Neustart sicher verworfen;
+  niemals die echte Löschung ausgelöst. Ergebnis der nächsten Wiederholung steht noch aus.
+
 ## Neues Pro-Modell E19 + Werbung (14.10.2026, gleicher Branch)
 
 Nutzerentscheidung (14.10.2026; Rückfragen: Tresor nur Ordner, Feed-Werbekarte wie Android, iOS-Tracking-Abfrage ja):
