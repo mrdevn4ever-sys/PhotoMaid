@@ -29,7 +29,7 @@ on:
 
 concurrency:
   # Keep evidence from the previous commit while validating a fix on the same branch.
-  group: ci-${{ github.ref }}-${{ github.sha }}-${{ inputs.collect_run || 'tests' }}
+  group: ci-${{ github.ref }}-${{ github.sha }}-${{ inputs.collect_run || inputs.ui_phase || 'all' }}
   cancel-in-progress: true
 
 permissions:
