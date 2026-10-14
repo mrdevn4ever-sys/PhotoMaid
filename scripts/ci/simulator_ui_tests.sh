@@ -6,7 +6,7 @@ udid="$1"
 derived="$2"
 out="$3"
 phase="${4:-all}"
-case "$phase" in all|fixtures|real) ;; *) echo "Unknown UI phase: $phase" >&2; exit 2 ;; esac
+case "$phase" in all|fixtures|real|real-start|real-rest) ;; *) echo "Unknown UI phase: $phase" >&2; exit 2 ;; esac
 mkdir -p "$out"
 app="$derived/Build/Products/Debug-iphonesimulator/PhotoMaid.app"
 
@@ -60,19 +60,39 @@ if [ "$phase" = all ] || [ "$phase" = fixtures ]; then
   rm -rf "$out/qa-media"
 fi
 
-if [ "$phase" = all ] || [ "$phase" = real ]; then
+if [ "$phase" = all ] || [ "$phase" = real ] || [ "$phase" = real-start ]; then
   reset_simulator
   xcrun simctl io "$udid" screenshot "$out/simulator-source.png"
   python3 scripts/ci/real_test_media.py "$out/real-media" --screenshot "$out/simulator-source.png"
   find "$out/real-media" -type f \( -name '*.jpg' -o -name '*.png' -o -name '*.mp4' \) -print0 |
     xargs -0 xcrun simctl addmedia "$udid"
   xcrun simctl spawn "$udid" log show --last 1s --style compact > "$out/seed.log" || true
-  run_tests real -only-testing:PhotoMaidUITests/RealLibraryTests
+fi
+
+if [ "$phase" = real-start ]; then
+  run_tests real-start -only-testing:PhotoMaidUITests/RealLibraryTests/test00IntroductionAndFourColdStarts
+  pack_result real-start
+  [ "$(cat "$out/real-start.exit")" = 0 ]
+  exit
+fi
+
+if [ "$phase" = all ] || [ "$phase" = real ] || [ "$phase" = real-rest ]; then
+  if [ "$phase" = real-rest ]; then
+    # Keep the same imported library and app data; no fixture launch arguments.
+    test -f "$out/real-start.exit"
+    run_tests real -only-testing:PhotoMaidUITests/RealLibraryTests \
+      -skip-testing:PhotoMaidUITests/RealLibraryTests/test00IntroductionAndFourColdStarts
+  else
+    run_tests real -only-testing:PhotoMaidUITests/RealLibraryTests
+  fi
   xcrun simctl spawn "$udid" log show --last 2h --style compact \
     --predicate 'process == "PhotoMaid"' > "$out/app.log" || true
   pack_result real
 fi
 
 [ "$phase" != fixtures ] || { [ "$(cat "$out/fixtures.exit")" = 0 ]; exit; }
-[ "$phase" != real ] || { [ "$(cat "$out/real.exit")" = 0 ]; exit; }
+if [ "$phase" = real ] || [ "$phase" = real-rest ]; then
+  [ "$(cat "$out/real.exit")" = 0 ]
+  exit
+fi
 [ "$(cat "$out/fixtures.exit")" = 0 ] && [ "$(cat "$out/real.exit")" = 0 ]
