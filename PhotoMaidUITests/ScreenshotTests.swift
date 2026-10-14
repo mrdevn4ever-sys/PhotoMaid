@@ -12,6 +12,7 @@ final class ScreenshotTests: XCTestCase {
 
     override func setUp() async throws {
         continueAfterFailure = true // fehlende Screens sollen die übrigen nicht verhindern
+        installPermissionMonitor()
     }
 
     // MARK: Hilfen
@@ -94,20 +95,9 @@ final class ScreenshotTests: XCTestCase {
     }
 
     private func onboarding(capture: Bool) {
-        guard waitFor(app.staticTexts["Deine Privatsphäre zuerst"], 15, "Onboarding") else { return }
-        if capture { snap("01_onboarding") }
-        let allow = app.buttons["Zugriff erlauben"]
-        if allow.exists {
-            allow.tap()
-            allowPhotosAlert()
-        }
-        if capture { snap("02_permissions") }
-        let next = app.buttons["Weiter"]
-        if next.waitForExistence(timeout: 5) {
-            if !next.isHittable { app.swipeUp() }
-            next.tap()
-        }
-        settle(1.5)
+        finishIntroduction(in: app, prefix: capture ? "qa_intro" : "qa_\(name)")
+        let skip = app.buttons["Tutorial überspringen"].firstMatch
+        if skip.waitForExistence(timeout: 2) { skip.tap(); snap("qa_today_tour_skipped") }
     }
 
     // MARK: Hauptdurchgang
@@ -117,7 +107,7 @@ final class ScreenshotTests: XCTestCase {
         onboarding(capture: true)
 
         // 03 Heute
-        waitFor(app.staticTexts["PhotoMaid"], 10, "Heute")
+        waitFor(app.tabBars.buttons["Heute"], 10, "Heute")
         settle(2.5)
         snap("03_home")
 
@@ -126,12 +116,16 @@ final class ScreenshotTests: XCTestCase {
         if tap("hub.photos", "Fotos im Aufräumen-Hub") {
             let stage = element("feed.stage")
             if waitFor(stage, 10, "Feed-Bühne") {
-                snap("04a_gesture_hints", settleFor: 0.9)   // Gestenhilfe blendet nach ~2,6 s aus
-                settle(2.5)                                 // Hilfe weg, Vorschau geladen
+                let skip = app.buttons["Tutorial überspringen"].firstMatch
+                if skip.waitForExistence(timeout: 2) { skip.tap() }
+                snap("04a_gesture_hints", settleFor: 0.9)
+                settle(6.5)
+                if skip.waitForExistence(timeout: 1) { skip.tap() }
                 snap("04_review_photo")
                 stage.swipeUp()                      // HOCH = Behalten + weiter
                 settle(1.5)
                 snap("04b_after_up_keep")
+                XCTAssertTrue(element("feed.stage").exists)
                 stage.swipeLeft()                    // LINKS = Papierkorb + weiter
                 settle(1.5)
                 snap("04c_after_left_cleanup")
@@ -139,6 +133,7 @@ final class ScreenshotTests: XCTestCase {
                 settle(1.5)
                 stage.swipeRight()                   // RECHTS = Später mit Standardtermin + weiter
                 snap("06_later_pill", settleFor: 0.9) // Pille „In 2 Tagen wieder · Ändern“
+                XCTAssertTrue(element("later.pill").exists)
                 settle(2.5)
                 stage.swipeDown()                    // RUNTER = Vorheriges, keine Entscheidung
                 settle(1.5)
@@ -147,7 +142,7 @@ final class ScreenshotTests: XCTestCase {
                 if tap("feed.dock", "Papierkorb-Leiste") {
                     settle(1.5)
                     snap("07_cleanup_basket")
-                    let remove = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Papierkorb leeren'")).firstMatch
+                    let remove = app.buttons.matching(NSPredicate(format: "label CONTAINS 'Fotos und Videos entfernen'")).firstMatch
                     if waitFor(remove, 6, "Papierkorb leeren") {
                         remove.tap()
                         snap("08_cleanup_confirm")
@@ -247,7 +242,7 @@ final class ScreenshotTests: XCTestCase {
         settle(1.5)
         snap("17_dark_settings")
         let done = app.buttons["Fertig"].firstMatch
-        if done.exists { done.tap() }
+        if done.exists { done.tap() } else { back() }
         settle(1.5)
         snap("18_dark_home")
         tab("Aufräumen")

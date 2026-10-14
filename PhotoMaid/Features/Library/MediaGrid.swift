@@ -77,6 +77,7 @@ struct MediaGrid: View {
         }
         .buttonStyle(.plain)
         .accessibilityLabel(Text(verbatim: MediaInfoLine.describe(a)))
+        .accessibilityIdentifier("media.cell")
         .accessibilityAddTraits(selected ? .isSelected : [])
     }
 }

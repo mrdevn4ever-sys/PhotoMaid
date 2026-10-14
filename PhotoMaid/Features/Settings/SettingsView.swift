@@ -59,6 +59,7 @@ struct SettingsView: View {
                 }
                 NavigationLink(value: Route.help) { Text(key: "help") }
                 NavigationLink(value: Route.pro) { Text(key: app.capabilities.isLifetimePro ? "set_pro_active" : "set_pro_once") }
+                    .accessibilityIdentifier("settings.pro")
             }
         }
         .appPage().navigationTitle(L("settings"))

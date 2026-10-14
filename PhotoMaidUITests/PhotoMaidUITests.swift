@@ -10,26 +10,18 @@ final class PhotoMaidUITests: XCTestCase {
         continueAfterFailure = false
         app = XCUIApplication()
         app.launchArguments = ["-qa-fixtures", "-AppleLanguages", "(de)"]
-        addUIInterruptionMonitor(withDescription: "Fotozugriff") { alert in
-            for label in ["Vollen Zugriff erlauben", "Allow Full Access", "Zugriff auf alle Fotos erlauben"] {
-                if alert.buttons[label].exists { alert.buttons[label].tap(); return true }
-            }
-            return false
-        }
+        installPermissionMonitor()
         app.launch()
-        // Onboarding beim ersten Start schließen.
-        for _ in 0..<5 {
-            let next = app.buttons["Weiter"]
-            let allow = app.buttons["Zugriff erlauben"]
-            if next.waitForExistence(timeout: 2) { next.tap() }
-            else if allow.waitForExistence(timeout: 2) { allow.tap(); app.tap() }
-        }
+        finishIntroduction(in: app, prefix: "qa_\(name)")
+        let skip = app.buttons["Tutorial überspringen"].firstMatch
+        if skip.waitForExistence(timeout: 1) { skip.tap() }
     }
 
     func testFiveTabsExist() {
         for tab in ["Heute", "Fotos", "Aufräumen", "Studio", "Verlauf"] {
             XCTAssertTrue(app.tabBars.buttons[tab].waitForExistence(timeout: 5), "Tab \(tab) fehlt")
         }
+        checkpoint("qa_five_tabs", app: app)
     }
 
     func testStudioRoutesAreReachable() {
@@ -37,6 +29,7 @@ final class PhotoMaidUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Collage"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["Film"].exists || app.staticTexts["Video zusammenfügen"].exists)
         XCTAssertTrue(app.staticTexts["PDF aus Fotos"].exists)
+        checkpoint("qa_studio", app: app)
     }
 
     func testSettingsShowsDecisionControls() {
@@ -44,6 +37,7 @@ final class PhotoMaidUITests: XCTestCase {
         XCTAssertTrue(app.switches["Haptik"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.switches["Favoriten schützen"].exists)
         XCTAssertTrue(app.staticTexts["Standard für Später"].exists)
+        checkpoint("qa_settings_controls", app: app)
     }
 
     func testProWithoutConfigurationShowsNoInventedPrice() {
@@ -55,6 +49,7 @@ final class PhotoMaidUITests: XCTestCase {
         XCTAssertTrue(pro.waitForExistence(timeout: 5))
         pro.tap()
         XCTAssertFalse(app.staticTexts.containing(NSPredicate(format: "label CONTAINS '9.99'")).firstMatch.exists)
+        checkpoint("qa_pro", app: app)
     }
 
     /// Feed-Flow mit QA-Medien: hoch behalten, links Papierkorb, rechts später, runter zurück.
@@ -66,13 +61,21 @@ final class PhotoMaidUITests: XCTestCase {
         }
         photos.tap()
         app.tap() // Interruption-Monitor auslösen
-        let stage = app.otherElements["Aktuelles Medium"]
+        let stage = app.otherElements["feed.stage"]
         guard stage.waitForExistence(timeout: 5) else { throw XCTSkip("Keine Medien im Feed") }
+        Thread.sleep(forTimeInterval: 1.2)
+        stage.tap()
+        let skip = app.buttons["Tutorial überspringen"].firstMatch
+        if skip.waitForExistence(timeout: 2) { skip.tap() }
         stage.swipeUp()     // Behalten
+        checkpoint("qa_feed_keep", app: app)
         stage.swipeLeft()   // Papierkorb
+        checkpoint("qa_feed_trash", app: app)
         stage.swipeRight()  // Später mit Standardtermin → Pille
+        checkpoint("qa_feed_later", app: app)
         XCTAssertTrue(app.descendants(matching: .any)["later.pill"].waitForExistence(timeout: 3))
         stage.swipeDown()   // Zurück, keine Entscheidung
+        checkpoint("qa_feed_previous", app: app)
         XCTAssertTrue(app.staticTexts.containing(NSPredicate(format: "label CONTAINS 'Papierkorb: 1'")).firstMatch.exists)
     }
 }

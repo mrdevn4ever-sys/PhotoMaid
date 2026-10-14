@@ -140,6 +140,7 @@ struct FeedControlsView: View {
             .contentShape(.rect)
         }
         .accessibilityLabel(Text(verbatim: L(Self.directionKey(d)) + ": " + FeedActionText.title(current)))
+        .accessibilityIdentifier("controls.\(d)")
     }
 
     private func buttonRow(_ a: FeedAction) -> some View {

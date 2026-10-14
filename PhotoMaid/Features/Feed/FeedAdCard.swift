@@ -67,6 +67,7 @@ struct FeedAdCardView: View {
             withAnimation(.easeOut(duration: 0.2)) { canSkip = true }
         }
         .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("feed.ad")
         .accessibilityAction(named: Text(key: "ad_skip")) { if canSkip { dismiss() } }
     }
 

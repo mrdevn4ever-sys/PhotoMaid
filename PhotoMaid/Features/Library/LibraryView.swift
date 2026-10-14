@@ -122,6 +122,7 @@ struct LibraryView: View {
         }
         .accessibilityLabel(Text(key: "lib_filter_title"))
         .accessibilityValue(Text(verbatim: LibraryFilterText.title(filter)))
+        .accessibilityIdentifier("library.filter")
     }
 
     /// Aktiver Filter als Chip mit Anzahl und ✕ (damit nie vergessen wird, dass gefiltert ist).

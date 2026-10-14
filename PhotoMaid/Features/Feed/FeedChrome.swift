@@ -119,6 +119,7 @@ struct GestureHintOverlay: View {
         .padding(AppSpacing.l)
         .contentShape(.rect)
         .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("feed.hints")
     }
 
     private func hint(_ d: SwipeDirection, _ title: String) -> some View {
@@ -156,6 +157,7 @@ struct LaterPillView: View {
         .glassCapsule(interactive: true)
         .accessibilityElement(children: .combine)
         .accessibilityAction(named: Text(key: "change_date"), edit)
+        .accessibilityIdentifier("later.pill")
     }
 }
 

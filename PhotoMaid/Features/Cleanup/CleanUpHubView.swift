@@ -56,16 +56,20 @@ struct CleanUpHubView: View {
             RowGroup {
                 link(.largeFiles, "doc.badge.arrow.up", AppColors.amber, L("large_files"),
                      L("hub_large_from", SizeText.bytes(Int64(app.settings.largeFileThresholdMB) * 1_000_000)))
+                    .accessibilityIdentifier("hub.large")
                 SwiftUI.Divider().padding(.leading, 52)
                 link(.duplicates, "square.on.square", AppColors.success, L("duplicates"), L("hub_dup_sub"),
                      badge: app.capabilities.exactDuplicates ? nil : L("pro_badge"))
+                    .accessibilityIdentifier("hub.duplicates")
                 SwiftUI.Divider().padding(.leading, 52)
                 link(.series, "square.stack.3d.forward.dottedline", AppColors.accent, L("series_title"), L("hub_series_sub"),
                      badge: app.capabilities.seriesCompare ? nil : L("pro_badge"))
                 SwiftUI.Divider().padding(.leading, 52)
                 link(.files, "folder", AppColors.amber, L("files"), L("hub_files_sub"))
+                    .accessibilityIdentifier("hub.files")
                 SwiftUI.Divider().padding(.leading, 52)
                 link(.storage, "chart.bar", AppColors.accent, L("storage_overview"), nil)
+                    .accessibilityIdentifier("hub.storage")
             }
         }
         if app.settings.analysisEnabled {
@@ -76,6 +80,7 @@ struct CleanUpHubView: View {
                         if i > 0 { SwiftUI.Divider().padding(.leading, 52) }
                         link(.smartReview(kind), SmartReviewText.symbol(kind), AppColors.indigo, SmartReviewText.title(kind),
                              SmartReviewText.subtitle(kind), badge: app.capabilities.smartReview ? nil : L("pro_badge"))
+                            .accessibilityIdentifier("hub.\(kind.rawValue)")
                     }
                 }
                 Text(key: "ana_footer").font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
@@ -92,6 +97,7 @@ struct CleanUpHubView: View {
         .buttonStyle(.plain)
         .disabled(!canRead)
         .accessibilityValue(Text(verbatim: n.map { $0 == 0 ? L("hub_nothing_pending") : LP("hub_pending", $0) } ?? ""))
+        .accessibilityIdentifier("hub.\(c.rawValue)")
     }
 
     private func link(_ route: Route, _ symbol: String, _ tint: Color, _ title: String, _ subtitle: String?,

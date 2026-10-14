@@ -1,0 +1,535 @@
+import StoreKitTest
+import XCTest
+
+/// Real PhotoKit + Core Data + Google test ads + local StoreKit. NO -qa-fixtures/-qa-pro.
+/// The workflow erases a disposable simulator, imports the manifest and grants Photos.
+/// No test taps the app's destructive PhotoKit confirmation or any system deletion.
+@MainActor
+final class RealLibraryTests: XCTestCase {
+    private var app: XCUIApplication!
+    private var store: SKTestSession!
+
+    override func setUp() async throws {
+        continueAfterFailure = false
+        store = try SKTestSession(configurationFileNamed: "PhotoMaid")
+        store.disableDialogs = true
+        installPermissionMonitor()
+        app = XCUIApplication()
+        app.launchArguments = ["-AppleLanguages", "(de)", "-AppleLocale", "de_CH"]
+        app.launch()
+    }
+
+    override func tearDown() {
+        if let app { snap("\(name)_end") }
+    }
+
+    private func snap(_ name: String) { checkpoint("real_" + name, app: app) }
+    private func e(_ id: String) -> XCUIElement { app.descendants(matching: .any)[id].firstMatch }
+    private func contains(_ text: String) -> XCUIElement {
+        app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS %@", text)).firstMatch
+    }
+    private func button(_ prefix: String) -> XCUIElement {
+        app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", prefix)).firstMatch
+    }
+    private func tap(_ element: XCUIElement, _ name: String, timeout: Double = 10) {
+        XCTAssertTrue(element.waitForExistence(timeout: timeout), name)
+        if !element.isHittable {
+            for _ in 0..<7 where !element.isHittable { app.swipeUp() }
+        }
+        XCTAssertTrue(element.isHittable, name)
+        element.tap()
+        snap(name)
+    }
+    private func scrollTo(_ element: XCUIElement) {
+        for _ in 0..<9 {
+            if element.exists && element.isHittable { return }
+            app.swipeUp()
+        }
+        XCTAssertTrue(element.exists && element.isHittable)
+    }
+    private func tab(_ title: String) { tap(app.tabBars.buttons[title], "tab_" + title) }
+    private func back(_ name: String) { tap(app.navigationBars.buttons.element(boundBy: 0), name) }
+    private func skipTour() {
+        let skip = app.buttons["Tutorial überspringen"].firstMatch
+        if skip.waitForExistence(timeout: 1) { tap(skip, "tour_skip") }
+    }
+    private func ready() {
+        finishIntroduction(in: app, prefix: "real_launch")
+        consent()
+        dismissTestAdIfPresent()
+        skipTour()
+        XCTAssertTrue(app.tabBars.buttons["Heute"].waitForExistence(timeout: 15))
+    }
+    private func consent() {
+        // UMP is an SDK sheet/web view; ATT/Photos are handled by the interruption monitor.
+        for title in ["Consent", "I consent", "Zustimmen", "Agree"] {
+            let consent = app.webViews.buttons[title].firstMatch
+            if consent.exists && consent.isHittable { tap(consent, "consent_" + title) }
+        }
+        if XCUIApplication(bundleIdentifier: "com.apple.springboard").alerts.firstMatch.exists { app.tap() }
+    }
+    private var testAd: XCUIElement {
+        app.webViews.firstMatch
+    }
+    private func dismissTestAdIfPresent() {
+        // Wait through the allowed four-second app-open load window.
+        Thread.sleep(forTimeInterval: 5)
+        guard testAd.exists else { return }
+        snap("startup_test_ad")
+        closeTestAd()
+    }
+    private func closeTestAd() {
+        // SDK test creatives may make the close control available after their countdown.
+        let deadline = Date().addingTimeInterval(65)
+        while Date() < deadline {
+            for title in ["Close", "Close ad", "Close Ad", "Schließen", "Dismiss", "Done"] {
+                let close = app.buttons[title].firstMatch
+                if close.exists && close.isHittable {
+                    close.tap()
+                    snap("test_ad_closed")
+                    return
+                }
+            }
+            Thread.sleep(forTimeInterval: 1)
+        }
+        snap("test_ad_close_missing")
+        XCTFail("Google test ad has no accessible close control")
+    }
+    private func hub(_ id: String) {
+        let target = e("hub." + id)
+        scrollTo(target)
+        tap(target, "hub_" + id)
+    }
+    private func feed(dismissHints: Bool = true) {
+        tab("Aufräumen")
+        hub("photos")
+        XCTAssertTrue(e("feed.stage").waitForExistence(timeout: 15))
+        if dismissHints, e("feed.hints").exists {
+            Thread.sleep(forTimeInterval: 1.2)
+            e("feed.stage").tap()
+            snap("hints_dismissed_for_gesture_test")
+        }
+        skipTour()
+    }
+    private func closeFeed() { tap(app.buttons["Schließen"].firstMatch, "feed_closed") }
+    private func settings() {
+        tab("Heute")
+        tap(app.buttons["Einstellungen"].firstMatch, "settings")
+        XCTAssertTrue(app.switches["Haptik"].waitForExistence(timeout: 5))
+    }
+    private func position() -> Int {
+        let label = e("feed.position").label
+        let digits = label.components(separatedBy: CharacterSet.decimalDigits.inverted).filter { !$0.isEmpty }
+        return Int(digits.first ?? "") ?? -1
+    }
+    private func assertNoPlaceholders() {
+        for element in app.staticTexts.allElementsBoundByIndex {
+            XCTAssertNil(element.label.range(of: "%[0-9]*\\$?(?:lld|ld|d|@)|\\b(?:pro2|ana2|vault2)_[a-z_]+",
+                                             options: .regularExpression), element.label)
+        }
+    }
+
+    func test00IntroductionAndFourColdStarts() {
+        store.clearTransactions()
+        finishIntroduction(in: app, prefix: "real_start_1")
+        consent()
+        skipTour()
+        for start in 1...4 {
+            if start > 1 {
+                app.terminate()
+                app.launch()
+                consent()
+            }
+            let shown = testAd.waitForExistence(timeout: 8)
+            snap("cold_start_\(start)")
+            if start < 4 {
+                XCTAssertFalse(shown, "Starts 1–3 must not present app-open ads")
+            } else {
+                XCTAssertTrue(shown, "Fourth cold start must present a Google test ad")
+                closeTestAd()
+            }
+            XCTAssertTrue(app.tabBars.buttons["Heute"].exists)
+        }
+    }
+
+    func test10AnalysisQueueProgressAndGrid() {
+        ready()
+        tab("Aufräumen")
+        hub("blurry")
+        let start = app.buttons["Analyse starten"].firstMatch
+        XCTAssertTrue(start.waitForExistence(timeout: 15))
+        tap(start, "blurry_started")
+        XCTAssertTrue(app.buttons["Anhalten"].waitForExistence(timeout: 5))
+        let first = e("analysis.progress").value as? String ?? ""
+        back("blurry_back_while_running")
+        hub("similar")
+        XCTAssertTrue(contains("Gerade läuft").waitForExistence(timeout: 5))
+        XCTAssertTrue(app.buttons["Danach analysieren"].isEnabled)
+        tap(app.buttons["Danach analysieren"], "similar_queued")
+        XCTAssertTrue(app.buttons["Nicht mehr warten"].waitForExistence(timeout: 5))
+        tap(app.buttons["Jetzt zuerst"], "similar_prioritized")
+        XCTAssertTrue(app.buttons["Anhalten"].waitForExistence(timeout: 5))
+        back("similar_back")
+        hub("blurry")
+        XCTAssertTrue(contains("Wartet").exists || contains("Gerade läuft").exists || app.buttons["Anhalten"].exists)
+        if app.buttons["Jetzt zuerst"].exists { tap(app.buttons["Jetzt zuerst"], "blurry_prioritized") }
+        var previous = Int(first.split(separator: "/").first ?? "") ?? 0
+        let deadline = Date().addingTimeInterval(180)
+        repeat {
+            let text = e("analysis.progress").value as? String ?? ""
+            let done = Int(text.split(separator: "/").first ?? "") ?? previous
+            XCTAssertGreaterThanOrEqual(done, previous, "Analysis progress must not go backwards")
+            previous = done
+            snap("blurry_progress_\(done)")
+            if !app.buttons["Anhalten"].exists { break }
+            Thread.sleep(forTimeInterval: 2)
+        } while Date() < deadline
+        XCTAssertGreaterThan(previous, 0)
+        XCTAssertTrue(e("analysis.swipe").waitForExistence(timeout: 15), "Blurred test photos must produce hits")
+        app.swipeUp()
+        snap("blurry_full_grid")
+        let cells = app.buttons.matching(identifier: "media.cell").allElementsBoundByIndex.filter(\.isHittable)
+        XCTAssertGreaterThanOrEqual(cells.count, 3)
+        if cells.count >= 3 {
+            XCTAssertEqual(cells[0].frame.minY, cells[1].frame.minY, accuracy: 3)
+            XCTAssertEqual(cells[1].frame.minY, cells[2].frame.minY, accuracy: 3)
+        }
+        scrollTo(e("analysis.swipe"))
+        tap(e("analysis.swipe"), "blurry_swipe_feed")
+        XCTAssertTrue(e("feed.stage").waitForExistence(timeout: 10))
+        closeFeed()
+    }
+
+    func test20FiftyFastSwipesAdAndDirections() {
+        ready()
+        feed()
+        for index in 1...50 {
+            let before = position()
+            e("feed.stage").swipeLeft(velocity: .fast)
+            snap(String(format: "rapid_%02d", index))
+            XCTAssertEqual(position(), before + 1, "Swipe \(index) must advance once")
+            if index < 50 { XCTAssertFalse(e("feed.ad").exists) }
+        }
+        XCTAssertTrue(e("feed.ad").waitForExistence(timeout: 8))
+        XCTAssertTrue(app.staticTexts["Anzeige"].exists)
+        let beforeAd = position()
+        snap("ad_after_50")
+        e("feed.ad").swipeDown(velocity: .fast)
+        XCTAssertFalse(e("feed.ad").waitForExistence(timeout: 0.5))
+        XCTAssertEqual(position(), beforeAd, "Ad dismissal is not a decision")
+        snap("ad_down_immediate")
+        closeFeed()
+        tab("Verlauf")
+        XCTAssertEqual(e("history.events").value as? String, "50", "The ad adds no ledger event")
+        snap("history_exactly_50_no_ad")
+        feed()
+
+        var before = position()
+        e("feed.stage").swipeUp()
+        snap("up_keep")
+        XCTAssertEqual(position(), before + 1)
+        before = position()
+        e("feed.stage").swipeRight()
+        snap("right_later")
+        XCTAssertEqual(position(), before + 1)
+        XCTAssertTrue(e("later.pill").waitForExistence(timeout: 3))
+        XCTAssertTrue(e("later.pill").label.contains("2"))
+        XCTAssertTrue(e("later.pill").label.contains("Ändern"))
+        before = position()
+        e("feed.stage").swipeDown()
+        snap("down_previous")
+        XCTAssertEqual(position(), before - 1)
+        tap(app.buttons["Rückgängig"].firstMatch, "undo")
+        XCTAssertTrue(e("feed.stage").exists)
+        closeFeed()
+        tab("Verlauf")
+        snap("history_no_ad_decision")
+        XCTAssertFalse(app.staticTexts["Anzeige"].exists)
+        XCTAssertTrue(contains("Papierkorb").exists)
+    }
+
+    func test30GestureHelpAndCustomControls() {
+        ready()
+        settings()
+        let hint = app.switches["Wischhilfe beim Öffnen zeigen"]
+        XCTAssertTrue(hint.exists)
+        if hint.value as? String == "0" { tap(hint, "hint_setting_on") }
+        let controls = button("Wischen & Tasten")
+        tap(controls, "controls")
+        tap(e("controls.right"), "right_menu")
+        tap(app.buttons["In Album legen …"].firstMatch, "choose_album")
+        tap(button("Neues Album"), "new_album")
+        let name = app.alerts.textFields.firstMatch
+        XCTAssertTrue(name.waitForExistence(timeout: 5))
+        name.tap(); name.typeText("Simulator-Test")
+        snap("album_name")
+        tap(app.alerts.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Erstellen'")).firstMatch, "album_created")
+        XCTAssertTrue(e("controls.right").label.contains("Simulator-Test"))
+        tap(button("Tasten anzeigen"), "buttons_visibility")
+        tap(app.buttons["Immer"].firstMatch, "buttons_always")
+        XCTAssertTrue(button("Tasten anzeigen").label.contains("Immer"))
+        back("controls_back"); back("settings_back")
+        feed(dismissHints: false)
+        XCTAssertTrue(e("feed.hints").waitForExistence(timeout: 2))
+        snap("hints_on_open")
+        Thread.sleep(forTimeInterval: 3)
+        XCTAssertTrue(e("feed.hints").exists, "Help must remain visible for about six seconds")
+        snap("hints_still_after_3s")
+        Thread.sleep(forTimeInterval: 4)
+        XCTAssertFalse(e("feed.hints").exists)
+        snap("hints_gone_after_7s")
+        tap(app.buttons["Weitere Aktionen"].firstMatch, "feed_more")
+        tap(app.buttons["Wischhilfe zeigen"], "show_hints_menu")
+        Thread.sleep(forTimeInterval: 3)
+        XCTAssertTrue(e("feed.hints").exists)
+        snap("menu_hints_after_3s")
+        Thread.sleep(forTimeInterval: 4)
+        let before = position()
+        e("feed.stage").swipeRight()
+        snap("right_adds_to_album")
+        XCTAssertEqual(position(), before + 1)
+        XCTAssertTrue(contains("Simulator-Test").exists)
+        XCTAssertTrue(button("Behalten").exists, "Always-visible decision buttons")
+        tap(app.buttons["Rückgängig"].firstMatch, "album_undo")
+        closeFeed()
+    }
+
+    func test98TrashLimitRewardAndSizes() {
+        // This final check explicitly returns from the local StoreKit Pro purchase to Free.
+        store.clearTransactions()
+        app.terminate(); app.launch()
+        ready()
+        tab("Fotos")
+        tap(app.buttons["Auswählen"].firstMatch, "library_select")
+        let all = app.buttons["Alle"].firstMatch
+        tap(all, "library_select_all")
+        tap(app.buttons["In den Papierkorb"].firstMatch, "library_mark_trash")
+        // This is PhotoMaid's reversible mark, never PHAsset deletion.
+        let mark = app.alerts.buttons["In den Papierkorb"].firstMatch
+        if mark.waitForExistence(timeout: 3) { tap(mark, "mark_confirmed_reversible") }
+        tab("Heute")
+        let basket = button("Papierkorb")
+        scrollTo(basket)
+        tap(basket, "trash")
+        XCTAssertTrue(contains("Heute noch 100 von 100").waitForExistence(timeout: 10))
+        XCTAssertTrue(contains("Auswahl:").exists)
+        XCTAssertTrue(contains("MB").exists || contains("GB").exists || contains("KB").exists)
+        snap("trash_count_sizes")
+        tap(app.buttons.matching(NSPredicate(format: "label CONTAINS 'Fotos und Videos entfernen'")).firstMatch, "trash_limit_open")
+        XCTAssertTrue(contains("Werbung ansehen: heute 100 mehr entfernen").waitForExistence(timeout: 10))
+        XCTAssertTrue(app.buttons.matching(NSPredicate(format: "label CONTAINS 'mit Pro'")).firstMatch.exists)
+        snap("limit_100")
+        tap(button("Werbung ansehen: heute 100 mehr entfernen"), "bonus_video_requested")
+        XCTAssertTrue(testAd.waitForExistence(timeout: 30), "Google rewarded TEST video")
+        snap("bonus_test_video")
+        Thread.sleep(forTimeInterval: 32)
+        closeTestAd()
+        // The app may open its own confirmation after reward. Always cancel it.
+        let cancel = app.buttons["Abbrechen"].firstMatch
+        if cancel.waitForExistence(timeout: 5) { tap(cancel, "delete_confirmation_cancelled") }
+        XCTAssertTrue(contains("Heute noch 200 von 200").waitForExistence(timeout: 10))
+        snap("limit_200_no_deletion")
+    }
+
+    func test50LargeDuplicatesAndStorage() {
+        ready()
+        tab("Aufräumen")
+        hub("large")
+        snap("large_loading")
+        XCTAssertTrue(app.navigationBars["Große Dateien"].exists)
+        XCTAssertFalse(contains("%1$lld").exists)
+        back("large_back")
+        hub("storage")
+        snap("storage_progress")
+        XCTAssertTrue(contains("GB").waitForExistence(timeout: 20))
+        back("storage_back")
+        hub("duplicates")
+        tap(app.buttons["Prüfung starten"], "duplicates_started")
+        snap("duplicates_progress")
+        XCTAssertTrue(app.buttons["Erneut prüfen"].waitForExistence(timeout: 180))
+        snap("duplicates_five_copies")
+        let move = button("5 ")
+        XCTAssertTrue(move.exists, "Manifest has exactly five extra byte-identical copies")
+        XCTAssertFalse(contains("Keine identischen").exists)
+    }
+
+    func test60LibraryFiltersSortAndAspect() {
+        ready()
+        tab("Fotos")
+        for filter in ["Alle", "Favoriten", "Fotos", "Videos", "Bildschirmfotos"] {
+            tap(e("library.filter"), "filter_menu_" + filter)
+            tap(app.buttons[filter].firstMatch, "filter_" + filter)
+            XCTAssertEqual(e("library.filter").value as? String, filter)
+            if filter == "Videos" || filter == "Bildschirmfotos" {
+                XCTAssertTrue(app.buttons.matching(identifier: "media.cell").firstMatch.waitForExistence(timeout: 10),
+                              "Imported \(filter) must be visible")
+            }
+            snap("library_" + filter)
+        }
+        for option in ["Alle", "Zuletzt hinzugefügt", "Quadratisch", "Seitenverhältnis"] {
+            tap(e("library.filter"), "view_menu_" + option)
+            tap(app.buttons[option].firstMatch, "view_" + option)
+            XCTAssertTrue(app.tabBars.buttons["Fotos"].exists)
+        }
+        XCTAssertTrue(contains("Zuletzt hinzugefügt").exists)
+        XCTAssertGreaterThan(app.buttons.matching(identifier: "media.cell").count, 0)
+    }
+
+    func test70StudioFreeTools() {
+        ready()
+        tab("Studio")
+        XCTAssertFalse(app.images["crown"].exists)
+        tap(button("Collage"), "collage_picker")
+        let cells = app.buttons.matching(identifier: "picker.media")
+        XCTAssertGreaterThanOrEqual(cells.count, 2)
+        tap(cells.element(boundBy: 0), "collage_first_photo")
+        tap(cells.element(boundBy: 1), "collage_second_photo")
+        tap(app.buttons["Fertig"], "collage_editor")
+        XCTAssertFalse(contains("Pro freischalten").exists)
+        XCTAssertFalse(app.images["crown"].exists)
+        back("collage_back")
+        tap(button("Werkzeuge"), "tools_free")
+        XCTAssertFalse(contains("Pro freischalten").exists)
+        XCTAssertFalse(app.images["crown"].exists)
+        snap("studio_tools_free")
+        back("tools_back")
+        feed()
+        tap(app.buttons["Bearbeiten"].firstMatch, "photo_editor_free")
+        XCTAssertFalse(contains("Pro freischalten").exists)
+        XCTAssertFalse(app.images["crown"].exists)
+        snap("studio_photo_editor_free")
+    }
+
+    private func openVault() {
+        settings()
+        let vault = button("Privater Tresor")
+        scrollTo(vault)
+        tap(vault, "vault_open")
+    }
+    private func unlockVault() {
+        let pin = app.secureTextFields.firstMatch
+        XCTAssertTrue(pin.waitForExistence(timeout: 10))
+        pin.tap(); pin.typeText("628491")
+        snap("vault_pin_entered")
+        XCTAssertTrue(app.segmentedControls.buttons["Medien"].waitForExistence(timeout: 15))
+    }
+    private func newVaultFolder(_ title: String, rewarded: Bool) {
+        tap(button("Neuer Ordner"), "vault_new_folder_" + title)
+        if rewarded {
+            XCTAssertTrue(app.buttons["Video ansehen und Ordner anlegen"].waitForExistence(timeout: 5))
+            tap(app.buttons["Video ansehen und Ordner anlegen"], "vault_reward_requested")
+            XCTAssertTrue(testAd.waitForExistence(timeout: 30))
+            snap("vault_test_video")
+            Thread.sleep(forTimeInterval: 32)
+            closeTestAd()
+        } else { XCTAssertFalse(app.buttons["Video ansehen und Ordner anlegen"].exists) }
+        let name = app.alerts.textFields.firstMatch
+        XCTAssertTrue(name.waitForExistence(timeout: 10))
+        name.tap(); name.typeText(title)
+        snap("vault_folder_name_" + title)
+        tap(app.alerts.buttons["Speichern"].firstMatch, "vault_folder_created_" + title)
+        XCTAssertTrue(contains(title).waitForExistence(timeout: 10))
+    }
+
+    func test80VaultPINCloseAllTabsAndFreeFolder() {
+        ready()
+        openVault()
+        tap(app.buttons["Weiter"], "vault_intro_next")
+        let fields = app.secureTextFields
+        XCTAssertEqual(fields.count, 2)
+        fields.element(boundBy: 0).tap(); fields.element(boundBy: 0).typeText("628491")
+        fields.element(boundBy: 1).tap(); fields.element(boundBy: 1).typeText("628491")
+        snap("vault_pin_setup")
+        tap(app.buttons["Weiter"], "vault_code_next")
+        if app.switches.matching(NSPredicate(format: "label CONTAINS 'Face ID'")).firstMatch.exists {
+            let face = app.switches.matching(NSPredicate(format: "label CONTAINS 'Face ID'")).firstMatch
+            if face.value as? String == "1" { tap(face, "vault_face_id_off") }
+            tap(app.buttons["Weiter"], "vault_biometry_next")
+        }
+        tap(button("Ich habe ihn aufgeschrieben"), "vault_recovery_saved")
+        let hidden = app.switches["Eingang verstecken"].firstMatch
+        if hidden.exists && hidden.value as? String == "1" { tap(hidden, "vault_entry_visible") }
+        tap(button("Tresor einrichten"), "vault_setup_finished")
+        XCTAssertTrue(app.segmentedControls.buttons["Medien"].waitForExistence(timeout: 20))
+        newVaultFolder("Gratis-Test", rewarded: true)
+        for title in ["Medien", "Notizen", "Dateien"] {
+            tap(app.segmentedControls.buttons[title], "vault_tab_" + title)
+            let close = app.buttons["Schließen und sperren"].firstMatch
+            XCTAssertTrue(close.isHittable)
+            XCTAssertLessThan(close.frame.midX, app.frame.midX)
+            tap(close, "vault_close_" + title)
+            XCTAssertTrue(app.tabBars.firstMatch.waitForExistence(timeout: 5))
+            XCTAssertFalse(app.secureTextFields.firstMatch.exists, "Closing must never ask for PIN")
+            snap("vault_closed_no_prompt_" + title)
+            if title != "Dateien" {
+                back("vault_settings_back")
+                openVault()
+                unlockVault()
+            }
+        }
+    }
+
+    func test90ProStoreKitPurchaseNoAdsAndFolder() {
+        ready()
+        settings()
+        let pro = button("PhotoMaid Pro")
+        scrollTo(pro)
+        tap(pro, "pro_free")
+        XCTAssertTrue(contains("ohne das Tageslimit von 100").waitForExistence(timeout: 10))
+        assertNoPlaceholders()
+        XCTAssertTrue(contains("Ohne Werbung").exists)
+        XCTAssertTrue(contains("Tresor-Ordner").exists)
+        app.swipeUp()
+        snap("pro_free_benefits")
+        XCTAssertTrue(contains("Alles andere").exists)
+        let buy = button("PhotoMaid Pro freischalten")
+        scrollTo(buy)
+        tap(buy, "storekit_purchase")
+        XCTAssertTrue(app.staticTexts["Pro ist aktiv"].waitForExistence(timeout: 20))
+        snap("pro_active")
+        XCTAssertFalse(store.allTransactions().isEmpty)
+        back("pro_back"); back("pro_settings_back")
+        app.terminate(); app.launch()
+        XCTAssertTrue(app.tabBars.firstMatch.waitForExistence(timeout: 15))
+        XCTAssertFalse(testAd.waitForExistence(timeout: 8))
+        snap("pro_cold_start_without_ad")
+        feed()
+        for index in 1...50 {
+            let before = position()
+            e("feed.stage").swipeUp(velocity: .fast)
+            snap(String(format: "pro_rapid_%02d", index))
+            XCTAssertEqual(position(), before + 1)
+            XCTAssertFalse(e("feed.ad").exists, "Purchased Pro has no feed ads")
+        }
+        closeFeed()
+        openVault(); unlockVault()
+        newVaultFolder("Pro-Test", rewarded: false)
+        tap(app.buttons["Schließen und sperren"], "pro_vault_closed")
+    }
+
+    func test95EnglishAndArabicPlaceholdersAndArrows() {
+        for language in ["en", "ar"] {
+            app.terminate()
+            app.launchArguments = ["-AppleLanguages", "(\(language))", "-AppleLocale", language]
+            app.launch()
+            XCTAssertTrue(app.tabBars.firstMatch.waitForExistence(timeout: 15))
+            dismissTestAdIfPresent()
+            snap(language + "_today")
+            assertNoPlaceholders()
+            let cleanup = app.tabBars.buttons.element(boundBy: 2)
+            tap(cleanup, language + "_cleanup")
+            hub("photos")
+            XCTAssertTrue(e("feed.stage").waitForExistence(timeout: 10))
+            snap(language + "_feed_arrows")
+            assertNoPlaceholders()
+            // Physical arrow rendering is reviewed in the PNGs; no locale-dependent swipe reversal.
+            tap(app.buttons.element(matching: NSPredicate(format: "identifier == 'feed.close'")), language + "_feed_close")
+            tap(app.tabBars.buttons.element(boundBy: 0), language + "_today_tab")
+            tap(e("today.settings"), language + "_settings")
+            let pro = e("settings.pro")
+            scrollTo(pro); tap(pro, language + "_pro")
+            snap(language + "_pro_text")
+            assertNoPlaceholders()
+        }
+    }
+}

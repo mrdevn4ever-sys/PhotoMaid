@@ -49,6 +49,7 @@ struct OnboardingFlow: View {
                     }
                     Spacer()
                     Button(action: next) { Text(key: page == pages.count - 1 ? "privacy_allow" : "onb_next") }
+                        .accessibilityIdentifier("onboarding.next")
                         .buttonStyle(.glassProminent)
                 }
                 .padding(.horizontal, AppSpacing.pageMargin)

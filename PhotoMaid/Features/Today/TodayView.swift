@@ -88,6 +88,7 @@ struct TodayView: View {
             Spacer()
             GlassIconButton(symbol: "gearshape", label: L("settings")) { app.navigate(.settings) }
                 .tourTarget("today.settings")
+                .accessibilityIdentifier("today.settings")
         }
         .padding(.top, AppSpacing.m)
     }

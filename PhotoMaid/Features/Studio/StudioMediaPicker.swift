@@ -64,6 +64,7 @@ struct StudioMediaPicker: View {
                         }
                         .buttonStyle(.plain)
                         .accessibilityLabel(Text(verbatim: MediaInfoLine.describe(asset)))
+                        .accessibilityIdentifier("picker.media")
                         .accessibilityAddTraits(selected ? .isSelected : [])
                     }
                 }

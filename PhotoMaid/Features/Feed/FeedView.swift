@@ -175,6 +175,7 @@ struct FeedView: View {
         GlassEffectContainer(spacing: AppSpacing.s) {
             HStack(spacing: AppSpacing.s) {
                 GlassIconButton(symbol: "xmark", label: L("close")) { model.close() }
+                    .accessibilityIdentifier("feed.close")
                 Spacer(minLength: 0)
                 VStack(spacing: 2) {
                     Text(verbatim: model.request.title).font(AppTypography.headline).foregroundStyle(AppColors.textPrimary)
@@ -187,6 +188,7 @@ struct FeedView: View {
                 }
                 .accessibilityElement(children: .combine)
                 .accessibilityAddTraits(.isHeader)
+                .accessibilityIdentifier("feed.position")
                 Spacer(minLength: 0)
                 if model.canReorder && model.isLoaded && !model.session.items.isEmpty {
                     Menu {
@@ -315,6 +317,7 @@ struct FeedView: View {
             .onChange(of: geo.size) { _, s in model.viewSize = s }
             .accessibilityElement(children: .contain)
             .accessibilityLabel(Text(key: "feed_stage"))
+            .accessibilityIdentifier("feed.stage")
             .accessibilityValue(Text(verbatim: model.currentAsset.map(MediaInfoLine.describe) ?? ""))
             .accessibilityAction(named: Text(key: "act_keep_next")) { model.perform(.keep) }
             .accessibilityAction(named: Text(key: "act_trash")) { model.perform(.markForCleanup) }
@@ -490,6 +493,7 @@ struct FeedView: View {
             }
             Spacer(minLength: 0)
             TrashChip(count: app.read.basket.count) { showTrash = true }
+                .accessibilityIdentifier("feed.dock")
                 .tourTarget("feed.basket")
         }
     }

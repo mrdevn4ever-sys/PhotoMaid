@@ -144,7 +144,10 @@ targets:
   PhotoMaidUITests:
     type: bundle.ui-testing
     platform: iOS
-    sources: [PhotoMaidUITests]
+    sources:
+      - path: PhotoMaidUITests
+      - path: PhotoMaid/Resources/PhotoMaid.storekit
+        buildPhase: resources
     dependencies:
       - target: PhotoMaid
 schemes:

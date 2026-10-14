@@ -53,6 +53,8 @@ struct HistoryView: View {
         }
         .appPage()
         .navigationTitle(L("tab_history"))
+        .accessibilityIdentifier("history.events")
+        .accessibilityValue(Text(verbatim: String(app.read.events.count)))
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button { Task { _ = await app.undo() } } label: { Image(systemName: "arrow.uturn.backward") }

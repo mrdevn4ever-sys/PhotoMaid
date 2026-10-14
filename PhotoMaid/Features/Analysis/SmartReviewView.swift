@@ -78,6 +78,8 @@ struct SmartReviewView: View {
                 if counts.total > 0 {
                     ProgressView(value: counts.fraction)
                     Text(verbatim: L("ana2_progress", counts.complete, counts.total))
+                        .accessibilityIdentifier("analysis.progress")
+                        .accessibilityValue(Text(verbatim: "\(counts.complete)/\(counts.total)"))
                         .font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary).monospacedDigit()
                     if counts.cloud > 0 { detail(L("ana2_cloud_waiting", counts.cloud)) }
                     if counts.quality > 0 { detail(L("ana2_quality", counts.quality)) }
@@ -295,6 +297,7 @@ struct SmartReviewView: View {
                     .frame(maxWidth: .infinity, minHeight: AppSpacing.minTouch)
             }
             .buttonStyle(.glassProminent)
+            .accessibilityIdentifier("analysis.swipe")
             Text(key: analysisKind == .similar ? "ana2_swipe_hint_similar" : "ana2_swipe_hint")
                 .font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
                 .fixedSize(horizontal: false, vertical: true)

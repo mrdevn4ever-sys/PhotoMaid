@@ -21,7 +21,7 @@ jobs:
   core:
     name: PhotoMaidCore (Linux, swift test)
     runs-on: ubuntu-24.04
-    container: swift:6.2-noble
+    container: swift:6.4-noble
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
@@ -59,15 +59,25 @@ jobs:
           set -o pipefail
           # Alle Compilerfehler in einem Lauf sammeln, statt nach dem ersten Batch abzubrechen.
           defaults write com.apple.dt.Xcode IDEBuildingContinueBuildingAfterErrors -bool YES
-          SKIP="-skip-testing:PhotoMaidUITests"
-          [ "${{ inputs.ui_tests }}" = "true" ] && SKIP=""
           xcodebuild -project PhotoMaid.xcodeproj -scheme PhotoMaid \
             -destination "id=${{ steps.sim.outputs.udid }}" \
+            -derivedDataPath "$RUNNER_TEMP/PhotoMaidDerived" \
             -resultBundlePath "$RUNNER_TEMP/tests.xcresult" \
+            -parallel-testing-enabled NO \
             -skipPackagePluginValidation -skipMacroValidation \
-            CODE_SIGNING_ALLOWED=NO $SKIP \
-            build test 2>&1 | tee xcodebuild.log | grep -E "error:|\*\* (BUILD|TEST)|Test (Case|Suite) .* (passed|failed)|Executed" || true
+            CODE_SIGNING_ALLOWED=NO -skip-testing:PhotoMaidUITests \
+            build-for-testing test-without-building 2>&1 | tee xcodebuild.log | grep -E "error:|\*\* (BUILD|TEST)|Test (Case|Suite) .* (passed|failed)|Executed" || true
           grep -q "\*\* TEST SUCCEEDED \*\*" xcodebuild.log
+      - name: UI-Tests vorbereiten (öffentliche Testbilder)
+        if: inputs.ui_tests
+        run: |
+          python3 -m venv "$RUNNER_TEMP/media-venv"
+          "$RUNNER_TEMP/media-venv/bin/pip" install Pillow==12.3.0
+          echo "$RUNNER_TEMP/media-venv/bin" >> "$GITHUB_PATH"
+          brew install ffmpeg
+      - name: UI-Tests (QA und echte PhotoKit-Mediathek, nur Testanzeigen)
+        if: inputs.ui_tests
+        run: bash scripts/ci/simulator_ui_tests.sh '${{ steps.sim.outputs.udid }}' "$RUNNER_TEMP/PhotoMaidDerived" "$RUNNER_TEMP/simulator-ui"
       - name: Bericht für den nächsten Korrekturdurchlauf
         if: always()
         run: |
@@ -85,4 +95,10 @@ jobs:
             xcodebuild.log
             ci-report.md
             tests.xcresult.zip
+          if-no-files-found: warn
+      - uses: actions/upload-artifact@v4
+        if: always() && inputs.ui_tests
+        with:
+          name: simulator-ui-evidence
+          path: ${{ runner.temp }}/simulator-ui
           if-no-files-found: warn
