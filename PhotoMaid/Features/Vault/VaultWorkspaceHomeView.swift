@@ -424,8 +424,11 @@ struct VaultFilesView: View {
 struct VaultWorkspaceFolderBar: View {
     let scope: VaultFolderScope
     @Binding var folder: String?
+    @Environment(AppModel.self) private var app
     @State private var vault = VaultStore.shared
     @State private var creating = false
+    @State private var adPrompt = false
+    @State private var watching = false
     @State private var renaming: VaultWorkspaceFolder?
     @State private var name = ""
     @State private var error: String?
@@ -445,9 +448,17 @@ struct VaultWorkspaceFolderBar: View {
                         }
                     }
                 }
-                Button(L("vault_new_folder"), systemImage: "folder.badge.plus") { name = ""; creating = true }
+                Button(L("vault_new_folder"), systemImage: "folder.badge.plus") { startNewFolder() }
+                    .disabled(watching)
             }.buttonStyle(.bordered).frame(minHeight: 48)
         }.scrollIndicators(.hidden)
+        // Gratis: je neuem Ordner ein kurzes Werbevideo (E19); mit Pro ohne.
+        .confirmationDialog(L("vault_new_folder"), isPresented: $adPrompt, titleVisibility: .visible) {
+            Button(L("vault_ad_folder_watch")) { Task { await watchAd() } }
+            Button(L("cancel"), role: .cancel) {}
+        } message: {
+            Text(key: "vault_ad_folder_text")
+        }
         .alert(L("vault_new_folder"), isPresented: $creating) {
             TextField(L("vault2_name"), text: $name)
             Button(L("save")) {
@@ -455,6 +466,7 @@ struct VaultWorkspaceFolderBar: View {
                     var created: String?
                     try vault.workspaceTransaction { created = try $0.createFolder(name: name, scope: scope, nowMs: vault.nowMs).id }
                     folder = created
+                    VaultFolderGate.folderCreated(app)
                 }
                 catch { self.error = VaultWorkspaceMessages.error(error) }
             }
@@ -471,6 +483,33 @@ struct VaultWorkspaceFolderBar: View {
             Button(L("cancel"), role: .cancel) { renaming = nil }
         }
         .vaultWorkspaceError($error)
+    }
+
+    private func startNewFolder() {
+        switch VaultFolderGate.access(app) {
+        case .free:
+            name = ""
+            creating = true
+        case .watchAd:
+            AdsService.shared.preloadRewarded(app: app)
+            adPrompt = true
+        case .unavailable:
+            error = L("vault_ad_folder_unavailable")
+        }
+    }
+
+    private func watchAd() async {
+        watching = true
+        defer { watching = false }
+        switch await VaultFolderGate.watchAd(app) {
+        case .earned:
+            name = ""
+            creating = true
+        case .dismissed:
+            error = L("vault_ad_folder_dismissed")
+        case .unavailable:
+            error = L("vault_ad_folder_unavailable")
+        }
     }
 }
 

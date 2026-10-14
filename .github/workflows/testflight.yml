@@ -43,6 +43,11 @@ jobs:
       PM_BUNDLE_ID: ${{ vars.PM_BUNDLE_ID || 'com.mrdevn4ever.photomaid' }}
       PM_PRO_PRODUCT_ID: ${{ vars.PM_PRO_PRODUCT_ID || 'com.mrdevn4ever.photomaid.pro' }}
       PM_PRIVACY_POLICY_URL: ${{ vars.PM_PRIVACY_POLICY_URL || 'https://mrdevn4ever-sys.github.io/photomaid-website/' }}
+      # Werbung (E19): echte AdMob-IDs als Secrets oder Variablen; ohne sie Googles Test-Anzeigen.
+      PM_ADMOB_APP_ID: ${{ secrets.PM_ADMOB_APP_ID || vars.PM_ADMOB_APP_ID }}
+      PM_ADMOB_APP_OPEN_ID: ${{ secrets.PM_ADMOB_APP_OPEN_ID || vars.PM_ADMOB_APP_OPEN_ID }}
+      PM_ADMOB_NATIVE_ID: ${{ secrets.PM_ADMOB_NATIVE_ID || vars.PM_ADMOB_NATIVE_ID }}
+      PM_ADMOB_REWARDED_ID: ${{ secrets.PM_ADMOB_REWARDED_ID || vars.PM_ADMOB_REWARDED_ID }}
       CHANGELOG: ${{ inputs.changelog }}
       RUN_TESTS: ${{ inputs.run_tests }}
     steps:

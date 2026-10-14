@@ -74,6 +74,8 @@ final class FeedViewModel {
     @ObservationIgnored private var sessionIndexByID: [String: Int] = [:]
     /// The active series changes only when the visible item or queue changes, not on every touch frame.
     private(set) var currentSeries: [MediaAsset]?
+    /// Werbekarte (nur Gratis, E19): liegt über dem Medium, ist nie eine Entscheidung.
+    private(set) var adCard: FeedAdCard?
     @ObservationIgnored private var pillTask: Task<Void, Never>?
     @ObservationIgnored private var noticeTask: Task<Void, Never>?
 
@@ -354,6 +356,13 @@ final class FeedViewModel {
     /// Belegte Aktion einer Wischrichtung oder Taste (E18). Derselbe Weg für Geste und Taste: Entscheidungen laufen
     /// über `perform(_ intent:)`; „In Album legen“ fügt hinzu und behält in einem Schritt; „Nichts“ springt zurück.
     func perform(action: FeedAction, direction: SwipeDirection? = nil, velocity: CGSize = .zero) {
+        // Werbekarte offen: keine Entscheidung über das verdeckte Medium; „Zurück“ schließt nur die Karte.
+        if adCard != nil {
+            machine.finishCommit()
+            resetOffset()
+            if action == .previous { dismissAdCard() }
+            return
+        }
         switch action {
         case .nothing:
             machine.finishCommit()
@@ -369,6 +378,12 @@ final class FeedViewModel {
     }
 
     func perform(_ intent: FeedIntent, direction: SwipeDirection? = nil, velocity: CGSize = .zero) {
+        if adCard != nil {
+            machine.finishCommit()
+            resetOffset()
+            if intent == .previous { dismissAdCard() }
+            return
+        }
         // Solange eine Terminauswahl offen ist, kann nichts anderes entschieden oder navigiert werden.
         if customLater != nil { machine.finishCommit(); resetOffset(); return }
         guard !isCommitting else { return }
@@ -484,6 +499,7 @@ final class FeedViewModel {
                 offset = .zero
             }
             Haptics.commit()
+            countDecisionForAds()
             // Mehrere „Später“ hintereinander: die Pille bleibt stehen und wird nur ersetzt.
             if intent != .later || customDay != nil { laterPill = nil }
             machine.finishCommit()
@@ -659,7 +675,30 @@ final class FeedViewModel {
 
     // MARK: Undo
 
+    // MARK: Werbekarte (nur Gratis, E19)
+
+    /// Nach jeder 50. Entscheidung eine Werbekarte; kurz vorher wird eine Anzeige vorab geladen. Lädt keine Anzeige,
+    /// gibt es keine Karte (kein Warten, kein Zwang).
+    private func countDecisionForAds() {
+        let (due, untilDue) = app.countFeedDecisionForAds()
+        if untilDue <= 3 { AdsService.shared.preloadNative(app: app) }
+        guard due, adCard == nil else { return }
+        AdsService.shared.nativeAd(app: app) { [weak self] ad in
+            guard let self, let ad, self.adCard == nil, !self.session.isFinished else { return }
+            self.app.feedAdCardShown()
+            self.app.player.pause()
+            self.adCard = FeedAdCard(ad: ad)
+        }
+    }
+
+    /// Karte schließen (Wisch, „Weiter“, „runter“, Rückgängig). Keine Entscheidung, nichts im Verlauf.
+    func dismissAdCard() {
+        adCard = nil
+    }
+
     func undo() async {
+        // Rückgängig schließt eine offene Werbekarte sofort (und nimmt dann wie gewohnt zurück).
+        if adCard != nil { dismissAdCard() }
         guard !isCommitting, customLater == nil else { return }
         laterPill = nil
         let before = session.index

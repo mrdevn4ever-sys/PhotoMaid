@@ -33,7 +33,7 @@ struct OnboardingFlow: View {
                 .scrollBounceBehavior(.basedOnSize)
                 pageDots
                 // Kaufknopf nur mit echtem Preis aus dem App Store; sonst kein toter Knopf.
-                if page == 3, !app.capabilities.hasProToolsAccess, case .ready = app.purchases.offer {
+                if page == 3, !app.capabilities.isLifetimePro, case .ready = app.purchases.offer {
                     Button {
                         Task { _ = await app.purchases.purchasePro(using: purchase) }
                     } label: {

@@ -3,7 +3,7 @@
 Native iPhone-App (iOS 26+, Swift 6 strikte Concurrency, SwiftUI + Observation, Liquid Glass).
 Funktionale Referenz: Android-App `mrdevn4ever-sys/photomaid-android` (Funktionsmatrix `docs/IOS_FUNKTIONSMATRIX.md`).
 Kein Flutter, Dart, Kotlin, React Native, keine WebView-Oberfläche, keine nachgebaute Android-Oberfläche.
-Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E18) – nichts davon still ändern.
+Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E19) – nichts davon still ändern.
 
 ## Gesten (Standardbelegung, tatsächliche Fingerbewegung, wie Android – frei belegbar: Einstellungen › Wischen & Tasten, E18)
 
@@ -29,7 +29,9 @@ Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E18) – ni
 ## Verbote
 
 - Keine automatische Löschung. Löschen nur über `PHAssetChangeRequest.deleteAssets` mit Systembestätigung.
-- Kein Backend, kein Konto, kein CloudKit, kein Upload, keine Tracker, kein Werbe-SDK (E1 offen), kein Abo.
+- Kein Backend, kein Konto, kein CloudKit, kein Upload, kein Abo. Einziges Werbe-SDK: Google Mobile Ads, nur in Free
+  (E1/E19, Nutzerentscheidung 14.10.2026): erst UMP-Einwilligung, dann ATT-Abfrage, dann SDK; Anfragen nie mit Medien,
+  Namen, Pfaden, Hashes oder IDs. Echte AdMob-IDs nur über CI (`PM_ADMOB_*`), sonst Googles Test-IDs.
 - Bildanalyse nur mit Apple-Frameworks auf dem Gerät (Vision/VisionKit/Core Image, E7). Ergebnisse sind
   Vorschläge/Filter, nie Entscheidung oder Löschung. Kein LLM, keine Cloud-KI, keine Zusatzmodelle ohne Freigabe (E8).
 - Keine privaten APIs (z. B. `value(forKey: "fileSize")`), keine undokumentierten URL-Schemata.
@@ -44,9 +46,12 @@ Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E18) – ni
 
 ## Geschäftsregeln (aus dem Android-Quellcode)
 
-- Free: 20 endgültige Entfernungen pro lokalem Tag. Pro: Einmalkauf (StoreKit 2, Non-Consumable), unbegrenzt.
-- `hasProToolsAccess` ≠ `hasUnlimitedTrashAccess`. Preis nur `Product.displayPrice`.
-- Pro-Test und Video-Bonus nur, wenn E1 entschieden ist.
+- E19 (Nutzerentscheidung 14.10.2026, Abweichung von Android): alle Werkzeuge für alle frei (`hasProToolsAccess` immer
+  wahr). Free: 100 endgültige Entfernungen pro lokalem Tag, +100 einmal täglich per Belohnungsvideo (nur nach
+  SDK-Callback); Werbung beim Kaltstart ab dem 4. Start; native Werbekarte im Feed nach jeder 50. Entscheidung (nie eine
+  Entscheidung); neuer Tresor-Ordner je ein Belohnungsvideo. Pro: Einmalkauf (StoreKit 2, Non-Consumable) = ohne Werbung,
+  unbegrenzt entfernen, Tresor-Ordner frei (`isLifetimePro`, `hasUnlimitedTrashAccess`). Kein Pro-Test.
+- Preis nur `Product.displayPrice`.
 
 ## Architektur in Kürze
 

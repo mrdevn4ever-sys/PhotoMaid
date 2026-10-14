@@ -328,6 +328,18 @@ struct FeedView: View {
                     Button(FeedActionText.accessibility(action)) { model.perform(action: action) }
                 }
             }
+            // Werbekarte (nur Gratis) liegt über dem Medium und hat eigene Gesten – nie eine Entscheidung.
+            .overlay {
+                if let card = model.adCard {
+                    FeedAdCardView(card: card, dismiss: { model.dismissAdCard() }) {
+                        model.dismissAdCard()
+                        app.navigate(.pro)
+                        model.close()
+                    }
+                    .transition(.opacity)
+                }
+            }
+            .animation(AppMotion.standard(reduceMotion), value: model.adCard?.id)
         }
         .padding(.horizontal, AppSpacing.xs)
     }

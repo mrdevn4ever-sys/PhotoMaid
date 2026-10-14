@@ -170,7 +170,8 @@ final class VaultStore {
     /// Aktion (Ablegen, Zurücklegen, Import), gilt das als Bedienung.
     func checkInactivity() {
         guard phase == .unlocked else { return }
-        if progress != nil { _ = session.touch(now: uptime); return }
+        // Laufende Aktion oder ein Werbevideo für einen neuen Ordner: gilt als Bedienung.
+        if progress != nil || AdsService.shared.presenting { _ = session.touch(now: uptime); return }
         if session.requiresLock(now: uptime) { lock() }
     }
 

@@ -38,7 +38,7 @@ struct TodayView: View {
                     if access.canRead && app.readReady { QuickAccessSection().tourTarget("today.quick").id("today.quick") }
                     if app.capabilities.tier == .free, let first = app.settings.firstSeenDay, app.today > first {
                         Button { app.navigate(.pro) } label: {
-                            NavRow(symbol: "crown", title: L("today_pro_title"), subtitle: L("today_pro_text"))
+                            NavRow(symbol: "crown", title: L("today_pro_title"), subtitle: L("today_pro2_text"))
                         }
                         .buttonStyle(.plain)
                         .padding(.horizontal, AppSpacing.m)

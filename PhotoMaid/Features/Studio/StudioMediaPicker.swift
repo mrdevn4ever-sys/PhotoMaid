@@ -35,7 +35,7 @@ struct StudioMediaPicker: View {
                             } else if selection.count < limit {
                                 selection.insert(asset.id)
                             } else {
-                                app.showError(L("studio_free_limit"))
+                                app.showError(L("studio_max_selection", limit))
                             }
                         } label: {
                             // Quadratische Zelle (.fit, nicht .fill) mit genau dieser Trefferfläche: ein Tipp wählt nie

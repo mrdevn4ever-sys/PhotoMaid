@@ -3,13 +3,15 @@
 <!--
   PhotoMaid Privacy Manifest (App-Target).
   Medien, Dateinamen, Pfade, Hashes und Review-Daten verlassen das Gerät nicht.
-  RevenueCat bringt ein eigenes Manifest mit. Werbeanbieter noch nicht festgelegt:
-  Tracking/Collected Data für Werbung sind Release-Blocker (docs/RELEASE_BLOCKERS.md).
+  Werbung (E1/E19, nur Gratis): Google Mobile Ads bringt ein eigenes Manifest mit (Geräte-ID, Werbedaten,
+  Interaktion, ungefährer Standort, Diagnose). Mit Erlaubnis der iOS-Tracking-Abfrage (ATT) wird für
+  personalisierte Werbung getrackt, deshalb NSPrivacyTracking = true. App-Store-Datenschutzangaben entsprechend
+  pflegen (docs/RELEASE_BLOCKERS.md).
 -->
 <plist version="1.0">
 <dict>
 	<key>NSPrivacyTracking</key>
-	<false/>
+	<true/>
 	<key>NSPrivacyTrackingDomains</key>
 	<array/>
 	<key>NSPrivacyCollectedDataTypes</key>

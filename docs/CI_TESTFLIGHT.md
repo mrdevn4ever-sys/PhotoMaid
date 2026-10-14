@@ -52,6 +52,9 @@ gh api repos/mrdevn4ever-sys/photomaid/actions/runs/<RUN_ID>/artifacts  # Artefa
    | `APPLE_CERTIFICATE_BASE64` | `.p12`-Datei Base64 | – |
    | `APPLE_PROVISIONING_PROFILE_BASE64` | App-Store-Profil Base64 | – |
 
+   Werbung (E19): `PM_ADMOB_APP_ID`, `PM_ADMOB_APP_OPEN_ID`, `PM_ADMOB_NATIVE_ID`, `PM_ADMOB_REWARDED_ID` als Secret oder
+   Variable. Fehlen sie, nutzt der Build Googles öffentliche Test-Anzeigen (keine Einnahmen) – vor dem App Store Pflicht.
+
    Optional können als Repository-Variablen gesetzt werden: `PM_TEAM_ID`, `PM_BUNDLE_ID`,
    `PM_PRIVACY_POLICY_URL` und `PM_PRO_PRODUCT_ID`. Der Workflow verwendet für die ersten
    drei Werte sichere PhotoMaid-Fallbacks (`HUN9MS832X`, `com.mrdevn4ever.photomaid` und die

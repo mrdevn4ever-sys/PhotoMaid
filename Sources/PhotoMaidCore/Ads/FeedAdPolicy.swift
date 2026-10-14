@@ -1,7 +1,8 @@
 import Foundation
 
-/// Zähler für Werbekarten im Feed (nur Free). Android-Logik, auf iOS **nicht aktiv**, solange Entscheidung E1 offen ist
-/// (`AppConfig.adsEnabled == false`). Gezählt werden Entscheidungen, nicht „Zurück“. Lokal, keine Medien-IDs.
+/// Zähler für Werbekarten im Feed (nur Free). E19 (Nutzerentscheidung 14.10.2026): eine Karte nach jeder 50. Entscheidung
+/// (Wisch); ohne Schonfrist, Tagesgrenze oder Mindestabstand. Gezählt werden Entscheidungen, nicht „Zurück“.
+/// Lokal, keine Medien-IDs. Die Karte ist nie eine Entscheidung.
 public struct FeedAdState: Hashable, Codable, Sendable {
     public var decisionsTotal = 0
     public var sinceLastAd = 0
@@ -14,11 +15,12 @@ public struct FeedAdState: Hashable, Codable, Sendable {
 
 /// Einzige Stelle für Takt, Schonfrist und Tagesgrenze der Werbekarte.
 public enum FeedAdPolicy {
-    public static let interval = 7
-    public static let warmupDecisions = 30
-    public static let dailyCap = 30
+    public static let interval = 50
+    public static let warmupDecisions = 0
+    public static let dailyCap = Int.max
+    /// Erst danach lässt sich die Karte wegwischen (wie Android).
     public static let minVisibleMs: Int64 = 1_500
-    public static let minGapMs: Int64 = 60_000
+    public static let minGapMs: Int64 = 0
 
     public static func gapElapsed(_ s: FeedAdState, nowMs: Int64) -> Bool {
         s.lastCardAtMs == 0 || nowMs < s.lastCardAtMs || nowMs - s.lastCardAtMs >= minGapMs

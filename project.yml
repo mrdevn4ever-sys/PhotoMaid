@@ -25,6 +25,13 @@ settings:
 packages:
   PhotoMaidCore:
     path: .
+  # Werbung nur in der Gratis-Version (E1/E19, Nutzerentscheidung 14.10.2026). Feste Versionen.
+  GoogleMobileAds:
+    url: https://github.com/googleads/swift-package-manager-google-mobile-ads.git
+    exactVersion: 13.9.0
+  GoogleUserMessagingPlatform:
+    url: https://github.com/googleads/swift-package-manager-google-user-messaging-platform.git
+    exactVersion: 3.1.0
 targets:
   PhotoMaid:
     type: application
@@ -37,7 +44,10 @@ targets:
           - "Resources/ios_strings.json"
     dependencies:
       - package: PhotoMaidCore
+      - package: GoogleMobileAds
+      - package: GoogleUserMessagingPlatform
       - sdk: StoreKit.framework
+      - sdk: AppTrackingTransparency.framework
       - sdk: Photos.framework
       - sdk: PhotosUI.framework
       - sdk: AVFoundation.framework
@@ -74,6 +84,7 @@ targets:
         NSCameraUsageDescription: "PhotoMaid uses the camera only to scan documents when you tap Scan."
         NSFaceIDUsageDescription: "PhotoMaid uses Face ID only to open content you protected with a code."
         NSMicrophoneUsageDescription: "PhotoMaid needs microphone access for a voice note. Recording starts only when you tap."
+        NSUserTrackingUsageDescription: "The free version of PhotoMaid shows ads from Google. With your permission they can be more relevant to you. Your photos and files never go to advertisers."
         PHPhotoLibraryPreventAutomaticLimitedAccessAlert: true
         UIFileSharingEnabled: true
         LSSupportsOpeningDocumentsInPlace: true
@@ -92,6 +103,13 @@ targets:
             LSItemContentTypes: [com.adobe.pdf]
         PMProProductID: $(PM_PRO_PRODUCT_ID)
         PMPrivacyPolicyURL: $(PM_PRIVACY_POLICY_URL)
+        # Google Mobile Ads: ohne eigene IDs Googles öffentliche Test-IDs (Build-Einstellungen unten, CI überschreibt).
+        GADApplicationIdentifier: $(PM_ADMOB_APP_ID)
+        PMAdMobAppOpenID: $(PM_ADMOB_APP_OPEN_ID)
+        PMAdMobNativeID: $(PM_ADMOB_NATIVE_ID)
+        PMAdMobRewardedID: $(PM_ADMOB_REWARDED_ID)
+        SKAdNetworkItems:
+          - SKAdNetworkIdentifier: cstr6suwn9.skadnetwork
     entitlements:
       path: PhotoMaid/App/PhotoMaid.entitlements
       properties: {}   # bewusst leer: kein CloudKit, kein iCloud, keine App Groups (E9)
@@ -107,6 +125,11 @@ targets:
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         PM_PRO_PRODUCT_ID: ""
         PM_PRIVACY_POLICY_URL: ""
+        # Googles öffentliche Test-Anzeigen (keine Einnahmen). Echte IDs nur über CI (`PM_ADMOB_*`), nie im Repo.
+        PM_ADMOB_APP_ID: ca-app-pub-3940256099942544~1458002511
+        PM_ADMOB_APP_OPEN_ID: ca-app-pub-3940256099942544/5575463023
+        PM_ADMOB_NATIVE_ID: ca-app-pub-3940256099942544/3986624511
+        PM_ADMOB_REWARDED_ID: ca-app-pub-3940256099942544/1712485313
       configs:
         Debug:
           SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG QA_FIXTURES

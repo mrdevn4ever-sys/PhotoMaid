@@ -1,3 +1,4 @@
+import PhotoMaidCore
 import StoreKit
 import SwiftUI
 
@@ -9,18 +10,23 @@ struct ProView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: AppSpacing.l) {
+                let active = app.capabilities.isLifetimePro
                 Image(systemName: "sparkles").font(.system(size: 54)).foregroundStyle(AppColors.accent)
-                Text(key: app.capabilities.hasProToolsAccess ? "pro_active_title" : "pro_title").font(AppTypography.largeTitle)
-                Text(key: app.capabilities.hasProToolsAccess ? "pro_active_sub" : "pro_subtitle").multilineTextAlignment(.center)
-                ForEach([("pro_f1", "pro_f1d"), ("pro_f2", "pro_f2d"), ("pro_f3", "pro_f3d"), ("pro_f5", "pro_f5d")], id: \.0) { pair in
+                Text(key: active ? "pro_active_title" : "pro_title").font(AppTypography.largeTitle)
+                Text(key: active ? "pro2_active_sub" : "pro_subtitle").multilineTextAlignment(.center)
+                // E19: Pro = ohne Werbung, ohne Tageslimit, Tresor-Ordner ohne Werbung. Alles andere ist für alle frei.
+                ForEach(benefits, id: \.title) { b in
                     SurfaceCard {
                         VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                            Text(key: pair.0).font(AppTypography.headline)
-                            Text(key: pair.1).foregroundStyle(AppColors.textSecondary)
+                            Text(verbatim: b.title).font(AppTypography.headline)
+                            Text(verbatim: b.text).foregroundStyle(AppColors.textSecondary)
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
-                if !app.capabilities.hasProToolsAccess {
+                Text(key: "pro2_free_note").font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
+                    .multilineTextAlignment(.center)
+                if !active {
                     offer
                     if app.purchases.isConfigured {
                         Button(L("pro_restore")) { Task { await restore() } }.buttonStyle(.glass)
@@ -28,7 +34,7 @@ struct ProView: View {
                     }
                 }
                 if let message { Text(verbatim: message).foregroundStyle(AppColors.textSecondary) }
-                Text(key: "pro_privacy_no_ads").font(AppTypography.caption)
+                Text(key: AppConfig.adsEnabled ? "pro2_privacy" : "pro_privacy_no_ads").font(AppTypography.caption)
             }.padding(AppSpacing.pageMargin)
         }.appPage().navigationTitle(L("pro_title")).task { await app.purchases.refresh() }
     }
@@ -61,6 +67,18 @@ struct ProView: View {
                 }
             }
         }
+    }
+
+    private struct Benefit: Hashable {
+        let title: String
+        let text: String
+    }
+
+    /// Vorteile mit eingesetzten Zahlen (vorher stand „%1$lld“ im Text, weil die Zahl fehlte).
+    private var benefits: [Benefit] {
+        [Benefit(title: L("pro_f1"), text: L("pro2_f1d")),
+         Benefit(title: L("pro_f2"), text: L("pro_f2d", Capabilities.freeDailyCleanupLimit)),
+         Benefit(title: L("pro2_f3"), text: L("pro2_f3d"))]
     }
 
     private func buy() async { message = text(await app.purchases.purchasePro(using: purchase)) }

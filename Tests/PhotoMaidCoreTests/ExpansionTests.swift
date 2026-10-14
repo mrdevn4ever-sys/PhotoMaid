@@ -6,17 +6,22 @@ import Foundation
 @Suite struct ExpansionTests {
     let today = LocalDay(year: 2026, month: 10, day: 2)
 
-    @Test func adCardNeedsSixtySecondsGapOnTopOfInterval() {
-        var start = FeedAdState()
-        start.decisionsTotal = 40
-        start.sinceLastAd = 7
-        let shown = FeedAdPolicy.onCardShown(start, today: today, nowMs: 1_000_000)
-        let afterSeven = (1...7).reduce(shown) { s, _ in FeedAdPolicy.onDecision(s) }
-        #expect(!FeedAdPolicy.isDue(afterSeven, today: today, nowMs: 1_030_000), "Takt erreicht, aber erst 30 s vergangen")
-        #expect(FeedAdPolicy.isDue(afterSeven, today: today, nowMs: 1_060_000))
-        #expect(FeedAdPolicy.isDue(afterSeven, today: today, nowMs: 500_000)) // Uhr zurückgestellt
-        #expect(!FeedAdPolicy.isDue(FeedAdPolicy.onDecision(shown), today: today, nowMs: 2_000_000))
-        #expect(FeedAdPolicy.isDue(start, today: today, nowMs: 1))
+    /// E19: eine Werbekarte nach jeder 50. Entscheidung, ohne Schonfrist, Tagesgrenze oder Mindestabstand.
+    @Test func adCardEveryFiftyDecisions() {
+        let start = FeedAdState()
+        let after49 = (1...49).reduce(start) { s, _ in FeedAdPolicy.onDecision(s) }
+        #expect(!FeedAdPolicy.isDue(after49, today: today, nowMs: 1_000_000))
+        let after50 = FeedAdPolicy.onDecision(after49)
+        #expect(FeedAdPolicy.isDue(after50, today: today, nowMs: 1_000_000))
+        let shown = FeedAdPolicy.onCardShown(after50, today: today, nowMs: 1_000_000)
+        #expect(!FeedAdPolicy.isDue(FeedAdPolicy.onDecision(shown), today: today, nowMs: 1_000_100))
+        // Schnelles Wischen: die nächste Karte direkt nach weiteren 50, auch nach Sekunden.
+        let again = (1...50).reduce(shown) { s, _ in FeedAdPolicy.onDecision(s) }
+        #expect(FeedAdPolicy.isDue(again, today: today, nowMs: 1_005_000))
+        // Keine Tagesgrenze.
+        var many = again
+        many.day = today; many.shownOnDay = 1_000
+        #expect(FeedAdPolicy.isDue(many, today: today, nowMs: 2_000_000))
     }
 
     @Test func bookmarkIsLaterWithoutDateAndNeverReturnsOnItsOwn() async throws {

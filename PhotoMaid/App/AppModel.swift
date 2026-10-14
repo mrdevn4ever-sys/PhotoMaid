@@ -94,6 +94,7 @@ final class AppModel {
     @ObservationIgnored private var patchTask: Task<Void, Never>?
     @ObservationIgnored private var reloadAfterLoad = false
     @ObservationIgnored private var publishDebounce: Task<Void, Never>?
+    @ObservationIgnored private var feedAds: FeedAdState?
     @ObservationIgnored private var publishCoalescer = ChangeCoalescer(quiet: 0.6, maxDelay: 2.5)
     @ObservationIgnored private var loadedToken = -1
     /// Gestartete Mediathek-Abfragen (fortlaufend).
@@ -522,6 +523,43 @@ final class AppModel {
             self.publishDebounce = nil
             await self.publishRead()
         }
+    }
+
+    // MARK: Werbung (nur Gratis, E19)
+
+    /// Eine Entscheidung im Feed gezählt. `true`: jetzt ist eine Werbekarte fällig (nach jeder 50. Entscheidung).
+    /// Nur eine Zahl wird gespeichert – nie Medien oder Kennungen.
+    func countFeedDecisionForAds() -> (due: Bool, untilDue: Int) {
+        guard AdsService.shared.allowed(self) else { return (false, .max) }
+        var state = feedAds ?? kv?.get(StoreKeys.feedAds) ?? FeedAdState()
+        state = FeedAdPolicy.onDecision(state)
+        feedAds = state
+        try? kv?.set(StoreKeys.feedAds, state)
+        let due = FeedAdPolicy.isDue(state, today: today, nowMs: Int64(Date().timeIntervalSince1970 * 1000))
+        return (due, max(0, FeedAdPolicy.interval - state.sinceLastAd))
+    }
+
+    /// Werbekarte wurde gezeigt: Takt beginnt neu.
+    func feedAdCardShown() {
+        let state = FeedAdPolicy.onCardShown(feedAds ?? kv?.get(StoreKeys.feedAds) ?? FeedAdState(), today: today,
+                                             nowMs: Int64(Date().timeIntervalSince1970 * 1000))
+        feedAds = state
+        try? kv?.set(StoreKeys.feedAds, state)
+    }
+
+    /// „+100 für heute“ nach bestätigter Belohnung (idempotent über die Kennung). `false`: nichts freigeschaltet.
+    func grantLimitBonus(rewardID: String) async -> Bool {
+        var ledger = rewards
+        do {
+            try ledger.grantBonus(rewardID: rewardID, now: Date(), timeZone: .autoupdatingCurrent, purchase: purchases.state)
+            try kv?.set(StoreKeys.rewards, ledger)
+        } catch {
+            return false
+        }
+        rewards = ledger
+        now = Date() // der Bonus gilt ab jetzt (Fähigkeiten rechnen mit `now`)
+        await publishRead()
+        return true
     }
 
     /// Noch ausstehende, aufgeschobene Berechnung sofort ausführen (z. B. beim Schließen des Feeds).

@@ -19,6 +19,8 @@ struct VaultHomeView: View {
     @State private var moveSheet = false
     @State private var settingsSheet = false
     @State private var newFolder = false
+    @State private var folderAdPrompt = false
+    @State private var watchingAd = false
     @State private var folderName = ""
     @State private var renaming: VaultFolder?
     @State private var deletingFolder: VaultFolder?
@@ -109,10 +111,22 @@ struct VaultHomeView: View {
             .alert(L("vault_new_folder"), isPresented: $newFolder) {
                 TextField(L("vault_folder_name"), text: $folderName)
                 Button(L("save")) {
-                    if let f = vault.createFolder(folderName) { folderID = f.id } else { notice = L("vault_folder_invalid") }
+                    if let f = vault.createFolder(folderName) {
+                        folderID = f.id
+                        VaultFolderGate.folderCreated(app)
+                    } else {
+                        notice = L("vault_folder_invalid")
+                    }
                     folderName = ""
                 }
                 Button(L("cancel"), role: .cancel) { folderName = "" }
+            }
+            // Gratis: je neuem Ordner ein kurzes Werbevideo (E19); mit Pro ohne.
+            .confirmationDialog(L("vault_new_folder"), isPresented: $folderAdPrompt, titleVisibility: .visible) {
+                Button(L("vault_ad_folder_watch")) { Task { await watchFolderAd() } }
+                Button(L("cancel"), role: .cancel) {}
+            } message: {
+                Text(key: "vault_ad_folder_text")
             }
             .alert(L("vault_rename_folder"), isPresented: Binding(get: { renaming != nil }, set: { if !$0 { renaming = nil } })) {
                 TextField(L("vault_folder_name"), text: $folderName)
@@ -179,7 +193,7 @@ struct VaultHomeView: View {
                             Button(role: .destructive) { deletingFolder = f } label: { Label(L("vault_delete_folder"), systemImage: "trash") }
                         }
                 }
-                Button { newFolder = true } label: {
+                Button { startNewFolder() } label: {
                     Label(L("vault_new_folder"), systemImage: "folder.badge.plus")
                         .font(AppTypography.subheadline.weight(.semibold))
                         .padding(.horizontal, AppSpacing.s)
@@ -221,6 +235,29 @@ struct VaultHomeView: View {
                 .buttonStyle(.plain)
                 .accessibilityAddTraits(selection.contains(item.id) ? .isSelected : [])
             }
+        }
+    }
+
+    private func startNewFolder() {
+        switch VaultFolderGate.access(app) {
+        case .free:
+            newFolder = true
+        case .watchAd:
+            AdsService.shared.preloadRewarded(app: app)
+            folderAdPrompt = true
+        case .unavailable:
+            notice = L("vault_ad_folder_unavailable")
+        }
+    }
+
+    private func watchFolderAd() async {
+        guard !watchingAd else { return }
+        watchingAd = true
+        defer { watchingAd = false }
+        switch await VaultFolderGate.watchAd(app) {
+        case .earned: newFolder = true
+        case .dismissed: notice = L("vault_ad_folder_dismissed")
+        case .unavailable: notice = L("vault_ad_folder_unavailable")
         }
     }
 

@@ -45,7 +45,16 @@ struct RootView: View {
                 .environment(app)
         }
         .preferredColorScheme(app.settings.appearance.colorScheme)
-        .task { await app.onForeground() }
+        .task {
+            _ = AdsService.shared.launchNumber // Kaltstart zählen (die ersten drei Starts ohne Start-Werbung)
+            await app.onForeground()
+        }
+        // Gratis: nach der Einführung Einwilligung/Tracking-Abfrage, dann ggf. die Werbung beim Start (E19).
+        .task(id: adsReadyToPrepare) {
+            guard adsReadyToPrepare else { return }
+            await AdsService.shared.prepare(app: app)
+            await AdsService.shared.showAppOpenIfDue(app: app)
+        }
         .task {
             // Uhr für Tageswechsel (Limit, Später fällig) und Restzeiten.
             while !Task.isCancelled {
@@ -94,6 +103,11 @@ struct RootView: View {
         .onAppear {
             if let route = quick.pending { quick.pending = nil; handle(route) }
         }
+    }
+
+    /// Einführung fertig, Kaufstatus geklärt, kein Pro, Werbung in diesem Build eingerichtet.
+    private var adsReadyToPrepare: Bool {
+        app.settings.onboardingVersion >= OnboardingFlow.version && AdsService.shared.allowed(app)
     }
 
     private var tabs: some View {

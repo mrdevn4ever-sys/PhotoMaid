@@ -53,8 +53,12 @@ struct SettingsView: View {
                 NavigationLink(value: Route.excludedAlbums) { Text(key: "set_excluded_folders") }
                 NavigationLink(value: Route.backup) { Text(key: "backup_title") }
                 NavigationLink(value: Route.privacy) { Text(key: "privacy_title") }
+                // Von Google für EWR/UK/Schweiz verlangt: Einwilligung zur Werbung jederzeit ändern (nur Gratis).
+                if AdsService.shared.privacyOptionsRequired && !app.capabilities.isLifetimePro {
+                    Button(L("set_ad_privacy")) { Task { await AdsService.shared.presentPrivacyOptions() } }
+                }
                 NavigationLink(value: Route.help) { Text(key: "help") }
-                NavigationLink(value: Route.pro) { Text(key: app.capabilities.hasProToolsAccess ? "set_pro_active" : "set_pro_once") }
+                NavigationLink(value: Route.pro) { Text(key: app.capabilities.isLifetimePro ? "set_pro_active" : "set_pro_once") }
             }
         }
         .appPage().navigationTitle(L("settings"))

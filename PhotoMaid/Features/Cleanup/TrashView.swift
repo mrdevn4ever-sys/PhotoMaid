@@ -14,6 +14,7 @@ struct TrashView: View {
     @State private var confirmPhotos: [ItemReference]?
     @State private var confirmFiles: [ItemReference]?
     @State private var limitFor: LimitRequest?
+    @State private var bonusBusy = false
     @State private var running = false
     @State private var result: ResultMessage?
     @State private var done: CleanupDone?
@@ -111,13 +112,17 @@ struct TrashView: View {
             Text(verbatim: L("basket_confirm_files_message") + "\n\n" + L("basket_selection_size", total(confirmFiles ?? [])))
         }
         .sheet(item: $limitFor) { req in
-            LimitSheet(available: app.read.allowance?.available ?? 0, limit: app.read.allowance?.limit ?? 0, selected: req.items.count) {
+            LimitSheet(available: app.read.allowance?.available ?? 0, limit: app.read.allowance?.limit ?? 0, selected: req.items.count,
+                       bonus: bonusAvailable ? LimitBonus.amount : nil, bonusBusy: bonusBusy) {
                 limitFor = nil
                 request(Array(req.items.prefix(app.read.allowance?.available ?? 0)), kind: req.kind)
             } openPro: {
                 limitFor = nil
                 openPro()
+            } watchBonus: {
+                Task { await watchBonus(retry: req) }
             }
+            .onAppear { if bonusAvailable { AdsService.shared.preloadRewarded(app: app) } }
         }
         .sheet(item: $preview) { a in TrashPreview(asset: a) }
         .fullScreenCover(item: $done) { d in
@@ -130,6 +135,34 @@ struct TrashView: View {
             }
         } message: {
             Text(verbatim: result?.text ?? "")
+        }
+    }
+
+    /// „+100 für heute“ (nur Gratis, einmal täglich): erst nach dem Belohnungs-Callback freigeschaltet.
+    private var bonusAvailable: Bool {
+        LimitBonusOffer.available(app.capabilities, rewards: app.rewards, now: app.now, timeZone: .autoupdatingCurrent,
+                                  adsConfigured: AdsService.shared.configured(app))
+    }
+
+    private func watchBonus(retry: LimitRequest?) async {
+        guard !bonusBusy else { return }
+        bonusBusy = true
+        defer { bonusBusy = false }
+        switch await AdsService.shared.showRewarded(app: app) {
+        case .earned(let rewardID):
+            guard await app.grantLimitBonus(rewardID: rewardID) else {
+                app.showToast(L("limit_bonus_unavailable"))
+                return
+            }
+            Haptics.success()
+            if let retry {
+                limitFor = nil
+                request(retry.items, kind: retry.kind)
+            }
+        case .dismissed:
+            app.showToast(L("limit_bonus_dismissed"))
+        case .unavailable:
+            app.showToast(L("limit_bonus_unavailable"))
         }
     }
 
@@ -158,6 +191,12 @@ struct TrashView: View {
                             .font(AppTypography.caption.weight(.semibold))
                             .foregroundStyle(available == 0 ? AppColors.textPrimary : AppColors.textSecondary)
                         if available < 5 {
+                            // Gratis: einmal täglich „+100 für heute“ per Werbevideo (E19), sonst Pro.
+                            if bonusAvailable {
+                                Button(L("limit_bonus", LimitBonus.amount)) { Task { await watchBonus(retry: nil) } }
+                                    .font(AppTypography.footnote.weight(.semibold))
+                                    .disabled(bonusBusy)
+                            }
                             Button(L("limit_soon_pro")) { openPro() }.font(AppTypography.footnote.weight(.semibold))
                         }
                     }
@@ -360,8 +399,12 @@ struct LimitSheet: View {
     let available: Int
     let limit: Int
     let selected: Int
+    /// Gratis: „+n für heute“ per Werbevideo (einmal täglich); `nil` = nicht verfügbar.
+    var bonus: Int? = nil
+    var bonusBusy = false
     let takePartial: () -> Void
     let openPro: () -> Void
+    var watchBonus: () -> Void = {}
 
     var body: some View {
         VStack(spacing: AppSpacing.s) {
@@ -373,7 +416,14 @@ struct LimitSheet: View {
                 Text(key: "limit_tomorrow").font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
                     .multilineTextAlignment(.center)
             }
-            PrimaryButton(title: L("limit_all_with_pro", selected), action: openPro)
+            if let bonus {
+                PrimaryButton(title: L("limit_bonus", bonus), action: watchBonus)
+                    .disabled(bonusBusy)
+                Text(key: "limit_bonus_note").font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
+                SecondaryButton(title: L("limit_all_with_pro", selected), action: openPro)
+            } else {
+                PrimaryButton(title: L("limit_all_with_pro", selected), action: openPro)
+            }
             if available > 0 {
                 SecondaryButton(title: L("limit_take_partial", available), action: takePartial)
             }

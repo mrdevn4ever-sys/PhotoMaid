@@ -32,6 +32,12 @@ platform :ios do
       "PM_PRO_PRODUCT_ID=#{ENV.fetch('PM_PRO_PRODUCT_ID', '')}",
       "PM_PRIVACY_POLICY_URL=#{ENV.fetch('PM_PRIVACY_POLICY_URL', '')}"
     ]
+    # Werbung (E19): echte AdMob-IDs nur aus Secrets/Variablen. Fehlen sie, bleiben Googles Test-IDs aus project.yml
+    # (Test-Anzeigen, keine Einnahmen) – vor einer App-Store-Veröffentlichung Pflicht (docs/RELEASE_BLOCKERS.md).
+    %w[PM_ADMOB_APP_ID PM_ADMOB_APP_OPEN_ID PM_ADMOB_NATIVE_ID PM_ADMOB_REWARDED_ID].each do |key|
+      value = ENV.fetch(key, "").strip
+      common_xcargs << "#{key}=#{value}" unless value.empty?
+    end
 
     # Manuelle Signierung: ausschließlich die vorhandenen PhotoMaid-Secrets verwenden.
     keychain = File.join(runner_temp, "photomaid-ci.keychain-db")

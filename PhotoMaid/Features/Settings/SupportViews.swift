@@ -15,7 +15,16 @@ struct PrivacyView: View {
                     Button(L("privacy_open_settings")) { UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!) }
                 }
             } header: { Text(key: "privacy_media") }
-            Section(L("privacy_purchases")) { Text(key: "pro_privacy_no_ads") }
+            Section(L("privacy_purchases")) { Text(key: AppConfig.adsEnabled ? "pro2_privacy" : "pro_privacy_no_ads") }
+            // Werbung nur in der Gratis-Version (E19): Anbieter, Einwilligung, nie Fotos oder Namen.
+            if AppConfig.adsEnabled && !app.capabilities.isLifetimePro {
+                Section {
+                    Text(key: "privacy_ads")
+                    if AdsService.shared.privacyOptionsRequired {
+                        Button(L("set_ad_privacy")) { Task { await AdsService.shared.presentPrivacyOptions() } }
+                    }
+                }
+            }
         }.appPage().navigationTitle(L("privacy_title"))
     }
 }

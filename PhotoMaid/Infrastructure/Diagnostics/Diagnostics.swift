@@ -9,7 +9,7 @@ import OSLog
 /// Nutzers oder Zahlen über die Mediathek. Nichts verlässt das Gerät, außer der Nutzer teilt die Datei selbst.
 enum Diagnostics {
     enum Area: String, Sendable {
-        case app, feed, cleanup, library, purchase, editor, video, pdf, analysis, archive, files, persistence
+        case app, feed, cleanup, library, purchase, editor, video, pdf, analysis, archive, files, persistence, ads
     }
 
     static let subsystem = "app.photomaid"

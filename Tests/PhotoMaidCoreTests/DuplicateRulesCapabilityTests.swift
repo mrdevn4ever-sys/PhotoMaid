@@ -179,7 +179,7 @@ struct CollectionTests {
     }
 }
 
-@Suite("Free, Pro-Test, Lifetime Pro")
+@Suite("Free, Lifetime Pro (E19)")
 struct CapabilityTests {
     let tz = TimeZone(identifier: "Europe/Zurich")!
     var now: Date { TestClock.date("2026-06-10T09:00", tz: "Europe/Zurich") }
@@ -187,31 +187,27 @@ struct CapabilityTests {
     @Test func purchaseStates() {
         for state in [PurchaseState.unknown, .notPurchased, .pending, .purchased, .revoked] {
             let caps = Capabilities.resolve(purchase: state, rewards: RewardLedger(), now: now, timeZone: tz)
+            // E19: alle Werkzeuge für alle.
+            #expect(caps.hasProToolsAccess && caps.exactDuplicates && caps.customCollections && caps.smartReview)
+            #expect(caps.batchLimit == nil)
             if state == .purchased {
-                #expect(caps.tier == .lifetimePro && caps.dailyCleanupLimit == nil && !caps.adsAllowed && caps.exactDuplicates)
-                #expect(caps.batchLimit == nil)
+                #expect(caps.tier == .lifetimePro && caps.isLifetimePro && caps.dailyCleanupLimit == nil && !caps.adsAllowed)
+                #expect(caps.vaultFoldersWithoutAd)
             } else {
-                #expect(caps.tier == .free && caps.dailyCleanupLimit == 20 && !caps.exactDuplicates)
+                #expect(caps.tier == .free && !caps.isLifetimePro && caps.dailyCleanupLimit == 100)
                 #expect(caps.adsAllowed == (state != .unknown))
-                #expect(caps.batchLimit == 10)
+                #expect(!caps.vaultFoldersWithoutAd)
             }
         }
     }
 
-    @Test func reward() throws {
+    @Test func proTestNoLongerChangesTier() throws {
         var ledger = RewardLedger()
         let w = try ledger.grant(rewardID: "r1", now: now, timeZone: tz, purchase: .notPurchased)
         #expect(try ledger.grant(rewardID: "r1", now: now.addingTimeInterval(5), timeZone: tz, purchase: .notPurchased) == w)
-        #expect(throws: RewardError.dailyUnlockUsed) {
-            try ledger.grant(rewardID: "r2", now: now.addingTimeInterval(3600), timeZone: tz, purchase: .notPurchased)
-        }
         let during = Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now.addingTimeInterval(600), timeZone: tz)
-        #expect(during.tier == .temporaryPro && during.exactDuplicates && during.dailyCleanupLimit == 20)
+        #expect(during.tier == .free && during.dailyCleanupLimit == 100 && during.rewardRemaining == nil)
         #expect(during.hasProToolsAccess && !during.hasUnlimitedTrashAccess)
-        #expect(during.customCollections)
-        #expect(abs((during.rewardRemaining ?? 0) - 20 * 60) < 1)
-        #expect(Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now.addingTimeInterval(30 * 60 + 1), timeZone: tz).tier == .free)
-        #expect(ledger.canOfferReward(now: now.addingTimeInterval(86_400), timeZone: tz, purchase: .notPurchased))
     }
 
     @Test func limitBonusOnlyToday() throws {
@@ -220,12 +216,11 @@ struct CapabilityTests {
         #expect(throws: RewardError.dailyBonusUsed) {
             try ledger.grantBonus(rewardID: "b2", now: now.addingTimeInterval(60), timeZone: tz, purchase: .notPurchased)
         }
-        #expect(Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now, timeZone: tz).dailyCleanupLimit == 40)
-        #expect(Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now.addingTimeInterval(86_400), timeZone: tz).dailyCleanupLimit == 20)
-        // Pro-Test und Bonus sind getrennt; der Test hebt das Limit nie auf.
-        try ledger.grant(rewardID: "t1", now: now, timeZone: tz, purchase: .notPurchased)
-        let both = Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now.addingTimeInterval(60), timeZone: tz)
-        #expect(both.tier == .temporaryPro && both.dailyCleanupLimit == 40)
+        #expect(Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now, timeZone: tz).dailyCleanupLimit == 200)
+        #expect(Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now.addingTimeInterval(86_400), timeZone: tz).dailyCleanupLimit == 100)
+        // Gleiche Kennung zählt nicht doppelt.
+        try ledger.grantBonus(rewardID: "b1", now: now.addingTimeInterval(120), timeZone: tz, purchase: .notPurchased)
+        #expect(Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now, timeZone: tz).dailyCleanupLimit == 200)
     }
 
     @Test func clockBackExpiresConservatively() throws {
@@ -233,23 +228,56 @@ struct CapabilityTests {
         try ledger.grant(rewardID: "r1", now: now, timeZone: tz, purchase: .notPurchased)
         #expect(ledger.active(at: now.addingTimeInterval(-60)) == nil)
         #expect(ledger.usedToday(now: now.addingTimeInterval(-86_400 * 2), timeZone: tz))
+        try ledger.grantBonus(rewardID: "b", now: now, timeZone: tz, purchase: .notPurchased)
+        // Uhr zurückgestellt: kein zweiter Bonus.
+        #expect(ledger.bonusUsedToday(now: now.addingTimeInterval(-86_400 * 2), timeZone: tz))
     }
 
     @Test func proNoRewardNoAds() {
         var ledger = RewardLedger()
         #expect(throws: RewardError.alreadyPurchased) {
-            try ledger.grant(rewardID: "r", now: now, timeZone: tz, purchase: .purchased)
+            try ledger.grantBonus(rewardID: "r", now: now, timeZone: tz, purchase: .purchased)
         }
-        #expect(!RewardLedger().canOfferReward(now: now, timeZone: tz, purchase: .purchased))
+        let pro = Capabilities.resolve(purchase: .purchased, rewards: ledger, now: now, timeZone: tz)
+        #expect(!pro.adsAllowed)
+        #expect(!LimitBonusOffer.available(pro, rewards: ledger, now: now, timeZone: tz, adsConfigured: true))
+        #expect(!AppOpenAdPolicy.shouldShow(launchNumber: 10, adsAllowed: pro.adsAllowed))
     }
 
-    @Test func workUnit() throws {
-        var ledger = RewardLedger()
-        try ledger.grant(rewardID: "r1", now: now, timeZone: tz, purchase: .notPurchased)
-        let caps = Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now.addingTimeInterval(29 * 60), timeZone: tz)
+    @Test func workUnit() {
+        let caps = Capabilities.resolve(purchase: .notPurchased, rewards: RewardLedger(), now: now, timeZone: tz)
         #expect(WorkUnitGrant.begin(requires: \.exactDuplicates, in: caps, now: now) != nil)
-        let expired = Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now.addingTimeInterval(31 * 60), timeZone: tz)
-        #expect(WorkUnitGrant.begin(requires: \.exactDuplicates, in: expired, now: now) == nil)
+    }
+
+    @Test func appOpenAdFromFourthStart() {
+        #expect(!AppOpenAdPolicy.shouldShow(launchNumber: 1, adsAllowed: true))
+        #expect(!AppOpenAdPolicy.shouldShow(launchNumber: 3, adsAllowed: true))
+        #expect(AppOpenAdPolicy.shouldShow(launchNumber: 4, adsAllowed: true))
+        #expect(AppOpenAdPolicy.shouldShow(launchNumber: 500, adsAllowed: true))
+        #expect(!AppOpenAdPolicy.shouldShow(launchNumber: 4, adsAllowed: false))
+    }
+
+    @Test func vaultFolderNeedsAdOnlyInFree() {
+        let free = Capabilities.resolve(purchase: .notPurchased, rewards: RewardLedger(), now: now, timeZone: tz)
+        let unknown = Capabilities.resolve(purchase: .unknown, rewards: RewardLedger(), now: now, timeZone: tz)
+        let pro = Capabilities.resolve(purchase: .purchased, rewards: RewardLedger(), now: now, timeZone: tz)
+        #expect(VaultFolderAccess.resolve(free, adsConfigured: true, canRequestAds: true) == .watchAd)
+        #expect(VaultFolderAccess.resolve(pro, adsConfigured: true, canRequestAds: true) == .free)
+        // Werbung im Build nicht eingerichtet: nichts sperren.
+        #expect(VaultFolderAccess.resolve(free, adsConfigured: false, canRequestAds: false) == .free)
+        // Einwilligung fehlt oder Kaufstatus unklar: Pro anbieten statt toter Knopf.
+        #expect(VaultFolderAccess.resolve(free, adsConfigured: true, canRequestAds: false) == .unavailable)
+        #expect(VaultFolderAccess.resolve(unknown, adsConfigured: true, canRequestAds: true) == .unavailable)
+    }
+
+    @Test func limitBonusOfferOncePerDay() throws {
+        var ledger = RewardLedger()
+        let free = Capabilities.resolve(purchase: .notPurchased, rewards: ledger, now: now, timeZone: tz)
+        #expect(LimitBonusOffer.available(free, rewards: ledger, now: now, timeZone: tz, adsConfigured: true))
+        #expect(!LimitBonusOffer.available(free, rewards: ledger, now: now, timeZone: tz, adsConfigured: false))
+        try ledger.grantBonus(rewardID: "b", now: now, timeZone: tz, purchase: .notPurchased)
+        #expect(!LimitBonusOffer.available(free, rewards: ledger, now: now.addingTimeInterval(60), timeZone: tz, adsConfigured: true))
+        #expect(LimitBonusOffer.available(free, rewards: ledger, now: now.addingTimeInterval(86_400), timeZone: tz, adsConfigured: true))
     }
 
     @Test func storageDoesNotAddOverlappingCategories() {

@@ -2,6 +2,38 @@
 
 Stand: 14.10.2026 · Branch `claude/fixes-analysis-library-vault-20261014` (auf Build 5) · kein PR, kein GitHub-Actions-Lauf.
 
+## Neues Pro-Modell E19 + Werbung (14.10.2026, gleicher Branch)
+
+Nutzerentscheidung (14.10.2026; Rückfragen: Tresor nur Ordner, Feed-Werbekarte wie Android, iOS-Tracking-Abfrage ja):
+
+- **Pro-Bildschirm:** „Tageslimit von %1$lld“ – die Zahl wurde nicht eingesetzt. Jetzt mit Zahl; Inhalt neu: ohne Werbung,
+  ohne Tageslimit (100), Tresor-Ordner ohne Werbung; Hinweis „alles andere ist für alle kostenlos“. „Pro ist aktiv“ nur
+  noch bei gekauftem Pro (`isLifetimePro`), nicht mehr über `hasProToolsAccess`.
+- **Kern (`Capabilities`, `AdRules`, `FeedAdPolicy`):** alle Werkzeuge frei; Free 100 Entfernungen/Tag, +100 einmal
+  täglich nach Belohnungs-Callback (`LimitBonus`, `LimitBonusOffer`); Werbekarte nach jeder 50. Entscheidung (ohne
+  Schonfrist/Tagesgrenze/Mindestabstand); App-Start-Werbung ab dem 4. Kaltstart (`AppOpenAdPolicy`); Tresor-Ordner
+  (`VaultFolderAccess`: Pro frei, sonst Video; ohne eingerichtete Werbung nichts gesperrt). Kein Pro-Test mehr.
+- **App:** Google Mobile Ads 13.9.0 + UMP 3.1.0 (SPM, feste Versionen), `AdsService`: UMP-Einwilligung → ATT-Abfrage →
+  SDK-Start (nach der Einführung, nur Free); App-Start-Werbung (höchstens 4 s Ladezeit, nur in den ersten 15 s, nie über
+  Tresor/Feed/Vollbild); Belohnungsvideo (vorab geladen) für „+100 heute“ (Papierkorb: Limit-Blatt und Kopfzeile) und
+  Tresor-Ordner (verdientes Video verfällt nicht bei Abbruch; Tresor-Sitzung läuft während des Videos weiter); native
+  Werbekarte im Feed (`FeedAdCard`, Googles `NativeAdView`, Medien eingepasst; nie Entscheidung; 1,5 s, dann wegwischen
+  oder „Weiter“; „runter“/Rückgängig sofort; „Ohne Werbung mit Pro“). Einstellungen/Datenschutz: „Werbe-Einwilligung
+  ändern“ (wenn von Google verlangt), Hinweis zur Werbung. QA-Testdaten: keine Werbung.
+- **Konfiguration:** `GADApplicationIdentifier`, `PMAdMob*`-Schlüssel, `SKAdNetworkItems`, `NSUserTrackingUsageDescription`
+  (16 Sprachen); Standard = Googles öffentliche Test-IDs, CI/fastlane übernehmen `PM_ADMOB_*` aus Secrets/Variablen.
+  Privacy Manifest: `NSPrivacyTracking = true` (Google bringt ein eigenes Manifest mit).
+- 12 neue Texte + 1 Info.plist-Text in 16 Sprachen; `privacy_ads` ohne „AdMob“ (Prüfskript).
+
+| Prüfung | Ergebnis |
+|---|---|
+| `swift test` (Linux) | PASS: 381 Tests (Capabilities/Werbung/Tresor-Ordner/Bonus neu bzw. angepasst) |
+| Typprüfung `AdsService`, `VaultFolderGate`, `NativeAdLayout` gegen Platzhalter mit den Swift-Namen aus den Headern von GMA 13.9.0/UMP 3.1.0 | PASS (Platzhalter, nicht das echte SDK) |
+| `android_strings_to_xcstrings.py --check` | PASS: 1563 benutzte Kennungen, 2548 Einträge, 16 Sprachen |
+| Xcode-Build mit echtem SDK, SwiftUI-Teile (`FeedAdCard`, Tresor, Papierkorb, Pro) | NOT RUN (nur über GitHub Actions auf Anweisung) |
+| Gerät: Einwilligung/ATT, App-Start-Werbung ab 4. Start, Karte nach 50 Wischen, +100, Tresor-Ordner | NOT RUN |
+| Echte AdMob-IDs, App-Store-Datenschutzangaben, Datenschutzerklärung | BLOCKED (Inhaber, `docs/RELEASE_BLOCKERS.md` #5) |
+
 ## Fixes nach Build 6 (14.10.2026, gleicher Branch)
 
 Auf Nutzermeldung (Bildschirmaufnahmen Build 6: „Analyse blockt weiterhin“, „Gestenhilfe verschwindet sofort“):

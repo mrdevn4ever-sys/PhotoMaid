@@ -33,13 +33,13 @@ public struct RewardWindow: Hashable, Codable, Sendable {
     }
 }
 
-/// Freiwilliger Video-Bonus „+20 heute“: hebt das Papierkorb-Limit für EINEN lokalen Tag an.
+/// Freiwilliger Video-Bonus „+100 heute“: hebt das Limit zum Entfernen für EINEN lokalen Tag an.
 public struct LimitBonus: Hashable, Codable, Sendable {
     public let rewardID: String
     public let grantedAt: Date
     public let grantedDay: LocalDay
-    /// Android-Produktentscheidung 2026-10-04: +20.
-    public static let amount = 20
+    /// E19 (Nutzerentscheidung 14.10.2026): +100, einmal je lokalem Tag (vorher Android: +20).
+    public static let amount = 100
 
     public init(rewardID: String, grantedAt: Date, grantedDay: LocalDay) {
         self.rewardID = rewardID
@@ -98,7 +98,7 @@ public struct RewardLedger: Hashable, Codable, Sendable {
         purchase != .purchased && !usedToday(now: now, timeZone: timeZone)
     }
 
-    /// „+20 heute“ – unabhängig vom Pro-Test, ebenfalls 1× pro lokalem Tag, nur nach SDK-Reward-Callback.
+    /// „+100 heute“ – unabhängig vom Pro-Test, 1× pro lokalem Tag, nur nach SDK-Reward-Callback.
     @discardableResult
     public mutating func grantBonus(rewardID: String, now: Date, timeZone: TimeZone,
                                     purchase: PurchaseState) throws -> LimitBonus {
@@ -123,19 +123,19 @@ public struct RewardLedger: Hashable, Codable, Sendable {
     }
 }
 
-/// Zentrale Capability-Auflösung. Einzige Stelle, die Free / Pro-Test / Lifetime Pro unterscheidet.
+/// Zentrale Capability-Auflösung. Einzige Stelle, die Free / Lifetime Pro unterscheidet.
 ///
-/// Fachlich getrennt (bewusst kein einzelnes `isPro`):
-/// | Stufe          | Pro-Werkzeuge | Papierkorb ohne Tageslimit |
-/// |----------------|---------------|----------------------------|
-/// | free           | nein          | nein (20/Tag)              |
-/// | temporaryPro   | ja (30 min)   | **nein** (20/Tag bleibt)   |
-/// | lifetimePro    | ja            | ja                         |
+/// E19 (Nutzerentscheidung 14.10.2026): Alle Werkzeuge sind für alle frei. Pro (Einmalkauf) heißt nur noch:
+/// | Stufe          | Werkzeuge | Werbung | Entfernen je Tag              | Neuer Tresor-Ordner     |
+/// |----------------|-----------|---------|-------------------------------|-------------------------|
+/// | free           | alle      | ja      | 100 (+100 per Video, 1×/Tag)  | je Ordner ein Video     |
+/// | lifetimePro    | alle      | nein    | unbegrenzt                    | frei                    |
+/// `temporaryPro` (30-Minuten-Test) wird auf iOS nicht mehr angeboten; ein alter Eintrag zählt wie Free.
 public struct Capabilities: Hashable, Sendable {
     public enum Tier: String, Hashable, Sendable { case free, temporaryPro, lifetimePro }
 
-    /// Android-Produktentscheidung 2026-10-04: 20 pro Tag (Entscheidung E4: aus dem Quellcode übernommen).
-    public static let freeDailyCleanupLimit = 20
+    /// E19 (Nutzerentscheidung 14.10.2026): 100 endgültige Entfernungen pro lokalem Tag (vorher 20 wie Android).
+    public static let freeDailyCleanupLimit = 100
     /// Free-Grenze je Durchgang für Stapel-Werkzeuge, Abläufe, Auslagern, PDF (wie Android).
     public static let freeBatchLimit = 10
 
@@ -155,8 +155,12 @@ public struct Capabilities: Hashable, Sendable {
         self.cleanupBonus = cleanupBonus
     }
 
-    /// Pro-Werkzeuge – Lifetime Pro und der 30-Minuten-Test.
-    public var hasProToolsAccess: Bool { tier != .free }
+    /// Werkzeuge (Bearbeiten, Analyse, Duplikate, Sammlungen, Studio …): E19 – für alle frei.
+    public var hasProToolsAccess: Bool { true }
+    /// Gekauftes Pro (für Anzeige „Pro ist aktiv“ und alles, was nur der Kauf freischaltet).
+    public var isLifetimePro: Bool { tier == .lifetimePro }
+    /// Neuer Ordner im Tresor ohne Werbevideo (E19: nur mit Pro).
+    public var vaultFoldersWithoutAd: Bool { tier == .lifetimePro }
     /// Nur der Kauf hebt das tägliche Papierkorb-Limit auf. Der Pro-Test ändert es NICHT.
     public var hasUnlimitedTrashAccess: Bool { tier == .lifetimePro }
     /// `nil` = unbegrenzt. Abgeleitet ausschließlich aus `hasUnlimitedTrashAccess`.
@@ -187,11 +191,7 @@ public struct Capabilities: Hashable, Sendable {
             return Capabilities(tier: .lifetimePro, adsAllowed: false, rewardRemaining: nil)
         }
         let bonus = rewards.cleanupBonus(now: now, timeZone: timeZone)
-        if let w = rewards.active(at: now) {
-            return Capabilities(tier: .temporaryPro, adsAllowed: true, rewardRemaining: w.remaining(at: now),
-                                cleanupBonus: bonus)
-        }
-        // Bei unbekanntem Kaufstatus keine Ad-Requests, bis der Status geklärt ist.
+        // Bei unbekanntem Kaufstatus keine Ad-Requests, bis der Status geklärt ist. Kein Pro-Test mehr (E19).
         return Capabilities(tier: .free, adsAllowed: purchase != .unknown, rewardRemaining: nil, cleanupBonus: bonus)
     }
 }
