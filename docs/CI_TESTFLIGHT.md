@@ -35,10 +35,10 @@ Durchlauf nicht. Der PhotoKit-Starttest wird separat ausgeführt und früh als `
 hochgeladen; die übrigen Tests behalten dieselbe Mediathek und dieselben App-Daten. Die abschließende
 Prüfung verlangt für QA, PhotoKit-Starttest und übrige PhotoKit-Tests jeweils Exitcode 0. Mit `ui_phase=fixtures` oder `ui_phase=real`
 lässt sich nach der ersten Gesamtprüfung gezielt ein Durchlauf wiederholen; dann wird dessen Exitcode geprüft.
-Standard bleibt `all`. Build, Unit-Tests und Linux-Kernprüfung laufen weiterhin. Der Linux-Job verwendet Swift 6.4.
+`ui_phase=start` führt ausschließlich die Startprüfung mit echter Mediathek aus. Standard bleibt `all`. Build, Unit-Tests und Linux-Kernprüfung laufen weiterhin. Der Linux-Job verwendet Swift 6.4.
 
 Optional exportiert `baseline_run=<CI-Lauf-ID>` auch Screenshots aus einem älteren `ios-build-report`-Ergebnisbündel.
-`collect_run=<CI-Lauf-ID>` führt ausschließlich einen Linux-Sammeljob aus (keine App-Tests): Bilder und
+`collect_run=<CI-Lauf-ID>` führt ausschließlich einen Linux-Sammeljob aus (keine App-Tests).
 `collect_artifact` wählt das vollständige Artefakt oder die früh verfügbaren QA-/Startbelege. Bilder und
 Logs werden getrennt bereitgestellt, die vollständigen `.xcresult`-Daten in 200-MiB-Teilen. Damit bleiben auch
 Belege über dem 512-MiB-Limit des GitHub-Connectors herunterladbar. `index.json` ordnet alle ursprünglichen

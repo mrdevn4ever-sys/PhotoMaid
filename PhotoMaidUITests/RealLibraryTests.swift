@@ -386,10 +386,18 @@ final class RealLibraryTests: XCTestCase {
         snap("large_loading")
         XCTAssertTrue(app.navigationBars["Große Dateien"].exists)
         XCTAssertFalse(contains("%1$lld").exists)
+        // All imported test files are below the default 100 MB threshold.
+        // A responsive navigation bar alone would miss a permanently loading scanner.
+        XCTAssertTrue(app.staticTexts["Keine passenden Dateien"].waitForExistence(timeout: 45))
+        XCTAssertFalse(contains("Größen werden gemessen").exists)
+        snap("large_finished_below_threshold")
         back("large_back")
         hub("storage")
         snap("storage_progress")
         XCTAssertTrue(contains("GB").waitForExistence(timeout: 20))
+        XCTAssertNotNil(contains("GB").label.rangeOfCharacter(from: .decimalDigits))
+        XCTAssertTrue(app.progressIndicators.firstMatch.exists, "Device capacity has a visible progress bar")
+        snap("storage_loaded_numbers_and_progress")
         back("storage_back")
         hub("duplicates")
         tap(app.buttons["Prüfung starten"], "duplicates_started")
