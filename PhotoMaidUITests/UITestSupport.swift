@@ -67,24 +67,22 @@ extension XCTestCase {
 
     func resolvePrivacyPrompts(in app: XCUIApplication, prefix: String, photos: Bool = false) {
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+        let usesAds = !app.launchArguments.contains("-qa-fixtures")
         var systemPromptExpected = photos
         for step in 0..<4 {
             var handled = false
             // iOS 26's rich Photos sheet is not always exposed as an XCUI Alert.
             if photos {
-              for title in ["Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos",
-                          "Zugriff auf alle Fotos erlauben"] {
-                let allow = springboard.buttons[title].firstMatch
-                if allow.exists && allow.isHittable {
+                let labels = ["Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos",
+                              "Zugriff auf alle Fotos erlauben"]
+                let buttons = springboard.buttons.matching(NSPredicate(format: "label IN %@", labels as NSArray)).allElementsBoundByIndex
+                if let allow = buttons.first(where: \.isHittable) {
                     checkpoint("\(prefix)_photos_permission_\(step)", app: springboard)
                     allow.tap()
                     handled = true
-                    break
                 }
-              }
             }
-            let explainer = app.staticTexts["Our app wants to stay free for you"].firstMatch
-            if explainer.exists {
+            if usesAds, app.staticTexts["Our app wants to stay free for you"].exists {
                 let next = app.webViews.buttons["Continue"].firstMatch
                 if next.exists && next.isHittable {
                     checkpoint("\(prefix)_tracking_explainer_\(step)", app: app)
@@ -93,14 +91,14 @@ extension XCTestCase {
                     systemPromptExpected = true
                 }
             }
-            for title in ["Consent", "I consent", "Zustimmen", "Einwilligen", "Agree"] {
-                let consent = app.webViews.buttons[title].firstMatch
-                if consent.exists && consent.isHittable {
+            if usesAds {
+                let labels = ["Consent", "I consent", "Zustimmen", "Einwilligen", "Agree"]
+                let buttons = app.webViews.buttons.matching(NSPredicate(format: "label IN %@", labels as NSArray)).allElementsBoundByIndex
+                if let consent = buttons.first(where: \.isHittable) {
                     checkpoint("\(prefix)_consent_\(step)", app: app)
                     consent.tap()
                     handled = true
                     systemPromptExpected = true
-                    break
                 }
             }
             let alert = springboard.alerts.firstMatch

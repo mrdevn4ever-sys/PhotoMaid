@@ -71,6 +71,8 @@ fi
 
 if [ "$phase" = real-start ]; then
   run_tests real-start -only-testing:PhotoMaidUITests/RealLibraryTests/test00IntroductionAndFourColdStarts
+  xcrun simctl spawn "$udid" log show --last 20m --style compact \
+    --predicate 'process == "PhotoMaid"' > "$out/real-start-app.log" || true
   pack_result real-start
   [ "$(cat "$out/real-start.exit")" = 0 ]
   exit
