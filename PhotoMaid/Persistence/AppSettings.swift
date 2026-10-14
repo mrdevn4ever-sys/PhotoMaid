@@ -47,8 +47,10 @@ struct AppSettingsData: Codable, Equatable, Sendable {
     var savedTotalApproximate = false
     /// Vom Aufräumen ausgenommene Alben der Fotos-App (`localIdentifier`, inkl. Unteralben eines Ordners). E5.
     var excludedAlbums: [String] = []
-    /// Bedienungshilfe: Tasten zum Entscheiden unter dem Medium (Standard aus; Gesten bleiben aktiv).
+    /// Früherer Schalter „Tasten zum Entscheiden“ – nur noch zum Übernehmen in `feedControls.visibility`.
     var decisionButtons = false
+    /// Wischen & Tasten: eigene Belegung je Richtung, Tasten, Position, Sichtbarkeit (E18). Standard = feste Gesten.
+    var feedControls = FeedControls()
     var feedOrder: FeedOrder = .newest
     /// Ende der letzten Sitzung mit mindestens einer Entscheidung – für „Neu seit dem letzten Aufräumen“.
     var lastSessionEnd: Date?
@@ -106,6 +108,9 @@ struct AppSettingsData: Codable, Equatable, Sendable {
         savedTotalApproximate = v(.savedTotalApproximate, d.savedTotalApproximate)
         excludedAlbums = v(.excludedAlbums, d.excludedAlbums)
         decisionButtons = v(.decisionButtons, d.decisionButtons)
+        feedControls = v(.feedControls, d.feedControls)
+        // Übernahme: wer „Tasten zum Entscheiden“ eingeschaltet hatte, sieht die Tasten weiterhin immer.
+        if !c.contains(.feedControls) && decisionButtons { feedControls.visibility = .always }
         feedOrder = v(.feedOrder, d.feedOrder)
         lastSessionEnd = v(.lastSessionEnd, d.lastSessionEnd)
         lastSessionChangeToken = v(.lastSessionChangeToken, d.lastSessionChangeToken)

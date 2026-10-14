@@ -52,6 +52,8 @@ final class FeedViewModel {
     /// Versatz des aktuellen Mediums in pt (folgt dem Finger, fliegt beim Commit hinaus).
     var offset: CGSize = .zero
     private(set) var lockedDirection: SwipeDirection?
+    /// In dieser Sitzung per „In Album legen“ zugeordnet (für Rückgängig): Medium → Album.
+    @ObservationIgnored private var albumPlacements: [ItemReference: String] = [:]
     /// Richtung, in die Loslassen jetzt entscheiden würde (dezente Rahmenfarbe + einmal Haptik).
     private(set) var readyDirection: SwipeDirection?
     private(set) var isCommitting = false
@@ -324,7 +326,7 @@ final class FeedViewModel {
         readyDirection = nil
         guard customLater == nil else { dragCancelled(); return }
         switch machine.end(translation: Vector2(t.width, t.height), velocity: Vector2(v.width, v.height)) {
-        case .commit(let d): perform(FeedIntent(d), velocity: v)
+        case .commit(let d): perform(action: app.settings.feedControls.action(for: d), direction: d, velocity: v)
         case .cancelled, .ignored: resetOffset()
         }
     }
@@ -349,7 +351,24 @@ final class FeedViewModel {
     }
 
     /// Gemeinsamer Pfad für Gesten, Tasten und VoiceOver-Aktionen.
-    func perform(_ intent: FeedIntent, velocity: CGSize = .zero) {
+    /// Belegte Aktion einer Wischrichtung oder Taste (E18). Derselbe Weg für Geste und Taste: Entscheidungen laufen
+    /// über `perform(_ intent:)`; „In Album legen“ fügt hinzu und behält in einem Schritt; „Nichts“ springt zurück.
+    func perform(action: FeedAction, direction: SwipeDirection? = nil, velocity: CGSize = .zero) {
+        switch action {
+        case .nothing:
+            machine.finishCommit()
+            lockedDirection = nil
+            resetOffset()
+            Haptics.boundary()
+        case .album(let id, let title):
+            performAlbum(id: id, title: title, direction: direction, velocity: velocity)
+        default:
+            guard let intent = action.intent else { return }
+            perform(intent, direction: direction, velocity: velocity)
+        }
+    }
+
+    func perform(_ intent: FeedIntent, direction: SwipeDirection? = nil, velocity: CGSize = .zero) {
         // Solange eine Terminauswahl offen ist, kann nichts anderes entschieden oder navigiert werden.
         if customLater != nil { machine.finishCommit(); resetOffset(); return }
         guard !isCommitting else { return }
@@ -383,7 +402,35 @@ final class FeedViewModel {
             return
         }
         isCommitting = true
-        Task { await commit(intent, item: item, customDay: nil, velocity: velocity) }
+        Task { await commit(intent, item: item, customDay: nil, velocity: velocity, direction: direction) }
+    }
+
+    /// „In Album legen“: erst zum Album der Fotos-App hinzufügen, dann behalten. Scheitert eins, gilt beides nicht
+    /// (die Album-Zuordnung wird zurückgenommen). Rückgängig nimmt später beides zurück.
+    private func performAlbum(id albumID: String, title: String, direction: SwipeDirection?, velocity: CGSize) {
+        if customLater != nil { machine.finishCommit(); resetOffset(); return }
+        guard !isCommitting, let item = current, item.provider == .photoLibrary, protectedFavorite == nil else {
+            machine.finishCommit(); lockedDirection = nil; resetOffset(); return
+        }
+        isCommitting = true
+        Task {
+            let added = await app.library.add([item.localIdentifier], toAlbum: albumID)
+            guard added == .done else {
+                isCommitting = false
+                machine.finishCommit()
+                lockedDirection = nil
+                resetOffset()
+                if added == .failed { app.showError(L("album_failed")) }
+                return
+            }
+            app.rememberRecentAlbum(albumID)
+            if await commit(.keep, item: item, customDay: nil, velocity: velocity, direction: direction) {
+                albumPlacements[item] = albumID
+                showNotice(L("feed_album_done", title))
+            } else {
+                _ = await app.library.remove([item.localIdentifier], fromAlbum: albumID)
+            }
+        }
     }
 
     private func openCustomLater() {
@@ -400,10 +447,13 @@ final class FeedViewModel {
         guard let day, !isCommitting, let item = current, item == request.item,
               app.record(item).revision == request.revision else { return }
         isCommitting = true
-        Task { await commit(.laterCustom, item: item, customDay: day, velocity: .zero) }
+        Task { await commit(.laterCustom, item: item, customDay: day, velocity: .zero, direction: nil) }
     }
 
-    private func commit(_ intent: FeedIntent, item: ItemReference, customDay: LocalDay?, velocity: CGSize) async {
+    /// - Returns: `true`, wenn die Entscheidung gespeichert wurde.
+    @discardableResult
+    private func commit(_ intent: FeedIntent, item: ItemReference, customDay: LocalDay?, velocity: CGSize,
+                        direction: SwipeDirection?) async -> Bool {
         defer {
             isCommitting = false
             if case .commitRequested = machine.phase { machine.finishCommit() }
@@ -414,9 +464,9 @@ final class FeedViewModel {
               pending.command.item == item else {
             machine.finishCommit()
             resetOffset()
-            return
+            return false
         }
-        let target = exitOffset(intent)
+        let target = exitOffset(intent, direction: direction)
         let duration = reduceMotion ? 0.01 : flyDuration(velocity)
         let animationStarted = ProcessInfo.processInfo.systemUptime
         withAnimation(.easeOut(duration: duration)) { offset = target }
@@ -442,11 +492,13 @@ final class FeedViewModel {
             if let receipt = session.receipt, receipt.item == item {
                 if let customDay { _ = await schedule(receipt, customDay) } else { await applyDefaultLater(receipt) }
             }
+            return true
         } catch {
             session.commitFailed(pending.command.id)
             app.showError(L("error_decision_not_saved"))
             machine.finishCommit()
             resetOffset()
+            return false
         }
     }
 
@@ -457,9 +509,18 @@ final class FeedViewModel {
         return min(0.24, max(0.12, 900 / speed * 0.2))
     }
 
-    /// Ziel außerhalb des Bildschirms; die Querbewegung des Fingers bleibt erhalten.
-    private func exitOffset(_ intent: FeedIntent) -> CGSize {
+    /// Ziel außerhalb des Bildschirms; die Querbewegung des Fingers bleibt erhalten. Bei einer Geste fliegt das Medium
+    /// in die gewischte Richtung (auch wenn sie anders belegt ist), bei einer Taste in die Richtung der Aktion.
+    private func exitOffset(_ intent: FeedIntent, direction: SwipeDirection?) -> CGSize {
         let w = viewSize.width, h = viewSize.height
+        if let direction {
+            switch direction {
+            case .up: return CGSize(width: offset.width, height: -h * 1.2)
+            case .down: return CGSize(width: offset.width, height: h * 1.2)
+            case .left: return CGSize(width: -w * 1.3, height: offset.height)
+            case .right: return CGSize(width: w * 1.3, height: offset.height)
+            }
+        }
         switch intent {
         case .keep: return CGSize(width: offset.width, height: -h * 1.2)
         case .markForCleanup: return CGSize(width: -w * 1.3, height: offset.height)
@@ -604,6 +665,12 @@ final class FeedViewModel {
         let before = session.index
         guard let record = await app.undo() else { return }
         session.applyUndo(record)
+        // „In Album legen“ war ein Schritt: mit der Entscheidung auch die Album-Zuordnung zurücknehmen.
+        if let albumID = albumPlacements.removeValue(forKey: record.item) {
+            if await app.library.remove([record.item.localIdentifier], fromAlbum: albumID) == .failed {
+                app.showError(L("album_failed"))
+            }
+        }
         Haptics.tick()
         if session.index < before && !reduceMotion {
             var t = Transaction()

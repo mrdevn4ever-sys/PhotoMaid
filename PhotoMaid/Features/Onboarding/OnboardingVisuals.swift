@@ -89,7 +89,9 @@ struct OnboardingDemoStack: View {
                         .offset(index == 0 ? offset : .zero)
                         .rotationEffect(.degrees(index == 0 ? Double(offset.width) / 18 : 0))
                 }
-                DirectionPill(direction: machine.lockedDirection, ready: machine.readyToCommit)
+                DirectionPill(direction: machine.lockedDirection,
+                              action: machine.lockedDirection.map { FeedControls.standard.action(for: $0) },
+                              ready: machine.readyToCommit)
                     .frame(maxHeight: .infinity, alignment: .top)
                     .offset(y: -36)
             }

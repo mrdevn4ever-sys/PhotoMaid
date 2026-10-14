@@ -43,6 +43,11 @@ Auf Nutzermeldung (Screenshots Build 5) – alles ohne neue Netzwerk-, Konto- od
   Gesamtsumme mit „ca.“, sobald ein Teil geschätzt ist (`SizeValue`, `SizeSum`, `CleanupSavings.display`,
   `savedTotalApproximate`). „Große Dateien“: Medien nur in iCloud/nicht lesbar mit „ca.“ und iCloud-Symbol in der Liste.
   „Dateien“: ohne lesbare Größe „ca.“; Dateigröße zusätzlich über `totalFileSize`. 7 Texte (davon 1 geändert).
+- E18 (Nutzerentscheidung 14.10.2026): Einstellungen › Wischen & Tasten (`FeedControlsView`, Kern `FeedControls`).
+  Jede Richtung frei belegbar (auch „In Album „…“ legen“ = hinzufügen + Behalten, ein Schritt, Rückgängig nimmt beides
+  zurück), Tasten frei wählbar/sortierbar/platzierbar, anzeigen nur mit Bedienungshilfen oder immer. Feed: Geste →
+  Belegung (`perform(action:direction:)`), Medium fliegt in die gewischte Richtung, Richtungs-Pille, Gestenhilfe,
+  Tasten und Färbung zeigen die eigene Belegung; Album-Aktionen auch als VoiceOver-Aktionen. 24 Texte.
 - Nachtrag B: Medienart „Bildschirmaufnahmen“ (`videoScreenRecording`) und Sortierung „Zuletzt hinzugefügt“
   (`LibraryOrder`, Reihenfolge des Systemalbums „Aufnahmen“/`smartAlbumUserLibrary`; ohne Datumsüberschriften). 2 Texte.
 

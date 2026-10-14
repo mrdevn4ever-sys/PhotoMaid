@@ -3,9 +3,9 @@
 Native iPhone-App (iOS 26+, Swift 6 strikte Concurrency, SwiftUI + Observation, Liquid Glass).
 Funktionale Referenz: Android-App `mrdevn4ever-sys/photomaid-android` (Funktionsmatrix `docs/IOS_FUNKTIONSMATRIX.md`).
 Kein Flutter, Dart, Kotlin, React Native, keine WebView-Oberfläche, keine nachgebaute Android-Oberfläche.
-Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E15) – nichts davon still ändern.
+Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E18) – nichts davon still ändern.
 
-## Gesten (FEST, tatsächliche Fingerbewegung, wie Android)
+## Gesten (Standardbelegung, tatsächliche Fingerbewegung, wie Android – frei belegbar: Einstellungen › Wischen & Tasten, E18)
 
 | Finger | Bedeutung | Danach |
 |---|---|---|
@@ -18,9 +18,13 @@ Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E15) – ni
 - Eine einzige Gesture-/Decision-State-Machine: `Sources/PhotoMaidCore/Feed/FeedGestureMachine.swift`.
 - Nichts tun = keine Entscheidung (kein Keep aus onAppear/onDisappear, Scrollen, Rotation, Hintergrund, Videoende).
   Eine Geste = maximal ein Schritt. Commit trägt Item-ID, Revision, Command-ID, Aktion.
-- Keine Entscheidungs-Buttons im Feed – außer VoiceOver/Schaltersteuerung oder Einstellung „Tasten zum Entscheiden“.
-  Tasten rufen exakt `FeedViewModel.perform`. Aktionsleiste ♡ · Teilen · Zu Album · ✏️ · ⋯ ist nie eine Entscheidung.
-- „Favoriten schützen“ (Standard an): Wisch nach links auf einen Favoriten fragt nach.
+- Eigene Belegung (E18, `FeedControls`): je Richtung Behalten, Papierkorb, Später, Später – Termin wählen,
+  In Album „…“ legen (= hinzufügen + Behalten, Rückgängig nimmt beides zurück), Zurück oder Nichts. Gesten und Tasten
+  nutzen dieselbe Belegung und denselben Weg; die Invarianten oben gelten unverändert. Löschen ist nie belegbar.
+- Keine Entscheidungs-Buttons im Feed – außer VoiceOver/Schaltersteuerung oder „Wischen & Tasten › Tasten anzeigen:
+  Immer“. Tasten (Auswahl, Reihenfolge, Position frei) rufen exakt `FeedViewModel.perform(action:)`.
+  Aktionsleiste ♡ · Teilen · Zu Album · ✏️ · ⋯ ist nie eine Entscheidung.
+- „Favoriten schützen“ (Standard an): „Papierkorb“ auf einen Favoriten (gleich welche Richtung oder Taste) fragt nach.
 
 ## Verbote
 

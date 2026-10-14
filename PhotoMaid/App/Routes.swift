@@ -40,6 +40,8 @@ enum Route: Hashable {
     case help
     case excludedAlbums
     case backup
+    /// Einstellungen › Wischen & Tasten (E18).
+    case feedControls
     // Von außen
     case received([URL])
 }
@@ -126,6 +128,7 @@ struct RouteDestination: View {
         case .help: HelpView()
         case .excludedAlbums: ExcludedAlbumsView()
         case .backup: BackupView()
+        case .feedControls: FeedControlsView()
         case .received(let urls): ReceivedView(urls: urls)
         }
     }

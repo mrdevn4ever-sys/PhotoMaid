@@ -29,7 +29,17 @@ struct FeedView: View {
         _model = State(initialValue: FeedViewModel(request: request, app: app))
     }
 
-    private var needsButtons: Bool { voiceOver || switchControl || app.settings.decisionButtons }
+    private var controls: FeedControls { app.settings.feedControls }
+    /// Tasten: mit VoiceOver/Schaltersteuerung immer, sonst nach Einstellung „Wischen & Tasten“ (E18).
+    private var needsButtons: Bool {
+        !controls.buttons.isEmpty && (voiceOver || switchControl || controls.visibility == .always)
+    }
+    /// „In Album legen“-Aktionen der eigenen Belegung, zusätzlich als VoiceOver-Aktionen.
+    private var albumActions: [FeedAction] {
+        var seen = Set<FeedAction>()
+        let all = [controls.up, controls.left, controls.right, controls.down] + controls.buttons
+        return all.filter { $0.albumID != nil && seen.insert($0).inserted }
+    }
     private var zoomed: Bool { zoom > 1.01 }
 
     // Aufgeteilt (Bühne, Blätter, Hinweise), damit der Type-Checker jede Kette einzeln prüft.
@@ -215,13 +225,19 @@ struct FeedView: View {
                                done: { model.close() })
                 .frame(maxHeight: .infinity)
         } else {
+            if needsButtons && controls.placement == .aboveMedia {
+                DecisionButtons(controls: controls) { model.perform(action: $0) }
+                    .padding(.horizontal, AppSpacing.pageMargin)
+            }
             stage
             if let a = model.currentAsset {
                 MediaInfoLine(asset: a).padding(.horizontal, AppSpacing.pageMargin)
                 if a.isVideo { FeedVideoControls(asset: a).padding(.horizontal, AppSpacing.pageMargin) }
             }
             VStack(spacing: AppSpacing.xs) {
-                if needsButtons { DecisionButtons { model.perform($0) } }
+                if needsButtons && controls.placement == .belowMedia {
+                    DecisionButtons(controls: controls) { model.perform(action: $0) }
+                }
                 actionBar.tourTarget("feed.actions")
             }
             .padding(.horizontal, AppSpacing.pageMargin)
@@ -260,12 +276,13 @@ struct FeedView: View {
                             .allowsHitTesting(top)
                     }
                 }
-                DirectionPill(direction: model.lockedDirection, ready: model.readyDirection != nil)
+                DirectionPill(direction: model.lockedDirection, action: model.lockedDirection.map { controls.action(for: $0) },
+                              ready: model.readyDirection != nil)
                     .frame(maxHeight: .infinity, alignment: .top)
                     .padding(.top, AppSpacing.s)
                     .zIndex(2)
                 if showHints {
-                    GestureHintOverlay().transition(.opacity).zIndex(3)
+                    GestureHintOverlay(controls: controls).transition(.opacity).zIndex(3)
                 }
                 VStack {
                     Spacer()
@@ -297,17 +314,20 @@ struct FeedView: View {
             .accessibilityAction(named: Text(key: "act_previous")) { model.perform(.previous) }
             .accessibilityAction(named: Text(key: "undo")) { Task { await model.undo() } }
             .accessibilityAction(named: Text(key: "feed_view_basket")) { showTrash = true }
+            .accessibilityActions {
+                ForEach(albumActions, id: \.self) { action in
+                    Button(FeedActionText.accessibility(action)) { model.perform(action: action) }
+                }
+            }
         }
         .padding(.horizontal, AppSpacing.xs)
     }
 
+    /// Färbung beim Wischen nach der belegten Aktion (nur Entscheidungen).
     private var intentColor: Color? {
-        switch model.readyDirection.map(FeedIntent.init) {
-        case .keep: AppColors.keep
-        case .markForCleanup: AppColors.cleanup
-        case .later, .laterCustom: AppColors.later
-        default: nil
-        }
+        guard let d = model.readyDirection else { return nil }
+        let action = controls.action(for: d)
+        return action.isDecision ? FeedActionText.color(action) : nil
     }
 
     private func reveal(_ size: CGSize) -> CGFloat {

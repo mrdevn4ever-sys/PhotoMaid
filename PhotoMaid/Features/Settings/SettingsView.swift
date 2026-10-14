@@ -11,7 +11,9 @@ struct SettingsView: View {
             Section(L("set_controls")) {
                 Toggle(L("set_haptics"), isOn: setting(\.haptics))
                 Toggle(L("set_hints"), isOn: setting(\.showGestureHintOnOpen))
-                Toggle(L("set_buttons"), isOn: setting(\.decisionButtons))
+                NavigationLink(value: Route.feedControls) {
+                    LabeledContent(L("fc_title"), value: FeedControlsText.summary(app.settings.feedControls))
+                }
                 Toggle(L("set_protect_favorites"), isOn: setting(\.protectFavorites))
                 Picker(L("set_later_default"), selection: setting(\.laterDefaultDays)) {
                     ForEach(LaterInterval.allowedQuickDays, id: \.self) { Text(verbatim: LP("set_in_days", $0)).tag($0) }

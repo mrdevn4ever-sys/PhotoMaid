@@ -18,25 +18,71 @@ struct GestureArrow: View {
     }
 }
 
-/// Dezente Pille während des Wischens: „↑ Behalten“, „← Papierkorb“, „→ Später“. Keine bei „runter“.
+/// Bezeichnung, Farbe und Symbol einer belegbaren Aktion (Wischen & Tasten, E18).
+enum FeedActionText {
+    /// Kurz (Pille beim Wischen, Gestenhilfe, Einstellungen).
+    static func title(_ a: FeedAction) -> String {
+        switch a {
+        case .keep: L("dir_keep")
+        case .trash: L("dir_trash")
+        case .later: L("dir_later")
+        case .laterPickDate: L("fc_action_pick_date")
+        case .album(_, let title): L("fc_action_album", title)
+        case .previous: L("dir_back")
+        case .nothing: L("fc_action_none")
+        }
+    }
+
+    /// Für VoiceOver und Tasten-Beschriftung.
+    static func accessibility(_ a: FeedAction) -> String {
+        switch a {
+        case .keep: L("act_keep_next")
+        case .trash: L("act_trash")
+        case .later: L("act_later")
+        case .laterPickDate: L("act_later_custom")
+        case .album(_, let title): L("fc_action_album", title)
+        case .previous: L("act_previous")
+        case .nothing: L("fc_action_none")
+        }
+    }
+
+    static func color(_ a: FeedAction) -> Color {
+        switch a {
+        case .keep, .album: AppColors.keep
+        case .trash: AppColors.cleanup
+        case .later, .laterPickDate: AppColors.later
+        case .previous, .nothing: AppColors.textSecondary
+        }
+    }
+
+    /// Symbol für Tasten ohne eigene Wischrichtung.
+    static func symbol(_ a: FeedAction) -> String {
+        switch a {
+        case .keep: "checkmark"
+        case .trash: "trash"
+        case .later: "clock"
+        case .laterPickDate: "calendar"
+        case .album: "rectangle.stack.badge.plus"
+        case .previous: "arrow.uturn.backward"
+        case .nothing: "nosign"
+        }
+    }
+}
+
+/// Dezente Pille während des Wischens mit der belegten Aktion („↑ Behalten“, „→ In „Urlaub“ legen“ …).
+/// Keine Pille für „Zurück“ und „Nichts“.
 struct DirectionPill: View {
     let direction: SwipeDirection?
+    let action: FeedAction?
     let ready: Bool
 
     var body: some View {
-        let meaning: (String, Color)? = switch direction {
-        case .up: ("dir_keep", AppColors.keep)
-        case .left: ("dir_trash", AppColors.cleanup)
-        case .right: ("dir_later", AppColors.later)
-        default: nil
-        }
-        if let meaning, let direction {
-            let (key, tint) = meaning
+        if let direction, let action, action.isDecision {
             HStack(spacing: 6) {
                 GestureArrow(direction: direction)
-                Text(key: key).font(AppTypography.footnote.weight(.semibold))
+                Text(verbatim: FeedActionText.title(action)).font(AppTypography.footnote.weight(.semibold)).lineLimit(1)
             }
-            .foregroundStyle(tint)
+            .foregroundStyle(FeedActionText.color(action))
             .padding(.horizontal, AppSpacing.s)
             .padding(.vertical, 6)
             .glassCapsule()
@@ -47,17 +93,19 @@ struct DirectionPill: View {
     }
 }
 
-/// Gestenhilfe beim Öffnen (blendet von selbst aus).
+/// Gestenhilfe beim Öffnen (blendet von selbst aus) – zeigt die eigene Belegung.
 struct GestureHintOverlay: View {
+    let controls: FeedControls
+
     var body: some View {
         VStack(spacing: AppSpacing.l) {
-            hint(.up, "hint_up", "dir_keep", AppColors.keep)
+            hint(.up, "hint_up")
             HStack(spacing: AppSpacing.xl) {
-                hint(.left, "hint_left", "dir_trash", AppColors.cleanup)
-                hint(.right, "hint_right", "dir_later", AppColors.later)
+                hint(.left, "hint_left")
+                hint(.right, "hint_right")
             }
             .environment(\.layoutDirection, .leftToRight)
-            hint(.down, "hint_down", "dir_back", AppColors.textSecondary)
+            hint(.down, "hint_down")
         }
         .padding(AppSpacing.l)
         .glassPanel()
@@ -65,13 +113,15 @@ struct GestureHintOverlay: View {
         .accessibilityElement(children: .combine)
     }
 
-    private func hint(_ d: SwipeDirection, _ title: String, _ meaning: String, _ tint: Color) -> some View {
-        VStack(spacing: 4) {
-            GestureArrow(direction: d).font(.title2.weight(.bold)).foregroundStyle(tint)
+    private func hint(_ d: SwipeDirection, _ title: String) -> some View {
+        let action = controls.action(for: d)
+        return VStack(spacing: 4) {
+            GestureArrow(direction: d).font(.title2.weight(.bold)).foregroundStyle(FeedActionText.color(action))
             Text(key: title).font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
-            Text(key: meaning).font(AppTypography.subheadline.weight(.semibold)).foregroundStyle(AppColors.textPrimary)
+            Text(verbatim: FeedActionText.title(action)).font(AppTypography.subheadline.weight(.semibold))
+                .foregroundStyle(AppColors.textPrimary).lineLimit(2).multilineTextAlignment(.center)
         }
-        .frame(minWidth: 88)
+        .frame(minWidth: 88, maxWidth: 140)
     }
 }
 
@@ -139,33 +189,34 @@ struct TrashChip: View {
 /// Entscheidungs-Tasten nur für VoiceOver/Schaltersteuerung oder „Tasten zum Entscheiden“.
 /// Rufen exakt denselben Weg wie die Geste (`FeedViewModel.perform`).
 struct DecisionButtons: View {
-    let act: (FeedIntent) -> Void
+    let controls: FeedControls
+    let act: (FeedAction) -> Void
 
     var body: some View {
         GlassEffectContainer(spacing: AppSpacing.xs) {
             HStack(spacing: AppSpacing.xs) {
-                button(.down, "act_previous", AppColors.textSecondary, .previous)
-                button(.left, "act_trash", AppColors.cleanup, .markForCleanup)
-                button(.up, "act_keep_next", AppColors.keep, .keep)
-                button(.right, "act_later", AppColors.later, .later)
-                Button { act(.laterCustom) } label: {
-                    Image(systemName: "calendar").foregroundStyle(AppColors.later)
-                        .frame(maxWidth: .infinity, minHeight: AppSpacing.touch)
-                }
-                .buttonStyle(.glass)
-                .accessibilityLabel(Text(key: "act_later_custom"))
+                ForEach(controls.buttons, id: \.self) { action in button(action) }
             }
         }
         .environment(\.layoutDirection, .leftToRight)
     }
 
-    private func button(_ d: SwipeDirection, _ label: String, _ tint: Color, _ intent: FeedIntent) -> some View {
-        Button { act(intent) } label: {
-            GestureArrow(direction: d).foregroundStyle(tint)
-                .frame(maxWidth: .infinity, minHeight: AppSpacing.touch)
+    /// Liegt die Aktion auf einer Wischrichtung, zeigt die Taste deren Pfeil (physische Richtung, nie gespiegelt),
+    /// sonst ein eigenes Symbol.
+    private func button(_ action: FeedAction) -> some View {
+        Button { act(action) } label: {
+            Group {
+                if let d = controls.direction(of: action) {
+                    GestureArrow(direction: d)
+                } else {
+                    Image(systemName: FeedActionText.symbol(action)).accessibilityHidden(true)
+                }
+            }
+            .foregroundStyle(FeedActionText.color(action))
+            .frame(maxWidth: .infinity, minHeight: AppSpacing.touch)
         }
         .buttonStyle(.glass)
-        .accessibilityLabel(Text(key: label))
+        .accessibilityLabel(Text(verbatim: FeedActionText.accessibility(action)))
     }
 }
 
