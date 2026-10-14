@@ -28,7 +28,7 @@ gh api repos/mrdevn4ever-sys/photomaid/actions/runs/<RUN_ID>/artifacts  # Artefa
 neu gestartet: zuerst synthetische QA-Medien mit `-qa-fixtures`, danach 150 importierte Testbilder plus 3 Videos
 ohne dieses Startargument. Der zweite Durchlauf verwendet PhotoKit/Core Data, vorab erlaubten Fotozugriff,
 Googles öffentliche Testanzeigen, PIN-Tresor und `PhotoMaid.storekit`. Keine Systemlöschung wird bestätigt.
-Das Artefakt `simulator-ui-evidence` enthält PNGs, Accessibility-Bäume, zwei `.xcresult.zip`, Logs,
+Das Artefakt `simulator-ui-evidence` enthält PNGs, Accessibility-Bäume, `.xcresult.zip`-Ergebnisbündel, Logs,
 Testübersichten und das Medienmanifest (Herkunft/SHA-256). Die QA-Belege erscheinen bereits vor dem zweiten
 Durchlauf zusätzlich als `simulator-fixtures-evidence`; ein fehlgeschlagener QA-Lauf verhindert den echten
 Durchlauf nicht. Der PhotoKit-Starttest wird separat ausgeführt und früh als `simulator-real-start-evidence`
@@ -39,6 +39,7 @@ Standard bleibt `all`. Build, Unit-Tests und Linux-Kernprüfung laufen weiterhin
 
 Optional exportiert `baseline_run=<CI-Lauf-ID>` auch Screenshots aus einem älteren `ios-build-report`-Ergebnisbündel.
 `collect_run=<CI-Lauf-ID>` führt ausschließlich einen Linux-Sammeljob aus (keine App-Tests): Bilder und
+`collect_artifact` wählt das vollständige Artefakt oder die früh verfügbaren QA-/Startbelege. Bilder und
 Logs werden getrennt bereitgestellt, die vollständigen `.xcresult`-Daten in 200-MiB-Teilen. Damit bleiben auch
 Belege über dem 512-MiB-Limit des GitHub-Connectors herunterladbar. `index.json` ordnet alle ursprünglichen
 Screenshot-Namen den unveränderten PNG-Dateien per SHA-256 zu. Die Ergebnis-Teile werden nach Nummer

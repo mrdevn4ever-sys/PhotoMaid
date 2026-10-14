@@ -22,6 +22,11 @@ on:
         description: "Nur vorhandene UI-Belege aufteilen (Lauf-ID; keine App-Tests)"
         type: string
         default: ""
+      collect_artifact:
+        description: "Vorhandenes Belegartefakt für collect_run"
+        type: choice
+        options: [simulator-ui-evidence, simulator-fixtures-evidence, simulator-real-start-evidence]
+        default: simulator-ui-evidence
 
 concurrency:
   # Keep evidence from the previous commit while validating a fix on the same branch.
@@ -190,7 +195,7 @@ jobs:
         with:
           github-token: ${{ github.token }}
           run-id: ${{ inputs.collect_run }}
-          name: simulator-ui-evidence
+          name: ${{ inputs.collect_artifact }}
           path: evidence-source
       - run: python3 scripts/ci/collect_ui_evidence.py evidence-source evidence-review
       - uses: actions/upload-artifact@v4
