@@ -266,6 +266,7 @@ final class VaultStore {
             VaultCaptureRecovery.recoverSealed(store: self)
             return true
         } catch {
+            Diagnostics.error(.persistence, "vault-open-failed", error)
             return false
         }
     }
@@ -325,6 +326,7 @@ final class VaultStore {
             return open(with: key)
         } catch {
             // Nur entfernen, was dieser Versuch selbst angelegt hat (nie einen früheren Tresor).
+            Diagnostics.error(.persistence, "vault-setup-failed", error)
             if createdRoot {
                 for url in [Self.indexURL, Self.settingsURL] { try? fm.removeItem(at: url) }
             }

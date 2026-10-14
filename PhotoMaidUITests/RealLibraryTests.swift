@@ -94,10 +94,13 @@ final class RealLibraryTests: XCTestCase {
         // SDK test creatives may make the close control available after their countdown.
         let deadline = Date().addingTimeInterval(65)
         while Date() < deadline {
-            for title in ["Close", "Close ad", "Close Ad", "Schließen", "Dismiss", "Done"] {
-                let close = app.buttons[title].firstMatch
-                if close.exists && close.isHittable {
-                    close.tap()
+            let titles = ["Close", "Close ad", "Close Ad", "Close Advertisement", "Schließen", "Dismiss", "Done", "Weiter zur App", "Continue to app"]
+            let candidates = app.descendants(matching: .any)
+                .matching(NSPredicate(format: "label IN %@", titles as NSArray)).allElementsBoundByAccessibilityElement
+            if let close = candidates.first(where: { $0.exists && $0.isEnabled && $0.isHittable }) {
+                close.tap()
+                Thread.sleep(forTimeInterval: 0.5)
+                if testAd == nil {
                     snap("test_ad_closed")
                     return
                 }
@@ -140,10 +143,19 @@ final class RealLibraryTests: XCTestCase {
         return Int(digits.first ?? "") ?? -1
     }
     private func assertNoPlaceholders() {
-        for element in app.staticTexts.allElementsBoundByIndex {
-            XCTAssertNil(element.label.range(of: "%[0-9]*\\$?(?:lld|ld|d|@)|\\b(?:pro2|ana2|vault2)_[a-z_]+",
-                                             options: .regularExpression), element.label)
+        let pattern = "(?s).*(%[0-9]*\\$?(lld|ld|d|@)|\\b(pro2|ana2|vault2)_[a-z_]+).*"
+        let invalid = app.staticTexts.matching(NSPredicate(format: "label MATCHES %@", pattern)).firstMatch
+        XCTAssertFalse(invalid.exists, "No format placeholders or localization keys may be visible")
+    }
+    private func setSwitch(_ control: XCUIElement, on: Bool, _ name: String) {
+        XCTAssertTrue(control.exists)
+        let wanted = on ? "1" : "0"
+        if control.value as? String != wanted {
+            // SwiftUI exposes the entire row as a Switch; its label centre does not toggle the thumb.
+            control.coordinate(withNormalizedOffset: CGVector(dx: 0.92, dy: 0.5)).tap()
         }
+        XCTAssertEqual(control.value as? String, wanted, name)
+        snap(name)
     }
 
     func test00IntroductionAndFourColdStarts() {
@@ -287,6 +299,7 @@ final class RealLibraryTests: XCTestCase {
         XCTAssertTrue(e("feed.stage").exists)
         closeFeed()
         tab("Verlauf")
+        XCTAssertEqual(e("history.events").value as? String, "101", "Undo removes exactly one of the two later decisions")
         snap("history_no_ad_decision")
         XCTAssertFalse(app.staticTexts["Anzeige"].exists)
         XCTAssertTrue(contains("Papierkorb").exists)
@@ -297,7 +310,7 @@ final class RealLibraryTests: XCTestCase {
         settings()
         let hint = app.switches["Wischhilfe beim Öffnen zeigen"]
         XCTAssertTrue(hint.exists)
-        if hint.value as? String == "0" { tap(hint, "hint_setting_on") }
+        setSwitch(hint, on: true, "hint_setting_on")
         let controls = button("Wischen & Tasten")
         tap(controls, "controls")
         tap(e("controls.right"), "right_menu")
@@ -314,7 +327,7 @@ final class RealLibraryTests: XCTestCase {
         XCTAssertTrue(button("Tasten anzeigen").label.contains("Immer"))
         back("controls_back"); back("settings_back")
         feed(dismissHints: false)
-        XCTAssertTrue(e("feed.hints").exists)
+        XCTAssertTrue(e("feed.hints").waitForExistence(timeout: 10))
         snap("hints_on_open")
         Thread.sleep(forTimeInterval: 3)
         XCTAssertTrue(e("feed.hints").exists, "Help must remain visible for about six seconds")
@@ -412,11 +425,11 @@ final class RealLibraryTests: XCTestCase {
     func test60LibraryFiltersSortAndAspect() {
         ready()
         tab("Fotos")
-        for filter in ["Alle", "Favoriten", "Fotos", "Videos", "Bildschirmfotos"] {
+        for filter in ["Alle", "Favoriten", "Fotos", "Videos", "Screenshots"] {
             tap(e("library.filter"), "filter_menu_" + filter)
             tap(app.buttons[filter].firstMatch, "filter_" + filter)
             XCTAssertEqual(e("library.filter").value as? String, filter)
-            if filter == "Videos" || filter == "Bildschirmfotos" {
+            if filter == "Videos" || filter == "Screenshots" {
                 XCTAssertTrue(app.buttons.matching(identifier: "media.cell").firstMatch.waitForExistence(timeout: 10),
                               "Imported \(filter) must be visible")
             }
@@ -453,6 +466,7 @@ final class RealLibraryTests: XCTestCase {
         tap(app.buttons["Bearbeiten"].firstMatch, "photo_editor_free")
         XCTAssertFalse(contains("Pro freischalten").exists)
         XCTAssertFalse(app.images["crown"].exists)
+        XCTAssertTrue(app.buttons["Anpassen"].waitForExistence(timeout: 10), "Photo editor must load without Pro")
         snap("studio_photo_editor_free")
     }
 
@@ -499,12 +513,12 @@ final class RealLibraryTests: XCTestCase {
         tap(app.buttons["Weiter"], "vault_code_next")
         if app.switches.matching(NSPredicate(format: "label CONTAINS 'Face ID'")).firstMatch.exists {
             let face = app.switches.matching(NSPredicate(format: "label CONTAINS 'Face ID'")).firstMatch
-            if face.value as? String == "1" { tap(face, "vault_face_id_off") }
+            setSwitch(face, on: false, "vault_face_id_off")
             tap(app.buttons["Weiter"], "vault_biometry_next")
         }
         tap(button("Ich habe ihn aufgeschrieben"), "vault_recovery_saved")
         let hidden = app.switches["Eingang verstecken"].firstMatch
-        if hidden.exists && hidden.value as? String == "1" { tap(hidden, "vault_entry_visible") }
+        if hidden.exists { setSwitch(hidden, on: false, "vault_entry_visible") }
         tap(button("Tresor einrichten"), "vault_setup_finished")
         XCTAssertTrue(app.segmentedControls.buttons["Medien"].waitForExistence(timeout: 20))
         newVaultFolder("Gratis-Test", rewarded: true)

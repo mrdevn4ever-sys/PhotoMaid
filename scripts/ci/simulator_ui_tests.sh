@@ -30,7 +30,7 @@ run_tests() {
     -parallel-testing-enabled NO -maximum-concurrent-test-simulator-destinations 1 \
     -resultBundlePath "$out/$mode.xcresult" \
     -skipPackagePluginValidation -skipMacroValidation \
-    CODE_SIGNING_ALLOWED=NO "$@" test-without-building 2>&1 | tee "$out/$mode.log"
+    CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_REQUIRED=YES "$@" test-without-building 2>&1 | tee "$out/$mode.log"
   local status=${PIPESTATUS[0]}
   set -e
   echo "$status" > "$out/$mode.exit"

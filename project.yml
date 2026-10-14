@@ -105,6 +105,8 @@ targets:
         PMPrivacyPolicyURL: $(PM_PRIVACY_POLICY_URL)
         # Google Mobile Ads: ohne eigene IDs Googles öffentliche Test-IDs (Build-Einstellungen unten, CI überschreibt).
         GADApplicationIdentifier: $(PM_ADMOB_APP_ID)
+        # Google's developer-only validator was verified in CI; keep it from covering test ads.
+        GADNativeAdValidatorEnabled: false
         PMAdMobAppOpenID: $(PM_ADMOB_APP_OPEN_ID)
         PMAdMobNativeID: $(PM_ADMOB_NATIVE_ID)
         PMAdMobRewardedID: $(PM_ADMOB_REWARDED_ID)

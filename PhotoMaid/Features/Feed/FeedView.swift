@@ -438,52 +438,70 @@ struct FeedView: View {
     // MARK: Aktionsleiste (nie eine Entscheidung)
 
     private var actionBar: some View {
+        ViewThatFits(in: .horizontal) {
+            HStack(spacing: AppSpacing.xs) {
+                feedActionButtons
+                Spacer(minLength: 0)
+                feedCounters
+            }
+            VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                feedActionButtons
+                HStack { Spacer(minLength: 0); feedCounters }
+            }
+        }
+    }
+
+    private var feedActionButtons: some View {
         let asset = model.currentAsset
         let busy = model.mediaWriteBusy || model.isCommitting
-        return HStack(spacing: AppSpacing.xs) {
-            GlassEffectContainer(spacing: 0) {
-                HStack(spacing: 0) {
-                    let fav = asset?.isFavorite == true
-                    actionIcon(fav ? "heart.fill" : "heart", label: L(fav ? "fav_remove" : "fav_add"),
-                               tint: fav ? AppColors.cleanup : AppColors.textPrimary, enabled: asset != nil && !busy) {
-                        Task { await model.toggleFavorite() }
-                    }
-                    .accessibilityValue(Text(key: fav ? "fav_state_on" : "fav_state_off"))
-                    actionIcon("square.and.arrow.up", label: L("share"), enabled: asset != nil) {
-                        guard let a = asset else { return }
-                        Task {
-                            if let item = await MediaShare.prepare([a.id]) { shareItem = item } else { app.showError(L("share_failed")) }
-                        }
-                    }
-                    actionIcon("rectangle.stack.badge.plus", label: L("folder_action"), enabled: asset != nil && !busy) {
-                        model.albumSheetFor = asset
-                    }
-                    actionIcon("pencil", label: L("edit_action"), enabled: asset != nil && !busy) {
-                        guard let a = asset else { return }
-                        app.player.stop()
-                        app.fullScreen = a.isVideo ? .videoEditor(assetID: a.id) : .editor(assetID: a.id)
-                    }
-                    Menu {
-                        Button { showInfo = true } label: { Label(L("info"), systemImage: "info.circle") }.disabled(asset == nil)
-                        Button { flashHints() } label: { Label(L("feed_show_hints"), systemImage: "hand.draw") }
-                        Button { showTrash = true } label: { Label(L("feed_view_basket"), systemImage: "trash") }
-                        if model.request.isOrderable {
-                            Button { showGrid = true } label: { Label(L("grid_open"), systemImage: "square.grid.3x3") }
-                        }
-                        if case .album = model.request.source {
-                            Button { confirmExclude = true } label: { Label(L("excl_action"), systemImage: "eye.slash") }
-                        }
-                    } label: {
-                        Image(systemName: "ellipsis")
-                            .frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch)
-                            .contentShape(.rect)
-                    }
-                    .accessibilityLabel(Text(key: "more_actions"))
-                    .foregroundStyle(AppColors.textPrimary)
+        return GlassEffectContainer(spacing: 0) {
+            HStack(spacing: 0) {
+                let fav = asset?.isFavorite == true
+                actionIcon(fav ? "heart.fill" : "heart", label: L(fav ? "fav_remove" : "fav_add"),
+                           tint: fav ? AppColors.cleanup : AppColors.textPrimary, enabled: asset != nil && !busy) {
+                    Task { await model.toggleFavorite() }
                 }
-                .padding(.horizontal, AppSpacing.xxs)
-                .glassCapsule()
+                .accessibilityValue(Text(key: fav ? "fav_state_on" : "fav_state_off"))
+                actionIcon("square.and.arrow.up", label: L("share"), enabled: asset != nil) {
+                    guard let a = asset else { return }
+                    Task {
+                        if let item = await MediaShare.prepare([a.id]) { shareItem = item } else { app.showError(L("share_failed")) }
+                    }
+                }
+                actionIcon("rectangle.stack.badge.plus", label: L("folder_action"), enabled: asset != nil && !busy) {
+                    model.albumSheetFor = asset
+                }
+                actionIcon("pencil", label: L("edit_action"), enabled: asset != nil && !busy) {
+                    guard let a = asset else { return }
+                    app.player.stop()
+                    app.fullScreen = a.isVideo ? .videoEditor(assetID: a.id) : .editor(assetID: a.id)
+                }
+                Menu {
+                    Button { showInfo = true } label: { Label(L("info"), systemImage: "info.circle") }.disabled(asset == nil)
+                    Button { flashHints() } label: { Label(L("feed_show_hints"), systemImage: "hand.draw") }
+                    Button { showTrash = true } label: { Label(L("feed_view_basket"), systemImage: "trash") }
+                    if model.request.isOrderable {
+                        Button { showGrid = true } label: { Label(L("grid_open"), systemImage: "square.grid.3x3") }
+                    }
+                    if case .album = model.request.source {
+                        Button { confirmExclude = true } label: { Label(L("excl_action"), systemImage: "eye.slash") }
+                    }
+                } label: {
+                    Image(systemName: "ellipsis")
+                        .frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch)
+                        .contentShape(.rect)
+                }
+                .accessibilityLabel(Text(key: "more_actions"))
+                .foregroundStyle(AppColors.textPrimary)
             }
+            .padding(.horizontal, AppSpacing.xxs)
+            .glassCapsule()
+        }
+    }
+
+    private var feedCounters: some View {
+        let busy = model.mediaWriteBusy || model.isCommitting
+        return HStack(spacing: AppSpacing.xs) {
             if let series = model.currentSeries {
                 Button {
                     if app.capabilities.seriesCompare { model.openSeries() } else { app.navigate(.pro); model.close() }
@@ -491,6 +509,7 @@ struct FeedView: View {
                     HStack(spacing: 4) {
                         Image(systemName: "square.stack.3d.forward.dottedline").foregroundStyle(AppColors.accent)
                         Text(verbatim: "\(series.count)").font(AppTypography.subheadline.weight(.semibold))
+                            .monospacedDigit().lineLimit(1).fixedSize(horizontal: true, vertical: false)
                         if !app.capabilities.seriesCompare { Image(systemName: "crown").font(.caption).foregroundStyle(AppColors.accent) }
                     }
                     .padding(.horizontal, AppSpacing.s)
@@ -501,11 +520,11 @@ struct FeedView: View {
                 .disabled(busy)
                 .accessibilityLabel(Text(verbatim: L("series_button", series.count)))
             }
-            Spacer(minLength: 0)
             TrashChip(count: app.read.basket.count) { showTrash = true }
                 .accessibilityIdentifier("feed.dock")
                 .tourTarget("feed.basket")
         }
+        .fixedSize(horizontal: true, vertical: false)
     }
 
     private func actionIcon(_ symbol: String, label: String, tint: Color = AppColors.textPrimary, enabled: Bool,

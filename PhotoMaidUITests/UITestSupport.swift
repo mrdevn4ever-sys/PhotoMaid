@@ -52,6 +52,12 @@ extension XCTestCase {
             next.tap()
             if page == 4 { requestedPhotos = true }
         }
+        if requestedPhotos && !app.tabBars.firstMatch.exists {
+            let system = XCUIApplication(bundleIdentifier: "com.apple.springboard")
+            checkpoint(prefix + "_photos_prompt_pending", app: system)
+            // Trigger XCTest's registered permission monitor without activating a home/feed control.
+            app.coordinate(withNormalizedOffset: CGVector(dx: 0.98, dy: 0.02)).tap()
+        }
         let deadline = Date().addingTimeInterval(25)
         repeat {
             resolvePrivacyPrompts(in: app, prefix: prefix, photos: requestedPhotos)
@@ -75,7 +81,7 @@ extension XCTestCase {
             if photos {
                 let labels = ["Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos",
                               "Zugriff auf alle Fotos erlauben"]
-                let buttons = springboard.buttons.matching(NSPredicate(format: "label IN %@", labels as NSArray)).allElementsBoundByIndex
+                let buttons = springboard.descendants(matching: .any).matching(NSPredicate(format: "label IN %@", labels as NSArray)).allElementsBoundByAccessibilityElement
                 if let allow = buttons.first(where: \.isHittable) {
                     checkpoint("\(prefix)_photos_permission_\(step)", app: springboard)
                     allow.tap()
@@ -83,9 +89,9 @@ extension XCTestCase {
                 }
             }
             if usesAds, app.staticTexts["Our app wants to stay free for you"].exists {
-                let next = app.webViews.buttons["Continue"].firstMatch
+                checkpoint("\(prefix)_tracking_explainer_\(step)", app: app)
+                let next = app.buttons["Continue"].firstMatch
                 if next.exists && next.isHittable {
-                    checkpoint("\(prefix)_tracking_explainer_\(step)", app: app)
                     next.tap()
                     handled = true
                     systemPromptExpected = true
@@ -93,7 +99,7 @@ extension XCTestCase {
             }
             if usesAds {
                 let labels = ["Consent", "I consent", "Zustimmen", "Einwilligen", "Agree"]
-                let buttons = app.webViews.buttons.matching(NSPredicate(format: "label IN %@", labels as NSArray)).allElementsBoundByIndex
+                let buttons = app.webViews.buttons.matching(NSPredicate(format: "label IN %@", labels as NSArray)).allElementsBoundByAccessibilityElement
                 if let consent = buttons.first(where: \.isHittable) {
                     checkpoint("\(prefix)_consent_\(step)", app: app)
                     consent.tap()
@@ -103,7 +109,8 @@ extension XCTestCase {
             }
             let alert = springboard.alerts.firstMatch
             if systemPromptExpected && alert.exists {
-                let text = alert.label.lowercased() + alert.staticTexts.allElementsBoundByIndex.map(\.label).joined().lowercased()
+                // One snapshot: iOS 26 changes this sheet's child count while Photos thumbnails load.
+                let text = alert.debugDescription.lowercased()
                 if !text.contains("delete") && !text.contains("löschen") && (text.contains("track") || text.contains("verfolg")) {
                     for title in ["Allow", "Erlauben", "Allow Tracking", "Tracking erlauben"] {
                         let allow = alert.buttons[title]

@@ -36,7 +36,9 @@ hochgeladen; die übrigen Tests laufen einzeln, behalten dieselbe Mediathek und 
 veröffentlichen nach jedem Fall ein Artefakt `simulator-test…`. Ein Fehler hält die nächsten Fälle nicht auf. Die abschließende
 Prüfung verlangt für QA, PhotoKit-Starttest und übrige PhotoKit-Tests jeweils Exitcode 0. Mit `ui_phase=fixtures` oder `ui_phase=real`
 lässt sich nach der ersten Gesamtprüfung gezielt ein Durchlauf wiederholen; dann wird dessen Exitcode geprüft.
-`ui_phase=start` führt ausschließlich die Startprüfung mit echter Mediathek aus. Standard bleibt `all`. Build, Unit-Tests und Linux-Kernprüfung laufen weiterhin. Der Linux-Job verwendet Swift 6.4.
+`ui_phase=start` führt ausschließlich die Startprüfung mit echter Mediathek aus. Standard bleibt `all`. Build, Unit-Tests und Linux-Kernprüfung laufen weiterhin. Der Linux-Job verwendet Swift 6.4. Der Simulator-Build wird lokal ad hoc signiert (`CODE_SIGN_IDENTITY=-`),
+damit Keychain und StoreKit mit einer App-Identität geprüft werden; Apple-Zertifikate werden nicht benötigt.
+Der UI-Job hat wegen der vollständigen Screenshot-Reihe bis zu 120 Minuten Zeit.
 
 Optional exportiert `baseline_run=<CI-Lauf-ID>` auch Screenshots aus einem älteren `ios-build-report`-Ergebnisbündel.
 `collect_run=<CI-Lauf-ID>` führt ausschließlich einen Linux-Sammeljob aus (keine App-Tests).

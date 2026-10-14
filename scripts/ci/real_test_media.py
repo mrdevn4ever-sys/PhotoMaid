@@ -17,7 +17,7 @@ import subprocess
 import time
 import urllib.request
 
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageDraw, ImageFilter, PngImagePlugin
 
 
 def download(url):
@@ -66,13 +66,23 @@ def main():
         manifest.append({"file": name, "kind": "blurry", "derived_from": source})
     for index in range(5):
         name = f"Screenshot_{index:02}.png"
-        with Image.open(args.screenshot).convert("RGB") as image:
+        if index == 0:
+            # Keep one native Simulator capture byte-for-byte, including ImageIO metadata.
+            shutil.copyfile(args.screenshot, args.output / name)
+            manifest.append({"file": name, "kind": "screenshot", "native_capture": True})
+            continue
+        with Image.open(args.screenshot) as image:
             # Real Simulator screenshot, distinct caption prevents extra duplicates.
             ImageDraw.Draw(image).text((30, 120), f"PhotoMaid Simulator {index}", fill="red")
-            exif = Image.Exif()
-            exif[0x0131] = "iOS 26"
-            exif[0x8769] = {0x9286: b"ASCII\0\0\0Screenshot", 0xA002: image.width, 0xA003: image.height}
-            image.save(args.output / name, exif=exif)
+            exif = image.getexif()
+            exif[0x010F] = "Apple"
+            exif[0x0110] = "iPhone 17"
+            exif[0x0131] = "iOS 26.5"
+            exif[0x8769] = {0x9286: b"ASCII\0\0\0Screenshot", 0xA001: 1,
+                            0xA002: image.width, 0xA003: image.height}
+            png = PngImagePlugin.PngInfo()
+            png.add(b"sRGB", b"\0")
+            image.save(args.output / name, exif=exif, pnginfo=png)
         manifest.append({"file": name, "kind": "screenshot"})
     for index in range(3):
         name = f"video_{index:02}.mp4"

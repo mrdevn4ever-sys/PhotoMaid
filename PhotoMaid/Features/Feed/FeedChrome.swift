@@ -187,6 +187,7 @@ struct TrashChip: View {
             HStack(spacing: 6) {
                 Image(systemName: "trash").foregroundStyle(AppColors.cleanup)
                 Text(verbatim: CountText.number(count)).font(AppTypography.subheadline.weight(.semibold)).monospacedDigit()
+                    .lineLimit(1).fixedSize(horizontal: true, vertical: false)
             }
             .foregroundStyle(AppColors.textPrimary)
             .padding(.horizontal, AppSpacing.s)

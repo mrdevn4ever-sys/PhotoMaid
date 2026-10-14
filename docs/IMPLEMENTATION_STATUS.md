@@ -53,6 +53,28 @@ Freigabe des Inhabers: nur `ci.yml` und Simulator-Prüfungen auf
   führen jetzt zu FAIL statt zu einem verdeckenden Skip. Video-Tutorial vor der Aufnahme gezielt geschlossen.
   Noch kein abschließendes PASS für die echte Mediathek; deren Läufe laufen weiter.
 
+- Echte Mediathek [38646580594](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38646580594):
+  **2 PASS, 9 FAIL**. PASS: Analyse-Warteschlange/Priorisieren/Fortschritt/volles Treffer-Raster/Feed sowie
+  Studio (Collage, Werkzeuge, Bearbeiten) ohne Pro. Alle **191 unterschiedlichen PNGs** geprüft; vollständiges
+  Original-`.xcresult` und Logs heruntergeladen. 100 rasche Papierkorb-Gesten liefen ohne Indexfehler;
+  Karte nach 50, sofortiges Runter-Schließen und Verlauf mit genau 50 Einträgen bestehen. Zweite Karte wird von
+  Googles Entwickler-Validator überlagert („No implementation issues found“); offizielles
+  `GADNativeAdValidatorEnabled=false` ergänzt, Testanzeigen bleiben unverändert aktiv.
+  Sichtbarer Layoutfehler: Serien-/Papierkorb-Zahlen brachen ziffernweise um; jetzt einzeilig, bei Platzmangel
+  separate Zählerzeile. UI-Test-Schalter trafen den Beschriftungsmittelpunkt statt den Schalter; Zustand wird
+  nun nach gezieltem Tippen geprüft. SDK-Schließen auch über „Weiter zur App“/„Continue to app“ erkannt.
+  Instabile indizierte Accessibility-Abfragen durch einzelne Snapshot-/Prädikatabfragen ersetzt.
+  Tresor-Einrichtung scheitert noch: CI wird lokal ad hoc signiert (keine Zertifikate/Provisioningprofile), echte
+  Keychain-Rundlaufprüfung ergänzt; Fehlerdomäne/-code werden ohne Inhalte protokolliert. Noch keine Abnahme.
+- Start-Einzelprüfung [38649479126](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38649479126):
+  FAIL durch veränderliche iOS-26-Systemblatt-Hierarchie (indizierter Text verschwand); alle **6 PNGs** geprüft.
+  Native Berechtigungssteuerung entsprechend korrigiert. Ein Original-Simulator-Screenshot bleibt jetzt
+  unverändert, weitere behalten RGBA/Farbraum und vollständige Screenshot-Metadaten; PhotoKit erkannte die
+  früheren Importe noch nicht als Screenshot. Positive Filterprüfung bleibt bis zum neuen Lauf offen.
+- Alle Läufe bleiben manuell und auf diesem Branch. Fachtests liefern jetzt nach jedem Fall eigene Belege;
+  QA und echte Mediathek können getrennt wiederholt werden, UI-Job maximal 120 Minuten. Lokal nach den
+  Korrekturen erneut **381 Kern-Tests PASS**, Sprachgenerator und `--check` **PASS** (16 Sprachen).
+
 ## Neues Pro-Modell E19 + Werbung (14.10.2026, gleicher Branch)
 
 Nutzerentscheidung (14.10.2026; Rückfragen: Tresor nur Ordner, Feed-Werbekarte wie Android, iOS-Tracking-Abfrage ja):

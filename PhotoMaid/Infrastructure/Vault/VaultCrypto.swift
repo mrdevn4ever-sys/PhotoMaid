@@ -241,11 +241,12 @@ enum VaultKeychain {
         ]
         let status = SecItemUpdate(match as CFDictionary, update as CFDictionary)
         if status == errSecSuccess { return }
-        guard status == errSecItemNotFound else { throw VaultCryptoError.io }
+        guard status == errSecItemNotFound else { throw NSError(domain: NSOSStatusErrorDomain, code: Int(status)) }
         var query = match
         query[kSecAttrAccessible as String] = kSecAttrAccessibleWhenUnlocked
         query[kSecValueData as String] = data
-        guard SecItemAdd(query as CFDictionary, nil) == errSecSuccess else { throw VaultCryptoError.io }
+        let added = SecItemAdd(query as CFDictionary, nil)
+        guard added == errSecSuccess else { throw NSError(domain: NSOSStatusErrorDomain, code: Int(added)) }
     }
 
     static func get(_ account: String) -> Data? {

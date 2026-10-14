@@ -61,7 +61,7 @@ jobs:
     if: inputs.collect_run == ''
     name: iOS App (xcodebuild build + test)
     runs-on: macos-26
-    timeout-minutes: 75
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
       - name: Xcode wählen (neuestes stabiles)
@@ -91,7 +91,7 @@ jobs:
             -resultBundlePath "$RUNNER_TEMP/tests.xcresult" \
             -parallel-testing-enabled NO \
             -skipPackagePluginValidation -skipMacroValidation \
-            CODE_SIGNING_ALLOWED=NO -skip-testing:PhotoMaidUITests \
+            CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_REQUIRED=YES -skip-testing:PhotoMaidUITests \
             build-for-testing test-without-building 2>&1 | tee xcodebuild.log | grep -E "error:|\*\* (BUILD|TEST)|Test (Case|Suite) .* (passed|failed)|Executed" || true
           grep -Eq '\*\* TEST( EXECUTE)? SUCCEEDED \*\*' xcodebuild.log
           ! grep -Eq '\*\* (BUILD|TEST( BUILD| EXECUTE)?) FAILED \*\*' xcodebuild.log
