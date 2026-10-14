@@ -94,7 +94,8 @@ struct FeedView: View {
         }
         .task(id: hintToken) {
             guard showHints else { return }
-            try? await Task.sleep(for: .seconds(2.6))
+            // Lange genug zum Lesen; Wischen oder Antippen blendet sie früher aus.
+            try? await Task.sleep(for: .seconds(GestureHintOverlay.duration))
             withAnimation(.easeOut(duration: 0.6)) { showHints = false }
         }
         .onChange(of: reduceMotion) { _, v in model.reduceMotion = v }
@@ -282,7 +283,10 @@ struct FeedView: View {
                     .padding(.top, AppSpacing.s)
                     .zIndex(2)
                 if showHints {
-                    GestureHintOverlay(controls: controls).transition(.opacity).zIndex(3)
+                    GestureHintOverlay(controls: controls)
+                        .transition(.opacity)
+                        .zIndex(3)
+                        .onTapGesture { hideHints() }
                 }
                 VStack {
                     Spacer()

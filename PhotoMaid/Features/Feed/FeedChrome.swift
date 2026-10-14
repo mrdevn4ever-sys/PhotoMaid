@@ -93,35 +93,41 @@ struct DirectionPill: View {
     }
 }
 
-/// Gestenhilfe beim Öffnen (blendet von selbst aus) – zeigt die eigene Belegung.
+/// Gestenhilfe beim Öffnen – zeigt die eigene Belegung. Jede Richtung steht an ihrem Rand des Fotos (oben, unten,
+/// links, rechts), damit sie klar auseinanderliegen; bleibt `duration` Sekunden, Antippen oder Wischen blendet sie aus.
 struct GestureHintOverlay: View {
+    static let duration: Double = 5
     let controls: FeedControls
 
     var body: some View {
-        VStack(spacing: AppSpacing.l) {
-            hint(.up, "hint_up")
-            HStack(spacing: AppSpacing.xl) {
+        ZStack {
+            Color.black.opacity(0.28).ignoresSafeArea().accessibilityHidden(true)
+            hint(.up, "hint_up").frame(maxHeight: .infinity, alignment: .top)
+            hint(.down, "hint_down").frame(maxHeight: .infinity, alignment: .bottom)
+            HStack(spacing: AppSpacing.m) {
                 hint(.left, "hint_left")
+                Spacer(minLength: AppSpacing.m)
                 hint(.right, "hint_right")
             }
             .environment(\.layoutDirection, .leftToRight)
-            hint(.down, "hint_down")
         }
         .padding(AppSpacing.l)
-        .glassPanel()
-        .allowsHitTesting(false)
+        .contentShape(.rect)
         .accessibilityElement(children: .combine)
     }
 
     private func hint(_ d: SwipeDirection, _ title: String) -> some View {
         let action = controls.action(for: d)
         return VStack(spacing: 4) {
-            GestureArrow(direction: d).font(.title2.weight(.bold)).foregroundStyle(FeedActionText.color(action))
+            GestureArrow(direction: d).font(.title.weight(.bold)).foregroundStyle(FeedActionText.color(action))
             Text(key: title).font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
             Text(verbatim: FeedActionText.title(action)).font(AppTypography.subheadline.weight(.semibold))
                 .foregroundStyle(AppColors.textPrimary).lineLimit(2).multilineTextAlignment(.center)
         }
-        .frame(minWidth: 88, maxWidth: 140)
+        .frame(minWidth: 84, maxWidth: 132)
+        .padding(.horizontal, AppSpacing.s)
+        .padding(.vertical, AppSpacing.s)
+        .glassPanel()
     }
 }
 
