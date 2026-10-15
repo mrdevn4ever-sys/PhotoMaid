@@ -121,9 +121,11 @@ jobs:
           set -o pipefail
           UDID=$(scripts/ci/pick_simulator.sh)
           xcodebuild -project PhotoMaid.xcodeproj -scheme PhotoMaid -destination "id=$UDID" \
-            CODE_SIGNING_ALLOWED=NO -skip-testing:PhotoMaidUITests \
+            CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_REQUIRED=YES \
+            -parallel-testing-enabled NO -skip-testing:PhotoMaidUITests \
             -skipPackagePluginValidation -skipMacroValidation test 2>&1 | tee unit-tests.log | grep -E "error:|\*\* TEST" || true
-          grep -q "\*\* TEST SUCCEEDED \*\*" unit-tests.log
+          grep -Eq '\*\* TEST( EXECUTE)? SUCCEEDED \*\*' unit-tests.log
+          ! grep -Eq '\*\* (BUILD|TEST( BUILD| EXECUTE)?) FAILED \*\*' unit-tests.log
       - name: fastlane beta
         run: fastlane ios beta
       - name: Bericht

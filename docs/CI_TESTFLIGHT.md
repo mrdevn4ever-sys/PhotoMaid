@@ -133,6 +133,8 @@ Die Diagnose ändert keine Berechtigungsdatenbank und verwendet keine privaten P
 2. Actions › **CI** › Run workflow → grün? Sonst `ci-report.md` an Claude Code geben.
 3. Actions › **TestFlight** › Run workflow (Text „Was testen?“ eingeben).
    Buildnummer = letzte TestFlight-Nummer + 1 (automatisch).
+   Die vorgeschalteten Simulator-Unit-Tests werden lokal ad hoc signiert, damit auch der echte
+   Keychain-Rundlauf geprüft wird. Archiv und Upload verwenden weiterhin das Distributionszertifikat.
 4. Nach 5–30 Minuten Verarbeitung bei Apple: TestFlight-App auf dem iPhone › PhotoMaid › Installieren
    (interne Tester: App Store Connect › TestFlight › Interne Gruppe, dich selbst hinzufügen).
 5. Auf dem iPhone prüfen (Prüfliste `docs/QA_MATRIX.md`). Probleme:
