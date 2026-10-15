@@ -28,6 +28,9 @@ gh api repos/mrdevn4ever-sys/photomaid/actions/runs/<RUN_ID>/artifacts  # Artefa
 neu gestartet: zuerst synthetische QA-Medien mit `-qa-fixtures`, danach 150 importierte Testbilder plus 3 Videos
 ohne dieses Startargument. Der zweite Durchlauf verwendet PhotoKit/Core Data, vorab erlaubten Fotozugriff,
 Googles öffentliche Testanzeigen, PIN-Tresor und `PhotoMaid.storekit`. Keine Systemlöschung wird bestätigt.
+Zusätzlich erstellt „Device › Trigger Screenshot“ im Simulator ein natives Bildschirmfoto mit dem echten
+PhotoKit-Untertyp. Ein importiertes PNG allein erhält diesen Untertyp nicht. Die drei Aufnahmen des
+Aufbaus liegen unter `real-start-native-screenshot`; danach öffnet der Test PhotoMaid zum ersten Mal.
 Das Artefakt `simulator-ui-evidence` enthält PNGs, Accessibility-Bäume, `.xcresult.zip`-Ergebnisbündel, Logs,
 Testübersichten und das Medienmanifest (Herkunft/SHA-256). Die QA-Belege erscheinen bereits vor dem zweiten
 Durchlauf zusätzlich als `simulator-fixtures-evidence`; ein fehlgeschlagener QA-Lauf verhindert den echten

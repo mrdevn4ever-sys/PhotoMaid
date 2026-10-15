@@ -66,6 +66,7 @@ if [ "$phase" = all ] || [ "$phase" = real ] || [ "$phase" = real-start ]; then
   python3 scripts/ci/real_test_media.py "$out/real-media" --screenshot "$out/simulator-source.png"
   find "$out/real-media" -type f \( -name '*.jpg' -o -name '*.png' -o -name '*.mp4' \) -print0 |
     xargs -0 xcrun simctl addmedia "$udid"
+  bash scripts/ci/native_screenshot.sh "$udid" "$out/real-start-native-screenshot"
   xcrun simctl spawn "$udid" log show --last 1s --style compact > "$out/seed.log" || true
 fi
 

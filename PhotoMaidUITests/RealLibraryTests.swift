@@ -378,8 +378,13 @@ final class RealLibraryTests: XCTestCase {
         app.terminate(); app.launch()
         ready()
         tab("Fotos")
+        tap(e("library.filter"), "trash_setup_filter_menu")
+        tap(app.buttons["Alle"].firstMatch, "trash_setup_all_media")
         tap(e("library.filter"), "trash_setup_sort_menu")
         tap(app.buttons["Aufnahmedatum"].firstMatch, "trash_setup_capture_order")
+        // A section's “Alle” selects only that section. Group the imported assets by month,
+        // including a native screenshot captured just across midnight on the CI runner.
+        tap(app.buttons["Monate"].firstMatch, "trash_setup_month_grouping")
         tap(app.buttons["Auswählen"].firstMatch, "library_select")
         let all = app.buttons["Alle"].firstMatch
         tap(all, "library_select_all")

@@ -35,39 +35,7 @@ jobs:
           xcrun simctl boot "$udid" 2>/dev/null || true
           xcrun simctl bootstatus "$udid" -b
           xcrun simctl list devices booted --json > evidence/booted-devices.json
-          xcrun simctl launch "$udid" com.apple.mobileslideshow
-          sleep 5
-          xcrun simctl io "$udid" screenshot evidence/before.png
-          # Existing Simulator processes ignore new launch arguments. Select this exact device afresh.
-          osascript -e 'tell application "Simulator" to quit'
-          simulator_app="$(xcode-select -p)/Applications/Simulator.app"
-          open -a "$simulator_app" --args -CurrentDeviceUDID "$udid"
-          set +e
-          osascript > evidence/menu.log 2>&1 <<'APPLESCRIPT'
-          with timeout of 20 seconds
-            tell application "Simulator" to activate
-            delay 2
-            tell application "System Events"
-              tell process "Simulator"
-                set frontmost to true
-                log (name of every window)
-                if not enabled of menu item "Trigger Screenshot" of menu "Device" of menu bar 1 then error "Screenshot menu is disabled"
-                click menu item "Trigger Screenshot" of menu "Device" of menu bar 1
-                delay 8
-              end tell
-            end tell
-          end timeout
-          APPLESCRIPT
-          status=$?
-          set -e
-          echo "$status" > evidence/menu.exit
-          xcrun simctl io "$udid" screenshot evidence/after.png
-          sleep 8
-          xcrun simctl io "$udid" screenshot evidence/after-settled.png
-          find "$HOME/Library/Developer/CoreSimulator/Devices/$udid/data/Media/DCIM" -type f \
-            > evidence/camera-roll-files.txt 2>/dev/null || true
-          cat evidence/menu.log
-          test "$status" = 0
+          bash scripts/ci/native_screenshot.sh "$udid" evidence
       - uses: actions/upload-artifact@v4
         if: always()
         with:
