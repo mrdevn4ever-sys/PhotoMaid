@@ -412,8 +412,17 @@ final class RealLibraryTests: XCTestCase {
         Thread.sleep(forTimeInterval: 32)
         closeTestAd()
         // The app may open its own confirmation after reward. Always cancel it.
+        let confirmation = app.sheets["Fotos & Videos entfernen?"].firstMatch
         let cancel = app.buttons["Abbrechen"].firstMatch
-        if cancel.waitForExistence(timeout: 5) { tap(cancel, "delete_confirmation_cancelled") }
+        if cancel.waitForExistence(timeout: 5) {
+            tap(cancel, "delete_confirmation_cancelled")
+        } else if confirmation.exists {
+            // iOS 26's popover omits the cancel button. Tap its dimmed background,
+            // well outside the sheet; never tap the destructive confirmation.
+            app.coordinate(withNormalizedOffset: CGVector(dx: 0.95, dy: 0.55)).tap()
+            snap("delete_confirmation_cancelled_outside")
+        }
+        XCTAssertFalse(confirmation.exists, "No deletion confirmation may cover the final bonus counter")
         XCTAssertTrue(contains("Heute noch 200 von 200").waitForExistence(timeout: 10))
         snap("limit_200_no_deletion")
     }
