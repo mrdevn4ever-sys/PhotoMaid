@@ -88,6 +88,10 @@ final class AppStoreCaptureTests: XCTestCase {
     }
     private func snap(_ name: String) {
         if name.hasPrefix("editor") { waitForEditorPreview() }
+        if name == "viewer-info" {
+            XCTAssertTrue(app.staticTexts[t("lib_info_name")].firstMatch.waitForExistence(timeout:40),"Original filename must load")
+            XCTAssertTrue(app.staticTexts["…"].firstMatch.waitForNonExistence(timeout:40),"Media size must finish loading")
+        }
         pause(0.7)
         let banner = XCUIApplication(bundleIdentifier:"com.apple.springboard").otherElements["NotificationShortLookView"].firstMatch
         if banner.exists { XCTAssertTrue(banner.waitForNonExistence(timeout:12),"System banner must leave before capture") }
