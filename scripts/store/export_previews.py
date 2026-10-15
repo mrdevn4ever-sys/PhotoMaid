@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cuts actual screen recordings into three localized, silent App Store previews."""
+"""Exports complete actual recordings as three localized, silent App Store previews."""
 import argparse,hashlib,json,subprocess
 from pathlib import Path
 
@@ -24,12 +24,14 @@ def main():
   filters=(f'[0:v]setpts={factor:.12f}*(PTS-STARTPTS),fps=30:start_time=0,'
            'scale=886:1920:force_original_aspect_ratio=decrease,'
            'pad=886:1920:(ow-iw)/2:(oh-ih)/2:black,setsar=1,format=yuv420p,'
-           'tpad=stop_mode=clone:stop_duration=3[v]')
+           'tpad=stop_mode=clone:stop=-1[v]')
   expected_duration=content_duration+3
   run(['ffmpeg','-hide_banner','-loglevel','error','-y','-i',str(source),'-f','lavfi','-i','anullsrc=channel_layout=stereo:sample_rate=48000','-filter_complex',filters,'-map','[v]','-map','1:a','-t',f'{expected_duration:.3f}','-c:v','libx264','-preset','fast','-profile:v','high','-level','4.0','-b:v','10M','-maxrate','12M','-bufsize','20M','-c:a','aac','-b:a','256k','-ar','48000','-ac','2','-movflags','+faststart',str(target)])
   result=probe(target);video=next(s for s in result['streams']if s['codec_type']=='video');audio=next(s for s in result['streams']if s['codec_type']=='audio')
   seconds=float(result['format']['duration']);assert 15<=seconds<=30 and (video['width'],video['height'])==(886,1920)
   assert abs(seconds-expected_duration)<0.1,(seconds,expected_duration)
+  assert abs(float(video['duration'])-seconds)<=0.05,(video['duration'],seconds)
+  assert abs(float(audio['duration'])-seconds)<=0.05,(audio['duration'],seconds)
   assert video['codec_name']=='h264' and video['r_frame_rate']=='30/1' and audio['channels']==2 and target.stat().st_size<500_000_000
   poster_time=6 if clip=='03-vault' else 1
   poster=a.destination/(clip+'-poster.png')

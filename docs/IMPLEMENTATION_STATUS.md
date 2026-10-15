@@ -69,6 +69,10 @@ tatsächliche Aufnahme mit normalisierter Bildrate, beschleunigt längere Abläu
 echte Schlussbild drei Sekunden. Der lokale englische Gegenversuch ergibt dreimal exakt 27 s.
 `app-store-export.yml` kann vorhandene Quellen auf Linux erneut prüfen/exportieren, ohne bestandene
 Simulator-Tests zu wiederholen; Aufnahme- und Exportcommit/-lauf werden getrennt ausgewiesen.
+Der erste Linux-Gegenversuch `38768987654` war im Workflow grün, wurde aber durch die lokale
+Bildstichprobe verworfen: Die Tresor-Bildspur endete trotz 27 s Container-/Tonspur schon nach 25,5–26,2 s.
+Der Schlussbild-Halt wird deshalb bis zur expliziten Zieldauer fortgeführt; Export und Audit verlangen
+zusätzlich übereinstimmende Bild-/Ton-/Containerdauer. Die verworfenen Originale bleiben als Beleg erhalten.
 
 Die Probeläufe fanden und korrigierten Fehler in der Aufnahmehilfe: sechs vorinstallierte Fremdfotos,
 verzögerte System-Fotoabfrage, fehlendes `@Sendable` in einer PhotoKit-Änderung, ausgeblendete

@@ -44,6 +44,7 @@ def audit_locale(root,language,photos,require_videos):
             video=next(s for s in stream['streams']if s['codec_type']=='video');audio=next(s for s in stream['streams']if s['codec_type']=='audio')
             duration=float(stream['format']['duration'])
             assert 15<=duration<=30 and (video['width'],video['height'])==(886,1920) and video['codec_name']=='h264' and video['r_frame_rate']=='30/1'
+            assert abs(float(video['duration'])-duration)<=0.05 and abs(float(audio['duration'])-duration)<=0.05,'Audio/video duration mismatch'
             assert audio['codec_name']=='aac' and audio['channels']==2 and audio['sample_rate']=='48000' and path.stat().st_size<500_000_000
             videos.append({'file':item['file'],'sha256':digest(path),'duration':duration})
     return {'language':language,'screenshots':len(shots),'selection':10,'videos':videos,'capture_run':provenance['workflow_run'],'capture_commit':provenance['commit'],'status':'PASS'}
