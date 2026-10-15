@@ -61,5 +61,23 @@
     "capture_run": "38735332484",
     "capture_commit": "defb9418a63c777a49f514a15573defbe8728d1b",
     "status": "PASS"
+  },
+  {
+    "language": "fr",
+    "screenshots": 123,
+    "selection": 10,
+    "videos": [],
+    "capture_run": "38744237961",
+    "capture_commit": "59b6e8143c3ff9032f65379e6fa37d9ddf20aa30",
+    "status": "PASS"
+  },
+  {
+    "language": "ar",
+    "screenshots": 123,
+    "selection": 10,
+    "videos": [],
+    "capture_run": "38744237961",
+    "capture_commit": "59b6e8143c3ff9032f65379e6fa37d9ddf20aa30",
+    "status": "PASS"
   }
 ]
