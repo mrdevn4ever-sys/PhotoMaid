@@ -2,7 +2,16 @@ name: Nativen Simulator-Screenshot prüfen
 
 on:
   workflow_dispatch:
+    inputs:
+      sim_runtime:
+        type: choice
+        options: [latest, "26.2"]
+        default: latest
   workflow_call:
+    inputs:
+      sim_runtime:
+        type: string
+        default: latest
 
 permissions:
   contents: read
@@ -17,6 +26,8 @@ jobs:
       - run: scripts/ci/select_xcode.sh
       - name: Öffentliche Simulator-Funktion „Trigger Screenshot“ prüfen
         shell: bash
+        env:
+          PM_SIM_RUNTIME: ${{ inputs.sim_runtime != 'latest' && inputs.sim_runtime || '' }}
         run: |
           mkdir -p evidence
           udid=$(scripts/ci/pick_simulator.sh)

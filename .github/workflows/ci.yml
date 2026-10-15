@@ -13,6 +13,11 @@ on:
         description: "Nur die native iOS-Screenshot-Aufnahme untersuchen (kein App-Build)"
         type: boolean
         default: false
+      sim_runtime:
+        description: "iOS-Runtime (26.2 für StoreKit Test; 26.5 hat Apples CLI-Konfigurationsfehler)"
+        type: choice
+        options: [latest, "26.2"]
+        default: latest
       ui_phase:
         description: "UI-Durchlauf (gezielte Wiederholung nach der ersten Gesamtprüfung)"
         type: choice
@@ -49,7 +54,7 @@ on:
 
 concurrency:
   # Keep evidence from the previous commit while validating a fix on the same branch.
-  group: ci-${{ github.ref }}-${{ github.sha }}-${{ inputs.collect_run || inputs.ui_phase || 'all' }}-${{ inputs.ui_case || 'all' }}
+  group: ci-${{ github.ref }}-${{ github.sha }}-${{ inputs.native_capture && 'native' || inputs.collect_run || inputs.ui_phase || 'all' }}-${{ inputs.ui_case || 'all' }}-${{ inputs.sim_runtime || 'latest' }}
   cancel-in-progress: true
 
 permissions:
@@ -60,6 +65,8 @@ jobs:
   native-screenshot:
     if: inputs.native_capture
     uses: ./.github/workflows/simulator-screenshot.yml
+    with:
+      sim_runtime: ${{ inputs.sim_runtime }}
   core:
     if: inputs.collect_run == '' && !inputs.native_capture
     name: PhotoMaidCore (Linux, swift test)
@@ -97,6 +104,8 @@ jobs:
         run: python3 scripts/android_strings_to_xcstrings.py --check
       - name: Simulator wählen
         id: sim
+        env:
+          PM_SIM_RUNTIME: ${{ inputs.sim_runtime != 'latest' && inputs.sim_runtime || '' }}
         run: |
           udid=$(scripts/ci/pick_simulator.sh)
           echo "udid=$udid" >> "$GITHUB_OUTPUT"

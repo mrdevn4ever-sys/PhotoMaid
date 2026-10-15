@@ -39,6 +39,10 @@ lässt sich nach der ersten Gesamtprüfung gezielt ein Durchlauf wiederholen; da
 `ui_phase=start` führt ausschließlich die Startprüfung mit echter Mediathek aus. Standard bleibt `all`. Build, Unit-Tests und Linux-Kernprüfung laufen weiterhin. Der Linux-Job verwendet Swift 6.4. Der Simulator-Build wird lokal ad hoc signiert (`CODE_SIGN_IDENTITY=-`),
 damit Keychain und StoreKit mit einer App-Identität geprüft werden; Apple-Zertifikate werden nicht benötigt.
 Der UI-Job hat wegen der vollständigen Screenshot-Reihe bis zu 120 Minuten Zeit.
+Mit `sim_runtime=26.2` lässt sich der installierte ältere iOS-26-Simulator wählen. Hintergrund:
+StoreKit Test auf iOS 26.5 verweigert im CLI-Lauf die Konfiguration (`SKInternalErrorDomain Code=3`,
+[Apple-Bericht mit DTS-Antwort](https://developer.apple.com/forums/thread/826971)).
+Kaufprüfungen verwenden weiterhin ausschließlich `PhotoMaid.storekit` und echte StoreKit-Testtransaktionen.
 `ui_case` wiederholt bei `ui_phase=real` einen einzelnen Fachtest nach dem Starttest; `all` bleibt die Vorgabe.
 Der Pro-Fall führt zusätzlich die Tresor-Einrichtung als Voraussetzung aus. Ausgelassene Fälle zählen dabei
 nicht als PASS; die abschließende Exit-Prüfung verlangt alle für die gewählte Prüfung erforderlichen Belege.
