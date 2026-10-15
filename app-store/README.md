@@ -10,7 +10,7 @@ Die 55 Fotos werden nicht in die ausgelieferte App eingebaut und verändern kein
 - `media/`: 45 Präsentationsfotos + 10 schwierigere Motive, einzeln belegte CC0-Lizenz; [Quellen](media/SOURCES.md).
 - `locales/<Sprache>/all-pages/`: unveränderte Original-Screenshots aller aufgenommenen Seiten.
 - `locales/<Sprache>/app-store-selection/`: zehn vorgeschlagene Screenshots in Präsentationsreihenfolge.
-- `locales/<Sprache>/previews/`: drei Vorschauvideos zur Auswahl, einschließlich Poster bei Sekunde 5 und Schnittmanifest.
+- `locales/<Sprache>/previews/`: drei Vorschauvideos zur Auswahl mit Postern und Schnittmanifest (Posterzeit im Manifest).
 - `locales/<Sprache>/provenance.json`: Commit, Workflow, Gerät, tatsächliche Testergebnisse.
 
 Die Sprachordner verwenden die App-Kennungen `ar`, `de`, `en`, `es`, `fr`, `it`, `ja`, `ko`, `nl`, `pl`,
@@ -35,8 +35,10 @@ Apple erlaubt bis zu drei pro Sprache. Diese Assets werden zunächst nur auf dem
 ## Wiederholen
 
 Der manuelle Workflow `.github/workflows/app-store-assets.yml` nimmt `locales` (`all` oder Kommaliste) und
-`capture` (`all`, `screenshots`, `previews`) entgegen. Auf einem frischen Simulator enthält auch `previews`
-den Seitenlauf, damit der echte PIN-Tresor mit echten Importen vorbereitet ist. Die Jobs erzeugen getrennte
+`capture` (`all`, `screenshots`, `previews`) entgegen. Auf dem Arbeitsbranch wird er über `ci.yml` aufgerufen:
+`store_locales=all` und `ui_phase=store-screenshots` bzw. `store-previews`.
+Auf einem frischen Simulator enthält `previews` einen eigenen Einrichtungslauf für Fotozugriff und
+den echten PIN-Tresor mit echten Importen. Die Jobs erzeugen getrennte
 Asset- und Quellenartefakte. Es gibt weder einen TestFlight-Upload noch einen App-Store-Upload.
 
 Kamera, echtes Face ID, iCloud-Originale und Ansichten, die ein nicht im gewählten Bildsatz enthaltenes Medium

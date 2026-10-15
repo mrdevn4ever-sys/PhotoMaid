@@ -147,7 +147,14 @@ enum StoreCapture {
             } else { return }
         }
         app.selectedTab = tab
-        if let route { app.navigate(route, in: tab) }
+        if let route {
+            // Let the selected tab mount its NavigationStack before changing its path.
+            // Pushing into an inactive stack in the same update leaves iOS 26's large
+            // title and scroll-content insets out of sync in simulator captures.
+            try? await Task.sleep(for: .milliseconds(600))
+            withAnimation { app.navigate(route, in: tab) }
+            try? await Task.sleep(for: .milliseconds(600))
+        }
     }
 
     /// Actual test-library edits, confined to the disposable simulator. No change to image bytes.
