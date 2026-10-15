@@ -102,7 +102,7 @@ jobs:
         if: always() && steps.sim.outputs.udid != ''
         run: |
           python="$RUNNER_TEMP/store-python/bin/python"
-          "$python" scripts/store/assemble_assets.py "$RUNNER_TEMP/store-capture" "$RUNNER_TEMP/store-assets" --locale "$CAPTURE_LOCALE"
+          "$python" scripts/store/assemble_assets.py "$RUNNER_TEMP/store-capture" "$RUNNER_TEMP/store-assets" --locale "$CAPTURE_LOCALE" --mode "$CAPTURE_MODE"
           if [ "$CAPTURE_MODE" != screenshots ]; then
             "$python" scripts/store/export_previews.py "$RUNNER_TEMP/store-capture" "$RUNNER_TEMP/store-assets/previews" --locale "$CAPTURE_LOCALE"
           fi
@@ -119,6 +119,8 @@ jobs:
         with:
           name: app-store-${{ matrix.locale }}-sources
           path: |
+            ${{ runner.temp }}/store-capture/screenshots
+            ${{ runner.temp }}/store-capture/diagnostics
             ${{ runner.temp }}/store-capture/recordings
             ${{ runner.temp }}/store-capture/markers.jsonl
             ${{ runner.temp }}/store-capture/*.json

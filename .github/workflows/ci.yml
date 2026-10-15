@@ -30,7 +30,7 @@ on:
       ui_phase:
         description: "UI-Durchlauf (gezielte Wiederholung nach der ersten Gesamtprüfung)"
         type: choice
-        options: [all, fixtures, real, start]
+        options: [all, fixtures, real, start, store-screenshots, store-previews]
         default: all
       ui_case:
         description: "PhotoKit-Fachtest (all = vollständige Prüfung; Pro prüft auch die Tresor-Voraussetzung)"
@@ -76,7 +76,7 @@ jobs:
     uses: ./.github/workflows/app-store-assets.yml
     with:
       locales: ${{ inputs.store_locales }}
-      capture: all
+      capture: ${{ inputs.ui_phase == 'store-screenshots' && 'screenshots' || inputs.ui_phase == 'store-previews' && 'previews' || 'all' }}
   native-screenshot:
     if: inputs.native_capture
     uses: ./.github/workflows/simulator-screenshot.yml

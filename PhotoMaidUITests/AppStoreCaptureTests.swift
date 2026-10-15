@@ -77,9 +77,36 @@ final class AppStoreCaptureTests: XCTestCase {
         snap(page)
         if bottom { app.swipeUp(); app.swipeUp(); snap(page + "-bottom") }
     }
+    private func waitForPhotoAccess() {
+        let deadline = Date().addingTimeInterval(45)
+        repeat {
+            resolvePrivacyPrompts(in: app, prefix:"store-photo-access", photos:true)
+            if app.tabBars.firstMatch.exists { return }
+            pause(0.5)
+        } while Date() < deadline
+        XCTFail("Photo access must finish before capture")
+    }
     private func awaitStage() {
         XCTAssertTrue(e("feed.stage").waitForExistence(timeout: 20))
         pause(1)
+    }
+    private func feedPosition() -> Int {
+        let label = e("feed.position").label
+        let digits = label.components(separatedBy: CharacterSet.decimalDigits.inverted).filter { !$0.isEmpty }
+        let normalized = (digits.first ?? "").compactMap(\.wholeNumberValue).map(String.init).joined()
+        return Int(normalized) ?? -1
+    }
+    private func swipeFeed(_ direction: String) {
+        let before = feedPosition()
+        XCTAssertGreaterThan(before,0)
+        switch direction {
+        case "up": e("feed.stage").swipeUp()
+        case "left": e("feed.stage").swipeLeft()
+        case "right": e("feed.stage").swipeRight()
+        default: e("feed.stage").swipeDown()
+        }
+        pause(1)
+        XCTAssertEqual(feedPosition(),before + (direction == "down" ? -1 : 1), "Actual feed decision/navigation must advance")
     }
     private func editorTool(_ tool: String) {
         let target = e("editor.tool." + tool)
@@ -101,13 +128,12 @@ final class AppStoreCaptureTests: XCTestCase {
             snap(String(format: "introduction-%02d", index))
             tap(e("onboarding.next"))
         }
-        resolvePrivacyPrompts(in: app, prefix:"store-introduction", photos:true)
-        XCTAssertTrue(app.tabBars.firstMatch.waitForExistence(timeout: 25))
+        waitForPhotoAccess()
         capturePage("today")
         launch("feed"); awaitStage(); snap("feed")
-        e("feed.stage").swipeUp(); pause(1)
-        e("feed.stage").swipeLeft(); pause(1)
-        e("feed.stage").swipeRight(); pause(1); snap("feed-later")
+        swipeFeed("up"); pause(1)
+        swipeFeed("left"); pause(1)
+        swipeFeed("right"); pause(1); snap("feed-later")
         let pages: [(String,String?,Bool)] = [
             ("library",nil,false),("library-favorites",nil,false),("library-photos",nil,false),("library-videos",nil,false),("library-screenshots",nil,false),("cleanup",nil,true),("studio",nil,true),("history",nil,false),
             ("trash",nil,false),("later",nil,false),("months",nil,false),
@@ -150,6 +176,40 @@ final class AppStoreCaptureTests: XCTestCase {
         try captureVault()
     }
 
+    func test01DetailPagesInDarkMode() throws {
+        launch("feed"); awaitStage()
+        tap(button("more_actions")); snap("feed-menu")
+        tap(button("feed_show_hints")); snap("feed-gesture-guide"); pause(6.5)
+        launch("viewer")
+        tap(button("info")); snap("viewer-info"); tap(button("done"))
+        tap(button("org_add_to_album")); snap("viewer-album-picker"); tap(button("cancel"))
+        launch("slideshow")
+        tap(button("slideshow_settings")); snap("slideshow-settings"); tap(button("done"))
+        launch("workflows")
+        tap(button("wf_new")); snap("workflow-editor"); tap(button("cancel"))
+        launch("collage")
+        tap(button("save")); snap("collage-save-options"); tap(button("cancel"))
+        launch("editor")
+        XCTAssertTrue(e("editor.stage").waitForExistence(timeout:30))
+        editorTool("markup"); tap(button("edit_mk_draw"))
+        let stage=e("editor.stage")
+        stage.coordinate(withNormalizedOffset:CGVector(dx:0.2,dy:0.8)).press(forDuration:0.1,thenDragTo:stage.coordinate(withNormalizedOffset:CGVector(dx:0.45,dy:0.75)))
+        pause(1); tap(button("save")); snap("editor-save-options"); tap(button("cancel"))
+        openVault()
+        snap("vault-media-before-details")
+        let more = app.buttons.matching(NSPredicate(format:"label == %@",t("more_actions"))).allElementsBoundByIndex
+            .first { $0.identifier != "vault.workspace.more" }
+        tap(try XCTUnwrap(more)); tap(button("vault_settings")); snap("vault-settings")
+        tap(button("vault_change_code")); snap("vault-change-code-empty"); tap(button("cancel")); tap(button("done"))
+        tap(app.segmentedControls.buttons[t("vault2_notes")])
+        tap(button("vault2_new_note"))
+        tap(e("vault.note.title")); e("vault.note.title").typeText("PhotoMaid")
+        tap(button("done"))
+        let notes = app.buttons.matching(NSPredicate(format:"identifier BEGINSWITH 'vault.notes.item.'"))
+        XCTAssertTrue(notes.firstMatch.waitForExistence(timeout:10)); snap("vault-notes-with-note")
+        tap(notes.firstMatch); snap("vault-note-editor"); tap(button("done"))
+    }
+
     private func openVault() {
         launch("vault")
         for _ in 0..<100 where !app.secureTextFields.firstMatch.exists && !button("onb_next").exists { pause(0.1) }
@@ -159,6 +219,7 @@ final class AppStoreCaptureTests: XCTestCase {
             snap("vault-setup-introduction"); tap(button("onb_next"))
             let fields = app.secureTextFields
             XCTAssertEqual(fields.count,2)
+            snap("vault-setup-code-empty")
             fields.element(boundBy:0).tap(); fields.element(boundBy:0).typeText("628491")
             fields.element(boundBy:1).tap(); fields.element(boundBy:1).typeText("628491")
             tap(button("onb_next"))
@@ -206,6 +267,14 @@ final class AppStoreCaptureTests: XCTestCase {
         tap(button("done"))
     }
 
+    /// Separate preview jobs use a fresh library too; the vault is populated through its real UI.
+    func test05PrepareMediaForPreviews() throws {
+        launch("introduction")
+        for _ in 0..<5 { tap(e("onboarding.next")) }
+        waitForPhotoAccess()
+        try captureVault()
+    }
+
     private func recording(_ operation: String, name: String) throws {
         let directory = output.appendingPathComponent("control")
         try FileManager.default.createDirectory(at:directory,withIntermediateDirectories:true)
@@ -236,10 +305,10 @@ final class AppStoreCaptureTests: XCTestCase {
         launch("feed"); awaitStage()
         try recording("start",name:"01-review")
         try mark("feed"); pause(2)
-        e("feed.stage").swipeUp(); pause(1); try mark("keep"); pause(2)
-        e("feed.stage").swipeLeft(); pause(1); try mark("trash"); pause(2)
-        e("feed.stage").swipeRight(); pause(0.8); try mark("later"); pause(3)
-        e("feed.stage").swipeDown(); pause(0.8); try mark("back"); pause(4)
+        swipeFeed("up"); pause(1); try mark("keep"); pause(2)
+        swipeFeed("left"); pause(1); try mark("trash"); pause(2)
+        swipeFeed("right"); pause(0.8); try mark("later"); pause(3)
+        swipeFeed("down"); pause(0.8); try mark("back"); pause(4)
         try recording("stop",name:"01-review")
     }
     func test20AppPreviewStudio() throws {

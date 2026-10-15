@@ -30,9 +30,10 @@ enum StoreCapture {
         }
         guard page != "introduction" else { return }
         await arrangeImportedPhotos()
+        try? await Task.sleep(for: .milliseconds(700)) // let the real PhotoKit change notification settle
         app.reloadLibraryIfNeeded(force: true)
         // PhotoKit loads asynchronously. Routes must receive real identifiers after that read completes.
-        for _ in 0..<200 where !app.snapshot.loaded || app.isLoadingLibrary || app.visibleMedia.isEmpty {
+        for _ in 0..<200 where !app.snapshot.loaded || app.isLoadingLibrary || !app.readReady || app.visibleMedia.isEmpty {
             try? await Task.sleep(for: .milliseconds(100))
         }
         let photos = app.visibleMedia.filter { !$0.isVideo }
@@ -126,7 +127,7 @@ enum StoreCapture {
         guard all.count == 55, imported.count == 55 else { return }
         let assets = imported
         do {
-            try await PHPhotoLibrary.shared().performChanges {
+            try await PHPhotoLibrary.shared().performChanges { @Sendable in
                 for (id, index) in assets {
                     guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [id], options: nil).firstObject else { continue }
                     let edit = PHAssetChangeRequest(for: asset)

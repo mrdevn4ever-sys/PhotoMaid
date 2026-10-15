@@ -5,13 +5,19 @@ mkdir -p "$out"
 python3 scripts/store/record_controller.py "$udid" "$out" > "$out/recorder.log" 2>&1 &
 recorder=$!
 trap 'kill "$recorder" 2>/dev/null || true; wait "$recorder" 2>/dev/null || true' EXIT
-cases=(-only-testing:PhotoMaidUITests/AppStoreCaptureTests)
+cases=(-only-testing:PhotoMaidUITests/AppStoreCaptureTests/test00EveryPageInDarkMode
+       -only-testing:PhotoMaidUITests/AppStoreCaptureTests/test01DetailPagesInDarkMode
+       -only-testing:PhotoMaidUITests/AppStoreCaptureTests/test10AppPreviewReview
+       -only-testing:PhotoMaidUITests/AppStoreCaptureTests/test20AppPreviewStudio
+       -only-testing:PhotoMaidUITests/AppStoreCaptureTests/test30AppPreviewVault)
 if [ "$CAPTURE_MODE" = screenshots ]; then
-  cases=(-only-testing:PhotoMaidUITests/AppStoreCaptureTests/test00EveryPageInDarkMode)
-fi
-# Preview retries retain the actual screenshot-run app data only within this job; never fake vault state.
-if [ "$CAPTURE_MODE" = previews ]; then
-  echo 'A fresh simulator needs the full capture to set up the real vault.' >&2
+  cases=(-only-testing:PhotoMaidUITests/AppStoreCaptureTests/test00EveryPageInDarkMode
+         -only-testing:PhotoMaidUITests/AppStoreCaptureTests/test01DetailPagesInDarkMode)
+elif [ "$CAPTURE_MODE" = previews ]; then
+  cases=(-only-testing:PhotoMaidUITests/AppStoreCaptureTests/test05PrepareMediaForPreviews
+         -only-testing:PhotoMaidUITests/AppStoreCaptureTests/test10AppPreviewReview
+         -only-testing:PhotoMaidUITests/AppStoreCaptureTests/test20AppPreviewStudio
+         -only-testing:PhotoMaidUITests/AppStoreCaptureTests/test30AppPreviewVault)
 fi
 set +e
 TEST_RUNNER_STORE_CAPTURE_LOCALE="$CAPTURE_LOCALE" TEST_RUNNER_STORE_CAPTURE_DIR="$out" xcodebuild \
@@ -28,5 +34,8 @@ container=$(xcrun simctl get_app_container "$udid" com.mrdevn4ever.photomaid dat
 xcrun xcresulttool get test-results summary --path "$out/capture.xcresult" > "$out/summary.json" || true
 xcrun xcresulttool get test-results tests --path "$out/capture.xcresult" > "$out/tests.json" || true
 xcrun simctl spawn "$udid" log show --last 90m --style compact --predicate 'process == "PhotoMaid"' > "$out/app.log" || true
-if [ "$status" != 0 ]; then tail -100 "$out/tests.log"; fi
+if [ "$status" != 0 ]; then
+  xcrun xcresulttool export attachments --path "$out/capture.xcresult" --output-path "$out/diagnostics" || true
+  tail -100 "$out/tests.log"
+fi
 exit "$status"
