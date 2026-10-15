@@ -5,7 +5,7 @@ from pathlib import Path
 
 GROUPS={'01-introduction':'Einführung','02-today-and-review':'Heute und Feed','03-photos':'Fotos','04-cleanup':'Aufräumen','05-studio':'Studio','06-vault':'Tresor','07-settings':'Einstellungen und Pro','08-history':'Verlauf'}
 THEMES={'01-review':'Aufräumen – Behalten, Papierkorb, Später und Zurück','02-studio':'Studio – Anpassen, Filter, Zeichnen und Rahmen','03-vault':'Tresor – Medien, Betrachter und Zoom'}
-GAPS='Kamera/Scanner und echtes Face ID brauchen ein physisches iPhone. Videoeditor und Video-Wiedergabe sind mit dem ausschließlich aus Fotos bestehenden Bildsatz nicht aufgenommen. Wiederherstellungsschlüssel werden nicht veröffentlicht. Leere Ansichten bleiben ehrlich leer; Analyseergebnisse stammen aus dem tatsächlichen lokalen Lauf.'
+GAPS='Kamera/Scanner und echtes Face ID brauchen ein physisches iPhone. Videoeditor und Wiedergabe mit echten Videodateien sind mit dem ausschließlich aus Fotos bestehenden Bildsatz nicht aufgenommen; eine echte Filmzusammenstellung aus fünf Fotos ist im Seitenarchiv enthalten. Wiederherstellungsschlüssel werden nicht veröffentlicht. Leere Ansichten bleiben ehrlich leer; Analyseergebnisse stammen aus dem tatsächlichen lokalen Lauf.'
 
 def main():
  parser=argparse.ArgumentParser();parser.add_argument('--root',type=Path,default=Path('app-store'));args=parser.parse_args();root=args.root
@@ -46,7 +46,7 @@ def main():
   rows.append(f'| [{info["name_de"]}](locales/{code}/README.md) | `{code}` → `{info["app_store_locale"]}` | {len(screenshots)} / Auswahl {len(selected)} | {len(videos)} / 3 |')
  index=f'# PhotoMaid – Sprachindex\n\nAlle Aufnahmen in Dark Mode. Vorhanden: **{total_shots} Original-Screenshots in {captured_locales} von {len(mapping)} Sprachen**, **{total_videos} von {len(mapping)*3} Vorschauvideos**. Seitenarchiv, zehn Store-Vorschläge und Vorschauen werden je Sprache getrennt abgelegt.\n\n'
  index+='| Sprache | App → App Store Connect | Screenshots | Videos |\n|---|---|---:|---:|\n'+'\n'.join(rows)+'\n\n'
- index+='[55 Hochkantfotos und CC0-Quellen](media/SOURCES.md) · [Formate und Wiederholung](README.md) · [Maschinenprüfung](audit.json)\n\n'+GAPS+'\n'
+ index+='[55 Hochkantfotos und CC0-Quellen](media/SOURCES.md) · [Formate und Wiederholung](README.md) · [Maschinenprüfung](audit.json) · [Abschlussbericht und Commits](DELIVERY.md)\n\n'+GAPS+'\n'
  (root/'INDEX.md').write_text(index)
  print('Wrote index and',sum((root/'locales'/code/'README.md').exists()for code in mapping),'locale pages')
 

@@ -300,6 +300,31 @@
     "status": "PASS"
   },
   {
+    "language": "ru",
+    "screenshots": 123,
+    "selection": 10,
+    "videos": [
+      {
+        "file": "01-review.mp4",
+        "sha256": "6d9713a6bdb95d14648f00cf9d8eb1e5fcdebce32c72bc934e00c1f4963acad6",
+        "duration": 27.0
+      },
+      {
+        "file": "02-studio.mp4",
+        "sha256": "1d56896986f66602b1c6dcc9e9c40973e931e81b64debb50dfe2149277eea060",
+        "duration": 27.0
+      },
+      {
+        "file": "03-vault.mp4",
+        "sha256": "2196fe1dcc1cb98b86efa475dcf579c572c27098a0cdc980ede289c32a55828a",
+        "duration": 27.0
+      }
+    ],
+    "capture_run": "38735332484",
+    "capture_commit": "defb9418a63c777a49f514a15573defbe8728d1b",
+    "status": "PASS"
+  },
+  {
     "language": "tr",
     "screenshots": 123,
     "selection": 10,

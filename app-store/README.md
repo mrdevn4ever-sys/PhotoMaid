@@ -5,6 +5,9 @@ mit PhotoKit/Core Data und dem Bildsatz unter `media/`; keine synthetischen QA-F
 Analyseergebnisse. Der Aufnahmeaufbau ist nur im Debug-Simulator verfügbar und fehlt im TestFlight-/Release-Code.
 Die 55 Fotos werden nicht in die ausgelieferte App eingebaut und verändern keine persönliche Mediathek.
 
+**Abgeschlossen:** 1.969 native Seitenaufnahmen und 160 Store-Vorschläge in allen 16 Sprachen,
+48 Vorschauvideos mit Postern. [Sprachindex](INDEX.md) · [Abschlussbericht, Grenzen und Commits](DELIVERY.md).
+
 ## Ablage
 
 - `media/`: 45 Präsentationsfotos + 10 schwierigere Motive, einzeln belegte CC0-Lizenz; [Quellen](media/SOURCES.md).

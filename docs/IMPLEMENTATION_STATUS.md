@@ -2,11 +2,12 @@
 
 Stand: 15.10.2026 · Branch `claude/fixes-analysis-library-vault-20261014` · Version 1.0, Build 9 in TestFlight; die drei Nachträge nach Build 8 sind enthalten.
 
-## App-Store-Bildsatz und lokalisierte Dark-Mode-Aufnahmen (15.10.2026, in Arbeit)
+## App-Store-Bildsatz und lokalisierte Dark-Mode-Aufnahmen (15.10.2026, abgeschlossen)
 
-Auf ausdrücklichen Wunsch werden echte App-Store-Vorschauvideos erstellt (keine App-Clip-Erweiterung):
+Auf ausdrücklichen Wunsch sind echte App-Store-Vorschauvideos erstellt (keine App-Clip-Erweiterung):
 zuerst Seiten-Screenshots für alle 16 App-Sprachen, anschließend drei verschiedene Vorschauen je Sprache
-(Aufräumen, Studio, Tresor). Es gibt keinen weiteren TestFlight- oder App-Store-Upload in diesem Auftrag.
+(Aufräumen, Studio, Tresor). Alle Dateien sind geprüft und nach Sprache und Seite im Arbeitsbranch abgelegt.
+Es gibt keinen weiteren TestFlight- oder App-Store-Upload in diesem Auftrag.
 
 **Bildsatz PASS:** 45 Präsentationsfotos und 10 schwierigere Motive, alle echte Hochkant-JPEGs,
 55 verschiedene SHA-256-Werte, jeweils einzeln geprüfte CC0-1.0-Lizenz.
@@ -54,19 +55,22 @@ Prüfmanifesten. Diese Aufnahmen sind kein Nachweis, dass in diesen beiden Scans
 Die arabischen Gestenpfeile bleiben physisch links = Papierkorb, rechts = Später.
 Leere Video-/Screenshot-Filter und Datei-/PDF-Eingänge entsprechen dem ausdrücklich reinen Foto-Bildsatz.
 
-**Vorschau-Phase in Arbeit:** Erst nach Abschluss und Push aller Screenshot-Serien wurde
+**Vorschau-Phase abgeschlossen: PASS.** Erst nach Abschluss und Push aller Screenshot-Serien wurde
 `38764957492` auf `02e689f` für Deutsch, Englisch und Arabisch mit `store-previews` gestartet.
-`38765595100` auf `364f9bf` nimmt die übrigen 13 Sprachen auf; beide verwenden denselben App-/Test-Code.
+`38765595100` auf `364f9bf` nahm die übrigen 13 Sprachen auf; beide verwendeten denselben App-/Test-Code.
 Drei Varianten je Sprache: Aufräumen, Studio, Tresor. Die UI-Tests prüfen tatsächliche Wischschritte,
 veränderte Belichtung, gewählten Monochromfilter, Zeichnen und echten Tresorzoom; jeder Videoschritt
 hat zusätzlich einen nativen Screenshot. Videoexport, vollständige Dekodierung, Sichtprüfung und
-Ablage der insgesamt 48 Vorschauen erfolgen sprachweise.
+Ablage der insgesamt 48 Vorschauen sind abgeschlossen.
 
-**45/48 Vorschauen PASS:** Alle 15 Sprachen außer Russisch sind vollständig exportiert,
+**48/48 Vorschauen PASS:** Alle 16 Sprachen sind vollständig exportiert,
 vollständig dekodiert und mit je acht tatsächlich angesehenen Videobildern plus drei Postern geprüft.
-Zusätzlich wurden alle 375 nativen Schritt-/Einrichtungs-Screenshots dieser 15 Sprachen angesehen.
+Zusätzlich wurden alle 400 nativen Schritt-/Einrichtungs-Screenshots dieser 16 Sprachen angesehen.
 Die Dateien liegen unter `app-store/locales/<Sprache>/previews/`; Ausgangsdaten, Tempo und Posterzeitcodes
-stehen im jeweiligen Manifest. Der Audit besteht einschließlich übereinstimmender Spurdauern.
+stehen im jeweiligen Manifest. Der Gesamtaudit besteht einschließlich übereinstimmender Spurdauern.
+Die Sichtprüfung umfasst Bildstichproben und Poster; die vollständigen Filme wurden technisch dekodiert,
+aber nicht jeweils in Echtzeit angesehen. Die endgültigen Serien belegen insgesamt 96 bestandene native
+UI-Testausführungen: 32 für die Seitenaufnahmen und 64 für Einrichtung/Vorschauen, ohne Fehler oder Skip.
 
 | Sprachen | Native Vorschauaufnahme | Endgültiger Export | Stand |
 |---|---|---|---|
@@ -79,7 +83,7 @@ stehen im jeweiligen Manifest. Der Audit besteht einschließlich übereinstimmen
 | Polnisch, Portugiesisch (Portugal) | `38765595100` · `364f9bf` · je 4/4 native Tests | `38772655624` · `1836474` | PASS · je drei Videos und Poster |
 | Rumänisch, Türkisch | `38765595100` · `364f9bf` · je 4/4 native Tests | `38774573992` · `1e0daee` | PASS · je drei Videos und Poster |
 | Ukrainisch, Chinesisch (vereinfacht) | `38765595100` · `364f9bf` · je 4/4 native Tests | `38775272307` · `1e0daee` | PASS · je drei Videos und Poster |
-| Russisch | Wiederholung `38774007322` · `6ee08f3` | laufend | noch nicht vollständig geprüft/abgelegt |
+| Russisch | Wiederholung `38774007322` · `6ee08f3` · 4/4 native Tests | im selben Lauf | PASS · drei Videos und Poster |
 
 Die ersten drei Sprachen bestanden jeweils 4/4 native Tests; der anschließende Export scheiterte jedoch
 an variablen Simulator-Bildraten. Ein Studio-Clip wurde trotz gekürzter Wandzeitsegmente 36,8 s lang.
@@ -98,9 +102,12 @@ Recorder-Fehler. Der erhaltene Recorder-Log zeigt dennoch eine gestartete Aufnah
 ein zurückgelassener Recorder-Prozess. Die genaue alte Fehlerantwort wurde nicht archiviert.
 Die Aufnahmehilfe wartet jetzt bis zu 45 statt zehn Sekunden auf Bereitschaft und beendet einen
 fehlgeschlagenen Start zuverlässig. XCTest wartet auf die Antwort einschließlich Bereinigung bis 90 s,
-zeigt deren Fehlertext und archiviert die Steuerantworten. Diese Hypothese wird mit einem frischen
-russischen Simulator geprüft: `38774007322` auf `6ee08f3`. Die fehlgeschlagene Serie wird nicht
-als bestanden gewertet; ihre zehn Einrichtungs-Screenshots wurden angesehen und separat aufbewahrt.
+zeigt deren Fehlertext und archiviert die Steuerantworten. Der frische russische Simulatorlauf
+`38774007322` auf `6ee08f3` ist vollständig erfolgreich: 4/4 native Tests, sechs erfolgreiche
+Recorder-Antworten und drei erfolgreiche Exporte. Das belegt die funktionierende Wiederholung;
+die genaue alte Fehlerursache bleibt mangels archivierter Antwort unbewiesen. Die fehlgeschlagene
+Serie wird nicht als bestanden gewertet; ihre zehn Einrichtungs-Screenshots wurden angesehen und
+separat aufbewahrt.
 
 Die Probeläufe fanden und korrigierten Fehler in der Aufnahmehilfe: sechs vorinstallierte Fremdfotos,
 verzögerte System-Fotoabfrage, fehlendes `@Sendable` in einer PhotoKit-Änderung, ausgeblendete
@@ -124,10 +131,14 @@ Checkout der Runner schließt das wachsende fertige Bildarchiv aus, behält jedo
 Linux Swift 6.4.1: **394 Tests / 44 Suites PASS**. Textgenerator `--check`: **PASS**, 1572 verwendete
 Kennungen, 2559 Einträge, 16 Sprachen. Neue App-Texte wurden nicht eingeführt.
 
-Noch ausstehend: drei russische Vorschauen und abschließender Sprach-/Formatabgleich.
+Keine ausstehenden Aufnahmen oder Exporte dieses Assets-Auftrags. Format-, Dateinamen-,
+Prüfsummen- und Platzhalterprüfung bestehen für alle 16 Sprachen. Eine vollständige sprachliche
+Redaktion der bestehenden Übersetzungen ist damit nicht belegt; chinesische Texte enthalten
+teilweise traditionelle Zeichen, lange native Steuerelementtitel werden teils gekürzt.
 Dokumentenscanner/Kamera ist wegen fehlender Kamerafunktion im Simulator **NOT RUN**, mit nativem
 Crashbericht aus dem verworfenen Scannerpilot belegt. Echtes Face ID, iCloud, 30.000 Fotos und Wärme
-bleiben **NOT RUN** ohne physisches iPhone; der Foto-Bildsatz deckt den Videoeditor nicht ab.
+bleiben **NOT RUN** ohne physisches iPhone. Videoeditor/Wiedergabe mit echten Videodateien sind
+mit diesem Foto-Bildsatz **NOT RUN**; eine echte Filmzusammenstellung aus fünf Fotos ist aufgenommen.
 Wiederherstellungsschlüssel werden nicht veröffentlicht. E1–E19 unverändert.
 
 ## TestFlight-Build 9 mit Tresor-, Duplikat- und Zoom-Korrekturen (15.10.2026)

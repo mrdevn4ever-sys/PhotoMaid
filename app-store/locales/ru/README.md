@@ -2,7 +2,7 @@
 
 App Store Connect: `ru` · Dark Mode · iPhone 17 Pro Max.
 
-123 unveränderte native Seitenaufnahmen, 10 Bilder in der Store-Auswahl, 0 Vorschauvideos. Sichtprüfung: **PASS**.
+123 unveränderte native Seitenaufnahmen, 10 Bilder in der Store-Auswahl, 3 Vorschauvideos. Sichtprüfung: **PASS**.
 
 [Aufnahmelauf 38735332484](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38735332484) · [Herkunft und Testergebnis](provenance.json) · [Prüfbögen](review/).
 
@@ -23,7 +23,11 @@ Die Originaldatei öffnet sich beim Anklicken. Apple erlaubt bis zu zehn Screens
 
 ## Vorschauvideos zur Auswahl
 
-Noch ausstehend.
+[Video-Aufnahmelauf 38774007322](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38774007322) · [Native Video-Tests und Bildbestand](preview-provenance.json) · [Format und Poster-Zeitcodes](previews/manifest.json).
+
+- [Aufräumen – Behalten, Papierkorb, Später und Zurück](previews/01-review.mp4) · [Poster](previews/01-review-poster.png)
+- [Studio – Anpassen, Filter, Zeichnen und Rahmen](previews/02-studio.mp4) · [Poster](previews/02-studio-poster.png)
+- [Tresor – Medien, Betrachter und Zoom](previews/03-vault.mp4) · [Poster](previews/03-vault-poster.png)
 
 ## Vollständiges Seitenarchiv
 
@@ -61,4 +65,4 @@ Noch ausstehend.
 
 ## Grenzen des Bildsatzes
 
-Kamera/Scanner und echtes Face ID brauchen ein physisches iPhone. Videoeditor und Video-Wiedergabe sind mit dem ausschließlich aus Fotos bestehenden Bildsatz nicht aufgenommen. Wiederherstellungsschlüssel werden nicht veröffentlicht. Leere Ansichten bleiben ehrlich leer; Analyseergebnisse stammen aus dem tatsächlichen lokalen Lauf.
+Kamera/Scanner und echtes Face ID brauchen ein physisches iPhone. Videoeditor und Wiedergabe mit echten Videodateien sind mit dem ausschließlich aus Fotos bestehenden Bildsatz nicht aufgenommen; eine echte Filmzusammenstellung aus fünf Fotos ist im Seitenarchiv enthalten. Wiederherstellungsschlüssel werden nicht veröffentlicht. Leere Ansichten bleiben ehrlich leer; Analyseergebnisse stammen aus dem tatsächlichen lokalen Lauf.

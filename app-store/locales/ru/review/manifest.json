@@ -578,5 +578,94 @@
     ],
     "review": "PASS",
     "findings": "Alle 123 nativen Originale auf elf beschrifteten Prüfbögen angesehen. Geladene Metadaten/Editor-Vorschaubilder, lesbare russische Texte, keine Rohkennungen/Formatplatzhalter. Physische Gestenrichtungen korrekt; tatsächliche Analyseergebnisse. Leere Foto-fremde Ansichten entsprechen dem Bildsatz. Systemlöschungen abgelehnt."
+  },
+  {
+    "sheet": "01-review-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/01-review.mp4",
+        "sha256": "6d9713a6bdb95d14648f00cf9d8eb1e5fcdebce32c72bc934e00c1f4963acad6"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "findings": "Russische Endserie: alle acht Stichproben je Video und alle drei Poster tatsächlich angesehen. Native Feed-Schritte mit Später-Pille und Zurück, Belichtung 16, gewählter Monochromfilter, rote Zeichnung, Rahmenansicht sowie fünf reale Tresorimporte mit ausblendbaren Leisten und echtem Zoom sichtbar. Keine Systemabfrage oder Formatplatzhalter. Vollständige Dekodierung bestanden; gesamte Filme nicht in Echtzeit angesehen."
+  },
+  {
+    "sheet": "02-studio-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/02-studio.mp4",
+        "sha256": "1d56896986f66602b1c6dcc9e9c40973e931e81b64debb50dfe2149277eea060"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "findings": "Russische Endserie: alle acht Stichproben je Video und alle drei Poster tatsächlich angesehen. Native Feed-Schritte mit Später-Pille und Zurück, Belichtung 16, gewählter Monochromfilter, rote Zeichnung, Rahmenansicht sowie fünf reale Tresorimporte mit ausblendbaren Leisten und echtem Zoom sichtbar. Keine Systemabfrage oder Formatplatzhalter. Vollständige Dekodierung bestanden; gesamte Filme nicht in Echtzeit angesehen."
+  },
+  {
+    "sheet": "03-vault-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/03-vault.mp4",
+        "sha256": "2196fe1dcc1cb98b86efa475dcf579c572c27098a0cdc980ede289c32a55828a"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "findings": "Russische Endserie: alle acht Stichproben je Video und alle drei Poster tatsächlich angesehen. Native Feed-Schritte mit Später-Pille und Zurück, Belichtung 16, gewählter Monochromfilter, rote Zeichnung, Rahmenansicht sowie fünf reale Tresorimporte mit ausblendbaren Leisten und echtem Zoom sichtbar. Keine Systemabfrage oder Formatplatzhalter. Vollständige Dekodierung bestanden; gesamte Filme nicht in Echtzeit angesehen."
+  },
+  {
+    "sheet": "posters.jpg",
+    "kind": "posters",
+    "originals": [
+      {
+        "file": "previews/01-review-poster.png",
+        "sha256": "18217ba074505d1bc2f225674c088bef665fece6f787d313befe1ab66d8cd400"
+      },
+      {
+        "file": "previews/02-studio-poster.png",
+        "sha256": "65ba42815136f8e68f8bcb641b8ab80d0ba948406d5ffe07bf68e5c1390b478d"
+      },
+      {
+        "file": "previews/03-vault-poster.png",
+        "sha256": "e1ef33f4d5199461d7026871ac8f08010687dc16c2a151b9406326ed94da3cf8"
+      }
+    ],
+    "review": "PASS",
+    "findings": "Russische Endserie: alle acht Stichproben je Video und alle drei Poster tatsächlich angesehen. Native Feed-Schritte mit Später-Pille und Zurück, Belichtung 16, gewählter Monochromfilter, rote Zeichnung, Rahmenansicht sowie fünf reale Tresorimporte mit ausblendbaren Leisten und echtem Zoom sichtbar. Keine Systemabfrage oder Formatplatzhalter. Vollständige Dekodierung bestanden; gesamte Filme nicht in Echtzeit angesehen."
   }
 ]

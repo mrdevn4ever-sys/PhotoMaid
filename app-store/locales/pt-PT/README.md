@@ -67,4 +67,4 @@ Die Originaldatei öffnet sich beim Anklicken. Apple erlaubt bis zu zehn Screens
 
 ## Grenzen des Bildsatzes
 
-Kamera/Scanner und echtes Face ID brauchen ein physisches iPhone. Videoeditor und Video-Wiedergabe sind mit dem ausschließlich aus Fotos bestehenden Bildsatz nicht aufgenommen. Wiederherstellungsschlüssel werden nicht veröffentlicht. Leere Ansichten bleiben ehrlich leer; Analyseergebnisse stammen aus dem tatsächlichen lokalen Lauf.
+Kamera/Scanner und echtes Face ID brauchen ein physisches iPhone. Videoeditor und Wiedergabe mit echten Videodateien sind mit dem ausschließlich aus Fotos bestehenden Bildsatz nicht aufgenommen; eine echte Filmzusammenstellung aus fünf Fotos ist im Seitenarchiv enthalten. Wiederherstellungsschlüssel werden nicht veröffentlicht. Leere Ansichten bleiben ehrlich leer; Analyseergebnisse stammen aus dem tatsächlichen lokalen Lauf.
