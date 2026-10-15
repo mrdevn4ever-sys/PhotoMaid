@@ -1,0 +1,582 @@
+[
+  {
+    "sheet": "screenshots-00.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/01-introduction/introduction-01.png",
+        "sha256": "960ced62c1259f5008a2936272ea62527924ef1c5a35c87f7f175759598f7e6a"
+      },
+      {
+        "file": "all-pages/01-introduction/introduction-02.png",
+        "sha256": "907120a8fb3a07bff26fb9fcdea515d9211fc748c5d88636af27fd2874431222"
+      },
+      {
+        "file": "all-pages/01-introduction/introduction-03.png",
+        "sha256": "dd0a9317ce943dcab00e35e4cbd0f01d0c2ba7862b1108f6b95ba94b1257f9dd"
+      },
+      {
+        "file": "all-pages/01-introduction/introduction-04.png",
+        "sha256": "c54f476d0324f69724869e04c69a6b80062b721f5f6a283564580483ed423144"
+      },
+      {
+        "file": "all-pages/01-introduction/introduction-05.png",
+        "sha256": "adab32370b679bbdaadf18323d02f1f765e7eedff0cc716bdc9076687b67c07a"
+      },
+      {
+        "file": "all-pages/02-today-and-review/feed-gesture-guide.png",
+        "sha256": "dd798ca1f7df9d54600dff93a54efe661c5e533f5cfaaa1638f24540c252637f"
+      },
+      {
+        "file": "all-pages/02-today-and-review/feed-later.png",
+        "sha256": "bd1ea80abb9bfdc1a901d90076970bbdae3674991fd25e2e383eb2b638939726"
+      },
+      {
+        "file": "all-pages/02-today-and-review/feed-menu.png",
+        "sha256": "96cc13442f11d66f3825ea09c49ad7b1524ece224e21ef57f117599aa1c7ea42"
+      },
+      {
+        "file": "all-pages/02-today-and-review/feed.png",
+        "sha256": "6a4ce23134f563abc7bc1575ad1ac48300a3bdc8ee5894aa2e269851fe529158"
+      },
+      {
+        "file": "all-pages/02-today-and-review/today.png",
+        "sha256": "e232ad4fcc52ecaba201b2be148439b7a66639065c4718045f873c0bc73f94a4"
+      },
+      {
+        "file": "all-pages/03-photos/album.png",
+        "sha256": "22274a2e4dcc07f41e8f70cfc6434868733d88fcbb8f67c56127b58d78a3bbda"
+      },
+      {
+        "file": "all-pages/03-photos/albums.png",
+        "sha256": "107a055dde902f77b026930e18832a3006553665a068ef068598520db6f48af4"
+      }
+    ],
+    "review": "PASS",
+    "findings": "All 123 original native screenshots viewed in 11 labeled sheets. Dark mode, actual 55-photo library, real PIN vault with five imports, loaded filter thumbnails and no search spinner. No raw localization keys or format placeholders visible. Empty views reflect the photos-only library. Compact native scrolling controls can truncate long labels."
+  },
+  {
+    "sheet": "screenshots-01.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/03-photos/favorites.png",
+        "sha256": "8ad2587fd4d8993a22886956b938dfc4e08a916630a762d8f9cb3ad3b4bf322e"
+      },
+      {
+        "file": "all-pages/03-photos/grid.png",
+        "sha256": "41514653cc2d240ac69c889d9d27bcedb321daafccaceda6c6f05191d48a7fe1"
+      },
+      {
+        "file": "all-pages/03-photos/hidden.png",
+        "sha256": "35e9ab300700f359efc2e9163c7945e56e2604f1995af3a603a71f4af286b5f2"
+      },
+      {
+        "file": "all-pages/03-photos/library-favorites.png",
+        "sha256": "d9fb57654010ea618cf696bbaa5e2c6172e9b034f6eb14bcb4c577a437fe3c8f"
+      },
+      {
+        "file": "all-pages/03-photos/library-photos.png",
+        "sha256": "d349859b7809cf0d3d538f7a644f821152442a0abf50f436131ead587374bba2"
+      },
+      {
+        "file": "all-pages/03-photos/library-screenshots.png",
+        "sha256": "7d6016161328644b8dd21c3fec46a420adbd027d8b37fdda9bd987933bdba08c"
+      },
+      {
+        "file": "all-pages/03-photos/library-videos.png",
+        "sha256": "d71b89387ada41399909fda1910ba62f45214c47557fceb54d5a5ee9b5d962d3"
+      },
+      {
+        "file": "all-pages/03-photos/library.png",
+        "sha256": "b2eab04eb60815d77dd88ef2e6b5778a4fd4ad84425dcefd2abf2c05acd2353b"
+      },
+      {
+        "file": "all-pages/03-photos/search.png",
+        "sha256": "e3110acc74b7decb6a346d8b741a59404c8b366b2c20b48b97237ccb18364148"
+      },
+      {
+        "file": "all-pages/03-photos/selection.png",
+        "sha256": "6f632e5859afe2c5e85cca7d1cadc5123b71c1eef96c503d7170d17bf04c9493"
+      },
+      {
+        "file": "all-pages/03-photos/slideshow-settings.png",
+        "sha256": "259e07486d7330f2fdefb8408cc2edf92206a1bf5e2d197c14cb0ed49a366eb1"
+      },
+      {
+        "file": "all-pages/03-photos/slideshow.png",
+        "sha256": "05697238dda598a88b5cc21f82a729c4c6c53aad6eda17a605413343ce64689e"
+      }
+    ],
+    "review": "PASS",
+    "findings": "All 123 original native screenshots viewed in 11 labeled sheets. Dark mode, actual 55-photo library, real PIN vault with five imports, loaded filter thumbnails and no search spinner. No raw localization keys or format placeholders visible. Empty views reflect the photos-only library. Compact native scrolling controls can truncate long labels."
+  },
+  {
+    "sheet": "screenshots-02.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/03-photos/tags.png",
+        "sha256": "90bafbcfd5d7a3f4ee2880274e5c13d3b2b9bb508b4db5b72b11badc1135bb85"
+      },
+      {
+        "file": "all-pages/03-photos/viewer-album-picker.png",
+        "sha256": "99880af22d335a1c212fa92e63b3964231c72c9a59bfb25ead69207c2d237c84"
+      },
+      {
+        "file": "all-pages/03-photos/viewer-info.png",
+        "sha256": "b8aff625d3a32458edcf2ea1b78a71e17a905318c77681852c06b47fa0021fea"
+      },
+      {
+        "file": "all-pages/03-photos/viewer.png",
+        "sha256": "f94a14597b1fa3d9fc0558d22f158daaed34c0ba53054fc6d26b31fd47886bb1"
+      },
+      {
+        "file": "all-pages/04-cleanup/blurry-progress.png",
+        "sha256": "ca3d19d7d51103303c219517e01941ecf5235c8f1eb28b2f4b3777d651859bec"
+      },
+      {
+        "file": "all-pages/04-cleanup/blurry-results-grid.png",
+        "sha256": "50a5d712b85acc893695689a0d35cdcfd70a68c27f5e28bfea301562b5b787c9"
+      },
+      {
+        "file": "all-pages/04-cleanup/blurry-results.png",
+        "sha256": "3eef3e4045696123df16dad5fd6d765df9e55760e795697b08097c5acf40b3be"
+      },
+      {
+        "file": "all-pages/04-cleanup/blurry.png",
+        "sha256": "b8a47f93408eac33150cfaca56313b0085cf253e5037e08905a1400694ecb4f9"
+      },
+      {
+        "file": "all-pages/04-cleanup/categories-progress.png",
+        "sha256": "87a72d1fb0ea1ee13854d5f951415a9b1890618f4dc1d04239d3739dac7e6f0d"
+      },
+      {
+        "file": "all-pages/04-cleanup/categories-results-grid.png",
+        "sha256": "a2e6e9af5c94159fc64667373c2009e4dfe363c34bf62239165a7e6cc2cd5922"
+      },
+      {
+        "file": "all-pages/04-cleanup/categories-results.png",
+        "sha256": "ba30386a449193177b87a750d28988140dbb9b479faf39dbdc23658391b80396"
+      },
+      {
+        "file": "all-pages/04-cleanup/categories.png",
+        "sha256": "7c12a07ce63319ea7c32127707cc1b1b216ed97e63c6b9df1bfe73d8779e723c"
+      }
+    ],
+    "review": "PASS",
+    "findings": "All 123 original native screenshots viewed in 11 labeled sheets. Dark mode, actual 55-photo library, real PIN vault with five imports, loaded filter thumbnails and no search spinner. No raw localization keys or format placeholders visible. Empty views reflect the photos-only library. Compact native scrolling controls can truncate long labels."
+  },
+  {
+    "sheet": "screenshots-03.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/04-cleanup/cleanup-bottom.png",
+        "sha256": "2e8f6e426a2c1d6a01fd2baf30ffafd9042bd3f6997042a698b9e7309b00d637"
+      },
+      {
+        "file": "all-pages/04-cleanup/cleanup.png",
+        "sha256": "aadf7a2e2de40e0608d2840ca8c1f0e7dfe8b3f6314231731edc25d83ca42643"
+      },
+      {
+        "file": "all-pages/04-cleanup/collections-bottom.png",
+        "sha256": "a68109bd15b894091eb93de1a7e7af6995246ff75deaed59984f18cd52e8d821"
+      },
+      {
+        "file": "all-pages/04-cleanup/collections.png",
+        "sha256": "6158e7b340c3d953cd3fcd2002f9ba9d4d261978bddcbd41401961c6b030fa2f"
+      },
+      {
+        "file": "all-pages/04-cleanup/documents-progress.png",
+        "sha256": "0048448813fb7b1187856c8519b42bc49235a79524c76a4ab84d419a601f0357"
+      },
+      {
+        "file": "all-pages/04-cleanup/documents-results-grid.png",
+        "sha256": "192ff8ef0eddcf8065bb38f4b679e22a595c5c21fb079295c3e52c68a25c1ac7"
+      },
+      {
+        "file": "all-pages/04-cleanup/documents-results.png",
+        "sha256": "192ff8ef0eddcf8065bb38f4b679e22a595c5c21fb079295c3e52c68a25c1ac7"
+      },
+      {
+        "file": "all-pages/04-cleanup/documents.png",
+        "sha256": "60e03f429de2f685a950b06379750873f829cee008cf2fecf1ec46b2a8f6f0da"
+      },
+      {
+        "file": "all-pages/04-cleanup/duplicates.png",
+        "sha256": "4c2a544c01bad762d41d18ca197c9a9b67891aca147a71b5c3881ef0ca3bbf19"
+      },
+      {
+        "file": "all-pages/04-cleanup/files.png",
+        "sha256": "4b8a1f36e4a1246824954f65403251bdad14f3efef3bfa5b1317fe7cf80b016b"
+      },
+      {
+        "file": "all-pages/04-cleanup/large-files.png",
+        "sha256": "c526579fec048fb683c4dd3cd100a1321ec1d343c22b786da97b02dc9e0af2a9"
+      },
+      {
+        "file": "all-pages/04-cleanup/later.png",
+        "sha256": "4d50a7ef26720edb2c47c7ff4c2c425cc47cafdaf62904630d57405b6a1f6196"
+      }
+    ],
+    "review": "PASS",
+    "findings": "All 123 original native screenshots viewed in 11 labeled sheets. Dark mode, actual 55-photo library, real PIN vault with five imports, loaded filter thumbnails and no search spinner. No raw localization keys or format placeholders visible. Empty views reflect the photos-only library. Compact native scrolling controls can truncate long labels."
+  },
+  {
+    "sheet": "screenshots-04.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/04-cleanup/months.png",
+        "sha256": "e1f6edaa20facdf3a370a71a2b29740ca8a36bd5a72d851fd38feae1c08ecd86"
+      },
+      {
+        "file": "all-pages/04-cleanup/series.png",
+        "sha256": "846669137d9ccff18cca150f32add0a99ebef03c1b3c0f5697c70a7715e12638"
+      },
+      {
+        "file": "all-pages/04-cleanup/similar-progress.png",
+        "sha256": "a5c435a9a98092c0b7d5495bd276a624c97a6dd37948c5053b5f60ca94947590"
+      },
+      {
+        "file": "all-pages/04-cleanup/similar-results-grid.png",
+        "sha256": "e42759e407c002e89d3c81a3f9e8b73cfa0ff8dd248aa062798618f8c70810a6"
+      },
+      {
+        "file": "all-pages/04-cleanup/similar-results.png",
+        "sha256": "042c13031af5a3f5c2fc1e9934c8bc874993e2c7a34907f2e8dadb1438f28863"
+      },
+      {
+        "file": "all-pages/04-cleanup/similar.png",
+        "sha256": "93d15b393e00ba457ffdef133800b3e4f4316ad300b16ed8cac3f89a96576795"
+      },
+      {
+        "file": "all-pages/04-cleanup/storage-bottom.png",
+        "sha256": "4f4b964650e922f0e59e230e15162130913e7a4dd97e2d5a58960facb9d0169b"
+      },
+      {
+        "file": "all-pages/04-cleanup/storage.png",
+        "sha256": "4f4b964650e922f0e59e230e15162130913e7a4dd97e2d5a58960facb9d0169b"
+      },
+      {
+        "file": "all-pages/04-cleanup/trash.png",
+        "sha256": "2344d2f36d6831ed30bae6f77d4787197115f5367967cca37b0afbd31c9093de"
+      },
+      {
+        "file": "all-pages/05-studio/archive-bottom.png",
+        "sha256": "2dfa5d1318e3557bfe6e310531b1b8e5666995e39b28f16f7785d1346e9289fb"
+      },
+      {
+        "file": "all-pages/05-studio/archive.png",
+        "sha256": "95a0a33a3da243f18d0620c0bfdf5438772930727e5d8d3fab9149a0798e5a1d"
+      },
+      {
+        "file": "all-pages/05-studio/collage-save-options.png",
+        "sha256": "e2022c3809ef04be0ebea94711ed0bf23e6d69a7f038c5d4dcd606f7b7b01530"
+      }
+    ],
+    "review": "PASS",
+    "findings": "All 123 original native screenshots viewed in 11 labeled sheets. Dark mode, actual 55-photo library, real PIN vault with five imports, loaded filter thumbnails and no search spinner. No raw localization keys or format placeholders visible. Empty views reflect the photos-only library. Compact native scrolling controls can truncate long labels."
+  },
+  {
+    "sheet": "screenshots-05.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/05-studio/collage.png",
+        "sha256": "736220c872f72502c829cccb387e8d6f56640a32c3fc6338a11f337bb27eb0a9"
+      },
+      {
+        "file": "all-pages/05-studio/editor-adjust.png",
+        "sha256": "d46b909579184cff3b5637e140cddfe2fd29d5c8a80e0a3ce071f02a9f4bbf61"
+      },
+      {
+        "file": "all-pages/05-studio/editor-crop.png",
+        "sha256": "7d0de4e75ab3874b7c286c39779c0c6bfb2b26db3d972307de07703006f72a82"
+      },
+      {
+        "file": "all-pages/05-studio/editor-filter.png",
+        "sha256": "d57ee70897bee723287b38ac3db09b42a584952f61ce328c5edcb3c7333eb1e0"
+      },
+      {
+        "file": "all-pages/05-studio/editor-frame.png",
+        "sha256": "88b14d2fa75c591a77a9a0a720620bcf60e8c1d6edf8e0847af8d35b018303eb"
+      },
+      {
+        "file": "all-pages/05-studio/editor-markup.png",
+        "sha256": "5d986545e269ba7c37c38d99529a6f4b11f485a1826c277b83263c74a3e33815"
+      },
+      {
+        "file": "all-pages/05-studio/editor-resize.png",
+        "sha256": "5de8ae282ac955adcf39d192de5c1b854100010202f2696258c252a8fd9048fc"
+      },
+      {
+        "file": "all-pages/05-studio/editor-retouch.png",
+        "sha256": "b15ebeb918f81c2866fad59d761e2372839b492bac1dbd025c958fd622e886d0"
+      },
+      {
+        "file": "all-pages/05-studio/editor-save-options.png",
+        "sha256": "7dc11970c156c48b1ed2cbeb37c50762c42af0bc968780c5f0bafb0dd12a6eb9"
+      },
+      {
+        "file": "all-pages/05-studio/editor.png",
+        "sha256": "d46b909579184cff3b5637e140cddfe2fd29d5c8a80e0a3ce071f02a9f4bbf61"
+      },
+      {
+        "file": "all-pages/05-studio/edits.png",
+        "sha256": "e0a6f75bef252524f5a965c62d34a125d6147178c74271906b38a6483a5db622"
+      },
+      {
+        "file": "all-pages/05-studio/movie-bottom.png",
+        "sha256": "be6294395d1038ecd798fe60acecb7947ace20641fbe66488426442d82aff958"
+      }
+    ],
+    "review": "PASS",
+    "findings": "All 123 original native screenshots viewed in 11 labeled sheets. Dark mode, actual 55-photo library, real PIN vault with five imports, loaded filter thumbnails and no search spinner. No raw localization keys or format placeholders visible. Empty views reflect the photos-only library. Compact native scrolling controls can truncate long labels."
+  },
+  {
+    "sheet": "screenshots-06.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/05-studio/movie.png",
+        "sha256": "70478c6e1088755941da317e4c3d9ad39695d66fb140021fae8a4f303dff0cb2"
+      },
+      {
+        "file": "all-pages/05-studio/pdf-bottom.png",
+        "sha256": "ceb7c1b310947c70db132f923edef769c99bcf4d7e69eda482dd7cc4ae971a11"
+      },
+      {
+        "file": "all-pages/05-studio/pdf-studio.png",
+        "sha256": "a286983ee37d02d4c69f2fc8c5319c2682115dfd1caadbd2ae34fbb2da131661"
+      },
+      {
+        "file": "all-pages/05-studio/pdf.png",
+        "sha256": "ceb7c1b310947c70db132f923edef769c99bcf4d7e69eda482dd7cc4ae971a11"
+      },
+      {
+        "file": "all-pages/05-studio/received.png",
+        "sha256": "6eba72e4c8dc405732a0ead9b269d1314500185db96b8ed583cd679dc8066255"
+      },
+      {
+        "file": "all-pages/05-studio/studio-bottom.png",
+        "sha256": "063169e62eb6e907703ef125aedd976081f27699875c545489b3cd1217fb0efb"
+      },
+      {
+        "file": "all-pages/05-studio/studio.png",
+        "sha256": "e894bad554d49a657e3a0c3ef1ce9bf7c7d04ea6bb4fce641bfa4b7506ea8505"
+      },
+      {
+        "file": "all-pages/05-studio/tools-batchEdit-bottom.png",
+        "sha256": "0a25386ebd8d2eb4b7f52cd1035ccc1c9a43e16260b2180c1b4cf4b0c5384259"
+      },
+      {
+        "file": "all-pages/05-studio/tools-batchEdit.png",
+        "sha256": "1d9e769a6d185238cad0a32bdd7f276fc99f3db5090a41f123dbce14b7fffddd"
+      },
+      {
+        "file": "all-pages/05-studio/tools-convert-bottom.png",
+        "sha256": "e55f672fc1c7556bc82d65d113b00455346c60ad2b585b862104a73ff85d6bdb"
+      },
+      {
+        "file": "all-pages/05-studio/tools-convert.png",
+        "sha256": "cd2b4bce5c98b6511898cc7f37eb45c2d4c782f0b91e679bbd2103e1cb254284"
+      },
+      {
+        "file": "all-pages/05-studio/tools-gif-bottom.png",
+        "sha256": "52dabda66864f983a5079c440cab4b92aa8ea058e20a6708ee0526f3499cc2db"
+      }
+    ],
+    "review": "PASS",
+    "findings": "All 123 original native screenshots viewed in 11 labeled sheets. Dark mode, actual 55-photo library, real PIN vault with five imports, loaded filter thumbnails and no search spinner. No raw localization keys or format placeholders visible. Empty views reflect the photos-only library. Compact native scrolling controls can truncate long labels."
+  },
+  {
+    "sheet": "screenshots-07.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/05-studio/tools-gif.png",
+        "sha256": "a22d09f9987f40cb339301c63cafc2e7fb2e98863a28f3ccd0d3ea73b9021d46"
+      },
+      {
+        "file": "all-pages/05-studio/tools-removeLocation-bottom.png",
+        "sha256": "7fdd9c674185e7fe4b51769c048f118b207da00758caeee44ababbcf6112f408"
+      },
+      {
+        "file": "all-pages/05-studio/tools-removeLocation.png",
+        "sha256": "7fdd9c674185e7fe4b51769c048f118b207da00758caeee44ababbcf6112f408"
+      },
+      {
+        "file": "all-pages/05-studio/tools-resize-bottom.png",
+        "sha256": "d3ae698cce47cf0b74352902df5a162750b6e5da71bedee4b057cfd92d4097a4"
+      },
+      {
+        "file": "all-pages/05-studio/tools-resize.png",
+        "sha256": "c14d72d0e69ff97f18226ab828fb5edfd3c9d7d10084fb5d78ec193963bf8a00"
+      },
+      {
+        "file": "all-pages/05-studio/tools-stitch-bottom.png",
+        "sha256": "259ddcdc15443af014c1863a3550a180d46f8e7fc9e5f8c8c3613738071d1d54"
+      },
+      {
+        "file": "all-pages/05-studio/tools-stitch.png",
+        "sha256": "259ddcdc15443af014c1863a3550a180d46f8e7fc9e5f8c8c3613738071d1d54"
+      },
+      {
+        "file": "all-pages/05-studio/workflow-editor.png",
+        "sha256": "4a8dbc0eae891894985c0812432bb777eb50fd9e06dae587c39272a0b8ad6b7d"
+      },
+      {
+        "file": "all-pages/05-studio/workflows-bottom.png",
+        "sha256": "f7b8823af7c2b5d643e479261205ea756b532f5f39e9a0e889d846b6484756c9"
+      },
+      {
+        "file": "all-pages/05-studio/workflows.png",
+        "sha256": "f7b8823af7c2b5d643e479261205ea756b532f5f39e9a0e889d846b6484756c9"
+      },
+      {
+        "file": "all-pages/06-vault/vault-change-code-empty.png",
+        "sha256": "686a6840ba02dc57df659fb67cbebd9b40f45bac7793ef4e8ed060624b3c6b31"
+      },
+      {
+        "file": "all-pages/06-vault/vault-files.png",
+        "sha256": "26773b130a46aa9009aa1e5c9b88ac69e0f11173c7d740cb55d0ebbdfbedf87f"
+      }
+    ],
+    "review": "PASS",
+    "findings": "All 123 original native screenshots viewed in 11 labeled sheets. Dark mode, actual 55-photo library, real PIN vault with five imports, loaded filter thumbnails and no search spinner. No raw localization keys or format placeholders visible. Empty views reflect the photos-only library. Compact native scrolling controls can truncate long labels."
+  },
+  {
+    "sheet": "screenshots-08.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/06-vault/vault-media-before-details.png",
+        "sha256": "a3103f43f9a5bc5936db27fb0ab309573fc45ea2169ada333a1de339928bac94"
+      },
+      {
+        "file": "all-pages/06-vault/vault-media-picker.png",
+        "sha256": "49188137e3cc7dfb0662d33917c09198d0d29645b991eaf7d548a648169b8669"
+      },
+      {
+        "file": "all-pages/06-vault/vault-media.png",
+        "sha256": "a3103f43f9a5bc5936db27fb0ab309573fc45ea2169ada333a1de339928bac94"
+      },
+      {
+        "file": "all-pages/06-vault/vault-note-editor.png",
+        "sha256": "1fc3fe63c4bd21488a1861a0978c092b2bc18bb42c88386b8399633403ace455"
+      },
+      {
+        "file": "all-pages/06-vault/vault-notes-with-note.png",
+        "sha256": "f3789b10856a69bdd3a0f15200466cdfa7fedf415a30f790b108cb00bf110039"
+      },
+      {
+        "file": "all-pages/06-vault/vault-notes.png",
+        "sha256": "5cdfdb9d24394ca03a2bc1695a3850509faa78ea2b5cafdc075ec19603634cf2"
+      },
+      {
+        "file": "all-pages/06-vault/vault-settings.png",
+        "sha256": "47d2654243ef01b1ecaee1598f4ccc0106ab3b96cfdc33e53d8c82e0df51fe97"
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-code-empty.png",
+        "sha256": "81ad1ffdebb74aa1bb16dbe22ce997e5996bcc8803521fc740867a25fdb637dc"
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-entry.png",
+        "sha256": "ac1f03281dae33f2f07ddf052c1fd0b770cf6659a504a307544f16f353bdd156"
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-introduction.png",
+        "sha256": "448638f58a6cbc8ac851de4e1a640bb9c3be7804c7a1e73d6d09d1e8f3f39176"
+      },
+      {
+        "file": "all-pages/06-vault/vault-tools.png",
+        "sha256": "d40d7dc8c8c7f95407ddf8aeb417b952ffb01a76ccfd65bbbfef439b81aa4bc7"
+      },
+      {
+        "file": "all-pages/06-vault/vault-trash.png",
+        "sha256": "aa428b0fe7cfbb45ec3430dfbe5dc2aa8ad5ff8fbea682d33d227a3dfd58d159"
+      }
+    ],
+    "review": "PASS",
+    "findings": "All 123 original native screenshots viewed in 11 labeled sheets. Dark mode, actual 55-photo library, real PIN vault with five imports, loaded filter thumbnails and no search spinner. No raw localization keys or format placeholders visible. Empty views reflect the photos-only library. Compact native scrolling controls can truncate long labels."
+  },
+  {
+    "sheet": "screenshots-09.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/06-vault/vault-viewer.png",
+        "sha256": "57734e7dc7e347bbc6c85ae9794b63898e92db97b35e4d10e41e6f23e7d2988b"
+      },
+      {
+        "file": "all-pages/07-settings/backup-bottom.png",
+        "sha256": "f622792119cea2c329f4a672fc91481277f41608a85dd9cfb840d8f0d2dcbbc5"
+      },
+      {
+        "file": "all-pages/07-settings/backup.png",
+        "sha256": "f622792119cea2c329f4a672fc91481277f41608a85dd9cfb840d8f0d2dcbbc5"
+      },
+      {
+        "file": "all-pages/07-settings/controls-bottom.png",
+        "sha256": "a24de5c850baa1c50c80b8fe4f537f85b8792a917160aaf6b899f4f0eaf59b77"
+      },
+      {
+        "file": "all-pages/07-settings/controls.png",
+        "sha256": "4e0b6264623d497db7cefbd5fe413192b7e8bb01ee31a6864b31ef530460ba76"
+      },
+      {
+        "file": "all-pages/07-settings/excluded-albums.png",
+        "sha256": "6a5efbbc740dfa24b9157ca18dc479989e7f8d8b1cd6b2b77a27f7614be91e22"
+      },
+      {
+        "file": "all-pages/07-settings/help-bottom.png",
+        "sha256": "abe2984448ebe38af822bf4bf416a5781cfd51c8c6ec539dcd178eaf1074f3ab"
+      },
+      {
+        "file": "all-pages/07-settings/help.png",
+        "sha256": "abe2984448ebe38af822bf4bf416a5781cfd51c8c6ec539dcd178eaf1074f3ab"
+      },
+      {
+        "file": "all-pages/07-settings/privacy-bottom.png",
+        "sha256": "16e00a924db0bf805ac384eb7822768e262fe4506f0a6f3cbcf45b3109001fd7"
+      },
+      {
+        "file": "all-pages/07-settings/privacy.png",
+        "sha256": "c9327ebb525dfc3cf195d680525387184efe7d66d0391030103328e0b6e6000e"
+      },
+      {
+        "file": "all-pages/07-settings/pro-bottom.png",
+        "sha256": "76e6b1fca3b2281c5404794cdb3e0338c9766357b1485699397fc138c6016d86"
+      },
+      {
+        "file": "all-pages/07-settings/pro.png",
+        "sha256": "47e0d8162d9bfd575fdfc2f9539d880964a823e960229672c075f86afdf85b82"
+      }
+    ],
+    "review": "PASS",
+    "findings": "All 123 original native screenshots viewed in 11 labeled sheets. Dark mode, actual 55-photo library, real PIN vault with five imports, loaded filter thumbnails and no search spinner. No raw localization keys or format placeholders visible. Empty views reflect the photos-only library. Compact native scrolling controls can truncate long labels."
+  },
+  {
+    "sheet": "screenshots-10.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/07-settings/settings-bottom.png",
+        "sha256": "22c01af2c3048aa9d76a647c5214f4767072ec93745d672d2a70d9da47d7b69e"
+      },
+      {
+        "file": "all-pages/07-settings/settings.png",
+        "sha256": "a74890d2b6d84536ed98b3d88a3b9001e82032c1865c004629bdea429e051748"
+      },
+      {
+        "file": "all-pages/08-history/history.png",
+        "sha256": "69c42a62ae0f521e1053f56b71dd769ddb93fae5ee8a1e7f963550d679284584"
+      }
+    ],
+    "review": "PASS",
+    "findings": "All 123 original native screenshots viewed in 11 labeled sheets. Dark mode, actual 55-photo library, real PIN vault with five imports, loaded filter thumbnails and no search spinner. No raw localization keys or format placeholders visible. Empty views reflect the photos-only library. Compact native scrolling controls can truncate long labels."
+  }
+]

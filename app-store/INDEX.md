@@ -5,7 +5,7 @@ Alle Aufnahmen in Dark Mode. Je Sprache liegen vollständiges Seitenarchiv, eine
 | Sprache | App → App Store Connect | Screenshots | Videos |
 |---|---|---:|---:|
 | Arabisch | `ar` → `ar-SA` | ausstehend | ausstehend |
-| Deutsch | `de` → `de-DE` | ausstehend | ausstehend |
+| [Deutsch](locales/de/README.md) | `de` → `de-DE` | 123 / Auswahl 10 | 0 / 3 |
 | Englisch | `en` → `en-US` | ausstehend | ausstehend |
 | Spanisch | `es` → `es-ES` | ausstehend | ausstehend |
 | Französisch | `fr` → `fr-FR` | ausstehend | ausstehend |

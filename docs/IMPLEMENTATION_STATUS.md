@@ -28,7 +28,12 @@ Native Screenshotgröße 1320 × 2868; Vorschauen 886 × 1920, H.264, 30 fps, 15
 Die Original-PNGs werden unverändert archiviert; die Videos schneiden ausschließlich echte Aufnahmen.
 Sprachindex und Wiederholung: [`app-store/README.md`](../app-store/README.md).
 
-**Noch kein vollständiger Store-Seitenlauf als PASS abgenommen.** Die ersten Probeläufe fanden Fehler
+**Erste vollständige Serien PASS:** Englisch und Arabisch in `38734382042` (je 123 PNGs,
+2/2 native UI-Tests, kein Fehler/Skip); Deutsch und Italienisch in `38735332484`.
+Die deutsche Serie wurde vollständig angesehen und unter `app-store/locales/de/` einschließlich
+zehn Store-Vorschlägen und Prüfbögen abgelegt; Sprach-/Formatprüfung **PASS**.
+Die übrigen Sprachen und alle Vorschauvideos sind weiterhin offen.
+Die ersten Probeläufe fanden Fehler
 in der neuen Aufnahmehilfe: vorinstallierte Fremdfotos, verzögerte System-Fotoabfrage, ein fehlendes
 `@Sendable` in der PhotoKit-Änderung, ausgeblendete Diashow-Leisten und instabile XCTest-Abfragen.
 Diese Ursachen sind korrigiert. Der Dokumentenscanner wird wegen fehlender Kamerafunktion im Simulator
@@ -36,8 +41,16 @@ nicht erzwungen; sein nativer Crashbericht belegt diese Grenze. Ein Kaltstart pr
 Navigationstitel mit Inhalt überlappen; die Navigation im laufenden Prozess zeigt korrekte Abstände.
 Fehlgeschlagene/unvollständige Serien bleiben außerhalb der endgültigen Store-Auswahl.
 
-Laufende Nachprüfung: `38730546597` (Englisch/Arabisch, `fdea58f`),
-`38731542233` (Englisch, `335e935`) und `38732351800` (übrige 14 Sprachen, `335e935`).
+Aktueller Gesamtlauf: `38735332484` (16 Sprachen, `defb941`).
+Spanisch ist darin FAIL: Die System-Löschabfrage blieb nach dem ersten Ablehnen offen;
+die folgenden Tresoraufnahmen wurden blockiert. `a9e116c` lehnt die Abfrage bei Bedarf erneut
+ab und prüft ihr tatsächliches Verschwinden. Keine Systemlöschung bestätigt. Gezielte Wiederholung läuft.
+`38730546597` und `38731542233` sind FAIL wegen einer XCTest-Abfrage des noch außerhalb der
+Scrollansicht liegenden Rahmen-Werkzeugs; `bbb21b8` scrollt vor der Hittability-Abfrage anhand der
+tatsächlichen Elementgeometrie. Der darauf aufbauende Pilot besteht vollständig.
+`38732351800` wurde vor UI-Aufnahmen abgebrochen, um denselben bekannten Fehler nicht zu vervielfachen.
+Der Simulator-Testbuild wird nun einmal je Lauf kompiliert und als Tar mit erhaltenen Berechtigungen/
+Framework-Verknüpfungen an die Aufnahmerunner übertragen; Xcode-Versionen müssen übereinstimmen.
 Bereits angesehen: alle 140 PNGs aus `38724513676` und alle 38 PNGs aus `38727522970` in
 beschrifteten Prüfbögen; die Befunde sind vor Ort dokumentiert. Diese Serien sind weiterhin FAIL.
 Linux Swift 6.4.1: **394 Tests / 44 Suites PASS**. Textgenerator `--check`: **PASS**, 1572 verwendete
