@@ -141,14 +141,21 @@ final class AppStoreCaptureTests: XCTestCase {
     private func editorTool(_ tool: String) {
         let target = e("editor.tool." + tool)
         let row = e("editor.tools")
+        func isVisible() -> Bool {
+            guard target.exists else { return false }
+            let frame = target.frame
+            let bounds = row.frame.intersection(app.frame)
+            return !frame.isEmpty && bounds.contains(CGPoint(x:frame.midX,y:frame.midY))
+        }
         for _ in 0..<6 {
-            if target.isHittable { break }
+            if isVisible() { break }
             if language == "ar" { row.swipeRight() } else { row.swipeLeft() }
         }
         for _ in 0..<6 {
-            if target.isHittable { break }
+            if isVisible() { break }
             if language == "ar" { row.swipeLeft() } else { row.swipeRight() }
         }
+        XCTAssertTrue(isVisible(), "Editor tool must be scrolled into view: \(tool)")
         tap(target)
         XCTAssertTrue(e("editor.stage").exists)
     }

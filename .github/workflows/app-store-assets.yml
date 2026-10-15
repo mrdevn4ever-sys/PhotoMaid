@@ -41,8 +41,35 @@ jobs:
           assert requested and len(requested)==len(set(requested)) and all(x in available for x in requested)
           with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('locales='+json.dumps(requested)+'\n')
           PY
+  build:
+    name: Gemeinsamer Simulator-Testbuild
+    runs-on: macos-26
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Simulator-Testbuild kompilieren
+        run: |
+          set -euo pipefail
+          scripts/ci/select_xcode.sh
+          command -v xcodegen >/dev/null || brew install xcodegen
+          xcodegen generate
+          xcodebuild -version > "$RUNNER_TEMP/store-xcode.txt"
+          xcodebuild -project PhotoMaid.xcodeproj -scheme PhotoMaid \
+            -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/store-build" \
+            -enableCodeCoverage NO CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_REQUIRED=YES \
+            -skipPackagePluginValidation -skipMacroValidation build-for-testing > "$RUNNER_TEMP/store-build.log" 2>&1 || { tail -100 "$RUNNER_TEMP/store-build.log"; exit 1; }
+          # Tar preserves executable permissions and framework symlinks across artifact transfer.
+          COPYFILE_DISABLE=1 tar -czf "$RUNNER_TEMP/store-build.tar.gz" -C "$RUNNER_TEMP/store-build" Build/Products
+      - uses: actions/upload-artifact@v4
+        with:
+          name: store-capture-build
+          path: |
+            ${{ runner.temp }}/store-build.tar.gz
+            ${{ runner.temp }}/store-xcode.txt
+            ${{ runner.temp }}/store-build.log
+          if-no-files-found: error
   capture:
-    needs: plan
+    needs: [plan, build]
     name: Dark Mode – ${{ matrix.locale }}
     runs-on: macos-26
     timeout-minutes: 90
@@ -83,15 +110,20 @@ jobs:
           xcrun simctl ui "$udid" appearance dark
           xcrun simctl status_bar "$udid" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
           find app-store/media -maxdepth 1 -name '*.jpg' -print0 | sort -z | xargs -0 xcrun simctl addmedia "$udid"
-      - name: Testbuild kompilieren
+      - uses: actions/download-artifact@v4
+        with:
+          name: store-capture-build
+          path: ${{ runner.temp }}/shared-store-build
+      - name: Gemeinsamen Testbuild installieren
         env:
           UDID: ${{ steps.sim.outputs.udid }}
         run: |
-          set -o pipefail
-          xcodebuild -project PhotoMaid.xcodeproj -scheme PhotoMaid -destination "id=$UDID" \
-            -derivedDataPath "$RUNNER_TEMP/store-build" -enableCodeCoverage NO \
-            CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_REQUIRED=YES \
-            -skipPackagePluginValidation -skipMacroValidation build-for-testing > "$RUNNER_TEMP/store-build.log" 2>&1 || { tail -100 "$RUNNER_TEMP/store-build.log"; exit 1; }
+          set -euo pipefail
+          xcodebuild -version > "$RUNNER_TEMP/capture-xcode.txt"
+          diff -u "$RUNNER_TEMP/shared-store-build/store-xcode.txt" "$RUNNER_TEMP/capture-xcode.txt"
+          mkdir -p "$RUNNER_TEMP/store-build"
+          tar -xzf "$RUNNER_TEMP/shared-store-build/store-build.tar.gz" -C "$RUNNER_TEMP/store-build"
+          cp "$RUNNER_TEMP/shared-store-build/store-build.log" "$RUNNER_TEMP/store-build.log"
           xcrun simctl install "$UDID" "$RUNNER_TEMP/store-build/Build/Products/Debug-iphonesimulator/PhotoMaid.app"
           xcrun simctl privacy "$UDID" grant photos com.mrdevn4ever.photomaid
       - name: Echte Dark-Mode-Seiten und Vorschauen aufnehmen
@@ -126,6 +158,7 @@ jobs:
             ${{ runner.temp }}/store-capture/*.json
             ${{ runner.temp }}/store-capture/*.log
             ${{ runner.temp }}/store-build.log
+            !${{ runner.temp }}/store-capture/diagnostics/**/*.mp4
           if-no-files-found: warn
       - name: Simulator entfernen
         if: always() && steps.sim.outputs.udid != ''
