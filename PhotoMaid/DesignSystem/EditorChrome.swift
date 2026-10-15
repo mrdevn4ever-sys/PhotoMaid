@@ -147,7 +147,7 @@ struct ZoomableStage<Content: View>: View {
             .simultaneousGesture(MagnifyGesture()
                 .onChanged { v in zoom = min(8, max(1, base * v.magnification)) }
                 .onEnded { _ in base = zoom; if zoom <= 1.01 { reset() } })
-            .simultaneousGesture(TwoFingerStagePan(changed: { translation in
+            .gesture(TwoFingerStagePan(changed: { translation in
                 guard zoom > 1.01 else { return }
                 pan = CGSize(width: panBase.width + translation.width, height: panBase.height + translation.height)
             }, ended: { panBase = pan }))
@@ -170,18 +170,28 @@ struct TwoFingerStagePan: UIGestureRecognizerRepresentable {
         recognizer.minimumNumberOfTouches = 2
         recognizer.maximumNumberOfTouches = 2
         recognizer.cancelsTouchesInView = false
+        recognizer.delegate = context.coordinator
         return recognizer
     }
+
+    func makeCoordinator(converter: CoordinateSpaceConverter) -> Coordinator { Coordinator() }
 
     func handleUIGestureRecognizerAction(_ recognizer: UIPanGestureRecognizer, context: Context) {
         switch recognizer.state {
         case .began, .changed:
-            let translation = recognizer.translation(in: recognizer.view)
+            guard let translation = context.converter.translation(in: .local) else { return }
             changed(CGSize(width: translation.x, height: translation.y))
         case .ended, .cancelled, .failed:
             ended()
         default:
             break
+        }
+    }
+
+    final class Coordinator: NSObject, UIGestureRecognizerDelegate {
+        func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                               shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+            true // Two-finger panning and pinching may update the viewport together.
         }
     }
 }
