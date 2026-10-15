@@ -71,6 +71,17 @@ und wiederhergestellt. `qa_case=all` schließt diese Tests in die regulären QA-
 Bei einem privaten Repository müssen Actions-Abrechnung und Ausgabenlimit freigegeben sein;
 die Sichtbarkeit wird vom Workflow nicht verändert.
 
+`qa_case=editor` mit `ui_phase=fixtures` führt gezielt
+`ScreenshotTests/testZoomedPhotoMarkupAndUndo` aus: echter Pinch, anschließend Zeichnen bei Zoom,
+Rückgängig/Wiederholen und Rückkehr zum Gesamtbild mit Screenshots. Die Prüfung wartet auf die
+aktuelle Vorschau und vergleicht die tatsächlich sichtbaren roten Strichpixel. `qa_case=all` enthält
+diese Prüfung; insgesamt 14 UI-Tests einschließlich der fünf Tresor-Regressionen.
+Die CI-Parallelitätsgruppe berücksichtigt `qa_case`, damit Editor- und Tresor-Prüfung desselben Commits
+unabhängig laufen können. Ausgelassene Prüfungen sind dadurch nicht bestanden.
+`qa_case=vault-media` prüft gezielt die drei Medienfälle: Import und sichere Systemlöschungs-Ablehnung,
+Wischen/Auswahl/Wiederherstellung, Weiterblättern und Foto-/Video-Bedienung. Notizen und Dateien laufen
+mit `qa_case=vault` oder `all`.
+
 `native_capture=true` in `ci.yml` startet ausschließlich die wiederverwendbare Simulator-Screenshot-Diagnose
 aus `simulator-screenshot.yml`: öffentliche Menüfunktion „Device › Trigger Screenshot“, Vorher-/Nachher-PNG
 und Log. Kein App-Build und keine App-Abnahme. Der Aufruf über `ci.yml` funktioniert auch, solange GitHub den

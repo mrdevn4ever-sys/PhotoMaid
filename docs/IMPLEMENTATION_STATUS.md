@@ -4,6 +4,12 @@ Stand: 15.10.2026 · Branch `claude/fixes-analysis-library-vault-20261014` · Bu
 
 ## Tresor-Betrachter und Zeichnen bei Zoom (15.10.2026, nach Build 8)
 
+**Abgeschlossen: Alle 14 QA-Testfälle sind nach gezielter Wiederholung bestanden.**
+Letzter Code-Stand `89f3552`: [CI `38708113112`](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38708113112)
+vollständig PASS (394 Linux-Tests, 24 native iOS-Unit-Tests, 3 Medien-UI-Tests, kein Skip).
+Die übrigen UI-Fälle sind auf `4feaf77` belegt; die Berichte kombinieren diese Fachnachweise.
+Die fehlgeschlagenen Zwischenläufe bleiben als solche dokumentiert.
+
 Auf Nutzermeldung angeglichen: Fotos im Tresor verwenden dieselbe Zoom-/Doppeltipp-Bühne wie die normale
 Fotoansicht. Kopf- und Aktionsleiste sowie die gemeinsame Video-Steuerung haben eigenen Platz oberhalb/
 unterhalb des Mediums. Ein Tipp auf Foto/Video blendet die Leisten aus und wieder ein; VoiceOver erhält
@@ -17,24 +23,105 @@ Auch Text/Sticker im Videoeditor lassen sich bei Zoom bewegen; abgebrochene Gest
 Rückgängig-Gruppe. Zoom verändert weder Rezept noch Export. Vergrößerte Vorschauen werden auf die
 Bühne begrenzt und überdecken keine Werkzeuge.
 
+Ein zweiter Fehler wurde in den Simulatorbildern sichtbar: Ein noch laufender Vorschauauftrag konnte
+einen bereits rückgängig gemachten Strich verspätet anzeigen. Jede neue Vorschauanfrage entwertet
+jetzt ältere Ergebnisse sofort. Der Editor zeigt die laufende Verarbeitung an; die Kopfknöpfe behalten
+dabei ihre Position. Wechsel zwischen Werkzeugen mit gleichem Vorschaurezept rendern nicht erneut.
+
 Neue Screenshot-Regressionen: `testZoomedPhotoMarkupAndUndo` (tatsächlicher Zoom, keine Änderung durch
-Pinch, Zeichnen bei Zoom, genau ein Rückgängig-Schritt, Wiederholen, Gesamtbild) und
+Pinch, Zeichnen bei Zoom, genau ein Rückgängig-Schritt, Wiederholen, Gesamtbild; zusätzlich tatsächliche
+rote Bildpunkte nach Zeichnen, Rückgängig und Wiederholen) und
 `test12ViewerControlsPhotoZoomAndVideo` (Leisten außerhalb der Medien, Ein-/Ausblenden, Doppeltipp,
 Abspielen/Pause, unveränderte Medienzahl). Sie gehören zum vorhandenen QA-Durchlauf.
 
 | Prüfung dieses Nachtrags | Status | Beleg |
 |---|---|---|
 | Linux-Kern, Swift 6.4.1 | PASS | 394 Tests in 44 Suites; `/workspace/viewer-zoom-core-test.log` |
-| Texte / Generator / `--check` | PASS | 3 neue Bedienhinweise/-aktionen in allen 16 Sprachen; 1571 verwendete Kennungen / 2558 Einträge |
+| Texte / Generator / `--check` | PASS | 4 neue Bedienhinweise/-aktionen in allen 16 Sprachen; 1572 verwendete Kennungen / 2559 Einträge |
 | Swift-6-Syntax / Patchprüfung | PASS | Geänderte iOS-Dateien und UI-Tests mit `swiftc -frontend -parse`; keine iOS-Typprüfung |
-| iOS-Build / Unit-Tests / neue UI-Regressionen | NOT RUN | CI-Lauf auf diesem Nachtrag folgt; Repository wieder öffentlich |
+| iOS-Build / Unit-Tests | PASS | `89f3552`, `38708113112`: Build, 13 XCTest + 11 Swift-Testing-Tests; 394 Linux-Tests in CI grün |
+| Zeichnen bei Zoom / Vorschau / Rückgängig | PASS | [`38702261222`](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38702261222), `4feaf77`: 1 UI-Test, 0 FAIL / 0 SKIP; echte Strichpixel und Rückzoom 100 %, alle 17 unterschiedlichen PNGs angesehen |
+| Tresor-Betrachter Foto/Video | PASS | Erneut `38708113112`, `test11` / `test12`; `vault_delete_viewer_next_item`, `vault_delete_photo_controls_hidden`, `vault_delete_photo_double_tap_zoom`, `vault_delete_video_controls_hidden`, `vault_delete_video_paused`, `vault_delete_viewer_media_preserved` |
+| Tresor-Notizen / Dateien: Wischen, Auswahl, Abbrechen, Wiederherstellen | PASS | `38702264616` und `38702267912`, `test20` / `test30`; `vault_delete_notes_bulk_cancelled`, `vault_delete_notes_restored`, `vault_delete_files_bulk_cancelled`, `vault_delete_files_restored`; ungewählter Eintrag bleibt erhalten |
+| Alle 14 QA-Testfälle nach Wiederholungen | PASS | `38702267912`: 13 PASS / 1 FAIL / 0 SKIP; der einzige Fehler anschließend in `38708113112` behoben und bestanden. Keine Behauptung eines grünen Gesamtlaufs auf dem Zwischenstand |
+| Medien-Wischen / Auswahl | PASS | `89f3552`, `38708113112`, `test10`: Foto und Video wischen, Abbrechen erhält Inhalt, vier Medien auswählen/abbrechen/verschieben/wiederherstellen; `vault_delete_media_swipe_confirmation`, `vault_delete_media_bulk_cancelled`, `vault_delete_media_bulk_confirmed`, `vault_delete_photos_and_videos_restored` |
 
-Geplante Screenshot-Namen: `editor_05_zoomed_no_edit`, `editor_06_stroke_at_zoom`,
+Nachprüfung auf `802b0b3`: iOS-Build und 24 Unit-Tests bestanden. Der erste QA-Lauf
+[`38691761679`](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38691761679) ergab 7 PASS / 7 FAIL:
+Die Duplikatsuche beendete den Lauf nicht; die neue Editor-Prüfung fragte einen noch außerhalb des
+Bildschirms liegenden Werkzeugknopf ab. Im Tresor-Test war die Import-Beschriftung falsch, und der
+Dateiauswahldialog wurde noch nicht zuverlässig auf „Durchsuchen“ umgestellt. Nach „Abbrechen“
+verschwand eine Notizzeile bereits durch die native destruktive Wischrolle, vor einer Speicheränderung.
+
+`34390b6` verlegt blockierende PhotoKit-Leser vom kooperativen Swift-Ausführungspool in eine eigene
+Dispatch-Queue. Abbrechen bleibt über eine threadsichere Markierung wirksam. Der tatsächliche
+PhotoKit-Fachtest mit 159 Medien besteht danach in Lauf `38697133324`: sichtbarer Fortschritt,
+Abschluss, fünf Kopien, große Dateien und Speicherübersicht. Zwölf unterschiedliche PNGs angesehen.
+Eine zusätzliche PhotoKit-Unit-Testvariante wurde wegen fehlender Freigabe im Unit-Host übersprungen
+und wieder entfernt; sie gilt ausdrücklich nicht als Nachweis. Der echte UI-Fachtest ist der Nachweis.
+
+Notiz-/Datei-Wischaktionen warten ohne vorzeitige Zeilenentfernung auf die Bestätigung. Ihre gesamte
+Zeilenfläche ist jetzt antippbar; zuvor änderte ein Tipp auf den freien Bereich die Auswahl nicht.
+Testelemente behalten ihre Kennung statt einer veränderlichen Listenposition. Der System-Dateidialog
+wird über seine Dateizellen bedient. Die Systemlöschung wird auch bei der Beschriftung „Don’t Allow“
+ausschließlich abgebrochen. Längere QA-Videos ermöglichen die Prüfung von Abspielen und Pause vor
+Videoende. Dies verändert keine Produktionsmedien.
+
+Im Medienraster konkurrierte die SwiftUI-Wischgeste am Button mit dessen Antippen und der Scrollansicht:
+Die Bestätigung erschien nicht, stattdessen wurde der Betrachter angestoßen. `89f3552` bindet eine native
+linke Wischgeste ein; sie kooperiert mit dem Scrollen und ist im Auswahlmodus deaktiviert. Die
+Bestätigung und der Speicherweg bleiben gemeinsam. Die drei Medienfälle bestehen danach vollständig.
+Alle 68 unterschiedlichen PNGs aus `38708113112` wurden angesehen; der Abgleich mit den originalen
+`.xcresult`-Payloads zeigt keine fehlenden Bilder. Logs und Ergebnisbündel sind heruntergeladen.
+
+Die Startprüfung `38692373177`, ihre Wiederholung `38694627007` und der Startteil von `38697133324`
+meldeten `app-open-load-window-expired`. Ursache: `ready` wurde vor dem asynchronen Abschluss der
+Google-SDK-Initialisierung gesetzt; das viersekündige Anzeigen-Ladefenster begann zu früh. `04eef69`
+wartet auf den echten SDK-Abschluss. Lauf [`38698567816`](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38698567816)
+ist vollständig PASS: Start 1–3 ohne Anzeige, Start 4 mit Google-Testanzeige, sicher geschlossen;
+13 unterschiedliche PNGs angesehen. Keine Verlängerung des Fensters und keine Änderung an E19.
+
+Alle 79 unterschiedlichen PNGs des ersten QA-Laufs wurden angesehen. Original-`.xcresult` vollständig
+als drei Teile gesichert; Sammellauf `38695361479`. Weitere geprüfte Bilder: `38692373177` (15),
+`38694627007` (12), `38697126087` (16 Editor), `38697133324` Start (11),
+`38697129861` (81 Tresor; Original-`.xcresult` in zwei
+Teilen über Sammellauf `38701049892`). Im späteren Tresorlauf `38702264616` wurden alle 110
+unterschiedlichen PNGs angesehen und mit den Original-Payloads im `.xcresult` abgeglichen.
+Der gesamte spätere QA-Lauf `38702267912` enthält 144 unterschiedliche PNGs; alle angesehen.
+Original-`.xcresult` vollständig als zwei Teile über Sammler `38708643537` gesichert.
+Fehlgeschlagene Zwischenläufe bleiben FAIL. `38697129861`
+besteht bereits das Weiterblättern nach Löschen; seine übrigen Befunde führten zu den Korrekturen oben.
+
+Screenshot-Namen der Regressionen: `editor_05_zoomed_no_edit`, `editor_06_stroke_at_zoom`,
 `editor_07_zoomed_stroke_undone`, `editor_08_zoomed_stroke_redone`,
 `editor_09_full_image_stroke_alignment`, `vault_delete_photo_controls_hidden`,
 `vault_delete_photo_double_tap_zoom`, `vault_delete_video_controls_hidden`,
-`vault_delete_viewer_media_preserved`. Erst nach erfolgreichem Simulator-Lauf sind dies PASS-Belege.
+`vault_delete_viewer_media_preserved`. Editorlauf und abschließende Medien-Wiederholung sind
+vollständig PASS. Alle 14 unterschiedlichen QA-Fälle sind damit fachlich belegt; Notizen und Dateien
+wurden im vorausgehenden Gesamtlauf bestanden.
 Build 8 enthält diesen Nachtrag noch nicht; kein neuer TestFlight-Upload. E1–E19 unverändert.
+
+Commits der drei Nachträge nach Build 8 (auf dem genannten Branch gepusht):
+
+| Commit | Änderung |
+|---|---|
+| `ff6add0` | Tresorinhalte per Wischen und sichtbarer Auswahl löschen |
+| `fedf05d` | Tresor-Regression und blockierte iOS-Prüfung dokumentieren |
+| `a52b8c4` | Duplikatsuche für vollständige Medien und iCloud öffnen |
+| `7be7448` | Unvollständige Dateiquellen und Duplikat-Prüfstatus festhalten |
+| `10351ad` | Tresoransicht angleichen und Zeichnen bei Zoom erlauben |
+| `802b0b3` | Zwei-Finger-Geste über die UIKit-Schnittstelle anbinden |
+| `34390b6` | Duplikat-Leser entkoppeln und Tresor-Abbruch erhalten |
+| `3a7342f` | Fotozugriff vor der PhotoKit-Regression erlauben |
+| `04eef69` | Werbe-SDK vor dem Anzeigen-Ladefenster initialisieren |
+| `65db7cb` | PhotoKit-Zugriff nach Installation und vollständigen Rückzoom prüfen |
+| `4feaf77` | Vorschau nach Rückgängig und volle Tresor-Zeilen korrigieren |
+| `89f3552` | Medien-Wischgeste im Tresor mit dem Raster abstimmen |
+
+Die zusätzliche PhotoKit-Unit-Testvariante aus den Zwischenständen ist im endgültigen Stand wieder
+entfernt; sie war wegen der Unit-Host-Berechtigung nicht aussagekräftig. Keine Prüfung wird durch Skip
+grün gerechnet. Die Laufberichte und Bilder dokumentieren sowohl Fehlschläge als auch Wiederholungen.
+
 
 ## Duplikate: alle Ressourcen und ausdrücklich gewählte iCloud-Originale (15.10.2026, nach Build 8)
 
@@ -72,11 +159,13 @@ eine vollständige Prüfung verhindern; diese Lücken bleiben sichtbar. Kein aut
 | Linux-Kern, Swift 6.4.1 | PASS | 394 Tests in 44 Suites; 13 neue Regressionen für vollständige Ressourcen, unvollständige Streams, Fehler, Abbruch, Fortschritt und unbekannte Dateigrößen |
 | Texte / Generator / `--check` | PASS | 7 neue Texte in allen 16 Sprachen; 1568 verwendete Kennungen / 2555 Einträge |
 | Swift-6-Syntax / Patchprüfung | PASS | Geänderte iOS-Dateien und Screenshot-Tests mit `swiftc -frontend -parse`; keine iOS-Typprüfung |
-| iOS-Build / Unit-Tests / QA-Screenshots | BLOCKED | [CI `38689505928`](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38689505928) auf `a52b8c4`: beide Jobs vor dem Runner-Start durch GitHubs Zahlung/Ausgabenlimit blockiert; keine neuen Bilder |
+| iOS-Build / Unit-Tests | PASS | Nach Freigabe der öffentlichen Runner auf `4feaf77`: Build und 24 native Unit-Tests bestanden |
+| PhotoKit, Duplikate / große Dateien / Speicher | PASS | Fachtest 50 in `38697133324`, 159 Medien / 5 Kopien, Exitcode 0; 12 unterschiedliche PNGs geprüft. Gesamtworkflow wegen des separaten Starttests FAIL; dessen spätere Korrektur ist oben belegt |
 | Echte iCloud-Mediathek / 30.000 Originale | NOT RUN | Echtes iPhone mit iCloud und entsprechender Mediathek nötig |
 
 Screenshot-Regression ergänzt um `09a_duplicates_all_resources_and_cloud_option` und den echten Abschluss
-der Suche. Die UI-Prüfung muss nach Freigabe der Actions-Abrechnung nachgeholt werden. Build 8 enthält
+der Suche. Die ursprüngliche Blockade `38689505928` durch GitHub-Abrechnung wurde durch die wieder öffentliche
+Repository-Sichtbarkeit aufgehoben; nachträglicher echter PhotoKit-Nachweis siehe Tabelle. Build 8 enthält
 auch diesen Nachtrag noch nicht; kein neuer TestFlight-Upload gestartet. E1–E19 unverändert.
 
 ## Tresor: Löschen per Wischen und Auswahl (15.10.2026, nach Build 8)
@@ -98,10 +187,11 @@ abgebrochen. Jeder Schritt speichert einen Screenshot. Gezielt startbar mit
 
 | Prüfung dieses Nachtrags | Status | Beleg |
 |---|---|---|
-| Linux-Kern, Swift 6.4.1 | PASS | Lokal `swift test`: 381 Tests in 43 Suites, keine Fehler |
+| Linux-Kern, Swift 6.4.1 | PASS | Anfangs 381 Tests in 43 Suites; aktueller Abschluss `38708113112`: 394 Tests in 44 Suites, keine Fehler |
 | Swift-6-Syntax der geänderten Ansichten und UI-Tests | PASS | `swiftc -frontend -parse -swift-version 6`; keine iOS-Typprüfung |
 | Sprachen / Generator / Workflow-YAML / Shell-Syntax | PASS | 16 Sprachen, 1563 benutzte Kennungen / 2548 Einträge; vorhandene Texte wiederverwendet |
-| iOS-Build, iOS-Unit-Tests und neue Tresor-UI-Tests | BLOCKED | [Lauf `38686490824`](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38686490824): beide Jobs vor Runner-Start durch GitHub-Abrechnung/Ausgabenlimit blockiert; Repository inzwischen privat. Keine neuen Simulator-Screenshots |
+| iOS-Build / Unit-Tests | PASS | `89f3552`: Build und 24 native Unit-Tests bestanden; Repository wieder öffentlich |
+| Alle fünf Tresor-UI-Testfälle nach Wiederholungen | PASS | `38702267912`: Notizen, Dateien und beide Betrachterfälle bestanden. `38708113112` auf `89f3552`: Medien-Wischen/Auswahl und beide Betrachterfälle 3 PASS / 0 FAIL / 0 SKIP; alle 68 PNGs geprüft |
 
 Implementierung: `ff6add0`, anschließend Ergänzung der Betrachter-Regression und dieses Prüfstatus.
 Build 8 enthält diesen nachträglichen Fix noch nicht. Kein weiterer TestFlight-Lauf gestartet.
