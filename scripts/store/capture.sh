@@ -35,6 +35,10 @@ xcrun xcresulttool get test-results summary --path "$out/capture.xcresult" > "$o
 xcrun xcresulttool get test-results tests --path "$out/capture.xcresult" > "$out/tests.json" || true
 xcrun simctl spawn "$udid" log show --last 90m --style compact --predicate 'process == "PhotoMaid"' > "$out/app.log" || true
 if [ "$status" != 0 ]; then
+  mkdir -p "$out/diagnostics/crashes"
+  for report in "$HOME/Library/Logs/DiagnosticReports"/PhotoMaid*.ips; do
+    [ ! -f "$report" ] || cp "$report" "$out/diagnostics/crashes/"
+  done
   xcrun xcresulttool export attachments --path "$out/capture.xcresult" --output-path "$out/diagnostics" || true
   tail -100 "$out/tests.log"
 fi

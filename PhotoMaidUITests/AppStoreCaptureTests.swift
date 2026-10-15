@@ -184,6 +184,7 @@ final class AppStoreCaptureTests: XCTestCase {
         tap(button("info")); snap("viewer-info"); tap(button("done"))
         tap(button("org_add_to_album")); snap("viewer-album-picker"); tap(button("cancel"))
         launch("slideshow")
+        app.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.5)).tap()
         tap(button("slideshow_settings")); snap("slideshow-settings"); tap(button("done"))
         launch("workflows")
         tap(button("wf_new")); snap("workflow-editor"); tap(button("cancel"))
