@@ -1,0 +1,986 @@
+[
+  {
+    "file": "03-photos/album.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "bb067edc4018c4a8e3b371b20529d32dd1af98c640c4c4517b3dc65cc452615c"
+  },
+  {
+    "file": "03-photos/albums.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "5b8dd9119c542b0dbd10c9f6f3f11a7f90af5d6a7ddedf9e39ffe51840edca8e"
+  },
+  {
+    "file": "05-studio/archive-bottom.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "783a014fa50aa4d6e8cc07f602b369cce2583695881b980bfbc5d5472f87128e"
+  },
+  {
+    "file": "05-studio/archive.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "aaed681d506b015becfbe4ba7e23cb5b6f0250a658341ea156c6d7116915a3b2"
+  },
+  {
+    "file": "07-settings/backup-bottom.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "0c3cf4bd2e6503f42153f9f90d92692396db726450f86847658d8f76ca42fab9"
+  },
+  {
+    "file": "07-settings/backup.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "0c3cf4bd2e6503f42153f9f90d92692396db726450f86847658d8f76ca42fab9"
+  },
+  {
+    "file": "04-cleanup/blurry-progress.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "57c1709ab5e52ee0c59b64b22b8c95af50457ecfe0dadc5cbfbaee5b3adb03fb"
+  },
+  {
+    "file": "04-cleanup/blurry-results-grid.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "e7798e7cbe46f86a2046c292fafcb09d1236f0ba817635223f34ae2c61a19462"
+  },
+  {
+    "file": "04-cleanup/blurry-results.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "2c6b02a5964089fe81545d01fd00700ee39ef92971959ea21914810c09d15264"
+  },
+  {
+    "file": "04-cleanup/blurry.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "12b0989bdac0d6ebaac64f0c9aaecb6e8a8545c466ac188e3d5b35c595920241"
+  },
+  {
+    "file": "04-cleanup/categories-progress.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "090034e17094aec9ff78c61ec8107d21cee02b39b048a608c7acbb4b3591f955"
+  },
+  {
+    "file": "04-cleanup/categories-results-grid.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "e427f1e244b5474a2e8246cc0b7d3ba3e8df2dde40ac474d63a43fd7ca75e563"
+  },
+  {
+    "file": "04-cleanup/categories-results.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "9a9506ea60d0574dc9b2e1bdbe2a48e687f49f7762dff7c098c704406472ced9"
+  },
+  {
+    "file": "04-cleanup/categories.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "ce6acfbf11e1ce574f22afdfceeabecbc19560395f7f46bffde8178bc1beb193"
+  },
+  {
+    "file": "04-cleanup/cleanup-bottom.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "a8e44d595cd4eb4fb259e97c65b97f17c82642e59c67435f6c39c6b44afcaae5"
+  },
+  {
+    "file": "04-cleanup/cleanup.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "6aa6060b4a2ee25890289ac7a3dda17d61ff34488a8b080dc0d0c99108c91106"
+  },
+  {
+    "file": "05-studio/collage-save-options.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "c7a5193c5accc17c205cdaf4f4960a69c1b0a72a90c477c9449c207cb2b6303d"
+  },
+  {
+    "file": "05-studio/collage.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "b2dfd914ecbb6d0386778754beec3c8cb24b239b28216fb238a72d954b3cb332"
+  },
+  {
+    "file": "04-cleanup/collections-bottom.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "71370a0276e226ed4981bfc40ed1203d5c57e7463e2ade5e8f4a6d4e03543744"
+  },
+  {
+    "file": "04-cleanup/collections.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "8537d58cc4158b73a254ce21dd8317daac9e28e2cbab41754a7721f3d7dd7208"
+  },
+  {
+    "file": "07-settings/controls-bottom.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "facf8ca1d09c672981c085bc7201f9906e8e6ad3eb05cc2704a491e3faa71571"
+  },
+  {
+    "file": "07-settings/controls.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "6253971e3906684e30a6053bda86219ca20acddaafa76975b092ace0ed07f3ec"
+  },
+  {
+    "file": "04-cleanup/documents-progress.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "08b0493c46579e17b7b24b01498e8486b154fd93ca15df9b411b82c5595a4b17"
+  },
+  {
+    "file": "04-cleanup/documents-results-grid.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "1f7fdfbbdec0936a696ea4ab9b00704d7e28634a3231379353c5cc95187b781f"
+  },
+  {
+    "file": "04-cleanup/documents-results.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "aeac86bc260fdbd9b195603e5ea21c9001f75bd7b70f51de378e239034945095"
+  },
+  {
+    "file": "04-cleanup/documents.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "ec5c5819066553fac38e740424b09fbbc501c1273ac1f6da9d8e20b815b8381b"
+  },
+  {
+    "file": "04-cleanup/duplicates.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "e02a81456f1219d5a6670f6c68157ff525dbef895ad0143bf6988e18f5368c4e"
+  },
+  {
+    "file": "05-studio/editor-adjust.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "76ac4f67485475cb1cadb37058beeb8c4d5724784c2b496c066fa29b5a60add1"
+  },
+  {
+    "file": "05-studio/editor-crop.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "4d015c16b97bd5e05bea06856c17053e966db46513c62a4ea8803bbcf3644b39"
+  },
+  {
+    "file": "05-studio/editor-filter.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "ba1791ad914c99b625db4c1c7e9992641a4681afed9bc70f4217b0b3c42a897e"
+  },
+  {
+    "file": "05-studio/editor-frame.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "949d5d7b49d206c6f84e48832af787aae5cae162f6d0a292387d7d0fe8a06919"
+  },
+  {
+    "file": "05-studio/editor-markup.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "06c349e62be67efc92bcaadffc39be2c2cade7a7c91c96b0229831cebdaebd6c"
+  },
+  {
+    "file": "05-studio/editor-resize.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "c245249ab44c4acb2f230d3af2844ae0203cb05b960c7293eda408cd3b01b21e"
+  },
+  {
+    "file": "05-studio/editor-retouch.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "d3bc2e234885e5c5ed406322415896b64dca0d318861d00ce66d97a335c0b1a2"
+  },
+  {
+    "file": "05-studio/editor-save-options.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "fc30442d10ea686d22c56a4eca7a720ce8c5f7acf87e2e095c826da84cbd9a7e"
+  },
+  {
+    "file": "05-studio/editor.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "76ac4f67485475cb1cadb37058beeb8c4d5724784c2b496c066fa29b5a60add1"
+  },
+  {
+    "file": "05-studio/edits.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "a553898397d90807be3c6da6598e0f75e30e36055cb00c7e5a713ad15f9a1340"
+  },
+  {
+    "file": "07-settings/excluded-albums.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "403317b4095d6165aa7fba40a5c8f500d3ac7f3eefcf9e6ed8e7be2dca9eb721"
+  },
+  {
+    "file": "03-photos/favorites.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "201359fa31cfc4ac470e631a1f4b769c7006834beded0716c935b97602cca916"
+  },
+  {
+    "file": "02-today-and-review/feed-gesture-guide.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "c98e16fbc9f1682beb8350cc1d59cdffc9081b99db58f2d0806a4bfa4b97237e"
+  },
+  {
+    "file": "02-today-and-review/feed-later.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "29f875e28feec2ce00c68f60e374cfa99b92cb99799c0a3973e8d7ee4b47979a"
+  },
+  {
+    "file": "02-today-and-review/feed-menu.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "035e2d9289342b60f010dea98a0d85fbed21a6b75c7ab3148fec16092b75cc7b"
+  },
+  {
+    "file": "02-today-and-review/feed.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "060f1a5b927746328f6bd878c3a3ae8c0df29b6bcf5708529f0d87cf43b049aa"
+  },
+  {
+    "file": "04-cleanup/files.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "95f433f6414a5acaf52ae8976c822cbbb13e22e1c4873f466031dc60b7bb1fb1"
+  },
+  {
+    "file": "03-photos/grid.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "38d41ff6ffc3b9da14507bf0caa007823cd8c009f487952c21d3d3a9ed25d0ce"
+  },
+  {
+    "file": "07-settings/help-bottom.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "5863ea60e08e3f7e823b2c9cba4bd1e091f95e5bcdcd1fe1220b113fa248a54e"
+  },
+  {
+    "file": "07-settings/help.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "5863ea60e08e3f7e823b2c9cba4bd1e091f95e5bcdcd1fe1220b113fa248a54e"
+  },
+  {
+    "file": "03-photos/hidden.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "d8e48d0a3201da10497b99901ce7b08194916cb822d0abbab4378171d7223b84"
+  },
+  {
+    "file": "08-history/history.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "b12647d1612c6f6bc160f340f2e87702ca2e5d530c53b4f0e8227a9cf4a49a66"
+  },
+  {
+    "file": "01-introduction/introduction-01.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "33140e96f539b19ea7bb60c268de43a17f63c7d1390e4ccabdb453154144c131"
+  },
+  {
+    "file": "01-introduction/introduction-02.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "30dc4ee6d96d672fb7c16ef6f9eeead3e419981f0c4fd1cb2db5bbe2d709468e"
+  },
+  {
+    "file": "01-introduction/introduction-03.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "c7da3fac539e35b1b635658fbb077382e87ae8c79d1120f82d71f87cd38e419a"
+  },
+  {
+    "file": "01-introduction/introduction-04.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "c41212934e7ea3c5338e758df875caffd8c47609330e3a42abbe9fb0066a5cd4"
+  },
+  {
+    "file": "01-introduction/introduction-05.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "cc5cec3d2056bf5513ea8e15bfec3cfa0994b0b7e5b51bdd9aedd50efb0f3a97"
+  },
+  {
+    "file": "04-cleanup/large-files.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "8450a4b10a00d8b07df12ec8a66f86815cbb2fbf46aa81ad6aa0325ff97221b3"
+  },
+  {
+    "file": "04-cleanup/later.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "f819cd0d18dc393b2aaac47cc81c6009a0bee3fd2bd6f5435836dc0c5d6425c3"
+  },
+  {
+    "file": "03-photos/library-favorites.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "994712ef6a6ef0b41ba8c6f592f920330e709bac030a312fe92b6126e532dddd"
+  },
+  {
+    "file": "03-photos/library-photos.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "45548dc62a71beedf7798d56fdea7cc0390b4c179e498951802f23d94bbcf114"
+  },
+  {
+    "file": "03-photos/library-screenshots.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "8867b4ceb2c41a689b22315aa4342d4a898aff7092ddbb99bbb22bf9babface6"
+  },
+  {
+    "file": "03-photos/library-videos.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "56c783884047a2c4058f1a46a8a97c7293960b9eb9b5cc3a53b1c2b27796cc4b"
+  },
+  {
+    "file": "03-photos/library.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "414da7116e2eef35a263ac8caea3a8a914763bf76d4cb2a8674ce4024557ee49"
+  },
+  {
+    "file": "04-cleanup/months.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "5015e5045fc5a367bd09ed89449b6aae5ac82e504e9ea76ced766a8091caf053"
+  },
+  {
+    "file": "05-studio/movie-bottom.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "825cc71b5bc5f7dd960347bd5a56e2039768323763020a111252f32c47230ba9"
+  },
+  {
+    "file": "05-studio/movie.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "5c2f02c47ca0cdc8887dcb89730f47a85cdd2a0b6d3c5af96f7da4de6c5fe843"
+  },
+  {
+    "file": "05-studio/pdf-bottom.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "2aec9aef1966f3d0a02730a50e76f4f124e86d019c93f2f3bc7a06a54385f01a"
+  },
+  {
+    "file": "05-studio/pdf-studio.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "f77a270af5205623296698338e1e71d3015553db688eadcb2e5aa867faea4753"
+  },
+  {
+    "file": "05-studio/pdf.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "2aec9aef1966f3d0a02730a50e76f4f124e86d019c93f2f3bc7a06a54385f01a"
+  },
+  {
+    "file": "07-settings/privacy-bottom.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "caab7c0708db32e389c517c36c01ae31f0340a7b8d0c4702c012f2eb3017c15f"
+  },
+  {
+    "file": "07-settings/privacy.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "c739fb8d8802550a38a497ab39b4ee8ccb0c53633e2944bf48071480320edb14"
+  },
+  {
+    "file": "07-settings/pro-bottom.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "17b029d8359fa07a592ec90a4dc5b09a836c17acf86d36b65706e1774c8e33e4"
+  },
+  {
+    "file": "07-settings/pro.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "24f842e15a97502766f0bf016748a9f88a778c1f3bfd9148c2b19a439f7fea27"
+  },
+  {
+    "file": "05-studio/received.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "1ca49c3d7eb41ac56182b996d78808a96ce6a09f57ac2c662d0d1fe0faf35921"
+  },
+  {
+    "file": "03-photos/search.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "b2b8f93730081f732d4f0bb15876b0d3fb2371795091c9d7a860fc6050643564"
+  },
+  {
+    "file": "03-photos/selection.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "9e0403fd53957fbb747897206a332b8ce1a0b85884fb457ecd44099756345601"
+  },
+  {
+    "file": "04-cleanup/series.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "e879cfb6cf705176ef7ea048919538baa1b3a25ff86ab8c6f1f32577024365a9"
+  },
+  {
+    "file": "07-settings/settings-bottom.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "aaa4f48223788e5d699683025a7ad881b864a6ae9b2c075f151a7958617c5ef3"
+  },
+  {
+    "file": "07-settings/settings.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "aade68d91ce52b73708bff34e91024b46e1caa7a0b03a33604be1bd627936452"
+  },
+  {
+    "file": "04-cleanup/similar-progress.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "b9f37332bcc16367721a1869e7488f6cb3864b7d49181c48c6205aafed092b02"
+  },
+  {
+    "file": "04-cleanup/similar-results-grid.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "309ce510fed3c1e267febea9c3ed7cc4df5a5f07d7ac55bf5e07b9f86be16a83"
+  },
+  {
+    "file": "04-cleanup/similar-results.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "aa4a5047bd615cedb686b62a7c624e10f5dca9f5707431f940b0a5480a98caae"
+  },
+  {
+    "file": "04-cleanup/similar.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "70a1bcaae497741c0a327d5fe82f9a575f019a3a804dfcce0a9343636c9b95e2"
+  },
+  {
+    "file": "03-photos/slideshow-settings.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "be063ca11e28fb99e394d78ef928aae8c54a443b3b02f0b593f486305cbdd30d"
+  },
+  {
+    "file": "03-photos/slideshow.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "05697238dda598a88b5cc21f82a729c4c6c53aad6eda17a605413343ce64689e"
+  },
+  {
+    "file": "04-cleanup/storage-bottom.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "86b85838fbd2dedb332d0033e5e2f91e72279aa77788ca6482bbd2de8eaae968"
+  },
+  {
+    "file": "04-cleanup/storage.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "66848cfd57a636b72257dcb9b7c87f7838c429d39e992dea4b777a92942a07a4"
+  },
+  {
+    "file": "05-studio/studio-bottom.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "787a17ea8694cff4a8987a930c921372f6f3c15f484f32b194aa906c16f3f14a"
+  },
+  {
+    "file": "05-studio/studio.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "34b82055fc9b0e3a3baf8f25749b9415cf3e61e872c50df620d20b7dabba8ee7"
+  },
+  {
+    "file": "03-photos/tags.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "8ee0965e7d7d5d681fa40825a28c988e8a4459dc1454a6df3198bee3d3800d3e"
+  },
+  {
+    "file": "02-today-and-review/today.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "4d2fcd58c08c3acc21c546c529b2ef1945d4199d98d7f41d3e4bf6eaa7ca01ef"
+  },
+  {
+    "file": "05-studio/tools-batchEdit-bottom.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "27c193454702948abec8610190120f4675f3ae7fc09ca721b789b6fdef0df1bb"
+  },
+  {
+    "file": "05-studio/tools-batchEdit.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "e3120b01c8f9a77880152baafc152b975702924723dac5c06a0d1e3a239e1caf"
+  },
+  {
+    "file": "05-studio/tools-convert-bottom.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "815c1886499020007c186717ec98e598cde9f81869a84c1813fc54d6c2c729f5"
+  },
+  {
+    "file": "05-studio/tools-convert.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "7d515ee15f5d52bb7d314a1573d997a1ec53df4ce918ed8cafaad298a2f23851"
+  },
+  {
+    "file": "05-studio/tools-gif-bottom.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "bc123c2b6e8b6266b3d1b3a3d025a1a9ed847e44f3080aa1c8a913af3594b3c6"
+  },
+  {
+    "file": "05-studio/tools-gif.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "4630299ae1d46ccc1edca1788f6fb87da398b2478276ea25555e24057899a102"
+  },
+  {
+    "file": "05-studio/tools-removeLocation-bottom.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "045aa2f264c406a550d725098c1524214456eca152bda1ea04575ff490668f12"
+  },
+  {
+    "file": "05-studio/tools-removeLocation.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "045aa2f264c406a550d725098c1524214456eca152bda1ea04575ff490668f12"
+  },
+  {
+    "file": "05-studio/tools-resize-bottom.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "4e784c076e30c2c855ad964370109b7f965d118316f056573aa61b00471cb67b"
+  },
+  {
+    "file": "05-studio/tools-resize.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "007953cc5c6ce78818b9ab14a66ff187997794960fe925f83aa70a2b22f8c6a4"
+  },
+  {
+    "file": "05-studio/tools-stitch-bottom.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "1f3ca4084a76395942f599103ef210752b32f52d65f971d84dafce3bc2c3c5dc"
+  },
+  {
+    "file": "05-studio/tools-stitch.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "1f3ca4084a76395942f599103ef210752b32f52d65f971d84dafce3bc2c3c5dc"
+  },
+  {
+    "file": "04-cleanup/trash.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "e56033778c93faeee28e183a334f634c484787578768df97526a497bc2b0c510"
+  },
+  {
+    "file": "06-vault/vault-change-code-empty.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "cd91675a29697e8ceebfa874603771dbe7d319d1ca89263b0d9bc7bf63268ce2"
+  },
+  {
+    "file": "06-vault/vault-files.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "2b631a06c4acc0489b50ba1b5f57bb49ec0dc6761a1e73a534d8ef3207fba454"
+  },
+  {
+    "file": "06-vault/vault-media-before-details.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "eff123e48ecbded5751d0c4304c343dce951b390d016e58c59101cf536aa0d75"
+  },
+  {
+    "file": "06-vault/vault-media-picker.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "ce5807c6097a59fa69a02cd292545b32ce7ff662d2149e908285a842c31e5bb8"
+  },
+  {
+    "file": "06-vault/vault-media.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "eff123e48ecbded5751d0c4304c343dce951b390d016e58c59101cf536aa0d75"
+  },
+  {
+    "file": "06-vault/vault-note-editor.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "c7ac593dc901568651d7df36bbd00b8f191f6a4851c222bd6981ad1284f3f0c9"
+  },
+  {
+    "file": "06-vault/vault-notes-with-note.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "31ca3feeab4760fd1b55969db033043576ea4836dc4a036f2f29a51d28b6a18c"
+  },
+  {
+    "file": "06-vault/vault-notes.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "781f5e5970761f4833e1c2e71d8fefeda5fe22f78fa56ae3362f842b4d85affe"
+  },
+  {
+    "file": "06-vault/vault-settings.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "6450c5ab8dc49200e5edb72ed0c69045c6b6f8b78ebc63056a4621fc6f356ad7"
+  },
+  {
+    "file": "06-vault/vault-setup-code-empty.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "f1049ed14843244aca2a7f199fb26383e2b47188d3e0dc59013734f0fa4d7841"
+  },
+  {
+    "file": "06-vault/vault-setup-entry.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "c2a48d767212d3d32e8f6ef90cfd49fdfaf2d472ac3d9d610b20a9d242c56736"
+  },
+  {
+    "file": "06-vault/vault-setup-introduction.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "38f1a887caa06a7c07178faf52522f50f301aaa3a81fe63e89c73f0ba4fff07f"
+  },
+  {
+    "file": "06-vault/vault-tools.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "45761cf36850cdec3109cc01e470d5ce2983a9c4ed27ad4c1a694faad76208e7"
+  },
+  {
+    "file": "06-vault/vault-trash.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "7374afe270e88d96d8e4345f4dc6a68fa06858ac425ba77ead56b0e8a9e0f7a2"
+  },
+  {
+    "file": "06-vault/vault-viewer.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "ee0ac01c066e1b85966c427155b998c742113aa095f4d60cc9e32dfe9310fcca"
+  },
+  {
+    "file": "03-photos/viewer-album-picker.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "f203823cf28c2599190f148e4505929a28a76e1ec6e9a760b4aa3bcf1e9427de"
+  },
+  {
+    "file": "03-photos/viewer-info.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "9337ad4386d3db91329498378185f0f8d91e148ef03ac1881c9d7f3bbe4cd7fb"
+  },
+  {
+    "file": "03-photos/viewer.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "7e380d2b067cbd6f75d57fc0fd1b8dcae8b3ce72501a77e105ffb79bc1876092"
+  },
+  {
+    "file": "05-studio/workflow-editor.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "e787ce3e0bc57930d99ff313ea0358c84aecdd52933e6c7fbe6a2ca328452e51"
+  },
+  {
+    "file": "05-studio/workflows-bottom.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "db6732575b9c9b3e11bf4ecf2559a2f17f2ecb778e5d52c0c1f4f1090f260d39"
+  },
+  {
+    "file": "05-studio/workflows.png",
+    "locale": "es",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "db6732575b9c9b3e11bf4ecf2559a2f17f2ecb778e5d52c0c1f4f1090f260d39"
+  }
+]
