@@ -2,6 +2,52 @@
 
 Stand: 15.10.2026 · Branch `claude/fixes-analysis-library-vault-20261014` · Version 1.0, Build 9 in TestFlight; die drei Nachträge nach Build 8 sind enthalten.
 
+## App-Store-Bildsatz und lokalisierte Dark-Mode-Aufnahmen (15.10.2026, in Arbeit)
+
+Auf ausdrücklichen Wunsch werden echte App-Store-Vorschauvideos erstellt (keine App-Clip-Erweiterung):
+zuerst Seiten-Screenshots für alle 16 App-Sprachen, anschließend drei verschiedene Vorschauen je Sprache
+(Aufräumen, Studio, Tresor). Es gibt keinen weiteren TestFlight- oder App-Store-Upload in diesem Auftrag.
+
+**Bildsatz PASS:** 45 Präsentationsfotos und 10 schwierigere Motive, alle echte Hochkant-JPEGs,
+55 verschiedene SHA-256-Werte, jeweils einzeln geprüfte CC0-1.0-Lizenz.
+Dateien, Urheber, Quellen, Lizenzbelege und Maße stehen in
+[`app-store/media/SOURCES.md`](../app-store/media/SOURCES.md) und `manifest.json`.
+Keine künstliche Verschlechterung, kein Hochskalieren. Der Bildsatz ist nicht Teil des App-Bundles.
+
+Die Simulator-Aufnahme verwendet ausschließlich diese 55 importierten Bilder und echte PhotoKit-/Core-Data-
+Daten, tatsächliche lokale Analysen sowie den normalen PIN-Tresor mit echten verschlüsselten Importen.
+Die sechs vorinstallierten Simulatorfotos werden nur im ausgeschalteten, eigens angelegten
+Wegwerf-Simulator vor dem Import entfernt. Der tatsächliche PhotoKit-Bestand wird auf exakt 55 passende
+Originaldateinamen geprüft. Keine `-qa-fixtures`, erfundenen Treffer, Käufe oder Medienzahlen.
+Systemlöschungen werden ausschließlich abgelehnt. Aufnahmehilfe und Werbeunterdrückung sind auf
+`QA_FIXTURES && targetEnvironment(simulator)` plus `-store-capture` begrenzt; Release bleibt unberührt.
+
+Aufnahme-Workflows: `.github/workflows/app-store-assets.yml`, auf diesem Branch über den vorhandenen
+`ci.yml` mit `store_locales` und `ui_phase=store-screenshots` bzw. `store-previews` aufgerufen.
+Native Screenshotgröße 1320 × 2868; Vorschauen 886 × 1920, H.264, 30 fps, 15–30 s, AAC-Stereo mit Stille.
+Die Original-PNGs werden unverändert archiviert; die Videos schneiden ausschließlich echte Aufnahmen.
+Sprachindex und Wiederholung: [`app-store/README.md`](../app-store/README.md).
+
+**Noch kein vollständiger Store-Seitenlauf als PASS abgenommen.** Die ersten Probeläufe fanden Fehler
+in der neuen Aufnahmehilfe: vorinstallierte Fremdfotos, verzögerte System-Fotoabfrage, ein fehlendes
+`@Sendable` in der PhotoKit-Änderung, ausgeblendete Diashow-Leisten und instabile XCTest-Abfragen.
+Diese Ursachen sind korrigiert. Der Dokumentenscanner wird wegen fehlender Kamerafunktion im Simulator
+nicht erzwungen; sein nativer Crashbericht belegt diese Grenze. Ein Kaltstart pro Seite ließ große
+Navigationstitel mit Inhalt überlappen; die Navigation im laufenden Prozess zeigt korrekte Abstände.
+Fehlgeschlagene/unvollständige Serien bleiben außerhalb der endgültigen Store-Auswahl.
+
+Laufende Nachprüfung: `38730546597` (Englisch/Arabisch, `fdea58f`),
+`38731542233` (Englisch, `335e935`) und `38732351800` (übrige 14 Sprachen, `335e935`).
+Bereits angesehen: alle 140 PNGs aus `38724513676` und alle 38 PNGs aus `38727522970` in
+beschrifteten Prüfbögen; die Befunde sind vor Ort dokumentiert. Diese Serien sind weiterhin FAIL.
+Linux Swift 6.4.1: **394 Tests / 44 Suites PASS**. Textgenerator `--check`: **PASS**, 1572 verwendete
+Kennungen, 2559 Einträge, 16 Sprachen. Neue App-Texte wurden nicht eingeführt.
+
+Noch ausstehend: vollständige native Serien, Sichtprüfung jedes endgültigen Bildes, Ablage in Git,
+48 geprüfte Vorschauen und abschließender Sprach-/Formatabgleich. Kamera, echtes Face ID und iCloud
+bleiben **NOT RUN** ohne physisches iPhone; der reine Foto-Bildsatz deckt den Videoeditor nicht ab.
+Wiederherstellungsschlüssel werden nicht veröffentlicht. E1–E19 unverändert.
+
 ## TestFlight-Build 9 mit Tresor-, Duplikat- und Zoom-Korrekturen (15.10.2026)
 
 Auf erneute ausdrückliche Anweisung des Inhabers wurde `testflight.yml` mit Unit-Tests und
