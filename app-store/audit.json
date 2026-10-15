@@ -97,5 +97,14 @@
     "capture_run": "38748687136",
     "capture_commit": "819609e9fb766d25ab0d87e691cb274ca4ba849a",
     "status": "PASS"
+  },
+  {
+    "language": "pt-PT",
+    "screenshots": 124,
+    "selection": 10,
+    "videos": [],
+    "capture_run": "38748687136",
+    "capture_commit": "819609e9fb766d25ab0d87e691cb274ca4ba849a",
+    "status": "PASS"
   }
 ]

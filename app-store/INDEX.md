@@ -1,6 +1,6 @@
 # PhotoMaid – Sprachindex
 
-Alle Aufnahmen in Dark Mode. Vorhanden: **1353 Original-Screenshots in 11 von 16 Sprachen**, **0 von 48 Vorschauvideos**. Seitenarchiv, zehn Store-Vorschläge und Vorschauen werden je Sprache getrennt abgelegt.
+Alle Aufnahmen in Dark Mode. Vorhanden: **1477 Original-Screenshots in 12 von 16 Sprachen**, **0 von 48 Vorschauvideos**. Seitenarchiv, zehn Store-Vorschläge und Vorschauen werden je Sprache getrennt abgelegt.
 
 | Sprache | App → App Store Connect | Screenshots | Videos |
 |---|---|---:|---:|
@@ -14,7 +14,7 @@ Alle Aufnahmen in Dark Mode. Vorhanden: **1353 Original-Screenshots in 11 von 16
 | Koreanisch | `ko` → `ko` | ausstehend | ausstehend |
 | [Niederländisch](locales/nl/README.md) | `nl` → `nl-NL` | 123 / Auswahl 10 | 0 / 3 |
 | [Polnisch](locales/pl/README.md) | `pl` → `pl` | 123 / Auswahl 10 | 0 / 3 |
-| Portugiesisch (Portugal) | `pt-PT` → `pt-PT` | ausstehend | ausstehend |
+| [Portugiesisch (Portugal)](locales/pt-PT/README.md) | `pt-PT` → `pt-PT` | 124 / Auswahl 10 | 0 / 3 |
 | Rumänisch | `ro` → `ro` | ausstehend | ausstehend |
 | [Russisch](locales/ru/README.md) | `ru` → `ru` | 123 / Auswahl 10 | 0 / 3 |
 | Türkisch | `tr` → `tr` | ausstehend | ausstehend |
