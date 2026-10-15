@@ -16,7 +16,7 @@ import UserMessagingPlatform
 final class AdsService: NSObject {
     static let shared = AdsService()
 
-    /// Einwilligung geklärt und SDK gestartet: Werbung darf angefragt werden.
+    /// Einwilligung geklärt und SDK-Initialisierung abgeschlossen: Werbung darf angefragt werden.
     private(set) var ready = false
     /// „Werbe-Einwilligung ändern“ in den Einstellungen zeigen (von Google für EWR/UK/Schweiz verlangt).
     private(set) var privacyOptionsRequired = false
@@ -87,7 +87,12 @@ final class AdsService: NSObject {
             Diagnostics.log(.ads, "no-consent")
             return
         }
-        MobileAds.shared.start(completionHandler: nil)
+        // RootView awaits prepare before starting the four-second ad load window.
+        // start() is asynchronous: marking ready immediately charged SDK startup
+        // against that window and could discard a loaded test ad just after 4 s.
+        await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
+            MobileAds.shared.start { _ in continuation.resume() }
+        }
         ready = true
         Diagnostics.log(.ads, "started")
     }
