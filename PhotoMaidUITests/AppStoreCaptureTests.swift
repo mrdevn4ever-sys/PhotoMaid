@@ -129,7 +129,12 @@ final class AppStoreCaptureTests: XCTestCase {
     private func feedPosition() -> Int {
         let label = e("feed.position").label
         let digits = label.components(separatedBy: CharacterSet.decimalDigits.inverted).filter { !$0.isEmpty }
-        let normalized = (digits.first ?? "").compactMap(\.wholeNumberValue).map(String.init).joined()
+        let format = t("feed_position")
+        let totalFirst = format.range(of:"%2$").map { total in
+            format.range(of:"%1$").map { total.lowerBound < $0.lowerBound } ?? false
+        } ?? false
+        let current = totalFirst ? digits.last : digits.first
+        let normalized = (current ?? "").compactMap(\.wholeNumberValue).map(String.init).joined()
         return Int(normalized) ?? -1
     }
     private func swipeFeed(_ direction: String) {
