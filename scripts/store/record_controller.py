@@ -14,10 +14,11 @@ def main():
     def stop():
         nonlocal process,log,current
         if process:
+            stopped=time.time()
             process.send_signal(signal.SIGINT)
             process.wait(timeout=30)
             if log:log.close()
-            atomic(recordings/(current+'.recording.json'),{'name':current,'start':started,'end':time.time(),'returncode':process.returncode})
+            atomic(recordings/(current+'.recording.json'),{'name':current,'start':started,'end':stopped,'returncode':process.returncode})
         process=None;log=None;current=None
     def shutdown(*_):
         stop();raise SystemExit(0)

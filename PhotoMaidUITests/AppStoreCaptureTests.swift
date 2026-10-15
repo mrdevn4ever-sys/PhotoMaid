@@ -52,6 +52,7 @@ final class AppStoreCaptureTests: XCTestCase {
         app = XCUIApplication()
         app.launchArguments = ["-store-capture", "-store-page", page, "-AppleLanguages", "(\(language))", "-AppleLocale", language]
         app.launch()
+        if page != "introduction" { resolvePrivacyPrompts(in: app, prefix:"store-permissions", photos:true) }
         XCTAssertTrue(app.windows["store.capture." + page].waitForExistence(timeout: 40), "Requested page must finish opening: \(page)")
         if page != "introduction" {
             XCTAssertTrue(app.wait(for: .runningForeground, timeout: 30), "App did not open capture page \(page)")
@@ -100,6 +101,7 @@ final class AppStoreCaptureTests: XCTestCase {
             snap(String(format: "introduction-%02d", index))
             tap(e("onboarding.next"))
         }
+        resolvePrivacyPrompts(in: app, prefix:"store-introduction", photos:true)
         XCTAssertTrue(app.tabBars.firstMatch.waitForExistence(timeout: 25))
         capturePage("today")
         launch("feed"); awaitStage(); snap("feed")

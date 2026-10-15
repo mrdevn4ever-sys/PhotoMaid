@@ -74,6 +74,12 @@ jobs:
           echo "udid=$udid" >> "$GITHUB_OUTPUT"
           xcrun simctl boot "$udid"
           xcrun simctl bootstatus "$udid" -b
+          # Fresh simulators include six stock photos. Reset ONLY this disposable simulator's
+          # photo-library directories while shut down, before any selected media are imported.
+          xcrun simctl shutdown "$udid"
+          python3 scripts/store/empty_simulator_photos.py "$udid"
+          xcrun simctl boot "$udid"
+          xcrun simctl bootstatus "$udid" -b
           xcrun simctl ui "$udid" appearance dark
           xcrun simctl status_bar "$udid" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
           find app-store/media -maxdepth 1 -name '*.jpg' -print0 | sort -z | xargs -0 xcrun simctl addmedia "$udid"
