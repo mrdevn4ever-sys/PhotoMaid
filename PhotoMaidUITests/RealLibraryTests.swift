@@ -438,7 +438,9 @@ final class RealLibraryTests: XCTestCase {
         XCTAssertTrue(app.buttons["Erneut suchen"].waitForExistence(timeout: 180))
         snap("duplicates_five_copies")
         let move = button("5 ")
+        scrollTo(move)
         XCTAssertTrue(move.exists, "Manifest has exactly five extra byte-identical copies")
+        snap("duplicates_five_selected_copies")
         XCTAssertFalse(contains("Keine identischen").exists)
     }
 
