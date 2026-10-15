@@ -175,6 +175,31 @@
     "status": "PASS"
   },
   {
+    "language": "ko",
+    "screenshots": 123,
+    "selection": 10,
+    "videos": [
+      {
+        "file": "01-review.mp4",
+        "sha256": "def5c5159efa84d185fb4c7264cffc089b7ce9fbe2d26b0fa2fea16a909a2d24",
+        "duration": 27.0
+      },
+      {
+        "file": "02-studio.mp4",
+        "sha256": "227f628e71ad2e0d2c759fd86bd72c43cc55844719fd284422acb7a6c7bb4535",
+        "duration": 27.0
+      },
+      {
+        "file": "03-vault.mp4",
+        "sha256": "17bdb4362f3292eddc26e93f1625e457beb4e15e62ea1b1b6a4cb0ce12340013",
+        "duration": 27.0
+      }
+    ],
+    "capture_run": "38757333460",
+    "capture_commit": "d8744fb3794b4a447469e2317d61219cece881ae",
+    "status": "PASS"
+  },
+  {
     "language": "nl",
     "screenshots": 123,
     "selection": 10,
