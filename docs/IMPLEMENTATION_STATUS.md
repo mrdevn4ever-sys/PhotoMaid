@@ -28,49 +28,65 @@ Native Screenshotgröße 1320 × 2868; Vorschauen 886 × 1920, H.264, 30 fps, 15
 Die Original-PNGs werden unverändert archiviert; die Videos schneiden ausschließlich echte Aufnahmen.
 Sprachindex und Wiederholung: [`app-store/README.md`](../app-store/README.md).
 
-**Erste vollständige Serien PASS:** Englisch und Arabisch in `38734382042` (je 123 PNGs,
-2/2 native UI-Tests, kein Fehler/Skip); Deutsch und Italienisch in `38735332484`.
-Vollständig angesehen, in Git und sprach-/formatgeprüft **PASS** sind derzeit Deutsch, Englisch,
-Italienisch und Russisch: je 123 Original-PNGs, zehn unveränderte Store-Vorschläge und elf Prüfbögen,
-insgesamt 492 Originalaufnahmen. Der [Sprachindex](../app-store/INDEX.md) zählt nur tatsächlich abgelegte Dateien.
-Die übrigen Sprachen und alle Vorschauvideos sind weiterhin offen; native Test-Erfolge allein bedeuten
-noch keine bestandene Sichtprüfung.
-Die ersten Probeläufe fanden Fehler
-in der neuen Aufnahmehilfe: vorinstallierte Fremdfotos, verzögerte System-Fotoabfrage, ein fehlendes
-`@Sendable` in der PhotoKit-Änderung, ausgeblendete Diashow-Leisten und instabile XCTest-Abfragen.
-Diese Ursachen sind korrigiert. Der Dokumentenscanner wird wegen fehlender Kamerafunktion im Simulator
-nicht erzwungen; sein nativer Crashbericht belegt diese Grenze. Ein Kaltstart pro Seite ließ große
-Navigationstitel mit Inhalt überlappen; die Navigation im laufenden Prozess zeigt korrekte Abstände.
-Fehlgeschlagene/unvollständige Serien bleiben außerhalb der endgültigen Store-Auswahl.
+**Screenshot-Phase abgeschlossen: PASS.** Alle 16 App-Sprachen sind im
+[Sprachindex](../app-store/INDEX.md) abgelegt: **1.969 unveränderte native Seitenaufnahmen**,
+**160 unveränderte Store-Vorschläge** und **176 beschriftete Prüfbögen**.
+Jedes endgültige Bild wurde angesehen, jedem Original ist im Prüfmanifest sein SHA-256 zugeordnet.
+Jede Sprachserie besteht aus 2/2 nativen UI-Tests, ohne Fehler oder Skip; die tatsächliche
+PhotoKit-Inventarliste enthält genau die 55 Quelldateien. Der vollständige Screenshot-Audit besteht.
+Portugiesisch enthält 124 statt 123 Bilder: zusätzlich den echten Pausenzustand vor der erfolgreichen
+UI-Fortsetzung der Textanalyse bis 55/55.
 
-Aktueller Gesamtlauf: `38735332484` (16 Sprachen, `defb941`).
-Spanisch ist darin FAIL: Die System-Löschabfrage blieb nach dem ersten Ablehnen offen;
-die folgenden Tresoraufnahmen wurden blockiert. `a9e116c` lehnt die Abfrage bei Bedarf erneut
-ab und prüft ihr tatsächliches Verschwinden. Keine Systemlöschung bestätigt.
-Die Wiederholung `38742616639` besteht für Spanisch mit 2/2 nativen Tests; eine Systemmitteilung auf
-`series.png` verhindert jedoch die endgültige Übernahme. Wiederholung mit Banner-Warteprüfung:
-`38750057086`. Japanisch/Koreanisch laufen in `38742616639` mit korrigierter Testauswertung der
-umgekehrten Positionszählung (Gesamtzahl vor aktueller Position).
-Französisch wird wegen einer Systemmitteilung und Arabisch wegen einer tatsächlich pausierten
-Textanalyse in `38744237961` wiederholt. `38748687136` bündelt Polnisch (XCTest-Startfehler),
-Niederländisch/Türkisch/Portugiesisch (derselbe Systemdialogfehler) und Rumänisch (Infoaufnahme vor
-Abschluss der Metadatenabfrage). Die Prüfungen warten auf geladene Dateinamen/Größen und verschwundene
-Systembanner; angehaltene Analysen können über ihre normalen UI-Steuerungen fortgesetzt werden,
-mit zusätzlichem Screenshot des Pausenzustands und unveränderter Abschlussprüfung.
-`38730546597` und `38731542233` sind FAIL wegen einer XCTest-Abfrage des noch außerhalb der
-Scrollansicht liegenden Rahmen-Werkzeugs; `bbb21b8` scrollt vor der Hittability-Abfrage anhand der
-tatsächlichen Elementgeometrie. Der darauf aufbauende Pilot besteht vollständig.
-`38732351800` wurde vor UI-Aufnahmen abgebrochen, um denselben bekannten Fehler nicht zu vervielfachen.
-Der Simulator-Testbuild wird nun einmal je Lauf kompiliert und als Tar mit erhaltenen Berechtigungen/
-Framework-Verknüpfungen an die Aufnahmerunner übertragen; Xcode-Versionen müssen übereinstimmen.
-Bereits angesehen: alle 140 PNGs aus `38724513676` und alle 38 PNGs aus `38727522970` in
-beschrifteten Prüfbögen; die Befunde sind vor Ort dokumentiert. Diese Serien sind weiterhin FAIL.
+| Sprachen | Endgültiger Screenshot-Lauf | Status / Dateien je Sprache |
+|---|---|---|
+| Deutsch, Englisch, Italienisch, Russisch, Ukrainisch, Chinesisch (vereinfacht) | `38735332484` · `defb941` | PASS · je 123 Originale + zehn Store-Vorschläge |
+| Japanisch | `38742616639` · `bb4706f` | PASS · 123 + zehn |
+| Arabisch, Französisch | `38744237961` · `59b6e81` | PASS · je 123 + zehn |
+| Polnisch, Niederländisch, Rumänisch, Türkisch | `38748687136` · `819609e` | PASS · je 123 + zehn |
+| Portugiesisch (Portugal) | `38748687136` · `819609e` | PASS · 124 + zehn |
+| Spanisch | `38750057086` · `819609e` | PASS · 123 + zehn |
+| Koreanisch | `38757333460` · `d8744fb` | PASS · 123 + zehn |
+
+Die Bildprüfung bestätigt korrekt abgebildete App-Zustände, keine erfundenen Analyseergebnisse:
+Französisch zeigt bei ähnlichen Fotos ehrlich 53/55 und zwei nicht analysierte Medien;
+Niederländisch zeigt denselben Zustand bei der Textanalyse. Das steht zusätzlich in den jeweiligen
+Prüfmanifesten. Diese Aufnahmen sind kein Nachweis, dass in diesen beiden Scans alle 55 analysiert wurden.
+Die arabischen Gestenpfeile bleiben physisch links = Papierkorb, rechts = Später.
+Leere Video-/Screenshot-Filter und Datei-/PDF-Eingänge entsprechen dem ausdrücklich reinen Foto-Bildsatz.
+
+**Vorschau-Phase in Arbeit:** Erst nach Abschluss und Push aller Screenshot-Serien wurde
+`38764957492` auf `02e689f` für Deutsch, Englisch und Arabisch mit `store-previews` gestartet.
+Drei Varianten je Sprache: Aufräumen, Studio, Tresor. Die UI-Tests prüfen tatsächliche Wischschritte,
+veränderte Belichtung, gewählten Monochromfilter, Zeichnen und echten Tresorzoom; jeder Videoschritt
+hat zusätzlich einen nativen Screenshot. Videoexport, vollständige Dekodierung, Sichtprüfung und
+Ablage der insgesamt 48 Vorschauen stehen noch aus. Es werden keine fertigen Videos behauptet.
+
+Die Probeläufe fanden und korrigierten Fehler in der Aufnahmehilfe: sechs vorinstallierte Fremdfotos,
+verzögerte System-Fotoabfrage, fehlendes `@Sendable` in einer PhotoKit-Änderung, ausgeblendete
+Diashow-Leisten, Kaltstart-Navigationsabstände, außerhalb der Scrollansicht liegende Editorwerkzeuge,
+umgekehrte Positionszählung auf Japanisch/Koreanisch, nicht vollständig geschlossene Systemabfragen,
+Systembanner und noch ladende Metadaten. `d8744fb` löst wechselnde SwiftUI-Menütypen über die aktuelle
+Beschriftung und Position auf, nachdem Koreanisch an einer veralteten XCTest-Button-Identität scheiterte.
+Systemlöschungen wurden stets abgelehnt. Fehlgeschlagene Serien bleiben außerhalb der endgültigen Ablage.
+
+Nachweislich verworfene Zwischenstände: Spanisch/Niederländisch/Türkisch/Portugiesisch im ersten Gesamtlauf
+wegen blockierender Systemabfrage; Japanisch/Koreanisch wegen Test-Positionsauswertung; Polnisch wegen
+XCTest-App-Startfehler. Französisch und die erste spanische Wiederholung bestanden nativ, hatten jedoch
+Systembanner in einzelnen Bildern. Rumänisch hatte noch ungeladene Metadaten. Arabisch pausierte tatsächlich
+bei der Textanalyse. `38730546597` und `38731542233` scheiterten an der Editor-Testabfrage;
+`38732351800` wurde vor UI-Aufnahmen abgebrochen, um denselben Fehler nicht zu vervielfachen.
+Die jeweiligen Wiederholungen in der Tabelle ersetzen diese Serien vollständig; keine Mischung aus Läufen.
+
+Der Simulator-Testbuild wird einmal je Lauf kompiliert und mit erhaltenen Berechtigungen und
+Framework-Verknüpfungen an die Aufnahmerunner übertragen; deren Xcode-Versionen müssen übereinstimmen.
+Checkout der Runner schließt das wachsende fertige Bildarchiv aus, behält jedoch Quellcode und Testfotos.
 Linux Swift 6.4.1: **394 Tests / 44 Suites PASS**. Textgenerator `--check`: **PASS**, 1572 verwendete
 Kennungen, 2559 Einträge, 16 Sprachen. Neue App-Texte wurden nicht eingeführt.
 
-Noch ausstehend: vollständige native Serien, Sichtprüfung jedes endgültigen Bildes, Ablage in Git,
-48 geprüfte Vorschauen und abschließender Sprach-/Formatabgleich. Kamera, echtes Face ID und iCloud
-bleiben **NOT RUN** ohne physisches iPhone; der reine Foto-Bildsatz deckt den Videoeditor nicht ab.
+Noch ausstehend: 48 geprüfte Vorschauen und abschließender Sprach-/Formatabgleich.
+Dokumentenscanner/Kamera ist wegen fehlender Kamerafunktion im Simulator **NOT RUN**, mit nativem
+Crashbericht aus dem verworfenen Scannerpilot belegt. Echtes Face ID, iCloud, 30.000 Fotos und Wärme
+bleiben **NOT RUN** ohne physisches iPhone; der Foto-Bildsatz deckt den Videoeditor nicht ab.
 Wiederherstellungsschlüssel werden nicht veröffentlicht. E1–E19 unverändert.
 
 ## TestFlight-Build 9 mit Tresor-, Duplikat- und Zoom-Korrekturen (15.10.2026)
