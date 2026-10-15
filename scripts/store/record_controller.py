@@ -15,10 +15,16 @@ def main():
         nonlocal process,log,current
         if process:
             stopped=time.time()
-            process.send_signal(signal.SIGINT)
-            process.wait(timeout=30)
-            if log:log.close()
-            atomic(recordings/(current+'.recording.json'),{'name':current,'start':started,'end':stopped,'returncode':process.returncode})
+            finished=process;name=current
+            try:
+                if finished.poll() is None:finished.send_signal(signal.SIGINT)
+                try:finished.wait(timeout=30)
+                except subprocess.TimeoutExpired:
+                    finished.kill();finished.wait(timeout=5)
+            finally:
+                if log:log.close()
+                process=None;log=None;current=None
+            atomic(recordings/(name+'.recording.json'),{'name':name,'start':started,'end':stopped,'returncode':finished.returncode})
         process=None;log=None;current=None
     def shutdown(*_):
         stop();raise SystemExit(0)
@@ -33,16 +39,20 @@ def main():
                     if process:raise ValueError('Already recording')
                     current=name;log=open(recordings/(name+'.log'),'wb');started=time.time()
                     process=subprocess.Popen(['xcrun','simctl','io',args.udid,'recordVideo','--codec=h264','--mask=ignored',str(recordings/(name+'.mov'))],stdout=log,stderr=log)
-                    for _ in range(100):
+                    for _ in range(450):
                         if process.poll() is not None:raise RuntimeError('Recorder exited before readiness')
                         if b'Recording started' in (recordings/(name+'.log')).read_bytes():break
                         time.sleep(.1)
-                    else:raise RuntimeError('Recording did not start')
+                    else:raise RuntimeError('Recording did not become ready within 45 seconds')
                     time.sleep(.5)
                 elif value['operation']=='stop':stop()
                 else:raise ValueError('Unsupported recording operation')
                 ack={'status':'ok'}
-            except Exception as error:ack={'status':'error','error':str(error)}
+            except Exception as error:
+                ack={'status':'error','error':str(error)}
+                if value['operation']=='start' and process:
+                    try:stop()
+                    except Exception as cleanup_error:ack['cleanup_error']=str(cleanup_error)
             atomic(control/('ack-'+token+'.json'),ack)
         time.sleep(.1)
 

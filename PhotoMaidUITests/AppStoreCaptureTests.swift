@@ -381,10 +381,10 @@ final class AppStoreCaptureTests: XCTestCase {
         let request:[String:String] = ["operation":operation,"name":name,"token":token]
         try JSONSerialization.data(withJSONObject:request).write(to:directory.appendingPathComponent("request-\(token).json"),options:.atomic)
         let ack = directory.appendingPathComponent("ack-\(token).json")
-        for _ in 0..<300 {
+        for _ in 0..<900 {
             if FileManager.default.fileExists(atPath:ack.path) {
                 let value = try JSONSerialization.jsonObject(with:Data(contentsOf:ack)) as? [String:Any]
-                XCTAssertEqual(value?["status"] as? String,"ok")
+                XCTAssertEqual(value?["status"] as? String,"ok",value?["error"] as? String ?? "Recording controller failed")
                 clip = operation == "start" ? name : nil
                 return
             }

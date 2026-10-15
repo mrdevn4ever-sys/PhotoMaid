@@ -91,6 +91,14 @@ Bildstichprobe verworfen: Die Tresor-Bildspur endete trotz 27 s Container-/Tonsp
 Der Schlussbild-Halt wird deshalb bis zur expliziten Zieldauer fortgeführt; Export und Audit verlangen
 zusätzlich übereinstimmende Bild-/Ton-/Containerdauer. Die verworfenen Originale bleiben als Beleg erhalten.
 
+Russisch in `38765595100` bestand nur die Einrichtung (1/4); die drei Aufnahme-Tests meldeten einen
+Recorder-Fehler. Der erhaltene Recorder-Log zeigt dennoch eine gestartete Aufnahme, und es entstand
+ein zurückgelassener Recorder-Prozess. Die genaue alte Fehlerantwort wurde nicht archiviert.
+Die Aufnahmehilfe wartet jetzt bis zu 45 statt zehn Sekunden auf Bereitschaft und beendet einen
+fehlgeschlagenen Start zuverlässig. XCTest wartet auf die Antwort einschließlich Bereinigung bis 90 s,
+zeigt deren Fehlertext und archiviert die Steuerantworten. Diese Hypothese wird mit einem frischen
+russischen Simulator geprüft; die fehlgeschlagene Serie wird nicht als bestanden gewertet.
+
 Die Probeläufe fanden und korrigierten Fehler in der Aufnahmehilfe: sechs vorinstallierte Fremdfotos,
 verzögerte System-Fotoabfrage, fehlendes `@Sendable` in einer PhotoKit-Änderung, ausgeblendete
 Diashow-Leisten, Kaltstart-Navigationsabstände, außerhalb der Scrollansicht liegende Editorwerkzeuge,

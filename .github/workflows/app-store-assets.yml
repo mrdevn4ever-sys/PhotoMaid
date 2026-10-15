@@ -164,6 +164,7 @@ jobs:
             ${{ runner.temp }}/store-capture/screenshots
             ${{ runner.temp }}/store-capture/diagnostics
             ${{ runner.temp }}/store-capture/recordings
+            ${{ runner.temp }}/store-capture/control/*.json
             ${{ runner.temp }}/store-capture/markers.jsonl
             ${{ runner.temp }}/store-capture/*.json
             ${{ runner.temp }}/store-capture/*.log
