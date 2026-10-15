@@ -9,11 +9,12 @@ GAPS='Kamera/Scanner und echtes Face ID brauchen ein physisches iPhone. Videoedi
 
 def main():
  parser=argparse.ArgumentParser();parser.add_argument('--root',type=Path,default=Path('app-store'));args=parser.parse_args();root=args.root
- mapping=json.loads((root/'localizations.json').read_text());rows=[]
+ mapping=json.loads((root/'localizations.json').read_text());rows=[];total_shots=0;total_videos=0;captured_locales=0
  for code,info in mapping.items():
   locale=root/'locales'/code
   if not (locale/'screenshots.json').exists():rows.append(f'| {info["name_de"]} | `{code}` → `{info["app_store_locale"]}` | ausstehend | ausstehend |');continue
   screenshots=json.loads((locale/'screenshots.json').read_text());selected=sorted((locale/'app-store-selection').glob('*.png'));videos=sorted((locale/'previews').glob('*.mp4'))
+  total_shots+=len(screenshots);total_videos+=len(videos);captured_locales+=1
   review_path=locale/'review/manifest.json';review=json.loads(review_path.read_text())if review_path.exists()else[]
   reviewed=bool(review)and all(item['review']=='PASS'for item in review)
   provenance=json.loads((locale/'provenance.json').read_text())
@@ -38,7 +39,7 @@ def main():
   text+='## Grenzen des Bildsatzes\n\n'+GAPS+'\n'
   (locale/'README.md').write_text(text)
   rows.append(f'| [{info["name_de"]}](locales/{code}/README.md) | `{code}` → `{info["app_store_locale"]}` | {len(screenshots)} / Auswahl {len(selected)} | {len(videos)} / 3 |')
- index='# PhotoMaid – Sprachindex\n\nAlle Aufnahmen in Dark Mode. Je Sprache liegen vollständiges Seitenarchiv, eine Auswahl von zehn Originalen und drei echte App-Store-Vorschauen getrennt bereit.\n\n'
+ index=f'# PhotoMaid – Sprachindex\n\nAlle Aufnahmen in Dark Mode. Vorhanden: **{total_shots} Original-Screenshots in {captured_locales} von {len(mapping)} Sprachen**, **{total_videos} von {len(mapping)*3} Vorschauvideos**. Seitenarchiv, zehn Store-Vorschläge und Vorschauen werden je Sprache getrennt abgelegt.\n\n'
  index+='| Sprache | App → App Store Connect | Screenshots | Videos |\n|---|---|---:|---:|\n'+'\n'.join(rows)+'\n\n'
  index+='[55 Hochkantfotos und CC0-Quellen](media/SOURCES.md) · [Formate und Wiederholung](README.md) · [Maschinenprüfung](audit.json)\n\n'+GAPS+'\n'
  (root/'INDEX.md').write_text(index)

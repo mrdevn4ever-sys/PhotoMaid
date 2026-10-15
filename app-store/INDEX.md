@@ -1,6 +1,6 @@
 # PhotoMaid – Sprachindex
 
-Alle Aufnahmen in Dark Mode. Je Sprache liegen vollständiges Seitenarchiv, eine Auswahl von zehn Originalen und drei echte App-Store-Vorschauen getrennt bereit.
+Alle Aufnahmen in Dark Mode. Vorhanden: **369 Original-Screenshots in 3 von 16 Sprachen**, **0 von 48 Vorschauvideos**. Seitenarchiv, zehn Store-Vorschläge und Vorschauen werden je Sprache getrennt abgelegt.
 
 | Sprache | App → App Store Connect | Screenshots | Videos |
 |---|---|---:|---:|
