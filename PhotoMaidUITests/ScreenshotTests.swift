@@ -249,7 +249,12 @@ final class ScreenshotTests: XCTestCase {
         snap("editor_08_zoomed_stroke_redone")
         XCTAssertTrue(undo.isEnabled)
 
-        stage.pinch(withScale: 0.25, velocity: -1)
+        for attempt in 1...4 where (stage.value as? String ?? "").filter(\.isNumber) != "100" {
+            // XCTest synthesizes finger distances, not an exact final scale;
+            // small stages can reach the minimum touch spacing before 1×.
+            stage.pinch(withScale: 0.25, velocity: -1)
+            snap("editor_09_zoom_out_attempt_\(attempt)")
+        }
         snap("editor_09_full_image_stroke_alignment")
         XCTAssertEqual((stage.value as? String ?? "").filter(\.isNumber), "100")
         XCTAssertTrue(undo.isEnabled)
