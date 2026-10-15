@@ -89,6 +89,8 @@ final class AppStoreCaptureTests: XCTestCase {
     private func snap(_ name: String) {
         if name.hasPrefix("editor") { waitForEditorPreview() }
         pause(0.7)
+        let banner = XCUIApplication(bundleIdentifier:"com.apple.springboard").otherElements["NotificationShortLookView"].firstMatch
+        if banner.exists { XCTAssertTrue(banner.waitForNonExistence(timeout:12),"System banner must leave before capture") }
         // One accessibility snapshot/query, rather than one IPC round trip per text.
         let invalid = app.descendants(matching:.any).matching(NSPredicate(
             format:"label CONTAINS %@ OR label CONTAINS %@ OR label MATCHES %@ OR label MATCHES %@",
@@ -216,10 +218,27 @@ final class AppStoreCaptureTests: XCTestCase {
                     let progress = e("analysis.progress")
                     let deadline = Date().addingTimeInterval(240)
                     var finished = false
+                    var resumes = 0
+                    var lastChange = Date()
+                    var previous = ""
                     repeat {
-                        let values = (progress.value as? String ?? "").split(separator:"/").compactMap { Int($0) }
+                        let value = progress.value as? String ?? ""
+                        if value != previous { previous = value; lastChange = Date() }
+                        let values = value.split(separator:"/").compactMap { Int($0) }
                         let done = app.descendants(matching:.any).matching(NSPredicate(format:"label == %@",t("ana2_stage_finished"))).firstMatch
                         if (values.count == 2 && values[1] > 0 && values[0] == values[1]) || done.exists { finished = true; break }
+                        // A genuine paused run can be continued through the same controls as a user.
+                        // Keep the pause evidence and still require the actual analysis to finish.
+                        let paused = app.descendants(matching:.any).matching(NSPredicate(format:"label == %@",t("ana2_stage_paused"))).firstMatch
+                        if resumes < 2, Date().timeIntervalSince(lastChange) > 10, paused.exists {
+                            let remaining = values.count == 2 ? values[1] - values[0] : 0
+                            let retry = app.buttons[String(format:t("ana2_retry_failed"),remaining)].firstMatch
+                            let resume = retry.exists ? retry : button("ana2_resume")
+                            if resume.exists && resume.isEnabled {
+                                resumes += 1; snap(page + "-paused-resume-\(resumes)")
+                                tap(resume); lastChange = Date()
+                            }
+                        }
                         pause(1)
                     } while Date() < deadline
                     XCTAssertTrue(finished,"Actual on-device analysis must finish: \(page)")
