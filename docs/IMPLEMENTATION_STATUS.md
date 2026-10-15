@@ -30,9 +30,11 @@ Sprachindex und Wiederholung: [`app-store/README.md`](../app-store/README.md).
 
 **Erste vollständige Serien PASS:** Englisch und Arabisch in `38734382042` (je 123 PNGs,
 2/2 native UI-Tests, kein Fehler/Skip); Deutsch und Italienisch in `38735332484`.
-Die deutsche Serie wurde vollständig angesehen und unter `app-store/locales/de/` einschließlich
-zehn Store-Vorschlägen und Prüfbögen abgelegt; Sprach-/Formatprüfung **PASS**.
-Die übrigen Sprachen und alle Vorschauvideos sind weiterhin offen.
+Vollständig angesehen, in Git und sprach-/formatgeprüft **PASS** sind derzeit Deutsch, Englisch,
+Italienisch und Russisch: je 123 Original-PNGs, zehn unveränderte Store-Vorschläge und elf Prüfbögen,
+insgesamt 492 Originalaufnahmen. Der [Sprachindex](../app-store/INDEX.md) zählt nur tatsächlich abgelegte Dateien.
+Die übrigen Sprachen und alle Vorschauvideos sind weiterhin offen; native Test-Erfolge allein bedeuten
+noch keine bestandene Sichtprüfung.
 Die ersten Probeläufe fanden Fehler
 in der neuen Aufnahmehilfe: vorinstallierte Fremdfotos, verzögerte System-Fotoabfrage, ein fehlendes
 `@Sendable` in der PhotoKit-Änderung, ausgeblendete Diashow-Leisten und instabile XCTest-Abfragen.
@@ -44,7 +46,17 @@ Fehlgeschlagene/unvollständige Serien bleiben außerhalb der endgültigen Store
 Aktueller Gesamtlauf: `38735332484` (16 Sprachen, `defb941`).
 Spanisch ist darin FAIL: Die System-Löschabfrage blieb nach dem ersten Ablehnen offen;
 die folgenden Tresoraufnahmen wurden blockiert. `a9e116c` lehnt die Abfrage bei Bedarf erneut
-ab und prüft ihr tatsächliches Verschwinden. Keine Systemlöschung bestätigt. Gezielte Wiederholung läuft.
+ab und prüft ihr tatsächliches Verschwinden. Keine Systemlöschung bestätigt.
+Die Wiederholung `38742616639` besteht für Spanisch mit 2/2 nativen Tests; eine Systemmitteilung auf
+`series.png` verhindert jedoch die endgültige Übernahme. Wiederholung mit Banner-Warteprüfung:
+`38750057086`. Japanisch/Koreanisch laufen in `38742616639` mit korrigierter Testauswertung der
+umgekehrten Positionszählung (Gesamtzahl vor aktueller Position).
+Französisch wird wegen einer Systemmitteilung und Arabisch wegen einer tatsächlich pausierten
+Textanalyse in `38744237961` wiederholt. `38748687136` bündelt Polnisch (XCTest-Startfehler),
+Niederländisch/Türkisch/Portugiesisch (derselbe Systemdialogfehler) und Rumänisch (Infoaufnahme vor
+Abschluss der Metadatenabfrage). Die Prüfungen warten auf geladene Dateinamen/Größen und verschwundene
+Systembanner; angehaltene Analysen können über ihre normalen UI-Steuerungen fortgesetzt werden,
+mit zusätzlichem Screenshot des Pausenzustands und unveränderter Abschlussprüfung.
 `38730546597` und `38731542233` sind FAIL wegen einer XCTest-Abfrage des noch außerhalb der
 Scrollansicht liegenden Rahmen-Werkzeugs; `bbb21b8` scrollt vor der Hittability-Abfrage anhand der
 tatsächlichen Elementgeometrie. Der darauf aufbauende Pilot besteht vollständig.
