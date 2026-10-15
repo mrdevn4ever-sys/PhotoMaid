@@ -6,7 +6,7 @@ Alle Aufnahmen in Dark Mode. Je Sprache liegen vollständiges Seitenarchiv, eine
 |---|---|---:|---:|
 | Arabisch | `ar` → `ar-SA` | ausstehend | ausstehend |
 | [Deutsch](locales/de/README.md) | `de` → `de-DE` | 123 / Auswahl 10 | 0 / 3 |
-| Englisch | `en` → `en-US` | ausstehend | ausstehend |
+| [Englisch](locales/en/README.md) | `en` → `en-US` | 123 / Auswahl 10 | 0 / 3 |
 | Spanisch | `es` → `es-ES` | ausstehend | ausstehend |
 | Französisch | `fr` → `fr-FR` | ausstehend | ausstehend |
 | [Italienisch](locales/it/README.md) | `it` → `it` | 123 / Auswahl 10 | 0 / 3 |
