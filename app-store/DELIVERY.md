@@ -57,7 +57,7 @@ Foto-Systemlöschungen wurden ausschließlich abgelehnt. Aufnahmehilfe und Werbe
 
 ## Commits des Assets-Auftrags
 
-Implementierungs-, Prüf- und Asset-Commits nach dem bereits ausgelieferten TestFlight-Build 9, bis zum letzten Asset-Commit vor diesem Übergabebericht:
+Implementierungs-, Prüf- und Asset-Commits nach dem bereits ausgelieferten TestFlight-Build 9, bis zum letzten nachstehend aufgeführten Commit; der abschließende Format-/Dokumentationscommit steht zusätzlich im Git-Verlauf:
 
 | Commit | Änderung |
 |---|---|
@@ -111,3 +111,4 @@ Implementierungs-, Prüf- und Asset-Commits nach dem bereits ausgelieferten Test
 | [c2152ac](https://github.com/mrdevn4ever-sys/PhotoMaid/commit/c2152acf1688c29697a7be0bac6d85d6d12b7d63) | Rumänische und türkische Store-Vorschauen ergänzen |
 | [cdf9852](https://github.com/mrdevn4ever-sys/PhotoMaid/commit/cdf9852ed34ca2232c100326d914634196e27350) | Ukrainische und chinesische Store-Vorschauen ergänzen |
 | [aa8e4f0](https://github.com/mrdevn4ever-sys/PhotoMaid/commit/aa8e4f0e2e3f706b3381cc9a718ad97b11ab7737) | Russische Vorschauen und vollständigen Store-Audit abschließen |
+| [71dd857](https://github.com/mrdevn4ever-sys/PhotoMaid/commit/71dd857f11cceae34f6386ad696d207fb7e1389c) | Store-Abschlussbericht mit Dateien und Commitliste ergänzen |
