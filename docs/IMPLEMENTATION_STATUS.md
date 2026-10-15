@@ -62,10 +62,10 @@ veränderte Belichtung, gewählten Monochromfilter, Zeichnen und echten Tresorzo
 hat zusätzlich einen nativen Screenshot. Videoexport, vollständige Dekodierung, Sichtprüfung und
 Ablage der insgesamt 48 Vorschauen erfolgen sprachweise.
 
-**27/48 Vorschauen PASS:** Deutsch, Englisch, Arabisch, Japanisch, Spanisch, Französisch,
-Italienisch, Koreanisch und Niederländisch sind vollständig exportiert,
+**33/48 Vorschauen PASS:** Deutsch, Englisch, Arabisch, Japanisch, Spanisch, Französisch,
+Italienisch, Koreanisch, Niederländisch, Polnisch und Portugiesisch sind vollständig exportiert,
 vollständig dekodiert und mit je acht tatsächlich angesehenen Videobildern plus drei Postern geprüft.
-Zusätzlich wurden alle 225 nativen Schritt-/Einrichtungs-Screenshots dieser neun Sprachen angesehen.
+Zusätzlich wurden alle 275 nativen Schritt-/Einrichtungs-Screenshots dieser elf Sprachen angesehen.
 Die Dateien liegen unter `app-store/locales/<Sprache>/previews/`; Ausgangsdaten, Tempo und Posterzeitcodes
 stehen im jeweiligen Manifest. Der Audit besteht einschließlich übereinstimmender Spurdauern.
 
@@ -77,7 +77,8 @@ stehen im jeweiligen Manifest. Der Audit besteht einschließlich übereinstimmen
 | Französisch | `38765595100` · `364f9bf` · 4/4 native Tests | `38770563352` · `955333d` | PASS · drei Videos und Poster |
 | Italienisch, Niederländisch | `38765595100` · `364f9bf` · je 4/4 native Tests | `38770999865` · `f146cd9` | PASS · je drei Videos und Poster |
 | Koreanisch | `38765595100` · `364f9bf` · 4/4 native Tests | `38771629526` · `f146cd9` | PASS · drei Videos und Poster |
-| Übrige sieben Sprachen | `38765595100` · `364f9bf` | laufend | noch nicht vollständig geprüft/abgelegt |
+| Polnisch, Portugiesisch (Portugal) | `38765595100` · `364f9bf` · je 4/4 native Tests | `38772655624` · `1836474` | PASS · je drei Videos und Poster |
+| Übrige fünf Sprachen | `38765595100` · `364f9bf`, Russisch mit Wiederholung | laufend | noch nicht vollständig geprüft/abgelegt |
 
 Die ersten drei Sprachen bestanden jeweils 4/4 native Tests; der anschließende Export scheiterte jedoch
 an variablen Simulator-Bildraten. Ein Studio-Clip wurde trotz gekürzter Wandzeitsegmente 36,8 s lang.
@@ -97,7 +98,8 @@ ein zurückgelassener Recorder-Prozess. Die genaue alte Fehlerantwort wurde nich
 Die Aufnahmehilfe wartet jetzt bis zu 45 statt zehn Sekunden auf Bereitschaft und beendet einen
 fehlgeschlagenen Start zuverlässig. XCTest wartet auf die Antwort einschließlich Bereinigung bis 90 s,
 zeigt deren Fehlertext und archiviert die Steuerantworten. Diese Hypothese wird mit einem frischen
-russischen Simulator geprüft; die fehlgeschlagene Serie wird nicht als bestanden gewertet.
+russischen Simulator geprüft: `38774007322` auf `6ee08f3`. Die fehlgeschlagene Serie wird nicht
+als bestanden gewertet; ihre zehn Einrichtungs-Screenshots wurden angesehen und separat aufbewahrt.
 
 Die Probeläufe fanden und korrigierten Fehler in der Aufnahmehilfe: sechs vorinstallierte Fremdfotos,
 verzögerte System-Fotoabfrage, fehlendes `@Sendable` in einer PhotoKit-Änderung, ausgeblendete
@@ -121,7 +123,7 @@ Checkout der Runner schließt das wachsende fertige Bildarchiv aus, behält jedo
 Linux Swift 6.4.1: **394 Tests / 44 Suites PASS**. Textgenerator `--check`: **PASS**, 1572 verwendete
 Kennungen, 2559 Einträge, 16 Sprachen. Neue App-Texte wurden nicht eingeführt.
 
-Noch ausstehend: 21 weitere geprüfte Vorschauen und abschließender Sprach-/Formatabgleich.
+Noch ausstehend: 15 weitere geprüfte Vorschauen und abschließender Sprach-/Formatabgleich.
 Dokumentenscanner/Kamera ist wegen fehlender Kamerafunktion im Simulator **NOT RUN**, mit nativem
 Crashbericht aus dem verworfenen Scannerpilot belegt. Echtes Face ID, iCloud, 30.000 Fotos und Wärme
 bleiben **NOT RUN** ohne physisches iPhone; der Foto-Bildsatz deckt den Videoeditor nicht ab.

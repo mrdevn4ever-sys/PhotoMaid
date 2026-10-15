@@ -1,6 +1,6 @@
 # PhotoMaid – Sprachindex
 
-Alle Aufnahmen in Dark Mode. Vorhanden: **1969 Original-Screenshots in 16 von 16 Sprachen**, **27 von 48 Vorschauvideos**. Seitenarchiv, zehn Store-Vorschläge und Vorschauen werden je Sprache getrennt abgelegt.
+Alle Aufnahmen in Dark Mode. Vorhanden: **1969 Original-Screenshots in 16 von 16 Sprachen**, **33 von 48 Vorschauvideos**. Seitenarchiv, zehn Store-Vorschläge und Vorschauen werden je Sprache getrennt abgelegt.
 
 | Sprache | App → App Store Connect | Screenshots | Videos |
 |---|---|---:|---:|
@@ -13,8 +13,8 @@ Alle Aufnahmen in Dark Mode. Vorhanden: **1969 Original-Screenshots in 16 von 16
 | [Japanisch](locales/ja/README.md) | `ja` → `ja` | 123 / Auswahl 10 | 3 / 3 |
 | [Koreanisch](locales/ko/README.md) | `ko` → `ko` | 123 / Auswahl 10 | 3 / 3 |
 | [Niederländisch](locales/nl/README.md) | `nl` → `nl-NL` | 123 / Auswahl 10 | 3 / 3 |
-| [Polnisch](locales/pl/README.md) | `pl` → `pl` | 123 / Auswahl 10 | 0 / 3 |
-| [Portugiesisch (Portugal)](locales/pt-PT/README.md) | `pt-PT` → `pt-PT` | 124 / Auswahl 10 | 0 / 3 |
+| [Polnisch](locales/pl/README.md) | `pl` → `pl` | 123 / Auswahl 10 | 3 / 3 |
+| [Portugiesisch (Portugal)](locales/pt-PT/README.md) | `pt-PT` → `pt-PT` | 124 / Auswahl 10 | 3 / 3 |
 | [Rumänisch](locales/ro/README.md) | `ro` → `ro` | 123 / Auswahl 10 | 0 / 3 |
 | [Russisch](locales/ru/README.md) | `ru` → `ru` | 123 / Auswahl 10 | 0 / 3 |
 | [Türkisch](locales/tr/README.md) | `tr` → `tr` | 123 / Auswahl 10 | 0 / 3 |
