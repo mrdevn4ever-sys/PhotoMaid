@@ -260,7 +260,8 @@ final class RealLibraryTests: XCTestCase {
             let before = position()
             e("feed.stage").swipeLeft(velocity: .fast)
             if index == 50 {
-                checkpoint("real_ad_after_50", app: app, hierarchy: false)
+                // The second interval records the open ad. A screenshot here costs >1.5 s
+                // on CI, so execute the locked down gesture before recording its result.
                 quickDownStart.press(forDuration: 0.01, thenDragTo: quickDownEnd,
                                      withVelocity: .fast, thenHoldForDuration: 0)
                 XCTAssertFalse(e("feed.ad").exists, "Down dismisses even while the card is locked")
@@ -316,7 +317,7 @@ final class RealLibraryTests: XCTestCase {
         XCTAssertEqual(position(), before + 1)
         XCTAssertTrue(e("later.pill").waitForExistence(timeout: 3))
         XCTAssertTrue(e("later.pill").label.contains("2"))
-        XCTAssertTrue(e("later.pill").label.contains("Ändern"))
+        XCTAssertTrue(e("later.pill").buttons["Ändern"].exists)
         before = position()
         e("feed.stage").swipeDown()
         snap("down_previous")
