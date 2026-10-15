@@ -12,12 +12,16 @@ sleep 5
 xcrun simctl io "$udid" screenshot "$out/before.png"
 # A running Simulator ignores CurrentDeviceUDID. Open the selected Xcode's app afresh.
 osascript -e 'tell application "Simulator" to quit'
+for attempt in {1..20}; do
+  if ! pgrep -x Simulator > /dev/null; then break; fi
+  sleep 0.25
+done
 simulator_app="$(xcode-select -p)/Applications/Simulator.app"
-open -a "$simulator_app" --args -CurrentDeviceUDID "$udid"
+open -n -a "$simulator_app" --args -CurrentDeviceUDID "$udid"
 osascript > "$out/menu.log" 2>&1 <<'APPLESCRIPT'
 with timeout of 20 seconds
   tell application "Simulator" to activate
-  delay 2
+  delay 5
   tell application "System Events"
     tell process "Simulator"
       set frontmost to true

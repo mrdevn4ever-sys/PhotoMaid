@@ -149,6 +149,8 @@ jobs:
       - name: PhotoKit-Starttest (Einführung, Einwilligung, vier Kaltstarts)
         if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && steps.build.outcome == 'success' && steps.media.outcome == 'success'
         continue-on-error: true
+        env:
+          PM_UI_CASE: ${{ inputs.ui_case }}
         run: bash scripts/ci/simulator_ui_tests.sh '${{ steps.sim.outputs.udid }}' "$RUNNER_TEMP/PhotoMaidDerived" "$RUNNER_TEMP/simulator-ui" real-start
       - name: PhotoKit-Startbelege sofort bereitstellen
         uses: actions/upload-artifact@v4

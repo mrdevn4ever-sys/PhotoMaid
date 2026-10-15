@@ -90,7 +90,8 @@ extension XCTestCase {
             }
             if usesAds, app.staticTexts["Our app wants to stay free for you"].exists {
                 checkpoint("\(prefix)_tracking_explainer_\(step)", app: app)
-                let next = app.buttons["Continue"].firstMatch
+                // UMP's transitioning control has different legacy/modern AX types on iOS 26.
+                let next = app.descendants(matching: .any).matching(NSPredicate(format: "label == 'Continue'")).firstMatch
                 if next.exists && next.isHittable {
                     next.tap()
                     handled = true
