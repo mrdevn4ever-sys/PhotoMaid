@@ -1,6 +1,49 @@
 # Implementierungsstatus
 
-Stand: 15.10.2026 · Branch `claude/fixes-analysis-library-vault-20261014` · Build-7-Ausgangsstand, Simulator-Fachprüfung abgeschlossen.
+Stand: 15.10.2026 · Branch `claude/fixes-analysis-library-vault-20261014` · Build 8 in TestFlight; nachträgliche Änderungen mit eigenem Prüfstatus unten.
+
+## Duplikate: alle Ressourcen und ausdrücklich gewählte iCloud-Originale (15.10.2026, nach Build 8)
+
+Auf die Nutzermeldung mit sehr vielen ungeprüften Medien: Der bisherige Scanner schloss Live Photos,
+bearbeitete Aufnahmen und RAW+JPEG pauschal aus. PhotoKit-Anfragen erlaubten ausschließlich lokale
+Bytes; gespeicherte „nur iCloud“-/Fehlerstände wurden 12/24 Stunden lang nicht erneut versucht.
+
+Commit `a52b8c4` ersetzt diese Einschränkungen:
+
+- Alle zulässigen Medien werden aufgenommen, auch wenn Pixelmaße/Dauer kein zweites Foto teilen:
+  eine identische Datei kann in einem verbundenen Ordner liegen.
+- Mehrteilige Medien werden über sämtliche Ressourcen verglichen, mit Rolle, Länge und SHA-256.
+  Reihenfolge und Dateinamen sind unerheblich; ein abweichendes Live-Video, RAW/JPEG oder eine Bearbeitung
+  verhindert eine falsche Duplikatgruppe. Einzelressourcen bleiben mit gewöhnlichen Dateien vergleichbar.
+- **„iCloud-Originale einbeziehen“** ist ausdrücklich aktivierbar und standardmäßig aus. Erst wenn lokale
+  Bytes fehlen, dürfen Originale bei nicht kostenpflichtiger/beschränkter WLAN-Verbindung geladen werden.
+  Bei WLAN-Verlust wird die Anforderung abgebrochen. Es entstehen keine Klartext-Tempdateien und kein Upload.
+- Unbekannte Größen und beide Prüfsummen werden zusammen gestreamt. Gemessene Inhalte bleiben gecacht;
+  unlesbare/iCloud-Einträge werden bei „Erneut suchen“ sofort wieder versucht. Verbundene Ordner werden
+  frisch ohne die frühere 20.000-Dateien-Grenze inventarisiert; unbekannte Dateigrößen werden tatsächlich gemessen.
+  Auch teilweise nicht lesbare Ordner oder eine abgebrochene Inventur gelten nicht als vollständig geprüft.
+- Einzelne Lesefehler und unvollständige/geänderte Streams stoppen den Rest nicht und gelten niemals als
+  bestätigte Kopien. Der Puffer ist begrenzt; Warten bleibt abbrechbar und hat eine Stillstandsfrist.
+  Fortschritt wird während der Arbeit aktualisiert und für die Oberfläche gedrosselt.
+- Bei ungeprüften Inhalten oder nicht lesbaren Quellen zeigt die App **„Suche noch unvollständig“**;
+  vorhandene Gruppen bleiben sichtbar. Es gibt keine abschließende grüne Entwarnung für ein Teilergebnis.
+  Inzwischen in den Tresor gelegte Inhalte werden vor der Veröffentlichung erneut ausgefiltert.
+
+Die Suche umfasst den erlaubten Bereich: freigegebene, nicht ausgenommene Medien und verbundene Ordner.
+Fehlende iOS-Berechtigungen, nicht erreichbare iCloud-Originale und beschädigte Ressourcen können weiterhin
+eine vollständige Prüfung verhindern; diese Lücken bleiben sichtbar. Kein automatisches Löschen.
+
+| Prüfung dieses Nachtrags | Status | Beleg |
+|---|---|---|
+| Linux-Kern, Swift 6.4.1 | PASS | 394 Tests in 44 Suites; 13 neue Regressionen für vollständige Ressourcen, unvollständige Streams, Fehler, Abbruch, Fortschritt und unbekannte Dateigrößen |
+| Texte / Generator / `--check` | PASS | 7 neue Texte in allen 16 Sprachen; 1568 verwendete Kennungen / 2555 Einträge |
+| Swift-6-Syntax / Patchprüfung | PASS | Geänderte iOS-Dateien und Screenshot-Tests mit `swiftc -frontend -parse`; keine iOS-Typprüfung |
+| iOS-Build / Unit-Tests / QA-Screenshots | BLOCKED | [CI `38689505928`](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38689505928) auf `a52b8c4`: beide Jobs vor dem Runner-Start durch GitHubs Zahlung/Ausgabenlimit blockiert; keine neuen Bilder |
+| Echte iCloud-Mediathek / 30.000 Originale | NOT RUN | Echtes iPhone mit iCloud und entsprechender Mediathek nötig |
+
+Screenshot-Regression ergänzt um `09a_duplicates_all_resources_and_cloud_option` und den echten Abschluss
+der Suche. Die UI-Prüfung muss nach Freigabe der Actions-Abrechnung nachgeholt werden. Build 8 enthält
+auch diesen Nachtrag noch nicht; kein neuer TestFlight-Upload gestartet. E1–E19 unverändert.
 
 ## Tresor: Löschen per Wischen und Auswahl (15.10.2026, nach Build 8)
 

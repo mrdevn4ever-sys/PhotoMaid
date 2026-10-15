@@ -25,11 +25,14 @@ final class FileIndex {
         for source in sources.sources {
             guard let root = sources.beginAccess(source.id) else { failed.append(source.id); continue }
             let id = source.id
-            let job = Task.detached(priority: .userInitiated) { try? FileScanner.scan(root: root, sourceID: id, limit: limit) }
+            let job = Task.detached(priority: .userInitiated) { try? FileScanner.scanReport(root: root, sourceID: id, limit: limit) }
             let result = await withTaskCancellationHandler { await job.value } onCancel: { job.cancel() }
             sources.endAccess(root)
             guard !Task.isCancelled else { return }
-            if let result { all.append(contentsOf: result) } else { failed.append(source.id) }
+            if let result {
+                all.append(contentsOf: result.entries)
+                if !result.complete { failed.append(source.id) }
+            } else { failed.append(source.id) }
             if Task.isCancelled { break }
         }
         self.all = all

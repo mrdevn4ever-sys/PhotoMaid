@@ -172,6 +172,12 @@ enum FileKindFilter: String, CaseIterable, Identifiable, Sendable {
     }
 }
 
+/// Eine teilweise lesbare Quelle liefert ihre erreichbaren Dateien und bleibt als unvollständig markiert.
+struct FileScanReport: Sendable {
+    let entries: [FileEntry]
+    let complete: Bool
+}
+
 /// Inventarisiert eine Quelle koordiniert, ohne Symlinks zu folgen und ohne Pakete zu öffnen.
 enum FileScanner {
     static let keys: [URLResourceKey] = [.isRegularFileKey, .isSymbolicLinkKey, .fileSizeKey, .totalFileSizeKey,
@@ -179,18 +185,23 @@ enum FileScanner {
                                          .fileResourceIdentifierKey, .nameKey]
 
     static func scan(root: URL, sourceID: ConnectedSourceID, limit: Int = 20_000) throws -> [FileEntry] {
+        try scanReport(root: root, sourceID: sourceID, limit: limit).entries
+    }
+
+    static func scanReport(root: URL, sourceID: ConnectedSourceID, limit: Int = 20_000) throws -> FileScanReport {
         var result: [FileEntry] = []
+        var complete = true
         var coordError: NSError?
         var innerError: Error?
         NSFileCoordinator().coordinate(readingItemAt: root, options: [.immediatelyAvailableMetadataOnly], error: &coordError) { dir in
             guard let e = FileManager.default.enumerator(at: dir, includingPropertiesForKeys: keys,
                                                          options: [.skipsHiddenFiles, .skipsPackageDescendants],
-                                                         errorHandler: { _, _ in true }) else { return }
+                                                         errorHandler: { _, _ in complete = false; return true }) else { complete = false; return }
             let rootPath = dir.standardizedFileURL.path
             for case let url as URL in e {
-                if result.count >= limit { break }
+                if result.count >= limit { complete = false; break }
                 if Task.isCancelled { innerError = CancellationError(); break }
-                guard let v = try? url.resourceValues(forKeys: Set(keys)) else { continue }
+                guard let v = try? url.resourceValues(forKeys: Set(keys)) else { complete = false; continue }
                 if v.isSymbolicLink == true { continue }       // keinen Symlinks folgen
                 guard v.isRegularFile == true else { continue }
                 let path = url.standardizedFileURL.path
@@ -208,7 +219,7 @@ enum FileScanner {
         }
         if let coordError { throw coordError }
         if let innerError { throw innerError }
-        return result
+        return FileScanReport(entries: result, complete: complete)
     }
 
     /// Nur Pfadprüfung (ohne Existenz): kein `..`, nicht absolut, Ziel liegt innerhalb der Quelle.
