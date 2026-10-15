@@ -42,11 +42,14 @@ final class AppStoreCaptureTests: XCTestCase {
     private func pause(_ seconds: Double = 1) { Thread.sleep(forTimeInterval: seconds) }
     private func tap(_ element: XCUIElement) {
         XCTAssertTrue(element.exists || element.waitForExistence(timeout: 15), "Missing \(element)")
-        for _ in 0..<6 where !element.isHittable { app.swipeUp() }
+        for _ in 0..<6 { if element.isHittable { break }; app.swipeUp() }
         XCTAssertTrue(element.isHittable)
         element.tap(); pause(0.7)
     }
-    private func button(_ key: String) -> XCUIElement { app.buttons[t(key)].firstMatch }
+    private func button(_ key: String) -> XCUIElement {
+        let query = app.buttons.matching(NSPredicate(format:"label == %@", t(key)))
+        return query.allElementsBoundByAccessibilityElement.first(where: \.isHittable) ?? query.firstMatch
+    }
     private func launch(_ page: String) {
         let navigation = output.appendingPathComponent("navigation")
         if let app, app.state == .runningForeground,
@@ -85,9 +88,12 @@ final class AppStoreCaptureTests: XCTestCase {
     }
     private func snap(_ name: String) {
         pause(0.7)
-        let texts = app.staticTexts.allElementsBoundByAccessibilityElement.map(\.label)
-        let invalid = texts.filter { $0.contains("%1$") || $0.contains("%2$") || $0.hasPrefix("pro2_") || $0.hasPrefix("ana2_") || $0.hasPrefix("vault2_") || $0.range(of:"^[a-z][a-z0-9]*(?:_[a-z0-9]+)+$",options:.regularExpression) != nil }
-        XCTAssertTrue(invalid.isEmpty, "Untranslated UI: \(invalid)")
+        // One accessibility snapshot/query, rather than one IPC round trip per text.
+        let invalid = app.descendants(matching:.any).matching(NSPredicate(
+            format:"label CONTAINS %@ OR label CONTAINS %@ OR label MATCHES %@ OR label MATCHES %@",
+            "%1$", "%2$", "^[a-z][a-z0-9]*(?:_[a-z0-9]+)+$", #".*%(?:[0-9]+\$)?(?:lld|ld|d|u|@|f).*"#
+        )).allElementsBoundByAccessibilityElement
+        XCTAssertTrue(invalid.isEmpty, "Untranslated UI: \(invalid.map(\.label))")
         let screenshot = XCUIScreen.main.screenshot()
         do {
             try screenshot.pngRepresentation.write(to: output.appendingPathComponent("screenshots/\(name).png"), options: .atomic)
@@ -135,10 +141,12 @@ final class AppStoreCaptureTests: XCTestCase {
     private func editorTool(_ tool: String) {
         let target = e("editor.tool." + tool)
         let row = e("editor.tools")
-        for _ in 0..<6 where !target.isHittable {
+        for _ in 0..<6 {
+            if target.isHittable { break }
             if language == "ar" { row.swipeRight() } else { row.swipeLeft() }
         }
-        for _ in 0..<6 where !target.isHittable {
+        for _ in 0..<6 {
+            if target.isHittable { break }
             if language == "ar" { row.swipeLeft() } else { row.swipeRight() }
         }
         tap(target)
@@ -167,7 +175,7 @@ final class AppStoreCaptureTests: XCTestCase {
             ("albums",nil,false),("album",nil,false),("grid",nil,false),("favorites",nil,false),("search",nil,false),("selection",nil,false),("tags",nil,false),("hidden",nil,false),
             ("edits",nil,false),("collage",nil,false),("movie",nil,true),
             ("tools-resize",nil,true),("tools-convert",nil,true),("tools-removeLocation",nil,true),("tools-stitch",nil,true),("tools-gif",nil,true),("tools-batchEdit",nil,true),
-            ("scanner",nil,false),("received",nil,false),("workflows",nil,true),("pdf",nil,true),("pdf-studio",nil,false),("archive",nil,true),
+            ("received",nil,false),("workflows",nil,true),("pdf",nil,true),("pdf-studio",nil,false),("archive",nil,true),
             ("settings","settings",true),("pro","pro_title",true),("privacy","privacy_title",true),("help","help",true),
             ("excluded-albums",nil,false),("backup","backup_title",true),("controls","fc_title",true),
             ("viewer",nil,false),("slideshow",nil,false)
@@ -183,7 +191,8 @@ final class AppStoreCaptureTests: XCTestCase {
                     var finished = false
                     repeat {
                         let values = (progress.value as? String ?? "").split(separator:"/").compactMap { Int($0) }
-                        if values.count == 2 && values[1] > 0 && values[0] == values[1] { finished = true; break }
+                        let done = app.descendants(matching:.any).matching(NSPredicate(format:"label == %@",t("ana2_stage_finished"))).firstMatch
+                        if (values.count == 2 && values[1] > 0 && values[0] == values[1]) || done.exists { finished = true; break }
                         pause(1)
                     } while Date() < deadline
                     XCTAssertTrue(finished,"Actual on-device analysis must finish: \(page)")
@@ -237,7 +246,10 @@ final class AppStoreCaptureTests: XCTestCase {
 
     private func openVault() {
         launch("vault")
-        for _ in 0..<100 where !app.secureTextFields.firstMatch.exists && !button("onb_next").exists { pause(0.1) }
+        for _ in 0..<100 {
+            if app.secureTextFields.firstMatch.exists || button("onb_next").exists { break }
+            pause(0.1)
+        }
         if app.secureTextFields.firstMatch.exists {
             let code = app.secureTextFields.firstMatch; code.tap(); code.typeText("628491")
         } else {

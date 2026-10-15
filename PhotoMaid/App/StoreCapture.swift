@@ -100,7 +100,6 @@ enum StoreCapture {
         case "editor":
             if let id = ids.first { app.fullScreen = .editor(assetID: id) }; return
         case "slideshow": app.fullScreen = .slideshow(ids: ids); return
-        case "scanner": app.fullScreen = .scanner; return
         case "vault": VaultStore.shared.present(); return
         case "trash": route = .trash
         case "later": route = .later
