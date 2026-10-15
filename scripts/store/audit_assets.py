@@ -33,6 +33,9 @@ def audit_locale(root,language,photos,require_videos):
         video_manifest=json.loads((root/'previews/manifest.json').read_text());assert len(video_manifest)==3
         for item in video_manifest:
             path=root/'previews'/item['file'];assert 'previews/'+item['file']in viewed
+            poster=root/'previews'/item['poster_file']
+            assert 'previews/'+item['poster_file']in viewed and digest(poster)==item['poster_sha256']
+            with Image.open(poster)as image:assert image.size==(886,1920)
             stream=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_streams','-show_format','-of','json',str(path)]))
             video=next(s for s in stream['streams']if s['codec_type']=='video');audio=next(s for s in stream['streams']if s['codec_type']=='audio')
             duration=float(stream['format']['duration'])

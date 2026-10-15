@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Cuts actual screen recordings into three localized, silent App Store previews."""
-import argparse,json,subprocess,math
+import argparse,hashlib,json,subprocess,math
 from pathlib import Path
 
 def run(args):subprocess.run(args,check=True,stdout=subprocess.DEVNULL)
@@ -33,8 +33,9 @@ def main():
   seconds=float(result['format']['duration']);assert 15<=seconds<=30 and (video['width'],video['height'])==(886,1920)
   assert video['codec_name']=='h264' and video['r_frame_rate']=='30/1' and audio['channels']==2 and target.stat().st_size<500_000_000
   poster_time=6 if clip=='03-vault' else 1
-  run(['ffmpeg','-hide_banner','-loglevel','error','-y','-ss',str(poster_time),'-i',str(target),'-frames:v','1',str(a.destination/(clip+'-poster.png'))])
-  report.append({'file':target.name,'locale':a.locale,'duration':seconds,'resolution':[886,1920],'fps':30,'poster_time':poster_time,'poster_timecode':f'00:00:{poster_time:02}:00','audio':'AAC stereo, silence','source':'Actual simulator screen recording; no generated UI','segments':[{'start':s,'duration':d,'label':l}for s,d,l in segments],'status':'PASS'})
+  poster=a.destination/(clip+'-poster.png')
+  run(['ffmpeg','-hide_banner','-loglevel','error','-y','-ss',str(poster_time),'-i',str(target),'-frames:v','1',str(poster)])
+  report.append({'file':target.name,'locale':a.locale,'duration':seconds,'resolution':[886,1920],'fps':30,'poster_file':poster.name,'poster_sha256':hashlib.sha256(poster.read_bytes()).hexdigest(),'poster_time':poster_time,'poster_timecode':f'00:00:{poster_time:02}:00','audio':'AAC stereo, silence','source':'Actual simulator screen recording; no generated UI','segments':[{'start':s,'duration':d,'label':l}for s,d,l in segments],'status':'PASS'})
  (a.destination/'manifest.json').write_text(json.dumps(report,indent=2)+'\n')
  print('PASS',a.locale,[(x['file'],x['duration'])for x in report])
 if __name__=='__main__':main()

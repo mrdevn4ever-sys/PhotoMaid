@@ -42,6 +42,19 @@ def main():
                 draw.text(((cell%4)*300+5,y+650),f'{path.stem} | {seconds:.1f}s',font=font(13),fill='white')
         name=path.stem+'-video.jpg';sheet.save(out/name,quality=92)
         manifest.append({'sheet':name,'kind':'video','originals':[{'file':str(path.relative_to(root)),'sha256':hashlib.sha256(path.read_bytes()).hexdigest()}],'sample_times':times,'full_decode':'PASS','review':'PENDING'})
+    posters=sorted((root/'previews').glob('*-poster.png'))
+    if posters:
+        page=Image.new('RGB',(1200,710),'#181818');draw=ImageDraw.Draw(page);entries=[]
+        assert len(posters)<=3
+        for cell,path in enumerate(posters):
+            with Image.open(path)as original:
+                assert original.size==(886,1920)
+                thumbnail=ImageOps.contain(original.convert('RGB'),(290,640))
+            x=cell*400+(400-thumbnail.width)//2;page.paste(thumbnail,(x,0))
+            draw.text((cell*400+10,650),path.stem,font=font(14),fill='white')
+            entries.append({'file':str(path.relative_to(root)),'sha256':hashlib.sha256(path.read_bytes()).hexdigest()})
+        page.save(out/'posters.jpg',quality=92)
+        manifest.append({'sheet':'posters.jpg','kind':'posters','originals':entries,'review':'PENDING'})
     (out/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     print(root.name,len(paths),'screenshots,',len(list((root/'previews').glob('*.mp4'))),'videos,',len(manifest),'review sheets')
 
