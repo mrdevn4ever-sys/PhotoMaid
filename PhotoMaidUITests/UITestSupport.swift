@@ -75,6 +75,7 @@ extension XCTestCase {
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         let usesAds = !app.launchArguments.contains("-qa-fixtures")
         var systemPromptExpected = photos
+        var trackingRequested = false
         for step in 0..<4 {
             var handled = false
             // iOS 26's rich Photos sheet is not always exposed as an XCUI Alert.
@@ -88,14 +89,22 @@ extension XCTestCase {
                     handled = true
                 }
             }
-            if usesAds, app.staticTexts["Our app wants to stay free for you"].exists {
-                checkpoint("\(prefix)_tracking_explainer_\(step)", app: app)
-                // UMP's transitioning control has different legacy/modern AX types on iOS 26.
-                let next = app.descendants(matching: .any).matching(NSPredicate(format: "label == 'Continue'")).firstMatch
-                if next.exists && next.isHittable {
-                    next.tap()
-                    handled = true
-                    systemPromptExpected = true
+            if usesAds, !trackingRequested, app.staticTexts["Our app wants to stay free for you"].exists {
+                // UMP can remain in the app's AX tree behind the system ATT sheet. Resolve
+                // that interruption before querying Continue, which disappears when ATT closes.
+                app.coordinate(withNormalizedOffset: CGVector(dx: 0.98, dy: 0.02)).tap()
+                if app.staticTexts["Our app wants to stay free for you"].exists {
+                    checkpoint("\(prefix)_tracking_explainer_\(step)", app: app)
+                    let next = app.descendants(matching: .any).matching(NSPredicate(format: "label == 'Continue'")).firstMatch
+                    if next.exists && next.isHittable {
+                        trackingRequested = true
+                        next.tap()
+                        handled = true
+                        systemPromptExpected = true
+                        Thread.sleep(forTimeInterval: 0.5)
+                        // The monitor acts on ATT, never on a disappearing UMP child.
+                        app.coordinate(withNormalizedOffset: CGVector(dx: 0.98, dy: 0.02)).tap()
+                    }
                 }
             }
             if usesAds {

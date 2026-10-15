@@ -17,7 +17,7 @@ on:
         description: "iOS-Runtime (26.2 für StoreKit Test; 26.5 hat Apples CLI-Konfigurationsfehler)"
         type: choice
         options: [latest, "26.2"]
-        default: latest
+        default: "26.2"
       ui_phase:
         description: "UI-Durchlauf (gezielte Wiederholung nach der ersten Gesamtprüfung)"
         type: choice
@@ -150,7 +150,7 @@ jobs:
         if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && steps.build.outcome == 'success' && steps.media.outcome == 'success'
         continue-on-error: true
         env:
-          PM_UI_CASE: ${{ inputs.ui_case }}
+          PM_UI_CASE: ${{ inputs.ui_phase == 'start' && 'start' || inputs.ui_case }}
         run: bash scripts/ci/simulator_ui_tests.sh '${{ steps.sim.outputs.udid }}' "$RUNNER_TEMP/PhotoMaidDerived" "$RUNNER_TEMP/simulator-ui" real-start
       - name: PhotoKit-Startbelege sofort bereitstellen
         uses: actions/upload-artifact@v4
