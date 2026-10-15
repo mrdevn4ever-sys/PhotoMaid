@@ -387,7 +387,9 @@ final class AppStoreCaptureTests: XCTestCase {
         XCTFail("Recording controller did not acknowledge \(operation)")
     }
     private func mark(_ label: String) throws {
-        let entry:[String:Any] = ["clip":try XCTUnwrap(clip),"label":label,"time":Date().timeIntervalSince1970]
+        let name = try XCTUnwrap(clip)
+        snap("preview-\(name)-\(label)")
+        let entry:[String:Any] = ["clip":name,"label":label,"time":Date().timeIntervalSince1970]
         let path=output.appendingPathComponent("markers.jsonl")
         var data=(try? Data(contentsOf:path)) ?? Data()
         data.append(try JSONSerialization.data(withJSONObject:entry));data.append(10)
@@ -410,12 +412,18 @@ final class AppStoreCaptureTests: XCTestCase {
         try recording("start",name:"02-studio")
         try mark("editor"); pause(3)
         editorTool("adjust")
-        if app.sliders.firstMatch.exists { app.sliders.firstMatch.adjust(toNormalizedSliderPosition:0.58) }
+        let exposure = app.otherElements.matching(NSPredicate(format:"label == %@",t("edit_adj_exposure"))).firstMatch
+        XCTAssertTrue(exposure.waitForExistence(timeout:10))
+        let originalExposure = exposure.value as? String
+        exposure.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.75)).press(forDuration:0.1,
+            thenDragTo:exposure.coordinate(withNormalizedOffset:CGVector(dx:0.58,dy:0.75)))
         waitForEditorPreview()
+        XCTAssertNotEqual(exposure.value as? String,originalExposure,"Exposure must actually change")
         try mark("adjust"); pause(3)
         editorTool("filter")
         let mono = button("edit_filter_mono")
-        if mono.exists && mono.isHittable { tap(mono) }
+        tap(mono)
+        XCTAssertTrue(mono.isSelected,"Mono filter must actually be selected")
         waitForEditorPreview()
         try mark("filter"); pause(3)
         editorTool("markup")
@@ -435,9 +443,13 @@ final class AppStoreCaptureTests: XCTestCase {
         tap(vaultItems().firstMatch); try mark("viewer"); pause(3)
         let photo=e("vault.viewer.photo")
         XCTAssertTrue(photo.waitForExistence(timeout:10))
-        photo.tap(); try mark("hidden-controls"); pause(3)
+        photo.tap()
+        XCTAssertTrue(app.buttons["vault.viewer.close"].waitForNonExistence(timeout:5),"Viewer controls must hide")
+        try mark("hidden-controls"); pause(3)
         photo.doubleTap(); try mark("zoom"); pause(3)
-        photo.doubleTap(); photo.tap(); try mark("controls"); pause(4)
+        photo.doubleTap(); photo.tap()
+        XCTAssertTrue(app.buttons["vault.viewer.close"].waitForExistence(timeout:5),"Viewer controls must return")
+        try mark("controls"); pause(4)
         try recording("stop",name:"03-vault")
     }
 }
