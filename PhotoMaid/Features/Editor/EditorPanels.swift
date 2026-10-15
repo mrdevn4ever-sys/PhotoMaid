@@ -150,7 +150,10 @@ struct FilterPanel: View {
                         } label: {
                             VStack(spacing: 4) {
                                 ZStack {
-                                    if let t = thumbs[f] { Image(uiImage: t).resizable().scaledToFill() } else { Color.white.opacity(0.1) }
+                                    if let t = thumbs[f] {
+                                        Image(uiImage: t).resizable().scaledToFill()
+                                            .accessibilityIdentifier("editor.filter.thumbnail.\(f.rawValue)")
+                                    } else { Color.white.opacity(0.1) }
                                 }
                                 .frame(width: 64, height: 64)
                                 .clipShape(.rect(cornerRadius: 8))

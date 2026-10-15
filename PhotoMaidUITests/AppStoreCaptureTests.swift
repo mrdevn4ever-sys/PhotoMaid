@@ -87,6 +87,7 @@ final class AppStoreCaptureTests: XCTestCase {
         pause(1.4)
     }
     private func snap(_ name: String) {
+        if name.hasPrefix("editor") { waitForEditorPreview() }
         pause(0.7)
         // One accessibility snapshot/query, rather than one IPC round trip per text.
         let invalid = app.descendants(matching:.any).matching(NSPredicate(
@@ -104,6 +105,11 @@ final class AppStoreCaptureTests: XCTestCase {
     private func capturePage(_ page: String, title: String? = nil, bottom: Bool = false) {
         launch(page)
         if let title { XCTAssertTrue(app.navigationBars[t(title)].waitForExistence(timeout: 15), page) }
+        if page == "search" {
+            let deadline = Date().addingTimeInterval(45)
+            while app.activityIndicators.firstMatch.exists && Date() < deadline { pause(0.2) }
+            XCTAssertFalse(app.activityIndicators.firstMatch.exists,"Filename indexing must finish")
+        }
         snap(page)
         if bottom { app.swipeUp(); app.swipeUp(); snap(page + "-bottom") }
     }
@@ -158,6 +164,15 @@ final class AppStoreCaptureTests: XCTestCase {
         XCTAssertTrue(isVisible(), "Editor tool must be scrolled into view: \(tool)")
         tap(target)
         XCTAssertTrue(e("editor.stage").exists)
+        if tool == "filter" {
+            XCTAssertTrue(e("editor.filter.thumbnail.NONE").waitForExistence(timeout:60),"Actual filter thumbnails must finish")
+        }
+        waitForEditorPreview()
+    }
+    private func waitForEditorPreview() {
+        let deadline = Date().addingTimeInterval(60)
+        while e("editor.preview.rendering").exists && Date() < deadline { pause(0.2) }
+        XCTAssertFalse(e("editor.preview.rendering").exists,"Actual editor preview must finish")
     }
 
     func test00EveryPageInDarkMode() throws {
@@ -362,15 +377,18 @@ final class AppStoreCaptureTests: XCTestCase {
         try mark("editor"); pause(3)
         editorTool("adjust")
         if app.sliders.firstMatch.exists { app.sliders.firstMatch.adjust(toNormalizedSliderPosition:0.58) }
+        waitForEditorPreview()
         try mark("adjust"); pause(3)
         editorTool("filter")
         let mono = button("edit_filter_mono")
         if mono.exists && mono.isHittable { tap(mono) }
+        waitForEditorPreview()
         try mark("filter"); pause(3)
         editorTool("markup")
         tap(button("edit_mk_draw"))
         let stage=e("editor.stage")
         stage.coordinate(withNormalizedOffset:CGVector(dx:0.2,dy:0.77)).press(forDuration:0.1,thenDragTo:stage.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.7)))
+        waitForEditorPreview()
         try mark("markup"); pause(3)
         editorTool("frame"); try mark("frame"); pause(4)
         try recording("stop",name:"02-studio")
