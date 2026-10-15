@@ -36,7 +36,10 @@ final class VaultDeletionTests: XCTestCase {
         XCTAssertTrue(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"), object: element)], timeout: 8) == .completed)
     }
     private func items(_ scope: String) -> [XCUIElement] {
+        // Keep item identity after a row moves/disappears; an index-bound
+        // element otherwise silently starts referring to the next row.
         app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH %@", "vault.\(scope).item.")).allElementsBoundByIndex
+            .map { app.buttons[$0.identifier] }
     }
     private func id(_ item: XCUIElement) -> String { item.identifier.components(separatedBy: ".").last! }
     private func select(_ scope: String) -> XCUIElement { app.buttons["vault.\(scope).select"] }
@@ -144,7 +147,7 @@ final class VaultDeletionTests: XCTestCase {
             tap(item, "import_selected_\(index)")
         }
         tap(app.buttons["Fertig"], "import_picker_done")
-        tap(app.alerts.buttons["In den Tresor legen"], "import_confirmed")
+        tap(app.alerts.buttons["In den Tresor"], "import_confirmed")
         // Originale bleiben in Fotos. NIE den destruktiven Systemknopf betätigen.
         XCTAssertTrue(system.alerts.firstMatch.waitForExistence(timeout: 60))
         checkpoint("vault_delete_system_photos_deletion_declined", app: system)
@@ -258,14 +261,15 @@ final class VaultDeletionTests: XCTestCase {
         for name in ["Notizen", "Hotelbuchung", "Reiseplan"] {
             tap(app.buttons["In den Tresor legen"], "file_add_" + name)
             tap(app.buttons["Dateien importieren"], "file_picker_" + name)
-            let browse = app.buttons.matching(NSPredicate(format: "label IN %@", ["Browse", "Durchsuchen"] as NSArray)).firstMatch
-            if browse.waitForExistence(timeout: 2) { tap(browse, "browse_" + name) }
+            let browse = app.tabBars.buttons.matching(NSPredicate(format: "label IN %@", ["Browse", "Durchsuchen"] as NSArray)).firstMatch
+            XCTAssertTrue(browse.waitForExistence(timeout: 15))
+            tap(browse, "browse_" + name)
             let local = app.descendants(matching: .any).matching(NSPredicate(format: "label IN %@", ["On My iPhone", "Auf meinem iPhone"] as NSArray)).firstMatch
-            if local.waitForExistence(timeout: 2) { tap(local, "local_files_" + name) }
+            if local.waitForExistence(timeout: 8) { tap(local, "local_files_" + name) }
             let appFolder = app.descendants(matching: .any).matching(NSPredicate(format: "label == 'PhotoMaid'")).firstMatch
-            if appFolder.waitForExistence(timeout: 2) { tap(appFolder, "app_folder_" + name) }
+            if appFolder.waitForExistence(timeout: 8) { tap(appFolder, "app_folder_" + name) }
             let downloads = app.descendants(matching: .any).matching(NSPredicate(format: "label BEGINSWITH 'QA-Downloads'")).firstMatch
-            if downloads.waitForExistence(timeout: 2) { tap(downloads, "qa_folder_" + name) }
+            if downloads.waitForExistence(timeout: 8) { tap(downloads, "qa_folder_" + name) }
             let file = app.descendants(matching: .any).matching(NSPredicate(format: "label BEGINSWITH %@", name)).firstMatch
             tap(file, "file_chosen_" + name)
             let open = app.buttons.matching(NSPredicate(format: "label IN %@", ["Open", "Öffnen"] as NSArray)).firstMatch

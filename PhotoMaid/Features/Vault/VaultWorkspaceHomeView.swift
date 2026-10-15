@@ -94,7 +94,10 @@ struct VaultNotesView: View {
                     .accessibilityAddTraits(selection.contains(note.id) ? .isSelected : [])
                     .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                         if !selecting {
-                            Button(L("vault2_to_trash"), systemImage: "trash", role: .destructive) { pendingDelete = [note.id] }
+                            // A destructive swipe role removes the row optimistically,
+                            // before our confirmation. Keep it present until confirmed.
+                            Button(L("vault2_to_trash"), systemImage: "trash") { pendingDelete = [note.id] }
+                                .tint(.red)
                         }
                     }
                     .contextMenu {
@@ -359,7 +362,8 @@ struct VaultFilesView: View {
                     .accessibilityAddTraits(selection.contains(file.id) ? .isSelected : [])
                     .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                         if !selecting {
-                            Button(L("vault2_to_trash"), systemImage: "trash", role: .destructive) { pendingDelete = [file.id] }
+                            Button(L("vault2_to_trash"), systemImage: "trash") { pendingDelete = [file.id] }
+                                .tint(.red)
                         }
                     }
                     .contextMenu {

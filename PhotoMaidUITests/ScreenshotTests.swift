@@ -213,7 +213,9 @@ final class ScreenshotTests: XCTestCase {
         snap("editor_01_loaded_no_changes")
 
         let markup = element("editor.tool.markup")
-        for _ in 0..<4 where !markup.isHittable {
+        // Querying isHittable for an offscreen iOS 26 button can itself fail
+        // XCTest. Bring its frame into the strip before asking for hit points.
+        for _ in 0..<4 where !element("editor.tools").frame.contains(CGPoint(x: markup.frame.midX, y: markup.frame.midY)) {
             element("editor.tools").swipeLeft()
             snap("editor_02_reveal_markup")
         }

@@ -14,9 +14,9 @@ on:
         type: boolean
         default: false
       qa_case:
-        description: "QA-Oberflächen: alle oder gezielt Tresor-Löschen"
+        description: "QA-Oberflächen: alle, Tresor oder gezielt Fotoeditor bei Zoom"
         type: choice
-        options: [all, vault]
+        options: [all, vault, editor]
         default: all
       sim_runtime:
         description: "iOS-Runtime (26.2 für StoreKit Test; 26.5 hat Apples CLI-Konfigurationsfehler)"
@@ -59,7 +59,7 @@ on:
 
 concurrency:
   # Keep evidence from the previous commit while validating a fix on the same branch.
-  group: ci-${{ github.ref }}-${{ github.sha }}-${{ inputs.native_capture && 'native' || inputs.collect_run || inputs.ui_phase || 'all' }}-${{ inputs.ui_case || 'all' }}-${{ inputs.sim_runtime || 'latest' }}
+  group: ci-${{ github.ref }}-${{ github.sha }}-${{ inputs.native_capture && 'native' || inputs.collect_run || inputs.ui_phase || 'all' }}-${{ inputs.ui_case || 'all' }}-${{ inputs.sim_runtime || 'latest' }}-${{ inputs.qa_case || 'all' }}
   cancel-in-progress: true
 
 permissions:

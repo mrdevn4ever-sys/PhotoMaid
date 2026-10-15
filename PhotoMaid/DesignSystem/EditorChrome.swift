@@ -152,6 +152,7 @@ struct ZoomableStage<Content: View>: View {
                 pan = CGSize(width: panBase.width + translation.width, height: panBase.height + translation.height)
             }, ended: { panBase = pan }))
             .clipped()
+            .contentShape(.rect)
     }
 
     private func reset() {
