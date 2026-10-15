@@ -56,6 +56,7 @@ Leere Video-/Screenshot-Filter und Datei-/PDF-Eingänge entsprechen dem ausdrüc
 
 **Vorschau-Phase in Arbeit:** Erst nach Abschluss und Push aller Screenshot-Serien wurde
 `38764957492` auf `02e689f` für Deutsch, Englisch und Arabisch mit `store-previews` gestartet.
+`38765595100` auf `364f9bf` nimmt die übrigen 13 Sprachen auf; beide verwenden denselben App-/Test-Code.
 Drei Varianten je Sprache: Aufräumen, Studio, Tresor. Die UI-Tests prüfen tatsächliche Wischschritte,
 veränderte Belichtung, gewählten Monochromfilter, Zeichnen und echten Tresorzoom; jeder Videoschritt
 hat zusätzlich einen nativen Screenshot. Videoexport, vollständige Dekodierung, Sichtprüfung und

@@ -10,7 +10,7 @@ def digest(path): return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def audit_locale(root,language,photos,require_videos):
     provenance=json.loads((root/'provenance.json').read_text())
-    summary=provenance['capture_summary'];assert summary['result']=='Passed' and summary['failedTests']==0 and summary['skippedTests']==0
+    summary=provenance['capture_summary'];assert summary['result']=='Passed' and summary['passedTests']==2 and summary['failedTests']==0 and summary['skippedTests']==0
     inventory=provenance['actual_library'];assert inventory['count']==55 and set(inventory['sourceFiles'])==photos
     shots=json.loads((root/'screenshots.json').read_text());assert len(shots)>=80
     hashes=set()
@@ -28,11 +28,15 @@ def audit_locale(root,language,photos,require_videos):
     videos=[]
     if require_videos:
         preview_provenance=json.loads((root/'preview-provenance.json').read_text())
-        preview_summary=preview_provenance['capture_summary'];assert preview_summary['result']=='Passed' and preview_summary['failedTests']==0 and preview_summary['skippedTests']==0
-        assert preview_provenance['actual_library']['count']==55
+        preview_summary=preview_provenance['capture_summary'];assert preview_summary['result']=='Passed' and preview_summary['passedTests']==4 and preview_summary['failedTests']==0 and preview_summary['skippedTests']==0
+        assert preview_provenance['locale']==language and preview_provenance['mode']=='dark'
+        preview_inventory=preview_provenance['actual_library']
+        assert preview_inventory['count']==55 and set(preview_inventory['sourceFiles'])==photos
         video_manifest=json.loads((root/'previews/manifest.json').read_text());assert len(video_manifest)==3
         for item in video_manifest:
             path=root/'previews'/item['file'];assert 'previews/'+item['file']in viewed
+            assert item['locale']==language and item['status']=='PASS'
+            assert any(sheet['kind']=='video' and sheet['review']=='PASS' and sheet.get('full_decode')=='PASS' and any(original['file']=='previews/'+item['file'] for original in sheet['originals']) for sheet in reviews),'Video needs a reviewed full decode'
             poster=root/'previews'/item['poster_file']
             assert 'previews/'+item['poster_file']in viewed and digest(poster)==item['poster_sha256']
             with Image.open(poster)as image:assert image.size==(886,1920)

@@ -24,6 +24,9 @@ def main():
   text+='## Vorschlag für die Store-Seite\n\nDie Originaldatei öffnet sich beim Anklicken. Apple erlaubt bis zu zehn Screenshots pro Gerätegröße und Lokalisierung.\n\n'
   for path in selected:text+=f'<a href="app-store-selection/{path.name}"><img src="app-store-selection/{path.name}" width="180" alt="{path.stem}" /></a>\n'
   text+='\n## Vorschauvideos zur Auswahl\n\n'
+  if videos:
+   preview=json.loads((locale/'preview-provenance.json').read_text())
+   text+=f'[Video-Aufnahmelauf {preview["workflow_run"]}](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/{preview["workflow_run"]}) · [Native Video-Tests und Bildbestand](preview-provenance.json) · [Format und Poster-Zeitcodes](previews/manifest.json).\n\n'
   for path in videos:
    text+=f'- [{THEMES.get(path.stem,path.stem)}](previews/{path.name})'
    poster=locale/'previews'/(path.stem+'-poster.png')
