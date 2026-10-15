@@ -156,10 +156,16 @@ final class ScreenshotTests: XCTestCase {
 
         // 09 Duplikate (wie alle Werkzeuge kostenlos)
         if tap("hub.duplicates", "Duplikate") {
+            let cloud = app.switches["duplicates.includeCloud"]
+            XCTAssertTrue(cloud.waitForExistence(timeout: 5))
+            // Die Geräteaufnahme bleibt lokal. Der Schalter muss sichtbar und bedienbar sein.
+            if cloud.value as? String == "1" { cloud.coordinate(withNormalizedOffset: CGVector(dx: 0.92, dy: 0.5)).tap() }
+            XCTAssertEqual(cloud.value as? String, "0")
+            snap("09a_duplicates_all_resources_and_cloud_option")
             let start = app.buttons["Kopien suchen"]
             if waitFor(start, 8, "Kopien suchen") {
                 start.tap()
-                _ = app.buttons["Erneut suchen"].waitForExistence(timeout: 90)
+                XCTAssertTrue(app.buttons["Erneut suchen"].waitForExistence(timeout: 180))
             }
             settle(1.5)
             snap("09_duplicates")

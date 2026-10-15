@@ -2,23 +2,27 @@ import Photos
 import PhotoMaidCore
 import SwiftUI
 
-/// Identische Kopien (Pro): byte-gleich per SHA-256 auf diesem iPhone. Ähnliche Bilder zählen nicht.
-/// Live Photos, bearbeitete Medien und RAW+JPEG werden nicht verglichen (mehrere Ressourcen), sondern gezählt.
+/// Identische Kopien: alle zugehörigen Ressourcen per SHA-256, ausschließlich auf diesem iPhone.
 /// Gewählte Kopien kommen nur in den PhotoMaid-Papierkorb – nichts wird gelöscht.
 /// Der Suchlauf gehört `DuplicateScanner` und läuft weiter, wenn diese Seite verlassen wird.
 struct DuplicatesView: View {
     @Environment(AppModel.self) private var app
     @State private var scanner = DuplicateScanner.shared
+    @AppStorage("duplicates.includeCloud") private var includeCloud = false
 
     var body: some View {
         List {
             Section {
                 Text(key: "dup_explain").font(AppTypography.subheadline)
                 Text(key: "dup_how").font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
+                Toggle(L("dup_include_icloud"), isOn: $includeCloud)
+                    .disabled(scanner.isRunning)
+                    .accessibilityIdentifier("duplicates.includeCloud")
+                Text(key: "dup_icloud_hint").font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
                 if !app.capabilities.exactDuplicates {
                     PrimaryButton(title: L("pro_view")) { app.navigate(.pro) }
                 } else if scanner.isRunning {
-                    ProgressPanel(title: L(scanner.phase == .comparing ? "dup_checking" : "dup_measuring"),
+                    ProgressPanel(title: L(scanner.usingCloud ? "dup_icloud_loading" : (scanner.phase == .comparing ? "dup_checking" : "dup_measuring")),
                                   fraction: scanner.total > 0 ? Double(scanner.done) / Double(scanner.total) : nil,
                                   detail: scanner.total > 0 ? "\(scanner.done) / \(scanner.total)" : nil) { scanner.cancel() }
                         .listRowBackground(Color.clear)
@@ -29,8 +33,11 @@ struct DuplicatesView: View {
             }
             if let result = scanner.result {
                 if result.groups.isEmpty {
-                    EmptyState(symbol: "checkmark.circle", title: L("dup_none"), message: L("dup_none_message"))
+                    EmptyState(symbol: result.isComplete ? "checkmark.circle" : "exclamationmark.circle",
+                               title: L(result.isComplete ? "dup_none" : "dup_incomplete_title"),
+                               message: L(result.isComplete ? "dup_none_message" : "dup_incomplete_message"))
                         .listRowBackground(Color.clear)
+                        .accessibilityIdentifier(result.isComplete ? "duplicates.complete" : "duplicates.incomplete")
                 } else {
                     let total = result.groups.reduce(Int64(0)) { $0 + $1.extraCopiesBytes }
                     Section {
@@ -46,10 +53,11 @@ struct DuplicatesView: View {
                             .listRowBackground(Color.clear)
                     }
                 }
-                if !result.notComparable.isEmpty || !result.notChecked.isEmpty {
+                if !result.isComplete {
                     Section {
-                        if !result.notComparable.isEmpty { Text(verbatim: LP("dup_not_comparable", result.notComparable.count)) }
-                        if !result.notChecked.isEmpty { Text(verbatim: LP("dup_not_local", result.notChecked.count)) }
+                        if result.uncheckedCount > 0 { Text(verbatim: L("dup_unchecked", result.uncheckedCount)) }
+                        if result.unavailableSources > 0 { Text(verbatim: L("dup_sources_unavailable", result.unavailableSources)) }
+                        if !result.groups.isEmpty { Text(key: "dup_incomplete_message") }
                     }
                     .font(AppTypography.footnote)
                     .foregroundStyle(AppColors.textSecondary)
@@ -104,7 +112,7 @@ struct DuplicatesView: View {
             app.navigate(.pro)
             return
         }
-        scanner.start(app: app)
+        scanner.start(app: app, includeCloud: includeCloud)
     }
 
     private func moveSelected() async {
@@ -117,14 +125,18 @@ struct DuplicatesView: View {
 }
 
 /// Fotos über PhotoKit-Ressourcen, Dateien über die verbundenen Ordner (Zugriff wird für die Dauer geöffnet).
-final class CombinedByteProvider: ByteSourceProvider, @unchecked Sendable {
+final class CombinedByteProvider: DuplicateContentHashSource, @unchecked Sendable {
     private let photos: PhotoResourceByteProvider
     private let files: ConnectedSourceByteProvider
+    private let reader: DuplicatePhotoReader
+    private let lock = NSLock()
+    private var measuredFiles: [ItemReference: DuplicateContentMeasurement] = [:]
     private let openRoots: [URL]
 
     @MainActor
-    init(photos: PhotoResourceByteProvider, files entries: [FileEntry], sources: ConnectedSourceStore) {
+    init(photos: PhotoResourceByteProvider, reader: DuplicatePhotoReader, files entries: [FileEntry], sources: ConnectedSourceStore) {
         self.photos = photos
+        self.reader = reader
         var roots: [ConnectedSourceID: URL] = [:]
         for s in sources.sources { if let url = sources.beginAccess(s.id) { roots[s.id] = url } }
         openRoots = Array(roots.values)
@@ -136,6 +148,26 @@ final class CombinedByteProvider: ByteSourceProvider, @unchecked Sendable {
 
     func openStream(for item: ItemReference) throws -> (any ByteStream)? {
         item.provider == .photoLibrary ? try photos.openStream(for: item) : try files.openStream(for: item)
+    }
+
+    func contentHash(for item: ItemReference, limit: Int?, expectedSize: Int64?) throws -> String? {
+        if item.provider == .photoLibrary { return try reader.hash(item.localIdentifier, limit: limit, expectedSize: expectedSize) }
+        if let measured = lock.withLock({ measuredFiles[item] }), limit == nil || limit == 64 * 1024 {
+            if let expectedSize, measured.bytes != expectedSize { throw DuplicateReadError.incompleteOrChanged }
+            return limit == nil ? measured.full : measured.partial
+        }
+        return try DuplicateFinder().hash(item, source: files, limit: limit, expectedSize: expectedSize)
+    }
+
+    func measureFile(_ item: ItemReference) throws -> KnownSize {
+        do {
+            guard let value = try DuplicateFinder().measure(item, source: files) else { return .unknown }
+            lock.withLock { measuredFiles[item] = value }
+            return .known(value.bytes)
+        } catch {
+            try Task.checkCancellation()
+            return .unknown
+        }
     }
 
     @MainActor

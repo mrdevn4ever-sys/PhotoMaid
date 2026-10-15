@@ -120,6 +120,18 @@ actor MediaSizer {
         flush()
     }
 
+    /// Messung und Prüfsummen aus demselben vollständigen Duplikat-Lesedurchlauf.
+    /// Ein ausdrücklich erneut gestarteter Suchlauf darf alte „nur iCloud“-/Fehlerstände ersetzen.
+    func storeDuplicateMeasurements(_ values: [String: SizeRecord]) {
+        ensureLoaded()
+        for (id, value) in values where !VaultConcealment.shared.isConcealed(id) {
+            if let newer = stored[id], newer.checkedAt > value.checkedAt { continue }
+            stored[id] = value
+            dirty[id] = value
+        }
+        flush()
+    }
+
     func flush() {
         guard !dirty.isEmpty else { return }
         let pending = dirty.filter { !VaultConcealment.shared.isConcealed($0.key) }
@@ -237,38 +249,90 @@ final class PhotoResourceByteProvider: ByteSourceProvider, @unchecked Sendable {
     }
 }
 
-/// Blockierender Leser über `PHAssetResourceManager` (läuft nur auf Hintergrund-Threads). Puffert höchstens einen Block.
+/// Blockierender Hintergrund-Leser. Begrenzter Puffer, abbrechbare Wartezeiten und Stillstandsfrist.
+/// Netzwerk bleibt standardmäßig AUS; nur der ausdrücklich gewählte Duplikat-Lauf darf es freigeben.
 final class ResourceStream: ByteStream, @unchecked Sendable {
     private let condition = NSCondition()
     private var chunks: [Data] = []
     private var finished = false
-    private var failed = false
+    private var failure: ResourceStreamError?
+    private var closed = false
+    private var buffered = 0
+    private var lastActivity = ProcessInfo.processInfo.systemUptime
+    private var downloadFraction = 0.0
+    private let allowNetwork: Bool
+    private let networkPermitted: @Sendable () -> Bool
+    private let accessAllowed: @Sendable () -> Bool
     private var requestID: PHAssetResourceDataRequestID?
 
-    init(resource: PHAssetResource) {
+    init(resource: PHAssetResource, allowNetwork: Bool = false,
+         networkPermitted: @escaping @Sendable () -> Bool = { true },
+         accessAllowed: @escaping @Sendable () -> Bool = { true }) {
+        self.allowNetwork = allowNetwork
+        self.networkPermitted = networkPermitted
+        self.accessAllowed = accessAllowed
         let o = PHAssetResourceRequestOptions()
-        o.isNetworkAccessAllowed = false
-        requestID = PHAssetResourceManager.default().requestData(for: resource, options: o) { [weak self] data in
+        o.isNetworkAccessAllowed = allowNetwork
+        o.progressHandler = { [weak self] value in
             guard let self else { return }
             self.condition.lock()
+            if value > self.downloadFraction {
+                self.downloadFraction = value
+                self.lastActivity = ProcessInfo.processInfo.systemUptime
+            }
+            self.condition.unlock()
+        }
+        let resourceBox = UncheckedBox(resource)
+        let optionsBox = UncheckedBox(o)
+        // Auch bei sofort gelieferten SDK-Callbacks muss der Leser bereits starten können.
+        DispatchQueue.global(qos: .utility).async { [weak self] in
+            self?.begin(resource: resourceBox.value, options: optionsBox.value)
+        }
+    }
+
+    private func begin(resource: PHAssetResource, options: PHAssetResourceRequestOptions) {
+        condition.lock()
+        let cancelled = closed
+        condition.unlock()
+        guard !cancelled else { return }
+        let request = PHAssetResourceManager.default().requestData(for: resource, options: options) { [weak self] data in
+            guard let self else { return }
+            self.condition.lock()
+            while self.buffered >= 2 * 1024 * 1024 && !self.closed { self.condition.wait() }
+            guard !self.closed else { self.condition.unlock(); return }
             self.chunks.append(data)
-            self.condition.signal()
+            self.buffered += data.count
+            self.lastActivity = ProcessInfo.processInfo.systemUptime
+            self.condition.broadcast()
             self.condition.unlock()
         } completionHandler: { [weak self] error in
             guard let self else { return }
             self.condition.lock()
             self.finished = true
-            self.failed = error != nil
-            self.condition.signal()
+            if let error {
+                let ns = error as NSError
+                self.failure = ns.domain == PHPhotosErrorDomain && ns.code == PHPhotosError.Code.networkAccessRequired.rawValue
+                    ? .networkRequired : .notAvailable
+            }
+            self.condition.broadcast()
             self.condition.unlock()
         }
+        condition.lock()
+        let cancelRequest = closed
+        requestID = cancelRequest ? nil : request
+        condition.unlock()
+        if cancelRequest { PHAssetResourceManager.default().cancelDataRequest(request) }
     }
 
     func read(maxLength: Int) throws -> Data {
         condition.lock()
         defer { condition.unlock() }
-        while chunks.isEmpty && !finished { condition.wait() }
-        if failed { throw ResourceStreamError.notAvailable }
+        while chunks.isEmpty && !finished && !closed {
+            try checkRequest()
+            _ = condition.wait(until: Date().addingTimeInterval(0.25))
+        }
+        try checkRequest()
+        if let failure { throw failure }
         guard !chunks.isEmpty else { return Data() }
         var first = chunks.removeFirst()
         if first.count > maxLength {
@@ -276,12 +340,33 @@ final class ResourceStream: ByteStream, @unchecked Sendable {
             first = first.subdata(in: 0..<maxLength)
             chunks.insert(rest, at: 0)
         }
+        buffered -= first.count
+        condition.broadcast()
         return first
     }
 
     func close() {
-        if let requestID { PHAssetResourceManager.default().cancelDataRequest(requestID) }
+        condition.lock()
+        closed = true
+        chunks = []
+        buffered = 0
+        condition.broadcast()
+        let request = requestID
+        requestID = nil
+        condition.unlock()
+        if let request { PHAssetResourceManager.default().cancelDataRequest(request) }
     }
 
-    enum ResourceStreamError: Error { case notAvailable }
+    deinit { close() }
+
+    private func checkRequest() throws {
+        try Task.checkCancellation()
+        if closed || !accessAllowed() { throw CancellationError() }
+        if allowNetwork && !networkPermitted() { throw ResourceStreamError.networkUnavailable }
+        if !finished && ProcessInfo.processInfo.systemUptime - lastActivity > (allowNetwork ? 90 : 30) {
+            throw ResourceStreamError.timedOut
+        }
+    }
+
+    enum ResourceStreamError: Error { case notAvailable, networkRequired, networkUnavailable, timedOut }
 }

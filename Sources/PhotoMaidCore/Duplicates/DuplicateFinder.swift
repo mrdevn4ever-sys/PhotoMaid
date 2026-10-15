@@ -8,10 +8,23 @@ public protocol ByteStream: AnyObject {
     func close()
 }
 
-/// Liefert Ströme für vergleichbare Ressourcen. Nur lokal verfügbare Bytes;
-/// iCloud-Originale werden **nicht** heimlich heruntergeladen (dann `nil`).
+/// Liefert Ströme für vergleichbare Ressourcen. Netzwerkzugriff benötigt eine ausdrückliche Wahl im Aufrufer.
 public protocol ByteSourceProvider: Sendable {
     func openStream(for item: ItemReference) throws -> (any ByteStream)?
+}
+
+/// Ein Medium kann aus mehreren Ressourcen bestehen (Live Photo, RAW+JPEG, Bearbeitung).
+/// Dessen Prüfsumme muss ALLE Teile einschließen; ein einzelner Original-Stream genügt nicht.
+public protocol DuplicateContentHashSource: ByteSourceProvider {
+    func contentHash(for item: ItemReference, limit: Int?, expectedSize: Int64?) throws -> String?
+}
+
+public enum DuplicateReadError: Error { case incompleteOrChanged }
+
+public struct DuplicateContentMeasurement: Sendable {
+    public let bytes: Int64
+    public let partial: String
+    public let full: String
 }
 
 /// Kandidat für die Duplikatprüfung. Nur Kandidaten mit einer definierten,
@@ -82,6 +95,9 @@ public struct DuplicateScanResult: Hashable, Sendable {
     /// Nullbyte-Dateien sind trivial gleich und werden nicht als Duplikatgruppe gewertet.
     public var zeroByte: [ItemReference] = []
     public var hashedCount = 0
+    public var unavailableSources = 0
+    public var isComplete: Bool { notChecked.isEmpty && notComparable.isEmpty && unavailableSources == 0 }
+    public var uncheckedCount: Int { notChecked.count + notComparable.count }
 }
 
 public struct DuplicateScanProgress: Hashable, Sendable {
@@ -131,23 +147,27 @@ public struct DuplicateFinder: Sendable {
         }
 
         let sizeBuckets = bySize.filter { $0.value.count > 1 }
-        let total = sizeBuckets.values.reduce(0) { $0 + $1.count }
+        let total = sizeBuckets.values.reduce(0) { $0 + $1.count * 2 }
         var processed = 0
+        progress?(DuplicateScanProgress(processed: 0, total: total))
 
         for (size, bucket) in sizeBuckets.sorted(by: { $0.key > $1.key }) {
             try Task.checkCancellation()
+            let bucketEnd = processed + bucket.count * 2
             // Teilhash nur zum Aussortieren.
             var byPartial: [String: [DuplicateCandidate]] = [:]
             for c in bucket {
                 try Task.checkCancellation()
                 if let cached = cache?.partialHash(c.item) {
                     byPartial[cached, default: []].append(c)
-                } else if let h = try hash(c.item, source: source, limit: partialHashBytes) {
+                } else if let h = try availableHash(c, source: source, limit: partialHashBytes) {
                     cache?.store(c.item, partial: h, full: size <= Int64(partialHashBytes) ? h : nil)
                     byPartial[h, default: []].append(c)
                 } else {
                     result.notChecked.append(c.item)
                 }
+                processed += 1
+                progress?(DuplicateScanProgress(processed: processed, total: total))
             }
             for (partial, sub) in byPartial where sub.count > 1 {
                 if size <= Int64(partialHashBytes) {
@@ -163,20 +183,22 @@ public struct DuplicateFinder: Sendable {
                     if let cached = cache?.fullHash(c.item) {
                         byFull[cached, default: []].append(c.item)
                         result.hashedCount += 1
-                    } else if let h = try hash(c.item, source: source, limit: nil) {
+                    } else if let h = try availableHash(c, source: source, limit: nil) {
                         cache?.store(c.item, partial: partial, full: h)
                         byFull[h, default: []].append(c.item)
                         result.hashedCount += 1
                     } else {
                         result.notChecked.append(c.item)
                     }
+                    processed += 1
+                    progress?(DuplicateScanProgress(processed: processed, total: total))
                 }
                 for (h, members) in byFull where members.count > 1 {
                     result.groups.append(DuplicateGroup(sha256: h, sizeEach: size,
                                                         members: members.sorted { $0.description < $1.description }))
                 }
             }
-            processed += bucket.count
+            processed = bucketEnd
             progress?(DuplicateScanProgress(processed: processed, total: total))
         }
         result.groups.sort { ($0.extraCopiesBytes, $0.sha256) > ($1.extraCopiesBytes, $1.sha256) }
@@ -185,24 +207,75 @@ public struct DuplicateFinder: Sendable {
 
     /// SHA-256 der ersten `limit` Bytes (oder aller). `nil`, wenn keine lokalen Bytes verfügbar.
     public func hash(_ item: ItemReference, source: any ByteSourceProvider, limit: Int?) throws -> String? {
+        try hash(item, source: source, limit: limit, expectedSize: nil)
+    }
+
+    public func hash(_ item: ItemReference, source: any ByteSourceProvider, limit: Int?, expectedSize: Int64?) throws -> String? {
+        if let content = source as? any DuplicateContentHashSource {
+            return try content.contentHash(for: item, limit: limit, expectedSize: expectedSize)
+        }
         guard let stream = try source.openStream(for: item) else { return nil }
         defer { stream.close() }
         var hasher = CoreSHA256()
         var remaining = limit ?? Int.max
+        var count: Int64 = 0
         while remaining > 0 {
             try Task.checkCancellation()
             let chunk = try stream.read(maxLength: min(chunkSize, remaining))
             if chunk.isEmpty { break }
             hasher.update(data: chunk)
             remaining -= chunk.count
+            count += Int64(chunk.count)
+        }
+        if let expectedSize {
+            let expected = limit.map { min(expectedSize, Int64($0)) } ?? expectedSize
+            guard count == expected else { throw DuplicateReadError.incompleteOrChanged }
         }
         return hasher.finalize().map { String(format: "%02x", $0) }.joined()
     }
 
+    /// Ein nicht lesbares oder inzwischen geändertes Element darf den Rest der Mediathek nicht blockieren.
+    private func availableHash(_ candidate: DuplicateCandidate, source: any ByteSourceProvider, limit: Int?) throws -> String? {
+        do {
+            return try hash(candidate.item, source: source, limit: limit, expectedSize: candidate.size.bytes)
+        } catch is CancellationError {
+            throw CancellationError()
+        } catch {
+            try Task.checkCancellation()
+            return nil
+        }
+    }
+
+    /// Tatsächliche Länge und beide Prüfsummen, falls ein Dateianbieter keine Größe nennt.
+    public func measure(_ item: ItemReference, source: any ByteSourceProvider) throws -> DuplicateContentMeasurement? {
+        guard let stream = try source.openStream(for: item) else { return nil }
+        defer { stream.close() }
+        var full = CoreSHA256(), partial = CoreSHA256()
+        var count: Int64 = 0
+        var left = partialHashBytes
+        while true {
+            try Task.checkCancellation()
+            let data = try stream.read(maxLength: chunkSize)
+            if data.isEmpty { break }
+            full.update(data: data)
+            count += Int64(data.count)
+            if left > 0 {
+                let n = min(left, data.count)
+                partial.update(data: Data(data.prefix(n)))
+                left -= n
+            }
+        }
+        return DuplicateContentMeasurement(bytes: count,
+            partial: partial.finalize().map { String(format: "%02x", $0) }.joined(),
+            full: full.finalize().map { String(format: "%02x", $0) }.joined())
+    }
+
     /// Vor einer riskanten Aktion: Bytes erneut vollständig vergleichen.
     public func bytesIdentical(_ a: ItemReference, _ b: ItemReference, source: any ByteSourceProvider) throws -> Bool {
-        guard let sa = try source.openStream(for: a), let sb = try source.openStream(for: b) else { return false }
-        defer { sa.close(); sb.close() }
+        guard let sa = try source.openStream(for: a) else { return false }
+        defer { sa.close() }
+        guard let sb = try source.openStream(for: b) else { return false }
+        defer { sb.close() }
         while true {
             try Task.checkCancellation()
             let ca = try sa.read(maxLength: chunkSize)
