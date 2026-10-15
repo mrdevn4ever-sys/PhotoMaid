@@ -446,8 +446,14 @@ final class AppStoreCaptureTests: XCTestCase {
         photo.tap()
         XCTAssertTrue(app.buttons["vault.viewer.close"].waitForNonExistence(timeout:5),"Viewer controls must hide")
         try mark("hidden-controls"); pause(3)
-        photo.doubleTap(); try mark("zoom"); pause(3)
-        photo.doubleTap(); photo.tap()
+        photo.doubleTap(); pause(0.5)
+        let zoom = (photo.value as? String ?? "").compactMap(\.wholeNumberValue).reduce(0) { $0 * 10 + $1 }
+        XCTAssertGreaterThan(zoom,150,"Vault photo must actually zoom")
+        try mark("zoom"); pause(3)
+        photo.doubleTap(); pause(0.5)
+        let restoredZoom = (photo.value as? String ?? "").compactMap(\.wholeNumberValue).reduce(0) { $0 * 10 + $1 }
+        XCTAssertEqual(restoredZoom,100,"Vault photo must return to its complete frame")
+        photo.tap()
         XCTAssertTrue(app.buttons["vault.viewer.close"].waitForExistence(timeout:5),"Viewer controls must return")
         try mark("controls"); pause(4)
         try recording("stop",name:"03-vault")
