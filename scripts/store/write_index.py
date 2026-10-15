@@ -27,6 +27,8 @@ def main():
   if videos:
    preview=json.loads((locale/'preview-provenance.json').read_text())
    text+=f'[Video-Aufnahmelauf {preview["workflow_run"]}](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/{preview["workflow_run"]}) · [Native Video-Tests und Bildbestand](preview-provenance.json) · [Format und Poster-Zeitcodes](previews/manifest.json).\n\n'
+   if preview.get('export_run'):
+    text+=f'[Geprüfter Videoexport {preview["export_run"]}](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/{preview["export_run"]}); die nativen Tests und ihr Quellcommit bleiben dem ursprünglichen Aufnahmelauf zugeordnet.\n\n'
   for path in videos:
    text+=f'- [{THEMES.get(path.stem,path.stem)}](previews/{path.name})'
    poster=locale/'previews'/(path.stem+'-poster.png')

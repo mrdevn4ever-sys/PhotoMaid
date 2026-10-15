@@ -1,0 +1,85 @@
+name: App Store – vorhandene Vorschauen exportieren
+on:
+  workflow_dispatch:
+    inputs:
+      source_run:
+        description: 'Lauf-ID mit bestandenen nativen Vorschau-Tests und Quellenartefakten'
+        type: string
+        required: true
+      locales:
+        description: 'all oder Sprachen mit Komma'
+        type: string
+        default: en
+permissions:
+  contents: read
+  actions: read
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    outputs:
+      locales: ${{ steps.plan.outputs.locales }}
+      source_sha: ${{ steps.plan.outputs.source_sha }}
+    steps:
+      - id: plan
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REQUESTED: ${{ inputs.locales }}
+          SOURCE_RUN: ${{ inputs.source_run }}
+        run: |
+          python3 - <<'PY'
+          import json,os,subprocess
+          available=['ar','de','en','es','fr','it','ja','ko','nl','pl','pt-PT','ro','ru','tr','uk','zh-Hans']
+          requested=available if os.environ['REQUESTED']=='all' else os.environ['REQUESTED'].split(',')
+          assert requested and len(requested)==len(set(requested)) and all(x in available for x in requested)
+          run_id=os.environ['SOURCE_RUN'];assert run_id.isdigit()
+          repo=os.environ['GITHUB_REPOSITORY']
+          run=json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/actions/runs/{run_id}']))
+          assert run['head_branch']=='claude/fixes-analysis-library-vault-20261014'
+          artifacts=json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/actions/runs/{run_id}/artifacts?per_page=100']))['artifacts']
+          names={x['name'] for x in artifacts if not x['expired']}
+          assert all(f'app-store-{code}-sources' in names for code in requested),'Native sources must already be uploaded'
+          with open(os.environ['GITHUB_OUTPUT'],'a')as out:
+              out.write('locales='+json.dumps(requested)+'\nsource_sha='+run['head_sha']+'\n')
+          PY
+  export:
+    name: Vorschauen exportieren – ${{ matrix.locale }}
+    needs: plan
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        locale: ${{ fromJSON(needs.plan.outputs.locales) }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/app-store/locales/
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.source_run }}
+          name: app-store-${{ matrix.locale }}-sources
+          path: ${{ runner.temp }}/native-sources
+      - name: Vorhandene native Belege prüfen und exportieren
+        env:
+          SOURCE_SHA: ${{ needs.plan.outputs.source_sha }}
+          SOURCE_RUN: ${{ inputs.source_run }}
+          CAPTURE_LOCALE: ${{ matrix.locale }}
+        run: |
+          set -euo pipefail
+          sudo apt-get -qq update
+          sudo apt-get -qq install -y ffmpeg python3-pil
+          export STORE_EXPORT_RUN="$GITHUB_RUN_ID" STORE_EXPORT_COMMIT="$GITHUB_SHA"
+          GITHUB_SHA="$SOURCE_SHA" GITHUB_RUN_ID="$SOURCE_RUN" python3 scripts/store/assemble_assets.py \
+            "$RUNNER_TEMP/native-sources/store-capture" "$RUNNER_TEMP/store-assets" --locale "$CAPTURE_LOCALE" --mode previews
+          python3 scripts/store/export_previews.py "$RUNNER_TEMP/native-sources/store-capture" \
+            "$RUNNER_TEMP/store-assets/previews" --locale "$CAPTURE_LOCALE"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: app-store-${{ matrix.locale }}-assets
+          path: ${{ runner.temp }}/store-assets
+          if-no-files-found: error

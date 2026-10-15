@@ -24,7 +24,10 @@ das vollständige Seitenarchiv bleibt daneben erhalten.
 Screenshots: native PNGs des iPhone 17 Pro Max (1320 × 2868), ohne Beschnitt, Verzerrung oder Hochskalierung.
 Videos: drei unterschiedliche echte Bildschirmaufnahmen je Sprache (Aufräumen, Studio, Tresor), auf 886 × 1920
 verkleinert, 30 fps, H.264, Zielrate 10 Mbit/s, AAC-Stereo mit Stille. Keine Musik, externen Filmszenen oder
-künstlich erzeugte App-Oberflächen. Schnitte entfernen Wartezeiten; das Schnittmanifest nennt die Originalzeiten.
+künstlich erzeugte App-Oberflächen. Die vollständigen Aufnahmen bleiben erhalten; längere Demonstrationen
+werden auf 24 Sekunden beschleunigt, danach steht das echte Schlussbild drei Sekunden. Das Manifest nennt
+Originaldauer, Tempo, Original-SHA-256 und native Schrittmarken. Variable Simulator-Bildraten werden vor dem
+Export normalisiert; Wandzeitmarken dienen nicht als ungenaue Schnittpunkte.
 
 Maßgebliche Apple-Vorgaben, am 15.10.2026 abgerufen:
 [Screenshots](https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/),
@@ -40,6 +43,11 @@ Der manuelle Workflow `.github/workflows/app-store-assets.yml` nimmt `locales` (
 Auf einem frischen Simulator enthält `previews` einen eigenen Einrichtungslauf für Fotozugriff und
 den echten PIN-Tresor mit echten Importen. Die Jobs erzeugen getrennte
 Asset- und Quellenartefakte. Es gibt weder einen TestFlight-Upload noch einen App-Store-Upload.
+
+Ein Exportfehler erfordert keine Wiederholung bestandener Simulator-Tests:
+`.github/workflows/app-store-export.yml` lädt mit `source_run` und `locales` vorhandene Quellen,
+prüft erneut exakt 55 Quelldateien und 4/4 native Tests und exportiert auf Linux.
+`preview-provenance.json` unterscheidet ursprünglichen Aufnahmecommit/-lauf und Exportcommit/-lauf.
 
 Nach der Ablage erzeugt `python3 scripts/store/make_review.py app-store/locales/<Sprache>`
 Prüfbögen mit zunächst `PENDING`. Erst nach tatsächlicher Sichtprüfung wird ihr Status auf `PASS`

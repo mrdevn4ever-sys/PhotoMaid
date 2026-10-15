@@ -44,6 +44,8 @@ def main():
         'media_manifest': 'app-store/media/manifest.json', 'actual_library': inventory,
         'data': 'Real PhotoKit, Core Data, analysis and encrypted vault; no QA fixtures', 'capture_summary': summary,
     }
+    if os.environ.get('STORE_EXPORT_RUN'):
+        provenance.update(export_run=os.environ['STORE_EXPORT_RUN'], export_commit=os.environ['STORE_EXPORT_COMMIT'])
     prefix = 'preview-' if preview_only else ''
     (args.destination / (prefix + 'provenance.json')).write_text(json.dumps(provenance, indent=2) + '\n')
     if inventory_path.exists(): shutil.copy2(inventory_path, args.destination / (prefix + 'library.json'))

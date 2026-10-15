@@ -60,7 +60,15 @@ Leere Video-/Screenshot-Filter und Datei-/PDF-Eingänge entsprechen dem ausdrüc
 Drei Varianten je Sprache: Aufräumen, Studio, Tresor. Die UI-Tests prüfen tatsächliche Wischschritte,
 veränderte Belichtung, gewählten Monochromfilter, Zeichnen und echten Tresorzoom; jeder Videoschritt
 hat zusätzlich einen nativen Screenshot. Videoexport, vollständige Dekodierung, Sichtprüfung und
-Ablage der insgesamt 48 Vorschauen stehen noch aus. Es werden keine fertigen Videos behauptet.
+Ablage der insgesamt 48 Vorschauen stehen noch aus.
+
+Die ersten drei Sprachen bestanden jeweils 4/4 native Tests; der anschließende Export scheiterte jedoch
+an variablen Simulator-Bildraten. Ein Studio-Clip wurde trotz gekürzter Wandzeitsegmente 36,8 s lang.
+Die Originalaufnahmen und Schritt-Screenshots sind erhalten. Der korrigierte Export verwendet die ganze
+tatsächliche Aufnahme mit normalisierter Bildrate, beschleunigt längere Abläufe auf 24 s und hält das
+echte Schlussbild drei Sekunden. Der lokale englische Gegenversuch ergibt dreimal exakt 27 s.
+`app-store-export.yml` kann vorhandene Quellen auf Linux erneut prüfen/exportieren, ohne bestandene
+Simulator-Tests zu wiederholen; Aufnahme- und Exportcommit/-lauf werden getrennt ausgewiesen.
 
 Die Probeläufe fanden und korrigierten Fehler in der Aufnahmehilfe: sechs vorinstallierte Fremdfotos,
 verzögerte System-Fotoabfrage, fehlendes `@Sendable` in einer PhotoKit-Änderung, ausgeblendete
