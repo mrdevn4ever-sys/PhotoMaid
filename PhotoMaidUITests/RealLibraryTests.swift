@@ -447,11 +447,11 @@ final class RealLibraryTests: XCTestCase {
     func test60LibraryFiltersSortAndAspect() {
         ready()
         tab("Fotos")
-        for filter in ["Alle", "Favoriten", "Fotos", "Videos", "Screenshots"] {
+        for filter in ["Alle", "Favoriten", "Fotos", "Videos"] {
             tap(e("library.filter"), "filter_menu_" + filter)
             tap(app.buttons[filter].firstMatch, "filter_" + filter)
             XCTAssertEqual(e("library.filter").value as? String, filter)
-            if filter == "Videos" || filter == "Screenshots" {
+            if filter == "Videos" {
                 XCTAssertTrue(app.buttons.matching(identifier: "media.cell").firstMatch.waitForExistence(timeout: 10),
                               "Imported \(filter) must be visible")
             }
@@ -464,6 +464,12 @@ final class RealLibraryTests: XCTestCase {
         }
         XCTAssertTrue(contains("Zuletzt hinzugefügt").exists)
         XCTAssertGreaterThan(app.buttons.matching(identifier: "media.cell").count, 0)
+        tap(e("library.filter"), "filter_menu_Screenshots")
+        tap(app.buttons["Screenshots"].firstMatch, "filter_Screenshots")
+        XCTAssertEqual(e("library.filter").value as? String, "Screenshots")
+        XCTAssertTrue(app.buttons.matching(identifier: "media.cell").firstMatch.waitForExistence(timeout: 10),
+                      "Native iOS screenshots must be visible")
+        snap("library_Screenshots")
     }
 
     func test70StudioFreeTools() {
@@ -526,6 +532,11 @@ final class RealLibraryTests: XCTestCase {
     func test80VaultPINCloseAllTabsAndFreeFolder() {
         ready()
         openVault()
+        let folderRule = contains("jeder neue Ordner")
+        scrollTo(folderRule)
+        XCTAssertTrue(folderRule.exists, "Vault introduction follows the current folder/ad model")
+        XCTAssertFalse(contains("50 Medien").exists, "The obsolete Free media limit must not be advertised")
+        snap("vault_intro_current_model")
         tap(app.buttons["Weiter"], "vault_intro_next")
         let fields = app.secureTextFields
         XCTAssertEqual(fields.count, 2)

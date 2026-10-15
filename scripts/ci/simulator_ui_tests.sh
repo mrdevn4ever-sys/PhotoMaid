@@ -86,6 +86,12 @@ if [ "$phase" = real-case ]; then
   run_tests "$mode" "-only-testing:PhotoMaidUITests/RealLibraryTests/$test_case"
   xcrun simctl spawn "$udid" log show --last 20m --style compact \
     --predicate 'process == "PhotoMaid"' > "$out/$mode-app.log" || true
+  if [ "$test_case" = test20FiftyFastSwipesAdAndDirections ] && [ "$(cat "$out/$mode.exit")" = 0 ]; then
+    if ! python3 scripts/ci/verify_ad_gesture_log.py "$out/$mode-app.log" > "$out/$mode-ad-timing.txt" 2>&1; then
+      cat "$out/$mode-ad-timing.txt"
+      echo 1 > "$out/$mode.exit"
+    fi
+  fi
   pack_result "$mode"
   [ "$(cat "$out/$mode.exit")" = 0 ]
   exit

@@ -207957,97 +207957,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "Free: حتى 50 عنصرًا. Pro: بلا حدود."
+            "value": "في النسخة المجانية يحتاج كل مجلد جديد إلى فيديو إعلاني قصير. مع Pro تنشئ المجلدات بلا إعلانات."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Free: bis zu 50 Medien. Pro: unbegrenzt."
+            "value": "In der Gratis-Version braucht jeder neue Ordner ein kurzes Werbevideo. Mit Pro legst du Ordner ohne Werbung an."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Free: up to 50 items. Pro: unlimited."
+            "value": "In the free version, each new folder needs a short ad video. With Pro, folders are created without ads."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Free: hasta 50 elementos. Pro: ilimitado."
+            "value": "En la versión gratuita, cada carpeta nueva requiere un breve vídeo publicitario. Con Pro creas carpetas sin anuncios."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Free : jusqu’à 50 éléments. Pro : illimité."
+            "value": "Dans la version gratuite, chaque nouveau dossier nécessite une courte vidéo publicitaire. Avec Pro, tu crées des dossiers sans publicité."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Free: fino a 50 elementi. Pro: illimitato."
+            "value": "Nella versione gratuita ogni nuova cartella richiede un breve video pubblicitario. Con Pro crei cartelle senza pubblicità."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "Free：最大50項目。Pro：無制限。"
+            "value": "無料版では新しいフォルダごとに短い広告動画が必要です。Proなら広告なしでフォルダを作成できます。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "Free: 최대 50개. Pro: 무제한."
+            "value": "무료 버전에서는 새 폴더마다 짧은 광고 동영상이 필요해요. Pro에서는 광고 없이 폴더를 만들어요."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Free: tot 50 onderdelen. Pro: onbeperkt."
+            "value": "In de gratis versie heeft elke nieuwe map een korte advertentievideo nodig. Met Pro maak je mappen zonder advertenties."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Free: do 50 elementów. Pro: bez limitu."
+            "value": "W wersji bezpłatnej każdy nowy folder wymaga krótkiego filmu reklamowego. Z Pro tworzysz foldery bez reklam."
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Free: até 50 itens. Pro: ilimitado."
+            "value": "Na versão gratuita, cada nova pasta requer um curto vídeo publicitário. Com o Pro crias pastas sem anúncios."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Free: până la 50 de elemente. Pro: nelimitat."
+            "value": "În versiunea gratuită, fiecare dosar nou necesită un scurt videoclip publicitar. Cu Pro creezi dosare fără reclame."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Free: до 50 объектов. Pro: без ограничений."
+            "value": "В бесплатной версии для каждой новой папки нужно короткое рекламное видео. С Pro папки создаются без рекламы."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Free: en fazla 50 öğe. Pro: sınırsız."
+            "value": "Ücretsiz sürümde her yeni klasör için kısa bir reklam videosu gerekir. Pro ile klasörleri reklamsız oluşturursun."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Free: до 50 об’єктів. Pro: без обмежень."
+            "value": "У безкоштовній версії для кожної нової теки потрібне коротке рекламне відео. З Pro теки створюються без реклами."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "Free：最多 50 项。Pro：不限。"
+            "value": "免费版中，每个新文件夹都需要观看一段简短的广告视频。使用 Pro 可无广告新建文件夹。"
           }
         }
       }

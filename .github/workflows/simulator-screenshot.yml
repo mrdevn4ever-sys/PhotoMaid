@@ -29,7 +29,8 @@ jobs:
           xcrun simctl io "$udid" screenshot evidence/before.png
           # Existing Simulator processes ignore new launch arguments. Select this exact device afresh.
           osascript -e 'tell application "Simulator" to quit'
-          open -a "$DEVELOPER_DIR/Applications/Simulator.app" --args -CurrentDeviceUDID "$udid"
+          simulator_app="$(xcode-select -p)/Applications/Simulator.app"
+          open -a "$simulator_app" --args -CurrentDeviceUDID "$udid"
           set +e
           osascript > evidence/menu.log 2>&1 <<'APPLESCRIPT'
           with timeout of 20 seconds

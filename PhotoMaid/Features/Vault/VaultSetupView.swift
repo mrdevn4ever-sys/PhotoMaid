@@ -81,7 +81,7 @@ struct VaultSetupView: View {
                 .accessibilityHidden(true)
             Text(key: "vault_intro_title").font(AppTypography.title)
             ForEach([("lock.shield", "vault_intro_1"), ("trash", "vault_intro_2"), ("externaldrive.badge.icloud", "vault_intro_3"),
-                     ("number", "vault_intro_4")], id: \.1) { item in
+                     ("folder", "vault_intro_4")], id: \.1) { item in
                 Label { Text(key: item.1).fixedSize(horizontal: false, vertical: true) } icon: {
                     Image(systemName: item.0).foregroundStyle(AppColors.accent)
                 }
