@@ -14,7 +14,7 @@ struct VaultHomeView: View {
     /// Von PhotoMaid erstellte Kopien der Auswahl (Bearbeitungen, Collagen, Filme, GIFs) zum Mit-Ablegen.
     @State private var pendingCopies: [String] = []
     @State private var confirmImport = false
-    @State private var confirmDelete = false
+    @State private var pendingDelete: Set<String>?
     @State private var confirmRestore = false
     @State private var moveSheet = false
     @State private var settingsSheet = false
@@ -88,18 +88,13 @@ struct VaultHomeView: View {
                     Text(verbatim: L("vault_import_confirm_text") + "\n\n" + L("vault_import_copies_text", pendingCopies.count))
                 }
             }
-            .alert(L("vault_delete_title", selection.count), isPresented: $confirmDelete) {
-                Button(L("vault_delete"), role: .destructive) {
-                    if vault.moveToTrash(selection) {
-                        selection = []
-                        selecting = false
-                    } else {
-                        notice = L("vault_error_generic")
-                    }
+            .vaultTrashConfirmation($pendingDelete) { ids in
+                if vault.moveToTrash(ids) {
+                    selection.subtract(ids)
+                    if selection.isEmpty { selecting = false }
+                } else {
+                    notice = L("vault_error_generic")
                 }
-                Button(L("cancel"), role: .cancel) {}
-            } message: {
-                Text(key: "vault_delete_text")
             }
             .confirmationDialog(L("vault_restore"), isPresented: $confirmRestore, titleVisibility: .visible) {
                 Button(L("vault_restore_move")) { Task { await restore(remove: true) } }
@@ -151,6 +146,7 @@ struct VaultHomeView: View {
             } message: {
                 Text(verbatim: notice ?? "")
             }
+            .onChange(of: folderID) { _, _ in selection = [] }
         }
     }
 
@@ -234,6 +230,18 @@ struct VaultHomeView: View {
                 }
                 .buttonStyle(.plain)
                 .accessibilityAddTraits(selection.contains(item.id) ? .isSelected : [])
+                .accessibilityIdentifier("vault.media.item.\(item.id)")
+                // swipeActions funktionieren nur in List, nicht in diesem Foto-/Video-Raster.
+                // Vertikales Scrollen läuft gleichzeitig weiter; eine horizontale Geste fragt nur nach.
+                .simultaneousGesture(DragGesture(minimumDistance: 24).onEnded { value in
+                    guard !selecting, value.translation.width < -50,
+                          -value.translation.width > abs(value.translation.height) * 1.5 else { return }
+                    pendingDelete = [item.id]
+                })
+                .contextMenu {
+                    Button(L("vault_delete"), systemImage: "trash", role: .destructive) { pendingDelete = [item.id] }
+                }
+                .accessibilityAction(named: Text(key: "vault_delete")) { pendingDelete = [item.id] }
             }
         }
     }
@@ -264,10 +272,9 @@ struct VaultHomeView: View {
     @ToolbarContentBuilder
     private var toolbar: some ToolbarContent {
         VaultCloseToolbarItem()
+        VaultSelectionToolbarItem(scope: "media", isEmpty: items.isEmpty, selecting: $selecting, selection: $selection)
         ToolbarItemGroup(placement: .topBarTrailing) {
-            if selecting {
-                Button(L("done")) { selecting = false; selection = [] }
-            } else {
+            if !selecting {
                 Menu {
                     Picker(L("vault_sort"), selection: Binding(get: { sort }, set: { vault.setSort($0) })) {
                         Text(key: "vault_sort_captured").tag(VaultSort.captured)
@@ -275,8 +282,6 @@ struct VaultHomeView: View {
                         Text(key: "vault_sort_name").tag(VaultSort.name)
                         Text(key: "vault_sort_size").tag(VaultSort.size)
                     }
-                    Button { selecting = true } label: { Label(L("vault_select"), systemImage: "checkmark.circle") }
-                        .disabled(items.isEmpty)
                     Button { settingsSheet = true } label: { Label(L("vault_settings"), systemImage: "gearshape") }
                 } label: {
                     Image(systemName: "ellipsis.circle")
@@ -295,7 +300,8 @@ struct VaultHomeView: View {
             barButton("folder", "vault_move") { moveSheet = true }
             barButton("square.and.arrow.up", "share") { Task { await shareSelection() } }
             barButton("photo.badge.arrow.down", "vault_restore") { confirmRestore = true }
-            barButton("trash", "vault_delete", tint: AppColors.cleanup) { confirmDelete = true }
+            barButton("trash", "vault_delete", tint: AppColors.cleanup) { pendingDelete = selection }
+                .accessibilityIdentifier("vault.media.trash")
         }
         .disabled(selection.isEmpty)
         .padding(.horizontal, AppSpacing.m)

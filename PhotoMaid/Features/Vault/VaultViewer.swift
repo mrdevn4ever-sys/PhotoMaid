@@ -32,8 +32,6 @@ struct VaultViewer: View {
                 ForEach(Array(ids.enumerated()), id: \.offset) { i, id in
                     if let item = vault.index.items.first(where: { $0.id == id }) {
                         VaultViewerPage(item: item, isCurrent: i == index).tag(i)
-                    } else {
-                        Color.black.tag(i)
                     }
                 }
             }
@@ -100,7 +98,12 @@ struct VaultViewer: View {
             notice = L("vault_error_generic")
             return
         }
-        if vault.index.items.isEmpty || !ids.contains(where: { id in vault.index.items.contains { $0.id == id } }) { dismiss() }
+        let remaining = ids.indices.filter { i in vault.index.items.contains { $0.id == ids[i] } }
+        if let next = remaining.first(where: { $0 > index }) ?? remaining.last {
+            index = next
+        } else {
+            dismiss()
+        }
     }
 
     private func restoreCurrent(remove: Bool) async {

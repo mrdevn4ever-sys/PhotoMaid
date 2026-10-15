@@ -24,6 +24,7 @@ struct VaultWorkspaceHomeView: View {
                     Button(L("vault2_lock"), systemImage: "lock.fill") { vault.lock() }
                 } label: { Image(systemName: "ellipsis.circle").frame(width: 48, height: 48) }
                 .accessibilityLabel(L("more_actions"))
+                .accessibilityIdentifier("vault.workspace.more")
             }.padding(.horizontal)
             switch tab {
             case 1: VaultNotesView()
@@ -62,6 +63,9 @@ struct VaultNotesView: View {
     @State private var folder: String?
     @State private var editor: VaultNote?
     @State private var error: String?
+    @State private var selecting = false
+    @State private var selection: Set<String> = []
+    @State private var pendingDelete: Set<String>?
     private var notes: [VaultNote] { vault.workspace.visibleNotes(query: query, folderID: folder) }
 
     var body: some View {
@@ -70,29 +74,45 @@ struct VaultNotesView: View {
                 VaultWorkspaceFolderBar(scope: .notes, folder: $folder)
                 if notes.isEmpty { Text(L("vault2_empty_notes")).foregroundStyle(.secondary) }
                 ForEach(notes) { note in
-                    Button { editor = note } label: {
-                        VStack(alignment: .leading, spacing: 6) {
-                            HStack {
-                                if note.pinned { Image(systemName: "pin.fill") }
-                                Text(verbatim: note.title.isEmpty ? L("vault2_untitled") : note.title).font(.headline)
-                            }
-                            Text(verbatim: note.plainText).lineLimit(2).foregroundStyle(.secondary)
-                        }.frame(maxWidth: .infinity, alignment: .leading).padding(.vertical, 4)
+                    Button {
+                        if selecting {
+                            if selection.contains(note.id) { selection.remove(note.id) } else { selection.insert(note.id) }
+                        } else { editor = note }
+                    } label: {
+                        HStack {
+                            if selecting { Image(systemName: selection.contains(note.id) ? "checkmark.circle.fill" : "circle") }
+                            VStack(alignment: .leading, spacing: 6) {
+                                HStack {
+                                    if note.pinned { Image(systemName: "pin.fill") }
+                                    Text(verbatim: note.title.isEmpty ? L("vault2_untitled") : note.title).font(.headline)
+                                }
+                                Text(verbatim: note.plainText).lineLimit(2).foregroundStyle(.secondary)
+                            }.frame(maxWidth: .infinity, alignment: .leading).padding(.vertical, 4)
+                        }
                     }.buttonStyle(.plain)
+                    .accessibilityIdentifier("vault.notes.item.\(note.id)")
+                    .accessibilityAddTraits(selection.contains(note.id) ? .isSelected : [])
+                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                        if !selecting {
+                            Button(L("vault2_to_trash"), systemImage: "trash", role: .destructive) { pendingDelete = [note.id] }
+                        }
+                    }
                     .contextMenu {
                         Button(L("vault2_pin"), systemImage: "pin") { changePin(note) }
                         VaultMoveMenu(scope: .notes, ids: [note.id])
                         Button(L("vault2_to_trash"), systemImage: "trash", role: .destructive) {
-                            perform { try vault.workspaceTransaction { try $0.trash([note.id], scope: .notes, nowMs: vault.nowMs) } }
+                            pendingDelete = [note.id]
                         }
                     }
                 }
             }
             .navigationTitle(L("vault2_notes"))
             .searchable(text: $query, prompt: L("vault2_search"))
-            .onChange(of: query) { _, _ in vault.touch() }
+            .onChange(of: query) { _, _ in selection = []; vault.touch() }
+            .onChange(of: folder) { _, _ in selection = [] }
             .toolbar {
                 VaultCloseToolbarItem()
+                VaultSelectionToolbarItem(scope: "notes", isEmpty: notes.isEmpty, selecting: $selecting, selection: $selection)
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(L("vault2_new_note"), systemImage: "square.and.pencil") {
                         var note = VaultNote(nowMs: vault.nowMs); note.folderID = folder
@@ -101,6 +121,24 @@ struct VaultNotesView: View {
                             editor = vault.workspace.notes.first { $0.id == note.id }
                         }
                     }
+                }
+            }
+            .safeAreaInset(edge: .bottom) {
+                if selecting {
+                    HStack {
+                        Text(verbatim: LP("grid_selected", selection.count))
+                        Spacer()
+                        Button(L("vault2_to_trash"), systemImage: "trash", role: .destructive) { pendingDelete = selection }
+                            .labelStyle(.iconOnly).frame(minWidth: 48, minHeight: 48)
+                            .accessibilityIdentifier("vault.notes.trash")
+                    }.padding(.horizontal).background(.regularMaterial).disabled(selection.isEmpty)
+                }
+            }
+            .vaultTrashConfirmation($pendingDelete) { ids in
+                perform {
+                    try vault.workspaceTransaction { try $0.trash(ids, scope: .notes, nowMs: vault.nowMs) }
+                    selection.subtract(ids)
+                    if selection.isEmpty { selecting = false }
                 }
             }
             .sheet(item: $editor) { VaultNoteEditor(initial: $0) }
@@ -140,6 +178,7 @@ struct VaultNoteEditor: View {
                 Section {
                     TextField(L("vault2_title"), text: field(\.title), axis: .vertical)
                         .font(.title2.bold()).autocorrectionDisabled()
+                        .accessibilityIdentifier("vault.note.title")
                     Toggle(L("vault2_pin"), isOn: field(\.pinned))
                 }
                 Section {
@@ -283,6 +322,7 @@ struct VaultFilesView: View {
     @State private var sort = VaultWorkspaceSort.modified
     @State private var selection: Set<String> = []
     @State private var selecting = false
+    @State private var pendingDelete: Set<String>?
     @State private var picking = false
     @State private var scanning = false
     @State private var recording = false
@@ -315,6 +355,13 @@ struct VaultFilesView: View {
                             }
                         }.frame(maxWidth: .infinity, alignment: .leading).padding(.vertical, 4)
                     }.buttonStyle(.plain)
+                    .accessibilityIdentifier("vault.files.item.\(file.id)")
+                    .accessibilityAddTraits(selection.contains(file.id) ? .isSelected : [])
+                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                        if !selecting {
+                            Button(L("vault2_to_trash"), systemImage: "trash", role: .destructive) { pendingDelete = [file.id] }
+                        }
+                    }
                     .contextMenu {
                         Button(L("vault2_rename"), systemImage: "pencil") { name = file.name; rename = file }
                         VaultMoveMenu(scope: .files, ids: [file.id])
@@ -324,7 +371,7 @@ struct VaultFilesView: View {
                                 Task { do { try await vault.removeFileOriginal(file.id) } catch is CancellationError {} catch { self.error = VaultWorkspaceMessages.error(error) } }
                             }
                         }
-                        Button(L("vault2_to_trash"), systemImage: "trash", role: .destructive) { trash([file.id]) }
+                        Button(L("vault2_to_trash"), systemImage: "trash", role: .destructive) { pendingDelete = [file.id] }
                     }
                 }
             }
@@ -334,9 +381,9 @@ struct VaultFilesView: View {
             .onChange(of: folder) { _, _ in selection = [] }
             .toolbar {
                 VaultCloseToolbarItem()
+                VaultSelectionToolbarItem(scope: "files", isEmpty: files.isEmpty, selecting: $selecting, selection: $selection)
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu {
-                        Button(L(selecting ? "done" : "vault_select")) { selecting.toggle(); selection = [] }
                         Picker(L("vault_sort"), selection: $sort) {
                             ForEach(VaultWorkspaceSort.allCases, id: \.self) { Text(VaultWorkspaceMessages.name($0)).tag($0) }
                         }
@@ -358,10 +405,12 @@ struct VaultFilesView: View {
                         Spacer()
                         VaultMoveMenu(scope: .files, ids: selection)
                         Button(L("share"), systemImage: "square.and.arrow.up") { share(selection) }
-                        Button(L("vault2_to_trash"), systemImage: "trash", role: .destructive) { trash(selection) }
+                        Button(L("vault2_to_trash"), systemImage: "trash", role: .destructive) { pendingDelete = selection }
+                            .accessibilityIdentifier("vault.files.trash")
                     }.labelStyle(.iconOnly).padding().background(.regularMaterial).disabled(selection.isEmpty)
                 }
             }
+            .vaultTrashConfirmation($pendingDelete) { trash($0) }
             .disabled(busy)
             .overlay { if busy { ProgressView().padding().background(.regularMaterial, in: .rect(cornerRadius: 16)) } }
             .sheet(item: $preview) { VaultDocumentPreview(document: $0) }
@@ -409,7 +458,11 @@ struct VaultFilesView: View {
         }
     }
     private func trash(_ ids: Set<String>) {
-        do { try vault.workspaceTransaction { try $0.trash(ids, scope: .files, nowMs: vault.nowMs) }; selection = [] }
+        do {
+            try vault.workspaceTransaction { try $0.trash(ids, scope: .files, nowMs: vault.nowMs) }
+            selection.subtract(ids)
+            if selection.isEmpty { selecting = false }
+        }
         catch { self.error = VaultWorkspaceMessages.error(error) }
     }
     private func share(_ ids: Set<String>) {

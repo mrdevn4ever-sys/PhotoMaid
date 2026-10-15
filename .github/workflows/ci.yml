@@ -13,6 +13,11 @@ on:
         description: "Nur die native iOS-Screenshot-Aufnahme untersuchen (kein App-Build)"
         type: boolean
         default: false
+      qa_case:
+        description: "QA-Oberflächen: alle oder gezielt Tresor-Löschen"
+        type: choice
+        options: [all, vault]
+        default: all
       sim_runtime:
         description: "iOS-Runtime (26.2 für StoreKit Test; 26.5 hat Apples CLI-Konfigurationsfehler)"
         type: choice
@@ -138,6 +143,8 @@ jobs:
       - name: UI-Tests mit QA-Daten
         if: inputs.ui_tests && inputs.ui_phase != 'real' && inputs.ui_phase != 'start'
         continue-on-error: true
+        env:
+          PM_QA_CASE: ${{ inputs.qa_case }}
         run: bash scripts/ci/simulator_ui_tests.sh '${{ steps.sim.outputs.udid }}' "$RUNNER_TEMP/PhotoMaidDerived" "$RUNNER_TEMP/simulator-ui" fixtures
       - name: QA-Belege sofort bereitstellen
         uses: actions/upload-artifact@v4

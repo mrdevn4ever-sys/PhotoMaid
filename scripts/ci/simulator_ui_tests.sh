@@ -55,7 +55,12 @@ if [ "$phase" = all ] || [ "$phase" = fixtures ]; then
   reset_simulator
   swift scripts/qa_media.swift "$out/qa-media"
   xcrun simctl addmedia "$udid" "$out/qa-media"/*
-  run_tests fixtures -only-testing:PhotoMaidUITests/PhotoMaidUITests -only-testing:PhotoMaidUITests/ScreenshotTests
+  if [ "${PM_QA_CASE:-all}" = vault ]; then
+    run_tests fixtures -only-testing:PhotoMaidUITests/VaultDeletionTests
+  else
+    run_tests fixtures -only-testing:PhotoMaidUITests/PhotoMaidUITests -only-testing:PhotoMaidUITests/ScreenshotTests \
+      -only-testing:PhotoMaidUITests/VaultDeletionTests
+  fi
   pack_result fixtures
   rm -rf "$out/qa-media"
 fi

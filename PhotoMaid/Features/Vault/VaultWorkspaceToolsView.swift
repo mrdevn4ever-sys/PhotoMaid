@@ -141,10 +141,14 @@ struct VaultWorkspaceTrashView: View {
                         }
                     }
                 }
+                .accessibilityIdentifier("vault.trash.restore.\(id)")
                 Spacer()
                 Button(L("vault2_delete_forever"), systemImage: "trash", role: .destructive) { pending = VaultTrashAction(id: id, scope: scope) }
+                    .accessibilityIdentifier("vault.trash.purge.\(id)")
             }.buttonStyle(.borderless).frame(minHeight: 48)
         }.padding(.vertical, 4)
+            .accessibilityElement(children: .contain)
+            .accessibilityIdentifier("vault.trash.item.\(id)")
     }
     private func perform(_ action: () throws -> Void) { do { try action() } catch { self.error = VaultWorkspaceMessages.error(error) } }
 }
