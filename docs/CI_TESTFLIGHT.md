@@ -11,6 +11,7 @@ Repositorys zählen macOS-Minuten bei GitHub zehnfach und sind über dem Freikon
 | Datei | Was | Wann |
 |---|---|---|
 | `.github/workflows/ci.yml` | Kern-Tests (Linux) + iOS-Build + Unit-Tests auf dem Simulator; optional UI-Tests/Screenshots | manuell: Actions › CI › „Run workflow“ |
+| `.github/workflows/app-store-assets.yml` | Dark-Mode-Seitenaufnahmen und drei echte App-Store-Vorschauen je Sprache, nur im Wegwerf-Simulator | manuell, auf dem Arbeitsbranch über `ci.yml` mit `store_locales` und `ui_phase=store-screenshots` / `store-previews` |
 | `.github/workflows/testflight.yml` | Unit-Tests, Archiv, Signierung, Upload zu TestFlight | manuell: Actions › TestFlight › „Run workflow“ |
 
 Beide erzeugen einen **CI-Bericht** (`ci-report.md`, auch in der Job-Zusammenfassung): Compilerfehler mit
@@ -62,6 +63,31 @@ Screenshot-Namen den unveränderten PNG-Dateien per SHA-256 zu. Die Ergebnis-Tei
 zusammengefügt und als `tar` entpackt (Befehl in `README.txt`).
 
 Alle Läufe bleiben manuell; Pushes starten keine Tests. Unterschiedliche Commits behalten ihre eigenen CI-Belege.
+
+### App-Store-Bilder und Vorschauvideos
+
+Dieser getrennte Aufnahmeauftrag verwendet ausschließlich die 55 einzeln lizenzgeprüften CC0-Hochkantfotos
+unter `app-store/media/`, keine `-qa-fixtures`. Ein eigens angelegter iPhone-17-Pro-Max-Simulator enthält
+nach dem Import genau diese Originaldateinamen; UI, lokale Analysen und verschlüsselter PIN-Tresor
+verwenden echte App-Daten. Jede Systemlöschung wird abgelehnt. Die Fotos werden nicht in das App-Bundle
+oder in eine persönliche Mediathek eingebaut.
+
+`store_locales=all` wählt alle 16 Sprachen; eine Kommaliste wiederholt einzelne Sprachen. Zuerst
+`ui_phase=store-screenshots` aufnehmen, Original-PNGs vollständig ansehen und in Git ablegen, danach
+`ui_phase=store-previews`. Der Testbuild wird einmal je Workflow kompiliert und bei identischer
+Xcode-Version an die Sprachrunner übertragen. Bereits abgelegte Spracharchive werden beim Checkout
+dieser Runner ausgespart. `app-store-<Sprache>-assets` enthält die verwendbaren Originale/Exporte und
+Testergebnisse; `app-store-<Sprache>-sources` enthält native Screenshots, Accessibility-Bäume, Logs,
+Ergebnisübersichten und bei Vorschauen die tatsächlichen Bildschirmaufnahmen samt Zeitmarken.
+
+Die native Prüfung verlangt in der Screenshotphase 2/2, in der Vorschauphase 4/4 bestandene Tests,
+jeweils ohne Fehler oder Skip. Unvollständige Artefakte bleiben als Fehlerbeleg erhalten und sind
+keine fertige Store-Serie. Zusätzlich kontrollieren `make_review.py` und `audit_assets.py` Bildmaße,
+Prüfsummen, vollständige Sichtprüfvermerke und Videoformate. Ein grüner Workflow ersetzt keine
+Sichtprüfung. Ablage, Apple-Vorgaben und Wiederholung: [`app-store/README.md`](../app-store/README.md),
+tatsächlicher Lieferumfang: [`app-store/INDEX.md`](../app-store/INDEX.md).
+
+Diese Aufnahmephasen erzeugen weder einen TestFlight-Upload noch eine Veröffentlichung im App Store.
 
 `ui_phase=fixtures` zusammen mit `qa_case=vault` führt gezielt die Tresor-Löschregression aus
 (`VaultDeletionTests`: Fotos/Videos, Notizen, Dateien, Betrachter). Dabei werden die vorhandenen
