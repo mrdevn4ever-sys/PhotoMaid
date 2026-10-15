@@ -182,10 +182,6 @@ struct ViewerPage: View {
     @State private var image: UIImage?
     @State private var gifData: Data?
     @State private var player: AVPlayer?
-    @State private var zoom: CGFloat = 1
-    @State private var zoomBase: CGFloat = 1
-    @State private var pan: CGSize = .zero
-    @State private var panBase: CGSize = .zero
     /// Volle Qualität oder Video kommt noch (ggf. aus iCloud); `downloadProgress` nur bei iCloud-Fotos.
     @State private var loading = false
     @State private var downloadProgress: Double?
@@ -203,6 +199,8 @@ struct ViewerPage: View {
                         .frame(width: geo.size.width, height: geo.size.height)
                         .contentShape(.rect)
                         .onTapGesture { toggleChrome() }
+                        .accessibilityHint(Text(key: "viewer_controls_hint"))
+                        .accessibilityAction(named: Text(key: "viewer_toggle_controls"), toggleChrome)
                 } else if let gifData {
                     AnimatedGIFView(data: gifData)
                         .frame(width: geo.size.width, height: geo.size.height)
@@ -210,22 +208,8 @@ struct ViewerPage: View {
                         .onTapGesture { toggleChrome() }
                         .accessibilityLabel(Text(verbatim: app.asset(assetID).map(MediaInfoLine.describe) ?? ""))
                 } else if let image {
-                    Image(uiImage: image)
-                        .resizable()
-                        .scaledToFit()
-                        .scaleEffect(zoom)
-                        .offset(pan)
-                        .frame(width: geo.size.width, height: geo.size.height)
-                        .gesture(MagnifyGesture()
-                            .onChanged { v in zoom = min(6, max(1, zoomBase * v.magnification)); zoomed = zoom > 1.01 }
-                            .onEnded { _ in zoomBase = zoom; if zoom <= 1.01 { reset() } })
-                        .simultaneousGesture(DragGesture()
-                            .onChanged { v in pan = CGSize(width: panBase.width + v.translation.width, height: panBase.height + v.translation.height) }
-                            .onEnded { _ in panBase = pan }, including: zoom > 1.01 ? .all : .none)
-                        .onTapGesture(count: 2) {
-                            withAnimation(.snappy) { if zoom > 1.01 { reset() } else { zoom = 2.5; zoomBase = 2.5; zoomed = true } }
-                        }
-                        .onTapGesture { toggleChrome() }
+                    ViewerPhotoSurface(image: image, size: geo.size, isCurrent: isCurrent,
+                                       zoomed: $zoomed, toggleChrome: toggleChrome)
                         .accessibilityLabel(Text(verbatim: app.asset(assetID).map(MediaInfoLine.describe) ?? ""))
                 } else {
                     ProgressView().tint(.white)
@@ -260,14 +244,10 @@ struct ViewerPage: View {
                     if let player, activeVideoPlayer === player { activeVideoPlayer = nil }
                     player = nil
                     gifData = nil
-                    reset()
+                    zoomed = false
                 }
             }
         }
-    }
-
-    private func reset() {
-        zoom = 1; zoomBase = 1; pan = .zero; panBase = .zero; zoomed = false
     }
 
     /// Wie die Fotos-App: sofort die Vorschau vom iPhone, danach volle Qualität bzw. das Video aus iCloud. Klappt das

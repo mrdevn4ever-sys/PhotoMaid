@@ -2,6 +2,40 @@
 
 Stand: 15.10.2026 · Branch `claude/fixes-analysis-library-vault-20261014` · Build 8 in TestFlight; nachträgliche Änderungen mit eigenem Prüfstatus unten.
 
+## Tresor-Betrachter und Zeichnen bei Zoom (15.10.2026, nach Build 8)
+
+Auf Nutzermeldung angeglichen: Fotos im Tresor verwenden dieselbe Zoom-/Doppeltipp-Bühne wie die normale
+Fotoansicht. Kopf- und Aktionsleiste sowie die gemeinsame Video-Steuerung haben eigenen Platz oberhalb/
+unterhalb des Mediums. Ein Tipp auf Foto/Video blendet die Leisten aus und wieder ein; VoiceOver erhält
+dieselbe Aktion. Wischen blättert, nach unten schließt ohne Zoom. Entschlüsselung und geschützte Video-
+Tempdateien bleiben ausschließlich beim Tresor; Sperren verwirft Vorschau/Player und schließt die Ansicht.
+
+Im Fotoeditor schaltete der bisherige Code die Werkzeug-Geste bei Zoom ausdrücklich ab. Jetzt sitzt
+sie innerhalb der Bildtransformation: Zeichnen, Retusche und Ebenenbewegungen erhalten bildlokale
+Koordinaten. Ein Finger bearbeitet, zwei Finger zoomen/verschieben ausschließlich die Ansicht.
+Auch Text/Sticker im Videoeditor lassen sich bei Zoom bewegen; abgebrochene Gesten schließen ihre
+Rückgängig-Gruppe. Zoom verändert weder Rezept noch Export. Vergrößerte Vorschauen werden auf die
+Bühne begrenzt und überdecken keine Werkzeuge.
+
+Neue Screenshot-Regressionen: `testZoomedPhotoMarkupAndUndo` (tatsächlicher Zoom, keine Änderung durch
+Pinch, Zeichnen bei Zoom, genau ein Rückgängig-Schritt, Wiederholen, Gesamtbild) und
+`test12ViewerControlsPhotoZoomAndVideo` (Leisten außerhalb der Medien, Ein-/Ausblenden, Doppeltipp,
+Abspielen/Pause, unveränderte Medienzahl). Sie gehören zum vorhandenen QA-Durchlauf.
+
+| Prüfung dieses Nachtrags | Status | Beleg |
+|---|---|---|
+| Linux-Kern, Swift 6.4.1 | PASS | 394 Tests in 44 Suites; `/workspace/viewer-zoom-core-test.log` |
+| Texte / Generator / `--check` | PASS | 3 neue Bedienhinweise/-aktionen in allen 16 Sprachen; 1571 verwendete Kennungen / 2558 Einträge |
+| Swift-6-Syntax / Patchprüfung | PASS | Geänderte iOS-Dateien und UI-Tests mit `swiftc -frontend -parse`; keine iOS-Typprüfung |
+| iOS-Build / Unit-Tests / neue UI-Regressionen | NOT RUN | CI-Lauf auf diesem Nachtrag folgt; Repository wieder öffentlich |
+
+Geplante Screenshot-Namen: `editor_05_zoomed_no_edit`, `editor_06_stroke_at_zoom`,
+`editor_07_zoomed_stroke_undone`, `editor_08_zoomed_stroke_redone`,
+`editor_09_full_image_stroke_alignment`, `vault_delete_photo_controls_hidden`,
+`vault_delete_photo_double_tap_zoom`, `vault_delete_video_controls_hidden`,
+`vault_delete_viewer_media_preserved`. Erst nach erfolgreichem Simulator-Lauf sind dies PASS-Belege.
+Build 8 enthält diesen Nachtrag noch nicht; kein neuer TestFlight-Upload. E1–E19 unverändert.
+
 ## Duplikate: alle Ressourcen und ausdrücklich gewählte iCloud-Originale (15.10.2026, nach Build 8)
 
 Auf die Nutzermeldung mit sehr vielen ungeprüften Medien: Der bisherige Scanner schloss Live Photos,

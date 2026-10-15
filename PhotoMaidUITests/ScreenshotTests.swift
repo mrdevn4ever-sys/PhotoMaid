@@ -196,6 +196,65 @@ final class ScreenshotTests: XCTestCase {
         }
     }
 
+    /// Ein Finger zeichnet auch bei Zoom; Zoomen allein darf keine Bearbeitung erzeugen.
+    func testZoomedPhotoMarkupAndUndo() {
+        launch(pro: false)
+        onboarding(capture: false)
+        tab("Aufräumen")
+        guard tap("hub.photos", "Fotos für Zeichenregression") else { return }
+        XCTAssertTrue(element("feed.stage").waitForExistence(timeout: 15))
+        settle(6.5)
+        let skip = app.buttons["Tutorial überspringen"].firstMatch
+        if skip.waitForExistence(timeout: 2) { skip.tap() }
+        let edit = app.buttons["Bearbeiten"].firstMatch
+        guard waitFor(edit, 5, "Foto bearbeiten") else { return }
+        edit.tap()
+        XCTAssertTrue(element("editor.stage").waitForExistence(timeout: 30))
+        snap("editor_01_loaded_no_changes")
+
+        let markup = element("editor.tool.markup")
+        for _ in 0..<4 where !markup.isHittable {
+            element("editor.tools").swipeLeft()
+            snap("editor_02_reveal_markup")
+        }
+        XCTAssertTrue(markup.isHittable)
+        markup.tap()
+        snap("editor_03_markup")
+        let draw = app.buttons["Zeichnen"].firstMatch
+        XCTAssertTrue(draw.waitForExistence(timeout: 5))
+        draw.tap()
+        snap("editor_04_draw_selected")
+
+        let stage = element("editor.stage")
+        let undo = app.buttons["editor.undo"]
+        let redo = app.buttons["editor.redo"]
+        XCTAssertFalse(undo.isEnabled)
+        stage.pinch(withScale: 2.5, velocity: 1)
+        snap("editor_05_zoomed_no_edit")
+        let percentage = (stage.value as? String ?? "").filter(\.isNumber)
+        XCTAssertGreaterThan(Int(percentage) ?? 0, 150, "Zoom must actually be active")
+        XCTAssertFalse(undo.isEnabled, "A two-finger view gesture must not create a stroke")
+
+        stage.coordinate(withNormalizedOffset: CGVector(dx: 0.35, dy: 0.4))
+            .press(forDuration: 0.05, thenDragTo: stage.coordinate(withNormalizedOffset: CGVector(dx: 0.65, dy: 0.6)))
+        snap("editor_06_stroke_at_zoom")
+        XCTAssertTrue(undo.isEnabled, "Drawing must work while zoomed")
+        undo.tap()
+        snap("editor_07_zoomed_stroke_undone")
+        XCTAssertFalse(undo.isEnabled, "One physical stroke is exactly one undo step")
+        XCTAssertTrue(redo.isEnabled)
+        redo.tap()
+        snap("editor_08_zoomed_stroke_redone")
+        XCTAssertTrue(undo.isEnabled)
+
+        stage.pinch(withScale: 0.25, velocity: -1)
+        snap("editor_09_full_image_stroke_alignment")
+        XCTAssertEqual((stage.value as? String ?? "").filter(\.isNumber), "100")
+        XCTAssertTrue(undo.isEnabled)
+        // No save or overwrite: the original and Photos library stay intact.
+        app.terminate()
+    }
+
     /// Pro-Screen im Free-Zustand (ohne -qa-pro), damit Kauf-/Vorschau-Optionen sichtbar sind.
     func testProScreen() {
         launch(pro: false)

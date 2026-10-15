@@ -17,6 +17,7 @@ struct VideoEditorView: View {
     @State private var audioFile: ExportedFile?
     @State private var showAudioExporter = false
     @State private var dragLayer: Layer?
+    @GestureState private var stageGestureActive = false
     @State private var askText = false
     @State private var text = ""
 
@@ -37,7 +38,9 @@ struct VideoEditorView: View {
         }
         .preferredColorScheme(.dark)
         .task { await model.load(app: app) }
-        .onDisappear { model.stop() }
+        .onDisappear { finishLayerDrag(); model.stop() }
+        .onChange(of: stageGestureActive) { _, active in if !active { finishLayerDrag() } }
+        .onChange(of: model.tool) { _, _ in finishLayerDrag() }
         .confirmationDialog(L("edit_discard_title"), isPresented: $confirmDiscard, titleVisibility: .visible) {
             Button(L("edit_discard"), role: .destructive) { dismiss() }
             Button(L("edit_keep_editing"), role: .cancel) {}
@@ -134,12 +137,13 @@ struct VideoEditorView: View {
                             .position(x: rect.midX, y: rect.midY)
                         if model.tool == .text { layerOverlay(rect) }
                     }
+                    .contentShape(.rect)
+                    .gesture(stageGesture(rect), including: model.tool == .text ? .all : .subviews)
                 }
-                .contentShape(.rect)
-                .gesture(stageGesture(rect), including: model.tool == .text && zoom <= 1.01 ? .all : .subviews)
                 .onTapGesture { if model.tool != .text { model.togglePlay() } }
                 .accessibilityElement(children: .ignore)
                 .accessibilityLabel(Text(key: model.playing ? "pause" : "play"))
+                .accessibilityHint(Text(key: "edit_stage_gestures"))
                 .accessibilityAddTraits(.isButton)
                 .accessibilityAction { model.togglePlay() }
             }
@@ -202,6 +206,7 @@ struct VideoEditorView: View {
     /// Text/Sticker auswählen und verschieben (nur im Werkzeug „Markieren“; nie eine Entscheidung).
     private func stageGesture(_ rect: CGRect) -> some Gesture {
         DragGesture(minimumDistance: 0)
+            .updating($stageGestureActive) { _, active, _ in active = true }
             .onChanged { v in
                 guard model.tool == .text, hypot(v.translation.width, v.translation.height) > 4 else { return }
                 if dragLayer == nil {
@@ -220,12 +225,17 @@ struct VideoEditorView: View {
             .onEnded { v in
                 guard model.tool == .text else { return }
                 if dragLayer != nil {
-                    dragLayer = nil
-                    model.endChange()
+                    finishLayerDrag()
                 } else if hypot(v.translation.width, v.translation.height) < 6 {
                     model.selectedLayer = hit(norm(v.location, rect))?.id
                 }
             }
+    }
+
+    private func finishLayerDrag() {
+        guard dragLayer != nil else { return }
+        dragLayer = nil
+        model.endChange()
     }
 
     private func norm(_ p: CGPoint, _ rect: CGRect) -> NormPoint {

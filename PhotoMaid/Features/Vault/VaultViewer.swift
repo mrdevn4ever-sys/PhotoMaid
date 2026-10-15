@@ -2,8 +2,8 @@ import AVKit
 import PhotoMaidCore
 import SwiftUI
 
-/// Ansicht im Tresor: Fotos eingepasst (nie verzerrt), Videos aus einer geschützten Temp-Datei. Wischen blättert;
-/// Teilen, Zurück in Fotos und Löschen unten. Nichts davon ist eine Entscheidung im Sinne des Prüfstands.
+/// Gleiche Bühne wie in Fotos: Tippen blendet Leisten aus/ein, Fotos zoomen,
+/// Videos haben genau eine Steuerung unter dem Medium. Laden bleibt im Tresor.
 struct VaultViewer: View {
     @Environment(AppModel.self) private var app
     @Environment(\.dismiss) private var dismiss
@@ -14,10 +14,13 @@ struct VaultViewer: View {
     @State private var confirmDelete = false
     @State private var confirmRestore = false
     @State private var notice: String?
+    @State private var chrome = true
+    @State private var zoomed = false
+    @State private var activeVideoPlayer: AVPlayer?
 
     init(ids: [String], start: Int) {
         self.ids = ids
-        _index = State(initialValue: start)
+        _index = State(initialValue: min(max(0, start), max(0, ids.count - 1)))
     }
 
     private var current: VaultItem? {
@@ -26,44 +29,42 @@ struct VaultViewer: View {
     }
 
     var body: some View {
-        ZStack {
-            Color.black.ignoresSafeArea()
+        VStack(spacing: 0) {
+            if chrome { headerBar }
             TabView(selection: $index) {
                 ForEach(Array(ids.enumerated()), id: \.offset) { i, id in
                     if let item = vault.index.items.first(where: { $0.id == id }) {
-                        VaultViewerPage(item: item, isCurrent: i == index).tag(i)
+                        VaultViewerPage(item: item, isCurrent: i == index, zoomed: $zoomed,
+                                        activeVideoPlayer: $activeVideoPlayer) { chrome.toggle() }
+                            .tag(i)
                     }
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
-            .ignoresSafeArea()
-        }
-        .overlay(alignment: .top) {
-            HStack {
-                GlassIconButton(symbol: "xmark", label: L("vault_close_viewer")) { dismiss() }
-                    .accessibilityIdentifier("vault.viewer.close")
-                Spacer()
-                if let item = current, let ms = item.creationMs {
-                    Text(verbatim: DateText.longWithTime(Date(timeIntervalSince1970: Double(ms) / 1000)))
-                        .font(AppTypography.caption.weight(.semibold))
-                        .foregroundStyle(.white)
-                        .padding(.horizontal, AppSpacing.s)
-                        .padding(.vertical, 6)
-                        .glassCapsule()
-                        .accessibilityIdentifier("vault.viewer.date")
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .clipped()
+            .simultaneousGesture(DragGesture(minimumDistance: 20).onEnded { value in
+                if !zoomed && value.translation.height > 120 && abs(value.translation.height) > abs(value.translation.width) {
+                    dismiss()
                 }
+            })
+            if chrome, let item = current {
+                VStack(spacing: AppSpacing.s) {
+                    if item.isVideo, let activeVideoPlayer {
+                        ViewerVideoControls(player: activeVideoPlayer, duration: item.duration)
+                            .id(item.id)
+                            .accessibilityIdentifier("vault.viewer.playback")
+                    }
+                    actionBar
+                }
+                .padding(.horizontal, AppSpacing.pageMargin)
+                .padding(.top, AppSpacing.xs)
+                .padding(.bottom, AppSpacing.s)
+                .background(Color.black)
             }
-            .padding(.horizontal, AppSpacing.pageMargin)
         }
-        .overlay(alignment: .bottom) {
-            HStack(spacing: AppSpacing.l) {
-                GlassIconButton(symbol: "square.and.arrow.up", label: L("share")) { Task { await shareCurrent() } }
-                GlassIconButton(symbol: "photo.badge.arrow.down", label: L("vault_restore")) { confirmRestore = true }
-                GlassIconButton(symbol: "trash", label: L("vault_delete")) { confirmDelete = true }
-                    .accessibilityIdentifier("vault.viewer.trash")
-            }
-            .padding(.bottom, AppSpacing.l)
-        }
+        .background(Color.black.ignoresSafeArea())
+        .statusBarHidden(!chrome)
         .preferredColorScheme(.dark)
         .sheet(item: $share) { item in
             ShareSheet(items: item.urls) { vault.removeTempFiles(item.urls) }
@@ -86,7 +87,56 @@ struct VaultViewer: View {
         } message: {
             Text(verbatim: notice ?? "")
         }
-        .onChange(of: vault.phase) { _, phase in if phase != .unlocked { dismiss() } }
+        .onChange(of: index) { _, _ in
+            activeVideoPlayer?.pause()
+            activeVideoPlayer = nil
+            zoomed = false
+        }
+        .onChange(of: vault.phase) { _, phase in
+            if phase != .unlocked {
+                activeVideoPlayer?.pause()
+                activeVideoPlayer?.replaceCurrentItem(with: nil)
+                activeVideoPlayer = nil
+                dismiss()
+            }
+        }
+        .onDisappear {
+            activeVideoPlayer?.pause()
+            activeVideoPlayer = nil
+        }
+        .accessibilityAction(.escape) { dismiss() }
+    }
+
+    private var headerBar: some View {
+        GlassEffectContainer(spacing: AppSpacing.s) {
+            HStack {
+                GlassIconButton(symbol: "xmark", label: L("vault_close_viewer")) { dismiss() }
+                    .accessibilityIdentifier("vault.viewer.close")
+                Spacer()
+                if let item = current, let ms = item.creationMs {
+                    Text(verbatim: DateText.longWithTime(Date(timeIntervalSince1970: Double(ms) / 1000)))
+                        .font(AppTypography.caption.weight(.semibold))
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, AppSpacing.s)
+                        .padding(.vertical, 6)
+                        .glassCapsule()
+                        .accessibilityIdentifier("vault.viewer.date")
+                }
+            }
+            .padding(.horizontal, AppSpacing.pageMargin)
+        }
+        .padding(.vertical, AppSpacing.xs)
+    }
+
+    private var actionBar: some View {
+        GlassEffectContainer(spacing: AppSpacing.s) {
+            HStack(spacing: AppSpacing.l) {
+                GlassIconButton(symbol: "square.and.arrow.up", label: L("share")) { Task { await shareCurrent() } }
+                GlassIconButton(symbol: "photo.badge.arrow.down", label: L("vault_restore")) { confirmRestore = true }
+                GlassIconButton(symbol: "trash", label: L("vault_delete")) { confirmDelete = true }
+                    .accessibilityIdentifier("vault.viewer.trash")
+            }
+        }
     }
 
     private func shareCurrent() async {
@@ -131,6 +181,9 @@ private struct VaultViewerPage: View {
     @Environment(\.displayScale) private var scale
     let item: VaultItem
     let isCurrent: Bool
+    @Binding var zoomed: Bool
+    @Binding var activeVideoPlayer: AVPlayer?
+    let toggleChrome: () -> Void
     @State private var image: UIImage?
     @State private var player: AVPlayer?
     @State private var failed = false
@@ -139,12 +192,21 @@ private struct VaultViewerPage: View {
         GeometryReader { geo in
             ZStack {
                 if let player {
-                    VideoPlayer(player: player)
+                    PlayerLayerView(player: player)
+                        .frame(width: geo.size.width, height: geo.size.height)
+                        .contentShape(.rect)
+                        .onTapGesture { toggleChrome() }
+                        .accessibilityElement(children: .ignore)
+                        .accessibilityLabel(Text(key: "vault_kind_video"))
+                        .accessibilityHint(Text(key: "viewer_controls_hint"))
+                        .accessibilityAction(named: Text(key: "viewer_toggle_controls"), toggleChrome)
+                        .accessibilityIdentifier("vault.viewer.video")
                         .environment(\.layoutDirection, .leftToRight)
                 } else if let image {
-                    Image(uiImage: image).resizable().scaledToFit()
-                        .frame(width: geo.size.width, height: geo.size.height)
+                    ViewerPhotoSurface(image: image, size: geo.size, isCurrent: isCurrent,
+                                       zoomed: $zoomed, toggleChrome: toggleChrome)
                         .accessibilityLabel(Text(key: "vault_kind_photo"))
+                        .accessibilityIdentifier("vault.viewer.photo")
                 } else if failed {
                     Label(L("preview_failed"), systemImage: "exclamationmark.triangle").foregroundStyle(.white)
                 } else {
@@ -152,18 +214,38 @@ private struct VaultViewerPage: View {
                 }
             }
             .frame(width: geo.size.width, height: geo.size.height)
-            .task(id: item.id) {
+            .task(id: "\(item.id)-\(isCurrent)") {
+                guard isCurrent, vault.phase == .unlocked else { return }
                 if item.isVideo {
                     image = vault.thumbnails[item.id]
-                    if let url = await vault.videoFile(item) { player = AVPlayer(url: url) } else { failed = true }
+                    let url = await vault.videoFile(item)
+                    guard !Task.isCancelled, vault.phase == .unlocked else { return }
+                    if let url {
+                        let loaded = AVPlayer(url: url)
+                        player = loaded
+                        activeVideoPlayer = loaded
+                    } else { failed = true }
                 } else {
                     let side = max(geo.size.width, geo.size.height) * scale
                     image = vault.thumbnails[item.id]
-                    if let full = await vault.photo(item, maxPixel: min(4096, side * 1.5)) { image = full } else if image == nil { failed = true }
+                    let full = await vault.photo(item, maxPixel: min(4096, side * 1.5))
+                    guard !Task.isCancelled, vault.phase == .unlocked else { return }
+                    if let full { image = full } else if image == nil { failed = true }
                 }
             }
-            .onChange(of: isCurrent) { _, current in if !current { player?.pause() } }
+            .onChange(of: isCurrent) { _, current in if !current { stopPlayback() } }
+            .onChange(of: vault.phase) { _, phase in
+                if phase != .unlocked { image = nil; stopPlayback() }
+            }
+            .onAppear { if isCurrent, let player { activeVideoPlayer = player } }
             .onDisappear { player?.pause() }
         }
+    }
+
+    private func stopPlayback() {
+        player?.pause()
+        if let player, activeVideoPlayer === player { activeVideoPlayer = nil }
+        player?.replaceCurrentItem(with: nil)
+        player = nil
     }
 }

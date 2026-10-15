@@ -186,6 +186,53 @@ final class VaultDeletionTests: XCTestCase {
         XCTAssertEqual(items("media").count, before.count)
     }
 
+    func test12ViewerControlsPhotoZoomAndVideo() {
+        let before = items("media")
+        XCTAssertGreaterThanOrEqual(before.count, 2)
+        guard let photo = before.first(where: { $0.label.hasPrefix("Foto") }),
+              let video = before.first(where: { $0.label.hasPrefix("Video") }) else {
+            XCTFail("The encrypted photo/video imports must exist")
+            return
+        }
+        tap(photo, "photo_viewer_open")
+        let image = app.images["vault.viewer.photo"]
+        XCTAssertTrue(image.waitForExistence(timeout: 15))
+        let close = app.buttons["vault.viewer.close"]
+        let trash = app.buttons["vault.viewer.trash"]
+        XCTAssertLessThanOrEqual(close.frame.maxY, image.frame.minY + 1, "Header must reserve space above the photo")
+        XCTAssertGreaterThanOrEqual(trash.frame.minY, image.frame.maxY - 1, "Actions must reserve space below the photo")
+        tap(image, "photo_controls_hidden")
+        gone(close); gone(trash)
+        image.tap(); snap("photo_controls_shown")
+        XCTAssertTrue(close.waitForExistence(timeout: 5))
+        image.doubleTap(); snap("photo_double_tap_zoom")
+        XCTAssertEqual((image.value as? String ?? "").filter(\.isNumber), "250")
+        image.doubleTap(); snap("photo_double_tap_fit")
+        XCTAssertEqual((image.value as? String ?? "").filter(\.isNumber), "100")
+        tap(close, "photo_viewer_closed")
+
+        tap(video, "video_viewer_open")
+        let surface = app.descendants(matching: .any)["vault.viewer.video"].firstMatch
+        XCTAssertTrue(surface.waitForExistence(timeout: 20))
+        let play = app.buttons["Abspielen"].firstMatch
+        XCTAssertTrue(play.waitForExistence(timeout: 5))
+        XCTAssertLessThanOrEqual(close.frame.maxY, surface.frame.minY + 1)
+        XCTAssertGreaterThanOrEqual(play.frame.minY, surface.frame.maxY - 1, "Playback controls must not cover the video")
+        tap(play, "video_playing")
+        let pause = app.buttons["Pause"].firstMatch
+        XCTAssertTrue(pause.waitForExistence(timeout: 5))
+        tap(pause, "video_paused")
+        XCTAssertTrue(play.waitForExistence(timeout: 5))
+        tap(surface, "video_controls_hidden")
+        gone(close); gone(trash); gone(play)
+        surface.tap(); snap("video_controls_shown")
+        XCTAssertTrue(close.waitForExistence(timeout: 5))
+        XCTAssertTrue(play.waitForExistence(timeout: 5))
+        tap(close, "video_viewer_closed")
+        XCTAssertEqual(items("media").count, before.count, "Viewing never moves or deletes content")
+        snap("viewer_media_preserved")
+    }
+
     func test20NotesSwipeAndSelection() {
         tap(app.segmentedControls.buttons["Notizen"], "notes_tab")
         for i in 1...3 {

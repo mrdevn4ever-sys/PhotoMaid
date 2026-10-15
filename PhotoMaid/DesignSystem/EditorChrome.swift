@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 /// Editor-Oberfläche wie die Fotos-App: immer dunkel, ✕/✓-Kapseln, große Bühne, schmale Werkzeugzone.
 
@@ -129,7 +130,9 @@ struct EditorHeader<Center: View>: View {
     }
 }
 
-/// Bühne mit Zoom (zwei Finger, nur Ansicht – nie im Rezept) und Verschieben im Zoom.
+/// Zwei Finger verändern nur die Ansicht. Ein Finger bleibt für die Werkzeuge frei,
+/// auch bei Zoom. Werkzeug-Gesten gehören IN den Inhalt, vor dessen Transformation:
+/// SwiftUI liefert ihnen dadurch bildlokale Punkte und Verschiebungen.
 struct ZoomableStage<Content: View>: View {
     @Binding var zoom: CGFloat
     @ViewBuilder var content: Content
@@ -144,12 +147,41 @@ struct ZoomableStage<Content: View>: View {
             .simultaneousGesture(MagnifyGesture()
                 .onChanged { v in zoom = min(8, max(1, base * v.magnification)) }
                 .onEnded { _ in base = zoom; if zoom <= 1.01 { reset() } })
-            .simultaneousGesture(DragGesture(minimumDistance: 10)
-                .onChanged { v in pan = CGSize(width: panBase.width + v.translation.width, height: panBase.height + v.translation.height) }
-                .onEnded { _ in panBase = pan }, including: zoom > 1.01 ? .all : .none)
+            .simultaneousGesture(TwoFingerStagePan(changed: { translation in
+                guard zoom > 1.01 else { return }
+                pan = CGSize(width: panBase.width + translation.width, height: panBase.height + translation.height)
+            }, ended: { panBase = pan }))
+            .clipped()
     }
 
     private func reset() {
         zoom = 1; base = 1; pan = .zero; panBase = .zero
+    }
+}
+
+/// SwiftUI's DragGesture also recognizes a single finger; it would compete with
+/// drawing and crop handles. Limit viewport panning to exactly two touches.
+struct TwoFingerStagePan: UIGestureRecognizerRepresentable {
+    var changed: (CGSize) -> Void
+    var ended: () -> Void
+
+    func makeUIGestureRecognizer(context: Context) -> UIPanGestureRecognizer {
+        let recognizer = UIPanGestureRecognizer()
+        recognizer.minimumNumberOfTouches = 2
+        recognizer.maximumNumberOfTouches = 2
+        recognizer.cancelsTouchesInView = false
+        return recognizer
+    }
+
+    func handleUIGestureRecognizerAction(_ recognizer: UIPanGestureRecognizer, context: Context) {
+        switch recognizer.state {
+        case .began, .changed:
+            let translation = recognizer.translation(in: recognizer.view)
+            changed(CGSize(width: translation.x, height: translation.y))
+        case .ended, .cancelled, .failed:
+            ended()
+        default:
+            break
+        }
     }
 }

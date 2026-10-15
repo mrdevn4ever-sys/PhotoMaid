@@ -83,8 +83,10 @@ struct PhotoEditorView: View {
             HStack(spacing: AppSpacing.s) {
                 Button { model.undo() } label: { Image(systemName: "arrow.uturn.backward") }
                     .disabled(!model.canUndo).accessibilityLabel(Text(key: "undo"))
+                    .accessibilityIdentifier("editor.undo")
                 Button { model.redo() } label: { Image(systemName: "arrow.uturn.forward") }
                     .disabled(!model.canRedo).accessibilityLabel(Text(key: "redo"))
+                    .accessibilityIdentifier("editor.redo")
                 Menu {
                     Button(L("edit_reset_all"), role: .destructive) { model.update { $0 = EditRecipe() } }
                 } label: { Image(systemName: "ellipsis") }
@@ -127,14 +129,17 @@ struct PhotoEditorView: View {
                         }
                         overlay(rect)
                     }
+                    .contentShape(.rect)
+                    .gesture(stageGesture(rect), including: model.tool == .markup || model.tool == .retouch ? .all : .subviews)
                 }
-                .contentShape(.rect)
-                .gesture(stageGesture(rect), including: zoom > 1.01 ? .subviews : .all)
                 .onLongPressGesture(minimumDuration: 0.25, maximumDistance: 8, pressing: { pressing in
                     if model.tool == .adjust || model.tool == .filter { model.comparing = pressing }
                 }, perform: {})
                 .accessibilityElement(children: .contain)
                 .accessibilityLabel(Text(key: "edit_compare_hint"))
+                .accessibilityHint(Text(key: "edit_stage_gestures"))
+                .accessibilityValue(Text(verbatim: Double(zoom).formatted(.percent.precision(.fractionLength(0)))))
+                .accessibilityIdentifier("editor.stage")
             }
             .padding(.horizontal, AppSpacing.xs)
         }
@@ -381,11 +386,13 @@ struct PhotoEditorView: View {
                             .foregroundStyle(model.tool == t ? .black : .white)
                             .background(model.tool == t ? Color.white : Color.white.opacity(0.1), in: .capsule)
                             .accessibilityAddTraits(model.tool == t ? .isSelected : [])
+                            .accessibilityIdentifier("editor.tool.\(t.rawValue)")
                         }
                     }
                     .padding(.horizontal, AppSpacing.pageMargin)
                 }
             }
+            .accessibilityIdentifier("editor.tools")
         }
         .padding(.bottom, AppSpacing.xs)
     }
