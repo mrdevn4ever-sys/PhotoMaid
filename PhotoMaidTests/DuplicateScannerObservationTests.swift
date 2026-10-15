@@ -9,6 +9,9 @@ import XCTest
 @MainActor
 final class DuplicateScannerObservationTests: XCTestCase {
     func testConcurrentOriginalReadsCompleteWithoutBlockingTheExecutor() async throws {
+        guard PHPhotoLibrary.authorizationStatus(for: .readWrite) == .authorized else {
+            throw XCTSkip("Requires simulator-provisioned Photos access; ci.yml grants it before unit tests")
+        }
         let image = UIGraphicsImageRenderer(size: CGSize(width: 64, height: 64)).image { context in
             UIColor.systemBlue.setFill()
             context.fill(CGRect(x: 0, y: 0, width: 64, height: 64))

@@ -116,6 +116,8 @@ jobs:
           echo "udid=$udid" >> "$GITHUB_OUTPUT"
           xcrun simctl boot "$udid" 2>/dev/null || true
           xcrun simctl bootstatus "$udid" -b
+          # The PhotoKit read regression also runs before the UI-test reset/install.
+          xcrun simctl privacy "$udid" grant photos com.mrdevn4ever.photomaid
       - name: Build und Unit-Tests
         id: build
         run: |
