@@ -1,0 +1,52 @@
+name: Nativen Simulator-Screenshot prüfen
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    if: github.ref == 'refs/heads/claude/fixes-analysis-library-vault-20261014'
+    runs-on: macos-26
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - run: scripts/ci/select_xcode.sh
+      - name: Öffentliche Simulator-Funktion „Trigger Screenshot“ prüfen
+        shell: bash
+        run: |
+          mkdir -p evidence
+          udid=$(scripts/ci/pick_simulator.sh)
+          echo "$udid" > evidence/simulator.txt
+          xcrun simctl boot "$udid" 2>/dev/null || true
+          xcrun simctl bootstatus "$udid" -b
+          xcrun simctl io "$udid" screenshot evidence/before.png
+          open -a Simulator --args -CurrentDeviceUDID "$udid"
+          set +e
+          osascript > evidence/menu.log 2>&1 <<'APPLESCRIPT'
+          with timeout of 20 seconds
+            tell application "Simulator" to activate
+            delay 2
+            tell application "System Events"
+              tell process "Simulator"
+                set frontmost to true
+                click menu item "Trigger Screenshot" of menu "Device" of menu bar 1
+              end tell
+            end tell
+          end timeout
+          APPLESCRIPT
+          status=$?
+          set -e
+          echo "$status" > evidence/menu.exit
+          xcrun simctl io "$udid" screenshot evidence/after.png
+          find "$HOME/Library/Developer/CoreSimulator/Devices/$udid/data/Media/DCIM" -type f \
+            > evidence/camera-roll-files.txt 2>/dev/null || true
+          cat evidence/menu.log
+          test "$status" = 0
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-screenshot-evidence
+          path: evidence
