@@ -9,7 +9,7 @@ Alle Aufnahmen in Dark Mode. Je Sprache liegen vollständiges Seitenarchiv, eine
 | Englisch | `en` → `en-US` | ausstehend | ausstehend |
 | Spanisch | `es` → `es-ES` | ausstehend | ausstehend |
 | Französisch | `fr` → `fr-FR` | ausstehend | ausstehend |
-| Italienisch | `it` → `it` | ausstehend | ausstehend |
+| [Italienisch](locales/it/README.md) | `it` → `it` | 123 / Auswahl 10 | 0 / 3 |
 | Japanisch | `ja` → `ja` | ausstehend | ausstehend |
 | Koreanisch | `ko` → `ko` | ausstehend | ausstehend |
 | Niederländisch | `nl` → `nl-NL` | ausstehend | ausstehend |
