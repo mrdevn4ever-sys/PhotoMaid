@@ -2,6 +2,34 @@
 
 Stand: 15.10.2026 · Branch `claude/fixes-analysis-library-vault-20261014` · Build-7-Ausgangsstand, Simulator-Fachprüfung abgeschlossen.
 
+## Tresor: Löschen per Wischen und Auswahl (15.10.2026, nach Build 8)
+
+Auf Nutzermeldung ergänzt: **Auswählen** ist auf Medien, Notizen und Dateien direkt oben sichtbar.
+Notizen erhalten einen Mehrfach-Auswahlmodus; vorhandene Datei-/Medienauswahl ist leichter erreichbar.
+Fotos und Videos im Raster fragen nach einem Wischen nach links nach dem Verschieben in den
+Tresor-Papierkorb. Notizen und Dateien bieten native Wischaktionen. Wischen, Kontextmenü und
+Auswahl verwenden dieselbe Bestätigung mit festgehaltenen IDs. Abbrechen erhält die Auswahl.
+Verschlüsselung, Wiederherstellung, Anhangsschutz und endgültiges Löschen im Tresor-Papierkorb
+verwenden die vorhandenen Speicherfunktionen; externe Originale werden dabei nicht gelöscht.
+Im Medienbetrachter wird nach dem Löschen das nächste vorhandene Medium statt einer leeren Seite gezeigt.
+
+`VaultDeletionTests` prüft Foto-/Video-Import, beide Löschwege, Abbrechen, ungewählte Inhalte,
+Wiederherstellung und das Weiterblättern nach dem Löschen. Notizen werden über den Editor erzeugt,
+Dateien über den System-Dateiauswahldialog importiert. Eine Systemlöschung von Fotos wird ausschließlich
+abgebrochen. Jeder Schritt speichert einen Screenshot. Gezielt startbar mit
+`ci.yml`: `ui_tests=true`, `ui_phase=fixtures`, `qa_case=vault`.
+
+| Prüfung dieses Nachtrags | Status | Beleg |
+|---|---|---|
+| Linux-Kern, Swift 6.4.1 | PASS | Lokal `swift test`: 381 Tests in 43 Suites, keine Fehler |
+| Swift-6-Syntax der geänderten Ansichten und UI-Tests | PASS | `swiftc -frontend -parse -swift-version 6`; keine iOS-Typprüfung |
+| Sprachen / Generator / Workflow-YAML / Shell-Syntax | PASS | 16 Sprachen, 1563 benutzte Kennungen / 2548 Einträge; vorhandene Texte wiederverwendet |
+| iOS-Build, iOS-Unit-Tests und neue Tresor-UI-Tests | BLOCKED | [Lauf `38686490824`](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38686490824): beide Jobs vor Runner-Start durch GitHub-Abrechnung/Ausgabenlimit blockiert; Repository inzwischen privat. Keine neuen Simulator-Screenshots |
+
+Implementierung: `ff6add0`, anschließend Ergänzung der Betrachter-Regression und dieses Prüfstatus.
+Build 8 enthält diesen nachträglichen Fix noch nicht. Kein weiterer TestFlight-Lauf gestartet.
+Die nachfolgenden PASS-Belege betreffen den davor geprüften Build-8-Stand.
+
 ## TestFlight-Build 8 auf ausdrückliche Anweisung (15.10.2026)
 
 Nach Abschluss der Simulatorprüfung hat der Inhaber den TestFlight-Build ausdrücklich beauftragt.

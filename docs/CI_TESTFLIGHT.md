@@ -63,6 +63,14 @@ zusammengefügt und als `tar` entpackt (Befehl in `README.txt`).
 
 Alle Läufe bleiben manuell; Pushes starten keine Tests. Unterschiedliche Commits behalten ihre eigenen CI-Belege.
 
+`ui_phase=fixtures` zusammen mit `qa_case=vault` führt gezielt die Tresor-Löschregression aus
+(`VaultDeletionTests`: Fotos/Videos, Notizen, Dateien, Betrachter). Dabei werden die vorhandenen
+synthetischen QA-Medien und Dateien tatsächlich importiert. Die Systemlöschung der Fotos wird
+abgebrochen; anschließend werden nur verschlüsselte Tresor-Inhalte in dessen Papierkorb verschoben
+und wiederhergestellt. `qa_case=all` schließt diese Tests in die regulären QA-Prüfungen ein.
+Bei einem privaten Repository müssen Actions-Abrechnung und Ausgabenlimit freigegeben sein;
+die Sichtbarkeit wird vom Workflow nicht verändert.
+
 `native_capture=true` in `ci.yml` startet ausschließlich die wiederverwendbare Simulator-Screenshot-Diagnose
 aus `simulator-screenshot.yml`: öffentliche Menüfunktion „Device › Trigger Screenshot“, Vorher-/Nachher-PNG
 und Log. Kein App-Build und keine App-Abnahme. Der Aufruf über `ci.yml` funktioniert auch, solange GitHub den

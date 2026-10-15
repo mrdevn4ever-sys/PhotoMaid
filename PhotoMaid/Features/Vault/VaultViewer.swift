@@ -41,6 +41,7 @@ struct VaultViewer: View {
         .overlay(alignment: .top) {
             HStack {
                 GlassIconButton(symbol: "xmark", label: L("vault_close_viewer")) { dismiss() }
+                    .accessibilityIdentifier("vault.viewer.close")
                 Spacer()
                 if let item = current, let ms = item.creationMs {
                     Text(verbatim: DateText.longWithTime(Date(timeIntervalSince1970: Double(ms) / 1000)))
@@ -49,6 +50,7 @@ struct VaultViewer: View {
                         .padding(.horizontal, AppSpacing.s)
                         .padding(.vertical, 6)
                         .glassCapsule()
+                        .accessibilityIdentifier("vault.viewer.date")
                 }
             }
             .padding(.horizontal, AppSpacing.pageMargin)
@@ -58,6 +60,7 @@ struct VaultViewer: View {
                 GlassIconButton(symbol: "square.and.arrow.up", label: L("share")) { Task { await shareCurrent() } }
                 GlassIconButton(symbol: "photo.badge.arrow.down", label: L("vault_restore")) { confirmRestore = true }
                 GlassIconButton(symbol: "trash", label: L("vault_delete")) { confirmDelete = true }
+                    .accessibilityIdentifier("vault.viewer.trash")
             }
             .padding(.bottom, AppSpacing.l)
         }

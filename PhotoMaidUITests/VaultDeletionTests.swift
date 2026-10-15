@@ -148,7 +148,7 @@ final class VaultDeletionTests: XCTestCase {
         // Originale bleiben in Fotos. NIE den destruktiven Systemknopf betätigen.
         XCTAssertTrue(system.alerts.firstMatch.waitForExistence(timeout: 60))
         checkpoint("vault_delete_system_photos_deletion_declined", app: system)
-        let cancel = system.alerts.buttons.matching(NSPredicate(format: "label IN %@", ["Don't Allow", "Nicht erlauben", "Abbrechen", "Cancel"])).firstMatch
+        let cancel = system.alerts.buttons.matching(NSPredicate(format: "label IN %@", ["Don't Allow", "Nicht erlauben", "Abbrechen", "Cancel"] as NSArray)).firstMatch
         XCTAssertTrue(cancel.exists)
         cancel.tap()
         XCTAssertTrue(app.alerts.buttons["OK"].waitForExistence(timeout: 15))
@@ -166,6 +166,24 @@ final class VaultDeletionTests: XCTestCase {
         verifyTrash(removed, restore: true)
         XCTAssertEqual(items("media").count, 5)
         snap("photos_and_videos_restored")
+    }
+
+    func test11ViewerContinuesAfterDeletion() {
+        let before = items("media")
+        XCTAssertGreaterThanOrEqual(before.count, 2)
+        let photo = before.first { $0.label.hasPrefix("Foto") }!
+        let photoID = id(photo)
+        tap(photo, "viewer_open")
+        XCTAssertTrue(app.staticTexts["vault.viewer.date"].waitForExistence(timeout: 5))
+        tap(app.buttons["vault.viewer.trash"], "viewer_trash")
+        confirmTrash("viewer")
+        XCTAssertTrue(app.staticTexts["vault.viewer.date"].waitForExistence(timeout: 5), "A remaining item must become current, instead of a blank deleted page")
+        snap("viewer_next_item")
+        tap(app.buttons["vault.viewer.close"], "viewer_closed")
+        gone(photo)
+        XCTAssertEqual(items("media").count, before.count - 1)
+        verifyTrash([photoID], restore: true)
+        XCTAssertEqual(items("media").count, before.count)
     }
 
     func test20NotesSwipeAndSelection() {
@@ -193,9 +211,9 @@ final class VaultDeletionTests: XCTestCase {
         for name in ["Notizen", "Hotelbuchung", "Reiseplan"] {
             tap(app.buttons["In den Tresor legen"], "file_add_" + name)
             tap(app.buttons["Dateien importieren"], "file_picker_" + name)
-            let browse = app.buttons.matching(NSPredicate(format: "label IN %@", ["Browse", "Durchsuchen"])).firstMatch
+            let browse = app.buttons.matching(NSPredicate(format: "label IN %@", ["Browse", "Durchsuchen"] as NSArray)).firstMatch
             if browse.waitForExistence(timeout: 2) { tap(browse, "browse_" + name) }
-            let local = app.descendants(matching: .any).matching(NSPredicate(format: "label IN %@", ["On My iPhone", "Auf meinem iPhone"])).firstMatch
+            let local = app.descendants(matching: .any).matching(NSPredicate(format: "label IN %@", ["On My iPhone", "Auf meinem iPhone"] as NSArray)).firstMatch
             if local.waitForExistence(timeout: 2) { tap(local, "local_files_" + name) }
             let appFolder = app.descendants(matching: .any).matching(NSPredicate(format: "label == 'PhotoMaid'")).firstMatch
             if appFolder.waitForExistence(timeout: 2) { tap(appFolder, "app_folder_" + name) }
@@ -203,7 +221,7 @@ final class VaultDeletionTests: XCTestCase {
             if downloads.waitForExistence(timeout: 2) { tap(downloads, "qa_folder_" + name) }
             let file = app.descendants(matching: .any).matching(NSPredicate(format: "label BEGINSWITH %@", name)).firstMatch
             tap(file, "file_chosen_" + name)
-            let open = app.buttons.matching(NSPredicate(format: "label IN %@", ["Open", "Öffnen"])).firstMatch
+            let open = app.buttons.matching(NSPredicate(format: "label IN %@", ["Open", "Öffnen"] as NSArray)).firstMatch
             if open.waitForExistence(timeout: 2) { tap(open, "file_opened_" + name) }
             XCTAssertTrue(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'vault.files.item.' AND label CONTAINS %@", name)).firstMatch.waitForExistence(timeout: 20))
             snap("file_imported_" + name)
