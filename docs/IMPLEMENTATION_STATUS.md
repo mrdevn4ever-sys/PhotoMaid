@@ -2,6 +2,23 @@
 
 Stand: 15.10.2026 · Branch `claude/fixes-analysis-library-vault-20261014` · Build-7-Ausgangsstand, Simulator-Fachprüfung abgeschlossen.
 
+## TestFlight-Build 8 auf ausdrückliche Anweisung (15.10.2026)
+
+Nach Abschluss der Simulatorprüfung hat der Inhaber den TestFlight-Build ausdrücklich beauftragt.
+[TestFlight-Lauf `38682125439`](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38682125439)
+auf Commit `613810f` ist vollständig **PASS**: Signing-Preflight, 24 iOS-Unit-Tests
+(13 XCTest + 11 Swift Testing, keine Fehler), Release-Archiv, Export, Upload und Schlüsselbereinigung.
+**Version 1.0, Build 8** wurde um 04:47 UTC hochgeladen; Apple-Verarbeitung und Testhinweise
+sind um 04:50 UTC bestätigt. Keine externe Verteilung, kein Merge und kein Push auf `main`.
+
+Commit `613810f` gleicht die vorgeschalteten Simulator-Tests an die bereits geprüfte lokale
+Ad-hoc-Signierung an; damit funktioniert auch der echte Keychain-Rundlauf. App-Code und
+Distributionssignierung bleiben auf dem simulatorgeprüften Stand. Das Artefakt `testflight-report`
+enthält `gym.log`, `unit-tests.log` und den Fastlane-Bericht. Der generische CI-Bericht bezeichnet
+den Archivlauf als `UNBEKANNT` (0 Fehler, 2 Warnungen); tatsächlicher Archivabschluss,
+Upload und Apple-Verarbeitung sind durch die erfolgreichen Workflow-/Fastlane-Schritte belegt.
+Die unten genannten offenen Geräteprüfungen bleiben für diesen internen Testbuild bestehen.
+
 ## Simulator-Prüfung über GitHub Actions (14.–15.10.2026, Build-7-Stand)
 
 Freigabe des Inhabers: `ci.yml` auf `claude/fixes-analysis-library-vault-20261014`.
