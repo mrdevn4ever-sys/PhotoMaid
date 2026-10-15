@@ -1,0 +1,182 @@
+[
+  {
+    "file": "01-review.mp4",
+    "locale": "es",
+    "duration": 27.0,
+    "resolution": [
+      886,
+      1920
+    ],
+    "fps": 30,
+    "poster_file": "01-review-poster.png",
+    "poster_sha256": "e0d5ffbc9f14e16deef1fbba02cf2b1139d4d6ae9244c81981eb3aba44ba6027",
+    "poster_time": 1,
+    "poster_timecode": "00:00:01:00",
+    "audio": "AAC stereo, silence",
+    "source": "Actual simulator screen recording; no generated UI",
+    "source_file": "01-review.mov",
+    "source_sha256": "75245446dec558ee7913c538953edc645e15a37722662b3db491918364f0c397",
+    "source_duration": 26.278333,
+    "source_recording": {
+      "name": "01-review",
+      "start": 1792081633.507572,
+      "end": 1792081670.1413918,
+      "returncode": 0
+    },
+    "source_markers": [
+      {
+        "label": "feed",
+        "time": 1792081639.5754418,
+        "clip": "01-review"
+      },
+      {
+        "time": 1792081646.248526,
+        "clip": "01-review",
+        "label": "keep"
+      },
+      {
+        "label": "trash",
+        "time": 1792081652.686701,
+        "clip": "01-review"
+      },
+      {
+        "clip": "01-review",
+        "time": 1792081658.8060498,
+        "label": "later"
+      },
+      {
+        "clip": "01-review",
+        "label": "back",
+        "time": 1792081665.910833
+      }
+    ],
+    "editing": {
+      "source_start": 0,
+      "source_end": 26.278333,
+      "playback_speed": 1.0949305416666666,
+      "final_frame_hold_seconds": 3,
+      "description": "Complete actual recording, longer demos accelerated to 24 seconds; genuine final frame held for 3 seconds"
+    },
+    "status": "PASS"
+  },
+  {
+    "file": "02-studio.mp4",
+    "locale": "es",
+    "duration": 27.0,
+    "resolution": [
+      886,
+      1920
+    ],
+    "fps": 30,
+    "poster_file": "02-studio-poster.png",
+    "poster_sha256": "dd6d297e1b3575d71974c02de9a33ea6a80899ce4f4e8692250e1f75aea3fb45",
+    "poster_time": 1,
+    "poster_timecode": "00:00:01:00",
+    "audio": "AAC stereo, silence",
+    "source": "Actual simulator screen recording; no generated UI",
+    "source_file": "02-studio.mov",
+    "source_sha256": "be7229480af25fe72b27e7a4ae09d8d89e85b2e9f9aa5dcbe290d0d6c5f027e7",
+    "source_duration": 56.971667,
+    "source_recording": {
+      "name": "02-studio",
+      "start": 1792081685.4755468,
+      "end": 1792081751.239189,
+      "returncode": 0
+    },
+    "source_markers": [
+      {
+        "time": 1792081689.500242,
+        "clip": "02-studio",
+        "label": "editor"
+      },
+      {
+        "label": "adjust",
+        "time": 1792081704.0679479,
+        "clip": "02-studio"
+      },
+      {
+        "label": "filter",
+        "time": 1792081717.61678,
+        "clip": "02-studio"
+      },
+      {
+        "label": "markup",
+        "clip": "02-studio",
+        "time": 1792081736.856071
+      },
+      {
+        "clip": "02-studio",
+        "label": "frame",
+        "time": 1792081747.0218291
+      }
+    ],
+    "editing": {
+      "source_start": 0,
+      "source_end": 56.971667,
+      "playback_speed": 2.373819458333333,
+      "final_frame_hold_seconds": 3,
+      "description": "Complete actual recording, longer demos accelerated to 24 seconds; genuine final frame held for 3 seconds"
+    },
+    "status": "PASS"
+  },
+  {
+    "file": "03-vault.mp4",
+    "locale": "es",
+    "duration": 27.0,
+    "resolution": [
+      886,
+      1920
+    ],
+    "fps": 30,
+    "poster_file": "03-vault-poster.png",
+    "poster_sha256": "c27cb491c6dfc9300d1697eacd20f7ea0502f5a14463832622ae3f3a83460462",
+    "poster_time": 6,
+    "poster_timecode": "00:00:06:00",
+    "audio": "AAC stereo, silence",
+    "source": "Actual simulator screen recording; no generated UI",
+    "source_file": "03-vault.mov",
+    "source_sha256": "c3eec204048d97d67afc4546e31859dde9e263b9e8f30c08072e51444f1adf09",
+    "source_duration": 33.58,
+    "source_recording": {
+      "name": "03-vault",
+      "start": 1792081769.240462,
+      "end": 1792081811.1965241,
+      "returncode": 0
+    },
+    "source_markers": [
+      {
+        "clip": "03-vault",
+        "time": 1792081775.215423,
+        "label": "vault"
+      },
+      {
+        "time": 1792081782.548341,
+        "label": "viewer",
+        "clip": "03-vault"
+      },
+      {
+        "time": 1792081791.333343,
+        "label": "hidden-controls",
+        "clip": "03-vault"
+      },
+      {
+        "label": "zoom",
+        "clip": "03-vault",
+        "time": 1792081797.936029
+      },
+      {
+        "time": 1792081807.17317,
+        "label": "controls",
+        "clip": "03-vault"
+      }
+    ],
+    "editing": {
+      "source_start": 0,
+      "source_end": 33.58,
+      "playback_speed": 1.3991666666666667,
+      "final_frame_hold_seconds": 3,
+      "description": "Complete actual recording, longer demos accelerated to 24 seconds; genuine final frame held for 3 seconds"
+    },
+    "status": "PASS"
+  }
+]

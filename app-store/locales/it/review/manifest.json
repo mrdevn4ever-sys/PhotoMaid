@@ -578,5 +578,94 @@
     ],
     "review": "PASS",
     "findings": "All 123 original native screenshots viewed in 11 labeled sheets. Dark mode, genuine 55-photo library and five encrypted PIN-vault imports, loaded editor/filter images and completed filename indexing. No raw keys or printf placeholders visible. Empty pages reflect photos-only input; native compact controls can abbreviate long labels."
+  },
+  {
+    "sheet": "01-review-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/01-review.mp4",
+        "sha256": "43484f853b1ed6737a5464ae59babca60755ba0f4067e8f7ef54186e80dc5d41"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.114,
+      7.829,
+      11.543,
+      15.257,
+      18.971,
+      22.686,
+      26.4
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "findings": "Full decode passed and all eight sampled frames actually viewed. Genuine localized dark-mode feed, exposure/filter/drawing and vault controls/zoom visible. No system dialog, raw key or format placeholder seen. Normal loading transitions remain genuine; actual native step PNGs also viewed."
+  },
+  {
+    "sheet": "02-studio-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/02-studio.mp4",
+        "sha256": "7ea2253a8eb718586da86b05c5a1078c126d51ea5935606cdea93bc4165ad805"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "findings": "Full decode passed and all eight sampled frames actually viewed. Genuine localized dark-mode feed, exposure/filter/drawing and vault controls/zoom visible. No system dialog, raw key or format placeholder seen. Normal loading transitions remain genuine; actual native step PNGs also viewed."
+  },
+  {
+    "sheet": "03-vault-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/03-vault.mp4",
+        "sha256": "243a3bd9c57892372c105eb26c7809def990d24bafe91d29c27f78e9509659bc"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "findings": "Full decode passed and all eight sampled frames actually viewed. Genuine localized dark-mode feed, exposure/filter/drawing and vault controls/zoom visible. No system dialog, raw key or format placeholder seen. Normal loading transitions remain genuine; actual native step PNGs also viewed."
+  },
+  {
+    "sheet": "posters.jpg",
+    "kind": "posters",
+    "originals": [
+      {
+        "file": "previews/01-review-poster.png",
+        "sha256": "ad06d78a7bdf3977a52ab8666990dceb308681a25be9256a798e0f83f8685434"
+      },
+      {
+        "file": "previews/02-studio-poster.png",
+        "sha256": "63ae93c29271a374adf8222801a9f39b8c1055614881677fa42f5b0162356d73"
+      },
+      {
+        "file": "previews/03-vault-poster.png",
+        "sha256": "15f56a3d120e25d136f712e2ff5e218aa5fe57f6c8c9944c7ae0141b73b5a37c"
+      }
+    ],
+    "review": "PASS",
+    "findings": "All three actual poster frames viewed; correct portrait size, localized dark-mode UI and real media."
   }
 ]

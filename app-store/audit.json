@@ -1,5 +1,30 @@
 [
   {
+    "language": "ar",
+    "screenshots": 123,
+    "selection": 10,
+    "videos": [
+      {
+        "file": "01-review.mp4",
+        "sha256": "772392926705fb6ccda455755d2b348627805023dc35f23fe6270e69b9b364e8",
+        "duration": 27.0
+      },
+      {
+        "file": "02-studio.mp4",
+        "sha256": "c2da42f96f830c13c29df90df354f5750d2f76c603e92d2c2688aa5797809181",
+        "duration": 27.0
+      },
+      {
+        "file": "03-vault.mp4",
+        "sha256": "1222664a9da4684c263818f49bb778ace1f060a45f2b7552c03843c6e32a3b1f",
+        "duration": 27.0
+      }
+    ],
+    "capture_run": "38744237961",
+    "capture_commit": "59b6e8143c3ff9032f65379e6fa37d9ddf20aa30",
+    "status": "PASS"
+  },
+  {
     "language": "de",
     "screenshots": 123,
     "selection": 10,
@@ -50,28 +75,78 @@
     "status": "PASS"
   },
   {
-    "language": "ar",
+    "language": "es",
     "screenshots": 123,
     "selection": 10,
     "videos": [
       {
         "file": "01-review.mp4",
-        "sha256": "772392926705fb6ccda455755d2b348627805023dc35f23fe6270e69b9b364e8",
+        "sha256": "b70ed907959cbe092b041332dca6d3c9af51be9b064b129eedd8dc27acd8ba80",
         "duration": 27.0
       },
       {
         "file": "02-studio.mp4",
-        "sha256": "c2da42f96f830c13c29df90df354f5750d2f76c603e92d2c2688aa5797809181",
+        "sha256": "759d85a2abffa066cf5c450d72dfa2ec9b5c3a0cf38ef6641dcb9ebaa183e4e2",
         "duration": 27.0
       },
       {
         "file": "03-vault.mp4",
-        "sha256": "1222664a9da4684c263818f49bb778ace1f060a45f2b7552c03843c6e32a3b1f",
+        "sha256": "d96c9188da426c5bf9a9cb9707b1a4bb1474894ea0ab1596ad262aff4ebd2248",
+        "duration": 27.0
+      }
+    ],
+    "capture_run": "38750057086",
+    "capture_commit": "819609e9fb766d25ab0d87e691cb274ca4ba849a",
+    "status": "PASS"
+  },
+  {
+    "language": "fr",
+    "screenshots": 123,
+    "selection": 10,
+    "videos": [
+      {
+        "file": "01-review.mp4",
+        "sha256": "8140c2bf464a832aa8ec61cfcfeb5c1a339cfa8f71038540d9a7cc222a277b80",
+        "duration": 27.0
+      },
+      {
+        "file": "02-studio.mp4",
+        "sha256": "bd2d73ec9a388a13da90ddb9a336d597ea9cd11587bbd7e414187999db577d99",
+        "duration": 27.0
+      },
+      {
+        "file": "03-vault.mp4",
+        "sha256": "86e4f438d7b3171e4fe9b5b6e09fd50895f7e5345fb12edcdd4e7a8471815b93",
         "duration": 27.0
       }
     ],
     "capture_run": "38744237961",
     "capture_commit": "59b6e8143c3ff9032f65379e6fa37d9ddf20aa30",
+    "status": "PASS"
+  },
+  {
+    "language": "it",
+    "screenshots": 123,
+    "selection": 10,
+    "videos": [
+      {
+        "file": "01-review.mp4",
+        "sha256": "43484f853b1ed6737a5464ae59babca60755ba0f4067e8f7ef54186e80dc5d41",
+        "duration": 26.8
+      },
+      {
+        "file": "02-studio.mp4",
+        "sha256": "7ea2253a8eb718586da86b05c5a1078c126d51ea5935606cdea93bc4165ad805",
+        "duration": 27.0
+      },
+      {
+        "file": "03-vault.mp4",
+        "sha256": "243a3bd9c57892372c105eb26c7809def990d24bafe91d29c27f78e9509659bc",
+        "duration": 27.0
+      }
+    ],
+    "capture_run": "38735332484",
+    "capture_commit": "defb9418a63c777a49f514a15573defbe8728d1b",
     "status": "PASS"
   },
   {
@@ -97,6 +172,31 @@
     ],
     "capture_run": "38742616639",
     "capture_commit": "bb4706f7accb5bce7a2f54b86d3405bdca352ee1",
+    "status": "PASS"
+  },
+  {
+    "language": "nl",
+    "screenshots": 123,
+    "selection": 10,
+    "videos": [
+      {
+        "file": "01-review.mp4",
+        "sha256": "8fc298dda0801fc18334ed6f5a687d4b740f1eb426b043ed787a9f6fe2bf6e4d",
+        "duration": 27.0
+      },
+      {
+        "file": "02-studio.mp4",
+        "sha256": "3c28e4fbfe2703e56577f4d66a0de11816f36f08f9da297cd1f3540a01d1cc6e",
+        "duration": 27.0
+      },
+      {
+        "file": "03-vault.mp4",
+        "sha256": "59c42e201e3b1df07ca1c0cb3f249ce5aacac9174e393c17ee53da06a0ba5368",
+        "duration": 27.0
+      }
+    ],
+    "capture_run": "38748687136",
+    "capture_commit": "819609e9fb766d25ab0d87e691cb274ca4ba849a",
     "status": "PASS"
   }
 ]
