@@ -9,6 +9,10 @@ on:
         description: "UI-Tests und Screenshots ausführen (länger)"
         type: boolean
         default: false
+      native_capture:
+        description: "Nur die native iOS-Screenshot-Aufnahme untersuchen (kein App-Build)"
+        type: boolean
+        default: false
       ui_phase:
         description: "UI-Durchlauf (gezielte Wiederholung nach der ersten Gesamtprüfung)"
         type: choice
@@ -53,8 +57,11 @@ permissions:
   actions: read
 
 jobs:
+  native-screenshot:
+    if: inputs.native_capture
+    uses: ./.github/workflows/simulator-screenshot.yml
   core:
-    if: inputs.collect_run == ''
+    if: inputs.collect_run == '' && !inputs.native_capture
     name: PhotoMaidCore (Linux, swift test)
     runs-on: ubuntu-24.04
     container: swift:6.4-noble
@@ -74,7 +81,7 @@ jobs:
           path: core-test.log
 
   ios:
-    if: inputs.collect_run == ''
+    if: inputs.collect_run == '' && !inputs.native_capture
     name: iOS App (xcodebuild build + test)
     runs-on: macos-26
     timeout-minutes: 120
