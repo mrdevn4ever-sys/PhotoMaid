@@ -1,0 +1,582 @@
+[
+  {
+    "sheet": "screenshots-00.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/01-introduction/introduction-01.png",
+        "sha256": "a46bb2f56b842da0026cf8422769e5835d9f48824ee446cef4d7d1951a141e3d"
+      },
+      {
+        "file": "all-pages/01-introduction/introduction-02.png",
+        "sha256": "5de89f441b913381281baf0c9195b9cb207e61f63205ab80c1ec31f38e6b7aba"
+      },
+      {
+        "file": "all-pages/01-introduction/introduction-03.png",
+        "sha256": "8d6cc013b568f7d9fa260abc382b7b0a8dcd7a316ef33dd50fda5a176d4f7a91"
+      },
+      {
+        "file": "all-pages/01-introduction/introduction-04.png",
+        "sha256": "89f52b611f26ea707cfa7553d9955160dc6112147bc1ae5f7d5e88b34690d907"
+      },
+      {
+        "file": "all-pages/01-introduction/introduction-05.png",
+        "sha256": "9ccc5977b99e029c3c39978ee82a638b0512834dc871de8db39bb6ef4d44a3fe"
+      },
+      {
+        "file": "all-pages/02-today-and-review/feed-gesture-guide.png",
+        "sha256": "9bb61b78e047b75a7400b980fe02259b5245c461d51ccdbaa9b34143912d0269"
+      },
+      {
+        "file": "all-pages/02-today-and-review/feed-later.png",
+        "sha256": "5c74cf60455533fd47082d953a81dd4f5bd0510cc0f899c93f3bb55c9885cbf0"
+      },
+      {
+        "file": "all-pages/02-today-and-review/feed-menu.png",
+        "sha256": "ddbb66767958b84abb66c5c07a3fbc04e322895cb188d1599cb9bd5a93a78062"
+      },
+      {
+        "file": "all-pages/02-today-and-review/feed.png",
+        "sha256": "2bfad682c87100d43b6653a11f5a638e4a79ef0ca6a02b8114cd1e71749b43b5"
+      },
+      {
+        "file": "all-pages/02-today-and-review/today.png",
+        "sha256": "ecb5c212f1382aad6896a9f009032f011ec0fdfb0333586bc3d4f8c4efa62746"
+      },
+      {
+        "file": "all-pages/03-photos/album.png",
+        "sha256": "9cd5859fe67d506bc3c422d3a7f15c9fb44e09a9f18721bdd66767976afb8613"
+      },
+      {
+        "file": "all-pages/03-photos/albums.png",
+        "sha256": "99151a8c96ca8aa52b72bd2e827bdd10a9493bcd8e72adc20eae90461b4997f2"
+      }
+    ],
+    "review": "PASS",
+    "findings": "Alle Originale im beschrifteten Prüfbogen angesehen: Dark Mode, echte Medien, keine Systembanner oder sichtbaren Platzhalter. Leere Ansichten entsprechen dem reinen Foto-Bildsatz."
+  },
+  {
+    "sheet": "screenshots-01.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/03-photos/favorites.png",
+        "sha256": "7aeb9230d24dfa17f1ab2842dcd7a999aaee5a2857dbaf2c43c3da4c1f31c1fe"
+      },
+      {
+        "file": "all-pages/03-photos/grid.png",
+        "sha256": "2224f64731d2c361ffb1669837b36c09ae7c60447bbad7527a5626ad6fc1bf41"
+      },
+      {
+        "file": "all-pages/03-photos/hidden.png",
+        "sha256": "59ab0b229356135c6a5b5b479b96b695a45b2b20374908e8267f46799fd69eb7"
+      },
+      {
+        "file": "all-pages/03-photos/library-favorites.png",
+        "sha256": "72989f9ad9a6984724979e8a31ad5107680976a6abebdfff770974c6f93b1035"
+      },
+      {
+        "file": "all-pages/03-photos/library-photos.png",
+        "sha256": "0f8fab89add5440aea9453d616d75d5309c9cf53c0bdec8abc87af7d1f113dca"
+      },
+      {
+        "file": "all-pages/03-photos/library-screenshots.png",
+        "sha256": "05407c5cee6b2907aa817f911cc6995815a1174f6258665dbc839f2c0b07b242"
+      },
+      {
+        "file": "all-pages/03-photos/library-videos.png",
+        "sha256": "7b9e5b69a4e585a54f30770bfe962789262eee81e24fbf671001bc05f2eb99fd"
+      },
+      {
+        "file": "all-pages/03-photos/library.png",
+        "sha256": "b406bfe4608c0b5f2e9e0c36b4a1e5c49196eeb8116e6a94fe28bd4551d5f939"
+      },
+      {
+        "file": "all-pages/03-photos/search.png",
+        "sha256": "52c8aebf6410f8a81408c71fe2ffc029890b338b459f2a0fbcabe9e090cfd46a"
+      },
+      {
+        "file": "all-pages/03-photos/selection.png",
+        "sha256": "11fe480594391f0c37cf5a3c760a5c4636861db3585e851dbc9ad365d96d7a32"
+      },
+      {
+        "file": "all-pages/03-photos/slideshow-settings.png",
+        "sha256": "0c20ee1158d604464925f3d640595505062249546a3f49b35f0580f6b8a88e7f"
+      },
+      {
+        "file": "all-pages/03-photos/slideshow.png",
+        "sha256": "05697238dda598a88b5cc21f82a729c4c6c53aad6eda17a605413343ce64689e"
+      }
+    ],
+    "review": "PASS",
+    "findings": "Alle Originale im beschrifteten Prüfbogen angesehen: Dark Mode, echte Medien, keine Systembanner oder sichtbaren Platzhalter. Leere Ansichten entsprechen dem reinen Foto-Bildsatz."
+  },
+  {
+    "sheet": "screenshots-02.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/03-photos/tags.png",
+        "sha256": "b5adc55c6c6a3de704c4d11abe8219cbdd932ae8696a27df91429d7453dc6821"
+      },
+      {
+        "file": "all-pages/03-photos/viewer-album-picker.png",
+        "sha256": "f9252d076ffff1f9d1c0159eb274cf102edc4ba2b7f703297044b9e04872f47a"
+      },
+      {
+        "file": "all-pages/03-photos/viewer-info.png",
+        "sha256": "94e8ed39ed5c00cdd2ce4a58355e2e97b4964306acc08113c0793c2f4bceb8c4"
+      },
+      {
+        "file": "all-pages/03-photos/viewer.png",
+        "sha256": "5262b28840e6575fc98cf1931432062fac8dd72a4b832239829bbbcfee39587f"
+      },
+      {
+        "file": "all-pages/04-cleanup/blurry-progress.png",
+        "sha256": "84ef2fa20afc60cca7696dfb21e8542d46041f08c421f6ebdfe40fb2557773a6"
+      },
+      {
+        "file": "all-pages/04-cleanup/blurry-results-grid.png",
+        "sha256": "a1ce4fb925b35aeddc18037b1c2873516479a76e0ed703afc267f60391aaac7c"
+      },
+      {
+        "file": "all-pages/04-cleanup/blurry-results.png",
+        "sha256": "114e646accc711e96c43e5dfce7db184c6da78db2de4553b2ec9852737db3797"
+      },
+      {
+        "file": "all-pages/04-cleanup/blurry.png",
+        "sha256": "ec83af89b3e3796c562359887cd52897a6685301c8330aa5f5911a177005a064"
+      },
+      {
+        "file": "all-pages/04-cleanup/categories-progress.png",
+        "sha256": "e39dcc3845fb8cb8019472ce971f431687a23b77ce0a07ac145011daebb04d44"
+      },
+      {
+        "file": "all-pages/04-cleanup/categories-results-grid.png",
+        "sha256": "4368050a2613cc6958c36ef4cf1ce0f454a8edf1d19cacda22b833f82832e9f8"
+      },
+      {
+        "file": "all-pages/04-cleanup/categories-results.png",
+        "sha256": "8e29cdf3399df5df3755960497b95032c7466cb399d2f76c12cf2fa31b1b5e2d"
+      },
+      {
+        "file": "all-pages/04-cleanup/categories.png",
+        "sha256": "6e1a3752105924cbafdf2586236c15803dec67f2d6e4e5a6d4a700454c0cd307"
+      }
+    ],
+    "review": "PASS",
+    "findings": "Alle Originale im beschrifteten Prüfbogen angesehen: Dark Mode, echte Medien, keine Systembanner oder sichtbaren Platzhalter. Leere Ansichten entsprechen dem reinen Foto-Bildsatz."
+  },
+  {
+    "sheet": "screenshots-03.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/04-cleanup/cleanup-bottom.png",
+        "sha256": "4308fdfdae2926a3f69e55dd43469cb31c58fe5df2a75a77270aff21fc3833a5"
+      },
+      {
+        "file": "all-pages/04-cleanup/cleanup.png",
+        "sha256": "7541d039607248e037debff328e024977404951c1beb4941d0bde7b699352f5f"
+      },
+      {
+        "file": "all-pages/04-cleanup/collections-bottom.png",
+        "sha256": "38734572d8f43c6199afb6c15ec6c6201192c3a68ad79416b7fc3d1c38a1ac4c"
+      },
+      {
+        "file": "all-pages/04-cleanup/collections.png",
+        "sha256": "38734572d8f43c6199afb6c15ec6c6201192c3a68ad79416b7fc3d1c38a1ac4c"
+      },
+      {
+        "file": "all-pages/04-cleanup/documents-progress.png",
+        "sha256": "edf95f564ac31f8c1901c5e6b767e13755a91fe738ca6c3e9bc59c2ade8fa32e"
+      },
+      {
+        "file": "all-pages/04-cleanup/documents-results-grid.png",
+        "sha256": "6bf83de258dcaf5060102c8e862df634d5e5e7831f8471a2a69a0d8bdc0663b4"
+      },
+      {
+        "file": "all-pages/04-cleanup/documents-results.png",
+        "sha256": "4ec22dce078e24e121b8002985705d907861138ff1fc13dc34adae1f14a8ab88"
+      },
+      {
+        "file": "all-pages/04-cleanup/documents.png",
+        "sha256": "84af52a6b5dc4f8dbced416ce509e116132460618943d38e75a9688cebb43ac0"
+      },
+      {
+        "file": "all-pages/04-cleanup/duplicates.png",
+        "sha256": "0826b340b01ff78d568e5cfedf047f2144faf170944282472599c2899ad1cf1b"
+      },
+      {
+        "file": "all-pages/04-cleanup/files.png",
+        "sha256": "2f8a376fd62084dd84b1e162ec7b902dc27fc750efe60348a59710d68affc0ef"
+      },
+      {
+        "file": "all-pages/04-cleanup/large-files.png",
+        "sha256": "d96c3989cf01830bb0da2378afa6e95a24bb79fa12c78ed0d5dabed3841aaefc"
+      },
+      {
+        "file": "all-pages/04-cleanup/later.png",
+        "sha256": "93bcc657bf10a40d437909d2b45acba8c02e009810bf5795fdbf6b5110f9f756"
+      }
+    ],
+    "review": "PASS",
+    "findings": "Alle Originale im beschrifteten Prüfbogen angesehen: Dark Mode, echte Medien, keine Systembanner oder sichtbaren Platzhalter. Leere Ansichten entsprechen dem reinen Foto-Bildsatz."
+  },
+  {
+    "sheet": "screenshots-04.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/04-cleanup/months.png",
+        "sha256": "b80b2245d9ec185c3b1b17e9188e970a1c3372c68f4b51bde1509a4d5b49341e"
+      },
+      {
+        "file": "all-pages/04-cleanup/series.png",
+        "sha256": "ddafac6638cb2a42d4390ad046bcf56c09df9261e0cdb9634d99d38eade86449"
+      },
+      {
+        "file": "all-pages/04-cleanup/similar-progress.png",
+        "sha256": "f6e06319828c457036b198f57b29c536dfe29de07a8d36121c40198b35a4a946"
+      },
+      {
+        "file": "all-pages/04-cleanup/similar-results-grid.png",
+        "sha256": "9642a078090febae555c601b3b7efce2d4cc66cecdeb323484da06d0c12dd322"
+      },
+      {
+        "file": "all-pages/04-cleanup/similar-results.png",
+        "sha256": "cd5dc5d2ee4249511a51a6aa61ace06bf8ed13a6081319c081f6482fad1b2bad"
+      },
+      {
+        "file": "all-pages/04-cleanup/similar.png",
+        "sha256": "f35befb170a5fbad1e99727a2347599bbd46965cf17030046474b49ff0ecfca3"
+      },
+      {
+        "file": "all-pages/04-cleanup/storage-bottom.png",
+        "sha256": "8220ba14cf5b2430cb375792519f13cee0d03d99246e4316c76226fe6d1415d5"
+      },
+      {
+        "file": "all-pages/04-cleanup/storage.png",
+        "sha256": "8220ba14cf5b2430cb375792519f13cee0d03d99246e4316c76226fe6d1415d5"
+      },
+      {
+        "file": "all-pages/04-cleanup/trash.png",
+        "sha256": "4ced1631df619d7f0ad079d9af6d8d41f76865be132f5d9f392ea7e0434484c0"
+      },
+      {
+        "file": "all-pages/05-studio/archive-bottom.png",
+        "sha256": "b2c891cd5af69956d7c626144a4bcb4b345e878512af28657239fdeb76a9ff95"
+      },
+      {
+        "file": "all-pages/05-studio/archive.png",
+        "sha256": "a22e1532fb551e9ecf12eb486b0fc909ae8cf2ba61da8da4f9105fcae35ac94a"
+      },
+      {
+        "file": "all-pages/05-studio/collage-save-options.png",
+        "sha256": "c5f83d2b159eedfe86445d62952eaa68216e537b374034da8f5a0120cb30d50c"
+      }
+    ],
+    "review": "PASS",
+    "findings": "Alle Originale im beschrifteten Prüfbogen angesehen: Dark Mode, echte Medien, keine Systembanner oder sichtbaren Platzhalter. Leere Ansichten entsprechen dem reinen Foto-Bildsatz."
+  },
+  {
+    "sheet": "screenshots-05.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/05-studio/collage.png",
+        "sha256": "ace634fe086e58ad486792d92641bb21c57297ec6c632f6fee24ab21582d0acc"
+      },
+      {
+        "file": "all-pages/05-studio/editor-adjust.png",
+        "sha256": "43512936ae8cfca806d5a5551af51b96148f5985d0006b1bcc547516952b8e27"
+      },
+      {
+        "file": "all-pages/05-studio/editor-crop.png",
+        "sha256": "6f3e20568eb3571d0ea80ab4da0078ed58078b27569c584b9688a1ed969b2134"
+      },
+      {
+        "file": "all-pages/05-studio/editor-filter.png",
+        "sha256": "b6954e32fbb83e5f2f365bc440a26f09eefaf27bd279731ba8c1308e5aa9b670"
+      },
+      {
+        "file": "all-pages/05-studio/editor-frame.png",
+        "sha256": "505c8d0ad3b8f196b4166e3c26416d5d8a96be1cf53488adceb3b851e61e69d9"
+      },
+      {
+        "file": "all-pages/05-studio/editor-markup.png",
+        "sha256": "5930b2fa45ded578bcc20d3c5567504d405a069b40509cf1de4a096d9944b767"
+      },
+      {
+        "file": "all-pages/05-studio/editor-resize.png",
+        "sha256": "669d92adbcb8e04f10815a340238561725b271d0662dfe087c4b8d85a0895af1"
+      },
+      {
+        "file": "all-pages/05-studio/editor-retouch.png",
+        "sha256": "4f242e5df664c2b35e8afa5486995cadfe9d63ecc43df4f7cc8eab29cbf23704"
+      },
+      {
+        "file": "all-pages/05-studio/editor-save-options.png",
+        "sha256": "89eb792d7ac2325eb3a44baa62b419ea5e2a651768872d8d382918a9bceece47"
+      },
+      {
+        "file": "all-pages/05-studio/editor.png",
+        "sha256": "43512936ae8cfca806d5a5551af51b96148f5985d0006b1bcc547516952b8e27"
+      },
+      {
+        "file": "all-pages/05-studio/edits.png",
+        "sha256": "e10dbacfa97225f82b49d5f55a2a013fb138b13c4700b9ba4c575d06293a5123"
+      },
+      {
+        "file": "all-pages/05-studio/movie-bottom.png",
+        "sha256": "5fef2de61847e6bf65ccba8b773d3a9000a956e583efac5db748833033f670a8"
+      }
+    ],
+    "review": "PASS",
+    "findings": "Alle Originale im beschrifteten Prüfbogen angesehen: Dark Mode, echte Medien, keine Systembanner oder sichtbaren Platzhalter. Leere Ansichten entsprechen dem reinen Foto-Bildsatz."
+  },
+  {
+    "sheet": "screenshots-06.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/05-studio/movie.png",
+        "sha256": "817da3db38586ea87117ce270f19b35320bac40437f731b762110b27d74f0ace"
+      },
+      {
+        "file": "all-pages/05-studio/pdf-bottom.png",
+        "sha256": "1a357c9adffcf395c0c5818ab903395f51dd3c983e5f008e5b969ffbbb2fcc75"
+      },
+      {
+        "file": "all-pages/05-studio/pdf-studio.png",
+        "sha256": "2478faac8fdb4485a7622fb33b62c7932264a4c365d1b6010a8809783123b3de"
+      },
+      {
+        "file": "all-pages/05-studio/pdf.png",
+        "sha256": "1a357c9adffcf395c0c5818ab903395f51dd3c983e5f008e5b969ffbbb2fcc75"
+      },
+      {
+        "file": "all-pages/05-studio/received.png",
+        "sha256": "19beb061d922f0c0b7df1bd6924f95c43eb55f260b061a2e26cca441fdde3b85"
+      },
+      {
+        "file": "all-pages/05-studio/studio-bottom.png",
+        "sha256": "fc2cf62fa9732f5dd3f706f2e258f99fad8306839c4f0c6f456e2dd27617851a"
+      },
+      {
+        "file": "all-pages/05-studio/studio.png",
+        "sha256": "1462ce2a53a9cd3d86a1db557052ace5b1da98ef78f8c37edb93f85e1feb9dc1"
+      },
+      {
+        "file": "all-pages/05-studio/tools-batchEdit-bottom.png",
+        "sha256": "4181dd545b5095afa004bddebed15abe2c9eb904975e753cb11bb039e76fae3d"
+      },
+      {
+        "file": "all-pages/05-studio/tools-batchEdit.png",
+        "sha256": "87dbb3a37bb70f01fcda71352b26edab3400fcf443ba52d80525b08fecedb3ce"
+      },
+      {
+        "file": "all-pages/05-studio/tools-convert-bottom.png",
+        "sha256": "5cd120024d1673b4001ebb855f2bd838800af56154f7d69ed6523f3b914effc8"
+      },
+      {
+        "file": "all-pages/05-studio/tools-convert.png",
+        "sha256": "cda8be4a95d987a33ed93c4cc8249b0f853a8cb7b60958f1c850457567c4e64c"
+      },
+      {
+        "file": "all-pages/05-studio/tools-gif-bottom.png",
+        "sha256": "12d1805b1b6fb292dbdf3089a4bd49cb8d52da9ccf30413d87241929e8d54b25"
+      }
+    ],
+    "review": "PASS",
+    "findings": "Alle Originale im beschrifteten Prüfbogen angesehen: Dark Mode, echte Medien, keine Systembanner oder sichtbaren Platzhalter. Leere Ansichten entsprechen dem reinen Foto-Bildsatz."
+  },
+  {
+    "sheet": "screenshots-07.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/05-studio/tools-gif.png",
+        "sha256": "c91f585117ff40b588ebce7d87c2be3fb52823374ac4fa15611e104a8c848b2d"
+      },
+      {
+        "file": "all-pages/05-studio/tools-removeLocation-bottom.png",
+        "sha256": "2ddb4ff89d7c90d788c9d759c717c8eb85488490f3f86d29f7fa51abc7652fdb"
+      },
+      {
+        "file": "all-pages/05-studio/tools-removeLocation.png",
+        "sha256": "2ddb4ff89d7c90d788c9d759c717c8eb85488490f3f86d29f7fa51abc7652fdb"
+      },
+      {
+        "file": "all-pages/05-studio/tools-resize-bottom.png",
+        "sha256": "4e6d79c1a87587424157902ea04b2df3b1e33e68e5bb177bffa6288f4a79cd27"
+      },
+      {
+        "file": "all-pages/05-studio/tools-resize.png",
+        "sha256": "9be8c4fe6f6bcba4bb45f32eea8d830b3a4de18a65dbe72b95c59839035e281e"
+      },
+      {
+        "file": "all-pages/05-studio/tools-stitch-bottom.png",
+        "sha256": "551071a98b621dbe60df2012b0a4e41e8ef6b26942bd4b741f2f8678f4cd0700"
+      },
+      {
+        "file": "all-pages/05-studio/tools-stitch.png",
+        "sha256": "551071a98b621dbe60df2012b0a4e41e8ef6b26942bd4b741f2f8678f4cd0700"
+      },
+      {
+        "file": "all-pages/05-studio/workflow-editor.png",
+        "sha256": "ea752877e12aded3244308c6e2dcf25e9352d8d0f0cbcb010c984e9966193d4f"
+      },
+      {
+        "file": "all-pages/05-studio/workflows-bottom.png",
+        "sha256": "911fb5c3597b22bbf0078dd1aae7454daeb8a5cd72c27d33b026e525098ec745"
+      },
+      {
+        "file": "all-pages/05-studio/workflows.png",
+        "sha256": "911fb5c3597b22bbf0078dd1aae7454daeb8a5cd72c27d33b026e525098ec745"
+      },
+      {
+        "file": "all-pages/06-vault/vault-change-code-empty.png",
+        "sha256": "7b10d4ca31e3cd59b9c88532c0e54efb3ca111982fdedae618769b7a29d00ba6"
+      },
+      {
+        "file": "all-pages/06-vault/vault-files.png",
+        "sha256": "ffdf1e49893715302d5ac114593276dae400fb001708e71a08a1f8c538c97356"
+      }
+    ],
+    "review": "PASS",
+    "findings": "Alle Originale im beschrifteten Prüfbogen angesehen: Dark Mode, echte Medien, keine Systembanner oder sichtbaren Platzhalter. Leere Ansichten entsprechen dem reinen Foto-Bildsatz."
+  },
+  {
+    "sheet": "screenshots-08.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/06-vault/vault-media-before-details.png",
+        "sha256": "1d9879780ad21ced724aa832c9710297c10de536f396ffd79ec5b4e9962a96b1"
+      },
+      {
+        "file": "all-pages/06-vault/vault-media-picker.png",
+        "sha256": "11d6fdbca8926e156e026ac67e08ed4cb7d745ad2c6de50b6510bb32de0c651d"
+      },
+      {
+        "file": "all-pages/06-vault/vault-media.png",
+        "sha256": "1d9879780ad21ced724aa832c9710297c10de536f396ffd79ec5b4e9962a96b1"
+      },
+      {
+        "file": "all-pages/06-vault/vault-note-editor.png",
+        "sha256": "dc0c6b546774e505840192f79519e59def318c17f3a1fbd5f1de282bda3219ed"
+      },
+      {
+        "file": "all-pages/06-vault/vault-notes-with-note.png",
+        "sha256": "f2343e67f0005ef319900944deb624e14cb65d623a4e860cc2ece3ac0930cac2"
+      },
+      {
+        "file": "all-pages/06-vault/vault-notes.png",
+        "sha256": "26e60a0bc69a9bd7babe310ffdb8bf8fd7cc1829af274845c6f173a50ca2b073"
+      },
+      {
+        "file": "all-pages/06-vault/vault-settings.png",
+        "sha256": "5140b44f9a1b3be629a61ee58454187ca5c1e32dc89b5d3a49eed2f2e0372ccd"
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-code-empty.png",
+        "sha256": "1ceb6f320cec7bcb0f5fb2b0aac104034a73206f10db24e30819a63e3e02a007"
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-entry.png",
+        "sha256": "5053b03a750c84008e1879ae118754c9c1af355c38c7342d4d1f6d78ea126746"
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-introduction.png",
+        "sha256": "54db07415f3386b2062b1a00b6ba17d799540c4644dc134499cf89334afb0b03"
+      },
+      {
+        "file": "all-pages/06-vault/vault-tools.png",
+        "sha256": "f82583c19d3889cab0c97adc4383d396fa0d5c333c961a35a4f218c155f3b552"
+      },
+      {
+        "file": "all-pages/06-vault/vault-trash.png",
+        "sha256": "c0e3869ad817db3b985eefd5c87c7784179ee79a59b9a69cfe82d3d4db9d4ffe"
+      }
+    ],
+    "review": "PASS",
+    "findings": "Alle Originale im beschrifteten Prüfbogen angesehen: Dark Mode, echte Medien, keine Systembanner oder sichtbaren Platzhalter. Leere Ansichten entsprechen dem reinen Foto-Bildsatz."
+  },
+  {
+    "sheet": "screenshots-09.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/06-vault/vault-viewer.png",
+        "sha256": "aa6e9d1bd803993f04afd44d55fb70b7bdd0bb609f7887d704b8074a8a332290"
+      },
+      {
+        "file": "all-pages/07-settings/backup-bottom.png",
+        "sha256": "bd67d9249749c3530478fd95315e21f97bd941ed2b31cc842519fe0f31ee973a"
+      },
+      {
+        "file": "all-pages/07-settings/backup.png",
+        "sha256": "bd67d9249749c3530478fd95315e21f97bd941ed2b31cc842519fe0f31ee973a"
+      },
+      {
+        "file": "all-pages/07-settings/controls-bottom.png",
+        "sha256": "0a8133f8c661688191bb62551cee0a208ffefbecb783bf3973c07d7cfa804067"
+      },
+      {
+        "file": "all-pages/07-settings/controls.png",
+        "sha256": "f42f407707feecc8dfaff15a064ec7556187efe7b3c8b1e8b13d66bfd5ef638a"
+      },
+      {
+        "file": "all-pages/07-settings/excluded-albums.png",
+        "sha256": "81b62da39306a2c79d393900127c422adbb10a96f52648f0dcdd18755297c1fc"
+      },
+      {
+        "file": "all-pages/07-settings/help-bottom.png",
+        "sha256": "3deed62f5ada2a129cd8272bfd0b992552fd88a8cf5c48fceee4a38fe99e71ad"
+      },
+      {
+        "file": "all-pages/07-settings/help.png",
+        "sha256": "3deed62f5ada2a129cd8272bfd0b992552fd88a8cf5c48fceee4a38fe99e71ad"
+      },
+      {
+        "file": "all-pages/07-settings/privacy-bottom.png",
+        "sha256": "9c11d3afbc12994a2ce11a8e4b61d1b3bad5084efd05fcd0c5f4c1f28cf7f3f4"
+      },
+      {
+        "file": "all-pages/07-settings/privacy.png",
+        "sha256": "9c11d3afbc12994a2ce11a8e4b61d1b3bad5084efd05fcd0c5f4c1f28cf7f3f4"
+      },
+      {
+        "file": "all-pages/07-settings/pro-bottom.png",
+        "sha256": "cd3932233fda5c19638754ad3732be8879f41efa7b6ee4ab0a3c187870bef862"
+      },
+      {
+        "file": "all-pages/07-settings/pro.png",
+        "sha256": "cd3932233fda5c19638754ad3732be8879f41efa7b6ee4ab0a3c187870bef862"
+      }
+    ],
+    "review": "PASS",
+    "findings": "Alle Originale im beschrifteten Prüfbogen angesehen: Dark Mode, echte Medien, keine Systembanner oder sichtbaren Platzhalter. Leere Ansichten entsprechen dem reinen Foto-Bildsatz."
+  },
+  {
+    "sheet": "screenshots-10.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/07-settings/settings-bottom.png",
+        "sha256": "46e3a88afdfac5a87bcea7c9d1d56d61587fe6f8ffe5e144a5348b792a3f4b09"
+      },
+      {
+        "file": "all-pages/07-settings/settings.png",
+        "sha256": "9f5eaeed076ae6f354b061131f8253d2c0b8c7192f23704c5be97dbfc8278cb7"
+      },
+      {
+        "file": "all-pages/08-history/history.png",
+        "sha256": "73df89e5ab27a06f0d8cd26473ada57df0063594865cee594273c738299dc6ec"
+      }
+    ],
+    "review": "PASS",
+    "findings": "Alle Originale im beschrifteten Prüfbogen angesehen: Dark Mode, echte Medien, keine Systembanner oder sichtbaren Platzhalter. Leere Ansichten entsprechen dem reinen Foto-Bildsatz."
+  }
+]

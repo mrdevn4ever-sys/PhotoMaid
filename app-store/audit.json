@@ -43,5 +43,23 @@
     "capture_run": "38742616639",
     "capture_commit": "bb4706f7accb5bce7a2f54b86d3405bdca352ee1",
     "status": "PASS"
+  },
+  {
+    "language": "uk",
+    "screenshots": 123,
+    "selection": 10,
+    "videos": [],
+    "capture_run": "38735332484",
+    "capture_commit": "defb9418a63c777a49f514a15573defbe8728d1b",
+    "status": "PASS"
+  },
+  {
+    "language": "zh-Hans",
+    "screenshots": 123,
+    "selection": 10,
+    "videos": [],
+    "capture_run": "38735332484",
+    "capture_commit": "defb9418a63c777a49f514a15573defbe8728d1b",
+    "status": "PASS"
   }
 ]
