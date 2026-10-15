@@ -2,7 +2,7 @@
 
 App Store Connect: `ar-SA` · Dark Mode · iPhone 17 Pro Max.
 
-123 unveränderte native Seitenaufnahmen, 10 Bilder in der Store-Auswahl, 0 Vorschauvideos. Sichtprüfung: **PASS**.
+123 unveränderte native Seitenaufnahmen, 10 Bilder in der Store-Auswahl, 3 Vorschauvideos. Sichtprüfung: **PASS**.
 
 [Aufnahmelauf 38744237961](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38744237961) · [Herkunft und Testergebnis](provenance.json) · [Prüfbögen](review/).
 
@@ -23,7 +23,13 @@ Die Originaldatei öffnet sich beim Anklicken. Apple erlaubt bis zu zehn Screens
 
 ## Vorschauvideos zur Auswahl
 
-Noch ausstehend.
+[Video-Aufnahmelauf 38764957492](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38764957492) · [Native Video-Tests und Bildbestand](preview-provenance.json) · [Format und Poster-Zeitcodes](previews/manifest.json).
+
+[Geprüfter Videoexport 38769640439](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38769640439); die nativen Tests und ihr Quellcommit bleiben dem ursprünglichen Aufnahmelauf zugeordnet.
+
+- [Aufräumen – Behalten, Papierkorb, Später und Zurück](previews/01-review.mp4) · [Poster](previews/01-review-poster.png)
+- [Studio – Anpassen, Filter, Zeichnen und Rahmen](previews/02-studio.mp4) · [Poster](previews/02-studio-poster.png)
+- [Tresor – Medien, Betrachter und Zoom](previews/03-vault.mp4) · [Poster](previews/03-vault-poster.png)
 
 ## Vollständiges Seitenarchiv
 

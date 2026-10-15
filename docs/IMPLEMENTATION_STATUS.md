@@ -60,7 +60,19 @@ Leere Video-/Screenshot-Filter und Datei-/PDF-Eingänge entsprechen dem ausdrüc
 Drei Varianten je Sprache: Aufräumen, Studio, Tresor. Die UI-Tests prüfen tatsächliche Wischschritte,
 veränderte Belichtung, gewählten Monochromfilter, Zeichnen und echten Tresorzoom; jeder Videoschritt
 hat zusätzlich einen nativen Screenshot. Videoexport, vollständige Dekodierung, Sichtprüfung und
-Ablage der insgesamt 48 Vorschauen stehen noch aus.
+Ablage der insgesamt 48 Vorschauen erfolgen sprachweise.
+
+**12/48 Vorschauen PASS:** Deutsch, Englisch, Arabisch und Japanisch sind vollständig exportiert,
+vollständig dekodiert und mit je acht tatsächlich angesehenen Videobildern plus drei Postern geprüft.
+Zusätzlich wurden alle 100 nativen Schritt-/Einrichtungs-Screenshots dieser vier Sprachen angesehen.
+Die Dateien liegen unter `app-store/locales/<Sprache>/previews/`; Ausgangsdaten, Tempo und Posterzeitcodes
+stehen im jeweiligen Manifest. Der Audit besteht einschließlich übereinstimmender Spurdauern.
+
+| Sprachen | Native Vorschauaufnahme | Endgültiger Export | Stand |
+|---|---|---|---|
+| Deutsch, Englisch, Arabisch | `38764957492` · `02e689f` · je 4/4 native Tests | `38769640439` · `955333d` | PASS · je drei Videos und Poster |
+| Japanisch | `38765595100` · `364f9bf` · 4/4 native Tests | `38769716633` · `955333d` | PASS · drei Videos und Poster |
+| Übrige zwölf Sprachen | `38765595100` · `364f9bf` | laufend | noch nicht vollständig geprüft/abgelegt |
 
 Die ersten drei Sprachen bestanden jeweils 4/4 native Tests; der anschließende Export scheiterte jedoch
 an variablen Simulator-Bildraten. Ein Studio-Clip wurde trotz gekürzter Wandzeitsegmente 36,8 s lang.

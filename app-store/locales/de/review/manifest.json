@@ -578,5 +578,94 @@
     ],
     "review": "PASS",
     "findings": "All 123 original native screenshots viewed in 11 labeled sheets. Dark mode, actual 55-photo library, real PIN vault with five imports, loaded filter thumbnails and no search spinner. No raw localization keys or format placeholders visible. Empty views reflect the photos-only library. Compact native scrolling controls can truncate long labels."
+  },
+  {
+    "sheet": "01-review-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/01-review.mp4",
+        "sha256": "f43c4472c4fa0a5118a20c78bcb367d2e747bf670e67097157147d389da47ca1"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "findings": "Complete video decoded without errors; all eight labeled sampled frames actually viewed. Genuine localized dark-mode UI and portrait media; no system dialog, raw localization key or format placeholder seen. Actual tool changes may briefly show normal thumbnail/render loading. Native step screenshots separately verify the five actions; source recording and export speed are documented."
+  },
+  {
+    "sheet": "02-studio-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/02-studio.mp4",
+        "sha256": "b56386ce68b2f8da932d9f644ef86c7a8be006b1005bf568b5670d0153702ef7"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "findings": "Complete video decoded without errors; all eight labeled sampled frames actually viewed. Genuine localized dark-mode UI and portrait media; no system dialog, raw localization key or format placeholder seen. Actual tool changes may briefly show normal thumbnail/render loading. Native step screenshots separately verify the five actions; source recording and export speed are documented."
+  },
+  {
+    "sheet": "03-vault-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/03-vault.mp4",
+        "sha256": "0dfef732880fa5eead13b9fd6f54b39bc69b2dcc09a5e7330873bfeb32507b2c"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "findings": "Complete video decoded without errors; all eight labeled sampled frames actually viewed. Genuine localized dark-mode UI and portrait media; no system dialog, raw localization key or format placeholder seen. Actual tool changes may briefly show normal thumbnail/render loading. Native step screenshots separately verify the five actions; source recording and export speed are documented."
+  },
+  {
+    "sheet": "posters.jpg",
+    "kind": "posters",
+    "originals": [
+      {
+        "file": "previews/01-review-poster.png",
+        "sha256": "86c9ff6ddce5e74d843e644bf43fde740f1c89221984fe900887b8a5c44c08ec"
+      },
+      {
+        "file": "previews/02-studio-poster.png",
+        "sha256": "009f742b581bf4872948f93dab52a2eb40e984850b74ed2e737753f4aab43aad"
+      },
+      {
+        "file": "previews/03-vault-poster.png",
+        "sha256": "c634f619f05541eb8da3a3fbc03b813d086f8c06f480d567320a137f6417e811"
+      }
+    ],
+    "review": "PASS",
+    "findings": "All three actual poster frames viewed. Correct portrait dimensions, localized dark-mode UI and genuine app media; no added branding or generated interface."
   }
 ]
