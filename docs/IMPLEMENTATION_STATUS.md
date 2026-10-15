@@ -1,6 +1,30 @@
 # Implementierungsstatus
 
-Stand: 15.10.2026 · Branch `claude/fixes-analysis-library-vault-20261014` · Build 8 in TestFlight; nachträgliche Änderungen mit eigenem Prüfstatus unten.
+Stand: 15.10.2026 · Branch `claude/fixes-analysis-library-vault-20261014` · Version 1.0, Build 9 in TestFlight; die drei Nachträge nach Build 8 sind enthalten.
+
+## TestFlight-Build 9 mit Tresor-, Duplikat- und Zoom-Korrekturen (15.10.2026)
+
+Auf erneute ausdrückliche Anweisung des Inhabers wurde `testflight.yml` mit Unit-Tests und
+`confirm_upload=UPLOAD` auf Commit `cbf4610` gestartet.
+[Lauf `38713405082`](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38713405082)
+ist vollständig **PASS**: Signing-Preflight, 24 iOS-Unit-Tests (13 XCTest + 11 Swift Testing,
+0 Fehler, kein Skip), Release-Archiv, Export, Upload und Schlüsselbereinigung.
+
+**Version 1.0, Build 9** wurde um **09:39:58 UTC** hochgeladen. Apple-Verarbeitung,
+Testhinweise und Verteilung an interne Tester sind um **09:42:03 UTC** bestätigt.
+Enthalten sind alle drei nachfolgend dokumentierten Nachträge: Tresorinhalte per Wischen/Auswahl
+in den Papierkorb verschieben, gemeinsamer Foto-/Video-Betrachter mit ausblendbaren Leisten,
+Zeichnen bei Zoom einschließlich Rückgängig-Vorschau, vollständige Duplikatressourcen mit
+ausdrücklich wählbaren iCloud-Originalen sowie die Korrektur der Anzeigeninitialisierung.
+
+Das Artefakt `testflight-report` wurde heruntergeladen und geprüft: `unit-tests.log`, `gym.log`,
+`fastlane/report.xml` und `ci-report.md`. Der generische Bericht erkennt den Archivabschluss
+nicht (`UNBEKANNT`, 0 Compilerfehler, 1 Warnung); Archiv, Upload und abgeschlossene Verarbeitung
+sind durch die erfolgreichen Fastlane-Schritte und das Workflow-Protokoll belegt.
+Die vorherigen Simulatorbelege stehen in den jeweiligen Nachträgen; dieser Upload-Lauf führt
+keine UI-Tests erneut aus. Reales iCloud, 30.000 Fotos, Wärme, Kamera und echtes Face ID bleiben
+**NOT RUN** auf einem physischen iPhone. Keine echte Systemlöschung bestätigt, keine externe
+Verteilung, keine Änderung an E1–E19, kein Merge und kein Push auf `main`.
 
 ## Tresor-Betrachter und Zeichnen bei Zoom (15.10.2026, nach Build 8)
 
@@ -99,7 +123,8 @@ Screenshot-Namen der Regressionen: `editor_05_zoomed_no_edit`, `editor_06_stroke
 `vault_delete_viewer_media_preserved`. Editorlauf und abschließende Medien-Wiederholung sind
 vollständig PASS. Alle 14 unterschiedlichen QA-Fälle sind damit fachlich belegt; Notizen und Dateien
 wurden im vorausgehenden Gesamtlauf bestanden.
-Build 8 enthält diesen Nachtrag noch nicht; kein neuer TestFlight-Upload. E1–E19 unverändert.
+Build 8 enthält diesen Nachtrag noch nicht; seit Build 9 ist er in TestFlight enthalten (siehe oben).
+E1–E19 unverändert.
 
 Commits der drei Nachträge nach Build 8 (auf dem genannten Branch gepusht):
 
@@ -166,7 +191,7 @@ eine vollständige Prüfung verhindern; diese Lücken bleiben sichtbar. Kein aut
 Screenshot-Regression ergänzt um `09a_duplicates_all_resources_and_cloud_option` und den echten Abschluss
 der Suche. Die ursprüngliche Blockade `38689505928` durch GitHub-Abrechnung wurde durch die wieder öffentliche
 Repository-Sichtbarkeit aufgehoben; nachträglicher echter PhotoKit-Nachweis siehe Tabelle. Build 8 enthält
-auch diesen Nachtrag noch nicht; kein neuer TestFlight-Upload gestartet. E1–E19 unverändert.
+auch diesen Nachtrag noch nicht; seit Build 9 ist er in TestFlight enthalten (siehe oben). E1–E19 unverändert.
 
 ## Tresor: Löschen per Wischen und Auswahl (15.10.2026, nach Build 8)
 
@@ -194,7 +219,7 @@ abgebrochen. Jeder Schritt speichert einen Screenshot. Gezielt startbar mit
 | Alle fünf Tresor-UI-Testfälle nach Wiederholungen | PASS | `38702267912`: Notizen, Dateien und beide Betrachterfälle bestanden. `38708113112` auf `89f3552`: Medien-Wischen/Auswahl und beide Betrachterfälle 3 PASS / 0 FAIL / 0 SKIP; alle 68 PNGs geprüft |
 
 Implementierung: `ff6add0`, anschließend Ergänzung der Betrachter-Regression und dieses Prüfstatus.
-Build 8 enthält diesen nachträglichen Fix noch nicht. Kein weiterer TestFlight-Lauf gestartet.
+Build 8 enthält diesen nachträglichen Fix noch nicht; seit Build 9 ist er in TestFlight enthalten (siehe oben).
 Die nachfolgenden PASS-Belege betreffen den davor geprüften Build-8-Stand.
 
 ## TestFlight-Build 8 auf ausdrückliche Anweisung (15.10.2026)
