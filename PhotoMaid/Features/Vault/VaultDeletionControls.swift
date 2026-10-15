@@ -1,4 +1,38 @@
 import SwiftUI
+import UIKit
+
+/// A left swipe only requests confirmation. Vertical scrolling and taps stay with
+/// the grid; selection disables the recognizer rather than intercepting row taps.
+struct VaultMediaTrashSwipe: UIGestureRecognizerRepresentable {
+    let enabled: Bool
+    let action: () -> Void
+
+    func makeUIGestureRecognizer(context: Context) -> UISwipeGestureRecognizer {
+        let recognizer = UISwipeGestureRecognizer()
+        recognizer.direction = .left
+        recognizer.numberOfTouchesRequired = 1
+        recognizer.isEnabled = enabled
+        recognizer.delegate = context.coordinator
+        return recognizer
+    }
+
+    func updateUIGestureRecognizer(_ recognizer: UISwipeGestureRecognizer, context: Context) {
+        recognizer.isEnabled = enabled
+    }
+
+    func handleUIGestureRecognizerAction(_ recognizer: UISwipeGestureRecognizer, context: Context) {
+        if enabled, recognizer.state == .recognized { action() }
+    }
+
+    func makeCoordinator(converter: CoordinateSpaceConverter) -> Coordinator { Coordinator() }
+
+    final class Coordinator: NSObject, UIGestureRecognizerDelegate {
+        func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                               shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+            true
+        }
+    }
+}
 
 /// Auf allen Tresor-Reitern direkt erreichbar, auch ohne langes Drücken oder ein Menü.
 struct VaultSelectionToolbarItem: ToolbarContent {

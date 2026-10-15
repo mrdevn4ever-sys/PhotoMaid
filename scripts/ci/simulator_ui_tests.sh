@@ -57,6 +57,10 @@ if [ "$phase" = all ] || [ "$phase" = fixtures ]; then
   xcrun simctl addmedia "$udid" "$out/qa-media"/*
   if [ "${PM_QA_CASE:-all}" = vault ]; then
     run_tests fixtures -only-testing:PhotoMaidUITests/VaultDeletionTests
+  elif [ "${PM_QA_CASE:-all}" = vault-media ]; then
+    run_tests fixtures -only-testing:PhotoMaidUITests/VaultDeletionTests/test10PhotosAndVideosSwipeAndSelection \
+      -only-testing:PhotoMaidUITests/VaultDeletionTests/test11ViewerContinuesAfterDeletion \
+      -only-testing:PhotoMaidUITests/VaultDeletionTests/test12ViewerControlsPhotoZoomAndVideo
   elif [ "${PM_QA_CASE:-all}" = editor ]; then
     run_tests fixtures -only-testing:PhotoMaidUITests/ScreenshotTests/testZoomedPhotoMarkupAndUndo
   else

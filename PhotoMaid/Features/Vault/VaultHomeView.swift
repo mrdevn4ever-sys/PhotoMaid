@@ -231,11 +231,9 @@ struct VaultHomeView: View {
                 .buttonStyle(.plain)
                 .accessibilityAddTraits(selection.contains(item.id) ? .isSelected : [])
                 .accessibilityIdentifier("vault.media.item.\(item.id)")
-                // swipeActions funktionieren nur in List, nicht in diesem Foto-/Video-Raster.
-                // Vertikales Scrollen läuft gleichzeitig weiter; eine horizontale Geste fragt nur nach.
-                .simultaneousGesture(DragGesture(minimumDistance: 24).onEnded { value in
-                    guard !selecting, value.translation.width < -50,
-                          -value.translation.width > abs(value.translation.height) * 1.5 else { return }
+                // Native swipe recognition cooperates with the enclosing ScrollView.
+                // A SwiftUI child DragGesture can lose the gesture to scrolling on iOS 26.
+                .gesture(VaultMediaTrashSwipe(enabled: !selecting) {
                     pendingDelete = [item.id]
                 })
                 .contextMenu {

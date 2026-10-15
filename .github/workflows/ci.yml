@@ -14,9 +14,9 @@ on:
         type: boolean
         default: false
       qa_case:
-        description: "QA-Oberflächen: alle, Tresor oder gezielt Fotoeditor bei Zoom"
+        description: "QA-Oberflächen: alle, Tresor, nur Medienlöschung oder Fotoeditor bei Zoom"
         type: choice
-        options: [all, vault, editor]
+        options: [all, vault, vault-media, editor]
         default: all
       sim_runtime:
         description: "iOS-Runtime (26.2 für StoreKit Test; 26.5 hat Apples CLI-Konfigurationsfehler)"
