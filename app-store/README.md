@@ -41,5 +41,11 @@ Auf einem frischen Simulator enthält `previews` einen eigenen Einrichtungslauf 
 den echten PIN-Tresor mit echten Importen. Die Jobs erzeugen getrennte
 Asset- und Quellenartefakte. Es gibt weder einen TestFlight-Upload noch einen App-Store-Upload.
 
+Nach der Ablage erzeugt `python3 scripts/store/make_review.py app-store/locales/<Sprache>`
+Prüfbögen mit zunächst `PENDING`. Erst nach tatsächlicher Sichtprüfung wird ihr Status auf `PASS`
+gesetzt. Nach Hinzufügen der Vorschauen behält `--previews-only` bereits geprüfte Screenshot-Einträge
+bei und kontrolliert ihre Prüfsummen erneut. `scripts/store/audit_assets.py --screenshots-only`
+prüft die erste Phase; ohne diesen Schalter verlangt die Prüfung auch alle Videos und Poster.
+
 Kamera, echtes Face ID, iCloud-Originale und Ansichten, die ein nicht im gewählten Bildsatz enthaltenes Medium
 voraussetzen, werden nicht mit Ersatzdaten dargestellt. Der Abschlussbericht benennt solche Lücken ausdrücklich.

@@ -12,10 +12,15 @@ def font(size):
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('locale_dir',type=Path);args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('locale_dir',type=Path);parser.add_argument('--previews-only',action='store_true');args=parser.parse_args()
     root=args.locale_dir;out=root/'review';out.mkdir(parents=True,exist_ok=True)
     manifest=[]
-    paths=sorted((root/'all-pages').rglob('*.png'))
+    if args.previews_only and (out/'manifest.json').exists():
+        manifest=[sheet for sheet in json.loads((out/'manifest.json').read_text())if sheet['kind']=='screenshots']
+        for sheet in manifest:
+            for item in sheet['originals']:
+                assert hashlib.sha256((root/item['file']).read_bytes()).hexdigest()==item['sha256'],'Original changed after screenshot review'
+    paths=[]if args.previews_only else sorted((root/'all-pages').rglob('*.png'))
     for start in range(0,len(paths),12):
         page=Image.new('RGB',(1200,3*710),'#181818');draw=ImageDraw.Draw(page);entries=[]
         for cell,path in enumerate(paths[start:start+12]):
