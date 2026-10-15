@@ -50,6 +50,7 @@ struct RootView: View {
             await app.onForeground()
             #if QA_FIXTURES && targetEnvironment(simulator)
             await StoreCapture.openRequestedPage(in: app)
+            StoreCapture.startNavigation(in: app)
             #endif
         }
         // Gratis: nach der Einführung Einwilligung/Tracking-Abfrage, dann ggf. die Werbung beim Start (E19).

@@ -41,18 +41,42 @@ final class AppStoreCaptureTests: XCTestCase {
     private func e(_ id: String) -> XCUIElement { app.descendants(matching: .any)[id].firstMatch }
     private func pause(_ seconds: Double = 1) { Thread.sleep(forTimeInterval: seconds) }
     private func tap(_ element: XCUIElement) {
-        XCTAssertTrue(element.waitForExistence(timeout: 15), "Missing \(element)")
+        XCTAssertTrue(element.exists || element.waitForExistence(timeout: 15), "Missing \(element)")
         for _ in 0..<6 where !element.isHittable { app.swipeUp() }
         XCTAssertTrue(element.isHittable)
         element.tap(); pause(0.7)
     }
     private func button(_ key: String) -> XCUIElement { app.buttons[t(key)].firstMatch }
     private func launch(_ page: String) {
+        let navigation = output.appendingPathComponent("navigation")
+        if let app, app.state == .runningForeground,
+           FileManager.default.fileExists(atPath:navigation.appendingPathComponent("hello").path) {
+            let token = UUID().uuidString
+            let command = ["page":page,"token":token]
+            do {
+                try JSONSerialization.data(withJSONObject:command).write(to:navigation.appendingPathComponent("request.json"),options:.atomic)
+                let ack = navigation.appendingPathComponent("ack-" + token + ".json")
+                for _ in 0..<400 {
+                    if FileManager.default.fileExists(atPath:ack.path) {
+                        let result = try JSONSerialization.jsonObject(with:Data(contentsOf:ack)) as? [String:String]
+                        XCTAssertEqual(result?["page"],page)
+                        XCTAssertEqual(result?["token"],token)
+                        XCTAssertTrue(app.windows["store.capture." + page].exists)
+                        pause(0.8)
+                        return
+                    }
+                    pause(0.1)
+                }
+                XCTFail("Capture navigation did not finish: \(page)")
+                return
+            } catch { XCTFail("Capture navigation: \(error)"); return }
+        }
+        try? FileManager.default.removeItem(at:navigation.appendingPathComponent("hello"))
         app?.terminate()
         app = XCUIApplication()
-        app.launchArguments = ["-store-capture", "-store-page", page, "-AppleLanguages", "(\(language))", "-AppleLocale", language]
+        app.launchArguments = ["-store-capture", "-store-page", page, "-store-navigation", output.appendingPathComponent("navigation").path, "-AppleLanguages", "(\(language))", "-AppleLocale", language]
         app.launch()
-        if page != "introduction" { resolvePrivacyPrompts(in: app, prefix:"store-permissions", photos:true) }
+        if page != "introduction", XCUIApplication(bundleIdentifier:"com.apple.springboard").buttons["Allow Full Access"].exists { resolvePrivacyPrompts(in: app, prefix:"store-permissions", photos:true) }
         XCTAssertTrue(app.windows["store.capture." + page].waitForExistence(timeout: 40), "Requested page must finish opening: \(page)")
         if page != "introduction" {
             XCTAssertTrue(app.wait(for: .runningForeground, timeout: 30), "App did not open capture page \(page)")
@@ -61,7 +85,7 @@ final class AppStoreCaptureTests: XCTestCase {
     }
     private func snap(_ name: String) {
         pause(0.7)
-        let texts = app.staticTexts.allElementsBoundByIndex.filter(\.isHittable).map(\.label)
+        let texts = app.staticTexts.allElementsBoundByAccessibilityElement.map(\.label)
         let invalid = texts.filter { $0.contains("%1$") || $0.contains("%2$") || $0.hasPrefix("pro2_") || $0.hasPrefix("ana2_") || $0.hasPrefix("vault2_") || $0.range(of:"^[a-z][a-z0-9]*(?:_[a-z0-9]+)+$",options:.regularExpression) != nil }
         XCTAssertTrue(invalid.isEmpty, "Untranslated UI: \(invalid)")
         let screenshot = XCUIScreen.main.screenshot()

@@ -1,0 +1,66 @@
+{
+  "ar": {
+    "app_store_locale": "ar-SA",
+    "name_de": "Arabisch"
+  },
+  "de": {
+    "app_store_locale": "de-DE",
+    "name_de": "Deutsch"
+  },
+  "en": {
+    "app_store_locale": "en-US",
+    "name_de": "Englisch"
+  },
+  "es": {
+    "app_store_locale": "es-ES",
+    "name_de": "Spanisch"
+  },
+  "fr": {
+    "app_store_locale": "fr-FR",
+    "name_de": "Französisch"
+  },
+  "it": {
+    "app_store_locale": "it",
+    "name_de": "Italienisch"
+  },
+  "ja": {
+    "app_store_locale": "ja",
+    "name_de": "Japanisch"
+  },
+  "ko": {
+    "app_store_locale": "ko",
+    "name_de": "Koreanisch"
+  },
+  "nl": {
+    "app_store_locale": "nl-NL",
+    "name_de": "Niederländisch"
+  },
+  "pl": {
+    "app_store_locale": "pl",
+    "name_de": "Polnisch"
+  },
+  "pt-PT": {
+    "app_store_locale": "pt-PT",
+    "name_de": "Portugiesisch (Portugal)"
+  },
+  "ro": {
+    "app_store_locale": "ro",
+    "name_de": "Rumänisch"
+  },
+  "ru": {
+    "app_store_locale": "ru",
+    "name_de": "Russisch"
+  },
+  "tr": {
+    "app_store_locale": "tr",
+    "name_de": "Türkisch"
+  },
+  "uk": {
+    "app_store_locale": "uk",
+    "name_de": "Ukrainisch"
+  },
+  "zh-Hans": {
+    "app_store_locale": "zh-Hans",
+    "name_de": "Chinesisch (vereinfacht)"
+  }
+}

@@ -8,12 +8,56 @@ import SwiftUI
 @MainActor
 enum StoreCapture {
     static var enabled: Bool { ProcessInfo.processInfo.arguments.contains("-store-capture") }
+    private static var openedInitialPage = false
+    private static var navigationTask: Task<Void, Never>?
 
     static func openRequestedPage(in app: AppModel) async {
-        guard enabled else { return }
+        guard enabled, !openedInitialPage else { return }
         let arguments = ProcessInfo.processInfo.arguments
         guard let index = arguments.firstIndex(of: "-store-page"), arguments.indices.contains(index + 1) else { return }
-        let page = arguments[index + 1]
+        openedInitialPage = true
+        await open(page: arguments[index + 1], in: app)
+    }
+
+    /// Keeps the normal app alive between page captures. Public file I/O, simulator-only,
+    /// and explicit test arguments; no URL scheme, entitlement, fake media or purchase state.
+    static func startNavigation(in app: AppModel) {
+        guard enabled, navigationTask == nil else { return }
+        let arguments = ProcessInfo.processInfo.arguments
+        guard let index = arguments.firstIndex(of: "-store-navigation"), arguments.indices.contains(index + 1) else { return }
+        let directory = URL(fileURLWithPath: arguments[index + 1], isDirectory: true)
+        let request = directory.appendingPathComponent("request.json")
+        let initialToken = (try? Data(contentsOf: request)).flatMap { try? JSONSerialization.jsonObject(with: $0) as? [String: String] }?["token"]
+        do {
+            try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+            try Data("ready".utf8).write(to: directory.appendingPathComponent("hello"), options: .atomic)
+        } catch { return } // XCTest retains its ordinary cold-launch fallback.
+        navigationTask = Task { @MainActor in
+            var lastToken = initialToken
+            while !Task.isCancelled {
+                try? await Task.sleep(for: .milliseconds(100))
+                guard UIApplication.shared.applicationState == .active,
+                      let data = try? Data(contentsOf: request),
+                      let command = try? JSONSerialization.jsonObject(with: data) as? [String: String],
+                      let page = command["page"], let token = command["token"],
+                      UUID(uuidString: token) != nil, token != lastToken else { continue }
+                lastToken = token
+                app.feed = nil
+                app.fullScreen = nil
+                if VaultStore.shared.isPresented { VaultStore.shared.lock() }
+                for tab in AppTab.allCases { app.popToRoot(tab) }
+                app.selectedTab = .today
+                try? await Task.sleep(for: .milliseconds(700))
+                await open(page: page, in: app)
+                let result = ["page": page, "token": token, "status": "ready"]
+                if let data = try? JSONSerialization.data(withJSONObject: result) {
+                    try? data.write(to: directory.appendingPathComponent("ack-" + token + ".json"), options: .atomic)
+                }
+            }
+        }
+    }
+
+    private static func open(page: String, in app: AppModel) async {
         // XCTest waits for this identifier, including when a full-screen page covers the tab bar.
         // No additional visible controls or accessibility text are inserted into the app.
         defer {
