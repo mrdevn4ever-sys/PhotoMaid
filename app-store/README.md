@@ -48,6 +48,8 @@ Ein Exportfehler erfordert keine Wiederholung bestandener Simulator-Tests:
 `.github/workflows/app-store-export.yml` lädt mit `source_run` und `locales` vorhandene Quellen,
 prüft erneut exakt 55 Quelldateien und 4/4 native Tests und exportiert auf Linux.
 `preview-provenance.json` unterscheidet ursprünglichen Aufnahmecommit/-lauf und Exportcommit/-lauf.
+Auf diesem Branch über `ci.yml`: `ui_phase=store-export`, `baseline_run=<Aufnahmelauf-ID>` und
+`store_locales=<Sprachliste>`; der zusätzliche Workflow ist vor dem Merge nicht direkt dispatchbar.
 
 Nach der Ablage erzeugt `python3 scripts/store/make_review.py app-store/locales/<Sprache>`
 Prüfbögen mit zunächst `PENDING`. Erst nach tatsächlicher Sichtprüfung wird ihr Status auf `PASS`

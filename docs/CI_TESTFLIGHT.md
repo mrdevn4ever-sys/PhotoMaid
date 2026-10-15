@@ -87,6 +87,13 @@ Prüfsummen, vollständige Sichtprüfvermerke und Videoformate. Ein grüner Work
 Sichtprüfung. Ablage, Apple-Vorgaben und Wiederholung: [`app-store/README.md`](../app-store/README.md),
 tatsächlicher Lieferumfang: [`app-store/INDEX.md`](../app-store/INDEX.md).
 
+Bereits bestandene native Vorschau-Tests werden bei einem reinen Exportfehler nicht wiederholt.
+`ui_phase=store-export`, `baseline_run=<Aufnahmelauf-ID>` und `store_locales=<Sprachliste>` rufen
+`app-store-export.yml` auf Linux auf. Dieser lädt vorhandene Quellen, verlangt erneut 4/4 native Tests
+und genau 55 Originaldateinamen und exportiert alle drei Clips. Aufnahmecommit/-lauf und Exportcommit/-lauf
+stehen getrennt in `preview-provenance.json`. Die vollständige Originalaufnahme bleibt erhalten;
+längere Clips werden auf 24 s beschleunigt, danach steht das echte Schlussbild drei Sekunden.
+
 Diese Aufnahmephasen erzeugen weder einen TestFlight-Upload noch eine Veröffentlichung im App Store.
 
 `ui_phase=fixtures` zusammen mit `qa_case=vault` führt gezielt die Tresor-Löschregression aus

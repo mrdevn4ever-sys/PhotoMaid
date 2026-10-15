@@ -1,5 +1,13 @@
 name: App Store – vorhandene Vorschauen exportieren
 on:
+  workflow_call:
+    inputs:
+      source_run:
+        type: string
+        required: true
+      locales:
+        type: string
+        default: en
   workflow_dispatch:
     inputs:
       source_run:

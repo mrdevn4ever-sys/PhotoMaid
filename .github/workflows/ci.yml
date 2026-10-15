@@ -30,7 +30,7 @@ on:
       ui_phase:
         description: "UI-Durchlauf (gezielte Wiederholung nach der ersten Gesamtprüfung)"
         type: choice
-        options: [all, fixtures, real, start, store-screenshots, store-previews]
+        options: [all, fixtures, real, start, store-screenshots, store-previews, store-export]
         default: all
       ui_case:
         description: "PhotoKit-Fachtest (all = vollständige Prüfung; Pro prüft auch die Tresor-Voraussetzung)"
@@ -49,7 +49,7 @@ on:
           - test98TrashLimitRewardAndSizes
         default: all
       baseline_run:
-        description: "Optional: CI-Lauf-ID für den Export älterer xcresult-Screenshots"
+        description: "Quell-Lauf-ID für store-export oder ältere xcresult-Screenshots"
         type: string
         default: ""
       collect_run:
@@ -72,11 +72,17 @@ permissions:
 
 jobs:
   app-store:
-    if: inputs.store_locales != ''
+    if: inputs.store_locales != '' && inputs.ui_phase != 'store-export'
     uses: ./.github/workflows/app-store-assets.yml
     with:
       locales: ${{ inputs.store_locales }}
       capture: ${{ inputs.ui_phase == 'store-screenshots' && 'screenshots' || inputs.ui_phase == 'store-previews' && 'previews' || 'all' }}
+  app-store-export:
+    if: inputs.store_locales != '' && inputs.ui_phase == 'store-export'
+    uses: ./.github/workflows/app-store-export.yml
+    with:
+      locales: ${{ inputs.store_locales }}
+      source_run: ${{ inputs.baseline_run }}
   native-screenshot:
     if: inputs.native_capture
     uses: ./.github/workflows/simulator-screenshot.yml
