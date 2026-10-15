@@ -310,10 +310,20 @@ final class AppStoreCaptureTests: XCTestCase {
             let springboard = XCUIApplication(bundleIdentifier:"com.apple.springboard")
             let alert = springboard.alerts.firstMatch
             XCTAssertTrue(alert.waitForExistence(timeout:60))
-            let cancel = alert.buttons.matching(NSPredicate(format:"label IN %@",["Don't Allow","Don’t Allow","Don't Delete","Don’t Delete","Cancel","Nicht erlauben","Nicht löschen","Abbrechen"] as NSArray)).firstMatch
-            XCTAssertTrue(cancel.exists,"Only decline system deletion")
-            cancel.tap()
-            if app.alerts.buttons[t("ok")].waitForExistence(timeout:15) { tap(app.alerts.buttons[t("ok")]) }
+            for _ in 0..<4 {
+                guard alert.exists else { break }
+                let cancel = alert.buttons.matching(NSPredicate(format:"label IN %@",["Don't Allow","Don’t Allow","Don't Delete","Don’t Delete","Cancel","Nicht erlauben","Nicht löschen","Abbrechen"] as NSArray)).firstMatch
+                XCTAssertTrue(cancel.waitForExistence(timeout:3),"Only decline system deletion")
+                pause(0.5) // the first tap can otherwise coincide with the system alert's entrance
+                cancel.tap()
+                if alert.waitForNonExistence(timeout:3) { break }
+            }
+            XCTAssertFalse(alert.exists,"System deletion dialog must be dismissed by declining")
+            let notice = app.alerts.buttons[t("ok")]
+            if notice.waitForExistence(timeout:15) {
+                tap(notice)
+                XCTAssertTrue(app.alerts.firstMatch.waitForNonExistence(timeout:5))
+            }
         }
         XCTAssertEqual(vaultItems().count,5); snap("vault-media")
         tap(vaultItems().firstMatch); snap("vault-viewer")
