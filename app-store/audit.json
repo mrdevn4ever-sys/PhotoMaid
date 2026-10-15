@@ -273,5 +273,55 @@
     "capture_run": "38748687136",
     "capture_commit": "819609e9fb766d25ab0d87e691cb274ca4ba849a",
     "status": "PASS"
+  },
+  {
+    "language": "ro",
+    "screenshots": 123,
+    "selection": 10,
+    "videos": [
+      {
+        "file": "01-review.mp4",
+        "sha256": "a5258d63ff317a2440faddfab19d384cd33937035d611bdf39b551ea6b3948cf",
+        "duration": 27.0
+      },
+      {
+        "file": "02-studio.mp4",
+        "sha256": "53d864d67fed971a2c9cac02ac085153920149275c01146915ebc1048e957e25",
+        "duration": 27.0
+      },
+      {
+        "file": "03-vault.mp4",
+        "sha256": "f8f37ac68d16928fcb82dd8f6d56c661724fc0e80b48de7be9dc39d26abc8386",
+        "duration": 27.0
+      }
+    ],
+    "capture_run": "38748687136",
+    "capture_commit": "819609e9fb766d25ab0d87e691cb274ca4ba849a",
+    "status": "PASS"
+  },
+  {
+    "language": "tr",
+    "screenshots": 123,
+    "selection": 10,
+    "videos": [
+      {
+        "file": "01-review.mp4",
+        "sha256": "d070c4cc0e12281fa7e6ed6554951ed2fc17311003f53859aa5d581b2b944180",
+        "duration": 27.0
+      },
+      {
+        "file": "02-studio.mp4",
+        "sha256": "051e1dd0a499faa4cbbad58e218ce913789be9de717c8be8ffc49b03f2c7215a",
+        "duration": 27.0
+      },
+      {
+        "file": "03-vault.mp4",
+        "sha256": "1a8165ccf5116ec03f9a5662c76c197223fbe5d6bfcbc175711008973eeca251",
+        "duration": 27.0
+      }
+    ],
+    "capture_run": "38748687136",
+    "capture_commit": "819609e9fb766d25ab0d87e691cb274ca4ba849a",
+    "status": "PASS"
   }
 ]
