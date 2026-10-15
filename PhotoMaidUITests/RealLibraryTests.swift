@@ -308,8 +308,10 @@ final class RealLibraryTests: XCTestCase {
         XCTAssertEqual(position(), before + 1)
         before = position()
         e("feed.stage").swipeRight()
-        XCTAssertEqual(position(), before + 1)
+        // The ledger and default schedule finish asynchronously after XCTest reports idle.
+        // The visible receipt proves completion before reading the new position.
         XCTAssertTrue(e("later.pill").waitForExistence(timeout: 3))
+        XCTAssertEqual(position(), before + 1)
         XCTAssertTrue(e("later.pill").label.contains("2"))
         XCTAssertTrue(e("later.pill").buttons["Ändern"].exists)
         snap("right_later")
