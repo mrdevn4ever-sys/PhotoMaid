@@ -14,7 +14,7 @@ Repositorys zählen macOS-Minuten bei GitHub zehnfach und sind über dem Freikon
 | `.github/workflows/app-store-assets.yml` | Dark-Mode-Seitenaufnahmen und drei echte App-Store-Vorschauen je Sprache, nur im Wegwerf-Simulator | manuell, auf dem Arbeitsbranch über `ci.yml` mit `store_locales` und `ui_phase=store-screenshots` / `store-previews` |
 | `.github/workflows/testflight.yml` | Unit-Tests, Archiv, Signierung, Upload zu TestFlight | manuell: Actions › TestFlight › „Run workflow“ |
 
-Beide erzeugen einen **CI-Bericht** (`ci-report.md`, auch in der Job-Zusammenfassung): Compilerfehler mit
+CI und TestFlight erzeugen einen **CI-Bericht** (`ci-report.md`, auch in der Job-Zusammenfassung): Compilerfehler mit
 `Datei:Zeile`, fehlgeschlagene Tests, Concurrency-Warnungen. Der nächste Korrekturdurchlauf liest ihn so:
 
 ```sh

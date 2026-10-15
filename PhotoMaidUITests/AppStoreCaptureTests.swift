@@ -47,8 +47,10 @@ final class AppStoreCaptureTests: XCTestCase {
         element.tap(); pause(0.7)
     }
     private func button(_ key: String) -> XCUIElement {
-        let query = app.buttons.matching(NSPredicate(format:"label == %@", t(key)))
-        return query.allElementsBoundByAccessibilityElement.first(where: \.isHittable) ?? query.firstMatch
+        // SwiftUI menu items can change between Button and PopUpButton in iOS 26 snapshots.
+        // Resolve by label and index so XCTest does not retain a stale, typed identity.
+        let query = app.descendants(matching: .any).matching(NSPredicate(format:"label == %@", t(key)))
+        return query.allElementsBoundByIndex.first(where: \.isHittable) ?? query.firstMatch
     }
     private func launch(_ page: String) {
         let navigation = output.appendingPathComponent("navigation")
