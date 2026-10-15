@@ -93,9 +93,10 @@ enum StoreCapture {
         guard !UserDefaults.standard.bool(forKey: "storeCapture.arranged") else { return }
         let all = PHAsset.fetchAssets(with: .image, options: nil)
         var imported: [(String, Int)] = []
-        all.enumerateObjects { asset, _, _ in
+        for index in 0..<all.count {
+            let asset = all.object(at: index)
             guard let filename = PHAssetResource.assetResources(for: asset).first?.originalFilename,
-                  let number = Int(filename.prefix(2)), (1...55).contains(number) else { return }
+                  let number = Int(filename.prefix(2)), (1...55).contains(number) else { continue }
             imported.append((asset.localIdentifier, number))
         }
         guard imported.count == 55 else { return }

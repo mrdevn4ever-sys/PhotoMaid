@@ -12,7 +12,7 @@ final class AppStoreCaptureTests: XCTestCase {
     private var shots: [[String: String]] = []
     private var clip: String?
 
-    override func setUpWithError() throws {
+    override func setUp() async throws {
         guard let value = ProcessInfo.processInfo.environment["STORE_CAPTURE_LOCALE"] else {
             throw XCTSkip("Only run through the explicit App Store capture workflow")
         }
@@ -28,7 +28,7 @@ final class AppStoreCaptureTests: XCTestCase {
         if name.contains("test00") { store.resetToDefaultState(); try store.clearTransactions() }
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() async throws {
         if clip != nil { try? recording("stop", name: clip!) }
         app?.terminate()
         if !shots.isEmpty {
