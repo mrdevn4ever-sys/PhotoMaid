@@ -99,6 +99,7 @@ struct FeedView: View {
             // abgebrochen (neu eingeblendet, Ansicht neu aufgebaut), blendet das nie aus – früher verschwand die
             // Hilfe dadurch sofort.
             do { try await Task.sleep(for: .seconds(GestureHintOverlay.duration)) } catch { return }
+            Diagnostics.log(.feed, "hints-auto-hidden")
             withAnimation(.easeOut(duration: 0.6)) { showHints = false }
         }
         .onChange(of: reduceMotion) { _, v in model.reduceMotion = v }
@@ -423,6 +424,7 @@ struct FeedView: View {
     }
 
     private func flashHints() {
+        Diagnostics.log(.feed, "hints-presented")
         hintShownAt = ProcessInfo.processInfo.systemUptime
         withAnimation(.easeOut(duration: 0.2)) { showHints = true }
         hintToken += 1

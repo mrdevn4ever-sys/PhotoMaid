@@ -55,6 +55,8 @@ struct FeedAdCardView: View {
                     .onEnded { v in
                         let t = v.translation
                         let down = t.height > 80 && abs(t.height) > abs(t.width)
+                        Diagnostics.log(.ads, canSkip ? "native-card-swipe-ready" : "native-card-swipe-wait")
+                        if down { Diagnostics.log(.ads, "native-card-swipe-down") }
                         if (canSkip && hypot(t.width, t.height) > 80) || down {
                             leave(direction: t, size: geo.size)
                         } else {
@@ -64,7 +66,9 @@ struct FeedAdCardView: View {
             )
         }
         .task {
+            Diagnostics.log(.ads, "native-card-presented")
             do { try await Task.sleep(for: .milliseconds(Int(FeedAdPolicy.minVisibleMs))) } catch { return }
+            Diagnostics.log(.ads, "native-card-can-skip")
             withAnimation(.easeOut(duration: 0.2)) { canSkip = true }
         }
         .accessibilityElement(children: .contain)

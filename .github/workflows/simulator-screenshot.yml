@@ -33,7 +33,9 @@ jobs:
             tell application "System Events"
               tell process "Simulator"
                 set frontmost to true
+                if not enabled of menu item "Trigger Screenshot" of menu "Device" of menu bar 1 then error "Screenshot menu is disabled"
                 click menu item "Trigger Screenshot" of menu "Device" of menu bar 1
+                delay 3
               end tell
             end tell
           end timeout

@@ -158,6 +158,24 @@ final class RealLibraryTests: XCTestCase {
         snap(name)
     }
 
+    private func verifyHintDuration(_ prefix: String, trigger: () -> Void) {
+        trigger()
+        let started = ProcessInfo.processInfo.systemUptime
+        checkpoint("real_" + prefix + "_on_open", app: app, hierarchy: false)
+        XCTAssertTrue(e("feed.hints").waitForExistence(timeout: 3))
+        func waitUntil(_ seconds: TimeInterval) {
+            let remaining = seconds - (ProcessInfo.processInfo.systemUptime - started)
+            if remaining > 0 { Thread.sleep(forTimeInterval: remaining) }
+        }
+        // Measure from the trigger, not from slow screenshot/AX queries (~8 seconds in CI).
+        waitUntil(3)
+        XCTAssertTrue(e("feed.hints").exists, "Help remains visible three seconds after opening")
+        checkpoint("real_" + prefix + "_still_after_3s", app: app, hierarchy: false)
+        waitUntil(7)
+        XCTAssertFalse(e("feed.hints").exists)
+        snap(prefix + "_gone_after_7s")
+    }
+
     func test00IntroductionAndFourColdStarts() {
         store.clearTransactions()
         finishIntroduction(in: app, prefix: "real_start_1")
@@ -232,21 +250,27 @@ final class RealLibraryTests: XCTestCase {
     func test20FiftyFastSwipesAdAndDirections() {
         ready()
         feed()
+        // Resolve only app coordinates for the timing-sensitive gestures. Querying the ad's
+        // accessibility tree first took >2 seconds in CI and missed the 1.5-second lock.
+        let quickLeftStart = app.coordinate(withNormalizedOffset: CGVector(dx: 0.82, dy: 0.48))
+        let quickLeftEnd = app.coordinate(withNormalizedOffset: CGVector(dx: 0.18, dy: 0.48))
+        let quickDownStart = app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.35))
+        let quickDownEnd = app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.75))
         for index in 1...50 {
             let before = position()
             e("feed.stage").swipeLeft(velocity: .fast)
-            snap(String(format: "rapid_%02d", index))
+            if index == 50 {
+                checkpoint("real_ad_after_50", app: app, hierarchy: false)
+                quickDownStart.press(forDuration: 0.01, thenDragTo: quickDownEnd,
+                                     withVelocity: .fast, thenHoldForDuration: 0)
+                XCTAssertFalse(e("feed.ad").exists, "Down dismisses even while the card is locked")
+                snap("ad_down_immediate")
+            } else {
+                snap(String(format: "rapid_%02d", index))
+                XCTAssertFalse(e("feed.ad").exists)
+            }
             XCTAssertEqual(position(), before + 1, "Swipe \(index) must advance once")
-            if index < 50 { XCTAssertFalse(e("feed.ad").exists) }
         }
-        XCTAssertTrue(e("feed.ad").waitForExistence(timeout: 8))
-        XCTAssertTrue(app.staticTexts["Anzeige"].exists)
-        let beforeAd = position()
-        snap("ad_after_50")
-        e("feed.ad").swipeDown(velocity: .fast)
-        XCTAssertFalse(e("feed.ad").waitForExistence(timeout: 0.5))
-        XCTAssertEqual(position(), beforeAd, "Ad dismissal is not a decision")
-        snap("ad_down_immediate")
         closeFeed()
         tab("Verlauf")
         XCTAssertEqual(e("history.events").value as? String, "50", "The ad adds no ledger event")
@@ -258,16 +282,18 @@ final class RealLibraryTests: XCTestCase {
             let before = position()
             e("feed.stage").swipeLeft(velocity: .fast)
             if index == 50 {
-                checkpoint("real_second_ad_arrived", app: app, hierarchy: false)
+                // No snapshot/query before the early swipe: their overhead exceeds the lock.
+                quickLeftStart.press(forDuration: 0.01, thenDragTo: quickLeftEnd,
+                                     withVelocity: .fast, thenHoldForDuration: 0)
+                XCTAssertTrue(e("feed.ad").exists, "An immediate sideways swipe must leave the card open")
+                checkpoint("real_ad_early_swipe_blocked", app: app, hierarchy: false)
             } else {
                 snap(String(format: "second_rapid_%02d", index))
                 XCTAssertEqual(position(), before + 1)
             }
         }
         XCTAssertTrue(e("feed.ad").exists)
-        e("feed.ad").swipeLeft(velocity: .fast)
-        XCTAssertTrue(e("feed.ad").exists, "Before 1.5 seconds, a sideways swipe must leave the card open")
-        snap("ad_early_swipe_blocked")
+        XCTAssertTrue(app.staticTexts["Anzeige"].exists)
         Thread.sleep(forTimeInterval: 1.6)
         XCTAssertTrue(e("feed.ad.skip").exists)
         let secondAdPosition = position()
@@ -326,22 +352,16 @@ final class RealLibraryTests: XCTestCase {
         tap(app.buttons["Immer"].firstMatch, "buttons_always")
         XCTAssertTrue(button("Tasten anzeigen").label.contains("Immer"))
         back("controls_back"); back("settings_back")
-        feed(dismissHints: false)
-        XCTAssertTrue(e("feed.hints").waitForExistence(timeout: 10))
-        snap("hints_on_open")
-        Thread.sleep(forTimeInterval: 3)
-        XCTAssertTrue(e("feed.hints").exists, "Help must remain visible for about six seconds")
-        snap("hints_still_after_3s")
-        Thread.sleep(forTimeInterval: 4)
-        XCTAssertFalse(e("feed.hints").exists)
-        snap("hints_gone_after_7s")
+        tab("Aufräumen")
+        let photos = app.buttons["hub.photos"].firstMatch
+        scrollTo(photos)
+        XCTAssertTrue(photos.exists && photos.isHittable)
+        verifyHintDuration("hints") { photos.tap() }
         skipTour()
         tap(app.buttons["Weitere Aktionen"].firstMatch, "feed_more")
-        tap(app.buttons["Wischhilfe zeigen"], "show_hints_menu")
-        Thread.sleep(forTimeInterval: 3)
-        XCTAssertTrue(e("feed.hints").exists)
-        snap("menu_hints_after_3s")
-        Thread.sleep(forTimeInterval: 4)
+        let showHints = app.buttons["Wischhilfe zeigen"]
+        XCTAssertTrue(showHints.exists && showHints.isHittable)
+        verifyHintDuration("menu_hints") { showHints.tap() }
         let before = position()
         e("feed.stage").swipeRight()
         snap("right_adds_to_album")

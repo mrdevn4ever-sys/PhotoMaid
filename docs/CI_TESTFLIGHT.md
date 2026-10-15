@@ -53,6 +53,12 @@ zusammengefügt und als `tar` entpackt (Befehl in `README.txt`).
 
 Alle Läufe bleiben manuell; Pushes starten keine Tests. Unterschiedliche Commits behalten ihre eigenen CI-Belege.
 
+`native_capture=true` in `ci.yml` startet ausschließlich die wiederverwendbare Simulator-Screenshot-Diagnose
+aus `simulator-screenshot.yml`: öffentliche Menüfunktion „Device › Trigger Screenshot“, Vorher-/Nachher-PNG
+und Log. Kein App-Build und keine App-Abnahme. Der Aufruf über `ci.yml` funktioniert auch, solange GitHub den
+neuen Workflow auf diesem Arbeitsbranch noch nicht als eigenständig startbaren Workflow registriert hat.
+Die Diagnose ändert keine Berechtigungsdatenbank und verwendet keine privaten PhotoKit-APIs.
+
 ### Einrichtung für TestFlight
 
 1. **Apple Developer Program** (kostenpflichtig, 99 USD/Jahr) – Pflicht für TestFlight.
