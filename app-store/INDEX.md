@@ -1,6 +1,6 @@
 # PhotoMaid – Sprachindex
 
-Alle Aufnahmen in Dark Mode. Vorhanden: **1969 Original-Screenshots in 16 von 16 Sprachen**, **39 von 48 Vorschauvideos**. Seitenarchiv, zehn Store-Vorschläge und Vorschauen werden je Sprache getrennt abgelegt.
+Alle Aufnahmen in Dark Mode. Vorhanden: **1969 Original-Screenshots in 16 von 16 Sprachen**, **45 von 48 Vorschauvideos**. Seitenarchiv, zehn Store-Vorschläge und Vorschauen werden je Sprache getrennt abgelegt.
 
 | Sprache | App → App Store Connect | Screenshots | Videos |
 |---|---|---:|---:|
@@ -18,8 +18,8 @@ Alle Aufnahmen in Dark Mode. Vorhanden: **1969 Original-Screenshots in 16 von 16
 | [Rumänisch](locales/ro/README.md) | `ro` → `ro` | 123 / Auswahl 10 | 3 / 3 |
 | [Russisch](locales/ru/README.md) | `ru` → `ru` | 123 / Auswahl 10 | 0 / 3 |
 | [Türkisch](locales/tr/README.md) | `tr` → `tr` | 123 / Auswahl 10 | 3 / 3 |
-| [Ukrainisch](locales/uk/README.md) | `uk` → `uk` | 123 / Auswahl 10 | 0 / 3 |
-| [Chinesisch (vereinfacht)](locales/zh-Hans/README.md) | `zh-Hans` → `zh-Hans` | 123 / Auswahl 10 | 0 / 3 |
+| [Ukrainisch](locales/uk/README.md) | `uk` → `uk` | 123 / Auswahl 10 | 3 / 3 |
+| [Chinesisch (vereinfacht)](locales/zh-Hans/README.md) | `zh-Hans` → `zh-Hans` | 123 / Auswahl 10 | 3 / 3 |
 
 [55 Hochkantfotos und CC0-Quellen](media/SOURCES.md) · [Formate und Wiederholung](README.md) · [Maschinenprüfung](audit.json)
 

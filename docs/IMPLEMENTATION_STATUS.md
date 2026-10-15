@@ -62,10 +62,9 @@ veränderte Belichtung, gewählten Monochromfilter, Zeichnen und echten Tresorzo
 hat zusätzlich einen nativen Screenshot. Videoexport, vollständige Dekodierung, Sichtprüfung und
 Ablage der insgesamt 48 Vorschauen erfolgen sprachweise.
 
-**39/48 Vorschauen PASS:** Deutsch, Englisch, Arabisch, Japanisch, Spanisch, Französisch,
-Italienisch, Koreanisch, Niederländisch, Polnisch, Portugiesisch, Rumänisch und Türkisch sind vollständig exportiert,
+**45/48 Vorschauen PASS:** Alle 15 Sprachen außer Russisch sind vollständig exportiert,
 vollständig dekodiert und mit je acht tatsächlich angesehenen Videobildern plus drei Postern geprüft.
-Zusätzlich wurden alle 325 nativen Schritt-/Einrichtungs-Screenshots dieser 13 Sprachen angesehen.
+Zusätzlich wurden alle 375 nativen Schritt-/Einrichtungs-Screenshots dieser 15 Sprachen angesehen.
 Die Dateien liegen unter `app-store/locales/<Sprache>/previews/`; Ausgangsdaten, Tempo und Posterzeitcodes
 stehen im jeweiligen Manifest. Der Audit besteht einschließlich übereinstimmender Spurdauern.
 
@@ -79,7 +78,8 @@ stehen im jeweiligen Manifest. Der Audit besteht einschließlich übereinstimmen
 | Koreanisch | `38765595100` · `364f9bf` · 4/4 native Tests | `38771629526` · `f146cd9` | PASS · drei Videos und Poster |
 | Polnisch, Portugiesisch (Portugal) | `38765595100` · `364f9bf` · je 4/4 native Tests | `38772655624` · `1836474` | PASS · je drei Videos und Poster |
 | Rumänisch, Türkisch | `38765595100` · `364f9bf` · je 4/4 native Tests | `38774573992` · `1e0daee` | PASS · je drei Videos und Poster |
-| Russisch, Ukrainisch, Chinesisch | `38765595100` · `364f9bf`, Russisch mit Wiederholung | laufend | noch nicht vollständig geprüft/abgelegt |
+| Ukrainisch, Chinesisch (vereinfacht) | `38765595100` · `364f9bf` · je 4/4 native Tests | `38775272307` · `1e0daee` | PASS · je drei Videos und Poster |
+| Russisch | Wiederholung `38774007322` · `6ee08f3` | laufend | noch nicht vollständig geprüft/abgelegt |
 
 Die ersten drei Sprachen bestanden jeweils 4/4 native Tests; der anschließende Export scheiterte jedoch
 an variablen Simulator-Bildraten. Ein Studio-Clip wurde trotz gekürzter Wandzeitsegmente 36,8 s lang.
@@ -124,7 +124,7 @@ Checkout der Runner schließt das wachsende fertige Bildarchiv aus, behält jedo
 Linux Swift 6.4.1: **394 Tests / 44 Suites PASS**. Textgenerator `--check`: **PASS**, 1572 verwendete
 Kennungen, 2559 Einträge, 16 Sprachen. Neue App-Texte wurden nicht eingeführt.
 
-Noch ausstehend: neun weitere geprüfte Vorschauen und abschließender Sprach-/Formatabgleich.
+Noch ausstehend: drei russische Vorschauen und abschließender Sprach-/Formatabgleich.
 Dokumentenscanner/Kamera ist wegen fehlender Kamerafunktion im Simulator **NOT RUN**, mit nativem
 Crashbericht aus dem verworfenen Scannerpilot belegt. Echtes Face ID, iCloud, 30.000 Fotos und Wärme
 bleiben **NOT RUN** ohne physisches iPhone; der Foto-Bildsatz deckt den Videoeditor nicht ab.
