@@ -250,20 +250,16 @@ final class RealLibraryTests: XCTestCase {
     func test20FiftyFastSwipesAdAndDirections() {
         ready()
         feed()
-        // Resolve only app coordinates for the timing-sensitive gestures. Querying the ad's
-        // accessibility tree first took >2 seconds in CI and missed the 1.5-second lock.
-        let quickLeftStart = app.coordinate(withNormalizedOffset: CGVector(dx: 0.82, dy: 0.48))
-        let quickLeftEnd = app.coordinate(withNormalizedOffset: CGVector(dx: 0.18, dy: 0.48))
-        let quickDownStart = app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.35))
-        let quickDownEnd = app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.75))
+        // Coordinate drags resolve the application frame repeatedly. The public swipe API
+        // resolves it once; 3000 points/s also leaves room for AX overhead inside the 1.5 s gate.
+        let earlyVelocity = XCUIGestureVelocity(rawValue: 3_000)
         for index in 1...50 {
             let before = position()
             e("feed.stage").swipeLeft(velocity: .fast)
             if index == 50 {
                 // The second interval records the open ad. A screenshot here costs >1.5 s
                 // on CI, so execute the locked down gesture before recording its result.
-                quickDownStart.press(forDuration: 0.01, thenDragTo: quickDownEnd,
-                                     withVelocity: .fast, thenHoldForDuration: 0)
+                app.swipeDown(velocity: earlyVelocity)
                 XCTAssertFalse(e("feed.ad").exists, "Down dismisses even while the card is locked")
                 snap("ad_down_immediate")
             } else {
@@ -284,8 +280,7 @@ final class RealLibraryTests: XCTestCase {
             e("feed.stage").swipeLeft(velocity: .fast)
             if index == 50 {
                 // No snapshot/query before the early swipe: their overhead exceeds the lock.
-                quickLeftStart.press(forDuration: 0.01, thenDragTo: quickLeftEnd,
-                                     withVelocity: .fast, thenHoldForDuration: 0)
+                app.swipeLeft(velocity: earlyVelocity)
                 XCTAssertTrue(e("feed.ad").exists, "An immediate sideways swipe must leave the card open")
                 checkpoint("real_ad_early_swipe_blocked", app: app, hierarchy: false)
             } else {
@@ -313,11 +308,11 @@ final class RealLibraryTests: XCTestCase {
         XCTAssertEqual(position(), before + 1)
         before = position()
         e("feed.stage").swipeRight()
-        snap("right_later")
         XCTAssertEqual(position(), before + 1)
         XCTAssertTrue(e("later.pill").waitForExistence(timeout: 3))
         XCTAssertTrue(e("later.pill").label.contains("2"))
         XCTAssertTrue(e("later.pill").buttons["Ändern"].exists)
+        snap("right_later")
         before = position()
         e("feed.stage").swipeDown()
         snap("down_previous")
@@ -326,7 +321,7 @@ final class RealLibraryTests: XCTestCase {
         XCTAssertTrue(e("feed.stage").exists)
         closeFeed()
         tab("Verlauf")
-        XCTAssertEqual(e("history.events").value as? String, "103", "100 decisions + keep + later + undo audit event; ads and down add no event")
+        XCTAssertEqual(e("history.events").value as? String, "104", "100 decisions + keep + later + its schedule + undo audit event; ads and down add no event")
         snap("history_no_ad_decision")
         XCTAssertFalse(app.staticTexts["Anzeige"].exists)
         XCTAssertTrue(contains("Papierkorb").exists)
