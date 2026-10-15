@@ -17,9 +17,10 @@ def main():
   # Recorder readiness occurs after process start; calibrate its clock using actual media duration.
   offset=timing['end']-duration
   segments=[]
-  for event in events:
+  for index,event in enumerate(events):
    start=max(0,event['time']-offset)
-   length=min(4.8,duration-start)
+   until_next=events[index+1]['time']-event['time'] if index+1<len(events) else duration-start
+   length=min(4.8,duration-start,until_next)
    assert length>=2.5,(clip,event,length,duration)
    segments.append((start,length,event['label']))
   filters=[]

@@ -14,6 +14,12 @@ enum StoreCapture {
         let arguments = ProcessInfo.processInfo.arguments
         guard let index = arguments.firstIndex(of: "-store-page"), arguments.indices.contains(index + 1) else { return }
         let page = arguments[index + 1]
+        // XCTest waits for this identifier, including when a full-screen page covers the tab bar.
+        // No additional visible controls or accessibility text are inserted into the app.
+        defer {
+            UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
+                .flatMap(\.windows).first(where: \.isKeyWindow)?.accessibilityIdentifier = "store.capture." + page
+        }
         app.updateSettings {
             $0.appearance = .dark
             $0.todayTourSeen = true
@@ -35,7 +41,11 @@ enum StoreCapture {
         let route: Route?
         switch page {
         case "today": app.selectedTab = .today; return
-        case "library": app.selectedTab = .library; return
+        case "library":
+            app.updateSettings { $0.libraryFilter = .all }; app.selectedTab = .library; return
+        case "library-favorites", "library-photos", "library-videos", "library-screenshots":
+            if let filter = LibraryFilter(rawValue: String(page.dropFirst(8))) { app.updateSettings { $0.libraryFilter = filter } }
+            app.selectedTab = .library; return
         case "cleanup": app.selectedTab = .cleanup; return
         case "studio": app.selectedTab = .studio; return
         case "history": app.selectedTab = .history; return
@@ -45,6 +55,7 @@ enum StoreCapture {
         case "editor":
             if let id = ids.first { app.fullScreen = .editor(assetID: id) }; return
         case "slideshow": app.fullScreen = .slideshow(ids: ids); return
+        case "scanner": app.fullScreen = .scanner; return
         case "vault": VaultStore.shared.present(); return
         case "trash": route = .trash
         case "later": route = .later
@@ -60,12 +71,19 @@ enum StoreCapture {
         case "documents": route = .smartReview(.documents)
         case "categories": route = .smartReview(.categories)
         case "albums": tab = .library; route = .albums
+        case "album":
+            let options = PHFetchOptions(); options.predicate = NSPredicate(format: "title == %@", "PhotoMaid")
+            if let album = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: options).firstObject {
+                tab = .library; route = .album(id: album.localIdentifier, title: "PhotoMaid")
+            } else { return }
+        case "grid": tab = .library; route = .grid(.items(ids, titleKey: "tab_library"))
         case "favorites": tab = .library; route = .favorites
         case "search": tab = .library; route = .search
         case "selection": tab = .library; route = .selectionBasket
         case "tags": tab = .library; route = .tags
         case "hidden": tab = .library; route = .hidden
         case "edits": tab = .studio; route = .edits
+        case "received": tab = .studio; route = .received([])
         case "collage": StudioHandoff.shared.ids = Array(ids.prefix(4)); tab = .studio; route = .collage(draftID: nil)
         case "movie": tab = .studio; route = .movie(ids: Array(ids.prefix(5)))
         case "pdf": tab = .studio; route = .pdfFromPhotos(ids: Array(ids.prefix(4)))
@@ -93,13 +111,19 @@ enum StoreCapture {
         guard !UserDefaults.standard.bool(forKey: "storeCapture.arranged") else { return }
         let all = PHAsset.fetchAssets(with: .image, options: nil)
         var imported: [(String, Int)] = []
+        var filenames: [String] = []
         for index in 0..<all.count {
             let asset = all.object(at: index)
             guard let filename = PHAssetResource.assetResources(for: asset).first?.originalFilename,
                   let number = Int(filename.prefix(2)), (1...55).contains(number) else { continue }
-            imported.append((asset.localIdentifier, number))
+            imported.append((asset.localIdentifier, number)); filenames.append(filename)
         }
-        guard imported.count == 55 else { return }
+        let inventory: [String: Any] = ["count": all.count, "sourceFiles": filenames.sorted()]
+        if let data = try? JSONSerialization.data(withJSONObject: inventory, options: [.prettyPrinted, .sortedKeys]),
+           let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            try? data.write(to: documents.appendingPathComponent("store-library.json"), options: .atomic)
+        }
+        guard all.count == 55, imported.count == 55 else { return }
         let assets = imported
         do {
             try await PHPhotoLibrary.shared().performChanges {
@@ -107,7 +131,7 @@ enum StoreCapture {
                     guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [id], options: nil).firstObject else { continue }
                     let edit = PHAssetChangeRequest(for: asset)
                     edit.creationDate = Date(timeIntervalSince1970: 1_792_022_400 - Double(index) * 3_600)
-                    edit.isFavorite = [1, 3, 5, 9, 13, 21].contains(index)
+                    edit.isFavorite = [13, 21, 25, 31, 36, 42].contains(index)
                 }
                 let album = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: "PhotoMaid")
                 album.addAssets(PHAsset.fetchAssets(withLocalIdentifiers: assets.filter { $0.1 <= 12 }.map(\.0), options: nil))

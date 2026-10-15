@@ -52,6 +52,7 @@ final class AppStoreCaptureTests: XCTestCase {
         app = XCUIApplication()
         app.launchArguments = ["-store-capture", "-store-page", page, "-AppleLanguages", "(\(language))", "-AppleLocale", language]
         app.launch()
+        XCTAssertTrue(app.windows["store.capture." + page].waitForExistence(timeout: 40), "Requested page must finish opening: \(page)")
         if page != "introduction" {
             XCTAssertTrue(app.wait(for: .runningForeground, timeout: 30), "App did not open capture page \(page)")
         }
@@ -60,7 +61,7 @@ final class AppStoreCaptureTests: XCTestCase {
     private func snap(_ name: String) {
         pause(0.7)
         let texts = app.staticTexts.allElementsBoundByIndex.filter(\.isHittable).map(\.label)
-        let invalid = texts.filter { $0.contains("%1$") || $0.contains("%2$") || $0.hasPrefix("pro2_") || $0.hasPrefix("ana2_") || $0.hasPrefix("vault2_") }
+        let invalid = texts.filter { $0.contains("%1$") || $0.contains("%2$") || $0.hasPrefix("pro2_") || $0.hasPrefix("ana2_") || $0.hasPrefix("vault2_") || $0.range(of:"^[a-z][a-z0-9]*(?:_[a-z0-9]+)+$",options:.regularExpression) != nil }
         XCTAssertTrue(invalid.isEmpty, "Untranslated UI: \(invalid)")
         let screenshot = XCUIScreen.main.screenshot()
         do {
@@ -82,7 +83,12 @@ final class AppStoreCaptureTests: XCTestCase {
     private func editorTool(_ tool: String) {
         let target = e("editor.tool." + tool)
         let row = e("editor.tools")
-        for _ in 0..<6 where !target.isHittable { row.swipeLeft() }
+        for _ in 0..<6 where !target.isHittable {
+            if language == "ar" { row.swipeRight() } else { row.swipeLeft() }
+        }
+        for _ in 0..<6 where !target.isHittable {
+            if language == "ar" { row.swipeLeft() } else { row.swipeRight() }
+        }
         tap(target)
         XCTAssertTrue(e("editor.stage").exists)
     }
@@ -101,20 +107,38 @@ final class AppStoreCaptureTests: XCTestCase {
         e("feed.stage").swipeLeft(); pause(1)
         e("feed.stage").swipeRight(); pause(1); snap("feed-later")
         let pages: [(String,String?,Bool)] = [
-            ("library",nil,false),("cleanup",nil,true),("studio",nil,true),("history",nil,false),
+            ("library",nil,false),("library-favorites",nil,false),("library-photos",nil,false),("library-videos",nil,false),("library-screenshots",nil,false),("cleanup",nil,true),("studio",nil,true),("history",nil,false),
             ("trash",nil,false),("later",nil,false),("months",nil,false),
             ("large-files","large_files",false),("duplicates","duplicates",false),("storage","storage_overview",true),
             ("files","files",false),("series","series_title",false),("collections",nil,true),
             ("blurry","ana_blurry",false),("similar","ana_similar",false),("documents","ana_documents",false),("categories","ana_categories",false),
-            ("albums",nil,false),("favorites",nil,false),("search",nil,false),("selection",nil,false),("tags",nil,false),("hidden",nil,false),
+            ("albums",nil,false),("album",nil,false),("grid",nil,false),("favorites",nil,false),("search",nil,false),("selection",nil,false),("tags",nil,false),("hidden",nil,false),
             ("edits",nil,false),("collage",nil,false),("movie",nil,true),
             ("tools-resize",nil,true),("tools-convert",nil,true),("tools-removeLocation",nil,true),("tools-stitch",nil,true),("tools-gif",nil,true),("tools-batchEdit",nil,true),
-            ("workflows",nil,true),("pdf",nil,true),("pdf-studio",nil,false),("archive",nil,true),
+            ("scanner",nil,false),("received",nil,false),("workflows",nil,true),("pdf",nil,true),("pdf-studio",nil,false),("archive",nil,true),
             ("settings","settings",true),("pro","pro_title",true),("privacy","privacy_title",true),("help","help",true),
             ("excluded-albums",nil,false),("backup","backup_title",true),("controls","fc_title",true),
             ("viewer",nil,false),("slideshow",nil,false)
         ]
-        for (page,title,bottom) in pages { capturePage(page, title:title, bottom:bottom) }
+        for (page,title,bottom) in pages {
+            capturePage(page, title:title, bottom:bottom)
+            if ["blurry","similar","documents","categories"].contains(page) {
+                let start = button("ana2_start")
+                if start.waitForExistence(timeout:10) && start.isEnabled {
+                    tap(start); snap(page + "-progress")
+                    let progress = e("analysis.progress")
+                    let deadline = Date().addingTimeInterval(240)
+                    var finished = false
+                    repeat {
+                        let values = (progress.value as? String ?? "").split(separator:"/").compactMap { Int($0) }
+                        if values.count == 2 && values[1] > 0 && values[0] == values[1] { finished = true; break }
+                        pause(1)
+                    } while Date() < deadline
+                    XCTAssertTrue(finished,"Actual on-device analysis must finish: \(page)")
+                    snap(page + "-results"); app.swipeUp(); snap(page + "-results-grid")
+                }
+            }
+        }
         launch("editor")
         XCTAssertTrue(e("editor.stage").waitForExistence(timeout: 30))
         snap("editor")
@@ -126,7 +150,8 @@ final class AppStoreCaptureTests: XCTestCase {
 
     private func openVault() {
         launch("vault")
-        if app.secureTextFields.firstMatch.waitForExistence(timeout: 2) {
+        for _ in 0..<100 where !app.secureTextFields.firstMatch.exists && !button("onb_next").exists { pause(0.1) }
+        if app.secureTextFields.firstMatch.exists {
             let code = app.secureTextFields.firstMatch; code.tap(); code.typeText("628491")
         } else {
             snap("vault-setup-introduction"); tap(button("onb_next"))
@@ -220,9 +245,18 @@ final class AppStoreCaptureTests: XCTestCase {
         XCTAssertTrue(e("editor.stage").waitForExistence(timeout:30)); pause(2)
         try recording("start",name:"02-studio")
         try mark("editor"); pause(3)
-        editorTool("adjust"); try mark("adjust"); pause(3)
-        editorTool("filter"); try mark("filter"); pause(3)
-        editorTool("markup"); try mark("markup"); pause(3)
+        editorTool("adjust")
+        if app.sliders.firstMatch.exists { app.sliders.firstMatch.adjust(toNormalizedSliderPosition:0.58) }
+        try mark("adjust"); pause(3)
+        editorTool("filter")
+        let mono = button("edit_filter_mono")
+        if mono.exists && mono.isHittable { tap(mono) }
+        try mark("filter"); pause(3)
+        editorTool("markup")
+        tap(button("edit_mk_draw"))
+        let stage=e("editor.stage")
+        stage.coordinate(withNormalizedOffset:CGVector(dx:0.2,dy:0.77)).press(forDuration:0.1,thenDragTo:stage.coordinate(withNormalizedOffset:CGVector(dx:0.5,dy:0.7)))
+        try mark("markup"); pause(3)
         editorTool("frame"); try mark("frame"); pause(4)
         try recording("stop",name:"02-studio")
     }

@@ -23,6 +23,8 @@ TEST_RUNNER_STORE_CAPTURE_LOCALE="$CAPTURE_LOCALE" TEST_RUNNER_STORE_CAPTURE_DIR
   -skipPackagePluginValidation -skipMacroValidation "${cases[@]}" test-without-building > "$out/tests.log" 2>&1
 status=$?
 set -e
+container=$(xcrun simctl get_app_container "$udid" com.mrdevn4ever.photomaid data)
+[ ! -f "$container/Documents/store-library.json" ] || cp "$container/Documents/store-library.json" "$out/library.json"
 xcrun xcresulttool get test-results summary --path "$out/capture.xcresult" > "$out/summary.json" || true
 xcrun xcresulttool get test-results tests --path "$out/capture.xcresult" > "$out/tests.json" || true
 xcrun simctl spawn "$udid" log show --last 90m --style compact --predicate 'process == "PhotoMaid"' > "$out/app.log" || true
