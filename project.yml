@@ -156,6 +156,8 @@ targets:
       - path: PhotoMaidUITests
       - path: PhotoMaid/Resources/PhotoMaid.storekit
         buildPhase: resources
+      - path: PhotoMaid/Resources/Localizable.xcstrings
+        buildPhase: resources
     dependencies:
       - target: PhotoMaid
 schemes:

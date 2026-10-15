@@ -1,0 +1,2265 @@
+{
+  "created": "2026-10-15",
+  "purpose": "PhotoMaid App Store capture on disposable iPhone simulator",
+  "counts": {
+    "beautiful": 45,
+    "challenging": 10
+  },
+  "photos": [
+    {
+      "file": "01-chalets-on-a-wooded-slope-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Chalets on a wooded slope (Unsplash).jpg",
+      "author": "Adam Gil adamcgil",
+      "source": "https://commons.wikimedia.org/wiki/File:Chalets_on_a_wooded_slope_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Chalets_on_a_wooded_slope_%28Unsplash%29.jpg/1920px-Chalets_on_a_wooded_slope_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/1/14/Chalets_on_a_wooded_slope_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2868,
+      "bytes": 1561864,
+      "sha256": "a06bdb2ec865896619d74ba9a79326c27c432200eaf8cbe31ea81754ac650d8d",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "02-flat-mountain-over-a-lake-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Flat mountain over a lake (Unsplash).jpg",
+      "author": "Cameron Kirby ckirby",
+      "source": "https://commons.wikimedia.org/wiki/File:Flat_mountain_over_a_lake_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Flat_mountain_over_a_lake_%28Unsplash%29.jpg/1920px-Flat_mountain_over_a_lake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flat_mountain_over_a_lake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 733431,
+      "sha256": "d4883c17e3df1b8843112951ef0f93f50742287744e0ea6a01f8f7520ddcb2ce",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "03-snowy-mountains-heather-lake-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Snowy mountains, Heather Lake (Unsplash).jpg",
+      "author": "Austin Smart austinsmart",
+      "source": "https://commons.wikimedia.org/wiki/File:Snowy_mountains,_Heather_Lake_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Snowy_mountains%2C_Heather_Lake_%28Unsplash%29.jpg/1920px-Snowy_mountains%2C_Heather_Lake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/2/26/Snowy_mountains%2C_Heather_Lake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2560,
+      "bytes": 2193298,
+      "sha256": "581ed5b3f40b2dede4be273822f514a6b6cba3e367ec6ecc93105d715cbaaaa3",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "04-mountain-peak-under-clouds-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Mountain peak under clouds (Unsplash).jpg",
+      "author": "Simon Caspersen nomisnu7",
+      "source": "https://commons.wikimedia.org/wiki/File:Mountain_peak_under_clouds_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Mountain_peak_under_clouds_%28Unsplash%29.jpg/1920px-Mountain_peak_under_clouds_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/2/26/Mountain_peak_under_clouds_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2741,
+      "bytes": 1751994,
+      "sha256": "801ef4c75861f8a1bfd806c881ee556afe45eb15963f66e94cc5379dcf2d4a1a",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "05-beautiful-flower-on-pebbles-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Beautiful flower on pebbles (Unsplash).jpg",
+      "author": "Markus Spiske markusspiske",
+      "source": "https://commons.wikimedia.org/wiki/File:Beautiful_flower_on_pebbles_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Beautiful_flower_on_pebbles_%28Unsplash%29.jpg/1920px-Beautiful_flower_on_pebbles_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Beautiful_flower_on_pebbles_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 1278091,
+      "sha256": "b91c587fb5e1a0a3266db05e74feb6c88cc60ba22c342f59175685401a707ca7",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "06-sharp-mountain-ridge-against-blue-sky-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Sharp mountain ridge against blue sky (Unsplash).jpg",
+      "author": "Giovanni Corte giovanicort",
+      "source": "https://commons.wikimedia.org/wiki/File:Sharp_mountain_ridge_against_blue_sky_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Sharp_mountain_ridge_against_blue_sky_%28Unsplash%29.jpg/1920px-Sharp_mountain_ridge_against_blue_sky_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/0/03/Sharp_mountain_ridge_against_blue_sky_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2560,
+      "bytes": 1059625,
+      "sha256": "0e7e3de6e963f78fd72dff7fe648d7c5771044975e8a48c13659db561b587561",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "07-mountain-reflection-in-a-lake-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Mountain reflection in a lake (Unsplash).jpg",
+      "author": "Gabriel Santiago gabrielssantiago",
+      "source": "https://commons.wikimedia.org/wiki/File:Mountain_reflection_in_a_lake_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Mountain_reflection_in_a_lake_%28Unsplash%29.jpg/1920px-Mountain_reflection_in_a_lake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Mountain_reflection_in_a_lake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 1777672,
+      "sha256": "ed3fc9ede9d025fd15a5d7b894e4c71cd9e44a459d23f3cf280699769813a224",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "08-winter-cake-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Winter Cake (Unsplash).jpg",
+      "author": "Brooke Lark brookelark",
+      "source": "https://commons.wikimedia.org/wiki/File:Winter_Cake_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Winter_Cake_%28Unsplash%29.jpg/1920px-Winter_Cake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Winter_Cake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 824612,
+      "sha256": "b16e7b94d59ff5f3b386dc7076b77d7b85c9a488863ad83add9c847cccec0d4c",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "09-orange-trees-by-a-frozen-lake-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Orange trees by a frozen lake (Unsplash).jpg",
+      "author": "Federico Beccari federize",
+      "source": "https://commons.wikimedia.org/wiki/File:Orange_trees_by_a_frozen_lake_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Orange_trees_by_a_frozen_lake_%28Unsplash%29.jpg/1920px-Orange_trees_by_a_frozen_lake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/7/76/Orange_trees_by_a_frozen_lake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2850,
+      "bytes": 2425363,
+      "sha256": "414acadf3b76c50e9509c6a568805f1d4785c6c3c011e5b882ac360cc0b14854",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "10-kyoto-botanical-garden-kyoto-japan-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Kyoto Botanical Garden, Kyoto, Japan (Unsplash).jpg",
+      "author": "Kwang Mathurosemontri gemini_zucha89",
+      "source": "https://commons.wikimedia.org/wiki/File:Kyoto_Botanical_Garden,_Kyoto,_Japan_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Kyoto_Botanical_Garden%2C_Kyoto%2C_Japan_%28Unsplash%29.jpg/1920px-Kyoto_Botanical_Garden%2C_Kyoto%2C_Japan_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Kyoto_Botanical_Garden%2C_Kyoto%2C_Japan_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 490154,
+      "sha256": "edba5173545318e2765a3e0dde59588326919d3e137affc2e9eb9c85cecbd2d0",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "11-the-wind-off-the-mountain-unsplash.jpg",
+      "group": "beautiful",
+      "title": "The Wind off the mountain (Unsplash).jpg",
+      "author": "Ezra Jeffrey emcomeau",
+      "source": "https://commons.wikimedia.org/wiki/File:The_Wind_off_the_mountain_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/The_Wind_off_the_mountain_%28Unsplash%29.jpg/1920px-The_Wind_off_the_mountain_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/b/b2/The_Wind_off_the_mountain_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2891,
+      "bytes": 1145051,
+      "sha256": "86c635708980475774a6ce829ee1e313cb439200e891c64a5e8a4242ffa7ee78",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "12-wasserauen-schweiz-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Wasserauen, Schweiz (Unsplash).jpg",
+      "author": "fynn lehnert mefynn",
+      "source": "https://commons.wikimedia.org/wiki/File:Wasserauen,_Schweiz_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Wasserauen%2C_Schweiz_%28Unsplash%29.jpg/1920px-Wasserauen%2C_Schweiz_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/7/76/Wasserauen%2C_Schweiz_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2560,
+      "bytes": 1196283,
+      "sha256": "005ea5c186ff07d0aeb8858c7ce6b2930a89158301b9e29d1346f5bdc8619aef",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "13-yosemite-national-park-united-states-unsplash-ipc2-b7e4q4.jpg",
+      "group": "beautiful",
+      "title": "Yosemite National Park, United States (Unsplash ipc2-B7e4Q4).jpg",
+      "author": "Jeremy Gallman jeremyfilm",
+      "source": "https://commons.wikimedia.org/wiki/File:Yosemite_National_Park,_United_States_(Unsplash_ipc2-B7e4Q4).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f3/Yosemite_National_Park%2C_United_States_%28Unsplash_ipc2-B7e4Q4%29.jpg/1920px-Yosemite_National_Park%2C_United_States_%28Unsplash_ipc2-B7e4Q4%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Yosemite_National_Park%2C_United_States_%28Unsplash_ipc2-B7e4Q4%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2400,
+      "bytes": 591043,
+      "sha256": "3d9621c212f88ed24cefd85632cb99364a4cead01cc0670a7a77b9617b1d4ea6",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "14-evergreen-woods-by-lago-di-braies-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Evergreen woods by Lago di Braies (Unsplash).jpg",
+      "author": "Luca Bravo lucabravo",
+      "source": "https://commons.wikimedia.org/wiki/File:Evergreen_woods_by_Lago_di_Braies_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Evergreen_woods_by_Lago_di_Braies_%28Unsplash%29.jpg/1920px-Evergreen_woods_by_Lago_di_Braies_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/3/31/Evergreen_woods_by_Lago_di_Braies_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 2111917,
+      "sha256": "5b0431b9ed1494646b5462ca60aadb3d4cbebf25824bad0bf2304ca486f5115f",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "15-bridge-over-a-green-waterfall-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Bridge over a green waterfall (Unsplash).jpg",
+      "author": "Blake Richard Verdoorn blakeverdoorn",
+      "source": "https://commons.wikimedia.org/wiki/File:Bridge_over_a_green_waterfall_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Bridge_over_a_green_waterfall_%28Unsplash%29.jpg/1920px-Bridge_over_a_green_waterfall_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Bridge_over_a_green_waterfall_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 2427810,
+      "sha256": "42aedcafd58f9adca67288bc5b22db90fc011fcc052801e96ea12ad799530332",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "16-flight-over-sea-cliff-bridge-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Flight Over Sea Cliff Bridge (Unsplash).jpg",
+      "author": "Benjamin Punzalan benjaminpunzalan",
+      "source": "https://commons.wikimedia.org/wiki/File:Flight_Over_Sea_Cliff_Bridge_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Flight_Over_Sea_Cliff_Bridge_%28Unsplash%29.jpg/1920px-Flight_Over_Sea_Cliff_Bridge_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Flight_Over_Sea_Cliff_Bridge_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2400,
+      "bytes": 1408328,
+      "sha256": "d45d16024f38a7b7a35d2874394d462fbb3ee8d982a12c36ef7c6b70dad908ca",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "17-green-cascade-in-bridal-veil-falls-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Green cascade in Bridal Veil Falls (Unsplash).jpg",
+      "author": "Tim Mossholder timmossholder",
+      "source": "https://commons.wikimedia.org/wiki/File:Green_cascade_in_Bridal_Veil_Falls_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Green_cascade_in_Bridal_Veil_Falls_%28Unsplash%29.jpg/1920px-Green_cascade_in_Bridal_Veil_Falls_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/8/84/Green_cascade_in_Bridal_Veil_Falls_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2876,
+      "bytes": 1528019,
+      "sha256": "3a13b56722d31a4e3c2ce31ced49d50a4a6a0633a3dd42c0ebf14e03d0fd086b",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "18-palm-fringed-beach-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Palm-fringed beach (Unsplash).jpg",
+      "author": "Lance Asper lance_asper",
+      "source": "https://commons.wikimedia.org/wiki/File:Palm-fringed_beach_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Palm-fringed_beach_%28Unsplash%29.jpg/1920px-Palm-fringed_beach_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Palm-fringed_beach_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 3413,
+      "bytes": 1537168,
+      "sha256": "d92c69958ebe44f8d30fdf838a7a7d19b3a33c06939f815bd89477fdefe1fdca",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "19-red-rock-face-and-green-trees-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Red rock face and green trees (Unsplash).jpg",
+      "author": "Clarisse Meyer clarissemeyer",
+      "source": "https://commons.wikimedia.org/wiki/File:Red_rock_face_and_green_trees_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Red_rock_face_and_green_trees_%28Unsplash%29.jpg/1920px-Red_rock_face_and_green_trees_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/5/56/Red_rock_face_and_green_trees_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 1850395,
+      "sha256": "cc9769d4b1d25e08be790e6972c7ecdb121ddad7caecfe5c995229a497fddb64",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "20-sea-cliff-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Sea Cliff (Unsplash).jpg",
+      "author": "William Karl williamkarl",
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_Cliff_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Sea_Cliff_%28Unsplash%29.jpg/1920px-Sea_Cliff_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Sea_Cliff_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2876,
+      "bytes": 840127,
+      "sha256": "601c8562262456c31efa6f15d844710b2bddeb116dbb87755c853f273217fa73",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "21-tree-bridge-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Tree bridge (Unsplash).jpg",
+      "author": "Tim Bogdanov timbog80",
+      "source": "https://commons.wikimedia.org/wiki/File:Tree_bridge_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Tree_bridge_%28Unsplash%29.jpg/1920px-Tree_bridge_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/8/8f/Tree_bridge_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2560,
+      "bytes": 1883852,
+      "sha256": "67c819300f6dc4408815274a6d192ddd788f8200833db9b215f702c224e00aa6",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "22-golden-gate-bridge-from-baker-beach-san-francisco-united-states-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Golden Gate Bridge from Baker Beach, San Francisco, United States (Unsplash).jpg",
+      "author": "Kevin Wolf kevinwolf",
+      "source": "https://commons.wikimedia.org/wiki/File:Golden_Gate_Bridge_from_Baker_Beach,_San_Francisco,_United_States_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4d/Golden_Gate_Bridge_from_Baker_Beach%2C_San_Francisco%2C_United_States_%28Unsplash%29.jpg/1920px-Golden_Gate_Bridge_from_Baker_Beach%2C_San_Francisco%2C_United_States_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Golden_Gate_Bridge_from_Baker_Beach%2C_San_Francisco%2C_United_States_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2400,
+      "bytes": 1004127,
+      "sha256": "4654d3c4f929eed7a9f3479cc4f4295ed2069cc933e901922540ade583a038f0",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "23-vulpes-lagopus-in-iceland-cropped-3.jpg",
+      "group": "beautiful",
+      "title": "Vulpes lagopus in Iceland (cropped 3).jpg",
+      "author": "Jonatan Pie (unsplash.com/@r3dmax)",
+      "source": "https://commons.wikimedia.org/wiki/File:Vulpes_lagopus_in_Iceland_(cropped_3).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/Vulpes_lagopus_in_Iceland_%28cropped_3%29.jpg/1920px-Vulpes_lagopus_in_Iceland_%28cropped_3%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Vulpes_lagopus_in_Iceland_%28cropped_3%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2375,
+      "bytes": 628628,
+      "sha256": "e8470d6320c01fa696fee077d5f603204debcb5f0845cc3687a3e03cf7f8a55a",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "24-waterfall-among-ivy-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Waterfall among ivy (Unsplash).jpg",
+      "author": "Levi Morsy levim",
+      "source": "https://commons.wikimedia.org/wiki/File:Waterfall_among_ivy_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Waterfall_among_ivy_%28Unsplash%29.jpg/1920px-Waterfall_among_ivy_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/0/00/Waterfall_among_ivy_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2885,
+      "bytes": 2278657,
+      "sha256": "3b520b31c8a7268371d048f1c6406946ae28ff352b635b4f6f3de20fa8d7eb06",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "25-south-beach-palms-unsplash.jpg",
+      "group": "beautiful",
+      "title": "South Beach palms (Unsplash).jpg",
+      "author": "Francesca Saraco fransaraco",
+      "source": "https://commons.wikimedia.org/wiki/File:South_Beach_palms_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d8/South_Beach_palms_%28Unsplash%29.jpg/1920px-South_Beach_palms_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/d/d8/South_Beach_palms_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2399,
+      "bytes": 1424675,
+      "sha256": "12456464036bf29d1c4866fae7100b6a3c831ec14ff5a14ac03b9a91dc7510b0",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "26-the-golden-gate-bridge-from-baker-beach-2016-06-12.jpg",
+      "group": "beautiful",
+      "title": "The Golden Gate Bridge from Baker Beach (2016-06-12).jpg",
+      "author": "Sasha • Instagram.com-sanfrancisco sanfrancisco",
+      "source": "https://commons.wikimedia.org/wiki/File:The_Golden_Gate_Bridge_from_Baker_Beach_(2016-06-12).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/The_Golden_Gate_Bridge_from_Baker_Beach_%282016-06-12%29.jpg/1920px-The_Golden_Gate_Bridge_from_Baker_Beach_%282016-06-12%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/6/6c/The_Golden_Gate_Bridge_from_Baker_Beach_%282016-06-12%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2400,
+      "bytes": 1204084,
+      "sha256": "f4f25c2205045023a651d09cdc46257f4e9eccb4cc3771d48cb4fe56aab67d88",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "27-tree-lined-alley-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Tree-lined alley (Unsplash).jpg",
+      "author": "Studio Dekorasyon t_t",
+      "source": "https://commons.wikimedia.org/wiki/File:Tree-lined_alley_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Tree-lined_alley_%28Unsplash%29.jpg/1920px-Tree-lined_alley_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Tree-lined_alley_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 2829312,
+      "sha256": "777c3cd771c1f3fe0012ff83dff53e6c74661e2cc7efeb5c83d9b2af5ecf1338",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "28-twilight-hour-in-the-desert-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Twilight Hour in the Desert (Unsplash).jpg",
+      "author": "Charles Black divewithchuck",
+      "source": "https://commons.wikimedia.org/wiki/File:Twilight_Hour_in_the_Desert_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Twilight_Hour_in_the_Desert_%28Unsplash%29.jpg/1920px-Twilight_Hour_in_the_Desert_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/0/07/Twilight_Hour_in_the_Desert_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 604088,
+      "sha256": "76ca6d43eba3f3f099ff124d777e7e265e965fe669a000b313c66e01ca387ab8",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "29-a-blue-sky-above-white-snow-unsplash.jpg",
+      "group": "beautiful",
+      "title": "A blue sky above white snow (Unsplash).jpg",
+      "author": "Drew Hays drew_hays",
+      "source": "https://commons.wikimedia.org/wiki/File:A_blue_sky_above_white_snow_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/A_blue_sky_above_white_snow_%28Unsplash%29.jpg/1920px-A_blue_sky_above_white_snow_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/e/ef/A_blue_sky_above_white_snow_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 1092281,
+      "sha256": "6588396644c343bae7e424796c06dfb2b11ff392ce10f662ab98acd1c48a2999",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "30-green-hill-shoreline-view-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Green Hill shoreline view (Unsplash).jpg",
+      "author": "Andrew Charney awcharney",
+      "source": "https://commons.wikimedia.org/wiki/File:Green_Hill_shoreline_view_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Green_Hill_shoreline_view_%28Unsplash%29.jpg/1920px-Green_Hill_shoreline_view_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/5/51/Green_Hill_shoreline_view_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 1489255,
+      "sha256": "070e0a5b907b6f01f4df37a14bccfc25505453bb6826497890260e1c50498292",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "31-green-mountains-over-clouds-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Green mountains over clouds (Unsplash).jpg",
+      "author": "Ricky Paulus rickypaulus",
+      "source": "https://commons.wikimedia.org/wiki/File:Green_mountains_over_clouds_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Green_mountains_over_clouds_%28Unsplash%29.jpg/1920px-Green_mountains_over_clouds_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/4/40/Green_mountains_over_clouds_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2400,
+      "bytes": 658893,
+      "sha256": "e89cdcfc6c6dcccfb2ebd8ec0d650be5fa03c93d0a4b9e0436de0a28823fabb1",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "32-pebble-stack-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Pebble Stack (Unsplash).jpg",
+      "author": "Nick Tong thenickt16",
+      "source": "https://commons.wikimedia.org/wiki/File:Pebble_Stack_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ec/Pebble_Stack_%28Unsplash%29.jpg/1920px-Pebble_Stack_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Pebble_Stack_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 883498,
+      "sha256": "bfe6e593958db0d30df9aa54fb12d67cc4804cb232e52dfcf58fd38085d60551",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "33-sun-sky-and-sea-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Sun, sky and sea (Unsplash).jpg",
+      "author": "Mink Mingle minkmingle",
+      "source": "https://commons.wikimedia.org/wiki/File:Sun,_sky_and_sea_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Sun%2C_sky_and_sea_%28Unsplash%29.jpg/1920px-Sun%2C_sky_and_sea_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Sun%2C_sky_and_sea_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 1277197,
+      "sha256": "cadf4ffbe47dba88100e615a96f3120f092b24a45e188ebc5a284219c540f1d8",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "34-san-francisco-oakland-bridge-unsplash.jpg",
+      "group": "beautiful",
+      "title": "San Francisco-Oakland bridge (Unsplash).jpg",
+      "author": "Denys Nevozhai dnevozhai",
+      "source": "https://commons.wikimedia.org/wiki/File:San_Francisco-Oakland_bridge_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/San_Francisco-Oakland_bridge_%28Unsplash%29.jpg/1920px-San_Francisco-Oakland_bridge_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/f/f9/San_Francisco-Oakland_bridge_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2400,
+      "bytes": 1614963,
+      "sha256": "efcccab4661a9cf2c1a7120b44aea34f19ecd30cf6150d4e94ac565151476b26",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "35-small-waterfall-in-a-forest-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Small waterfall in a forest (Unsplash).jpg",
+      "author": "Mark Basarab ignitedit",
+      "source": "https://commons.wikimedia.org/wiki/File:Small_waterfall_in_a_forest_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Small_waterfall_in_a_forest_%28Unsplash%29.jpg/1920px-Small_waterfall_in_a_forest_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Small_waterfall_in_a_forest_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 1307384,
+      "sha256": "a536a97ec8d2650db0d4974750c79e693e3b7a2f3e1bf6901181482253210fb3",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "36-waterfalls-in-iceland-unsplash-laqilfrd3bo.jpg",
+      "group": "beautiful",
+      "title": "Waterfalls in Iceland (Unsplash lAQilfrd3bo).jpg",
+      "author": "John Salvino jsalvino",
+      "source": "https://commons.wikimedia.org/wiki/File:Waterfalls_in_Iceland_(Unsplash_lAQilfrd3bo).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Waterfalls_in_Iceland_%28Unsplash_lAQilfrd3bo%29.jpg/1920px-Waterfalls_in_Iceland_%28Unsplash_lAQilfrd3bo%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Waterfalls_in_Iceland_%28Unsplash_lAQilfrd3bo%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2560,
+      "bytes": 1662464,
+      "sha256": "13842298b457f6be42b6e3fdde70f4ea6f7d96cae52245e58d7eaa08a9c6f53b",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "37-bamboo-and-tree-canopy-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Bamboo and tree canopy (Unsplash).jpg",
+      "author": "kazuend kazuend",
+      "source": "https://commons.wikimedia.org/wiki/File:Bamboo_and_tree_canopy_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b6/Bamboo_and_tree_canopy_%28Unsplash%29.jpg/1920px-Bamboo_and_tree_canopy_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Bamboo_and_tree_canopy_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 2703471,
+      "sha256": "140efe70b00c497dc4f717c1ae1bcc625cc2bfc909f135dd613bf301b7d9c657",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "38-fall-maple-tree-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Fall maple tree (Unsplash).jpg",
+      "author": "Aaron Burden aaronburden",
+      "source": "https://commons.wikimedia.org/wiki/File:Fall_maple_tree_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Fall_maple_tree_%28Unsplash%29.jpg/1920px-Fall_maple_tree_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Fall_maple_tree_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2560,
+      "bytes": 2271885,
+      "sha256": "74fb4acf929ef8c1380d82496d6cc25625b5652c9a1d6f82c00fca13474d6e40",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "39-sea-turtle-resting-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Sea turtle resting (Unsplash).jpg",
+      "author": "Sebastien Gabriel sgabriel",
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_turtle_resting_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Sea_turtle_resting_%28Unsplash%29.jpg/1920px-Sea_turtle_resting_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Sea_turtle_resting_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2384,
+      "bytes": 1020062,
+      "sha256": "e458796666c348c8e22d262a57fe00b261a60dec70d0293d7dbba5246e5809cc",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "40-snowy-trees-in-the-sun-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Snowy trees in the sun (Unsplash).jpg",
+      "author": "Quin Stevenson qstevenson",
+      "source": "https://commons.wikimedia.org/wiki/File:Snowy_trees_in_the_sun_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Snowy_trees_in_the_sun_%28Unsplash%29.jpg/1920px-Snowy_trees_in_the_sun_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Snowy_trees_in_the_sun_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2503,
+      "bytes": 1447060,
+      "sha256": "8cbf1d2938057987d0dbd8e3b3e87a53eae94e97cbd2e6017363d60d919362c5",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "41-cloudy-over-seas-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Cloudy Over Seas (Unsplash).jpg",
+      "author": "Derek Liang derekrliang",
+      "source": "https://commons.wikimedia.org/wiki/File:Cloudy_Over_Seas_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2c/Cloudy_Over_Seas_%28Unsplash%29.jpg/1920px-Cloudy_Over_Seas_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Cloudy_Over_Seas_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2568,
+      "bytes": 1208700,
+      "sha256": "2d9e2edcea19efb30adb6483770a54672abbd54ad422ce3de07c7038c00ab0a5",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "42-green-woods-near-brohm-lake-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Green woods near Brohm Lake (Unsplash).jpg",
+      "author": "Bryce Evans artofbryce",
+      "source": "https://commons.wikimedia.org/wiki/File:Green_woods_near_Brohm_Lake_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/77/Green_woods_near_Brohm_Lake_%28Unsplash%29.jpg/1920px-Green_woods_near_Brohm_Lake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/7/77/Green_woods_near_Brohm_Lake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2877,
+      "bytes": 1763948,
+      "sha256": "ddd79353c2b4c09bffd4313d22217ba8781ab36ea307462d53330546a6f4894c",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "43-stream-in-a-green-thicket-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Stream in a green thicket (Unsplash).jpg",
+      "author": "Joshua Newton joshuanewton",
+      "source": "https://commons.wikimedia.org/wiki/File:Stream_in_a_green_thicket_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Stream_in_a_green_thicket_%28Unsplash%29.jpg/1920px-Stream_in_a_green_thicket_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/9/90/Stream_in_a_green_thicket_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2879,
+      "bytes": 2167203,
+      "sha256": "2f543b764e3155d70c28638c3a0af850fe787b79eecf1807fef4091c1d0058cd",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "44-grotlesanden-bremanger-norway-unsplash-8s93-8p2yvu.jpg",
+      "group": "beautiful",
+      "title": "Grotlesanden, Bremanger, Norway (Unsplash 8S93-8P2yVU).jpg",
+      "author": "Steinar Engeland steinart",
+      "source": "https://commons.wikimedia.org/wiki/File:Grotlesanden,_Bremanger,_Norway_(Unsplash_8S93-8P2yVU).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Grotlesanden%2C_Bremanger%2C_Norway_%28Unsplash_8S93-8P2yVU%29.jpg/1920px-Grotlesanden%2C_Bremanger%2C_Norway_%28Unsplash_8S93-8P2yVU%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Grotlesanden%2C_Bremanger%2C_Norway_%28Unsplash_8S93-8P2yVU%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 2223450,
+      "sha256": "86c92d409adf14bddab87fc076ad206a3f31db655f176c413a3dfa293513120c",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "45-praia-do-monte-cl-rigo-aljezur-portugal-unsplash-9ja-vzpfyao.jpg",
+      "group": "beautiful",
+      "title": "Praia do Monte Clérigo, Aljezur, Portugal (Unsplash 9ja-vZpFyAo).jpg",
+      "author": "José Duarte jmduarte",
+      "source": "https://commons.wikimedia.org/wiki/File:Praia_do_Monte_Cl%C3%A9rigo,_Aljezur,_Portugal_(Unsplash_9ja-vZpFyAo).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/Praia_do_Monte_Cl%C3%A9rigo%2C_Aljezur%2C_Portugal_%28Unsplash_9ja-vZpFyAo%29.jpg/1920px-Praia_do_Monte_Cl%C3%A9rigo%2C_Aljezur%2C_Portugal_%28Unsplash_9ja-vZpFyAo%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Praia_do_Monte_Cl%C3%A9rigo%2C_Aljezur%2C_Portugal_%28Unsplash_9ja-vZpFyAo%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 1667120,
+      "sha256": "e06770df70977c8a5be6e864189c7c9fedf82b8c8e7f189e00be87ce020b20cc",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "46-frost-on-branches-unsplash.jpg",
+      "group": "challenging",
+      "title": "Frost on branches (Unsplash).jpg",
+      "author": "Clarisse Meyer clarissemeyer",
+      "source": "https://commons.wikimedia.org/wiki/File:Frost_on_branches_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Frost_on_branches_%28Unsplash%29.jpg/1920px-Frost_on_branches_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/0/05/Frost_on_branches_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 1141880,
+      "sha256": "0a4c3094dfe37d20dcbe9255f5ae11ee0b1e3f14bc444ad4bdc4b7820ef1cc38",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "47-lake-by-the-plateau-unsplash.jpg",
+      "group": "challenging",
+      "title": "Lake by the plateau (Unsplash).jpg",
+      "author": "Hunter Bryant hunterbryant",
+      "source": "https://commons.wikimedia.org/wiki/File:Lake_by_the_plateau_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Lake_by_the_plateau_%28Unsplash%29.jpg/1920px-Lake_by_the_plateau_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/5/50/Lake_by_the_plateau_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2400,
+      "bytes": 1458677,
+      "sha256": "0d1d51a98e7104eda10eb22136e5b9de224f273d3b545de4572e8ed10a825e82",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "48-adrian-2017-04-05-unsplash-jp5llkjxj7a.jpg",
+      "group": "challenging",
+      "title": "Adrian 2017-04-05 (Unsplash JP5llKjxj7A).jpg",
+      "author": "adrian aows",
+      "source": "https://commons.wikimedia.org/wiki/File:Adrian_2017-04-05_(Unsplash_JP5llKjxj7A).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Adrian_2017-04-05_%28Unsplash_JP5llKjxj7A%29.jpg/1920px-Adrian_2017-04-05_%28Unsplash_JP5llKjxj7A%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/6/62/Adrian_2017-04-05_%28Unsplash_JP5llKjxj7A%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2400,
+      "bytes": 969896,
+      "sha256": "886ae28ac23119a959ff6430ff23a17c3097fb2afe48c52d3b21929448264695",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "49-alone-in-the-snow-unsplash.jpg",
+      "group": "challenging",
+      "title": "Alone in the snow (Unsplash).jpg",
+      "author": "Greg Rakozy grakozy",
+      "source": "https://commons.wikimedia.org/wiki/File:Alone_in_the_snow_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Alone_in_the_snow_%28Unsplash%29.jpg/1920px-Alone_in_the_snow_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/a/af/Alone_in_the_snow_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 711495,
+      "sha256": "e233af767a13a084685e6eb5d4050b4c2fd0b238013e8fad2b91ca5b3a4ebf1b",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "50-steve-leadbeater-unsplash.jpg",
+      "group": "challenging",
+      "title": "Steve Leadbeater (Unsplash).jpg",
+      "author": "Steve Leadbeater steveleadbeater",
+      "source": "https://commons.wikimedia.org/wiki/File:Steve_Leadbeater_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/Steve_Leadbeater_%28Unsplash%29.jpg/1920px-Steve_Leadbeater_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/0/04/Steve_Leadbeater_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2560,
+      "bytes": 1099988,
+      "sha256": "e02fb367c3b146317320efd1d8a5116925345b0141764f99dc6b0d1046b8ba4a",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "51-under-the-highway-unsplash.jpg",
+      "group": "challenging",
+      "title": "Under the Highway (Unsplash).jpg",
+      "author": "Lawrence Choy choyin",
+      "source": "https://commons.wikimedia.org/wiki/File:Under_the_Highway_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Under_the_Highway_%28Unsplash%29.jpg/1920px-Under_the_Highway_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Under_the_Highway_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2560,
+      "bytes": 687184,
+      "sha256": "f2067afe676ef6661c72cff196d14568cfd760ecaad52aeff2edee0f3bf00617",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "52-taubensteinbahn-bergstation-kontroll-und-steuerpult.jpg",
+      "group": "challenging",
+      "title": "Taubensteinbahn — Bergstation, Kontroll- und Steuerpult.JPG",
+      "author": "User:Mattes",
+      "source": "https://commons.wikimedia.org/wiki/File:Taubensteinbahn_%E2%80%94_Bergstation,_Kontroll-_und_Steuerpult.JPG",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Taubensteinbahn_%E2%80%94_Bergstation%2C_Kontroll-_und_Steuerpult.JPG/1920px-Taubensteinbahn_%E2%80%94_Bergstation%2C_Kontroll-_und_Steuerpult.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/4/42/Taubensteinbahn_%E2%80%94_Bergstation%2C_Kontroll-_und_Steuerpult.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2560,
+      "bytes": 809295,
+      "sha256": "6a1d26ce0a5f2128f72e5a621773f9e979ddd74785c41a84dc8079cefa5ecb99",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "53-taubensteinbahn-talstation-innenansicht-gondelabfertigung-steuerpult.jpg",
+      "group": "challenging",
+      "title": "Taubensteinbahn — Talstation (Innenansicht Gondelabfertigung, Steuerpult).JPG",
+      "author": "User:Mattes",
+      "source": "https://commons.wikimedia.org/wiki/File:Taubensteinbahn_%E2%80%94_Talstation_(Innenansicht_Gondelabfertigung,_Steuerpult).JPG",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Taubensteinbahn_%E2%80%94_Talstation_%28Innenansicht_Gondelabfertigung%2C_Steuerpult%29.JPG/1920px-Taubensteinbahn_%E2%80%94_Talstation_%28Innenansicht_Gondelabfertigung%2C_Steuerpult%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/0/05/Taubensteinbahn_%E2%80%94_Talstation_%28Innenansicht_Gondelabfertigung%2C_Steuerpult%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2560,
+      "bytes": 669076,
+      "sha256": "b20e9a534680f2b5c9b419d74b15cd069082ac4bad4544e5904dd16e05bd6fae",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "54-twilight-view-through-bamboo-silhouettes-at-unknown-location-in-japan-20.jpg",
+      "group": "challenging",
+      "title": "Twilight view through bamboo silhouettes at unknown location in Japan 20140415102933 (27397650166).jpg",
+      "author": "Yiannis Theologos Michellis",
+      "source": "https://commons.wikimedia.org/wiki/File:Twilight_view_through_bamboo_silhouettes_at_unknown_location_in_Japan_20140415102933_(27397650166).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/92/Twilight_view_through_bamboo_silhouettes_at_unknown_location_in_Japan_20140415102933_%2827397650166%29.jpg/1920px-Twilight_view_through_bamboo_silhouettes_at_unknown_location_in_Japan_20140415102933_%2827397650166%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/9/92/Twilight_view_through_bamboo_silhouettes_at_unknown_location_in_Japan_20140415102933_%2827397650166%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 629345,
+      "sha256": "faee70f3823bd1b35bf5bd7731b54862487a24e475f87c36b68ee0ee8a30b6ad",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    },
+    {
+      "file": "55-uva-de-playa-coccoloba-uvifera-unsharp.jpg",
+      "group": "challenging",
+      "title": "Uva de playa (Coccoloba uvifera) unsharp.jpg",
+      "author": "Uva_de_playa_(Coccoloba_uvifera).jpg: Wilfredor \nderivative work: Wilfredor (talk)",
+      "source": "https://commons.wikimedia.org/wiki/File:Uva_de_playa_(Coccoloba_uvifera)_unsharp.jpg",
+      "download": "https://upload.wikimedia.org/wikipedia/commons/6/64/Uva_de_playa_%28Coccoloba_uvifera%29_unsharp.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/6/64/Uva_de_playa_%28Coccoloba_uvifera%29_unsharp.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2576,
+      "bytes": 2952293,
+      "sha256": "c5a9370918c3a967aa247093a6907db4db7eb2349a4adb74cba93e3ef3b38d39",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      }
+    }
+  ]
+}

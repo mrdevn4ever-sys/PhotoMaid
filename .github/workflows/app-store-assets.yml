@@ -1,0 +1,128 @@
+name: App Store – Dark Mode Assets
+on:
+  workflow_call:
+    inputs:
+      locales:
+        type: string
+        default: en
+      capture:
+        type: string
+        default: all
+  workflow_dispatch:
+    inputs:
+      locales:
+        description: 'all oder Sprachen mit Komma (z. B. en,de,ar)'
+        type: string
+        default: en
+      capture:
+        description: 'Aufnahmen'
+        type: choice
+        options: [all, screenshots, previews]
+        default: all
+permissions:
+  contents: read
+concurrency:
+  group: app-store-assets-${{ github.ref }}-${{ inputs.locales }}-${{ inputs.capture }}
+  cancel-in-progress: false
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    outputs:
+      locales: ${{ steps.plan.outputs.locales }}
+    steps:
+      - id: plan
+        env:
+          REQUESTED: ${{ inputs.locales }}
+        run: |
+          python3 - <<'PY'
+          import os,json
+          available=['ar','de','en','es','fr','it','ja','ko','nl','pl','pt-PT','ro','ru','tr','uk','zh-Hans']
+          requested=available if os.environ['REQUESTED']=='all' else os.environ['REQUESTED'].split(',')
+          assert requested and len(requested)==len(set(requested)) and all(x in available for x in requested)
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('locales='+json.dumps(requested)+'\n')
+          PY
+  capture:
+    needs: plan
+    name: Dark Mode – ${{ matrix.locale }}
+    runs-on: macos-26
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        locale: ${{ fromJSON(needs.plan.outputs.locales) }}
+    env:
+      CAPTURE_LOCALE: ${{ matrix.locale }}
+      CAPTURE_MODE: ${{ inputs.capture }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Xcode und Werkzeuge
+        run: |
+          scripts/ci/select_xcode.sh
+          command -v xcodegen >/dev/null || brew install xcodegen
+          command -v ffmpeg >/dev/null || brew install ffmpeg
+          python3 -m venv "$RUNNER_TEMP/store-python"
+          "$RUNNER_TEMP/store-python/bin/pip" -q install pillow
+          xcodegen generate
+      - name: Großen iPhone-Simulator aufbauen
+        id: sim
+        run: |
+          set -euo pipefail
+          runtime=$(xcrun simctl list runtimes -j | python3 -c 'import sys,json; print(next(x["identifier"] for x in json.load(sys.stdin)["runtimes"] if x["isAvailable"] and x["name"]=="iOS 26.2"))')
+          device=$(xcrun simctl list devicetypes -j | python3 -c 'import sys,json; print(next(x["identifier"] for x in json.load(sys.stdin)["devicetypes"] if x["name"]=="iPhone 17 Pro Max"))')
+          udid=$(xcrun simctl create "PhotoMaid Store $CAPTURE_LOCALE" "$device" "$runtime")
+          echo "udid=$udid" >> "$GITHUB_OUTPUT"
+          xcrun simctl boot "$udid"
+          xcrun simctl bootstatus "$udid" -b
+          xcrun simctl ui "$udid" appearance dark
+          xcrun simctl status_bar "$udid" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
+          find app-store/media -maxdepth 1 -name '*.jpg' -print0 | sort -z | xargs -0 xcrun simctl addmedia "$udid"
+      - name: Testbuild kompilieren
+        env:
+          UDID: ${{ steps.sim.outputs.udid }}
+        run: |
+          set -o pipefail
+          xcodebuild -project PhotoMaid.xcodeproj -scheme PhotoMaid -destination "id=$UDID" \
+            -derivedDataPath "$RUNNER_TEMP/store-build" -enableCodeCoverage NO \
+            CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_REQUIRED=YES \
+            -skipPackagePluginValidation -skipMacroValidation build-for-testing > "$RUNNER_TEMP/store-build.log" 2>&1 || { tail -100 "$RUNNER_TEMP/store-build.log"; exit 1; }
+          xcrun simctl install "$UDID" "$RUNNER_TEMP/store-build/Build/Products/Debug-iphonesimulator/PhotoMaid.app"
+          xcrun simctl privacy "$UDID" grant photos com.mrdevn4ever.photomaid
+      - name: Echte Dark-Mode-Seiten und Vorschauen aufnehmen
+        env:
+          UDID: ${{ steps.sim.outputs.udid }}
+        run: bash scripts/store/capture.sh "$UDID" "$RUNNER_TEMP/store-build" "$RUNNER_TEMP/store-capture"
+      - name: Assets prüfen und Vorschauen exportieren
+        if: always() && steps.sim.outputs.udid != ''
+        run: |
+          python="$RUNNER_TEMP/store-python/bin/python"
+          "$python" scripts/store/assemble_assets.py "$RUNNER_TEMP/store-capture" "$RUNNER_TEMP/store-assets" --locale "$CAPTURE_LOCALE"
+          if [ "$CAPTURE_MODE" != screenshots ]; then
+            "$python" scripts/store/export_previews.py "$RUNNER_TEMP/store-capture" "$RUNNER_TEMP/store-assets/previews" --locale "$CAPTURE_LOCALE"
+          fi
+      - name: Uploadfähige Assets
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-store-${{ matrix.locale }}-assets
+          path: ${{ runner.temp }}/store-assets
+          if-no-files-found: warn
+      - name: Aufnahmequellen und Prüfberichte
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-store-${{ matrix.locale }}-sources
+          path: |
+            ${{ runner.temp }}/store-capture/recordings
+            ${{ runner.temp }}/store-capture/markers.jsonl
+            ${{ runner.temp }}/store-capture/*.json
+            ${{ runner.temp }}/store-capture/*.log
+            ${{ runner.temp }}/store-build.log
+          if-no-files-found: warn
+      - name: Simulator entfernen
+        if: always() && steps.sim.outputs.udid != ''
+        env:
+          UDID: ${{ steps.sim.outputs.udid }}
+        run: |
+          xcrun simctl shutdown "$UDID" || true
+          xcrun simctl delete "$UDID"

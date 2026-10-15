@@ -46,7 +46,10 @@ final class AdsService: NSObject {
     /// Werbung kommt in diesem Build und für diesen Nutzer überhaupt in Frage (nicht Pro, Kaufstatus geklärt, keine
     /// QA-Testdaten – Bildschirmfotos und UI-Tests ohne Einwilligungsdialoge).
     func allowed(_ app: AppModel) -> Bool {
-        configured(app) && app.capabilities.adsAllowed
+        #if QA_FIXTURES && targetEnvironment(simulator)
+        if StoreCapture.enabled { return false }
+        #endif
+        return configured(app) && app.capabilities.adsAllowed
     }
 
     /// Werbung ist in diesem Build eingerichtet (und keine QA-Testdaten). Sonst wird nichts hinter Werbung gesperrt.

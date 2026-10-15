@@ -5,6 +5,10 @@ name: CI
 on:
   workflow_dispatch:
     inputs:
+      store_locales:
+        description: "App-Store-Aufnahmen statt QA: all oder Kommaliste (leer = normale CI)"
+        type: string
+        default: ""
       ui_tests:
         description: "UI-Tests und Screenshots ausführen (länger)"
         type: boolean
@@ -59,7 +63,7 @@ on:
 
 concurrency:
   # Keep evidence from the previous commit while validating a fix on the same branch.
-  group: ci-${{ github.ref }}-${{ github.sha }}-${{ inputs.native_capture && 'native' || inputs.collect_run || inputs.ui_phase || 'all' }}-${{ inputs.ui_case || 'all' }}-${{ inputs.sim_runtime || 'latest' }}-${{ inputs.qa_case || 'all' }}
+  group: ci-${{ github.ref }}-${{ github.sha }}-${{ inputs.store_locales }}-${{ inputs.native_capture && 'native' || inputs.collect_run || inputs.ui_phase || 'all' }}-${{ inputs.ui_case || 'all' }}-${{ inputs.sim_runtime || 'latest' }}-${{ inputs.qa_case || 'all' }}
   cancel-in-progress: true
 
 permissions:
@@ -67,13 +71,19 @@ permissions:
   actions: read
 
 jobs:
+  app-store:
+    if: inputs.store_locales != ''
+    uses: ./.github/workflows/app-store-assets.yml
+    with:
+      locales: ${{ inputs.store_locales }}
+      capture: all
   native-screenshot:
     if: inputs.native_capture
     uses: ./.github/workflows/simulator-screenshot.yml
     with:
       sim_runtime: ${{ inputs.sim_runtime }}
   core:
-    if: inputs.collect_run == '' && !inputs.native_capture
+    if: inputs.collect_run == '' && !inputs.native_capture && inputs.store_locales == ''
     name: PhotoMaidCore (Linux, swift test)
     runs-on: ubuntu-24.04
     container: swift:6.4-noble
@@ -93,7 +103,7 @@ jobs:
           path: core-test.log
 
   ios:
-    if: inputs.collect_run == '' && !inputs.native_capture
+    if: inputs.collect_run == '' && !inputs.native_capture && inputs.store_locales == ''
     name: iOS App (xcodebuild build + test)
     runs-on: macos-26
     timeout-minutes: 120

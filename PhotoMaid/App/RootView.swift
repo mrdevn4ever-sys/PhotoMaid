@@ -48,6 +48,9 @@ struct RootView: View {
         .task {
             _ = AdsService.shared.launchNumber // Kaltstart zählen (die ersten drei Starts ohne Start-Werbung)
             await app.onForeground()
+            #if QA_FIXTURES && targetEnvironment(simulator)
+            await StoreCapture.openRequestedPage(in: app)
+            #endif
         }
         // Gratis: nach der Einführung Einwilligung/Tracking-Abfrage, dann ggf. die Werbung beim Start (E19).
         .task(id: adsReadyToPrepare) {
