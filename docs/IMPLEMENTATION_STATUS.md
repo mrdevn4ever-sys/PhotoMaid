@@ -9,6 +9,8 @@ zuerst Seiten-Screenshots für alle 16 App-Sprachen, anschließend drei verschie
 (Aufräumen, Studio, Tresor). Alle Dateien sind geprüft und nach Sprache und Seite im Arbeitsbranch abgelegt.
 Es gibt keinen weiteren TestFlight- oder App-Store-Upload in diesem Auftrag.
 
+[Abschlussbericht mit Status-/Dateitabelle, endgültigen Läufen und Commitliste](../app-store/DELIVERY.md).
+
 **Bildsatz PASS:** 45 Präsentationsfotos und 10 schwierigere Motive, alle echte Hochkant-JPEGs,
 55 verschiedene SHA-256-Werte, jeweils einzeln geprüfte CC0-1.0-Lizenz.
 Dateien, Urheber, Quellen, Lizenzbelege und Maße stehen in
