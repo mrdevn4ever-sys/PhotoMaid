@@ -47,6 +47,11 @@ jobs:
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/app-store/locales/
       - name: Simulator-Testbuild kompilieren
         run: |
           set -euo pipefail
@@ -83,6 +88,11 @@ jobs:
       CAPTURE_MODE: ${{ inputs.capture }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/app-store/locales/
       - name: Xcode und Werkzeuge
         run: |
           scripts/ci/select_xcode.sh
