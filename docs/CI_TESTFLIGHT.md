@@ -2,7 +2,8 @@
 
 Kein Mac nötig. Code wird auf Windows bearbeitet (Claude Code/Codex), gebaut wird auf GitHub-macOS-Runnern.
 **Kein Workflow startet von selbst** (`workflow_dispatch`): Ein Push oder Pull Request verbraucht keine
-Actions-Minuten. macOS-Minuten zählen bei GitHub zehnfach und sind über dem Freikontingent kostenpflichtig
+Actions-Minuten. Standard-Runner sind im derzeit öffentlichen Repository kostenlos. Bei privaten
+Repositorys zählen macOS-Minuten bei GitHub zehnfach und sind über dem Freikontingent kostenpflichtig
 (Entscheidung E11).
 
 ## Workflows
@@ -28,7 +29,8 @@ gh api repos/mrdevn4ever-sys/photomaid/actions/runs/<RUN_ID>/artifacts  # Artefa
 neu gestartet: zuerst synthetische QA-Medien mit `-qa-fixtures`, danach 150 importierte Testbilder plus 3 Videos
 ohne dieses Startargument. Der zweite Durchlauf verwendet PhotoKit/Core Data, vorab erlaubten Fotozugriff,
 Googles öffentliche Testanzeigen, PIN-Tresor und `PhotoMaid.storekit`. Keine Systemlöschung wird bestätigt.
-Zusätzlich erstellt „Device › Trigger Screenshot“ im Simulator ein natives Bildschirmfoto mit dem echten
+Beim vollständigen Durchlauf und beim gezielten Fotos-Filtertest erstellt „Device › Trigger Screenshot“
+im Simulator zusätzlich ein natives Bildschirmfoto mit dem echten
 PhotoKit-Untertyp. Ein importiertes PNG allein erhält diesen Untertyp nicht. Die drei Aufnahmen des
 Aufbaus liegen unter `real-start-native-screenshot`; danach öffnet der Test PhotoMaid zum ersten Mal.
 Das Artefakt `simulator-ui-evidence` enthält PNGs, Accessibility-Bäume, `.xcresult.zip`-Ergebnisbündel, Logs,
@@ -42,7 +44,8 @@ lässt sich nach der ersten Gesamtprüfung gezielt ein Durchlauf wiederholen; da
 `ui_phase=start` führt ausschließlich die Startprüfung mit echter Mediathek aus. Standard bleibt `all`. Build, Unit-Tests und Linux-Kernprüfung laufen weiterhin. Der Linux-Job verwendet Swift 6.4. Der Simulator-Build wird lokal ad hoc signiert (`CODE_SIGN_IDENTITY=-`),
 damit Keychain und StoreKit mit einer App-Identität geprüft werden; Apple-Zertifikate werden nicht benötigt.
 Der UI-Job hat wegen der vollständigen Screenshot-Reihe bis zu 120 Minuten Zeit.
-Mit `sim_runtime=26.2` lässt sich der installierte ältere iOS-26-Simulator wählen. Hintergrund:
+Standard ist `sim_runtime=26.2`, damit der vollständige UI-Durchlauf einschließlich Kauf funktioniert.
+`sim_runtime=latest` wählt gezielt die neueste installierte Runtime; Xcode und Build-SDK bleiben stets aktuell. Hintergrund:
 StoreKit Test auf iOS 26.5 verweigert im CLI-Lauf die Konfiguration (`SKInternalErrorDomain Code=3`,
 [Apple-Bericht mit DTS-Antwort](https://developer.apple.com/forums/thread/826971)).
 Kaufprüfungen verwenden weiterhin ausschließlich `PhotoMaid.storekit` und echte StoreKit-Testtransaktionen.

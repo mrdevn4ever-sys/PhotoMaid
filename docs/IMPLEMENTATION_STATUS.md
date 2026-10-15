@@ -1,79 +1,137 @@
 # Implementierungsstatus
 
-Stand: 14.10.2026 · Branch `claude/fixes-analysis-library-vault-20261014` · Build-7-Ausgangsstand, Simulator-Prüfung läuft.
+Stand: 15.10.2026 · Branch `claude/fixes-analysis-library-vault-20261014` · Build-7-Ausgangsstand, Simulator-Fachprüfung abgeschlossen.
 
-## Simulator-Prüfung über GitHub Actions (14.10.2026, Build-7-Stand)
+## Simulator-Prüfung über GitHub Actions (14.–15.10.2026, Build-7-Stand)
 
-Freigabe des Inhabers: nur `ci.yml` und Simulator-Prüfungen auf
-`claude/fixes-analysis-library-vault-20261014`. Keine Änderungen an E1–E19, kein TestFlight/Release/Merge.
+Freigabe des Inhabers: `ci.yml` auf `claude/fixes-analysis-library-vault-20261014`.
+Keine Änderung an E1–E19; kein TestFlight, Release, Merge oder Push auf `main`.
+**Alle im Simulator prüfbaren Punkte sind durch erfolgreiche Prüfungen belegt. Reale Geräteprüfungen bleiben offen.**
 
-- Ausgangslauf: [38633721469](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38633721469),
-  Commit `269eaa6`, `ui_tests=true`: Build PASS; 22 iOS-Unit-Tests PASS (11 XCTest + 11 Swift Testing),
-  8 UI-Tests FAIL. Belege heruntergeladen; alle 2 unterschiedlichen PNGs angesehen (3 Anhänge: `03_home`,
-  `13_studio`, `14_history` – zeigen noch die Einführung). Die Videos zeigen zusätzlich: der blinde
-  `app.tap()` nach dem Fotozugriff öffnet teilweise schon den Feed; dadurch sind die erwarteten Tabs verdeckt.
-  Neuer Aufbau wartet auf die Tabs und tippt nur bei tatsächlich ausstehender Berechtigung.
-- Prüfaufbau ergänzt: getrennte, zurückgesetzte Simulator-Durchläufe mit QA-Daten und ohne `-qa-fixtures`.
-  Der zweite importiert 150 Bilder (130 öffentliche Fotos, 5 exakte Kopien, 10 unscharfe Ableitungen,
-  5 Simulator-Screenshots) plus 3 Videos über PhotoKit; Herkunft und SHA-256 stehen im Artefakt-Manifest.
-  Fotozugriff wird vorab per `simctl privacy` erlaubt. Werbung ausschließlich mit Googles Test-IDs,
-  Käufe ausschließlich mit `PhotoMaid.storekit`; Tresor per PIN. Keine Systemlöschung wird bestätigt.
-- UI-Prüfpunkte speichern PNGs und Accessibility-Bäume als XCTAttachments; `.xcresult`, Logs und Testübersichten
-  werden im Artefakt `simulator-ui-evidence` aufbewahrt. Veraltete Einführung/Selektoren korrigiert,
-  stabile Kennungen an vorhandenen Bedienelementen ergänzt.
-- Lokal: Swift **6.4.1**, Linux: **381/381 PASS**; Mediengenerator: **153 Importe, exakt 5 zusätzliche Kopien PASS**;
-  Strings `--check`: **PASS**, 1563 Kennungen / 2548 Einträge / 16 Sprachen.
-- Erweiterter Lauf [38635318023](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38635318023):
-  Kern PASS, iOS-Build FAIL: zu großer SwiftUI-Ausdruck der Feed-Bühne; synchroner UI-Test-Abbau verletzt
-  MainActor-Isolation. Korrektur: Bühnen-Layer und einzelne Medienseite separat typprüfen; Abbau asynchron.
-  Keine Gesten-/Ledger-/Produktregel geändert. Danach erneut 381 Kern-Tests PASS.
-- Wiederholung [38636571661](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38636571661) läuft mit
-  Export der Ausgangsbelege: **Build PASS, 22 iOS-Unit-Tests PASS**, keine Compilerfehler. UI wurde wegen
-  eines Workflow-Fehlers übersprungen: Xcode meldet `TEST EXECUTE SUCCEEDED` statt `TEST SUCCEEDED`.
-  Erfolgserkennung/Bericht korrigiert; getrennte Fehlermarker werden ebenfalls geprüft. Endgültige UI-/visuelle
-  Ergebnisse weiterhin **NOT RUN**. Ein grüner Build allein gilt nicht
-  als Geräteabnahme. Die abschließende Tabelle und Fehlerkorrekturen folgen hier nach den Simulator-Läufen.
+Prüfaufbau: getrennt zurückgesetzte iPhone-17-Simulatoren (iOS 26.5 und 26.2, macOS 26.6.2).
+QA startet mit `-qa-fixtures`, ohne Werbung. PhotoKit startet ohne QA-Argumente und importiert mit
+`simctl addmedia` 130 öffentliche Fotos, 5 exakte Kopien, 10 unscharfe Ableitungen, 5 Screenshot-PNGs und
+3 Videos. Vollständiger Lauf und Fotos-Filtertest ergänzen ein natives iOS-Bildschirmfoto über das Simulator-Menü.
+Herkunft, Autor, Dateigröße und SHA-256 stehen im Manifest; 153 Importe und genau 5 zusätzliche identische
+Dateien auch für `38667553754` nachgeprüft. Fotozugriff vorab mit `simctl privacy`;
+zusätzliche native Dialoge werden ausdrücklich über erlaubte Beschriftungen/Interruption-Monitor behandelt.
+Keine Systemlöschung wird bestätigt. Google ausschließlich mit öffentlichen Test-IDs, Kauf ausschließlich
+mit `PhotoMaid.storekit`, Tresor mit PIN. Jeder Prüfschritt erhält ein PNG; zusätzliche Accessibility-Bäume
+entfallen nur bei zeitkritischen Gesten. Die echte 1,5-s-Sperre wird zusätzlich anhand der App-Zeitstempel geprüft.
 
-- Weitere Belege: Lauf `38638077269` (abgebrochen), alle **31 unterschiedlichen PNGs** geprüft;
-  Lauf `38642182043`, QA: **2/8 PASS, 6/8 FAIL**, alle **25 unterschiedlichen PNGs** geprüft.
-  Rich-Photos-Systemblatt trotz `simctl privacy`; explizite sichere Freigabe ergänzt.
-  UMP zeigt „Our app wants to stay free for you“ / „Continue“; zuvor fälschlich als Anzeige erkannt.
-  Einwilligung und sichtbare Anzeigen werden nun getrennt erkannt (versteckter SDK-Preloader zählt nicht).
-  Veraltete Einstellungen-/Studio-Texte und Pro-Selektor korrigiert. Pro-Einstellungenzeile zeigt jetzt
-  „PhotoMaid Pro“ neben dem Kaufstatus (bestehende Texte aller 16 Sprachen).
-  App-eigene Entfernungsbestätigung wird im QA-Fotolauf durch Beenden/Neustart sicher verworfen;
-  niemals die echte Löschung ausgelöst. Ergebnis der nächsten Wiederholung steht noch aus.
+### Belegte Ergebnisse und Wiederholungen
 
-- QA-Wiederholung [38646080655](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38646080655),
-  Commit `07ead15`: **6 PASS, 1 FAIL, 1 übersprungen**. Build/iOS-Unit-Tests und Linux-Kern grün.
-  Alle **33 unterschiedlichen PNGs** angesehen; `15_pro` zusätzlich in voller Auflösung: „ohne das Tageslimit
-  von 100“, alle drei E19-Vorteile und Kostenlos-Hinweis korrekt, kein Platzhalter. Einstellungen/Studio/Pro
-  und Dunkelmodus bestehen. Restliche QA-Ursachen: Fotos-Selektor traf den Tab statt `hub.photos` (übersprungen),
-  Duplikat-Button heißt „Kopien suchen“/„Erneut suchen“. Selektoren angepasst; fehlende vorbereitete Medien
-  führen jetzt zu FAIL statt zu einem verdeckenden Skip. Video-Tutorial vor der Aufnahme gezielt geschlossen.
-  Noch kein abschließendes PASS für die echte Mediathek; deren Läufe laufen weiter.
+| Prüfbereich | Status | Lauf und Screenshot-Namen |
+|---|---|---|
+| Linux-Kern, Swift 6.4.1 | PASS | 381 Tests; auch auf `90e61d9` in `38672118816`, `38672122249` und `38672555604` |
+| Sprachkatalog | PASS | Generator + `--check`, 1563 verwendete Kennungen / 2548 Einträge / 16 Sprachen |
+| iOS-Build / Unit-Tests | PASS | 24 Tests (13 XCTest + 11 Swift Testing), zuletzt auch im grünen QA-Lauf `38672555604` auf `90e61d9`; echte Keychain-Prüfung und Beobachtungsregression der Duplikatsuche eingeschlossen |
+| QA-Oberflächen | PASS | Abschließende Regression `38672555604` auf `90e61d9`: 8 PASS, 0 FAIL, 0 SKIP; alle 35 unterschiedlichen PNGs geprüft. `03_home`, `04_review_photo`, `06_later_pill`, `15_pro`, `18_dark_home`. Frühere Wiederholungen ebenfalls 8 PASS |
+| Einführung / Freigaben / Kaltstarts | PASS | `38667553754` (Code `6a4de43`, gesamter Startlauf grün): Einführung, Fotos, ATT, Heute; Starts 1–3 ohne, Start 4 mit Google-Testanzeige; alle 13 unterschiedlichen PNGs geprüft. Auch `38669225732` besteht den Starttest auf iOS 26.5; `real_cold_start_1` bis `_4`, `real_test_ad_closed` |
+| Feed-Richtungen / Rückgängig | PASS | `38672122249` auf `90e61d9`: gesamter Fachtest 20 mit Exitcode 0; alle 121 unterschiedlichen PNGs geprüft. Wiederholung `38672118816` auf iOS 26.5 ebenfalls PASS mit Exitcode 0; alle 120 PNGs geprüft. `real_up_keep`, `real_right_later`, `real_down_previous`, `real_undo`, `real_history_no_ad_decision`. Pille „In 2 Tagen wieder · Ändern“ sichtbar. Abschließend 104 Rohereignisse, einschließlich eigenem Termin und Undo; Später/Termin werden in der sichtbaren Liste zusammengefasst (103 Zeilen) |
+| 50/100 Wische / Werbekarte / Verlauf | PASS | Ebenfalls `38672122249`: 100 korrekte Fortschritte, Verlauf exakt 50/100, Runter nach 0,565 s während der Sperre; seitlich nach 0,582 s blockiert, nach 1,573 s freigegeben. Automatischer Log-Prüfer PASS, Fachtest-Exitcode 0; Wiederholung `38672118816` ebenfalls PASS, Freigabe nach 1,601 s. `real_ad_down_immediate`, `real_ad_early_swipe_blocked`, `real_ad_after_1_5s_dismissed_no_decision`, `real_history_exactly_100_no_ad` |
+| Wischhilfe / eigene Belegung | PASS | `38659670047`, Fachtest 30: Hilfe bei 3 s sichtbar, bei 7 s weg; tatsächliche Log-Laufzeiten 6,658 s / 6,501 s; `real_hints_still_after_3s`, `real_right_adds_to_album`, `real_buttons_always` |
+| Papierkorb / Bonus 200 | PASS | `38664902732`, Fachtest 98: 154 ausgewählte Medien, Limit-Blatt mit Video/Pro, Google-Testvideo → 200; eigene Bestätigung außerhalb sicher geschlossen, keine Systemlöschung. Alle 19 unterschiedlichen PNGs geprüft. `real_trash_count_sizes`, `real_limit_100`, `real_bonus_test_video`, `real_delete_confirmation_cancelled_outside`, `real_limit_200_no_deletion` |
+| Pro-Texte | PASS | `15_pro` aus der aktuellen QA-Regression und `real_pro_free_benefits` aus dem echten StoreKit-Lauf: Zahl 100, alle drei E19-Vorteile, Kostenlos-Hinweis, keine Platzhalter |
+| StoreKit-Kauf / Pro ohne Werbung | PASS | `38661843821`, Fachtest 90 auf iOS 26.2: echter Kauf aus `PhotoMaid.storekit`, „Pro ist aktiv“, Transaktion vorhanden; Kaltstart und 50 Feed-Entscheidungen ohne Werbung, Pro-Ordner ohne Video. `real_pro_active`, `real_pro_cold_start_without_ad`, `real_pro_rapid_50`, `real_vault_folder_created_Pro-Test`. Alle 71 unterschiedlichen PNGs geprüft |
+| Tresor PIN / Schließen / Ordner | PASS | `38661843821`, Fachtest 80: PIN, korrigierter E19-Einführungstext, Gratis-Ordner nach Google-Testvideo, ✕ links auf allen drei Reitern ohne Abfrage beim Schließen; alle 25 unterschiedlichen PNGs geprüft. `real_vault_folder_created_Gratis-Test`, `real_vault_closed_no_prompt_Medien` / `_Notizen` / `_Dateien` |
+| Analyse-Warteschlange / Fortschritt / Raster / Durchwischen | PASS | `38655279492`, `test10AnalysisQueueProgressAndGrid`; `real_similar_queued`, `real_similar_prioritized`, `real_blurry_full_grid`, `real_blurry_swipe_feed` |
+| Große Dateien / Duplikate / Speicher | PASS | `38665396878`: beobachtbare Suche mit sichtbarem Fortschritt, genau 5 Kopien, große Dateien vollständig gemessen, Speicherzahlen und Balken; alle 15 PNGs geprüft. `real_duplicates_progress`, `real_duplicates_five_selected_copies`, `real_large_finished_below_threshold`, `real_storage_loaded_numbers_and_progress` |
+| Fotos-Filter / Sortierung / Ansicht | PASS | `38662832942`, Fachtest 60: alle fünf Filter, echtes natives Screenshot-Asset sichtbar, „Zuletzt hinzugefügt“, quadratisch/Seitenverhältnis; alle 19 PNGs geprüft. `real_library_Screenshots`, `real_view_Quadratisch`, `real_view_Seitenverhältnis` |
+| Studio ohne Pro | PASS | Auch `38655279492`: Collage, Werkzeuge/Größe ändern und geladener Fotoeditor ohne Pro-Sperre oder Krone; `real_collage_editor`, `real_tools_free`, `real_studio_photo_editor_free` |
+| Englisch / Arabisch / RTL | PASS | `38655279492`, Fachtest 95: 18 PNGs geprüft; `real_en_today`, `real_en_feed_arrows`, `real_en_pro_text`, entsprechend `ar`; keine Platzhalter, physische Pfeilrichtungen unverändert |
+| iCloud / 30 000 Fotos / Wärme / Kamera / echtes Face ID | NOT RUN | Benötigt echtes iPhone / entsprechende Mediathek; kein Simulator-Nachweis |
 
-- Echte Mediathek [38646580594](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38646580594):
-  **2 PASS, 9 FAIL**. PASS: Analyse-Warteschlange/Priorisieren/Fortschritt/volles Treffer-Raster/Feed sowie
-  Studio (Collage, Werkzeuge, Bearbeiten) ohne Pro. Alle **191 unterschiedlichen PNGs** geprüft; vollständiges
-  Original-`.xcresult` und Logs heruntergeladen. 100 rasche Papierkorb-Gesten liefen ohne Indexfehler;
-  Karte nach 50, sofortiges Runter-Schließen und Verlauf mit genau 50 Einträgen bestehen. Zweite Karte wird von
-  Googles Entwickler-Validator überlagert („No implementation issues found“); offizielles
-  `GADNativeAdValidatorEnabled=false` ergänzt, Testanzeigen bleiben unverändert aktiv.
-  Sichtbarer Layoutfehler: Serien-/Papierkorb-Zahlen brachen ziffernweise um; jetzt einzeilig, bei Platzmangel
-  separate Zählerzeile. UI-Test-Schalter trafen den Beschriftungsmittelpunkt statt den Schalter; Zustand wird
-  nun nach gezieltem Tippen geprüft. SDK-Schließen auch über „Weiter zur App“/„Continue to app“ erkannt.
-  Instabile indizierte Accessibility-Abfragen durch einzelne Snapshot-/Prädikatabfragen ersetzt.
-  Tresor-Einrichtung scheitert noch: CI wird lokal ad hoc signiert (keine Zertifikate/Provisioningprofile), echte
-  Keychain-Rundlaufprüfung ergänzt; Fehlerdomäne/-code werden ohne Inhalte protokolliert. Noch keine Abnahme.
-- Start-Einzelprüfung [38649479126](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38649479126):
-  FAIL durch veränderliche iOS-26-Systemblatt-Hierarchie (indizierter Text verschwand); alle **6 PNGs** geprüft.
-  Native Berechtigungssteuerung entsprechend korrigiert. Ein Original-Simulator-Screenshot bleibt jetzt
-  unverändert, weitere behalten RGBA/Farbraum und vollständige Screenshot-Metadaten; PhotoKit erkannte die
-  früheren Importe noch nicht als Screenshot. Positive Filterprüfung bleibt bis zum neuen Lauf offen.
-- Alle Läufe bleiben manuell und auf diesem Branch. Fachtests liefern jetzt nach jedem Fall eigene Belege;
-  QA und echte Mediathek können getrennt wiederholt werden, UI-Job maximal 120 Minuten. Lokal nach den
-  Korrekturen erneut **381 Kern-Tests PASS**, Sprachgenerator und `--check` **PASS** (16 Sprachen).
+### Korrekturen und Belege
+
+- Feed-Bühne in kleinere SwiftUI-Builder zerlegt: Xcode-Typprüfung schlug mit dem großen Ausdruck fehl.
+  Keine Änderung an Gesten oder Ledger. Sichtbar ziffernweise umgebrochene Serien-/Papierkorb-Zähler bleiben
+  jetzt einzeilig; bei Platzmangel separate Zählerzeile. Einstellungen zeigen den vorhandenen Titel „PhotoMaid Pro“.
+- Googles Entwickler-Validator meldete „No implementation issues found“, überlagerte aber die native Testkarte.
+  Offizieller Schalter `GADNativeAdValidatorEnabled=false`; Testanzeigen und Werberegeln bleiben aktiv.
+- Stabile Accessibility-Kennungen, aktuelle Einführungs-/Buttontexte, sichere Dialogsteuerung und atomare
+  Snapshot-/Prädikatabfragen ersetzen veraltete/instabile Testselektoren. Fehlende Testmedien führen zu FAIL,
+  nicht zu einem verdeckenden Skip. Eigene Entfernungsbestätigungen werden sicher verworfen.
+- Duplikat-Suche: `isRunning` las nur eine mit `@ObservationIgnored` ausgeblendete Task. SwiftUI abonnierte damit den Start nicht; die Suchseite konnte bis zum Ergebnis ohne Fortschrittsanzeige bleiben. Laufzustand jetzt aus der beobachtbaren Phase, Regression über `withObservationTracking`, UI-Prüfung vor dem Größen-Cache.
+- Veralteter Tresor-Einführungstext „Gratis: bis zu 50 Medien“ durch die bestehende E19-Ordnerregel in allen 16 Sprachen ersetzt; Schutz und Modell unverändert.
+- Simulator lokal ad hoc signiert (`CODE_SIGN_IDENTITY=-`), ohne Zertifikat/Profil. Test-Bundles erzeugen ihre
+  Info.plist. Keychain-Schutz unverändert; Diagnose protokolliert nur Fehlerdomäne/-code, keine Tresorinhalte.
+- Workflow erkennt auch `TEST EXECUTE SUCCEEDED`, prüft sämtliche Fehler-/Exitmarker und liefert QA, Start und
+  jeden Fachtest als eigenes frühes Artefakt. Bis zu 120 Minuten; getrennte Wiederholung mit `ui_phase`.
+  Große Alt-Artefakte lassen sich mit `collect_run` verlustfrei in herunterladbare Teile aufteilen.
+- Visuell geprüft: Ausgang `38633721469` (2 unterschiedliche PNGs + Video-Endbilder), `38638077269` (31),
+  `38642182043` (25), `38646080655` (33), `38646580594` (191), `38649479126` (6),
+  `38650310717` (35 QA + 12 Start, darunter identische Heute-Bilder), `38655279492` Start (14) und Analyse (16). Original-`.xcresult`, Logs und PNGs
+  heruntergeladen; Zuordnung über Screenshot-Namen und SHA-256. Artefakt-Sammler-Erfolg gilt nie als App-PASS.
+- Abschließender Stand: Code `90e61d9`; [QA 38672555604](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38672555604)
+  vollständig grün, [Feed 38672122249](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38672122249)
+  und [Feed 38672118816](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38672118816)
+  jeweils als vollständiger Fachtest einschließlich Timing grün. Ihre Gesamtworkflows bleiben wegen der
+  separat fehlgeschlagenen Startanzeigen-Tests rot (`app-open-load-window-expired`); erfolgreiche Startbelege stehen in der Tabelle.
+  Die Tabelle kombiniert gezielte Fachbelege und ist keine Behauptung eines komplett grünen Gesamtdurchlaufs.
+
+
+### Grenzen und offene Geräteprüfungen
+
+- Die Tabelle führt Fachbelege aus dem vollständigen Ausgangslauf und den gezielten Wiederholungen zusammen.
+  Im Ausgangslauf traten Fehler auf. Bei späteren Workflows kann ein Fachtest PASS sein und die separate
+  strenge Startprüfung desselben Workflows wegen Googles Ladezeit fehlschlagen; ihr Gesamtstatus bleibt FAIL.
+- App-Start-Anzeige: Start 4 wurde tatsächlich mit Google-Testanzeige belegt. Wiederholungen melden teilweise
+  `app-open-load-window-expired`: Googles Testanzeige war innerhalb der vorgeschriebenen 4 s nicht geladen.
+  Das Fenster und die übrigen E19-Regeln wurden dafür nicht verlängert. Diese externe Abhängigkeit bleibt
+  ein Grund für nicht deterministische CI-Startprüfungen.
+- Native Testanzeigen können ebenfalls am SDK-Netzwerk scheitern: `38666633929` und `38669048955` melden
+  `native-load-failed com.google.admob:2`, im ersten Lauf mit `NSURLErrorDomain -1005`. Diese Läufe bleiben
+  FAIL. Der spätere echte Nachweis beider Karten und ihrer Zeitgrenze steht gesondert in der Tabelle.
+- Lokales StoreKit unter iOS 26.5 scheitert beim CLI-Start an `SKInternalErrorDomain Code=3` (von Apple DTS
+  bestätigtes Runtime-Problem, [Bericht](https://developer.apple.com/forums/thread/826971)). Der echte lokale
+  Kauf ist mit der bereits installierten Runtime 26.2 bestanden. Deshalb ist 26.2 nun CI-Vorgabe; neuestes
+  stabiles Xcode/SDK und die bewusst wählbare neueste Runtime bleiben erhalten.
+- iCloud-Originale, eine Mediathek mit 30 000 Fotos, Wärmeverhalten, Kamera und echtes Face ID bleiben
+  **NOT RUN**: dafür sind ein echtes iPhone und die entsprechende Mediathek erforderlich.
+- Keine echte Löschung und kein TestFlight-Upload durchgeführt. Der Inhaber startet TestFlight selbst.
+
+### Commits dieses Prüfauftrags
+
+Auf dem freigegebenen Branch, nach dem vorhandenen Inhaber-Commit `e8e627e`, zusätzlich zum abschließenden
+Dokumentationscommit:
+
+```text
+89ca58f Simulatorprüfung mit echter Mediathek ergänzen
+31631cc CI-Belege je Commit erhalten
+a88d9c9 Ältere Simulatorbelege exportierbar machen
+72e20fe Feed-Bühne für Swift-Typprüfung aufteilen
+afd3585 CI-Erfolg erkennen und Werbetakt vollständig prüfen
+b526e85 UI-Belege früher liefern und Startanzeigen abfangen
+58cc1f6 Große Simulatorbelege prüfbar aufteilen
+07ead15 Einwilligung sicher bedienen und Pro-Eintrag benennen
+70da755 Simulator-Durchläufe gezielt wiederholbar machen
+c06cf3b PhotoKit-Startbelege vor den Fachtests bereitstellen
+edc58cd Frühe Teilbelege einzeln auswertbar machen
+ff65409 Startprüfung isolieren und Ladeende ausdrücklich prüfen
+05f5937 Systemdialoge nur nach ihrer Anforderung abfragen
+9e6d257 Fachtests einzeln mit sofortigen Belegen ausführen
+c28b383 QA-Feed und Duplikatsuche korrekt ansteuern
+72dbac0 Leere Werbeabfragen sparen und Startdiagnose behalten
+32c8d56 Simulatorzugriff und Dialoge absichern, Zähler lesbar halten
+95151f6 Parallele UI-Phasen getrennt laufen lassen
+a0531e5 Test-Bundles mit generierter Info-Plist signieren
+24c8081 Audit-Verlauf korrekt prüfen und Fachtests gezielt wiederholen
+2182b3e Native Screenshot-Aufnahme im Simulator untersuchen
+2cd26b8 Screenshot-Diagnose über registrierten CI-Workflow aufrufen
+dc8c501 Wisch- und Hilfezeiten ohne langsame Vorabfragen messen
+a7a589a Duplikatauswahl sichtbar prüfen und Screenshot-Gerät festlegen
+2b33c2c Tresorhinweis an E19 anpassen und Anzeigenzustände belegen
+9c60ca3 StoreKit-Prüfung auf funktionierende iOS-Runtime umstellen
+f58724e Native Bildschirmfotos und volle Papierkorbauswahl prüfen
+081b53d Gesperrte Werbekarte vor der Screenshot-Pause schließen
+90b2f4e Laufende Duplikatsuche für SwiftUI beobachtbar machen
+56b7455 Entfernungsdialog im Test sicher außerhalb schließen
+922807b Simulator-Aufnahme isolieren und Einwilligung robust bedienen
+9f04ca6 Wischzeiten präzise und Später-Journal vollständig prüfen
+6a4de43 Einwilligung einmal bedienen und StoreKit-Runtime vorgeben
+90e61d9 Später-Prüfung auf sichtbare Bestätigung synchronisieren
+```
 
 ## Neues Pro-Modell E19 + Werbung (14.10.2026, gleicher Branch)
 
