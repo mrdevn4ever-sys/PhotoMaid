@@ -136,7 +136,11 @@ final class EditorModel {
     private(set) var future: [EditRecipe] = []
     var tool: EditorTool = .crop {
         willSet { if newValue != tool { finishRetouchInteraction() } }
-        didSet { schedulePreview() }
+        didSet {
+            // Only crop mode changes the preview recipe. Other tool switches
+            // must not queue an identical expensive render before drawing.
+            if (tool == .crop) != (oldValue == .crop) { schedulePreview() }
+        }
     }
     var retouchMode: RetouchMode = .redEye {
         willSet {
@@ -171,6 +175,7 @@ final class EditorModel {
     @ObservationIgnored private var renderGeneration = 0
     @ObservationIgnored private var rendering = false
     @ObservationIgnored private var dirty = false
+    private(set) var previewRendering = false
     @ObservationIgnored private var gestureStart: EditRecipe?
 
     init(assetID: String) { self.assetID = assetID }
@@ -361,9 +366,12 @@ final class EditorModel {
 
     private func schedulePreview() {
         guard previewSource != nil else { return }
+        // Invalidate even while a render is running. Otherwise an old drawing
+        // can be published AFTER undo, before the queued current recipe finishes.
+        renderGeneration += 1
+        previewRendering = true
         if rendering { dirty = true; return }
         rendering = true
-        renderGeneration += 1
         let generation = renderGeneration
         let src = previewSource!
         let r = previewRecipe
@@ -376,6 +384,7 @@ final class EditorModel {
             if generation == self.renderGeneration, let image { self.preview = image }
             self.rendering = false
             if self.dirty { self.dirty = false; self.schedulePreview() }
+            else { self.previewRendering = false }
         }
     }
 

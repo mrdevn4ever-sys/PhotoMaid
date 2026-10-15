@@ -24,7 +24,10 @@ final class VaultDeletionTests: XCTestCase {
         if let app { snap("end_" + name); app.terminate() }
     }
 
-    private func snap(_ name: String) { checkpoint("vault_delete_" + name, app: app) }
+    private func snap(_ name: String) {
+        Thread.sleep(forTimeInterval: 0.6) // Keep completed iOS sheet/list transitions in the evidence.
+        checkpoint("vault_delete_" + name, app: app)
+    }
     private func tap(_ element: XCUIElement, _ name: String) {
         XCTAssertTrue(element.waitForExistence(timeout: 15), name)
         for _ in 0..<8 where !element.isHittable { app.swipeUp() }
@@ -151,7 +154,8 @@ final class VaultDeletionTests: XCTestCase {
         // Originale bleiben in Fotos. NIE den destruktiven Systemknopf betätigen.
         XCTAssertTrue(system.alerts.firstMatch.waitForExistence(timeout: 60))
         checkpoint("vault_delete_system_photos_deletion_declined", app: system)
-        let cancel = system.alerts.buttons.matching(NSPredicate(format: "label IN %@", ["Don't Allow", "Nicht erlauben", "Abbrechen", "Cancel"] as NSArray)).firstMatch
+        let cancel = system.alerts.buttons.matching(NSPredicate(format: "label IN %@",
+            ["Don't Allow", "Don’t Allow", "Don't Delete", "Don’t Delete", "Nicht erlauben", "Nicht löschen", "Abbrechen", "Cancel"] as NSArray)).firstMatch
         XCTAssertTrue(cancel.exists)
         cancel.tap()
         XCTAssertTrue(app.alerts.buttons["OK"].waitForExistence(timeout: 15))
@@ -270,7 +274,9 @@ final class VaultDeletionTests: XCTestCase {
             if appFolder.waitForExistence(timeout: 8) { tap(appFolder, "app_folder_" + name) }
             let downloads = app.descendants(matching: .any).matching(NSPredicate(format: "label BEGINSWITH 'QA-Downloads'")).firstMatch
             if downloads.waitForExistence(timeout: 8) { tap(downloads, "qa_folder_" + name) }
-            let file = app.descendants(matching: .any).matching(NSPredicate(format: "label BEGINSWITH %@", name)).firstMatch
+            // "Notizen" also names the vault tab behind the document picker.
+            // Restrict the target to the native Files grid, not the whole app tree.
+            let file = app.collectionViews["File View"].cells.matching(NSPredicate(format: "label BEGINSWITH %@", name)).firstMatch
             tap(file, "file_chosen_" + name)
             let open = app.buttons.matching(NSPredicate(format: "label IN %@", ["Open", "Öffnen"] as NSArray)).firstMatch
             if open.waitForExistence(timeout: 2) { tap(open, "file_opened_" + name) }

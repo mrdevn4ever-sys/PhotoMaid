@@ -111,6 +111,6 @@ func writeVideo(_ url: URL, w: Int, h: Int, seconds: Int, palette: Palette, labe
     writer.finishWriting { done.signal() }
     done.wait()
 }
-try writeVideo(out.appendingPathComponent("QA_VIDEO_01_hoch.mov"), w: 720, h: 1280, seconds: 6, palette: palettes[2], label: "QA Video 01")
-try writeVideo(out.appendingPathComponent("QA_VIDEO_02_quer.mov"), w: 1280, h: 720, seconds: 4, palette: palettes[0], label: "QA Video 02")
+try writeVideo(out.appendingPathComponent("QA_VIDEO_01_hoch.mov"), w: 720, h: 1280, seconds: 14, palette: palettes[2], label: "QA Video 01")
+try writeVideo(out.appendingPathComponent("QA_VIDEO_02_quer.mov"), w: 1280, h: 720, seconds: 12, palette: palettes[0], label: "QA Video 02")
 print("QA-Medien erzeugt in \(out.path)")

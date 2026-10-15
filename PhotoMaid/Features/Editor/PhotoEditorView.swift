@@ -81,6 +81,15 @@ struct PhotoEditorView: View {
             if model.recipe.usesProTools && !app.capabilities.hasProToolsAccess { proSheet = true } else { saveSheet = true }
         }, confirmEnabled: model.loadState == .ready && !model.saving) {
             HStack(spacing: AppSpacing.s) {
+                ZStack {
+                    Color.clear.accessibilityHidden(true)
+                    if model.previewRendering {
+                        ProgressView().tint(.white)
+                            .accessibilityLabel(Text(key: "edit_preview_processing"))
+                            .accessibilityIdentifier("editor.preview.rendering")
+                    }
+                }
+                .frame(width: 16, height: 16)
                 Button { model.undo() } label: { Image(systemName: "arrow.uturn.backward") }
                     .disabled(!model.canUndo).accessibilityLabel(Text(key: "undo"))
                     .accessibilityIdentifier("editor.undo")

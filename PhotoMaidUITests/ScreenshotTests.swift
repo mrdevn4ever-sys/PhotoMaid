@@ -1,4 +1,5 @@
 import XCTest
+import UIKit
 
 /// Nimmt echte Screenshots der kompilierten App im Simulator auf (QA-Modus `-qa-fixtures`,
 /// synthetische Medien aus `scripts/qa_media.swift`). Bestätigt NIE eine Löschung.
@@ -40,6 +41,30 @@ final class ScreenshotTests: XCTestCase {
 
     private func element(_ id: String) -> XCUIElement {
         app.descendants(matching: .any)[id].firstMatch
+    }
+
+    private func waitForEditorPreview() {
+        let busy = element("editor.preview.rendering")
+        let finished = XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"), object: busy)
+        XCTAssertEqual(XCTWaiter.wait(for: [finished], timeout: 20), .completed, "The latest preview must finish")
+    }
+
+    /// The QA photo is blue; red markup must appear/disappear in the actual rendered image.
+    private func redPixels(in element: XCUIElement) -> Int {
+        guard let image = element.screenshot().image.cgImage else { XCTFail("Missing stage pixels"); return 0 }
+        let width = image.width, height = image.height
+        var bytes = [UInt8](repeating: 0, count: width * height * 4)
+        let drawn = bytes.withUnsafeMutableBytes { storage -> Bool in
+            guard let context = CGContext(data: storage.baseAddress, width: width, height: height,
+                bitsPerComponent: 8, bytesPerRow: width * 4, space: CGColorSpaceCreateDeviceRGB(),
+                bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue | CGBitmapInfo.byteOrder32Big.rawValue) else { return false }
+            context.draw(image, in: CGRect(x: 0, y: 0, width: CGFloat(width), height: CGFloat(height)))
+            return true
+        }
+        XCTAssertTrue(drawn)
+        return stride(from: 0, to: bytes.count, by: 4).reduce(0) { count, i in
+            count + (bytes[i] > 200 && bytes[i + 1] < 120 && bytes[i + 2] < 120 ? 1 : 0)
+        }
     }
 
     private func tap(_ id: String, _ what: String) -> Bool {
@@ -210,6 +235,7 @@ final class ScreenshotTests: XCTestCase {
         guard waitFor(edit, 5, "Foto bearbeiten") else { return }
         edit.tap()
         XCTAssertTrue(element("editor.stage").waitForExistence(timeout: 30))
+        waitForEditorPreview()
         snap("editor_01_loaded_no_changes")
 
         let markup = element("editor.tool.markup")
@@ -232,22 +258,30 @@ final class ScreenshotTests: XCTestCase {
         let redo = app.buttons["editor.redo"]
         XCTAssertFalse(undo.isEnabled)
         stage.pinch(withScale: 2.5, velocity: 1)
+        waitForEditorPreview()
         snap("editor_05_zoomed_no_edit")
         let percentage = (stage.value as? String ?? "").filter(\.isNumber)
         XCTAssertGreaterThan(Int(percentage) ?? 0, 150, "Zoom must actually be active")
         XCTAssertFalse(undo.isEnabled, "A two-finger view gesture must not create a stroke")
+        let baselineRed = redPixels(in: stage)
 
         stage.coordinate(withNormalizedOffset: CGVector(dx: 0.35, dy: 0.4))
             .press(forDuration: 0.05, thenDragTo: stage.coordinate(withNormalizedOffset: CGVector(dx: 0.65, dy: 0.6)))
+        waitForEditorPreview()
         snap("editor_06_stroke_at_zoom")
         XCTAssertTrue(undo.isEnabled, "Drawing must work while zoomed")
+        XCTAssertGreaterThan(redPixels(in: stage), baselineRed + 100, "The stroke must actually be visible")
         undo.tap()
+        waitForEditorPreview()
         snap("editor_07_zoomed_stroke_undone")
         XCTAssertFalse(undo.isEnabled, "One physical stroke is exactly one undo step")
         XCTAssertTrue(redo.isEnabled)
+        XCTAssertLessThanOrEqual(abs(redPixels(in: stage) - baselineRed), max(30, baselineRed / 100), "Undo must remove the visible stroke")
         redo.tap()
+        waitForEditorPreview()
         snap("editor_08_zoomed_stroke_redone")
         XCTAssertTrue(undo.isEnabled)
+        XCTAssertGreaterThan(redPixels(in: stage), baselineRed + 100)
 
         for attempt in 1...4 where (stage.value as? String ?? "").filter(\.isNumber) != "100" {
             // XCTest synthesizes finger distances, not an exact final scale;

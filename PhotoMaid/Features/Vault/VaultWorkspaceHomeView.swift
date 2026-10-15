@@ -89,6 +89,7 @@ struct VaultNotesView: View {
                                 Text(verbatim: note.plainText).lineLimit(2).foregroundStyle(.secondary)
                             }.frame(maxWidth: .infinity, alignment: .leading).padding(.vertical, 4)
                         }
+                        .contentShape(.rect)
                     }.buttonStyle(.plain)
                     .accessibilityIdentifier("vault.notes.item.\(note.id)")
                     .accessibilityAddTraits(selection.contains(note.id) ? .isSelected : [])
@@ -357,6 +358,7 @@ struct VaultFilesView: View {
                                     .font(.caption).foregroundStyle(.secondary)
                             }
                         }.frame(maxWidth: .infinity, alignment: .leading).padding(.vertical, 4)
+                            .contentShape(.rect)
                     }.buttonStyle(.plain)
                     .accessibilityIdentifier("vault.files.item.\(file.id)")
                     .accessibilityAddTraits(selection.contains(file.id) ? .isSelected : [])

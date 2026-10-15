@@ -2845,6 +2845,24 @@
   "uk": "Менше",
   "zh-Hans": "缩小"
  },
+ "edit_preview_processing": {
+  "ar": "جارٍ تحديث المعاينة…",
+  "de": "Vorschau wird aktualisiert …",
+  "en": "Updating preview…",
+  "es": "Actualizando vista previa…",
+  "fr": "Actualisation de l’aperçu…",
+  "it": "Aggiornamento dell’anteprima…",
+  "ja": "プレビューを更新中…",
+  "ko": "미리보기 업데이트 중…",
+  "nl": "Voorbeeld bijwerken…",
+  "pl": "Aktualizowanie podglądu…",
+  "pt-PT": "A atualizar a pré-visualização…",
+  "ro": "Se actualizează previzualizarea…",
+  "ru": "Обновление предпросмотра…",
+  "tr": "Önizleme güncelleniyor…",
+  "uk": "Оновлення попереднього перегляду…",
+  "zh-Hans": "正在更新预览…"
+ },
  "edit_pro_text": {
   "ar": "القص والتدوير والتسوية مجانية. تُحفظ التعديلات والفلاتر والحجم وقص الفيديو مع Pro. التجربة مجانية دائمًا.",
   "de": "Zuschneiden, Drehen und Begradigen sind kostenlos. Regler, Filter, Größe und Video kürzen speicherst du mit Pro. Ausprobieren ist immer kostenlos.",
