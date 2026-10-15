@@ -1,0 +1,50 @@
+{
+  "id": 10,
+  "file": "videos/10-collagen.mp4",
+  "poster": "posters/10-collagen.jpg",
+  "locale": "de-DE",
+  "title": "Mehr als ein Lieblingsmoment",
+  "theme": "Collagen",
+  "style": "amber",
+  "duration": 18.0,
+  "sha256": "eb4679d4edd0c342a85288acd73e62477ca6853a1f2d124cb667e6ce92890b26",
+  "poster_sha256": "0db77553cfe5aaf546b54c724d7175482a58a10d6310f354ab6f181b37e77748",
+  "source_assets": [
+    {
+      "file": "app-store/locales/de/all-pages/05-studio/collage.png",
+      "type": "screenshot",
+      "sha256": "736220c872f72502c829cccb387e8d6f56640a32c3fc6338a11f337bb27eb0a9"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/05-studio/collage.png",
+      "type": "screenshot",
+      "sha256": "736220c872f72502c829cccb387e8d6f56640a32c3fc6338a11f337bb27eb0a9"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/05-studio/studio.png",
+      "type": "screenshot",
+      "sha256": "e894bad554d49a657e3a0c3ef1ce9bf7c7d04ea6bb4fce641bfa4b7506ea8505"
+    }
+  ],
+  "music": {
+    "origin": "Original oscillator/noise synthesis; no samples or external tracks",
+    "style": "amber",
+    "master_file": "music/amber.flac",
+    "master_sha256": "7202d30944c27006737f414277c07c14dbdea5bcbae607575750883e21c4ea5e",
+    "render_wav_sha256": "9e29380ccc57264972a5df91f5ffa1b23511ab48efe7ecb66a98624f5825264d"
+  },
+  "voice": "none; German text is burned into the picture",
+  "editing": {
+    "scene_seconds": 4.8,
+    "end_seconds": 3.6,
+    "screenshot_zoom_max": 1.0143,
+    "source_policy": "Proportional inset captures. Original app media and UI content unchanged. Marketing titles outside the app frame."
+  },
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "pixel_aspect_normalization": {
+    "method": "Lossless H.264 VUI metadata normalization to square pixels; no re-encoding",
+    "input_sha256": "e8e5263851e6cbeb8fa436fcaa131c44943bae13740247fc40897903aa60fd38"
+  },
+  "concept_sha256": "9a6531d8ae2b0c4e1e01999961413dcfef686af4ce4283c1f8aa29e18546443a"
+}

@@ -1,0 +1,51 @@
+{
+  "id": 4,
+  "file": "videos/04-zurueck.mp4",
+  "poster": "posters/04-zurueck.jpg",
+  "locale": "de-DE",
+  "title": "Ein Wisch zurück",
+  "theme": "Zurück und Rückgängig",
+  "style": "coral",
+  "duration": 18.0,
+  "sha256": "f24f7190a038bc750e78629763c50b23854ea2a092b98fc5a4e5652934e5e6fa",
+  "poster_sha256": "57af5ad0602d5c10e6f13b9bbcafd4f7e21310470542d84cc20c78943aebbfae",
+  "source_assets": [
+    {
+      "file": "app-store/locales/de/previews/01-review.mp4",
+      "type": "recording",
+      "start": 21.5,
+      "sha256": "f43c4472c4fa0a5118a20c78bcb367d2e747bf670e67097157147d389da47ca1"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/02-today-and-review/feed.png",
+      "type": "screenshot",
+      "sha256": "6a4ce23134f563abc7bc1575ad1ac48300a3bdc8ee5894aa2e269851fe529158"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/08-history/history.png",
+      "type": "screenshot",
+      "sha256": "69c42a62ae0f521e1053f56b71dd769ddb93fae5ee8a1e7f963550d679284584"
+    }
+  ],
+  "music": {
+    "origin": "Original oscillator/noise synthesis; no samples or external tracks",
+    "style": "coral",
+    "master_file": "music/coral.flac",
+    "master_sha256": "57e2bf200d6b60725062dc259c736fe7d9843a314e8d01aa88856f7dfee9e3cb",
+    "render_wav_sha256": "af7655684b810a2ed77e29ca641f3df2e3c8215672cfe9209c91c88091fd4729"
+  },
+  "voice": "none; German text is burned into the picture",
+  "editing": {
+    "scene_seconds": 4.8,
+    "end_seconds": 3.6,
+    "screenshot_zoom_max": 1.0143,
+    "source_policy": "Proportional inset captures. Original app media and UI content unchanged. Marketing titles outside the app frame."
+  },
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "pixel_aspect_normalization": {
+    "method": "Lossless H.264 VUI metadata normalization to square pixels; no re-encoding",
+    "input_sha256": "3100b050704f7f4a22c432e1010bc8f9f883ee7ecf1e1787c1d42e83fedbd589"
+  },
+  "concept_sha256": "9cc085cb26ba9cffd7b49302ba846f538557df51e7591b66325176193b70ab50"
+}

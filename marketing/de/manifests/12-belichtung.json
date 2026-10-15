@@ -1,0 +1,52 @@
+{
+  "id": 12,
+  "file": "videos/12-belichtung.mp4",
+  "poster": "posters/12-belichtung.jpg",
+  "locale": "de-DE",
+  "title": "Mehr Licht für deinen Moment",
+  "theme": "Belichtung",
+  "style": "amber",
+  "duration": 18.0,
+  "sha256": "19a438929cb7ccef0a5556b7dcbc5f78f2061b9f264808e248c1872e6997fc05",
+  "poster_sha256": "a5abbebe4b0cd676303c5c1fa15f3c51eb8fdba0729207387080732312615273",
+  "source_assets": [
+    {
+      "file": "app-store/locales/de/previews/02-studio.mp4",
+      "type": "recording",
+      "start": 1.5,
+      "sha256": "b56386ce68b2f8da932d9f644ef86c7a8be006b1005bf568b5670d0153702ef7"
+    },
+    {
+      "file": "app-store/locales/de/previews/02-studio.mp4",
+      "type": "recording",
+      "start": 5.2,
+      "sha256": "b56386ce68b2f8da932d9f644ef86c7a8be006b1005bf568b5670d0153702ef7"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/05-studio/editor-adjust.png",
+      "type": "screenshot",
+      "sha256": "d46b909579184cff3b5637e140cddfe2fd29d5c8a80e0a3ce071f02a9f4bbf61"
+    }
+  ],
+  "music": {
+    "origin": "Original oscillator/noise synthesis; no samples or external tracks",
+    "style": "amber",
+    "master_file": "music/amber.flac",
+    "master_sha256": "7202d30944c27006737f414277c07c14dbdea5bcbae607575750883e21c4ea5e",
+    "render_wav_sha256": "9e29380ccc57264972a5df91f5ffa1b23511ab48efe7ecb66a98624f5825264d"
+  },
+  "voice": "none; German text is burned into the picture",
+  "editing": {
+    "scene_seconds": 4.8,
+    "end_seconds": 3.6,
+    "screenshot_zoom_max": 1.0143,
+    "source_policy": "Proportional inset captures. Original app media and UI content unchanged. Marketing titles outside the app frame."
+  },
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "pixel_aspect_normalization": {
+    "method": "Lossless H.264 VUI metadata normalization to square pixels; no re-encoding",
+    "input_sha256": "f5a7296e39bcff6f5406e8c63dd796c4688051790de749edc35b13da816eae5f"
+  },
+  "concept_sha256": "6c76f91bd37a757a877beef33c0a1176677bdb46431e6062c952a513d622c295"
+}

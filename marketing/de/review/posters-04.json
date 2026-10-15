@@ -1,0 +1,23 @@
+{
+  "sheet": "posters-04.jpg",
+  "posters": [
+    {
+      "file": "posters/13-zeichnen.jpg",
+      "sha256": "6864123b815f7a3990fd61ef5c31c43358bfc12175e78d5c0c9602f00ce7f0d7"
+    },
+    {
+      "file": "posters/14-zuschnitt-rahmen.jpg",
+      "sha256": "2d02d4564c986a0977842ab836ecd2af94670197cc5f79af100da58e94eefb35"
+    },
+    {
+      "file": "posters/15-werkzeuge-gratis.jpg",
+      "sha256": "2b1376f5574397f34a4a172a8211ec1999d92fd499b41261a42bdf4b2e032877"
+    },
+    {
+      "file": "posters/16-privater-tresor.jpg",
+      "sha256": "9e4a3234e892a1a84b6fff55cbbadd21e63c66e5b91870a8e6e5b4e03828edbc"
+    }
+  ],
+  "visual_review": "PASS",
+  "findings": "Alle vier tatsächlichen Posterdateien auf dem Prüfbogen angesehen: lesbarer deutscher Einstieg und echte App-Szenen. Sichtbare Kartenbewegungen in den Wischmotiven sind Teil der Originalaufnahme."
+}

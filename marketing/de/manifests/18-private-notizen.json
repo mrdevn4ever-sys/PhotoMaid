@@ -1,0 +1,51 @@
+{
+  "id": 18,
+  "file": "videos/18-private-notizen.mp4",
+  "poster": "posters/18-private-notizen.jpg",
+  "locale": "de-DE",
+  "title": "Ein Ort für private Gedanken",
+  "theme": "Tresor-Notizen",
+  "style": "coral",
+  "duration": 18.0,
+  "sha256": "f4471ea8bfd7c1ec727051cb32ca309c715d7ddf09bda28132dcb90e5262f8c3",
+  "poster_sha256": "3fa8b0cf7a0c91c4068fd00c32548182fa6bc3b508f2476102482e4dc88bf7db",
+  "source_assets": [
+    {
+      "file": "app-store/locales/de/all-pages/06-vault/vault-notes-with-note.png",
+      "type": "screenshot",
+      "sha256": "f3789b10856a69bdd3a0f15200466cdfa7fedf415a30f790b108cb00bf110039"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/06-vault/vault-note-editor.png",
+      "type": "screenshot",
+      "sha256": "1fc3fe63c4bd21488a1861a0978c092b2bc18bb42c88386b8399633403ace455"
+    },
+    {
+      "file": "app-store/locales/de/previews/03-vault.mp4",
+      "type": "recording",
+      "start": 0.2,
+      "sha256": "0dfef732880fa5eead13b9fd6f54b39bc69b2dcc09a5e7330873bfeb32507b2c"
+    }
+  ],
+  "music": {
+    "origin": "Original oscillator/noise synthesis; no samples or external tracks",
+    "style": "coral",
+    "master_file": "music/coral.flac",
+    "master_sha256": "57e2bf200d6b60725062dc259c736fe7d9843a314e8d01aa88856f7dfee9e3cb",
+    "render_wav_sha256": "af7655684b810a2ed77e29ca641f3df2e3c8215672cfe9209c91c88091fd4729"
+  },
+  "voice": "none; German text is burned into the picture",
+  "editing": {
+    "scene_seconds": 4.8,
+    "end_seconds": 3.6,
+    "screenshot_zoom_max": 1.0143,
+    "source_policy": "Proportional inset captures. Original app media and UI content unchanged. Marketing titles outside the app frame."
+  },
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "pixel_aspect_normalization": {
+    "method": "Lossless H.264 VUI metadata normalization to square pixels; no re-encoding",
+    "input_sha256": "06a5d4e18096ef23a3b44af0b4fafa2d3ba4180c608801daffa9f9c321df7b25"
+  },
+  "concept_sha256": "c5da9ad7cb2e6f817c0b75600619d950880a2586ac46bad3303599ec2f0c955f"
+}

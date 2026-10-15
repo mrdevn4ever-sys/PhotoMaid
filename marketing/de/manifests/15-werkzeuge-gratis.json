@@ -1,0 +1,51 @@
+{
+  "id": 15,
+  "file": "videos/15-werkzeuge-gratis.mp4",
+  "poster": "posters/15-werkzeuge-gratis.jpg",
+  "locale": "de-DE",
+  "title": "Gute Werkzeuge für alle",
+  "theme": "Gratis-Werkzeuge",
+  "style": "mint",
+  "duration": 18.0,
+  "sha256": "4ef68624170a23410bdbb467cc9c9b45af3f3459cfee5708e1eb035df9b5f699",
+  "poster_sha256": "2b1376f5574397f34a4a172a8211ec1999d92fd499b41261a42bdf4b2e032877",
+  "source_assets": [
+    {
+      "file": "app-store/locales/de/all-pages/05-studio/studio.png",
+      "type": "screenshot",
+      "sha256": "e894bad554d49a657e3a0c3ef1ce9bf7c7d04ea6bb4fce641bfa4b7506ea8505"
+    },
+    {
+      "file": "app-store/locales/de/previews/02-studio.mp4",
+      "type": "recording",
+      "start": 18.9,
+      "sha256": "b56386ce68b2f8da932d9f644ef86c7a8be006b1005bf568b5670d0153702ef7"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/05-studio/editor-resize.png",
+      "type": "screenshot",
+      "sha256": "5de8ae282ac955adcf39d192de5c1b854100010202f2696258c252a8fd9048fc"
+    }
+  ],
+  "music": {
+    "origin": "Original oscillator/noise synthesis; no samples or external tracks",
+    "style": "mint",
+    "master_file": "music/mint.flac",
+    "master_sha256": "4c65fbdd77ce1e82c41689b47a218fa3e898962c4b4bead5ca4cb1ea2e67a5fe",
+    "render_wav_sha256": "d9e7caf1141eb58726e93242aafec4de186c07b1f5630d1c5cabb009b5d0c922"
+  },
+  "voice": "none; German text is burned into the picture",
+  "editing": {
+    "scene_seconds": 4.8,
+    "end_seconds": 3.6,
+    "screenshot_zoom_max": 1.0143,
+    "source_policy": "Proportional inset captures. Original app media and UI content unchanged. Marketing titles outside the app frame."
+  },
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "pixel_aspect_normalization": {
+    "method": "Lossless H.264 VUI metadata normalization to square pixels; no re-encoding",
+    "input_sha256": "47c0240d69351f32b3e3e81f5388a151e0c6a52db7b161c7124e918d0e76aa2c"
+  },
+  "concept_sha256": "3af9e5be4fed8283e420de2aaf9ea18ca04b1b2216a172974754c1d9ea002809"
+}

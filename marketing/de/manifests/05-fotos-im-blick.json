@@ -1,0 +1,50 @@
+{
+  "id": 5,
+  "file": "videos/05-fotos-im-blick.mp4",
+  "poster": "posters/05-fotos-im-blick.jpg",
+  "locale": "de-DE",
+  "title": "Deine Fotos im Blick",
+  "theme": "Fotoübersicht",
+  "style": "blue",
+  "duration": 18.0,
+  "sha256": "cc93eda5dd00d664c856a690375147f85cd961cdd1e6e34d320cb993a8970152",
+  "poster_sha256": "2a27cd7139df11c26e119c8a011e45d16b9e94a51f0ceb22753e6077a7a0b12e",
+  "source_assets": [
+    {
+      "file": "app-store/locales/de/all-pages/03-photos/library.png",
+      "type": "screenshot",
+      "sha256": "b2eab04eb60815d77dd88ef2e6b5778a4fd4ad84425dcefd2abf2c05acd2353b"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/03-photos/library-photos.png",
+      "type": "screenshot",
+      "sha256": "d349859b7809cf0d3d538f7a644f821152442a0abf50f436131ead587374bba2"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/03-photos/viewer.png",
+      "type": "screenshot",
+      "sha256": "f94a14597b1fa3d9fc0558d22f158daaed34c0ba53054fc6d26b31fd47886bb1"
+    }
+  ],
+  "music": {
+    "origin": "Original oscillator/noise synthesis; no samples or external tracks",
+    "style": "blue",
+    "master_file": "music/blue.flac",
+    "master_sha256": "ca0f2291bbb208de4e521a80d0f1d03bd94bb05ee6b9a7bf144cbc5a5b51009b",
+    "render_wav_sha256": "6c187a2eb491b6750ba5bace73f40f8529e5d4e612a5f1d96fec6183d4d000c9"
+  },
+  "voice": "none; German text is burned into the picture",
+  "editing": {
+    "scene_seconds": 4.8,
+    "end_seconds": 3.6,
+    "screenshot_zoom_max": 1.0143,
+    "source_policy": "Proportional inset captures. Original app media and UI content unchanged. Marketing titles outside the app frame."
+  },
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "pixel_aspect_normalization": {
+    "method": "Lossless H.264 VUI metadata normalization to square pixels; no re-encoding",
+    "input_sha256": "a272815b0e5911437e9a1ce145aab84365b54bfe359af1c419054a5ff4e155bc"
+  },
+  "concept_sha256": "912cec1adaf8c62b787d88d608dbe2e0f4b03c9f909ce9fe2f9e357af3eb79d4"
+}

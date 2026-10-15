@@ -1,0 +1,23 @@
+{
+  "id": 13,
+  "file": "videos/13-zeichnen.mp4",
+  "sha256": "a436aa6598d925313293428c01ecb8ece9cc7d1b40fe2db581042450da96edcb",
+  "sheet": "13-zeichnen.jpg",
+  "sample_times": [
+    2.4,
+    7.2,
+    12,
+    16.2
+  ],
+  "full_decode": "PASS",
+  "duration_video_audio_container": [
+    18.0,
+    18.0,
+    18.0
+  ],
+  "loudness_lufs": -17.1,
+  "true_peak_dbfs": -5.0,
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+}

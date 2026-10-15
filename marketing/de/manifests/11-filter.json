@@ -1,0 +1,52 @@
+{
+  "id": 11,
+  "file": "videos/11-filter.mp4",
+  "poster": "posters/11-filter.jpg",
+  "locale": "de-DE",
+  "title": "Dein Foto. Dein Look.",
+  "theme": "Filter",
+  "style": "violet",
+  "duration": 18.0,
+  "sha256": "776a279a0449833f73c13b4e3eae15e2adcc0cdbf6d3e14c5a82d7c0a1d4e489",
+  "poster_sha256": "334722fe638b1388ee804eaf06b4f2de7a5280c127f8cb65408c974c38a6f21c",
+  "source_assets": [
+    {
+      "file": "app-store/locales/de/previews/02-studio.mp4",
+      "type": "recording",
+      "start": 0.5,
+      "sha256": "b56386ce68b2f8da932d9f644ef86c7a8be006b1005bf568b5670d0153702ef7"
+    },
+    {
+      "file": "app-store/locales/de/previews/02-studio.mp4",
+      "type": "recording",
+      "start": 11.8,
+      "sha256": "b56386ce68b2f8da932d9f644ef86c7a8be006b1005bf568b5670d0153702ef7"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/05-studio/editor-filter.png",
+      "type": "screenshot",
+      "sha256": "d57ee70897bee723287b38ac3db09b42a584952f61ce328c5edcb3c7333eb1e0"
+    }
+  ],
+  "music": {
+    "origin": "Original oscillator/noise synthesis; no samples or external tracks",
+    "style": "violet",
+    "master_file": "music/violet.flac",
+    "master_sha256": "322005f3f10069879e9069b331607dc88dcc358f12706852522e0393ba939f13",
+    "render_wav_sha256": "1ca5e986af5b8558b2ddd9b9239d65758bcf8da82e2af8da85192f4058c6693c"
+  },
+  "voice": "none; German text is burned into the picture",
+  "editing": {
+    "scene_seconds": 4.8,
+    "end_seconds": 3.6,
+    "screenshot_zoom_max": 1.0143,
+    "source_policy": "Proportional inset captures. Original app media and UI content unchanged. Marketing titles outside the app frame."
+  },
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "pixel_aspect_normalization": {
+    "method": "Lossless H.264 VUI metadata normalization to square pixels; no re-encoding",
+    "input_sha256": "661df28063a6f18dd2046c1ffbc857ed2a8b78ff276477127ebe88c4958e4ba4"
+  },
+  "concept_sha256": "c32a7e1262065c3dade5e3cf3ff4c4f075eb374d965f9846b8ebc2e0dbdeca59"
+}

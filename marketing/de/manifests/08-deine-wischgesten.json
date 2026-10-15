@@ -1,0 +1,47 @@
+{
+  "id": 8,
+  "file": "videos/08-deine-wischgesten.mp4",
+  "poster": "posters/08-deine-wischgesten.jpg",
+  "locale": "de-DE",
+  "title": "Wischen, wie es zu dir passt",
+  "theme": "Eigene Wischbelegung",
+  "style": "violet",
+  "duration": 18.0,
+  "sha256": "d2716c49c8678530a3d4f3d7e6b3421e9434da592b0139eb173f5f8654fb0939",
+  "poster_sha256": "52e98147bfd182c378e3cb57cad823736095b63730f209e78c1c08388fd3d318",
+  "source_assets": [
+    {
+      "file": "app-store/locales/de/all-pages/07-settings/controls.png",
+      "type": "screenshot",
+      "sha256": "4e0b6264623d497db7cefbd5fe413192b7e8bb01ee31a6864b31ef530460ba76"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/07-settings/controls-bottom.png",
+      "type": "screenshot",
+      "sha256": "a24de5c850baa1c50c80b8fe4f537f85b8792a917160aaf6b899f4f0eaf59b77"
+    },
+    {
+      "file": "app-store/locales/de/previews/01-review.mp4",
+      "type": "recording",
+      "start": 4.5,
+      "sha256": "f43c4472c4fa0a5118a20c78bcb367d2e747bf670e67097157147d389da47ca1"
+    }
+  ],
+  "music": {
+    "origin": "Original oscillator/noise synthesis; no samples or external tracks",
+    "style": "violet",
+    "master_file": "music/violet.flac",
+    "master_sha256": "322005f3f10069879e9069b331607dc88dcc358f12706852522e0393ba939f13",
+    "render_wav_sha256": "1ca5e986af5b8558b2ddd9b9239d65758bcf8da82e2af8da85192f4058c6693c"
+  },
+  "voice": "none; German text is burned into the picture",
+  "editing": {
+    "scene_seconds": 4.8,
+    "end_seconds": 3.6,
+    "screenshot_zoom_max": 1.0143,
+    "source_policy": "Proportional inset captures. Original app media and UI content unchanged. Marketing titles outside the app frame."
+  },
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "concept_sha256": "5afbefb78e3c2e77f66fec100a87b752b5824f4aa5e92ff0818aee33597ac273"
+}

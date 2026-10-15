@@ -1,0 +1,53 @@
+{
+  "id": 16,
+  "file": "videos/16-privater-tresor.mp4",
+  "poster": "posters/16-privater-tresor.jpg",
+  "locale": "de-DE",
+  "title": "Deine privaten Momente",
+  "theme": "PIN-Tresor",
+  "style": "violet",
+  "duration": 18.0,
+  "sha256": "81f750f39aea87d8e3aeb3419945adfb91864f4a788af5acd8498e206713c4b5",
+  "poster_sha256": "9e4a3234e892a1a84b6fff55cbbadd21e63c66e5b91870a8e6e5b4e03828edbc",
+  "source_assets": [
+    {
+      "file": "app-store/locales/de/previews/03-vault.mp4",
+      "type": "recording",
+      "start": 0.2,
+      "sha256": "0dfef732880fa5eead13b9fd6f54b39bc69b2dcc09a5e7330873bfeb32507b2c"
+    },
+    {
+      "file": "app-store/locales/de/previews/03-vault.mp4",
+      "type": "recording",
+      "start": 6.5,
+      "sha256": "0dfef732880fa5eead13b9fd6f54b39bc69b2dcc09a5e7330873bfeb32507b2c"
+    },
+    {
+      "file": "app-store/locales/de/previews/03-vault.mp4",
+      "type": "recording",
+      "start": 15.5,
+      "sha256": "0dfef732880fa5eead13b9fd6f54b39bc69b2dcc09a5e7330873bfeb32507b2c"
+    }
+  ],
+  "music": {
+    "origin": "Original oscillator/noise synthesis; no samples or external tracks",
+    "style": "violet",
+    "master_file": "music/violet.flac",
+    "master_sha256": "322005f3f10069879e9069b331607dc88dcc358f12706852522e0393ba939f13",
+    "render_wav_sha256": "1ca5e986af5b8558b2ddd9b9239d65758bcf8da82e2af8da85192f4058c6693c"
+  },
+  "voice": "none; German text is burned into the picture",
+  "editing": {
+    "scene_seconds": 4.8,
+    "end_seconds": 3.6,
+    "screenshot_zoom_max": 1.0143,
+    "source_policy": "Proportional inset captures. Original app media and UI content unchanged. Marketing titles outside the app frame."
+  },
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "pixel_aspect_normalization": {
+    "method": "Lossless H.264 VUI metadata normalization to square pixels; no re-encoding",
+    "input_sha256": "7f41c2b1366f70bb38da7b156ac8afa5eaeac865b1c5ea34b1d82783d1cf463e"
+  },
+  "concept_sha256": "570b1e949f6630627309886d4148d9f252c22abe21e7b8e3b71ead33704dec06"
+}

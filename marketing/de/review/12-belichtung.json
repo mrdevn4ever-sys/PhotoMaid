@@ -1,0 +1,23 @@
+{
+  "id": 12,
+  "file": "videos/12-belichtung.mp4",
+  "sha256": "19a438929cb7ccef0a5556b7dcbc5f78f2061b9f264808e248c1872e6997fc05",
+  "sheet": "12-belichtung.jpg",
+  "sample_times": [
+    2.4,
+    7.2,
+    12,
+    16.2
+  ],
+  "full_decode": "PASS",
+  "duration_video_audio_container": [
+    18.0,
+    18.0,
+    18.0
+  ],
+  "loudness_lufs": -17.1,
+  "true_peak_dbfs": -5.6,
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+}

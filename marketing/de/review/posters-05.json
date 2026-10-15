@@ -1,0 +1,23 @@
+{
+  "sheet": "posters-05.jpg",
+  "posters": [
+    {
+      "file": "posters/17-bilder-ohne-leisten.jpg",
+      "sha256": "7ebe1b643767fcd895cf3c1bcfabf3957cbdd55123bd2b1f2b8d1992d888f81f"
+    },
+    {
+      "file": "posters/18-private-notizen.jpg",
+      "sha256": "3fa8b0cf7a0c91c4068fd00c32548182fa6bc3b508f2476102482e4dc88bf7db"
+    },
+    {
+      "file": "posters/19-fotofilm.jpg",
+      "sha256": "fcf84d0ad17e927b190ede1f8ddf2ea6dc26f78050b6e44311d6d4c986525415"
+    },
+    {
+      "file": "posters/20-alles-in-einer-app.jpg",
+      "sha256": "10988a41a8099515e780c53e6ee688c0873d35d093b5869a01bd9b7a00ca6727"
+    }
+  ],
+  "visual_review": "PASS",
+  "findings": "Alle vier tatsächlichen Posterdateien auf dem Prüfbogen angesehen: lesbarer deutscher Einstieg und echte App-Szenen. Sichtbare Kartenbewegungen in den Wischmotiven sind Teil der Originalaufnahme."
+}

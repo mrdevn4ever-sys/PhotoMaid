@@ -1,0 +1,51 @@
+{
+  "id": 3,
+  "file": "videos/03-spaeter.mp4",
+  "poster": "posters/03-spaeter.jpg",
+  "locale": "de-DE",
+  "title": "Heute nicht? Dann später.",
+  "theme": "Später",
+  "style": "violet",
+  "duration": 18.0,
+  "sha256": "ace2899df2ede52a97c47d9e725604130c78544f209bbb5093b31a1ccfff889b",
+  "poster_sha256": "a5e8056efdc28ca55f907946730f2a2969869d77236ff658d72e0e77de6f7283",
+  "source_assets": [
+    {
+      "file": "app-store/locales/de/previews/01-review.mp4",
+      "type": "recording",
+      "start": 15.8,
+      "sha256": "f43c4472c4fa0a5118a20c78bcb367d2e747bf670e67097157147d389da47ca1"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/02-today-and-review/feed-later.png",
+      "type": "screenshot",
+      "sha256": "bd1ea80abb9bfdc1a901d90076970bbdae3674991fd25e2e383eb2b638939726"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/04-cleanup/later.png",
+      "type": "screenshot",
+      "sha256": "4d50a7ef26720edb2c47c7ff4c2c425cc47cafdaf62904630d57405b6a1f6196"
+    }
+  ],
+  "music": {
+    "origin": "Original oscillator/noise synthesis; no samples or external tracks",
+    "style": "violet",
+    "master_file": "music/violet.flac",
+    "master_sha256": "322005f3f10069879e9069b331607dc88dcc358f12706852522e0393ba939f13",
+    "render_wav_sha256": "1ca5e986af5b8558b2ddd9b9239d65758bcf8da82e2af8da85192f4058c6693c"
+  },
+  "voice": "none; German text is burned into the picture",
+  "editing": {
+    "scene_seconds": 4.8,
+    "end_seconds": 3.6,
+    "screenshot_zoom_max": 1.0143,
+    "source_policy": "Proportional inset captures. Original app media and UI content unchanged. Marketing titles outside the app frame."
+  },
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "pixel_aspect_normalization": {
+    "method": "Lossless H.264 VUI metadata normalization to square pixels; no re-encoding",
+    "input_sha256": "2e5f5d18fb3dfe42279197674fce2ebae4f704a406ad4f2868b2710819c63eaa"
+  },
+  "concept_sha256": "fa6cbf7bf5084abfda951c9bc65691ba81b101113a96b7b32aa0bb19e1a2e01b"
+}

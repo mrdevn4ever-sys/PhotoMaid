@@ -1,0 +1,462 @@
+[
+  {
+    "id": 1,
+    "file": "videos/01-einfach-anfangen.mp4",
+    "sha256": "ac05ba1adc8a359d3489dd67078b9183ea6ce6dbb1fe7fe7b662c386865d6efc",
+    "sheet": "01-einfach-anfangen.jpg",
+    "sample_times": [
+      2.4,
+      7.2,
+      12,
+      16.2
+    ],
+    "full_decode": "PASS",
+    "duration_video_audio_container": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "loudness_lufs": -17.1,
+    "true_peak_dbfs": -5.0,
+    "technical_review": "PASS",
+    "visual_review": "PASS",
+    "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+  },
+  {
+    "id": 2,
+    "file": "videos/02-behalten.mp4",
+    "sha256": "f4abb671c50c9b6ac400afe8867ad87e971ec992f09a4f133dafeef1e93f453b",
+    "sheet": "02-behalten.jpg",
+    "sample_times": [
+      2.4,
+      7.2,
+      12,
+      16.2
+    ],
+    "full_decode": "PASS",
+    "duration_video_audio_container": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "loudness_lufs": -17.0,
+    "true_peak_dbfs": -4.4,
+    "technical_review": "PASS",
+    "visual_review": "PASS",
+    "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+  },
+  {
+    "id": 3,
+    "file": "videos/03-spaeter.mp4",
+    "sha256": "ace2899df2ede52a97c47d9e725604130c78544f209bbb5093b31a1ccfff889b",
+    "sheet": "03-spaeter.jpg",
+    "sample_times": [
+      2.4,
+      7.2,
+      12,
+      16.2
+    ],
+    "full_decode": "PASS",
+    "duration_video_audio_container": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "loudness_lufs": -17.1,
+    "true_peak_dbfs": -5.4,
+    "technical_review": "PASS",
+    "visual_review": "PASS",
+    "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+  },
+  {
+    "id": 4,
+    "file": "videos/04-zurueck.mp4",
+    "sha256": "f24f7190a038bc750e78629763c50b23854ea2a092b98fc5a4e5652934e5e6fa",
+    "sheet": "04-zurueck.jpg",
+    "sample_times": [
+      2.4,
+      7.2,
+      12,
+      16.2
+    ],
+    "full_decode": "PASS",
+    "duration_video_audio_container": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "loudness_lufs": -17.1,
+    "true_peak_dbfs": -5.0,
+    "technical_review": "PASS",
+    "visual_review": "PASS",
+    "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+  },
+  {
+    "id": 5,
+    "file": "videos/05-fotos-im-blick.mp4",
+    "sha256": "cc93eda5dd00d664c856a690375147f85cd961cdd1e6e34d320cb993a8970152",
+    "sheet": "05-fotos-im-blick.jpg",
+    "sample_times": [
+      2.4,
+      7.2,
+      12,
+      16.2
+    ],
+    "full_decode": "PASS",
+    "duration_video_audio_container": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "loudness_lufs": -17.1,
+    "true_peak_dbfs": -5.0,
+    "technical_review": "PASS",
+    "visual_review": "PASS",
+    "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+  },
+  {
+    "id": 6,
+    "file": "videos/06-favoriten.mp4",
+    "sha256": "f9f69a7931c80c706d648f762cef4b9e6c300b44b1522dad4a7e804fd889fa15",
+    "sheet": "06-favoriten.jpg",
+    "sample_times": [
+      2.4,
+      7.2,
+      12,
+      16.2
+    ],
+    "full_decode": "PASS",
+    "duration_video_audio_container": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "loudness_lufs": -17.1,
+    "true_peak_dbfs": -5.6,
+    "technical_review": "PASS",
+    "visual_review": "PASS",
+    "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+  },
+  {
+    "id": 7,
+    "file": "videos/07-lokale-analyse.mp4",
+    "sha256": "7da9d597f174e42c151327d7e15ec1a4629436b8fdf70bb114d6443a18b5c016",
+    "sheet": "07-lokale-analyse.jpg",
+    "sample_times": [
+      2.4,
+      7.2,
+      12,
+      16.2
+    ],
+    "full_decode": "PASS",
+    "duration_video_audio_container": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "loudness_lufs": -17.0,
+    "true_peak_dbfs": -4.4,
+    "technical_review": "PASS",
+    "visual_review": "PASS",
+    "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+  },
+  {
+    "id": 8,
+    "file": "videos/08-deine-wischgesten.mp4",
+    "sha256": "d2716c49c8678530a3d4f3d7e6b3421e9434da592b0139eb173f5f8654fb0939",
+    "sheet": "08-deine-wischgesten.jpg",
+    "sample_times": [
+      2.4,
+      7.2,
+      12,
+      16.2
+    ],
+    "full_decode": "PASS",
+    "duration_video_audio_container": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "loudness_lufs": -17.1,
+    "true_peak_dbfs": -5.4,
+    "technical_review": "PASS",
+    "visual_review": "PASS",
+    "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+  },
+  {
+    "id": 9,
+    "file": "videos/09-unscharfe-fotos.mp4",
+    "sha256": "88925b9104257462cde9b099bba606b7e3de8d8e22a1b1881dfa6c05d8175b84",
+    "sheet": "09-unscharfe-fotos.jpg",
+    "sample_times": [
+      2.4,
+      7.2,
+      12,
+      16.2
+    ],
+    "full_decode": "PASS",
+    "duration_video_audio_container": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "loudness_lufs": -17.1,
+    "true_peak_dbfs": -5.0,
+    "technical_review": "PASS",
+    "visual_review": "PASS",
+    "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+  },
+  {
+    "id": 10,
+    "file": "videos/10-collagen.mp4",
+    "sha256": "eb4679d4edd0c342a85288acd73e62477ca6853a1f2d124cb667e6ce92890b26",
+    "sheet": "10-collagen.jpg",
+    "sample_times": [
+      2.4,
+      7.2,
+      12,
+      16.2
+    ],
+    "full_decode": "PASS",
+    "duration_video_audio_container": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "loudness_lufs": -17.1,
+    "true_peak_dbfs": -5.6,
+    "technical_review": "PASS",
+    "visual_review": "PASS",
+    "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+  },
+  {
+    "id": 11,
+    "file": "videos/11-filter.mp4",
+    "sha256": "776a279a0449833f73c13b4e3eae15e2adcc0cdbf6d3e14c5a82d7c0a1d4e489",
+    "sheet": "11-filter.jpg",
+    "sample_times": [
+      2.4,
+      7.2,
+      12,
+      16.2
+    ],
+    "full_decode": "PASS",
+    "duration_video_audio_container": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "loudness_lufs": -17.1,
+    "true_peak_dbfs": -5.4,
+    "technical_review": "PASS",
+    "visual_review": "PASS",
+    "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+  },
+  {
+    "id": 12,
+    "file": "videos/12-belichtung.mp4",
+    "sha256": "19a438929cb7ccef0a5556b7dcbc5f78f2061b9f264808e248c1872e6997fc05",
+    "sheet": "12-belichtung.jpg",
+    "sample_times": [
+      2.4,
+      7.2,
+      12,
+      16.2
+    ],
+    "full_decode": "PASS",
+    "duration_video_audio_container": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "loudness_lufs": -17.1,
+    "true_peak_dbfs": -5.6,
+    "technical_review": "PASS",
+    "visual_review": "PASS",
+    "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+  },
+  {
+    "id": 13,
+    "file": "videos/13-zeichnen.mp4",
+    "sha256": "a436aa6598d925313293428c01ecb8ece9cc7d1b40fe2db581042450da96edcb",
+    "sheet": "13-zeichnen.jpg",
+    "sample_times": [
+      2.4,
+      7.2,
+      12,
+      16.2
+    ],
+    "full_decode": "PASS",
+    "duration_video_audio_container": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "loudness_lufs": -17.1,
+    "true_peak_dbfs": -5.0,
+    "technical_review": "PASS",
+    "visual_review": "PASS",
+    "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+  },
+  {
+    "id": 14,
+    "file": "videos/14-zuschnitt-rahmen.mp4",
+    "sha256": "20d1c31082f988293570d41ce2f7933c0cb328f05ca9eb482965ac265a34b61c",
+    "sheet": "14-zuschnitt-rahmen.jpg",
+    "sample_times": [
+      2.4,
+      7.2,
+      12,
+      16.2
+    ],
+    "full_decode": "PASS",
+    "duration_video_audio_container": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "loudness_lufs": -17.1,
+    "true_peak_dbfs": -5.0,
+    "technical_review": "PASS",
+    "visual_review": "PASS",
+    "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+  },
+  {
+    "id": 15,
+    "file": "videos/15-werkzeuge-gratis.mp4",
+    "sha256": "4ef68624170a23410bdbb467cc9c9b45af3f3459cfee5708e1eb035df9b5f699",
+    "sheet": "15-werkzeuge-gratis.jpg",
+    "sample_times": [
+      2.4,
+      7.2,
+      12,
+      16.2
+    ],
+    "full_decode": "PASS",
+    "duration_video_audio_container": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "loudness_lufs": -17.0,
+    "true_peak_dbfs": -4.4,
+    "technical_review": "PASS",
+    "visual_review": "PASS",
+    "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+  },
+  {
+    "id": 16,
+    "file": "videos/16-privater-tresor.mp4",
+    "sha256": "81f750f39aea87d8e3aeb3419945adfb91864f4a788af5acd8498e206713c4b5",
+    "sheet": "16-privater-tresor.jpg",
+    "sample_times": [
+      2.4,
+      7.2,
+      12,
+      16.2
+    ],
+    "full_decode": "PASS",
+    "duration_video_audio_container": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "loudness_lufs": -17.1,
+    "true_peak_dbfs": -5.4,
+    "technical_review": "PASS",
+    "visual_review": "PASS",
+    "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+  },
+  {
+    "id": 17,
+    "file": "videos/17-bilder-ohne-leisten.mp4",
+    "sha256": "1c58dee7abe7fef77fdbe8d6cac61e67cce30f9446c2dd0913ea3368dd4b58d4",
+    "sheet": "17-bilder-ohne-leisten.jpg",
+    "sample_times": [
+      2.4,
+      7.2,
+      12,
+      16.2
+    ],
+    "full_decode": "PASS",
+    "duration_video_audio_container": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "loudness_lufs": -17.1,
+    "true_peak_dbfs": -5.0,
+    "technical_review": "PASS",
+    "visual_review": "PASS",
+    "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+  },
+  {
+    "id": 18,
+    "file": "videos/18-private-notizen.mp4",
+    "sha256": "f4471ea8bfd7c1ec727051cb32ca309c715d7ddf09bda28132dcb90e5262f8c3",
+    "sheet": "18-private-notizen.jpg",
+    "sample_times": [
+      2.4,
+      7.2,
+      12,
+      16.2
+    ],
+    "full_decode": "PASS",
+    "duration_video_audio_container": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "loudness_lufs": -17.1,
+    "true_peak_dbfs": -5.0,
+    "technical_review": "PASS",
+    "visual_review": "PASS",
+    "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+  },
+  {
+    "id": 19,
+    "file": "videos/19-fotofilm.mp4",
+    "sha256": "7289e6e336035f047166105074f76f257e7f3810f2def81b8e4264f507925fde",
+    "sheet": "19-fotofilm.jpg",
+    "sample_times": [
+      2.4,
+      7.2,
+      12,
+      16.2
+    ],
+    "full_decode": "PASS",
+    "duration_video_audio_container": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "loudness_lufs": -17.1,
+    "true_peak_dbfs": -5.6,
+    "technical_review": "PASS",
+    "visual_review": "PASS",
+    "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+  },
+  {
+    "id": 20,
+    "file": "videos/20-alles-in-einer-app.mp4",
+    "sha256": "70341741021fdb9c848ae5df7dcb6bf011671e1757522964ffa65f56cb612c97",
+    "sheet": "20-alles-in-einer-app.jpg",
+    "sample_times": [
+      2.4,
+      7.2,
+      12,
+      16.2
+    ],
+    "full_decode": "PASS",
+    "duration_video_audio_container": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "loudness_lufs": -17.0,
+    "true_peak_dbfs": -4.4,
+    "technical_review": "PASS",
+    "visual_review": "PASS",
+    "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+  }
+]

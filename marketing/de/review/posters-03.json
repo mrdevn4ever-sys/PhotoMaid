@@ -1,0 +1,23 @@
+{
+  "sheet": "posters-03.jpg",
+  "posters": [
+    {
+      "file": "posters/09-unscharfe-fotos.jpg",
+      "sha256": "daf9cdb0d5e1e979b4f80e3cdf91726ebe090ab965a8970d01e66f62d209089a"
+    },
+    {
+      "file": "posters/10-collagen.jpg",
+      "sha256": "0db77553cfe5aaf546b54c724d7175482a58a10d6310f354ab6f181b37e77748"
+    },
+    {
+      "file": "posters/11-filter.jpg",
+      "sha256": "334722fe638b1388ee804eaf06b4f2de7a5280c127f8cb65408c974c38a6f21c"
+    },
+    {
+      "file": "posters/12-belichtung.jpg",
+      "sha256": "a5abbebe4b0cd676303c5c1fa15f3c51eb8fdba0729207387080732312615273"
+    }
+  ],
+  "visual_review": "PASS",
+  "findings": "Alle vier tatsächlichen Posterdateien auf dem Prüfbogen angesehen: lesbarer deutscher Einstieg und echte App-Szenen. Sichtbare Kartenbewegungen in den Wischmotiven sind Teil der Originalaufnahme."
+}

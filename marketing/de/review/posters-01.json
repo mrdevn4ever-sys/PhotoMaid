@@ -1,0 +1,23 @@
+{
+  "sheet": "posters-01.jpg",
+  "posters": [
+    {
+      "file": "posters/01-einfach-anfangen.jpg",
+      "sha256": "02959a650c0e4ebff697512881bf740e8a5f35e559e36191210bbf69b2f538d5"
+    },
+    {
+      "file": "posters/02-behalten.jpg",
+      "sha256": "ab3ba9c1165b0ffb97807f03ca039396990e7fbfaf3fef19d0429f55c2e4b80d"
+    },
+    {
+      "file": "posters/03-spaeter.jpg",
+      "sha256": "a5e8056efdc28ca55f907946730f2a2969869d77236ff658d72e0e77de6f7283"
+    },
+    {
+      "file": "posters/04-zurueck.jpg",
+      "sha256": "57af5ad0602d5c10e6f13b9bbcafd4f7e21310470542d84cc20c78943aebbfae"
+    }
+  ],
+  "visual_review": "PASS",
+  "findings": "Alle vier tatsächlichen Posterdateien auf dem Prüfbogen angesehen: lesbarer deutscher Einstieg und echte App-Szenen. Sichtbare Kartenbewegungen in den Wischmotiven sind Teil der Originalaufnahme."
+}

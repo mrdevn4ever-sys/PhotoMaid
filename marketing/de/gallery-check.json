@@ -1,0 +1,13 @@
+{
+  "Studio": 7,
+  "Tresor": 3,
+  "Aufräumen": 9,
+  "Überblick": 1,
+  "Alle": 20,
+  "Merkliste": "PASS",
+  "Chromium_MP4_playback": "PASS",
+  "single_player_audio": "PASS",
+  "mobile_no_overflow": "PASS",
+  "visual_review": "PASS",
+  "findings": "Desktop- und Mobilansicht tatsächlich angesehen. Kein horizontaler Überlauf, lesbare Titel und funktionierende Filter, Merkliste und Browser-Wiedergabe. Lokaler HTTP-Aufruf; file:// wird in der verwalteten Prüf-Umgebung administrativ blockiert."
+}

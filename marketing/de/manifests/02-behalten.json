@@ -1,0 +1,51 @@
+{
+  "id": 2,
+  "file": "videos/02-behalten.mp4",
+  "poster": "posters/02-behalten.jpg",
+  "locale": "de-DE",
+  "title": "Lieblingsbilder behalten",
+  "theme": "Behalten",
+  "style": "mint",
+  "duration": 18.0,
+  "sha256": "f4abb671c50c9b6ac400afe8867ad87e971ec992f09a4f133dafeef1e93f453b",
+  "poster_sha256": "ab3ba9c1165b0ffb97807f03ca039396990e7fbfaf3fef19d0429f55c2e4b80d",
+  "source_assets": [
+    {
+      "file": "app-store/locales/de/previews/01-review.mp4",
+      "type": "recording",
+      "start": 4.2,
+      "sha256": "f43c4472c4fa0a5118a20c78bcb367d2e747bf670e67097157147d389da47ca1"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/02-today-and-review/feed.png",
+      "type": "screenshot",
+      "sha256": "6a4ce23134f563abc7bc1575ad1ac48300a3bdc8ee5894aa2e269851fe529158"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/02-today-and-review/feed-gesture-guide.png",
+      "type": "screenshot",
+      "sha256": "dd798ca1f7df9d54600dff93a54efe661c5e533f5cfaaa1638f24540c252637f"
+    }
+  ],
+  "music": {
+    "origin": "Original oscillator/noise synthesis; no samples or external tracks",
+    "style": "mint",
+    "master_file": "music/mint.flac",
+    "master_sha256": "4c65fbdd77ce1e82c41689b47a218fa3e898962c4b4bead5ca4cb1ea2e67a5fe",
+    "render_wav_sha256": "d9e7caf1141eb58726e93242aafec4de186c07b1f5630d1c5cabb009b5d0c922"
+  },
+  "voice": "none; German text is burned into the picture",
+  "editing": {
+    "scene_seconds": 4.8,
+    "end_seconds": 3.6,
+    "screenshot_zoom_max": 1.0143,
+    "source_policy": "Proportional inset captures. Original app media and UI content unchanged. Marketing titles outside the app frame."
+  },
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "pixel_aspect_normalization": {
+    "method": "Lossless H.264 VUI metadata normalization to square pixels; no re-encoding",
+    "input_sha256": "78088a3d0df05c39a7b425c6ba5e73892b214cde8b5eed04e17a99db5a821b2a"
+  },
+  "concept_sha256": "fa6277765b4b3bf42cc56f3a5662b7c80026fa703bbb69d7f050803b11a3387c"
+}

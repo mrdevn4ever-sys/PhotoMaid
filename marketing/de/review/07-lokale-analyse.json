@@ -1,0 +1,23 @@
+{
+  "id": 7,
+  "file": "videos/07-lokale-analyse.mp4",
+  "sha256": "7da9d597f174e42c151327d7e15ec1a4629436b8fdf70bb114d6443a18b5c016",
+  "sheet": "07-lokale-analyse.jpg",
+  "sample_times": [
+    2.4,
+    7.2,
+    12,
+    16.2
+  ],
+  "full_decode": "PASS",
+  "duration_video_audio_container": [
+    18.0,
+    18.0,
+    18.0
+  ],
+  "loudness_lufs": -17.0,
+  "true_peak_dbfs": -4.4,
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+}

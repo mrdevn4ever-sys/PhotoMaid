@@ -1,0 +1,23 @@
+{
+  "id": 3,
+  "file": "videos/03-spaeter.mp4",
+  "sha256": "ace2899df2ede52a97c47d9e725604130c78544f209bbb5093b31a1ccfff889b",
+  "sheet": "03-spaeter.jpg",
+  "sample_times": [
+    2.4,
+    7.2,
+    12,
+    16.2
+  ],
+  "full_decode": "PASS",
+  "duration_video_audio_container": [
+    18.0,
+    18.0,
+    18.0
+  ],
+  "loudness_lufs": -17.1,
+  "true_peak_dbfs": -5.4,
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "findings": "Vier tatsächliche Bildstichproben mit allen drei Inhaltsszenen und der Schlusskarte angesehen. Deutsche Werbetexte lesbar, keine Überschneidung mit dem App-Bild, keine Platzhalter. Gezeigte App-Funktion passt zum Konzept; native Medien und Zahlen unverändert. Die vollständigen Filme wurden dekodiert, nicht jeweils in Echtzeit angesehen. Ton technisch auf Lautheit und Übersteuerung geprüft; keine subjektive Hörabnahme."
+}

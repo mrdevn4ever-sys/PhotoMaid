@@ -1,0 +1,53 @@
+{
+  "id": 13,
+  "file": "videos/13-zeichnen.mp4",
+  "poster": "posters/13-zeichnen.jpg",
+  "locale": "de-DE",
+  "title": "Mach dein Foto zu deinem",
+  "theme": "Zeichnen",
+  "style": "coral",
+  "duration": 18.0,
+  "sha256": "a436aa6598d925313293428c01ecb8ece9cc7d1b40fe2db581042450da96edcb",
+  "poster_sha256": "6864123b815f7a3990fd61ef5c31c43358bfc12175e78d5c0c9602f00ce7f0d7",
+  "source_assets": [
+    {
+      "file": "app-store/locales/de/previews/02-studio.mp4",
+      "type": "recording",
+      "start": 12.8,
+      "sha256": "b56386ce68b2f8da932d9f644ef86c7a8be006b1005bf568b5670d0153702ef7"
+    },
+    {
+      "file": "app-store/locales/de/previews/02-studio.mp4",
+      "type": "recording",
+      "start": 18.9,
+      "sha256": "b56386ce68b2f8da932d9f644ef86c7a8be006b1005bf568b5670d0153702ef7"
+    },
+    {
+      "file": "app-store/locales/de/previews/02-studio.mp4",
+      "type": "recording",
+      "start": 22.1,
+      "sha256": "b56386ce68b2f8da932d9f644ef86c7a8be006b1005bf568b5670d0153702ef7"
+    }
+  ],
+  "music": {
+    "origin": "Original oscillator/noise synthesis; no samples or external tracks",
+    "style": "coral",
+    "master_file": "music/coral.flac",
+    "master_sha256": "57e2bf200d6b60725062dc259c736fe7d9843a314e8d01aa88856f7dfee9e3cb",
+    "render_wav_sha256": "af7655684b810a2ed77e29ca641f3df2e3c8215672cfe9209c91c88091fd4729"
+  },
+  "voice": "none; German text is burned into the picture",
+  "editing": {
+    "scene_seconds": 4.8,
+    "end_seconds": 3.6,
+    "screenshot_zoom_max": 1.0143,
+    "source_policy": "Proportional inset captures. Original app media and UI content unchanged. Marketing titles outside the app frame."
+  },
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "pixel_aspect_normalization": {
+    "method": "Lossless H.264 VUI metadata normalization to square pixels; no re-encoding",
+    "input_sha256": "2b4f30324074a57b02f4ab82c97f2de1a59349f7b1f53ae22862f5b127eeb335"
+  },
+  "concept_sha256": "ddf997d820ef11c7261613c78cc5813970dadbc8b302a8a37c11e0c9a5a23801"
+}

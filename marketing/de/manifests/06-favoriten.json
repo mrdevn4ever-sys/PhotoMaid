@@ -1,0 +1,50 @@
+{
+  "id": 6,
+  "file": "videos/06-favoriten.mp4",
+  "poster": "posters/06-favoriten.jpg",
+  "locale": "de-DE",
+  "title": "Für deine Lieblingsmomente",
+  "theme": "Favoriten",
+  "style": "amber",
+  "duration": 18.0,
+  "sha256": "f9f69a7931c80c706d648f762cef4b9e6c300b44b1522dad4a7e804fd889fa15",
+  "poster_sha256": "aa2c72eb1a8dcd9e9c2ac72340390b5f5c5e1b7e4975b7506db051916e0683f1",
+  "source_assets": [
+    {
+      "file": "app-store/locales/de/all-pages/03-photos/favorites.png",
+      "type": "screenshot",
+      "sha256": "8ad2587fd4d8993a22886956b938dfc4e08a916630a762d8f9cb3ad3b4bf322e"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/03-photos/library-favorites.png",
+      "type": "screenshot",
+      "sha256": "d9fb57654010ea618cf696bbaa5e2c6172e9b034f6eb14bcb4c577a437fe3c8f"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/03-photos/viewer.png",
+      "type": "screenshot",
+      "sha256": "f94a14597b1fa3d9fc0558d22f158daaed34c0ba53054fc6d26b31fd47886bb1"
+    }
+  ],
+  "music": {
+    "origin": "Original oscillator/noise synthesis; no samples or external tracks",
+    "style": "amber",
+    "master_file": "music/amber.flac",
+    "master_sha256": "7202d30944c27006737f414277c07c14dbdea5bcbae607575750883e21c4ea5e",
+    "render_wav_sha256": "9e29380ccc57264972a5df91f5ffa1b23511ab48efe7ecb66a98624f5825264d"
+  },
+  "voice": "none; German text is burned into the picture",
+  "editing": {
+    "scene_seconds": 4.8,
+    "end_seconds": 3.6,
+    "screenshot_zoom_max": 1.0143,
+    "source_policy": "Proportional inset captures. Original app media and UI content unchanged. Marketing titles outside the app frame."
+  },
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "pixel_aspect_normalization": {
+    "method": "Lossless H.264 VUI metadata normalization to square pixels; no re-encoding",
+    "input_sha256": "0f5607f2c22d1ae26b66f9cb7fb422e7b9bd6820a27797f783605130ef72cf95"
+  },
+  "concept_sha256": "be54533312bf2567da3dfa53a00bebe3ddda98794d2d2e3c9df2e58c2807378e"
+}

@@ -1,0 +1,47 @@
+{
+  "id": 7,
+  "file": "videos/07-lokale-analyse.mp4",
+  "poster": "posters/07-lokale-analyse.jpg",
+  "locale": "de-DE",
+  "title": "Analyse direkt auf deinem iPhone",
+  "theme": "Lokale Analyse",
+  "style": "mint",
+  "duration": 18.0,
+  "sha256": "7da9d597f174e42c151327d7e15ec1a4629436b8fdf70bb114d6443a18b5c016",
+  "poster_sha256": "cee4787cfbb51cfd77b822e67d69442564ecf7a07587dc6981aa4645db2dcb13",
+  "source_assets": [
+    {
+      "file": "app-store/locales/de/all-pages/04-cleanup/cleanup-bottom.png",
+      "type": "screenshot",
+      "sha256": "2e8f6e426a2c1d6a01fd2baf30ffafd9042bd3f6997042a698b9e7309b00d637"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/04-cleanup/blurry-results-grid.png",
+      "type": "screenshot",
+      "sha256": "50a5d712b85acc893695689a0d35cdcfd70a68c27f5e28bfea301562b5b787c9"
+    },
+    {
+      "file": "app-store/locales/de/previews/01-review.mp4",
+      "type": "recording",
+      "start": 4.2,
+      "sha256": "f43c4472c4fa0a5118a20c78bcb367d2e747bf670e67097157147d389da47ca1"
+    }
+  ],
+  "music": {
+    "origin": "Original oscillator/noise synthesis; no samples or external tracks",
+    "style": "mint",
+    "master_file": "music/mint.flac",
+    "master_sha256": "4c65fbdd77ce1e82c41689b47a218fa3e898962c4b4bead5ca4cb1ea2e67a5fe",
+    "render_wav_sha256": "d9e7caf1141eb58726e93242aafec4de186c07b1f5630d1c5cabb009b5d0c922"
+  },
+  "voice": "none; German text is burned into the picture",
+  "editing": {
+    "scene_seconds": 4.8,
+    "end_seconds": 3.6,
+    "screenshot_zoom_max": 1.0143,
+    "source_policy": "Proportional inset captures. Original app media and UI content unchanged. Marketing titles outside the app frame."
+  },
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "concept_sha256": "c6cc579e4a50f075e72c89131248ab5e93f2e575a5d32169fb76c50103f865d1"
+}

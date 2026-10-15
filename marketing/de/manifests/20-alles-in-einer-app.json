@@ -1,0 +1,53 @@
+{
+  "id": 20,
+  "file": "videos/20-alles-in-einer-app.mp4",
+  "poster": "posters/20-alles-in-einer-app.jpg",
+  "locale": "de-DE",
+  "title": "Aufräumen. Gestalten. Bewahren.",
+  "theme": "Gesamtüberblick",
+  "style": "mint",
+  "duration": 18.0,
+  "sha256": "70341741021fdb9c848ae5df7dcb6bf011671e1757522964ffa65f56cb612c97",
+  "poster_sha256": "10988a41a8099515e780c53e6ee688c0873d35d093b5869a01bd9b7a00ca6727",
+  "source_assets": [
+    {
+      "file": "app-store/locales/de/previews/01-review.mp4",
+      "type": "recording",
+      "start": 4.2,
+      "sha256": "f43c4472c4fa0a5118a20c78bcb367d2e747bf670e67097157147d389da47ca1"
+    },
+    {
+      "file": "app-store/locales/de/previews/02-studio.mp4",
+      "type": "recording",
+      "start": 18.9,
+      "sha256": "b56386ce68b2f8da932d9f644ef86c7a8be006b1005bf568b5670d0153702ef7"
+    },
+    {
+      "file": "app-store/locales/de/previews/03-vault.mp4",
+      "type": "recording",
+      "start": 6.5,
+      "sha256": "0dfef732880fa5eead13b9fd6f54b39bc69b2dcc09a5e7330873bfeb32507b2c"
+    }
+  ],
+  "music": {
+    "origin": "Original oscillator/noise synthesis; no samples or external tracks",
+    "style": "mint",
+    "master_file": "music/mint.flac",
+    "master_sha256": "4c65fbdd77ce1e82c41689b47a218fa3e898962c4b4bead5ca4cb1ea2e67a5fe",
+    "render_wav_sha256": "d9e7caf1141eb58726e93242aafec4de186c07b1f5630d1c5cabb009b5d0c922"
+  },
+  "voice": "none; German text is burned into the picture",
+  "editing": {
+    "scene_seconds": 4.8,
+    "end_seconds": 3.6,
+    "screenshot_zoom_max": 1.0143,
+    "source_policy": "Proportional inset captures. Original app media and UI content unchanged. Marketing titles outside the app frame."
+  },
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "pixel_aspect_normalization": {
+    "method": "Lossless H.264 VUI metadata normalization to square pixels; no re-encoding",
+    "input_sha256": "8b1249412d5da156a65eeb9a929419bae71a3196c6a3ef3b5914fd108c1adc38"
+  },
+  "concept_sha256": "ca861b8fdaecd682eb3f9698197f74ea6dd884bc1a5d623ca1d96149ab7f6aba"
+}

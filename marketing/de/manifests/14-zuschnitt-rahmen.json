@@ -1,0 +1,50 @@
+{
+  "id": 14,
+  "file": "videos/14-zuschnitt-rahmen.mp4",
+  "poster": "posters/14-zuschnitt-rahmen.jpg",
+  "locale": "de-DE",
+  "title": "Dein Bild im passenden Rahmen",
+  "theme": "Zuschnitt und Rahmen",
+  "style": "blue",
+  "duration": 18.0,
+  "sha256": "20d1c31082f988293570d41ce2f7933c0cb328f05ca9eb482965ac265a34b61c",
+  "poster_sha256": "2d02d4564c986a0977842ab836ecd2af94670197cc5f79af100da58e94eefb35",
+  "source_assets": [
+    {
+      "file": "app-store/locales/de/all-pages/05-studio/editor-crop.png",
+      "type": "screenshot",
+      "sha256": "7d0de4e75ab3874b7c286c39779c0c6bfb2b26db3d972307de07703006f72a82"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/05-studio/editor-frame.png",
+      "type": "screenshot",
+      "sha256": "88b14d2fa75c591a77a9a0a720620bcf60e8c1d6edf8e0847af8d35b018303eb"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/05-studio/editor-resize.png",
+      "type": "screenshot",
+      "sha256": "5de8ae282ac955adcf39d192de5c1b854100010202f2696258c252a8fd9048fc"
+    }
+  ],
+  "music": {
+    "origin": "Original oscillator/noise synthesis; no samples or external tracks",
+    "style": "blue",
+    "master_file": "music/blue.flac",
+    "master_sha256": "ca0f2291bbb208de4e521a80d0f1d03bd94bb05ee6b9a7bf144cbc5a5b51009b",
+    "render_wav_sha256": "6c187a2eb491b6750ba5bace73f40f8529e5d4e612a5f1d96fec6183d4d000c9"
+  },
+  "voice": "none; German text is burned into the picture",
+  "editing": {
+    "scene_seconds": 4.8,
+    "end_seconds": 3.6,
+    "screenshot_zoom_max": 1.0143,
+    "source_policy": "Proportional inset captures. Original app media and UI content unchanged. Marketing titles outside the app frame."
+  },
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "pixel_aspect_normalization": {
+    "method": "Lossless H.264 VUI metadata normalization to square pixels; no re-encoding",
+    "input_sha256": "b73e4c55a3c7692d64c4177ac380de553be7c4ff1a2f01c929b3e5af5cc1308c"
+  },
+  "concept_sha256": "1c58af7f8ce1e8a95f49d208e286a46606f1fd4ff3256102c6d18c16749cd7dd"
+}

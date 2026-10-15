@@ -1,0 +1,780 @@
+{
+  "locale": "de-DE",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "scene_seconds": 4.8,
+    "end_seconds": 3.6,
+    "duration": 18
+  },
+  "cta": "PhotoMaid entdecken",
+  "ads": [
+    {
+      "id": 1,
+      "slug": "einfach-anfangen",
+      "title": "Einfach anfangen",
+      "theme": "Einstieg",
+      "style": "blue",
+      "scenes": [
+        {
+          "headline": "Zu viele Fotos?\nFang mit einem an.",
+          "body": "Ein Bild nach dem anderen. In deinem Tempo.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/03-photos/library.png",
+            "type": "screenshot"
+          },
+          "tag": "ÜBERSICHT"
+        },
+        {
+          "headline": "Was bleibt,\nentscheidest du.",
+          "body": "Nach oben wischen heißt: behalten.",
+          "source": {
+            "file": "app-store/locales/de/previews/01-review.mp4",
+            "type": "recording",
+            "start": 4.5
+          },
+          "tag": "BEHALTEN"
+        },
+        {
+          "headline": "Heute unsicher?\nEntscheide später.",
+          "body": "Nach rechts wischen. Später wiedersehen.",
+          "source": {
+            "file": "app-store/locales/de/previews/01-review.mp4",
+            "type": "recording",
+            "start": 16
+          },
+          "tag": "SPÄTER"
+        }
+      ],
+      "endline": "Weniger Chaos.\nMehr Lieblingsmomente."
+    },
+    {
+      "id": 2,
+      "slug": "behalten",
+      "title": "Lieblingsbilder behalten",
+      "theme": "Behalten",
+      "style": "mint",
+      "scenes": [
+        {
+          "headline": "Deine Lieblinge\nbleiben.",
+          "body": "Ein Wisch nach oben. Weiter zum nächsten Foto.",
+          "source": {
+            "file": "app-store/locales/de/previews/01-review.mp4",
+            "type": "recording",
+            "start": 4.2
+          },
+          "tag": "NACH OBEN"
+        },
+        {
+          "headline": "Du siehst das Foto.\nDu entscheidest.",
+          "body": "Große Bilder statt endloser Miniaturen.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/02-today-and-review/feed.png",
+            "type": "screenshot"
+          },
+          "tag": "DEIN BLICK"
+        },
+        {
+          "headline": "Ordnung beginnt\nmit einem Wisch.",
+          "body": "Behalten, Papierkorb oder später ansehen.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/02-today-and-review/feed-gesture-guide.png",
+            "type": "screenshot"
+          },
+          "tag": "DEIN TEMPO"
+        }
+      ],
+      "endline": "Behalte, was\ndir wichtig ist."
+    },
+    {
+      "id": 3,
+      "slug": "spaeter",
+      "title": "Heute nicht? Dann später.",
+      "theme": "Später",
+      "style": "violet",
+      "scenes": [
+        {
+          "headline": "Heute nicht?\nDann später.",
+          "body": "Manche Fotos brauchen keine schnelle Entscheidung.",
+          "source": {
+            "file": "app-store/locales/de/previews/01-review.mp4",
+            "type": "recording",
+            "start": 15.8
+          },
+          "tag": "OHNE DRUCK"
+        },
+        {
+          "headline": "Wiedersehen\nstatt vergessen.",
+          "body": "Die Später-Pille zeigt dir den nächsten Termin.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/02-today-and-review/feed-later.png",
+            "type": "screenshot"
+          },
+          "tag": "IN 2 TAGEN"
+        },
+        {
+          "headline": "Dein Tempo.\nDein Zeitpunkt.",
+          "body": "Vorgemerkte Fotos findest du unter „Später“.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/04-cleanup/later.png",
+            "type": "screenshot"
+          },
+          "tag": "VORGEMERKT"
+        }
+      ],
+      "endline": "Heute entspannt.\nSpäter entschieden."
+    },
+    {
+      "id": 4,
+      "slug": "zurueck",
+      "title": "Ein Wisch zurück",
+      "theme": "Zurück und Rückgängig",
+      "style": "coral",
+      "scenes": [
+        {
+          "headline": "Zu schnell\nweitergewischt?",
+          "body": "Nach unten kommst du zum vorherigen Bild.",
+          "source": {
+            "file": "app-store/locales/de/previews/01-review.mp4",
+            "type": "recording",
+            "start": 21.5
+          },
+          "tag": "ZURÜCK"
+        },
+        {
+          "headline": "Ein Wisch zurück.\nNoch mal hinsehen.",
+          "body": "Du kannst deine Fotos in Ruhe beurteilen.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/02-today-and-review/feed.png",
+            "type": "screenshot"
+          },
+          "tag": "IN RUHE"
+        },
+        {
+          "headline": "Entscheidungen\nim Blick behalten.",
+          "body": "Dein Verlauf macht deine Schritte nachvollziehbar.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/08-history/history.png",
+            "type": "screenshot"
+          },
+          "tag": "VERLAUF"
+        }
+      ],
+      "endline": "Du behältst\ndie Kontrolle."
+    },
+    {
+      "id": 5,
+      "slug": "fotos-im-blick",
+      "title": "Deine Fotos im Blick",
+      "theme": "Fotoübersicht",
+      "style": "blue",
+      "scenes": [
+        {
+          "headline": "Deine Fotos.\nIm Blick.",
+          "body": "Tage, Monate und Jahre in einer Übersicht.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/03-photos/library.png",
+            "type": "screenshot"
+          },
+          "tag": "FOTOS"
+        },
+        {
+          "headline": "Ein Filter.\nEin klarer Blick.",
+          "body": "Zeige gezielt nur die Fotos deiner Mediathek.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/03-photos/library-photos.png",
+            "type": "screenshot"
+          },
+          "tag": "FILTERN"
+        },
+        {
+          "headline": "Mehr sehen.\nWeniger suchen.",
+          "body": "Öffne ein Bild und schau es dir groß an.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/03-photos/viewer.png",
+            "type": "screenshot"
+          },
+          "tag": "ANSEHEN"
+        }
+      ],
+      "endline": "Gib deinen Fotos\neine klare Übersicht."
+    },
+    {
+      "id": 6,
+      "slug": "favoriten",
+      "title": "Für deine Lieblingsmomente",
+      "theme": "Favoriten",
+      "style": "amber",
+      "scenes": [
+        {
+          "headline": "Nicht jedes Foto\nist irgendein Foto.",
+          "body": "Manche Momente willst du immer wieder sehen.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/03-photos/favorites.png",
+            "type": "screenshot"
+          },
+          "tag": "LIEBLINGE"
+        },
+        {
+          "headline": "Deine Favoriten.\nZusammen im Blick.",
+          "body": "Mit dem Favoritenfilter direkt zu deinen Herzstücken.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/03-photos/library-favorites.png",
+            "type": "screenshot"
+          },
+          "tag": "FAVORITEN"
+        },
+        {
+          "headline": "Erinnerungen\nverdienen Raum.",
+          "body": "Zum Anschauen. Zum Behalten. Für dich.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/03-photos/viewer.png",
+            "type": "screenshot"
+          },
+          "tag": "DEINE MOMENTE"
+        }
+      ],
+      "endline": "Für Fotos,\ndie dir etwas bedeuten."
+    },
+    {
+      "id": 7,
+      "slug": "lokale-analyse",
+      "title": "Analyse direkt auf deinem iPhone",
+      "theme": "Lokale Analyse",
+      "style": "mint",
+      "scenes": [
+        {
+          "headline": "Dein iPhone.\nDeine Analyse.",
+          "body": "Die Fotoanalyse läuft direkt auf deinem Gerät.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/04-cleanup/cleanup-bottom.png",
+            "type": "screenshot"
+          },
+          "tag": "AUF DEM GERÄT"
+        },
+        {
+          "headline": "Du siehst,\nwas passiert.",
+          "body": "Der Fortschritt der Analyse bleibt sichtbar.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/04-cleanup/blurry-results-grid.png",
+            "type": "screenshot"
+          },
+          "tag": "FORTSCHRITT"
+        },
+        {
+          "headline": "Vorschläge\nstatt Vorgaben.",
+          "body": "Du entscheidest, welche Bilder du behalten möchtest.",
+          "source": {
+            "file": "app-store/locales/de/previews/01-review.mp4",
+            "type": "recording",
+            "start": 4.2
+          },
+          "tag": "DU ENTSCHEIDEST"
+        }
+      ],
+      "endline": "Deine Fotos.\nDeine Entscheidung."
+    },
+    {
+      "id": 8,
+      "slug": "deine-wischgesten",
+      "title": "Wischen, wie es zu dir passt",
+      "theme": "Eigene Wischbelegung",
+      "style": "violet",
+      "scenes": [
+        {
+          "headline": "Wischen, wie es\nzu dir passt.",
+          "body": "Belege die Wischrichtungen nach deinem Geschmack.",
+          "tag": "DEINE GESTEN",
+          "source": {
+            "file": "app-store/locales/de/all-pages/07-settings/controls.png",
+            "type": "screenshot"
+          }
+        },
+        {
+          "headline": "Auch mit Tasten.\nWenn du möchtest.",
+          "body": "Auswahl, Reihenfolge und Position selbst festlegen.",
+          "tag": "DEINE TASTEN",
+          "source": {
+            "file": "app-store/locales/de/all-pages/07-settings/controls-bottom.png",
+            "type": "screenshot"
+          }
+        },
+        {
+          "headline": "Dein Rhythmus.\nDein Aufräumen.",
+          "body": "Ein Bild nach dem anderen – auf deine Weise.",
+          "tag": "DEIN ALLTAG",
+          "source": {
+            "file": "app-store/locales/de/previews/01-review.mp4",
+            "type": "recording",
+            "start": 4.5
+          }
+        }
+      ],
+      "endline": "Wischen, wie du\nes möchtest."
+    },
+    {
+      "id": 9,
+      "slug": "unscharfe-fotos",
+      "title": "Ein Blick auf unscharfe Fotos",
+      "theme": "Unschärfe",
+      "style": "coral",
+      "scenes": [
+        {
+          "headline": "Manche Momente\nsind verschwommen.",
+          "body": "Lass dein iPhone nach unscharfen Fotos suchen.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/04-cleanup/blurry.png",
+            "type": "screenshot"
+          },
+          "tag": "GENAU HINSEHEN"
+        },
+        {
+          "headline": "Ein Vorschlag\nist keine Entscheidung.",
+          "body": "Prüfe die gefundenen Bilder selbst.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/04-cleanup/blurry-results-grid.png",
+            "type": "screenshot"
+          },
+          "tag": "SELBST PRÜFEN"
+        },
+        {
+          "headline": "Was dir wichtig ist,\nbleibt deine Wahl.",
+          "body": "PhotoMaid löscht niemals automatisch.",
+          "source": {
+            "file": "app-store/locales/de/previews/01-review.mp4",
+            "type": "recording",
+            "start": 4.2
+          },
+          "tag": "DEINE WAHL"
+        }
+      ],
+      "endline": "Aufräumen mit\ndeinem eigenen Blick."
+    },
+    {
+      "id": 10,
+      "slug": "collagen",
+      "title": "Mehr als ein Lieblingsmoment",
+      "theme": "Collagen",
+      "style": "amber",
+      "scenes": [
+        {
+          "headline": "Ein Moment\nreicht dir nicht?",
+          "body": "Verbinde mehrere Erinnerungen zu einer Collage.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/05-studio/collage.png",
+            "type": "screenshot"
+          },
+          "tag": "ZUSAMMEN"
+        },
+        {
+          "headline": "Vier Bilder.\nEine Geschichte.",
+          "body": "So passen deine Lieblingsmotive zusammen.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/05-studio/collage.png",
+            "type": "screenshot"
+          },
+          "tag": "DEIN RASTER"
+        },
+        {
+          "headline": "Kreativ werden.\nOhne Pro-Sperre.",
+          "body": "Die Werkzeuge im Studio sind für alle gratis.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/05-studio/studio.png",
+            "type": "screenshot"
+          },
+          "tag": "FÜR ALLE"
+        }
+      ],
+      "endline": "Mach aus Bildern\neine kleine Geschichte."
+    },
+    {
+      "id": 11,
+      "slug": "filter",
+      "title": "Dein Foto. Dein Look.",
+      "theme": "Filter",
+      "style": "violet",
+      "scenes": [
+        {
+          "headline": "Dein Foto.\nDein Look.",
+          "body": "Entdecke einen neuen Stil für deine Aufnahmen.",
+          "source": {
+            "file": "app-store/locales/de/previews/02-studio.mp4",
+            "type": "recording",
+            "start": 0.5
+          },
+          "tag": "ORIGINAL"
+        },
+        {
+          "headline": "Ein anderer Look.\nDer gleiche Moment.",
+          "body": "Wähle zum Beispiel einen Schwarzweißfilter.",
+          "source": {
+            "file": "app-store/locales/de/previews/02-studio.mp4",
+            "type": "recording",
+            "start": 11.8
+          },
+          "tag": "SCHWARZWEISS"
+        },
+        {
+          "headline": "Dein Stil\nbraucht kein Pro.",
+          "body": "Filter und alle weiteren Werkzeuge sind gratis.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/05-studio/editor-filter.png",
+            "type": "screenshot"
+          },
+          "tag": "GRATIS-WERKZEUGE"
+        }
+      ],
+      "endline": "Gib deinen Fotos\ndeinen eigenen Stil."
+    },
+    {
+      "id": 12,
+      "slug": "belichtung",
+      "title": "Mehr Licht für deinen Moment",
+      "theme": "Belichtung",
+      "style": "amber",
+      "scenes": [
+        {
+          "headline": "Mehr Licht\nfür deinen Moment.",
+          "body": "Passe die Belichtung direkt im Fotoeditor an.",
+          "source": {
+            "file": "app-store/locales/de/previews/02-studio.mp4",
+            "type": "recording",
+            "start": 1.5
+          },
+          "tag": "FOTOEDITOR"
+        },
+        {
+          "headline": "Kleine Änderung.\nDein eigener Look.",
+          "body": "Mit dem Regler Schritt für Schritt anpassen.",
+          "source": {
+            "file": "app-store/locales/de/previews/02-studio.mp4",
+            "type": "recording",
+            "start": 5.2
+          },
+          "tag": "ANPASSEN"
+        },
+        {
+          "headline": "Deine Werkzeuge.\nDein Feingefühl.",
+          "body": "Belichtung, Helligkeit, Kontrast und mehr.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/05-studio/editor-adjust.png",
+            "type": "screenshot"
+          },
+          "tag": "FEINSCHLIFF"
+        }
+      ],
+      "endline": "Mach mehr aus\ndeinem Lieblingsbild."
+    },
+    {
+      "id": 13,
+      "slug": "zeichnen",
+      "title": "Mach dein Foto zu deinem",
+      "theme": "Zeichnen",
+      "style": "coral",
+      "scenes": [
+        {
+          "headline": "Dein Foto.\nDeine Handschrift.",
+          "body": "Zeichne direkt auf dein Bild.",
+          "source": {
+            "file": "app-store/locales/de/previews/02-studio.mp4",
+            "type": "recording",
+            "start": 12.8
+          },
+          "tag": "GESTALTEN"
+        },
+        {
+          "headline": "Ein Strich.\nDein Akzent.",
+          "body": "Setze Markierungen mit den Zeichenwerkzeugen.",
+          "source": {
+            "file": "app-store/locales/de/previews/02-studio.mp4",
+            "type": "recording",
+            "start": 18.9
+          },
+          "tag": "ZEICHNEN"
+        },
+        {
+          "headline": "Ideen haben\nhier Platz.",
+          "body": "Zeichnen, Farben, Formen und Rahmen im Editor.",
+          "source": {
+            "file": "app-store/locales/de/previews/02-studio.mp4",
+            "type": "recording",
+            "start": 22.1
+          },
+          "tag": "DEIN STIL"
+        }
+      ],
+      "endline": "Mach dein Foto\nzu deinem."
+    },
+    {
+      "id": 14,
+      "slug": "zuschnitt-rahmen",
+      "title": "Dein Bild im passenden Rahmen",
+      "theme": "Zuschnitt und Rahmen",
+      "style": "blue",
+      "scenes": [
+        {
+          "headline": "Gib deinem Bild\neinen neuen Ausschnitt.",
+          "body": "Zuschneiden und Perspektive im Fotoeditor.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/05-studio/editor-crop.png",
+            "type": "screenshot"
+          },
+          "tag": "ZUSCHNITT"
+        },
+        {
+          "headline": "Ein Rahmen\nfür deinen Moment.",
+          "body": "Passe Rand, Farbe und Breite an.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/05-studio/editor-frame.png",
+            "type": "screenshot"
+          },
+          "tag": "RAHMEN"
+        },
+        {
+          "headline": "So, wie du\nes zeigen willst.",
+          "body": "Deine Gestaltung. Deine Entscheidung.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/05-studio/editor-resize.png",
+            "type": "screenshot"
+          },
+          "tag": "BILDGRÖSSE"
+        }
+      ],
+      "endline": "Dein Motiv.\nDeine Gestaltung."
+    },
+    {
+      "id": 15,
+      "slug": "werkzeuge-gratis",
+      "title": "Gute Werkzeuge für alle",
+      "theme": "Gratis-Werkzeuge",
+      "style": "mint",
+      "scenes": [
+        {
+          "headline": "Gute Werkzeuge.\nFür alle.",
+          "body": "Alle Studio-Werkzeuge sind gratis nutzbar.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/05-studio/studio.png",
+            "type": "screenshot"
+          },
+          "tag": "OHNE PRO-SPERRE"
+        },
+        {
+          "headline": "Filtern. Zeichnen.\nAusprobieren.",
+          "body": "Dein kreativer Spielraum im Fotoeditor.",
+          "source": {
+            "file": "app-store/locales/de/previews/02-studio.mp4",
+            "type": "recording",
+            "start": 18.9
+          },
+          "tag": "KREATIV"
+        },
+        {
+          "headline": "Passend machen.\nWeitergeben.",
+          "body": "Bildgröße und Format mit deinen Werkzeugen anpassen.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/05-studio/editor-resize.png",
+            "type": "screenshot"
+          },
+          "tag": "WERKZEUGE"
+        }
+      ],
+      "endline": "Kreativ sein\nbraucht hier kein Pro."
+    },
+    {
+      "id": 16,
+      "slug": "privater-tresor",
+      "title": "Deine privaten Momente",
+      "theme": "PIN-Tresor",
+      "style": "violet",
+      "scenes": [
+        {
+          "headline": "Deine privaten\nMomente.",
+          "body": "Fotos verschlüsselt im PIN-Tresor aufbewahren.",
+          "source": {
+            "file": "app-store/locales/de/previews/03-vault.mp4",
+            "type": "recording",
+            "start": 0.2
+          },
+          "tag": "PRIVATER TRESOR"
+        },
+        {
+          "headline": "Öffnen. Ansehen.\nFür dich behalten.",
+          "body": "Deine importierten Bilder im Tresor-Betrachter.",
+          "source": {
+            "file": "app-store/locales/de/previews/03-vault.mp4",
+            "type": "recording",
+            "start": 6.5
+          },
+          "tag": "BETRACHTEN"
+        },
+        {
+          "headline": "Groß ansehen.\nIn Ruhe entdecken.",
+          "body": "Zoome in die Details deiner Tresorfotos.",
+          "source": {
+            "file": "app-store/locales/de/previews/03-vault.mp4",
+            "type": "recording",
+            "start": 15.5
+          },
+          "tag": "DETAILS"
+        }
+      ],
+      "endline": "Ein privater Ort\nfür deine Erinnerungen."
+    },
+    {
+      "id": 17,
+      "slug": "bilder-ohne-leisten",
+      "title": "Mehr Bild. Weniger Ablenkung.",
+      "theme": "Tresor-Betrachter",
+      "style": "blue",
+      "scenes": [
+        {
+          "headline": "Mehr Bild.\nWeniger Ablenkung.",
+          "body": "Blende die Leisten im Tresor-Betrachter aus.",
+          "source": {
+            "file": "app-store/locales/de/previews/03-vault.mp4",
+            "type": "recording",
+            "start": 11.7
+          },
+          "tag": "FOKUS"
+        },
+        {
+          "headline": "Näher ran\nan deinen Moment.",
+          "body": "Zoomen, verschieben und Details entdecken.",
+          "source": {
+            "file": "app-store/locales/de/previews/03-vault.mp4",
+            "type": "recording",
+            "start": 15.7
+          },
+          "tag": "HERANZOOMEN"
+        },
+        {
+          "headline": "Dein Blick\naufs Wesentliche.",
+          "body": "Die Bedienelemente sind bei Bedarf wieder da.",
+          "source": {
+            "file": "app-store/locales/de/previews/03-vault.mp4",
+            "type": "recording",
+            "start": 6.5
+          },
+          "tag": "DEIN MOMENT"
+        }
+      ],
+      "endline": "Lass deine Bilder\nfür sich sprechen."
+    },
+    {
+      "id": 18,
+      "slug": "private-notizen",
+      "title": "Ein Ort für private Gedanken",
+      "theme": "Tresor-Notizen",
+      "style": "coral",
+      "scenes": [
+        {
+          "headline": "Auch Gedanken\nbrauchen einen Ort.",
+          "body": "Lege private Notizen in deinem Tresor ab.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/06-vault/vault-notes-with-note.png",
+            "type": "screenshot"
+          },
+          "tag": "NOTIZEN"
+        },
+        {
+          "headline": "Notieren.\nFür dich behalten.",
+          "body": "Textblöcke und Anhänge in einer Tresornotiz.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/06-vault/vault-note-editor.png",
+            "type": "screenshot"
+          },
+          "tag": "FESTHALTEN"
+        },
+        {
+          "headline": "Fotos und Notizen.\nEin privater Bereich.",
+          "body": "Verschlüsselt im Tresor mit deinem Code.",
+          "source": {
+            "file": "app-store/locales/de/previews/03-vault.mp4",
+            "type": "recording",
+            "start": 0.2
+          },
+          "tag": "DEIN TRESOR"
+        }
+      ],
+      "endline": "Ein Platz\nfür deine privaten Ideen."
+    },
+    {
+      "id": 19,
+      "slug": "fotofilm",
+      "title": "Aus Fotos wird ein Film",
+      "theme": "Fotofilm",
+      "style": "amber",
+      "scenes": [
+        {
+          "headline": "Deine Fotos\nkönnen mehr.",
+          "body": "Stelle deine Bilder zu einem Film zusammen.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/05-studio/studio.png",
+            "type": "screenshot"
+          },
+          "tag": "STUDIO"
+        },
+        {
+          "headline": "Bild für Bild.\nDeine Geschichte.",
+          "body": "Ordne deine Fotos als Clips hintereinander an.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/05-studio/movie.png",
+            "type": "screenshot"
+          },
+          "tag": "FOTO-CLIPS"
+        },
+        {
+          "headline": "Dein Format.\nDein Film.",
+          "body": "Wähle Format und Qualität vor dem Speichern.",
+          "source": {
+            "file": "app-store/locales/de/all-pages/05-studio/movie-bottom.png",
+            "type": "screenshot"
+          },
+          "tag": "GESTALTEN"
+        }
+      ],
+      "endline": "Erzähl deinen Moment\nBild für Bild."
+    },
+    {
+      "id": 20,
+      "slug": "alles-in-einer-app",
+      "title": "Aufräumen. Gestalten. Bewahren.",
+      "theme": "Gesamtüberblick",
+      "style": "mint",
+      "scenes": [
+        {
+          "headline": "Weniger Chaos.\nMehr Lieblingsmomente.",
+          "body": "Sichte deine Fotos mit einfachen Wischgesten.",
+          "source": {
+            "file": "app-store/locales/de/previews/01-review.mp4",
+            "type": "recording",
+            "start": 4.2
+          },
+          "tag": "AUFRÄUMEN"
+        },
+        {
+          "headline": "Deine Erinnerungen.\nDeine Ideen.",
+          "body": "Bearbeite und gestalte mit Gratis-Werkzeugen.",
+          "source": {
+            "file": "app-store/locales/de/previews/02-studio.mp4",
+            "type": "recording",
+            "start": 18.9
+          },
+          "tag": "GESTALTEN"
+        },
+        {
+          "headline": "Was privat ist,\nbekommt seinen Platz.",
+          "body": "Bewahre deine Importe verschlüsselt im PIN-Tresor auf.",
+          "source": {
+            "file": "app-store/locales/de/previews/03-vault.mp4",
+            "type": "recording",
+            "start": 6.5
+          },
+          "tag": "BEWAHREN"
+        }
+      ],
+      "endline": "Aufräumen. Gestalten.\nBewahren."
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": 1,
+  "file": "videos/01-einfach-anfangen.mp4",
+  "poster": "posters/01-einfach-anfangen.jpg",
+  "locale": "de-DE",
+  "title": "Einfach anfangen",
+  "theme": "Einstieg",
+  "style": "blue",
+  "duration": 18.0,
+  "sha256": "ac05ba1adc8a359d3489dd67078b9183ea6ce6dbb1fe7fe7b662c386865d6efc",
+  "poster_sha256": "02959a650c0e4ebff697512881bf740e8a5f35e559e36191210bbf69b2f538d5",
+  "source_assets": [
+    {
+      "file": "app-store/locales/de/all-pages/03-photos/library.png",
+      "type": "screenshot",
+      "sha256": "b2eab04eb60815d77dd88ef2e6b5778a4fd4ad84425dcefd2abf2c05acd2353b"
+    },
+    {
+      "file": "app-store/locales/de/previews/01-review.mp4",
+      "type": "recording",
+      "start": 4.5,
+      "sha256": "f43c4472c4fa0a5118a20c78bcb367d2e747bf670e67097157147d389da47ca1"
+    },
+    {
+      "file": "app-store/locales/de/previews/01-review.mp4",
+      "type": "recording",
+      "start": 16,
+      "sha256": "f43c4472c4fa0a5118a20c78bcb367d2e747bf670e67097157147d389da47ca1"
+    }
+  ],
+  "music": {
+    "origin": "Original oscillator/noise synthesis; no samples or external tracks",
+    "style": "blue",
+    "master_file": "music/blue.flac",
+    "master_sha256": "ca0f2291bbb208de4e521a80d0f1d03bd94bb05ee6b9a7bf144cbc5a5b51009b",
+    "render_wav_sha256": "6c187a2eb491b6750ba5bace73f40f8529e5d4e612a5f1d96fec6183d4d000c9"
+  },
+  "voice": "none; German text is burned into the picture",
+  "editing": {
+    "scene_seconds": 4.8,
+    "end_seconds": 3.6,
+    "screenshot_zoom_max": 1.0143,
+    "source_policy": "Proportional inset captures. Original app media and UI content unchanged. Marketing titles outside the app frame."
+  },
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "pixel_aspect_normalization": {
+    "method": "Lossless H.264 VUI metadata normalization to square pixels; no re-encoding",
+    "input_sha256": "f783024efd216376b8ef77366632485af67c143483014ce3e5afbd43e90165ed"
+  },
+  "concept_sha256": "92bae57a78348150f9df689e50fabff654ea81efa001eedb44588602d80c78e1"
+}

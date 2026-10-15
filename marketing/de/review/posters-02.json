@@ -1,0 +1,23 @@
+{
+  "sheet": "posters-02.jpg",
+  "posters": [
+    {
+      "file": "posters/05-fotos-im-blick.jpg",
+      "sha256": "2a27cd7139df11c26e119c8a011e45d16b9e94a51f0ceb22753e6077a7a0b12e"
+    },
+    {
+      "file": "posters/06-favoriten.jpg",
+      "sha256": "aa2c72eb1a8dcd9e9c2ac72340390b5f5c5e1b7e4975b7506db051916e0683f1"
+    },
+    {
+      "file": "posters/07-lokale-analyse.jpg",
+      "sha256": "cee4787cfbb51cfd77b822e67d69442564ecf7a07587dc6981aa4645db2dcb13"
+    },
+    {
+      "file": "posters/08-deine-wischgesten.jpg",
+      "sha256": "52e98147bfd182c378e3cb57cad823736095b63730f209e78c1c08388fd3d318"
+    }
+  ],
+  "visual_review": "PASS",
+  "findings": "Alle vier tatsächlichen Posterdateien auf dem Prüfbogen angesehen: lesbarer deutscher Einstieg und echte App-Szenen. Sichtbare Kartenbewegungen in den Wischmotiven sind Teil der Originalaufnahme."
+}

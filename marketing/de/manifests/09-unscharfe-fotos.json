@@ -1,0 +1,51 @@
+{
+  "id": 9,
+  "file": "videos/09-unscharfe-fotos.mp4",
+  "poster": "posters/09-unscharfe-fotos.jpg",
+  "locale": "de-DE",
+  "title": "Ein Blick auf unscharfe Fotos",
+  "theme": "Unschärfe",
+  "style": "coral",
+  "duration": 18.0,
+  "sha256": "88925b9104257462cde9b099bba606b7e3de8d8e22a1b1881dfa6c05d8175b84",
+  "poster_sha256": "daf9cdb0d5e1e979b4f80e3cdf91726ebe090ab965a8970d01e66f62d209089a",
+  "source_assets": [
+    {
+      "file": "app-store/locales/de/all-pages/04-cleanup/blurry.png",
+      "type": "screenshot",
+      "sha256": "b8a47f93408eac33150cfaca56313b0085cf253e5037e08905a1400694ecb4f9"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/04-cleanup/blurry-results-grid.png",
+      "type": "screenshot",
+      "sha256": "50a5d712b85acc893695689a0d35cdcfd70a68c27f5e28bfea301562b5b787c9"
+    },
+    {
+      "file": "app-store/locales/de/previews/01-review.mp4",
+      "type": "recording",
+      "start": 4.2,
+      "sha256": "f43c4472c4fa0a5118a20c78bcb367d2e747bf670e67097157147d389da47ca1"
+    }
+  ],
+  "music": {
+    "origin": "Original oscillator/noise synthesis; no samples or external tracks",
+    "style": "coral",
+    "master_file": "music/coral.flac",
+    "master_sha256": "57e2bf200d6b60725062dc259c736fe7d9843a314e8d01aa88856f7dfee9e3cb",
+    "render_wav_sha256": "af7655684b810a2ed77e29ca641f3df2e3c8215672cfe9209c91c88091fd4729"
+  },
+  "voice": "none; German text is burned into the picture",
+  "editing": {
+    "scene_seconds": 4.8,
+    "end_seconds": 3.6,
+    "screenshot_zoom_max": 1.0143,
+    "source_policy": "Proportional inset captures. Original app media and UI content unchanged. Marketing titles outside the app frame."
+  },
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "pixel_aspect_normalization": {
+    "method": "Lossless H.264 VUI metadata normalization to square pixels; no re-encoding",
+    "input_sha256": "dd2b2a328604e8c74e60cb2d318952e4a975aa7348e470cda26f7cf78a1f39a8"
+  },
+  "concept_sha256": "13370faac68e956d4086e7a8f84c95a473e1765e83035b87086c78eff06e2163"
+}

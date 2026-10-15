@@ -1,0 +1,49 @@
+{
+  "id": 17,
+  "file": "videos/17-bilder-ohne-leisten.mp4",
+  "poster": "posters/17-bilder-ohne-leisten.jpg",
+  "locale": "de-DE",
+  "title": "Mehr Bild. Weniger Ablenkung.",
+  "theme": "Tresor-Betrachter",
+  "style": "blue",
+  "duration": 18.0,
+  "sha256": "1c58dee7abe7fef77fdbe8d6cac61e67cce30f9446c2dd0913ea3368dd4b58d4",
+  "poster_sha256": "7ebe1b643767fcd895cf3c1bcfabf3957cbdd55123bd2b1f2b8d1992d888f81f",
+  "source_assets": [
+    {
+      "file": "app-store/locales/de/previews/03-vault.mp4",
+      "type": "recording",
+      "start": 11.7,
+      "sha256": "0dfef732880fa5eead13b9fd6f54b39bc69b2dcc09a5e7330873bfeb32507b2c"
+    },
+    {
+      "file": "app-store/locales/de/previews/03-vault.mp4",
+      "type": "recording",
+      "start": 15.7,
+      "sha256": "0dfef732880fa5eead13b9fd6f54b39bc69b2dcc09a5e7330873bfeb32507b2c"
+    },
+    {
+      "file": "app-store/locales/de/previews/03-vault.mp4",
+      "type": "recording",
+      "start": 6.5,
+      "sha256": "0dfef732880fa5eead13b9fd6f54b39bc69b2dcc09a5e7330873bfeb32507b2c"
+    }
+  ],
+  "music": {
+    "origin": "Original oscillator/noise synthesis; no samples or external tracks",
+    "style": "blue",
+    "master_file": "music/blue.flac",
+    "master_sha256": "ca0f2291bbb208de4e521a80d0f1d03bd94bb05ee6b9a7bf144cbc5a5b51009b",
+    "render_wav_sha256": "6c187a2eb491b6750ba5bace73f40f8529e5d4e612a5f1d96fec6183d4d000c9"
+  },
+  "voice": "none; German text is burned into the picture",
+  "editing": {
+    "scene_seconds": 4.8,
+    "end_seconds": 3.6,
+    "screenshot_zoom_max": 1.0143,
+    "source_policy": "Proportional inset captures. Original app media and UI content unchanged. Marketing titles outside the app frame."
+  },
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "concept_sha256": "2760590894fc82956971ddb6cb5971c610a40e7312ba9283c0933fa35d155ba5"
+}

@@ -2,6 +2,40 @@
 
 Stand: 15.10.2026 · Branch `claude/fixes-analysis-library-vault-20261014` · Version 1.0, Build 9 in TestFlight; die drei Nachträge nach Build 8 sind enthalten.
 
+## 20 deutsche Werbevideos (15.10.2026, abgeschlossen)
+
+Auf neuen Auftrag sind **20 verschiedene deutsche Hochkant-Werbevideos** erstellt: jeweils
+18 Sekunden, 1080 × 1920, 30 fps, H.264/yuv420p und AAC-Stereo/48 kHz. Jede Variante hat einen
+eigenen Einstieg, drei Inhaltsszenen und eine Schlusskarte mit „PhotoMaid entdecken“.
+Fünf dunkle Farbwelten, fünf eigene Instrumentalbetten, deutsche Texte im Bild, ohne Sprecher.
+
+[Alle 20 Videos mit Dateinamen und Schwerpunkten](../marketing/de/README.md) ·
+[Interaktive lokale Galerie](../marketing/de/index.html) ·
+[Konzepte und Texte](../marketing/de/concepts.json) · [Audit](../marketing/de/audit.json).
+Die Galerie bietet Themenfilter, eine Merkliste für die geöffnete Sitzung und direkte Downloads.
+
+| Punkt | Status | Dateien / Nachweis |
+|---|---|---|
+| 20 unterschiedliche Konzepte und fertige Filme | PASS | `marketing/de/videos/01-einfach-anfangen.mp4` bis `20-alles-in-einer-app.mp4`; vollständige Namen im Index |
+| Format, Dauer, Bild-/Tonspur, vollständige Dekodierung | PASS | alle 20 Filme, je 540 Frames / 18 s; `marketing/de/audit.json` |
+| Deutsche Texte und Übereinstimmung mit App-Funktion | PASS | 80 tatsächlich angesehene Bildstichproben, `marketing/de/review/` |
+| 20 tatsächlich aus dem fertigen Film entnommene Poster | PASS | `marketing/de/posters/`, fünf gesonderte Prüfbögen |
+| Tonmessung / Übersteuerung | PASS | −17,0 bis −17,1 LUFS, maximal −4,4 dBTP; fünf verlustfreie eigene FLAC-Master |
+| Untertitel und Quellen | PASS | 20 optionale SRT-Dateien; Herkunft und SHA-256 in `marketing/de/manifests/` |
+| Galerie / Browser-Wiedergabe / Merkliste / Mobilansicht | PASS | Chromium über lokalen HTTP-Server; Desktop/Mobil angesehen, Filter zählen 9/7/3/1, `marketing/de/gallery-check.json` |
+
+Verwendet werden die geprüften deutschen Originalaufnahmen und der bestehende CC0-Fotobildsatz.
+Screenshots erhalten eine leichte proportionale Kamerafahrt; bewegte Szenen stammen aus den echten
+Feed-, Editor- und Tresor-Aufnahmen. Werbetexte und Grafiken stehen außerhalb des App-Bildes.
+Es werden keine zusätzlichen Treffer, Medienzahlen, Speicherersparnisse oder Kaufpreise erfunden.
+Eine leere Ähnlichkeitsansicht wurde als Werbevariante verworfen und durch frei belegbare Gesten ersetzt.
+Der Export setzt quadratische Pixel ausdrücklich; die erste Serie wurde hierfür ohne erneute Kodierung
+normalisiert. Die vollständigen Filme wurden dekodiert und stichprobenweise angesehen, nicht jeweils
+in Echtzeit. Ton technisch geprüft, keine subjektive Hörabnahme.
+
+Die Umsetzung liegt in `scripts/marketing/`; Marketingtexte sind deutsch und gehören nicht zum
+App-Sprachkatalog. Dieser Nachtrag ändert kein App-Verhalten und erfordert keinen neuen TestFlight-Build.
+
 ## App-Store-Bildsatz und lokalisierte Dark-Mode-Aufnahmen (15.10.2026, abgeschlossen)
 
 Auf ausdrücklichen Wunsch sind echte App-Store-Vorschauvideos erstellt (keine App-Clip-Erweiterung):

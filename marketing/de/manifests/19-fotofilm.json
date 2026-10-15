@@ -1,0 +1,50 @@
+{
+  "id": 19,
+  "file": "videos/19-fotofilm.mp4",
+  "poster": "posters/19-fotofilm.jpg",
+  "locale": "de-DE",
+  "title": "Aus Fotos wird ein Film",
+  "theme": "Fotofilm",
+  "style": "amber",
+  "duration": 18.0,
+  "sha256": "7289e6e336035f047166105074f76f257e7f3810f2def81b8e4264f507925fde",
+  "poster_sha256": "fcf84d0ad17e927b190ede1f8ddf2ea6dc26f78050b6e44311d6d4c986525415",
+  "source_assets": [
+    {
+      "file": "app-store/locales/de/all-pages/05-studio/studio.png",
+      "type": "screenshot",
+      "sha256": "e894bad554d49a657e3a0c3ef1ce9bf7c7d04ea6bb4fce641bfa4b7506ea8505"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/05-studio/movie.png",
+      "type": "screenshot",
+      "sha256": "70478c6e1088755941da317e4c3d9ad39695d66fb140021fae8a4f303dff0cb2"
+    },
+    {
+      "file": "app-store/locales/de/all-pages/05-studio/movie-bottom.png",
+      "type": "screenshot",
+      "sha256": "be6294395d1038ecd798fe60acecb7947ace20641fbe66488426442d82aff958"
+    }
+  ],
+  "music": {
+    "origin": "Original oscillator/noise synthesis; no samples or external tracks",
+    "style": "amber",
+    "master_file": "music/amber.flac",
+    "master_sha256": "7202d30944c27006737f414277c07c14dbdea5bcbae607575750883e21c4ea5e",
+    "render_wav_sha256": "9e29380ccc57264972a5df91f5ffa1b23511ab48efe7ecb66a98624f5825264d"
+  },
+  "voice": "none; German text is burned into the picture",
+  "editing": {
+    "scene_seconds": 4.8,
+    "end_seconds": 3.6,
+    "screenshot_zoom_max": 1.0143,
+    "source_policy": "Proportional inset captures. Original app media and UI content unchanged. Marketing titles outside the app frame."
+  },
+  "technical_review": "PASS",
+  "visual_review": "PASS",
+  "pixel_aspect_normalization": {
+    "method": "Lossless H.264 VUI metadata normalization to square pixels; no re-encoding",
+    "input_sha256": "627abbd0a0405c8b1da58efb7d0005d664373b7b8e03d74a82f390a7001192e4"
+  },
+  "concept_sha256": "9f7c972ff39d4c9126fdce030a94ddd749ead26ac0ba11b1cbd08058c40490c6"
+}
