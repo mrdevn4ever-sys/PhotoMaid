@@ -22,6 +22,7 @@ struct DuplicatesView: View {
                                   fraction: scanner.total > 0 ? Double(scanner.done) / Double(scanner.total) : nil,
                                   detail: scanner.total > 0 ? "\(scanner.done) / \(scanner.total)" : nil) { scanner.cancel() }
                         .listRowBackground(Color.clear)
+                        .accessibilityIdentifier("duplicates.progress")
                 } else {
                     PrimaryButton(title: L(scanner.result == nil ? "dup_start" : "dup_again"), symbol: "magnifyingglass") { start() }
                 }

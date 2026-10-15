@@ -421,6 +421,22 @@ final class RealLibraryTests: XCTestCase {
     func test50LargeDuplicatesAndStorage() {
         ready()
         tab("Aufräumen")
+        hub("duplicates")
+        let start = app.buttons["Kopien suchen"]
+        XCTAssertTrue(start.exists && start.isHittable)
+        start.tap()
+        checkpoint("real_duplicates_started", app: app, hierarchy: false)
+        XCTAssertTrue(e("duplicates.progress").waitForExistence(timeout: 5),
+                      "An uncached scan must expose its running/progress state")
+        snap("duplicates_progress")
+        XCTAssertTrue(app.buttons["Erneut suchen"].waitForExistence(timeout: 180))
+        snap("duplicates_five_copies")
+        let move = button("5 ")
+        scrollTo(move)
+        XCTAssertTrue(move.exists, "Manifest has exactly five extra byte-identical copies")
+        snap("duplicates_five_selected_copies")
+        XCTAssertFalse(contains("Keine identischen").exists)
+        back("duplicates_back")
         hub("large")
         snap("large_loading")
         XCTAssertTrue(app.navigationBars["Große Dateien"].exists)
@@ -438,16 +454,7 @@ final class RealLibraryTests: XCTestCase {
         XCTAssertTrue(app.progressIndicators.firstMatch.exists, "Device capacity has a visible progress bar")
         snap("storage_loaded_numbers_and_progress")
         back("storage_back")
-        hub("duplicates")
-        tap(app.buttons["Kopien suchen"], "duplicates_started")
-        snap("duplicates_progress")
-        XCTAssertTrue(app.buttons["Erneut suchen"].waitForExistence(timeout: 180))
-        snap("duplicates_five_copies")
-        let move = button("5 ")
-        scrollTo(move)
-        XCTAssertTrue(move.exists, "Manifest has exactly five extra byte-identical copies")
-        snap("duplicates_five_selected_copies")
-        XCTAssertFalse(contains("Keine identischen").exists)
+
     }
 
     func test60LibraryFiltersSortAndAspect() {

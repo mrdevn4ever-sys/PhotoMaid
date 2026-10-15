@@ -22,7 +22,9 @@ final class DuplicateScanner {
     var selection: [String: Set<ItemReference>] = [:]
     @ObservationIgnored private var task: Task<Void, Never>?
 
-    var isRunning: Bool { task != nil }
+    // SwiftUI reads this before a scan starts. `task` is deliberately ignored by
+    // Observation; derive the public state from the observed phase instead.
+    var isRunning: Bool { phase != .idle }
 
     func start(app: AppModel) {
         guard task == nil else { return }
