@@ -143,7 +143,7 @@ import XCTest
     func test30PortraitAndExpandedWorkspaceScreens() {
         launch(light: true)
         checkpoint("workspace_01_feed", app: app)
-        let wide = app.frame.width >= 580
+        let wide = app.frame.width >= 540
         let panel = app.descendants(matching: .any)["feed.basketPanel"].firstMatch
         XCTAssertEqual(panel.exists, wide)
         if wide {

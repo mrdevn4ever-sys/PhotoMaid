@@ -3,7 +3,7 @@ import SwiftUI
 /// Window measurements include SwiftUI's per-edge safe areas; never infer a viewport from a device model.
 enum AppWorkspace {
     static func isWide(_ size: CGSize, accessibility: Bool = false) -> Bool {
-        size.width >= 580 && size.height >= 400 && !accessibility
+        size.width >= 540 && size.height >= 400 && !accessibility
     }
 }
 
@@ -14,14 +14,14 @@ struct WorkspaceColumns: Layout {
 
     func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
         let width = proposal.width ?? 360
-        let wide = width >= 548 && !accessibility && subviews.count == 2
+        let wide = width >= 508 && !accessibility && subviews.count == 2
         let column = wide ? (width - spacing) / 2 : width
         let sizes = subviews.map { $0.sizeThatFits(.init(width: column, height: nil)) }
         return CGSize(width: width, height: wide ? sizes.map(\.height).max() ?? 0 : sizes.reduce(0) { $0 + $1.height } + CGFloat(max(0, sizes.count - 1)) * spacing)
     }
 
     func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
-        let wide = bounds.width >= 548 && !accessibility && subviews.count == 2
+        let wide = bounds.width >= 508 && !accessibility && subviews.count == 2
         let width = wide ? (bounds.width - spacing) / 2 : bounds.width
         var y = bounds.minY
         for (index, view) in subviews.enumerated() {

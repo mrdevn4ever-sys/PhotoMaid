@@ -213,7 +213,7 @@ struct PhotoMemoryView: View {
     }
 
     private var elapsedLabel: some View {
-        TimelineView(.animation(minimumInterval: 0.1, paused: !model.timerRunning)) { _ in
+        TimelineView(.periodic(from: .now, by: model.timerRunning ? 0.1 : 3600)) { _ in
             Text(verbatim: L("memory_elapsed", DateText.gameDuration(model.elapsedSeconds)))
                 .accessibilityIdentifier("memory.elapsed")
         }

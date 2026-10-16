@@ -82,7 +82,7 @@ struct FeedView: View {
                     if wide {
                         FeedBasketPanel { showTrash = true }
                             .environment(\.layoutDirection, readingDirection)
-                            .frame(width: min(300, geo.size.width * 0.36))
+                            .frame(width: min(280, max(180, geo.size.width * 0.32)))
                             .padding(.leading, AppSpacing.pageMargin)
                     }
                     VStack(spacing: AppSpacing.s) {
