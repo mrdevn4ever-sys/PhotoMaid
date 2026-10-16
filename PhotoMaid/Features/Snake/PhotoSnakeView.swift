@@ -167,6 +167,8 @@ struct PhotoSnakeView: View {
             .padding(.horizontal, AppSpacing.pageMargin).padding(.top, AppSpacing.xs)
         }
         .background(AppColors.background.ignoresSafeArea())
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("snake.play")
         .statusBarHidden(true)
         .persistentSystemOverlays(.hidden)
     }

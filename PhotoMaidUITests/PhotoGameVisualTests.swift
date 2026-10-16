@@ -153,15 +153,15 @@ import XCTest
     }
 
     private func closeSnake() {
-        let close = app.buttons.matching(identifier: "snake.close").allElementsBoundByIndex.first(where: \.isHittable)
-        XCTAssertNotNil(close)
-        close?.tap()
+        app.descendants(matching: .any)["snake.play"].firstMatch.buttons["snake.close"].tap()
     }
 
     private func assertFullscreenSnake(_ board: XCUIElement) {
         XCTAssertGreaterThanOrEqual(board.frame.width, app.frame.width - 2)
         XCTAssertGreaterThanOrEqual(board.frame.height, app.frame.height - 2)
-        let visibleButtons = app.buttons.allElementsBoundByIndex.filter(\.isHittable)
+        let surface = app.descendants(matching: .any)["snake.play"].firstMatch
+        XCTAssertTrue(surface.exists)
+        let visibleButtons = surface.buttons.allElementsBoundByIndex.filter(\.isHittable)
         XCTAssertEqual(visibleButtons.count, 1, "Only Close is a visible button during Snake")
         XCTAssertEqual(visibleButtons.first?.identifier, "snake.close")
         XCTAssertFalse(app.buttons["snake.toggleRunning"].exists)
