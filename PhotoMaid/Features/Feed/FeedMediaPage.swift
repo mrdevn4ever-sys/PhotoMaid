@@ -182,7 +182,7 @@ struct FeedMediaPage: View {
                     downloadProgress = value
                 }
             case .failed(let inCloud):
-                if shown { qualityFailed = inCloud } else { cloudFailed = inCloud }
+                if shown { qualityFailed = true } else { cloudFailed = inCloud }
             }
         }
         guard !Task.isCancelled else { return }

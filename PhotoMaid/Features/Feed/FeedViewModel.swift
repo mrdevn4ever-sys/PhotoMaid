@@ -293,6 +293,11 @@ final class FeedViewModel {
             session.markPreviewUnavailable(ref)
         }
         for ref in window where previews[ref] == nil { previews[ref] = .loading }
+        if let current, currentAsset?.isVideo == true, app.player.itemID != current.localIdentifier {
+            // A previous visit's decoded video frame does not make this visit ready.
+            previews[current] = .loading
+            session.markPreviewUnavailable(current)
+        }
         let size = PreviewPipeline.targetSize(for: viewSize, scale: viewScale)
         app.previews.updateCache(window: window.map(\.localIdentifier), targetSize: size)
     }
@@ -406,7 +411,12 @@ final class FeedViewModel {
         // Solange eine Terminauswahl offen ist, kann nichts anderes entschieden oder navigiert werden.
         if customLater != nil { machine.finishCommit(); resetOffset(); return }
         guard !isCommitting else { return }
-        if intent == .laterCustom { openCustomLater(); return }
+        if intent == .laterCustom {
+            guard let item = current, session.isPreviewReady(item) else {
+                machine.finishCommit(); resetOffset(); return
+            }
+            openCustomLater(); return
+        }
         if intent == .previous {
             let nav = session.goBack()
             machine.finishCommit()
@@ -426,6 +436,9 @@ final class FeedViewModel {
             return
         }
         guard let item = current else { machine.finishCommit(); lockedDirection = nil; return }
+        guard session.isPreviewReady(item) else {
+            machine.finishCommit(); resetOffset(); return
+        }
         if protectedFavorite != nil { machine.finishCommit(); resetOffset(); return }
         // Favoriten schützen: kein stiller Papierkorb für einen Favoriten – Rückfrage, Medium bleibt.
         if intent == .markForCleanup && app.settings.protectFavorites, let a = currentAsset, a.isFavorite {
@@ -443,7 +456,8 @@ final class FeedViewModel {
     /// (die Album-Zuordnung wird zurückgenommen). Rückgängig nimmt später beides zurück.
     private func performAlbum(id albumID: String, title: String, direction: SwipeDirection?, velocity: CGSize) {
         if customLater != nil { machine.finishCommit(); resetOffset(); return }
-        guard !isCommitting, let item = current, item.provider == .photoLibrary, protectedFavorite == nil else {
+        guard !isCommitting, let item = current, session.isPreviewReady(item),
+              item.provider == .photoLibrary, protectedFavorite == nil else {
             machine.finishCommit(); lockedDirection = nil; resetOffset(); return
         }
         isCommitting = true
