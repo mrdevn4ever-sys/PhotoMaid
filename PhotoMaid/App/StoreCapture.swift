@@ -65,7 +65,7 @@ enum StoreCapture {
                 .flatMap(\.windows).first(where: \.isKeyWindow)?.accessibilityIdentifier = "store.capture." + page
         }
         app.updateSettings {
-            $0.appearance = .dark
+            $0.appearance = ProcessInfo.processInfo.arguments.contains("-capture-light") ? .light : .dark
             $0.todayTourSeen = true
             $0.feedTourSeen = true
             $0.gestureHintSeen = true

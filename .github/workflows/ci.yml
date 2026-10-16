@@ -24,7 +24,7 @@ on:
       qa_case:
         description: "QA-Oberflächen: alle, Tresor, nur Medienlöschung oder Fotoeditor bei Zoom"
         type: choice
-        options: [all, vault, vault-media, editor]
+        options: [all, vault, vault-media, editor, games]
         default: all
       sim_runtime:
         description: "iOS-Runtime (26.2 für StoreKit Test; 26.5 hat Apples CLI-Konfigurationsfehler)"
@@ -133,6 +133,16 @@ jobs:
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github
+            PhotoMaid
+            PhotoMaidTests
+            PhotoMaidUITests
+            Sources
+            Tests
+            scripts
+            fastlane
       - name: Xcode wählen (neuestes stabiles)
         run: scripts/ci/select_xcode.sh
       - name: XcodeGen
@@ -161,6 +171,7 @@ jobs:
             -derivedDataPath "$RUNNER_TEMP/PhotoMaidDerived" \
             -resultBundlePath "$RUNNER_TEMP/tests.xcresult" \
             -parallel-testing-enabled NO \
+            ${{ inputs.qa_case == 'games' && 'TARGETED_DEVICE_FAMILY=1,2' || '' }} \
             -skipPackagePluginValidation -skipMacroValidation \
             CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_REQUIRED=YES -skip-testing:PhotoMaidUITests \
             build-for-testing test-without-building 2>&1 | tee xcodebuild.log | grep -E "error:|\*\* (BUILD|TEST)|Test (Case|Suite) .* (passed|failed)|Executed" || true
@@ -168,103 +179,113 @@ jobs:
           ! grep -Eq '\*\* (BUILD|TEST( BUILD| EXECUTE)?) FAILED \*\*' xcodebuild.log
       - name: UI-Tests vorbereiten (öffentliche Testbilder)
         id: media
-        if: inputs.ui_tests
+        if: inputs.ui_tests && inputs.qa_case != 'games'
         run: |
           python3 -m venv "$RUNNER_TEMP/media-venv"
           "$RUNNER_TEMP/media-venv/bin/pip" install Pillow==12.3.0
           echo "$RUNNER_TEMP/media-venv/bin" >> "$GITHUB_PATH"
           brew install ffmpeg
+      - name: Spiele und breite Layouts visuell testen
+        if: inputs.ui_tests && inputs.qa_case == 'games'
+        run: scripts/ci/game_visual_tests.sh '${{ steps.sim.outputs.udid }}' "$RUNNER_TEMP/PhotoMaidDerived" "$RUNNER_TEMP/game-visual"
+      - name: Spiele-Screenshots und Hierarchien
+        uses: actions/upload-artifact@v4
+        if: always() && inputs.ui_tests && inputs.qa_case == 'games'
+        with:
+          name: game-visual-evidence
+          path: ${{ runner.temp }}/game-visual
+          if-no-files-found: warn
       - name: UI-Tests mit QA-Daten
-        if: inputs.ui_tests && inputs.ui_phase != 'real' && inputs.ui_phase != 'start'
+        if: inputs.ui_tests && inputs.qa_case != 'games' && inputs.ui_phase != 'real' && inputs.ui_phase != 'start'
         continue-on-error: true
         env:
           PM_QA_CASE: ${{ inputs.qa_case }}
         run: bash scripts/ci/simulator_ui_tests.sh '${{ steps.sim.outputs.udid }}' "$RUNNER_TEMP/PhotoMaidDerived" "$RUNNER_TEMP/simulator-ui" fixtures
       - name: QA-Belege sofort bereitstellen
         uses: actions/upload-artifact@v4
-        if: always() && inputs.ui_tests && inputs.ui_phase != 'real' && inputs.ui_phase != 'start'
+        if: always() && inputs.ui_tests && inputs.qa_case != 'games' && inputs.ui_phase != 'real' && inputs.ui_phase != 'start'
         with:
           name: simulator-fixtures-evidence
           path: ${{ runner.temp }}/simulator-ui/fixtures*
           if-no-files-found: warn
       - name: PhotoKit-Starttest (Einführung, Einwilligung, vier Kaltstarts)
-        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && steps.build.outcome == 'success' && steps.media.outcome == 'success'
+        if: always() && inputs.ui_tests && inputs.qa_case != 'games' && inputs.ui_phase != 'fixtures' && steps.build.outcome == 'success' && steps.media.outcome == 'success'
         continue-on-error: true
         env:
           PM_UI_CASE: ${{ inputs.ui_phase == 'start' && 'start' || inputs.ui_case }}
         run: bash scripts/ci/simulator_ui_tests.sh '${{ steps.sim.outputs.udid }}' "$RUNNER_TEMP/PhotoMaidDerived" "$RUNNER_TEMP/simulator-ui" real-start
       - name: PhotoKit-Startbelege sofort bereitstellen
         uses: actions/upload-artifact@v4
-        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures'
+        if: always() && inputs.ui_tests && inputs.qa_case != 'games' && inputs.ui_phase != 'fixtures'
         with:
           name: simulator-real-start-evidence
           path: ${{ runner.temp }}/simulator-ui/real-start*
           if-no-files-found: warn
       - name: Analyse-Warteschlange
-        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success' && (inputs.ui_case == 'all' || inputs.ui_case == 'test10AnalysisQueueProgressAndGrid')
+        if: always() && inputs.ui_tests && inputs.qa_case != 'games' && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success' && (inputs.ui_case == 'all' || inputs.ui_case == 'test10AnalysisQueueProgressAndGrid')
         continue-on-error: true
         uses: ./.github/actions/simulator-case
         with:
           udid: ${{ steps.sim.outputs.udid }}
           test_case: test10AnalysisQueueProgressAndGrid
       - name: Feed, Werbekarte und Verlauf
-        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success' && (inputs.ui_case == 'all' || inputs.ui_case == 'test20FiftyFastSwipesAdAndDirections')
+        if: always() && inputs.ui_tests && inputs.qa_case != 'games' && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success' && (inputs.ui_case == 'all' || inputs.ui_case == 'test20FiftyFastSwipesAdAndDirections')
         continue-on-error: true
         uses: ./.github/actions/simulator-case
         with:
           udid: ${{ steps.sim.outputs.udid }}
           test_case: test20FiftyFastSwipesAdAndDirections
       - name: Wischhilfe und eigene Tasten
-        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success' && (inputs.ui_case == 'all' || inputs.ui_case == 'test30GestureHelpAndCustomControls')
+        if: always() && inputs.ui_tests && inputs.qa_case != 'games' && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success' && (inputs.ui_case == 'all' || inputs.ui_case == 'test30GestureHelpAndCustomControls')
         continue-on-error: true
         uses: ./.github/actions/simulator-case
         with:
           udid: ${{ steps.sim.outputs.udid }}
           test_case: test30GestureHelpAndCustomControls
       - name: Große Dateien, Duplikate, Speicher
-        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success' && (inputs.ui_case == 'all' || inputs.ui_case == 'test50LargeDuplicatesAndStorage')
+        if: always() && inputs.ui_tests && inputs.qa_case != 'games' && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success' && (inputs.ui_case == 'all' || inputs.ui_case == 'test50LargeDuplicatesAndStorage')
         continue-on-error: true
         uses: ./.github/actions/simulator-case
         with:
           udid: ${{ steps.sim.outputs.udid }}
           test_case: test50LargeDuplicatesAndStorage
       - name: "Fotos: Filter und Ansicht"
-        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success' && (inputs.ui_case == 'all' || inputs.ui_case == 'test60LibraryFiltersSortAndAspect')
+        if: always() && inputs.ui_tests && inputs.qa_case != 'games' && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success' && (inputs.ui_case == 'all' || inputs.ui_case == 'test60LibraryFiltersSortAndAspect')
         continue-on-error: true
         uses: ./.github/actions/simulator-case
         with:
           udid: ${{ steps.sim.outputs.udid }}
           test_case: test60LibraryFiltersSortAndAspect
       - name: Studio ohne Pro
-        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success' && (inputs.ui_case == 'all' || inputs.ui_case == 'test70StudioFreeTools')
+        if: always() && inputs.ui_tests && inputs.qa_case != 'games' && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success' && (inputs.ui_case == 'all' || inputs.ui_case == 'test70StudioFreeTools')
         continue-on-error: true
         uses: ./.github/actions/simulator-case
         with:
           udid: ${{ steps.sim.outputs.udid }}
           test_case: test70StudioFreeTools
       - name: Tresor mit PIN und Gratis-Ordner
-        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success' && (inputs.ui_case == 'all' || inputs.ui_case == 'test80VaultPINCloseAllTabsAndFreeFolder' || inputs.ui_case == 'test90ProStoreKitPurchaseNoAdsAndFolder')
+        if: always() && inputs.ui_tests && inputs.qa_case != 'games' && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success' && (inputs.ui_case == 'all' || inputs.ui_case == 'test80VaultPINCloseAllTabsAndFreeFolder' || inputs.ui_case == 'test90ProStoreKitPurchaseNoAdsAndFolder')
         continue-on-error: true
         uses: ./.github/actions/simulator-case
         with:
           udid: ${{ steps.sim.outputs.udid }}
           test_case: test80VaultPINCloseAllTabsAndFreeFolder
       - name: StoreKit-Kauf und Pro ohne Werbung
-        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success' && (inputs.ui_case == 'all' || inputs.ui_case == 'test90ProStoreKitPurchaseNoAdsAndFolder')
+        if: always() && inputs.ui_tests && inputs.qa_case != 'games' && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success' && (inputs.ui_case == 'all' || inputs.ui_case == 'test90ProStoreKitPurchaseNoAdsAndFolder')
         continue-on-error: true
         uses: ./.github/actions/simulator-case
         with:
           udid: ${{ steps.sim.outputs.udid }}
           test_case: test90ProStoreKitPurchaseNoAdsAndFolder
       - name: Englisch und Arabisch
-        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success' && (inputs.ui_case == 'all' || inputs.ui_case == 'test95EnglishAndArabicPlaceholdersAndArrows')
+        if: always() && inputs.ui_tests && inputs.qa_case != 'games' && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success' && (inputs.ui_case == 'all' || inputs.ui_case == 'test95EnglishAndArabicPlaceholdersAndArrows')
         continue-on-error: true
         uses: ./.github/actions/simulator-case
         with:
           udid: ${{ steps.sim.outputs.udid }}
           test_case: test95EnglishAndArabicPlaceholdersAndArrows
       - name: Papierkorb und Tagesbonus ohne Löschung
-        if: always() && inputs.ui_tests && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success' && (inputs.ui_case == 'all' || inputs.ui_case == 'test98TrashLimitRewardAndSizes')
+        if: always() && inputs.ui_tests && inputs.qa_case != 'games' && inputs.ui_phase != 'fixtures' && inputs.ui_phase != 'start' && steps.build.outcome == 'success' && steps.media.outcome == 'success' && (inputs.ui_case == 'all' || inputs.ui_case == 'test98TrashLimitRewardAndSizes')
         continue-on-error: true
         uses: ./.github/actions/simulator-case
         with:
@@ -273,7 +294,7 @@ jobs:
       - name: UI-Ergebnisse prüfen
         env:
           UI_CASE: ${{ inputs.ui_case }}
-        if: always() && inputs.ui_tests && steps.build.outcome == 'success'
+        if: always() && inputs.ui_tests && inputs.qa_case != 'games' && steps.build.outcome == 'success'
         run: |
           if [ '${{ inputs.ui_phase }}' != real ] && [ '${{ inputs.ui_phase }}' != start ]; then
             test "$(cat "$RUNNER_TEMP/simulator-ui/fixtures.exit")" = 0
@@ -325,7 +346,7 @@ jobs:
             tests.xcresult.zip
           if-no-files-found: warn
       - uses: actions/upload-artifact@v4
-        if: always() && inputs.ui_tests
+        if: always() && inputs.ui_tests && inputs.qa_case != 'games'
         with:
           name: simulator-ui-evidence
           path: ${{ runner.temp }}/simulator-ui

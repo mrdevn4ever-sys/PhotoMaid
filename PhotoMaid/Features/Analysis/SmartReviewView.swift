@@ -54,7 +54,6 @@ struct SmartReviewView: View {
         }
         // Im Feed entschieden: entschiedene Fotos verschwinden aus der Liste.
         .onChange(of: app.pending.count) { _, _ in if isCurrent { analysis.reload() } }
-        // Solange die Analyse hier sichtbar läuft, bleibt der Bildschirm an (sonst hält die Sperre sie an).
         .sheet(item: $compare) { sel in
             SeriesCompareView(members: sel.members, title: L("ana_similar"),
                               subtitle: L("ana2_similar_compare_sub", sel.members.count)) { keep in

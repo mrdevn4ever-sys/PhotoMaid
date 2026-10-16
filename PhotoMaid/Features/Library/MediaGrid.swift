@@ -11,9 +11,10 @@ struct MediaGrid: View {
     var header: ((TimelineKey) -> String)?
     /// Seitenverhältnis statt quadratisch beschnitten (Ansicht „Fotos“).
     var fit = false
+    @State private var gridWidth: CGFloat = 0
 
     var body: some View {
-        let cols = Array(repeating: GridItem(.flexible(), spacing: 2), count: max(1, columns))
+        let cols = Array(repeating: GridItem(.flexible(), spacing: 2), count: max(1, columns, Int(gridWidth / (390 / Double(max(1, columns))))))
         LazyVGrid(columns: cols, spacing: 2, pinnedViews: [.sectionHeaders]) {
             ForEach(sections) { section in
                 Section {
@@ -38,6 +39,7 @@ struct MediaGrid: View {
                 }
             }
         }
+        .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { gridWidth = $0 }
     }
 
     private func cell(_ a: MediaAsset) -> some View {

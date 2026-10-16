@@ -7003,6 +7003,24 @@
   "uk": "Класичний — стіни по краях",
   "zh-Hans": "经典模式：碰壁结束"
  },
+ "snake_clear_path": {
+  "ar": "الخانة التالية خالية",
+  "de": "Nächstes Feld ist frei",
+  "en": "Next cell is clear",
+  "es": "La siguiente casilla está libre",
+  "fr": "La prochaine case est libre",
+  "it": "La prossima casella è libera",
+  "ja": "次のマスは空いています",
+  "ko": "다음 칸은 비어 있음",
+  "nl": "Volgende vak is vrij",
+  "pl": "Następne pole jest wolne",
+  "pt-PT": "A próxima casa está livre",
+  "ro": "Următoarea celulă este liberă",
+  "ru": "Следующая клетка свободна",
+  "tr": "Sonraki hücre boş",
+  "uk": "Наступна клітинка вільна",
+  "zh-Hans": "下一格畅通"
+ },
  "snake_continue": {
   "ar": "بدء / متابعة",
   "de": "Starten / weiter",
@@ -7200,6 +7218,24 @@
   "tr": "Normal",
   "uk": "Звичайно",
   "zh-Hans": "正常"
+ },
+ "snake_obstacle": {
+  "ar": "عائق أمامك مباشرة",
+  "de": "Hindernis direkt voraus",
+  "en": "Obstacle directly ahead",
+  "es": "Obstáculo justo delante",
+  "fr": "Obstacle juste devant",
+  "it": "Ostacolo davanti",
+  "ja": "すぐ前に障害物",
+  "ko": "바로 앞에 장애물",
+  "nl": "Obstakel recht vooruit",
+  "pl": "Przeszkoda tuż przed tobą",
+  "pt-PT": "Obstáculo mesmo à frente",
+  "ro": "Obstacol chiar în față",
+  "ru": "Прямо впереди препятствие",
+  "tr": "Tam ileride engel var",
+  "uk": "Прямо попереду перешкода",
+  "zh-Hans": "正前方有障碍"
  },
  "snake_over": {
   "ar": "انتهت الجولة",

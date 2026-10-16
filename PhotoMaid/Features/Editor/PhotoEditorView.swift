@@ -34,8 +34,11 @@ struct PhotoEditorView: View {
             Color.black.ignoresSafeArea()
             VStack(spacing: AppSpacing.s) {
                 header
-                stageArea
-                if model.loadState == .ready { toolZone }
+                AdaptiveWorkspace(controlsWidth: 300) {
+                    stageArea
+                } controls: {
+                    if model.loadState == .ready { toolZone }
+                }
             }
         }
         .preferredColorScheme(.dark)

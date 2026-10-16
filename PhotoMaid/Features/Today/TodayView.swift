@@ -5,6 +5,7 @@ import SwiftUI
 /// Papierkorb/Später/Wieder dran, Schnellzugriffe, ein leiser Pro-Hinweis und zuletzt der Gerätespeicher.
 struct TodayView: View {
     @Environment(AppModel.self) private var app
+    @Environment(\.dynamicTypeSize) private var dynamicType
     @State private var device: DeviceCapacity?
     @State private var tourStep = 0
     @State private var continueOpen = 0
@@ -17,6 +18,8 @@ struct TodayView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: AppSpacing.xl) {
                     header.id("today.header")
+                    WorkspaceColumns(accessibility: dynamicType.isAccessibilitySize) {
+                    VStack(alignment: .leading, spacing: AppSpacing.xl) {
                     if !access.canRead { accessCard }
                     if access.canRead {
                         ReviewHero(pending: app.snapshot.loaded && app.readReady ? app.pending : nil, hasHistory: !app.read.events.isEmpty,
@@ -35,6 +38,8 @@ struct TodayView: View {
                     if !app.read.reconciliationNeeded.isEmpty {
                         InfoBanner(symbol: "arrow.triangle.2.circlepath", tint: AppColors.warning, text: L("today_reconciliation"))
                     }
+                    }
+                    VStack(alignment: .leading, spacing: AppSpacing.xl) {
                     statusGroup.tourTarget("today.status").id("today.status")
                     if access.canRead && app.readReady { QuickAccessSection().tourTarget("today.quick").id("today.quick") }
                     if app.capabilities.tier == .free, let first = app.settings.firstSeenDay, app.today > first {
@@ -46,6 +51,8 @@ struct TodayView: View {
                         .background(AppColors.surface, in: .rect(cornerRadius: AppRadii.card))
                     }
                     if let device { StorageLine(device: device) { app.navigate(.storage) } }
+                    }
+                    }
                 }
                 .padding(.horizontal, AppSpacing.pageMargin)
                 .padding(.bottom, AppSpacing.xxl)

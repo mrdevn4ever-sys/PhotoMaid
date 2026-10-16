@@ -27,7 +27,7 @@ struct StudioMediaPicker: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                let columns = Array(repeating: GridItem(.flexible(), spacing: 2), count: 4)
+                let columns = [GridItem(.adaptive(minimum: 76, maximum: 140), spacing: 2)]
                 LazyVGrid(columns: columns, spacing: 2) {
                     ForEach(media) { asset in
                         let selected = selection.contains(asset.id)

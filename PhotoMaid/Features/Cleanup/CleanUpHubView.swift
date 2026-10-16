@@ -4,6 +4,7 @@ import SwiftUI
 /// Aufräumen: Reiter „Bereiche“ (Mediathek, Werkzeuge, lokale Analyse) und „Sammlungen“ (dauerhafte Filter).
 struct CleanUpHubView: View {
     @Environment(AppModel.self) private var app
+    @Environment(\.dynamicTypeSize) private var dynamicType
     @State private var tab = 0
     @State private var counts: [MediaCategory: Int] = [:]
 
@@ -24,7 +25,10 @@ struct CleanUpHubView: View {
                 if tab == 1 {
                     CollectionsContent()
                 } else {
-                    areas
+                    WorkspaceColumns(accessibility: dynamicType.isAccessibilitySize) {
+                        VStack(alignment: .leading, spacing: AppSpacing.xl) { mediaArea; toolsArea }
+                        analysisArea
+                    }
                 }
             }
             .padding(.horizontal, AppSpacing.pageMargin)
@@ -38,7 +42,7 @@ struct CleanUpHubView: View {
     private var canRead: Bool { app.library.access.canRead }
 
     @ViewBuilder
-    private var areas: some View {
+    private var mediaArea: some View {
         VStack(alignment: .leading, spacing: AppSpacing.s) {
             SectionHeader(title: L("hub_media_header"))
             RowGroup {
@@ -51,6 +55,9 @@ struct CleanUpHubView: View {
                 link(.months, "calendar", AppColors.amber, L("months_title"), L("hub_months_sub"))
             }
         }
+    }
+
+    private var toolsArea: some View {
         VStack(alignment: .leading, spacing: AppSpacing.s) {
             SectionHeader(title: L("hub_tools_header"))
             RowGroup {
@@ -72,6 +79,9 @@ struct CleanUpHubView: View {
                     .accessibilityIdentifier("hub.storage")
             }
         }
+    }
+
+    @ViewBuilder private var analysisArea: some View {
         if app.settings.analysisEnabled {
             VStack(alignment: .leading, spacing: AppSpacing.s) {
                 SectionHeader(title: L("ana_header"))

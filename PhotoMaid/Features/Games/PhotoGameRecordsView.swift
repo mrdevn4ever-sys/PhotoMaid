@@ -39,7 +39,7 @@ struct PhotoGameRecordsView: View {
             }
             .appPage()
             .navigationTitle(L("game_records_title"))
-            .toolbar { ToolbarItem(placement: .cancellationAction) { Button(L("close")) { dismiss() } } }
+            .toolbar { ToolbarItem(placement: .cancellationAction) { Button(L("close")) { dismiss() }.accessibilityIdentifier("games.records.close") } }
         }
     }
 

@@ -27,6 +27,8 @@ struct FeedView: View {
     @State private var showMemory = false
     @State private var countedAsActiveFeed = false
     @State private var memoryResults: SmartReviewKind?
+    @Environment(\.layoutDirection) private var readingDirection
+    @Environment(\.dynamicTypeSize) private var dynamicType
     @GestureState private var dragging = false
 
     init(request: FeedRequest, app: AppModel) {
@@ -73,9 +75,24 @@ struct FeedView: View {
     private var feedScene: some View {
         ZStack {
             AppColors.background.ignoresSafeArea()
-            VStack(spacing: AppSpacing.s) {
-                header
-                content
+            GeometryReader { geo in
+                let wide = AppWorkspace.isWide(geo.size, accessibility: dynamicType.isAccessibilitySize)
+                HStack(spacing: wide ? AppSpacing.l : 0) {
+                    if wide {
+                        FeedBasketPanel { showTrash = true }
+                            .environment(\.layoutDirection, readingDirection)
+                            .frame(width: min(300, geo.size.width * 0.36))
+                            .padding(.leading, AppSpacing.pageMargin)
+                    }
+                    VStack(spacing: AppSpacing.s) {
+                        header
+                        content
+                    }
+                    .environment(\.layoutDirection, readingDirection)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+                .environment(\.layoutDirection, .leftToRight)
+                .onChange(of: geo.size) { _, _ in model.dragCancelled(); resetZoom() }
             }
             .padding(.bottom, AppSpacing.xs)
         }

@@ -144,6 +144,7 @@ struct RootView: View {
                 stack(.history) { HistoryView() }
             }
         }
+        .tabViewStyle(.sidebarAdaptable)
         .tint(AppColors.accent)
         .fullScreenCover(isPresented: $vault.isPresented, onDismiss: { vault.lock() }) {
             VaultRootView()

@@ -215,7 +215,7 @@ struct VaultHomeView: View {
     }
 
     private var grid: some View {
-        let columns = Array(repeating: GridItem(.flexible(), spacing: 2), count: 3)
+        let columns = [GridItem(.adaptive(minimum: 104, maximum: 170), spacing: 2)]
         let list = items
         return LazyVGrid(columns: columns, spacing: 2) {
             ForEach(Array(list.enumerated()), id: \.element.id) { index, item in

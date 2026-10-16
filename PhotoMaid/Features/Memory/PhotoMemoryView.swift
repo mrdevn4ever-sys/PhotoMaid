@@ -10,7 +10,6 @@ struct PhotoMemoryView: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
     @Environment(\.dynamicTypeSize) private var dynamicType
-    @Environment(\.verticalSizeClass) private var verticalSizeClass
     @Environment(\.scenePhase) private var scenePhase
     let onResults: (SmartReviewKind) -> Void
     var onChooseGame: (() -> Void)? = nil
@@ -22,15 +21,19 @@ struct PhotoMemoryView: View {
     @State private var collectionPicker = false
     @State private var collectionID: String?
     @State private var collectionTitle = ""
+    @State private var analysisHeight: CGFloat = 0
+    @State private var boardNeedsScrolling = false
     @State private var configurationLoaded = false
 
     private var model: PhotoMemoryModel { app.memory }
 
     var body: some View {
         NavigationStack {
+            GeometryReader { geo in
             ScrollView {
                 VStack(spacing: AppSpacing.m) {
                     PhotoGameAnalysisStatus(onResults: onResults)
+                        .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { analysisHeight = $0 }
                     PhotoGameRecordSaveStatus()
                     if let error = model.error {
                         InfoBanner(symbol: "exclamationmark.triangle", tint: AppColors.warning, text: error)
@@ -41,14 +44,19 @@ struct PhotoMemoryView: View {
                     } else if setup || model.game == nil {
                         configuration
                     } else if let game = model.game {
-                        board(game)
+                        board(game, viewport: geo.size)
                     }
                 }
                 .padding(AppSpacing.pageMargin)
-                .frame(maxWidth: verticalSizeClass == .compact ? 760 : 560)
+                .frame(maxWidth: 900)
                 .frame(maxWidth: .infinity)
             }
             .appPage()
+            .onScrollGeometryChange(for: Bool.self) { $0.contentSize.height > $0.containerSize.height + 1 } action: { _, scrolling in
+                boardNeedsScrolling = scrolling
+                if scrolling { model.noteManualMismatch() }
+            }
+            }
             .navigationTitle(L("memory_title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -76,7 +84,7 @@ struct PhotoMemoryView: View {
             }
             .task(id: mismatchTaskID) {
                 // VoiceOver users control how long both cards stay visible with the explicit button.
-                guard !voiceOver, scenePhase == .active, !setup, !picker, !collectionPicker, !model.isLoading,
+                guard !voiceOver, !boardNeedsScrolling, scenePhase == .active, !setup, !picker, !collectionPicker, !model.isLoading,
                       model.game?.hasMismatch == true else { return }
                 do { try await Task.sleep(for: .seconds(1.2)) } catch { return }
                 model.concealMismatch()
@@ -97,7 +105,7 @@ struct PhotoMemoryView: View {
     }
 
     private var mismatchTaskID: String {
-        "\(model.roundID)-\(model.game?.faceUp.description ?? "")-\(voiceOver)-\(scenePhase == .active)-\(setup)-\(picker)-\(collectionPicker)-\(model.isLoading)"
+        "\(model.roundID)-\(model.game?.faceUp.description ?? "")-\(boardNeedsScrolling)-\(voiceOver)-\(scenePhase == .active)-\(setup)-\(picker)-\(collectionPicker)-\(model.isLoading)"
     }
 
     private var shouldTime: Bool {
@@ -117,14 +125,14 @@ struct PhotoMemoryView: View {
                         Text(key: "memory_source_collection").tag(Source.collection)
                         Text(key: "memory_own").tag(Source.manual)
                     }
-                    .pickerStyle(.menu)
+                    .pickerStyle(.menu).accessibilityIdentifier("memory.source")
                     if source != .manual {
                         Picker(L("memory_size"), selection: $pairCount) {
                             ForEach([6, 12, 18], id: \.self) { count in
                                 Text(verbatim: L("memory_pair_option", count, count * 2)).tag(count)
                             }
                         }
-                        .pickerStyle(.menu)
+                        .pickerStyle(.menu).accessibilityIdentifier("memory.size")
                     }
                     if source == .collection {
                         Button { collectionPicker = true } label: {
@@ -155,8 +163,12 @@ struct PhotoMemoryView: View {
         }
     }
 
-    private func board(_ game: PhotoMemoryGame) -> some View {
-        VStack(spacing: AppSpacing.m) {
+    private func board(_ game: PhotoMemoryGame, viewport: CGSize) -> some View {
+        let layout = PhotoMemoryBoardLayout(cards: game.cards.count,
+            width: min(900, viewport.width) - AppSpacing.pageMargin * 2,
+            availableHeight: viewport.height - 225 - analysisHeight,
+            accessibility: dynamicType.isAccessibilitySize)
+        return VStack(spacing: AppSpacing.m) {
             ViewThatFits(in: .horizontal) {
                 HStack {
                     Text(verbatim: L("memory_pairs", game.matchedPairs.count, game.pairCount))
@@ -175,15 +187,16 @@ struct PhotoMemoryView: View {
             }
             .font(AppTypography.caption).foregroundStyle(AppColors.textSecondary).monospacedDigit()
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: AppSpacing.xs),
-                                     count: gridColumns(game)),
+                                     count: layout.columns),
                       spacing: AppSpacing.xs) {
                 ForEach(game.cards) { card in
-                    cardButton(card, game: game)
+                    cardButton(card, game: game).frame(height: layout.cardHeight)
                 }
             }
-            if game.hasMismatch {
-                Button(L("memory_flip")) { model.concealMismatch() }.buttonStyle(.glass)
-            }
+            Button(L("memory_flip")) { model.concealMismatch() }.buttonStyle(.glass)
+                .accessibilityIdentifier("memory.flip")
+                .disabled(!game.hasMismatch).opacity(game.hasMismatch ? 1 : 0)
+                .accessibilityHidden(!game.hasMismatch)
             if game.isFinished {
                 Label(L("memory_done"), systemImage: "checkmark.circle.fill")
                     .font(AppTypography.title3).foregroundStyle(AppColors.success)
@@ -192,6 +205,10 @@ struct PhotoMemoryView: View {
                 Button(L("memory_new")) { replay() }.buttonStyle(.glassProminent)
             }
             Button(L("memory_change")) { setup = true }.buttonStyle(.glass)
+        }
+        .onChange(of: layout.requiresScrolling, initial: true) { _, needsScroll in
+            boardNeedsScrolling = needsScroll
+            if needsScroll { model.noteManualMismatch() }
         }
     }
 
@@ -205,12 +222,6 @@ struct PhotoMemoryView: View {
     private var bestTimeLabel: some View {
         Text(verbatim: model.bestSeconds.map { L("game_best_time", DateText.gameDuration($0)) } ?? L("game_no_best"))
             .accessibilityIdentifier("memory.best")
-    }
-
-    private func gridColumns(_ game: PhotoMemoryGame) -> Int {
-        if dynamicType.isAccessibilitySize { return 2 }
-        if verticalSizeClass == .compact { return min(6, game.cards.count) }
-        return game.pairCount <= 6 ? 3 : (game.pairCount <= 12 ? 4 : 6)
     }
 
     private func restoreConfiguration() {
@@ -257,6 +268,7 @@ struct PhotoMemoryView: View {
                 ZStack {
                     RoundedRectangle(cornerRadius: AppRadii.small)
                         .fill(revealed ? AppColors.surface : AppColors.accentFill)
+                        .overlay { if !revealed { RoundedRectangle(cornerRadius: AppRadii.small).strokeBorder(.white.opacity(0.18), lineWidth: 1) } }
                     if revealed {
                         if let image = model.image(for: card.pairID) {
                             Image(uiImage: image).resizable().scaledToFill()
@@ -265,7 +277,7 @@ struct PhotoMemoryView: View {
                             Image(systemName: card.pairID).font(.largeTitle).foregroundStyle(AppColors.accent)
                         }
                     } else {
-                        Image(systemName: "photo.on.rectangle.angled").font(.largeTitle).foregroundStyle(.white)
+                        Image(systemName: "photo.on.rectangle.angled").font(.title2.weight(.medium)).foregroundStyle(.white.opacity(0.9))
                     }
                 }
                 .clipShape(.rect(cornerRadius: AppRadii.small))
@@ -276,7 +288,6 @@ struct PhotoMemoryView: View {
                     }
                 }
             }
-            .aspectRatio(1, contentMode: .fit)
             .frame(minHeight: AppSpacing.minTouch)
         }
         .buttonStyle(.plain)

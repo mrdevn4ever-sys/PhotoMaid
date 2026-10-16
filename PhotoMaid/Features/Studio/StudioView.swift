@@ -12,7 +12,7 @@ struct StudioView: View {
             VStack(alignment: .leading, spacing: AppSpacing.l) {
                 Text(key: "studio_intro").font(AppTypography.body).foregroundStyle(AppColors.textSecondary)
                 SectionHeader(title: L("studio_create_header"))
-                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: AppSpacing.s) {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 154, maximum: 260))], spacing: AppSpacing.s) {
                     studioButton("rectangle.3.group", "studio_collage", "studio_collage_sub") { pickingCollage = true }
                     studioButton("film.stack", "movie_title", "movie_studio_sub") { app.navigate(.movie(ids: []), in: .studio) }
                     studioButton("play.rectangle", "movie_title_slideshow", "movie_slideshow_sub") { app.navigate(.movie(ids: []), in: .studio) }
