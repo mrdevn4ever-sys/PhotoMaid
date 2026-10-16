@@ -1,0 +1,1520 @@
+Command line invocation:
+    /Applications/Xcode_26.6.app/Contents/Developer/usr/bin/xcodebuild -project PhotoMaid.xcodeproj -scheme PhotoMaid -destination id=25B395EC-01B8-4FB6-8D2A-1C484C360481 -derivedDataPath /Users/runner/work/_temp/PhotoMaidDerived -resultBundlePath /Users/runner/work/_temp/game-visual/iphone.xcresult -parallel-testing-enabled NO -maximum-concurrent-test-simulator-destinations 1 -test-timeouts-enabled YES -default-test-execution-time-allowance 300 -maximum-test-execution-time-allowance 300 "-only-testing:PhotoMaidUITests/PhotoGameVisualTests" -skipPackagePluginValidation -skipMacroValidation TARGETED_DEVICE_FAMILY=1,2 CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_REQUIRED=YES test-without-building
+
+Build settings from command line:
+    CODE_SIGN_IDENTITY = -
+    CODE_SIGNING_ALLOWED = YES
+    CODE_SIGNING_REQUIRED = YES
+    TARGETED_DEVICE_FAMILY = 1,2
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  GoogleMobileAds: https://github.com/googleads/swift-package-manager-google-mobile-ads.git @ 13.9.0
+  PhotoMaidCore: /Users/runner/work/PhotoMaid/PhotoMaid
+  GoogleUserMessagingPlatform: https://github.com/googleads/swift-package-manager-google-user-messaging-platform.git @ 3.1.0
+  swift-crypto: https://github.com/apple/swift-crypto.git @ 4.5.2
+  swift-asn1: https://github.com/apple/swift-asn1.git @ 1.7.3
+
+Writing result bundle at path:
+	/Users/runner/work/_temp/game-visual/iphone.xcresult
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS Simulator, arch:arm64, id:25B395EC-01B8-4FB6-8D2A-1C484C360481, OS:26.2, name:iPhone 17 }
+{ platform:iOS Simulator, arch:x86_64, id:25B395EC-01B8-4FB6-8D2A-1C484C360481, OS:26.2, name:iPhone 17 }
+2026-10-16 22:52:33.253413+0000 PhotoMaidUITests-Runner[19551:60872] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-16 22:52:41.530.
+Test Suite 'PhotoMaidUITests.xctest' started at 2026-10-16 22:52:41.532.
+Test Suite 'PhotoGameVisualTests' started at 2026-10-16 22:52:41.532.
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test10MemoryPhotosWinAndPersistentRecord]' started.
+    t =     0.00s Start Test at 2026-10-16 22:52:41.533
+    t =     1.02s Set Up
+    t =     1.02s     Setting device orientation to Portrait
+    t =     1.87s         Device orientation changed to Portrait
+    t =     1.98s         Wait for com.apple.springboard to idle
+    t =     2.16s Open com.mrdevn4ever.photomaid
+    t =     2.16s     Launch com.mrdevn4ever.photomaid
+2026-10-16 22:52:44.589 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-16 22:52:44.589 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    12.12s         Setting up automation session
+    t =    16.21s         Wait for com.mrdevn4ever.photomaid to idle
+    t =    20.46s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    20.57s Checking existence of `Alert (First Match)`
+    t =    20.65s Checking existence of `"feed.stage" Any`
+    t =    21.70s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    21.75s Checking existence of `Alert (First Match)`
+    t =    21.83s Checking existence of `"feed.stage" Any`
+    t =    22.79s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    23.01s Find the "Allow Full Access" Button
+    t =    23.37s Added attachment named 'games_feed_photos_permission_0'
+    t =    23.37s Requesting snapshot of accessibility hierarchy for app with pid 4698
+    t =    23.85s Requesting snapshot of accessibility hierarchy for app with pid 4698
+    t =    23.95s Added attachment named 'games_feed_photos_permission_0.hierarchy'
+    t =    23.96s Tap "Allow Full Access" Button
+    t =    23.96s     Wait for com.apple.springboard to idle
+    t =    23.96s     Find the "Allow Full Access" Button
+    t =    24.01s     Check for interrupting elements affecting "Allow Full Access" Button
+    t =    24.08s     Synthesize event
+    t =    24.52s     Wait for com.apple.springboard to idle
+    t =    24.84s Checking existence of `Alert (First Match)`
+    t =    25.92s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    26.00s Checking existence of `Alert (First Match)`
+    t =    26.09s Checking existence of `"feed.stage" Any`
+    t =    27.14s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    27.21s Checking existence of `Alert (First Match)`
+    t =    27.31s Checking existence of `"feed.stage" Any`
+    t =    28.84s Tap "feed.memory" Button
+    t =    28.85s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    28.85s     Find the "feed.memory" Button
+    t =    28.98s     Check for interrupting elements affecting "feed.memory" Button
+    t =    29.07s     Synthesize event
+    t =    29.39s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    30.56s Waiting 5.0s for "games.memory" Button to exist
+    t =    31.60s     Checking `Expect predicate `existsNoRetry == 1` for object "games.memory" Button`
+    t =    31.60s         Checking existence of `"games.memory" Button`
+    t =    31.72s Tap "games.memory" Button
+    t =    31.72s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    31.72s     Find the "games.memory" Button
+    t =    31.82s     Check for interrupting elements affecting "games.memory" Button
+    t =    31.89s     Synthesize event
+    t =    32.18s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    32.67s Added attachment named 'memory_01_setup_light'
+    t =    32.67s Requesting snapshot of accessibility hierarchy for app with pid 20325
+    t =    33.14s Requesting snapshot of accessibility hierarchy for app with pid 20325
+    t =    33.24s Added attachment named 'memory_01_setup_light.hierarchy'
+    t =    33.24s Tap "memory.startPhotos" Button
+    t =    33.24s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    33.25s     Find the "memory.startPhotos" Button
+    t =    33.32s     Check for interrupting elements affecting "memory.startPhotos" Button
+    t =    33.39s     Synthesize event
+    t =    33.70s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    33.95s Waiting 30.0s for "memory.card.0" Button to exist
+    t =    34.99s     Checking `Expect predicate `existsNoRetry == 1` for object "memory.card.0" Button`
+    t =    35.00s         Checking existence of `"memory.card.0" Button`
+    t =    35.10s Get number of matches for: Elements matching predicate 'identifier BEGINSWITH "memory.card."'
+    t =    35.17s Get all elements bound by index for: Elements matching predicate 'identifier BEGINSWITH "memory.card."'
+    t =    35.26s Find the Button (Element at index 0)
+    t =    35.36s Find the "memory.card.0" Button
+    t =    35.43s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    35.49s Find the "memory.card.0" Button
+    t =    35.55s Find the Button (Element at index 1)
+    t =    35.61s Find the "memory.card.1" Button
+    t =    35.69s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    35.75s Find the "memory.card.1" Button
+    t =    35.82s Find the Button (Element at index 2)
+    t =    35.88s Find the "memory.card.2" Button
+    t =    35.95s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    36.01s Find the "memory.card.2" Button
+    t =    36.08s Find the Button (Element at index 3)
+    t =    36.15s Find the "memory.card.3" Button
+    t =    36.22s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    36.31s Find the "memory.card.3" Button
+    t =    36.38s Find the Button (Element at index 4)
+    t =    36.48s Find the "memory.card.4" Button
+    t =    36.55s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    36.62s Find the "memory.card.4" Button
+    t =    36.68s Find the Button (Element at index 5)
+    t =    36.79s Find the "memory.card.5" Button
+    t =    36.87s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    36.93s Find the "memory.card.5" Button
+    t =    37.02s Find the Button (Element at index 6)
+    t =    37.11s Find the "memory.card.6" Button
+    t =    37.17s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    37.22s Find the "memory.card.6" Button
+    t =    37.29s Find the Button (Element at index 7)
+    t =    37.36s Find the "memory.card.7" Button
+    t =    37.43s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    37.49s Find the "memory.card.7" Button
+    t =    37.55s Find the Button (Element at index 8)
+    t =    37.62s Find the "memory.card.8" Button
+    t =    37.69s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    37.74s Find the "memory.card.8" Button
+    t =    37.83s Find the Button (Element at index 9)
+    t =    37.90s Find the "memory.card.9" Button
+    t =    37.96s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    38.02s Find the "memory.card.9" Button
+    t =    38.10s Find the Button (Element at index 10)
+    t =    38.16s Find the "memory.card.10" Button
+    t =    38.23s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    38.29s Find the "memory.card.10" Button
+    t =    38.35s Find the Button (Element at index 11)
+    t =    38.41s Find the "memory.card.11" Button
+    t =    38.48s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    38.54s Find the "memory.card.11" Button
+    t =    38.61s Find the Button (Element at index 12)
+    t =    38.69s Find the "memory.card.12" Button
+    t =    38.77s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    38.82s Find the "memory.card.12" Button
+    t =    38.91s Find the Button (Element at index 13)
+    t =    39.01s Find the "memory.card.13" Button
+    t =    39.09s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    39.17s Find the "memory.card.13" Button
+    t =    39.27s Find the Button (Element at index 14)
+    t =    39.34s Find the "memory.card.14" Button
+    t =    39.40s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    39.46s Find the "memory.card.14" Button
+    t =    39.53s Find the Button (Element at index 15)
+    t =    39.61s Find the "memory.card.15" Button
+    t =    39.76s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    39.82s Find the "memory.card.15" Button
+    t =    39.89s Find the Button (Element at index 16)
+    t =    39.98s Find the "memory.card.16" Button
+    t =    40.06s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    40.14s Find the "memory.card.16" Button
+    t =    40.34s Find the Button (Element at index 17)
+    t =    40.47s Find the "memory.card.17" Button
+    t =    40.55s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    40.61s Find the "memory.card.17" Button
+    t =    40.69s Find the Button (Element at index 18)
+    t =    40.77s Find the "memory.card.18" Button
+    t =    40.87s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    40.92s Find the "memory.card.18" Button
+    t =    40.99s Find the Button (Element at index 19)
+    t =    41.06s Find the "memory.card.19" Button
+    t =    41.13s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    41.18s Find the "memory.card.19" Button
+    t =    41.25s Find the Button (Element at index 20)
+    t =    41.33s Find the "memory.card.20" Button
+    t =    41.42s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    41.49s Find the "memory.card.20" Button
+    t =    41.56s Find the Button (Element at index 21)
+    t =    41.65s Find the "memory.card.21" Button
+    t =    41.72s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    41.77s Find the "memory.card.21" Button
+    t =    41.84s Find the Button (Element at index 22)
+    t =    41.92s Find the "memory.card.22" Button
+    t =    41.99s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    42.04s Find the "memory.card.22" Button
+    t =    42.12s Find the Button (Element at index 23)
+    t =    42.19s Find the "memory.card.23" Button
+    t =    42.28s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    42.35s Find the "memory.card.23" Button
+    t =    42.65s Added attachment named 'memory_02_photos_board_light'
+    t =    42.65s Requesting snapshot of accessibility hierarchy for app with pid 20325
+    t =    43.01s Requesting snapshot of accessibility hierarchy for app with pid 20325
+    t =    43.14s Added attachment named 'memory_02_photos_board_light.hierarchy'
+    t =    43.14s Get all elements bound by index for: Elements matching predicate 'identifier BEGINSWITH "memory.card."'
+    t =    43.23s Find the Button (Element at index 0)
+    t =    43.28s Find the Button (Element at index 1)
+    t =    43.34s Find the Button (Element at index 2)
+    t =    43.41s Find the Button (Element at index 3)
+    t =    43.49s Find the Button (Element at index 4)
+    t =    43.60s Find the Button (Element at index 5)
+    t =    43.68s Find the Button (Element at index 6)
+    t =    43.75s Find the Button (Element at index 7)
+    t =    43.85s Find the Button (Element at index 8)
+    t =    43.94s Find the Button (Element at index 9)
+    t =    44.03s Find the Button (Element at index 10)
+    t =    44.11s Find the Button (Element at index 11)
+    t =    44.19s Find the Button (Element at index 12)
+    t =    44.26s Find the Button (Element at index 13)
+    t =    44.35s Find the Button (Element at index 14)
+    t =    44.43s Find the Button (Element at index 15)
+    t =    44.52s Find the Button (Element at index 16)
+    t =    44.59s Find the Button (Element at index 17)
+    t =    44.65s Find the Button (Element at index 18)
+    t =    44.71s Find the Button (Element at index 19)
+    t =    44.80s Find the Button (Element at index 20)
+    t =    44.86s Find the Button (Element at index 21)
+    t =    44.93s Find the Button (Element at index 22)
+    t =    45.02s Find the Button (Element at index 23)
+    t =    45.11s Checking existence of `"memory.finished" Any`
+    t =    45.21s Tap "memory.card.0" Button
+    t =    45.21s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    45.21s     Find the "memory.card.0" Button
+    t =    45.29s     Check for interrupting elements affecting "memory.card.0" Button
+    t =    45.38s     Synthesize event
+    t =    45.69s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    45.70s Find the "memory.card.0" Button
+    t =    45.85s Tap "memory.card.1" Button
+    t =    45.85s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    45.85s     Find the "memory.card.1" Button
+    t =    45.93s     Check for interrupting elements affecting "memory.card.1" Button
+    t =    46.01s     Synthesize event
+    t =    46.31s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    46.32s Find the "memory.card.1" Button
+    t =    47.51s Checking `Expect predicate `enabled == 1` for object "memory.card.0" Button`
+    t =    47.51s     Find the "memory.card.0" Button
+    t =    47.80s Checking existence of `"memory.finished" Any`
+    t =    47.96s Tap "memory.card.2" Button
+    t =    47.96s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    47.96s     Find the "memory.card.2" Button
+    t =    48.12s     Check for interrupting elements affecting "memory.card.2" Button
+    t =    48.22s     Synthesize event
+    t =    48.57s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    48.59s Find the "memory.card.2" Button
+    t =    48.71s Tap "memory.card.3" Button
+    t =    48.71s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    48.71s     Find the "memory.card.3" Button
+    t =    48.82s     Check for interrupting elements affecting "memory.card.3" Button
+    t =    48.94s     Synthesize event
+    t =    49.26s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    49.26s Find the "memory.card.3" Button
+    t =    50.40s Checking `Expect predicate `enabled == 1` for object "memory.card.2" Button`
+    t =    50.40s     Find the "memory.card.2" Button
+    t =    50.51s Checking existence of `"memory.finished" Any`
+    t =    50.59s Tap "memory.card.4" Button
+    t =    50.59s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    50.59s     Find the "memory.card.4" Button
+    t =    50.70s     Check for interrupting elements affecting "memory.card.4" Button
+    t =    50.79s     Synthesize event
+    t =    51.10s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    51.10s Find the "memory.card.4" Button
+    t =    51.21s Tap "memory.card.5" Button
+    t =    51.21s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    51.21s     Find the "memory.card.5" Button
+    t =    51.34s     Check for interrupting elements affecting "memory.card.5" Button
+    t =    51.44s     Synthesize event
+    t =    51.76s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    51.77s Find the "memory.card.5" Button
+    t =    52.94s Checking `Expect predicate `enabled == 1` for object "memory.card.4" Button`
+    t =    52.95s     Find the "memory.card.4" Button
+    t =    53.05s Checking existence of `"memory.finished" Any`
+    t =    53.15s Tap "memory.card.6" Button
+    t =    53.15s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    53.16s     Find the "memory.card.6" Button
+    t =    53.27s     Check for interrupting elements affecting "memory.card.6" Button
+    t =    53.38s     Synthesize event
+    t =    53.71s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    53.72s Find the "memory.card.6" Button
+    t =    53.82s Tap "memory.card.7" Button
+    t =    53.82s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    53.83s     Find the "memory.card.7" Button
+    t =    53.93s     Check for interrupting elements affecting "memory.card.7" Button
+    t =    54.04s     Synthesize event
+    t =    54.37s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    54.37s Find the "memory.card.7" Button
+    t =    55.52s Checking `Expect predicate `enabled == 1` for object "memory.card.6" Button`
+    t =    55.52s     Find the "memory.card.6" Button
+    t =    55.72s Checking existence of `"memory.finished" Any`
+    t =    55.85s Tap "memory.card.1" Button
+    t =    55.85s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    55.86s     Find the "memory.card.1" Button
+    t =    55.96s     Check for interrupting elements affecting "memory.card.1" Button
+    t =    56.05s     Synthesize event
+    t =    56.39s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    56.39s Find the "memory.card.1" Button
+    t =    56.49s Tap "memory.card.7" Button
+    t =    56.49s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    56.49s     Find the "memory.card.7" Button
+    t =    56.59s     Check for interrupting elements affecting "memory.card.7" Button
+    t =    56.70s     Synthesize event
+    t =    57.03s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    57.04s Find the "memory.card.7" Button
+    t =    57.19s Checking existence of `"memory.finished" Any`
+    t =    57.30s Tap "memory.card.8" Button
+    t =    57.30s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    57.31s     Find the "memory.card.8" Button
+    t =    57.43s     Check for interrupting elements affecting "memory.card.8" Button
+    t =    57.51s     Synthesize event
+    t =    57.83s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    57.83s Find the "memory.card.8" Button
+    t =    57.93s Tap "memory.card.9" Button
+    t =    57.93s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    57.93s     Find the "memory.card.9" Button
+    t =    58.06s     Check for interrupting elements affecting "memory.card.9" Button
+    t =    58.14s     Synthesize event
+    t =    58.47s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    58.48s Find the "memory.card.9" Button
+    t =    59.59s Checking `Expect predicate `enabled == 1` for object "memory.card.8" Button`
+    t =    59.59s     Find the "memory.card.8" Button
+    t =    59.73s Checking existence of `"memory.finished" Any`
+    t =    59.87s Tap "memory.card.10" Button
+    t =    59.87s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    59.87s     Find the "memory.card.10" Button
+    t =    59.99s     Check for interrupting elements affecting "memory.card.10" Button
+    t =    60.10s     Synthesize event
+    t =    60.47s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    60.47s Find the "memory.card.10" Button
+    t =    60.62s Tap "memory.card.5" Button
+    t =    60.62s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    60.63s     Find the "memory.card.5" Button
+    t =    60.74s     Check for interrupting elements affecting "memory.card.5" Button
+    t =    60.84s     Synthesize event
+    t =    61.16s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    61.17s Find the "memory.card.5" Button
+    t =    61.25s Checking existence of `"memory.finished" Any`
+    t =    61.32s Tap "memory.card.11" Button
+    t =    61.32s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    61.32s     Find the "memory.card.11" Button
+    t =    61.39s     Check for interrupting elements affecting "memory.card.11" Button
+    t =    61.52s     Synthesize event
+    t =    61.85s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    61.86s Find the "memory.card.11" Button
+    t =    61.93s Tap "memory.card.12" Button
+    t =    61.93s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    61.94s     Find the "memory.card.12" Button
+    t =    62.03s     Check for interrupting elements affecting "memory.card.12" Button
+    t =    62.11s     Synthesize event
+    t =    62.43s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    62.44s Find the "memory.card.12" Button
+    t =    63.57s Checking `Expect predicate `enabled == 1` for object "memory.card.11" Button`
+    t =    63.57s     Find the "memory.card.11" Button
+    t =    63.77s Checking existence of `"memory.finished" Any`
+    t =    63.88s Tap "memory.card.6" Button
+    t =    63.88s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    63.89s     Find the "memory.card.6" Button
+    t =    63.98s     Check for interrupting elements affecting "memory.card.6" Button
+    t =    64.10s     Synthesize event
+    t =    64.42s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    64.42s Find the "memory.card.6" Button
+    t =    64.51s Tap "memory.card.12" Button
+    t =    64.51s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    64.51s     Find the "memory.card.12" Button
+    t =    64.60s     Check for interrupting elements affecting "memory.card.12" Button
+    t =    64.69s     Synthesize event
+    t =    65.00s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    65.00s Find the "memory.card.12" Button
+    t =    65.16s Checking existence of `"memory.finished" Any`
+    t =    65.49s Tap "memory.card.13" Button
+    t =    65.49s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    65.50s     Find the "memory.card.13" Button
+    t =    65.64s     Check for interrupting elements affecting "memory.card.13" Button
+    t =    65.75s     Synthesize event
+    t =    66.07s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    66.07s Find the "memory.card.13" Button
+    t =    66.19s Tap "memory.card.9" Button
+    t =    66.19s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    66.19s     Find the "memory.card.9" Button
+    t =    66.31s     Check for interrupting elements affecting "memory.card.9" Button
+    t =    66.40s     Synthesize event
+    t =    66.72s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    66.74s Find the "memory.card.9" Button
+    t =    66.88s Checking existence of `"memory.finished" Any`
+    t =    67.01s Tap "memory.card.14" Button
+    t =    67.01s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    67.01s     Find the "memory.card.14" Button
+    t =    67.11s     Check for interrupting elements affecting "memory.card.14" Button
+    t =    67.21s     Synthesize event
+    t =    67.55s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    67.55s Find the "memory.card.14" Button
+    t =    67.65s Tap "memory.card.11" Button
+    t =    67.65s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    67.66s     Find the "memory.card.11" Button
+    t =    67.76s     Check for interrupting elements affecting "memory.card.11" Button
+    t =    67.86s     Synthesize event
+    t =    68.20s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    68.20s Find the "memory.card.11" Button
+    t =    68.29s Checking existence of `"memory.finished" Any`
+    t =    68.40s Tap "memory.card.15" Button
+    t =    68.41s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    68.41s     Find the "memory.card.15" Button
+    t =    68.50s     Check for interrupting elements affecting "memory.card.15" Button
+    t =    68.60s     Synthesize event
+    t =    68.91s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    68.92s Find the "memory.card.15" Button
+    t =    69.02s Tap "memory.card.3" Button
+    t =    69.02s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    69.02s     Find the "memory.card.3" Button
+    t =    69.10s     Check for interrupting elements affecting "memory.card.3" Button
+    t =    69.22s     Synthesize event
+    t =    69.54s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    69.55s Find the "memory.card.3" Button
+    t =    69.63s Checking existence of `"memory.finished" Any`
+    t =    69.71s Tap "memory.card.16" Button
+    t =    69.71s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    69.72s     Find the "memory.card.16" Button
+    t =    69.81s     Check for interrupting elements affecting "memory.card.16" Button
+    t =    69.92s     Synthesize event
+    t =    70.26s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    70.26s Find the "memory.card.16" Button
+    t =    71.12s Tap "memory.card.17" Button
+    t =    71.12s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    71.14s     Find the "memory.card.17" Button
+    t =    72.35s     Check for interrupting elements affecting "memory.card.17" Button
+    t =    72.57s     Synthesize event
+    t =    73.25s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    73.27s Find the "memory.card.17" Button
+    t =    74.45s Checking `Expect predicate `enabled == 1` for object "memory.card.16" Button`
+    t =    74.46s     Find the "memory.card.16" Button
+    t =    74.84s Checking existence of `"memory.finished" Any`
+    t =    74.97s Tap "memory.card.18" Button
+    t =    74.97s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    74.97s     Find the "memory.card.18" Button
+    t =    75.08s     Check for interrupting elements affecting "memory.card.18" Button
+    t =    75.17s     Synthesize event
+    t =    75.48s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    75.49s Find the "memory.card.18" Button
+    t =    75.61s Tap "memory.card.16" Button
+    t =    75.61s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    75.62s     Find the "memory.card.16" Button
+    t =    75.82s     Check for interrupting elements affecting "memory.card.16" Button
+    t =    75.95s     Synthesize event
+    t =    76.35s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    76.35s Find the "memory.card.16" Button
+    t =    76.50s Checking existence of `"memory.finished" Any`
+    t =    76.63s Tap "memory.card.19" Button
+    t =    76.63s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    76.63s     Find the "memory.card.19" Button
+    t =    76.74s     Check for interrupting elements affecting "memory.card.19" Button
+    t =    76.84s     Synthesize event
+    t =    77.16s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    77.18s Find the "memory.card.19" Button
+    t =    77.33s Tap "memory.card.2" Button
+    t =    77.33s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    77.34s     Find the "memory.card.2" Button
+    t =    77.44s     Check for interrupting elements affecting "memory.card.2" Button
+    t =    77.54s     Synthesize event
+    t =    77.86s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    77.87s Find the "memory.card.2" Button
+    t =    78.02s Checking existence of `"memory.finished" Any`
+    t =    78.13s Tap "memory.card.20" Button
+    t =    78.13s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    78.13s     Find the "memory.card.20" Button
+    t =    78.25s     Check for interrupting elements affecting "memory.card.20" Button
+    t =    78.33s     Synthesize event
+    t =    78.64s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    78.66s Find the "memory.card.20" Button
+    t =    78.78s Tap "memory.card.17" Button
+    t =    78.78s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    78.78s     Find the "memory.card.17" Button
+    t =    78.88s     Check for interrupting elements affecting "memory.card.17" Button
+    t =    79.00s     Synthesize event
+    t =    79.32s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    79.33s Find the "memory.card.17" Button
+    t =    79.54s Checking existence of `"memory.finished" Any`
+    t =    79.70s Tap "memory.card.21" Button
+    t =    79.70s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    79.70s     Find the "memory.card.21" Button
+    t =    79.81s     Check for interrupting elements affecting "memory.card.21" Button
+    t =    79.91s     Synthesize event
+    t =    80.22s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    80.23s Find the "memory.card.21" Button
+    t =    80.34s Tap "memory.card.0" Button
+    t =    80.34s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    80.35s     Find the "memory.card.0" Button
+    t =    80.46s     Check for interrupting elements affecting "memory.card.0" Button
+    t =    80.55s     Synthesize event
+    t =    80.87s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    80.87s Find the "memory.card.0" Button
+    t =    80.97s Checking existence of `"memory.finished" Any`
+    t =    81.06s Tap "memory.card.22" Button
+    t =    81.06s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    81.06s     Find the "memory.card.22" Button
+    t =    81.16s     Check for interrupting elements affecting "memory.card.22" Button
+    t =    81.23s     Synthesize event
+    t =    81.55s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    81.55s Find the "memory.card.22" Button
+    t =    81.69s Tap "memory.card.4" Button
+    t =    81.69s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    81.71s     Find the "memory.card.4" Button
+    t =    81.93s     Check for interrupting elements affecting "memory.card.4" Button
+    t =    82.11s     Synthesize event
+    t =    82.53s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    82.54s Find the "memory.card.4" Button
+    t =    82.73s Checking existence of `"memory.finished" Any`
+    t =    82.83s Tap "memory.card.23" Button
+    t =    82.83s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    82.83s     Find the "memory.card.23" Button
+    t =    82.93s     Check for interrupting elements affecting "memory.card.23" Button
+    t =    83.03s     Synthesize event
+    t =    83.35s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    83.36s Find the "memory.card.23" Button
+    t =    83.49s Tap "memory.card.8" Button
+    t =    83.49s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    83.50s     Find the "memory.card.8" Button
+    t =    83.69s     Check for interrupting elements affecting "memory.card.8" Button
+    t =    83.82s     Synthesize event
+    t =    84.15s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    84.16s Find the "memory.card.8" Button
+    t =    84.31s Checking existence of `"memory.finished" Any`
+    t =    84.47s Waiting 5.0s for "memory.finished" Any to exist
+    t =    85.48s     Checking `Expect predicate `existsNoRetry == 1` for object "memory.finished" Any`
+    t =    85.48s         Checking existence of `"memory.finished" Any`
+    t =    85.64s Find the "memory.best" StaticText
+    t =    86.10s Added attachment named 'memory_03_victory_record_light'
+    t =    86.11s Requesting snapshot of accessibility hierarchy for app with pid 20325
+    t =    86.66s Requesting snapshot of accessibility hierarchy for app with pid 20325
+    t =    86.82s Added attachment named 'memory_03_victory_record_light.hierarchy'
+    t =    86.82s Tap "memory.close" Button
+    t =    86.82s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    86.82s     Find the "memory.close" Button
+    t =    86.94s     Check for interrupting elements affecting "memory.close" Button
+    t =    87.02s     Synthesize event
+    t =    87.37s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    88.25s Tap "feed.memory" Button
+    t =    88.25s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    88.31s     Find the "feed.memory" Button
+    t =    88.43s     Check for interrupting elements affecting "feed.memory" Button
+    t =    88.49s     Synthesize event
+    t =    88.80s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    89.67s Tap "games.records" Button
+    t =    89.67s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    89.70s     Find the "games.records" Button
+    t =    89.89s     Check for interrupting elements affecting "games.records" Button
+    t =    89.97s     Synthesize event
+    t =    90.30s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    91.68s Added attachment named 'games_04_saved_records'
+    t =    91.68s Requesting snapshot of accessibility hierarchy for app with pid 20325
+    t =    92.20s Requesting snapshot of accessibility hierarchy for app with pid 20325
+    t =    92.48s Added attachment named 'games_04_saved_records.hierarchy'
+    t =    92.48s Terminate com.mrdevn4ever.photomaid:20325
+    t =    93.49s Open com.mrdevn4ever.photomaid
+    t =    93.49s     Launch com.mrdevn4ever.photomaid
+2026-10-16 22:54:15.076 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-16 22:54:15.077 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    95.34s         Setting up automation session
+    t =    98.69s         Wait for com.mrdevn4ever.photomaid to idle
+    t =   102.94s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =   103.03s Checking existence of `Alert (First Match)`
+    t =   103.23s Checking existence of `"feed.stage" Any`
+    t =   104.46s Tap "feed.memory" Button
+    t =   104.46s     Wait for com.mrdevn4ever.photomaid to idle
+    t =   104.47s     Find the "feed.memory" Button
+    t =   104.70s     Check for interrupting elements affecting "feed.memory" Button
+    t =   104.88s     Synthesize event
+    t =   105.28s     Wait for com.mrdevn4ever.photomaid to idle
+    t =   106.45s Tap "games.records" Button
+    t =   106.45s     Wait for com.mrdevn4ever.photomaid to idle
+    t =   107.30s     Find the "games.records" Button
+    t =   107.48s     Check for interrupting elements affecting "games.records" Button
+    t =   107.57s     Synthesize event
+    t =   107.91s     Wait for com.mrdevn4ever.photomaid to idle
+    t =   109.07s Waiting 5.0s for Any (First Match) to exist
+    t =   110.09s     Checking `Expect predicate `existsNoRetry == 1` for object Any (First Match)`
+    t =   110.09s         Checking existence of `Any (First Match)`
+    t =   111.18s Added attachment named 'games_05_record_after_relaunch'
+    t =   111.19s Requesting snapshot of accessibility hierarchy for app with pid 24454
+    t =   112.21s Requesting snapshot of accessibility hierarchy for app with pid 24454
+    t =   112.39s Added attachment named 'games_05_record_after_relaunch.hierarchy'
+    t =   112.44s Tear Down
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test10MemoryPhotosWinAndPersistentRecord]' passed (113.466 seconds).
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test20SnakeControlsFoodHighscoreAndPause]' started.
+    t =     0.00s Start Test at 2026-10-16 22:54:35.003
+    t =     0.12s Set Up
+    t =     0.12s     Setting device orientation to Portrait
+    t =     0.16s         Wait for com.mrdevn4ever.photomaid to idle
+    t =     0.17s Open com.mrdevn4ever.photomaid
+    t =     0.17s     Launch com.mrdevn4ever.photomaid
+    t =     0.17s         Terminate com.mrdevn4ever.photomaid:24454
+2026-10-16 22:54:36.252 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-16 22:54:36.252 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     2.23s         Setting up automation session
+    t =     5.14s         Wait for com.mrdevn4ever.photomaid to idle
+    t =     8.33s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =     8.38s Checking existence of `Alert (First Match)`
+    t =     8.54s Checking existence of `"feed.stage" Any`
+    t =     9.95s Tap "feed.memory" Button
+    t =     9.96s     Wait for com.mrdevn4ever.photomaid to idle
+    t =     9.97s     Find the "feed.memory" Button
+    t =    10.22s     Check for interrupting elements affecting "feed.memory" Button
+    t =    10.38s     Synthesize event
+    t =    10.76s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    11.80s Waiting 5.0s for "games.snake" Button to exist
+    t =    12.81s     Checking `Expect predicate `existsNoRetry == 1` for object "games.snake" Button`
+    t =    12.82s         Checking existence of `"games.snake" Button`
+    t =    12.93s Tap "games.snake" Button
+    t =    12.93s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    12.93s     Find the "games.snake" Button
+    t =    13.02s     Check for interrupting elements affecting "games.snake" Button
+    t =    13.10s     Synthesize event
+    t =    13.40s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    15.93s Added attachment named 'snake_01_setup_dark'
+    t =    15.93s Requesting snapshot of accessibility hierarchy for app with pid 25568
+    t =    16.45s Requesting snapshot of accessibility hierarchy for app with pid 25568
+    t =    16.57s Added attachment named 'snake_01_setup_dark.hierarchy'
+    t =    16.57s Tap "snake.source" Button
+    t =    16.57s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    16.70s     Find the "snake.source" Button
+    t =    16.81s     Check for interrupting elements affecting "snake.source" Button
+    t =    16.89s     Synthesize event
+    t =    17.21s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    17.81s Tap "Entire photo library" Button
+    t =    17.82s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    18.93s     Find the "Entire photo library" Button
+    t =    19.37s     Check for interrupting elements affecting "Entire photo library" Button
+    t =    19.55s     Synthesize event
+    t =    19.87s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    21.55s Tap "snake.prepare" Button
+    t =    21.55s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    21.58s     Find the "snake.prepare" Button
+    t =    21.90s     Check for interrupting elements affecting "snake.prepare" Button
+    t =    22.00s     Synthesize event
+    t =    22.31s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    22.32s Waiting 30.0s for "snake.board" Any to exist
+    t =    23.35s     Checking `Expect predicate `existsNoRetry == 1` for object "snake.board" Any`
+    t =    23.35s         Checking existence of `"snake.board" Any`
+    t =    24.77s Added attachment named 'snake_02_fullscreen_ready_dark'
+    t =    24.78s Requesting snapshot of accessibility hierarchy for app with pid 25568
+    t =    25.29s Requesting snapshot of accessibility hierarchy for app with pid 25568
+    t =    25.38s Added attachment named 'snake_02_fullscreen_ready_dark.hierarchy'
+    t =    25.39s Find the "snake.board" Any
+    t =    25.49s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    25.55s Find the "snake.board" Other
+    t =    25.66s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    25.72s Checking existence of `"snake.play" Any`
+    t =    25.75s Checking existence of `"snake.close" Button`
+    t =    25.79s Find the "snake.close" Button
+    t =    25.85s Find the "snake.close" Button
+    t =    25.92s Checking existence of `"snake.pause" Button`
+    t =    25.97s Find the "snake.pause" Button
+    t =    26.03s Find the "snake.pause" Button
+    t =    26.09s Checking existence of `"snake.settings" Button`
+    t =    26.14s Find the "snake.settings" Button
+    t =    26.24s Find the "snake.settings" Button
+    t =    26.30s Checking existence of `"snake.toggleRunning" Button`
+    t =    26.41s Get number of matches for: Elements matching predicate 'identifier BEGINSWITH "snake.direction."'
+    t =    26.48s Swipe up "snake.board" Other
+    t =    26.48s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    26.49s     Find the "snake.board" Other
+    t =    26.62s     Check for interrupting elements affecting "snake.board" Other
+    t =    26.75s     Synthesize event
+    t =    27.25s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    27.26s Find the "snake.score" StaticText
+    t =    27.35s Find the "snake.board" Other
+    t =    27.51s Swipe left "snake.board" Other
+    t =    27.51s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    27.51s     Find the "snake.board" Other
+    t =    27.63s     Check for interrupting elements affecting "snake.board" Other
+    t =    27.72s     Synthesize event
+    t =    28.22s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    28.22s Find the "snake.score" StaticText
+    t =    28.30s Find the "snake.board" Other
+    t =    28.37s Swipe left "snake.board" Other
+    t =    28.37s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    28.38s     Find the "snake.board" Other
+    t =    28.44s     Check for interrupting elements affecting "snake.board" Other
+    t =    28.52s     Synthesize event
+    t =    28.99s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    28.99s Find the "snake.score" StaticText
+    t =    29.10s Find the "snake.board" Other
+    t =    29.20s Swipe left "snake.board" Other
+    t =    29.20s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    29.20s     Find the "snake.board" Other
+    t =    29.30s     Check for interrupting elements affecting "snake.board" Other
+    t =    29.41s     Synthesize event
+    t =    29.89s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    29.89s Find the "snake.score" StaticText
+    t =    29.96s Find the "snake.board" Other
+    t =    30.06s Swipe down "snake.board" Other
+    t =    30.06s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    30.07s     Find the "snake.board" Other
+    t =    30.13s     Check for interrupting elements affecting "snake.board" Other
+    t =    30.21s     Synthesize event
+    t =    30.68s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    30.69s Find the "snake.score" StaticText
+    t =    30.77s Find the "snake.board" Other
+    t =    30.91s Swipe down "snake.board" Other
+    t =    30.91s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    30.92s     Find the "snake.board" Other
+    t =    31.07s     Check for interrupting elements affecting "snake.board" Other
+    t =    31.18s     Synthesize event
+    t =    31.65s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    31.66s Find the "snake.score" StaticText
+    t =    31.76s Find the "snake.score" StaticText
+    t =    31.90s Find the "snake.best" StaticText
+    t =    32.60s Added attachment named 'snake_03_fullscreen_collected_record_dark'
+    t =    32.60s Requesting snapshot of accessibility hierarchy for app with pid 25568
+    t =    33.25s Requesting snapshot of accessibility hierarchy for app with pid 25568
+    t =    33.36s Added attachment named 'snake_03_fullscreen_collected_record_dark.hierarchy'
+    t =    33.37s Find the "snake.board" Other
+    t =    33.50s Tap "snake.close" Button
+    t =    33.51s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    33.51s     Find the "snake.close" Button
+    t =    33.58s     Check for interrupting elements affecting "snake.close" Button
+    t =    33.72s     Synthesize event
+    t =    34.19s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    36.08s Checking `Expect predicate `exists == 0` for object "snake.play" Any`
+    t =    36.08s     Checking existence of `"snake.play" Any`
+    t =    36.43s Find the "feed.memory" Button
+    t =    36.52s Find the "feed.position" Any
+    t =    36.55s Tap "feed.memory" Button
+    t =    36.55s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    36.56s     Find the "feed.memory" Button
+    t =    36.61s     Check for interrupting elements affecting "feed.memory" Button
+    t =    36.67s     Synthesize event
+    t =    37.02s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    37.89s Waiting 5.0s for "games.snake" Button to exist
+    t =    38.91s     Checking `Expect predicate `existsNoRetry == 1` for object "games.snake" Button`
+    t =    38.92s         Checking existence of `"games.snake" Button`
+    t =    39.08s Tap "games.snake" Button
+    t =    39.08s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    39.08s     Find the "games.snake" Button
+    t =    39.31s     Check for interrupting elements affecting "games.snake" Button
+    t =    39.43s     Synthesize event
+    t =    39.80s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    39.80s Waiting 5.0s for "snake.resume" Button to exist
+    t =    40.84s     Checking `Expect predicate `existsNoRetry == 1` for object "snake.resume" Button`
+    t =    40.84s         Checking existence of `"snake.resume" Button`
+    t =    40.94s Tap "snake.resume" Button
+    t =    40.94s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    40.95s     Find the "snake.resume" Button
+    t =    41.14s     Check for interrupting elements affecting "snake.resume" Button
+    t =    41.25s     Synthesize event
+    t =    41.27s         Scroll element to visible
+    t =    41.28s         Find the "snake.resume" Button
+    t =    41.53s         Computed hit point {201.16666666666666, 782.83333333333337} after scrolling to visible
+    t =    41.90s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    41.98s Waiting 10.0s for "snake.board" Other to exist
+    t =    43.04s     Checking `Expect predicate `existsNoRetry == 1` for object "snake.board" Other`
+    t =    43.04s         Checking existence of `"snake.board" Other`
+    t =    43.19s Find the "snake.board" Other
+    t =    43.32s Find the "snake.board" Other
+    t =    43.42s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    43.46s Find the "snake.board" Other
+    t =    43.58s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    43.62s Checking existence of `"snake.play" Any`
+    t =    43.65s Checking existence of `"snake.close" Button`
+    t =    43.70s Find the "snake.close" Button
+    t =    43.77s Find the "snake.close" Button
+    t =    43.84s Checking existence of `"snake.pause" Button`
+    t =    43.88s Find the "snake.pause" Button
+    t =    43.94s Find the "snake.pause" Button
+    t =    43.99s Checking existence of `"snake.settings" Button`
+    t =    44.03s Find the "snake.settings" Button
+    t =    44.10s Find the "snake.settings" Button
+    t =    44.14s Checking existence of `"snake.toggleRunning" Button`
+    t =    44.25s Get number of matches for: Elements matching predicate 'identifier BEGINSWITH "snake.direction."'
+    t =    44.30s Tap "snake.close" Button
+    t =    44.30s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    44.30s     Find the "snake.close" Button
+    t =    44.36s     Check for interrupting elements affecting "snake.close" Button
+    t =    44.49s     Synthesize event
+    t =    44.82s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    46.76s Checking `Expect predicate `exists == 0` for object "snake.play" Any`
+    t =    46.76s     Checking existence of `"snake.play" Any`
+    t =    47.05s Find the "feed.memory" Button
+    t =    47.14s Find the "feed.position" Any
+    t =    47.17s Tear Down
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test20SnakeControlsFoodHighscoreAndPause]' passed (47.459 seconds).
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test30PortraitAndExpandedWorkspaceScreens]' started.
+    t =     0.00s Start Test at 2026-10-16 22:55:22.462
+    t =     0.06s Set Up
+    t =     0.06s     Setting device orientation to Portrait
+    t =     0.07s         Wait for com.mrdevn4ever.photomaid to idle
+    t =     0.08s Open com.mrdevn4ever.photomaid
+    t =     0.08s     Launch com.mrdevn4ever.photomaid
+    t =     0.08s         Terminate com.mrdevn4ever.photomaid:25568
+2026-10-16 22:55:23.576 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-16 22:55:23.577 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     1.82s         Setting up automation session
+    t =     4.84s         Wait for com.mrdevn4ever.photomaid to idle
+    t =     8.18s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =     8.26s Checking existence of `Alert (First Match)`
+    t =     8.39s Checking existence of `"feed.stage" Any`
+    t =     9.59s Find the "feed.position" Any
+    t =     9.66s Find the "feed.position" StaticText
+    t =     9.76s Find the "feed.memory" Button
+    t =    10.10s Added attachment named 'workspace_01_feed'
+    t =    10.10s Requesting snapshot of accessibility hierarchy for app with pid 27251
+    t =    10.45s Requesting snapshot of accessibility hierarchy for app with pid 27251
+    t =    10.56s Added attachment named 'workspace_01_feed.hierarchy'
+    t =    10.56s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    10.63s Checking existence of `"feed.basketPanel" Any`
+    t =    11.91s Setting device orientation to Landscape Left
+    t =    11.92s     Device orientation changed to Landscape Left
+    t =    11.94s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    11.95s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    12.01s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    12.09s Setting device orientation to Portrait
+    t =    12.09s     Device orientation changed to Portrait
+    t =    12.10s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    12.11s Terminate com.mrdevn4ever.photomaid:27251
+    t =    13.13s Open com.mrdevn4ever.photomaid
+    t =    13.13s     Launch com.mrdevn4ever.photomaid
+2026-10-16 22:55:35.604 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-16 22:55:35.604 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    13.71s         Setting up automation session
+    t =    16.14s         Wait for com.mrdevn4ever.photomaid to idle
+    t =    19.12s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    19.16s Checking existence of `Alert (First Match)`
+    t =    19.23s Checking existence of `"store.capture.today" Window`
+    t =    20.51s Added attachment named 'workspace_today'
+    t =    20.51s Requesting snapshot of accessibility hierarchy for app with pid 27752
+    t =    20.80s Requesting snapshot of accessibility hierarchy for app with pid 27752
+    t =    20.85s Added attachment named 'workspace_today.hierarchy'
+    t =    20.85s Terminate com.mrdevn4ever.photomaid:27752
+    t =    21.87s Open com.mrdevn4ever.photomaid
+    t =    21.87s     Launch com.mrdevn4ever.photomaid
+2026-10-16 22:55:44.337 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-16 22:55:44.338 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    22.41s         Setting up automation session
+    t =    24.60s         Wait for com.mrdevn4ever.photomaid to idle
+    t =    27.74s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    27.79s Checking existence of `Alert (First Match)`
+    t =    27.89s Checking existence of `"store.capture.library" Window`
+    t =    30.07s Find the "library.mode" Any
+    t =    30.88s Added attachment named 'workspace_library'
+    t =    30.88s Requesting snapshot of accessibility hierarchy for app with pid 28466
+    t =    31.29s Requesting snapshot of accessibility hierarchy for app with pid 28466
+    t =    31.40s Added attachment named 'workspace_library.hierarchy'
+    t =    31.40s Terminate com.mrdevn4ever.photomaid:28466
+    t =    32.43s Open com.mrdevn4ever.photomaid
+    t =    32.43s     Launch com.mrdevn4ever.photomaid
+2026-10-16 22:55:54.899 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-16 22:55:54.899 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    33.08s         Setting up automation session
+    t =    34.94s         Wait for com.mrdevn4ever.photomaid to idle
+    t =    37.47s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    37.53s Checking existence of `Alert (First Match)`
+    t =    37.71s Checking existence of `"store.capture.cleanup" Window`
+    t =    39.37s Added attachment named 'workspace_cleanup'
+    t =    39.37s Requesting snapshot of accessibility hierarchy for app with pid 28652
+    t =    39.79s Requesting snapshot of accessibility hierarchy for app with pid 28652
+    t =    39.90s Added attachment named 'workspace_cleanup.hierarchy'
+    t =    39.90s Terminate com.mrdevn4ever.photomaid:28652
+    t =    40.96s Open com.mrdevn4ever.photomaid
+    t =    40.96s     Launch com.mrdevn4ever.photomaid
+2026-10-16 22:56:03.427 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-16 22:56:03.427 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    41.41s         Setting up automation session
+    t =    43.44s         Wait for com.mrdevn4ever.photomaid to idle
+    t =    46.22s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    46.31s Checking existence of `Alert (First Match)`
+    t =    46.48s Checking existence of `"store.capture.studio" Window`
+    t =    47.82s Added attachment named 'workspace_studio'
+    t =    47.82s Requesting snapshot of accessibility hierarchy for app with pid 29232
+    t =    48.11s Requesting snapshot of accessibility hierarchy for app with pid 29232
+    t =    48.20s Added attachment named 'workspace_studio.hierarchy'
+    t =    48.20s Terminate com.mrdevn4ever.photomaid:29232
+    t =    49.23s Open com.mrdevn4ever.photomaid
+    t =    49.23s     Launch com.mrdevn4ever.photomaid
+2026-10-16 22:56:11.694 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-16 22:56:11.694 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    49.89s         Setting up automation session
+    t =    51.85s         Wait for com.mrdevn4ever.photomaid to idle
+    t =    54.37s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    54.43s Checking existence of `Alert (First Match)`
+    t =    54.58s Checking existence of `"store.capture.history" Window`
+    t =    56.00s Added attachment named 'workspace_history'
+    t =    56.00s Requesting snapshot of accessibility hierarchy for app with pid 29289
+    t =    56.43s Requesting snapshot of accessibility hierarchy for app with pid 29289
+    t =    56.52s Added attachment named 'workspace_history.hierarchy'
+    t =    56.52s Terminate com.mrdevn4ever.photomaid:29289
+    t =    57.59s Open com.mrdevn4ever.photomaid
+    t =    57.59s     Launch com.mrdevn4ever.photomaid
+2026-10-16 22:56:20.061 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-16 22:56:20.061 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    58.17s         Setting up automation session
+    t =    60.06s         Wait for com.mrdevn4ever.photomaid to idle
+    t =    62.91s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    63.00s Checking existence of `Alert (First Match)`
+    t =    63.27s Checking existence of `"store.capture.editor" Window`
+    t =    64.81s Waiting 25.0s for "editor.stage" Any to exist
+    t =    65.84s     Checking `Expect predicate `existsNoRetry == 1` for object "editor.stage" Any`
+    t =    65.85s         Checking existence of `"editor.stage" Any`
+    t =    66.96s Checking `Expect predicate `exists == 0` for object "editor.preview.rendering" Any`
+    t =    66.97s     Checking existence of `"editor.preview.rendering" Any`
+    t =    68.12s Added attachment named 'workspace_editor'
+    t =    68.12s Requesting snapshot of accessibility hierarchy for app with pid 29538
+    t =    68.55s Requesting snapshot of accessibility hierarchy for app with pid 29538
+    t =    68.65s Added attachment named 'workspace_editor.hierarchy'
+    t =    68.65s Terminate com.mrdevn4ever.photomaid:29538
+    t =    69.68s Open com.mrdevn4ever.photomaid
+    t =    69.68s     Launch com.mrdevn4ever.photomaid
+2026-10-16 22:56:32.162 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-16 22:56:32.162 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    70.22s         Setting up automation session
+    t =    72.11s         Wait for com.mrdevn4ever.photomaid to idle
+    t =    74.75s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    74.83s Checking existence of `Alert (First Match)`
+    t =    75.13s Checking existence of `"store.capture.collage" Window`
+    t =    76.59s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    76.62s Checking existence of `Alert (First Match)`
+    t =    76.67s Checking existence of `"store.capture.collage" Window`
+    t =    77.76s Added attachment named 'workspace_collage'
+    t =    77.76s Requesting snapshot of accessibility hierarchy for app with pid 30011
+    t =    77.93s Requesting snapshot of accessibility hierarchy for app with pid 30011
+    t =    77.99s Added attachment named 'workspace_collage.hierarchy'
+    t =    77.99s Terminate com.mrdevn4ever.photomaid:30011
+    t =    79.02s Open com.mrdevn4ever.photomaid
+    t =    79.03s     Launch com.mrdevn4ever.photomaid
+2026-10-16 22:56:41.617 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-16 22:56:41.617 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    80.03s         Setting up automation session
+    t =    81.50s         Wait for com.mrdevn4ever.photomaid to idle
+    t =    84.02s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    84.05s Checking existence of `Alert (First Match)`
+    t =    84.09s Checking existence of `"store.capture.settings" Window`
+    t =    85.24s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    85.31s Checking existence of `Alert (First Match)`
+    t =    85.49s Checking existence of `"store.capture.settings" Window`
+    t =    86.65s Added attachment named 'workspace_settings'
+    t =    86.65s Requesting snapshot of accessibility hierarchy for app with pid 30094
+    t =    87.07s Requesting snapshot of accessibility hierarchy for app with pid 30094
+    t =    87.27s Added attachment named 'workspace_settings.hierarchy'
+    t =    87.27s Terminate com.mrdevn4ever.photomaid:30094
+2026-10-16 22:56:51.023 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-16 22:56:51.024 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    88.33s Open com.mrdevn4ever.photomaid
+    t =    88.33s     Launch com.mrdevn4ever.photomaid
+    t =    89.11s         Setting up automation session
+    t =    90.98s         Wait for com.mrdevn4ever.photomaid to idle
+    t =    93.40s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    93.44s Checking existence of `Alert (First Match)`
+    t =    93.51s Checking existence of `"store.capture.vault" Window`
+    t =    95.10s Added attachment named 'workspace_vault'
+    t =    95.11s Requesting snapshot of accessibility hierarchy for app with pid 30675
+    t =    95.41s Requesting snapshot of accessibility hierarchy for app with pid 30675
+    t =    95.50s Added attachment named 'workspace_vault.hierarchy'
+    t =    95.50s Terminate com.mrdevn4ever.photomaid:30675
+    t =    97.01s Tear Down
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test30PortraitAndExpandedWorkspaceScreens]' passed (97.478 seconds).
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test40LargeTextAndArabic]' started.
+    t =     0.00s Start Test at 2026-10-16 22:56:59.941
+    t =     0.10s Set Up
+    t =     0.10s     Setting device orientation to Portrait
+    t =     0.11s         Wait for com.apple.springboard to idle
+    t =     0.12s Open com.mrdevn4ever.photomaid
+    t =     0.12s     Launch com.mrdevn4ever.photomaid
+2026-10-16 22:57:00.300 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-16 22:57:00.300 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     1.30s         Setting up automation session
+    t =     2.88s         Wait for com.mrdevn4ever.photomaid to idle
+    t =     6.30s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =     6.43s Checking existence of `Alert (First Match)`
+    t =     6.52s Checking existence of `"feed.stage" Any`
+    t =     7.24s Tap "feed.memory" Button
+    t =     7.24s     Wait for com.mrdevn4ever.photomaid to idle
+    t =     7.27s     Find the "feed.memory" Button
+    t =     7.73s     Check for interrupting elements affecting "feed.memory" Button
+    t =     7.95s     Synthesize event
+    t =     8.01s         Scroll element to visible
+    t =     8.04s         Find the "feed.memory" Button
+    t =     8.31s         Computed hit point {-1, -1} after scrolling to visible
+    t =     8.69s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    10.41s Waiting 5.0s for "games.memory" Button to exist
+    t =    11.45s     Checking `Expect predicate `existsNoRetry == 1` for object "games.memory" Button`
+    t =    11.45s         Checking existence of `"games.memory" Button`
+    t =    11.63s Tap "games.memory" Button
+    t =    11.63s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    11.63s     Find the "games.memory" Button
+    t =    11.71s     Check for interrupting elements affecting "games.memory" Button
+    t =    11.81s     Synthesize event
+    t =    12.12s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    12.32s Find the "memory.startMotifs" Button
+    t =    12.47s Swipe up Target Application 'com.mrdevn4ever.photomaid'
+    t =    12.47s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    13.13s     Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    13.21s     Check for interrupting elements affecting "PhotoMaid" Application
+    t =    13.27s     Synthesize event
+    t =    13.71s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    15.84s Find the "memory.startMotifs" Button
+    t =    16.10s Find the "memory.startMotifs" Button
+    t =    16.41s Find the "memory.startMotifs" Button
+    t =    16.56s Find the "memory.startMotifs" Button
+    t =    16.69s Find the "memory.startMotifs" Button
+    t =    16.79s Tap "memory.startMotifs" Button
+    t =    16.79s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    16.80s     Find the "memory.startMotifs" Button
+    t =    16.89s     Check for interrupting elements affecting "memory.startMotifs" Button
+    t =    16.99s     Synthesize event
+    t =    17.30s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    18.12s Waiting 10.0s for "memory.card.0" Button to exist
+    t =    19.15s     Checking `Expect predicate `existsNoRetry == 1` for object "memory.card.0" Button`
+    t =    19.16s         Checking existence of `"memory.card.0" Button`
+    t =    19.82s Added attachment named 'memory_accessibility_arabic'
+    t =    19.83s Requesting snapshot of accessibility hierarchy for app with pid 31091
+    t =    21.00s Requesting snapshot of accessibility hierarchy for app with pid 31091
+    t =    21.19s Added attachment named 'memory_accessibility_arabic.hierarchy'
+    t =    21.20s Tap "memory.close" Button
+    t =    21.20s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    21.20s     Find the "memory.close" Button
+    t =    21.32s     Check for interrupting elements affecting "memory.close" Button
+    t =    21.50s     Synthesize event
+    t =    21.83s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    22.70s Tap "feed.memory" Button
+    t =    22.70s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    22.71s     Find the "feed.memory" Button
+    t =    22.89s     Check for interrupting elements affecting "feed.memory" Button
+    t =    23.04s     Synthesize event
+    t =    23.38s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    24.40s Waiting 5.0s for "games.snake" Button to exist
+    t =    25.40s     Checking `Expect predicate `existsNoRetry == 1` for object "games.snake" Button`
+    t =    25.41s         Checking existence of `"games.snake" Button`
+    t =    25.59s Tap "games.snake" Button
+    t =    25.59s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    25.60s     Find the "games.snake" Button
+    t =    25.72s     Check for interrupting elements affecting "games.snake" Button
+    t =    25.84s     Synthesize event
+    t =    26.16s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    27.71s Find the "snake.symbols" Button
+    t =    28.31s Swipe up Target Application 'com.mrdevn4ever.photomaid'
+    t =    28.31s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    29.01s     Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    29.10s     Check for interrupting elements affecting "PhotoMaid" Application
+    t =    29.16s     Synthesize event
+    t =    29.59s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    32.27s Find the "snake.symbols" Button
+    t =    32.37s Find the "snake.symbols" Button
+    t =    32.50s Find the "snake.symbols" Button
+    t =    32.63s Find the "snake.symbols" Button
+    t =    32.87s Find the "snake.symbols" Button
+    t =    32.99s Tap "snake.symbols" Button
+    t =    32.99s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    32.99s     Find the "snake.symbols" Button
+    t =    33.08s     Check for interrupting elements affecting "snake.symbols" Button
+    t =    33.17s     Synthesize event
+    t =    33.47s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    33.89s Waiting 10.0s for "snake.board" Any to exist
+    t =    34.95s     Checking `Expect predicate `existsNoRetry == 1` for object "snake.board" Any`
+    t =    34.95s         Checking existence of `"snake.board" Any`
+    t =    35.50s Added attachment named 'snake_accessibility_arabic'
+    t =    35.50s Requesting snapshot of accessibility hierarchy for app with pid 31091
+    t =    36.01s Requesting snapshot of accessibility hierarchy for app with pid 31091
+    t =    36.14s Added attachment named 'snake_accessibility_arabic.hierarchy'
+    t =    36.14s Find the "snake.board" Any
+    t =    36.25s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    36.29s Find the "snake.board" Other
+    t =    36.38s Find the Target Application 'com.mrdevn4ever.photomaid'
+/Users/runner/work/PhotoMaid/PhotoMaid/PhotoMaidUITests/PhotoGameVisualTests.swift:243: error: -[PhotoMaidUITests.PhotoGameVisualTests test40LargeTextAndArabic] : XCTAssertGreaterThanOrEqual failed: ("496.0") is less than ("629.28") - The board fills the window below the safe HUD
+    t =    36.65s Tear Down
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test40LargeTextAndArabic]' failed (37.019 seconds).
+2026-10-16 22:57:36.959985+0000 PhotoMaidUITests-Runner[19551:60872] [Default] Flushing outgoing messages to the IDE with timeout 600.00s
+2026-10-16 22:57:36.985932+0000 PhotoMaidUITests-Runner[19551:63000] [Default] Received confirmation that IDE processed remaining outgoing messages
+2026-10-16 22:57:40.115702+0000 PhotoMaidUITests-Runner[32619:94105] [Default] Running tests...
+    t =      nans Interface orientation changed to Portrait
+
+Restarting after unexpected exit, crash, or test timeout; summary will include totals from previous launches.
+
+Test Suite 'Selected tests' started at 2026-10-16 22:57:41.549.
+Test Suite 'PhotoMaidUITests.xctest' started at 2026-10-16 22:57:41.552.
+Test Suite 'PhotoGameVisualTests' started at 2026-10-16 22:57:41.552.
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test50FavoritesAndFolderSources]' started.
+    t =     0.00s Start Test at 2026-10-16 22:57:41.553
+    t =     0.05s Set Up
+    t =     0.06s     Setting device orientation to Portrait
+    t =     0.09s         Wait for com.apple.springboard to idle
+    t =     0.11s Open com.mrdevn4ever.photomaid
+    t =     0.11s     Launch com.mrdevn4ever.photomaid
+2026-10-16 22:57:41.701 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-16 22:57:41.701 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     1.44s         Setting up automation session
+    t =     3.22s         Wait for com.mrdevn4ever.photomaid to idle
+    t =     6.90s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =     7.06s Checking existence of `Alert (First Match)`
+    t =     7.29s Checking existence of `"feed.stage" Any`
+    t =     8.59s Tap "feed.memory" Button
+    t =     8.59s     Wait for com.mrdevn4ever.photomaid to idle
+    t =     8.61s     Find the "feed.memory" Button
+    t =     8.73s     Check for interrupting elements affecting "feed.memory" Button
+    t =     8.80s     Synthesize event
+    t =     9.14s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    10.48s Waiting 5.0s for "games.memory" Button to exist
+    t =    11.51s     Checking `Expect predicate `existsNoRetry == 1` for object "games.memory" Button`
+    t =    11.51s         Checking existence of `"games.memory" Button`
+    t =    11.61s Tap "games.memory" Button
+    t =    11.61s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    11.62s     Find the "games.memory" Button
+    t =    11.69s     Check for interrupting elements affecting "games.memory" Button
+    t =    11.77s     Synthesize event
+    t =    12.07s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    12.21s Tap "memory.source" Button
+    t =    12.21s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    12.22s     Find the "memory.source" Button
+    t =    12.36s     Check for interrupting elements affecting "memory.source" Button
+    t =    12.44s     Synthesize event
+    t =    12.73s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    13.13s Tap "Favorites" Button
+    t =    13.13s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    14.26s     Find the "Favorites" Button
+    t =    14.53s     Check for interrupting elements affecting "Favorites" Button
+    t =    14.61s     Synthesize event
+    t =    14.92s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    16.46s Tap "memory.size" Button
+    t =    16.46s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    16.49s     Find the "memory.size" Button
+    t =    16.67s     Check for interrupting elements affecting "memory.size" Button
+    t =    16.77s     Synthesize event
+    t =    17.07s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    18.41s Tap "6 pairs (12 cards)" Button
+    t =    18.41s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    18.44s     Find the "6 pairs (12 cards)" Button
+    t =    18.80s     Check for interrupting elements affecting "6 pairs (12 cards)" Button
+    t =    18.92s     Synthesize event
+    t =    19.23s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    20.78s Tap "memory.startPhotos" Button
+    t =    20.78s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    20.79s     Find the "memory.startPhotos" Button
+    t =    20.99s     Check for interrupting elements affecting "memory.startPhotos" Button
+    t =    21.07s     Synthesize event
+    t =    21.38s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    21.68s Waiting 30.0s for "memory.card.0" Button to exist
+    t =    22.75s     Checking `Expect predicate `existsNoRetry == 1` for object "memory.card.0" Button`
+    t =    22.75s         Checking existence of `"memory.card.0" Button`
+    t =    22.82s Get number of matches for: Elements matching predicate 'identifier BEGINSWITH "memory.card."'
+    t =    23.09s Added attachment named 'memory_favorites_six_pairs'
+    t =    23.09s Requesting snapshot of accessibility hierarchy for app with pid 32629
+    t =    23.46s Requesting snapshot of accessibility hierarchy for app with pid 32629
+    t =    23.58s Added attachment named 'memory_favorites_six_pairs.hierarchy'
+    t =    23.58s Tap "memory.close" Button
+    t =    23.58s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    23.59s     Find the "memory.close" Button
+    t =    23.66s     Check for interrupting elements affecting "memory.close" Button
+    t =    23.75s     Synthesize event
+    t =    24.09s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    24.96s Terminate com.mrdevn4ever.photomaid:32629
+    t =    25.97s Open com.mrdevn4ever.photomaid
+    t =    25.97s     Launch com.mrdevn4ever.photomaid
+2026-10-16 22:58:07.527 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-16 22:58:07.528 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    26.52s         Setting up automation session
+    t =    28.89s         Wait for com.mrdevn4ever.photomaid to idle
+    t =    31.71s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    31.77s Checking existence of `Alert (First Match)`
+    t =    31.87s Checking existence of `"feed.stage" Any`
+    t =    33.53s Tap "feed.memory" Button
+    t =    33.53s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    33.54s     Find the "feed.memory" Button
+    t =    33.62s     Check for interrupting elements affecting "feed.memory" Button
+    t =    33.68s     Synthesize event
+    t =    34.00s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    35.07s Waiting 5.0s for "games.memory" Button to exist
+    t =    36.13s     Checking `Expect predicate `existsNoRetry == 1` for object "games.memory" Button`
+    t =    36.13s         Checking existence of `"games.memory" Button`
+    t =    36.22s Tap "games.memory" Button
+    t =    36.22s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    36.22s     Find the "games.memory" Button
+    t =    36.30s     Check for interrupting elements affecting "games.memory" Button
+    t =    36.37s     Synthesize event
+    t =    36.67s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    36.79s Tap "memory.source" Button
+    t =    36.79s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    36.81s     Find the "memory.source" Button
+    t =    36.97s     Check for interrupting elements affecting "memory.source" Button
+    t =    37.14s     Synthesize event
+    t =    37.47s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    38.95s Tap "Album or photo folder" Button
+    t =    38.95s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    38.96s     Find the "Album or photo folder" Button
+    t =    39.61s     Check for interrupting elements affecting "Album or photo folder" Button
+    t =    39.77s     Synthesize event
+    t =    40.13s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    41.79s Tap "memory.chooseCollection" Button
+    t =    41.79s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    41.82s     Find the "memory.chooseCollection" Button
+    t =    42.05s     Check for interrupting elements affecting "memory.chooseCollection" Button
+    t =    42.20s     Synthesize event
+    t =    42.53s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    43.62s Waiting 15.0s for Button (First Match) to exist
+    t =    44.67s     Checking `Expect predicate `existsNoRetry == 1` for object Button (First Match)`
+    t =    44.67s         Checking existence of `Button (First Match)`
+    t =    44.89s Tap Button (First Match)
+    t =    44.89s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    44.89s     Find the Button (First Match)
+    t =    45.05s     Check for interrupting elements affecting "memory.collection" Button
+    t =    45.20s     Synthesize event
+    t =    45.53s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    46.02s Tap "memory.startPhotos" Button
+    t =    46.02s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    46.04s     Find the "memory.startPhotos" Button
+    t =    46.25s     Check for interrupting elements affecting "memory.startPhotos" Button
+    t =    46.35s     Synthesize event
+    t =    46.67s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    46.95s Waiting 30.0s for "memory.card.0" Button to exist
+    t =    47.97s     Checking `Expect predicate `existsNoRetry == 1` for object "memory.card.0" Button`
+    t =    47.97s         Checking existence of `"memory.card.0" Button`
+    t =    48.41s Added attachment named 'memory_folder_with_subalbum'
+    t =    48.42s Requesting snapshot of accessibility hierarchy for app with pid 33524
+    t =    48.84s Requesting snapshot of accessibility hierarchy for app with pid 33524
+    t =    48.98s Added attachment named 'memory_folder_with_subalbum.hierarchy'
+    t =    48.98s Tear Down
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test50FavoritesAndFolderSources]' passed (49.312 seconds).
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test60SnakeRealtimeDriverAndPause]' started.
+    t =     0.00s Start Test at 2026-10-16 22:58:30.867
+    t =     0.03s Set Up
+    t =     0.03s     Setting device orientation to Portrait
+    t =     0.05s         Wait for com.mrdevn4ever.photomaid to idle
+    t =     0.05s Open com.mrdevn4ever.photomaid
+    t =     0.05s     Launch com.mrdevn4ever.photomaid
+    t =     0.05s         Terminate com.mrdevn4ever.photomaid:33524
+2026-10-16 22:58:31.983 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-16 22:58:31.983 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     1.67s         Setting up automation session
+    t =     3.49s         Wait for com.mrdevn4ever.photomaid to idle
+    t =     6.37s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =     6.40s Checking existence of `Alert (First Match)`
+    t =     6.59s Checking existence of `"feed.stage" Any`
+    t =     7.62s Tap "feed.memory" Button
+    t =     7.62s     Wait for com.mrdevn4ever.photomaid to idle
+    t =     7.63s     Find the "feed.memory" Button
+    t =     7.73s     Check for interrupting elements affecting "feed.memory" Button
+    t =     7.81s     Synthesize event
+    t =     8.11s     Wait for com.mrdevn4ever.photomaid to idle
+    t =     9.31s Waiting 5.0s for "games.snake" Button to exist
+    t =    10.33s     Checking `Expect predicate `existsNoRetry == 1` for object "games.snake" Button`
+    t =    10.33s         Checking existence of `"games.snake" Button`
+    t =    10.50s Tap "games.snake" Button
+    t =    10.50s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    10.51s     Find the "games.snake" Button
+    t =    10.60s     Check for interrupting elements affecting "games.snake" Button
+    t =    10.69s     Synthesize event
+    t =    10.98s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    13.27s Tap "snake.symbols" Button
+    t =    13.27s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    14.14s     Find the "snake.symbols" Button
+    t =    14.28s     Check for interrupting elements affecting "snake.symbols" Button
+    t =    14.36s     Synthesize event
+    t =    14.68s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    16.42s Waiting 10.0s for "snake.board" Any to exist
+    t =    17.47s     Checking `Expect predicate `existsNoRetry == 1` for object "snake.board" Any`
+    t =    17.48s         Checking existence of `"snake.board" Any`
+    t =    18.21s Added attachment named 'snake_realtime_fullscreen_ready'
+    t =    18.22s Requesting snapshot of accessibility hierarchy for app with pid 34603
+    t =    18.69s Requesting snapshot of accessibility hierarchy for app with pid 34603
+    t =    18.78s Added attachment named 'snake_realtime_fullscreen_ready.hierarchy'
+    t =    18.78s Find the "snake.board" Any
+    t =    18.89s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    18.92s Find the "snake.board" Other
+    t =    18.99s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    19.04s Checking existence of `"snake.play" Any`
+    t =    19.05s Checking existence of `"snake.close" Button`
+    t =    19.08s Find the "snake.close" Button
+    t =    19.13s Find the "snake.close" Button
+    t =    19.17s Checking existence of `"snake.pause" Button`
+    t =    19.22s Find the "snake.pause" Button
+    t =    19.26s Find the "snake.pause" Button
+    t =    19.29s Checking existence of `"snake.settings" Button`
+    t =    19.32s Find the "snake.settings" Button
+    t =    19.37s Find the "snake.settings" Button
+    t =    19.42s Checking existence of `"snake.toggleRunning" Button`
+    t =    19.48s Get number of matches for: Elements matching predicate 'identifier BEGINSWITH "snake.direction."'
+    t =    19.55s Swipe up "snake.board" Other
+    t =    19.55s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    19.55s     Find the "snake.board" Other
+    t =    19.63s     Check for interrupting elements affecting "snake.board" Other
+    t =    19.70s     Synthesize event
+    t =    20.15s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    20.16s Find the "snake.board" Other
+    t =    21.24s Checking `Expect predicate `value != "Camera: column 6, row 9. Photo: column 6, row 8.. Up. Next cell is clear"` for object "snake.board" Other`
+    t =    21.24s     Find the "snake.board" Other
+    t =    21.32s Pressing Home button
+    t =    21.86s Open com.mrdevn4ever.photomaid
+    t =    21.87s     Activate com.mrdevn4ever.photomaid
+    t =    23.07s         Wait for com.mrdevn4ever.photomaid to idle
+    t =    23.08s Waiting 10.0s for "snake.board" Other to exist
+    t =    24.13s     Checking `Expect predicate `existsNoRetry == 1` for object "snake.board" Other`
+    t =    24.13s         Checking existence of `"snake.board" Other`
+    t =    24.25s Find the "snake.board" Other
+    t =    24.99s Find the "snake.board" Other
+    t =    25.45s Added attachment named 'snake_realtime_fullscreen_paused'
+    t =    25.45s Requesting snapshot of accessibility hierarchy for app with pid 34603
+    t =    25.81s Requesting snapshot of accessibility hierarchy for app with pid 34603
+    t =    25.88s Added attachment named 'snake_realtime_fullscreen_paused.hierarchy'
+    t =    25.88s Swipe right "snake.board" Other
+    t =    25.88s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    25.88s     Find the "snake.board" Other
+    t =    25.97s     Check for interrupting elements affecting "snake.board" Other
+    t =    26.05s     Synthesize event
+    t =    26.53s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    27.56s Checking `Expect predicate `value != "Camera: column 6, row 2. Photo: column 5, row 1.. Up. Next cell is clear"` for object "snake.board" Other`
+    t =    27.56s     Find the "snake.board" Other
+    t =    27.65s Tear Down
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test60SnakeRealtimeDriverAndPause]' passed (28.027 seconds).
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test70UnavailableVideosCanBePassed]' started.
+    t =     0.00s Start Test at 2026-10-16 22:58:58.895
+    t =     0.05s Set Up
+    t =     0.05s     Setting device orientation to Portrait
+    t =     0.05s         Wait for com.mrdevn4ever.photomaid to idle
+    t =     0.06s Open com.mrdevn4ever.photomaid
+    t =     0.06s     Launch com.mrdevn4ever.photomaid
+    t =     0.06s         Terminate com.mrdevn4ever.photomaid:34603
+2026-10-16 22:58:59.973 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-16 22:58:59.973 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     1.71s         Setting up automation session
+    t =     3.65s         Wait for com.mrdevn4ever.photomaid to idle
+    t =     6.59s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =     6.65s Checking existence of `Alert (First Match)`
+    t =     6.85s Checking existence of `"store.capture.feed-failures" Window`
+    t =     8.42s Waiting 20.0s for "feed.preview.failed" Any to exist
+    t =     9.45s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.preview.failed" Any`
+    t =     9.45s         Checking existence of `"feed.preview.failed" Any`
+    t =     9.59s Get number of matches for: Elements matching predicate '"feed.preview.failed" IN identifiers'
+    t =     9.72s Find the "feed.position" Any
+    t =     9.79s Find the "feed.dock" Button
+    t =    10.14s Added attachment named 'feed_unavailable_video_01'
+    t =    10.14s Requesting snapshot of accessibility hierarchy for app with pid 35959
+    t =    10.68s Requesting snapshot of accessibility hierarchy for app with pid 35959
+    t =    10.80s Added attachment named 'feed_unavailable_video_01.hierarchy'
+    t =    10.80s Swipe left "feed.stage" Any
+    t =    10.80s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    10.80s     Find the "feed.stage" Any
+    t =    10.88s     Check for interrupting elements affecting "feed.stage" Other
+    t =    11.08s     Synthesize event
+    t =    11.56s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    11.56s Find the "feed.dock" Button
+    t =    11.65s Find the "feed.position" StaticText
+    t =    11.71s Tap "feed.retryPreview" Button
+    t =    11.71s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    11.72s     Find the "feed.retryPreview" Button
+    t =    11.87s     Check for interrupting elements affecting "feed.retryPreview" Button
+    t =    11.95s     Synthesize event
+    t =    12.27s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    12.58s Waiting 10.0s for "feed.preview.failed" Any to exist
+    t =    13.58s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.preview.failed" Any`
+    t =    13.59s         Checking existence of `"feed.preview.failed" Any`
+    t =    13.76s Tap "feed.skipUnavailable" Button
+    t =    13.76s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    13.76s     Find the "feed.skipUnavailable" Button
+    t =    13.87s     Check for interrupting elements affecting "feed.skipUnavailable" Button
+    t =    13.95s     Synthesize event
+    t =    14.26s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    15.70s Checking `Expect predicate `label CONTAINS "2 von 3"` for object "feed.position" Any`
+    t =    15.70s     Find the "feed.position" Any
+    t =    15.75s Waiting 10.0s for "feed.preview.failed" Any to exist
+    t =    16.78s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.preview.failed" Any`
+    t =    16.78s         Checking existence of `"feed.preview.failed" Any`
+    t =    17.07s Added attachment named 'feed_unavailable_video_02'
+    t =    17.07s Requesting snapshot of accessibility hierarchy for app with pid 35959
+    t =    17.44s Requesting snapshot of accessibility hierarchy for app with pid 35959
+    t =    17.52s Added attachment named 'feed_unavailable_video_02.hierarchy'
+    t =    17.52s Tap "feed.skipUnavailable" Button
+    t =    17.52s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    17.52s     Find the "feed.skipUnavailable" Button
+    t =    17.60s     Check for interrupting elements affecting "feed.skipUnavailable" Button
+    t =    17.66s     Synthesize event
+    t =    17.96s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    19.33s Checking `Expect predicate `label CONTAINS "3 von 3"` for object "feed.position" Any`
+    t =    19.33s     Find the "feed.position" Any
+    t =    19.39s Find the "feed.dock" Button
+    t =    19.46s Checking existence of `"feed.preview.failed" Any`
+    t =    20.12s Added attachment named 'feed_after_two_unavailable_videos'
+    t =    20.12s Requesting snapshot of accessibility hierarchy for app with pid 35959
+    t =    20.43s Requesting snapshot of accessibility hierarchy for app with pid 35959
+    t =    20.52s Added attachment named 'feed_after_two_unavailable_videos.hierarchy'
+    t =    20.52s Terminate com.mrdevn4ever.photomaid:35959
+    t =    21.57s Open com.mrdevn4ever.photomaid
+    t =    21.57s     Launch com.mrdevn4ever.photomaid
+2026-10-16 22:59:20.466 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-16 22:59:20.466 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    22.05s         Setting up automation session
+    t =    24.37s         Wait for com.mrdevn4ever.photomaid to idle
+    t =    27.50s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    27.60s Checking existence of `Alert (First Match)`
+    t =    27.84s Checking existence of `"store.capture.feed-failures" Window`
+    t =    30.17s Checking `Expect predicate `label CONTAINS "1 von 1"` for object "feed.position" Any`
+    t =    30.17s     Find the "feed.position" Any
+    t =    30.23s Checking existence of `"feed.preview.failed" Any`
+    t =    31.91s Find the "feed.dock" Button
+    t =    32.18s Added attachment named 'feed_skips_survive_relaunch'
+    t =    32.18s Requesting snapshot of accessibility hierarchy for app with pid 36753
+    t =    32.54s Requesting snapshot of accessibility hierarchy for app with pid 36753
+    t =    32.66s Added attachment named 'feed_skips_survive_relaunch.hierarchy'
+    t =    32.66s Tap "feed.close" Button
+    t =    32.66s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    32.70s     Find the "feed.close" Button
+    t =    32.89s     Check for interrupting elements affecting "feed.close" Button
+    t =    33.19s     Synthesize event
+    t =    33.57s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    34.54s Waiting 8.0s for "hub.retrySkipped" Button to exist
+    t =    35.59s     Checking `Expect predicate `existsNoRetry == 1` for object "hub.retrySkipped" Button`
+    t =    35.59s         Checking existence of `"hub.retrySkipped" Button`
+    t =    35.85s Added attachment named 'feed_skipped_retry_in_cleanup'
+    t =    35.86s Requesting snapshot of accessibility hierarchy for app with pid 36753
+    t =    36.23s Requesting snapshot of accessibility hierarchy for app with pid 36753
+    t =    36.33s Added attachment named 'feed_skipped_retry_in_cleanup.hierarchy'
+    t =    36.33s Tap "hub.retrySkipped" Button
+    t =    36.33s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    36.33s     Find the "hub.retrySkipped" Button
+    t =    36.44s     Check for interrupting elements affecting "hub.retrySkipped" Button
+    t =    36.49s     Synthesize event
+    t =    36.82s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    38.70s Checking `Expect predicate `label CONTAINS "1 von 2"` for object "feed.position" Any`
+    t =    38.70s     Find the "feed.position" Any
+    t =    38.76s Waiting 15.0s for "feed.preview.failed" Any to exist
+    t =    39.81s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.preview.failed" Any`
+    t =    39.81s         Checking existence of `"feed.preview.failed" Any`
+    t =    40.21s Added attachment named 'feed_explicit_retry_skipped_videos'
+    t =    40.21s Requesting snapshot of accessibility hierarchy for app with pid 36753
+    t =    40.68s Requesting snapshot of accessibility hierarchy for app with pid 36753
+    t =    40.81s Added attachment named 'feed_explicit_retry_skipped_videos.hierarchy'
+    t =    40.81s Tear Down
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test70UnavailableVideosCanBePassed]' passed (41.123 seconds).
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test80VideoPlaysWithoutPoster]' started.
+    t =     0.00s Start Test at 2026-10-16 22:59:40.018
+    t =     0.03s Set Up
+    t =     0.03s     Setting device orientation to Portrait
+    t =     0.04s         Wait for com.mrdevn4ever.photomaid to idle
+    t =     0.04s Open com.mrdevn4ever.photomaid
+    t =     0.04s     Launch com.mrdevn4ever.photomaid
+    t =     0.04s         Terminate com.mrdevn4ever.photomaid:36753
+2026-10-16 22:59:41.105 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-16 22:59:41.105 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     1.69s         Setting up automation session
+    t =     4.28s         Wait for com.mrdevn4ever.photomaid to idle
+    t =     7.42s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =     7.51s Checking existence of `Alert (First Match)`
+    t =     7.70s Checking existence of `"store.capture.feed-posterless" Window`
+    t =     9.22s Waiting 30.0s for "feed.video.ready" Any to exist
+    t =    10.24s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.video.ready" Any`
+    t =    10.24s         Checking existence of `"feed.video.ready" Any`
+    t =    10.37s Checking existence of `"feed.preview.failed" Any`
+    t =    10.72s Added attachment named 'feed_video_without_poster_plays'
+    t =    10.72s Requesting snapshot of accessibility hierarchy for app with pid 37848
+    t =    11.10s Requesting snapshot of accessibility hierarchy for app with pid 37848
+    t =    11.19s Added attachment named 'feed_video_without_poster_plays.hierarchy'
+    t =    11.19s Swipe up "feed.stage" Any
+    t =    11.20s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    11.20s     Find the "feed.stage" Any
+    t =    11.26s     Check for interrupting elements affecting "feed.stage" Other
+    t =    11.36s     Synthesize event
+    t =    11.83s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    12.84s Checking `Expect predicate `label CONTAINS "2 of 2"` for object "feed.position" Any`
+    t =    12.84s     Find the "feed.position" Any
+    t =    12.92s Checking existence of `"feed.video.ready" Any`
+    t =    13.42s Added attachment named 'feed_after_video_without_poster'
+    t =    13.42s Requesting snapshot of accessibility hierarchy for app with pid 37848
+    t =    13.61s Requesting snapshot of accessibility hierarchy for app with pid 37848
+    t =    13.68s Added attachment named 'feed_after_video_without_poster.hierarchy'
+    t =    13.68s Tear Down
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test80VideoPlaysWithoutPoster]' passed (13.926 seconds).
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test90LoadingPhotoCanBePassed]' started.
+    t =     0.00s Start Test at 2026-10-16 22:59:53.945
+    t =     0.03s Set Up
+    t =     0.03s     Setting device orientation to Portrait
+    t =     0.04s         Wait for com.mrdevn4ever.photomaid to idle
+    t =     0.04s Open com.mrdevn4ever.photomaid
+    t =     0.04s     Launch com.mrdevn4ever.photomaid
+    t =     0.04s         Terminate com.mrdevn4ever.photomaid:37848
+2026-10-16 22:59:55.014 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-16 22:59:55.014 xcodebuild[18530:58332] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     1.54s         Setting up automation session
+    t =     3.56s         Wait for com.mrdevn4ever.photomaid to idle
+    t =     6.69s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =     6.87s Checking existence of `Alert (First Match)`
+    t =     7.10s Checking existence of `"store.capture.feed-slow" Window`
+    t =     8.40s Waiting 15.0s for "feed.preview.loading" Any to exist
+    t =     9.45s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.preview.loading" Any`
+    t =     9.45s         Checking existence of `"feed.preview.loading" Any`
+    t =     9.60s Find the "feed.dock" Button
+    t =     9.94s Added attachment named 'feed_slow_download_skip_available'
+    t =     9.94s Requesting snapshot of accessibility hierarchy for app with pid 38382
+    t =    10.24s Requesting snapshot of accessibility hierarchy for app with pid 38382
+    t =    10.31s Added attachment named 'feed_slow_download_skip_available.hierarchy'
+    t =    10.31s Tap "feed.skipUnavailable" Button
+    t =    10.31s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    10.32s     Find the "feed.skipUnavailable" Button
+    t =    10.38s     Check for interrupting elements affecting "feed.skipUnavailable" Button
+    t =    10.43s     Synthesize event
+    t =    10.78s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    12.13s Checking `Expect predicate `label CONTAINS "2 of 2"` for object "feed.position" Any`
+    t =    12.13s     Find the "feed.position" Any
+    t =    12.16s Find the "feed.dock" Button
+    t =    12.20s Checking existence of `"feed.preview.failed" Any`
+    t =    12.40s Added attachment named 'feed_after_slow_download'
+    t =    12.40s Requesting snapshot of accessibility hierarchy for app with pid 38382
+    t =    12.63s Requesting snapshot of accessibility hierarchy for app with pid 38382
+    t =    12.69s Added attachment named 'feed_after_slow_download.hierarchy'
+    t =    12.69s Tear Down
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test90LoadingPhotoCanBePassed]' passed (12.923 seconds).
+Test Suite 'PhotoGameVisualTests' passed at 2026-10-16 23:00:06.868.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 145.311 (145.317) seconds
+Test Suite 'PhotoMaidUITests.xctest' passed at 2026-10-16 23:00:06.871.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 145.311 (145.319) seconds
+Test Suite 'Selected tests' passed at 2026-10-16 23:00:06.871.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 145.311 (145.322) seconds
+2026-10-16 23:00:37.917 xcodebuild[18530:58332] [MT] IDETestOperationsObserverDebug: 490.381 elapsed -- Testing started completed.
+2026-10-16 23:00:37.917 xcodebuild[18530:58332] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-16 23:00:37.917 xcodebuild[18530:58332] [MT] IDETestOperationsObserverDebug: 490.381 sec, +490.381 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/_temp/game-visual/iphone.xcresult
+
+Failing tests:
+	PhotoGameVisualTests.test40LargeTextAndArabic()
+
+** TEST EXECUTE FAILED **
+
+Testing started

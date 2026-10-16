@@ -1,5 +1,12 @@
 # SnakePhoto und Memory – Implementierung und Prüfnachweise
 
+> **Historischer Erstbericht vor der anschließenden TestFlight-Freigabe.** Die unten genannten
+> Einschränkungen „kein iOS-Build / keine Actions“ beschreiben ausschließlich diesen früheren Stand.
+> Nach „Testfloght build“ wurden native Builds und Simulator-Tests tatsächlich ausgeführt und
+> gefundene Compiler-, Barrierefreiheits- und Layoutfehler korrigiert.
+> Der aktuelle Status steht in [TESTFLIGHT_VERIFICATION.md](TESTFLIGHT_VERIFICATION.md) und
+> [NATIVE_QA_MATRIX.md](NATIVE_QA_MATRIX.md); Originalbelege liegen unter [native-qa](native-qa/).
+
 Stand: 16.10.2026. **Quellcode umgesetzt; native Abnahme offen.**
 Kein erfolgreicher iOS-Build, keine visuelle Abnahme und keine erreichten 60 FPS werden behauptet.
 Keine GitHub Actions, bezahlten Runner/APIs, TestFlight-Uploads oder App-Store-Aufrufe gestartet.

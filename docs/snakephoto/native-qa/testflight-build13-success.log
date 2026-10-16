@@ -1,0 +1,10 @@
+Selected unmodified success lines (ANSI color removed) from job 117244732331, run 38981991475, source cd1d40b.
+2026-10-16T23:39:36.2721190Z [23:39:36]: Successfully exported and signed the ipa file:
+2026-10-16T23:39:36.5119500Z [23:39:36]: ▸ PASS: /Users/runner/work/PhotoMaid/PhotoMaid/build/PhotoMaid.ipa!Payload/PhotoMaid.app/PrivacyInfo.xcprivacy tracking=True domains=['googleads.g.doubleclick.net']
+2026-10-16T23:39:36.5123440Z [23:39:36]: ▸ PASS: /Users/runner/work/PhotoMaid/PhotoMaid/build/PhotoMaid.ipa!Payload/PhotoMaid.app/Frameworks/GoogleMobileAds.framework/PrivacyInfo.xcprivacy tracking=None domains=None
+2026-10-16T23:39:36.5128180Z [23:39:36]: ▸ PASS: /Users/runner/work/PhotoMaid/PhotoMaid/build/PhotoMaid.ipa!Payload/PhotoMaid.app/Frameworks/UserMessagingPlatform.framework/PrivacyInfo.xcprivacy tracking=None domains=None
+2026-10-16T23:41:01.8171200Z [23:41:01]: Successfully uploaded package to App Store Connect. It might take a few minutes until it's visible online.
+2026-10-16T23:43:03.8864560Z [23:43:03]: Successfully finished processing the build 1.0 - 13 for IOS
+2026-10-16T23:43:04.1893460Z [23:43:04]: Successfully set the changelog for build
+2026-10-16T23:43:04.1909950Z [23:43:04]: Distributing new build to testers: 1.0 - 13
+2026-10-16T23:43:04.1912080Z [23:43:04]: Successfully distributed build to Internal testers 🚀

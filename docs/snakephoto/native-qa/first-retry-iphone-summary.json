@@ -1,0 +1,49 @@
+{
+  "devicesAndConfigurations" : [
+    {
+      "device" : {
+        "architecture" : "arm64",
+        "deviceId" : "25B395EC-01B8-4FB6-8D2A-1C484C360481",
+        "deviceName" : "iPhone 17",
+        "modelName" : "iPhone 17",
+        "osBuildNumber" : "23C54",
+        "osVersion" : "26.2",
+        "platform" : "iOS Simulator"
+      },
+      "expectedFailures" : 0,
+      "failedTests" : 1,
+      "passedTests" : 0,
+      "skippedTests" : 0,
+      "testPlanConfiguration" : {
+        "configurationId" : "1",
+        "configurationName" : "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription" : "PhotoMaid · Built with macOS 26.6.2",
+  "expectedFailures" : 0,
+  "failedTests" : 1,
+  "finishTime" : 1792192673.134,
+  "passedTests" : 0,
+  "result" : "Failed",
+  "skippedTests" : 0,
+  "startTime" : 1792192507.663,
+  "statistics" : [
+
+  ],
+  "testFailures" : [
+    {
+      "failureText" : "XCTAssertGreaterThanOrEqual failed: (\"621.0\") is less than (\"629.28\") - The board fills the window below the safe HUD",
+      "targetName" : "PhotoMaidUITests",
+      "testIdentifier" : 1,
+      "testIdentifierString" : "PhotoGameVisualTests/test40LargeTextAndArabic()",
+      "testIdentifierURL" : "test://com.apple.xcode/PhotoMaid/PhotoMaidUITests/PhotoGameVisualTests/test40LargeTextAndArabic",
+      "testName" : "test40LargeTextAndArabic()"
+    }
+  ],
+  "title" : "Test - PhotoMaid",
+  "topInsights" : [
+
+  ],
+  "totalTestCount" : 1
+}

@@ -1,5 +1,10 @@
 # Foto-Snake (16.10.2026)
 
+> **Aktuell: SnakePhoto-Umbau.** Cartoon-Köpfe, SpriteKit, bis zu 100 lokal gespeicherte
+> PhotosPicker-Fotos, Galerie-Reihenfolge sowie Schließen/Pause/Einstellungen im sicheren HUD.
+> Bewegung ausschließlich per Wischgesten. [Aktueller Stand und native Prüfergebnisse](snakephoto/TESTFLIGHT_VERIFICATION.md).
+> Der folgende ursprüngliche Bericht beschreibt die Vorgängerversion aus Build 11–12.
+
 Die freiwillige Pause im Feed und bei Analysen bietet [Memory](PHOTO_MEMORY.md) und Foto-Snake.
 Die Umsetzung liegt auf `feat/iphone-duo-games` und ist in TestFlight Version 1.0, Build 11 enthalten.
 Apple-Verarbeitung und interne Verteilung sind [bestätigt](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38952167636).

@@ -1,0 +1,127 @@
+Attributes: Application, 0x103f86550, pid: 15306, label: 'PhotoMaid'
+Element subtree:
+ →Application, 0x103f86550, pid: 15306, label: 'PhotoMaid'
+    Window (Main), 0x1041be190, {{0.0, 0.0}, {402.0, 874.0}}, identifier: 'store.capture.feed'
+      Other, 0x1041a42d0, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x1041a4b10, {{0.0, 0.0}, {402.0, 874.0}}
+          Other, 0x1041a46f0, {{0.0, 0.0}, {402.0, 874.0}}
+            Other, 0x1041a3eb0, {{0.0, 0.0}, {402.0, 874.0}}
+              Other, 0x1041bd390, {{0.0, 0.0}, {402.0, 874.0}}
+                Other, 0x1041425c0, {{0.0, 0.0}, {402.0, 874.0}}
+                  Other, 0x1041bef20, {{0.0, 0.0}, {402.0, 874.0}}
+                    Other, 0x1041bf040, {{0.0, 0.0}, {402.0, 874.0}}
+                      Other, 0x1041bf160, {{0.0, 0.0}, {402.0, 874.0}}
+                        Other, 0x1041bf280, {{0.0, 0.0}, {402.0, 874.0}}
+                          Other, 0x1041bf3a0, {{0.0, 0.0}, {402.0, 874.0}}
+                            Other, 0x1041bf4c0, {{0.0, 0.0}, {402.0, 874.0}}
+                              Other, 0x1041bf5e0, {{0.0, 0.0}, {402.0, 874.0}}
+                                Other, 0x1041bf700, {{0.0, 0.0}, {402.0, 874.0}}
+                                  Other, 0x1041bf820, {{0.0, 0.0}, {402.0, 874.0}}
+                                    ScrollView, 0x1041bf940, {{0.0, 0.0}, {402.0, 874.0}}
+                                      Other, 0x1041bfa60, {{0.0, 62.0}, {402.0, 1968.7}}
+                                        StaticText, 0x1041bfb80, {{175.0, 78.0}, {211.0, 64.3}}, label: 'مساء الخير'
+                                        StaticText, 0x1041bfca0, {{267.3, 144.3}, {118.7, 75.3}}, label: 'اليوم'
+                                        Button, 0x1041bfdc0, {{31.0, 157.7}, {62.0, 62.0}}, identifier: 'today.settings', label: 'الإعدادات'
+                                        StaticText, 0x1041bfee0, {{64.3, 427.7}, {305.7, 478.0}}, identifier: 'today.review', label: 'صور وفيديوهات متبقية للمراجعة: 24‏، تصفّح صورك وفيديوهاتك بالسحب.'
+                                          StaticText, 0x1041c0000, {{64.3, 427.7}, {305.7, 284.0}}, label: 'صور وفيديوهات متبقية للمراجعة: 24'
+                                          StaticText, 0x1041c0120, {{122.3, 713.7}, {247.7, 192.0}}, label: 'تصفّح صورك وفيديوهاتك بالسحب.'
+                                        Button, 0x1041c0240, {{32.0, 917.7}, {338.0, 83.0}}, identifier: 'today.review', label: 'ابدأ التنظيف'
+                                        Button, 0x1041c0360, {{32.0, 1044.7}, {338.0, 204.3}}, label: 'سلة المهملات, لا عناصر (0)'
+                                          Image, 0x1041c0480, {{324.0, 1117.0}, {52.0, 60.0}}, identifier: 'trash', label: 'سلة المهملات'
+                                          StaticText, 0x1041c05a0, {{158.3, 1044.7}, {159.7, 204.3}}, label: 'سلة المهملات'
+                                          StaticText, 0x1041c06c0, {{77.7, 1114.7}, {31.3, 64.3}}, label: '0'
+                                          Image, 0x1041c07e0, {{34.7, 1127.7}, {22.7, 38.7}}, identifier: 'chevron.forward', label: 'الأمام'
+                                        Button, 0x1041c0900, {{32.0, 1250.0}, {338.0, 69.0}}, label: 'لاحقًا, لا عناصر (0)'
+                                          Image, 0x1041c0a20, {{322.7, 1257.0}, {55.0, 55.0}}, identifier: 'clock', label: 'ساعة'
+                                          StaticText, 0x103e3e4a0, {{212.7, 1250.0}, {105.3, 69.0}}, label: 'لاحقًا'
+                                          StaticText, 0x1041c0b40, {{77.7, 1252.3}, {31.3, 64.3}}, label: '0'
+                                          Image, 0x1041c0c60, {{34.7, 1265.3}, {22.7, 38.7}}, identifier: 'chevron.forward', label: 'الأمام'
+                                        StaticText, 0x1041c0d80, {{166.3, 1347.0}, {219.7, 71.0}}, label: 'اختصارات'
+                                        Button, 0x1041c0ea0, {{16.0, 1352.0}, {118.3, 64.3}}, label: 'تعديل'
+                                        Button, 0x1041c0fc0, {{32.0, 1434.0}, {338.0, 69.0}}, label: 'صور‏، 24'
+                                          Image, 0x1041c10e0, {{316.7, 1441.3}, {67.0, 54.7}}, identifier: 'photo.on.rectangle', label: 'photo.on.rectangle'
+                                          StaticText, 0x1041c1200, {{32.0, 1434.0}, {338.0, 69.0}}, label: 'صور'
+                                          StaticText, 0x1041c1320, {{77.7, 1436.3}, {62.7, 64.3}}, label: '24'
+                                          Image, 0x1041c1440, {{34.7, 1449.3}, {22.7, 38.7}}, identifier: 'chevron.forward', label: 'الأمام'
+                                        Button, 0x1041c1560, {{32.0, 1504.0}, {338.0, 136.7}}, label: 'فيديوهات‏، فارغ'
+                                          Image, 0x1041c1680, {{319.0, 1550.3}, {66.7, 44.3}}, identifier: 'video', label: 'فيديو'
+                                          StaticText, 0x1041c17a0, {{32.0, 1504.0}, {338.0, 136.7}}, label: 'فيديوهات'
+                                          StaticText, 0x1041c18c0, {{32.0, 1540.2}, {88.0, 64.3}}, label: 'فارغ'
+                                        Button, 0x1041c19e0, {{32.0, 1641.7}, {338.0, 69.0}}, label: 'إضافة'
+                                          Image, 0x1041c1b00, {{328.0, 1654.0}, {44.3, 44.3}}, identifier: 'plus', label: 'إضافة'
+                                          StaticText, 0x1041c1c20, {{32.0, 1641.7}, {338.0, 69.0}}, label: 'إضافة'
+                                        Button, 0x1041c1d40, {{16.0, 1738.7}, {370.0, 260.0}}, label: 'مساحة الجهاز‏، المستخدم: ⁨242,52 غ.ب.⁩ من ⁨343,07 غ.ب.⁩', value: ‏71‎%‎
+                                          StaticText, 0x1041c1e60, {{143.7, 1746.7}, {242.3, 58.3}}, label: 'مساحة الجهاز'
+                                          StaticText, 0x1041c1f80, {{48.0, 1804.7}, {338.0, 174.0}}, label: 'المستخدم: ⁨242,52 غ.ب.⁩ من ⁨343,07 غ.ب.⁩'
+                                          ProgressIndicator, 0x1041c20a0, {{16.0, 1986.7}, {370.0, 4.0}}, value: ‏71‎%‎
+                                            ProgressIndicator, 0x1041c21c0, {{16.0, 1976.7}, {370.0, 24.0}}, value: ‏71‎%‎
+                                      Other, 0x1041c22e0, {{-24.0, 62.0}, {30.0, 750.0}}, label: 'شريط تمرير رأسي, ‏3 صفحات', value: ‏0‎%‎
+                                        Other, 0x1041c2400, {{3.0, 65.0}, {3.0, 315.0}}
+                                      Other, 0x1041c2520, {{-24.0, 62.0}, {30.0, 750.0}}, label: 'شريط تمرير رأسي, ‏3 صفحات', value: ‏0‎%‎
+                                        Other, 0x1041c2640, {{3.0, 65.0}, {3.0, 315.0}}
+                            Other, 0x1041c2760, {{0.0, 0.0}, {402.0, 874.0}}
+                              Other, 0x1041c2880, {{0.0, 0.0}, {402.0, 874.0}}
+                Other, 0x1041c29a0, {{0.0, 791.0}, {402.0, 83.0}}
+                  Other, 0x1041c2ac0, {{0.0, 0.0}, {402.0, 874.0}}
+                  Other, 0x1041c2be0, {{0.0, 791.0}, {402.0, 83.0}}
+              Button, 0x1041c2d00, {{338.0, 70.0}, {48.0, 48.0}}, identifier: 'feed.close', label: 'إغلاق'
+              Button, 0x1041c2e20, {{278.0, 70.0}, {48.0, 48.0}}, identifier: 'feed.memory', label: 'استراحة قصيرة'
+              Button, 0x1041c2f40, {{76.0, 70.0}, {48.0, 48.0}}, label: 'الترتيب'
+                Button, 0x1041c3060, {{76.0, 70.0}, {48.0, 48.0}}
+                  Image, 0x1041c3180, {{76.0, 70.0}, {48.0, 48.0}}, identifier: 'arrow.up.arrow.down', label: 'فرز'
+              Button, 0x1041c32a0, {{16.0, 70.0}, {48.0, 48.0}}, identifier: 'arrow.uturn.backward', label: 'تراجع', Disabled
+              StaticText, 0x1041c33c0, {{127.3, 126.0}, {147.3, 129.0}}, identifier: 'feed.position', label: 'تنظيف‏، 1 من 24'
+                StaticText, 0x1041c47f0, {{131.7, 126.0}, {138.7, 69.0}}, label: 'تنظيف'
+                StaticText, 0x1041c4910, {{127.3, 197.0}, {147.3, 58.0}}, label: '1 من 24'
+              Other, 0x1041c4a30, {{8.0, 267.0}, {386.0, 417.7}}, identifier: 'feed.stage', label: 'الصورة أو الفيديو الحالي', value: 18 سبتمبر، 2026 · ...
+                Other, 0x1041c4b50, {{19.6, 279.5}, {362.8, 392.6}}, identifier: 'feed.media'
+                  Image, 0x1041c4c70, {{44.0, 279.5}, {314.0, 392.6}}
+                Other, 0x1041c4d90, {{8.0, 267.0}, {386.0, 417.7}}, identifier: 'feed.media'
+                  Image, 0x1041c4eb0, {{34.0, 267.0}, {334.0, 417.7}}
+              StaticText, 0x1041c4fd0, {{45.7, 696.7}, {340.3, 58.3}}, label: '18 سبتمبر، 2026 · صورة'
+              Button, 0x1041c50f0, {{338.0, 777.7}, {44.0, 44.0}}, identifier: 'heart', label: 'إضافة إلى المفضلة', value: ليس مفضّلًا
+              Button, 0x1041c5210, {{294.0, 777.7}, {44.0, 44.0}}, identifier: 'square.and.arrow.up', label: 'مشاركة'
+              Button, 0x1041c5330, {{250.0, 777.7}, {44.0, 44.0}}, identifier: 'rectangle.stack.badge.plus', label: 'إضافة إلى ألبوم'
+              Button, 0x1041c5450, {{206.0, 777.7}, {44.0, 44.0}}, identifier: 'pencil', label: 'تعديل'
+              Button, 0x1041c5570, {{162.0, 777.7}, {44.0, 44.0}}, label: 'المزيد من الإجراءات'
+                Button, 0x1041c5690, {{162.0, 777.7}, {44.0, 44.0}}
+                  Image, 0x1041c57b0, {{162.0, 777.7}, {44.0, 44.0}}, identifier: 'ellipsis', label: 'المزيد'
+              Button, 0x1041c58d0, {{28.0, 767.3}, {91.7, 64.3}}, identifier: 'feed.dock', label: 'سلة المهملات: 0'
+                Image, 0x1041c59f0, {{69.3, 770.7}, {50.3, 57.7}}, identifier: 'trash', label: 'سلة المهملات'
+                StaticText, 0x1041cb750, {{28.0, 767.3}, {31.3, 64.3}}, label: '0'
+      Other, 0x1041cb870, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x1041cb990, {{0.0, 0.0}, {402.0, 874.0}}
+          Other, 0x1041cbab0, {{0.0, 0.0}, {402.0, 874.0}}
+            Image, 0x1041cbbd0, {{-17.3, 0.0}, {437.0, 874.0}}
+            Other, 0x1041cbcf0, {{4.0, 62.0}, {394.0, 774.0}}, identifier: 'snake.play'
+              Button, 0x1041cbe10, {{338.0, 82.7}, {44.0, 44.0}}, identifier: 'snake.close', label: 'إغلاق'
+              Button, 0x1041cbf30, {{286.0, 82.7}, {44.0, 44.0}}, identifier: 'snake.pause', label: 'إيقاف مؤقت'
+              Image, 0x1041cc050, {{179.7, 92.7}, {24.0, 24.0}}
+              StaticText, 0x1041cc170, {{139.7, 70.0}, {34.0, 69.0}}, identifier: 'snake.score', label: 'الملتهمة: 0'
+              Image, 0x1041cc290, {{116.3, 96.0}, {15.3, 17.3}}, identifier: 'trophy.fill', label: 'trophy.fill'
+              StaticText, 0x1041cc3b0, {{72.0, 75.5}, {36.3, 58.0}}, identifier: 'snake.best', label: 'لا توجد نتيجة بعد'
+              Button, 0x1041cc4d0, {{20.0, 82.7}, {44.0, 44.0}}, identifier: 'snake.settings', label: 'الإعدادات'
+              Other, 0x1041cc5f0, {{4.0, 155.0}, {394.0, 681.0}}, identifier: 'snake.board', label: 'لوحة ثعبان الصور', value: الكاميرا: العمود 6...
+                Other, 0x1041cc710, {{4.0, 155.0}, {394.0, 681.0}}
+                  Other, 0x1041cc830, {{4.0, 155.0}, {394.0, 681.0}}
+                    Other, 0x1041cc950, {{4.0, 835.8}, {0.0, 0.0}}
+                      Other, 0x1041cca70, {{106.4, 472.6}, {45.8, 45.8}}
+                      Other, 0x1041ccb90, {{142.3, 472.6}, {45.8, 45.8}}
+                      Other, 0x1041cccb0, {{4.0, 835.8}, {0.0, 0.0}}
+                      Other, 0x1041ccdd0, {{2.9, 619.7}, {38.1, 38.1}}
+                      Other, 0x1041ccef0, {{173.3, 467.8}, {55.5, 55.5}}
+                      Other, 0x1041cd010, {{107.0, 473.1}, {44.8, 44.8}}
+                      Other, 0x1041cd130, {{122.4, 488.6}, {85.5, 13.9}}
+                      Other, 0x1041cd250, {{116.2, 482.3}, {98.1, 26.4}}
+                      Other, 0x1041cd370, {{3.2, 154.4}, {395.7, 682.2}}
+              StaticText, 0x1041cd490, {{62.7, 374.2}, {276.7, 77.3}}, label: 'ثعبان الصور'
+              StaticText, 0x1041cd5b0, {{71.0, 467.5}, {260.0, 69.0}}, label: 'اسحب للبدء'
+              Button, 0x1041cd6d0, {{231.3, 552.7}, {118.7, 64.3}}, label: 'صورك'
+              Button, 0x1041cd7f0, {{52.0, 552.7}, {132.0, 64.3}}, label: 'الألعاب'
+Path to element:
+ →Application, 0x103f86550, pid: 15306, label: 'PhotoMaid'
+Query chain:
+ →Find: Target Application 'com.mrdevn4ever.photomaid'
+  Output: {
+    Application, 0x10419eb00, pid: 15306, label: 'PhotoMaid'
+  }

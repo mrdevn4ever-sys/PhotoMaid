@@ -1,8 +1,22 @@
 # Implementierungsstatus
 
-Stand: 16.10.2026 · Arbeitsbranch `feat/iphone-duo-games` · zuletzt hochgeladen und von Apple verarbeitet: Version 1.0, Build 12.
-Apple hat laut Nutzer ITMS-91064 für Builds 8–10 gemeldet. Build 12 wurde am 16.10.2026 um 21:06 UTC
-erfolgreich verarbeitet und an interne Tester verteilt. [TestFlight-Lauf](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38965702294).
+Stand: 16.10.2026 · Arbeitsbranch `feat/iphone-duo-games` · zuletzt von Apple verarbeitet: **Version 1.0, Build 13**.
+Upload um 23:41 UTC; Verarbeitung und interne Verteilung um 23:43 UTC bestätigt.
+[TestFlight-Lauf](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38981991475), Quellstand `cd1d40b`.
+
+## SnakePhoto und Memory-Karten-Fix (Build 13)
+
+Foto-Snake verwendet jetzt die Originalgrafiken und Sounds des gelieferten Kits, SpriteKit,
+vier animierte Cartoon-Köpfe und bis zu 100 lokal gespeicherte PhotosPicker-Fotos mit veränderbarer
+Reihenfolge. Bewegung ausschließlich per Wischgesten; Punkte und Rekord im sicheren HUD.
+Memory-Karten bleiben bei einem offenen Fehlpaar bedienbar; alte Timer können keine neue Auswahl schließen.
+
+**PASS auf dem Upload-Quellstand:** 461 Core-Tests, 58 native Tests, größter Schrift-/Arabisch-Fall auf
+iPhone und großem Ersatzfenster. Die vollständige vorherige UI-Suite bestand 8/9 auf iPhone und 9/9
+im großen Fenster; der verbleibende iPhone-Fall wurde korrigiert und gezielt nachgeprüft.
+Alle drei Manifeste der exportierten Build-13-IPA bestanden. Keine gemessenen Geräte-FPS,
+keine persönliche iCloud-PhotosPicker- oder echte Fold-/Unfold-Abnahme.
+[Abschlussbericht, Screenshots und genaue Prüfumfänge](snakephoto/TESTFLIGHT_VERIFICATION.md).
 
 ## iCloud- und Video-Feed: dauerhaftes Überspringen (16.10.2026)
 
@@ -24,7 +38,7 @@ Alle drei Privacy-Manifeste der exportierten IPA bestanden; [unveränderter Beri
 
 Memory-Bestzeiten und Snake-Rekorde bleiben lokal über App-Neustarts erhalten. Hochformat ist
 für das normale iPhone deklariert. Breite Fenster erhalten einen Live-Papierkorb links neben dem
-Feed, adaptive Dashboards und Raster sowie seitliche Editor-/Collage-Werkzeuge. Snake nutzt das ganze Fenster und ausschließlich Wischgesten; nur Schließen bleibt sichtbar.
+Feed, adaptive Dashboards und Raster sowie seitliche Editor-/Collage-Werkzeuge. Snake nutzt das ganze Fenster und ausschließlich Wischgesten; Schließen, Pause und Einstellungen liegen im sicheren HUD.
 F1–F5 des ursprünglichen Spieleaudits sind im Code korrigiert. 447 Core-Tests und 42 native Modelltests,
 Übersetzungs- und lokale Privacy-Prüfungen bestehen. Alle sechs aktuellen Snake-UI-Fälle auf iPhone und
 großem Fenster bestehen ebenfalls; native Aufnahmen und Rückwege sind geprüft. Memory-Sieg, gespeicherte
@@ -49,7 +63,7 @@ Alle drei Manifeste der exportierten Build-11-IPA wurden vor dem Upload erfolgre
 **NOT RUN:** ursprüngliche Build-8–10-IPAs und ATT-/Werbeabnahme auf einem echten Gerät.
 [Vollständiger Befund mit Grenzen und Quellen](PRIVACY_MANIFEST_AUDIT.md).
 
-## Foto-Snake und gemeinsame Spielauswahl (16.10.2026)
+## Vorherige Foto-Snake-Version und Spielauswahl (Build 11–12, historisch)
 
 Die freiwillige Pause im Feed und bei Analysen bietet jetzt Memory und Foto-Snake. Ein Kamerakopf
 sammelt Bilder und verlängert seinen Fotostreifen. Klassische feste Ränder oder entspannter

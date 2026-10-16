@@ -1,0 +1,121 @@
+[
+  {
+    "file": "iphone-record-after-relaunch.png",
+    "sha256": "f11c5fb737baa6d157969f9435c6be6717bd0a195ecc869aa317ec3a1ea84b94",
+    "source_run": 38977261521,
+    "source_commit": "6799fe7",
+    "artifact_id": 12080296981,
+    "native_attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "25B395EC-01B8-4FB6-8D2A-1C484C360481",
+      "deviceName": "iPhone 17",
+      "exportedFileName": "214B353B-B988-4A19-A6B3-A0B130CE5BE9.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "games_05_record_after_relaunch_0_09C5ED86-F188-4737-8AD4-B83C80F3AAFE.png",
+      "timestamp": 1792191272.717
+    },
+    "test": "PhotoGameVisualTests/test10MemoryPhotosWinAndPersistentRecord()"
+  },
+  {
+    "file": "iphone-memory-won.png",
+    "sha256": "bc1b6b7415b19efb0915a7500f358553ab1f6e5f1e69339c2e8a25110035bfcb",
+    "source_run": 38977261521,
+    "source_commit": "6799fe7",
+    "artifact_id": 12080296981,
+    "native_attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "25B395EC-01B8-4FB6-8D2A-1C484C360481",
+      "deviceName": "iPhone 17",
+      "exportedFileName": "F1B59942-A3F9-4607-B076-33EA2E87D2A2.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "memory_03_victory_record_light_0_C8EF1C68-D875-4C29-A806-A516486D778E.png",
+      "timestamp": 1792191247.635
+    },
+    "test": "PhotoGameVisualTests/test10MemoryPhotosWinAndPersistentRecord()"
+  },
+  {
+    "file": "iphone-snake-eaten.png",
+    "sha256": "7f3da034e372948555a3da964c68cca56e7ac9787749dc293422b708f5e56259",
+    "source_run": 38977261521,
+    "source_commit": "6799fe7",
+    "artifact_id": 12080296981,
+    "native_attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "25B395EC-01B8-4FB6-8D2A-1C484C360481",
+      "deviceName": "iPhone 17",
+      "exportedFileName": "3839D395-8961-4DFE-B486-B9130E990A1E.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "snake_03_fullscreen_collected_record_dark_0_5D37A6DC-9B5C-444F-B250-14862C84CD66.png",
+      "timestamp": 1792191307.599
+    },
+    "test": "PhotoGameVisualTests/test20SnakeControlsFoodHighscoreAndPause()"
+  },
+  {
+    "file": "expanded-snake-eaten.png",
+    "sha256": "43333a4cda87b3955f58902adb5c882dc23f572631c9788117feab56c5559233",
+    "source_run": 38977261521,
+    "source_commit": "6799fe7",
+    "artifact_id": 12081161000,
+    "native_attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "14DA5CF4-2301-414C-B814-97478EBD9560",
+      "deviceName": "iPad mini (A17 Pro)",
+      "exportedFileName": "B60B106B-6816-409E-8A8C-D693618962F4.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "snake_03_fullscreen_collected_record_dark_0_6A37BB09-880B-42D9-8361-5D9EDBC921CE.png",
+      "timestamp": 1792192110.762
+    },
+    "test": "PhotoGameVisualTests/test20SnakeControlsFoodHighscoreAndPause()"
+  },
+  {
+    "file": "expanded-live-basket.png",
+    "sha256": "98c94a15a376bdbe073657ceeb8a3df9e0d2677172119dbf1513f7542096b37d",
+    "source_run": 38977261521,
+    "source_commit": "6799fe7",
+    "artifact_id": 12081161000,
+    "native_attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "14DA5CF4-2301-414C-B814-97478EBD9560",
+      "deviceName": "iPad mini (A17 Pro)",
+      "exportedFileName": "62D6AA00-5522-4989-B56B-AF8BA6CA180F.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "workspace_02_live_basket_0_435F144E-1F66-4A2E-A0FE-0236A94C9526.png",
+      "timestamp": 1792192151.484
+    },
+    "test": "PhotoGameVisualTests/test30PortraitAndExpandedWorkspaceScreens()"
+  },
+  {
+    "file": "iphone-snake-largest-text-arabic.png",
+    "sha256": "4fb822fd8f4d48a9e65433e141702d5c7daff7c0cd689d9c012a2fa869aff482",
+    "source_run": 38980898046,
+    "source_commit": "cd1d40bda5a2b04c75c5e4b3251d8f9222e5c244",
+    "artifact_id": 12081044143,
+    "native_attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "24E049C8-1AEC-4A9D-95C6-C11145A59D62",
+      "deviceName": "iPhone 17",
+      "exportedFileName": "698DCFE1-2290-4402-A6D0-A2CA0E32AEE2.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "snake_accessibility_arabic_0_2D839C6E-DD93-4140-8880-C5DADF08DFC6.png",
+      "timestamp": 1792193494.396
+    },
+    "test": "PhotoGameVisualTests/test40LargeTextAndArabic()"
+  },
+  {
+    "file": "expanded-snake-largest-text-arabic.png",
+    "sha256": "286d4032c1ce52264775562edd5b54d34b982bb2738bdc3bf31024402ef3003e",
+    "source_run": 38980898046,
+    "source_commit": "cd1d40bda5a2b04c75c5e4b3251d8f9222e5c244",
+    "artifact_id": 12082165190,
+    "native_attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1A931556-7569-452B-9276-C82E5224F9D5",
+      "deviceName": "iPad mini (A17 Pro)",
+      "exportedFileName": "203EF166-91EB-4D4E-9E09-9498602FC128.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "snake_accessibility_arabic_0_7F7E3B72-F33A-43D9-803D-C5E846554722.png",
+      "timestamp": 1792193993.086
+    },
+    "test": "PhotoGameVisualTests/test40LargeTextAndArabic()"
+  }
+]

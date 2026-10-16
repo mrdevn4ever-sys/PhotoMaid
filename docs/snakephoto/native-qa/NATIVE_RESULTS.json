@@ -1,0 +1,108 @@
+{
+  "source_commit": "cd1d40bda5a2b04c75c5e4b3251d8f9222e5c244",
+  "branch": "feat/iphone-duo-games",
+  "authorization": "Subsequent user instruction: Testfloght build",
+  "core": {
+    "status": "PASS",
+    "tests": 461,
+    "swift_testing": 437,
+    "xctest": 24,
+    "failures": 0,
+    "run_id": 38980898046,
+    "job_id": 117241269959,
+    "log": "core-final.log"
+  },
+  "native_unit": {
+    "status": "PASS",
+    "tests": 58,
+    "swift_testing": 45,
+    "xctest": 13,
+    "run_id": 38980898046,
+    "job_id": 117241270314,
+    "note": "Final native XCTest and Swift Testing logs saved; no failures.",
+    "log": "native-final-xcodebuild.log",
+    "artifact_id": 12081771128
+  },
+  "full_visual_suite": {
+    "source_commit": "6799fe7c9df48defb29505dc0f1f3968a80103b6",
+    "run_id": 38977261521,
+    "overall_status": "FAIL (one iPhone accessibility layout case)",
+    "iphone": {
+      "passed": 8,
+      "failed": 1,
+      "skipped": 0,
+      "summary": "full-suite-iphone-summary.json",
+      "artifact_id": 12080296981
+    },
+    "expanded_window": {
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "summary": "expanded-window-summary.json",
+      "artifact_id": 12081161000
+    }
+  },
+  "accessibility_retry": {
+    "source_commit": "cd1d40bda5a2b04c75c5e4b3251d8f9222e5c244",
+    "run_id": 38980898046,
+    "test": "PhotoGameVisualTests/test40LargeTextAndArabic",
+    "iphone": {
+      "status": "PASS",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "xcode_exit": 0,
+      "board_height_pt": 681,
+      "required_board_height_pt": 629.28,
+      "hud_target_width_pt": 44,
+      "hud_target_height_pt": 44,
+      "summary": "final-iphone-summary.json",
+      "hierarchy": "final-iphone-snake.hierarchy.txt",
+      "artifact_id": 12081044143
+    },
+    "expanded_window": {
+      "status": "PASS",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "xcode_exit": 0,
+      "summary": "final-expanded-summary.json",
+      "artifact_id": 12082165190
+    },
+    "workflow_conclusion": "success"
+  },
+  "testflight": {
+    "status": "PASS: processed and distributed to internal testers",
+    "workflow_conclusion": "success",
+    "run_id": 38981991475,
+    "job_id": 117244732331,
+    "artifact_id": 12081951695,
+    "marketing_version": "1.0",
+    "build_number": 13,
+    "source_commit": "cd1d40bda5a2b04c75c5e4b3251d8f9222e5c244",
+    "uploaded_utc": "2026-10-16T23:41:01Z",
+    "processed_utc": "2026-10-16T23:43:03Z",
+    "distributed_internal_utc": "2026-10-16T23:43:04Z",
+    "privacy_manifest_count": 3,
+    "privacy_status": "PASS",
+    "privacy_report": "../../privacy-manifests-build13.json",
+    "external_distribution": false
+  },
+  "static": {
+    "resources": 77,
+    "png": 71,
+    "wav": 6,
+    "resources_byte_identical": true,
+    "existing_localization_entries_preserved": 2657,
+    "localization_entries": 2690,
+    "languages": 16,
+    "snake_rules_byte_identical_to_baseline": true,
+    "movement": "swipes only; no direction buttons"
+  },
+  "limits": {
+    "hardware_fps": "NOT MEASURED",
+    "icloud_photos_picker_on_personal_device": "NOT RUN",
+    "fold_unfold_hardware": "NOT RUN",
+    "device_audio_silent_mode": "NOT RUN"
+  }
+}

@@ -1,5 +1,10 @@
 # Foto-Memory (16.10.2026)
 
+Aktueller Karten-Fix: Eine neue geschlossene Karte kann ein offenes Fehlpaar bewusst schließen
+und sich öffnen. Automatische Fehlpaar-Timer prüfen weiterhin Runde und Paar; die ganze Karte ist
+tippbar. Native Modelltests und ein tatsächlicher Sieg mit gespeichertem Rekord sind im
+[SnakePhoto-/Memory-Prüfbericht](snakephoto/TESTFLIGHT_VERIFICATION.md) belegt.
+
 Freiwillige kurze Wischpause: Im Feed öffnet das Tassen-Symbol die Auswahl zwischen Memory und
 [Foto-Snake](PHOTO_SNAKE.md). Bei laufender
 Bildanalyse steht „Kurze Pause“ in der Statuskarte. Kein zusätzlicher Tab und kein automatischer Start.
