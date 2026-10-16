@@ -7,8 +7,8 @@ Apple hat laut Nutzer ITMS-91064 für Builds 8–10 gemeldet; ein grüner Upload
 
 Memory-Bestzeiten und Snake-Rekorde bleiben lokal über App-Neustarts erhalten. Hochformat ist
 für das normale iPhone deklariert. Breite Fenster erhalten einen Live-Papierkorb links neben dem
-Feed, adaptive Dashboards und Raster sowie seitliche Editor-/Collage-/Snake-Werkzeuge.
-F1–F5 des ursprünglichen Spieleaudits sind im Code korrigiert. 445 Core-Tests und 40 native Tests,
+Feed, adaptive Dashboards und Raster sowie seitliche Editor-/Collage-Werkzeuge. Snake nutzt das ganze Fenster und ausschließlich Wischgesten; nur Schließen bleibt sichtbar.
+F1–F5 des ursprünglichen Spieleaudits sind im Code korrigiert. 447 Core-Tests und bisher 40 native Tests,
 Übersetzungs- und lokale Privacy-Prüfungen bestehen; die visuelle Wiederholungsprüfung läuft in Actions.
 
 **Duo-Grenze:** Der verfügbare Runner hat Xcode 26.6 und keinen Duo-Simulator. Die breite native
@@ -33,8 +33,8 @@ Apple-Validierung und iOS-/ATT-/Werbeabnahme. Die Korrektur ist im Arbeitsbranch
 
 Die freiwillige Pause im Feed und bei Analysen bietet jetzt Memory und Foto-Snake. Ein Kamerakopf
 sammelt Bilder und verlängert seinen Fotostreifen. Klassische feste Ränder oder entspannter
-Randumlauf, drei Tempi, Wischgesten und Richtungstasten; mit VoiceOver wird schrittweise gespielt.
-Vorbereitete, erneut geöffnete und neu gestartete Runden warten auf ausdrückliches Fortsetzen.
+Randumlauf und drei Tempi. Im Spiel nur Wischgesten und Schließen; VoiceOver verwendet benannte Aktionen im Schrittmodus.
+Vorbereitete, erneut geöffnete und neu gestartete Runden warten auf einen Swipe zum Fortsetzen.
 App-Wechsel, Schließen und hohe Gerätetemperatur pausieren Snake.
 
 Fotos stammen wahlweise zufällig aus Mediathek, Favoriten oder Album/Fotoordner (bis zu zwölf nutzbare
