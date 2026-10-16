@@ -197,8 +197,10 @@ Die Diagnose ändert keine Berechtigungsdatenbank und verwendet keine privaten P
    - In der App: Einstellungen › Hilfe › **Diagnose teilen** (lokales Protokoll dieser App + MetricKit-Berichte,
      ohne Medien, Dateinamen oder IDs) – Datei an Claude Code geben.
 
-Ein grüner Upload-Lauf bestätigt nicht die vollständige Apple-Validierung. Nach dem Upload auch
-App Store Connect und Apple-Mails prüfen; insbesondere sind ITMS-Fehler gesondert zu bearbeiten.
+Die TestFlight-Lane wartet nach dem Upload auf Apples Build-Verarbeitung. Ein Verarbeitungsfehler
+führt zu einem fehlgeschlagenen Lauf; der reine Transfer genügt nicht als Erfolg. Dies bestätigt
+keine App-Review-Freigabe oder Geräteabnahme. App Store Connect und Apple-Mails bei ITMS-Fehlern
+weiterhin prüfen.
 [ITMS-91064: Untersuchung und lokale Korrektur vom 16.10.2026](PRIVACY_MANIFEST_AUDIT.md).
 
 ## Was die Workflows nie tun
