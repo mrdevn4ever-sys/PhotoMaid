@@ -67,9 +67,9 @@ Der aktuelle Apple-Verarbeitungsstatus wurde nicht über App Store Connect abgef
 | Korrigierte App, beide offiziellen SDK-ZIPs, Swift-Checkouts | PASS mit sieben Hinweisen | zwölf Dateien, kein Tracking-Konsistenzfehler nach Korrektur |
 | Acht Prüfer-Regressionen | PASS | unter anderem eingebettetes fehlerhaftes Framework trotz korrektem App-Manifest, XML/Binär-Plist, fehlendes App-Manifest |
 | Ruby-Syntax des Fastfile | PASS | lokal mit Ruby 3.4; keine Fastlane-Ausführung |
-| Originale oder neu erzeugte IPA / xcarchive | NOT RUN | Original nicht archiviert; kein Xcode und kein neuer Build gestartet |
+| Originale oder neu erzeugte IPA / xcarchive | NOT RUN | Original nicht archiviert; die nachfolgende Simulatorprüfung erzeugt keine App-Store-IPA |
 | iOS-/ATT-/Werbeverhalten auf Simulator/Gerät | NOT RUN | keine Laufzeitabnahme |
-| GitHub Actions, Push und neuer TestFlight-Upload | NOT RUN | ausdrücklich nicht gestartet |
+| Neuer TestFlight-Upload und Apple-Validierung | NOT RUN | Korrektur im Arbeitsbranch; anschließend freigegebene Actions prüfen die App auf Simulatoren, ohne Upload |
 
 Lokale Wiederholung:
 

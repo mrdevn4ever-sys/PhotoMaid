@@ -27,7 +27,7 @@ Aktuell: [adaptive Raster, dauerhafte Bestzeiten und nativer Prüfstatus](IPHONE
 
 ## Fotos und Analyse
 
-- Höchstens achtzehn Vorschauen mit Zielgröße 320 × 320, nacheinander über die vorhandene Preview-Pipeline.
+- Höchstens achtzehn Vorschauen mit Zielgröße 512 × 512, nacheinander über die vorhandene Preview-Pipeline.
   Keine Originalbearbeitung, keine neuen Analyseaufträge, keine Spiel-Uploads.
 - Memory und Snake verwenden dieselbe Ladeimplementierung, haben aber getrennte Vorschauen und Spielstände.
   Ein Wechsel des Spiels ersetzt die Bilder der anderen Runde nicht.
@@ -51,17 +51,9 @@ Aktuell: [adaptive Raster, dauerhafte Bestzeiten und nativer Prüfstatus](IPHONE
 
 ## Prüfstatus
 
-| Prüfung | Status | Nachweis |
-|---|---|---|
-| PhotoMaidCore, gesamte Suite | PASS | Lokal im Swift-6.4-Docker-Container: 409 Tests, 46 Suites einschließlich Snake |
-| Memory-Regeln und Zufallsauswahl | PASS | Sieben Tests: Deckvalidierung, schnelle Mehrfachtipps/Fehlpaare, Unterbrechung, gemischte Decks, große Runden, Quellfilter, begrenzte Stichproben |
-| Swift-Syntax aller App- und App-Testdateien | PASS | Lokales `swiftc -frontend -parse` (keine SDK-Typprüfung) |
-| Lokalisierung | PASS | 39 neue Kennungen in allen 16 Sprachen; bestehende Texte und Berechtigungsangaben erhalten |
-| Native Model-Regressionen | NOT RUN | Sieben Fälle in `PhotoMaidTests/PhotoMemoryModelTests.swift`: fehlgeschlagene Auswahl, verspätete Ergebnisse, Zugriffsentzug, erneute Runde, übersprungene Vorschauen, zu kleine Quelle, große Zufallsrunde |
-| iOS-Build, Simulator und Gerätebedienung | NOT RUN | Linux-Umgebung ohne Xcode; keine GitHub Actions aufgerufen |
-| GitHub Actions / CI / TestFlight | NOT RUN | Auf Wunsch ausdrücklich keine Actions-Minuten verbraucht |
-
-Vor einer später ausdrücklich beauftragten iOS-Abnahme: eigene lokale und iCloud-Fotos, Abbruch während
-des Ladens, verweigerter/eingeschränkter Fotozugriff, Tresor-Verschiebung, VoiceOver, große Schrift,
-Dark Mode, große Runden im Hoch-/Querformat, leere Favoriten, verschachtelte Fotoordner,
-Rückkehr zum selben Feed-Foto und Analyseabschluss während einer Runde prüfen.
+Die sieben Memory-Regeltests und sieben nativen Memory-Modelltests bestehen. Die vier nativen
+Rekord-/Einbindungstests decken aktive Spielzeit, Core-Data-Neuladen, Speicherfehler,
+nachträglich ausgeblendete Fotos und den gemeinsamen Analysekontext ab.
+Aktuelle Gesamtergebnisse, Screenshot-Belege und verbleibende Geräteprüfungen stehen zentral in
+[IPHONE_DUO_AND_GAMES.md](IPHONE_DUO_AND_GAMES.md). GitHub Actions sind seit der ausdrücklichen
+Freigabe am 16.10.2026 im Einsatz; ein neuer TestFlight-Upload wurde nicht durchgeführt.

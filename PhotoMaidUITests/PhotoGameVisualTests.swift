@@ -150,6 +150,10 @@ import XCTest
 
     func test30PortraitAndExpandedWorkspaceScreens() {
         launch(light: true)
+        let position = app.descendants(matching: .any)["feed.position"].firstMatch
+        XCTAssertGreaterThanOrEqual(position.frame.width, 70, "The feed title and counter must retain readable width")
+        XCTAssertLessThan(position.frame.height, 70, "The counter must not wrap into a vertical column")
+        XCTAssertGreaterThanOrEqual(app.buttons["feed.memory"].frame.width, 44)
         checkpoint("workspace_01_feed", app: app)
         let wide = app.frame.width >= 540
         let panel = app.descendants(matching: .any)["feed.basketPanel"].firstMatch

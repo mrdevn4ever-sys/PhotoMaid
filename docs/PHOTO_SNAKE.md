@@ -36,7 +36,7 @@ Aktuell: [breite Spielfläche, dauerhafte Rekorde und nativer Prüfstatus](IPHON
 - Alternativ ein bis achtzehn Fotos manuell wählen oder ohne Fotozugriff mit Symbolen spielen.
   Videos, verborgene Alben und Tresorfotos sind ausgeschlossen. Es gibt keinen Rückgriff auf eine
   andere Quelle, wenn die gewählte Quelle keine nutzbaren Bilder enthält.
-- Nur Vorschauen mit Zielgröße 320 × 320, nacheinander über die vorhandene Preview-Pipeline.
+- Nur Vorschauen mit Zielgröße 512 × 512, nacheinander über die vorhandene Preview-Pipeline.
   iCloud-Downloads für die Spielvorbereitung sind zunächst aus und nur per ausdrücklichem Schalter erlaubt.
   Zufallsauswahl prüft höchstens die dreifache gewünschte Zahl von Kandidaten und überspringt unzugängliche
   Bilder. Während des eigentlichen Spiels werden keine weiteren Fotos geladen.
@@ -52,18 +52,9 @@ Aktuell: [breite Spielfläche, dauerhafte Rekorde und nativer Prüfstatus](IPHON
 
 ## Prüfstatus
 
-| Prüfung | Status | Nachweis |
-|---|---|---|
-| PhotoMaidCore, gesamte Suite | PASS | Lokal im Swift-6.4-Docker-Container: 409 Tests in 46 Suites |
-| Snake-Regeln | PASS | Acht Tests: Rastergrenzen, gepufferte Richtungswechsel, Randmodi, Wachstum, frei werdendes Schwanzfeld, echte Selbstkollision, volles Raster, reproduzierbare Zufallsfolge |
-| Swift-Syntax aller App- und App-Testdateien | PASS | Lokales `swiftc -frontend -parse`; keine Apple-SDK-Typprüfung |
-| Lokalisierung | PASS | 31 zusätzliche Kennungen in allen 16 Sprachen; zusammen mit Memory 70; bestehende Texte unverändert |
-| Native Snake-/Fotolader-Tests | NOT RUN | Fünf Fälle in `PhotoMaidTests/PhotoSnakeModelTests.swift`: Start/Pause, Schrittmodus, Echtzeit/Neustart, VoiceOver, kleine Quelle und unabhängiger Memory-Stand |
-| Native Memory-Regressionen nach Fotolader-Extraktion | NOT RUN | Sieben vorhandene Fälle in `PhotoMaidTests/PhotoMemoryModelTests.swift` |
-| iOS-Build, Simulator und Gerätebedienung | NOT RUN | Linux-Umgebung ohne Xcode |
-| GitHub Actions / CI / TestFlight | NOT RUN | Auf Wunsch keine Actions-Minuten verbraucht; kein Push |
-
-Vor einer später beauftragten iOS-Abnahme: beide Randmodi, schnelle Richtungswechsel, Schrittmodus,
-VoiceOver, große Schrift, Hoch-/Querformat, Dark Mode, Schließen/Fortsetzen, App-Wechsel,
-Temperaturpause, eingeschränkter Fotozugriff, Tresor-Verschiebung, entfernte Fotos, leere Favoriten,
-kleine Quellen, verschachtelte Fotoordner, iCloud-Opt-in und Analyseabschluss während der Runde prüfen.
+Die acht Snake-Regeltests sowie fünf native Snake-/Fotolader-Tests bestehen. Geprüft sind
+Start/Pause, Schrittmodus, Echtzeitmodell/Neustart, VoiceOver-Umschaltung, kleine Fotoquellen
+und die Unabhängigkeit einer vorhandenen Memory-Runde.
+Aktuelle Gesamtergebnisse, Screenshot-Belege und verbleibende Geräteprüfungen stehen zentral in
+[IPHONE_DUO_AND_GAMES.md](IPHONE_DUO_AND_GAMES.md). GitHub Actions sind seit der ausdrücklichen
+Freigabe am 16.10.2026 im Einsatz; ein neuer TestFlight-Upload wurde nicht durchgeführt.

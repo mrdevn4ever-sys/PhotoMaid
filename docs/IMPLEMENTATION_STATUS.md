@@ -8,8 +8,8 @@ Apple hat laut Nutzer ITMS-91064 für Builds 8–10 gemeldet; ein grüner Upload
 Memory-Bestzeiten und Snake-Rekorde bleiben lokal über App-Neustarts erhalten. Hochformat ist
 für das normale iPhone deklariert. Breite Fenster erhalten einen Live-Papierkorb links neben dem
 Feed, adaptive Dashboards und Raster sowie seitliche Editor-/Collage-/Snake-Werkzeuge.
-F1–F5 des ursprünglichen Spieleaudits sind im Code korrigiert. Core-, Übersetzungs- und lokale
-Privacy-Prüfungen bestehen; native Integrations- und visuelle Tests laufen in Actions.
+F1–F5 des ursprünglichen Spieleaudits sind im Code korrigiert. 445 Core-Tests und 40 native Tests,
+Übersetzungs- und lokale Privacy-Prüfungen bestehen; die visuelle Wiederholungsprüfung läuft in Actions.
 
 **Duo-Grenze:** Der verfügbare Runner hat Xcode 26.6 und keinen Duo-Simulator. Die breite native
 Fensterprüfung ersetzt keine Faltabnahme. Apple verlangt SDK 27.1 für vollständige randfüllende
@@ -26,10 +26,10 @@ Neue Prüfung aller Manifeste der exportierten IPA vor dem künftigen Fastlane-U
 
 **PASS:** korrigierte Tracking-Deklaration, zwölf Datei-Prüfungen (sieben Hinweise für nur unter Linux
 gelinktes swift-crypto), acht Regressionstests, Ruby-Syntax. **NOT RUN:** Original-/neue IPA,
-Apple-Validierung und iOS-/ATT-/Werbeabnahme. Kein Push, keine Actions und kein neuer Upload.
+Apple-Validierung und iOS-/ATT-/Werbeabnahme. Die Korrektur ist im Arbeitsbranch enthalten; kein neuer Upload.
 [Vollständiger Befund mit Grenzen und Quellen](PRIVACY_MANIFEST_AUDIT.md).
 
-## Foto-Snake und gemeinsame Spielauswahl (16.10.2026, lokal umgesetzt)
+## Foto-Snake und gemeinsame Spielauswahl (16.10.2026)
 
 Die freiwillige Pause im Feed und bei Analysen bietet jetzt Memory und Foto-Snake. Ein Kamerakopf
 sammelt Bilder und verlängert seinen Fotostreifen. Klassische feste Ränder oder entspannter
@@ -42,13 +42,11 @@ Vorschauen, mindestens eine), alternativ aus einer manuellen Auswahl von ein bis
 Memory und Snake nutzen dieselbe Ladeimplementierung mit getrennten Bildspeichern und Spielständen.
 Es gibt keine Fotoänderungen, Spiel-Uploads oder neuen Analyseaufträge.
 
-**PASS:** lokal 409 Core-Tests in 46 Suites, darunter acht Snake-Regeltests; Swift-Syntax aller
-App- und App-Testdateien; 31 zusätzliche Texte in allen 16 Sprachen (70 zusammen mit Memory).
-**NOT RUN:** iOS-Build, fünf neue native Snake-/Fotolader-Tests, Simulator und Gerät (kein Xcode).
-**Keine GitHub Actions, kein Push und kein TestFlight-Lauf.** Diese Änderungen sind lokal und
-noch in keinem ausgelieferten Build. [Bedienung, Grenzen und Prüfstatus](PHOTO_SNAKE.md).
+**PASS:** acht Snake-Regeltests und fünf native Snake-/Fotolader-Tests; Bestandteil der oben
+genannten Gesamtprüfung. Die Änderungen liegen im Arbeitsbranch und sind noch in keinem
+ausgelieferten Build. [Bedienung, Grenzen und aktueller Prüfstatus](PHOTO_SNAKE.md).
 
-## Foto-Memory mit eigenen Bildern (16.10.2026, lokal umgesetzt)
+## Foto-Memory mit eigenen Bildern (16.10.2026)
 
 Auf Nutzerauftrag ist eine freiwillige Wischpause im Feed und bei laufender Analyse ergänzt.
 Zufallsrunden mit 6, 12 oder 18 Paaren aus der Mediathek, Favoriten oder gewählten Alben/Fotoordnern
@@ -58,10 +56,8 @@ Feed-Position bleiben beim Schließen erhalten, solange dieselbe App-Instanz lä
 Vorschauen bleiben im RAM; Tresorfotos sind ausgeschlossen, iCloud-Laden für das Spiel ist optional.
 Analysefortschritt und Rückkehr zu den Ergebnissen sind im Spiel erreichbar.
 
-**PASS:** lokal 409 Core-Tests einschließlich sieben Memory-/Zufallsauswahl-Tests; Swift-Syntaxprüfung aller App-
-und App-Testdateien; 39 neue Texte in 16 Sprachen. **NOT RUN:** iOS-Build, native Model-Tests,
-Simulator und Gerät (kein Xcode). Auf ausdrücklichen Wunsch **keine GitHub Actions und kein
-TestFlight-Lauf**. [Bedienung, Grenzen und Prüfstatus](PHOTO_MEMORY.md).
+**PASS:** sieben Memory-/Zufallsauswahl-Tests und sieben native Modelltests; Bestandteil der oben
+genannten Gesamtprüfung. [Bedienung, Grenzen und aktueller Prüfstatus](PHOTO_MEMORY.md).
 
 ## 20 deutsche Werbevideos (15.10.2026, abgeschlossen)
 

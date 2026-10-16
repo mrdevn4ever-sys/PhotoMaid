@@ -216,50 +216,79 @@ struct FeedView: View {
 
     private var header: some View {
         GlassEffectContainer(spacing: AppSpacing.s) {
-            HStack(spacing: AppSpacing.s) {
-                GlassIconButton(symbol: "xmark", label: L("close")) { model.close() }
-                    .accessibilityIdentifier("feed.close")
-                GlassIconButton(symbol: "cup.and.saucer", label: L("memory_break")) { showMemory = true }
-                    .disabled(!model.isLoaded || model.isCommitting)
-                    .accessibilityIdentifier("feed.memory")
-                Spacer(minLength: 0)
-                VStack(spacing: 2) {
-                    Text(verbatim: model.request.title).font(AppTypography.headline).foregroundStyle(AppColors.textPrimary)
-                        .lineLimit(1)
-                    if !model.session.items.isEmpty {
-                        let p = model.session.position
-                        Text(verbatim: L("feed_position", p.current, p.total))
-                            .font(AppTypography.caption).foregroundStyle(AppColors.textSecondary).monospacedDigit()
-                    }
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: AppSpacing.s) {
+                    headerLeading
+                    headerPosition.fixedSize(horizontal: true, vertical: false)
+                        .frame(maxWidth: .infinity)
+                    headerTrailing
                 }
-                .accessibilityElement(children: .combine)
-                .accessibilityAddTraits(.isHeader)
-                .accessibilityIdentifier("feed.position")
-                Spacer(minLength: 0)
-                if model.canReorder && model.isLoaded && !model.session.items.isEmpty {
-                    Menu {
-                        Picker(L("order_title"), selection: Binding(get: { model.order }, set: { o in Task { await model.setOrder(o) } })) {
-                            Text(key: "order_newest").tag(FeedOrder.newest)
-                            Text(key: "order_oldest").tag(FeedOrder.oldest)
-                            Text(key: "order_largest").tag(FeedOrder.largest)
-                            Text(key: "order_random").tag(FeedOrder.random)
-                        }
-                    } label: {
-                        Image(systemName: "arrow.up.arrow.down")
-                            .font(.body.weight(.semibold))
-                            .frame(width: AppSpacing.touch, height: AppSpacing.touch)
+                VStack(spacing: AppSpacing.xs) {
+                    HStack(spacing: AppSpacing.s) {
+                        headerLeading
+                        Spacer(minLength: 0)
+                        headerTrailing
                     }
-                    .buttonStyle(.glass)
-                    .buttonBorderShape(.circle)
-                    .accessibilityLabel(Text(key: "order_title"))
+                    headerPosition.frame(maxWidth: .infinity)
                 }
-                GlassIconButton(symbol: "arrow.uturn.backward", label: L("undo")) { Task { await model.undo() } }
-                    .disabled(!app.read.canUndo)
-                    .tourTarget("feed.undo")
             }
         }
         .padding(.horizontal, AppSpacing.pageMargin)
         .padding(.top, AppSpacing.xs)
+    }
+
+    private var headerPosition: some View {
+        VStack(spacing: 2) {
+            Text(verbatim: model.request.title).font(AppTypography.headline).foregroundStyle(AppColors.textPrimary)
+                .lineLimit(1)
+            if !model.session.items.isEmpty {
+                let p = model.session.position
+                Text(verbatim: L("feed_position", p.current, p.total))
+                    .font(AppTypography.caption).foregroundStyle(AppColors.textSecondary).monospacedDigit()
+                    .lineLimit(1)
+            }
+        }
+        .accessibilityElement(children: .combine)
+        .accessibilityAddTraits(.isHeader)
+        .accessibilityIdentifier("feed.position")
+    }
+
+    @ViewBuilder private var headerLeading: some View {
+        headerButton(symbol: "xmark", label: L("close")) { model.close() }
+            .accessibilityIdentifier("feed.close")
+        headerButton(symbol: "cup.and.saucer", label: L("memory_break")) { showMemory = true }
+            .disabled(!model.isLoaded || model.isCommitting)
+            .accessibilityIdentifier("feed.memory")
+    }
+
+    @ViewBuilder private var headerTrailing: some View {
+        if model.canReorder && model.isLoaded && !model.session.items.isEmpty {
+            Menu {
+                Picker(L("order_title"), selection: Binding(get: { model.order }, set: { o in Task { await model.setOrder(o) } })) {
+                    Text(key: "order_newest").tag(FeedOrder.newest)
+                    Text(key: "order_oldest").tag(FeedOrder.oldest)
+                    Text(key: "order_largest").tag(FeedOrder.largest)
+                    Text(key: "order_random").tag(FeedOrder.random)
+                }
+            } label: { headerSymbol("arrow.up.arrow.down") }
+                .buttonStyle(.plain).glassCapsule(interactive: true)
+                .accessibilityLabel(Text(key: "order_title"))
+        }
+        headerButton(symbol: "arrow.uturn.backward", label: L("undo")) { Task { await model.undo() } }
+            .disabled(!app.read.canUndo)
+            .tourTarget("feed.undo")
+    }
+
+    /// A 48-point target without the additional intrinsic padding of the glass button style.
+    private func headerButton(symbol: String, label: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) { headerSymbol(symbol) }
+            .buttonStyle(.plain).glassCapsule(interactive: true)
+            .accessibilityLabel(Text(verbatim: label))
+    }
+
+    private func headerSymbol(_ symbol: String) -> some View {
+        Image(systemName: symbol).resizable().scaledToFit().frame(width: 21, height: 21)
+            .frame(width: AppSpacing.touch, height: AppSpacing.touch).contentShape(.circle)
     }
 
     // MARK: Inhalt
