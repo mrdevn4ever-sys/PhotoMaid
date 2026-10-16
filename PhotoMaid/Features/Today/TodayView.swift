@@ -19,39 +19,39 @@ struct TodayView: View {
                 VStack(alignment: .leading, spacing: AppSpacing.xl) {
                     header.id("today.header")
                     WorkspaceColumns(accessibility: dynamicType.isAccessibilitySize) {
-                    VStack(alignment: .leading, spacing: AppSpacing.xl) {
-                    if !access.canRead { accessCard }
-                    if access.canRead {
-                        ReviewHero(pending: app.snapshot.loaded && app.readReady ? app.pending : nil, hasHistory: !app.read.events.isEmpty,
-                                   showGestures: !app.settings.gestureHintSeen) {
-                            app.open(FeedRequest(.allMedia))
+                        VStack(alignment: .leading, spacing: AppSpacing.xl) {
+                            if !access.canRead { accessCard }
+                            if access.canRead {
+                                ReviewHero(pending: app.snapshot.loaded && app.readReady ? app.pending : nil,
+                                           hasHistory: !app.read.events.isEmpty, showGestures: !app.settings.gestureHintSeen) {
+                                    app.open(FeedRequest(.allMedia))
+                                }
+                                .tourTarget("today.hero")
+                                .accessibilityIdentifier("today.review")
+                                .id("today.hero")
+                            }
+                            progressRows
+                            if access == .limited {
+                                InfoBanner(symbol: "photo.badge.checkmark", title: L("today_limited_title"), text: L("today_limited_text"),
+                                           actionTitle: L("today_limited_action")) { app.library.presentLimitedLibraryPicker() }
+                            }
+                            if !app.read.reconciliationNeeded.isEmpty {
+                                InfoBanner(symbol: "arrow.triangle.2.circlepath", tint: AppColors.warning, text: L("today_reconciliation"))
+                            }
                         }
-                        .tourTarget("today.hero")
-                        .accessibilityIdentifier("today.review")
-                        .id("today.hero")
-                    }
-                    progressRows
-                    if access == .limited {
-                        InfoBanner(symbol: "photo.badge.checkmark", title: L("today_limited_title"), text: L("today_limited_text"),
-                                   actionTitle: L("today_limited_action")) { app.library.presentLimitedLibraryPicker() }
-                    }
-                    if !app.read.reconciliationNeeded.isEmpty {
-                        InfoBanner(symbol: "arrow.triangle.2.circlepath", tint: AppColors.warning, text: L("today_reconciliation"))
-                    }
-                    }
-                    VStack(alignment: .leading, spacing: AppSpacing.xl) {
-                    statusGroup.tourTarget("today.status").id("today.status")
-                    if access.canRead && app.readReady { QuickAccessSection().tourTarget("today.quick").id("today.quick") }
-                    if app.capabilities.tier == .free, let first = app.settings.firstSeenDay, app.today > first {
-                        Button { app.navigate(.pro) } label: {
-                            NavRow(symbol: "crown", title: L("today_pro_title"), subtitle: L("today_pro2_text"))
+                        VStack(alignment: .leading, spacing: AppSpacing.xl) {
+                            statusGroup.tourTarget("today.status").id("today.status")
+                            if access.canRead && app.readReady { QuickAccessSection().tourTarget("today.quick").id("today.quick") }
+                            if app.capabilities.tier == .free, let first = app.settings.firstSeenDay, app.today > first {
+                                Button { app.navigate(.pro) } label: {
+                                    NavRow(symbol: "crown", title: L("today_pro_title"), subtitle: L("today_pro2_text"))
+                                }
+                                .buttonStyle(.plain)
+                                .padding(.horizontal, AppSpacing.m)
+                                .background(AppColors.surface, in: .rect(cornerRadius: AppRadii.card))
+                            }
+                            if let device { StorageLine(device: device) { app.navigate(.storage) } }
                         }
-                        .buttonStyle(.plain)
-                        .padding(.horizontal, AppSpacing.m)
-                        .background(AppColors.surface, in: .rect(cornerRadius: AppRadii.card))
-                    }
-                    if let device { StorageLine(device: device) { app.navigate(.storage) } }
-                    }
                     }
                 }
                 .padding(.horizontal, AppSpacing.pageMargin)

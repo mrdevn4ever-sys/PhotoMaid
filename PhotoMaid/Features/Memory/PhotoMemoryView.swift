@@ -30,32 +30,32 @@ struct PhotoMemoryView: View {
     var body: some View {
         NavigationStack {
             GeometryReader { geo in
-            ScrollView {
-                VStack(spacing: AppSpacing.m) {
-                    PhotoGameAnalysisStatus(onResults: onResults)
-                        .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { analysisHeight = $0 }
-                    PhotoGameRecordSaveStatus()
-                    if let error = model.error {
-                        InfoBanner(symbol: "exclamationmark.triangle", tint: AppColors.warning, text: error)
+                ScrollView {
+                    VStack(spacing: AppSpacing.m) {
+                        PhotoGameAnalysisStatus(onResults: onResults)
+                            .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { analysisHeight = $0 }
+                        PhotoGameRecordSaveStatus()
+                        if let error = model.error {
+                            InfoBanner(symbol: "exclamationmark.triangle", tint: AppColors.warning, text: error)
+                        }
+                        if model.isLoading {
+                            LoadingState(message: L("memory_loading"))
+                            Button(L("cancel")) { model.cancelLoading() }
+                        } else if setup || model.game == nil {
+                            configuration
+                        } else if let game = model.game {
+                            board(game, viewport: geo.size)
+                        }
                     }
-                    if model.isLoading {
-                        LoadingState(message: L("memory_loading"))
-                        Button(L("cancel")) { model.cancelLoading() }
-                    } else if setup || model.game == nil {
-                        configuration
-                    } else if let game = model.game {
-                        board(game, viewport: geo.size)
-                    }
+                    .padding(AppSpacing.pageMargin)
+                    .frame(maxWidth: 900)
+                    .frame(maxWidth: .infinity)
                 }
-                .padding(AppSpacing.pageMargin)
-                .frame(maxWidth: 900)
-                .frame(maxWidth: .infinity)
-            }
-            .appPage()
-            .onScrollGeometryChange(for: Bool.self) { $0.contentSize.height > $0.containerSize.height + 1 } action: { _, scrolling in
-                boardNeedsScrolling = scrolling
-                if scrolling { model.noteManualMismatch() }
-            }
+                .appPage()
+                .onScrollGeometryChange(for: Bool.self) { $0.contentSize.height > $0.containerSize.height + 1 } action: { _, scrolling in
+                    boardNeedsScrolling = scrolling
+                    if scrolling, !setup, !model.isLoading { model.noteManualMismatch() }
+                }
             }
             .navigationTitle(L("memory_title"))
             .navigationBarTitleDisplayMode(.inline)
@@ -205,10 +205,6 @@ struct PhotoMemoryView: View {
                 Button(L("memory_new")) { replay() }.buttonStyle(.glassProminent)
             }
             Button(L("memory_change")) { setup = true }.buttonStyle(.glass)
-        }
-        .onChange(of: layout.requiresScrolling, initial: true) { _, needsScroll in
-            boardNeedsScrolling = needsScroll
-            if needsScroll { model.noteManualMismatch() }
         }
     }
 

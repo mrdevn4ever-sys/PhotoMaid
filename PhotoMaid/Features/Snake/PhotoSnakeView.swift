@@ -141,7 +141,7 @@ struct PhotoSnakeView: View {
         let layout = wide ? AnyLayout(HStackLayout(alignment: .center, spacing: AppSpacing.l))
                           : AnyLayout(VStackLayout(spacing: AppSpacing.s))
         let width = min(1100, viewport.width) - AppSpacing.pageMargin * 2 - (wide ? 240 : 0)
-        let height = max(256, min(width * 4 / 3, viewport.height - (wide ? 120 : 280)))
+        let height = max(256, min(width * 4 / 3, viewport.height - (wide ? 120 : 330)))
         return layout {
             VStack(spacing: AppSpacing.s) {
                 ViewThatFits(in: .horizontal) {
@@ -168,10 +168,10 @@ struct PhotoSnakeView: View {
         VStack(spacing: AppSpacing.s) {
             if model.tooWarm { Text(key: "ana2_stage_cooling").font(AppTypography.footnote) }
             if game.status == .playing {
-                Text(key: model.running ? (model.stepMode ? "snake_step_hint" : "snake_controls_hint") : "snake_paused")
+                Text(key: model.running ? (model.stepMode ? "snake_step_hint" : "snake_controls_hint") : (model.started ? "snake_paused" : "snake_ready"))
                     .font(AppTypography.caption).foregroundStyle(AppColors.textSecondary).multilineTextAlignment(.center)
                 HStack {
-                    Button(L(model.running ? "snake_pause" : "snake_continue")) {
+                    Button(L(model.running ? "snake_pause" : (model.started ? "snake_resume" : "snake_start"))) {
                         if model.running { model.pause() } else { model.resume() }
                     }
                     .buttonStyle(.glassProminent).disabled(model.tooWarm)
@@ -184,7 +184,7 @@ struct PhotoSnakeView: View {
                 if model.newBest { Label(L("game_new_best"), systemImage: "trophy.fill").foregroundStyle(AppColors.accent) }
                 Button(L("memory_new")) { model.restart() }.buttonStyle(.glassProminent)
             }
-            Button(L("memory_change")) { model.pause(); setup = true }.buttonStyle(.glass).accessibilityIdentifier("snake.change")
+            Button(L("snake_configure")) { model.pause(); setup = true }.buttonStyle(.glass).accessibilityIdentifier("snake.change")
         }
     }
 

@@ -58,7 +58,7 @@ import XCTest
                 firstID = next; unseen.removeFirst(); plannedSecond = nil
             }
             let a = app.buttons[firstID]; a.tap()
-            let value = a.value as? String ?? ""
+            let value = (a.value as? String ?? "").split(whereSeparator: { !$0.isNumber }).last.map(String.init) ?? ""
             XCTAssertFalse(value.isEmpty)
             let secondID: String
             if let plannedSecond { secondID = plannedSecond }
@@ -69,8 +69,8 @@ import XCTest
             }
             if known[value]?.contains(firstID) != true { known[value, default: []].append(firstID) }
             let b = app.buttons[secondID]; b.tap()
-            let secondValue = b.value as? String ?? ""
-            if secondValue.contains(value) {
+            let secondValue = (b.value as? String ?? "").split(whereSeparator: { !$0.isNumber }).last.map(String.init) ?? ""
+            if secondValue == value {
                 solved.formUnion([firstID, secondID]); known.removeValue(forKey: value)
             } else {
                 if known[secondValue]?.contains(secondID) != true { known[secondValue, default: []].append(secondID) }

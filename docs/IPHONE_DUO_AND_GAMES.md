@@ -24,7 +24,7 @@ Stand: 16.10.2026. Referenz: Apples [Duo-Vorbereitung](https://developer.apple.c
 ## Prüfung und tatsächliche Grenzen
 
 - PASS: Core-Rekord-/Uhrtests (9); adaptive Rastertests (2), inklusive 280 Punkte Breite, 36 Karten und Bedienungshilfenschrift; bestehende 15 Spiellogiktests.
-- PASS: alle bestehenden Übersetzungen unverändert, 86 neue Kennungen jeweils in allen 16 Sprachen; Katalogprüfung erfolgreich.
+- PASS: alle bestehenden Übersetzungen unverändert, 90 neue Kennungen jeweils in allen 16 Sprachen; Katalogprüfung erfolgreich.
 - PASS: lokale Swift-Syntaxprüfung und Privacy-Manifest-Prüfung einschließlich 8 Python-Tests. Dies ersetzt keinen Apple-Compiler oder Store-Upload.
 - Native Build-, Integrations- und Screenshot-Ergebnisse werden nach den Actions-Läufen unten ergänzt.
 - BLOCKED – echte Duo-Simulatorabnahme: Der verfügbare `macos-26`-Runner bietet Xcode 26.6 (17F113), iOS-Runtimes 26.2/26.4/26.5 und keinen Duo-Gerätetyp. Beleg: [Umgebungsprüfung 38920972484](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38920972484). Für vollständige, randfüllende Duo-Unterstützung verlangt Apple einen Build mit dem iOS-27.1-SDK. Ein mit SDK 26 erzeugter Build ersetzt diese Voraussetzung nicht.

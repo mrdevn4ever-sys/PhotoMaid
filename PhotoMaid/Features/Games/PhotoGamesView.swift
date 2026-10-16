@@ -28,7 +28,7 @@ struct PhotoGamesView: View {
                         PhotoGameRecordSaveStatus()
                         Button { selected = .memory } label: {
                             PhotoGameTile(symbol: "rectangle.on.rectangle", title: L("memory_title"),
-                                          subtitle: L(app.memory.game == nil ? "games_memory_description" : "memory_resume"), snake: false)
+                                          subtitle: L(app.memory.game?.isFinished == false ? "memory_resume" : "games_memory_description"), snake: false)
                         }
                         .buttonStyle(.plain).accessibilityIdentifier("games.memory")
                         Button { selected = .snake } label: {

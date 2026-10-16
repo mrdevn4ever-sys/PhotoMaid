@@ -7021,6 +7021,24 @@
   "uk": "Наступна клітинка вільна",
   "zh-Hans": "下一格畅通"
  },
+ "snake_configure": {
+  "ar": "إعداد اللعبة",
+  "de": "Spiel einrichten",
+  "en": "Set up game",
+  "es": "Configurar juego",
+  "fr": "Configurer le jeu",
+  "it": "Configura partita",
+  "ja": "ゲーム設定",
+  "ko": "게임 설정",
+  "nl": "Spel instellen",
+  "pl": "Ustaw grę",
+  "pt-PT": "Configurar jogo",
+  "ro": "Configurează jocul",
+  "ru": "Настроить игру",
+  "tr": "Oyunu ayarla",
+  "uk": "Налаштувати гру",
+  "zh-Hans": "设置游戏"
+ },
  "snake_continue": {
   "ar": "بدء / متابعة",
   "de": "Starten / weiter",
@@ -7327,6 +7345,24 @@
   "uk": "Підготувати раунд із фото",
   "zh-Hans": "准备照片游戏"
  },
+ "snake_ready": {
+  "ar": "جاهز عندما تكون مستعدًا",
+  "de": "Bereit, wenn du es bist",
+  "en": "Ready when you are",
+  "es": "Todo listo para empezar",
+  "fr": "Prêt quand vous l’êtes",
+  "it": "Pronto quando vuoi",
+  "ja": "準備ができたら始めましょう",
+  "ko": "준비되면 시작하세요",
+  "nl": "Klaar wanneer jij dat bent",
+  "pl": "Gotowe, gdy będziesz gotowy",
+  "pt-PT": "Pronto quando quiseres",
+  "ro": "Gata când ești și tu",
+  "ru": "Всё готово к старту",
+  "tr": "Hazır olduğunda başla",
+  "uk": "Усе готово до старту",
+  "zh-Hans": "准备好就开始"
+ },
  "snake_relaxed": {
   "ar": "مريح — عبور الحواف",
   "de": "Entspannt – Randumlauf",
@@ -7344,6 +7380,24 @@
   "tr": "Rahat — kenarlardan geçiş",
   "uk": "Спокійний — крізь краї",
   "zh-Hans": "轻松模式：穿越边缘"
+ },
+ "snake_resume": {
+  "ar": "متابعة",
+  "de": "Fortsetzen",
+  "en": "Resume",
+  "es": "Continuar",
+  "fr": "Reprendre",
+  "it": "Riprendi",
+  "ja": "再開",
+  "ko": "계속",
+  "nl": "Hervatten",
+  "pl": "Wznów",
+  "pt-PT": "Retomar",
+  "ro": "Continuă",
+  "ru": "Продолжить",
+  "tr": "Devam et",
+  "uk": "Продовжити",
+  "zh-Hans": "继续"
  },
  "snake_right": {
   "ar": "يمين",
@@ -7398,6 +7452,24 @@
   "tr": "Hız",
   "uk": "Швидкість",
   "zh-Hans": "速度"
+ },
+ "snake_start": {
+  "ar": "ابدأ",
+  "de": "Starten",
+  "en": "Start",
+  "es": "Empezar",
+  "fr": "Démarrer",
+  "it": "Inizia",
+  "ja": "スタート",
+  "ko": "시작",
+  "nl": "Starten",
+  "pl": "Start",
+  "pt-PT": "Começar",
+  "ro": "Începe",
+  "ru": "Начать",
+  "tr": "Başlat",
+  "uk": "Почати",
+  "zh-Hans": "开始"
  },
  "snake_step_hint": {
   "ar": "اضغط اتجاهًا للتحرك خانة أو اضغط للأمام.",

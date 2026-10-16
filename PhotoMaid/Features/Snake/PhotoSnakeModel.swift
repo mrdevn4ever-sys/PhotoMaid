@@ -10,6 +10,7 @@ final class PhotoSnakeModel {
     private(set) var game: PhotoSnakeGame?
     private(set) var roundID = UUID()
     private(set) var running = false
+    private(set) var started = false
     private(set) var speed = Speed.normal
     private(set) var stepMode = false
     private(set) var tooWarm = false
@@ -53,7 +54,7 @@ final class PhotoSnakeModel {
 
     private func makeRound(mode: PhotoSnakeGame.Mode, speed: Speed, stepMode: Bool) {
         game = PhotoSnakeGame(mode: mode); self.speed = speed; self.stepMode = stepMode
-        roundID = UUID(); running = false; newBest = false; nextPhoto = 2 % pictureIDs.count
+        roundID = UUID(); running = false; started = false; newBest = false; nextPhoto = 2 % pictureIDs.count
         strip = [pictureIDs[0], pictureIDs[1 % pictureIDs.count]]
     }
 
@@ -66,7 +67,7 @@ final class PhotoSnakeModel {
     func resume() {
         validatePhotos(); updateTemperature()
         guard game?.status == .playing, !photos.isLoading, !tooWarm else { return }
-        running = true
+        started = true; running = true
     }
 
     func pause() { running = false }
