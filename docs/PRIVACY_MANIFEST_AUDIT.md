@@ -38,7 +38,8 @@ Das vorhandene Artefakt `testflight-report` enthält nur `gym.log`, `unit-tests.
 und `fastlane/report.xml`, **keine IPA und kein xcarchive**. Deshalb wurde die damals hochgeladene
 IPA nicht direkt untersucht. Ein zusätzlicher Fehler im fertigen Bundle ist damit nicht ausgeschlossen;
 auch die Quelldateien von Build 8 und 9 sind hier nicht unabhängig rekonstruiert worden.
-Der aktuelle Apple-Verarbeitungsstatus wurde nicht über App Store Connect abgefragt.
+Der Apple-Verarbeitungsstatus der alten Builds wurde nicht separat abgefragt. Der neue Build 11
+wurde nach der Korrektur bis zum erfolgreichen Abschluss der Apple-Verarbeitung verfolgt (unten).
 
 ## Lokale Korrektur und Schutz vor erneutem Upload desselben Fehlers
 
@@ -59,6 +60,19 @@ Der aktuelle Apple-Verarbeitungsstatus wurde nicht über App Store Connect abgef
   Anzeigenladen mit erlaubter und verweigerter ATT sowie zusätzliche tatsächlich kontaktierte Hosts
   müssen vor einer Geräteabnahme geprüft werden. Es wurden hier keine Anzeigenanfragen erzeugt.
 
+## Neuer TestFlight-Build 11
+
+Auf ausdrücklichen Auftrag wurde Version 1.0, Build 11 aus Commit
+`3e91e3a0dd22b4944edf94bca3055285241af8cf` erstellt. Der [Lauf 38952167636](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38952167636)
+bestand am 16.10.2026 vollständig: 42 native Tests, Release-Archiv, Signierung und Prüfung der drei
+Manifeste der tatsächlich exportierten IPA. Der [unveränderte Bericht](privacy-manifests-build11.json)
+enthält Pfade, SHA-256-Werte und Tracking-Deklarationen; keine Fehler oder Hinweise.
+
+Upload um 19:20:43 UTC, erfolgreiche Apple-Verarbeitung um 19:23:17 UTC und anschließende
+Verteilung an interne Tester sind im Fastlane-Protokoll bestätigt. Die Lane wartet jetzt ausdrücklich
+auf die Verarbeitung statt nur auf den Transfer. Dies ersetzt keine ATT-/Werbeabnahme auf dem Gerät
+und keine App-Review-Freigabe. Die alten IPAs bleiben mangels Archiv ununtersucht.
+
 ## Prüfstatus
 
 | Prüfung | Status | Ergebnis |
@@ -66,10 +80,11 @@ Der aktuelle Apple-Verarbeitungsstatus wurde nicht über App Store Connect abgef
 | Ursprüngliches Build-10-App-Manifest | FAIL, reproduziert | Prüfer erkennt `true` plus leere Liste |
 | Korrigierte App, beide offiziellen SDK-ZIPs, Swift-Checkouts | PASS mit sieben Hinweisen | zwölf Dateien, kein Tracking-Konsistenzfehler nach Korrektur |
 | Acht Prüfer-Regressionen | PASS | unter anderem eingebettetes fehlerhaftes Framework trotz korrektem App-Manifest, XML/Binär-Plist, fehlendes App-Manifest |
-| Ruby-Syntax des Fastfile | PASS | lokal mit Ruby 3.4; keine Fastlane-Ausführung |
-| Originale oder neu erzeugte IPA / xcarchive | NOT RUN | Original nicht archiviert; die nachfolgende Simulatorprüfung erzeugt keine App-Store-IPA |
-| iOS-/ATT-/Werbeverhalten auf Simulator/Gerät | NOT RUN | keine Laufzeitabnahme |
-| Neuer TestFlight-Upload und Apple-Validierung | NOT RUN | Korrektur im Arbeitsbranch; anschließend freigegebene Actions prüfen die App auf Simulatoren, ohne Upload |
+| Ruby/Fastlane-Ausführung | PASS | lokale Syntaxprüfung und vollständige Beta-Lane auf macOS einschließlich Apple-Verarbeitung |
+| Ursprüngliche Build-8–10-IPAs / xcarchives | NOT RUN | Originale nicht archiviert |
+| Neue exportierte Build-11-IPA | PASS | drei Manifeste geprüft, keine Fehler oder Hinweise; Manifest-Hashes im Bericht |
+| ATT-/Werbeverhalten auf echtem Gerät | NOT RUN | keine Geräteabnahme |
+| Neuer TestFlight-Upload und Apple-Verarbeitung | PASS | Version 1.0, Build 11 erfolgreich verarbeitet und an interne Tester verteilt |
 
 Lokale Wiederholung:
 

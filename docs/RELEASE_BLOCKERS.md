@@ -1,6 +1,9 @@
 # Release-Blocker
 
-Kein Release, kein TestFlight-Upload und keine Fertigmeldung, solange ein Punkt offen ist.
+Historische Ausgangsliste mit verbleibenden Geräte- und Store-Abnahmen. Einige ursprüngliche Punkte
+sind inzwischen umgesetzt; maßgeblich ist der [aktuelle Implementierungsstatus](IMPLEMENTATION_STATUS.md).
+Interne TestFlight-Builds werden auf ausdrücklichen Auftrag erstellt und ersetzen keine offenen
+Geräte- oder App-Store-Abnahmen.
 
 | # | Blocker | Art | Wer |
 |---|---|---|---|
@@ -21,4 +24,4 @@ Kein Release, kein TestFlight-Upload und keine Fertigmeldung, solange ein Punkt 
 | 14 | String Catalog: Format-Spezifizierer interpolierter Texte von Xcode-Extraktion bestätigen lassen | Verifikation | Build auf macOS |
 | 15 | Menschliche Code-Review (PR erst auf ausdrückliche Anweisung) | Abnahme | Inhaber |
 | 16 | Video-Export auf echten Medien (HDR, Zeitlupe, 4K/60) und Hintergrund-Export (`BGContinuedProcessingTask`) | Abnahme | QA auf Gerät |
-| 17 | ITMS-91064 für Builds 8–10 gemeldet: App-Manifest lokal korrigiert, aber neue exportierte IPA, Apple-Validierung und ATT-/Werbeverhalten noch ungeprüft; [Befund](PRIVACY_MANIFEST_AUDIT.md) | Verifikation | Nächster ausdrücklich beauftragter iOS-/TestFlight-Lauf und Geräteabnahme |
+| 17 | ITMS-91064 für Builds 8–10 gemeldet: alle drei Manifeste der neuen Build-11-IPA bestanden; Apple-Verarbeitung und interne Verteilung bestätigt. ATT-/Werbeverhalten auf echtem Gerät bleibt offen; [Befund](PRIVACY_MANIFEST_AUDIT.md) | Geräteverifikation | Geräteabnahme |

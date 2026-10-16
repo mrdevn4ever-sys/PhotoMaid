@@ -1,7 +1,8 @@
 # Implementierungsstatus
 
-Stand: 16.10.2026 · Arbeitsbranch `feat/iphone-duo-games` · zuletzt hochgeladen: Version 1.0, Build 10.
-Apple hat laut Nutzer ITMS-91064 für Builds 8–10 gemeldet; ein grüner Upload bestätigt keine fehlerfreie Apple-Validierung.
+Stand: 16.10.2026 · Arbeitsbranch `feat/iphone-duo-games` · zuletzt hochgeladen und von Apple verarbeitet: Version 1.0, Build 11.
+Apple hat laut Nutzer ITMS-91064 für Builds 8–10 gemeldet. Build 11 wurde am 16.10.2026 um 19:23 UTC
+erfolgreich verarbeitet und an interne Tester verteilt. [TestFlight-Lauf](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38952167636).
 
 ## Spiele, Bestwerte und adaptive Arbeitsflächen (16.10.2026)
 
@@ -18,17 +19,18 @@ Fensterprüfung ersetzt keine Faltabnahme. Apple verlangt SDK 27.1 für vollstä
 Duo-Unterstützung. [Umsetzung, Belege und genaue Prüfgrenzen](IPHONE_DUO_AND_GAMES.md).
 [Historischer Audit-Snapshot](GAMES_FUNCTION_UI_AUDIT.md).
 
-## Privacy-Manifest / ITMS-91064 (16.10.2026, lokal korrigiert)
+## Privacy-Manifest / ITMS-91064 (16.10.2026, Build 11 verarbeitet)
 
 Zwölf Manifeste aus Projekt und Abhängigkeiten geprüft, einschließlich der offiziellen, per SHA-256
 verifizierten GoogleMobileAds-13.9.0- und UserMessagingPlatform-3.1.0-ZIPs. Keine der SDK-Dateien enthält
 Tracking-Domains bei `false`. Der eigene App-Eintrag `true` plus leere Domainliste ist jedoch laut Apple
 TN3181 ebenfalls ungültig. Lokal durch den bekannten AdMob-Host ergänzt; Tracking bleibt deklariert.
-Neue Prüfung aller Manifeste der exportierten IPA vor dem künftigen Fastlane-Upload.
+Alle drei Manifeste der exportierten Build-11-IPA wurden vor dem Upload erfolgreich geprüft;
+[unveränderter Bericht mit Manifest-Hashes](privacy-manifests-build11.json).
 
-**PASS:** korrigierte Tracking-Deklaration, zwölf Datei-Prüfungen (sieben Hinweise für nur unter Linux
-gelinktes swift-crypto), acht Regressionstests, Ruby-Syntax. **NOT RUN:** Original-/neue IPA,
-Apple-Validierung und iOS-/ATT-/Werbeabnahme. Die Korrektur ist im Arbeitsbranch enthalten; kein neuer Upload.
+**PASS:** korrigierte Tracking-Deklaration, ursprüngliche zwölf Datei-Prüfungen, acht Regressionstests,
+42 native Modelltests, alle drei Manifeste der neuen IPA, Upload und Apple-Verarbeitung von Build 11.
+**NOT RUN:** ursprüngliche Build-8–10-IPAs und ATT-/Werbeabnahme auf einem echten Gerät.
 [Vollständiger Befund mit Grenzen und Quellen](PRIVACY_MANIFEST_AUDIT.md).
 
 ## Foto-Snake und gemeinsame Spielauswahl (16.10.2026)
@@ -45,8 +47,8 @@ Memory und Snake nutzen dieselbe Ladeimplementierung mit getrennten Bildspeicher
 Es gibt keine Fotoänderungen, Spiel-Uploads oder neuen Analyseaufträge.
 
 **PASS:** zehn Snake-Regel-/Rastertests und sieben native Snake-/Fotolader-Tests; Bestandteil der oben
-genannten Gesamtprüfung. Die Änderungen liegen im Arbeitsbranch und sind noch in keinem
-ausgelieferten Build. [Bedienung, Grenzen und aktueller Prüfstatus](PHOTO_SNAKE.md).
+genannten Gesamtprüfung. Die Änderungen liegen im Arbeitsbranch und sind seit Version 1.0, Build 11
+in TestFlight enthalten. [Bedienung, Grenzen und aktueller Prüfstatus](PHOTO_SNAKE.md).
 
 ## Foto-Memory mit eigenen Bildern (16.10.2026)
 

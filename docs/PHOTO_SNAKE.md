@@ -1,7 +1,8 @@
 # Foto-Snake (16.10.2026)
 
 Die freiwillige Pause im Feed und bei Analysen bietet [Memory](PHOTO_MEMORY.md) und Foto-Snake.
-Die Umsetzung liegt auf `feat/iphone-duo-games`.
+Die Umsetzung liegt auf `feat/iphone-duo-games` und ist in TestFlight Version 1.0, Build 11 enthalten.
+Apple-Verarbeitung und interne Verteilung sind [bestätigt](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38952167636).
 
 ## Spielfläche und Bedienung
 

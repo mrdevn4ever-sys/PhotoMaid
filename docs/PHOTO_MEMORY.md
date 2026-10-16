@@ -56,4 +56,5 @@ Rekord-/Einbindungstests decken aktive Spielzeit, Core-Data-Neuladen, Speicherfe
 nachträglich ausgeblendete Fotos und den gemeinsamen Analysekontext ab.
 Aktuelle Gesamtergebnisse, Screenshot-Belege und verbleibende Geräteprüfungen stehen zentral in
 [IPHONE_DUO_AND_GAMES.md](IPHONE_DUO_AND_GAMES.md). GitHub Actions sind seit der ausdrücklichen
-Freigabe am 16.10.2026 im Einsatz; ein neuer TestFlight-Upload wurde nicht durchgeführt.
+Freigabe am 16.10.2026 im Einsatz. Version 1.0, Build 11 wurde am selben Tag von Apple verarbeitet
+und an interne TestFlight-Tester verteilt: [Upload-Lauf](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38952167636).
