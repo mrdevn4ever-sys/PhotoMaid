@@ -44,6 +44,7 @@ struct FeedBasketPanel: View {
                                     .font(AppTypography.caption).frame(minHeight: AppSpacing.minTouch)
                             }
                             .buttonStyle(.plain).tint(AppColors.accent)
+                            .accessibilityIdentifier("feed.basket.restore")
                         }
                     }
                 }

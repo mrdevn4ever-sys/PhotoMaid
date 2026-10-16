@@ -2,10 +2,10 @@
 
 Die freiwillige „Kurze Pause“ im Feed und bei laufender Bildanalyse öffnet eine Spielauswahl mit
 [Foto-Memory](PHOTO_MEMORY.md) und Foto-Snake. Kein zusätzlicher Tab und kein automatischer Spielstart.
-Diese Umsetzung ist lokal und noch nicht in TestFlight.
+Die Umsetzung liegt auf `feat/iphone-duo-games` und ist noch nicht in TestFlight.
 
-Offene Befunde zur Sichtbarkeit, zum Querformat und zum Analyse-Lebenszyklus stehen im
-[Funktions- und UI-Audit vom 16.10.2026](GAMES_FUNCTION_UI_AUDIT.md). Eine native UI-Abnahme steht aus.
+Die Befunde aus dem [ursprünglichen Audit](GAMES_FUNCTION_UI_AUDIT.md) sind im Code korrigiert.
+Aktuell: [breite Spielfläche, dauerhafte Rekorde und nativer Prüfstatus](IPHONE_DUO_AND_GAMES.md).
 
 ## Spielen
 

@@ -22,6 +22,7 @@ struct PhotoSnakeView: View {
     @State private var stepMode = false
     @State private var allowNetwork = false
     @State private var restored = false
+    @State private var analysisHeight: CGFloat = 0
 
     private var model: PhotoSnakeModel { app.snake }
 
@@ -31,6 +32,7 @@ struct PhotoSnakeView: View {
                 ScrollView {
                     VStack(spacing: AppSpacing.s) {
                         PhotoGameAnalysisStatus(onResults: onResults)
+                            .onGeometryChange(for: CGFloat.self) { $0.size.height } action: { analysisHeight = $0 }
                         PhotoGameRecordSaveStatus()
                         if let error = model.photos.error {
                             InfoBanner(symbol: "exclamationmark.triangle", tint: AppColors.warning, text: error)
@@ -141,7 +143,7 @@ struct PhotoSnakeView: View {
         let layout = wide ? AnyLayout(HStackLayout(alignment: .center, spacing: AppSpacing.l))
                           : AnyLayout(VStackLayout(spacing: AppSpacing.s))
         let width = min(1100, viewport.width) - AppSpacing.pageMargin * 2 - (wide ? 240 : 0)
-        let height = max(256, min(width * 4 / 3, viewport.height - (wide ? 120 : 330)))
+        let height = max(256, min(width * 4 / 3, viewport.height - (wide ? 120 : 330) - analysisHeight))
         return layout {
             VStack(spacing: AppSpacing.s) {
                 ViewThatFits(in: .horizontal) {

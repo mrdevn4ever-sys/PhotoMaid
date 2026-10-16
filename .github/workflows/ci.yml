@@ -1,6 +1,6 @@
 name: CI
 
-# Nur manuell starten (Nutzervorgabe 2026-10-09: GitHub-Actions-Minuten NUR auf ausdrückliche Anweisung).
+# Manuelle Auslöser beibehalten; Nutzer hat Actions-Minuten am 16.10.2026 ausdrücklich jederzeit freigegeben.
 # Kein push-/pull_request-/schedule-Auslöser – ein Push oder PR verbraucht keine Minuten.
 on:
   workflow_dispatch:
@@ -22,7 +22,7 @@ on:
         type: boolean
         default: false
       qa_case:
-        description: "QA-Oberflächen: alle, Tresor, nur Medienlöschung oder Fotoeditor bei Zoom"
+        description: "QA-Oberflächen: alle, Tresor, Medienlöschung, Fotoeditor oder Spiele und breite Fenster"
         type: choice
         options: [all, vault, vault-media, editor, games]
         default: all

@@ -144,7 +144,14 @@ import XCTest
         if wide {
             let stage = app.descendants(matching: .any)["feed.stage"].firstMatch
             XCTAssertLessThan(panel.frame.maxX, stage.frame.minX)
-            stage.swipeLeft()
+            for _ in 0..<8 {
+                stage.swipeLeft()
+                if app.alerts.firstMatch.waitForExistence(timeout: 1) {
+                    app.alerts.buttons["Cancel"].tap()
+                    stage.swipeUp()
+                } else { break }
+            }
+            XCTAssertTrue(app.buttons["feed.basket.restore"].firstMatch.waitForExistence(timeout: 10))
             checkpoint("workspace_02_live_basket", app: app)
         } else {
             XCUIDevice.shared.orientation = .landscapeLeft
@@ -201,7 +208,7 @@ import XCTest
         app.buttons["memory.source"].tap()
         app.buttons["Album or photo folder"].firstMatch.tap()
         app.buttons["memory.chooseCollection"].tap()
-        let folder = app.buttons.containing(NSPredicate(format: "label == 'QA Game Folder'")).firstMatch
+        let folder = app.buttons.matching(NSPredicate(format: "label CONTAINS 'QA Game Folder'")).firstMatch
         XCTAssertTrue(folder.waitForExistence(timeout: 15)); folder.tap()
         app.buttons["memory.startPhotos"].tap()
         XCTAssertTrue(app.buttons["memory.card.0"].waitForExistence(timeout: 30))

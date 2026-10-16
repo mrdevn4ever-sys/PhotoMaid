@@ -147,13 +147,14 @@ final class PreviewPipeline {
 
     /// Lädt eine Vorschau in einem Schritt (volle Qualität, bei Bedarf aus iCloud). Abbruch des Tasks bricht den
     /// PhotoKit-Request ab.
-    func image(for assetID: String, targetSize: CGSize, allowNetwork: Bool = true) async -> PreviewResult {
+    func image(for assetID: String, targetSize: CGSize, allowNetwork: Bool = true,
+               contentMode: PHImageContentMode = .aspectFit) async -> PreviewResult {
         guard let asset = PhotoLibraryService.phAsset(assetID) else { return .failed }
         let box = RequestBox()
         let managerBox = UncheckedBox(manager)
         return await withTaskCancellationHandler {
             await withCheckedContinuation { (cont: CheckedContinuation<PreviewResult, Never>) in
-                let id = manager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit,
+                let id = manager.requestImage(for: asset, targetSize: targetSize, contentMode: contentMode,
                                               options: options(allowNetwork: allowNetwork)) { @Sendable image, info in
                     if let image { cont.resume(returning: .image(image)); return }
                     let inCloud = (info?[PHImageResultIsInCloudKey] as? Bool) ?? false

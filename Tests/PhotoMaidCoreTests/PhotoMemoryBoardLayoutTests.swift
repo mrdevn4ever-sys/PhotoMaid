@@ -16,4 +16,10 @@ struct PhotoMemoryBoardLayoutTests {
         let layout = PhotoMemoryBoardLayout(cards: 36, width: 280, availableHeight: 160, accessibility: true)
         #expect(layout.columns == 2 && layout.cardHeight >= 44 && layout.requiresScrolling)
     }
+    @Test func smallDecksPreferCompactCardsInsteadOfFullWidthStrips() {
+        let phone = PhotoMemoryBoardLayout(cards: 4, width: 343, availableHeight: 700)
+        let expanded = PhotoMemoryBoardLayout(cards: 12, width: 712, availableHeight: 800)
+        #expect(phone.columns == 2)
+        #expect(expanded.columns == 6)
+    }
 }

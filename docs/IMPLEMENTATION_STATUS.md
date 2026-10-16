@@ -1,16 +1,20 @@
 # Implementierungsstatus
 
-Stand: 16.10.2026 · Arbeitsbranch `feat/photo-memory-break` · zuletzt hochgeladen: Version 1.0, Build 10.
+Stand: 16.10.2026 · Arbeitsbranch `feat/iphone-duo-games` · zuletzt hochgeladen: Version 1.0, Build 10.
 Apple hat laut Nutzer ITMS-91064 für Builds 8–10 gemeldet; ein grüner Upload bestätigt keine fehlerfreie Apple-Validierung.
 
-## Memory-/Snake-Audit (16.10.2026)
+## Spiele, Bestwerte und adaptive Arbeitsflächen (16.10.2026)
 
-Funktions- und UI-Code geprüft. Fünf offene Befunde: bereits geladene, später ausgeblendete Bilder;
-zu kleines Snake im Querformat; scrollendes Memory mit festem Fehlpaar-Timer; verlorener
-Analysekontext beim Spielwechsel; uneinheitliche Wachhaltung während der Analyse.
-Die Spielregeln bestehen 15 erneut ausgeführte Tests und einen zusätzlichen Invariantenlauf.
-Keine native UI-Abnahme, keine Spielkorrekturen in diesem Audit, keine Actions und kein Upload.
-[Befunde, Prioritäten, Layoutmaße und Prüfgrenzen](GAMES_FUNCTION_UI_AUDIT.md).
+Memory-Bestzeiten und Snake-Rekorde bleiben lokal über App-Neustarts erhalten. Hochformat ist
+für das normale iPhone deklariert. Breite Fenster erhalten einen Live-Papierkorb links neben dem
+Feed, adaptive Dashboards und Raster sowie seitliche Editor-/Collage-/Snake-Werkzeuge.
+F1–F5 des ursprünglichen Spieleaudits sind im Code korrigiert. Core-, Übersetzungs- und lokale
+Privacy-Prüfungen bestehen; native Integrations- und visuelle Tests laufen in Actions.
+
+**Duo-Grenze:** Der verfügbare Runner hat Xcode 26.6 und keinen Duo-Simulator. Die breite native
+Fensterprüfung ersetzt keine Faltabnahme. Apple verlangt SDK 27.1 für vollständige randfüllende
+Duo-Unterstützung. [Umsetzung, Belege und genaue Prüfgrenzen](IPHONE_DUO_AND_GAMES.md).
+[Historischer Audit-Snapshot](GAMES_FUNCTION_UI_AUDIT.md).
 
 ## Privacy-Manifest / ITMS-91064 (16.10.2026, lokal korrigiert)
 

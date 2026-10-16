@@ -4,8 +4,8 @@ Freiwillige kurze Wischpause: Im Feed öffnet das Tassen-Symbol die Auswahl zwis
 [Foto-Snake](PHOTO_SNAKE.md). Bei laufender
 Bildanalyse steht „Kurze Pause“ in der Statuskarte. Kein zusätzlicher Tab und kein automatischer Start.
 
-Offene Befunde zur Sichtbarkeit, zum Raster und zum Analyse-Lebenszyklus stehen im
-[Funktions- und UI-Audit vom 16.10.2026](GAMES_FUNCTION_UI_AUDIT.md). Eine native UI-Abnahme steht aus.
+Die Befunde aus dem [ursprünglichen Audit](GAMES_FUNCTION_UI_AUDIT.md) sind im Code korrigiert.
+Aktuell: [adaptive Raster, dauerhafte Bestzeiten und nativer Prüfstatus](IPHONE_DUO_AND_GAMES.md).
 
 ## Spielen
 

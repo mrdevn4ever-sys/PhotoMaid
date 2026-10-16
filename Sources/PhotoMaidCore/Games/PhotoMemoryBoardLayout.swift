@@ -10,7 +10,7 @@ public struct PhotoMemoryBoardLayout: Equatable, Sendable {
     public init(cards: Int, width: Double, availableHeight: Double, accessibility: Bool = false) {
         let count = max(1, cards), gap = 8.0
         let width = max(44, width), available = max(44, availableHeight)
-        let maximum = accessibility ? 2 : min(6, max(1, Int((width + gap) / (44 + gap))))
+        let maximum = min(count, accessibility ? 2 : min(6, max(1, Int((width + gap) / (44 + gap)))))
         var chosen = 1, chosenHeight = 44.0, chosenScore = -Double.infinity
         for cols in 1...maximum {
             let rows = (count + cols - 1) / cols
@@ -19,7 +19,9 @@ public struct PhotoMemoryBoardLayout: Equatable, Sendable {
             let cellHeight = max(44, min(preferred, (available - Double(rows - 1) * gap) / Double(rows)))
             let total = Double(rows) * cellHeight + Double(rows - 1) * gap
             let fits = total <= available + 0.5
-            let score = min(cellWidth, cellHeight) + (fits ? 10_000 : -total)
+            let shape = min(cellWidth, cellHeight) - abs(cellWidth - cellHeight) * 0.1
+            let completeRows = count.isMultiple(of: cols) ? 8.0 : 0
+            let score = shape + completeRows + (fits ? 10_000 : -total)
             if score > chosenScore { chosen = cols; chosenHeight = cellHeight; chosenScore = score }
         }
         columns = chosen; cardHeight = chosenHeight

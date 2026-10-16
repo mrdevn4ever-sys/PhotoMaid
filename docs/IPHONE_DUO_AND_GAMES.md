@@ -23,7 +23,7 @@ Stand: 16.10.2026. Referenz: Apples [Duo-Vorbereitung](https://developer.apple.c
 
 ## Prüfung und tatsächliche Grenzen
 
-- PASS: Core-Rekord-/Uhrtests (9); adaptive Rastertests (2), inklusive 280 Punkte Breite, 36 Karten und Bedienungshilfenschrift; bestehende 15 Spiellogiktests.
+- PASS: Core-Rekord-/Uhrtests (9); adaptive Rastertests (3), inklusive 280 Punkte Breite, 36 Karten und Bedienungshilfenschrift; bestehende 15 Spiellogiktests.
 - PASS: alle bestehenden Übersetzungen unverändert, 90 neue Kennungen jeweils in allen 16 Sprachen; Katalogprüfung erfolgreich.
 - PASS: lokale Swift-Syntaxprüfung und Privacy-Manifest-Prüfung einschließlich 8 Python-Tests. Dies ersetzt keinen Apple-Compiler oder Store-Upload.
 - Native Build-, Integrations- und Screenshot-Ergebnisse werden nach den Actions-Läufen unten ergänzt.

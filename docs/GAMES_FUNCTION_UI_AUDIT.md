@@ -1,6 +1,11 @@
 # Funktions- und UI-Audit: Memory und Snake
 
-16.10.2026 · lokaler Arbeitsstand auf `feat/photo-memory-break`.
+16.10.2026 · historischer Audit-Snapshot auf `feat/photo-memory-break`.
+
+**Nachtrag:** F1–F5 wurden anschließend im Code korrigiert. Aktuelle Umsetzung, Bestwerte,
+adaptive Arbeitsflächen sowie native Testbelege und Duo-SDK-Grenzen:
+[IPHONE_DUO_AND_GAMES.md](IPHONE_DUO_AND_GAMES.md). Die folgenden Befunde und NOT-RUN-Angaben
+beschreiben den Stand vor diesen Korrekturen.
 
 **Ergebnis: Die Spielregeln bestehen die lokalen Prüfungen, die Einbindung und das Layout haben
 fünf konkrete Befunde. Zwei davon sollten vor einer Auslieferung zuerst behoben werden.**

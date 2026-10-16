@@ -42,7 +42,8 @@ Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E19) – ni
 - Nie verzerren: einpassen oder beschneiden; Größe nur proportional; nie hochskalieren.
 - Originale nie ohne ausdrückliche Wahl ändern. Vorauswahl immer „Als Kopie speichern“.
 - Keine Zertifikate, Schlüssel, API-Keys im Repo. Kein automatischer Push/Merge/TestFlight/Release.
-- **GitHub Actions nur auf ausdrückliche Anweisung des Nutzers** (alle Workflows `workflow_dispatch`).
+- **GitHub Actions sind ausdrücklich freigegeben** (Nutzer, 16.10.2026: „Minutes kannst du jederzeit brauchen“).
+  Workflows bleiben `workflow_dispatch`; kein automatischer Merge oder Release.
 
 ## Geschäftsregeln (aus dem Android-Quellcode)
 

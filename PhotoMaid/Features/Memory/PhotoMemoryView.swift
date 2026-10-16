@@ -96,6 +96,9 @@ struct PhotoMemoryView: View {
                 model.setTimingActive(shouldTime)
             }
             .onChange(of: shouldTime) { _, active in model.setTimingActive(active) }
+            .onChange(of: model.roundID) { _, _ in
+                if voiceOver || boardNeedsScrolling { model.noteManualMismatch() }
+            }
             .onChange(of: voiceOver) { _, enabled in if enabled { model.noteManualMismatch() } }
             .onDisappear {
                 model.setTimingActive(false)
@@ -193,6 +196,7 @@ struct PhotoMemoryView: View {
                     cardButton(card, game: game).frame(height: layout.cardHeight)
                 }
             }
+            .frame(maxWidth: CGFloat(layout.columns) * (dynamicType.isAccessibilitySize ? 180 : 112) + CGFloat(layout.columns - 1) * AppSpacing.xs)
             Button(L("memory_flip")) { model.concealMismatch() }.buttonStyle(.glass)
                 .accessibilityIdentifier("memory.flip")
                 .disabled(!game.hasMismatch).opacity(game.hasMismatch ? 1 : 0)
