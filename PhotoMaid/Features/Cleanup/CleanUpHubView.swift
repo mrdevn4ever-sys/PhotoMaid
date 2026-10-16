@@ -43,6 +43,7 @@ struct CleanUpHubView: View {
 
     @ViewBuilder
     private var mediaArea: some View {
+        let skippedCount = app.skippedPreviewItems.count
         VStack(alignment: .leading, spacing: AppSpacing.s) {
             SectionHeader(title: L("hub_media_header"))
             RowGroup {
@@ -53,6 +54,16 @@ struct CleanUpHubView: View {
                 media(.screenshots, "camera.viewfinder", "cat_screenshots", AppColors.later)
                 SwiftUI.Divider().padding(.leading, 52)
                 link(.months, "calendar", AppColors.amber, L("months_title"), L("hub_months_sub"))
+                if skippedCount > 0 {
+                    SwiftUI.Divider().padding(.leading, 52)
+                    Button { app.retrySkippedPreviews() } label: {
+                        NavRow(symbol: "arrow.clockwise", tint: AppColors.accent, title: L("feed_retry_skipped"),
+                               subtitle: L("feed_skipped_hint"), value: CountText.number(skippedCount))
+                    }
+                    .buttonStyle(.plain)
+                    .disabled(!canRead)
+                    .accessibilityIdentifier("hub.retrySkipped")
+                }
             }
         }
     }

@@ -63,6 +63,21 @@ import XCTest
         XCTAssertEqual(app.buttons["feed.dock"].label, trash)
         XCTAssertFalse(failed.exists)
         checkpoint("feed_after_two_unavailable_videos", app: app)
+        // Real process restart, Core Data and the same original identifiers: no test-store reset.
+        app.terminate()
+        launch("feed-failures", language: "de")
+        waitForPosition("1 von 1")
+        XCTAssertFalse(failed.exists)
+        XCTAssertEqual(app.buttons["feed.dock"].label, trash)
+        checkpoint("feed_skips_survive_relaunch", app: app)
+        app.buttons["feed.close"].tap()
+        let retry = app.buttons["hub.retrySkipped"]
+        XCTAssertTrue(retry.waitForExistence(timeout: 8))
+        checkpoint("feed_skipped_retry_in_cleanup", app: app)
+        retry.tap()
+        waitForPosition("1 von 2")
+        XCTAssertTrue(failed.waitForExistence(timeout: 15))
+        checkpoint("feed_explicit_retry_skipped_videos", app: app)
     }
 
     func test80VideoPlaysWithoutPoster() {

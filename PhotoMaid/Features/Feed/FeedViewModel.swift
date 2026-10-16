@@ -148,7 +148,7 @@ final class FeedViewModel {
         let missing = candidates.map(\.localIdentifier).filter { assets[$0] == nil }
         for a in app.library.assets(ids: missing) { assets[a.id] = a }
         // Nicht (mehr) zugängliche Medien nicht anzeigen und nicht entscheiden.
-        let present = candidates.filter { assets[$0.localIdentifier] != nil }
+        let present = candidates.filter { assets[$0.localIdentifier] != nil && !app.skippedPreviews.contains($0) }
         if canReorder && order == .largest {
             sizes = await app.sizer.cachedSizes(present.compactMap { assets[$0.localIdentifier] })
         }
@@ -582,6 +582,8 @@ final class FeedViewModel {
     /// Nicht darstellbare Medien überspringen – ausdrücklich OHNE Entscheidung.
     func skipWithoutDecision(_ item: ItemReference) {
         guard !isCommitting, customLater == nil, protectedFavorite == nil,
+              session.current == item, session.pending == nil,
+              app.rememberSkippedPreview(item),
               session.advanceWithoutDecision(from: item) else { return }
         machine.cancel()
         machine.finishCommit()

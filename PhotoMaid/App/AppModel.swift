@@ -71,6 +71,7 @@ final class AppModel {
     private(set) var cleanupMedia: [MediaAsset] = []
     /// Noch zu prüfen – dieselbe Regel wie der Feed (`ReviewQueues.normalQueue`). Einzige Quelle für „Heute“.
     private(set) var pending: [ItemReference] = []
+    private(set) var skippedPreviews: Set<ItemReference> = []
     private(set) var now = Date()
     private(set) var isLoadingLibrary = false
     /// Erhöht sich, wenn sich der Bestand der Medien ändert (neu/entfernt/ausgeblendet/ausgenommen) – nicht bei bloßen
@@ -137,6 +138,7 @@ final class AppModel {
         quickAccess = QuickAccess.sanitize(kv?.get(StoreKeys.quickAccess) ?? QuickAccess.defaults)
         rewards = kv?.get(StoreKeys.rewards) ?? RewardLedger()
         customCollections = kv?.get(StoreKeys.collections) ?? []
+        skippedPreviews = kv?.get(StoreKeys.skippedPreviews) ?? []
         // Größen in SQLite (einzelne Einträge statt eines großen JSON-Blocks); der alte Block wird einmal übernommen.
         let sizeIndex = SizeIndexDatabase.shared()
         let legacySizes = kv?.get(StoreKeys.sizeCache) ?? [:]
@@ -308,7 +310,7 @@ final class AppModel {
 
     private func rebuildPending() {
         guard readReady else { pending = []; return }
-        pending = ReviewQueues.normalQueue(candidates: cleanupMedia.map(\.reference), records: read.records,
+        pending = ReviewQueues.normalQueue(candidates: cleanupMedia.map(\.reference).filter { !skippedPreviews.contains($0) }, records: read.records,
                                            session: ReviewSessionID(), today: today)
     }
 
@@ -433,7 +435,7 @@ final class AppModel {
         // Rebuilding the full review queue for a large library is O(n). Perform
         // it alongside the ledger projection off the main actor rather than
         // blocking SwiftUI while the swipe-out animation is running.
-        let candidates = cleanupMedia.map(\.reference)
+        let candidates = cleanupMedia.map(\.reference).filter { !skippedPreviews.contains($0) }
         let queueRevision = queueInputsRevision
         let hiddenFiles = files.concealedReferences
         let derived = await Task.detached(priority: .userInitiated) { () -> (LedgerReadModel, [ItemReference]) in
@@ -799,6 +801,43 @@ final class AppModel {
     func popToRoot(_ tab: AppTab) { paths[tab] = [] }
 
     // MARK: Feed
+
+    /// Preserve library order and current visibility rules; never resolve hidden IDs directly from PhotoKit.
+    var skippedPreviewItems: [ItemReference] {
+        guard !skippedPreviews.isEmpty else { return [] }
+        return cleanupMedia.lazy.filter { skippedPreviews.contains($0.reference) }.map(\.reference)
+    }
+
+    @discardableResult
+    func rememberSkippedPreview(_ item: ItemReference) -> Bool {
+        guard item.provider == .photoLibrary else { return false }
+        return setSkippedPreviews(skippedPreviews.union([item]))
+    }
+
+    @discardableResult
+    func restoreSkippedPreviews(_ items: [ItemReference]) -> Bool {
+        setSkippedPreviews(skippedPreviews.subtracting(items))
+    }
+
+    private func setSkippedPreviews(_ items: Set<ItemReference>) -> Bool {
+        guard items != skippedPreviews else { return true }
+        do {
+            try kv?.set(StoreKeys.skippedPreviews, items)
+            skippedPreviews = items
+            queueInputsRevision += 1
+            rebuildPending()
+            return true
+        } catch {
+            showError(L("error_settings_not_saved"))
+            return false
+        }
+    }
+
+    func retrySkippedPreviews() {
+        let items = skippedPreviewItems
+        guard !items.isEmpty, restoreSkippedPreviews(items) else { return }
+        open(FeedRequest(.items(items, titleKey: "feed_skipped_title")))
+    }
 
     func open(_ request: FeedRequest) {
         player.stop()
