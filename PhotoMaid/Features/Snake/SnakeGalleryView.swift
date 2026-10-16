@@ -28,34 +28,8 @@ struct SnakeGalleryView: View {
                 }
                 Section(L("snake_gallery_order")) {
                     if model.gallery.selection.photos.isEmpty { Text(key: "snake_gallery_empty").foregroundStyle(.secondary) }
-                    ForEach(Array(model.gallery.selection.photos.enumerated()), id: \.element.id) { index, photo in
-                        HStack(spacing: 12) {
-                            Group {
-                                if let image = images[photo.id.uuidString] {
-                                    Image(uiImage: image).resizable().scaledToFill()
-                                } else {
-                                    Image(uiImage: SnakeArt.image("segment_placeholder")).resizable().scaledToFit()
-                                }
-                            }
-                            .frame(width: 56, height: 56).clipShape(.circle)
-                            .overlay(Circle().stroke(.green.opacity(0.5), lineWidth: 2))
-                            .accessibilityHidden(true)
-                            Text(verbatim: L("snake_gallery_photo", index + 1)).monospacedDigit()
-                            Spacer(minLength: 0)
-                            Button(role: .destructive) { Task { await model.gallery.remove(photo.id) } } label: {
-                                Image(systemName: "trash").frame(width: 44, height: 44)
-                            }
-                            .buttonStyle(.borderless).accessibilityLabel(Text(key: "remove"))
-                        }
-                        .accessibilityElement(children: .contain)
-                        .accessibilityAction(named: Text(key: "snake_gallery_up")) {
-                            guard index > 0 else { return }
-                            Task { await model.gallery.move(from: IndexSet(integer: index), to: index - 1) }
-                        }
-                        .accessibilityAction(named: Text(key: "snake_gallery_down")) {
-                            guard index + 1 < model.gallery.selection.photos.count else { return }
-                            Task { await model.gallery.move(from: IndexSet(integer: index), to: index + 2) }
-                        }
+                    ForEach(model.gallery.selection.photos) { photo in
+                        photoRow(photo, image: images[photo.id.uuidString])
                     }
                     .onMove { offsets, destination in Task { await model.gallery.move(from: offsets, to: destination) } }
                     .onDelete { offsets in
@@ -83,4 +57,36 @@ struct SnakeGalleryView: View {
             .onChange(of: model.gallery.revision) { _, _ in model.applyGalleryChanges() }
         }
     }
+    private func photoRow(_ photo: PhotoSnakeGallery.Photo, image: UIImage?) -> some View {
+        let index = model.gallery.selection.photos.firstIndex { $0.id == photo.id } ?? 0
+        return HStack(spacing: 12) {
+            thumbnail(image)
+            Text(verbatim: L("snake_gallery_photo", index + 1)).monospacedDigit()
+            Spacer(minLength: 0)
+            Button(role: .destructive) { Task { await model.gallery.remove(photo.id) } } label: {
+                Image(systemName: "trash").frame(width: 44, height: 44)
+            }
+            .buttonStyle(.borderless).accessibilityLabel(Text(key: "remove"))
+        }
+        .accessibilityElement(children: .contain)
+        .accessibilityAction(named: Text(key: "snake_gallery_up")) {
+            guard index > 0 else { return }
+            Task { await model.gallery.move(from: IndexSet(integer: index), to: index - 1) }
+        }
+        .accessibilityAction(named: Text(key: "snake_gallery_down")) {
+            guard index + 1 < model.gallery.selection.photos.count else { return }
+            Task { await model.gallery.move(from: IndexSet(integer: index), to: index + 2) }
+        }
+    }
+
+    private func thumbnail(_ image: UIImage?) -> some View {
+        Group {
+            if let image { Image(uiImage: image).resizable().scaledToFill() }
+            else { Image(uiImage: SnakeArt.image("segment_placeholder")).resizable().scaledToFit() }
+        }
+        .frame(width: 56, height: 56).clipShape(.circle)
+        .overlay(Circle().stroke(.green.opacity(0.5), lineWidth: 2))
+        .accessibilityHidden(true)
+    }
+
 }

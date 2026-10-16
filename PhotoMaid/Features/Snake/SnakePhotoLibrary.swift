@@ -3,6 +3,7 @@ import ImageIO
 import Observation
 import PhotoMaidCore
 import PhotosUI
+import SwiftUI
 import UIKit
 import UniformTypeIdentifiers
 
@@ -105,7 +106,7 @@ final class SnakePhotoLibrary {
             if let archive { selection = try await archive.remove(id) }
             else { selection.remove(id) }
             cachedImages.removeValue(forKey: id.uuidString)
-        } catch { error = L("snake_gallery_error") }
+        } catch { self.error = L("snake_gallery_error") }
     }
 
     func move(from offsets: IndexSet, to destination: Int) async {
@@ -115,7 +116,7 @@ final class SnakePhotoLibrary {
         do {
             if let archive { selection = try await archive.move(from: offsets, to: destination) }
             else { selection.move(from: offsets, to: destination) }
-        } catch { error = L("snake_gallery_error") }
+        } catch { self.error = L("snake_gallery_error") }
     }
 
     private static func decodeThumbnail(_ data: Data) -> UIImage? {
