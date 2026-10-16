@@ -7,8 +7,15 @@ struct FeedBasketPanel: View {
     let openTrash: () -> Void
 
     private var photos: [MediaAsset] {
-        let ids = Set(app.read.basket.filter { $0.item.provider == .photoLibrary }.map { $0.item.localIdentifier })
-        return app.visibleMedia.filter { ids.contains($0.id) }.prefix(40).map { $0 }
+        let items = app.read.basket.filter { $0.item.provider == .photoLibrary }
+        let ids = Set(items.map { $0.item.localIdentifier })
+        var marked: [String: Date] = [:]
+        for event in app.read.events where event.to.disposition == .markedForCleanup && ids.contains(event.item.localIdentifier) {
+            marked[event.item.localIdentifier] = max(marked[event.item.localIdentifier] ?? .distantPast, event.at)
+        }
+        return app.visibleMedia.filter { ids.contains($0.id) }.sorted {
+            (marked[$0.id] ?? .distantPast) > (marked[$1.id] ?? .distantPast)
+        }.prefix(40).map { $0 }
     }
 
     var body: some View {

@@ -42,6 +42,9 @@ struct PhotoEditorView: View {
             }
         }
         .preferredColorScheme(.dark)
+        .onGeometryChange(for: CGSize.self) { $0.size } action: { _ in
+            model.finishRetouchInteraction(); clearStageGesture()
+        }
         .onDisappear { model.finishRetouchInteraction(); clearStageGesture() }
         .onChange(of: scenePhase) { _, phase in
             if phase != .active { model.finishRetouchInteraction(); clearStageGesture() }

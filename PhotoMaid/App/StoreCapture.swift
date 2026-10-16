@@ -175,7 +175,7 @@ enum StoreCapture {
                 let album = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: "QA Game Album")
                 album.addAssets(assets)
                 let folder = PHCollectionListChangeRequest.creationRequestForCollectionList(withTitle: "QA Game Folder")
-                if let placeholder = album.placeholderForCreatedAssetCollection { folder.addChildCollections([placeholder] as NSArray) }
+                folder.addChildCollections([album.placeholderForCreatedAssetCollection] as NSArray)
             }
             UserDefaults.standard.set(true, forKey: "gameVisual.sourcesPrepared")
         } catch { Diagnostics.error(.app, "game-visual-sources", error) }

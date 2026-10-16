@@ -28,6 +28,7 @@ struct FeedView: View {
     @State private var countedAsActiveFeed = false
     @State private var memoryResults: SmartReviewKind?
     @Environment(\.layoutDirection) private var readingDirection
+    @Environment(\.displayScale) private var displayScale
     @Environment(\.dynamicTypeSize) private var dynamicType
     @GestureState private var dragging = false
 
@@ -92,7 +93,7 @@ struct FeedView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
                 .environment(\.layoutDirection, .leftToRight)
-                .onChange(of: geo.size) { _, _ in model.dragCancelled(); resetZoom() }
+                .onChange(of: geo.size) { _, _ in resetZoom() }
             }
             .padding(.bottom, AppSpacing.xs)
         }
@@ -316,8 +317,9 @@ struct FeedView: View {
             .gesture(dragGesture)
             .simultaneousGesture(magnifyGesture)
             .simultaneousGesture(tapGestures)
-            .onAppear { model.viewSize = geo.size }
-            .onChange(of: geo.size) { _, s in model.viewSize = s }
+            .onAppear { model.updateViewport(geo.size, scale: displayScale) }
+            .onChange(of: geo.size) { _, size in model.updateViewport(size, scale: displayScale) }
+            .onChange(of: displayScale) { _, scale in model.updateViewport(geo.size, scale: scale) }
             .accessibilityElement(children: .contain)
             .accessibilityLabel(Text(key: "feed_stage"))
             .accessibilityIdentifier("feed.stage")
@@ -464,7 +466,7 @@ struct FeedView: View {
 
     private func resetZoom() {
         zoom = 1; zoomBase = 1; pan = .zero; panBase = .zero
-        model.setSuspended(voiceOver)
+        model.setSuspended(voiceOver || showMemory)
     }
 
     private func flashHints() {

@@ -44,6 +44,7 @@ struct ViewerPhotoSurface: View {
             .accessibilityValue(Text(verbatim: Double(zoom).formatted(.percent.precision(.fractionLength(0)))))
             .accessibilityAction(named: Text(key: "viewer_toggle_controls"), toggleChrome)
             .onChange(of: isCurrent) { _, current in if !current { reset() } }
+            .onChange(of: size) { _, _ in reset() }
     }
 
     private func reset() {

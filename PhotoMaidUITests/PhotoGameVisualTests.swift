@@ -154,6 +154,12 @@ import XCTest
         app.terminate()
         for page in ["today", "library", "cleanup", "studio", "history", "editor", "collage", "settings", "vault"] {
             launch(page, light: page != "editor")
+            if page == "editor" {
+                XCTAssertTrue(app.descendants(matching: .any)["editor.stage"].firstMatch.waitForExistence(timeout: 25))
+                let ready = XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"),
+                    object: app.descendants(matching: .any)["editor.preview.rendering"].firstMatch)
+                XCTAssertEqual(XCTWaiter.wait(for: [ready], timeout: 20), .completed)
+            }
             checkpoint("workspace_" + page, app: app)
             app.terminate()
         }

@@ -66,6 +66,7 @@ final class FeedViewModel {
     var seriesOpen: [MediaAsset]?
     var albumSheetFor: MediaAsset?
     var viewSize: CGSize = CGSize(width: 390, height: 600)
+    private var viewScale: CGFloat = 1
     var reduceMotion = false
     /// Sizes for „Größte zuerst“ (nur gemessen; unbekannt steht am Ende).
     @ObservationIgnored private var sizes: [String: KnownSize] = [:]
@@ -292,8 +293,20 @@ final class FeedViewModel {
             session.markPreviewUnavailable(ref)
         }
         for ref in window where previews[ref] == nil { previews[ref] = .loading }
-        let size = PreviewPipeline.targetSize(for: viewSize, scale: UITraitCollection.current.displayScale)
+        let size = PreviewPipeline.targetSize(for: viewSize, scale: viewScale)
         app.previews.updateCache(window: window.map(\.localIdentifier), targetSize: size)
+    }
+
+    /// Folding/resizing changes preview resolution and cancels only an unfinished finger gesture.
+    func updateViewport(_ size: CGSize, scale: CGFloat) {
+        guard size.width > 0, size.height > 0, scale > 0,
+              size != viewSize || scale != viewScale else { return }
+        switch machine.phase {
+        case .dragging, .directionLocked: dragCancelled()
+        default: break
+        }
+        viewSize = size; viewScale = scale
+        if isLoaded { refreshWindow() }
     }
 
     func retryPreview(_ ref: ItemReference) {
