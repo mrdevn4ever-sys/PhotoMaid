@@ -79,6 +79,22 @@ import UIKit
         #expect(!model.running && model.stepMode && model.game == round)
     }
 
+    @Test func additivePreferencesAndMemoryPressurePreserveTheRoundAndRequireExplicitResume() throws {
+        var saved: PhotoSnakePreferences?
+        let model = PhotoSnakeModel(savePreferences: { saved = $0 })
+        model.preferences.character = .monster
+        model.preferences.sound = false
+        model.startMotifs(mode: .classic, speed: .gentle, stepMode: false)
+        model.resume(); model.tick(); model.pause()
+        let round = model.roundID, game = model.game
+        model.memoryWarning()
+        #expect(model.memorySuspended && !model.running)
+        #expect(model.roundID == round && model.game == game)
+        #expect(saved?.character == .monster && saved?.sound == false && saved?.mode == .classic && saved?.speed == .gentle)
+        model.resume()
+        #expect(!model.memorySuspended && model.running && model.game == game)
+    }
+
     @Test func aSmallFavoriteSourceCanPrepareSnakeWithoutWeakeningMemoryRules() async throws {
         let snakePhotos = PhotoGamePhotos(canUsePhotos: { _ in true })
         let memory = PhotoMemoryModel(canUsePhotos: { _ in true })

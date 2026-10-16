@@ -44,6 +44,9 @@ Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E19) – ni
 - Keine Zertifikate, Schlüssel, API-Keys im Repo. Kein automatischer Push/Merge/TestFlight/Release.
 - **GitHub Actions sind ausdrücklich freigegeben** (Nutzer, 16.10.2026: „Minutes kannst du jederzeit brauchen“).
   Workflows bleiben `workflow_dispatch`; kein automatischer Merge oder Release.
+- **Aktueller SnakePhoto-Umbau (neuer Nutzerauftrag, 16.10.2026): keine GitHub Actions, bezahlten Runner/APIs
+  oder TestFlight-Uploads ohne neue ausdrückliche Freigabe. Diese auftragsbezogene Sperre hat Vorrang.**
+  Snake-Bewegung ausschließlich mit Wischgesten; keine Richtungstasten, auch nicht optional.
 
 ## Geschäftsregeln (aus dem Android-Quellcode)
 

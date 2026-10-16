@@ -42,6 +42,23 @@ targets:
           - "**/*.md"
           - "**/*.storekit"   # nur Scheme-Konfiguration, nicht ins App-Bundle
           - "Resources/ios_strings.json"
+          - "Resources/SnakePhoto"
+      - path: PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas
+        type: file
+        buildPhase: resources
+      - path: PhotoMaid/Resources/SnakePhoto/SnakeBody.atlas
+        type: file
+        buildPhase: resources
+      - path: PhotoMaid/Resources/SnakePhoto/SnakeFood.atlas
+        type: file
+        buildPhase: resources
+      - path: PhotoMaid/Resources/SnakePhoto/SnakeUI.atlas
+        type: file
+        buildPhase: resources
+      - path: PhotoMaid/Resources/SnakePhoto/Backgrounds
+        buildPhase: resources
+      - path: PhotoMaid/Resources/SnakePhoto/Sounds
+        buildPhase: resources
     dependencies:
       - package: PhotoMaidCore
       - package: GoogleMobileAds
@@ -50,6 +67,7 @@ targets:
       - sdk: AppTrackingTransparency.framework
       - sdk: Photos.framework
       - sdk: PhotosUI.framework
+      - sdk: SpriteKit.framework
       - sdk: AVFoundation.framework
       - sdk: AVKit.framework
       - sdk: CoreImage.framework

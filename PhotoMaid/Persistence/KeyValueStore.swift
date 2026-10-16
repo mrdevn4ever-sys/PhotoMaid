@@ -30,6 +30,7 @@ enum StoreKeys {
     static let collageDrafts = StoreKey<[CollageProject]>("studio.collageDrafts") { [] }
     static let videoDrafts = StoreKey<[VideoProject]>("studio.videoDrafts") { [] }
     static let feedAds = StoreKey<FeedAdState>("ads.feed") { FeedAdState() }
+    static let snakePreferences = StoreKey<PhotoSnakePreferences>("games.snake.preferences.v1") { .init() }
     static let gameRecords = StoreKey<PhotoGameRecords>("games.personalRecords.v1") { PhotoGameRecords() }
     /// Navigation only: unavailable previews explicitly skipped by the user, never review decisions.
     static let skippedPreviews = StoreKey<Set<ItemReference>>("feed.skippedPreviews.v1") { [] }

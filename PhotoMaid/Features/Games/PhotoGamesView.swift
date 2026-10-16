@@ -32,7 +32,7 @@ struct PhotoGamesView: View {
                         }
                         .buttonStyle(.plain).accessibilityIdentifier("games.memory")
                         Button { selected = .snake } label: {
-                            PhotoGameTile(symbol: "camera.fill", title: L("snake_title"),
+                            PhotoGameTile(symbol: "", title: L("snake_title"),
                                           subtitle: L(app.snake.game?.status == .playing ? "memory_resume" : "snake_swipe_intro"), snake: true)
                         }
                         .buttonStyle(.plain).accessibilityIdentifier("games.snake")
@@ -56,6 +56,8 @@ struct PhotoGamesView: View {
 }
 
 private struct PhotoGameTile: View {
+    @Environment(AppModel.self) private var app
+    private var appSnakeHead: String { app.snake.preferences.character.idle }
     let symbol: String
     let title: String
     let subtitle: String
@@ -66,7 +68,12 @@ private struct PhotoGameTile: View {
             VStack(alignment: .leading, spacing: AppSpacing.m) {
                 HStack(spacing: AppSpacing.xs) {
                     ForEach(0..<4) { index in
-                        Image(systemName: index == 0 ? symbol : PhotoMemoryModel.motifs[index])
+                        Group {
+                            if snake {
+                                Image(uiImage: SnakeArt.image(index == 0 ? appSnakeHead : "segment_placeholder"))
+                                    .resizable().scaledToFit()
+                            } else { Image(systemName: index == 0 ? symbol : PhotoMemoryModel.motifs[index]) }
+                        }
                             .font(.title3.weight(.semibold))
                             .foregroundStyle(index == 0 ? .white : AppColors.accent)
                             .frame(width: 44, height: 48)

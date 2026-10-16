@@ -1,0 +1,50 @@
+{
+  "created_utc": "2026-10-16T21:41:54.571014+00:00",
+  "baseline_commit": "4bfba4f",
+  "core": {
+    "status": "PASS",
+    "swift_testing": 437,
+    "xctest": 24,
+    "total": 461,
+    "failures": 0,
+    "source_and_test_files_sha256": "226c8efc5cddd7648e5ac646d3d0ea842284e6c86d20091995c7e385d66c748e",
+    "command": "local swift:6.4 Docker: swift test",
+    "log": "core-tests.log"
+  },
+  "targeted_games": {
+    "status": "PASS",
+    "tests": 29,
+    "suites": 4,
+    "command": "local swift:6.4 Docker: swift test --filter 'PhotoSnake|PhotoMemoryGame'",
+    "log": "game-tests.log"
+  },
+  "syntax": {
+    "status": "PASS",
+    "files": 170,
+    "scope": "Syntax only; no Apple SDK type checking",
+    "details": "swift-parse.json"
+  },
+  "resources": {
+    "status": "PASS (static)",
+    "files": 77,
+    "details": [
+      "resource-audit.log",
+      "zip-comparison.json"
+    ]
+  },
+  "localization": {
+    "status": "PASS",
+    "languages": 16,
+    "catalog_entries": 2690,
+    "existing_entries_preserved": 2657,
+    "new_entries": 33,
+    "log": "localization.log"
+  },
+  "native_build": "BLOCKED: no Xcode/iOS SDK",
+  "native_tests": "NOT RUN",
+  "visual_review": "BLOCKED: no new simulator/device execution",
+  "fps": "NOT MEASURED",
+  "actions_dispatched": 0,
+  "paid_runner_or_api_calls": 0,
+  "testflight_uploads": 0
+}

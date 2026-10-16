@@ -125,6 +125,10 @@ def catalog(entries: dict) -> dict:
 USE = re.compile(r'\bLP?\(\s*"([A-Za-z0-9_.#]+)"')
 # Kennungen stehen auch in Text(key:), Tupeln und Ternären: jede Zeichenkette in Kennungs-Form zählt, wenn sie einen
 # Unterstrich enthält oder als Kennung bekannt ist (Symbolnamen enthalten Punkte, Protokoll-Kürzel Bindestriche).
+# Asset names from the bundled Snake kit also contain underscores; they are never user-facing strings.
+# Exact existing filenames only: a misspelled/removed asset still fails this scan.
+SNAKE_ASSET_LITERALS = {p.stem for p in (ROOT / "PhotoMaid/Resources/SnakePhoto").rglob("*.png")}
+
 LITERAL = re.compile(r'"([a-z][a-z0-9_]*[a-z0-9])"')
 
 
@@ -139,6 +143,8 @@ def used_keys(known=None):
                 continue
             for m in LITERAL.finditer(line):
                 k = m.group(1)
+                if k in SNAKE_ASSET_LITERALS:
+                    continue
                 if "_" in k or (known is not None and (k in known or any(x.startswith(k + "#") for x in known))):
                     keys.add(k)
     return keys

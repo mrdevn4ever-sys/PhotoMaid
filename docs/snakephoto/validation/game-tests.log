@@ -1,0 +1,79 @@
+Building for debugging...
+[Computing dependencies]
+[1 / 11] PhotoMaidCoreTests-product
+[7 / 17] PhotoMaidCoreTests-product
+[10 / 16] PhotoMaidCoreTests-product
+[14 / 17] PhotoMaidCoreTests-product
+[18 / 20] PhotoMaidCoreTests-test-runner
+[21 / 21] PhotoMaidCoreTests-test-runner
+Build complete! (15.69 secs)
+◇ Test run started.
+↳ Testing Library Version: 6.4.1 (804dc4530ef3666)
+↳ Target Platform: x86_64-unknown-linux-gnu
+◇ Suite PhotoMemoryGameTests started.
+◇ Suite PhotoSnakeGalleryTests started.
+◇ Suite PhotoSnakeGameTests started.
+◇ Suite PhotoSnakePresentationTests started.
+◇ Test galleryHandlesZeroOneTenAndOneHundredPhotosAndCyclesInChosenOrder() started.
+◇ Test thumbnailsAndOrderSurviveNewArchiveInstancesAndRemovalDeletesBytes() started.
+◇ Test viewportChoosesUsableGridsForPhoneAndExpandedWindows() started.
+◇ Test archiveRejectsSymlinkedPhotoReads() started.
+◇ Test archiveRejectsOversizedInputAndCleansCrashOrphansButToleratesMissingImages() started.
+◇ Test seededRoundIsReproducibleAndOnlyStepsChangeIt() started.
+◇ Test collectingGrowsExactlyOnceAndKeepsFoodOffTheBody() started.
+◇ Test classicWallEndsTheRoundButRelaxedModeWraps() started.
+◇ Test aFullBoardWinsWithoutHangingOnFoodPlacement() started.
+◇ Test firstSwipeCanChooseEveryDirectionButCannotTeleportAfterMoving() started.
+◇ Test collisionWithTheBodyEndsTheRound() started.
+◇ Test enteringTheDepartingTailIsLegal() started.
+◇ Test rapidTurnsAreBufferedInOrderAndCannotReverse() started.
+◇ Test validBoardAndFoodNeverOverlapTheInitialStrip() started.
+◇ Test interruptionPreservesTheRoundAndUnmatchedFirstCard() started.
+◇ Test selectingANewHiddenCardDismissesTheOldMismatchAndNeverGetsStuck() started.
+◇ Test randomSampleIsUniqueBoundedAndNeverAddsOtherPhotos() started.
+◇ Test shuffledDecksAlwaysHaveExactlyTwoOfEveryPicture() started.
+◇ Test randomSourcesRespectFavoritesCollectionsAndExclusions() started.
+◇ Test rejectsUnplayableDecksAndDeduplicatesPictures() started.
+◇ Test largeRoundCanBeCompletedWithoutLosingPairs() started.
+◇ Test rapidTapsCannotRevealAThirdCardOrInflateScore() started.
+◇ Test rotationTakesTheShortestPathAndPreferencesRoundTrip() started.
+◇ Test growthUnfoldsFromTailWithoutImportingOrTeleportingPhotos() started.
+◇ Test wrappedEdgesNeverDrawAcrossTheBoard() started.
+◇ Test collisionOnlyTravelsToContactAndCannotChangeTheRules() started.
+◇ Test historySupportsThreeHundredSegmentsOnTheUnmodifiedGame() started.
+◇ Test interpolationFollowsOrthogonalHistoryAndFinishesAtAuthoritativeCells() started.
+◇ Test animationPriorityTimingAndSkinsUseKitFrames() started.
+✔ Test viewportChoosesUsableGridsForPhoneAndExpandedWindows() passed after 0.011 seconds.
+✔ Test seededRoundIsReproducibleAndOnlyStepsChangeIt() passed after 0.011 seconds.
+✔ Test archiveRejectsSymlinkedPhotoReads() passed after 0.011 seconds.
+✔ Test classicWallEndsTheRoundButRelaxedModeWraps() passed after 0.012 seconds.
+✔ Test aFullBoardWinsWithoutHangingOnFoodPlacement() passed after 0.012 seconds.
+✔ Test galleryHandlesZeroOneTenAndOneHundredPhotosAndCyclesInChosenOrder() passed after 0.012 seconds.
+✔ Test collisionWithTheBodyEndsTheRound() passed after 0.013 seconds.
+✔ Test enteringTheDepartingTailIsLegal() passed after 0.013 seconds.
+✔ Test rapidTurnsAreBufferedInOrderAndCannotReverse() passed after 0.014 seconds.
+✔ Test archiveRejectsOversizedInputAndCleansCrashOrphansButToleratesMissingImages() passed after 0.014 seconds.
+✔ Test interruptionPreservesTheRoundAndUnmatchedFirstCard() passed after 0.014 seconds.
+✔ Test selectingANewHiddenCardDismissesTheOldMismatchAndNeverGetsStuck() passed after 0.014 seconds.
+✔ Test thumbnailsAndOrderSurviveNewArchiveInstancesAndRemovalDeletesBytes() passed after 0.014 seconds.
+✔ Test validBoardAndFoodNeverOverlapTheInitialStrip() passed after 0.014 seconds.
+✔ Test randomSourcesRespectFavoritesCollectionsAndExclusions() passed after 0.014 seconds.
+✔ Test rejectsUnplayableDecksAndDeduplicatesPictures() passed after 0.014 seconds.
+✔ Test largeRoundCanBeCompletedWithoutLosingPairs() passed after 0.014 seconds.
+✔ Test rapidTapsCannotRevealAThirdCardOrInflateScore() passed after 0.014 seconds.
+✔ Test rotationTakesTheShortestPathAndPreferencesRoundTrip() passed after 0.010 seconds.
+✔ Test growthUnfoldsFromTailWithoutImportingOrTeleportingPhotos() passed after 0.009 seconds.
+✔ Test shuffledDecksAlwaysHaveExactlyTwoOfEveryPicture() passed after 0.014 seconds.
+✔ Test collisionOnlyTravelsToContactAndCannotChangeTheRules() passed after 0.009 seconds.
+✔ Test wrappedEdgesNeverDrawAcrossTheBoard() passed after 0.009 seconds.
+✔ Test interpolationFollowsOrthogonalHistoryAndFinishesAtAuthoritativeCells() passed after 0.008 seconds.
+✔ Test animationPriorityTimingAndSkinsUseKitFrames() passed after 0.006 seconds.
+✔ Suite PhotoSnakeGalleryTests passed after 0.014 seconds.
+✔ Test randomSampleIsUniqueBoundedAndNeverAddsOtherPhotos() passed after 0.016 seconds.
+✔ Suite PhotoMemoryGameTests passed after 0.016 seconds.
+✔ Test firstSwipeCanChooseEveryDirectionButCannotTeleportAfterMoving() passed after 0.018 seconds.
+✔ Test collectingGrowsExactlyOnceAndKeepsFoodOffTheBody() passed after 0.023 seconds.
+✔ Suite PhotoSnakeGameTests passed after 0.023 seconds.
+✔ Test historySupportsThreeHundredSegmentsOnTheUnmodifiedGame() passed after 0.551 seconds.
+✔ Suite PhotoSnakePresentationTests passed after 0.557 seconds.
+✔ Test run with 29 tests in 4 suites passed after 0.557 seconds.

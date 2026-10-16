@@ -1,0 +1,4589 @@
+{
+  "commit": "4bfba4f39837101e6dff24d45ac951cf827246b3",
+  "files": [
+    {
+      "path": "Package.swift",
+      "lines": 36,
+      "sha256": "1da811ffbaef9c63c58c1cda4ecddbc359ea59a859b55649d0f345d57f53a8bf",
+      "imports": [
+        "PackageDescription"
+      ],
+      "declarations": [],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/App/AppConfig.swift",
+      "lines": 45,
+      "sha256": "a733234f7626c915fef616246174d8b75e1f566653ad293751d217ad88154a36",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "AppConfig ",
+        "AdMobUnits: Equatable, Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/App/AppModel.swift",
+      "lines": 869,
+      "sha256": "d5b16bb40d86c600b1e8234485512ce5e154fb1a9bcdc8ce5387174164afde06",
+      "imports": [
+        "Foundation",
+        "Observation",
+        "Photos",
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "AppTab: String, Hashable, CaseIterable, Sendable ",
+        "CleanupRunResult: Sendable ",
+        "LedgerReadModel: Sendable ",
+        "LibrarySnapshot: Sendable ",
+        "AppModel ",
+        "BootstrapError: Error ",
+        "AppRoute: Equatable, Sendable "
+      ],
+      "persistent_apis": [
+        "CoreDataStore",
+        "KeyValueStore",
+        "StoreKeys"
+      ]
+    },
+    {
+      "path": "PhotoMaid/App/FeedRequest.swift",
+      "lines": 59,
+      "sha256": "8293045176a1d9b3c8b73853037a1d8c853975f96ddd125198392d0f20eabb04",
+      "imports": [
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "FeedRequest: Identifiable, Hashable, Sendable ",
+        "Source: Hashable, Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/App/PhotoMaidApp.swift",
+      "lines": 81,
+      "sha256": "b372a9809bc6ff45a9e6da798b78a449ed98e38a624b4b6b1c0dabf6176ddc2e",
+      "imports": [
+        "Observation",
+        "PhotoMaidCore",
+        "SwiftUI",
+        "UIKit"
+      ],
+      "declarations": [
+        "PhotoMaidApp: App ",
+        "QuickActions ",
+        "AppDelegate: NSObject, UIApplicationDelegate ",
+        "SceneDelegate: NSObject, UIWindowSceneDelegate "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/App/QAFixtures.swift",
+      "lines": 64,
+      "sha256": "2089c4173e601d41d040a1f673e8cbbb4ff6701356227317e6fc22dc90720197",
+      "imports": [
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "QAFixtures "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/App/RootView.swift",
+      "lines": 263,
+      "sha256": "1af1a20ef8586fbffbf55a73df357fb192c7a6cb0fd90795b6bbaae2ad06f2ba",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "RootView: View ",
+        "PrivacyShield: View ",
+        "PrivacyCover ",
+        "FullScreenHost: View ",
+        "StartupErrorView: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/App/Routes.swift",
+      "lines": 135,
+      "sha256": "4a1172eecbd1b903e1eb4eb753408dce3c9a451a48bffaa060a60981fab753d4",
+      "imports": [
+        "Foundation",
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "Route: Hashable ",
+        "GridSource: Hashable, Sendable ",
+        "SmartReviewKind: String, Hashable, Sendable, CaseIterable, Identifiable ",
+        "ToolKind: String, Hashable, Sendable, CaseIterable, Identifiable ",
+        "FullScreenRequest: Identifiable, Equatable ",
+        "RouteDestination: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/App/StoreCapture.swift",
+      "lines": 235,
+      "sha256": "1e107c6e6d41117637f80655b63cddca4c00318ba302e1e696f8d5b862572799",
+      "imports": [
+        "Photos",
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "StoreCapture "
+      ],
+      "persistent_apis": [
+        "FileManager",
+        "UserDefaults"
+      ]
+    },
+    {
+      "path": "PhotoMaid/App/Strings.swift",
+      "lines": 43,
+      "sha256": "c0346533a42e7f87d9a584a9583d8eca1b509df574f23f91abafb08a0fdc4b04",
+      "imports": [
+        "Foundation",
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "Strings ",
+        "Text "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/App/Texts.swift",
+      "lines": 102,
+      "sha256": "240c90175aec574db392ade7cc7227e56aa3221cea637a215b40713e64184af8",
+      "imports": [
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "CollectionText ",
+        "QuickAccessText ",
+        "AlbumNames "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/DesignSystem/AdaptiveWorkspace.swift",
+      "lines": 67,
+      "sha256": "7f0bf2a74f77accdfe9152f9456a2f048c6933d3809fbb36970f98bbc8017c8d",
+      "imports": [
+        "SwiftUI"
+      ],
+      "declarations": [
+        "AppWorkspace ",
+        "WorkspaceColumns: Layout ",
+        "AdaptiveWorkspace<Primary: View, Controls: View>: View ",
+        "ReadableContent: ViewModifier ",
+        "View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/DesignSystem/Components.swift",
+      "lines": 507,
+      "sha256": "017fde7b20c84a116a7064578ed40708f7a40d4de1e49f48bec3e8218b80ff18",
+      "imports": [
+        "Photos",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "AppBackground: View ",
+        "View ",
+        "SurfaceCard<Content: View>: View ",
+        "SectionHeader: View ",
+        "NavRow: View ",
+        "BadgeText: View ",
+        "MetricCard: View ",
+        "InfoBanner: View ",
+        "EmptyState: View ",
+        "ErrorState: View ",
+        "LoadingState: View ",
+        "ProgressPanel: View ",
+        "ToggleRow: View ",
+        "AssetThumbnail: View ",
+        "AssetCell: View ",
+        "Loaded ",
+        "LoadKey: Equatable ",
+        "ThumbnailLoader ",
+        "ThumbnailRequestBox: @unchecked Sendable ",
+        "ToastMessage: Identifiable, Equatable ",
+        "ToastView: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/DesignSystem/EditorChrome.swift",
+      "lines": 198,
+      "sha256": "a38593d632090dda5de81005ed371755070e35ed55a3994b4ab054965e77834b",
+      "imports": [
+        "SwiftUI",
+        "UIKit"
+      ],
+      "declarations": [
+        "EditorRuler: View ",
+        "RoundToolButton: View ",
+        "EditorHeader<Center: View>: View ",
+        "ZoomableStage<Content: View>: View ",
+        "TwoFingerStagePan: UIGestureRecognizerRepresentable ",
+        "Coordinator: NSObject, UIGestureRecognizerDelegate "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/DesignSystem/Formatting.swift",
+      "lines": 104,
+      "sha256": "57f8650a8bd2ddd5e5a7cc4eea325c5e7fbeb55903546b3e405968dece56a840",
+      "imports": [
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "SizeText ",
+        "DayText ",
+        "MonthText ",
+        "DateText ",
+        "LaterText ",
+        "CountText "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/DesignSystem/Glass.swift",
+      "lines": 142,
+      "sha256": "f8b4ba044c9cdf15e25cd8d0379682a852760cd475803fb85c01de3a9bce9384",
+      "imports": [
+        "SwiftUI"
+      ],
+      "declarations": [
+        "GlassCapsuleModifier: ViewModifier ",
+        "GlassRectModifier: ViewModifier ",
+        "View ",
+        "GlassIconButton: View ",
+        "GlassButtonStyleModifier: ViewModifier ",
+        "PrimaryButton: View ",
+        "PrimaryStyle: ViewModifier ",
+        "SecondaryButton: View ",
+        "SecondaryStyle: ViewModifier "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/DesignSystem/Haptics.swift",
+      "lines": 51,
+      "sha256": "adbaf8e677b3d2138602352e09c3d3e9238868282616057842ae4660e7298e2d",
+      "imports": [
+        "UIKit"
+      ],
+      "declarations": [
+        "Haptics "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/DesignSystem/Tokens.swift",
+      "lines": 96,
+      "sha256": "3936be3ab2f8948334919b8afdcae556bf35c9f585d63ebd30f4dc5a2f1f7e00",
+      "imports": [
+        "SwiftUI",
+        "UIKit"
+      ],
+      "declarations": [
+        "AppColors ",
+        "UIColor ",
+        "AppTypography ",
+        "AppSpacing ",
+        "AppRadii ",
+        "AppMotion "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/DesignSystem/Tour.swift",
+      "lines": 190,
+      "sha256": "9c8025420c7d02a6fcb25c7df49e6e46ac7c7299f4cb12ba4cc0d87fe97c5c06",
+      "imports": [
+        "SwiftUI",
+        "UIKit"
+      ],
+      "declarations": [
+        "TourTarget: Equatable ",
+        "TourStep: Equatable ",
+        "TourAnchorKey: PreferenceKey ",
+        "View ",
+        "TourSpotlight: View ",
+        "TourArrow: Shape ",
+        "TabBarGeometry "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/DesignSystem/ViewerPhotoSurface.swift",
+      "lines": 53,
+      "sha256": "62a0ed13ab6c601dbccad79b5ad88ed3445bfc43034cace93b8763f0eb284fa1",
+      "imports": [
+        "SwiftUI"
+      ],
+      "declarations": [
+        "ViewerPhotoSurface: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Analysis/SmartReviewView.swift",
+      "lines": 380,
+      "sha256": "b87327de3934eb28a7c6b068ed74bbfbc3f38f64775b8c9fd3c88cda8ad972c3",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI",
+        "UIKit"
+      ],
+      "declarations": [
+        "SmartReviewView: View ",
+        "SimilarSelection: Identifiable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Archive/ArchiveView.swift",
+      "lines": 299,
+      "sha256": "90fd4f94c2c0e24754839d4b15b5460bba2ca2f24c0d1d7ddbea2139a7d525b0",
+      "imports": [
+        "Photos",
+        "PhotoMaidCore",
+        "SwiftUI",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [
+        "ArchiveView: View ",
+        "ArchiveTargetFacts: Equatable ",
+        "StepStatusRow: View "
+      ],
+      "persistent_apis": [
+        "FileManager",
+        "StoreKeys"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Features/Archive/BackupView.swift",
+      "lines": 96,
+      "sha256": "9f67e5d407c9688b94f34153f2f9fa1bf08ee0c26d8c3ddd2d7ca68d8e9fe903",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [
+        "BackupView: View "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Features/Cleanup/CleanUpHubView.swift",
+      "lines": 370,
+      "sha256": "f4350a1c72c4da410af96d17842d2c66aa8a1be55c9ad1d6b01cec09a77e4cf6",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "CleanUpHubView: View ",
+        "SmartReviewText ",
+        "CollectionsContent: View ",
+        "CollectionEvaluator ",
+        "CollectionEditor: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Cleanup/DuplicatePhotoReader.swift",
+      "lines": 158,
+      "sha256": "3533063aa5e7f4f8deea12541785b0fdaf2658138ceb0635777c472a9da539a3",
+      "imports": [
+        "CryptoKit",
+        "Foundation",
+        "Photos",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "DuplicatePhotoReader: @unchecked Sendable ",
+        "Digests: Sendable ",
+        "Key: Hashable ",
+        "DuplicateReadCancellation: @unchecked Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Cleanup/DuplicateScanner.swift",
+      "lines": 256,
+      "sha256": "6b474e7741738cd331dd3aa822030555546869ffd1107b41d9f014b009d58770",
+      "imports": [
+        "Foundation",
+        "Observation",
+        "Photos",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "DuplicateScanner ",
+        "Phase: Equatable ",
+        "Outcome: Sendable ",
+        "DuplicateProgressPacer: @unchecked Sendable ",
+        "SizerHashCache: DuplicateHashCache, @unchecked Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Cleanup/DuplicatesView.swift",
+      "lines": 177,
+      "sha256": "1c94ea447531051fe47d88117e126d275cff78c84d0cd25856361b2fc9897b3a",
+      "imports": [
+        "Photos",
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "DuplicatesView: View ",
+        "CombinedByteProvider: DuplicateContentHashSource, @unchecked Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Cleanup/LargeFilesView.swift",
+      "lines": 151,
+      "sha256": "9ef45023039ca33eba1e33cc551889f61d420cafec5552aa5af150b88e4bcc1e",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "LargeFilesView: View ",
+        "Entry ",
+        "Summary "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Cleanup/SeriesListView.swift",
+      "lines": 75,
+      "sha256": "7e4f246653879e59529aa51cb6be5eb7e89cbcd22c683f8baaf5ea7e397d56fc",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "SeriesListView: View ",
+        "SeriesSelection: Identifiable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Cleanup/StorageView.swift",
+      "lines": 85,
+      "sha256": "d706482738b86fa29d7d1c38781025d2cd20bb44967d488574e8e5bdc7f786cd",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "StorageView: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Cleanup/TrashView.swift",
+      "lines": 536,
+      "sha256": "9322753aac360f38e6fba526ba83cce9b0f03912e90029a33ed4b2740cd1f0fc",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "TrashView: View ",
+        "LimitRequest: Identifiable ",
+        "ResultMessage: Identifiable ",
+        "LimitSheet: View ",
+        "TrashPreview: View ",
+        "CleanupDone: Identifiable ",
+        "CleanupDoneView: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Collections/CollectionsView.swift",
+      "lines": 39,
+      "sha256": "f3de7025e069c43155b9e7fc2d4959485ec1b2d314b40eb0ecc78fc2e7077d4c",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "CollectionsView: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Common/AlbumPickerSheet.swift",
+      "lines": 101,
+      "sha256": "cc2aa65ed0f908e5076b0b242c39f925051b7f4d8556afd5ba16a22fed37a06e",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "AlbumPickerSheet: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Common/ExportedFile.swift",
+      "lines": 17,
+      "sha256": "40c626d5ffa78a0252862ad56153a90509b5161cbc85516b7678923bd88e72b0",
+      "imports": [
+        "SwiftUI",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [
+        "ExportedFile: FileDocument "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Common/MediaShare.swift",
+      "lines": 314,
+      "sha256": "5feea59c8fa8dcc84992f5142838061017f2341e7a11c26e5d83ba71e5639e60",
+      "imports": [
+        "AVFoundation",
+        "Photos",
+        "SwiftUI",
+        "UIKit",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [
+        "MediaShareItem: Identifiable, Sendable ",
+        "MediaShare ",
+        "ShareImageData: Sendable ",
+        "PhotoKitOneShot<T: Sendable>: @unchecked Sendable ",
+        "ShareSheet: UIViewControllerRepresentable "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Features/Documents/DocumentScannerHost.swift",
+      "lines": 46,
+      "sha256": "01f46de68ebf38103c3558812aced0c058505bd2345c1fe07d09795cb5aebccd",
+      "imports": [
+        "PDFKit",
+        "SwiftUI",
+        "VisionKit"
+      ],
+      "declarations": [
+        "DocumentScannerHost: UIViewControllerRepresentable ",
+        "Coordinator: NSObject, @preconcurrency VNDocumentCameraViewControllerDelegate "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Features/Documents/PdfFromPhotosView.swift",
+      "lines": 72,
+      "sha256": "51df3179940d079e783489575964e0ee15e9cb7efa812ab6a3c32559a4c1b29e",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "PdfFromPhotosView: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Documents/PdfStudioView.swift",
+      "lines": 64,
+      "sha256": "a50bbf6ab0be46cee627e73bae41e9506de547d60acbf08c35f3a53f1ae28f64",
+      "imports": [
+        "PDFKit",
+        "PhotoMaidCore",
+        "SwiftUI",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [
+        "PdfStudioView: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Editor/EditSaver.swift",
+      "lines": 140,
+      "sha256": "6ce3165e8ed05d061ad258c3526b88877a6cf7e8269c49d473a6010f9c569737",
+      "imports": [
+        "CoreImage",
+        "Foundation",
+        "Photos",
+        "PhotoMaidCore",
+        "UIKit"
+      ],
+      "declarations": [
+        "EditSaveOutcome: Equatable ",
+        "EditSaveError: Error ",
+        "EditSaver "
+      ],
+      "persistent_apis": [
+        "FileManager",
+        "StoreKeys"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Features/Editor/EditorModel.swift",
+      "lines": 409,
+      "sha256": "d24f2b25143aa92a763234e4133c3860bd336e93b3d527c6ebcbb61984b22c08",
+      "imports": [
+        "CoreImage",
+        "Foundation",
+        "Observation",
+        "Photos",
+        "PhotoMaidCore",
+        "UIKit",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "EditorTool: String, CaseIterable, Identifiable, Hashable ",
+        "AdjustParam: String, CaseIterable, Identifiable, Hashable ",
+        "EditorModel ",
+        "LoadState: Equatable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Editor/EditorPanels.swift",
+      "lines": 627,
+      "sha256": "27fed3424982cf50ef216d683db0263f84fea21061fa0bf9fbb95217fe227fd0",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "CropPanel: View ",
+        "AdjustPanel: View ",
+        "FilterPanel: View ",
+        "RetouchPanel: View ",
+        "ControlID: Hashable ",
+        "MarkupPanel: View ",
+        "FramePanel: View ",
+        "ResizePanel: View ",
+        "EditSaveSheet: View ",
+        "EditProSheet: View "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Features/Editor/EditsView.swift",
+      "lines": 91,
+      "sha256": "e60ffe39de24ef8ef389533fe3801f623dd92c1c2c8284693359d231d48e1619",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "EditsView: View "
+      ],
+      "persistent_apis": [
+        "StoreKeys"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Features/Editor/PhotoEditorView.swift",
+      "lines": 573,
+      "sha256": "43bff44d77ef38c364ca3adefa36701f50693edd7e6a843290b275fc275f4e6c",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "PhotoEditorView: View ",
+        "StageContext ",
+        "RetouchMode: String, CaseIterable, Identifiable ",
+        "MarkupMode: String, CaseIterable, Identifiable ",
+        "MarkupStyle ",
+        "CropOverlay: View ",
+        "HandlePoint: Identifiable ",
+        "RetouchOverlay: View ",
+        "MarkupOverlay: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Editor/VideoEditorModel.swift",
+      "lines": 455,
+      "sha256": "d8246bdc330af692837dd90681569394cddebd048ad0c17d30368751cd97a1ce",
+      "imports": [
+        "AVFoundation",
+        "Observation",
+        "PhotoMaidCore",
+        "UIKit"
+      ],
+      "declarations": [
+        "VideoTool: String, CaseIterable, Identifiable, Hashable ",
+        "VideoEditorModel ",
+        "LoadState: Equatable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Editor/VideoEditorView.swift",
+      "lines": 1050,
+      "sha256": "cf460b65f7bad821df792589b0f2d7f1079aca44dad431e04277ead237a462d2",
+      "imports": [
+        "AVFoundation",
+        "PhotoMaidCore",
+        "SwiftUI",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [
+        "VideoEditorView: View ",
+        "LayerPreviewImage: View ",
+        "VideoTrimPanel: View ",
+        "VideoAdjustPanel: View ",
+        "VideoFilterPanel: View ",
+        "FilterNames ",
+        "VideoLayerPanel: View ",
+        "StickerNames ",
+        "VideoSpeedPanel: View ",
+        "VideoAudioPanel: View ",
+        "VideoFormatPanel: View ",
+        "VideoSaveSheet: View "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Features/Editor/VideoSaver.swift",
+      "lines": 73,
+      "sha256": "9f3c369de4518ec391a3beb2eaecd0c042a8cf50c1f3cd812811356d8e3786d1",
+      "imports": [
+        "AVFoundation",
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "VideoSaver "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Features/Feed/FeedAdCard.swift",
+      "lines": 194,
+      "sha256": "4c3389981024e8106e5e6bd7bfbc113c09e849f4811fce363ffd8ebb2173c79d",
+      "imports": [
+        "GoogleMobileAds",
+        "PhotoMaidCore",
+        "SwiftUI",
+        "UIKit"
+      ],
+      "declarations": [
+        "FeedAdCard: Identifiable ",
+        "FeedAdCardView: View ",
+        "NativeAdContainer: UIViewRepresentable ",
+        "NativeAdLayout "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Feed/FeedBasketPanel.swift",
+      "lines": 59,
+      "sha256": "cc431409fb8dd692fc5e6186753f7096629282c54dc6bb5f22119e23f32e4936",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "FeedBasketPanel: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Feed/FeedChrome.swift",
+      "lines": 357,
+      "sha256": "5d57f9c94ff50f8daf144566fe447a15a803e7ad3c5ad3a854424114c3a8142c",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "GestureArrow: View ",
+        "FeedActionText ",
+        "DirectionPill: View ",
+        "GestureHintOverlay: View ",
+        "LaterPillView: View ",
+        "NoticePill: View ",
+        "TrashChip: View ",
+        "DecisionButtons: View ",
+        "MediaInfoLine: View ",
+        "SessionSummaryView: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Feed/FeedMediaPage.swift",
+      "lines": 319,
+      "sha256": "b6b29ae017b776edf484a79764dd81b117089fc3ec600b71ee4cd6c739c26f3e",
+      "imports": [
+        "AVFoundation",
+        "Photos",
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "FeedMediaPage: View ",
+        "FeedVideoControls: View ",
+        "CloudProgressBadge: View ",
+        "CloudRetryBadge: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Feed/FeedView.swift",
+      "lines": 667,
+      "sha256": "c7fea598168535bb76d120c7ef4d7004c8d1f5772dc720ea8f24a7fd322dd928",
+      "imports": [
+        "Photos",
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "FeedView: View ",
+        "SeriesBox: Identifiable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Feed/FeedViewModel.swift",
+      "lines": 780,
+      "sha256": "478e7bc5d703bf96b8a0420bc2763ad644c9a8437458d59b6a8c9373ad8b70d0",
+      "imports": [
+        "Foundation",
+        "Observation",
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "PreviewState: Equatable, Sendable ",
+        "LaterPill: Identifiable, Equatable ",
+        "FeedNotice: Identifiable, Equatable ",
+        "ProtectedFavorite: Identifiable, Equatable ",
+        "CustomLaterRequest: Identifiable, Equatable ",
+        "FeedViewModel ",
+        "NewSinceQuery "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Feed/LaterPickerSheet.swift",
+      "lines": 93,
+      "sha256": "768fd10f6630cde3211c440e914b18ed1a67caaed1e8b13e92cbc630ce7da1f2",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "LaterPickerResult: Equatable ",
+        "LaterPickerSheet: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Feed/SeriesCompareView.swift",
+      "lines": 115,
+      "sha256": "011c629950a4fbeb65ffd539c183877fdabe05ecc4d003f5ede75909769cb028",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "SeriesCompareView: View ",
+        "LargePreview: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Files/FilesView.swift",
+      "lines": 158,
+      "sha256": "6c32bff04ace15c38214b92318ced9156c5532fa1f61bb162140b7636c64f951",
+      "imports": [
+        "PhotoMaidCore",
+        "QuickLook",
+        "SwiftUI",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [
+        "FilesView: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Files/ReceivedView.swift",
+      "lines": 20,
+      "sha256": "9314984d5cc7eae9b89ed039910f6648dfee0112acb04d2cbdd47a8af878fa0f",
+      "imports": [
+        "QuickLook",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "ReceivedView: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Games/PhotoGameAnalysisStatus.swift",
+      "lines": 48,
+      "sha256": "99ac1621a939d8eff9436c046071c11323bc521f584394fd5f99c660f9673071",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "PhotoGameAnalysisStatus: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Games/PhotoGamePhotos.swift",
+      "lines": 147,
+      "sha256": "b9733ab36ee586134ada30407cc41afbb033490ec53b8ba4393549e40b003e1a",
+      "imports": [
+        "Observation",
+        "Photos",
+        "PhotoMaidCore",
+        "UIKit"
+      ],
+      "declarations": [
+        "PhotoGameSource: Equatable, Sendable ",
+        "PhotoGamePhotos "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Games/PhotoGameRecordsView.swift",
+      "lines": 63,
+      "sha256": "74767d3f3fb57be044b4054fe65cddaf3efc604e3486d033652157504941e34e",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "PhotoGameRecordsView: View ",
+        "PhotoGameRecordSaveStatus: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Games/PhotoGameScores.swift",
+      "lines": 31,
+      "sha256": "e7cc5370e64a6ca66800ad5634d5c0b049751346aeb774166ca2ffd1dcdee943",
+      "imports": [
+        "Observation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "PhotoGameScores "
+      ],
+      "persistent_apis": [
+        "PhotoGameRecords"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Features/Games/PhotoGameSession.swift",
+      "lines": 10,
+      "sha256": "5e15cfd916cb6f571553442e2144894f1a930323acab7769e8c651826e8f5392",
+      "imports": [
+        "Observation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "PhotoGameSession "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Games/PhotoGamesView.swift",
+      "lines": 86,
+      "sha256": "4ff657f14217d639d1cee72de81f586f2bb34f6ce56a8700f8a2fb0a19939245",
+      "imports": [
+        "SwiftUI"
+      ],
+      "declarations": [
+        "PhotoGamesView: View ",
+        "Game ",
+        "PhotoGameTile: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/History/HistoryView.swift",
+      "lines": 114,
+      "sha256": "9127c3c286d66876daba4a01a6524dbe188251a54b3bd7bb0499fbde01511077",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "HistoryView: View ",
+        "HistoryRow: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Later/LaterView.swift",
+      "lines": 146,
+      "sha256": "25745f9ff720757f51d81c0433eaa99331720a8fb2beb0a49e6cfd1ac69434e6",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "LaterView: View ",
+        "LaterDateSheet: View ",
+        "ItemRecord: @retroactive Identifiable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Library/AnimatedGIFView.swift",
+      "lines": 74,
+      "sha256": "7d8790fe66a000bb379a789e7c59c5a70aa1469a702835f9af3105beea186245",
+      "imports": [
+        "Foundation",
+        "Photos",
+        "SwiftUI",
+        "UIKit",
+        "WebKit"
+      ],
+      "declarations": [
+        "GIFPlayback ",
+        "AnimatedGIFView: UIViewRepresentable ",
+        "Coordinator "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Library/LibraryPages.swift",
+      "lines": 273,
+      "sha256": "8058e858c70d5b42d79470590258069d71769d6454eb81ff555446a7e6909a43",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "SearchView: View ",
+        "SelectionBasketView: View ",
+        "TagsView: View ",
+        "HiddenView: View ",
+        "MediaGridView: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Library/LibraryView.swift",
+      "lines": 486,
+      "sha256": "512b7b95964cce7fbc17b1171a9b69621918c617316af8e6bfb97a7555874fb2",
+      "imports": [
+        "Photos",
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "LibraryView: View ",
+        "LibraryFilterText ",
+        "MediaAsset ",
+        "AlbumsContent: View ",
+        "FavoritesContent: View ",
+        "FavoritesView: View ",
+        "AlbumsView: View ",
+        "AlbumView: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Library/MediaGrid.swift",
+      "lines": 294,
+      "sha256": "c9a5e650e0759ed22de944ddc3ad343c23de3f142b77f8b73223dd5808c3fe00",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "MediaGrid: View ",
+        "TimelineText ",
+        "SelectionBar: View ",
+        "SharePreparation: Equatable ",
+        "StudioHandoff "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Library/SlideshowView.swift",
+      "lines": 146,
+      "sha256": "5c478b080718045776435c8b5b9481cef0dc7b809cd432e59282f480befd21ef",
+      "imports": [
+        "AVKit",
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "SlideshowView: View ",
+        "SlideshowSettingsSheet: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Library/ViewerVideoControls.swift",
+      "lines": 94,
+      "sha256": "2a09a8d55b1ae2b9d83def32479e401c27b0f88dc4a5c5bccfbfa3b443cef968",
+      "imports": [
+        "AVFoundation",
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "ViewerVideoControls: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Library/ViewerView.swift",
+      "lines": 401,
+      "sha256": "12e440e61c03e4047f5f7162033d741c1854048a74b2689c59e86caed446a935",
+      "imports": [
+        "AVKit",
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "ViewerView: View ",
+        "ViewerPage: View ",
+        "MediaInfoSheet: View ",
+        "TagEditorSheet: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Memory/PhotoMemoryCollectionPicker.swift",
+      "lines": 60,
+      "sha256": "bb651694aea024813e385c27c26dc6d15ed2aedd431bfbfc61c2c320f603c1ab",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "PhotoMemoryCollectionPicker: View ",
+        "Entry: Identifiable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Memory/PhotoMemoryModel.swift",
+      "lines": 113,
+      "sha256": "6eb938f7d0b0a576bd676f17ff3f848c4571a561e2fb3c0b6514cf7f60c40d69",
+      "imports": [
+        "Observation",
+        "PhotoMaidCore",
+        "UIKit"
+      ],
+      "declarations": [
+        "PhotoMemoryModel "
+      ],
+      "persistent_apis": [
+        "PhotoGameRecords"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Features/Memory/PhotoMemoryView.swift",
+      "lines": 329,
+      "sha256": "0384479e222e3a19d89107eff8fddbb7fa1b34c13801a30c767aff0c49781819",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI",
+        "UIKit"
+      ],
+      "declarations": [
+        "PhotoMemoryView: View ",
+        "Source: Hashable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Months/MonthsView.swift",
+      "lines": 99,
+      "sha256": "1890a5fd0c3e541003e679cc2fa0f837399bd79cee0ddf046ee0b2062fe8f0f2",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "MonthsView: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Onboarding/OnboardingFlow.swift",
+      "lines": 96,
+      "sha256": "d3876ba04b0f27113537f1b7d7917f3d8e160c7ee20f39717c40eef75552981d",
+      "imports": [
+        "StoreKit",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "OnboardingFlow: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Onboarding/OnboardingVisuals.swift",
+      "lines": 208,
+      "sha256": "32bc474bb785e097a8623b9b69ac28b2651dcbead5c7babef688a62f863232ef",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "DemoPhoto: Identifiable, Equatable ",
+        "DemoPhotoCard: View ",
+        "OnboardingPhotoStack: View ",
+        "OnboardingDemoStack: View ",
+        "OnboardingSafeFlow: View ",
+        "OnboardingSymbol: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Organize/OrganizeStore.swift",
+      "lines": 196,
+      "sha256": "82598d0ef1e76122470f4cb437bf4287007bd8eef683be404e3c748da782421c",
+      "imports": [
+        "Foundation",
+        "Observation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "OrganizeStore "
+      ],
+      "persistent_apis": [
+        "KeyValueStore",
+        "StoreKeys"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Features/Settings/FeedControlsView.swift",
+      "lines": 177,
+      "sha256": "9f9bc03af748231db4fe84d5b92b5fb6333946c3710651c4f62e35b8dde15317",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "FeedControlsView: View ",
+        "AlbumTarget: Identifiable, Hashable ",
+        "FeedControlsText "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Settings/ProView.swift",
+      "lines": 97,
+      "sha256": "755a5c4146afa1f5276a75f0046f38b38ddfb9c56f4b39d94ce4acc2cf8bbc52",
+      "imports": [
+        "PhotoMaidCore",
+        "StoreKit",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "ProView: View ",
+        "Benefit: Hashable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Settings/SettingsView.swift",
+      "lines": 79,
+      "sha256": "175fdcac17cedb2e5733b2f60914f7bf8533360eaffa3145b38fa6d819a0531d",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI",
+        "UIKit"
+      ],
+      "declarations": [
+        "SettingsView: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Settings/SupportViews.swift",
+      "lines": 59,
+      "sha256": "98b6b46d3c0bcdf2e51f09e8a4069487fa139c17ef6ec7235bea544f18c70d94",
+      "imports": [
+        "Photos",
+        "PhotoMaidCore",
+        "SwiftUI",
+        "UIKit"
+      ],
+      "declarations": [
+        "PrivacyView: View ",
+        "HelpView: View ",
+        "ExcludedAlbumsView: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Snake/PhotoSnakeBoard.swift",
+      "lines": 92,
+      "sha256": "6776e67b77aa97540f8243b827fa689b7915d1c77fb6ebb76fea3aa2c85fa751",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI",
+        "UIKit"
+      ],
+      "declarations": [
+        "PhotoSnakeBoard: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Snake/PhotoSnakeModel.swift",
+      "lines": 128,
+      "sha256": "ce6a79a8a266477d7670eb82f0c999462019982dd47b8f903d0558f7c0f9ed3e",
+      "imports": [
+        "Observation",
+        "PhotoMaidCore",
+        "UIKit"
+      ],
+      "declarations": [
+        "PhotoSnakeModel "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Snake/PhotoSnakeView.swift",
+      "lines": 263,
+      "sha256": "c3d290ff01a146cd532fda82786a6446868a912038376c95c459f47e728f09d8",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI",
+        "UIKit"
+      ],
+      "declarations": [
+        "PhotoSnakeView: View ",
+        "Source: Hashable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Studio/CollageCanvas.swift",
+      "lines": 710,
+      "sha256": "ed456e3ea2940011c81ccc727fa63b1d430cbdc87787d053919bb280e3d02308",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI",
+        "UIKit"
+      ],
+      "declarations": [
+        "CollageStage: View ",
+        "CollageCanvas: View ",
+        "DragTarget ",
+        "PinchTarget ",
+        "CollagePhotoTile: View ",
+        "CollageBackgroundView: View ",
+        "CollageLayerOverlay: View, Equatable ",
+        "CollageDividerItem: Identifiable ",
+        "CollageDividerHandle: View ",
+        "CollageLayerHandle: View ",
+        "CollageLayerEdit ",
+        "CollageStickerNames "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Studio/CollageModel.swift",
+      "lines": 146,
+      "sha256": "02db5ccf519d3c02ea97ddb2451a1ea3a55ac51c32f83eedfee53535b8b052be",
+      "imports": [
+        "CoreGraphics",
+        "Foundation",
+        "Observation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "CollageTab: String, CaseIterable, Identifiable ",
+        "CollageModel ",
+        "CollageDestination: Hashable ",
+        "CollageSaveOptions: Hashable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Studio/CollagePanels.swift",
+      "lines": 777,
+      "sha256": "083d896b3b848c851ed5df37616e14453b5ba336749d549dce664f1ee0c05b4b",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI",
+        "UIKit"
+      ],
+      "declarations": [
+        "CollagePalette ",
+        "Swatch: Identifiable ",
+        "CollageSwatchRow: View ",
+        "CollageSliderRow: View ",
+        "CollageActionLabel: View ",
+        "CollageActionButton: View ",
+        "CollageThumbRow: View ",
+        "CollageLayoutThumb: View ",
+        "CollageLayoutNames ",
+        "CollageAspectOption: Identifiable ",
+        "CollageAspectRow: View ",
+        "CollageLayoutPanel: View ",
+        "CollageSpacingPanel: View ",
+        "CollageBackgroundPanel: View ",
+        "CollagePhotoPanel: View ",
+        "CollageDecorPanel: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Studio/CollageSaveSheet.swift",
+      "lines": 164,
+      "sha256": "5163c02cb1cf2e7143df8920bf42dc70f921fee7248491b0e22345b57b40b2b7",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "CollageSaveSheet: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Studio/CollageView.swift",
+      "lines": 466,
+      "sha256": "1af1d7be40a2e19b1ce370867a8d9bff53c7df6bb73c20180346e27c200d5663",
+      "imports": [
+        "Photos",
+        "PhotoMaidCore",
+        "SwiftUI",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [
+        "CollageView: View ",
+        "CollageShareItem: Identifiable "
+      ],
+      "persistent_apis": [
+        "FileManager",
+        "StoreKeys"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Features/Studio/MovieView.swift",
+      "lines": 442,
+      "sha256": "bf5631c713f983dbdacec008068e53e31442c0e9da8cb264c89ca33222810073",
+      "imports": [
+        "AVFoundation",
+        "Photos",
+        "PhotoMaidCore",
+        "SwiftUI",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [
+        "MovieView: View "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Features/Studio/StudioMediaPicker.swift",
+      "lines": 88,
+      "sha256": "2adbf2a28a7366116064fae6af8d5747033f676627c3cf70bcec2acdf1c196fc",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "StudioMediaPicker: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Studio/StudioView.swift",
+      "lines": 93,
+      "sha256": "40a27655d7173dfd23ef09df5822a6386883c8a6a439ff54b66d9236b517ccd1",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "StudioView: View "
+      ],
+      "persistent_apis": [
+        "StoreKeys"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Features/Studio/ToolsView.swift",
+      "lines": 428,
+      "sha256": "0c3c6d3361d80fb367372451e4bbb86d9925e13480237062ab786bc076f2c289",
+      "imports": [
+        "Photos",
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "ToolsView: View ",
+        "ToolOptionRow: View "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Features/Studio/WorkflowsView.swift",
+      "lines": 211,
+      "sha256": "fa13cecc44de6ad579672a864ec4460b333bb18e21d022f807c1944780cc3135",
+      "imports": [
+        "CoreImage",
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "WorkflowsView: View ",
+        "WorkflowEditor: View ",
+        "WorkflowRunResult: Identifiable, Sendable ",
+        "WorkflowProcessor "
+      ],
+      "persistent_apis": [
+        "FileManager",
+        "StoreKeys"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Features/Today/QuickAccessSection.swift",
+      "lines": 254,
+      "sha256": "b148e74f3b7530505494ec35fb09ea5d37a645961aab99c4996f769767f394f6",
+      "imports": [
+        "Photos",
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "QuickStatus: Equatable ",
+        "QuickAccessSection: View ",
+        "QuickAccessUI ",
+        "QuickAccessQuery ",
+        "MediaAsset ",
+        "QuickAccessAddSheet: View ",
+        "QuickAccessEditSheet: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Today/TodayView.swift",
+      "lines": 356,
+      "sha256": "6e67fd36fb561614654339ddd0a9baa0b0f7521fff4626282c1577bff047d2d7",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "TodayView: View ",
+        "RowGroup<Content: View>: View ",
+        "ReviewHero: View ",
+        "StorageLine: View ",
+        "DeviceStorage "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Vault/VaultCapture.swift",
+      "lines": 307,
+      "sha256": "10b00a9d0f4fb5b26bdb34297d85c8af030ee0ec0a8c63030f831061706350dc",
+      "imports": [
+        "AVFoundation",
+        "CryptoKit",
+        "Observation",
+        "PhotoMaidCore",
+        "SwiftUI",
+        "UniformTypeIdentifiers",
+        "VisionKit"
+      ],
+      "declarations": [
+        "VaultDocumentScanner: View ",
+        "VaultScannerController: UIViewControllerRepresentable ",
+        "Coordinator: NSObject, @preconcurrency VNDocumentCameraViewControllerDelegate ",
+        "VaultAudioStream: @unchecked Sendable ",
+        "VaultCaptureCheckpoint: Codable ",
+        "VaultCaptureRecovery ",
+        "VaultVoiceRecorder: NSObject ",
+        "VaultVoiceRecorderView: View "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Features/Vault/VaultDeletionControls.swift",
+      "lines": 77,
+      "sha256": "8f70ef04b31ff1450fe334963e28c21bc829f54afcad94ac3212b6ec8535edc9",
+      "imports": [
+        "SwiftUI",
+        "UIKit"
+      ],
+      "declarations": [
+        "VaultMediaTrashSwipe: UIGestureRecognizerRepresentable ",
+        "Coordinator: NSObject, UIGestureRecognizerDelegate ",
+        "VaultSelectionToolbarItem: ToolbarContent ",
+        "VaultTrashConfirmation: ViewModifier ",
+        "View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Vault/VaultDocumentPreview.swift",
+      "lines": 109,
+      "sha256": "d3ba0abf26da2e1831f75bbe70a5dcc4016eddaa2e8ba0f030e183188760e4b4",
+      "imports": [
+        "AVKit",
+        "ImageIO",
+        "PDFKit",
+        "PhotoMaidCore",
+        "SwiftUI",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [
+        "VaultDocumentPreview: View ",
+        "VaultPDFContent: UIViewRepresentable ",
+        "VaultPrivatePDFView: PDFView "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Vault/VaultHomeView.swift",
+      "lines": 464,
+      "sha256": "40ca79e10800918374fb7514c2ebc45bf52e466ba52f4e6584479f22279969e5",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "VaultHomeView: View ",
+        "VaultShare: Identifiable ",
+        "VaultViewerRequest: Identifiable ",
+        "VaultCell: View ",
+        "VaultMoveSheet: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Vault/VaultLockView.swift",
+      "lines": 184,
+      "sha256": "90eefac2e4faf406a44099d4a42796bc23f9f95529d221b5b1fa2b4be6c8a576",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "VaultLockView: View ",
+        "VaultRecoveryUnlockSheet: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Vault/VaultRootView.swift",
+      "lines": 146,
+      "sha256": "59ee4eef70c636f823b03b21bde62e1aa4267d4d9b3742d3a629eb933c3d3e0c",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "VaultRootView: View ",
+        "VaultCodeFields: View ",
+        "VaultRecoveryKeyCard: View ",
+        "VaultNewCodeView: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Vault/VaultSettingsView.swift",
+      "lines": 121,
+      "sha256": "a29e1b216011b68bc873acf8220d2a2d324d4bf42b83cf9778c1e63b75d61829",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "VaultSettingsView: View ",
+        "VaultChangeCodeSheet: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Vault/VaultSetupView.swift",
+      "lines": 135,
+      "sha256": "f1c84d378c5a3523c3f533a5e4691a5e1e24492ef3c9b65ca30ac96c6d6754a4",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "VaultSetupView: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Vault/VaultViewer.swift",
+      "lines": 251,
+      "sha256": "d3079add455380ff0b0796d9c54a45415a0cbd67c000ca748b61d1ec6dce7dc6",
+      "imports": [
+        "AVKit",
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "VaultViewer: View ",
+        "VaultViewerPage: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Vault/VaultWorkspaceHomeView.swift",
+      "lines": 700,
+      "sha256": "a3a2ca1b6f13e2a7584ed8eb5beee826843003d2fc0853f38b107703a6ad448f",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI",
+        "UIKit",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [
+        "VaultWorkspaceHomeView: View ",
+        "VaultCloseToolbarItem: ToolbarContent ",
+        "VaultNotesView: View ",
+        "VaultNoteEditor: View ",
+        "VaultFilesView: View ",
+        "VaultWorkspaceFolderBar: View ",
+        "VaultMoveMenu: View ",
+        "VaultWorkspaceMessages ",
+        "VaultWorkspaceErrorModifier: ViewModifier ",
+        "View ",
+        "VaultActivityMonitor: UIViewRepresentable ",
+        "Probe: UIView ",
+        "Recognizer: UIGestureRecognizer, UIGestureRecognizerDelegate "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Features/Vault/VaultWorkspaceToolsView.swift",
+      "lines": 155,
+      "sha256": "1ddde20ded6d91193e4c52fd0101c5bb462f2de6b66149b20788bfb81f26f20e",
+      "imports": [
+        "PhotoMaidCore",
+        "SwiftUI",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [
+        "VaultWorkspaceToolsView: View ",
+        "VaultWorkspaceTrashView: View ",
+        "VaultTrashAction "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Ads/AdsService.swift",
+      "lines": 349,
+      "sha256": "08365fc561699b33ba7b6b96c054d3bf8f6e593ab65741f24febc3899a3354d6",
+      "imports": [
+        "AppTrackingTransparency",
+        "Foundation",
+        "GoogleMobileAds",
+        "Observation",
+        "PhotoMaidCore",
+        "UIKit",
+        "UserMessagingPlatform"
+      ],
+      "declarations": [
+        "AdsService: NSObject ",
+        "RewardOutcome: Equatable, Sendable ",
+        "AdsService: FullScreenContentDelegate ",
+        "RewardFlag: @unchecked Sendable ",
+        "NativeAdFetcher: NSObject, NativeAdLoaderDelegate ",
+        "VaultFolderGate "
+      ],
+      "persistent_apis": [
+        "UserDefaults"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Analysis/AnalysisController.swift",
+      "lines": 539,
+      "sha256": "0fb7df250da7da26eb0d98f7c62211d68eddcaebe8ef00a1f8bb34f7d634269c",
+      "imports": [
+        "BackgroundTasks",
+        "Foundation",
+        "Observation",
+        "PhotoMaidCore",
+        "UIKit"
+      ],
+      "declarations": [
+        "AnalysisDisplay: Sendable ",
+        "AnalysisController "
+      ],
+      "persistent_apis": [
+        "StoreKeys",
+        "UserDefaults"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Analysis/AnalysisDatabase.swift",
+      "lines": 284,
+      "sha256": "0c95c6e04a6b3726424eb6b3c9cac4b834cfe0a7ba6ac8a53b78aaf86ec2e965",
+      "imports": [
+        "Foundation",
+        "PhotoMaidCore",
+        "SQLite3",
+        "CSQLite"
+      ],
+      "declarations": [
+        "AnalysisHitPage: Sendable ",
+        "AnalysisDatabaseError: Error ",
+        "AnalysisDatabase: @unchecked Sendable "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Analysis/AnalysisImageLoader.swift",
+      "lines": 135,
+      "sha256": "e4d94d8a5e532fc621d576278d2ab2c6ba56a25a8df74ab4c3f341906b83337e",
+      "imports": [
+        "Foundation",
+        "ImageIO",
+        "Network",
+        "Photos",
+        "PhotoMaidCore",
+        "UIKit"
+      ],
+      "declarations": [
+        "AnalysisNetwork: @unchecked Sendable ",
+        "AnalysisImage: @unchecked Sendable ",
+        "AnalysisImageOutcome: Sendable ",
+        "AnalysisManager: @unchecked Sendable ",
+        "AnalysisRequestClock: @unchecked Sendable ",
+        "AnalysisImageLoader "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Analysis/AnalysisRunner.swift",
+      "lines": 206,
+      "sha256": "2d87d7f3bd35be579f713af639f78a08c0524e218d611dbbcdfcae04810d2829",
+      "imports": [
+        "Foundation",
+        "Photos",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "AnalysisSource: Sendable ",
+        "AnalysisRunStage: String, Sendable ",
+        "AnalysisRunEvent: Sendable ",
+        "AnalysisStop: Error ",
+        "CountsPacer ",
+        "AnalysisRunner "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Analysis/LocalPhotoAnalyzer.swift",
+      "lines": 120,
+      "sha256": "64ee5b80fc0c58bea943e0c84660efdd13b5be443ff3b282b28dcb1a179b2008",
+      "imports": [
+        "CoreGraphics",
+        "Foundation",
+        "PhotoMaidCore",
+        "Vision"
+      ],
+      "declarations": [
+        "AnalysisOutput: Sendable ",
+        "AnalysisVisionRequest: @unchecked Sendable ",
+        "LocalPhotoAnalyzer "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/App/ScreenAwake.swift",
+      "lines": 26,
+      "sha256": "705f9fc3b7850cf638f62109d45615bb24dbb02f0e8168a49ae98cd74cf69ee7",
+      "imports": [
+        "SwiftUI",
+        "UIKit"
+      ],
+      "declarations": [
+        "ScreenAwake ",
+        "ScreenAwakeModifier: ViewModifier ",
+        "View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Archive/ArchiveService.swift",
+      "lines": 76,
+      "sha256": "b1e4005a3a43b78613a2a12bd57293188bdd533a2236e25ada720c19d965ca6f",
+      "imports": [
+        "CryptoKit",
+        "Photos",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "ArchiveService "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Diagnostics/Diagnostics.swift",
+      "lines": 100,
+      "sha256": "7d27ddcd2b7959cf99087ada4e1038b686035beed9dfe982918a18ff8a2c68a3",
+      "imports": [
+        "Foundation",
+        "MetricKit",
+        "OSLog"
+      ],
+      "declarations": [
+        "Diagnostics ",
+        "Area: String, Sendable ",
+        "MetricsSubscriber: NSObject, MXMetricManagerSubscriber, @unchecked Sendable "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Documents/PdfServices.swift",
+      "lines": 78,
+      "sha256": "5f86c721bd396601219ccc3fbdf791708ef19ccd4984d49618d0b4c983e6082e",
+      "imports": [
+        "PDFKit",
+        "PhotoMaidCore",
+        "UIKit"
+      ],
+      "declarations": [
+        "PdfServices ",
+        "Failure: Error ",
+        "Array "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Editing/BatchProcessor.swift",
+      "lines": 131,
+      "sha256": "e42a88019e61934f78bef6439fc16c4a170998ec4f8e65c42217883fd61042b3",
+      "imports": [
+        "ImageIO",
+        "Photos",
+        "PhotoMaidCore",
+        "UIKit",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [
+        "BatchProcessor ",
+        "Failure: Error ",
+        "Array "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Editing/CollageRenderer.swift",
+      "lines": 175,
+      "sha256": "6e7b28b5067ffacbd137d0d3503c3252d3ae016ccf8ea0070a3ed881bb72b704",
+      "imports": [
+        "CoreImage",
+        "ImageIO",
+        "PhotoMaidCore",
+        "UIKit",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [
+        "CollageRenderer: @unchecked Sendable ",
+        "Failure: Error "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Editing/EditRenderer.swift",
+      "lines": 341,
+      "sha256": "309a9bc7489cfc5c8b330ece7a82dccd8412b3419a2a48ddfa43c941c444159f",
+      "imports": [
+        "CoreImage",
+        "CoreImage",
+        "Foundation",
+        "ImageIO",
+        "PhotoMaidCore",
+        "UIKit",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [
+        "EditRenderer: @unchecked Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Editing/LayerRenderer.swift",
+      "lines": 216,
+      "sha256": "6b460efebbdfeac7ebc14a1986d9893e2911a4a2085620ebc05ae4288c4979c1",
+      "imports": [
+        "CoreImage",
+        "CoreText",
+        "PhotoMaidCore",
+        "UIKit"
+      ],
+      "declarations": [
+        "LayerRenderer "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Export/ExportCoordinator.swift",
+      "lines": 157,
+      "sha256": "1f6c9b78559d7ced75760d4dcea87aa8d1ecf09a73a819205f2e5036a9008b30",
+      "imports": [
+        "BackgroundTasks",
+        "Foundation",
+        "Observation",
+        "SwiftUI",
+        "UIKit"
+      ],
+      "declarations": [
+        "ExportCoordinator ",
+        "Failure: Error ",
+        "ExportProgressOverlay: View "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/ForegroundActivity.swift",
+      "lines": 20,
+      "sha256": "13c5997d588b4fb9b33ea8d8dfa4a629a4e7ac5fdfcb3352874608c8e3ffccd7",
+      "imports": [
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "ForegroundActivity "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/LocalFiles/ConnectedSources.swift",
+      "lines": 349,
+      "sha256": "dda05b31add46b4ef793b79d35173572f87e5779bbec67f4277f7055724c2c87",
+      "imports": [
+        "Foundation",
+        "Observation",
+        "PhotoMaidCore",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [
+        "ConnectedSource: Codable, Hashable, Identifiable, Sendable ",
+        "SourceProblem: Error, Equatable, Sendable ",
+        "ConnectedSourceStore ",
+        "FileEntry: Hashable, Identifiable, Sendable ",
+        "FileKindFilter: String, CaseIterable, Identifiable, Sendable ",
+        "FileScanReport: Sendable ",
+        "FileScanner ",
+        "FileOperations ",
+        "ConnectedSourceByteProvider: ByteSourceProvider, @unchecked Sendable "
+      ],
+      "persistent_apis": [
+        "FileManager",
+        "KeyValueStore",
+        "StoreKeys"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/LocalFiles/FileIndex.swift",
+      "lines": 52,
+      "sha256": "99cbba6363899fe661d1c07fa885b805c3a5621cc2a63ccaa4872368ba312268",
+      "imports": [
+        "AVFoundation",
+        "Foundation",
+        "Observation",
+        "Photos",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "FileIndex "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Notifications/ReminderScheduler.swift",
+      "lines": 56,
+      "sha256": "78efe482e35dfbeead91f21b6149973f26a7a9971218749250e2b03711a332fb",
+      "imports": [
+        "Foundation",
+        "Observation",
+        "PhotoMaidCore",
+        "UserNotifications"
+      ],
+      "declarations": [
+        "ReminderScheduler ",
+        "Access: Equatable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/PhotoLibrary/MediaSizer.swift",
+      "lines": 372,
+      "sha256": "221da28600458c91f4e8fdae882784777d2938909bd1eacaab301c8acf5faa8f",
+      "imports": [
+        "AVFoundation",
+        "Foundation",
+        "Photos",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "MediaSizer ",
+        "Probe: Sendable ",
+        "Part: Sendable ",
+        "DuplicateHashes: Sendable ",
+        "InventoryItem ",
+        "ByteCounter: @unchecked Sendable ",
+        "PhotoResourceByteProvider: ByteSourceProvider, @unchecked Sendable ",
+        "ResourceStream: ByteStream, @unchecked Sendable ",
+        "ResourceStreamError: Error "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/PhotoLibrary/PhotoLibraryService.swift",
+      "lines": 643,
+      "sha256": "bab2836842a30906334186d1a2e617cec0713566646ddcf8bc9d0d5f1bd141c4",
+      "imports": [
+        "CoreLocation",
+        "Foundation",
+        "Observation",
+        "Photos",
+        "PhotosUI",
+        "PhotoMaidCore",
+        "UIKit"
+      ],
+      "declarations": [
+        "PhotoAccess: Equatable, Sendable ",
+        "MediaCategory: String, CaseIterable, Sendable, Identifiable, Codable ",
+        "MediaAsset: Hashable, Sendable, Identifiable ",
+        "PhotoAlbum: Hashable, Sendable, Identifiable ",
+        "MediaWriteResult: Equatable, Sendable ",
+        "LibraryChangeTracker: @unchecked Sendable ",
+        "PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver ",
+        "SaveRequest: Sendable ",
+        "SaveResult: Equatable, Sendable ",
+        "PlaceholderBox: @unchecked Sendable ",
+        "UIApplication "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/PhotoLibrary/PhotoRequest.swift",
+      "lines": 73,
+      "sha256": "e9ae776ea75207aed17d773bde343772c829d3bae8de668e50685c127c197936",
+      "imports": [
+        "Foundation",
+        "Photos"
+      ],
+      "declarations": [
+        "PhotoRequest<Value: Sendable>: @unchecked Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/PhotoLibrary/PreviewPipeline.swift",
+      "lines": 314,
+      "sha256": "9a0bd851bc1bc92d6ae4d7c3c078df87d5d77c00acee58a55a6033b1aead5764",
+      "imports": [
+        "AVFoundation",
+        "Foundation",
+        "Photos",
+        "UIKit"
+      ],
+      "declarations": [
+        "PreviewResult: Sendable ",
+        "PreviewUpdate: Sendable ",
+        "PreviewPipeline ",
+        "PlayerItemResult: Sendable ",
+        "UncheckedBox<T>: @unchecked Sendable ",
+        "RequestIDs: @unchecked Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/PhotoLibrary/SizeEstimation.swift",
+      "lines": 31,
+      "sha256": "bbf95f7bd4bc2a5bbcb6501042a154c2c7bb82d2d4cd5e1ebe166f75aa93d145",
+      "imports": [
+        "Foundation",
+        "PhotoMaidCore",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [
+        "MediaAsset ",
+        "FileEntry ",
+        "SizeEstimator "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/PhotoLibrary/SizeIndexDatabase.swift",
+      "lines": 128,
+      "sha256": "aa6349d40474444019fd0ae42e3e4f7bdf9815599c5b9cf450c27308ad0404a7",
+      "imports": [
+        "Foundation",
+        "PhotoMaidCore",
+        "SQLite3",
+        "CSQLite"
+      ],
+      "declarations": [
+        "SizeIndexError: Error ",
+        "SizeIndexDatabase: @unchecked Sendable "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/PhotoLibrary/SizeMeasuring.swift",
+      "lines": 163,
+      "sha256": "dc38592417baa444994efbae85de30d788bb3ce405487012a11dfe9a124003fa",
+      "imports": [
+        "Foundation",
+        "Observation",
+        "Photos",
+        "PhotoMaidCore",
+        "UIKit"
+      ],
+      "declarations": [
+        "MeasuredPair: Sendable ",
+        "SizeMeasuring "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Playback/FeedPlayer.swift",
+      "lines": 174,
+      "sha256": "52c6fdeb4f6740abf138049369d4521cdfdc0dfe2a926adb0c40ac850db5946a",
+      "imports": [
+        "AVFoundation",
+        "Observation",
+        "SwiftUI",
+        "UIKit"
+      ],
+      "declarations": [
+        "FeedPlayer ",
+        "PlayerLayerView: UIViewRepresentable ",
+        "Coordinator ",
+        "PlayerHostView: UIView "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Purchases/StoreKitGateway.swift",
+      "lines": 158,
+      "sha256": "58baf95c213c9a167d1c69be7c08f044c9cad4f1e6810511120b13181c0fc637",
+      "imports": [
+        "Foundation",
+        "Observation",
+        "PhotoMaidCore",
+        "StoreKit",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "StoreProductInfo: Equatable, Sendable ",
+        "StoreOffer: Equatable, Sendable ",
+        "PurchaseResult: Equatable, Sendable ",
+        "StoreKitGateway "
+      ],
+      "persistent_apis": [
+        "KeyValueStore",
+        "StoreKeys"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Vault/VaultBackup.swift",
+      "lines": 321,
+      "sha256": "1eb9a2392064f4babedda8a348375d7aef747de26db16a22456b605430266e3c",
+      "imports": [
+        "CryptoKit",
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "VaultBackup ",
+        "Imported: Sendable ",
+        "VaultStore "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Vault/VaultConcealment.swift",
+      "lines": 145,
+      "sha256": "1133950aa37f8819ed329f7592c53944b21a6b6a3c959f014a8b953d3759461e",
+      "imports": [
+        "CryptoKit",
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "Notification.Name ",
+        "VaultConcealment: @unchecked Sendable ",
+        "Bool "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Vault/VaultCrypto.swift",
+      "lines": 332,
+      "sha256": "4e326b01de50649c8b1189e09021e2b055202479bde21d3cb33c92cf5057022a",
+      "imports": [
+        "CommonCrypto",
+        "CryptoKit",
+        "Foundation",
+        "LocalAuthentication",
+        "PhotoMaidCore",
+        "Security"
+      ],
+      "declarations": [
+        "VaultKey: Sendable ",
+        "VaultCryptoError: Error ",
+        "VaultCrypto ",
+        "VaultFileWriter: @unchecked Sendable ",
+        "VaultFileReader ",
+        "VaultKeychain "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Vault/VaultNoteJournalIO.swift",
+      "lines": 46,
+      "sha256": "ca62e09e7ff9e84ec9036fe4b66f50ad20212e648c4e5a752890fbe9b8cc47f4",
+      "imports": [
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "VaultNoteJournalIO "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Vault/VaultStore.swift",
+      "lines": 1189,
+      "sha256": "0e72506f3b5eb35d6f414a3052ece6eb55f682e921679d42b66fa198c582adbd",
+      "imports": [
+        "CoreLocation",
+        "CryptoKit",
+        "Foundation",
+        "ImageIO",
+        "Observation",
+        "Photos",
+        "PhotoMaidCore",
+        "UIKit",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [
+        "VaultProgress: Equatable ",
+        "VaultImportReport: Equatable ",
+        "VaultRestoreReport: Equatable ",
+        "VaultStore ",
+        "Phase: Equatable ",
+        "UnlockResult: Equatable ",
+        "Notification.Name ",
+        "VaultImporter ",
+        "VaultRestorer ",
+        "Outcome: Equatable ",
+        "DataRequestBox: @unchecked Sendable "
+      ],
+      "persistent_apis": [
+        "FileManager",
+        "StoreKeys"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Vault/VaultWorkspaceIO.swift",
+      "lines": 204,
+      "sha256": "7731373ef518d5af42f277300d84b1ecb515d41b277e14448f9017d8ac16b7fb",
+      "imports": [
+        "CryptoKit",
+        "Foundation",
+        "PhotoMaidCore",
+        "UIKit",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [
+        "VaultSessionLease: @unchecked Sendable ",
+        "VaultFileImportResult: Sendable ",
+        "VaultWorkspaceIO ",
+        "VaultDisclosure "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Video/VideoComposer.swift",
+      "lines": 523,
+      "sha256": "6087820785e3286cd4635205c6387ee06770981f44ad7872a5502e8cc6bbbdb0",
+      "imports": [
+        "AVFoundation",
+        "CoreImage",
+        "CoreImage",
+        "Photos",
+        "PhotoMaidCore",
+        "UIKit"
+      ],
+      "declarations": [
+        "VideoEdit ",
+        "RenderPlan: @unchecked Sendable ",
+        "Clip ",
+        "Overlay ",
+        "ImageHolder: @unchecked Sendable ",
+        "CGImagePropertyOrientation ",
+        "FrameComposer ",
+        "PMInstruction: NSObject, AVVideoCompositionInstructionProtocol, @unchecked Sendable ",
+        "PMCompositor: NSObject, AVVideoCompositing, @unchecked Sendable ",
+        "BuiltComposition: @unchecked Sendable ",
+        "VideoBuilder ",
+        "Input: @unchecked Sendable ",
+        "BlankVideo "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Video/VideoExportJob.swift",
+      "lines": 90,
+      "sha256": "4e245581202c371a79c5c60b562c7c37f2eaa8be1e1384188b3313ef782ae5ab",
+      "imports": [
+        "AVFoundation",
+        "CoreImage",
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "VideoExportJob "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Video/VideoSource.swift",
+      "lines": 120,
+      "sha256": "f45f9aaf82fcd008e1596b2823e6c1c1c55547c449d5798c2012f6c85cdd73b1",
+      "imports": [
+        "AVFoundation",
+        "CoreImage",
+        "Photos",
+        "PhotoMaidCore",
+        "UIKit"
+      ],
+      "declarations": [
+        "VideoInfo: Sendable, Equatable ",
+        "VideoError: Error ",
+        "VideoSource ",
+        "CMTime "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Infrastructure/Video/VideoWriter.swift",
+      "lines": 254,
+      "sha256": "1a2bdd6364b7c6c0a8b8900ee5391f707b5929998b0368c2dd70fe6a4d583225",
+      "imports": [
+        "AVFoundation",
+        "CoreMedia",
+        "Foundation"
+      ],
+      "declarations": [
+        "VideoWriter ",
+        "Options: Sendable ",
+        "Pump: @unchecked Sendable ",
+        "Pair: @unchecked Sendable "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Persistence/AppSettings.swift",
+      "lines": 138,
+      "sha256": "9d67f75b31434ed1f6836e673527bfe199de57b1f928f8495032c5ee2cc49197",
+      "imports": [
+        "Foundation",
+        "PhotoMaidCore",
+        "SwiftUI"
+      ],
+      "declarations": [
+        "AppearanceChoice: String, Codable, CaseIterable, Identifiable, Sendable ",
+        "BasketSort: String, Codable, CaseIterable, Sendable ",
+        "AppSettingsData: Codable, Equatable, Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaid/Persistence/CoreDataStore.swift",
+      "lines": 181,
+      "sha256": "cb60101f969d7ae3d1473abeb5301ef663fc0d600be5c0083a783d037db713c5",
+      "imports": [
+        "CoreData",
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "CoreDataStore: @unchecked Sendable ",
+        "StoreError: Error ",
+        "CoreDataLedgerPersistence: LedgerPersistence, @unchecked Sendable ",
+        "DayUsageEntry: Codable ",
+        "LoadErrorBox: @unchecked Sendable "
+      ],
+      "persistent_apis": [
+        "CoreDataStore",
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaid/Persistence/KeyValueStore.swift",
+      "lines": 78,
+      "sha256": "38e9727db8e309e0e48804a753968f21c3f1e247278362f9912718b9f2f87b57",
+      "imports": [
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "StoreKey<Value: Codable & Sendable>: Sendable ",
+        "StoreKeys ",
+        "SizeCacheEntry: Codable, Hashable, Sendable ",
+        "AnalysisCacheEntry: Codable, Hashable, Sendable ",
+        "KeyValueStore "
+      ],
+      "persistent_apis": [
+        "CoreDataStore",
+        "KeyValueStore",
+        "PhotoGameRecords",
+        "StoreKeys"
+      ]
+    },
+    {
+      "path": "PhotoMaidTests/CoreDataLedgerPersistenceTests.swift",
+      "lines": 75,
+      "sha256": "d2cf8a0e8ea7e451745d9f4946f1058ea8cabc00ffc183f4d7dbe2f110abe3eb",
+      "imports": [
+        "XCTest",
+        "PhotoMaidCore",
+        "PhotoMaid"
+      ],
+      "declarations": [
+        "CoreDataLedgerPersistenceTests: XCTestCase "
+      ],
+      "persistent_apis": [
+        "CoreDataStore",
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaidTests/DuplicateScannerObservationTests.swift",
+      "lines": 22,
+      "sha256": "9f46e59803675390b40a1272383fc279e04d2a1759fd11b0451c2ad6ae9d8647",
+      "imports": [
+        "Observation",
+        "PhotoMaidCore",
+        "XCTest",
+        "PhotoMaid"
+      ],
+      "declarations": [
+        "DuplicateScannerObservationTests: XCTestCase "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaidTests/FeedSkipPersistenceTests.swift",
+      "lines": 29,
+      "sha256": "ed69dbb78db731212eeeaafbf255786273ccbfb305d3b40a42185f102b16bf41",
+      "imports": [
+        "PhotoMaidCore",
+        "Testing",
+        "PhotoMaid"
+      ],
+      "declarations": [
+        "FeedSkipPersistenceTests "
+      ],
+      "persistent_apis": [
+        "CoreDataStore",
+        "KeyValueStore",
+        "StoreKeys"
+      ]
+    },
+    {
+      "path": "PhotoMaidTests/PhotoGameScoreIntegrationTests.swift",
+      "lines": 77,
+      "sha256": "d4f05f47e453aeafdb895965a7458699d55dae71dc3057a34fc74747183d7c58",
+      "imports": [
+        "PhotoMaidCore",
+        "Testing",
+        "PhotoMaid"
+      ],
+      "declarations": [
+        "PhotoGameScoreIntegrationTests ",
+        "Failure: Error "
+      ],
+      "persistent_apis": [
+        "CoreDataStore",
+        "KeyValueStore",
+        "StoreKeys"
+      ]
+    },
+    {
+      "path": "PhotoMaidTests/PhotoMemoryModelTests.swift",
+      "lines": 106,
+      "sha256": "dacb4c5f015649ec1bbe560f02f861359533afb033588c995562237b1623eb3c",
+      "imports": [
+        "PhotoMaidCore",
+        "Testing",
+        "UIKit",
+        "PhotoMaid"
+      ],
+      "declarations": [
+        "PhotoMemoryModelTests "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaidTests/PhotoSnakeModelTests.swift",
+      "lines": 103,
+      "sha256": "610b513bea1e8f0111264cf7aebe601d91398a7e763979f85be54155ab8e05f3",
+      "imports": [
+        "PhotoMaidCore",
+        "Testing",
+        "UIKit",
+        "PhotoMaid"
+      ],
+      "declarations": [
+        "PhotoSnakeModelTests "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaidTests/PreviewRecoveryTests.swift",
+      "lines": 138,
+      "sha256": "60bd162e58a176d71dcd2b6a6bbc77872218130477bea614e6e7de9c5eb848a5",
+      "imports": [
+        "AVFoundation",
+        "Foundation",
+        "Photos",
+        "Testing",
+        "UIKit",
+        "PhotoMaid"
+      ],
+      "declarations": [
+        "PreviewRecoveryTests ",
+        "ImageCallbacks: @unchecked Sendable ",
+        "Response ",
+        "PendingResult: @unchecked Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaidTests/RetouchBindingTests.swift",
+      "lines": 166,
+      "sha256": "85125db478e150cf110a028b44801769cb53b2fa542356790649e41748682d29",
+      "imports": [
+        "Foundation",
+        "SwiftUI",
+        "Testing",
+        "PhotoMaidCore",
+        "PhotoMaid"
+      ],
+      "declarations": [
+        "RetouchBindingTests "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaidTests/StudioDocumentPlanTests.swift",
+      "lines": 60,
+      "sha256": "5e133dbb267836051f8750096897b3996f97f0d3836fece05b5a81cbdb7c3786",
+      "imports": [
+        "XCTest",
+        "PhotoMaidCore",
+        "PhotoMaid"
+      ],
+      "declarations": [
+        "StudioDocumentPlanTests: XCTestCase "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaidTests/VaultKeychainTests.swift",
+      "lines": 31,
+      "sha256": "d9141eaf501be6fb39e6e53a2df44b3442d26643fa20f82a87ad1b51eb52e8d1",
+      "imports": [
+        "Security",
+        "XCTest",
+        "PhotoMaid"
+      ],
+      "declarations": [
+        "VaultKeychainTests: XCTestCase "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaidUITests/AppStoreCaptureTests.swift",
+      "lines": 467,
+      "sha256": "2626b1accc5beb02b9ac0d79b9a93e9af7503ae1230d85cb72948e35a37a3182",
+      "imports": [
+        "XCTest",
+        "StoreKitTest"
+      ],
+      "declarations": [
+        "AppStoreCaptureTests: XCTestCase "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaidUITests/PhotoGameVisualTests.swift",
+      "lines": 365,
+      "sha256": "f21fc6ec31a1f3daad2c5bd50074d50062090eadf87a71afba1d7e4587ad6e68",
+      "imports": [
+        "XCTest"
+      ],
+      "declarations": [
+        "PhotoGameVisualTests: XCTestCase "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaidUITests/PhotoMaidUITests.swift",
+      "lines": 80,
+      "sha256": "3798070cb76cc19452cb57c409877d09585dab3ddad82f52551567f5681e92b1",
+      "imports": [
+        "XCTest"
+      ],
+      "declarations": [
+        "PhotoMaidUITests: XCTestCase "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaidUITests/RealLibraryTests.swift",
+      "lines": 657,
+      "sha256": "2e7715219fe816c680ce837978409cda0a58d0c90ee76529875ee4583a9e8643",
+      "imports": [
+        "StoreKitTest",
+        "XCTest"
+      ],
+      "declarations": [
+        "RealLibraryTests: XCTestCase "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaidUITests/ScreenshotTests.swift",
+      "lines": 341,
+      "sha256": "f204509dfabe0e63265ec80e6f52b0067b845670ccd234e3058873bb87fe278b",
+      "imports": [
+        "XCTest",
+        "UIKit"
+      ],
+      "declarations": [
+        "ScreenshotTests: XCTestCase "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "PhotoMaidUITests/UITestSupport.swift",
+      "lines": 140,
+      "sha256": "e53ad048b31d6407d9e7ffc8fb2276c4db72bfb06a73e795b4496e9d66748232",
+      "imports": [
+        "XCTest"
+      ],
+      "declarations": [
+        "XCTestCase "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "PhotoMaidUITests/VaultDeletionTests.swift",
+      "lines": 294,
+      "sha256": "68be13b041939c59304fcc422f4285485b95286c3fafd9790387347d8dc14b7d",
+      "imports": [
+        "XCTest"
+      ],
+      "declarations": [
+        "VaultDeletionTests: XCTestCase "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Ads/AdRules.swift",
+      "lines": 38,
+      "sha256": "bab49669336eaad02ec44030d59f6df77f8be6c1d3334a844095cec7fda2f783",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "AppOpenAdPolicy ",
+        "VaultFolderAccess: Equatable, Sendable ",
+        "LimitBonusOffer "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Ads/FeedAdPolicy.swift",
+      "lines": 60,
+      "sha256": "8288ebabb311e283792496acb9360387a89741c92f60e42837dda45353ed4cb3",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "FeedAdState: Hashable, Codable, Sendable ",
+        "FeedAdPolicy "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Analysis/AnalysisGrouping.swift",
+      "lines": 131,
+      "sha256": "630e62f3de826ece0b38bace81406ba34c2af107b9571d735efc2ad76268425c",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "AnalyzedPhoto: Hashable, Sendable ",
+        "SimilarPhotos ",
+        "BlurryPhotos ",
+        "Verdict: Hashable, Sendable ",
+        "PhotoCategory: String, Hashable, Codable, Sendable, CaseIterable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Analysis/AnalysisPlan.swift",
+      "lines": 81,
+      "sha256": "1d7841b5c7e957591432cf848adee49b03f30fe18762de1597f69549a159b4ef",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "AnalysisPlan: Codable, Equatable, Sendable ",
+        "Request: Equatable, Sendable ",
+        "AnalysisAvailability "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Analysis/AnalysisResults.swift",
+      "lines": 104,
+      "sha256": "d9a7d417a8e8a5b3bf6a49e9b5186d613ec7d50c7e475d388877cdd027d8852a",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "AnalysisResultPage: Equatable, Sendable ",
+        "AnalysisGroupPage: Equatable, Sendable ",
+        "WorkThermalLevel: Int, Sendable, Comparable ",
+        "WorkThrottle: Equatable, Sendable ",
+        "AnalysisStopReason: String, Codable, Sendable ",
+        "AnalysisAutoResume "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Analysis/AnalysisWork.swift",
+      "lines": 179,
+      "sha256": "a2a7b1392caa9f1ffd22239a34917e4215af2d0c3275f42dfa3724d538fe1983",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "AnalysisKind: String, Codable, Sendable, CaseIterable ",
+        "AnalysisItemState: String, Codable, Sendable ",
+        "AnalysisFingerprint: Codable, Sendable, Equatable ",
+        "AnalysisItem: Codable, Sendable, Equatable ",
+        "AnalysisCounts: Sendable, Equatable ",
+        "AnalysisOneShot<Value: Sendable>: @unchecked Sendable ",
+        "AnalysisWatchdog: Sendable ",
+        "AnalysisSimilarityGraph: Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Analysis/ThrottledWork.swift",
+      "lines": 54,
+      "sha256": "1bc2c932c414eb2675b9b30455e99d3867deef9f0773d511e4b3df747d6edaa3",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "ThrottledWorkError: Error, Equatable ",
+        "ThrottledWork "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Archive/Archive.swift",
+      "lines": 318,
+      "sha256": "63dacbcc1771c03931df49f45186f4a3cd3ebb941e2a2e83b3c97471d2b04e60",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "TargetKind: String, Hashable, Codable, Sendable ",
+        "VolumeFacts: Hashable, Sendable ",
+        "ArchiveTargets ",
+        "ArchiveSource: Hashable, Sendable ",
+        "ArchiveOptions: Hashable, Codable, Sendable ",
+        "ArchivePlan ",
+        "SpaceCheck: Hashable, Sendable ",
+        "ArchiveSpace ",
+        "EntryState: String, Hashable, Codable, Sendable ",
+        "EntryReason: String, Hashable, Codable, Sendable ",
+        "JournalEntry: Hashable, Codable, Sendable ",
+        "ArchiveJournal: Hashable, Codable, Sendable, Identifiable ",
+        "ArchiveSummary: Hashable, Sendable ",
+        "ArchiveJournalRules ",
+        "Sequence where Element == UInt8 ",
+        "ArchiveList ",
+        "Row: Hashable, Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Archive/Backup.swift",
+      "lines": 306,
+      "sha256": "39c19523d763919ef82f758da6fa65f878cc565755efa1722fb01fb3ef129d11",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "JSONValue: Hashable, Codable, Sendable ",
+        "BackupRef: Hashable, Codable, Sendable ",
+        "BackupState: String, Hashable, Codable, Sendable ",
+        "BackupDecision: Hashable, Codable, Sendable ",
+        "CodingKeys: String, CodingKey ",
+        "BackupAlbum: Hashable, Codable, Sendable ",
+        "PhotoMaidBackup: Hashable, Codable, Sendable ",
+        "CodingKeys: String, CodingKey ",
+        "BackupCheck: Hashable, Sendable ",
+        "BackupRules ",
+        "BackupRefTable: Sendable ",
+        "RestorePlan: Hashable, Sendable ",
+        "AlbumPlan: Hashable, Sendable ",
+        "BackupRestore "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Batch/BatchPlan.swift",
+      "lines": 122,
+      "sha256": "e7c3b34b3d8a82b97a8d8e14a27731b0494db6b3fe3f409e443c62badd421ddb",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "BatchTool: String, Hashable, Codable, Sendable, CaseIterable ",
+        "BatchOptions: Hashable, Codable, Sendable ",
+        "BatchRules ",
+        "BatchSummary: Hashable, Sendable ",
+        "StitchPlan ",
+        "Place: Hashable, Sendable ",
+        "GifPlan "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Batch/Workflow.swift",
+      "lines": 266,
+      "sha256": "2a29081583530f849e6feb21959799c1b41a69762b0f959e64efff3257252501",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "WorkflowFormat: String, Hashable, Codable, Sendable, CaseIterable ",
+        "WorkflowFinish: String, Hashable, Codable, Sendable, CaseIterable ",
+        "Workflow: Hashable, Codable, Sendable, Identifiable ",
+        "CodingKeys: String, CodingKey ",
+        "WorkflowStep: String, Hashable, Sendable ",
+        "WorkflowRules ",
+        "TargetSize ",
+        "Attempt: Hashable, Sendable ",
+        "Outcome: Hashable, Sendable ",
+        "VideoTarget ",
+        "Plan: Hashable, Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Capabilities/Capabilities.swift",
+      "lines": 210,
+      "sha256": "5ebc0daaab641d246e4cee52df0802bdb9af2184fc080b10c64476ab0ece4763",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "PurchaseState: String, Hashable, Codable, Sendable ",
+        "RewardWindow: Hashable, Codable, Sendable ",
+        "LimitBonus: Hashable, Codable, Sendable ",
+        "RewardError: Error, Hashable, Sendable ",
+        "RewardLedger: Hashable, Codable, Sendable ",
+        "CodingKeys: String, CodingKey ",
+        "Capabilities: Hashable, Sendable ",
+        "Tier: String, Hashable, Sendable ",
+        "WorkUnitGrant: Hashable, Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Cleanup/CleanupSavings.swift",
+      "lines": 65,
+      "sha256": "f861298d314e1a0cc2af7c426f153b114a0a14caef2423816576bbae171904d8",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "CleanupSavings: Hashable, Codable, Sendable ",
+        "SavingsTotal: Hashable, Codable, Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Cleanup/OperationModel.swift",
+      "lines": 123,
+      "sha256": "509c87b69d6a5867d27be39a00c151fe18131de780a4e9827589ee23d9f44485",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "OperationID: Hashable, Codable, Sendable, CustomStringConvertible ",
+        "CleanupOperationKind: String, Hashable, Codable, Sendable ",
+        "OperationState: String, Hashable, Codable, Sendable ",
+        "OperationIntent: Hashable, Codable, Sendable, Identifiable ",
+        "OperationOutcome: Hashable, Sendable ",
+        "ExistenceProbe: Hashable, Sendable ",
+        "CleanupError: Error, Hashable, Sendable ",
+        "DayUsage: Hashable, Codable, Sendable ",
+        "AllowanceSnapshot: Hashable, Sendable "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Cleanup/SizeEstimate.swift",
+      "lines": 154,
+      "sha256": "3875a8cdaca89408492cabe233164ebec2cb735ffd43581380e29db663c7c50a",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "SizeValue: Hashable, Sendable ",
+        "SizeSum: Hashable, Sendable ",
+        "EstimateKind: String, Hashable, Sendable, CaseIterable ",
+        "EstimateInput: Hashable, Sendable ",
+        "SizeSample: Hashable, Sendable ",
+        "SizeEstimator: Sendable, Equatable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Cleanup/SizeInventory.swift",
+      "lines": 130,
+      "sha256": "19c0352e07a2fed4476ce7d4f72f897244d081c771370f799026a76c5b3a366f",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "MeasureState: String, Codable, Sendable ",
+        "SizeRecord: Codable, Sendable, Equatable ",
+        "InventoryItem: Sendable, Equatable ",
+        "SizeCounts: Equatable, Sendable ",
+        "SizeInventory ",
+        "DuplicatePrefilter ",
+        "Shape: Hashable, Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Collections/SmartCollections.swift",
+      "lines": 117,
+      "sha256": "987d951bf00dca4639f8e43bf24d1ca84f5d8f4d200470281d419ba4320e19b2",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "CollectionSource: String, Hashable, Codable, Sendable, CaseIterable ",
+        "CollectionFilter: Hashable, Codable, Sendable ",
+        "SmartCollectionID: Hashable, Codable, Sendable ",
+        "SmartCollection: Hashable, Codable, Sendable, Identifiable ",
+        "CollectionCandidate: Hashable, Sendable ",
+        "CollectionResult: Hashable, Sendable ",
+        "SmartCollections "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Decisions/DecisionLedger.swift",
+      "lines": 419,
+      "sha256": "4c77fef76cfc5f87d1a0ee97ab2cb0da109ff125498e5232a790bd4122f54851",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "DecisionRules ",
+        "DecisionLedger ",
+        "InMemoryLedgerPersistence: LedgerPersistence, @unchecked Sendable ",
+        "Failure: Error "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Decisions/DecisionModel.swift",
+      "lines": 227,
+      "sha256": "14a62dfb414e6de9d10083dc5e951c6a451acefc1bef27034bb558a032e7daa6",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "ReviewSessionID: Hashable, Codable, Sendable, CustomStringConvertible ",
+        "CommandID: Hashable, Codable, Sendable, CustomStringConvertible ",
+        "Disposition: String, Hashable, Codable, Sendable ",
+        "ItemRecord: Hashable, Codable, Sendable ",
+        "CodingKeys: String, CodingKey ",
+        "DecisionSnapshot: Hashable, Codable, Sendable ",
+        "CodingKeys: String, CodingKey ",
+        "DecisionAction: Hashable, Codable, Sendable ",
+        "DecisionCommand: Hashable, Codable, Sendable ",
+        "HistoryKind: String, Hashable, Codable, Sendable ",
+        "DecisionEvent: Hashable, Codable, Sendable, Identifiable ",
+        "UndoEntry: Hashable, Codable, Sendable ",
+        "DecisionError: Error, Hashable, Sendable ",
+        "CommitOutcome: Hashable, Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Decisions/LedgerState.swift",
+      "lines": 48,
+      "sha256": "21e9ac8cc31bbf1f0b8565c70bc356edd1dff622516f6868329965eb422ea5e8",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "LedgerState: Hashable, Codable, Sendable ",
+        "LedgerChange: Hashable, Sendable ",
+        "LedgerPersistence: Sendable ",
+        "LedgerState "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Document/PdfEdit.swift",
+      "lines": 83,
+      "sha256": "0f729fb0545406188c5d72dec45fd6606aebcf9f3b61fecf0a8480087856134e",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "PdfPageRef: Hashable, Codable, Sendable, Identifiable ",
+        "PdfEdit "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Document/PdfLayout.swift",
+      "lines": 210,
+      "sha256": "169ab051abed702861ea102a630d4c47ce8dfd66a05d6e848f0de1ffcebeac9f",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "PaperSize: String, Hashable, Codable, Sendable, CaseIterable ",
+        "PageOrientation: String, Hashable, Codable, Sendable, CaseIterable ",
+        "PageMargin: String, Hashable, Codable, Sendable, CaseIterable ",
+        "PerPage: Int, Hashable, Codable, Sendable, CaseIterable ",
+        "ImageFit: String, Hashable, Codable, Sendable, CaseIterable ",
+        "Caption: String, Hashable, Codable, Sendable, CaseIterable ",
+        "PdfOptions: Hashable, Codable, Sendable ",
+        "PtRect: Hashable, Sendable ",
+        "Crop: Hashable, Sendable ",
+        "Placed: Hashable, Sendable ",
+        "PdfPageLayout: Hashable, Sendable ",
+        "SourceSize: Hashable, Sendable ",
+        "PdfLayout ",
+        "PdfRules "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Duplicates/CoreSHA256.swift",
+      "lines": 129,
+      "sha256": "de8054c7bca81467ce3459c2983e349b45cbe88808f388c48a24f4995c32cd8b",
+      "imports": [
+        "Foundation",
+        "CryptoKit",
+        "Crypto"
+      ],
+      "declarations": [
+        "CoreSHA256 "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Duplicates/DuplicateFinder.swift",
+      "lines": 300,
+      "sha256": "dd6290e2aaf9cf868c7aaf0861bd445e5cbca1639ce6f01fdec4e474df6b777b",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "ByteStream: AnyObject ",
+        "ByteSourceProvider: Sendable ",
+        "DuplicateContentHashSource: ByteSourceProvider ",
+        "DuplicateReadError: Error ",
+        "DuplicateContentMeasurement: Sendable ",
+        "DuplicateCandidate: Hashable, Sendable ",
+        "FileFingerprint: Hashable, Codable, Sendable ",
+        "DuplicateGroup: Hashable, Sendable, Identifiable ",
+        "DuplicateScanResult: Hashable, Sendable ",
+        "DuplicateScanProgress: Hashable, Sendable ",
+        "DuplicateHashCache: Sendable ",
+        "DuplicateFinder: Sendable ",
+        "FileHandleByteStream: ByteStream "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Duplicates/DuplicateResourceSet.swift",
+      "lines": 28,
+      "sha256": "4e5c6086ab7930f05cde3f380f8ac53774fb0dba55a7b77535fe37cacce088f8",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "DuplicateResourceDigest: Sendable, Equatable ",
+        "DuplicateResourceSet "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Edit/Adjustments.swift",
+      "lines": 57,
+      "sha256": "eed22887fcab393ad26e5216a4562488df52a4df93fb094edd6a1ce663ba4f69",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "Adjustments: Hashable, Codable, Sendable ",
+        "CodingKeys: String, CodingKey "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Edit/ColorPipeline.swift",
+      "lines": 534,
+      "sha256": "f4e2a958a341b7d92d993027f961677dfda5978436e7f89e1c8a3d74641f80ca",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "ColorMatrices ",
+        "PointOps: Sendable ",
+        "ToneCurve ",
+        "RedEye ",
+        "MaskGrid: Sendable ",
+        "VignetteMap ",
+        "Histogram: Hashable, Sendable ",
+        "DetailMath "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Edit/EditGeometry.swift",
+      "lines": 395,
+      "sha256": "56a071f854dfdc8c52bee5241bf9574072eebaf80b00843e0d902aa61f460c92",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "Affine: Hashable, Sendable ",
+        "Homography: Hashable, Sendable ",
+        "PxSize: Hashable, Codable, Sendable ",
+        "EditGeometry: Sendable ",
+        "PerspectiveMath ",
+        "AspectPreset: String, Hashable, Codable, Sendable, CaseIterable ",
+        "CropMath ",
+        "Handle: Hashable, Sendable ",
+        "ResizeRules ",
+        "ExifOrientationMath "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Edit/EditRecipe.swift",
+      "lines": 383,
+      "sha256": "b764c918051d166fefd609bac5fb1f64ca880d775731a71184ca992b56670875",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "NormRect: Hashable, Codable, Sendable ",
+        "HslShift: Hashable, Codable, Sendable ",
+        "ColorBand: String, Hashable, Codable, Sendable, CaseIterable, CodingKeyRepresentable ",
+        "ColorMix: Hashable, Codable, Sendable ",
+        "Quad: Hashable, Codable, Sendable ",
+        "RedEyeSpot: Hashable, Codable, Sendable ",
+        "FilterId: String, Hashable, Codable, Sendable, CaseIterable ",
+        "EditRecipe: Hashable, Codable, Sendable ",
+        "CodingKeys: String, CodingKey ",
+        "SaveMode: String, Hashable, Codable, Sendable, CaseIterable ",
+        "TrimRange: Hashable, Codable, Sendable ",
+        "EditPreset: Hashable, Codable, Sendable, Identifiable ",
+        "EditFormat: String, Hashable, Codable, Sendable ",
+        "EditKind: String, Hashable, Codable, Sendable ",
+        "EditRecord: Hashable, Codable, Sendable, Identifiable ",
+        "EditNames "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Edit/Layers.swift",
+      "lines": 309,
+      "sha256": "b8f0e810233ad60308e9ab58911dd9e5d54a995eb7cf0931edf33add596e9f09",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "ARGBColor ",
+        "TextStyle: String, Hashable, Codable, Sendable, CaseIterable ",
+        "TextAlign: String, Hashable, Codable, Sendable, CaseIterable ",
+        "FontId: String, Hashable, Codable, Sendable, CaseIterable ",
+        "TextLayer: Hashable, Codable, Sendable ",
+        "StickerKind: String, Hashable, Codable, Sendable, CaseIterable ",
+        "StickerLayer: Hashable, Codable, Sendable ",
+        "BrushKind: String, Hashable, Codable, Sendable, CaseIterable ",
+        "DrawStroke: Hashable, Codable, Sendable ",
+        "DrawLayer: Hashable, Codable, Sendable ",
+        "ShapeKind: String, Hashable, Codable, Sendable, CaseIterable ",
+        "ShapeLayer: Hashable, Codable, Sendable ",
+        "RedactMode: String, Hashable, Codable, Sendable, CaseIterable ",
+        "RedactLayer: Hashable, Codable, Sendable ",
+        "Layer: Hashable, Sendable, Identifiable ",
+        "Layer: Codable ",
+        "Kind: String, Codable ",
+        "TypeKey: String, CodingKey ",
+        "FrameMode: String, Hashable, Codable, Sendable ",
+        "FrameStyle: Hashable, Codable, Sendable ",
+        "FrameMath ",
+        "LayerOps "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Edit/LocalAdjustment.swift",
+      "lines": 54,
+      "sha256": "0bbd3ae549e9207a4b317dcd8e4b850ae112141110d4fa67b3f47aa26f186889",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "NormPoint: Hashable, Codable, Sendable ",
+        "BrushStroke: Hashable, Codable, Sendable ",
+        "Mask: Hashable, Codable, Sendable ",
+        "LocalAdjustment: Hashable, Codable, Sendable, Identifiable ",
+        "CodingKeys: String, CodingKey "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Edit/RetouchSelection.swift",
+      "lines": 105,
+      "sha256": "e197da395e2857b1f08db85df859db534108949f59d22caad528f496f45296e6",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "RetouchTarget: Hashable, Sendable ",
+        "RetouchSelection: Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Feed/FeedControls.swift",
+      "lines": 140,
+      "sha256": "c46f0c2e7a5d91b2b57c66cc7d04091a41fafa81687e00c70b437776cde201cd",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "FeedAction: Codable, Hashable, Sendable ",
+        "FeedButtonVisibility: String, Codable, Sendable, CaseIterable ",
+        "FeedButtonPlacement: String, Codable, Sendable, CaseIterable ",
+        "FeedControls: Codable, Hashable, Sendable ",
+        "CodingKeys: String, CodingKey "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Feed/FeedGestureMachine.swift",
+      "lines": 201,
+      "sha256": "9959754c6a29846fd57b21c87328e102a942d682988b7139d2db52ad15d3a68e",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "SwipeDirection: String, Hashable, Codable, Sendable, CaseIterable ",
+        "FeedIntent: Hashable, Sendable ",
+        "Vector2: Hashable, Sendable ",
+        "GestureConfig: Hashable, Sendable ",
+        "FeedGestureMachine: Hashable, Sendable ",
+        "Phase: Hashable, Sendable ",
+        "Resolution: Hashable, Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Feed/FeedOrder.swift",
+      "lines": 59,
+      "sha256": "841e04c57b3227b4862690a1d6da8d16a9446595e467d44673b2f8b9600f4763",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "FeedOrder: String, Hashable, Codable, Sendable, CaseIterable ",
+        "FeedOrdering ",
+        "SeededGenerator: RandomNumberGenerator, Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Feed/FeedSession.swift",
+      "lines": 209,
+      "sha256": "4151a12f18e7ccc756901c6d39f90f22bceca4c618fc33642c068fa3dcabc4ef",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "PendingCommit: Hashable, Sendable ",
+        "LaterReceipt: Hashable, Sendable, Identifiable ",
+        "BackNavigation: Hashable, Sendable ",
+        "SessionSummary: Hashable, Sendable ",
+        "FeedSession: Hashable, Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Games/PhotoGameRecords.swift",
+      "lines": 111,
+      "sha256": "08521e55ab7823d697e9d30db9ab93a81ccb61940d3bf064d3ae8c1524582c8d",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "PhotoSnakeSpeed: String, CaseIterable, Codable, Sendable ",
+        "PhotoGameRecords: Codable, Equatable, Sendable ",
+        "MemoryCategory: Codable, Hashable, Sendable ",
+        "SnakeCategory: Codable, Hashable, Sendable ",
+        "MemoryRecord: Codable, Equatable, Sendable ",
+        "SnakeRecord: Codable, Equatable, Sendable ",
+        "CodingKeys: String, CodingKey ",
+        "PhotoGameStopwatch: Equatable, Sendable "
+      ],
+      "persistent_apis": [
+        "PhotoGameRecords"
+      ]
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Games/PhotoMemoryBoardLayout.swift",
+      "lines": 31,
+      "sha256": "49bbfbfaa720f5df64a907d886a2a72aed36d142182e3a83b1c9a3be2c0bde52",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "PhotoMemoryBoardLayout: Equatable, Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Games/PhotoMemoryGame.swift",
+      "lines": 96,
+      "sha256": "c388e2573500722170f6b9ace36642c422f2706953fa8ea385af08a6d1ac8cc9",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "PhotoMemoryGame: Equatable, Sendable ",
+        "Card: Identifiable, Equatable, Sendable ",
+        "Turn: Equatable, Sendable ",
+        "PhotoMemorySelection ",
+        "Candidate: Sendable ",
+        "Scope: Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Games/PhotoSnakeGame.swift",
+      "lines": 99,
+      "sha256": "4fce4c2def90f4f93d5bf55da1941651ea7b9a9e9c49066bea2839431a0942d4",
+      "imports": [],
+      "declarations": [
+        "PhotoSnakeGame: Equatable, Sendable ",
+        "Cell: Hashable, Sendable ",
+        "Direction: String, CaseIterable, Sendable ",
+        "Mode: String, CaseIterable, Codable, Sendable ",
+        "Status: Sendable ",
+        "Event: Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Games/PhotoSnakeViewport.swift",
+      "lines": 14,
+      "sha256": "81d737f89a70d3ea039c7d1e774fdf473e7d69b31076761806211b3c31ad13bd",
+      "imports": [],
+      "declarations": [
+        "PhotoSnakeViewport: Equatable, Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/History/HistoryGrouping.swift",
+      "lines": 51,
+      "sha256": "927e1886a5014a83e8dc2d040fe1653e2c71a2787029f9497797de28e6eb1bc4",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "HistoryEntry: Hashable, Sendable, Identifiable ",
+        "HistoryGrouping ",
+        "Key: Hashable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Later/LaterPlanning.swift",
+      "lines": 150,
+      "sha256": "b8d97d314b9ab40737678d91f75490b2bba824e86da0ffb6ac1b507ddebb34a1",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "LaterPreset: String, Hashable, Sendable, CaseIterable ",
+        "LaterInterval: Hashable, Codable, Sendable ",
+        "Unit: String, Hashable, Codable, Sendable, CaseIterable ",
+        "LaterStatus: Hashable, Sendable ",
+        "ReviewQueues ",
+        "LaterGroup: Hashable, Sendable, Comparable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Library/AlbumTree.swift",
+      "lines": 96,
+      "sha256": "499e73a0546374f503cf40087e0d2f3c4b978299d5070d1a877ca28d77782eef",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "AlbumListSort: String, Hashable, Codable, Sendable, CaseIterable ",
+        "AlbumNode: Hashable, Sendable, Identifiable ",
+        "AlbumTree "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Library/LibraryChanges.swift",
+      "lines": 64,
+      "sha256": "0495c268069622a1e9d37a0d4e35eba2f8c7c47b9964d535e5f7db61ca10ab2a",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "LibraryChangeSummary: Equatable, Sendable ",
+        "Reaction: Equatable, Sendable ",
+        "ChangeCoalescer: Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Library/LibraryFilter.swift",
+      "lines": 91,
+      "sha256": "12080c762ade61bb8e0a55c1a4c23ac1d348d7011336744f69f94dea8b08d6eb",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "LibraryMediaFacts: Sendable, Equatable ",
+        "LibraryFilter: String, Codable, Sendable, CaseIterable ",
+        "LibraryOrder: String, Codable, Sendable, CaseIterable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Library/Slideshow.swift",
+      "lines": 58,
+      "sha256": "c27d9d1efe9339336e994fcee20a01a9ce266ef578006707bcf09541fc593a8e",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "SlideshowOrder: String, Hashable, Codable, Sendable, CaseIterable ",
+        "SlideshowTransition: String, Hashable, Codable, Sendable, CaseIterable ",
+        "SlideshowSettings: Hashable, Codable, Sendable ",
+        "Slideshow "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Library/Timeline.swift",
+      "lines": 188,
+      "sha256": "69f0f4d7dbec5d88f9848eae83e70ea54a8e16976c23391542b239aecc7d4d82",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "TimelineLevel: Int, Hashable, Codable, Sendable, CaseIterable ",
+        "TimelineKey: Hashable, Sendable, Comparable ",
+        "TimelineSection<T>: Identifiable ",
+        "TimelineSection: Sendable where T: Sendable ",
+        "Timeline ",
+        "SearchText ",
+        "NaturalOrder ",
+        "Character ",
+        "MediaSort: String, Hashable, Codable, Sendable, CaseIterable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Localization/PluralRules.swift",
+      "lines": 52,
+      "sha256": "ad621cfd1e8358ab1bd2f76d6024f591f1dc39b625703e4401e259db689a4087",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "PluralCategory: String, Hashable, Sendable, CaseIterable ",
+        "PluralRules "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Model/ByteSize.swift",
+      "lines": 42,
+      "sha256": "a9574ca51216200db82c24362e0e6fc4c10886fe13ca7f5bebc1aca693b499f9",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "KnownSize: Hashable, Codable, Sendable ",
+        "SizeTally: Hashable, Codable, Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Model/ItemReference.swift",
+      "lines": 50,
+      "sha256": "9b7de3878c130a8e873f876731de892bb198ef4aa5b0b5dd430eabf9fe4217cb",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "ItemProvider: Hashable, Codable, Sendable ",
+        "ConnectedSourceID: Hashable, Codable, Sendable, CustomStringConvertible ",
+        "ItemReference: Hashable, Codable, Sendable, CustomStringConvertible ",
+        "MediaKind: String, Hashable, Codable, Sendable, CaseIterable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Model/LocalDay.swift",
+      "lines": 93,
+      "sha256": "3ced8255e15addf4066fc26af019fd2aca7ded4dd416b3a5dbf002c32ac30975",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "LocalDay: Hashable, Codable, Sendable, Comparable, CustomStringConvertible ",
+        "Clock: Sendable ",
+        "Clock ",
+        "SystemClock: Clock "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Organize/Organize.swift",
+      "lines": 191,
+      "sha256": "c5715f2361038b05528d6bffc265e43f40824b24e492aa5367aade80b8f4702a",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "MediaRef: Hashable, Codable, Sendable ",
+        "Rematch ",
+        "Result<T> ",
+        "TagRules ",
+        "State: Hashable, Sendable ",
+        "NoteRules ",
+        "AlbumRules ",
+        "BasketRules "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Organize/PhotoSeries.swift",
+      "lines": 52,
+      "sha256": "18c60fcd47dce9ac5d4df3b687419490dae2ab9b20d37f6a90d1fe6134d4851d",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "PhotoSeries ",
+        "Member: Hashable, Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Progress/MonthProgress.swift",
+      "lines": 96,
+      "sha256": "7365d54015f0f4d417965f2651ec3547b47a7fabba027447449352868d4f0122",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "MonthKey: Hashable, Codable, Sendable, Comparable, CustomStringConvertible ",
+        "MonthState: Hashable, Sendable ",
+        "MonthProgress: Hashable, Sendable, Identifiable ",
+        "ProgressRules "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/QuickAccess/QuickAccess.swift",
+      "lines": 103,
+      "sha256": "13c28a4b83c34465f53f86dc680acd4a5c4c5430d172ffed92729d4a07653cb7",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "QuickSourceKind: String, Hashable, Codable, Sendable, CaseIterable ",
+        "QuickAccessItem: Hashable, Codable, Sendable, Identifiable ",
+        "QuickAccess "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/QuickAccess/QuickSourceFilter.swift",
+      "lines": 189,
+      "sha256": "ad86decab2bc39b5d1818931aea8fa0aee56bdcebddb2b920771115c6962c6dd",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "QuickMediaFacts: Hashable, Sendable ",
+        "QuickQueryContext: Sendable ",
+        "QuickSourceCount: Hashable, Sendable ",
+        "QuickSourceFilter ",
+        "CalendarDay "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Share/Share.swift",
+      "lines": 130,
+      "sha256": "81c0c0c75892c7f8cf81e68280a34b1b4d15eefeca4165f5b1d3cd2285df0583",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "ShareRules ",
+        "SharedItem: Hashable, Sendable ",
+        "LibraryFingerprint: Hashable, Sendable ",
+        "ShareMatch ",
+        "ShareIntake: Hashable, Sendable ",
+        "ShareAction: String, Hashable, Sendable, CaseIterable ",
+        "ShareActions ",
+        "ShortcutTarget: Hashable, Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Storage/StorageOverview.swift",
+      "lines": 56,
+      "sha256": "a09912da758830756b2f5bef436ee4181f16af406850f0451c1d089ffaaf9719",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "DeviceCapacity: Hashable, Sendable ",
+        "StorageCategory: String, Hashable, Sendable, CaseIterable ",
+        "StorageOverview: Hashable, Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Studio/Collage.swift",
+      "lines": 442,
+      "sha256": "a2fa527b0f3da95fdbd0a2fe4e05885173275998c4d04689b64110fca09f6725",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "SplitNode: Hashable, Sendable ",
+        "SplitNode: Codable ",
+        "K: String, CodingKey ",
+        "Divider: Hashable, Sendable ",
+        "CollageLayout ",
+        "CollageKind: String, Hashable, Codable, Sendable, CaseIterable ",
+        "CollageItem: Hashable, Codable, Sendable ",
+        "BackgroundKind: String, Hashable, Codable, Sendable ",
+        "CollageBackground: Hashable, Codable, Sendable ",
+        "CollageProject: Hashable, Codable, Sendable, Identifiable ",
+        "FreeLayout ",
+        "StripLayout ",
+        "CellFit ",
+        "CollageExport "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Studio/CollageScene.swift",
+      "lines": 342,
+      "sha256": "4b71f4d5f799e992a0a143be4e833b658b1f3cbe5ea8e0398900d68d28325ab8",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "CollagePlacement: Hashable, Sendable ",
+        "CollageScene: Hashable, Sendable ",
+        "CollageGeometry ",
+        "CollageTemplateShape: Hashable, Sendable ",
+        "CollageLayout ",
+        "CollageProject ",
+        "CellFit ",
+        "FreeLayout "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Studio/Video.swift",
+      "lines": 434,
+      "sha256": "1d844fb1f0e5983666eec350c19bed6ab675c9f6ae75626673a490f7976f2935",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "TimeRange: Hashable, Codable, Sendable ",
+        "Transition: String, Hashable, Codable, Sendable, CaseIterable ",
+        "ExportProfile: String, Hashable, Codable, Sendable, CaseIterable ",
+        "VideoClip: Hashable, Codable, Sendable, Identifiable ",
+        "TimedLayer: Hashable, Codable, Sendable ",
+        "MusicTrack: Hashable, Codable, Sendable ",
+        "VideoProject: Hashable, Codable, Sendable, Identifiable ",
+        "VideoRules ",
+        "VSize: Hashable, Codable, Sendable ",
+        "VideoLayout: Hashable, Sendable ",
+        "VideoPlan ",
+        "Segment: Hashable, Sendable ",
+        "MoviePlan ",
+        "Limit: Hashable, Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Vault/Vault.swift",
+      "lines": 554,
+      "sha256": "c3d935af4e5f32c39d2467a9090e566a1c2c6178555d51b9714a57ed8b9b0a18",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "VaultMediaKind: String, Codable, Sendable, Hashable ",
+        "VaultResourceRole: String, Codable, Sendable, Hashable, CaseIterable ",
+        "VaultResource: Codable, Sendable, Hashable ",
+        "VaultItem: Codable, Sendable, Hashable, Identifiable ",
+        "VaultFolder: Codable, Sendable, Hashable, Identifiable ",
+        "VaultIndex: Codable, Sendable, Equatable ",
+        "VaultSort: String, Codable, Sendable, CaseIterable ",
+        "VaultPolicy ",
+        "VaultCodeKind: String, Codable, Sendable, CaseIterable ",
+        "VaultCodeRules ",
+        "Problem: Equatable, Sendable ",
+        "VaultLockout: Codable, Sendable, Equatable ",
+        "VaultRecoveryKey ",
+        "VaultWrappedKey: Codable, Sendable, Equatable ",
+        "VaultSettings: Codable, Sendable, Equatable ",
+        "VaultChunkLayout ",
+        "Chunk: Equatable, Sendable ",
+        "VaultRestorePlan ",
+        "VaultConcealmentSet: Codable, Sendable, Equatable ",
+        "VaultDerivation "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Vault/VaultAccessSession.swift",
+      "lines": 43,
+      "sha256": "8887b84e25b8ff56a0800b9ac0122414b76e0befb43c566c3c6d61f47b65020a",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "VaultAccessSession: Sendable, Equatable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Vault/VaultAudioFormat.swift",
+      "lines": 21,
+      "sha256": "17f5c46eca8d117be639bf6894d046f4e2ece6f49aa2bd4c33502ece535c8cef",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "VaultAudioFormat "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Vault/VaultNoteJournal.swift",
+      "lines": 30,
+      "sha256": "8306f581de9d1ba272ed037bfa673c34439f01dd882e544cad53d5b301bf9d8e",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "VaultNoteJournal: Codable, Equatable, Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Vault/VaultSecurity.swift",
+      "lines": 97,
+      "sha256": "6a9f07b8cfbeb18e435b9090ab5ad0b2eebb9637d266b7866ad092814cb30afd",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "VaultVisibilityPolicy ",
+        "VaultSessionError: Error, Equatable, Sendable ",
+        "VaultSessionFence: @unchecked Sendable ",
+        "Lease: Sendable ",
+        "VaultTransaction ",
+        "VaultPathRules "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Vault/VaultSnapshot.swift",
+      "lines": 77,
+      "sha256": "21fe8c042ce4d20892ef3a812170d16a412be6f0490094aaecd53c2c95f6ea70",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "VaultSnapshot: Codable, Sendable, Equatable ",
+        "Header: Decodable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Sources/PhotoMaidCore/Vault/VaultWorkspace.swift",
+      "lines": 326,
+      "sha256": "f7db2d0f858694e88f9ee4fceb2ab1c356e244923d0f910ba1c8fcd00d3cba05",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [
+        "VaultWorkspaceError: Error, Equatable, Sendable ",
+        "VaultFolderScope: String, Codable, CaseIterable, Sendable ",
+        "VaultNoteStyle: String, Codable, CaseIterable, Sendable ",
+        "VaultNoteBlock: Codable, Equatable, Identifiable, Sendable ",
+        "VaultNote: Codable, Equatable, Identifiable, Sendable ",
+        "VaultFileOrigin: String, Codable, Sendable ",
+        "VaultDocument: Codable, Equatable, Identifiable, Sendable ",
+        "VaultWorkspaceFolder: Codable, Equatable, Identifiable, Sendable ",
+        "VaultTrashedMedia: Codable, Equatable, Identifiable, Sendable ",
+        "VaultWorkspaceSort: String, Codable, CaseIterable, Sendable ",
+        "VaultWorkspace: Codable, Equatable, Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/AnalysisPlanTests.swift",
+      "lines": 108,
+      "sha256": "765496e59309b633458b1f8887bb730f898f882dcecdffb58b24b3aced8216a1",
+      "imports": [
+        "Foundation",
+        "Testing",
+        "PhotoMaidCore"
+      ],
+      "declarations": [],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/AnalysisResultsTests.swift",
+      "lines": 119,
+      "sha256": "8f8352707c154843f84366a9f5683356073e5e08835952ee05a5c7ef88c2aaa7",
+      "imports": [
+        "Foundation",
+        "Testing",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "Gauge: @unchecked Sendable ",
+        "Blocked: Error "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/AnalysisWorkTests.swift",
+      "lines": 132,
+      "sha256": "0fafc250c7fcef48885417f876100e4b23b850a4085ff6f5fdb9b35e3958c27c",
+      "imports": [
+        "Foundation",
+        "Testing",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "Probe: @unchecked Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/ArchiveBackupTests.swift",
+      "lines": 246,
+      "sha256": "ece57da06a7c4e3c011ddcb1b04c118ac7d47818b109034237171c859d8e9ab6",
+      "imports": [
+        "Testing",
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/BatchPdfTests.swift",
+      "lines": 239,
+      "sha256": "c1f44464d23ffce116c5cc6ec7e785fada5c942b233e9db559fc3ced0c7191ce",
+      "imports": [
+        "Testing",
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/CleanupOperationTests.swift",
+      "lines": 255,
+      "sha256": "0908683cab778fd95dfc0dbe0f5a5372b4eb45181f7fcde5b93e48b2e01fc6bb",
+      "imports": [
+        "Testing",
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "CleanupOperationTests "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/CollageSceneTests.swift",
+      "lines": 155,
+      "sha256": "47d2c5ae5f92d9fe79674fca85ce64f70c07f139d2f3248d3586ab08413242de",
+      "imports": [
+        "Testing",
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/ColorLayerTests.swift",
+      "lines": 192,
+      "sha256": "e523341b7522273b95adf29d431329a64d7b4d7394aa9a3d3d6b97a4585d945d",
+      "imports": [
+        "Testing",
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/DecisionLedgerTests.swift",
+      "lines": 245,
+      "sha256": "5837d31d3c1e7652a104477f27ebbba2cbd92b837200a3a3fe0b0701193a9143",
+      "imports": [
+        "Testing",
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "DecisionLedgerTests ",
+        "LedgerAndroidPortTests "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/DuplicateCoverageTests.swift",
+      "lines": 132,
+      "sha256": "e664c7395f92bc2fac886bc39697f86629f4faec78b3714d579173dac8faa273",
+      "imports": [
+        "Foundation",
+        "Testing",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "DuplicateCoverageTests ",
+        "DuplicateProgressLog: @unchecked Sendable ",
+        "CancelledDuplicateSource: ByteSourceProvider ",
+        "FailingDuplicateSource: ByteSourceProvider ",
+        "CompoundDuplicateSource: DuplicateContentHashSource "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/DuplicateRulesCapabilityTests.swift",
+      "lines": 300,
+      "sha256": "abe5e7f9ce48085cb4059bf48e66efa538bd2dd5bf848f69300507dbba19054b",
+      "imports": [
+        "Testing",
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "DuplicateTests ",
+        "CollectionTests ",
+        "CapabilityTests "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/EditCoreTests.swift",
+      "lines": 283,
+      "sha256": "6d75891ce457468e26902da1e6acddb63ceee0b29140ba88ee5099bb71ffd26c",
+      "imports": [
+        "Testing",
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/ExpansionTests.swift",
+      "lines": 160,
+      "sha256": "0f47eacfaf129c9f356fcca78ad1ee71cdbebdc726a803b06165b7fa0959fa54",
+      "imports": [
+        "Testing",
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "A "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/FeedControlsTests.swift",
+      "lines": 68,
+      "sha256": "b68e54454749565a3c6ce5004d9636cf4d92144e2f7eda52c8331db46306d69d",
+      "imports": [
+        "Foundation",
+        "Testing",
+        "PhotoMaidCore"
+      ],
+      "declarations": [],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/FeedSessionTests.swift",
+      "lines": 203,
+      "sha256": "1ed0ac98e9218fff6cc3aaac12413870344163a031bb42a5af2970df430c8d31",
+      "imports": [
+        "Testing",
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "FeedSessionTests "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/GestureMachineTests.swift",
+      "lines": 151,
+      "sha256": "a3aa543dcd4940bc62bface7ad0d85814726bc4544010bdb5383db53202b5636",
+      "imports": [
+        "Testing",
+        "PhotoMaidCore"
+      ],
+      "declarations": [],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/HistoryGroupingTests.swift",
+      "lines": 48,
+      "sha256": "a271ebbbaa0fa04b037fe172867488e75f2cc09f6453bec97fdb98a46b0ab8c1",
+      "imports": [
+        "Foundation",
+        "Testing",
+        "PhotoMaidCore"
+      ],
+      "declarations": [],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/LaterTests.swift",
+      "lines": 163,
+      "sha256": "8bc5b618739f94bdc6adad4a036a434426a75ae680ca7e09de694d128dd733eb",
+      "imports": [
+        "Testing",
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "LaterTests "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/LibraryFilterTests.swift",
+      "lines": 49,
+      "sha256": "3159d2b9c88ea2b27f0bf92ab9d9d0cde092507040eb0fd63d54b9e7228abb9a",
+      "imports": [
+        "Testing",
+        "PhotoMaidCore"
+      ],
+      "declarations": [],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/OrganizeLibraryTests.swift",
+      "lines": 281,
+      "sha256": "f5e80dff909bb98d0335698af1910b2b882fc48687e52846529a38066abad8c1",
+      "imports": [
+        "Testing",
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "M ",
+        "F ",
+        "S: Hashable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/PhotoGameRecordsTests.swift",
+      "lines": 125,
+      "sha256": "253dfe785857de38c32ba268ad9c06d45a028275010b295dec9f56c3603545b2",
+      "imports": [
+        "Foundation",
+        "Testing",
+        "PhotoMaidCore"
+      ],
+      "declarations": [],
+      "persistent_apis": [
+        "PhotoGameRecords"
+      ]
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/PhotoMemoryBoardLayoutTests.swift",
+      "lines": 25,
+      "sha256": "63521290d63db676d5930b35ab78dde97785faeaa438f3f8d81cfd65ddd6c839",
+      "imports": [
+        "Testing",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "PhotoMemoryBoardLayoutTests "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/PhotoMemoryGameTests.swift",
+      "lines": 90,
+      "sha256": "85965c7e02cd62e06b4f1b9da62968b35d2a22d716b90ff9c6417199c361f44c",
+      "imports": [
+        "Testing",
+        "PhotoMaidCore"
+      ],
+      "declarations": [],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/PhotoSnakeGameTests.swift",
+      "lines": 132,
+      "sha256": "ec11ce820122d5b3fc2cde143f2918973f7531df118939fe8cb3ceffacc20f02",
+      "imports": [
+        "Testing",
+        "PhotoMaidCore"
+      ],
+      "declarations": [],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/QuickSourceFilterTests.swift",
+      "lines": 184,
+      "sha256": "265e63e16d66ee5b88dd10da1fe5e2a633b38aebedbbbfbe9fe9ef3d4601202e",
+      "imports": [
+        "Testing",
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/RetouchSelectionTests.swift",
+      "lines": 241,
+      "sha256": "8d91d3431b6d505e0f3ee7df1160cec9522f8a792ed0b95cc9bae265d61a1bf5",
+      "imports": [
+        "Foundation",
+        "XCTest",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "RetouchSelectionTests: XCTestCase "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/SizeEstimateTests.swift",
+      "lines": 74,
+      "sha256": "c03beb58ed483ef37ecbf670936d01d7aabb647a411b31c3b9d52da203c17a92",
+      "imports": [
+        "Foundation",
+        "Testing",
+        "PhotoMaidCore"
+      ],
+      "declarations": [],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/SizeInventoryTests.swift",
+      "lines": 104,
+      "sha256": "0a7f5ccb9d74a9b1ac39dafae3e68150817e5b4aa702e95b3e080d4d039b640b",
+      "imports": [
+        "Foundation",
+        "Testing",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "MemoryHashCache: DuplicateHashCache, @unchecked Sendable "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/StudioTests.swift",
+      "lines": 224,
+      "sha256": "ab33ada56f923e9f391ed1a9eb857099b72e74bc0a5138b46e013551bc3825de",
+      "imports": [
+        "Testing",
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/Support.swift",
+      "lines": 79,
+      "sha256": "8f71f964d5d44ef2dfc56f4f0747f0e6020f16b20cb2c6ed0c94459e35e805ed",
+      "imports": [
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "TestClock: Clock, @unchecked Sendable ",
+        "DecisionLedger ",
+        "MemoryByteSource: ByteSourceProvider, @unchecked Sendable ",
+        "MemoryStream: ByteStream ",
+        "SeededRNG: RandomNumberGenerator "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/VaultSecurityTests.swift",
+      "lines": 97,
+      "sha256": "89c23cf1779c37f448fef665582251a089779b66a91105dd7a006fb898c627b1",
+      "imports": [
+        "Foundation",
+        "Testing",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "VaultSecurityTests ",
+        "DiskError: Error ",
+        "MutationError: Error "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/VaultTests.swift",
+      "lines": 311,
+      "sha256": "16c0042e593a80711b9cdd024c13330afb330eb7adede74f4db65a4fdbd24cb2",
+      "imports": [
+        "Testing",
+        "Foundation",
+        "PhotoMaidCore"
+      ],
+      "declarations": [],
+      "persistent_apis": []
+    },
+    {
+      "path": "Tests/PhotoMaidCoreTests/VaultWorkspaceTests.swift",
+      "lines": 317,
+      "sha256": "b1f5d58a36b9c39e62ee150a4080bd109b0f5b63ea814adee87b2e992b741470",
+      "imports": [
+        "Foundation",
+        "Testing",
+        "PhotoMaidCore"
+      ],
+      "declarations": [
+        "VaultWorkspaceTests ",
+        "VaultAccessSessionTests "
+      ],
+      "persistent_apis": []
+    },
+    {
+      "path": "scripts/contact_sheet.swift",
+      "lines": 66,
+      "sha256": "01d8b4f9377e63fd0b4647c517fb695fb8714c75bba2ab43b4469f368795b880",
+      "imports": [
+        "CoreGraphics",
+        "CoreText",
+        "Foundation",
+        "ImageIO",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "scripts/qa/photo_games/main.swift",
+      "lines": 59,
+      "sha256": "207dfa38bc5a7e47867a5ed0c4fbe615c01ae2073c5b92b22f0f69b32e87f7ae",
+      "imports": [
+        "Foundation"
+      ],
+      "declarations": [],
+      "persistent_apis": []
+    },
+    {
+      "path": "scripts/qa_feed_video.swift",
+      "lines": 49,
+      "sha256": "a6a280d2873e36e2ec26448fa97b2ce4650e6295b7e3fa17ec6a265285bce123",
+      "imports": [
+        "AVFoundation",
+        "CoreGraphics",
+        "CoreVideo",
+        "Foundation",
+        "ImageIO"
+      ],
+      "declarations": [],
+      "persistent_apis": []
+    },
+    {
+      "path": "scripts/qa_game_media.swift",
+      "lines": 46,
+      "sha256": "4290cc94b0f10a63ba6fb0acb7f277603c280ed0365efdd3989832a6d7573152",
+      "imports": [
+        "CoreGraphics",
+        "CoreText",
+        "Foundation",
+        "ImageIO",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    },
+    {
+      "path": "scripts/qa_media.swift",
+      "lines": 116,
+      "sha256": "cd2b45ffcd96d8d66334d22adc56e01011069b0ac701dbd3fef217efcdfcb119",
+      "imports": [
+        "AVFoundation",
+        "CoreGraphics",
+        "CoreText",
+        "Foundation",
+        "ImageIO",
+        "UniformTypeIdentifiers"
+      ],
+      "declarations": [
+        "Palette "
+      ],
+      "persistent_apis": [
+        "FileManager"
+      ]
+    }
+  ]
+}

@@ -121,7 +121,12 @@ final class AppModel {
         }
         gameScores = scores
         let memoryModel = PhotoMemoryModel(scores: scores)
-        let snakeModel = PhotoSnakeModel(scores: scores)
+        let snakeDirectory = qa ? nil : FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first?
+            .appendingPathComponent("SnakePhotos", isDirectory: true)
+        let snakeModel = PhotoSnakeModel(scores: scores, gallery: SnakePhotoLibrary(directory: snakeDirectory),
+                                        preferences: kv?.get(StoreKeys.snakePreferences) ?? .init()) { preferences in
+            try kv?.set(StoreKeys.snakePreferences, preferences)
+        }
         memoryModel.photos.updateVisibility([])
         snakeModel.photos.updateVisibility([])
         memory = memoryModel

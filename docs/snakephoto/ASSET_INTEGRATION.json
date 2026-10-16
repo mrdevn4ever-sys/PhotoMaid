@@ -1,0 +1,390 @@
+{
+  "source_zip": "SnakePhoto_Swift_iOS_Kit.zip",
+  "assets": [
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/Backgrounds/bg_forest_day.png",
+      "sha256": "e584b6b2a23d61dc31c7115d3f670fcc5fe99387d8f95a57b04839bacc145751",
+      "bytes": 1177453
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/Backgrounds/bg_forest_night.png",
+      "sha256": "ed0897fe7a26d95f247d360f94434b47613f02a05f5f51cd565730ccff4c0a36",
+      "bytes": 1183147
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/Backgrounds/bg_tile_forest.png",
+      "sha256": "af6acc8c1ed6fb84bfd8cfc6a1288ec52a183227382a7b13a1ce76f92fcc4944",
+      "bytes": 212586
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/Backgrounds/bg_tile_night.png",
+      "sha256": "3d2a9bf3a27dc2d219e2cc719edadef984bd518b9f554209a7d1cd70a2e9331d",
+      "bytes": 212574
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeBody.atlas/body_joint.png",
+      "sha256": "b988e4e792b9118941d51507c794410aae76ec32b9f69e319e87c0aa21055a28",
+      "bytes": 10782
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeBody.atlas/body_tail.png",
+      "sha256": "925abb6b69ab798675f65889a75879c743acfd21f60142036ff17c1160184fad",
+      "bytes": 8070
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeBody.atlas/body_tint_dino.png",
+      "sha256": "2ad8650f4a3f7b07d60bc64ee64de2cc2a785ab3155f832575264b804543946f",
+      "bytes": 4677
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeBody.atlas/body_tint_dragon.png",
+      "sha256": "67a771c268191993f00e2bce344e8d777c9d491e83ad1f4ea8caade830104d24",
+      "bytes": 4745
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeBody.atlas/body_tint_green.png",
+      "sha256": "d412fda2038ba8add18f43153ba83ee2eaa9c5d51e033630533638d2b6cfb774",
+      "bytes": 4834
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeBody.atlas/body_tint_monster.png",
+      "sha256": "53ccf0071fc275b4bbdd646c8960e040939d112407296ab0a03345e47874ff7a",
+      "bytes": 4625
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeBody.atlas/segment_mask.png",
+      "sha256": "e455bc119bcc2b3430227c3f3de5c645e52fc0b41be9cfc0ffdc4b456bda32bd",
+      "bytes": 3452
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeBody.atlas/segment_placeholder.png",
+      "sha256": "7b541b5d924b72f4b3f856e82d997de7211a79a10babddeb70301c0b33e46836",
+      "bytes": 6315
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeBody.atlas/segment_ring.png",
+      "sha256": "d99ca8433b749d505fa3143b606fad3b92251ae52d811b646b8917b052149838",
+      "bytes": 13792
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeBody.atlas/segment_shadow.png",
+      "sha256": "3be266a54a9d3356fb78e993c0ca386d908d6bcb7c97c0ff0c19985c5991fd65",
+      "bytes": 5012
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeFood.atlas/food_apple.png",
+      "sha256": "598de6c322c64ad056fd96c2f179e2c7baeab86c98ce9fbff8396bfaaa87033b",
+      "bytes": 9852
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeFood.atlas/food_cake.png",
+      "sha256": "9c8df915408b1553e180a1307bf623f9414ad30f5efd6873f8106206fce4bcc4",
+      "bytes": 10296
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeFood.atlas/food_cheese.png",
+      "sha256": "4657829f23b02e69a82bc28f13efe90e5a24e73cec011cc0ec56d89d0776d79b",
+      "bytes": 6799
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeFood.atlas/food_donut.png",
+      "sha256": "af1a6d2814d39477d8e1955564e67926313e176f6d60595ed06defc41364a960",
+      "bytes": 15489
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeFood.atlas/food_gem.png",
+      "sha256": "c6647f832837a84d44fb3e71854bec23b552964d497fc4f6139b20e0be9d88da",
+      "bytes": 9266
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeFood.atlas/food_grapes.png",
+      "sha256": "e3c11956963d349cba3f2c2a83bc1d946073810d7dc673cdac189859bb300fc0",
+      "bytes": 16221
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeFood.atlas/food_heart.png",
+      "sha256": "4f39f033704681e42dbec27e4d58ac32471e7a4ebed6bcb009dcf677d5f11386",
+      "bytes": 8323
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeFood.atlas/food_pizza.png",
+      "sha256": "ee73e8eefd923c91e7a4da4e2959670e3dfb17dc60d5cb019142081eb65b73de",
+      "bytes": 10850
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeFood.atlas/food_star.png",
+      "sha256": "cca894287f55c491edda8e0d4af3c2d9aae624a6f8fd9186a6208dc8cb14c7dd",
+      "bytes": 10265
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeFood.atlas/fx_collect_01.png",
+      "sha256": "a528b7b64e7438a927985238c9c01c6b68bc68652f7ba757a4c43d659121f1c1",
+      "bytes": 2670
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeFood.atlas/fx_collect_02.png",
+      "sha256": "8db2ddbda3a7a998648f9ebc5c369b7b65022445da7b2f370d8478830926a11e",
+      "bytes": 2529
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeFood.atlas/fx_collect_03.png",
+      "sha256": "6bbdc28fec0df36b22ea74c7846af5d8e46d697adc1e1858f7714048d58e38ed",
+      "bytes": 2518
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeFood.atlas/fx_collect_04.png",
+      "sha256": "9e59b03e50deaa69be4d5805535bda1678e4b1f3912069e6ee386be362b46f3a",
+      "bytes": 2260
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/dino_blink.png",
+      "sha256": "9d83c7cc3dc9a9cc83ec193e0e70efcec28441ff0c119ed775917242d9c54260",
+      "bytes": 17207
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/dino_dead.png",
+      "sha256": "63772ba1f1fe59c06439f731999d5b721a6f0eeacb47e6c73d390363e2bf9991",
+      "bytes": 20987
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/dino_eat.png",
+      "sha256": "b70b081af733623ceb14dccd8e5afc5e2a475871c84ec1aadc12f0785203c9b7",
+      "bytes": 22220
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/dino_idle.png",
+      "sha256": "82d0b4f3dcd129128815ed761351b87f7561a224c84d6a510088a5622913a7b1",
+      "bytes": 20128
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/dragon_blink.png",
+      "sha256": "a89ec8bd1634dd9c590cb96628b114dd84781f9e8f6fa48d069d5dec7042ce05",
+      "bytes": 18137
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/dragon_dead.png",
+      "sha256": "e8692ddd3660643de7bb7465297ca8442be15de3cca117d88aba1d7603d6cd16",
+      "bytes": 21482
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/dragon_eat.png",
+      "sha256": "4bc2ab2b2124363e62d1821d943b7fb46463b9b5687b976866a71bcc035db153",
+      "bytes": 22702
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/dragon_idle.png",
+      "sha256": "8b9267e9434fded8384354cbac6672279aa8d41fd791b23f23a4b9a6fe3978d3",
+      "bytes": 20473
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/head_dead_01.png",
+      "sha256": "07cfa2dd4e51a901f5d719a5cf2fd92af0c8329422f3edc6495eedce7a0fff4f",
+      "bytes": 19629
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/head_dead_02.png",
+      "sha256": "03c37886b43c09e21453ba2db4883d0eadd8f512c4273713e92b7b0a83bcf11c",
+      "bytes": 19806
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/head_eat_01.png",
+      "sha256": "fd692c62f23da98d6f034f508f1c4d246b6f64559415369ea9cbcec970176328",
+      "bytes": 20820
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/head_eat_02.png",
+      "sha256": "fd692c62f23da98d6f034f508f1c4d246b6f64559415369ea9cbcec970176328",
+      "bytes": 20820
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/head_hurt.png",
+      "sha256": "e86028e2a31dcc095748a00002563c4f3dc27618caae278d5b456d7d100b6b56",
+      "bytes": 19619
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/head_idle_01.png",
+      "sha256": "6d58325080176fd288489ade098010e8de4739780ef09a356449fd0a6daaacfa",
+      "bytes": 18812
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/head_idle_02.png",
+      "sha256": "dd3878dc8e154927cf76d9c6982dead970258cd57a5c1522304bcc46dd34b441",
+      "bytes": 18793
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/head_idle_03.png",
+      "sha256": "8c598d4722a0ce9713d5a05a21a4f8e0f30276124180476033a58b40d5767de5",
+      "bytes": 18013
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/head_idle_04.png",
+      "sha256": "7f87bb7317927715e2e42faa50e3af644be00dfb470fc78b38206cec5912e021",
+      "bytes": 16006
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/head_idle_05.png",
+      "sha256": "6d58325080176fd288489ade098010e8de4739780ef09a356449fd0a6daaacfa",
+      "bytes": 18812
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/head_idle_06.png",
+      "sha256": "1990960d9759f0469662d1301095d3155933a2627b6af600e886accb70230e40",
+      "bytes": 19370
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/head_look_left.png",
+      "sha256": "70453b31b2d886816027ffa4463d3cec02b5f10b4f50fde261926f169207cbf8",
+      "bytes": 18809
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/head_look_right.png",
+      "sha256": "aed40486447438a3a89d85e32c3d52e34326fa2fcbbe373286eb7117a0df1bde",
+      "bytes": 18697
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/head_sleep.png",
+      "sha256": "5f8e447bd029e3d0a0a6b1afbda087a723e97842b9bb6ede1a50e3c606ddd040",
+      "bytes": 16163
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/head_surprised.png",
+      "sha256": "5dedbbe912c9447a086614d85cd701e0c3703270246f42e25521263af4a3c49c",
+      "bytes": 18966
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/monster_blink.png",
+      "sha256": "67b1b4789498b721266f4c5a7ce47d7200c48324515d031ab48a3c0d92e8e765",
+      "bytes": 17409
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/monster_dead.png",
+      "sha256": "c84a6ad92680facc95ae50b698f165cd4976bbae4ab17c3e037961f65b98b3ff",
+      "bytes": 20664
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/monster_eat.png",
+      "sha256": "b7590555980b975c1c8adceb6794490aee72c0b8a07bb53dd07ac47e2eeda990",
+      "bytes": 21926
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas/monster_idle.png",
+      "sha256": "3af900851deb5bd317e1005106ee444392d6847cf51f009fa74d62786cbe552c",
+      "bytes": 19662
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeUI.atlas/ui_back.png",
+      "sha256": "bc994e5e259833a04770486252c7e90144493567f3deba3824ed43be74a4f6aa",
+      "bytes": 17502
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeUI.atlas/ui_camera.png",
+      "sha256": "d36af538e1d6bf5f2d8c939084395d6931ab38c062664ee8a7e097d9cd5a9390",
+      "bytes": 16593
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeUI.atlas/ui_check.png",
+      "sha256": "659b01c2ce67a472e9a94abe5a9aa505342d174a1397a18a460a546536505b79",
+      "bytes": 18635
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeUI.atlas/ui_close.png",
+      "sha256": "696f967bbb99f4de6dfde6c876357d47e5acbd8a779d5973eb1fc991fd3e96ae",
+      "bytes": 16169
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeUI.atlas/ui_down.png",
+      "sha256": "12fbd5e8daf4dd55dde48e11a167fbce0d29e3f4b4186d3db79c7d1d08c8fb91",
+      "bytes": 17413
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeUI.atlas/ui_gallery.png",
+      "sha256": "9905a9c6fc1d06e48687aa96f3682e64717166233370f964de7d3cfb77c75cbf",
+      "bytes": 15347
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeUI.atlas/ui_heart.png",
+      "sha256": "4f39f033704681e42dbec27e4d58ac32471e7a4ebed6bcb009dcf677d5f11386",
+      "bytes": 8323
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeUI.atlas/ui_heart_empty.png",
+      "sha256": "5d16908f179da6276e822c6bd8234dba7df2841f4eb3af06768189c67ff23e39",
+      "bytes": 8531
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeUI.atlas/ui_left.png",
+      "sha256": "6b527ac0bfc8a75b42654550fc423b8d36013bc84c064b430701ef2a4169e68e",
+      "bytes": 16126
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeUI.atlas/ui_mute.png",
+      "sha256": "f1fc3748920f7c2752fc089317331660a228fe4bff306bdd5ee02cf3130e6e40",
+      "bytes": 17261
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeUI.atlas/ui_pause.png",
+      "sha256": "810dfc573952bab207eebe9c9238a18da6f554b42e02a102183f4f85e869054b",
+      "bytes": 15194
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeUI.atlas/ui_play.png",
+      "sha256": "0ed5ec5152b4ba84b1635afa3a8f350cd7af2760c77cd508589a442033c34a8b",
+      "bytes": 16958
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeUI.atlas/ui_restart.png",
+      "sha256": "abd30d8ad9d634ee1f169357523b31ff89e462e2df60b9947865fcc6a30287d3",
+      "bytes": 21063
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeUI.atlas/ui_right.png",
+      "sha256": "6aa42e8dbd39b42708597f0961a5351249880e1a1b135aafcb244b511dcb5a0a",
+      "bytes": 17440
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeUI.atlas/ui_settings.png",
+      "sha256": "976593520f683ebfaa7c88c7f1d5caea5df13632a963528d594308d83c2afee1",
+      "bytes": 19069
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeUI.atlas/ui_sound.png",
+      "sha256": "b23f8bc0dceb60d82634ac9a0b6b46856569a920e053389f3615075c55e10c0a",
+      "bytes": 17857
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/SnakeUI.atlas/ui_up.png",
+      "sha256": "527d3d60f36d26988db85f2b6164be8e3700688ca9fec3ee1f3b9bf339d1109a",
+      "bytes": 17296
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/Sounds/sfx_collect.wav",
+      "sha256": "10f81bfbbaab20d3e82040ff551540014cbdb6ca8112dfcd3638b91accbfa885",
+      "bytes": 16802
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/Sounds/sfx_game_over.wav",
+      "sha256": "8de034de87bf9fdf099b34b050437a3f4e8b3c1e0a91961c10b212fac2c6b31b",
+      "bytes": 60020
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/Sounds/sfx_new_record.wav",
+      "sha256": "e9a55a3939bdd11c3bc6bb2ebf66ff98bebc436682f6390ed420aaf7c781475c",
+      "bytes": 61782
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/Sounds/sfx_photo_added.wav",
+      "sha256": "2562b443bafecf2114cc697684d4fc5a53a96e11bcf0062d56673405baf2c4fc",
+      "bytes": 23858
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/Sounds/sfx_tap.wav",
+      "sha256": "8f5fdc3cc8167e44d260080bf1532a8d9b46357ff6867bb4063c0524b69bcbdb",
+      "bytes": 11510
+    },
+    {
+      "path": "PhotoMaid/Resources/SnakePhoto/Sounds/sfx_turn.wav",
+      "sha256": "9e29c273f28e13b64abca8db2c72919a55f43cf4fa42922eaf22354288514c3c",
+      "bytes": 7982
+    }
+  ]
+}

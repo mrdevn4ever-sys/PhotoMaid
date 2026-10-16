@@ -1,0 +1,3 @@
+PASS: 77 byte-identical resources (71 PNG / 6 WAV), atlas sizes/alpha, target resource paths, SpriteKit dependency
+PASS: literal animation/food/UI references, swipe-only source, original Snake rules and 2657 localization entries preserved
+STATIC AUDIT ONLY: XcodeGen generation, compiled bundle loading, UIKit/SpriteKit rendering and device FPS still require Xcode.

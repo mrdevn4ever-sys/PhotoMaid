@@ -235,16 +235,15 @@ import XCTest
     }
 
     private func assertFullscreenSnake(_ board: XCUIElement) {
-        XCTAssertGreaterThanOrEqual(board.frame.width, app.frame.width - 2)
-        XCTAssertGreaterThanOrEqual(board.frame.height, app.frame.height - 2)
+        XCTAssertGreaterThanOrEqual(board.frame.width, app.frame.width - 12)
+        XCTAssertGreaterThanOrEqual(board.frame.height, app.frame.height * 0.72, "The board fills the window below the safe HUD")
         let surface = app.descendants(matching: .any)["snake.play"].firstMatch
         XCTAssertTrue(surface.exists)
-        let visibleButtons = surface.buttons.allElementsBoundByIndex.filter(\.isHittable)
-        XCTAssertEqual(visibleButtons.count, 1, "Only Close is a visible button during Snake")
-        XCTAssertEqual(visibleButtons.first?.identifier, "snake.close")
-        if let close = visibleButtons.first {
-            XCTAssertGreaterThanOrEqual(close.frame.width, 44)
-            XCTAssertGreaterThanOrEqual(close.frame.height, 44)
+        for identifier in ["snake.close", "snake.pause", "snake.settings"] {
+            let control = surface.buttons[identifier]
+            XCTAssertTrue(control.exists)
+            XCTAssertGreaterThanOrEqual(control.frame.width, 44)
+            XCTAssertGreaterThanOrEqual(control.frame.height, 44)
         }
         XCTAssertFalse(app.buttons["snake.toggleRunning"].exists)
         XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'snake.direction.'")).count, 0)

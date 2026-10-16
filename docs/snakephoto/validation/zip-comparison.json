@@ -1,0 +1,6 @@
+{
+  "source_zip": "1-SnakePhoto_Swift_iOS_Kit.zip",
+  "zip_sha256": "016f9ea307be1e8430e15ef98be0bfe9e63e7839e178359b8d9fdb3248e195b2",
+  "verified_resource_files": 77,
+  "result": "PASS: every integrated PNG/WAV matches the user-supplied ZIP byte for byte"
+}
