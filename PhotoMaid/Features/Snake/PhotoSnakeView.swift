@@ -182,7 +182,7 @@ struct PhotoSnakeView: View {
                     Text(verbatim: model.bestEaten.map { L("game_best_eaten", $0) } ?? L("game_no_best"))
                         .font(.caption).accessibilityIdentifier("snake.best")
                 }
-                .monospacedDigit().accessibilityElement(children: .combine)
+                .monospacedDigit()
                 artButton("ui_settings", label: "settings") { openSettings() }.accessibilityIdentifier("snake.settings")
             }
             .padding(8).background(.black.opacity(0.65), in: .rect(cornerRadius: 24)).padding(.horizontal, 12)
