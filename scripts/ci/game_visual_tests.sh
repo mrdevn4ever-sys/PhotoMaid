@@ -4,13 +4,17 @@ set -euo pipefail
 phone="$1"
 derived="$2"
 out="$3"
+phase="${4:-all}"
+case "$phase" in all|iphone|expanded-window) ;; *) exit 2 ;; esac
 mkdir -p "$out"
 test_target=PhotoMaidUITests/PhotoGameVisualTests
 if [ -n "${PM_GAME_CASE:-}" ]; then
   [[ "$PM_GAME_CASE" =~ ^test[0-9]{2}[A-Za-z0-9]+$ ]]
   test_target="$test_target/$PM_GAME_CASE"
 fi
-swift scripts/qa_media.swift "$out/media"
+if [ ! -d "$out/media" ]; then swift scripts/qa_media.swift "$out/media"; fi
+xcodebuild -version > "$out/xcode-version.txt"
+xcrun --sdk iphonesimulator --show-sdk-version > "$out/sdk-version.txt"
 run_device() {
   local udid="$1" name="$2"
   xcrun simctl shutdown "$udid" 2>/dev/null || true
@@ -27,8 +31,8 @@ run_device() {
     -parallel-testing-enabled NO -maximum-concurrent-test-simulator-destinations 1 \
     "-only-testing:$test_target" -skipPackagePluginValidation -skipMacroValidation \
     TARGETED_DEVICE_FAMILY=1,2 CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_REQUIRED=YES \
-    test-without-building > "$out/$name.log" 2>&1
-  local status=$?
+    test-without-building 2>&1 | tee "$out/$name.log" | grep -E 'Test (Case|Suite)|error:|failed|passed|\*\* TEST'
+  local status=${PIPESTATUS[0]}
   set -e
   echo "$status" > "$out/$name.exit"
   xcrun xcresulttool export attachments --path "$out/$name.xcresult" --output-path "$out/$name-attachments" || true
@@ -36,7 +40,8 @@ run_device() {
   rm -rf "$out/$name.xcresult"
   xcrun simctl shutdown "$udid" || true
 }
-run_device "$phone" iphone
+if [ "$phase" != expanded-window ]; then run_device "$phone" iphone; fi
+if [ "$phase" = iphone ]; then test "$(cat "$out/iphone.exit")" = 0; exit; fi
 # Use an actual Duo profile whenever the selected Xcode provides one, otherwise an explicit generic wide-window check.
 wide=$(python3 - <<'PY'
 import json,subprocess
@@ -59,5 +64,5 @@ xcrun --sdk iphonesimulator --show-sdk-version > "$out/sdk-version.txt"
 printf '%s\n' 'Expanded-window fallback is not fold/unfold verification. Native Duo requires Xcode/iOS 27.1 SDK and its device profile.' > "$out/duo-validation-scope.txt"
 run_device "$wide" expanded-window
 rm -rf "$out/media"
-test "$(cat "$out/iphone.exit")" = 0
+if [ "$phase" = all ]; then test "$(cat "$out/iphone.exit")" = 0; fi
 test "$(cat "$out/expanded-window.exit")" = 0

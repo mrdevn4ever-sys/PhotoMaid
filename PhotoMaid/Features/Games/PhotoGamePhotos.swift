@@ -129,7 +129,9 @@ final class PhotoGamePhotos {
     }
 
     func image(for id: String) -> UIImage? {
-        guard photoIDs.contains(id), visibleIDs?.contains(id) != false, VaultConcealment.shared.analysisReady,
+        guard photoIDs.contains(id), visibleIDs?.contains(id) != false,
+              PhotoAccess(PHPhotoLibrary.authorizationStatus(for: .readWrite)).canRead,
+              VaultConcealment.shared.analysisReady,
               !VaultConcealment.shared.isConcealed(id) else { return nil }
         return images[id]
     }

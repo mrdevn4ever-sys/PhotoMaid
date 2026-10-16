@@ -7,6 +7,7 @@ import XCTest
 
     override func setUp() async throws {
         continueAfterFailure = false
+        executionTimeAllowance = 180
         app = XCUIApplication()
         XCUIDevice.shared.orientation = .portrait
     }
@@ -74,8 +75,12 @@ import XCTest
                 solved.formUnion([firstID, secondID]); known.removeValue(forKey: value)
             } else {
                 if known[secondValue]?.contains(secondID) != true { known[secondValue, default: []].append(secondID) }
-                let flip = app.buttons["memory.flip"]
-                if flip.exists && flip.isEnabled { flip.tap() }
+                // Wait through the real automatic flip. Tap only if the viewport requires manual flipping.
+                let concealed = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: a)
+                if XCTWaiter.wait(for: [concealed], timeout: 2) != .completed {
+                    let flip = app.buttons["memory.flip"]
+                    XCTAssertTrue(flip.isEnabled); flip.tap()
+                }
             }
         }
         XCTAssertTrue(app.descendants(matching: .any)["memory.finished"].waitForExistence(timeout: 5))
@@ -138,7 +143,7 @@ import XCTest
     func test30PortraitAndExpandedWorkspaceScreens() {
         launch(light: true)
         checkpoint("workspace_01_feed", app: app)
-        let wide = app.frame.width >= 620
+        let wide = app.frame.width >= 580
         let panel = app.descendants(matching: .any)["feed.basketPanel"].firstMatch
         XCTAssertEqual(panel.exists, wide)
         if wide {
@@ -213,5 +218,22 @@ import XCTest
         app.buttons["memory.startPhotos"].tap()
         XCTAssertTrue(app.buttons["memory.card.0"].waitForExistence(timeout: 30))
         checkpoint("memory_folder_with_subalbum", app: app)
+    }
+
+    func test60SnakeRealtimeDriverAndPause() {
+        launch(light: true)
+        openGame("snake")
+        app.buttons["snake.symbols"].tap()
+        let board = app.descendants(matching: .any)["snake.board"].firstMatch
+        XCTAssertTrue(board.waitForExistence(timeout: 10))
+        let initial = board.value as? String ?? ""
+        app.buttons["snake.toggleRunning"].tap()
+        let moved = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value != %@", initial), object: board)
+        XCTAssertEqual(XCTWaiter.wait(for: [moved], timeout: 3), .completed)
+        app.buttons["snake.toggleRunning"].tap()
+        let paused = board.value as? String
+        Thread.sleep(forTimeInterval: 0.6)
+        XCTAssertEqual(board.value as? String, paused)
+        checkpoint("snake_realtime_paused_after_movement", app: app)
     }
 }

@@ -189,11 +189,25 @@ jobs:
           "$RUNNER_TEMP/media-venv/bin/pip" install Pillow==12.3.0
           echo "$RUNNER_TEMP/media-venv/bin" >> "$GITHUB_PATH"
           brew install ffmpeg
-      - name: Spiele und breite Layouts visuell testen
+      - name: Spiele auf iPhone visuell testen
         if: inputs.ui_tests && inputs.qa_case == 'games'
+        continue-on-error: true
         env:
           PM_GAME_CASE: ${{ inputs.games_case }}
-        run: scripts/ci/game_visual_tests.sh '${{ steps.sim.outputs.udid }}' "$RUNNER_TEMP/PhotoMaidDerived" "$RUNNER_TEMP/game-visual"
+        run: scripts/ci/game_visual_tests.sh '${{ steps.sim.outputs.udid }}' "$RUNNER_TEMP/PhotoMaidDerived" "$RUNNER_TEMP/game-visual" iphone
+      - name: iPhone-Spielbelege sofort bereitstellen
+        uses: actions/upload-artifact@v4
+        if: always() && inputs.ui_tests && inputs.qa_case == 'games'
+        with:
+          name: game-visual-iphone
+          path: ${{ runner.temp }}/game-visual/iphone*
+          if-no-files-found: warn
+      - name: Spiele und Layouts auf großem Fenster testen
+        if: always() && inputs.ui_tests && inputs.qa_case == 'games' && steps.build.outcome == 'success'
+        continue-on-error: true
+        env:
+          PM_GAME_CASE: ${{ inputs.games_case }}
+        run: scripts/ci/game_visual_tests.sh '${{ steps.sim.outputs.udid }}' "$RUNNER_TEMP/PhotoMaidDerived" "$RUNNER_TEMP/game-visual" expanded-window
       - name: Spiele-Screenshots und Hierarchien
         uses: actions/upload-artifact@v4
         if: always() && inputs.ui_tests && inputs.qa_case == 'games'
@@ -201,6 +215,11 @@ jobs:
           name: game-visual-evidence
           path: ${{ runner.temp }}/game-visual
           if-no-files-found: warn
+      - name: Ergebnisse beider Spiel-Simulatoren prüfen
+        if: always() && inputs.ui_tests && inputs.qa_case == 'games' && steps.build.outcome == 'success'
+        run: |
+          test "$(cat "$RUNNER_TEMP/game-visual/iphone.exit")" = 0
+          test "$(cat "$RUNNER_TEMP/game-visual/expanded-window.exit")" = 0
       - name: UI-Tests mit QA-Daten
         if: inputs.ui_tests && inputs.qa_case != 'games' && inputs.ui_phase != 'real' && inputs.ui_phase != 'start'
         continue-on-error: true
