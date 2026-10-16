@@ -210,28 +210,31 @@ struct PhotoSnakeView: View {
         .statusBarHidden(true).persistentSystemOverlays(.hidden)
     }
 
-    private var scoreHUD: some View {
-        VStack(alignment: .trailing, spacing: 2) {
+    @ViewBuilder private var scoreHUD: some View {
+        if dynamicType.isAccessibilitySize {
+            // Keep the largest text sizes in one row so the board retains its full height.
             HStack(spacing: 6) {
-                if dynamicType.isAccessibilitySize {
-                    Image(uiImage: SnakeArt.image("food_apple")).resizable().scaledToFit()
-                        .frame(width: 24, height: 24).accessibilityHidden(true)
-                }
-                Text(verbatim: dynamicType.isAccessibilitySize ? model.presentedScore.formatted() : L("snake_eaten", model.presentedScore))
-                    .font(.headline).lineLimit(1)
-                    .accessibilityLabel(Text(verbatim: L("snake_eaten", model.presentedScore)))
-                    .accessibilityIdentifier("snake.score")
-            }
-            HStack(spacing: 6) {
-                if dynamicType.isAccessibilitySize {
-                    Image(systemName: "trophy.fill").font(.system(size: 16)).accessibilityHidden(true)
-                }
-                Text(verbatim: dynamicType.isAccessibilitySize ? (model.bestEaten.map { $0.formatted() } ?? "—") : bestLabel)
-                    .font(.caption).lineLimit(1)
-                    .accessibilityLabel(Text(verbatim: bestLabel))
-                    .accessibilityIdentifier("snake.best")
-            }
-        }.monospacedDigit()
+                Image(uiImage: SnakeArt.image("food_apple")).resizable().scaledToFit()
+                    .frame(width: 24, height: 24).accessibilityHidden(true)
+                scoreText
+                Image(systemName: "trophy.fill").font(.system(size: 16)).accessibilityHidden(true)
+                bestText
+            }.monospacedDigit()
+        } else {
+            VStack(alignment: .trailing, spacing: 2) { scoreText; bestText }.monospacedDigit()
+        }
+    }
+    private var scoreText: some View {
+        Text(verbatim: dynamicType.isAccessibilitySize ? model.presentedScore.formatted() : L("snake_eaten", model.presentedScore))
+            .font(.headline).lineLimit(1).minimumScaleFactor(0.5)
+            .accessibilityLabel(Text(verbatim: L("snake_eaten", model.presentedScore)))
+            .accessibilityIdentifier("snake.score")
+    }
+    private var bestText: some View {
+        Text(verbatim: dynamicType.isAccessibilitySize ? (model.bestEaten.map { $0.formatted() } ?? "—") : bestLabel)
+            .font(.caption).lineLimit(1).minimumScaleFactor(0.5)
+            .accessibilityLabel(Text(verbatim: bestLabel))
+            .accessibilityIdentifier("snake.best")
     }
     private var bestLabel: String { model.bestEaten.map { L("game_best_eaten", $0) } ?? L("game_no_best") }
 
