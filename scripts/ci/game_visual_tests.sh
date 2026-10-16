@@ -12,14 +12,20 @@ if [ -n "${PM_GAME_CASE:-}" ]; then
   [[ "$PM_GAME_CASE" =~ ^test[0-9]{2}[A-Za-z0-9]+$ ]]
   test_target="$test_target/$PM_GAME_CASE"
 fi
-if [ ! -d "$out/media" ]; then swift scripts/qa_media.swift "$out/media"; fi
+if [ ! -d "$out/media" ]; then swift scripts/qa_game_media.swift "$out/media"; fi
 xcodebuild -version > "$out/xcode-version.txt"
 xcrun --sdk iphonesimulator --show-sdk-version > "$out/sdk-version.txt"
 run_device() {
   local udid="$1" name="$2"
-  xcrun simctl shutdown "$udid" 2>/dev/null || true
-  xcrun simctl erase "$udid"
-  xcrun simctl boot "$udid"
+  if [ "$name" = iphone ] && [ "${PM_GAME_USE_PREBOOTED_PHONE:-0}" = 1 ] && [ "${GITHUB_ACTIONS:-}" = true ]; then
+    # This opt-in is only for the fresh disposable Actions runner after its in-memory unit tests.
+    xcrun simctl terminate "$udid" com.mrdevn4ever.photomaid 2>/dev/null || true
+    xcrun simctl uninstall "$udid" com.mrdevn4ever.photomaid 2>/dev/null || true
+  else
+    xcrun simctl shutdown "$udid" 2>/dev/null || true
+    xcrun simctl erase "$udid"
+    xcrun simctl boot "$udid"
+  fi
   xcrun simctl bootstatus "$udid" -b
   xcrun simctl status_bar "$udid" override --time '9:41' --batteryState charged --batteryLevel 100
   xcrun simctl install "$udid" "$derived/Build/Products/Debug-iphonesimulator/PhotoMaid.app"
