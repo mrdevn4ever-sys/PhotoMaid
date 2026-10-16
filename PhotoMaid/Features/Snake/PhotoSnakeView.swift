@@ -143,9 +143,10 @@ struct PhotoSnakeView: View {
 
     private func play(_ game: PhotoSnakeGame, viewport: CGSize) -> some View {
         let wide = AppWorkspace.isWide(viewport, accessibility: dynamicType.isAccessibilitySize)
+        let controlsWidth: CGFloat = 264 // Three native glass buttons are 80 pt wide, plus two 8 pt gaps.
         let layout = wide ? AnyLayout(HStackLayout(alignment: .center, spacing: AppSpacing.l))
                           : AnyLayout(VStackLayout(spacing: AppSpacing.s))
-        let width = min(1100, viewport.width) - AppSpacing.pageMargin * 2 - (wide ? 240 : 0)
+        let width = min(1100, viewport.width) - AppSpacing.pageMargin * 2 - (wide ? controlsWidth + AppSpacing.l : 0)
         let height = max(256, min(width * 4 / 3, viewport.height - (wide ? 120 : 330) - analysisHeight))
         return layout {
             VStack(spacing: AppSpacing.s) {
@@ -165,7 +166,7 @@ struct PhotoSnakeView: View {
                     .accessibilityIdentifier("snake.board")
             }
             .frame(maxWidth: .infinity)
-            playControls(game).frame(width: wide ? 216 : nil)
+            playControls(game).frame(width: wide ? controlsWidth : nil)
         }
     }
 

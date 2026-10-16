@@ -116,6 +116,12 @@ import XCTest
         let board = app.descendants(matching: .any)["snake.board"].firstMatch
         XCTAssertTrue(board.waitForExistence(timeout: 30))
         XCTAssertGreaterThanOrEqual(board.frame.height, 256)
+        for direction in ["up", "left", "down", "right"] {
+            let button = app.buttons["snake.direction." + direction]
+            XCTAssertGreaterThanOrEqual(button.frame.width, 44)
+            XCTAssertGreaterThanOrEqual(button.frame.height, 44)
+            XCTAssertTrue(app.frame.insetBy(dx: -1, dy: -1).contains(button.frame), "Direction control must fit: \(direction)")
+        }
         checkpoint("snake_02_photos_paused_dark", app: app)
         let initial = board.value as? String ?? ""
         let numbers = initial.split(whereSeparator: { !$0.isNumber }).compactMap { Int($0) }
