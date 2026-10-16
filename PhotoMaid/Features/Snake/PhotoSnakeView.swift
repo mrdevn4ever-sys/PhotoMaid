@@ -5,12 +5,12 @@ import UIKit
 struct PhotoSnakeView: View {
     private enum Source: Hashable { case library, favorites, collection, manual }
     @Environment(AppModel.self) private var app
-    @Environment(\.dismiss) private var dismiss
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.dynamicTypeSize) private var dynamicType
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
     let onResults: (SmartReviewKind) -> Void
     let onChooseGame: () -> Void
+    let onClose: () -> Void
     @State private var setup = true
     @State private var picker = false
     @State private var collectionPicker = false
@@ -99,7 +99,7 @@ struct PhotoSnakeView: View {
         }
     }
 
-    private func close() { model.pause(); dismiss() }
+    private func close() { model.pause(); onClose() }
 
     private func play(_ game: PhotoSnakeGame) -> some View {
         ZStack {
@@ -130,6 +130,7 @@ struct PhotoSnakeView: View {
                     Button(action: close) {
                         Image(systemName: "xmark").font(.title3.weight(.semibold))
                             .frame(width: AppSpacing.touch, height: AppSpacing.touch)
+                            .contentShape(.circle)
                     }
                     .buttonStyle(.plain).glassCapsule(interactive: true)
                     .accessibilityLabel(Text(key: "close")).accessibilityIdentifier("snake.close")

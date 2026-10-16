@@ -143,7 +143,8 @@ import XCTest
         let beforeClose = board.value as? String
         closeSnake()
         let position = app.descendants(matching: .any)["feed.position"].firstMatch.label
-        app.buttons["feed.memory"].tap(); app.buttons["games.snake"].tap()
+        openGame("snake")
+        XCTAssertTrue(app.buttons["snake.resume"].waitForExistence(timeout: 5))
         app.buttons["snake.resume"].tap()
         XCTAssertTrue(board.waitForExistence(timeout: 10))
         XCTAssertEqual(board.value as? String, beforeClose)
@@ -154,6 +155,10 @@ import XCTest
 
     private func closeSnake() {
         app.descendants(matching: .any)["snake.play"].firstMatch.buttons["snake.close"].tap()
+        let closed = XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"),
+                                               object: app.descendants(matching: .any)["snake.play"].firstMatch)
+        XCTAssertEqual(XCTWaiter.wait(for: [closed], timeout: 5), .completed)
+        XCTAssertTrue(app.buttons["feed.memory"].isHittable)
     }
 
     private func assertFullscreenSnake(_ board: XCUIElement) {
@@ -164,6 +169,10 @@ import XCTest
         let visibleButtons = surface.buttons.allElementsBoundByIndex.filter(\.isHittable)
         XCTAssertEqual(visibleButtons.count, 1, "Only Close is a visible button during Snake")
         XCTAssertEqual(visibleButtons.first?.identifier, "snake.close")
+        if let close = visibleButtons.first {
+            XCTAssertGreaterThanOrEqual(close.frame.width, 44)
+            XCTAssertGreaterThanOrEqual(close.frame.height, 44)
+        }
         XCTAssertFalse(app.buttons["snake.toggleRunning"].exists)
         XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'snake.direction.'")).count, 0)
     }

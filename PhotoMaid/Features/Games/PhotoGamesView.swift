@@ -19,7 +19,7 @@ struct PhotoGamesView: View {
         case .memory:
             PhotoMemoryView(onResults: onResults, onChooseGame: { selected = nil })
         case .snake:
-            PhotoSnakeView(onResults: onResults, onChooseGame: { selected = nil })
+            PhotoSnakeView(onResults: onResults, onChooseGame: { selected = nil }, onClose: { dismiss() })
         case nil:
             NavigationStack {
                 ScrollView {
