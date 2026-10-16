@@ -178,6 +178,10 @@ import XCTest
         app.terminate()
         for page in ["today", "library", "cleanup", "studio", "history", "editor", "collage", "settings", "vault"] {
             launch(page, light: page != "editor")
+            if page == "library" {
+                XCTAssertGreaterThanOrEqual(app.descendants(matching: .any)["library.mode"].firstMatch.frame.width, 280,
+                                            "Library modes need their own readable row")
+            }
             if page == "editor" {
                 XCTAssertTrue(app.descendants(matching: .any)["editor.stage"].firstMatch.waitForExistence(timeout: 25))
                 let ready = XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"),

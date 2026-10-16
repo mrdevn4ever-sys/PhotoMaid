@@ -9,6 +9,7 @@ import SwiftUI
 /// Ansehen ist NIE eine Entscheidung. Zeigt alles außer „In PhotoMaid ausgeblendet“.
 struct LibraryView: View {
     @Environment(AppModel.self) private var app
+    @Environment(\.dynamicTypeSize) private var dynamicType
     @State private var mode = 0
     @State private var level: TimelineLevel = .day
     @State private var selecting = false
@@ -39,16 +40,14 @@ struct LibraryView: View {
         }
         .appPage()
         .navigationTitle(L("tab_library"))
+        .safeAreaInset(edge: .top, spacing: 0) {
+            modePicker
+                .padding(.horizontal, AppSpacing.pageMargin)
+                .padding(.vertical, AppSpacing.xs)
+                .frame(maxWidth: .infinity)
+                .background(AppColors.background)
+        }
         .toolbar {
-            ToolbarItem(placement: .principal) {
-                Picker("", selection: $mode) {
-                    Text(key: "lib_mode_timeline").tag(0)
-                    Text(key: "lib_mode_albums").tag(1)
-                    Text(key: "lib_filter_favorites").tag(2)
-                }
-                .pickerStyle(.segmented)
-                .frame(maxWidth: 320)
-            }
             ToolbarItemGroup(placement: .topBarTrailing) {
                 if mode == 0 {
                     filterMenu
@@ -79,6 +78,24 @@ struct LibraryView: View {
                     .padding(.bottom, AppSpacing.xs)
             }
         }
+    }
+
+    @ViewBuilder private var modePicker: some View {
+        if dynamicType.isAccessibilitySize {
+            libraryModes.pickerStyle(.menu)
+                .frame(minHeight: AppSpacing.minTouch)
+        } else {
+            libraryModes.pickerStyle(.segmented).frame(maxWidth: 620)
+        }
+    }
+
+    private var libraryModes: some View {
+        Picker(L("tab_library"), selection: $mode) {
+            Text(key: "lib_mode_timeline").tag(0)
+            Text(key: "lib_mode_albums").tag(1)
+            Text(key: "lib_filter_favorites").tag(2)
+        }
+        .accessibilityIdentifier("library.mode")
     }
 
     private var visible: [MediaAsset] {
