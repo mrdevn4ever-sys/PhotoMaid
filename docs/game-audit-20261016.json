@@ -1,0 +1,202 @@
+{
+  "date": "2026-10-16",
+  "branch": "feat/photo-memory-break",
+  "base_commit": "de90f1d67c2dbe753f5da6c012ae6feb9172b277",
+  "working_tree_changes_included": true,
+  "native_rendered": false,
+  "native_ios_tests_run": false,
+  "findings": [
+    {
+      "id": "F1",
+      "priority": "P1",
+      "evidence": "Static code/dataflow/geometry audit; no native UI reproduction"
+    },
+    {
+      "id": "F2",
+      "priority": "P1",
+      "evidence": "Static code/dataflow/geometry audit; no native UI reproduction"
+    },
+    {
+      "id": "F3",
+      "priority": "P2",
+      "evidence": "Static code/dataflow/geometry audit; no native UI reproduction"
+    },
+    {
+      "id": "F4",
+      "priority": "P2",
+      "evidence": "Static code/dataflow/geometry audit; no native UI reproduction"
+    },
+    {
+      "id": "F5",
+      "priority": "P2",
+      "evidence": "Static code/dataflow/geometry audit; no native UI reproduction"
+    }
+  ],
+  "checks": {
+    "core_game_tests": {
+      "status": "PASS",
+      "tests": 15,
+      "suites": 2
+    },
+    "standalone_invariants": {
+      "status": "PASS",
+      "snake_rounds": 4000,
+      "snake_steps": 546182,
+      "memory_decks": 340,
+      "memory_random_taps": 85000,
+      "memory_all_completed": true
+    },
+    "swift_syntax": "PASS",
+    "localization": {
+      "status": "PASS",
+      "used_keys": 1641,
+      "entries": 2629,
+      "languages": 16
+    },
+    "complete_409_test_suite_rerun": false,
+    "github_actions_started": false,
+    "testflight_upload_started": false
+  },
+  "source_sha256": {
+    "PhotoMaid/Features/Games/PhotoGameAnalysisStatus.swift": "9e8a913eebfef53791822c0efd393d792c7d726e476621cb8e653f2d03395b72",
+    "PhotoMaid/Features/Games/PhotoGamePhotos.swift": "5dfc277229af1fd47ae0f1bfa9d70bbbb02161e00e22c1f52242eff8ddee33f0",
+    "PhotoMaid/Features/Games/PhotoGamesView.swift": "6d2a8e9669f53c05010d336d266bf09474d55dda801ba57695df674fda93fc8c",
+    "PhotoMaid/Features/Memory/PhotoMemoryCollectionPicker.swift": "bb651694aea024813e385c27c26dc6d15ed2aedd431bfbfc61c2c320f603c1ab",
+    "PhotoMaid/Features/Memory/PhotoMemoryModel.swift": "f53d2d45bb20ab32830998718510d569fe65b52eda386b12f6b585517069f134",
+    "PhotoMaid/Features/Memory/PhotoMemoryView.swift": "c6b3ca301794d62b81b0ae3775cb98eebc9a34a75853ba7fc5edef1a0ba8ffcb",
+    "PhotoMaid/Features/Snake/PhotoSnakeBoard.swift": "8d2f69febbe5a84d3708d86caca940e0408bacf316843e97b5b13324e64e06db",
+    "PhotoMaid/Features/Snake/PhotoSnakeModel.swift": "6d05438b779fef727f591113635f36c8b37105a1b8106062efa345e59b19dc36",
+    "PhotoMaid/Features/Snake/PhotoSnakeView.swift": "02e957b069226230f733184d347bfcea6d4aaa75f6c281a2d5f459a4651429ca",
+    "Sources/PhotoMaidCore/Games/PhotoMemoryGame.swift": "c388e2573500722170f6b9ace36642c422f2706953fa8ea385af08a6d1ac8cc9",
+    "Sources/PhotoMaidCore/Games/PhotoSnakeGame.swift": "08cf64d954cf69e2d0e80db3df03e99c1e6ae0b515e097e9247a7fda28c42483",
+    "PhotoMaid/App/AppModel.swift": "14e50eab1d7ed22341827e5878adbd55682941d47d2623f7892d751528e63eaf",
+    "PhotoMaid/App/RootView.swift": "df4b5637b9a75c07a7aa93d288a4a611790aa460b65dfa137654550f7f364f57",
+    "PhotoMaid/Features/Studio/StudioMediaPicker.swift": "3b89ae53fc72c3b71f75f88539161ada6612627bb2ecf47ca06ba819184c70d6"
+  },
+  "layout": {
+    "method": "Static calculation from source constants, not a native render",
+    "memory": [
+      {
+        "viewport_width_pt": 320,
+        "pairs": 6,
+        "columns": 3,
+        "card_width_pt": 90.667,
+        "grid_height_pt": 386.667
+      },
+      {
+        "viewport_width_pt": 320,
+        "pairs": 12,
+        "columns": 4,
+        "card_width_pt": 66.0,
+        "grid_height_pt": 436.0
+      },
+      {
+        "viewport_width_pt": 320,
+        "pairs": 18,
+        "columns": 6,
+        "card_width_pt": 41.333,
+        "grid_height_pt": 304
+      },
+      {
+        "viewport_width_pt": 375,
+        "pairs": 6,
+        "columns": 3,
+        "card_width_pt": 109.0,
+        "grid_height_pt": 460.0
+      },
+      {
+        "viewport_width_pt": 375,
+        "pairs": 12,
+        "columns": 4,
+        "card_width_pt": 79.75,
+        "grid_height_pt": 518.5
+      },
+      {
+        "viewport_width_pt": 375,
+        "pairs": 18,
+        "columns": 6,
+        "card_width_pt": 50.5,
+        "grid_height_pt": 343.0
+      },
+      {
+        "viewport_width_pt": 390,
+        "pairs": 6,
+        "columns": 3,
+        "card_width_pt": 114.0,
+        "grid_height_pt": 480.0
+      },
+      {
+        "viewport_width_pt": 390,
+        "pairs": 12,
+        "columns": 4,
+        "card_width_pt": 83.5,
+        "grid_height_pt": 541.0
+      },
+      {
+        "viewport_width_pt": 390,
+        "pairs": 18,
+        "columns": 6,
+        "card_width_pt": 53.0,
+        "grid_height_pt": 358.0
+      },
+      {
+        "viewport_width_pt": 430,
+        "pairs": 6,
+        "columns": 3,
+        "card_width_pt": 127.333,
+        "grid_height_pt": 533.333
+      },
+      {
+        "viewport_width_pt": 430,
+        "pairs": 12,
+        "columns": 4,
+        "card_width_pt": 93.5,
+        "grid_height_pt": 601.0
+      },
+      {
+        "viewport_width_pt": 430,
+        "pairs": 18,
+        "columns": 6,
+        "card_width_pt": 59.667,
+        "grid_height_pt": 398.0
+      }
+    ],
+    "snake": [
+      {
+        "available_height_pt": 300,
+        "board_height_pt": 150,
+        "board_width_pt": 112.5,
+        "photo_tile_pt": 7.375,
+        "head_inner_size_after_padding_pt": 0
+      },
+      {
+        "available_height_pt": 350,
+        "board_height_pt": 150,
+        "board_width_pt": 112.5,
+        "photo_tile_pt": 7.375,
+        "head_inner_size_after_padding_pt": 0
+      },
+      {
+        "available_height_pt": 600,
+        "board_height_pt": 310,
+        "board_width_pt": 232.5,
+        "photo_tile_pt": 17.375,
+        "head_inner_size_after_padding_pt": 9.375
+      },
+      {
+        "available_height_pt": 700,
+        "board_height_pt": 410,
+        "board_width_pt": 307.5,
+        "photo_tile_pt": 23.625,
+        "head_inner_size_after_padding_pt": 15.625
+      },
+      {
+        "available_height_pt": 800,
+        "board_height_pt": 420,
+        "board_width_pt": 315.0,
+        "photo_tile_pt": 24.25,
+        "head_inner_size_after_padding_pt": 16.25
+      }
+    ]
+  }
+}

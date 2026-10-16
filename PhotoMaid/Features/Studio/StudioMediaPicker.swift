@@ -6,13 +6,15 @@ struct StudioMediaPicker: View {
     @Environment(\.dismiss) private var dismiss
     let allowsVideos: Bool
     let limit: Int
+    let minimumSelection: Int
     let initial: Set<String>
     let completion: ([String]) -> Void
     @State private var selection: Set<String>
 
-    init(allowsVideos: Bool, limit: Int, initial: Set<String> = [], completion: @escaping ([String]) -> Void) {
+    init(allowsVideos: Bool, limit: Int, minimumSelection: Int = 1, initial: Set<String> = [], completion: @escaping ([String]) -> Void) {
         self.allowsVideos = allowsVideos
         self.limit = limit
+        self.minimumSelection = minimumSelection
         self.initial = initial
         self.completion = completion
         _selection = State(initialValue: initial)
@@ -78,7 +80,7 @@ struct StudioMediaPicker: View {
                         completion(media.map(\.id).filter(selection.contains))
                         dismiss()
                     }
-                    .disabled(selection.isEmpty)
+                    .disabled(selection.count < minimumSelection)
                 }
             }
         }

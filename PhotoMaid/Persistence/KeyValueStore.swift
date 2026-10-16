@@ -30,6 +30,7 @@ enum StoreKeys {
     static let collageDrafts = StoreKey<[CollageProject]>("studio.collageDrafts") { [] }
     static let videoDrafts = StoreKey<[VideoProject]>("studio.videoDrafts") { [] }
     static let feedAds = StoreKey<FeedAdState>("ads.feed") { FeedAdState() }
+    static let gameRecords = StoreKey<PhotoGameRecords>("games.personalRecords.v1") { PhotoGameRecords() }
     /// Gemessene Mediengrößen (Bytes) je `localIdentifier` + Änderungsdatum. Nur lokal, nie gesichert.
     static let sizeCache = StoreKey<[String: SizeCacheEntry]>("cache.sizes") { [:] }
     /// Ergebnisse der lokalen Bildanalyse (Schärfe, Kategorie, erkannter Text) – nur lokal, nie gesichert.

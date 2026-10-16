@@ -24,6 +24,8 @@ final class ExportCoordinator {
 
     enum Failure: Error { case busy, expired }
 
+    private let screenRequest = UUID()
+
     func run<T: Sendable>(title: String,
                           _ work: @escaping @Sendable (_ progress: @escaping @Sendable (Double) -> Void) async throws -> T)
         async throws -> T {
@@ -31,7 +33,7 @@ final class ExportCoordinator {
         self.title = title
         progress = 0
         expired = false
-        UIApplication.shared.isIdleTimerDisabled = true
+        ScreenAwake.shared.set(screenRequest, active: true)
         let coordinator = self
         let task = Task.detached(priority: .userInitiated) { () -> T in
             try await work { p in Task { @MainActor in coordinator.report(p) } }
@@ -65,7 +67,7 @@ final class ExportCoordinator {
     private func finish() {
         title = nil
         cancelWork = nil
-        UIApplication.shared.isIdleTimerDisabled = false
+        ScreenAwake.shared.set(screenRequest, active: false)
         if let t = continued?.value { t.setTaskCompleted(success: !expired) }
         continued = nil
         if legacyTask != .invalid {

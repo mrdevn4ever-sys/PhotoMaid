@@ -10,6 +10,12 @@ default_platform(:ios)
 platform :ios do
   desc "Archiv bauen, signieren und zu TestFlight hochladen"
   lane :beta do
+    project_root = File.expand_path("..", __dir__)
+    privacy_checker = File.join(project_root, "scripts/ci/check_privacy_manifests.py")
+    privacy_source = File.join(project_root, "PhotoMaid/Resources/PrivacyInfo.xcprivacy")
+    privacy_report = File.join(project_root, "build/privacy-manifests.json")
+    # Fail before signing/building when the source manifest already violates tracking rules.
+    sh("python3 #{privacy_checker.shellescape} #{privacy_source.shellescape}")
     bundle_id = ENV.fetch("PM_BUNDLE_ID")
     team_id = ENV.fetch("PM_TEAM_ID")
     runner_temp = ENV.fetch("RUNNER_TEMP", Dir.tmpdir)
@@ -101,6 +107,12 @@ platform :ios do
       export_options: export_options,
       include_symbols: true
     )
+
+    # Check the actual exported app and every embedded SDK/resource manifest before uploading.
+    # Source files alone cannot establish which manifest Apple receives. Never patch signed SDKs here.
+    ipa_path = lane_context.fetch(SharedValues::IPA_OUTPUT_PATH)
+    sh("python3 #{privacy_checker.shellescape} #{ipa_path.shellescape} " \
+       "--require-app-manifest --json-output #{privacy_report.shellescape}")
 
     # App Store Connect lehnt Symbole wie „✕“ oder Emojis in „Was ist zu testen“ ab (Build 7: Upload ok, Text fehlte).
     changelog = ENV.fetch("CHANGELOG", "").dup.force_encoding(Encoding::UTF_8).scrub("").gsub(/[^\p{L}\p{M}\p{N}\p{P}\p{Zs}\n+=<>%&]/, "").squeeze(" ").strip

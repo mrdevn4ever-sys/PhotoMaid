@@ -61,6 +61,10 @@ jobs:
             echo "::error::Upload blockiert: confirm_upload muss exakt UPLOAD sein."
             exit 1
           fi
+      - name: Privacy-Manifeste vorprüfen
+        run: |
+          python3 -m unittest discover -s scripts/ci -p 'test_check_privacy_manifests.py' -v
+          python3 scripts/ci/check_privacy_manifests.py PhotoMaid/Resources/PrivacyInfo.xcprivacy
       - name: Pflicht-Secrets vorhanden?
         run: |
           missing=""
@@ -144,6 +148,7 @@ jobs:
             unit-tests.log
             ci-report.md
             fastlane/report.xml
+            build/privacy-manifests.json
           if-no-files-found: warn
       - name: Schlüsselbund und Schlüssel entfernen
         if: always()

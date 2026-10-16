@@ -10,6 +10,7 @@ struct RootView: View {
     @State private var shielded = false
     @State private var quick = QuickActions.shared
     @State private var vault = VaultStore.shared
+    @State private var analysis = AnalysisController.shared
 
     var body: some View {
         @Bindable var app = app
@@ -45,6 +46,7 @@ struct RootView: View {
                 .environment(app)
         }
         .preferredColorScheme(app.settings.appearance.colorScheme)
+        .keepsScreenAwake(analysis.running && scenePhase == .active)
         .task {
             _ = AdsService.shared.launchNumber // Kaltstart zählen (die ersten drei Starts ohne Start-Werbung)
             await app.onForeground()
@@ -83,8 +85,14 @@ struct RootView: View {
                 if vault.isPresented { PrivacyCover.show() }
                 app.player.pause()
             }
+            if phase != .active { app.snake.pause(); app.memory.setTimingActive(false) }
         }
         .onChange(of: app.library.changeToken) { _, _ in app.reloadLibraryIfNeeded() }
+        .onChange(of: app.library.access) { _, _ in validateGamePhotos() }
+        .onChange(of: app.mediaRevision) { _, _ in validateGamePhotos() }
+        .onReceive(NotificationCenter.default.publisher(for: .analysisVisibilityChanged)) { _ in
+            validateGamePhotos()
+        }
         // Unterbrochene Analyse (nicht ausdrücklich angehalten) nach dem Start weiterlaufen lassen.
         .onChange(of: app.snapshot.loaded) { _, loaded in
             if loaded { AnalysisController.shared.resumeAfterLaunch(app: app) }
@@ -108,6 +116,8 @@ struct RootView: View {
             if let route = quick.pending { quick.pending = nil; handle(route) }
         }
     }
+
+    private func validateGamePhotos() { app.memory.validatePhotos(); app.snake.validatePhotos() }
 
     /// Einführung fertig, Kaufstatus geklärt, kein Pro, Werbung in diesem Build eingerichtet.
     private var adsReadyToPrepare: Bool {

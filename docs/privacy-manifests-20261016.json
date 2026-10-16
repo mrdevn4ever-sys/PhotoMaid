@@ -1,0 +1,161 @@
+{
+  "date": "2026-10-16",
+  "scope": "Project sources, local Swift-package checkouts, exact official binary SDK archives",
+  "build10": {
+    "commit": "de90f1d67c2dbe753f5da6c012ae6feb9172b277",
+    "run_url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38808372020",
+    "report_artifact_id": 12007897882,
+    "report_artifact_sha256": "134a0f263aa8c76e2bc89365d30220f3939ccc6ce0c4dd96b9cbba66ceeda7a1",
+    "report_contains_ipa": false,
+    "gym_log_confirms_app_manifest_copy": true
+  },
+  "original_uploaded_ipa_inspected": false,
+  "runtime_tracking_domain_completeness_verified": false,
+  "sdk_archives": [
+    {
+      "name": "GoogleMobileAds-13.9.0",
+      "package_manifest_url": "https://github.com/googleads/swift-package-manager-google-mobile-ads/blob/13.9.0/Package.swift",
+      "archive_url": "https://dl.google.com/googleadmobadssdk/cd356c1fe78f0b19/googlemobileadsios-spm-13.9.0.zip",
+      "sha256": "cd356c1fe78f0b19abe9b0722affc128dfcaf9f863fd69c379cc47d46275d7bb",
+      "matches_package_checksum": true
+    },
+    {
+      "name": "UserMessagingPlatform-3.1.0",
+      "package_manifest_url": "https://github.com/googleads/swift-package-manager-google-user-messaging-platform/blob/3.1.0/Package.swift",
+      "archive_url": "https://dl.google.com/googleadmobadssdk/90fe6bf3b0f4ce0d/googleusermessagingplatformios-spm-3.1.0.zip",
+      "sha256": "90fe6bf3b0f4ce0d0199628c0871de58b6f673375148b98d52348aecc86db231",
+      "matches_package_checksum": true
+    }
+  ],
+  "original_app_manifest": {
+    "path": "PhotoMaid/Resources/PrivacyInfo.xcprivacy",
+    "sha256": "08f90f29058019b3f181825f217e15f1fecc5bc2efda2a087aeb286967a524ff",
+    "tracking": true,
+    "domains": [],
+    "errors": [
+      "NSPrivacyTracking = true requires at least one tracking domain (TN3181)"
+    ],
+    "warnings": []
+  },
+  "after": {
+    "status": "PASS",
+    "errors": [],
+    "manifests": [
+      {
+        "path": "PhotoMaid/Resources/PrivacyInfo.xcprivacy",
+        "sha256": "8d7a025e6a1abe93418b01f822c2c2aa4a70f60248b6d2dd652d319b59bea584",
+        "tracking": true,
+        "domains": [
+          "googleads.g.doubleclick.net"
+        ],
+        "errors": [],
+        "warnings": []
+      },
+      {
+        "path": ".build/checkouts/swift-crypto/Sources/CCryptoBoringSSL/PrivacyInfo.xcprivacy",
+        "sha256": "42fb8a30dd8d7ba0900e1bf17fe64ed8c12cfdb8a9c791ab6b4e1eceb0f299c0",
+        "tracking": false,
+        "domains": [],
+        "errors": [],
+        "warnings": [
+          "Remove the empty NSPrivacyTrackingDomains key when not tracking (TN3181)"
+        ]
+      },
+      {
+        "path": ".build/checkouts/swift-crypto/Sources/CCryptoBoringSSLShims/PrivacyInfo.xcprivacy",
+        "sha256": "42fb8a30dd8d7ba0900e1bf17fe64ed8c12cfdb8a9c791ab6b4e1eceb0f299c0",
+        "tracking": false,
+        "domains": [],
+        "errors": [],
+        "warnings": [
+          "Remove the empty NSPrivacyTrackingDomains key when not tracking (TN3181)"
+        ]
+      },
+      {
+        "path": ".build/checkouts/swift-crypto/Sources/CXKCP/PrivacyInfo.xcprivacy",
+        "sha256": "42fb8a30dd8d7ba0900e1bf17fe64ed8c12cfdb8a9c791ab6b4e1eceb0f299c0",
+        "tracking": false,
+        "domains": [],
+        "errors": [],
+        "warnings": [
+          "Remove the empty NSPrivacyTrackingDomains key when not tracking (TN3181)"
+        ]
+      },
+      {
+        "path": ".build/checkouts/swift-crypto/Sources/CXKCPShims/PrivacyInfo.xcprivacy",
+        "sha256": "42fb8a30dd8d7ba0900e1bf17fe64ed8c12cfdb8a9c791ab6b4e1eceb0f299c0",
+        "tracking": false,
+        "domains": [],
+        "errors": [],
+        "warnings": [
+          "Remove the empty NSPrivacyTrackingDomains key when not tracking (TN3181)"
+        ]
+      },
+      {
+        "path": ".build/checkouts/swift-crypto/Sources/Crypto/PrivacyInfo.xcprivacy",
+        "sha256": "42fb8a30dd8d7ba0900e1bf17fe64ed8c12cfdb8a9c791ab6b4e1eceb0f299c0",
+        "tracking": false,
+        "domains": [],
+        "errors": [],
+        "warnings": [
+          "Remove the empty NSPrivacyTrackingDomains key when not tracking (TN3181)"
+        ]
+      },
+      {
+        "path": ".build/checkouts/swift-crypto/Sources/CryptoBoringWrapper/PrivacyInfo.xcprivacy",
+        "sha256": "42fb8a30dd8d7ba0900e1bf17fe64ed8c12cfdb8a9c791ab6b4e1eceb0f299c0",
+        "tracking": false,
+        "domains": [],
+        "errors": [],
+        "warnings": [
+          "Remove the empty NSPrivacyTrackingDomains key when not tracking (TN3181)"
+        ]
+      },
+      {
+        "path": ".build/checkouts/swift-crypto/Sources/CryptoExtras/PrivacyInfo.xcprivacy",
+        "sha256": "42fb8a30dd8d7ba0900e1bf17fe64ed8c12cfdb8a9c791ab6b4e1eceb0f299c0",
+        "tracking": false,
+        "domains": [],
+        "errors": [],
+        "warnings": [
+          "Remove the empty NSPrivacyTrackingDomains key when not tracking (TN3181)"
+        ]
+      },
+      {
+        "path": "official-sdk-archives/GoogleMobileAds-13.9.0.zip!GoogleMobileAds.xcframework/ios-arm64_x86_64-simulator/GoogleMobileAds.framework/PrivacyInfo.xcprivacy",
+        "sha256": "69fb112582fc23fc06c635c961d262a3f7b4b5654d284787491de3000dadf9d2",
+        "tracking": null,
+        "domains": null,
+        "errors": [],
+        "warnings": []
+      },
+      {
+        "path": "official-sdk-archives/GoogleMobileAds-13.9.0.zip!GoogleMobileAds.xcframework/ios-arm64/GoogleMobileAds.framework/PrivacyInfo.xcprivacy",
+        "sha256": "69fb112582fc23fc06c635c961d262a3f7b4b5654d284787491de3000dadf9d2",
+        "tracking": null,
+        "domains": null,
+        "errors": [],
+        "warnings": []
+      },
+      {
+        "path": "official-sdk-archives/UserMessagingPlatform-3.1.0.zip!UserMessagingPlatform.xcframework/ios-arm64_x86_64-simulator/UserMessagingPlatform.framework/PrivacyInfo.xcprivacy",
+        "sha256": "45b7adb99fcd2d962a1c800fbfcc1325b57a7fa4165f416182323bb5ffe9c900",
+        "tracking": null,
+        "domains": null,
+        "errors": [],
+        "warnings": []
+      },
+      {
+        "path": "official-sdk-archives/UserMessagingPlatform-3.1.0.zip!UserMessagingPlatform.xcframework/ios-arm64/UserMessagingPlatform.framework/PrivacyInfo.xcprivacy",
+        "sha256": "45b7adb99fcd2d962a1c800fbfcc1325b57a7fa4165f416182323bb5ffe9c900",
+        "tracking": null,
+        "domains": null,
+        "errors": [],
+        "warnings": []
+      }
+    ]
+  },
+  "swift_asn1_manifest_count": 0,
+  "swift_crypto_linked_on_ios": false,
+  "apple_rule_source": "https://developer.apple.com/documentation/technotes/tn3181-debugging-invalid-privacy-manifest"
+}

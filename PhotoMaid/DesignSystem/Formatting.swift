@@ -71,6 +71,10 @@ enum DateText {
         let h = total / 3600, m = (total % 3600) / 60, s = total % 60
         return h > 0 ? String(format: "%d:%02d:%02d", h, m, s) : String(format: "%d:%02d", m, s)
     }
+
+    static func gameDuration(_ seconds: Double) -> String {
+        Duration.seconds(max(0, seconds)).formatted(.time(pattern: .minuteSecond(padMinuteToLength: 2, fractionalSecondsLength: 2)))
+    }
 }
 
 /// Texte zu Später-Intervallen (wie Android `LaterText`).

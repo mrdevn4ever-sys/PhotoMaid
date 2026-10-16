@@ -1,6 +1,63 @@
 # Implementierungsstatus
 
-Stand: 15.10.2026 · Branch `claude/fixes-analysis-library-vault-20261014` · Version 1.0, Build 9 in TestFlight; die drei Nachträge nach Build 8 sind enthalten.
+Stand: 16.10.2026 · Arbeitsbranch `feat/photo-memory-break` · zuletzt hochgeladen: Version 1.0, Build 10.
+Apple hat laut Nutzer ITMS-91064 für Builds 8–10 gemeldet; ein grüner Upload bestätigt keine fehlerfreie Apple-Validierung.
+
+## Memory-/Snake-Audit (16.10.2026)
+
+Funktions- und UI-Code geprüft. Fünf offene Befunde: bereits geladene, später ausgeblendete Bilder;
+zu kleines Snake im Querformat; scrollendes Memory mit festem Fehlpaar-Timer; verlorener
+Analysekontext beim Spielwechsel; uneinheitliche Wachhaltung während der Analyse.
+Die Spielregeln bestehen 15 erneut ausgeführte Tests und einen zusätzlichen Invariantenlauf.
+Keine native UI-Abnahme, keine Spielkorrekturen in diesem Audit, keine Actions und kein Upload.
+[Befunde, Prioritäten, Layoutmaße und Prüfgrenzen](GAMES_FUNCTION_UI_AUDIT.md).
+
+## Privacy-Manifest / ITMS-91064 (16.10.2026, lokal korrigiert)
+
+Zwölf Manifeste aus Projekt und Abhängigkeiten geprüft, einschließlich der offiziellen, per SHA-256
+verifizierten GoogleMobileAds-13.9.0- und UserMessagingPlatform-3.1.0-ZIPs. Keine der SDK-Dateien enthält
+Tracking-Domains bei `false`. Der eigene App-Eintrag `true` plus leere Domainliste ist jedoch laut Apple
+TN3181 ebenfalls ungültig. Lokal durch den bekannten AdMob-Host ergänzt; Tracking bleibt deklariert.
+Neue Prüfung aller Manifeste der exportierten IPA vor dem künftigen Fastlane-Upload.
+
+**PASS:** korrigierte Tracking-Deklaration, zwölf Datei-Prüfungen (sieben Hinweise für nur unter Linux
+gelinktes swift-crypto), acht Regressionstests, Ruby-Syntax. **NOT RUN:** Original-/neue IPA,
+Apple-Validierung und iOS-/ATT-/Werbeabnahme. Kein Push, keine Actions und kein neuer Upload.
+[Vollständiger Befund mit Grenzen und Quellen](PRIVACY_MANIFEST_AUDIT.md).
+
+## Foto-Snake und gemeinsame Spielauswahl (16.10.2026, lokal umgesetzt)
+
+Die freiwillige Pause im Feed und bei Analysen bietet jetzt Memory und Foto-Snake. Ein Kamerakopf
+sammelt Bilder und verlängert seinen Fotostreifen. Klassische feste Ränder oder entspannter
+Randumlauf, drei Tempi, Wischgesten und Richtungstasten; mit VoiceOver wird schrittweise gespielt.
+Vorbereitete, erneut geöffnete und neu gestartete Runden warten auf ausdrückliches Fortsetzen.
+App-Wechsel, Schließen und hohe Gerätetemperatur pausieren Snake.
+
+Fotos stammen wahlweise zufällig aus Mediathek, Favoriten oder Album/Fotoordner (bis zu zwölf nutzbare
+Vorschauen, mindestens eine), alternativ aus einer manuellen Auswahl von ein bis achtzehn Bildern.
+Memory und Snake nutzen dieselbe Ladeimplementierung mit getrennten Bildspeichern und Spielständen.
+Es gibt keine Fotoänderungen, Spiel-Uploads oder neuen Analyseaufträge.
+
+**PASS:** lokal 409 Core-Tests in 46 Suites, darunter acht Snake-Regeltests; Swift-Syntax aller
+App- und App-Testdateien; 31 zusätzliche Texte in allen 16 Sprachen (70 zusammen mit Memory).
+**NOT RUN:** iOS-Build, fünf neue native Snake-/Fotolader-Tests, Simulator und Gerät (kein Xcode).
+**Keine GitHub Actions, kein Push und kein TestFlight-Lauf.** Diese Änderungen sind lokal und
+noch in keinem ausgelieferten Build. [Bedienung, Grenzen und Prüfstatus](PHOTO_SNAKE.md).
+
+## Foto-Memory mit eigenen Bildern (16.10.2026, lokal umgesetzt)
+
+Auf Nutzerauftrag ist eine freiwillige Wischpause im Feed und bei laufender Analyse ergänzt.
+Zufallsrunden mit 6, 12 oder 18 Paaren aus der Mediathek, Favoriten oder gewählten Alben/Fotoordnern
+(einschließlich Unteralben), alternativ zwei bis achtzehn selbst gewählte Fotos oder sechs Symbolpaare,
+ohne Zeitlimit. Neue Zufallsrunden wählen erneut aus derselben Quelle. Spielstand und
+Feed-Position bleiben beim Schließen erhalten, solange dieselbe App-Instanz läuft. Kleine
+Vorschauen bleiben im RAM; Tresorfotos sind ausgeschlossen, iCloud-Laden für das Spiel ist optional.
+Analysefortschritt und Rückkehr zu den Ergebnissen sind im Spiel erreichbar.
+
+**PASS:** lokal 409 Core-Tests einschließlich sieben Memory-/Zufallsauswahl-Tests; Swift-Syntaxprüfung aller App-
+und App-Testdateien; 39 neue Texte in 16 Sprachen. **NOT RUN:** iOS-Build, native Model-Tests,
+Simulator und Gerät (kein Xcode). Auf ausdrücklichen Wunsch **keine GitHub Actions und kein
+TestFlight-Lauf**. [Bedienung, Grenzen und Prüfstatus](PHOTO_MEMORY.md).
 
 ## 20 deutsche Werbevideos (15.10.2026, abgeschlossen)
 

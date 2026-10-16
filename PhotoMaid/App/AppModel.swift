@@ -46,6 +46,9 @@ final class AppModel {
     let purchases: StoreKitGateway
     let reminders: ReminderScheduler
     let player: FeedPlayer
+    let gameScores: PhotoGameScores
+    let memory: PhotoMemoryModel
+    let snake: PhotoSnakeModel
     @ObservationIgnored let sizer: MediaSizer
     @ObservationIgnored let previews: PreviewPipeline
     @ObservationIgnored let bytes = PhotoResourceByteProvider()
@@ -112,6 +115,16 @@ final class AppModel {
     init(kv: KeyValueStore?, persistence: any LedgerPersistence, qa: Bool) throws {
         self.kv = kv
         self.isQAFixtureMode = qa
+        let scores = PhotoGameScores(records: kv?.get(StoreKeys.gameRecords) ?? .init()) { records in
+            try kv?.set(StoreKeys.gameRecords, records)
+        }
+        gameScores = scores
+        let memoryModel = PhotoMemoryModel(scores: scores)
+        let snakeModel = PhotoSnakeModel(scores: scores)
+        memoryModel.photos.updateVisibility([])
+        snakeModel.photos.updateVisibility([])
+        memory = memoryModel
+        snake = snakeModel
         ledger = try DecisionLedger(persistence: persistence)
         library = PhotoLibraryService()
         purchases = StoreKitGateway(productID: AppConfig.proProductID, kv: kv)
@@ -282,6 +295,11 @@ final class AppModel {
         let hiddenAlbum = snapshot.hiddenAlbumMembers
         let excluded = snapshot.excludedAlbumMembers
         visibleMedia = snapshot.all.filter { !hiddenIDs.contains($0.id) && !hiddenAlbum.contains($0.id) }
+        let gamePhotos = Set(visibleMedia.filter { !$0.isVideo }.map(\.id))
+        memory.photos.updateVisibility(gamePhotos)
+        snake.photos.updateVisibility(gamePhotos)
+        memory.validatePhotos()
+        snake.validatePhotos()
         let held = removedAwaitingReload
         cleanupMedia = excluded.isEmpty && held.isEmpty ? visibleMedia
             : visibleMedia.filter { !excluded.contains($0.id) && !held.contains($0.reference) }
@@ -346,6 +364,8 @@ final class AppModel {
     /// Gilt auch, wenn iOS das Löschen in der Fotos-App nicht bestätigt hat.
     func applyVaultConcealment(_ ids: Set<String>) async {
         guard !ids.isEmpty else { return }
+        memory.validatePhotos()
+        snake.validatePhotos()
         for id in ids {
             let ref = ItemReference.photo(id)
             switch record(ref).disposition {

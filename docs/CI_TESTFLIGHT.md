@@ -187,12 +187,19 @@ Die Diagnose ändert keine Berechtigungsdatenbank und verwendet keine privaten P
    Buildnummer = letzte TestFlight-Nummer + 1 (automatisch).
    Die vorgeschalteten Simulator-Unit-Tests werden lokal ad hoc signiert, damit auch der echte
    Keychain-Rundlauf geprüft wird. Archiv und Upload verwenden weiterhin das Distributionszertifikat.
+   Der Workflow prüft das Quell-Privacy-Manifest vorab; Fastlane prüft vor dem Upload alle
+   Privacy-Manifeste der tatsächlich exportierten IPA. Ein Fehler stoppt den Upload.
+   Der Bericht `build/privacy-manifests.json` liegt im Artefakt `testflight-report`.
 4. Nach 5–30 Minuten Verarbeitung bei Apple: TestFlight-App auf dem iPhone › PhotoMaid › Installieren
    (interne Tester: App Store Connect › TestFlight › Interne Gruppe, dich selbst hinzufügen).
 5. Auf dem iPhone prüfen (Prüfliste `docs/QA_MATRIX.md`). Probleme:
    - Absturz: TestFlight sammelt Absturzberichte (App Store Connect › TestFlight › Abstürze).
    - In der App: Einstellungen › Hilfe › **Diagnose teilen** (lokales Protokoll dieser App + MetricKit-Berichte,
      ohne Medien, Dateinamen oder IDs) – Datei an Claude Code geben.
+
+Ein grüner Upload-Lauf bestätigt nicht die vollständige Apple-Validierung. Nach dem Upload auch
+App Store Connect und Apple-Mails prüfen; insbesondere sind ITMS-Fehler gesondert zu bearbeiten.
+[ITMS-91064: Untersuchung und lokale Korrektur vom 16.10.2026](PRIVACY_MANIFEST_AUDIT.md).
 
 ## Was die Workflows nie tun
 

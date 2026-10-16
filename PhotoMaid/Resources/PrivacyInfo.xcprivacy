@@ -6,14 +6,17 @@
   Werbung (E1/E19, nur Gratis): Google Mobile Ads bringt ein eigenes Manifest mit (Geräte-ID, Werbedaten,
   Interaktion, ungefährer Standort, Diagnose). Mit Erlaubnis der iOS-Tracking-Abfrage (ATT) wird für
   personalisierte Werbung getrackt, deshalb NSPrivacyTracking = true. App-Store-Datenschutzangaben entsprechend
-  pflegen (docs/RELEASE_BLOCKERS.md).
+  pflegen (docs/RELEASE_BLOCKERS.md). Bei true darf die Domainliste nicht leer sein (Apple TN3181).
+  AdMob-Endpunkt laut Google: https://groups.google.com/g/google-admob-ads-sdk/c/FCH97KHK6Eg
 -->
 <plist version="1.0">
 <dict>
 	<key>NSPrivacyTracking</key>
 	<true/>
 	<key>NSPrivacyTrackingDomains</key>
-	<array/>
+	<array>
+		<string>googleads.g.doubleclick.net</string>
+	</array>
 	<key>NSPrivacyCollectedDataTypes</key>
 	<array>
 		<dict>

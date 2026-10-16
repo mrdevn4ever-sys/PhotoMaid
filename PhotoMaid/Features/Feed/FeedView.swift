@@ -24,6 +24,9 @@ struct FeedView: View {
     @State private var confirmExclude = false
     @State private var shareItem: MediaShareItem?
     @State private var tourStep = 0
+    @State private var showMemory = false
+    @State private var countedAsActiveFeed = false
+    @State private var memoryResults: SmartReviewKind?
     @GestureState private var dragging = false
 
     init(request: FeedRequest, app: AppModel) {
@@ -86,6 +89,7 @@ struct FeedView: View {
             app.updateSettings { $0.feedTourSeen = true }
         }
         .task {
+            guard !model.isLoaded else { return } // Returning from a pause keeps this exact session and position.
             model.reduceMotion = reduceMotion
             await model.load()
             if !model.session.items.isEmpty && (app.settings.showGestureHintOnOpen || !app.settings.gestureHintSeen) {
@@ -103,8 +107,13 @@ struct FeedView: View {
             withAnimation(.easeOut(duration: 0.6)) { showHints = false }
         }
         .onChange(of: reduceMotion) { _, v in model.reduceMotion = v }
-        .onChange(of: voiceOver) { _, _ in model.setSuspended(voiceOver || zoomed) }
-        .onChange(of: zoom) { _, _ in model.setSuspended(voiceOver || zoomed) }
+        .onChange(of: voiceOver) { _, _ in model.setSuspended(voiceOver || zoomed || showMemory) }
+        .onChange(of: zoom) { _, _ in model.setSuspended(voiceOver || zoomed || showMemory) }
+        .onChange(of: showMemory) { _, presented in
+            model.setSuspended(voiceOver || zoomed || presented)
+            if presented { app.player.pause() }
+            setFeedActive(!presented)
+        }
         .onChange(of: model.session.index) { _, _ in resetZoom() }
         .onChange(of: app.library.changeToken) { _, _ in if model.isLoaded { model.refreshWindowAssets() } }
         .onChange(of: dragging) { _, isDragging in
@@ -113,12 +122,27 @@ struct FeedView: View {
             if !isDragging, case .directionLocked = model.machine.phase { model.dragCancelled() }
         }
         // Solange gewischt wird, treten Analyse und Messen zurück (Netz und Rechenzeit für die Vorschauen).
-        .onAppear { ForegroundActivity.feedAppeared() }
-        .onDisappear { app.player.stop(); ForegroundActivity.feedDisappeared() }
+        .onAppear { setFeedActive(!showMemory) }
+        .onDisappear { app.player.stop(); setFeedActive(false) }
+    }
+
+    private func setFeedActive(_ active: Bool) {
+        guard active != countedAsActiveFeed else { return }
+        countedAsActiveFeed = active
+        if active { ForegroundActivity.feedAppeared() } else { ForegroundActivity.feedDisappeared() }
     }
 
     private func withSheets(_ content: some View) -> some View {
         content
+            .fullScreenCover(isPresented: $showMemory, onDismiss: {
+                if let kind = memoryResults {
+                    memoryResults = nil
+                    model.close()
+                    app.navigate(.smartReview(kind), in: .cleanup)
+                }
+            }) {
+                PhotoGamesView { memoryResults = $0 }.environment(app)
+            }
             .sheet(item: pickerReceiptItem) { receipt in
                 LaterPickerSheet(initial: model.defaultLaterInterval, today: model.today, allowsNoDate: true) { result in
                     Task {
@@ -177,6 +201,9 @@ struct FeedView: View {
             HStack(spacing: AppSpacing.s) {
                 GlassIconButton(symbol: "xmark", label: L("close")) { model.close() }
                     .accessibilityIdentifier("feed.close")
+                GlassIconButton(symbol: "cup.and.saucer", label: L("memory_break")) { showMemory = true }
+                    .disabled(!model.isLoaded || model.isCommitting)
+                    .accessibilityIdentifier("feed.memory")
                 Spacer(minLength: 0)
                 VStack(spacing: 2) {
                     Text(verbatim: model.request.title).font(AppTypography.headline).foregroundStyle(AppColors.textPrimary)

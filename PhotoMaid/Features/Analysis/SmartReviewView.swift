@@ -12,6 +12,8 @@ struct SmartReviewView: View {
     let kind: SmartReviewKind
     @State private var analysis = AnalysisController.shared
     @State private var compare: SimilarSelection?
+    @State private var showMemory = false
+    @State private var memoryResults: SmartReviewKind?
 
     struct SimilarSelection: Identifiable {
         let members: [MediaAsset]
@@ -53,14 +55,19 @@ struct SmartReviewView: View {
         // Im Feed entschieden: entschiedene Fotos verschwinden aus der Liste.
         .onChange(of: app.pending.count) { _, _ in if isCurrent { analysis.reload() } }
         // Solange die Analyse hier sichtbar läuft, bleibt der Bildschirm an (sonst hält die Sperre sie an).
-        .onAppear { UIApplication.shared.isIdleTimerDisabled = analysis.running }
-        .onChange(of: analysis.running) { _, running in UIApplication.shared.isIdleTimerDisabled = running }
-        .onDisappear { UIApplication.shared.isIdleTimerDisabled = false }
         .sheet(item: $compare) { sel in
             SeriesCompareView(members: sel.members, title: L("ana_similar"),
                               subtitle: L("ana2_similar_compare_sub", sel.members.count)) { keep in
                 Task { await confirm(sel.members, keep) }
             }
+        }
+        .fullScreenCover(isPresented: $showMemory, onDismiss: {
+            if let selected = memoryResults {
+                memoryResults = nil
+                if selected != kind { app.navigate(.smartReview(selected)) }
+            }
+        }) {
+            PhotoGamesView { memoryResults = $0 }.environment(app)
         }
     }
 
@@ -99,6 +106,11 @@ struct SmartReviewView: View {
                 if analysis.continueInBackground { detail(L("ana2_background_note")) }
                 controls(counts)
                     .frame(minHeight: AppSpacing.minTouch)
+                Button { showMemory = true } label: {
+                    Label(L("memory_break"), systemImage: "cup.and.saucer")
+                }
+                .buttonStyle(.glass)
+                .accessibilityIdentifier("analysis.memory")
             }
         }
     }

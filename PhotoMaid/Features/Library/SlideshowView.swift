@@ -41,15 +41,14 @@ struct SlideshowView: View {
             }
             if chrome && !finished { controls }
         }
+        .keepsScreenAwake(true)
         .statusBarHidden(true)
         .preferredColorScheme(.dark)
         .onAppear {
-            UIApplication.shared.isIdleTimerDisabled = true
             order = Slideshow.order(ids.compactMap { app.asset($0) }, settings: app.settings.slideshow,
                                     seed: UInt64.random(in: 1...UInt64.max), album: { _ in nil }, date: \.creationDate).map(\.id)
         }
         .onDisappear {
-            UIApplication.shared.isIdleTimerDisabled = false
             player?.pause()
         }
         .task(id: "\(index)-\(playing)-\(finished)") { await advanceLoop() }
