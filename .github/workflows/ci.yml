@@ -194,6 +194,7 @@ jobs:
         continue-on-error: true
         env:
           PM_GAME_CASE: ${{ inputs.games_case }}
+          PM_GAME_USE_PREBOOTED_PHONE: "1"
         run: scripts/ci/game_visual_tests.sh '${{ steps.sim.outputs.udid }}' "$RUNNER_TEMP/PhotoMaidDerived" "$RUNNER_TEMP/game-visual" iphone
       - name: iPhone-Spielbelege sofort bereitstellen
         uses: actions/upload-artifact@v4

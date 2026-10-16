@@ -211,7 +211,7 @@ struct PhotoSnakeView: View {
             }
             .padding(.horizontal, 4).padding(.bottom, 4)
         }
-        .foregroundStyle(.white).accessibilityIdentifier("snake.play")
+        .foregroundStyle(.white).accessibilityElement(children: .contain).accessibilityIdentifier("snake.play")
         .statusBarHidden(true).persistentSystemOverlays(.hidden)
     }
 
