@@ -45,6 +45,8 @@ import XCTest
         let position = app.descendants(matching: .any)["feed.position"].firstMatch
         let failed = app.descendants(matching: .any)["feed.preview.failed"].firstMatch
         XCTAssertTrue(failed.waitForExistence(timeout: 20))
+        XCTAssertEqual(app.staticTexts.matching(identifier: "feed.preview.failed").count, 1,
+                       "Hidden neighbor errors must not appear in accessibility")
         XCTAssertTrue(position.label.contains("1 von 3"))
         let trash = app.buttons["feed.dock"].label
         checkpoint("feed_unavailable_video_01", app: app)

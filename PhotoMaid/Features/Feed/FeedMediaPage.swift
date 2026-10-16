@@ -60,18 +60,21 @@ struct FeedMediaPage: View {
                         .allowsHitTesting(false)
                         .accessibilityHidden(true)
                 }
-                switch state {
-                case .loading where image == nil && !videoReady:
-                    loadingView
-                case .failed:
-                    failedView
-                default:
-                    EmptyView()
+                if isTop {
+                    switch state {
+                    case .loading where image == nil && !videoReady:
+                        loadingView
+                    case .failed:
+                        failedView
+                    default:
+                        EmptyView()
+                    }
                 }
                 if isTop, image != nil { cloudBadge }
             }
             .accessibilityElement(children: .contain)
             .accessibilityIdentifier(videoReady ? "feed.video.ready" : "feed.media")
+            .accessibilityHidden(!isTop)
             .clipShape(.rect(cornerRadius: AppRadii.card))
             .overlay {
                 if let intentColor {
@@ -102,10 +105,10 @@ struct FeedMediaPage: View {
         VStack(spacing: AppSpacing.m) {
             ProgressView().tint(.white)
             Text(key: "feed_loading").foregroundStyle(.white)
+                .accessibilityIdentifier("feed.preview.loading")
             if isTop { skipButton }
         }
         .padding(AppSpacing.l)
-        .accessibilityIdentifier("feed.preview.loading")
     }
 
     private var failedView: some View {
@@ -114,6 +117,7 @@ struct FeedMediaPage: View {
                 .accessibilityHidden(true)
             Text(key: cloudFailed ? "feed_icloud_only" : "preview_failed")
                 .font(AppTypography.headline).foregroundStyle(.white).multilineTextAlignment(.center)
+                .accessibilityIdentifier("feed.preview.failed")
             Text(key: cloudFailed ? "feed_icloud_hint" : "preview_failed_hint")
                 .font(AppTypography.footnote).foregroundStyle(.white.opacity(0.75)).multilineTextAlignment(.center)
             if isTop {
@@ -125,7 +129,6 @@ struct FeedMediaPage: View {
         }
         .padding(AppSpacing.l)
         .accessibilityElement(children: .contain)
-        .accessibilityIdentifier("feed.preview.failed")
     }
 
     private var retryButton: some View {
