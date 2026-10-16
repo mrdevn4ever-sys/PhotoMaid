@@ -39,7 +39,6 @@ struct LibraryView: View {
             }
         }
         .appPage()
-        .navigationTitle(L("tab_library"))
         .safeAreaInset(edge: .top, spacing: 0) {
             modePicker
                 .padding(.horizontal, AppSpacing.pageMargin)
@@ -47,6 +46,8 @@ struct LibraryView: View {
                 .frame(maxWidth: .infinity)
                 .background(AppColors.background)
         }
+        .navigationTitle(L("tab_library"))
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
                 if mode == 0 {
