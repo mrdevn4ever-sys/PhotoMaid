@@ -85,7 +85,7 @@ struct TrashView: View {
                 list
             }
         }
-        .appPage()
+        .appPage().readableContent()
         .navigationTitle(L("basket"))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {

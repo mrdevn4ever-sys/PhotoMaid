@@ -12,7 +12,7 @@ import XCTest
     }
 
     private func launch(_ page: String = "feed", light: Bool = false, language: String = "en") {
-        app.launchArguments = ["-store-capture", "-store-page", page, "-AppleLanguages", "(\(language))", "-AppleLocale", "en_US"]
+        app.launchArguments = ["-store-capture", "-game-visual-tests", "-store-page", page, "-AppleLanguages", "(\(language))", "-AppleLocale", "en_US"]
         if light { app.launchArguments.append("-capture-light") }
         app.launch()
         if page == "feed" {
@@ -152,10 +152,53 @@ import XCTest
             XCUIDevice.shared.orientation = .portrait
         }
         app.terminate()
-        for page in ["today", "library", "cleanup", "studio", "history", "editor", "settings", "vault"] {
+        for page in ["today", "library", "cleanup", "studio", "history", "editor", "collage", "settings", "vault"] {
             launch(page, light: page != "editor")
             checkpoint("workspace_" + page, app: app)
             app.terminate()
         }
+    }
+
+    func test40LargeTextAndArabic() {
+        app.launchArguments = ["-store-capture", "-store-page", "feed", "-AppleLanguages", "(ar)",
+                               "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
+        app.launch()
+        XCTAssertTrue(app.buttons["feed.memory"].waitForExistence(timeout: 45))
+        openGame("memory")
+        let motifs = app.buttons["memory.startMotifs"]
+        for _ in 0..<6 where !motifs.isHittable { app.swipeUp() }
+        motifs.tap()
+        XCTAssertTrue(app.buttons["memory.card.0"].waitForExistence(timeout: 10))
+        checkpoint("memory_accessibility_arabic", app: app)
+        app.buttons["memory.close"].tap()
+        openGame("snake")
+        let symbols = app.buttons["snake.symbols"]
+        for _ in 0..<6 where !symbols.isHittable { app.swipeUp() }
+        symbols.tap()
+        XCTAssertTrue(app.descendants(matching: .any)["snake.board"].firstMatch.waitForExistence(timeout: 10))
+        checkpoint("snake_accessibility_arabic", app: app)
+    }
+
+    func test50FavoritesAndFolderSources() {
+        launch(light: true)
+        openGame("memory")
+        app.buttons["memory.source"].tap()
+        app.buttons["Favorites"].firstMatch.tap()
+        app.buttons["memory.size"].tap()
+        app.buttons["6 pairs (12 cards)"].firstMatch.tap()
+        app.buttons["memory.startPhotos"].tap()
+        XCTAssertTrue(app.buttons["memory.card.0"].waitForExistence(timeout: 30))
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'memory.card.'")).count, 12)
+        checkpoint("memory_favorites_six_pairs", app: app)
+        app.buttons["memory.close"].tap()
+        app.terminate(); launch(light: true); openGame("memory")
+        app.buttons["memory.source"].tap()
+        app.buttons["Album or photo folder"].firstMatch.tap()
+        app.buttons["memory.chooseCollection"].tap()
+        let folder = app.buttons.containing(NSPredicate(format: "label == 'QA Game Folder'")).firstMatch
+        XCTAssertTrue(folder.waitForExistence(timeout: 15)); folder.tap()
+        app.buttons["memory.startPhotos"].tap()
+        XCTAssertTrue(app.buttons["memory.card.0"].waitForExistence(timeout: 30))
+        checkpoint("memory_folder_with_subalbum", app: app)
     }
 }

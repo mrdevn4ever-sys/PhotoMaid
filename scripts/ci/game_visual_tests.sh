@@ -50,6 +50,8 @@ if [ -z "$wide" ]; then
 fi
 xcrun simctl list devices available > "$out/simulator-inventory.txt"
 xcodebuild -version > "$out/xcode-version.txt"
+xcrun --sdk iphonesimulator --show-sdk-version > "$out/sdk-version.txt"
+printf '%s\n' 'Expanded-window fallback is not fold/unfold verification. Native Duo requires Xcode/iOS 27.1 SDK and its device profile.' > "$out/duo-validation-scope.txt"
 run_device "$wide" expanded-window
 rm -rf "$out/media"
 test "$(cat "$out/iphone.exit")" = 0

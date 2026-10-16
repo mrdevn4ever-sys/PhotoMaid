@@ -22,7 +22,7 @@ struct ArchiveView: View {
 
     var body: some View {
         form
-            .appPage()
+            .appPage().readableContent()
             .navigationTitle(L("archive_title"))
             .safeAreaInset(edge: .bottom) { startBar }
             .overlay { if running { LoadingState(message: L("archive_running")).background(.ultraThinMaterial) } }

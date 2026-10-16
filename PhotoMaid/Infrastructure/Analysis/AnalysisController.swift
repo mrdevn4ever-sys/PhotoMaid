@@ -43,7 +43,10 @@ final class AnalysisController {
     // MARK: Lauf
 
     /// Was gerade läuft (`nil` = nichts).
-    private(set) var runKind: AnalysisKind?
+    @ObservationIgnored private let screenRequest = UUID()
+    private(set) var runKind: AnalysisKind? {
+        didSet { ScreenAwake.shared.set(screenRequest, active: runKind != nil) }
+    }
     private(set) var runStage = AnalysisRunStage.idle
     private(set) var downloadFraction: Double?
     /// Reihenfolge: laufende und wartende Analysen (gespeichert).

@@ -51,7 +51,7 @@ struct HistoryView: View {
                 }
             }
         }
-        .appPage()
+        .appPage().readableContent()
         .navigationTitle(L("tab_history"))
         .accessibilityIdentifier("history.events")
         .accessibilityValue(Text(verbatim: String(app.read.events.count)))

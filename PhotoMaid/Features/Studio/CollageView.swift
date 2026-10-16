@@ -8,6 +8,7 @@ import UniformTypeIdentifiers
 /// Gespeichert wird immer eine neue Datei – die Originalfotos bleiben unverändert.
 struct CollageView: View {
     @Environment(AppModel.self) private var app
+    @Environment(\.dynamicTypeSize) private var dynamicType
     let draftID: UUID?
 
     @State private var model = CollageModel()
@@ -85,53 +86,61 @@ struct CollageView: View {
     }
 
     private func editor(_ size: CGSize) -> some View {
-        let boxWidth = max(0, size.width - 2 * AppSpacing.pageMargin)
+        let wide = AppWorkspace.isWide(size, accessibility: dynamicType.isAccessibilitySize)
+        let stageWidth = size.width - (wide ? 320 : 0)
+        let boxWidth = max(0, stageWidth - 2 * AppSpacing.pageMargin)
         // In the default editing mode the actual photo canvas owns most of the
         // screen. Advanced controls are expandable, not permanently stacked below it.
-        let boxHeight = max(150, min(size.height * (showTools ? 0.46 : 0.82), boxWidth * 1.55))
-        return VStack(spacing: AppSpacing.s) {
+        let boxHeight = max(150, min(size.height * (wide ? 0.96 : (showTools ? 0.46 : 0.82)), boxWidth * 1.55))
+        let layout = wide ? AnyLayout(HStackLayout(alignment: .top, spacing: AppSpacing.l)) : AnyLayout(VStackLayout(spacing: AppSpacing.s))
+        return layout {
             CollageStage(model: model, box: CGSize(width: boxWidth, height: boxHeight))
-                .frame(width: size.width, height: boxHeight)
-            if showTools {
-                Text(verbatim: hint)
-                    .font(AppTypography.caption)
-                    .foregroundStyle(AppColors.textSecondary)
-                    .multilineTextAlignment(.center)
-                    .lineLimit(2)
-                    .padding(.horizontal, AppSpacing.pageMargin)
-            }
-            Button {
-                withAnimation(.easeInOut(duration: 0.2)) { showTools.toggle() }
-            } label: {
-                HStack(spacing: AppSpacing.s) {
-                    Label(L("tools_header"), systemImage: "slider.horizontal.3")
-                    Spacer()
-                    Image(systemName: showTools ? "chevron.down" : "chevron.up")
+                .frame(width: stageWidth, height: boxHeight)
+            VStack(spacing: AppSpacing.s) {
+                if showTools || wide {
+                    Text(verbatim: hint)
+                        .font(AppTypography.caption)
+                        .foregroundStyle(AppColors.textSecondary)
+                        .multilineTextAlignment(.center)
+                        .lineLimit(2)
+                        .padding(.horizontal, AppSpacing.pageMargin)
                 }
-                .font(AppTypography.subheadline.weight(.semibold))
-                .frame(minHeight: AppSpacing.minTouch)
-                .contentShape(.rect)
-            }
-            .buttonStyle(.plain)
-            .padding(.horizontal, AppSpacing.pageMargin)
-            if showTools {
-                kindPicker
-                tabStrip
-                ScrollView {
-                    VStack(alignment: .leading, spacing: AppSpacing.m) {
-                        panel
-                        if !model.missing.isEmpty {
-                            InfoBanner(symbol: "exclamationmark.triangle", tint: AppColors.warning, text: L("col_missing"))
+                if !wide {
+                    Button {
+                        withAnimation(.easeInOut(duration: 0.2)) { showTools.toggle() }
+                    } label: {
+                        HStack(spacing: AppSpacing.s) {
+                            Label(L("tools_header"), systemImage: "slider.horizontal.3")
+                            Spacer()
+                            Image(systemName: showTools ? "chevron.down" : "chevron.up")
                         }
+                        .font(AppTypography.subheadline.weight(.semibold))
+                        .frame(minHeight: AppSpacing.minTouch)
+                        .contentShape(.rect)
                     }
+                    .buttonStyle(.plain)
                     .padding(.horizontal, AppSpacing.pageMargin)
-                    .padding(.top, AppSpacing.xxs)
-                    .padding(.bottom, AppSpacing.l)
                 }
-                .scrollBounceBehavior(.basedOnSize)
-            } else {
-                Spacer(minLength: 0)
+                if showTools || wide {
+                    kindPicker
+                    tabStrip
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: AppSpacing.m) {
+                            panel
+                            if !model.missing.isEmpty {
+                                InfoBanner(symbol: "exclamationmark.triangle", tint: AppColors.warning, text: L("col_missing"))
+                            }
+                        }
+                        .padding(.horizontal, AppSpacing.pageMargin)
+                        .padding(.top, AppSpacing.xxs)
+                        .padding(.bottom, AppSpacing.l)
+                    }
+                    .scrollBounceBehavior(.basedOnSize)
+                } else {
+                    Spacer(minLength: 0)
+                }
             }
+            .frame(width: wide ? 300 : nil)
         }
         .padding(.top, AppSpacing.xs)
     }

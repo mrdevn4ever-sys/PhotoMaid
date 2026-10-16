@@ -10,7 +10,6 @@ struct RootView: View {
     @State private var shielded = false
     @State private var quick = QuickActions.shared
     @State private var vault = VaultStore.shared
-    @State private var analysis = AnalysisController.shared
 
     var body: some View {
         @Bindable var app = app
@@ -46,7 +45,6 @@ struct RootView: View {
                 .environment(app)
         }
         .preferredColorScheme(app.settings.appearance.colorScheme)
-        .keepsScreenAwake(analysis.running && scenePhase == .active)
         .task {
             _ = AdsService.shared.launchNumber // Kaltstart zählen (die ersten drei Starts ohne Start-Werbung)
             await app.onForeground()

@@ -25,6 +25,7 @@ struct OnboardingFlow: View {
                         Text(key: pages[page].1).multilineTextAlignment(.center).foregroundStyle(AppColors.textSecondary)
                     }
                     .padding(AppSpacing.pageMargin)
+                    .frame(maxWidth: 620)
                     .frame(maxWidth: .infinity)
                     .id(page)
                     .transition(.opacity)

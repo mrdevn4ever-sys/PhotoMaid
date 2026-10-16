@@ -27,17 +27,18 @@ struct PhotoGamesView: View {
                         PhotoGameAnalysisStatus(onResults: onResults)
                         PhotoGameRecordSaveStatus()
                         Button { selected = .memory } label: {
-                            NavRow(symbol: "rectangle.on.rectangle", title: L("memory_title"),
-                                   subtitle: L(app.memory.game == nil ? "games_memory_description" : "memory_resume"))
+                            PhotoGameTile(symbol: "rectangle.on.rectangle", title: L("memory_title"),
+                                          subtitle: L(app.memory.game == nil ? "games_memory_description" : "memory_resume"), snake: false)
                         }
                         .buttonStyle(.plain).accessibilityIdentifier("games.memory")
                         Button { selected = .snake } label: {
-                            NavRow(symbol: "camera.fill", title: L("snake_title"),
-                                   subtitle: L(app.snake.game?.status == .playing ? "memory_resume" : "snake_intro"))
+                            PhotoGameTile(symbol: "camera.fill", title: L("snake_title"),
+                                          subtitle: L(app.snake.game?.status == .playing ? "memory_resume" : "snake_intro"), snake: true)
                         }
                         .buttonStyle(.plain).accessibilityIdentifier("games.snake")
                     }
                     .padding(AppSpacing.pageMargin)
+                    .frame(maxWidth: 620).frame(maxWidth: .infinity)
                 }
                 .appPage()
                 .navigationTitle(L("memory_break"))
@@ -51,5 +52,35 @@ struct PhotoGamesView: View {
                 .sheet(isPresented: $showRecords) { PhotoGameRecordsView().environment(app) }
             }
         }
+    }
+}
+
+private struct PhotoGameTile: View {
+    let symbol: String
+    let title: String
+    let subtitle: String
+    let snake: Bool
+
+    var body: some View {
+        SurfaceCard(padding: AppSpacing.l) {
+            VStack(alignment: .leading, spacing: AppSpacing.m) {
+                HStack(spacing: AppSpacing.xs) {
+                    ForEach(0..<4) { index in
+                        Image(systemName: index == 0 ? symbol : PhotoMemoryModel.motifs[index])
+                            .font(.title3.weight(.semibold))
+                            .foregroundStyle(index == 0 ? .white : AppColors.accent)
+                            .frame(width: 44, height: 48)
+                            .background(index == 0 ? AppColors.accentFill : AppColors.warm, in: .rect(cornerRadius: 10))
+                            .offset(y: snake && index.isMultiple(of: 2) ? -5 : 0)
+                    }
+                    Spacer(minLength: 0)
+                    Image(systemName: "arrow.up.forward").foregroundStyle(AppColors.textSecondary)
+                }
+                .accessibilityHidden(true)
+                Text(verbatim: title).font(AppTypography.title).foregroundStyle(AppColors.textPrimary)
+                Text(verbatim: subtitle).font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
+            }
+        }
+        .accessibilityElement(children: .combine)
     }
 }

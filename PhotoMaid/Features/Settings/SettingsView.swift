@@ -64,7 +64,7 @@ struct SettingsView: View {
                     .accessibilityIdentifier("settings.pro")
             }
         }
-        .appPage().navigationTitle(L("settings"))
+        .appPage().readableContent().navigationTitle(L("settings"))
     }
 
     /// Name der aktuell verwendeten App-Sprache in dieser Sprache („Deutsch“, „English“ …).

@@ -24,7 +24,7 @@ struct MovieView: View {
 
     var body: some View {
         content
-            .appPage()
+            .appPage().readableContent()
             .navigationTitle(L("movie_title"))
             .safeAreaInset(edge: .bottom) { saveBar }
             .overlay {

@@ -50,3 +50,18 @@ struct AdaptiveWorkspace<Primary: View, Controls: View>: View {
         }
     }
 }
+
+private struct ReadableContent: ViewModifier {
+    let maximum: CGFloat
+    @State private var width: CGFloat = 0
+    func body(content: Content) -> some View {
+        content
+            .contentMargins(.horizontal, max(0, (width - maximum) / 2), for: .scrollContent)
+            .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { width = $0 }
+    }
+}
+
+extension View {
+    /// Keeps forms and history readable while media canvases use the entire window.
+    func readableContent(maximum: CGFloat = 760) -> some View { modifier(ReadableContent(maximum: maximum)) }
+}

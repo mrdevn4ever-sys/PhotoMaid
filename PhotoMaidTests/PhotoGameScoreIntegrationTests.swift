@@ -41,7 +41,7 @@ import Testing
             if shouldFail { throw Failure.unavailable }
             try kv.set(StoreKeys.gameRecords, records)
         }
-        var game = PhotoMemoryGame(pairIDs: ["a", "b"])
+        var game = try #require(PhotoMemoryGame(pairIDs: ["a", "b"]))
         for pair in Dictionary(grouping: game.cards, by: \.pairID).values {
             for card in pair { _ = game.reveal(card.id) }
         }

@@ -73,6 +73,7 @@ enum StoreCapture {
             if page != "introduction" { $0.onboardingVersion = OnboardingFlow.version }
         }
         guard page != "introduction" else { return }
+        if ProcessInfo.processInfo.arguments.contains("-game-visual-tests") { await arrangeGameSources() }
         await arrangeImportedPhotos()
         try? await Task.sleep(for: .milliseconds(700)) // let the real PhotoKit change notification settle
         app.reloadLibraryIfNeeded(force: true)
@@ -155,6 +156,29 @@ enum StoreCapture {
             withAnimation { app.navigate(route, in: tab) }
             try? await Task.sleep(for: .milliseconds(600))
         }
+    }
+
+    /// A bounded PhotoKit fixture for source-selection tests, restricted to explicitly labelled synthetic QA assets.
+    private static func arrangeGameSources() async {
+        guard !UserDefaults.standard.bool(forKey: "gameVisual.sourcesPrepared") else { return }
+        let all = PHAsset.fetchAssets(with: .image, options: nil)
+        let ids = (0..<all.count).compactMap { index -> String? in
+            let asset = all.object(at: index)
+            guard PHAssetResource.assetResources(for: asset).first?.originalFilename.hasPrefix("QA_") == true else { return nil }
+            return asset.localIdentifier
+        }.prefix(12).map { $0 }
+        guard ids.count == 12 else { return }
+        do {
+            try await PHPhotoLibrary.shared().performChanges {
+                let assets = PHAsset.fetchAssets(withLocalIdentifiers: ids, options: nil)
+                for index in 0..<min(6, assets.count) { PHAssetChangeRequest(for: assets.object(at: index)).isFavorite = true }
+                let album = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: "QA Game Album")
+                album.addAssets(assets)
+                let folder = PHCollectionListChangeRequest.creationRequestForCollectionList(withTitle: "QA Game Folder")
+                if let placeholder = album.placeholderForCreatedAssetCollection { folder.addChildCollections([placeholder] as NSArray) }
+            }
+            UserDefaults.standard.set(true, forKey: "gameVisual.sourcesPrepared")
+        } catch { Diagnostics.error(.app, "game-visual-sources", error) }
     }
 
     /// Actual test-library edits, confined to the disposable simulator. No change to image bytes.
