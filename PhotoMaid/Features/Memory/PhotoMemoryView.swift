@@ -23,6 +23,7 @@ struct PhotoMemoryView: View {
     @State private var collectionTitle = ""
     @State private var analysisHeight: CGFloat = 0
     @State private var boardNeedsScrolling = false
+    @State private var scrollPosition = ScrollPosition(edge: .top)
     @State private var configurationLoaded = false
 
     private var model: PhotoMemoryModel { app.memory }
@@ -52,6 +53,7 @@ struct PhotoMemoryView: View {
                     .frame(maxWidth: .infinity)
                 }
                 .appPage()
+                .scrollPosition($scrollPosition)
                 .onScrollGeometryChange(for: Bool.self) { $0.contentSize.height > $0.containerSize.height + 1 } action: { _, scrolling in
                     boardNeedsScrolling = scrolling
                     if scrolling, !setup, !model.isLoading { model.noteManualMismatch() }
@@ -97,6 +99,7 @@ struct PhotoMemoryView: View {
             }
             .onChange(of: shouldTime) { _, active in model.setTimingActive(active) }
             .onChange(of: model.roundID) { _, _ in
+                scrollPosition.scrollTo(edge: .top)
                 if voiceOver || boardNeedsScrolling { model.noteManualMismatch() }
             }
             .onChange(of: voiceOver) { _, enabled in if enabled { model.noteManualMismatch() } }

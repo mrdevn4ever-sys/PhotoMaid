@@ -8,6 +8,7 @@ import XCTest
     override func setUp() async throws {
         continueAfterFailure = false
         executionTimeAllowance = 180
+        installPermissionMonitor()
         app = XCUIApplication()
         XCUIDevice.shared.orientation = .portrait
     }
@@ -16,12 +17,15 @@ import XCTest
         app.launchArguments = ["-store-capture", "-game-visual-tests", "-store-page", page, "-AppleLanguages", "(\(language))", "-AppleLocale", "en_US"]
         if light { app.launchArguments.append("-capture-light") }
         app.launch()
+        resolvePrivacyPrompts(in: app, prefix: "games_" + page, photos: true)
         if page == "feed" {
             let pause = app.buttons["feed.memory"]
             XCTAssertTrue(pause.waitForExistence(timeout: 45))
+            XCTAssertTrue(app.descendants(matching: .any)["feed.stage"].firstMatch.waitForExistence(timeout: 25), "The real photo feed must be ready")
         } else {
             XCTAssertTrue(app.windows["store.capture." + page].waitForExistence(timeout: 45))
         }
+        Thread.sleep(forTimeInterval: 0.8)
     }
 
     private func openGame(_ name: String) {
@@ -178,9 +182,10 @@ import XCTest
     }
 
     func test40LargeTextAndArabic() {
-        app.launchArguments = ["-store-capture", "-store-page", "feed", "-AppleLanguages", "(ar)",
+        app.launchArguments = ["-store-capture", "-game-visual-tests", "-store-page", "feed", "-AppleLanguages", "(ar)",
                                "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"]
         app.launch()
+        resolvePrivacyPrompts(in: app, prefix: "games_arabic", photos: true)
         XCTAssertTrue(app.buttons["feed.memory"].waitForExistence(timeout: 45))
         openGame("memory")
         let motifs = app.buttons["memory.startMotifs"]

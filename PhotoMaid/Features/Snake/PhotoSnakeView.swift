@@ -23,6 +23,7 @@ struct PhotoSnakeView: View {
     @State private var allowNetwork = false
     @State private var restored = false
     @State private var analysisHeight: CGFloat = 0
+    @State private var scrollPosition = ScrollPosition(edge: .top)
 
     private var model: PhotoSnakeModel { app.snake }
 
@@ -50,6 +51,7 @@ struct PhotoSnakeView: View {
                     .frame(maxWidth: 1100).frame(maxWidth: .infinity)
                 }
                 .appPage()
+                .scrollPosition($scrollPosition)
             }
             .navigationTitle(L("snake_title"))
             .navigationBarTitleDisplayMode(.inline)
@@ -74,6 +76,7 @@ struct PhotoSnakeView: View {
             }
             .task(id: driverID) { await runTicks() }
             .onAppear { restore(); model.validatePhotos(); model.updateTemperature() }
+            .onChange(of: model.roundID) { _, _ in scrollPosition.scrollTo(edge: .top) }
             .keepsScreenAwake(model.running && scenePhase == .active)
             .onDisappear { model.pause(); model.photos.cancelLoading() }
             .onChange(of: scenePhase) { _, phase in if phase != .active { model.pause() } }

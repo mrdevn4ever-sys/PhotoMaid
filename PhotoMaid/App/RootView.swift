@@ -153,6 +153,7 @@ struct RootView: View {
     private func stack<Content: View>(_ tab: AppTab, @ViewBuilder content: () -> Content) -> some View {
         NavigationStack(path: Binding(get: { app.paths[tab] ?? [] }, set: { app.paths[tab] = $0 })) {
             content()
+                .toolbar(app.feed == nil ? .automatic : .hidden, for: .tabBar)
                 .navigationDestination(for: Route.self) { RouteDestination(route: $0) }
         }
     }

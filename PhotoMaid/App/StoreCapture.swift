@@ -73,7 +73,10 @@ enum StoreCapture {
             if page != "introduction" { $0.onboardingVersion = OnboardingFlow.version }
         }
         guard page != "introduction" else { return }
-        if ProcessInfo.processInfo.arguments.contains("-game-visual-tests") { await arrangeGameSources() }
+        if ProcessInfo.processInfo.arguments.contains("-game-visual-tests") {
+            if PHPhotoLibrary.authorizationStatus(for: .readWrite) == .notDetermined { await app.library.requestAccess() }
+            await arrangeGameSources()
+        }
         await arrangeImportedPhotos()
         try? await Task.sleep(for: .milliseconds(700)) // let the real PhotoKit change notification settle
         app.reloadLibraryIfNeeded(force: true)
