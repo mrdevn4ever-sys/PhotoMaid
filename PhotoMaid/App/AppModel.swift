@@ -805,7 +805,10 @@ final class AppModel {
     /// Preserve library order and current visibility rules; never resolve hidden IDs directly from PhotoKit.
     var skippedPreviewItems: [ItemReference] {
         guard !skippedPreviews.isEmpty else { return [] }
-        return cleanupMedia.lazy.filter { skippedPreviews.contains($0.reference) }.map(\.reference)
+        return cleanupMedia.compactMap { asset in
+            let item = asset.reference
+            return skippedPreviews.contains(item) ? item : nil
+        }
     }
 
     @discardableResult
