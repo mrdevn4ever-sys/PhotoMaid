@@ -9,6 +9,7 @@ struct PhotoSnakeView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.dynamicTypeSize) private var dynamicType
     let onResults: (SmartReviewKind) -> Void
     let onChooseGame: () -> Void
     let onClose: () -> Void
@@ -176,13 +177,7 @@ struct PhotoSnakeView: View {
                 artButton("ui_back", label: "close", action: close).accessibilityIdentifier("snake.close")
                 artButton("ui_pause", label: "snake_pause") { model.pause() }.accessibilityIdentifier("snake.pause")
                 Spacer(minLength: 0)
-                VStack(alignment: .trailing, spacing: 2) {
-                    Text(verbatim: L("snake_eaten", model.presentedScore)).font(.headline)
-                        .accessibilityIdentifier("snake.score")
-                    Text(verbatim: model.bestEaten.map { L("game_best_eaten", $0) } ?? L("game_no_best"))
-                        .font(.caption).accessibilityIdentifier("snake.best")
-                }
-                .monospacedDigit()
+                scoreHUD
                 artButton("ui_settings", label: "settings") { openSettings() }.accessibilityIdentifier("snake.settings")
             }
             .padding(8).background(.black.opacity(0.65), in: .rect(cornerRadius: 24)).padding(.horizontal, 12)
@@ -214,6 +209,31 @@ struct PhotoSnakeView: View {
         .foregroundStyle(.white).accessibilityElement(children: .contain).accessibilityIdentifier("snake.play")
         .statusBarHidden(true).persistentSystemOverlays(.hidden)
     }
+
+    private var scoreHUD: some View {
+        VStack(alignment: .trailing, spacing: 2) {
+            HStack(spacing: 6) {
+                if dynamicType.isAccessibilitySize {
+                    Image(uiImage: SnakeArt.image("food_apple")).resizable().scaledToFit()
+                        .frame(width: 24, height: 24).accessibilityHidden(true)
+                }
+                Text(verbatim: dynamicType.isAccessibilitySize ? model.presentedScore.formatted() : L("snake_eaten", model.presentedScore))
+                    .font(.headline).lineLimit(1)
+                    .accessibilityLabel(Text(verbatim: L("snake_eaten", model.presentedScore)))
+                    .accessibilityIdentifier("snake.score")
+            }
+            HStack(spacing: 6) {
+                if dynamicType.isAccessibilitySize {
+                    Image(systemName: "trophy.fill").font(.system(size: 16)).accessibilityHidden(true)
+                }
+                Text(verbatim: dynamicType.isAccessibilitySize ? (model.bestEaten.map { $0.formatted() } ?? "—") : bestLabel)
+                    .font(.caption).lineLimit(1)
+                    .accessibilityLabel(Text(verbatim: bestLabel))
+                    .accessibilityIdentifier("snake.best")
+            }
+        }.monospacedDigit()
+    }
+    private var bestLabel: String { model.bestEaten.map { L("game_best_eaten", $0) } ?? L("game_no_best") }
 
     private var pausePanel: some View {
         VStack(spacing: 16) {

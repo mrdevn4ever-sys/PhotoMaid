@@ -106,10 +106,11 @@ final class PhotoSnakeScene: SKScene {
 
     func refreshTextures() {
         // This runs only on SwiftUI invalidation, never in update(_:). Composition is keyed by photo ID.
-        let signature = "\(model.roundID)-\(model.gallery.revision)-\(model.usesSavedPhotos)-\(model.photos.photoIDs.joined(separator: ","))"
+        let ids = model.pictureIDs
+        let signature = "\(model.roundID)-\(model.gallery.revision)-\(model.usesSavedPhotos)-\(ids.joined(separator: ","))"
         guard signature != textureSignature else { return }
         textureSignature = signature
-        composer.synchronize(ids: model.pictureIDs, images: model.visibleImages)
+        composer.synchronize(ids: ids, images: model.visibleImages)
         for (index, node) in segments.enumerated() { node.texture = texture(at: index + 1) }
     }
 
