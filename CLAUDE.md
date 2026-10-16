@@ -47,6 +47,9 @@ Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E19) – ni
 - **Aktueller SnakePhoto-Umbau (neuer Nutzerauftrag, 16.10.2026): keine GitHub Actions, bezahlten Runner/APIs
   oder TestFlight-Uploads ohne neue ausdrückliche Freigabe. Diese auftragsbezogene Sperre hat Vorrang.**
   Snake-Bewegung ausschließlich mit Wischgesten; keine Richtungstasten, auch nicht optional.
+- **Anschließende ausdrückliche Freigabe (16.10.2026: „Testfloght build“):** aktuellen SnakePhoto-/Memory-Stand
+  pushen, notwendige native CI-/Spieletests ausführen, Fehler beheben und als internen TestFlight-Build hochladen.
+  Keine App-Store-Veröffentlichung oder externe Tester-Verteilung dadurch autorisiert.
 
 ## Geschäftsregeln (aus dem Android-Quellcode)
 
