@@ -113,8 +113,8 @@ import XCTest
         app.buttons["snake.prepare"].tap()
         let board = app.descendants(matching: .any)["snake.board"].firstMatch
         XCTAssertTrue(board.waitForExistence(timeout: 30))
-        assertFullscreenSnake(board)
         checkpoint("snake_02_fullscreen_ready_dark", app: app)
+        assertFullscreenSnake(board)
         func move(_ direction: String) {
             switch direction {
             case "up": board.swipeUp()
@@ -141,22 +141,29 @@ import XCTest
         XCTAssertTrue(app.staticTexts["snake.best"].label.contains("1"))
         checkpoint("snake_03_fullscreen_collected_record_dark", app: app)
         let beforeClose = board.value as? String
-        app.buttons["snake.close"].tap()
+        closeSnake()
         let position = app.descendants(matching: .any)["feed.position"].firstMatch.label
         app.buttons["feed.memory"].tap(); app.buttons["games.snake"].tap()
         app.buttons["snake.resume"].tap()
         XCTAssertTrue(board.waitForExistence(timeout: 10))
         XCTAssertEqual(board.value as? String, beforeClose)
         assertFullscreenSnake(board)
-        app.buttons["snake.close"].tap()
+        closeSnake()
         XCTAssertEqual(app.descendants(matching: .any)["feed.position"].firstMatch.label, position)
+    }
+
+    private func closeSnake() {
+        let close = app.buttons.matching(identifier: "snake.close").allElementsBoundByIndex.first(where: \.isHittable)
+        XCTAssertNotNil(close)
+        close?.tap()
     }
 
     private func assertFullscreenSnake(_ board: XCUIElement) {
         XCTAssertGreaterThanOrEqual(board.frame.width, app.frame.width - 2)
         XCTAssertGreaterThanOrEqual(board.frame.height, app.frame.height - 2)
-        XCTAssertEqual(app.buttons.count, 1, "Only Close is a visible button during Snake")
-        XCTAssertTrue(app.buttons["snake.close"].exists)
+        let visibleButtons = app.buttons.allElementsBoundByIndex.filter(\.isHittable)
+        XCTAssertEqual(visibleButtons.count, 1, "Only Close is a visible button during Snake")
+        XCTAssertEqual(visibleButtons.first?.identifier, "snake.close")
         XCTAssertFalse(app.buttons["snake.toggleRunning"].exists)
         XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'snake.direction.'")).count, 0)
     }
@@ -223,8 +230,8 @@ import XCTest
         for _ in 0..<6 where !symbols.isHittable { app.swipeUp() }
         symbols.tap()
         XCTAssertTrue(app.descendants(matching: .any)["snake.board"].firstMatch.waitForExistence(timeout: 10))
-        assertFullscreenSnake(app.descendants(matching: .any)["snake.board"].firstMatch)
         checkpoint("snake_accessibility_arabic", app: app)
+        assertFullscreenSnake(app.descendants(matching: .any)["snake.board"].firstMatch)
     }
 
     func test50FavoritesAndFolderSources() {
@@ -256,6 +263,7 @@ import XCTest
         app.buttons["snake.symbols"].tap()
         let board = app.descendants(matching: .any)["snake.board"].firstMatch
         XCTAssertTrue(board.waitForExistence(timeout: 10))
+        checkpoint("snake_realtime_fullscreen_ready", app: app)
         assertFullscreenSnake(board)
         board.swipeUp()
         let initial = board.value as? String ?? ""
