@@ -246,6 +246,7 @@ struct FeedVideoControls: View {
 
     var body: some View {
         let player = app.player
+        let available = player.itemID == asset.id && player.failedItemID != asset.id
         HStack(spacing: AppSpacing.s) {
             Button { player.togglePlay() } label: {
                 Image(systemName: player.isPlaying ? "pause.fill" : "play.fill")
@@ -253,22 +254,25 @@ struct FeedVideoControls: View {
             }
             .accessibilityLabel(Text(key: player.isPlaying ? "pause" : "play"))
             Slider(value: Binding(get: { player.progress }, set: { player.seek(fraction: $0) }), in: 0...1)
+                .tint(AppColors.accent)
                 .accessibilityLabel(Text(key: "playback_position"))
                 .accessibilityValue(Text(verbatim: DateText.duration(player.progress * asset.duration)))
             Text(verbatim: DateText.duration(max(0, asset.duration - player.progress * asset.duration)))
                 .font(AppTypography.caption.monospacedDigit())
-                .foregroundStyle(.white.opacity(0.85))
+                .foregroundStyle(AppColors.textSecondary)
             Button { player.toggleMute() } label: {
                 Image(systemName: player.isMuted ? "speaker.slash.fill" : "speaker.wave.2.fill")
                     .frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch)
             }
             .accessibilityLabel(Text(key: player.isMuted ? "unmute" : "mute"))
         }
-        .foregroundStyle(.white)
+        .foregroundStyle(AppColors.textPrimary)
         .padding(.horizontal, AppSpacing.s)
         .glassCapsule()
         .environment(\.layoutDirection, .leftToRight) // Zeitleisten werden in RTL nicht gespiegelt
-        .opacity(app.player.itemID == asset.id ? 1 : 0)
+        .opacity(available ? 1 : 0)
+        .disabled(!available)
+        .accessibilityHidden(!available)
     }
 }
 
