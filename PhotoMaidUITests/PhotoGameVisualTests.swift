@@ -183,6 +183,10 @@ import XCTest
         launch(snakeSteps: true)
         openGame("snake")
         checkpoint("snake_01_setup_dark", app: app)
+        // Use real PhotoKit thumbnails from the explicitly selected disposable QA library.
+        // The production default remains the user's own PhotosPicker selection.
+        app.buttons["snake.source"].tap()
+        app.buttons[String(localized: "memory_source_library", bundle: Bundle(for: Self.self))].firstMatch.tap()
         app.buttons["snake.prepare"].tap()
         let board = app.descendants(matching: .any)["snake.board"].firstMatch
         XCTAssertTrue(board.waitForExistence(timeout: 30))

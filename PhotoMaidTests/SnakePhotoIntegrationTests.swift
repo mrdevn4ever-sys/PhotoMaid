@@ -19,10 +19,15 @@ import UniformTypeIdentifiers
         for atlas in SnakeArt.atlases { #expect(!atlas.textureNames.isEmpty) }
         for character in PhotoSnakeCharacter.allCases {
             for key in [character.idle, character.blink, character.eat, character.dead] {
-                #expect(SnakeArt.texture(key).size() == CGSize(width: 256, height: 256))
+                let size = SnakeArt.texture(key).size()
+                // Packed atlas UV coordinates introduce sub-pixel floating-point roundoff.
+                #expect(abs(size.width - 256) < 0.001 && abs(size.height - 256) < 0.001)
             }
         }
-        for food in PhotoSnakeFood.allCases { #expect(SnakeArt.texture(food.texture(score: 0)).size().width == 256) }
+        for food in PhotoSnakeFood.allCases {
+            let size = SnakeArt.texture(food.texture(score: 0)).size()
+            #expect(abs(size.width - 256) < 0.001 && abs(size.height - 256) < 0.001)
+        }
         for cue in SnakeAudio.Cue.allCases { #expect(bundle.url(forResource: "sfx_" + cue.rawValue, withExtension: "wav") != nil) }
         for name in ["bg_forest_day", "bg_forest_night", "bg_tile_forest", "bg_tile_night"] {
             #expect(UIImage(named: name, in: bundle, compatibleWith: nil) != nil)

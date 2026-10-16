@@ -144,6 +144,7 @@ struct PhotoSnakeView: View {
                 Text(key: "memory_source_favorites").tag(Source.favorites)
                 Text(key: "memory_source_collection").tag(Source.collection)
             }
+            .accessibilityIdentifier("snake.source")
             if source == .manual {
                 Text(verbatim: L("snake_gallery_count", model.gallery.ids.count)).font(.footnote)
             } else {
