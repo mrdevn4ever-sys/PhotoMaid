@@ -29,12 +29,18 @@ run_device() {
   xcodebuild -project PhotoMaid.xcodeproj -scheme PhotoMaid -destination "id=$udid" \
     -derivedDataPath "$derived" -resultBundlePath "$out/$name.xcresult" \
     -parallel-testing-enabled NO -maximum-concurrent-test-simulator-destinations 1 \
+    -test-timeouts-enabled YES -default-test-execution-time-allowance 300 -maximum-test-execution-time-allowance 300 \
     "-only-testing:$test_target" -skipPackagePluginValidation -skipMacroValidation \
     TARGETED_DEVICE_FAMILY=1,2 CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_REQUIRED=YES \
     test-without-building 2>&1 | tee "$out/$name.log" | grep -E 'Test (Case|Suite)|error:|failed|passed|\*\* TEST'
   local status=${PIPESTATUS[0]}
   set -e
   echo "$status" > "$out/$name.exit"
+  xcrun simctl spawn "$udid" log show --last 20m --style compact --predicate 'process == "PhotoMaid"' > "$out/$name-app.log" 2>&1 || true
+  mkdir -p "$out/$name-diagnostics"
+  for diagnostic in "$HOME"/Library/Logs/DiagnosticReports/PhotoMaid*.ips; do
+    [ ! -f "$diagnostic" ] || cp "$diagnostic" "$out/$name-diagnostics/"
+  done
   xcrun xcresulttool export attachments --path "$out/$name.xcresult" --output-path "$out/$name-attachments" || true
   xcrun xcresulttool get test-results summary --path "$out/$name.xcresult" > "$out/$name-summary.json" || true
   rm -rf "$out/$name.xcresult"

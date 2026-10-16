@@ -48,11 +48,14 @@ struct RootView: View {
         .task {
             _ = AdsService.shared.launchNumber // Kaltstart zählen (die ersten drei Starts ohne Start-Werbung)
             await app.onForeground()
-            #if QA_FIXTURES && targetEnvironment(simulator)
+        }
+        #if QA_FIXTURES && targetEnvironment(simulator)
+        .task {
+            // Capture navigation waits for its real library/read model; StoreKit startup runs independently.
             await StoreCapture.openRequestedPage(in: app)
             StoreCapture.startNavigation(in: app)
-            #endif
         }
+        #endif
         // Gratis: nach der Einführung Einwilligung/Tracking-Abfrage, dann ggf. die Werbung beim Start (E19).
         .task(id: adsReadyToPrepare) {
             guard adsReadyToPrepare else { return }

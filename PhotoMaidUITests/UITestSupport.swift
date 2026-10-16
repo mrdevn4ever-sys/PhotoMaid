@@ -73,7 +73,7 @@ extension XCTestCase {
 
     func resolvePrivacyPrompts(in app: XCUIApplication, prefix: String, photos: Bool = false) {
         let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
-        let usesAds = !app.launchArguments.contains("-qa-fixtures")
+        let usesAds = !app.launchArguments.contains("-qa-fixtures") && !app.launchArguments.contains("-store-capture")
         var systemPromptExpected = photos
         var trackingRequested = false
         for step in 0..<4 {

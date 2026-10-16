@@ -172,7 +172,7 @@ enum StoreCapture {
         }.prefix(12).map { $0 }
         guard ids.count == 12 else { return }
         do {
-            try await PHPhotoLibrary.shared().performChanges {
+            try await PHPhotoLibrary.shared().performChanges { @Sendable in
                 let assets = PHAsset.fetchAssets(withLocalIdentifiers: ids, options: nil)
                 for index in 0..<min(6, assets.count) { PHAssetChangeRequest(for: assets.object(at: index)).isFavorite = true }
                 let album = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: "QA Game Album")
