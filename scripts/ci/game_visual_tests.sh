@@ -28,7 +28,8 @@ if [ -n "${PM_GAME_CASE:-}" ]; then
   fi
 fi
 if [ ! -d "$out/media" ]; then swift scripts/qa_game_media.swift "$out/media"; fi
-if [ "${PM_GAME_CASE:-}" = feed ] && [ ! -f "$out/media/QA_FEED_01.mp4" ]; then
+# The full suite includes feed video regressions too; all selected cases need their real media.
+if { [ -z "${PM_GAME_CASE:-}" ] || [ "$PM_GAME_CASE" = feed ]; } && [ ! -f "$out/media/QA_FEED_01.mp4" ]; then
   swift scripts/qa_feed_video.swift "$out/media"
 fi
 xcodebuild -version > "$out/xcode-version.txt"
