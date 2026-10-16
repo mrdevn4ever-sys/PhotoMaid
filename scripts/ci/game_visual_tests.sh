@@ -17,11 +17,20 @@ elif [ "${PM_GAME_SUITE:-all}" != all ]; then
   exit 2
 fi
 if [ -n "${PM_GAME_CASE:-}" ]; then
-  [[ "$PM_GAME_CASE" =~ ^test[0-9]{2}[A-Za-z0-9]+$ ]]
-  test_target="$test_target/$PM_GAME_CASE"
-  test_targets=("-only-testing:$test_target")
+  if [ "$PM_GAME_CASE" = feed ]; then
+    test_targets=("-only-testing:$test_target/test70UnavailableVideosCanBePassed"
+                  "-only-testing:$test_target/test80VideoPlaysWithoutPoster"
+                  "-only-testing:$test_target/test90LoadingPhotoCanBePassed")
+  else
+    [[ "$PM_GAME_CASE" =~ ^test[0-9]{2}[A-Za-z0-9]+$ ]]
+    test_target="$test_target/$PM_GAME_CASE"
+    test_targets=("-only-testing:$test_target")
+  fi
 fi
 if [ ! -d "$out/media" ]; then swift scripts/qa_game_media.swift "$out/media"; fi
+if [ "${PM_GAME_CASE:-}" = feed ] && [ ! -f "$out/media/QA_FEED_01.mp4" ]; then
+  swift scripts/qa_feed_video.swift "$out/media"
+fi
 xcodebuild -version > "$out/xcode-version.txt"
 xcrun --sdk iphonesimulator --show-sdk-version > "$out/sdk-version.txt"
 run_device() {

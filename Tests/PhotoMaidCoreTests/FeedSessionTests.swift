@@ -156,6 +156,35 @@ struct FeedSessionTests {
         #expect(s.summary == SessionSummary(kept: 1, marked: 0, later: 1))
     }
 
+    @Test("Zwei nicht ladbare Medien weiter: keine Entscheidung, kein Sprung durch veraltete Tasten")
+    func unavailableItemsCanBePassedWithoutReviewingThem() {
+        var s = session(3)
+        s.markPreviewUnavailable(photo(0)); s.markPreviewUnavailable(photo(1))
+        let blocked = s.requestDecision(.markForCleanup, currentRevision: 0)
+        #expect(blocked == nil)
+        let first = s.advanceWithoutDecision(from: photo(0))
+        #expect(first && s.current == photo(1))
+        let stale = s.advanceWithoutDecision(from: photo(0))
+        #expect(!stale && s.current == photo(1))
+        let second = s.advanceWithoutDecision(from: photo(1))
+        #expect(second && s.current == photo(2))
+        #expect(s.decisions.isEmpty && s.summary.reviewed == 0 && s.receipt == nil)
+        let last = s.advanceWithoutDecision(from: photo(2))
+        #expect(last && s.isFinished)
+        let ended = s.advanceWithoutDecision(from: photo(2))
+        #expect(!ended)
+    }
+
+    @Test("Weiter ohne Auswahl kann keinen offenen Commit verlassen")
+    func passCannotRaceAnOpenCommit() {
+        var s = session(2)
+        s.markPreviewReady(photo(0))
+        let pending = s.requestDecision(.keep, currentRevision: 0)
+        #expect(pending != nil)
+        let passed = s.advanceWithoutDecision(from: photo(0))
+        #expect(!passed && s.current == photo(0) && s.pending != nil)
+    }
+
     @Test("100 schnelle Entscheidungen: Zählung entspricht dem Ledger")
     func hundredDecisions() async throws {
         let ledger = try makeLedger()

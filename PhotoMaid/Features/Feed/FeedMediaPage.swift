@@ -13,6 +13,7 @@ struct FeedMediaPage: View {
     let state: PreviewState
     let retry: Int
     let intentColor: Color?
+    let onLoading: (Bool) -> Void
     let onResult: (Bool) -> Void
     let onRetry: () -> Void
     let onSkip: () -> Void
@@ -26,6 +27,8 @@ struct FeedMediaPage: View {
     /// Nichts ließ sich anzeigen und das Original liegt in iCloud (z. B. ohne Netz).
     @State private var cloudFailed = false
     @State private var videoFailed = false
+    @State private var videoReady = false
+    @State private var imageFinished = false
     /// Vorschau sichtbar, volle Qualität aus iCloud aber nicht geladen: „!“ unten rechts wie in der Fotos-App.
     @State private var qualityFailed = false
     /// Erneuter Versuch über „!“ (ändert nichts am Prüfstand, die Vorschau bleibt stehen).
@@ -48,13 +51,18 @@ struct FeedMediaPage: View {
                         .accessibilityHidden(true)
                 }
                 if isTop, asset.isVideo, app.player.itemID == asset.id {
-                    PlayerLayerView(player: app.player.player)
+                    PlayerLayerView(player: app.player.player) {
+                        guard isTop, app.player.itemID == asset.id, app.player.failedItemID != asset.id else { return }
+                        videoReady = true
+                        videoLoading = false
+                        onResult(true)
+                    }
                         .allowsHitTesting(false)
                         .accessibilityHidden(true)
                 }
                 switch state {
-                case .loading where image == nil:
-                    ProgressView().tint(.white)
+                case .loading where image == nil && !videoReady:
+                    loadingView
                 case .failed:
                     failedView
                 default:
@@ -62,19 +70,42 @@ struct FeedMediaPage: View {
                 }
                 if isTop, image != nil { cloudBadge }
             }
+            .accessibilityElement(children: .contain)
+            .accessibilityIdentifier(videoReady ? "feed.video.ready" : "feed.media")
             .clipShape(.rect(cornerRadius: AppRadii.card))
             .overlay {
                 if let intentColor {
                     RoundedRectangle(cornerRadius: AppRadii.card).strokeBorder(intentColor, lineWidth: 3)
                 }
             }
-            .task(id: "\(asset.id)-\(retry)-\(reload)") { await load(size: geo.size) }
+            .task(id: "\(asset.id)-\(isTop)-\(retry)-\(reload)-\(Int(geo.size.width))-\(Int(geo.size.height))") { await load(size: geo.size) }
             .task(id: "\(asset.id)-gif-\(isTop)") {
                 guard isTop else { gifData = nil; return }
                 if let data = await GIFPlayback.data(for: asset.id), !Task.isCancelled { gifData = data }
             }
-            .task(id: "\(asset.id)-\(isTop)-\(state == .ready)-\(reload)") { await startVideoIfNeeded() }
+            .task(id: "\(asset.id)-\(isTop)-\(retry)-\(reload)") { await startVideoIfNeeded() }
+            .onChange(of: app.player.failedItemID) { _, failed in
+                guard isTop, failed == asset.id else { return }
+                videoLoading = false; videoFailed = true; videoReady = false
+                reportUnavailableIfFinished()
+            }
         }
+    }
+
+    private var skipButton: some View {
+        Button(action: onSkip) { Text(key: "skip_without_decision").padding(.vertical, AppSpacing.xs) }
+            .buttonStyle(.glass)
+            .accessibilityIdentifier("feed.skipUnavailable")
+    }
+
+    private var loadingView: some View {
+        VStack(spacing: AppSpacing.m) {
+            ProgressView().tint(.white)
+            Text(key: "feed_loading").foregroundStyle(.white)
+            if isTop { skipButton }
+        }
+        .padding(AppSpacing.l)
+        .accessibilityIdentifier("feed.preview.loading")
     }
 
     private var failedView: some View {
@@ -86,20 +117,21 @@ struct FeedMediaPage: View {
             Text(key: cloudFailed ? "feed_icloud_hint" : "preview_failed_hint")
                 .font(AppTypography.footnote).foregroundStyle(.white.opacity(0.75)).multilineTextAlignment(.center)
             if isTop {
-                GlassEffectContainer(spacing: AppSpacing.xs) {
-                    HStack(spacing: AppSpacing.xs) {
-                        if cloudFailed {
-                            Button(action: onRetry) { Text(key: "feed_icloud_load") }.buttonStyle(.glassProminent)
-                        } else {
-                            Button(action: onRetry) { Text(key: "retry") }.buttonStyle(.glass)
-                        }
-                        Button(action: onSkip) { Text(key: "skip_without_decision") }.buttonStyle(.glass)
-                    }
+                ViewThatFits(in: .horizontal) {
+                    HStack(spacing: AppSpacing.xs) { retryButton; skipButton }
+                    VStack(spacing: AppSpacing.s) { retryButton; skipButton }
                 }
             }
         }
         .padding(AppSpacing.l)
         .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("feed.preview.failed")
+    }
+
+    private var retryButton: some View {
+        Button(action: onRetry) { Text(key: cloudFailed ? "feed_icloud_load" : "retry").padding(.vertical, AppSpacing.xs) }
+            .buttonStyle(.glass)
+            .accessibilityIdentifier("feed.retryPreview")
     }
 
     /// Unten rechts wie in der Fotos-App: Fortschritt, solange die volle Qualität oder das Video aus iCloud kommt;
@@ -126,12 +158,14 @@ struct FeedMediaPage: View {
     /// automatisch die volle Qualität aus iCloud. Klappt das nicht, bleibt die Vorschau und unten rechts steht „!“.
     private func load(size: CGSize) async {
         let target = PreviewPipeline.targetSize(for: size, scale: scale)
+        onLoading(image != nil || videoReady)
         cloudFailed = false
         qualityFailed = false
-        videoFailed = false
-        var shown = false
+        imageFinished = false
+        var shown = image != nil
         defer { downloadProgress = nil }
-        for await update in app.previews.progressiveImage(for: asset.id, targetSize: target) {
+        for await update in app.previews.progressiveImage(for: asset.id, targetSize: target, allowNetwork: isTop) {
+            guard !Task.isCancelled else { return }
             switch update {
             case .image(let img, let isFinal):
                 // Abseits des Hauptthreads dekodieren: sonst dekodiert SwiftUI ein frisch aus iCloud geladenes Bild
@@ -151,31 +185,55 @@ struct FeedMediaPage: View {
                 if shown { qualityFailed = inCloud } else { cloudFailed = inCloud }
             }
         }
-        guard !shown, !Task.isCancelled else { return }
-        // Kam gar nichts an: wenigstens die kleine Vorschau zeigen (wie die Fotos-App), „!“ lädt das Original.
-        if let thumb = await ThumbnailLoader.shared.image(asset.id, size: CGSize(width: 600, height: 600)) {
-            image = thumb
-            qualityFailed = cloudFailed
-            onResult(true)
-        } else {
-            onResult(false)
+        guard !Task.isCancelled else { return }
+        if !shown {
+            // A small local poster may still exist when the requested display resolution failed.
+            let fallback = await app.previews.image(for: asset.id, targetSize: CGSize(width: 600, height: 600),
+                                                   allowNetwork: false)
+            guard !Task.isCancelled else { return }
+            if case .image(let thumb) = fallback {
+                image = thumb
+                qualityFailed = cloudFailed
+                onResult(true)
+            }
+        }
+        imageFinished = true
+        reportUnavailableIfFinished()
+    }
+
+    private func reportUnavailableIfFinished() {
+        guard image == nil, !videoReady, imageFinished else { return }
+        // A missing video poster is not a failed video. Its first frame can make the card usable.
+        if !isTop || !asset.isVideo || videoFailed { onResult(false) }
+    }
+
+    /// Start the visible video independently of its poster. Cancel/ignore results from a previous card.
+    private func startVideoIfNeeded() async {
+        guard isTop, asset.isVideo else {
+            videoLoading = false; videoReady = false
+            return
+        }
+        guard app.player.itemID != asset.id || app.player.failedItemID == asset.id else { return }
+        videoLoading = true
+        videoFailed = false
+        videoReady = false
+        onLoading(image != nil)
+        let requestID = app.player.beginLoading()
+        let result = await app.previews.playerItem(for: asset.id)
+        guard !Task.isCancelled else { return }
+        switch result {
+        case .item(let box):
+            _ = app.player.load(itemID: asset.id, item: box.value, autoplay: true, duration: asset.duration,
+                                requestID: requestID)
+        case .notLocallyAvailable:
+            videoLoading = false; videoFailed = true; cloudFailed = true
+            reportUnavailableIfFinished()
+        case .failed:
+            videoLoading = false; videoFailed = true
+            reportUnavailableIfFinished()
         }
     }
 
-    /// Video des obersten Mediums laden (stumm; iCloud-Videos werden gestreamt). Videoende bleibt beim Medium –
-    /// keine Entscheidung.
-    private func startVideoIfNeeded() async {
-        guard isTop, asset.isVideo, state == .ready, app.player.itemID != asset.id else { return }
-        videoLoading = true
-        defer { videoLoading = false }
-        switch await app.previews.playerItem(for: asset.id) {
-        case .item(let box):
-            guard isTop else { return }
-            app.player.load(itemID: asset.id, item: box.value, autoplay: true, duration: asset.duration)
-        case .notLocallyAvailable, .failed:
-            videoFailed = true
-        }
-    }
 }
 
 /// Videosteuerung unter dem Medium (Play/Pause, Ton, Position). Nie eine Entscheidung.

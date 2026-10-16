@@ -39,6 +39,62 @@ import XCTest
         XCTAssertTrue(game.waitForExistence(timeout: 5)); game.tap()
     }
 
+    func test70UnavailableVideosCanBePassed() {
+        launch("feed-failures", language: "de")
+        let stage = app.descendants(matching: .any)["feed.stage"].firstMatch
+        let position = app.descendants(matching: .any)["feed.position"].firstMatch
+        let failed = app.descendants(matching: .any)["feed.preview.failed"].firstMatch
+        XCTAssertTrue(failed.waitForExistence(timeout: 20))
+        XCTAssertTrue(position.label.contains("1 von 3"))
+        let trash = app.buttons["feed.dock"].label
+        checkpoint("feed_unavailable_video_01", app: app)
+        // An unseen video must not silently become a Trash or Keep decision.
+        stage.swipeLeft()
+        XCTAssertEqual(app.buttons["feed.dock"].label, trash)
+        XCTAssertTrue(position.label.contains("1 von 3"))
+        app.buttons["feed.retryPreview"].tap()
+        XCTAssertTrue(failed.waitForExistence(timeout: 10))
+        app.buttons["feed.skipUnavailable"].tap()
+        waitForPosition("2 von 3")
+        XCTAssertTrue(failed.waitForExistence(timeout: 10))
+        checkpoint("feed_unavailable_video_02", app: app)
+        app.buttons["feed.skipUnavailable"].tap()
+        waitForPosition("3 von 3")
+        XCTAssertEqual(app.buttons["feed.dock"].label, trash)
+        XCTAssertFalse(failed.exists)
+        checkpoint("feed_after_two_unavailable_videos", app: app)
+    }
+
+    func test80VideoPlaysWithoutPoster() {
+        launch("feed-posterless", light: true)
+        let ready = app.descendants(matching: .any)["feed.video.ready"].firstMatch
+        XCTAssertTrue(ready.waitForExistence(timeout: 30), "The actual AVPlayerLayer must display a frame even without a poster")
+        XCTAssertFalse(app.descendants(matching: .any)["feed.preview.failed"].exists)
+        checkpoint("feed_video_without_poster_plays", app: app)
+        app.descendants(matching: .any)["feed.stage"].firstMatch.swipeUp()
+        waitForPosition("2 of 2")
+        XCTAssertFalse(ready.exists)
+        checkpoint("feed_after_video_without_poster", app: app)
+    }
+
+    func test90LoadingPhotoCanBePassed() {
+        launch("feed-slow")
+        XCTAssertTrue(app.descendants(matching: .any)["feed.preview.loading"].firstMatch.waitForExistence(timeout: 15))
+        let trash = app.buttons["feed.dock"].label
+        checkpoint("feed_slow_download_skip_available", app: app)
+        app.buttons["feed.skipUnavailable"].tap()
+        waitForPosition("2 of 2")
+        XCTAssertEqual(app.buttons["feed.dock"].label, trash)
+        XCTAssertFalse(app.descendants(matching: .any)["feed.preview.failed"].exists)
+        checkpoint("feed_after_slow_download", app: app)
+    }
+
+    private func waitForPosition(_ value: String) {
+        let position = app.descendants(matching: .any)["feed.position"].firstMatch
+        let moved = XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", value), object: position)
+        XCTAssertEqual(XCTWaiter.wait(for: [moved], timeout: 8), .completed)
+    }
+
     func test10MemoryPhotosWinAndPersistentRecord() throws {
         launch(light: true)
         openGame("memory")

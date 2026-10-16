@@ -27,7 +27,7 @@ on:
         options: [all, vault, vault-media, editor, games]
         default: all
       games_case:
-        description: "Optional: einzelne PhotoGameVisualTests-Methode statt aller Spiel-/Layoutfälle"
+        description: "Optional: PhotoGameVisualTests-Methode oder feed für Lade-/Weiter-Regressionen"
         type: string
         default: ""
       sim_runtime:

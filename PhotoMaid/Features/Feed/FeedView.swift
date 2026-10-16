@@ -339,13 +339,18 @@ struct FeedView: View {
 
     // MARK: Bühne
 
+    private var stageGestureMask: GestureMask {
+        guard let current = model.current, model.previews[current] == .ready else { return .subviews }
+        return .all
+    }
+
     private var stage: some View {
         GeometryReader { geo in
             stageLayers(size: geo.size)
             .contentShape(.rect)
-            .gesture(dragGesture)
-            .simultaneousGesture(magnifyGesture)
-            .simultaneousGesture(tapGestures)
+            .gesture(dragGesture, including: stageGestureMask)
+            .simultaneousGesture(magnifyGesture, including: stageGestureMask)
+            .simultaneousGesture(tapGestures, including: stageGestureMask)
             .onAppear { model.updateViewport(geo.size, scale: displayScale) }
             .onChange(of: geo.size) { _, size in model.updateViewport(size, scale: displayScale) }
             .onChange(of: displayScale) { _, scale in model.updateViewport(geo.size, scale: scale) }
@@ -421,15 +426,17 @@ struct FeedView: View {
             let top: Bool = ref == model.current
             FeedMediaPage(asset: asset, isTop: top, state: model.previews[ref] ?? .loading,
                           retry: model.retries[ref] ?? 0, intentColor: top ? intentColor : nil,
+                          onLoading: { model.previewLoading(ref, hasVisibleContent: $0) },
                           onResult: { ok in model.previewResult(ref, ok: ok) },
                           onRetry: { model.retryPreview(ref) },
-                          onSkip: { model.skipWithoutDecision() })
+                          onSkip: { model.skipWithoutDecision(ref) })
                 .scaleEffect(top ? zoom : underScale(size))
                 .offset(top ? CGSize(width: model.offset.width + pan.width, height: model.offset.height + pan.height) : .zero)
                 .rotationEffect(top && !reduceMotion ? .degrees(model.offset.width / 40) : .zero)
                 .opacity(top ? 1 : underOpacity(size))
                 .zIndex(top ? 1 : 0)
                 .allowsHitTesting(top)
+                .accessibilityHidden(!top)
         }
     }
 

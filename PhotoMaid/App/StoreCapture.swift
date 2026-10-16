@@ -98,6 +98,19 @@ enum StoreCapture {
         case "cleanup": app.selectedTab = .cleanup; return
         case "studio": app.selectedTab = .studio; return
         case "history": app.selectedTab = .history; return
+        case "feed-failures":
+            let videos = Array(app.visibleMedia.filter(\.isVideo).prefix(2))
+            let items = videos + Array(photos.prefix(1))
+            app.previews.unavailableForTesting = Set(videos.map(\.id))
+            app.open(FeedRequest(.items(items.map(\.reference), titleKey: "feed_title_all"))); return
+        case "feed-posterless":
+            let videos = Array(app.visibleMedia.filter(\.isVideo).prefix(1))
+            app.previews.posterlessForTesting = Set(videos.map(\.id))
+            app.open(FeedRequest(.items((videos + Array(photos.prefix(1))).map(\.reference), titleKey: "feed_title_all"))); return
+        case "feed-slow":
+            let items = Array(photos.prefix(2))
+            app.previews.slowForTesting = Set(items.prefix(1).map(\.id))
+            app.open(FeedRequest(.items(items.map(\.reference), titleKey: "feed_title_all"))); return
         case "feed": app.open(FeedRequest(.allMedia)); return
         case "viewer":
             if !ids.isEmpty { app.fullScreen = .viewer(ids: ids, index: 0) }; return

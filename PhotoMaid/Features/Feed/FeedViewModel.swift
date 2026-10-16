@@ -315,6 +315,12 @@ final class FeedViewModel {
         retries[ref, default: 0] += 1
     }
 
+    func previewLoading(_ ref: ItemReference, hasVisibleContent: Bool) {
+        guard previews[ref] != nil else { return }
+        previews[ref] = hasVisibleContent ? .ready : .loading
+        if hasVisibleContent { session.markPreviewReady(ref) } else { session.markPreviewUnavailable(ref) }
+    }
+
     /// Rückmeldung des Bildladers. Nur übernehmen, wenn das Medium noch im Fenster ist.
     func previewResult(_ ref: ItemReference, ok: Bool) {
         guard previews[ref] != nil else { return }
@@ -560,9 +566,15 @@ final class FeedViewModel {
     }
 
     /// Nicht darstellbare Medien überspringen – ausdrücklich OHNE Entscheidung.
-    func skipWithoutDecision() {
-        guard !isCommitting, customLater == nil else { return }
-        session.jump(to: session.index + 1)
+    func skipWithoutDecision(_ item: ItemReference) {
+        guard !isCommitting, customLater == nil, protectedFavorite == nil,
+              session.advanceWithoutDecision(from: item) else { return }
+        machine.cancel()
+        machine.finishCommit()
+        lockedDirection = nil
+        readyDirection = nil
+        offset = .zero
+        laterPill = nil
         app.player.stop()
         refreshWindow()
     }

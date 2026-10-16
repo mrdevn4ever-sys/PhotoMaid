@@ -49,16 +49,6 @@ final class PreviewPipeline {
         return o
     }
 
-    /// Für Feed und Betrachter: zuerst die schnelle Fassung, dann die volle Qualität (auch aus iCloud).
-    private func progressiveOptions() -> PHImageRequestOptions {
-        let o = PHImageRequestOptions()
-        o.isNetworkAccessAllowed = true
-        o.deliveryMode = .opportunistic
-        o.resizeMode = .fast
-        o.version = .current
-        return o
-    }
-
     /// Keep the four-item swipe cache local and small. The *visible* image still
     /// uses progressiveImage(), including its full-quality/iCloud loading path.
     /// Prefetching offscreen originals from iCloud wastes bandwidth and memory.
@@ -78,94 +68,126 @@ final class PreviewPipeline {
     /// Abbruch des Tasks bricht beide PhotoKit-Requests (und einen laufenden Download) ab.
     /// PhotoKit-Abfrage und Anfragen laufen abseits des Hauptthreads: Lädt Fotos gerade viel aus iCloud, kann schon
     /// das Nachschlagen eines Mediums warten – das darf das Wischen nie anhalten.
-    func progressiveImage(for assetID: String, targetSize: CGSize) -> AsyncStream<PreviewUpdate> {
+    func progressiveImage(for assetID: String, targetSize: CGSize,
+                          allowNetwork: Bool = true) -> AsyncStream<PreviewUpdate> {
+        #if QA_FIXTURES && targetEnvironment(simulator)
+        if slowForTesting.contains(assetID) { return AsyncStream { $0.yield(.progress(0)) } }
+        if unavailableForTesting.contains(assetID) || posterlessForTesting.contains(assetID) {
+            return AsyncStream { $0.yield(.failed(inCloud: false)); $0.finish() }
+        }
+        #endif
         let managerBox = UncheckedBox(manager)
         return AsyncStream { cont in
-            let requests = RequestIDs()
-            cont.onTermination = { @Sendable _ in
-                for id in requests.terminate() { managerBox.value.cancelImageRequest(id) }
+            let task = Task.detached(priority: .userInitiated) {
+                guard !Task.isCancelled else { cont.finish(); return }
+                guard let asset = PhotoLibraryService.phAsset(assetID) else {
+                    cont.yield(.failed(inCloud: false)); cont.finish(); return
+                }
+                guard !Task.isCancelled else { cont.finish(); return }
+                let assetBox = UncheckedBox(asset)
+                let updates = Self.requestProgressiveImage(allowNetwork: allowNetwork, request: { options, result in
+                    managerBox.value.requestImage(for: assetBox.value, targetSize: targetSize,
+                                                  contentMode: .aspectFit, options: options, resultHandler: result)
+                }, cancel: { managerBox.value.cancelImageRequest($0) })
+                for await update in updates {
+                    guard !Task.isCancelled else { break }
+                    cont.yield(update)
+                }
+                cont.finish()
             }
-            Task.detached(priority: .userInitiated) {
-                guard !requests.isTerminated else { return }
-                guard let asset = PhotoLibraryService.phAsset(assetID) else { // Tresor-Medien: nie
-                    cont.yield(.failed(inCloud: false))
-                    cont.finish()
+            cont.onTermination = { @Sendable _ in task.cancel() }
+        }
+    }
+
+    typealias ImageRequest = @Sendable (PHImageRequestOptions,
+                                       @escaping @Sendable (UIImage?, [AnyHashable: Any]?) -> Void) -> PHImageRequestID
+
+    /// The callback seam is also used by native tests for real PhotoKit callback orderings.
+    /// An absent cloud flag is not evidence that a network-enabled request cannot recover the image.
+    nonisolated static func requestProgressiveImage(allowNetwork: Bool, request: @escaping ImageRequest,
+                                                    cancel: @escaping @Sendable (PHImageRequestID) -> Void) -> AsyncStream<PreviewUpdate> {
+        AsyncStream { cont in
+            let requests = RequestIDs()
+            cont.onTermination = { @Sendable _ in for id in requests.terminate() { cancel(id) } }
+            let local = PHImageRequestOptions()
+            local.isNetworkAccessAllowed = false
+            local.deliveryMode = .opportunistic
+            local.resizeMode = .fast
+            local.version = .current
+            let first = request(local) { image, info in
+                let degraded = (info?[PHImageResultIsDegradedKey] as? Bool) ?? false
+                let cancelled = (info?[PHImageCancelledKey] as? Bool) == true
+                guard requests.acceptLocal(terminal: !degraded || cancelled) else { return }
+                if cancelled { cont.finish(); return }
+                if let image {
+                    cont.yield(.image(image, isFinal: !degraded))
+                    if !degraded { cont.finish() }
                     return
                 }
-                Self.startProgressive(asset: UncheckedBox(asset), manager: managerBox, targetSize: targetSize,
-                                      cont: cont, requests: requests)
-            }
-        }
-    }
-
-    nonisolated private static func startProgressive(asset assetBox: UncheckedBox<PHAsset>,
-                                                     manager managerBox: UncheckedBox<PHCachingImageManager>,
-                                                     targetSize: CGSize, cont: AsyncStream<PreviewUpdate>.Continuation,
-                                                     requests: RequestIDs) {
-        let local = PHImageRequestOptions()
-        local.isNetworkAccessAllowed = false
-        local.deliveryMode = .opportunistic
-        local.resizeMode = .fast
-        local.version = .current
-        let first = managerBox.value.requestImage(for: assetBox.value, targetSize: targetSize, contentMode: .aspectFit,
-                                                  options: local) { @Sendable image, info in
-            let degraded = (info?[PHImageResultIsDegradedKey] as? Bool) ?? false
-            if let image {
-                cont.yield(.image(image, isFinal: !degraded))
-                if !degraded { cont.finish() }
-                return
-            }
-            if degraded { return }
-            if (info?[PHImageCancelledKey] as? Bool) == true { cont.finish(); return }
-            guard (info?[PHImageResultIsInCloudKey] as? Bool) == true else {
-                cont.yield(.failed(inCloud: false))
-                cont.finish()
-                return
-            }
-            guard !requests.isTerminated else { cont.finish(); return }
-            // Schritt 2: volle Qualität aus iCloud.
-            let remote = PHImageRequestOptions()
-            remote.isNetworkAccessAllowed = true
-            remote.deliveryMode = .highQualityFormat // genau ein Callback
-            remote.resizeMode = .fast
-            remote.version = .current
-            remote.progressHandler = { @Sendable progress, _, _, _ in cont.yield(.progress(progress)) }
-            cont.yield(.progress(0))
-            let second = managerBox.value.requestImage(for: assetBox.value, targetSize: targetSize,
-                                                       contentMode: .aspectFit, options: remote) { @Sendable image, info in
-                if let image {
-                    cont.yield(.image(image, isFinal: true))
-                } else if (info?[PHImageCancelledKey] as? Bool) != true {
-                    cont.yield(.failed(inCloud: true))
+                if degraded { return }
+                let inCloud = isCloudFailure(info)
+                guard allowNetwork else {
+                    cont.yield(.failed(inCloud: inCloud)); cont.finish(); return
                 }
-                cont.finish()
+                guard !requests.isTerminated else { cont.finish(); return }
+                let remote = PHImageRequestOptions()
+                remote.isNetworkAccessAllowed = true
+                remote.deliveryMode = .highQualityFormat
+                remote.resizeMode = .fast
+                remote.version = .current
+                remote.progressHandler = { @Sendable progress, _, _, _ in cont.yield(.progress(progress)) }
+                cont.yield(.progress(0))
+                let second = request(remote) { image, info in
+                    let degraded = (info?[PHImageResultIsDegradedKey] as? Bool) ?? false
+                    if let image { cont.yield(.image(image, isFinal: !degraded)) }
+                    if degraded { return }
+                    if image == nil, (info?[PHImageCancelledKey] as? Bool) != true {
+                        cont.yield(.failed(inCloud: inCloud || isCloudFailure(info)))
+                    }
+                    cont.finish()
+                }
+                requests.add(second, cancel: cancel)
             }
-            requests.add(second) { managerBox.value.cancelImageRequest($0) }
+            requests.add(first, cancel: cancel)
         }
-        requests.add(first) { managerBox.value.cancelImageRequest($0) }
     }
 
-    /// Lädt eine Vorschau in einem Schritt (volle Qualität, bei Bedarf aus iCloud). Abbruch des Tasks bricht den
-    /// PhotoKit-Request ab.
+    nonisolated private static func isCloudFailure(_ info: [AnyHashable: Any]?) -> Bool {
+        if (info?[PHImageResultIsInCloudKey] as? Bool) == true { return true }
+        guard let error = info?[PHImageErrorKey] as? NSError else { return false }
+        return (error.domain == PHPhotosErrorDomain && error.code == PHPhotosError.Code.networkAccessRequired.rawValue)
+            || (error.domain == NSURLErrorDomain && error.code != NSURLErrorCancelled)
+    }
+
+    /// One full-quality request; cancellation completes immediately even if PhotoKit never calls back.
     func image(for assetID: String, targetSize: CGSize, allowNetwork: Bool = true,
                contentMode: PHImageContentMode = .aspectFit) async -> PreviewResult {
-        guard let asset = PhotoLibraryService.phAsset(assetID) else { return .failed }
-        let box = RequestBox()
+        #if QA_FIXTURES && targetEnvironment(simulator)
+        if unavailableForTesting.contains(assetID) || posterlessForTesting.contains(assetID) { return .failed }
+        #endif
+        let asset = await Task.detached(priority: .userInitiated) {
+            PhotoLibraryService.phAsset(assetID).map(UncheckedBox.init)
+        }.value
+        guard let asset, !Task.isCancelled else { return .failed }
         let managerBox = UncheckedBox(manager)
-        return await withTaskCancellationHandler {
-            await withCheckedContinuation { (cont: CheckedContinuation<PreviewResult, Never>) in
-                let id = manager.requestImage(for: asset, targetSize: targetSize, contentMode: contentMode,
-                                              options: options(allowNetwork: allowNetwork)) { @Sendable image, info in
-                    if let image { cont.resume(returning: .image(image)); return }
-                    let inCloud = (info?[PHImageResultIsInCloudKey] as? Bool) ?? false
-                    cont.resume(returning: inCloud ? .notLocallyAvailable : .failed)
-                }
-                box.set(id)
+        let requestOptions = UncheckedBox(options(allowNetwork: allowNetwork))
+        return await PhotoRequest<PreviewResult>.perform(cancelledValue: .failed,
+                                          cancel: { managerBox.value.cancelImageRequest($0) }) { result in
+            managerBox.value.requestImage(for: asset.value, targetSize: targetSize, contentMode: contentMode,
+                                          options: requestOptions.value) { image, info in
+                if (info?[PHImageResultIsDegradedKey] as? Bool) == true { return }
+                if let image { result(.image(image)) }
+                else { result(Self.isCloudFailure(info) ? .notLocallyAvailable : .failed) }
             }
-        } onCancel: {
-            if let id = box.id { managerBox.value.cancelImageRequest(id) }
         }
     }
+
+    #if QA_FIXTURES && targetEnvironment(simulator)
+    /// Explicit fault injection for disposable simulator tests. Never compiled into a TestFlight build.
+    var unavailableForTesting: Set<String> = []
+    var posterlessForTesting: Set<String> = []
+    var slowForTesting: Set<String> = []
+    #endif
 
     /// Alles Vorgehaltene vergessen (z. B. nachdem Medien in den Tresor gelegt wurden).
     func forgetCache() {
@@ -174,7 +196,7 @@ final class PreviewPipeline {
         cachedIDs = []
     }
 
-    /// Vorheriges, aktuelles und wenige nächste Items vorhalten (auch aus iCloud vorladen); Rest freigeben.
+    /// Lokale Nachbarvorschauen vorhalten; nur das sichtbare Medium darf iCloud laden.
     func updateCache(window ids: [String], targetSize: CGSize) {
         // Previews under the top card never need full-resolution bitmaps.
         let longSide = max(targetSize.width, targetSize.height)
@@ -221,19 +243,27 @@ final class PreviewPipeline {
 
     /// Video als PlayerItem; liegt es nur in iCloud, streamt PhotoKit es (wie die Fotos-App).
     func playerItem(for assetID: String, allowNetwork: Bool = true) async -> PlayerItemResult {
-        guard let asset = PhotoLibraryService.phAsset(assetID) else { return .failed }
-        let o = PHVideoRequestOptions()
-        o.isNetworkAccessAllowed = allowNetwork
-        o.deliveryMode = .automatic
-        o.version = .current
-        return await withCheckedContinuation { cont in
-            PHImageManager.default().requestPlayerItem(forVideo: asset, options: o) { @Sendable item, info in
-                if let item { cont.resume(returning: .item(UncheckedBox(item))); return }
-                let inCloud = (info?[PHImageResultIsInCloudKey] as? Bool) ?? false
-                cont.resume(returning: inCloud ? .notLocallyAvailable : .failed)
+        #if QA_FIXTURES && targetEnvironment(simulator)
+        if unavailableForTesting.contains(assetID) { return .failed }
+        #endif
+        let asset = await Task.detached(priority: .userInitiated) {
+            PhotoLibraryService.phAsset(assetID).map(UncheckedBox.init)
+        }.value
+        guard let asset, !Task.isCancelled else { return .failed }
+        let options = PHVideoRequestOptions()
+        options.isNetworkAccessAllowed = allowNetwork
+        options.deliveryMode = .automatic
+        options.version = .current
+        let requestOptions = UncheckedBox(options), managerBox = UncheckedBox(manager)
+        return await PhotoRequest<PlayerItemResult>.perform(cancelledValue: .failed,
+                                          cancel: { managerBox.value.cancelImageRequest($0) }) { result in
+            managerBox.value.requestPlayerItem(forVideo: asset.value, options: requestOptions.value) { item, info in
+                if let item { result(.item(UncheckedBox(item))) }
+                else { result(Self.isCloudFailure(info) ? .notLocallyAvailable : .failed) }
             }
         }
     }
+
 }
 
 enum PlayerItemResult: Sendable {
@@ -248,18 +278,20 @@ struct UncheckedBox<T>: @unchecked Sendable {
     init(_ value: T) { self.value = value }
 }
 
-private final class RequestBox: @unchecked Sendable {
-    private let lock = NSLock()
-    private var _id: PHImageRequestID?
-    var id: PHImageRequestID? { lock.withLock { _id } }
-    func set(_ id: PHImageRequestID) { lock.withLock { _id = id } }
-}
-
 /// Laufende Requests eines Vorschau-Stroms. Nach dem Ende hinzugekommene werden sofort abgebrochen.
 private final class RequestIDs: @unchecked Sendable {
     private let lock = NSLock()
     private var ids: [PHImageRequestID] = []
     private var terminated = false
+    private var localFinished = false
+
+    func acceptLocal(terminal: Bool) -> Bool {
+        lock.withLock {
+            guard !terminated, !localFinished else { return false }
+            if terminal { localFinished = true }
+            return true
+        }
+    }
 
     func add(_ id: PHImageRequestID, cancel: (PHImageRequestID) -> Void) {
         let late = lock.withLock { () -> Bool in

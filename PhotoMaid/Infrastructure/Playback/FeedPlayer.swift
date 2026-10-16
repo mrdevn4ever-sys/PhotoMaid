@@ -13,11 +13,15 @@ final class FeedPlayer {
     private(set) var isMuted = true
     private(set) var progress: Double = 0
     private(set) var duration: Double = 0
+    private(set) var failedItemID: String?
     var loops = false
 
     @ObservationIgnored let player = AVPlayer()
     @ObservationIgnored private var timeObserver: Any?
     @ObservationIgnored private var endObserver: NSObjectProtocol?
+    @ObservationIgnored private var statusObserver: NSKeyValueObservation?
+    @ObservationIgnored private var preparationID: UUID?
+    @ObservationIgnored private var generation = UUID()
 
     init() {
         player.isMuted = true
@@ -40,12 +44,34 @@ final class FeedPlayer {
         try? session.setActive(true, options: [])
     }
 
-    func load(itemID: String, item: AVPlayerItem, autoplay: Bool, duration: Double) {
+    /// A request belongs to this visit to a card, including when the same asset is revisited later.
+    func beginLoading() -> UUID {
         stop()
+        let id = UUID()
+        preparationID = id
+        return id
+    }
+
+    @discardableResult
+    func load(itemID: String, item: AVPlayerItem, autoplay: Bool, duration: Double,
+              requestID: UUID? = nil) -> Bool {
+        if let requestID, preparationID != requestID { return false }
+        stop()
+        let expectedGeneration = generation
         self.itemID = itemID
         self.duration = duration
         progress = 0
         player.replaceCurrentItem(with: item)
+        statusObserver = item.observe(\.status, options: [.initial, .new]) { [weak self] _, change in
+            guard change.newValue == .failed else { return }
+            Task { @MainActor [weak self] in
+                guard let self, self.generation == expectedGeneration else { return }
+                self.player.pause()
+                self.isPlaying = false
+                self.failedItemID = itemID
+                if let error = self.player.currentItem?.error { Diagnostics.error(.video, "feed-player-failed", error) }
+            }
+        }
         endObserver = NotificationCenter.default.addObserver(forName: AVPlayerItem.didPlayToEndTimeNotification,
                                                              object: item, queue: .main) { [weak self] _ in
             MainActor.assumeIsolated {
@@ -57,6 +83,7 @@ final class FeedPlayer {
         isMuted = true
         player.isMuted = true
         if autoplay { play() }
+        return true
     }
 
     func play() {
@@ -89,6 +116,10 @@ final class FeedPlayer {
 
     /// Bei Routewechsel, Werbung, Hintergrund, Gerätesperre, Verlassen des Items.
     func stop() {
+        preparationID = nil
+        generation = UUID()
+        statusObserver = nil
+        failedItemID = nil
         player.pause()
         isPlaying = false
         if let endObserver { NotificationCenter.default.removeObserver(endObserver) }
@@ -103,16 +134,37 @@ final class FeedPlayer {
 /// Minimaler Layer-Host für den gemeinsamen Player (keine System-Controls).
 struct PlayerLayerView: UIViewRepresentable {
     let player: AVPlayer
+    var onReadyForDisplay: (() -> Void)? = nil
+
+    @MainActor final class Coordinator {
+        var onReady: (() -> Void)?
+        var observation: NSKeyValueObservation?
+        init(_ onReady: (() -> Void)?) { self.onReady = onReady }
+    }
+
+    func makeCoordinator() -> Coordinator { Coordinator(onReadyForDisplay) }
 
     func makeUIView(context: Context) -> PlayerHostView {
         let v = PlayerHostView()
         v.playerLayer.player = player
         v.playerLayer.videoGravity = .resizeAspect // vollständiges Motiv, kein Beschnitt
+        let coordinator = context.coordinator
+        coordinator.observation = v.playerLayer.observe(\.isReadyForDisplay, options: [.initial, .new]) { [weak coordinator] _, change in
+            guard change.newValue == true else { return }
+            Task { @MainActor [weak coordinator] in coordinator?.onReady?() }
+        }
         return v
     }
 
     func updateUIView(_ uiView: PlayerHostView, context: Context) {
+        context.coordinator.onReady = onReadyForDisplay
         uiView.playerLayer.player = player
+    }
+
+    static func dismantleUIView(_ uiView: PlayerHostView, coordinator: Coordinator) {
+        coordinator.observation = nil
+        coordinator.onReady = nil
+        uiView.playerLayer.player = nil
     }
 
     final class PlayerHostView: UIView {

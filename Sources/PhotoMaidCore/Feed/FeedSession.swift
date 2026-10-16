@@ -130,6 +130,14 @@ public struct FeedSession: Hashable, Sendable {
         index = max(0, min(newIndex, items.count))
     }
 
+    /// Explicitly pass an unavailable/loading item without reviewing it. A stale button must not skip its successor.
+    @discardableResult
+    public mutating func advanceWithoutDecision(from item: ItemReference) -> Bool {
+        guard pending == nil, current == item else { return false }
+        index += 1
+        return true
+    }
+
     /// Kommende Medien (ab dem aktuellen) aus der Warteschlange nehmen – ausdrücklich OHNE Entscheidung,
     /// z. B. nach „Album ausnehmen“ oder nach einer Serienauswahl. Gesehene Medien bleiben (Zurück funktioniert).
     public mutating func dropUpcoming(_ remove: Set<ItemReference>) {
