@@ -44,6 +44,8 @@ Der gemeinsame Spielekontext behält die Rückkehr zu Analyseergebnissen außerh
 
 Die gesamte Core-Suite besteht nach der Swipe-Umstellung (423 Swift-Testing- und 24 XCTest-Fälle).
 Zusätzliche native Tests prüfen Erststart, Neustart nach Spielende und Größenwechsel ohne Spielverlust.
-Die aktuelle native Swipe-/Vollbildabnahme läuft. Alte Aufnahmen mit Richtungstasten sind abgelöst.
+Die aktuelle native Swipe-/Vollbildabnahme besteht: drei UI-Fälle auf iPhone und drei auf einem großen
+Fenster, einschließlich Fotoaufnahme, Rekord, Schließen, Wiederöffnen und Hintergrundpause.
+Die echten Aufnahmen wurden angesehen; alte Aufnahmen mit Richtungstasten sind abgelöst.
 Aktuelle Ergebnisse und die ausdrücklich offene echte Duo-Abnahme stehen in
 [IPHONE_DUO_AND_GAMES.md](IPHONE_DUO_AND_GAMES.md).

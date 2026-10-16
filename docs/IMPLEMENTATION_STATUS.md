@@ -8,8 +8,10 @@ Apple hat laut Nutzer ITMS-91064 für Builds 8–10 gemeldet; ein grüner Upload
 Memory-Bestzeiten und Snake-Rekorde bleiben lokal über App-Neustarts erhalten. Hochformat ist
 für das normale iPhone deklariert. Breite Fenster erhalten einen Live-Papierkorb links neben dem
 Feed, adaptive Dashboards und Raster sowie seitliche Editor-/Collage-Werkzeuge. Snake nutzt das ganze Fenster und ausschließlich Wischgesten; nur Schließen bleibt sichtbar.
-F1–F5 des ursprünglichen Spieleaudits sind im Code korrigiert. 447 Core-Tests und bisher 40 native Tests,
-Übersetzungs- und lokale Privacy-Prüfungen bestehen; die visuelle Wiederholungsprüfung läuft in Actions.
+F1–F5 des ursprünglichen Spieleaudits sind im Code korrigiert. 447 Core-Tests und 42 native Modelltests,
+Übersetzungs- und lokale Privacy-Prüfungen bestehen. Alle sechs aktuellen Snake-UI-Fälle auf iPhone und
+großem Fenster bestehen ebenfalls; native Aufnahmen und Rückwege sind geprüft. Memory-Sieg, gespeicherte
+Bestzeit, Fotoquellen und adaptive Hauptseiten sind durch die verlinkten nativen Läufe belegt.
 
 **Duo-Grenze:** Der verfügbare Runner hat Xcode 26.6 und keinen Duo-Simulator. Die breite native
 Fensterprüfung ersetzt keine Faltabnahme. Apple verlangt SDK 27.1 für vollständige randfüllende
@@ -42,7 +44,7 @@ Vorschauen, mindestens eine), alternativ aus einer manuellen Auswahl von ein bis
 Memory und Snake nutzen dieselbe Ladeimplementierung mit getrennten Bildspeichern und Spielständen.
 Es gibt keine Fotoänderungen, Spiel-Uploads oder neuen Analyseaufträge.
 
-**PASS:** acht Snake-Regeltests und fünf native Snake-/Fotolader-Tests; Bestandteil der oben
+**PASS:** zehn Snake-Regel-/Rastertests und sieben native Snake-/Fotolader-Tests; Bestandteil der oben
 genannten Gesamtprüfung. Die Änderungen liegen im Arbeitsbranch und sind noch in keinem
 ausgelieferten Build. [Bedienung, Grenzen und aktueller Prüfstatus](PHOTO_SNAKE.md).
 
