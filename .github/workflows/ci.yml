@@ -26,6 +26,10 @@ on:
         type: choice
         options: [all, vault, vault-media, editor, games]
         default: all
+      games_case:
+        description: "Optional: einzelne PhotoGameVisualTests-Methode statt aller Spiel-/Layoutfälle"
+        type: string
+        default: ""
       sim_runtime:
         description: "iOS-Runtime (26.2 für StoreKit Test; 26.5 hat Apples CLI-Konfigurationsfehler)"
         type: choice
@@ -187,6 +191,8 @@ jobs:
           brew install ffmpeg
       - name: Spiele und breite Layouts visuell testen
         if: inputs.ui_tests && inputs.qa_case == 'games'
+        env:
+          PM_GAME_CASE: ${{ inputs.games_case }}
         run: scripts/ci/game_visual_tests.sh '${{ steps.sim.outputs.udid }}' "$RUNNER_TEMP/PhotoMaidDerived" "$RUNNER_TEMP/game-visual"
       - name: Spiele-Screenshots und Hierarchien
         uses: actions/upload-artifact@v4

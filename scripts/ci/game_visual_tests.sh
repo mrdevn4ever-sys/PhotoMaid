@@ -5,6 +5,11 @@ phone="$1"
 derived="$2"
 out="$3"
 mkdir -p "$out"
+test_target=PhotoMaidUITests/PhotoGameVisualTests
+if [ -n "${PM_GAME_CASE:-}" ]; then
+  [[ "$PM_GAME_CASE" =~ ^test[0-9]{2}[A-Za-z0-9]+$ ]]
+  test_target="$test_target/$PM_GAME_CASE"
+fi
 swift scripts/qa_media.swift "$out/media"
 run_device() {
   local udid="$1" name="$2"
@@ -20,7 +25,7 @@ run_device() {
   xcodebuild -project PhotoMaid.xcodeproj -scheme PhotoMaid -destination "id=$udid" \
     -derivedDataPath "$derived" -resultBundlePath "$out/$name.xcresult" \
     -parallel-testing-enabled NO -maximum-concurrent-test-simulator-destinations 1 \
-    -only-testing:PhotoMaidUITests/PhotoGameVisualTests -skipPackagePluginValidation -skipMacroValidation \
+    "-only-testing:$test_target" -skipPackagePluginValidation -skipMacroValidation \
     TARGETED_DEVICE_FAMILY=1,2 CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_REQUIRED=YES \
     test-without-building > "$out/$name.log" 2>&1
   local status=$?

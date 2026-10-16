@@ -88,7 +88,7 @@ import XCTest
         app.terminate()
         launch()
         app.buttons["feed.memory"].tap(); app.buttons["games.records"].tap()
-        XCTAssertTrue(app.staticTexts.containing(NSPredicate(format: "label CONTAINS '12 pairs'")).firstMatch.waitForExistence(timeout: 5))
+        XCTAssertTrue(app.descendants(matching: .any).matching(NSPredicate(format: "label CONTAINS '12 pairs'")).firstMatch.waitForExistence(timeout: 5))
         checkpoint("games_05_record_after_relaunch", app: app)
     }
 
