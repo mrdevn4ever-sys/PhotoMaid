@@ -5,6 +5,10 @@ name: CI
 on:
   workflow_dispatch:
     inputs:
+      duo_probe:
+        description: "Nur Xcode-/SDK-/iPhone-Duo-Simulator-Verfügbarkeit prüfen"
+        type: boolean
+        default: false
       store_locales:
         description: "App-Store-Aufnahmen statt QA: all oder Kommaliste (leer = normale CI)"
         type: string
@@ -71,6 +75,20 @@ permissions:
   actions: read
 
 jobs:
+  duo-environment:
+    if: inputs.duo_probe
+    name: iPhone Duo – Xcode und Simulator prüfen
+    runs-on: macos-26
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Duo-Werkzeuge untersuchen
+        run: scripts/ci/duo_environment.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: duo-environment
+          path: duo-environment/
   app-store:
     if: inputs.store_locales != '' && inputs.ui_phase != 'store-export'
     uses: ./.github/workflows/app-store-assets.yml
@@ -89,7 +107,7 @@ jobs:
     with:
       sim_runtime: ${{ inputs.sim_runtime }}
   core:
-    if: inputs.collect_run == '' && !inputs.native_capture && inputs.store_locales == ''
+    if: inputs.collect_run == '' && !inputs.native_capture && !inputs.duo_probe && inputs.store_locales == ''
     name: PhotoMaidCore (Linux, swift test)
     runs-on: ubuntu-24.04
     container: swift:6.4-noble
@@ -109,7 +127,7 @@ jobs:
           path: core-test.log
 
   ios:
-    if: inputs.collect_run == '' && !inputs.native_capture && inputs.store_locales == ''
+    if: inputs.collect_run == '' && !inputs.native_capture && !inputs.duo_probe && inputs.store_locales == ''
     name: iOS App (xcodebuild build + test)
     runs-on: macos-26
     timeout-minutes: 120
