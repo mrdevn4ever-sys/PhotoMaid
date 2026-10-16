@@ -4,6 +4,35 @@ import Testing
 @Suite struct PhotoSnakeGameTests {
     typealias Cell = PhotoSnakeGame.Cell
 
+    @Test func firstSwipeCanChooseEveryDirectionButCannotTeleportAfterMoving() throws {
+        for width in 4...24 {
+            for direction in PhotoSnakeGame.Direction.allCases {
+                var game = try #require(PhotoSnakeGame(width: width, height: width, seed: 7))
+                let faced = game.faceBeforeFirstStep(direction)
+                #expect(faced)
+                #expect(Set(game.body).count == 3)
+                #expect(game.body.allSatisfy { (0..<width).contains($0.x) && (0..<width).contains($0.y) })
+                let food = try #require(game.food)
+                #expect(!game.body.contains(food))
+                _ = game.step()
+                let moved = game
+                let changed = game.faceBeforeFirstStep(direction.opposite)
+                #expect(!changed)
+                #expect(game == moved)
+            }
+        }
+    }
+
+    @Test func viewportChoosesUsableGridsForPhoneAndExpandedWindows() {
+        let phone = PhotoSnakeViewport(width: 402, height: 874)
+        let expanded = PhotoSnakeViewport(width: 744, height: 1133)
+        #expect(phone.columns == 11 && phone.rows == 24)
+        #expect(expanded.columns == 16 && expanded.rows == 24)
+        #expect(PhotoSnakeViewport(width: 1133, height: 744).rows == 16)
+        #expect(PhotoSnakeViewport(width: .nan, height: 100).columns == 12)
+        #expect(PhotoSnakeViewport(width: 100, height: .infinity).rows == 16)
+    }
+
     @Test func validBoardAndFoodNeverOverlapTheInitialStrip() throws {
         #expect(PhotoSnakeGame(width: 3) == nil)
         #expect(PhotoSnakeGame(height: 25) == nil)

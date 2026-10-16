@@ -29,6 +29,7 @@ public struct PhotoSnakeGame: Equatable, Sendable {
     public private(set) var status = Status.playing
     private var turns: [Direction] = []
     private var randomState: UInt64
+    private var hasStepped = false
 
     public var nextDirection: Direction { turns.first ?? direction }
 
@@ -42,6 +43,18 @@ public struct PhotoSnakeGame: Equatable, Sendable {
         placeFood()
     }
 
+    /// The first swipe chooses the starting direction, including left. A running round cannot teleport.
+    @discardableResult public mutating func faceBeforeFirstStep(_ proposed: Direction) -> Bool {
+        guard !hasStepped, status == .playing else { return false }
+        let head = Cell(proposed == .left ? (width - 1) / 2 : width / 2,
+                        proposed == .up ? (height - 1) / 2 : height / 2)
+        let delta = proposed.delta
+        body = (0..<3).map { Cell(head.x - $0 * delta.x, head.y - $0 * delta.y) }
+        direction = proposed; turns = []
+        if let food, body.contains(food) { placeFood() }
+        return true
+    }
+
     /// Buffer up to two actual corners, validating against the preceding queued turn. Rapid input can never
     /// reverse directly into the neck or build an unbounded backlog.
     @discardableResult public mutating func turn(_ proposed: Direction) -> Bool {
@@ -53,6 +66,7 @@ public struct PhotoSnakeGame: Equatable, Sendable {
 
     @discardableResult public mutating func step() -> Event {
         guard status == .playing else { return .ignored }
+        hasStepped = true
         if !turns.isEmpty { direction = turns.removeFirst() }
         let delta = direction.delta
         var next = Cell(body[0].x + delta.x, body[0].y + delta.y)

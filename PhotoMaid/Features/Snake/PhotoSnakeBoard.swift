@@ -11,36 +11,35 @@ struct PhotoSnakeBoard: View {
 
     var body: some View {
         GeometryReader { geo in
-            let cell = min(geo.size.width / CGFloat(game.width), geo.size.height / CGFloat(game.height))
+            let cellWidth = geo.size.width / CGFloat(game.width)
+            let cellHeight = geo.size.height / CGFloat(game.height)
             ZStack(alignment: .topLeading) {
                 AppColors.warm.opacity(0.45)
                 Canvas { context, _ in
                     var lines = Path()
                     for x in 0...game.width {
-                        lines.move(to: CGPoint(x: CGFloat(x) * cell, y: 0))
-                        lines.addLine(to: CGPoint(x: CGFloat(x) * cell, y: CGFloat(game.height) * cell))
+                        lines.move(to: CGPoint(x: CGFloat(x) * cellWidth, y: 0))
+                        lines.addLine(to: CGPoint(x: CGFloat(x) * cellWidth, y: CGFloat(game.height) * cellHeight))
                     }
                     for y in 0...game.height {
-                        lines.move(to: CGPoint(x: 0, y: CGFloat(y) * cell))
-                        lines.addLine(to: CGPoint(x: CGFloat(game.width) * cell, y: CGFloat(y) * cell))
+                        lines.move(to: CGPoint(x: 0, y: CGFloat(y) * cellHeight))
+                        lines.addLine(to: CGPoint(x: CGFloat(game.width) * cellWidth, y: CGFloat(y) * cellHeight))
                     }
                     context.stroke(lines, with: .color(AppColors.surfaceStroke), lineWidth: 0.5)
                 }
                 ForEach(Array(game.body.enumerated()), id: \.offset) { index, point in
                     tile(index == 0 || strip.isEmpty ? nil : strip[(index - 1) % strip.count], head: index == 0)
-                        .frame(width: max(1, cell - 2), height: max(1, cell - 2))
-                        .position(x: (CGFloat(point.x) + 0.5) * cell, y: (CGFloat(point.y) + 0.5) * cell)
+                        .frame(width: max(1, cellWidth - 2), height: max(1, cellHeight - 2))
+                        .position(x: (CGFloat(point.x) + 0.5) * cellWidth, y: (CGFloat(point.y) + 0.5) * cellHeight)
                 }
                 if let food = game.food {
                     tile(foodPicture, head: false)
                         .overlay { RoundedRectangle(cornerRadius: 3).stroke(AppColors.accent, lineWidth: 2) }
-                        .frame(width: max(1, cell - 2), height: max(1, cell - 2))
-                        .position(x: (CGFloat(food.x) + 0.5) * cell, y: (CGFloat(food.y) + 0.5) * cell)
+                        .frame(width: max(1, cellWidth - 2), height: max(1, cellHeight - 2))
+                        .position(x: (CGFloat(food.x) + 0.5) * cellWidth, y: (CGFloat(food.y) + 0.5) * cellHeight)
                 }
             }
-            .frame(width: CGFloat(game.width) * cell, height: CGFloat(game.height) * cell)
-            .clipShape(.rect(cornerRadius: AppRadii.small))
-            .overlay { RoundedRectangle(cornerRadius: AppRadii.small).strokeBorder(AppColors.surfaceStroke, lineWidth: 1) }
+            .frame(width: CGFloat(game.width) * cellWidth, height: CGFloat(game.height) * cellHeight)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .accessibilityElement(children: .ignore)

@@ -17,6 +17,7 @@ final class PhotoSnakeModel {
     private(set) var strip: [String] = []
     private(set) var nextPhoto = 0
     private(set) var newBest = false
+    private var viewport = PhotoSnakeViewport(width: 432, height: 576)
 
     init(scores: PhotoGameScores? = nil, canUsePhotos: (@MainActor ([String]) -> Bool)? = nil) {
         self.scores = scores ?? PhotoGameScores(); photos = PhotoGamePhotos(canUsePhotos: canUsePhotos)
@@ -53,7 +54,8 @@ final class PhotoSnakeModel {
     }
 
     private func makeRound(mode: PhotoSnakeGame.Mode, speed: Speed, stepMode: Bool) {
-        game = PhotoSnakeGame(mode: mode); self.speed = speed; self.stepMode = stepMode
+        game = PhotoSnakeGame(width: viewport.columns, height: viewport.rows, mode: mode)
+        self.speed = speed; self.stepMode = stepMode
         roundID = UUID(); running = false; started = false; newBest = false; nextPhoto = 2 % pictureIDs.count
         strip = [pictureIDs[0], pictureIDs[1 % pictureIDs.count]]
     }
@@ -71,6 +73,21 @@ final class PhotoSnakeModel {
     }
 
     func pause() { running = false }
+
+    func updateViewport(width: Double, height: Double) {
+        let next = PhotoSnakeViewport(width: width, height: height)
+        guard next != viewport else { return }
+        viewport = next
+        // Folding/resizing never changes an active round, its food, score or rules.
+        if let game, !started { makeRound(mode: game.mode, speed: speed, stepMode: stepMode) }
+    }
+
+    func swipe(_ direction: PhotoSnakeGame.Direction) {
+        if game?.status != .playing { restart() }
+        if !started { _ = game?.faceBeforeFirstStep(direction) }
+        if !running { resume() }
+        steer(direction)
+    }
     func useStepMode() {
         pause()
         guard !stepMode else { return }

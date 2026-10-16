@@ -4,6 +4,34 @@ import UIKit
 @testable import PhotoMaid
 
 @MainActor struct PhotoSnakeModelTests {
+    @Test func aSwipeAfterGameOverStartsANewRoundWithoutButtons() throws {
+        let model = PhotoSnakeModel()
+        model.startMotifs(mode: .classic, speed: .normal, stepMode: true)
+        model.swipe(.up)
+        for _ in 0..<24 { model.tick() }
+        #expect(model.game?.status == .lost && !model.running)
+        let oldRound = model.roundID
+        model.swipe(.left)
+        #expect(model.roundID != oldRound && model.running && model.game?.direction == .left)
+        #expect(model.game?.score == 0)
+    }
+
+    @Test func swipeStartsInItsDirectionAndResizePreservesAnActiveRound() throws {
+        let model = PhotoSnakeModel()
+        model.updateViewport(width: 402, height: 874)
+        model.startMotifs(mode: .relaxed, speed: .normal, stepMode: true)
+        #expect(model.game?.width == 11 && model.game?.height == 24)
+        model.swipe(.left)
+        #expect(model.running && model.started && model.game?.direction == .left)
+        let game = model.game, round = model.roundID, photos = model.strip
+        model.updateViewport(width: 744, height: 1133)
+        #expect(model.game == game && model.roundID == round && model.strip == photos)
+        model.pause(); model.swipe(.up)
+        #expect(model.running && model.game?.direction == .up)
+        model.restart()
+        #expect(model.game?.width == 16 && model.game?.height == 24 && !model.running)
+    }
+
     @Test func aPreparedRoundStaysStillUntilExplicitResume() throws {
         let model = PhotoSnakeModel()
         model.startMotifs(mode: .relaxed, speed: .gentle, stepMode: false)

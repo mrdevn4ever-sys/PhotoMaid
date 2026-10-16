@@ -13,9 +13,10 @@ import XCTest
         XCUIDevice.shared.orientation = .portrait
     }
 
-    private func launch(_ page: String = "feed", light: Bool = false, language: String = "en") {
+    private func launch(_ page: String = "feed", light: Bool = false, language: String = "en", snakeSteps: Bool = false) {
         app.launchArguments = ["-store-capture", "-game-visual-tests", "-store-page", page, "-AppleLanguages", "(\(language))", "-AppleLocale", "en_US"]
         if light { app.launchArguments.append("-capture-light") }
+        if snakeSteps { app.launchArguments.append("-snake-swipe-steps") }
         app.launch()
         waitForPage(page)
         Thread.sleep(forTimeInterval: 0.8)
@@ -106,52 +107,58 @@ import XCTest
     }
 
     func test20SnakeControlsFoodHighscoreAndPause() throws {
-        launch()
+        launch(snakeSteps: true)
         openGame("snake")
         checkpoint("snake_01_setup_dark", app: app)
-        let stepSwitch = app.switches["snake.stepMode"]
-        XCTAssertTrue(stepSwitch.waitForExistence(timeout: 5)); stepSwitch.tap()
-        // Use the real photo loader and all source defaults.
         app.buttons["snake.prepare"].tap()
         let board = app.descendants(matching: .any)["snake.board"].firstMatch
         XCTAssertTrue(board.waitForExistence(timeout: 30))
-        XCTAssertGreaterThanOrEqual(board.frame.height, 256)
-        for direction in ["up", "left", "down", "right"] {
-            let button = app.buttons["snake.direction." + direction]
-            XCTAssertGreaterThanOrEqual(button.frame.width, 44)
-            XCTAssertGreaterThanOrEqual(button.frame.height, 44)
-            XCTAssertTrue(app.frame.insetBy(dx: -1, dy: -1).contains(button.frame), "Direction control must fit: \(direction)")
+        assertFullscreenSnake(board)
+        checkpoint("snake_02_fullscreen_ready_dark", app: app)
+        func move(_ direction: String) {
+            switch direction {
+            case "up": board.swipeUp()
+            case "down": board.swipeDown()
+            case "left": board.swipeLeft()
+            default: board.swipeRight()
+            }
         }
-        checkpoint("snake_02_photos_paused_dark", app: app)
-        let initial = board.value as? String ?? ""
-        let numbers = initial.split(whereSeparator: { !$0.isNumber }).compactMap { Int($0) }
-        XCTAssertGreaterThanOrEqual(numbers.count, 4)
-        guard numbers.count >= 4 else { return }
-        var x = numbers[0], y = numbers[1]
-        let foodX = numbers[2], foodY = numbers[3]
-        app.buttons["snake.toggleRunning"].tap()
-        func move(_ direction: String) { app.buttons["snake.direction." + direction].tap() }
-        if foodY == y && foodX < x { move("up"); y -= 1 }
-        if foodY != numbers[1] {
-            while y < foodY { move("down"); y += 1 }
-            while y > foodY { move("up"); y -= 1 }
+        // Explicit QA step driver isolates gesture routing from XCTest's input latency.
+        // test60 separately exercises the real clock, with the same visible swipe-only surface.
+        move("up")
+        var previous = "up"
+        let opposite = ["up": "down", "down": "up", "left": "right", "right": "left"]
+        for _ in 0..<90 {
+            if app.staticTexts["snake.score"].label.contains("1") { break }
+            let n = (board.value as? String ?? "").split(whereSeparator: { !$0.isNumber }).compactMap { Int($0) }
+            XCTAssertGreaterThanOrEqual(n.count, 4)
+            guard n.count >= 4 else { return }
+            var direction = n[0] != n[2] ? (n[0] < n[2] ? "right" : "left") : (n[1] < n[3] ? "down" : "up")
+            if direction == opposite[previous] { direction = ["up", "down"].contains(previous) ? "right" : "down" }
+            move(direction); previous = direction
         }
-        while x < foodX { move("right"); x += 1 }
-        while x > foodX { move("left"); x -= 1 }
-        while y < foodY { move("down"); y += 1 }
         XCTAssertTrue(app.staticTexts["snake.score"].label.contains("1"))
         XCTAssertTrue(app.staticTexts["snake.best"].label.contains("1"))
-        app.buttons["snake.toggleRunning"].tap()
-        let paused = board.value as? String
-        XCTAssertFalse(app.buttons["snake.direction.up"].isEnabled)
-        XCTAssertEqual(board.value as? String, paused, "Paused controls must not move the camera")
-        checkpoint("snake_03_collected_record_dark", app: app)
+        checkpoint("snake_03_fullscreen_collected_record_dark", app: app)
+        let beforeClose = board.value as? String
         app.buttons["snake.close"].tap()
         let position = app.descendants(matching: .any)["feed.position"].firstMatch.label
         app.buttons["feed.memory"].tap(); app.buttons["games.snake"].tap()
-        XCTAssertEqual(board.value as? String, paused)
+        app.buttons["snake.resume"].tap()
+        XCTAssertTrue(board.waitForExistence(timeout: 10))
+        XCTAssertEqual(board.value as? String, beforeClose)
+        assertFullscreenSnake(board)
         app.buttons["snake.close"].tap()
         XCTAssertEqual(app.descendants(matching: .any)["feed.position"].firstMatch.label, position)
+    }
+
+    private func assertFullscreenSnake(_ board: XCUIElement) {
+        XCTAssertGreaterThanOrEqual(board.frame.width, app.frame.width - 2)
+        XCTAssertGreaterThanOrEqual(board.frame.height, app.frame.height - 2)
+        XCTAssertEqual(app.buttons.count, 1, "Only Close is a visible button during Snake")
+        XCTAssertTrue(app.buttons["snake.close"].exists)
+        XCTAssertFalse(app.buttons["snake.toggleRunning"].exists)
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'snake.direction.'")).count, 0)
     }
 
     func test30PortraitAndExpandedWorkspaceScreens() {
@@ -216,6 +223,7 @@ import XCTest
         for _ in 0..<6 where !symbols.isHittable { app.swipeUp() }
         symbols.tap()
         XCTAssertTrue(app.descendants(matching: .any)["snake.board"].firstMatch.waitForExistence(timeout: 10))
+        assertFullscreenSnake(app.descendants(matching: .any)["snake.board"].firstMatch)
         checkpoint("snake_accessibility_arabic", app: app)
     }
 
@@ -248,14 +256,20 @@ import XCTest
         app.buttons["snake.symbols"].tap()
         let board = app.descendants(matching: .any)["snake.board"].firstMatch
         XCTAssertTrue(board.waitForExistence(timeout: 10))
+        assertFullscreenSnake(board)
+        board.swipeUp()
         let initial = board.value as? String ?? ""
-        app.buttons["snake.toggleRunning"].tap()
         let moved = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value != %@", initial), object: board)
         XCTAssertEqual(XCTWaiter.wait(for: [moved], timeout: 3), .completed)
-        app.buttons["snake.toggleRunning"].tap()
+        XCUIDevice.shared.press(.home)
+        app.activate()
+        XCTAssertTrue(board.waitForExistence(timeout: 10))
         let paused = board.value as? String
         Thread.sleep(forTimeInterval: 0.6)
         XCTAssertEqual(board.value as? String, paused)
-        checkpoint("snake_realtime_paused_after_movement", app: app)
+        checkpoint("snake_realtime_fullscreen_paused", app: app)
+        board.swipeRight()
+        let resumed = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value != %@", paused ?? ""), object: board)
+        XCTAssertEqual(XCTWaiter.wait(for: [resumed], timeout: 3), .completed)
     }
 }

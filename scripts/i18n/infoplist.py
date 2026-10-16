@@ -89,3 +89,23 @@ S = {
  "Для голосової нотатки PhotoMaid потрібен мікрофон. Запис починається лише після натискання.",
  "PhotoMaid需要访问麦克风来录制语音备忘录。仅在你点击后开始录音。"),
 }
+
+# Preserve the existing ATT description when regenerating iOS string catalogs.
+S["NSUserTrackingUsageDescription"] = T(
+ "The free version of PhotoMaid shows ads from Google. With your permission they can be more relevant to you. Your photos and files never go to advertisers.",
+ "Die Gratis-Version von PhotoMaid zeigt Werbung von Google. Mit deiner Erlaubnis kann sie besser zu dir passen. Deine Fotos und Dateien gehen nie an Werbeanbieter.",
+ "تعرض النسخة المجانية من PhotoMaid إعلانات من Google. بإذنك يمكن أن تكون أكثر ملاءمة لك. لا تُرسل صورك وملفاتك أبدًا إلى المعلنين.",
+ "La versión gratuita de PhotoMaid muestra anuncios de Google. Con tu permiso pueden ser más relevantes para ti. Tus fotos y archivos nunca van a los anunciantes.",
+ "La version gratuite de PhotoMaid affiche des publicités de Google. Avec ton autorisation, elles peuvent mieux te correspondre. Tes photos et fichiers ne sont jamais transmis aux annonceurs.",
+ "La versione gratuita di PhotoMaid mostra pubblicità di Google. Con il tuo permesso può essere più adatta a te. Foto e file non vanno mai agli inserzionisti.",
+ "PhotoMaidの無料版にはGoogleの広告が表示されます。許可すると、より関心に合った広告になります。写真やファイルが広告主に送られることはありません。",
+ "PhotoMaid 무료 버전에는 Google 광고가 표시돼요. 허용하면 더 관련성 높은 광고를 볼 수 있어요. 사진과 파일은 광고주에게 절대 전달되지 않아요.",
+ "De gratis versie van PhotoMaid toont advertenties van Google. Met je toestemming passen ze beter bij je. Je foto’s en bestanden gaan nooit naar adverteerders.",
+ "Bezpłatna wersja PhotoMaid wyświetla reklamy Google. Za Twoją zgodą mogą być lepiej dopasowane. Twoje zdjęcia i pliki nigdy nie trafiają do reklamodawców.",
+ "A versão gratuita do PhotoMaid mostra anúncios da Google. Com a tua permissão podem ser mais adequados a ti. As tuas fotografias e ficheiros nunca vão para anunciantes.",
+ "Versiunea gratuită PhotoMaid afișează reclame de la Google. Cu permisiunea ta, ele pot fi mai potrivite pentru tine. Pozele și fișierele tale nu ajung niciodată la agenții de publicitate.",
+ "Бесплатная версия PhotoMaid показывает рекламу Google. С твоего разрешения она может лучше тебе подходить. Твои фото и файлы никогда не передаются рекламодателям.",
+ "PhotoMaid’in ücretsiz sürümü Google reklamları gösterir. İzin verirsen sana daha uygun olabilir. Fotoğrafların ve dosyaların asla reklamverenlere gitmez.",
+ "Безкоштовна версія PhotoMaid показує рекламу Google. З твого дозволу вона може краще тобі пасувати. Твої фото й файли ніколи не передаються рекламодавцям.",
+ "PhotoMaid 免费版会显示 Google 的广告。经你允许，广告可以更贴合你。你的照片和文件绝不会发送给广告商。"
+)

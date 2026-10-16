@@ -8,9 +8,18 @@ phase="${4:-all}"
 case "$phase" in all|iphone|expanded-window) ;; *) exit 2 ;; esac
 mkdir -p "$out"
 test_target=PhotoMaidUITests/PhotoGameVisualTests
+test_targets=("-only-testing:$test_target")
+if [ "${PM_GAME_SUITE:-all}" = snake ]; then
+  test_targets=("-only-testing:$test_target/test20SnakeControlsFoodHighscoreAndPause"
+                "-only-testing:$test_target/test40LargeTextAndArabic"
+                "-only-testing:$test_target/test60SnakeRealtimeDriverAndPause")
+elif [ "${PM_GAME_SUITE:-all}" != all ]; then
+  exit 2
+fi
 if [ -n "${PM_GAME_CASE:-}" ]; then
   [[ "$PM_GAME_CASE" =~ ^test[0-9]{2}[A-Za-z0-9]+$ ]]
   test_target="$test_target/$PM_GAME_CASE"
+  test_targets=("-only-testing:$test_target")
 fi
 if [ ! -d "$out/media" ]; then swift scripts/qa_game_media.swift "$out/media"; fi
 xcodebuild -version > "$out/xcode-version.txt"
@@ -36,7 +45,7 @@ run_device() {
     -derivedDataPath "$derived" -resultBundlePath "$out/$name.xcresult" \
     -parallel-testing-enabled NO -maximum-concurrent-test-simulator-destinations 1 \
     -test-timeouts-enabled YES -default-test-execution-time-allowance 300 -maximum-test-execution-time-allowance 300 \
-    "-only-testing:$test_target" -skipPackagePluginValidation -skipMacroValidation \
+    "${test_targets[@]}" -skipPackagePluginValidation -skipMacroValidation \
     TARGETED_DEVICE_FAMILY=1,2 CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_REQUIRED=YES \
     test-without-building 2>&1 | tee "$out/$name.log" | grep -E 'Test (Case|Suite)|error:|failed|passed|\*\* TEST'
   local status=${PIPESTATUS[0]}
