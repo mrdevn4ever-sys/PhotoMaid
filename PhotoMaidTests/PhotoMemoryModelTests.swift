@@ -13,6 +13,27 @@ import UIKit
         #expect(!model.isLoading, "Preview preparation did not finish")
     }
 
+    @Test func nextCardWorksWithAMismatchAndStaleConcealCannotHideANewSelection() throws {
+        let model = PhotoMemoryModel()
+        model.startMotifs()
+        let cards = try #require(model.game?.cards)
+        let first = cards[0]
+        let other = try #require(cards.first { $0.pairID != first.pairID })
+        let third = try #require(cards.first { $0.pairID != first.pairID && $0.pairID != other.pairID })
+        model.reveal(first.id); model.reveal(other.id)
+        let oldPair = try #require(model.game?.faceUp), round = model.roundID
+        model.reveal(third.id)
+        #expect(model.game?.faceUp == [third.id] && model.manualMismatch)
+        model.concealMismatch(round: round, faceUp: oldPair)
+        #expect(model.game?.faceUp == [third.id])
+        model.replay()
+        let newRound = model.roundID
+        model.reveal(first.id); model.reveal(other.id)
+        let current = model.game?.faceUp
+        model.concealMismatch(round: round, faceUp: current ?? [])
+        #expect(model.roundID == newRound && model.game?.faceUp == current)
+    }
+
     @Test func failedSelectionKeepsThePreviousRound() async throws {
         let model = PhotoMemoryModel(canUsePhotos: { _ in true })
         model.startMotifs()

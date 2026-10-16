@@ -86,10 +86,11 @@ struct PhotoMemoryView: View {
             }
             .task(id: mismatchTaskID) {
                 // VoiceOver users control how long both cards stay visible with the explicit button.
-                guard !voiceOver, !boardNeedsScrolling, scenePhase == .active, !setup, !picker, !collectionPicker, !model.isLoading,
+                guard !voiceOver, scenePhase == .active, !setup, !picker, !collectionPicker, !model.isLoading,
                       model.game?.hasMismatch == true else { return }
+                let round = model.roundID, faceUp = model.game?.faceUp ?? []
                 do { try await Task.sleep(for: .seconds(1.2)) } catch { return }
-                model.concealMismatch()
+                model.concealMismatch(round: round, faceUp: faceUp)
             }
             .onAppear {
                 model.validatePhotos()
@@ -292,9 +293,10 @@ struct PhotoMemoryView: View {
                 }
             }
             .frame(minHeight: AppSpacing.minTouch)
+            .contentShape(.rect)
         }
         .buttonStyle(.plain)
-        .disabled(revealed || game.hasMismatch)
+        .disabled(revealed)
         .accessibilityLabel(Text(verbatim: L("memory_card", card.id + 1)))
         .accessibilityValue(Text(verbatim: cardValue(card, revealed: revealed, matched: matched)))
         .accessibilityIdentifier("memory.card.\(card.id)")

@@ -29,6 +29,25 @@ import Testing
         #expect(game.reveal(0) == .ignored)
     }
 
+    @Test func selectingANewHiddenCardDismissesTheOldMismatchAndNeverGetsStuck() throws {
+        var game = try #require(PhotoMemoryGame(pairIDs: ["a", "b", "c"], shuffled: false))
+        #expect(game.select(0) == .revealed)
+        #expect(game.select(2) == .mismatched)
+        #expect(game.select(2) == .ignored)
+        #expect(game.select(-1) == .ignored)
+        #expect(game.faceUp == [0, 2])
+        #expect(game.select(4) == .revealed)
+        #expect(game.faceUp == [4] && game.moves == 1)
+        #expect(game.select(5) == .matched)
+        #expect(game.matchedPairs == ["c"] && game.moves == 2)
+        #expect(game.select(4) == .ignored)
+        #expect(game.select(0) == .revealed)
+        #expect(game.select(1) == .matched)
+        #expect(game.select(2) == .revealed)
+        #expect(game.select(3) == .matched)
+        #expect(game.isFinished)
+    }
+
     @Test func interruptionPreservesTheRoundAndUnmatchedFirstCard() throws {
         var game = try #require(PhotoMemoryGame(pairIDs: ["a", "b"], shuffled: false))
         _ = game.reveal(0)

@@ -53,6 +53,14 @@ public struct PhotoMemoryGame: Equatable, Sendable {
     public mutating func concealMismatch() {
         if hasMismatch { faceUp = [] }
     }
+
+    /// A deliberate tap on another closed card advances a pending mismatch. Invalid, already open
+    /// and matched cards never clear it. The UI can accept rapid taps without exposing three cards.
+    @discardableResult public mutating func select(_ id: Int) -> Turn {
+        guard let card = cards.first(where: { $0.id == id }), !isRevealed(card) else { return .ignored }
+        concealMismatch()
+        return reveal(id)
+    }
 }
 
 /// Photo selection is independent of the game: a source never falls back to the rest of the library.

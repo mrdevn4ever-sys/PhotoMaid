@@ -82,7 +82,9 @@ final class PhotoMemoryModel {
         validatePhotos()
         guard !isLoading else { return }
         let instant = now()
-        guard let turn = game?.reveal(id), turn != .ignored else { return }
+        let advancedMismatch = game?.hasMismatch == true
+        guard let turn = game?.select(id), turn != .ignored else { return }
+        if advancedMismatch { manualMismatch = true }
         if !stopwatch.hasStarted {
             stopwatch.resume(at: instant)
             if !timingActive { stopwatch.pause(at: instant) }
@@ -107,6 +109,10 @@ final class PhotoMemoryModel {
     }
 
     func concealMismatch() { game?.concealMismatch() }
+    func concealMismatch(round: UUID, faceUp: [Int]) {
+        guard roundID == round, game?.faceUp == faceUp else { return }
+        concealMismatch()
+    }
     func cancelLoading() { photos.cancelLoading() }
     func validatePhotos() { if photos.validatePhotos() { game = nil; roundID = UUID(); resetTime(manualMismatch: false) } }
     func image(for id: String) -> UIImage? { photos.image(for: id) }
