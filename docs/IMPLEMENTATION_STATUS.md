@@ -1,8 +1,24 @@
 # Implementierungsstatus
 
-Stand: 16.10.2026 · Arbeitsbranch `feat/iphone-duo-games` · zuletzt hochgeladen und von Apple verarbeitet: Version 1.0, Build 11.
-Apple hat laut Nutzer ITMS-91064 für Builds 8–10 gemeldet. Build 11 wurde am 16.10.2026 um 19:23 UTC
-erfolgreich verarbeitet und an interne Tester verteilt. [TestFlight-Lauf](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38952167636).
+Stand: 16.10.2026 · Arbeitsbranch `feat/iphone-duo-games` · zuletzt hochgeladen und von Apple verarbeitet: Version 1.0, Build 12.
+Apple hat laut Nutzer ITMS-91064 für Builds 8–10 gemeldet. Build 12 wurde am 16.10.2026 um 21:06 UTC
+erfolgreich verarbeitet und an interne Tester verteilt. [TestFlight-Lauf](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38965702294).
+
+## iCloud- und Video-Feed: dauerhaftes Überspringen (16.10.2026)
+
+Fehlende lokale Vorschauen lösen einen netzwerkfähigen Nachladeversuch aus; vorhandene Bilder bleiben sichtbar.
+Videos starten unabhängig vom Poster. Abgebrochene/veraltete Ladeaufträge können keine spätere Karte ersetzen.
+„Ohne Auswahl weiter“ funktioniert beim Laden und bei Fehlern und speichert den Übersprung separat in Core Data.
+Neue Feed-Warteschlangen lassen diese Medien auch nach App-Neustart aus. Unter „Aufräumen → Übersprungene
+erneut laden“ kann der Nutzer sie wiederherstellen. Originale und Entscheidungs-Ledger bleiben unverändert.
+Videosteuerung und Fehleraktionen sind für helles Design bzw. Bedienungshilfen korrigiert.
+
+**PASS:** 449 Core-Tests, 51 native Tests und sechs native UI-Fälle auf iPhone 17 und großem Ersatzfenster;
+[CI 38962426871](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38962426871), Quellcommit `137c471`.
+In Build 12 enthalten: Upload 21:04 UTC, Apple-Verarbeitung und interne Verteilung 21:06 UTC bestätigt.
+Alle drei Privacy-Manifeste der exportierten IPA bestanden; [unveränderter Bericht](privacy-manifests-build12.json).
+**NOT RUN:** persönliche iCloud-Mediathek und Integrität der beiden gemeldeten Originalvideos.
+[Befund, Prüfbelege und Geräteprüfung](FEED_ICLOUD_RECOVERY.md).
 
 ## Spiele, Bestwerte und adaptive Arbeitsflächen (16.10.2026)
 
