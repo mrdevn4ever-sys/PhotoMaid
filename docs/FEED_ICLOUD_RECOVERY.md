@@ -56,6 +56,50 @@ Die breite Prüfung ist keine Faltabnahme auf einem Duo-Gerät.
 Der TestFlight-Lauf wiederholt die bereits bestandenen nativen Tests nicht (`run_tests=false`), baut jedoch
 ein frisches signiertes Release-Archiv, prüft dessen exportierte Manifeste und wartet auf Apples Verarbeitung.
 
+## Sofortige Video-Entscheidung anhand der Vorschau (17.10.2026)
+
+Neuer Nutzerbefund nach Build 13: Bei jedem Video musste vor dem nächsten Swipe kurz auf das Laden
+gewartet werden, obwohl bereits ein erkennbares Standbild sichtbar war.
+
+Ursache: `refreshWindow()` entzog dem aktuellen Video die Vorschaufreigabe, solange der gemeinsame
+Player noch nicht dieses Medium hielt. Das betraf auch bereits vorgeladene Poster; ein Größenwechsel
+beim Einblenden der Videosteuerung konnte die Freigabe nochmals zurücksetzen.
+
+Korrektur auf dem bestehenden Branch, Quellstand `440f7e5`:
+
+- Ohne vorbereitetes Bild wird bei Videos zuerst ein kleines lokales 600px-Poster angefordert,
+  ohne Netz; erst danach folgt die Display-Qualität. Die unabhängige Player-Anfrage bleibt parallel.
+- Tatsächliche vorbereitete Poster werden im selben begrenzten Fenster wie der Feed gehalten
+  (vorheriges, aktuelles, zwei nächste Medien; höchstens vier), nach Verlassen freigegeben und sofort
+  an die Karte übergeben. Kein Warten auf erneutes Dekodieren beim Kartenwechsel.
+- Poster und reine Player-Frames werden getrennt gemeldet. Ein vorhandenes Bild hält Gesten und
+  Entscheidungsfreigabe beim Laden, Fensterwechsel oder Wiedergabefehler offen. Veraltete Player-Frames
+  geben ein ungesehenes Video weiterhin nicht frei. Ohne Bild oder sichtbaren Frame bleibt nur das
+  ausdrückliche Weitergeben ohne Entscheidung möglich.
+- Der bestehende Commit-Pfad, IDs, Revisionen, Favoritenschutz, Swipe-Belegung und Animation bleiben
+  erhalten. Keine Originale oder gespeicherten Entscheidungen werden geändert.
+- Vier native Modelltests prüfen direkte Videofolgen ohne Player, Größenwechsel, genaue Entscheidungen,
+  verworfene Frames und die Begrenzung/Freigabe des Caches. Der neue UI-Fall verwendet echte lokale
+  PhotoKit-Testvideos, deren Player-Anfrage im ausschließlich für QA kompilierten Testzweig 120 Sekunden
+  wartet. Behalten/Papierkorb/Später müssen anhand der tatsächlichen Standbilder vorher funktionieren,
+  auch nach Rückkehr zum Video.
+
+Prüfung: [CI 38985804949](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38985804949),
+`qa_case=games`, `games_case=feed` (vier Video-/Vorschau-UI-Fälle auf iPhone und großem Ersatzfenster).
+Lokalisierungsprüfung und Shell-Syntaxprüfung PASS. Core: **461 PASS**. Nativer iOS-Build und **62 Unit-/Integrationstests PASS** (49 Swift Testing + 13 XCTest),
+einschließlich aller vier neuen Poster-/Cache-/Entscheidungsfälle. iPhone 17 / iOS 26.2: **4/4 UI-Tests PASS, 0 Fehler, 0 übersprungen, Exitcode 0**.
+Der neue Test85 dauerte 22,126s und entschied trotz noch ausstehender Player-Anfragen; beide
+unveränderten Screenshots tatsächlich angesehen. Originale und Zusammenfassung: [QA-Belege](feed-video-swipe-qa/).
+Großes Ersatzfenster (iPad mini A17 Pro / iOS 26.4.1): ebenfalls **4/4 PASS, 0 Fehler,
+0 übersprungen, Exitcode 0**. Der gesamte CI-Lauf ist **success**. Xcode 26.6 (17F113);
+kein realer Fold-/Unfold-Test. Das große Posterbild wurde ebenfalls visuell geprüft.
+[Maschinenlesbare Ergebnisse und Quellstand](feed-video-swipe-qa/RESULTS.json),
+[native Testergebnisse](feed-video-swipe-qa/native-result.log).
+Nicht gemessen: Latenz/FPS auf einem echten Gerät; persönliche iCloud-Mediathek nicht getestet.
+Die 120s-Verzögerung betrifft ausschließlich den QA-Player; Originalbilder und System-PhotosPicker
+werden dadurch in Release-/TestFlight-Builds nicht verändert.
+Dieser neue Fix ist noch nicht in TestFlight Build 13 enthalten; kein weiterer Upload wurde gestartet.
+
 ## Geräteprüfung mit der betroffenen Mediathek
 
 1. Mit Netzverbindung einen nur in iCloud verfügbaren Eintrag öffnen: lokale Vorschau darf sofort erscheinen,

@@ -1,0 +1,365 @@
+Command line invocation:
+    /Applications/Xcode_26.6.app/Contents/Developer/usr/bin/xcodebuild -project PhotoMaid.xcodeproj -scheme PhotoMaid -destination id=1A931556-7569-452B-9276-C82E5224F9D5 -derivedDataPath /Users/runner/work/_temp/PhotoMaidDerived -resultBundlePath /Users/runner/work/_temp/game-visual/expanded-window.xcresult -parallel-testing-enabled NO -maximum-concurrent-test-simulator-destinations 1 -test-timeouts-enabled YES -default-test-execution-time-allowance 300 -maximum-test-execution-time-allowance 300 "-only-testing:PhotoMaidUITests/PhotoGameVisualTests/test70UnavailableVideosCanBePassed" "-only-testing:PhotoMaidUITests/PhotoGameVisualTests/test80VideoPlaysWithoutPoster" "-only-testing:PhotoMaidUITests/PhotoGameVisualTests/test85VideoPosterAllowsDecisionsBeforePlayback" "-only-testing:PhotoMaidUITests/PhotoGameVisualTests/test90LoadingPhotoCanBePassed" -skipPackagePluginValidation -skipMacroValidation TARGETED_DEVICE_FAMILY=1,2 CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_REQUIRED=YES test-without-building
+
+Build settings from command line:
+    CODE_SIGN_IDENTITY = -
+    CODE_SIGNING_ALLOWED = YES
+    CODE_SIGNING_REQUIRED = YES
+    TARGETED_DEVICE_FAMILY = 1,2
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  GoogleUserMessagingPlatform: https://github.com/googleads/swift-package-manager-google-user-messaging-platform.git @ 3.1.0
+  swift-asn1: https://github.com/apple/swift-asn1.git @ 1.7.3
+  GoogleMobileAds: https://github.com/googleads/swift-package-manager-google-mobile-ads.git @ 13.9.0
+  swift-crypto: https://github.com/apple/swift-crypto.git @ 4.5.2
+  PhotoMaidCore: /Users/runner/work/PhotoMaid/PhotoMaid
+
+Writing result bundle at path:
+	/Users/runner/work/_temp/game-visual/expanded-window.xcresult
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS Simulator, arch:arm64, id:1A931556-7569-452B-9276-C82E5224F9D5, OS:26.4.1, name:iPad mini (A17 Pro) }
+{ platform:iOS Simulator, arch:x86_64, id:1A931556-7569-452B-9276-C82E5224F9D5, OS:26.4.1, name:iPad mini (A17 Pro) }
+2026-10-17 00:41:41.114472+0000 PhotoMaidUITests-Runner[44315:126493] [Default] Running tests...
+2026-10-17 00:41:41.260308+0000 PhotoMaidUITests-Runner[44315:126493] [UIKit App Config] Update the Info.plist: Launch screens will soon be required.
+2026-10-17 00:41:41.269589+0000 PhotoMaidUITests-Runner[44315:126917] [General] Failed to send CA Event for app launch measurements for ca_event_type: 0 event_name: com.apple.app_launch_measurement.FirstFramePresentationMetric
+2026-10-17 00:41:41.313390+0000 PhotoMaidUITests-Runner[44315:126911] [General] Failed to send CA Event for app launch measurements for ca_event_type: 1 event_name: com.apple.app_launch_measurement.ExtendedLaunchMetrics
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-17 00:41:50.460.
+Test Suite 'PhotoMaidUITests.xctest' started at 2026-10-17 00:41:50.461.
+Test Suite 'PhotoGameVisualTests' started at 2026-10-17 00:41:50.461.
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test70UnavailableVideosCanBePassed]' started.
+    t =     0.01s Start Test at 2026-10-17 00:41:50.472
+    t =     1.12s Set Up
+    t =     1.14s     Setting device orientation to Portrait
+    t =     1.19s         Device orientation changed to Portrait
+    t =     1.30s         Wait for com.apple.DocumentManager.DockFolderViewService to idle
+    t =     1.48s         Wait for com.apple.springboard to idle
+objc[44315]: Class UIAccessibilityLoaderWebShared is implemented in both /Library/Developer/CoreSimulator/Volumes/iOS_23E254a/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.4.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebCore.axbundle/WebCore (0x1083f4310) and /Library/Developer/CoreSimulator/Volumes/iOS_23E254a/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.4.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebKit.axbundle/WebKit (0x108f24398). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+    t =     1.69s Open com.mrdevn4ever.photomaid
+2026-10-17 00:41:54.750 xcodebuild[42805:122806] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-17 00:41:54.750 xcodebuild[42805:122806] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     1.69s     Launch com.mrdevn4ever.photomaid
+    t =    10.77s         Setting up automation session
+    t =    13.60s         Wait for com.mrdevn4ever.photomaid to idle
+    t =    18.82s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    18.96s Checking existence of `Alert (First Match)`
+    t =    19.06s Checking existence of `"store.capture.feed-failures" Window`
+    t =    21.31s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    21.40s Find the "Allow Full Access" Button
+    t =    21.74s Added attachment named 'games_feed-failures_photos_permission_0'
+    t =    21.74s Requesting snapshot of accessibility hierarchy for app with pid 29723
+    t =    22.17s Requesting snapshot of accessibility hierarchy for app with pid 29723
+    t =    22.25s Added attachment named 'games_feed-failures_photos_permission_0.hierarchy'
+    t =    22.25s Tap "Allow Full Access" Button
+    t =    22.25s     Wait for com.apple.springboard to idle
+    t =    22.26s     Find the "Allow Full Access" Button
+    t =    22.31s     Check for interrupting elements affecting "Allow Full Access" Button
+    t =    22.39s     Synthesize event
+    t =    22.83s     Wait for com.apple.springboard to idle
+    t =    23.15s Checking existence of `Alert (First Match)`
+    t =    24.22s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    24.29s Checking existence of `Alert (First Match)`
+    t =    24.37s Checking existence of `"store.capture.feed-failures" Window`
+    t =    25.01s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    25.03s Checking existence of `Alert (First Match)`
+    t =    25.09s Checking existence of `"store.capture.feed-failures" Window`
+    t =    27.39s Waiting 20.0s for "feed.preview.failed" Any to exist
+    t =    28.44s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.preview.failed" Any`
+    t =    28.44s         Checking existence of `"feed.preview.failed" Any`
+    t =    28.90s Get number of matches for: Elements matching predicate '"feed.preview.failed" IN identifiers'
+    t =    29.08s Find the "feed.position" Any
+    t =    29.27s Find the "feed.dock" Button
+    t =    29.64s Added attachment named 'feed_unavailable_video_01'
+    t =    29.64s Requesting snapshot of accessibility hierarchy for app with pid 44803
+    t =    30.36s Requesting snapshot of accessibility hierarchy for app with pid 44803
+    t =    30.48s Added attachment named 'feed_unavailable_video_01.hierarchy'
+    t =    30.48s Swipe left "feed.stage" Any
+    t =    30.48s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    30.49s     Find the "feed.stage" Any
+    t =    30.56s     Check for interrupting elements affecting "feed.stage" Other
+    t =    30.66s         Wait for com.apple.springboard to idle
+    t =    30.71s     Synthesize event
+    t =    31.17s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    31.17s Find the "feed.dock" Button
+    t =    31.26s Find the "feed.position" StaticText
+    t =    31.31s Tap "feed.retryPreview" Button
+    t =    31.31s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    31.32s     Find the "feed.retryPreview" Button
+    t =    31.41s     Check for interrupting elements affecting "feed.retryPreview" Button
+    t =    31.49s         Wait for com.apple.springboard to idle
+    t =    31.53s     Synthesize event
+    t =    31.90s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    32.31s Waiting 10.0s for "feed.preview.failed" Any to exist
+    t =    33.35s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.preview.failed" Any`
+    t =    33.35s         Checking existence of `"feed.preview.failed" Any`
+    t =    34.79s Tap "feed.skipUnavailable" Button
+    t =    34.79s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    34.79s     Find the "feed.skipUnavailable" Button
+    t =    34.99s     Check for interrupting elements affecting "feed.skipUnavailable" Button
+    t =    35.07s         Wait for com.apple.springboard to idle
+    t =    35.10s     Synthesize event
+    t =    35.45s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    36.93s Checking `Expect predicate `label CONTAINS "2 von 3"` for object "feed.position" Any`
+    t =    36.93s     Find the "feed.position" Any
+    t =    38.07s Waiting 10.0s for "feed.preview.failed" Any to exist
+    t =    39.08s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.preview.failed" Any`
+    t =    39.08s         Checking existence of `"feed.preview.failed" Any`
+    t =    39.85s Added attachment named 'feed_unavailable_video_02'
+    t =    39.86s Requesting snapshot of accessibility hierarchy for app with pid 44803
+    t =    40.41s Requesting snapshot of accessibility hierarchy for app with pid 44803
+    t =    40.53s Added attachment named 'feed_unavailable_video_02.hierarchy'
+    t =    40.53s Tap "feed.skipUnavailable" Button
+    t =    40.53s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    40.53s     Find the "feed.skipUnavailable" Button
+    t =    40.66s     Check for interrupting elements affecting "feed.skipUnavailable" Button
+    t =    40.74s         Wait for com.apple.springboard to idle
+    t =    40.80s     Synthesize event
+    t =    41.15s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    42.66s Checking `Expect predicate `label CONTAINS "3 von 3"` for object "feed.position" Any`
+    t =    42.66s     Find the "feed.position" Any
+    t =    42.82s Find the "feed.dock" Button
+    t =    42.95s Checking existence of `"feed.preview.failed" Any`
+    t =    44.03s Added attachment named 'feed_after_two_unavailable_videos'
+    t =    44.03s Requesting snapshot of accessibility hierarchy for app with pid 44803
+    t =    44.47s Requesting snapshot of accessibility hierarchy for app with pid 44803
+    t =    44.59s Added attachment named 'feed_after_two_unavailable_videos.hierarchy'
+    t =    44.59s Terminate com.mrdevn4ever.photomaid:44803
+    t =    46.65s Open com.mrdevn4ever.photomaid
+    t =    46.65s     Launch com.mrdevn4ever.photomaid
+2026-10-17 00:42:37.127 xcodebuild[42805:122806] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-17 00:42:37.127 xcodebuild[42805:122806] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    48.21s         Setting up automation session
+    t =    50.63s         Wait for com.mrdevn4ever.photomaid to idle
+    t =    53.92s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    53.96s Checking existence of `Alert (First Match)`
+    t =    54.14s Checking existence of `"store.capture.feed-failures" Window`
+    t =    57.02s Checking `Expect predicate `label CONTAINS "1 von 1"` for object "feed.position" Any`
+    t =    57.02s     Find the "feed.position" Any
+    t =    57.15s Checking existence of `"feed.preview.failed" Any`
+    t =    57.86s Find the "feed.dock" Button
+    t =    58.19s Added attachment named 'feed_skips_survive_relaunch'
+    t =    58.19s Requesting snapshot of accessibility hierarchy for app with pid 45729
+    t =    58.66s Requesting snapshot of accessibility hierarchy for app with pid 45729
+    t =    58.77s Added attachment named 'feed_skips_survive_relaunch.hierarchy'
+    t =    58.77s Tap "feed.close" Button
+    t =    58.77s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    58.77s     Find the "feed.close" Button
+    t =    58.86s     Check for interrupting elements affecting "feed.close" Button
+    t =    58.95s         Wait for com.apple.springboard to idle
+    t =    59.00s     Synthesize event
+    t =    59.36s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    60.60s Waiting 8.0s for "hub.retrySkipped" Button to exist
+    t =    61.66s     Checking `Expect predicate `existsNoRetry == 1` for object "hub.retrySkipped" Button`
+    t =    61.66s         Checking existence of `"hub.retrySkipped" Button`
+    t =    62.01s Added attachment named 'feed_skipped_retry_in_cleanup'
+    t =    62.01s Requesting snapshot of accessibility hierarchy for app with pid 45729
+    t =    62.65s Requesting snapshot of accessibility hierarchy for app with pid 45729
+    t =    62.80s Added attachment named 'feed_skipped_retry_in_cleanup.hierarchy'
+    t =    62.81s Tap "hub.retrySkipped" Button
+    t =    62.81s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    62.82s     Find the "hub.retrySkipped" Button
+    t =    62.93s     Check for interrupting elements affecting "hub.retrySkipped" Button
+    t =    63.06s         Wait for com.apple.springboard to idle
+    t =    63.14s     Synthesize event
+    t =    63.47s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    65.79s Checking `Expect predicate `label CONTAINS "1 von 2"` for object "feed.position" Any`
+    t =    65.80s     Find the "feed.position" Any
+    t =    65.88s Waiting 15.0s for "feed.preview.failed" Any to exist
+    t =    66.90s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.preview.failed" Any`
+    t =    66.90s         Checking existence of `"feed.preview.failed" Any`
+    t =    67.43s Added attachment named 'feed_explicit_retry_skipped_videos'
+    t =    67.43s Requesting snapshot of accessibility hierarchy for app with pid 45729
+    t =    67.92s Requesting snapshot of accessibility hierarchy for app with pid 45729
+    t =    68.02s Added attachment named 'feed_explicit_retry_skipped_videos.hierarchy'
+    t =    68.02s Tear Down
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test70UnavailableVideosCanBePassed]' passed (68.482 seconds).
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test80VideoPlaysWithoutPoster]' started.
+    t =     0.00s Start Test at 2026-10-17 00:42:58.952
+    t =     0.09s Set Up
+    t =     0.10s     Setting device orientation to Portrait
+    t =     0.11s         Wait for com.mrdevn4ever.photomaid to idle
+    t =     0.11s         Wait for com.apple.springboard to idle
+    t =     0.12s Open com.mrdevn4ever.photomaid
+    t =     0.12s     Launch com.mrdevn4ever.photomaid
+    t =     0.12s         Terminate com.mrdevn4ever.photomaid:45729
+2026-10-17 00:43:02.082 xcodebuild[42805:122806] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-17 00:43:02.082 xcodebuild[42805:122806] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     4.15s         Setting up automation session
+    t =     6.53s         Wait for com.mrdevn4ever.photomaid to idle
+    t =     9.77s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =     9.92s Checking existence of `Alert (First Match)`
+    t =    10.11s Checking existence of `"store.capture.feed-posterless" Window`
+    t =    12.54s Waiting 30.0s for "feed.video.ready" Any to exist
+    t =    13.59s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.video.ready" Any`
+    t =    13.59s         Checking existence of `"feed.video.ready" Any`
+    t =    14.68s Checking existence of `"feed.preview.failed" Any`
+    t =    15.20s Added attachment named 'feed_video_without_poster_plays'
+    t =    15.21s Requesting snapshot of accessibility hierarchy for app with pid 46255
+    t =    15.52s Requesting snapshot of accessibility hierarchy for app with pid 46255
+    t =    15.62s Added attachment named 'feed_video_without_poster_plays.hierarchy'
+    t =    15.62s Swipe up "feed.stage" Any
+    t =    15.62s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    15.70s     Find the "feed.stage" Any
+    t =    16.61s     Check for interrupting elements affecting "feed.stage" Other
+    t =    16.74s         Wait for com.apple.springboard to idle
+    t =    16.97s     Synthesize event
+    t =    17.60s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    18.67s Checking `Expect predicate `label CONTAINS "2 of 2"` for object "feed.position" Any`
+    t =    18.67s     Find the "feed.position" Any
+    t =    18.83s Checking existence of `"feed.video.ready" Any`
+    t =    21.24s Added attachment named 'feed_after_video_without_poster'
+    t =    21.25s Requesting snapshot of accessibility hierarchy for app with pid 46255
+    t =    21.57s Requesting snapshot of accessibility hierarchy for app with pid 46255
+    t =    21.69s Added attachment named 'feed_after_video_without_poster.hierarchy'
+    t =    21.69s Tear Down
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test80VideoPlaysWithoutPoster]' passed (21.959 seconds).
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test85VideoPosterAllowsDecisionsBeforePlayback]' started.
+    t =     0.00s Start Test at 2026-10-17 00:43:20.911
+    t =     0.04s Set Up
+    t =     0.04s     Setting device orientation to Portrait
+    t =     0.04s         Wait for com.mrdevn4ever.photomaid to idle
+    t =     0.05s         Wait for com.apple.springboard to idle
+    t =     0.05s Open com.mrdevn4ever.photomaid
+    t =     0.05s     Launch com.mrdevn4ever.photomaid
+    t =     0.05s         Terminate com.mrdevn4ever.photomaid:46255
+2026-10-17 00:43:22.999 xcodebuild[42805:122806] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-17 00:43:22.999 xcodebuild[42805:122806] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     3.41s         Setting up automation session
+    t =     6.28s         Wait for com.mrdevn4ever.photomaid to idle
+    t =     9.48s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =     9.57s Checking existence of `Alert (First Match)`
+    t =     9.66s Checking existence of `"store.capture.feed-video-posters" Window`
+    t =    12.41s Checking `Expect predicate `label CONTAINS "1 of 4"` for object "feed.position" Any`
+    t =    12.41s     Find the "feed.position" Any
+    t =    12.75s Find the "feed.dock" Button
+    t =    12.83s Swipe up "feed.stage" Any
+    t =    12.83s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    12.84s     Find the "feed.stage" Any
+    t =    13.44s     Check for interrupting elements affecting "feed.stage" Other
+    t =    13.53s         Wait for com.apple.springboard to idle
+    t =    13.69s     Synthesize event
+    t =    14.28s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    15.31s Checking `Expect predicate `label CONTAINS "2 of 4"` for object "feed.position" Any`
+    t =    15.31s     Find the "feed.position" Any
+    t =    15.90s Waiting 10.0s for "feed.video.poster" Any to exist
+    t =    16.96s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.video.poster" Any`
+    t =    16.96s         Checking existence of `"feed.video.poster" Any`
+    t =    18.16s Checking existence of `"feed.video.ready" Any`
+    t =    19.56s Added attachment named 'feed_video_poster_before_playback'
+    t =    19.56s Requesting snapshot of accessibility hierarchy for app with pid 46828
+    t =    20.05s Requesting snapshot of accessibility hierarchy for app with pid 46828
+    t =    20.17s Added attachment named 'feed_video_poster_before_playback.hierarchy'
+    t =    20.17s Swipe left "feed.stage" Other
+    t =    20.17s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    20.18s     Find the "feed.stage" Other
+    t =    20.43s     Check for interrupting elements affecting "feed.stage" Other
+    t =    20.62s         Wait for com.apple.springboard to idle
+    t =    20.78s     Synthesize event
+    t =    21.39s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    22.45s Checking `Expect predicate `label CONTAINS "3 of 4"` for object "feed.position" Any`
+    t =    22.45s     Find the "feed.position" Any
+    t =    22.54s Find the "feed.dock" Button
+    t =    22.61s Waiting 10.0s for "feed.video.poster" Any to exist
+    t =    23.66s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.video.poster" Any`
+    t =    23.67s         Checking existence of `"feed.video.poster" Any`
+    t =    23.88s Checking existence of `"feed.video.ready" Any`
+    t =    24.66s Swipe up "feed.stage" Other
+    t =    24.66s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    24.66s     Find the "feed.stage" Other
+    t =    24.77s     Check for interrupting elements affecting "feed.stage" Other
+    t =    24.86s         Wait for com.apple.springboard to idle
+    t =    24.94s     Synthesize event
+    t =    25.49s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    26.71s Checking `Expect predicate `label CONTAINS "4 of 4"` for object "feed.position" Any`
+    t =    26.71s     Find the "feed.position" Any
+    t =    26.81s Find the "feed.dock" Button
+    t =    26.90s Swipe down "feed.stage" Other
+    t =    26.90s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    26.91s     Find the "feed.stage" Other
+    t =    26.98s     Check for interrupting elements affecting "feed.stage" Other
+    t =    27.10s         Wait for com.apple.springboard to idle
+    t =    27.18s     Synthesize event
+    t =    27.70s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    28.75s Checking `Expect predicate `label CONTAINS "3 of 4"` for object "feed.position" Any`
+    t =    28.75s     Find the "feed.position" Any
+    t =    28.92s Waiting 5.0s for "feed.video.poster" Any to exist
+    t =    29.96s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.video.poster" Any`
+    t =    29.96s         Checking existence of `"feed.video.poster" Any`
+    t =    30.25s Checking existence of `"feed.video.ready" Any`
+    t =    31.06s Swipe right "feed.stage" Other
+    t =    31.06s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    31.07s     Find the "feed.stage" Other
+    t =    31.28s     Check for interrupting elements affecting "feed.stage" Other
+    t =    31.61s         Wait for com.apple.springboard to idle
+    t =    31.79s     Synthesize event
+    t =    32.87s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    33.92s Checking `Expect predicate `label CONTAINS "4 of 4"` for object "feed.position" Any`
+    t =    33.92s     Find the "feed.position" Any
+    t =    34.05s Find the "feed.dock" Button
+    t =    34.43s Added attachment named 'feed_video_posters_three_decisions_without_playback'
+    t =    34.43s Requesting snapshot of accessibility hierarchy for app with pid 46828
+    t =    34.78s Requesting snapshot of accessibility hierarchy for app with pid 46828
+    t =    34.87s Added attachment named 'feed_video_posters_three_decisions_without_playback.hierarchy'
+    t =    34.87s Tear Down
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test85VideoPosterAllowsDecisionsBeforePlayback]' passed (35.136 seconds).
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test90LoadingPhotoCanBePassed]' started.
+    t =     0.00s Start Test at 2026-10-17 00:43:56.047
+    t =     0.03s Set Up
+    t =     0.03s     Setting device orientation to Portrait
+    t =     0.04s         Wait for com.mrdevn4ever.photomaid to idle
+    t =     0.04s         Wait for com.apple.springboard to idle
+    t =     0.04s Open com.mrdevn4ever.photomaid
+    t =     0.05s     Launch com.mrdevn4ever.photomaid
+    t =     0.05s         Terminate com.mrdevn4ever.photomaid:46828
+2026-10-17 00:43:57.193 xcodebuild[42805:122806] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-17 00:43:57.193 xcodebuild[42805:122806] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     2.76s         Setting up automation session
+    t =     5.82s         Wait for com.mrdevn4ever.photomaid to idle
+    t =    10.79s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    10.91s Checking existence of `Alert (First Match)`
+    t =    11.12s Checking existence of `"store.capture.feed-slow" Window`
+    t =    12.50s Waiting 15.0s for "feed.preview.loading" Any to exist
+    t =    13.54s     Checking `Expect predicate `existsNoRetry == 1` for object "feed.preview.loading" Any`
+    t =    13.54s         Checking existence of `"feed.preview.loading" Any`
+    t =    13.90s Find the "feed.dock" Button
+    t =    14.36s Added attachment named 'feed_slow_download_skip_available'
+    t =    14.36s Requesting snapshot of accessibility hierarchy for app with pid 47741
+    t =    14.82s Requesting snapshot of accessibility hierarchy for app with pid 47741
+    t =    14.93s Added attachment named 'feed_slow_download_skip_available.hierarchy'
+    t =    14.93s Tap "feed.skipUnavailable" Button
+    t =    14.93s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    14.93s     Find the "feed.skipUnavailable" Button
+    t =    15.02s     Check for interrupting elements affecting "feed.skipUnavailable" Button
+    t =    15.08s         Wait for com.apple.springboard to idle
+    t =    15.13s     Synthesize event
+    t =    15.46s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    16.91s Checking `Expect predicate `label CONTAINS "2 of 2"` for object "feed.position" Any`
+    t =    16.91s     Find the "feed.position" Any
+    t =    16.97s Find the "feed.dock" Button
+    t =    17.04s Checking existence of `"feed.preview.failed" Any`
+    t =    17.42s Added attachment named 'feed_after_slow_download'
+    t =    17.42s Requesting snapshot of accessibility hierarchy for app with pid 47741
+    t =    17.90s Requesting snapshot of accessibility hierarchy for app with pid 47741
+    t =    17.99s Added attachment named 'feed_after_slow_download.hierarchy'
+    t =    18.00s Tear Down
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test90LoadingPhotoCanBePassed]' passed (18.256 seconds).
+Test Suite 'PhotoGameVisualTests' passed at 2026-10-17 00:44:14.303.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 143.832 (143.843) seconds
+Test Suite 'PhotoMaidUITests.xctest' passed at 2026-10-17 00:44:14.304.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 143.832 (143.843) seconds
+Test Suite 'Selected tests' passed at 2026-10-17 00:44:14.305.
+	 Executed 4 tests, with 0 failures (0 unexpected) in 143.832 (143.845) seconds
+2026-10-17 00:44:43.966 xcodebuild[42805:122806] [MT] IDETestOperationsObserverDebug: 193.621 elapsed -- Testing started completed.
+2026-10-17 00:44:43.967 xcodebuild[42805:122806] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-17 00:44:43.967 xcodebuild[42805:122806] [MT] IDETestOperationsObserverDebug: 193.621 sec, +193.621 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/_temp/game-visual/expanded-window.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

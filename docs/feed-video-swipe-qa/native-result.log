@@ -1,0 +1,14 @@
+Selected actual lines: run 38985804949, ios-build-report artifact 12083632474, source 440f7e5.
+	 Executed 13 tests, with 0 failures (0 unexpected) in 0.666 (0.676) seconds
+	 Executed 13 tests, with 0 failures (0 unexpected) in 0.666 (0.678) seconds
+◇ Suite FeedVideoPosterTests started.
+◇ Test preparedPosterRemainsReadyDuringPromotionResizeAndPlaybackLoading() started.
+✔ Test preparedPosterRemainsReadyDuringPromotionResizeAndPlaybackLoading() passed after 0.029 seconds.
+◇ Test consecutiveVideosCanBeKeptTrashedAndDeferredWithoutPreparingAPlayer() started.
+✔ Test consecutiveVideosCanBeKeptTrashedAndDeferredWithoutPreparingAPlayer() passed after 0.056 seconds.
+◇ Test aDiscardedVideoFrameDoesNotAuthorizeAnUnseenRevisitedVideo() started.
+✔ Test aDiscardedVideoFrameDoesNotAuthorizeAnUnseenRevisitedVideo() passed after 0.031 seconds.
+◇ Test posterStorageIsBoundedAndEvictedCallbacksCannotRestoreOldImages() started.
+✔ Test posterStorageIsBoundedAndEvictedCallbacksCannotRestoreOldImages() passed after 0.068 seconds.
+✔ Suite FeedVideoPosterTests passed after 0.186 seconds.
+✔ Test run with 49 tests in 8 suites passed after 4.385 seconds.

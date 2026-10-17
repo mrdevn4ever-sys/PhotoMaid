@@ -1,0 +1,53 @@
+[
+  {
+    "file": "iphone-decisions-without-playback.png",
+    "sha256": "13c6ac397288c53e983d104288268a5db84d34c2b3dacbd93b772e979f1bb010",
+    "source_commit": "440f7e523b659e70a7a6c676a0f6558f7efe54f3",
+    "run_id": 38985804949,
+    "artifact_id": 12083611351,
+    "test": "PhotoGameVisualTests/test85VideoPosterAllowsDecisionsBeforePlayback()",
+    "native_attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "24E049C8-1AEC-4A9D-95C6-C11145A59D62",
+      "deviceName": "iPhone 17",
+      "exportedFileName": "273C0720-49F4-4643-9158-EA68877F72BB.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "feed_video_posters_three_decisions_without_playback_0_CF20CAE7-0C26-4CBE-97F3-172E173C6229.png",
+      "timestamp": 1792197235.745
+    }
+  },
+  {
+    "file": "iphone-poster-while-player-loads.png",
+    "sha256": "9bfb0fe9faa2e9c1d0fe26c3f64449d4a8a348ffbf5bdf3aea0ab1562fcb56ec",
+    "source_commit": "440f7e523b659e70a7a6c676a0f6558f7efe54f3",
+    "run_id": 38985804949,
+    "artifact_id": 12083611351,
+    "test": "PhotoGameVisualTests/test85VideoPosterAllowsDecisionsBeforePlayback()",
+    "native_attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "24E049C8-1AEC-4A9D-95C6-C11145A59D62",
+      "deviceName": "iPhone 17",
+      "exportedFileName": "34FD3662-53C8-4293-91CA-E1B255110F69.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "feed_video_poster_before_playback_0_CEDF98E9-427D-4D1D-807C-2E54AF6D54C8.png",
+      "timestamp": 1792197226.074
+    }
+  },
+  {
+    "file": "expanded-poster-while-player-loads.png",
+    "sha256": "b21d788ada6ae597dfdec0b4a3fd65aa06a1807b602f19d05dd3206dd855b27e",
+    "source_commit": "440f7e523b659e70a7a6c676a0f6558f7efe54f3",
+    "run_id": 38985804949,
+    "artifact_id": 12083133724,
+    "test": "PhotoGameVisualTests/test85VideoPosterAllowsDecisionsBeforePlayback()",
+    "native_attachment": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1A931556-7569-452B-9276-C82E5224F9D5",
+      "deviceName": "iPad mini (A17 Pro)",
+      "exportedFileName": "7AEDC5A8-4E45-4A61-9DEF-99C143E173E9.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "feed_video_poster_before_playback_0_2B070832-2832-40C5-9E41-40C5842B4A0E.png",
+      "timestamp": 1792197820.472
+    }
+  }
+]

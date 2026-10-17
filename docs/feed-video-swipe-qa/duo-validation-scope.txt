@@ -1,0 +1,1 @@
+Expanded-window fallback is not fold/unfold verification. Native Duo requires Xcode/iOS 27.1 SDK and its device profile.

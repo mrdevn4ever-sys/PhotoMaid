@@ -1,8 +1,23 @@
 # Implementierungsstatus
 
-Stand: 16.10.2026 · Arbeitsbranch `feat/iphone-duo-games` · zuletzt von Apple verarbeitet: **Version 1.0, Build 13**.
-Upload um 23:41 UTC; Verarbeitung und interne Verteilung um 23:43 UTC bestätigt.
+Stand: 17.10.2026 · Arbeitsbranch `feat/iphone-duo-games` · zuletzt von Apple verarbeitet: **Version 1.0, Build 13**.
+Upload am 16.10.2026 um 23:41 UTC; Verarbeitung und interne Verteilung um 23:43 UTC bestätigt.
 [TestFlight-Lauf](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38981991475), Quellstand `cd1d40b`.
+
+## Video-Swipes ohne Player-Wartezeit (17.10.2026, noch nicht in TestFlight)
+
+Vorhandene Video-Standbilder halten die Wischfreigabe nun auch beim Kartenwechsel und Größenwechsel
+offen. Die tatsächlichen Poster liegen nur im begrenzten Feed-Fenster (maximal vier Medien) und
+werden beim erneuten Anzeigen sofort verwendet. Bei Videos ohne vorbereitete Vorschau folgt zuerst
+eine kleine lokale 600px-Anfrage, bevor Display-Qualität angefordert wird. Originalqualität und
+Player-Bereitschaft werden für eine Entscheidung anhand des sichtbaren Bilds nicht vorausgesetzt.
+Ungesehene Medien bleiben vor versehentlichen Entscheidungen geschützt.
+
+Quellstand `440f7e5`; [CI 38985804949](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38985804949).
+Core **461 PASS**, nativer iOS-Build und **62 Unit-Tests PASS**, iPhone-UI **4/4 PASS** und großes
+Ersatzfenster **4/4 PASS**, jeweils ohne Fehler oder Skip. Gesamter CI-Lauf erfolgreich.
+[Änderung, tatsächliche Ergebnisse und Screenshots](FEED_ICLOUD_RECOVERY.md).
+Der neueste verarbeitete TestFlight-Build bleibt 13; dieser anschließende Fix wurde nicht hochgeladen.
 
 ## SnakePhoto und Memory-Karten-Fix (Build 13)
 
