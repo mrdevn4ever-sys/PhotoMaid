@@ -2,8 +2,10 @@ import Foundation
 import Observation
 import PhotoMaidCore
 import SwiftUI
+import UIKit
 
 enum PreviewState: Equatable, Sendable { case loading, ready, failed }
+enum FeedPreviewResult { case poster(UIImage), videoFrame, unavailable }
 
 /// Kurze Bestätigung nach „Später“. Nur Anzeige; der Termin ist bereits gespeichert.
 struct LaterPill: Identifiable, Equatable {
@@ -47,6 +49,8 @@ final class FeedViewModel {
     @ObservationIgnored private(set) var machine = FeedGestureMachine()
     private(set) var assets: [String: MediaAsset] = [:]
     private(set) var previews: [ItemReference: PreviewState] = [:]
+    /// The same bounded window as previews. A cached poster stays visible while video playback prepares.
+    private(set) var posters: [ItemReference: UIImage] = [:]
     private(set) var retries: [ItemReference: Int] = [:]
     private(set) var isLoaded = false
     /// Versatz des aktuellen Mediums in pt (folgt dem Finger, fliegt beim Commit hinaus).
@@ -84,6 +88,18 @@ final class FeedViewModel {
         self.request = request
         self.app = app
     }
+
+    #if DEBUG
+    /// Native regression tests use an explicit queue without touching a user's PhotoKit library.
+    convenience init(testAssets: [MediaAsset], app: AppModel) {
+        self.init(request: FeedRequest(.items(testAssets.map(\.reference), titleKey: "feed_title_all")), app: app)
+        assets = Dictionary(uniqueKeysWithValues: testAssets.map { ($0.id, $0) })
+        session = FeedSession(items: testAssets.map(\.reference))
+        isLoaded = true
+        reduceMotion = true
+        refreshWindow()
+    }
+    #endif
 
     var current: ItemReference? { session.current }
     var currentAsset: MediaAsset? { current.flatMap { assets[$0.localIdentifier] } }
@@ -193,6 +209,7 @@ final class FeedViewModel {
         for a in fresh { assets[a.id] = a }
         let present = Set(fresh.map(\.id))
         for ref in refs where !present.contains(ref.localIdentifier) && previews[ref] != nil {
+            posters[ref] = nil
             previews[ref] = .failed
             session.markPreviewUnavailable(ref)
         }
@@ -289,12 +306,14 @@ final class FeedViewModel {
         refreshCurrentSeries()
         let window = Set(windowItems())
         for ref in previews.keys where !window.contains(ref) {
+            posters[ref] = nil
             previews[ref] = nil
             session.markPreviewUnavailable(ref)
         }
         for ref in window where previews[ref] == nil { previews[ref] = .loading }
-        if let current, currentAsset?.isVideo == true, app.player.itemID != current.localIdentifier {
-            // A previous visit's decoded video frame does not make this visit ready.
+        if let current, currentAsset?.isVideo == true, posters[current] == nil,
+           app.player.itemID != current.localIdentifier {
+            // Only a discarded player frame needs revalidation; a retained poster is already displayable.
             previews[current] = .loading
             session.markPreviewUnavailable(current)
         }
@@ -316,19 +335,30 @@ final class FeedViewModel {
 
     func retryPreview(_ ref: ItemReference) {
         guard previews[ref] != nil else { return }
+        posters[ref] = nil
         previews[ref] = .loading
+        session.markPreviewUnavailable(ref)
         retries[ref, default: 0] += 1
     }
 
     func previewLoading(_ ref: ItemReference, hasVisibleContent: Bool) {
         guard previews[ref] != nil else { return }
-        previews[ref] = hasVisibleContent ? .ready : .loading
-        if hasVisibleContent { session.markPreviewReady(ref) } else { session.markPreviewUnavailable(ref) }
+        let visible = hasVisibleContent || posters[ref] != nil
+        previews[ref] = visible ? .ready : .loading
+        if visible { session.markPreviewReady(ref) } else { session.markPreviewUnavailable(ref) }
     }
 
     /// Rückmeldung des Bildladers. Nur übernehmen, wenn das Medium noch im Fenster ist.
-    func previewResult(_ ref: ItemReference, ok: Bool) {
+    func previewResult(_ ref: ItemReference, result: FeedPreviewResult) {
         guard previews[ref] != nil else { return }
+        let ok: Bool
+        switch result {
+        case .poster(let image): posters[ref] = image; ok = true
+        case .videoFrame:
+            guard ref == current, app.player.itemID == ref.localIdentifier else { return }
+            ok = true
+        case .unavailable: ok = posters[ref] != nil
+        }
         previews[ref] = ok ? .ready : .failed
         if ok { session.markPreviewReady(ref) } else { session.markPreviewUnavailable(ref) }
     }

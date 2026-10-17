@@ -112,6 +112,11 @@ enum StoreCapture {
             let items = Array(photos.prefix(2))
             app.previews.slowForTesting = Set(items.prefix(1).map(\.id))
             app.open(FeedRequest(.items(items.map(\.reference), titleKey: "feed_title_all"))); return
+        case "feed-video-posters":
+            let videos = Array(app.visibleMedia.filter(\.isVideo).prefix(2))
+            let items = Array(photos.prefix(1)) + videos + Array(photos.dropFirst().prefix(1))
+            app.previews.slowVideosForTesting = Set(videos.map(\.id))
+            app.open(FeedRequest(.items(items.map(\.reference), titleKey: "feed_title_all"))); return
         case "feed": app.open(FeedRequest(.allMedia)); return
         case "viewer":
             if !ids.isEmpty { app.fullScreen = .viewer(ids: ids, index: 0) }; return

@@ -20,6 +20,7 @@ if [ -n "${PM_GAME_CASE:-}" ]; then
   if [ "$PM_GAME_CASE" = feed ]; then
     test_targets=("-only-testing:$test_target/test70UnavailableVideosCanBePassed"
                   "-only-testing:$test_target/test80VideoPlaysWithoutPoster"
+                  "-only-testing:$test_target/test85VideoPosterAllowsDecisionsBeforePlayback"
                   "-only-testing:$test_target/test90LoadingPhotoCanBePassed")
   else
     [[ "$PM_GAME_CASE" =~ ^test[0-9]{2}[A-Za-z0-9]+$ ]]

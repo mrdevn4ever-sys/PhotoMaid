@@ -425,9 +425,10 @@ struct FeedView: View {
         if let asset = model.assets[ref.localIdentifier] {
             let top: Bool = ref == model.current
             FeedMediaPage(asset: asset, isTop: top, state: model.previews[ref] ?? .loading,
+                          cachedPoster: model.posters[ref],
                           retry: model.retries[ref] ?? 0, intentColor: top ? intentColor : nil,
                           onLoading: { model.previewLoading(ref, hasVisibleContent: $0) },
-                          onResult: { ok in model.previewResult(ref, ok: ok) },
+                          onResult: { result in model.previewResult(ref, result: result) },
                           onRetry: { model.retryPreview(ref) },
                           onSkip: { model.skipWithoutDecision(ref) })
                 .scaleEffect(top ? zoom : underScale(size))

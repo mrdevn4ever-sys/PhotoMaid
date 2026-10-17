@@ -187,6 +187,7 @@ final class PreviewPipeline {
     var unavailableForTesting: Set<String> = []
     var posterlessForTesting: Set<String> = []
     var slowForTesting: Set<String> = []
+    var slowVideosForTesting: Set<String> = []
     #endif
 
     /// Alles Vorgehaltene vergessen (z. B. nachdem Medien in den Tresor gelegt wurden).
@@ -245,6 +246,10 @@ final class PreviewPipeline {
     func playerItem(for assetID: String, allowNetwork: Bool = true) async -> PlayerItemResult {
         #if QA_FIXTURES && targetEnvironment(simulator)
         if unavailableForTesting.contains(assetID) { return .failed }
+        if slowVideosForTesting.contains(assetID) {
+            // Leave the real local poster available while playback preparation is deliberately pending.
+            do { try await Task.sleep(for: .seconds(120)) } catch { return .failed }
+        }
         #endif
         let asset = await Task.detached(priority: .userInitiated) {
             PhotoLibraryService.phAsset(assetID).map(UncheckedBox.init)

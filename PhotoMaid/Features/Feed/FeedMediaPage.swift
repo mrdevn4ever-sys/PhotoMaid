@@ -11,14 +11,16 @@ struct FeedMediaPage: View {
     let asset: MediaAsset
     let isTop: Bool
     let state: PreviewState
+    let cachedPoster: UIImage?
     let retry: Int
     let intentColor: Color?
     let onLoading: (Bool) -> Void
-    let onResult: (Bool) -> Void
+    let onResult: (FeedPreviewResult) -> Void
     let onRetry: () -> Void
     let onSkip: () -> Void
 
     @State private var image: UIImage?
+    private var visibleImage: UIImage? { image ?? cachedPoster }
     @State private var gifData: Data?
     /// Volle Qualität kommt gerade aus iCloud (0…1); die schnelle Vorschau ist schon sichtbar.
     @State private var downloadProgress: Double?
@@ -43,7 +45,7 @@ struct FeedMediaPage: View {
                         .frame(width: geo.size.width, height: geo.size.height)
                         .allowsHitTesting(false)
                         .accessibilityHidden(true)
-                } else if let image {
+                } else if let image = visibleImage {
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFit()
@@ -55,14 +57,14 @@ struct FeedMediaPage: View {
                         guard isTop, app.player.itemID == asset.id, app.player.failedItemID != asset.id else { return }
                         videoReady = true
                         videoLoading = false
-                        onResult(true)
+                        onResult(.videoFrame)
                     }
                         .allowsHitTesting(false)
                         .accessibilityHidden(true)
                 }
                 if isTop {
                     switch state {
-                    case .loading where image == nil && !videoReady:
+                    case .loading where visibleImage == nil && !videoReady:
                         loadingView
                     case .failed:
                         failedView
@@ -70,10 +72,11 @@ struct FeedMediaPage: View {
                         EmptyView()
                     }
                 }
-                if isTop, image != nil { cloudBadge }
+                if isTop, visibleImage != nil { cloudBadge }
             }
             .accessibilityElement(children: .contain)
-            .accessibilityIdentifier(videoReady ? "feed.video.ready" : "feed.media")
+            .accessibilityIdentifier(videoReady ? "feed.video.ready" :
+                (asset.isVideo && visibleImage != nil ? "feed.video.poster" : "feed.media"))
             .accessibilityHidden(!isTop)
             .clipShape(.rect(cornerRadius: AppRadii.card))
             .overlay {
@@ -161,11 +164,11 @@ struct FeedMediaPage: View {
     /// automatisch die volle Qualität aus iCloud. Klappt das nicht, bleibt die Vorschau und unten rechts steht „!“.
     private func load(size: CGSize) async {
         let target = PreviewPipeline.targetSize(for: size, scale: scale)
-        onLoading(image != nil || videoReady)
+        onLoading(visibleImage != nil || (videoReady && app.player.itemID == asset.id))
         cloudFailed = false
         qualityFailed = false
         imageFinished = false
-        var shown = image != nil
+        var shown = visibleImage != nil
         defer { downloadProgress = nil }
         for await update in app.previews.progressiveImage(for: asset.id, targetSize: target, allowNetwork: isTop) {
             guard !Task.isCancelled else { return }
@@ -177,7 +180,8 @@ struct FeedMediaPage: View {
                 guard !Task.isCancelled else { return }
                 image = prepared
                 if isFinal { downloadProgress = nil }
-                if !shown { shown = true; onResult(true) }
+                shown = true
+                onResult(.poster(prepared))
             case .progress(let p):
                 // Fortschritt nur in sichtbaren Schritten (PhotoKit meldet sehr oft; jede Meldung zeichnet neu).
                 let value: Double? = p < 1 ? p : nil
@@ -197,7 +201,7 @@ struct FeedMediaPage: View {
             if case .image(let thumb) = fallback {
                 image = thumb
                 qualityFailed = cloudFailed
-                onResult(true)
+                onResult(.poster(thumb))
             }
         }
         imageFinished = true
@@ -205,9 +209,9 @@ struct FeedMediaPage: View {
     }
 
     private func reportUnavailableIfFinished() {
-        guard image == nil, !videoReady, imageFinished else { return }
+        guard visibleImage == nil, !videoReady, imageFinished else { return }
         // A missing video poster is not a failed video. Its first frame can make the card usable.
-        if !isTop || !asset.isVideo || videoFailed { onResult(false) }
+        if !isTop || !asset.isVideo || videoFailed { onResult(.unavailable) }
     }
 
     /// Start the visible video independently of its poster. Cancel/ignore results from a previous card.
@@ -220,7 +224,7 @@ struct FeedMediaPage: View {
         videoLoading = true
         videoFailed = false
         videoReady = false
-        onLoading(image != nil)
+        onLoading(visibleImage != nil)
         let requestID = app.player.beginLoading()
         let result = await app.previews.playerItem(for: asset.id)
         guard !Task.isCancelled else { return }

@@ -94,6 +94,37 @@ import XCTest
         checkpoint("feed_after_video_without_poster", app: app)
     }
 
+    func test85VideoPosterAllowsDecisionsBeforePlayback() {
+        launch("feed-video-posters")
+        let stage = app.descendants(matching: .any)["feed.stage"].firstMatch
+        let poster = app.descendants(matching: .any)["feed.video.poster"].firstMatch
+        let frame = app.descendants(matching: .any)["feed.video.ready"].firstMatch
+        waitForPosition("1 of 4")
+        let trash = app.buttons["feed.dock"].label
+        stage.swipeUp()
+        waitForPosition("2 of 4")
+        XCTAssertTrue(poster.waitForExistence(timeout: 10))
+        XCTAssertFalse(frame.exists, "Playback is still preparing; the real poster must suffice")
+        checkpoint("feed_video_poster_before_playback", app: app)
+        stage.swipeLeft()
+        waitForPosition("3 of 4")
+        XCTAssertNotEqual(app.buttons["feed.dock"].label, trash)
+        XCTAssertTrue(poster.waitForExistence(timeout: 10))
+        XCTAssertFalse(frame.exists)
+        stage.swipeUp()
+        waitForPosition("4 of 4")
+        let afterTrash = app.buttons["feed.dock"].label
+        // Return to the same video without a player frame. Its retained image must be usable again.
+        stage.swipeDown()
+        waitForPosition("3 of 4")
+        XCTAssertTrue(poster.waitForExistence(timeout: 5))
+        XCTAssertFalse(frame.exists)
+        stage.swipeRight()
+        waitForPosition("4 of 4")
+        XCTAssertEqual(app.buttons["feed.dock"].label, afterTrash)
+        checkpoint("feed_video_posters_three_decisions_without_playback", app: app)
+    }
+
     func test90LoadingPhotoCanBePassed() {
         launch("feed-slow")
         XCTAssertTrue(app.descendants(matching: .any)["feed.preview.loading"].firstMatch.waitForExistence(timeout: 15))
