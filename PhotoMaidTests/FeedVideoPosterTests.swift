@@ -34,7 +34,10 @@ import UIKit
         await decide(.later, in: model)
         #expect(model.current == items[3].reference && app.player.itemID == nil)
         let state = await app.ledger.snapshotState()
-        #expect(state.records.count == 3 && state.events.count == 3)
+        #expect(state.records.count == 3 && state.events.filter { $0.kind == .decision }.count == 3)
+        #expect(state.records[items[0].reference]?.disposition == .kept)
+        #expect(state.records[items[1].reference]?.disposition == .markedForCleanup)
+        #expect(state.records[items[2].reference]?.disposition == .later)
         // No decision for the unseen fourth card.
         model.perform(.keep)
         #expect(!model.isCommitting && model.current == items[3].reference)
