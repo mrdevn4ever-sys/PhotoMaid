@@ -170,6 +170,20 @@ struct FeedMediaPage: View {
         imageFinished = false
         var shown = visibleImage != nil
         defer { downloadProgress = nil }
+        if asset.isVideo, !shown {
+            // A small on-device poster can exist even when the display-sized image needs iCloud.
+            // Show it first; neither original quality nor playback readiness is needed to decide.
+            let poster = await app.previews.image(for: asset.id, targetSize: CGSize(width: 600, height: 600),
+                                                  allowNetwork: false)
+            guard !Task.isCancelled else { return }
+            if case .image(let thumb) = poster {
+                let prepared = await thumb.byPreparingForDisplay() ?? thumb
+                guard !Task.isCancelled else { return }
+                image = prepared
+                shown = true
+                onResult(.poster(prepared))
+            }
+        }
         for await update in app.previews.progressiveImage(for: asset.id, targetSize: target, allowNetwork: isTop) {
             guard !Task.isCancelled else { return }
             switch update {
