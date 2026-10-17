@@ -50,6 +50,9 @@ Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E19) – ni
 - **Anschließende ausdrückliche Freigabe (16.10.2026: „Testfloght build“):** aktuellen SnakePhoto-/Memory-Stand
   pushen, notwendige native CI-/Spieletests ausführen, Fehler beheben und als internen TestFlight-Build hochladen.
   Keine App-Store-Veröffentlichung oder externe Tester-Verteilung dadurch autorisiert.
+- **Erneute ausdrückliche Freigabe (17.10.2026: „Testflight“):** den bereits getesteten Video-Swipe-Fix
+  über den vorhandenen Workflow als internen TestFlight-Build hochladen und Apples Verarbeitung prüfen.
+  Keine App-Store-Veröffentlichung oder externe Tester-Verteilung dadurch autorisiert.
 
 ## Geschäftsregeln (aus dem Android-Quellcode)
 

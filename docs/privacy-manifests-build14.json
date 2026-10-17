@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "errors": [],
+  "manifests": [
+    {
+      "path": "/Users/runner/work/PhotoMaid/PhotoMaid/build/PhotoMaid.ipa!Payload/PhotoMaid.app/PrivacyInfo.xcprivacy",
+      "sha256": "8d7a025e6a1abe93418b01f822c2c2aa4a70f60248b6d2dd652d319b59bea584",
+      "tracking": true,
+      "domains": [
+        "googleads.g.doubleclick.net"
+      ],
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "path": "/Users/runner/work/PhotoMaid/PhotoMaid/build/PhotoMaid.ipa!Payload/PhotoMaid.app/Frameworks/GoogleMobileAds.framework/PrivacyInfo.xcprivacy",
+      "sha256": "69fb112582fc23fc06c635c961d262a3f7b4b5654d284787491de3000dadf9d2",
+      "tracking": null,
+      "domains": null,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "path": "/Users/runner/work/PhotoMaid/PhotoMaid/build/PhotoMaid.ipa!Payload/PhotoMaid.app/Frameworks/UserMessagingPlatform.framework/PrivacyInfo.xcprivacy",
+      "sha256": "45b7adb99fcd2d962a1c800fbfcc1325b57a7fa4165f416182323bb5ffe9c900",
+      "tracking": null,
+      "domains": null,
+      "errors": [],
+      "warnings": []
+    }
+  ]
+}

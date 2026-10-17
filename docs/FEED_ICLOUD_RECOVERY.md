@@ -98,7 +98,15 @@ kein realer Fold-/Unfold-Test. Das große Posterbild wurde ebenfalls visuell gep
 Nicht gemessen: Latenz/FPS auf einem echten Gerät; persönliche iCloud-Mediathek nicht getestet.
 Die 120s-Verzögerung betrifft ausschließlich den QA-Player; Originalbilder und System-PhotosPicker
 werden dadurch in Release-/TestFlight-Builds nicht verändert.
-Dieser neue Fix ist noch nicht in TestFlight Build 13 enthalten; kein weiterer Upload wurde gestartet.
+**In TestFlight: Version 1.0, Build 14.** Der ausdrücklich beauftragte Upload erfolgte am
+17.10.2026 um 03:57:25 UTC; Apple bestätigte die Verarbeitung um 04:00:33 UTC und die interne
+Verteilung um 04:00:34 UTC. [Erfolgreicher TestFlight-Lauf 39000279956](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39000279956),
+Upload-Quellstand `bd3d3e3dba4bbc55009908de4bdb7bf880da9e67` (gegenüber dem getesteten `440f7e5`
+ausschließlich Dokumentation und Prüfbelege geändert). Die bereits bestandenen Tests wurden im Upload
+nicht wiederholt; das signierte Release-Archiv wurde frisch gebaut. Alle drei Privacy-Manifeste der
+exportierten IPA bestanden ohne Fehler oder Manifest-Warnungen.
+[Unveränderter Privacy-Bericht mit SHA-256](privacy-manifests-build14.json) und
+[Original-Protokollauszug zur Apple-Verarbeitung und internen Verteilung](feed-video-swipe-qa/testflight-build14-success.log).
 
 ## Geräteprüfung mit der betroffenen Mediathek
 

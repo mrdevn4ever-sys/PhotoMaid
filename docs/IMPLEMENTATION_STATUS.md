@@ -1,10 +1,10 @@
 # Implementierungsstatus
 
-Stand: 17.10.2026 · Arbeitsbranch `feat/iphone-duo-games` · zuletzt von Apple verarbeitet: **Version 1.0, Build 13**.
-Upload am 16.10.2026 um 23:41 UTC; Verarbeitung und interne Verteilung um 23:43 UTC bestätigt.
-[TestFlight-Lauf](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38981991475), Quellstand `cd1d40b`.
+Stand: 17.10.2026 · Arbeitsbranch `feat/iphone-duo-games` · zuletzt von Apple verarbeitet: **Version 1.0, Build 14**.
+Upload am 17.10.2026 um 03:57:25 UTC; Verarbeitung um 04:00:33 UTC und interne Verteilung um 04:00:34 UTC bestätigt.
+[TestFlight-Lauf](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39000279956), Quellstand `bd3d3e3`.
 
-## Video-Swipes ohne Player-Wartezeit (17.10.2026, noch nicht in TestFlight)
+## Video-Swipes ohne Player-Wartezeit (Build 14)
 
 Vorhandene Video-Standbilder halten die Wischfreigabe nun auch beim Kartenwechsel und Größenwechsel
 offen. Die tatsächlichen Poster liegen nur im begrenzten Feed-Fenster (maximal vier Medien) und
@@ -17,7 +17,11 @@ Quellstand `440f7e5`; [CI 38985804949](https://github.com/mrdevn4ever-sys/PhotoM
 Core **461 PASS**, nativer iOS-Build und **62 Unit-Tests PASS**, iPhone-UI **4/4 PASS** und großes
 Ersatzfenster **4/4 PASS**, jeweils ohne Fehler oder Skip. Gesamter CI-Lauf erfolgreich.
 [Änderung, tatsächliche Ergebnisse und Screenshots](FEED_ICLOUD_RECOVERY.md).
-Der neueste verarbeitete TestFlight-Build bleibt 13; dieser anschließende Fix wurde nicht hochgeladen.
+**In TestFlight Build 14 enthalten.** Upload-Quellstand `bd3d3e3` ändert gegenüber dem getesteten
+`440f7e5` ausschließlich Dokumentation und Belege. Neues signiertes Release-Archiv erfolgreich erstellt;
+alle drei Privacy-Manifeste der exportierten IPA bestanden. Apple-Verarbeitung und interne Verteilung
+sind bestätigt. [Unveränderter Privacy-Bericht](privacy-manifests-build14.json),
+[Original-Erfolgsprotokoll](feed-video-swipe-qa/testflight-build14-success.log).
 
 ## SnakePhoto und Memory-Karten-Fix (Build 13)
 

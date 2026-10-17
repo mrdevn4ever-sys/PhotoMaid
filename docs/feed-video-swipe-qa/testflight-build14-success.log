@@ -1,0 +1,18 @@
+Source commit: bd3d3e3dba4bbc55009908de4bdb7bf880da9e67
+Workflow: https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39000279956
+Job: 117301568737
+Artifact: testflight-report / 12088953026
+Selected original log lines; ANSI color sequences removed.
+
+2026-10-17T03:56:16.5948300Z [03:56:16]: Successfully exported and signed the ipa file:
+2026-10-17T03:56:16.8240710Z [03:56:16]: ▸ PASS: /Users/runner/work/PhotoMaid/PhotoMaid/build/PhotoMaid.ipa!Payload/PhotoMaid.app/PrivacyInfo.xcprivacy tracking=True domains=['googleads.g.doubleclick.net']
+2026-10-17T03:56:16.8244480Z [03:56:16]: ▸ PASS: /Users/runner/work/PhotoMaid/PhotoMaid/build/PhotoMaid.ipa!Payload/PhotoMaid.app/Frameworks/GoogleMobileAds.framework/PrivacyInfo.xcprivacy tracking=None domains=None
+2026-10-17T03:56:16.8248620Z [03:56:16]: ▸ PASS: /Users/runner/work/PhotoMaid/PhotoMaid/build/PhotoMaid.ipa!Payload/PhotoMaid.app/Frameworks/UserMessagingPlatform.framework/PrivacyInfo.xcprivacy tracking=None domains=None
+2026-10-17T03:56:16.8251180Z [03:56:16]: ▸ Privacy tracking check: PASS (3 manifests)
+2026-10-17T03:57:25.6125820Z [03:57:25]: Successfully uploaded package to App Store Connect. It might take a few minutes until it's visible online.
+2026-10-17T03:57:25.6131100Z [03:57:25]: Successfully uploaded the new binary to App Store Connect
+2026-10-17T03:57:25.6291780Z [03:57:25]: Waiting for processing on... app_id: 6821165617, app_version: 1.0, build_version: 14, platform: IOS
+2026-10-17T04:00:33.0878140Z [04:00:33]: Successfully finished processing the build 1.0 - 14 for IOS
+2026-10-17T04:00:34.1440740Z [04:00:34]: Successfully set the changelog for build
+2026-10-17T04:00:34.1474770Z [04:00:34]: Distributing new build to testers: 1.0 - 14
+2026-10-17T04:00:34.1477550Z [04:00:34]: Successfully distributed build to Internal testers 🚀

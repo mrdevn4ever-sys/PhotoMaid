@@ -59,9 +59,43 @@
     }
   },
   "testflight": {
-    "uploaded_for_this_fix": false,
-    "latest_processed_build": 13,
-    "note": "Build 13 precedes this fix."
+    "uploaded_for_this_fix": true,
+    "status": "PASS",
+    "version": "1.0",
+    "build": 14,
+    "latest_processed_build": 14,
+    "source_commit": "bd3d3e3dba4bbc55009908de4bdb7bf880da9e67",
+    "tested_product_commit": "440f7e523b659e70a7a6c676a0f6558f7efe54f3",
+    "difference_from_tested_commit": "Documentation and test evidence only; production source unchanged.",
+    "run_id": 39000279956,
+    "run_url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39000279956",
+    "workflow_conclusion": "success",
+    "job_id": 117301568737,
+    "artifact_id": 12088953026,
+    "release_archive": "PASS",
+    "uploaded_at_utc": "2026-10-17T03:57:25Z",
+    "apple_processing": "PASS",
+    "processed_at_utc": "2026-10-17T04:00:33Z",
+    "internal_distribution": "PASS",
+    "distributed_at_utc": "2026-10-17T04:00:34Z",
+    "external_distribution": false,
+    "changelog": "PASS",
+    "privacy_manifests": {
+      "status": "PASS",
+      "count": 3,
+      "errors": 0,
+      "warnings": 0,
+      "report": "../privacy-manifests-build14.json",
+      "report_sha256": "5c67ec3f47daa85d84e0eb80cc97c52f05debc6313584dfb9ca587a4bb585119"
+    },
+    "unit_tests_repeated_during_upload": false,
+    "original_success_lines": "testflight-build14-success.log",
+    "fastlane_step_results": "testflight-build14-fastlane.xml",
+    "report_parser_note": "Generic ci-report.md reports UNBEKANNT for the archive-only gym log; ARCHIVE SUCCEEDED, successful export, Fastlane XML, Apple processing and internal distribution are independently verified.",
+    "release_warnings": [
+      "Existing VideoComposer.swift:408 AVMutableVideoComposition deprecation in iOS 26.",
+      "AppIntents metadata extraction skipped because no AppIntents.framework dependency is present."
+    ]
   },
   "limits": {
     "personal_icloud_library": "NOT RUN",
