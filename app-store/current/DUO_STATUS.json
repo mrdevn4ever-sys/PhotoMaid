@@ -1,5 +1,5 @@
 {
-  "status": "GENUINE SDK AND DEVICE AVAILABLE; CAPTURE READINESS TEST CORRECTED; NATIVE VALIDATION IN PROGRESS",
+  "status": "BLOCKED: NATIVE SNAKE WIDTH CHECK FAILED; CAPTURE USED OUTER DISPLAY",
   "xcode": "Xcode27.1 / 27A9275",
   "sdk": "27.1",
   "runtime": "iOS27.1 / 24A94425",
@@ -24,7 +24,7 @@
   "approved_duo_app_assets": 0,
   "apple_specification": "https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/",
   "apple_requirement": "Duo screenshots required starting April2027 for apps using SDK27.1+",
-  "remaining_requirement": "Actual native PhotoMaid inner-display UI capture using matching Device Hub and SDK27.1, followed by strict original-dimension/blank-frame checks and visual review.",
+  "remaining_requirement": "Reliable actual inner-display app capture at2007x2853 and passing full-window Snake geometry; complete native case and strict visual/source audit before any Duo locale approval.",
   "historical_probes": [
     {
       "run_id": 39115140440,
@@ -101,5 +101,19 @@
   "native_default_display_retry_proof": "validation/duo-default-display-readiness-failure/review.json",
   "native_semantic_readiness_run_id": 39140177705,
   "native_semantic_readiness_source_commit": "18e0986059bdefd7b1ac49fb9e8711f3fde106f0",
-  "native_semantic_readiness_status": "NATIVE BUILD IN PROGRESS"
+  "native_semantic_readiness_status": "FAIL: SNAKE BOARD WIDTH374PT BELOW REQUIRED454PT; NATIVE PNGS1398X2034 OUTER",
+  "native_semantic_readiness_build": "PASS",
+  "native_semantic_readiness_build_job_id": 117712814302,
+  "native_semantic_readiness_capture_job_id": 117713511081,
+  "native_semantic_readiness_capture_tests": {
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0
+  },
+  "native_semantic_readiness_ui_cases_executed": 1,
+  "native_semantic_readiness_actual_case_seconds": 353.415,
+  "native_semantic_readiness_content_gate": "PASS: actual Today Photos content reached; independent55-photo inventory; real Memory three matched pairs visible",
+  "native_semantic_readiness_proof": "validation/duo-snake-width-and-display-failure/review.json",
+  "native_semantic_readiness_source_artifact_id": 12142810383,
+  "final_duo_result": "BLOCKED; no additional Duo locales dispatched after failed pilot. Normal32 iPhone profiles remain fully approved."
 }

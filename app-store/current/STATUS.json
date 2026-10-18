@@ -23,7 +23,7 @@
   ],
   "pilot_run": 39118013344,
   "iphone_assets": "PASS",
-  "duo_assets": "NO APPROVED DUO STORE ASSETS; CONCRETE SIDEBAR READINESS TEST FIX UNDER NATIVE VALIDATION39140177705",
+  "duo_assets": "BLOCKED: native pilot39140177705 failed Snake full-width geometry; all24 native PNGs used outer display. Zero approved Duo assets; proof in DUO_STATUS.json.",
   "app_store_connect_assets_upload": "NOT RUN",
   "app_store_release": "NOT RUN",
   "native_test_policy": "Only real passed capture results with no failed or skipped tests; screenshots and actual video frames reviewed before PASS.",
@@ -271,5 +271,7 @@
     "zip_integrity": "PASS",
     "total_bytes": 1679798366,
     "git_policy": "ZIPs generated locally; audited native single files are committed. No duplicate multi-gigabyte ZIP payload in Git."
-  }
+  },
+  "duo_native_semantic_readiness_run": 39140177705,
+  "final_result": "PASS for all16 locales/two normal iPhone formats; Duo BLOCKED separately. No App Store Connect or TestFlight upload in this Store task."
 }

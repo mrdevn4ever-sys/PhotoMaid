@@ -1,0 +1,13 @@
+{
+  "device_class": "iphone-duo",
+  "name": "iPhone Duo",
+  "device_type": "com.apple.CoreSimulator.SimDeviceType.iPhone-Duo",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-27-1",
+  "os_version": "27.1",
+  "sdk": "27.1",
+  "udid": "3866D611-B123-43BB-9C32-3930CF009929",
+  "actual_duo": true,
+  "capture_display": "primary-1",
+  "display_role": "inner",
+  "display_power_policy": "Unmodified native defaults; no display power override or geometry change"
+}

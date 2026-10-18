@@ -1,16 +1,16 @@
 # Aktualisierung der Store-Assets – 18.10.2026
 
-**Normale iPhones: PASS. Duo: IN PROGRESS.** Maßgeblich sind die tatsächlich vorhandenen Dateien und
+**Normale iPhones: PASS. Duo: BLOCKED.** Maßgeblich sind die tatsächlich vorhandenen Dateien und
 [Audit-Ergebnisse](../app-store/current/audit.json), nicht die Zahl gestarteter Jobs.
 [Aktuelle Sprachübersicht](../app-store/current/README.md).
 
 ## Umfang
 
-Alle 16 App-Sprachen erhalten aktuelle Aufnahmen des bestehenden Projekts mit Foto-Snake
+Für alle 16 App-Sprachen liegen aktuelle Aufnahmen des bestehenden Projekts mit Foto-Snake
 und Memory. Die ursprüngliche Sammlung vom 15.10.2026 bleibt unverändert als
 [Seitenarchiv](../app-store/INDEX.md) erreichbar. Kein neues Repository und keine neue App.
 
-Ziel für die normalen iPhones: **320 ausgewählte Screenshots**, je zehn pro Sprache
+Fertig für die normalen iPhones: **320 ausgewählte Screenshots**, je zehn pro Sprache
 und Format, **48 ausgewählte Vorschauen** und **16 Tresor-Alternativen**. Apple erlaubt
 höchstens drei Vorschauen gleichzeitig je Sprache/Geräteformat. Die zusätzliche
 Tresor-Vorschau ist eine Alternative und kein viertes gleichzeitig vorgesehenes Video.
@@ -98,7 +98,7 @@ Italienisch/mittel [39124085765](https://github.com/mrdevn4ever-sys/PhotoMaid/ac
 Status der neuen nativen Validierung: **PASS**. Spanisch/groß: fünf native Fälle,
 Italienisch/mittel: ein nativer Fall, jeweils 0 Fehler/Skips; beide neuen Heute-Bilder
 zeigen den tatsächlichen Foto-Schnellzugriff mit 55 Medien. Beide Serien sind vollständig
-visuell geprüft. Fehlende Serien laufen auf dem korrigierten Stand `cf9c42e`:
+visuell geprüft. Die weiteren Serien wurden auf dem korrigierten Stand `cf9c42e` aufgenommen:
 [groß, zehn Sprachen](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39125897166),
 [mittel, elf Sprachen](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39125899164).
 
@@ -121,73 +121,49 @@ ist bestanden. Die erste fehlgeschlagene Serie bleibt ausgeschlossen.
 
 ## Duo
 
-Der offizielle Runner `xcode-27` liefert Xcode 27.1, Build 27A9275, und den genuinen
-Gerätetyp `com.apple.CoreSimulator.SimDeviceType.iPhone-Duo`. Die offizielle iOS-27.1-Runtime
-wurde erfolgreich installiert. Der [native Prüf-Lauf 39124764082](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39124764082)
-hat das echte Gerät gebootet und beide Displays gemeldet: außen 1398 × 2034, innen
-2007 × 2853. Sein unverändertes Diagnosebild war vollständig schwarz und wurde
-visuell abgelehnt. Es ist kein akzeptiertes App- oder Store-Bild.
+**BLOCKED; keine freigegebenen Duo-Store-Assets.** Der echte Runner `xcode-27`
+liefert Xcode 27.1 / 27A9275, den genuinen Typ
+`com.apple.CoreSimulator.SimDeviceType.iPhone-Duo` und die installierte iOS-27.1-Runtime.
+Beide nativen Displays sind nachgewiesen: außen 1398 × 2034 und innen 2007 × 2853.
+Der passende Device Hub liegt tatsächlich unter
+`/Applications/Xcode_27.1.app/Contents/Applications/DeviceHub.app`.
 
-Der erste tatsächliche [PhotoMaid-Duo-App-Pilot 39126669768](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39126669768)
-verwendet den nativen SDK-27.1-Build und das echte Innendisplay. Die dokumentierte
-Simulator-Displaysteuerung schaltet dafür das äußere Display aus und das innere an;
-keine Größenänderung oder Ersatzgeräte. Die Aufnahme muss zusätzlich einen vollständigen
-nativen UI-Test, die Original-Prüfsummen, 2007 × 2853 Pixel und die visuelle Kontrolle
-bestehen. Vollständig einfarbige/leere Frames weist der Audit zurück.
-[Aktueller Duo-Status](../app-store/current/DUO_STATUS.json).
+Der letzte [native Pilot 39140177705](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39140177705)
+auf Quellstand `18e0986` besteht SDK-27.1-Build, Gerätevorbereitung und App-Installation.
+Die vorherige Bereitschaftsprüfung war an eine untere Tab-Leiste gebunden, obwohl die
+produktive App `sidebarAdaptable` verwendet. Der Test wartet jetzt auf den tatsächlichen
+Heute-Foto-Schnellzugriff. Diese Korrektur erreicht den echten Inhalt und die unabhängig
+inventarisierte 55-Foto-Mediathek; keine Berechtigung oder Zahl wird simuliert.
 
-Der native SDK-27.1-App-Build des Duo-Piloten ist **PASS** (Job `117673139925`).
-Der erste Aufnahmeversuch scheiterte vor dem UI-Test: LaunchServices konnte `open -a Simulator`
-nicht auflösen. Der echte Duo-Simulator war bereits gebootet. Jetzt wird `Simulator.app`
-über den vollständigen Pfad der ausgewählten Xcode-Version gestartet;
-[Wiederholung 39128651889](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39128651889).
-Auch der zweite Versuch scheiterte vor dem App-Test: Der vollständige klassische
-`Simulator.app`-Pfad fehlt tatsächlich auf diesem Runner (`NSCocoaErrorDomain 260`).
-[Unveränderter Fehlernachweis](../app-store/current/validation/duo-second-app-attempt.json).
+Der tatsächlich ausgeführte UI-Fall dauert **353,415 Sekunden** und scheitert später
+an der Snake-Breitenprüfung: **374 Punkte Spielfeldbreite**, bei **466 Punkten App-Breite**
+und mindestens **454 geforderten Punkten**. Native Zusammenfassung: **0 PASS, 1 FAIL,
+0 SKIP**. Die 24 bis dahin erzeugten PNGs haben außerdem **1398 × 2034 Pixel** und stammen
+somit vom Außendisplay; sie erfüllen das vorgesehene Innendisplayformat nicht.
+`XCUIScreen.main.screenshot()` hat keinen gültigen inneren Bildsatz geliefert.
 
-Die anschließende reine Pfadprüfung [39132957505](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39132957505)
-findet stattdessen die echte `Contents/Applications/DeviceHub.app` aus Xcode 27.1,
-mit Bundle-ID `com.apple.dt.Devices` und vorhandenem Programm. Auch Apples
-[öffentliche Duo-Anleitung](https://developer.apple.com/iphone-duo/prepare/) nennt Device Hub.
-Der Workflow öffnet nun dieses vorhandene Programm; die konkrete UDID bleibt
-bei simctl und XCTest eindeutig ausgewählt.
-[App-Pilot 39133181324](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39133181324)
-öffnet Device Hub erfolgreich und bestätigt beide echten Display-Power-Operationen
-(Screen 1 aus, Screen 3 an). Beide Boots und das bewachte Leeren der Wegwerf-Mediathek
-bestehen; danach endet das zehnminütige Gesamtlimit der Vorbereitung noch vor
-der App-Installation. [Unveränderte Display-/Gerätedaten und genauer Befund](../app-store/current/validation/duo-devicehub-preparation-timeout/review.json).
-Die Wiederholung entfernt den ersten unnötigen GUI-Start vor dem bewachten Leeren
-und erlaubt ausschließlich der Duo-Vorbereitung 20 Minuten. Native Abnahme, echte
-55 Fotos, unveränderte Dimensionen und Leerbild-Ablehnung bleiben gleich:
-[Lauf 39134787534](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39134787534).
-Die Vorbereitung und App-Installation dieses Versuchs sind **PASS**. Der
-Testläufer kann danach nicht starten: `NSPOSIXErrorDomain 64 / Host is down`.
-Xcode vermutet einen System-Shell-Absturz; ein unabhängiger Crashbericht wurde
-nicht exportiert. Die anschließende Diagnosesammlung endet nach 600 Sekunden.
-Der native Ergebnisbericht zeigt 0 PASS, 1 Runner-Fehler, 0 SKIP; kein
-PhotoMaid-UI-Fall wurde ausgeführt und kein Store-Bild erzeugt.
-[Unveränderte Ergebnisse und Startfehler](../app-store/current/validation/duo-test-runner-launch-failure/review.json).
+Heute, Memory und Snake-Einrichtung sowie das unverändert dekodierte letzte
+Snake-Diagnosebild wurden tatsächlich angesehen. Memory zeigt drei durch echte Tipps
+gefundene Fotopaare. Die Diagnosebilder sind ausdrücklich **EXCLUDE** und gehören weder
+zur Upload-Auswahl noch zu den Sprachpaketen. Die vollständigen unveränderten Quellen
+bleiben im nativen Artefakt `12142810383`; dessen 213.064.318 Bytes, SHA-256 und ZIP-Integrität
+sind verifiziert. [Originale Ergebnisse, Bilder und genauer Befund](../app-store/current/validation/duo-snake-width-and-display-failure/review.json).
 
-Der anschließende Pilot [39137466424](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39137466424)
-behält die nativen Display-Power-Standards bei und lässt den bisher erfolglosen
-optionalen Apple-Skill-Export weg. Ob einer dieser zusätzlichen Vorgänge den
-Startfehler verursacht hat, ist nicht nachgewiesen. Keine Geometrieänderung
-und keine Lockerung der Bild-/Testabnahme.
-Dieser Lauf erreicht den tatsächlichen UI-Fall, scheitert jedoch nach 99,723 Sekunden
-an `waitForPhotoAccess()`. Dessen bisherige Bedingung verlangt ausschließlich eine
-untere Tab-Leiste; die produktive App verwendet `sidebarAdaptable`. Diese konkrete
-Testannahme wurde durch den vorhandenen tatsächlichen Heute-Foto-Schnellzugriff
-ersetzt. Der folgende unabhängige Nachweis der 55 Fotos bleibt bestehen.
-Die unveränderte Diagnoseaufnahme (1398 × 2034, Außendisplay) zeigt Einführung und
-später schwarze Frames; sie beweist keine gültige Aufnahme des Innendisplays.
-[Abgelehnter Versuch und Befund](../app-store/current/validation/duo-default-display-readiness-failure/review.json).
-[Native Validierung der Testkorrektur 39140177705](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39140177705).
-Keine produktive App-Funktion oder Berechtigung wurde geändert.
-Bisher sind **keine Duo-App-Aufnahmen freigegeben**. Native UI-Ergebnisse,
-äußere App-Aufnahmen, Duo-Vorschauformate, physische Faltabnahme und Hardware-FPS-Messung
-sind damit noch nicht nachgewiesen. Der statische Apple-Skill-Export wird nach zuvor
-begrenzten CLI-Zeitüberschreitungen mit geöffneter Xcode-Oberfläche erneut versucht.
-Dabei wird kein KI-/Modellaufruf ausgelöst.
+Die genaue Ursache von Fenster-/Displayzustand und kleinerer gemessener Spielfeldbreite
+ist damit noch nicht etabliert. Der tatsächliche Audio-Main-Thread-Warnhinweis steht
+unverändert im Ergebnisbericht; eine Ursache für diesen Fehlschlag ist daraus nicht
+nachgewiesen. Es gibt keine bestätigte App-Absturzursache, keine physische Faltabnahme
+und keine Hardware-FPS-Messung. Kein iPad-Ersatz, keine künstliche Fenstergröße,
+keine Skalierung und keine gelockerten Abnahmekriterien.
+
+Die weiteren 15 Duo-Sprachläufe wurden nach diesem fehlgeschlagenen Pilot **nicht gestartet**.
+Vor einer Duo-Freigabe sind eine zuverlässige echte Innendisplay-Aufnahme und eine bestandene
+Snake-Geometrieprüfung mit anschließend vollständigem nativen Fall und Sichtprüfung nötig.
+Alle vorherigen nativen Fehlschläge bleiben mit Originalnachweisen getrennt erhalten:
+[Duo-Status und Versuchshistorie](../app-store/current/DUO_STATUS.json),
+[Aufnahmeläufe](../app-store/current/CAPTURE_ATTEMPTS.json).
+Der optionale statische Apple-Skill-Export wurde nach Zeitüberschreitungen aus dem Ablauf
+entfernt; kein exportierter Skill wurde gelesen oder angewendet.
 
 ## Reproduzieren
 

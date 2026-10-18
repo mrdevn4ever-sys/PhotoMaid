@@ -1,0 +1,157 @@
+{
+  "jobs": [
+    {
+      "completed_at": "2026-10-18T15:25:26Z",
+      "conclusion": "success",
+      "id": 117712814302,
+      "name": "app-store-refresh / Aktuellen Simulator-Build kompilieren",
+      "started_at": "2026-10-18T15:22:27Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completed_at": "2026-10-18T15:22:29Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "started_at": "2026-10-18T15:22:28Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-10-18T15:22:31Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "started_at": "2026-10-18T15:22:29Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-10-18T15:25:17Z",
+          "conclusion": "success",
+          "name": "Native App und Aufnahmetests kompilieren",
+          "started_at": "2026-10-18T15:22:31Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-10-18T15:25:21Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v4",
+          "started_at": "2026-10-18T15:25:17Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-10-18T15:25:21Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "started_at": "2026-10-18T15:25:21Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-10-18T15:25:22Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "started_at": "2026-10-18T15:25:21Z",
+          "status": "completed"
+        }
+      ]
+    },
+    {
+      "completed_at": "2026-10-18T16:00:57Z",
+      "conclusion": "failure",
+      "id": 117713511081,
+      "name": "app-store-refresh / Aktuell – en – iphone-duo",
+      "started_at": "2026-10-18T15:25:36Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completed_at": "2026-10-18T15:25:39Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "started_at": "2026-10-18T15:25:37Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-10-18T15:25:44Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "started_at": "2026-10-18T15:25:39Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-10-18T15:29:08Z",
+          "conclusion": "success",
+          "name": "Xcode und Aufnahme-Werkzeuge",
+          "started_at": "2026-10-18T15:25:44Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-10-18T15:38:02Z",
+          "conclusion": "success",
+          "name": "Passenden echten Simulator erstellen",
+          "started_at": "2026-10-18T15:29:08Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-10-18T15:38:10Z",
+          "conclusion": "success",
+          "name": "Run actions/download-artifact@v4",
+          "started_at": "2026-10-18T15:38:02Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-10-18T15:38:55Z",
+          "conclusion": "success",
+          "name": "Gemeinsam geprüften Build installieren",
+          "started_at": "2026-10-18T15:38:10Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-10-18T16:00:19Z",
+          "conclusion": "failure",
+          "name": "Aktuelle Oberfläche und wirkliche Spielabläufe aufnehmen",
+          "started_at": "2026-10-18T15:38:55Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-10-18T16:00:36Z",
+          "conclusion": "success",
+          "name": "Native Quellen vor jedem Export sichern",
+          "started_at": "2026-10-18T16:00:19Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-10-18T16:00:36Z",
+          "conclusion": "skipped",
+          "name": "Native Bilder und drei Store-Vorschauen mit Tresor-Alternative exportieren",
+          "started_at": "2026-10-18T16:00:36Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-10-18T16:00:36Z",
+          "conclusion": "success",
+          "name": "Run actions/upload-artifact@v4",
+          "started_at": "2026-10-18T16:00:36Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-10-18T16:00:47Z",
+          "conclusion": "success",
+          "name": "Ausschließlich diesen Wegwerf-Simulator entfernen",
+          "started_at": "2026-10-18T16:00:36Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-10-18T16:00:51Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "started_at": "2026-10-18T16:00:47Z",
+          "status": "completed"
+        },
+        {
+          "completed_at": "2026-10-18T16:00:55Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "started_at": "2026-10-18T16:00:51Z",
+          "status": "completed"
+        }
+      ]
+    }
+  ]
+}

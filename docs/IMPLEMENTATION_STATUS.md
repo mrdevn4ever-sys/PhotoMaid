@@ -16,8 +16,10 @@ bestehen die Integritätsprüfung. Die interaktive Übersicht ist auf Desktop un
 
 [Echte Aufnahmen und Sprachübersicht](../app-store/current/README.md) ·
 [Abschlussstand, Wiederholungen und genaue Grenzen](STORE_ASSETS_UPDATE_20261018.md).
-Duo wird mit echtem SDK 27.1, echter Runtime und dem vorhandenen Device Hub separat geprüft;
-sein aktueller App-Pilot ist noch offen. Daraus folgt keine physische Falt- oder Geräte-FPS-Abnahme.
+**Duo: BLOCKED.** Der echte SDK-27.1-Build besteht; der native Pilot `39140177705` scheitert
+an Snake-Spielfeldbreite (374 statt mindestens 454 Punkte). Seine 24 PNGs stammen vom
+Außendisplay statt vom vorgesehenen Innendisplay. Keine Duo-Store-Datei ist freigegeben;
+Originale und genauer Befund stehen im Abschlussbericht. Keine physische Falt- oder Geräte-FPS-Abnahme.
 
 Die Aufnahmeprüfung hat zusätzlich einen Schutz gegen veraltete Heute-Zähler ergänzt (`6a86a77`).
 Dieser spätere Quellstand ist nicht im bereits verarbeiteten TestFlight-Build 14 enthalten.

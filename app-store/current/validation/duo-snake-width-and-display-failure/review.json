@@ -1,0 +1,106 @@
+{
+  "status": "BLOCKED; NO APPROVED DUO STORE ASSETS",
+  "run_id": 39140177705,
+  "job_id": 117713511081,
+  "source_commit": "18e0986059bdefd7b1ac49fb9e8711f3fde106f0",
+  "native_build": "PASS",
+  "simulator_preparation": "PASS",
+  "app_install": "PASS",
+  "ui_cases_executed": 1,
+  "native_case_duration_seconds": 353.415,
+  "native_summary": {
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0
+  },
+  "actual_failure": {
+    "file": "PhotoMaidUITests/AppStoreCaptureTests.swift",
+    "line": 545,
+    "assertion": "XCTAssertGreaterThanOrEqual(board.frame.width, app.frame.width - 12)",
+    "board_width_points": 374,
+    "app_width_points": 466,
+    "minimum_width_points": 454
+  },
+  "semantic_readiness_fix_result": "Actual Today Photos content was reached; independent PhotoKit inventory contains55 actual photos. This run progressed through genuine feed actions and Memory before Snake board-width assertion. It did not fail the photo-access gate.",
+  "display_result": {
+    "actual_native_png_count": 24,
+    "actual_native_pixel_size": [
+      1398,
+      2034
+    ],
+    "intended_inner_pixel_size": [
+      2007,
+      2853
+    ],
+    "screenshot_api": "XCUIScreen.main.screenshot()",
+    "genuine_device_type": "com.apple.CoreSimulator.SimDeviceType.iPhone-Duo",
+    "native_summary_device_id": "3866D611-B123-43BB-9C32-3930CF009929",
+    "matches_device_json_udid": true,
+    "native_summary_model_name": "iPhone",
+    "interpretation": "Native capture used outer display. Intended inner content and successful full-width game layout are unproven. No resizing, iPad substitution, native-summary rewrite or acceptance check relaxed."
+  },
+  "root_cause_limit": "The exact cause of the smaller measured board and wrong active capture display is not established. Do not claim Photos access failure, a confirmed PhotoMaid crash, or validated inner-display behavior. AVAudioSession main-thread warning is present in the raw summary; causality is not established.",
+  "artifact": {
+    "artifact_id": 12142810383,
+    "name": "store-current-en-iphone-duo-sources",
+    "bytes": 213064318,
+    "sha256": "31a68005ea278bfada13a20aee264b6bb62232b3dee275531297ff3a7b6a6b56",
+    "github_archive_digest_verification": "PASS",
+    "zip_crc_verification": "PASS"
+  },
+  "diagnostic_video": {
+    "native_source": "store-capture/diagnostics/8B6AF0F5-E6F4-4DA9-B4C0-BC95871AC84A.mp4",
+    "sha256": "20910e51f96a98097ba8aacb6b5a4647c7d30b2e4c6383026bc4e35455378bf9",
+    "bytes": 175627527,
+    "duration_seconds": 351.813333,
+    "pixel_size": [
+      1398,
+      2034
+    ],
+    "not_copied_to_store_selection": true
+  },
+  "actually_viewed_diagnostics": [
+    {
+      "file": "diagnostic-today.png",
+      "sha256": "aa371f6da6d8ed6a8c6d3e3e0e1dd48775403be0e4cf5ce39f940b79d9aaf9f6",
+      "native_original": "store-capture/screenshots/today.png",
+      "store_suitability": "EXCLUDE",
+      "actual_visual_review": "VIEWED; diagnostic only, failed native case and wrong intended display"
+    },
+    {
+      "file": "diagnostic-memory-play.png",
+      "sha256": "9182e901d0d48873f099b40f17c4a3fd421ede18112dc1370ece6f2084493cc1",
+      "native_original": "store-capture/screenshots/memory-play.png",
+      "store_suitability": "EXCLUDE",
+      "actual_visual_review": "VIEWED; diagnostic only, failed native case and wrong intended display"
+    },
+    {
+      "file": "diagnostic-snake-setup.png",
+      "sha256": "6c490d99d52e0f8c7f367e2ea94f0374f356aa85ac65fa0699244227435dd0b0",
+      "native_original": "store-capture/screenshots/snake-setup.png",
+      "store_suitability": "EXCLUDE",
+      "actual_visual_review": "VIEWED; diagnostic only, failed native case and wrong intended display"
+    },
+    {
+      "file": "diagnostic-snake-width-failure.png",
+      "sha256": "141fb66d68af54410a6cf036d5579510c979a2f3fba392df76da9e5de53e2081",
+      "source_video": "store-capture/diagnostics/8B6AF0F5-E6F4-4DA9-B4C0-BC95871AC84A.mp4",
+      "video_frame_seconds": 350.5,
+      "transform": "Decode original video frame; no resize, compositing or replacement",
+      "store_suitability": "EXCLUDE",
+      "actual_visual_review": "VIEWED: real ready overlay; no valid completed game screenshot"
+    }
+  ],
+  "all_other_native_pngs": "Hashes/dimensions preserved in native-screenshots.json. Not claimed as individually visually reviewed or approved. Full unchanged sources remain in native artifact.",
+  "unchanged_raw_evidence": {
+    "summary.json": "16931296ef96fb819af7f52e13b52e6ff590578b0152b20f032d8edda9919280",
+    "tests.json": "04c7b43adb87297f3a87025d1377c449cd6d84b861a480ef2d80a7526f4e63bf",
+    "tests.log": "124ec17e3ebc0e6311a9e6b7aff6f05341c4b85e18d29ca9d3653e88a48168b3",
+    "device.json": "12b1e1fb770b08d60b0f564f746dba5dbbdbeca2a178b1eb03770954c8919635",
+    "xcode.txt": "ee3fe26035862d2b9653c1a570be3eca4ee5be2815f0ce99ff2d8ffa3399e4c8",
+    "library.json": "3bd7455d10c40a957a1d5f54937f8adbeb077c458756ec611c8b8b271ee60935",
+    "test06CurrentStoreScreenshots-screens.json": "5bed687ed5777dcdf3d63cac72d7e33ba047d5913b36fce8e148eed5c6414969",
+    "duo-screens.txt": "63aa53f222dbd7c5436da73fb8571d374c716fa56299e25ebaa333110d5ee64e"
+  },
+  "next_requirement": "Reliable genuine inner-display app activation/capture and a passing full-window Snake geometry check; then complete native case, source integrity, nonblank/dimension validation and visual review before starting other Duo locales."
+}

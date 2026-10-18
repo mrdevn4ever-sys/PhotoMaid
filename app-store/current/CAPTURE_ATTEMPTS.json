@@ -194,7 +194,20 @@
   {
     "run_id": 39140177705,
     "source_commit": "18e0986059bdefd7b1ac49fb9e8711f3fde106f0",
-    "status": "NATIVE BUILD IN PROGRESS",
-    "scope": "Scoped genuine Duo pilot after correcting a concrete test-only navigation assumption. Wait for existing actual Today Photos control, then still require the independent55-photo inventory/count, native no-failure/no-skip result, exact inner dimensions and nonblank reviewed images. No production app behavior changed."
+    "status": "FAIL: SNAKE FULL-WIDTH CHECK; WRONG INTENDED CAPTURE DISPLAY",
+    "scope": "Scoped genuine Duo pilot after correcting a concrete test-only navigation assumption. Wait for existing actual Today Photos control, then still require the independent55-photo inventory/count, native no-failure/no-skip result, exact inner dimensions and nonblank reviewed images. No production app behavior changed.",
+    "native_build": "PASS",
+    "native_build_job_id": 117712814302,
+    "native_capture_job_id": 117713511081,
+    "native_capture_tests": {
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0
+    },
+    "app_ui_cases_executed": 1,
+    "native_case_duration_seconds": 353.415,
+    "semantic_readiness_gate": "PASS; reached actual Today and independently inventoried55-photo library",
+    "reason": "Actual test reached feed, studio, vault and real Memory. Snake board width374pt was below app width466pt minus12pt, required454pt. All24 native PNGs were1398x2034 outer instead of intended2007x2853 inner. Native case failed; no Duo assets approved or further Duo locales started. Exact display/layout cause not established.",
+    "proof": "validation/duo-snake-width-and-display-failure/review.json"
   }
 ]
