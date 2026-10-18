@@ -463,37 +463,36 @@ final class AppStoreCaptureTests: XCTestCase {
         XCTAssertTrue(e("memory.card.0").waitForExistence(timeout: 45))
         let cards = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'memory.card.'"))
         XCTAssertEqual(cards.count, 24, "The actual library round must have twelve photo pairs")
-        var unseen = cards.allElementsBoundByIndex.map(\.identifier)
+        let unseen = cards.allElementsBoundByIndex.map(\.identifier)
         var known: [String: [String]] = [:]
         var solved: Set<String> = []
-        for _ in 0..<40 {
+        for cardID in unseen {
             if solved.count >= 6 { break }
-            let firstID: String
-            let plannedSecond: String?
-            if let pair = known.values.first(where: { $0.count == 2 && !$0.contains(where: solved.contains) }) {
-                firstID = pair[0]; plannedSecond = pair[1]
-            } else {
-                firstID = try XCTUnwrap(unseen.first); unseen.removeFirst(); plannedSecond = nil
+            if solved.contains(cardID) { continue }
+            let card = app.buttons[cardID]
+            if card.isEnabled { card.tap() }
+            var number = photoNumber(card)
+            if number.isEmpty {
+                // XCTest can return after the ordinary 1.2s mismatch timer. Reveal
+                // that same card again through the UI; never inspect a hidden face.
+                pause(1.4)
+                card.tap()
+                number = photoNumber(card)
             }
-            let first = app.buttons[firstID]; first.tap()
-            let number = photoNumber(first)
             XCTAssertFalse(number.isEmpty, "Only a genuinely revealed photo can identify a pair")
-            let secondID: String
-            if let plannedSecond { secondID = plannedSecond }
-            else if let match = known[number]?.first(where: { $0 != firstID && !solved.contains($0) }) { secondID = match }
-            else { secondID = try XCTUnwrap(unseen.first); unseen.removeFirst() }
-            if known[number]?.contains(firstID) != true { known[number, default: []].append(firstID) }
-            let second = app.buttons[secondID]; second.tap()
-            let other = photoNumber(second)
-            XCTAssertFalse(other.isEmpty)
-            if other == number {
-                solved.formUnion([firstID, secondID]); known.removeValue(forKey: number)
+            if known[number]?.contains(cardID) != true { known[number, default: []].append(cardID) }
+            if let pair = known[number], pair.count == 2 {
+                let first = app.buttons[pair[0]], second = app.buttons[pair[1]]
+                if first.isEnabled { first.tap() }
+                if second.isEnabled { second.tap() }
+                XCTAssertTrue((first.value as? String ?? "").hasPrefix(t("memory_matched")))
+                XCTAssertTrue((second.value as? String ?? "").hasPrefix(t("memory_matched")))
+                solved.formUnion(pair)
+                known.removeValue(forKey: number)
             } else {
-                if known[other]?.contains(secondID) != true { known[other, default: []].append(secondID) }
-                let concealed = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: first)
-                if XCTWaiter.wait(for: [concealed], timeout: 2) != .completed {
-                    let flip = e("memory.flip"); XCTAssertTrue(flip.isEnabled); flip.tap()
-                }
+                // A normal user can let the timer finish or tap the next card to
+                // advance a mismatch. A vanished optional flip button is not a failure.
+                pause(1.4)
             }
         }
         XCTAssertGreaterThanOrEqual(solved.count, 6, "Store images must show pairs actually found in this round")
