@@ -65,6 +65,12 @@
     },
     {
       "locale": "es",
+      "device_class": "iphone-large",
+      "status": "PASS",
+      "native_passed_tests": 5
+    },
+    {
+      "locale": "es",
       "device_class": "iphone-medium",
       "status": "PASS",
       "native_passed_tests": 1
@@ -97,11 +103,11 @@
   "large_run": 39125897166,
   "medium_run": 39125899164,
   "duo_runtime_preparation_run": 39120476761,
-  "repository_delivery": "Direct workspace GitHub access recovered; reviewed profiles and source fix pushed through 6a86a77.",
-  "actual_selected_screenshots": 100,
-  "actual_selected_videos": 15,
-  "actual_vault_alternative_videos": 5,
-  "actual_native_passed_capture_cases": 30,
+  "repository_delivery": "Reviewed assets pushed through 208f4d0; remaining language batches and genuine Duo native app pilot running.",
+  "actual_selected_screenshots": 110,
+  "actual_selected_videos": 18,
+  "actual_vault_alternative_videos": 6,
+  "actual_native_passed_capture_cases": 35,
   "initial_batches": "Stopped remaining old-source jobs after two visually rejected Today count frames; accepted eight profiles retained. Corrected native pilots dispatched before remaining-language batches.",
   "today_counter_fix_commit": "6a86a77",
   "today_counter_fix_native_validation": {
@@ -111,7 +117,14 @@
     "failed_tests": 0,
     "skipped_tests": 0,
     "visual_photos_quick_count": 55,
-    "spanish_full_capture": "IN PROGRESS"
+    "spanish_full_capture": {
+      "status": "PASS",
+      "run_id": 39124084071,
+      "passed_tests": 5,
+      "failed_tests": 0,
+      "skipped_tests": 0,
+      "visual_photos_quick_count": 55
+    }
   },
   "today_counter_fix_pilot_runs": {
     "es_iphone_large": 39124084071,
@@ -121,5 +134,6 @@
   "previous_batches_stopped": [
     39120101094,
     39120189289
-  ]
+  ],
+  "duo_native_app_pilot_run": 39126669768
 }

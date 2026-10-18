@@ -26,13 +26,74 @@
   {
     "run_id": 39118013344,
     "source_commit": "4b7056674bc64e50d19bf505a48eb492e79f8745",
-    "status": "IN PROGRESS",
-    "scope": "en, both iPhone formats; corrected real UI waits and finite 30fps video export"
+    "status": "COMPLETED WITH PARTIAL FAILURE",
+    "scope": "en, both iPhone formats; corrected real UI waits and finite 30fps video export",
+    "accepted": "English medium: native1 PASS and visually accepted. English large: native4 PASS/1 FAIL; excluded and recaptured later.",
+    "reason": "Already-selected source picker was queried as an accessibility Other; capture helper now uses actual button/popUpButton controls and skips an already correct choice."
   },
   {
     "run_id": 39119694654,
     "source_commit": "968a08c3fcb93c89ca1f848811f6824885738817",
+    "status": "CANCELLED",
+    "scope": "All 15 remaining languages, both native iPhone formats; same real UI capture plus expanded system-banner wait",
+    "reason": "Superseded after the English large pilot exposed the source-picker automation issue; not used as accepted evidence."
+  },
+  {
+    "run_id": 39120101094,
+    "source_commit": "bbf8999a9e0f4da13d02f598e7402a4bb2a1bf1d",
+    "status": "CANCELLED REMAINING JOBS",
+    "scope": "16 large iPhone locales",
+    "accepted": "ar,de,en,fr,it: each native5 PASS plus visual review. Initial es Today frame rejected; corrected recapture accepted separately.",
+    "reason": "Visual review found inconsistent Today photo counts despite passing native cases. Completed accepted subsets retained; pending old-source jobs stopped."
+  },
+  {
+    "run_id": 39120189289,
+    "source_commit": "bbf8999a9e0f4da13d02f598e7402a4bb2a1bf1d",
+    "status": "CANCELLED REMAINING JOBS",
+    "scope": "15 medium iPhone locales",
+    "accepted": "de,es,fr: each native1 PASS plus visual review. Initial it Today frame rejected; corrected recapture accepted separately.",
+    "reason": "Remaining old-source jobs stopped after visual Today-counter rejection."
+  },
+  {
+    "run_id": 39124084071,
+    "source_commit": "6a86a77",
+    "status": "PASS",
+    "scope": "es large corrected Today counter",
+    "native_capture_tests": {
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0
+    },
+    "visual_review": "PASS; actual Photos quick count55, all screenshots and video sample sheets viewed; archived setup banner frame excluded."
+  },
+  {
+    "run_id": 39124085765,
+    "source_commit": "6a86a77",
+    "status": "PASS",
+    "scope": "it medium corrected Today counter",
+    "native_capture_tests": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    "visual_review": "PASS; actual Photos quick count55 and all screenshots viewed."
+  },
+  {
+    "run_id": 39125897166,
+    "source_commit": "cf9c42e71c3ad6162b86f1fcedfc749777999016",
     "status": "IN PROGRESS",
-    "scope": "All 15 remaining languages, both native iPhone formats; same real UI capture plus expanded system-banner wait"
+    "scope": "Missing10 large locales: ja,ko,nl,pl,pt-PT,ro,ru,tr,uk,zh-Hans"
+  },
+  {
+    "run_id": 39125899164,
+    "source_commit": "cf9c42e71c3ad6162b86f1fcedfc749777999016",
+    "status": "IN PROGRESS",
+    "scope": "Missing11 medium locales: ar,ja,ko,nl,pl,pt-PT,ro,ru,tr,uk,zh-Hans"
+  },
+  {
+    "run_id": 39126669768,
+    "source_commit": "208f4d036685f4b2096acd9d161b0d077b0f8b16",
+    "status": "QUEUED",
+    "scope": "First genuine Duo native PhotoMaid SDK27.1 build and inner-display app capture; en screenshot pilot only"
   }
 ]

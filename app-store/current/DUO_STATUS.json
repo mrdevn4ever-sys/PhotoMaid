@@ -42,5 +42,8 @@
       "run_id": 39124764082,
       "result": "Bounded tool calls; genuineDuo booted; native2007x2853 diagnostic frame was black and rejected"
     }
-  ]
+  ],
+  "native_app_pilot_run_id": 39126669768,
+  "native_app_pilot_source_commit": "208f4d036685f4b2096acd9d161b0d077b0f8b16",
+  "native_app_pilot_status": "QUEUED"
 }

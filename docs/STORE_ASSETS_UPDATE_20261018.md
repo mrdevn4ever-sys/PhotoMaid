@@ -27,8 +27,8 @@ H.264, 30 fps, AAC-Stereo mit 48 kHz und Stille, 15–30 Sekunden.
 
 ## Nachweise
 
-- Aktuell bestanden und visuell geprüft: **neun Geräte-/Sprachserien**, 90 ausgewählte
-  Screenshots, 15 ausgewählte Videos und fünf Tresor-Alternativen. Englisch/mittel
+- Aktuell bestanden und visuell geprüft: **elf Geräte-/Sprachserien**, 110 ausgewählte
+  Screenshots, 18 ausgewählte Videos und sechs Tresor-Alternativen. Englisch/mittel
   stammt aus dem erfolgreichen Pilot; jeder akzeptierte native Fall hat 0 FAIL und 0 SKIP. [Originaler Herkunftsbericht](../app-store/current/locales/en/iphone-medium/provenance.json),
   [Sichtprüfung](../app-store/current/locales/en/iphone-medium/review/manifest.json).
 - Große iPhones in allen 16 Sprachen: [Lauf 39120101094](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39120101094).
@@ -36,7 +36,7 @@ H.264, 30 fps, AAC-Stereo mit 48 kHz und Stille, 15–30 Sekunden.
   Beide verwenden Quellstand `bbf8999a9e0f4da13d02f598e7402a4bb2a1bf1d`.
   Die noch ausstehenden alten Jobs wurden nach zwei abgelehnten Heute-Bildern gestoppt;
   die bereits geprüften Serien bleiben erhalten.
-- Fünf lokale Prüfungen der Evidenzvalidierung bestehen. Ein isolierter synthetischer
+- Sieben lokale Prüfungen der Evidenzvalidierung bestehen. Ein isolierter synthetischer
   Codec-Test hat den Videoexport mit vollständiger Bild-/Tondekodierung geprüft:
   der Spieleclip hat exakt 27 Sekunden und 810 Bilder. Diese Testmuster gehören
   **nicht** zu den nativen App-Aufnahmen; [getrennter Format-Prüfbericht](../app-store/current/validation/local-export-format-smoke.json).
@@ -76,22 +76,35 @@ Keine Zahl wird in die App injiziert. Neuer Quellstand: `6a86a77`.
 
 Native Korrektur-Piloten: Spanisch/groß [39124084071](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39124084071),
 Italienisch/mittel [39124085765](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39124085765).
-Status der neuen nativen Validierung: **IN PROGRESS**; kein Erfolg vor Abschluss behauptet.
-Danach werden die fehlenden Sprachen auf dem korrigierten Stand fortgesetzt.
+Status der neuen nativen Validierung: **PASS**. Spanisch/groß: fünf native Fälle,
+Italienisch/mittel: ein nativer Fall, jeweils 0 Fehler/Skips; beide neuen Heute-Bilder
+zeigen den tatsächlichen Foto-Schnellzugriff mit 55 Medien. Beide Serien sind vollständig
+visuell geprüft. Fehlende Serien laufen auf dem korrigierten Stand `cf9c42e`:
+[groß, zehn Sprachen](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39125897166),
+[mittel, elf Sprachen](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39125899164).
 
 ## Duo
 
-Der bisherige `macos-26`-Runner hat Xcode 26.6 und keinen Duo-Simulator. Zusätzlich wurde der
-neu verfügbare offizielle GitHub-Runner `xcode-27` geprüft: Xcode 27.1, Build 27A9275,
-genuiner Gerätetyp `com.apple.CoreSimulator.SimDeviceType.iPhone-Duo`, Mindest-Runtime 27.1.
-Vorinstalliert ist dort bislang iOS 27.0. Die offizielle Runtime-Vorbereitung läuft separat:
-[39120476761](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39120476761).
+Der offizielle Runner `xcode-27` liefert Xcode 27.1, Build 27A9275, und den genuinen
+Gerätetyp `com.apple.CoreSimulator.SimDeviceType.iPhone-Duo`. Die offizielle iOS-27.1-Runtime
+wurde erfolgreich installiert. Der [native Prüf-Lauf 39124764082](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39124764082)
+hat das echte Gerät gebootet und beide Displays gemeldet: außen 1398 × 2034, innen
+2007 × 2853. Sein unverändertes Diagnosebild war vollständig schwarz und wurde
+visuell abgelehnt. Es ist kein akzeptiertes App- oder Store-Bild.
+
+Der erste tatsächliche [PhotoMaid-Duo-App-Pilot 39126669768](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39126669768)
+verwendet den nativen SDK-27.1-Build und das echte Innendisplay. Die dokumentierte
+Simulator-Displaysteuerung schaltet dafür das äußere Display aus und das innere an;
+keine Größenänderung oder Ersatzgeräte. Die Aufnahme muss zusätzlich einen vollständigen
+nativen UI-Test, die Original-Prüfsummen, 2007 × 2853 Pixel und die visuelle Kontrolle
+bestehen. Vollständig einfarbige/leere Frames weist der Audit zurück.
 [Aktueller Duo-Status](../app-store/current/DUO_STATUS.json).
 
-Es wird kein iPad oder umbenanntes/vergrößertes iPhone als Duo-Store-Aufnahme ausgegeben.
-Die tatsächlichen Duo-Aufnahmen hängen von der erfolgreichen Runtime-Vorbereitung und
-nativen Geräteprüfung ab. Eine echte physische Faltabnahme oder Hardware-FPS-Messung
-ist damit nicht behauptet.
+Bisher sind **keine Duo-App-Aufnahmen freigegeben**. Der Pilot läuft; native App-Ergebnisse,
+äußere App-Aufnahmen, Duo-Vorschauformate, physische Faltabnahme und Hardware-FPS-Messung
+sind damit noch nicht nachgewiesen. Der statische Apple-Skill-Export wird nach zuvor
+begrenzten CLI-Zeitüberschreitungen mit geöffneter Xcode-Oberfläche erneut versucht.
+Dabei wird kein KI-/Modellaufruf ausgelöst.
 
 ## Reproduzieren
 

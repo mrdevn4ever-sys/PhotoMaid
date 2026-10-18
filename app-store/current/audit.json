@@ -170,6 +170,48 @@
   {
     "status": "PASS",
     "locale": "es",
+    "device_class": "iphone-large",
+    "device": {
+      "device_class": "iphone-large",
+      "name": "iPhone 17 Pro Max",
+      "device_type": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro-Max",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+      "os_version": "26.2",
+      "sdk": "26.5",
+      "udid": "DB1C087C-AE02-4836-ADE3-3664AEB6C34D",
+      "actual_duo": false
+    },
+    "native_screenshots": 50,
+    "selected_screenshots": 10,
+    "videos": [
+      {
+        "file": "previews/01-review.mp4",
+        "sha256": "51df351dcc88df5c4ace1e45bd679474a1fea915af0553682b325db100ec8a33",
+        "duration": 27.0
+      },
+      {
+        "file": "previews/02-photo-games.mp4",
+        "sha256": "c246fee70b9d5051eaa49ed2639d5efdd87c9b27f20780d83332e012a9cf665a",
+        "duration": 27.0
+      },
+      {
+        "file": "previews/03-studio.mp4",
+        "sha256": "567780b4226e1077de647c97a742503614abe5ecc607ddddc83dd3509cee0c5b",
+        "duration": 27.0
+      },
+      {
+        "file": "alternatives/04-vault.mp4",
+        "sha256": "c4c80da2b2b7bc8f8da41268543a580c31364e72cb224593955fac12c34743e2",
+        "duration": 27.0
+      }
+    ],
+    "native_test_count": 5,
+    "source_commit": "6a86a77f590a07faf9225545dd0f1eb0b98f50bb",
+    "capture_run": "39124084071"
+  },
+  {
+    "status": "PASS",
+    "locale": "es",
     "device_class": "iphone-medium",
     "device": {
       "device_class": "iphone-medium",
