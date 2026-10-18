@@ -51,9 +51,11 @@ def main():
     common = ('setpts=PTS-STARTPTS,fps=30:start_time=0,'
               'scale=886:1920:force_original_aspect_ratio=decrease,'
               'pad=886:1920:(ow-iw)/2:(oh-ih)/2:black,setsar=1,format=yuv420p,')
-    filters = (f'[0:v]{common}tpad=stop_mode=clone:stop=-1,trim=duration=8,setpts=PTS-STARTPTS[m];'
-               f'[1:v]{common}tpad=stop_mode=clone:stop=-1,trim=duration=16,setpts=PTS-STARTPTS[s];'
-               '[m][s]concat=n=2:v=1:a=0,tpad=stop_mode=clone:stop=-1[v]')
+    # Keep padding finite. Concat does not retain a reliable output frame rate;
+    # reset it before tpad so the final hold advances timestamps at 30 fps.
+    filters = (f'[0:v]{common}tpad=stop_mode=clone:stop_duration=3,trim=duration=8,setpts=PTS-STARTPTS[m];'
+               f'[1:v]{common}tpad=stop_mode=clone:stop_duration=3,trim=duration=16,setpts=PTS-STARTPTS[s];'
+               '[m][s]concat=n=2:v=1:a=0,fps=30:start_time=0,tpad=stop_mode=clone:stop_duration=4[v]')
     run(['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y', '-i', str(memory), '-i', str(snake),
          '-f', 'lavfi', '-i', 'anullsrc=channel_layout=stereo:sample_rate=48000',
          '-filter_complex', filters, '-map', '[v]', '-map', '2:a', '-t', '27',

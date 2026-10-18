@@ -3,7 +3,7 @@
 import argparse,hashlib,json,subprocess
 from pathlib import Path
 
-def run(args):subprocess.run(args,check=True,stdout=subprocess.DEVNULL)
+def run(args):subprocess.run(args,check=True,stdout=subprocess.DEVNULL,timeout=300)
 def probe(path):return json.loads(subprocess.check_output(['ffprobe','-v','error','-show_streams','-show_format','-of','json',str(path)]))
 def main():
  p=argparse.ArgumentParser();p.add_argument('source',type=Path);p.add_argument('destination',type=Path);p.add_argument('--locale',required=True);a=p.parse_args()

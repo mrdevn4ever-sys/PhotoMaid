@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "kind": "Isolated synthetic codec test; not native app evidence",
+  "fixtures": "Generated test pattern only in /workspace/scratch/store-export-format-smoke; never copied to App Store assets.",
+  "script": "scripts/store/export_refresh.py",
+  "script_sha256": "109903cf439f4592d5360229033acc0523a2696b85c873c99b625e2d9dee0234",
+  "results": [
+    {
+      "file": "04-vault.mp4",
+      "status": "PASS",
+      "video_seconds": 20.0,
+      "audio_seconds": 20.0,
+      "video_frames": 600,
+      "size": [
+        886,
+        1920
+      ],
+      "full_video_audio_decode": "PASS"
+    },
+    {
+      "file": "01-review.mp4",
+      "status": "PASS",
+      "video_seconds": 20.0,
+      "audio_seconds": 20.0,
+      "video_frames": 600,
+      "size": [
+        886,
+        1920
+      ],
+      "full_video_audio_decode": "PASS"
+    },
+    {
+      "file": "02-photo-games.mp4",
+      "status": "PASS",
+      "video_seconds": 27.0,
+      "audio_seconds": 27.0,
+      "video_frames": 810,
+      "size": [
+        886,
+        1920
+      ],
+      "full_video_audio_decode": "PASS"
+    },
+    {
+      "file": "03-studio.mp4",
+      "status": "PASS",
+      "video_seconds": 20.0,
+      "audio_seconds": 20.0,
+      "video_frames": 600,
+      "size": [
+        886,
+        1920
+      ],
+      "full_video_audio_decode": "PASS"
+    }
+  ],
+  "caught_and_fixed": "Reset concat output to 30 fps before the final hold; padding is finite and FFmpeg is bounded."
+}

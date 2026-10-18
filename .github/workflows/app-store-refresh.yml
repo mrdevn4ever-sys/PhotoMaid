@@ -153,7 +153,23 @@ jobs:
         env:
           UDID: ${{ steps.sim.outputs.udid }}
         run: bash scripts/store/capture.sh "$UDID" "$RUNNER_TEMP/store-build" "$RUNNER_TEMP/store-capture"
+      - name: Native Quellen vor jedem Export sichern
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: store-current-${{ matrix.locale }}-${{ matrix.device }}-sources
+          path: |
+            ${{ runner.temp }}/store-capture/screenshots
+            ${{ runner.temp }}/store-capture/recordings
+            ${{ runner.temp }}/store-capture/control/*.json
+            ${{ runner.temp }}/store-capture/markers.jsonl
+            ${{ runner.temp }}/store-capture/*.json
+            ${{ runner.temp }}/store-capture/*.log
+            ${{ runner.temp }}/store-capture/*.txt
+            ${{ runner.temp }}/store-capture/diagnostics
+          if-no-files-found: warn
       - name: Native Bilder und drei Store-Vorschauen mit Tresor-Alternative exportieren
+        timeout-minutes: 10
         run: |
           "$RUNNER_TEMP/store-python/bin/python" scripts/store/assemble_refresh.py \
             "$RUNNER_TEMP/store-capture" "$RUNNER_TEMP/store-assets" --locale "$CAPTURE_LOCALE" --device "$STORE_DEVICE"
@@ -167,20 +183,6 @@ jobs:
         with:
           name: store-current-${{ matrix.locale }}-${{ matrix.device }}-assets
           path: ${{ runner.temp }}/store-assets
-          if-no-files-found: warn
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: store-current-${{ matrix.locale }}-${{ matrix.device }}-sources
-          path: |
-            ${{ runner.temp }}/store-capture/screenshots
-            ${{ runner.temp }}/store-capture/recordings
-            ${{ runner.temp }}/store-capture/control/*.json
-            ${{ runner.temp }}/store-capture/markers.jsonl
-            ${{ runner.temp }}/store-capture/*.json
-            ${{ runner.temp }}/store-capture/*.log
-            ${{ runner.temp }}/store-capture/*.txt
-            ${{ runner.temp }}/store-capture/diagnostics
           if-no-files-found: warn
       - name: Ausschließlich diesen Wegwerf-Simulator entfernen
         if: always() && steps.sim.outputs.udid != ''
