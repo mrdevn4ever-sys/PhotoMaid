@@ -1,5 +1,5 @@
 {
-  "status": "DEVICE HUB AND DISPLAY SWITCH VERIFIED; BOUNDED PREPARATION RETRY IN PROGRESS",
+  "status": "NATIVE APP INSTALLED; XCTEST RUNNER STARTUP BLOCKED; DEFAULT DISPLAY RETRY IN PROGRESS",
   "xcode": "Xcode27.1 / 27A9275",
   "sdk": "27.1",
   "runtime": "iOS27.1 / 24A94425",
@@ -20,7 +20,7 @@
   "probe_job_id": 117667450003,
   "probe_artifact_id": 12135717529,
   "diagnostic_screenshot": "REJECTED BLANK; no app Store image accepted",
-  "skill_export": "SKIPPED in both app attempts because simulator GUI preparation failed before export",
+  "skill_export": "Optional static export timed out60s with no skill content. Removed from next native capture to avoid unrelated background work. No exported skill read/applied.",
   "approved_duo_app_assets": 0,
   "apple_specification": "https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/",
   "apple_requirement": "Duo screenshots required starting April2027 for apps using SDK27.1+",
@@ -72,12 +72,23 @@
   "native_app_devicehub_ui_tests": "NOT RUN",
   "native_app_preparation_retry_run_id": 39134787534,
   "native_app_preparation_retry_source_commit": "023837c73cbd5216af558500e74f64412df7b8fd",
-  "native_app_preparation_retry_status": "NATIVE APP UI CAPTURE IN PROGRESS",
+  "native_app_preparation_retry_status": "FAIL: XCTEST RUNNER LAUNCH HOST DOWN64",
   "native_display_power_switch": "PASS: actual log Screen1 off, Screen3 on; final native enumeration and device metadata retained",
   "preparation_timeout_proof": "validation/duo-devicehub-preparation-timeout/review.json",
   "native_app_preparation_retry_build": "PASS",
   "native_app_preparation_retry_build_job_id": 117696989885,
   "native_app_preparation_retry_capture_job_id": 117697612721,
   "native_app_preparation_retry_preparation": "PASS",
-  "native_app_preparation_retry_ui_capture_started_at": "2026-10-18T14:28:59Z"
+  "native_app_preparation_retry_ui_capture_started_at": "2026-10-18T14:28:59Z",
+  "native_app_preparation_retry_ui_cases_executed": 0,
+  "native_app_preparation_retry_runtime_build": "24A94232 (actual xcresult metadata)",
+  "native_app_preparation_retry_summary": {
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0
+  },
+  "native_runner_startup_failure_proof": "validation/duo-test-runner-launch-failure/review.json",
+  "native_default_display_retry_run_id": 39137466424,
+  "native_default_display_retry_source_commit": "73ba4d78911fb399aa2733a4fd8249a40a476f84",
+  "native_default_display_retry_status": "NATIVE BUILD IN PROGRESS"
 }

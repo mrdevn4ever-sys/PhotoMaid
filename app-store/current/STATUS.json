@@ -23,7 +23,7 @@
   ],
   "pilot_run": 39118013344,
   "iphone_assets": "PASS",
-  "duo_assets": "MATCHING DEVICE HUB AND NATIVE DISPLAY SWITCH VERIFIED; GENUINE APP PILOT39134787534 IN PROGRESS",
+  "duo_assets": "NATIVE APP INSTALLED; FIRST XTEST RUNNER LAUNCH FAILED HOST DOWN64; DEFAULT DISPLAY RETRY39137466424 IN PROGRESS",
   "app_store_connect_assets_upload": "NOT RUN",
   "app_store_release": "NOT RUN",
   "native_test_policy": "Only real passed capture results with no failed or skipped tests; screenshots and actual video frames reviewed before PASS.",

@@ -160,6 +160,19 @@ Die Wiederholung entfernt den ersten unnötigen GUI-Start vor dem bewachten Leer
 und erlaubt ausschließlich der Duo-Vorbereitung 20 Minuten. Native Abnahme, echte
 55 Fotos, unveränderte Dimensionen und Leerbild-Ablehnung bleiben gleich:
 [Lauf 39134787534](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39134787534).
+Die Vorbereitung und App-Installation dieses Versuchs sind **PASS**. Der
+Testläufer kann danach nicht starten: `NSPOSIXErrorDomain 64 / Host is down`.
+Xcode vermutet einen System-Shell-Absturz; ein unabhängiger Crashbericht wurde
+nicht exportiert. Die anschließende Diagnosesammlung endet nach 600 Sekunden.
+Der native Ergebnisbericht zeigt 0 PASS, 1 Runner-Fehler, 0 SKIP; kein
+PhotoMaid-UI-Fall wurde ausgeführt und kein Store-Bild erzeugt.
+[Unveränderte Ergebnisse und Startfehler](../app-store/current/validation/duo-test-runner-launch-failure/review.json).
+
+Ein letzter gezielter Pilot [39137466424](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39137466424)
+behält die nativen Display-Power-Standards bei und lässt den bisher erfolglosen
+optionalen Apple-Skill-Export weg. Ob einer dieser zusätzlichen Vorgänge den
+Startfehler verursacht hat, ist nicht nachgewiesen. Keine Geometrieänderung
+und keine Lockerung der Bild-/Testabnahme.
 Bisher sind **keine Duo-App-Aufnahmen freigegeben**. Native UI-Ergebnisse,
 äußere App-Aufnahmen, Duo-Vorschauformate, physische Faltabnahme und Hardware-FPS-Messung
 sind damit noch nicht nachgewiesen. Der statische Apple-Skill-Export wird nach zuvor

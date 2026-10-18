@@ -162,12 +162,25 @@
   {
     "run_id": 39134787534,
     "source_commit": "023837c73cbd5216af558500e74f64412df7b8fd",
-    "status": "NATIVE APP UI CAPTURE IN PROGRESS",
+    "status": "FAIL: XCTEST RUNNER COULD NOT START",
     "scope": "Genuine Duo inner-display pilot; one DeviceHub opening after guarded library reset and bounded20minute Duo-only preparation. Actual capture/blank/dimension/library acceptance unchanged.",
     "native_build": "PASS",
     "native_build_job_id": 117696989885,
     "native_capture_job_id": 117697612721,
     "simulator_preparation": "PASS",
-    "ui_capture_started_at": "2026-10-18T14:28:59Z"
+    "ui_capture_started_at": "2026-10-18T14:28:59Z",
+    "native_capture_tests": {
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0
+    },
+    "app_ui_cases_executed": 0,
+    "reason": "Native device preparation and app install passed. XCTest runner launch failed with NSPOSIXErrorDomain64 Host is down; Xcode says system shell probably crashed, but no independent crash report was exported. Diagnostics timed out600s. No Store PNGs created."
+  },
+  {
+    "run_id": 39137466424,
+    "source_commit": "73ba4d78911fb399aa2733a4fd8249a40a476f84",
+    "status": "NATIVE BUILD IN PROGRESS",
+    "scope": "Last scoped genuine Duo inner-display pilot: default native display power, no geometry change, no optional background Xcode/agent export. Exact native case/count/library/dimension/nonblank checks remain."
   }
 ]
