@@ -1,0 +1,9 @@
+{
+  "run_id": 39132957505,
+  "job_id": 117691687112,
+  "artifact_id": 12138379051,
+  "archive_bytes": 12579,
+  "archive_sha256": "cbf51b532df7b096e7d96efcb1ed38517aa076a004102f05e12310e5c9a848b4",
+  "github_digest_verification": "PASS",
+  "scope": "Read-only actual bundle locations, SDK and available device types. No app build or screenshot in this probe."
+}

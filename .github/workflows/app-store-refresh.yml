@@ -143,7 +143,7 @@ jobs:
           xcrun simctl boot "$udid"
           xcrun simctl bootstatus "$udid" -b
           if [ "$STORE_DEVICE" = iphone-duo ]; then
-            open -a "$(xcode-select -p)/Applications/Simulator.app" --args -CurrentDeviceUDID "$udid"
+            python3 scripts/store/open_capture_device.py "$udid"
             xcrun simctl io "$udid" enumerate > "$RUNNER_TEMP/duo-screens.txt"
           fi
           xcrun simctl shutdown "$udid"
@@ -151,7 +151,7 @@ jobs:
           xcrun simctl boot "$udid"
           xcrun simctl bootstatus "$udid" -b
           if [ "$STORE_DEVICE" = iphone-duo ]; then
-            open -a "$(xcode-select -p)/Applications/Simulator.app" --args -CurrentDeviceUDID "$udid"
+            python3 scripts/store/open_capture_device.py "$udid"
             xcrun simctl io "$udid" screenConfig --display=primary power off
             xcrun simctl io "$udid" screenConfig --display=primary-1 power on
             xcrun simctl io "$udid" enumerate > "$RUNNER_TEMP/duo-screens.txt"
