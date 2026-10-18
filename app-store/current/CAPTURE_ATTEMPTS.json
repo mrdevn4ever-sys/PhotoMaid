@@ -104,5 +104,25 @@
     "source_commit": "21dc7d425c7ab2703960c6942760e171b21c6e9f",
     "status": "QUEUED",
     "scope": "Genuine Duo app retry with selected Xcode absolute Simulator.app path; en inner-display screenshots only"
+  },
+  {
+    "run_id": 39125899164,
+    "job_id": 117671735265,
+    "source_commit": "cf9c42e71c3ad6162b86f1fcedfc749777999016",
+    "status": "FAILED PROFILE EXCLUDED",
+    "scope": "ko medium",
+    "native_capture_tests": {
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0
+    },
+    "reason": "Permission wait failed; diagnostic video shows actual Allow Full Access system sheet. Exported crash report identifies SpringBoard EXC_BREAKPOINT/SIGTRAP in trait-change callback during this interval. Fresh simulator retry; no game or translation defect established."
+  },
+  {
+    "run_id": 39130602845,
+    "source_commit": "0a4bc091aad528f1a19191bac71101fa07e80bc8",
+    "status": "QUEUED",
+    "scope": "ko medium fresh simulator retry after actual SpringBoard process crash",
+    "app_and_capture_test_logic": "Unchanged; no failed-test/library assertion relaxed."
   }
 ]

@@ -54,5 +54,7 @@
   "first_pilot_failed_job_id": 117677083056,
   "native_app_retry_run_id": 39128651889,
   "native_app_retry_source_commit": "21dc7d425c7ab2703960c6942760e171b21c6e9f",
-  "native_app_retry_status": "QUEUED"
+  "native_app_retry_status": "CAPTURE QUEUED",
+  "native_app_retry_build": "PASS",
+  "native_app_retry_build_job_id": 117679045157
 }

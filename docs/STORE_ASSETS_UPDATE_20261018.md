@@ -83,6 +83,20 @@ visuell geprüft. Fehlende Serien laufen auf dem korrigierten Stand `cf9c42e`:
 [groß, zehn Sprachen](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39125897166),
 [mittel, elf Sprachen](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39125899164).
 
+## Einzelner Simulator-Systemabsturz
+
+Koreanisch/mittel im Lauf `39125899164` wurde mit 0 bestandenen und einem fehlgeschlagenen
+nativen Fall ausgeschlossen. Der unveränderte Crashbericht benennt **SpringBoard**, nicht
+PhotoMaid: `EXC_BREAKPOINT / SIGTRAP` während eines Trait-Wechsels. Die native Diagnoseaufnahme
+zeigt den weiterhin sichtbaren englischen Dialog „Allow Full Access“. Der genaue interne
+Apple-Absturzgrund ist nicht etabliert. Es gibt daraus keinen Nachweis eines Fehlers der
+Spielsteuerung oder koreanischen Übersetzung.
+
+[Unveränderte Testergebnisse, Crashbericht und separat markiertes Diagnosebild](../app-store/current/validation/ko-medium-system-crash/)
+sind erhalten. Die Wiederholung nutzt einen frischen Simulator, unveränderte App-/Testlogik
+und unverändert strenge Abnahmeregeln:
+[Lauf 39130602845](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39130602845).
+
 ## Duo
 
 Der offizielle Runner `xcode-27` liefert Xcode 27.1, Build 27A9275, und den genuinen

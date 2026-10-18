@@ -23,7 +23,7 @@
   ],
   "pilot_run": 39118013344,
   "iphone_assets": "IN PROGRESS",
-  "duo_assets": "NATIVE APP BUILD PASS; GUI-LAUNCH RETRY QUEUED",
+  "duo_assets": "SDK27.1 RETRY BUILD PASS; NATIVE INNER-DISPLAY CAPTURE QUEUED",
   "app_store_connect_assets_upload": "NOT RUN",
   "app_store_release": "NOT RUN",
   "native_test_policy": "Only real passed capture results with no failed or skipped tests; screenshots and actual video frames reviewed before PASS.",
@@ -169,7 +169,7 @@
   "large_run": 39125897166,
   "medium_run": 39125899164,
   "duo_runtime_preparation_run": 39120476761,
-  "repository_delivery": "Reviewed assets and source fixes pushed through e98c2f2; remaining language batches running.",
+  "repository_delivery": "22 reviewed profiles and source fixes pushed through 0a4bc09; remaining captures and two scoped simulator retries pending.",
   "actual_selected_screenshots": 220,
   "actual_selected_videos": 36,
   "actual_vault_alternative_videos": 12,
@@ -202,5 +202,6 @@
     39120189289
   ],
   "duo_native_app_pilot_run": 39126669768,
-  "duo_native_app_retry_run": 39128651889
+  "duo_native_app_retry_run": 39128651889,
+  "korean_medium_retry_run": 39130602845
 }
