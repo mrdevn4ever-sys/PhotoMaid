@@ -1,0 +1,171 @@
+[
+  {
+    "file": "pairs_after_snake_uses_app_appearance.png",
+    "exported_native_filename": "164DD70A-21FE-4565-8E32-710890E7BA63.png",
+    "native_attachment_name": "pairs_after_snake_uses_app_appearance_0_C332A6B9-39C0-41F3-BF28-A7269DD58523.png",
+    "sha256": "4b854e91d4bddfc264123d925b79559eae6e9a8b8e0ded0b5c7760c9ff06e847",
+    "pixel_size": [
+      1206,
+      2622
+    ],
+    "test_case": "PhotoGameVisualTests/test05SimpleSetupCloudAndManualPhotoChoice()",
+    "visual_review": "PASS: actual image reviewed, unchanged native PNG",
+    "scope": "QA_UI_CHECKPOINT"
+  },
+  {
+    "file": "games_chooser_after_snake_pause.png",
+    "exported_native_filename": "9B629863-0678-4612-BDE2-5FAABD928F8F.png",
+    "native_attachment_name": "games_chooser_after_snake_pause_0_BFCFCC35-F586-4D9D-817F-00B9DBAA8B94.png",
+    "sha256": "b07a8089a4b15f0d8681567ee7a0bbade428c1ade60e448d46c2a9a4875cedcc",
+    "pixel_size": [
+      1206,
+      2622
+    ],
+    "test_case": "PhotoGameVisualTests/test05SimpleSetupCloudAndManualPhotoChoice()",
+    "visual_review": "PASS: actual image reviewed, unchanged native PNG",
+    "scope": "QA_UI_CHECKPOINT"
+  },
+  {
+    "file": "snake_simple_setup_real_photo_game.png",
+    "exported_native_filename": "09752A32-0BDD-41A9-A208-6FDD9863D3D5.png",
+    "native_attachment_name": "snake_simple_setup_real_photo_game_0_C420CA4E-D21C-41EC-9EB2-91A571720C43.png",
+    "sha256": "68b5acfb742fabc98f71c157a68fc7d88bfd050707282bb2f52fd5df10025871",
+    "pixel_size": [
+      1206,
+      2622
+    ],
+    "test_case": "PhotoGameVisualTests/test05SimpleSetupCloudAndManualPhotoChoice()",
+    "visual_review": "PASS: actual image reviewed, unchanged native PNG",
+    "scope": "QA_UI_CHECKPOINT"
+  },
+  {
+    "file": "snake_empty_manual_choice_opens_gallery.png",
+    "exported_native_filename": "12DEBE51-9753-4FA9-A286-B2CAE2E14DE0.png",
+    "native_attachment_name": "snake_empty_manual_choice_opens_gallery_0_A6D6DC8D-38A0-4A07-947F-8A182F06DD82.png",
+    "sha256": "2d36b25051163511d71d904bdaa6bc0a16f5e951517426e22704c514b295e232",
+    "pixel_size": [
+      1206,
+      2622
+    ],
+    "test_case": "PhotoGameVisualTests/test05SimpleSetupCloudAndManualPhotoChoice()",
+    "visual_review": "LAYOUT/FLOW PASS at captured source; gallery hint text shortened after this capture in all16 languages, not recaptured",
+    "scope": "QA_UI_CHECKPOINT"
+  },
+  {
+    "file": "snake_setup_labelled_options.png",
+    "exported_native_filename": "0E302B54-AAD2-4375-91CA-9C3020A6B6A3.png",
+    "native_attachment_name": "snake_setup_labelled_options_0_08960404-A0CB-487E-B1A0-33DCA8774627.png",
+    "sha256": "bf3d758d1a7e66e6998ff5c294101b1cccfa1751da7e475a9d8f2ada09d7bca2",
+    "pixel_size": [
+      1206,
+      2622
+    ],
+    "test_case": "PhotoGameVisualTests/test05SimpleSetupCloudAndManualPhotoChoice()",
+    "visual_review": "PASS: actual image reviewed, unchanged native PNG",
+    "scope": "QA_UI_CHECKPOINT"
+  },
+  {
+    "file": "snake_setup_default_library_cloud_on.png",
+    "exported_native_filename": "E6D8E446-880F-4361-A6A9-84774EAB92DD.png",
+    "native_attachment_name": "snake_setup_default_library_cloud_on_0_A2DCA767-4DF8-4E33-8ECB-901357FD5858.png",
+    "sha256": "30900d3f4b0b1a3f22a660961bd77bfc8d4df22df020f9c561544a7104854563",
+    "pixel_size": [
+      1206,
+      2622
+    ],
+    "test_case": "PhotoGameVisualTests/test05SimpleSetupCloudAndManualPhotoChoice()",
+    "visual_review": "PASS: actual image reviewed, unchanged native PNG",
+    "scope": "QA_UI_CHECKPOINT"
+  },
+  {
+    "file": "pairs_setup_keeps_cloud_opt_out.png",
+    "exported_native_filename": "12D05932-7A3B-40C4-8CE9-1FB9C5CB8A73.png",
+    "native_attachment_name": "pairs_setup_keeps_cloud_opt_out_0_048B55D5-2F58-430D-9368-71C4DB9FCCE6.png",
+    "sha256": "6443dbdc78ee21d04b2bd51e28158c9d5f627cd8b3595b7c9b0d317286fb720e",
+    "pixel_size": [
+      1206,
+      2622
+    ],
+    "test_case": "PhotoGameVisualTests/test05SimpleSetupCloudAndManualPhotoChoice()",
+    "visual_review": "PASS: actual image reviewed, unchanged native PNG",
+    "scope": "QA_UI_CHECKPOINT"
+  },
+  {
+    "file": "pairs_setup_default_cloud_on.png",
+    "exported_native_filename": "92368515-2502-4087-ADE1-522E13DF11AD.png",
+    "native_attachment_name": "pairs_setup_default_cloud_on_0_A769E9A4-2503-405C-ABA3-F8FD41143240.png",
+    "sha256": "9bf6065541da4184c94be0cde9b1a63c6a3b2b0c5142de45fad7c2eac188dcc2",
+    "pixel_size": [
+      1206,
+      2622
+    ],
+    "test_case": "PhotoGameVisualTests/test05SimpleSetupCloudAndManualPhotoChoice()",
+    "visual_review": "PASS: actual image reviewed, unchanged native PNG",
+    "scope": "QA_UI_CHECKPOINT"
+  },
+  {
+    "file": "games_feed_photos_permission_0.png",
+    "exported_native_filename": "1A330937-E490-4FFE-9E23-C8A1EAD8B571.png",
+    "native_attachment_name": "games_feed_photos_permission_0_0_CE5AE951-5917-413C-977A-7A0BFB935D93.png",
+    "sha256": "e83f11d3408d97c67497e1f4a8b5edee998c9276c1fee1e4f1b0e5be28e4a5c0",
+    "pixel_size": [
+      1206,
+      2622
+    ],
+    "test_case": "PhotoGameVisualTests/test05SimpleSetupCloudAndManualPhotoChoice()",
+    "visual_review": "OBSERVED: genuine iOS Photo Library permission dialog; diagnostic only",
+    "scope": "SYSTEM_PERMISSION_DIAGNOSTIC"
+  },
+  {
+    "file": "snake_accessibility_arabic.png",
+    "exported_native_filename": "A590102A-4384-428D-B44F-934DB3FE6EB6.png",
+    "native_attachment_name": "snake_accessibility_arabic_0_04A6DF24-7230-472B-9E85-C8FC72274025.png",
+    "sha256": "4e26814c18166dd64d3c0ce953df5ba5de39d050f0438fe9a3207a10e82545fd",
+    "pixel_size": [
+      1206,
+      2622
+    ],
+    "test_case": "PhotoGameVisualTests/test40LargeTextAndArabic()",
+    "visual_review": "PASS: actual image reviewed, unchanged native PNG",
+    "scope": "QA_UI_CHECKPOINT"
+  },
+  {
+    "file": "snake_setup_arabic_large_text.png",
+    "exported_native_filename": "9859323E-55EC-464B-B254-76F9BB378B22.png",
+    "native_attachment_name": "snake_setup_arabic_large_text_0_619D8D21-D92D-4F2A-B565-E36860D2902D.png",
+    "sha256": "7de826859fd13bf8d1d2e659857ba82da5ef4dfe48a197c2dce8f3ce3ffe6986",
+    "pixel_size": [
+      1206,
+      2622
+    ],
+    "test_case": "PhotoGameVisualTests/test40LargeTextAndArabic()",
+    "visual_review": "PASS: actual image reviewed, unchanged native PNG",
+    "scope": "QA_UI_CHECKPOINT"
+  },
+  {
+    "file": "memory_accessibility_arabic.png",
+    "exported_native_filename": "10285FA6-467D-4051-89B5-A80FF016972F.png",
+    "native_attachment_name": "memory_accessibility_arabic_0_085CE5B3-7502-4D3C-AECB-3720FF093F19.png",
+    "sha256": "cedfabce4cf67521fc18a04ba4f97da698746c13c7b530d73841a14277ed61c9",
+    "pixel_size": [
+      1206,
+      2622
+    ],
+    "test_case": "PhotoGameVisualTests/test40LargeTextAndArabic()",
+    "visual_review": "PASS: actual image reviewed, unchanged native PNG",
+    "scope": "QA_UI_CHECKPOINT"
+  },
+  {
+    "file": "pairs_setup_arabic_large_text.png",
+    "exported_native_filename": "7CD26E2D-FAFF-42C3-9468-6E1EDCF9F798.png",
+    "native_attachment_name": "pairs_setup_arabic_large_text_0_BFFC641F-972B-4174-9649-83D8FA77FA3F.png",
+    "sha256": "fb934d4b94807b2f5c0b50a2f668b39fb068001a20f6c6c3073e829d7fea81bb",
+    "pixel_size": [
+      1206,
+      2622
+    ],
+    "test_case": "PhotoGameVisualTests/test40LargeTextAndArabic()",
+    "visual_review": "PASS: actual image reviewed, unchanged native PNG",
+    "scope": "QA_UI_CHECKPOINT"
+  }
+]

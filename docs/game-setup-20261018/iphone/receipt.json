@@ -1,0 +1,39 @@
+{
+  "run_id": 39155751429,
+  "source_commit": "7d7c842f5390df4fe935e9a02aeb4ba02e7f5cb3",
+  "workflow_url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39155751429",
+  "artifact": {
+    "id": 12147680227,
+    "name": "game-visual-iphone",
+    "bytes": 17013034,
+    "sha256": "a2d8d3b03f744eadd24ee966150d8078e6ce1b3485729865c0f257842c9c5b4d",
+    "github_sha256_and_zip_crc": "PASS"
+  },
+  "actual_device": {
+    "architecture": "arm64",
+    "deviceId": "24E049C8-1AEC-4A9D-95C6-C11145A59D62",
+    "deviceName": "iPhone 17",
+    "modelName": "iPhone 17",
+    "osBuildNumber": "23C54",
+    "osVersion": "26.2",
+    "platform": "iOS Simulator"
+  },
+  "native_cases": {
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0
+  },
+  "original_pngs": 13,
+  "app_checkpoints": 12,
+  "visual_review": "PASS for captured layout and tested setup routes; single gallery hint copy correction followed capture, no final-copy screenshot claimed",
+  "actual_review": "Viewed both German8 and Arabic4 contact sheets; full default Pairs, default Snake, returned Pairs and real system-permission diagnostic. White Snake chrome and restoration of original light app appearance are visible. Arabic accessibility text wraps within width and setup scrolls vertically.",
+  "fixture_scope": "Native disposable simulator Photos library seeded with synthetic QA images; real permission dialog, real Photos requests and normal game clock. No personal iCloud account.",
+  "postcapture_copy_change": {
+    "key": "snake_gallery_empty",
+    "scope": "one shorter hint in 16 languages; no Swift changes",
+    "native_rebuild_after_copy": "NOT RUN",
+    "native_recapture_after_copy": "NOT RUN",
+    "source_commit": "2528ffde8cc48fc78e9dda601008c84400b785ad"
+  },
+  "proof_policy": "Original PNG bytes copied without retouching, checksums in screenshots.json. Review JPG contact sheets are composites for review only, not Store media."
+}

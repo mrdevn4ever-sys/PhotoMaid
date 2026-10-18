@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "used_keys": 1681,
+  "catalog_entries": 2702,
+  "languages": 16,
+  "checked_source_complete_json_catalog_keys": [
+    "game_setup_appearance",
+    "game_setup_choose_photos",
+    "game_setup_cloud_note",
+    "game_setup_edit_photos",
+    "game_setup_options",
+    "game_setup_pairs_intro",
+    "game_setup_pairs_manual",
+    "game_setup_pairs_symbols",
+    "game_setup_photos",
+    "game_setup_private",
+    "game_setup_snake_intro",
+    "game_setup_without_photos",
+    "memory_cloud",
+    "memory_size",
+    "memory_title",
+    "snake_gallery_empty"
+  ],
+  "only_catalog_changes_after_native_source": {
+    "PhotoMaid/Resources/ios_strings.json": [
+      "snake_gallery_empty"
+    ],
+    "PhotoMaid/Resources/Localizable.xcstrings": [
+      "snake_gallery_empty"
+    ]
+  },
+  "scope": "static catalog/source consistency only; no native build or post-copy image validation",
+  "text_correction_commit": "2528ffde8cc48fc78e9dda601008c84400b785ad",
+  "native_build_commit": "7d7c842f5390df4fe935e9a02aeb4ba02e7f5cb3"
+}

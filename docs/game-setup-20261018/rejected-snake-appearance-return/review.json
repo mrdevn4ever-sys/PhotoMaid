@@ -26,5 +26,6 @@
     "iphone.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
     "attachments-manifest.json": "267513ebf8819127b8acbc23a7bda29835a8ecb7e0fe326c5326401b4d48c995"
   },
-  "wide_capture": "Superseded by known phone appearance regression; do not count an incomplete/cancelled wide phase as passed."
+  "wide_capture": "CANCELLED by operator after actual phone visual rejection; superseded by corrected source7d7c842. No accepted wide result from this run.",
+  "overall_workflow": "CANCELLED; original phone2PASS0FAIL0SKIP and CorePASS retained separately"
 }

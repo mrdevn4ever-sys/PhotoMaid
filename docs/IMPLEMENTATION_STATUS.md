@@ -17,9 +17,14 @@ abgebrochenes Laden lässt die Einrichtung sichtbar und ersetzt keine bestehende
 beim Fortsetzen und beim Wechsel zu Motiven beibehalten. Keine Änderung an Fotos oder Feed-Entscheidungen.
 Die zusätzlichen Texte sind in allen 16 Sprachen vorhanden; der lokale Lokalisierungscheck ist PASS
 (1681 verwendete Kennungen, 2702 Einträge). Lokaler Swift-/iOS-Build: NOT RUN, hier ist kein Swift-/Apple-SDK installiert.
-Native Unit- und Oberflächenvalidierung: **IN PROGRESS**, [aktueller Lauf 39154335927](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39154335927),
-Quellstand `92a878c`; gezielter `games_case=setup` für Deutsch,
-iCloud-Vorgabe/Abschalten, leere manuelle Auswahl, Foto-Snake mit echter Uhr und große arabische Schrift.
+Native Unit- und Oberflächenvalidierung: **PASS**, [Lauf 39155751429](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39155751429),
+Quellstand `7d7c842`; iOS-Simulator-Build und **63 native Unit-Tests**, Core **461 Tests** bestanden.
+Gezielter `games_case=setup`: iPhone **2/2**, großes iPad-mini-Fenster **2/2**, ohne Fehler oder Skip.
+Geprüft sind Deutsch, iCloud-Vorgabe/Abschalten, leere manuelle Auswahl, Foto-Snake mit echter Uhr
+und große arabische Schrift. Alle 24 App-Checkpoints und 2 zusätzlichen Berechtigungsdiagnosen
+sind tatsächlich angesehen; Originale und Prüfsummen stehen im [Abschlussbericht](game-setup-20261018/README.md).
+Danach wurde in `2528ffd` ausschließlich ein Galeriehinweis in 16 Sprachen gekürzt; Quellen-/Katalogcheck
+PASS, **kein erneuter nativer Build oder Screenshotlauf für diese Textkorrektur**.
 Ein breites Simulatorfenster ist keine Duo-Faltabnahme. Kein neuer TestFlight-/Store-Upload.
 
 Die erste iPhone-Aufnahme besteht beide nativen Fälle ohne Fehler/Skip, wurde aber visuell
@@ -33,6 +38,10 @@ ist korrigiert, aber die Paare-Ansicht bleibt nach Snake entgegen der hellen App
 auch dieser Bildstand ist visuell abgelehnt. Originale stehen unter
 `docs/game-setup-20261018/rejected-snake-appearance-return/`. Die Darstellung wird deshalb
 von der gemeinsamen Spieleansicht ausdrücklich für Snake beziehungsweise die App-Ansicht gesetzt.
+Der überholte zweite Lauf wurde nach Sicherung der iPhone-Ergebnisse abgebrochen; dessen großer
+Fensterdurchlauf wird nicht als bestanden gewertet.
+Die finale Wiederholung bestätigt lesbare Snake-Systemelemente und den richtigen hellen
+Paare-/Auswahlmodus nach der Rückkehr auf beiden tatsächlichen Simulatoren.
 
 ## Spielname Paare (18.10.2026)
 

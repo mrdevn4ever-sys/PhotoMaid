@@ -1,0 +1,130 @@
+{
+  "status": "PASS for native-tested source; postcapture single-key copy update statically checked, not rebuilt",
+  "run_id": 39155751429,
+  "source_commit": "7d7c842f5390df4fe935e9a02aeb4ba02e7f5cb3",
+  "workflow_conclusion": "success",
+  "xcode": "Xcode 26.6\nBuild version 17F113",
+  "iphonesimulator_sdk": "26.5",
+  "core_linux": {
+    "swift_testing": 437,
+    "xctest": 24,
+    "failed": 0,
+    "proof": "core-final-result.json"
+  },
+  "native_ios_build": {
+    "status": "PASS",
+    "reported_build_errors": 0,
+    "reported_warnings": 8,
+    "scope": "Simulator build; no signed release archive or upload",
+    "warnings": "Existing deprecations/test diagnostics; no zero-warning claim. Original CI summary and full xcodebuild log retained."
+  },
+  "native_unit_tests": {
+    "status": "PASS",
+    "swift_testing": 50,
+    "swift_testing_suites": 8,
+    "xctest": 13,
+    "failed": 0,
+    "cloud_default_and_retained_optout": "PASS"
+  },
+  "ui_cases": {
+    "iphone": {
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0
+    },
+    "expanded_window": {
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0
+    },
+    "total_passed": 4,
+    "total_failed": 0,
+    "total_skipped": 0
+  },
+  "actual_devices": {
+    "iphone": {
+      "architecture": "arm64",
+      "deviceId": "24E049C8-1AEC-4A9D-95C6-C11145A59D62",
+      "deviceName": "iPhone 17",
+      "modelName": "iPhone 17",
+      "osBuildNumber": "23C54",
+      "osVersion": "26.2",
+      "platform": "iOS Simulator"
+    },
+    "expanded_window": {
+      "architecture": "arm64",
+      "deviceId": "1A931556-7569-452B-9276-C82E5224F9D5",
+      "deviceName": "iPad mini (A17 Pro)",
+      "modelName": "iPad mini (A17 Pro)",
+      "osBuildNumber": "23E254a",
+      "osVersion": "26.4.1",
+      "platform": "iOS Simulator"
+    }
+  },
+  "visual_review": {
+    "status": "PASS for captured layout and tested setup flows, with explicitly documented later hint correction",
+    "app_checkpoints": 24,
+    "additional_permission_diagnostics": 2,
+    "original_pngs": 26,
+    "phone_receipt": "iphone/receipt.json",
+    "expanded_window_receipt": "expanded-window/receipt.json"
+  },
+  "postcapture_copy": {
+    "commit": "2528ffde8cc48fc78e9dda601008c84400b785ad",
+    "only_key": "snake_gallery_empty",
+    "languages": 16,
+    "swift_changes": false,
+    "static_check": "PASS",
+    "native_build_after_copy": "NOT RUN",
+    "native_recapture_after_copy": "NOT RUN",
+    "proof": "localization-final.json"
+  },
+  "artifacts": [
+    {
+      "id": 12147680227,
+      "name": "game-visual-iphone",
+      "bytes": 17013034,
+      "sha256": "a2d8d3b03f744eadd24ee966150d8078e6ce1b3485729865c0f257842c9c5b4d",
+      "github_sha256_and_zip_crc": "PASS"
+    },
+    {
+      "id": 12147392962,
+      "name": "game-visual-evidence",
+      "bytes": 33664302,
+      "sha256": "e8054ca52ef6f8483b9c421c4f447e59be450f6d6df63438c0f90a95a6c0895d",
+      "github_sha256_and_zip_crc": "PASS"
+    },
+    {
+      "id": 12147706936,
+      "name": "ios-build-report",
+      "bytes": 341192,
+      "sha256": "08b49ce8006af6b409a6742890acc8363fd457f9e4a70a5762494f77225287ef",
+      "github_sha256_and_zip_crc": "PASS"
+    }
+  ],
+  "original_proof_sha256": {
+    "unit-tests-final.log": "c84ff1d4f3eb3310e980fb1bed2b408c904a0e7a66a0cb2a2b443ecda01a037d",
+    "ci-report-final.md": "6b40270d7c5b7f03af14fda737a3e5018aea00d68f6a78f15436a8302e87d490",
+    "xcode-version-final.txt": "18730ed2ae28a2c9cf0c2d5db549033a4f07089331391a7133b7b32187454fa9",
+    "sdk-version-final.txt": "25205f2e2f02dc71036ee827e19c49b893b231a3d1af240e35a3ac55aa8cdcb6",
+    "duo-validation-scope-final.txt": "28a9eb7037b2aea79c540f9263f98719a251713eeab1390dc9a109a4aa36426e",
+    "simulator-inventory-final.txt": "846e49a1f43e154abf5138c5adea9346700e247583f699e4a17a7fcdf580dea3"
+  },
+  "earlier_attempts": {
+    "first_run": 39152818302,
+    "first_visual": "REJECT, contrast; proof rejected-light-snake/",
+    "second_run": 39154335927,
+    "second_visual": "REJECT, appearance on return; cancelled after phone, no accepted wide result; proof rejected-snake-appearance-return/"
+  },
+  "not_run": [
+    "Local iOS build (Apple SDK unavailable)",
+    "Personal iCloud account loading",
+    "Physical iPhone Duo fold/unfold",
+    "Device FPS measurement",
+    "Postcopy native rebuild/recapture",
+    "New Store media captures",
+    "TestFlight upload",
+    "App Store Connect upload or release"
+  ],
+  "store_archive": "RECAPTURE_REQUIRED remains unchanged for game naming and setup; these QA images are not a Store replacement."
+}

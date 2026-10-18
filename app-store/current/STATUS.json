@@ -22,7 +22,7 @@
     "iphone-medium"
   ],
   "pilot_run": 39118013344,
-  "iphone_assets": "RECAPTURE REQUIRED FOR GAME NAME",
+  "iphone_assets": "RECAPTURE REQUIRED FOR GAME NAME AND SETUP",
   "duo_assets": "BLOCKED: native pilot39140177705 failed Snake full-width geometry; all24 native PNGs used outer display. Zero approved Duo assets; proof in DUO_STATUS.json.",
   "app_store_connect_assets_upload": "NOT RUN",
   "app_store_release": "NOT RUN",
@@ -302,14 +302,14 @@
       "*/iphone-large/previews/02-photo-games-poster.png"
     ],
     "additional_archives": "Game setup/selection/record pages and other archived captures may also contain the former game name. Recapture visible game UI rather than retouching screenshots.",
-    "new_native_capture": "NOT RUN",
+    "new_native_capture": "NOT RUN for Store media refresh; separate setup QA recorded in game_setup_validation",
     "new_testflight_upload": "NOT RUN"
   },
   "source_capture_audit": "PASS",
   "game_setup_validation": {
-    "status": "IN PROGRESS; first native iPhone2/0/0 visually rejected for Snake contrast; correction under native validation",
-    "run_id": 39154335927,
-    "commit": "92a878c3b7d2f7c6d0ccf89e4ef0300ab9914877",
+    "status": "PASS for native7d7c842 build/setup/layout; single postcapture localized gallery hint statically checked, not rebuilt",
+    "run_id": 39155751429,
+    "commit": "7d7c842f5390df4fe935e9a02aeb4ba02e7f5cb3",
     "scope": "Native unit tests and actual German setup/iCloud toggles/manual-empty route/real-time PhotoKit Snake, plus Arabic accessibility text on phone and explicit wide-window simulator. Not a new Store capture or physical Duo test.",
     "first_run": 39152818302,
     "first_phone_native": {
@@ -318,6 +318,52 @@
       "skipped": 0
     },
     "first_phone_visual": "REJECT: dark status/captions on dark Snake scene in light app mode",
-    "first_visual_proof": "../../docs/game-setup-20261018/rejected-light-snake/review.json"
+    "first_visual_proof": "../../docs/game-setup-20261018/rejected-light-snake/review.json",
+    "second_run": 39154335927,
+    "second_run_outcome": "CANCELLED after actual phone appearance-regression review; no accepted second-run wide result",
+    "second_phone_native": {
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0
+    },
+    "second_visual_proof": "../../docs/game-setup-20261018/rejected-snake-appearance-return/review.json",
+    "native_core": {
+      "passed": 461,
+      "failed": 0,
+      "platform": "Linux SwiftPM"
+    },
+    "native_ios_unit": {
+      "passed": 63,
+      "failed": 0,
+      "swift_testing": 50,
+      "xctest": 13
+    },
+    "native_ui": {
+      "iphone": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0
+      },
+      "expanded_window": {
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    "visual_review": "PASS for captured layout/flows: 24 app checkpoints plus2 real permission diagnostics viewed. One later hint correction not recaptured.",
+    "actual_devices": {
+      "iphone": "iPhone 17, iOS26.2",
+      "expanded_window": "iPad mini (A17 Pro), iOS26.4.1; not Duo"
+    },
+    "proof": "../../docs/game-setup-20261018/README.md",
+    "postcapture_copy": {
+      "commit": "2528ffd",
+      "key": "snake_gallery_empty",
+      "languages": 16,
+      "swift_changes": false,
+      "static_check": "PASS",
+      "native_rebuild": "NOT RUN",
+      "native_recapture": "NOT RUN"
+    }
   }
 }
