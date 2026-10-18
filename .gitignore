@@ -17,4 +17,5 @@ fastlane/README.md
 *.mobileprovision
 *.cer
 __pycache__/
+/app-store/current/packages/*.zip
 .claude/worktrees/
