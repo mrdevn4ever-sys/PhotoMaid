@@ -548,6 +548,48 @@
   {
     "status": "PASS",
     "locale": "pl",
+    "device_class": "iphone-large",
+    "device": {
+      "device_class": "iphone-large",
+      "name": "iPhone 17 Pro Max",
+      "device_type": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro-Max",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+      "os_version": "26.2",
+      "sdk": "26.5",
+      "udid": "BAB6F830-B8A0-4F4C-B2AC-FD32BEF19AE0",
+      "actual_duo": false
+    },
+    "native_screenshots": 50,
+    "selected_screenshots": 10,
+    "videos": [
+      {
+        "file": "previews/01-review.mp4",
+        "sha256": "04e1d866e6842566b37689dca180bf9f4d9597243f73c3103ed7ce30746b19f6",
+        "duration": 27.0
+      },
+      {
+        "file": "previews/02-photo-games.mp4",
+        "sha256": "7e526b0e6bd0d75a9ead59fc7ec047dd66404204e6e336aaf6c6ec958dbe33c3",
+        "duration": 27.0
+      },
+      {
+        "file": "previews/03-studio.mp4",
+        "sha256": "6e99e0e757f98487937e020489d08d7e0e14c37e1b4ba3b75a5eb5c59acd6f97",
+        "duration": 27.0
+      },
+      {
+        "file": "alternatives/04-vault.mp4",
+        "sha256": "c416f5d4a6b6b0afe0adc0bd985696dc50ac19b61331205991970892a4274f8f",
+        "duration": 27.0
+      }
+    ],
+    "native_test_count": 5,
+    "source_commit": "cf9c42e71c3ad6162b86f1fcedfc749777999016",
+    "capture_run": "39125897166"
+  },
+  {
+    "status": "PASS",
+    "locale": "pl",
     "device_class": "iphone-medium",
     "device": {
       "device_class": "iphone-medium",
@@ -607,6 +649,27 @@
     "native_test_count": 5,
     "source_commit": "cf9c42e71c3ad6162b86f1fcedfc749777999016",
     "capture_run": "39125897166"
+  },
+  {
+    "status": "PASS",
+    "locale": "pt-PT",
+    "device_class": "iphone-medium",
+    "device": {
+      "device_class": "iphone-medium",
+      "name": "iPhone 17 Pro",
+      "device_type": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+      "os_version": "26.2",
+      "sdk": "26.5",
+      "udid": "982DDE7B-9144-4CAA-A663-E52FE220400F",
+      "actual_duo": false
+    },
+    "native_screenshots": 28,
+    "selected_screenshots": 10,
+    "videos": [],
+    "native_test_count": 1,
+    "source_commit": "cf9c42e71c3ad6162b86f1fcedfc749777999016",
+    "capture_run": "39125899164"
   },
   {
     "status": "PASS",
