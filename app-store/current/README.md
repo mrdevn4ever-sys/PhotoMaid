@@ -23,6 +23,6 @@ Die Tabelle zeigt ausschließlich tatsächlich vorhandene Dateien und Audit-Erge
 | [Ukrainisch](locales/uk/README.md) | `uk` | 0/10 · ausstehend | 0/10 · ausstehend | 0/3 + 0 Alternative |
 | [Chinesisch (vereinfacht)](locales/zh-Hans/README.md) | `zh-Hans` | 0/10 · ausstehend | 0/10 · ausstehend | 0/3 + 0 Alternative |
 
-[Prüfergebnisse](audit.json) · [Duo-Status](DUO_STATUS.json) · [Bisheriges vollständiges Seitenarchiv](../INDEX.md).
+[Interaktive Bild-/Videoübersicht](index.html) · [Prüfergebnisse](audit.json) · [Duo-Status](DUO_STATUS.json) · [Bisheriges vollständiges Seitenarchiv](../INDEX.md).
 
 Die zehn Upload-PNGs haben keine Alpha-Kanäle; Abmessungen und Farbpixel entsprechen den unveränderten nativen Originalen unter `all-pages/`. Memory-Paare werden durch echte Tipps gefunden, Snake läuft mit seiner normalen Uhr und Wischgesten. Kein fester Rekord oder künstlicher Spielstand.

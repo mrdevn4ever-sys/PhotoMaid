@@ -1,8 +1,35 @@
 #!/usr/bin/env python3
 """Build an index from current files and measured statuses; missing locales stay visibly pending."""
-import html
 import json
 from pathlib import Path
+
+
+def write_review(root, mapping, audit):
+    profiles = {(row['locale'], row['device_class']): row for row in audit}
+    locales = []
+    for code, info in mapping.items():
+        row = {'code': code, 'name': info['name_de'], 'app_store_locale': info['app_store_locale'], 'profiles': {}}
+        for device in ['iphone-large', 'iphone-medium']:
+            proof = profiles.get((code, device))
+            if not proof or proof['status'] != 'PASS':
+                continue
+            folder = root / 'locales' / code / device
+            selection = json.loads((folder / 'selection.json').read_text())
+            native = json.loads((folder / 'screenshots.json').read_text())
+            shot = next(item for item in native if 'all-pages/' + item['file'] == selection[0]['native_source'])
+            row['profiles'][device] = {
+                'status': 'PASS', 'name': proof['device']['name'],
+                'dimensions': f'{shot["width"]} × {shot["height"]}',
+                'native_tests': proof['native_test_count'],
+                'shots': [item['file'] for item in selection],
+            }
+        locales.append(row)
+    data = {'locales': locales, 'videos': [
+        {'title': title, 'file': f'previews/{stem}.mp4', 'poster': f'previews/{stem}-poster.png'}
+        for title, stem in [('Fotos durchsehen', '01-review'), ('Foto-Snake & Memory', '02-photo-games'), ('Fotoeditor', '03-studio')]
+    ], 'alternative': {'title': 'Tresor', 'file': 'alternatives/04-vault.mp4', 'poster': 'alternatives/04-vault-poster.png'}}
+    template = Path('scripts/store/refresh_review.html').read_text()
+    (root / 'index.html').write_text(template.replace('__ASSET_DATA__', json.dumps(data, ensure_ascii=False).replace('<', '\\u003c')))
 
 
 def main():
@@ -26,7 +53,7 @@ def main():
         status['actual_vault_alternative_videos'] = sum(sum(video['file'].startswith('alternatives/') for video in row.get('videos', [])) for row in passed)
         status['actual_native_passed_capture_cases'] = sum(row['native_test_count'] for row in passed)
         status_file.write_text(json.dumps(status, indent=2) + '\n')
-    rows, sections = [], []
+    rows, available = [], 0
     for code, info in mapping.items():
         devices = []
         for device in ['iphone-large', 'iphone-medium']:
@@ -55,16 +82,16 @@ def main():
         text += '\n'.join(f'- [{p.stem}](iphone-large/alternatives/{p.name})' for p in alt) + '\n'
         text += '\nDie Videos passen in das gemeinsame iPhone-Vorschauformat 886 × 1920. Duo ist separat im [Umgebungsbericht](../../DUO_STATUS.json) ausgewiesen.\n'
         (locale_dir / 'README.md').write_text(text)
-        sections.append(f'<section id="{code}"><h2>{html.escape(info["name_de"])}</h2><p><a href="locales/{code}/README.md">Bilder, Videos und Nachweise öffnen</a></p></section>')
+        available += 1
     text = '# PhotoMaid – aktueller Store-Satz\n\nStore-Aufnahmen einschließlich Foto-Snake und Memory für alle 16 App-Sprachen und zwei iPhone-Größen.\n\n'
     text += 'Die Tabelle zeigt ausschließlich tatsächlich vorhandene Dateien und Audit-Ergebnisse. Fehlende Aufnahmen sind ausstehend.\n\n'
     text += '| Sprache | App Store Connect | Großes iPhone | Mittleres iPhone | Videos |\n|---|---|---|---|---|\n' + '\n'.join(rows) + '\n\n'
-    text += '[Prüfergebnisse](audit.json) · [Duo-Status](DUO_STATUS.json) · [Bisheriges vollständiges Seitenarchiv](../INDEX.md).\n\n'
+    text += '[Interaktive Bild-/Videoübersicht](index.html) · [Prüfergebnisse](audit.json) · [Duo-Status](DUO_STATUS.json) · [Bisheriges vollständiges Seitenarchiv](../INDEX.md).\n\n'
     text += 'Die zehn Upload-PNGs haben keine Alpha-Kanäle; Abmessungen und Farbpixel entsprechen den unveränderten nativen Originalen unter `all-pages/`. '
     text += 'Memory-Paare werden durch echte Tipps gefunden, Snake läuft mit seiner normalen Uhr und Wischgesten. Kein fester Rekord oder künstlicher Spielstand.\n'
     (root / 'README.md').write_text(text)
-    (root / 'index.html').write_text('<!doctype html><html lang="de"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>PhotoMaid – Store-Assets</title><style>body{margin:40px auto;padding:0 20px;max-width:1100px;background:#141b18;color:#edf5ef;font:17px system-ui}a{color:#9adeaa}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}section{padding:22px;background:#202c25;border-radius:20px}h1{font-size:40px}</style><h1>PhotoMaid · Store-Assets</h1><p>Alle vorhandenen Sprachsätze mit Bildern, Videos und Prüfnachweisen.</p><p><a href="README.md">Vollständige Statusübersicht</a></p><main>' + ''.join(sections) + '</main></html>')
-    print('Indexed', len(sections), 'available locale folders; all', len(mapping), 'locales remain in the status table.')
+    write_review(root, mapping, audit)
+    print('Indexed', available, 'available locale folders; all', len(mapping), 'locales remain in the status table.')
 
 
 if __name__ == '__main__':
