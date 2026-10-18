@@ -1,0 +1,1274 @@
+Fetching https://github.com/apple/swift-crypto.git
+Fetching https://github.com/apple/swift-asn1.git
+[1/2051] Fetching swift-asn1
+[1089/20733] Fetching swift-asn1, swift-crypto
+Fetched https://github.com/apple/swift-asn1.git (0.25s)
+[748/18682] Fetching swift-crypto
+Fetched https://github.com/apple/swift-crypto.git (1.28s)
+Computing version for https://github.com/apple/swift-crypto.git
+Computed https://github.com/apple/swift-crypto.git at 4.5.2 (2.72s)
+Computing version for https://github.com/apple/swift-asn1.git
+Computed https://github.com/apple/swift-asn1.git at 1.7.3 (0.22s)
+Creating working copy for https://github.com/apple/swift-asn1.git
+Working copy of https://github.com/apple/swift-asn1.git resolved at 1.7.3
+Creating working copy for https://github.com/apple/swift-crypto.git
+Working copy of https://github.com/apple/swift-crypto.git resolved at 4.5.2
+Building for debugging...
+[Computing dependencies]
+[Pre-planning 1 / 303]
+[Planning deferred tasks]
+[54 / 467] CXKCP
+[58 / 467] CryptoBoringWrapper
+[62 / 467] CryptoBoringWrapper
+[66 / 468]
+[68 / 473] CCryptoBoringSSLShims
+[70 / 473] Crypto
+[71 / 473] Crypto
+[72 / 474] CryptoBoringWrapper
+[79 / 474] Crypto-product
+[81 / 474] CCryptoBoringSSL
+[82 / 474] Crypto
+[83 / 474] CCryptoBoringSSL
+[86 / 474] CCryptoBoringSSL
+[87 / 474] CCryptoBoringSSL
+[90 / 474] CCryptoBoringSSL
+[91 / 475] CCryptoBoringSSL
+[92 / 475] CCryptoBoringSSL
+[94 / 475] CCryptoBoringSSL
+[100 / 475] CCryptoBoringSSL
+[101 / 475] CCryptoBoringSSL
+[103 / 475] CCryptoBoringSSL
+[104 / 475] CCryptoBoringSSL
+[105 / 475] CCryptoBoringSSL
+[107 / 475] CCryptoBoringSSL
+[108 / 475] CCryptoBoringSSL
+[109 / 475] CCryptoBoringSSL
+[110 / 475] CCryptoBoringSSL
+[112 / 475] CCryptoBoringSSL
+[114 / 475] CCryptoBoringSSL
+[117 / 475] CCryptoBoringSSL
+[119 / 475] CCryptoBoringSSL
+[126 / 475] CCryptoBoringSSL
+[131 / 475] CCryptoBoringSSL
+[132 / 475] CCryptoBoringSSL
+[136 / 475] CCryptoBoringSSL
+[139 / 475] CCryptoBoringSSL
+[140 / 475] CCryptoBoringSSL
+[142 / 475] CCryptoBoringSSL
+[144 / 475] CCryptoBoringSSL
+[146 / 475] CCryptoBoringSSL
+[147 / 475] CCryptoBoringSSL
+[148 / 475] CCryptoBoringSSL
+[149 / 475] CCryptoBoringSSL
+[152 / 475] CCryptoBoringSSL
+[154 / 475] CCryptoBoringSSL
+[156 / 475] CCryptoBoringSSL
+[159 / 475] CCryptoBoringSSL
+[160 / 475] CCryptoBoringSSL
+[163 / 475] CCryptoBoringSSL
+[164 / 475] CCryptoBoringSSL
+[165 / 475] CCryptoBoringSSL
+[168 / 475] CCryptoBoringSSL
+[169 / 475] CCryptoBoringSSL
+[170 / 475] CCryptoBoringSSL
+[172 / 475] CCryptoBoringSSL
+[176 / 475] CCryptoBoringSSL
+[179 / 475] CCryptoBoringSSL
+[181 / 475] CCryptoBoringSSL
+[188 / 475] CCryptoBoringSSL
+[191 / 475] CCryptoBoringSSL
+[198 / 475] CCryptoBoringSSL
+[206 / 475] CCryptoBoringSSL
+[209 / 475] CCryptoBoringSSL
+[210 / 475] CCryptoBoringSSL
+[213 / 475] CCryptoBoringSSL
+[219 / 475] CCryptoBoringSSL
+[223 / 475] CCryptoBoringSSL
+[226 / 475] CCryptoBoringSSL
+[227 / 475] CCryptoBoringSSL
+[228 / 475] CCryptoBoringSSL
+[230 / 475] CCryptoBoringSSL
+[233 / 475] CCryptoBoringSSL
+[234 / 475] CCryptoBoringSSL
+[235 / 475] CCryptoBoringSSL
+[237 / 475] CCryptoBoringSSL
+[238 / 475] CCryptoBoringSSL
+[239 / 475] CCryptoBoringSSL
+[240 / 475] CCryptoBoringSSL
+[241 / 475] CCryptoBoringSSL
+[242 / 475] CCryptoBoringSSL
+[244 / 475] CCryptoBoringSSL
+[246 / 475] CCryptoBoringSSL
+[249 / 475] CCryptoBoringSSL
+[251 / 475] CCryptoBoringSSL
+[253 / 475] CCryptoBoringSSL
+[254 / 475] CCryptoBoringSSL
+[255 / 475] CCryptoBoringSSL
+[258 / 475] CCryptoBoringSSL
+[259 / 475] CCryptoBoringSSL
+[265 / 475] CCryptoBoringSSL
+[270 / 475] CCryptoBoringSSL
+[272 / 475] CCryptoBoringSSL
+[275 / 475] CCryptoBoringSSL
+[279 / 475] CCryptoBoringSSL
+[280 / 475] CCryptoBoringSSL
+[283 / 475] CCryptoBoringSSL
+[284 / 475] CCryptoBoringSSL
+[286 / 475] CCryptoBoringSSL
+[287 / 475] CCryptoBoringSSL
+[291 / 475] CCryptoBoringSSL
+[298 / 475] CCryptoBoringSSL
+[307 / 475] CCryptoBoringSSL
+[309 / 475] CCryptoBoringSSL
+[314 / 475] CCryptoBoringSSL
+[316 / 475] CCryptoBoringSSL
+[318 / 475] CCryptoBoringSSL
+[320 / 475] CCryptoBoringSSL
+[321 / 475] CCryptoBoringSSL
+[323 / 475] CCryptoBoringSSL
+[324 / 475] CCryptoBoringSSL
+[327 / 475] CCryptoBoringSSL
+[328 / 475] CCryptoBoringSSL
+[330 / 475] CCryptoBoringSSL
+[332 / 475] CCryptoBoringSSL
+[333 / 475] CCryptoBoringSSL
+[334 / 475] CCryptoBoringSSL
+[338 / 475] CCryptoBoringSSL
+[341 / 475] CCryptoBoringSSL
+[342 / 475] CCryptoBoringSSL
+[344 / 475] CCryptoBoringSSL
+[345 / 475] CCryptoBoringSSL
+[347 / 475] CCryptoBoringSSL
+[348 / 475] CCryptoBoringSSL
+[350 / 475] CCryptoBoringSSL
+[352 / 475] CCryptoBoringSSL
+[355 / 475] CCryptoBoringSSL
+[357 / 475] CCryptoBoringSSL
+[360 / 475] CCryptoBoringSSL
+[361 / 475] CCryptoBoringSSL
+[362 / 475] CCryptoBoringSSL
+[364 / 475] CCryptoBoringSSL
+[367 / 475] CCryptoBoringSSL
+[370 / 475] CCryptoBoringSSL
+[373 / 475] CCryptoBoringSSL
+[379 / 475] CCryptoBoringSSL
+[381 / 475] CCryptoBoringSSL
+[383 / 475] CCryptoBoringSSL
+[385 / 475] CCryptoBoringSSL
+[386 / 475] CCryptoBoringSSL
+[389 / 475] CCryptoBoringSSL
+[394 / 475] CCryptoBoringSSL
+[395 / 475] CCryptoBoringSSL
+[397 / 475] CCryptoBoringSSL
+[399 / 475] CCryptoBoringSSL
+[400 / 475] CCryptoBoringSSL
+[401 / 475] CCryptoBoringSSL
+[403 / 475] CCryptoBoringSSL
+[404 / 475] CCryptoBoringSSL
+[408 / 475] CCryptoBoringSSL
+[412 / 475] CCryptoBoringSSL
+[417 / 475] CCryptoBoringSSL
+[423 / 475] CCryptoBoringSSL
+[426 / 475] CCryptoBoringSSL
+[427 / 475] CCryptoBoringSSL
+[430 / 475] CCryptoBoringSSL
+[431 / 475] CCryptoBoringSSL
+[433 / 475] CCryptoBoringSSL
+[435 / 475] CCryptoBoringSSL
+[436 / 475] CCryptoBoringSSL
+[437 / 475] CCryptoBoringSSL
+[440 / 475] CCryptoBoringSSL
+[441 / 475] CCryptoBoringSSL
+[442 / 475] CCryptoBoringSSL
+[445 / 475] CCryptoBoringSSL
+[447 / 475]
+[451 / 481] PhotoMaidCore
+[452 / 481] PhotoMaidCore
+[454 / 481] PhotoMaidCore
+[460 / 482]
+[462 / 487] PhotoMaidCoreTests-product
+[463 / 487] CCryptoBoringSSL
+[465 / 487] PhotoMaidCoreTests-product
+[466 / 488] PhotoMaidCoreTests-product
+[468 / 488] PhotoMaidCore
+[475 / 488] Crypto
+[476 / 488] PhotoMaidCore
+[477 / 488] PhotoMaidCore-product
+[477 / 488] PhotoMaidCoreTests-product
+[481 / 489] PhotoMaidCoreTests-product
+[485 / 492] PhotoMaidCoreTests-test-runner
+[489 / 492] PhotoMaidCoreTests-test-runner
+[493 / 493] PhotoMaidCoreTests-test-runner
+Build complete! (103.04 secs)
+Test Suite 'All tests' started at 2026-10-18 18:15:38.558
+Test Suite 'Debug-linux-x86_64.xctest' started at 2026-10-18 18:15:38.559
+Test Suite 'RetouchSelectionTests' started at 2026-10-18 18:15:38.559
+Test Case 'RetouchSelectionTests.testAdjustmentValuesAreClamped' started at 2026-10-18 18:15:38.559
+Test Case 'RetouchSelectionTests.testAdjustmentValuesAreClamped' passed (0.001 seconds)
+Test Case 'RetouchSelectionTests.testChangingIdentityInsideUpdateIsRejected' started at 2026-10-18 18:15:38.559
+Test Case 'RetouchSelectionTests.testChangingIdentityInsideUpdateIsRejected' passed (0.0 seconds)
+Test Case 'RetouchSelectionTests.testContextInvalidationRejectsLateEvents' started at 2026-10-18 18:15:38.560
+Test Case 'RetouchSelectionTests.testContextInvalidationRejectsLateEvents' passed (0.0 seconds)
+Test Case 'RetouchSelectionTests.testDeletedTargetWriteIsANoOp' started at 2026-10-18 18:15:38.560
+Test Case 'RetouchSelectionTests.testDeletedTargetWriteIsANoOp' passed (0.0 seconds)
+Test Case 'RetouchSelectionTests.testDeselectedTargetCannotWrite' started at 2026-10-18 18:15:38.560
+Test Case 'RetouchSelectionTests.testDeselectedTargetCannotWrite' passed (0.0 seconds)
+Test Case 'RetouchSelectionTests.testDuplicateIDsFailClosed' started at 2026-10-18 18:15:38.560
+Test Case 'RetouchSelectionTests.testDuplicateIDsFailClosed' passed (0.0 seconds)
+Test Case 'RetouchSelectionTests.testEqualLegacyEntriesDoNotShareAnID' started at 2026-10-18 18:15:38.560
+Test Case 'RetouchSelectionTests.testEqualLegacyEntriesDoNotShareAnID' passed (0.001 seconds)
+Test Case 'RetouchSelectionTests.testEveryNewAdjustmentHasUniqueIdentity' started at 2026-10-18 18:15:38.561
+Test Case 'RetouchSelectionTests.testEveryNewAdjustmentHasUniqueIdentity' passed (0.0 seconds)
+Test Case 'RetouchSelectionTests.testIdentityAndValuesSurviveCodableRoundTrip' started at 2026-10-18 18:15:38.561
+Test Case 'RetouchSelectionTests.testIdentityAndValuesSurviveCodableRoundTrip' passed (0.0 seconds)
+Test Case 'RetouchSelectionTests.testIdentitySurvivesValueCopy' started at 2026-10-18 18:15:38.561
+Test Case 'RetouchSelectionTests.testIdentitySurvivesValueCopy' passed (0.0 seconds)
+Test Case 'RetouchSelectionTests.testInvalidRadialNumbersCannotReachDisplayOrMutation' started at 2026-10-18 18:15:38.561
+Test Case 'RetouchSelectionTests.testInvalidRadialNumbersCannotReachDisplayOrMutation' passed (0.0 seconds)
+Test Case 'RetouchSelectionTests.testLegacyRecipeWithoutIDGetsStablePersistableIdentity' started at 2026-10-18 18:15:38.562
+Test Case 'RetouchSelectionTests.testLegacyRecipeWithoutIDGetsStablePersistableIdentity' passed (0.001 seconds)
+Test Case 'RetouchSelectionTests.testLookupFollowsIdentityAfterReordering' started at 2026-10-18 18:15:38.562
+Test Case 'RetouchSelectionTests.testLookupFollowsIdentityAfterReordering' passed (0.0 seconds)
+Test Case 'RetouchSelectionTests.testMissingTargetReadIsSafeAndDoesNotMutate' started at 2026-10-18 18:15:38.563
+Test Case 'RetouchSelectionTests.testMissingTargetReadIsSafeAndDoesNotMutate' passed (0.0 seconds)
+Test Case 'RetouchSelectionTests.testNonFiniteAdjustmentValuesAreRejected' started at 2026-10-18 18:15:38.563
+Test Case 'RetouchSelectionTests.testNonFiniteAdjustmentValuesAreRejected' passed (0.0 seconds)
+Test Case 'RetouchSelectionTests.testNonFiniteStoredValueHasSafeDisplayFallback' started at 2026-10-18 18:15:38.563
+Test Case 'RetouchSelectionTests.testNonFiniteStoredValueHasSafeDisplayFallback' passed (0.0 seconds)
+Test Case 'RetouchSelectionTests.testOldTokenCannotReviveAfterReselection' started at 2026-10-18 18:15:38.563
+Test Case 'RetouchSelectionTests.testOldTokenCannotReviveAfterReselection' passed (0.0 seconds)
+Test Case 'RetouchSelectionTests.testRadialControlCannotChangeAnotherMaskKind' started at 2026-10-18 18:15:38.563
+Test Case 'RetouchSelectionTests.testRadialControlCannotChangeAnotherMaskKind' passed (0.0 seconds)
+Test Case 'RetouchSelectionTests.testReconcileClearsRemovedSelection' started at 2026-10-18 18:15:38.563
+Test Case 'RetouchSelectionTests.testReconcileClearsRemovedSelection' passed (0.0 seconds)
+Test Case 'RetouchSelectionTests.testReconcileKeepsExistingIdentity' started at 2026-10-18 18:15:38.563
+Test Case 'RetouchSelectionTests.testReconcileKeepsExistingIdentity' passed (0.0 seconds)
+Test Case 'RetouchSelectionTests.testRepeatedDeleteRestoreAndInsertDoesNotRetarget' started at 2026-10-18 18:15:38.564
+Test Case 'RetouchSelectionTests.testRepeatedDeleteRestoreAndInsertDoesNotRetarget' passed (0.011 seconds)
+Test Case 'RetouchSelectionTests.testSameArrayPositionNeverMeansSameTarget' started at 2026-10-18 18:15:38.575
+Test Case 'RetouchSelectionTests.testSameArrayPositionNeverMeansSameTarget' passed (0.0 seconds)
+Test Case 'RetouchSelectionTests.testSizeUpdatePreservesCurrentNotCapturedGeometry' started at 2026-10-18 18:15:38.575
+Test Case 'RetouchSelectionTests.testSizeUpdatePreservesCurrentNotCapturedGeometry' passed (0.0 seconds)
+Test Case 'RetouchSelectionTests.testUndoRedoRestorationDoesNotReviveOldCallbacks' started at 2026-10-18 18:15:38.575
+Test Case 'RetouchSelectionTests.testUndoRedoRestorationDoesNotReviveOldCallbacks' passed (0.0 seconds)
+Test Suite 'RetouchSelectionTests' passed at 2026-10-18 18:15:38.575
+	 Executed 24 tests, with 0 failures (0 unexpected) in 0.016 (0.016) seconds
+Test Suite 'Debug-linux-x86_64.xctest' passed at 2026-10-18 18:15:38.575
+	 Executed 24 tests, with 0 failures (0 unexpected) in 0.016 (0.016) seconds
+Test Suite 'All tests' passed at 2026-10-18 18:15:38.575
+	 Executed 24 tests, with 0 failures (0 unexpected) in 0.016 (0.016) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.4.1 (804dc4530ef3666)
+↳ Target Platform: x86_64-unknown-linux-gnu
+◇ Suite PhotoSnakePresentationTests started.
+◇ Suite MoviePlanTests started.
+◇ Suite GestureMachineTests started.
+◇ Suite SizeEstimateTests started.
+◇ Suite PhotoGameRecordsTests started.
+◇ Suite FeedControlsTests started.
+◇ Suite VaultTests started.
+◇ Suite VideoPlanTests started.
+◇ Suite "Feed-Session" started.
+◇ Suite QuickAccessShareTests started.
+◇ Suite "Free, Lifetime Pro (E19)" started.
+◇ Suite LayerTests started.
+◇ Suite "Ledger: Ergänzungen aus Android" started.
+◇ Suite WorkflowTests started.
+◇ Suite "Vollständige Duplikatprüfung" started.
+◇ Suite EditCoreTests started.
+◇ Suite VaultAudioFormatTests started.
+◇ Suite "Entscheidungs-Ledger" started.
+◇ Suite "Exakte Duplikate" started.
+◇ Suite AnalysisResultsTests started.
+◇ Suite BatchTests started.
+◇ Suite AnalysisPlanTests started.
+◇ Suite PhotoMemoryBoardLayoutTests started.
+◇ Suite HistoryGroupingTests started.
+◇ Suite BackupTests started.
+◇ Suite CollageSceneTests started.
+◇ Suite ExpansionTests started.
+◇ Suite PluralAndAnalysisTests started.
+◇ Suite QuickSourceFilterTests started.
+◇ Suite "Bereinigung, Journal, Free-Limit" started.
+◇ Suite PhotoMemoryGameTests started.
+◇ Suite "Sammlungen" started.
+◇ Suite ArchiveTests started.
+◇ Suite PdfTests started.
+◇ Suite NoDistortionTests started.
+◇ Suite ColorPipelineTests started.
+◇ Suite VaultNoteJournalTests started.
+◇ Suite "Vault session boundaries" started.
+◇ Suite PhotoSnakeGalleryTests started.
+◇ Suite LibraryChangesTests started.
+◇ Suite LibraryTests started.
+◇ Suite "Später 2.0" started.
+◇ Suite "Vault security primitives; not app integration" started.
+◇ Suite OrganizeTests started.
+◇ Suite SizeInventoryTests started.
+◇ Suite "Vault workspace domain" started.
+◇ Suite LibraryFilterTests started.
+◇ Suite PhotoSnakeGameTests started.
+◇ Suite CollageTests started.
+◇ Suite AnalysisWorkTests started.
+◇ Test animationPriorityTimingAndSkinsUseKitFrames() started.
+◇ Test interpolationFollowsOrthogonalHistoryAndFinishesAtAuthoritativeCells() started.
+◇ Test growthUnfoldsFromTailWithoutImportingOrTeleportingPhotos() started.
+◇ Test collisionOnlyTravelsToContactAndCannotChangeTheRules() started.
+◇ Test wrappedEdgesNeverDrawAcrossTheBoard() started.
+◇ Test rotationTakesTheShortestPathAndPreferencesRoundTrip() started.
+◇ Test historySupportsThreeHundredSegmentsOnTheUnmodifiedGame() started.
+◇ Test limitsAndSlideshow() started.
+◇ Test blackAlphaPeaksOnSeamOnly() started.
+◇ Test frameKeepsAspectAndEvenSizes() started.
+◇ Test musicFadesAtBothEnds() started.
+◇ Test startsAndTotal() started.
+◇ Test projectCodableRoundTrip() started.
+◇ Test slowLongDragCommitsShortDoesNot() started.
+◇ Test diagonalLeftDoesNothing() started.
+◇ Test noDoubleCommit() started.
+◇ Test rapidRepeatedSwipesNeverDoubleCommit() started.
+◇ Test directionsMatchFingerMovement() started.
+◇ Test reversalSwitchesDirectionNotTwoActions() started.
+◇ Test fixedMeaning() started.
+◇ Test flickSufficesWithMinimumDistance() started.
+◇ Test rightVariants() started.
+◇ Test rightFollowsHorizontally() started.
+◇ Test systemCancelReturnsToIdle() started.
+◇ Test readyToCommitMatchesCommitCondition() started.
+◇ Test flickAgainstDirectionDoesNotCommit() started.
+◇ Test axisOffsetAfterLock() started.
+◇ Test invalidTimesNeverReplaceARecord() started.
+◇ Test memorySeparatesRoundSizesPicturesAndManualMismatchRules() started.
+◇ Test suspendedIgnoresGestures() started.
+◇ Test tooShortIsCancelled() started.
+◇ Test memoryRequiresAWinAndReplacesOnlyWithAFasterWin() started.
+◇ Test recordsRoundTripWithoutPicturesAndSanitizeDuplicateOrInvalidStoredValues() started.
+◇ Test repeatedClockEventsNeverDoubleCountAndResetStartsFresh() started.
+◇ Test snakeKeepsOnlyTheLargestActualFoodCountIncludingUnfinishedRounds() started.
+◇ Test snakeSeparatesPacesControlsAndBoardSizes() started.
+◇ Test clockDoesNotRunUntilStartedAndExcludesLongPauses() started.
+◇ Test sanitizeRemovesDuplicatesNoneAndLimits() started.
+◇ Test removingDeletedAlbum() started.
+◇ Test invalidClockSamplesNeverCreateNegativeOrNonfiniteTimes() started.
+◇ Test albumActionKeepsAndIsADecision() started.
+◇ Test filesUseMedianOfSameType() started.
+◇ Test codableRoundTripAndTolerantDecoding() started.
+◇ Test savingsShowEstimateOnlyWhenEveryUnknownHasOne() started.
+◇ Test remapRightToAlbum() started.
+◇ Test roundingToTwoSignificantDigits() started.
+◇ Test calibratesFromOwnMeasurementsWithMedian() started.
+◇ Test addableButtonsExcludeExisting() started.
+◇ Test standardMatchesFixedGestures() started.
+◇ Test alwaysPositiveEvenWithoutMetadata() started.
+◇ Test fallbackRatesGivePlausibleIPhoneSizes() started.
+◇ Test schnappschussRundreiseUndUnbekannteVersion() started.
+◇ Test sumIsApproximateAsSoonAsOnePartIsEstimated() started.
+◇ Test sortierungUnbekanntesDatumAmEnde() started.
+◇ Test zuruecklegenAktuelleFassungUndAlleTeile() started.
+◇ Test fehlversucheNurWartezeit() started.
+◇ Test verbergenListeEnthaeltNurPruefsummen() started.
+◇ Test codeRegeln() started.
+◇ Test freeGrenze50ProUnbegrenzt() started.
+◇ Test abgeleiteteKopienUeberMehrereStufen() started.
+◇ Test rightDeadZones() started.
+◇ Test ordnerAnlegenUmbenennenLoeschen() started.
+◇ Test dateienAusVerbundenenOrdnernBleibenVerborgen() started.
+◇ Test papierkorbBleibtVerborgenUndBelegtPlaetze() started.
+◇ Test alteEintraegeWerdenOhneRatenUebernommen() started.
+◇ Test nochInDerFotosApp() started.
+◇ Test gespeichertOhneQuellenBleibtLesbar() started.
+◇ Test notfallschluesselFormatUndEingabe() started.
+◇ Test einstellungenUndIndexSindKodierbar() started.
+◇ Test layoutRotatesCropsAndNeverUpscales() started.
+◇ Test entfernenLiefertEintraegeFuerDateien() started.
+◇ Test estimateIsMonotoneInProfileAndAudio() started.
+◇ Test dateiformatBloecke() started.
+◇ Test overlappingCutsMergeAndNeverRemoveEverything() started.
+◇ Test speedShortensOutputAndScalesMapping() started.
+◇ Test altesInhaltsverzeichnisWirdOhneVerlustUebernommen() started.
+◇ Test originalKennungBleibtNachLoeschbestaetigung() started.
+◇ Test endgueltigesLoeschenNieAktiverDateien() started.
+◇ Test cutRemovesTheMiddleAndTimesMapBothWays() started.
+◇ Test gainFadesInAndOutAndMuteIsSilent() started.
+◇ Test layerAlphaFadesAtEdges() started.
+◇ Test "Callback A verändert niemals B" started.
+◇ Test "100 schnelle Entscheidungen: Zählung entspricht dem Ledger" started.
+◇ Test "Session-Ende: echte Zusammenfassung, keine Endlosschleife" started.
+◇ Test "Persistenzfehler setzt die visuelle Aktion zurück" started.
+◇ Test "Terminleiste gehört zum zurückgestellten Item und wird durch neue Entscheidung geschlossen" started.
+◇ Test "Nicht geladene Vorschau darf nicht entschieden werden" started.
+◇ Test "Zwei nicht ladbare Medien weiter: keine Entscheidung, kein Sprung durch veraltete Tasten" started.
+◇ Test "Weiter ohne Auswahl kann keinen offenen Commit verlassen" started.
+◇ Test "Korrektur eines früheren Items: kein Doppelzählen in der Zusammenfassung" started.
+◇ Test "Schräg rechts oben: Später mit Wunsch nach eigenem Datum, zählt als Später" started.
+◇ Test actionsNeverIncludeADecision() started.
+◇ Test "Runter navigiert zurück, ohne Entscheidung; am Anfang: Anschlag" started.
+◇ Test "Genau ein Behalten pro Wischen nach oben, genau ein Schritt weiter" started.
+◇ Test "Schnelle Folge: zweiter Request während offenem Commit wird verworfen" started.
+◇ Test defaultsArePhotosAndVideos() started.
+◇ Test "Passive Navigation erzeugt kein Behalten" started.
+◇ Test intakeCountsRejectedUnmatchedAndDeduplicates() started.
+◇ Test onlyRemovedItemsWithKnownSizeCount() started.
+◇ Test acceptsOnlyPhotosAndVideos() started.
+◇ Test thisWeekIsLocalCalendarWeek() started.
+◇ Test addRemoveMoveAndLimit() started.
+◇ Test sanitizeAndPersistence() started.
+◇ Test shortcutIdsRoundTripAndPlan() started.
+◇ Test matchNeedsNameAndSizeAndNeverGuesses() started.
+◇ Test vaultFolderNeedsAdOnlyInFree() started.
+◇ Test workUnit() started.
+◇ Test appOpenAdFromFourthStart() started.
+◇ Test storageDoesNotAddOverlappingCategories() started.
+◇ Test proNoRewardNoAds() started.
+◇ Test rewardLedgerDecodesOlderFormat() started.
+◇ Test purchaseStates() started.
+◇ Test proTestNoLongerChangesTier() started.
+◇ Test restoredFromRecentlyDeletedIsPendingAgain() started.
+◇ Test clockBackExpiresConservatively() started.
+◇ Test concurrentReservationsAreAtomic() started.
+◇ Test recipeWithLayersRoundTripsAsJson() started.
+◇ Test limitBonusOnlyToday() started.
+◇ Test markupIsFreeFrameIsPro() started.
+◇ Test frameLayout() started.
+◇ Test snappingAndRedactBlocks() started.
+◇ Test limitBonusOfferOncePerDay() started.
+◇ Test completeAndIncompleteResultsAreDistinct() started.
+◇ Test layerOrderingAndDuplicate() started.
+◇ Test compoundHashProviderIsUsedInsteadOfAnOriginalOnlyStream() started.
+◇ Test progressAdvancesWithinALargeBucket() started.
+◇ Test rawAndEditsMustAlsoMatch() started.
+◇ Test filesWithoutMetadataSizeAreMeasuredWithBothHashes() started.
+◇ Test resourceOrderAndNamesDoNotMatter() started.
+◇ Test truncatedStreamsAreNotDuplicates() started.
+◇ Test cancellationIsNotConvertedIntoAnUnreadableItem() started.
+◇ Test compoundSignaturesHaveTheirOwnNamespace() started.
+◇ Test resourceRolesAndMultiplicityMatter() started.
+◇ Test argbHelpersMatchAndroidInts() started.
+◇ Test oneReadFailureDoesNotAbortTheOtherFiles() started.
+◇ Test targetSizeShrinksEdgeOnlyWhenNeededAndReportsUnreachable() started.
+◇ Test differentLiveVideoIsNotAnExactCopy() started.
+◇ Test targetSizeFindsHighestFittingQualityFirst() started.
+◇ Test androidWorkflowJsonIsReadable() started.
+◇ Test stepsDescribeOnlyWhatHappensInOrder() started.
+◇ Test namesAreNumberedAndSafe() started.
+◇ Test headerIsStreamingMonoCAF() started.
+◇ Test formatSizeAndValidity() started.
+◇ Test cropAndResizeComposeIntoOutput() started.
+◇ Test invalidSampleRatesAreRejected(_:) started.
+◇ Test colorMatricesAreNeutralAtZeroAndMonoIsGray() started.
+◇ Test invalidCornerMoveIsRejected() started.
+◇ Test budgetIsSharedBySize() started.
+◇ Test rotatingKeepsPerspectiveOnTheSameImageContent() started.
+◇ Test flipMirrorsHorizontally() started.
+◇ Test mixerDesaturationKeepsLuminance() started.
+◇ Test trimRangeClampsToVideo() started.
+◇ Test homographyMapsFourPointsExactly() started.
+◇ Test rotatingKeepsCropOnSameImageArea() started.
+◇ Test identityRecipeKeepsSizeAndPixelsInPlace() started.
+◇ Test straightenNeverShowsEmptyCorners() started.
+◇ Test identityQuadChangesNothing() started.
+◇ Test recipeCodableRoundTripIncludingLayers() started.
+◇ Test pointOpsNeutralAndCubeShape() started.
+◇ Test aspectFitAndDragKeepRatio() started.
+◇ Test redEyeRemovesRedInsideOnlyAndSparesSkin() started.
+◇ Test resizeNeverUpscales() started.
+◇ Test quarterTurnSwapsFrameAndMapsCorners() started.
+◇ Test formatsAndNames() started.
+◇ Test keystoneMapsQuadCornersToFrameCornersAndKeepsPixelBudget() started.
+◇ Test "Erneut dieselbe Entscheidung: keine doppelten Zähler oder Korbeinträge" started.
+◇ Test "Undo überschreibt keine neuere Entscheidung (Bereinigung) und keine laufende Operation" started.
+◇ Test feedSessionReplacesEditedItemInPlace() started.
+◇ Test "Undo stellt exakt den vorherigen Zustand wieder her" started.
+◇ Test "Zurückstellung entfernen macht Item wieder unentschieden (keine Löschung)" started.
+◇ Test exifOrientationComposesLikeTheRenderer() started.
+◇ Test masksAndVignette() started.
+◇ Test histogramCountsAndClipping() started.
+◇ Test "Korrektur ersetzt den Stand atomar und ist als Korrektur im Verlauf" started.
+◇ Test "Terminwahl gehört zur Später-Aktion: Undo nimmt beides zurück" started.
+◇ Test "Persistenzfehler: keine stille Erfolgsmeldung, Zustand unverändert" started.
+◇ Test toneCurveIsMonotonicAndBounded() started.
+◇ Test "Generierte Aktionsfolgen erhalten die Invarianten" started.
+◇ Test "Behalten oder Vormerken löst einen aktiven Termin im selben Commit auf" started.
+◇ Test "Undo eines anderen Items nach Korrektur: Reihenfolge bleibt korrekt" started.
+◇ Test "Veraltete Revision wird abgelehnt" started.
+◇ Test "Neustart: Zustand wird vollständig aus der Persistenz geladen" started.
+◇ Test "Behalten, Vormerken, Später erzeugen je einen Verlaufseintrag" started.
+◇ Test "Wiederholte Command-ID wird nicht doppelt angewendet" started.
+◇ Test "Scan ist abbrechbar" started.
+◇ Test "Aliasquellen zählen nicht als eigene Kopie" started.
+◇ Test singleResourceStillMatchesAnOrdinaryFile() started.
+◇ Test "Nullbyte, unbekannte Größe, nicht vergleichbare Assets und nicht lokale Bytes" started.
+◇ Test "Große Dateien werden gestreamt; Teilhash sortiert nur aus" started.
+◇ Test "Gleiche Bytes, anderer Name → eine Gruppe; Mathematik 3 × 14 MB" started.
+◇ Test autoResumeRules() started.
+◇ Test "SHA-256 entspricht Testvektor" started.
+◇ Test feedStartsAtTappedItem() started.
+◇ Test throttledWorkHonoursBeforeStartFailure() started.
+◇ Test pageClampsAfterItemsWereDecided() started.
+◇ Test videoTargetPlansBitrateAndNeverUpscales() started.
+◇ Test throttleByThermalLevel() started.
+◇ Test throttledWorkStopsWhenCritical() started.
+◇ Test "50 000 Einträge: nur Kandidaten werden gelesen" started.
+◇ Test groupsDropMembersAndSmallGroups() started.
+◇ Test throttledWorkRespectsParallelismAndOrder() started.
+◇ Test throttledWorkWaitsWhileWarmThenContinues() started.
+◇ Test summaryIsHonest() started.
+◇ Test gifFramePlacementAndTimes() started.
+◇ Test needsWorkSkipsPointlessCopies() started.
+◇ Test stitchKeepsAspectAndNeverUpscales() started.
+◇ Test openingAnotherAnalysisQueuesInsteadOfStopping() started.
+◇ Test cloudOnlyIsSharedOnlyTowardsEqualOrLargerPreviews() started.
+◇ Test pageKeepsOrderAndFiltersDecided() started.
+◇ Test startingWhileIdleKeepsUnfinishedWorkOnlyIfWanted() started.
+◇ Test initRemovesDuplicatesAndCurrent() started.
+◇ Test fitsPhoneAndOpenDisplayWithoutTinyTargets() started.
+◇ Test finishedAnalysisStartsTheNextOne() started.
+◇ Test prioritizeKeepsThePreviousNext() started.
+◇ Test smallDecksPreferCompactCardsInsteadOfFullWidthStrips() started.
+◇ Test laterAndFirstScheduleBecomeOneEntry() started.
+◇ Test sameOperationIsBatched() started.
+◇ Test accessibilityAndShortWindowsKeepTargetsAndDeclareScrolling() started.
+◇ Test restoreFindsMediaOnANewPhoneAndNeverOverwrites() started.
+◇ Test backupChecksFormatAndVersion() started.
+◇ Test backupSurvivesJsonAndReadsAndroidFiles() started.
+◇ Test stripStacksWithoutDistortionAndMargins() started.
+◇ Test dividerHandlesSitOnTheGapAndMove() started.
+◇ Test frontReplaceAndKindKeepTheRest() started.
+◇ Test panFollowsTheFingerAndClamps() started.
+◇ Test hitRespectsRotationAndOrder() started.
+◇ Test monthProgressCountsRealDecisionsOnly() started.
+◇ Test outputSizeFollowsResolutionAndLimits() started.
+◇ Test bookmarkIsLaterWithoutDateAndNeverReturnsOnItsOwn() started.
+◇ Test gridFillAndFitNeverDistort() started.
+◇ Test removedItemThatIsBackCanBeDecidedAgain() started.
+◇ Test recordDecodesWithoutBookmarkField() started.
+◇ Test freeKeepsPhotoAspectAndPolaroidBorder() started.
+◇ Test seriesNeedSameGroupShortGapsAndThreeMembers() started.
+◇ Test sessionDropAndReorderOnlyTouchUpcoming() started.
+◇ Test undoOfLaterWithBookmarkRestoresOpenItem() started.
+◇ Test cornersAreClampedToHalfTheCell() started.
+◇ Test scheduleClearsBookmarkAndBookmarkNeedsLater() started.
+◇ Test scheduleAfterOtherChangeStaysSeparate() started.
+◇ Test similarPhotosGroupOnlyWithinWindowAndThreshold() started.
+◇ Test photosOlderThanOneYearIsBuiltIn() started.
+◇ Test orderingKeepsUnknownLastAndShuffleIsStable() started.
+◇ Test sharpestSuggestionNeedsMeasurementsAndClearLead() started.
+◇ Test categoriesNeedConfidence() started.
+◇ Test pluralCategoriesForAllSixteenLanguages() started.
+◇ Test blurVerdictAndLaplacian() started.
+◇ Test adCardEveryFiftyDecisions() started.
+◇ Test featuredLayoutsAreValidAndLeadWithBalanced() started.
+◇ Test onThisDayMatchesEarlierYearsInLocalTime() started.
+◇ Test randomPicksOnlyOpenMediaAndNeverFiles() started.
+◇ Test existingSourcesKeepTheirMeaning() started.
+◇ Test randomCountIsStableAndHonest() started.
+◇ Test randomIsSeededAndBounded() started.
+◇ Test longVideosByDurationOnly() started.
+◇ Test newKindsPersistAndOldDataStillDecodes() started.
+◇ Test countUsesOpenSetForOrdinarySources() started.
+◇ Test portraitsLiveFavoritesAndSelfies() started.
+◇ Test "Dateien: belegter Teilerfolg zählt nur tatsächlich entfernte Dateien" started.
+◇ Test onThisDayLeapDay() started.
+◇ Test sampleIsPartialShuffle() started.
+◇ Test "Zeitzonen-/Uhrwechsel: keine negativen oder doppelten Zähler" started.
+◇ Test "Vorbereitet, aber nie gestartet: nach Neustart abgebrochen, Kapazität frei" started.
+◇ Test "40 Kandidaten, 7 verfügbar: Nutzer wählt sieben, Rest bleibt vorgemerkt" started.
+◇ Test "Fehler ohne belegten Teilerfolg wird nicht als Teilerfolg gewertet" started.
+◇ Test "Pro: unbegrenzt, keine Reservierung, kein Zählerstand" started.
+◇ Test "Verlorener Callback: nach Neustart reconciliationRequired, keine automatische Wiederholung" started.
+◇ Test "Gemessene Bytes und unbekannte Medien bleiben getrennt" started.
+◇ Test "Abbruch der System-Bestätigung: kein verbrauchtes Limit, Items bleiben vorgemerkt" started.
+◇ Test "Gleichzeitige Operationen reservieren Kapazität atomar" started.
+◇ Test "Free-Limit an den Grenzen 0/1/14/15/16" started.
+◇ Test "Doppeltap: dasselbe Item kann nicht zweimal in eine laufende Operation" started.
+◇ Test "Alias: dieselbe Ressource über zwei Quellen wird nicht doppelt gelöscht/gezählt" started.
+◇ Test "Tatsächlich gemessene Größe 0 ist nicht gleich unbekannt" started.
+◇ Test catalogueAndFlags() started.
+◇ Test selectingANewHiddenCardDismissesTheOldMismatchAndNeverGetsStuck() started.
+◇ Test "Bei ausschließlich unbekannten Mediengrößen keine gemessene Ersparnis behaupten" started.
+◇ Test shuffledDecksAlwaysHaveExactlyTwoOfEveryPicture() started.
+◇ Test "Systemoperation erfolgreich, DB-Save fehlgeschlagen: kein Verlust, erneuter Abgleich möglich" started.
+◇ Test "Wiederholte Callbacks werden genau einmal abgeglichen" started.
+◇ Test largeRoundCanBeCompletedWithoutLosingPairs() started.
+◇ Test "PhotoKit-Erfolg: Items entfernt, Limit verbraucht, Verlauf ergänzt" started.
+◇ Test randomSampleIsUniqueBoundedAndNeverAddsOtherPhotos() started.
+◇ Test interruptionPreservesTheRoundAndUnmatchedFirstCard() started.
+◇ Test randomSourcesRespectFavoritesCollectionsAndExclusions() started.
+◇ Test rejectsUnplayableDecksAndDeduplicatesPictures() started.
+◇ Test rapidTapsCannotRevealAThirdCardOrInflateScore() started.
+◇ Test largerThanExcludesDecidedAndUnknownButReportsUnknown() started.
+◇ Test listIsValidCsvAndNeverAFormula() started.
+◇ Test targetKindSeparatesDeviceRemovableAndOtherApps() started.
+◇ Test alwaysCurrentNoTrigger() started.
+◇ Test onlyVerifiedCopiesCountAfterAnInterruption() started.
+◇ Test foldersByMonthAndNeverAnInventedDate() started.
+◇ Test olderThan() started.
+◇ Test codableRoundTrip() started.
+◇ Test namesAreSafeForMemoryCardsAndUnique() started.
+◇ Test pdfStudioPagePlan() started.
+◇ Test fillCropsInsteadOfStretching() started.
+◇ Test builtInsAreStableAndSizeChoicesFitMediaType() started.
+◇ Test pixelsNeverExceedSource() started.
+◇ Test rulesAndNames() started.
+◇ Test geometryOutputFollowsCrop() started.
+◇ Test pagingOrientationAndMargins() started.
+◇ Test oldRecipeWithIndependentSidesIsNotStretched() started.
+◇ Test fitNeverDistortsAndStaysInside() started.
+◇ Test storedKeysAreAlwaysAsciiDigits() started.
+◇ Test cubeMatchesPointOpsAndIsIdentityWhenNeutral() started.
+◇ Test spaceIsOnlyEnoughWhenEverythingIsKnown() started.
+◇ Test colorMixChangesOnlyItsBand() started.
+◇ Test highlightsOnlyTouchBrightAndShadowsOnlyDark() started.
+◇ Test toneKeepsHueOfSaturatedColour() started.
+◇ Test neutralIsExactIdentity() started.
+◇ Test toneCurveIsMonotoneForExtremeSettings() started.
+◇ Test presetsAndFieldsKeepRatio() started.
+◇ Test redEyeCubeLeavesNonRedUntouched() started.
+◇ Test vibranceFavoursMutedColours() started.
+◇ Test tintAndWarmthDirections() started.
+◇ Test timeoutBoundaryCannotBeExtendedAfterExpiry() started.
+◇ Test lockedSessionRejectsResults() started.
+◇ Test coalescedEditsRecoverFromTheirOriginalBaseRevision() started.
+◇ Test interactionRenewsOnlyCurrentSession() started.
+◇ Test futureJournalIsRejected() started.
+◇ Test mismatchedBaseDoesNotOverwriteNewerContent() started.
+◇ Test obsoleteJournalCannotResurrectDeletedNote() started.
+◇ Test archiveRejectsSymlinkedPhotoReads() started.
+◇ Test unlockLockUnlockCannotAcceptOldResult() started.
+◇ Test nonFiniteAndBackwardTimesFailClosed() started.
+◇ Test thumbnailsAndOrderSurviveNewArchiveInstancesAndRemovalDeletesBytes() started.
+◇ Test recoversNewNoteWithoutRewritingTheMediaSnapshot() started.
+◇ Test galleryHandlesZeroOneTenAndOneHundredPhotosAndCyclesInChosenOrder() started.
+◇ Test archiveRejectsOversizedInputAndCleansCrashOrphansButToleratesMissingImages() started.
+◇ Test contentChangesPatchInsteadOfReloading() started.
+◇ Test coalescerWaitsForQuietButNotForever() started.
+◇ Test groupsByDayInLocalTimeNewestFirstUnknownLast() started.
+◇ Test naturalOrderAndSort() started.
+◇ Test insertedRemovedOrUnknownReloads() started.
+◇ Test slideshowOrders() started.
+◇ Test albumOnlyChangesReloadOnlyWhenAlbumsFilter() started.
+◇ Test albumTreeOrdersRowsSearchesAndCountsDescendants() started.
+◇ Test "Mitternacht: fällig ab 00:00 des Termintags" started.
+◇ Test monthAndYearLevels() started.
+◇ Test "Sommerzeit: kurz vor Mitternacht vor der Umstellung ist 'Morgen' der nächste Kalendertag" started.
+◇ Test "Später-Gruppen nach echten Daten" started.
+◇ Test searchIgnoresAccentsCaseAndSharpS() started.
+◇ Test activeLeaseExecutesSink() started.
+◇ Test rejectsUnsafePathComponents(_:) started.
+◇ Test cyclesTerminateWithoutTaintingUnrelatedNodes() started.
+◇ Test "Erledigte Bilder bleiben aus dem normalen Feed, zurückgeholte sind wieder offen (K5)" started.
+◇ Test mixedCompositesAndDescendantsArePrivate() started.
+◇ Test "Nach Neustart kommt Behalten nicht zurück und neue Asset-ID bleibt neu" started.
+◇ Test failedMutationDoesNotReachPersistence() started.
+◇ Test policyHasNoHiddenPreviousRootState() started.
+◇ Test "Zeitzonenwechsel: Fälligkeit folgt dem lokalen Kalendertag" started.
+◇ Test "Drehrad-Intervalle: Tage, Wochen, Monate (Monatsende gekürzt)" started.
+◇ Test leaseCannotBeIssuedBeforeActivation() started.
+◇ Test failedPersistencePreservesValueSnapshot() started.
+◇ Test successfulValueMutationPublishesSavedValue() started.
+◇ Test "Vor Fälligkeit aus normalen Queues ausgeschlossen, ab Fälligkeit nur im Wieder-fällig-Bereich" started.
+◇ Test safeOpaqueNamesAndSanitizedExtensions() started.
+◇ Test "Voreinstellungen: Morgen, 7 Tage, 30 Tage (Kalenderarithmetik)" started.
+◇ Test "Neustart: Termin bleibt erhalten, kein Auto-Delete" started.
+◇ Test revokedLeaseDoesNotExecuteSink() started.
+◇ Test visibilityIsFailClosedUntilReady() started.
+◇ Test lockAndNewSessionDoNotReviveOldLease() started.
+◇ Test rematchNeverGuessesBetweenTwoCandidates() started.
+◇ Test tagsAreTrimmedDedupedAccentAndCaseInsensitive() started.
+◇ Test notesAndAlbumNames() started.
+◇ Test rematchPrefersIdThenUniqueFingerprintAndListsTheRest() started.
+◇ Test tagStateAndCounts() started.
+◇ Test videosFirstLongestFirstThenLargestPhotos() started.
+◇ Test albumAndBasketKeepOrderAndSkipDuplicates() started.
+◇ Test prefilterKeepsOnlySharedShapes() started.
+◇ Test measureOnlyWhatIsMissingChangedOrDue() started.
+◇ Test duplicateScanUsesAndFillsHashCache() started.
+◇ Test countsSeparateNotMeasuredFromUnknown() started.
+◇ Test searchIsPrivateAndExcludesTrash() started.
+◇ Test corruptedMetadataRejected() started.
+◇ Test addedFirstKeepsUnknownAtEnd() started.
+◇ Test unknownIsNeverZeroAndOnlyKnownHasBytes() started.
+◇ Test mainFiltersLikePhotosApp() started.
+◇ Test everyFilterIsOffered() started.
+◇ Test duplicateObjectsRejected() started.
+◇ Test pinningAndStableSorting() started.
+◇ Test arbitraryObjectPathsRejected(name:) started.
+◇ Test folderScopesAndCaseInsensitiveNames() started.
+◇ Test futureSavedTimeDoesNotRegress() started.
+◇ Test partialSelectionDoesNotPartlyMutate() started.
+◇ Test collectionFiltersNeedMembers() started.
+◇ Test collisionWithTheBodyEndsTheRound() started.
+◇ Test fullWorkspaceRoundTripIncludesTrashAndAttachments() started.
+◇ Test deletingFolderNeverDeletesContent() started.
+◇ Test attachmentCannotBeTrashedOrPurgedWhileReferenced() started.
+◇ Test permanentDeletionRequiresTrash() started.
+◇ Test rapidTurnsAreBufferedInOrderAndCannotReverse() started.
+◇ Test originalIsNeverClaimedRemovedByImport() started.
+◇ Test movingNoteInvalidatesOldEditorRevision() started.
+◇ Test seededRoundIsReproducibleAndOnlyStepsChangeIt() started.
+◇ Test unsafeDisplayNamesRejected(name:) started.
+◇ Test firstSwipeCanChooseEveryDirectionButCannotTeleportAfterMoving() started.
+◇ Test missingAttachmentsAreRejected() started.
+◇ Test emptySnapshotRoundTrip() started.
+◇ Test aFullBoardWinsWithoutHangingOnFoodPlacement() started.
+◇ Test collectingGrowsExactlyOnceAndKeepsFoodOffTheBody() started.
+◇ Test viewportChoosesUsableGridsForPhoneAndExpandedWindows() started.
+◇ Test deletedNoteCannotBeResurrectedByAutosave() started.
+◇ Test trashRestorePreservesRichNote() started.
+◇ Test classicWallEndsTheRoundButRelaxedModeWraps() started.
+◇ Test noteSaveRequiresCorrectRevision() started.
+◇ Test screenRecordingsAreVideosOnly() started.
+◇ Test enteringTheDepartingTailIsLegal() started.
+◇ Test swapRemoveAddAndJson() started.
+◇ Test freeCollageStartsSpreadOut() started.
+◇ Test everyTemplateTilesTheSquareWithoutGaps() started.
+◇ Test spacingKeepsCellsInsideAndApart() started.
+◇ Test movingADividerResizesNeighboursAndClamps() started.
+◇ Test stripStacksScreenshotsWithTrims() started.
+◇ Test cancelledContinuationTerminates() started.
+◇ Test cellFitCoversAndPans() started.
+◇ Test reentrantCancellationDoesNotDeadlock() started.
+◇ Test cloudAndErrorsAreNotAnalysed() started.
+◇ Test lateRequestIDIsCancelled() started.
+◇ Test graphUnionsAreStableAndDoNotStoreCycles() started.
+◇ Test versionAndEditsInvalidateCache() started.
+◇ Test resolutionDependsOnlyOnSelectedTask() started.
+◇ Test emptyProgressIsNotNanOrComplete() started.
+◇ Test cleanupBeforeAndAfterCompletion() started.
+◇ Test backwardClockExpires() started.
+◇ Test failedAndUnknownRoundTrip() started.
+◇ Test cachedSuccessIsNotScheduledAgain() started.
+◇ Test validBoardAndFoodNeverOverlapTheInitialStrip() started.
+◇ Test localWatchdogTerminatesWithoutCallback() started.
+◇ Test concurrentCallbacksResumeExactlyOnce() started.
+◇ Test completionBeforeObserver() started.
+◇ Test observerBeforeCompletion() started.
+◇ Test retryBackoffAndThreeAttemptLimit() started.
+◇ Test cloudProgressExtendsIdleButNotAbsoluteDeadline() started.
+◇ Test graphHandles37177AssetsWithLinearNumberOfLinks() started.
+◇ Test unchangedOrInvalidProgressCannotKeepARequestAlive() started.
+◇ Test case passing 1 argument rate → nan to invalidSampleRatesAreRejected(_:) started.
+◇ Test case passing 1 argument rate → inf to invalidSampleRatesAreRejected(_:) started.
+◇ Test case passing 1 argument rate → -1.0 to invalidSampleRatesAreRejected(_:) started.
+◇ Test case passing 1 argument rate → 0.0 to invalidSampleRatesAreRejected(_:) started.
+◇ Test case passing 1 argument rate → 7999.0 to invalidSampleRatesAreRejected(_:) started.
+◇ Test case passing 1 argument rate → 192001.0 to invalidSampleRatesAreRejected(_:) started.
+◇ Test case passing 1 argument seed → 1 to "Generierte Aktionsfolgen erhalten die Invarianten" started.
+◇ Test case passing 1 argument seed → 2 to "Generierte Aktionsfolgen erhalten die Invarianten" started.
+◇ Test case passing 1 argument seed → 3 to "Generierte Aktionsfolgen erhalten die Invarianten" started.
+◇ Test case passing 1 argument seed → 4 to "Generierte Aktionsfolgen erhalten die Invarianten" started.
+◇ Test case passing 1 argument seed → 5 to "Generierte Aktionsfolgen erhalten die Invarianten" started.
+◇ Test case passing 1 argument requested → 0 to "Free-Limit an den Grenzen 0/1/14/15/16" started.
+◇ Test case passing 1 argument requested → 1 to "Free-Limit an den Grenzen 0/1/14/15/16" started.
+◇ Test case passing 1 argument requested → 14 to "Free-Limit an den Grenzen 0/1/14/15/16" started.
+◇ Test case passing 1 argument requested → 15 to "Free-Limit an den Grenzen 0/1/14/15/16" started.
+◇ Test case passing 1 argument requested → 16 to "Free-Limit an den Grenzen 0/1/14/15/16" started.
+◇ Test case passing 1 argument name → "" to rejectsUnsafePathComponents(_:) started.
+◇ Test case passing 1 argument name → "." to rejectsUnsafePathComponents(_:) started.
+◇ Test case passing 1 argument name → ".." to rejectsUnsafePathComponents(_:) started.
+◇ Test case passing 1 argument name → "../IMG.jpg" to rejectsUnsafePathComponents(_:) started.
+◇ Test case passing 1 argument name → "/tmp/foo" to rejectsUnsafePathComponents(_:) started.
+◇ Test case passing 1 argument name → "a/b" to rejectsUnsafePathComponents(_:) started.
+◇ Test case passing 1 argument name → "a\b" to rejectsUnsafePathComponents(_:) started.
+◇ Test case passing 1 argument name → "x◇ Test case passing 1 argument name → "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" to rejectsUnsafePathComponents(_:) started.
+◇ Test case passing 1 argument name → "../outside" to arbitraryObjectPathsRejected(name:) started.
+◇ Test case passing 1 argument name → "/tmp/item" to arbitraryObjectPathsRejected(name:) started.
+◇ Test case passing 1 argument name → "prefix-00000000-0000-0000-0000-000000000000" to arbitraryObjectPathsRejected(name:) started.
+◇ Test case passing 1 argument name → "00000000-0000-0000-0000-00000000000G" to arbitraryObjectPathsRejected(name:) started.
+◇ Test case passing 1 argument name → "../escape" to unsafeDisplayNamesRejected(name:) started.
+◇ Test case passing 1 argument name → "/etc/passwd" to unsafeDisplayNamesRejected(name:) started.
+◇ Test case passing 1 argument name → "a/b" to unsafeDisplayNamesRejected(name:) started.
+◇ Test case passing 1 argument name → "a\b" to unsafeDisplayNamesRejected(name:) started.
+◇ Test case passing 1 argument name → ".." to unsafeDisplayNamesRejected(name:) started.
+◇ Test case passing 1 argument name → "." to unsafeDisplayNamesRejected(name:) started.
+◇ Test case passing 1 argument name → "" to unsafeDisplayNamesRejected(name:) started.
+◇ Test case passing 1 argument name → "
+" to unsafeDisplayNamesRejected(name:) started.
+◇ Test case passing 1 argument name → "nul✔ Test animationPriorityTimingAndSkinsUseKitFrames() passed after 0.421 seconds.
+✔ Test growthUnfoldsFromTailWithoutImportingOrTeleportingPhotos() passed after 0.421 seconds.
+✔ Test interpolationFollowsOrthogonalHistoryAndFinishesAtAuthoritativeCells() passed after 0.422 seconds.
+✔ Test collisionOnlyTravelsToContactAndCannotChangeTheRules() passed after 0.422 seconds.
+✔ Test rotationTakesTheShortestPathAndPreferencesRoundTrip() passed after 0.423 seconds.
+✔ Test limitsAndSlideshow() passed after 0.423 seconds.
+✔ Test frameKeepsAspectAndEvenSizes() passed after 0.429 seconds.
+✔ Test musicFadesAtBothEnds() passed after 0.429 seconds.
+✔ Test startsAndTotal() passed after 0.429 seconds.
+✔ Test blackAlphaPeaksOnSeamOnly() passed after 0.429 seconds.
+✔ Test slowLongDragCommitsShortDoesNot() passed after 0.429 seconds.
+✔ Test diagonalLeftDoesNothing() passed after 0.429 seconds.
+✔ Test rapidRepeatedSwipesNeverDoubleCommit() passed after 0.429 seconds.
+✔ Test directionsMatchFingerMovement() passed after 0.429 seconds.
+✔ Test noDoubleCommit() passed after 0.430 seconds.
+✔ Test reversalSwitchesDirectionNotTwoActions() passed after 0.429 seconds.
+✔ Test fixedMeaning() passed after 0.430 seconds.
+✔ Test flickSufficesWithMinimumDistance() passed after 0.429 seconds.
+✔ Test rightVariants() passed after 0.429 seconds.
+✔ Test rightFollowsHorizontally() passed after 0.429 seconds.
+✔ Test systemCancelReturnsToIdle() passed after 0.429 seconds.
+✔ Test readyToCommitMatchesCommitCondition() passed after 0.429 seconds.
+✔ Test flickAgainstDirectionDoesNotCommit() passed after 0.429 seconds.
+✔ Test wrappedEdgesNeverDrawAcrossTheBoard() passed after 0.430 seconds.
+✔ Test axisOffsetAfterLock() passed after 0.429 seconds.
+✔ Test suspendedIgnoresGestures() passed after 0.429 seconds.
+✔ Test tooShortIsCancelled() passed after 0.429 seconds.
+✔ Test invalidTimesNeverReplaceARecord() passed after 0.429 seconds.
+✔ Test memoryRequiresAWinAndReplacesOnlyWithAFasterWin() passed after 0.429 seconds.
+✔ Test repeatedClockEventsNeverDoubleCountAndResetStartsFresh() passed after 0.429 seconds.
+✔ Test snakeKeepsOnlyTheLargestActualFoodCountIncludingUnfinishedRounds() passed after 0.429 seconds.
+✔ Test snakeSeparatesPacesControlsAndBoardSizes() passed after 0.429 seconds.
+✔ Test projectCodableRoundTrip() passed after 0.430 seconds.
+✔ Test recordsRoundTripWithoutPicturesAndSanitizeDuplicateOrInvalidStoredValues() passed after 0.429 seconds.
+✔ Test clockDoesNotRunUntilStartedAndExcludesLongPauses() passed after 0.429 seconds.
+✔ Test removingDeletedAlbum() passed after 0.429 seconds.
+✔ Test sanitizeRemovesDuplicatesNoneAndLimits() passed after 0.429 seconds.
+✔ Test albumActionKeepsAndIsADecision() passed after 0.429 seconds.
+✔ Test filesUseMedianOfSameType() passed after 0.429 seconds.
+✔ Test savingsShowEstimateOnlyWhenEveryUnknownHasOne() passed after 0.429 seconds.
+✔ Test remapRightToAlbum() passed after 0.429 seconds.
+✔ Test roundingToTwoSignificantDigits() passed after 0.429 seconds.
+✔ Test calibratesFromOwnMeasurementsWithMedian() passed after 0.429 seconds.
+✔ Test codableRoundTripAndTolerantDecoding() passed after 0.430 seconds.
+✔ Test standardMatchesFixedGestures() passed after 0.429 seconds.
+✔ Test addableButtonsExcludeExisting() passed after 0.429 seconds.
+✔ Test alwaysPositiveEvenWithoutMetadata() passed after 0.429 seconds.
+✔ Test fallbackRatesGivePlausibleIPhoneSizes() passed after 0.429 seconds.
+✔ Test invalidClockSamplesNeverCreateNegativeOrNonfiniteTimes() passed after 0.430 seconds.
+✔ Test sumIsApproximateAsSoonAsOnePartIsEstimated() passed after 0.429 seconds.
+✔ Test sortierungUnbekanntesDatumAmEnde() passed after 0.429 seconds.
+✔ Test zuruecklegenAktuelleFassungUndAlleTeile() passed after 0.429 seconds.
+✔ Test fehlversucheNurWartezeit() passed after 0.429 seconds.
+✔ Test codeRegeln() passed after 0.429 seconds.
+✔ Test verbergenListeEnthaeltNurPruefsummen() passed after 0.429 seconds.
+✔ Test abgeleiteteKopienUeberMehrereStufen() passed after 0.429 seconds.
+✔ Test rightDeadZones() passed after 0.429 seconds.
+✔ Test ordnerAnlegenUmbenennenLoeschen() passed after 0.429 seconds.
+✔ Test papierkorbBleibtVerborgenUndBelegtPlaetze() passed after 0.429 seconds.
+✔ Test dateienAusVerbundenenOrdnernBleibenVerborgen() passed after 0.429 seconds.
+✔ Test nochInDerFotosApp() passed after 0.429 seconds.
+✔ Test alteEintraegeWerdenOhneRatenUebernommen() passed after 0.429 seconds.
+✔ Test memorySeparatesRoundSizesPicturesAndManualMismatchRules() passed after 0.430 seconds.
+✔ Test layoutRotatesCropsAndNeverUpscales() passed after 0.429 seconds.
+✔ Test gespeichertOhneQuellenBleibtLesbar() passed after 0.429 seconds.
+✔ Test einstellungenUndIndexSindKodierbar() passed after 0.429 seconds.
+✔ Test entfernenLiefertEintraegeFuerDateien() passed after 0.430 seconds.
+✔ Test dateiformatBloecke() passed after 0.430 seconds.
+✔ Test estimateIsMonotoneInProfileAndAudio() passed after 0.430 seconds.
+✔ Test overlappingCutsMergeAndNeverRemoveEverything() passed after 0.430 seconds.
+✔ Test speedShortensOutputAndScalesMapping() passed after 0.430 seconds.
+✔ Test altesInhaltsverzeichnisWirdOhneVerlustUebernommen() passed after 0.431 seconds.
+✔ Test originalKennungBleibtNachLoeschbestaetigung() passed after 0.431 seconds.
+✔ Test notfallschluesselFormatUndEingabe() passed after 0.431 seconds.
+✔ Test schnappschussRundreiseUndUnbekannteVersion() passed after 0.431 seconds.
+✔ Test cutRemovesTheMiddleAndTimesMapBothWays() passed after 0.431 seconds.
+✔ Test gainFadesInAndOutAndMuteIsSilent() passed after 0.431 seconds.
+✔ Test layerAlphaFadesAtEdges() passed after 0.431 seconds.
+✔ Test endgueltigesLoeschenNieAktiverDateien() passed after 0.431 seconds.
+✔ Test "Callback A verändert niemals B" passed after 0.431 seconds.
+✔ Test "Persistenzfehler setzt die visuelle Aktion zurück" passed after 0.431 seconds.
+✔ Test "Terminleiste gehört zum zurückgestellten Item und wird durch neue Entscheidung geschlossen" passed after 0.431 seconds.
+✔ Test "Nicht geladene Vorschau darf nicht entschieden werden" passed after 0.431 seconds.
+✔ Test "Session-Ende: echte Zusammenfassung, keine Endlosschleife" passed after 0.431 seconds.
+✔ Test "Zwei nicht ladbare Medien weiter: keine Entscheidung, kein Sprung durch veraltete Tasten" passed after 0.431 seconds.
+✔ Test "Weiter ohne Auswahl kann keinen offenen Commit verlassen" passed after 0.431 seconds.
+✔ Test "Korrektur eines früheren Items: kein Doppelzählen in der Zusammenfassung" passed after 0.431 seconds.
+✔ Test "Schräg rechts oben: Später mit Wunsch nach eigenem Datum, zählt als Später" passed after 0.431 seconds.
+✔ Test actionsNeverIncludeADecision() passed after 0.431 seconds.
+✔ Test "Runter navigiert zurück, ohne Entscheidung; am Anfang: Anschlag" passed after 0.431 seconds.
+✔ Test "Genau ein Behalten pro Wischen nach oben, genau ein Schritt weiter" passed after 0.431 seconds.
+✔ Test "100 schnelle Entscheidungen: Zählung entspricht dem Ledger" passed after 0.431 seconds.
+✔ Test "Schnelle Folge: zweiter Request während offenem Commit wird verworfen" passed after 0.431 seconds.
+✔ Test defaultsArePhotosAndVideos() passed after 0.431 seconds.
+✔ Test "Passive Navigation erzeugt kein Behalten" passed after 0.431 seconds.
+✔ Test onlyRemovedItemsWithKnownSizeCount() passed after 0.431 seconds.
+✔ Test acceptsOnlyPhotosAndVideos() passed after 0.431 seconds.
+✔ Test addRemoveMoveAndLimit() passed after 0.431 seconds.
+✔ Test sanitizeAndPersistence() passed after 0.431 seconds.
+✔ Test matchNeedsNameAndSizeAndNeverGuesses() passed after 0.431 seconds.
+✔ Test shortcutIdsRoundTripAndPlan() passed after 0.431 seconds.
+✔ Test vaultFolderNeedsAdOnlyInFree() passed after 0.431 seconds.
+✔ Test appOpenAdFromFourthStart() passed after 0.431 seconds.
+✔ Test freeGrenze50ProUnbegrenzt() passed after 0.432 seconds.
+✔ Test storageDoesNotAddOverlappingCategories() passed after 0.431 seconds.
+✔ Test intakeCountsRejectedUnmatchedAndDeduplicates() passed after 0.431 seconds.
+✔ Test workUnit() passed after 0.431 seconds.
+✔ Test thisWeekIsLocalCalendarWeek() passed after 0.431 seconds.
+✔ Test rewardLedgerDecodesOlderFormat() passed after 0.431 seconds.
+✔ Test proTestNoLongerChangesTier() passed after 0.431 seconds.
+✔ Test purchaseStates() passed after 0.431 seconds.
+✔ Test restoredFromRecentlyDeletedIsPendingAgain() passed after 0.431 seconds.
+✔ Test proNoRewardNoAds() passed after 0.431 seconds.
+✔ Test clockBackExpiresConservatively() passed after 0.431 seconds.
+✔ Test markupIsFreeFrameIsPro() passed after 0.431 seconds.
+✔ Test frameLayout() passed after 0.431 seconds.
+✔ Test snappingAndRedactBlocks() passed after 0.431 seconds.
+✔ Test recipeWithLayersRoundTripsAsJson() passed after 0.432 seconds.
+✔ Test completeAndIncompleteResultsAreDistinct() passed after 0.431 seconds.
+✔ Test compoundHashProviderIsUsedInsteadOfAnOriginalOnlyStream() passed after 0.431 seconds.
+✔ Test limitBonusOnlyToday() passed after 0.432 seconds.
+✔ Test limitBonusOfferOncePerDay() passed after 0.432 seconds.
+✔ Test rawAndEditsMustAlsoMatch() passed after 0.431 seconds.
+✔ Test resourceOrderAndNamesDoNotMatter() passed after 0.431 seconds.
+✔ Test progressAdvancesWithinALargeBucket() passed after 0.431 seconds.
+✔ Test truncatedStreamsAreNotDuplicates() passed after 0.431 seconds.
+✔ Test layerOrderingAndDuplicate() passed after 0.432 seconds.
+✔ Test filesWithoutMetadataSizeAreMeasuredWithBothHashes() passed after 0.431 seconds.
+✔ Test compoundSignaturesHaveTheirOwnNamespace() passed after 0.431 seconds.
+✔ Test cancellationIsNotConvertedIntoAnUnreadableItem() passed after 0.431 seconds.
+✔ Test argbHelpersMatchAndroidInts() passed after 0.431 seconds.
+✔ Test targetSizeShrinksEdgeOnlyWhenNeededAndReportsUnreachable() passed after 0.431 seconds.
+✔ Test differentLiveVideoIsNotAnExactCopy() passed after 0.431 seconds.
+✔ Test oneReadFailureDoesNotAbortTheOtherFiles() passed after 0.431 seconds.
+✔ Test resourceRolesAndMultiplicityMatter() passed after 0.432 seconds.
+✔ Test stepsDescribeOnlyWhatHappensInOrder() passed after 0.431 seconds.
+✔ Test androidWorkflowJsonIsReadable() passed after 0.431 seconds.
+✔ Test headerIsStreamingMonoCAF() passed after 0.431 seconds.
+✔ Test formatSizeAndValidity() passed after 0.431 seconds.
+✔ Test namesAreNumberedAndSafe() passed after 0.431 seconds.
+✔ Test cropAndResizeComposeIntoOutput() passed after 0.431 seconds.
+✔ Test colorMatricesAreNeutralAtZeroAndMonoIsGray() passed after 0.431 seconds.
+✔ Test invalidSampleRatesAreRejected(_:) with 6 test cases passed after 0.431 seconds.
+✔ Test invalidCornerMoveIsRejected() passed after 0.431 seconds.
+✔ Test flipMirrorsHorizontally() passed after 0.431 seconds.
+✔ Test budgetIsSharedBySize() passed after 0.431 seconds.
+✔ Test trimRangeClampsToVideo() passed after 0.431 seconds.
+✔ Test mixerDesaturationKeepsLuminance() passed after 0.431 seconds.
+✔ Test rotatingKeepsPerspectiveOnTheSameImageContent() passed after 0.431 seconds.
+✔ Test rotatingKeepsCropOnSameImageArea() passed after 0.431 seconds.
+✔ Test identityRecipeKeepsSizeAndPixelsInPlace() passed after 0.431 seconds.
+✔ Test homographyMapsFourPointsExactly() passed after 0.431 seconds.
+✔ Test identityQuadChangesNothing() passed after 0.431 seconds.
+✔ Test straightenNeverShowsEmptyCorners() passed after 0.431 seconds.
+✔ Test aspectFitAndDragKeepRatio() passed after 0.431 seconds.
+✔ Test redEyeRemovesRedInsideOnlyAndSparesSkin() passed after 0.431 seconds.
+✔ Test resizeNeverUpscales() passed after 0.431 seconds.
+✔ Test quarterTurnSwapsFrameAndMapsCorners() passed after 0.431 seconds.
+✔ Test formatsAndNames() passed after 0.431 seconds.
+✔ Test keystoneMapsQuadCornersToFrameCornersAndKeepsPixelBudget() passed after 0.431 seconds.
+✔ Test recipeCodableRoundTripIncludingLayers() passed after 0.431 seconds.
+✔ Test pointOpsNeutralAndCubeShape() passed after 0.431 seconds.
+✔ Test "Erneut dieselbe Entscheidung: keine doppelten Zähler oder Korbeinträge" passed after 0.431 seconds.
+✔ Test feedSessionReplacesEditedItemInPlace() passed after 0.431 seconds.
+✔ Test "Undo stellt exakt den vorherigen Zustand wieder her" passed after 0.431 seconds.
+✔ Test "Undo überschreibt keine neuere Entscheidung (Bereinigung) und keine laufende Operation" passed after 0.431 seconds.
+✔ Test "Zurückstellung entfernen macht Item wieder unentschieden (keine Löschung)" passed after 0.431 seconds.
+✔ Test histogramCountsAndClipping() passed after 0.431 seconds.
+✔ Test exifOrientationComposesLikeTheRenderer() passed after 0.431 seconds.
+✔ Test "Korrektur ersetzt den Stand atomar und ist als Korrektur im Verlauf" passed after 0.431 seconds.
+✔ Test "Terminwahl gehört zur Später-Aktion: Undo nimmt beides zurück" passed after 0.431 seconds.
+✔ Test "Persistenzfehler: keine stille Erfolgsmeldung, Zustand unverändert" passed after 0.431 seconds.
+✔ Test "Behalten oder Vormerken löst einen aktiven Termin im selben Commit auf" passed after 0.431 seconds.
+✔ Test toneCurveIsMonotonicAndBounded() passed after 0.431 seconds.
+✔ Test targetSizeFindsHighestFittingQualityFirst() passed after 0.431 seconds.
+✔ Test masksAndVignette() passed after 0.431 seconds.
+✔ Test "Generierte Aktionsfolgen erhalten die Invarianten" with 5 test cases passed after 0.431 seconds.
+✔ Test "Undo eines anderen Items nach Korrektur: Reihenfolge bleibt korrekt" passed after 0.431 seconds.
+✔ Test "Veraltete Revision wird abgelehnt" passed after 0.431 seconds.
+✔ Test "Behalten, Vormerken, Später erzeugen je einen Verlaufseintrag" passed after 0.431 seconds.
+✔ Test "Neustart: Zustand wird vollständig aus der Persistenz geladen" passed after 0.431 seconds.
+✔ Test "Aliasquellen zählen nicht als eigene Kopie" passed after 0.431 seconds.
+✔ Test singleResourceStillMatchesAnOrdinaryFile() passed after 0.431 seconds.
+✔ Test "Wiederholte Command-ID wird nicht doppelt angewendet" passed after 0.431 seconds.
+✔ Test "Nullbyte, unbekannte Größe, nicht vergleichbare Assets und nicht lokale Bytes" passed after 0.431 seconds.
+✔ Test autoResumeRules() passed after 0.431 seconds.
+✔ Test "SHA-256 entspricht Testvektor" passed after 0.431 seconds.
+✔ Test feedStartsAtTappedItem() passed after 0.431 seconds.
+✔ Test "Gleiche Bytes, anderer Name → eine Gruppe; Mathematik 3 × 14 MB" passed after 0.431 seconds.
+✔ Test throttledWorkHonoursBeforeStartFailure() passed after 0.431 seconds.
+✔ Test pageClampsAfterItemsWereDecided() passed after 0.431 seconds.
+✔ Test videoTargetPlansBitrateAndNeverUpscales() passed after 0.431 seconds.
+✔ Test throttleByThermalLevel() passed after 0.431 seconds.
+✔ Test groupsDropMembersAndSmallGroups() passed after 0.431 seconds.
+✔ Test "Große Dateien werden gestreamt; Teilhash sortiert nur aus" passed after 0.431 seconds.
+✔ Test summaryIsHonest() passed after 0.431 seconds.
+✔ Test gifFramePlacementAndTimes() passed after 0.431 seconds.
+✔ Test needsWorkSkipsPointlessCopies() passed after 0.431 seconds.
+✔ Test stitchKeepsAspectAndNeverUpscales() passed after 0.431 seconds.
+✔ Test openingAnotherAnalysisQueuesInsteadOfStopping() passed after 0.431 seconds.
+✔ Test cloudOnlyIsSharedOnlyTowardsEqualOrLargerPreviews() passed after 0.431 seconds.
+✔ Test startingWhileIdleKeepsUnfinishedWorkOnlyIfWanted() passed after 0.431 seconds.
+✔ Test initRemovesDuplicatesAndCurrent() passed after 0.431 seconds.
+✔ Test fitsPhoneAndOpenDisplayWithoutTinyTargets() passed after 0.431 seconds.
+✔ Test finishedAnalysisStartsTheNextOne() passed after 0.431 seconds.
+✔ Test prioritizeKeepsThePreviousNext() passed after 0.431 seconds.
+✔ Test smallDecksPreferCompactCardsInsteadOfFullWidthStrips() passed after 0.431 seconds.
+✔ Test laterAndFirstScheduleBecomeOneEntry() passed after 0.431 seconds.
+✔ Test sameOperationIsBatched() passed after 0.431 seconds.
+✔ Test accessibilityAndShortWindowsKeepTargetsAndDeclareScrolling() passed after 0.431 seconds.
+✔ Test backupChecksFormatAndVersion() passed after 0.431 seconds.
+✔ Test restoreFindsMediaOnANewPhoneAndNeverOverwrites() passed after 0.431 seconds.
+✔ Test stripStacksWithoutDistortionAndMargins() passed after 0.431 seconds.
+✔ Test dividerHandlesSitOnTheGapAndMove() passed after 0.431 seconds.
+✔ Test frontReplaceAndKindKeepTheRest() passed after 0.431 seconds.
+✔ Test backupSurvivesJsonAndReadsAndroidFiles() passed after 0.432 seconds.
+✔ Test panFollowsTheFingerAndClamps() passed after 0.431 seconds.
+✔ Test hitRespectsRotationAndOrder() passed after 0.432 seconds.
+✔ Test outputSizeFollowsResolutionAndLimits() passed after 0.431 seconds.
+✔ Test bookmarkIsLaterWithoutDateAndNeverReturnsOnItsOwn() passed after 0.432 seconds.
+✔ Test pageKeepsOrderAndFiltersDecided() passed after 0.433 seconds.
+✔ Test monthProgressCountsRealDecisionsOnly() passed after 0.432 seconds.
+✔ Test removedItemThatIsBackCanBeDecidedAgain() passed after 0.432 seconds.
+✔ Test gridFillAndFitNeverDistort() passed after 0.432 seconds.
+✔ Test freeKeepsPhotoAspectAndPolaroidBorder() passed after 0.432 seconds.
+✔ Test sessionDropAndReorderOnlyTouchUpcoming() passed after 0.432 seconds.
+✔ Test recordDecodesWithoutBookmarkField() passed after 0.432 seconds.
+✔ Test undoOfLaterWithBookmarkRestoresOpenItem() passed after 0.432 seconds.
+✔ Test seriesNeedSameGroupShortGapsAndThreeMembers() passed after 0.432 seconds.
+✔ Test scheduleClearsBookmarkAndBookmarkNeedsLater() passed after 0.432 seconds.
+✔ Test cornersAreClampedToHalfTheCell() passed after 0.432 seconds.
+✔ Test scheduleAfterOtherChangeStaysSeparate() passed after 0.432 seconds.
+✔ Test photosOlderThanOneYearIsBuiltIn() passed after 0.432 seconds.
+✔ Test similarPhotosGroupOnlyWithinWindowAndThreshold() passed after 0.432 seconds.
+✔ Test sharpestSuggestionNeedsMeasurementsAndClearLead() passed after 0.432 seconds.
+✔ Test orderingKeepsUnknownLastAndShuffleIsStable() passed after 0.432 seconds.
+✔ Test categoriesNeedConfidence() passed after 0.432 seconds.
+✔ Test pluralCategoriesForAllSixteenLanguages() passed after 0.432 seconds.
+✔ Test adCardEveryFiftyDecisions() passed after 0.432 seconds.
+✔ Test blurVerdictAndLaplacian() passed after 0.432 seconds.
+✔ Test onThisDayMatchesEarlierYearsInLocalTime() passed after 0.432 seconds.
+✔ Test featuredLayoutsAreValidAndLeadWithBalanced() passed after 0.432 seconds.
+✔ Test randomPicksOnlyOpenMediaAndNeverFiles() passed after 0.432 seconds.
+✔ Test existingSourcesKeepTheirMeaning() passed after 0.432 seconds.
+✔ Test "50 000 Einträge: nur Kandidaten werden gelesen" passed after 0.434 seconds.
+✔ Test longVideosByDurationOnly() passed after 0.432 seconds.
+✔ Test newKindsPersistAndOldDataStillDecodes() passed after 0.432 seconds.
+✔ Test randomCountIsStableAndHonest() passed after 0.432 seconds.
+✔ Test portraitsLiveFavoritesAndSelfies() passed after 0.432 seconds.
+✔ Test onThisDayLeapDay() passed after 0.432 seconds.
+✔ Test sampleIsPartialShuffle() passed after 0.432 seconds.
+✔ Test "Zeitzonen-/Uhrwechsel: keine negativen oder doppelten Zähler" passed after 0.432 seconds.
+✔ Test "Vorbereitet, aber nie gestartet: nach Neustart abgebrochen, Kapazität frei" passed after 0.432 seconds.
+✔ Test "40 Kandidaten, 7 verfügbar: Nutzer wählt sieben, Rest bleibt vorgemerkt" passed after 0.432 seconds.
+✔ Test "Fehler ohne belegten Teilerfolg wird nicht als Teilerfolg gewertet" passed after 0.432 seconds.
+✔ Test countUsesOpenSetForOrdinarySources() passed after 0.432 seconds.
+✔ Test "Verlorener Callback: nach Neustart reconciliationRequired, keine automatische Wiederholung" passed after 0.432 seconds.
+✔ Test "Gemessene Bytes und unbekannte Medien bleiben getrennt" passed after 0.432 seconds.
+✔ Test "Abbruch der System-Bestätigung: kein verbrauchtes Limit, Items bleiben vorgemerkt" passed after 0.432 seconds.
+✔ Test "Pro: unbegrenzt, keine Reservierung, kein Zählerstand" passed after 0.432 seconds.
+✔ Test "Free-Limit an den Grenzen 0/1/14/15/16" with 5 test cases passed after 0.433 seconds.
+✔ Test "Doppeltap: dasselbe Item kann nicht zweimal in eine laufende Operation" passed after 0.433 seconds.
+✔ Test "Alias: dieselbe Ressource über zwei Quellen wird nicht doppelt gelöscht/gezählt" passed after 0.433 seconds.
+✔ Test "Tatsächlich gemessene Größe 0 ist nicht gleich unbekannt" passed after 0.433 seconds.
+✔ Test catalogueAndFlags() passed after 0.433 seconds.
+✔ Test "Bei ausschließlich unbekannten Mediengrößen keine gemessene Ersparnis behaupten" passed after 0.433 seconds.
+✔ Test "Dateien: belegter Teilerfolg zählt nur tatsächlich entfernte Dateien" passed after 0.433 seconds.
+✔ Test "Systemoperation erfolgreich, DB-Save fehlgeschlagen: kein Verlust, erneuter Abgleich möglich" passed after 0.433 seconds.
+✔ Test "Wiederholte Callbacks werden genau einmal abgeglichen" passed after 0.433 seconds.
+✔ Test largeRoundCanBeCompletedWithoutLosingPairs() passed after 0.433 seconds.
+✔ Test shuffledDecksAlwaysHaveExactlyTwoOfEveryPicture() passed after 0.433 seconds.
+✔ Test "PhotoKit-Erfolg: Items entfernt, Limit verbraucht, Verlauf ergänzt" passed after 0.433 seconds.
+✔ Test interruptionPreservesTheRoundAndUnmatchedFirstCard() passed after 0.433 seconds.
+✔ Test randomSourcesRespectFavoritesCollectionsAndExclusions() passed after 0.433 seconds.
+✔ Test selectingANewHiddenCardDismissesTheOldMismatchAndNeverGetsStuck() passed after 0.433 seconds.
+✔ Test rejectsUnplayableDecksAndDeduplicatesPictures() passed after 0.433 seconds.
+✔ Test rapidTapsCannotRevealAThirdCardOrInflateScore() passed after 0.433 seconds.
+✔ Test largerThanExcludesDecidedAndUnknownButReportsUnknown() passed after 0.433 seconds.
+✔ Test listIsValidCsvAndNeverAFormula() passed after 0.433 seconds.
+✔ Test targetKindSeparatesDeviceRemovableAndOtherApps() passed after 0.433 seconds.
+✔ Test alwaysCurrentNoTrigger() passed after 0.433 seconds.
+✔ Test onlyVerifiedCopiesCountAfterAnInterruption() passed after 0.433 seconds.
+✔ Test foldersByMonthAndNeverAnInventedDate() passed after 0.433 seconds.
+✔ Test olderThan() passed after 0.433 seconds.
+✔ Test codableRoundTrip() passed after 0.433 seconds.
+✔ Test randomSampleIsUniqueBoundedAndNeverAddsOtherPhotos() passed after 0.433 seconds.
+✔ Test namesAreSafeForMemoryCardsAndUnique() passed after 0.433 seconds.
+✔ Test pdfStudioPagePlan() passed after 0.433 seconds.
+✔ Test fillCropsInsteadOfStretching() passed after 0.433 seconds.
+✔ Test builtInsAreStableAndSizeChoicesFitMediaType() passed after 0.433 seconds.
+✔ Test pixelsNeverExceedSource() passed after 0.433 seconds.
+✔ Test geometryOutputFollowsCrop() passed after 0.433 seconds.
+✔ Test rulesAndNames() passed after 0.433 seconds.
+✔ Test oldRecipeWithIndependentSidesIsNotStretched() passed after 0.433 seconds.
+✔ Test pagingOrientationAndMargins() passed after 0.433 seconds.
+✔ Test fitNeverDistortsAndStaysInside() passed after 0.433 seconds.
+✔ Test spaceIsOnlyEnoughWhenEverythingIsKnown() passed after 0.434 seconds.
+✔ Test storedKeysAreAlwaysAsciiDigits() passed after 0.434 seconds.
+✔ Test cubeMatchesPointOpsAndIsIdentityWhenNeutral() passed after 0.433 seconds.
+✔ Test colorMixChangesOnlyItsBand() passed after 0.433 seconds.
+✔ Test toneKeepsHueOfSaturatedColour() passed after 0.433 seconds.
+✔ Test neutralIsExactIdentity() passed after 0.433 seconds.
+✔ Test highlightsOnlyTouchBrightAndShadowsOnlyDark() passed after 0.433 seconds.
+✔ Test presetsAndFieldsKeepRatio() passed after 0.434 seconds.
+✔ Test redEyeCubeLeavesNonRedUntouched() passed after 0.433 seconds.
+✔ Test vibranceFavoursMutedColours() passed after 0.433 seconds.
+✔ Test tintAndWarmthDirections() passed after 0.433 seconds.
+✔ Test timeoutBoundaryCannotBeExtendedAfterExpiry() passed after 0.433 seconds.
+✔ Test lockedSessionRejectsResults() passed after 0.434 seconds.
+✔ Test interactionRenewsOnlyCurrentSession() passed after 0.434 seconds.
+✔ Test futureJournalIsRejected() passed after 0.434 seconds.
+✔ Test coalescedEditsRecoverFromTheirOriginalBaseRevision() passed after 0.434 seconds.
+✔ Test mismatchedBaseDoesNotOverwriteNewerContent() passed after 0.434 seconds.
+✔ Test obsoleteJournalCannotResurrectDeletedNote() passed after 0.434 seconds.
+✔ Test unlockLockUnlockCannotAcceptOldResult() passed after 0.434 seconds.
+✔ Test nonFiniteAndBackwardTimesFailClosed() passed after 0.434 seconds.
+✔ Test archiveRejectsSymlinkedPhotoReads() passed after 0.434 seconds.
+✔ Test recoversNewNoteWithoutRewritingTheMediaSnapshot() passed after 0.434 seconds.
+✔ Test thumbnailsAndOrderSurviveNewArchiveInstancesAndRemovalDeletesBytes() passed after 0.434 seconds.
+✔ Test galleryHandlesZeroOneTenAndOneHundredPhotosAndCyclesInChosenOrder() passed after 0.434 seconds.
+✔ Test contentChangesPatchInsteadOfReloading() passed after 0.434 seconds.
+✔ Test coalescerWaitsForQuietButNotForever() passed after 0.434 seconds.
+✔ Test groupsByDayInLocalTimeNewestFirstUnknownLast() passed after 0.434 seconds.
+✔ Test naturalOrderAndSort() passed after 0.434 seconds.
+✔ Test insertedRemovedOrUnknownReloads() passed after 0.434 seconds.
+✔ Test slideshowOrders() passed after 0.434 seconds.
+✔ Test albumOnlyChangesReloadOnlyWhenAlbumsFilter() passed after 0.434 seconds.
+✔ Test albumTreeOrdersRowsSearchesAndCountsDescendants() passed after 0.434 seconds.
+✔ Test monthAndYearLevels() passed after 0.434 seconds.
+✔ Test archiveRejectsOversizedInputAndCleansCrashOrphansButToleratesMissingImages() passed after 0.434 seconds.
+✔ Test "Mitternacht: fällig ab 00:00 des Termintags" passed after 0.434 seconds.
+✔ Test "Später-Gruppen nach echten Daten" passed after 0.434 seconds.
+✔ Test "Sommerzeit: kurz vor Mitternacht vor der Umstellung ist 'Morgen' der nächste Kalendertag" passed after 0.434 seconds.
+✔ Test activeLeaseExecutesSink() passed after 0.434 seconds.
+✔ Test searchIgnoresAccentsCaseAndSharpS() passed after 0.434 seconds.
+✔ Test cyclesTerminateWithoutTaintingUnrelatedNodes() passed after 0.434 seconds.
+✔ Test rejectsUnsafePathComponents(_:) with 9 test cases passed after 0.434 seconds.
+✔ Test mixedCompositesAndDescendantsArePrivate() passed after 0.434 seconds.
+✔ Test "Erledigte Bilder bleiben aus dem normalen Feed, zurückgeholte sind wieder offen (K5)" passed after 0.435 seconds.
+✔ Test randomIsSeededAndBounded() passed after 0.437 seconds.
+✔ Test policyHasNoHiddenPreviousRootState() passed after 0.434 seconds.
+✔ Test failedMutationDoesNotReachPersistence() passed after 0.435 seconds.
+✔ Test "Drehrad-Intervalle: Tage, Wochen, Monate (Monatsende gekürzt)" passed after 0.435 seconds.
+✔ Test "Nach Neustart kommt Behalten nicht zurück und neue Asset-ID bleibt neu" passed after 0.435 seconds.
+✔ Test "Zeitzonenwechsel: Fälligkeit folgt dem lokalen Kalendertag" passed after 0.435 seconds.
+✔ Test successfulValueMutationPublishesSavedValue() passed after 0.435 seconds.
+✔ Test leaseCannotBeIssuedBeforeActivation() passed after 0.435 seconds.
+✔ Test "Voreinstellungen: Morgen, 7 Tage, 30 Tage (Kalenderarithmetik)" passed after 0.435 seconds.
+✔ Test failedPersistencePreservesValueSnapshot() passed after 0.435 seconds.
+✔ Test revokedLeaseDoesNotExecuteSink() passed after 0.434 seconds.
+✔ Test visibilityIsFailClosedUntilReady() passed after 0.435 seconds.
+✔ Test lockAndNewSessionDoNotReviveOldLease() passed after 0.434 seconds.
+✔ Test rematchNeverGuessesBetweenTwoCandidates() passed after 0.435 seconds.
+✔ Test "Vor Fälligkeit aus normalen Queues ausgeschlossen, ab Fälligkeit nur im Wieder-fällig-Bereich" passed after 0.435 seconds.
+✔ Test notesAndAlbumNames() passed after 0.435 seconds.
+✔ Test rematchPrefersIdThenUniqueFingerprintAndListsTheRest() passed after 0.435 seconds.
+✔ Test tagStateAndCounts() passed after 0.435 seconds.
+✔ Test videosFirstLongestFirstThenLargestPhotos() passed after 0.435 seconds.
+✔ Test tagsAreTrimmedDedupedAccentAndCaseInsensitive() passed after 0.435 seconds.
+✔ Test toneCurveIsMonotoneForExtremeSettings() passed after 0.436 seconds.
+✔ Test measureOnlyWhatIsMissingChangedOrDue() passed after 0.435 seconds.
+✔ Test prefilterKeepsOnlySharedShapes() passed after 0.435 seconds.
+✔ Test safeOpaqueNamesAndSanitizedExtensions() passed after 0.435 seconds.
+✔ Test albumAndBasketKeepOrderAndSkipDuplicates() passed after 0.435 seconds.
+✔ Test countsSeparateNotMeasuredFromUnknown() passed after 0.435 seconds.
+✔ Test "Neustart: Termin bleibt erhalten, kein Auto-Delete" passed after 0.435 seconds.
+✔ Test addedFirstKeepsUnknownAtEnd() passed after 0.435 seconds.
+✔ Test searchIsPrivateAndExcludesTrash() passed after 0.435 seconds.
+✔ Test unknownIsNeverZeroAndOnlyKnownHasBytes() passed after 0.435 seconds.
+✔ Test mainFiltersLikePhotosApp() passed after 0.435 seconds.
+✔ Test corruptedMetadataRejected() passed after 0.435 seconds.
+✔ Test everyFilterIsOffered() passed after 0.435 seconds.
+✔ Test duplicateObjectsRejected() passed after 0.435 seconds.
+✔ Test folderScopesAndCaseInsensitiveNames() passed after 0.435 seconds.
+✔ Test pinningAndStableSorting() passed after 0.435 seconds.
+✔ Test arbitraryObjectPathsRejected(name:) with 4 test cases passed after 0.435 seconds.
+✔ Test futureSavedTimeDoesNotRegress() passed after 0.435 seconds.
+✔ Test collectionFiltersNeedMembers() passed after 0.435 seconds.
+✔ Test partialSelectionDoesNotPartlyMutate() passed after 0.435 seconds.
+✔ Test collisionWithTheBodyEndsTheRound() passed after 0.435 seconds.
+✔ Test deletingFolderNeverDeletesContent() passed after 0.435 seconds.
+✔ Test fullWorkspaceRoundTripIncludesTrashAndAttachments() passed after 0.435 seconds.
+✔ Test permanentDeletionRequiresTrash() passed after 0.435 seconds.
+✔ Test attachmentCannotBeTrashedOrPurgedWhileReferenced() passed after 0.435 seconds.
+✔ Test movingNoteInvalidatesOldEditorRevision() passed after 0.435 seconds.
+✔ Test rapidTurnsAreBufferedInOrderAndCannotReverse() passed after 0.435 seconds.
+✔ Test originalIsNeverClaimedRemovedByImport() passed after 0.435 seconds.
+✔ Test seededRoundIsReproducibleAndOnlyStepsChangeIt() passed after 0.435 seconds.
+✔ Test unsafeDisplayNamesRejected(name:) with 9 test cases passed after 0.435 seconds.
+✔ Test missingAttachmentsAreRejected() passed after 0.435 seconds.
+✔ Test emptySnapshotRoundTrip() passed after 0.435 seconds.
+✔ Test aFullBoardWinsWithoutHangingOnFoodPlacement() passed after 0.435 seconds.
+✔ Test viewportChoosesUsableGridsForPhoneAndExpandedWindows() passed after 0.435 seconds.
+✔ Test firstSwipeCanChooseEveryDirectionButCannotTeleportAfterMoving() passed after 0.436 seconds.
+✔ Test deletedNoteCannotBeResurrectedByAutosave() passed after 0.435 seconds.
+✔ Test classicWallEndsTheRoundButRelaxedModeWraps() passed after 0.435 seconds.
+✔ Test trashRestorePreservesRichNote() passed after 0.435 seconds.
+✔ Test noteSaveRequiresCorrectRevision() passed after 0.435 seconds.
+✔ Test screenRecordingsAreVideosOnly() passed after 0.435 seconds.
+✔ Test enteringTheDepartingTailIsLegal() passed after 0.436 seconds.
+✔ Test everyTemplateTilesTheSquareWithoutGaps() passed after 0.435 seconds.
+✔ Test collectingGrowsExactlyOnceAndKeepsFoodOffTheBody() passed after 0.436 seconds.
+✔ Test freeCollageStartsSpreadOut() passed after 0.436 seconds.
+✔ Test movingADividerResizesNeighboursAndClamps() passed after 0.436 seconds.
+✔ Test spacingKeepsCellsInsideAndApart() passed after 0.436 seconds.
+✔ Test stripStacksScreenshotsWithTrims() passed after 0.436 seconds.
+✔ Test cancelledContinuationTerminates() passed after 0.436 seconds.
+✔ Test cellFitCoversAndPans() passed after 0.436 seconds.
+✔ Test reentrantCancellationDoesNotDeadlock() passed after 0.436 seconds.
+✔ Test cloudAndErrorsAreNotAnalysed() passed after 0.436 seconds.
+✔ Test lateRequestIDIsCancelled() passed after 0.436 seconds.
+✔ Test graphUnionsAreStableAndDoNotStoreCycles() passed after 0.435 seconds.
+✔ Test versionAndEditsInvalidateCache() passed after 0.435 seconds.
+✔ Test resolutionDependsOnlyOnSelectedTask() passed after 0.435 seconds.
+✔ Test emptyProgressIsNotNanOrComplete() passed after 0.435 seconds.
+✔ Test cleanupBeforeAndAfterCompletion() passed after 0.435 seconds.
+✔ Test backwardClockExpires() passed after 0.435 seconds.
+✔ Test failedAndUnknownRoundTrip() passed after 0.435 seconds.
+✔ Test cachedSuccessIsNotScheduledAgain() passed after 0.435 seconds.
+✔ Test swapRemoveAddAndJson() passed after 0.437 seconds.
+✔ Test localWatchdogTerminatesWithoutCallback() passed after 0.435 seconds.
+✔ Test concurrentCallbacksResumeExactlyOnce() passed after 0.435 seconds.
+✔ Test completionBeforeObserver() passed after 0.435 seconds.
+✔ Test observerBeforeCompletion() passed after 0.434 seconds.
+✔ Test retryBackoffAndThreeAttemptLimit() passed after 0.434 seconds.
+✔ Test cloudProgressExtendsIdleButNotAbsoluteDeadline() passed after 0.434 seconds.
+✔ Test validBoardAndFoodNeverOverlapTheInitialStrip() passed after 0.435 seconds.
+✔ Test unchangedOrInvalidProgressCannotKeepARequestAlive() passed after 0.434 seconds.
+✔ Test duplicateScanUsesAndFillsHashCache() passed after 0.438 seconds.
+✔ Suite MoviePlanTests passed after 0.455 seconds.
+✔ Suite GestureMachineTests passed after 0.455 seconds.
+✔ Suite PhotoGameRecordsTests passed after 0.455 seconds.
+✔ Suite FeedControlsTests passed after 0.455 seconds.
+✔ Suite SizeEstimateTests passed after 0.456 seconds.
+✔ Suite VaultTests passed after 0.456 seconds.
+✔ Suite VideoPlanTests passed after 0.456 seconds.
+✔ Suite "Feed-Session" passed after 0.456 seconds.
+✔ Suite QuickAccessShareTests passed after 0.456 seconds.
+✔ Suite "Free, Lifetime Pro (E19)" passed after 0.456 seconds.
+✔ Suite LayerTests passed after 0.456 seconds.
+✔ Test concurrentReservationsAreAtomic() passed after 0.450 seconds.
+✔ Suite "Vollständige Duplikatprüfung" passed after 0.456 seconds.
+✔ Suite VaultAudioFormatTests passed after 0.456 seconds.
+✔ Suite EditCoreTests passed after 0.456 seconds.
+✔ Suite "Entscheidungs-Ledger" passed after 0.456 seconds.
+✔ Test throttledWorkStopsWhenCritical() passed after 0.447 seconds.
+✔ Suite BatchTests passed after 0.456 seconds.
+✔ Suite AnalysisPlanTests passed after 0.456 seconds.
+✔ Suite PhotoMemoryBoardLayoutTests passed after 0.456 seconds.
+✔ Suite HistoryGroupingTests passed after 0.456 seconds.
+✔ Suite BackupTests passed after 0.456 seconds.
+✔ Test "Scan ist abbrechbar" passed after 0.448 seconds.
+✔ Suite CollageSceneTests passed after 0.457 seconds.
+✔ Suite ExpansionTests passed after 0.457 seconds.
+✔ Suite PluralAndAnalysisTests passed after 0.457 seconds.
+✔ Suite QuickSourceFilterTests passed after 0.457 seconds.
+✔ Test "Gleichzeitige Operationen reservieren Kapazität atomar" passed after 0.445 seconds.
+✔ Suite PhotoMemoryGameTests passed after 0.457 seconds.
+✔ Suite "Sammlungen" passed after 0.457 seconds.
+✔ Suite ArchiveTests passed after 0.457 seconds.
+✔ Suite PdfTests passed after 0.457 seconds.
+✔ Suite NoDistortionTests passed after 0.457 seconds.
+✔ Suite ColorPipelineTests passed after 0.457 seconds.
+✔ Suite "Vault session boundaries" passed after 0.457 seconds.
+✔ Suite VaultNoteJournalTests passed after 0.457 seconds.
+✔ Suite PhotoSnakeGalleryTests passed after 0.457 seconds.
+✔ Suite LibraryChangesTests passed after 0.457 seconds.
+✔ Suite LibraryTests passed after 0.457 seconds.
+✔ Suite "Später 2.0" passed after 0.457 seconds.
+✔ Suite "Vault security primitives; not app integration" passed after 0.457 seconds.
+✔ Suite OrganizeTests passed after 0.457 seconds.
+✔ Suite SizeInventoryTests passed after 0.457 seconds.
+✔ Suite LibraryFilterTests passed after 0.457 seconds.
+✔ Suite "Vault workspace domain" passed after 0.457 seconds.
+✔ Suite PhotoSnakeGameTests passed after 0.458 seconds.
+✔ Suite CollageTests passed after 0.458 seconds.
+✔ Suite "Ledger: Ergänzungen aus Android" passed after 0.459 seconds.
+✔ Test throttledWorkWaitsWhileWarmThenContinues() passed after 0.449 seconds.
+✔ Suite "Exakte Duplikate" passed after 0.459 seconds.
+✔ Suite "Bereinigung, Journal, Free-Limit" passed after 0.458 seconds.
+✔ Suite WorkflowTests passed after 0.459 seconds.
+✔ Test throttledWorkRespectsParallelismAndOrder() passed after 0.456 seconds.
+✔ Suite AnalysisResultsTests passed after 0.465 seconds.
+✔ Test graphHandles37177AssetsWithLinearNumberOfLinks() passed after 0.594 seconds.
+✔ Suite AnalysisWorkTests passed after 0.613 seconds.
+✔ Test historySupportsThreeHundredSegmentsOnTheUnmodifiedGame() passed after 0.910 seconds.
+✔ Suite PhotoSnakePresentationTests passed after 0.912 seconds.
+✔ Test run with 437 tests in 50 suites passed after 0.913 seconds.

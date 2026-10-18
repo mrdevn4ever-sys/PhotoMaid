@@ -17,9 +17,16 @@ abgebrochenes Laden lässt die Einrichtung sichtbar und ersetzt keine bestehende
 beim Fortsetzen und beim Wechsel zu Motiven beibehalten. Keine Änderung an Fotos oder Feed-Entscheidungen.
 Die zusätzlichen Texte sind in allen 16 Sprachen vorhanden; der lokale Lokalisierungscheck ist PASS
 (1681 verwendete Kennungen, 2702 Einträge). Lokaler Swift-/iOS-Build: NOT RUN, hier ist kein Swift-/Apple-SDK installiert.
-Native Unit- und Oberflächenvalidierung: **PENDING**, gezielter `games_case=setup` für Deutsch,
+Native Unit- und Oberflächenvalidierung: **IN PROGRESS**, [Lauf 39152818302](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39152818302),
+Quellstand `5e7328e`; gezielter `games_case=setup` für Deutsch,
 iCloud-Vorgabe/Abschalten, leere manuelle Auswahl, Foto-Snake mit echter Uhr und große arabische Schrift.
 Ein breites Simulatorfenster ist keine Duo-Faltabnahme. Kein neuer TestFlight-/Store-Upload.
+
+Die erste iPhone-Aufnahme besteht beide nativen Fälle ohne Fehler/Skip, wurde aber visuell
+wegen dunkler Statusleiste/Nebenbeschriftungen auf dem dunklen Snake-Hintergrund im hellen
+App-Modus abgelehnt. Unveränderte Bilder: `docs/game-setup-20261018/rejected-light-snake/`.
+Snake erhält deshalb dunkle Systemdarstellung nur innerhalb seiner Szene; die Wiederholung
+prüft zusätzlich den Rückweg zur Spieleauswahl und zur Paare-Ansicht im ursprünglichen App-Modus.
 
 ## Spielname Paare (18.10.2026)
 

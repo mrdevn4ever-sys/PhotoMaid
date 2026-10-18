@@ -1,0 +1,14 @@
+{
+  "id": 12145927711,
+  "bytes": 18910,
+  "sha256": "20384445770e251ac57dcda46becd87f767884083bf4e960f2f714e42a54622b",
+  "run_id": 39152818302,
+  "commit": "5e7328e8bd350f1cbcd4ee9204c0d922b9e1138c",
+  "github_sha256_verification": "PASS",
+  "zip_crc": "PASS",
+  "status": "PASS",
+  "swift_testing_tests": 437,
+  "xctest_tests": 24,
+  "failed": 0,
+  "platform": "Linux SwiftPM core; not an iOS app build"
+}

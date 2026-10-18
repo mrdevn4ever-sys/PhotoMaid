@@ -86,6 +86,13 @@ import XCTest
         let moving = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value != %@", before), object: board)
         XCTAssertEqual(XCTWaiter.wait(for: [moving], timeout: 3), .completed)
         checkpoint("snake_simple_setup_real_photo_game", app: app)
+        app.buttons["snake.pause"].tap()
+        app.buttons["Spiele"].firstMatch.tap()
+        XCTAssertTrue(app.buttons["games.memory"].waitForExistence(timeout: 5), "Games returns to the actual chooser")
+        checkpoint("games_chooser_after_snake_pause", app: app)
+        app.buttons["games.memory"].tap()
+        app.buttons["memory.change"].tap()
+        checkpoint("pairs_after_snake_uses_app_appearance", app: app)
     }
 
     func test70UnavailableVideosCanBePassed() {

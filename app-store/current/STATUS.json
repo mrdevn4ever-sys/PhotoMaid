@@ -295,7 +295,7 @@
       "uk": "\u041f\u0430\u0440\u0438",
       "zh-Hans": "\u914d\u5bf9"
     },
-    "reason": "The app now uses generic localized Pairs names. Existing genuine game PNGs and game preview videos were captured before this user-requested rename and are historical, not approved for a new upload. Native originals and original capture verdicts are retained unchanged.",
+    "reason": "App uses localized Paare/Pairs names and simplified game setup with iCloud on by default. Existing genuine game PNGs and game preview videos predate these changes and remain historical. Native originals and original capture verdicts are unchanged.",
     "affected_selected_media": [
       "*/iphone-*/app-store-selection/06-memory-play.png",
       "*/iphone-large/previews/02-photo-games.mp4",
@@ -305,5 +305,11 @@
     "new_native_capture": "NOT RUN",
     "new_testflight_upload": "NOT RUN"
   },
-  "source_capture_audit": "PASS"
+  "source_capture_audit": "PASS",
+  "game_setup_validation": {
+    "status": "IN PROGRESS",
+    "run_id": 39152818302,
+    "commit": "5e7328e8bd350f1cbcd4ee9204c0d922b9e1138c",
+    "scope": "Native unit tests and actual German setup/iCloud toggles/manual-empty route/real-time PhotoKit Snake, plus Arabic accessibility text on phone and explicit wide-window simulator. Not a new Store capture or physical Duo test."
+  }
 }

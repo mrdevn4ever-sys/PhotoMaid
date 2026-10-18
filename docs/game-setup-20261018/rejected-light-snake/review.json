@@ -1,0 +1,31 @@
+{
+  "status": "VISUAL REJECT; native cases passed",
+  "run_id": 39152818302,
+  "source_commit": "5e7328e8bd350f1cbcd4ee9204c0d922b9e1138c",
+  "native_summary": {
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0
+  },
+  "artifact_id": 12146670433,
+  "artifact_bytes": 15997836,
+  "artifact_sha256": "8289d8601f4d5dd2523ad0ba49d2c2fe037866c18ffa93bc9bd74d5de9088ace",
+  "github_sha256_verification": "PASS",
+  "zip_integrity": "PASS",
+  "original_screenshots_preserved": [
+    {
+      "file": "snake-options.png",
+      "sha256": "e19cb6d84d007a6347adf1c7db6f008c73a4ee6e4ca060a532f3eb373be191f4",
+      "original_exported_file": "0489EB1A-362A-479F-B3B1-FB0112242904.png",
+      "actual_visual_review": "VIEWED; REJECT: black status bar and muted labels/chevron on dark forest while app is in light appearance"
+    },
+    {
+      "file": "snake-default.png",
+      "sha256": "0966438bd700c5a963532fa1863b2c8e31a1e90a132c3f73a47fa5211d695f15",
+      "original_exported_file": "A60DBB1A-3C7B-4AB7-809F-5F51B3E4A997.png",
+      "actual_visual_review": "VIEWED; REJECT: black status bar and muted labels/chevron on dark forest while app is in light appearance"
+    }
+  ],
+  "correction": "Use dark system chrome for the always-dark Snake scene only; preserve the app appearance for chooser and Pairs. Repeat native screens and verify route back to chooser/Pairs.",
+  "no_claim": "These images are not approved final UI or new Store assets. Other screenshots in the original artifact have not yet all been viewed."
+}

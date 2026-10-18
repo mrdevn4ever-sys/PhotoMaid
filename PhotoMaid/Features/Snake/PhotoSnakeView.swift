@@ -41,6 +41,7 @@ struct PhotoSnakeView: View {
             else { menu }
         }
         .tint(.white)
+        .preferredColorScheme(.dark)
         .sheet(isPresented: $gallery) { SnakeGalleryView(model: model) }
         .sheet(isPresented: $settings) { settingsSheet }
         .sheet(isPresented: $collectionPicker) {
