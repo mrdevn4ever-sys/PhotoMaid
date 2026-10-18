@@ -134,23 +134,23 @@ jobs:
           xcodegen generate
       - name: Passenden echten Simulator erstellen
         id: sim
-        timeout-minutes: 10
+        timeout-minutes: ${{ matrix.device == 'iphone-duo' && 20 || 10 }}
         run: |
           set -euo pipefail
           python3 scripts/store/create_capture_simulator.py "$STORE_DEVICE" "$RUNNER_TEMP/device.json"
           udid=$(python3 -c 'import json,sys;print(json.load(open(sys.argv[1]))["udid"])' "$RUNNER_TEMP/device.json")
           echo "udid=$udid" >> "$GITHUB_OUTPUT"
+          echo "Initialize the disposable device photo library"
           xcrun simctl boot "$udid"
           xcrun simctl bootstatus "$udid" -b
-          if [ "$STORE_DEVICE" = iphone-duo ]; then
-            python3 scripts/store/open_capture_device.py "$udid"
-            xcrun simctl io "$udid" enumerate > "$RUNNER_TEMP/duo-screens.txt"
-          fi
+          echo "Shut down before clearing only the disposable factory photo library"
           xcrun simctl shutdown "$udid"
           python3 scripts/store/empty_simulator_photos.py "$udid"
+          echo "Boot the clean device for real media capture"
           xcrun simctl boot "$udid"
           xcrun simctl bootstatus "$udid" -b
           if [ "$STORE_DEVICE" = iphone-duo ]; then
+            echo "Open the matching Xcode device UI and configure the genuine inner display"
             python3 scripts/store/open_capture_device.py "$udid"
             xcrun simctl io "$udid" screenConfig --display=primary power off
             xcrun simctl io "$udid" screenConfig --display=primary-1 power on
@@ -161,9 +161,12 @@ jobs:
           with open(p,'w')as f:json.dump(d,f,indent=2)
           PY
           fi
+          echo "Set native appearance and status bar"
           xcrun simctl ui "$udid" appearance dark
           xcrun simctl status_bar "$udid" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
+          echo "Import the exact 55-photo source library"
           find app-store/media -maxdepth 1 -name '*.jpg' -print0 | sort -z | xargs -0 xcrun simctl addmedia "$udid"
+          echo "Native capture device preparation complete"
       - uses: actions/download-artifact@v4
         with:
           name: store-current-build
