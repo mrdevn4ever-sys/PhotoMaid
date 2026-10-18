@@ -5,6 +5,11 @@ import UIKit
 
 /// Apple test-host tests. Syntax-checked on Linux, not represented as executed there.
 @MainActor struct PhotoBlocksIntegrationTests {
+    @MainActor private final class Policy {
+        var allowed = true
+        var shouldFail = true
+        var saved: PhotoBlocksArchive?
+    }
     private func wait(_ photos: PhotoGamePhotos) async throws {
         for _ in 0..<100 where photos.isLoading { try await Task.sleep(for: .milliseconds(5)) }
         #expect(!photos.isLoading)
@@ -26,23 +31,23 @@ import UIKit
     }
 
     @Test func exclusionWhileRequestIsPendingCannotPublishALateThumbnail() async throws {
-        var protected = false
-        let photos = PhotoGamePhotos(canUsePhotos: { _ in !protected })
+        let policy = Policy()
+        let photos = PhotoGamePhotos(canUsePhotos: { _ in policy.allowed })
         photos.updateVisibility(["a"])
         photos.prepareOfflineWindow(["a"]) { _ in
             // Deliberately ignore cancellation, as a late PhotoKit callback could do.
             try? await Task.sleep(for: .milliseconds(30)); return UIImage()
         }
         await Task.yield()
-        protected = true
+        policy.allowed = false
         photos.restrictOfflineWindow(to: [])
         try await Task.sleep(for: .milliseconds(50))
         #expect(photos.images.isEmpty && photos.photoIDs.isEmpty && !photos.isLoading)
     }
 
     @Test func limitedScopeMissingImagesAndPermissionRevocationFailClosed() async throws {
-        var readable = true
-        let photos = PhotoGamePhotos(canUsePhotos: { _ in readable })
+        let policy = Policy()
+        let photos = PhotoGamePhotos(canUsePhotos: { _ in policy.allowed })
         photos.updateVisibility(["permitted", "missing"])
         var requested: [String] = []
         photos.prepareOfflineWindow(["vault", "permitted", "missing"]) { id in
@@ -51,7 +56,7 @@ import UIKit
         try await wait(photos)
         #expect(requested == ["permitted", "missing"])
         #expect(photos.images.keys.sorted() == ["permitted"])
-        readable = false; photos.restrictOfflineWindow(to: [])
+        policy.allowed = false; photos.restrictOfflineWindow(to: [])
         #expect(photos.images.isEmpty && photos.photoIDs.isEmpty)
     }
 
@@ -72,14 +77,14 @@ import UIKit
 
     @Test func saveFailureKeepsStateAndRetryDoesNotResetBestOrBoard() {
         enum Failure: Error { case unavailable }
-        var fail = true, saved: PhotoBlocksArchive?
+        let policy = Policy()
         let model = PhotoBlocksModel(archive: .init(best: 120)) {
-            if fail { throw Failure.unavailable }; saved = $0
+            if policy.shouldFail { throw Failure.unavailable }; policy.saved = $0
         }
         model.checkpoint(); #expect(model.saveFailed)
         let board = model.game.board
-        fail = false; model.checkpoint()
-        #expect(!model.saveFailed && saved?.best == 120 && saved?.game?.board == board)
+        policy.shouldFail = false; model.checkpoint()
+        #expect(!model.saveFailed && policy.saved?.best == 120 && policy.saved?.game?.board == board)
         model.invalidatePhotos()
         #expect(model.selection.isEmpty && model.sequence.order.isEmpty && model.photos.images.isEmpty)
     }
