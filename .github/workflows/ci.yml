@@ -113,22 +113,7 @@ jobs:
           PM_PROBE_XCODE: '27.1'
         run: |
           set -euo pipefail
-          df -h /
-          xcodebuild -downloadPlatform iOS -buildVersion 27.1 2>&1 | tee duo-environment/runtime-download.log
-          scripts/ci/duo_environment.sh
-          xcrun simctl help ui > duo-environment/simctl-ui-help.txt
-          xcrun simctl help io > duo-environment/simctl-io-help.txt
-          xcrun agent skills export --output-dir "$RUNNER_TEMP/duo-skills"
-          cp -R "$RUNNER_TEMP/duo-skills" duo-environment/skills
-          python3 scripts/store/create_capture_simulator.py iphone-duo duo-environment/capture-device.json
-          udid=$(python3 -c 'import json;print(json.load(open("duo-environment/capture-device.json"))["udid"])')
-          xcrun simctl boot "$udid"
-          xcrun simctl bootstatus "$udid" -b
-          xcrun simctl io "$udid" enumerate > duo-environment/duo-screens.txt
-          xcrun simctl io "$udid" screenshot duo-environment/duo-default-screen.png
-          xcrun simctl ui "$udid" --help > duo-environment/duo-ui-help.txt 2>&1 || true
-          xcrun simctl shutdown "$udid"
-          xcrun simctl delete "$udid"
+          python3 scripts/ci/prepare_duo_runtime.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:

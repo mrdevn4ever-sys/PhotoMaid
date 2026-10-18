@@ -25,8 +25,19 @@ xcrun simctl list devicetypes -j > duo-environment/device-types.json
 xcrun simctl list runtimes -j > duo-environment/runtimes.json
 xcrun simctl list devices available -j > duo-environment/devices.json
 xcrun simctl help > duo-environment/simctl-help.txt 2>&1
-xcrun simctl io help > duo-environment/simctl-io-help.txt 2>&1 || true
-xcrun agent skills export --help > duo-environment/agent-skills-help.txt 2>&1 || true
+python3 - <<'PY'
+import subprocess
+from pathlib import Path
+for name,args in [('simctl-io-help',['xcrun','simctl','help','io']),
+                  ('agent-skills-help',['xcrun','agent','skills','export','--help'])]:
+    try:
+        result=subprocess.run(args,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,timeout=10)
+        text=result.stdout
+    except subprocess.TimeoutExpired as error:
+        text=(error.stdout or b'').decode(errors='replace') if isinstance(error.stdout,bytes) else (error.stdout or '')
+        text+='\nDIAGNOSTIC TIMEOUT (10s); capability discovery continues.\n'
+    Path('duo-environment',name+'.txt').write_text(text)
+PY
 python3 - <<'PY'
 import json
 from pathlib import Path
