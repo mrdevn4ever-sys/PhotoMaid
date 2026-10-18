@@ -13,6 +13,10 @@ on:
         description: "App-Store-Aufnahmen statt QA: all oder Kommaliste (leer = normale CI)"
         type: string
         default: ""
+      store_devices:
+        description: "Für store-refresh: iphone-large,iphone-medium; Duo nur mit echtem Simulator"
+        type: string
+        default: iphone-large,iphone-medium
       ui_tests:
         description: "UI-Tests und Screenshots ausführen (länger)"
         type: boolean
@@ -38,7 +42,7 @@ on:
       ui_phase:
         description: "UI-Durchlauf (gezielte Wiederholung nach der ersten Gesamtprüfung)"
         type: choice
-        options: [all, fixtures, real, start, store-screenshots, store-previews, store-export]
+        options: [all, fixtures, real, start, store-screenshots, store-previews, store-export, store-refresh]
         default: all
       ui_case:
         description: "PhotoKit-Fachtest (all = vollständige Prüfung; Pro prüft auch die Tresor-Voraussetzung)"
@@ -71,7 +75,7 @@ on:
 
 concurrency:
   # Keep evidence from the previous commit while validating a fix on the same branch.
-  group: ci-${{ github.ref }}-${{ github.sha }}-${{ inputs.store_locales }}-${{ inputs.native_capture && 'native' || inputs.collect_run || inputs.ui_phase || 'all' }}-${{ inputs.ui_case || 'all' }}-${{ inputs.sim_runtime || 'latest' }}-${{ inputs.qa_case || 'all' }}
+  group: ci-${{ github.ref }}-${{ github.sha }}-${{ inputs.store_locales }}-${{ inputs.store_devices }}-${{ inputs.native_capture && 'native' || inputs.collect_run || inputs.ui_phase || 'all' }}-${{ inputs.ui_case || 'all' }}-${{ inputs.sim_runtime || 'latest' }}-${{ inputs.qa_case || 'all' }}
   cancel-in-progress: true
 
 permissions:
@@ -94,11 +98,17 @@ jobs:
           name: duo-environment
           path: duo-environment/
   app-store:
-    if: inputs.store_locales != '' && inputs.ui_phase != 'store-export'
+    if: inputs.store_locales != '' && inputs.ui_phase != 'store-export' && inputs.ui_phase != 'store-refresh'
     uses: ./.github/workflows/app-store-assets.yml
     with:
       locales: ${{ inputs.store_locales }}
       capture: ${{ inputs.ui_phase == 'store-screenshots' && 'screenshots' || inputs.ui_phase == 'store-previews' && 'previews' || 'all' }}
+  app-store-refresh:
+    if: inputs.store_locales != '' && inputs.ui_phase == 'store-refresh'
+    uses: ./.github/workflows/app-store-refresh.yml
+    with:
+      locales: ${{ inputs.store_locales }}
+      devices: ${{ inputs.store_devices }}
   app-store-export:
     if: inputs.store_locales != '' && inputs.ui_phase == 'store-export'
     uses: ./.github/workflows/app-store-export.yml

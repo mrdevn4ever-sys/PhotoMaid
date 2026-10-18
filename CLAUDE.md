@@ -53,6 +53,10 @@ Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E19) – ni
 - **Erneute ausdrückliche Freigabe (17.10.2026: „Testflight“):** den bereits getesteten Video-Swipe-Fix
   über den vorhandenen Workflow als internen TestFlight-Build hochladen und Apples Verarbeitung prüfen.
   Keine App-Store-Veröffentlichung oder externe Tester-Verteilung dadurch autorisiert.
+- **Store-Aktualisierung (18.10.2026: „Mach das für alle sprachen“):** aktuelle native Store-Bilder und
+  Vorschauen einschließlich Foto-Snake/Memory für alle 16 Sprachen erzeugen, notwendige manuelle
+  Actions ausführen und geprüfte Assets im bestehenden Projekt ablegen. Duo-Aufnahmen nur mit echtem
+  passendem Simulator/SDK; Ersatzfenster nicht als Duo-Store-Assets ausgeben. Kein App-Release dadurch.
 
 ## Geschäftsregeln (aus dem Android-Quellcode)
 

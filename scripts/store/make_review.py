@@ -32,7 +32,7 @@ def main():
             entries.append({'file':str(path.relative_to(root)),'sha256':hashlib.sha256(path.read_bytes()).hexdigest()})
         name=f'screenshots-{start//12:02}.jpg';page.save(out/name,quality=92)
         manifest.append({'sheet':name,'kind':'screenshots','originals':entries,'review':'PENDING'})
-    for path in sorted((root/'previews').glob('*.mp4')):
+    for path in sorted((root/'previews').glob('*.mp4')) + sorted((root/'alternatives').glob('*.mp4')):
         result=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_streams','-show_format','-of','json',str(path)]))
         duration=float(result['format']['duration']);video=next(s for s in result['streams']if s['codec_type']=='video')
         assert 15<=duration<=30 and (video['width'],video['height'])==(886,1920) and video['r_frame_rate']=='30/1'
@@ -47,10 +47,10 @@ def main():
                 draw.text(((cell%4)*300+5,y+650),f'{path.stem} | {seconds:.1f}s',font=font(13),fill='white')
         name=path.stem+'-video.jpg';sheet.save(out/name,quality=92)
         manifest.append({'sheet':name,'kind':'video','originals':[{'file':str(path.relative_to(root)),'sha256':hashlib.sha256(path.read_bytes()).hexdigest()}],'sample_times':times,'full_decode':'PASS','review':'PENDING'})
-    posters=sorted((root/'previews').glob('*-poster.png'))
+    posters=sorted((root/'previews').glob('*-poster.png')) + sorted((root/'alternatives').glob('*-poster.png'))
     if posters:
-        page=Image.new('RGB',(1200,710),'#181818');draw=ImageDraw.Draw(page);entries=[]
-        assert len(posters)<=3
+        page=Image.new('RGB',(max(1200,len(posters)*400),710),'#181818');draw=ImageDraw.Draw(page);entries=[]
+        assert len(posters)<=4
         for cell,path in enumerate(posters):
             with Image.open(path)as original:
                 assert original.size==(886,1920)

@@ -162,11 +162,13 @@ struct PhotoSnakeView: View {
                 Text(key: "snake_relaxed").tag(PhotoSnakeGame.Mode.relaxed)
                 Text(key: "snake_classic").tag(PhotoSnakeGame.Mode.classic)
             }
+            .accessibilityIdentifier("snake.mode")
             Picker(L("snake_speed"), selection: $speed) {
                 Text(key: "snake_gentle").tag(PhotoSnakeModel.Speed.gentle)
                 Text(key: "snake_normal").tag(PhotoSnakeModel.Speed.normal)
                 Text(key: "snake_fast").tag(PhotoSnakeModel.Speed.fast)
             }
+            .accessibilityIdentifier("snake.speed")
         }
         .pickerStyle(.menu).padding(16).background(.white.opacity(0.07), in: .rect(cornerRadius: 18))
     }

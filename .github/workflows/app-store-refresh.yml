@@ -1,0 +1,191 @@
+name: App Store – aktueller Spiel- und Bildsatz
+on:
+  workflow_call:
+    inputs:
+      locales:
+        type: string
+        default: en
+      devices:
+        type: string
+        default: iphone-large,iphone-medium
+  workflow_dispatch:
+    inputs:
+      locales:
+        description: 'all oder Sprachcodes mit Komma'
+        type: string
+        default: en
+      devices:
+        description: 'iphone-large,iphone-medium; iphone-duo nur bei echtem SDK/Simulator'
+        type: string
+        default: iphone-large,iphone-medium
+permissions:
+  contents: read
+concurrency:
+  group: store-refresh-${{ github.ref }}-${{ inputs.locales }}-${{ inputs.devices }}
+  cancel-in-progress: false
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+    steps:
+      - id: plan
+        env:
+          REQUESTED: ${{ inputs.locales }}
+          DEVICES: ${{ inputs.devices }}
+        run: |
+          python3 - <<'PY'
+          import json,os
+          available=['ar','de','en','es','fr','it','ja','ko','nl','pl','pt-PT','ro','ru','tr','uk','zh-Hans']
+          locales=available if os.environ['REQUESTED']=='all' else os.environ['REQUESTED'].split(',')
+          devices=os.environ['DEVICES'].split(',')
+          assert locales and len(locales)==len(set(locales)) and all(x in available for x in locales)
+          assert devices and len(devices)==len(set(devices)) and set(devices)<={'iphone-large','iphone-medium','iphone-duo'}
+          matrix={'include':[{'locale':l,'device':d} for l in locales for d in devices]}
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('matrix='+json.dumps(matrix)+'\n')
+          PY
+  build:
+    name: Aktuellen Simulator-Build kompilieren
+    runs-on: macos-26
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github
+            PhotoMaid
+            PhotoMaidTests
+            PhotoMaidUITests
+            Sources
+            Tests
+            scripts
+            fastlane
+      - name: Native App und Aufnahmetests kompilieren
+        run: |
+          set -euo pipefail
+          scripts/ci/select_xcode.sh
+          command -v xcodegen >/dev/null || brew install xcodegen
+          python3 scripts/android_strings_to_xcstrings.py --check
+          xcodegen generate
+          xcodebuild -version > "$RUNNER_TEMP/store-xcode.txt"
+          xcodebuild -project PhotoMaid.xcodeproj -scheme PhotoMaid \
+            -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/store-build" \
+            -enableCodeCoverage NO CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_REQUIRED=YES \
+            -skipPackagePluginValidation -skipMacroValidation build-for-testing > "$RUNNER_TEMP/store-build.log" 2>&1 || { tail -100 "$RUNNER_TEMP/store-build.log"; exit 1; }
+          COPYFILE_DISABLE=1 tar -czf "$RUNNER_TEMP/store-build.tar.gz" -C "$RUNNER_TEMP/store-build" Build/Products
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: store-current-build
+          path: |
+            ${{ runner.temp }}/store-build.tar.gz
+            ${{ runner.temp }}/store-xcode.txt
+            ${{ runner.temp }}/store-build.log
+          if-no-files-found: warn
+  capture:
+    name: Aktuell – ${{ matrix.locale }} – ${{ matrix.device }}
+    needs: [plan, build]
+    runs-on: macos-26
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    env:
+      CAPTURE_LOCALE: ${{ matrix.locale }}
+      STORE_DEVICE: ${{ matrix.device }}
+      CAPTURE_MODE: ${{ matrix.device == 'iphone-medium' && 'refresh-screenshots' || 'refresh' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github
+            PhotoMaid
+            PhotoMaidTests
+            PhotoMaidUITests
+            Sources
+            Tests
+            scripts
+            fastlane
+            app-store/media
+      - name: Xcode und Aufnahme-Werkzeuge
+        run: |
+          scripts/ci/select_xcode.sh
+          command -v xcodegen >/dev/null || brew install xcodegen
+          command -v ffmpeg >/dev/null || brew install ffmpeg
+          python3 -m venv "$RUNNER_TEMP/store-python"
+          "$RUNNER_TEMP/store-python/bin/pip" -q install pillow
+          xcodegen generate
+      - name: Passenden echten Simulator erstellen
+        id: sim
+        run: |
+          set -euo pipefail
+          python3 scripts/store/create_capture_simulator.py "$STORE_DEVICE" "$RUNNER_TEMP/device.json"
+          udid=$(python3 -c 'import json,sys;print(json.load(open(sys.argv[1]))["udid"])' "$RUNNER_TEMP/device.json")
+          echo "udid=$udid" >> "$GITHUB_OUTPUT"
+          xcrun simctl boot "$udid"
+          xcrun simctl bootstatus "$udid" -b
+          xcrun simctl shutdown "$udid"
+          python3 scripts/store/empty_simulator_photos.py "$udid"
+          xcrun simctl boot "$udid"
+          xcrun simctl bootstatus "$udid" -b
+          xcrun simctl ui "$udid" appearance dark
+          xcrun simctl status_bar "$udid" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
+          find app-store/media -maxdepth 1 -name '*.jpg' -print0 | sort -z | xargs -0 xcrun simctl addmedia "$udid"
+      - uses: actions/download-artifact@v4
+        with:
+          name: store-current-build
+          path: ${{ runner.temp }}/shared-store-build
+      - name: Gemeinsam geprüften Build installieren
+        env:
+          UDID: ${{ steps.sim.outputs.udid }}
+        run: |
+          set -euo pipefail
+          xcodebuild -version > "$RUNNER_TEMP/capture-xcode.txt"
+          diff -u "$RUNNER_TEMP/shared-store-build/store-xcode.txt" "$RUNNER_TEMP/capture-xcode.txt"
+          mkdir -p "$RUNNER_TEMP/store-build" "$RUNNER_TEMP/store-capture"
+          tar -xzf "$RUNNER_TEMP/shared-store-build/store-build.tar.gz" -C "$RUNNER_TEMP/store-build"
+          cp "$RUNNER_TEMP/device.json" "$RUNNER_TEMP/store-capture/device.json"
+          cp "$RUNNER_TEMP/capture-xcode.txt" "$RUNNER_TEMP/store-capture/xcode.txt"
+          xcrun simctl install "$UDID" "$RUNNER_TEMP/store-build/Build/Products/Debug-iphonesimulator/PhotoMaid.app"
+          xcrun simctl privacy "$UDID" grant photos com.mrdevn4ever.photomaid
+      - name: Aktuelle Oberfläche und wirkliche Spielabläufe aufnehmen
+        env:
+          UDID: ${{ steps.sim.outputs.udid }}
+        run: bash scripts/store/capture.sh "$UDID" "$RUNNER_TEMP/store-build" "$RUNNER_TEMP/store-capture"
+      - name: Native Bilder und drei Store-Vorschauen mit Tresor-Alternative exportieren
+        run: |
+          "$RUNNER_TEMP/store-python/bin/python" scripts/store/assemble_refresh.py \
+            "$RUNNER_TEMP/store-capture" "$RUNNER_TEMP/store-assets" --locale "$CAPTURE_LOCALE" --device "$STORE_DEVICE"
+          if [ "$CAPTURE_MODE" = refresh ]; then
+            "$RUNNER_TEMP/store-python/bin/python" scripts/store/export_refresh.py \
+              "$RUNNER_TEMP/store-capture" "$RUNNER_TEMP/store-assets" --locale "$CAPTURE_LOCALE"
+          fi
+          "$RUNNER_TEMP/store-python/bin/python" scripts/store/make_review.py "$RUNNER_TEMP/store-assets"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: store-current-${{ matrix.locale }}-${{ matrix.device }}-assets
+          path: ${{ runner.temp }}/store-assets
+          if-no-files-found: warn
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: store-current-${{ matrix.locale }}-${{ matrix.device }}-sources
+          path: |
+            ${{ runner.temp }}/store-capture/screenshots
+            ${{ runner.temp }}/store-capture/recordings
+            ${{ runner.temp }}/store-capture/control/*.json
+            ${{ runner.temp }}/store-capture/markers.jsonl
+            ${{ runner.temp }}/store-capture/*.json
+            ${{ runner.temp }}/store-capture/*.log
+            ${{ runner.temp }}/store-capture/*.txt
+            ${{ runner.temp }}/store-capture/diagnostics
+          if-no-files-found: warn
+      - name: Ausschließlich diesen Wegwerf-Simulator entfernen
+        if: always() && steps.sim.outputs.udid != ''
+        env:
+          UDID: ${{ steps.sim.outputs.udid }}
+        run: |
+          xcrun simctl shutdown "$UDID" || true
+          xcrun simctl delete "$UDID"

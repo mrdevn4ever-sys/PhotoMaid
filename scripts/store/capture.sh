@@ -18,6 +18,14 @@ elif [ "$CAPTURE_MODE" = previews ]; then
          -only-testing:PhotoMaidUITests/AppStoreCaptureTests/test10AppPreviewReview
          -only-testing:PhotoMaidUITests/AppStoreCaptureTests/test20AppPreviewStudio
          -only-testing:PhotoMaidUITests/AppStoreCaptureTests/test30AppPreviewVault)
+elif [ "$CAPTURE_MODE" = refresh ]; then
+  cases=(-only-testing:PhotoMaidUITests/AppStoreCaptureTests/test06CurrentStoreScreenshots
+         -only-testing:PhotoMaidUITests/AppStoreCaptureTests/test10AppPreviewReview
+         -only-testing:PhotoMaidUITests/AppStoreCaptureTests/test20AppPreviewStudio
+         -only-testing:PhotoMaidUITests/AppStoreCaptureTests/test30AppPreviewVault
+         -only-testing:PhotoMaidUITests/AppStoreCaptureTests/test40AppPreviewPhotoGames)
+elif [ "$CAPTURE_MODE" = refresh-screenshots ]; then
+  cases=(-only-testing:PhotoMaidUITests/AppStoreCaptureTests/test06CurrentStoreScreenshots)
 fi
 set +e
 TEST_RUNNER_STORE_CAPTURE_LOCALE="$CAPTURE_LOCALE" TEST_RUNNER_STORE_CAPTURE_DIR="$out" xcodebuild \

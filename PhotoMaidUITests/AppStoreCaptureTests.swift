@@ -25,7 +25,7 @@ final class AppStoreCaptureTests: XCTestCase {
         installPermissionMonitor()
         store = try SKTestSession(configurationFileNamed: "PhotoMaid")
         store.disableDialogs = true
-        if name.contains("test00") { store.resetToDefaultState(); try store.clearTransactions() }
+        if name.contains("test00") || name.contains("test06") { store.resetToDefaultState(); try store.clearTransactions() }
     }
 
     override func tearDown() async throws {
@@ -400,6 +400,144 @@ final class AppStoreCaptureTests: XCTestCase {
         var data=(try? Data(contentsOf:path)) ?? Data()
         data.append(try JSONSerialization.data(withJSONObject:entry));data.append(10)
         try data.write(to:path,options:.atomic)
+    }
+
+    /// Current product-page selection. The older exhaustive page archive stays available separately.
+    func test06CurrentStoreScreenshots() throws {
+        launch("introduction")
+        for _ in 0..<5 { tap(e("onboarding.next")) }
+        waitForPhotoAccess()
+        capturePage("today")
+        launch("feed"); awaitStage()
+        swipeFeed("up"); swipeFeed("left"); snap("feed")
+        swipeFeed("right"); snap("feed-later")
+        capturePage("library")
+        capturePage("cleanup")
+        capturePage("collage")
+        capturePage("studio")
+        launch("editor")
+        XCTAssertTrue(e("editor.stage").waitForExistence(timeout: 30))
+        editorTool("filter"); snap("editor-filter")
+        editorTool("markup"); snap("editor-markup")
+        capturePage("movie")
+        try captureVault()
+        try prepareMemoryForStore()
+        snap("memory-play")
+        tap(e("memory.close"))
+        prepareSnakeForStore()
+        let board = e("snake.board")
+        board.swipeRight(); pause(1.5)
+        snap("snake-play")
+        tap(e("snake.play").buttons["snake.pause"]); snap("snake-pause")
+        tap(e("snake.play").buttons["snake.settings"])
+        snap("snake-settings"); tap(button("done"))
+        tap(e("snake.play").buttons["snake.close"])
+        XCTAssertTrue(e("feed.stage").waitForExistence(timeout: 10))
+    }
+
+    private func openStoreGame(_ game: String) {
+        launch("feed"); awaitStage()
+        tap(e("feed.memory"))
+        XCTAssertTrue(e("games.memory").waitForExistence(timeout: 10))
+        snap("games-selection")
+        tap(e("games." + game))
+    }
+
+    /// Read a card only AFTER a real tap revealed it; no hidden deck or result is injected.
+    private func photoNumber(_ card: XCUIElement) -> String {
+        let value = card.value as? String ?? ""
+        return value.split(whereSeparator: { !$0.isNumber }).last?.compactMap(\.wholeNumberValue).map(String.init).joined() ?? ""
+    }
+
+    private func prepareMemoryForStore() throws {
+        openStoreGame("memory")
+        snap("memory-setup")
+        tap(e("memory.startPhotos"))
+        XCTAssertTrue(e("memory.card.0").waitForExistence(timeout: 45))
+        let cards = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'memory.card.'"))
+        XCTAssertEqual(cards.count, 24, "The actual library round must have twelve photo pairs")
+        var unseen = cards.allElementsBoundByIndex.map(\.identifier)
+        var known: [String: [String]] = [:]
+        var solved: Set<String> = []
+        for _ in 0..<40 {
+            if solved.count >= 6 { break }
+            let firstID: String
+            let plannedSecond: String?
+            if let pair = known.values.first(where: { $0.count == 2 && !$0.contains(where: solved.contains) }) {
+                firstID = pair[0]; plannedSecond = pair[1]
+            } else {
+                firstID = try XCTUnwrap(unseen.first); unseen.removeFirst(); plannedSecond = nil
+            }
+            let first = app.buttons[firstID]; first.tap()
+            let number = photoNumber(first)
+            XCTAssertFalse(number.isEmpty, "Only a genuinely revealed photo can identify a pair")
+            let secondID: String
+            if let plannedSecond { secondID = plannedSecond }
+            else if let match = known[number]?.first(where: { $0 != firstID && !solved.contains($0) }) { secondID = match }
+            else { secondID = try XCTUnwrap(unseen.first); unseen.removeFirst() }
+            if known[number]?.contains(firstID) != true { known[number, default: []].append(firstID) }
+            let second = app.buttons[secondID]; second.tap()
+            let other = photoNumber(second)
+            XCTAssertFalse(other.isEmpty)
+            if other == number {
+                solved.formUnion([firstID, secondID]); known.removeValue(forKey: number)
+            } else {
+                if known[other]?.contains(secondID) != true { known[other, default: []].append(secondID) }
+                let concealed = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: first)
+                if XCTWaiter.wait(for: [concealed], timeout: 2) != .completed {
+                    let flip = e("memory.flip"); XCTAssertTrue(flip.isEnabled); flip.tap()
+                }
+            }
+        }
+        XCTAssertGreaterThanOrEqual(solved.count, 6, "Store images must show pairs actually found in this round")
+        XCTAssertFalse(e("memory.finished").exists, "No unearned victory or best time is presented")
+    }
+
+    private func prepareSnakeForStore() {
+        openStoreGame("snake")
+        tap(e("snake.source")); tap(button("memory_source_library"))
+        tap(e("snake.speed")); tap(button("snake_gentle"))
+        snap("snake-setup")
+        tap(e("snake.prepare"))
+        let board = e("snake.board")
+        XCTAssertTrue(board.waitForExistence(timeout: 45))
+        XCTAssertGreaterThanOrEqual(board.frame.width, app.frame.width - 12)
+        XCTAssertGreaterThan(board.frame.height, app.frame.height * 0.72)
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'snake.direction.'")).count, 0)
+        XCTAssertFalse(app.launchArguments.contains("-snake-swipe-steps"))
+        snap("snake-ready")
+    }
+
+    /// Two separate, genuine recordings let the final game preview retain real-time gameplay.
+    func test40AppPreviewPhotoGames() throws {
+        try prepareMemoryForStore()
+        try recording("start", name: "04-memory")
+        try mark("memory-pairs")
+        let hidden = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'memory.card.' AND enabled == true"))
+        if hidden.count >= 2 {
+            let first = hidden.element(boundBy: 0); first.tap()
+            try mark("memory-reveal")
+            let second = hidden.allElementsBoundByIndex.first(where: { $0.identifier != first.identifier })
+            try XCTUnwrap(second).tap()
+            try mark("memory-second")
+        }
+        pause(8)
+        try recording("stop", name: "04-memory")
+        tap(e("memory.close"))
+        prepareSnakeForStore()
+        let board = e("snake.board")
+        board.swipeRight(); pause(1)
+        let before = board.value as? String
+        pause(0.8)
+        XCTAssertNotEqual(board.value as? String, before, "Snake must move on its real clock")
+        try recording("start", name: "05-snake")
+        try mark("snake-right"); pause(3)
+        board.swipeUp(); try mark("snake-up"); pause(3)
+        board.swipeLeft(); try mark("snake-left"); pause(3)
+        board.swipeDown(); try mark("snake-down"); pause(4)
+        try recording("stop", name: "05-snake")
+        tap(e("snake.play").buttons["snake.close"])
+        XCTAssertTrue(e("feed.stage").waitForExistence(timeout: 10))
     }
 
     func test10AppPreviewReview() throws {
