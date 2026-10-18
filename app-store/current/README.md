@@ -11,7 +11,7 @@ Die Tabelle zeigt ausschließlich tatsächlich vorhandene Dateien und Audit-Erge
 | [Englisch](locales/en/README.md) | `en-US` | 10/10 · PASS | 10/10 · PASS | 3/3 + 1 Alternative |
 | [Spanisch](locales/es/README.md) | `es-ES` | 0/10 · ausstehend | 10/10 · PASS | 0/3 + 0 Alternative |
 | [Französisch](locales/fr/README.md) | `fr-FR` | 10/10 · PASS | 10/10 · PASS | 3/3 + 1 Alternative |
-| [Italienisch](locales/it/README.md) | `it` | 10/10 · PASS | 0/10 · ausstehend | 3/3 + 1 Alternative |
+| [Italienisch](locales/it/README.md) | `it` | 10/10 · PASS | 10/10 · PASS | 3/3 + 1 Alternative |
 | [Japanisch](locales/ja/README.md) | `ja` | 0/10 · ausstehend | 0/10 · ausstehend | 0/3 + 0 Alternative |
 | [Koreanisch](locales/ko/README.md) | `ko` | 0/10 · ausstehend | 0/10 · ausstehend | 0/3 + 0 Alternative |
 | [Niederländisch](locales/nl/README.md) | `nl-NL` | 0/10 · ausstehend | 0/10 · ausstehend | 0/3 + 0 Alternative |

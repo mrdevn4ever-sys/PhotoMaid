@@ -1,0 +1,62 @@
+[
+  {
+    "file": "app-store-selection/01-today.png",
+    "sha256": "aa75cca8650f46d27fe258210dfc00cf0536d6a607ef7a123e66099d3ced6b2f",
+    "native_source": "all-pages/02-today-and-review/today.png",
+    "native_sha256": "aa75cca8650f46d27fe258210dfc00cf0536d6a607ef7a123e66099d3ced6b2f"
+  },
+  {
+    "file": "app-store-selection/02-feed.png",
+    "sha256": "52f34b832fa2b7c4f0dbd7b41234bc9a5c0a812a71a2262426b8b60bc9157997",
+    "native_source": "all-pages/02-today-and-review/feed.png",
+    "native_sha256": "52f34b832fa2b7c4f0dbd7b41234bc9a5c0a812a71a2262426b8b60bc9157997"
+  },
+  {
+    "file": "app-store-selection/03-library.png",
+    "sha256": "e77ec052fb405d88c3b020a5e9079bd44688a978607bfb20fda11bdd4ddf7fc1",
+    "native_source": "all-pages/03-photos/library.png",
+    "native_sha256": "e77ec052fb405d88c3b020a5e9079bd44688a978607bfb20fda11bdd4ddf7fc1"
+  },
+  {
+    "file": "app-store-selection/04-cleanup.png",
+    "sha256": "f56f5c964f07462b52d5a643a5543dd22e1936f7596cf7dedd3fb9f0967d5628",
+    "native_source": "all-pages/04-cleanup/cleanup.png",
+    "native_sha256": "f56f5c964f07462b52d5a643a5543dd22e1936f7596cf7dedd3fb9f0967d5628"
+  },
+  {
+    "file": "app-store-selection/05-snake-play.png",
+    "sha256": "224c70637a1afbba6186893eaa70495c2b1b9b72a353e2926ae24c1fc8961968",
+    "native_source": "all-pages/09-photo-games/snake-play.png",
+    "native_sha256": "224c70637a1afbba6186893eaa70495c2b1b9b72a353e2926ae24c1fc8961968"
+  },
+  {
+    "file": "app-store-selection/06-memory-play.png",
+    "sha256": "289c71091a451cd4e34456cbd0c0c29f93c059171a61a8ba4a5c8203d31ece77",
+    "native_source": "all-pages/09-photo-games/memory-play.png",
+    "native_sha256": "289c71091a451cd4e34456cbd0c0c29f93c059171a61a8ba4a5c8203d31ece77"
+  },
+  {
+    "file": "app-store-selection/07-collage.png",
+    "sha256": "f59af09ad5ec4daa26c62d67b42d2029b7ea4f0fa5632628834f1dc8ec92dcb2",
+    "native_source": "all-pages/05-studio/collage.png",
+    "native_sha256": "f59af09ad5ec4daa26c62d67b42d2029b7ea4f0fa5632628834f1dc8ec92dcb2"
+  },
+  {
+    "file": "app-store-selection/08-editor-filter.png",
+    "sha256": "53fb7dc7a34f76246d1466bb2c1ea4333a1e9d1893dcf6a140394765b0e02777",
+    "native_source": "all-pages/05-studio/editor-filter.png",
+    "native_sha256": "53fb7dc7a34f76246d1466bb2c1ea4333a1e9d1893dcf6a140394765b0e02777"
+  },
+  {
+    "file": "app-store-selection/09-movie.png",
+    "sha256": "2784db6913d513fd44e0b60b819587e2e0df195d89c6591d1b982c33794907f8",
+    "native_source": "all-pages/05-studio/movie.png",
+    "native_sha256": "2784db6913d513fd44e0b60b819587e2e0df195d89c6591d1b982c33794907f8"
+  },
+  {
+    "file": "app-store-selection/10-vault-media.png",
+    "sha256": "f49d31e2ea2da63b46f75ccea333e7c77b3e330a2c51ad8317bb66853e989ee6",
+    "native_source": "all-pages/06-vault/vault-media.png",
+    "native_sha256": "f49d31e2ea2da63b46f75ccea333e7c77b3e330a2c51ad8317bb66853e989ee6"
+  }
+]

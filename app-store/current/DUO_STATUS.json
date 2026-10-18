@@ -1,15 +1,12 @@
 {
-  "status": "PREPARING RUNTIME",
-  "checked_at_utc": "2026-10-18T09:25:01Z",
-  "run_id": 39115140440,
-  "job_id": 117639314242,
-  "artifact_id": 12131757738,
-  "source_commit": "6014c35c36bbf4c13c4d6c58514049218af4332c",
-  "xcode": "Xcode 26.6\nBuild version 17F113",
-  "actual_duo_device_types": [],
-  "reason": "The newly available xcode-27 runner has genuine iPhone Duo support and SDK27.1. Runtime27.1 preparation is queued/running separately; the old macos-26 limitation is historical.",
-  "apple_specification": "https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/",
-  "apple_duo_sizes": [
+  "status": "NATIVE APP PILOT PREPARATION",
+  "xcode": "Xcode27.1 / 27A9275",
+  "sdk": "27.1",
+  "runtime": "iOS27.1 / 24A94425",
+  "device_type": "com.apple.CoreSimulator.SimDeviceType.iPhone-Duo",
+  "genuine_duo_device_type_available": true,
+  "native_simulator_boot": "PASS",
+  "observed_display_pixel_sizes": [
     [
       1398,
       2034
@@ -19,14 +16,31 @@
       2853
     ]
   ],
-  "apple_requirement": "Starting in April 2027 for apps using iOS 27.1 SDK or later.",
-  "native_iphone_assets": "Independent captures proceed for all 16 languages in large and medium iPhone formats.",
-  "new_probe_run_id": 39120099266,
-  "new_probe_job_id": 117653783031,
-  "new_probe_artifact_id": 12134086083,
-  "new_runner": "xcode-27",
-  "new_xcode": "Xcode 27.1 / 27A9275",
-  "genuine_duo_device_type_available": true,
-  "remaining_requirement": "The new runner has iOS 27.0 installed; iPhone Duo requires runtime 27.1. Investigating the official runtime download.",
-  "runtime_preparation_run_id": 39120476761
+  "probe_run_id": 39124764082,
+  "probe_job_id": 117667450003,
+  "probe_artifact_id": 12135717529,
+  "diagnostic_screenshot": "REJECTED BLANK; no app Store image accepted",
+  "skill_export": "TIMEOUT in CLI-only probe; native capture will retry with Xcode GUI open",
+  "approved_duo_app_assets": 0,
+  "apple_specification": "https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/",
+  "apple_requirement": "Duo screenshots required starting April2027 for apps using SDK27.1+",
+  "remaining_requirement": "Native PhotoMaid build and actual inner-display UI capture followed by visual review. Outer-display app capture and Duo preview formats not yet validated.",
+  "historical_probes": [
+    {
+      "run_id": 39115140440,
+      "result": "Xcode26.6 runner lacked genuineDuo"
+    },
+    {
+      "run_id": 39120099266,
+      "result": "Xcode27.1/genuineDuo found; runtime27.1 not installed"
+    },
+    {
+      "run_id": 39120476761,
+      "result": "Runtime installed successfully; subsequent public help query stalled until35minute limit"
+    },
+    {
+      "run_id": 39124764082,
+      "result": "Bounded tool calls; genuineDuo booted; native2007x2853 diagnostic frame was black and rejected"
+    }
+  ]
 }

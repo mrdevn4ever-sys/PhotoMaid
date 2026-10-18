@@ -20,15 +20,27 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def validate_native_screenshot(image, sizes):
+    assert image.size in sizes, (image.size, sizes)
+    if 'A' in image.getbands():
+        assert image.getchannel('A').getextrema() == (255, 255), 'Native screenshot contains transparency'
+    assert any(low != high for low, high in image.convert('RGB').getextrema()), 'Uniform/blank native frame is not a Store screenshot'
+
+
 def validate(summary, inventory, photos, device, device_class):
     assert summary['result'] == 'Passed' and summary['failedTests'] == 0 and summary['skippedTests'] == 0, summary
-    expected = 1 if device_class == 'iphone-medium' else 5
+    expected = 5 if device_class == 'iphone-large' else 1
     assert summary['passedTests'] == expected, summary
     assert inventory['count'] == 55 and set(inventory['sourceFiles']) == {p['file'] for p in photos}, inventory
     assert device['device_class'] == device_class
     if device_class == 'iphone-duo':
         assert device['actual_duo'] and 'iPhone Duo' in device['name']
         assert tuple(map(int, device['sdk'].split('.'))) >= (27, 1)
+        assert device['device_type'] == 'com.apple.CoreSimulator.SimDeviceType.iPhone-Duo'
+        assert tuple(map(int, device['os_version'].split('.'))) >= (27, 1)
+        configurations = summary['devicesAndConfigurations']
+        assert configurations and all(c['device']['modelName'] == 'iPhone Duo' for c in configurations)
+        assert all(tuple(map(int, c['device']['osVersion'].split('.'))) >= (27, 1) for c in configurations)
     else:
         assert not device['actual_duo']
 
@@ -47,14 +59,15 @@ def main():
     inventory = json.loads((a.source / 'library.json').read_text())
     device = json.loads((a.source / 'device.json').read_text())
     validate(summary, inventory, photos, device, a.device)
+    sizes = SIZES[a.device]
+    if a.device == 'iphone-duo' and device.get('display_role') == 'inner':
+        sizes = {(2007, 2853)}
     a.destination.mkdir(parents=True, exist_ok=True)
     rows, paths = [], {}
     for path in sorted((a.source / 'screenshots').glob('*.png')):
         with Image.open(path) as image:
             size = image.size
-            assert size in SIZES[a.device], (path.name, size, a.device)
-            if 'A' in image.getbands():
-                assert image.getchannel('A').getextrema() == (255, 255), path.name
+            validate_native_screenshot(image, sizes)
         group = '09-photo-games' if path.stem.startswith(('memory-', 'snake-', 'games-')) else category(path.stem)
         target = a.destination / 'all-pages' / group / path.name
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -80,7 +93,7 @@ def main():
                         'native_source': str(original.relative_to(a.destination)), 'native_sha256': digest(original)})
     provenance = {'locale': a.locale, 'commit': os.environ.get('GITHUB_SHA'),
                   'workflow_run': os.environ.get('GITHUB_RUN_ID'), 'device': device, 'mode': 'dark',
-                  'capture': 'refresh-screenshots' if a.device == 'iphone-medium' else 'refresh',
+                  'capture': 'refresh' if a.device == 'iphone-large' else 'refresh-screenshots',
                   'actual_library': inventory, 'capture_summary': summary,
                   'media_manifest': 'app-store/media/manifest.json',
                   'data': 'Actual PhotoKit images and real UI actions; no synthetic media, fixed scores or QA step clock',

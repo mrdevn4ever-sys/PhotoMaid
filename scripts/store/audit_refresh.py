@@ -6,7 +6,7 @@ import json
 import subprocess
 from pathlib import Path
 from PIL import Image
-from assemble_refresh import HEROES, SIZES, validate
+from assemble_refresh import HEROES, SIZES, validate, validate_native_screenshot
 
 
 def digest(path):
@@ -20,11 +20,13 @@ def audit_device(root, code, device_class, photos):
     shots = json.loads((root / 'screenshots.json').read_text())
     assert len(shots) >= 20
     originals = {}
+    sizes = {(2007, 2853)} if device_class == 'iphone-duo' and provenance['device'].get('display_role') == 'inner' else SIZES[device_class]
     for row in shots:
         path = root / 'all-pages' / row['file']
         assert row['locale'] == code and digest(path) == row['sha256']
         with Image.open(path) as image:
-            assert image.size == (row['width'], row['height']) and image.size in SIZES[device_class]
+            assert image.size == (row['width'], row['height'])
+            validate_native_screenshot(image, sizes)
         originals['all-pages/' + row['file']] = row['sha256']
     uploads = json.loads((root / 'selection.json').read_text())
     assert len(uploads) == 10 and len(list((root / 'app-store-selection').glob('*.png'))) == 10
@@ -48,7 +50,7 @@ def audit_device(root, code, device_class, photos):
     assert set(originals) <= viewed, 'Native screenshots missing visual review'
     assert not any(row['native_source'] in excluded for row in uploads), 'An excluded archive image is in the upload selection'
     videos = []
-    if device_class != 'iphone-medium':
+    if device_class == 'iphone-large':
         for folder, count in [('previews', 3), ('alternatives', 1)]:
             manifest = json.loads((root / folder / 'manifest.json').read_text())
             assert len(manifest) == count and len(list((root / folder).glob('*.mp4'))) == count

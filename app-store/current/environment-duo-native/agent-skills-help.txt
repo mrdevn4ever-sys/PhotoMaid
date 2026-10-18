@@ -1,0 +1,8 @@
+Export skill definitions to disk
+
+USAGE: mcpbridge run-agent skills export [options]
+
+OPTIONS:
+      --output-dir <path>  Directory to write skill subdirectories into
+      --replace-existing   Overwrite existing skill directories
+  -h, --help               Show this help message

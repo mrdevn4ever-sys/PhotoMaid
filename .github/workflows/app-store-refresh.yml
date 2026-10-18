@@ -41,12 +41,13 @@ jobs:
           devices=os.environ['DEVICES'].split(',')
           assert locales and len(locales)==len(set(locales)) and all(x in available for x in locales)
           assert devices and len(devices)==len(set(devices)) and set(devices)<={'iphone-large','iphone-medium','iphone-duo'}
+          assert 'iphone-duo' not in devices or devices==['iphone-duo'], 'Duo requires its own Xcode27 runner batch'
           matrix={'include':[{'locale':l,'device':d} for l in locales for d in devices]}
           with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('matrix='+json.dumps(matrix)+'\n')
           PY
   build:
     name: Aktuellen Simulator-Build kompilieren
-    runs-on: macos-26
+    runs-on: ${{ contains(inputs.devices, 'iphone-duo') && 'xcode-27' || 'macos-26' }}
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
@@ -61,9 +62,15 @@ jobs:
             scripts
             fastlane
       - name: Native App und Aufnahmetests kompilieren
+        env:
+          STORE_DUO: ${{ contains(inputs.devices, 'iphone-duo') }}
         run: |
           set -euo pipefail
-          scripts/ci/select_xcode.sh
+          if [ "$STORE_DUO" = true ]; then
+            sudo xcode-select -s /Applications/Xcode_27.1.app/Contents/Developer
+          else
+            scripts/ci/select_xcode.sh
+          fi
           command -v xcodegen >/dev/null || brew install xcodegen
           python3 scripts/android_strings_to_xcstrings.py --check
           xcodegen generate
@@ -85,7 +92,7 @@ jobs:
   capture:
     name: Aktuell – ${{ matrix.locale }} – ${{ matrix.device }}
     needs: [plan, build]
-    runs-on: macos-26
+    runs-on: ${{ contains(inputs.devices, 'iphone-duo') && 'xcode-27' || 'macos-26' }}
     timeout-minutes: 60
     strategy:
       fail-fast: false
@@ -94,7 +101,7 @@ jobs:
     env:
       CAPTURE_LOCALE: ${{ matrix.locale }}
       STORE_DEVICE: ${{ matrix.device }}
-      CAPTURE_MODE: ${{ matrix.device == 'iphone-medium' && 'refresh-screenshots' || 'refresh' }}
+      CAPTURE_MODE: ${{ matrix.device == 'iphone-large' && 'refresh' || 'refresh-screenshots' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -110,7 +117,16 @@ jobs:
             app-store/media
       - name: Xcode und Aufnahme-Werkzeuge
         run: |
-          scripts/ci/select_xcode.sh
+          set -euo pipefail
+          if [ "$STORE_DEVICE" = iphone-duo ]; then
+            sudo xcode-select -s /Applications/Xcode_27.1.app/Contents/Developer
+            python3 - <<'PY'
+          import subprocess
+          subprocess.run(['xcodebuild','-downloadPlatform','iOS','-buildVersion','27.1'],check=True,timeout=300)
+          PY
+          else
+            scripts/ci/select_xcode.sh
+          fi
           command -v xcodegen >/dev/null || brew install xcodegen
           command -v ffmpeg >/dev/null || brew install ffmpeg
           python3 -m venv "$RUNNER_TEMP/store-python"
@@ -118,6 +134,7 @@ jobs:
           xcodegen generate
       - name: Passenden echten Simulator erstellen
         id: sim
+        timeout-minutes: 10
         run: |
           set -euo pipefail
           python3 scripts/store/create_capture_simulator.py "$STORE_DEVICE" "$RUNNER_TEMP/device.json"
@@ -125,10 +142,25 @@ jobs:
           echo "udid=$udid" >> "$GITHUB_OUTPUT"
           xcrun simctl boot "$udid"
           xcrun simctl bootstatus "$udid" -b
+          if [ "$STORE_DEVICE" = iphone-duo ]; then
+            open -a Simulator --args -CurrentDeviceUDID "$udid"
+            xcrun simctl io "$udid" enumerate > "$RUNNER_TEMP/duo-screens.txt"
+          fi
           xcrun simctl shutdown "$udid"
           python3 scripts/store/empty_simulator_photos.py "$udid"
           xcrun simctl boot "$udid"
           xcrun simctl bootstatus "$udid" -b
+          if [ "$STORE_DEVICE" = iphone-duo ]; then
+            open -a Simulator --args -CurrentDeviceUDID "$udid"
+            xcrun simctl io "$udid" screenConfig --display=primary power off
+            xcrun simctl io "$udid" screenConfig --display=primary-1 power on
+            xcrun simctl io "$udid" enumerate > "$RUNNER_TEMP/duo-screens.txt"
+            python3 - "$RUNNER_TEMP/device.json" <<'PY'
+          import json,sys
+          p=sys.argv[1];d=json.load(open(p));d.update(capture_display='primary-1',display_role='inner')
+          with open(p,'w')as f:json.dump(d,f,indent=2)
+          PY
+          fi
           xcrun simctl ui "$udid" appearance dark
           xcrun simctl status_bar "$udid" override --time '9:41' --dataNetwork wifi --wifiMode active --wifiBars 3 --batteryState charged --batteryLevel 100
           find app-store/media -maxdepth 1 -name '*.jpg' -print0 | sort -z | xargs -0 xcrun simctl addmedia "$udid"
@@ -149,6 +181,19 @@ jobs:
           cp "$RUNNER_TEMP/capture-xcode.txt" "$RUNNER_TEMP/store-capture/xcode.txt"
           xcrun simctl install "$UDID" "$RUNNER_TEMP/store-build/Build/Products/Debug-iphonesimulator/PhotoMaid.app"
           xcrun simctl privacy "$UDID" grant photos com.mrdevn4ever.photomaid
+      - name: Öffentliche Apple-Hinweise aus laufendem Xcode exportieren
+        if: matrix.device == 'iphone-duo'
+        continue-on-error: true
+        timeout-minutes: 2
+        run: |
+          python3 - <<'PY'
+          import os,subprocess
+          from pathlib import Path
+          output=Path(os.environ['RUNNER_TEMP'])/'store-capture'
+          with (output/'duo-skill-export.log').open('w')as log:
+              subprocess.run(['open','-a','/Applications/Xcode_27.1.app','PhotoMaid.xcodeproj'],check=True,timeout=20,stdout=log,stderr=subprocess.STDOUT)
+              subprocess.run(['xcrun','agent','skills','export','--output-dir',str(output/'apple-skills')],check=True,timeout=60,stdout=log,stderr=subprocess.STDOUT)
+          PY
       - name: Aktuelle Oberfläche und wirkliche Spielabläufe aufnehmen
         env:
           UDID: ${{ steps.sim.outputs.udid }}
@@ -167,6 +212,9 @@ jobs:
             ${{ runner.temp }}/store-capture/*.log
             ${{ runner.temp }}/store-capture/*.txt
             ${{ runner.temp }}/store-capture/diagnostics
+            ${{ runner.temp }}/store-capture/apple-skills
+            ${{ runner.temp }}/duo-screens.txt
+            ${{ runner.temp }}/device.json
           if-no-files-found: warn
       - name: Native Bilder und drei Store-Vorschauen mit Tresor-Alternative exportieren
         timeout-minutes: 10
