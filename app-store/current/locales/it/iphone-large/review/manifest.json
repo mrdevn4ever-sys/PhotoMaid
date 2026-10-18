@@ -1,0 +1,378 @@
+[
+  {
+    "sheet": "screenshots-00.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/02-today-and-review/feed-later.png",
+        "sha256": "539d3676c28c6dec7f602d131095babed5eb7174eac9ca135d5d00b43bcbe0d5"
+      },
+      {
+        "file": "all-pages/02-today-and-review/feed.png",
+        "sha256": "79a280e56dd3fdc1e60dd87c1269848e04e7ffb05b839bc79698b3fc9f5b20c3"
+      },
+      {
+        "file": "all-pages/02-today-and-review/today.png",
+        "sha256": "7b3bd639e98368fb01ab418f13720e7649d8ae83fd9f607a5e3e4ca50fb341b0"
+      },
+      {
+        "file": "all-pages/03-photos/library.png",
+        "sha256": "fa67bbed40553fe7f067bf09523e27a17a79f26834b28392462bac9492fe79b8"
+      },
+      {
+        "file": "all-pages/04-cleanup/cleanup.png",
+        "sha256": "eb2ed028e2d046e5e56ecf2878957341d0266f181c20c38301f9ea82e710bb08"
+      },
+      {
+        "file": "all-pages/05-studio/collage.png",
+        "sha256": "816265f6ec9ab11c0eb1abaaf8281c173dbc155de15d47b85863c9e652473ca3"
+      },
+      {
+        "file": "all-pages/05-studio/editor-filter.png",
+        "sha256": "111d2e6de8efdfe0c8042b435109414b088a606a47652b0bb5e411d76da1f982"
+      },
+      {
+        "file": "all-pages/05-studio/editor-markup.png",
+        "sha256": "3aa5206a42b98a8d3e3881477bb1d1429b7c5a8546de5e21274ad06f5643b84d"
+      },
+      {
+        "file": "all-pages/05-studio/movie.png",
+        "sha256": "9098e6f180e41fe78d49b7f9da58aee4ff3cc1302d8ff2f59c16e75a5efccbb4"
+      },
+      {
+        "file": "all-pages/05-studio/preview-01-review-back.png",
+        "sha256": "b02cb1b2aacb5042a7ef564c50fc7efaa81d64f7b4253c7bd56c897026f0b18d"
+      },
+      {
+        "file": "all-pages/05-studio/preview-01-review-feed.png",
+        "sha256": "121b853acd021b2d675e63c9796fc4193ed5101ea089fbd9342984b286e9ad34"
+      },
+      {
+        "file": "all-pages/05-studio/preview-01-review-keep.png",
+        "sha256": "a662e7deba8957b9bf6defe787cbf69d914ffc59aa433e0cafbef1d47b3e3951"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot sheets, all four eight-frame video sheets and poster sheet; additionally viewed selected Memory and both original/replacement Snake screenshots at full size.",
+    "review_notes": "Italian UI readable; actual photos and matches present; fullscreen swipe-only Snake. Game video includes one brief real pause/resume overlay before subsequent movement. Chose a centered genuine Snake marker frame for the upload PNG. Native vault titles use their actual ellipsis where long."
+  },
+  {
+    "sheet": "screenshots-01.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/05-studio/preview-01-review-later.png",
+        "sha256": "d220094ee81664158dde531ce032f8ad954164f58884fd08bfa21685c4263e0b"
+      },
+      {
+        "file": "all-pages/05-studio/preview-01-review-trash.png",
+        "sha256": "b02cb1b2aacb5042a7ef564c50fc7efaa81d64f7b4253c7bd56c897026f0b18d"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-adjust.png",
+        "sha256": "50b8a372aae9084780344cef855b8721460215b933bfa86079044d2384bb8a87"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-editor.png",
+        "sha256": "056511d2d5d37b2503dbf929cae96e218526650925b28244ee44ba96322d9b3d"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-filter.png",
+        "sha256": "8336a44dbc1b068232df590762ba1abd9380284678e1811d062eac777ee1ee01"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-frame.png",
+        "sha256": "021be0e2aa510fd8dc36f1939cc95386fc1c8cbe332a0ed60407dfef106bb39d"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-markup.png",
+        "sha256": "6c978d35079d35886d1a413402b43a4f5b35b36871b6b52b1b0aad6f63f2f15f"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-controls.png",
+        "sha256": "bdafbebf9e6cfb46c9287177ca88627aa862a7da75c4cbcab21a28db1ea87c4e"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-hidden-controls.png",
+        "sha256": "fea3acfaa1189bcd66e334165bdb20a6a68dc484e4d5e2a7ef99b60cfd103813"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-vault.png",
+        "sha256": "269cfef70af03a3797df7f0e6f703b22ace21df08a4d1979e4ec3f0cbd979a70"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-viewer.png",
+        "sha256": "bdafbebf9e6cfb46c9287177ca88627aa862a7da75c4cbcab21a28db1ea87c4e"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-zoom.png",
+        "sha256": "7b1778a89406a81326b43b10f34451744839fc19a8617638a0c5336c86070cce"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot sheets, all four eight-frame video sheets and poster sheet; additionally viewed selected Memory and both original/replacement Snake screenshots at full size.",
+    "review_notes": "Italian UI readable; actual photos and matches present; fullscreen swipe-only Snake. Game video includes one brief real pause/resume overlay before subsequent movement. Chose a centered genuine Snake marker frame for the upload PNG. Native vault titles use their actual ellipsis where long."
+  },
+  {
+    "sheet": "screenshots-02.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/05-studio/preview-04-memory-memory-pairs.png",
+        "sha256": "03f1e8b013fe2c710c02cd2cc4bb92658ae522335e05eaf88abe7b277d7ec2cb"
+      },
+      {
+        "file": "all-pages/05-studio/preview-04-memory-memory-reveal.png",
+        "sha256": "6eb6e041c8a22c3207cbe097d6c82b9d310add5bccd4f124d2f491e9737fcd0e"
+      },
+      {
+        "file": "all-pages/05-studio/preview-04-memory-memory-second.png",
+        "sha256": "b0d4c879a05d59b901e7e597eded595347f76862850dffed27ecd4ca1d8e2d96"
+      },
+      {
+        "file": "all-pages/05-studio/preview-05-snake-snake-down.png",
+        "sha256": "e403a38e68e1967edb9131bc0a8da3dd949e31fa58e80c161bcbb50bc1247646"
+      },
+      {
+        "file": "all-pages/05-studio/preview-05-snake-snake-left.png",
+        "sha256": "579b398de49c7b2195145b010657e80164778b85fd43ecbd4adb7b34eaaef6af"
+      },
+      {
+        "file": "all-pages/05-studio/preview-05-snake-snake-right.png",
+        "sha256": "3d59673bda4e5fced47af59390a8fdc88fb3b7f2fa6d2437173e9958b7573ef0"
+      },
+      {
+        "file": "all-pages/05-studio/preview-05-snake-snake-up.png",
+        "sha256": "9a5f5ddb44f62fc63235df5be40f362d58f130afdfb21c537a622fedb6cf0630"
+      },
+      {
+        "file": "all-pages/05-studio/studio.png",
+        "sha256": "1bc36fb6307a126e898d949bbff327f98aa0b3e8ca179cc514585ad6b1de80e5"
+      },
+      {
+        "file": "all-pages/06-vault/vault-files.png",
+        "sha256": "13a827774a57073cdd600b93eb5ace7d92134fd5645503ea2a02772cee38d763"
+      },
+      {
+        "file": "all-pages/06-vault/vault-media-picker.png",
+        "sha256": "6011b25b040f7504f5e641cb841566fd220c4d995aeedf80ef81b4757a97bf81"
+      },
+      {
+        "file": "all-pages/06-vault/vault-media.png",
+        "sha256": "269cfef70af03a3797df7f0e6f703b22ace21df08a4d1979e4ec3f0cbd979a70"
+      },
+      {
+        "file": "all-pages/06-vault/vault-notes.png",
+        "sha256": "1bdfbf1e52bf601338e7cf3fff17da010dc4ebdd2fa60ae3fedb18e939bedebf"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot sheets, all four eight-frame video sheets and poster sheet; additionally viewed selected Memory and both original/replacement Snake screenshots at full size.",
+    "review_notes": "Italian UI readable; actual photos and matches present; fullscreen swipe-only Snake. Game video includes one brief real pause/resume overlay before subsequent movement. Chose a centered genuine Snake marker frame for the upload PNG. Native vault titles use their actual ellipsis where long."
+  },
+  {
+    "sheet": "screenshots-03.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/06-vault/vault-setup-code-empty.png",
+        "sha256": "0de1e493d35070a760cefff8c625bf8556e19e81a40dcc282902f3731694224c"
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-entry.png",
+        "sha256": "5fce3d02db14d5c3d4a9144badab37238389c670f199aa921b4b5215a23c884e"
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-introduction.png",
+        "sha256": "81529c8df245fb6c7da44a6587231bb96c73dd9b5918672fe5216663358c9513"
+      },
+      {
+        "file": "all-pages/06-vault/vault-tools.png",
+        "sha256": "cbd93b32c085e3e70c9ab3b0735bc2a754283570fead9473b0cc0c60124ebace"
+      },
+      {
+        "file": "all-pages/06-vault/vault-trash.png",
+        "sha256": "d60b145d789da7f950c73f574881e25f47de94bd3e2e39a45845890814355492"
+      },
+      {
+        "file": "all-pages/06-vault/vault-viewer.png",
+        "sha256": "bdafbebf9e6cfb46c9287177ca88627aa862a7da75c4cbcab21a28db1ea87c4e"
+      },
+      {
+        "file": "all-pages/09-photo-games/games-selection.png",
+        "sha256": "fa7914a59a8f3e4669650d30590a24be5b1b4aa4b0c3e5a9ca8ab90961ac3494"
+      },
+      {
+        "file": "all-pages/09-photo-games/memory-play.png",
+        "sha256": "fe6cba1ba35f9edc409e4d7b8ccc906575108cc0c70c21e0a2482fffaa8afb08"
+      },
+      {
+        "file": "all-pages/09-photo-games/memory-setup.png",
+        "sha256": "16a055f257ad517ded84534cd0b7a9c28c298c122af9039ce12a101317ddd586"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-pause.png",
+        "sha256": "437e7761042c9cef9e48b06d8e7fe7bb621ec0b1e50ca0bc5db5019557d70808"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-play.png",
+        "sha256": "04a2a40ece10c92be83298d339a621d37afc3d362cde5a5114baaaf22d2931f1"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-ready.png",
+        "sha256": "c0d8fa8f571ad186468a236822da8a88f5ddc3a1e5bb1712eb2c6f4c9b833aac"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot sheets, all four eight-frame video sheets and poster sheet; additionally viewed selected Memory and both original/replacement Snake screenshots at full size.",
+    "review_notes": "Italian UI readable; actual photos and matches present; fullscreen swipe-only Snake. Game video includes one brief real pause/resume overlay before subsequent movement. Chose a centered genuine Snake marker frame for the upload PNG. Native vault titles use their actual ellipsis where long."
+  },
+  {
+    "sheet": "screenshots-04.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/09-photo-games/snake-settings.png",
+        "sha256": "07362c697d679dff3b51f5078c1d52607b9b042b53def191e07ae7b162267ea4"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-setup.png",
+        "sha256": "8e4d889adf260bb0a8a91553641403df3f46c265e2f43c7870afcee2ac2a20d3"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot sheets, all four eight-frame video sheets and poster sheet; additionally viewed selected Memory and both original/replacement Snake screenshots at full size.",
+    "review_notes": "Italian UI readable; actual photos and matches present; fullscreen swipe-only Snake. Game video includes one brief real pause/resume overlay before subsequent movement. Chose a centered genuine Snake marker frame for the upload PNG. Native vault titles use their actual ellipsis where long."
+  },
+  {
+    "sheet": "01-review-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/01-review.mp4",
+        "sha256": "1c570c6ec0c8f166cbe80dd83c57b162b1038fc95cf7aa808e44f81adb5a567d"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot sheets, all four eight-frame video sheets and poster sheet; additionally viewed selected Memory and both original/replacement Snake screenshots at full size.",
+    "review_notes": "Italian UI readable; actual photos and matches present; fullscreen swipe-only Snake. Game video includes one brief real pause/resume overlay before subsequent movement. Chose a centered genuine Snake marker frame for the upload PNG. Native vault titles use their actual ellipsis where long."
+  },
+  {
+    "sheet": "02-photo-games-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/02-photo-games.mp4",
+        "sha256": "7b3bef0db9998d83f32ac654dafb789dc0a417fbe3a03af5e98805d2f1920846"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot sheets, all four eight-frame video sheets and poster sheet; additionally viewed selected Memory and both original/replacement Snake screenshots at full size.",
+    "review_notes": "Italian UI readable; actual photos and matches present; fullscreen swipe-only Snake. Game video includes one brief real pause/resume overlay before subsequent movement. Chose a centered genuine Snake marker frame for the upload PNG. Native vault titles use their actual ellipsis where long."
+  },
+  {
+    "sheet": "03-studio-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/03-studio.mp4",
+        "sha256": "f356269c661ddd4f913114f4e5262091324c56790362707e8d52e6d770e81e84"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot sheets, all four eight-frame video sheets and poster sheet; additionally viewed selected Memory and both original/replacement Snake screenshots at full size.",
+    "review_notes": "Italian UI readable; actual photos and matches present; fullscreen swipe-only Snake. Game video includes one brief real pause/resume overlay before subsequent movement. Chose a centered genuine Snake marker frame for the upload PNG. Native vault titles use their actual ellipsis where long."
+  },
+  {
+    "sheet": "04-vault-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "alternatives/04-vault.mp4",
+        "sha256": "f299c69df38e8c4dec9ecda18e73813e1c381d8b24535e1eb445b0a5d859eaa4"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot sheets, all four eight-frame video sheets and poster sheet; additionally viewed selected Memory and both original/replacement Snake screenshots at full size.",
+    "review_notes": "Italian UI readable; actual photos and matches present; fullscreen swipe-only Snake. Game video includes one brief real pause/resume overlay before subsequent movement. Chose a centered genuine Snake marker frame for the upload PNG. Native vault titles use their actual ellipsis where long."
+  },
+  {
+    "sheet": "posters.jpg",
+    "kind": "posters",
+    "originals": [
+      {
+        "file": "previews/01-review-poster.png",
+        "sha256": "faedc1f9f59c06433824916bfd193eac4ade7f04ddddb67e0e6bd93052be4d5d"
+      },
+      {
+        "file": "previews/02-photo-games-poster.png",
+        "sha256": "6a4b543b4390cfed0bf42e0f20d66cf0bfba456778c93dd726856364db529ed4"
+      },
+      {
+        "file": "previews/03-studio-poster.png",
+        "sha256": "16dff341f955ec04e6a01ab81b3bdb8ea42555aae55a3109425cefb0dc63b7d9"
+      },
+      {
+        "file": "alternatives/04-vault-poster.png",
+        "sha256": "fee8e54fa41e375aa5ebe534c0eeb01d0ec3f333248db4185d38451398a601b3"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot sheets, all four eight-frame video sheets and poster sheet; additionally viewed selected Memory and both original/replacement Snake screenshots at full size.",
+    "review_notes": "Italian UI readable; actual photos and matches present; fullscreen swipe-only Snake. Game video includes one brief real pause/resume overlay before subsequent movement. Chose a centered genuine Snake marker frame for the upload PNG. Native vault titles use their actual ellipsis where long."
+  }
+]

@@ -1,0 +1,402 @@
+[
+  {
+    "file": "04-cleanup/cleanup.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "292f1b4a63b7fb9f7acf29f1efe5d8ccfbd9333b411ece28a813359b51f36c87"
+  },
+  {
+    "file": "05-studio/collage.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "b124ecc5664c4b543cb2f333286902661c073339c953907153325f8395f781a0"
+  },
+  {
+    "file": "05-studio/editor-filter.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "44c0d72f231c0140b6c4e996938dc65ed74338c887bb24f30345bfdc9b6f26a5"
+  },
+  {
+    "file": "05-studio/editor-markup.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "d2b570577efeec58667c1e73d65ca0390f3bf04d7da0f90c959cc198a7c93db3"
+  },
+  {
+    "file": "02-today-and-review/feed-later.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "d881885d8aa482fc2ed29a9c4684e53640535b69f525ccdea18a15cd008ceffd"
+  },
+  {
+    "file": "02-today-and-review/feed.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "774a95b575c449fe46458b29966b4b43dab5cb728d7c2e6bc069c4ce64422662"
+  },
+  {
+    "file": "09-photo-games/games-selection.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "81a32a08c8960730b7260e41ec610874bed45ee8d1719300ae07b10789874eac"
+  },
+  {
+    "file": "03-photos/library.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "7822fea3c59b6118e5d56e2a4bad51016b35afb75b7a6357c4e240df28f35317"
+  },
+  {
+    "file": "09-photo-games/memory-play.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "70fa65d7d79ca70790c7e07b1c93a4531f3e30d779518632ff013a07be6fd253"
+  },
+  {
+    "file": "09-photo-games/memory-setup.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "2c94aa3873c94b95b32d7acd36ca37cecf0bb38ba764bacad17cc5a15e790873"
+  },
+  {
+    "file": "05-studio/movie.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "e39fa02237aa438d421d5c3f7a8901721b66e5e6c7cb6da35514eef07d140203"
+  },
+  {
+    "file": "05-studio/preview-01-review-back.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "967a4595f93a9a34ac46423cc33cc18f5450221450481c4d9052f9c45255f6e3"
+  },
+  {
+    "file": "05-studio/preview-01-review-feed.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "d94f16383971ace46245f965b1a9daeed27ff5e10750f66c80c7768f395c0a75"
+  },
+  {
+    "file": "05-studio/preview-01-review-keep.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "5f6fa63b6aaf2a7bdaa7c87affb2a8abb6766827b185ec765216750e8d314606"
+  },
+  {
+    "file": "05-studio/preview-01-review-later.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "fb409ea75334b162b78433b813acdfdc97223be4d3abbbc33d569ae308faed0e"
+  },
+  {
+    "file": "05-studio/preview-01-review-trash.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "967a4595f93a9a34ac46423cc33cc18f5450221450481c4d9052f9c45255f6e3"
+  },
+  {
+    "file": "05-studio/preview-02-studio-adjust.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "4e5ba68f47a5ada15aa101d4942f2a64e8cde3e5e7df9324d4e41273be885a62"
+  },
+  {
+    "file": "05-studio/preview-02-studio-editor.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "6c0f5fe1da49a94885355b08c2a485cec891b8e2d7d7a59f3fbb59b011a8c2d3"
+  },
+  {
+    "file": "05-studio/preview-02-studio-filter.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "8fd0529729f815c696e9de4dca5de580e9fb824f6e82ef627c549f428ee21e1c"
+  },
+  {
+    "file": "05-studio/preview-02-studio-frame.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "0360f2c2bcc41a3bcd22dd9ab38021ea50e8284f47b22e1870a865875bb66bd3"
+  },
+  {
+    "file": "05-studio/preview-02-studio-markup.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "b2c3d9bd7c6f3211a3ecb2b813ae87ea848b4db2febc3a37fe1bb6466bc037ce"
+  },
+  {
+    "file": "05-studio/preview-03-vault-controls.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "201265c395719971177910c83f8a37f68583258a1bf5e9e5b7f03cad542fb577"
+  },
+  {
+    "file": "05-studio/preview-03-vault-hidden-controls.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "fea3acfaa1189bcd66e334165bdb20a6a68dc484e4d5e2a7ef99b60cfd103813"
+  },
+  {
+    "file": "05-studio/preview-03-vault-vault.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "e2b1a146cbf2511b1ef3b5325f2f86ab9c2c4022a96fa3f43ba178d30ff498f4"
+  },
+  {
+    "file": "05-studio/preview-03-vault-viewer.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "201265c395719971177910c83f8a37f68583258a1bf5e9e5b7f03cad542fb577"
+  },
+  {
+    "file": "05-studio/preview-03-vault-zoom.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "7b1778a89406a81326b43b10f34451744839fc19a8617638a0c5336c86070cce"
+  },
+  {
+    "file": "05-studio/preview-04-memory-memory-pairs.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "985a9ed013b3a0a3f2e23a58b5e0aa91f69fd1154c037681722c810bbee1e8f2"
+  },
+  {
+    "file": "05-studio/preview-04-memory-memory-reveal.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "18c880095412951b532136b9f521cf369f6586dd17a5f7a2577dd49c4ba97164"
+  },
+  {
+    "file": "05-studio/preview-04-memory-memory-second.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "752dd87729469e489707eb718d59349d68838cfd7c1bde95656c429d0b3f28d0"
+  },
+  {
+    "file": "05-studio/preview-05-snake-snake-down.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "92a8013fe27ce27b0fc9cfe56bf1de5d2235fa9449d7dbf7e60ee9b0944de9be"
+  },
+  {
+    "file": "05-studio/preview-05-snake-snake-left.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "337f8485c4c610aa9320a07c796c055e75266df6d1539a4640218faeeda23256"
+  },
+  {
+    "file": "05-studio/preview-05-snake-snake-right.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "0409ac1ee0fecc9ee53d5266fa8c5e4984000ffbe62ae9e6ca8a1c2a43359035"
+  },
+  {
+    "file": "05-studio/preview-05-snake-snake-up.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "0a0e577812105040a221f598c8a467543fae01beb6152c1e62b33fb61d9f9c48"
+  },
+  {
+    "file": "09-photo-games/snake-pause.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "770b98eb5244244566d3c5a29437727058f95467ca3e4215f7f014ed14551cf5"
+  },
+  {
+    "file": "09-photo-games/snake-play.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "f4cc375a8f624293ac69f85c924183744a8369a24b05124eff7cd3d6d804bea4"
+  },
+  {
+    "file": "09-photo-games/snake-ready.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "c6f881b7f20f1269690719f50ff162db1178e29db59955fe75a0ad6ce7b63ff1"
+  },
+  {
+    "file": "09-photo-games/snake-settings.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "976c4825c1d9c26b24d1a89b6c714a729d6f0bf5d5944c2515dcea8e0dce6530"
+  },
+  {
+    "file": "09-photo-games/snake-setup.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "b305fc42a12d576ce579bd3b4d1e7783725806c4542cbf5b73c406a029571fdf"
+  },
+  {
+    "file": "05-studio/studio.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "6a17ce58544747679739cf2b5ae730b51b1d89f5822df6b0e102f455e9814a60"
+  },
+  {
+    "file": "02-today-and-review/today.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "35cfe22e5219c60290b6999adf9813c3ac9e20e788c495ea3e14eb17e4096553"
+  },
+  {
+    "file": "06-vault/vault-files.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "d925095ee631db2fbf2269c6b301d97d4b232795b0df8e0afc8065cc3df77fb8"
+  },
+  {
+    "file": "06-vault/vault-media-picker.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "ad004918c675afa4eeb691bdacb996d660c042ded4add1c39e31f8d56a334518"
+  },
+  {
+    "file": "06-vault/vault-media.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "e2b1a146cbf2511b1ef3b5325f2f86ab9c2c4022a96fa3f43ba178d30ff498f4"
+  },
+  {
+    "file": "06-vault/vault-notes.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "e158a05d42786afbdace9363281013c304672853336f4f0a5714d18f5624e850"
+  },
+  {
+    "file": "06-vault/vault-setup-code-empty.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "6bb183715fec05b279d4c6dde3764ba07f64d7aa25f7832d80643af6934ccedb"
+  },
+  {
+    "file": "06-vault/vault-setup-entry.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "7ff071c46e9600e1db893c91b8262e85afcc2ad800fa0510b500720754da0b1c"
+  },
+  {
+    "file": "06-vault/vault-setup-introduction.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "132c5924d78ba6b5bdf8e46988071da78216d3611072e68edd9c507db1e9ffac"
+  },
+  {
+    "file": "06-vault/vault-tools.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "43b679e8e916398f77351dd7d50d498dc4e5850f67509d6232a79785b072d5e7"
+  },
+  {
+    "file": "06-vault/vault-trash.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "e2293ea8f4e108f2cb78a569163cac034df2de1508930d66125b7ed7f1c040a2"
+  },
+  {
+    "file": "06-vault/vault-viewer.png",
+    "locale": "fr",
+    "appearance": "dark",
+    "width": 1320,
+    "height": 2868,
+    "sha256": "201265c395719971177910c83f8a37f68583258a1bf5e9e5b7f03cad542fb577"
+  }
+]

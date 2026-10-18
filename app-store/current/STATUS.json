@@ -34,6 +34,24 @@
   "expected_vault_alternative_videos": 16,
   "approved_profiles": [
     {
+      "locale": "ar",
+      "device_class": "iphone-large",
+      "status": "PASS",
+      "native_passed_tests": 5
+    },
+    {
+      "locale": "de",
+      "device_class": "iphone-large",
+      "status": "PASS",
+      "native_passed_tests": 5
+    },
+    {
+      "locale": "en",
+      "device_class": "iphone-large",
+      "status": "PASS",
+      "native_passed_tests": 5
+    },
+    {
       "locale": "en",
       "device_class": "iphone-medium",
       "status": "PASS",
@@ -43,5 +61,7 @@
   "large_run": 39120101094,
   "medium_run": 39120189289,
   "duo_runtime_preparation_run": 39120476761,
-  "repository_delivery": "New accepted assets are currently local; direct workspace GitHub credentials became unavailable. Connected GitHub app still provides native artifacts."
+  "repository_delivery": "New accepted assets are currently local; direct workspace GitHub credentials became unavailable. Connected GitHub app still provides native artifacts.",
+  "actual_selected_screenshots": 40,
+  "actual_selected_videos": 9
 }
