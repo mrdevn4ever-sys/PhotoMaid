@@ -1,0 +1,144 @@
+[
+  {
+    "sheet": "screenshots-00.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/02-today-and-review/feed-later.png",
+        "sha256": "aefd60fa6c9caf2a70740e3634e5357d551633885716a27d5c1074e23d300b6e"
+      },
+      {
+        "file": "all-pages/02-today-and-review/feed.png",
+        "sha256": "3c88f4f286f611de75ead3cb8eefc62b4e0571615fdf3af9cd7cdd97f0dc41cd"
+      },
+      {
+        "file": "all-pages/02-today-and-review/today.png",
+        "sha256": "83ac5f93682d26edb2a2b249e34427520a14a193afeb45b56aac11d71921b02d"
+      },
+      {
+        "file": "all-pages/03-photos/library.png",
+        "sha256": "feafdfc061f2006eb43b237b1806510ba943b45342d8a28e53b5d0a831b0be6a"
+      },
+      {
+        "file": "all-pages/04-cleanup/cleanup.png",
+        "sha256": "cc6b7167bad9d787edc0653bcaace35366b3d1c41a8b14b53cdff9ede08d1302"
+      },
+      {
+        "file": "all-pages/05-studio/collage.png",
+        "sha256": "511d2845eef4df57ff17ab1201efb0fbb8bdfa3ea62ffa954cc61ec1f4c760b8"
+      },
+      {
+        "file": "all-pages/05-studio/editor-filter.png",
+        "sha256": "e6ab13b56b9056b49b1d5de017abf4d099e004df482e665bd0f22e2820695964"
+      },
+      {
+        "file": "all-pages/05-studio/editor-markup.png",
+        "sha256": "3850d45538497d8516b1c4c64655929787eb10235e1bb226898cbe905a6ecb68"
+      },
+      {
+        "file": "all-pages/05-studio/movie.png",
+        "sha256": "957a5809802b1e725f525e385d948f3e3a1e75bffca0d402ec848a4658e895b4"
+      },
+      {
+        "file": "all-pages/05-studio/studio.png",
+        "sha256": "2350e000e87ca85a0a22cc5b009a96db371e0e01f255ab2664017a7a5aa07598"
+      },
+      {
+        "file": "all-pages/06-vault/vault-files.png",
+        "sha256": "bc842a46567042bbeff1660b673cc4b2e3df8247b0547e70536382978f1104fb"
+      },
+      {
+        "file": "all-pages/06-vault/vault-media-picker.png",
+        "sha256": "f476e8da032c597f2954029429e18bc968fcc443cda0450393e2a5c1f422be43"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all three native screenshot contact sheets and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos55. Romanian diacritics and controls readable. Full-screen swipe-only Snake shows whole head and both genuine photo segments. Memory shows three genuine pairs, including the real misty treetops photo (not a missing thumbnail). No selected system banners/dialogs. Inline long Vault folder title has native ellipsis."
+  },
+  {
+    "sheet": "screenshots-01.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/06-vault/vault-media.png",
+        "sha256": "a57f7b09f2c977e7679b89e1f6476080269558084e63aa987536c1b99f22aa54"
+      },
+      {
+        "file": "all-pages/06-vault/vault-notes.png",
+        "sha256": "a3f174e5d07772ac56b165ed9f6b502aeb3e546afb80e931268af1cb3f2b1f54"
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-code-empty.png",
+        "sha256": "8c42aadae2ce631cf34b3d54cf31a2048f1f32f8dc4373e72b63071ddb180aa0"
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-entry.png",
+        "sha256": "7f811290c9f302196860dcf535c4887afe3ca8edae27283b579687f0386f5320"
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-introduction.png",
+        "sha256": "a53782936867d662c469a089935ea339ca29a3a8f8ae46cc7f3937e9cfbe6aee"
+      },
+      {
+        "file": "all-pages/06-vault/vault-tools.png",
+        "sha256": "7e904f14f665070d05160c3c85e776402f620101848d0620aca987761cb084ce"
+      },
+      {
+        "file": "all-pages/06-vault/vault-trash.png",
+        "sha256": "7e6c4f4f207679759f0157a00baf179f6effeeeab0af0243ca28ac34880588d2"
+      },
+      {
+        "file": "all-pages/06-vault/vault-viewer.png",
+        "sha256": "5db66a51732269c8ba5750a63c8dc6f258e5d3c54788b7e41e7e58ff981dbc8f"
+      },
+      {
+        "file": "all-pages/09-photo-games/games-selection.png",
+        "sha256": "575a48178397e353c513ceea5d05803e7aee7ed2166d1c65fa3eabc24694b915"
+      },
+      {
+        "file": "all-pages/09-photo-games/memory-play.png",
+        "sha256": "aafa7fbecb2b0e86c856cd31bca5321b182f4b44f94328f9f3a2f3903ea085a7"
+      },
+      {
+        "file": "all-pages/09-photo-games/memory-setup.png",
+        "sha256": "f2c7ef50713f11ea502f8fec614fe1fe1be57920898059c27a7d9a041ee3a288"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-pause.png",
+        "sha256": "77dd19907b4fc7b04175d90ad3f0c40eb1b8e003956fde77f803bb722aaefa3c"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all three native screenshot contact sheets and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos55. Romanian diacritics and controls readable. Full-screen swipe-only Snake shows whole head and both genuine photo segments. Memory shows three genuine pairs, including the real misty treetops photo (not a missing thumbnail). No selected system banners/dialogs. Inline long Vault folder title has native ellipsis."
+  },
+  {
+    "sheet": "screenshots-02.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/09-photo-games/snake-play.png",
+        "sha256": "9a9a734691ec41cf921085f7c5ea2cd7664525ac1bc7c4baee465a962aaef14d"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-ready.png",
+        "sha256": "5db411492a7aee7de7292aa820155e20e49d336f18439acd4cf3a1e3b8f7cd20"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-settings.png",
+        "sha256": "01dfbe9ff456884839aa2ef2e3dfcec47dcce69c0a98188cb1ba626848e07318"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-setup.png",
+        "sha256": "44cf4c2e0cfddde18cec9e5a6b04104270a33c6869ab6374d9bf6e536f36e1f1"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all three native screenshot contact sheets and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos55. Romanian diacritics and controls readable. Full-screen swipe-only Snake shows whole head and both genuine photo segments. Memory shows three genuine pairs, including the real misty treetops photo (not a missing thumbnail). No selected system banners/dialogs. Inline long Vault folder title has native ellipsis."
+  }
+]

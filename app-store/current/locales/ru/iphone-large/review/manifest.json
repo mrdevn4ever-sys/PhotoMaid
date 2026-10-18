@@ -1,0 +1,378 @@
+[
+  {
+    "sheet": "screenshots-00.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/02-today-and-review/feed-later.png",
+        "sha256": "c6d4607dad113c828129031575a535fdfe3ba69f3e033201ea8fa3b11dc32e55"
+      },
+      {
+        "file": "all-pages/02-today-and-review/feed.png",
+        "sha256": "d26140d6e27ee842b4479d3024c857c215c2917aeb8d29f7be17f2ac856b6ebb"
+      },
+      {
+        "file": "all-pages/02-today-and-review/today.png",
+        "sha256": "57ae3304e522f6d20225094b8b3a8d49412581efacd1f572e9c3c7267a36fdb9"
+      },
+      {
+        "file": "all-pages/03-photos/library.png",
+        "sha256": "eddb6aa66d6cf92245bf539ae633a6e4c26c90b6fe0fe72b83681395fba14ee1"
+      },
+      {
+        "file": "all-pages/04-cleanup/cleanup.png",
+        "sha256": "398009d216cee3186e8a484ae58faaa6b5ff3a4e2018f10592418fe88f67bcbf"
+      },
+      {
+        "file": "all-pages/05-studio/collage.png",
+        "sha256": "6d92c5ffad025f1d43fb125c04c4b1ac568b527256163bed0656da492595621b"
+      },
+      {
+        "file": "all-pages/05-studio/editor-filter.png",
+        "sha256": "2cee6b2f6c53b57988c64b83d43c3384f4c59dea99acc8da846d66c6a1513f1b"
+      },
+      {
+        "file": "all-pages/05-studio/editor-markup.png",
+        "sha256": "f5fdd32ef6530d091273d6bd1c0903767c9771e8dc5bf81b46da5c312488ee6d"
+      },
+      {
+        "file": "all-pages/05-studio/movie.png",
+        "sha256": "33a2a97ab3cbc80df768f77a0483c8b7905af8b19e7d1738ba1e4a90ee68623b"
+      },
+      {
+        "file": "all-pages/05-studio/preview-01-review-back.png",
+        "sha256": "6a1d5e1e7d81bee0b269709b6144bb6b700e74f494398e1bc138a31d54361b33"
+      },
+      {
+        "file": "all-pages/05-studio/preview-01-review-feed.png",
+        "sha256": "bb22316cca07c320add702af25ab13eb825a74c35e9f3881d2983972d4b4cc1a"
+      },
+      {
+        "file": "all-pages/05-studio/preview-01-review-keep.png",
+        "sha256": "2a4522a8ac521f24267866708aac738d496ae4f6683268c24f1c07bb385ea603"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos55. Cyrillic text readable; selected full-screen swipe-only Snake head and both photo circles fully visible, one near left boundary. Memory shows three genuinely matched pairs. Real-clock games video includes ordinary wrapping; no direction UI buttons. Studio briefly displays its native rendering indicator during tool change, then settles; selected filter PNG fully loaded. No selected system banner/dialog."
+  },
+  {
+    "sheet": "screenshots-01.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/05-studio/preview-01-review-later.png",
+        "sha256": "2d738279cf6a3f607210dc3028e892e4c019d0cf152370e90a1260beab363268"
+      },
+      {
+        "file": "all-pages/05-studio/preview-01-review-trash.png",
+        "sha256": "6a1d5e1e7d81bee0b269709b6144bb6b700e74f494398e1bc138a31d54361b33"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-adjust.png",
+        "sha256": "d055d056c943316a0c601b7bb58385f043c21e56d49f8560f9e73ab90805f560"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-editor.png",
+        "sha256": "2df30c5ebae8a567c67c757214196780f330b13fb250d86e12ce7b7a8ea9a0d2"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-filter.png",
+        "sha256": "0ba5c701ff00219becaa6622054c2eaf1ab6d2f03a919c0e28aa060180b1cdf7"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-frame.png",
+        "sha256": "97b6b544f5f499b3d5c5b202a4be31efee8d872977b671532fcf434fa9b7bcd4"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-markup.png",
+        "sha256": "a7ecf2e18689ec09af60f7e4e06bcc691cb97bcdd3087752be00b3e0ba44529e"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-controls.png",
+        "sha256": "49a3ccfb2a141fe9407615fd695772da663a68c6ace82e1bce0e2ad2b60a6997"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-hidden-controls.png",
+        "sha256": "fea3acfaa1189bcd66e334165bdb20a6a68dc484e4d5e2a7ef99b60cfd103813"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-vault.png",
+        "sha256": "81f7540c390629b9a397455b02b1d5503c10e027d22ea0354d91956a8e292a0d"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-viewer.png",
+        "sha256": "49a3ccfb2a141fe9407615fd695772da663a68c6ace82e1bce0e2ad2b60a6997"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-zoom.png",
+        "sha256": "7b1778a89406a81326b43b10f34451744839fc19a8617638a0c5336c86070cce"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos55. Cyrillic text readable; selected full-screen swipe-only Snake head and both photo circles fully visible, one near left boundary. Memory shows three genuinely matched pairs. Real-clock games video includes ordinary wrapping; no direction UI buttons. Studio briefly displays its native rendering indicator during tool change, then settles; selected filter PNG fully loaded. No selected system banner/dialog."
+  },
+  {
+    "sheet": "screenshots-02.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/05-studio/preview-04-memory-memory-pairs.png",
+        "sha256": "cb6e88dbc49f54e2902d25e5e358d9074a631aa23cc9b6678c30206d84a162ec"
+      },
+      {
+        "file": "all-pages/05-studio/preview-04-memory-memory-reveal.png",
+        "sha256": "60bd72ebc9a7758417e9fceef61e0f3472b081ec8e0c72de82f3e3786e41e282"
+      },
+      {
+        "file": "all-pages/05-studio/preview-04-memory-memory-second.png",
+        "sha256": "929ff98597561c84e6971d30e6749fa1ca93a72528ad312803fbd91bdd527434"
+      },
+      {
+        "file": "all-pages/05-studio/preview-05-snake-snake-down.png",
+        "sha256": "d0538b69a200ebbf4c440e236c08e7c9c44601bd140998b02e6b3737cc962b88"
+      },
+      {
+        "file": "all-pages/05-studio/preview-05-snake-snake-left.png",
+        "sha256": "60e064d085faba876c7c821e1060dc32eba3571981aeaaa800edc884c9ec2283"
+      },
+      {
+        "file": "all-pages/05-studio/preview-05-snake-snake-right.png",
+        "sha256": "d3d2a32708fa04f8a06c257ba18e72cb197e6225592a1dd038c76da8871fb688"
+      },
+      {
+        "file": "all-pages/05-studio/preview-05-snake-snake-up.png",
+        "sha256": "f6f9aa975c20e560b0c70899c7f97404b16b4b48d658ada2050d00968ce829b3"
+      },
+      {
+        "file": "all-pages/05-studio/studio.png",
+        "sha256": "4bc6d74953dda4e99c9d8bf4c3314fab3bf3fe4a315f706c1c604632e0a5e7fe"
+      },
+      {
+        "file": "all-pages/06-vault/vault-files.png",
+        "sha256": "739fd70b197c4917317a28d529f499078eaef7bf66d2342cdf2076b0100199ec"
+      },
+      {
+        "file": "all-pages/06-vault/vault-media-picker.png",
+        "sha256": "8f4fef0c22d18f3fd18708f15157c464c0793c41235da7710fc4974cddfef085"
+      },
+      {
+        "file": "all-pages/06-vault/vault-media.png",
+        "sha256": "81f7540c390629b9a397455b02b1d5503c10e027d22ea0354d91956a8e292a0d"
+      },
+      {
+        "file": "all-pages/06-vault/vault-notes.png",
+        "sha256": "0038457360578c7815bc545f6bf3c5f58d0d677f863c66d1b8306e4b42541844"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos55. Cyrillic text readable; selected full-screen swipe-only Snake head and both photo circles fully visible, one near left boundary. Memory shows three genuinely matched pairs. Real-clock games video includes ordinary wrapping; no direction UI buttons. Studio briefly displays its native rendering indicator during tool change, then settles; selected filter PNG fully loaded. No selected system banner/dialog."
+  },
+  {
+    "sheet": "screenshots-03.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/06-vault/vault-setup-code-empty.png",
+        "sha256": "c0338c08a7f76f24a8ccfa5e0c4bc058474daba0e7d8c20b6718420a77f94e03"
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-entry.png",
+        "sha256": "da612709142acfe26a7c0903bfa4daf5cd712e5f5f4ab0ff0cbde38ecb5f8f5c"
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-introduction.png",
+        "sha256": "7f06a25034987717d30cfa9450a64ebece29af8bfb45f527bb3eed444ce4e220"
+      },
+      {
+        "file": "all-pages/06-vault/vault-tools.png",
+        "sha256": "8e4f36316961a20cfd535ee8bf81240afe61beaaf1913cdb99296364d84f83cd"
+      },
+      {
+        "file": "all-pages/06-vault/vault-trash.png",
+        "sha256": "5c27334e6e2d2c713977bf17fb09410a4ae1f622ca2ff01d02e111f6764c5bea"
+      },
+      {
+        "file": "all-pages/06-vault/vault-viewer.png",
+        "sha256": "49a3ccfb2a141fe9407615fd695772da663a68c6ace82e1bce0e2ad2b60a6997"
+      },
+      {
+        "file": "all-pages/09-photo-games/games-selection.png",
+        "sha256": "33da79b307506af0f608334761f71a0a7682b6d60dbd098be0b19316ca2ce3fe"
+      },
+      {
+        "file": "all-pages/09-photo-games/memory-play.png",
+        "sha256": "91ef0bdf9a9b75e590a283a06de69de073d557be6be1ebd8a86da1edcf90f2f6"
+      },
+      {
+        "file": "all-pages/09-photo-games/memory-setup.png",
+        "sha256": "cdf4ff19f383cc696f738fa7d57187bfa73305d3f791c14aa6eff4a5d2bf83f0"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-pause.png",
+        "sha256": "ca0b2694310266e47a01a34009c1563baf2fee147d708957ac071fdbaa3b0c16"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-play.png",
+        "sha256": "34da4638a42c03d1d0fda4f2182380a5d0dd747a7379da65f828839daf6cc26b"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-ready.png",
+        "sha256": "bd77a04a75eeb927eecb3082b6e37213337eabd1ced062d807a65b873effb1f9"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos55. Cyrillic text readable; selected full-screen swipe-only Snake head and both photo circles fully visible, one near left boundary. Memory shows three genuinely matched pairs. Real-clock games video includes ordinary wrapping; no direction UI buttons. Studio briefly displays its native rendering indicator during tool change, then settles; selected filter PNG fully loaded. No selected system banner/dialog."
+  },
+  {
+    "sheet": "screenshots-04.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/09-photo-games/snake-settings.png",
+        "sha256": "1a3bab3d6bc46f21e1a3d7c0b2eb0015c956ba6d39a126789cb44e62ff9f36f1"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-setup.png",
+        "sha256": "d43442fcfa2225ad22fdc52e292a582a09b10efe78de90c5cb1416c7257675ec"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos55. Cyrillic text readable; selected full-screen swipe-only Snake head and both photo circles fully visible, one near left boundary. Memory shows three genuinely matched pairs. Real-clock games video includes ordinary wrapping; no direction UI buttons. Studio briefly displays its native rendering indicator during tool change, then settles; selected filter PNG fully loaded. No selected system banner/dialog."
+  },
+  {
+    "sheet": "01-review-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/01-review.mp4",
+        "sha256": "0a52656447dc7caa1394d8fbaf1a34b8186bb15882a483a5460dba0ce5d5c282"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos55. Cyrillic text readable; selected full-screen swipe-only Snake head and both photo circles fully visible, one near left boundary. Memory shows three genuinely matched pairs. Real-clock games video includes ordinary wrapping; no direction UI buttons. Studio briefly displays its native rendering indicator during tool change, then settles; selected filter PNG fully loaded. No selected system banner/dialog."
+  },
+  {
+    "sheet": "02-photo-games-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/02-photo-games.mp4",
+        "sha256": "cb583dc6b35366c73ed1e49922bad4c77f46a54638bd0f2ff9c4a520a8364060"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos55. Cyrillic text readable; selected full-screen swipe-only Snake head and both photo circles fully visible, one near left boundary. Memory shows three genuinely matched pairs. Real-clock games video includes ordinary wrapping; no direction UI buttons. Studio briefly displays its native rendering indicator during tool change, then settles; selected filter PNG fully loaded. No selected system banner/dialog."
+  },
+  {
+    "sheet": "03-studio-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/03-studio.mp4",
+        "sha256": "75393aca65ddc2cf17b3eefbbed4ad73cc078a168a2e7ddf8e0bf388ded2070f"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos55. Cyrillic text readable; selected full-screen swipe-only Snake head and both photo circles fully visible, one near left boundary. Memory shows three genuinely matched pairs. Real-clock games video includes ordinary wrapping; no direction UI buttons. Studio briefly displays its native rendering indicator during tool change, then settles; selected filter PNG fully loaded. No selected system banner/dialog."
+  },
+  {
+    "sheet": "04-vault-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "alternatives/04-vault.mp4",
+        "sha256": "b04ec3be0c0cc3cf9f567f0d81ee503e889596527ec19e66e9873a7ba636a103"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos55. Cyrillic text readable; selected full-screen swipe-only Snake head and both photo circles fully visible, one near left boundary. Memory shows three genuinely matched pairs. Real-clock games video includes ordinary wrapping; no direction UI buttons. Studio briefly displays its native rendering indicator during tool change, then settles; selected filter PNG fully loaded. No selected system banner/dialog."
+  },
+  {
+    "sheet": "posters.jpg",
+    "kind": "posters",
+    "originals": [
+      {
+        "file": "previews/01-review-poster.png",
+        "sha256": "8711218411594925128ae2403ef6f28020d02c79bb1c30df9e74f3fe682c9339"
+      },
+      {
+        "file": "previews/02-photo-games-poster.png",
+        "sha256": "3e1b9dffd0ccf0d9f06b029890d5b911682283e84fd344ec654deed0414a371e"
+      },
+      {
+        "file": "previews/03-studio-poster.png",
+        "sha256": "a3f58840f206363883483dfe63705dbcea05ead9b473bfa26a4e2ae9dcdc3554"
+      },
+      {
+        "file": "alternatives/04-vault-poster.png",
+        "sha256": "28f37993f72d5b7c6ab6ecb41819b6780045ada3448e19e0a892ee8dcdc2ab85"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos55. Cyrillic text readable; selected full-screen swipe-only Snake head and both photo circles fully visible, one near left boundary. Memory shows three genuinely matched pairs. Real-clock games video includes ordinary wrapping; no direction UI buttons. Studio briefly displays its native rendering indicator during tool change, then settles; selected filter PNG fully loaded. No selected system banner/dialog."
+  }
+]

@@ -1,0 +1,63 @@
+[
+  {
+    "file": "app-store-selection/01-today.png",
+    "sha256": "08d7e9a1f30ccee51383255f7d32dc71a88b9e843a06bdb7687a7f13e876be98",
+    "native_source": "all-pages/02-today-and-review/today.png",
+    "native_sha256": "08d7e9a1f30ccee51383255f7d32dc71a88b9e843a06bdb7687a7f13e876be98"
+  },
+  {
+    "file": "app-store-selection/02-feed.png",
+    "sha256": "e0c188b5b2435b615f7809319842b56c1ad60464a8463823c30c70ee6d910b39",
+    "native_source": "all-pages/02-today-and-review/feed.png",
+    "native_sha256": "e0c188b5b2435b615f7809319842b56c1ad60464a8463823c30c70ee6d910b39"
+  },
+  {
+    "file": "app-store-selection/03-library.png",
+    "sha256": "f344d8c298c6fd0d29ff29c01a8dfeed2216ac736742ed69c5ca9bc88c7f52a9",
+    "native_source": "all-pages/03-photos/library.png",
+    "native_sha256": "f344d8c298c6fd0d29ff29c01a8dfeed2216ac736742ed69c5ca9bc88c7f52a9"
+  },
+  {
+    "file": "app-store-selection/04-cleanup.png",
+    "sha256": "3955cdc0e57d26bfe5b1203131aad9eda3b2bb4793610024ada593f865c02cb1",
+    "native_source": "all-pages/04-cleanup/cleanup.png",
+    "native_sha256": "3955cdc0e57d26bfe5b1203131aad9eda3b2bb4793610024ada593f865c02cb1"
+  },
+  {
+    "file": "app-store-selection/05-snake-play.png",
+    "sha256": "7afd361bc8ace28ca3fd0d01679ea9f00163364eb602b5e9ce0db1713ad82666",
+    "native_source": "all-pages/05-studio/preview-05-snake-snake-up.png",
+    "native_sha256": "f9e14a76e263db0129fd3a3b13fa4ca0b6ebb889d5c527c3f98c02f1c5bb4816",
+    "selection_note": "Selected an existing unchanged native up-turn capture so the head and both photo segments are fully visible away from the wrap boundary. RGB export preserves the exact native color pixels; original screenshot remains archived."
+  },
+  {
+    "file": "app-store-selection/06-memory-play.png",
+    "sha256": "59455c739db0788e9ce0c0b432b2b442c334a8285d90554a560899585568427c",
+    "native_source": "all-pages/09-photo-games/memory-play.png",
+    "native_sha256": "59455c739db0788e9ce0c0b432b2b442c334a8285d90554a560899585568427c"
+  },
+  {
+    "file": "app-store-selection/07-collage.png",
+    "sha256": "a8ba68fc985a805804ead293a47c1384d4e3695e01167ba419ed02793539c08d",
+    "native_source": "all-pages/05-studio/collage.png",
+    "native_sha256": "a8ba68fc985a805804ead293a47c1384d4e3695e01167ba419ed02793539c08d"
+  },
+  {
+    "file": "app-store-selection/08-editor-filter.png",
+    "sha256": "bd1c72ec88bd792a42a94c09b2c4a41a25c2ed4c74f780de4e7ee8abd38497fd",
+    "native_source": "all-pages/05-studio/editor-filter.png",
+    "native_sha256": "bd1c72ec88bd792a42a94c09b2c4a41a25c2ed4c74f780de4e7ee8abd38497fd"
+  },
+  {
+    "file": "app-store-selection/09-movie.png",
+    "sha256": "4d4d4e8f2977b13fb153e4f9d5235e9b94bdc5eada841c6c7ceb3dfcc1c2ca63",
+    "native_source": "all-pages/05-studio/movie.png",
+    "native_sha256": "4d4d4e8f2977b13fb153e4f9d5235e9b94bdc5eada841c6c7ceb3dfcc1c2ca63"
+  },
+  {
+    "file": "app-store-selection/10-vault-media.png",
+    "sha256": "6dd39bc496d55a677a8f58e3c26b606c1deb12b0cfa8258154fe894892fd93e6",
+    "native_source": "all-pages/06-vault/vault-media.png",
+    "native_sha256": "6dd39bc496d55a677a8f58e3c26b606c1deb12b0cfa8258154fe894892fd93e6"
+  }
+]

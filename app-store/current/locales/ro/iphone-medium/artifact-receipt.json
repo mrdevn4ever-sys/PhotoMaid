@@ -1,0 +1,10 @@
+{
+  "name": "store-current-ro-iphone-medium-assets",
+  "run_id": 39125899164,
+  "size_in_bytes": 72147216,
+  "artifact_id": 12138336249,
+  "archive_sha256": "87518737311966ddac1e0ef64389e81f9fe0ab2614999516837f35500be64c13",
+  "github_archive_digest": "sha256:87518737311966ddac1e0ef64389e81f9fe0ab2614999516837f35500be64c13",
+  "github_archive_digest_verification": "PASS",
+  "downloaded_bytes": 72147216
+}

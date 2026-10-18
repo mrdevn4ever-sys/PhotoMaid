@@ -164,16 +164,34 @@
       "device_class": "iphone-large",
       "status": "PASS",
       "native_passed_tests": 5
+    },
+    {
+      "locale": "ro",
+      "device_class": "iphone-medium",
+      "status": "PASS",
+      "native_passed_tests": 1
+    },
+    {
+      "locale": "ru",
+      "device_class": "iphone-large",
+      "status": "PASS",
+      "native_passed_tests": 5
+    },
+    {
+      "locale": "tr",
+      "device_class": "iphone-large",
+      "status": "PASS",
+      "native_passed_tests": 5
     }
   ],
   "large_run": 39125897166,
   "medium_run": 39125899164,
   "duo_runtime_preparation_run": 39120476761,
-  "repository_delivery": "22 reviewed profiles and source fixes pushed through 0a4bc09; remaining captures and two scoped simulator retries pending.",
-  "actual_selected_screenshots": 220,
-  "actual_selected_videos": 36,
-  "actual_vault_alternative_videos": 12,
-  "actual_native_passed_capture_cases": 70,
+  "repository_delivery": "25 reviewed profiles prepared; remaining normal captures and two scoped simulator retries pending.",
+  "actual_selected_screenshots": 250,
+  "actual_selected_videos": 42,
+  "actual_vault_alternative_videos": 14,
+  "actual_native_passed_capture_cases": 81,
   "initial_batches": "Stopped remaining old-source jobs after two visually rejected Today count frames; accepted eight profiles retained. Corrected native pilots dispatched before remaining-language batches.",
   "today_counter_fix_commit": "6a86a77",
   "today_counter_fix_native_validation": {
