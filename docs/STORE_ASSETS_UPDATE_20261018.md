@@ -27,7 +27,7 @@ H.264, 30 fps, AAC-Stereo mit 48 kHz und Stille, 15–30 Sekunden.
 
 ## Nachweise
 
-- Aktuell bestanden und visuell geprüft: **30 Geräte-/Sprachserien**, 300 ausgewählte
+- Aktuell bestanden und visuell geprüft: **31 Geräte-/Sprachserien**, 310 ausgewählte
   Screenshots, 48 ausgewählte Videos und 16 Tresor-Alternativen. Englisch/mittel
   stammt aus dem erfolgreichen Pilot; jeder akzeptierte native Fall hat 0 FAIL und 0 SKIP. [Originaler Herkunftsbericht](../app-store/current/locales/en/iphone-medium/provenance.json),
   [Sichtprüfung](../app-store/current/locales/en/iphone-medium/review/manifest.json).
@@ -119,6 +119,17 @@ Der erste Aufnahmeversuch scheiterte vor dem UI-Test: LaunchServices konnte `ope
 nicht auflösen. Der echte Duo-Simulator war bereits gebootet. Jetzt wird `Simulator.app`
 über den vollständigen Pfad der ausgewählten Xcode-Version gestartet;
 [Wiederholung 39128651889](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39128651889).
+Auch der zweite Versuch scheiterte vor dem App-Test: Der vollständige klassische
+`Simulator.app`-Pfad fehlt tatsächlich auf diesem Runner (`NSCocoaErrorDomain 260`).
+[Unveränderter Fehlernachweis](../app-store/current/validation/duo-second-app-attempt.json).
+
+Die anschließende reine Pfadprüfung [39132957505](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39132957505)
+findet stattdessen die echte `Contents/Applications/DeviceHub.app` aus Xcode 27.1,
+mit Bundle-ID `com.apple.dt.Devices` und vorhandenem Programm. Auch Apples
+[öffentliche Duo-Anleitung](https://developer.apple.com/iphone-duo/prepare/) nennt Device Hub.
+Der Workflow öffnet nun dieses vorhandene Programm; die konkrete UDID bleibt
+bei simctl und XCTest eindeutig ausgewählt.
+[Neuer App-Pilot 39133181324](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39133181324).
 Bisher sind **keine Duo-App-Aufnahmen freigegeben**. Native UI-Ergebnisse,
 äußere App-Aufnahmen, Duo-Vorschauformate, physische Faltabnahme und Hardware-FPS-Messung
 sind damit noch nicht nachgewiesen. Der statische Apple-Skill-Export wird nach zuvor

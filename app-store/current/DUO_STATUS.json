@@ -1,5 +1,5 @@
 {
-  "status": "NATIVE APP BUILD PASS; SIMULATOR GUI LAUNCH FIXED FOR RETRY",
+  "status": "DEVICE HUB DISCOVERED; NEW GENUINE DUO APP PILOT IN PROGRESS",
   "xcode": "Xcode27.1 / 27A9275",
   "sdk": "27.1",
   "runtime": "iOS27.1 / 24A94425",
@@ -24,7 +24,7 @@
   "approved_duo_app_assets": 0,
   "apple_specification": "https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/",
   "apple_requirement": "Duo screenshots required starting April2027 for apps using SDK27.1+",
-  "remaining_requirement": "Discover actual matching Simulator GUI bundle location on xcode-27 runner, then native PhotoMaid inner-display UI capture and visual review. No accepted Duo images.",
+  "remaining_requirement": "Actual native PhotoMaid inner-display UI capture using matching Device Hub and SDK27.1, followed by strict original-dimension/blank-frame checks and visual review.",
   "historical_probes": [
     {
       "run_id": 39115140440,
@@ -58,5 +58,12 @@
   "native_app_retry_build": "PASS",
   "native_app_retry_build_job_id": 117679045157,
   "native_app_retry_capture_tests": "NOT RUN",
-  "second_pilot_failure": "NSCocoaErrorDomain Code260 / NSPOSIXErrorDomain Code2: /Applications/Xcode_27.1.app/Contents/Developer/Applications/Simulator.app is absent. Native app install and UI tests were skipped."
+  "second_pilot_failure": "NSCocoaErrorDomain Code260 / NSPOSIXErrorDomain Code2: /Applications/Xcode_27.1.app/Contents/Developer/Applications/Simulator.app is absent. Native app install and UI tests were skipped.",
+  "gui_probe_run_id": 39132957505,
+  "gui_probe_artifact_id": 12138379051,
+  "actual_gui_path": "/Applications/Xcode_27.1.app/Contents/Applications/DeviceHub.app",
+  "actual_gui_bundle_id": "com.apple.dt.Devices",
+  "native_app_devicehub_run_id": 39133181324,
+  "native_app_devicehub_source_commit": "d574411cfbde5b7a11fce92e976e8fba75f084f0",
+  "native_app_devicehub_status": "NATIVE BUILD IN PROGRESS"
 }

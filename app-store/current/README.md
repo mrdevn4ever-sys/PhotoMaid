@@ -21,7 +21,7 @@ Die Tabelle zeigt ausschließlich tatsächlich vorhandene Dateien und Audit-Erge
 | [Russisch](locales/ru/README.md) | `ru` | 10/10 · PASS | 10/10 · PASS | 3/3 + 1 Alternative |
 | [Türkisch](locales/tr/README.md) | `tr` | 10/10 · PASS | 10/10 · PASS | 3/3 + 1 Alternative |
 | [Ukrainisch](locales/uk/README.md) | `uk` | 10/10 · PASS | 10/10 · PASS | 3/3 + 1 Alternative |
-| [Chinesisch (vereinfacht)](locales/zh-Hans/README.md) | `zh-Hans` | 10/10 · PASS | 0/10 · ausstehend | 3/3 + 1 Alternative |
+| [Chinesisch (vereinfacht)](locales/zh-Hans/README.md) | `zh-Hans` | 10/10 · PASS | 10/10 · PASS | 3/3 + 1 Alternative |
 
 [Interaktive Bild-/Videoübersicht](index.html) · [Prüfergebnisse](audit.json) · [Duo-Status](DUO_STATUS.json) · [Bisheriges vollständiges Seitenarchiv](../INDEX.md).
 

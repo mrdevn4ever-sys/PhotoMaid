@@ -81,14 +81,21 @@
   {
     "run_id": 39125897166,
     "source_commit": "cf9c42e71c3ad6162b86f1fcedfc749777999016",
-    "status": "IN PROGRESS",
-    "scope": "Missing10 large locales: ja,ko,nl,pl,pt-PT,ro,ru,tr,uk,zh-Hans"
+    "status": "PASS",
+    "scope": "Missing10 large locales: ja,ko,nl,pl,pt-PT,ro,ru,tr,uk,zh-Hans",
+    "native_capture_tests": {
+      "passed": 50,
+      "failed": 0,
+      "skipped": 0
+    },
+    "visual_review": "PASS for all ten large-iPhone locale profiles. All originals, video frame sheets and selected game PNGs inspected; strict local audits PASS."
   },
   {
     "run_id": 39125899164,
     "source_commit": "cf9c42e71c3ad6162b86f1fcedfc749777999016",
-    "status": "IN PROGRESS",
-    "scope": "Missing11 medium locales: ar,ja,ko,nl,pl,pt-PT,ro,ru,tr,uk,zh-Hans"
+    "status": "COMPLETED WITH ONE EXCLUDED PROFILE",
+    "scope": "Missing11 medium locales: ar,ja,ko,nl,pl,pt-PT,ro,ru,tr,uk,zh-Hans",
+    "accepted": "Ten medium locale profiles passed native capture and visual review. Korean original system-crash failure preserved separately; scoped fresh-simulator retry pending."
   },
   {
     "run_id": 39126669768,
@@ -102,8 +109,11 @@
   {
     "run_id": 39128651889,
     "source_commit": "21dc7d425c7ab2703960c6942760e171b21c6e9f",
-    "status": "QUEUED",
-    "scope": "Genuine Duo app retry with selected Xcode absolute Simulator.app path; en inner-display screenshots only"
+    "status": "FAIL: SIMULATOR GUI BUNDLE MISSING",
+    "scope": "Genuine Duo app retry with selected Xcode absolute Simulator.app path; en inner-display screenshots only",
+    "native_build": "PASS",
+    "native_capture_tests": "NOT RUN",
+    "reason": "Actual NSCocoaErrorDomain260: selected Xcode27.1 has no legacy Simulator.app. No app screenshot accepted."
   },
   {
     "run_id": 39125899164,
@@ -121,8 +131,21 @@
   {
     "run_id": 39130602845,
     "source_commit": "0a4bc091aad528f1a19191bac71101fa07e80bc8",
-    "status": "QUEUED",
+    "status": "NATIVE CAPTURE IN PROGRESS",
     "scope": "ko medium fresh simulator retry after actual SpringBoard process crash",
     "app_and_capture_test_logic": "Unchanged; no failed-test/library assertion relaxed."
+  },
+  {
+    "run_id": 39132957505,
+    "source_commit": "22990a167c306238ae377f1b84077565d4748a32",
+    "status": "PASS",
+    "scope": "Read-only actual GUI bundle discovery on Xcode27 runner",
+    "finding": "No legacy Simulator.app at usual path. Actual matching Xcode27.1 DeviceHub.app exists with executable and com.apple.dt.Devices bundle ID. No app screenshots in this diagnostic."
+  },
+  {
+    "run_id": 39133181324,
+    "source_commit": "d574411cfbde5b7a11fce92e976e8fba75f084f0",
+    "status": "NATIVE BUILD IN PROGRESS",
+    "scope": "Genuine Duo app pilot using actual matching DeviceHub instead of absent legacy Simulator GUI. Native inner-display UI capture and strict evidence validation unchanged."
   }
 ]
