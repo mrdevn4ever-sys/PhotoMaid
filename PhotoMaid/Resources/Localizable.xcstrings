@@ -178221,97 +178221,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "أضف حتى 100 صورة أو العب بصور بديلة."
+            "value": "اختر حتى 100 صورة لثعبانك."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Füge bis zu 100 Fotos hinzu oder spiele mit Platzhaltern."
+            "value": "Wähle bis zu 100 Fotos für deine Schlange."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Add up to 100 photos, or play with placeholders."
+            "value": "Choose up to 100 photos for your snake."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Añade hasta 100 fotos o juega con imágenes de sustitución."
+            "value": "Elige hasta 100 fotos para tu serpiente."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ajoutez jusqu’à 100 photos ou jouez avec les images par défaut."
+            "value": "Choisissez jusqu’à 100 photos pour votre serpent."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aggiungi fino a 100 foto o gioca con i segnaposto."
+            "value": "Scegli fino a 100 foto per il tuo serpente."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "写真を100枚まで追加するか、代替画像で遊べます。"
+            "value": "ヘビに使う写真を100枚まで選べます。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "사진을 최대 100장 추가하거나 기본 이미지로 플레이하세요."
+            "value": "뱀에 사용할 사진을 최대 100장 선택하세요."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Voeg tot 100 foto's toe of speel met tijdelijke afbeeldingen."
+            "value": "Kies tot 100 foto's voor je slang."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dodaj do 100 zdjęć lub graj z obrazami zastępczymi."
+            "value": "Wybierz do 100 zdjęć dla swojego węża."
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Adiciona até 100 fotos ou joga com imagens de substituição."
+            "value": "Escolhe até 100 fotos para a tua cobra."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Adaugă până la 100 de fotografii sau joacă folosind imagini implicite."
+            "value": "Alege până la 100 de fotografii pentru șarpele tău."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Добавьте до 100 фото или играйте с заменителями."
+            "value": "Выберите до 100 фото для своей змейки."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "100 fotoğrafa kadar ekle veya yer tutucularla oyna."
+            "value": "Yılanın için en fazla 100 fotoğraf seç."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Додай до 100 фото або грай із замінниками."
+            "value": "Вибери до 100 фото для своєї змійки."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "最多添加100张照片，也可使用占位图游玩。"
+            "value": "为你的小蛇选择最多100张照片。"
           }
         }
       }
