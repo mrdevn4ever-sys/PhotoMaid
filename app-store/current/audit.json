@@ -778,6 +778,27 @@
   },
   {
     "status": "PASS",
+    "locale": "ru",
+    "device_class": "iphone-medium",
+    "device": {
+      "device_class": "iphone-medium",
+      "name": "iPhone 17 Pro",
+      "device_type": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+      "os_version": "26.2",
+      "sdk": "26.5",
+      "udid": "C2831C89-9214-42DD-B91B-4B4AEFBDADA1",
+      "actual_duo": false
+    },
+    "native_screenshots": 28,
+    "selected_screenshots": 10,
+    "videos": [],
+    "native_test_count": 1,
+    "source_commit": "cf9c42e71c3ad6162b86f1fcedfc749777999016",
+    "capture_run": "39125899164"
+  },
+  {
+    "status": "PASS",
     "locale": "tr",
     "device_class": "iphone-large",
     "device": {
@@ -811,6 +832,132 @@
       {
         "file": "alternatives/04-vault.mp4",
         "sha256": "069936e7090185844c49fbd554afa8ae8999dd7ccd59e4d38de8790abac92686",
+        "duration": 27.0
+      }
+    ],
+    "native_test_count": 5,
+    "source_commit": "cf9c42e71c3ad6162b86f1fcedfc749777999016",
+    "capture_run": "39125897166"
+  },
+  {
+    "status": "PASS",
+    "locale": "tr",
+    "device_class": "iphone-medium",
+    "device": {
+      "device_class": "iphone-medium",
+      "name": "iPhone 17 Pro",
+      "device_type": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+      "os_version": "26.2",
+      "sdk": "26.5",
+      "udid": "3C0AF444-ED0D-4401-9521-B30352D64DA3",
+      "actual_duo": false
+    },
+    "native_screenshots": 28,
+    "selected_screenshots": 10,
+    "videos": [],
+    "native_test_count": 1,
+    "source_commit": "cf9c42e71c3ad6162b86f1fcedfc749777999016",
+    "capture_run": "39125899164"
+  },
+  {
+    "status": "PASS",
+    "locale": "uk",
+    "device_class": "iphone-large",
+    "device": {
+      "device_class": "iphone-large",
+      "name": "iPhone 17 Pro Max",
+      "device_type": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro-Max",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+      "os_version": "26.2",
+      "sdk": "26.5",
+      "udid": "3249F8F0-35E4-4F82-8B39-15173689E54A",
+      "actual_duo": false
+    },
+    "native_screenshots": 50,
+    "selected_screenshots": 10,
+    "videos": [
+      {
+        "file": "previews/01-review.mp4",
+        "sha256": "2a2b7d1da07a99e1dd927654c75e0a2c94f8d5d69554722910e8613e4b084ac0",
+        "duration": 27.0
+      },
+      {
+        "file": "previews/02-photo-games.mp4",
+        "sha256": "f706cb1861a2e828c8ce07692566fa3fdb172ca6defe8ae89c7f38e05f77cb87",
+        "duration": 27.0
+      },
+      {
+        "file": "previews/03-studio.mp4",
+        "sha256": "ab7bde41defdf86b82a4d295c92fa491173869cb7c33cf4efd9d15be6263111c",
+        "duration": 27.0
+      },
+      {
+        "file": "alternatives/04-vault.mp4",
+        "sha256": "4294d581dd3d03da709eccb796ccbca320fa886864d7e9537d1f1b0c19e0705e",
+        "duration": 27.0
+      }
+    ],
+    "native_test_count": 5,
+    "source_commit": "cf9c42e71c3ad6162b86f1fcedfc749777999016",
+    "capture_run": "39125897166"
+  },
+  {
+    "status": "PASS",
+    "locale": "uk",
+    "device_class": "iphone-medium",
+    "device": {
+      "device_class": "iphone-medium",
+      "name": "iPhone 17 Pro",
+      "device_type": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+      "os_version": "26.2",
+      "sdk": "26.5",
+      "udid": "CAE3D34F-8FFF-495F-BF98-28CD23DAB916",
+      "actual_duo": false
+    },
+    "native_screenshots": 28,
+    "selected_screenshots": 10,
+    "videos": [],
+    "native_test_count": 1,
+    "source_commit": "cf9c42e71c3ad6162b86f1fcedfc749777999016",
+    "capture_run": "39125899164"
+  },
+  {
+    "status": "PASS",
+    "locale": "zh-Hans",
+    "device_class": "iphone-large",
+    "device": {
+      "device_class": "iphone-large",
+      "name": "iPhone 17 Pro Max",
+      "device_type": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro-Max",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+      "os_version": "26.2",
+      "sdk": "26.5",
+      "udid": "5ABE09FD-4B03-446D-AC74-55F1BBA5E42F",
+      "actual_duo": false
+    },
+    "native_screenshots": 50,
+    "selected_screenshots": 10,
+    "videos": [
+      {
+        "file": "previews/01-review.mp4",
+        "sha256": "a61562b412fe8f4b5cc48247aefdf123a8a59ae0543634764cd48f599364d547",
+        "duration": 27.0
+      },
+      {
+        "file": "previews/02-photo-games.mp4",
+        "sha256": "94231f166561d4d4c8ee88655548c0224b767b9b19bc93674a4ddcff54d2579a",
+        "duration": 27.0
+      },
+      {
+        "file": "previews/03-studio.mp4",
+        "sha256": "b20c42a12e90c895d611cad5eb67af19462acc65404455279e42ad27917aedef",
+        "duration": 27.0
+      },
+      {
+        "file": "alternatives/04-vault.mp4",
+        "sha256": "577a4b8114a97ce4a9b5db1ca598707f63285cc6e9d61ac9979718d99208331f",
         "duration": 27.0
       }
     ],

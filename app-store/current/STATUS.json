@@ -23,7 +23,7 @@
   ],
   "pilot_run": 39118013344,
   "iphone_assets": "IN PROGRESS",
-  "duo_assets": "SDK27.1 RETRY BUILD PASS; NATIVE INNER-DISPLAY CAPTURE QUEUED",
+  "duo_assets": "SDK27.1 BUILD PASS; RETRY PREPARATION FAILED BEFORE UI TEST",
   "app_store_connect_assets_upload": "NOT RUN",
   "app_store_release": "NOT RUN",
   "native_test_policy": "Only real passed capture results with no failed or skipped tests; screenshots and actual video frames reviewed before PASS.",
@@ -178,7 +178,37 @@
       "native_passed_tests": 5
     },
     {
+      "locale": "ru",
+      "device_class": "iphone-medium",
+      "status": "PASS",
+      "native_passed_tests": 1
+    },
+    {
       "locale": "tr",
+      "device_class": "iphone-large",
+      "status": "PASS",
+      "native_passed_tests": 5
+    },
+    {
+      "locale": "tr",
+      "device_class": "iphone-medium",
+      "status": "PASS",
+      "native_passed_tests": 1
+    },
+    {
+      "locale": "uk",
+      "device_class": "iphone-large",
+      "status": "PASS",
+      "native_passed_tests": 5
+    },
+    {
+      "locale": "uk",
+      "device_class": "iphone-medium",
+      "status": "PASS",
+      "native_passed_tests": 1
+    },
+    {
+      "locale": "zh-Hans",
       "device_class": "iphone-large",
       "status": "PASS",
       "native_passed_tests": 5
@@ -187,11 +217,11 @@
   "large_run": 39125897166,
   "medium_run": 39125899164,
   "duo_runtime_preparation_run": 39120476761,
-  "repository_delivery": "25 reviewed profiles prepared; remaining normal captures and two scoped simulator retries pending.",
-  "actual_selected_screenshots": 250,
-  "actual_selected_videos": 42,
-  "actual_vault_alternative_videos": 14,
-  "actual_native_passed_capture_cases": 81,
+  "repository_delivery": "30 reviewed profiles prepared; all 16 large iPhone languages approved. Korean and Chinese medium captures plus genuine Duo validation remain.",
+  "actual_selected_screenshots": 300,
+  "actual_selected_videos": 48,
+  "actual_vault_alternative_videos": 16,
+  "actual_native_passed_capture_cases": 94,
   "initial_batches": "Stopped remaining old-source jobs after two visually rejected Today count frames; accepted eight profiles retained. Corrected native pilots dispatched before remaining-language batches.",
   "today_counter_fix_commit": "6a86a77",
   "today_counter_fix_native_validation": {

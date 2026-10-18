@@ -1,0 +1,171 @@
+[
+  {
+    "file": "01-review.mp4",
+    "locale": "zh-Hans",
+    "duration": 27.0,
+    "resolution": [
+      886,
+      1920
+    ],
+    "fps": 30,
+    "poster_file": "01-review-poster.png",
+    "poster_sha256": "65fad3a22d29aaf5dc9e65921f7cef48f4123def0d9f0278a74131ef4348ebee",
+    "poster_time": 1,
+    "poster_timecode": "00:00:01:00",
+    "audio": "AAC stereo, silence",
+    "source": "Actual simulator screen recording; no generated UI",
+    "source_file": "01-review.mov",
+    "source_sha256": "6b36d78b63d653e7ea8067070ea47850680b227874adef4ab1dc8898a9510f22",
+    "source_duration": 28.198333,
+    "source_recording": {
+      "name": "01-review",
+      "start": 1792329765.8987489,
+      "end": 1792329805.6065311,
+      "returncode": 0
+    },
+    "source_markers": [
+      {
+        "clip": "01-review",
+        "label": "feed",
+        "time": 1792329772.5796208
+      },
+      {
+        "label": "keep",
+        "time": 1792329779.3966231,
+        "clip": "01-review"
+      },
+      {
+        "clip": "01-review",
+        "label": "trash",
+        "time": 1792329785.9102402
+      },
+      {
+        "clip": "01-review",
+        "label": "later",
+        "time": 1792329793.038025
+      },
+      {
+        "time": 1792329801.553873,
+        "clip": "01-review",
+        "label": "back"
+      }
+    ],
+    "editing": {
+      "source_start": 0,
+      "source_end": 28.198333,
+      "playback_speed": 1.1749305416666669,
+      "final_frame_hold_seconds": 3,
+      "description": "Complete actual recording, longer demos accelerated to 24 seconds; genuine final frame held for 3 seconds"
+    },
+    "status": "PASS",
+    "sha256": "a61562b412fe8f4b5cc48247aefdf123a8a59ae0543634764cd48f599364d547"
+  },
+  {
+    "file": "02-photo-games.mp4",
+    "locale": "zh-Hans",
+    "duration": 27.0,
+    "resolution": [
+      886,
+      1920
+    ],
+    "fps": 30,
+    "sha256": "94231f166561d4d4c8ee88655548c0224b767b9b19bc93674a4ddcff54d2579a",
+    "poster_file": "02-photo-games-poster.png",
+    "poster_sha256": "2416ee21dd463503b1f1f2859a9d361890252e7da745cfd67e08fbbe51611bf8",
+    "poster_time": 11,
+    "poster_timecode": "00:00:11:00",
+    "audio": "AAC stereo, silence",
+    "source": "Actual memory card taps and swipe-only SpriteKit gameplay on its real clock",
+    "sources": [
+      {
+        "file": "04-memory.mov",
+        "sha256": "ec0db6ceb455a0fa8220f04fb2d7ca554c028826a73fbc5ffba5a27f10b33ffe",
+        "duration": 19.431667,
+        "used_seconds": 8,
+        "playback_speed": 1,
+        "recording": {
+          "name": "04-memory",
+          "start": 1792330080.4308312,
+          "end": 1792330104.5502348,
+          "returncode": 0
+        }
+      },
+      {
+        "file": "05-snake.mov",
+        "sha256": "bd4c5c3a1bc37007524b9b17bbbffee18b965641b6ecee8ad10cdc9ffc3162cd",
+        "duration": 31.498333,
+        "used_seconds": 16,
+        "playback_speed": 1,
+        "recording": {
+          "name": "05-snake",
+          "start": 1792330158.019161,
+          "end": 1792330198.046803,
+          "returncode": 0
+        }
+      }
+    ],
+    "editing": "8s Memory + 16s Snake at 1x; genuine final frame held for 3s",
+    "status": "PASS"
+  },
+  {
+    "file": "03-studio.mp4",
+    "locale": "zh-Hans",
+    "duration": 27.0,
+    "resolution": [
+      886,
+      1920
+    ],
+    "fps": 30,
+    "poster_file": "03-studio-poster.png",
+    "poster_sha256": "60ff6c036e228ad3578714ab17b4a9dfbedd927217a5435622624e393565d99b",
+    "poster_time": 1,
+    "poster_timecode": "00:00:01:00",
+    "audio": "AAC stereo, silence",
+    "source": "Actual simulator screen recording; no generated UI",
+    "source_file": "02-studio.mov",
+    "source_sha256": "2359ada55ed3aa2a1f29b890d5e28925becf83b68c43e9e18fedddc8322031a7",
+    "source_duration": 79.608333,
+    "source_recording": {
+      "name": "02-studio",
+      "start": 1792329823.074731,
+      "end": 1792329914.920491,
+      "returncode": 0
+    },
+    "source_markers": [
+      {
+        "clip": "02-studio",
+        "label": "editor",
+        "time": 1792329830.627688
+      },
+      {
+        "clip": "02-studio",
+        "label": "adjust",
+        "time": 1792329852.8416781
+      },
+      {
+        "time": 1792329873.428694,
+        "label": "filter",
+        "clip": "02-studio"
+      },
+      {
+        "time": 1792329897.6139588,
+        "label": "markup",
+        "clip": "02-studio"
+      },
+      {
+        "clip": "02-studio",
+        "time": 1792329910.809966,
+        "label": "frame"
+      }
+    ],
+    "editing": {
+      "source_start": 0,
+      "source_end": 79.608333,
+      "playback_speed": 3.3170138750000002,
+      "final_frame_hold_seconds": 3,
+      "description": "Complete actual recording, longer demos accelerated to 24 seconds; genuine final frame held for 3 seconds"
+    },
+    "status": "PASS",
+    "sha256": "b20c42a12e90c895d611cad5eb67af19462acc65404455279e42ad27917aedef"
+  }
+]

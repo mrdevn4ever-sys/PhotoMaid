@@ -18,10 +18,10 @@ Die Tabelle zeigt ausschließlich tatsächlich vorhandene Dateien und Audit-Erge
 | [Polnisch](locales/pl/README.md) | `pl` | 10/10 · PASS | 10/10 · PASS | 3/3 + 1 Alternative |
 | [Portugiesisch (Portugal)](locales/pt-PT/README.md) | `pt-PT` | 10/10 · PASS | 10/10 · PASS | 3/3 + 1 Alternative |
 | [Rumänisch](locales/ro/README.md) | `ro` | 10/10 · PASS | 10/10 · PASS | 3/3 + 1 Alternative |
-| [Russisch](locales/ru/README.md) | `ru` | 10/10 · PASS | 0/10 · ausstehend | 3/3 + 1 Alternative |
-| [Türkisch](locales/tr/README.md) | `tr` | 10/10 · PASS | 0/10 · ausstehend | 3/3 + 1 Alternative |
-| [Ukrainisch](locales/uk/README.md) | `uk` | 0/10 · ausstehend | 0/10 · ausstehend | 0/3 + 0 Alternative |
-| [Chinesisch (vereinfacht)](locales/zh-Hans/README.md) | `zh-Hans` | 0/10 · ausstehend | 0/10 · ausstehend | 0/3 + 0 Alternative |
+| [Russisch](locales/ru/README.md) | `ru` | 10/10 · PASS | 10/10 · PASS | 3/3 + 1 Alternative |
+| [Türkisch](locales/tr/README.md) | `tr` | 10/10 · PASS | 10/10 · PASS | 3/3 + 1 Alternative |
+| [Ukrainisch](locales/uk/README.md) | `uk` | 10/10 · PASS | 10/10 · PASS | 3/3 + 1 Alternative |
+| [Chinesisch (vereinfacht)](locales/zh-Hans/README.md) | `zh-Hans` | 10/10 · PASS | 0/10 · ausstehend | 3/3 + 1 Alternative |
 
 [Interaktive Bild-/Videoübersicht](index.html) · [Prüfergebnisse](audit.json) · [Duo-Status](DUO_STATUS.json) · [Bisheriges vollständiges Seitenarchiv](../INDEX.md).
 
