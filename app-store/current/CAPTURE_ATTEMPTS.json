@@ -93,7 +93,10 @@
   {
     "run_id": 39126669768,
     "source_commit": "208f4d036685f4b2096acd9d161b0d077b0f8b16",
-    "status": "QUEUED",
-    "scope": "First genuine Duo native PhotoMaid SDK27.1 build and inner-display app capture; en screenshot pilot only"
+    "status": "FAIL: SIMULATOR PREPARATION",
+    "scope": "First genuine Duo native PhotoMaid SDK27.1 build and inner-display app capture; en screenshot pilot only",
+    "native_build": "PASS",
+    "native_capture_tests": "NOT RUN",
+    "reason": "Genuine Duo booted, but open -a Simulator failed because application name was not registered. Changed to absolute Simulator.app path from selected Xcode."
   }
 ]
