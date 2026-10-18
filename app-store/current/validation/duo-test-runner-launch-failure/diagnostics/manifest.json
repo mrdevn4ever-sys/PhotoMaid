@@ -1,0 +1,15 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "85B14876-B5A3-4707-8A97-C2856867B4F4",
+        "deviceName" : "PhotoMaid Store Current",
+        "exportedFileName" : "FB0382C0-C2E4-401B-B263-A6E7ECF58EEF.txt",
+        "isAssociatedWithFailure" : true,
+        "suggestedHumanReadableName" : "Complete Issue Description.txt"
+      }
+    ],
+    "testIdentifier" : "PhotoMaidUITests-Runner encountered an error"
+  }
+]

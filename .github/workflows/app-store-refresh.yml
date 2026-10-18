@@ -150,14 +150,12 @@ jobs:
           xcrun simctl boot "$udid"
           xcrun simctl bootstatus "$udid" -b
           if [ "$STORE_DEVICE" = iphone-duo ]; then
-            echo "Open the matching Xcode device UI and configure the genuine inner display"
+            echo "Open the matching Xcode device UI; preserve native display power defaults"
             python3 scripts/store/open_capture_device.py "$udid"
-            xcrun simctl io "$udid" screenConfig --display=primary power off
-            xcrun simctl io "$udid" screenConfig --display=primary-1 power on
             xcrun simctl io "$udid" enumerate > "$RUNNER_TEMP/duo-screens.txt"
             python3 - "$RUNNER_TEMP/device.json" <<'PY'
           import json,sys
-          p=sys.argv[1];d=json.load(open(p));d.update(capture_display='primary-1',display_role='inner')
+          p=sys.argv[1];d=json.load(open(p));d.update(capture_display='primary-1',display_role='inner',display_power_policy='Unmodified native defaults; no display power override or geometry change')
           with open(p,'w')as f:json.dump(d,f,indent=2)
           PY
           fi
@@ -184,19 +182,6 @@ jobs:
           cp "$RUNNER_TEMP/capture-xcode.txt" "$RUNNER_TEMP/store-capture/xcode.txt"
           xcrun simctl install "$UDID" "$RUNNER_TEMP/store-build/Build/Products/Debug-iphonesimulator/PhotoMaid.app"
           xcrun simctl privacy "$UDID" grant photos com.mrdevn4ever.photomaid
-      - name: Öffentliche Apple-Hinweise aus laufendem Xcode exportieren
-        if: matrix.device == 'iphone-duo'
-        continue-on-error: true
-        timeout-minutes: 2
-        run: |
-          python3 - <<'PY'
-          import os,subprocess
-          from pathlib import Path
-          output=Path(os.environ['RUNNER_TEMP'])/'store-capture'
-          with (output/'duo-skill-export.log').open('w')as log:
-              subprocess.run(['open','-a','/Applications/Xcode_27.1.app','PhotoMaid.xcodeproj'],check=True,timeout=20,stdout=log,stderr=subprocess.STDOUT)
-              subprocess.run(['xcrun','agent','skills','export','--output-dir',str(output/'apple-skills')],check=True,timeout=60,stdout=log,stderr=subprocess.STDOUT)
-          PY
       - name: Aktuelle Oberfläche und wirkliche Spielabläufe aufnehmen
         env:
           UDID: ${{ steps.sim.outputs.udid }}

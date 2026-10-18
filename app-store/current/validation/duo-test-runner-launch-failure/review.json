@@ -1,0 +1,41 @@
+{
+  "status": "FAIL",
+  "run_id": 39134787534,
+  "source_commit": "023837c73cbd5216af558500e74f64412df7b8fd",
+  "job_id": 117697612721,
+  "native_build": "PASS",
+  "native_device_preparation": "PASS",
+  "native_app_install": "PASS",
+  "actual_app_ui_cases_executed": 0,
+  "native_summary": {
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0
+  },
+  "failure_scope": "XCTest runner startup error before AppStoreCaptureTests could execute. Not an observed PhotoMaid game failure.",
+  "actual_error": "NSPOSIXErrorDomain Code64 Host is down. Xcode says system shell probably crashed. No independent SpringBoard crash report was exported, so crash is not confirmed.",
+  "diagnostic_collection_timeout_seconds": 600,
+  "skill_export": "Optional static export timed out after60s; no skill content exported/read/applied.",
+  "source_artifact_id": 12139184909,
+  "archive_bytes": 9418,
+  "archive_sha256": "0498b925b7d4bcd3fa109f4b373b9facefb4fee96aa2acf4ad7d46d22b90eceb",
+  "github_archive_digest_verification": "PASS",
+  "source_files": [
+    "store-capture/device.json",
+    "store-capture/diagnostics/FB0382C0-C2E4-401B-B263-A6E7ECF58EEF.txt",
+    "store-capture/diagnostics/manifest.json",
+    "store-capture/app.log",
+    "store-capture/duo-skill-export.log",
+    "store-capture/recorder.log",
+    "store-capture/summary.json",
+    "store-capture/tests.json",
+    "store-capture/tests.log",
+    "store-capture/xcode.txt",
+    "duo-screens.txt",
+    "device.json"
+  ],
+  "decoded_log_sha256": "4baea6004dfe1912564aa1745291db9edbb8716b4e9f53e2a5f453ef4cc39a16",
+  "log_hash_scope": "MCP-decoded job log normalized as local UTF-8, not original GitHub archive.",
+  "selected_duo_store_images": 0,
+  "next_probe": "Preserve default native display power; remove optional background Xcode/agent export. Same native summary, genuine-device, exact inner-size, real55-photo and nonblank acceptance checks. Whether display-power override contributed is not established."
+}

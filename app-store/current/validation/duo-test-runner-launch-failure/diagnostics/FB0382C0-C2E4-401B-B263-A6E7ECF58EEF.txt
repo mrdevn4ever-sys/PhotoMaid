@@ -1,0 +1,1 @@
+Failed to install or launch the test runner. (Underlying Error: Simulator device failed to launch app.photomaid.PhotoMaidUITests.xctrunner. The system shell probably crashed. (Underlying Error: The request to terminate "app.photomaid.PhotoMaidUITests.xctrunner" failed. The system shell probably crashed.))
