@@ -98,5 +98,11 @@
     "native_build": "PASS",
     "native_capture_tests": "NOT RUN",
     "reason": "Genuine Duo booted, but open -a Simulator failed because application name was not registered. Changed to absolute Simulator.app path from selected Xcode."
+  },
+  {
+    "run_id": 39128651889,
+    "source_commit": "21dc7d425c7ab2703960c6942760e171b21c6e9f",
+    "status": "QUEUED",
+    "scope": "Genuine Duo app retry with selected Xcode absolute Simulator.app path; en inner-display screenshots only"
   }
 ]
