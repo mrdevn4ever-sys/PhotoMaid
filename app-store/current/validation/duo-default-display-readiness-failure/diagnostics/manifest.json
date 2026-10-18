@@ -1,0 +1,62 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "000155D8-C564-44C3-95A0-2396A6C75DD3",
+        "deviceName" : "PhotoMaid Store Current",
+        "exportedFileName" : "ADF117CD-8191-4E56-B4C7-C65F2C9B626D",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-18 at 03.04.46 PM",
+        "timestamp" : 1792335886.407
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "000155D8-C564-44C3-95A0-2396A6C75DD3",
+        "deviceName" : "PhotoMaid Store Current",
+        "exportedFileName" : "9078925B-31D2-4D03-93D6-B0A457563FA3",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-18 at 03.04.43 PM",
+        "timestamp" : 1792335883.839
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "000155D8-C564-44C3-95A0-2396A6C75DD3",
+        "deviceName" : "PhotoMaid Store Current",
+        "exportedFileName" : "51735637-7407-4177-A644-9DCB4AD1F54E",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-18 at 03.04.41 PM",
+        "timestamp" : 1792335881.237
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "000155D8-C564-44C3-95A0-2396A6C75DD3",
+        "deviceName" : "PhotoMaid Store Current",
+        "exportedFileName" : "AA7ABD74-A8CA-4A88-B064-F5DC0410F3B1",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-18 at 03.04.38 PM",
+        "timestamp" : 1792335878.946
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "000155D8-C564-44C3-95A0-2396A6C75DD3",
+        "deviceName" : "PhotoMaid Store Current",
+        "exportedFileName" : "18F07DB5-AC74-44A1-ADDC-2A78C7E6692C",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Synthesized Event 2026-10-18 at 03.04.36 PM",
+        "timestamp" : 1792335876.224
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "000155D8-C564-44C3-95A0-2396A6C75DD3",
+        "deviceName" : "PhotoMaid Store Current",
+        "exportedFileName" : "542172B3-1D00-4711-8840-218A29DF1299.mp4",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Screen Recording 2026-10-18 at 03.03.58 PM.mp4",
+        "timestamp" : 1792335838.956
+      }
+    ],
+    "testIdentifier" : "AppStoreCaptureTests/test06CurrentStoreScreenshots()",
+    "testIdentifierURL" : "test://com.apple.xcode/PhotoMaid/PhotoMaidUITests/AppStoreCaptureTests/test06CurrentStoreScreenshots"
+  }
+]

@@ -155,7 +155,11 @@ final class AppStoreCaptureTests: XCTestCase {
         let deadline = Date().addingTimeInterval(45)
         repeat {
             resolvePrivacyPrompts(in: app, prefix:"store-photo-access", photos:true)
-            if app.tabBars.firstMatch.exists { return }
+            // The production TabView is sidebar-adaptable. A bottom tab bar is
+            // not a portable readiness signal on the genuine Duo inner display.
+            // Require actual Today content instead; the following capture still
+            // checks its real55-photo count and independent PhotoKit inventory.
+            if e("today.quick.photos").exists { return }
             pause(0.5)
         } while Date() < deadline
         XCTFail("Photo access must finish before capture")

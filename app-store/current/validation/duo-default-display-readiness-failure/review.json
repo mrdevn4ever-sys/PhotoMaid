@@ -1,0 +1,39 @@
+{
+  "status": "FAIL",
+  "run_id": 39137466424,
+  "source_commit": "73ba4d78911fb399aa2733a4fd8249a40a476f84",
+  "job_id": 117705470686,
+  "native_build": "PASS",
+  "native_preparation": "PASS",
+  "app_install": "PASS",
+  "native_summary": {
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0
+  },
+  "actual_error": "AppStoreCaptureTests.swift161: Photo access must finish before capture",
+  "actual_ui_case_duration_seconds": 99.723,
+  "diagnostic_collection_timeout_seconds": 600,
+  "source_artifact_id": 12141525562,
+  "archive_bytes": 15693907,
+  "archive_sha256": "26371b2ac446ce1ffa2b78e735624b367bea2efa3c575437330e7ab9a222b17b",
+  "github_archive_digest_verification": "PASS",
+  "decoded_log_sha256": "3ea7a76bc5ff469522d2e8e54bbdf23c151536020e649635b87eabed908822bf",
+  "log_hash_scope": "MCP-decoded job log normalized as local UTF-8, not raw log ZIP.",
+  "diagnostic_video": {
+    "source_file": "store-capture/diagnostics/542172B3-1D00-4711-8840-218A29DF1299.mp4",
+    "duration_seconds": 97.123333,
+    "pixel_size": [
+      1398,
+      2034
+    ],
+    "visual_review": "Opened unchanged-size frames at5,35,65,85 and96.123333seconds. Outer-display video shows Home, onboarding then black frames; not a usable inner-display Store capture."
+  },
+  "excluded_diagnostic_images": [
+    "diagnostic-onboarding.png",
+    "diagnostic-final-black.png"
+  ],
+  "finding": "The readiness helper tests only app.tabBars.firstMatch.exists, while production RootView uses .tabViewStyle(.sidebarAdaptable). This is a concrete nonportable test assumption. The existing evidence alone does not establish the cause of black diagnostic frames or a PhotoMaid production/game defect.",
+  "next_change": "Wait for the existing actual Today Photos control instead of requiring a bottom tab bar. Retain independent real55-photo inventory/count, exact native inner dimensions, no-skips/native summary and nonblank visual checks. No application behavior changed.",
+  "approved_duo_store_images": 0
+}
