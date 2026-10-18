@@ -1,0 +1,65 @@
+mcpbridge - STDIO Bridge for Xcode MCP Tools
+
+USAGE:
+    xcrun mcpbridge
+    xcrun mcpbridge run-agent <agent-name> [agent-args...]
+    xcrun mcpbridge run-agent skills export [--output-dir <path>] [--replace-existing]
+
+SUBCOMMANDS:
+    run-agent       Launch a coding agent with Xcode-provided configuration.
+                    Connects to a running Xcode to fetch the agent's binary
+                    path, auth tokens, environment, and settings, then execs
+                    the agent with full terminal access.
+
+                    <agent-name>    The agent to launch (e.g. "claude")
+                    --dry-run       Print the resolved command without executing
+                    --no-xcode-tools  Don't include Xcode MCP tools in agent config
+
+    run-agent skills export
+                    Export every globally available SKILL.md bundle into a
+                    directory (defaults to ./xcode-skills). Reuses the same
+                    Xcode connection logic as `run-agent`.
+
+                    --output-dir <path>   Where to write the bundles
+                    --replace-existing    Overwrite existing skill directories
+
+DESCRIPTION:
+    Without a subcommand, acts as a STDIO bridge between MCP (Model Context
+    Protocol) clients and Xcode's MCP tool service. Reads JSON-RPC 2.0
+    messages from stdin and forwards responses to stdout.
+
+ENVIRONMENT VARIABLES:
+    MCP_XCODE_PID         Optional. The process ID of the Xcode instance to connect to.
+
+                          If not set, auto-detection uses the following fallback logic:
+                          1. If exactly one Xcode process is running, use that
+                          2. If multiple Xcode processes are running, use xcode-select
+                             to determine which Xcode is selected and connect to that
+                          3. If no Xcode processes found, exit with error
+
+    MCP_XCODE_SESSION_ID  Optional. A UUID identifying an Xcode tool session.
+
+EXAMPLES:
+    # Run as MCP bridge with auto-detected Xcode instance
+    xcrun mcpbridge
+
+    # Run with specific Xcode PID
+    MCP_XCODE_PID=12345 xcrun mcpbridge
+
+    # Launch Claude with Xcode config
+    xcrun mcpbridge run-agent claude
+
+    # Dry-run to see what would be executed
+    xcrun mcpbridge run-agent --dry-run claude
+
+    # Launch Claude with additional user args
+    xcrun mcpbridge run-agent claude --model opus -p "fix the bug"
+
+    # Export every available skill into ./xcode-skills
+    xcrun agent skills export
+
+    # Export to a chosen directory and overwrite anything already there
+    xcrun agent skills export --replace-existing ~/my-skills
+
+OPTIONS:
+    -h, -help, --help     Show this help message

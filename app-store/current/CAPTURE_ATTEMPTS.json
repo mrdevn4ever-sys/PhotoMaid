@@ -1,0 +1,10 @@
+[
+  {
+    "run_id": 39115663222,
+    "source_commit": "3536380d1313afe96c6c43870d28e58f2b9fd4d1",
+    "native_build": "PASS",
+    "native_capture_tests": "NOT RUN",
+    "simulator_preparation": "FAIL",
+    "reason": "Disposable simulator name did not match the existing PhotoMaid Store prefix guard. Renamed the new simulator; guard unchanged."
+  }
+]

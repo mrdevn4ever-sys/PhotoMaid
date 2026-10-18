@@ -31,7 +31,7 @@ def main():
         name = 'iPhone 17 Pro Max' if a.device == 'iphone-large' else 'iPhone 17 Pro'
         device = next(t for t in types if t['name'] == name)
         runtime = next(r for r in runtimes if r['isAvailable'] and r['name'] == 'iOS 26.2')
-    udid = run('xcrun', 'simctl', 'create', 'PhotoMaid Current Store', device['identifier'], runtime['identifier'])
+    udid = run('xcrun', 'simctl', 'create', 'PhotoMaid Store Current', device['identifier'], runtime['identifier'])
     report = {'device_class': a.device, 'name': device['name'], 'device_type': device['identifier'],
               'runtime': runtime['identifier'], 'os_version': runtime['version'], 'sdk': sdk,
               'udid': udid, 'actual_duo': 'iPhone Duo' in device['name']}

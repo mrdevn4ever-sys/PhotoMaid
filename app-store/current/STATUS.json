@@ -1,0 +1,31 @@
+{
+  "requested_locales": [
+    "ar",
+    "de",
+    "en",
+    "es",
+    "fr",
+    "it",
+    "ja",
+    "ko",
+    "nl",
+    "pl",
+    "pt-PT",
+    "ro",
+    "ru",
+    "tr",
+    "uk",
+    "zh-Hans"
+  ],
+  "requested_iphone_formats": [
+    "iphone-large",
+    "iphone-medium"
+  ],
+  "capture_source_commit": "3536380d1313afe96c6c43870d28e58f2b9fd4d1",
+  "pilot_run": 39115663222,
+  "iphone_assets": "IN PROGRESS",
+  "duo_assets": "BLOCKED",
+  "app_store_connect_assets_upload": "NOT RUN",
+  "app_store_release": "NOT RUN",
+  "native_test_policy": "Only real passed capture results with no failed or skipped tests; screenshots and actual video frames reviewed before PASS."
+}
