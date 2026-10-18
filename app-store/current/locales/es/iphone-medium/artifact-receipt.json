@@ -4,5 +4,7 @@
   "size_in_bytes": 72255711,
   "artifact_id": 12133979568,
   "archive_sha256": "9112be645c01bb07367e593dcbbd75706c3111b46a6f160276322eb4f62cd8ec",
-  "downloaded_bytes": 72255711
+  "downloaded_bytes": 72255711,
+  "github_archive_digest": "sha256:9112be645c01bb07367e593dcbbd75706c3111b46a6f160276322eb4f62cd8ec",
+  "github_archive_digest_verification": "PASS"
 }

@@ -29,6 +29,7 @@ struct QuickAccessSection: View {
                                value: QuickAccessUI.statusText(st), showsChevron: st?.members != 0)
                     }
                     .buttonStyle(.plain)
+                    .accessibilityIdentifier("today.quick.\(q.key)")
                 }
                 if app.quickAccess.count < QuickAccess.maxItems {
                     if !app.quickAccess.isEmpty { SwiftUI.Divider().padding(.leading, 52) }
@@ -45,8 +46,12 @@ struct QuickAccessSection: View {
     }
 
     private func recount() async {
-        status = await QuickAccessUI.status(for: app.quickAccess, media: app.cleanupMedia,
-                                             pending: Set(app.pending.map(\.localIdentifier)), now: app.now)
+        let result = await QuickAccessUI.status(for: app.quickAccess, media: app.cleanupMedia,
+                                                pending: Set(app.pending.map(\.localIdentifier)), now: app.now)
+        // A superseded .task can finish its detached query after the new library
+        // snapshot. Its old empty result must not replace the current counts.
+        guard !Task.isCancelled else { return }
+        status = result
     }
 }
 

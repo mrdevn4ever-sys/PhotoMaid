@@ -11,6 +11,21 @@ def main():
     mapping = json.loads(Path('app-store/localizations.json').read_text())
     audit = json.loads((root / 'audit.json').read_text()) if (root / 'audit.json').exists() else []
     statuses = {(r['locale'], r['device_class']): r['status'] for r in audit}
+    status_file = root / 'STATUS.json'
+    if status_file.exists():
+        status = json.loads(status_file.read_text())
+        passed = [row for row in audit if row['status'] == 'PASS'
+                  and row['locale'] in mapping and row['device_class'] in ['iphone-large', 'iphone-medium']]
+        expected = {(code, device) for code in mapping for device in ['iphone-large', 'iphone-medium']}
+        status['iphone_assets'] = 'PASS' if {(row['locale'], row['device_class']) for row in passed} == expected else 'IN PROGRESS'
+        status['approved_profiles'] = [{'locale': row['locale'], 'device_class': row['device_class'],
+                                       'status': 'PASS', 'native_passed_tests': row['native_test_count']}
+                                      for row in passed]
+        status['actual_selected_screenshots'] = sum(row['selected_screenshots'] for row in passed)
+        status['actual_selected_videos'] = sum(sum(video['file'].startswith('previews/') for video in row.get('videos', [])) for row in passed)
+        status['actual_vault_alternative_videos'] = sum(sum(video['file'].startswith('alternatives/') for video in row.get('videos', [])) for row in passed)
+        status['actual_native_passed_capture_cases'] = sum(row['native_test_count'] for row in passed)
+        status_file.write_text(json.dumps(status, indent=2) + '\n')
     rows, sections = [], []
     for code, info in mapping.items():
         devices = []

@@ -128,6 +128,7 @@ final class AppStoreCaptureTests: XCTestCase {
     private func capturePage(_ page: String, title: String? = nil, bottom: Bool = false) {
         launch(page)
         if let title { XCTAssertTrue(app.navigationBars[t(title)].waitForExistence(timeout: 15), page) }
+        if page == "today" { awaitCurrentTodayCounts() }
         if page == "search" {
             let deadline = Date().addingTimeInterval(45)
             while app.activityIndicators.firstMatch.exists && Date() < deadline { pause(0.2) }
@@ -135,6 +136,20 @@ final class AppStoreCaptureTests: XCTestCase {
         }
         snap(page)
         if bottom { app.swipeUp(); app.swipeUp(); snap(page + "-bottom") }
+    }
+    private func awaitCurrentTodayCounts() {
+        let photos = e("today.quick.photos")
+        XCTAssertTrue(photos.waitForExistence(timeout: 30))
+        let deadline = Date().addingTimeInterval(45)
+        var reported = ""
+        repeat {
+            reported = photos.label.compactMap(\.wholeNumberValue).map(String.init).joined()
+            // The actual, independently inventoried Store fixture has 55 photos.
+            // Wait for the visible count; never inject a number into the app.
+            if reported == "55" { return }
+            pause(0.2)
+        } while Date() < deadline
+        XCTFail("Today must show the real loaded photo count before capture; received: \(photos.label)")
     }
     private func waitForPhotoAccess() {
         let deadline = Date().addingTimeInterval(45)

@@ -1,0 +1,54 @@
+{
+  "status": "REJECTED",
+  "reason": "Today hero shows 55 pending media but the Photos quick access says Vac\u00edo. The frame was captured before consistent actual counts; it must not be used in the upload selection.",
+  "native_capture_tests": {
+    "devicesAndConfigurations": [
+      {
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "CDA7D39B-FA44-4051-B6E0-05D5CB5F6C38",
+          "deviceName": "PhotoMaid Store Current",
+          "modelName": "iPhone 17 Pro Max",
+          "osBuildNumber": "23C54",
+          "osVersion": "26.2",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 5,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ],
+    "environmentDescription": "PhotoMaid \u00b7 Built with macOS 26.6.2",
+    "expectedFailures": 0,
+    "failedTests": 0,
+    "finishTime": 1792322717.033,
+    "passedTests": 5,
+    "result": "Passed",
+    "skippedTests": 0,
+    "startTime": 1792321991.288,
+    "statistics": [],
+    "testFailures": [],
+    "title": "Test - PhotoMaid",
+    "topInsights": [],
+    "totalTestCount": 5
+  },
+  "artifact_receipt": {
+    "name": "store-current-es-iphone-large-assets",
+    "run_id": 39120101094,
+    "size_in_bytes": 205620448,
+    "artifact_id": 12135515094,
+    "archive_sha256": "a944af0918323c65ec65bfe642d3b83558eca822793bc707f9680f7c0c0cceaa",
+    "github_archive_digest": "sha256:a944af0918323c65ec65bfe642d3b83558eca822793bc707f9680f7c0c0cceaa",
+    "github_archive_digest_verification": "PASS",
+    "downloaded_bytes": 205620448
+  },
+  "source_commit": "bbf8999a9e0f4da13d02f598e7402a4bb2a1bf1d",
+  "source_run": "39120101094",
+  "screenshot_sha256": "b053ea55e57aebd1fd8bb04b381687f788177a9c25f4ef2ec3dbd8fea663cb11",
+  "corrective_action": "Cancel guard for superseded quick-access queries; native capture now waits for visible 55-photo quick-access count; recapture required."
+}
