@@ -14,10 +14,10 @@ Die Tabelle zeigt ausschließlich tatsächlich vorhandene Dateien und Audit-Erge
 | [Italienisch](locales/it/README.md) | `it` | 10/10 · PASS | 10/10 · PASS | 3/3 + 1 Alternative |
 | [Japanisch](locales/ja/README.md) | `ja` | 0/10 · ausstehend | 0/10 · ausstehend | 0/3 + 0 Alternative |
 | [Koreanisch](locales/ko/README.md) | `ko` | 0/10 · ausstehend | 0/10 · ausstehend | 0/3 + 0 Alternative |
-| [Niederländisch](locales/nl/README.md) | `nl-NL` | 0/10 · ausstehend | 0/10 · ausstehend | 0/3 + 0 Alternative |
+| [Niederländisch](locales/nl/README.md) | `nl-NL` | 10/10 · ausstehend | 0/10 · ausstehend | 3/3 + 1 Alternative |
 | [Polnisch](locales/pl/README.md) | `pl` | 0/10 · ausstehend | 0/10 · ausstehend | 0/3 + 0 Alternative |
-| [Portugiesisch (Portugal)](locales/pt-PT/README.md) | `pt-PT` | 0/10 · ausstehend | 0/10 · ausstehend | 0/3 + 0 Alternative |
-| [Rumänisch](locales/ro/README.md) | `ro` | 0/10 · ausstehend | 0/10 · ausstehend | 0/3 + 0 Alternative |
+| [Portugiesisch (Portugal)](locales/pt-PT/README.md) | `pt-PT` | 10/10 · PASS | 0/10 · ausstehend | 3/3 + 1 Alternative |
+| [Rumänisch](locales/ro/README.md) | `ro` | 10/10 · PASS | 0/10 · ausstehend | 3/3 + 1 Alternative |
 | [Russisch](locales/ru/README.md) | `ru` | 0/10 · ausstehend | 0/10 · ausstehend | 0/3 + 0 Alternative |
 | [Türkisch](locales/tr/README.md) | `tr` | 0/10 · ausstehend | 0/10 · ausstehend | 0/3 + 0 Alternative |
 | [Ukrainisch](locales/uk/README.md) | `uk` | 0/10 · ausstehend | 0/10 · ausstehend | 0/3 + 0 Alternative |

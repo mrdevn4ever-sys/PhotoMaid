@@ -1,5 +1,5 @@
 {
-  "status": "NATIVE APP PILOT PREPARATION",
+  "status": "NATIVE APP BUILD PASS; INNER-DISPLAY CAPTURE IN PROGRESS",
   "xcode": "Xcode27.1 / 27A9275",
   "sdk": "27.1",
   "runtime": "iOS27.1 / 24A94425",
@@ -45,5 +45,8 @@
   ],
   "native_app_pilot_run_id": 39126669768,
   "native_app_pilot_source_commit": "208f4d036685f4b2096acd9d161b0d077b0f8b16",
-  "native_app_pilot_status": "QUEUED"
+  "native_app_pilot_status": "IN PROGRESS",
+  "native_app_build_job_id": 117673139925,
+  "native_app_build": "PASS",
+  "native_app_capture_job_id": 117677083056
 }

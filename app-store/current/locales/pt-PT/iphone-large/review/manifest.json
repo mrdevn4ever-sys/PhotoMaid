@@ -1,0 +1,378 @@
+[
+  {
+    "sheet": "screenshots-00.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/02-today-and-review/feed-later.png",
+        "sha256": "1e3ad62fec68d8d83b12ef1a798d9fbcb3733539d1ffcde4b49dc6e2da52cb1a"
+      },
+      {
+        "file": "all-pages/02-today-and-review/feed.png",
+        "sha256": "04ab6326f285d960077e7c8aa1e3c3d1b98ed7d899744dd944ea5bba0e19fea3"
+      },
+      {
+        "file": "all-pages/02-today-and-review/today.png",
+        "sha256": "8333c140208c2640a812347bed7a4800aee5cc25463cc4a230a760dfad912d95"
+      },
+      {
+        "file": "all-pages/03-photos/library.png",
+        "sha256": "f0fcf85093ac621c426c2e2a0fe4cd2879e0ca98ef5d8de89d1e1185211f11ae"
+      },
+      {
+        "file": "all-pages/04-cleanup/cleanup.png",
+        "sha256": "142ce221cc3e80498521a1ee90d393df19f20e050ea16604d6e0c49854bdf807"
+      },
+      {
+        "file": "all-pages/05-studio/collage.png",
+        "sha256": "8832a947984ba4a4dc2f53550fe645da3146bf1721e9dee4c7684789559df549"
+      },
+      {
+        "file": "all-pages/05-studio/editor-filter.png",
+        "sha256": "25b1b53dbe32e954def96473d526908a026bf8fad5b64b07e31669a49a144d17"
+      },
+      {
+        "file": "all-pages/05-studio/editor-markup.png",
+        "sha256": "e7171fdaee834aa4f1448702521877f444eea069d46345ef467acb999ca45785"
+      },
+      {
+        "file": "all-pages/05-studio/movie.png",
+        "sha256": "4c48d77b2e00dbb607edf6378a587af913ef528ccb5b2adeb6dc61a31f568545"
+      },
+      {
+        "file": "all-pages/05-studio/preview-01-review-back.png",
+        "sha256": "8542cff39c06fc4eb32f30eb5a1a58daba059cc555d12c4fac14c1a0efcfcad9"
+      },
+      {
+        "file": "all-pages/05-studio/preview-01-review-feed.png",
+        "sha256": "631222ed470085d0f850b17a9592a7d52506ba4dda14bd37571ec39f9e78a065"
+      },
+      {
+        "file": "all-pages/05-studio/preview-01-review-keep.png",
+        "sha256": "c55c25b14a0878d36efb0416475b04fc1591f15ecea03a459af0d6de9542a53a"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos quick count55. Readable Portuguese controls and photos, full-screen swipe-only Snake, three genuinely matched Memory pairs. Video samples show real normal-clock wrap movement. No selected system banner/dialog."
+  },
+  {
+    "sheet": "screenshots-01.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/05-studio/preview-01-review-later.png",
+        "sha256": "a2c9c0711a445ea3934ba7aad35d7cbd4fb6d9e0acccbd2e5dc9dde47f1dcb22"
+      },
+      {
+        "file": "all-pages/05-studio/preview-01-review-trash.png",
+        "sha256": "8542cff39c06fc4eb32f30eb5a1a58daba059cc555d12c4fac14c1a0efcfcad9"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-adjust.png",
+        "sha256": "86abd74c0109a845bf20ea93a1c8b9423d870f2c1afa587108ad3f2e18b408b7"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-editor.png",
+        "sha256": "1c19b3cce5696f8ef71326e0a909fdd9432d8cc12bf9bdc830fdbf04c6d54800"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-filter.png",
+        "sha256": "ac9a9e53691c83aaeefec320754e40e4aa6bbb55053723666c30555e5af8f473"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-frame.png",
+        "sha256": "85756bb7f287cf755ff63252cc6f19e5d01b9907f2c5953f93f8e8e59b021b4b"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-markup.png",
+        "sha256": "01fb06ff80cf168e5aeefc5b8b3dc856e326423c9ceb2ce69ad836a36645960b"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-controls.png",
+        "sha256": "5b98bf609e59fdcef73189e6491f308e2047d53cc545dc95aad5ed711dbe9c7b"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-hidden-controls.png",
+        "sha256": "fea3acfaa1189bcd66e334165bdb20a6a68dc484e4d5e2a7ef99b60cfd103813"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-vault.png",
+        "sha256": "a01d828cc6cccedc03288931d0c05e111db34df1d7c67d58d4f4c082093d0ef3"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-viewer.png",
+        "sha256": "5b98bf609e59fdcef73189e6491f308e2047d53cc545dc95aad5ed711dbe9c7b"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-zoom.png",
+        "sha256": "7b1778a89406a81326b43b10f34451744839fc19a8617638a0c5336c86070cce"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos quick count55. Readable Portuguese controls and photos, full-screen swipe-only Snake, three genuinely matched Memory pairs. Video samples show real normal-clock wrap movement. No selected system banner/dialog."
+  },
+  {
+    "sheet": "screenshots-02.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/05-studio/preview-04-memory-memory-pairs.png",
+        "sha256": "fbfb4ee6b079b780e54a4f417dcc6cc86ece6d0730eac03786b2ed6233c02a8f"
+      },
+      {
+        "file": "all-pages/05-studio/preview-04-memory-memory-reveal.png",
+        "sha256": "a402362a5ed0d356a74d8916739079cce752e5486b84fdf58360dad08f332c5f"
+      },
+      {
+        "file": "all-pages/05-studio/preview-04-memory-memory-second.png",
+        "sha256": "2ca809ca6b80d54fb2998bf197e855966bab0dde8472476f6cd0d30d72b7a62f"
+      },
+      {
+        "file": "all-pages/05-studio/preview-05-snake-snake-down.png",
+        "sha256": "3df351971fe46a2fd329ff1c19ef2f97c68d8c2867bae154a62bbd1ec22cf510"
+      },
+      {
+        "file": "all-pages/05-studio/preview-05-snake-snake-left.png",
+        "sha256": "3ede0e8c4f68cf67de33a719978fdce39ff9ac9a437550cdf4d7466c78a002b2"
+      },
+      {
+        "file": "all-pages/05-studio/preview-05-snake-snake-right.png",
+        "sha256": "16b88fe978101e88496a7f105c75b083ae63dbad620f2e1068b445f48c8c9a42"
+      },
+      {
+        "file": "all-pages/05-studio/preview-05-snake-snake-up.png",
+        "sha256": "574aee25be1b3960e68b19832d7a6ce228c937f9e93b4e1c401034db0a46662c"
+      },
+      {
+        "file": "all-pages/05-studio/studio.png",
+        "sha256": "c0cf1f5d2b72f5e7be14a3e87c8f8b267a1fc91a71ca3f6576ee9dddc91ca3d7"
+      },
+      {
+        "file": "all-pages/06-vault/vault-files.png",
+        "sha256": "33836e39ddd6b57bb401c9a65ee207de9ab82cbe7c843ce15f5d4d7fe4db79fe"
+      },
+      {
+        "file": "all-pages/06-vault/vault-media-picker.png",
+        "sha256": "9103fd5c5f059d3b412dcae660622ae58cb73b1370ab657fca4ef3c33aa460da"
+      },
+      {
+        "file": "all-pages/06-vault/vault-media.png",
+        "sha256": "a01d828cc6cccedc03288931d0c05e111db34df1d7c67d58d4f4c082093d0ef3"
+      },
+      {
+        "file": "all-pages/06-vault/vault-notes.png",
+        "sha256": "9f8393bc1d1eb7c998b54e1acd46f77bfaaf6cbf12d012f8e6e038641e1140ff"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos quick count55. Readable Portuguese controls and photos, full-screen swipe-only Snake, three genuinely matched Memory pairs. Video samples show real normal-clock wrap movement. No selected system banner/dialog."
+  },
+  {
+    "sheet": "screenshots-03.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/06-vault/vault-setup-code-empty.png",
+        "sha256": "8230a3096e0f55ca4116c098f6a4133d785d272df98e45a8a1f919e1bef47578"
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-entry.png",
+        "sha256": "c83ac6484173abdc864eb7a3ec2d2dd089acc873e8be7146e47fa278a88a112f"
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-introduction.png",
+        "sha256": "ff958a8aa8ac3a7466fac5e7d0ee56215c327a2d9a1a6eece4cf123c6448d4d1"
+      },
+      {
+        "file": "all-pages/06-vault/vault-tools.png",
+        "sha256": "6fda5b99d47879202005bbfa4d2aa07c5ed219576a8155705ee14deb3855ba88"
+      },
+      {
+        "file": "all-pages/06-vault/vault-trash.png",
+        "sha256": "e325070fd84dca978326a7a1fd40ee8ee5f674e408fc5245e3c69f802cd225c3"
+      },
+      {
+        "file": "all-pages/06-vault/vault-viewer.png",
+        "sha256": "5b98bf609e59fdcef73189e6491f308e2047d53cc545dc95aad5ed711dbe9c7b"
+      },
+      {
+        "file": "all-pages/09-photo-games/games-selection.png",
+        "sha256": "3fcb317cf3638bc2a9fcc85bc43281b5d7c09e9a1658a97d176b095b1c869aea"
+      },
+      {
+        "file": "all-pages/09-photo-games/memory-play.png",
+        "sha256": "13ec21d5ad2440cbf3a3823521ea97be7568469075ec38671c30de24a7fa9ffa"
+      },
+      {
+        "file": "all-pages/09-photo-games/memory-setup.png",
+        "sha256": "114c98eb5327b74bdb592766456a86bcfd2c844d710b8761e26f1db0041c7706"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-pause.png",
+        "sha256": "1e9dae9f641bd786b0272fe7259bd8a8934ac07b9b4f54c200fb03967b71c62c"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-play.png",
+        "sha256": "c7690d558dd2fe9b9b0f036c7e1ef9547ba3729b35f8a0cf1d89925ab087ea73"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-ready.png",
+        "sha256": "d26dca5e07aa1e329943f3759446b89ed17b3baa8a174129cb1e18204f8c37e7"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos quick count55. Readable Portuguese controls and photos, full-screen swipe-only Snake, three genuinely matched Memory pairs. Video samples show real normal-clock wrap movement. No selected system banner/dialog."
+  },
+  {
+    "sheet": "screenshots-04.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/09-photo-games/snake-settings.png",
+        "sha256": "932bf59675ddf0e1135a880f74c59b24d0c3d9084b11132dba1e821d098c6e73"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-setup.png",
+        "sha256": "c55cd6572ce9290d0e3c41907460c346270092cb850434b969adfa1ea474b77e"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos quick count55. Readable Portuguese controls and photos, full-screen swipe-only Snake, three genuinely matched Memory pairs. Video samples show real normal-clock wrap movement. No selected system banner/dialog."
+  },
+  {
+    "sheet": "01-review-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/01-review.mp4",
+        "sha256": "f2cbb777d868ee4b491820693615105aff43d2bceb829d606e61793c653e0aed"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos quick count55. Readable Portuguese controls and photos, full-screen swipe-only Snake, three genuinely matched Memory pairs. Video samples show real normal-clock wrap movement. No selected system banner/dialog."
+  },
+  {
+    "sheet": "02-photo-games-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/02-photo-games.mp4",
+        "sha256": "e51201375be450ab1b257ba9e22d8dcd39732904e96b8e33158f62f20ef1c090"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos quick count55. Readable Portuguese controls and photos, full-screen swipe-only Snake, three genuinely matched Memory pairs. Video samples show real normal-clock wrap movement. No selected system banner/dialog."
+  },
+  {
+    "sheet": "03-studio-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/03-studio.mp4",
+        "sha256": "1271027c04d5eb9696ba32df3b458d89d742c596e0c544242984f5d75e2f6afc"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos quick count55. Readable Portuguese controls and photos, full-screen swipe-only Snake, three genuinely matched Memory pairs. Video samples show real normal-clock wrap movement. No selected system banner/dialog."
+  },
+  {
+    "sheet": "04-vault-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "alternatives/04-vault.mp4",
+        "sha256": "8764fb786a1117d63699f952863d951e54a40489e8056bcb9ab54ebb5be90165"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos quick count55. Readable Portuguese controls and photos, full-screen swipe-only Snake, three genuinely matched Memory pairs. Video samples show real normal-clock wrap movement. No selected system banner/dialog."
+  },
+  {
+    "sheet": "posters.jpg",
+    "kind": "posters",
+    "originals": [
+      {
+        "file": "previews/01-review-poster.png",
+        "sha256": "251123a8e7f4bd512769df5ae79456d11952858fc43ade2d1d5df4a3923fae2d"
+      },
+      {
+        "file": "previews/02-photo-games-poster.png",
+        "sha256": "0a171f98de21538853e594865e81c76fec1efefde25d4be5960645f34769ccc4"
+      },
+      {
+        "file": "previews/03-studio-poster.png",
+        "sha256": "27329b28cce5ab36e69899b7762d2d94af09124d43d8ae4f68b98165b163af31"
+      },
+      {
+        "file": "alternatives/04-vault-poster.png",
+        "sha256": "6b5cc3a5551a4eaf6dac605f2e741cff9770b2de8d78c9bee9601c5d1d96373b"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos quick count55. Readable Portuguese controls and photos, full-screen swipe-only Snake, three genuinely matched Memory pairs. Video samples show real normal-clock wrap movement. No selected system banner/dialog."
+  }
+]

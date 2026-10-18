@@ -355,5 +355,89 @@
     "native_test_count": 1,
     "source_commit": "6a86a77f590a07faf9225545dd0f1eb0b98f50bb",
     "capture_run": "39124085765"
+  },
+  {
+    "status": "PASS",
+    "locale": "pt-PT",
+    "device_class": "iphone-large",
+    "device": {
+      "device_class": "iphone-large",
+      "name": "iPhone 17 Pro Max",
+      "device_type": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro-Max",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+      "os_version": "26.2",
+      "sdk": "26.5",
+      "udid": "A523A4C8-14CC-46BA-927F-D45CD43C401A",
+      "actual_duo": false
+    },
+    "native_screenshots": 50,
+    "selected_screenshots": 10,
+    "videos": [
+      {
+        "file": "previews/01-review.mp4",
+        "sha256": "f2cbb777d868ee4b491820693615105aff43d2bceb829d606e61793c653e0aed",
+        "duration": 27.0
+      },
+      {
+        "file": "previews/02-photo-games.mp4",
+        "sha256": "e51201375be450ab1b257ba9e22d8dcd39732904e96b8e33158f62f20ef1c090",
+        "duration": 27.0
+      },
+      {
+        "file": "previews/03-studio.mp4",
+        "sha256": "1271027c04d5eb9696ba32df3b458d89d742c596e0c544242984f5d75e2f6afc",
+        "duration": 27.0
+      },
+      {
+        "file": "alternatives/04-vault.mp4",
+        "sha256": "8764fb786a1117d63699f952863d951e54a40489e8056bcb9ab54ebb5be90165",
+        "duration": 27.0
+      }
+    ],
+    "native_test_count": 5,
+    "source_commit": "cf9c42e71c3ad6162b86f1fcedfc749777999016",
+    "capture_run": "39125897166"
+  },
+  {
+    "status": "PASS",
+    "locale": "ro",
+    "device_class": "iphone-large",
+    "device": {
+      "device_class": "iphone-large",
+      "name": "iPhone 17 Pro Max",
+      "device_type": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro-Max",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+      "os_version": "26.2",
+      "sdk": "26.5",
+      "udid": "73DACA14-3157-45AD-A400-FDE8B37D3F22",
+      "actual_duo": false
+    },
+    "native_screenshots": 50,
+    "selected_screenshots": 10,
+    "videos": [
+      {
+        "file": "previews/01-review.mp4",
+        "sha256": "605d286df394f4631ae30468f197783cc8341f46fda6efdac4a52d6386d13e0c",
+        "duration": 27.0
+      },
+      {
+        "file": "previews/02-photo-games.mp4",
+        "sha256": "13c8405310bc5dbb1d03183e78621cdf103b6bf6452a7d31fc73d818bb19e47d",
+        "duration": 27.0
+      },
+      {
+        "file": "previews/03-studio.mp4",
+        "sha256": "926c82361ab6e758ccefa8f906fb15f0bc1f36c2e47f52c2f41016e292d33723",
+        "duration": 27.0
+      },
+      {
+        "file": "alternatives/04-vault.mp4",
+        "sha256": "26738546e4c02ffd32d09af8735210fe8fc874b5915f6b5e8d9832853718395d",
+        "duration": 27.0
+      }
+    ],
+    "native_test_count": 5,
+    "source_commit": "cf9c42e71c3ad6162b86f1fcedfc749777999016",
+    "capture_run": "39125897166"
   }
 ]

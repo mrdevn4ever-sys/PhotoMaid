@@ -1,0 +1,10 @@
+{
+  "name": "store-current-ro-iphone-large-assets",
+  "run_id": 39125897166,
+  "size_in_bytes": 201503323,
+  "artifact_id": 12136608007,
+  "archive_sha256": "b2e9f4f71dfe02bcc2f3ff9db961cc171a530a7e93bc109a1f7982898c8c0b8b",
+  "github_archive_digest": "sha256:b2e9f4f71dfe02bcc2f3ff9db961cc171a530a7e93bc109a1f7982898c8c0b8b",
+  "github_archive_digest_verification": "PASS",
+  "downloaded_bytes": 201503323
+}
