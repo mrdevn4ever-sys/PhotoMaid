@@ -1,0 +1,378 @@
+[
+  {
+    "sheet": "screenshots-00.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/02-today-and-review/feed-later.png",
+        "sha256": "d75a0c3e076710534f4d69b0087b92523a604056a8844aa8428bfc54db88fa7b"
+      },
+      {
+        "file": "all-pages/02-today-and-review/feed.png",
+        "sha256": "123ad5110cf8ab33193d520e64ecb2054955da09347bfd37f4fd1f0409e266ff"
+      },
+      {
+        "file": "all-pages/02-today-and-review/today.png",
+        "sha256": "c71e3bf1f63f64bee2e7be5be97004e8df67860ad29edf74b4656390dbc9ce44"
+      },
+      {
+        "file": "all-pages/03-photos/library.png",
+        "sha256": "413be294a3399a031ca7094ed8650e2c1df79badcb0ff6abbfb6c4879ee8174d"
+      },
+      {
+        "file": "all-pages/04-cleanup/cleanup.png",
+        "sha256": "aadf7a2e2de40e0608d2840ca8c1f0e7dfe8b3f6314231731edc25d83ca42643"
+      },
+      {
+        "file": "all-pages/05-studio/collage.png",
+        "sha256": "736220c872f72502c829cccb387e8d6f56640a32c3fc6338a11f337bb27eb0a9"
+      },
+      {
+        "file": "all-pages/05-studio/editor-filter.png",
+        "sha256": "d57ee70897bee723287b38ac3db09b42a584952f61ce328c5edcb3c7333eb1e0"
+      },
+      {
+        "file": "all-pages/05-studio/editor-markup.png",
+        "sha256": "5d986545e269ba7c37c38d99529a6f4b11f485a1826c277b83263c74a3e33815"
+      },
+      {
+        "file": "all-pages/05-studio/movie.png",
+        "sha256": "70478c6e1088755941da317e4c3d9ad39695d66fb140021fae8a4f303dff0cb2"
+      },
+      {
+        "file": "all-pages/05-studio/preview-01-review-back.png",
+        "sha256": "610e8ffa4e1e05233c3cf67827020d5e8c71b3dd7b5c2edfea2e6eb6f6cd0dc9"
+      },
+      {
+        "file": "all-pages/05-studio/preview-01-review-feed.png",
+        "sha256": "a9c971bf3bce8fe110d3e2e4089ba35242e4eb0aff48e5b8a3235630a43391fc"
+      },
+      {
+        "file": "all-pages/05-studio/preview-01-review-keep.png",
+        "sha256": "8f4bbc51693a6eab762de4ca15e4f5be4514a7ab14c32e9223d388f96d4da494"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot sheets, four eight-frame video sheets and all posters; additionally opened selected Memory and Snake PNGs at full size.",
+    "review_notes": "German labels readable; real photos loaded; actual Memory matches; fullscreen swipe-only Snake; no selected system dialogs or banners. Edge wrapping in motion is actual relaxed gameplay."
+  },
+  {
+    "sheet": "screenshots-01.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/05-studio/preview-01-review-later.png",
+        "sha256": "c024fa5a7bfc4c4b0e1b653e57db31948206120b4cb038cdefb4bf29185d1c67"
+      },
+      {
+        "file": "all-pages/05-studio/preview-01-review-trash.png",
+        "sha256": "610e8ffa4e1e05233c3cf67827020d5e8c71b3dd7b5c2edfea2e6eb6f6cd0dc9"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-adjust.png",
+        "sha256": "4a83f08e6d66f5692eb94d4922584cdc6dda54424116ab316f02b2ce4e2214c0"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-editor.png",
+        "sha256": "52a57880fdf7fc5fe24ee340da3f70cee4ad90bbd87335e35d6255620ed9281c"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-filter.png",
+        "sha256": "38ab3186435a0f665eada016ba241a7a72c50d32c714e38379f15e92b4be205a"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-frame.png",
+        "sha256": "ca65fd5512094c0508361a4dbdf5b829995db5eca287e2ca058521abcefa56ce"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-markup.png",
+        "sha256": "939a56512f94b76bd36a03188afa0d66df1023af28871eee16bd39a6a2889940"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-controls.png",
+        "sha256": "57734e7dc7e347bbc6c85ae9794b63898e92db97b35e4d10e41e6f23e7d2988b"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-hidden-controls.png",
+        "sha256": "fea3acfaa1189bcd66e334165bdb20a6a68dc484e4d5e2a7ef99b60cfd103813"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-vault.png",
+        "sha256": "a3103f43f9a5bc5936db27fb0ab309573fc45ea2169ada333a1de339928bac94"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-viewer.png",
+        "sha256": "57734e7dc7e347bbc6c85ae9794b63898e92db97b35e4d10e41e6f23e7d2988b"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-zoom.png",
+        "sha256": "7b1778a89406a81326b43b10f34451744839fc19a8617638a0c5336c86070cce"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot sheets, four eight-frame video sheets and all posters; additionally opened selected Memory and Snake PNGs at full size.",
+    "review_notes": "German labels readable; real photos loaded; actual Memory matches; fullscreen swipe-only Snake; no selected system dialogs or banners. Edge wrapping in motion is actual relaxed gameplay."
+  },
+  {
+    "sheet": "screenshots-02.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/05-studio/preview-04-memory-memory-pairs.png",
+        "sha256": "fffaab180ff18fe5fb84b5f4ce7582975595de345b4e8bfa6b38e02eaa07d42c"
+      },
+      {
+        "file": "all-pages/05-studio/preview-04-memory-memory-reveal.png",
+        "sha256": "5f0a30671e803e37815c32c8c3e45fbe9cd77b32d2234c157a9ae5f4af0b3bc0"
+      },
+      {
+        "file": "all-pages/05-studio/preview-04-memory-memory-second.png",
+        "sha256": "0e3ad35a2682370a969089accfbf205736c71842400514245567acdadd99b840"
+      },
+      {
+        "file": "all-pages/05-studio/preview-05-snake-snake-down.png",
+        "sha256": "15fd8e89dfd903d86b67609f6fe2949c8e86d387c8269955e745fd7fe2aa3a9f"
+      },
+      {
+        "file": "all-pages/05-studio/preview-05-snake-snake-left.png",
+        "sha256": "951658d131df64ea3455d80c7c3489888bdc748db8d20b3fcbfc1aaa312281a1"
+      },
+      {
+        "file": "all-pages/05-studio/preview-05-snake-snake-right.png",
+        "sha256": "76b305c4e73d391ae67fb3a1a7f5249f70235bde750d56ee0cdd61e2031201f3"
+      },
+      {
+        "file": "all-pages/05-studio/preview-05-snake-snake-up.png",
+        "sha256": "82765cb282fde035aa114729044d9f57ecd6bf813aae4070ee1ef983b63d1954"
+      },
+      {
+        "file": "all-pages/05-studio/studio.png",
+        "sha256": "ec0c4e0eaacdd6f4bc074be81528e52372cb5a5d52bfbe4d5bea3337a6d41b6e"
+      },
+      {
+        "file": "all-pages/06-vault/vault-files.png",
+        "sha256": "26773b130a46aa9009aa1e5c9b88ac69e0f11173c7d740cb55d0ebbdfbedf87f"
+      },
+      {
+        "file": "all-pages/06-vault/vault-media-picker.png",
+        "sha256": "1960eac19f1cb5d854116c3b5cc47575076fba31c7d90715cd6e5dfc6b7ae605"
+      },
+      {
+        "file": "all-pages/06-vault/vault-media.png",
+        "sha256": "a3103f43f9a5bc5936db27fb0ab309573fc45ea2169ada333a1de339928bac94"
+      },
+      {
+        "file": "all-pages/06-vault/vault-notes.png",
+        "sha256": "5cdfdb9d24394ca03a2bc1695a3850509faa78ea2b5cafdc075ec19603634cf2"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot sheets, four eight-frame video sheets and all posters; additionally opened selected Memory and Snake PNGs at full size.",
+    "review_notes": "German labels readable; real photos loaded; actual Memory matches; fullscreen swipe-only Snake; no selected system dialogs or banners. Edge wrapping in motion is actual relaxed gameplay."
+  },
+  {
+    "sheet": "screenshots-03.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/06-vault/vault-setup-code-empty.png",
+        "sha256": "81ad1ffdebb74aa1bb16dbe22ce997e5996bcc8803521fc740867a25fdb637dc"
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-entry.png",
+        "sha256": "ac1f03281dae33f2f07ddf052c1fd0b770cf6659a504a307544f16f353bdd156"
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-introduction.png",
+        "sha256": "448638f58a6cbc8ac851de4e1a640bb9c3be7804c7a1e73d6d09d1e8f3f39176"
+      },
+      {
+        "file": "all-pages/06-vault/vault-tools.png",
+        "sha256": "d40d7dc8c8c7f95407ddf8aeb417b952ffb01a76ccfd65bbbfef439b81aa4bc7"
+      },
+      {
+        "file": "all-pages/06-vault/vault-trash.png",
+        "sha256": "aa428b0fe7cfbb45ec3430dfbe5dc2aa8ad5ff8fbea682d33d227a3dfd58d159"
+      },
+      {
+        "file": "all-pages/06-vault/vault-viewer.png",
+        "sha256": "57734e7dc7e347bbc6c85ae9794b63898e92db97b35e4d10e41e6f23e7d2988b"
+      },
+      {
+        "file": "all-pages/09-photo-games/games-selection.png",
+        "sha256": "67e2192b76ba857a0ab5c154da0f55950e45aa7288637ec875725176d8656899"
+      },
+      {
+        "file": "all-pages/09-photo-games/memory-play.png",
+        "sha256": "b5105cd05b3f975685a5552adb68340092b2da2f5a1bc941b80378375d301b32"
+      },
+      {
+        "file": "all-pages/09-photo-games/memory-setup.png",
+        "sha256": "3f2fc36a05d8010f5ea2e9e9d697003004b8b436fb75a0fe640d36d620a74095"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-pause.png",
+        "sha256": "e3fe56030059a445cc2016ab58055b2549a17752693b22d10894cd566445df53"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-play.png",
+        "sha256": "5bc036e4a96777dc51601bc89f1d6009259ea0f96909dee1653e5cc40a1d052f"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-ready.png",
+        "sha256": "d488e4b4299e05cf70b599ea50d18b3470881ceaa4aa94f9954baba75f96a2c8"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot sheets, four eight-frame video sheets and all posters; additionally opened selected Memory and Snake PNGs at full size.",
+    "review_notes": "German labels readable; real photos loaded; actual Memory matches; fullscreen swipe-only Snake; no selected system dialogs or banners. Edge wrapping in motion is actual relaxed gameplay."
+  },
+  {
+    "sheet": "screenshots-04.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/09-photo-games/snake-settings.png",
+        "sha256": "247c2d85bd8617bd50d4053d72c659e5f5e3a0f3a4aeac0f561ebd7c63d1393a"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-setup.png",
+        "sha256": "30a03f4e223c0ac9e3cd8fb02b47b0378aecf21d60eddde13e1278b4a6ed339e"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot sheets, four eight-frame video sheets and all posters; additionally opened selected Memory and Snake PNGs at full size.",
+    "review_notes": "German labels readable; real photos loaded; actual Memory matches; fullscreen swipe-only Snake; no selected system dialogs or banners. Edge wrapping in motion is actual relaxed gameplay."
+  },
+  {
+    "sheet": "01-review-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/01-review.mp4",
+        "sha256": "c8b1971eb8c37692b73d96cd8e9f231de6324b182c54907aff4cfd2c1ea91e08"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot sheets, four eight-frame video sheets and all posters; additionally opened selected Memory and Snake PNGs at full size.",
+    "review_notes": "German labels readable; real photos loaded; actual Memory matches; fullscreen swipe-only Snake; no selected system dialogs or banners. Edge wrapping in motion is actual relaxed gameplay."
+  },
+  {
+    "sheet": "02-photo-games-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/02-photo-games.mp4",
+        "sha256": "463764c6dd410bbed6b6392614ad5f1f32e618081fb31fa8006c6e9181d303f5"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot sheets, four eight-frame video sheets and all posters; additionally opened selected Memory and Snake PNGs at full size.",
+    "review_notes": "German labels readable; real photos loaded; actual Memory matches; fullscreen swipe-only Snake; no selected system dialogs or banners. Edge wrapping in motion is actual relaxed gameplay."
+  },
+  {
+    "sheet": "03-studio-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/03-studio.mp4",
+        "sha256": "b6b06a6c3a9ee6bfd409359442789afcaae4ebbf139c5daea557bb71c133e0be"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot sheets, four eight-frame video sheets and all posters; additionally opened selected Memory and Snake PNGs at full size.",
+    "review_notes": "German labels readable; real photos loaded; actual Memory matches; fullscreen swipe-only Snake; no selected system dialogs or banners. Edge wrapping in motion is actual relaxed gameplay."
+  },
+  {
+    "sheet": "04-vault-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "alternatives/04-vault.mp4",
+        "sha256": "41b5f1c25bb2642b24ea5714675d5aa394a82c22fb7cbd49b3b6df4f445ca68d"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot sheets, four eight-frame video sheets and all posters; additionally opened selected Memory and Snake PNGs at full size.",
+    "review_notes": "German labels readable; real photos loaded; actual Memory matches; fullscreen swipe-only Snake; no selected system dialogs or banners. Edge wrapping in motion is actual relaxed gameplay."
+  },
+  {
+    "sheet": "posters.jpg",
+    "kind": "posters",
+    "originals": [
+      {
+        "file": "previews/01-review-poster.png",
+        "sha256": "abd3e203c6f6e0b7880b7320e86ac12c6c7ae4f60c7d8c89eebd101169529520"
+      },
+      {
+        "file": "previews/02-photo-games-poster.png",
+        "sha256": "a661d3ac46ddd31a9d0121666d545903c15f312603c5f705699bdfe8d21f978a"
+      },
+      {
+        "file": "previews/03-studio-poster.png",
+        "sha256": "c2b7be5842ee6a1660b03630cee63e1b41ffc1c0af83daa1270b7110f7725a60"
+      },
+      {
+        "file": "alternatives/04-vault-poster.png",
+        "sha256": "c0047260633010e89c9103557c7eeb7356a184c0b9e604d71ffc58cdd9999df9"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot sheets, four eight-frame video sheets and all posters; additionally opened selected Memory and Snake PNGs at full size.",
+    "review_notes": "German labels readable; real photos loaded; actual Memory matches; fullscreen swipe-only Snake; no selected system dialogs or banners. Edge wrapping in motion is actual relaxed gameplay."
+  }
+]

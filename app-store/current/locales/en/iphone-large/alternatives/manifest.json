@@ -1,0 +1,63 @@
+[
+  {
+    "file": "04-vault.mp4",
+    "locale": "en",
+    "duration": 27.0,
+    "resolution": [
+      886,
+      1920
+    ],
+    "fps": 30,
+    "poster_file": "04-vault-poster.png",
+    "poster_sha256": "da6991aaf8b75d4564506a10d17bc1217096cc5b2915885e07f20c8221136a05",
+    "poster_time": 6,
+    "poster_timecode": "00:00:06:00",
+    "audio": "AAC stereo, silence",
+    "source": "Actual simulator screen recording; no generated UI",
+    "source_file": "03-vault.mov",
+    "source_sha256": "3f2170e90d529e7b1a2ccd3b11fb7fd0d00a7e5829e2b1366844f69e0ce27f49",
+    "source_duration": 36.366667,
+    "source_recording": {
+      "name": "03-vault",
+      "start": 1792321163.353529,
+      "end": 1792321208.543186,
+      "returncode": 0
+    },
+    "source_markers": [
+      {
+        "label": "vault",
+        "clip": "03-vault",
+        "time": 1792321168.494443
+      },
+      {
+        "label": "viewer",
+        "time": 1792321175.770684,
+        "clip": "03-vault"
+      },
+      {
+        "clip": "03-vault",
+        "time": 1792321184.8407469,
+        "label": "hidden-controls"
+      },
+      {
+        "time": 1792321192.781805,
+        "clip": "03-vault",
+        "label": "zoom"
+      },
+      {
+        "clip": "03-vault",
+        "label": "controls",
+        "time": 1792321204.306875
+      }
+    ],
+    "editing": {
+      "source_start": 0,
+      "source_end": 36.366667,
+      "playback_speed": 1.5152777916666667,
+      "final_frame_hold_seconds": 3,
+      "description": "Complete actual recording, longer demos accelerated to 24 seconds; genuine final frame held for 3 seconds"
+    },
+    "status": "PASS",
+    "sha256": "16d3be3629357c579201a4f2b76a8f2ab960e5170d834be42f6ddd7571628bc9"
+  }
+]

@@ -23,7 +23,7 @@
   ],
   "pilot_run": 39118013344,
   "iphone_assets": "IN PROGRESS",
-  "duo_assets": "BLOCKED",
+  "duo_assets": "PREPARING RUNTIME",
   "app_store_connect_assets_upload": "NOT RUN",
   "app_store_release": "NOT RUN",
   "native_test_policy": "Only real passed capture results with no failed or skipped tests; screenshots and actual video frames reviewed before PASS.",
@@ -42,5 +42,6 @@
   ],
   "large_run": 39120101094,
   "medium_run": 39120189289,
-  "duo_runtime_preparation_run": 39120476761
+  "duo_runtime_preparation_run": 39120476761,
+  "repository_delivery": "New accepted assets are currently local; direct workspace GitHub credentials became unavailable. Connected GitHub app still provides native artifacts."
 }
