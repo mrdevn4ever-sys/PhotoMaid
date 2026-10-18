@@ -230,4 +230,21 @@ struct PhotoBlocksGameTests {
         #expect(above.ghost?.origin.y == 11)
         #expect(above.active?.origin.y == 0)
     }
+    @Test func fourCellTallFormCanRotateAtTheFloorWithoutCrossingAnyBoundary() {
+        var game = PhotoBlocksGame(testBoard: blank(), active: .init(shape: .fern, rotation: 1, origin: .init(4, 15)))
+        #expect(game.rotate() == true)
+        #expect(game.active?.origin.y == 13 && game.active?.rotation == 2)
+        #expect(game.fits(game.active!))
+        #expect(game.active!.cells.allSatisfy { (0..<17).contains($0.y) && (0..<9).contains($0.x) })
+    }
+    @Test func softDropDoesNotConvertOldGravityTimeIntoAnInstantMultiRowFall() {
+        var game = PhotoBlocksGame(); game.start()
+        for _ in 0..<3 { game.advance(0.22) }
+        let y = game.active!.origin.y
+        game.setSoftDrop(true); game.advance(0.01)
+        #expect(game.active!.origin.y == y)
+        game.advance(0.01); #expect(game.active!.origin.y == y + 1)
+        game.setSoftDrop(false); game.advance(0.01)
+        #expect(game.active!.origin.y == y + 1)
+    }
 }

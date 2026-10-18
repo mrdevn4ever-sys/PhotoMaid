@@ -15,7 +15,7 @@ keine übernommenen Spielgrafiken, Musik, Abhängigkeiten oder fremder Spielcode
 Die deterministische, serialisierbare Engine besitzt `ready`, `playing`, `clearing`, `discovered`,
 `gameOver` und eine unabhängige Pause. Ein gespeicherter Zufallszustand mischt jede Form genau einmal
 pro Beutel. Rotation normalisiert Koordinaten und prüft kleine seitliche bzw. aufwärts gerichtete
-Ausweichschritte. Boden und belegte Zellen verwenden dieselbe Kollisionsprüfung. Festsetzen nach
+Ausweichschritte (am Boden bis zu zwei Zeilen für die lange Form). Boden und belegte Zellen verwenden dieselbe Kollisionsprüfung. Festsetzen nach
 0,40 s, höchstens acht Verlängerungen durch Bewegungen am Boden; Hard Drop setzt sofort fest.
 Eine einzige schwach angebundene `CADisplayLink` läuft mit Ziel 60 Hz. Keine Animations-Completion
 ändert die Simulation. Hintergrund, Verlassen und Speicherdruck pausieren; Rückkehr verlangt Fortsetzen.
@@ -67,7 +67,9 @@ Ein Touch-Recognizer trennt alle Eingaben. Unter 10 pt und bis 280 ms: genau ein
 Achsenentscheidung ab 12 pt und 1,15-fachem Richtungsübergewicht. Seitliches Ziehen wiederholt pro
 `max(18 pt, 0,65 × Zellbreite)` und verarbeitet auch dünn verteilte Touch-Samples. Ab 18 pt nach unten
 Soft Drop mit maximal 45 ms Fallintervall. Hard Drop erst bei mindestens 56 pt, mindestens 650 pt/s
-und höchstens 550 ms Gestendauer. Bewegung darf nie zugleich Tap-Rotation auslösen. Fingerabbruch,
+und höchstens 550 ms Gestendauer. Der letzte schnelle Bewegungssample bleibt beim ortsgleichen
+Touch-Ende erhalten; nach längerem Stillhalten verfällt er. Ein Soft-Drop-Wechsel erhält den
+prozentualen Schwerkraftfortschritt, statt alte Normalfall-Zeit in viele schnelle Zeilen umzudeuten. Bewegung darf nie zugleich Tap-Rotation auslösen. Fingerabbruch,
 Pause und Festsetzen beenden Soft Drop. Ein sichtbarer Pauseknopf ersetzt die optionale Zwei-Finger-Geste.
 Keine Bewegungstasten. Haptik bei Rotation, Hard Drop, Reihen und Fotoabschluss.
 
@@ -76,7 +78,9 @@ Keine Bewegungstasten. Haptik bei Rotation, Hard Drop, Reihen und Fotoabschluss.
 `PhotoGamePhotos.offlineCandidates` ist die gemeinsame verbindliche Quelle für Hintergründe UND
 den vorhandenen `StudioMediaPicker`: aktuelle Leseberechtigung, intakte Verbergen-Liste, nur Bilder,
 `cleanupMedia` ohne ausgeblendete/ausgenommene Alben und ausstehende Löschungen, zusätzlicher Tresorfilter.
-Kein System-PhotosPicker: Er könnte nicht gelöschte Tresor-Originale in seiner eigenen Auswahl zeigen.
+Die Quelle ist zusätzlich gesperrt, solange neu gewählte Albumfilter noch nicht zum geladenen Snapshot passen.
+Der Snapshot vermerkt die tatsächlich abgefragten Albumfilter; normale Bibliotheksaktualisierungen
+mit unveränderten Filtern machen dadurch kein Hintergrundflackern. Kein System-PhotosPicker: Er könnte nicht gelöschte Tresor-Originale in seiner eigenen Auswahl zeigen.
 Der bestehende App-Picker erhält einen opt-in Offline-Modus; andere Werkzeuge behalten ihr Verhalten.
 
 Die gemeinsame `PreviewPipeline` lädt ausschließlich mit `allowNetwork: false`, exakter Größenanforderung
@@ -97,8 +101,8 @@ Neueste sortiert Datum/ID, Zufall verwendet einen reproduzierbaren Seed. Keine F
 
 ## Tatsächlich ausgeführte Prüfungen
 
-**PASS, lokal:** Swift 6.4.1 unter Linux, offline aus vorhandenem Toolchain-Cache: 494 Core-Tests
-(470 Swift Testing + 24 XCTest), davon 22 neue Blocks-Tests. Unter anderem Fallen, Boden/Steine,
+**PASS, lokal:** Swift 6.4.1 unter Linux, offline aus vorhandenem Toolchain-Cache: 498 Core-Tests
+(474 Swift Testing + 24 XCTest), davon 26 neue Blocks-Tests. Unter anderem Fallen, Boden/Steine,
 Grenzen/Rotation, Mehrfachreihen und Verdichtung, 1/3/10 Abschnitte, 8+3-Übertrag, Board-Erhalt,
 2-s-Entdeckungsphase, Pause, fortsetzbare Serialisierung, Beutel, Eingabeschwellen und Fotoreihenfolge.
 Je 20 fortlaufende simulierte Levelwechsel auf 6×12, 9×17 und 14×28, mit realem Zustandsübertrag;
@@ -115,9 +119,10 @@ sind korrigiert; ursprüngliche Fehlerlogs bleiben im Belegordner. Ein falscher 
 Privacy-Checker-Aufruf verlangte ein IPA-Hauptmanifest beim Prüfen einer Quelldatei; korrekt wiederholt PASS.
 
 **Native CI: ausstehend.** Mit der nachgereichten Freigabe für Testminuten werden iOS-Build,
-native Unit-Tests und echte Simulatoransichten ausgeführt. Fünf neue native Integrationstests prüfen
+native Unit-Tests und echte Simulatoransichten ausgeführt. Sieben neue native Integrationstests prüfen
 Zwei-Bild-Fenster/Reuse, späte verbotene Ergebnisse, eingeschränkten Zugriff/Fallback/Entzug,
-KeyValueStore-Fortsetzung neben alten Rekorden und Speicherfehler mit Wiederholung. Der neue UI-Test
+KeyValueStore-Fortsetzung neben alten Rekorden und Speicherfehler mit Wiederholung; hinzu kommen der Zwei-Zeilen-Bodenausgleich und der
+wirkliche AppModel-Scope bei noch nicht abgefragten Albumausschlüssen. Der neue UI-Test
 prüft Start, Gesten, Pause/Hintergrund, Fotoquelle und Rückkehr; der bestehende Spiele-Setup-Test
 sichert Snake/Paare zusätzlich. Abschließende CI- und TestFlight-Belege werden hier ergänzt.
 

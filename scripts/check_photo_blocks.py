@@ -33,7 +33,7 @@ offline = loader[loader.index('func prepareOfflineWindow'):loader.index('@discar
 assert 'allowNetwork: false' in offline and 'exactSize: true' in offline and '.prefix(2)' in offline
 assert 'self.permitted([id])' in offline and 'self.loadID == token' in offline
 scope = loader[loader.index('static func offlineCandidates'):loader.index('private(set) var photoIDs')]
-for guard in ['canRead', 'analysisReady', 'VaultConcealment.shared.visible', 'app.cleanupMedia', '!$0.isVideo']:
+for guard in ['gamePhotoScopeReady', 'canRead', 'analysisReady', 'VaultConcealment.shared.visible', 'app.cleanupMedia', '!$0.isVideo']:
     assert guard in scope, guard
 components = read('PhotoMaid/DesignSystem/Components.swift')
 assert 'guard allowNetwork, !Task.isCancelled else { return nil }' in components

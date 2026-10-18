@@ -45,4 +45,14 @@ struct PhotoBlocksPhotosTests {
         let text = String(decoding: data, as: UTF8.self)
         #expect(!text.contains("photoID") && !text.contains("thumbnail"))
     }
+    @Test func changedAlbumFiltersCannotReuseAnOlderSnapshot() {
+        #expect(PhotoBlocksPhotos.scopeReady(loaded: false, requestedHidden: [], appliedHidden: [],
+                                            requestedExcluded: [], appliedExcluded: []) == false)
+        #expect(PhotoBlocksPhotos.scopeReady(loaded: true, requestedHidden: ["hidden"], appliedHidden: [],
+                                            requestedExcluded: [], appliedExcluded: []) == false)
+        #expect(PhotoBlocksPhotos.scopeReady(loaded: true, requestedHidden: [], appliedHidden: [],
+                                            requestedExcluded: ["private"], appliedExcluded: []) == false)
+        #expect(PhotoBlocksPhotos.scopeReady(loaded: true, requestedHidden: ["hidden"], appliedHidden: ["hidden"],
+                                            requestedExcluded: ["private"], appliedExcluded: ["private"]) == true)
+    }
 }

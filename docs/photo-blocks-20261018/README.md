@@ -2,7 +2,7 @@
 
 [Implementierung, Regeln, Datenschutz und Abnahme](../PHOTO_BLOCKS.md).
 
-Lokale Ergebnisse: **494 Core-Tests PASS** (470 Swift Testing + 24 XCTest), **22 neue Blocks-Tests**;
+Lokale Ergebnisse: **498 Core-Tests PASS** (474 Swift Testing + 24 XCTest), **26 neue Blocks-Tests**;
 15 native Swift-Dateien syntaktisch geprüft (13 Produktion + 2 Tests), **kein lokaler iOS-Build**.
 Native CI und anschließend ausdrücklich beauftragter interner TestFlight-Upload sind nach
 „Du kannst jederzeit minutes brauchen zum testen“ freigegeben und werden ergänzt.
@@ -29,8 +29,8 @@ Native CI und anschließend ausdrücklich beauftragter interner TestFlight-Uploa
 | `PhotoMaid/Features/Games/PhotoGamesView.swift` | Blocks-Kachel und Navigation |
 | `PhotoMaid/Features/Games/PhotoGameRecordsView.swift` | Blocks-Rekord und Speicher-Wiederholung |
 | `PhotoMaid/Resources/ios_strings.json`, `Localizable.xcstrings` | 41 Blocks-Kennungen × 16 Sprachen |
-| `Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift`, `PhotoBlocksInputTests.swift`, `PhotoBlocksPhotosTests.swift` | 22 lokale Engine-/Input-/Foto-Tests |
-| `PhotoMaidTests/PhotoBlocksIntegrationTests.swift` | fünf neue native Integrationsfälle |
+| `Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift`, `PhotoBlocksInputTests.swift`, `PhotoBlocksPhotosTests.swift` | 26 lokale Engine-/Input-/Foto-Tests |
+| `PhotoMaidTests/PhotoBlocksIntegrationTests.swift` | sieben neue native Integrationsfälle |
 | `PhotoMaidUITests/PhotoBlocksVisualTests.swift` | echter Start-/Touch-/Pause-/Foto-/Navigationsdurchlauf |
 | `scripts/check_photo_blocks.py` | statischer Offline-/Target-/Rekord-/Snake-/Sprachen-Audit |
 | `scripts/check_snakephoto_integration.py` | ausschließlich neue Blocks-Textkennungen zusätzlich zulassen |

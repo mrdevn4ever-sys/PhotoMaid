@@ -88,4 +88,28 @@ import UIKit
         model.invalidatePhotos()
         #expect(model.selection.isEmpty && model.sequence.order.isEmpty && model.photos.images.isEmpty)
     }
+
+    @Test func tallFormCanRotateOnTheFloorUsingThePublicSerializedState() throws {
+        let game = PhotoBlocksGame()
+        var object = try JSONSerialization.jsonObject(with: JSONEncoder().encode(game)) as! [String: Any]
+        object["active"] = try JSONSerialization.jsonObject(with: JSONEncoder().encode(
+            PhotoBlocksPiece(shape: .fern, rotation: 1, origin: .init(4, 15))))
+        object["phase"] = "playing"
+        var floor = try JSONDecoder().decode(PhotoBlocksGame.self, from: JSONSerialization.data(withJSONObject: object))
+        #expect(floor.isValidSnapshot)
+        #expect(floor.rotate() == true)
+        #expect(floor.active?.origin.y == 13 && floor.isValidSnapshot)
+    }
+
+    @Test func changingAlbumExclusionsClosesTheCentralGameSourceUntilTheyAreApplied() async throws {
+        let app = try AppModel(kv: nil, persistence: InMemoryLedgerPersistence(), qa: true)
+        app.reloadLibraryIfNeeded(force: true)
+        for _ in 0..<250 where app.isLoadingLibrary { try await Task.sleep(for: .milliseconds(20)) }
+        #expect(app.gamePhotoScopeReady)
+        app.updateSettings { $0.excludedAlbums = ["QA-NOT-QUERIED-YET"] }
+        // This runs before a queued PhotoKit load can finish, on the same main actor as settings changes.
+        #expect(!app.gamePhotoScopeReady)
+        #expect(PhotoGamePhotos.offlineCandidates(app: app).isEmpty)
+        #expect(app.blocks.photos.images.isEmpty && app.blocks.sequence.order.isEmpty)
+    }
 }

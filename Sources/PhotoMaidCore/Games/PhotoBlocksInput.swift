@@ -43,11 +43,14 @@ public struct PhotoBlocksInput: Sendable {
 
     public mutating func ended(x: Double, y: Double, duration: Double, time: Double, cellSize: Double) -> [Action] {
         let oldTime = lastTime
+        let previousVelocity = velocityY
         var result = changed(x: x, y: y, time: time, cellSize: cellSize)
         let average = duration > 0 ? y / duration : 0
+        // touchesEnded commonly has the same position as the final move. Its zero delta must not erase a flick.
+        let recentVelocity = time - oldTime <= 0.08 ? max(previousVelocity, velocityY) : velocityY
         // A flick requires both distance and speed. A long/slow drag never becomes an accidental hard drop.
         if axis == .vertical, y >= 56, duration <= 0.55,
-           max(average, time - oldTime <= 0.08 ? velocityY : 0) >= 650 {
+           max(average, recentVelocity) >= 650 {
             result.append(.hardDrop)
         } else if axis == nil, maxDistance < 10, duration >= 0, duration <= 0.28 {
             result.append(.rotate)

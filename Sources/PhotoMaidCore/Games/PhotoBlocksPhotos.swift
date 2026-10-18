@@ -18,4 +18,10 @@ public struct PhotoBlocksPhotos: Equatable, Sendable {
 
     /// Fixed normalized photo-space strips; board rows/compaction never participate in this calculation.
     public static func revealedHeight(strips: Int) -> Double { Double(min(10, max(0, strips))) / 10 }
+
+    /// A snapshot is authoritative only for the filter configuration it actually queried.
+    public static func scopeReady(loaded: Bool, requestedHidden: Set<String>, appliedHidden: Set<String>,
+                                  requestedExcluded: Set<String>, appliedExcluded: Set<String>) -> Bool {
+        loaded && requestedHidden == appliedHidden && requestedExcluded == appliedExcluded
+    }
 }

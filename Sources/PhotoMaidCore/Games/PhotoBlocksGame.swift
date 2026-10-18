@@ -45,9 +45,17 @@ public struct PhotoBlocksGame: Codable, Equatable, Sendable {
     }
 
     public mutating func start() { if phase == .ready { phase = .playing } }
-    public mutating func pause() { if phase != .ready && phase != .gameOver { isPaused = true }; softDrop = false }
+    public mutating func pause() { setSoftDrop(false); if phase != .ready && phase != .gameOver { isPaused = true } }
     public mutating func resume() { isPaused = false; softDrop = false }
-    public mutating func setSoftDrop(_ enabled: Bool) { softDrop = enabled && acceptsInput }
+    public mutating func setSoftDrop(_ enabled: Bool) {
+        let next = enabled && acceptsInput
+        guard next != softDrop else { return }
+        let before = softDrop ? min(0.045, fallInterval / 8) : fallInterval
+        softDrop = next
+        let after = softDrop ? min(0.045, fallInterval / 8) : fallInterval
+        // Preserve fractional gravity progress, not accumulated seconds at the previous speed.
+        fallTime = min(1, fallTime / before) * after
+    }
 
     @discardableResult public mutating func move(_ dx: Int) -> Bool {
         guard acceptsInput, let active, abs(dx) == 1 else { return false }
@@ -59,7 +67,7 @@ public struct PhotoBlocksGame: Codable, Equatable, Sendable {
     @discardableResult public mutating func rotate() -> Bool {
         guard acceptsInput, let active else { return false }
         var candidate = active; candidate.rotation = (candidate.rotation + 1) % 4
-        for offset in [PhotoBlocksCell(0, 0), .init(-1, 0), .init(1, 0), .init(-2, 0), .init(2, 0), .init(0, -1)] {
+        for offset in [PhotoBlocksCell(0, 0), .init(-1, 0), .init(1, 0), .init(-2, 0), .init(2, 0), .init(0, -1), .init(0, -2)] {
             let kicked = moved(candidate, dx: offset.x, dy: offset.y)
             if fits(kicked) { resetLockIfAllowed(); self.active = kicked; return true }
         }

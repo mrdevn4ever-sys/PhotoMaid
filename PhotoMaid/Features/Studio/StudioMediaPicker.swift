@@ -99,6 +99,9 @@ struct StudioMediaPicker: View {
             .onChange(of: app.library.changeToken) { _, _ in
                 if offlineGame { ThumbnailLoader.shared.clear(); visibilityToken = UUID() }
             }
+            .onChange(of: app.gamePhotoScopeReady) { _, _ in
+                if offlineGame { ThumbnailLoader.shared.clear(); visibilityToken = UUID() }
+            }
             .onDisappear { if offlineGame { ThumbnailLoader.shared.clear() } }
             .onChange(of: scenePhase) { _, _ in
                 if offlineGame { ThumbnailLoader.shared.clear(); visibilityToken = UUID() }

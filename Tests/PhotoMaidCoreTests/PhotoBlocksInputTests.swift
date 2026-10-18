@@ -49,4 +49,16 @@ struct PhotoBlocksInputTests {
         #expect(input.changed(x: 100, y: 0, time: 0.3, cellSize: 30).isEmpty)
         #expect(input.ended(x: 100, y: 0, duration: 0.3, time: 0.3, cellSize: 30).isEmpty)
     }
+    @Test func stationaryTouchUpDoesNotEraseTheFinalFastMovementSample() {
+        var input = PhotoBlocksInput()
+        _ = input.changed(x: 0, y: 0, time: 0, cellSize: 30)
+        _ = input.changed(x: 0, y: 75, time: 0.1, cellSize: 30)
+        let released = input.ended(x: 0, y: 75, duration: 0.14, time: 0.14, cellSize: 30)
+        #expect(released.filter { $0 == .hardDrop }.count == 1)
+        #expect(!released.contains(.rotate))
+        _ = input.changed(x: 0, y: 0, time: 0, cellSize: 30)
+        _ = input.changed(x: 0, y: 75, time: 0.1, cellSize: 30)
+        let held = input.ended(x: 0, y: 75, duration: 0.4, time: 0.4, cellSize: 30)
+        #expect(!held.contains(.hardDrop), "A stationary hold must discard stale velocity")
+    }
 }

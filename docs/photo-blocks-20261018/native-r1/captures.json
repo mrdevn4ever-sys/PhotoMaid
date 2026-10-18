@@ -1,0 +1,422 @@
+{
+  "run_id": 39172795500,
+  "source_commit": "dabbdd75fe0e071a9f472306efe9728931f6d9b0",
+  "captures": [
+    {
+      "device": "iphone",
+      "file": "iphone/blocks_photos.txt",
+      "original_name": "blocks_photos_0_D02D5177-3D3F-4487-A0E9-A8CA049A5686.hierarchy",
+      "exported_name": "B23A71B4-FBB8-44F9-9186-9AD75DDE7A6D.txt",
+      "sha256": "e84eb49cb4de77e6ef96b8838f4d24b49018d2220c8b65b0200f420e3a01edc1",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/blocks_photos.png",
+      "original_name": "blocks_photos_0_ECF3C363-E858-416E-B0AB-B741FE1561CF.png",
+      "exported_name": "AFC9A848-1F0E-4B38-A6F8-C2A66B8E915C.png",
+      "sha256": "34a04f26a8d8866e35db93ad357242b9a991638a406c973ce87935db49f84692",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/blocks_paused.txt",
+      "original_name": "blocks_paused_0_D642444F-6CCF-4EE4-94F3-3B5706174F91.hierarchy",
+      "exported_name": "A3AD9E61-A6D2-456C-B4B5-1B65925FCECE.txt",
+      "sha256": "e47d72b55edef7ca12839abb29aeaa1cf7017306ad2ea21123548da2c39f4f97",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/blocks_paused.png",
+      "original_name": "blocks_paused_0_25142CF7-3F4C-4CC3-9015-975D32ED6175.png",
+      "exported_name": "DBADF7D6-EA81-4D09-A5D3-F9724382F629.png",
+      "sha256": "811825b3b66d47a406445ab2b86c828c557849ce6d8038b8df4d0f2948416c0c",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/blocks_playing.txt",
+      "original_name": "blocks_playing_0_37C51D68-67FB-469E-B537-5FE5606D4552.hierarchy",
+      "exported_name": "58EDFE49-11D9-47A3-98AC-3FBA010D2700.txt",
+      "sha256": "4584cdd8a55c6a6a3d2329ba4ed8db182bf77b6d71f04fa606432fc2ec622d44",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/blocks_playing.png",
+      "original_name": "blocks_playing_0_E89A3189-53DA-4DD2-A615-01012D841946.png",
+      "exported_name": "439AEB8F-98DE-4188-B9C0-F5272D332FD7.png",
+      "sha256": "4bcbaac6bc4093be72d6a9de980df47f30ca8547e030c054ded8bc8e3d0150cf",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/blocks_start.txt",
+      "original_name": "blocks_start_0_AD28D55C-4929-431D-BF77-DC13566ED952.hierarchy",
+      "exported_name": "C895DA0B-771F-4C7A-ACA9-C88DC25C3372.txt",
+      "sha256": "f11a187a08b1809d40c23c1f185e275a47c8160459140f85b925faff1ccc9b3f",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/blocks_start.png",
+      "original_name": "blocks_start_0_5BA4E1BB-7054-4E7D-B396-956102124733.png",
+      "exported_name": "471D48CA-55C1-4928-A1DB-EB17C723DE27.png",
+      "sha256": "0be3d129eea733442b2715c65780e6ea8e31c88bfaa3295e9e8b5c47f5c90b11",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/blocks_photos_permission.txt",
+      "original_name": "blocks_photos_permission_0_0_579F0C60-B38B-4AE5-A180-BFA49D58F701.hierarchy",
+      "exported_name": "974A44FD-B669-429E-AE5C-0751EEE83AD5.txt",
+      "sha256": "b1cd059f39cdd688ec0863a5530d52f12b8d3f7692191099c83a373749e4a834",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/blocks_photos_permission.png",
+      "original_name": "blocks_photos_permission_0_0_931DAB10-9F22-460E-AE58-C9A8084BE01E.png",
+      "exported_name": "6C3EF218-E989-4E3F-AAB6-F9608E5198AD.png",
+      "sha256": "4e7a87cf38509507fec096bebe9322eee14fea7cf1b7005f8193a9735d2add38",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/pairs_after_snake_uses_app_appearance.txt",
+      "original_name": "pairs_after_snake_uses_app_appearance_0_B11CF3C9-5287-4C30-9299-696D735E3C58.hierarchy",
+      "exported_name": "4A755772-BDC1-41E9-8397-7D730AD7C27E.txt",
+      "sha256": "6efd3bd9893fb78c6d2e9514a1f31ac6248351f01472e98498a94456fb6af7c4",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/pairs_after_snake_uses_app_appearance.png",
+      "original_name": "pairs_after_snake_uses_app_appearance_0_F0594DD6-B9EC-4C17-BFEC-D180DC9278F6.png",
+      "exported_name": "223A9686-1DDE-4736-A04E-E86BFB92F608.png",
+      "sha256": "626efb5b5773417bb3a5852bb78ccd775e0d6a49e7fa9c5ae82409079875bc7e",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/games_chooser_after_snake_pause.txt",
+      "original_name": "games_chooser_after_snake_pause_0_918BFE74-BA5A-4756-A20E-A3EF14D6F6C6.hierarchy",
+      "exported_name": "46B5A86A-DD87-4AC7-A7D1-DC86E472B471.txt",
+      "sha256": "75eb4e15c1534027365fadc8515cf8cbf024e26d5d88810867dfc5deb77a1e83",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/games_chooser_after_snake_pause.png",
+      "original_name": "games_chooser_after_snake_pause_0_93CBF450-D5C5-4E32-8BF2-FC95A094EC01.png",
+      "exported_name": "733B0CB6-DA9B-4CD6-8774-E72F5A7C6338.png",
+      "sha256": "310916a3f4491048c6af1600473f256114cc5755d6704988058a03bd25c8eaa1",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/snake_simple_setup_real_photo_game.txt",
+      "original_name": "snake_simple_setup_real_photo_game_0_F381B68D-AFD7-4161-8C81-A9C899AA9DFC.hierarchy",
+      "exported_name": "70F1C90A-5BE4-4B89-9192-BCC7FEFB925F.txt",
+      "sha256": "49315db0e23335f4c150b93d48ea8643d4dd3d525b1d283965bd174811db298f",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/snake_simple_setup_real_photo_game.png",
+      "original_name": "snake_simple_setup_real_photo_game_0_A05F02E3-77F4-41E0-B484-5C2F017B51D3.png",
+      "exported_name": "AB14470D-71EE-4B42-8D53-6D7B67C7C9AC.png",
+      "sha256": "f3adead6e3c416e1e1d9f96a1bf37b9e4644cac5a7bc0bd4f226dde674b1a29a",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/snake_empty_manual_choice_opens_gallery.txt",
+      "original_name": "snake_empty_manual_choice_opens_gallery_0_DD27A1FC-D173-4D8A-AB32-46211D9FDCCB.hierarchy",
+      "exported_name": "C4047DE7-0B77-4D11-8E65-5DF04786F694.txt",
+      "sha256": "b37e0bc193cf8b480ba98d741c8c6dfeada2a48511838cbeccd5259aecb6c7b7",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/snake_empty_manual_choice_opens_gallery.png",
+      "original_name": "snake_empty_manual_choice_opens_gallery_0_C5010527-6CF8-4B0B-9773-204C32F843E6.png",
+      "exported_name": "343C7FA1-88C5-49D1-910B-469908891FCB.png",
+      "sha256": "5d5c063d6ed3e3c52764887b85a486d65932fd74fce6e03908fa4b79ab59433c",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/snake_setup_labelled_options.txt",
+      "original_name": "snake_setup_labelled_options_0_894F7E5C-0AA9-4C67-BCB6-88DE7A359926.hierarchy",
+      "exported_name": "B2553221-344E-4BF6-99A3-6345C74C5EDA.txt",
+      "sha256": "6baad2f6399edbafe3930dbf7727e4915cf78c9615a9255c83de899d15088cb3",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/snake_setup_labelled_options.png",
+      "original_name": "snake_setup_labelled_options_0_45E7F45D-7366-4660-A77B-1A3D9637D2AD.png",
+      "exported_name": "9AD8EE06-E282-4E01-ADA9-38B1256E7014.png",
+      "sha256": "06e395062e07efb195c565ed227ba33180a414238ff5972119018285dcf1ece1",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/snake_setup_default_library_cloud_on.txt",
+      "original_name": "snake_setup_default_library_cloud_on_0_2D6ECFBB-EF9C-4937-8199-C4B038AFB141.hierarchy",
+      "exported_name": "294CB8CE-87B1-4EE7-BEA4-9A2036FA1009.txt",
+      "sha256": "96890540807539fd7e873881b5ccc0cd73918319f7b50e0c9b3f783b48b35885",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/snake_setup_default_library_cloud_on.png",
+      "original_name": "snake_setup_default_library_cloud_on_0_21E10EF3-D2B8-4171-A8FF-78C3984C397E.png",
+      "exported_name": "9B24D299-4C82-47D1-B1D4-BA3AB94BFDF2.png",
+      "sha256": "6802eca7fa2c7ad76c215dad6d3824fcb5ae288af7e7971bc8e1b4f6f041d863",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/pairs_setup_keeps_cloud_opt_out.txt",
+      "original_name": "pairs_setup_keeps_cloud_opt_out_0_011DD166-FADA-406D-B659-51D6D5D7767A.hierarchy",
+      "exported_name": "97FEF5B4-B326-49B2-B00B-FCCEC9FC41FF.txt",
+      "sha256": "c0af660b1d43f106e844906ca16ee2779e0b4c804cec82ec04f9a9ac87d9da7c",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/pairs_setup_keeps_cloud_opt_out.png",
+      "original_name": "pairs_setup_keeps_cloud_opt_out_0_ADF3C2CA-C533-415F-8F57-2CFC2DE17E8D.png",
+      "exported_name": "005D495E-822D-499A-A16F-3FC276E70B84.png",
+      "sha256": "960c6062aa74f3c153ac497274ae18a99a19785805fdd500bb163ce5bfa2c693",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/pairs_setup_default_cloud_on.txt",
+      "original_name": "pairs_setup_default_cloud_on_0_712AB772-6CBD-46C6-AF3E-8AB268B3164D.hierarchy",
+      "exported_name": "B2982DE3-F890-430A-ACBD-F392D54DAF7E.txt",
+      "sha256": "47b8f843dc27dd853957a6060010b508a06304695df01c3700e020da028d5e4e",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/pairs_setup_default_cloud_on.png",
+      "original_name": "pairs_setup_default_cloud_on_0_B9679C3A-F5E5-4B16-A1F1-FAEF53BA4624.png",
+      "exported_name": "8E311EF0-FD8F-4D0F-A70D-EBD3BC7C3024.png",
+      "sha256": "cf61f49d44b3290276cf73b1df38b444a3508faf3af645915495566f408c300e",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/blocks_photos.txt",
+      "original_name": "blocks_photos_0_8E3BEE1A-D34E-4633-9CBC-1E26E969783C.hierarchy",
+      "exported_name": "32C53F56-0238-4E22-A3E2-FF1D9C242038.txt",
+      "sha256": "a6542392847f7183c74bbfb7ccc68a2b62ebf8ea7ad4a211691de72b301650af",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/blocks_photos.png",
+      "original_name": "blocks_photos_0_1610D3C4-3B28-4745-94FE-E9B191EEE6BD.png",
+      "exported_name": "53C28358-116D-4C05-9F3E-F25D1F78E24F.png",
+      "sha256": "c3811ce85017314c5fe8443c31d6c4d5f6c4ea7ee14cfec47715d8d475214679",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/blocks_paused.txt",
+      "original_name": "blocks_paused_0_8DD53203-5A46-4809-A06A-6150BBDCD8DF.hierarchy",
+      "exported_name": "B6E0A18E-BDE7-49D5-83DF-57755BFBE0B4.txt",
+      "sha256": "ff9d6350b9886279558cee29c8236a51772359a4da1b7140b9683cb9a1441158",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/blocks_paused.png",
+      "original_name": "blocks_paused_0_CEF37A27-6C7C-43E3-8E04-BAD62074B3C7.png",
+      "exported_name": "6058CE92-77B9-46B0-8519-6AD52CCFDA68.png",
+      "sha256": "da4aa87480688900ce156c3abd5546f624fffa26a7807f129fb27a10c3690418",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/blocks_playing.txt",
+      "original_name": "blocks_playing_0_D81E6CF6-EE88-4880-9576-722FE37799EA.hierarchy",
+      "exported_name": "85DC9A84-3B21-43BB-BCDA-018A17925288.txt",
+      "sha256": "cc22ae01d1008831d589ffe7fad99946c5473ad2e6a260e1c10c40706f8251f6",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/blocks_playing.png",
+      "original_name": "blocks_playing_0_1EF6F037-96D2-495A-8A0F-6FFA18C07443.png",
+      "exported_name": "B62B1B21-3441-4607-9F70-77F75B41C16E.png",
+      "sha256": "17e2ae9b0ca5bfe382f44b290f9577144be6b96b330b5af2c1384e856cfdc0df",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/blocks_start.txt",
+      "original_name": "blocks_start_0_D409EA59-37B9-4749-BA24-5EA8FD3E7D23.hierarchy",
+      "exported_name": "168918CE-6BDC-4B61-9101-181E451D3F29.txt",
+      "sha256": "c40e97fda768d7e3287e5139529e35f9854fab030985032a3775b242f713d944",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/blocks_start.png",
+      "original_name": "blocks_start_0_DE340A51-A64E-489C-B365-3FD3E96ADA5B.png",
+      "exported_name": "89224237-24A1-4917-94C8-9139C1C79B3E.png",
+      "sha256": "6780b0c966e3e7248acf548313653f04da644982b7d59b9510221aa3ff555bed",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/blocks_photos_permission.txt",
+      "original_name": "blocks_photos_permission_0_0_BE682F4C-EB13-4436-AA8F-BCF5453A723E.hierarchy",
+      "exported_name": "D4906DE4-E7FB-4E04-B4A1-0EF8C81321B6.txt",
+      "sha256": "2cb96c6f9d6e359558ba8b98e3d8ab0f0c7fdee3699f4a878c3dd812a48364b6",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/blocks_photos_permission.png",
+      "original_name": "blocks_photos_permission_0_0_5DFA41D0-4124-4AFF-9D05-C93EBDA98D37.png",
+      "exported_name": "F4F9CCF3-128B-4FA7-9DF2-2B5FA323509A.png",
+      "sha256": "e5e522eaaeb793b683f0accc11293ced2ad937288b624fa3c2037b78b6c14b94",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/pairs_after_snake_uses_app_appearance.txt",
+      "original_name": "pairs_after_snake_uses_app_appearance_0_231255B6-F0F6-4239-8DCB-FF71969C5C42.hierarchy",
+      "exported_name": "540D0131-C003-46A0-9DDF-308E643E6EF2.txt",
+      "sha256": "1abbbbed60268a97083d6d16073dadf042abfa5f936bb74937319c5d0ae36af8",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/pairs_after_snake_uses_app_appearance.png",
+      "original_name": "pairs_after_snake_uses_app_appearance_0_F86ED4C1-B910-47A0-81A4-F43BE93E2D8B.png",
+      "exported_name": "732D3341-D67C-49BF-A246-98EA39F2381F.png",
+      "sha256": "9d15acd63224b2abc03a1f0d48dc0a64b3f9ab6634493dd8ad0c903efd1e63f8",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/games_chooser_after_snake_pause.txt",
+      "original_name": "games_chooser_after_snake_pause_0_D52683F6-4055-4BF7-A1D4-D4998860B353.hierarchy",
+      "exported_name": "8B83A717-8D6D-4D54-983B-E62CFC6D79DD.txt",
+      "sha256": "ff6be5bd31f4cd6fb4c470b939568fb4dda977151f7bcbc7b888b6dddf55fb1d",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/games_chooser_after_snake_pause.png",
+      "original_name": "games_chooser_after_snake_pause_0_4541F4C8-592C-4A45-AB99-92E77B55C495.png",
+      "exported_name": "1D73C359-6BB9-402E-BC7A-933116171483.png",
+      "sha256": "3ae97faf44d3c6cb79c2da410110c09c0e729ed942ab6127ff6dcecf5bbfd7fb",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/snake_simple_setup_real_photo_game.txt",
+      "original_name": "snake_simple_setup_real_photo_game_0_AC261368-C771-47F3-BA2A-0C78DC4E8D82.hierarchy",
+      "exported_name": "32D90B3D-05C8-42E3-921B-B4B451A7FCBE.txt",
+      "sha256": "6decf9ee3861e78ce998b9ba8fec81d3a0063a0a1af1faa7ae3d55e1a8e1edf3",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/snake_simple_setup_real_photo_game.png",
+      "original_name": "snake_simple_setup_real_photo_game_0_64C3725C-D19E-4084-BF26-E4E43E05AFF6.png",
+      "exported_name": "BBF977B7-27D7-4AB5-B082-8AB76E5E3611.png",
+      "sha256": "ae49e6bcb9c417aa3c96e42321a1ed452173846620557eaaf6247a1a7e92abad",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/snake_empty_manual_choice_opens_gallery.txt",
+      "original_name": "snake_empty_manual_choice_opens_gallery_0_B29BE38A-6694-4E67-9DA7-1FE3FB7F9388.hierarchy",
+      "exported_name": "75747206-8DEC-4914-9359-99A47F49BBB4.txt",
+      "sha256": "a02b80c5578c069dccd3ffc2395c1e58505dde6aec974f4b72aa79c9b2b3046f",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/snake_empty_manual_choice_opens_gallery.png",
+      "original_name": "snake_empty_manual_choice_opens_gallery_0_0792B278-3973-4666-B06A-92E4C2926DC8.png",
+      "exported_name": "7ABBF825-1019-4FEF-A9A1-FE0CFE441B67.png",
+      "sha256": "4421e60e4ba3c0977afb4af3989ac52475c47b3268ee7d4c25f610c658cc56e8",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/snake_setup_labelled_options.txt",
+      "original_name": "snake_setup_labelled_options_0_C23017A7-80BA-4F1B-8D5D-E6BD6FF2DD34.hierarchy",
+      "exported_name": "2CF51195-783E-4F8E-8A9F-4F1BBC149701.txt",
+      "sha256": "e73b36a9dd4a5ce05776e7b22921053587590b4698b6fee20f220c37a5a4c082",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/snake_setup_labelled_options.png",
+      "original_name": "snake_setup_labelled_options_0_DDA84CFF-DDC8-4830-AD75-D79AFE81BA31.png",
+      "exported_name": "ECEF57B3-B784-4DD4-9881-D909D5B8EF69.png",
+      "sha256": "318063488973db512b44ad5e846de3c0f966cc8ece564da912d96d3c1b7b6091",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/snake_setup_default_library_cloud_on.txt",
+      "original_name": "snake_setup_default_library_cloud_on_0_9FBD891B-4D5D-422C-A9FE-06C3EF74DD72.hierarchy",
+      "exported_name": "A0D283C6-11A9-4C44-94BD-4D3523748DC6.txt",
+      "sha256": "fe102b37fec8a1afa16757dedbc1490a32e5834f467a7297585f14220af9ce9e",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/snake_setup_default_library_cloud_on.png",
+      "original_name": "snake_setup_default_library_cloud_on_0_55281A87-B7D3-4CCC-BD32-A62A2F42070C.png",
+      "exported_name": "D8315225-B217-438C-8EEA-0FCD565282FB.png",
+      "sha256": "2adf11f4792a0323d687e3c9abff82de66f9fad9eb730a08da2f38c8129f9695",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/pairs_setup_keeps_cloud_opt_out.txt",
+      "original_name": "pairs_setup_keeps_cloud_opt_out_0_565A48DE-0CEB-4E9A-B9DB-04B0E76CF696.hierarchy",
+      "exported_name": "0F46B0CE-DF52-4DD2-B7D7-36CB8B54A600.txt",
+      "sha256": "bb2a11bc6b273a9f790eea097b090a29affe43058ee4ad7a04b5d50883b61134",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/pairs_setup_keeps_cloud_opt_out.png",
+      "original_name": "pairs_setup_keeps_cloud_opt_out_0_DAF117B0-3B48-4E9F-B706-A3F67BC138B9.png",
+      "exported_name": "218A406F-191A-4239-8219-B7B8E2AADE68.png",
+      "sha256": "0027903015298a615f298d5b60af202dec3bdb745aa2530ed1c1cfd1808db95a",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/pairs_setup_default_cloud_on.txt",
+      "original_name": "pairs_setup_default_cloud_on_0_5A2C25AE-3DEF-4C70-B56C-FB53B977D2DF.hierarchy",
+      "exported_name": "A4BA6963-714F-4B2E-B881-285BAD36DF1E.txt",
+      "sha256": "f8144151f555acec2088ba8fd160436e470659e31552bd3008c456ac9a8b1ee0",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/pairs_setup_default_cloud_on.png",
+      "original_name": "pairs_setup_default_cloud_on_0_4FDAF413-FE60-47B9-B166-5E98795AD638.png",
+      "exported_name": "BD5B1284-EF2B-4F5D-9598-A1398377B4A0.png",
+      "sha256": "bbf28a4e9ff11bb8da0a1a883f5f7a63c19b034293e3bf8bf4df4e1d572838eb",
+      "native": true
+    }
+  ]
+}

@@ -12,7 +12,8 @@ enum PhotoGameSource: Equatable, Sendable {
 final class PhotoGamePhotos {
     /// Single authoritative offline scope for Blocks backgrounds AND its existing app photo picker.
     static func offlineCandidates(app: AppModel) -> [MediaAsset] {
-        guard PhotoAccess(PHPhotoLibrary.authorizationStatus(for: .readWrite)).canRead,
+        guard app.gamePhotoScopeReady,
+              PhotoAccess(PHPhotoLibrary.authorizationStatus(for: .readWrite)).canRead,
               VaultConcealment.shared.analysisReady else { return [] }
         return VaultConcealment.shared.visible(app.cleanupMedia.filter { !$0.isVideo }, id: \.id)
     }

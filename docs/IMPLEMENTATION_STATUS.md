@@ -14,7 +14,7 @@ Fotoabschnitte, 2-s-Entdeckung, fortlaufende Levels mit Übertrag und Board-Erha
 Tap-/Wisch-/Drag-Steuerung, Pause, lokale Rekorde und bildfreier Spielstand. Gemeinsame sichere
 Fotoquelle und bestehender Auswahldialog; sämtliche Blocks-Vorschauen offline und ohne Tresor,
 ausgeblendete oder ausgenommene Fotos. 41 UI-Kennungen in 16 Sprachen.
-**PASS: 494 lokale Core-Tests, Quell-/Ressourcen-/Sprachen-/Privacy-Audits und native Syntaxprüfung.**
+**PASS: 498 lokale Core-Tests, Quell-/Ressourcen-/Sprachen-/Privacy-Audits und native Syntaxprüfung.**
 Die neue Freigabe „Du kannst jederzeit minutes brauchen zum testen“ erlaubt native CI; Prüfung und
 anschließend beauftragter interner TestFlight-Upload folgen. Noch keine native Build-/UI-/FPS-Abnahme.
 [Vollständige Implementierung, Dateiliste und Prüfbelege](PHOTO_BLOCKS.md).
@@ -134,7 +134,7 @@ eine kleine lokale 600px-Anfrage, bevor Display-Qualität angefordert wird. Orig
 Player-Bereitschaft werden für eine Entscheidung anhand des sichtbaren Bilds nicht vorausgesetzt.
 Ungesehene Medien bleiben vor versehentlichen Entscheidungen geschützt.
 
-Quellstand `440f7e5`; [CI 38985804949](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38985804949).
+Quellstand `440f7e5`; [CI 38985804989](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38985804989).
 Core **461 PASS**, nativer iOS-Build und **62 Unit-Tests PASS**, iPhone-UI **4/4 PASS** und großes
 Ersatzfenster **4/4 PASS**, jeweils ohne Fehler oder Skip. Gesamter CI-Lauf erfolgreich.
 [Änderung, tatsächliche Ergebnisse und Screenshots](FEED_ICLOUD_RECOVERY.md).
@@ -703,7 +703,7 @@ entfallen nur bei zeitkritischen Gesten. Die echte 1,5-s-Sperre wird zusätzlich
   jeden Fachtest als eigenes frühes Artefakt. Bis zu 120 Minuten; getrennte Wiederholung mit `ui_phase`.
   Große Alt-Artefakte lassen sich mit `collect_run` verlustfrei in herunterladbare Teile aufteilen.
 - Visuell geprüft: Ausgang `38633721469` (2 unterschiedliche PNGs + Video-Endbilder), `38638077269` (31),
-  `38642182043` (25), `38646080655` (33), `38646580594` (191), `38649479126` (6),
+  `38642182043` (25), `38646080655` (33), `38646580594` (191), `38649879126` (6),
   `38650310717` (35 QA + 12 Start, darunter identische Heute-Bilder), `38655279492` Start (14) und Analyse (16). Original-`.xcresult`, Logs und PNGs
   heruntergeladen; Zuordnung über Screenshot-Namen und SHA-256. Artefakt-Sammler-Erfolg gilt nie als App-PASS.
 - Abschließender Stand: Code `90e61d9`; [QA 38672555604](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38672555604)

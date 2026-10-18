@@ -32,6 +32,8 @@ struct LibrarySnapshot: Sendable {
     var byID: [String: MediaAsset] = [:]
     var hiddenAlbumMembers: Set<String> = []
     var excludedAlbumMembers: Set<String> = []
+    var queriedHiddenAlbums: Set<String> = []
+    var queriedExcludedAlbums: Set<String> = []
     var loaded = false
 }
 
@@ -70,6 +72,11 @@ final class AppModel {
     private(set) var visibleMedia: [MediaAsset] = []
     /// Aufräumen, Zahlen, Sammlungen, Monate: zusätzlich ohne ausgenommene Alben.
     private(set) var cleanupMedia: [MediaAsset] = []
+    var gamePhotoScopeReady: Bool {
+        PhotoBlocksPhotos.scopeReady(loaded: snapshot.loaded,
+                                    requestedHidden: Set(settings.hiddenAlbums), appliedHidden: snapshot.queriedHiddenAlbums,
+                                    requestedExcluded: Set(settings.excludedAlbums), appliedExcluded: snapshot.queriedExcludedAlbums)
+    }
     /// Noch zu prüfen – dieselbe Regel wie der Feed (`ReviewQueues.normalQueue`). Einzige Quelle für „Heute“.
     private(set) var pending: [ItemReference] = []
     private(set) var skippedPreviews: Set<ItemReference> = []
@@ -272,6 +279,7 @@ final class AppModel {
             }.value
             guard let self, !Task.isCancelled else { return }
             var s = LibrarySnapshot(all: all, hiddenAlbumMembers: hidden, excludedAlbumMembers: excl, loaded: true)
+            s.queriedHiddenAlbums = Set(hiddenAlbums); s.queriedExcludedAlbums = Set(excluded)
             s.byID = Dictionary(all.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
             self.snapshot = s
             self.isLoadingLibrary = false
@@ -496,7 +504,11 @@ final class AppModel {
             let albumsChanged = s.hiddenAlbums != settings.hiddenAlbums || s.excludedAlbums != settings.excludedAlbums
             settings = s
             Haptics.enabled = s.haptics
-            if albumsChanged { reloadLibraryIfNeeded(force: true) } else if filterChanged { rebuildFiltered() }
+            if albumsChanged {
+                blocks.invalidatePhotos(); blocks.photos.restrictOfflineWindow(to: [])
+                ThumbnailLoader.shared.clear()
+                reloadLibraryIfNeeded(force: true)
+            } else if filterChanged { rebuildFiltered() }
         } catch {
             showError(L("error_settings_not_saved"))
         }
