@@ -180,7 +180,21 @@
   {
     "run_id": 39137466424,
     "source_commit": "73ba4d78911fb399aa2733a4fd8249a40a476f84",
+    "status": "FAIL: BOTTOM-TAB READINESS ASSUMPTION",
+    "scope": "Last scoped genuine Duo inner-display pilot: default native display power, no geometry change, no optional background Xcode/agent export. Exact native case/count/library/dimension/nonblank checks remain.",
+    "native_build": "PASS",
+    "native_capture_tests": {
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0
+    },
+    "app_ui_cases_executed": 1,
+    "reason": "Actual test06 ran99.723s, then its photo-access readiness helper timed out. The helper required a bottom tab bar although production TabView is sidebar-adaptable. No Store PNGs; outer-display diagnostic frames show onboarding then black. Cause of black frames and physical inner-display readiness not established."
+  },
+  {
+    "run_id": 39140177705,
+    "source_commit": "18e0986059bdefd7b1ac49fb9e8711f3fde106f0",
     "status": "NATIVE BUILD IN PROGRESS",
-    "scope": "Last scoped genuine Duo inner-display pilot: default native display power, no geometry change, no optional background Xcode/agent export. Exact native case/count/library/dimension/nonblank checks remain."
+    "scope": "Scoped genuine Duo pilot after correcting a concrete test-only navigation assumption. Wait for existing actual Today Photos control, then still require the independent55-photo inventory/count, native no-failure/no-skip result, exact inner dimensions and nonblank reviewed images. No production app behavior changed."
   }
 ]

@@ -168,11 +168,21 @@ Der native Ergebnisbericht zeigt 0 PASS, 1 Runner-Fehler, 0 SKIP; kein
 PhotoMaid-UI-Fall wurde ausgeführt und kein Store-Bild erzeugt.
 [Unveränderte Ergebnisse und Startfehler](../app-store/current/validation/duo-test-runner-launch-failure/review.json).
 
-Ein letzter gezielter Pilot [39137466424](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39137466424)
+Der anschließende Pilot [39137466424](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39137466424)
 behält die nativen Display-Power-Standards bei und lässt den bisher erfolglosen
 optionalen Apple-Skill-Export weg. Ob einer dieser zusätzlichen Vorgänge den
 Startfehler verursacht hat, ist nicht nachgewiesen. Keine Geometrieänderung
 und keine Lockerung der Bild-/Testabnahme.
+Dieser Lauf erreicht den tatsächlichen UI-Fall, scheitert jedoch nach 99,723 Sekunden
+an `waitForPhotoAccess()`. Dessen bisherige Bedingung verlangt ausschließlich eine
+untere Tab-Leiste; die produktive App verwendet `sidebarAdaptable`. Diese konkrete
+Testannahme wurde durch den vorhandenen tatsächlichen Heute-Foto-Schnellzugriff
+ersetzt. Der folgende unabhängige Nachweis der 55 Fotos bleibt bestehen.
+Die unveränderte Diagnoseaufnahme (1398 × 2034, Außendisplay) zeigt Einführung und
+später schwarze Frames; sie beweist keine gültige Aufnahme des Innendisplays.
+[Abgelehnter Versuch und Befund](../app-store/current/validation/duo-default-display-readiness-failure/review.json).
+[Native Validierung der Testkorrektur 39140177705](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39140177705).
+Keine produktive App-Funktion oder Berechtigung wurde geändert.
 Bisher sind **keine Duo-App-Aufnahmen freigegeben**. Native UI-Ergebnisse,
 äußere App-Aufnahmen, Duo-Vorschauformate, physische Faltabnahme und Hardware-FPS-Messung
 sind damit noch nicht nachgewiesen. Der statische Apple-Skill-Export wird nach zuvor

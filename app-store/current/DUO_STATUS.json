@@ -1,5 +1,5 @@
 {
-  "status": "NATIVE APP INSTALLED; XCTEST RUNNER STARTUP BLOCKED; DEFAULT DISPLAY RETRY IN PROGRESS",
+  "status": "GENUINE SDK AND DEVICE AVAILABLE; CAPTURE READINESS TEST CORRECTED; NATIVE VALIDATION IN PROGRESS",
   "xcode": "Xcode27.1 / 27A9275",
   "sdk": "27.1",
   "runtime": "iOS27.1 / 24A94425",
@@ -90,5 +90,16 @@
   "native_runner_startup_failure_proof": "validation/duo-test-runner-launch-failure/review.json",
   "native_default_display_retry_run_id": 39137466424,
   "native_default_display_retry_source_commit": "73ba4d78911fb399aa2733a4fd8249a40a476f84",
-  "native_default_display_retry_status": "NATIVE BUILD IN PROGRESS"
+  "native_default_display_retry_status": "FAIL: PHOTO-ACCESS READINESS REQUIRED BOTTOM TAB BAR",
+  "native_default_display_retry_build": "PASS",
+  "native_default_display_retry_ui_cases_executed": 1,
+  "native_default_display_retry_summary": {
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0
+  },
+  "native_default_display_retry_proof": "validation/duo-default-display-readiness-failure/review.json",
+  "native_semantic_readiness_run_id": 39140177705,
+  "native_semantic_readiness_source_commit": "18e0986059bdefd7b1ac49fb9e8711f3fde106f0",
+  "native_semantic_readiness_status": "NATIVE BUILD IN PROGRESS"
 }
