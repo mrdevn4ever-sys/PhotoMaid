@@ -102,8 +102,13 @@ final class AppStoreCaptureTests: XCTestCase {
             XCTAssertTrue(app.staticTexts["…"].firstMatch.waitForNonExistence(timeout:40),"Media size must finish loading")
         }
         pause(0.7)
-        let banner = XCUIApplication(bundleIdentifier:"com.apple.springboard").otherElements["NotificationShortLookView"].firstMatch
-        if banner.exists { XCTAssertTrue(banner.waitForNonExistence(timeout:12),"System banner must leave before capture") }
+        let banner = XCUIApplication(bundleIdentifier:"com.apple.springboard").descendants(matching: .any)
+            .matching(NSPredicate(format: "identifier == %@ OR label CONTAINS[c] %@ OR label CONTAINS[c] %@",
+                                  "NotificationShortLookView", "Ready for Apple Intelligence", "Time to experience the new personal intelligence system"))
+            .firstMatch
+        if banner.exists && banner.isHittable {
+            XCTAssertTrue(banner.waitForNonExistence(timeout: 15), "System banner must leave before capture")
+        }
         // One accessibility snapshot/query, rather than one IPC round trip per text.
         let invalid = app.descendants(matching:.any).matching(NSPredicate(
             format:"label CONTAINS %@ OR label CONTAINS %@ OR label MATCHES %@ OR label MATCHES %@",

@@ -38,11 +38,15 @@ def audit_device(root, code, device_class, photos):
     reviews = json.loads((root / 'review/manifest.json').read_text())
     assert reviews and all(sheet['review'] == 'PASS' for sheet in reviews), 'Visual review still pending'
     viewed = set()
+    excluded = set()
     for sheet in reviews:
         for row in sheet['originals']:
             assert digest(root / row['file']) == row['sha256']
             viewed.add(row['file'])
+            if row.get('store_suitability') == 'EXCLUDE':
+                excluded.add(row['file'])
     assert set(originals) <= viewed, 'Native screenshots missing visual review'
+    assert not any(row['native_source'] in excluded for row in uploads), 'An excluded archive image is in the upload selection'
     videos = []
     if device_class != 'iphone-medium':
         for folder, count in [('previews', 3), ('alternatives', 1)]:
