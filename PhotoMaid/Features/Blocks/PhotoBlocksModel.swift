@@ -27,6 +27,7 @@ import UIKit
         best = max(0, archive.best); roundBest = max(0, archive.best)
         discoveredImages = archive.discoveredImages
         self.photos = photos ?? PhotoGamePhotos(); self.save = save
+        seed = archive.photoSeed; source = archive.photoSource
         game.pause() // Restores always require an explicit resume, including celebrations.
     }
 
@@ -86,7 +87,10 @@ import UIKit
         best = max(best, game.score); newBest = game.score > roundBest
     }
     func checkpoint() {
-        do { try save(.init(game: game, best: best, discoveredImages: discoveredImages)); saveFailed = false }
+        do {
+            try save(.init(game: game, best: best, discoveredImages: discoveredImages, photoSeed: seed, photoSource: source))
+            saveFailed = false
+        }
         catch { saveFailed = true }
     }
 

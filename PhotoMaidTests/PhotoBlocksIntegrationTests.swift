@@ -61,12 +61,13 @@ import UIKit
         let records = PhotoGameRecords()
         try kv.set(StoreKeys.gameRecords, records)
         var game = PhotoBlocksGame(seed: 44); game.start(); game.hardDrop()
-        let archive = PhotoBlocksArchive(game: game, best: game.score, discoveredImages: 0)
+        let archive = PhotoBlocksArchive(game: game, best: game.score, discoveredImages: 0, photoSeed: 44, photoSource: .selection)
         try kv.set(StoreKeys.blocksArchive, archive)
         let model = PhotoBlocksModel(archive: kv.get(StoreKeys.blocksArchive)) { try kv.set(StoreKeys.blocksArchive, $0) }
         #expect(model.game.isPaused && model.game.board == game.board && model.best == game.score)
         #expect(kv.get(StoreKeys.gameRecords) == records)
         #expect(model.photos.images.isEmpty && model.currentPhotoID == nil)
+        #expect(model.source == .selection)
     }
 
     @Test func saveFailureKeepsStateAndRetryDoesNotResetBestOrBoard() {

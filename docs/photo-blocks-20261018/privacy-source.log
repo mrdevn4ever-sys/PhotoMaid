@@ -1,0 +1,2 @@
+PASS: PhotoMaid/Resources/PrivacyInfo.xcprivacy tracking=True domains=['googleads.g.doubleclick.net']
+Privacy tracking check: PASS (1 manifests)

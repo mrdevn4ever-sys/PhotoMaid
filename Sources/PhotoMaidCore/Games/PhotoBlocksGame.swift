@@ -191,15 +191,21 @@ public struct PhotoBlocksArchive: Codable, Equatable, Sendable {
     public var game: PhotoBlocksGame?
     public var best: Int
     public var discoveredImages: Int
-    public init(game: PhotoBlocksGame? = nil, best: Int = 0, discoveredImages: Int = 0) {
+    public var photoSeed: UInt64
+    public var photoSource: PhotoBlocksPhotos.Source
+    public init(game: PhotoBlocksGame? = nil, best: Int = 0, discoveredImages: Int = 0,
+                photoSeed: UInt64 = 1, photoSource: PhotoBlocksPhotos.Source = .random) {
         self.game = game?.isValidSnapshot == true ? game : nil; self.best = max(0, best)
         self.discoveredImages = min(max(0, discoveredImages), self.game?.discoveredPhotos ?? 0)
+        self.photoSeed = photoSeed; self.photoSource = photoSource
     }
-    private enum CodingKeys: CodingKey { case game, best, discoveredImages }
+    private enum CodingKeys: CodingKey { case game, best, discoveredImages, photoSeed, photoSource }
     public init(from decoder: any Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         self.init(game: try values.decodeIfPresent(PhotoBlocksGame.self, forKey: .game),
                   best: try values.decodeIfPresent(Int.self, forKey: .best) ?? 0,
-                  discoveredImages: try values.decodeIfPresent(Int.self, forKey: .discoveredImages) ?? 0)
+                  discoveredImages: try values.decodeIfPresent(Int.self, forKey: .discoveredImages) ?? 0,
+                  photoSeed: try values.decodeIfPresent(UInt64.self, forKey: .photoSeed) ?? 1,
+                  photoSource: try values.decodeIfPresent(PhotoBlocksPhotos.Source.self, forKey: .photoSource) ?? .random)
     }
 }

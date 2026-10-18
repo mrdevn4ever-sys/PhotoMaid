@@ -47,11 +47,13 @@ Rekord, Level, Reihen, Foto-Fortschritt und nächste Form. Game Over ergänzt di
 verfügbarem Bild vollständig entdeckten Fotos; neutrale Hintergründe werden nicht als Foto gezählt.
 
 Der vorhandene Core-Data-`KeyValueStore` speichert atomar unter dem neuen Schlüssel `games.blocks.v1`.
-Das Archiv enthält ausschließlich Zahlen, Formen, Board, Beutel und Zeitreste. Keine Bilder,
+Das Archiv enthält Zahlen, Formen, Board, Beutel, Zeitreste sowie Fotoquellen-Typ und Zufalls-Seed. Keine Bilder,
 Klartext-Foto-IDs oder Dateipfade. Alte Snake-/Paare-Rekordformate und Schlüssel bleiben unverändert.
 Beschädigte/unplausible Snapshots werden vor Array-Zugriffen verworfen. Speichern bei gesetzten
 Formen, Phasenwechsel und Pause; Fehler bleiben sichtbar und wiederholbar. Wiederherstellung immer
 pausiert, Fotos werden ausschließlich aus dem aktuell erlaubten Bestand neu aufgelöst.
+Quelle und Seed bleiben erhalten; eigene Auswahl muss nach Prozessneustart erneut gewählt werden,
+statt unbemerkt auf die gesamte Mediathek auszuweichen.
 
 ## Eingaben und Oberfläche
 
@@ -95,8 +97,8 @@ Neueste sortiert Datum/ID, Zufall verwendet einen reproduzierbaren Seed. Keine F
 
 ## Tatsächlich ausgeführte Prüfungen
 
-**PASS, lokal:** Swift 6.4.1 unter Linux, offline aus vorhandenem Toolchain-Cache: 493 Core-Tests
-(469 Swift Testing + 24 XCTest), davon 21 neue Blocks-Tests. Unter anderem Fallen, Boden/Steine,
+**PASS, lokal:** Swift 6.4.1 unter Linux, offline aus vorhandenem Toolchain-Cache: 494 Core-Tests
+(470 Swift Testing + 24 XCTest), davon 22 neue Blocks-Tests. Unter anderem Fallen, Boden/Steine,
 Grenzen/Rotation, Mehrfachreihen und Verdichtung, 1/3/10 Abschnitte, 8+3-Übertrag, Board-Erhalt,
 2-s-Entdeckungsphase, Pause, fortsetzbare Serialisierung, Beutel, Eingabeschwellen und Fotoreihenfolge.
 Je 20 fortlaufende simulierte Levelwechsel auf 6×12, 9×17 und 14×28, mit realem Zustandsübertrag;

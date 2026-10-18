@@ -31,4 +31,18 @@ struct PhotoBlocksPhotosTests {
         #expect(PhotoBlocksPhotos.revealedHeight(strips: 99) == 1)
         #expect(PhotoBlocksPhotos.revealedHeight(strips: -3) == 0)
     }
+    @Test func archiveRetainsPhotoScopeAndSeedWithoutPersistingIdentifiers() throws {
+        let archive = PhotoBlocksArchive(best: 50, photoSeed: 72, photoSource: .selection)
+        let data = try JSONEncoder().encode(archive)
+        let restored = try JSONDecoder().decode(PhotoBlocksArchive.self, from: data)
+        #expect(restored == archive)
+        #expect(restored.photoSource == .selection && restored.photoSeed == 72)
+        let old = try JSONDecoder().decode(PhotoBlocksArchive.self, from: Data("{\"best\":50}".utf8))
+        #expect(old.best == 50 && old.photoSeed == 1 && old.photoSource == .random)
+        let pool = ["a", "b", "c", "d"]
+        #expect(PhotoBlocksPhotos(ids: pool, shuffle: true, seed: restored.photoSeed) ==
+                PhotoBlocksPhotos(ids: pool, shuffle: true, seed: archive.photoSeed))
+        let text = String(decoding: data, as: UTF8.self)
+        #expect(!text.contains("photoID") && !text.contains("thumbnail"))
+    }
 }

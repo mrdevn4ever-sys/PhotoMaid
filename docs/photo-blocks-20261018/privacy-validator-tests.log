@@ -1,0 +1,13 @@
+test_build10_declaration_fails_until_real_domain_is_added (test_check_privacy_manifests.PrivacyTrackingTests.test_build10_declaration_fails_until_real_domain_is_added) ... ok
+test_domains_cannot_be_urls_paths_wildcards_or_empty_strings (test_check_privacy_manifests.PrivacyTrackingTests.test_domains_cannot_be_urls_paths_wildcards_or_empty_strings) ... ok
+test_domains_require_true_in_the_same_manifest (test_check_privacy_manifests.PrivacyTrackingTests.test_domains_require_true_in_the_same_manifest) ... ok
+test_duplicate_keys_and_malformed_plists_are_rejected (test_check_privacy_manifests.PrivacyTrackingTests.test_duplicate_keys_and_malformed_plists_are_rejected) ... ok
+test_ipa_checks_each_framework_manifest_without_merging_into_app (test_check_privacy_manifests.PrivacyTrackingTests.test_ipa_checks_each_framework_manifest_without_merging_into_app) ... ok
+test_preflight_refuses_missing_inputs_and_missing_main_manifest (test_check_privacy_manifests.PrivacyTrackingTests.test_preflight_refuses_missing_inputs_and_missing_main_manifest) ... ok
+test_vendor_manifest_can_omit_both_tracking_keys (test_check_privacy_manifests.PrivacyTrackingTests.test_vendor_manifest_can_omit_both_tracking_keys) ... ok
+test_xml_and_binary_require_actual_booleans_and_domain_arrays (test_check_privacy_manifests.PrivacyTrackingTests.test_xml_and_binary_require_actual_booleans_and_domain_arrays) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.004s
+
+OK

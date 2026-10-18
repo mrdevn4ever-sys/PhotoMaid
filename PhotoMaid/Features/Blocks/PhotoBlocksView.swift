@@ -20,7 +20,7 @@ struct PhotoBlocksView: View {
         .padding(.horizontal, 16).padding(.top, 4).padding(.bottom, 8)
         .background(PhotoBlocksPalette.ink.ignoresSafeArea()).foregroundStyle(.white)
         .tint(PhotoBlocksPalette.accent)
-        .sheet(isPresented: $showPhotos, onDismiss: { model.refreshPhotos(app: app) }) { photoSheet }
+        .sheet(isPresented: $showPhotos, onDismiss: { model.refreshPhotos(app: app); model.checkpoint() }) { photoSheet }
         .onAppear { model.attach(app: app) }
         .onDisappear { model.releaseResources() }
         .onChange(of: scenePhase) { _, phase in
@@ -184,6 +184,7 @@ struct PhotoBlocksView: View {
                     Button { choosePhotos = true } label: {
                         Label(L("blocks_photos"), systemImage: "photo.badge.plus")
                     }.frame(minHeight: 44).accessibilityIdentifier("blocks.picker")
+                        .disabled(!app.library.access.canRead)
                     if !model.selection.isEmpty {
                         Text(verbatim: L("blocks_selected", model.selection.count))
                         Button(L("blocks_clear_selection"), role: .destructive) {
