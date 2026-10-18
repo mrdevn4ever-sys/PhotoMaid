@@ -1,0 +1,140 @@
+[
+  {
+    "sheet": "screenshots-00.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/02-today-and-review/feed-later.png",
+        "sha256": "dbcb908e96a95ddc9bbd6027141887a3fbbcfc4599821bc36065070dc5c9f0d0"
+      },
+      {
+        "file": "all-pages/02-today-and-review/feed.png",
+        "sha256": "7c9a75f9f563916b138edf9dd2916accacc2cdf4232e35d19862ddc2aed9b9c4"
+      },
+      {
+        "file": "all-pages/02-today-and-review/today.png",
+        "sha256": "a1ea7316381f72f08f6de47acade3fa764ecbea3a72ffd56b235e8b846bdc89f"
+      },
+      {
+        "file": "all-pages/03-photos/library.png",
+        "sha256": "abdb956eed4cf9c2b81044e18e2805d157d3c0ff242b4c4433d40701f065c5e5"
+      },
+      {
+        "file": "all-pages/04-cleanup/cleanup.png",
+        "sha256": "39f68b39d29aab044d5faea232db75c7bfb95793ae4152baeeb7bdcd3253e0a1"
+      },
+      {
+        "file": "all-pages/05-studio/collage.png",
+        "sha256": "ebff474ca882cb30e2c3f8da634ef66ea473e19e917cc792420525190798b5d0"
+      },
+      {
+        "file": "all-pages/05-studio/editor-filter.png",
+        "sha256": "31f6079af521e6240aacfcbc7ab7bdd89d0209633cd4d55860f46657e0e9d8d2"
+      },
+      {
+        "file": "all-pages/05-studio/editor-markup.png",
+        "sha256": "cb30cebbaa76e0d56f8a75a0232eaaa53b4b8c15f8b20a891fee7d7dd0f72877"
+      },
+      {
+        "file": "all-pages/05-studio/movie.png",
+        "sha256": "6f43a2a10595c4fb493d44edfe96c307cf4733f965a2f93a8ab3962a5f3f0b12"
+      },
+      {
+        "file": "all-pages/05-studio/studio.png",
+        "sha256": "8fabc32b9b7cac2a938d725fe51496dc14953392ea61cecc5e093e321d193f6f"
+      },
+      {
+        "file": "all-pages/06-vault/vault-files.png",
+        "sha256": "d982ed9c11eb405bdbd88fc9446ad0ce0cec4e58f13d4f18e950359d7f6e0448"
+      },
+      {
+        "file": "all-pages/06-vault/vault-media-picker.png",
+        "sha256": "aa574820d9c886ccbad3223c43b90a31b4cd684c0068112435680d29cd0e2163"
+      }
+    ],
+    "review": "PASS",
+    "review_note": "All contained native screenshots visually inspected. Snake and Memory additionally opened at full size. The ten upload images contain no notification or loading state."
+  },
+  {
+    "sheet": "screenshots-01.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/06-vault/vault-media.png",
+        "sha256": "b8fd86fda47f34fa7b8f7b9cfcd9074898fe90a916f29370a83d67e0a7f55315"
+      },
+      {
+        "file": "all-pages/06-vault/vault-notes.png",
+        "sha256": "b858ac311f9a59521366abd6bd327515d8f155a3de15410d686b15133e9a8f0f"
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-code-empty.png",
+        "sha256": "fb44da6fafa73a083d0315932a2054bd190feee8bedfea33ab7d4552000cf409"
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-entry.png",
+        "sha256": "6a4da29fee4edd89dbec4246c3728b97e58f4aedfcf22f07ff2ec56c25b85d57",
+        "store_suitability": "EXCLUDE",
+        "note": "Authentic setup capture includes a transient simulator Apple Intelligence banner. Retained as a raw archive image only; absent from the ten upload PNGs."
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-introduction.png",
+        "sha256": "8e528fbc9400e71a50542f08c926128b141fbc11d9afbddd7a8668e99eff7259"
+      },
+      {
+        "file": "all-pages/06-vault/vault-tools.png",
+        "sha256": "a19988e950f543938c2ce63fd9f7626d2d112364f3a1513e1ea214632e641805"
+      },
+      {
+        "file": "all-pages/06-vault/vault-trash.png",
+        "sha256": "583be83c168c730a35cd0b9ca163bc051502cb18cf065b2357f8a886365e9acf"
+      },
+      {
+        "file": "all-pages/06-vault/vault-viewer.png",
+        "sha256": "24e3b75a43ac11811b3fd2a83a303f7b1c3184b6e7b0d084083ba6ae89de0121"
+      },
+      {
+        "file": "all-pages/09-photo-games/games-selection.png",
+        "sha256": "2d80a249de118954ae9e5ef37847aa92a46208a66de5f64e1e71053ddb488eb7"
+      },
+      {
+        "file": "all-pages/09-photo-games/memory-play.png",
+        "sha256": "50330ce7bc39d0864e537d1e76b1ab1933ca60978fd37fa274adbf472bc7bcc4"
+      },
+      {
+        "file": "all-pages/09-photo-games/memory-setup.png",
+        "sha256": "f425ecf36a90b92f615260de8d4c3c1efb77c5b311e7700b7952f42ad501be8b"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-pause.png",
+        "sha256": "a7179a66371bcc20b3e12b3740442cfbeb84cff117d4e04854164e4b6ad35d7e"
+      }
+    ],
+    "review": "PASS",
+    "review_note": "All contained native screenshots visually inspected. Snake and Memory additionally opened at full size. The ten upload images contain no notification or loading state."
+  },
+  {
+    "sheet": "screenshots-02.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/09-photo-games/snake-play.png",
+        "sha256": "ee897991423a728eac0e5626c69c61c3b55420431ea5bf066d3c297e58fb8992"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-ready.png",
+        "sha256": "3156a2cb91683bd820a3038972dffb730484130ed41e4aa7269d7c175210a9ec"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-settings.png",
+        "sha256": "b462e1580433cc3c7fe34e2c80a44bfdb4d33801c6dcf0416fe309b87706c588"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-setup.png",
+        "sha256": "21e39922f4b752f4d43c5dd38062ac0327df84fceb26632cfc9cb8139d571ec9"
+      }
+    ],
+    "review": "PASS",
+    "review_note": "All contained native screenshots visually inspected. Snake and Memory additionally opened at full size. The ten upload images contain no notification or loading state."
+  }
+]

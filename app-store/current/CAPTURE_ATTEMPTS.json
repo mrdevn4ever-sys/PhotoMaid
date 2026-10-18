@@ -5,6 +5,34 @@
     "native_build": "PASS",
     "native_capture_tests": "NOT RUN",
     "simulator_preparation": "FAIL",
-    "reason": "Disposable simulator name did not match the existing PhotoMaid Store prefix guard. Renamed the new simulator; guard unchanged."
+    "reason": "Disposable simulator name did not match the existing PhotoMaid Store prefix guard. Renamed the new simulator; guard unchanged.",
+    "workflow_conclusion": "cancelled"
+  },
+  {
+    "run_id": 39116263055,
+    "source_commit": "9cbb380e5f6e06da9b578a02619801f08382582a",
+    "status": "SUPERSEDED",
+    "scope": "en,de,ar; native large and medium iPhone capture",
+    "native_build": "PASS",
+    "native_capture_tests": "FAIL",
+    "reason": "Cold introduction rendered before the capture window marker. The Memory automation also raced its automatic conceal timer. Both test-side waits were corrected; no artificial game state introduced."
+  },
+  {
+    "run_id": 39117469566,
+    "source_commit": "c265a4c6f69a25933ea62b7cc7bdd02bc98a80b1",
+    "status": "CANCELLED",
+    "reason": "Superseded before useful captures after the Memory automation race was diagnosed."
+  },
+  {
+    "run_id": 39118013344,
+    "source_commit": "4b7056674bc64e50d19bf505a48eb492e79f8745",
+    "status": "IN PROGRESS",
+    "scope": "en, both iPhone formats; corrected real UI waits and finite 30fps video export"
+  },
+  {
+    "run_id": 39119694654,
+    "source_commit": "968a08c3fcb93c89ca1f848811f6824885738817",
+    "status": "IN PROGRESS",
+    "scope": "All 15 remaining languages, both native iPhone formats; same real UI capture plus expanded system-banner wait"
   }
 ]
