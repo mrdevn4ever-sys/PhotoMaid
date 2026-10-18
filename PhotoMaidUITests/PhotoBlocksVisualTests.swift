@@ -1,7 +1,7 @@
 import XCTest
 
 /// Real app/PhotoKit test, using the existing disposable store-capture simulator setup.
-/// Not run by a workflow here; must be selected explicitly on a Mac with the fixture library.
+/// Selected explicitly by the existing game workflow on disposable simulators with its fixture library.
 @MainActor final class PhotoBlocksVisualTests: XCTestCase {
     func testStartTouchPausePhotosAndReturnToGames() {
         continueAfterFailure = false
@@ -25,6 +25,7 @@ import XCTest
         blocks.tap()
         let start = app.buttons["blocks.start"]
         XCTAssertTrue(start.waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["blocks.photoPrivacy"].firstMatch.label.contains("iCloud-Fotos laden bei Bedarf"))
         checkpoint("blocks_start", app: app)
         start.tap()
         let board = app.descendants(matching: .any)["blocks.board"].firstMatch

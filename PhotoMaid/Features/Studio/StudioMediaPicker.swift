@@ -10,23 +10,23 @@ struct StudioMediaPicker: View {
     let minimumSelection: Int
     let initial: Set<String>
     let completion: ([String]) -> Void
-    let offlineGame: Bool
+    let secureGame: Bool
     @State private var selection: Set<String>
     @State private var visibilityToken = UUID()
 
     init(allowsVideos: Bool, limit: Int, minimumSelection: Int = 1, initial: Set<String> = [],
-         offlineGame: Bool = false, completion: @escaping ([String]) -> Void) {
+         secureGame: Bool = false, completion: @escaping ([String]) -> Void) {
         self.allowsVideos = allowsVideos
         self.limit = limit
         self.minimumSelection = minimumSelection
         self.initial = initial
         self.completion = completion
-        self.offlineGame = offlineGame
+        self.secureGame = secureGame
         _selection = State(initialValue: initial)
     }
 
     private var media: [MediaAsset] {
-        if offlineGame { return scenePhase == .active ? PhotoGamePhotos.offlineCandidates(app: app) : [] }
+        if secureGame { return scenePhase == .active ? PhotoGamePhotos.gameCandidates(app: app) : [] }
         return app.visibleMedia.filter { allowsVideos || !$0.isVideo }
     }
 
@@ -48,7 +48,7 @@ struct StudioMediaPicker: View {
                         } label: {
                             // Quadratische Zelle (.fit, nicht .fill) mit genau dieser Trefferfläche: ein Tipp wählt nie
                             // die Nachbarzelle (AssetCell nimmt mit dem Bildüberstand keine Tipps an).
-                            AssetCell(assetID: asset.id, allowNetwork: !offlineGame, requiresGameAccess: offlineGame)
+                            AssetCell(assetID: asset.id, allowNetwork: true, requiresGameAccess: secureGame)
                                 .aspectRatio(1, contentMode: .fit)
                                 .overlay(alignment: .topTrailing) {
                                     Image(systemName: selected ? "checkmark.circle.fill" : "circle")
@@ -90,21 +90,21 @@ struct StudioMediaPicker: View {
                     .disabled(selection.count < minimumSelection)
                 }
             }
-            .onReceive(NotificationCenter.default.publisher(for: .analysisVisibilityChanged)) { _ in
-                if offlineGame {
+            .onReceive(NotificationCenter.default.publisher(for: .analysisVisibilityChanged).receive(on: RunLoop.main)) { _ in
+                if secureGame {
                     ThumbnailLoader.shared.clear(); visibilityToken = UUID()
                     selection.formIntersection(Set(media.map(\.id)))
                 }
             }
             .onChange(of: app.library.changeToken) { _, _ in
-                if offlineGame { ThumbnailLoader.shared.clear(); visibilityToken = UUID() }
+                if secureGame { ThumbnailLoader.shared.clear(); visibilityToken = UUID() }
             }
             .onChange(of: app.gamePhotoScopeReady) { _, _ in
-                if offlineGame { ThumbnailLoader.shared.clear(); visibilityToken = UUID() }
+                if secureGame { ThumbnailLoader.shared.clear(); visibilityToken = UUID() }
             }
-            .onDisappear { if offlineGame { ThumbnailLoader.shared.clear() } }
+            .onDisappear { if secureGame { ThumbnailLoader.shared.clear() } }
             .onChange(of: scenePhase) { _, _ in
-                if offlineGame { ThumbnailLoader.shared.clear(); visibilityToken = UUID() }
+                if secureGame { ThumbnailLoader.shared.clear(); visibilityToken = UUID() }
             }
         }
     }

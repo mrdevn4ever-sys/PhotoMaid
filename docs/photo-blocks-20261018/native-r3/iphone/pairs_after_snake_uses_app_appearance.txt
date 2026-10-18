@@ -1,0 +1,144 @@
+Attributes: Application, 0x1064620d0, pid: 26351, label: 'PhotoMaid'
+Element subtree:
+ →Application, 0x1064620d0, pid: 26351, label: 'PhotoMaid'
+    Window (Main), 0x106460bb0, {{0.0, 0.0}, {402.0, 874.0}}, identifier: 'store.capture.feed'
+      Other, 0x106457a80, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x106457ba0, {{0.0, 0.0}, {402.0, 874.0}}
+          Other, 0x1064577e0, {{0.0, 0.0}, {402.0, 874.0}}
+            Other, 0x106457900, {{0.0, 0.0}, {402.0, 874.0}}
+              Other, 0x1064e8030, {{0.0, 0.0}, {402.0, 874.0}}
+                Other, 0x1064e8150, {{0.0, 0.0}, {402.0, 874.0}}
+                  Other, 0x1064e8270, {{0.0, 0.0}, {402.0, 874.0}}
+                    Other, 0x1064e8390, {{0.0, 0.0}, {402.0, 874.0}}
+                      Other, 0x1064e84b0, {{0.0, 0.0}, {402.0, 874.0}}
+                        Other, 0x1064e85d0, {{0.0, 0.0}, {402.0, 874.0}}
+                          Other, 0x1064e86f0, {{0.0, 0.0}, {402.0, 874.0}}
+                            Other, 0x1064e8810, {{0.0, 0.0}, {402.0, 874.0}}
+                              Other, 0x1064e8930, {{0.0, 0.0}, {402.0, 874.0}}
+                                Other, 0x1064e8a50, {{0.0, 0.0}, {402.0, 874.0}}
+                                  Other, 0x1064e8b70, {{0.0, 0.0}, {402.0, 874.0}}
+                                    ScrollView, 0x106775a60, {{0.0, 0.0}, {402.0, 874.0}}
+                                      Other, 0x1067dda30, {{0.0, 62.0}, {402.0, 911.0}}
+                                        StaticText, 0x1067afc00, {{16.0, 79.3}, {93.7, 18.0}}, label: 'Guten Abend'
+                                        StaticText, 0x1067dcbb0, {{16.0, 99.3}, {96.0, 40.7}}, label: 'Heute'
+                                        Button, 0x1067dcfc0, {{319.0, 78.0}, {62.0, 62.0}}, identifier: 'today.settings', label: 'Einstellungen'
+                                        StaticText, 0x1067dc740, {{32.0, 348.0}, {296.3, 74.3}}, identifier: 'today.review', label: 'Noch 24 Fotos und Videos durchsehen, Wische dich durch deine Fotos und Videos.'
+                                          StaticText, 0x1067de740, {{32.0, 348.0}, {267.0, 54.3}}, label: 'Noch 24 Fotos und Videos durchsehen'
+                                          StaticText, 0x1067d9520, {{32.0, 404.3}, {296.3, 18.0}}, label: 'Wische dich durch deine Fotos und Videos.'
+                                        Button, 0x1067dba90, {{32.0, 434.3}, {338.0, 62.0}}, identifier: 'today.review', label: 'Jetzt aufräumen'
+                                        Button, 0x1067df360, {{32.0, 540.3}, {338.0, 48.0}}, label: 'Papierkorb, 0 Elemente'
+                                          Image, 0x1067db030, {{32.0, 544.3}, {40.0, 40.0}}, identifier: 'trash', label: 'Papierkorb'
+                                          StaticText, 0x1067def40, {{84.0, 554.2}, {86.7, 20.3}}, label: 'Papierkorb'
+                                          StaticText, 0x1067c16c0, {{338.7, 555.3}, {9.7, 18.0}}, label: '0'
+                                          Image, 0x1067da7f0, {{362.7, 558.7}, {6.7, 11.7}}, identifier: 'chevron.forward', label: 'Weiter'
+                                        Button, 0x1067d9f90, {{32.0, 588.7}, {338.0, 48.0}}, label: 'Später, 0 Elemente'
+                                          Image, 0x1067c2540, {{32.0, 592.7}, {40.0, 40.0}}, identifier: 'clock', label: 'Uhr'
+                                          StaticText, 0x1067cb550, {{84.0, 602.5}, {53.0, 20.3}}, label: 'Später'
+                                          StaticText, 0x1067dac10, {{338.7, 603.7}, {9.7, 18.0}}, label: '0'
+                                          Image, 0x1067db450, {{362.7, 606.7}, {6.7, 11.7}}, identifier: 'chevron.forward', label: 'Weiter'
+                                        StaticText, 0x1067deb20, {{16.0, 673.0}, {138.7, 24.0}}, label: 'Schnellzugriffe'
+                                        Button, 0x1067ad2e0, {{308.0, 677.7}, {78.0, 18.0}}, label: 'Bearbeiten'
+                                        Button, 0x1067ad400, {{32.0, 724.7}, {338.0, 48.0}}, identifier: 'today.quick.photos', label: 'Fotos, 24'
+                                          Image, 0x1067ad520, {{32.0, 728.7}, {40.0, 40.0}}, identifier: 'photo.on.rectangle', label: 'photo.on.rectangle'
+                                          StaticText, 0x1067ad640, {{84.0, 738.5}, {44.7, 20.3}}, label: 'Fotos'
+                                          StaticText, 0x1067ad760, {{329.0, 739.7}, {19.3, 18.0}}, label: '24'
+                                          Image, 0x1067ad880, {{362.7, 742.7}, {6.7, 11.7}}, identifier: 'chevron.forward', label: 'Weiter'
+                                        Button, 0x1067ad9a0, {{32.0, 773.0}, {338.0, 48.0}}, identifier: 'today.quick.videos', label: 'Videos, Leer'
+                                          Image, 0x1067adac0, {{32.0, 777.0}, {40.0, 40.0}}, identifier: 'video', label: 'Video'
+                                          StaticText, 0x1067adbe0, {{84.0, 786.8}, {54.7, 20.3}}, label: 'Videos'
+                                          StaticText, 0x1067add00, {{338.3, 788.0}, {31.7, 18.0}}, label: 'Leer'
+                                        Button, 0x1067ade20, {{32.0, 821.3}, {338.0, 48.0}}, label: 'Hinzufügen'
+                                          Image, 0x1067adf40, {{32.0, 825.3}, {40.0, 40.0}}, identifier: 'plus', label: 'Hinzufügen'
+                                          StaticText, 0x1067ae060, {{32.0, 821.3}, {338.0, 48.0}}, label: 'Hinzufügen'
+                                        Button, 0x1067c2960, {{16.0, 897.3}, {370.0, 43.7}}, label: 'Gerätespeicher, 246.55 GB von 343.07 GB belegt', value: 72 %
+                                          StaticText, 0x1067c2a80, {{16.0, 905.3}, {97.3, 15.7}}, label: 'Gerätespeicher'
+                                          StaticText, 0x1067c2ba0, {{186.3, 905.3}, {199.7, 15.7}}, label: '246.55 GB von 343.07 GB belegt'
+                                          ProgressIndicator, 0x1067c2cc0, {{16.0, 929.0}, {370.0, 4.0}}, value: 72 %
+                                            ProgressIndicator, 0x1067c2de0, {{16.0, 919.0}, {370.0, 24.0}}, value: 72 %
+                                      Other, 0x1067c2f00, {{369.0, 62.0}, {30.0, 750.0}}, label: 'Vertikaler Rollbalken, 2 Seiten', value: 0 %
+                                        Other, 0x1067c3020, {{396.0, 65.0}, {3.0, 645.7}}
+                                      Other, 0x1067c3140, {{369.0, 62.0}, {30.0, 750.0}}, label: 'Vertikaler Rollbalken, 2 Seiten', value: 0 %
+                                        Other, 0x1067c3260, {{396.0, 65.0}, {3.0, 645.7}}
+                            Other, 0x1067c3380, {{0.0, 0.0}, {402.0, 874.0}}
+                              Other, 0x1067c34a0, {{0.0, 0.0}, {402.0, 874.0}}
+                Other, 0x1067c35c0, {{0.0, 791.0}, {402.0, 83.0}}
+                  Other, 0x1067c39e0, {{0.0, 0.0}, {402.0, 874.0}}
+                  Other, 0x1067c3b00, {{0.0, 791.0}, {402.0, 83.0}}
+              Button, 0x1067c3c20, {{16.0, 70.0}, {48.0, 48.0}}, identifier: 'feed.close', label: 'Schließen'
+              Button, 0x1067c3d40, {{76.0, 70.0}, {48.0, 48.0}}, identifier: 'feed.memory', label: 'Kurze Pause'
+              StaticText, 0x1067c3e60, {{156.8, 75.7}, {88.3, 36.7}}, identifier: 'feed.position', label: 'Aufräumen, 1 von 24'
+                StaticText, 0x1067c3f80, {{156.8, 75.7}, {88.3, 20.3}}, label: 'Aufräumen'
+                StaticText, 0x1067c40a0, {{176.0, 98.0}, {50.0, 14.3}}, label: '1 von 24'
+              Button, 0x1067c41c0, {{278.0, 70.0}, {48.0, 48.0}}, label: 'Reihenfolge'
+                Button, 0x1067c42e0, {{278.0, 70.0}, {48.0, 48.0}}
+                  Image, 0x1067c4400, {{278.0, 70.0}, {48.0, 48.0}}, identifier: 'arrow.up.arrow.down', label: 'Sortieren'
+              Button, 0x1067c4520, {{338.0, 70.0}, {48.0, 48.0}}, identifier: 'arrow.uturn.backward', label: 'Rückgängig', Disabled
+              Other, 0x1067c4640, {{8.0, 130.0}, {386.0, 618.3}}, identifier: 'feed.stage', label: 'Aktuelles Foto oder Video', value: 18. September 2026...
+                Other, 0x1067b0f10, {{19.6, 148.6}, {362.8, 581.2}}, identifier: 'feed.media'
+                  Image, 0x1067b1030, {{19.6, 212.2}, {362.8, 454.0}}
+                Other, 0x1067b1150, {{8.0, 130.0}, {386.0, 618.3}}, identifier: 'feed.media'
+                  Image, 0x1067b1270, {{8.0, 197.7}, {386.0, 483.0}}
+              StaticText, 0x1067c4950, {{16.0, 760.3}, {161.3, 15.7}}, label: '18. September 2026 · Foto'
+              Button, 0x1067c4a70, {{20.0, 788.0}, {44.0, 44.0}}, identifier: 'heart', label: 'Als Favorit markieren', value: Kein Favorit
+              Button, 0x1067c4b90, {{64.0, 788.0}, {44.0, 44.0}}, identifier: 'square.and.arrow.up', label: 'Teilen'
+              Button, 0x1067c4cb0, {{108.0, 788.0}, {44.0, 44.0}}, identifier: 'rectangle.stack.badge.plus', label: 'Zu Album hinzufügen'
+              Button, 0x1067c4dd0, {{152.0, 788.0}, {44.0, 44.0}}, identifier: 'pencil', label: 'Bearbeiten'
+              Button, 0x1067c4ef0, {{196.0, 788.0}, {44.0, 44.0}}, label: 'Weitere Aktionen'
+                Button, 0x1067c5010, {{196.0, 788.0}, {44.0, 44.0}}
+                  Image, 0x1067c5130, {{196.0, 788.0}, {44.0, 44.0}}, identifier: 'ellipsis', label: 'Weitere'
+              Button, 0x1067c5250, {{340.7, 800.7}, {33.3, 18.7}}, identifier: 'feed.dock', label: 'Papierkorb: 0'
+                Image, 0x1067c5370, {{340.7, 800.7}, {16.3, 18.7}}, identifier: 'trash', label: 'Papierkorb'
+                StaticText, 0x1067c5490, {{364.3, 801.0}, {9.7, 18.0}}, label: '0'
+      Other, 0x1067c55b0, {{0.0, 0.0}, {402.0, 874.0}}
+        Other, 0x1067c56d0, {{0.0, 0.0}, {402.0, 874.0}}
+          Other, 0x1067ddda0, {{0.0, 0.0}, {402.0, 874.0}}
+            Other, 0x1067ddec0, {{0.0, 0.0}, {402.0, 874.0}}
+              NavigationBar, 0x1067ddfe0, {{0.0, 62.0}, {402.0, 54.0}}, identifier: 'Paare'
+                Other, 0x1067de100, {{20.0, 66.0}, {99.0, 36.0}}, identifier: 'memory.close', label: 'Schließen'
+                  Other, 0x1067de220, {{20.0, 66.0}, {99.0, 36.0}}
+                    Button, 0x1067de340, {{20.0, 66.0}, {99.0, 36.0}}, identifier: 'memory.close', label: 'Schließen'
+                StaticText, 0x1067b9f50, {{178.3, 73.7}, {45.3, 20.7}}, label: 'Paare'
+                Other, 0x1067ba070, {{311.3, 66.0}, {70.7, 36.0}}, label: 'Spiele'
+                  Other, 0x1067ba190, {{311.3, 66.0}, {70.7, 36.0}}
+                    Button, 0x1067ba2b0, {{311.3, 66.0}, {70.7, 36.0}}, label: 'Spiele'
+              Other, 0x1067ba3d0, {{0.0, 0.0}, {402.0, 874.0}}
+                Other, 0x1067ba4f0, {{0.0, 0.0}, {402.0, 874.0}}
+                  Other, 0x1067ba610, {{0.0, 0.0}, {402.0, 874.0}}
+                    Other, 0x1067ba730, {{0.0, 0.0}, {402.0, 874.0}}
+                      ScrollView, 0x1067ba850, {{0.0, 0.0}, {402.0, 874.0}}
+                        Other, 0x1067ba970, {{0.0, 0.0}, {402.0, 874.0}}
+                          Other, 0x1067baa90, {{0.0, 0.0}, {402.0, 170.8}}
+                        Other, 0x1067babb0, {{0.0, 0.0}, {402.0, 874.0}}
+                        Other, 0x1067bacd0, {{0.0, 116.0}, {402.0, 612.0}}
+                          StaticText, 0x1067badf0, {{54.7, 244.0}, {292.7, 20.3}}, label: 'Finde alle Fotopaare in deinem Tempo.'
+                          StaticText, 0x1067baf10, {{32.0, 302.3}, {70.0, 14.3}}, label: 'Deine Fotos'
+                          Button, 0x1067bb030, {{32.0, 322.7}, {193.0, 34.3}}, identifier: 'memory.source', label: 'Bildquelle, Gesamte Mediathek'
+                            StaticText, 0x1067bb150, {{44.0, 329.7}, {152.7, 20.3}}, label: 'Gesamte Mediathek'
+                          StaticText, 0x1067bb270, {{32.0, 377.0}, {100.0, 14.3}}, label: 'Anzahl der Paare'
+                          Button, 0x1067bb390, {{32.0, 397.3}, {196.3, 34.3}}, identifier: 'memory.size', label: 'Anzahl der Paare, 12 Paare (24 Karten)'
+                            StaticText, 0x1067bb4b0, {{43.7, 404.3}, {156.0, 20.3}}, label: '12 Paare (24 Karten)'
+                          Switch, 0x1067bb5d0, {{32.0, 449.7}, {338.0, 28.0}}, identifier: 'memory.cloud', label: 'iCloud-Fotos laden', value: 0
+                            StaticText, 0x1067bb6f0, {{32.0, 454.7}, {130.3, 18.0}}, label: 'iCloud-Fotos laden'
+                            Switch, 0x1067bb810, {{309.0, 449.7}, {63.0, 28.0}}, value: 0
+                          StaticText, 0x1067bb930, {{32.0, 483.7}, {330.3, 15.7}}, label: 'Fehlende Fotos werden bei Bedarf aus iCloud geladen.'
+                          StaticText, 0x1067bba50, {{32.0, 515.3}, {244.7, 15.7}}, label: 'Deine Originalfotos bleiben unverändert.'
+                          Button, 0x1067bbb70, {{16.0, 567.0}, {370.0, 50.3}}, identifier: 'memory.startPhotos', label: 'Spielen'
+                            Image, 0x1067bbc90, {{161.7, 584.7}, {13.3, 15.0}}, identifier: 'play.fill', label: 'Wiedergeben'
+                            StaticText, 0x1067bbdb0, {{16.0, 567.0}, {370.0, 50.3}}, label: 'Spielen'
+                          Button, 0x1067bbed0, {{66.0, 637.3}, {270.3, 34.3}}, identifier: 'memory.startMotifs', label: 'Ohne Fotos spielen · 6 Paare'
+                            Image, 0x1067bbff0, {{79.3, 645.3}, {18.0, 18.3}}, identifier: 'sun.max', label: 'Helligkeit Höher'
+                            StaticText, 0x1067bc110, {{66.0, 637.3}, {270.3, 34.3}}, label: 'Ohne Fotos spielen · 6 Paare'
+                          Button, 0x1067bc230, {{135.7, 691.7}, {131.0, 20.3}}, label: 'Runde fortsetzen'
+                        Other, 0x1067bc350, {{369.0, 116.0}, {30.0, 696.0}}, label: 'Vertikaler Rollbalken, 1 Seite', value: 0 %
+                          Other, 0x1067bc470, {{396.0, 128.7}, {3.0, 680.3}}
+                        Other, 0x1067bc590, {{369.0, 116.0}, {30.0, 696.0}}, label: 'Vertikaler Rollbalken, 1 Seite', value: 0 %
+                          Other, 0x1067bc6b0, {{396.0, 128.7}, {3.0, 680.3}}
+              Other, 0x1067bc7d0, {{0.0, 0.0}, {402.0, 874.0}}
+                Other, 0x1067bc8f0, {{0.0, 0.0}, {402.0, 874.0}}
+Path to element:
+ →Application, 0x1064620d0, pid: 26351, label: 'PhotoMaid'
+Query chain:
+ →Find: Target Application 'com.mrdevn4ever.photomaid'
+  Output: {
+    Application, 0x106587fa0, pid: 26351, label: 'PhotoMaid'
+  }

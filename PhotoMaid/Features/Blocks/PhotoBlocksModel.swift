@@ -103,9 +103,9 @@ import UIKit
     }
 
     func refreshPhotos(app: AppModel) {
-        let safe = PhotoGamePhotos.offlineCandidates(app: app)
+        let safe = PhotoGamePhotos.gameCandidates(app: app)
         let allowed = Set(safe.map(\.id))
-        photos.restrictOfflineWindow(to: allowed)
+        photos.restrictBackgroundWindow(to: allowed)
         selection.removeAll { !allowed.contains($0) }
         let candidates: [String]
         switch source {
@@ -130,7 +130,7 @@ import UIKit
     func releaseResources() { pause(); attached = false; photos.clear() }
     func prepareWindow(app: AppModel) {
         guard attached else { return }
-        photos.prepareOfflineWindow([sequence.id(at: game.level), sequence.id(at: game.level + 1)].compactMap { $0 },
+        photos.prepareBackgroundWindow([sequence.id(at: game.level), sequence.id(at: game.level + 1)].compactMap { $0 },
                                     previews: app.previews, targetSize: targetSize)
     }
     func setDisplaySize(_ size: CGSize, scale: CGFloat, app: AppModel) {

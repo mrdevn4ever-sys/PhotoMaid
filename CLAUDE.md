@@ -93,7 +93,8 @@ Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E19) – ni
 ## Befehle
 
 Aktuellster Foto-Blocks-Auftrag (18.10.2026): Foto-Enthüllung und eigene Blocklogik im bestehenden
-Spielebereich; ausschließlich lokale Fotos, einschließlich der Auswahldialog-Vorschauen. Tresor,
+Spielebereich. Neueste Korrektur: „Icloud ist ein muss auch bei blocks“ – iCloud-Fotos standardmäßig
+über Apples Photos-Framework laden, auch im Auswahldialog. Keine externen Bild-Uploads. Tresor,
 ausgeblendete und ausgenommene Medien zentral ausschließen. Snake bleibt gegenüber dem Arbeitsstand
 vor diesem Auftrag unverändert. TestFlight ist mit „Sobald fertig mach testflight“ ausdrücklich beauftragt.
 Anschließend „Du kannst jederzeit minutes brauchen zum testen“: CI-Minuten für native Prüfungen

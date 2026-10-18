@@ -1,4 +1,4 @@
 PASS: Snake byte-identical to task start; existing records formats unchanged
-PASS: central offline scope, guarded two-image window, offline picker, fixed reveal coordinates, weak single clock
-PASS: 40 Blocks strings in all 16 locales; native recursive target inclusion and navigation
+PASS: central safe scope, guarded two-image window, iCloud backgrounds and picker, fixed reveal coordinates, weak single clock
+PASS: 41 Blocks strings in all 16 locales; native recursive target inclusion and navigation
 STATIC SOURCE AUDIT: no iOS type check, device privacy test or FPS measurement claimed

@@ -21,7 +21,7 @@ native = '\n'.join(p.read_text() for p in (ROOT/'PhotoMaid/Features/Blocks').glo
 core = '\n'.join(p.read_text() for p in (ROOT/'Sources/PhotoMaidCore/Games').glob('PhotoBlocks*.swift'))
 assert all(word not in native + core for word in ['URLSession', 'CloudKit', 'Vision', 'loadTransferable', 'PhotosPicker', 'AdMob', 'NotificationRequest'])
 assert 'PHCachingImageManager' not in native, 'Must reuse existing photo managers'
-assert 'offlineGame: true' in native
+assert 'secureGame: true' in native
 assert 'game.phase != .discovered' in read('PhotoMaid/Features/Blocks/PhotoBlocksBoard.swift')
 assert '.id(game.level)' in read('PhotoMaid/Features/Blocks/PhotoBlocksBoard.swift')
 assert 'PhotoBlocksPhotos.revealedHeight(strips:' in native
@@ -29,16 +29,17 @@ assert '.analysisVisibilityChanged' in native and 'model.pause()' in native
 assert '[weak self, weak app]' in native
 
 loader = read('PhotoMaid/Features/Games/PhotoGamePhotos.swift')
-offline = loader[loader.index('func prepareOfflineWindow'):loader.index('@discardableResult func validatePhotos')]
-assert 'allowNetwork: false' in offline and 'exactSize: true' in offline and '.prefix(2)' in offline
-assert 'self.permitted([id])' in offline and 'self.loadID == token' in offline
-scope = loader[loader.index('static func offlineCandidates'):loader.index('private(set) var photoIDs')]
+background = loader[loader.index('func prepareBackgroundWindow'):loader.index('@discardableResult func validatePhotos')]
+assert 'allowNetwork: Bool = true' in background and 'allowNetwork: allowNetwork' in background
+assert 'exactSize: true' in background and '.prefix(2)' in background
+assert 'self.permitted([id])' in background and 'self.loadID == token' in background
+scope = loader[loader.index('static func gameCandidates'):loader.index('private(set) var photoIDs')]
 for guard in ['gamePhotoScopeReady', 'canRead', 'analysisReady', 'VaultConcealment.shared.visible', 'app.cleanupMedia', '!$0.isVideo']:
     assert guard in scope, guard
 components = read('PhotoMaid/DesignSystem/Components.swift')
-assert 'guard allowNetwork, !Task.isCancelled else { return nil }' in components
+assert 'guard allowNetwork, !Task.isCancelled, permitted() else { return nil }' in components
 picker = read('PhotoMaid/Features/Studio/StudioMediaPicker.swift')
-assert 'PhotoGamePhotos.offlineCandidates(app: app)' in picker and 'allowNetwork: !offlineGame' in picker
+assert 'PhotoGamePhotos.gameCandidates(app: app)' in picker and 'allowNetwork: true, requiresGameAccess: secureGame' in picker
 
 catalog = json.loads(read('PhotoMaid/Resources/Localizable.xcstrings'))['strings']
 source = json.loads(read('PhotoMaid/Resources/ios_strings.json'))
@@ -56,6 +57,6 @@ assert any(entry.get('path') == 'PhotoMaid' for entry in spec['targets']['PhotoM
 assert 'selected = .blocks' in read('PhotoMaid/Features/Games/PhotoGamesView.swift')
 assert 'games.blocks.v1' in read('PhotoMaid/Persistence/KeyValueStore.swift')
 print('PASS: Snake byte-identical to task start; existing records formats unchanged')
-print('PASS: central offline scope, guarded two-image window, offline picker, fixed reveal coordinates, weak single clock')
+print('PASS: central safe scope, guarded two-image window, iCloud backgrounds and picker, fixed reveal coordinates, weak single clock')
 print('PASS: 41 Blocks strings in all 16 locales; native recursive target inclusion and navigation')
 print('STATIC SOURCE AUDIT: no iOS type check, device privacy test or FPS measurement claimed')

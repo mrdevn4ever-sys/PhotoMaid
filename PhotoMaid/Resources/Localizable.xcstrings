@@ -30634,97 +30634,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "لا توجد صورة محلية. يستمر اللعب بخلفية محايدة."
+            "value": "لا توجد صورة متاحة. يستمر اللعب بخلفية محايدة."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kein lokales Foto verfügbar. Du spielst mit neutralem Hintergrund weiter."
+            "value": "Kein Foto verfügbar. Du spielst mit neutralem Hintergrund weiter."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "No local photo available. Play continues with a neutral background."
+            "value": "No photo available. Play continues with a neutral background."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "No hay foto local disponible. Puedes seguir con un fondo neutro."
+            "value": "No hay foto disponible. Puedes seguir con un fondo neutro."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aucune photo locale disponible. La partie continue sur un fond neutre."
+            "value": "Aucune photo disponible. La partie continue sur un fond neutre."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nessuna foto locale disponibile. La partita continua con uno sfondo neutro."
+            "value": "Nessuna foto disponibile. La partita continua con uno sfondo neutro."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "端末内の写真がありません。無地の背景で続けられます。"
+            "value": "利用できる写真がありません。無地の背景で続けられます。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "기기에 사진이 없습니다. 기본 배경으로 계속 플레이할 수 있습니다."
+            "value": "사용 가능한 사진이 없습니다. 기본 배경으로 계속 플레이할 수 있습니다."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Geen lokale foto beschikbaar. Je speelt verder met een neutrale achtergrond."
+            "value": "Geen foto beschikbaar. Je speelt verder met een neutrale achtergrond."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Brak lokalnego zdjęcia. Gra trwa dalej z neutralnym tłem."
+            "value": "Brak dostępnego zdjęcia. Gra trwa dalej z neutralnym tłem."
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sem fotografia local disponível. O jogo continua com um fundo neutro."
+            "value": "Sem fotografia disponível. O jogo continua com um fundo neutro."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nicio fotografie locală disponibilă. Jocul continuă cu fundal neutru."
+            "value": "Nicio fotografie disponibilă. Jocul continuă cu fundal neutru."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Нет локального фото. Игра продолжается с нейтральным фоном."
+            "value": "Нет доступного фото. Игра продолжается с нейтральным фоном."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Yerel fotoğraf yok. Oyun nötr arka planla devam eder."
+            "value": "Fotoğraf yok. Oyun nötr arka planla devam eder."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Немає локального фото. Гра триває з нейтральним тлом."
+            "value": "Немає доступного фото. Гра триває з нейтральним тлом."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "暂无本地照片，将使用中性背景继续游戏。"
+            "value": "暂无可用照片，将使用中性背景继续游戏。"
           }
         }
       }
@@ -32042,107 +32042,6 @@
         }
       }
     },
-    "blocks_offline": {
-      "extractionState": "manual",
-      "localizations": {
-        "ar": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "صور هذا الـ iPhone فقط، دون تنزيل من iCloud. تبقى صور الخزنة والصور المخفية والمستبعدة محمية."
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nur Fotos auf diesem iPhone. Keine iCloud-Downloads. Tresor und ausgeblendete oder ausgenommene Fotos bleiben geschützt."
-          }
-        },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Only photos on this iPhone. No iCloud downloads. Vault, hidden and excluded photos stay protected."
-          }
-        },
-        "es": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Solo fotos de este iPhone, sin descargas de iCloud. La caja fuerte y las fotos ocultas o excluidas siguen protegidas."
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Uniquement les photos de cet iPhone, sans téléchargement iCloud. Coffre-fort, photos masquées et exclues restent protégés."
-          }
-        },
-        "it": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Solo foto su questo iPhone, senza download da iCloud. Foto della cassaforte, nascoste o escluse restano protette."
-          }
-        },
-        "ja": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "このiPhone内の写真のみ。iCloudからダウンロードしません。金庫・非表示・除外された写真は保護されます。"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "이 iPhone의 사진만 사용하며 iCloud에서 다운로드하지 않습니다. 금고, 숨김 및 제외된 사진은 보호됩니다."
-          }
-        },
-        "nl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alleen foto’s op deze iPhone, zonder iCloud-downloads. Kluisfoto’s en verborgen of uitgesloten foto’s blijven beschermd."
-          }
-        },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Tylko zdjęcia na tym iPhonie, bez pobierania z iCloud. Zdjęcia z sejfu, ukryte i wykluczone pozostają chronione."
-          }
-        },
-        "pt-PT": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Apenas fotografias neste iPhone, sem transferências do iCloud. Cofre, fotografias ocultas e excluídas continuam protegidos."
-          }
-        },
-        "ro": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Doar fotografii de pe acest iPhone, fără descărcări iCloud. Seiful și fotografiile ascunse sau excluse rămân protejate."
-          }
-        },
-        "ru": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Только фото на этом iPhone, без загрузок из iCloud. Сейф, скрытые и исключённые фото защищены."
-          }
-        },
-        "tr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yalnızca bu iPhone’daki fotoğraflar. iCloud indirmesi yok. Kasa, gizli ve hariç tutulan fotoğraflar korunur."
-          }
-        },
-        "uk": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Лише фото на цьому iPhone, без завантажень з iCloud. Сховище, приховані та виключені фото захищено."
-          }
-        },
-        "zh-Hans": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "仅使用此 iPhone 上的照片，不从 iCloud 下载。保险库、隐藏及排除的照片始终受到保护。"
-          }
-        }
-      }
-    },
     "blocks_over": {
       "extractionState": "manual",
       "localizations": {
@@ -32442,6 +32341,107 @@
           "stringUnit": {
             "state": "translated",
             "value": "已暂停"
+          }
+        }
+      }
+    },
+    "blocks_photo_privacy": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تُنزّل صور iCloud عند الحاجة. تبقى صور الخزنة والصور المخفية والمستبعدة محمية."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud-Fotos laden bei Bedarf. Tresor und ausgeblendete oder ausgeschlossene Fotos bleiben geschützt."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud photos download when needed. Vault, hidden and excluded photos stay protected."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las fotos de iCloud se descargan cuando hace falta. Las fotos de la caja fuerte, ocultas y excluidas siguen protegidas."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les photos iCloud sont téléchargées au besoin. Les photos du coffre-fort, masquées et exclues restent protégées."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le foto iCloud vengono scaricate quando servono. Foto della cassaforte, nascoste ed escluse restano protette."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "必要に応じてiCloud写真を読み込みます。金庫・非表示・除外された写真は保護されます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "필요할 때 iCloud 사진을 다운로드합니다. 금고, 숨김 및 제외된 사진은 보호됩니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud-foto’s worden zo nodig gedownload. Kluisfoto’s en verborgen of uitgesloten foto’s blijven beschermd."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zdjęcia iCloud są pobierane w razie potrzeby. Zdjęcia z sejfu, ukryte i wykluczone pozostają chronione."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As fotografias do iCloud são transferidas quando necessário. Cofre, fotografias ocultas e excluídas continuam protegidos."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotografiile iCloud se descarcă la nevoie. Fotografiile din seif, ascunse și excluse rămân protejate."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Фото iCloud загружаются при необходимости. Сейф, скрытые и исключённые фото остаются защищены."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud fotoğrafları gerektiğinde indirilir. Kasa, gizli ve hariç tutulan fotoğraflar korunur."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Фото iCloud завантажуються за потреби. Сховище, приховані та виключені фото залишаються захищеними."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要时自动下载 iCloud 照片。保险库、隐藏及排除的照片始终受到保护。"
           }
         }
       }

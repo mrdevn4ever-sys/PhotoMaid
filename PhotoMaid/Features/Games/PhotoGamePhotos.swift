@@ -10,8 +10,9 @@ enum PhotoGameSource: Equatable, Sendable {
 /// Separate preview storage per game: loading Snake pictures never replaces a Memory round.
 @MainActor @Observable
 final class PhotoGamePhotos {
-    /// Single authoritative offline scope for Blocks backgrounds AND its existing app photo picker.
-    static func offlineCandidates(app: AppModel) -> [MediaAsset] {
+    /// Single authoritative safe scope for Blocks backgrounds AND its existing app photo picker.
+    /// Availability in iCloud never bypasses the same permission, album and vault filters.
+    static func gameCandidates(app: AppModel) -> [MediaAsset] {
         guard app.gamePhotoScopeReady,
               PhotoAccess(PHPhotoLibrary.authorizationStatus(for: .readWrite)).canRead,
               VaultConcealment.shared.analysisReady else { return [] }
@@ -123,24 +124,27 @@ final class PhotoGamePhotos {
     func cancelLoading() { loadID = UUID(); loadingTask?.cancel(); loadingTask = nil; isLoading = false }
 
     /// Secure background window for Foto Blocks, reusing this central loader and PreviewPipeline.
-    /// At most current + next are retained; no disk cache, original-image import or iCloud request.
-    func prepareOfflineWindow(_ selection: [String], previews: PreviewPipeline, targetSize: CGSize) {
-        prepareOfflineWindow(selection) { id in
-            let result = await previews.image(for: id, targetSize: targetSize, allowNetwork: false,
+    /// At most current + next are retained. iCloud downloads use Apple's existing Photos pipeline.
+    func prepareBackgroundWindow(_ selection: [String], previews: PreviewPipeline, targetSize: CGSize) {
+        prepareBackgroundWindow(selection) { id, allowNetwork in
+            let result = await previews.image(for: id, targetSize: targetSize, allowNetwork: allowNetwork,
                                               contentMode: .aspectFit, exactSize: true)
             if case .image(let image) = result { return image }
             return nil
         }
     }
 
-    func prepareOfflineWindow(_ selection: [String], load: @escaping @MainActor (String) async -> UIImage?) {
+    func prepareBackgroundWindow(_ selection: [String], allowNetwork: Bool = true,
+                                 load: @escaping @MainActor (String, Bool) async -> UIImage?) {
         var seen = Set<String>()
         let wanted = selection.filter { seen.insert($0).inserted && permitted([$0]) }.prefix(2)
         let ids = Array(wanted)
-        guard ids != photoIDs || ids.contains(where: { images[$0] == nil }) else { return }
+        let sameWindow = ids == photoIDs && allowsCloud == allowNetwork
+        // Library metadata refreshes must not restart an in-flight iCloud download.
+        guard !sameWindow || (!isLoading && ids.contains(where: { images[$0] == nil })) else { return }
         cancelLoading()
         photoIDs = ids; images = images.filter { ids.contains($0.key) && permitted([$0.key]) }
-        allowsCloud = false; randomSource = nil; error = nil
+        allowsCloud = allowNetwork; randomSource = nil; error = nil
         let token = loadID
         isLoading = !ids.isEmpty
         loadingTask = Task { [weak self] in
@@ -151,7 +155,7 @@ final class PhotoGamePhotos {
             for id in ids {
                 guard !Task.isCancelled, self.loadID == token else { return }
                 if self.images[id] != nil { continue }
-                let image = await load(id)
+                let image = await load(id, allowNetwork)
                 guard !Task.isCancelled, self.loadID == token, self.permitted([id]) else { return }
                 if let image { self.images[id] = image }
             }
@@ -159,7 +163,8 @@ final class PhotoGamePhotos {
     }
 
     /// Fail closed when permissions/exclusions change, including pending requests and cached images.
-    func restrictOfflineWindow(to visible: Set<String>) {
+    func restrictBackgroundWindow(to visible: Set<String>) {
+        guard visibleIDs != visible || photoIDs.contains(where: { !permitted([$0]) }) else { return }
         visibleIDs = visible
         cancelLoading()
         photoIDs = photoIDs.filter { permitted([$0]) }

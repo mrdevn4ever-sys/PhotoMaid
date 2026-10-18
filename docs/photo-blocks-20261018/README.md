@@ -4,8 +4,9 @@
 
 Lokale Ergebnisse: **498 Core-Tests PASS** (474 Swift Testing + 24 XCTest), **26 neue Blocks-Tests**;
 15 native Swift-Dateien syntaktisch geprüft (13 Produktion + 2 Tests), **kein lokaler iOS-Build**.
-Native CI und anschließend ausdrücklich beauftragter interner TestFlight-Upload sind nach
-„Du kannst jederzeit minutes brauchen zum testen“ freigegeben und werden ergänzt.
+**Native CI PASS:** echter iOS-Build und 73 native Unit-Tests; iPhone 2/2 und großes Simulatorfenster
+2/2 UI-Tests ohne Fehler/Skip, [Lauf 39175702951](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39175702951).
+Alle 26 nativen Screenshots sind geprüft. Interner TestFlight-Upload folgt mit erneuten Unit-Tests.
 
 ## Geänderte Dateien für diesen Blocks-Auftrag
 
@@ -64,3 +65,26 @@ ist bei Erfolg leer; Syntax-Parsing prüft keine Apple-Typen oder Laufzeitdarste
 Die statische PNG wurde angesehen: Kontrast, korrektes Ausblenden der Steine bei 100 %, unterschiedliches
 Folgefoto, 10-%-Übertrag und Erhalt der verbleibenden Steine nachvollziehbar. Das beweist keine native
 SwiftUI-Darstellung oder 60 FPS. Native Screenshots werden erst nach echter Simulatoraufnahme so benannt.
+
+## Native Simulatoraufnahmen
+
+Aktueller UI-Quellstand `ace6169`, Originaldateien ohne Retusche/Neuberechnung:
+
+| Zustand | iPhone 17 | Großes Simulatorfenster |
+|---|---|---|
+| Start | [PNG](native-r3/iphone/blocks_start.png) | [PNG](native-r3/expanded-window/blocks_start.png) |
+| Spiel | [PNG](native-r3/iphone/blocks_playing.png) | [PNG](native-r3/expanded-window/blocks_playing.png) |
+| Pause | [PNG](native-r3/iphone/blocks_paused.png) | [PNG](native-r3/expanded-window/blocks_paused.png) |
+| Fotoquelle | [PNG](native-r3/iphone/blocks_photos.png) | [PNG](native-r3/expanded-window/blocks_photos.png) |
+
+[SHA-256, originale Attachmentnamen, Geräte und Quellstand](native-r3/captures.json).
+Die Ansichten stammen aus echten SwiftUI-/UIKit-/SpriteKit-Simulatorläufen mit der vorhandenen
+QA-Mediathek. 18 synthetische Fotos werden ausschließlich in den wegwerfbaren Testsimulator importiert;
+keine solchen Bilder sind im App-Bundle. Keine private Benutzerbibliothek wurde verwendet.
+Die CI belegt keine Geräte-FPS und kein physisches Falten. Die vollständige Enthüllungsfolge ist
+zusätzlich in `engine-states.json` aus der ausgeführten Swift-Engine dokumentiert.
+
+`native-r1` enthält den bestandenen ersten Stand; dessen Pause hatte noch mehr Leerfläche.
+`native-r2` dokumentiert den fehlgeschlagenen Zwischenlauf mit zu strenger Score-Assertion.
+Der finale `native-r3` prüft die tatsächliche Hard-Drop-Klassifikation; die zwei zusätzlich gefundenen
+Eingabefehler sind mit Vorher-/Nachher-Probe und Core-Regressionstests abgesichert.

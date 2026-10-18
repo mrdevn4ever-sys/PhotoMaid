@@ -19,14 +19,14 @@ import UIKit
         let photos = PhotoGamePhotos(canUsePhotos: { _ in true })
         photos.updateVisibility(["a", "b", "c", "d"])
         var requests: [String] = []
-        let load: @MainActor (String) async -> UIImage? = { id in requests.append(id); return UIImage() }
-        photos.prepareOfflineWindow(["a", "b", "c"], load: load)
+        let load: @MainActor (String, Bool) async -> UIImage? = { id, _ in requests.append(id); return UIImage() }
+        photos.prepareBackgroundWindow(["a", "b", "c"], load: load)
         try await wait(photos)
         #expect(photos.photoIDs == ["a", "b"] && photos.images.count == 2)
-        photos.prepareOfflineWindow(["b", "c"], load: load)
+        photos.prepareBackgroundWindow(["b", "c"], load: load)
         try await wait(photos)
         #expect(photos.photoIDs == ["b", "c"] && photos.images.count == 2)
-        #expect(requests == ["a", "b", "c"] && !photos.allowsCloud)
+        #expect(requests == ["a", "b", "c"] && photos.allowsCloud)
         photos.clear(); #expect(photos.images.isEmpty && photos.photoIDs.isEmpty)
     }
 
@@ -34,13 +34,13 @@ import UIKit
         let policy = Policy()
         let photos = PhotoGamePhotos(canUsePhotos: { _ in policy.allowed })
         photos.updateVisibility(["a"])
-        photos.prepareOfflineWindow(["a"]) { _ in
+        photos.prepareBackgroundWindow(["a"]) { _, _ in
             // Deliberately ignore cancellation, as a late PhotoKit callback could do.
             try? await Task.sleep(for: .milliseconds(30)); return UIImage()
         }
         await Task.yield()
         policy.allowed = false
-        photos.restrictOfflineWindow(to: [])
+        photos.restrictBackgroundWindow(to: [])
         try await Task.sleep(for: .milliseconds(50))
         #expect(photos.images.isEmpty && photos.photoIDs.isEmpty && !photos.isLoading)
     }
@@ -50,13 +50,13 @@ import UIKit
         let photos = PhotoGamePhotos(canUsePhotos: { _ in policy.allowed })
         photos.updateVisibility(["permitted", "missing"])
         var requested: [String] = []
-        photos.prepareOfflineWindow(["vault", "permitted", "missing"]) { id in
+        photos.prepareBackgroundWindow(["vault", "permitted", "missing"]) { id, _ in
             requested.append(id); return id == "missing" ? nil : UIImage()
         }
         try await wait(photos)
         #expect(requested == ["permitted", "missing"])
         #expect(photos.images.keys.sorted() == ["permitted"])
-        policy.allowed = false; photos.restrictOfflineWindow(to: [])
+        policy.allowed = false; photos.restrictBackgroundWindow(to: [])
         #expect(photos.images.isEmpty && photos.photoIDs.isEmpty)
     }
 
@@ -109,7 +109,57 @@ import UIKit
         app.updateSettings { $0.excludedAlbums = ["QA-NOT-QUERIED-YET"] }
         // This runs before a queued PhotoKit load can finish, on the same main actor as settings changes.
         #expect(!app.gamePhotoScopeReady)
-        #expect(PhotoGamePhotos.offlineCandidates(app: app).isEmpty)
+        #expect(PhotoGamePhotos.gameCandidates(app: app).isEmpty)
         #expect(app.blocks.photos.images.isEmpty && app.blocks.sequence.order.isEmpty)
+    }
+
+    @Test func cloudOnlyBackgroundsAndTheNextPhotoLoadByDefaultWithoutRepeatingDownloads() async throws {
+        let photos = PhotoGamePhotos(canUsePhotos: { _ in true })
+        photos.updateVisibility(["cloud-current", "cloud-next", "vault"])
+        var downloads: [String] = []
+        let load: @MainActor (String, Bool) async -> UIImage? = { id, network in
+            guard network else { return nil } // Represents a photo with no local thumbnail.
+            downloads.append(id); return UIImage()
+        }
+        photos.prepareBackgroundWindow(["cloud-current", "cloud-next"], load: load)
+        try await wait(photos)
+        #expect(photos.allowsCloud && photos.images.count == 2)
+        photos.prepareBackgroundWindow(["cloud-next"], load: load)
+        try await wait(photos)
+        #expect(downloads == ["cloud-current", "cloud-next"] && photos.images.count == 1)
+        photos.restrictBackgroundWindow(to: [])
+        #expect(photos.images.isEmpty && photos.photoIDs.isEmpty)
+    }
+
+    @Test func unavailableCloudPhotoLeavesFallbackAndCanBeRetriedWithoutResettingTheRound() async throws {
+        let photos = PhotoGamePhotos(canUsePhotos: { _ in true })
+        photos.updateVisibility(["cloud"])
+        photos.prepareBackgroundWindow(["cloud"]) { _, network in
+            #expect(network); return nil // Offline / Photos download unavailable.
+        }
+        try await wait(photos)
+        #expect(photos.images.isEmpty && !photos.isLoading)
+        photos.prepareBackgroundWindow(["cloud"]) { _, network in network ? UIImage() : nil }
+        try await wait(photos)
+        #expect(photos.images.count == 1 && photos.allowsCloud)
+    }
+
+    @Test func unchangedVisibilityAndRepeatedRefreshDoNotCancelAnInFlightCloudDownload() async throws {
+        let photos = PhotoGamePhotos(canUsePhotos: { _ in true })
+        photos.restrictBackgroundWindow(to: ["cloud"])
+        var requests = 0
+        let load: @MainActor (String, Bool) async -> UIImage? = { _, _ in
+            requests += 1
+            try? await Task.sleep(for: .milliseconds(40))
+            return Task.isCancelled ? nil : UIImage()
+        }
+        photos.prepareBackgroundWindow(["cloud"], load: load)
+        await Task.yield()
+        for _ in 0..<5 {
+            photos.restrictBackgroundWindow(to: ["cloud"])
+            photos.prepareBackgroundWindow(["cloud"], load: load)
+        }
+        try await wait(photos)
+        #expect(requests == 1 && photos.images.count == 1)
     }
 }

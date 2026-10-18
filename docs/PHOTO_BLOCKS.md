@@ -75,18 +75,24 @@ Keine Bewegungstasten. Haptik bei Rotation, Hard Drop, Reihen und Fotoabschluss.
 
 ## Datenschutz und Tresor
 
-`PhotoGamePhotos.offlineCandidates` ist die gemeinsame verbindliche Quelle für Hintergründe UND
+Die nachgereichte Anforderung „Icloud ist ein muss auch bei blocks“ ersetzt die ursprüngliche
+Offline-Vorgabe: **iCloud-Fotos werden standardmäßig über Apples Fotos-Framework geladen**, auch
+für die Fotoauswahl. Es gibt keine externe Fotoübertragung oder eigene Cloud-Anbindung.
+
+`PhotoGamePhotos.gameCandidates` ist die gemeinsame verbindliche Quelle für Hintergründe UND
 den vorhandenen `StudioMediaPicker`: aktuelle Leseberechtigung, intakte Verbergen-Liste, nur Bilder,
 `cleanupMedia` ohne ausgeblendete/ausgenommene Alben und ausstehende Löschungen, zusätzlicher Tresorfilter.
 Die Quelle ist zusätzlich gesperrt, solange neu gewählte Albumfilter noch nicht zum geladenen Snapshot passen.
 Der Snapshot vermerkt die tatsächlich abgefragten Albumfilter; normale Bibliotheksaktualisierungen
 mit unveränderten Filtern machen dadurch kein Hintergrundflackern. Kein System-PhotosPicker: Er könnte nicht gelöschte Tresor-Originale in seiner eigenen Auswahl zeigen.
-Der bestehende App-Picker erhält einen opt-in Offline-Modus; andere Werkzeuge behalten ihr Verhalten.
+Der bestehende App-Picker erhält einen opt-in sicheren Spiele-Modus; andere Werkzeuge behalten ihr Verhalten.
 
-Die gemeinsame `PreviewPipeline` lädt ausschließlich mit `allowNetwork: false`, exakter Größenanforderung
+Die gemeinsame `PreviewPipeline` lädt mit `allowNetwork: true`, exakter Größenanforderung
 und maximal 1280 Pixel langer Kante. Aktuelles und nächstes Foto werden asynchron vorbereitet und wiederverwendet;
-höchstens zwei Hintergrundbilder bleiben im RAM. Der bestehende, auf 48 MiB begrenzte Thumbnail-Lader
-erhält für den Picker ebenfalls keine Netzwerkfreigabe. Kein neuer PhotoKit-Manager, keine Disk-Bildcaches,
+höchstens zwei Hintergrundbilder bleiben im RAM. Unveränderte Sichtbarkeit und wiederholte Vorbereitung
+derselben Bilder brechen laufende Downloads nicht ab. Der bestehende, auf 48 MiB begrenzte Thumbnail-Lader
+liefert lokal zuerst und lädt fehlende Picker-Vorschauen aus iCloud; die Spielzugriffsprüfung gilt vor
+dem Cachezugriff und nach asynchronen Ergebnissen. Kein neuer PhotoKit-Manager, keine eigenen Disk-Bildcaches,
 keine Originaldateien, Analyse, Bild-Uploads, externe KI, Spiel-Tracking- oder Benachrichtigungsaufrufe.
 Die bestehende Werbung der übrigen App und ihr Privacy-Manifest wurden nicht verändert.
 
@@ -95,7 +101,9 @@ Generationstoken verwerfen verspätete Ergebnisse. Sichtbarkeits-/Berechtigungs�
 Hintergrund, vorbereitete Bilder und Auswahl-Vorschauen; Auswahl-IDs werden erneut gefiltert. Der
 AppModel-Tresorpfad invalidiert Blocks ausdrücklich. Picker-Zellen geben Bilder beim Verlassen frei,
 der Picker leert seine Thumbnail-Puffer und zeigt im Hintergrund keine Medien. Bei fehlendem,
-nicht lokal verfügbarem oder nicht mehr erlaubtem Foto erscheint ein neutraler Verlauf.
+nicht herunterladbarem oder nicht mehr erlaubtem Foto erscheint ein neutraler Verlauf. Während
+des asynchronen Ladens bleibt das Spiel bedienbar; beim Fortsetzen oder der nächsten Vorbereitung
+können fehlgeschlagene Bilder erneut angefordert werden.
 Ein stabiler, deduplizierter Metadatenzyklus wiederholt erst nach Erschöpfung des jeweiligen Pools;
 Neueste sortiert Datum/ID, Zufall verwendet einen reproduzierbaren Seed. Keine Foto-IDs im Archiv.
 
@@ -118,17 +126,51 @@ Ein erster Test-Compilefehler bei mutierenden `#expect`-Ausdrücken sowie drei f
 sind korrigiert; ursprüngliche Fehlerlogs bleiben im Belegordner. Ein falscher anfänglicher
 Privacy-Checker-Aufruf verlangte ein IPA-Hauptmanifest beim Prüfen einer Quelldatei; korrekt wiederholt PASS.
 
-**Native CI: ausstehend.** Mit der nachgereichten Freigabe für Testminuten werden iOS-Build,
-native Unit-Tests und echte Simulatoransichten ausgeführt. Sieben neue native Integrationstests prüfen
-Zwei-Bild-Fenster/Reuse, späte verbotene Ergebnisse, eingeschränkten Zugriff/Fallback/Entzug,
-KeyValueStore-Fortsetzung neben alten Rekorden und Speicherfehler mit Wiederholung; hinzu kommen der Zwei-Zeilen-Bodenausgleich und der
-wirkliche AppModel-Scope bei noch nicht abgefragten Albumausschlüssen. Der neue UI-Test
-prüft Start, Gesten, Pause/Hintergrund, Fotoquelle und Rückkehr; der bestehende Spiele-Setup-Test
-sichert Snake/Paare zusätzlich. Abschließende CI- und TestFlight-Belege werden hier ergänzt.
+**PASS, native macOS-CI:** [Lauf 39175702951](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39175702951),
+Quellstand `ace6169ee517ba23978196f881338214fd68e98b`: echter iOS-Simulator-Build, **73 native Unit-Tests**
+(60 Swift Testing + 13 XCTest), sowie **iPhone 2/2 und großes Fenster 2/2 UI-Tests**, ohne Fehler oder Skip.
+Die Core-Suite besteht dort ebenfalls alle 498 Tests. Xcode 26.6, iPhone 17 mit iOS 26.2;
+das große Fenster ist ein iPad mini A17 Pro mit iOS 26.4.1, kein Faltgerät.
+
+Sieben neue native Integrationsfälle prüfen Zwei-Bild-Fenster/Reuse, späte verbotene Ergebnisse,
+eingeschränkten Zugriff/Fallback/Entzug, KeyValueStore-Fortsetzung neben alten Rekorden,
+Speicherfehler mit Wiederholung, Zwei-Zeilen-Bodenausgleich und den wirklichen AppModel-Scope bei
+noch nicht abgefragten Albumausschlüssen. Der UI-Test prüft echten Tap, Links-/Rechts-Wischen,
+klassifizierten Hard Drop, Pause, Hintergrund/Fortsetzen, Fotoquelle und Rückkehr. Der bestehende
+Snake-/Paare-Setup-Test besteht auf beiden Geräten ebenfalls. Alle **26 nativen PNG-Aufnahmen**
+(einschließlich zwei Berechtigungsansichten) sind unverändert mit SHA-256 im Belegordner archiviert
+und visuell geprüft; Start, Spiel, kompakte Pause, Fotoauswahl sowie die bestehenden Spiele.
+Die vollständige Foto-Enthüllung/Levelserie wurde per Core-Test und ausgeführter Swift-Probe geprüft,
+nicht per 20 manuell gespielten nativen Levels.
+
+Dieser Lauf betrifft den Stand vor dem nachgereichten iCloud-Wunsch. Der neue Stand aktiviert
+iCloud für Hintergründe und sichere Auswahl, ergänzt drei native Cloud-Policy-/Cache-Regressionstests
+und stellt Sichtbarkeits-Notifications auf dem Main-RunLoop zu. Die gezielte native Wiederholung
+und der anschließende TestFlight-Lauf müssen diesen abschließenden Stand erneut bauen.
 
 **Noch nicht verifiziert:** reale iPhone-FPS/Temperatur/Akkulast, Instruments-Leaks, echte iCloud-only
 Bibliothek, physisches Falten, VoiceOver und sämtliche 16 Sprachen auf echten Displays. Ein breites
 Simulatorfenster ersetzt keine Falt-Hardware-Abnahme. Ein grüner Build ersetzt keine Rechtsprüfung.
+
+## Eingaberegressionen und fehlgeschlagener Zwischenlauf
+
+Der zweite native Lauf `39173827613` scheiterte in beiden Blocks-UI-Fällen an der Forderung
+„Score nach Hard Drop > 5“. Dieser Bonus ist bei einem bereits am Boden liegenden Stein nicht
+garantiert; der anschließende Test prüft stattdessen die tatsächlich klassifizierte Hard-Drop-Aktion.
+Der bestehende Snake-/Paare-Test bestand jeweils. Dieser Zwischenlauf wird nicht als erfolgreich gewertet.
+
+Die Untersuchung fand zusätzlich zwei echte Fehler: Ein ortsgleiches Touch-Ende überschrieb die
+zuletzt gemessene Wischgeschwindigkeit mit null; beim Aktivieren von Soft Drop konnte angesammelte
+Normalfallzeit in mehrere schnelle Zeilenschritte umgedeutet werden. Beides ist in der Engine korrigiert
+und durch automatisierte Regressionstests abgesichert. Die tatsächliche Swift-Probe gegen alten und
+neuen Quellstand dokumentiert **13 unbeabsichtigte Zeilenschritte vorher, null danach** sowie
+`stationaryReleaseRecognizedHardDrop: false → true`.
+[Vorher](photo-blocks-20261018/input-regression-before.json),
+[nachher](photo-blocks-20261018/input-regression-after.json),
+[ausgeführte Probe](photo-blocks-20261018/BlocksInputRegressionProbe.swift).
+Der UI-Test nutzt nur im Simulator mit QA-Kompilierungsflag eine zusätzliche Accessibility-Diagnose
+der wirklichen Input-Aktionen; keine Testeingaben umgehen den normalen Touchpfad. Diese Diagnose
+und Touch-Koordinaten-Ausgaben werden nicht in den Release-Build kompiliert.
 
 ## Belege, Dateien und rechtliche Restpunkte
 

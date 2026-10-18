@@ -380,7 +380,8 @@ struct AssetCell: View {
     private func load() async {
         guard size.width >= 1, size.height >= 1, permitted else { return }
         let id = assetID
-        let img = await ThumbnailLoader.shared.image(id, size: pixelSize, allowNetwork: allowNetwork)
+        let img = await ThumbnailLoader.shared.image(id, size: pixelSize, allowNetwork: allowNetwork,
+                                                    requiresGameAccess: requiresGameAccess)
         // Abgebrochen (aus dem Bild gescrollt) oder inzwischen ein anderes Medium: nichts anzeigen, nicht als Fehler werten.
         guard !Task.isCancelled, id == assetID else { return }
         guard permitted else { loaded = nil; return }
@@ -411,7 +412,13 @@ final class ThumbnailLoader {
         cache.totalCostLimit = 48 * 1024 * 1024
     }
 
-    func image(_ assetID: String, size: CGSize, allowNetwork: Bool = true) async -> UIImage? {
+    func image(_ assetID: String, size: CGSize, allowNetwork: Bool = true,
+               requiresGameAccess: Bool = false) async -> UIImage? {
+        func permitted() -> Bool {
+            !requiresGameAccess || (PhotoAccess(PHPhotoLibrary.authorizationStatus(for: .readWrite)).canRead &&
+                VaultConcealment.shared.analysisReady && !VaultConcealment.shared.isConcealed(assetID))
+        }
+        guard permitted() else { return nil }
         guard size.width >= 1, size.height >= 1, !VaultConcealment.shared.isConcealed(assetID) else { return nil }
         if !allowNetwork {
             guard PhotoAccess(PHPhotoLibrary.authorizationStatus(for: .readWrite)).canRead,
@@ -428,13 +435,13 @@ final class ThumbnailLoader {
         // only genuinely unavailable assets need a remote fallback.
         if let local = await request(asset, size: size, network: false, mode: .fastFormat) {
             // Inzwischen in den Tresor gelegt: verspätetes Ergebnis verwerfen.
-            guard !Task.isCancelled, !VaultConcealment.shared.isConcealed(assetID) else { return nil }
+            guard !Task.isCancelled, permitted(), !VaultConcealment.shared.isConcealed(assetID) else { return nil }
             store(local, key: key, size: size)
             return local
         }
-        guard allowNetwork, !Task.isCancelled else { return nil }
+        guard allowNetwork, !Task.isCancelled, permitted() else { return nil }
         if let remote = await request(asset, size: size, network: true, mode: .highQualityFormat) {
-            guard !Task.isCancelled, !VaultConcealment.shared.isConcealed(assetID) else { return nil }
+            guard !Task.isCancelled, permitted(), !VaultConcealment.shared.isConcealed(assetID) else { return nil }
             store(remote, key: key, size: size)
             return remote
         }

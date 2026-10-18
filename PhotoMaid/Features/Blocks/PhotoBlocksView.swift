@@ -32,7 +32,7 @@ struct PhotoBlocksView: View {
             model.invalidatePhotos()
             model.refreshPhotos(app: app)
         }
-        .onReceive(NotificationCenter.default.publisher(for: .analysisVisibilityChanged)) { _ in
+        .onReceive(NotificationCenter.default.publisher(for: .analysisVisibilityChanged).receive(on: RunLoop.main)) { _ in
             model.invalidatePhotos(); model.refreshPhotos(app: app)
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didReceiveMemoryWarningNotification)) { _ in
@@ -77,7 +77,8 @@ struct PhotoBlocksView: View {
                         .accessibilityIdentifier("blocks.photos")
                 }
                 gestureHelp
-                Text(key: "blocks_offline").font(.footnote).foregroundStyle(.white.opacity(0.62)).multilineTextAlignment(.center)
+                Text(key: "blocks_photo_privacy").font(.footnote).foregroundStyle(.white.opacity(0.62)).multilineTextAlignment(.center)
+                    .accessibilityIdentifier("blocks.photoPrivacy")
                 if model.saveFailed { saveError }
             }
             .padding(22).frame(maxWidth: 500).frame(maxWidth: .infinity)
@@ -193,7 +194,8 @@ struct PhotoBlocksView: View {
                     }
                 }
                 Section {
-                    Text(key: "blocks_offline")
+                    Text(key: "blocks_photo_privacy")
+                        .accessibilityIdentifier("blocks.photoPrivacy")
                     if !app.library.access.canRead {
                         Button(L("blocks_allow_photos")) {
                             if app.library.access == .notDetermined {
@@ -217,7 +219,7 @@ struct PhotoBlocksView: View {
             .onChange(of: model.source) { _, _ in model.refreshPhotos(app: app) }
             .sheet(isPresented: $choosePhotos) {
                 StudioMediaPicker(allowsVideos: false, limit: 200, minimumSelection: 0,
-                                  initial: Set(model.selection), offlineGame: true) { model.choose($0, app: app) }
+                                  initial: Set(model.selection), secureGame: true) { model.choose($0, app: app) }
             }
         }
     }
