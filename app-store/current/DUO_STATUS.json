@@ -65,5 +65,8 @@
   "actual_gui_bundle_id": "com.apple.dt.Devices",
   "native_app_devicehub_run_id": 39133181324,
   "native_app_devicehub_source_commit": "d574411cfbde5b7a11fce92e976e8fba75f084f0",
-  "native_app_devicehub_status": "NATIVE BUILD IN PROGRESS"
+  "native_app_devicehub_status": "NATIVE SIMULATOR PREPARATION IN PROGRESS",
+  "native_app_devicehub_build": "PASS",
+  "native_app_devicehub_build_job_id": 117692339935,
+  "native_app_devicehub_capture_job_id": 117693253222
 }

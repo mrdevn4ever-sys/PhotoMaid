@@ -22,7 +22,7 @@
     "iphone-medium"
   ],
   "pilot_run": 39118013344,
-  "iphone_assets": "IN PROGRESS",
+  "iphone_assets": "PASS",
   "duo_assets": "MATCHING DEVICE HUB FOUND; GENUINE DUO APP PILOT39133181324 IN PROGRESS",
   "app_store_connect_assets_upload": "NOT RUN",
   "app_store_release": "NOT RUN",
@@ -124,6 +124,12 @@
       "native_passed_tests": 5
     },
     {
+      "locale": "ko",
+      "device_class": "iphone-medium",
+      "status": "PASS",
+      "native_passed_tests": 1
+    },
+    {
       "locale": "nl",
       "device_class": "iphone-large",
       "status": "PASS",
@@ -223,11 +229,11 @@
   "large_run": 39125897166,
   "medium_run": 39125899164,
   "duo_runtime_preparation_run": 39120476761,
-  "repository_delivery": "31 reviewed native iPhone profiles prepared; Korean medium retry remains. All16 selected video sets approved.",
-  "actual_selected_screenshots": 310,
+  "repository_delivery": "All32 normal iPhone profiles passed final audit; 320 screenshots,48 chosen videos,16 vault alternatives,96 native capture cases. Genuine Duo pilot still preparing.",
+  "actual_selected_screenshots": 320,
   "actual_selected_videos": 48,
   "actual_vault_alternative_videos": 16,
-  "actual_native_passed_capture_cases": 95,
+  "actual_native_passed_capture_cases": 96,
   "initial_batches": "Stopped remaining old-source jobs after two visually rejected Today count frames; accepted eight profiles retained. Corrected native pilots dispatched before remaining-language batches.",
   "today_counter_fix_commit": "6a86a77",
   "today_counter_fix_native_validation": {
@@ -257,5 +263,13 @@
   ],
   "duo_native_app_pilot_run": 39126669768,
   "duo_native_app_retry_run": 39128651889,
-  "korean_medium_retry_run": 39130602845
+  "korean_medium_retry_run": 39130602845,
+  "local_upload_packages": {
+    "status": "PASS",
+    "count": 16,
+    "manifest": "packages/manifest.json",
+    "zip_integrity": "PASS",
+    "total_bytes": 1679798366,
+    "git_policy": "ZIPs generated locally; audited native single files are committed. No duplicate multi-gigabyte ZIP payload in Git."
+  }
 }

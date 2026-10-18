@@ -1,6 +1,6 @@
 # Aktualisierung der Store-Assets – 18.10.2026
 
-**Status: IN PROGRESS.** Maßgeblich sind die tatsächlich vorhandenen Dateien und
+**Normale iPhones: PASS. Duo: IN PROGRESS.** Maßgeblich sind die tatsächlich vorhandenen Dateien und
 [Audit-Ergebnisse](../app-store/current/audit.json), nicht die Zahl gestarteter Jobs.
 [Aktuelle Sprachübersicht](../app-store/current/README.md).
 
@@ -27,8 +27,11 @@ H.264, 30 fps, AAC-Stereo mit 48 kHz und Stille, 15–30 Sekunden.
 
 ## Nachweise
 
-- Aktuell bestanden und visuell geprüft: **31 Geräte-/Sprachserien**, 310 ausgewählte
-  Screenshots, 48 ausgewählte Videos und 16 Tresor-Alternativen. Englisch/mittel
+- Aktuell bestanden und visuell geprüft: **32 Geräte-/Sprachserien**, 320 ausgewählte
+  Screenshots, 48 ausgewählte Videos und 16 Tresor-Alternativen. Der vollständige
+  abschließende Audit aller 32 Serien ist PASS; 96 akzeptierte native Aufnahmefälle,
+  jeweils ohne Fehler oder Skip. Die ursprünglichen fehlgeschlagenen Versuche bleiben
+  getrennt dokumentiert. Englisch/mittel
   stammt aus dem erfolgreichen Pilot; jeder akzeptierte native Fall hat 0 FAIL und 0 SKIP. [Originaler Herkunftsbericht](../app-store/current/locales/en/iphone-medium/provenance.json),
   [Sichtprüfung](../app-store/current/locales/en/iphone-medium/review/manifest.json).
 - Große iPhones in allen 16 Sprachen: [Lauf 39120101094](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39120101094).
@@ -57,6 +60,22 @@ nicht benutzt. Beim echten Tresorimport werden die Systemlöschungen stets abgel
 Ein beiläufig erfasster Systemhinweis in einer nicht ausgewählten Einrichtungsszene bleibt
 als Original archiviert und ist ausdrücklich für Store-Uploads ausgeschlossen. Der Audit
 weist jede solche Datei in der Upload-Auswahl zurück.
+
+## Sprachpakete und lokale Übersicht
+
+Alle **16 ZIP-Sprachpakete** sind lokal erstellt und vollständig auf ZIP-Integrität
+geprüft. Sie enthalten je 20 Upload-PNGs, drei ausgewählte Videos, die getrennte
+Tresor-Alternative, Poster und Herkunfts-/Prüfberichte.
+[Dateinamen, Größen und SHA-256](../app-store/current/packages/manifest.json),
+[Hinweise zu den lokalen Paketen](../app-store/current/packages/README.md).
+Die großen ZIPs sind nicht zusätzlich in Git gespeichert; alle nativen Einzeldateien
+und die Auswahl sind bereits im bestehenden Projekt und in den nativen Actions-Artefakten.
+
+Die interaktive Übersicht besteht den lokalen Chromium-Test für alle 32 Serien
+und 320 Bildverweise. Desktop (1440 px) und mobile Ansicht (390 px, arabische
+Aufnahmen) wurden außerdem tatsächlich angesehen; kein horizontaler Überlauf
+oder Browser-Skriptfehler. Das ist ein Test der Übersicht, kein zusätzlicher iOS-Test.
+[Browser-Prüfbericht](../app-store/current/validation/local-review-gallery-complete.json).
 
 ## Beobachtete Zähler-Race und neue Aufnahmen
 
@@ -96,6 +115,9 @@ Spielsteuerung oder koreanischen Übersetzung.
 sind erhalten. Die Wiederholung nutzt einen frischen Simulator, unveränderte App-/Testlogik
 und unverändert strenge Abnahmeregeln:
 [Lauf 39130602845](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39130602845).
+Die Wiederholung ist **PASS**: ein nativer Fall, 0 Fehler/Skips; alle drei
+Prüfblätter und beide ausgewählten Spielbilder wurden angesehen, der strenge Audit
+ist bestanden. Die erste fehlgeschlagene Serie bleibt ausgeschlossen.
 
 ## Duo
 

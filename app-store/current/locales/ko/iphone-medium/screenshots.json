@@ -1,0 +1,226 @@
+[
+  {
+    "file": "04-cleanup/cleanup.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "2f08e8655ec245afacb83281494deb0d06991003df3045b162e3532c6ab627af"
+  },
+  {
+    "file": "05-studio/collage.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "a399725f982504871cb09add063b19aba1438f28c7a9f31ecd6093c47aff1688"
+  },
+  {
+    "file": "05-studio/editor-filter.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "e233314d6dfe68bff3bcc09ebeb309c0d5db0b2972c9e3095036a024727396cb"
+  },
+  {
+    "file": "05-studio/editor-markup.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "711eb8ed408e742a16c1683aace9fab9662849bca168c8e883c8d391a021eb61"
+  },
+  {
+    "file": "02-today-and-review/feed-later.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "5197d6bd589cd6dd6ee35bfb647e9ee575cdb1edfc159bbbc6e921d6a6ec5715"
+  },
+  {
+    "file": "02-today-and-review/feed.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "8a280b6850c6d12a268e01a78c706c300c670befcb7a2a366747dd432262bedd"
+  },
+  {
+    "file": "09-photo-games/games-selection.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "d709ba436be8e0d03b0d50ba6311222ff5318a658ac86780b0f8e9da40468308"
+  },
+  {
+    "file": "03-photos/library.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "4b9227f0dfa69206169816852c0d6b6c207a1ca7866389462fb45fbb3f70e229"
+  },
+  {
+    "file": "09-photo-games/memory-play.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "ee74d1b53eb2ba122615498c470e3d624b9bbee97cbea4ec76f1770b6f8fadea"
+  },
+  {
+    "file": "09-photo-games/memory-setup.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "48e91128346649f0330ee9c8e2352d9fe4f7c86102fd177f76482215b57d4c47"
+  },
+  {
+    "file": "05-studio/movie.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "47809a175a5e24483690b82be58502a9c0a2da39e8677845d14ee723894396ad"
+  },
+  {
+    "file": "09-photo-games/snake-pause.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "b0fc316bbd6f01c140ebae2f1a4855307d6b391e1e6fc47f233265443fe71111"
+  },
+  {
+    "file": "09-photo-games/snake-play.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "57b31c59d2354696a400366f95539fd03a7bc6699fab265c9682de07ea79a353"
+  },
+  {
+    "file": "09-photo-games/snake-ready.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "787ec6654915ec99b7405157ad9f788bac44c956ccaecf8856f06d019ce013ce"
+  },
+  {
+    "file": "09-photo-games/snake-settings.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "105287424b08cfb2e94da94ca10f893ab0e4220786de94faa7bc64ec8f71cb59"
+  },
+  {
+    "file": "09-photo-games/snake-setup.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "e4329e0f7183de7ed80e055b4c75f944428940a05d803ccc5051c53a2d4f0f8a"
+  },
+  {
+    "file": "05-studio/studio.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "56563fed5f9f1e7b9c4a4d631fe906141173594010c14bb938e51a974351fd8c"
+  },
+  {
+    "file": "02-today-and-review/today.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "6138b8dbfc72ef6eebb4d66986e3d3a73fb710e4e3c42756edb1ac8ff0f53afb"
+  },
+  {
+    "file": "06-vault/vault-files.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "80253ec18fa914ab5d321623332039c98eaa7aee9de5a009f0357053e31d5828"
+  },
+  {
+    "file": "06-vault/vault-media-picker.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "c8eb63023459aebc09deef6fdc13fdfebfcd202ed2c43b28bd20743f42c82e39"
+  },
+  {
+    "file": "06-vault/vault-media.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "f2fef646132a61ae4de5aea30692b3c8e44ec4079044dc91c91210de206ed033"
+  },
+  {
+    "file": "06-vault/vault-notes.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "cbf41bc294ea627bad88ed2301449c702354d07a29b44c21f6f53c8702f45759"
+  },
+  {
+    "file": "06-vault/vault-setup-code-empty.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "70ded12d96a1ec9ca354a1fa6f5ed6790c366a1355ddc746501bf5eb29b243f7"
+  },
+  {
+    "file": "06-vault/vault-setup-entry.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "da356379f3ebab45d5afeef2d6818c91ad2bbef06841a9ec2c33ee430118d318"
+  },
+  {
+    "file": "06-vault/vault-setup-introduction.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "2c2852e3f3cc7eeec9ce1b0849bb4b33117711423bd629fc0020b42ff2b039d6"
+  },
+  {
+    "file": "06-vault/vault-tools.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "3b88c3b953053ed2096daf125366f579977e9de0a6c01eb163139efad6263104"
+  },
+  {
+    "file": "06-vault/vault-trash.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "b90dc1a448337530181ae52a97b962807b424d40b68e79aae385f4f7e935b824"
+  },
+  {
+    "file": "06-vault/vault-viewer.png",
+    "locale": "ko",
+    "appearance": "dark",
+    "width": 1206,
+    "height": 2622,
+    "sha256": "db0dc82a7b142263ce1f6c06422601d392ed0ba6d5b54d7503542da24fd82c14"
+  }
+]

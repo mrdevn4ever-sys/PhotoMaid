@@ -1,4 +1,7 @@
-# PhotoMaid – Sprachindex
+# PhotoMaid – Sprachindex des Seitenarchivs vom 15.10.2026
+
+[Aktueller Store-Satz vom 18.10.2026 mit Foto-Snake, Memory und beiden iPhone-Größen](current/README.md).
+Die nachfolgende Tabelle dokumentiert das unverändert erhaltene ältere Seitenarchiv.
 
 Alle Aufnahmen in Dark Mode. Vorhanden: **1969 Original-Screenshots in 16 von 16 Sprachen**, **48 von 48 Vorschauvideos**. Seitenarchiv, zehn Store-Vorschläge und Vorschauen werden je Sprache getrennt abgelegt.
 

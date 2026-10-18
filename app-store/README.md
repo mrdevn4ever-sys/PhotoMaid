@@ -1,5 +1,11 @@
 # PhotoMaid – App-Store-Aufnahmen
 
+Die **aktuellen Aufnahmen vom 18.10.2026 mit Foto-Snake und Memory** stehen im
+[neuen Sprach- und Geräteindex](current/README.md), mit [interaktiver Bild-/Videoübersicht](current/index.html)
+und [tatsächlichen Prüfständen](current/STATUS.json).
+
+Die folgende Sammlung ist das erhaltene vollständige Seitenarchiv vom **15.10.2026**.
+
 Dark Mode, ausschließlich Hochkant, alle 16 App-Sprachen. Die Originale sind echte Simulator-Aufnahmen
 mit PhotoKit/Core Data und dem Bildsatz unter `media/`; keine synthetischen QA-Fixtures oder erfundenen
 Analyseergebnisse. Der Aufnahmeaufbau ist nur im Debug-Simulator verfügbar und fehlt im TestFlight-/Release-Code.

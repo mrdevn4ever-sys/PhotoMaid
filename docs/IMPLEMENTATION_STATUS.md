@@ -1,8 +1,28 @@
 # Implementierungsstatus
 
-Stand: 17.10.2026 · Arbeitsbranch `feat/iphone-duo-games` · zuletzt von Apple verarbeitet: **Version 1.0, Build 14**.
+Stand: 18.10.2026 · Arbeitsbranch `feat/iphone-duo-games` · zuletzt von Apple verarbeitet: **Version 1.0, Build 14**.
 Upload am 17.10.2026 um 03:57:25 UTC; Verarbeitung um 04:00:33 UTC und interne Verteilung um 04:00:34 UTC bestätigt.
 [TestFlight-Lauf](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39000279956), Quellstand `bd3d3e3`.
+
+## Aktuelle Store-Aufnahmen für alle 16 Sprachen (18.10.2026)
+
+**PASS:** 320 ausgewählte native Screenshots in zwei iPhone-Größen, 48 Vorschauvideos
+mit Foto-Snake/Memory und 16 getrennte Tresor-Alternativen. Alle 32 Sprach-/Geräteserien
+sind visuell geprüft und bestehen den vollständigen Datei-/Format-Audit. Die akzeptierten
+Serien belegen 96 bestandene native Aufnahmefälle, ohne Fehler oder Skip. Ein ursprünglicher
+SpringBoard-Absturz bei Koreanisch/mittel bleibt als ausgeschlossener Versuch erhalten;
+die Wiederholung auf einem frischen Simulator hat bestanden. 16 lokale ZIP-Sprachpakete
+bestehen die Integritätsprüfung. Die interaktive Übersicht ist auf Desktop und bei 390 px geprüft.
+
+[Echte Aufnahmen und Sprachübersicht](../app-store/current/README.md) ·
+[Abschlussstand, Wiederholungen und genaue Grenzen](STORE_ASSETS_UPDATE_20261018.md).
+Duo wird mit echtem SDK 27.1, echter Runtime und dem vorhandenen Device Hub separat geprüft;
+sein aktueller App-Pilot ist noch offen. Daraus folgt keine physische Falt- oder Geräte-FPS-Abnahme.
+
+Die Aufnahmeprüfung hat zusätzlich einen Schutz gegen veraltete Heute-Zähler ergänzt (`6a86a77`).
+Dieser spätere Quellstand ist nicht im bereits verarbeiteten TestFlight-Build 14 enthalten.
+App-Store-Connect-Asset-Upload, neuer TestFlight-Upload und App-Veröffentlichung sind in diesem
+Store-Auftrag nicht erfolgt.
 
 ## Video-Swipes ohne Player-Wartezeit (Build 14)
 
@@ -63,9 +83,9 @@ F1–F5 des ursprünglichen Spieleaudits sind im Code korrigiert. 447 Core-Tests
 großem Fenster bestehen ebenfalls; native Aufnahmen und Rückwege sind geprüft. Memory-Sieg, gespeicherte
 Bestzeit, Fotoquellen und adaptive Hauptseiten sind durch die verlinkten nativen Läufe belegt.
 
-**Duo-Grenze:** Der verfügbare Runner hat Xcode 26.6 und keinen Duo-Simulator. Die breite native
+**Historische Duo-Grenze vom 16.10.2026:** Der damals verfügbare Runner hat Xcode 26.6 und keinen Duo-Simulator. Die breite native
 Fensterprüfung ersetzt keine Faltabnahme. Apple verlangt SDK 27.1 für vollständige randfüllende
-Duo-Unterstützung. [Umsetzung, Belege und genaue Prüfgrenzen](IPHONE_DUO_AND_GAMES.md).
+Duo-Unterstützung. Für die neue SDK-27.1-Prüfung gilt der [aktuelle Store-Bericht](STORE_ASSETS_UPDATE_20261018.md). [Damals geprüfte Umsetzung und Grenzen](IPHONE_DUO_AND_GAMES.md).
 [Historischer Audit-Snapshot](GAMES_FUNCTION_UI_AUDIT.md).
 
 ## Privacy-Manifest / ITMS-91064 (16.10.2026, Build 11 verarbeitet)

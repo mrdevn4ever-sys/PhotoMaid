@@ -131,9 +131,15 @@
   {
     "run_id": 39130602845,
     "source_commit": "0a4bc091aad528f1a19191bac71101fa07e80bc8",
-    "status": "NATIVE CAPTURE IN PROGRESS",
+    "status": "PASS",
     "scope": "ko medium fresh simulator retry after actual SpringBoard process crash",
-    "app_and_capture_test_logic": "Unchanged; no failed-test/library assertion relaxed."
+    "app_and_capture_test_logic": "Unchanged; no failed-test/library assertion relaxed.",
+    "native_capture_tests": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    "visual_review": "PASS: all three sheets and both full-size game selections actually viewed; strict complete32-profile audit PASS."
   },
   {
     "run_id": 39132957505,
@@ -145,7 +151,10 @@
   {
     "run_id": 39133181324,
     "source_commit": "d574411cfbde5b7a11fce92e976e8fba75f084f0",
-    "status": "NATIVE BUILD IN PROGRESS",
-    "scope": "Genuine Duo app pilot using actual matching DeviceHub instead of absent legacy Simulator GUI. Native inner-display UI capture and strict evidence validation unchanged."
+    "status": "NATIVE SIMULATOR PREPARATION IN PROGRESS",
+    "scope": "Genuine Duo app pilot using actual matching DeviceHub instead of absent legacy Simulator GUI. Native inner-display UI capture and strict evidence validation unchanged.",
+    "native_build": "PASS",
+    "native_build_job_id": 117692339935,
+    "native_capture_job_id": 117693253222
   }
 ]

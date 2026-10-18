@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "date": "2026-10-18",
+  "scope": "Local Chromium review gallery, not an iOS app test",
+  "native_audited_profiles": 32,
+  "languages": 16,
+  "screenshot_links_verified": 320,
+  "screenshots_per_profile": 10,
+  "selected_video_controls_per_language": 3,
+  "separate_vault_alternative_controls": 1,
+  "desktop_viewport": "1440x1100",
+  "mobile_viewport": "390x844",
+  "mobile_native_locale": "ar",
+  "browser_script_errors": [],
+  "horizontal_overflow": false,
+  "visual_review": "PASS: both resulting desktop and mobile browser screenshots actually opened and inspected.",
+  "index_sha256": "3b40055266e104d2dff9058780c02f3ca3a3610b3b4e4bac7ea9c21a1ea98d3e",
+  "review_screenshots": [
+    {
+      "file": "review-gallery-desktop.png",
+      "sha256": "0fbb8ed3fc7accb0363a8450c570fbed11812719e9f5eee52acd1cf4198b6623"
+    },
+    {
+      "file": "review-gallery-mobile.png",
+      "sha256": "e957d30a7c6906281ba817b5795f07ecdb36a7636ab8d140aae773dee5089d45"
+    }
+  ]
+}
