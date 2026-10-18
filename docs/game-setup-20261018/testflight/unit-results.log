@@ -1,0 +1,8 @@
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.128 (0.131) seconds
+	 Executed 6 tests, with 0 failures (0 unexpected) in 0.502 (0.505) seconds
+	 Executed 13 tests, with 0 failures (0 unexpected) in 0.651 (0.736) seconds
+	 Executed 13 tests, with 0 failures (0 unexpected) in 0.651 (0.739) seconds
+◇ Test cloudDefaultsOnAndAnExplicitOptOutSurvivesPreparedRounds() started.
+✔ Test cloudDefaultsOnAndAnExplicitOptOutSurvivesPreparedRounds() passed after 0.012 seconds.
+✔ Test run with 50 tests in 8 suites passed after 3.584 seconds.
+** TEST SUCCEEDED **

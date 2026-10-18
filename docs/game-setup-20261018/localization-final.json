@@ -31,5 +31,14 @@
   },
   "scope": "static catalog/source consistency only; no native build or post-copy image validation",
   "text_correction_commit": "2528ffde8cc48fc78e9dda601008c84400b785ad",
-  "native_build_commit": "7d7c842f5390df4fe935e9a02aeb4ba02e7f5cb3"
+  "native_build_commit": "7d7c842f5390df4fe935e9a02aeb4ba02e7f5cb3",
+  "subsequent_native_validation": {
+    "status": "PASS",
+    "run_id": 39161997156,
+    "source_commit": "c4898e78521744d5bf97c37c03700f2a3e23dea8",
+    "native_unit_tests": 63,
+    "testflight_build": 15,
+    "proof": "testflight/status.json",
+    "native_ui_recapture": "NOT RUN"
+  }
 }

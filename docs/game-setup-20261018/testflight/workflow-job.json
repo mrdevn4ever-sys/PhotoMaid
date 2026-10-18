@@ -1,0 +1,132 @@
+{
+  "id": 117777058836,
+  "name": "Archivieren, signieren, hochladen",
+  "status": "completed",
+  "conclusion": "success",
+  "started_at": "2026-10-18T20:09:21Z",
+  "completed_at": "2026-10-18T20:30:53Z",
+  "html_url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39161997156/job/117777058836",
+  "head_sha": "c4898e78521744d5bf97c37c03700f2a3e23dea8",
+  "steps": [
+    {
+      "name": "Set up job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 1,
+      "started_at": "2026-10-18T20:09:21Z",
+      "completed_at": "2026-10-18T20:09:23Z"
+    },
+    {
+      "name": "Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 2,
+      "started_at": "2026-10-18T20:09:23Z",
+      "completed_at": "2026-10-18T20:17:01Z"
+    },
+    {
+      "name": "Upload-Best\u00e4tigung pr\u00fcfen",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 3,
+      "started_at": "2026-10-18T20:17:01Z",
+      "completed_at": "2026-10-18T20:17:02Z"
+    },
+    {
+      "name": "Privacy-Manifeste vorpr\u00fcfen",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 4,
+      "started_at": "2026-10-18T20:17:02Z",
+      "completed_at": "2026-10-18T20:17:02Z"
+    },
+    {
+      "name": "Pflicht-Secrets vorhanden?",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 5,
+      "started_at": "2026-10-18T20:17:02Z",
+      "completed_at": "2026-10-18T20:17:03Z"
+    },
+    {
+      "name": "Xcode w\u00e4hlen",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 6,
+      "started_at": "2026-10-18T20:17:03Z",
+      "completed_at": "2026-10-18T20:17:09Z"
+    },
+    {
+      "name": "Werkzeuge",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 7,
+      "started_at": "2026-10-18T20:17:09Z",
+      "completed_at": "2026-10-18T20:17:21Z"
+    },
+    {
+      "name": "Manuelles Signing pr\u00fcfen",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 8,
+      "started_at": "2026-10-18T20:17:21Z",
+      "completed_at": "2026-10-18T20:17:21Z"
+    },
+    {
+      "name": "Unit-Tests",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 9,
+      "started_at": "2026-10-18T20:17:21Z",
+      "completed_at": "2026-10-18T20:23:59Z"
+    },
+    {
+      "name": "fastlane beta",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 10,
+      "started_at": "2026-10-18T20:23:59Z",
+      "completed_at": "2026-10-18T20:30:39Z"
+    },
+    {
+      "name": "Bericht",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 11,
+      "started_at": "2026-10-18T20:30:39Z",
+      "completed_at": "2026-10-18T20:30:40Z"
+    },
+    {
+      "name": "Run actions/upload-artifact@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 12,
+      "started_at": "2026-10-18T20:30:40Z",
+      "completed_at": "2026-10-18T20:30:41Z"
+    },
+    {
+      "name": "Schl\u00fcsselbund und Schl\u00fcssel entfernen",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 13,
+      "started_at": "2026-10-18T20:30:41Z",
+      "completed_at": "2026-10-18T20:30:42Z"
+    },
+    {
+      "name": "Post Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 26,
+      "started_at": "2026-10-18T20:30:42Z",
+      "completed_at": "2026-10-18T20:30:42Z"
+    },
+    {
+      "name": "Complete job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 27,
+      "started_at": "2026-10-18T20:30:42Z",
+      "completed_at": "2026-10-18T20:30:50Z"
+    }
+  ]
+}

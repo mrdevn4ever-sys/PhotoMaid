@@ -52,6 +52,17 @@ jobs:
       RUN_TESTS: ${{ inputs.run_tests }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Same app/test inputs as CI; Store captures are not part of the signed app.
+          sparse-checkout: |
+            .github
+            PhotoMaid
+            PhotoMaidTests
+            PhotoMaidUITests
+            Sources
+            Tests
+            scripts
+            fastlane
       - name: Upload-Bestätigung prüfen
         env:
           CONFIRM_UPLOAD: ${{ inputs.confirm_upload }}

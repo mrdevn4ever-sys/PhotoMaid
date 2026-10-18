@@ -1,0 +1,77 @@
+{
+  "status": "PASS",
+  "user_authorization": "18.10.2026: Erledigt? Wenn ja mach testflight",
+  "run_id": 39161997156,
+  "job_id": 117777058836,
+  "source_commit": "c4898e78521744d5bf97c37c03700f2a3e23dea8",
+  "workflow_url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39161997156",
+  "created_at": "2026-10-18T20:09:11Z",
+  "run_tests": true,
+  "version": "1.0",
+  "build_number": 15,
+  "apple_processing": "PASS",
+  "internal_distribution": "PASS",
+  "external_distribution": "NOT REQUESTED",
+  "app_store_release": "NOT REQUESTED",
+  "archive_export": "PASS",
+  "native_unit_tests": {
+    "swift_testing": 50,
+    "swift_testing_suites": 8,
+    "xctest": 13,
+    "failed": 0,
+    "cloud_defaults_and_optout": "PASS"
+  },
+  "ipa_privacy": {
+    "status": "PASS",
+    "manifests": 3,
+    "errors": 0,
+    "original_report": "../../privacy-manifests-build15.json"
+  },
+  "export_at": "2026-10-18T20:27:37.0036660Z",
+  "uploaded_at": "2026-10-18T20:28:36.8662670Z",
+  "processed_at": "2026-10-18T20:30:39.2183380Z",
+  "changelog_set_at": "2026-10-18T20:30:39.5486330Z",
+  "distributed_at": "2026-10-18T20:30:39.5499380Z",
+  "workflow_conclusion": "success",
+  "artifact": {
+    "id": 12149976720,
+    "name": "testflight-report",
+    "bytes": 68358,
+    "sha256": "61a63560b3eb2cd54a4493107876a19e5786e64f5321eb2dd11746200e903b0f",
+    "github_sha256_verification": "PASS",
+    "zip_crc": "PASS"
+  },
+  "artifact_original_hashes": {
+    "ci-report.md": "2cb84c0908d236cf975eebebc69680d3fae959068cd8eed0408d7742cbcc3360",
+    "unit-tests.log": "e14eb5f534b89e9e992699200f435a162e9d311a809554e80c5b7bb502ce98b7",
+    "gym.log": "debaa228c3dfa48080da4765b358a91f6fdd4114d5da753f8ccd9cc7a35f76c0",
+    "build/privacy-manifests.json": "5c67ec3f47daa85d84e0eb80cc97c52f05debc6313584dfb9ca587a4bb585119",
+    "fastlane/report.xml": "8f46c70567033371007f968dbcca960dfa11419bc46e8547a1bf920348a3a078"
+  },
+  "proof_hashes": {
+    "success.log": "6a7ea60e1081deddbca485c75fb915b915169f60ebe48205c9701b4300d28cf4",
+    "unit-results.log": "a5d2e87d8d1b5c9e3c2189eb4070958984a36db13160289302f2f5a0ed28bdb9",
+    "ci-report.md": "2cb84c0908d236cf975eebebc69680d3fae959068cd8eed0408d7742cbcc3360",
+    "fastlane-report.xml": "8f46c70567033371007f968dbcca960dfa11419bc46e8547a1bf920348a3a078",
+    "workflow-run.json": "83d238bd18a85593d561484cf0994f3ed84244dadb6bcdbb94de207060ccb98f",
+    "workflow-job.json": "1b8fbe2e4c4f0e2929668cc11b26e4560128dbfebf7d17be3c3fc51c8dc60401"
+  },
+  "log_scope": "Success messages selected from decoded GitHub job log; ANSI colour controls removed. Unit result lines selected verbatim from artifact unit-tests.log. No certificate/key values or complete signing logs copied into Git.",
+  "ci_short_report": "Original status UNBEKANNT retained: gym log parser does not recognize completion. Actual build/upload success is established by successful signed IPA export, native tests, completed fastlane/workflow and Apple processing/distribution messages.",
+  "subsequent_checkout_optimization": {
+    "status": "STATIC CHECK PASS",
+    "inputs": "Same app/test sparse paths as existing successful CI recipe",
+    "used_for_this_run": false,
+    "native_execution_of_optimized_testflight_workflow": "NOT RUN",
+    "app_source_changes": false
+  },
+  "visual_scope": "Earlier UI4/0/0 and24 app checkpoints source7d7c842 retained. No new visual capture for last gallery hint; current c4898e7 includes that copy and now has native63 tests and signed Release build PASS.",
+  "not_run": [
+    "New Store media captures/uploads",
+    "App Store release",
+    "External tester distribution",
+    "Physical iPhone Duo fold/unfold",
+    "Device FPS measurement",
+    "Personal iCloud account test"
+  ]
+}

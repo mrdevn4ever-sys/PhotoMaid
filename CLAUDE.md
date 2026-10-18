@@ -57,6 +57,10 @@ Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E19) – ni
   Vorschauen einschließlich Foto-Snake/Memory für alle 16 Sprachen erzeugen, notwendige manuelle
   Actions ausführen und geprüfte Assets im bestehenden Projekt ablegen. Duo-Aufnahmen nur mit echtem
   passendem Simulator/SDK; Ersatzfenster nicht als Duo-Store-Assets ausgeben. Kein App-Release dadurch.
+- **TestFlight-Freigabe (18.10.2026: „Erledigt? Wenn ja mach testflight“):** den geprüften Paare-/Snake-
+  Einrichtungsstand einschließlich der letzten Textkorrektur mit dem vorhandenen Workflow als internen
+  TestFlight-Build hochladen, vorgeschaltete Unit-Tests und Privacy-Prüfung ausführen und Apples
+  Verarbeitung prüfen. Keine App-Store-Veröffentlichung oder externe Tester-Verteilung dadurch.
 
 ## Geschäftsregeln (aus dem Android-Quellcode)
 

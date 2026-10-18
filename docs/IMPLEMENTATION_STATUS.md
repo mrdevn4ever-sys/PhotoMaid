@@ -1,8 +1,11 @@
 # Implementierungsstatus
 
-Stand: 18.10.2026 · Arbeitsbranch `feat/iphone-duo-games` · zuletzt von Apple verarbeitet: **Version 1.0, Build 14**.
-Upload am 17.10.2026 um 03:57:25 UTC; Verarbeitung um 04:00:33 UTC und interne Verteilung um 04:00:34 UTC bestätigt.
-[TestFlight-Lauf](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39000279956), Quellstand `bd3d3e3`.
+Stand: 18.10.2026 · Arbeitsbranch `feat/iphone-duo-games` · zuletzt von Apple verarbeitet: **Version 1.0, Build 15**.
+Upload am 18.10.2026 um 20:28:36 UTC; Verarbeitung und interne Verteilung um 20:30:39 UTC bestätigt.
+[TestFlight-Lauf](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39161997156), Quellstand `c4898e7`.
+Ausdrückliche Freigabe: „Erledigt? Wenn ja mach testflight“. **63 native Unit-Tests und alle drei
+Privacy-Manifeste der tatsächlich exportierten IPA bestehen.** Die letzte Textkorrektur ist enthalten.
+[Uploadbericht und Originalbelege](game-setup-20261018/testflight/README.md).
 
 ## Einfachere Spielstarts und iCloud-Vorgabe (18.10.2026)
 
@@ -24,8 +27,10 @@ Geprüft sind Deutsch, iCloud-Vorgabe/Abschalten, leere manuelle Auswahl, Foto-S
 und große arabische Schrift. Alle 24 App-Checkpoints und 2 zusätzlichen Berechtigungsdiagnosen
 sind tatsächlich angesehen; Originale und Prüfsummen stehen im [Abschlussbericht](game-setup-20261018/README.md).
 Danach wurde in `2528ffd` ausschließlich ein Galeriehinweis in 16 Sprachen gekürzt; Quellen-/Katalogcheck
-PASS, **kein erneuter nativer Build oder Screenshotlauf für diese Textkorrektur**.
-Ein breites Simulatorfenster ist keine Duo-Faltabnahme. Kein neuer TestFlight-/Store-Upload.
+PASS. Der anschließende TestFlight-Lauf baut diesen Text im Quellstand `c4898e7` nativ und signiert
+erneut, einschließlich 63 bestandener Unit-Tests. **Keine neue visuelle Aufnahme für diesen Hinweis.**
+Ein breites Simulatorfenster ist keine Duo-Faltabnahme. **In TestFlight Build 15 enthalten**;
+kein neuer Store-Medienupload und keine App-Store-Veröffentlichung.
 
 Die erste iPhone-Aufnahme besteht beide nativen Fälle ohne Fehler/Skip, wurde aber visuell
 wegen dunkler Statusleiste/Nebenbeschriftungen auf dem dunklen Snake-Hintergrund im hellen
@@ -54,8 +59,8 @@ Spielstände, interne Kennungen und Spiellogik bleiben erhalten.
 **PASS:** beide Übersetzungsquellen und generierte Kataloge stimmen überein; der vorhandene
 Lokalisierungscheck prüft 1676 verwendete Kennungen und 2690 Einträge in 16 Sprachen.
 Die Umbenennung ist im anschließenden nativen Build `5e7328e` enthalten; der deutsche
-Paare-Titel wurde auf dem iPhone tatsächlich aufgenommen. Neue Store-Aufnahmen und TestFlight-Upload:
-**NOT RUN**. Der zuletzt verarbeitete Build 14 enthält noch den früheren Namen.
+Paare-Titel wurde auf dem iPhone tatsächlich aufgenommen. Neue Store-Aufnahmen: **NOT RUN**.
+Der neue Name ist anschließend mit **TestFlight Build 15** intern verteilt worden.
 
 Der nachfolgende Store-Satz ist der unveränderte **Archivstand vor der Umbenennung**.
 Seine nativen Prüfungen bleiben gültige historische Nachweise. Die Spielbilder und

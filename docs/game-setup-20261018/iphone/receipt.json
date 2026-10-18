@@ -31,9 +31,10 @@
   "postcapture_copy_change": {
     "key": "snake_gallery_empty",
     "scope": "one shorter hint in 16 languages; no Swift changes",
-    "native_rebuild_after_copy": "NOT RUN",
+    "native_rebuild_after_copy": "PASS: subsequent TestFlight1.0/15, c4898e7, native63 tests and signed Release export",
     "native_recapture_after_copy": "NOT RUN",
-    "source_commit": "2528ffde8cc48fc78e9dda601008c84400b785ad"
+    "source_commit": "2528ffde8cc48fc78e9dda601008c84400b785ad",
+    "subsequent_native_proof": "../testflight/status.json"
   },
   "proof_policy": "Original PNG bytes copied without retouching, checksums in screenshots.json. Review JPG contact sheets are composites for review only, not Store media."
 }

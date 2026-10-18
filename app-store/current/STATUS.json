@@ -273,7 +273,7 @@
     "git_policy": "ZIPs generated locally; audited native single files are committed. No duplicate multi-gigabyte ZIP payload in Git."
   },
   "duo_native_semantic_readiness_run": 39140177705,
-  "final_result": "App renamed to localized Paare/Pairs in all16 languages. Earlier32 iPhone capture profiles remain an unchanged tested archive; game captures need native refresh before a new Store upload. Duo remains blocked. No upload for the rename.",
+  "final_result": "TestFlight1.0/15 now internally available with localized Paare/Pairs names and simplified game setup with iCloud default on. Earlier32 iPhone capture profiles remain unchanged historical Store media; native game captures need refresh before new Store media upload. Duo remains blocked. No Store media upload or release.",
   "asset_naming": {
     "status": "RECAPTURE_REQUIRED",
     "new_game_name": "Paare",
@@ -303,11 +303,11 @@
     ],
     "additional_archives": "Game setup/selection/record pages and other archived captures may also contain the former game name. Recapture visible game UI rather than retouching screenshots.",
     "new_native_capture": "NOT RUN for Store media refresh; separate setup QA recorded in game_setup_validation",
-    "new_testflight_upload": "NOT RUN"
+    "new_testflight_upload": "PASS: Version1.0 Build15, Apple processing and internal distribution18.10.2026 20:30:39UTC; sourcec4898e7, run39161997156. Store media refresh still NOT RUN."
   },
   "source_capture_audit": "PASS",
   "game_setup_validation": {
-    "status": "PASS for native7d7c842 build/setup/layout; single postcapture localized gallery hint statically checked, not rebuilt",
+    "status": "PASS: native UI7d7c842; latest c4898e7 native63 unit tests and Apple-processed TestFlight1.0/15. Single hint not visually recaptured.",
     "run_id": 39155751429,
     "commit": "7d7c842f5390df4fe935e9a02aeb4ba02e7f5cb3",
     "scope": "Native unit tests and actual German setup/iCloud toggles/manual-empty route/real-time PhotoKit Snake, plus Arabic accessibility text on phone and explicit wide-window simulator. Not a new Store capture or physical Duo test.",
@@ -362,8 +362,17 @@
       "languages": 16,
       "swift_changes": false,
       "static_check": "PASS",
-      "native_rebuild": "NOT RUN",
+      "native_rebuild": "PASS: native63 tests and signed Release export in TestFlight39161997156",
       "native_recapture": "NOT RUN"
+    },
+    "testflight": {
+      "version": "1.0",
+      "build_number": 15,
+      "source_commit": "c4898e78521744d5bf97c37c03700f2a3e23dea8",
+      "run_id": 39161997156,
+      "apple_processing": "PASS",
+      "internal_distribution": "PASS",
+      "proof": "../../docs/game-setup-20261018/testflight/status.json"
     }
   }
 }

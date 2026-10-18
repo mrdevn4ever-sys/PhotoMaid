@@ -70,8 +70,11 @@ Nach dem Aufnahmequellstand wurde in `2528ffd` **nur** `snake_gallery_empty` in 
 „Wähle bis zu 100 Fotos für deine Schlange.“ Die vorherige Zusage, in der Galerie mit
 „Platzhaltern“ zu spielen, entfällt. Swift-Code und übrige Katalogeinträge sind identisch
 mit dem nativen Prüfstand. Die Galerieaufnahme zeigt bewusst noch den früheren Hinweis;
-sie wurde nicht retuschiert. Für diese Textkorrektur wurde **kein weiterer nativer Build
-oder Screenshotlauf** durchgeführt. Quellen-/JSON-/Katalogabgleich und vorhandener
+sie wurde nicht retuschiert. Zum Abschluss der Sichtprüfung gab es für diese Textkorrektur
+noch keinen weiteren nativen Build oder Screenshotlauf. Der anschließend ausdrücklich
+beauftragte **TestFlight-Build 15** baut und signiert sie im Quellstand `c4898e7` erneut;
+63 native Unit-Tests bestehen. **Keine neue visuelle Aufnahme für diesen Hinweis.**
+Quellen-/JSON-/Katalogabgleich und vorhandener
 Lokalisierungscheck bestehen: 1681 verwendete Kennungen, 2702 Einträge, 16 Sprachen;
 Details in [localization-final.json](localization-final.json).
 
@@ -90,7 +93,9 @@ finale Tests gezählt.
 ## Lieferung
 
 Änderung im bestehenden Projekt und Branch `feat/iphone-duo-games`; keine neue App,
-kein neues Repository. **Kein TestFlight-, App-Store-Connect- oder Release-Upload.**
+kein neues Repository. Anschließend auf ausdrücklichen Nutzerauftrag als **Version 1.0,
+TestFlight Build 15** hochgeladen, von Apple verarbeitet und intern verteilt.
+[Uploadbericht und tatsächliche Bestätigungen](testflight/README.md).
 Die alten Store-Medien bleiben unveränderte Archivdateien mit erforderlicher Neuaufnahme
 für den neuen Spielnamen und die neue Einrichtung. Diese QA-Bilder ersetzen keinen
-Store-Satz für alle Sprachen. Build 14 enthält die aktuellen Änderungen noch nicht.
+Store-Satz für alle Sprachen. Kein neuer Store-Medienupload und keine App-Store-Veröffentlichung.

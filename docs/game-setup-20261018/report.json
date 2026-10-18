@@ -1,5 +1,5 @@
 {
-  "status": "PASS for native-tested source; postcapture single-key copy update statically checked, not rebuilt",
+  "status": "PASS: captured UI7d7c842; latest c4898e7 now native-tested and exported as Apple-processed internal TestFlight1.0/15. Last hint not visually recaptured.",
   "run_id": 39155751429,
   "source_commit": "7d7c842f5390df4fe935e9a02aeb4ba02e7f5cb3",
   "workflow_conclusion": "success",
@@ -75,9 +75,11 @@
     "languages": 16,
     "swift_changes": false,
     "static_check": "PASS",
-    "native_build_after_copy": "NOT RUN",
+    "native_build_after_copy": "PASS: subsequent TestFlight1.0/15, native63 tests plus signed Release build",
     "native_recapture_after_copy": "NOT RUN",
-    "proof": "localization-final.json"
+    "proof": "localization-final.json",
+    "native_build_source_commit": "c4898e78521744d5bf97c37c03700f2a3e23dea8",
+    "native_build_proof": "testflight/status.json"
   },
   "artifacts": [
     {
@@ -121,10 +123,23 @@
     "Personal iCloud account loading",
     "Physical iPhone Duo fold/unfold",
     "Device FPS measurement",
-    "Postcopy native rebuild/recapture",
-    "New Store media captures",
-    "TestFlight upload",
-    "App Store Connect upload or release"
+    "Postcopy native UI recapture",
+    "New Store media captures or uploads",
+    "App Store release",
+    "External tester distribution"
   ],
-  "store_archive": "RECAPTURE_REQUIRED remains unchanged for game naming and setup; these QA images are not a Store replacement."
+  "store_archive": "RECAPTURE_REQUIRED remains unchanged for game naming and setup; these QA images are not a Store replacement.",
+  "subsequent_testflight": {
+    "status": "PASS",
+    "version": "1.0",
+    "build_number": 15,
+    "source_commit": "c4898e78521744d5bf97c37c03700f2a3e23dea8",
+    "run_id": 39161997156,
+    "uploaded_at": "2026-10-18T20:28:36.8662670Z",
+    "processed_at": "2026-10-18T20:30:39.2183380Z",
+    "distributed_at": "2026-10-18T20:30:39.5499380Z",
+    "native_unit_tests": 63,
+    "ipa_manifests_passed": 3,
+    "proof": "testflight/README.md"
+  }
 }
