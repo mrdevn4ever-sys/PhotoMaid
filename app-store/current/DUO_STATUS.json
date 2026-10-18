@@ -72,7 +72,12 @@
   "native_app_devicehub_ui_tests": "NOT RUN",
   "native_app_preparation_retry_run_id": 39134787534,
   "native_app_preparation_retry_source_commit": "023837c73cbd5216af558500e74f64412df7b8fd",
-  "native_app_preparation_retry_status": "NATIVE BUILD IN PROGRESS",
+  "native_app_preparation_retry_status": "NATIVE APP UI CAPTURE IN PROGRESS",
   "native_display_power_switch": "PASS: actual log Screen1 off, Screen3 on; final native enumeration and device metadata retained",
-  "preparation_timeout_proof": "validation/duo-devicehub-preparation-timeout/review.json"
+  "preparation_timeout_proof": "validation/duo-devicehub-preparation-timeout/review.json",
+  "native_app_preparation_retry_build": "PASS",
+  "native_app_preparation_retry_build_job_id": 117696989885,
+  "native_app_preparation_retry_capture_job_id": 117697612721,
+  "native_app_preparation_retry_preparation": "PASS",
+  "native_app_preparation_retry_ui_capture_started_at": "2026-10-18T14:28:59Z"
 }

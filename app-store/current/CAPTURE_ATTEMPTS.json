@@ -162,7 +162,12 @@
   {
     "run_id": 39134787534,
     "source_commit": "023837c73cbd5216af558500e74f64412df7b8fd",
-    "status": "NATIVE BUILD IN PROGRESS",
-    "scope": "Genuine Duo inner-display pilot; one DeviceHub opening after guarded library reset and bounded20minute Duo-only preparation. Actual capture/blank/dimension/library acceptance unchanged."
+    "status": "NATIVE APP UI CAPTURE IN PROGRESS",
+    "scope": "Genuine Duo inner-display pilot; one DeviceHub opening after guarded library reset and bounded20minute Duo-only preparation. Actual capture/blank/dimension/library acceptance unchanged.",
+    "native_build": "PASS",
+    "native_build_job_id": 117696989885,
+    "native_capture_job_id": 117697612721,
+    "simulator_preparation": "PASS",
+    "ui_capture_started_at": "2026-10-18T14:28:59Z"
   }
 ]
