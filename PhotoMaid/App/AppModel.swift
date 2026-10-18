@@ -505,7 +505,7 @@ final class AppModel {
             settings = s
             Haptics.enabled = s.haptics
             if albumsChanged {
-                blocks.invalidatePhotos(); blocks.photos.restrictOfflineWindow(to: [])
+                blocks.invalidatePhotos(); blocks.photos.restrictBackgroundWindow(to: [])
                 ThumbnailLoader.shared.clear()
                 reloadLibraryIfNeeded(force: true)
             } else if filterChanged { rebuildFiltered() }

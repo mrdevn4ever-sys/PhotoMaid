@@ -22,6 +22,9 @@ core = '\n'.join(p.read_text() for p in (ROOT/'Sources/PhotoMaidCore/Games').glo
 assert all(word not in native + core for word in ['URLSession', 'CloudKit', 'Vision', 'loadTransferable', 'PhotosPicker', 'AdMob', 'NotificationRequest'])
 assert 'PHCachingImageManager' not in native, 'Must reuse existing photo managers'
 assert 'secureGame: true' in native
+for directory in ['PhotoMaid', 'PhotoMaidTests', 'PhotoMaidUITests']:
+    for path in (ROOT / directory).rglob('*.swift'):
+        assert not any(old in path.read_text() for old in ['offlineCandidates', 'prepareOfflineWindow', 'restrictOfflineWindow', 'offlineGame']), path
 assert 'game.phase != .discovered' in read('PhotoMaid/Features/Blocks/PhotoBlocksBoard.swift')
 assert '.id(game.level)' in read('PhotoMaid/Features/Blocks/PhotoBlocksBoard.swift')
 assert 'PhotoBlocksPhotos.revealedHeight(strips:' in native
