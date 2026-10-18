@@ -76,6 +76,12 @@
       "native_passed_tests": 5
     },
     {
+      "locale": "fr",
+      "device_class": "iphone-medium",
+      "status": "PASS",
+      "native_passed_tests": 1
+    },
+    {
       "locale": "it",
       "device_class": "iphone-large",
       "status": "PASS",
@@ -85,9 +91,16 @@
   "large_run": 39120101094,
   "medium_run": 39120189289,
   "duo_runtime_preparation_run": 39120476761,
-  "repository_delivery": "New accepted assets are currently local; direct workspace GitHub credentials became unavailable. Connected GitHub app still provides native artifacts.",
-  "actual_selected_screenshots": 80,
+  "repository_delivery": "Direct workspace GitHub access recovered; reviewed profiles and source fix pushed through 6a86a77.",
+  "actual_selected_screenshots": 90,
   "actual_selected_videos": 15,
   "actual_vault_alternative_videos": 5,
-  "actual_native_passed_capture_cases": 28
+  "actual_native_passed_capture_cases": 29,
+  "initial_batches": "Stopped remaining old-source jobs after two visually rejected Today count frames; accepted eight profiles retained. Corrected native pilots dispatched before remaining-language batches.",
+  "today_counter_fix_commit": "6a86a77",
+  "today_counter_fix_native_validation": "IN PROGRESS",
+  "today_counter_fix_pilot_runs": {
+    "es_iphone_large": 39124084071,
+    "it_iphone_medium": 39124085765
+  }
 }

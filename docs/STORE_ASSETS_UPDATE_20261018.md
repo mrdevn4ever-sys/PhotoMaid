@@ -27,13 +27,15 @@ H.264, 30 fps, AAC-Stereo mit 48 kHz und Stille, 15–30 Sekunden.
 
 ## Nachweise
 
-- Aktuell bestanden und visuell geprüft: **Englisch / mittleres iPhone**, 28 unveränderte
-  native Bilder und zehn ausgewählte Upload-PNGs; tatsächlicher nativer Fall 1 PASS,
-  0 FAIL, 0 SKIP. [Originaler Herkunftsbericht](../app-store/current/locales/en/iphone-medium/provenance.json),
+- Aktuell bestanden und visuell geprüft: **neun Geräte-/Sprachserien**, 90 ausgewählte
+  Screenshots, 15 ausgewählte Videos und fünf Tresor-Alternativen. Englisch/mittel
+  stammt aus dem erfolgreichen Pilot; jeder akzeptierte native Fall hat 0 FAIL und 0 SKIP. [Originaler Herkunftsbericht](../app-store/current/locales/en/iphone-medium/provenance.json),
   [Sichtprüfung](../app-store/current/locales/en/iphone-medium/review/manifest.json).
 - Große iPhones in allen 16 Sprachen: [Lauf 39120101094](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39120101094).
   Mittlere iPhones in den übrigen 15 Sprachen: [Lauf 39120189289](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39120189289).
   Beide verwenden Quellstand `bbf8999a9e0f4da13d02f598e7402a4bb2a1bf1d`.
+  Die noch ausstehenden alten Jobs wurden nach zwei abgelehnten Heute-Bildern gestoppt;
+  die bereits geprüften Serien bleiben erhalten.
 - Fünf lokale Prüfungen der Evidenzvalidierung bestehen. Ein isolierter synthetischer
   Codec-Test hat den Videoexport mit vollständiger Bild-/Tondekodierung geprüft:
   der Spieleclip hat exakt 27 Sekunden und 810 Bilder. Diese Testmuster gehören
@@ -55,6 +57,27 @@ nicht benutzt. Beim echten Tresorimport werden die Systemlöschungen stets abgel
 Ein beiläufig erfasster Systemhinweis in einer nicht ausgewählten Einrichtungsszene bleibt
 als Original archiviert und ist ausdrücklich für Store-Uploads ausgeschlossen. Der Audit
 weist jede solche Datei in der Upload-Auswahl zurück.
+
+## Beobachtete Zähler-Race und neue Aufnahmen
+
+Spanisch/groß und Italienisch/mittel wurden trotz bestandener nativer Aufnahmefälle
+visuell abgelehnt: der Heute-Hero zeigte 55 offene Medien, der Foto-Schnellzugriff
+jedoch noch „Leer“. Die unveränderten Fehlerbilder und Herkunftsnachweise stehen unter
+`app-store/current/validation/rejected-*-today/`; die gesamten ursprünglichen
+Artefakte bleiben im jeweiligen Actions-Lauf. Sie gehören nicht zur freigegebenen Auswahl.
+
+`QuickAccessSection.recount()` prüft jetzt nach der ausgelagerten Abfrage die
+Task-Abbruchmarkierung, damit ein überholtes leeres Ergebnis keinen neueren Zähler
+überschreibt. Das ist ein Schutz gegen eine im Quellcode vorhandene mögliche Race;
+die genaue zeitliche Reihenfolge der ursprünglichen Runner-Abfragen wurde nicht
+aufgezeichnet. Der Aufnahmetest wartet zusätzlich über eine semantische Kennung auf
+den tatsächlich sichtbaren Wert 55 der unabhängig inventarisierten Fotomediathek.
+Keine Zahl wird in die App injiziert. Neuer Quellstand: `6a86a77`.
+
+Native Korrektur-Piloten: Spanisch/groß [39124084071](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39124084071),
+Italienisch/mittel [39124085765](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39124085765).
+Status der neuen nativen Validierung: **IN PROGRESS**; kein Erfolg vor Abschluss behauptet.
+Danach werden die fehlenden Sprachen auf dem korrigierten Stand fortgesetzt.
 
 ## Duo
 

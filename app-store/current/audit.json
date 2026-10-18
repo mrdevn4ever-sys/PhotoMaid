@@ -232,6 +232,27 @@
   },
   {
     "status": "PASS",
+    "locale": "fr",
+    "device_class": "iphone-medium",
+    "device": {
+      "device_class": "iphone-medium",
+      "name": "iPhone 17 Pro",
+      "device_type": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+      "os_version": "26.2",
+      "sdk": "26.5",
+      "udid": "A4D9101D-61F2-4955-836E-1F65962D67C7",
+      "actual_duo": false
+    },
+    "native_screenshots": 28,
+    "selected_screenshots": 10,
+    "videos": [],
+    "native_test_count": 1,
+    "source_commit": "bbf8999a9e0f4da13d02f598e7402a4bb2a1bf1d",
+    "capture_run": "39120189289"
+  },
+  {
+    "status": "PASS",
     "locale": "it",
     "device_class": "iphone-large",
     "device": {

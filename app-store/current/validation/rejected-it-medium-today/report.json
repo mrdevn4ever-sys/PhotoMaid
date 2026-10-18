@@ -1,0 +1,54 @@
+{
+  "status": "REJECTED",
+  "reason": "Today hero shows 55 pending media but Photos quick access says Vuoto. Inconsistent initial counts; do not use the frame in the upload selection.",
+  "native_capture_tests": {
+    "devicesAndConfigurations": [
+      {
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "5F287DC4-3588-4CBC-90F1-B50AE2AD2085",
+          "deviceName": "PhotoMaid Store Current",
+          "modelName": "iPhone 17 Pro",
+          "osBuildNumber": "23C54",
+          "osVersion": "26.2",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 1,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ],
+    "environmentDescription": "PhotoMaid \u00b7 Built with macOS 26.6.2",
+    "expectedFailures": 0,
+    "failedTests": 0,
+    "finishTime": 1792322915.53,
+    "passedTests": 1,
+    "result": "Passed",
+    "skippedTests": 0,
+    "startTime": 1792322426.269,
+    "statistics": [],
+    "testFailures": [],
+    "title": "Test - PhotoMaid",
+    "topInsights": [],
+    "totalTestCount": 1
+  },
+  "artifact_receipt": {
+    "name": "store-current-it-iphone-medium-assets",
+    "run_id": 39120189289,
+    "size_in_bytes": 72471856,
+    "artifact_id": 12134719296,
+    "archive_sha256": "4470c73e52275421facb62f6ad0d646d5c8be27a6b6397b9d6472b389493061a",
+    "github_archive_digest": "sha256:4470c73e52275421facb62f6ad0d646d5c8be27a6b6397b9d6472b389493061a",
+    "github_archive_digest_verification": "PASS",
+    "downloaded_bytes": 72471856
+  },
+  "source_commit": "bbf8999a9e0f4da13d02f598e7402a4bb2a1bf1d",
+  "source_run": "39120189289",
+  "screenshot_sha256": "78b44cd6f689a31bd6d45d669209546528790d4be8e6c94580d244d2cd826054",
+  "corrective_action": "Native recapture with cancellation guard and explicit wait for the actual 55-photo visible count."
+}
