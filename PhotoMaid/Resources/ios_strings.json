@@ -13842,5 +13842,23 @@
   "tr": "Kaydedilemedi · Tekrar dene",
   "uk": "Не вдалося зберегти · Повторити",
   "zh-Hans": "保存失败 · 重试"
+ },
+ "blocks_position": {
+  "de": "Spalte %1$lld, Reihe %2$lld, Drehung %3$lld",
+  "en": "Column %1$lld, row %2$lld, rotation %3$lld",
+  "ar": "العمود %1$lld، الصف %2$lld، الدوران %3$lld",
+  "es": "Columna %1$lld, fila %2$lld, giro %3$lld",
+  "fr": "Colonne %1$lld, ligne %2$lld, rotation %3$lld",
+  "it": "Colonna %1$lld, riga %2$lld, rotazione %3$lld",
+  "ja": "列 %1$lld、行 %2$lld、回転 %3$lld",
+  "ko": "열 %1$lld, 행 %2$lld, 회전 %3$lld",
+  "nl": "Kolom %1$lld, rij %2$lld, rotatie %3$lld",
+  "pl": "Kolumna %1$lld, rząd %2$lld, obrót %3$lld",
+  "pt-PT": "Coluna %1$lld, linha %2$lld, rotação %3$lld",
+  "ro": "Coloana %1$lld, rândul %2$lld, rotația %3$lld",
+  "ru": "Столбец %1$lld, ряд %2$lld, поворот %3$lld",
+  "tr": "Sütun %1$lld, satır %2$lld, dönüş %3$lld",
+  "uk": "Стовпець %1$lld, ряд %2$lld, поворот %3$lld",
+  "zh-Hans": "第 %1$lld 列，第 %2$lld 行，旋转 %3$lld"
  }
 }

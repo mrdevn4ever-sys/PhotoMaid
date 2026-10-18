@@ -33,7 +33,24 @@ import XCTest
         XCTAssertLessThanOrEqual(board.frame.maxX, app.windows.firstMatch.frame.maxX)
         XCTAssertTrue(app.buttons["blocks.pause"].isHittable)
         checkpoint("blocks_playing", app: app)
-        board.tap(); board.swipeLeft(); board.swipeRight(); board.swipeDown()
+        func position() -> [Int] {
+            (board.value as? String ?? "").split(whereSeparator: { !$0.isNumber }).compactMap { Int($0) }
+        }
+        let before = position()
+        XCTAssertEqual(before.count, 3)
+        board.tap()
+        XCTAssertEqual(position().last, before.last.map { ($0 + 1) % 4 }, "One tap rotates exactly once")
+        let beforeLeft = position()
+        board.swipeLeft()
+        XCTAssertLessThan(position().first ?? 99, beforeLeft.first ?? 0)
+        let beforeRight = position()
+        board.swipeRight()
+        XCTAssertGreaterThan(position().first ?? 0, beforeRight.first ?? 99)
+        board.swipeDown(velocity: .fast)
+        let placed = XCTNSPredicateExpectation(predicate: NSPredicate(format: "label != 'Score: 0'"), object: app.staticTexts["blocks.score"])
+        XCTAssertEqual(XCTWaiter.wait(for: [placed], timeout: 3), .completed, "Fast downward flick must place the piece")
+        let dropScore = app.staticTexts["blocks.score"].label.split(whereSeparator: { !$0.isNumber }).compactMap { Int($0) }.first ?? 0
+        XCTAssertGreaterThan(dropScore, 5, "Hard Drop also awards the actually dropped distance")
         app.buttons["blocks.pause"].tap()
         let resume = app.buttons["blocks.resume"]
         XCTAssertTrue(resume.waitForExistence(timeout: 3))

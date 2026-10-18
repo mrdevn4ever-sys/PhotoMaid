@@ -71,7 +71,9 @@ struct PhotoBlocksBoard: View {
                         }
                     }
                 }
-                PhotoBlocksTouchView(cellSize: cell, enabled: game.acceptsInput, onActions: onActions)
+                PhotoBlocksTouchView(cellSize: cell, enabled: game.acceptsInput,
+                                     stateDescription: game.active.map { L("blocks_position", $0.origin.x + 1, $0.origin.y + 1, $0.rotation) } ?? "",
+                                     onActions: onActions)
                     .accessibilityIdentifier("blocks.board")
                     .accessibilityLabel(L("blocks_gestures"))
             }

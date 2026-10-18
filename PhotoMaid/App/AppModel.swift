@@ -298,6 +298,7 @@ final class AppModel {
             self.snapshot = s
             self.visibleMedia = self.visibleMedia.map { updates[$0.id] ?? $0 }
             self.cleanupMedia = self.cleanupMedia.map { updates[$0.id] ?? $0 }
+            self.blocks.refreshPhotos(app: self)
         }
     }
 

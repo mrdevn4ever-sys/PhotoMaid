@@ -13,7 +13,7 @@ Im bestehenden Spielebereich integriert: eigene 9×17-Blocklogik, farbige Formen
 Fotoabschnitte, 2-s-Entdeckung, fortlaufende Levels mit Übertrag und Board-Erhalt, präzise
 Tap-/Wisch-/Drag-Steuerung, Pause, lokale Rekorde und bildfreier Spielstand. Gemeinsame sichere
 Fotoquelle und bestehender Auswahldialog; sämtliche Blocks-Vorschauen offline und ohne Tresor,
-ausgeblendete oder ausgenommene Fotos. 40 UI-Kennungen in 16 Sprachen.
+ausgeblendete oder ausgenommene Fotos. 41 UI-Kennungen in 16 Sprachen.
 **PASS: 494 lokale Core-Tests, Quell-/Ressourcen-/Sprachen-/Privacy-Audits und native Syntaxprüfung.**
 Die neue Freigabe „Du kannst jederzeit minutes brauchen zum testen“ erlaubt native CI; Prüfung und
 anschließend beauftragter interner TestFlight-Upload folgen. Noch keine native Build-/UI-/FPS-Abnahme.

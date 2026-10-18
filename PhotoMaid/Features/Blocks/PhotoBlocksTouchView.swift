@@ -6,6 +6,7 @@ import UIKit
 struct PhotoBlocksTouchView: UIViewRepresentable {
     let cellSize: CGFloat
     let enabled: Bool
+    let stateDescription: String
     let onActions: ([PhotoBlocksInput.Action]) -> Void
 
     func makeUIView(context: Context) -> TouchSurface {
@@ -18,6 +19,7 @@ struct PhotoBlocksTouchView: UIViewRepresentable {
     }
     func updateUIView(_ view: TouchSurface, context: Context) {
         view.cellSize = cellSize; view.onActions = onActions
+        view.accessibilityValue = stateDescription
         if view.inputEnabled != enabled { view.resetInput(); view.inputEnabled = enabled }
     }
 

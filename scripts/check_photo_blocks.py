@@ -43,7 +43,7 @@ assert 'PhotoGamePhotos.offlineCandidates(app: app)' in picker and 'allowNetwork
 catalog = json.loads(read('PhotoMaid/Resources/Localizable.xcstrings'))['strings']
 source = json.loads(read('PhotoMaid/Resources/ios_strings.json'))
 keys = set(re.findall(r'"(blocks_[a-z_]+)"', native))
-assert len(keys) == 40, len(keys)
+assert len(keys) == 41, len(keys)
 for key in keys:
     assert len(catalog[key]['localizations']) == 16 and len(source[key]) == 16, key
     for lang, entry in catalog[key]['localizations'].items():
@@ -57,5 +57,5 @@ assert 'selected = .blocks' in read('PhotoMaid/Features/Games/PhotoGamesView.swi
 assert 'games.blocks.v1' in read('PhotoMaid/Persistence/KeyValueStore.swift')
 print('PASS: Snake byte-identical to task start; existing records formats unchanged')
 print('PASS: central offline scope, guarded two-image window, offline picker, fixed reveal coordinates, weak single clock')
-print('PASS: 40 Blocks strings in all 16 locales; native recursive target inclusion and navigation')
+print('PASS: 41 Blocks strings in all 16 locales; native recursive target inclusion and navigation')
 print('STATIC SOURCE AUDIT: no iOS type check, device privacy test or FPS measurement claimed')

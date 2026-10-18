@@ -32648,6 +32648,107 @@
         }
       }
     },
+    "blocks_position": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "العمود %1$lld، الصف %2$lld، الدوران %3$lld"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spalte %1$lld, Reihe %2$lld, Drehung %3$lld"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Column %1$lld, row %2$lld, rotation %3$lld"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Columna %1$lld, fila %2$lld, giro %3$lld"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Colonne %1$lld, ligne %2$lld, rotation %3$lld"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Colonna %1$lld, riga %2$lld, rotazione %3$lld"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "列 %1$lld、行 %2$lld、回転 %3$lld"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "열 %1$lld, 행 %2$lld, 회전 %3$lld"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kolom %1$lld, rij %2$lld, rotatie %3$lld"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kolumna %1$lld, rząd %2$lld, obrót %3$lld"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coluna %1$lld, linha %2$lld, rotação %3$lld"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Coloana %1$lld, rândul %2$lld, rotația %3$lld"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Столбец %1$lld, ряд %2$lld, поворот %3$lld"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sütun %1$lld, satır %2$lld, dönüş %3$lld"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Стовпець %1$lld, ряд %2$lld, поворот %3$lld"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "第 %1$lld 列，第 %2$lld 行，旋转 %3$lld"
+          }
+        }
+      }
+    },
     "blocks_progress": {
       "extractionState": "manual",
       "localizations": {

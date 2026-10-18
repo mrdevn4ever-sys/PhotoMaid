@@ -242,8 +242,9 @@ struct PhotoBlocksView: View {
         }.buttonStyle(.plain)
     }
     private func panel<Content: View>(@ViewBuilder content: () -> Content) -> some View {
-        ScrollView {
-            VStack(spacing: 12, content: content).padding(22)
+        ViewThatFits(in: .vertical) {
+            VStack(spacing: 12, content: content).padding(22).fixedSize(horizontal: false, vertical: true)
+            ScrollView { VStack(spacing: 12, content: content).padding(22) }
         }
         .background(PhotoBlocksPalette.ink.opacity(0.97), in: .rect(cornerRadius: 24))
         .overlay { RoundedRectangle(cornerRadius: 24).strokeBorder(.white.opacity(0.2), lineWidth: 1) }

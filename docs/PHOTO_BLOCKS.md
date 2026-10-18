@@ -107,7 +107,7 @@ Pausen/Neustarts und Invariantenprüfung, ohne Board-Fixtures. Der Foto-Scope-Te
 IDs und nachträglichen Entzug; er ist ausdrücklich keine PhotoKit-/Tresor-Geräteabnahme.
 
 **PASS, lokal:** Syntax-Parsing der 13 betroffenen nativen Produktionsdateien und zwei Apple-Testdateien;
-kein Apple-SDK-Typcheck. 40 neue UI-Kennungen in 16 Sprachen, bestehender Katalog unverändert.
+kein Apple-SDK-Typcheck. 41 neue UI-Kennungen in 16 Sprachen, bestehender Katalog unverändert.
 Snake-SHA-Baseline, unveränderte alte Rekordformate, Ressourcen-/Target-/Offline-Quellenprüfung,
 Quell-Privacy-Manifest und acht Tests des vorhandenen Privacy-Validators.
 Ein erster Test-Compilefehler bei mutierenden `#expect`-Ausdrücken sowie drei falsche Fixture-Annahmen

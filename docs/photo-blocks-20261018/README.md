@@ -28,7 +28,7 @@ Native CI und anschließend ausdrücklich beauftragter interner TestFlight-Uploa
 | `PhotoMaid/Features/Studio/StudioMediaPicker.swift` | bestehende Auswahl mit optionalem sicheren Offline-Scope |
 | `PhotoMaid/Features/Games/PhotoGamesView.swift` | Blocks-Kachel und Navigation |
 | `PhotoMaid/Features/Games/PhotoGameRecordsView.swift` | Blocks-Rekord und Speicher-Wiederholung |
-| `PhotoMaid/Resources/ios_strings.json`, `Localizable.xcstrings` | 40 Blocks-Kennungen × 16 Sprachen |
+| `PhotoMaid/Resources/ios_strings.json`, `Localizable.xcstrings` | 41 Blocks-Kennungen × 16 Sprachen |
 | `Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift`, `PhotoBlocksInputTests.swift`, `PhotoBlocksPhotosTests.swift` | 22 lokale Engine-/Input-/Foto-Tests |
 | `PhotoMaidTests/PhotoBlocksIntegrationTests.swift` | fünf neue native Integrationsfälle |
 | `PhotoMaidUITests/PhotoBlocksVisualTests.swift` | echter Start-/Touch-/Pause-/Foto-/Navigationsdurchlauf |
