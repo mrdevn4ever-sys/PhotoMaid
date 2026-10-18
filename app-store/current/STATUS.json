@@ -112,6 +112,12 @@
       "native_passed_tests": 5
     },
     {
+      "locale": "ja",
+      "device_class": "iphone-medium",
+      "status": "PASS",
+      "native_passed_tests": 1
+    },
+    {
       "locale": "ko",
       "device_class": "iphone-large",
       "status": "PASS",
@@ -152,10 +158,10 @@
   "medium_run": 39125899164,
   "duo_runtime_preparation_run": 39120476761,
   "repository_delivery": "Reviewed assets pushed through 208f4d0; remaining language batches and genuine Duo native app pilot running.",
-  "actual_selected_screenshots": 190,
+  "actual_selected_screenshots": 200,
   "actual_selected_videos": 33,
   "actual_vault_alternative_videos": 11,
-  "actual_native_passed_capture_cases": 63,
+  "actual_native_passed_capture_cases": 64,
   "initial_batches": "Stopped remaining old-source jobs after two visually rejected Today count frames; accepted eight profiles retained. Corrected native pilots dispatched before remaining-language batches.",
   "today_counter_fix_commit": "6a86a77",
   "today_counter_fix_native_validation": {

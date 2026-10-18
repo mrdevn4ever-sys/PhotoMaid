@@ -27,7 +27,7 @@ H.264, 30 fps, AAC-Stereo mit 48 kHz und Stille, 15–30 Sekunden.
 
 ## Nachweise
 
-- Aktuell bestanden und visuell geprüft: **19 Geräte-/Sprachserien**, 190 ausgewählte
+- Aktuell bestanden und visuell geprüft: **20 Geräte-/Sprachserien**, 200 ausgewählte
   Screenshots, 33 ausgewählte Videos und elf Tresor-Alternativen. Englisch/mittel
   stammt aus dem erfolgreichen Pilot; jeder akzeptierte native Fall hat 0 FAIL und 0 SKIP. [Originaler Herkunftsbericht](../app-store/current/locales/en/iphone-medium/provenance.json),
   [Sichtprüfung](../app-store/current/locales/en/iphone-medium/review/manifest.json).
