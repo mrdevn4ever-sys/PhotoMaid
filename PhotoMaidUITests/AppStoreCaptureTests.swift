@@ -82,7 +82,14 @@ final class AppStoreCaptureTests: XCTestCase {
         app.launchArguments = ["-store-capture", "-store-page", page, "-store-navigation", output.appendingPathComponent("navigation").path, "-AppleLanguages", "(\(language))", "-AppleLocale", language]
         app.launch()
         if page != "introduction", XCUIApplication(bundleIdentifier:"com.apple.springboard").buttons["Allow Full Access"].exists { resolvePrivacyPrompts(in: app, prefix:"store-permissions", photos:true) }
-        XCTAssertTrue(app.windows["store.capture." + page].waitForExistence(timeout: 40), "Requested page must finish opening: \(page)")
+        // Introduction can render before UIKit assigns the key window, so its
+        // navigation-only window marker is not a reliable cold-launch signal.
+        // Wait for the actual onboarding control instead of a timing-dependent marker.
+        if page == "introduction" {
+            XCTAssertTrue(e("onboarding.next").waitForExistence(timeout: 40), "Actual introduction must be ready")
+        } else {
+            XCTAssertTrue(app.windows["store.capture." + page].waitForExistence(timeout: 40), "Requested page must finish opening: \(page)")
+        }
         if page != "introduction" {
             XCTAssertTrue(app.wait(for: .runningForeground, timeout: 30), "App did not open capture page \(page)")
         }
