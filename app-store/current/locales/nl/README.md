@@ -4,7 +4,7 @@ App Store Connect: `nl-NL`. Aufnahmen in Dark Mode.
 
 ## iPhone 17 Pro Max
 
-Status: **ausstehend** · [Native Herkunft und tatsächliche Tests](iphone-large/provenance.json) · [Sichtprüfung](iphone-large/review/).
+Status: **PASS** · [Native Herkunft und tatsächliche Tests](iphone-large/provenance.json) · [Sichtprüfung](iphone-large/review/).
 
 <a href="iphone-large/app-store-selection/01-today.png"><img src="iphone-large/app-store-selection/01-today.png" width="180" alt="01-today" /></a>
 <a href="iphone-large/app-store-selection/02-feed.png"><img src="iphone-large/app-store-selection/02-feed.png" width="180" alt="02-feed" /></a>

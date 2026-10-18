@@ -358,6 +358,132 @@
   },
   {
     "status": "PASS",
+    "locale": "ja",
+    "device_class": "iphone-large",
+    "device": {
+      "device_class": "iphone-large",
+      "name": "iPhone 17 Pro Max",
+      "device_type": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro-Max",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+      "os_version": "26.2",
+      "sdk": "26.5",
+      "udid": "41D590A7-4255-49D5-8CAA-3DAACADE4102",
+      "actual_duo": false
+    },
+    "native_screenshots": 50,
+    "selected_screenshots": 10,
+    "videos": [
+      {
+        "file": "previews/01-review.mp4",
+        "sha256": "7958a90c19d7d42c6eed3df8c6023b70ca6e6fc16affbaf5b62a20f8ae6d3ba3",
+        "duration": 27.0
+      },
+      {
+        "file": "previews/02-photo-games.mp4",
+        "sha256": "1e203e239462e371a91b82c0cb520f0038190311894fdb0583f77a932bb34dcd",
+        "duration": 27.0
+      },
+      {
+        "file": "previews/03-studio.mp4",
+        "sha256": "a8ae689f23f4031023978a3ef1b1c328f52bf581f6b9b04222e2e4839781e106",
+        "duration": 27.0
+      },
+      {
+        "file": "alternatives/04-vault.mp4",
+        "sha256": "8e93d42228d8a3ed0d36ce1b5f15fe641ce353709abf1a1b2ac543bafcebef75",
+        "duration": 27.0
+      }
+    ],
+    "native_test_count": 5,
+    "source_commit": "cf9c42e71c3ad6162b86f1fcedfc749777999016",
+    "capture_run": "39125897166"
+  },
+  {
+    "status": "PASS",
+    "locale": "ko",
+    "device_class": "iphone-large",
+    "device": {
+      "device_class": "iphone-large",
+      "name": "iPhone 17 Pro Max",
+      "device_type": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro-Max",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+      "os_version": "26.2",
+      "sdk": "26.5",
+      "udid": "44096FA0-7CA2-4C92-B348-FE32EAA159EB",
+      "actual_duo": false
+    },
+    "native_screenshots": 50,
+    "selected_screenshots": 10,
+    "videos": [
+      {
+        "file": "previews/01-review.mp4",
+        "sha256": "a61414223788b7c7f4429f785a35a2c6ea76dc5a25a44d158fe7d0ab857a1c51",
+        "duration": 27.0
+      },
+      {
+        "file": "previews/02-photo-games.mp4",
+        "sha256": "08f58f7fff8f33f81e95d8c79df217f0aca1d06fa39f77ed5ef0dabc42553d1d",
+        "duration": 27.0
+      },
+      {
+        "file": "previews/03-studio.mp4",
+        "sha256": "56adb39abb85f26079fad2751d9ff77614152d92d01b7305f2ca64ac7a5de8a5",
+        "duration": 27.0
+      },
+      {
+        "file": "alternatives/04-vault.mp4",
+        "sha256": "2abdc9ec8230660e9d7a044ac285187ba48b29ab2a246c4b4070684d4c46977b",
+        "duration": 27.0
+      }
+    ],
+    "native_test_count": 5,
+    "source_commit": "cf9c42e71c3ad6162b86f1fcedfc749777999016",
+    "capture_run": "39125897166"
+  },
+  {
+    "status": "PASS",
+    "locale": "nl",
+    "device_class": "iphone-large",
+    "device": {
+      "device_class": "iphone-large",
+      "name": "iPhone 17 Pro Max",
+      "device_type": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro-Max",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+      "os_version": "26.2",
+      "sdk": "26.5",
+      "udid": "99781A06-1FC2-49D6-83C3-5BD63F04ACAA",
+      "actual_duo": false
+    },
+    "native_screenshots": 50,
+    "selected_screenshots": 10,
+    "videos": [
+      {
+        "file": "previews/01-review.mp4",
+        "sha256": "3b1926589cfe7f0a8b96d9dcf21d949370acc4dba4e42f9a5bb1448beb5a1073",
+        "duration": 27.0
+      },
+      {
+        "file": "previews/02-photo-games.mp4",
+        "sha256": "2b35007f915f15f452908ede1d7f5fbc9ba1979af4242b8906ad55766d56f8ee",
+        "duration": 27.0
+      },
+      {
+        "file": "previews/03-studio.mp4",
+        "sha256": "09f14763a8e8c6c4654a97bd406ac539f7674cf92a1d802442446978c0e18fb4",
+        "duration": 27.0
+      },
+      {
+        "file": "alternatives/04-vault.mp4",
+        "sha256": "908b0eab6eed98764340e2f47092836e3d19da0d4f96600087c90b9d003d1a8f",
+        "duration": 27.0
+      }
+    ],
+    "native_test_count": 5,
+    "source_commit": "cf9c42e71c3ad6162b86f1fcedfc749777999016",
+    "capture_run": "39125897166"
+  },
+  {
+    "status": "PASS",
     "locale": "pt-PT",
     "device_class": "iphone-large",
     "device": {

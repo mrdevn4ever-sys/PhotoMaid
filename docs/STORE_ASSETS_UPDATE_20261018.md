@@ -27,8 +27,8 @@ H.264, 30 fps, AAC-Stereo mit 48 kHz und Stille, 15–30 Sekunden.
 
 ## Nachweise
 
-- Aktuell bestanden und visuell geprüft: **elf Geräte-/Sprachserien**, 110 ausgewählte
-  Screenshots, 18 ausgewählte Videos und sechs Tresor-Alternativen. Englisch/mittel
+- Aktuell bestanden und visuell geprüft: **16 Geräte-/Sprachserien**, 160 ausgewählte
+  Screenshots, 33 ausgewählte Videos und elf Tresor-Alternativen. Englisch/mittel
   stammt aus dem erfolgreichen Pilot; jeder akzeptierte native Fall hat 0 FAIL und 0 SKIP. [Originaler Herkunftsbericht](../app-store/current/locales/en/iphone-medium/provenance.json),
   [Sichtprüfung](../app-store/current/locales/en/iphone-medium/review/manifest.json).
 - Große iPhones in allen 16 Sprachen: [Lauf 39120101094](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39120101094).
@@ -100,7 +100,8 @@ nativen UI-Test, die Original-Prüfsummen, 2007 × 2853 Pixel und die visuelle K
 bestehen. Vollständig einfarbige/leere Frames weist der Audit zurück.
 [Aktueller Duo-Status](../app-store/current/DUO_STATUS.json).
 
-Bisher sind **keine Duo-App-Aufnahmen freigegeben**. Der Pilot läuft; native App-Ergebnisse,
+Der native SDK-27.1-App-Build des Duo-Piloten ist **PASS** (Job `117673139925`).
+Bisher sind **keine Duo-App-Aufnahmen freigegeben**. Die echte Simulator-Einrichtung läuft; native UI-Ergebnisse,
 äußere App-Aufnahmen, Duo-Vorschauformate, physische Faltabnahme und Hardware-FPS-Messung
 sind damit noch nicht nachgewiesen. Der statische Apple-Skill-Export wird nach zuvor
 begrenzten CLI-Zeitüberschreitungen mit geöffneter Xcode-Oberfläche erneut versucht.

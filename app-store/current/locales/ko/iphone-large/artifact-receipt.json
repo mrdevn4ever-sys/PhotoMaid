@@ -1,0 +1,10 @@
+{
+  "name": "store-current-ko-iphone-large-assets",
+  "run_id": 39125897166,
+  "size_in_bytes": 205525505,
+  "artifact_id": 12137340577,
+  "archive_sha256": "11bd2fd77981a6cd6c7cc4351d8a7db92d54042e96349413d1d614a91f8c78ad",
+  "github_archive_digest": "sha256:11bd2fd77981a6cd6c7cc4351d8a7db92d54042e96349413d1d614a91f8c78ad",
+  "github_archive_digest_verification": "PASS",
+  "downloaded_bytes": 205525505
+}

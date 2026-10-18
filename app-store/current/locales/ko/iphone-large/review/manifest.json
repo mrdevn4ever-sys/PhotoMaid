@@ -1,0 +1,378 @@
+[
+  {
+    "sheet": "screenshots-00.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/02-today-and-review/feed-later.png",
+        "sha256": "333ef7f7a114fcb8f37eaba31ccbfffdb99699e8f778da1d1b7b06f49a45a9c9"
+      },
+      {
+        "file": "all-pages/02-today-and-review/feed.png",
+        "sha256": "4e0b7f5cd6835f3aa54f9ad073c3e25e623b9338e52cf93a9576dc0354e56cdd"
+      },
+      {
+        "file": "all-pages/02-today-and-review/today.png",
+        "sha256": "bc606b051b431e349b66df14a22fa57c2839593033487a4d5361569a92247785"
+      },
+      {
+        "file": "all-pages/03-photos/library.png",
+        "sha256": "01a621610f746441c184d5f3e7d1cd15fdee40f4b1cd90a39b112b1ad05f8738"
+      },
+      {
+        "file": "all-pages/04-cleanup/cleanup.png",
+        "sha256": "30a7187206b7508f6edd50f989407a286b8f072d723280f30728aa8f86f347a5"
+      },
+      {
+        "file": "all-pages/05-studio/collage.png",
+        "sha256": "967818195891810c736bbb74df48cc45c98ae92f32de3ab205bceb616126cd04"
+      },
+      {
+        "file": "all-pages/05-studio/editor-filter.png",
+        "sha256": "2d17342d2f8fe7461c22823328afaaf940c9ef1cb197e2e32d5ca772cdca3b59"
+      },
+      {
+        "file": "all-pages/05-studio/editor-markup.png",
+        "sha256": "99130fc452655236fba0f2ec4b94d22278d71a2a6b54f1451847b6daf41537c6"
+      },
+      {
+        "file": "all-pages/05-studio/movie.png",
+        "sha256": "9c2f2470d0fddf9175640dd337f8e8631202f62b22ef0931948527bf7e6405c3"
+      },
+      {
+        "file": "all-pages/05-studio/preview-01-review-back.png",
+        "sha256": "6c4d43febcdbae56e54c6f7f02ae1536b7404cdcda97bcaf89aaf76b4eb5c95a"
+      },
+      {
+        "file": "all-pages/05-studio/preview-01-review-feed.png",
+        "sha256": "1f83e3a4e1d21d798bc4fd5de4ebb5f0b5a59fd07c1474d270950f6d661c3ac0"
+      },
+      {
+        "file": "all-pages/05-studio/preview-01-review-keep.png",
+        "sha256": "2765e12bdcaa1ec65355d1d83740d4bf7ee8ee0e2feb07f04cb6bacbea5f052d"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos quick count55. Korean glyphs and selected controls render clearly; real photos, full-screen swipe-only Snake with full head/segments and three genuinely matched Memory pairs. Video samples show actual turns, curved body and wrap movement on normal game clock; no selected system banner/dialog."
+  },
+  {
+    "sheet": "screenshots-01.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/05-studio/preview-01-review-later.png",
+        "sha256": "8f07e2a017f957a1df6bb0fe008f62380953cabf8632ad483867a7b5c6f528c9"
+      },
+      {
+        "file": "all-pages/05-studio/preview-01-review-trash.png",
+        "sha256": "6c4d43febcdbae56e54c6f7f02ae1536b7404cdcda97bcaf89aaf76b4eb5c95a"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-adjust.png",
+        "sha256": "0091b14ff5f6f7dc9dcbe65d76c9e96df1b34a9ba77f190d78e31c30f2e2df6c"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-editor.png",
+        "sha256": "9050aba8f2451f5f2a3818b0a6066c11d2c312846a9c7adeaa1cd9a0ce1a4a1a"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-filter.png",
+        "sha256": "0565648e249f1af1740e195d0e7590544d15da702c8376a944179072533c716a"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-frame.png",
+        "sha256": "12be21e83b49d429b64c5f35fd971a392c06e6fdb2da4fbc75b4bdbe56ae3001"
+      },
+      {
+        "file": "all-pages/05-studio/preview-02-studio-markup.png",
+        "sha256": "dcfbeb22bf4368fb9a480b07a190af0d4842c9646b3ef54c19fa7d298a640060"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-controls.png",
+        "sha256": "599ea858ffe45f73881e0a5eef9304c160ed6ef491312672f65f9c9d16e7f3f5"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-hidden-controls.png",
+        "sha256": "fea3acfaa1189bcd66e334165bdb20a6a68dc484e4d5e2a7ef99b60cfd103813"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-vault.png",
+        "sha256": "86333b34175f4320b2b398cc5b40e8bf576107df359b84baccd0a38f9e7b1a5c"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-viewer.png",
+        "sha256": "599ea858ffe45f73881e0a5eef9304c160ed6ef491312672f65f9c9d16e7f3f5"
+      },
+      {
+        "file": "all-pages/05-studio/preview-03-vault-zoom.png",
+        "sha256": "7b1778a89406a81326b43b10f34451744839fc19a8617638a0c5336c86070cce"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos quick count55. Korean glyphs and selected controls render clearly; real photos, full-screen swipe-only Snake with full head/segments and three genuinely matched Memory pairs. Video samples show actual turns, curved body and wrap movement on normal game clock; no selected system banner/dialog."
+  },
+  {
+    "sheet": "screenshots-02.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/05-studio/preview-04-memory-memory-pairs.png",
+        "sha256": "53a9e9347035f8ea4696a546a6271342cfb14dd8c66103235733a55ddc5234db"
+      },
+      {
+        "file": "all-pages/05-studio/preview-04-memory-memory-reveal.png",
+        "sha256": "1d37befe5d1508d2893790b8105fd78bf5ce90ee53a73913452e9588c5517451"
+      },
+      {
+        "file": "all-pages/05-studio/preview-04-memory-memory-second.png",
+        "sha256": "649ded25b98101f3c645bd9f02147c100d285144dde9c3c8a495a3be7ec3dac2"
+      },
+      {
+        "file": "all-pages/05-studio/preview-05-snake-snake-down.png",
+        "sha256": "0e3de0dc9f822f0b9c11898d391ca4796be5ca4a268f09a7fb3438bb66ac4a61"
+      },
+      {
+        "file": "all-pages/05-studio/preview-05-snake-snake-left.png",
+        "sha256": "8d0e401255a34eeebe298d03ba36cd9164c50c7621a3f3d37d098ae1c06f7eec"
+      },
+      {
+        "file": "all-pages/05-studio/preview-05-snake-snake-right.png",
+        "sha256": "88b10289b7a6af28bcc0a0ffec49f1b17fb97d512ab54bab77758a91d9fdfb38"
+      },
+      {
+        "file": "all-pages/05-studio/preview-05-snake-snake-up.png",
+        "sha256": "b3aea4e787a587023caadbe307e59acf32264dc788ec5d5c19223c20543fa754"
+      },
+      {
+        "file": "all-pages/05-studio/studio.png",
+        "sha256": "8dcb6ab91e2f8618c5ca592e7bd48389e87640a1f1f76edd029be0e02c944493"
+      },
+      {
+        "file": "all-pages/06-vault/vault-files.png",
+        "sha256": "8330ce3b2e23fa673292961449ccc3f65182dff99e8df29cd2ea578cc3a751da"
+      },
+      {
+        "file": "all-pages/06-vault/vault-media-picker.png",
+        "sha256": "90007e447122ae87ce982cdeded511f982131be4c3cde904007360536d39fda4"
+      },
+      {
+        "file": "all-pages/06-vault/vault-media.png",
+        "sha256": "86333b34175f4320b2b398cc5b40e8bf576107df359b84baccd0a38f9e7b1a5c"
+      },
+      {
+        "file": "all-pages/06-vault/vault-notes.png",
+        "sha256": "d3a661011be8b149ef380ac8b34b1ae8ea18f4eb477ba9a7a12d80156798c476"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos quick count55. Korean glyphs and selected controls render clearly; real photos, full-screen swipe-only Snake with full head/segments and three genuinely matched Memory pairs. Video samples show actual turns, curved body and wrap movement on normal game clock; no selected system banner/dialog."
+  },
+  {
+    "sheet": "screenshots-03.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/06-vault/vault-setup-code-empty.png",
+        "sha256": "e111de877cdb0946ee53df71a7331911c7eba9e2315a86c265abd62d7bc3d2dd"
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-entry.png",
+        "sha256": "cb5db7a90d0bc8ff0f4284333ebc19bb6ee28a3a74041d782d05f8f0582829bd"
+      },
+      {
+        "file": "all-pages/06-vault/vault-setup-introduction.png",
+        "sha256": "48d3d37ccd2d3d05789631fea674000e86028108036773904c7a39f446438bcf"
+      },
+      {
+        "file": "all-pages/06-vault/vault-tools.png",
+        "sha256": "eb96a80a623b666876c089c931f973433efdbcf56a1f974c30457aa07e7b7b16"
+      },
+      {
+        "file": "all-pages/06-vault/vault-trash.png",
+        "sha256": "82ccaa1bf98ebe80a7240e23b8867adcfe941d98fab0b2061dd43d2e84627cda"
+      },
+      {
+        "file": "all-pages/06-vault/vault-viewer.png",
+        "sha256": "599ea858ffe45f73881e0a5eef9304c160ed6ef491312672f65f9c9d16e7f3f5"
+      },
+      {
+        "file": "all-pages/09-photo-games/games-selection.png",
+        "sha256": "222754685812d7f8647906e7e45e9d426128745b7d3232eef92f72f80b60e207"
+      },
+      {
+        "file": "all-pages/09-photo-games/memory-play.png",
+        "sha256": "f57af24e2679c2656ca0e0ecca9fc877a62122695ad35dfa9f22e26f1a5f3f1c"
+      },
+      {
+        "file": "all-pages/09-photo-games/memory-setup.png",
+        "sha256": "7fea3a21dce8d454ee669230a721bae7ae34b419e3e19611973c332cab499034"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-pause.png",
+        "sha256": "474a7bb12d64df3a84d51dc57c8cfb660c7196cfd809bb9e3cc0280875f68beb"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-play.png",
+        "sha256": "31604d370ceeb635e7de7b95ab35eba62bd50cc232905a1c64cc01e2d253ee20"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-ready.png",
+        "sha256": "c110334e60b86956e2474b82e5dad2352362e2c6f7170a1abd900fba2d871c35"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos quick count55. Korean glyphs and selected controls render clearly; real photos, full-screen swipe-only Snake with full head/segments and three genuinely matched Memory pairs. Video samples show actual turns, curved body and wrap movement on normal game clock; no selected system banner/dialog."
+  },
+  {
+    "sheet": "screenshots-04.jpg",
+    "kind": "screenshots",
+    "originals": [
+      {
+        "file": "all-pages/09-photo-games/snake-settings.png",
+        "sha256": "281569b34a275810f35a571d23c13a21923425332f8ae791506f8ac7eac46d54"
+      },
+      {
+        "file": "all-pages/09-photo-games/snake-setup.png",
+        "sha256": "91e36f54bc8ad07dec3eab877a05651156702c09d7014f61e89511b291a4593c"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos quick count55. Korean glyphs and selected controls render clearly; real photos, full-screen swipe-only Snake with full head/segments and three genuinely matched Memory pairs. Video samples show actual turns, curved body and wrap movement on normal game clock; no selected system banner/dialog."
+  },
+  {
+    "sheet": "01-review-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/01-review.mp4",
+        "sha256": "a61414223788b7c7f4429f785a35a2c6ea76dc5a25a44d158fe7d0ab857a1c51"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos quick count55. Korean glyphs and selected controls render clearly; real photos, full-screen swipe-only Snake with full head/segments and three genuinely matched Memory pairs. Video samples show actual turns, curved body and wrap movement on normal game clock; no selected system banner/dialog."
+  },
+  {
+    "sheet": "02-photo-games-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/02-photo-games.mp4",
+        "sha256": "08f58f7fff8f33f81e95d8c79df217f0aca1d06fa39f77ed5ef0dabc42553d1d"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos quick count55. Korean glyphs and selected controls render clearly; real photos, full-screen swipe-only Snake with full head/segments and three genuinely matched Memory pairs. Video samples show actual turns, curved body and wrap movement on normal game clock; no selected system banner/dialog."
+  },
+  {
+    "sheet": "03-studio-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "previews/03-studio.mp4",
+        "sha256": "56adb39abb85f26079fad2751d9ff77614152d92d01b7305f2ca64ac7a5de8a5"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos quick count55. Korean glyphs and selected controls render clearly; real photos, full-screen swipe-only Snake with full head/segments and three genuinely matched Memory pairs. Video samples show actual turns, curved body and wrap movement on normal game clock; no selected system banner/dialog."
+  },
+  {
+    "sheet": "04-vault-video.jpg",
+    "kind": "video",
+    "originals": [
+      {
+        "file": "alternatives/04-vault.mp4",
+        "sha256": "2abdc9ec8230660e9d7a044ac285187ba48b29ab2a246c4b4070684d4c46977b"
+      }
+    ],
+    "sample_times": [
+      0.4,
+      4.143,
+      7.886,
+      11.629,
+      15.371,
+      19.114,
+      22.857,
+      26.6
+    ],
+    "full_decode": "PASS",
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos quick count55. Korean glyphs and selected controls render clearly; real photos, full-screen swipe-only Snake with full head/segments and three genuinely matched Memory pairs. Video samples show actual turns, curved body and wrap movement on normal game clock; no selected system banner/dialog."
+  },
+  {
+    "sheet": "posters.jpg",
+    "kind": "posters",
+    "originals": [
+      {
+        "file": "previews/01-review-poster.png",
+        "sha256": "2898060d4bcec59027dc36176241c393f60a867d58bbecff912eadab08f65c52"
+      },
+      {
+        "file": "previews/02-photo-games-poster.png",
+        "sha256": "1be142813b0c3a1d49bb3d268937426b70a194d32e18000f192d10f68bbb2539"
+      },
+      {
+        "file": "previews/03-studio-poster.png",
+        "sha256": "638fa68ca97e0ec2f443060956e7f867501d446bcf7faed86192600fc1b92712"
+      },
+      {
+        "file": "alternatives/04-vault-poster.png",
+        "sha256": "b5f854d90c224314780efd7039cbda48af2f79384a9d36415d44a944bf1e6846"
+      }
+    ],
+    "review": "PASS",
+    "reviewed_date": "2026-10-18",
+    "review_method": "Opened all five native screenshot contact sheets, all four eight-frame video sheets, poster sheet and selected Snake/Memory PNGs at full size.",
+    "review_notes": "Actual Today Photos quick count55. Korean glyphs and selected controls render clearly; real photos, full-screen swipe-only Snake with full head/segments and three genuinely matched Memory pairs. Video samples show actual turns, curved body and wrap movement on normal game clock; no selected system banner/dialog."
+  }
+]
