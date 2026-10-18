@@ -17,8 +17,8 @@ abgebrochenes Laden lässt die Einrichtung sichtbar und ersetzt keine bestehende
 beim Fortsetzen und beim Wechsel zu Motiven beibehalten. Keine Änderung an Fotos oder Feed-Entscheidungen.
 Die zusätzlichen Texte sind in allen 16 Sprachen vorhanden; der lokale Lokalisierungscheck ist PASS
 (1681 verwendete Kennungen, 2702 Einträge). Lokaler Swift-/iOS-Build: NOT RUN, hier ist kein Swift-/Apple-SDK installiert.
-Native Unit- und Oberflächenvalidierung: **IN PROGRESS**, [Lauf 39152818302](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39152818302),
-Quellstand `5e7328e`; gezielter `games_case=setup` für Deutsch,
+Native Unit- und Oberflächenvalidierung: **IN PROGRESS**, [aktueller Lauf 39154335927](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39154335927),
+Quellstand `92a878c`; gezielter `games_case=setup` für Deutsch,
 iCloud-Vorgabe/Abschalten, leere manuelle Auswahl, Foto-Snake mit echter Uhr und große arabische Schrift.
 Ein breites Simulatorfenster ist keine Duo-Faltabnahme. Kein neuer TestFlight-/Store-Upload.
 
@@ -27,6 +27,12 @@ wegen dunkler Statusleiste/Nebenbeschriftungen auf dem dunklen Snake-Hintergrund
 App-Modus abgelehnt. Unveränderte Bilder: `docs/game-setup-20261018/rejected-light-snake/`.
 Snake erhält deshalb dunkle Systemdarstellung nur innerhalb seiner Szene; die Wiederholung
 prüft zusätzlich den Rückweg zur Spieleauswahl und zur Paare-Ansicht im ursprünglichen App-Modus.
+
+Die zweite iPhone-Aufnahme besteht ebenfalls beide nativen Fälle. Der Statusleistenkontrast
+ist korrigiert, aber die Paare-Ansicht bleibt nach Snake entgegen der hellen App-Vorgabe dunkel;
+auch dieser Bildstand ist visuell abgelehnt. Originale stehen unter
+`docs/game-setup-20261018/rejected-snake-appearance-return/`. Die Darstellung wird deshalb
+von der gemeinsamen Spieleansicht ausdrücklich für Snake beziehungsweise die App-Ansicht gesetzt.
 
 ## Spielname Paare (18.10.2026)
 
@@ -38,8 +44,9 @@ Spielstände, interne Kennungen und Spiellogik bleiben erhalten.
 
 **PASS:** beide Übersetzungsquellen und generierte Kataloge stimmen überein; der vorhandene
 Lokalisierungscheck prüft 1676 verwendete Kennungen und 2690 Einträge in 16 Sprachen.
-**NOT RUN:** neuer nativer iOS-Build, neue Spielaufnahmen und TestFlight-Upload für diese
-reine Textänderung. Der zuletzt verarbeitete Build 14 enthält noch den früheren Namen.
+Die Umbenennung ist im anschließenden nativen Build `5e7328e` enthalten; der deutsche
+Paare-Titel wurde auf dem iPhone tatsächlich aufgenommen. Neue Store-Aufnahmen und TestFlight-Upload:
+**NOT RUN**. Der zuletzt verarbeitete Build 14 enthält noch den früheren Namen.
 
 Der nachfolgende Store-Satz ist der unveränderte **Archivstand vor der Umbenennung**.
 Seine nativen Prüfungen bleiben gültige historische Nachweise. Die Spielbilder und

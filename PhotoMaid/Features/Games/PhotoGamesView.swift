@@ -12,6 +12,15 @@ struct PhotoGamesView: View {
 
     var body: some View {
         content.environment(session)
+            .preferredColorScheme(gameAppearance)
+    }
+
+    /// One owner for the modal's system appearance, including returning from the dark Snake scene.
+    private var gameAppearance: ColorScheme? {
+        switch selected {
+        case .snake: .dark
+        default: app.settings.appearance.colorScheme
+        }
     }
 
     @ViewBuilder private var content: some View {

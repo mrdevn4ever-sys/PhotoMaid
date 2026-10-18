@@ -307,9 +307,17 @@
   },
   "source_capture_audit": "PASS",
   "game_setup_validation": {
-    "status": "IN PROGRESS",
-    "run_id": 39152818302,
-    "commit": "5e7328e8bd350f1cbcd4ee9204c0d922b9e1138c",
-    "scope": "Native unit tests and actual German setup/iCloud toggles/manual-empty route/real-time PhotoKit Snake, plus Arabic accessibility text on phone and explicit wide-window simulator. Not a new Store capture or physical Duo test."
+    "status": "IN PROGRESS; first native iPhone2/0/0 visually rejected for Snake contrast; correction under native validation",
+    "run_id": 39154335927,
+    "commit": "92a878c3b7d2f7c6d0ccf89e4ef0300ab9914877",
+    "scope": "Native unit tests and actual German setup/iCloud toggles/manual-empty route/real-time PhotoKit Snake, plus Arabic accessibility text on phone and explicit wide-window simulator. Not a new Store capture or physical Duo test.",
+    "first_run": 39152818302,
+    "first_phone_native": {
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0
+    },
+    "first_phone_visual": "REJECT: dark status/captions on dark Snake scene in light app mode",
+    "first_visual_proof": "../../docs/game-setup-20261018/rejected-light-snake/review.json"
   }
 }

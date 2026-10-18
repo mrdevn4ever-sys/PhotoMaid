@@ -1,0 +1,30 @@
+{
+  "status": "VISUAL REJECT; native phone cases passed",
+  "run_id": 39154335927,
+  "source_commit": "92a878c3b7d2f7c6d0ccf89e4ef0300ab9914877",
+  "native_phone": {
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0
+  },
+  "artifact": {
+    "id": 12146438893,
+    "bytes": 16772149,
+    "sha256": "f7f6363ab85cdec1c47a3e8891db822ac3938d09e7eb28bc8bfacab803cec28d",
+    "github_hash_and_crc": "PASS"
+  },
+  "observed": "Snake status/chevron contrast is corrected, but the chooser and Pairs remain dark after leaving Snake although the test app started in light appearance. Pairs cloud OFF after return is intentional, retained from the explicit earlier optout.",
+  "actual_review": "Viewed full native Snake default and Pairs-after-return images plus both German8-image and Arabic4-image contact sheets. No final visual approval. System permission diagnostic was not part of this visual approval.",
+  "correction": "PhotoGamesView owns the modal appearance explicitly: Snake dark; chooser/Pairs use actual app appearance. Remove nested Snake preferredColorScheme. Repeat actual route and review returned Pairs screenshot.",
+  "preserved_files": {
+    "pairs_setup_default_cloud_on.png": "cf61f49d44b3290276cf73b1df38b444a3508faf3af645915495566f408c300e",
+    "snake_setup_default_library_cloud_on.png": "1f578042b06c26d4d6c1b1229b40635945aeb50bc50a9f9d0f83dbe97ced788d",
+    "pairs_after_snake_uses_app_appearance.png": "e10676b32a58199f0d820ffebb7429b85c579c6f019be9060b6a2388810303c0",
+    "games_chooser_after_snake_pause.png": "f5ebef4b5f3bbbe75b0cc53887515450cb9263663505fd6b0e8e9014f6df6240",
+    "iphone-summary.json": "46f02223921cd79cf6c144a967d62d7e775f2a78504179fe4c966c7709835ef9",
+    "iphone.log": "c710884b96575f0e99242dbc4385d9a915b75a9d6785693019dc7d05ac384a53",
+    "iphone.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "attachments-manifest.json": "267513ebf8819127b8acbc23a7bda29835a8ecb7e0fe326c5326401b4d48c995"
+  },
+  "wide_capture": "Superseded by known phone appearance regression; do not count an incomplete/cancelled wide phase as passed."
+}
