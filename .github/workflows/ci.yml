@@ -9,6 +9,11 @@ on:
         description: "Nur Xcode-/SDK-/iPhone-Duo-Simulator-Verfügbarkeit prüfen"
         type: boolean
         default: false
+      duo_runner:
+        description: "Duo-Probe: bisheriger Runner oder neuer Xcode-27-Preview-Runner"
+        type: choice
+        options: [macos-26, xcode-27]
+        default: macos-26
       store_locales:
         description: "App-Store-Aufnahmen statt QA: all oder Kommaliste (leer = normale CI)"
         type: string
@@ -86,11 +91,13 @@ jobs:
   duo-environment:
     if: inputs.duo_probe
     name: iPhone Duo – Xcode und Simulator prüfen
-    runs-on: macos-26
+    runs-on: ${{ inputs.duo_runner || 'macos-26' }}
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - name: Duo-Werkzeuge untersuchen
+        env:
+          PM_PROBE_XCODE: ${{ inputs.duo_runner == 'xcode-27' && '27.1' || '' }}
         run: scripts/ci/duo_environment.sh
       - uses: actions/upload-artifact@v4
         if: always()

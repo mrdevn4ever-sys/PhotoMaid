@@ -3,7 +3,13 @@
 set -euo pipefail
 mkdir -p duo-environment
 python3 - <<'PY' > duo-environment/xcode-path.txt
-import glob,re
+import glob,re,os
+requested=os.environ.get('PM_PROBE_XCODE','')
+if requested:
+    path='/Applications/Xcode_'+requested+'.app'
+    if not os.path.isdir(path):raise SystemExit('Requested Xcode not installed: '+path)
+    print(path)
+    raise SystemExit(0)
 def version(path):
     match=re.search(r'Xcode[_ ](\d+)(?:\.(\d+))?(?:\.(\d+))?',path)
     numbers=tuple(int(n or 0) for n in match.groups()) if match else (0,0,0)

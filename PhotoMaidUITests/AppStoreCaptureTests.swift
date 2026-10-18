@@ -49,8 +49,11 @@ final class AppStoreCaptureTests: XCTestCase {
     private func button(_ key: String) -> XCUIElement {
         // SwiftUI menu items can change between Button and PopUpButton in iOS 26 snapshots.
         // Resolve by label and index so XCTest does not retain a stale, typed identity.
-        let query = app.descendants(matching: .any).matching(NSPredicate(format:"label == %@", t(key)))
-        return query.allElementsBoundByIndex.first(where: \.isHittable) ?? query.firstMatch
+        let predicate = NSPredicate(format: "label == %@ OR label BEGINSWITH %@", t(key), t(key) + ", ")
+        let buttons = app.buttons.matching(predicate)
+        let popups = app.popUpButtons.matching(predicate)
+        let matches = buttons.allElementsBoundByIndex + popups.allElementsBoundByIndex
+        return matches.first(where: \.isHittable) ?? matches.first ?? buttons.firstMatch
     }
     private func launch(_ page: String) {
         let navigation = output.appendingPathComponent("navigation")
@@ -506,8 +509,16 @@ final class AppStoreCaptureTests: XCTestCase {
 
     private func prepareSnakeForStore() {
         openStoreGame("snake")
-        tap(e("snake.source")); tap(button("memory_source_library"))
-        tap(e("snake.speed")); tap(button("snake_gentle"))
+        func selected(_ identifier: String, _ key: String) -> Bool {
+            let control = e(identifier)
+            return (control.label + " " + (control.value as? String ?? "")).contains(t(key))
+        }
+        if !selected("snake.source", "memory_source_library") {
+            tap(e("snake.source")); tap(button("memory_source_library"))
+        }
+        if !selected("snake.speed", "snake_gentle") {
+            tap(e("snake.speed")); tap(button("snake_gentle"))
+        }
         snap("snake-setup")
         tap(e("snake.prepare"))
         let board = e("snake.board")
