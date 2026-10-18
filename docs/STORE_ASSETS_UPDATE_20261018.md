@@ -151,7 +151,15 @@ mit Bundle-ID `com.apple.dt.Devices` und vorhandenem Programm. Auch Apples
 [öffentliche Duo-Anleitung](https://developer.apple.com/iphone-duo/prepare/) nennt Device Hub.
 Der Workflow öffnet nun dieses vorhandene Programm; die konkrete UDID bleibt
 bei simctl und XCTest eindeutig ausgewählt.
-[Neuer App-Pilot 39133181324](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39133181324).
+[App-Pilot 39133181324](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39133181324)
+öffnet Device Hub erfolgreich und bestätigt beide echten Display-Power-Operationen
+(Screen 1 aus, Screen 3 an). Beide Boots und das bewachte Leeren der Wegwerf-Mediathek
+bestehen; danach endet das zehnminütige Gesamtlimit der Vorbereitung noch vor
+der App-Installation. [Unveränderte Display-/Gerätedaten und genauer Befund](../app-store/current/validation/duo-devicehub-preparation-timeout/review.json).
+Die Wiederholung entfernt den ersten unnötigen GUI-Start vor dem bewachten Leeren
+und erlaubt ausschließlich der Duo-Vorbereitung 20 Minuten. Native Abnahme, echte
+55 Fotos, unveränderte Dimensionen und Leerbild-Ablehnung bleiben gleich:
+[Lauf 39134787534](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39134787534).
 Bisher sind **keine Duo-App-Aufnahmen freigegeben**. Native UI-Ergebnisse,
 äußere App-Aufnahmen, Duo-Vorschauformate, physische Faltabnahme und Hardware-FPS-Messung
 sind damit noch nicht nachgewiesen. Der statische Apple-Skill-Export wird nach zuvor

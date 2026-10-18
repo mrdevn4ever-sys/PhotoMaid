@@ -151,10 +151,18 @@
   {
     "run_id": 39133181324,
     "source_commit": "d574411cfbde5b7a11fce92e976e8fba75f084f0",
-    "status": "NATIVE SIMULATOR PREPARATION IN PROGRESS",
+    "status": "FAIL: TEN-MINUTE PREPARATION TIMEOUT",
     "scope": "Genuine Duo app pilot using actual matching DeviceHub instead of absent legacy Simulator GUI. Native inner-display UI capture and strict evidence validation unchanged.",
     "native_build": "PASS",
     "native_build_job_id": 117692339935,
-    "native_capture_job_id": 117693253222
+    "native_capture_job_id": 117693253222,
+    "native_capture_tests": "NOT RUN",
+    "reason": "Matching DeviceHub opened; genuine Duo booted twice, guarded library clearing succeeded, both public display-power operations and final enumeration succeeded. Overall preparation limit reached before app installation. Removed first redundant GUI opening; only Duo preparation limit raised to20minutes."
+  },
+  {
+    "run_id": 39134787534,
+    "source_commit": "023837c73cbd5216af558500e74f64412df7b8fd",
+    "status": "NATIVE BUILD IN PROGRESS",
+    "scope": "Genuine Duo inner-display pilot; one DeviceHub opening after guarded library reset and bounded20minute Duo-only preparation. Actual capture/blank/dimension/library acceptance unchanged."
   }
 ]

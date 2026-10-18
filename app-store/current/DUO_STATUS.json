@@ -1,5 +1,5 @@
 {
-  "status": "DEVICE HUB DISCOVERED; NEW GENUINE DUO APP PILOT IN PROGRESS",
+  "status": "DEVICE HUB AND DISPLAY SWITCH VERIFIED; BOUNDED PREPARATION RETRY IN PROGRESS",
   "xcode": "Xcode27.1 / 27A9275",
   "sdk": "27.1",
   "runtime": "iOS27.1 / 24A94425",
@@ -65,8 +65,14 @@
   "actual_gui_bundle_id": "com.apple.dt.Devices",
   "native_app_devicehub_run_id": 39133181324,
   "native_app_devicehub_source_commit": "d574411cfbde5b7a11fce92e976e8fba75f084f0",
-  "native_app_devicehub_status": "NATIVE SIMULATOR PREPARATION IN PROGRESS",
+  "native_app_devicehub_status": "FAIL: TEN-MINUTE PREPARATION TIMEOUT BEFORE APP INSTALL",
   "native_app_devicehub_build": "PASS",
   "native_app_devicehub_build_job_id": 117692339935,
-  "native_app_devicehub_capture_job_id": 117693253222
+  "native_app_devicehub_capture_job_id": 117693253222,
+  "native_app_devicehub_ui_tests": "NOT RUN",
+  "native_app_preparation_retry_run_id": 39134787534,
+  "native_app_preparation_retry_source_commit": "023837c73cbd5216af558500e74f64412df7b8fd",
+  "native_app_preparation_retry_status": "NATIVE BUILD IN PROGRESS",
+  "native_display_power_switch": "PASS: actual log Screen1 off, Screen3 on; final native enumeration and device metadata retained",
+  "preparation_timeout_proof": "validation/duo-devicehub-preparation-timeout/review.json"
 }
