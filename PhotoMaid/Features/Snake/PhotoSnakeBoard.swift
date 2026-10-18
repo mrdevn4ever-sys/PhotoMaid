@@ -15,6 +15,7 @@ struct PhotoSnakeBoard: UIViewRepresentable {
         view.isAsynchronous = false
         view.ignoresSiblingOrder = true
         view.allowsTransparency = true
+        view.clipsToBounds = true
         view.backgroundColor = .clear
         let scene = PhotoSnakeScene(model: model)
         scene.scaleMode = .resizeFill
@@ -45,11 +46,13 @@ final class PhotoSnakeScene: SKScene {
     private let composer = SnakePhotoTextureComposer()
     private let field = SKNode()
     private let boundary = SKShapeNode()
+    private let gridLines = SKShapeNode()
     private let bodyLine = SKShapeNode()
     private let highlight = SKShapeNode()
     private let head = SKSpriteNode()
+    private let previousHead = SKSpriteNode()
     private var headCopies: [SKSpriteNode] = []
-    private let tail = SKSpriteNode()
+    private var previousHeadCopies: [SKSpriteNode] = []
     private let food = SKSpriteNode()
     private let sparkle = SKSpriteNode()
     private var segments: [SKSpriteNode] = []
@@ -67,8 +70,12 @@ final class PhotoSnakeScene: SKScene {
     private var angleFrom = 0.0
     private var angleTo = 0.0
     private var angle = 0.0
+    private var fromDirection = PhotoSnakeGame.Direction.right
+    private var toDirection = PhotoSnakeGame.Direction.right
     private var textureSignature = ""
     private var fieldSize = CGSize.zero
+    private var gridColumns = 0
+    private var gridRows = 0
     private var pendingFood: PhotoSnakeGame.Cell?
     private var cachedFoodScore = 0
     var reduceMotion = false
@@ -80,14 +87,16 @@ final class PhotoSnakeScene: SKScene {
         backgroundColor = .clear
         addChild(field)
         boundary.strokeColor = .white.withAlphaComponent(0.24)
-        boundary.fillColor = UIColor(red: 0.07, green: 0.21, blue: 0.10, alpha: 0.24)
+        boundary.fillColor = UIColor(red: 0.045, green: 0.16, blue: 0.09, alpha: 0.96)
         boundary.lineWidth = 1; boundary.zPosition = 0; field.addChild(boundary)
+        gridLines.strokeColor = .white.withAlphaComponent(0.06)
+        gridLines.lineWidth = 1; gridLines.zPosition = 0.5; field.addChild(gridLines)
         for line in [bodyLine, highlight] {
             line.lineCap = .round; line.lineJoin = .round; line.isAntialiased = true
             line.fillColor = .clear; field.addChild(line)
         }
         bodyLine.zPosition = 1; highlight.zPosition = 2
-        tail.texture = SnakeArt.texture("body_tail"); tail.zPosition = 2; field.addChild(tail)
+        previousHead.zPosition = 5.9; field.addChild(previousHead)
         head.zPosition = 6; field.addChild(head)
         food.zPosition = 3; field.addChild(food)
         sparkle.zPosition = 7; sparkle.isHidden = true; field.addChild(sparkle)
@@ -97,7 +106,7 @@ final class PhotoSnakeScene: SKScene {
     func resetClock() { previousTime = nil }
     func releasePhotoTextures() {
         guard !textureSignature.isEmpty else { return }
-        for node in segments + wraps { node.texture = SnakeArt.texture("segment_placeholder") }
+        for node in segments + wraps { node.texture = composer.texture(nil) }
         composer.removeAll(); textureSignature = ""
         let retained = max(0, (model.game?.body.count ?? 1) - 1)
         for node in segments.dropFirst(retained) { node.removeFromParent() }
@@ -105,13 +114,17 @@ final class PhotoSnakeScene: SKScene {
     }
 
     func refreshTextures() {
-        // This runs only on SwiftUI invalidation, never in update(_:). Composition is keyed by photo ID.
+        // SwiftUI invalidation and a new round synchronize once. Normal frame updates only look up cached textures.
         let ids = model.pictureIDs
         let signature = "\(model.roundID)-\(model.gallery.revision)-\(model.usesSavedPhotos)-\(ids.joined(separator: ","))"
-        guard signature != textureSignature else { return }
         textureSignature = signature
+        // A reloaded UIImage may replace the same photo ID. The composer checks weak image identity
+        // as well as the ID, so it neither serves an old photo nor recomposes unchanged thumbnails.
         composer.synchronize(ids: ids, images: model.visibleImages)
-        for (index, node) in segments.enumerated() { node.texture = texture(at: index + 1) }
+        for (index, node) in segments.enumerated() {
+            let image = texture(at: index + 1)
+            if node.texture !== image { node.texture = image }
+        }
     }
 
     nonisolated override func update(_ currentTime: TimeInterval) {
@@ -134,12 +147,14 @@ final class PhotoSnakeScene: SKScene {
             cachedFoodScore = (model.stepOrigin ?? game).score
             pendingFood = (model.stepOrigin ?? game).food
             angle = rotation((model.stepOrigin ?? game).direction); angleFrom = angle; angleTo = angle
+            fromDirection = (model.stepOrigin ?? game).direction; toDirection = fromDirection
             refreshTextures()
         }
         if facing != model.facingRevision, serial == 0, model.stepSerial == 0 {
             facing = model.facingRevision
             motion = PhotoSnakeMotion(game: game)
             angle = rotation(game.direction); angleFrom = angle; angleTo = angle
+            fromDirection = game.direction; toDirection = game.direction
             pendingFood = game.food
         }
         if model.stepSerial != serial { beginStep() }
@@ -170,7 +185,9 @@ final class PhotoSnakeScene: SKScene {
             if model.stepSerial != serial { beginStep(); progress = min(1, carry) }
         }
         turnAge += dt
-        angle = reduceMotion ? angleTo : PhotoSnakeHeadAnimation.shortestAngle(from: angleFrom, to: angleTo, fraction: turnAge / 0.13)
+        let turn = min(1, max(0, turnAge / 0.13))
+        let eased = turn * turn * (3 - 2 * turn)
+        angle = reduceMotion ? angleTo : PhotoSnakeHeadAnimation.shortestAngle(from: angleFrom, to: angleTo, fraction: eased)
         render()
     }
 
@@ -181,12 +198,16 @@ final class PhotoSnakeScene: SKScene {
         if serial == 0, let origin = model.stepOrigin { motion = PhotoSnakeMotion(game: origin) }
         motion?.advance(to: game, event: model.lastEvent)
         serial = model.stepSerial; progress = 0
-        angleFrom = angle; angleTo = rotation(game.direction); turnAge = 0
+        if toDirection != game.direction {
+            fromDirection = toDirection; toDirection = game.direction
+            angleFrom = angle; angleTo = rotation(game.direction); turnAge = 0
+        }
     }
 
     private var cell: CGFloat {
         guard let game = model.game else { return 1 }
-        return min(size.width / CGFloat(game.width), size.height / CGFloat(game.height))
+        return CGFloat(PhotoSnakeLayout(width: Double(size.width), height: Double(size.height),
+                                       columns: game.width, rows: game.height).pitch)
     }
     private func position(_ p: PhotoSnakeMotion.Point) -> CGPoint {
         guard let game = model.game else { return .zero }
@@ -205,89 +226,111 @@ final class PhotoSnakeScene: SKScene {
     }
     private func render() {
         guard let game = model.game, let motion else { return }
-        let c = cell
+        let layout = PhotoSnakeLayout(width: Double(size.width), height: Double(size.height), columns: game.width, rows: game.height)
+        let c = CGFloat(layout.pitch), photoSide = CGFloat(layout.photoSide)
         field.position = CGPoint(x: (size.width - CGFloat(game.width) * c) / 2,
                                  y: (size.height - CGFloat(game.height) * c) / 2)
         let nextFieldSize = CGSize(width: CGFloat(game.width) * c, height: CGFloat(game.height) * c)
-        if nextFieldSize != fieldSize {
+        if nextFieldSize != fieldSize || gridColumns != game.width || gridRows != game.height {
             fieldSize = nextFieldSize
+            gridColumns = game.width; gridRows = game.height
             boundary.path = CGPath(roundedRect: CGRect(origin: .zero, size: fieldSize).insetBy(dx: 0.5, dy: 0.5),
                                    cornerWidth: 8, cornerHeight: 8, transform: nil)
+            let grid = CGMutablePath()
+            for x in 1..<game.width {
+                grid.move(to: CGPoint(x: CGFloat(x) * c, y: 0)); grid.addLine(to: CGPoint(x: CGFloat(x) * c, y: fieldSize.height))
+            }
+            for y in 1..<game.height {
+                grid.move(to: CGPoint(x: 0, y: CGFloat(y) * c)); grid.addLine(to: CGPoint(x: fieldSize.width, y: CGFloat(y) * c))
+            }
+            gridLines.path = grid
         }
         let points = motion.points(progress: progress)
         let path = CGMutablePath()
-        for line in motion.lines(progress: progress) { path.move(to: position(line.a)); path.addLine(to: position(line.b)) }
+        for line in motion.lines(progress: progress, samples: points) { path.move(to: position(line.a)); path.addLine(to: position(line.b)) }
         bodyLine.path = path; highlight.path = path
         bodyLine.strokeColor = Self.colors[model.preferences.character] ?? .systemGreen
-        bodyLine.lineWidth = c * 0.69
-        highlight.strokeColor = .white.withAlphaComponent(0.12); highlight.lineWidth = c * 0.34
+        bodyLine.lineWidth = photoSide * 0.42
+        highlight.strokeColor = .white.withAlphaComponent(0.14); highlight.lineWidth = photoSide * 0.10
         var wrapCount = 0
         for (index, point) in points.enumerated().dropFirst() {
             let node = sprite(&segments, at: index - 1, z: 4)
-            node.isHidden = false; node.texture = texture(at: index)
-            // The actual circle occupies 160/256 of the transparent sprite.
+            let image = texture(at: index)
+            if node.texture !== image { node.texture = image }
             let growing = (model.lastEvent == .collected || model.lastEvent == .won) && progress < 1 && index == points.count - 1
-            let scale = growing && !reduceMotion ? CGFloat(progress) : 1
-            node.zPosition = growing ? 3.9 : 4
-            node.size = CGSize(width: c * 1.28 * scale, height: c * 1.28 * scale)
-            node.position = position(motion.wrapped(point))
-            for offset in edgeOffsets(node.position, radius: c * 0.45, game: game) {
+            let previous = points[index - 1]
+            let distance = hypot(point.x - previous.x, point.y - previous.y) * layout.pitch
+            let side = growing ? CGFloat(layout.growingSide(progress: progress, separation: distance)) : photoSide
+            node.isHidden = side <= 0
+            node.zPosition = CGFloat(PhotoSnakeLayout.segmentDepth(index: index))
+            node.size = CGSize(width: side, height: side)
+            let placements = placements(for: point, halfExtent: side / 2, game: game, motion: motion)
+            node.position = placements[0].point; node.alpha = placements[0].alpha
+            for placement in placements.dropFirst() where side > 0 {
                 let copy = sprite(&wraps, at: wrapCount, z: 4); wrapCount += 1
                 copy.isHidden = false; copy.texture = node.texture; copy.size = node.size; copy.zPosition = node.zPosition
-                copy.position = CGPoint(x: node.position.x + offset.x, y: node.position.y + offset.y)
+                copy.position = placement.point; copy.alpha = placement.alpha
             }
         }
         for node in segments.dropFirst(max(0, points.count - 1)) { node.isHidden = true }
         for node in wraps.dropFirst(wrapCount) { node.isHidden = true }
-        if let last = points.last {
-            tail.position = position(motion.wrapped(last)); tail.size = CGSize(width: c * 1.25, height: c * 1.25)
-            if points.count > 1 {
-                let before = points[points.count - 2]
-                tail.zRotation = CGFloat(atan2(last.y - before.y, before.x - last.x))
-            }
-        }
         let frame = PhotoSnakeHeadAnimation.frame(character: model.preferences.character, time: animationTime,
             eating: eatingAt.map { animationTime - $0 }, collision: collisionAt.map { animationTime - $0 },
             sleeping: !model.running && model.started && game.status == .playing,
             danger: danger(game), lookingLeft: turnAge < 0.12 ? (game.direction == .left || game.direction == .up) : nil,
             reduceMotion: reduceMotion)
-        head.texture = SnakeArt.texture(frame.texture)
-        head.size = CGSize(width: c * 1.55, height: c * 1.55)
-        head.zRotation = CGFloat(angle); head.setScale(frame.scale)
-        if let first = points.first { head.position = position(motion.wrapped(first)) }
-        let headOffsets = edgeOffsets(head.position, radius: c * 0.53, game: game)
-        for (index, offset) in headOffsets.enumerated() {
-            let copy = sprite(&headCopies, at: index, z: 6)
-            copy.isHidden = false; copy.texture = head.texture; copy.size = head.size
-            copy.zRotation = head.zRotation; copy.setScale(frame.scale)
-            copy.position = CGPoint(x: head.position.x + offset.x, y: head.position.y + offset.y)
-        }
-        for copy in headCopies.dropFirst(headOffsets.count) { copy.isHidden = true }
+        if let first = points.first { renderHead(at: first, frame: frame, side: CGFloat(layout.headSide), game: game, motion: motion) }
         food.isHidden = pendingFood == nil
         if let pendingFood {
             food.position = position(pendingFood)
             food.texture = SnakeArt.texture(model.preferences.food.texture(score: cachedFoodScore))
             let pulse = reduceMotion ? 1 : 1 + 0.035 * sin(animationTime * 3)
-            food.size = CGSize(width: c * 1.1 * pulse, height: c * 1.1 * pulse)
+            food.size = CGSize(width: photoSide * 1.15 * pulse, height: photoSide * 1.15 * pulse)
         }
         if let eatingAt, animationTime - eatingAt < 0.24, !reduceMotion {
             let age = max(0, animationTime - eatingAt)
             let index = min(4, Int(age / 0.06) + 1)
             sparkle.texture = SnakeArt.texture(String(format: "fx_collect_%02d", index))
-            sparkle.size = CGSize(width: c * 2, height: c * 2); sparkle.isHidden = false
+            sparkle.size = CGSize(width: photoSide * 1.6, height: photoSide * 1.6); sparkle.isHidden = false
         } else { sparkle.isHidden = true }
     }
-    private func edgeOffsets(_ p: CGPoint, radius: CGFloat, game: PhotoSnakeGame) -> [CGPoint] {
-        guard game.mode == .relaxed else { return [] }
-        let w = CGFloat(game.width) * cell, h = CGFloat(game.height) * cell
-        var offsets: [CGPoint] = []
-        if p.x < radius { offsets.append(CGPoint(x: w, y: 0)) }
-        if p.x > w - radius { offsets.append(CGPoint(x: -w, y: 0)) }
-        if p.y < radius { offsets.append(CGPoint(x: 0, y: h)) }
-        if p.y > h - radius { offsets.append(CGPoint(x: 0, y: -h)) }
-        // At a corner the sprite can cross two edges at once; include the diagonal copy too.
-        if offsets.count == 2 { offsets.append(CGPoint(x: offsets[0].x + offsets[1].x, y: offsets[0].y + offsets[1].y)) }
-        return offsets
+    private func placements(for p: PhotoSnakeMotion.Point, halfExtent: CGFloat, game: PhotoSnakeGame,
+                            motion: PhotoSnakeMotion) -> [(point: CGPoint, alpha: CGFloat)] {
+        let pixel = position(motion.wrapped(p))
+        return PhotoSnakeLayout.placements(.init(Double(pixel.x), Double(pixel.y)),
+            width: Double(fieldSize.width), height: Double(fieldSize.height),
+            gutter: PhotoSnakeLayout(width: Double(size.width), height: Double(size.height),
+                                     columns: game.width, rows: game.height).gutter,
+            halfExtent: Double(halfExtent), wraps: game.mode == .relaxed)
+            .map { (CGPoint(x: $0.centre.x, y: $0.centre.y), CGFloat($0.alpha)) }
+    }
+
+    private func renderHead(at point: PhotoSnakeMotion.Point, frame: PhotoSnakeHeadAnimation.Frame,
+                            side: CGFloat, game: PhotoSnakeGame, motion: PhotoSnakeMotion) {
+        let currentTexture = SnakeArt.headTexture(character: model.preferences.character, pose: frame.pose, direction: toDirection)
+        let previousTexture = SnakeArt.headTexture(character: model.preferences.character, pose: frame.pose, direction: fromDirection)
+        let blend = reduceMotion || fromDirection == toDirection ? 1 : min(1, max(0, turnAge / 0.13))
+        let relativeAngle = angle - rotation(toDirection)
+        let halfExtent = Double(side) * frame.scale / 2 * (abs(cos(relativeAngle)) + abs(sin(relativeAngle)))
+        let locations = placements(for: point, halfExtent: CGFloat(halfExtent), game: game, motion: motion)
+        func draw(_ node: SKSpriteNode, image: SKTexture, direction: PhotoSnakeGame.Direction,
+                  location: (point: CGPoint, alpha: CGFloat), opacity: Double) {
+            node.isHidden = opacity <= 0
+            if node.texture !== image { node.texture = image }
+            node.size = CGSize(width: side, height: side); node.setScale(frame.scale)
+            // Four independently drawn overhead views. Counter-rotate their base direction while
+            // interpolating; crossfade the eye highlights so switching views never pops.
+            node.zRotation = CGFloat(angle - self.rotation(direction))
+            node.position = location.point; node.alpha = location.alpha * CGFloat(opacity)
+        }
+        draw(head, image: currentTexture, direction: toDirection, location: locations[0], opacity: blend)
+        draw(previousHead, image: previousTexture, direction: fromDirection, location: locations[0], opacity: blend < 1 ? 1 : 0)
+        for (index, location) in locations.dropFirst().enumerated() {
+            draw(sprite(&headCopies, at: index, z: 6), image: currentTexture, direction: toDirection, location: location, opacity: blend)
+            draw(sprite(&previousHeadCopies, at: index, z: 5.9), image: previousTexture, direction: fromDirection, location: location, opacity: blend < 1 ? 1 : 0)
+        }
+        for node in headCopies.dropFirst(locations.count - 1) { node.isHidden = true }
+        for node in previousHeadCopies.dropFirst(locations.count - 1) { node.isHidden = true }
     }
     private func danger(_ game: PhotoSnakeGame) -> Bool {
         guard game.status == .playing, let head = game.body.first else { return false }

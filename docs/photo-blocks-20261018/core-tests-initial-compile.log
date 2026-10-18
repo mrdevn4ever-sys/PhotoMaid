@@ -1,0 +1,1244 @@
+[0/1] Planning build
+Building for debugging...
+[0/13] Write sources
+[2/13] Write swift-version-24593BA9C3E375BF.txt
+[4/16] Compiling PhotoMaidCore PhotoBlocksPhotos.swift
+[5/16] Compiling PhotoMaidCore PhotoBlocksShapes.swift
+[6/16] Compiling PhotoMaidCore PhotoBlocksGame.swift
+[7/16] Emitting module PhotoMaidCore
+[8/16] Compiling PhotoMaidCore PhotoBlocksInput.swift
+[9/17] Wrapping AST for PhotoMaidCore for debugging
+[11/50] Emitting module PhotoMaidCoreTests
+[12/57] Compiling PhotoMaidCoreTests HistoryGroupingTests.swift
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:67:31: note: expanded code originates here
+ 65 |         var board = blank(); board[15][3] = .arch
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:68:31: note: expanded code originates here
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },-1,expression: .__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("-1"))),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:68:56: note: expanded code originates here
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },-1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("-1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:69:31: note: expanded code originates here
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },2,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("2"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+ 71 |         #expect(!game.fits(.init(shape: .shoot, origin: .init(0, -1))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:69:55: note: expanded code originates here
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },0,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("0"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+ 71 |         #expect(!game.fits(.init(shape: .shoot, origin: .init(0, -1))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:78:35: note: expanded code originates here
+ 76 |         for x in [0, 7] {
+ 77 |             var game = PhotoBlocksGame(testBoard: blank(), active: .init(shape: .fern, origin: .init(x, 13)))
+ 78 |             #expect(game.rotate()); #expect(game.fits(game.active!))
+    |             `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 79 |             for _ in 0..<20 { _ = game.rotate(); #expect(game.fits(game.active!)) }
+ 80 |         }
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:85:32: note: expanded code originates here
+ 83 |         enclosed[16][0] = nil; enclosed[16][1] = nil
+ 84 |         var game = PhotoBlocksGame(testBoard: enclosed, active: .init(shape: .pebble, origin: .init(0, 16)))
+ 85 |         #expect(!game.rotate())
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 86 |     }
+ 87 | 
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:31: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:56: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:83: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |                                                          `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.hardDrop()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"hardDrop"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+[13/57] Compiling PhotoMaidCoreTests LaterTests.swift
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:67:31: note: expanded code originates here
+ 65 |         var board = blank(); board[15][3] = .arch
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:68:31: note: expanded code originates here
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },-1,expression: .__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("-1"))),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:68:56: note: expanded code originates here
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },-1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("-1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:69:31: note: expanded code originates here
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },2,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("2"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+ 71 |         #expect(!game.fits(.init(shape: .shoot, origin: .init(0, -1))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:69:55: note: expanded code originates here
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },0,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("0"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+ 71 |         #expect(!game.fits(.init(shape: .shoot, origin: .init(0, -1))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:78:35: note: expanded code originates here
+ 76 |         for x in [0, 7] {
+ 77 |             var game = PhotoBlocksGame(testBoard: blank(), active: .init(shape: .fern, origin: .init(x, 13)))
+ 78 |             #expect(game.rotate()); #expect(game.fits(game.active!))
+    |             `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 79 |             for _ in 0..<20 { _ = game.rotate(); #expect(game.fits(game.active!)) }
+ 80 |         }
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:85:32: note: expanded code originates here
+ 83 |         enclosed[16][0] = nil; enclosed[16][1] = nil
+ 84 |         var game = PhotoBlocksGame(testBoard: enclosed, active: .init(shape: .pebble, origin: .init(0, 16)))
+ 85 |         #expect(!game.rotate())
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 86 |     }
+ 87 | 
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:31: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:56: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:83: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |                                                          `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.hardDrop()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"hardDrop"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+[14/57] Compiling PhotoMaidCoreTests LibraryFilterTests.swift
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:67:31: note: expanded code originates here
+ 65 |         var board = blank(); board[15][3] = .arch
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:68:31: note: expanded code originates here
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },-1,expression: .__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("-1"))),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:68:56: note: expanded code originates here
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },-1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("-1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:69:31: note: expanded code originates here
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },2,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("2"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+ 71 |         #expect(!game.fits(.init(shape: .shoot, origin: .init(0, -1))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:69:55: note: expanded code originates here
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },0,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("0"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+ 71 |         #expect(!game.fits(.init(shape: .shoot, origin: .init(0, -1))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:78:35: note: expanded code originates here
+ 76 |         for x in [0, 7] {
+ 77 |             var game = PhotoBlocksGame(testBoard: blank(), active: .init(shape: .fern, origin: .init(x, 13)))
+ 78 |             #expect(game.rotate()); #expect(game.fits(game.active!))
+    |             `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 79 |             for _ in 0..<20 { _ = game.rotate(); #expect(game.fits(game.active!)) }
+ 80 |         }
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:85:32: note: expanded code originates here
+ 83 |         enclosed[16][0] = nil; enclosed[16][1] = nil
+ 84 |         var game = PhotoBlocksGame(testBoard: enclosed, active: .init(shape: .pebble, origin: .init(0, 16)))
+ 85 |         #expect(!game.rotate())
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 86 |     }
+ 87 | 
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:31: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:56: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:83: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |                                                          `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.hardDrop()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"hardDrop"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+[15/57] Compiling PhotoMaidCoreTests OrganizeLibraryTests.swift
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:67:31: note: expanded code originates here
+ 65 |         var board = blank(); board[15][3] = .arch
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:68:31: note: expanded code originates here
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },-1,expression: .__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("-1"))),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:68:56: note: expanded code originates here
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },-1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("-1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:69:31: note: expanded code originates here
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },2,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("2"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+ 71 |         #expect(!game.fits(.init(shape: .shoot, origin: .init(0, -1))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:69:55: note: expanded code originates here
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },0,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("0"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+ 71 |         #expect(!game.fits(.init(shape: .shoot, origin: .init(0, -1))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:78:35: note: expanded code originates here
+ 76 |         for x in [0, 7] {
+ 77 |             var game = PhotoBlocksGame(testBoard: blank(), active: .init(shape: .fern, origin: .init(x, 13)))
+ 78 |             #expect(game.rotate()); #expect(game.fits(game.active!))
+    |             `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 79 |             for _ in 0..<20 { _ = game.rotate(); #expect(game.fits(game.active!)) }
+ 80 |         }
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:85:32: note: expanded code originates here
+ 83 |         enclosed[16][0] = nil; enclosed[16][1] = nil
+ 84 |         var game = PhotoBlocksGame(testBoard: enclosed, active: .init(shape: .pebble, origin: .init(0, 16)))
+ 85 |         #expect(!game.rotate())
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 86 |     }
+ 87 | 
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:31: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:56: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:83: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |                                                          `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.hardDrop()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"hardDrop"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+[16/57] Compiling PhotoMaidCoreTests PhotoBlocksGameTests.swift
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:67:31: note: expanded code originates here
+ 65 |         var board = blank(); board[15][3] = .arch
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:68:31: note: expanded code originates here
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },-1,expression: .__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("-1"))),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:68:56: note: expanded code originates here
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },-1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("-1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:69:31: note: expanded code originates here
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },2,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("2"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+ 71 |         #expect(!game.fits(.init(shape: .shoot, origin: .init(0, -1))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:69:55: note: expanded code originates here
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },0,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("0"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+ 71 |         #expect(!game.fits(.init(shape: .shoot, origin: .init(0, -1))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:78:35: note: expanded code originates here
+ 76 |         for x in [0, 7] {
+ 77 |             var game = PhotoBlocksGame(testBoard: blank(), active: .init(shape: .fern, origin: .init(x, 13)))
+ 78 |             #expect(game.rotate()); #expect(game.fits(game.active!))
+    |             `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 79 |             for _ in 0..<20 { _ = game.rotate(); #expect(game.fits(game.active!)) }
+ 80 |         }
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:85:32: note: expanded code originates here
+ 83 |         enclosed[16][0] = nil; enclosed[16][1] = nil
+ 84 |         var game = PhotoBlocksGame(testBoard: enclosed, active: .init(shape: .pebble, origin: .init(0, 16)))
+ 85 |         #expect(!game.rotate())
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 86 |     }
+ 87 | 
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:31: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:56: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:83: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |                                                          `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.hardDrop()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"hardDrop"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+[17/57] Compiling PhotoMaidCoreTests PhotoBlocksInputTests.swift
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:67:31: note: expanded code originates here
+ 65 |         var board = blank(); board[15][3] = .arch
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:68:31: note: expanded code originates here
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },-1,expression: .__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("-1"))),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:68:56: note: expanded code originates here
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },-1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("-1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:69:31: note: expanded code originates here
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },2,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("2"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+ 71 |         #expect(!game.fits(.init(shape: .shoot, origin: .init(0, -1))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:69:55: note: expanded code originates here
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },0,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("0"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+ 71 |         #expect(!game.fits(.init(shape: .shoot, origin: .init(0, -1))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:78:35: note: expanded code originates here
+ 76 |         for x in [0, 7] {
+ 77 |             var game = PhotoBlocksGame(testBoard: blank(), active: .init(shape: .fern, origin: .init(x, 13)))
+ 78 |             #expect(game.rotate()); #expect(game.fits(game.active!))
+    |             `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 79 |             for _ in 0..<20 { _ = game.rotate(); #expect(game.fits(game.active!)) }
+ 80 |         }
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:85:32: note: expanded code originates here
+ 83 |         enclosed[16][0] = nil; enclosed[16][1] = nil
+ 84 |         var game = PhotoBlocksGame(testBoard: enclosed, active: .init(shape: .pebble, origin: .init(0, 16)))
+ 85 |         #expect(!game.rotate())
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 86 |     }
+ 87 | 
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:31: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:56: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:83: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |                                                          `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.hardDrop()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"hardDrop"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+[18/57] Compiling PhotoMaidCoreTests PhotoBlocksPhotosTests.swift
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:67:31: note: expanded code originates here
+ 65 |         var board = blank(); board[15][3] = .arch
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:68:31: note: expanded code originates here
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },-1,expression: .__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("-1"))),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:68:56: note: expanded code originates here
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },-1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("-1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:69:31: note: expanded code originates here
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },2,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("2"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+ 71 |         #expect(!game.fits(.init(shape: .shoot, origin: .init(0, -1))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:69:55: note: expanded code originates here
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },0,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("0"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+ 71 |         #expect(!game.fits(.init(shape: .shoot, origin: .init(0, -1))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:78:35: note: expanded code originates here
+ 76 |         for x in [0, 7] {
+ 77 |             var game = PhotoBlocksGame(testBoard: blank(), active: .init(shape: .fern, origin: .init(x, 13)))
+ 78 |             #expect(game.rotate()); #expect(game.fits(game.active!))
+    |             `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 79 |             for _ in 0..<20 { _ = game.rotate(); #expect(game.fits(game.active!)) }
+ 80 |         }
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:85:32: note: expanded code originates here
+ 83 |         enclosed[16][0] = nil; enclosed[16][1] = nil
+ 84 |         var game = PhotoBlocksGame(testBoard: enclosed, active: .init(shape: .pebble, origin: .init(0, 16)))
+ 85 |         #expect(!game.rotate())
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 86 |     }
+ 87 | 
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:31: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:56: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:83: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |                                                          `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.hardDrop()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"hardDrop"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+[19/57] Compiling PhotoMaidCoreTests PhotoGameRecordsTests.swift
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:67:31: note: expanded code originates here
+ 65 |         var board = blank(); board[15][3] = .arch
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:68:31: note: expanded code originates here
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },-1,expression: .__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("-1"))),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:68:56: note: expanded code originates here
+ 66 |         var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .pebble, origin: .init(1, 15)))
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },-1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("-1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:69:31: note: expanded code originates here
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },2,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("2"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+ 71 |         #expect(!game.fits(.init(shape: .shoot, origin: .init(0, -1))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:69:55: note: expanded code originates here
+ 67 |         #expect(!game.move(1))
+ 68 |         #expect(game.move(-1)); #expect(!game.move(-1))
+ 69 |         #expect(!game.move(2)); #expect(!game.move(0))
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },0,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("0"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 70 |         #expect(!game.fits(.init(shape: .pebble, origin: .init(8, 10))))
+ 71 |         #expect(!game.fits(.init(shape: .shoot, origin: .init(0, -1))))
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:78:35: note: expanded code originates here
+ 76 |         for x in [0, 7] {
+ 77 |             var game = PhotoBlocksGame(testBoard: blank(), active: .init(shape: .fern, origin: .init(x, 13)))
+ 78 |             #expect(game.rotate()); #expect(game.fits(game.active!))
+    |             `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 79 |             for _ in 0..<20 { _ = game.rotate(); #expect(game.fits(game.active!)) }
+ 80 |         }
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:85:32: note: expanded code originates here
+ 83 |         enclosed[16][0] = nil; enclosed[16][1] = nil
+ 84 |         var game = PhotoBlocksGame(testBoard: enclosed, active: .init(shape: .pebble, origin: .init(0, 16)))
+ 85 |         #expect(!game.rotate())
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+ 86 |     }
+ 87 | 
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:31: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |         `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.move($1)
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },1,expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"move",(nil,.__fromSyntaxNode("1"))), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:56: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |                                 `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.rotate()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"rotate"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+
+macro expansion #expect:2:6: error: cannot use mutating member on immutable value: '$0' is immutable
+`- /app/Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift:116:83: note: expanded code originates here
+114 |         #expect(game.isValidSnapshot)
+115 |         let board = game.board, score = game.score
+116 |         #expect(!game.move(1)); #expect(!game.rotate()); #expect(!game.hardDrop())
+    |                                                          `- note: in expansion of macro 'expect' here
+    +--- macro expansion #expect ---------------------------------------
+    |1 | Testing.__checkFunctionCall(game.self,calling: {
+    |2 |   $0.hardDrop()
+    |  |      `- error: cannot use mutating member on immutable value: '$0' is immutable
+    |3 | },expression: .__fromNegation(.__fromFunctionCall(.__fromSyntaxNode("game"),"hardDrop"), false),comments: [],isRequired: false,sourceLocation: Testing.SourceLocation.__here()).__expected()
+    +-------------------------------------------------------------------
+117 |         game.advance(1); #expect(game.phase == .discovered)
+118 |         game.pause(); game.advance(10); #expect(game.phase == .discovered)
+[20/57] Compiling PhotoMaidCoreTests SizeEstimateTests.swift
+[21/57] Compiling PhotoMaidCoreTests SizeInventoryTests.swift
+[22/57] Compiling PhotoMaidCoreTests StudioTests.swift
+[23/57] Compiling PhotoMaidCoreTests Support.swift
+[24/57] Compiling PhotoMaidCoreTests VaultSecurityTests.swift
+[25/57] Compiling PhotoMaidCoreTests VaultTests.swift
+[26/57] Compiling PhotoMaidCoreTests VaultWorkspaceTests.swift
+[27/57] Compiling PhotoMaidCoreTests DecisionLedgerTests.swift
+[28/57] Compiling PhotoMaidCoreTests DuplicateCoverageTests.swift
+[29/57] Compiling PhotoMaidCoreTests DuplicateRulesCapabilityTests.swift
+[30/57] Compiling PhotoMaidCoreTests EditCoreTests.swift
+[31/57] Compiling PhotoMaidCoreTests ExpansionTests.swift
+[32/57] Compiling PhotoMaidCoreTests FeedControlsTests.swift
+[33/57] Compiling PhotoMaidCoreTests FeedSessionTests.swift
+[34/57] Compiling PhotoMaidCoreTests GestureMachineTests.swift
+[35/57] Compiling PhotoMaidCoreTests PhotoMemoryBoardLayoutTests.swift
+[36/57] Compiling PhotoMaidCoreTests PhotoMemoryGameTests.swift
+[37/57] Compiling PhotoMaidCoreTests PhotoSnakeGalleryTests.swift
+[38/57] Compiling PhotoMaidCoreTests PhotoSnakeGameTests.swift
+[39/57] Compiling PhotoMaidCoreTests PhotoSnakePresentationTests.swift
+[40/57] Compiling PhotoMaidCoreTests PhotoSnakeReadableLayoutTests.swift
+[41/57] Compiling PhotoMaidCoreTests QuickSourceFilterTests.swift
+[42/57] Compiling PhotoMaidCoreTests RetouchSelectionTests.swift
+[43/57] Compiling PhotoMaidCoreTests AnalysisPlanTests.swift
+[44/57] Compiling PhotoMaidCoreTests AnalysisResultsTests.swift
+[45/57] Compiling PhotoMaidCoreTests AnalysisWorkTests.swift
+[46/57] Compiling PhotoMaidCoreTests ArchiveBackupTests.swift
+[47/57] Compiling PhotoMaidCoreTests BatchPdfTests.swift
+[48/57] Compiling PhotoMaidCoreTests CleanupOperationTests.swift
+[49/57] Compiling PhotoMaidCoreTests CollageSceneTests.swift
+[50/57] Compiling PhotoMaidCoreTests ColorLayerTests.swift
+warning: '--build-system native' has been deprecated and will be removed in a future release; please report an issue at https://github.com/swiftlang/swift-package-manager/issues if you are unable to adopt the default build system.
+error: fatalError

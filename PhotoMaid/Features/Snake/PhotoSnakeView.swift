@@ -25,6 +25,7 @@ struct PhotoSnakeView: View {
     @State private var allowNetwork = true
     @State private var showOptions = false
     @State private var restored = false
+    @State private var startWhenReady = false
 
     private var model: PhotoSnakeModel { app.snake }
     private var playing: Bool { !setup && !model.photos.isLoading && model.game != nil }
@@ -54,21 +55,24 @@ struct PhotoSnakeView: View {
         .onAppear { restore(); model.validatePhotos(); model.updateTemperature() }
         .onChange(of: model.roundID) { _, _ in if model.game != nil { setup = false } }
         .keepsScreenAwake(model.running && scenePhase == .active)
-        .onDisappear { model.pause(); model.audio.stop(); model.photos.cancelLoading() }
+        .onDisappear { startWhenReady = false; model.pause(); model.audio.stop(); model.photos.cancelLoading() }
+        .onChange(of: model.photos.isLoading) { _, loading in
+            if !loading && model.photos.error != nil { startWhenReady = false }
+        }
         .onChange(of: scenePhase) { _, phase in
-            if phase != .active { model.pause(); model.audio.stop() }
+            if phase != .active { startWhenReady = false; model.pause(); model.audio.stop() }
             else { model.validatePhotos() }
         }
         .onChange(of: voiceOver) { _, enabled in if enabled { model.useStepMode() } }
         .onReceive(NotificationCenter.default.publisher(for: ProcessInfo.thermalStateDidChangeNotification)) { _ in model.updateTemperature() }
         .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { note in
             if (note.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt) == AVAudioSession.InterruptionType.began.rawValue {
-                model.pause(); model.audio.stop()
+                startWhenReady = false; model.pause(); model.audio.stop()
             }
         }
         .onReceive(NotificationCenter.default.publisher(for: .analysisVisibilityChanged)) { _ in model.validatePhotos() }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didReceiveMemoryWarningNotification)) { _ in
-            model.memoryWarning()
+            startWhenReady = false; model.memoryWarning()
         }
     }
 
@@ -85,12 +89,11 @@ struct PhotoSnakeView: View {
             ScrollView {
                 VStack(spacing: 20) {
                     VStack(spacing: 10) {
-                        Image(uiImage: SnakeArt.image(model.preferences.character.idle))
-                            .resizable().scaledToFit().frame(height: 88)
+                        Image(uiImage: SnakeArt.headImage(model.preferences.character))
+                            .resizable().scaledToFit().frame(height: 64)
                             .shadow(color: .black.opacity(0.18), radius: 12, y: 6).accessibilityHidden(true)
                         Text(key: "snake_title").font(.system(.largeTitle, design: .rounded).bold())
-                        Text(key: "game_setup_snake_intro").multilineTextAlignment(.center).font(.subheadline)
-                        Text(verbatim: model.menuBest(mode: mode, speed: speed, stepMode: usesStepInput).map { L("game_best_eaten", $0) } ?? L("game_no_best"))
+                        Text(verbatim: model.menuBest(mode: mode, speed: speed, stepMode: usesStepInput).map { L("game_best_eaten", $0) } ?? L("snake_record_empty"))
                             .font(.subheadline.weight(.semibold)).monospacedDigit().accessibilityIdentifier("snake.menuBest")
                     }
                     PhotoGameAnalysisStatus(onResults: onResults)
@@ -99,26 +102,23 @@ struct PhotoSnakeView: View {
                     if let error = model.preferencesError { Text(verbatim: error).font(.callout) }
                     if model.photos.isLoading {
                         ProgressView(L("memory_loading"))
-                        Button(L("cancel")) { model.photos.cancelLoading(); setup = true }
+                        Button(L("cancel")) { startWhenReady = false; model.photos.cancelLoading(); setup = true }
                     } else {
                         menuConfiguration
-                        Button { startPhotos() } label: {
-                            HStack {
-                                Image(systemName: source == .manual && model.gallery.ids.isEmpty ? "photo.badge.plus" : "play.fill")
-                                Text(verbatim: L(startLabel))
-                                    .font(.headline)
-                            }.frame(maxWidth: .infinity).padding(.vertical, 8)
-                        }
-                        .buttonStyle(.borderedProminent).tint(Color(red: 0.28, green: 0.63, blue: 0.18))
-                        .disabled(model.gallery.busy || (source != .manual && app.isLoadingLibrary))
+                        Button { startPhotos() } label: { Label(L("snake_start_game"), systemImage: "play.fill") }
+                        .buttonStyle(SnakeActionButtonStyle(prominent: true))
+                        .disabled(model.gallery.busy || (source != .manual && app.isLoadingLibrary) ||
+                                  (source == .manual && model.gallery.ids.isEmpty) || (source == .collection && collectionID == nil))
                         .accessibilityIdentifier("snake.prepare")
+                        Text(key: "snake_controls_hint").font(.subheadline).multilineTextAlignment(.center)
                         menuOptions
                         Button {
-                            setup = false; model.startMotifs(mode: mode, speed: speed, stepMode: usesStepInput)
+                            startWhenReady = true; setup = false
+                            model.startMotifs(mode: mode, speed: speed, stepMode: usesStepInput)
                         } label: { Label(L("game_setup_without_photos"), systemImage: "leaf") }
                         .buttonStyle(.bordered).accessibilityIdentifier("snake.symbols")
                         if model.game != nil {
-                            Button(L("memory_resume")) { setup = false }.buttonStyle(.bordered)
+                            Button(L("memory_resume")) { startWhenReady = true; setup = false }.buttonStyle(.bordered)
                                 .accessibilityIdentifier("snake.resume")
                         }
                     }
@@ -132,7 +132,10 @@ struct PhotoSnakeView: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(L("close"), action: close).accessibilityIdentifier("snake.close")
                 }
-                ToolbarItem(placement: .topBarTrailing) { Button(L("games_choose")) { model.pause(); onChooseGame() } }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button { model.pause(); onChooseGame() } label: { Label(L("snake_other_games"), systemImage: "square.grid.2x2") }
+                        .labelStyle(.titleAndIcon).buttonStyle(.bordered).accessibilityIdentifier("snake.otherGames")
+                }
             }
             .toolbarBackground(.hidden, for: .navigationBar)
         }
@@ -147,39 +150,50 @@ struct PhotoSnakeView: View {
                     Text(key: "memory_source_collection").tag(Source.collection)
                     Text(key: "memory_own").tag(Source.manual)
                 }
-                .labelsHidden().accessibilityIdentifier("snake.source")
+                .labelsHidden().frame(maxWidth: .infinity, alignment: .leading)
+                .padding(10).background(.white.opacity(0.08), in: .rect(cornerRadius: 12))
+                .accessibilityIdentifier("snake.source")
             }
             if source == .manual {
                 if !model.gallery.ids.isEmpty {
                     Text(verbatim: L("snake_gallery_count", model.gallery.ids.count)).font(.footnote).monospacedDigit()
-                    Button { openGallery() } label: { Label(L("game_setup_edit_photos"), systemImage: "photo.on.rectangle") }
-                        .accessibilityIdentifier("snake.editPhotos")
                 }
             } else {
                 if source == .collection {
                     Button { collectionPicker = true } label: {
                         Label(collectionID == nil ? L("memory_pick_collection") : collectionTitle, systemImage: "folder")
                     }
+                    .buttonStyle(.bordered)
                     .disabled(!app.library.access.canRead)
                     .accessibilityIdentifier("snake.chooseCollection")
                 }
-                PhotoGameCloudOption(allowsCloud: $allowNetwork, identifier: "snake.cloud")
             }
+            Button {
+                source = .manual; openGallery()
+            } label: { Label(L(photoActionLabel), systemImage: "photo.on.rectangle") }
+            .buttonStyle(SnakeActionButtonStyle())
+            .disabled(model.gallery.busy).accessibilityIdentifier("snake.editPhotos")
             Text(key: "game_setup_private").font(.footnote).foregroundStyle(.secondary)
         }
         .pickerStyle(.menu).tint(.white)
         .padding(16).background(.white.opacity(0.07), in: .rect(cornerRadius: 18))
     }
 
-    private var startLabel: String {
-        if source == .manual && model.gallery.ids.isEmpty { return "game_setup_choose_photos" }
-        if source == .collection && collectionID == nil { return "memory_pick_collection" }
-        return "snake_photo_play"
+    private var photoActionLabel: String {
+        let hasPhotos = source == .manual ? !model.gallery.ids.isEmpty : !model.photos.photoIDs.isEmpty
+        return hasPhotos ? "game_setup_edit_photos" : "game_setup_choose_photos"
+    }
+
+    private var hasRoundPhotos: Bool {
+        model.usesSavedPhotos ? !model.gallery.ids.isEmpty : !model.photos.photoIDs.isEmpty
     }
 
     private var menuOptions: some View {
         DisclosureGroup(isExpanded: $showOptions) {
             VStack(alignment: .leading, spacing: 14) {
+                if source != .manual {
+                    PhotoGameCloudOption(allowsCloud: $allowNetwork, identifier: "snake.cloud")
+                }
                 PhotoGameSetupField(title: L("snake_mode")) {
                     Picker(L("snake_mode"), selection: $mode) {
                         Text(key: "snake_relaxed").tag(PhotoSnakeGame.Mode.relaxed)
@@ -208,12 +222,18 @@ struct PhotoSnakeView: View {
 
     private func play(_ game: PhotoSnakeGame) -> some View {
         VStack(spacing: 8) {
-            HStack(spacing: 8) {
-                artButton("ui_back", label: "close", action: close).accessibilityIdentifier("snake.close")
-                artButton("ui_pause", label: "snake_pause") { model.pause() }.accessibilityIdentifier("snake.pause")
-                Spacer(minLength: 0)
-                scoreHUD
-                artButton("ui_settings", label: "settings") { openSettings() }.accessibilityIdentifier("snake.settings")
+            VStack(alignment: .leading, spacing: 8) {
+                HStack(spacing: 8) {
+                    artButton("ui_back", label: "close", action: close).accessibilityIdentifier("snake.close")
+                    artButton("ui_pause", label: "snake_pause") { model.pause() }.accessibilityIdentifier("snake.pause")
+                    Spacer(minLength: 0)
+                    if !dynamicType.isAccessibilitySize { scoreHUD }
+                    artButton("ui_settings", label: "settings") { openSettings() }.accessibilityIdentifier("snake.settings")
+                }
+                if dynamicType.isAccessibilitySize {
+                    // Keep the words Score and Record visible instead of ambiguous bare numbers.
+                    VStack(alignment: .leading, spacing: 4) { scoreText; bestText }.monospacedDigit()
+                }
             }
             .padding(8).background(.black.opacity(0.65), in: .rect(cornerRadius: 24)).padding(.horizontal, 12)
             ZStack {
@@ -236,8 +256,19 @@ struct PhotoSnakeView: View {
                     .accessibilityAction(named: Text(key: "snake_pause")) { model.pause() }
                     .onGeometryChange(for: CGSize.self) { $0.size } action: { size in
                         model.updateViewport(width: Double(size.width), height: Double(size.height))
+                        // Start only after this board has its real dimensions. Loading/selection alone
+                        // never starts a round; this flag represents the user's explicit Start tap.
+                        if startWhenReady && size.width > 0 && size.height > 0 {
+                            startWhenReady = false; model.resume()
+                        }
                     }
-                if !model.running && (game.status == .playing || !model.presentationPending) { pausePanel }
+                if !model.running && (game.status == .playing || !model.presentationPending) {
+                    Color.black.opacity(0.24).allowsHitTesting(false)
+                    ViewThatFits(in: .vertical) {
+                        pausePanel.fixedSize(horizontal: false, vertical: true)
+                        ScrollView { pausePanel }.contentMargins(.vertical, 8).scrollBounceBehavior(.basedOnSize)
+                    }
+                }
             }
             .padding(.horizontal, 4).padding(.bottom, 4)
         }
@@ -245,66 +276,65 @@ struct PhotoSnakeView: View {
         .statusBarHidden(true).persistentSystemOverlays(.hidden)
     }
 
-    @ViewBuilder private var scoreHUD: some View {
-        if dynamicType.isAccessibilitySize {
-            // Keep the largest text sizes in one row so the board retains its full height.
-            HStack(spacing: 6) {
-                Image(uiImage: SnakeArt.image("food_apple")).resizable().scaledToFit()
-                    .frame(width: 24, height: 24).accessibilityHidden(true)
-                scoreText
-                Image(systemName: "trophy.fill").font(.system(size: 16)).accessibilityHidden(true)
-                bestText
-            }.monospacedDigit()
-        } else {
-            VStack(alignment: .trailing, spacing: 2) { scoreText; bestText }.monospacedDigit()
-        }
+    private var scoreHUD: some View {
+        VStack(alignment: .trailing, spacing: 2) { scoreText; bestText }.monospacedDigit()
     }
     private var scoreText: some View {
-        Text(verbatim: dynamicType.isAccessibilitySize ? model.presentedScore.formatted() : L("snake_eaten", model.presentedScore))
+        Text(verbatim: L("snake_eaten", model.presentedScore))
             .font(.headline).lineLimit(1).minimumScaleFactor(0.5)
             .accessibilityLabel(Text(verbatim: L("snake_eaten", model.presentedScore)))
             .accessibilityIdentifier("snake.score")
     }
     private var bestText: some View {
-        Text(verbatim: dynamicType.isAccessibilitySize ? (model.bestEaten.map { $0.formatted() } ?? "—") : bestLabel)
+        Text(verbatim: bestLabel)
             .font(.caption).lineLimit(1).minimumScaleFactor(0.5)
             .accessibilityLabel(Text(verbatim: bestLabel))
             .accessibilityIdentifier("snake.best")
     }
-    private var bestLabel: String { model.bestEaten.map { L("game_best_eaten", $0) } ?? L("game_no_best") }
+    private var bestLabel: String { model.bestEaten.map { L("game_best_eaten", $0) } ?? L("snake_record_empty") }
 
     private var pausePanel: some View {
         VStack(spacing: 16) {
-            Text(key: model.displayedStatus == .won ? "snake_won" : model.displayedStatus == .lost ? "snake_over" : "snake_title")
-                .font(.system(.title, design: .rounded).bold()).multilineTextAlignment(.center)
+            HStack(spacing: 12) {
+                Image(uiImage: SnakeArt.headImage(model.preferences.character))
+                    .resizable().scaledToFit().frame(width: 48, height: 48).accessibilityHidden(true)
+                Text(key: "snake_title").font(.system(.title, design: .rounded).bold())
+            }
+            if model.started || model.displayedStatus != .playing {
+                Text(key: model.displayedStatus == .won ? "snake_won" : model.displayedStatus == .lost ? "snake_over" : "snake_pause")
+                    .font(.subheadline).foregroundStyle(.secondary)
+            }
             if model.displayedStatus != .playing {
                 Text(verbatim: L("snake_eaten", model.presentedScore)).font(.title2.bold()).monospacedDigit()
+                Text(verbatim: bestLabel).font(.subheadline).monospacedDigit()
             }
             if model.newBest { Label(L("game_new_best"), systemImage: "trophy.fill").foregroundStyle(.yellow) }
-            Text(verbatim: model.tooWarm ? L("ana2_stage_cooling") : swipeHint(model.game!))
-                .multilineTextAlignment(.center).font(.headline).allowsHitTesting(false)
+            Text(verbatim: model.tooWarm ? L("ana2_stage_cooling") : L("snake_controls_hint"))
+                .multilineTextAlignment(.center).font(.subheadline).allowsHitTesting(false)
             if let error = model.photos.error { Text(verbatim: error).font(.footnote).multilineTextAlignment(.center) }
-            if model.started || model.displayedStatus != .playing {
-                Button(L(model.displayedStatus == .playing ? "memory_resume" : "memory_new")) {
-                    if model.displayedStatus != .playing { model.restart() }
-                    model.resume()
-                }
-                .buttonStyle(.borderedProminent).tint(.green)
+            Button {
+                if model.displayedStatus != .playing { model.restart() }
+                model.resume()
+            } label: {
+                Label(L(model.displayedStatus != .playing ? "memory_new" : model.started ? "memory_resume" : "snake_start_game"),
+                      systemImage: model.displayedStatus != .playing ? "arrow.clockwise" : "play.fill")
             }
-            HStack {
-                Button(L("game_setup_edit_photos")) {
-                    if model.usesSavedPhotos { openGallery() }
-                    else { model.pause(); setup = true }
-                }
-                Spacer()
-                Button(L("games_choose")) { model.pause(); onChooseGame() }
-            }.font(.subheadline)
+            .buttonStyle(SnakeActionButtonStyle(prominent: true))
+            .disabled(model.tooWarm || model.photos.isLoading).accessibilityIdentifier("snake.start")
+            Button {
+                if model.usesSavedPhotos { openGallery() }
+                else { model.pause(); setup = true }
+            } label: { Label(L(hasRoundPhotos ? "game_setup_edit_photos" : "game_setup_choose_photos"), systemImage: "photo.on.rectangle") }
+            .buttonStyle(SnakeActionButtonStyle()).accessibilityIdentifier("snake.changePhotos")
+            Button { model.pause(); onChooseGame() } label: { Label(L("snake_other_games"), systemImage: "square.grid.2x2") }
+                .buttonStyle(.bordered).accessibilityIdentifier("snake.otherGames")
         }
         .padding(24).frame(maxWidth: 360)
         .background(Color(red: 0.03, green: 0.13, blue: 0.08).opacity(0.95), in: .rect(cornerRadius: 28))
         .padding(24)
         // Gestures on explanatory panel space still reach the board; buttons keep their own actions.
         .simultaneousGesture(DragGesture(minimumDistance: 16).onEnded { gesture in
+            guard !dynamicType.isAccessibilitySize else { return } // Large-text scrolling must not start the game.
             let x = gesture.translation.width, y = gesture.translation.height
             model.swipe(abs(x) > abs(y) ? (x > 0 ? .right : .left) : (y > 0 ? .down : .up))
         })
@@ -318,7 +348,7 @@ struct PhotoSnakeView: View {
                     Picker(L("snake_character"), selection: $boundModel.preferences.character) {
                         ForEach(PhotoSnakeCharacter.allCases, id: \.self) { character in
                             Label { Text(key: "snake_character_" + character.rawValue) } icon: {
-                                Image(uiImage: SnakeArt.image(character.idle)).resizable().scaledToFit().frame(width: 44, height: 44)
+                                Image(uiImage: SnakeArt.headImage(character)).resizable().scaledToFit().frame(width: 44, height: 44)
                             }.tag(character)
                         }
                     }.pickerStyle(.inline)
@@ -353,7 +383,7 @@ struct PhotoSnakeView: View {
     private func close() { model.pause(); model.audio.stop(); onClose() }
     private func swipeHint(_ game: PhotoSnakeGame) -> String {
         if model.displayedStatus != .playing { return L("snake_swipe_restart") }
-        return L(model.running ? "snake_swipe_steer" : model.started ? "snake_swipe_resume" : "snake_swipe_start")
+        return L(model.running ? "snake_swipe_steer" : model.started ? "snake_swipe_resume" : "snake_controls_hint")
     }
     private func boardDescription(_ game: PhotoSnakeGame) -> String {
         guard let head = game.body.first, let food = game.food else { return L("snake_won") }
@@ -382,7 +412,8 @@ struct PhotoSnakeView: View {
     private func startPhotos() {
         if source == .manual {
             guard !model.gallery.ids.isEmpty else { openGallery(); return }
-            setup = false; model.startSaved(mode: mode, speed: speed, stepMode: usesStepInput); return
+            startWhenReady = true; setup = false
+            model.startSaved(mode: mode, speed: speed, stepMode: usesStepInput); return
         }
         guard app.library.access.canRead else {
             if app.library.access == .notDetermined {
@@ -399,7 +430,25 @@ struct PhotoSnakeView: View {
             selected = .collection(id: id, title: collectionTitle)
         case .manual: return
         }
-        setup = true
+        startWhenReady = true; setup = true
         model.startRandom(source: selected, app: app, allowNetwork: allowNetwork, mode: mode, speed: speed, stepMode: usesStepInput)
+    }
+}
+
+/// Full-width filled actions, shared by setup and the initial/pause overlay.
+private struct SnakeActionButtonStyle: ButtonStyle {
+    var prominent = false
+    @Environment(\.isEnabled) private var enabled
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(.headline).multilineTextAlignment(.center)
+            .foregroundStyle(prominent ? Color(red: 0.04, green: 0.14, blue: 0.07) : .white)
+            .frame(maxWidth: .infinity, minHeight: 24)
+            .padding(.horizontal, 16).padding(.vertical, 14)
+            .background(prominent ? Color(red: 0.66, green: 0.9, blue: 0.36) : .white.opacity(0.12), in: .rect(cornerRadius: 16))
+            .overlay { RoundedRectangle(cornerRadius: 16).strokeBorder(.white.opacity(prominent ? 0.12 : 0.16), lineWidth: 1) }
+            .opacity(!enabled ? 0.42 : configuration.isPressed ? 0.78 : 1)
+            .contentShape(.rect(cornerRadius: 16))
     }
 }

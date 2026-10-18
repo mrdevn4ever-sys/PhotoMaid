@@ -34,6 +34,10 @@ struct PhotoGameRecordsView: View {
                         .accessibilityElement(children: .combine)
                     }
                 }
+                Section(L("blocks_title")) {
+                    Text(verbatim: L("blocks_best", app.blocks.best)).monospacedDigit()
+                    if app.blocks.saveFailed { Button(L("blocks_save_retry")) { app.blocks.checkpoint() } }
+                }
                 Section { Text(key: "game_records_local").font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary) }
                 PhotoGameRecordSaveStatus()
             }

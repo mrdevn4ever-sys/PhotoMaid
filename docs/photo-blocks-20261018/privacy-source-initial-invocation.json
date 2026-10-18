@@ -1,0 +1,18 @@
+{
+  "status": "FAIL",
+  "errors": [
+    "Missing main app PrivacyInfo.xcprivacy in the exported IPA/archive"
+  ],
+  "manifests": [
+    {
+      "path": "PhotoMaid/Resources/PrivacyInfo.xcprivacy",
+      "sha256": "8d7a025e6a1abe93418b01f822c2c2aa4a70f60248b6d2dd652d319b59bea584",
+      "tracking": true,
+      "domains": [
+        "googleads.g.doubleclick.net"
+      ],
+      "errors": [],
+      "warnings": []
+    }
+  ]
+}

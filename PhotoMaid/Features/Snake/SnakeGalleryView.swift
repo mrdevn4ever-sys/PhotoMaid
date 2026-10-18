@@ -85,7 +85,7 @@ struct SnakeGalleryView: View {
             else { Image(uiImage: SnakeArt.image("segment_placeholder")).resizable().scaledToFit() }
         }
         .frame(width: 56, height: 56).clipShape(.circle)
-        .overlay(Circle().stroke(.green.opacity(0.5), lineWidth: 2))
+        .overlay(Circle().stroke(.green.opacity(0.55), lineWidth: 1))
         .accessibilityHidden(true)
     }
 

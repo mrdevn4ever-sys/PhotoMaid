@@ -1,0 +1,15 @@
+{
+  "PhotoMaid/Features/Snake/PhotoSnakeModel.swift": "4d56d268e5c1c866a5abbb0a60d008caeb1d2d8f37df3043bf04f92cdb71b30a",
+  "PhotoMaid/Features/Snake/PhotoSnakeBoard.swift": "292aaab3250fb5f8dcad3980a45068d70ee0ebae1f99ad6052b0e50f67a3eaed",
+  "PhotoMaid/Features/Snake/SnakeGalleryView.swift": "7e20f82243e2acc7dfc4ccdacf9bb7e2590f80bf10d97633b4b7a92c0dc08199",
+  "PhotoMaid/Features/Snake/SnakeAudio.swift": "71c498b7e52f38dd718dfb7e27a68c8aa3364fa0efa4e127423fc839fa45501f",
+  "PhotoMaid/Features/Snake/PhotoSnakeView.swift": "c27d998f10e766aca68c2162c1cdbe5b5e526d38d5207a7fb0c2d52681264134",
+  "PhotoMaid/Features/Snake/SnakeArt.swift": "db0f456002e0e79ecbd9e65b97571c2fddcac9daecfe85f3df03c055a62ea978",
+  "PhotoMaid/Features/Snake/SnakePhotoLibrary.swift": "21548e0d0bfd637301d124fa41ced0a24caf3b0450f5129af51c3201490eadbb",
+  "Sources/PhotoMaidCore/Games/PhotoSnakeMotion.swift": "3479dcf517e40e00229f410b504ea2f29251c735f991c27da2cbf4c234bd8800",
+  "Sources/PhotoMaidCore/Games/PhotoSnakeGame.swift": "4fce4c2def90f4f93d5bf55da1941651ea7b9a9e9c49066bea2839431a0942d4",
+  "Sources/PhotoMaidCore/Games/PhotoSnakeStyle.swift": "62ef34833915ffadae29c5d5c074ae53bb3a0fe4e2f48e73c8c40ffc4a686cdc",
+  "Sources/PhotoMaidCore/Games/PhotoSnakeLayout.swift": "4aece0ee48a6aa405dae83f97f53eb29e3dd3936d87dc39efca7a6e6df7d1d5a",
+  "Sources/PhotoMaidCore/Games/PhotoSnakeViewport.swift": "195d25c6531beecf54911f05c0bff18ee601abcf9f0da8ca0a1f3081f5cc4c2c",
+  "Sources/PhotoMaidCore/Games/PhotoSnakeGallery.swift": "9b1dfad1fdeefaf2d0499c3c4b5a4f8ec89fdf8417ec736c80d45bfb0ecfd90a"
+}

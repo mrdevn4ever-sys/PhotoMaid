@@ -17,7 +17,7 @@ entries = {entry['path']: entry for entry in target['sources']}
 asset_root = ROOT / 'PhotoMaid/Resources/SnakePhoto'
 assert len(manifest['assets']) == 77
 assert len({entry['path'] for entry in manifest['assets']}) == 77
-assert len(list(asset_root.rglob('*.png'))) == 71
+assert len(list(asset_root.rglob('*.png'))) == 71 + 92
 assert len(list(asset_root.rglob('*.wav'))) == 6
 for asset in manifest['assets']:
     path = ROOT / asset['path']
@@ -33,7 +33,7 @@ for asset in manifest['assets']:
     else:
         with wave.open(str(path)) as sound:
             assert sound.getframerate() == 44100 and sound.getnchannels() == 1, path
-for folder in ['SnakeHeads.atlas', 'SnakeBody.atlas', 'SnakeFood.atlas', 'SnakeUI.atlas', 'Backgrounds', 'Sounds']:
+for folder in ['SnakeHeads.atlas', 'SnakeBody.atlas', 'SnakeFood.atlas', 'SnakeUI.atlas', 'SnakeTopDown.atlas', 'Backgrounds', 'Sounds']:
     entry = entries['PhotoMaid/Resources/SnakePhoto/' + folder]
     assert entry['buildPhase'] == 'resources', folder
     if folder.endswith('.atlas'):
@@ -63,9 +63,42 @@ for food in ['apple', 'star', 'heart', 'gem', 'grapes', 'donut', 'cheese', 'cake
 rules = 'Sources/PhotoMaidCore/Games/PhotoSnakeGame.swift'
 original = subprocess.check_output(['git', 'show', '4bfba4f:' + rules], cwd=ROOT)
 assert (ROOT / rules).read_bytes() == original, 'Existing collision/growth/direction rules changed'
-old = json.loads(subprocess.check_output(['git', 'show', '4bfba4f:PhotoMaid/Resources/Localizable.xcstrings'], cwd=ROOT))['strings']
+old = json.loads(subprocess.check_output(['git', 'show', 'e9da9db:PhotoMaid/Resources/Localizable.xcstrings'], cwd=ROOT))['strings']
 new = json.loads((ROOT / 'PhotoMaid/Resources/Localizable.xcstrings').read_text())['strings']
-assert all(new.get(key) == value for key, value in old.items()), 'Existing translations changed'
+allowed_copy = {'snake_eaten', 'game_best_eaten', 'snake_controls_hint', 'snake_start_game',
+                'snake_other_games', 'snake_record_empty'}
+assert old.keys() <= new.keys(), 'Existing translation keys removed'
+assert all(key in allowed_copy or key.startswith('blocks_') for key in new.keys() - old.keys()), 'Unexpected new translations'
+assert all(new[key] == value for key, value in old.items() if key not in allowed_copy), 'Unrelated translations changed'
+for key in allowed_copy:
+    assert len(new[key]['localizations']) == 16, key
+# The head frames are authored separately; do not alter the original kit resources.
+overhead = json.loads((ROOT / 'docs/snake-readable-20261018/head-art.json').read_text())
+assert len(overhead['assets']) == 92
+from PIL import Image
+for asset in overhead['assets']:
+    path = asset_root / 'SnakeTopDown.atlas' / (asset['name'] + '.png')
+    data = path.read_bytes()
+    assert len(data) == asset['bytes'] and hashlib.sha256(data).hexdigest() == asset['sha256'], path
+    with Image.open(path) as image:
+        assert image.mode == 'RGBA' and image.size == (256, 256), path
+        bounds = image.getchannel('A').getbbox()
+        assert bounds and 0 < bounds[0] < bounds[2] < 256 and 0 < bounds[1] < bounds[3] < 256, path
+        nose, eyes = asset['nose'], asset['eyes']
+        eye_centre = [sum(p[i] for p in eyes) / 2 for i in [0, 1]]
+        axis = 0 if asset['direction'] in ['left', 'right'] else 1
+        assert (nose[axis] > eye_centre[axis]) == (asset['direction'] in ['right', 'down'])
+for character in ['snake', 'dragon', 'dino', 'monster']:
+    poses = ['idle', 'blink', 'halfBlink', 'tongue', 'eat', 'hurt', 'dead', 'sleep', 'surprised', 'lookLeft', 'lookRight'] if character == 'snake' else ['idle', 'blink', 'eat', 'dead']
+    for pose in poses:
+        for direction in ['up', 'down', 'left', 'right']:
+            assert f'top_{character}_{pose}_{direction}' in names
+for preserved in ['Sources/PhotoMaidCore/Games/PhotoSnakeGallery.swift',
+                  'Sources/PhotoMaidCore/Games/PhotoGameRecords.swift',
+                  'PhotoMaid/Features/Snake/PhotoSnakeModel.swift']:
+    assert (ROOT / preserved).read_bytes() == subprocess.check_output(['git', 'show', 'e9da9db:' + preserved], cwd=ROOT), preserved
 print('PASS: 77 byte-identical resources (71 PNG / 6 WAV), atlas sizes/alpha, target resource paths, SpriteKit dependency')
-print('PASS: literal animation/food/UI references, swipe-only source, original Snake rules and 2657 localization entries preserved')
+print('PASS: 92 new 256px RGBA overhead frames, hashes, uncut alpha bounds and four correct nose/eye directions')
+print(f'PASS: animation/food/UI references, swipe-only source, original Snake rules; {len(new)} localization entries, six authorized Snake copy keys plus Blocks additions')
+print('PASS: gallery archive/order, record persistence and native game model unchanged from e9da9db')
 print('STATIC AUDIT ONLY: XcodeGen generation, compiled bundle loading, UIKit/SpriteKit rendering and device FPS still require Xcode.')

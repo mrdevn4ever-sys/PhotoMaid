@@ -4,24 +4,30 @@ import SwiftUI
 struct StudioMediaPicker: View {
     @Environment(AppModel.self) private var app
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.scenePhase) private var scenePhase
     let allowsVideos: Bool
     let limit: Int
     let minimumSelection: Int
     let initial: Set<String>
     let completion: ([String]) -> Void
+    let offlineGame: Bool
     @State private var selection: Set<String>
+    @State private var visibilityToken = UUID()
 
-    init(allowsVideos: Bool, limit: Int, minimumSelection: Int = 1, initial: Set<String> = [], completion: @escaping ([String]) -> Void) {
+    init(allowsVideos: Bool, limit: Int, minimumSelection: Int = 1, initial: Set<String> = [],
+         offlineGame: Bool = false, completion: @escaping ([String]) -> Void) {
         self.allowsVideos = allowsVideos
         self.limit = limit
         self.minimumSelection = minimumSelection
         self.initial = initial
         self.completion = completion
+        self.offlineGame = offlineGame
         _selection = State(initialValue: initial)
     }
 
     private var media: [MediaAsset] {
-        app.visibleMedia.filter { allowsVideos || !$0.isVideo }
+        if offlineGame { return scenePhase == .active ? PhotoGamePhotos.offlineCandidates(app: app) : [] }
+        return app.visibleMedia.filter { allowsVideos || !$0.isVideo }
     }
 
     var body: some View {
@@ -42,7 +48,7 @@ struct StudioMediaPicker: View {
                         } label: {
                             // Quadratische Zelle (.fit, nicht .fill) mit genau dieser Trefferfläche: ein Tipp wählt nie
                             // die Nachbarzelle (AssetCell nimmt mit dem Bildüberstand keine Tipps an).
-                            AssetCell(assetID: asset.id)
+                            AssetCell(assetID: asset.id, allowNetwork: !offlineGame, requiresGameAccess: offlineGame)
                                 .aspectRatio(1, contentMode: .fit)
                                 .overlay(alignment: .topTrailing) {
                                     Image(systemName: selected ? "checkmark.circle.fill" : "circle")
@@ -70,6 +76,7 @@ struct StudioMediaPicker: View {
                         .accessibilityAddTraits(selected ? .isSelected : [])
                     }
                 }
+                .id(visibilityToken)
             }
             .appPage()
             .navigationTitle(L("tools_pick"))
@@ -82,6 +89,19 @@ struct StudioMediaPicker: View {
                     }
                     .disabled(selection.count < minimumSelection)
                 }
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .analysisVisibilityChanged)) { _ in
+                if offlineGame {
+                    ThumbnailLoader.shared.clear(); visibilityToken = UUID()
+                    selection.formIntersection(Set(media.map(\.id)))
+                }
+            }
+            .onChange(of: app.library.changeToken) { _, _ in
+                if offlineGame { ThumbnailLoader.shared.clear(); visibilityToken = UUID() }
+            }
+            .onDisappear { if offlineGame { ThumbnailLoader.shared.clear() } }
+            .onChange(of: scenePhase) { _, _ in
+                if offlineGame { ThumbnailLoader.shared.clear(); visibilityToken = UUID() }
             }
         }
     }

@@ -20,7 +20,7 @@ import UIKit
         let model = PhotoSnakeModel()
         model.updateViewport(width: 402, height: 874)
         model.startMotifs(mode: .relaxed, speed: .normal, stepMode: true)
-        #expect(model.game?.width == 11 && model.game?.height == 24)
+        #expect(model.game?.width == 8 && model.game?.height == 20)
         model.swipe(.left)
         #expect(model.running && model.started && model.game?.direction == .left)
         let game = model.game, round = model.roundID, photos = model.strip
@@ -29,7 +29,7 @@ import UIKit
         model.pause(); model.swipe(.up)
         #expect(model.running && model.game?.direction == .up)
         model.restart()
-        #expect(model.game?.width == 16 && model.game?.height == 24 && !model.running)
+        #expect(model.game?.width == 15 && model.game?.height == 24 && !model.running)
     }
 
     @Test func aPreparedRoundStaysStillUntilExplicitResume() throws {

@@ -40,7 +40,7 @@ on:
         options: [all, vault, vault-media, editor, games]
         default: all
       games_case:
-        description: "Optional: PhotoGameVisualTests-Methode oder feed für Lade-/Weiter-Regressionen"
+        description: "Optional: Blocks + Spiele-Setup (blocks), feed oder PhotoGameVisualTests-Methode"
         type: string
         default: ""
       sim_runtime:

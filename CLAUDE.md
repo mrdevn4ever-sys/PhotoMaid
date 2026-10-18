@@ -61,6 +61,9 @@ Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E19) – ni
   Einrichtungsstand einschließlich der letzten Textkorrektur mit dem vorhandenen Workflow als internen
   TestFlight-Build hochladen, vorgeschaltete Unit-Tests und Privacy-Prüfung ausführen und Apples
   Verarbeitung prüfen. Keine App-Store-Veröffentlichung oder externe Tester-Verteilung dadurch.
+- **Neuester Snake-Auftrag (18.10.2026: größere Fotos/Vogelperspektive): ausschließlich lokale und
+  statische Prüfungen. Keine GitHub Actions oder bezahlten CI-Builds starten. Für diesen Auftrag
+  keine Uploads starten; ältere TestFlight-Freigaben gelten nicht für diesen neuen Umbau.**
 
 ## Geschäftsregeln (aus dem Android-Quellcode)
 
@@ -82,8 +85,20 @@ Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E19) – ni
 - Spiele-Startansichten (Nutzer, 18.10.2026): einfach und klar beschriften; das Kartenspiel heißt Paare.
   iCloud-Fotos für beide Spiele standardmäßig laden, eine bewusste Abschaltung beibehalten.
   Snake startet mit zufälligen Mediathek-Fotos; eine leere manuelle Auswahl öffnet die Fotoauswahl.
+- Neuester Snake-UX-Auftrag (18.10.2026): gut erkennbare Fotogröße beibehalten, runde Fotosegmente
+  mit leichter Überlappung und dünnem Rahmen. Klare Start-/Foto-Buttons, „Andere Spiele“, „Score“ und
+  „Rekord“. Starten ist ausdrücklich auch per Button möglich; Richtungssteuerung bleibt ausschließlich
+  per Wischgeste. iCloud ist unter „Spiel anpassen“. Weiterhin keine Actions, bezahlte CI oder Uploads.
 
 ## Befehle
+
+Aktuellster Foto-Blocks-Auftrag (18.10.2026): Foto-Enthüllung und eigene Blocklogik im bestehenden
+Spielebereich; ausschließlich lokale Fotos, einschließlich der Auswahldialog-Vorschauen. Tresor,
+ausgeblendete und ausgenommene Medien zentral ausschließen. Snake bleibt gegenüber dem Arbeitsstand
+vor diesem Auftrag unverändert. TestFlight ist mit „Sobald fertig mach testflight“ ausdrücklich beauftragt.
+Anschließend „Du kannst jederzeit minutes brauchen zum testen“: CI-Minuten für native Prüfungen
+sind wieder freigegeben; der geprüfte Stand darf über den vorhandenen internen TestFlight-Workflow
+gebaut und hochgeladen werden. Keine externe Tester-Verteilung oder App-Store-Veröffentlichung.
 
 ```sh
 export PATH=/opt/swift/swift-6.4.0-RELEASE-ubuntu24.04/usr/bin:$PATH   # Linux-Container

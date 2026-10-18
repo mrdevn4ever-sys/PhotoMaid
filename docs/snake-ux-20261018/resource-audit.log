@@ -1,0 +1,5 @@
+PASS: 77 byte-identical resources (71 PNG / 6 WAV), atlas sizes/alpha, target resource paths, SpriteKit dependency
+PASS: 92 new 256px RGBA overhead frames, hashes, uncut alpha bounds and four correct nose/eye directions
+PASS: animation/food/UI references, swipe-only source, original Snake rules; 2705 localization entries, only six authorized copy entries changed/added
+PASS: gallery archive/order, record persistence and native game model unchanged from e9da9db
+STATIC AUDIT ONLY: XcodeGen generation, compiled bundle loading, UIKit/SpriteKit rendering and device FPS still require Xcode.

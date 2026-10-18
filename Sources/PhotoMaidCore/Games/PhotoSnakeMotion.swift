@@ -62,8 +62,8 @@ public struct PhotoSnakeMotion: Sendable {
     }
 
     /// Include every intervening corner in the connecting tube, rather than joining photo centres diagonally.
-    public func route(progress: Double) -> [Point] {
-        let samples = points(progress: progress)
+    public func route(progress: Double, samples: [Point]? = nil) -> [Point] {
+        let samples = samples ?? points(progress: progress)
         guard let head = samples.first, let tail = samples.last else { return [] }
         let start = travel * (1 - min(1, max(0, progress.isFinite ? progress : 0)))
         let end = start + Double(max(0, count - 1))
@@ -82,8 +82,8 @@ public struct PhotoSnakeMotion: Sendable {
     }
 
     /// Split border crossings into two short visible edges. No line stretches across the entire board.
-    public func lines(progress: Double) -> [Line] {
-        let route = route(progress: progress)
+    public func lines(progress: Double, samples: [Point]? = nil) -> [Line] {
+        let route = route(progress: progress, samples: samples)
         guard route.count > 1 else { return [] }
         var lines: [Line] = []
         for i in 1..<route.count {

@@ -57,11 +57,11 @@ import XCTest
         app.buttons["memory.close"].tap()
 
         openGame("snake")
-        XCTAssertEqual(app.switches["snake.cloud"].value as? String, "1")
         XCTAssertTrue(app.buttons["snake.source"].label.contains("Gesamte Mediathek"))
         checkpoint("snake_setup_default_library_cloud_on", app: app)
         let options = app.descendants(matching: .any)["snake.options"].firstMatch
         options.tap()
+        XCTAssertEqual(app.switches["snake.cloud"].value as? String, "1")
         XCTAssertTrue(app.buttons["snake.mode"].exists)
         XCTAssertTrue(app.buttons["snake.speed"].exists)
         checkpoint("snake_setup_labelled_options", app: app)
@@ -69,8 +69,10 @@ import XCTest
 
         app.buttons["snake.source"].tap()
         app.buttons["Eigene Fotos wählen"].firstMatch.tap()
-        XCTAssertTrue(app.buttons["snake.prepare"].label.contains("Fotos auswählen"))
-        app.buttons["snake.prepare"].tap()
+        XCTAssertTrue(app.buttons["snake.prepare"].label.contains("Spiel starten"))
+        XCTAssertFalse(app.buttons["snake.prepare"].isEnabled)
+        XCTAssertTrue(app.buttons["snake.editPhotos"].label.contains("Fotos auswählen"))
+        app.buttons["snake.editPhotos"].tap()
         XCTAssertTrue(app.buttons["snake.gallery.add"].waitForExistence(timeout: 10))
         XCTAssertFalse(app.descendants(matching: .any)["snake.board"].exists, "Empty manual selection must open photo selection instead of a placeholder game")
         checkpoint("snake_empty_manual_choice_opens_gallery", app: app)
@@ -87,7 +89,7 @@ import XCTest
         XCTAssertEqual(XCTWaiter.wait(for: [moving], timeout: 3), .completed)
         checkpoint("snake_simple_setup_real_photo_game", app: app)
         app.buttons["snake.pause"].tap()
-        app.buttons["Spiele"].firstMatch.tap()
+        app.buttons["snake.otherGames"].tap()
         XCTAssertTrue(app.buttons["games.memory"].waitForExistence(timeout: 5), "Games returns to the actual chooser")
         checkpoint("games_chooser_after_snake_pause", app: app)
         app.buttons["games.memory"].tap()
@@ -437,9 +439,8 @@ import XCTest
         app.buttons["snake.symbols"].tap()
         let board = app.descendants(matching: .any)["snake.board"].firstMatch
         XCTAssertTrue(board.waitForExistence(timeout: 10))
-        checkpoint("snake_realtime_fullscreen_ready", app: app)
+        checkpoint("snake_realtime_fullscreen_started_by_button", app: app)
         assertFullscreenSnake(board)
-        board.swipeUp()
         let initial = board.value as? String ?? ""
         let moved = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value != %@", initial), object: board)
         XCTAssertEqual(XCTWaiter.wait(for: [moved], timeout: 3), .completed)
@@ -449,8 +450,11 @@ import XCTest
         let paused = board.value as? String
         Thread.sleep(forTimeInterval: 0.6)
         XCTAssertEqual(board.value as? String, paused)
+        XCTAssertTrue(app.buttons["snake.start"].isHittable)
+        XCTAssertTrue(app.buttons["snake.changePhotos"].isHittable)
+        XCTAssertTrue(app.buttons["snake.otherGames"].isHittable)
         checkpoint("snake_realtime_fullscreen_paused", app: app)
-        board.swipeRight()
+        app.buttons["snake.start"].tap()
         let resumed = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value != %@", paused ?? ""), object: board)
         XCTAssertEqual(XCTWaiter.wait(for: [resumed], timeout: 3), .completed)
     }

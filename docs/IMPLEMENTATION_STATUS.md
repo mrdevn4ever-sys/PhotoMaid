@@ -7,6 +7,42 @@ Ausdrückliche Freigabe: „Erledigt? Wenn ja mach testflight“. **63 native Un
 Privacy-Manifeste der tatsächlich exportierten IPA bestehen.** Die letzte Textkorrektur ist enthalten.
 [Uploadbericht und Originalbelege](game-setup-20261018/testflight/README.md).
 
+## Foto Blocks (neuer Auftrag, 18.10.2026)
+
+Im bestehenden Spielebereich integriert: eigene 9×17-Blocklogik, farbige Formen, zehn feste
+Fotoabschnitte, 2-s-Entdeckung, fortlaufende Levels mit Übertrag und Board-Erhalt, präzise
+Tap-/Wisch-/Drag-Steuerung, Pause, lokale Rekorde und bildfreier Spielstand. Gemeinsame sichere
+Fotoquelle und bestehender Auswahldialog; sämtliche Blocks-Vorschauen offline und ohne Tresor,
+ausgeblendete oder ausgenommene Fotos. 40 UI-Kennungen in 16 Sprachen.
+**PASS: 493 lokale Core-Tests, Quell-/Ressourcen-/Sprachen-/Privacy-Audits und native Syntaxprüfung.**
+Die neue Freigabe „Du kannst jederzeit minutes brauchen zum testen“ erlaubt native CI; Prüfung und
+anschließend beauftragter interner TestFlight-Upload folgen. Noch keine native Build-/UI-/FPS-Abnahme.
+[Vollständige Implementierung, Dateiliste und Prüfbelege](PHOTO_BLOCKS.md).
+
+## Foto-Snake: klarer Start und runde Fotos (neuer UX-Auftrag, 18.10.2026)
+
+Start und Fotoauswahl sind deutlich gefüllte Buttons. „Spiel starten“ führt nach dem Laden und der
+Spielfeldanpassung direkt in die Runde; auch das vorbereitete Spielfeld besitzt einen Startknopf.
+„Andere Spiele“ ersetzt das unklare „Spiele“. Das HUD zeigt „Score“ / „Rekord“, auch bei großer Schrift.
+Die lesbaren 44–50-pt-Fotos sind gemäß Folgeauftrag wieder rund, mit ca. 1-pt-Rand und 12,5 %
+Überlappung auf geraden Strecken. In Kurven ist die Überdeckung größer und vom Kopf zum Schwanz
+fest geschichtet. Kollisionslogik, Fotoarchiv, Wischsteuerung und Rekordformat bleiben unverändert.
+**PASS: 472 lokale Core-Tests; Ressourcen und alle 16 Sprachen.** iOS-Build, native UI-Tests und
+Geräte-FPS sind **NOT RUN**. Keine CI oder Uploads. [Dateiliste und statische Layoutstudie](snake-ux-20261018/README.md).
+
+## Größere Snake-Fotos und Kopf aus der Vogelperspektive (18.10.2026, lokal)
+
+Historischer Zwischenstand: Quadrate und überlappungsfreie Fotos werden durch den neueren UX-Auftrag oben ersetzt.
+
+Der neue Arbeitsstand verwendet abgerundete Fotokacheln mit 44–50 pt auf normalen iPhone-Spielflächen,
+höchstens 1,71 pt Rahmen, einen zusammenhängenden Körper und 92 neue gerichtete Kopf-Frames.
+Raster und Sicherheitsrand sind gemeinsam berechnet; Regeln, Fotoreihenfolge und Rekorddaten bleiben erhalten.
+**PASS: 469 lokale Core-Tests (445 Swift Testing + 24 XCTest), 7 native Dateien syntaktisch geprüft,
+Ressourcen-/Datenprüfung.** Statische Entwurfsvorschauen mit tatsächlichen Core-Koordinaten sind angesehen.
+**NOT RUN: neuer iOS-Build, UIKit-/SpriteKit-Tests, Simulatorabnahme und Geräte-FPS.**
+Keine Actions oder Uploads für diesen Auftrag. Der Umbau ist **noch nicht in TestFlight Build 15**.
+[Dateiliste, Messwerte, Prüfgrenzen und Originalprotokolle](snake-readable-20261018/README.md).
+
 ## Einfachere Spielstarts und iCloud-Vorgabe (18.10.2026)
 
 Beide Startansichten führen von beschrifteter Fotoquelle zu einem hervorgehobenen Startknopf.

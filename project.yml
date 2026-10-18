@@ -46,6 +46,9 @@ targets:
       - path: PhotoMaid/Resources/SnakePhoto/SnakeHeads.atlas
         type: file
         buildPhase: resources
+      - path: PhotoMaid/Resources/SnakePhoto/SnakeTopDown.atlas
+        type: file
+        buildPhase: resources
       - path: PhotoMaid/Resources/SnakePhoto/SnakeBody.atlas
         type: file
         buildPhase: resources

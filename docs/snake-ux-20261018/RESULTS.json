@@ -1,0 +1,86 @@
+{
+  "checked_at_utc": "2026-10-18T22:03:51.160115+00:00",
+  "baseline": "Existing uncommitted larger-photo/overhead-head work retained; baseline-sha256.json records this task start.",
+  "core_tests": {
+    "status": "PASS",
+    "swift_testing": 448,
+    "xctest": 24,
+    "total": 472,
+    "failed": 0,
+    "snake_tests": 32,
+    "layout_tests": 11
+  },
+  "native_syntax": {
+    "status": "PASS",
+    "files": 8,
+    "sdk_typecheck": false
+  },
+  "resource_audit": "PASS",
+  "localization": {
+    "status": "PASS",
+    "changed": [
+      "game_best_eaten",
+      "snake_controls_hint",
+      "snake_eaten"
+    ],
+    "added": [
+      "snake_other_games",
+      "snake_record_empty",
+      "snake_start_game"
+    ],
+    "languages": 16
+  },
+  "unchanged_rules_and_persistence": [
+    "Sources/PhotoMaidCore/Games/PhotoSnakeGame.swift",
+    "Sources/PhotoMaidCore/Games/PhotoSnakeMotion.swift",
+    "PhotoMaid/Features/Snake/PhotoSnakeModel.swift",
+    "Sources/PhotoMaidCore/Games/PhotoSnakeGallery.swift",
+    "Sources/PhotoMaidCore/Games/PhotoGameRecords.swift"
+  ],
+  "native_ios_build": "NOT RUN",
+  "native_model_and_integration_tests": "NOT RUN",
+  "native_ui_tests": "NOT RUN",
+  "device_fps": "NOT RUN",
+  "straight_overlap": 0.125,
+  "maximum_transient_right_angle_overlap": 0.3812815664617709,
+  "visual_scope": "Static layout studies only. Styled UI illustration, real compiled Core coordinates and CC0 photo fixtures, no native screenshots.",
+  "reviewed_images_sha256": {
+    "static-board-320.png": "8176e152e8b17ef86fbc5066ddd0da2a3c6fd972730ae96c10df7009c12a3fd4",
+    "static-board-367.png": "3a284085dd58e49a3e914568d18f91b2ad13191d94cc3bd13b507b45905e5018",
+    "static-board-394.png": "11c9b90a7aec1c9ac18f8703456613b265a4ea134cb781372d30c080e094374a",
+    "static-board-432.png": "baef5054eb447b8bead22b7bdcbfbdbe50ba38f0e4528484d540222ee5417061",
+    "static-board-736.png": "d8e7e8272f053dcb06a58a058cb420ad8e3a9d749a260e733f76b864c3b958a4",
+    "static-ux-study.png": "daf141606e1424cbf2aa70eb985259160fa233a1711e292f5603c6d1f5a91ede"
+  },
+  "source_sha256": {
+    "PhotoMaid/Features/Snake/PhotoSnakeBoard.swift": "292aaab3250fb5f8dcad3980a45068d70ee0ebae1f99ad6052b0e50f67a3eaed",
+    "PhotoMaid/Features/Snake/PhotoSnakeView.swift": "c27d998f10e766aca68c2162c1cdbe5b5e526d38d5207a7fb0c2d52681264134",
+    "PhotoMaid/Features/Snake/SnakeArt.swift": "db0f456002e0e79ecbd9e65b97571c2fddcac9daecfe85f3df03c055a62ea978",
+    "PhotoMaid/Features/Snake/SnakeGalleryView.swift": "7e20f82243e2acc7dfc4ccdacf9bb7e2590f80bf10d97633b4b7a92c0dc08199",
+    "PhotoMaid/Features/Snake/SnakePhotoLibrary.swift": "21548e0d0bfd637301d124fa41ced0a24caf3b0450f5129af51c3201490eadbb",
+    "PhotoMaid/Resources/Localizable.xcstrings": "9efc4c68afb4fd036a607f579f02cd5933f83287a1fda0e3bebe27166c19beeb",
+    "PhotoMaid/Resources/ios_strings.json": "9ce23a47dff77f5e78fc622a702cb3b188caf3b09d05662054bcdbe88cbaffed",
+    "PhotoMaidTests/PhotoSnakeModelTests.swift": "ce9c0c086656c38116784d920f83e4e4db112108dcc3d7c034926aacb0ffdaf3",
+    "PhotoMaidTests/SnakePhotoIntegrationTests.swift": "4d5a9d80f44d1642739635190baacde31f20c0fe39c81dde4c967398a1c3f4df",
+    "PhotoMaidUITests/PhotoGameVisualTests.swift": "d0f2706abcef866af8e1b4bb1518b60b6402c0e35570da38637fa0fe16d84363",
+    "Sources/PhotoMaidCore/Games/PhotoSnakeLayout.swift": "4aece0ee48a6aa405dae83f97f53eb29e3dd3936d87dc39efca7a6e6df7d1d5a",
+    "Sources/PhotoMaidCore/Games/PhotoSnakeViewport.swift": "195d25c6531beecf54911f05c0bff18ee601abcf9f0da8ca0a1f3081f5cc4c2c",
+    "Tests/PhotoMaidCoreTests/PhotoSnakeGameTests.swift": "6efd487098a4b091eb14f0ac2e5715abd1b9f76631a3b64e72bb93f7bcb4d82c",
+    "Tests/PhotoMaidCoreTests/PhotoSnakeReadableLayoutTests.swift": "d5603084edb5869da6b010e74cc98f19191df5c963d2bc157edc294f6dbe266d",
+    "scripts/assets/SnakeUXLayoutProbe.swift": "b8925c91161f045121a3345711a0f468607c7095ebdfe7f13867a26bb757ced6",
+    "scripts/assets/review_snake_ux.py": "12b0fb9971d870424244d4340cac778b48dbbe5393a6e1d7988bb9fbeedc303e",
+    "scripts/check_snakephoto_integration.py": "91ecf16ed58dd1f32cec1b87f3c44ca2d93e0bc379ab36c62b69fc737c9cad47"
+  },
+  "actions_started": 0,
+  "paid_calls": 0,
+  "uploads": 0,
+  "evidence_sha256": {
+    "layout-probe.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "localization.log": "6ec717715b601f2132a4c4d773e46ff57f95ae51efff8ba7601514c26bc2c9b9",
+    "head-art-audit.log": "a92fb5a648c1d8f074f5c8895e366313a3798789d8a39d4e3bc7bd434c31feee",
+    "resource-audit.log": "ac91428e8cf2b191413b31bd3f48c5055641caafcf4d732241d84fca037aa5bb",
+    "native-syntax.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "core-tests.log": "49a830486bb42b7079be7191b48cdb5382e538bc0bcb021e7d68341e41cfd4d6"
+  },
+  "git_diff_check": "PASS"
+}

@@ -6,6 +6,7 @@ import PhotosUI
 import SwiftUI
 import UIKit
 import UniformTypeIdentifiers
+import Vision
 
 /// PhotosPicker grants access to the chosen files; this path never requests library-wide access.
 struct SnakePickedFile: Transferable, Sendable {
@@ -130,23 +131,52 @@ final class SnakePhotoLibrary {
         return UIImage(cgImage: image)
     }
 
-    /// ImageIO downsamples HEIC/JPEG/PNG and applies EXIF before decoding; originals are never kept.
+    /// Decode enough pixels for a sharp square crop, also for panoramas. Bounded at 2048px,
+    /// cropped once to at most 256px, EXIF applied, no upsampling and no original retained.
     nonisolated static func thumbnail(_ url: URL) throws -> Data {
         try autoreleasepool {
             guard let source = CGImageSourceCreateWithURL(url as CFURL, [kCGImageSourceShouldCache: false] as CFDictionary),
+                  let properties = CGImageSourceCopyPropertiesAtIndex(source, 0, nil) as? [CFString: Any],
+                  let width = properties[kCGImagePropertyPixelWidth] as? Int,
+                  let height = properties[kCGImagePropertyPixelHeight] as? Int,
+                  width > 0, height > 0 else { throw CocoaError(.fileReadCorruptFile) }
+            let desired = min(max(width, height), 2048,
+                              max(256, Int(ceil(256 * Double(max(width, height)) / Double(min(width, height))))))
+            guard
                   let image = CGImageSourceCreateThumbnailAtIndex(source, 0, [
                     kCGImageSourceCreateThumbnailFromImageAlways: true,
                     kCGImageSourceCreateThumbnailWithTransform: true,
-                    kCGImageSourceThumbnailMaxPixelSize: 256,
+                    kCGImageSourceThumbnailMaxPixelSize: desired,
                     kCGImageSourceShouldCacheImmediately: true
                   ] as CFDictionary) else { throw CocoaError(.fileReadCorruptFile) }
+            let side = min(256, image.width, image.height)
+            let crop = faceAwareCrop(image, side: side)
+            guard let square = image.cropping(to: CGRect(x: CGFloat(crop.x.rounded()), y: CGFloat(crop.y.rounded()),
+                width: CGFloat(side), height: CGFloat(side))) else { throw CocoaError(.fileReadCorruptFile) }
             let data = NSMutableData()
             guard let writer = CGImageDestinationCreateWithData(data as CFMutableData, UTType.jpeg.identifier as CFString, 1, nil) else {
                 throw CocoaError(.fileWriteUnknown)
             }
-            CGImageDestinationAddImage(writer, image, [kCGImageDestinationLossyCompressionQuality: 0.86] as CFDictionary)
+            CGImageDestinationAddImage(writer, square, [kCGImageDestinationLossyCompressionQuality: 0.90] as CFDictionary)
             guard CGImageDestinationFinalize(writer), data.length <= 262_144 else { throw CocoaError(.fileWriteUnknown) }
             return data as Data
         }
+    }
+
+    /// Best-effort face centring for new imports. Called once on the existing background import task,
+    /// never in the render loop. No face metadata or original image is stored.
+    nonisolated private static func faceAwareCrop(_ image: CGImage, side: Int) -> PhotoSnakeLayout.Crop {
+        let request = VNDetectFaceRectanglesRequest()
+        let handler = VNImageRequestHandler(cgImage: image, orientation: .up)
+        let faces: [PhotoSnakeLayout.Crop]
+        do {
+            try handler.perform([request])
+            faces = (request.results ?? []).filter { $0.confidence >= 0.6 }.map {
+                let b = $0.boundingBox
+                return .init(x: Double(b.minX), y: Double(1 - b.maxY), width: Double(b.width), height: Double(b.height))
+            }
+        } catch { faces = [] }
+        return PhotoSnakeLayout.photoCrop(width: Double(image.width), height: Double(image.height),
+                                         side: Double(side), faces: faces)
     }
 }

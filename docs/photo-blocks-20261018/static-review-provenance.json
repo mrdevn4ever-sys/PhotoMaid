@@ -1,0 +1,17 @@
+{
+  "kind": "static-engine-visualization-not-iOS-screenshot",
+  "input_sha256": "7ebd5dcf65b111edaa6127e9f6c86e5510228bc5ab4d99bd23874c2ccdbbb083",
+  "output_sha256": "e1908ad1ba7bab88712e4cc28c35f17e99c1e2b5bb3ae99527397faee30e4fd3",
+  "photos": [
+    {
+      "path": "app-store/media/01-chalets-on-a-wooded-slope-unsplash.jpg",
+      "sha256": "a06bdb2ec865896619d74ba9a79326c27c432200eaf8cbe31ea81754ac650d8d",
+      "license": "CC0 1.0; app-store/media/SOURCES.md"
+    },
+    {
+      "path": "app-store/media/07-mountain-reflection-in-a-lake-unsplash.jpg",
+      "sha256": "ed3fc9ede9d025fd15a5d7b894e4c71cd9e44a459d23f3cf280699769813a224",
+      "license": "CC0 1.0; app-store/media/SOURCES.md"
+    }
+  ]
+}

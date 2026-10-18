@@ -8,7 +8,7 @@ struct PhotoGamesView: View {
     @State private var session = PhotoGameSession()
     @State private var selected: Game?
     @State private var showRecords = false
-    private enum Game { case memory, snake }
+    private enum Game { case memory, snake, blocks }
 
     var body: some View {
         content.environment(session)
@@ -18,7 +18,7 @@ struct PhotoGamesView: View {
     /// One owner for the modal's system appearance, including returning from the dark Snake scene.
     private var gameAppearance: ColorScheme? {
         switch selected {
-        case .snake: .dark
+        case .snake, .blocks: .dark
         default: app.settings.appearance.colorScheme
         }
     }
@@ -29,6 +29,8 @@ struct PhotoGamesView: View {
             PhotoMemoryView(onResults: onResults, onChooseGame: { selected = nil })
         case .snake:
             PhotoSnakeView(onResults: onResults, onChooseGame: { selected = nil }, onClose: { dismiss() })
+        case .blocks:
+            PhotoBlocksView(onChooseGame: { selected = nil })
         case nil:
             NavigationStack {
                 ScrollView {
@@ -45,6 +47,16 @@ struct PhotoGamesView: View {
                                           subtitle: L(app.snake.game?.status == .playing ? "memory_resume" : "game_setup_snake_intro"), snake: true)
                         }
                         .buttonStyle(.plain).accessibilityIdentifier("games.snake")
+                        Button { selected = .blocks } label: {
+                            SurfaceCard(padding: AppSpacing.l) {
+                                VStack(alignment: .leading, spacing: AppSpacing.m) {
+                                    Label(L("blocks_title"), systemImage: "square.stack.3d.up.fill")
+                                        .font(AppTypography.title).foregroundStyle(AppColors.accent)
+                                    Text(key: "blocks_subtitle").font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
+                                }.frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                        }
+                        .buttonStyle(.plain).accessibilityIdentifier("games.blocks")
                     }
                     .padding(AppSpacing.pageMargin)
                     .frame(maxWidth: 620).frame(maxWidth: .infinity)
@@ -66,7 +78,6 @@ struct PhotoGamesView: View {
 
 private struct PhotoGameTile: View {
     @Environment(AppModel.self) private var app
-    private var appSnakeHead: String { app.snake.preferences.character.idle }
     let symbol: String
     let title: String
     let subtitle: String
@@ -79,8 +90,11 @@ private struct PhotoGameTile: View {
                     ForEach(0..<4) { index in
                         Group {
                             if snake {
-                                Image(uiImage: SnakeArt.image(index == 0 ? appSnakeHead : "segment_placeholder"))
-                                    .resizable().scaledToFit()
+                                if index == 0 {
+                                    Image(uiImage: SnakeArt.headImage(app.snake.preferences.character)).resizable().scaledToFit()
+                                } else {
+                                    Image(systemName: "photo").resizable().scaledToFit().padding(8)
+                                }
                             } else { Image(systemName: index == 0 ? symbol : PhotoMemoryModel.motifs[index]) }
                         }
                             .font(.title3.weight(.semibold))

@@ -1,0 +1,16 @@
+{
+  "time_utc": "2026-10-18T22:26:29.364260+00:00",
+  "host": "Linux",
+  "tools": {
+    "xcodebuild": null,
+    "xcrun": null,
+    "swift": null,
+    "codesign": null,
+    "security": null,
+    "fastlane": null
+  },
+  "managed_capabilities": [],
+  "managed_signing_credentials": false,
+  "testflight": "Local build unavailable. User subsequently authorized CI test minutes; authenticated gh CLI and existing macOS workflows will be used.",
+  "ci_authorized": true
+}

@@ -161,7 +161,7 @@ final class PreviewPipeline {
 
     /// One full-quality request; cancellation completes immediately even if PhotoKit never calls back.
     func image(for assetID: String, targetSize: CGSize, allowNetwork: Bool = true,
-               contentMode: PHImageContentMode = .aspectFit) async -> PreviewResult {
+               contentMode: PHImageContentMode = .aspectFit, exactSize: Bool = false) async -> PreviewResult {
         #if QA_FIXTURES && targetEnvironment(simulator)
         if unavailableForTesting.contains(assetID) || posterlessForTesting.contains(assetID) { return .failed }
         #endif
@@ -170,7 +170,9 @@ final class PreviewPipeline {
         }.value
         guard let asset, !Task.isCancelled else { return .failed }
         let managerBox = UncheckedBox(manager)
-        let requestOptions = UncheckedBox(options(allowNetwork: allowNetwork))
+        let imageOptions = options(allowNetwork: allowNetwork)
+        if exactSize { imageOptions.resizeMode = .exact }
+        let requestOptions = UncheckedBox(imageOptions)
         return await PhotoRequest<PreviewResult>.perform(cancelledValue: .failed,
                                           cancel: { managerBox.value.cancelImageRequest($0) }) { result in
             managerBox.value.requestImage(for: asset.value, targetSize: targetSize, contentMode: contentMode,

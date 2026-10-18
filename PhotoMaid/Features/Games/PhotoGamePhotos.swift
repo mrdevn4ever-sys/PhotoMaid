@@ -10,6 +10,12 @@ enum PhotoGameSource: Equatable, Sendable {
 /// Separate preview storage per game: loading Snake pictures never replaces a Memory round.
 @MainActor @Observable
 final class PhotoGamePhotos {
+    /// Single authoritative offline scope for Blocks backgrounds AND its existing app photo picker.
+    static func offlineCandidates(app: AppModel) -> [MediaAsset] {
+        guard PhotoAccess(PHPhotoLibrary.authorizationStatus(for: .readWrite)).canRead,
+              VaultConcealment.shared.analysisReady else { return [] }
+        return VaultConcealment.shared.visible(app.cleanupMedia.filter { !$0.isVideo }, id: \.id)
+    }
     private(set) var photoIDs: [String] = []
     private(set) var images: [String: UIImage] = [:]
     private(set) var isLoading = false
@@ -114,6 +120,52 @@ final class PhotoGamePhotos {
     }
 
     func cancelLoading() { loadID = UUID(); loadingTask?.cancel(); loadingTask = nil; isLoading = false }
+
+    /// Secure background window for Foto Blocks, reusing this central loader and PreviewPipeline.
+    /// At most current + next are retained; no disk cache, original-image import or iCloud request.
+    func prepareOfflineWindow(_ selection: [String], previews: PreviewPipeline, targetSize: CGSize) {
+        prepareOfflineWindow(selection) { id in
+            let result = await previews.image(for: id, targetSize: targetSize, allowNetwork: false,
+                                              contentMode: .aspectFit, exactSize: true)
+            if case .image(let image) = result { return image }
+            return nil
+        }
+    }
+
+    func prepareOfflineWindow(_ selection: [String], load: @escaping @MainActor (String) async -> UIImage?) {
+        var seen = Set<String>()
+        let wanted = selection.filter { seen.insert($0).inserted && permitted([$0]) }.prefix(2)
+        let ids = Array(wanted)
+        guard ids != photoIDs || ids.contains(where: { images[$0] == nil }) else { return }
+        cancelLoading()
+        photoIDs = ids; images = images.filter { ids.contains($0.key) && permitted([$0.key]) }
+        allowsCloud = false; randomSource = nil; error = nil
+        let token = loadID
+        isLoading = !ids.isEmpty
+        loadingTask = Task { [weak self] in
+            guard let self else { return }
+            defer {
+                if self.loadID == token { self.isLoading = false; self.loadingTask = nil }
+            }
+            for id in ids {
+                guard !Task.isCancelled, self.loadID == token else { return }
+                if self.images[id] != nil { continue }
+                let image = await load(id)
+                guard !Task.isCancelled, self.loadID == token, self.permitted([id]) else { return }
+                if let image { self.images[id] = image }
+            }
+        }
+    }
+
+    /// Fail closed when permissions/exclusions change, including pending requests and cached images.
+    func restrictOfflineWindow(to visible: Set<String>) {
+        visibleIDs = visible
+        cancelLoading()
+        photoIDs = photoIDs.filter { permitted([$0]) }
+        images = images.filter { photoIDs.contains($0.key) }
+    }
+
+    func permittedIDs(_ selection: [String]) -> [String] { selection.filter { permitted([$0]) } }
 
     @discardableResult func validatePhotos() -> Bool {
         guard !photoIDs.isEmpty, !permitted(photoIDs) else { return false }

@@ -1,0 +1,2122 @@
+{
+  "origin": "Original PhotoMaid vector art, generated locally from scripts/assets/make_snake_topdown.py; no kit images edited",
+  "pixels": 256,
+  "assets": [
+    {
+      "name": "top_snake_idle_up",
+      "character": "snake",
+      "pose": "idle",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "42e6632770e70ae592ffb42eb536a64af3e018ae0d158e50b05632234e8b1a20",
+      "sha256": "aadb5e21d40b93d1de1654793b9e9591b07cea4debf3c19cb5e664c540503d9a",
+      "bytes": 13754
+    },
+    {
+      "name": "top_snake_idle_right",
+      "character": "snake",
+      "pose": "idle",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "537f797379b48ece8d98461bc3dbf9e96fddfb095fbe84c00644cba5cdeb96ee",
+      "sha256": "9e8230ee5017440068522a1d1a3b4e984167d1a884c9b67db71ba278717bf616",
+      "bytes": 15368
+    },
+    {
+      "name": "top_snake_idle_down",
+      "character": "snake",
+      "pose": "idle",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "1d83e242888874e11bdc59ce45f5bd05bd1b0abe51343fc7eb6edc6f289b7ad1",
+      "sha256": "f3109661b27e741f2ceff27f65102899952cdf24824af2c7c2660550b5df5745",
+      "bytes": 13696
+    },
+    {
+      "name": "top_snake_idle_left",
+      "character": "snake",
+      "pose": "idle",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "1afa10e5d4317a0e300e4419a14e7c106527e508ae5b1bf85c128634c9e734dd",
+      "sha256": "82272c70fce3e22caee076d4e662f7f4bc44bf635b46887a6f2a027cdebd93e3",
+      "bytes": 15308
+    },
+    {
+      "name": "top_snake_blink_up",
+      "character": "snake",
+      "pose": "blink",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "3073a7881b20758ce25b7662ed2784f18121172850324dbdee43d52dc1dc5e41",
+      "sha256": "34ac69536d955f9e4e51040b94aa68e42a73eda6e0f937dc6bc15bd6e00e0528",
+      "bytes": 12139
+    },
+    {
+      "name": "top_snake_blink_right",
+      "character": "snake",
+      "pose": "blink",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "2f03ccc03956091efd223acb3fac5a53138f8330ac7c6d8fc281ce4596261622",
+      "sha256": "23f07bb0491e9d5b7ddfc2f1841708a6d14a647ed71c8ddc654f03205218d7ac",
+      "bytes": 12767
+    },
+    {
+      "name": "top_snake_blink_down",
+      "character": "snake",
+      "pose": "blink",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "a7695f54d4b61a9a102bb0105b9d02fb3be55ac61f0d6beaa402a904addd662a",
+      "sha256": "7c9b584dea06df094c7f2a7bbcec32d72c717fa9ea20819dd1238546b1359fbb",
+      "bytes": 12062
+    },
+    {
+      "name": "top_snake_blink_left",
+      "character": "snake",
+      "pose": "blink",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "aae67c1781c035dd44b00737d8d5771c1ca726656289dc17df060327f124b47b",
+      "sha256": "7bceffcd2afa8a6660849c92212ca4eaa68c1f30201e6e982d05021037f755a7",
+      "bytes": 12734
+    },
+    {
+      "name": "top_snake_halfBlink_up",
+      "character": "snake",
+      "pose": "halfBlink",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "bb03b01d4c1bff3660a74de0c8f11ca6d039871f24a6bb38bb5d5eceb6e4eb41",
+      "sha256": "14c5b265172ac68c2b71d5146bb9941939853759dd09828440d99d38e857e8bf",
+      "bytes": 13233
+    },
+    {
+      "name": "top_snake_halfBlink_right",
+      "character": "snake",
+      "pose": "halfBlink",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "a985b34fa73d5d4f0134e8903050edfcea613d33bb2e228563b98541c19bbecf",
+      "sha256": "0271747371ab7f7d6aee3b33b6d35228637204e95c6e6be25ef7afec3c3d744d",
+      "bytes": 14731
+    },
+    {
+      "name": "top_snake_halfBlink_down",
+      "character": "snake",
+      "pose": "halfBlink",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "59bccb3f3bcf228e08abd0c1c11dc1151838e0f175a02c61977baf9e0b4c74bd",
+      "sha256": "603efd6cb934d955145ca18601a9e894ea488e398ced711f2f3d0fd08c6ae64f",
+      "bytes": 13098
+    },
+    {
+      "name": "top_snake_halfBlink_left",
+      "character": "snake",
+      "pose": "halfBlink",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "8e51889382636458f54e7b151efb17cc23594be28135efed030b73230f999145",
+      "sha256": "b1a445bd32acc34779f8eee51da6818b120dab7768af8931d36d72aa8b91443e",
+      "bytes": 14705
+    },
+    {
+      "name": "top_snake_tongue_up",
+      "character": "snake",
+      "pose": "tongue",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "d7adbae1b639edbc24f6e5c0ceabf3cbf0dafe06bcbbc7e08bbd3f8e877cd8ad",
+      "sha256": "8364e2d2c6b9e24dc37e7b35bfefc6789df5a146e8efc7de92553539f05467a3",
+      "bytes": 14081
+    },
+    {
+      "name": "top_snake_tongue_right",
+      "character": "snake",
+      "pose": "tongue",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "79675ec0fc0ecc95516f36bec62b25e9919bb120fa8a7014f01bac5ea6e7e029",
+      "sha256": "08f2576584eb67158ab59799e06b41221a373f8ca3349e9351f02f2354b0d764",
+      "bytes": 15740
+    },
+    {
+      "name": "top_snake_tongue_down",
+      "character": "snake",
+      "pose": "tongue",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "874a20cdd95e772e9b8643e91798a58b9bc143e2621aa8d583a765cad09cd47a",
+      "sha256": "06b058bb105e1e84b2c509db8489744512c02fd4e0050bf7f73b849d75035067",
+      "bytes": 14040
+    },
+    {
+      "name": "top_snake_tongue_left",
+      "character": "snake",
+      "pose": "tongue",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "be2025feba26aa59fa2de56e0f9ba73ce9e4427f77e87e116c3f2ddc237871ae",
+      "sha256": "92f1de882a35e8840022211987238d2604a87d0177e3a5080b95e41d935c0545",
+      "bytes": 15720
+    },
+    {
+      "name": "top_snake_eat_up",
+      "character": "snake",
+      "pose": "eat",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "a49d069cad3421fa3590295bf2d2c5d433c4165d2d122efef67a586a1e8ef72f",
+      "sha256": "375613f640fdba462229e91949cacc03b6d90c24e0e53d2ef373c358f4c27397",
+      "bytes": 14635
+    },
+    {
+      "name": "top_snake_eat_right",
+      "character": "snake",
+      "pose": "eat",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "100a4aed5461f0c495f869dda17dd1db757d15bd7bcbbaed589f11f9b2bae360",
+      "sha256": "4de196abf86e91f5655356e051c19712ee03adad886af667a96d0bb6abfb38ca",
+      "bytes": 16379
+    },
+    {
+      "name": "top_snake_eat_down",
+      "character": "snake",
+      "pose": "eat",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "46050f17cb91fa95a4dbac267d8b16417c294fe1e32133f645a4f0887b4da676",
+      "sha256": "99dee07618fe3a739e522711fcaa4657098fc15c9bf499df4344ccf12fd3a0b8",
+      "bytes": 14570
+    },
+    {
+      "name": "top_snake_eat_left",
+      "character": "snake",
+      "pose": "eat",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "049fb73215035993c94d61e0c9f84ceb681f49fd27761c19c5725600a14e7ad0",
+      "sha256": "15eeeea163ee21aeb40afff5057c3f9434230423c0eb332cc02e915ddbaf44ca",
+      "bytes": 16344
+    },
+    {
+      "name": "top_snake_hurt_up",
+      "character": "snake",
+      "pose": "hurt",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "bd16b32c67d03fe0abcbb8d264b49ff1e0de8bdeddbf379e5aabef1147ecafee",
+      "sha256": "8a6bc2283d6eb43ce17022ff573578745df44396c3bd5f3988c090d10e8af695",
+      "bytes": 13926
+    },
+    {
+      "name": "top_snake_hurt_right",
+      "character": "snake",
+      "pose": "hurt",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "938a964968003d08df0685c56fe2f1a68094c1969f43714e01d22e91f46df792",
+      "sha256": "91f2cde8b86745cc81a2d28ae22f4c5b2a3ecc20b3ce8afddbc028784b3570d7",
+      "bytes": 15645
+    },
+    {
+      "name": "top_snake_hurt_down",
+      "character": "snake",
+      "pose": "hurt",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "be0ea6113668778792fbf2e6874bce68973dae5bc37f18e694f1157d572daa6c",
+      "sha256": "3562855c695e77988b9237023a24801968c23e4b55ef0cc5e0e9fa3061e7dcf9",
+      "bytes": 13903
+    },
+    {
+      "name": "top_snake_hurt_left",
+      "character": "snake",
+      "pose": "hurt",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "6bd2c585750b730be064fe7ce735cb93f5ea8732ad93f57031e7c3a54d2fb75a",
+      "sha256": "fa0085110c7f1872649df51784f952604a9a3276fb318af924c37d062f752aba",
+      "bytes": 15645
+    },
+    {
+      "name": "top_snake_dead_up",
+      "character": "snake",
+      "pose": "dead",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "d73c159129650a6e0d1cd1b267dea7908e6b91535f8526e60ae031f4b79f669a",
+      "sha256": "355d93b23c6a32781bb734e0f14489b0d570961d8c02103bf5a10829d63d62a4",
+      "bytes": 13837
+    },
+    {
+      "name": "top_snake_dead_right",
+      "character": "snake",
+      "pose": "dead",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "d4e67f708d7813c18df56767b7cc93cb3425ac1b231bd1dc440477c8334a5bf5",
+      "sha256": "e5ae68b307b17137dc997332fb70e2b5b45231c6dc98d7fbb3ce67b1ca949c4e",
+      "bytes": 15450
+    },
+    {
+      "name": "top_snake_dead_down",
+      "character": "snake",
+      "pose": "dead",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "7059e18f5eeaba07993443aad17f941efba5db92f6506ffd33689d94334f2392",
+      "sha256": "7304eadbac42c2103c18698c771ba93804954a89e09be50bcee804ec2d1cbcee",
+      "bytes": 13747
+    },
+    {
+      "name": "top_snake_dead_left",
+      "character": "snake",
+      "pose": "dead",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "45d2f50642654e85d72a05a0af2fc7c201a991336be8e2749b9b2e717908d55f",
+      "sha256": "df145c1c7ff939ad829f2477e7227c3f7d71078c5aa404f86beac01149cdd23b",
+      "bytes": 15355
+    },
+    {
+      "name": "top_snake_sleep_up",
+      "character": "snake",
+      "pose": "sleep",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "3073a7881b20758ce25b7662ed2784f18121172850324dbdee43d52dc1dc5e41",
+      "sha256": "34ac69536d955f9e4e51040b94aa68e42a73eda6e0f937dc6bc15bd6e00e0528",
+      "bytes": 12139
+    },
+    {
+      "name": "top_snake_sleep_right",
+      "character": "snake",
+      "pose": "sleep",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "2f03ccc03956091efd223acb3fac5a53138f8330ac7c6d8fc281ce4596261622",
+      "sha256": "23f07bb0491e9d5b7ddfc2f1841708a6d14a647ed71c8ddc654f03205218d7ac",
+      "bytes": 12767
+    },
+    {
+      "name": "top_snake_sleep_down",
+      "character": "snake",
+      "pose": "sleep",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "a7695f54d4b61a9a102bb0105b9d02fb3be55ac61f0d6beaa402a904addd662a",
+      "sha256": "7c9b584dea06df094c7f2a7bbcec32d72c717fa9ea20819dd1238546b1359fbb",
+      "bytes": 12062
+    },
+    {
+      "name": "top_snake_sleep_left",
+      "character": "snake",
+      "pose": "sleep",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "aae67c1781c035dd44b00737d8d5771c1ca726656289dc17df060327f124b47b",
+      "sha256": "7bceffcd2afa8a6660849c92212ca4eaa68c1f30201e6e982d05021037f755a7",
+      "bytes": 12734
+    },
+    {
+      "name": "top_snake_surprised_up",
+      "character": "snake",
+      "pose": "surprised",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "ecab9d2ba6328858941dafc8a0f3fffd804c914251b4cff7be5f7785ffadbca2",
+      "sha256": "a60d02824b1839794d8d720d40841d97ed0c662cb73b05e69a8cbcfb0b132ba5",
+      "bytes": 13672
+    },
+    {
+      "name": "top_snake_surprised_right",
+      "character": "snake",
+      "pose": "surprised",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "3283ab2488344e8ce8e7ac2344cac1fd2653a1623074be59ab443d76038370f1",
+      "sha256": "2e111e0a4334e8fe5ca17bfa4cae0595903f994236ea3790b8c595ff2b411f94",
+      "bytes": 15248
+    },
+    {
+      "name": "top_snake_surprised_down",
+      "character": "snake",
+      "pose": "surprised",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "ba3a4da3a3a4a1e04b46d50ac3a6eedd1720f723631f3486f622e86ba5f16993",
+      "sha256": "926bae1e4b827fe1ec671d0a0358719f8b1cd434d6920e6f4bfcb35c8b3a482f",
+      "bytes": 13595
+    },
+    {
+      "name": "top_snake_surprised_left",
+      "character": "snake",
+      "pose": "surprised",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "05a8105e2d3dd02156b9cbaa94e76118addbda67e015f18501c6757fe14f435b",
+      "sha256": "7c02631c9abf99d8d3d205bf342528fb86878fb70dc7ce214e73f3778b0227b0",
+      "bytes": 15203
+    },
+    {
+      "name": "top_snake_lookLeft_up",
+      "character": "snake",
+      "pose": "lookLeft",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "0a1dbf8575285e3f38e8626d694866e2a2c6cd732fb5a2674aa9df4104cdda6a",
+      "sha256": "06344fa5d3fef3e504c46b46a73e4f3e4ddfe3f767e7b8c550ef361d521540f9",
+      "bytes": 13757
+    },
+    {
+      "name": "top_snake_lookLeft_right",
+      "character": "snake",
+      "pose": "lookLeft",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "f72b2118f0f9d719049712baf59aeafa58a3f67fee4475c07ebd8e9c7183b9cc",
+      "sha256": "291a1438509fd0e122feb92a9849c42ab2c1d8e87677cac3cf1f38be55c970c9",
+      "bytes": 15410
+    },
+    {
+      "name": "top_snake_lookLeft_down",
+      "character": "snake",
+      "pose": "lookLeft",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "5270ccfe1a43457d953a79bc805d38b17dd4c8763a2dfcc03329dd7ec229b415",
+      "sha256": "37a7a6ff99c21da69e2d5dd0c34d77da8a44dbc72cf2bc362940526b80c5fbca",
+      "bytes": 13688
+    },
+    {
+      "name": "top_snake_lookLeft_left",
+      "character": "snake",
+      "pose": "lookLeft",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "c5d5171a5cb4803814258a630cf858f0df61cf1e8cbf59d91a05fa209f6b01c5",
+      "sha256": "a4d0f2e21aa026b35254a1f79a8d03ca9b287d4ed950918ca2d4ddabcb38d3fb",
+      "bytes": 15326
+    },
+    {
+      "name": "top_snake_lookRight_up",
+      "character": "snake",
+      "pose": "lookRight",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "98b317f0faa73e432341abb36896edc26a606c9721bbf4a0c685fab41cc2ef15",
+      "sha256": "78bfe764a4b72026ce4da9d4e795535582d44f5cd5ac6225538660b16aa68abf",
+      "bytes": 13754
+    },
+    {
+      "name": "top_snake_lookRight_right",
+      "character": "snake",
+      "pose": "lookRight",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "fad1e54858bdede00e0d1025b40e7a33b2e75efc11c29c5d4043dd32c5199765",
+      "sha256": "ca7c2f51b4dc4ca01d7feb5554264107dcca0fbc90b8932a54fcf532337ed8e2",
+      "bytes": 15374
+    },
+    {
+      "name": "top_snake_lookRight_down",
+      "character": "snake",
+      "pose": "lookRight",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "ade8c617546d5538084fe02b8b194835a1980d664c55e7bc94e32976b6b9597b",
+      "sha256": "76722cd40b03af05f7d72cb1c847b574b03339b856751a5160b69be9113e91cd",
+      "bytes": 13699
+    },
+    {
+      "name": "top_snake_lookRight_left",
+      "character": "snake",
+      "pose": "lookRight",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "a73ed70edd0b10a46fcc1ba27dd552f1c9eddd4a80d58f4cfab11c8043d9d5d6",
+      "sha256": "39cbafa4efd2ad99f2fac37aa79fdf92e509e28bcb98ba9fd3938c001ffeaf76",
+      "bytes": 15361
+    },
+    {
+      "name": "top_dragon_idle_up",
+      "character": "dragon",
+      "pose": "idle",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "4b35fbe93a41503f9a5b353561e1265892d4b019a5d14c4e6281ac7065d1fe59",
+      "sha256": "36d9de2ab49be5a73aaa4c1432f80f966507b672770d38fc7313cd4ced81a230",
+      "bytes": 14716
+    },
+    {
+      "name": "top_dragon_idle_right",
+      "character": "dragon",
+      "pose": "idle",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "3350b25583b2405fece7e2f21a19119f66977d0e97b9da4a0e1139393522c588",
+      "sha256": "cc0be16dd6a6574c1adec7336cc132f28c27a4998cf95ada122b08b8ce536ab7",
+      "bytes": 16859
+    },
+    {
+      "name": "top_dragon_idle_down",
+      "character": "dragon",
+      "pose": "idle",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "602dcd7f8cebafaef2ad47dd358b5c90e3cdc52ce44fc077af1c929b984fa125",
+      "sha256": "ffaa32e051aea6168e9dd8780fe5e56a4cdc96dc26acf4f3832ba8b555a8703f",
+      "bytes": 14725
+    },
+    {
+      "name": "top_dragon_idle_left",
+      "character": "dragon",
+      "pose": "idle",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "bcaf9262fe64af85cd59834aeebcf9b7b0273ab5489fe8cc872ac36bf7e81bb9",
+      "sha256": "9bf5c7c350c106c1149168ba843bb449b4544efaf00f2be721b76f84839db906",
+      "bytes": 16882
+    },
+    {
+      "name": "top_dragon_blink_up",
+      "character": "dragon",
+      "pose": "blink",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "b92ace329be77cd38529c72a9747d01ae9383ea4b25c5358166a802b312b7b40",
+      "sha256": "81ae7f1adc5f2305b5d21b7df12802e36f4e55c65609a74822d44927ec451bfc",
+      "bytes": 13151
+    },
+    {
+      "name": "top_dragon_blink_right",
+      "character": "dragon",
+      "pose": "blink",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "4d8fb9a91c5c4af9d3cc20142fe5134945e915f3ed0b83df39aee3e4f73382c2",
+      "sha256": "3979f6961b3d5e27a961ddca1e6f5fe742c4837357b2e2fcf1322931c131c776",
+      "bytes": 14196
+    },
+    {
+      "name": "top_dragon_blink_down",
+      "character": "dragon",
+      "pose": "blink",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "992d3d1509be332a34e33cc153da2c965bec37f5a0434251b91702cdf7a9f5b6",
+      "sha256": "369f530df70a188f21e597193a4d6f90b48dd8c0633ff3c161c390dd04b0ccf1",
+      "bytes": 13138
+    },
+    {
+      "name": "top_dragon_blink_left",
+      "character": "dragon",
+      "pose": "blink",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "edcf5e152157badfca25db5550c9004f6afa53b449964fbc604d0afca347b956",
+      "sha256": "c256568e05dba849deea44d4fe0cd841178b884281be18eb41d8c65d759d04f0",
+      "bytes": 14350
+    },
+    {
+      "name": "top_dragon_eat_up",
+      "character": "dragon",
+      "pose": "eat",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "a59e92f87ca57abf16b08dd618901a78f1f4dc5ad6e3f19876ab6a8e46b603f5",
+      "sha256": "6cdd86501928bb6dcf340cd647b7854e53fdb54c372ed87dc16db80587f1eda5",
+      "bytes": 15616
+    },
+    {
+      "name": "top_dragon_eat_right",
+      "character": "dragon",
+      "pose": "eat",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "0fb3a288887ca6cc29912828d09ac717477aed105d0937a59027e2ba1c3f7fd9",
+      "sha256": "56eaff4657d8bc47902f7ac6c823607f75b444dd80545fcfeebd73bbaf3cbd2d",
+      "bytes": 17891
+    },
+    {
+      "name": "top_dragon_eat_down",
+      "character": "dragon",
+      "pose": "eat",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "243d02ae369fac92ec64a797adb7b1db3d5faec48519e3aa84d70f9107e7376a",
+      "sha256": "1b937e2765969a1b2e218a5ab0f4719eda83da0070c6e5f29ac6a8092a7efcfd",
+      "bytes": 15630
+    },
+    {
+      "name": "top_dragon_eat_left",
+      "character": "dragon",
+      "pose": "eat",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "b6d12aa66a54e035c2094752ed2ab34ed359d0d3a600d3e9883089e1dab653d3",
+      "sha256": "3c638b0858af591f291d7735fe7731d1a187e1cfd91f01f68935455aed03ccd9",
+      "bytes": 17880
+    },
+    {
+      "name": "top_dragon_dead_up",
+      "character": "dragon",
+      "pose": "dead",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "6a82f99af6551162bb74faa722c187961d268f2d9c25ea47a34354e521b12e68",
+      "sha256": "49b515e25b4ad8c7bbe3128911737fc329aed25d513124e8e573dad1a88e7230",
+      "bytes": 14759
+    },
+    {
+      "name": "top_dragon_dead_right",
+      "character": "dragon",
+      "pose": "dead",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "176fe53ca5dc97f8ea2bd6ca81e9217771a15f2c4f34348f06b7d8614dc9f73d",
+      "sha256": "46b644d4815c5533c57c96134390b1ad484aab6de6e87213cc271b2c2028fe43",
+      "bytes": 16878
+    },
+    {
+      "name": "top_dragon_dead_down",
+      "character": "dragon",
+      "pose": "dead",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "8768255f2dd3e4491b4cf3d5e49ebf64403e634775c22f76bfec2f7b8aaf2eed",
+      "sha256": "18f200b634e664d3cda046c78bf8e1ef47d64388bd8d949f6c1adff447b44e09",
+      "bytes": 14800
+    },
+    {
+      "name": "top_dragon_dead_left",
+      "character": "dragon",
+      "pose": "dead",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "ef85439de81d3e9c55ba224c320524e3d86032a62a22767a2107565c3a3b78c5",
+      "sha256": "9acd7074e14960f574f9deaabeb7ff2d0effe312dd2c9f8e10eb133cb7ae5213",
+      "bytes": 16907
+    },
+    {
+      "name": "top_dino_idle_up",
+      "character": "dino",
+      "pose": "idle",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "1b3492675d057bb7fd6eecac0e99025d35a6e565124d821f9618d57b27ab9959",
+      "sha256": "83cf52b4ce60582163245a46eb1c978827a70c1b79e33f25373baef845caef89",
+      "bytes": 14008
+    },
+    {
+      "name": "top_dino_idle_right",
+      "character": "dino",
+      "pose": "idle",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "9b7fad5e0ef282d62d28c3ce91e4413445a2207e0b475a989d402d32f7108b90",
+      "sha256": "b4b18ba2ffd8f0896f8d47780e54672839014c00866cb500e1d57e087f3e48b4",
+      "bytes": 15608
+    },
+    {
+      "name": "top_dino_idle_down",
+      "character": "dino",
+      "pose": "idle",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "6e4ff497428b785c2ac10b269a915b29f580f9af960df4b9676b9e83d0f3ee04",
+      "sha256": "4fa045d1737ee8e8c4eeaf12fd85ac9bbb465c6a6cb9bf5d773a1e4ede09cfd4",
+      "bytes": 13973
+    },
+    {
+      "name": "top_dino_idle_left",
+      "character": "dino",
+      "pose": "idle",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "4385eeaaedc5b520adc893a0b4a9fc56f0cb990b6d554ef45ee9dffaf8ae776f",
+      "sha256": "8f5d60d428ffde88df7cebd1c99171830afac4c5c77c7f99a766aaa6911e21f7",
+      "bytes": 15596
+    },
+    {
+      "name": "top_dino_blink_up",
+      "character": "dino",
+      "pose": "blink",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "642d39475480c41797b0c50ed1f8d609d3cb0cf352d74934207077fc54726b36",
+      "sha256": "abaf1fabfde1aa0a81c16ca6b50cf6da274a14df0af141f442fd1bf963b8d19f",
+      "bytes": 12396
+    },
+    {
+      "name": "top_dino_blink_right",
+      "character": "dino",
+      "pose": "blink",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "1781ecdbe26592dcea010dabf8a427309a8b4ee0735207291b265b213dfd973e",
+      "sha256": "bbc96f2a422a8c5d22c395b96db2c7303a1662ce755a1e4b66c76b9b0f778312",
+      "bytes": 13012
+    },
+    {
+      "name": "top_dino_blink_down",
+      "character": "dino",
+      "pose": "blink",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "4ed53f31aac5d868fda8940ea8403efd9f176fc939f0877c9fd454ef0c5cca02",
+      "sha256": "3e6265cd65d7346dfb435687d8304b19b11ce5c7dc5eadbc0b2504b43cb2705c",
+      "bytes": 12383
+    },
+    {
+      "name": "top_dino_blink_left",
+      "character": "dino",
+      "pose": "blink",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "880d9395f1db0e77ddcd434c05d673d4c5ca366b8f27958373037bf752bbba78",
+      "sha256": "8f5a0f99b24c079bce42afd1bd4cfc5b32c91b2db3346face53d96d556a0aa21",
+      "bytes": 13028
+    },
+    {
+      "name": "top_dino_eat_up",
+      "character": "dino",
+      "pose": "eat",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "f5692fc56d39a89f471120a83f98a9d0ffa0ab50faa47ef590b97324dcd87fb6",
+      "sha256": "ef62c93ab238cb383eda64c502ea0eaae615899eb44c8ce987b6e245d3f3703a",
+      "bytes": 14905
+    },
+    {
+      "name": "top_dino_eat_right",
+      "character": "dino",
+      "pose": "eat",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "e8e6cd651a0a6851e8b1f82059635fb9d4367c4cd32ceb87eafca17b2f9c8979",
+      "sha256": "f73307b43943b3b2ee6fd0fc1ba396439eb0615ec4691d2269172d2a00ee4ea9",
+      "bytes": 16681
+    },
+    {
+      "name": "top_dino_eat_down",
+      "character": "dino",
+      "pose": "eat",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "d2b82869a7dcb848ec65add02dd9c4e8ef10d858e0c2920086c509d24d627cd3",
+      "sha256": "4fce4fac6582c5c9d7dbb55138484b868757aad383f451b205baedd42d5cb02c",
+      "bytes": 14847
+    },
+    {
+      "name": "top_dino_eat_left",
+      "character": "dino",
+      "pose": "eat",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "aad92ae9b35744f4fc559ac79fd243c474d291b7ab852d8124fbe6c6d649a39c",
+      "sha256": "e15bb42f202b40d4a603b75e9dd532988b3a72dd905fbbe16130a13fb7c2ea33",
+      "bytes": 16587
+    },
+    {
+      "name": "top_dino_dead_up",
+      "character": "dino",
+      "pose": "dead",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "c44191d64911d14b510f0cdb0423f2d5463e852010031a95576a93b5937918b1",
+      "sha256": "f4ed96c9aa56e58b6bb0e6c3dccadf45d212ea710f50e22eea71699f136c5d77",
+      "bytes": 14078
+    },
+    {
+      "name": "top_dino_dead_right",
+      "character": "dino",
+      "pose": "dead",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "902d31664ed7330b0cb42d558e4c9dfd8bbd5d940923363fb9060268edb66f02",
+      "sha256": "f767c1ad34c9eab61268612b92121e8f07cf3989bd954c1543597de99b321778",
+      "bytes": 15677
+    },
+    {
+      "name": "top_dino_dead_down",
+      "character": "dino",
+      "pose": "dead",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "8bffc19adc2f1c97f4516abd8cf239a38ad3bbefdec2b644379b0703bdbe2f1b",
+      "sha256": "e6172139dc45a57d2106204a1152da18edcbe0745474ba6904d4eee346e985ad",
+      "bytes": 14021
+    },
+    {
+      "name": "top_dino_dead_left",
+      "character": "dino",
+      "pose": "dead",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "ff924cecd72c15920d5e8dd6bec08d9181e12b67411c6e70ff605afdcd2fe5cf",
+      "sha256": "fe59ab8b0708ace8397abf688f1e4fff9ad60b0ccee350e29f203450a05fdb50",
+      "bytes": 15665
+    },
+    {
+      "name": "top_monster_idle_up",
+      "character": "monster",
+      "pose": "idle",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "1b63d61c4e6611d1ac83581eff3236bf3fa1d01ff1e94c0c1059b466796767c1",
+      "sha256": "3f550b24d445ee3e9b0b27856be6d601ecfd577b23525d2a978c93298b4aba51",
+      "bytes": 15213
+    },
+    {
+      "name": "top_monster_idle_right",
+      "character": "monster",
+      "pose": "idle",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "44c85a5132cc456f01a5d8a8f5a9fc22d1f830183db631888fcf4a190690e20a",
+      "sha256": "18a8712334f605ccbf5ae5cec950d2d4011980a8430cd103e4a19299fa912e83",
+      "bytes": 16982
+    },
+    {
+      "name": "top_monster_idle_down",
+      "character": "monster",
+      "pose": "idle",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "daf3cb2048c9d889dfa21fafac05f53788af3214e40ad3dfc0e5db6c6714fce4",
+      "sha256": "5635b16d4e006f286a171a1b919efb7d2366feb55e93e196a801c1740502c7d0",
+      "bytes": 15252
+    },
+    {
+      "name": "top_monster_idle_left",
+      "character": "monster",
+      "pose": "idle",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "6629eef5d6ca3ab40e826b51257029047b09781cc0c5360b757b3756afc629de",
+      "sha256": "c9db821a09575bcffa5fc0f3cc3744d6dc738743679872a5bb99f7acee56aff4",
+      "bytes": 16988
+    },
+    {
+      "name": "top_monster_blink_up",
+      "character": "monster",
+      "pose": "blink",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "417408deade3e47c99bfc1f9aae0ac38d90cfe9fcda6e8215034652f6da89c1d",
+      "sha256": "44493817e8e58b8b0e8fc12290054da91dbe8d989028f342c9f34a5bda8a9e41",
+      "bytes": 13778
+    },
+    {
+      "name": "top_monster_blink_right",
+      "character": "monster",
+      "pose": "blink",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "e74819bafb0395ecccdcf84eac7e4c66222c125c7f9a9ec2149d266facc1b681",
+      "sha256": "60b8839c4be52d12ae99e6885de34adc691c8eaf657e9b65a9dab02278a91033",
+      "bytes": 14768
+    },
+    {
+      "name": "top_monster_blink_down",
+      "character": "monster",
+      "pose": "blink",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "528f3594cb3a05c647a4b54e1dc49fbf4defe03cb9eb884f3ed87716b16a5be9",
+      "sha256": "8a6e6e3a57af1d075d26939fc66b0eaea74bd643d2ad8ac40f58af3f73d3b7e1",
+      "bytes": 13854
+    },
+    {
+      "name": "top_monster_blink_left",
+      "character": "monster",
+      "pose": "blink",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "7c0a349b0025f64cc19348392a38f5d87027c75e290510ce66a901e68db41577",
+      "sha256": "b530578891f7cea218d2b71b2677ed9ba81189148268f351b33a0d6f7d6ae541",
+      "bytes": 14937
+    },
+    {
+      "name": "top_monster_eat_up",
+      "character": "monster",
+      "pose": "eat",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "0a45b3e72c1300c45b82e2007807acdc97298bc7bc9d780747259ecba9350215",
+      "sha256": "cde07f059a8f00b58b96a0ec701d987a914ea29893c3e0a30470c2da05637ffb",
+      "bytes": 16119
+    },
+    {
+      "name": "top_monster_eat_right",
+      "character": "monster",
+      "pose": "eat",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "f11c420c2eb64db19a57c6fa908abf8f40832ef78d63db0c486c056ed18e47af",
+      "sha256": "ec6b40deed5ecbefa7fd5905d9d8184f8bb40d854fd3861e4fdeffebb9e45550",
+      "bytes": 18016
+    },
+    {
+      "name": "top_monster_eat_down",
+      "character": "monster",
+      "pose": "eat",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "3f994b4d54f1a54add37116a9f2f523ce8c1767199cf12c3729110c3b60d5cb8",
+      "sha256": "e506e33ace70064d5e8eeab83f3cf0acf8da2c070de0d15987433ae0a58ce69e",
+      "bytes": 16143
+    },
+    {
+      "name": "top_monster_eat_left",
+      "character": "monster",
+      "pose": "eat",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "f4092e0275ea4b0fcb0f2856d40943c71f8dcf42cd6001ee0a4a3849c8b2143e",
+      "sha256": "469ddcaac3671b0a375b50bded4b0e8cc4fb6020d7f198d72cee326ad6bf190c",
+      "bytes": 17989
+    },
+    {
+      "name": "top_monster_dead_up",
+      "character": "monster",
+      "pose": "dead",
+      "direction": "up",
+      "nose": [
+        128.0,
+        37.0
+      ],
+      "eyes": [
+        [
+          76.0,
+          149.0
+        ],
+        [
+          180.0,
+          149.0
+        ]
+      ],
+      "source_svg_sha256": "592d2ffe98a26018d9363ec373675648414fce1deb613bd4384af074f116ade4",
+      "sha256": "a688288c0e4e078ae45237757f02ad31ee2e8cc53252888caf8f8ef039b81f1e",
+      "bytes": 15263
+    },
+    {
+      "name": "top_monster_dead_right",
+      "character": "monster",
+      "pose": "dead",
+      "direction": "right",
+      "nose": [
+        219.0,
+        128.0
+      ],
+      "eyes": [
+        [
+          107.0,
+          76.0
+        ],
+        [
+          107.0,
+          180.0
+        ]
+      ],
+      "source_svg_sha256": "a67a06ddfa24ea2f0fbcb014eb4791d0e832649a973e1d797ab5363e447c5f72",
+      "sha256": "894b3a64c28326a49441a18a77cb1ccf2ed09ce91850e779555a025dc209a314",
+      "bytes": 17072
+    },
+    {
+      "name": "top_monster_dead_down",
+      "character": "monster",
+      "pose": "dead",
+      "direction": "down",
+      "nose": [
+        128.0,
+        219.0
+      ],
+      "eyes": [
+        [
+          180.0,
+          107.0
+        ],
+        [
+          76.0,
+          107.0
+        ]
+      ],
+      "source_svg_sha256": "ba591ce73b775c8782edfe5febc16d907fe98486d4266c1777b742350ef1117e",
+      "sha256": "1ab5c0fb60f85c23955eb322b36399c18172b8ef44827b9885b66223fb1d54fd",
+      "bytes": 15287
+    },
+    {
+      "name": "top_monster_dead_left",
+      "character": "monster",
+      "pose": "dead",
+      "direction": "left",
+      "nose": [
+        37.0,
+        128.00000000000003
+      ],
+      "eyes": [
+        [
+          149.0,
+          180.0
+        ],
+        [
+          149.0,
+          76.0
+        ]
+      ],
+      "source_svg_sha256": "7ecb1eb055ec38dc1531850d2ef5f1d644646444f467c1d89a4bbf18ef1da71e",
+      "sha256": "c14f93eed08be97fb47ef4d2077c299cdd4c6df4c0956d286112bbe92a303578",
+      "bytes": 17162
+    }
+  ]
+}

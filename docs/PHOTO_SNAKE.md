@@ -1,5 +1,16 @@
 # Foto-Snake (16.10.2026)
 
+> **Neuester UX-Stand:** klare Start-/Foto-Buttons, „Andere Spiele“, „Score“ und „Rekord“.
+> Lesbare Fotogröße beibehalten, nun runde leicht überlappende Segmente mit dünnem Rand.
+> [Aktueller Dateibericht und statische Vorschau](snake-ux-20261018/README.md).
+> Lokal geprüft, noch kein neuer iOS-Build oder Geräte-FPS-Nachweis.
+
+> **Arbeitsstand 18.10.2026 – lesbare Fotokacheln:** 44–50 pt auf normalen iPhone-Spielflächen,
+> dünner Rahmen, angepasstes Raster und echte Vogelperspektive in vier Richtungen.
+> [Umsetzung, geänderte Dateien und lokale Prüfungen](snake-readable-20261018/README.md).
+> Dieser neue Umbau ist lokal geprüft; iOS-/Simulator-Build und Geräte-FPS sind noch nicht geprüft.
+> Die nachfolgenden Build- und Abnahmeangaben beziehen sich auf frühere Spielstände.
+
 > **Aktuell: SnakePhoto-Umbau.** Cartoon-Köpfe, SpriteKit, bis zu 100 lokal gespeicherte
 > PhotosPicker-Fotos, Galerie-Reihenfolge sowie Schließen/Pause/Einstellungen im sicheren HUD.
 > Bewegung ausschließlich per Wischgesten. [Aktueller Stand und native Prüfergebnisse](snakephoto/TESTFLIGHT_VERIFICATION.md).

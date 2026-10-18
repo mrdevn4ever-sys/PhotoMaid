@@ -32,6 +32,8 @@ enum StoreKeys {
     static let feedAds = StoreKey<FeedAdState>("ads.feed") { FeedAdState() }
     static let snakePreferences = StoreKey<PhotoSnakePreferences>("games.snake.preferences.v1") { .init() }
     static let gameRecords = StoreKey<PhotoGameRecords>("games.personalRecords.v1") { PhotoGameRecords() }
+    /// Numerical puzzle state only. No photo identifiers, thumbnail files or gallery data.
+    static let blocksArchive = StoreKey<PhotoBlocksArchive>("games.blocks.v1") { .init() }
     /// Navigation only: unavailable previews explicitly skipped by the user, never review decisions.
     static let skippedPreviews = StoreKey<Set<ItemReference>>("feed.skippedPreviews.v1") { [] }
     /// Gemessene Mediengrößen (Bytes) je `localIdentifier` + Änderungsdatum. Nur lokal, nie gesichert.

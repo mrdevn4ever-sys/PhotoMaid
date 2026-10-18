@@ -44,9 +44,39 @@ public struct PhotoSnakePreferences: Codable, Equatable, Sendable {
 
 /// Deterministic animation schedule: no random actions or texture creation in the render loop.
 public enum PhotoSnakeHeadAnimation {
+    public enum Pose: String, CaseIterable, Sendable {
+        case idle, blink, halfBlink, tongue, eat, hurt, dead, sleep, surprised, lookLeft, lookRight
+    }
     public struct Frame: Equatable, Sendable {
         public let texture: String
         public let scale: Double
+        public var pose: Pose {
+            if texture.contains("dead") { return .dead }
+            if texture.contains("hurt") { return .hurt }
+            if texture.contains("surprised") { return .surprised }
+            if texture.contains("sleep") { return .sleep }
+            if texture.contains("look_left") { return .lookLeft }
+            if texture.contains("look_right") { return .lookRight }
+            if texture.contains("eat") { return .eat }
+            if texture.hasSuffix("blink") || texture == "head_idle_04" { return .blink }
+            if texture == "head_idle_03" || texture == "head_idle_05" { return .halfBlink }
+            if texture == "head_idle_06" { return .tongue }
+            return .idle
+        }
+    }
+    public static func overheadTexture(character: PhotoSnakeCharacter, pose: Pose,
+                                       direction: PhotoSnakeGame.Direction) -> String {
+        let available: Pose
+        if character == .snake { available = pose }
+        else {
+            switch pose {
+            case .blink, .halfBlink, .sleep: available = .blink
+            case .eat: available = .eat
+            case .hurt, .dead: available = .dead
+            default: available = .idle
+            }
+        }
+        return "top_\(character.rawValue)_\(available.rawValue)_\(direction.rawValue)"
     }
     public static func frame(character: PhotoSnakeCharacter, time: Double, eating: Double? = nil,
                              collision: Double? = nil, sleeping: Bool = false, danger: Bool = false,

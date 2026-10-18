@@ -49,6 +49,7 @@ final class AppModel {
     let gameScores: PhotoGameScores
     let memory: PhotoMemoryModel
     let snake: PhotoSnakeModel
+    let blocks: PhotoBlocksModel
     @ObservationIgnored let sizer: MediaSizer
     @ObservationIgnored let previews: PreviewPipeline
     @ObservationIgnored let bytes = PhotoResourceByteProvider()
@@ -131,6 +132,11 @@ final class AppModel {
         snakeModel.photos.updateVisibility([])
         memory = memoryModel
         snake = snakeModel
+        let blocksModel = PhotoBlocksModel(archive: kv?.get(StoreKeys.blocksArchive) ?? .init()) { archive in
+            try kv?.set(StoreKeys.blocksArchive, archive)
+        }
+        blocksModel.photos.updateVisibility([])
+        blocks = blocksModel
         ledger = try DecisionLedger(persistence: persistence)
         library = PhotoLibraryService()
         purchases = StoreKitGateway(productID: AppConfig.proProductID, kv: kv)
@@ -310,6 +316,7 @@ final class AppModel {
         let held = removedAwaitingReload
         cleanupMedia = excluded.isEmpty && held.isEmpty ? visibleMedia
             : visibleMedia.filter { !excluded.contains($0.id) && !held.contains($0.reference) }
+        blocks.refreshPhotos(app: self)
         rebuildPending()
     }
 
@@ -371,6 +378,7 @@ final class AppModel {
     /// Gilt auch, wenn iOS das Löschen in der Fotos-App nicht bestätigt hat.
     func applyVaultConcealment(_ ids: Set<String>) async {
         guard !ids.isEmpty else { return }
+        blocks.invalidatePhotos()
         memory.validatePhotos()
         snake.validatePhotos()
         for id in ids {

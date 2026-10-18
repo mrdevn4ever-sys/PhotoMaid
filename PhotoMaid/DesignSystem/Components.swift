@@ -310,6 +310,8 @@ struct AssetCell: View {
     let assetID: String
     /// Ganzes Bild im Seitenverhältnis zeigen (einpassen) statt quadratisch zu beschneiden. Nie verzerrt.
     var fit = false
+    var allowNetwork = true
+    var requiresGameAccess = false
     @Environment(\.displayScale) private var scale
     @State private var loaded: Loaded?
     @State private var failedID: String?
@@ -337,7 +339,11 @@ struct AssetCell: View {
         CGSize(width: Self.bucket(size.width * scale), height: Self.bucket(size.height * scale))
     }
 
-    private var image: UIImage? { loaded?.id == assetID ? loaded?.image : nil }
+    private var permitted: Bool {
+        !requiresGameAccess || (PhotoAccess(PHPhotoLibrary.authorizationStatus(for: .readWrite)).canRead &&
+            VaultConcealment.shared.analysisReady && !VaultConcealment.shared.isConcealed(assetID))
+    }
+    private var image: UIImage? { permitted && loaded?.id == assetID ? loaded?.image : nil }
 
     var body: some View {
         Rectangle()
@@ -358,6 +364,7 @@ struct AssetCell: View {
                               height: Int(pixelSize.height))) {
                 await load()
             }
+            .onDisappear { if requiresGameAccess { loaded = nil } }
     }
 
     /// Platzhalter statt leerer Fläche: dezentes Symbol beim Laden, deutliches bei einem Fehler.
@@ -371,11 +378,12 @@ struct AssetCell: View {
     }
 
     private func load() async {
-        guard size.width >= 1, size.height >= 1 else { return }
+        guard size.width >= 1, size.height >= 1, permitted else { return }
         let id = assetID
-        let img = await ThumbnailLoader.shared.image(id, size: pixelSize)
+        let img = await ThumbnailLoader.shared.image(id, size: pixelSize, allowNetwork: allowNetwork)
         // Abgebrochen (aus dem Bild gescrollt) oder inzwischen ein anderes Medium: nichts anzeigen, nicht als Fehler werten.
         guard !Task.isCancelled, id == assetID else { return }
+        guard permitted else { loaded = nil; return }
         if let img {
             loaded = Loaded(id: id, image: img)
             failedID = nil
@@ -403,8 +411,12 @@ final class ThumbnailLoader {
         cache.totalCostLimit = 48 * 1024 * 1024
     }
 
-    func image(_ assetID: String, size: CGSize) async -> UIImage? {
+    func image(_ assetID: String, size: CGSize, allowNetwork: Bool = true) async -> UIImage? {
         guard size.width >= 1, size.height >= 1, !VaultConcealment.shared.isConcealed(assetID) else { return nil }
+        if !allowNetwork {
+            guard PhotoAccess(PHPhotoLibrary.authorizationStatus(for: .readWrite)).canRead,
+                  VaultConcealment.shared.analysisReady else { return nil }
+        }
         let key = "\(assetID)|\(Int(size.width))x\(Int(size.height))" as NSString
         if let hit = cache.object(forKey: key) { return hit }
         guard !Task.isCancelled,
@@ -420,7 +432,7 @@ final class ThumbnailLoader {
             store(local, key: key, size: size)
             return local
         }
-        guard !Task.isCancelled else { return nil }
+        guard allowNetwork, !Task.isCancelled else { return nil }
         if let remote = await request(asset, size: size, network: true, mode: .highQualityFormat) {
             guard !Task.isCancelled, !VaultConcealment.shared.isConcealed(assetID) else { return nil }
             store(remote, key: key, size: size)
