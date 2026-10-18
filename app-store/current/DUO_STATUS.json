@@ -20,11 +20,11 @@
   "probe_job_id": 117667450003,
   "probe_artifact_id": 12135717529,
   "diagnostic_screenshot": "REJECTED BLANK; no app Store image accepted",
-  "skill_export": "TIMEOUT in CLI-only probe; native capture will retry with Xcode GUI open",
+  "skill_export": "SKIPPED in both app attempts because simulator GUI preparation failed before export",
   "approved_duo_app_assets": 0,
   "apple_specification": "https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/",
   "apple_requirement": "Duo screenshots required starting April2027 for apps using SDK27.1+",
-  "remaining_requirement": "Native PhotoMaid build and actual inner-display UI capture followed by visual review. Outer-display app capture and Duo preview formats not yet validated.",
+  "remaining_requirement": "Discover actual matching Simulator GUI bundle location on xcode-27 runner, then native PhotoMaid inner-display UI capture and visual review. No accepted Duo images.",
   "historical_probes": [
     {
       "run_id": 39115140440,
@@ -54,8 +54,9 @@
   "first_pilot_failed_job_id": 117677083056,
   "native_app_retry_run_id": 39128651889,
   "native_app_retry_source_commit": "21dc7d425c7ab2703960c6942760e171b21c6e9f",
-  "native_app_retry_status": "SIMULATOR PREPARATION FAILED; collecting exact native job log",
+  "native_app_retry_status": "FAIL: selected Xcode27.1 Simulator.app bundle path does not exist",
   "native_app_retry_build": "PASS",
   "native_app_retry_build_job_id": 117679045157,
-  "native_app_retry_capture_tests": "NOT RUN"
+  "native_app_retry_capture_tests": "NOT RUN",
+  "second_pilot_failure": "NSCocoaErrorDomain Code260 / NSPOSIXErrorDomain Code2: /Applications/Xcode_27.1.app/Contents/Developer/Applications/Simulator.app is absent. Native app install and UI tests were skipped."
 }

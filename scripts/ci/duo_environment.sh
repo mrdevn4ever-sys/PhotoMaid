@@ -20,6 +20,34 @@ print(max(paths,key=version))
 PY
 sudo xcode-select -s "$(cat duo-environment/xcode-path.txt)"
 xcodebuild -version | tee duo-environment/xcode-version.txt
+python3 - <<'PY'
+import glob,json,plistlib,subprocess
+from pathlib import Path
+# Record actual bundle locations before attempting another GUI launch. Some runner
+# images supply SDK/CLI components without the usual Simulator.app bundle.
+developer=Path(subprocess.check_output(['xcode-select','-p'],text=True).strip())
+patterns=['/Applications/*.app',
+          '/Applications/Xcode*.app/Contents/Developer/Applications/*.app',
+          '/Applications/Xcode*.app/Contents/Applications/*.app',
+          '/Library/Developer/Applications/*.app',
+          '/Library/Developer/Simulator/*.app']
+bundles=[]
+for raw in sorted({p for pattern in patterns for p in glob.glob(pattern)}):
+    path=Path(raw);info_path=path/'Contents/Info.plist';info={}
+    if info_path.is_file():
+        with info_path.open('rb') as stream:info=plistlib.load(stream)
+    executable=info.get('CFBundleExecutable')
+    bundles.append({'path':raw,'resolved_path':str(path.resolve()),
+                    'bundle_id':info.get('CFBundleIdentifier'),
+                    'version':info.get('CFBundleShortVersionString'),
+                    'executable_exists':bool(executable and (path/'Contents/MacOS'/executable).is_file())})
+usual=developer/'Applications/Simulator.app'
+report={'selected_developer':str(developer),'usual_simulator_path':str(usual),
+        'usual_simulator_exists':usual.is_dir(),'bundles':bundles}
+Path('duo-environment/gui-bundles.json').write_text(json.dumps(report,indent=2)+'\n')
+print('Selected Xcode Simulator.app exists:',report['usual_simulator_exists'])
+print('Discovered Simulator bundles:',[b['path'] for b in bundles if 'Simulator' in b['path']])
+PY
 xcodebuild -showsdks > duo-environment/sdks.txt
 xcrun simctl list devicetypes -j > duo-environment/device-types.json
 xcrun simctl list runtimes -j > duo-environment/runtimes.json
