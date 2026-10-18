@@ -39,6 +39,55 @@ import XCTest
         XCTAssertTrue(game.waitForExistence(timeout: 5)); game.tap()
     }
 
+    func test05SimpleSetupCloudAndManualPhotoChoice() {
+        launch(light: true, language: "de")
+        openGame("memory")
+        XCTAssertTrue(app.navigationBars["Paare"].waitForExistence(timeout: 5))
+        let memoryCloud = app.switches["memory.cloud"]
+        XCTAssertEqual(memoryCloud.value as? String, "1")
+        checkpoint("pairs_setup_default_cloud_on", app: app)
+        memoryCloud.tap()
+        XCTAssertEqual(memoryCloud.value as? String, "0")
+        app.buttons["memory.startPhotos"].tap()
+        XCTAssertTrue(app.buttons["memory.card.0"].waitForExistence(timeout: 30))
+        XCTAssertEqual(app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'memory.card.'")).count, 24)
+        app.buttons["memory.change"].tap()
+        XCTAssertEqual(memoryCloud.value as? String, "0", "The user's explicit choice survives round preparation")
+        checkpoint("pairs_setup_keeps_cloud_opt_out", app: app)
+        app.buttons["memory.close"].tap()
+
+        openGame("snake")
+        XCTAssertEqual(app.switches["snake.cloud"].value as? String, "1")
+        XCTAssertTrue(app.buttons["snake.source"].label.contains("Gesamte Mediathek"))
+        checkpoint("snake_setup_default_library_cloud_on", app: app)
+        let options = app.descendants(matching: .any)["snake.options"].firstMatch
+        options.tap()
+        XCTAssertTrue(app.buttons["snake.mode"].exists)
+        XCTAssertTrue(app.buttons["snake.speed"].exists)
+        checkpoint("snake_setup_labelled_options", app: app)
+        options.tap()
+
+        app.buttons["snake.source"].tap()
+        app.buttons["Eigene Fotos wählen"].firstMatch.tap()
+        XCTAssertTrue(app.buttons["snake.prepare"].label.contains("Fotos auswählen"))
+        app.buttons["snake.prepare"].tap()
+        XCTAssertTrue(app.buttons["snake.gallery.add"].waitForExistence(timeout: 10))
+        XCTAssertFalse(app.descendants(matching: .any)["snake.board"].exists, "Empty manual selection must open photo selection instead of a placeholder game")
+        checkpoint("snake_empty_manual_choice_opens_gallery", app: app)
+        app.buttons["Fertig"].firstMatch.tap()
+        app.buttons["snake.source"].tap()
+        app.buttons["Gesamte Mediathek"].firstMatch.tap()
+        app.buttons["snake.prepare"].tap()
+        let board = app.descendants(matching: .any)["snake.board"].firstMatch
+        XCTAssertTrue(board.waitForExistence(timeout: 30))
+        assertFullscreenSnake(board)
+        board.swipeUp()
+        let before = board.value as? String ?? ""
+        let moving = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value != %@", before), object: board)
+        XCTAssertEqual(XCTWaiter.wait(for: [moving], timeout: 3), .completed)
+        checkpoint("snake_simple_setup_real_photo_game", app: app)
+    }
+
     func test70UnavailableVideosCanBePassed() {
         launch("feed-failures", language: "de")
         let stage = app.descendants(matching: .any)["feed.stage"].firstMatch
@@ -215,7 +264,7 @@ import XCTest
         openGame("snake")
         checkpoint("snake_01_setup_dark", app: app)
         // Use real PhotoKit thumbnails from the explicitly selected disposable QA library.
-        // The production default remains the user's own PhotosPicker selection.
+        // The production default uses the actual library; manual PhotosPicker selection remains available.
         app.buttons["snake.source"].tap()
         app.buttons["Entire photo library"].firstMatch.tap()
         app.buttons["snake.prepare"].tap()
@@ -335,6 +384,7 @@ import XCTest
         app.launch()
         waitForPage("feed")
         openGame("memory")
+        checkpoint("pairs_setup_arabic_large_text", app: app)
         let motifs = app.buttons["memory.startMotifs"]
         for _ in 0..<6 where !motifs.isHittable { app.swipeUp() }
         motifs.tap()
@@ -342,6 +392,7 @@ import XCTest
         checkpoint("memory_accessibility_arabic", app: app)
         app.buttons["memory.close"].tap()
         openGame("snake")
+        checkpoint("snake_setup_arabic_large_text", app: app)
         let symbols = app.buttons["snake.symbols"]
         for _ in 0..<6 where !symbols.isHittable { app.swipeUp() }
         symbols.tap()

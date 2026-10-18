@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Three selected previews plus a vault alternative; Snake/Memory are shown in real time."""
+"""Three selected previews plus a vault alternative; Snake/Pairs are shown in real time."""
 import argparse
 import hashlib
 import json
@@ -75,7 +75,7 @@ def main():
                      'fps': 30, 'sha256': digest(target), 'poster_file': poster.name, 'poster_sha256': digest(poster),
                      'poster_time': 11, 'poster_timecode': '00:00:11:00', 'audio': 'AAC stereo, silence',
                      'source': 'Actual memory card taps and swipe-only SpriteKit gameplay on its real clock',
-                     'sources': sources, 'editing': '8s Memory + 16s Snake at 1x; genuine final frame held for 3s', 'status': 'PASS'})
+                     'sources': sources, 'editing': '8s Pairs + 16s Snake at 1x; genuine final frame held for 3s', 'status': 'PASS'})
     (previews / 'manifest.json').write_text(json.dumps(sorted(selected, key=lambda r: r['file']), indent=2) + '\n')
     (alternatives / 'manifest.json').write_text(json.dumps(other, indent=2) + '\n')
     print('PASS:', a.locale, '3 selected previews + 1 vault alternative; games at actual speed')

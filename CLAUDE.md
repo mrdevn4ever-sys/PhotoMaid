@@ -75,6 +75,9 @@ Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E19) – ni
 - Eine Wahrheit je Zustand: Entscheidungen = Core Data über `LedgerPersistence`.
 - UI-Texte nur über `Localizable.xcstrings` (16 Sprachen, generiert aus Android + `ios_strings.json`), in Swift
   nur `L()`/`LP()`. Neue Kennung immer in allen 16 Sprachen. Gestenpfeile in RTL nie spiegeln.
+- Spiele-Startansichten (Nutzer, 18.10.2026): einfach und klar beschriften; das Kartenspiel heißt Paare.
+  iCloud-Fotos für beide Spiele standardmäßig laden, eine bewusste Abschaltung beibehalten.
+  Snake startet mit zufälligen Mediathek-Fotos; eine leere manuelle Auswahl öffnet die Fotoauswahl.
 
 ## Befehle
 

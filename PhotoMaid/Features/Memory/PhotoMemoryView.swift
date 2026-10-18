@@ -15,7 +15,7 @@ struct PhotoMemoryView: View {
     var onChooseGame: (() -> Void)? = nil
     @State private var picker = false
     @State private var setup = false
-    @State private var allowNetwork = false
+    @State private var allowNetwork = true
     @State private var source = Source.library
     @State private var pairCount = 12
     @State private var collectionPicker = false
@@ -74,7 +74,7 @@ struct PhotoMemoryView: View {
             .sheet(isPresented: $picker) {
                 StudioMediaPicker(allowsVideos: false, limit: PhotoMemoryGame.maximumPairs, minimumSelection: 2,
                                   initial: Set(model.photoIDs)) { ids in
-                    setup = false
+                    setup = true
                     model.startPhotos(ids, previews: app.previews, allowNetwork: allowNetwork, manualMismatch: voiceOver)
                 }
             }
@@ -100,6 +100,7 @@ struct PhotoMemoryView: View {
             }
             .onChange(of: shouldTime) { _, active in model.setTimingActive(active) }
             .onChange(of: model.roundID) { _, _ in
+                if model.game != nil { setup = false }
                 scrollPosition.scrollTo(edge: .top)
                 if voiceOver || boardNeedsScrolling { model.noteManualMismatch() }
             }
@@ -120,26 +121,33 @@ struct PhotoMemoryView: View {
     }
 
     private var configuration: some View {
-        VStack(spacing: AppSpacing.m) {
+        VStack(spacing: 20) {
             Image(systemName: "rectangle.on.rectangle")
-                .font(.largeTitle).foregroundStyle(AppColors.accent).accessibilityHidden(true)
-            Text(key: "memory_intro").font(AppTypography.body).multilineTextAlignment(.center)
+                .font(.system(size: 36, weight: .medium)).foregroundStyle(AppColors.accent)
+                .frame(width: 76, height: 76)
+                .background(AppColors.accent.opacity(0.12), in: .rect(cornerRadius: 24))
+                .accessibilityHidden(true)
+            Text(key: "game_setup_pairs_intro").font(AppTypography.body).multilineTextAlignment(.center)
             SurfaceCard {
-                VStack(alignment: .leading, spacing: AppSpacing.s) {
-                    Picker(L("memory_source"), selection: $source) {
-                        Text(key: "memory_source_library").tag(Source.library)
-                        Text(key: "memory_source_favorites").tag(Source.favorites)
-                        Text(key: "memory_source_collection").tag(Source.collection)
-                        Text(key: "memory_own").tag(Source.manual)
-                    }
-                    .pickerStyle(.menu).accessibilityIdentifier("memory.source")
-                    if source != .manual {
-                        Picker(L("memory_size"), selection: $pairCount) {
-                            ForEach([6, 12, 18], id: \.self) { count in
-                                Text(verbatim: L("memory_pair_option", count, count * 2)).tag(count)
-                            }
+                VStack(alignment: .leading, spacing: 16) {
+                    PhotoGameSetupField(title: L("game_setup_photos")) {
+                        Picker(L("memory_source"), selection: $source) {
+                            Text(key: "memory_source_library").tag(Source.library)
+                            Text(key: "memory_source_favorites").tag(Source.favorites)
+                            Text(key: "memory_source_collection").tag(Source.collection)
+                            Text(key: "memory_own").tag(Source.manual)
                         }
-                        .pickerStyle(.menu).accessibilityIdentifier("memory.size")
+                        .pickerStyle(.menu).labelsHidden().accessibilityIdentifier("memory.source")
+                    }
+                    if source != .manual {
+                        PhotoGameSetupField(title: L("memory_size")) {
+                            Picker(L("memory_size"), selection: $pairCount) {
+                                ForEach([6, 12, 18], id: \.self) { count in
+                                    Text(verbatim: L("memory_pair_option", count, count * 2)).tag(count)
+                                }
+                            }
+                            .pickerStyle(.menu).labelsHidden().accessibilityIdentifier("memory.size")
+                        }
                     }
                     if source == .collection {
                         Button { collectionPicker = true } label: {
@@ -148,26 +156,32 @@ struct PhotoMemoryView: View {
                         .disabled(!app.library.access.canRead)
                         .accessibilityIdentifier("memory.chooseCollection")
                     }
-                    Button { startChosenSource() } label: {
-                        Label(L(source == .manual ? "memory_own" : "memory_start_random"), systemImage: "photo.on.rectangle")
+                    if source == .manual {
+                        Text(key: "game_setup_pairs_manual").font(.footnote).foregroundStyle(.secondary)
                     }
-                        .buttonStyle(.glassProminent)
-                        .disabled(app.isLoadingLibrary || (source == .collection && collectionID == nil && app.library.access.canRead))
-                        .accessibilityIdentifier("memory.startPhotos")
-                    Text(key: "memory_selection").font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
-                    Toggle(L("memory_cloud"), isOn: $allowNetwork).font(AppTypography.subheadline)
+                    PhotoGameCloudOption(allowsCloud: $allowNetwork, identifier: "memory.cloud")
+                    Text(key: "game_setup_private").font(.footnote).foregroundStyle(.secondary)
                 }
             }
+            Button { startChosenSource() } label: {
+                Label(L(source == .manual ? "game_setup_choose_photos" : "snake_photo_play"),
+                      systemImage: source == .manual ? "photo.badge.plus" : "play.fill")
+                    .font(.headline).frame(maxWidth: .infinity).padding(.vertical, 8)
+            }
+            .buttonStyle(.glassProminent)
+            .disabled(app.isLoadingLibrary || (source == .collection && collectionID == nil && app.library.access.canRead))
+            .accessibilityIdentifier("memory.startPhotos")
             Button {
                 setup = false
                 model.startMotifs(manualMismatch: voiceOver)
-            } label: { Label(L("memory_motifs"), systemImage: "sun.max") }
+            } label: { Label(L("game_setup_pairs_symbols"), systemImage: "sun.max") }
                 .buttonStyle(.glass)
                 .accessibilityIdentifier("memory.startMotifs")
             if model.game != nil {
                 Button(L("memory_resume")) { setup = false }
             }
         }
+        .frame(maxWidth: 560).frame(maxWidth: .infinity)
     }
 
     private func board(_ game: PhotoMemoryGame, viewport: CGSize) -> some View {
@@ -213,6 +227,7 @@ struct PhotoMemoryView: View {
                 Button(L("memory_new")) { replay() }.buttonStyle(.glassProminent)
             }
             Button(L("memory_change")) { setup = true }.buttonStyle(.glass)
+                .accessibilityIdentifier("memory.change")
         }
     }
 
@@ -260,7 +275,7 @@ struct PhotoMemoryView: View {
             selected = .collection(id: id, title: collectionTitle)
         case .manual: return
         }
-        setup = false
+        setup = true
         model.startRandom(source: selected, pairCount: pairCount, app: app, allowNetwork: allowNetwork, manualMismatch: voiceOver)
     }
 

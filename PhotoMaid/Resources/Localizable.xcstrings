@@ -87838,97 +87838,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "تبقى النتائج الشخصية على هذا الجهاز. تُفصل أوقات الذاكرة حسب حجم الجولة والصور أو الرموز وطريقة التقليب. وتُفصل نتائج الثعبان حسب الوضع والسرعة والتحكم."
+            "value": "تبقى النتائج الشخصية على هذا الجهاز. تُفصل أوقات لعبة الأزواج حسب حجم الجولة والصور أو الرموز وطريقة التقليب. وتُفصل نتائج الثعبان حسب الوضع والسرعة والتحكم."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Persönliche Bestwerte bleiben auf diesem Gerät. Memory-Zeiten werden nach Rundengröße, Fotos oder Motiven und Umdrehmodus getrennt. Snake-Rekorde nach Modus, Tempo und Steuerung."
+            "value": "Persönliche Bestwerte bleiben auf diesem Gerät. Paare-Bestzeiten werden nach Rundengröße, Fotos oder Motiven und Umdrehmodus getrennt. Snake-Rekorde nach Modus, Tempo und Steuerung."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Personal records stay on this device. Memory times are separated by round size, photos or symbols and reveal mode. Snake records are separated by mode, speed and controls."
+            "value": "Personal records stay on this device. Pairs best times are separated by round size, photos or symbols and reveal mode. Snake records are separated by mode, speed and controls."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Los récords personales permanecen en este dispositivo. Los tiempos de memoria se separan por tamaño, fotos o símbolos y modo de volteo. Los de Snake, por modo, velocidad y controles."
+            "value": "Los récords personales permanecen en este dispositivo. Los tiempos de Parejas se separan por tamaño, fotos o símbolos y modo de volteo. Los de Snake, por modo, velocidad y controles."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Les records restent sur cet appareil. Les temps du mémo sont séparés selon la taille, les photos ou symboles et le mode de retournement. Ceux du serpent selon le mode, la vitesse et les commandes."
+            "value": "Les records restent sur cet appareil. Les temps de Paires sont séparés selon la taille, les photos ou symboles et le mode de retournement. Ceux du serpent selon le mode, la vitesse et les commandes."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "I record personali restano su questo dispositivo. I tempi del memory sono separati per dimensione, foto o simboli e modalità di scoperta. I record di Snake per modalità, velocità e comandi."
+            "value": "I record personali restano su questo dispositivo. I tempi di Coppie sono separati per dimensione, foto o simboli e modalità di scoperta. I record di Snake per modalità, velocità e comandi."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "自己ベストはこのデバイスに保存されます。メモリーはペア数、写真・シンボル、カードを伏せる方法ごとに、スネークはモード、速さ、操作方法ごとに記録します。"
+            "value": "自己ベストはこのデバイスに保存されます。ペアはペア数、写真・シンボル、カードを伏せる方法ごとに、スネークはモード、速さ、操作方法ごとに記録します。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "개인 기록은 이 기기에 저장됩니다. 메모리는 짝 수, 사진 또는 기호, 뒤집기 방식별로, 스네이크는 모드, 속도, 조작 방식별로 기록합니다."
+            "value": "개인 기록은 이 기기에 저장됩니다. 짝맞추기는 짝 수, 사진 또는 기호, 뒤집기 방식별로, 스네이크는 모드, 속도, 조작 방식별로 기록합니다."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Persoonlijke records blijven op dit apparaat. Memorytijden worden gescheiden op grootte, foto’s of symbolen en omdraaimodus. Snake-records op modus, tempo en bediening."
+            "value": "Persoonlijke records blijven op dit apparaat. Tijden voor Paren worden gescheiden op grootte, foto’s of symbolen en omdraaimodus. Snake-records op modus, tempo en bediening."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Rekordy osobiste pozostają na tym urządzeniu. Czasy memory są osobne dla rozmiaru, zdjęć lub symboli i trybu odkrywania. Rekordy Snake zależą od trybu, tempa i sterowania."
+            "value": "Rekordy osobiste pozostają na tym urządzeniu. Czasy gry Pary są osobne dla rozmiaru, zdjęć lub symboli i trybu odkrywania. Rekordy Snake zależą od trybu, tempa i sterowania."
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Os recordes pessoais ficam neste dispositivo. Os tempos de memória são separados por tamanho, fotos ou símbolos e modo de virar. Os de Snake por modo, velocidade e controlos."
+            "value": "Os recordes pessoais ficam neste dispositivo. Os tempos de Pares são separados por tamanho, fotos ou símbolos e modo de virar. Os de Snake por modo, velocidade e controlos."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Recordurile rămân pe acest dispozitiv. Timpii de memorie sunt separați după mărime, poze sau simboluri și modul de întoarcere. Recordurile Snake după mod, viteză și comenzi."
+            "value": "Recordurile rămân pe acest dispozitiv. Timpii pentru Perechi sunt separați după mărime, poze sau simboluri și modul de întoarcere. Recordurile Snake după mod, viteză și comenzi."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Личные рекорды хранятся на этом устройстве. Время мемори учитывается отдельно по размеру, фото или символам и режиму переворота. Рекорды змейки — по режиму, скорости и управлению."
+            "value": "Личные рекорды хранятся на этом устройстве. Время игры «Пары» учитывается отдельно по размеру, фото или символам и режиму переворота. Рекорды змейки — по режиму, скорости и управлению."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kişisel rekorlar bu cihazda kalır. Hafıza süreleri boyuta, fotoğraf veya simgelere ve çevirme moduna göre; yılan rekorları mod, hız ve kontrollere göre ayrılır."
+            "value": "Kişisel rekorlar bu cihazda kalır. Çiftler süreleri boyuta, fotoğraf veya simgelere ve çevirme moduna göre; yılan rekorları mod, hız ve kontrollere göre ayrılır."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Особисті рекорди зберігаються на цьому пристрої. Час меморі враховується окремо за розміром, фото чи символами й режимом перевертання. Рекорди змійки — за режимом, швидкістю та керуванням."
+            "value": "Особисті рекорди зберігаються на цьому пристрої. Час гри «Пари» враховується окремо за розміром, фото чи символами й режимом перевертання. Рекорди змійки — за режимом, швидкістю та керуванням."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "个人纪录保存在此设备上。配对游戏按规模、照片或图案及翻牌方式分别计时；贪吃蛇按模式、速度和控制方式分别记录。"
+            "value": "个人纪录保存在此设备上。配对按规模、照片或图案及翻牌方式分别计时；贪吃蛇按模式、速度和控制方式分别记录。"
           }
         }
       }
@@ -88131,6 +88131,1218 @@
           "stringUnit": {
             "state": "translated",
             "value": "最高纪录"
+          }
+        }
+      }
+    },
+    "game_setup_appearance": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المظهر والصوت"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aussehen & Ton"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Look & sound"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aspecto y sonido"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apparence et son"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aspetto e suono"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "見た目とサウンド"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "모양과 소리"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uiterlijk en geluid"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wygląd i dźwięk"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aspeto e som"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aspect și sunet"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вид и звук"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Görünüm ve ses"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вигляд і звук"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "外观与声音"
+          }
+        }
+      }
+    },
+    "game_setup_choose_photos": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اختيار الصور"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotos auswählen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose photos"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elegir fotos"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choisir des photos"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scegli foto"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "写真を選ぶ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "사진 선택"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto's kiezen"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wybierz zdjęcia"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escolher fotos"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alege poze"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выбрать фото"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotoğraf seç"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вибрати фото"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择照片"
+          }
+        }
+      }
+    },
+    "game_setup_cloud_note": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تُحمَّل الصور من iCloud عند الحاجة."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fehlende Fotos werden bei Bedarf aus iCloud geladen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photos stored in iCloud load when needed."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Las fotos de iCloud se cargan cuando hacen falta."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Les photos iCloud se chargent au besoin."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le foto su iCloud vengono caricate quando servono."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "必要に応じてiCloudから写真を読み込みます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "필요한 사진을 iCloud에서 불러와요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto's in iCloud worden geladen wanneer dat nodig is."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zdjęcia z iCloud są pobierane w razie potrzeby."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As fotos do iCloud são carregadas quando necessário."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pozele din iCloud se încarcă la nevoie."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Фото из iCloud загружаются по мере необходимости."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud fotoğrafları gerektiğinde yüklenir."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Фото з iCloud завантажуються за потреби."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要时从 iCloud 加载照片。"
+          }
+        }
+      }
+    },
+    "game_setup_edit_photos": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تغيير الصور"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotos ändern"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change photos"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cambiar fotos"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Changer les photos"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cambia foto"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "写真を変更"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "사진 변경"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Foto's wijzigen"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zmień zdjęcia"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alterar fotos"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schimbă pozele"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Изменить фото"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotoğrafları değiştir"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Змінити фото"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "更换照片"
+          }
+        }
+      }
+    },
+    "game_setup_options": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تخصيص اللعبة"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spiel anpassen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Customize game"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personalizar juego"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personnaliser le jeu"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personalizza il gioco"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ゲームの設定"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "게임 설정"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spel aanpassen"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dostosuj grę"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personalizar jogo"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personalizează jocul"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Настроить игру"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oyunu özelleştir"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Налаштувати гру"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自定义游戏"
+          }
+        }
+      }
+    },
+    "game_setup_pairs_intro": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اعثر على جميع أزواج الصور على راحتك."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finde alle Fotopaare in deinem Tempo."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Find all matching photos at your own pace."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Encuentra todos los pares de fotos a tu ritmo."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Retrouvez toutes les paires à votre rythme."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trova tutte le coppie di foto con calma."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "自分のペースですべての写真のペアを見つけよう。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "내 속도에 맞춰 같은 사진을 모두 찾아봐요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vind alle fotoparen in je eigen tempo."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Znajdź wszystkie pary zdjęć we własnym tempie."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Encontre todos os pares de fotos ao seu ritmo."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Găsește toate perechile de poze în ritmul tău."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Найдите все пары фото в своём темпе."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tüm fotoğraf çiftlerini kendi hızında bul."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Знайди всі пари фото у своєму темпі."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按自己的节奏找出所有照片配对。"
+          }
+        }
+      }
+    },
+    "game_setup_pairs_manual": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اختر من صورتين إلى 18 صورة للأزواج."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wähle 2–18 Fotos für deine Paare."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose 2–18 photos for your pairs."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elige entre 2 y 18 fotos para los pares."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choisissez 2 à 18 photos pour vos paires."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scegli da 2 a 18 foto per le coppie."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ペアにする写真を2〜18枚選びます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "짝맞추기에 사용할 사진 2~18장을 선택하세요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kies 2–18 foto's voor je paren."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wybierz 2–18 zdjęć do par."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Escolha 2–18 fotos para os seus pares."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alege 2–18 poze pentru perechi."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Выберите от 2 до 18 фото для пар."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Çiftler için 2–18 fotoğraf seç."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Вибери від 2 до 18 фото для пар."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "选择 2–18 张照片进行配对。"
+          }
+        }
+      }
+    },
+    "game_setup_pairs_symbols": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اللعب دون صور · 6 أزواج"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ohne Fotos spielen · 6 Paare"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Play without photos · 6 pairs"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jugar sin fotos · 6 pares"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jouer sans photos · 6 paires"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gioca senza foto · 6 coppie"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "写真なしで遊ぶ・6ペア"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "사진 없이 플레이 · 6쌍"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zonder foto's spelen · 6 paren"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Graj bez zdjęć · 6 par"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jogar sem fotos · 6 pares"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Joacă fără poze · 6 perechi"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Играть без фото · 6 пар"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotoğrafsız oyna · 6 çift"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Грати без фото · 6 пар"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不使用照片玩 · 6 对"
+          }
+        }
+      }
+    },
+    "game_setup_photos": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "صورك"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deine Fotos"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your photos"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tus fotos"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vos photos"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le tue foto"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使う写真"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "내 사진"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Je foto's"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Twoje zdjęcia"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As suas fotos"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pozele tale"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ваши фото"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotoğrafların"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Твої фото"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你的照片"
+          }
+        }
+      }
+    },
+    "game_setup_private": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "تبقى صورك الأصلية دون تغيير."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deine Originalfotos bleiben unverändert."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your original photos stay unchanged."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tus fotos originales no cambian."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vos photos originales restent inchangées."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Le foto originali restano invariate."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "元の写真は変更されません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "원본 사진은 바뀌지 않아요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Je originele foto's blijven ongewijzigd."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Oryginalne zdjęcia pozostają bez zmian."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "As suas fotos originais não são alteradas."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pozele originale rămân neschimbate."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оригиналы фото остаются без изменений."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orijinal fotoğrafların değişmez."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Оригінали фото залишаються без змін."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "原始照片保持不变。"
+          }
+        }
+      }
+    },
+    "game_setup_snake_intro": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اجمع الصور ووجّه بالسحب."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sammle Fotos. Steuere mit Wischgesten."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Collect photos. Swipe to steer."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recoge fotos. Desliza para girar."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Collectez des photos. Glissez pour diriger."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Raccogli foto. Scorri per cambiare direzione."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "写真を集めて、スワイプで進もう。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "사진을 모으고 스와이프로 방향을 바꿔요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Verzamel foto's. Veeg om te sturen."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zbieraj zdjęcia. Steruj przesunięciami."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recolha fotos. Deslize para mudar de direção."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adună poze. Glisează pentru a schimba direcția."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Собирайте фото. Управляйте свайпами."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotoğraf topla. Kaydırarak yön ver."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Збирай фото. Керуй свайпами."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "收集照片，滑动控制方向。"
+          }
+        }
+      }
+    },
+    "game_setup_without_photos": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اللعب دون صور"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ohne Fotos spielen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Play without photos"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jugar sin fotos"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jouer sans photos"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gioca senza foto"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "写真なしで遊ぶ"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "사진 없이 플레이"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zonder foto's spelen"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Graj bez zdjęć"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jogar sem fotos"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Joacă fără poze"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Играть без фото"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fotoğrafsız oyna"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Грати без фото"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "不使用照片玩"
           }
         }
       }
@@ -117168,97 +118380,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "تنزيل صور iCloud المختارة"
+            "value": "تحميل صور iCloud"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ausgewählte iCloud-Fotos laden"
+            "value": "iCloud-Fotos laden"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Download selected iCloud photos"
+            "value": "Load iCloud photos"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Descargar fotos de iCloud elegidas"
+            "value": "Cargar fotos de iCloud"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Télécharger les photos iCloud choisies"
+            "value": "Charger les photos iCloud"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Scarica le foto iCloud selezionate"
+            "value": "Carica foto da iCloud"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "選択したiCloud写真をダウンロード"
+            "value": "iCloud写真を読み込む"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "선택한 iCloud 사진 다운로드"
+            "value": "iCloud 사진 불러오기"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Gekozen iCloud-foto's downloaden"
+            "value": "iCloud-foto's laden"
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pobierz wybrane zdjęcia z iCloud"
+            "value": "Pobieraj zdjęcia z iCloud"
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Descarregar fotos iCloud escolhidas"
+            "value": "Carregar fotos do iCloud"
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Descarcă pozele iCloud selectate"
+            "value": "Încarcă pozele din iCloud"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Загрузить выбранные фото из iCloud"
+            "value": "Загружать фото из iCloud"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Seçilen iCloud fotoğraflarını indir"
+            "value": "iCloud fotoğraflarını yükle"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Завантажити вибрані фото з iCloud"
+            "value": "Завантажувати фото з iCloud"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "下载选中的 iCloud 照片"
+            "value": "加载 iCloud 照片"
           }
         }
       }
@@ -119592,97 +120804,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "حجم الجولة"
+            "value": "عدد الأزواج"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Rundengröße"
+            "value": "Anzahl der Paare"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Round size"
+            "value": "Number of pairs"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tamaño de la ronda"
+            "value": "Número de pares"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Taille de la partie"
+            "value": "Nombre de paires"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Dimensione della partita"
+            "value": "Numero di coppie"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "ゲームの枚数"
+            "value": "ペアの数"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "게임 크기"
+            "value": "짝 수"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Rondegrootte"
+            "value": "Aantal paren"
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Rozmiar rundy"
+            "value": "Liczba par"
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tamanho da ronda"
+            "value": "Número de pares"
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mărimea rundei"
+            "value": "Număr de perechi"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Размер раунда"
+            "value": "Количество пар"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tur boyutu"
+            "value": "Çift sayısı"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Розмір раунду"
+            "value": "Кількість пар"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "本局大小"
+            "value": "配对数量"
           }
         }
       }
@@ -120299,97 +121511,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "ذاكرة الصور"
+            "value": "أزواج"
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Foto-Memory"
+            "value": "Paare"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Photo Memory"
+            "value": "Pairs"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Memoria de fotos"
+            "value": "Parejas"
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Mémo photo"
+            "value": "Paires"
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Memory fotografico"
+            "value": "Coppie"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "フォトメモリー"
+            "value": "ペア"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "사진 메모리"
+            "value": "짝맞추기"
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Fotomemory"
+            "value": "Paren"
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Foto-memory"
+            "value": "Pary"
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Memória de fotos"
+            "value": "Pares"
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Memorie foto"
+            "value": "Perechi"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Фото-мемори"
+            "value": "Пары"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Fotoğraf hafızası"
+            "value": "Çiftler"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Фото-меморі"
+            "value": "Пари"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "照片配对"
+            "value": "配对"
           }
         }
       }

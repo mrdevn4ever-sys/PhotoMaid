@@ -1,6 +1,8 @@
-# PhotoMaid – aktueller Store-Satz
+# PhotoMaid – Store-Archiv vor Paare
 
-Store-Aufnahmen einschließlich Foto-Snake und Memory für alle 16 App-Sprachen und zwei iPhone-Größen.
+Store-Aufnahmen einschließlich Foto-Snake und Paare für alle 16 App-Sprachen und zwei iPhone-Größen.
+
+**Archiv vor der Umbenennung in Paare:** Die unveränderten Spielbilder und Spiele-Vorschauen zeigen noch den bisherigen Namen. Vor einem neuen Store-Upload sind native Neuaufnahmen nötig. Die PASS-Werte unten belegen die ursprüngliche Aufnahmeprüfung.
 
 Die Tabelle zeigt ausschließlich tatsächlich vorhandene Dateien und Audit-Ergebnisse. Fehlende Aufnahmen sind ausstehend.
 
@@ -25,4 +27,4 @@ Die Tabelle zeigt ausschließlich tatsächlich vorhandene Dateien und Audit-Erge
 
 [Interaktive Bild-/Videoübersicht](index.html) · [Prüfergebnisse](audit.json) · [Duo-Status](DUO_STATUS.json) · [Bisheriges vollständiges Seitenarchiv](../INDEX.md).
 
-Die zehn Upload-PNGs haben keine Alpha-Kanäle; Abmessungen und Farbpixel entsprechen den unveränderten nativen Originalen unter `all-pages/`. Memory-Paare werden durch echte Tipps gefunden, Snake läuft mit seiner normalen Uhr und Wischgesten. Kein fester Rekord oder künstlicher Spielstand.
+Die zehn Upload-PNGs haben keine Alpha-Kanäle; Abmessungen und Farbpixel entsprechen den unveränderten nativen Originalen unter `all-pages/`. Kartenpaare werden durch echte Tipps gefunden, Snake läuft mit seiner normalen Uhr und Wischgesten. Kein fester Rekord oder künstlicher Spielstand.

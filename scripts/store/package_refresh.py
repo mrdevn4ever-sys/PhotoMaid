@@ -20,6 +20,9 @@ def main():
     parser.add_argument('--root', type=Path, default=Path('app-store/current'))
     parser.add_argument('--destination', type=Path, default=Path('app-store/current/packages'))
     args = parser.parse_args()
+    status_file = args.root / 'STATUS.json'
+    if status_file.exists() and json.loads(status_file.read_text()).get('asset_naming', {}).get('status') == 'RECAPTURE_REQUIRED':
+        parser.error('Spielname wurde in Paare geändert. Spielbilder und Spiele-Vorschauen zuerst nativ neu aufnehmen; der alte Bildsatz ist nur ein Archiv.')
     mapping = json.loads(Path('app-store/localizations.json').read_text())
     audit = json.loads((args.root / 'audit.json').read_text())
     profiles = {(row['locale'], row['device_class']): row for row in audit}

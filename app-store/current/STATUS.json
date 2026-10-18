@@ -22,7 +22,7 @@
     "iphone-medium"
   ],
   "pilot_run": 39118013344,
-  "iphone_assets": "PASS",
+  "iphone_assets": "RECAPTURE REQUIRED FOR GAME NAME",
   "duo_assets": "BLOCKED: native pilot39140177705 failed Snake full-width geometry; all24 native PNGs used outer display. Zero approved Duo assets; proof in DUO_STATUS.json.",
   "app_store_connect_assets_upload": "NOT RUN",
   "app_store_release": "NOT RUN",
@@ -265,7 +265,7 @@
   "duo_native_app_retry_run": 39128651889,
   "korean_medium_retry_run": 39130602845,
   "local_upload_packages": {
-    "status": "PASS",
+    "status": "ARCHIVE INTEGRITY PASS; GAME NAME RECAPTURE REQUIRED",
     "count": 16,
     "manifest": "packages/manifest.json",
     "zip_integrity": "PASS",
@@ -273,5 +273,37 @@
     "git_policy": "ZIPs generated locally; audited native single files are committed. No duplicate multi-gigabyte ZIP payload in Git."
   },
   "duo_native_semantic_readiness_run": 39140177705,
-  "final_result": "PASS for all16 locales/two normal iPhone formats; Duo BLOCKED separately. No App Store Connect or TestFlight upload in this Store task."
+  "final_result": "App renamed to localized Paare/Pairs in all16 languages. Earlier32 iPhone capture profiles remain an unchanged tested archive; game captures need native refresh before a new Store upload. Duo remains blocked. No upload for the rename.",
+  "asset_naming": {
+    "status": "RECAPTURE_REQUIRED",
+    "new_game_name": "Paare",
+    "localized_titles": {
+      "ar": "\u0623\u0632\u0648\u0627\u062c",
+      "de": "Paare",
+      "en": "Pairs",
+      "es": "Parejas",
+      "fr": "Paires",
+      "it": "Coppie",
+      "ja": "\u30da\u30a2",
+      "ko": "\uc9dd\ub9de\ucd94\uae30",
+      "nl": "Paren",
+      "pl": "Pary",
+      "pt-PT": "Pares",
+      "ro": "Perechi",
+      "ru": "\u041f\u0430\u0440\u044b",
+      "tr": "\u00c7iftler",
+      "uk": "\u041f\u0430\u0440\u0438",
+      "zh-Hans": "\u914d\u5bf9"
+    },
+    "reason": "The app now uses generic localized Pairs names. Existing genuine game PNGs and game preview videos were captured before this user-requested rename and are historical, not approved for a new upload. Native originals and original capture verdicts are retained unchanged.",
+    "affected_selected_media": [
+      "*/iphone-*/app-store-selection/06-memory-play.png",
+      "*/iphone-large/previews/02-photo-games.mp4",
+      "*/iphone-large/previews/02-photo-games-poster.png"
+    ],
+    "additional_archives": "Game setup/selection/record pages and other archived captures may also contain the former game name. Recapture visible game UI rather than retouching screenshots.",
+    "new_native_capture": "NOT RUN",
+    "new_testflight_upload": "NOT RUN"
+  },
+  "source_capture_audit": "PASS"
 }

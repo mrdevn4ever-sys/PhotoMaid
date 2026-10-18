@@ -14,7 +14,7 @@ final class PhotoGamePhotos {
     private(set) var images: [String: UIImage] = [:]
     private(set) var isLoading = false
     private(set) var randomSource: PhotoGameSource?
-    private(set) var allowsCloud = false
+    private(set) var allowsCloud = true
     var error: String?
     @ObservationIgnored private var loadingTask: Task<Void, Never>?
     @ObservationIgnored private var loadID = UUID()
@@ -25,7 +25,7 @@ final class PhotoGamePhotos {
 
     func clear() {
         cancelLoading()
-        photoIDs = []; images = [:]; randomSource = nil; allowsCloud = false; error = nil
+        photoIDs = []; images = [:]; randomSource = nil; error = nil
     }
 
     func startPhotos(_ selection: [String], previews: PreviewPipeline, allowNetwork: Bool,

@@ -17,7 +17,10 @@ elif [ "${PM_GAME_SUITE:-all}" != all ]; then
   exit 2
 fi
 if [ -n "${PM_GAME_CASE:-}" ]; then
-  if [ "$PM_GAME_CASE" = feed ]; then
+  if [ "$PM_GAME_CASE" = setup ]; then
+    test_targets=("-only-testing:$test_target/test05SimpleSetupCloudAndManualPhotoChoice"
+                  "-only-testing:$test_target/test40LargeTextAndArabic")
+  elif [ "$PM_GAME_CASE" = feed ]; then
     test_targets=("-only-testing:$test_target/test70UnavailableVideosCanBePassed"
                   "-only-testing:$test_target/test80VideoPlaysWithoutPoster"
                   "-only-testing:$test_target/test85VideoPosterAllowsDecisionsBeforePlayback"

@@ -4,6 +4,41 @@ Stand: 18.10.2026 · Arbeitsbranch `feat/iphone-duo-games` · zuletzt von Apple 
 Upload am 17.10.2026 um 03:57:25 UTC; Verarbeitung um 04:00:33 UTC und interne Verteilung um 04:00:34 UTC bestätigt.
 [TestFlight-Lauf](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39000279956), Quellstand `bd3d3e3`.
 
+## Einfachere Spielstarts und iCloud-Vorgabe (18.10.2026)
+
+Beide Startansichten führen von beschrifteter Fotoquelle zu einem hervorgehobenen Startknopf.
+Kurze Hinweise ersetzen technische Speicherbeschreibungen. Snake beginnt mit Mediathek-Fotos;
+bei leerer manueller Auswahl öffnet „Fotos auswählen“ zuerst die vorhandene Galerie.
+Modus, Tempo sowie Aussehen/Ton sind unter „Spiel anpassen“. „Ohne Fotos spielen“ bleibt verfügbar.
+„Spiele“ in der Snake-Pause öffnet die tatsächliche Spieleauswahl. Ein fehlgeschlagenes oder
+abgebrochenes Laden lässt die Einrichtung sichtbar und ersetzt keine bestehende Runde.
+
+**iCloud ist standardmäßig an.** Ein ausdrückliches Ausschalten wird bei der vorbereiteten Runde,
+beim Fortsetzen und beim Wechsel zu Motiven beibehalten. Keine Änderung an Fotos oder Feed-Entscheidungen.
+Die zusätzlichen Texte sind in allen 16 Sprachen vorhanden; der lokale Lokalisierungscheck ist PASS
+(1681 verwendete Kennungen, 2702 Einträge). Lokaler Swift-/iOS-Build: NOT RUN, hier ist kein Swift-/Apple-SDK installiert.
+Native Unit- und Oberflächenvalidierung: **PENDING**, gezielter `games_case=setup` für Deutsch,
+iCloud-Vorgabe/Abschalten, leere manuelle Auswahl, Foto-Snake mit echter Uhr und große arabische Schrift.
+Ein breites Simulatorfenster ist keine Duo-Faltabnahme. Kein neuer TestFlight-/Store-Upload.
+
+## Spielname Paare (18.10.2026)
+
+Auf Nutzerwunsch heißt das bisherige Kartenspiel jetzt **Paare**; alle 16 App-Sprachen
+verwenden eine entsprechende generische Bezeichnung (z. B. Pairs, Paires, Coppie, 配对).
+Spielauswahl, Spieltitel, VoiceOver-Titel und Bestwerte verwenden dieselbe übersetzte Kennung;
+auch die Bestwert-Erklärungen und die Store-Übersicht sind angepasst. Bestehende Rekorde,
+Spielstände, interne Kennungen und Spiellogik bleiben erhalten.
+
+**PASS:** beide Übersetzungsquellen und generierte Kataloge stimmen überein; der vorhandene
+Lokalisierungscheck prüft 1676 verwendete Kennungen und 2690 Einträge in 16 Sprachen.
+**NOT RUN:** neuer nativer iOS-Build, neue Spielaufnahmen und TestFlight-Upload für diese
+reine Textänderung. Der zuletzt verarbeitete Build 14 enthält noch den früheren Namen.
+
+Der nachfolgende Store-Satz ist der unveränderte **Archivstand vor der Umbenennung**.
+Seine nativen Prüfungen bleiben gültige historische Nachweise. Die Spielbilder und
+Spiele-Vorschauen müssen vor einem neuen Upload nativ neu aufgenommen werden; neue
+ZIP-Erstellung ist bis dahin gesperrt. Kein nachträgliches Retuschieren von Beweisbildern.
+
 ## Aktuelle Store-Aufnahmen für alle 16 Sprachen (18.10.2026)
 
 **PASS:** 320 ausgewählte native Screenshots in zwei iPhone-Größen, 48 Vorschauvideos

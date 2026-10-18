@@ -5,6 +5,9 @@ from pathlib import Path
 
 
 def write_review(root, mapping, audit):
+    status_file = root / 'STATUS.json'
+    status = json.loads(status_file.read_text()) if status_file.exists() else {}
+    naming = status.get('asset_naming', {})
     profiles = {(row['locale'], row['device_class']): row for row in audit}
     locales = []
     for code, info in mapping.items():
@@ -24,12 +27,13 @@ def write_review(root, mapping, audit):
                 'shots': [item['file'] for item in selection],
             }
         locales.append(row)
-    data = {'locales': locales, 'videos': [
+    data = {'locales': locales, 'naming': naming, 'videos': [
         {'title': title, 'file': f'previews/{stem}.mp4', 'poster': f'previews/{stem}-poster.png'}
-        for title, stem in [('Fotos durchsehen', '01-review'), ('Foto-Snake & Memory', '02-photo-games'), ('Fotoeditor', '03-studio')]
+        for title, stem in [('Fotos durchsehen', '01-review'), ('Foto-Snake & Paare', '02-photo-games'), ('Fotoeditor', '03-studio')]
     ], 'alternative': {'title': 'Tresor', 'file': 'alternatives/04-vault.mp4', 'poster': 'alternatives/04-vault-poster.png'}}
     template = Path('scripts/store/refresh_review.html').read_text()
-    (root / 'index.html').write_text(template.replace('__ASSET_DATA__', json.dumps(data, ensure_ascii=False).replace('<', '\\u003c')))
+    notice = '<p class="notice" role="status">Archiv vor der Umbenennung in Paare: Die Spielbilder und Spiele-Vorschauen enthalten noch den bisherigen Namen und müssen vor einem neuen Store-Upload nativ neu aufgenommen werden.</p>' if naming.get('status') == 'RECAPTURE_REQUIRED' else ''
+    (root / 'index.html').write_text(template.replace('__NAMING_NOTICE__', notice).replace('__ASSET_DATA__', json.dumps(data, ensure_ascii=False).replace('<', '\\u003c')))
 
 
 def main():
@@ -44,7 +48,8 @@ def main():
         passed = [row for row in audit if row['status'] == 'PASS'
                   and row['locale'] in mapping and row['device_class'] in ['iphone-large', 'iphone-medium']]
         expected = {(code, device) for code in mapping for device in ['iphone-large', 'iphone-medium']}
-        status['iphone_assets'] = 'PASS' if {(row['locale'], row['device_class']) for row in passed} == expected else 'IN PROGRESS'
+        status['source_capture_audit'] = 'PASS' if {(row['locale'], row['device_class']) for row in passed} == expected else 'IN PROGRESS'
+        status['iphone_assets'] = 'RECAPTURE REQUIRED FOR GAME NAME' if status.get('asset_naming', {}).get('status') == 'RECAPTURE_REQUIRED' else status['source_capture_audit']
         status['approved_profiles'] = [{'locale': row['locale'], 'device_class': row['device_class'],
                                        'status': 'PASS', 'native_passed_tests': row['native_test_count']}
                                       for row in passed]
@@ -54,6 +59,8 @@ def main():
         status['actual_native_passed_capture_cases'] = sum(row['native_test_count'] for row in passed)
         status_file.write_text(json.dumps(status, indent=2) + '\n')
     rows, available = [], 0
+    naming_pending = status_file.exists() and status.get('asset_naming', {}).get('status') == 'RECAPTURE_REQUIRED'
+    naming_notice = '**Archiv vor der Umbenennung in Paare:** Die unveränderten Spielbilder und Spiele-Vorschauen zeigen noch den bisherigen Namen. Vor einem neuen Store-Upload sind native Neuaufnahmen nötig. Die PASS-Werte unten belegen die ursprüngliche Aufnahmeprüfung.\n\n' if naming_pending else ''
     for code, info in mapping.items():
         devices = []
         for device in ['iphone-large', 'iphone-medium']:
@@ -67,7 +74,9 @@ def main():
         locale_dir = root / 'locales' / code
         if not locale_dir.exists():
             continue
-        text = f'# {info["name_de"]} – aktueller Store-Satz\n\nApp Store Connect: `{info["app_store_locale"]}`. Aufnahmen in Dark Mode.\n\n'
+        heading = 'Store-Archiv vor Paare' if naming_pending else 'aktueller Store-Satz'
+        text = f'# {info["name_de"]} – {heading}\n\nApp Store Connect: `{info["app_store_locale"]}`. Aufnahmen in Dark Mode.\n\n'
+        text += naming_notice
         for device in ['iphone-large', 'iphone-medium']:
             folder = locale_dir / device
             if not (folder / 'provenance.json').exists():
@@ -83,12 +92,14 @@ def main():
         text += '\nDie Videos passen in das gemeinsame iPhone-Vorschauformat 886 × 1920. Duo ist separat im [Umgebungsbericht](../../DUO_STATUS.json) ausgewiesen.\n'
         (locale_dir / 'README.md').write_text(text)
         available += 1
-    text = '# PhotoMaid – aktueller Store-Satz\n\nStore-Aufnahmen einschließlich Foto-Snake und Memory für alle 16 App-Sprachen und zwei iPhone-Größen.\n\n'
+    heading = 'Store-Archiv vor Paare' if naming_pending else 'aktueller Store-Satz'
+    text = f'# PhotoMaid – {heading}\n\nStore-Aufnahmen einschließlich Foto-Snake und Paare für alle 16 App-Sprachen und zwei iPhone-Größen.\n\n'
+    text += naming_notice
     text += 'Die Tabelle zeigt ausschließlich tatsächlich vorhandene Dateien und Audit-Ergebnisse. Fehlende Aufnahmen sind ausstehend.\n\n'
     text += '| Sprache | App Store Connect | Großes iPhone | Mittleres iPhone | Videos |\n|---|---|---|---|---|\n' + '\n'.join(rows) + '\n\n'
     text += '[Interaktive Bild-/Videoübersicht](index.html) · [Prüfergebnisse](audit.json) · [Duo-Status](DUO_STATUS.json) · [Bisheriges vollständiges Seitenarchiv](../INDEX.md).\n\n'
     text += 'Die zehn Upload-PNGs haben keine Alpha-Kanäle; Abmessungen und Farbpixel entsprechen den unveränderten nativen Originalen unter `all-pages/`. '
-    text += 'Memory-Paare werden durch echte Tipps gefunden, Snake läuft mit seiner normalen Uhr und Wischgesten. Kein fester Rekord oder künstlicher Spielstand.\n'
+    text += 'Kartenpaare werden durch echte Tipps gefunden, Snake läuft mit seiner normalen Uhr und Wischgesten. Kein fester Rekord oder künstlicher Spielstand.\n'
     (root / 'README.md').write_text(text)
     write_review(root, mapping, audit)
     print('Indexed', available, 'available locale folders; all', len(mapping), 'locales remain in the status table.')

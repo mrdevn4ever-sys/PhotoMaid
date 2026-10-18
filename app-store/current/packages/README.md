@@ -1,5 +1,7 @@
 # Lokale Upload-Pakete – 18.10.2026
 
+**Archiv vor der Umbenennung in Paare:** Diese ZIPs enthalten noch die ursprünglichen Spielbilder und Spiele-Vorschauen. Sie sind kein aktueller Upload-Satz. Vor einem neuen Upload sind native Neuaufnahmen nötig; ZIP-Dateien und ursprüngliche Prüfsummen bleiben unverändert.
+
 16 Sprachpakete wurden aus den vollständig geprüften iPhone-Dateien erstellt. Jedes Paket enthält 20 PNGs (zehn je iPhone-Größe), drei ausgewählte Vorschauen und eine getrennte Tresor-Alternative. Alle ZIPs bestehen die Integritätsprüfung; SHA-256 und Größen stehen im [Manifest](manifest.json).
 
 Die großen ZIPs werden lokal erzeugt und nicht zusätzlich in Git gespeichert. Die vollständigen Originale und ausgewählten Einzeldateien liegen im [bestehenden Projekt](../README.md); die ursprünglichen nativen Actions-Artefakte sind in den Herkunftsberichten verlinkt.

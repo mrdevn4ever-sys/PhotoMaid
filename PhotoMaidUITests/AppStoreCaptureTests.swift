@@ -535,6 +535,7 @@ final class AppStoreCaptureTests: XCTestCase {
         if !selected("snake.source", "memory_source_library") {
             tap(e("snake.source")); tap(button("memory_source_library"))
         }
+        if !e("snake.speed").exists { tap(e("snake.options")) }
         if !selected("snake.speed", "snake_gentle") {
             tap(e("snake.speed")); tap(button("snake_gentle"))
         }

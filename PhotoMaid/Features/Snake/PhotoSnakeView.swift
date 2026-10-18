@@ -17,12 +17,13 @@ struct PhotoSnakeView: View {
     @State private var gallery = false
     @State private var settings = false
     @State private var collectionPicker = false
-    @State private var source = Source.manual
+    @State private var source = Source.library
     @State private var collectionID: String?
     @State private var collectionTitle = ""
     @State private var mode = PhotoSnakeGame.Mode.relaxed
     @State private var speed = PhotoSnakeModel.Speed.normal
-    @State private var allowNetwork = false
+    @State private var allowNetwork = true
+    @State private var showOptions = false
     @State private var restored = false
 
     private var model: PhotoSnakeModel { app.snake }
@@ -51,6 +52,7 @@ struct PhotoSnakeView: View {
             await model.gallery.restore(); model.applyGalleryChanges()
         }
         .onAppear { restore(); model.validatePhotos(); model.updateTemperature() }
+        .onChange(of: model.roundID) { _, _ in if model.game != nil { setup = false } }
         .keepsScreenAwake(model.running && scenePhase == .active)
         .onDisappear { model.pause(); model.audio.stop(); model.photos.cancelLoading() }
         .onChange(of: scenePhase) { _, phase in
@@ -82,13 +84,15 @@ struct PhotoSnakeView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 20) {
-                    Image(uiImage: SnakeArt.image(model.preferences.character.idle))
-                        .resizable().scaledToFit().frame(height: 152).shadow(color: .black.opacity(0.18), radius: 16, y: 8)
-                        .accessibilityHidden(true)
-                    Text(key: "snake_title").font(.system(.largeTitle, design: .rounded).bold())
-                    Text(key: "snake_swipe_intro").multilineTextAlignment(.center).font(.subheadline)
-                    Text(verbatim: model.menuBest(mode: mode, speed: speed, stepMode: usesStepInput).map { L("game_best_eaten", $0) } ?? L("game_no_best"))
-                        .font(.subheadline.weight(.semibold)).monospacedDigit().accessibilityIdentifier("snake.menuBest")
+                    VStack(spacing: 10) {
+                        Image(uiImage: SnakeArt.image(model.preferences.character.idle))
+                            .resizable().scaledToFit().frame(height: 88)
+                            .shadow(color: .black.opacity(0.18), radius: 12, y: 6).accessibilityHidden(true)
+                        Text(key: "snake_title").font(.system(.largeTitle, design: .rounded).bold())
+                        Text(key: "game_setup_snake_intro").multilineTextAlignment(.center).font(.subheadline)
+                        Text(verbatim: model.menuBest(mode: mode, speed: speed, stepMode: usesStepInput).map { L("game_best_eaten", $0) } ?? L("game_no_best"))
+                            .font(.subheadline.weight(.semibold)).monospacedDigit().accessibilityIdentifier("snake.menuBest")
+                    }
                     PhotoGameAnalysisStatus(onResults: onResults)
                     PhotoGameRecordSaveStatus()
                     if let error = model.photos.error { Text(verbatim: error).font(.callout) }
@@ -100,21 +104,18 @@ struct PhotoSnakeView: View {
                         menuConfiguration
                         Button { startPhotos() } label: {
                             HStack {
-                                Image(uiImage: SnakeArt.image("ui_play")).resizable().scaledToFit().frame(width: 32, height: 32)
-                                Text(key: "snake_photo_play").font(.headline)
-                            }.frame(maxWidth: .infinity).padding(.vertical, 4)
+                                Image(systemName: source == .manual && model.gallery.ids.isEmpty ? "photo.badge.plus" : "play.fill")
+                                Text(verbatim: L(startLabel))
+                                    .font(.headline)
+                            }.frame(maxWidth: .infinity).padding(.vertical, 8)
                         }
                         .buttonStyle(.borderedProminent).tint(Color(red: 0.28, green: 0.63, blue: 0.18))
                         .disabled(model.gallery.busy || (source != .manual && app.isLoadingLibrary))
                         .accessibilityIdentifier("snake.prepare")
-                        HStack {
-                            artButton("ui_gallery", label: "snake_gallery_title") { openGallery() }
-                            Spacer()
-                            artButton("ui_settings", label: "settings") { openSettings() }.accessibilityIdentifier("snake.settings")
-                        }
-                        Button(L("snake_symbols")) {
+                        menuOptions
+                        Button {
                             setup = false; model.startMotifs(mode: mode, speed: speed, stepMode: usesStepInput)
-                        }
+                        } label: { Label(L("game_setup_without_photos"), systemImage: "leaf") }
                         .buttonStyle(.bordered).accessibilityIdentifier("snake.symbols")
                         if model.game != nil {
                             Button(L("memory_resume")) { setup = false }.buttonStyle(.bordered)
@@ -122,8 +123,8 @@ struct PhotoSnakeView: View {
                         }
                     }
                 }
-                .padding(24).frame(maxWidth: 560)
-                .background(Color(red: 0.04, green: 0.15, blue: 0.09).opacity(0.91), in: .rect(cornerRadius: 30))
+                .padding(20).frame(maxWidth: 560)
+                .background((model.preferences.night ? Color(red: 0.04, green: 0.10, blue: 0.16) : Color(red: 0.04, green: 0.15, blue: 0.09)).opacity(0.94), in: .rect(cornerRadius: 30))
                 .padding(16).frame(maxWidth: .infinity)
             }
             .scrollContentBackground(.hidden).background { forest }
@@ -138,37 +139,69 @@ struct PhotoSnakeView: View {
         .background(.clear).foregroundStyle(.white)
     }
     private var menuConfiguration: some View {
-        VStack(spacing: 12) {
-            Picker(L("memory_source"), selection: $source) {
-                Text(key: "memory_own").tag(Source.manual)
-                Text(key: "memory_source_library").tag(Source.library)
-                Text(key: "memory_source_favorites").tag(Source.favorites)
-                Text(key: "memory_source_collection").tag(Source.collection)
+        VStack(alignment: .leading, spacing: 14) {
+            PhotoGameSetupField(title: L("game_setup_photos")) {
+                Picker(L("memory_source"), selection: $source) {
+                    Text(key: "memory_source_library").tag(Source.library)
+                    Text(key: "memory_source_favorites").tag(Source.favorites)
+                    Text(key: "memory_source_collection").tag(Source.collection)
+                    Text(key: "memory_own").tag(Source.manual)
+                }
+                .labelsHidden().accessibilityIdentifier("snake.source")
             }
-            .accessibilityIdentifier("snake.source")
             if source == .manual {
-                Text(verbatim: L("snake_gallery_count", model.gallery.ids.count)).font(.footnote)
+                if !model.gallery.ids.isEmpty {
+                    Text(verbatim: L("snake_gallery_count", model.gallery.ids.count)).font(.footnote).monospacedDigit()
+                    Button { openGallery() } label: { Label(L("game_setup_edit_photos"), systemImage: "photo.on.rectangle") }
+                        .accessibilityIdentifier("snake.editPhotos")
+                }
             } else {
                 if source == .collection {
                     Button { collectionPicker = true } label: {
                         Label(collectionID == nil ? L("memory_pick_collection") : collectionTitle, systemImage: "folder")
                     }
                     .disabled(!app.library.access.canRead)
+                    .accessibilityIdentifier("snake.chooseCollection")
                 }
-                Toggle(L("memory_cloud"), isOn: $allowNetwork)
-                Text(key: "snake_photos_note").font(.footnote)
+                PhotoGameCloudOption(allowsCloud: $allowNetwork, identifier: "snake.cloud")
             }
-            Picker(L("snake_mode"), selection: $mode) {
-                Text(key: "snake_relaxed").tag(PhotoSnakeGame.Mode.relaxed)
-                Text(key: "snake_classic").tag(PhotoSnakeGame.Mode.classic)
+            Text(key: "game_setup_private").font(.footnote).foregroundStyle(.secondary)
+        }
+        .pickerStyle(.menu).tint(.white)
+        .padding(16).background(.white.opacity(0.07), in: .rect(cornerRadius: 18))
+    }
+
+    private var startLabel: String {
+        if source == .manual && model.gallery.ids.isEmpty { return "game_setup_choose_photos" }
+        if source == .collection && collectionID == nil { return "memory_pick_collection" }
+        return "snake_photo_play"
+    }
+
+    private var menuOptions: some View {
+        DisclosureGroup(isExpanded: $showOptions) {
+            VStack(alignment: .leading, spacing: 14) {
+                PhotoGameSetupField(title: L("snake_mode")) {
+                    Picker(L("snake_mode"), selection: $mode) {
+                        Text(key: "snake_relaxed").tag(PhotoSnakeGame.Mode.relaxed)
+                        Text(key: "snake_classic").tag(PhotoSnakeGame.Mode.classic)
+                    }
+                    .labelsHidden().accessibilityIdentifier("snake.mode")
+                }
+                PhotoGameSetupField(title: L("snake_speed")) {
+                    Picker(L("snake_speed"), selection: $speed) {
+                        Text(key: "snake_gentle").tag(PhotoSnakeModel.Speed.gentle)
+                        Text(key: "snake_normal").tag(PhotoSnakeModel.Speed.normal)
+                        Text(key: "snake_fast").tag(PhotoSnakeModel.Speed.fast)
+                    }
+                    .labelsHidden().accessibilityIdentifier("snake.speed")
+                }
+                Button { openSettings() } label: { Label(L("game_setup_appearance"), systemImage: "paintbrush") }
+                    .accessibilityIdentifier("snake.settings")
             }
-            .accessibilityIdentifier("snake.mode")
-            Picker(L("snake_speed"), selection: $speed) {
-                Text(key: "snake_gentle").tag(PhotoSnakeModel.Speed.gentle)
-                Text(key: "snake_normal").tag(PhotoSnakeModel.Speed.normal)
-                Text(key: "snake_fast").tag(PhotoSnakeModel.Speed.fast)
-            }
-            .accessibilityIdentifier("snake.speed")
+            .padding(.top, 12)
+        } label: {
+            Label(L("game_setup_options"), systemImage: "slider.horizontal.3").font(.subheadline.weight(.semibold))
+                .accessibilityIdentifier("snake.options")
         }
         .pickerStyle(.menu).padding(16).background(.white.opacity(0.07), in: .rect(cornerRadius: 18))
     }
@@ -259,9 +292,12 @@ struct PhotoSnakeView: View {
                 .buttonStyle(.borderedProminent).tint(.green)
             }
             HStack {
-                Button(L("snake_gallery_title")) { openGallery() }
+                Button(L("game_setup_edit_photos")) {
+                    if model.usesSavedPhotos { openGallery() }
+                    else { model.pause(); setup = true }
+                }
                 Spacer()
-                Button(L("games_choose")) { model.pause(); setup = true }
+                Button(L("games_choose")) { model.pause(); onChooseGame() }
             }.font(.subheadline)
         }
         .padding(24).frame(maxWidth: 360)
@@ -340,11 +376,12 @@ struct PhotoSnakeView: View {
         case .library: source = .library
         case .favorites: source = .favorites
         case .collection(let id, let title): source = .collection; collectionID = id; collectionTitle = title
-        case nil: source = .manual
+        case nil: source = model.usesSavedPhotos ? .manual : .library
         }
     }
     private func startPhotos() {
         if source == .manual {
+            guard !model.gallery.ids.isEmpty else { openGallery(); return }
             setup = false; model.startSaved(mode: mode, speed: speed, stepMode: usesStepInput); return
         }
         guard app.library.access.canRead else {
@@ -362,7 +399,7 @@ struct PhotoSnakeView: View {
             selected = .collection(id: id, title: collectionTitle)
         case .manual: return
         }
-        setup = false
+        setup = true
         model.startRandom(source: selected, app: app, allowNetwork: allowNetwork, mode: mode, speed: speed, stepMode: usesStepInput)
     }
 }

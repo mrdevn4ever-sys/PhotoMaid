@@ -11,7 +11,8 @@
 <body>
 <div class="eyebrow">PhotoMaid · native Aufnahmen</div>
 <h1>Jede Sprache.<br>Alle neuen Foto-Spiele.</h1>
-<p>Die geprüfte Store-Auswahl mit Foto-Snake und Memory. Bilder öffnen die unveränderten nativen Farbpixel in voller Auflösung. Videos starten erst auf deinen Klick.</p>
+<p>Die Store-Auswahl mit Foto-Snake und Paare. Bilder öffnen die unveränderten nativen Farbpixel in voller Auflösung. Videos starten erst auf deinen Klick.</p>
+__NAMING_NOTICE__
 <div class="controls">
 <label for="locale">Sprache / App Store Connect<select id="locale"></select></label>
 <label for="device">Screenshot-Format<select id="device"><option value="iphone-large">Großes iPhone</option><option value="iphone-medium">Mittleres iPhone</option></select></label>
@@ -23,7 +24,7 @@
 <script>
 const data=JSON.parse(document.querySelector('#asset-data').textContent);
 const locale=document.querySelector('#locale'),device=document.querySelector('#device'),content=document.querySelector('#content');
-const labels=['Heute','Fotos durchsehen','Mediathek','Aufräumen','Foto-Snake','Memory','Collage','Fotoeditor','Fotofilm','Tresor'];
+const labels=['Heute','Fotos durchsehen','Mediathek','Aufräumen','Foto-Snake','Paare','Collage','Fotoeditor','Fotofilm','Tresor'];
 function el(tag,text,cls){const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node}
 function link(text,path){const node=el('a',text);node.href=path;return node}
 for(const row of data.locales){const option=el('option',`${row.name} · ${row.app_store_locale}`);option.value=row.code;locale.append(option)}
@@ -32,7 +33,7 @@ function render(){
  content.querySelectorAll('video').forEach(video=>{video.pause();video.removeAttribute('src');video.load()});content.replaceChildren();
  const info=data.locales.find(row=>row.code===locale.value),profile=info.profiles[device.value],base=`locales/${info.code}/${device.value}/`;
  history.replaceState(null,'',`#${info.code}/${device.value}`);
- content.append(el('h2',info.name),el('span',profile?.status==='PASS'?'Geprüft · PASS':'Noch ausstehend',profile?.status==='PASS'?'badge':'badge pending'));
+ content.append(el('h2',info.name),el('span',profile?.status==='PASS'?(data.naming?.status==='RECAPTURE_REQUIRED'?'Archivprüfung · PASS':'Geprüft · PASS'):'Noch ausstehend',profile?.status==='PASS'?'badge':'badge pending'));
  if(profile?.status==='PASS'){
   const description=el('p',`${profile.name} · ${profile.dimensions} Pixel · ${profile.native_tests} bestandene native Aufnahmetests · 0 Fehler / 0 Skips. `);description.append(link('Herkunft und Tests',base+'provenance.json'),document.createTextNode(' · '),link('Sichtprüfung',base+'review/manifest.json'));content.append(description);
   const grid=el('div',undefined,'shots');profile.shots.forEach((shot,index)=>{const figure=el('figure',undefined,'shot'),anchor=link('',base+shot),image=el('img');image.src=base+shot;image.alt=labels[index];image.loading='lazy';anchor.append(image);figure.append(anchor,el('figcaption',`${String(index+1).padStart(2,'0')} · ${labels[index]}`));grid.append(figure)});content.append(grid);

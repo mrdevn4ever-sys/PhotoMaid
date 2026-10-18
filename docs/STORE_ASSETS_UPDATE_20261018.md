@@ -1,5 +1,7 @@
 # Aktualisierung der Store-Assets – 18.10.2026
 
+**Archivstand vor der Umbenennung in Paare:** Die folgenden PASS-Werte beschreiben die ursprünglichen nativen Aufnahmen. Spielbilder und Spiele-Vorschauen enthalten noch den bisherigen Namen und müssen für einen neuen Store-Upload nativ neu aufgenommen werden. Die Originale und ihre Prüfsummen bleiben erhalten. [Aktueller Namensstatus](../app-store/current/STATUS.json).
+
 **Normale iPhones: PASS. Duo: BLOCKED.** Maßgeblich sind die tatsächlich vorhandenen Dateien und
 [Audit-Ergebnisse](../app-store/current/audit.json), nicht die Zahl gestarteter Jobs.
 [Aktuelle Sprachübersicht](../app-store/current/README.md).

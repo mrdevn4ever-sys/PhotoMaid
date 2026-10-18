@@ -13,6 +13,22 @@ import UIKit
         #expect(!model.isLoading, "Preview preparation did not finish")
     }
 
+    @Test func cloudDefaultsOnAndAnExplicitOptOutSurvivesPreparedRounds() async throws {
+        let model = PhotoMemoryModel(canUsePhotos: { _ in true })
+        #expect(model.allowsCloud)
+        #expect(PhotoSnakeModel().photos.allowsCloud)
+        model.startPhotos(["a", "b"], allowNetwork: false) { _ in UIImage() }
+        try await settle(model)
+        #expect(!model.allowsCloud && model.game?.pairCount == 2)
+        model.replay()
+        #expect(!model.allowsCloud)
+        model.startMotifs()
+        #expect(!model.allowsCloud)
+        model.startPhotos(["a", "b"], allowNetwork: true) { _ in UIImage() }
+        try await settle(model)
+        #expect(model.allowsCloud && model.photoIDs.count == 2)
+    }
+
     @Test func nextCardWorksWithAMismatchAndStaleConcealCannotHideANewSelection() throws {
         let model = PhotoMemoryModel()
         model.startMotifs()

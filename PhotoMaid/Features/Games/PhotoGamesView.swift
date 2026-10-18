@@ -33,7 +33,7 @@ struct PhotoGamesView: View {
                         .buttonStyle(.plain).accessibilityIdentifier("games.memory")
                         Button { selected = .snake } label: {
                             PhotoGameTile(symbol: "", title: L("snake_title"),
-                                          subtitle: L(app.snake.game?.status == .playing ? "memory_resume" : "snake_swipe_intro"), snake: true)
+                                          subtitle: L(app.snake.game?.status == .playing ? "memory_resume" : "game_setup_snake_intro"), snake: true)
                         }
                         .buttonStyle(.plain).accessibilityIdentifier("games.snake")
                     }

@@ -1,11 +1,13 @@
-# Foto-Memory (16.10.2026)
+# Paare (aktualisiert 18.10.2026)
+
+Seit 18.10.2026 ist **Paare** der sichtbare Spielname, entsprechend übersetzt in allen 16 Sprachen. Die bisherigen internen Kennungen und Speicherformate bleiben für vorhandene Rekorde erhalten. Die folgenden nativen Spielnachweise stammen vor dieser reinen Namensänderung.
 
 Aktueller Karten-Fix: Eine neue geschlossene Karte kann ein offenes Fehlpaar bewusst schließen
 und sich öffnen. Automatische Fehlpaar-Timer prüfen weiterhin Runde und Paar; die ganze Karte ist
 tippbar. Native Modelltests und ein tatsächlicher Sieg mit gespeichertem Rekord sind im
-[SnakePhoto-/Memory-Prüfbericht](snakephoto/TESTFLIGHT_VERIFICATION.md) belegt.
+[historischen SnakePhoto-/Kartenspiel-Prüfbericht](snakephoto/TESTFLIGHT_VERIFICATION.md) belegt.
 
-Freiwillige kurze Wischpause: Im Feed öffnet das Tassen-Symbol die Auswahl zwischen Memory und
+Freiwillige kurze Wischpause: Im Feed öffnet das Tassen-Symbol die Auswahl zwischen Paare und
 [Foto-Snake](PHOTO_SNAKE.md). Bei laufender
 Bildanalyse steht „Kurze Pause“ in der Statuskarte. Kein zusätzlicher Tab und kein automatischer Start.
 
@@ -22,8 +24,9 @@ Aktuell: [adaptive Raster, dauerhafte Bestzeiten und nativer Prüfstatus](IPHONE
   vier bis sechsunddreißig Karten. Videos sind bei allen Quellen ausgeschlossen.
 - Alternativ sofort mit sechs Symbolpaaren spielen (ausdrücklich so beschriftet).
   Keine neuen Bilddateien oder Abhängigkeiten.
-- Immer zwei Karten aufdecken; gefundene Paare bleiben sichtbar. Bei einem Fehlpaar werden
-  weitere Tipps blockiert, bis die Karten wieder verdeckt sind. Keine Zeitbegrenzung und keine Strafpunkte.
+- Immer zwei Karten aufdecken; gefundene Paare bleiben sichtbar. Ein offenes Fehlpaar wird
+  automatisch oder durch die bewusste Auswahl einer neuen geschlossenen Karte verdeckt;
+  die neue Karte öffnet sich sofort. Keine Zeitbegrenzung und keine Strafpunkte.
 - Mit VoiceOver bleiben Fehlpaare bis „Karten umdrehen“ offen. Verdeckte Karten verraten ihre
   Identität nicht in der Accessibility-Beschriftung. Das Raster berücksichtigt große Schrift.
 - Schließen und erneutes Öffnen behält innerhalb derselben App-Instanz die Karten, aufgedeckten
@@ -34,10 +37,11 @@ Aktuell: [adaptive Raster, dauerhafte Bestzeiten und nativer Prüfstatus](IPHONE
 
 - Höchstens achtzehn Vorschauen mit Zielgröße 512 × 512, nacheinander über die vorhandene Preview-Pipeline.
   Keine Originalbearbeitung, keine neuen Analyseaufträge, keine Spiel-Uploads.
-- Memory und Snake verwenden dieselbe Ladeimplementierung, haben aber getrennte Vorschauen und Spielstände.
+- Paare und Snake verwenden dieselbe Ladeimplementierung, haben aber getrennte Vorschauen und Spielstände.
   Ein Wechsel des Spiels ersetzt die Bilder der anderen Runde nicht.
-- iCloud-Downloads für die Spielvorbereitung sind zunächst aus und werden nur durch den ausdrücklichen
-  Schalter „Ausgewählte iCloud-Fotos laden“ erlaubt. Der normale Fotoauswahl-Bildlader bleibt unverändert.
+- Seit Nutzerwunsch vom 18.10.2026 ist „iCloud-Fotos laden“ für die Spielvorbereitung standardmäßig an.
+  Bewusstes Abschalten bleibt für die vorhandene Runde und beim Wechsel zu Motiven erhalten.
+  Der normale Fotoauswahl-Bildlader bleibt unverändert.
 - Unzugängliche, entfernte oder im Tresor verborgene Fotos werden geprüft; eine betroffene Runde wird
   zusammen mit ihren Bildvorschauen verworfen. Die Prüfung erfolgt auch bei geänderter Tresor-Sichtbarkeit,
   Berechtigung und Mediathek. Eine beschädigte Verbergen-Liste erlaubt keine eigenen Spielbilder.
@@ -56,7 +60,7 @@ Aktuell: [adaptive Raster, dauerhafte Bestzeiten und nativer Prüfstatus](IPHONE
 
 ## Prüfstatus
 
-Die sieben Memory-Regeltests und sieben nativen Memory-Modelltests bestehen. Die vier nativen
+Die sieben Kartenspiel-Regeltests und sieben nativen Kartenspiel-Modelltests bestehen. Die vier nativen
 Rekord-/Einbindungstests decken aktive Spielzeit, Core-Data-Neuladen, Speicherfehler,
 nachträglich ausgeblendete Fotos und den gemeinsamen Analysekontext ab.
 Aktuelle Gesamtergebnisse, Screenshot-Belege und verbleibende Geräteprüfungen stehen zentral in

@@ -3,9 +3,13 @@
 > **Aktuell: SnakePhoto-Umbau.** Cartoon-Köpfe, SpriteKit, bis zu 100 lokal gespeicherte
 > PhotosPicker-Fotos, Galerie-Reihenfolge sowie Schließen/Pause/Einstellungen im sicheren HUD.
 > Bewegung ausschließlich per Wischgesten. [Aktueller Stand und native Prüfergebnisse](snakephoto/TESTFLIGHT_VERIFICATION.md).
+> **Startansicht 18.10.2026:** kompakter Kopf, beschriftete Fotoauswahl, iCloud standardmäßig an,
+> Mediathek als einfacher Einstieg. Eine leere manuelle Auswahl öffnet zuerst die Galerie.
+> Modus, Tempo sowie Aussehen/Ton sind unter „Spiel anpassen“ zusammengefasst.
+> [Aktuelle Validierung](IMPLEMENTATION_STATUS.md).
 > Der folgende ursprüngliche Bericht beschreibt die Vorgängerversion aus Build 11–12.
 
-Die freiwillige Pause im Feed und bei Analysen bietet [Memory](PHOTO_MEMORY.md) und Foto-Snake.
+Die freiwillige Pause im Feed und bei Analysen bietet [Paare](PHOTO_MEMORY.md) und Foto-Snake.
 Die Umsetzung liegt auf `feat/iphone-duo-games` und ist in TestFlight Version 1.0, Build 11 enthalten.
 Apple-Verarbeitung und interne Verteilung sind [bestätigt](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/38952167636).
 
@@ -37,8 +41,8 @@ Zufällig aus Mediathek, Favoriten oder Album/Fotoordner einschließlich Unteral
 achtzehn manuell gewählte Fotos oder Symbole ohne Fotozugriff. Bis zu zwölf nutzbare Bilder werden
 für eine Zufallsrunde vorbereitet; eine Quelle mit nur einem Bild funktioniert ebenfalls.
 
-Vorschauen mit 512 × 512 bleiben im RAM. Memory und Snake halten getrennte Bildspeicher.
-iCloud-Laden für die Vorbereitung ist ausdrücklich wählbar und anfangs aus. Ausgeblendete Bilder,
+Vorschauen mit 512 × 512 bleiben im RAM. Paare und Snake halten getrennte Bildspeicher.
+iCloud-Laden für die Vorbereitung ist seit 18.10.2026 standardmäßig an und abschaltbar. Ausgeblendete Bilder,
 verborgene Alben und Tresorfotos sind ausgeschlossen. Zugriffsentzug oder nachträgliches Verbergen
 verwirft eine betroffene Runde. Abgebrochene/verspätete Vorbereitung ersetzt keine neuere Runde.
 

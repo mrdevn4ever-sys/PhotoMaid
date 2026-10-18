@@ -1,6 +1,8 @@
-# Ukrainisch – aktueller Store-Satz
+# Ukrainisch – Store-Archiv vor Paare
 
 App Store Connect: `uk`. Aufnahmen in Dark Mode.
+
+**Archiv vor der Umbenennung in Paare:** Die unveränderten Spielbilder und Spiele-Vorschauen zeigen noch den bisherigen Namen. Vor einem neuen Store-Upload sind native Neuaufnahmen nötig. Die PASS-Werte unten belegen die ursprüngliche Aufnahmeprüfung.
 
 ## iPhone 17 Pro Max
 
