@@ -14,6 +14,10 @@ on:
         type: choice
         options: [macos-26, xcode-27]
         default: macos-26
+      duo_setup_runtime:
+        description: "Auf Xcode-27-Runner die offizielle iOS-27.1-Runtime für Duo installieren"
+        type: boolean
+        default: false
       store_locales:
         description: "App-Store-Aufnahmen statt QA: all oder Kommaliste (leer = normale CI)"
         type: string
@@ -92,13 +96,39 @@ jobs:
     if: inputs.duo_probe
     name: iPhone Duo – Xcode und Simulator prüfen
     runs-on: ${{ inputs.duo_runner || 'macos-26' }}
-    timeout-minutes: 15
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github
+            scripts
       - name: Duo-Werkzeuge untersuchen
         env:
           PM_PROBE_XCODE: ${{ inputs.duo_runner == 'xcode-27' && '27.1' || '' }}
         run: scripts/ci/duo_environment.sh
+      - name: Offizielle Duo-Runtime und öffentliche Bedienwerkzeuge vorbereiten
+        if: inputs.duo_setup_runtime
+        env:
+          PM_PROBE_XCODE: '27.1'
+        run: |
+          set -euo pipefail
+          df -h /
+          xcodebuild -downloadPlatform iOS -buildVersion 27.1 2>&1 | tee duo-environment/runtime-download.log
+          scripts/ci/duo_environment.sh
+          xcrun simctl help ui > duo-environment/simctl-ui-help.txt
+          xcrun simctl help io > duo-environment/simctl-io-help.txt
+          xcrun agent skills export --output-dir "$RUNNER_TEMP/duo-skills"
+          cp -R "$RUNNER_TEMP/duo-skills" duo-environment/skills
+          python3 scripts/store/create_capture_simulator.py iphone-duo duo-environment/capture-device.json
+          udid=$(python3 -c 'import json;print(json.load(open("duo-environment/capture-device.json"))["udid"])')
+          xcrun simctl boot "$udid"
+          xcrun simctl bootstatus "$udid" -b
+          xcrun simctl io "$udid" enumerate > duo-environment/duo-screens.txt
+          xcrun simctl io "$udid" screenshot duo-environment/duo-default-screen.png
+          xcrun simctl ui "$udid" --help > duo-environment/duo-ui-help.txt 2>&1 || true
+          xcrun simctl shutdown "$udid"
+          xcrun simctl delete "$udid"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
