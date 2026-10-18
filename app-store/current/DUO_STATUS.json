@@ -1,5 +1,5 @@
 {
-  "status": "BLOCKED",
+  "status": "PREPARING RUNTIME",
   "checked_at_utc": "2026-10-18T09:25:01Z",
   "run_id": 39115140440,
   "job_id": 117639314242,
@@ -7,7 +7,7 @@
   "source_commit": "6014c35c36bbf4c13c4d6c58514049218af4332c",
   "xcode": "Xcode 26.6\nBuild version 17F113",
   "actual_duo_device_types": [],
-  "reason": "The runner has no iPhone Duo simulator and no iOS 27.1 SDK. No iPad or resized iPhone is substituted as a Duo store asset.",
+  "reason": "The newly available xcode-27 runner has genuine iPhone Duo support and SDK27.1. Runtime27.1 preparation is queued/running separately; the old macos-26 limitation is historical.",
   "apple_specification": "https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications/",
   "apple_duo_sizes": [
     [
@@ -20,5 +20,13 @@
     ]
   ],
   "apple_requirement": "Starting in April 2027 for apps using iOS 27.1 SDK or later.",
-  "native_iphone_assets": "Independent captures proceed for all 16 languages in large and medium iPhone formats."
+  "native_iphone_assets": "Independent captures proceed for all 16 languages in large and medium iPhone formats.",
+  "new_probe_run_id": 39120099266,
+  "new_probe_job_id": 117653783031,
+  "new_probe_artifact_id": 12134086083,
+  "new_runner": "xcode-27",
+  "new_xcode": "Xcode 27.1 / 27A9275",
+  "genuine_duo_device_type_available": true,
+  "remaining_requirement": "The new runner has iOS 27.0 installed; iPhone Duo requires runtime 27.1. Investigating the official runtime download.",
+  "runtime_preparation_run_id": 39120476761
 }

@@ -99,7 +99,12 @@ def main():
                 row = {'status': 'FAIL', 'locale': code, 'device_class': device, 'error': str(error)}
             rows.append(row)
             print(json.dumps({k: row[k] for k in ('status', 'locale', 'device_class')} | ({'error': row['error']} if 'error' in row else {})))
-    (a.root / 'audit.json').write_text(json.dumps(rows, indent=2) + '\n')
+    report = a.root / 'audit.json'
+    previous = json.loads(report.read_text()) if report.exists() else []
+    updated = {(row['locale'], row['device_class']) for row in rows}
+    combined = [row for row in previous if (row['locale'], row['device_class']) not in updated] + rows
+    combined.sort(key=lambda row: (row['locale'], row['device_class']))
+    report.write_text(json.dumps(combined, indent=2) + '\n')
     if any(row['status'] != 'PASS' for row in rows):
         raise SystemExit(1)
 

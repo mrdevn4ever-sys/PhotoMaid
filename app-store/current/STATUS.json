@@ -27,9 +27,8 @@
   "app_store_connect_assets_upload": "NOT RUN",
   "app_store_release": "NOT RUN",
   "native_test_policy": "Only real passed capture results with no failed or skipped tests; screenshots and actual video frames reviewed before PASS.",
-  "primary_source_commit": "968a08c3fcb93c89ca1f848811f6824885738817",
+  "primary_source_commit": "bbf8999a9e0f4da13d02f598e7402a4bb2a1bf1d",
   "pilot_source_commit": "4b7056674bc64e50d19bf505a48eb492e79f8745",
-  "batch_run": 39119694654,
   "expected_selected_screenshots": 320,
   "expected_selected_videos": 48,
   "expected_vault_alternative_videos": 16,
@@ -40,5 +39,8 @@
       "status": "PASS",
       "native_passed_tests": 1
     }
-  ]
+  ],
+  "large_run": 39120101094,
+  "medium_run": 39120189289,
+  "duo_runtime_preparation_run": 39120476761
 }
