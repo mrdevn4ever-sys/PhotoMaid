@@ -6,11 +6,12 @@ import SwiftUI
 
 struct GlassCapsuleModifier: ViewModifier {
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+    @Environment(\.colorSchemeContrast) private var contrast
     var interactive = false
     var tint: Color?
 
     func body(content: Content) -> some View {
-        if reduceTransparency {
+        if reduceTransparency || contrast == .increased {
             content
                 .background(AppColors.surface, in: .capsule)
                 .overlay(Capsule().strokeBorder(AppColors.surfaceStroke))
@@ -28,11 +29,12 @@ struct GlassCapsuleModifier: ViewModifier {
 
 struct GlassRectModifier: ViewModifier {
     @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+    @Environment(\.colorSchemeContrast) private var contrast
     var radius: CGFloat = AppRadii.card
     var interactive = false
 
     func body(content: Content) -> some View {
-        if reduceTransparency {
+        if reduceTransparency || contrast == .increased {
             content
                 .background(AppColors.surface, in: .rect(cornerRadius: radius))
                 .overlay(RoundedRectangle(cornerRadius: radius).strokeBorder(AppColors.surfaceStroke))
@@ -76,8 +78,16 @@ struct GlassIconButton: View {
 
 struct GlassButtonStyleModifier: ViewModifier {
     let prominent: Bool
+    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+    @Environment(\.colorSchemeContrast) private var contrast
+
+    @ViewBuilder
     func body(content: Content) -> some View {
-        if prominent { content.buttonStyle(.glassProminent) } else { content.buttonStyle(.glass) }
+        if reduceTransparency || contrast == .increased {
+            if prominent { content.buttonStyle(.borderedProminent) } else { content.buttonStyle(.bordered) }
+        } else {
+            if prominent { content.buttonStyle(.glassProminent) } else { content.buttonStyle(.glass) }
+        }
     }
 }
 
@@ -104,8 +114,11 @@ struct PrimaryButton: View {
     private struct PrimaryStyle: ViewModifier {
         let overMedia: Bool
         let destructive: Bool
+        @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+        @Environment(\.colorSchemeContrast) private var contrast
+
         func body(content: Content) -> some View {
-            if overMedia {
+            if overMedia && !reduceTransparency && contrast != .increased {
                 content.buttonStyle(.glassProminent).tint(destructive ? AppColors.cleanup : AppColors.accentFill)
             } else {
                 content.buttonStyle(.borderedProminent).buttonBorderShape(.capsule)
@@ -135,8 +148,15 @@ struct SecondaryButton: View {
 
     private struct SecondaryStyle: ViewModifier {
         let overMedia: Bool
+        @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
+        @Environment(\.colorSchemeContrast) private var contrast
+
         func body(content: Content) -> some View {
-            if overMedia { content.buttonStyle(.glass) } else { content.buttonStyle(.bordered).buttonBorderShape(.capsule) }
+            if overMedia && !reduceTransparency && contrast != .increased {
+                content.buttonStyle(.glass)
+            } else {
+                content.buttonStyle(.bordered).buttonBorderShape(.capsule)
+            }
         }
     }
 }

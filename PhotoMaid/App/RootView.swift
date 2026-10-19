@@ -7,8 +7,9 @@ struct RootView: View {
     @Environment(AppModel.self) private var app
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
-    @State private var shielded = false
     @State private var quick = QuickActions.shared
+
+    private var shielded: Bool { scenePhase != .active }
 
     var body: some View {
         @Bindable var app = app
@@ -18,9 +19,15 @@ struct RootView: View {
                     .transition(.opacity)
             } else {
                 tabs
+                    .privacySensitive()
+                    .accessibilityHidden(shielded)
+                    .allowsHitTesting(!shielded)
                 if let request = app.feed {
                     FeedView(request: request, app: app)
                         .id(request.id)
+                        .privacySensitive()
+                        .accessibilityHidden(shielded)
+                        .allowsHitTesting(!shielded)
                         .transition(.opacity)
                         .zIndex(1)
                 }
@@ -31,7 +38,7 @@ struct RootView: View {
         }
         .animation(AppMotion.open(reduceMotion), value: app.feed?.id)
         .overlay(alignment: .bottom) {
-            if let toast = app.toast {
+            if !shielded, let toast = app.toast {
                 ToastView(toast: toast) { app.toast = nil }
                     .padding(.bottom, app.feed == nil ? 72 : AppSpacing.xl)
                     .transition(.move(edge: .bottom).combined(with: .opacity))
@@ -48,17 +55,15 @@ struct RootView: View {
         .task {
             // Uhr für Tageswechsel (Limit, Später fällig) und Restzeiten.
             while !Task.isCancelled {
-                try? await Task.sleep(for: .seconds(30))
+                do { try await Task.sleep(for: .seconds(30)) } catch { return }
                 app.tick()
             }
         }
         .onChange(of: scenePhase) { _, phase in
             switch phase {
             case .active:
-                shielded = false
                 Task { await app.onForeground() }
             case .background:
-                shielded = true
                 app.player.stop()
             default:
                 app.player.pause()
@@ -100,8 +105,9 @@ struct RootView: View {
                 stack(.history) { HistoryView() }
             }
         }
-        .tabBarMinimizeBehavior(.onScrollDown)
+        .tabBarMinimizeBehavior(.never)
         .tint(AppColors.accent)
+        .onChange(of: app.selectedTab) { _, _ in Haptics.tick() }
     }
 
     private func stack<Content: View>(_ tab: AppTab, @ViewBuilder content: () -> Content) -> some View {
@@ -154,8 +160,26 @@ struct PrivacyShield: View {
 /// Vollbild-Seiten (Betrachter, Editor, Diashow, Scanner).
 struct FullScreenHost: View {
     let request: FullScreenRequest
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
+        ZStack {
+            destination
+                .privacySensitive()
+                .accessibilityHidden(scenePhase != .active)
+                .allowsHitTesting(scenePhase == .active)
+            if scenePhase != .active {
+                // Ein Schutz unterhalb eines fullScreenCover verdeckt dessen Inhalt nicht.
+                PrivacyShield().zIndex(1)
+            }
+        }
+        .transaction { transaction in
+            if scenePhase != .active { transaction.disablesAnimations = true }
+        }
+    }
+
+    @ViewBuilder
+    private var destination: some View {
         switch request {
         case .viewer(let ids, let index): ViewerView(ids: ids, startIndex: index)
         case .editor(let id): PhotoEditorView(assetID: id)

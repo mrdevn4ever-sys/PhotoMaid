@@ -1,27 +1,26 @@
 import SwiftUI
 import UIKit
 
-/// Farbrollen der PhotoMaid-Identität: warmer Grund (Creme/Sand), Blau als Akzent – wie Android (2026-10-04).
-/// Hell ist die Referenz; Dunkel ist dieselbe Marke (warmes Anthrazit). Erhöhter Kontrast hat eigene Werte.
+/// Native, ruhige Flächen mit zurückhaltendem Blau; Dunkel und hoher Kontrast sind eigens abgestimmt.
 /// Glas kommt ausschließlich von Liquid Glass (`glassEffect`, `.glass`-Buttonstile) – nie aus diesen Farben.
 enum AppColors {
-    static let background = dynamic(0xFAF6F1, 0x161311, hcLight: 0xFFFBF7, hcDark: 0x0B0907)
-    static let backgroundTint = dynamic(0xF2EBE3, 0x201B18, hcLight: 0xF4EEE7, hcDark: 0x15110F)
-    /// Ruhige, deckende Fläche für Listen und Karten (kein Glas).
-    static let surface = dynamic(0xFFFFFF, 0x262120, hcLight: 0xFFFFFF, hcDark: 0x1C1816)
-    static let surfaceStroke = dynamic(0xEADFD3, 0x3A322D, hcLight: 0xA89584, hcDark: 0x857565)
-    static let textPrimary = dynamic(0x231F1C, 0xF5EFE9, hcLight: 0x120F0D, hcDark: 0xFFFFFF)
-    static let textSecondary = dynamic(0x6B625A, 0xC2B6AA, hcLight: 0x453E37, hcDark: 0xE6DDD3)
+    static let background = dynamic(0xF5F7FA, 0x101318, hcLight: 0xFFFFFF, hcDark: 0x000000)
+    static let backgroundTint = dynamic(0xEDF2F8, 0x151B24, hcLight: 0xF0F3F8, hcDark: 0x080D14)
+    /// Deckende Inhalte bleiben von der gläsernen Navigation getrennt.
+    static let surface = dynamic(0xFFFFFF, 0x1D242E, hcLight: 0xFFFFFF, hcDark: 0x141A22)
+    static let surfaceStroke = dynamic(0xDEE5EF, 0x354253, hcLight: 0x77869A, hcDark: 0x8798AF)
+    static let textPrimary = dynamic(0x172334, 0xF2F5FA, hcLight: 0x000000, hcDark: 0xFFFFFF)
+    static let textSecondary = dynamic(0x536278, 0xB5C2D3, hcLight: 0x344359, hcDark: 0xDEE7F4)
     /// Akzent für Text/Symbole (AA ≥ 4,5 : 1).
     static let accent = dynamic(0x0064D2, 0x4DA3FF, hcLight: 0x0050A8, hcDark: 0x7ABCFF)
     /// Akzent als Fläche mit weißer Schrift.
-    static let accentFill = dynamic(0x0071E3, 0x0A84FF, hcLight: 0x0058B0, hcDark: 0x0A84FF)
+    static let accentFill = dynamic(0x0071E3, 0x0064C9, hcLight: 0x0058B0, hcDark: 0x0058B0)
     static let keep = Color(uiColor: .systemBlue)
     static let cleanup = dynamic(0xD70015, 0xFF453A, hcLight: 0xB00012, hcDark: 0xFF6961)
-    static let later = dynamic(0x0E8FA8, 0x40C8E0, hcLight: 0x0A7287, hcDark: 0x70D7EA)
+    static let later = dynamic(0x00758A, 0x40C8E0, hcLight: 0x005B70, hcDark: 0x70D7EA)
     static let warning = Color(uiColor: .systemOrange)
     static let success = dynamic(0x248A3D, 0x30D158, hcLight: 0x1B6E30, hcDark: 0x5BE07A)
-    static let indigo = Color(uiColor: .systemIndigo)
+    static let indigo = accent
     /// Warmer Markenton (Sand/Latte) für Einführung, Hero und Illustrationen – nie für Text.
     static let warm = dynamic(0xEFE7DA, 0x2B2622, hcLight: 0xE9DFCF, hcDark: 0x332C27)
     static let warmStrong = dynamic(0xDCC9AB, 0x54473A, hcLight: 0xCDB894, hcDark: 0x66574A)

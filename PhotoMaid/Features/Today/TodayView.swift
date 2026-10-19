@@ -49,7 +49,7 @@ struct TodayView: View {
         .appPage()
         .toolbar(.hidden, for: .navigationBar)
         .task(id: app.library.changeToken) { device = DeviceStorage.read() }
-        .task(id: "\(app.pending.count)-\(app.cleanupMedia.count)-\(app.settings.continueMonth ?? "")-\(app.settings.lastSessionEnd?.timeIntervalSince1970 ?? 0)") {
+        .task(id: "\(app.pending.count)-\(app.cleanupMedia.count)-\(app.library.changeToken)-\(app.settings.continueMonth ?? "")-\(app.settings.lastSessionEnd?.timeIntervalSince1970 ?? 0)") {
             await countProgress()
         }
         .overlay(alignment: .bottom) { tour }
@@ -114,6 +114,7 @@ struct TodayView: View {
                 : NewSinceQuery.assets(in: media, settings: settings).filter { pendingSet.contains($0.id) }.count
             return (c, n)
         }.value
+        guard !Task.isCancelled else { return }
         continueOpen = c
         newSince = n
     }
@@ -242,10 +243,9 @@ struct ReviewHero: View {
                         PrimaryButton(title: L(hasHistory ? "today_continue_cta" : "today_start_cta"), action: start)
                             .accessibilityHint(Text(key: "today_review_hint"))
                         if showGestures {
-                            HStack(spacing: AppSpacing.m) {
-                                chip(.up, "dir_keep", AppColors.keep)
-                                chip(.left, "dir_trash", AppColors.cleanup)
-                                chip(.right, "dir_later", AppColors.later)
+                            ViewThatFits(in: .horizontal) {
+                                HStack(spacing: AppSpacing.m) { gestureChips }
+                                VStack(alignment: .leading, spacing: AppSpacing.xs) { gestureChips }
                             }
                             .frame(maxWidth: .infinity)
                             .accessibilityHidden(true)
@@ -268,7 +268,13 @@ struct ReviewHero: View {
         .background(AppColors.surface)
         .clipShape(.rect(cornerRadius: AppRadii.sheet))
         .overlay(RoundedRectangle(cornerRadius: AppRadii.sheet).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
-        .shadow(color: .black.opacity(0.08), radius: 12, y: 4)
+    }
+
+    @ViewBuilder
+    private var gestureChips: some View {
+        chip(.up, "dir_keep", AppColors.keep)
+        chip(.left, "dir_trash", AppColors.cleanup)
+        chip(.right, "dir_later", AppColors.later)
     }
 
     private func chip(_ d: SwipeDirection, _ key: String, _ tint: Color) -> some View {
