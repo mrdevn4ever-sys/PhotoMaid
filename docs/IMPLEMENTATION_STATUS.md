@@ -10,7 +10,7 @@ Korrekturen auf der vollständigen main-Funktionsbasis, App-Quellstand `4b3f02a`
 
 **Finale native CI PASS:** [Lauf 39239130804](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39239130804), Quelle `4b3f02a`: iOS-Build, **502 Core-Tests und 102 native Unit-Tests** (15 PDF, 5 Analyse). PDF auf iPhone 17 und breitem iPad-mini-Fenster/iOS 26.2 jeweils **1/1 UI-Test**, keine Fehler oder Skips; Speichern auch über den nativen Überlauf tatsächlich ausgeführt. Blocks besteht auf beiden Simulatorgrößen im vorherigen Lauf 39231638919; seine Spiel-/Fotoquellen sind unverändert. Originalaufnahmen angesehen. 14 neue Texte in allen 16 Sprachen; alte Übersetzungen unverändert. Reale iCloud-Provider, Systemkarten auf physischem iPhone, Geräte-FPS und echtes Falten bleiben ungeprüft.
 
-**Noch nicht in TestFlight. Zuletzt verteilt: 1.0 (19).** [Abschlussbericht, geänderte Dateien, Prüfbelege, Screenshots und Grenzen](pdf-editor-20261019/README.md).
+**In TestFlight: 1.0 (20), von main.** [Upload-Lauf 39243456042](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39243456042), Archiv-Quelle `7634d73`. Upload am 19.10.2026 um **11:30:09 UTC**, Apple-Verarbeitung **11:32:43 UTC**, interne Verteilung **11:32:44 UTC** bestätigt. Erneut **102 native Unit-Tests**, acht Privacy-Prüfertests und alle drei Manifeste der signierten IPA bestanden. [Upload-Belege](pdf-editor-20261019/testflight/README.md) · [Abschlussbericht, geänderte Dateien, Prüfbelege, Screenshots und Grenzen](pdf-editor-20261019/README.md).
 
 ## Design-Übernahme und TestFlight 19 (19.10.2026)
 

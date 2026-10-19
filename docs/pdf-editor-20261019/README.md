@@ -8,7 +8,7 @@ The existing Studio creation card `pdf_title` still opens the existing photo-to-
 
 All three requested corrections are implemented on the existing app's main basis. Final native [run 39239130804](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39239130804), source `4b3f02a`, is **SUCCESS**: **502 Core tests, 102 native unit tests, PDF UI 1/1 on iPhone and 1/1 in the wide window**. The final screenshots are inspected. Blocks separately passed on both profiles in run 39231638919; its game/photo source is byte-identical to the final source. Earlier failures and cancellations remain documented below.
 
-No TestFlight upload or App Store release was started for these corrections. The latest previously distributed build remains **1.0 (19)** and does not contain them. Existing failed analysis cards from an older build may need manual dismissal once.
+Following the explicit instruction “Mach testflight”, these corrections are now in **TestFlight 1.0 (20)** from main, archive source `7634d73`. [Release run 39243456042](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39243456042) passed: 102 repeated native unit tests, eight privacy-checker tests and all three manifests from the signed IPA. Apple finished processing at **11:32:43 UTC** and internal distribution at **11:32:44 UTC** on 19 October 2026. [Upload evidence](testflight/README.md). No external distribution or App Store release. Existing failed analysis cards from an older build may need manual dismissal once.
 
 ## Implementation
 
@@ -154,6 +154,6 @@ Original, unmodified PDF captures are from final run 39239130804/source 4b3f02a.
 
 Each capture above has been visually inspected. They show simulator QA documents/photos, not private user media. [Artifact identities and SHA-256 hashes](screenshot-sources.json); [final phone PDF manifest](final-pdf-iphone-manifest.json), [final wide PDF manifest](final-pdf-wide-manifest.json). The briefly visible saved-copy toast is the existing app toast, not a permanent editor overlay.
 
-Not verified: physical-device analysis-card presentation/background duration, real iCloud Drive download/provider behavior, protected external provider documents, very large PDFs, device memory/FPS profiling, and visual localization outside German. Simulator file tests cover local coordinated reads, missing files, invalid files and import limits. No new TestFlight upload or App Store release is part of this PDF correction.
+Not verified: physical-device analysis-card presentation/background duration, real iCloud Drive download/provider behavior, protected external provider documents, very large PDFs, device memory/FPS profiling, and visual localization outside German. Simulator file tests cover local coordinated reads, missing files, invalid files and import limits. The subsequent expressly authorized internal TestFlight upload is documented above; no App Store release was performed.
 
 Complete inventory, including documentation and evidence files: [changed-files.txt](changed-files.txt).

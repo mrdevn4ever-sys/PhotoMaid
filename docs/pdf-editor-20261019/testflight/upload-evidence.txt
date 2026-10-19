@@ -1,0 +1,13 @@
+2026-10-19T11:16:43.9272780Z Ran 8 tests in 0.015s
+2026-10-19T11:16:43.9273750Z OK
+2026-10-19T11:16:56.1707760Z Signing preflight: PASS
+2026-10-19T11:23:45.7886430Z ** TEST SUCCEEDED **
+2026-10-19T11:28:57.0319830Z [11:28:57]: Successfully exported and signed the ipa file:
+2026-10-19T11:28:57.2009910Z [11:28:57]: ▸ Privacy tracking check: PASS (3 manifests)
+2026-10-19T11:30:09.9682560Z [11:30:09]: Successfully uploaded package to App Store Connect. It might take a few minutes until it's visible online.
+2026-10-19T11:30:09.9720890Z [11:30:09]: Successfully uploaded the new binary to App Store Connect
+2026-10-19T11:30:09.9915370Z [11:30:09]: Waiting for processing on... app_id: 6821165617, app_version: 1.0, build_version: 20, platform: IOS
+2026-10-19T11:32:43.5771360Z [11:32:43]: Successfully finished processing the build 1.0 - 20 for IOS
+2026-10-19T11:32:44.1018720Z [11:32:44]: Successfully set the changelog for build
+2026-10-19T11:32:44.1032540Z [11:32:44]: Distributing new build to testers: 1.0 - 20
+2026-10-19T11:32:44.1037880Z [11:32:44]: Successfully distributed build to Internal testers 🚀
