@@ -1,6 +1,6 @@
 {
   "base_main": "c3a5e0603a19d1e495594d64fd9ed36c9be99254",
-  "source_commit": "25648d45424fe8aa878de01b5becf319782884da",
+  "source_commit": "4b3f02a2f6791d2ec8905ae219f540c0793782f0",
   "changed_files": [
     "PhotoMaid/App/PdfEditorFixtures.swift",
     "PhotoMaid/Features/Analysis/SmartReviewView.swift",
@@ -107,5 +107,31 @@
     "PhotoMaid/DesignSystem/Components.swift",
     "PhotoMaid/Features/Studio/StudioMediaPicker.swift",
     "Sources/PhotoMaidCore/Games/PhotoSnakeGame.swift"
-  ]
+  ],
+  "production_source_unchanged_in_targeted_retest": {
+    "PhotoMaid": {
+      "25648d4": "896d6c60c1125755930ce588a4d5db752d0a692b",
+      "cd9b8a6": "896d6c60c1125755930ce588a4d5db752d0a692b"
+    },
+    "Sources": {
+      "25648d4": "c949bff453d7b16e9c8f725e555d94b06bd2b809",
+      "cd9b8a6": "c949bff453d7b16e9c8f725e555d94b06bd2b809"
+    },
+    "PhotoMaidTests": {
+      "25648d4": "21ca8197d5d939dc9035103862137b5b8485637b",
+      "cd9b8a6": "21ca8197d5d939dc9035103862137b5b8485637b"
+    }
+  },
+  "final_source_commit": "4b3f02a2f6791d2ec8905ae219f540c0793782f0",
+  "final_production_changes_after_25648d4": [
+    "PhotoMaid/Features/Documents/PdfStudioView.swift"
+  ],
+  "final_view_changes": "Localized semantic toolbar items with primary save action, plus simulator-only fixture startup. All other production files and game/photo/vault engines unchanged from 25648d4.",
+  "final_production_trees": {
+    "PhotoMaid": "d88d7d20968e490370b9b96f5942c8a1f5b240a7",
+    "Sources": "c949bff453d7b16e9c8f725e555d94b06bd2b809",
+    "PhotoMaidTests": "21ca8197d5d939dc9035103862137b5b8485637b",
+    "PhotoMaidUITests": "73e0536684e5c27255c73cff927547976adec624"
+  },
+  "blocks_and_photo_sources_unchanged_from_passing_ui_run": true
 }

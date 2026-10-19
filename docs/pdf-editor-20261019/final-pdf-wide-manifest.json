@@ -1,0 +1,134 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "033003D3-045C-4334-9068-E7B1C2D3D6C5",
+        "deviceName" : "iPad mini (A17 Pro)",
+        "exportedFileName" : "37D36428-1B35-4BFB-82F8-B7D128A837FC.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "pdf_saved_copy_with_preview_0_EBEBA3B2-4BA9-41A2-8531-057C98A8322A.hierarchy",
+        "timestamp" : 1792407592.282
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "033003D3-045C-4334-9068-E7B1C2D3D6C5",
+        "deviceName" : "iPad mini (A17 Pro)",
+        "exportedFileName" : "D57E052F-6CD3-4A25-BE5F-5D3112A32D6B.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "pdf_saved_copy_with_preview_0_9CBEFF14-4E67-4E17-B92A-1C993BC3F935.png",
+        "timestamp" : 1792407591.803
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "033003D3-045C-4334-9068-E7B1C2D3D6C5",
+        "deviceName" : "iPad mini (A17 Pro)",
+        "exportedFileName" : "D4FEF687-C29D-474A-A649-69F02340B25F.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "pdf_rotated_and_reordered_live_0_BF1B506B-7AC8-4F2B-9AA4-B7E01DA1EB89.hierarchy",
+        "timestamp" : 1792407582.586
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "033003D3-045C-4334-9068-E7B1C2D3D6C5",
+        "deviceName" : "iPad mini (A17 Pro)",
+        "exportedFileName" : "8468869E-8CF1-4239-B470-F411B2857398.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "pdf_rotated_and_reordered_live_0_B65731C1-BDB2-4EC2-867C-CC6492A5B916.png",
+        "timestamp" : 1792407581.232
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "033003D3-045C-4334-9068-E7B1C2D3D6C5",
+        "deviceName" : "iPad mini (A17 Pro)",
+        "exportedFileName" : "E4BB8F9D-1FD8-48BE-AAAE-1C9B81D68A3B.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "pdf_rotated_page_remains_selected_0_6414B753-6FEB-46C9-B767-692D0E45C753.hierarchy",
+        "timestamp" : 1792407577.692
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "033003D3-045C-4334-9068-E7B1C2D3D6C5",
+        "deviceName" : "iPad mini (A17 Pro)",
+        "exportedFileName" : "9CA09E7B-9D58-4553-A021-40451F6D769B.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "pdf_rotated_page_remains_selected_0_61189CF5-98FE-457E-8598-C40D45FF4952.png",
+        "timestamp" : 1792407577.115
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "033003D3-045C-4334-9068-E7B1C2D3D6C5",
+        "deviceName" : "iPad mini (A17 Pro)",
+        "exportedFileName" : "967025AD-C39E-4100-BB5E-A4375E459FBE.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "pdf_live_preview_three_pages_0_980A53D6-8DB4-40D1-B1F0-AF83483F49D9.hierarchy",
+        "timestamp" : 1792407575.334
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "033003D3-045C-4334-9068-E7B1C2D3D6C5",
+        "deviceName" : "iPad mini (A17 Pro)",
+        "exportedFileName" : "406CF0B6-6A8D-4F2F-9423-D5D9D0FC8741.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "pdf_live_preview_three_pages_0_5A5D8556-A0AF-4044-A6C8-C7AC992BDB90.png",
+        "timestamp" : 1792407574.781
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "033003D3-045C-4334-9068-E7B1C2D3D6C5",
+        "deviceName" : "iPad mini (A17 Pro)",
+        "exportedFileName" : "088C2598-26C6-4926-9422-AF62CD84DABC.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "pdf_system_file_picker_0_5004C5BD-6291-4026-ABFE-DC7AF9CC4773.hierarchy",
+        "timestamp" : 1792407557.327
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "033003D3-045C-4334-9068-E7B1C2D3D6C5",
+        "deviceName" : "iPad mini (A17 Pro)",
+        "exportedFileName" : "60FFAC84-5BBD-429B-B85F-EF6841EDBC83.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "pdf_system_file_picker_0_D64C1993-5D72-4376-9EEF-FA29B1F0DB62.png",
+        "timestamp" : 1792407556.08
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "033003D3-045C-4334-9068-E7B1C2D3D6C5",
+        "deviceName" : "iPad mini (A17 Pro)",
+        "exportedFileName" : "9D871CA1-E752-47F1-B1FD-811001087F67.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "pdf_create_photos_or_files_0_B363A058-4E5B-4725-8298-3A8A49FF1E1D.hierarchy",
+        "timestamp" : 1792407543.01
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "033003D3-045C-4334-9068-E7B1C2D3D6C5",
+        "deviceName" : "iPad mini (A17 Pro)",
+        "exportedFileName" : "6DB5C96D-1055-4DD4-A1C7-46905FA60C75.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "pdf_create_photos_or_files_0_2DBEB4E9-24D2-40AE-BF2D-0919000759BB.png",
+        "timestamp" : 1792407542.384
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "033003D3-045C-4334-9068-E7B1C2D3D6C5",
+        "deviceName" : "iPad mini (A17 Pro)",
+        "exportedFileName" : "C891404A-07A0-4081-BF6E-1301AB0DD01A.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "games_studio_photos_permission_0_0_1C199FE3-C1F4-4D05-8253-AC1B694AEDF3.hierarchy",
+        "timestamp" : 1792407533.512
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "033003D3-045C-4334-9068-E7B1C2D3D6C5",
+        "deviceName" : "iPad mini (A17 Pro)",
+        "exportedFileName" : "3D678803-823F-4C97-9709-AACD6C832E96.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "games_studio_photos_permission_0_0_32A62C55-92D8-4B1C-A3B5-2FB4383EE65B.png",
+        "timestamp" : 1792407532.876
+      }
+    ],
+    "testIdentifier" : "PhotoGameVisualTests/test35PdfCreationAndLiveEditing()",
+    "testIdentifierURL" : "test://com.apple.xcode/PhotoMaid/PhotoMaidUITests/PhotoGameVisualTests/test35PdfCreationAndLiveEditing"
+  }
+]

@@ -1,0 +1,49 @@
+{
+  "devicesAndConfigurations" : [
+    {
+      "device" : {
+        "architecture" : "arm64",
+        "deviceId" : "033003D3-045C-4334-9068-E7B1C2D3D6C5",
+        "deviceName" : "iPad mini (A17 Pro)",
+        "modelName" : "iPad mini (A17 Pro)",
+        "osBuildNumber" : "23C54",
+        "osVersion" : "26.2",
+        "platform" : "iOS Simulator"
+      },
+      "expectedFailures" : 0,
+      "failedTests" : 1,
+      "passedTests" : 0,
+      "skippedTests" : 0,
+      "testPlanConfiguration" : {
+        "configurationId" : "1",
+        "configurationName" : "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription" : "PhotoMaid · Built with macOS 26.6.2",
+  "expectedFailures" : 0,
+  "failedTests" : 1,
+  "finishTime" : 1792406195.81,
+  "passedTests" : 0,
+  "result" : "Failed",
+  "skippedTests" : 0,
+  "startTime" : 1792406063.883,
+  "statistics" : [
+
+  ],
+  "testFailures" : [
+    {
+      "failureText" : "XCTAssertTrue failed",
+      "targetName" : "PhotoMaidUITests",
+      "testIdentifier" : 1,
+      "testIdentifierString" : "PhotoGameVisualTests/test35PdfCreationAndLiveEditing()",
+      "testIdentifierURL" : "test://com.apple.xcode/PhotoMaid/PhotoMaidUITests/PhotoGameVisualTests/test35PdfCreationAndLiveEditing",
+      "testName" : "test35PdfCreationAndLiveEditing()"
+    }
+  ],
+  "title" : "Test - PhotoMaid",
+  "topInsights" : [
+
+  ],
+  "totalTestCount" : 1
+}

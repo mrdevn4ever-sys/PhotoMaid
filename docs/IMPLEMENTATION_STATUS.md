@@ -2,13 +2,13 @@
 
 ## Aktuell: Analyse-Meldungen, PDF und Foto Blocks (19.10.2026)
 
-Korrekturen auf der vollständigen main-Funktionsbasis, App-Quellstand `25648d4`:
+Korrekturen auf der vollständigen main-Funktionsbasis, App-Quellstand `4b3f02a`:
 
 - Fotoanalyse erzeugt keine neuen sichtbaren fortgesetzten System-Aufgaben. Stille, von iOS begrenzte Hintergrundzeit mit Checkpoint und Fortsetzen beim Öffnen ersetzt die fehlschlagenden Analyse-Karten. Alte fertige Systemkarten lassen sich aus der App nicht nachträglich entfernen. Exporte unverändert.
 - „PDF erstellen“ bleibt erhalten; zusätzlich PDF aus ausgewählten PDFs/Bilddateien. Der Editor zeigt die ausgewählte Seite groß und erlaubt Drehen, Umsortieren, Entfernen, Ergänzen, Suche und Speichern/Teilen einer neuen Kopie.
 - Foto Blocks verwendet neue Formen mit je vier quadratischen Zellen. 9×17-Feld, Fotomechanik, Tempo, Punkte, iCloud-Quelle und Tresorfilter bleiben erhalten; alte Runden und Rekorde werden bewahrt. Keine verbindliche rechtliche Freigabe der Gesamtgestaltung.
 
-**Geprüft:** 502 Core-Tests; komplette native Vorgängerprüfung 102 Tests (15 PDF, 5 Analyse) und erneut erfolgreiche native Build-/Unit-Phase des finalen Quellstands. iPhone 17/iOS 26.2: **2/2 gezielte UI-Tests**, keine Fehler oder Skips; Originalaufnahmen angesehen. Der zusätzliche breite Durchlauf lieferte über 15 Minuten kein Ergebnis und wurde abgebrochen: **breite UI-Abnahme offen**, Ursache nicht verifiziert. 14 neue Texte in allen 16 Sprachen; alte Übersetzungen unverändert.
+**Finale native CI PASS:** [Lauf 39239130804](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39239130804), Quelle `4b3f02a`: iOS-Build, **502 Core-Tests und 102 native Unit-Tests** (15 PDF, 5 Analyse). PDF auf iPhone 17 und breitem iPad-mini-Fenster/iOS 26.2 jeweils **1/1 UI-Test**, keine Fehler oder Skips; Speichern auch über den nativen Überlauf tatsächlich ausgeführt. Blocks besteht auf beiden Simulatorgrößen im vorherigen Lauf 39231638919; seine Spiel-/Fotoquellen sind unverändert. Originalaufnahmen angesehen. 14 neue Texte in allen 16 Sprachen; alte Übersetzungen unverändert. Reale iCloud-Provider, Systemkarten auf physischem iPhone, Geräte-FPS und echtes Falten bleiben ungeprüft.
 
 **Noch nicht in TestFlight. Zuletzt verteilt: 1.0 (19).** [Abschlussbericht, geänderte Dateien, Prüfbelege, Screenshots und Grenzen](pdf-editor-20261019/README.md).
 

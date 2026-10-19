@@ -1,51 +1,131 @@
 {
-  "source_commit": "25648d45424fe8aa878de01b5becf319782884da",
-  "baseline_main": "c3a5e0603a19d1e495594d64fd9ed36c9be99254",
+  "source_commit": "4b3f02a2f6791d2ec8905ae219f540c0793782f0",
+  "initial_main": "c3a5e0603a19d1e495594d64fd9ed36c9be99254",
+  "final_workflow": {
+    "id": 39239130804,
+    "result": "SUCCESS",
+    "scope": "complete core/native suite and targeted PDF UI on two simulators"
+  },
   "core": {
-    "workflow": 39231638919,
-    "job": 117990746058,
+    "job": 118015401693,
     "xctest": 24,
     "swift_testing": 478,
+    "swift_testing_suites": 54,
     "total": 502,
     "result": "PASS"
   },
-  "complete_native_suite": {
-    "workflow": 39229958980,
-    "job": 117985258554,
-    "source": "39c5af831a820e21fb3d0df8e37266df1accc2ae",
+  "native": {
+    "job": 118015402347,
     "xctest": 33,
     "swift_testing": 69,
+    "swift_testing_suites": 9,
     "total": 102,
+    "pdf_tests": 15,
+    "analysis_background_tests": 5,
     "result": "PASS"
   },
-  "current_source_native_build_and_unit_phase": {
-    "workflow": 39231638919,
-    "job": 117990746281,
-    "result": "PASS",
-    "native_test_tree_unchanged_from_complete_green_run": true
-  },
-  "iphone_ui": {
-    "workflow": 39231638919,
-    "artifact": 12177572574,
-    "exit": 0,
-    "passed": 2,
-    "failed": 0,
-    "skipped": 0,
-    "device": {
-      "architecture": "arm64",
-      "deviceId": "24E049C8-1AEC-4A9D-95C6-C11145A59D62",
-      "deviceName": "iPhone 17",
-      "modelName": "iPhone 17",
-      "osBuildNumber": "23C54",
-      "osVersion": "26.2",
-      "platform": "iOS Simulator"
+  "pdf_ui": {
+    "iphone": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "exit": 0,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "24E049C8-1AEC-4A9D-95C6-C11145A59D62",
+        "deviceName": "iPhone 17",
+        "modelName": "iPhone 17",
+        "osBuildNumber": "23C54",
+        "osVersion": "26.2",
+        "platform": "iOS Simulator"
+      },
+      "summary": "final-pdf-iphone-summary.json"
+    },
+    "wide": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "exit": 0,
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "033003D3-045C-4334-9068-E7B1C2D3D6C5",
+        "deviceName": "iPad mini (A17 Pro)",
+        "modelName": "iPad mini (A17 Pro)",
+        "osBuildNumber": "23C54",
+        "osVersion": "26.2",
+        "platform": "iOS Simulator"
+      },
+      "summary": "final-pdf-wide-summary.json"
     }
   },
-  "wide_ui": {
+  "blocks_ui": {
     "workflow": 39231638919,
-    "result": "NOT VERIFIED",
-    "explanation": "No final result after more than 15 minutes. Cancellation and force-cancellation requested; cause unverified."
+    "source": "25648d45424fe8aa878de01b5becf319782884da",
+    "iphone_passed": 1,
+    "wide_passed": 1,
+    "game_and_photo_sources_unchanged": true,
+    "case_evidence": "blocks-ui-result.txt",
+    "note": "The old whole run was cancelled and its PDF wide case failed; only the independently passing Blocks cases are credited."
   },
+  "local_blocks": {
+    "tests": 29,
+    "result": "PASS",
+    "source_hashes": "local-blocks-source-hashes.json"
+  },
+  "localization": {
+    "languages": 16,
+    "used_keys": 1742,
+    "catalog_entries": 2763,
+    "new_keys": 14,
+    "previous_values_unchanged": true
+  },
+  "historical_runs": [
+    {
+      "id": 39221440365,
+      "result": "iPhone PDF lost app/AX connection"
+    },
+    {
+      "id": 39223809207,
+      "result": "iPhone PDF lost app/AX connection"
+    },
+    {
+      "id": 39226116538,
+      "result": "cancelled; no pass claimed"
+    },
+    {
+      "id": 39226468606,
+      "result": "native 14/15 PDF tests; faulty viewport test expectation corrected"
+    },
+    {
+      "id": 39229241445,
+      "result": "Core test macro compilation failed; fixed; phone Blocks passed, PDF selection assertion failed"
+    },
+    {
+      "id": 39229958980,
+      "result": "complete Core and native suites PASS"
+    },
+    {
+      "id": 39231638919,
+      "result": "Core/native PASS, phone 2/2 PASS, wide Blocks PASS and PDF save access FAIL; whole run cancelled"
+    },
+    {
+      "id": 39236285582,
+      "result": "phone QA fixture startup FAIL; wide Save access FAIL after More opened"
+    },
+    {
+      "id": 39238157614,
+      "result": "cancelled as superseded; no UI pass claimed"
+    }
+  ],
+  "not_verified": [
+    "physical-device system-card presentation/background duration",
+    "real iCloud Drive/external provider downloads",
+    "very large PDF memory profiling",
+    "device FPS",
+    "real fold/unfold",
+    "visual localization outside German"
+  ],
+  "legal_clearance": false,
   "testflight_upload_started": false,
-  "last_previously_distributed_build": "1.0 (19)"
+  "latest_previously_distributed_build": "1.0 (19)"
 }

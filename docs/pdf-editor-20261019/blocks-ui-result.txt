@@ -1,0 +1,3 @@
+Workflow 39231638919, source 25648d4; Blocks game/photo source is unchanged in final 4b3f02a.
+iphone: Test Case '-[PhotoMaidUITests.PhotoBlocksVisualTests testStartTouchPausePhotosAndReturnToGames]' passed (68.672 seconds).
+wide: Test Case '-[PhotoMaidUITests.PhotoBlocksVisualTests testStartTouchPausePhotosAndReturnToGames]' passed (71.454 seconds).
