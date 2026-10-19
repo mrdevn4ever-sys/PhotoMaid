@@ -8,6 +8,8 @@ import SwiftUI
 struct FeedView: View {
     @Environment(AppModel.self) private var app
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @Environment(\.displayScale) private var displayScale
+    @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityVoiceOverEnabled) private var voiceOver
     @Environment(\.accessibilitySwitchControlEnabled) private var switchControl
     @State private var model: FeedViewModel
@@ -44,6 +46,8 @@ struct FeedView: View {
         }
         .task {
             model.reduceMotion = reduceMotion
+            model.displayScale = displayScale
+            model.setSuspended(voiceOver || switchControl || zoomed)
             await model.load()
             if !model.session.items.isEmpty && (app.settings.showGestureHintOnOpen || !app.settings.gestureHintSeen) {
                 flashHints()
@@ -52,12 +56,17 @@ struct FeedView: View {
         }
         .task(id: hintToken) {
             guard showHints else { return }
-            try? await Task.sleep(for: .seconds(2.6))
+            do { try await Task.sleep(for: .seconds(2.6)) } catch { return }
             withAnimation(.easeOut(duration: 0.6)) { showHints = false }
         }
         .onChange(of: reduceMotion) { _, v in model.reduceMotion = v }
-        .onChange(of: voiceOver) { _, _ in model.setSuspended(voiceOver || zoomed) }
-        .onChange(of: zoom) { _, _ in model.setSuspended(voiceOver || zoomed) }
+        .onChange(of: voiceOver) { _, _ in model.setSuspended(voiceOver || switchControl || zoomed) }
+        .onChange(of: switchControl) { _, _ in model.setSuspended(voiceOver || switchControl || zoomed) }
+        .onChange(of: displayScale) { _, value in model.displayScale = value; model.refreshWindow() }
+        .onChange(of: scenePhase) { _, phase in
+            if phase != .active { model.dragCancelled(); app.player.stop() }
+        }
+        .onChange(of: zoom) { _, _ in model.setSuspended(voiceOver || switchControl || zoomed) }
         .onChange(of: model.session.index) { _, _ in resetZoom() }
         .onChange(of: app.library.changeToken) { _, _ in if model.isLoaded { model.refreshWindowAssets() } }
         .onChange(of: dragging) { _, isDragging in
@@ -153,7 +162,7 @@ struct FeedView: View {
                     .accessibilityLabel(Text(key: "order_title"))
                 }
                 GlassIconButton(symbol: "arrow.uturn.backward", label: L("undo")) { Task { await model.undo() } }
-                    .disabled(!app.read.canUndo)
+                    .disabled(!app.read.canUndo || model.isCommitting)
             }
         }
         .padding(.horizontal, AppSpacing.pageMargin)
@@ -209,8 +218,9 @@ struct FeedView: View {
                 ForEach(refs, id: \.self) { ref in
                     if let asset = model.assets[ref.localIdentifier] {
                         let top = ref == model.current
-                        FeedMediaPage(asset: asset, isTop: top, state: model.previews[ref] ?? .loading,
+                        FeedMediaPage(asset: asset, isTop: top && !model.isCommitting, state: model.previews[ref] ?? .loading,
                                       retry: model.retries[ref] ?? 0, intentColor: top ? intentColor : nil,
+                                      onLoading: { model.previewLoading(ref) },
                                       onResult: { ok in model.previewResult(ref, ok: ok) },
                                       onRetry: { model.retryPreview(ref) },
                                       onSkip: { model.skipWithoutDecision() })
@@ -220,6 +230,7 @@ struct FeedView: View {
                             .opacity(top ? 1 : underOpacity(geo.size))
                             .zIndex(top ? 1 : 0)
                             .allowsHitTesting(top)
+                            .accessibilityHidden(!top)
                     }
                 }
                 DirectionPill(direction: model.lockedDirection, ready: model.readyDirection != nil)
@@ -233,7 +244,7 @@ struct FeedView: View {
                     Spacer()
                     if let pill = model.laterPill {
                         LaterPillView(pill: pill) { model.editLater() }
-                            .transition(.move(edge: .bottom).combined(with: .opacity))
+                            .transition(reduceMotion ? .opacity : .move(edge: .bottom).combined(with: .opacity))
                     } else if let notice = model.notice {
                         NoticePill(text: notice.text).transition(.opacity)
                     }
@@ -309,6 +320,7 @@ struct FeedView: View {
             .onEnded { _ in
                 zoomBase = zoom
                 if !zoomed { resetZoom() }
+                model.setSuspended(voiceOver || switchControl || zoomed)
             }
     }
 
@@ -326,7 +338,7 @@ struct FeedView: View {
 
     private func resetZoom() {
         zoom = 1; zoomBase = 1; pan = .zero; panBase = .zero
-        model.setSuspended(voiceOver)
+        model.setSuspended(voiceOver || switchControl)
     }
 
     private func flashHints() {

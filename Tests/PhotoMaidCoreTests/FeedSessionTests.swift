@@ -4,6 +4,47 @@ import Foundation
 
 @Suite("Feed-Session")
 struct FeedSessionTests {
+    @Test("Retry revokes decision eligibility until a fresh preview arrives",
+          arguments: [FeedIntent.keep, .markForCleanup, .later, .laterCustom])
+    func previewRetryRequiresFreshResult(_ intent: FeedIntent) {
+        var s = session(2)
+        s.markPreviewUnavailable(photo(0))
+        #expect(s.requestDecision(intent, currentRevision: 0) == nil)
+        #expect(s.pending == nil)
+        #expect(s.index == 0)
+        s.markPreviewReady(photo(0))
+        #expect(s.requestDecision(intent, currentRevision: 0)?.command.item == photo(0))
+    }
+
+    @Test("Undo from the summary restores the item and clears its later receipt")
+    func undoLastLaterReturnsToItem() async throws {
+        let ledger = try makeLedger()
+        var s = session(1)
+        try await perform(.later, &s, ledger)
+        let receipt = try #require(s.receipt)
+        try #require(s.isFinished)
+        let restored = try await ledger.undo()
+        s.applyUndo(restored)
+        #expect(restored.disposition == .undecided)
+        #expect(s.current == photo(0))
+        #expect(s.isFinished == false)
+        #expect(s.summary.reviewed == 0)
+        #expect(s.receipt == nil)
+        #expect(s.bookmarkCommand(receiptID: receipt.id) == nil)
+    }
+
+    @Test("Partial series success removes only persisted decisions; failures remain reviewable")
+    func partialSeriesKeepsFailedItems() {
+        var s = session(3)
+        s.recordDecision(photo(0), intent: .keep)
+        s.recordDecision(photo(2), intent: .markForCleanup)
+        s.dropUpcoming([photo(0), photo(2)])
+        #expect(s.items == [photo(1)])
+        #expect(s.current == photo(1))
+        #expect(s.summary == SessionSummary(kept: 1, marked: 1, later: 0))
+        #expect(s.requestDecision(.keep, currentRevision: 0)?.command.item == photo(1))
+    }
+
     func session(_ n: Int) -> FeedSession {
         var s = FeedSession(items: (0..<n).map(photo))
         for i in 0..<n { s.markPreviewReady(photo(i)) }

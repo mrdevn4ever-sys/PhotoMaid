@@ -3,6 +3,32 @@ import Testing
 
 /// Port von `GestureMachineTest.kt` (Android): keine Diagonale, Schwellen 72/380/20, lockRatio 1,3.
 @Suite struct GestureMachineTests {
+    @Test("A pinch or accessibility suspension cancels a locked swipe without a decision",
+          arguments: [Vector2(0, -100), Vector2(-100, 0), Vector2(100, 0), Vector2(0, 100)])
+    func suspensionCancelsInFlightSwipe(_ translation: Vector2) {
+        var machine = FeedGestureMachine()
+        machine.update(translation: translation)
+        machine.isSuspended = true
+        machine.cancel() // FeedViewModel.setSuspended uses this same sequence.
+        #expect(machine.end(translation: translation, velocity: .zero) == .ignored)
+        #expect(machine.phase == .idle)
+        machine.isSuspended = false
+        machine.update(translation: translation)
+        #expect(machine.end(translation: translation, velocity: .zero) != .ignored)
+    }
+
+    @Test("Further drags cannot replace a pending decision before persistence completes")
+    func pendingCommitKeepsOriginalDirection() {
+        var machine = FeedGestureMachine()
+        machine.update(translation: Vector2(-100, 0))
+        #expect(machine.end(translation: Vector2(-100, 0), velocity: .zero) == .commit(.left))
+        machine.update(translation: Vector2(100, 0))
+        #expect(machine.phase == .commitRequested(.left))
+        #expect(machine.end(translation: Vector2(100, 0), velocity: .zero) == .ignored)
+        machine.finishCommit()
+        #expect(machine.phase == .idle)
+    }
+
     @discardableResult
     func swipe(_ m: inout FeedGestureMachine, _ t: Vector2, velocity: Vector2 = .zero, steps: Int = 8)
         -> FeedGestureMachine.Resolution {

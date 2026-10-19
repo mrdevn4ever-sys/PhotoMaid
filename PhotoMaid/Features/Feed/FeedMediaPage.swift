@@ -8,11 +8,13 @@ import SwiftUI
 struct FeedMediaPage: View {
     @Environment(AppModel.self) private var app
     @Environment(\.displayScale) private var scale
+    @Environment(\.scenePhase) private var scenePhase
     let asset: MediaAsset
     let isTop: Bool
     let state: PreviewState
     let retry: Int
     let intentColor: Color?
+    let onLoading: () -> Void
     let onResult: (Bool) -> Void
     let onRetry: () -> Void
     let onSkip: () -> Void
@@ -21,6 +23,7 @@ struct FeedMediaPage: View {
     /// Nur eine kleine Vorschau liegt auf dem iPhone; das Original ist in iCloud.
     @State private var cloudOnly = false
     @State private var loadingCloud = false
+    @State private var cloudRequest = 0
     @State private var videoFailed = false
 
     var body: some View {
@@ -47,7 +50,7 @@ struct FeedMediaPage: View {
                 default:
                     EmptyView()
                 }
-                if isTop && cloudOnly && state == .ready { cloudBadge }
+                if isTop && (cloudOnly || videoFailed) && state == .ready { cloudBadge }
             }
             .clipShape(.rect(cornerRadius: AppRadii.card))
             .overlay {
@@ -55,8 +58,15 @@ struct FeedMediaPage: View {
                     RoundedRectangle(cornerRadius: AppRadii.card).strokeBorder(intentColor, lineWidth: 3)
                 }
             }
+            .onChange(of: isTop) { _, top in
+                if !top { cloudRequest = 0 }
+            }
             .task(id: "\(asset.id)-\(retry)") { await load(size: geo.size) }
-            .task(id: "\(asset.id)-\(isTop)-\(state == .ready)") { await startVideoIfNeeded() }
+            .task(id: "\(asset.id)-\(isTop)-\(state == .ready)-\(scenePhase)") { await startVideoIfNeeded() }
+            .task(id: "\(cloudRequest)-\(isTop)-\(scenePhase)") {
+                guard cloudRequest > 0, isTop, scenePhase == .active, cloudOnly || videoFailed else { return }
+                await loadFromCloud()
+            }
         }
     }
 
@@ -72,7 +82,7 @@ struct FeedMediaPage: View {
                 GlassEffectContainer(spacing: AppSpacing.xs) {
                     HStack(spacing: AppSpacing.xs) {
                         if cloudOnly {
-                            Button { Task { await loadFromCloud() } } label: { Text(key: "feed_icloud_load") }
+                            Button { cloudRequest += 1 } label: { Text(key: "feed_icloud_load") }
                                 .buttonStyle(.glassProminent).disabled(loadingCloud)
                         } else {
                             Button(action: onRetry) { Text(key: "retry") }.buttonStyle(.glass)
@@ -90,10 +100,10 @@ struct FeedMediaPage: View {
         VStack {
             HStack {
                 Spacer()
-                Button { Task { await loadFromCloud() } } label: {
+                Button { cloudRequest += 1 } label: {
                     HStack(spacing: 4) {
                         if loadingCloud { ProgressView().controlSize(.small) } else { Image(systemName: "icloud.and.arrow.down") }
-                        Text(key: "feed_icloud_load").font(AppTypography.caption.weight(.semibold))
+                        Text(key: videoFailed ? "retry" : "feed_icloud_load").font(AppTypography.caption.weight(.semibold))
                     }
                     .padding(.horizontal, AppSpacing.s)
                     .frame(minHeight: AppSpacing.minTouch)
@@ -110,7 +120,12 @@ struct FeedMediaPage: View {
 
     private func load(size: CGSize) async {
         let target = PreviewPipeline.targetSize(for: size, scale: scale)
-        switch await app.previews.image(for: asset.id, targetSize: target) {
+        onLoading()
+        image = nil
+        cloudOnly = false
+        let result = await app.previews.image(for: asset.id, targetSize: target)
+        guard !Task.isCancelled else { return }
+        switch result {
         case .image(let img):
             image = img
             cloudOnly = false
@@ -119,16 +134,20 @@ struct FeedMediaPage: View {
             cloudOnly = true
             // Kleine lokale Vorschau zeigt das Medium ehrlich (Entscheiden möglich); Original nur auf Tipp aus iCloud.
             if let thumb = await ThumbnailLoader.shared.image(asset.id, size: CGSize(width: 600, height: 600)) {
+                guard !Task.isCancelled else { return }
                 image = thumb
                 onResult(true)
             } else {
+                guard !Task.isCancelled else { return }
                 onResult(false)
             }
         case .failed:
             if asset.isVideo, let thumb = await ThumbnailLoader.shared.image(asset.id, size: CGSize(width: 600, height: 600)) {
+                guard !Task.isCancelled else { return }
                 image = thumb
                 onResult(true)
             } else {
+                guard !Task.isCancelled else { return }
                 onResult(false)
             }
         }
@@ -136,10 +155,14 @@ struct FeedMediaPage: View {
 
     /// Ausdrücklicher Tipp: Original aus iCloud laden (PhotoKit, nur Download aus der eigenen Mediathek).
     private func loadFromCloud() async {
+        guard !loadingCloud, isTop else { return }
         loadingCloud = true
         defer { loadingCloud = false }
         if asset.isVideo {
-            if case .item(let box) = await app.previews.playerItem(for: asset.id, allowNetwork: true) {
+            if case .item(let box) = await app.previews.playerItem(for: asset.id, allowNetwork: cloudOnly) {
+                guard !Task.isCancelled, isTop, scenePhase == .active else { return }
+                videoFailed = false
+                onResult(true)
                 cloudOnly = false
                 app.player.load(itemID: asset.id, item: box.value, autoplay: true, duration: asset.duration)
             }
@@ -147,6 +170,7 @@ struct FeedMediaPage: View {
         }
         let target = PreviewPipeline.targetSize(for: CGSize(width: 1200, height: 1600), scale: scale)
         if case .image(let img) = await app.previews.image(for: asset.id, targetSize: target, allowNetwork: true) {
+            guard !Task.isCancelled else { return }
             image = img
             cloudOnly = false
             onResult(true)
@@ -155,15 +179,17 @@ struct FeedMediaPage: View {
 
     /// Video des obersten Mediums laden (stumm, ohne Netzwerk). Videoende bleibt beim Medium – keine Entscheidung.
     private func startVideoIfNeeded() async {
-        guard isTop, asset.isVideo, state == .ready, app.player.itemID != asset.id else { return }
-        switch await app.previews.playerItem(for: asset.id) {
+        guard isTop, scenePhase == .active, asset.isVideo, state == .ready, app.player.itemID != asset.id else { return }
+        let result = await app.previews.playerItem(for: asset.id)
+        guard !Task.isCancelled, isTop, scenePhase == .active else { return }
+        switch result {
         case .item(let box):
             guard isTop else { return }
             app.player.load(itemID: asset.id, item: box.value, autoplay: true, duration: asset.duration)
         case .notLocallyAvailable:
             cloudOnly = true
         case .failed:
-            videoFailed = true
+            videoFailed = true // Retry locally; a decode failure is not evidence of iCloud storage.
         }
     }
 }
@@ -198,5 +224,7 @@ struct FeedVideoControls: View {
         .glassCapsule()
         .environment(\.layoutDirection, .leftToRight) // Zeitleisten werden in RTL nicht gespiegelt
         .opacity(app.player.itemID == asset.id ? 1 : 0)
+        .disabled(app.player.itemID != asset.id)
+        .accessibilityHidden(app.player.itemID != asset.id)
     }
 }

@@ -26,8 +26,8 @@ final class FeedPlayer {
         timeObserver = player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.25, preferredTimescale: 600),
                                                       queue: .main) { [weak self] time in
             MainActor.assumeIsolated {
-                guard let self, self.duration > 0 else { return }
-                self.progress = min(1, time.seconds / self.duration)
+                guard let self, self.duration > 0, time.seconds.isFinite else { return }
+                self.progress = min(1, max(0, time.seconds / self.duration))
             }
         }
     }
@@ -43,13 +43,15 @@ final class FeedPlayer {
     func load(itemID: String, item: AVPlayerItem, autoplay: Bool, duration: Double) {
         stop()
         self.itemID = itemID
-        self.duration = duration
+        self.duration = duration.isFinite ? max(0, duration) : 0
         progress = 0
         player.replaceCurrentItem(with: item)
         endObserver = NotificationCenter.default.addObserver(forName: AVPlayerItem.didPlayToEndTimeNotification,
-                                                             object: item, queue: .main) { [weak self] _ in
+                                                             object: item, queue: .main) { [weak self] notification in
             MainActor.assumeIsolated {
-                guard let self else { return }
+                guard let self, let ended = notification.object as? AVPlayerItem,
+                      self.player.currentItem === ended else { return }
+                self.progress = 1
                 if self.loops { self.player.seek(to: .zero); self.player.play() } else { self.isPlaying = false }
             }
         }
@@ -81,7 +83,8 @@ final class FeedPlayer {
     }
 
     func seek(fraction: Double) {
-        guard duration > 0 else { return }
+        guard duration > 0, fraction.isFinite, player.currentItem != nil else { return }
+        let fraction = min(1, max(0, fraction))
         player.seek(to: CMTime(seconds: duration * fraction, preferredTimescale: 600),
                     toleranceBefore: .zero, toleranceAfter: .zero)
         progress = fraction
@@ -95,6 +98,8 @@ final class FeedPlayer {
         endObserver = nil
         player.replaceCurrentItem(with: nil)
         itemID = nil
+        progress = 0
+        duration = 0
         isMuted = true
         player.isMuted = true
     }

@@ -69,6 +69,8 @@ final class FeedViewModel {
     @ObservationIgnored private var seriesByID: [String: [PhotoSeries.Member]] = [:]
     @ObservationIgnored private var pillTask: Task<Void, Never>?
     @ObservationIgnored private var noticeTask: Task<Void, Never>?
+    @ObservationIgnored private var isLoading = false
+    var displayScale: CGFloat = 1
 
     init(request: FeedRequest, app: AppModel) {
         self.request = request
@@ -86,20 +88,22 @@ final class FeedViewModel {
     // MARK: Warteschlange
 
     func load() async {
+        guard !isLoaded, !isLoading else { return }
+        isLoading = true
+        defer { isLoading = false }
         let s = ReviewSessionID()
         let today = app.today
-        let records = app.read.records
+        // Read records only after the first library snapshot is available.
         func open(_ list: [MediaAsset]) -> [ItemReference] {
             for a in list { assets[a.id] = a }
-            return ReviewQueues.normalQueue(candidates: list.map(\.reference), records: records, session: s, today: today)
+            return ReviewQueues.normalQueue(candidates: list.map(\.reference), records: app.read.records, session: s, today: today)
         }
         if !app.snapshot.loaded { app.reloadLibraryIfNeeded() }
         // Auf den ersten Stand der Mediathek warten (läuft im Hintergrund).
-        var waited = 0
-        while !app.snapshot.loaded && waited < 200 {
-            try? await Task.sleep(for: .milliseconds(50))
-            waited += 1
+        while !app.snapshot.loaded {
+            do { try await Task.sleep(for: .milliseconds(50)) } catch { return }
         }
+        guard !Task.isCancelled else { return }
         let media = app.cleanupMedia
         let candidates: [ItemReference]
         switch request.source {
@@ -110,7 +114,7 @@ final class FeedViewModel {
         case .quick(let q):
             candidates = open(QuickAccessQuery.assets(q, in: media, now: app.now))
         case .due:
-            candidates = ReviewQueues.dueQueue(records: Array(records.values), session: s, today: today)
+            candidates = ReviewQueues.dueQueue(records: Array(app.read.records.values), session: s, today: today)
                 .filter { $0.provider == .photoLibrary }
         case .collection(let c):
             let result = await CollectionEvaluator.evaluate(c, app: app)
@@ -141,6 +145,7 @@ final class FeedViewModel {
         if canReorder && order == .largest {
             sizes = await app.sizer.cachedSizes(present.compactMap { assets[$0.localIdentifier] })
         }
+        guard !Task.isCancelled else { return }
         session = FeedSession(id: s, items: canReorder ? ordered(present, order) : present)
         rebuildSeries()
         isLoaded = true
@@ -215,6 +220,9 @@ final class FeedViewModel {
         isCommitting = true
         defer { isCommitting = false }
         var failed = false
+        var succeeded = Set<ItemReference>()
+        var kept = 0
+        var marked = 0
         for a in members {
             let intent: FeedIntent = keep.contains(a.id) ? .keep : .markForCleanup
             do {
@@ -223,17 +231,21 @@ final class FeedViewModel {
                                                                action: intent == .keep ? .keep : .markForCleanup),
                                                sessionID: session.id)
                 session.recordDecision(a.reference, intent: intent)
+                succeeded.insert(a.reference)
+                if intent == .keep { kept += 1 } else { marked += 1 }
             } catch {
                 failed = true
             }
         }
         await app.publishRead()
         laterPill = nil
-        session.dropUpcoming(Set(members.map(\.reference)))
+        session.dropUpcoming(succeeded)
         app.player.stop()
         refreshWindow()
-        Haptics.commit()
-        showNotice(L("series_done", keep.count, members.count - keep.count))
+        if !succeeded.isEmpty {
+            Haptics.commit()
+            showNotice(L("series_done", kept, marked))
+        }
         if failed { app.showError(L("error_decision_not_saved")) }
     }
 
@@ -266,13 +278,20 @@ final class FeedViewModel {
             session.markPreviewUnavailable(ref)
         }
         for ref in window where previews[ref] == nil { previews[ref] = .loading }
-        let size = PreviewPipeline.targetSize(for: viewSize, scale: UITraitCollection.current.displayScale)
+        let size = PreviewPipeline.targetSize(for: viewSize, scale: displayScale)
         app.previews.updateCache(window: window.map(\.localIdentifier), targetSize: size)
+    }
+
+    func previewLoading(_ ref: ItemReference) {
+        guard previews[ref] != nil else { return }
+        previews[ref] = .loading
+        session.markPreviewUnavailable(ref)
     }
 
     func retryPreview(_ ref: ItemReference) {
         guard previews[ref] != nil else { return }
         previews[ref] = .loading
+        session.markPreviewUnavailable(ref)
         retries[ref, default: 0] += 1
     }
 
@@ -286,7 +305,7 @@ final class FeedViewModel {
     // MARK: Gesten
 
     func dragChanged(_ t: CGSize) {
-        guard customLater == nil else { return }
+        guard !isCommitting, customLater == nil, protectedFavorite == nil else { return }
         machine.update(translation: Vector2(t.width, t.height))
         lockedDirection = machine.lockedDirection
         let ready = machine.readyToCommit ? machine.lockedDirection : nil
@@ -297,8 +316,9 @@ final class FeedViewModel {
     }
 
     func dragEnded(_ t: CGSize, velocity v: CGSize) {
+        guard !isCommitting else { return }
         readyDirection = nil
-        guard customLater == nil else { dragCancelled(); return }
+        guard customLater == nil, protectedFavorite == nil else { dragCancelled(); return }
         switch machine.end(translation: Vector2(t.width, t.height), velocity: Vector2(v.width, v.height)) {
         case .commit(let d): perform(FeedIntent(d), velocity: v)
         case .cancelled, .ignored: resetOffset()
@@ -572,9 +592,15 @@ final class FeedViewModel {
 
     func undo() async {
         guard !isCommitting, customLater == nil else { return }
+        isCommitting = true
+        defer { isCommitting = false }
+        dragCancelled()
+        pickerReceipt = nil
+        protectedFavorite = nil
         laterPill = nil
         let before = session.index
         guard let record = await app.undo() else { return }
+        app.player.stop()
         session.applyUndo(record)
         Haptics.tick()
         if session.index < before && !reduceMotion {
