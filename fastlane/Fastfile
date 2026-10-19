@@ -2,6 +2,7 @@
 # Anleitung: docs/CI_TESTFLIGHT.md. Keine Zertifikate/Schlüssel im Repository.
 require "base64"
 require "securerandom"
+require "shellwords"
 require "tmpdir"
 
 default_platform(:ios)
@@ -39,20 +40,39 @@ platform :ios do
                     unlock: true, timeout: 3600, lock_when_sleeps: false)
     p12 = File.join(runner_temp, "dist.p12")
     File.binwrite(p12, Base64.decode64(ENV.fetch("APPLE_CERTIFICATE_BASE64")))
-    import_certificate(certificate_path: p12, certificate_password: ENV.fetch("APPLE_CERTIFICATE_PASSWORD"),
-                       keychain_path: keychain, keychain_password: keychain_password)
+    # Repackage the same certificate/key for macOS security import; never replace CI secrets.
+    legacy_p12 = File.join(runner_temp, "dist-legacy.p12")
+    key_pem = File.join(runner_temp, "dist-key.pem")
+    previous_umask = File.umask(0o077)
+    begin
+      sh("openssl pkcs12 -in #{p12.shellescape} -nodes -passin env:APPLE_CERTIFICATE_PASSWORD " \
+         "-out #{key_pem.shellescape}", log: false)
+      sh("openssl pkcs12 -export -in #{key_pem.shellescape} -certpbe PBE-SHA1-3DES -keypbe PBE-SHA1-3DES " \
+         "-macalg sha1 -passout env:APPLE_CERTIFICATE_PASSWORD -out #{legacy_p12.shellescape}", log: false)
+      import_certificate(certificate_path: legacy_p12, certificate_password: ENV.fetch("APPLE_CERTIFICATE_PASSWORD"),
+                         keychain_path: keychain, keychain_password: keychain_password)
+    ensure
+      File.delete(key_pem) if File.exist?(key_pem)
+      File.delete(legacy_p12) if File.exist?(legacy_p12)
+      File.umask(previous_umask)
+    end
+    identities = sh("security find-identity -v -p codesigning #{keychain.shellescape}", log: false)
+    identity = identities[/"((?:Apple|iPhone|iOS) Distribution[^"]*)"/, 1]
+    UI.user_error!("Kein Distributions-Zertifikat mit privatem Schluessel im CI-Schluesselbund") unless identity
     profile = File.join(runner_temp, "profile.mobileprovision")
     File.binwrite(profile, Base64.decode64(ENV.fetch("APPLE_PROVISIONING_PROFILE_BASE64")))
     install_provisioning_profile(path: profile)
     profile_uuid = sh("security cms -D -i '#{profile}' | plutil -extract UUID raw -o - -", log: false).strip
     signing_xcargs = common_xcargs + [
       "CODE_SIGN_STYLE=Manual",
-      "CODE_SIGN_IDENTITY=Apple Distribution",
-      "PROVISIONING_PROFILE_SPECIFIER=#{profile_uuid}",
+      "CODE_SIGN_IDENTITY=#{identity}",
+      # Only the app target consumes this value; Swift packages require no provisioning profile.
+      "PM_PROVISIONING_PROFILE=#{profile_uuid}",
       "OTHER_CODE_SIGN_FLAGS=--keychain=#{keychain}"
     ]
     export_options = {
       signingStyle: "manual",
+      signingCertificate: identity,
       teamID: team_id,
       provisioningProfiles: { bundle_id => profile_uuid }
     }
@@ -65,7 +85,8 @@ platform :ios do
       clean: true,
       output_directory: "build",
       output_name: "PhotoMaid.ipa",
-      xcargs: ([signing_xcargs.join(" "), export_xcargs].compact.join(" ")),
+      xcargs: ([signing_xcargs.map { |arg| key, value = arg.split("=", 2); "#{key}=#{value.shellescape}" }.join(" "),
+                export_xcargs].compact.join(" ")),
       export_method: "app-store",
       export_xcargs: export_xcargs,
       export_options: export_options,
@@ -76,7 +97,7 @@ platform :ios do
       api_key: api_key,
       app_identifier: bundle_id,
       changelog: ENV.fetch("CHANGELOG", "Interner Testbuild"),
-      skip_waiting_for_build_processing: true,
+      skip_waiting_for_build_processing: false,
       distribute_external: false
     )
   end
