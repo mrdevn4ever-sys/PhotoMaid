@@ -46,7 +46,8 @@ Geprüfter App-Quellstand: `8fc221c238df4ef09921ed3b5f3d82c810bc216e`. [CI-Lauf 
 | Erweiterter Workspace-/Studio-UI-Test auf iPhone | PASS: 1/1, 0 Fehler, 0 übersprungen; iPhone 17 / iOS Simulator 26.2 |
 | Derselbe UI-Test im breiten Fenster | PASS: 1/1, 0 Fehler, 0 übersprungen; iPad mini (A17 Pro) / iOS Simulator 26.4.1 |
 | Text-/CTA-Kontraste | PASS: 24 Farbpaare in vier Modi >= 4,5:1 (Minimum 4,7:1); keine Messung sämtlicher Fotos/Glasflächen |
-| Aktueller TestFlight-Upload | noch nicht ausgeführt |
+| TestFlight von `main` | PASS: PhotoMaid **1.0 (19)**, Apple-Verarbeitung abgeschlossen und intern verteilt |
+| Privacy-Prüfung im Uploadlauf | PASS: 8 Prüfer-Regressionstests, App-Quellmanifest sowie alle 3 Manifeste in der tatsächlich signierten IPA |
 
 Der vorhandene Workspace-Test prüft Feed-/Fensteranpassung und öffnet Heute, Fotos, Aufräumen, Studio, Verlauf, Editor, Collage, Einstellungen und Tresor. Zusätzlich wurden deutsche Dark-Mode-Ansichten, alle vier Erstellen-Einstiege, Werkzeug-/PDF-/Gespeichert-Zugänge, deren Touchflächen und der tatsächliche Weg Verkleinern → Zurück zu Studio geprüft. Alle bestehenden Assertions sind erhalten. Die Prüfung ist keine vollständige Ausführung jeder Export-/Spiel-/Tresoroperation mit produktiven Daten.
 
@@ -55,3 +56,11 @@ Sieben echte native Aufnahmen wurden angesehen. Abgelegt sind ausgewählte unver
 Weitere Belege: [native-results.json](native-results.json), [iPhone-Ergebnis](iphone-summary.json), [breites Fenster](wide-summary.json), [Kontraste](contrast.json). Vollständige Protokolle, Screenshot-Anhänge und Hierarchien sind in den CI-Artefakten `ios-build-report`, `core-test-log`, `game-visual-iphone` und `game-visual-evidence` des verlinkten Laufs erhalten.
 
 Ein breites Simulatorfenster ist kein Nachweis echter Fold-/Unfold-Hardware. Reales iPhone, echter iCloud-Download, Face ID und sämtliche Accessibility-/Berechtigungs-/Migrationskombinationen wurden in diesem Design-Auftrag nicht neu auf Hardware geprüft. Fachdateien und Datenformate sind unverändert; daraus folgt keine allgemeine Sicherheitszertifizierung. Kein App-Store-Release oder externe Tester-Verteilung.
+
+## Main und TestFlight
+
+Nach grüner CI wurde GitHub-main ohne Force-Push auf `f1ccc2be1bc097f7249f718cabc4516d181fa6c7` vorgezogen. Dieser Commit enthält gegenüber dem geprüften App-Quellstand `8fc221c` ausschliesslich Dokumentation und Testbelege. Die bestehende Feature- und die Experimentier-Branch wurden nicht geändert.
+
+[TestFlight-Lauf 39218181169](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39218181169) lief nachweislich auf Branch `main`, Commit `f1ccc2b`. Reguläres Release-Archiv, vorhandene manuelle Signierung und Export bestanden. **Version 1.0, Build 19** wurde am **19.10.2026 um 07:54:16 UTC** hochgeladen; Apple schloss die Verarbeitung um **07:59:58 UTC** ab. Changelog und **Verteilung an interne Tester** wurden anschliessend bestätigt. Keine externe Verteilung oder App-Store-Veröffentlichung.
+
+Die bereits auf identischem App-Code bestandenen Unit-Tests wurden im Uploadlauf über den vorhandenen Parameter `run_tests=false` nicht erneut ausgeführt. Privacy-Prüfer-Tests und die Prüfung der tatsächlichen IPA liefen regulär. Belege: [testflight.json](testflight.json), [Privacy-Bericht der signierten IPA](privacy-manifests.json), vollständige Logs und `testflight-report` im verlinkten Workflow. Nach dem hochgeladenen Commit ändern weitere Abschlussbelege nur diesen Dokumentationsordner.
