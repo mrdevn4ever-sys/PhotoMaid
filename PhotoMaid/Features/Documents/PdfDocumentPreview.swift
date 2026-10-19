@@ -37,7 +37,8 @@ struct PdfDocumentPreview: UIViewRepresentable {
 
     static func dismantleUIView(_ view: PDFView, coordinator: Coordinator) {
         NotificationCenter.default.removeObserver(coordinator)
-        view.document = nil
+        // Let PDFView release its document with its text/AX subviews. Clearing it here
+        // tears the page tree out from under outstanding PDFKit accessibility work.
     }
 
     @MainActor final class Coordinator: NSObject {

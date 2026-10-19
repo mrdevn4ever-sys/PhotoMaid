@@ -441,7 +441,7 @@ import XCTest
         launch("pdf-studio", language: "de", pdfFiles: true)
         let preview = app.descendants(matching: .any)["pdf.preview"].firstMatch
         XCTAssertTrue(preview.waitForExistence(timeout: 15))
-        XCTAssertGreaterThan(preview.frame.height, app.frame.height * 0.3)
+        XCTAssertGreaterThan(preview.frame.height, app.frame.height * 0.5, "The PDF gets most of the editing workspace")
         XCTAssertTrue(app.staticTexts["pdf.pageCount"].label.contains("von 3"))
         checkpoint("pdf_live_preview_three_pages", app: app)
         app.buttons["pdf.rotate"].tap()

@@ -32,6 +32,9 @@ struct PdfStudioView: View {
                     get: { editor.focusedIndex },
                     set: { if editor.pages.indices.contains($0) { editor.focusedID = editor.pages[$0].id } }
                 ), query: query)
+                // PDFKit's text/AX layer must not keep pages from the previous document
+                // while a rotation/reorder installs a different page tree.
+                .id(ObjectIdentifier(document))
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 pageStrip
                 editActions
@@ -78,7 +81,8 @@ struct PdfStudioView: View {
         .fileImporter(isPresented: $importing, allowedContentTypes: [.pdf, .image], allowsMultipleSelection: true) { result in
             switch result {
             case .success(let urls): if !urls.isEmpty { request = ImportRequest(urls: urls) }
-            case .failure(let error): report(error)
+            case .failure(let error):
+                if (error as NSError).code != NSUserCancelledError { report(error) }
             }
         }
         .task(id: request?.id) {
@@ -138,7 +142,11 @@ struct PdfStudioView: View {
                         }
                     }.padding(.horizontal)
                 }
+                .frame(height: 100)
                 .onChange(of: editor.focusedID) { _, id in if let id { proxy.scrollTo(id, anchor: .center) } }
+                .onChange(of: editor.pages) { _, _ in
+                    if let id = editor.focusedID { proxy.scrollTo(id, anchor: .center) }
+                }
             }
         }
         .background(AppColors.surface)
@@ -146,18 +154,19 @@ struct PdfStudioView: View {
 
     private var editActions: some View {
         ViewThatFits(in: .horizontal) {
-            HStack(spacing: 16) { actionButtons }.padding(8)
-            ScrollView(.horizontal) { HStack(spacing: 16) { actionButtons }.padding(8) }
+            HStack(spacing: 8) { actionButtons }.padding(8)
+            ScrollView(.horizontal) { HStack(spacing: 8) { actionButtons }.padding(8) }
+                .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity).background(AppColors.surface)
     }
 
     @ViewBuilder private var actionButtons: some View {
-        editButton("arrow.left", "pdf_page_earlier", "pdf.earlier", disabled: editor.focusedIndex == 0) {
+        editButton("arrow.up", "pdf_page_earlier", "pdf.earlier", disabled: editor.focusedIndex == 0) {
             try editor.moveFocused(by: -1)
         }
         editButton("rotate.right", "pdf_page_rotate", "pdf.rotate") { try editor.rotateFocused() }
-        editButton("arrow.right", "pdf_page_later", "pdf.later", disabled: editor.focusedIndex == editor.pages.count - 1) {
+        editButton("arrow.down", "pdf_page_later", "pdf.later", disabled: editor.focusedIndex == editor.pages.count - 1) {
             try editor.moveFocused(by: 1)
         }
         editButton("trash", "remove", "pdf.remove", disabled: editor.pages.count <= 1 || (selecting && (editor.selectedIDs.isEmpty || editor.selectedIDs.count == editor.pages.count))) {
@@ -172,8 +181,10 @@ struct PdfStudioView: View {
                 Image(systemName: symbol)
                 Text(verbatim: L(label)).font(AppTypography.caption).fixedSize()
             }.frame(minWidth: 48, minHeight: 44)
+                .padding(6)
+                .background(AppColors.accent.opacity(0.12), in: .rect(cornerRadius: 10))
         }
-        .buttonStyle(.bordered).disabled(disabled)
+        .buttonStyle(.plain).foregroundStyle(AppColors.accent).disabled(disabled).opacity(disabled ? 0.4 : 1)
         .accessibilityLabel(Text(verbatim: L(label))).accessibilityIdentifier(id)
     }
 
