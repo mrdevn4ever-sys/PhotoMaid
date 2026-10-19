@@ -1,0 +1,9 @@
+{
+  "Sources/PhotoMaidCore/Games/PhotoBlocksGame.swift": "12a08ae88377071aea3b629363938994dec65cf9c4aad80fa8da16ad402d8c3c",
+  "Sources/PhotoMaidCore/Games/PhotoBlocksShapes.swift": "dcf9ee3d8ee338e0933c87548bcfb4b64ae1b3f2613550bc2a0502461f41d72a",
+  "Sources/PhotoMaidCore/Games/PhotoBlocksPhotos.swift": "79c1cd3a8b3684751e31432f185a439600f91414940c817f120fc28eb731e1fa",
+  "Sources/PhotoMaidCore/Games/PhotoBlocksInput.swift": "4b8460d4f67f9c004ba2ff24df19affb8d4eaf5421b4daa855013e3e25e71d57",
+  "Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift": "f7569b48406389e899bc808e256ae428367245b74bdcd9a76e39067011fbcd8a",
+  "Tests/PhotoMaidCoreTests/PhotoBlocksPhotosTests.swift": "5f351dd903a8da6c6396293e1783b568cae294348d5a3c775b5152897346071e",
+  "Tests/PhotoMaidCoreTests/PhotoBlocksInputTests.swift": "408fb860407196b1766d5e120a4fcfb9e71035191813db08eca05e79662c743f"
+}

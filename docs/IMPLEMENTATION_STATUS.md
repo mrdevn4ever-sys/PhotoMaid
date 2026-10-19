@@ -1,6 +1,18 @@
 # Implementierungsstatus
 
-## Aktuell: Design-Übernahme auf main und TestFlight 19 (19.10.2026)
+## Aktuell: Analyse-Meldungen, PDF und Foto Blocks (19.10.2026)
+
+Korrekturen auf der vollständigen main-Funktionsbasis, App-Quellstand `25648d4`:
+
+- Fotoanalyse erzeugt keine neuen sichtbaren fortgesetzten System-Aufgaben. Stille, von iOS begrenzte Hintergrundzeit mit Checkpoint und Fortsetzen beim Öffnen ersetzt die fehlschlagenden Analyse-Karten. Alte fertige Systemkarten lassen sich aus der App nicht nachträglich entfernen. Exporte unverändert.
+- „PDF erstellen“ bleibt erhalten; zusätzlich PDF aus ausgewählten PDFs/Bilddateien. Der Editor zeigt die ausgewählte Seite groß und erlaubt Drehen, Umsortieren, Entfernen, Ergänzen, Suche und Speichern/Teilen einer neuen Kopie.
+- Foto Blocks verwendet neue Formen mit je vier quadratischen Zellen. 9×17-Feld, Fotomechanik, Tempo, Punkte, iCloud-Quelle und Tresorfilter bleiben erhalten; alte Runden und Rekorde werden bewahrt. Keine verbindliche rechtliche Freigabe der Gesamtgestaltung.
+
+**Geprüft:** 502 Core-Tests; komplette native Vorgängerprüfung 102 Tests (15 PDF, 5 Analyse) und erneut erfolgreiche native Build-/Unit-Phase des finalen Quellstands. iPhone 17/iOS 26.2: **2/2 gezielte UI-Tests**, keine Fehler oder Skips; Originalaufnahmen angesehen. Der zusätzliche breite Durchlauf lieferte über 15 Minuten kein Ergebnis und wurde abgebrochen: **breite UI-Abnahme offen**, Ursache nicht verifiziert. 14 neue Texte in allen 16 Sprachen; alte Übersetzungen unverändert.
+
+**Noch nicht in TestFlight. Zuletzt verteilt: 1.0 (19).** [Abschlussbericht, geänderte Dateien, Prüfbelege, Screenshots und Grenzen](pdf-editor-20261019/README.md).
+
+## Design-Übernahme und TestFlight 19 (19.10.2026)
 
 **PhotoMaid 1.0 (Build 19) von `main` ist von Apple verarbeitet und intern verteilt.** Upload **07:54:16 UTC**, Verarbeitung und Verteilung **07:59:58 UTC**. [Erfolgreicher TestFlight-Lauf 39218181169](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39218181169), Archiv-Quellstand `f1ccc2b`.
 

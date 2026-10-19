@@ -1,0 +1,89 @@
+Building for debugging...
+[3 / 18] PhotoMaidCoreTests-product
+[5 / 16] PhotoMaidCoreTests-product
+[9 / 17] PhotoMaidCoreTests-product
+[13 / 20] PhotoMaidCoreTests-test-runner
+[17 / 20] PhotoMaidCoreTests-test-runner
+[21 / 21] PhotoMaidCoreTests-test-runner
+Build complete! (4.57 secs)
+Test Suite 'All tests' started at 2026-10-19 09:24:45.172
+Test Suite 'Debug-linux-x86_64.xctest' started at 2026-10-19 09:24:45.174
+Test Suite 'Debug-linux-x86_64.xctest' passed at 2026-10-19 09:24:45.174
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.0 (0.0) seconds
+Test Suite 'All tests' passed at 2026-10-19 09:24:45.174
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.0 (0.0) seconds
+◇ Test run started.
+↳ Testing Library Version: 6.4.1 (804dc4530ef3666)
+↳ Target Platform: x86_64-unknown-linux-gnu
+◇ Suite PhotoBlocksInputTests started.
+◇ Suite PhotoBlocksGameTests started.
+◇ Suite PhotoBlocksPhotosTests started.
+◇ Test gravityFallsAndFloorLocksExactlyOnce() started.
+◇ Test tapRotatesExactlyOnceAndLongPressDoesNot() started.
+◇ Test axisLockCancellationAndRapidSuccessiveGesturesRemainSeparate() started.
+◇ Test slowDragSoftDropsButFastDownwardFlickHardDropsOnce() started.
+◇ Test twentyContinuousLevelTransitionsPausesAndDifferentBoards() started.
+◇ Test sparseTouchSamplesRepeatByDistanceWithoutDependingOnFrameRate() started.
+◇ Test exactTenRowsAndGameOverAreDetected() started.
+◇ Test swipesMoveOnceThenRepeatByDistanceAndNeverRotate() started.
+◇ Test stationaryTouchUpDoesNotEraseTheFinalFastMovementSample() started.
+◇ Test fourSquareLineClearsFourRowsAndRevealsFortyPercent() started.
+◇ Test limitedAccessVaultMovesAndRevocationRemoveEveryExcludedIdentifier() started.
+◇ Test softDropDoesNotConvertOldGravityTimeIntoAnInstantMultiRowFall() started.
+◇ Test restingPieceCannotAvoidLockForeverByShufflingAndGhostStopsOnAnObstacle() started.
+◇ Test stripCoordinatesAreFixedClampedAndIndependentOfBoardRows() started.
+◇ Test archiveRetainsPhotoScopeAndSeedWithoutPersistingIdentifiers() started.
+◇ Test changedAlbumFiltersCannotReuseAnOlderSnapshot() started.
+◇ Test formsAreDistinctConnectedAndRotateWithoutLosingCells() started.
+◇ Test photoOrderNeverRepeatsUntilExhaustedAndCyclesDeterministically() started.
+◇ Test collisionAndBoundariesNeverAllowAnIllegalMove() started.
+◇ Test fourSquarePiecesRotateAtBothWallsAndTheFloorAndLockFourCells(_:) started.
+◇ Test pausesStopGravityDropInputAndCelebrationsWithoutCatchUp() started.
+◇ Test rowsClearTogetherAndRemainingCellsCompactCorrectly() started.
+◇ Test discoveryPausesForTwoSecondsCarriesRowsAndKeepsTheBoard() started.
+◇ Test rotationAtWallAndFloorKicksOnlyToLegalPositions() started.
+◇ Test seededBagsAreFairAndReproducible() started.
+◇ Test oldSavedPiecesAndRecordsSurviveWhileFutureDrawsUseFourSquares() started.
+◇ Test fourCellTallFormCanRotateAtTheFloorWithoutCrossingAnyBoundary() started.
+◇ Test persistenceRoundTripContinuesDeterministicallyAndContainsNoPhotos() started.
+◇ Test tenThousandRealInputsAndRestartsKeepAllBoardInvariants() started.
+◇ Test case passing 1 argument shape → .square to fourSquarePiecesRotateAtBothWallsAndTheFloorAndLockFourCells(_:) started.
+◇ Test case passing 1 argument shape → .line to fourSquarePiecesRotateAtBothWallsAndTheFloorAndLockFourCells(_:) started.
+◇ Test case passing 1 argument shape → .cornerLeft to fourSquarePiecesRotateAtBothWallsAndTheFloorAndLockFourCells(_:) started.
+◇ Test case passing 1 argument shape → .cornerRight to fourSquarePiecesRotateAtBothWallsAndTheFloorAndLockFourCells(_:) started.
+◇ Test case passing 1 argument shape → .crown to fourSquarePiecesRotateAtBothWallsAndTheFloorAndLockFourCells(_:) started.
+◇ Test case passing 1 argument shape → .stepLeft to fourSquarePiecesRotateAtBothWallsAndTheFloorAndLockFourCells(_:) started.
+◇ Test case passing 1 argument shape → .stepRight to fourSquarePiecesRotateAtBothWallsAndTheFloorAndLockFourCells(_:) started.
+✔ Test tapRotatesExactlyOnceAndLongPressDoesNot() passed after 0.004 seconds.
+✔ Test sparseTouchSamplesRepeatByDistanceWithoutDependingOnFrameRate() passed after 0.005 seconds.
+✔ Test slowDragSoftDropsButFastDownwardFlickHardDropsOnce() passed after 0.005 seconds.
+✔ Test gravityFallsAndFloorLocksExactlyOnce() passed after 0.005 seconds.
+✔ Test swipesMoveOnceThenRepeatByDistanceAndNeverRotate() passed after 0.005 seconds.
+✔ Test stationaryTouchUpDoesNotEraseTheFinalFastMovementSample() passed after 0.005 seconds.
+✔ Test exactTenRowsAndGameOverAreDetected() passed after 0.005 seconds.
+✔ Test softDropDoesNotConvertOldGravityTimeIntoAnInstantMultiRowFall() passed after 0.005 seconds.
+✔ Test stripCoordinatesAreFixedClampedAndIndependentOfBoardRows() passed after 0.005 seconds.
+✔ Test fourSquareLineClearsFourRowsAndRevealsFortyPercent() passed after 0.005 seconds.
+✔ Test restingPieceCannotAvoidLockForeverByShufflingAndGhostStopsOnAnObstacle() passed after 0.005 seconds.
+✔ Test changedAlbumFiltersCannotReuseAnOlderSnapshot() passed after 0.005 seconds.
+✔ Test axisLockCancellationAndRapidSuccessiveGesturesRemainSeparate() passed after 0.005 seconds.
+✔ Test collisionAndBoundariesNeverAllowAnIllegalMove() passed after 0.005 seconds.
+✔ Test photoOrderNeverRepeatsUntilExhaustedAndCyclesDeterministically() passed after 0.005 seconds.
+✔ Test limitedAccessVaultMovesAndRevocationRemoveEveryExcludedIdentifier() passed after 0.005 seconds.
+✔ Test pausesStopGravityDropInputAndCelebrationsWithoutCatchUp() passed after 0.005 seconds.
+✔ Test discoveryPausesForTwoSecondsCarriesRowsAndKeepsTheBoard() passed after 0.005 seconds.
+✔ Test rowsClearTogetherAndRemainingCellsCompactCorrectly() passed after 0.005 seconds.
+✔ Test archiveRetainsPhotoScopeAndSeedWithoutPersistingIdentifiers() passed after 0.005 seconds.
+✔ Test formsAreDistinctConnectedAndRotateWithoutLosingCells() passed after 0.005 seconds.
+✔ Test seededBagsAreFairAndReproducible() passed after 0.005 seconds.
+✔ Test rotationAtWallAndFloorKicksOnlyToLegalPositions() passed after 0.005 seconds.
+✔ Test fourCellTallFormCanRotateAtTheFloorWithoutCrossingAnyBoundary() passed after 0.005 seconds.
+✔ Test fourSquarePiecesRotateAtBothWallsAndTheFloorAndLockFourCells(_:) with 7 test cases passed after 0.005 seconds.
+✔ Test persistenceRoundTripContinuesDeterministicallyAndContainsNoPhotos() passed after 0.005 seconds.
+✔ Suite PhotoBlocksInputTests passed after 0.006 seconds.
+✔ Suite PhotoBlocksPhotosTests passed after 0.006 seconds.
+✔ Test oldSavedPiecesAndRecordsSurviveWhileFutureDrawsUseFourSquares() passed after 0.006 seconds.
+✔ Test tenThousandRealInputsAndRestartsKeepAllBoardInvariants() passed after 0.358 seconds.
+✔ Test twentyContinuousLevelTransitionsPausesAndDifferentBoards() passed after 0.378 seconds.
+✔ Suite PhotoBlocksGameTests passed after 0.378 seconds.
+✔ Test run with 29 tests in 3 suites passed after 0.379 seconds.

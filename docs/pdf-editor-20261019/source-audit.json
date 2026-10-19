@@ -1,0 +1,111 @@
+{
+  "base_main": "c3a5e0603a19d1e495594d64fd9ed36c9be99254",
+  "source_commit": "25648d45424fe8aa878de01b5becf319782884da",
+  "changed_files": [
+    "PhotoMaid/App/PdfEditorFixtures.swift",
+    "PhotoMaid/Features/Analysis/SmartReviewView.swift",
+    "PhotoMaid/Features/Blocks/PhotoBlocksBoard.swift",
+    "PhotoMaid/Features/Documents/PdfDocumentPreview.swift",
+    "PhotoMaid/Features/Documents/PdfEditorModel.swift",
+    "PhotoMaid/Features/Documents/PdfFromPhotosView.swift",
+    "PhotoMaid/Features/Documents/PdfStudioView.swift",
+    "PhotoMaid/Features/Studio/StudioView.swift",
+    "PhotoMaid/Infrastructure/Analysis/AnalysisBackgroundTime.swift",
+    "PhotoMaid/Infrastructure/Analysis/AnalysisController.swift",
+    "PhotoMaid/Infrastructure/Documents/PdfServices.swift",
+    "PhotoMaid/Resources/Localizable.xcstrings",
+    "PhotoMaid/Resources/ios_strings.json",
+    "PhotoMaidTests/AnalysisBackgroundTimeTests.swift",
+    "PhotoMaidTests/PdfEditorTests.swift",
+    "PhotoMaidUITests/PhotoGameVisualTests.swift",
+    "Sources/PhotoMaidCore/Games/PhotoBlocksGame.swift",
+    "Sources/PhotoMaidCore/Games/PhotoBlocksShapes.swift",
+    "Tests/PhotoMaidCoreTests/PhotoBlocksGameTests.swift",
+    "scripts/ci/game_visual_tests.sh",
+    "scripts/i18n/ios_strings_part_analysis_background.py",
+    "scripts/i18n/ios_strings_part_pdf_editor.py"
+  ],
+  "protected_paths_unchanged": [
+    "PhotoMaid/Features/Snake/",
+    "PhotoMaid/Features/Memory/",
+    "PhotoMaid/Features/Feed/",
+    "PhotoMaid/Features/Vault/",
+    "PhotoMaid/Infrastructure/Vault/",
+    "PhotoMaid/Infrastructure/Media/",
+    ".github/workflows/",
+    "project.yml"
+  ],
+  "catalogs": {
+    "PhotoMaid/Resources/ios_strings.json": {
+      "previous_values_unchanged": true,
+      "added_keys": [
+        "ana2_background_silent",
+        "ana2_background_silent_note",
+        "pdf_editor_actions",
+        "pdf_editor_subtitle",
+        "pdf_files_add",
+        "pdf_files_choose",
+        "pdf_files_create",
+        "pdf_files_failed",
+        "pdf_files_hint",
+        "pdf_files_large",
+        "pdf_page_earlier",
+        "pdf_page_later",
+        "pdf_page_rotate",
+        "pdf_pages_select"
+      ]
+    },
+    "PhotoMaid/Resources/Localizable.xcstrings": {
+      "previous_values_unchanged": true,
+      "added_keys": [
+        "ana2_background_silent",
+        "ana2_background_silent_note",
+        "pdf_editor_actions",
+        "pdf_editor_subtitle",
+        "pdf_files_add",
+        "pdf_files_choose",
+        "pdf_files_create",
+        "pdf_files_failed",
+        "pdf_files_hint",
+        "pdf_files_large",
+        "pdf_page_earlier",
+        "pdf_page_later",
+        "pdf_page_rotate",
+        "pdf_pages_select"
+      ]
+    }
+  },
+  "analysis_creates_no_continued_processing_task": true,
+  "historical_ui_run_8d94967_and_confirmation_39c5af8_identical": {
+    "PhotoMaid": {
+      "8d94967": "13abd11debbfb29b7bd5063824dd2971571e315d",
+      "39c5af8": "13abd11debbfb29b7bd5063824dd2971571e315d"
+    },
+    "Sources": {
+      "8d94967": "c949bff453d7b16e9c8f725e555d94b06bd2b809",
+      "39c5af8": "c949bff453d7b16e9c8f725e555d94b06bd2b809"
+    },
+    "PhotoMaidTests": {
+      "8d94967": "21ca8197d5d939dc9035103862137b5b8485637b",
+      "39c5af8": "21ca8197d5d939dc9035103862137b5b8485637b"
+    },
+    "PhotoMaidUITests": {
+      "8d94967": "3b7a63df861c9dcbb1f33c9f1324abe914528aad",
+      "39c5af8": "3b7a63df861c9dcbb1f33c9f1324abe914528aad"
+    },
+    "scripts/ci/game_visual_tests.sh": {
+      "8d94967": "4c584bdd0084a8e982d40854b254c5729e8808b8",
+      "39c5af8": "4c584bdd0084a8e982d40854b254c5729e8808b8"
+    }
+  },
+  "page_navigation_correction_after_39c5af8": [
+    "PhotoMaid/Features/Documents/PdfDocumentPreview.swift",
+    "PhotoMaidUITests/PhotoGameVisualTests.swift"
+  ],
+  "additional_photo_source_and_game_files_unchanged": [
+    "PhotoMaid/Features/Games/PhotoGamePhotos.swift",
+    "PhotoMaid/DesignSystem/Components.swift",
+    "PhotoMaid/Features/Studio/StudioMediaPicker.swift",
+    "Sources/PhotoMaidCore/Games/PhotoSnakeGame.swift"
+  ]
+}

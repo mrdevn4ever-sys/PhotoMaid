@@ -1,0 +1,51 @@
+{
+  "source_commit": "25648d45424fe8aa878de01b5becf319782884da",
+  "baseline_main": "c3a5e0603a19d1e495594d64fd9ed36c9be99254",
+  "core": {
+    "workflow": 39231638919,
+    "job": 117990746058,
+    "xctest": 24,
+    "swift_testing": 478,
+    "total": 502,
+    "result": "PASS"
+  },
+  "complete_native_suite": {
+    "workflow": 39229958980,
+    "job": 117985258554,
+    "source": "39c5af831a820e21fb3d0df8e37266df1accc2ae",
+    "xctest": 33,
+    "swift_testing": 69,
+    "total": 102,
+    "result": "PASS"
+  },
+  "current_source_native_build_and_unit_phase": {
+    "workflow": 39231638919,
+    "job": 117990746281,
+    "result": "PASS",
+    "native_test_tree_unchanged_from_complete_green_run": true
+  },
+  "iphone_ui": {
+    "workflow": 39231638919,
+    "artifact": 12177572574,
+    "exit": 0,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "device": {
+      "architecture": "arm64",
+      "deviceId": "24E049C8-1AEC-4A9D-95C6-C11145A59D62",
+      "deviceName": "iPhone 17",
+      "modelName": "iPhone 17",
+      "osBuildNumber": "23C54",
+      "osVersion": "26.2",
+      "platform": "iOS Simulator"
+    }
+  },
+  "wide_ui": {
+    "workflow": 39231638919,
+    "result": "NOT VERIFIED",
+    "explanation": "No final result after more than 15 minutes. Cancellation and force-cancellation requested; cause unverified."
+  },
+  "testflight_upload_started": false,
+  "last_previously_distributed_build": "1.0 (19)"
+}

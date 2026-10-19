@@ -1,0 +1,49 @@
+{
+  "devicesAndConfigurations" : [
+    {
+      "device" : {
+        "architecture" : "arm64",
+        "deviceId" : "24E049C8-1AEC-4A9D-95C6-C11145A59D62",
+        "deviceName" : "iPhone 17",
+        "modelName" : "iPhone 17",
+        "osBuildNumber" : "23C54",
+        "osVersion" : "26.2",
+        "platform" : "iOS Simulator"
+      },
+      "expectedFailures" : 0,
+      "failedTests" : 1,
+      "passedTests" : 0,
+      "skippedTests" : 0,
+      "testPlanConfiguration" : {
+        "configurationId" : "1",
+        "configurationName" : "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription" : "PhotoMaid · Built with macOS 26.6.2",
+  "expectedFailures" : 0,
+  "failedTests" : 1,
+  "finishTime" : 1792399833.484,
+  "passedTests" : 0,
+  "result" : "Failed",
+  "skippedTests" : 0,
+  "startTime" : 1792399653.775,
+  "statistics" : [
+
+  ],
+  "testFailures" : [
+    {
+      "failureText" : "Failed to get matching snapshot: Lost connection to the application (pid 19835). (Underlying Error: Kommunikation mit der Hilfs-App nicht möglich. Versuche es noch einmal. Sollte dies nicht funktionieren, beende die App, starte sie neu und versuche es erneut. connection to service created from an endpoint)",
+      "targetName" : "PhotoMaidUITests",
+      "testIdentifier" : 1,
+      "testIdentifierString" : "PhotoGameVisualTests/test35PdfCreationAndLiveEditing()",
+      "testIdentifierURL" : "test://com.apple.xcode/PhotoMaid/PhotoMaidUITests/PhotoGameVisualTests/test35PdfCreationAndLiveEditing",
+      "testName" : "test35PdfCreationAndLiveEditing()"
+    }
+  ],
+  "title" : "Test - PhotoMaid",
+  "topInsights" : [
+
+  ],
+  "totalTestCount" : 1
+}

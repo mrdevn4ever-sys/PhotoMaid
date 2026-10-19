@@ -1,0 +1,50 @@
+Test Suite 'AnalysisBackgroundTimeTests' started at 2026-10-19 09:33:44.505.
+Test Case '-[PhotoMaidTests.AnalysisBackgroundTimeTests testExpirationEndsTimeAndRequestsCheckpointOnce]' started.
+Test Case '-[PhotoMaidTests.AnalysisBackgroundTimeTests testExpirationEndsTimeAndRequestsCheckpointOnce]' passed (0.023 seconds).
+Test Case '-[PhotoMaidTests.AnalysisBackgroundTimeTests testMigrationOnlyCancelsOwnOldAnalysisRequests]' started.
+Test Case '-[PhotoMaidTests.AnalysisBackgroundTimeTests testMigrationOnlyCancelsOwnOldAnalysisRequests]' passed (0.001 seconds).
+Test Case '-[PhotoMaidTests.AnalysisBackgroundTimeTests testRefusedBackgroundTimeDoesNotPretendToBeRunning]' started.
+Test Case '-[PhotoMaidTests.AnalysisBackgroundTimeTests testRefusedBackgroundTimeDoesNotPretendToBeRunning]' passed (0.001 seconds).
+Test Case '-[PhotoMaidTests.AnalysisBackgroundTimeTests testRepeatedRequestsOwnOnlyOneBalancedLease]' started.
+Test Case '-[PhotoMaidTests.AnalysisBackgroundTimeTests testRepeatedRequestsOwnOnlyOneBalancedLease]' passed (0.001 seconds).
+Test Case '-[PhotoMaidTests.AnalysisBackgroundTimeTests testStaleExpirationCannotStopANewerBackgroundSession]' started.
+Test Case '-[PhotoMaidTests.AnalysisBackgroundTimeTests testStaleExpirationCannotStopANewerBackgroundSession]' passed (0.045 seconds).
+Test Suite 'AnalysisBackgroundTimeTests' passed at 2026-10-19 09:33:44.920.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.072 (0.415) seconds
+	 Executed 5 tests, with 0 failures (0 unexpected) in 12.267 (12.271) seconds
+Test Suite 'PdfEditorTests' started at 2026-10-19 09:33:57.330.
+Test Case '-[PhotoMaidTests.PdfEditorTests testAddingFilesPreservesExistingPageEditsAndOrder]' started.
+Test Case '-[PhotoMaidTests.PdfEditorTests testAddingFilesPreservesExistingPageEditsAndOrder]' passed (1.900 seconds).
+Test Case '-[PhotoMaidTests.PdfEditorTests testBadSelectionIsAtomicAndKeepsPreviousSavedCopy]' started.
+Test Case '-[PhotoMaidTests.PdfEditorTests testBadSelectionIsAtomicAndKeepsPreviousSavedCopy]' passed (0.062 seconds).
+Test Case '-[PhotoMaidTests.PdfEditorTests testChangesInvalidateShareURLAndSearchUsesEditedPages]' started.
+Test Case '-[PhotoMaidTests.PdfEditorTests testChangesInvalidateShareURLAndSearchUsesEditedPages]' passed (0.016 seconds).
+Test Case '-[PhotoMaidTests.PdfEditorTests testImageEXIFOrientationIsAppliedBeforeChoosingPaper]' started.
+Test Case '-[PhotoMaidTests.PdfEditorTests testImageEXIFOrientationIsAppliedBeforeChoosingPaper]' passed (0.142 seconds).
+Test Case '-[PhotoMaidTests.PdfEditorTests testInvalidPagePlanFailsInsteadOfSilentlyDroppingPages]' started.
+Test Case '-[PhotoMaidTests.PdfEditorTests testInvalidPagePlanFailsInsteadOfSilentlyDroppingPages]' passed (0.011 seconds).
+Test Case '-[PhotoMaidTests.PdfEditorTests testLastPageAndAllSelectedPagesCannotBeDeleted]' started.
+Test Case '-[PhotoMaidTests.PdfEditorTests testLastPageAndAllSelectedPagesCannotBeDeleted]' passed (0.007 seconds).
+Test Case '-[PhotoMaidTests.PdfEditorTests testMixedProviderFilesCreatePDFInSelectionOrderWithoutChangingSources]' started.
+Test Case '-[PhotoMaidTests.PdfEditorTests testMixedProviderFilesCreatePDFInSelectionOrderWithoutChangingSources]' passed (0.134 seconds).
+Test Case '-[PhotoMaidTests.PdfEditorTests testMultiSelectionUsesPageIdentityAfterReorder]' started.
+Test Case '-[PhotoMaidTests.PdfEditorTests testMultiSelectionUsesPageIdentityAfterReorder]' passed (0.023 seconds).
+Test Case '-[PhotoMaidTests.PdfEditorTests testOversizedFilesAreRejectedBeforeReadingIntoMemory]' started.
+Test Case '-[PhotoMaidTests.PdfEditorTests testOversizedFilesAreRejectedBeforeReadingIntoMemory]' passed (0.007 seconds).
+Test Case '-[PhotoMaidTests.PdfEditorTests testPreviewAndSavedCopyFollowRotationReorderAndRemoval]' started.
+Test Case '-[PhotoMaidTests.PdfEditorTests testPreviewAndSavedCopyFollowRotationReorderAndRemoval]' passed (0.012 seconds).
+Test Case '-[PhotoMaidTests.PdfEditorTests testPreviewFitsFinalBoundsWithoutResettingUserZoom]' started.
+Test Case '-[PhotoMaidTests.PdfEditorTests testPreviewFitsFinalBoundsWithoutResettingUserZoom]' passed (0.091 seconds).
+Test Case '-[PhotoMaidTests.PdfEditorTests testRenderingPreviousDocumentWhileRepeatedlyRotatingNextSnapshot]' started.
+Test Case '-[PhotoMaidTests.PdfEditorTests testRenderingPreviousDocumentWhileRepeatedlyRotatingNextSnapshot]' passed (0.113 seconds).
+Test Case '-[PhotoMaidTests.PdfEditorTests testUnavailableProviderFileLeavesEditorUsable]' started.
+Test Case '-[PhotoMaidTests.PdfEditorTests testUnavailableProviderFileLeavesEditorUsable]' passed (0.185 seconds).
+Test Case '-[PhotoMaidTests.PdfEditorTests testUnchangedThumbnailsAreReusedWhileRotatedThumbnailUpdates]' started.
+Test Case '-[PhotoMaidTests.PdfEditorTests testUnchangedThumbnailsAreReusedWhileRotatedThumbnailUpdates]' passed (0.022 seconds).
+Test Case '-[PhotoMaidTests.PdfEditorTests testVisibleSnapshotOwnsIndependentNativePDFBacking]' started.
+Test Case '-[PhotoMaidTests.PdfEditorTests testVisibleSnapshotOwnsIndependentNativePDFBacking]' passed (0.006 seconds).
+Test Suite 'PdfEditorTests' passed at 2026-10-19 09:34:00.139.
+	 Executed 15 tests, with 0 failures (0 unexpected) in 2.731 (2.809) seconds
+	 Executed 33 tests, with 0 failures (0 unexpected) in 16.483 (17.618) seconds
+	 Executed 33 tests, with 0 failures (0 unexpected) in 16.483 (17.619) seconds
+✔ Test run with 69 tests in 9 suites passed after 15.552 seconds.
