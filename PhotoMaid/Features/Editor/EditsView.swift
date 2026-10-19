@@ -19,7 +19,12 @@ struct EditsView: View {
         }
         .appPage()
         .navigationTitle(L("edits_title"))
-        .task(id: app.library.changeToken) { records = app.kv?.get(StoreKeys.edits) ?? [] }
+        .task(id: app.library.changeToken) {
+            records = VaultConcealment.shared.visible(app.kv?.get(StoreKeys.edits) ?? []) { $0.newId }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .analysisVisibilityChanged)) { _ in
+            records = VaultConcealment.shared.visible(records) { $0.newId }
+        }
     }
 
     private func row(_ r: EditRecord) -> some View {
@@ -31,7 +36,7 @@ struct EditsView: View {
         }
         let status: String? = if r.kind == .collage {
             LP("edits_collage_from", r.count)
-        } else if r.sourceId.isEmpty {
+        } else if r.sourceId.isEmpty || VaultConcealment.shared.isConcealed(r.sourceId) {
             nil
         } else if original != nil {
             L("edits_orig_present")

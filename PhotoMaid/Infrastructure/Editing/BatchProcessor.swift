@@ -19,10 +19,11 @@ enum BatchProcessor {
                 continuation.resume(returning: data)
             }
         }
-        guard let result else { throw Failure.unavailable }
+        guard let result, !Task.isCancelled, !VaultConcealment.shared.isConcealed(id) else { throw Failure.unavailable }
         return result
     }
 
+    @MainActor
     static func process(app: AppModel, ids: [String], options: BatchOptions, recipe: EditRecipe? = nil) async -> BatchSummary {
         var summary = BatchSummary()
         for id in ids {
@@ -57,7 +58,9 @@ enum BatchProcessor {
                 let saved = await app.library.save(request)
                 try? FileManager.default.removeItem(at: folder)
                 guard case .saved(let newID) = saved else { throw Failure.write }
-                _ = await app.decide(.photo(newID), .keep)
+                let kind: EditKind = options.tool == .convert ? .convert : (options.tool == .resize && recipe == nil ? .compress : .edit)
+                _ = await EditSaver.finish(app: app, original: asset, newID: newID, mode: .copy, video: false,
+                                           kind: kind, sources: [id], bytes: Int64(output.count))
                 let before: Int64?
                 let measured = await app.sizer.size(of: asset)
                 if case .known(let bytes) = measured { before = bytes } else { before = nil }
@@ -87,6 +90,7 @@ enum BatchProcessor {
             }
         }
         guard let data = rendered.jpegData(compressionQuality: 0.94) else { throw Failure.render }
+        guard !Task.isCancelled, VaultConcealment.shared.visible(ids, id: { $0 }).count == ids.count else { throw Failure.unavailable }
         return data
     }
 
@@ -115,6 +119,7 @@ enum BatchProcessor {
             CGImageDestinationAddImage(destination, cg, properties)
         }
         guard CGImageDestinationFinalize(destination) else { throw Failure.write }
+        guard !Task.isCancelled, VaultConcealment.shared.visible(ids, id: { $0 }).count == ids.count else { throw Failure.unavailable }
         return data as Data
     }
 }

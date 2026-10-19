@@ -24,7 +24,11 @@ enum MediaShare {
             guard let asset = PhotoLibraryService.phAsset(id) else { continue }
             if let url = await export(asset) { urls.append(url) }
         }
-        guard !urls.isEmpty else { return nil }
+        guard !urls.isEmpty, !Task.isCancelled,
+              VaultConcealment.shared.visible(ids) { $0 }.count == ids.count else {
+            for url in urls { try? FileManager.default.removeItem(at: url.deletingLastPathComponent()) }
+            return nil
+        }
         return MediaShareItem(items: urls, cleanup: urls)
     }
 
@@ -50,7 +54,12 @@ enum MediaShare {
             }
             guard let source else { return nil }
             let target = folder.appendingPathComponent(source.lastPathComponent.isEmpty ? name : source.lastPathComponent)
-            do { try FileManager.default.copyItem(at: source, to: target) } catch { return nil }
+            do {
+                guard try VaultConcealment.shared.withAnalysisAccess([asset.localIdentifier], {
+                    try FileManager.default.copyItem(at: source, to: target)
+                    return true
+                }) == true else { return nil }
+            } catch { return nil }
             return target
         }
         let o = PHImageRequestOptions()
@@ -69,7 +78,12 @@ enum MediaShare {
             fileName = (name as NSString).deletingPathExtension + "." + ext
         }
         let target = folder.appendingPathComponent(fileName)
-        do { try data.write(to: target, options: .atomic) } catch { return nil }
+        do {
+            guard try VaultConcealment.shared.withAnalysisAccess([asset.localIdentifier], {
+                try data.write(to: target, options: .atomic)
+                return true
+            }) == true else { return nil }
+        } catch { return nil }
         return target
     }
 }

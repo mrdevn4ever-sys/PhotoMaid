@@ -159,16 +159,28 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
             var out: [MediaAsset] = []
             out.reserveCapacity(result.count)
             result.enumerateObjects { a, _, _ in out.append(PhotoLibraryService.describe(a)) }
-            return out
+            // Medien im Tresor gibt es für die übrige App nicht (auch wenn das Original noch in Fotos liegt).
+            return VaultConcealment.shared.visible(out) { $0.id }
         }.value
     }
 
     func count(_ category: MediaCategory) -> Int {
         guard access.canRead else { return 0 }
-        return PHAsset.fetchAssets(with: Self.fetchOptions(category)).count
+        let result = PHAsset.fetchAssets(with: Self.fetchOptions(category))
+        return Self.visibleCount(result)
+    }
+
+    /// Anzahl ohne Medien im Tresor (ohne verborgene Medien ohne Aufzählen).
+    nonisolated static func visibleCount(_ result: PHFetchResult<PHAsset>) -> Int {
+        let concealment = VaultConcealment.shared
+        guard !concealment.isEmpty else { return result.count }
+        var n = 0
+        result.enumerateObjects { a, _, _ in if !concealment.isConcealed(a.localIdentifier) { n += 1 } }
+        return n
     }
 
     func assets(ids: [String]) -> [MediaAsset] {
+        let ids = VaultConcealment.shared.visible(ids) { $0 }
         guard access.canRead, !ids.isEmpty else { return [] }
         let result = PHAsset.fetchAssets(withLocalIdentifiers: ids, options: nil)
         var byID: [String: MediaAsset] = [:]
@@ -178,7 +190,14 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
 
     func asset(_ id: String) -> MediaAsset? { assets(ids: [id]).first }
 
+    /// Medien im Tresor liefert diese Abfrage nie (`nil`, als gäbe es sie nicht).
     nonisolated static func phAsset(_ id: String) -> PHAsset? {
+        guard !VaultConcealment.shared.isConcealed(id) else { return nil }
+        return PHAsset.fetchAssets(withLocalIdentifiers: [id], options: nil).firstObject
+    }
+
+    /// Nur für den Tresor selbst (Ablegen, „Dort löschen“) und Existenzprüfungen: auch verborgene Originale.
+    nonisolated static func phAssetIncludingConcealed(_ id: String) -> PHAsset? {
         PHAsset.fetchAssets(withLocalIdentifiers: [id], options: nil).firstObject
     }
 
@@ -228,8 +247,17 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
                 o.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
                 o.includeHiddenAssets = false
                 let assets = PHAsset.fetchAssets(in: album, options: o)
+                let concealment = VaultConcealment.shared
+                var latest: Date?
+                if concealment.isEmpty {
+                    latest = assets.firstObject?.creationDate
+                } else {
+                    assets.enumerateObjects { a, _, stop in
+                        if !concealment.isConcealed(a.localIdentifier) { latest = a.creationDate; stop.pointee = true }
+                    }
+                }
                 out.append(PhotoAlbum(id: album.localIdentifier, title: album.localizedTitle ?? "",
-                                      isFolder: false, count: assets.count, latest: assets.firstObject?.creationDate,
+                                      isFolder: false, count: PhotoLibraryService.visibleCount(assets), latest: latest,
                                       canAddAssets: album.canPerform(.addContent), children: []))
             } else if let list = c as? PHCollectionList, depth < 8 {
                 let children = PhotoLibraryService.collect(PHCollection.fetchCollections(in: list, options: nil), depth: depth + 1)
@@ -271,7 +299,7 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
                     ids.subtract(details.deletedLocalIdentifiers)
                 }
             }
-            return ids
+            return VaultConcealment.shared.visible(ids)
         } catch {
             return nil
         }
@@ -287,7 +315,7 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
                 ids.formUnion(PhotoLibraryService.assetIDs(inCollection: c.localIdentifier))
             }
         }
-        return ids
+        return VaultConcealment.shared.visible(ids)
     }
 
     /// Mitglieder eines Albums in Album-Reihenfolge.
@@ -296,11 +324,13 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
         else { return [] }
         var ids: [String] = []
         PHAsset.fetchAssets(in: album, options: nil).enumerateObjects { a, _, _ in ids.append(a.localIdentifier) }
-        return ids
+        return VaultConcealment.shared.visible(ids) { $0 }
     }
 
     /// Zu einem Album hinzufügen. Änderung ist in der Fotos-App sichtbar (und mit iCloud-Fotos synchronisiert).
     func add(_ ids: [String], toAlbum albumID: String) async -> MediaWriteResult {
+        let ids = VaultConcealment.shared.visible(ids) { $0 }
+        guard !ids.isEmpty else { return .failed }
         guard let album = PHAssetCollection.fetchAssetCollections(withLocalIdentifiers: [albumID], options: nil).firstObject,
               album.canPerform(.addContent) else { return .failed }
         let assets = PHAsset.fetchAssets(withLocalIdentifiers: ids, options: nil)
@@ -317,6 +347,8 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
     }
 
     func remove(_ ids: [String], fromAlbum albumID: String) async -> MediaWriteResult {
+        let ids = VaultConcealment.shared.visible(ids) { $0 }
+        guard !ids.isEmpty else { return .failed }
         guard let album = PHAssetCollection.fetchAssetCollections(withLocalIdentifiers: [albumID], options: nil).firstObject,
               album.canPerform(.removeContent) else { return .failed }
         let assets = PHAsset.fetchAssets(withLocalIdentifiers: ids, options: nil)
@@ -349,6 +381,8 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
     // MARK: Favoriten
 
     func setFavorite(_ ids: [String], _ favorite: Bool) async -> MediaWriteResult {
+        let ids = VaultConcealment.shared.visible(ids) { $0 }
+        guard !ids.isEmpty else { return .failed }
         let assets = PHAsset.fetchAssets(withLocalIdentifiers: ids, options: nil)
         var targets: [PHAsset] = []
         assets.enumerateObjects { a, _, _ in if a.canPerform(.properties) { targets.append(a) } }
@@ -374,12 +408,21 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
             for id in ids { out[.photo(id)] = .unknown }
             return out
         }
-        let found = Set(assets(ids: ids).map(\.id))
+        // Existenz unabhängig vom Tresor prüfen: ein verborgenes Original ist nicht „entfernt“.
+        let found = Self.existingIDs(ids)
         for id in ids {
             if found.contains(id) { out[.photo(id)] = .exists }
             else { out[.photo(id)] = access == .authorized ? .missingWithFullAccess : .unknown }
         }
         return out
+    }
+
+    /// Tatsächlich vorhandene Medien (auch verborgene) – nur für Existenzprüfungen, nie zum Anzeigen.
+    nonisolated static func existingIDs(_ ids: [String]) -> Set<String> {
+        guard !ids.isEmpty else { return [] }
+        var found = Set<String>()
+        PHAsset.fetchAssets(withLocalIdentifiers: ids, options: nil).enumerateObjects { a, _, _ in found.insert(a.localIdentifier) }
+        return found
     }
 
     // MARK: Löschen (nur nach ausdrücklicher Bestätigung im PhotoMaid-Papierkorb)
@@ -392,6 +435,7 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
         var assets: [PHAsset] = []
         result.enumerateObjects { a, _, _ in if a.canPerform(.delete) { assets.append(a) } }
         guard !assets.isEmpty else { return .failed(reason: "no-deletable-assets") }
+        let submittedIDs = Set(assets.map(\.localIdentifier))
         let targets = UncheckedBox(assets as NSArray)
         do {
             try await PHPhotoLibrary.shared().performChanges { @Sendable in
@@ -403,9 +447,13 @@ final class PhotoLibraryService: NSObject, PHPhotoLibraryChangeObserver {
             Diagnostics.error(.cleanup, "delete-failed", error)
             return .failed(reason: (error as NSError).domain + ":\((error as NSError).code)")
         }
-        let stillThere = Set(self.assets(ids: ids).map(\.id))
-        let removed = Set(ids).subtracting(stillThere)
-        if removed.count == ids.count { return .succeeded }
+        refreshAccess()
+        // Revoked/limited scope is not evidence of deletion; count only submitted IDs whose absence
+        // can still be established under full authorization. Concealment is independent of this result.
+        guard access == .authorized else { return .partial(removed: []) }
+        let stillThere = Self.existingIDs(Array(submittedIDs))
+        let removed = submittedIDs.subtracting(stillThere)
+        if removed == Set(ids) { return .succeeded }
         return .partial(removed: Set(removed.map { ItemReference.photo($0) }))
     }
 

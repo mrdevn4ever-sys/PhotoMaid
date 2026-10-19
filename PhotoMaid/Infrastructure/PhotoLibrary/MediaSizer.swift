@@ -21,6 +21,7 @@ actor MediaSizer {
 
     /// Nur Zwischenspeicher, ohne zu messen.
     func cached(_ id: String, modified: Date?) -> KnownSize {
+        guard !VaultConcealment.shared.isConcealed(id) else { return .unknown }
         if let e = cache[id], e.modified == modified { return .known(e.bytes) }
         return .unknown
     }
@@ -32,8 +33,10 @@ actor MediaSizer {
     }
 
     func size(of asset: MediaAsset) async -> KnownSize {
+        guard !VaultConcealment.shared.isConcealed(asset.id) else { return .unknown }
         if let e = cache[asset.id], e.modified == asset.modificationDate { return .known(e.bytes) }
         let measured = await Self.measure(asset.id, isVideo: asset.isVideo)
+        guard !VaultConcealment.shared.isConcealed(asset.id) else { return .unknown }
         if case .known(let b) = measured {
             cache[asset.id] = SizeCacheEntry(bytes: b, modified: asset.modificationDate)
             dirty = true
@@ -55,11 +58,18 @@ actor MediaSizer {
     }
 
     func flush() async {
+        let allowed = VaultConcealment.shared.visible(Set(cache.keys))
+        if allowed.count != cache.count { cache = cache.filter { allowed.contains($0.key) }; dirty = true }
         guard dirty else { return }
         dirty = false
         // Gelöschte Medien müssen nicht ewig im Speicher bleiben: auf die jüngsten 60 000 Einträge begrenzen.
         if cache.count > 60_000 { cache = Dictionary(uniqueKeysWithValues: cache.prefix(60_000).map { ($0.key, $0.value) }) }
         await persist(cache)
+    }
+
+    func applyConcealment() async {
+        dirty = true
+        await flush()
     }
 
     // MARK: Messung

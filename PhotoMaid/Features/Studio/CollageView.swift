@@ -120,7 +120,10 @@ struct CollageView: View {
             let request = PhotoLibraryService.SaveRequest(fileURL: url, isVideo: false, creationDate: Date(),
                                                           latitude: nil, longitude: nil, filename: "PhotoMaid.jpg")
             let result = await app.library.save(request)
-            guard case .saved = result else { app.showError(L("edit_err_save")); return }
+            guard case .saved(let newID) = result else { app.showError(L("edit_err_save")); return }
+            _ = await EditSaver.finish(app: app, original: nil, newID: newID, mode: .copy, video: false,
+                                      kind: .collage, count: value.items.count, sources: value.items.map(\.mediaId),
+                                      bytes: Int64(data.count))
             persistDraft()
             app.showToast(L("done_saved"))
         } catch {

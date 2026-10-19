@@ -26,6 +26,8 @@ struct FeedView: View {
     @State private var shareItem: MediaShareItem?
     @State private var tourStep = 0
     @GestureState private var dragging = false
+    @GestureState private var magnifying = false
+    @State private var pinchCancelledDrag = false
 
     init(request: FeedRequest, app: AppModel) {
         _model = State(initialValue: FeedViewModel(request: request, app: app))
@@ -33,6 +35,7 @@ struct FeedView: View {
 
     private var needsButtons: Bool { voiceOver || switchControl || app.settings.decisionButtons }
     private var zoomed: Bool { zoom > 1.01 }
+    private var decisionSuspended: Bool { voiceOver || switchControl || zoomed || magnifying || pinchCancelledDrag }
 
     var body: some View {
         ZStack {
@@ -47,7 +50,7 @@ struct FeedView: View {
         .task {
             model.reduceMotion = reduceMotion
             model.displayScale = displayScale
-            model.setSuspended(voiceOver || switchControl || zoomed)
+            model.setSuspended(decisionSuspended)
             await model.load()
             if !model.session.items.isEmpty && (app.settings.showGestureHintOnOpen || !app.settings.gestureHintSeen) {
                 flashHints()
@@ -60,19 +63,28 @@ struct FeedView: View {
             withAnimation(.easeOut(duration: 0.6)) { showHints = false }
         }
         .onChange(of: reduceMotion) { _, v in model.reduceMotion = v }
-        .onChange(of: voiceOver) { _, _ in model.setSuspended(voiceOver || switchControl || zoomed) }
-        .onChange(of: switchControl) { _, _ in model.setSuspended(voiceOver || switchControl || zoomed) }
+        .onChange(of: voiceOver) { _, _ in model.setSuspended(decisionSuspended) }
+        .onChange(of: switchControl) { _, _ in model.setSuspended(decisionSuspended) }
         .onChange(of: displayScale) { _, value in model.displayScale = value; model.refreshWindow() }
         .onChange(of: scenePhase) { _, phase in
             if phase != .active { model.dragCancelled(); app.player.stop() }
         }
-        .onChange(of: zoom) { _, _ in model.setSuspended(voiceOver || switchControl || zoomed) }
+        .onChange(of: zoom) { _, _ in model.setSuspended(decisionSuspended) }
+        .onChange(of: magnifying) { _, active in
+            if active { pinchCancelledDrag = true; model.dragCancelled() }
+            else if !dragging { pinchCancelledDrag = false }
+            model.setSuspended(decisionSuspended)
+        }
         .onChange(of: model.session.index) { _, _ in resetZoom() }
         .onChange(of: app.library.changeToken) { _, _ in if model.isLoaded { model.refreshWindowAssets() } }
         .onChange(of: dragging) { _, isDragging in
             // Systemabbruch der Geste (Anruf, Mitteilungszentrale): keine Entscheidung.
             if !isDragging, case .dragging = model.machine.phase { model.dragCancelled() }
             if !isDragging, case .directionLocked = model.machine.phase { model.dragCancelled() }
+            if !isDragging && !magnifying {
+                pinchCancelledDrag = false
+                model.setSuspended(decisionSuspended)
+            }
         }
         .onDisappear { app.player.stop() }
         .sheet(item: Binding(get: { model.pickerReceipt }, set: { model.pickerReceipt = $0 })) { receipt in
@@ -296,6 +308,7 @@ struct FeedView: View {
             .updating($dragging) { _, state, _ in state = true }
             .onChanged { v in
                 hideHints()
+                guard !magnifying, !pinchCancelledDrag else { model.dragCancelled(); return }
                 if zoomed {
                     pan = CGSize(width: panBase.width + v.translation.width, height: panBase.height + v.translation.height)
                 } else if !voiceOver {
@@ -303,6 +316,7 @@ struct FeedView: View {
                 }
             }
             .onEnded { v in
+                guard !magnifying, !pinchCancelledDrag else { model.dragCancelled(); return }
                 if zoomed {
                     panBase = pan
                 } else if !voiceOver {
@@ -313,14 +327,16 @@ struct FeedView: View {
 
     private var magnifyGesture: some Gesture {
         MagnifyGesture()
+            .updating($magnifying) { _, state, _ in state = true }
             .onChanged { v in
+                pinchCancelledDrag = true
                 model.setSuspended(true)
                 zoom = min(5, max(1, zoomBase * v.magnification))
             }
             .onEnded { _ in
                 zoomBase = zoom
                 if !zoomed { resetZoom() }
-                model.setSuspended(voiceOver || switchControl || zoomed)
+                model.setSuspended(decisionSuspended)
             }
     }
 
@@ -338,7 +354,7 @@ struct FeedView: View {
 
     private func resetZoom() {
         zoom = 1; zoomBase = 1; pan = .zero; panBase = .zero
-        model.setSuspended(voiceOver || switchControl)
+        model.setSuspended(decisionSuspended)
     }
 
     private func flashHints() {

@@ -48,12 +48,15 @@ struct ArchiveView: View {
 
     private func run() async {
         guard let target else { return }
+        guard !ids.contains(where: { VaultConcealment.shared.isConcealed($0) }) else {
+            app.showError(L("vault_error_generic")); return
+        }
         running = true
         defer { running = false }
         let scoped = target.startAccessingSecurityScopedResource()
         defer { if scoped { target.stopAccessingSecurityScopedResource() } }
         var result = await ArchiveService.copy(app: app, ids: ids, target: target, options: options)
-        if options.writeList {
+        if options.writeList && !result.entries.contains(where: { VaultConcealment.shared.isConcealed($0.sourceId) }) {
             do {
                 let formatter = ISO8601DateFormatter()
                 let rows = result.verified.map { entry in
@@ -61,18 +64,22 @@ struct ArchiveView: View {
                                     name: entry.targetUri?.split(separator: "/").last.map(String.init) ?? entry.name,
                                     taken: app.snapshot.byID[entry.sourceId]?.creationDate.map { formatter.string(from: $0) } ?? "",
                                     bytes: entry.bytes.map { String($0) } ?? "", sha256: entry.sha256 ?? "",
-                                    albums: "", tags: (app.organize.tags[entry.sourceId] ?? []).sorted().joined(separator: "; "),
-                                    note: app.organize.notes[entry.sourceId] ?? "")
+                                    albums: "", tags: app.organize.tags(of: entry.sourceId).sorted().joined(separator: "; "),
+                                    note: app.organize.note(of: entry.sourceId) ?? "")
                 }
                 // Stabile technische CSV-Spalten; unbekannte Angaben bleiben leer, niemals erfundene Werte.
                 let csv = ArchiveList.render(header: ["folder", "name", "taken", "bytes", "sha256", "albums", "tags", "note"], rows: rows)
                 let taken = Set(try FileManager.default.contentsOfDirectory(atPath: target.path))
                 let name = ArchivePlan.uniqueName(taken: taken, wanted: L("archive_list_file", result.id))
-                try Data(csv.utf8).write(to: target.appendingPathComponent(name), options: .atomic)
+                guard try VaultConcealment.shared.withAnalysisAccess(result.verified.map(\.sourceId), {
+                    try Data(csv.utf8).write(to: target.appendingPathComponent(name), options: .atomic)
+                    return true
+                }) == true else { throw CocoaError(.fileReadNoPermission) }
                 result.listName = name
                 app.showToast(L("archive_list_saved", name))
             } catch { app.showError(L("archive_reason_write")) }
         }
+        result.entries.removeAll { VaultConcealment.shared.isConcealed($0.sourceId) }
         journal = result
         do { try app.kv?.set(StoreKeys.archiveJournal, result) }
         catch { app.showError(L("archive_failed")) }

@@ -42,7 +42,16 @@ struct SmartReviewView: View {
             }.padding(AppSpacing.pageMargin)
         }
         .appPage().navigationTitle(title)
-        .onAppear { cache = app.kv?.get(StoreKeys.analysisCache) ?? [:] }
+        .onAppear {
+            let stored = app.kv?.get(StoreKeys.analysisCache) ?? [:]
+            let allowed = VaultConcealment.shared.visible(Set(stored.keys))
+            cache = stored.filter { allowed.contains($0.key) }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .analysisVisibilityChanged)) { _ in
+            let allowed = VaultConcealment.shared.visible(Set(cache.keys))
+            cache = cache.filter { allowed.contains($0.key) }
+            groups = []
+        }
     }
 
     private func entry(_ id: String) -> AnalysisCacheEntry { cache[id] ?? AnalysisCacheEntry() }
@@ -68,8 +77,16 @@ struct SmartReviewView: View {
         running = true
         let result = await LocalPhotoAnalyzer.analyze(app.visibleMedia)
         cache.merge(result.cache) { _, new in new }
-        groups = result.similarGroups
-        try? app.kv?.set(StoreKeys.analysisCache, cache)
+        // Inzwischen in den Tresor gelegte Medien nicht speichern (erkannter Text bleibt nirgends sonst liegen).
+        let keep = VaultConcealment.shared.visible(Set(cache.keys))
+        if keep.count != cache.count { cache = cache.filter { keep.contains($0.key) } }
+        groups = result.similarGroups.compactMap { group in
+            let ids = VaultConcealment.shared.visible(group) { $0 }
+            return ids.count == group.count || ids.count > 1 ? ids : nil
+        }
+        _ = try? VaultConcealment.shared.withAnalysisAccess(Array(cache.keys)) {
+            try app.kv?.set(StoreKeys.analysisCache, cache)
+        }
         running = false
     }
 }

@@ -24,6 +24,11 @@ struct SettingsView: View {
                 }
             }
             Section {
+                if !VaultStore.shared.hidesEntry {
+                    Button { VaultStore.shared.present() } label: {
+                        Label(L("vault_title"), systemImage: "lock.shield")
+                    }
+                }
                 NavigationLink(value: Route.excludedAlbums) { Text(key: "set_excluded_folders") }
                 NavigationLink(value: Route.backup) { Text(key: "backup_title") }
                 NavigationLink(value: Route.privacy) { Text(key: "privacy_title") }

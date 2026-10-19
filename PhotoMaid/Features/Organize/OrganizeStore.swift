@@ -26,9 +26,15 @@ final class OrganizeStore {
 
     // MARK: Schlagwörter
 
-    func tags(of id: String) -> [String] { tags[id] ?? [] }
+    func tags(of id: String) -> [String] {
+        VaultConcealment.shared.isConcealed(id) ? [] : tags[id] ?? []
+    }
 
-    var allTags: [(tag: String, count: Int)] { TagRules.counts(tags) }
+    /// Ohne Medien im Tresor (auch nicht mitgezählt).
+    var allTags: [(tag: String, count: Int)] {
+        let visible = VaultConcealment.shared.visible(Set(tags.keys))
+        return TagRules.counts(visible.count == tags.count ? tags : tags.filter { visible.contains($0.key) })
+    }
 
     @discardableResult
     func addTags(_ raw: [String], to assets: [MediaAsset]) -> Bool {
@@ -52,12 +58,12 @@ final class OrganizeStore {
     /// Medien mit diesem Schlagwort (für Suche und die Schlagwort-Ansicht).
     func ids(withTag tag: String) -> [String] {
         let key = TagRules.key(tag)
-        return tags.filter { $0.value.contains { TagRules.key($0) == key } }.map(\.key)
+        return VaultConcealment.shared.visible(tags.filter { $0.value.contains { TagRules.key($0) == key } }.map(\.key)) { $0 }
     }
 
     // MARK: Notizen
 
-    func note(of id: String) -> String? { notes[id] }
+    func note(of id: String) -> String? { VaultConcealment.shared.isConcealed(id) ? nil : notes[id] }
 
     @discardableResult
     func setNote(_ raw: String, for asset: MediaAsset) -> Bool {
@@ -103,7 +109,7 @@ final class OrganizeStore {
 
     /// Bezüge gegen die aktuelle Mediathek prüfen: verschobene IDs übernehmen, Fehlendes zählen (nie still löschen).
     func rematch(current: [MediaAsset]) {
-        let stored = Array(refs.values)
+        let stored = VaultConcealment.shared.visible(Array(refs.values)) { $0.id }
         guard !stored.isEmpty else { missing = []; return }
         let present = Set(current.map(\.id))
         // Dateinamen nur für Kandidaten lesen, deren Aufnahmezeit zu einem fehlenden Bezug passt (teuer je Medium).

@@ -32,6 +32,13 @@ struct TodayView: View {
                     InfoBanner(symbol: "arrow.triangle.2.circlepath", tint: AppColors.warning, text: L("today_reconciliation"))
                 }
                 statusGroup
+                if !VaultStore.shared.hidesEntry {
+                    Button { VaultStore.shared.present() } label: {
+                        NavRow(symbol: "lock.shield", title: L("vault_title"), subtitle: L("vault_settings_row_hint"))
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityIdentifier("today.vault")
+                }
                 if access.canRead { QuickAccessSection() }
                 if app.capabilities.tier == .free, let first = app.settings.firstSeenDay, app.today > first {
                     Button { app.navigate(.pro) } label: {
@@ -70,6 +77,10 @@ struct TodayView: View {
                 Text(verbatim: greeting).font(AppTypography.subheadline.weight(.semibold)).foregroundStyle(AppColors.textSecondary)
                 Text(key: "tab_today").font(AppTypography.largeTitle).foregroundStyle(AppColors.textPrimary)
                     .accessibilityAddTraits(.isHeader)
+                    // Geheimer Eingang zum Tresor (E16): 2 Sekunden halten. Ohne eingerichteten Tresor passiert nichts.
+                    .onLongPressGesture(minimumDuration: 2) {
+                        if VaultStore.shared.openFromHiddenEntry() { Haptics.commit() }
+                    }
             }
             Spacer()
             GlassIconButton(symbol: "gearshape", label: L("settings")) { app.navigate(.settings) }

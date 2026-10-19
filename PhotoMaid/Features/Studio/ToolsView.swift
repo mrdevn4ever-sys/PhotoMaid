@@ -126,6 +126,10 @@ struct ToolsView: View {
     }
 
     private func save(_ data: Data, fileExtension: String, type: Bool) async throws {
+        let sources = ids
+        guard !sources.contains(where: { VaultConcealment.shared.isConcealed($0) }) else {
+            throw BatchProcessor.Failure.write
+        }
         let folder = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString, isDirectory: true)
         try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
         defer { try? FileManager.default.removeItem(at: folder) }
@@ -134,6 +138,8 @@ struct ToolsView: View {
         let request = PhotoLibraryService.SaveRequest(fileURL: url, isVideo: type, creationDate: Date(), latitude: nil,
                                                       longitude: nil, filename: url.lastPathComponent)
         guard case .saved(let newID) = await app.library.save(request) else { throw BatchProcessor.Failure.write }
-        _ = await app.decide(.photo(newID), .keep)
+        _ = await EditSaver.finish(app: app, original: nil, newID: newID, mode: .copy, video: type,
+                                   kind: kind == .gif ? .gif : .collage, count: sources.count,
+                                   sources: sources, bytes: Int64(data.count))
     }
 }

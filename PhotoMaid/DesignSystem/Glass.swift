@@ -9,11 +9,12 @@ struct GlassCapsuleModifier: ViewModifier {
     @Environment(\.colorSchemeContrast) private var contrast
     var interactive = false
     var tint: Color?
+    var overMedia = false
 
     func body(content: Content) -> some View {
         if reduceTransparency || contrast == .increased {
             content
-                .background(AppColors.surface, in: .capsule)
+                .background(overMedia ? AppColors.stage : AppColors.surface, in: .capsule)
                 .overlay(Capsule().strokeBorder(AppColors.surfaceStroke))
         } else {
             content.glassEffect(glass, in: .capsule)
@@ -46,8 +47,8 @@ struct GlassRectModifier: ViewModifier {
 
 extension View {
     /// Schwebende Kapsel (Feed-Kopf, Richtungs-Pille, Später-Pille, Editor-Kapseln).
-    func glassCapsule(interactive: Bool = false, tint: Color? = nil) -> some View {
-        modifier(GlassCapsuleModifier(interactive: interactive, tint: tint))
+    func glassCapsule(interactive: Bool = false, tint: Color? = nil, overMedia: Bool = false) -> some View {
+        modifier(GlassCapsuleModifier(interactive: interactive, tint: tint, overMedia: overMedia))
     }
 
     /// Schwebende Fläche mit runden Ecken (Werkzeugzone im Editor, Später-Auswahl über dem Medium).

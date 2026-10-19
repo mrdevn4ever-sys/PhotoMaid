@@ -363,9 +363,10 @@ final class ThumbnailLoader {
     }
 
     func image(_ assetID: String, size: CGSize) async -> UIImage? {
+        guard !VaultConcealment.shared.isConcealed(assetID) else { return nil }
         let key = "\(assetID)|\(Int(size.width))x\(Int(size.height))" as NSString
         if let hit = cache.object(forKey: key) { return hit }
-        guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [assetID], options: nil).firstObject else { return nil }
+        guard let asset = PhotoLibraryService.phAsset(assetID) else { return nil }
         let o = PHImageRequestOptions()
         o.isNetworkAccessAllowed = false
         o.deliveryMode = .highQualityFormat
@@ -376,6 +377,7 @@ final class ThumbnailLoader {
                 cont.resume(returning: UncheckedBox(img))
             }
         }
+        guard !Task.isCancelled, !VaultConcealment.shared.isConcealed(assetID) else { return nil }
         if let img = result.value {
             let cost = img.cgImage.map { $0.bytesPerRow * $0.height } ?? 0
             cache.setObject(img, forKey: key, cost: cost)
@@ -383,7 +385,10 @@ final class ThumbnailLoader {
         return result.value
     }
 
-    func clear() { cache.removeAllObjects() }
+    func clear() {
+        cache.removeAllObjects()
+        manager.stopCachingImagesForAllAssets()
+    }
 }
 
 /// Kurze Meldung unten (Fehler, „Gespeichert“, Rückgängig). Verschwindet von selbst; VoiceOver liest sie vor.

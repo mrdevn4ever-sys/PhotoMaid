@@ -58,7 +58,14 @@ enum EditSaver {
 
     /// Gemeinsamer Abschluss für Foto, Video, Collage, Film: Ledger, Liste „Bearbeitet“, ggf. Original ersetzen.
     static func finish(app: AppModel, original: MediaAsset?, newID: String, mode: SaveMode, video: Bool, kind: EditKind,
-                       count: Int = 1, bytes: Int64?) async -> EditSaveOutcome {
+                       count: Int = 1, sources: [String]? = nil, bytes: Int64?) async -> EditSaveOutcome {
+        // An export started before a vault import may complete afterwards. Its known provenance
+        // still makes the new result private; conceal it before the first suspension/public projection.
+        let provenance = sources ?? original.map { [$0.id] } ?? []
+        if provenance.contains(where: { VaultConcealment.shared.isConcealed($0) }) {
+            do { try VaultConcealment.shared.conceal([newID]) }
+            catch { app.showError(L("vault_error_generic")) }
+        }
         // Ausdrücklich gespeichert = behalten (sonst erschiene die Fassung als neues offenes Medium).
         await app.decide(.photo(newID), .keep)
         var replaced = false
@@ -79,7 +86,8 @@ enum EditSaver {
         }
         var list = app.kv?.get(StoreKeys.edits) ?? []
         list.insert(EditRecord(newId: newID, sourceId: original?.id ?? "", mode: replaced ? .replace : .copy, video: video,
-                               atMs: Int64(Date().timeIntervalSince1970 * 1000), kind: kind, count: count), at: 0)
+                               atMs: Int64(Date().timeIntervalSince1970 * 1000), kind: kind, count: count,
+                               sources: sources ?? original.map { [$0.id] }), at: 0)
         try? app.kv?.set(StoreKeys.edits, Array(list.prefix(500)))
         app.reloadLibraryIfNeeded(force: true)
         if mode == .replace { return replaced ? .replaced(newID: newID) : .replaceDeclined(newID: newID) }

@@ -63,6 +63,12 @@ struct DuplicatesView: View {
         .appPage()
         .navigationTitle(L("duplicates"))
         .onDisappear { scanTask?.cancel() }
+        .onReceive(NotificationCenter.default.publisher(for: .analysisVisibilityChanged)) { _ in
+            scanTask?.cancel()
+            result = nil
+            selection = [:]
+            progress = nil
+        }
     }
 
     private var selectedCount: Int { selection.values.reduce(0) { $0 + $1.count } }
@@ -109,6 +115,7 @@ struct DuplicatesView: View {
         failed = false
         let media = app.cleanupMedia
         let files = app.files.entries
+        let visibilityRevision = VaultConcealment.shared.revision
         progress = DuplicateScanProgress(processed: 0, total: 1)
         scanTask = Task {
             let sizes = await app.sizes(media)
@@ -130,13 +137,14 @@ struct DuplicatesView: View {
                     try? await Task.sleep(for: .milliseconds(200))
                 }
             }
-            let scanned: DuplicateScanResult? = await Task.detached(priority: .userInitiated) {
+            let job = Task.detached(priority: .userInitiated) {
                 try? DuplicateFinder().scan(candidates, source: provider) { reporter.set($0) }
-            }.value
+            }
+            let scanned = await withTaskCancellationHandler { await job.value } onCancel: { job.cancel() }
             watch.cancel()
             provider.close()
             progress = nil
-            guard !Task.isCancelled else { return }
+            guard !Task.isCancelled, visibilityRevision == VaultConcealment.shared.revision else { return }
             if let scanned {
                 result = scanned
                 // Vorauswahl: die älteste Kopie bleibt, die übrigen sind für den Papierkorb gewählt.

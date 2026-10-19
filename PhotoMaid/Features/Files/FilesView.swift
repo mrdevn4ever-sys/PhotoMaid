@@ -83,6 +83,12 @@ struct FilesView: View {
         .onChange(of: previewURL) { _, url in
             if url == nil, let root = previewRoot { app.sources.endAccess(root); previewRoot = nil }
         }
+        .onReceive(NotificationCenter.default.publisher(for: .analysisVisibilityChanged)) { _ in
+            if let url = previewURL, !FileScanner.isPublic(url) { previewURL = nil }
+        }
+        .onDisappear {
+            if let root = previewRoot { app.sources.endAccess(root); previewRoot = nil }
+        }
         .task { if app.files.scannedAt == nil { await app.files.scan(app.sources) } }
         .refreshable { await app.files.scan(app.sources) }
     }
@@ -144,8 +150,12 @@ struct FilesView: View {
     }
 
     private func preview(_ f: FileEntry) {
-        guard let root = app.sources.beginAccess(f.sourceID),
-              let url = FileScanner.safeURL(root: root, relativePath: f.relativePath) else {
+        guard let root = app.sources.beginAccess(f.sourceID) else {
+            app.showError(L("no_viewer"))
+            return
+        }
+        guard let url = FileScanner.safeURL(root: root, relativePath: f.relativePath) else {
+            app.sources.endAccess(root)
             app.showError(L("no_viewer"))
             return
         }

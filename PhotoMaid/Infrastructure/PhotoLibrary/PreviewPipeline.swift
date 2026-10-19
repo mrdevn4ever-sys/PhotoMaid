@@ -42,13 +42,14 @@ final class PreviewPipeline {
 
     /// Lädt eine Vorschau. Abbruch des Tasks bricht den PhotoKit-Request ab.
     func image(for assetID: String, targetSize: CGSize, allowNetwork: Bool = false) async -> PreviewResult {
-        guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [assetID], options: nil).firstObject else { return .failed }
+        guard let asset = PhotoLibraryService.phAsset(assetID) else { return .failed }
         let box = RequestBox()
         let managerBox = UncheckedBox(manager)
         return await withTaskCancellationHandler {
             await withCheckedContinuation { (cont: CheckedContinuation<PreviewResult, Never>) in
                 let id = manager.requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFit,
                                               options: options(allowNetwork: allowNetwork)) { @Sendable image, info in
+                    guard !VaultConcealment.shared.isConcealed(assetID) else { cont.resume(returning: .failed); return }
                     if let image { cont.resume(returning: .image(image)); return }
                     let inCloud = (info?[PHImageResultIsInCloudKey] as? Bool) ?? false
                     cont.resume(returning: inCloud ? .notLocallyAvailable : .failed)
@@ -60,9 +61,14 @@ final class PreviewPipeline {
         }
     }
 
+    func forgetCache() {
+        manager.stopCachingImagesForAllAssets()
+        cachedIDs = []
+    }
+
     /// Vorheriges, aktuelles und wenige nächste Items vorhalten; Rest freigeben.
     func updateCache(window ids: [String], targetSize: CGSize) {
-        let wanted = Set(ids)
+        let wanted = VaultConcealment.shared.visible(Set(ids))
         if targetSize != cachedSize {
             manager.stopCachingImagesForAllAssets()
             cachedIDs = []
@@ -72,7 +78,7 @@ final class PreviewPipeline {
         func fetch(_ s: Set<String>) -> [PHAsset] {
             guard !s.isEmpty else { return [] }
             var out: [PHAsset] = []
-            PHAsset.fetchAssets(withLocalIdentifiers: Array(s), options: nil).enumerateObjects { a, _, _ in out.append(a) }
+            PHAsset.fetchAssets(withLocalIdentifiers: Array(VaultConcealment.shared.visible(s)), options: nil).enumerateObjects { a, _, _ in out.append(a) }
             return out
         }
         manager.stopCachingImages(for: fetch(remove), targetSize: targetSize, contentMode: .aspectFit, options: options())
@@ -82,13 +88,14 @@ final class PreviewPipeline {
 
     /// Lokales Video als PlayerItem, ohne Netzwerkfreigabe.
     func playerItem(for assetID: String, allowNetwork: Bool = false) async -> PlayerItemResult {
-        guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [assetID], options: nil).firstObject else { return .failed }
+        guard let asset = PhotoLibraryService.phAsset(assetID) else { return .failed }
         let o = PHVideoRequestOptions()
         o.isNetworkAccessAllowed = allowNetwork
         o.deliveryMode = .automatic
         o.version = .current
         return await withCheckedContinuation { cont in
             PHImageManager.default().requestPlayerItem(forVideo: asset, options: o) { @Sendable item, info in
+                guard !VaultConcealment.shared.isConcealed(assetID) else { cont.resume(returning: .failed); return }
                 if let item { cont.resume(returning: .item(UncheckedBox(item))); return }
                 let inCloud = (info?[PHImageResultIsInCloudKey] as? Bool) ?? false
                 cont.resume(returning: inCloud ? .notLocallyAvailable : .failed)

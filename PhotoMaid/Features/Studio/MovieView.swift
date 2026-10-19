@@ -157,7 +157,8 @@ struct MovieView: View {
                                                           latitude: nil, longitude: nil, filename: url.lastPathComponent)
             guard case .saved(let newID) = await app.library.save(request) else { throw VideoError.write }
             _ = await EditSaver.finish(app: app, original: nil, newID: newID, mode: .copy, video: true,
-                                       kind: .merge, count: project.clips.count, bytes: VideoExportJob.fileSize(url))
+                                       kind: .merge, count: project.clips.count, sources: project.clips.map(\.mediaId),
+                                       bytes: VideoExportJob.fileSize(url))
             app.showToast(L("movie_saved"))
         } catch is CancellationError {
             return

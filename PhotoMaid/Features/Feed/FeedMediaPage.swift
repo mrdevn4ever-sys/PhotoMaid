@@ -110,7 +110,7 @@ struct FeedMediaPage: View {
                 }
                 .buttonStyle(.plain)
                 .foregroundStyle(.white)
-                .glassCapsule(interactive: true)
+                .glassCapsule(interactive: true, overMedia: true)
                 .disabled(loadingCloud)
                 .padding(AppSpacing.s)
             }
@@ -221,7 +221,7 @@ struct FeedVideoControls: View {
         }
         .foregroundStyle(.white)
         .padding(.horizontal, AppSpacing.s)
-        .glassCapsule()
+        .glassCapsule(overMedia: true)
         .environment(\.layoutDirection, .leftToRight) // Zeitleisten werden in RTL nicht gespiegelt
         .opacity(app.player.itemID == asset.id ? 1 : 0)
         .disabled(app.player.itemID != asset.id)

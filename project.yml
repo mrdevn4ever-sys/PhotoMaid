@@ -69,6 +69,8 @@ targets:
         NSPhotoLibraryUsageDescription: "PhotoMaid shows your photos and videos for sorting on this iPhone and only removes items you choose and confirm in the system dialog."
         NSPhotoLibraryAddUsageDescription: "PhotoMaid saves edited copies, collages, videos and PDFs as new items in your library."
         NSCameraUsageDescription: "PhotoMaid uses the camera only to scan documents when you tap Scan."
+        NSFaceIDUsageDescription: "PhotoMaid uses Face ID only to unlock your private vault on this iPhone."
+        NSMicrophoneUsageDescription: "PhotoMaid uses the microphone only when you record a voice memo in your private vault."
         PHPhotoLibraryPreventAutomaticLimitedAccessAlert: true
         UIFileSharingEnabled: false
         LSSupportsOpeningDocumentsInPlace: false

@@ -106,7 +106,13 @@ final class AppModel {
         customCollections = kv?.get(StoreKeys.collections) ?? []
         let store = kv
         sizer = MediaSizer(initial: kv?.get(StoreKeys.sizeCache) ?? [:]) { cache in
-            await MainActor.run { try? store?.set(StoreKeys.sizeCache, cache) }
+            await MainActor.run {
+                let allowed = VaultConcealment.shared.visible(Set(cache.keys))
+                let publicCache = cache.filter { allowed.contains($0.key) }
+                _ = try? VaultConcealment.shared.withAnalysisAccess(Array(publicCache.keys)) {
+                    try store?.set(StoreKeys.sizeCache, publicCache)
+                }
+            }
         }
         if settings.firstSeenDay == nil {
             settings.firstSeenDay = today
@@ -192,8 +198,9 @@ final class AppModel {
                 return (h, e)
             }.value
             guard let self, !Task.isCancelled else { return }
-            var s = LibrarySnapshot(all: all, hiddenAlbumMembers: hidden, excludedAlbumMembers: excl, loaded: true)
-            s.byID = Dictionary(all.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
+            let publicMedia = VaultConcealment.shared.visible(all) { $0.id }
+            var s = LibrarySnapshot(all: publicMedia, hiddenAlbumMembers: hidden, excludedAlbumMembers: excl, loaded: true)
+            s.byID = Dictionary(publicMedia.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
             self.snapshot = s
             self.isLoadingLibrary = false
             self.rebuildFiltered()
@@ -204,7 +211,8 @@ final class AppModel {
         let hiddenIDs = Set(settings.hiddenMedia)
         let hiddenAlbum = snapshot.hiddenAlbumMembers
         let excluded = snapshot.excludedAlbumMembers
-        visibleMedia = snapshot.all.filter { !hiddenIDs.contains($0.id) && !hiddenAlbum.contains($0.id) }
+        visibleMedia = VaultConcealment.shared.visible(snapshot.all) { $0.id }
+            .filter { !hiddenIDs.contains($0.id) && !hiddenAlbum.contains($0.id) }
         cleanupMedia = excluded.isEmpty ? visibleMedia : visibleMedia.filter { !excluded.contains($0.id) }
         rebuildPending()
     }
@@ -214,12 +222,15 @@ final class AppModel {
                                            session: ReviewSessionID(), today: today)
     }
 
-    func asset(_ id: String) -> MediaAsset? { snapshot.byID[id] ?? library.asset(id) }
+    func asset(_ id: String) -> MediaAsset? {
+        guard !VaultConcealment.shared.isConcealed(id) else { return nil }
+        return snapshot.byID[id] ?? library.asset(id)
+    }
 
     func assets(_ refs: [ItemReference]) -> [MediaAsset] {
         var missing: [String] = []
         var out: [String: MediaAsset] = [:]
-        for r in refs where r.provider == .photoLibrary {
+        for r in refs where r.provider == .photoLibrary && !VaultConcealment.shared.isConcealed(r.localIdentifier) {
             if let a = snapshot.byID[r.localIdentifier] { out[a.id] = a } else { missing.append(r.localIdentifier) }
         }
         for a in library.assets(ids: missing) { out[a.id] = a }
@@ -232,7 +243,10 @@ final class AppModel {
         let state = await ledger.snapshotState()
         var backup = PhotoMaidBackup(createdAt: Int64(Date().timeIntervalSince1970 * 1000), appVersion: AppConfig.appVersion)
         var table = BackupRefTable()
-        for record in state.records.values where record.item.provider == .photoLibrary {
+        // Medien im Tresor gehören in keine öffentliche Sicherung (auch nicht als Kennung).
+        let concealment = VaultConcealment.shared
+        let visible: (String) -> Bool = { !concealment.isConcealed($0) }
+        for record in state.records.values where record.item.provider == .photoLibrary && visible(record.item.localIdentifier) {
             guard let backupState = BackupRules.state(record.disposition) else { continue }
             let media = organize.refs[record.item.localIdentifier]
                 ?? MediaRef(id: record.item.localIdentifier, name: nil, size: nil, takenMillis: nil)
@@ -240,22 +254,98 @@ final class AppModel {
             backup.decisions.append(BackupDecision(ref: index, state: backupState, due: record.dueDay,
                                                    bookmarked: record.bookmarked))
         }
-        for (id, tags) in organize.tags {
+        for (id, tags) in organize.tags where visible(id) {
             let index = table.add(organize.refs[id] ?? MediaRef(id: id, name: nil, size: nil, takenMillis: nil))
             backup.tags[index] = tags
         }
-        for (id, note) in organize.notes {
+        for (id, note) in organize.notes where visible(id) {
             let index = table.add(organize.refs[id] ?? MediaRef(id: id, name: nil, size: nil, takenMillis: nil))
             backup.notes[index] = note
         }
-        backup.basket = organize.basket.map {
+        backup.basket = organize.basket.filter(visible).map {
             table.add(organize.refs[$0] ?? MediaRef(id: $0, name: nil, size: nil, takenMillis: nil))
         }
-        backup.hiddenMedia = settings.hiddenMedia.map {
+        backup.hiddenMedia = settings.hiddenMedia.filter(visible).map {
             table.add(organize.refs[$0] ?? MediaRef(id: $0, name: nil, size: nil, takenMillis: nil))
         }
         backup.refs = table.refs
         return backup
+    }
+
+    /// Medien liegen jetzt im Tresor (E16): in PhotoMaid nirgends mehr zeigen. Papierkorb- und Später-Einträge
+    /// aufheben, aus Auswahlkorb und Entwürfen nehmen, Vorschaubilder vergessen, Mediathek und Lesemodell neu laden.
+    /// Gilt auch, wenn iOS das Löschen in der Fotos-App nicht bestätigt hat.
+    func applyVaultConcealment(_ roots: Set<String>) async {
+        let records = kv?.get(StoreKeys.edits) ?? []
+        let ids = roots.union(VaultDerivation.copies(of: roots, records: records))
+        // Discard stale public projections before any suspension.
+        snapshot.all = VaultConcealment.shared.visible(snapshot.all) { $0.id }
+        snapshot.byID = snapshot.byID.filter { !VaultConcealment.shared.isConcealed($0.key) }
+        rebuildFiltered()
+        player.stop()
+        fullScreen = nil
+        feed = nil
+        for id in ids {
+            let ref = ItemReference.photo(id)
+            switch record(ref).disposition {
+            case .markedForCleanup: await decide(ref, .unmark)
+            case .later: await decide(ref, .removeDeferral)
+            default: break
+            }
+        }
+        organize.removeFromBasket(Array(ids))
+        if let kv {
+            let collages = kv.get(StoreKeys.collageDrafts)
+            let cleanedCollages = collages.compactMap { draft -> CollageProject? in
+                guard draft.items.contains(where: { ids.contains($0.mediaId) }) else { return draft }
+                var p = draft
+                for i in p.items.indices.reversed() where ids.contains(p.items[i].mediaId) { p = p.removeItem(i) }
+                return p.items.contains(where: { ids.contains($0.mediaId) }) ? nil : p
+            }
+            if cleanedCollages != collages { try? kv.set(StoreKeys.collageDrafts, cleanedCollages) }
+            let movies = kv.get(StoreKeys.videoDrafts)
+            let cleanedMovies = movies.map { project in
+                project.clips.contains(where: { ids.contains($0.mediaId) })
+                    ? project.withClips(project.clips.filter { !ids.contains($0.mediaId) }) : project
+            }
+            if cleanedMovies != movies { try? kv.set(StoreKeys.videoDrafts, cleanedMovies) }
+            // Ergebnisse der Bildanalyse (u. a. erkannter Text) der verborgenen Medien verwerfen.
+            var analysis = kv.get(StoreKeys.analysisCache)
+            if analysis.keys.contains(where: ids.contains) {
+                for id in ids { analysis[id] = nil }
+                try? kv.set(StoreKeys.analysisCache, analysis)
+            }
+        }
+        ThumbnailLoader.shared.clear()
+        previews.forgetCache()
+        MediaShare.cleanupAll()
+        await sizer.applyConcealment()
+        reloadLibraryIfNeeded(force: true)
+        await refreshVaultConcealment()
+    }
+
+    /// Nach Änderungen am Tresor (z. B. beim Schließen): Dateien im Tresor im Bereich „Dateien“ ausblenden bzw. wieder
+    /// zeigen; ihre Papierkorb-/Später-Einträge aufheben. Danach Lesemodell neu.
+    func refreshVaultConcealment() async {
+        snapshot.all = VaultConcealment.shared.visible(snapshot.all) { $0.id }
+        snapshot.byID = snapshot.byID.filter { !VaultConcealment.shared.isConcealed($0.key) }
+        rebuildFiltered()
+        ThumbnailLoader.shared.clear()
+        previews.forgetCache()
+        if !VaultConcealment.shared.analysisReady {
+            player.stop()
+            fullScreen = nil
+            feed = nil
+        }
+        files.applyConcealment()
+        for ref in files.concealedReferences {
+            switch record(ref).disposition {
+            case .markedForCleanup: await decide(ref, .unmark)
+            case .later: await decide(ref, .removeDeferral)
+            default: break
+            }
+        }
+        await publishRead()
     }
 
     var dueCount: Int {
@@ -271,20 +361,49 @@ final class AppModel {
         let state = await ledger.snapshotState()
         let limit = capabilities.dailyCleanupLimit
         let day = today
+        let publicFiles = Set(files.entries.map(\.reference))
+        let visibilityRevision = VaultConcealment.shared.revision
         let derived = await Task.detached(priority: .userInitiated) { () -> LedgerReadModel in
-            LedgerReadModel(
-                records: state.records,
-                basket: state.records.values.filter { $0.disposition == .markedForCleanup }
+            let concealment = VaultConcealment.shared
+            let hidden: (ItemReference) -> Bool = { ref in
+                ref.provider == .photoLibrary ? concealment.isConcealed(ref.localIdentifier)
+                    : !concealment.isEmpty && !publicFiles.contains(ref)
+            }
+            return LedgerReadModel(
+                records: state.records.filter { !hidden($0.key) },
+                basket: state.records.values.filter { $0.disposition == .markedForCleanup && !hidden($0.item) }
                     .sorted { $0.item.description < $1.item.description },
-                laterRecords: state.records.values.filter { $0.disposition == .later },
-                events: state.events,
+                laterRecords: state.records.values.filter { $0.disposition == .later && !hidden($0.item) },
+                events: state.events.filter { !hidden($0.item) },
                 allowance: DecisionLedger.allowance(in: state, day: day, limit: limit),
                 canUndo: !state.undoStack.isEmpty,
-                reconciliationNeeded: state.intents.values.filter { $0.state == .reconciliationRequired })
+                reconciliationNeeded: state.intents.values.filter {
+                    $0.state == .reconciliationRequired && !$0.items.keys.contains(where: hidden)
+                })
         }.value
         guard generation == readGeneration else { return }
-        read = derived
-        rebuildPending()
+        // Visibility can change while the detached projection is running. Recheck on the main actor
+        // before publication; an old partial projection must never resurrect a just-concealed item.
+        files.applyConcealment()
+        let boundary = VaultConcealment.shared
+        let currentPublicFiles = Set(files.entries.map(\.reference))
+        if visibilityRevision == boundary.revision, currentPublicFiles == publicFiles {
+            read = derived
+            rebuildPending()
+            return
+        }
+        let isPrivate: (ItemReference) -> Bool = { ref in
+            ref.provider == .photoLibrary ? boundary.isConcealed(ref.localIdentifier)
+                : !boundary.isEmpty && !currentPublicFiles.contains(ref)
+        }
+        var safe = derived
+        safe.records = safe.records.filter { !isPrivate($0.key) }
+        safe.basket.removeAll { isPrivate($0.item) }
+        safe.laterRecords.removeAll { isPrivate($0.item) }
+        safe.events.removeAll { isPrivate($0.item) }
+        safe.reconciliationNeeded.removeAll { $0.items.keys.contains(where: isPrivate) }
+        read = safe
+        rebuildFiltered()
     }
 
     // MARK: Einstellungen und kleine Stores

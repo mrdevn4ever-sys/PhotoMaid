@@ -106,7 +106,17 @@ struct StudioView: View {
                 app.navigate(.collage(draftID: nil), in: .studio)
             }
         }
-        .onAppear { drafts = app.kv?.get(StoreKeys.collageDrafts) ?? [] }
+        .onAppear { reloadDrafts() }
+        .onReceive(NotificationCenter.default.publisher(for: .analysisVisibilityChanged).receive(on: RunLoop.main)) { _ in
+            reloadDrafts()
+        }
+    }
+
+    private func reloadDrafts() {
+        let stored: [CollageProject] = app.kv?.get(StoreKeys.collageDrafts) ?? []
+        drafts = stored.filter { draft in
+            !draft.items.contains { VaultConcealment.shared.isConcealed($0.mediaId) }
+        }
     }
 
     private func studioRow(_ symbol: String, _ title: String, _ subtitle: String, route: Route) -> some View {

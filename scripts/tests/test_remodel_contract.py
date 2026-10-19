@@ -61,11 +61,19 @@ class RemodelSourceContractTests(unittest.TestCase):
                 self.assertEqual((ROOT / path).read_text(encoding="utf-8").encode("utf-8"), original(path))
 
     def test_no_signing_dependency_or_workflow_changes(self):
-        for path in ["project.yml", "Package.swift", "Package.resolved", "PhotoMaid/App/PhotoMaid.entitlements",
+        for path in ["Package.swift", "Package.resolved", "PhotoMaid/App/PhotoMaid.entitlements",
                      ".github/workflows/ci.yml", ".github/workflows/testflight.yml"]:
             with self.subTest(path=path):
                 self.assertEqual((ROOT / path).read_text(encoding="utf-8").encode("utf-8"), original(path))
         self.assertEqual({p.name for p in (ROOT / ".github/workflows").iterdir()}, {"ci.yml", "testflight.yml"})
+        # Vault adds ONLY these two purpose descriptions; all build/signing/package policy stays exact.
+        approved = (
+            '        NSFaceIDUsageDescription: "PhotoMaid uses Face ID only to unlock your private vault on this iPhone."\n'
+            '        NSMicrophoneUsageDescription: "PhotoMaid uses the microphone only when you record a voice memo in your private vault."\n'
+        )
+        project = source("project.yml")
+        self.assertEqual(project.count(approved), 1)
+        self.assertEqual(project.replace(approved, ""), original("project.yml").decode())
 
     def test_original_five_tabs_keep_independent_stacks(self):
         root = source("PhotoMaid/App/RootView.swift")
@@ -134,7 +142,7 @@ class RemodelSourceContractTests(unittest.TestCase):
             keys = re.findall(r'\bL\("([^"]+)"', source(path))
             for key in keys:
                 with self.subTest(key=key):
-                    self.assertIn(key, strings)
+                    self.assertTrue(key in strings, f"Missing runtime catalog key: {key}")
                     self.assertEqual(len(strings[key]["localizations"]), 16)
 
     def test_standard_text_and_blue_accent_contrast(self):
@@ -184,6 +192,35 @@ class RemodelAdditionalSourceTests(unittest.TestCase):
         scanner = source("PhotoMaid/Features/Documents/DocumentScannerHost.swift")
         self.assertIn("PdfServices.saveDocument(data)", scanner)
         self.assertIn('L("pdf_saved", url.lastPathComponent)', scanner)
+
+    def test_media_glass_uses_dark_opaque_fallback(self):
+        glass = source("PhotoMaid/DesignSystem/Glass.swift")
+        media = source("PhotoMaid/Features/Feed/FeedMediaPage.swift")
+        self.assertIn("overMedia ? AppColors.stage : AppColors.surface", glass)
+        self.assertEqual(media.count("overMedia: true"), 2)
+
+    def test_pinch_latches_decision_suspension_for_remaining_drag(self):
+        text = source("PhotoMaid/Features/Feed/FeedView.swift")
+        self.assertIn("@GestureState private var magnifying = false", text)
+        self.assertIn("zoomed || magnifying || pinchCancelledDrag", text)
+        self.assertIn(".updating($magnifying)", text)
+        self.assertEqual(text.count("guard !magnifying, !pinchCancelledDrag"), 2)
+        self.assertNotIn("model.setSuspended(voiceOver || switchControl", text)
+
+    def test_parent_vault_export_and_draft_hooks_are_connected(self):
+        tools = source("PhotoMaid/Features/Studio/ToolsView.swift")
+        self.assertIn("sources.contains(where: { VaultConcealment.shared.isConcealed", tools)
+        self.assertIn("EditSaver.finish(", tools)
+        self.assertIn("sources: sources", tools)
+        studio = source("PhotoMaid/Features/Studio/StudioView.swift")
+        self.assertIn(".analysisVisibilityChanged", studio)
+        self.assertIn("VaultConcealment.shared.isConcealed($0.mediaId)", studio)
+        archive = source("PhotoMaid/Features/Archive/ArchiveView.swift")
+        self.assertIn("app.organize.tags(of: entry.sourceId)", archive)
+        self.assertIn("app.organize.note(of: entry.sourceId)", archive)
+        self.assertNotIn("app.organize.tags[", archive)
+        self.assertNotIn("app.organize.notes[", archive)
+        self.assertIn("try VaultConcealment.shared.withAnalysisAccess", archive)
 
     def test_archive_indexes_entries_not_skipped_input_ids(self):
         text = source("PhotoMaid/Infrastructure/Archive/ArchiveService.swift")

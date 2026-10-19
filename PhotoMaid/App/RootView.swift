@@ -1,5 +1,6 @@
 import PhotoMaidCore
 import SwiftUI
+import UIKit
 
 /// Wurzel: fünf Tabs (Heute · Fotos · Aufräumen · Studio · Verlauf) mit Liquid-Glass-Tableiste, darüber der Feed
 /// als Vollbild-Ebene (kurzes Einblenden wie Android, ohne Animation bei „Bewegung reduzieren“).
@@ -8,6 +9,7 @@ struct RootView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var quick = QuickActions.shared
+    @State private var vault = VaultStore.shared
 
     private var shielded: Bool { scenePhase != .active }
 
@@ -62,14 +64,25 @@ struct RootView: View {
         .onChange(of: scenePhase) { _, phase in
             switch phase {
             case .active:
+                PrivacyCover.hide()
                 Task { await app.onForeground() }
             case .background:
+                PrivacyCover.show()
                 app.player.stop()
+                vault.lock()
             default:
+                PrivacyCover.show()
                 app.player.pause()
             }
         }
         .onChange(of: app.library.changeToken) { _, _ in app.reloadLibraryIfNeeded() }
+        .onReceive(NotificationCenter.default.publisher(for: .analysisVisibilityChanged)) { _ in
+            Task { await app.refreshVaultConcealment(); app.reloadLibraryIfNeeded(force: true) }
+        }
+        // Tresor geschlossen: Ablagen und Löschungen darin auch im Bereich „Dateien“ abgleichen.
+        .onChange(of: vault.isPresented) { _, presented in
+            if !presented { Task { await app.refreshVaultConcealment() } }
+        }
         .onChange(of: quick.pending) { _, route in
             guard let route else { return }
             quick.pending = nil
@@ -88,6 +101,7 @@ struct RootView: View {
 
     private var tabs: some View {
         @Bindable var app = app
+        @Bindable var vault = vault
         return TabView(selection: $app.selectedTab) {
             Tab(L("tab_today"), systemImage: "house", value: AppTab.today) {
                 stack(.today) { TodayView() }
@@ -108,6 +122,9 @@ struct RootView: View {
         .tabBarMinimizeBehavior(.never)
         .tint(AppColors.accent)
         .onChange(of: app.selectedTab) { _, _ in Haptics.tick() }
+        .fullScreenCover(isPresented: $vault.isPresented, onDismiss: { vault.lock() }) {
+            VaultRootView().environment(app)
+        }
     }
 
     private func stack<Content: View>(_ tab: AppTab, @ViewBuilder content: () -> Content) -> some View {
@@ -154,6 +171,31 @@ struct PrivacyShield: View {
                 .accessibilityHidden(true)
         }
         .ignoresSafeArea()
+    }
+}
+
+/// Sichtschutz in einem eigenen Fenster über allem, was die App zeigt (Vollbild-Ebenen, Blätter, Teilen-Fenster).
+/// Systemabfragen (Face ID, Löschen in der Fotos-App) liegen außerhalb der App und bleiben bedienbar.
+@MainActor
+enum PrivacyCover {
+    private static var window: UIWindow?
+
+    static func show() {
+        guard window == nil,
+              let scene = UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene }).first
+        else { return }
+        let cover = UIWindow(windowScene: scene)
+        cover.windowLevel = .alert + 1
+        cover.overrideUserInterfaceStyle = scene.windows.first { $0.isKeyWindow }?.overrideUserInterfaceStyle ?? .unspecified
+        let host = UIHostingController(rootView: PrivacyShield())
+        cover.rootViewController = host
+        cover.isHidden = false
+        window = cover
+    }
+
+    static func hide() {
+        window?.isHidden = true
+        window = nil
     }
 }
 

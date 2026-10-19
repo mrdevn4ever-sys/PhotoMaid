@@ -226,8 +226,21 @@ enum FileScanner {
     static func safeURL(root: URL, relativePath: String) -> URL? {
         guard let url = containedURL(root: root, relativePath: relativePath) else { return nil }
         guard let v = try? url.resourceValues(forKeys: [.isSymbolicLinkKey, .isRegularFileKey]),
-              v.isSymbolicLink != true, v.isRegularFile == true else { return nil }
+              v.isSymbolicLink != true, v.isRegularFile == true, isPublic(url) else { return nil }
         return url
+    }
+
+    /// Shared boundary for public Quick Look, Open In, byte streams and cleanup. Unknown identity
+    /// is not proof of visibility once private originals exist. Vault operations use their own scoped IO.
+    static func isPublic(_ url: URL) -> Bool {
+        let boundary = VaultConcealment.shared
+        if boundary.isEmpty { return true }
+        guard boundary.analysisReady else { return false }
+        let scoped = url.startAccessingSecurityScopedResource()
+        defer { if scoped { url.stopAccessingSecurityScopedResource() } }
+        guard let values = try? url.resourceValues(forKeys: [.fileResourceIdentifierKey]),
+              let identity = values.fileResourceIdentifier else { return false }
+        return !boundary.isConcealed(VaultSnapshot.fileConcealmentKey(String(describing: identity)))
     }
 }
 
