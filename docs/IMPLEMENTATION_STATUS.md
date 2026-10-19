@@ -1,22 +1,28 @@
 # Implementierungsstatus
 
-Stand: 18.10.2026 · Arbeitsbranch `feat/iphone-duo-games` · zuletzt von Apple verarbeitet: **Version 1.0, Build 15**.
-Upload am 18.10.2026 um 20:28:36 UTC; Verarbeitung und interne Verteilung um 20:30:39 UTC bestätigt.
-[TestFlight-Lauf](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39161997156), Quellstand `c4898e7`.
-Ausdrückliche Freigabe: „Erledigt? Wenn ja mach testflight“. **63 native Unit-Tests und alle drei
-Privacy-Manifeste der tatsächlich exportierten IPA bestehen.** Die letzte Textkorrektur ist enthalten.
-[Uploadbericht und Originalbelege](game-setup-20261018/testflight/README.md).
+Stand: 19.10.2026 · Arbeitsbranch `feat/iphone-duo-games` · zuletzt von Apple verarbeitet: **Version 1.0, Build 16**.
+Upload am 19.10.2026 um 00:16:18 UTC; Verarbeitung und interne Verteilung um 00:18:22 UTC bestätigt.
+[TestFlight-Lauf](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39179559217), Quellstand `a17daf7`.
+Freigaben: „Sobald fertig mach testflight“ und „Du kannst jederzeit minutes brauchen zum testen“.
+Foto Blocks einschließlich iCloud sowie die vorherige Snake-UX sind enthalten. **498 Core-Tests,
+76 native Unit-Tests, Blocks auf beiden Simulatorgrößen 1/1 UI PASS und alle drei Privacy-Manifeste
+der exportierten IPA bestehen.** [Uploadbericht und Originalbelege](photo-blocks-20261018/testflight/README.md).
 
 ## Foto Blocks (neuer Auftrag, 18.10.2026)
 
 Im bestehenden Spielebereich integriert: eigene 9×17-Blocklogik, farbige Formen, zehn feste
 Fotoabschnitte, 2-s-Entdeckung, fortlaufende Levels mit Übertrag und Board-Erhalt, präzise
 Tap-/Wisch-/Drag-Steuerung, Pause, lokale Rekorde und bildfreier Spielstand. Gemeinsame sichere
-Fotoquelle und bestehender Auswahldialog; sämtliche Blocks-Vorschauen offline und ohne Tresor,
+Fotoquelle und bestehender Auswahldialog; iCloud-Fotos werden nach der neuesten Anforderung auch
+in Blocks standardmäßig geladen, ohne Tresor,
 ausgeblendete oder ausgenommene Fotos. 41 UI-Kennungen in 16 Sprachen.
 **PASS: 498 lokale Core-Tests, Quell-/Ressourcen-/Sprachen-/Privacy-Audits und native Syntaxprüfung.**
-Die neue Freigabe „Du kannst jederzeit minutes brauchen zum testen“ erlaubt native CI; Prüfung und
-anschließend beauftragter interner TestFlight-Upload folgen. Noch keine native Build-/UI-/FPS-Abnahme.
+**Finale native iCloud-CI PASS**, Lauf 39178252940, Quelle `a17daf7`: echter iOS-Build,
+76 native Unit-Tests, erneut 498 Core-Tests und Blocks auf iPhone sowie großem Simulatorfenster jeweils
+1/1 UI-Test ohne Fehler/Skip. Zehn aktuelle Blocks-Aufnahmen sind geprüft; der vorherige Lauf
+39175702951 besteht außerdem beide Snake-/Paare-/Blocks-Fälle je Simulator. **In TestFlight Build 16 enthalten.**
+Geräte-FPS, reales iCloud-only und Falten
+sind nicht gemessen.
 [Vollständige Implementierung, Dateiliste und Prüfbelege](PHOTO_BLOCKS.md).
 
 ## Foto-Snake: klarer Start und runde Fotos (neuer UX-Auftrag, 18.10.2026)
@@ -29,6 +35,10 @@ Die lesbaren 44–50-pt-Fotos sind gemäß Folgeauftrag wieder rund, mit ca. 1-p
 fest geschichtet. Kollisionslogik, Fotoarchiv, Wischsteuerung und Rekordformat bleiben unverändert.
 **PASS: 472 lokale Core-Tests; Ressourcen und alle 16 Sprachen.** iOS-Build, native UI-Tests und
 Geräte-FPS sind **NOT RUN**. Keine CI oder Uploads. [Dateiliste und statische Layoutstudie](snake-ux-20261018/README.md).
+
+Spätere native Abnahme gemeinsam mit Blocks: Lauf 39175702951, beide Spiele-UI-Fälle je Simulator
+2/2 PASS. Die Snake-Quelldateien bleiben seit Beginn des Blocks-Auftrags bytegleich. **Build 16 enthält
+diese Snake-Änderungen**; die damaligen Abschnitte unten dokumentieren ihre historischen Zwischenstände.
 
 ## Größere Snake-Fotos und Kopf aus der Vogelperspektive (18.10.2026, lokal)
 

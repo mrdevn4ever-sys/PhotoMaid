@@ -1,0 +1,166 @@
+{
+  "run_id": 39178252940,
+  "source_commit": "a17daf70456757869caec5508808f56ebc367c1e",
+  "captures": [
+    {
+      "device": "iphone",
+      "file": "iphone/blocks_photos.txt",
+      "original_name": "blocks_photos_0_0BF49DF2-9703-4D1F-9A51-FC1F55E38781.hierarchy",
+      "exported_name": "3A883A9E-658E-453C-BAE5-73DB2B6C3D8B.txt",
+      "sha256": "8e9314156892be7569de7784c9036f2d8c73673b86b48f3430fd5fd959776199",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/blocks_photos.png",
+      "original_name": "blocks_photos_0_B1D74E2B-2CC3-4A5A-B477-A25D62BC02BA.png",
+      "exported_name": "8C69F7FB-2A2A-4649-AC80-D652256E94B9.png",
+      "sha256": "547021f7cf2a7fffe1b2e9b5569f77a1465d18b51a3fc46171d7d88023f27104",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/blocks_paused.txt",
+      "original_name": "blocks_paused_0_55FFF6BD-5827-4667-A1E3-CEA5D6407A76.hierarchy",
+      "exported_name": "38F9E7FE-E32A-43AC-AB75-B9CA9C1441B9.txt",
+      "sha256": "d24f7519283d5f9a2139d377d732cb687b2a5162e1748d585d7cc6660feb1471",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/blocks_paused.png",
+      "original_name": "blocks_paused_0_6AB7872F-4FC2-478F-9006-1FA4A524D99D.png",
+      "exported_name": "EF0BF8CC-2A97-4669-AEE0-80EAE1D47717.png",
+      "sha256": "fd1c3ebb0f8204327d922de9f54a26b995e881b519a753c5cfcd890fcf99c4d2",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/blocks_playing.txt",
+      "original_name": "blocks_playing_0_650633E9-4B4E-49E3-A1B3-ADF22D286C83.hierarchy",
+      "exported_name": "38415249-9C53-4E94-AC08-F9FC68EB8FEA.txt",
+      "sha256": "03abada83143153e7d067c1211e9de6b3d85f345dc73cdcb1cfffb03b7dc4207",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/blocks_playing.png",
+      "original_name": "blocks_playing_0_F14CA13D-08DD-4FA3-8100-66388D5C47FE.png",
+      "exported_name": "D54964FC-BBEE-48C4-941A-039B965EF87C.png",
+      "sha256": "bf952fafe82e3f7b3fdea2c130fad5bbf19a19b3071ea9e99d6b26b01ba71710",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/blocks_start.txt",
+      "original_name": "blocks_start_0_973CA3C3-D6FE-4B2C-868B-BB3E14D17061.hierarchy",
+      "exported_name": "51B5D5A2-578F-4CCE-8D03-657F3DD5AE5C.txt",
+      "sha256": "d9c52e5a535bc2550120923fd170881de6ce1d6365000fd5cf46dfb45f710fa6",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/blocks_start.png",
+      "original_name": "blocks_start_0_385032F3-D4E6-4137-A245-6F9C09CCD45D.png",
+      "exported_name": "981F3549-1CE1-455A-83B3-E090BDAF0F2E.png",
+      "sha256": "508b1527e4a818be47461c3ce933464c4558306c52ea8086ced8737aa51c1750",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/blocks_photos_permission.txt",
+      "original_name": "blocks_photos_permission_0_0_12C8DF4A-E9CE-439C-9797-1BA2872C9C0C.hierarchy",
+      "exported_name": "EF3E2991-A42A-40C5-ACE2-F0577796A5F3.txt",
+      "sha256": "ff11839379f0ccbd8acc6ddbad681eb84426ebbf23b0c59bb6680d7337788303",
+      "native": true
+    },
+    {
+      "device": "iphone",
+      "file": "iphone/blocks_photos_permission.png",
+      "original_name": "blocks_photos_permission_0_0_20674882-35DD-4D4F-BAC3-F4BBDEAE15F7.png",
+      "exported_name": "2E4F0D2C-47FE-4E73-A019-0773C9C73B90.png",
+      "sha256": "329c1ac712f9aff45d50a34ac678ea59e331e060bb71b17288cea7045d5fb0ab",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/blocks_photos.txt",
+      "original_name": "blocks_photos_0_5BD750B9-E8FC-4C2F-81B8-43366FC3FCB9.hierarchy",
+      "exported_name": "B60BC7D1-EAC2-476B-B968-93549617660C.txt",
+      "sha256": "b977199aea97435ee82624774aa46035692874163978bf76eb2b462b17e21702",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/blocks_photos.png",
+      "original_name": "blocks_photos_0_3DCF4874-1775-471D-8862-981B82671939.png",
+      "exported_name": "349A908E-757D-4D89-B17D-2F27C7253219.png",
+      "sha256": "623a5266caecbe0dd4a5c1cf547da5b0163f0507c2b49c72d16dc04be00a0c5f",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/blocks_paused.txt",
+      "original_name": "blocks_paused_0_F808842E-671F-427E-9063-011512413293.hierarchy",
+      "exported_name": "236D3097-98B8-472F-8DBA-58A3EB1D0BD7.txt",
+      "sha256": "bcd322328f81631ca416890c6ec60ebc635de1799a764c48c1d4bcc8f1bd1661",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/blocks_paused.png",
+      "original_name": "blocks_paused_0_B4137311-CE4A-4825-BEA3-A978E11880DC.png",
+      "exported_name": "17C0464E-302F-4DCE-9C2B-64174D193C07.png",
+      "sha256": "a18d2995f34ef0b95f652fcaddb662c43f4f4857781622593f1cefd1152c3c1f",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/blocks_playing.txt",
+      "original_name": "blocks_playing_0_446E9392-258C-426F-910F-064698ADA2C4.hierarchy",
+      "exported_name": "645ECF93-987B-4A32-B514-32C8F2CCF5FF.txt",
+      "sha256": "c744d3340739c9d58b9571118865d118e12fda29662d02dbc48c58131afdcba3",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/blocks_playing.png",
+      "original_name": "blocks_playing_0_3A273AF2-E4B3-457C-93DF-768583C0CF7C.png",
+      "exported_name": "B0D5A4C3-E85D-45B6-8263-D5EC0A4906E6.png",
+      "sha256": "8aee754386ffd1a50148f46d077cfa9cec9db07816542f2b18914c245662dc85",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/blocks_start.txt",
+      "original_name": "blocks_start_0_D73F63B1-171C-4FBF-A1AA-0ADF0E03BA3B.hierarchy",
+      "exported_name": "5C44B9F0-E544-4DDB-AA8A-88D7DB28978C.txt",
+      "sha256": "b0cf12653c65a33ea32057c69773241a4c845ac181a205337a50ad6c884465f9",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/blocks_start.png",
+      "original_name": "blocks_start_0_D0FB0F85-4637-47E2-B47E-A2A23CE941EB.png",
+      "exported_name": "70AD6488-22D3-4485-897F-BBEDA37B9E11.png",
+      "sha256": "04f9f603887c58397c18aae2f420882c047dac47e05e39d2e6b43a7a1d6ccc83",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/blocks_photos_permission.txt",
+      "original_name": "blocks_photos_permission_0_0_DB91E363-1F81-485A-88DB-93F72DC54082.hierarchy",
+      "exported_name": "676DEC09-C49A-43E4-AFD4-FCD7BF26DCD5.txt",
+      "sha256": "9e4236c518929ab93cdf5eefba47170f19913148e106c97631496049d9b181eb",
+      "native": true
+    },
+    {
+      "device": "expanded-window",
+      "file": "expanded-window/blocks_photos_permission.png",
+      "original_name": "blocks_photos_permission_0_0_8084A394-4653-4934-8401-B56ABD2B0BE1.png",
+      "exported_name": "DEE57D66-D27D-43DA-AD7D-E42FB34A4344.png",
+      "sha256": "782b75b59729cff2de57a1731a771ef81651f18894619c0550da32df7f56e23c",
+      "native": true
+    }
+  ]
+}

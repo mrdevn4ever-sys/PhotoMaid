@@ -1,0 +1,18 @@
+{
+  "run_id": 39179559217,
+  "source": "a17daf70456757869caec5508808f56ebc367c1e",
+  "version": "1.0",
+  "build": 16,
+  "archive": "PASS",
+  "manual_signing": "PASS",
+  "exported_ipa_privacy_manifests": 3,
+  "privacy": "PASS",
+  "upload_utc": "2026-10-19T00:16:18Z",
+  "apple_processed_utc": "2026-10-19T00:18:22Z",
+  "internal_distribution": "PASS",
+  "external_distribution": false,
+  "app_store_release": false,
+  "unit_tests_repeated_in_upload_workflow": false,
+  "native_ci_tests": 76,
+  "native_ci_run": 39178252940
+}

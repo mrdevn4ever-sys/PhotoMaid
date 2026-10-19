@@ -1,14 +1,14 @@
 {
   "final_run": {
     "conclusion": "success",
-    "headSha": "ace6169ee517ba23978196f881338214fd68e98b",
+    "headSha": "a17daf70456757869caec5508808f56ebc367c1e",
     "jobs": [
       {
-        "completedAt": "2026-10-18T23:21:48Z",
+        "completedAt": "2026-10-18T23:58:50Z",
         "conclusion": "success",
-        "databaseId": 117817801627,
+        "databaseId": 117825327233,
         "name": "PhotoMaidCore (Linux, swift test)",
-        "startedAt": "2026-10-18T23:14:59Z",
+        "startedAt": "2026-10-18T23:51:42Z",
         "status": "completed",
         "steps": [
           {
@@ -66,14 +66,14 @@
             "status": "completed"
           }
         ],
-        "url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39175702951/job/117817801627"
+        "url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39178252940/job/117825327233"
       },
       {
-        "completedAt": "2026-10-18T23:37:41Z",
+        "completedAt": "2026-10-19T00:08:42Z",
         "conclusion": "success",
-        "databaseId": 117817801774,
+        "databaseId": 117825327448,
         "name": "iOS App (xcodebuild build + test)",
-        "startedAt": "2026-10-18T23:15:03Z",
+        "startedAt": "2026-10-18T23:51:47Z",
         "status": "completed",
         "steps": [
           {
@@ -287,71 +287,71 @@
             "status": "completed"
           }
         ],
-        "url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39175702951/job/117817801774"
+        "url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39178252940/job/117825327448"
       },
       {
-        "completedAt": "2026-10-18T23:14:56Z",
+        "completedAt": "2026-10-18T23:51:40Z",
         "conclusion": "skipped",
-        "databaseId": 117817802494,
-        "name": "Vorhandene Simulatorbelege aufteilen",
-        "startedAt": "2026-10-18T23:14:57Z",
-        "status": "completed",
-        "steps": [],
-        "url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39175702951/job/117817802494"
-      },
-      {
-        "completedAt": "2026-10-18T23:14:56Z",
-        "conclusion": "skipped",
-        "databaseId": 117817802722,
-        "name": "app-store",
-        "startedAt": "2026-10-18T23:14:57Z",
-        "status": "completed",
-        "steps": [],
-        "url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39175702951/job/117817802722"
-      },
-      {
-        "completedAt": "2026-10-18T23:14:56Z",
-        "conclusion": "skipped",
-        "databaseId": 117817823701,
-        "name": "app-store-refresh",
-        "startedAt": "2026-10-18T23:15:03Z",
-        "status": "completed",
-        "steps": [],
-        "url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39175702951/job/117817823701"
-      },
-      {
-        "completedAt": "2026-10-18T23:14:56Z",
-        "conclusion": "skipped",
-        "databaseId": 117817824684,
-        "name": "iPhone Duo \u2013 Xcode und Simulator pr\u00fcfen",
-        "startedAt": "2026-10-18T23:15:03Z",
-        "status": "completed",
-        "steps": [],
-        "url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39175702951/job/117817824684"
-      },
-      {
-        "completedAt": "2026-10-18T23:14:56Z",
-        "conclusion": "skipped",
-        "databaseId": 117817830439,
-        "name": "native-screenshot",
-        "startedAt": "2026-10-18T23:15:04Z",
-        "status": "completed",
-        "steps": [],
-        "url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39175702951/job/117817830439"
-      },
-      {
-        "completedAt": "2026-10-18T23:14:56Z",
-        "conclusion": "skipped",
-        "databaseId": 117817836411,
+        "databaseId": 117825327996,
         "name": "app-store-export",
-        "startedAt": "2026-10-18T23:15:06Z",
+        "startedAt": "2026-10-18T23:51:40Z",
         "status": "completed",
         "steps": [],
-        "url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39175702951/job/117817836411"
+        "url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39178252940/job/117825327996"
+      },
+      {
+        "completedAt": "2026-10-18T23:51:40Z",
+        "conclusion": "skipped",
+        "databaseId": 117825328188,
+        "name": "app-store-refresh",
+        "startedAt": "2026-10-18T23:51:40Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39178252940/job/117825328188"
+      },
+      {
+        "completedAt": "2026-10-18T23:51:40Z",
+        "conclusion": "skipped",
+        "databaseId": 117825328220,
+        "name": "iPhone Duo \u2013 Xcode und Simulator pr\u00fcfen",
+        "startedAt": "2026-10-18T23:51:40Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39178252940/job/117825328220"
+      },
+      {
+        "completedAt": "2026-10-18T23:51:40Z",
+        "conclusion": "skipped",
+        "databaseId": 117825328373,
+        "name": "Vorhandene Simulatorbelege aufteilen",
+        "startedAt": "2026-10-18T23:51:40Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39178252940/job/117825328373"
+      },
+      {
+        "completedAt": "2026-10-18T23:51:40Z",
+        "conclusion": "skipped",
+        "databaseId": 117825328389,
+        "name": "app-store",
+        "startedAt": "2026-10-18T23:51:40Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39178252940/job/117825328389"
+      },
+      {
+        "completedAt": "2026-10-18T23:51:39Z",
+        "conclusion": "skipped",
+        "databaseId": 117825363975,
+        "name": "native-screenshot",
+        "startedAt": "2026-10-18T23:51:50Z",
+        "status": "completed",
+        "steps": [],
+        "url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39178252940/job/117825363975"
       }
     ],
     "status": "completed",
-    "url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39175702951"
+    "url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39178252940"
   },
   "history": [
     {
@@ -375,6 +375,22 @@
       "conclusion": "success",
       "native_tests": 73,
       "ui_per_device": "2/2"
+    },
+    {
+      "run_id": 39177621042,
+      "source": "e9e1bb0454c17bd4158882a141049e9d6a3efadb",
+      "conclusion": "failure",
+      "core_tests": 498,
+      "native_tests_executed": 0,
+      "reason": "One old restrictOfflineWindow call in AppModel prevented native compilation; fixed in a17daf7"
+    },
+    {
+      "run_id": 39178252940,
+      "source": "a17daf70456757869caec5508808f56ebc367c1e",
+      "conclusion": "success",
+      "core_tests": 498,
+      "native_tests": 76,
+      "ui_per_device": "1/1"
     }
   ]
 }

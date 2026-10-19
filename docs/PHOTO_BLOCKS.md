@@ -1,9 +1,12 @@
 # Foto Blocks · Implementierung und Abnahme
 
-Stand 18.10.2026, bestehendes Repository und App-Target. Zu Auftragsbeginn gab es keine Blocks-Implementierung.
+Stand 19.10.2026, bestehendes Repository und App-Target. Zu Auftragsbeginn gab es keine Blocks-Implementierung.
 Neue Core-Regeln und native SwiftUI-Oberfläche sind in den vorhandenen Spielebereich eingebunden.
-Snake-Dateien sind gegenüber dem Arbeitsstand zu Beginn dieses Auftrags bytegleich; seine vorherigen,
-noch nicht veröffentlichten UX-Änderungen gehören weiterhin zum gemeinsamen Arbeitsstand.
+Snake-Dateien sind gegenüber dem Arbeitsstand zu Beginn dieses Auftrags bytegleich. Seine damals
+noch nicht veröffentlichten UX-Änderungen werden mit Build 16 ebenfalls ausgeliefert.
+
+**Ausgeliefert: TestFlight 1.0 (16), von Apple verarbeitet und intern verteilt am 19.10.2026.**
+Foto Blocks lädt iCloud-Fotos standardmäßig. Die finale Abnahme und Prüfgrenzen stehen unten.
 
 ## Regeln und Zustände
 
@@ -54,6 +57,14 @@ Formen, Phasenwechsel und Pause; Fehler bleiben sichtbar und wiederholbar. Wiede
 pausiert, Fotos werden ausschließlich aus dem aktuell erlaubten Bestand neu aufgelöst.
 Quelle und Seed bleiben erhalten; eigene Auswahl muss nach Prozessneustart erneut gewählt werden,
 statt unbemerkt auf die gesamte Mediathek auszuweichen.
+
+## Ausgelieferter TestFlight-Build
+
+**PhotoMaid 1.0 (Build 16)** wurde am 19.10.2026 aus `a17daf7` tatsächlich als Release archiviert,
+signiert und hochgeladen. Apple bestätigt Verarbeitung und interne Verteilung um **00:18:22 UTC**.
+Alle drei Privacy-Manifeste der exportierten IPA bestehen. Derselbe App-Quellstand besteht die
+finale native CI; nach dieser Prüfung wurden keine App-Dateien mehr geändert.
+[TestFlight-Bericht mit originalen Build-/Privacy-/Apple-Belegen](photo-blocks-20261018/testflight/README.md).
 
 ## Eingaben und Oberfläche
 
@@ -120,7 +131,7 @@ IDs und nachträglichen Entzug; er ist ausdrücklich keine PhotoKit-/Tresor-Ger�
 
 **PASS, lokal:** Syntax-Parsing der 13 betroffenen nativen Produktionsdateien und zwei Apple-Testdateien;
 kein Apple-SDK-Typcheck. 41 neue UI-Kennungen in 16 Sprachen, bestehender Katalog unverändert.
-Snake-SHA-Baseline, unveränderte alte Rekordformate, Ressourcen-/Target-/Offline-Quellenprüfung,
+Snake-SHA-Baseline, unveränderte alte Rekordformate, Ressourcen-/Target-/Fotoquellenprüfung,
 Quell-Privacy-Manifest und acht Tests des vorhandenen Privacy-Validators.
 Ein erster Test-Compilefehler bei mutierenden `#expect`-Ausdrücken sowie drei falsche Fixture-Annahmen
 sind korrigiert; ursprüngliche Fehlerlogs bleiben im Belegordner. Ein falscher anfänglicher
@@ -143,10 +154,32 @@ und visuell geprüft; Start, Spiel, kompakte Pause, Fotoauswahl sowie die besteh
 Die vollständige Foto-Enthüllung/Levelserie wurde per Core-Test und ausgeführter Swift-Probe geprüft,
 nicht per 20 manuell gespielten nativen Levels.
 
-Dieser Lauf betrifft den Stand vor dem nachgereichten iCloud-Wunsch. Der neue Stand aktiviert
-iCloud für Hintergründe und sichere Auswahl, ergänzt drei native Cloud-Policy-/Cache-Regressionstests
-und stellt Sichtbarkeits-Notifications auf dem Main-RunLoop zu. Die gezielte native Wiederholung
-und der anschließende TestFlight-Lauf müssen diesen abschließenden Stand erneut bauen.
+**Finale iCloud-Wiederholung PASS:** [Lauf 39178252940](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39178252940),
+Quellstand `a17daf70456757869caec5508808f56ebc367c1e`: echter iOS-Build, **76 native Unit-Tests**
+(63 Swift Testing + 13 XCTest), erneut alle 498 Core-Tests und **Blocks auf beiden Simulatoren 1/1 PASS**,
+ohne Fehler oder Skip. Zehn neue native Integrationsfälle insgesamt; die drei zusätzlichen Fälle
+prüfen iCloud-Freigabe/Weitergabe an den Lader, Wiederverwendung ohne erneuten Download, Fehler mit
+anschließendem Retry sowie unveränderte Sichtbarkeit während eines laufenden Downloads. Der zuvor
+vorhandene Entzugstest gilt auch für den nun netzwerkfähigen Lader. Sichtbarkeits-Notifications
+werden ausdrücklich auf dem Main-RunLoop zugestellt. Alle zehn aktuellen Blocks-PNGs sind tatsächlich
+angesehen und mit Prüfsummen archiviert; Start, Spiel, Pause, Fotoquelle und Berechtigungsdialog.
+
+Diese Cloud-Tests verwenden kontrollierte Loader-/Berechtigungs-Seams. Die Simulatoren sind nicht
+bei einer privaten iCloud-Fotomediathek angemeldet. Ein echter iCloud-only-Download unter realen
+Netzbedingungen und echte Tresor-/Berechtigungswechsel auf einem Gerät bleiben deshalb offen.
+Der freigegebene TestFlight-Lauf hat exakt denselben App-Quellstand als signierten
+Release erneut gebaut; native Unit-Tests wurden dort nicht nochmals dupliziert. Die Quellprüfsummen stehen
+in `final-app-source.json`.
+
+Der native CI-Kurzbericht zählt null Compilerfehler und acht bestehende Compilerwarnungen.
+Die normalisierte Warnmeldungsliste entspricht dem vorherigen Stand; keine neue Warnmeldung durch
+die iCloud-Erweiterung. Die tatsächlichen Originalprotokolle bleiben erhalten.
+
+Der erste iCloud-Build `39177621042` brach beim Typprüfen ab: Ein AppModel-Aufruf verwendete noch
+den bisherigen Namen `restrictOfflineWindow`. Es wurden dort keine nativen Unit- oder UI-Tests
+erfolgreich ausgeführt; nur die separate Core-Suite bestand. Der Aufruf ist in `a17daf7` korrigiert,
+und der statische Audit durchsucht nun sämtliche nativen Swift- und Testdateien nach alten APIs.
+Die tatsächlichen Fehlerbelege stehen unter `native-r4`.
 
 **Noch nicht verifiziert:** reale iPhone-FPS/Temperatur/Akkulast, Instruments-Leaks, echte iCloud-only
 Bibliothek, physisches Falten, VoiceOver und sämtliche 16 Sprachen auf echten Displays. Ein breites

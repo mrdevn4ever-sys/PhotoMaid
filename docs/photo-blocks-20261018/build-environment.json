@@ -11,8 +11,9 @@
   },
   "managed_capabilities": [],
   "managed_signing_credentials": false,
-  "testflight": "Authorized; exact final source will run native unit tests again before signed export/upload.",
+  "testflight": "PASS: actual signed Release archive/export, all 3 IPA manifests valid, Apple processed 1.0 (16) and internally distributed on 2026-10-19 at 00:18:22 UTC",
   "ci_authorized": true,
-  "native_ci_run": 39175702951,
-  "native_ci": "PASS: actual iOS simulator build, 73 native unit tests, 4 UI tests across two devices"
+  "native_ci_run": 39178252940,
+  "native_ci": "PASS: actual iOS simulator build, 76 native unit tests, 498 core tests, one Blocks UI case each on two devices",
+  "testflight_run": 39179559217
 }
