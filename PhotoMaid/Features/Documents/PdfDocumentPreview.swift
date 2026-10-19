@@ -11,7 +11,7 @@ struct PdfDocumentPreview: UIViewRepresentable {
     func makeCoordinator() -> Coordinator { Coordinator(self) }
 
     func makeUIView(context: Context) -> PDFView {
-        let view = PDFView()
+        let view = PdfFittingView()
         view.autoScales = true
         view.displayMode = .singlePageContinuous
         view.displayDirection = .vertical
@@ -60,5 +60,20 @@ struct PdfDocumentPreview: UIViewRepresentable {
             guard index != NSNotFound, index != parent.pageIndex else { return }
             parent.pageIndex = index
         }
+    }
+}
+
+/// SwiftUI gives the view its final bounds after the initial PDF assignment. Refit
+/// once for each window size, without resetting the user's zoom on ordinary updates.
+final class PdfFittingView: PDFView {
+    private var fittedSize = CGSize.zero
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        guard document != nil, bounds.width > 0, bounds.height > 0, bounds.size != fittedSize else { return }
+        let fit = scaleFactorForSizeToFit
+        guard fit.isFinite, fit > 0 else { return }
+        fittedSize = bounds.size
+        scaleFactor = fit
     }
 }

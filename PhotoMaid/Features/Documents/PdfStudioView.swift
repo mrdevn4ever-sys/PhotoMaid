@@ -55,7 +55,7 @@ struct PdfStudioView: View {
                 }
             }
         }
-        .appPage().navigationTitle(L("remodel_pdf_editor")).navigationBarTitleDisplayMode(.inline)
+        .appPage().navigationTitle(L(importOnAppear ? "pdf_title" : "remodel_pdf_editor")).navigationBarTitleDisplayMode(.inline)
         .toolbar {
             if editor.preview != nil {
                 ToolbarItemGroup(placement: .topBarTrailing) {
@@ -194,6 +194,12 @@ struct PdfStudioView: View {
 
     private func report(_ error: Error) {
         Diagnostics.error(.pdf, "pdf-editor-failed", error)
-        app.showError(L((error as? PdfServices.Failure) == .tooLarge ? "pdf_files_large" : "pdf_files_failed"))
+        let key: String
+        switch error as? PdfServices.Failure {
+        case .tooLarge: key = "pdf_files_large"
+        case .unsupportedFile: key = "pdf_files_failed"
+        default: key = "pdf_failed"
+        }
+        app.showError(L(key))
     }
 }

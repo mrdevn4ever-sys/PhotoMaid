@@ -195,6 +195,21 @@ import XCTest
         XCTAssertEqual(model.preview?.page(at: 0)?.rotation, 0)
     }
 
+    func testPreviewFitsFinalBoundsWithoutResettingUserZoom() throws {
+        let view = PdfFittingView(frame: CGRect(x: 0, y: 0, width: 400, height: 300))
+        view.document = try XCTUnwrap(PDFDocument(data: document(["FIRST"])))
+        view.layoutSubviews()
+        let small = view.scaleFactor
+        view.frame.size.height = 600
+        view.layoutSubviews()
+        XCTAssertGreaterThan(view.scaleFactor, small)
+        XCTAssertEqual(view.scaleFactor, view.scaleFactorForSizeToFit, accuracy: 0.001)
+        let zoom = view.scaleFactor * 1.2
+        view.scaleFactor = zoom
+        view.layoutSubviews()
+        XCTAssertEqual(view.scaleFactor, zoom, accuracy: 0.001)
+    }
+
     func testOversizedFilesAreRejectedBeforeReadingIntoMemory() throws {
         let url = try directory().appendingPathComponent("oversized.pdf")
         FileManager.default.createFile(atPath: url.path, contents: Data())
