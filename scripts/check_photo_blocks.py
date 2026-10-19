@@ -11,8 +11,14 @@ ROOT = Path(__file__).resolve().parents[1]
 def read(path): return (ROOT / path).read_text()
 
 baseline = json.loads(read('docs/photo-blocks-20261018/snake-baseline.json'))
+# 19 October follow-up expressly authorizes Snake field geometry and native picker fixes.
+# Keep the original Blocks-only baseline intact and continue auditing every other Snake file.
+snake_followup = {'Sources/PhotoMaidCore/Games/PhotoSnakeLayout.swift',
+                  'PhotoMaid/Features/Snake/PhotoSnakeBoard.swift',
+                  'PhotoMaid/Features/Snake/SnakeGalleryView.swift'}
 for path, digest in baseline.items():
-    assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == digest, path
+    if path not in snake_followup:
+        assert hashlib.sha256((ROOT/path).read_bytes()).hexdigest() == digest, path
 for path in ['Sources/PhotoMaidCore/Games/PhotoGameRecords.swift', 'PhotoMaid/Features/Games/PhotoGameScores.swift']:
     original = subprocess.check_output(['git', 'show', 'e9da9db:' + path], cwd=ROOT)
     assert (ROOT/path).read_bytes() == original, path
@@ -59,7 +65,7 @@ spec = yaml.safe_load(read('project.yml'))
 assert any(entry.get('path') == 'PhotoMaid' for entry in spec['targets']['PhotoMaid']['sources'])
 assert 'selected = .blocks' in read('PhotoMaid/Features/Games/PhotoGamesView.swift')
 assert 'games.blocks.v1' in read('PhotoMaid/Persistence/KeyValueStore.swift')
-print('PASS: Snake byte-identical to task start; existing records formats unchanged')
+print('PASS: Snake unchanged outside three explicitly authorized follow-up files; records formats and speed unchanged')
 print('PASS: central safe scope, guarded two-image window, iCloud backgrounds and picker, fixed reveal coordinates, weak single clock')
 print('PASS: 41 Blocks strings in all 16 locales; native recursive target inclusion and navigation')
 print('STATIC SOURCE AUDIT: no iOS type check, device privacy test or FPS measurement claimed')

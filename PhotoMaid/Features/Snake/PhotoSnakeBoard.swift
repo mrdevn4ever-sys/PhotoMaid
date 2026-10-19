@@ -297,11 +297,12 @@ final class PhotoSnakeScene: SKScene {
     private func placements(for p: PhotoSnakeMotion.Point, halfExtent: CGFloat, game: PhotoSnakeGame,
                             motion: PhotoSnakeMotion) -> [(point: CGPoint, alpha: CGFloat)] {
         let pixel = position(motion.wrapped(p))
+        let layout = PhotoSnakeLayout(width: Double(size.width), height: Double(size.height),
+                                      columns: game.width, rows: game.height)
         return PhotoSnakeLayout.placements(.init(Double(pixel.x), Double(pixel.y)),
             width: Double(fieldSize.width), height: Double(fieldSize.height),
-            gutter: PhotoSnakeLayout(width: Double(size.width), height: Double(size.height),
-                                     columns: game.width, rows: game.height).gutter,
-            halfExtent: Double(halfExtent), wraps: game.mode == .relaxed)
+            gutter: layout.gutter, halfExtent: Double(halfExtent), wraps: game.mode == .relaxed,
+            pitch: layout.pitch)
             .map { (CGPoint(x: $0.centre.x, y: $0.centre.y), CGFloat($0.alpha)) }
     }
 

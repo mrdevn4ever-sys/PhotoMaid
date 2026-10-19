@@ -14,7 +14,7 @@ struct SnakeGalleryView: View {
                 Section {
                     PhotosPicker(selection: $items,
                                  maxSelectionCount: max(1, PhotoSnakeGallery.maximumPhotos - model.gallery.selection.photos.count),
-                                 selectionBehavior: .ordered, matching: .images) {
+                                 selectionBehavior: .ordered, matching: .images, preferredItemEncoding: .current) {
                         Label(L("snake_gallery_add"), systemImage: "photo.badge.plus")
                     }
                     .disabled(model.gallery.busy || model.gallery.selection.photos.count >= PhotoSnakeGallery.maximumPhotos)

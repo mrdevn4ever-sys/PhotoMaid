@@ -92,6 +92,13 @@ Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E19) – ni
 
 ## Befehle
 
+Aktuellster Folgeauftrag (19.10.2026): Snake-Spielfeld vergrößern, normale Geschwindigkeit mit dem
+vorherigen Stand vergleichen und bei Änderung zurücksetzen, iCloud-Fotos für Paare und Snake reparieren.
+Anschließend neuen internen TestFlight-Build erstellen. Native Prüfungen/CI-Minuten sind ausdrücklich
+weiterhin freigegeben. Die frühere Snake-Dateisperre galt dem abgeschlossenen Blocks-Auftrag;
+dieser Folgeauftrag autorisiert gezielt Snake-Layout, sichere Foto-Ladewege und passende Regressionstests.
+Keine Richtungsbuttons, bestehende Fotos/Daten/Rekorde erhalten, keine externe Tester-Verteilung.
+
 Aktuellster Foto-Blocks-Auftrag (18.10.2026): Foto-Enthüllung und eigene Blocklogik im bestehenden
 Spielebereich. Neueste Korrektur: „Icloud ist ein muss auch bei blocks“ – iCloud-Fotos standardmäßig
 über Apples Photos-Framework laden, auch im Auswahldialog. Keine externen Bild-Uploads. Tresor,

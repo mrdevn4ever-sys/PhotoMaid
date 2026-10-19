@@ -104,7 +104,8 @@ final class PreviewPipeline {
 
     /// The callback seam is also used by native tests for real PhotoKit callback orderings.
     /// An absent cloud flag is not evidence that a network-enabled request cannot recover the image.
-    nonisolated static func requestProgressiveImage(allowNetwork: Bool, request: @escaping ImageRequest,
+    nonisolated static func requestProgressiveImage(allowNetwork: Bool, minimumLocalPixels: CGFloat? = nil,
+                                                    request: @escaping ImageRequest,
                                                     cancel: @escaping @Sendable (PHImageRequestID) -> Void) -> AsyncStream<PreviewUpdate> {
         AsyncStream { cont in
             let requests = RequestIDs()
@@ -117,11 +118,14 @@ final class PreviewPipeline {
             let first = request(local) { image, info in
                 let degraded = (info?[PHImageResultIsDegradedKey] as? Bool) ?? false
                 let cancelled = (info?[PHImageCancelledKey] as? Bool) == true
-                guard requests.acceptLocal(terminal: !degraded || cancelled) else { return }
+                let sufficient = image.map { image in
+                    minimumLocalPixels.map { min(image.size.width, image.size.height) * image.scale >= $0 } ?? false
+                } ?? false
+                guard requests.acceptLocal(terminal: !degraded || cancelled || sufficient) else { return }
                 if cancelled { cont.finish(); return }
                 if let image {
-                    cont.yield(.image(image, isFinal: !degraded))
-                    if !degraded { cont.finish() }
+                    cont.yield(.image(image, isFinal: !degraded || sufficient))
+                    if !degraded || sufficient { cont.finish() }
                     return
                 }
                 if degraded { return }
@@ -157,6 +161,44 @@ final class PreviewPipeline {
         guard let error = info?[PHImageErrorKey] as? NSError else { return false }
         return (error.domain == PHPhotosErrorDomain && error.code == PHPhotosError.Code.networkAccessRequired.rawValue)
             || (error.domain == NSURLErrorDomain && error.code != NSURLErrorCancelled)
+    }
+
+    /// Games need a usable thumbnail, not the original. Use the same local-first/iCloud recovery
+    /// as the swipe feed. A degraded image remains usable if the final cloud request fails.
+    func gameImage(for assetID: String, allowNetwork: Bool) async -> PreviewResult {
+        #if QA_FIXTURES && targetEnvironment(simulator)
+        if unavailableForTesting.contains(assetID) || posterlessForTesting.contains(assetID) { return .failed }
+        #endif
+        let asset = await Task.detached(priority: .userInitiated) {
+            PhotoLibraryService.phAsset(assetID).map(UncheckedBox.init)
+        }.value
+        guard let asset, !Task.isCancelled else { return .failed }
+        let managerBox = UncheckedBox(manager)
+        return await Self.requestGameImage(allowNetwork: allowNetwork, request: { options, result in
+            managerBox.value.requestImage(for: asset.value, targetSize: CGSize(width: 512, height: 512),
+                                          contentMode: .aspectFill, options: options, resultHandler: result)
+        }, cancel: { managerBox.value.cancelImageRequest($0) })
+    }
+
+    nonisolated static func requestGameImage(allowNetwork: Bool, request: @escaping ImageRequest,
+                                             cancel: @escaping @Sendable (PHImageRequestID) -> Void) async -> PreviewResult {
+        var fallback: UIImage?
+        var inCloud = false
+        for await update in requestProgressiveImage(allowNetwork: allowNetwork, minimumLocalPixels: 256,
+                                                     request: request, cancel: cancel) {
+            guard !Task.isCancelled else { return .failed }
+            switch update {
+            case .image(let image, let final):
+                fallback = image
+                // A sharp local preview is enough for cards/segments; don't wait for an original.
+                if final || min(image.size.width, image.size.height) * image.scale >= 256 { return .image(image) }
+            case .failed(let cloud): inCloud = cloud
+            case .progress: break
+            }
+        }
+        guard !Task.isCancelled else { return .failed }
+        if let fallback { return .image(fallback) }
+        return inCloud ? .notLocallyAvailable : .failed
     }
 
     /// One full-quality request; cancellation completes immediately even if PhotoKit never calls back.

@@ -39,7 +39,7 @@ final class PhotoGamePhotos {
     func startPhotos(_ selection: [String], previews: PreviewPipeline, allowNetwork: Bool,
                      minimumCount: Int = 2, ready: @escaping @MainActor () -> Void) {
         startPhotos(selection, allowNetwork: allowNetwork, minimumCount: minimumCount, load: { id in
-            let result = await previews.image(for: id, targetSize: CGSize(width: 512, height: 512), allowNetwork: allowNetwork, contentMode: .aspectFill)
+            let result = await previews.gameImage(for: id, allowNetwork: allowNetwork)
             if case .image(let image) = result { return image }
             return nil
         }, ready: ready)
@@ -70,7 +70,7 @@ final class PhotoGamePhotos {
                 .init(id: $0.id, isPhoto: !$0.isVideo, isFavorite: $0.isFavorite)
             }, scope: scope)
         }, load: { id in
-            let result = await app.previews.image(for: id, targetSize: CGSize(width: 512, height: 512), allowNetwork: allowNetwork, contentMode: .aspectFill)
+            let result = await app.previews.gameImage(for: id, allowNetwork: allowNetwork)
             if case .image(let image) = result { return image }
             return nil
         }, ready: ready)

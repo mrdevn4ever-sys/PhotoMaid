@@ -3,6 +3,20 @@ import Testing
 @testable import PhotoMaidCore
 
 @Suite struct PhotoSnakeReadableLayoutTests {
+    @Test func phoneFieldUsesTheWindowAndKeepsTheOriginalNormalTempo() {
+        for (w, h) in [(320.0, 480.0), (367, 700), (394, 760), (402, 874), (432, 850)] {
+            let grid = PhotoSnakeViewport(width: w, height: h)
+            let layout = PhotoSnakeLayout(width: w, height: h, columns: grid.columns, rows: grid.rows)
+            #expect(Double(grid.columns) * layout.pitch >= w * 0.84)
+            #expect(Double(grid.rows) * layout.pitch >= h * 0.89)
+            #expect(Double(grid.columns) * layout.pitch + 2 * layout.gutter <= w + 0.00001)
+            #expect(Double(grid.rows) * layout.pitch + 2 * layout.gutter <= h + 0.00001)
+        }
+        #expect(PhotoSnakeSpeed.normal.interval == 0.22)
+        #expect(PhotoSnakeSpeed.gentle.interval == 0.32)
+        #expect(PhotoSnakeSpeed.fast.interval == 0.14)
+    }
+
     @Test func photosKeepTheirReadableSizeWithThinCircularBordersAndSmallOverlap() {
         for (width, height) in [(320.0, 480.0), (367, 560), (367, 700), (382, 720), (385, 732),
                                 (394, 760), (406, 780), (422, 820), (432, 850), (736, 1024), (936, 1240)] {
@@ -52,7 +66,7 @@ import Testing
             for i in 0...1000 {
                 let value = Double(i) / 1000 * (axis == 0 ? w : h)
                 let p = PhotoSnakeMotion.Point(axis == 0 ? value : c / 2, axis == 1 ? value : c / 2)
-                let placements = PhotoSnakeLayout.placements(p, width: w, height: h, gutter: gutter, halfExtent: r, wraps: true)
+                let placements = PhotoSnakeLayout.placements(p, width: w, height: h, gutter: gutter, halfExtent: r, wraps: true, pitch: c)
                 #expect(abs(placements.map(\.alpha).reduce(0, +) - 1) < 0.00001)
                 for item in placements {
                     #expect((0...1).contains(item.alpha))
@@ -61,8 +75,8 @@ import Testing
                 }
             }
         }
-        let left = PhotoSnakeLayout.placements(.init(0, c / 2), width: w, height: h, gutter: gutter, halfExtent: r, wraps: true).sorted { $0.centre.x < $1.centre.x }
-        let right = PhotoSnakeLayout.placements(.init(w, c / 2), width: w, height: h, gutter: gutter, halfExtent: r, wraps: true).sorted { $0.centre.x < $1.centre.x }
+        let left = PhotoSnakeLayout.placements(.init(0, c / 2), width: w, height: h, gutter: gutter, halfExtent: r, wraps: true, pitch: c).sorted { $0.centre.x < $1.centre.x }
+        let right = PhotoSnakeLayout.placements(.init(w, c / 2), width: w, height: h, gutter: gutter, halfExtent: r, wraps: true, pitch: c).sorted { $0.centre.x < $1.centre.x }
         #expect(left == right)
     }
 
@@ -71,11 +85,11 @@ import Testing
         for i in 0...360 {
             let angle = Double(i) / 180 * .pi
             let extent = layout.headSide * 1.06 / 2 * (abs(cos(angle)) + abs(sin(angle)))
-            #expect(extent <= layout.gutter)
+            #expect(extent <= layout.gutter + layout.pitch / 2)
             // The full atlas canvas, not just its opaque pixels, fits in the reserved gutter.
             for p in [PhotoSnakeMotion.Point(0, 0), .init(4 * layout.pitch, 8 * layout.pitch)] {
                 let places = PhotoSnakeLayout.placements(p, width: 4 * layout.pitch, height: 8 * layout.pitch,
-                    gutter: layout.gutter, halfExtent: extent, wraps: true)
+                    gutter: layout.gutter, halfExtent: extent, wraps: true, pitch: layout.pitch)
                 for item in places {
                     #expect(item.centre.x - extent >= -layout.gutter)
                     #expect(item.centre.y - extent >= -layout.gutter)

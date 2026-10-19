@@ -20,15 +20,16 @@ public struct PhotoSnakeLayout: Equatable, Sendable {
         let h = height.isFinite ? max(1, height) : 1
         gutter = Self.edgeInset(width: w, height: h)
         let available = min((w - 2 * gutter) / Double(max(1, columns)), (h - 2 * gutter) / Double(max(1, rows)))
-        // The full, rotating atlas canvas (including the eating pulse) fits at every border.
+        // Outer cell centres already reserve half a pitch. Portal copies stay on those centres,
+        // so only the remaining head overhang needs a gutter instead of an entire head radius.
         let headExtent = 1.1 * 1.06 * sqrt(2) / 2
-        pitch = min(50 / Self.photoFraction, available, gutter / headExtent / Self.photoFraction)
+        pitch = min(50 / Self.photoFraction, available, gutter / (headExtent * Self.photoFraction - 0.5))
         // A smaller resizable window can shrink a continuing round, never change its collisions.
         photoSide = pitch * Self.photoFraction
     }
 
     public static func edgeInset(width: Double, height: Double) -> Double {
-        min(42, max(0, min(width, height)) / 6)
+        min(20, max(0, min(width, height)) / 12)
     }
 
     /// A stable order independent of frame timing or snake length, including portal copies.
@@ -57,21 +58,23 @@ public struct PhotoSnakeLayout: Equatable, Sendable {
         return hypot(dx, dy) < r + r2 - 0.000001
     }
 
-    /// A full-photo crossfade through the wrap portal, entirely inside the reserved gutter.
-    /// No clipping mask, no squeezed photo, and no jump in visible position/opacity at the seam.
+    /// Crossfade at the outer cell centres. Complete photos and turning heads stay visible
+    /// without reserving a wide empty strip around the entire playfield.
     public static func placements(_ p: PhotoSnakeMotion.Point, width: Double, height: Double,
-                                  gutter: Double, halfExtent: Double, wraps: Bool) -> [Placement] {
+                                  gutter: Double, halfExtent: Double, wraps: Bool,
+                                  pitch: Double? = nil) -> [Placement] {
         guard wraps else { return [Placement(centre: p, alpha: 1)] }
-        let band = max(0, min(gutter - halfExtent - 0.000001, gutter * 0.4))
+        let inset = max(0, halfExtent - gutter)
+        let band = max(0, pitch.map { $0 / 2 } ?? (gutter - halfExtent - 0.000001))
         guard band > 0 else { return [Placement(centre: p, alpha: 1)] }
         func axis(_ value: Double, period: Double) -> [(Double, Double)] {
             if value < band {
                 let alpha = 0.5 + 0.5 * max(0, value) / band
-                return [(value, alpha), (value + period, 1 - alpha)]
+                return [(max(inset, value), alpha), (min(period - inset, value + period), 1 - alpha)]
             }
             if value > period - band {
                 let alpha = 0.5 + 0.5 * max(0, period - value) / band
-                return [(value, alpha), (value - period, 1 - alpha)]
+                return [(min(period - inset, value), alpha), (max(inset, value - period), 1 - alpha)]
             }
             return [(value, 1)]
         }

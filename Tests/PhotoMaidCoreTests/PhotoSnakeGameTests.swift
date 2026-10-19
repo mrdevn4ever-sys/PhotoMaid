@@ -26,7 +26,7 @@ import Testing
     @Test func viewportChoosesUsableGridsForPhoneAndExpandedWindows() {
         let phone = PhotoSnakeViewport(width: 402, height: 874)
         let expanded = PhotoSnakeViewport(width: 744, height: 1133)
-        #expect(phone.columns == 8 && phone.rows == 20)
+        #expect(phone.columns == 9 && phone.rows == 21)
         #expect(expanded.columns == 15 && expanded.rows == 24)
         #expect(PhotoSnakeViewport(width: 1133, height: 744).rows == 15)
         #expect(PhotoSnakeViewport(width: .nan, height: 100).columns == 12)

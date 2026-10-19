@@ -6,6 +6,84 @@ import UIKit
 @testable import PhotoMaid
 
 @MainActor struct PreviewRecoveryTests {
+    @Test func gamesRecoverCloudImagesWithoutACloudFlag() async {
+        let image = UIImage()
+        let fixture = ImageCallbacks([[.init(nil, nil)], [.init(image, nil)]])
+        let result = await gameImage(fixture)
+        #expect(fixture.networks == [false, true])
+        #expect(matches(result, image))
+    }
+
+    @Test func gamesUseLocalThumbnailsWithoutDownloadingOriginals() async {
+        let image = UIGraphicsImageRenderer(size: CGSize(width: 256, height: 256)).image { _ in }
+        let fixture = ImageCallbacks([[.init(image, [PHImageResultIsDegradedKey: true]), .init(nil, nil)]])
+        #expect(matches(await gameImage(fixture), image))
+        #expect(fixture.networks == [false])
+    }
+
+    @Test func gamesKeepThePreviewWhenICloudFailsAndRespectOptOut() async {
+        let image = UIImage()
+        let online = ImageCallbacks([[.init(image, [PHImageResultIsDegradedKey: true]), .init(nil, nil)],
+                                     [.init(nil, [PHImageErrorKey: NSError(domain: NSURLErrorDomain, code: NSURLErrorNotConnectedToInternet)])]])
+        #expect(matches(await gameImage(online), image))
+        #expect(online.networks == [false, true])
+        let offline = ImageCallbacks([[.init(image, [PHImageResultIsDegradedKey: true]), .init(nil, [PHImageResultIsInCloudKey: true])]])
+        #expect(matches(await gameImage(offline, network: false), image))
+        #expect(offline.networks == [false])
+    }
+
+    @Test func gamesReportUnavailableCloudImagesWithoutFabricatingAPhoto() async {
+        let fixture = ImageCallbacks([[.init(nil, [PHImageResultIsInCloudKey: true])], [.init(nil, nil)]])
+        let result = await gameImage(fixture)
+        #expect(fixture.networks == [false, true])
+        #expect({ if case .notLocallyAvailable = result { true } else { false } }())
+    }
+
+    @Test func leavingAGameCancelsAnUnresponsivePhotoRequest() async {
+        let fixture = ImageCallbacks([[]])
+        let task = Task { await self.gameImage(fixture) }
+        for _ in 0..<100 where fixture.networks.isEmpty { try? await Task.sleep(for: .milliseconds(5)) }
+        #expect(fixture.networks == [false])
+        task.cancel()
+        let result = await task.value
+        #expect({ if case .failed = result { true } else { false } }())
+        #expect(fixture.cancelledIDs == [1])
+    }
+
+    @Test func pairsAndSnakeCanStartFromRecoveredICloudThumbnails() async {
+        let pairs = PhotoMemoryModel(canUsePhotos: { _ in true })
+        pairs.startPhotos(["cloud-a", "cloud-b"], allowNetwork: true) { _ in
+            let fixture = ImageCallbacks([[.init(nil, nil)], [.init(UIImage(), nil)]])
+            let result = await self.gameImage(fixture)
+            #expect(fixture.networks == [false, true])
+            if case .image(let image) = result { return image }
+            return nil
+        }
+        for _ in 0..<100 where pairs.isLoading { try? await Task.sleep(for: .milliseconds(5)) }
+        #expect(pairs.game?.pairCount == 2 && pairs.allowsCloud)
+
+        let snake = PhotoSnakeModel(canUsePhotos: { _ in true })
+        var ready = false
+        snake.photos.startPhotos(["cloud-snake"], allowNetwork: true, minimumCount: 1, load: { _ in
+            let fixture = ImageCallbacks([[.init(nil, [PHImageResultIsInCloudKey: true])], [.init(UIImage(), nil)]])
+            let result = await self.gameImage(fixture)
+            if case .image(let image) = result { return image }
+            return nil
+        }, ready: { ready = true })
+        for _ in 0..<100 where snake.photos.isLoading { try? await Task.sleep(for: .milliseconds(5)) }
+        #expect(ready && snake.photos.photoIDs == ["cloud-snake"] && snake.photos.allowsCloud)
+    }
+
+    private func gameImage(_ fixture: ImageCallbacks, network: Bool = true) async -> PreviewResult {
+        await PreviewPipeline.requestGameImage(allowNetwork: network,
+            request: { fixture.request($0, result: $1) }, cancel: { fixture.cancel($0) })
+    }
+
+    private func matches(_ result: PreviewResult, _ image: UIImage) -> Bool {
+        if case .image(let actual) = result { return actual === image }
+        return false
+    }
+
     @Test func missingCloudFlagStillTriesNetworkAndRecovers() async {
         let full = UIImage()
         let fixture = ImageCallbacks([[.init(nil, nil)], [.init(full, nil)]])
@@ -113,6 +191,7 @@ private final class ImageCallbacks: @unchecked Sendable {
     private var cancelled: [PHImageRequestID] = []
     init(_ responses: [[Response]]) { self.responses = responses }
     var networks: [Bool] { lock.withLock { requested } }
+    var cancelledIDs: [PHImageRequestID] { lock.withLock { cancelled } }
     func request(_ options: PHImageRequestOptions,
                  result: @escaping @Sendable (UIImage?, [AnyHashable: Any]?) -> Void) -> PHImageRequestID {
         let (id, values) = lock.withLock {
