@@ -1,0 +1,19 @@
+{
+  "source": "8fc221c238df4ef09921ed3b5f3d82c810bc216e",
+  "workflow_run": 39214988097,
+  "workflow_conclusion": "success",
+  "core_reported_tests": 475,
+  "core_suites": 54,
+  "native_xctest_passed": 13,
+  "native_swift_testing_passed": 69,
+  "native_total": 82,
+  "iphone_ui_passed": 1,
+  "iphone_ui_failed": 0,
+  "wide_ui_passed": 1,
+  "wide_ui_failed": 0,
+  "ui_skipped": 0,
+  "wide_device": "iPad mini (A17 Pro), iOS Simulator 26.4.1",
+  "iphone_device": "iPhone 17, iOS Simulator 26.2",
+  "fold_hardware_validated": false,
+  "reviewed_native_png_files": 7
+}

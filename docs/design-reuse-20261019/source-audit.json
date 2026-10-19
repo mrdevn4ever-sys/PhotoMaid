@@ -21,6 +21,8 @@
   "new_labels": 3,
   "languages_per_label": 16,
   "swift_syntax_parse_files": 10,
-  "native_build": "NOT RUN YET",
-  "native_ui": "NOT RUN YET"
+  "native_build": "PASS",
+  "native_ui": "PASS: iPhone and generic wide window",
+  "native_run": 39214988097,
+  "native_app_source": "8fc221c238df4ef09921ed3b5f3d82c810bc216e"
 }

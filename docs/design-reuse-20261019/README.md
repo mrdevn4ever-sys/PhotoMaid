@@ -30,7 +30,9 @@ Vorhandene Übersetzungen sind unverändert. Drei reine UI-Beschriftungen kommen
 - `PhotoMaidUITests/PhotoMaidUITests.swift`, `PhotoMaidUITests/RealLibraryTests.swift`: bestehende Studio-Tests verwenden die neuen stabilen UI-Kennungen.
 - Diese Dokumentation und Quellenbelege.
 
-## Prüfstatus vor dem nativen Lauf
+## Tatsächliche native Ergebnisse
+
+Geprüfter App-Quellstand: `8fc221c238df4ef09921ed3b5f3d82c810bc216e`. [CI-Lauf 39214988097](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39214988097) ist vollständig erfolgreich. Nach diesem Quellstand wurden nur Dokumentation und echte Testbelege ergänzt.
 
 | Prüfung | Ergebnis |
 |---|---|
@@ -38,8 +40,18 @@ Vorhandene Übersetzungen sind unverändert. Drei reine UI-Beschriftungen kommen
 | Lokalisierung | PASS: 1732 verwendete Kennungen, 2749 Einträge, 16 Sprachen |
 | Swift-Frontend-Parser | PASS: 10 Dateien, nur Syntax |
 | `git diff --check` | PASS |
-| Aktueller nativer Build und Unit-Tests | noch nicht ausgeführt |
-| Aktuelle native UI-/Screenshot-Prüfung | noch nicht ausgeführt |
+| Core, Swift 6.4 | PASS: 475 vom Runner gemeldete Tests in 54 Suites |
+| Nativer App-/Test-Build | PASS: `TEST BUILD SUCCEEDED`, danach `TEST EXECUTE SUCCEEDED` |
+| Native Unit-Tests | PASS: 13 XCTest-Methoden + 69 Swift-Testing-Tests = 82; einschliesslich realem Keychain-Roundtrip |
+| Erweiterter Workspace-/Studio-UI-Test auf iPhone | PASS: 1/1, 0 Fehler, 0 übersprungen; iPhone 17 / iOS Simulator 26.2 |
+| Derselbe UI-Test im breiten Fenster | PASS: 1/1, 0 Fehler, 0 übersprungen; iPad mini (A17 Pro) / iOS Simulator 26.4.1 |
+| Text-/CTA-Kontraste | PASS: 24 Farbpaare in vier Modi >= 4,5:1 (Minimum 4,7:1); keine Messung sämtlicher Fotos/Glasflächen |
 | Aktueller TestFlight-Upload | noch nicht ausgeführt |
 
-Geplant sind die vorhandene manuelle CI mit vollständigen Core-/nativen Unit-Tests und der erweiterte Workspace-UI-Test auf iPhone und einem ausdrücklich als breitem Simulatorfenster bezeichneten zweiten Gerät. Ein breites Fenster ist kein Nachweis echter Fold-/Unfold-Hardware. Ergebnisse und tatsächliche Screenshots werden nach dem Lauf ergänzt. Kein App-Store-Release oder externe Tester-Verteilung.
+Der vorhandene Workspace-Test prüft Feed-/Fensteranpassung und öffnet Heute, Fotos, Aufräumen, Studio, Verlauf, Editor, Collage, Einstellungen und Tresor. Zusätzlich wurden deutsche Dark-Mode-Ansichten, alle vier Erstellen-Einstiege, Werkzeug-/PDF-/Gespeichert-Zugänge, deren Touchflächen und der tatsächliche Weg Verkleinern → Zurück zu Studio geprüft. Alle bestehenden Assertions sind erhalten. Die Prüfung ist keine vollständige Ausführung jeder Export-/Spiel-/Tresoroperation mit produktiven Daten.
+
+Sieben echte native Aufnahmen wurden angesehen. Abgelegt sind ausgewählte unveränderte PNGs für [Heute dunkel](screenshots/design_dark_today.png), [Aufräumen dunkel](screenshots/design_dark_cleanup.png), [Studio dunkel](screenshots/design_studio_dark_create.png), [Studio-Werkzeuge](screenshots/design_studio_dark_tools.png), [Studio hell](screenshots/workspace_studio.png) und [Studio im breiten Fenster](screenshots/expanded-studio-dark.png). Keine Mockups oder nachgezeichneten Screenshots.
+
+Weitere Belege: [native-results.json](native-results.json), [iPhone-Ergebnis](iphone-summary.json), [breites Fenster](wide-summary.json), [Kontraste](contrast.json). Vollständige Protokolle, Screenshot-Anhänge und Hierarchien sind in den CI-Artefakten `ios-build-report`, `core-test-log`, `game-visual-iphone` und `game-visual-evidence` des verlinkten Laufs erhalten.
+
+Ein breites Simulatorfenster ist kein Nachweis echter Fold-/Unfold-Hardware. Reales iPhone, echter iCloud-Download, Face ID und sämtliche Accessibility-/Berechtigungs-/Migrationskombinationen wurden in diesem Design-Auftrag nicht neu auf Hardware geprüft. Fachdateien und Datenformate sind unverändert; daraus folgt keine allgemeine Sicherheitszertifizierung. Kein App-Store-Release oder externe Tester-Verteilung.
