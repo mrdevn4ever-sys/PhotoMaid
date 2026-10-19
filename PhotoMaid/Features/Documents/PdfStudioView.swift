@@ -97,7 +97,10 @@ struct PdfStudioView: View {
             if importOnAppear { importing = true }
             #if QA_FIXTURES && targetEnvironment(simulator)
             if ProcessInfo.processInfo.arguments.contains("-pdf-editor-fixtures") {
-                do { request = ImportRequest(urls: try PdfEditorFixtures.files()) }
+                // One owning startup task: do not change the sibling task's ID
+                // while SwiftUI is still installing its initial task modifiers.
+                do { try await editor.importFiles(PdfEditorFixtures.files()) }
+                catch is CancellationError { initialImportAttempted = false }
                 catch { report(error) }
             }
             #endif
