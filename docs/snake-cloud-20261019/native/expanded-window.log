@@ -1,0 +1,655 @@
+Command line invocation:
+    /Applications/Xcode_26.6.app/Contents/Developer/usr/bin/xcodebuild -project PhotoMaid.xcodeproj -scheme PhotoMaid -destination id=1A931556-7569-452B-9276-C82E5224F9D5 -derivedDataPath /Users/runner/work/_temp/PhotoMaidDerived -resultBundlePath /Users/runner/work/_temp/game-visual/expanded-window.xcresult -parallel-testing-enabled NO -maximum-concurrent-test-simulator-destinations 1 -test-timeouts-enabled YES -default-test-execution-time-allowance 300 -maximum-test-execution-time-allowance 300 "-only-testing:PhotoMaidUITests/PhotoGameVisualTests/test05SimpleSetupCloudAndManualPhotoChoice" "-only-testing:PhotoMaidUITests/PhotoGameVisualTests/test20SnakeControlsFoodHighscoreAndPause" "-only-testing:PhotoMaidUITests/PhotoGameVisualTests/test60SnakeRealtimeDriverAndPause" -skipPackagePluginValidation -skipMacroValidation TARGETED_DEVICE_FAMILY=1,2 CODE_SIGNING_ALLOWED=YES CODE_SIGN_IDENTITY=- CODE_SIGNING_REQUIRED=YES test-without-building
+
+Build settings from command line:
+    CODE_SIGN_IDENTITY = -
+    CODE_SIGNING_ALLOWED = YES
+    CODE_SIGNING_REQUIRED = YES
+    TARGETED_DEVICE_FAMILY = 1,2
+
+Resolve Package Graph
+
+
+Resolved source packages:
+  GoogleUserMessagingPlatform: https://github.com/googleads/swift-package-manager-google-user-messaging-platform.git @ 3.1.0
+  GoogleMobileAds: https://github.com/googleads/swift-package-manager-google-mobile-ads.git @ 13.9.0
+  swift-crypto: https://github.com/apple/swift-crypto.git @ 4.5.2
+  swift-asn1: https://github.com/apple/swift-asn1.git @ 1.7.3
+  PhotoMaidCore: /Users/runner/work/PhotoMaid/PhotoMaid
+
+Writing result bundle at path:
+	/Users/runner/work/_temp/game-visual/expanded-window.xcresult
+
+--- xcodebuild: WARNING: Using the first of multiple matching destinations:
+{ platform:iOS Simulator, arch:arm64, id:1A931556-7569-452B-9276-C82E5224F9D5, OS:26.4.1, name:iPad mini (A17 Pro) }
+{ platform:iOS Simulator, arch:x86_64, id:1A931556-7569-452B-9276-C82E5224F9D5, OS:26.4.1, name:iPad mini (A17 Pro) }
+2026-10-19 00:57:13.501967+0000 PhotoMaidUITests-Runner[39939:112617] [Default] Running tests...
+2026-10-19 00:57:13.632805+0000 PhotoMaidUITests-Runner[39939:112617] [UIKit App Config] Update the Info.plist: Launch screens will soon be required.
+objc[39939]: Class UIAccessibilityLoaderWebShared is implemented in both /Library/Developer/CoreSimulator/Volumes/iOS_23E254a/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.4.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebCore.axbundle/WebCore (0x10a3c4310) and /Library/Developer/CoreSimulator/Volumes/iOS_23E254a/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.4.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebKit.axbundle/WebKit (0x10b544398). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'Selected tests' started at 2026-10-19 00:57:23.928.
+Test Suite 'PhotoMaidUITests.xctest' started at 2026-10-19 00:57:23.932.
+Test Suite 'PhotoGameVisualTests' started at 2026-10-19 00:57:23.932.
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test05SimpleSetupCloudAndManualPhotoChoice]' started.
+    t =     0.00s Start Test at 2026-10-19 00:57:23.935
+    t =     2.67s Set Up
+    t =     2.69s     Setting device orientation to Portrait
+    t =     2.77s         Device orientation changed to Portrait
+    t =     3.98s         Wait for com.apple.DocumentManager.DockFolderViewService to idle
+    t =     4.05s         Wait for com.apple.springboard to idle
+    t =     4.41s Open com.mrdevn4ever.photomaid
+    t =     4.41s     Launch com.mrdevn4ever.photomaid
+2026-10-19 00:57:29.436 xcodebuild[38281:108566] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-19 00:57:29.436 xcodebuild[38281:108566] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =    10.78s         Setting up automation session
+    t =    16.01s         Wait for com.mrdevn4ever.photomaid to idle
+    t =    21.25s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    21.36s Checking existence of `Alert (First Match)`
+    t =    21.43s Checking existence of `"feed.stage" Any`
+    t =    24.64s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    24.83s Find the "Allow Full Access" Button
+    t =    25.29s Added attachment named 'games_feed_photos_permission_0'
+    t =    25.29s Requesting snapshot of accessibility hierarchy for app with pid 26530
+    t =    25.83s Requesting snapshot of accessibility hierarchy for app with pid 26530
+    t =    25.90s Added attachment named 'games_feed_photos_permission_0.hierarchy'
+    t =    25.91s Tap "Allow Full Access" Button
+    t =    25.91s     Wait for com.apple.springboard to idle
+    t =    25.91s     Find the "Allow Full Access" Button
+    t =    26.08s     Check for interrupting elements affecting "Allow Full Access" Button
+    t =    26.16s     Synthesize event
+    t =    26.62s     Wait for com.apple.springboard to idle
+    t =    26.95s Checking existence of `Alert (First Match)`
+    t =    28.00s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    28.05s Checking existence of `Alert (First Match)`
+    t =    28.11s Checking existence of `"feed.stage" Any`
+    t =    30.19s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    30.24s Checking existence of `Alert (First Match)`
+    t =    30.38s Checking existence of `"feed.stage" Any`
+    t =    31.90s Tap "feed.memory" Button
+    t =    31.90s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    31.91s     Find the "feed.memory" Button
+    t =    32.11s     Check for interrupting elements affecting "feed.memory" Button
+    t =    32.20s         Wait for com.apple.springboard to idle
+    t =    32.25s     Synthesize event
+    t =    32.80s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    35.29s Waiting 5.0s for "games.memory" Button to exist
+    t =    36.31s     Checking `Expect predicate `existsNoRetry == 1` for object "games.memory" Button`
+    t =    36.31s         Checking existence of `"games.memory" Button`
+    t =    36.65s Tap "games.memory" Button
+    t =    36.65s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    36.66s     Find the "games.memory" Button
+    t =    36.84s     Check for interrupting elements affecting "games.memory" Button
+    t =    36.94s         Wait for com.apple.springboard to idle
+    t =    36.98s     Synthesize event
+    t =    37.32s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    37.63s Waiting 5.0s for "Paare" NavigationBar to exist
+    t =    38.68s     Checking `Expect predicate `existsNoRetry == 1` for object "Paare" NavigationBar`
+    t =    38.68s         Checking existence of `"Paare" NavigationBar`
+    t =    38.80s Find the "memory.cloud" Switch
+    t =    39.22s Added attachment named 'pairs_setup_default_cloud_on'
+    t =    39.22s Requesting snapshot of accessibility hierarchy for app with pid 40645
+    t =    39.88s Requesting snapshot of accessibility hierarchy for app with pid 40645
+    t =    40.07s Added attachment named 'pairs_setup_default_cloud_on.hierarchy'
+    t =    40.08s Tap "memory.cloud" Switch
+    t =    40.08s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    40.09s     Find the "memory.cloud" Switch
+    t =    40.25s     Check for interrupting elements affecting "memory.cloud" Switch
+    t =    40.37s         Wait for com.apple.springboard to idle
+    t =    40.42s     Synthesize event
+    t =    40.74s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    42.06s Find the "memory.cloud" Switch
+    t =    42.42s Tap "memory.startPhotos" Button
+    t =    42.42s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    42.42s     Find the "memory.startPhotos" Button
+    t =    42.54s     Check for interrupting elements affecting "memory.startPhotos" Button
+    t =    42.78s         Wait for com.apple.springboard to idle
+    t =    42.85s     Synthesize event
+    t =    43.20s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    43.62s Waiting 30.0s for "memory.card.0" Button to exist
+    t =    44.67s     Checking `Expect predicate `existsNoRetry == 1` for object "memory.card.0" Button`
+    t =    44.67s         Checking existence of `"memory.card.0" Button`
+    t =    44.80s Get number of matches for: Elements matching predicate 'identifier BEGINSWITH "memory.card."'
+    t =    44.91s Tap "memory.change" Button
+    t =    44.91s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    44.91s     Find the "memory.change" Button
+    t =    45.03s     Check for interrupting elements affecting "memory.change" Button
+    t =    45.12s         Wait for com.apple.springboard to idle
+    t =    45.16s     Synthesize event
+    t =    45.48s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    45.98s Find the "memory.cloud" Switch
+    t =    46.40s Added attachment named 'pairs_setup_keeps_cloud_opt_out'
+    t =    46.40s Requesting snapshot of accessibility hierarchy for app with pid 40645
+    t =    46.86s Requesting snapshot of accessibility hierarchy for app with pid 40645
+    t =    46.97s Added attachment named 'pairs_setup_keeps_cloud_opt_out.hierarchy'
+    t =    46.97s Tap "memory.close" Button
+    t =    46.97s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    47.00s     Find the "memory.close" Button
+    t =    47.10s     Check for interrupting elements affecting "memory.close" Button
+    t =    47.22s         Wait for com.apple.springboard to idle
+    t =    47.25s     Synthesize event
+    t =    47.59s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    48.28s Tap "feed.memory" Button
+    t =    48.28s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    48.29s     Find the "feed.memory" Button
+    t =    48.40s     Check for interrupting elements affecting "feed.memory" Button
+    t =    48.52s         Wait for com.apple.springboard to idle
+    t =    48.58s     Synthesize event
+    t =    48.95s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    49.83s Waiting 5.0s for "games.snake" Button to exist
+    t =    50.87s     Checking `Expect predicate `existsNoRetry == 1` for object "games.snake" Button`
+    t =    50.87s         Checking existence of `"games.snake" Button`
+    t =    51.05s Tap "games.snake" Button
+    t =    51.05s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    51.05s     Find the "games.snake" Button
+    t =    51.17s     Check for interrupting elements affecting "games.snake" Button
+    t =    51.28s         Wait for com.apple.springboard to idle
+    t =    51.32s     Synthesize event
+    t =    51.65s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    57.40s Find the "snake.source" Button
+    t =    58.16s Added attachment named 'snake_setup_default_library_cloud_on'
+    t =    58.16s Requesting snapshot of accessibility hierarchy for app with pid 40645
+    t =    58.95s Requesting snapshot of accessibility hierarchy for app with pid 40645
+    t =    59.08s Added attachment named 'snake_setup_default_library_cloud_on.hierarchy'
+    t =    59.09s Tap "snake.options" Any
+    t =    59.09s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    59.09s     Find the "snake.options" Any
+    t =    60.46s     Check for interrupting elements affecting "snake.options" Button
+    t =    60.62s         Wait for com.apple.springboard to idle
+    t =    60.78s     Synthesize event
+    t =    61.14s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    61.16s Find the "snake.cloud" Switch
+    t =    61.35s Checking existence of `"snake.mode" Button`
+    t =    61.53s Checking existence of `"snake.speed" Button`
+    t =    62.31s Added attachment named 'snake_setup_labelled_options'
+    t =    62.31s Requesting snapshot of accessibility hierarchy for app with pid 40645
+    t =    62.85s Requesting snapshot of accessibility hierarchy for app with pid 40645
+    t =    62.99s Added attachment named 'snake_setup_labelled_options.hierarchy'
+    t =    62.99s Tap "snake.options" Button
+    t =    62.99s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    63.01s     Find the "snake.options" Button
+    t =    63.55s     Check for interrupting elements affecting "snake.options" Button
+    t =    63.68s         Wait for com.apple.springboard to idle
+    t =    63.84s     Synthesize event
+    t =    64.20s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    64.21s Tap "snake.source" Button
+    t =    64.21s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    64.22s     Find the "snake.source" Button
+    t =    64.41s     Check for interrupting elements affecting "snake.source" Button
+    t =    64.57s         Wait for com.apple.springboard to idle
+    t =    64.63s     Synthesize event
+    t =    64.99s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    66.79s Tap "Eigene Fotos wählen" Button
+    t =    66.79s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    67.73s     Find the "Eigene Fotos wählen" Button
+    t =    68.04s     Check for interrupting elements affecting "Eigene Fotos wählen" Button
+    t =    68.22s         Wait for com.apple.springboard to idle
+    t =    68.27s     Synthesize event
+    t =    68.60s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    70.41s Find the "snake.prepare" Button
+    t =    70.77s Find the "snake.prepare" Button
+    t =    71.02s Find the "snake.editPhotos" Button
+    t =    71.15s Tap "snake.editPhotos" Button
+    t =    71.15s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    71.16s     Find the "snake.editPhotos" Button
+    t =    71.27s     Check for interrupting elements affecting "snake.editPhotos" Button
+    t =    71.40s         Wait for com.apple.springboard to idle
+    t =    71.44s     Synthesize event
+    t =    71.77s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    72.36s Waiting 10.0s for "snake.gallery.add" Button to exist
+    t =    73.40s     Checking `Expect predicate `existsNoRetry == 1` for object "snake.gallery.add" Button`
+    t =    73.41s         Checking existence of `"snake.gallery.add" Button`
+    t =    73.76s Checking existence of `"snake.board" Any`
+    t =    74.35s Added attachment named 'snake_empty_manual_choice_opens_gallery'
+    t =    74.36s Requesting snapshot of accessibility hierarchy for app with pid 40645
+    t =    75.07s Requesting snapshot of accessibility hierarchy for app with pid 40645
+    t =    75.30s Added attachment named 'snake_empty_manual_choice_opens_gallery.hierarchy'
+    t =    75.30s Tap "Fertig" Button
+    t =    75.30s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    75.30s     Find the "Fertig" Button
+    t =    76.05s     Check for interrupting elements affecting "Fertig" Button
+    t =    76.23s         Wait for com.apple.springboard to idle
+    t =    76.28s     Synthesize event
+    t =    76.65s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    77.41s Tap "snake.source" Button
+    t =    77.41s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    77.42s     Find the "snake.source" Button
+    t =    77.62s     Check for interrupting elements affecting "snake.source" Button
+    t =    77.73s         Wait for com.apple.springboard to idle
+    t =    77.77s     Synthesize event
+    t =    78.15s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    79.26s Tap "Gesamte Mediathek" Button
+    t =    79.27s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    79.28s     Find the "Gesamte Mediathek" Button
+    t =    79.93s     Check for interrupting elements affecting "Gesamte Mediathek" Button
+    t =    80.09s         Wait for com.apple.springboard to idle
+    t =    80.13s     Synthesize event
+    t =    80.49s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    81.89s Tap "snake.prepare" Button
+    t =    81.89s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    81.96s     Find the "snake.prepare" Button
+    t =    82.10s     Check for interrupting elements affecting "snake.prepare" Button
+    t =    82.21s         Wait for com.apple.springboard to idle
+    t =    82.24s     Synthesize event
+    t =    82.57s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    82.58s Waiting 30.0s for "snake.board" Any to exist
+    t =    83.62s     Checking `Expect predicate `existsNoRetry == 1` for object "snake.board" Any`
+    t =    83.62s         Checking existence of `"snake.board" Any`
+    t =    83.96s Find the "snake.board" Any
+    t =    84.32s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    84.48s Find the "snake.board" Other
+    t =    84.62s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    84.68s Checking existence of `"snake.play" Any`
+    t =    84.92s Checking existence of `"snake.close" Button`
+    t =    85.06s Find the "snake.close" Button
+    t =    85.34s Find the "snake.close" Button
+    t =    85.42s Checking existence of `"snake.pause" Button`
+    t =    85.52s Find the "snake.pause" Button
+    t =    85.61s Find the "snake.pause" Button
+    t =    85.67s Checking existence of `"snake.settings" Button`
+    t =    85.76s Find the "snake.settings" Button
+    t =    85.87s Find the "snake.settings" Button
+    t =    85.94s Checking existence of `"snake.toggleRunning" Button`
+    t =    86.04s Get number of matches for: Elements matching predicate 'identifier BEGINSWITH "snake.direction."'
+    t =    86.14s Swipe up "snake.board" Other
+    t =    86.14s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    86.15s     Find the "snake.board" Other
+    t =    86.25s     Check for interrupting elements affecting "snake.board" Other
+    t =    86.34s         Wait for com.apple.springboard to idle
+    t =    86.40s     Synthesize event
+    t =    86.90s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    86.90s Find the "snake.board" Other
+    t =    88.08s Checking `Expect predicate `value != "Kamera: Spalte 1, Zeile 12. Foto: Spalte 10, Zeile 3.. Hoch. Nächstes Feld ist frei"` for object "snake.board" Other`
+    t =    88.09s     Find the "snake.board" Other
+    t =    88.50s Added attachment named 'snake_simple_setup_real_photo_game'
+    t =    88.50s Requesting snapshot of accessibility hierarchy for app with pid 40645
+    t =    89.14s Requesting snapshot of accessibility hierarchy for app with pid 40645
+    t =    89.27s Added attachment named 'snake_simple_setup_real_photo_game.hierarchy'
+    t =    89.27s Tap "snake.pause" Button
+    t =    89.27s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    89.27s     Find the "snake.pause" Button
+    t =    89.38s     Check for interrupting elements affecting "snake.pause" Button
+    t =    89.45s         Wait for com.apple.springboard to idle
+    t =    89.50s     Synthesize event
+    t =    89.82s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    89.83s Tap "snake.otherGames" Button
+    t =    89.83s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    89.83s     Find the "snake.otherGames" Button
+    t =    90.04s     Check for interrupting elements affecting "snake.otherGames" Button
+    t =    90.18s         Wait for com.apple.springboard to idle
+    t =    90.21s     Synthesize event
+    t =    90.57s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    90.69s Waiting 5.0s for "games.memory" Button to exist
+    t =    91.71s     Checking `Expect predicate `existsNoRetry == 1` for object "games.memory" Button`
+    t =    91.71s         Checking existence of `"games.memory" Button`
+    t =    92.12s Added attachment named 'games_chooser_after_snake_pause'
+    t =    92.12s Requesting snapshot of accessibility hierarchy for app with pid 40645
+    t =    92.63s Requesting snapshot of accessibility hierarchy for app with pid 40645
+    t =    92.77s Added attachment named 'games_chooser_after_snake_pause.hierarchy'
+    t =    92.77s Tap "games.memory" Button
+    t =    92.77s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    92.77s     Find the "games.memory" Button
+    t =    92.86s     Check for interrupting elements affecting "games.memory" Button
+    t =    92.95s         Wait for com.apple.springboard to idle
+    t =    92.99s     Synthesize event
+    t =    93.31s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    99.59s Tap "memory.change" Button
+    t =    99.59s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    99.60s     Find the "memory.change" Button
+    t =   100.65s     Check for interrupting elements affecting "memory.change" Button
+    t =   100.87s         Wait for com.apple.springboard to idle
+    t =   100.92s     Synthesize event
+    t =   101.87s     Wait for com.mrdevn4ever.photomaid to idle
+    t =   102.70s Added attachment named 'pairs_after_snake_uses_app_appearance'
+    t =   102.71s Requesting snapshot of accessibility hierarchy for app with pid 40645
+    t =   103.30s Requesting snapshot of accessibility hierarchy for app with pid 40645
+    t =   103.49s Added attachment named 'pairs_after_snake_uses_app_appearance.hierarchy'
+    t =   103.50s Tear Down
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test05SimpleSetupCloudAndManualPhotoChoice]' passed (104.382 seconds).
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test20SnakeControlsFoodHighscoreAndPause]' started.
+    t =     0.00s Start Test at 2026-10-19 00:59:08.319
+    t =     0.09s Set Up
+    t =     0.09s     Setting device orientation to Portrait
+    t =     0.10s         Wait for com.mrdevn4ever.photomaid to idle
+    t =     0.10s         Wait for com.apple.springboard to idle
+    t =     0.12s Open com.mrdevn4ever.photomaid
+    t =     0.12s     Launch com.mrdevn4ever.photomaid
+    t =     0.12s         Terminate com.mrdevn4ever.photomaid:40645
+2026-10-19 00:59:13.571 xcodebuild[38281:108566] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-19 00:59:13.572 xcodebuild[38281:108566] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     8.08s         Setting up automation session
+    t =    11.30s         Wait for com.mrdevn4ever.photomaid to idle
+    t =    15.62s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    15.69s Checking existence of `Alert (First Match)`
+    t =    15.76s Checking existence of `"feed.stage" Any`
+    t =    16.78s Tap "feed.memory" Button
+    t =    16.78s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    17.13s     Find the "feed.memory" Button
+    t =    17.26s     Check for interrupting elements affecting "feed.memory" Button
+    t =    17.32s         Wait for com.apple.springboard to idle
+    t =    17.35s     Synthesize event
+    t =    17.69s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    19.38s Waiting 5.0s for "games.snake" Button to exist
+    t =    20.41s     Checking `Expect predicate `existsNoRetry == 1` for object "games.snake" Button`
+    t =    20.42s         Checking existence of `"games.snake" Button`
+    t =    20.57s Tap "games.snake" Button
+    t =    20.57s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    20.58s     Find the "games.snake" Button
+    t =    20.69s     Check for interrupting elements affecting "games.snake" Button
+    t =    20.77s         Wait for com.apple.springboard to idle
+    t =    20.82s     Synthesize event
+    t =    21.12s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    24.55s Added attachment named 'snake_01_setup_dark'
+    t =    24.56s Requesting snapshot of accessibility hierarchy for app with pid 43754
+    t =    25.44s Requesting snapshot of accessibility hierarchy for app with pid 43754
+    t =    25.65s Added attachment named 'snake_01_setup_dark.hierarchy'
+    t =    25.65s Tap "snake.source" Button
+    t =    25.65s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    25.66s     Find the "snake.source" Button
+    t =    26.07s     Check for interrupting elements affecting "snake.source" Button
+    t =    26.23s         Wait for com.apple.springboard to idle
+    t =    26.28s     Synthesize event
+    t =    26.75s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    27.85s Tap "Entire photo library" Button
+    t =    27.85s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    27.88s     Find the "Entire photo library" Button
+    t =    28.74s     Check for interrupting elements affecting "Entire photo library" Button
+    t =    28.83s         Wait for com.apple.springboard to idle
+    t =    28.86s     Synthesize event
+    t =    29.22s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    30.68s Tap "snake.prepare" Button
+    t =    30.68s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    30.71s     Find the "snake.prepare" Button
+    t =    30.92s     Check for interrupting elements affecting "snake.prepare" Button
+    t =    31.05s         Wait for com.apple.springboard to idle
+    t =    31.10s     Synthesize event
+    t =    31.45s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    31.46s Waiting 30.0s for "snake.board" Any to exist
+    t =    32.51s     Checking `Expect predicate `existsNoRetry == 1` for object "snake.board" Any`
+    t =    32.51s         Checking existence of `"snake.board" Any`
+    t =    33.83s Added attachment named 'snake_02_fullscreen_ready_dark'
+    t =    33.84s Requesting snapshot of accessibility hierarchy for app with pid 43754
+    t =    34.44s Requesting snapshot of accessibility hierarchy for app with pid 43754
+    t =    34.54s Added attachment named 'snake_02_fullscreen_ready_dark.hierarchy'
+    t =    34.55s Find the "snake.board" Any
+    t =    34.61s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    34.66s Find the "snake.board" Other
+    t =    34.72s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    34.77s Checking existence of `"snake.play" Any`
+    t =    34.79s Checking existence of `"snake.close" Button`
+    t =    34.87s Find the "snake.close" Button
+    t =    34.92s Find the "snake.close" Button
+    t =    34.98s Checking existence of `"snake.pause" Button`
+    t =    35.08s Find the "snake.pause" Button
+    t =    35.18s Find the "snake.pause" Button
+    t =    35.28s Checking existence of `"snake.settings" Button`
+    t =    35.38s Find the "snake.settings" Button
+    t =    35.45s Find the "snake.settings" Button
+    t =    35.49s Checking existence of `"snake.toggleRunning" Button`
+    t =    35.57s Get number of matches for: Elements matching predicate 'identifier BEGINSWITH "snake.direction."'
+    t =    35.65s Swipe up "snake.board" Other
+    t =    35.65s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    35.66s     Find the "snake.board" Other
+    t =    35.74s     Check for interrupting elements affecting "snake.board" Other
+    t =    35.95s         Wait for com.apple.springboard to idle
+    t =    36.10s     Synthesize event
+    t =    36.59s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    36.61s Find the "snake.score" StaticText
+    t =    36.87s Find the "snake.board" Other
+    t =    36.97s Swipe right "snake.board" Other
+    t =    36.97s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    36.97s     Find the "snake.board" Other
+    t =    37.03s     Check for interrupting elements affecting "snake.board" Other
+    t =    37.16s         Wait for com.apple.springboard to idle
+    t =    37.29s     Synthesize event
+    t =    37.84s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    37.85s Find the "snake.score" StaticText
+    t =    38.02s Find the "snake.board" Other
+    t =    38.41s Swipe right "snake.board" Other
+    t =    38.41s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    38.47s     Find the "snake.board" Other
+    t =    38.69s     Check for interrupting elements affecting "snake.board" Other
+    t =    38.99s         Wait for com.apple.springboard to idle
+    t =    39.15s     Synthesize event
+    t =    39.74s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    39.74s Find the "snake.score" StaticText
+    t =    40.08s Find the "snake.board" Other
+    t =    40.34s Swipe right "snake.board" Other
+    t =    40.34s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    40.34s     Find the "snake.board" Other
+    t =    40.39s     Check for interrupting elements affecting "snake.board" Other
+    t =    40.59s         Wait for com.apple.springboard to idle
+    t =    40.74s     Synthesize event
+    t =    41.26s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    41.27s Find the "snake.score" StaticText
+    t =    41.45s Find the "snake.board" Other
+    t =    41.53s Swipe down "snake.board" Other
+    t =    41.53s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    41.54s     Find the "snake.board" Other
+    t =    41.65s     Check for interrupting elements affecting "snake.board" Other
+    t =    41.73s         Wait for com.apple.springboard to idle
+    t =    41.79s     Synthesize event
+    t =    42.30s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    42.31s Find the "snake.score" StaticText
+    t =    42.38s Find the "snake.board" Other
+    t =    42.42s Swipe down "snake.board" Other
+    t =    42.42s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    42.43s     Find the "snake.board" Other
+    t =    42.49s     Check for interrupting elements affecting "snake.board" Other
+    t =    42.66s         Wait for com.apple.springboard to idle
+    t =    42.74s     Synthesize event
+    t =    43.24s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    43.25s Find the "snake.score" StaticText
+    t =    43.37s Find the "snake.board" Other
+    t =    43.46s Swipe down "snake.board" Other
+    t =    43.46s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    43.47s     Find the "snake.board" Other
+    t =    43.54s     Check for interrupting elements affecting "snake.board" Other
+    t =    43.65s         Wait for com.apple.springboard to idle
+    t =    43.74s     Synthesize event
+    t =    44.24s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    44.24s Find the "snake.score" StaticText
+    t =    44.36s Find the "snake.board" Other
+    t =    44.42s Swipe down "snake.board" Other
+    t =    44.42s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    44.43s     Find the "snake.board" Other
+    t =    44.52s     Check for interrupting elements affecting "snake.board" Other
+    t =    44.64s         Wait for com.apple.springboard to idle
+    t =    44.71s     Synthesize event
+    t =    45.19s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    45.19s Find the "snake.score" StaticText
+    t =    45.25s Find the "snake.board" Other
+    t =    45.31s Swipe down "snake.board" Other
+    t =    45.31s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    45.31s     Find the "snake.board" Other
+    t =    45.37s     Check for interrupting elements affecting "snake.board" Other
+    t =    45.48s         Wait for com.apple.springboard to idle
+    t =    45.59s     Synthesize event
+    t =    46.19s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    46.19s Find the "snake.score" StaticText
+    t =    46.40s Find the "snake.score" StaticText
+    t =    46.49s Find the "snake.best" StaticText
+    t =    46.94s Added attachment named 'snake_03_fullscreen_collected_record_dark'
+    t =    46.94s Requesting snapshot of accessibility hierarchy for app with pid 43754
+    t =    47.46s Requesting snapshot of accessibility hierarchy for app with pid 43754
+    t =    47.55s Added attachment named 'snake_03_fullscreen_collected_record_dark.hierarchy'
+    t =    47.55s Find the "snake.board" Other
+    t =    47.64s Tap "snake.close" Button
+    t =    47.64s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    47.64s     Find the "snake.close" Button
+    t =    47.73s     Check for interrupting elements affecting "snake.close" Button
+    t =    47.85s         Wait for com.apple.springboard to idle
+    t =    47.92s     Synthesize event
+    t =    48.33s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    49.85s Checking `Expect predicate `exists == 0` for object "snake.play" Any`
+    t =    49.86s     Checking existence of `"snake.play" Any`
+    t =    50.55s Find the "feed.memory" Button
+    t =    50.63s Find the "feed.position" Any
+    t =    50.68s Tap "feed.memory" Button
+    t =    50.68s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    50.69s     Find the "feed.memory" Button
+    t =    50.74s     Check for interrupting elements affecting "feed.memory" Button
+    t =    50.82s         Wait for com.apple.springboard to idle
+    t =    50.89s     Synthesize event
+    t =    51.24s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    52.58s Waiting 5.0s for "games.snake" Button to exist
+    t =    53.63s     Checking `Expect predicate `existsNoRetry == 1` for object "games.snake" Button`
+    t =    53.63s         Checking existence of `"games.snake" Button`
+    t =    53.82s Tap "games.snake" Button
+    t =    53.82s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    53.82s     Find the "games.snake" Button
+    t =    53.95s     Check for interrupting elements affecting "games.snake" Button
+    t =    54.06s         Wait for com.apple.springboard to idle
+    t =    54.12s     Synthesize event
+    t =    54.46s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    54.56s Waiting 5.0s for "snake.resume" Button to exist
+    t =    55.60s     Checking `Expect predicate `existsNoRetry == 1` for object "snake.resume" Button`
+    t =    55.60s         Checking existence of `"snake.resume" Button`
+    t =    55.80s Tap "snake.resume" Button
+    t =    55.80s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    55.80s     Find the "snake.resume" Button
+    t =    55.93s     Check for interrupting elements affecting "snake.resume" Button
+    t =    56.07s         Wait for com.apple.springboard to idle
+    t =    56.14s     Synthesize event
+    t =    56.48s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    56.76s Waiting 10.0s for "snake.board" Other to exist
+    t =    57.81s     Checking `Expect predicate `existsNoRetry == 1` for object "snake.board" Other`
+    t =    57.82s         Checking existence of `"snake.board" Other`
+    t =    57.91s Find the "snake.board" Other
+    t =    57.96s Find the "snake.board" Other
+    t =    58.02s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    58.06s Find the "snake.board" Other
+    t =    58.14s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    58.21s Checking existence of `"snake.play" Any`
+    t =    58.24s Checking existence of `"snake.close" Button`
+    t =    58.31s Find the "snake.close" Button
+    t =    58.38s Find the "snake.close" Button
+    t =    58.42s Checking existence of `"snake.pause" Button`
+    t =    58.45s Find the "snake.pause" Button
+    t =    58.55s Find the "snake.pause" Button
+    t =    58.60s Checking existence of `"snake.settings" Button`
+    t =    58.70s Find the "snake.settings" Button
+    t =    58.81s Find the "snake.settings" Button
+    t =    58.86s Checking existence of `"snake.toggleRunning" Button`
+    t =    58.97s Get number of matches for: Elements matching predicate 'identifier BEGINSWITH "snake.direction."'
+    t =    59.04s Tap "snake.close" Button
+    t =    59.04s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    59.05s     Find the "snake.close" Button
+    t =    59.13s     Check for interrupting elements affecting "snake.close" Button
+    t =    59.34s         Wait for com.apple.springboard to idle
+    t =    59.51s     Synthesize event
+    t =    60.01s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    61.43s Checking `Expect predicate `exists == 0` for object "snake.play" Any`
+    t =    61.43s     Checking existence of `"snake.play" Any`
+    t =    61.92s Find the "feed.memory" Button
+    t =    62.00s Find the "feed.position" Any
+    t =    62.04s Tear Down
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test20SnakeControlsFoodHighscoreAndPause]' passed (62.611 seconds).
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test60SnakeRealtimeDriverAndPause]' started.
+    t =     0.00s Start Test at 2026-10-19 01:00:10.932
+    t =     0.08s Set Up
+    t =     0.08s     Setting device orientation to Portrait
+    t =     0.09s         Wait for com.mrdevn4ever.photomaid to idle
+    t =     0.10s         Wait for com.apple.springboard to idle
+    t =     0.11s Open com.mrdevn4ever.photomaid
+    t =     0.11s     Launch com.mrdevn4ever.photomaid
+    t =     0.11s         Terminate com.mrdevn4ever.photomaid:43754
+2026-10-19 01:00:13.113 xcodebuild[38281:108566] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-10-19 01:00:13.114 xcodebuild[38281:108566] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     4.54s         Setting up automation session
+    t =     8.68s         Wait for com.mrdevn4ever.photomaid to idle
+    t =    11.94s Get all elements bound by accessibility element for: Elements matching predicate 'label IN {"Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos", "Zugriff auf alle Fotos erlauben"}'
+    t =    12.04s Checking existence of `Alert (First Match)`
+    t =    12.22s Checking existence of `"feed.stage" Any`
+    t =    13.50s Tap "feed.memory" Button
+    t =    13.50s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    13.58s     Find the "feed.memory" Button
+    t =    13.69s     Check for interrupting elements affecting "feed.memory" Button
+    t =    13.75s         Wait for com.apple.springboard to idle
+    t =    13.79s     Synthesize event
+    t =    14.10s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    15.38s Waiting 5.0s for "games.snake" Button to exist
+    t =    16.43s     Checking `Expect predicate `existsNoRetry == 1` for object "games.snake" Button`
+    t =    16.43s         Checking existence of `"games.snake" Button`
+    t =    16.63s Tap "games.snake" Button
+    t =    16.63s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    16.64s     Find the "games.snake" Button
+    t =    16.75s     Check for interrupting elements affecting "games.snake" Button
+    t =    16.86s         Wait for com.apple.springboard to idle
+    t =    16.89s     Synthesize event
+    t =    17.19s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    19.16s Tap "snake.symbols" Button
+    t =    19.16s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    19.99s     Find the "snake.symbols" Button
+    t =    20.09s     Check for interrupting elements affecting "snake.symbols" Button
+    t =    20.16s         Wait for com.apple.springboard to idle
+    t =    20.19s     Synthesize event
+    t =    20.50s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    21.19s Waiting 10.0s for "snake.board" Any to exist
+    t =    22.22s     Checking `Expect predicate `existsNoRetry == 1` for object "snake.board" Any`
+    t =    22.22s         Checking existence of `"snake.board" Any`
+    t =    22.51s Added attachment named 'snake_realtime_fullscreen_started_by_button'
+    t =    22.51s Requesting snapshot of accessibility hierarchy for app with pid 45618
+    t =    22.88s Requesting snapshot of accessibility hierarchy for app with pid 45618
+    t =    22.95s Added attachment named 'snake_realtime_fullscreen_started_by_button.hierarchy'
+    t =    22.95s Find the "snake.board" Any
+    t =    23.01s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    23.07s Find the "snake.board" Other
+    t =    23.16s Find the Target Application 'com.mrdevn4ever.photomaid'
+    t =    23.23s Checking existence of `"snake.play" Any`
+    t =    23.27s Checking existence of `"snake.close" Button`
+    t =    23.31s Find the "snake.close" Button
+    t =    23.37s Find the "snake.close" Button
+    t =    23.43s Checking existence of `"snake.pause" Button`
+    t =    23.50s Find the "snake.pause" Button
+    t =    23.60s Find the "snake.pause" Button
+    t =    23.64s Checking existence of `"snake.settings" Button`
+    t =    23.67s Find the "snake.settings" Button
+    t =    23.72s Find the "snake.settings" Button
+    t =    23.80s Checking existence of `"snake.toggleRunning" Button`
+    t =    23.86s Get number of matches for: Elements matching predicate 'identifier BEGINSWITH "snake.direction."'
+    t =    23.90s Find the "snake.board" Other
+    t =    25.01s Checking `Expect predicate `value != "Camera: column 4, row 13. Photo: column 11, row 5.. Right. Next cell is clear"` for object "snake.board" Other`
+    t =    25.01s     Find the "snake.board" Other
+    t =    25.05s Pressing Home button
+    t =    25.66s Open com.mrdevn4ever.photomaid
+    t =    25.66s     Activate com.mrdevn4ever.photomaid
+    t =    26.98s         Wait for com.mrdevn4ever.photomaid to idle
+    t =    27.77s Waiting 10.0s for "snake.board" Other to exist
+    t =    28.87s     Checking `Expect predicate `existsNoRetry == 1` for object "snake.board" Other`
+    t =    28.87s         Checking existence of `"snake.board" Other`
+    t =    28.98s Find the "snake.board" Other
+    t =    29.66s Find the "snake.board" Other
+    t =    29.80s Find the "snake.start" Button
+    t =    30.00s Find the "snake.changePhotos" Button
+    t =    30.12s Find the "snake.otherGames" Button
+    t =    30.53s Added attachment named 'snake_realtime_fullscreen_paused'
+    t =    30.53s Requesting snapshot of accessibility hierarchy for app with pid 45618
+    t =    30.96s Requesting snapshot of accessibility hierarchy for app with pid 45618
+    t =    31.13s Added attachment named 'snake_realtime_fullscreen_paused.hierarchy'
+    t =    31.13s Tap "snake.start" Button
+    t =    31.13s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    31.13s     Find the "snake.start" Button
+    t =    31.23s     Check for interrupting elements affecting "snake.start" Button
+    t =    31.33s         Wait for com.apple.springboard to idle
+    t =    31.36s     Synthesize event
+    t =    31.67s     Wait for com.mrdevn4ever.photomaid to idle
+    t =    32.82s Checking `Expect predicate `value != "Camera: column 11, row 13. Photo: column 11, row 5.. Right. Next cell is clear"` for object "snake.board" Other`
+    t =    32.82s     Find the "snake.board" Other
+    t =    32.88s Tear Down
+Test Case '-[PhotoMaidUITests.PhotoGameVisualTests test60SnakeRealtimeDriverAndPause]' passed (33.152 seconds).
+Test Suite 'PhotoGameVisualTests' passed at 2026-10-19 01:00:44.084.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 200.146 (200.152) seconds
+Test Suite 'PhotoMaidUITests.xctest' passed at 2026-10-19 01:00:44.085.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 200.146 (200.154) seconds
+Test Suite 'Selected tests' passed at 2026-10-19 01:00:44.086.
+	 Executed 3 tests, with 0 failures (0 unexpected) in 200.146 (200.158) seconds
+2026-10-19 01:01:12.527 xcodebuild[38281:108566] [MT] IDETestOperationsObserverDebug: 248.392 elapsed -- Testing started completed.
+2026-10-19 01:01:12.528 xcodebuild[38281:108566] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-10-19 01:01:12.528 xcodebuild[38281:108566] [MT] IDETestOperationsObserverDebug: 248.392 sec, +248.392 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/runner/work/_temp/game-visual/expanded-window.xcresult
+
+** TEST EXECUTE SUCCEEDED **
+
+Testing started

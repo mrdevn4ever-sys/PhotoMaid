@@ -1,0 +1,224 @@
+Attributes: Application, 0x119342300, pid: 40645, label: 'PhotoMaid'
+Element subtree:
+ →Application, 0x119342300, pid: 40645, label: 'PhotoMaid'
+    Window (Main), 0x119342440, {{0.0, 0.0}, {744.0, 1133.0}}, identifier: 'store.capture.feed'
+      Other, 0x119342580, {{0.0, 0.0}, {744.0, 1133.0}}
+        Other, 0x1193426c0, {{0.0, 0.0}, {744.0, 1133.0}}
+          Other, 0x119342800, {{0.0, 0.0}, {744.0, 1133.0}}
+            Other, 0x119342940, {{0.0, 0.0}, {744.0, 1133.0}}
+              Other, 0x119342a80, {{0.0, 0.0}, {744.0, 1133.0}}
+                Other, 0x119342bc0, {{0.0, 0.0}, {744.0, 1133.0}}
+                  Other, 0x119342d00, {{0.0, 0.0}, {744.0, 1133.0}}
+                  Other, 0x119342e40, {{0.0, 0.0}, {744.0, 1133.0}}
+                    Other, 0x119342f80, {{0.0, 0.0}, {744.0, 1133.0}}
+                      Other, 0x1193430c0, {{0.0, 0.0}, {744.0, 1133.0}}
+                        Other, 0x119343200, {{0.0, 0.0}, {744.0, 1133.0}}
+                          Other, 0x119343340, {{0.0, 0.0}, {744.0, 1133.0}}
+                            Other, 0x119343480, {{0.0, 0.0}, {744.0, 1133.0}}
+                              Other, 0x1193435c0, {{0.0, 0.0}, {744.0, 1133.0}}
+                                Other, 0x119343700, {{0.0, 0.0}, {744.0, 1133.0}}
+                                  Other, 0x119343840, {{0.0, 0.0}, {744.0, 1133.0}}
+                                    Other, 0x119343980, {{0.0, 0.0}, {744.0, 1133.0}}
+                                      ScrollView, 0x119343ac0, {{0.0, 0.0}, {744.0, 1133.0}}
+                                        Other, 0x119343c00, {{0.0, 32.0}, {744.0, 539.5}}
+                                          StaticText, 0x119343d40, {{16.0, 49.0}, {94.0, 18.0}}, label: 'Guten Abend'
+                                          StaticText, 0x119343e80, {{16.0, 69.0}, {96.0, 41.0}}, label: 'Heute'
+                                          Button, 0x117e4c3c0, {{661.0, 48.0}, {62.0, 62.0}}, identifier: 'today.settings', label: 'Einstellungen'
+                                          Button, 0x11926b840, {{400.0, 138.0}, {312.0, 48.0}}, label: 'Papierkorb, 0 Elemente'
+                                            Image, 0x11926a580, {{400.0, 142.0}, {40.0, 40.0}}, identifier: 'trash', label: 'Papierkorb'
+                                            StaticText, 0x11926a440, {{452.0, 151.8}, {86.5, 20.5}}, label: 'Papierkorb'
+                                            StaticText, 0x11926a6c0, {{679.5, 153.0}, {10.0, 18.0}}, label: '0'
+                                            Image, 0x11926a800, {{704.0, 156.5}, {7.0, 11.5}}, identifier: 'chevron.forward', label: 'Weiter'
+                                          Button, 0x11926b5c0, {{400.0, 186.5}, {312.0, 48.0}}, label: 'Später, 0 Elemente'
+                                            Image, 0x11926aa80, {{400.0, 190.5}, {40.0, 40.0}}, identifier: 'clock', label: 'Uhr'
+                                            StaticText, 0x11926a300, {{452.0, 200.2}, {53.0, 20.5}}, label: 'Später'
+                                            StaticText, 0x11926a940, {{679.5, 201.5}, {10.0, 18.0}}, label: '0'
+                                            Image, 0x11926b700, {{704.0, 205.0}, {7.0, 11.5}}, identifier: 'chevron.forward', label: 'Weiter'
+                                          StaticText, 0x11926abc0, {{384.0, 271.0}, {139.0, 24.0}}, label: 'Schnellzugriffe'
+                                          Button, 0x11926b980, {{650.0, 275.5}, {78.0, 18.0}}, label: 'Bearbeiten'
+                                          StaticText, 0x119390000, {{32.0, 318.0}, {296.5, 74.5}}, identifier: 'today.review', label: 'Noch 24 Fotos und Videos durchsehen, Wische dich durch deine Fotos und Videos.'
+                                            StaticText, 0x119390140, {{32.0, 318.0}, {267.0, 54.5}}, label: 'Noch 24 Fotos und Videos durchsehen'
+                                            StaticText, 0x119390280, {{32.0, 374.5}, {296.5, 18.0}}, label: 'Wische dich durch deine Fotos und Videos.'
+                                          Button, 0x1193903c0, {{400.0, 322.5}, {312.0, 48.0}}, identifier: 'today.quick.photos', label: 'Fotos, 24'
+                                            Image, 0x119390500, {{400.0, 326.5}, {40.0, 40.0}}, identifier: 'photo.on.rectangle', label: 'photo.on.rectangle'
+                                            StaticText, 0x119390640, {{400.0, 322.5}, {312.0, 48.0}}, label: 'Fotos'
+                                            StaticText, 0x119390780, {{670.0, 337.5}, {19.5, 18.0}}, label: '24'
+                                            Image, 0x1193908c0, {{704.0, 341.0}, {7.0, 11.5}}, identifier: 'chevron.forward', label: 'Weiter'
+                                          Button, 0x119390a00, {{400.0, 371.0}, {312.0, 48.0}}, identifier: 'today.quick.videos', label: 'Videos, Leer'
+                                            Image, 0x119390b40, {{400.0, 375.0}, {40.0, 40.0}}, identifier: 'video', label: 'Video'
+                                            StaticText, 0x119390c80, {{400.0, 371.0}, {312.0, 48.0}}, label: 'Videos'
+                                            StaticText, 0x119390dc0, {{680.5, 386.0}, {31.5, 18.0}}, label: 'Leer'
+                                          Button, 0x119390f00, {{32.0, 404.5}, {312.0, 62.0}}, identifier: 'today.review', label: 'Jetzt aufräumen'
+                                          Button, 0x119391040, {{400.0, 419.5}, {312.0, 48.0}}, label: 'Hinzufügen'
+                                            Image, 0x119391180, {{400.0, 423.5}, {40.0, 40.0}}, identifier: 'plus', label: 'Hinzufügen'
+                                            StaticText, 0x1193912c0, {{400.0, 419.5}, {312.0, 48.0}}, label: 'Hinzufügen'
+                                          Button, 0x119391400, {{384.0, 495.5}, {344.0, 44.0}}, label: 'Gerätespeicher, 245.79 GB von 343.07 GB belegt', value: 72 %
+                                            StaticText, 0x119391540, {{384.0, 503.5}, {97.5, 16.0}}, label: 'Gerätespeicher'
+                                            StaticText, 0x119391680, {{529.0, 503.5}, {199.0, 16.0}}, label: '245.79 GB von 343.07 GB belegt'
+                                            ProgressIndicator, 0x1193917c0, {{384.0, 527.5}, {344.0, 4.0}}, value: 72 %
+                                              ProgressIndicator, 0x119391900, {{384.0, 517.5}, {344.0, 24.0}}, value: 72 %
+                                        Other, 0x119391a40, {{711.0, 32.0}, {30.0, 1069.0}}, label: 'Vertikaler Rollbalken, 1 Seite', value: 0 %
+                                          Other, 0x119391b80, {{738.0, 571.5}, {3.0, 526.5}}
+                                        Other, 0x119391cc0, {{711.0, 32.0}, {30.0, 1069.0}}, label: 'Vertikaler Rollbalken, 1 Seite', value: 0 %
+                                          Other, 0x119391e00, {{738.0, 571.5}, {3.0, 526.5}}
+                              Other, 0x119391f40, {{0.0, 0.0}, {744.0, 1133.0}}
+                                Other, 0x119392080, {{0.0, 0.0}, {744.0, 1133.0}}
+                Image, 0x1193921c0, {{33.5, 49.5}, {17.0, 19.0}}, identifier: 'feed.basketPanel', label: 'Papierkorb'
+                StaticText, 0x119392300, {{33.5, 49.5}, {184.5, 21.0}}, identifier: 'feed.basketPanel', label: 'Papierkorb ansehen'
+                StaticText, 0x119392440, {{226.6, 49.0}, {11.5, 20.5}}, identifier: 'feed.basketPanel', label: '0'
+                StaticText, 0x119392580, {{32.0, 86.5}, {192.0, 62.5}}, identifier: 'feed.basketPanel', label: 'Noch ist nichts gelöscht. Tippe auf ein Vorschaubild, um es groß anzusehen. Leere den Papierkorb erst, wenn alles passt.'
+                ScrollView, 0x1193926c0, {{32.0, 165.0}, {206.0, 868.5}}, identifier: 'feed.basketPanel'
+                  Other, 0x119392800, {{32.0, 165.0}, {206.0, 105.5}}
+                    Image, 0x119392940, {{115.5, 199.5}, {39.5, 28.5}}, identifier: 'tray', label: 'Eingang'
+                    Other, 0x119392a80, {{0.0, 0.0}, {0.0, 0.0}}
+                  Other, 0x119392bc0, {{205.0, 165.0}, {30.0, 868.5}}, label: 'Vertikaler Rollbalken, 1 Seite', value: 0 %
+                    Other, 0x119392d00, {{232.0, 1023.5}, {3.0, 7.0}}
+                  Other, 0x119392e40, {{205.0, 165.0}, {30.0, 868.5}}, label: 'Vertikaler Rollbalken, 1 Seite', value: 0 %
+                    Other, 0x119392f80, {{232.0, 1023.5}, {3.0, 7.0}}
+                Button, 0x1193930c0, {{34.0, 1049.5}, {202.5, 34.5}}, identifier: 'feed.basketPanel', label: 'Papierkorb ansehen'
+                  Image, 0x119393200, {{48.0, 1058.5}, {15.5, 15.5}}, identifier: 'arrow.up.forward.app', label: 'arrow.up.forward.app'
+                  StaticText, 0x119393340, {{34.0, 1049.5}, {202.5, 34.5}}, label: 'Papierkorb ansehen'
+                Button, 0x119393480, {{290.0, 40.0}, {48.0, 48.0}}, identifier: 'feed.close', label: 'Schließen'
+                Button, 0x1193935c0, {{350.0, 40.0}, {48.0, 48.0}}, identifier: 'feed.memory', label: 'Kurze Pause'
+                StaticText, 0x119393700, {{464.8, 45.5}, {88.5, 37.0}}, identifier: 'feed.position', label: 'Aufräumen, 1 von 24'
+                  StaticText, 0x119393840, {{464.8, 45.5}, {88.5, 20.5}}, label: 'Aufräumen'
+                  StaticText, 0x119393980, {{484.0, 68.0}, {50.0, 14.5}}, label: '1 von 24'
+                Button, 0x119393ac0, {{620.0, 40.0}, {48.0, 48.0}}, label: 'Reihenfolge'
+                  Button, 0x119393c00, {{620.0, 40.0}, {48.0, 48.0}}
+                    Image, 0x119393d40, {{620.0, 40.0}, {48.0, 48.0}}, identifier: 'arrow.up.arrow.down', label: 'Sortieren'
+                Button, 0x119393e80, {{680.0, 40.0}, {48.0, 48.0}}, identifier: 'arrow.uturn.backward', label: 'Rückgängig', Disabled
+                Other, 0x1193f8000, {{282.0, 100.0}, {454.0, 916.0}}, identifier: 'feed.stage', label: 'Aktuelles Foto oder Video', value: 18. September 2026...
+                  Other, 0x1193f8140, {{295.6, 127.5}, {426.8, 861.0}}, identifier: 'feed.media'
+                    Image, 0x1193f8280, {{295.6, 291.5}, {426.8, 533.4}}
+                  Other, 0x1193f83c0, {{282.0, 100.0}, {454.0, 916.0}}, identifier: 'feed.media'
+                    Image, 0x1193f8500, {{282.0, 274.5}, {454.0, 567.5}}
+                StaticText, 0x1193f8640, {{290.1, 1028.0}, {161.5, 16.0}}, label: '18. September 2026 · Foto'
+                Button, 0x1193f8780, {{294.0, 1056.0}, {44.0, 44.0}}, identifier: 'heart', label: 'Als Favorit markieren', value: Kein Favorit
+                Button, 0x1193f88c0, {{338.0, 1056.0}, {44.0, 44.0}}, identifier: 'square.and.arrow.up', label: 'Teilen'
+                Button, 0x1193f8a00, {{382.0, 1056.0}, {44.0, 44.0}}, identifier: 'rectangle.stack.badge.plus', label: 'Zu Album hinzufügen'
+                Button, 0x1193f8b40, {{426.0, 1056.0}, {44.0, 44.0}}, identifier: 'pencil', label: 'Bearbeiten'
+                Button, 0x1193f8c80, {{470.0, 1056.0}, {44.0, 44.0}}, label: 'Weitere Aktionen'
+                  Button, 0x1193f8dc0, {{470.0, 1056.0}, {44.0, 44.0}}
+                    Image, 0x1193f8f00, {{470.0, 1056.0}, {44.0, 44.0}}, identifier: 'ellipsis', label: 'Weitere'
+                Button, 0x1193f9040, {{682.0, 1069.0}, {34.0, 18.5}}, identifier: 'feed.dock', label: 'Papierkorb: 0'
+                  Image, 0x1193f9180, {{682.0, 1069.0}, {16.5, 18.5}}, identifier: 'trash', label: 'Papierkorb'
+                  StaticText, 0x1193f92c0, {{706.0, 1069.0}, {10.0, 18.0}}, label: '0'
+      Other, 0x1193f9400, {{0.0, 0.0}, {744.0, 1133.0}}
+        Other, 0x1193f9540, {{0.0, 0.0}, {744.0, 1133.0}}
+          Other, 0x1193f9680, {{0.0, 0.0}, {744.0, 1133.0}}
+            Image, 0x1193f97c0, {{0.0, -177.5}, {744.0, 1488.0}}
+            Other, 0x1193f9900, {{0.0, 0.0}, {744.0, 1133.0}}
+              NavigationBar, 0x1193f9a40, {{0.0, 32.0}, {744.0, 54.0}}, identifier: '_TtGC7SwiftUI29PresentationHosting'
+                Other, 0x1193f9b80, {{14.0, 36.0}, {99.0, 36.0}}, identifier: 'snake.close', label: 'Schließen'
+                  Other, 0x1193f9cc0, {{14.0, 36.0}, {99.0, 36.0}}
+                    Button, 0x1193f9e00, {{14.0, 36.0}, {99.0, 36.0}}, identifier: 'snake.close', label: 'Schließen'
+                Other, 0x1193f9f40, {{572.5, 36.5}, {157.5, 35.0}}, identifier: 'snake.otherGames', label: 'Andere Spiele'
+                  Other, 0x1193fa080, {{572.5, 36.5}, {157.5, 35.0}}
+                    Button, 0x1193fa1c0, {{572.5, 37.0}, {157.5, 34.5}}, identifier: 'snake.otherGames', label: 'Andere Spiele'
+                      Image, 0x1193fa300, {{586.5, 46.5}, {15.5, 15.5}}, identifier: 'square.grid.2x2', label: 'Rasterdarstellung'
+                      StaticText, 0x1193fa440, {{572.5, 37.0}, {157.5, 34.5}}, label: 'Andere Spiele'
+              Other, 0x1193fa580, {{0.0, 0.0}, {744.0, 1133.0}}
+                Other, 0x1193fa6c0, {{0.0, 0.0}, {744.0, 1133.0}}
+                  Other, 0x1193fa800, {{0.0, 0.0}, {744.0, 1133.0}}
+                    Other, 0x1193fa940, {{0.0, 0.0}, {744.0, 1133.0}}
+                      Image, 0x1193faa80, {{0.0, -177.5}, {744.0, 1488.0}}
+                      ScrollView, 0x1193fabc0, {{0.0, 0.0}, {744.0, 1133.0}}
+                        Other, 0x1193fad00, {{0.0, 0.0}, {744.0, 1133.0}}
+                          Other, 0x1193fae40, {{0.0, 0.0}, {744.0, 140.8}}
+                        Other, 0x1193faf80, {{0.0, 0.0}, {744.0, 1133.0}}
+                        Other, 0x1193fb0c0, {{0.0, 86.0}, {744.0, 684.5}}
+                          StaticText, 0x1193fb200, {{280.0, 196.0}, {184.0, 41.0}}, label: 'Foto-Snake'
+                          StaticText, 0x1193fb340, {{335.8, 247.0}, {72.5, 18.0}}, identifier: 'snake.menuBest', label: 'Rekord: —'
+                          StaticText, 0x1193fb480, {{128.0, 303.0}, {70.0, 14.5}}, label: 'Deine Fotos'
+                          Button, 0x1193fb5c0, {{128.0, 323.5}, {488.0, 54.5}}, identifier: 'snake.source', label: 'Bildquelle, Eigene Fotos wählen'
+                            StaticText, 0x1193fb700, {{150.0, 340.5}, {156.5, 20.5}}, label: 'Eigene Fotos wählen'
+                          Button, 0x1193fb840, {{128.0, 394.0}, {488.0, 52.0}}, identifier: 'snake.editPhotos', label: 'Fotos auswählen'
+                            Image, 0x1193fb980, {{290.5, 411.0}, {21.5, 18.0}}, identifier: 'photo.on.rectangle', label: 'photo.on.rectangle'
+                            StaticText, 0x1193fbac0, {{128.0, 394.0}, {488.0, 52.0}}, label: 'Fotos auswählen'
+                          StaticText, 0x1193fbc00, {{128.0, 460.0}, {244.5, 16.0}}, label: 'Deine Originalfotos bleiben unverändert.'
+                          Button, 0x1193fbd40, {{112.0, 512.0}, {520.0, 52.0}}, identifier: 'snake.prepare', label: 'Spiel starten', Disabled
+                            Image, 0x1193fbe80, {{312.0, 530.5}, {13.5, 15.0}}, identifier: 'play.fill', label: 'Wiedergeben', Disabled
+                            StaticText, 0x1193fc000, {{112.0, 512.0}, {520.0, 52.0}}, label: 'Spiel starten', Disabled
+                          StaticText, 0x1193fc140, {{187.0, 584.0}, {370.0, 18.0}}, label: 'Wische auf dem Spielfeld, um die Richtung zu ändern.'
+                          Button, 0x1193fc280, {{128.0, 638.0}, {488.0, 26.0}}, identifier: 'snake.options', label: 'Spiel anpassen'
+                            Image, 0x1193fc3c0, {{130.0, 644.5}, {15.5, 13.5}}, identifier: 'snake.options', label: 'Bearbeiten'
+                            StaticText, 0x1193fc500, {{128.0, 638.0}, {488.0, 26.0}}, identifier: 'snake.options', label: 'Spiel anpassen'
+                            Image, 0x1193fc640, {{608.0, 645.0}, {7.0, 12.0}}, identifier: 'collapsed'
+                          Button, 0x1193fc780, {{272.5, 700.0}, {199.5, 34.5}}, identifier: 'snake.symbols', label: 'Ohne Fotos spielen'
+                            Image, 0x1193fc8c0, {{286.0, 709.0}, {18.0, 16.0}}, identifier: 'leaf', label: 'leaf'
+                            StaticText, 0x1193fca00, {{272.5, 700.0}, {199.5, 34.5}}, label: 'Ohne Fotos spielen'
+                        Other, 0x1193fcb40, {{711.0, 86.0}, {30.0, 1015.0}}, label: 'Vertikaler Rollbalken, 1 Seite', value: 0 %
+                          Other, 0x1193fcc80, {{738.0, 426.5}, {3.0, 671.5}}
+                        Other, 0x1193fcdc0, {{711.0, 86.0}, {30.0, 1015.0}}, label: 'Vertikaler Rollbalken, 1 Seite', value: 0 %
+                          Other, 0x1193fcf00, {{738.0, 426.5}, {3.0, 671.5}}
+              Other, 0x1193fd040, {{0.0, 0.0}, {744.0, 1133.0}}
+                Other, 0x1193fd180, {{0.0, 0.0}, {744.0, 1133.0}}
+      Other, 0x1193fd2c0, {{0.0, 0.0}, {744.0, 1133.0}}
+        Other, 0x1193fd400, {{-744.0, -1133.0}, {2232.0, 3399.0}}, identifier: 'PopoverDismissRegion', label: 'Einblendmenü schließen'
+        Other, 0x1193fd540, {{82.0, 246.5}, {580.0, 640.0}}
+          Image, 0x1193fd680, {{-68.0, 96.5}, {880.0, 940.0}}
+          Other, 0x1193fd7c0, {{82.0, 246.5}, {580.0, 640.0}}
+            Other, 0x1193fd900, {{82.0, 246.5}, {580.0, 640.0}}
+              Other, 0x1193fda40, {{82.0, 246.5}, {580.0, 640.0}}
+                Other, 0x1193fdb80, {{82.0, 246.5}, {580.0, 640.0}}
+                  Other, 0x1193fdcc0, {{82.0, 246.5}, {580.0, 640.0}}
+                    Other, 0x1193fde00, {{82.0, 246.5}, {580.0, 640.0}}
+                      Other, 0x1193fdf40, {{82.0, 246.5}, {580.0, 640.0}}
+                        NavigationBar, 0x1193fe080, {{82.0, 256.5}, {580.0, 106.0}}, identifier: 'Deine Fotos'
+                          Other, 0x1193fe1c0, {{96.0, 260.5}, {68.5, 36.0}}, label: 'Fertig'
+                            Other, 0x1193fe300, {{96.0, 260.5}, {68.5, 36.0}}
+                              Button, 0x1193fe440, {{96.0, 260.5}, {68.5, 36.0}}, label: 'Fertig'
+                          Button, 0x1193fe580, {{541.5, 260.5}, {106.5, 36.0}}, label: 'Bearbeiten'
+                          StaticText, 0x1193fe6c0, {{102.0, 314.0}, {187.0, 41.0}}, label: 'Deine Fotos'
+                        Other, 0x1193fe800, {{82.0, 246.5}, {580.0, 640.0}}
+                          Other, 0x1193fe940, {{82.0, 246.5}, {580.0, 640.0}}
+                            Other, 0x1193fea80, {{82.0, 246.5}, {580.0, 640.0}}
+                              Other, 0x1193febc0, {{82.0, 246.5}, {580.0, 640.0}}
+                                CollectionView, 0x1193fed00, {{82.0, 246.5}, {580.0, 640.0}}
+                                  Other, 0x1193fee40, {{62.0, -917.5}, {620.0, 1431.5}}
+                                  Other, 0x1193fef80, {{82.0, 246.5}, {580.0, 640.0}}
+                                  Other, 0x1193ff0c0, {{82.0, 246.5}, {580.0, 640.0}}
+                                  Cell, 0x1193ff200, {{102.0, 362.5}, {540.0, 52.0}}
+                                    Other, 0x1193ff340, {{102.0, 362.5}, {540.0, 52.0}}
+                                      Other, 0x1193ff480, {{102.0, 362.5}, {540.0, 52.0}}
+                                    Other, 0x1193ff5c0, {{102.0, 362.5}, {540.0, 52.0}}
+                                      Other, 0x1193ff700, {{102.0, 362.5}, {540.0, 52.0}}
+                                        Other, 0x1193ff840, {{102.0, 362.5}, {540.0, 52.0}}
+                                          Button, 0x1193ff980, {{102.0, 362.5}, {540.0, 52.0}}, identifier: 'snake.gallery.add', label: 'Fotos auswählen'
+                                            Image, 0x1193ffac0, {{121.0, 377.0}, {31.5, 23.0}}, identifier: 'photo.badge.plus', label: 'photo.badge.plus'
+                                            StaticText, 0x1193ffc00, {{121.0, 377.0}, {168.5, 23.0}}, label: 'Fotos auswählen'
+                                  Cell, 0x1193ffd40, {{102.0, 414.5}, {540.0, 82.0}}
+                                    Other, 0x1193ffe80, {{102.0, 414.5}, {540.0, 82.0}}
+                                      Other, 0x119798000, {{102.0, 414.5}, {540.0, 82.0}}
+                                    Other, 0x119798140, {{102.0, 414.5}, {540.0, 82.0}}
+                                      Other, 0x119798280, {{102.0, 414.5}, {540.0, 82.0}}
+                                        Other, 0x1197983c0, {{102.0, 414.5}, {540.0, 82.0}}
+                                          StaticText, 0x119798500, {{102.0, 414.5}, {540.0, 82.0}}, label: 'Nur deine ausgewählten Fotos werden verwendet. Kleine Kopien bleiben auf diesem iPhone, ohne iCloud-Backup. Entferne sie hier, um diese Kopien zu löschen.'
+                                  Other, 0x119798640, {{162.0, 413.5}, {460.0, 1.0}}
+                                  Other, 0x119798780, {{62.0, 514.0}, {620.0, 1392.5}}
+                                  Cell, 0x1197988c0, {{102.0, 514.0}, {540.0, 40.5}}
+                                    Other, 0x119798a00, {{102.0, 514.0}, {540.0, 40.5}}
+                                    Other, 0x119798b40, {{102.0, 514.0}, {540.0, 40.5}}
+                                      Other, 0x119798c80, {{102.0, 514.0}, {540.0, 40.5}}
+                                        Other, 0x119798dc0, {{102.0, 514.0}, {540.0, 40.5}}
+                                          StaticText, 0x119798f00, {{102.0, 514.0}, {540.0, 40.5}}, label: 'Fotoreihenfolge · zum Sortieren ziehen'
+                                  Cell, 0x119799040, {{102.0, 554.5}, {540.0, 52.0}}
+                                    Other, 0x119799180, {{102.0, 554.5}, {540.0, 52.0}}
+                                      Other, 0x1197992c0, {{102.0, 554.5}, {540.0, 52.0}}
+                                    Other, 0x119799400, {{102.0, 554.5}, {540.0, 52.0}}
+                                      Other, 0x119799540, {{102.0, 554.5}, {540.0, 52.0}}
+                                        Other, 0x119799680, {{102.0, 554.5}, {540.0, 52.0}}
+                                          StaticText, 0x1197997c0, {{102.0, 554.5}, {540.0, 52.0}}, label: 'Wähle bis zu 100 Fotos für deine Schlange.'
+                                  Other, 0x119799900, {{629.0, 300.5}, {30.0, 554.0}}, label: 'Vertikaler Rollbalken, 1 Seite', value: 0 %
+                                    Other, 0x119799a40, {{656.0, 844.5}, {3.0, 7.0}}
+                                  Other, 0x119799b80, {{629.0, 300.5}, {30.0, 554.0}}, label: 'Vertikaler Rollbalken, 1 Seite', value: 0 %
+                                    Other, 0x119799cc0, {{656.0, 844.5}, {3.0, 7.0}}
+                        Other, 0x119799e00, {{82.0, 246.5}, {580.0, 640.0}}
+                          Other, 0x119799f40, {{82.0, 246.5}, {580.0, 640.0}}
+Path to element:
+ →Application, 0x119342300, pid: 40645, label: 'PhotoMaid'
+Query chain:
+ →Find: Target Application 'com.mrdevn4ever.photomaid'
+  Output: {
+    Application, 0x11979a080, pid: 40645, label: 'PhotoMaid'
+  }

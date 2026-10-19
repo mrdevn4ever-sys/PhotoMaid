@@ -1,14 +1,26 @@
 # Implementierungsstatus
 
-Stand: 19.10.2026 · Arbeitsbranch `feat/iphone-duo-games` · zuletzt von Apple verarbeitet: **Version 1.0, Build 16**.
-Upload am 19.10.2026 um 00:16:18 UTC; Verarbeitung und interne Verteilung um 00:18:22 UTC bestätigt.
-[TestFlight-Lauf](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39179559217), Quellstand `a17daf7`.
-Freigaben: „Sobald fertig mach testflight“ und „Du kannst jederzeit minutes brauchen zum testen“.
-Foto Blocks einschließlich iCloud sowie die vorherige Snake-UX sind enthalten. **498 Core-Tests,
-76 native Unit-Tests, Blocks auf beiden Simulatorgrößen 1/1 UI PASS und alle drei Privacy-Manifeste
-der exportierten IPA bestehen.** [Uploadbericht und Originalbelege](photo-blocks-20261018/testflight/README.md).
+Stand: 19.10.2026 · Arbeitsbranch `feat/iphone-duo-games` · zuletzt von Apple verarbeitet: **Version 1.0, Build 17**.
+Upload am 19.10.2026 um **04:47:52 UTC**, Verarbeitung und interne Verteilung um **04:50:26 UTC** bestätigt.
+[TestFlight-Lauf](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39200627021), Quellstand `575313d`.
+Neuester Auftrag: größeres Snake-Feld, Tempovergleich, iCloud für Paare/Snake reparieren und neuer TestFlight.
+Minuten sind freigegeben; erneute Upload-Anweisung „Mach testfloght“ ist erfüllt.
+**499 Core-Tests, 82 native Unit-Tests und je 3/3 UI-Tests auf iPhone/großem Simulatorfenster bestanden.**
+Alle drei Privacy-Manifeste der signierten IPA bestehen, Apple-Verarbeitung separat bestätigt.
+[Abschlussbericht, Dateiliste und native Bilder](snake-cloud-20261019/README.md) ·
+[Upload-/Privacy-Belege](snake-cloud-20261019/testflight/README.md).
 
-## Foto Blocks (neuer Auftrag, 18.10.2026)
+## Größeres Snake-Feld und iCloud-Recovery (19.10.2026)
+
+20 statt 42 pt Rand, sicheres Zeichnen am Portal und bei Wandkollisionen. Runde 44–50-pt-Fotos,
+12,5 % Überlappung, Regeln, gespeicherte Galerie und Rekorde bleiben erhalten. Bei 402 × 874 pt
+steigt die Spielfläche um rund 19 %. Normal ist weiterhin 0,22 s/Schritt, seit Build 11 unverändert.
+Paare/Snake verwenden die bestehende lokale/iCloud-Preview-Logik: brauchbare lokale Thumbnails
+sofort, Cloud-Versuch auch ohne Cloud-Flag, Vorschau-Fallback bei Downloadfehlern. Sechs neue
+native Callback-Tests bestanden; echtes privates iCloud-Konto und Geräte-FPS bleiben ungeprüft.
+Foto Blocks bleibt funktionsfähig und behält den bereits abgenommenen iCloud-Ladeweg aus Build 16.
+
+## Foto Blocks (abgeschlossener Auftrag, 18.10.2026; ab Build 16)
 
 Im bestehenden Spielebereich integriert: eigene 9×17-Blocklogik, farbige Formen, zehn feste
 Fotoabschnitte, 2-s-Entdeckung, fortlaufende Levels mit Übertrag und Board-Erhalt, präzise

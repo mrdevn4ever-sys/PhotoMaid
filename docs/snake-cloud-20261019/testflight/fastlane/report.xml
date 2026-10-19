@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="00: default_platform" time="0.000535">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="01: python3 /Users/runner/work/PhotoMaid/PhotoMaid/scripts/ci/check_privacy_manifests.py /Users/runner/work/PhotoMaid/PhotoMaid/PhotoMaid/Resources/PrivacyInfo.xcprivacy" time="0.070771">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="02: app_store_connect_api_key" time="0.003946">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="03: latest_testflight_build_number" time="0.856517">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="04: create_keychain" time="0.093342">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="05: shell command" time="0.038004">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="06: shell command" time="0.025063">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="07: import_certificate" time="0.146354">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="08: shell command" time="0.070481">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="09: install_provisioning_profile" time="0.011053">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="10: shell command" time="0.047161">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="11: build_app" time="319.308043">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="12: python3 /Users/runner/work/PhotoMaid/PhotoMaid/scripts/ci/check_privacy_manifests.py /Users/runner/work/PhotoMaid/PhotoMaid/build/PhotoMaid.ipa --require-app-manifest --json-output /Users/runner/work/PhotoMaid/PhotoMaid/build/privacy-manifests.json" time="0.180574">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="13: upload_to_testflight" time="253.751324">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>
