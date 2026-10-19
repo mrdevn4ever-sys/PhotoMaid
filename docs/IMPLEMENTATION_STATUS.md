@@ -1,5 +1,11 @@
 # Implementierungsstatus
 
+## Nachfolgender TestFlight-Upload — 19.10.2026
+
+Auf ausdrücklichen Nutzerauftrag ist **PhotoMaid 0.2.0 (Build 18)** vom Experimentier-Branch zu TestFlight hochgeladen. Apple hat die Verarbeitung abgeschlossen; Verteilung an interne Tester am **19.10.2026, 06:52:52 UTC** bestätigt. [Erfolgreicher Lauf 39211378047](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39211378047), Archiv-Commit `3148027e70a2619d5d1e259afd80b788a27ef549`.
+
+Für den älteren Branch waren nach einem vor dem Upload gescheiterten Lauf Korrekturen in `fastlane/Fastfile` und `project.yml` nötig (Argument-Escaping, Import desselben Zertifikats, Profil nur am App-Target, ausdrückliche iPhone-Gerätefamilie, Warten auf Apple-Verarbeitung). Kein Swift-Appcode, Workflow, Secret, Zertifikat oder Tresor-Kryptografie geändert. Der unten genannte Keychain-/UI-Teststatus bleibt offen; keine Produktionsabnahme behauptet. GitHub-main bleibt `ca6f81850a0a4032bbf8093f241f99a7584ab4c6`.
+
 ## Experimentier-Branch — 19.10.2026
 
 `experiment/photomaid-liquid-glass-remodel`, geprüfter App-Quellstand `417912eae28f675c91336c0e434c1cc8e68dae95`:
