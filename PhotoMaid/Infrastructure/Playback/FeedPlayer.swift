@@ -48,9 +48,11 @@ final class FeedPlayer {
         player.replaceCurrentItem(with: item)
         endObserver = NotificationCenter.default.addObserver(forName: AVPlayerItem.didPlayToEndTimeNotification,
                                                              object: item, queue: .main) { [weak self] notification in
+            guard let ended = notification.object as? AVPlayerItem else { return }
+            let endedID = ObjectIdentifier(ended)
             MainActor.assumeIsolated {
-                guard let self, let ended = notification.object as? AVPlayerItem,
-                      self.player.currentItem === ended else { return }
+                guard let self, let current = self.player.currentItem,
+                      ObjectIdentifier(current) == endedID else { return }
                 self.progress = 1
                 if self.loops { self.player.seek(to: .zero); self.player.play() } else { self.isPlaying = false }
             }

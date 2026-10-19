@@ -5,6 +5,19 @@ import UIKit
 @testable import PhotoMaid
 
 @MainActor struct VideoSourceTests {
+    @Test func staleEndNotificationDoesNotFinishTheNextVideo() {
+        let player = FeedPlayer()
+        let old = AVPlayerItem(asset: AVMutableComposition())
+        let current = AVPlayerItem(asset: AVMutableComposition())
+        player.load(itemID: "old", item: old, autoplay: false, duration: 2)
+        player.load(itemID: "current", item: current, autoplay: false, duration: 2)
+        NotificationCenter.default.post(name: AVPlayerItem.didPlayToEndTimeNotification, object: old)
+        #expect(player.itemID == "current" && player.progress == 0)
+        NotificationCenter.default.post(name: AVPlayerItem.didPlayToEndTimeNotification, object: current)
+        #expect(player.progress == 1 && !player.isPlaying)
+        player.stop()
+    }
+
     @Test func mainActorPreviewDecodesFramesFromAReadOnlyVideo() async throws {
         let url = try await Self.makeVideo()
         defer { try? FileManager.default.removeItem(at: url) }

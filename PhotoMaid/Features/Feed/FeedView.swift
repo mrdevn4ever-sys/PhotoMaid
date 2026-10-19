@@ -38,6 +38,29 @@ struct FeedView: View {
     private var decisionSuspended: Bool { voiceOver || switchControl || zoomed || magnifying || pinchCancelledDrag }
 
     var body: some View {
+        feedSheets
+        .alert(protectedTitle, isPresented: Binding(get: { model.protectedFavorite != nil }, set: { if !$0 { model.protectedFavorite = nil } })) {
+            Button(L("fav_remove")) { Task { await model.unfavoriteProtected() } }
+            Button(L("cancel"), role: .cancel) { model.protectedFavorite = nil }
+        } message: {
+            Text(key: "fav_protected_text")
+        }
+        .alert(L("info"), isPresented: $showInfo) {
+            Button(L("ok"), role: .cancel) {}
+        } message: {
+            Text(verbatim: infoText)
+        }
+        .alert(excludeTitle, isPresented: $confirmExclude) {
+            Button(L("excl_confirm_action")) {
+                if case .album(let id, let title) = model.request.source { Task { await model.excludeAlbum(id, title: title) } }
+            }
+            Button(L("cancel"), role: .cancel) {}
+        } message: {
+            Text(key: "excl_confirm_text")
+        }
+    }
+
+    private var feedContent: some View {
         ZStack {
             AppColors.background.ignoresSafeArea()
             VStack(spacing: AppSpacing.s) {
@@ -47,6 +70,10 @@ struct FeedView: View {
             .padding(.bottom, AppSpacing.xs)
             if let step = activeTourStep { tourCard(step) }
         }
+    }
+
+    private var feedLifecycle: some View {
+        feedContent
         .task {
             model.reduceMotion = reduceMotion
             model.displayScale = displayScale
@@ -87,6 +114,10 @@ struct FeedView: View {
             }
         }
         .onDisappear { app.player.stop() }
+    }
+
+    private var feedSheets: some View {
+        feedLifecycle
         .sheet(item: Binding(get: { model.pickerReceipt }, set: { model.pickerReceipt = $0 })) { receipt in
             LaterPickerSheet(initial: model.defaultLaterInterval, today: model.today, allowsNoDate: true) { result in
                 Task {
@@ -116,25 +147,6 @@ struct FeedView: View {
             NavigationStack { MediaGridView(source: .items(model.session.items.dropFirst(model.session.index).map(\.localIdentifier), titleKey: "grid_open")) }
         }
         .sheet(item: $shareItem) { item in ShareSheet(items: item.items) }
-        .alert(protectedTitle, isPresented: Binding(get: { model.protectedFavorite != nil }, set: { if !$0 { model.protectedFavorite = nil } })) {
-            Button(L("fav_remove")) { Task { await model.unfavoriteProtected() } }
-            Button(L("cancel"), role: .cancel) { model.protectedFavorite = nil }
-        } message: {
-            Text(key: "fav_protected_text")
-        }
-        .alert(L("info"), isPresented: $showInfo) {
-            Button(L("ok"), role: .cancel) {}
-        } message: {
-            Text(verbatim: infoText)
-        }
-        .alert(excludeTitle, isPresented: $confirmExclude) {
-            Button(L("excl_confirm_action")) {
-                if case .album(let id, let title) = model.request.source { Task { await model.excludeAlbum(id, title: title) } }
-            }
-            Button(L("cancel"), role: .cancel) {}
-        } message: {
-            Text(key: "excl_confirm_text")
-        }
     }
 
     // MARK: Kopf
