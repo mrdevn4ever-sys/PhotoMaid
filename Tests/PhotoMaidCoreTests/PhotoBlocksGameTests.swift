@@ -18,7 +18,8 @@ struct PhotoBlocksGameTests {
     }
 
     @Test func formsAreDistinctConnectedAndRotateWithoutLosingCells() {
-        #expect(Set(PhotoBlocksShape.allCases.map { $0.cells().count }) == [2, 3, 5])
+        #expect(PhotoBlocksShape.playableShapes.count == 7)
+        #expect(Set(PhotoBlocksShape.playableShapes.map { $0.cells().count }) == [4])
         for shape in PhotoBlocksShape.allCases {
             for rotation in 0..<4 {
                 let cells = Set(shape.cells(rotation: rotation))
@@ -40,14 +41,61 @@ struct PhotoBlocksGameTests {
     }
 
     @Test func seededBagsAreFairAndReproducible() {
-        var a = PhotoBlocksGame(seed: 42), b = PhotoBlocksGame(seed: 42)
+        var a = PhotoBlocksGame(width: 14, height: 28, seed: 42), b = PhotoBlocksGame(width: 14, height: 28, seed: 42)
         a.start(); b.start()
         #expect(a == b)
         var drawn: [PhotoBlocksShape] = []
         // Independently test the bag generator via a tall, empty board fixture per drop.
-        for _ in 0..<6 { drawn.append(a.active!.shape); a.hardDrop(); b.hardDrop() }
+        for _ in PhotoBlocksShape.playableShapes { drawn.append(a.active!.shape); a.hardDrop(); b.hardDrop() }
         #expect(a == b)
-        #expect(Set(drawn).count == 6)
+        #expect(Set(drawn) == Set(PhotoBlocksShape.playableShapes))
+    }
+
+    @Test(arguments: PhotoBlocksShape.playableShapes)
+    func fourSquarePiecesRotateAtBothWallsAndTheFloorAndLockFourCells(_ shape: PhotoBlocksShape) {
+        let cells = shape.cells()
+        let width = cells.map(\.x).max()! + 1, height = cells.map(\.y).max()! + 1
+        for x in [0, 9 - width] {
+            var game = PhotoBlocksGame(testBoard: blank(), active: .init(shape: shape, origin: .init(x, 17 - height)))
+            for _ in 0..<4 { #expect(game.rotate()); #expect(game.fits(game.active!)) }
+            game.hardDrop()
+            #expect(game.piecesPlaced == 1)
+            #expect(game.board.flatMap { $0 }.compactMap { $0 }.count == 4)
+            #expect(game.isValidSnapshot)
+        }
+    }
+
+    @Test func fourSquareLineClearsFourRowsAndRevealsFortyPercent() {
+        var board = blank()
+        for y in 13..<17 { board[y] = Array(repeating: .square, count: 9); board[y][4] = nil }
+        var game = PhotoBlocksGame(testBoard: board, active: .init(shape: .line, origin: .init(4, 13)))
+        game.hardDrop()
+        #expect(game.clearedRows == [13, 14, 15, 16])
+        game.advance(0.18)
+        #expect(game.totalRows == 4 && game.progress == 0.4)
+        #expect(game.score == 405)
+        #expect(game.board.allSatisfy { $0.allSatisfy { $0 == nil } })
+    }
+
+    @Test func oldSavedPiecesAndRecordsSurviveWhileFutureDrawsUseFourSquares() throws {
+        let oldGame = PhotoBlocksGame(testBoard: blank(), active: .init(shape: .pebble, origin: .init(2, 16)))
+        var stored = try #require(JSONSerialization.jsonObject(with: JSONEncoder().encode(oldGame)) as? [String: Any])
+        stored["bag"] = [0, 1, 2, 3, 4, 5]
+        stored["next"] = PhotoBlocksShape.fern.rawValue
+        let bytes = try JSONSerialization.data(withJSONObject: stored)
+        var restored = try JSONDecoder().decode(PhotoBlocksGame.self, from: bytes)
+        #expect(restored.isValidSnapshot && restored.active?.shape == .pebble)
+        var archive = PhotoBlocksArchive(game: restored, best: 1_234)
+        restored.hardDrop()
+        #expect(restored.active?.shape == .fern) // Already promised next piece remains intact.
+        restored.hardDrop()
+        #expect(restored.active?.shape.isLegacy == false)
+        #expect(restored.next.isLegacy == false)
+        #expect(restored.board[16][2] == .pebble && restored.board[16][3] == .pebble)
+        #expect(restored.isValidSnapshot)
+        archive.game = restored
+        let roundTrip = try JSONDecoder().decode(PhotoBlocksArchive.self, from: JSONEncoder().encode(archive))
+        #expect(roundTrip.best == 1_234 && roundTrip.game == restored)
     }
 
     @Test func gravityFallsAndFloorLocksExactlyOnce() {

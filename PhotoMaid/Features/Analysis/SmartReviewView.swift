@@ -99,10 +99,10 @@ struct SmartReviewView: View {
                     .font(AppTypography.subheadline)
                     .onChange(of: analysis.includeCloud) { _, _ in analysis.optionsChanged() }
                 if analysis.includeCloud { detail(L("ana2_cloud_note")) }
-                Toggle(L("ana2_background"), isOn: $analysis.continueInBackground)
+                Toggle(L("ana2_background_silent"), isOn: $analysis.continueInBackground)
                     .font(AppTypography.subheadline)
                     .onChange(of: analysis.continueInBackground) { _, _ in analysis.optionsChanged() }
-                if analysis.continueInBackground { detail(L("ana2_background_note")) }
+                if analysis.continueInBackground { detail(L("ana2_background_silent_note")) }
                 controls(counts)
                     .frame(minHeight: AppSpacing.minTouch)
                 Button { showMemory = true } label: {

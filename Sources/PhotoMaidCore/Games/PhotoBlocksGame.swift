@@ -29,7 +29,7 @@ public struct PhotoBlocksGame: Codable, Equatable, Sendable {
     public init(width: Int = 9, height: Int = 17, seed: UInt64 = 1) {
         self.width = min(14, max(6, width)); self.height = min(28, max(12, height))
         board = Array(repeating: Array(repeating: nil, count: self.width), count: self.height)
-        random = .init(state: seed); next = .pebble
+        random = .init(state: seed); next = .square
         next = draw(); spawn()
     }
 
@@ -67,7 +67,9 @@ public struct PhotoBlocksGame: Codable, Equatable, Sendable {
     @discardableResult public mutating func rotate() -> Bool {
         guard acceptsInput, let active else { return false }
         var candidate = active; candidate.rotation = (candidate.rotation + 1) % 4
-        for offset in [PhotoBlocksCell(0, 0), .init(-1, 0), .init(1, 0), .init(-2, 0), .init(2, 0), .init(0, -1), .init(0, -2)] {
+        let offsets = [PhotoBlocksCell(0, 0), .init(-1, 0), .init(1, 0), .init(-2, 0), .init(2, 0), .init(0, -1), .init(0, -2)]
+            + (active.shape == .line ? [.init(-3, 0), .init(3, 0), .init(0, -3)] : [])
+        for offset in offsets {
             let kicked = moved(candidate, dx: offset.x, dy: offset.y)
             if fits(kicked) { resetLockIfAllowed(); self.active = kicked; return true }
         }
@@ -126,7 +128,10 @@ public struct PhotoBlocksGame: Codable, Equatable, Sendable {
         }
     }
     private mutating func draw() -> PhotoBlocksShape {
-        if bag.isEmpty { bag = PhotoBlocksShape.allCases; random.shuffle(&bag) }
+        // Finish the already visible/next legacy pieces of a restored round unchanged;
+        // all subsequent draws use four-cell pieces. Placed cells and records stay intact.
+        bag.removeAll { $0.isLegacy }
+        if bag.isEmpty { bag = PhotoBlocksShape.playableShapes; random.shuffle(&bag) }
         return bag.removeLast()
     }
     private mutating func spawn() {
@@ -175,7 +180,7 @@ public struct PhotoBlocksGame: Codable, Equatable, Sendable {
         (0...10).contains(revealedStrips) && (0...4).contains(carryRows) &&
         (0...1_000_000_000_000).contains(piecesPlaced) && (0...8).contains(lockResets) &&
         [phaseTime, fallTime, lockTime].allSatisfy { $0.isFinite && $0 >= 0 && $0 <= 10 } &&
-        bag.count <= PhotoBlocksShape.allCases.count && Set(bag).count == bag.count &&
+        bag.count <= PhotoBlocksShape.playableShapes.count && Set(bag).count == bag.count &&
         clearedRows.count <= 5 && Set(clearedRows).count == clearedRows.count &&
         clearedRows.allSatisfy { (0..<height).contains($0) } &&
         (active.map { (0..<4).contains($0.rotation) && (0..<width).contains($0.origin.x) &&

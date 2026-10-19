@@ -14130,5 +14130,41 @@
   "tr": "PDF işlemleri",
   "uk": "Дії з PDF",
   "zh-Hans": "PDF 操作"
+ },
+ "ana2_background_silent": {
+  "en": "Continue briefly in the background",
+  "de": "Kurz im Hintergrund weiteranalysieren",
+  "ar": "المتابعة لفترة قصيرة في الخلفية",
+  "es": "Continuar brevemente en segundo plano",
+  "fr": "Continuer brièvement en arrière-plan",
+  "it": "Continua brevemente in background",
+  "ja": "バックグラウンドで短時間続行",
+  "ko": "백그라운드에서 잠시 계속",
+  "nl": "Kort doorgaan op de achtergrond",
+  "pl": "Kontynuuj krótko w tle",
+  "pt-PT": "Continuar brevemente em segundo plano",
+  "ro": "Continuă pentru scurt timp în fundal",
+  "ru": "Ненадолго продолжать в фоне",
+  "tr": "Arka planda kısa süre devam et",
+  "uk": "Ненадовго продовжувати у фоні",
+  "zh-Hans": "在后台短暂继续"
+ },
+ "ana2_background_silent_note": {
+  "en": "PhotoMaid uses the background time allowed by iOS without a system activity card. If time runs out, progress stays saved and analysis resumes when you reopen the app.",
+  "de": "PhotoMaid nutzt die von iOS erlaubte Hintergrundzeit ohne Systemanzeige. Läuft die Zeit ab, bleibt der Fortschritt gespeichert. Beim Öffnen der App geht es automatisch weiter.",
+  "ar": "يستخدم PhotoMaid وقت الخلفية الذي يسمح به iOS دون بطاقة نشاط للنظام. عند انتهاء الوقت يُحفظ التقدم ويستأنف التحليل عند فتح التطبيق.",
+  "es": "PhotoMaid usa el tiempo en segundo plano permitido por iOS sin una tarjeta del sistema. Al agotarse, se guarda el progreso y el análisis continúa al abrir la app.",
+  "fr": "PhotoMaid utilise le temps d’arrière-plan accordé par iOS sans carte système. À son expiration, la progression est conservée et l’analyse reprend à la réouverture.",
+  "it": "PhotoMaid usa il tempo in background consentito da iOS senza schede di sistema. Alla scadenza, i progressi restano salvati e l’analisi riprende riaprendo l’app.",
+  "ja": "iOSが許可するバックグラウンド時間を使用し、システムのアクティビティは表示しません。時間切れでも進捗は保存され、アプリを開くと解析が再開します。",
+  "ko": "시스템 활동 카드 없이 iOS가 허용하는 백그라운드 시간을 사용합니다. 시간이 끝나면 진행 상황을 저장하고 앱을 다시 열 때 분석을 재개합니다.",
+  "nl": "PhotoMaid gebruikt de door iOS toegestane achtergrondtijd zonder systeemkaart. Als de tijd op is, blijft de voortgang bewaard en gaat de analyse verder als je de app opent.",
+  "pl": "PhotoMaid korzysta z czasu w tle przyznanego przez iOS bez karty systemowej. Po jego upływie postęp jest zapisany, a analiza wznawia się po otwarciu aplikacji.",
+  "pt-PT": "O PhotoMaid usa o tempo em segundo plano permitido pelo iOS sem um cartão do sistema. Quando termina, o progresso fica guardado e a análise retoma ao abrir a app.",
+  "ro": "PhotoMaid folosește timpul în fundal permis de iOS fără card de sistem. Când expiră, progresul rămâne salvat și analiza se reia la redeschiderea aplicației.",
+  "ru": "PhotoMaid использует разрешённое iOS время в фоне без системной карточки. По его истечении прогресс сохраняется, а анализ продолжается при открытии приложения.",
+  "tr": "PhotoMaid, sistem etkinlik kartı göstermeden iOS’un izin verdiği arka plan süresini kullanır. Süre bittiğinde ilerleme kaydedilir ve uygulamayı açınca analiz sürer.",
+  "uk": "PhotoMaid використовує дозволений iOS час у фоні без системної картки. Коли час спливає, прогрес зберігається, а аналіз продовжується після відкриття застосунку.",
+  "zh-Hans": "PhotoMaid 使用 iOS 允许的后台时间，不显示系统活动卡片。时间用尽后会保存进度，重新打开 App 时自动继续分析。"
  }
 }

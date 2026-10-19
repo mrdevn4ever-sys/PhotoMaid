@@ -7,12 +7,13 @@ enum PhotoBlocksPalette {
     static let accent = Color(red: 0.48, green: 0.88, blue: 0.78)
     static func color(_ shape: PhotoBlocksShape) -> Color {
         switch shape {
-        case .pebble: Color(red: 0.35, green: 0.76, blue: 0.76)
-        case .shoot: Color(red: 0.75, green: 0.64, blue: 0.91)
-        case .arch: Color(red: 0.94, green: 0.65, blue: 0.48)
-        case .petal: Color(red: 0.68, green: 0.81, blue: 0.48)
-        case .bough: Color(red: 0.43, green: 0.66, blue: 0.91)
-        case .fern: Color(red: 0.91, green: 0.53, blue: 0.66)
+        case .pebble, .square: Color(red: 0.35, green: 0.76, blue: 0.76)
+        case .shoot, .cornerRight: Color(red: 0.75, green: 0.64, blue: 0.91)
+        case .arch, .crown: Color(red: 0.94, green: 0.65, blue: 0.48)
+        case .petal, .stepLeft: Color(red: 0.68, green: 0.81, blue: 0.48)
+        case .bough, .cornerLeft: Color(red: 0.43, green: 0.66, blue: 0.91)
+        case .fern, .line: Color(red: 0.91, green: 0.53, blue: 0.66)
+        case .stepRight: Color(red: 0.77, green: 0.71, blue: 0.55)
         }
     }
 }

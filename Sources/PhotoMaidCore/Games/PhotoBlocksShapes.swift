@@ -6,10 +6,14 @@ public struct PhotoBlocksCell: Codable, Hashable, Sendable {
     public init(_ x: Int, _ y: Int) { self.x = x; self.y = y }
 }
 
-/// A mixed-size garden of connected forms, rather than a seven-form, four-cell set.
-/// Coordinates are our own implementation; rotation normalizes a clockwise turn.
+/// Four-square pieces, implemented as grid geometry. Old raw values retain their original
+/// footprints so an existing saved round is not reinterpreted or discarded after updating.
 public enum PhotoBlocksShape: Int, Codable, CaseIterable, Sendable {
     case pebble, shoot, arch, petal, bough, fern
+    case square, line, cornerLeft, cornerRight, crown, stepLeft, stepRight
+
+    public static let playableShapes: [Self] = [.square, .line, .cornerLeft, .cornerRight, .crown, .stepLeft, .stepRight]
+    public var isLegacy: Bool { rawValue <= Self.fern.rawValue }
 
     public func cells(rotation: Int = 0) -> [PhotoBlocksCell] {
         var cells: [PhotoBlocksCell] = switch self {
@@ -19,6 +23,13 @@ public enum PhotoBlocksShape: Int, Codable, CaseIterable, Sendable {
         case .petal: [.init(0, 0), .init(1, 0), .init(0, 1), .init(1, 1), .init(0, 2)]
         case .bough: [.init(0, 0), .init(0, 1), .init(0, 2), .init(1, 2), .init(2, 2)]
         case .fern: [.init(0, 0), .init(0, 1), .init(1, 1), .init(0, 2), .init(0, 3)]
+        case .square: [.init(0, 0), .init(1, 0), .init(0, 1), .init(1, 1)]
+        case .line: [.init(0, 0), .init(0, 1), .init(0, 2), .init(0, 3)]
+        case .cornerLeft: [.init(0, 0), .init(0, 1), .init(0, 2), .init(1, 2)]
+        case .cornerRight: [.init(1, 0), .init(1, 1), .init(1, 2), .init(0, 2)]
+        case .crown: [.init(0, 0), .init(1, 0), .init(2, 0), .init(1, 1)]
+        case .stepLeft: [.init(1, 0), .init(2, 0), .init(0, 1), .init(1, 1)]
+        case .stepRight: [.init(0, 0), .init(1, 0), .init(1, 1), .init(2, 1)]
         }
         for _ in 0..<((rotation % 4 + 4) % 4) {
             cells = cells.map { .init(-$0.y, $0.x) }

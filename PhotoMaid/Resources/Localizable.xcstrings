@@ -247031,6 +247031,208 @@
           }
         }
       }
+    },
+    "ana2_background_silent": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continue briefly in the background"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kurz im Hintergrund weiteranalysieren"
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "المتابعة لفترة قصيرة في الخلفية"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuar brevemente en segundo plano"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuer brièvement en arrière-plan"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continua brevemente in background"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "バックグラウンドで短時間続行"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "백그라운드에서 잠시 계속"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kort doorgaan op de achtergrond"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kontynuuj krótko w tle"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuar brevemente em segundo plano"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuă pentru scurt timp în fundal"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ненадолго продолжать в фоне"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arka planda kısa süre devam et"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ненадовго продовжувати у фоні"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在后台短暂继续"
+          }
+        }
+      }
+    },
+    "ana2_background_silent_note": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid uses the background time allowed by iOS without a system activity card. If time runs out, progress stays saved and analysis resumes when you reopen the app."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid nutzt die von iOS erlaubte Hintergrundzeit ohne Systemanzeige. Läuft die Zeit ab, bleibt der Fortschritt gespeichert. Beim Öffnen der App geht es automatisch weiter."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يستخدم PhotoMaid وقت الخلفية الذي يسمح به iOS دون بطاقة نشاط للنظام. عند انتهاء الوقت يُحفظ التقدم ويستأنف التحليل عند فتح التطبيق."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid usa el tiempo en segundo plano permitido por iOS sin una tarjeta del sistema. Al agotarse, se guarda el progreso y el análisis continúa al abrir la app."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid utilise le temps d’arrière-plan accordé par iOS sans carte système. À son expiration, la progression est conservée et l’analyse reprend à la réouverture."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid usa il tempo in background consentito da iOS senza schede di sistema. Alla scadenza, i progressi restano salvati e l’analisi riprende riaprendo l’app."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOSが許可するバックグラウンド時間を使用し、システムのアクティビティは表示しません。時間切れでも進捗は保存され、アプリを開くと解析が再開します。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "시스템 활동 카드 없이 iOS가 허용하는 백그라운드 시간을 사용합니다. 시간이 끝나면 진행 상황을 저장하고 앱을 다시 열 때 분석을 재개합니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid gebruikt de door iOS toegestane achtergrondtijd zonder systeemkaart. Als de tijd op is, blijft de voortgang bewaard en gaat de analyse verder als je de app opent."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid korzysta z czasu w tle przyznanego przez iOS bez karty systemowej. Po jego upływie postęp jest zapisany, a analiza wznawia się po otwarciu aplikacji."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O PhotoMaid usa o tempo em segundo plano permitido pelo iOS sem um cartão do sistema. Quando termina, o progresso fica guardado e a análise retoma ao abrir a app."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid folosește timpul în fundal permis de iOS fără card de sistem. Când expiră, progresul rămâne salvat și analiza se reia la redeschiderea aplicației."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid использует разрешённое iOS время в фоне без системной карточки. По его истечении прогресс сохраняется, а анализ продолжается при открытии приложения."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid, sistem etkinlik kartı göstermeden iOS’un izin verdiği arka plan süresini kullanır. Süre bittiğinde ilerleme kaydedilir ve uygulamayı açınca analiz sürer."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid використовує дозволений iOS час у фоні без системної картки. Коли час спливає, прогрес зберігається, а аналіз продовжується після відкриття застосунку."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PhotoMaid 使用 iOS 允许的后台时间，不显示系统活动卡片。时间用尽后会保存进度，重新打开 App 时自动继续分析。"
+          }
+        }
+      }
     }
   },
   "version": "1.0"

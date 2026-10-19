@@ -10,7 +10,7 @@ private struct AnalysisDisplay: Sendable {
     var groups: AnalysisGroupPage
 }
 
-/// One owner for foreground and continued background work. Views never create a second library-wide scan.
+/// One owner for foreground and bounded, silent background work. Views never create a second library-wide scan.
 /// Eine Analyse läuft, weitere warten (`AnalysisPlan`): Das Öffnen einer anderen Analyse hält die laufende nie an.
 /// Änderungen der Mediathek (iCloud-Abgleich, Favoriten, neue Fotos) passen nur den Umfang an – nichts wird
 /// zurückgesetzt. Angehalten wird endgültig nur auf Wunsch des Nutzers; nach Wärme, Verlassen der App oder
@@ -33,7 +33,7 @@ final class AnalysisController {
     var hasScope: Bool { validScope }
     /// iCloud-Fotos einbeziehen (nur WLAN). Bleibt gespeichert (`optionsChanged`); gilt auch für einen laufenden Lauf.
     var includeCloud = UserDefaults.standard.bool(forKey: AnalysisController.cloudKey)
-    /// Weiterlaufen, wenn die App verlassen wird (iOS zeigt den Fortschritt). Bleibt gespeichert, Standard aus.
+    /// Stille, von iOS begrenzte Hintergrundzeit. Danach mit Checkpoint beim Öffnen fortsetzen.
     var continueInBackground = UserDefaults.standard.bool(forKey: "analysis.background")
     /// Auch bereits entschiedene Fotos zeigen (Standard: nur offene).
     var showDecided = false
@@ -87,14 +87,20 @@ final class AnalysisController {
     @ObservationIgnored private var pauseReason: AnalysisStopReason?
     /// Nach dem Anhalten der laufenden Analyse diese starten („Jetzt zuerst“).
     @ObservationIgnored private var handover: AnalysisKind?
-    @ObservationIgnored private var continued: UncheckedBox<BGContinuedProcessingTask>?
-    /// Läuft gerade als fortgesetzte Aufgabe außerhalb der App weiter.
-    var backgroundRun: Bool { continued != nil }
+    @ObservationIgnored private let backgroundTime = AnalysisBackgroundTime()
+    var backgroundRun: Bool { backgroundTime.isActive }
 
     nonisolated static let cloudKey = "analysis.includeCloud"
     private static let planKey = "analysis.plan"
 
     private init() {
+        // Remove only our old queued analysis requests, never exports or other jobs.
+        let bundleID = Bundle.main.bundleIdentifier ?? "app.photomaid"
+        BGTaskScheduler.shared.getPendingTaskRequests { requests in
+            for request in requests where AnalysisBackgroundTime.isLegacyAnalysisRequest(request.identifier, bundleID: bundleID) {
+                BGTaskScheduler.shared.cancel(taskRequestWithIdentifier: request.identifier)
+            }
+        }
         if let data = UserDefaults.standard.data(forKey: Self.planKey),
            let stored = try? JSONDecoder().decode(AnalysisPlan.self, from: data) {
             plan = stored
@@ -124,12 +130,16 @@ final class AnalysisController {
     private nonisolated static func backgroundHandler(_ owner: AnalysisController) -> @Sendable (Notification) -> Void {
         { [weak owner] _ in Task { @MainActor in
             // Ohne fortgesetzte Aufgabe: beim Verlassen anhalten, bei der Rückkehr von selbst fortsetzen.
-            guard let owner, !owner.backgroundRun else { return }
-            owner.stopRun(reason: .background)
+            guard let owner else { return }
+            owner.updateBackgroundTime()
+            if !owner.backgroundRun { owner.stopRun(reason: .background) }
         } }
     }
     private nonisolated static func foregroundHandler(_ owner: AnalysisController) -> @Sendable (Notification) -> Void {
-        { [weak owner] _ in Task { @MainActor in owner?.resumeIfAllowed() } }
+        { [weak owner] _ in Task { @MainActor in
+            owner?.backgroundTime.end()
+            owner?.resumeIfAllowed()
+        } }
     }
     private nonisolated static func thermalHandler(_ owner: AnalysisController) -> @Sendable (Notification) -> Void {
         { [weak owner] _ in Task { @MainActor in owner?.resumeIfAllowed() } }
@@ -198,7 +208,7 @@ final class AnalysisController {
     func optionsChanged() {
         UserDefaults.standard.set(includeCloud, forKey: Self.cloudKey)
         UserDefaults.standard.set(continueInBackground, forKey: "analysis.background")
-        if continueInBackground { beginContinued() } else { endContinued(success: false) }
+        updateBackgroundTime()
         if includeCloud, !running { resumeIfAllowed() }
     }
 
@@ -333,7 +343,7 @@ final class AnalysisController {
         runStage = .preparing; downloadFraction = nil; stageByKind[kind] = nil
         // Bis zum Ende gilt der Lauf als „unterbrochen“: wird die App beendet, geht es beim nächsten Öffnen weiter.
         storeStop(.background, for: kind)
-        if continueInBackground { beginContinued() }
+        updateBackgroundTime()
         let background = continueInBackground
         work = Task.detached(priority: .utility) { [weak self] in
             let result = await AnalysisRunner.run(sources: sources, kind: kind,
@@ -349,7 +359,6 @@ final class AnalysisController {
         case .counts(let counts, let stage):
             countsByKind[runKind] = counts; runStage = stage
             if stage != .cloud { downloadFraction = nil }
-            reportContinued()
             if runKind == kind { refreshResults() }
         case .download(let fraction):
             if fraction.isFinite { downloadFraction = min(1, max(0, fraction)) }
@@ -377,6 +386,9 @@ final class AnalysisController {
                   UIApplication.shared.applicationState == .active || backgroundRun, !plan.waiting.isEmpty {
             // Fertig (oder iCloud wartet auf WLAN): gleich die nächste wartende Analyse.
             advance(after: ended, reason: reason)
+        } else if reason == .background, UIApplication.shared.applicationState == .active {
+            // Foreground notification can arrive before cancellation has finished checkpointing.
+            resumeIfAllowed()
         } else if reason == .thermal {
             // Kühl genug und Nutzer hat nicht angehalten (z. B. war nur kurz kritisch heiß): gleich weiter.
             resumeIfAllowed()
@@ -387,7 +399,7 @@ final class AnalysisController {
                 self?.resumeIfAllowed()
             }
         }
-        if !running { endContinued(success: result == .finished) }
+        if !running { backgroundTime.end() }
     }
 
     // MARK: Ergebnisse
@@ -486,54 +498,15 @@ final class AnalysisController {
                                groups: AnalysisGroupPage(groups: [], include: include, page: 0, pageSize: groupsPerPage))
     }
 
-    // MARK: Weiterlaufen außerhalb der App (fortgesetzte Aufgabe, iOS zeigt den Fortschritt)
+    // MARK: Silent, bounded background time
 
-    private func beginContinued() {
-        guard continued == nil, running, UIApplication.shared.applicationState == .active else { return }
-        let id = (Bundle.main.bundleIdentifier ?? "app.photomaid") + ".analysis." + UUID().uuidString
-        let registered = BGTaskScheduler.shared.register(forTaskWithIdentifier: id, using: nil,
-                                                        launchHandler: Self.continuedHandler(for: self))
-        guard registered else { return }
-        let request = BGContinuedProcessingTaskRequest(identifier: id, title: L("ana2_bg_title"),
-                                                       subtitle: L("ana2_bg_subtitle"))
-        request.strategy = .fail
-        do { try BGTaskScheduler.shared.submit(request) } catch { Diagnostics.log(.analysis, "continued-refused") }
-    }
-
-    nonisolated private static func continuedHandler(for owner: AnalysisController) -> @Sendable (BGTask) -> Void {
-        { @Sendable task in
-            guard let task = task as? BGContinuedProcessingTask else {
-                task.setTaskCompleted(success: false)
-                return
-            }
-            let box = UncheckedBox(task)
-            task.expirationHandler = { @Sendable in
-                Task { @MainActor in
-                    // iOS beendet die Aufgabe: sauber anhalten, bei der Rückkehr geht es von selbst weiter.
-                    owner.continued = nil
-                    owner.stopRun(reason: .background)
-                    box.value.setTaskCompleted(success: false)
-                }
-            }
-            Task { @MainActor in
-                guard owner.running, owner.continueInBackground else { box.value.setTaskCompleted(success: false); return }
-                owner.continued = box
-                owner.reportContinued()
-            }
+    private func updateBackgroundTime() {
+        guard running, continueInBackground, UIApplication.shared.applicationState != .active else {
+            backgroundTime.end()
+            if running, UIApplication.shared.applicationState == .background { stopRun(reason: .background) }
+            return
         }
-    }
-
-    private func reportContinued() {
-        guard let task = continued?.value, let runKind, let counts = countsByKind[runKind] else { return }
-        task.progress.totalUnitCount = Int64(max(1, counts.total))
-        task.progress.completedUnitCount = Int64(min(counts.total, counts.complete))
-    }
-
-    private func endContinued(success: Bool) {
-        guard let task = continued?.value else { return }
-        continued = nil
-        task.setTaskCompleted(success: success)
-        // Ohne fortgesetzte Aufgabe darf die Analyse im Hintergrund nicht weiterlaufen.
-        if running, UIApplication.shared.applicationState == .background { stopRun(reason: .background) }
+        let granted = backgroundTime.begin { [weak self] in self?.stopRun(reason: .background) }
+        if !granted { stopRun(reason: .background) }
     }
 }

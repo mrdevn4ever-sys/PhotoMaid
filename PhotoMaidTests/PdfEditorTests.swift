@@ -200,7 +200,7 @@ import XCTest
         view.document = try XCTUnwrap(PDFDocument(data: document(["FIRST"])))
         view.layoutSubviews()
         let small = view.scaleFactor
-        view.frame.size.height = 600
+        view.frame.size = CGSize(width: 600, height: 600)
         view.layoutSubviews()
         XCTAssertGreaterThan(view.scaleFactor, small)
         XCTAssertEqual(view.scaleFactor, view.scaleFactorForSizeToFit, accuracy: 0.001)
