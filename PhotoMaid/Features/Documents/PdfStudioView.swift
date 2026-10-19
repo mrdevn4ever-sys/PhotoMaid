@@ -58,19 +58,26 @@ struct PdfStudioView: View {
         .appPage().navigationTitle(L(importOnAppear ? "pdf_title" : "remodel_pdf_editor")).navigationBarTitleDisplayMode(.inline)
         .toolbar {
             if editor.preview != nil {
-                ToolbarItemGroup(placement: .topBarTrailing) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Menu {
                         Button { searching.toggle(); if !searching { query = "" } } label: { Label(L("search"), systemImage: "magnifyingglass") }
                         Button { selecting.toggle(); editor.selectedIDs.removeAll() } label: {
                             Label(L(selecting ? "done" : "pdf_pages_select"), systemImage: "checkmark.circle")
                         }
-                    } label: { Image(systemName: "ellipsis.circle") }
+                    } label: { Label(L("pdf_editor_actions"), systemImage: "ellipsis.circle") }
                     .accessibilityLabel(Text(key: "pdf_editor_actions"))
                     .accessibilityIdentifier("pdf.actions")
-                    Button { importing = true } label: { Image(systemName: "doc.badge.plus") }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button { importing = true } label: { Label(L("pdf_files_add"), systemImage: "doc.badge.plus") }
                         .accessibilityLabel(Text(key: "pdf_files_add")).accessibilityIdentifier("pdf.add")
+                }
+                // Saving is the primary editing action. Separate semantic items and
+                // real titles survive native iPad toolbar overflow; image-only custom
+                // groups can otherwise produce an empty More menu.
+                ToolbarItem(placement: .confirmationAction) {
                     Button { perform { let url = try editor.save(); app.showToast(L("pdf_saved", url.lastPathComponent)) } } label: {
-                        Image(systemName: "square.and.arrow.down")
+                        Label(L("pdf_save"), systemImage: "square.and.arrow.down")
                     }
                     .accessibilityLabel(Text(key: "pdf_save")).accessibilityIdentifier("pdf.save")
                 }
