@@ -1,0 +1,26 @@
+{
+  "release_baseline": "a614cdb6b365104bf60c31528a8eeb85262a6cdb",
+  "github_main_before": "ca6f81850a0a4032bbf8093f241f99a7584ab4c6",
+  "protected_swift_files_byte_identical": 242,
+  "protected_sources_sha256": "b05d91b1fe2ce538e4c55cda5bb7274fd68c77710a29cb2ce818042ec62ee9b3",
+  "unchanged_configs": [
+    "project.yml",
+    "Package.swift",
+    "Package.resolved",
+    ".github/workflows/ci.yml",
+    ".github/workflows/testflight.yml",
+    "fastlane/Fastfile",
+    "PhotoMaid/Resources/PrivacyInfo.xcprivacy",
+    "PhotoMaid/App/PhotoMaid.entitlements"
+  ],
+  "photo_thumbnail_cache_and_safety_suffix_byte_identical": true,
+  "studio_picker_draft_loading_delete_confirmation_and_persistence_byte_identical": true,
+  "cleanup_existing_routes_and_queries_byte_identical": true,
+  "today_data_navigation_tour_and_hidden_vault_entry_byte_identical": true,
+  "existing_localizations_unchanged": true,
+  "new_labels": 3,
+  "languages_per_label": 16,
+  "swift_syntax_parse_files": 10,
+  "native_build": "NOT RUN YET",
+  "native_ui": "NOT RUN YET"
+}

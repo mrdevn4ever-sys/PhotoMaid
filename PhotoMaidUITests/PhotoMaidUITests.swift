@@ -26,9 +26,9 @@ final class PhotoMaidUITests: XCTestCase {
 
     func testStudioRoutesAreReachable() {
         app.tabBars.buttons["Studio"].tap()
-        XCTAssertTrue(app.staticTexts["Collage"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["Film"].exists || app.staticTexts["Video zusammenfügen"].exists)
-        XCTAssertTrue(app.staticTexts["PDF erstellen"].exists)
+        for key in ["studio_collage", "movie_title", "movie_title_slideshow", "pdf_title"] {
+            XCTAssertTrue(app.buttons["studio.create." + key].waitForExistence(timeout: 5))
+        }
         checkpoint("qa_studio", app: app)
     }
 

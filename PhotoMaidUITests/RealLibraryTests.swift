@@ -504,7 +504,7 @@ final class RealLibraryTests: XCTestCase {
         XCTAssertFalse(contains("Pro freischalten").exists)
         XCTAssertFalse(app.images["crown"].exists)
         back("collage_back")
-        tap(button("Werkzeuge"), "tools_free")
+        tap(app.buttons["studio.tools.resize"], "tools_free")
         XCTAssertFalse(contains("Pro freischalten").exists)
         XCTAssertFalse(app.images["crown"].exists)
         snap("studio_tools_free")

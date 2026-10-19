@@ -11,17 +11,14 @@ struct CleanUpHubView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: AppSpacing.xl) {
-                HStack(alignment: .bottom) {
-                    Text(key: "tab_cleanup").font(AppTypography.largeTitle).accessibilityAddTraits(.isHeader)
-                    Spacer()
-                    GlassIconButton(symbol: "gearshape", label: L("settings")) { app.navigate(.settings) }
-                }
-                .padding(.top, AppSpacing.m)
-                Picker("", selection: $tab) {
+                FeatureHeader(title: L("tab_cleanup")) { app.navigate(.settings) }
+                reviewDestinations
+                Picker(L("tab_cleanup"), selection: $tab) {
                     Text(key: "hub_tab_areas").tag(0)
                     Text(key: "hub_tab_collections").tag(1)
                 }
                 .pickerStyle(.segmented)
+                .accessibilityIdentifier("cleanup.sections")
                 if tab == 1 {
                     CollectionsContent()
                 } else {
@@ -40,6 +37,22 @@ struct CleanUpHubView: View {
     }
 
     private var canRead: Bool { app.library.access.canRead }
+
+    private var reviewDestinations: some View {
+        LazyVGrid(columns: dynamicType.isAccessibilitySize ? [GridItem(.flexible())] :
+                    [GridItem(.adaptive(minimum: 152), spacing: AppSpacing.s)], spacing: AppSpacing.s) {
+            FeatureActionTile(symbol: "trash", title: L("basket"),
+                              subtitle: LP("items_count", app.read.basket.count), tint: AppColors.cleanup) {
+                app.navigate(.trash, in: .cleanup)
+            }
+            .accessibilityIdentifier("cleanup.trash")
+            FeatureActionTile(symbol: "clock", title: L("later"),
+                              subtitle: LP("items_count", app.read.laterRecords.count), tint: AppColors.later) {
+                app.navigate(.later, in: .cleanup)
+            }
+            .accessibilityIdentifier("cleanup.later")
+        }
+    }
 
     @ViewBuilder
     private var mediaArea: some View {

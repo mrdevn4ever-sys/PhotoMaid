@@ -385,6 +385,40 @@ import XCTest
             checkpoint("workspace_" + page, app: app)
             app.terminate()
         }
+        for page in ["today", "cleanup", "studio"] {
+            launch(page, light: false, language: "de")
+            if page == "cleanup" {
+                XCTAssertTrue(app.buttons["cleanup.trash"].exists)
+                XCTAssertTrue(app.buttons["cleanup.later"].exists)
+                XCTAssertTrue(app.descendants(matching: .any)["cleanup.sections"].firstMatch.exists)
+            }
+            if page == "studio" {
+                for key in ["studio_collage", "movie_title", "movie_title_slideshow", "pdf_title"] {
+                    XCTAssertTrue(app.buttons["studio.create." + key].exists, "Every existing creation action remains reachable")
+                }
+                checkpoint("design_studio_dark_create", app: app)
+                let resize = app.buttons["studio.tools.resize"]
+                for _ in 0..<6 where !resize.isHittable { app.swipeUp() }
+                XCTAssertTrue(resize.isHittable)
+                resize.tap()
+                XCTAssertTrue(app.navigationBars["Verkleinern"].waitForExistence(timeout: 10))
+                checkpoint("design_studio_resize_destination", app: app)
+                let back = app.navigationBars.buttons.element(boundBy: 0)
+                XCTAssertTrue(back.exists, "Styled root header must retain destination navigation and Back")
+                back.tap()
+                for id in ["studio.tools.convert", "studio.tools.location", "studio.tools.stitch", "studio.tools.gif",
+                           "studio.tools.batch", "studio.workflows", "studio.archive", "studio.pdfEditor", "studio.saved"] {
+                    let control = app.buttons[id]
+                    for _ in 0..<6 where !control.isHittable { app.swipeUp() }
+                    XCTAssertTrue(control.isHittable, "Existing tool/document/saved action remains reachable: \(id)")
+                    XCTAssertGreaterThanOrEqual(control.frame.height, 44)
+                    if id == "studio.archive" { checkpoint("design_studio_dark_tools", app: app) }
+                }
+                checkpoint("design_studio_dark_documents_saved", app: app)
+            }
+            checkpoint("design_dark_" + page, app: app)
+            app.terminate()
+        }
     }
 
     func test40LargeTextAndArabic() {

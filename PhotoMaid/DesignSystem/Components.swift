@@ -1,16 +1,16 @@
 import Photos
 import SwiftUI
 
-/// Ruhiger, warmer Grund für alle Seiten außerhalb von Medien-Bühnen.
+/// Ruhiger deckender Grund; Glas bleibt schwebenden Bedienelementen vorbehalten.
 struct AppBackground: View {
     var body: some View {
-        LinearGradient(colors: [AppColors.background, AppColors.backgroundTint], startPoint: .top, endPoint: .bottom)
+        AppColors.background
             .ignoresSafeArea()
     }
 }
 
 extension View {
-    /// Seitengrund + Listenhintergrund ausblenden (Listen liegen auf dem warmen Grund).
+    /// Einheitlicher Seitengrund statt eigener Hintergründe je Feature.
     func appPage() -> some View {
         scrollContentBackground(.hidden).background(AppBackground())
     }
@@ -53,6 +53,7 @@ struct SectionHeader: View {
 
 /// Zeile mit Symbol, Titel, Untertitel, Wert und Chevron (Aufräumen, Einstellungen, Studio).
 struct NavRow: View {
+    @Environment(\.dynamicTypeSize) private var typeSize
     let symbol: String
     var tint: Color = AppColors.accent
     let title: String
@@ -72,15 +73,24 @@ struct NavRow: View {
             VStack(alignment: .leading, spacing: 2) {
                 HStack(spacing: AppSpacing.xs) {
                     Text(verbatim: title).font(AppTypography.headline).foregroundStyle(AppColors.textPrimary)
-                    if let badge { BadgeText(text: badge) }
+                        .fixedSize(horizontal: false, vertical: true)
+                    if let badge, !typeSize.isAccessibilitySize { BadgeText(text: badge) }
                 }
                 if let subtitle {
                     Text(verbatim: subtitle).font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
+                if typeSize.isAccessibilitySize {
+                    if let value {
+                        Text(verbatim: value).font(AppTypography.subheadline.weight(.semibold))
+                            .foregroundStyle(AppColors.textSecondary).monospacedDigit()
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    if let badge { BadgeText(text: badge) }
+                }
             }
             Spacer(minLength: AppSpacing.xs)
-            if let value {
+            if let value, !typeSize.isAccessibilitySize {
                 Text(verbatim: value).font(AppTypography.subheadline.weight(.semibold))
                     .foregroundStyle(AppColors.textSecondary).monospacedDigit()
             }
@@ -119,9 +129,15 @@ struct MetricCard: View {
     var body: some View {
         SurfaceCard {
             VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                HStack(alignment: .firstTextBaseline, spacing: AppSpacing.xs) {
-                    Text(verbatim: value).font(AppTypography.metric).foregroundStyle(AppColors.textPrimary)
-                    Text(verbatim: caption).font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
+                ViewThatFits(in: .horizontal) {
+                    HStack(alignment: .firstTextBaseline, spacing: AppSpacing.xs) {
+                        metricValue
+                        metricCaption
+                    }
+                    VStack(alignment: .leading, spacing: AppSpacing.xxs) {
+                        metricValue
+                        metricCaption
+                    }
                 }
                 if let progress { ProgressView(value: min(max(progress, 0), 1)).tint(AppColors.accent) }
                 if let footnote {
@@ -130,6 +146,16 @@ struct MetricCard: View {
             }
         }
         .accessibilityElement(children: .combine)
+    }
+
+    private var metricValue: some View {
+        Text(verbatim: value).font(AppTypography.metric).foregroundStyle(AppColors.textPrimary)
+            .fixedSize(horizontal: true, vertical: false)
+    }
+
+    private var metricCaption: some View {
+        Text(verbatim: caption).font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
+            .fixedSize(horizontal: false, vertical: true)
     }
 }
 
