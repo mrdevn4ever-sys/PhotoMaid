@@ -105,6 +105,21 @@ import Foundation
 
     func model(_ edge: Int, _ q: Int) -> Int64 { (Int64(edge) * Int64(edge) * 3 / 4) * Int64(q + 10) / 120 }
 
+    @MainActor @Test func targetSizeKeepsEncodingStateOnTheCallingActorAcrossSuspension() async {
+        var attempts: [TargetSize.Attempt] = []
+        let result = await TargetSize.search(maxBytes: 75, startEdge: 2000, startQuality: 90,
+                                           minEdge: 1024, minQuality: 60, lossless: false) { attempt in
+            MainActor.preconditionIsolated()
+            await Task.yield()
+            MainActor.preconditionIsolated()
+            attempts.append(attempt)
+            return Int64(attempt.quality)
+        }
+        #expect(attempts.count > 1)
+        #expect(result.bytes <= 75)
+        #expect(attempts.contains(result.attempt))
+    }
+
     @Test func targetSizeFindsHighestFittingQualityFirst() async {
         let r = await TargetSize.search(maxBytes: 2_000_000, startEdge: 2000, startQuality: 90, minEdge: 1024, minQuality: 60,
                                         lossless: false) { a in model(a.longEdge, a.quality) }

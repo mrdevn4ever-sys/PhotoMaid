@@ -191,7 +191,8 @@ public enum TargetSize {
     public static let maxAttempts = 24
 
     public static func search(maxBytes: Int64, startEdge: Int, startQuality: Int, minEdge: Int, minQuality: Int,
-                              lossless: Bool, encode: (Attempt) async throws -> Int64) async rethrows -> Outcome {
+                              lossless: Bool, isolation: isolated (any Actor)? = #isolation,
+                              encode: (Attempt) async throws -> Int64) async rethrows -> Outcome {
         var best: (Attempt, Int64)?
         var attempts = 0
         func record(_ a: Attempt, _ b: Int64) {

@@ -72,7 +72,8 @@ enum VideoSource {
     }
 
     /// Genaues Bild zur Quellzeit (nicht das nächste Schlüsselbild), richtig gedreht. `maxEdge` nur für Vorschauen.
-    static func frame(_ asset: AVAsset, sourceMs: Int64, maxEdge: CGFloat? = nil) async -> UncheckedBox<CGImage>? {
+    static func frame(_ asset: AVAsset, sourceMs: Int64, maxEdge: CGFloat? = nil,
+                      isolation: isolated (any Actor)? = #isolation) async -> UncheckedBox<CGImage>? {
         let g = AVAssetImageGenerator(asset: asset)
         g.appliesPreferredTrackTransform = true
         if let maxEdge {
@@ -88,7 +89,8 @@ enum VideoSource {
     }
 
     /// Kleine Bilder gleichmäßig über die ganze Dauer (Zeitleiste beim Kürzen).
-    static func thumbnails(_ asset: AVAsset, durationMs: Int64, count: Int, height: CGFloat) async -> [UIImage] {
+    static func thumbnails(_ asset: AVAsset, durationMs: Int64, count: Int, height: CGFloat,
+                           isolation: isolated (any Actor)? = #isolation) async -> [UIImage] {
         let g = AVAssetImageGenerator(asset: asset)
         g.appliesPreferredTrackTransform = true
         g.maximumSize = CGSize(width: height * 2, height: height * 2)
