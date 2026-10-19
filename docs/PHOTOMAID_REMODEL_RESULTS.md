@@ -1,5 +1,66 @@
 # PhotoMaid Remodel — Ergebnisse und Abnahmegrenzen
 
+## Native Nachprüfung vom 19.10.2026
+
+**Der Experimentierstand baut erstmals erfolgreich mit Xcode. Die Gesamtabnahme ist wegen fehlgeschlagener Tests weiterhin offen.** Die nachfolgende ursprüngliche Windows-Abnahme ist ein historischer Bericht; ihre Aussagen „kein Push/Workflow“ und „Swift nicht installiert“ beschreiben den damaligen Stand.
+
+### Revision und unveränderte Grenzen
+
+- Geprüfter App-Quellstand: `417912eae28f675c91336c0e434c1cc8e68dae95`, aufbauend auf dem bereitgestellten `45a0a14e119f3799159d10101ec6998db246dc4b`.
+- Ausschliesslich `experiment/photomaid-liquid-glass-remodel` geändert und gepusht. Isoliertes Cloud-Worktree `/workspace/PhotoMaid-remodel`; kein Zugriff auf die Windows-Arbeitskopie auf F:.
+- GitHub-main vorher und nach den Quellcodekorrekturen: `ca6f81850a0a4032bbf8093f241f99a7584ab4c6`. Kein Merge oder Force-Push. Das andere Worktree `/workspace/PhotoMaid` bleibt auf `a614cdb6b365104bf60c31528a8eeb85262a6cdb` unverändert.
+- Bestehende manuelle CI mit ausdrücklicher Build-/Testfreigabe ausgeführt. Workflows, Signing, `project.yml`, Fastlane, Pakete, App-Einstellungen, Core-Data-Speicher und `VaultCrypto.swift` gegenüber `45a0a14` bytegleich. Keine Compilerprüfung abgeschaltet, keine bestehende Assertion entfernt.
+- Kein neuer TestFlight-Lauf oder Upload im Korrekturauftrag. Der frühere unveränderte Uploadversuch auf `45a0a14` war bereits beim Kompilieren gescheitert.
+
+### Korrekturen und vollständiges Dateiinventar dieses Nachtrags
+
+| Datei | Änderung |
+|---|---|
+| `PhotoMaid/Infrastructure/Archive/ArchiveService.swift` | MainActor-gebundenen Asset-Zugriff korrekt mit `await` ausführen. |
+| `PhotoMaid/Features/Archive/ArchiveView.swift` | Fehlenden Formatter durch vorhandenen `SizeText.bytes` ersetzen. |
+| `PhotoMaid/Features/Studio/WorkflowsView.swift` | Dieselbe fehlende Formatter-Referenz korrigieren. |
+| `PhotoMaid/DesignSystem/ViewerPhotoSurface.swift` | Vom bereits verwendeten Tresor benötigte Fotooberfläche unverändert aus dessen Integrationsbasis `de90f1d` ergänzen. |
+| `PhotoMaid/Features/Library/ViewerVideoControls.swift` | Ebenso die fehlenden gemeinsamen Video-Bedienelemente ergänzen. |
+| `Sources/PhotoMaidCore/Batch/Workflow.swift` | `TargetSize.search` übernimmt mit `#isolation` den Actor des Aufrufers; veränderlicher Encoder-Zustand bleibt auf diesem Actor. |
+| `Tests/PhotoMaidCoreTests/BatchPdfTests.swift` | Regressionstest mit echter Task-Suspension und MainActor-Prüfung für den Encoder-Callback. |
+| `PhotoMaid/Infrastructure/Video/VideoSource.swift` | Eng begrenzte Überladungen mit dem vorhandenen `UncheckedBox` für unveränderliche Video-Assets; jeder Vorschauauftrag besitzt seinen eigenen Generator abseits des MainActor. |
+| `PhotoMaid/Features/Editor/VideoEditorModel.swift` | Editor-Vorschauaufträge verwenden diese Asset-Übergabe; keine globale Sendable-Konformität für AVFoundation eingeführt. |
+| `PhotoMaid/Features/Feed/FeedView.swift` | Zu grossen SwiftUI-Ausdruck in Inhalt, Lebenszyklus und Sheets aufteilen; Reihenfolge der Modifier und vorhandene Aktionen erhalten. |
+| `PhotoMaid/Infrastructure/Playback/FeedPlayer.swift` | Ende-Notification vor dem Actor-Wechsel auf eine sendbare Objektidentität reduzieren; verspätete Meldungen bleiben ausgeschlossen. |
+| `PhotoMaidTests/VideoSourceTests.swift` | Native Regressionstests für synthetisches H.264-Video/Thumbnails und verspätete Player-Endmeldungen. |
+| `docs/PHOTOMAID_REMODEL_RESULTS.md` | Dieser überprüfbare Nachtrag. |
+| `docs/IMPLEMENTATION_STATUS.md` | Aktuellen Experiment-Status vom historischen Status unterscheiden. |
+
+### Tatsächliche Ergebnisse
+
+| Prüfung | Ergebnis / Beleg |
+|---|---|
+| Lokale Core-Tests, Swift 6.4 | **PASS: 294 Tests in 34 Suites**, einschliesslich Actor-Regression. |
+| Core unter CI / Swift 6.2 | **PASS: 294 Tests in 34 Suites**, sowohl [Lauf 39206790240](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39206790240) als auch [Lauf 39209674569](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39209674569). |
+| Native App-Kompilation | **PASS: `** BUILD SUCCEEDED **`** in beiden Läufen auf demselben Commit, macOS 26, Xcode 26.6 (17F113), iPhone 17 / iOS-26.5-Simulator, `CODE_SIGNING_ALLOWED=NO`. Kein Gerätearchiv oder Distributionsbuild. |
+| Native Swift-Testing-Suites | **PASS: 16 Tests in 3 Suites** (`RemodelDocumentTests`, `VaultConcealmentTests`, `VideoSourceTests`), einschliesslich beider neuen Video-Tests. |
+| Native XCTest-Suites | **10 von 11 Testmethoden PASS; 1 FAIL.** `VaultKeychainTests.testCodeKeychainRoundTripAndReplacement` scheitert mit Security-Status `-34018` (`errSecMissingEntitlement`), auch bei direkter unabhängiger `SecItemAdd`-Probe. Dieser unsignierte Lauf belegt keinen funktionierenden Tresor-Keychain-Zugriff. |
+| UI-Gesamtlauf | **FAIL / abgebrochen nach rund 30 Minuten.** Elf UI-Testmethoden waren bereits fehlgeschlagen; weitere nicht abgeschlossen. Vorhandene Tests erwarten unter anderem einen alten Onboarding-Titel bzw. die nicht vorhandene Kennung `onboarding.next`; andere werden durch die anschliessende Tour blockiert. Keine erfolgreiche Navigations-, Feed- oder Tresor-UI-Abnahme. |
+| Separater App-/Unit-Lauf ohne UI | **Abgeschlossen: BUILD SUCCEEDED / TEST FAILED**, [39209674569](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39209674569), derselbe Quellstand. Bestätigt 16 bestandene Swift-Testing-Tests sowie 10 bestandene XCTest-Methoden; einziger fehlgeschlagener Test ist erneut der reale Keychain-Test mit `-34018`. Keine UI-Tests in diesem zweiten Lauf. |
+| Python-Quellenverträge | **PASS: 26** (`python3 -m unittest discover -s scripts/tests -v`). Der erste Aufruf benötigte zunächst eine lokale, unveränderte main-Referenz für die bestehenden Vergleichsprüfungen; nach Einrichten dieses Mirrors vollständig bestanden. |
+| Tresor-Quellenverträge | **PASS: 10** (`python3 scripts/verify_vault_integration.py`). Keine Laufzeit-Sicherheitszertifizierung. |
+| Lokalisierung | **PASS:** 1219 verwendete Kennungen, 2293 Einträge, 16 Sprachen. |
+| Patch- und Isolationsprüfung | **PASS:** `git diff --check`, geschützte Dateien bytegleich, keine Merge-Commits seit `45a0a14`. |
+
+Die vier vorangegangenen Korrekturläufe `39204685273`, `39205226838`, `39205798729` und `39206214802` scheiterten jeweils an weiteren vom Apple-Compiler aufgedeckten Problemen. Sie sind keine bestandenen iOS-Tests. Der ursprünglich allein auf Parsern beruhende Integrationsbericht genügte nicht zum Kompilieren.
+
+### Belege und verbleibende Abnahme
+
+- Vollständiges Xcode-Protokoll, CI-Bericht und das unvollständige Ergebnisbündel des abgebrochenen Laufs: [Artefakt ios-build-report / 12167326408](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39206790240/artifacts/12167326408). Das CI-Berichtsskript meldet beim Abbruch „UNBEKANNT“; die Build-/Testbewertungen oben stammen aus den tatsächlichen Xcode-Markern und einzelnen Testergebnissen.
+- Abgeschlossener separater App-/Unit-Lauf: [Artefakt ios-build-report / 12167586842](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39209674569/artifacts/12167586842) mit vollständigem `xcodebuild.log`, `ci-report.md` und `tests.xcresult.zip`. Bericht: `TEST FAILED`, keine Compilerfehler, genau eine fehlgeschlagene Testmethode. `core-test-log` desselben Laufs belegt die 294 Core-Tests.
+- 15 echte PNG-Anhänge aus diesem Ergebnisbündel wurden lokal extrahiert und vier davon angesehen. Sie zeigen den ersten Einführungsbildschirm; daraus folgt **keine** visuelle Abnahme der Hauptansichten. Keine nachgebauten Screenshots verwendet.
+- Die Keychain-Prüfung bleibt fehlgeschlagen. Weder wird sie übersprungen noch durch einen In-Memory-Ersatz grün gemacht. Signing/Entitlements müssen in einer geeigneten, gesondert geprüften Testumgebung funktionieren, bevor Tresor-Einrichtung und Recovery nativ abgenommen werden können.
+- Der UI-Test-Einstieg muss an den tatsächlichen fünfseitigen Einführungsablauf und die anschliessende Tour angepasst werden; Simulator-Medien müssen für Foto-/Video-Tests vorbereitet sein. Das ist noch keine erledigte UI-Integration.
+- Im Concealment-Testlauf traten zusätzlich SwiftUI-Warnungen über Veröffentlichungen von Hintergrundthreads auf. Die Assertions bestanden; die Warnungen bleiben ein offener Prüfpunkt.
+- Reales iPhone, Face ID, iCloud-Medien, Berechtigungswechsel, Datenschutz-Snapshot-Timing, Instruments und die vollständige Accessibility-/Display-Matrix bleiben ungeprüft. Die bekannten alten Risiken zu Analyse-Caches/OS-Backups und Editor-Löschjournal sind durch diesen Compiler-Nachtrag nicht gelöst.
+
+## Historischer Implementierungsbericht vor der nativen Nachprüfung
+
 **Quellcode-Remodel einschliesslich Tresor implementiert und lokal committed; native iOS-Abnahme BLOCKED / NICHT VERIFIZIERT.** Dieser Bericht ist kein Build-/Sicherheitszertifikat. Keine produktiven Medien oder Tresordaten wurden geöffnet oder migriert.
 
 ## Revision und Isolation

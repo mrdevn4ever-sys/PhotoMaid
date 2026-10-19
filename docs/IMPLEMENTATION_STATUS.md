@@ -1,5 +1,19 @@
 # Implementierungsstatus
 
+## Experimentier-Branch — 19.10.2026
+
+`experiment/photomaid-liquid-glass-remodel`, geprüfter App-Quellstand `417912eae28f675c91336c0e434c1cc8e68dae95`:
+
+- **Native iOS-App-Kompilation PASS**, Xcode 26.6, iPhone 17 / iOS 26.5, unsignierter Simulator-Build.
+- **294 Core-Tests PASS**, lokal und in CI; **16 native Swift-Testing-Tests PASS**. XCTest: **10 von 11 Testmethoden PASS**, Keychain-Test mit `OSStatus -34018` fehlgeschlagen.
+- UI-Suite fehlgeschlagen und nach rund 30 Minuten abgebrochen: veraltete Einführungs-Erwartungen und unbehandelte Tour. **Keine vollständige native Abnahme.**
+- Python 26 + Tresor-Quellenverträge 10 sowie Lokalisierung für 16 Sprachen bestanden.
+- Nur Experimentier-Branch gepusht; GitHub-main unverändert `ca6f81850a0a4032bbf8093f241f99a7584ab4c6`. Signing, Workflows und Tresor-Kryptografie unverändert. Kein neuer Upload.
+
+Dateiinventar, Testläufe, Belege und verbleibende Grenzen: [PhotoMaid Remodel — Ergebnisse](PHOTOMAID_REMODEL_RESULTS.md#native-nachprüfung-vom-19102026).
+
+## Historischer Status vom 09.10.2026
+
 Stand: 09.10.2026 · Branch `claude/ios-native-liquid-glass` · A1–A9 gepusht, kein PR, kein GitHub-Actions-Lauf.
 
 ## Umgebung
