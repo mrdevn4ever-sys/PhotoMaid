@@ -106,6 +106,8 @@ def read_ios():
         return {}, {}
     j = json.loads(IOS_JSON.read_text(encoding="utf-8"))
     strings = {k: v for k, v in j.items() if not k.startswith("_")}
+    from i18n.ios_strings_remodel import STRINGS
+    strings.update(STRINGS)
     return strings, j.get("_infoPlist", {})
 
 

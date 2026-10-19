@@ -27,16 +27,17 @@ struct DocumentScannerHost: UIViewControllerRepresentable {
             for index in 0..<scan.pageCount {
                 if let page = PDFPage(image: scan.imageOfPage(at: index)) { document.insert(page, at: document.pageCount) }
             }
-            guard let data = document.dataRepresentation() else { app.showError(L("pdf_failed")); return }
-            let url = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString + ".pdf")
+            guard document.pageCount > 0, let data = document.dataRepresentation() else {
+                app.showError(L("pdf_failed")); return
+            }
             do {
-                try data.write(to: url, options: .atomic)
+                let url = try PdfServices.saveDocument(data)
                 let share = UIActivityViewController(activityItems: [url], applicationActivities: nil)
                 share.completionWithItemsHandler = { [weak self] _, _, _, _ in
                     Task { @MainActor in self?.app.fullScreen = nil }
                 }
                 controller.present(share, animated: true)
-                app.showToast(L("pdf_saved"))
+                app.showToast(L("pdf_saved", url.lastPathComponent))
                 return
             }
             catch { app.showError(L("pdf_failed")) }

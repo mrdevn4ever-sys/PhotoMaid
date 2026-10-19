@@ -1,5 +1,6 @@
 import PhotoMaidCore
 import SwiftUI
+import VisionKit
 
 /// Erstellen, Werkzeuge und gespeicherte Arbeit sind getrennt, ohne Funktionen zu verstecken.
 struct StudioView: View {
@@ -38,11 +39,37 @@ struct StudioView: View {
                 VStack(alignment: .leading, spacing: AppSpacing.s) {
                     SectionHeader(title: L("tools_header"))
                     RowGroup {
-                        studioRow("wand.and.stars", "tools_header", "tools_resize_sub", route: .tools(.resize))
+                        studioRow("arrow.down.right.and.arrow.up.left", "tools_resize", "tools_resize_sub", route: .tools(.resize))
+                        Divider().padding(.leading, 52)
+                        studioRow("arrow.triangle.2.circlepath", "tools_convert", "tools_convert_sub", route: .tools(.convert))
+                        Divider().padding(.leading, 52)
+                        studioRow("location.slash", "tools_location", "tools_location_sub", route: .tools(.removeLocation))
+                        Divider().padding(.leading, 52)
+                        studioRow("rectangle.stack", "tools_stitch", "tools_stitch_sub", route: .tools(.stitch))
+                        Divider().padding(.leading, 52)
+                        studioRow("photo.stack", "tools_gif", "tools_gif_sub", route: .tools(.gif))
+                        Divider().padding(.leading, 52)
+                        studioRow("slider.horizontal.3", "remodel_batch_edit", "tools_resize_sub", route: .tools(.batchEdit))
                         Divider().padding(.leading, 52)
                         studioRow("arrow.triangle.branch", "wf_title", "wf_studio_sub", route: .workflows)
                         Divider().padding(.leading, 52)
                         studioRow("externaldrive", "archive_title", "archive_studio_sub", route: .archive(ids: []))
+                    }
+                }
+                VStack(alignment: .leading, spacing: AppSpacing.s) {
+                    SectionHeader(title: L("kind_document"))
+                    RowGroup {
+                        Button { app.navigate(.pdfStudio, in: .studio) } label: {
+                            NavRow(symbol: "doc.text", title: L("remodel_pdf_editor"))
+                        }
+                        .buttonStyle(FeaturePressStyle())
+                        if VNDocumentCameraViewController.isSupported {
+                            Divider().padding(.leading, 52)
+                            Button { app.fullScreen = .scanner } label: {
+                                NavRow(symbol: "doc.viewfinder", title: L("remodel_scanner"))
+                            }
+                            .buttonStyle(FeaturePressStyle())
+                        }
                     }
                 }
                 VStack(alignment: .leading, spacing: AppSpacing.s) {

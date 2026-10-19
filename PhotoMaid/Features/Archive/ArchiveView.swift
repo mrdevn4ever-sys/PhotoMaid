@@ -52,7 +52,29 @@ struct ArchiveView: View {
         defer { running = false }
         let scoped = target.startAccessingSecurityScopedResource()
         defer { if scoped { target.stopAccessingSecurityScopedResource() } }
-        journal = await ArchiveService.copy(app: app, ids: ids, target: target, options: options)
-        try? app.kv?.set(StoreKeys.archiveJournal, journal)
+        var result = await ArchiveService.copy(app: app, ids: ids, target: target, options: options)
+        if options.writeList {
+            do {
+                let formatter = ISO8601DateFormatter()
+                let rows = result.verified.map { entry in
+                    ArchiveList.Row(folder: entry.folder.joined(separator: "/"),
+                                    name: entry.targetUri?.split(separator: "/").last.map(String.init) ?? entry.name,
+                                    taken: app.snapshot.byID[entry.sourceId]?.creationDate.map { formatter.string(from: $0) } ?? "",
+                                    bytes: entry.bytes.map { String($0) } ?? "", sha256: entry.sha256 ?? "",
+                                    albums: "", tags: (app.organize.tags[entry.sourceId] ?? []).sorted().joined(separator: "; "),
+                                    note: app.organize.notes[entry.sourceId] ?? "")
+                }
+                // Stabile technische CSV-Spalten; unbekannte Angaben bleiben leer, niemals erfundene Werte.
+                let csv = ArchiveList.render(header: ["folder", "name", "taken", "bytes", "sha256", "albums", "tags", "note"], rows: rows)
+                let taken = Set(try FileManager.default.contentsOfDirectory(atPath: target.path))
+                let name = ArchivePlan.uniqueName(taken: taken, wanted: L("archive_list_file", result.id))
+                try Data(csv.utf8).write(to: target.appendingPathComponent(name), options: .atomic)
+                result.listName = name
+                app.showToast(L("archive_list_saved", name))
+            } catch { app.showError(L("archive_reason_write")) }
+        }
+        journal = result
+        do { try app.kv?.set(StoreKeys.archiveJournal, result) }
+        catch { app.showError(L("archive_failed")) }
     }
 }

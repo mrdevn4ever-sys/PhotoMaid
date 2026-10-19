@@ -156,5 +156,44 @@ class RemodelSourceContractTests(unittest.TestCase):
             self.assertTrue(before <= after, before - after)
 
 
+class RemodelAdditionalSourceTests(unittest.TestCase):
+    def test_every_existing_tool_has_a_production_entry(self):
+        studio = source("PhotoMaid/Features/Studio/StudioView.swift")
+        for kind in ["resize", "convert", "removeLocation", "stitch", "gif", "batchEdit"]:
+            with self.subTest(kind=kind):
+                self.assertIn(f"route: .tools(.{kind})", studio)
+        self.assertIn("app.navigate(.pdfStudio, in: .studio)", studio)
+        self.assertIn("if VNDocumentCameraViewController.isSupported", studio)
+        self.assertIn("app.fullScreen = .scanner", studio)
+
+    def test_pdf_selection_survives_reordering_by_identity(self):
+        text = source("PhotoMaid/Features/Documents/PdfStudioView.swift")
+        self.assertIn("selected = Set<String>()", text)
+        self.assertIn("toggle(page.id)", text)
+        self.assertIn("selected.contains($0.element.id)", text)
+        self.assertIn("url.startAccessingSecurityScopedResource()", text)
+        self.assertIn("url.stopAccessingSecurityScopedResource()", text)
+        self.assertIn("PDFDocument(data: data)", text)
+
+    def test_pdf_save_is_not_temporary_or_empty(self):
+        text = source("PhotoMaid/Infrastructure/Documents/PdfServices.swift")
+        self.assertNotIn("temporaryDirectory", text)
+        self.assertIn("guard !data.isEmpty", text)
+        self.assertIn(".documentDirectory", text)
+        self.assertIn(".fileSizeKey", text)
+        scanner = source("PhotoMaid/Features/Documents/DocumentScannerHost.swift")
+        self.assertIn("PdfServices.saveDocument(data)", scanner)
+        self.assertIn('L("pdf_saved", url.lastPathComponent)', scanner)
+
+    def test_archive_indexes_entries_not_skipped_input_ids(self):
+        text = source("PhotoMaid/Infrastructure/Archive/ArchiveService.swift")
+        self.assertIn("let entryIndex = journal.entries.count - 1", text)
+        self.assertNotIn("journal.entries[index]", text)
+        view = source("PhotoMaid/Features/Archive/ArchiveView.swift")
+        self.assertIn("if options.writeList", view)
+        self.assertIn("ArchiveList.render(", view)
+        self.assertIn("result.listName = name", view)
+
+
 if __name__ == "__main__":
     unittest.main()
