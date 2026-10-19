@@ -14,6 +14,11 @@ struct PdfFromPhotosView: View {
         Form {
             Section {
                 Button { picker = true } label: { Label(L("pdf_pick"), systemImage: "photo.on.rectangle.angled") }
+                    .accessibilityIdentifier("pdf.photosChoose")
+                NavigationLink {
+                    PdfStudioView(importOnAppear: true)
+                } label: { Label(L("pdf_files_create"), systemImage: "folder") }
+                    .accessibilityIdentifier("pdf.fromFiles")
                 Text(verbatim: LP("pdf_photos", ids.count))
             }
             Section {

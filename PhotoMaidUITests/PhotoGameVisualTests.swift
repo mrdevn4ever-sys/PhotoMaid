@@ -13,10 +13,11 @@ import XCTest
         XCUIDevice.shared.orientation = .portrait
     }
 
-    private func launch(_ page: String = "feed", light: Bool = false, language: String = "en", snakeSteps: Bool = false) {
+    private func launch(_ page: String = "feed", light: Bool = false, language: String = "en", snakeSteps: Bool = false, pdfFiles: Bool = false) {
         app.launchArguments = ["-store-capture", "-game-visual-tests", "-store-page", page, "-AppleLanguages", "(\(language))", "-AppleLocale", "en_US"]
         if light { app.launchArguments.append("-capture-light") }
         if snakeSteps { app.launchArguments.append("-snake-swipe-steps") }
+        if pdfFiles { app.launchArguments.append("-pdf-editor-fixtures") }
         app.launch()
         waitForPage(page)
         Thread.sleep(forTimeInterval: 0.8)
@@ -418,6 +419,49 @@ import XCTest
             }
             checkpoint("design_dark_" + page, app: app)
             app.terminate()
+        }
+    }
+
+    func test35PdfCreationAndLiveEditing() {
+        launch("studio", language: "de")
+        let creation = app.buttons["studio.create.pdf_title"]
+        XCTAssertTrue(creation.label.contains("PDF erstellen"))
+        creation.tap()
+        XCTAssertTrue(app.buttons["pdf.photosChoose"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.buttons["pdf.fromFiles"].exists, "Create PDF supports a separate file source")
+        checkpoint("pdf_create_photos_or_files", app: app)
+        app.buttons["pdf.fromFiles"].tap()
+        let cancel = app.buttons.matching(NSPredicate(format: "label IN {'Abbrechen', 'Cancel'}")).firstMatch
+        XCTAssertTrue(cancel.waitForExistence(timeout: 15), "File creation opens the system multi-file picker")
+        checkpoint("pdf_system_file_picker", app: app)
+        cancel.tap()
+        XCTAssertTrue(app.buttons["pdf.import"].waitForExistence(timeout: 10))
+        app.terminate()
+
+        launch("pdf-studio", language: "de", pdfFiles: true)
+        let preview = app.descendants(matching: .any)["pdf.preview"].firstMatch
+        XCTAssertTrue(preview.waitForExistence(timeout: 15))
+        XCTAssertGreaterThan(preview.frame.height, app.frame.height * 0.3)
+        XCTAssertTrue(app.staticTexts["pdf.pageCount"].label.contains("von 3"))
+        checkpoint("pdf_live_preview_three_pages", app: app)
+        app.buttons["pdf.rotate"].tap()
+        XCTAssertTrue((app.buttons["pdf.page.0"].value as? String ?? "").contains("rotation=90"))
+        app.buttons["pdf.later"].tap()
+        XCTAssertTrue((app.buttons["pdf.page.1"].value as? String ?? "").contains("0:0;rotation=90"))
+        XCTAssertTrue(preview.exists)
+        checkpoint("pdf_rotated_and_reordered_live", app: app)
+        app.buttons["pdf.remove"].tap()
+        XCTAssertTrue(app.staticTexts["pdf.pageCount"].label.contains("von 2"))
+        app.buttons["pdf.save"].tap()
+        XCTAssertTrue(app.buttons["pdf.share"].waitForExistence(timeout: 10))
+        checkpoint("pdf_saved_copy_with_preview", app: app)
+        app.buttons["pdf.rotate"].tap()
+        XCTAssertFalse(app.buttons["pdf.share"].exists, "An edited preview must not share an older saved copy")
+        app.buttons["pdf.remove"].tap()
+        XCTAssertTrue(app.staticTexts["pdf.pageCount"].label.contains("von 1"))
+        XCTAssertFalse(app.buttons["pdf.remove"].isEnabled)
+        for id in ["pdf.rotate", "pdf.remove", "pdf.earlier", "pdf.later"] {
+            XCTAssertGreaterThanOrEqual(app.buttons[id].frame.height, 44)
         }
     }
 

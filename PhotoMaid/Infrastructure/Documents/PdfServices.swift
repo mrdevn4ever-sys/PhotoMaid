@@ -1,9 +1,59 @@
+import ImageIO
 import PDFKit
 import PhotoMaidCore
 import UIKit
 
 enum PdfServices {
-    enum Failure: Error { case noImages, render, write }
+    enum Failure: Error, Equatable { case noImages, render, write, unsupportedFile, tooLarge }
+
+    /// Read provider files while their security scope is open. Coordination materializes
+    /// iCloud items. Return owned PDF bytes, never provider URLs. A failed selection is atomic.
+    static func importedData(from urls: [URL]) throws -> [Data] {
+        guard !urls.isEmpty else { throw Failure.noImages }
+        var total = 0
+        return try urls.map { url in
+            try Task.checkCancellation()
+            let scoped = url.startAccessingSecurityScopedResource()
+            defer { if scoped { url.stopAccessingSecurityScopedResource() } }
+            var coordinationError: NSError?
+            var read: Result<Data, Error>?
+            NSFileCoordinator(filePresenter: nil).coordinate(readingItemAt: url, options: [], error: &coordinationError) { readable in
+                read = Result {
+                    let size = try readable.resourceValues(forKeys: [.fileSizeKey]).fileSize ?? 0
+                    guard size <= 100 * 1_024 * 1_024 else { throw Failure.tooLarge }
+                    return try Data(contentsOf: readable)
+                }
+            }
+            if let coordinationError { throw coordinationError }
+            guard let read else { throw Failure.render }
+            let data = try read.get()
+            total += data.count
+            guard total <= 256 * 1_024 * 1_024 else { throw Failure.tooLarge }
+            return try autoreleasepool { try pdfData(fromFileData: data) }
+        }
+    }
+
+    static func pdfData(fromFileData data: Data) throws -> Data {
+        if let pdf = PDFDocument(data: data), !pdf.isLocked, pdf.pageCount > 0 { return data }
+        guard let source = CGImageSourceCreateWithData(data as CFData, nil),
+              let cg = CGImageSourceCreateThumbnailAtIndex(source, 0, [
+                kCGImageSourceCreateThumbnailFromImageAlways: true,
+                kCGImageSourceCreateThumbnailWithTransform: true,
+                kCGImageSourceThumbnailMaxPixelSize: 2_480,
+                kCGImageSourceShouldCacheImmediately: true,
+              ] as CFDictionary) else { throw Failure.unsupportedFile }
+        // Fit the complete, orientation-correct image on A4. Never stretch or upscale it.
+        let landscape = cg.width > cg.height
+        let paper = CGRect(x: 0, y: 0, width: landscape ? 841.89 : 595.28, height: landscape ? 595.28 : 841.89)
+        let printable = paper.insetBy(dx: 18, dy: 18)
+        let scale = min(1, printable.width / CGFloat(cg.width), printable.height / CGFloat(cg.height))
+        let size = CGSize(width: CGFloat(cg.width) * scale, height: CGFloat(cg.height) * scale)
+        return UIGraphicsPDFRenderer(bounds: paper).pdfData { context in
+            context.beginPage()
+            UIImage(cgImage: cg).draw(in: CGRect(x: paper.midX - size.width / 2, y: paper.midY - size.height / 2,
+                                                width: size.width, height: size.height))
+        }
+    }
 
     /// Durable, user-visible storage: Files → On My iPhone → PhotoMaid → PhotoMaid.
     /// Only generated PDFs live here. Encrypted vault data stays in Application Support.
@@ -56,15 +106,22 @@ enum PdfServices {
         return try saveDocument(pdf)
     }
 
-    static func edited(documents: [PDFDocument], pages: [PdfPageRef]) throws -> URL {
+    /// Preview and export share the exact page plan. Source documents stay immutable.
+    static func composed(documents: [PDFDocument], pages: [PdfPageRef]) throws -> PDFDocument {
         let output = PDFDocument()
         for ref in pages {
             guard documents.indices.contains(ref.document), let source = documents[ref.document].page(at: ref.page),
-                  let copy = source.copy() as? PDFPage else { continue }
+                  let copy = source.copy() as? PDFPage else { throw Failure.render }
             copy.rotation = ref.rotationDegrees(base: source.rotation)
             output.insert(copy, at: output.pageCount)
         }
-        guard output.pageCount > 0, let data = output.dataRepresentation() else { throw Failure.write }
+        guard output.pageCount > 0 else { throw Failure.write }
+        return output
+    }
+
+    static func edited(documents: [PDFDocument], pages: [PdfPageRef]) throws -> URL {
+        let output = try composed(documents: documents, pages: pages)
+        guard let data = output.dataRepresentation() else { throw Failure.write }
         return try saveDocument(data)
     }
 }

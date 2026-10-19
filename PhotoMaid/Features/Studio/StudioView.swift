@@ -94,7 +94,7 @@ struct StudioView: View {
             SectionHeader(title: L("kind_document"))
             RowGroup {
                 Button { app.navigate(.pdfStudio, in: .studio) } label: {
-                    NavRow(symbol: "doc.text", title: L("remodel_pdf_editor"))
+                    NavRow(symbol: "doc.text", title: L("remodel_pdf_editor"), subtitle: L("pdf_editor_subtitle"))
                 }
                 .buttonStyle(FeaturePressStyle())
                 .accessibilityIdentifier("studio.pdfEditor")
