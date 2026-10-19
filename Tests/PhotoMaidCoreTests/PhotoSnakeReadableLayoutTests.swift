@@ -86,15 +86,17 @@ import Testing
             let angle = Double(i) / 180 * .pi
             let extent = layout.headSide * 1.06 / 2 * (abs(cos(angle)) + abs(sin(angle)))
             #expect(extent <= layout.gutter + layout.pitch / 2)
-            // The full atlas canvas, not just its opaque pixels, fits in the reserved gutter.
+            // The full atlas canvas fits, including the short classic-mode wall impact.
             for p in [PhotoSnakeMotion.Point(0, 0), .init(4 * layout.pitch, 8 * layout.pitch)] {
-                let places = PhotoSnakeLayout.placements(p, width: 4 * layout.pitch, height: 8 * layout.pitch,
-                    gutter: layout.gutter, halfExtent: extent, wraps: true, pitch: layout.pitch)
-                for item in places {
-                    #expect(item.centre.x - extent >= -layout.gutter)
-                    #expect(item.centre.y - extent >= -layout.gutter)
-                    #expect(item.centre.x + extent <= 4 * layout.pitch + layout.gutter)
-                    #expect(item.centre.y + extent <= 8 * layout.pitch + layout.gutter)
+                for wraps in [false, true] {
+                    let places = PhotoSnakeLayout.placements(p, width: 4 * layout.pitch, height: 8 * layout.pitch,
+                        gutter: layout.gutter, halfExtent: extent, wraps: wraps, pitch: layout.pitch)
+                    for item in places {
+                        #expect(item.centre.x - extent >= -layout.gutter - 0.00001)
+                        #expect(item.centre.y - extent >= -layout.gutter - 0.00001)
+                        #expect(item.centre.x + extent <= 4 * layout.pitch + layout.gutter + 0.00001)
+                        #expect(item.centre.y + extent <= 8 * layout.pitch + layout.gutter + 0.00001)
+                    }
                 }
             }
         }

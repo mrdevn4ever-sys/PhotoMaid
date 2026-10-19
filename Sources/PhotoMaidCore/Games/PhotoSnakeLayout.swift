@@ -63,8 +63,12 @@ public struct PhotoSnakeLayout: Equatable, Sendable {
     public static func placements(_ p: PhotoSnakeMotion.Point, width: Double, height: Double,
                                   gutter: Double, halfExtent: Double, wraps: Bool,
                                   pitch: Double? = nil) -> [Placement] {
-        guard wraps else { return [Placement(centre: p, alpha: 1)] }
         let inset = max(0, halfExtent - gutter)
+        guard wraps else {
+            // The short wall-impact animation can travel beyond the outer cell centre.
+            return [Placement(centre: .init(max(inset, min(width - inset, p.x)),
+                                           max(inset, min(height - inset, p.y))), alpha: 1)]
+        }
         let band = max(0, pitch.map { $0 / 2 } ?? (gutter - halfExtent - 0.000001))
         guard band > 0 else { return [Placement(centre: p, alpha: 1)] }
         func axis(_ value: Double, period: Double) -> [(Double, Double)] {
