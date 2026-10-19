@@ -115,7 +115,7 @@ final class VideoEditorModel {
         loadState = .ready
         installObserver()
         await rebuild()
-        thumbnails = await VideoSource.thumbnails(av, durationMs: i.durationMs, count: 10, height: 56)
+        thumbnails = await VideoSource.thumbnails(UncheckedBox(av), durationMs: i.durationMs, count: 10, height: 56)
     }
 
     func stop() {
@@ -325,10 +325,11 @@ final class VideoEditorModel {
     func scrub(sourceMs: Int64) {
         pendingScrub = sourceMs
         guard scrubTask == nil, let avAsset else { return }
+        let source = UncheckedBox(avAsset)
         scrubTask = Task { [weak self] in
             while let self, let ms = self.pendingScrub {
                 self.pendingScrub = nil
-                if let cg = await VideoSource.frame(avAsset, sourceMs: ms, maxEdge: 720) {
+                if let cg = await VideoSource.frame(source, sourceMs: ms, maxEdge: 720) {
                     self.scrubImage = UIImage(cgImage: cg.value)
                 }
             }
@@ -369,8 +370,9 @@ final class VideoEditorModel {
         let clipNow = clip
         let plan = built.plan
         let recipe = VideoEdit.recipe(clipNow)
+        let source = UncheckedBox(avAsset)
         Task { [weak self] in
-            guard let cg = await VideoSource.frame(avAsset, sourceMs: src, maxEdge: min(CGFloat(max(info.display.width, info.display.height)), 1280)) else { return }
+            guard let cg = await VideoSource.frame(source, sourceMs: src, maxEdge: min(CGFloat(max(info.display.width, info.display.height)), 1280)) else { return }
             let image = await Task.detached(priority: .userInitiated) { () -> UIImage? in
                 let c = RenderPlan.Clip(clip: clipNow, recipe: recipe, orientation: .up, startMs: 0)
                 let img = FrameComposer.compose(EditRenderer.source(cg.value), clip: c, plan: plan, outMs: t, recipe: recipe,
@@ -421,8 +423,9 @@ final class VideoEditorModel {
     private func renderFilterThumbs() {
         guard let avAsset else { return }
         let src = playheadSourceMs
+        let source = UncheckedBox(avAsset)
         Task { [weak self] in
-            guard let cg = await VideoSource.frame(avAsset, sourceMs: src, maxEdge: 200) else { return }
+            guard let cg = await VideoSource.frame(source, sourceMs: src, maxEdge: 200) else { return }
             let thumbs = await Task.detached(priority: .utility) { () -> [FilterId: UIImage] in
                 let base = EditRenderer.source(cg.value)
                 var out: [FilterId: UIImage] = [:]

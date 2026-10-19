@@ -72,8 +72,7 @@ enum VideoSource {
     }
 
     /// Genaues Bild zur Quellzeit (nicht das nächste Schlüsselbild), richtig gedreht. `maxEdge` nur für Vorschauen.
-    static func frame(_ asset: AVAsset, sourceMs: Int64, maxEdge: CGFloat? = nil,
-                      isolation: isolated (any Actor)? = #isolation) async -> UncheckedBox<CGImage>? {
+    static func frame(_ asset: AVAsset, sourceMs: Int64, maxEdge: CGFloat? = nil) async -> UncheckedBox<CGImage>? {
         let g = AVAssetImageGenerator(asset: asset)
         g.appliesPreferredTrackTransform = true
         if let maxEdge {
@@ -88,9 +87,18 @@ enum VideoSource {
         return UncheckedBox(result.image)
     }
 
+    /// The editor retains a read-only PhotoKit asset on the main actor. Only that immutable
+    /// input crosses executors; each request creates and owns its generator off the main actor.
+    static func frame(_ asset: UncheckedBox<AVAsset>, sourceMs: Int64, maxEdge: CGFloat? = nil) async -> UncheckedBox<CGImage>? {
+        await frame(asset.value, sourceMs: sourceMs, maxEdge: maxEdge)
+    }
+
+    static func thumbnails(_ asset: UncheckedBox<AVAsset>, durationMs: Int64, count: Int, height: CGFloat) async -> [UIImage] {
+        await thumbnails(asset.value, durationMs: durationMs, count: count, height: height)
+    }
+
     /// Kleine Bilder gleichmäßig über die ganze Dauer (Zeitleiste beim Kürzen).
-    static func thumbnails(_ asset: AVAsset, durationMs: Int64, count: Int, height: CGFloat,
-                           isolation: isolated (any Actor)? = #isolation) async -> [UIImage] {
+    static func thumbnails(_ asset: AVAsset, durationMs: Int64, count: Int, height: CGFloat) async -> [UIImage] {
         let g = AVAssetImageGenerator(asset: asset)
         g.appliesPreferredTrackTransform = true
         g.maximumSize = CGSize(width: height * 2, height: height * 2)
