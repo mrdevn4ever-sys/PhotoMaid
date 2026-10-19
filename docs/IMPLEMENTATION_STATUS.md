@@ -1,5 +1,17 @@
 # Implementierungsstatus
 
+## Aktuell: Design-Übernahme auf main und TestFlight 19 (19.10.2026)
+
+**PhotoMaid 1.0 (Build 19) von `main` ist von Apple verarbeitet und intern verteilt.** Upload **07:54:16 UTC**, Verarbeitung und Verteilung **07:59:58 UTC**. [Erfolgreicher TestFlight-Lauf 39218181169](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39218181169), Archiv-Quellstand `f1ccc2b`.
+
+Design aus dem Experiment gezielt auf der vollständigen Funktionsbasis von Build 17 wiederverwendet; kein Experiment-Merge. Farben, Karten, Studio-Anordnung, lesbare Zeilen und Glass-Fallbacks angepasst. 242 geschützte Swift-Fachdateien sowie Foto-/iCloud-Lader, Spiel-/Feed-/Tresor-/Persistenzlogik und Release-Konfiguration gegenüber `a614cdb` bytegleich. Öffnen und Löschen von Entwürfen erhalten. Drei neue UI-Texte in allen 16 Sprachen.
+
+**Native CI PASS:** 475 vom aktuellen Core-Runner gemeldete Tests in 54 Suites, 82 native Unit-Tests (13 XCTest + 69 Swift Testing), je 1/1 erweiterter Workspace-/Studio-UI-Test auf iPhone 17 und breitem iPad-mini-Simulatorfenster, ohne Fehler oder Skips. App-Quellstand `8fc221c`, danach ausschliesslich Dokumentation/Belege. [CI 39214988097](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39214988097). Privacy-Prüfer: 8 Tests PASS; alle drei Manifeste der tatsächlichen signierten IPA PASS. Echte native Aufnahmen geprüft. Kein Nachweis realer Fold-/Unfold-Hardware, privater iCloud-Downloads oder vollständiger Geräte-Sicherheitsabnahme.
+
+[Abschlussbericht, Dateiliste, Quellenbelege und Screenshots](design-reuse-20261019/README.md).
+
+## Historischer Abschluss Build 17
+
 Stand: 19.10.2026 · Arbeitsbranch `feat/iphone-duo-games` · zuletzt von Apple verarbeitet: **Version 1.0, Build 17**.
 Upload am 19.10.2026 um **04:47:52 UTC**, Verarbeitung und interne Verteilung um **04:50:26 UTC** bestätigt.
 [TestFlight-Lauf](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39200627021), Quellstand `575313d`.

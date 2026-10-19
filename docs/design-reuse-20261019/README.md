@@ -28,7 +28,7 @@ Vorhandene Übersetzungen sind unverändert. Drei reine UI-Beschriftungen kommen
 - `PhotoMaid/Resources/ios_strings.json`, `PhotoMaid/Resources/Localizable.xcstrings`, `scripts/i18n/ios_strings_part_visuals.py`: drei UI-Texte in 16 Sprachen.
 - `PhotoMaidUITests/PhotoGameVisualTests.swift`: zusätzliche Dark-Mode-, Aktions-, Touchflächen- und Rücknavigation-Prüfungen im bestehenden Workspace-Test.
 - `PhotoMaidUITests/PhotoMaidUITests.swift`, `PhotoMaidUITests/RealLibraryTests.swift`: bestehende Studio-Tests verwenden die neuen stabilen UI-Kennungen.
-- Diese Dokumentation und Quellenbelege.
+- Diese Dokumentation und Quellenbelege sowie der aktualisierte Einstieg `docs/IMPLEMENTATION_STATUS.md`.
 
 ## Tatsächliche native Ergebnisse
 
@@ -63,4 +63,4 @@ Nach grüner CI wurde GitHub-main ohne Force-Push auf `f1ccc2be1bc097f7249f718ca
 
 [TestFlight-Lauf 39218181169](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39218181169) lief nachweislich auf Branch `main`, Commit `f1ccc2b`. Reguläres Release-Archiv, vorhandene manuelle Signierung und Export bestanden. **Version 1.0, Build 19** wurde am **19.10.2026 um 07:54:16 UTC** hochgeladen; Apple schloss die Verarbeitung um **07:59:58 UTC** ab. Changelog und **Verteilung an interne Tester** wurden anschliessend bestätigt. Keine externe Verteilung oder App-Store-Veröffentlichung.
 
-Die bereits auf identischem App-Code bestandenen Unit-Tests wurden im Uploadlauf über den vorhandenen Parameter `run_tests=false` nicht erneut ausgeführt. Privacy-Prüfer-Tests und die Prüfung der tatsächlichen IPA liefen regulär. Belege: [testflight.json](testflight.json), [Privacy-Bericht der signierten IPA](privacy-manifests.json), vollständige Logs und `testflight-report` im verlinkten Workflow. Nach dem hochgeladenen Commit ändern weitere Abschlussbelege nur diesen Dokumentationsordner.
+Die bereits auf identischem App-Code bestandenen Unit-Tests wurden im Uploadlauf über den vorhandenen Parameter `run_tests=false` nicht erneut ausgeführt. Privacy-Prüfer-Tests und die Prüfung der tatsächlichen IPA liefen regulär. Belege: [testflight.json](testflight.json), [Privacy-Bericht der signierten IPA](privacy-manifests.json), vollständige Logs und `testflight-report` im verlinkten Workflow. Nach dem hochgeladenen Commit ändern weitere Abschlussbelege ausschliesslich die Dokumentation.
