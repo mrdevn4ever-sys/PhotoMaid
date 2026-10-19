@@ -57,7 +57,11 @@ struct PhotoBlocksGameTests {
         let width = cells.map(\.x).max()! + 1, height = cells.map(\.y).max()! + 1
         for x in [0, 9 - width] {
             var game = PhotoBlocksGame(testBoard: blank(), active: .init(shape: shape, origin: .init(x, 17 - height)))
-            for _ in 0..<4 { #expect(game.rotate()); #expect(game.fits(game.active!)) }
+            for _ in 0..<4 {
+                let rotated = game.rotate()
+                #expect(rotated)
+                #expect(game.fits(game.active!))
+            }
             game.hardDrop()
             #expect(game.piecesPlaced == 1)
             #expect(game.board.flatMap { $0 }.compactMap { $0 }.count == 4)
