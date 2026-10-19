@@ -13,7 +13,7 @@ enum ArchiveService {
                                      targetKind: ArchiveTargets.classify(facts),
                                      startedAt: Int64(Date().timeIntervalSince1970 * 1000), options: options)
         for (index, id) in ids.enumerated() {
-            guard let asset = app.asset(id), let ph = PhotoLibraryService.phAsset(id),
+            guard let asset = await app.asset(id), let ph = PhotoLibraryService.phAsset(id),
                   let resource = PHAssetResource.assetResources(for: ph).first else { continue }
             let measured = await app.sizer.size(of: asset)
             let size: Int64?

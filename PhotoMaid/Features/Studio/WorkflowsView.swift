@@ -99,7 +99,7 @@ private struct WorkflowEditor: View {
                 Toggle(L("wf_location"), isOn: $workflow.removeLocation)
                 Picker(L("wf_target"), selection: $workflow.photoMaxBytes) {
                     Text(key: "wf_off").tag(Int64?.none)
-                    ForEach(WorkflowRules.photoTargets, id: \.self) { Text(verbatim: ByteText.format($0)).tag(Int64?.some($0)) }
+                    ForEach(WorkflowRules.photoTargets, id: \.self) { Text(verbatim: SizeText.bytes($0)).tag(Int64?.some($0)) }
                 }
                 Picker(L("wf_finish"), selection: $workflow.finish) {
                     Text(key: "wf_finish_save").tag(WorkflowFinish.save)
