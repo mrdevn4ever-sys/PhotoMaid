@@ -115,8 +115,12 @@ enum PdfServices {
             copy.rotation = ref.rotationDegrees(base: source.rotation)
             output.insert(copy, at: output.pageCount)
         }
-        guard output.pageCount > 0 else { throw Failure.write }
-        return output
+        // PDFPage.copy() retains native backing from its source. A PDFView may still be
+        // rendering the previous plan while the next plan rotates another copy. Reopen
+        // a serialized snapshot so each visible document owns independent CGPDF backing.
+        guard output.pageCount > 0, let data = output.dataRepresentation(),
+              let snapshot = PDFDocument(data: data), snapshot.pageCount == pages.count else { throw Failure.write }
+        return snapshot
     }
 
     static func edited(documents: [PDFDocument], pages: [PdfPageRef]) throws -> URL {

@@ -165,6 +165,36 @@ import XCTest
         XCTAssertThrowsError(try PdfServices.pdfData(fromFileData: Data("not an image".utf8)))
     }
 
+    func testVisibleSnapshotOwnsIndependentNativePDFBacking() throws {
+        let source = try XCTUnwrap(PDFDocument(data: document(["FIRST", "SECOND"])))
+        let first = try PdfServices.composed(documents: [source], pages: PdfEdit.merged(pageCounts: [2]))
+        let second = try PdfServices.composed(documents: [source], pages: [PdfPageRef(document: 0, page: 0, quarterTurns: 1)])
+        let sourceBacking = try XCTUnwrap(source.page(at: 0)?.pageRef?.document)
+        let firstBacking = try XCTUnwrap(first.page(at: 0)?.pageRef?.document)
+        let secondBacking = try XCTUnwrap(second.page(at: 0)?.pageRef?.document)
+        XCTAssertFalse(sourceBacking === firstBacking)
+        XCTAssertFalse(firstBacking === secondBacking)
+        XCTAssertEqual(first.page(at: 0)?.rotation, 0)
+        XCTAssertEqual(second.page(at: 0)?.rotation, 90)
+    }
+
+    func testRenderingPreviousDocumentWhileRepeatedlyRotatingNextSnapshot() throws {
+        let model = PdfEditorModel()
+        try model.append([document(["FIRST", "SECOND"])])
+        let view = PDFView(frame: CGRect(x: 0, y: 0, width: 400, height: 600))
+        view.autoScales = true
+        view.document = model.preview
+        let original = try XCTUnwrap(view.document)
+        for _ in 0..<12 {
+            try model.rotateFocused()
+            view.layoutDocumentView()
+            XCTAssertNotNil(original.page(at: 0)?.thumbnail(of: CGSize(width: 200, height: 280), for: .mediaBox))
+            XCTAssertNotNil(model.preview?.page(at: 0)?.thumbnail(of: CGSize(width: 200, height: 280), for: .mediaBox))
+            XCTAssertEqual(original.page(at: 0)?.rotation, 0)
+        }
+        XCTAssertEqual(model.preview?.page(at: 0)?.rotation, 0)
+    }
+
     func testOversizedFilesAreRejectedBeforeReadingIntoMemory() throws {
         let url = try directory().appendingPathComponent("oversized.pdf")
         FileManager.default.createFile(atPath: url.path, contents: Data())

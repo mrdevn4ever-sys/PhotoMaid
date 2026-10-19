@@ -80,6 +80,13 @@ run_device() {
     [ ! -f "$diagnostic" ] || cp "$diagnostic" "$out/$name-diagnostics/"
   done
   xcrun xcresulttool export attachments --path "$out/$name.xcresult" --output-path "$out/$name-attachments" || true
+  # Preserve native crash reports before removing the result bundle, including the
+  # simulator-side reports that are not in the host's ~/Library/Logs directory.
+  if [ "$status" != 0 ]; then
+    xcrun xcresulttool export diagnostics --path "$out/$name.xcresult" --output-path "$out/$name-diagnostics" || true
+    find "$HOME/Library/Developer/CoreSimulator/Devices/$udid/data/Library/Logs" \
+      -type f -name 'PhotoMaid*.ips' -exec cp {} "$out/$name-diagnostics/" \; 2>/dev/null || true
+  fi
   xcrun xcresulttool get test-results summary --path "$out/$name.xcresult" > "$out/$name-summary.json" || true
   rm -rf "$out/$name.xcresult"
   xcrun simctl shutdown "$udid" || true
