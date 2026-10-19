@@ -339,6 +339,7 @@ docs/photo-blocks-20261018/snake-baseline.json
 docs/photo-blocks-20261018/static-engine-review.png
 docs/photo-blocks-20261018/static-review-provenance.json
 docs/photo-blocks-20261018/testflight/README.md
+docs/photo-blocks-20261018/testflight/build/privacy-manifests.json
 docs/photo-blocks-20261018/testflight/ci-report.md
 docs/photo-blocks-20261018/testflight/fastlane/report.xml
 docs/photo-blocks-20261018/testflight/gym.log
