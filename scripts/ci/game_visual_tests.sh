@@ -97,15 +97,19 @@ run_device() {
 if [ "$phase" != expanded-window ]; then run_device "$phone" iphone; fi
 if [ "$phase" = iphone ]; then test "$(cat "$out/iphone.exit")" = 0; exit; fi
 # Use an actual Duo profile whenever the selected Xcode provides one, otherwise an explicit generic wide-window check.
-wide=$(python3 - <<'PY'
-import json,subprocess
+wide=$(python3 - "$phone" <<'PY'
+import json,subprocess,sys
 r=json.loads(subprocess.check_output(['xcrun','simctl','list','devices','available','-j']))['devices']
-for runtime,devices in r.items():
-    if 'iOS' not in runtime: continue
-    duo=next((d for d in devices if 'Duo' in d['name']),None)
-    pad=next((d for d in devices if 'iPad mini' in d['name']),None)
-    if duo or pad:
-        print((duo or pad)['udid']);break
+preferred=next((runtime for runtime,devices in r.items() if any(d['udid']==sys.argv[1] for d in devices)),None)
+# Reuse the warmed, explicitly selected iPhone runtime for the wide fallback.
+# An unordered runtime dictionary previously picked a different cold OS image.
+ordered=sorted(r.items(),key=lambda pair: pair[0]!=preferred)
+for wanted in ['Duo','iPad mini']:
+    for runtime,devices in ordered:
+        if 'iOS' not in runtime: continue
+        device=next((d for d in devices if wanted in d['name']),None)
+        if device:
+            print(device['udid']);sys.exit(0)
 PY
 )
 if [ -z "$wide" ]; then

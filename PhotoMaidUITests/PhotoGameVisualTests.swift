@@ -457,7 +457,17 @@ import XCTest
         XCTAssertTrue(app.staticTexts["pdf.pageCount"].label.contains("von 2"))
         XCTAssertTrue((app.buttons["pdf.page.0"].value as? String ?? "").contains("0:1;"))
         XCTAssertTrue((app.buttons["pdf.page.1"].value as? String ?? "").contains("1:0;"))
-        app.buttons["pdf.save"].tap()
+        // The native iPad tab/navigation bar can move trailing actions into More.
+        // Exercise that real adaptive entry point rather than requiring a phone toolbar.
+        let save = app.buttons["pdf.save"]
+        if !save.exists || !save.isHittable {
+            let overflow = app.buttons["OverflowBarButtonItem"]
+            XCTAssertTrue(overflow.waitForExistence(timeout: 5))
+            overflow.tap()
+        }
+        let visibleSave = save.exists ? save : app.buttons["Als PDF speichern"]
+        XCTAssertTrue(visibleSave.waitForExistence(timeout: 5))
+        visibleSave.tap()
         XCTAssertTrue(app.buttons["pdf.share"].waitForExistence(timeout: 10))
         checkpoint("pdf_saved_copy_with_preview", app: app)
         app.buttons["pdf.rotate"].tap()
