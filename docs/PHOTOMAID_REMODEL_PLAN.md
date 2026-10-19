@@ -5,7 +5,7 @@
 - Isolierter Klon des echten Repositorys `https://github.com/mrdevn4ever-sys/PhotoMaid`, main-Snapshot `ca6f81850a0a4032bbf8093f241f99a7584ab4c6`.
 - Nur `experiment/photomaid-liquid-glass-remodel`; kein Push, PR, Merge, CI, Signing oder TestFlight. Die drei vorhandenen Windows-Checkouts bleiben unverändert.
 - `CLAUDE.md` und E1–E15 gelten. iOS26+, Swift6/Observation, 16 Sprachen, feste Gesten, keine automatischen Löschungen/Uploads/Abos.
-- Main enthält keinen verschlüsselten Tresor. Separater Vault-Branch wird nur gelesen; kein kryptografischer Eingriff und keine implizite Feature-Migration.
+- **Erweiterung durch Betreiberkorrektur „Tresor muss drauf“:** Der bestehende Tresor aus `claude/fixes-analysis-library-vault-20261014` (`de90f1d67c2dbe753f5da6c012ae6feb9172b277`) wird mit vollständigen Isolationsabhängigkeiten gezielt integriert. Kryptografie und vorhandene Formate bleiben erhalten; Werbung, neue Produktregeln, CI und Store-Assets werden nicht übernommen. Fehler bei der Verbergen-Liste müssen öffentliche Zugriffe sperren statt private Originale freizugeben.
 
 ## Gestaltungsrichtung
 
@@ -20,6 +20,13 @@ Native Medien-App mit ruhigen, deckenden Inhaltsflächen und zurückhaltendem Sy
 5. **P1 — Privatsphäre/Asynchronität:** Hintergrundschutz auch auf Vollbild-Medien; keine veralteten Thumbnail-Updates nach Wiederverwendung. Keine Persistenzschema-/StoreKit-Regeländerung.
 6. **P2 — Prüfen:** ausführbare Windows-Quellen-/Katalog-/Projekt-/Erhaltungschecks sowie Syntaxparser; unabhängiger Review der Änderungen. Native Swift-/iOS-/Simulator-/Instruments-Abnahme explizit NOT RUN, sofern Werkzeuge fehlen. Kein Screenshot als angeblicher nativer Beweis aus HTML.
 7. **Abschluss:** kleine lokale Commits, exakte Datei-/Testliste, verbleibende Risiken und macOS-Abnahmeschritte in RESULTS. Kein Produktionsreifeversprechen.
+
+## Lieferstand
+
+- P0 Audit/Skills/Isolation, P1 Design/Navigation/Feed/Privacy und ausdrücklich verlangte Tresor-Quellintegration umgesetzt; lokale Implementierungscommits bis 17b15879c8d4d294e089a803c524eb11e49e13a1.
+- P2 Windows-Prüfungen und unabhängiger Review ausgeführt: 26 Remodel- und 10 Vault-Quellenverträge PASS; Katalog 16 Sprachen; 186 Swift-Dateien ohne neue Parserbefunde. Kein nativer Runtime-Nachweis.
+- Abschlussdokumentation und Dateiinventar in PHOTOMAID_REMODEL_RESULTS.md. Verifizierter iOS-Build, native Tests, visuelle Geräteabnahme und kritische Datenoperationen bleiben wegen fehlender Apple-Toolchain BLOCKED / NICHT VERIFIZIERT. Keine Produktionsfreigabe.
+- Weitere Altprobleme wie Analyse-Cache/OS-Backup und Editor-Löschjournal sind offen dokumentiert, nicht durch riskante Migrationen oder Produktregeländerungen kaschiert.
 
 ## Akzeptanzkriterien
 
