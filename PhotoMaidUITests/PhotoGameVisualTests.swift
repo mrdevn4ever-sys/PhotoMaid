@@ -446,6 +446,8 @@ import XCTest
         checkpoint("pdf_live_preview_three_pages", app: app)
         app.buttons["pdf.rotate"].tap()
         XCTAssertTrue((app.buttons["pdf.page.0"].value as? String ?? "").contains("rotation=90"))
+        XCTAssertEqual(app.staticTexts["pdf.pageCount"].label, "Seite 1 von 3", "Rotation must keep the edited page selected")
+        checkpoint("pdf_rotated_page_remains_selected", app: app)
         app.buttons["pdf.later"].tap()
         XCTAssertTrue((app.buttons["pdf.page.1"].value as? String ?? "").contains("0:0;rotation=90"))
         XCTAssertEqual(app.staticTexts["pdf.pageCount"].label, "Seite 2 von 3", "The visible page follows the moved page identity")

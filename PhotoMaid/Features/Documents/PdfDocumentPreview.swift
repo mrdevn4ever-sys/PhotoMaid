@@ -13,8 +13,11 @@ struct PdfDocumentPreview: UIViewRepresentable {
     func makeUIView(context: Context) -> PDFView {
         let view = PdfFittingView()
         view.autoScales = true
-        view.displayMode = .singlePageContinuous
-        view.displayDirection = .vertical
+        // Editing targets one explicit page. A continuous layout may report the next
+        // portrait page as current after the selected page rotates to landscape.
+        view.displayMode = .singlePage
+        view.displayDirection = .horizontal
+        view.usePageViewController(true, withViewOptions: nil)
         view.backgroundColor = .secondarySystemBackground
         view.accessibilityIdentifier = "pdf.preview"
         context.coordinator.observe(view)
