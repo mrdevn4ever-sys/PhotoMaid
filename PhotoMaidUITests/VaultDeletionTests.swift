@@ -260,6 +260,24 @@ final class VaultDeletionTests: XCTestCase {
         XCTAssertEqual(items("media").count, before.count + 1, "The edited copy is a new vault item next to the original")
     }
 
+    /// Videos im Tresor zusammenfügen: neues Video im Tresor, die Quellen bleiben.
+    func test14MergeVideosInsideVault() {
+        let before = items("media")
+        let videos = Array(before.filter { $0.label.hasPrefix("Video") }.prefix(2))
+        XCTAssertEqual(videos.count, 2, "Two vault videos from test10 are needed")
+        tap(select("media"), "merge_select")
+        for (index, video) in videos.enumerated() { tap(video, "merge_selected_\(index)") }
+        tap(app.buttons["vault.media.merge"], "merge_open")
+        let save = app.buttons["vault.merge.save"]
+        XCTAssertTrue(save.waitForExistence(timeout: 15))
+        XCTAssertTrue(save.isEnabled, "Two videos are enough for a film")
+        tap(save, "merge_saved")
+        XCTAssertTrue(app.alerts.buttons["OK"].waitForExistence(timeout: 120), "Saved notice after the export")
+        tap(app.alerts.buttons["OK"], "merge_notice")
+        XCTAssertEqual(items("media").count, before.count + 1, "The film is a new vault item; both sources stay")
+        for video in videos { XCTAssertTrue(app.buttons[video.identifier].exists) }
+    }
+
     func test20NotesSwipeAndSelection() {
         tap(app.segmentedControls.buttons["Notizen"], "notes_tab")
         for i in 1...3 {

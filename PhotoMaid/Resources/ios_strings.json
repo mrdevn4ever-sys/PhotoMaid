@@ -16650,5 +16650,23 @@
   "tr": "Her zaman başlangıç sayfasında",
   "uk": "Завжди на початковій сторінці",
   "zh-Hans": "始终显示在首页"
+ },
+ "vault_merge_save": {
+  "ar": "حفظ في الخزنة",
+  "de": "Im Tresor speichern",
+  "en": "Save in vault",
+  "es": "Guardar en la caja fuerte",
+  "fr": "Enregistrer dans le coffre",
+  "it": "Salva nella cassaforte",
+  "ja": "保管庫に保存",
+  "ko": "금고에 저장",
+  "nl": "Opslaan in kluis",
+  "pl": "Zapisz w sejfie",
+  "pt-PT": "Guardar no cofre",
+  "ro": "Salvează în seif",
+  "ru": "Сохранить в сейфе",
+  "tr": "Kasaya kaydet",
+  "uk": "Зберегти в сейфі",
+  "zh-Hans": "存入保险箱"
  }
 }

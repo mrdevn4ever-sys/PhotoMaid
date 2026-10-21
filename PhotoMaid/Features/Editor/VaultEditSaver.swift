@@ -47,6 +47,26 @@ enum VaultEditSaver {
                                               replace: mode == .replace, unlimited: unlimited)
     }
 
+    /// Videos aus dem Tresor zu einem Film zusammenfügen (gleicher Export wie „Video zusammenfügen“ im Studio). Das
+    /// Ergebnis liegt im Ordner des ersten Clips, ohne Standort; die Quellen bleiben unverändert.
+    static func saveMovie(project: VideoProject, assets: [String: AVAsset], infos: [String: VideoInfo], frame: VSize,
+                          basedOn firstID: String, unlimited: Bool) async throws -> VaultEditResult {
+        let vault = VaultStore.shared
+        let folder = try vault.editTempFolder()
+        defer { try? FileManager.default.removeItem(at: folder) }
+        vault.editWork += 1
+        defer { vault.editWork -= 1 }
+        let boxedAssets = UncheckedBox(assets)
+        let url = try await ExportCoordinator.shared.run(title: L("movie_running")) { progress in
+            try await VideoExportJob.renderMovie(project: project, assets: boxedAssets.value, infos: infos, frame: frame,
+                                                 fps: 30, musicURL: nil, allowNetwork: false, folder: folder,
+                                                 baseName: "PhotoMaid", progress: progress)
+        }
+        return try await vault.addEditedMedia(.file(url), video: true, uti: UTType.videoIdentifier(for: url),
+                                              filename: url.lastPathComponent, basedOn: firstID, removeLocation: true,
+                                              replace: false, unlimited: unlimited)
+    }
+
     /// Standbild zur Quellzeit als neues Foto im Tresor (Aufnahmezeit = Video + Zeitpunkt).
     static func saveFrame(itemID: String, sourceName: String?, avAsset: AVAsset, info: VideoInfo, project: VideoProject,
                           sourceMs: Int64, unlimited: Bool) async throws -> VaultEditResult {

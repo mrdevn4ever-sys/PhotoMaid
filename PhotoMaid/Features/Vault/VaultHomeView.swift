@@ -27,6 +27,8 @@ struct VaultHomeView: View {
     @State private var share: VaultShare?
     @State private var viewer: VaultViewerRequest?
     @State private var notice: String?
+    /// Videos zusammenfügen (Ergebnis bleibt im Tresor).
+    @State private var merging: VaultMergeRequest?
 
     private var sort: VaultSort { vault.settings?.sort ?? .captured }
     private var items: [VaultItem] { sort.sorted(vault.index.items(inFolder: folderID)) }
@@ -78,6 +80,15 @@ struct VaultHomeView: View {
             }
             .fullScreenCover(item: $viewer) { request in
                 VaultViewer(ids: request.ids, start: request.index)
+            }
+            .fullScreenCover(item: $merging, onDismiss: {
+                guard vault.lastEdit != nil else { return }
+                vault.lastEdit = nil
+                selection = []
+                selecting = false
+                notice = L("vault_edit_saved")
+            }) { request in
+                VaultMovieView(itemIDs: request.ids).environment(app)
             }
             .alert(L("vault_import_confirm_title", pendingImport.count), isPresented: $confirmImport) {
                 if pendingCopies.isEmpty {
@@ -299,7 +310,12 @@ struct VaultHomeView: View {
     private var selectionBar: some View {
         HStack(spacing: AppSpacing.xs) {
             Text(verbatim: LP("grid_selected", selection.count)).font(AppTypography.subheadline.weight(.semibold))
+                .lineLimit(1).minimumScaleFactor(0.7)
             Spacer()
+            if selectedVideos.count >= 2 {
+                barButton("film.stack", "movie_title") { merging = VaultMergeRequest(ids: selectedVideos) }
+                    .accessibilityIdentifier("vault.media.merge")
+            }
             barButton("folder", "vault_move") { moveSheet = true }
             barButton("square.and.arrow.up", "share") { Task { await shareSelection() } }
             barButton("photo.badge.arrow.down", "vault_restore") { confirmRestore = true }
@@ -312,6 +328,9 @@ struct VaultHomeView: View {
         .padding(.horizontal, AppSpacing.pageMargin)
         .padding(.bottom, AppSpacing.s)
     }
+
+    /// Ausgewählte Videos in Rasterreihenfolge (für „Zusammenfügen“).
+    private var selectedVideos: [String] { items.filter { $0.isVideo && selection.contains($0.id) }.map(\.id) }
 
     private func barButton(_ symbol: String, _ key: String, tint: Color = AppColors.accent, action: @escaping () -> Void) -> some View {
         Button(action: action) {

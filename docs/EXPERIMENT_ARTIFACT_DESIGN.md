@@ -79,7 +79,12 @@ Woche**; alles andere aus dem Plan umsetzen.
   keine Toasts außerhalb, keine Caches auf der Platte; Klartext (Video-Quelle, Export) nur in der Temp-Ablage der
   Sitzung, sofort danach gelöscht, spätestens beim Sperren. Sperren schließt den Editor; ein Export zählt als
   Bedienung (keine Inaktivitätssperre mittendrin).
-- Tests: `VaultEditTests` (Linux), UI-Test `test13EditPhotoInsideVaultStaysInVault`.
+- Tempo (langsamer/schneller), Schnitt, Farbe, Text, Ton und Format: Werkzeuge des Video-Editors, im Tresor über
+  „Bearbeiten“. **Videos zusammenfügen** (Nutzer, 21.10.2026): im Raster mindestens zwei Videos auswählen →
+  „Video zusammenfügen“ (`VaultMovieView`): Reihenfolge, Schwarzblende, Format, Qualität; derselbe Film-Export wie im
+  Studio (`VideoExportJob.renderMovie`), Ergebnis nur im Tresor (Ordner des ersten Clips, ohne Standort), Quellen
+  bleiben. Keine Musik aus „Dateien“ im Tresor (bewusst schlank gehalten).
+- Tests: `VaultEditTests` (Linux), UI-Tests `test13EditPhotoInsideVaultStaysInVault`, `test14MergeVideosInsideVault`.
 
 ## Regeln unverändert
 
