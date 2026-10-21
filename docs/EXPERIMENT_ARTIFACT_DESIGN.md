@@ -43,7 +43,8 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
 
 - `swift test` (PhotoMaidCore, Linux): PASS
 - `android_strings_to_xcstrings.py --check`: PASS
-- Xcode-Build und Unit-Tests: PASS (CI-Lauf 39584295498; TestFlight-Lauf 39586915037)
+- Xcode-Build und Unit-Tests: PASS (CI-Lauf 39584295498; TestFlight-Läufe 39586915037, 39591723238)
 - UI-Tests: noch offen (CI-Lauf 39584295498 läuft)
-- TestFlight: interner Build 1.0 (21) hochgeladen und von Apple verarbeitet (21.10.2026, nur interne Tester)
+- TestFlight: interner Build 1.0 (21) und 1.0 (22) hochgeladen und von Apple verarbeitet (21.10.2026, nur interne
+  Tester); 22 mit Begrüßung nach Tageszeit, festem Kopf, Tableisten-Korrektur und Verlauf (10 neueste, Rest aufklappbar)
 - Geräteabnahme: NOT RUN
