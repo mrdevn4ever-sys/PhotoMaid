@@ -43,6 +43,17 @@
 	</dict>
 	<key>UIFileSharingEnabled</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>PMText-Regular.ttf</string>
+		<string>PMText-Medium.ttf</string>
+		<string>PMText-SemiBold.ttf</string>
+		<string>PMText-Bold.ttf</string>
+		<string>PMDisplay-SemiBold.ttf</string>
+		<string>PMDisplay-Bold.ttf</string>
+		<string>PMDisplay-ExtraBold.ttf</string>
+		<string>PMDisplayXL-ExtraBold.ttf</string>
+	</array>
 	<key>UILaunchScreen</key>
 	<dict/>
 	<key>UISupportedInterfaceOrientations</key>

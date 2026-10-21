@@ -78,14 +78,16 @@ struct DirectionPill: View {
 
     var body: some View {
         if let direction, let action, action.isDecision {
+            // Artefakt: deckende Pille in der Aktionsfarbe, dunkle Schrift 15/700.
             HStack(spacing: 6) {
                 GestureArrow(direction: direction)
-                Text(verbatim: FeedActionText.title(action)).font(AppTypography.footnote.weight(.semibold)).lineLimit(1)
+                Text(verbatim: FeedActionText.title(action)).lineLimit(1)
             }
-            .foregroundStyle(FeedActionText.color(action))
-            .padding(.horizontal, AppSpacing.s)
-            .padding(.vertical, 6)
-            .glassCapsule()
+            .font(PMFont.text(.bold, 15, relativeTo: .subheadline))
+            .foregroundStyle(AppColors.background)
+            .padding(.horizontal, 14)
+            .padding(.vertical, 8)
+            .background(FeedActionText.color(action), in: .rect(cornerRadius: 14))
             .opacity(ready ? 1 : 0.8)
             .accessibilityHidden(true)
             .transition(.opacity)
@@ -143,18 +145,25 @@ struct LaterPillView: View {
     let edit: () -> Void
 
     var body: some View {
-        HStack(spacing: AppSpacing.s) {
-            Image(systemName: "clock").foregroundStyle(AppColors.later).accessibilityHidden(true)
+        // Artefakt: violette Kapsel, Text 14/600, „Ändern“ als gefüllter Knopf.
+        HStack(spacing: 4) {
             Text(verbatim: LaterText.inInterval(pill.interval))
-                .font(AppTypography.subheadline).foregroundStyle(AppColors.textPrimary)
+                .font(PMFont.text(.semibold, 14, relativeTo: .subheadline)).foregroundStyle(AppColors.textPrimary)
+                .padding(.leading, 12)
             Button(action: edit) {
-                Text(key: "change").font(AppTypography.subheadline.weight(.semibold)).foregroundStyle(AppColors.accent)
+                Text(key: "change").font(PMFont.text(.bold, 14, relativeTo: .subheadline)).foregroundStyle(AppColors.onLater)
+                    .padding(.horizontal, 14)
+                    .frame(height: 36)
+                    .background(AppColors.later, in: .capsule)
                     .frame(minHeight: AppSpacing.minTouch)
+                    .contentShape(.rect)
             }
             .buttonStyle(.plain)
         }
-        .padding(.horizontal, AppSpacing.m)
-        .glassCapsule(interactive: true)
+        .padding(.leading, 4).padding(.trailing, 4)
+        .background(AppColors.tileLater, in: .capsule)
+        .overlay(Capsule().strokeBorder(AppColors.hex(0x3D3460), lineWidth: 1))
+        .shadow(color: .black.opacity(0.5), radius: 15, y: 12)
         .accessibilityElement(children: .combine)
         .accessibilityAction(named: Text(key: "change_date"), edit)
         .accessibilityIdentifier("later.pill")
@@ -207,30 +216,59 @@ struct DecisionButtons: View {
     let act: (FeedAction) -> Void
 
     var body: some View {
-        GlassEffectContainer(spacing: AppSpacing.xs) {
-            HStack(spacing: AppSpacing.xs) {
-                ForEach(controls.buttons, id: \.self) { action in button(action) }
-            }
+        HStack(spacing: 22) {
+            ForEach(controls.buttons, id: \.self) { action in button(action) }
         }
+        .frame(maxWidth: .infinity)
         .environment(\.layoutDirection, .leftToRight)
     }
 
     /// Liegt die Aktion auf einer Wischrichtung, zeigt die Taste deren Pfeil (physische Richtung, nie gespiegelt),
     /// sonst ein eigenes Symbol.
     private func button(_ action: FeedAction) -> some View {
-        Button { act(action) } label: {
+        let keep = action == .keep
+        let color = FeedActionText.color(action)
+        let side: CGFloat = keep ? 80 : 64
+        return Button { act(action) } label: {
             Group {
-                if let d = controls.direction(of: action) {
-                    GestureArrow(direction: d)
-                } else {
-                    Image(systemName: FeedActionText.symbol(action)).accessibilityHidden(true)
+                switch action {
+                case .keep: PMIcon(.check, size: 32, lineWidth: 2.6)
+                case .trash: PMIcon(.trash, size: 26)
+                case .later: PMIcon(.clock, size: 26)
+                default:
+                    if let d = controls.direction(of: action) { GestureArrow(direction: d).font(.title2.weight(.semibold)) }
+                    else { Image(systemName: FeedActionText.symbol(action)).font(.title2.weight(.semibold)) }
                 }
             }
-            .foregroundStyle(FeedActionText.color(action))
-            .frame(maxWidth: .infinity, minHeight: AppSpacing.touch)
+            .foregroundStyle(keep ? AppColors.onKeep : color)
+            .frame(width: side, height: side)
+            .background(keep ? color : PMTile.background(for: color).opacity(0.9), in: .circle)
+            .overlay(Circle().strokeBorder(keep ? Color.clear : color.opacity(0.35), lineWidth: 1.5))
+            .shadow(color: keep ? color.opacity(0.25) : .clear, radius: 15, y: 10)
+            .contentShape(.circle)
         }
-        .buttonStyle(.glass)
+        .buttonStyle(PMPressStyle())
         .accessibilityLabel(Text(verbatim: FeedActionText.accessibility(action)))
+    }
+}
+
+/// Legende unter dem Feed (Artefakt): „↑ Behalten · ← Papierkorb · → Später · ↓ Zurück“ – nach eigener Belegung.
+struct FeedGestureLegend: View {
+    let controls: FeedControls
+
+    var body: some View {
+        let parts: [(String, SwipeDirection)] = [("↑", .up), ("←", .left), ("→", .right), ("↓", .down)]
+        let text = parts.compactMap { part -> String? in
+            let a = controls.action(for: part.1)
+            if case .nothing = a { return nil }
+            return part.0 + " " + FeedActionText.title(a)
+        }.joined(separator: " · ")
+        Text(verbatim: text)
+            .font(PMFont.text(.regular, 12, relativeTo: .caption))
+            .foregroundStyle(AppColors.textTertiary)
+            .lineLimit(1).minimumScaleFactor(0.75)
+            .environment(\.layoutDirection, .leftToRight)
+            .accessibilityHidden(true)
     }
 }
 
@@ -257,7 +295,7 @@ struct MediaInfoLine: View {
                 Image(systemName: "heart.fill").font(.caption).foregroundStyle(AppColors.cleanup).accessibilityHidden(true)
             }
             Text(verbatim: Self.describe(asset))
-                .font(AppTypography.footnote)
+                .font(PMFont.text(.regular, 14, relativeTo: .footnote))
                 .foregroundStyle(AppColors.textSecondary)
                 .lineLimit(1)
             Spacer(minLength: 0)

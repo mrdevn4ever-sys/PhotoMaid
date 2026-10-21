@@ -1,40 +1,58 @@
 import SwiftUI
 import UIKit
 
-/// Native, ruhige Flächen mit zurückhaltendem Blau; Dunkel und hoher Kontrast sind eigens abgestimmt.
-/// Glas kommt ausschließlich von Liquid Glass (`glassEffect`, `.glass`-Buttonstile) – nie aus diesen Farben.
+/// Experiment-Design (Artefakt „PhotoMaid – komplette App“, 21.10.2026): warmes Dunkel, Bernstein-Akzent, immer
+/// dunkel. Werte 1:1 aus dem Artefakt; Text auf Akzentflächen ist dunkel (`onAccent`), nie weiß.
 enum AppColors {
-    static let background = dynamic(0xF5F7FA, 0x101318, hcLight: 0xFFFFFF, hcDark: 0x000000)
-    static let backgroundTint = dynamic(0xEDF2F8, 0x151B24, hcLight: 0xF0F3F8, hcDark: 0x080D14)
-    /// Deckende Inhalte bleiben von der gläsernen Navigation getrennt.
-    static let surface = dynamic(0xFFFFFF, 0x1D242E, hcLight: 0xFFFFFF, hcDark: 0x141A22)
-    static let surfaceStroke = dynamic(0xDEE5EF, 0x354253, hcLight: 0x77869A, hcDark: 0x8798AF)
-    static let textPrimary = dynamic(0x172334, 0xF2F5FA, hcLight: 0x000000, hcDark: 0xFFFFFF)
-    static let textSecondary = dynamic(0x536278, 0xB5C2D3, hcLight: 0x344359, hcDark: 0xDEE7F4)
-    /// Akzent für Text/Symbole (AA ≥ 4,5 : 1).
-    static let accent = dynamic(0x0064D2, 0x4DA3FF, hcLight: 0x0050A8, hcDark: 0x7ABCFF)
-    /// Akzent als Fläche mit weißer Schrift.
-    static let accentFill = dynamic(0x0071E3, 0x0064C9, hcLight: 0x0058B0, hcDark: 0x0058B0)
-    static let keep = Color(uiColor: .systemBlue)
-    static let cleanup = dynamic(0xD70015, 0xFF453A, hcLight: 0xB00012, hcDark: 0xFF6961)
-    static let later = dynamic(0x00758A, 0x40C8E0, hcLight: 0x005B70, hcDark: 0x70D7EA)
-    static let warning = Color(uiColor: .systemOrange)
-    static let success = dynamic(0x248A3D, 0x30D158, hcLight: 0x1B6E30, hcDark: 0x5BE07A)
-    static let indigo = accent
-    /// Warmer Markenton (Sand/Latte) für Einführung, Hero und Illustrationen – nie für Text.
-    static let warm = dynamic(0xEFE7DA, 0x2B2622, hcLight: 0xE9DFCF, hcDark: 0x332C27)
-    static let warmStrong = dynamic(0xDCC9AB, 0x54473A, hcLight: 0xCDB894, hcDark: 0x66574A)
-    static let amber = dynamic(0xB86A00, 0xF0B53C, hcLight: 0x8F5200, hcDark: 0xFFC857)
+    static let background = hex(0x0F0E0D)
+    static let backgroundTint = hex(0x1B1917)
+    /// Deckende Inhalte (Karten, Zeilengruppen).
+    static let surface = hex(0x1B1917)
+    static let surfaceStroke = hex(0x2A2623)
+    /// Rand runder Knöpfe, Chips und der Tableiste.
+    static let control = hex(0x2F2B28)
+    /// Gestrichelte Leerflächen.
+    static let dashed = hex(0x3A3531)
+    static let textPrimary = hex(0xF4EFE8)
+    static let textSecondary = hex(0xA89F94)
+    static let textTertiary = hex(0x8E857B)
+    /// Akzent für Text/Symbole.
+    static let accent = hex(0xF2B24C)
+    /// Akzent als Fläche – Schrift darauf `onAccent`.
+    static let accentFill = hex(0xF2B24C)
+    static let onAccent = hex(0x1A1208)
+    static let keep = hex(0x7CC8FF)
+    static let onKeep = hex(0x06202F)
+    static let cleanup = hex(0xFF7A50)
+    static let cleanupFill = hex(0xFF6A3D)
+    static let onCleanup = hex(0x1A0B05)
+    static let later = hex(0xC4B5FD)
+    static let onLater = hex(0x1A1430)
+    static let warning = hex(0xF2B24C)
+    static let success = hex(0x8FD9A8)
+    static let indigo = later
+    /// Warmer Markenton für Kacheln und Illustrationen – nie für Text.
+    static let warm = hex(0x2A2418)
+    static let warmStrong = hex(0x3A3022)
+    static let amber = hex(0xF2B24C)
     /// Editor und Medien-Bühnen sind immer dunkel (wie die Fotos-App).
     static let stage = Color.black
 
-    private static func dynamic(_ light: UInt32, _ dark: UInt32, hcLight: UInt32, hcDark: UInt32) -> Color {
-        Color(uiColor: UIColor { t in
-            let isDark = t.userInterfaceStyle == .dark
-            let hc = t.accessibilityContrast == .high
-            return UIColor(hex: isDark ? (hc ? hcDark : dark) : (hc ? hcLight : light))
-        })
-    }
+    // Symbolkacheln (40 × 40) der Zeilen und Karten.
+    static let tileAmber = hex(0x2A2418)
+    static let tileCleanup = hex(0x33201A)
+    static let tileLater = hex(0x262236)
+    static let tileKeep = hex(0x1C2A33)
+    static let tileGreen = hex(0x1C2A22)
+
+    // „Kurze Pause“ (Spiele): violetter Grund.
+    static let pauseGround = hex(0x13111C)
+    static let pauseSurface = hex(0x1E1A2B)
+    static let pauseStroke = hex(0x2E2842)
+    static let pauseText = hex(0xB4A9CC)
+    static let pauseMuted = hex(0x8F86A6)
+
+    static func hex(_ value: UInt32, alpha: CGFloat = 1) -> Color { Color(uiColor: UIColor(hex: value, alpha: alpha)) }
 }
 
 extension UIColor {
@@ -44,20 +62,72 @@ extension UIColor {
     }
 }
 
-/// Systemschrift, Dynamic Type. Keine festen Punktgrößen für Fließtext.
+/// Schriften des Artefakts (OFL, statische Instanzen unter `Resources/Fonts`): Figtree für Text (`PMText`),
+/// Bricolage Grotesque für Titel und Zahlen (`PMDisplay`, große Zähler `PMDisplayXL`). Größen = Artefakt bei
+/// Standard-Textgröße; Dynamic Type skaliert über `relativeTo`.
+enum PMFont {
+    enum Weight { case regular, medium, semibold, bold }
+
+    static func text(_ weight: Weight, _ size: CGFloat, relativeTo style: Font.TextStyle = .body) -> Font {
+        let name = switch weight {
+        case .regular: "PMText-Regular"
+        case .medium: "PMText-Medium"
+        case .semibold: "PMText-SemiBold"
+        case .bold: "PMText-Bold"
+        }
+        return .custom(name, size: size, relativeTo: style)
+    }
+
+    /// Bricolage 800 (Seitentitel 40, Zähler 58).
+    static func display(_ size: CGFloat, relativeTo style: Font.TextStyle = .largeTitle) -> Font {
+        .custom(size >= 44 ? "PMDisplayXL-ExtraBold" : "PMDisplay-ExtraBold", size: size, relativeTo: style)
+    }
+
+    /// Bricolage 700 (Abschnitte, Kartentitel, Kennzahlen).
+    static func heading(_ size: CGFloat, relativeTo style: Font.TextStyle = .title2) -> Font {
+        .custom("PMDisplay-Bold", size: size, relativeTo: style)
+    }
+
+    /// Bricolage 600 (Ziffernfeld).
+    static func keypad(_ size: CGFloat) -> Font { .custom("PMDisplay-SemiBold", size: size, relativeTo: .title) }
+
+    static func uiText(_ weight: Weight, _ size: CGFloat) -> UIFont {
+        let name = switch weight {
+        case .regular: "PMText-Regular"
+        case .medium: "PMText-Medium"
+        case .semibold: "PMText-SemiBold"
+        case .bold: "PMText-Bold"
+        }
+        return UIFont(name: name, size: size) ?? .systemFont(ofSize: size)
+    }
+
+    static func uiDisplay(_ size: CGFloat) -> UIFont {
+        UIFont(name: "PMDisplay-ExtraBold", size: size) ?? .systemFont(ofSize: size, weight: .heavy)
+    }
+}
+
+/// Schriftstufen (Artefakt-Größen in pt bei Standard-Textgröße).
 enum AppTypography {
-    static let display = Font.largeTitle.weight(.heavy)
-    static let largeTitle = Font.largeTitle.weight(.bold)
-    static let title = Font.title2.weight(.semibold)
-    static let title3 = Font.title3.weight(.semibold)
-    static let headline = Font.headline
-    static let body = Font.body
-    static let callout = Font.callout
-    static let subheadline = Font.subheadline
-    static let footnote = Font.footnote
-    static let caption = Font.caption
-    static let metric = Font.system(.title, design: .rounded).weight(.bold).monospacedDigit()
-    static let metricSmall = Font.system(.headline, design: .rounded).weight(.semibold).monospacedDigit()
+    /// Große Zahl im Hero (58).
+    static let display = PMFont.display(58)
+    /// Seitentitel (40, Bricolage 800).
+    static let largeTitle = PMFont.display(40)
+    static let title = PMFont.heading(22)
+    static let title3 = PMFont.heading(20, relativeTo: .title3)
+    static let headline = PMFont.text(.semibold, 16, relativeTo: .headline)
+    static let body = PMFont.text(.regular, 16)
+    static let callout = PMFont.text(.medium, 15, relativeTo: .callout)
+    static let subheadline = PMFont.text(.regular, 15, relativeTo: .subheadline)
+    static let footnote = PMFont.text(.regular, 13, relativeTo: .footnote)
+    static let caption = PMFont.text(.regular, 13, relativeTo: .caption)
+    static let metric = PMFont.heading(30, relativeTo: .title)
+    static let metricSmall = PMFont.heading(18, relativeTo: .headline)
+    /// Großer Knopf (17, Figtree 700).
+    static let button = PMFont.text(.bold, 17, relativeTo: .headline)
+    /// Großbuchstaben-Etikett über dem Hero (13, 600, Laufweite 0,08 em).
+    static let eyebrow = PMFont.text(.semibold, 13, relativeTo: .footnote)
+    /// Tableiste (11, 600).
+    static let tab = PMFont.text(.semibold, 11, relativeTo: .caption2)
 }
 
 enum AppSpacing {
@@ -68,10 +138,13 @@ enum AppSpacing {
     static let l: CGFloat = 20
     static let xl: CGFloat = 24
     static let xxl: CGFloat = 32
-    static let pageMargin: CGFloat = 16
+    /// Seitenrand wie im Artefakt (20).
+    static let pageMargin: CGFloat = 20
     /// Mindest-Touchfläche (Masterprompt: ≥ 44 pt, bevorzugt 48 pt).
     static let minTouch: CGFloat = 44
     static let touch: CGFloat = 48
+    /// Platz für die schwebende Tableiste unter dem Inhalt.
+    static let tabBarClearance: CGFloat = 120
 }
 
 enum AppRadii {
@@ -79,6 +152,7 @@ enum AppRadii {
     static let card: CGFloat = 22
     static let sheet: CGFloat = 28
     static let thumb: CGFloat = 6
+    static let button: CGFloat = 18
 }
 
 enum AppMotion {
@@ -92,4 +166,16 @@ enum AppMotion {
 
     /// Öffnen: kurzer, leichter Übergang (Android: 150-ms-Fade).
     static func open(_ reduceMotion: Bool) -> Animation? { reduceMotion ? nil : .easeOut(duration: 0.15) }
+}
+
+extension Text {
+    /// Seitentitel wie im Artefakt: Bricolage 800, 40 pt, Laufweite −0,02 em.
+    func pageTitle() -> some View {
+        font(AppTypography.largeTitle).tracking(-0.8).foregroundStyle(AppColors.textPrimary)
+    }
+
+    /// Großbuchstaben-Etikett (Hero): 13 pt, 600, Laufweite 0,08 em, Akzent.
+    func eyebrow(_ color: Color = AppColors.accent) -> some View {
+        font(AppTypography.eyebrow).tracking(1.04).textCase(.uppercase).foregroundStyle(color)
+    }
 }

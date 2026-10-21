@@ -127,7 +127,7 @@ struct PhotoEditorView: View {
         case .iCloud:
             VStack(spacing: AppSpacing.m) {
                 Text(key: "feed_icloud_only").foregroundStyle(.white)
-                Button(L("feed_icloud_load")) { Task { await model.load(app: app, allowNetwork: true) } }.buttonStyle(.glassProminent)
+                Button(L("feed_icloud_load")) { Task { await model.load(app: app, allowNetwork: true) } }.buttonStyle(.pmProminent)
             }
             .frame(maxHeight: .infinity)
         case .ready:

@@ -116,9 +116,9 @@ struct PhotoSnakeView: View {
                             startWhenReady = true; setup = false
                             model.startMotifs(mode: mode, speed: speed, stepMode: usesStepInput)
                         } label: { Label(L("game_setup_without_photos"), systemImage: "leaf") }
-                        .buttonStyle(.bordered).accessibilityIdentifier("snake.symbols")
+                        .buttonStyle(.pmBordered).accessibilityIdentifier("snake.symbols")
                         if model.game != nil {
-                            Button(L("memory_resume")) { startWhenReady = true; setup = false }.buttonStyle(.bordered)
+                            Button(L("memory_resume")) { startWhenReady = true; setup = false }.buttonStyle(.pmBordered)
                                 .accessibilityIdentifier("snake.resume")
                         }
                     }
@@ -134,7 +134,7 @@ struct PhotoSnakeView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button { model.pause(); onChooseGame() } label: { Label(L("snake_other_games"), systemImage: "square.grid.2x2") }
-                        .labelStyle(.titleAndIcon).buttonStyle(.bordered).accessibilityIdentifier("snake.otherGames")
+                        .labelStyle(.titleAndIcon).buttonStyle(.pmBordered).accessibilityIdentifier("snake.otherGames")
                 }
             }
             .toolbarBackground(.hidden, for: .navigationBar)
@@ -163,7 +163,7 @@ struct PhotoSnakeView: View {
                     Button { collectionPicker = true } label: {
                         Label(collectionID == nil ? L("memory_pick_collection") : collectionTitle, systemImage: "folder")
                     }
-                    .buttonStyle(.bordered)
+                    .buttonStyle(.pmBordered)
                     .disabled(!app.library.access.canRead)
                     .accessibilityIdentifier("snake.chooseCollection")
                 }
@@ -327,7 +327,7 @@ struct PhotoSnakeView: View {
             } label: { Label(L(hasRoundPhotos ? "game_setup_edit_photos" : "game_setup_choose_photos"), systemImage: "photo.on.rectangle") }
             .buttonStyle(SnakeActionButtonStyle()).accessibilityIdentifier("snake.changePhotos")
             Button { model.pause(); onChooseGame() } label: { Label(L("snake_other_games"), systemImage: "square.grid.2x2") }
-                .buttonStyle(.bordered).accessibilityIdentifier("snake.otherGames")
+                .buttonStyle(.pmBordered).accessibilityIdentifier("snake.otherGames")
         }
         .padding(24).frame(maxWidth: 360)
         .background(Color(red: 0.03, green: 0.13, blue: 0.08).opacity(0.95), in: .rect(cornerRadius: 28))

@@ -143,11 +143,11 @@ struct ExportProgressOverlay: View {
                         .foregroundStyle(AppColors.textSecondary)
                     Text(key: "export_keep_open").font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
                         .multilineTextAlignment(.center)
-                    Button(L("cancel"), role: .cancel) { coordinator.cancel() }.buttonStyle(.glass)
+                    Button(L("cancel"), role: .cancel) { coordinator.cancel() }.buttonStyle(.pmBordered)
                 }
                 .padding(AppSpacing.l)
                 .frame(maxWidth: 340)
-                .glassEffect(.regular, in: .rect(cornerRadius: 28))
+                .glassPanel(radius: 28)
                 .padding(AppSpacing.pageMargin)
             }
             .accessibilityElement(children: .contain)

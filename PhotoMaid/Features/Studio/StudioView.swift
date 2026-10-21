@@ -8,6 +8,7 @@ struct StudioView: View {
     @State private var drafts: [CollageProject] = []
     @State private var pickingCollage = false
     @State private var draftToDelete: CollageProject?
+    @State private var showGames = false
 
     private var columns: [GridItem] {
         typeSize.isAccessibilitySize ? [GridItem(.flexible())] :
@@ -16,13 +17,23 @@ struct StudioView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: AppSpacing.xl) {
-                FeatureHeader(title: L("tab_studio"), subtitle: L("studio_intro")) { app.navigate(.settings) }
+            VStack(alignment: .leading, spacing: AppSpacing.m) {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(key: "tab_studio").pageTitle().accessibilityAddTraits(.isHeader)
+                    Text(key: "studio_intro").font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
+                }
+                .padding(.top, AppSpacing.xs)
+                collageHero
                 creationSection
+                PMCardRow(icon: .cup, tint: AppColors.later, tile: AppColors.pauseStroke, title: L("games_choose"),
+                          subtitle: L("art_games_list"), subtitleColor: AppColors.pauseText,
+                          background: AppColors.pauseSurface, stroke: AppColors.pauseStroke, radius: AppRadii.card) {
+                    showGames = true
+                }
+                .accessibilityIdentifier("studio.games")
                 toolsSection
-                documentsSection
-                savedSection
                 draftsSection
+                savedSection
             }
             .padding(.horizontal, AppSpacing.pageMargin)
             .padding(.bottom, AppSpacing.xxl)
@@ -30,6 +41,7 @@ struct StudioView: View {
         .appPage()
         .navigationTitle(L("tab_studio"))
         .toolbar(.hidden, for: .navigationBar)
+        .gamesCover(isPresented: $showGames)
         .sheet(isPresented: $pickingCollage) {
             StudioMediaPicker(allowsVideos: false, limit: CollageProject.max) { ids in
                 StudioHandoff.shared.ids = ids
@@ -54,69 +66,104 @@ struct StudioView: View {
         draftToDelete = nil
     }
 
-    private var creationSection: some View {
-        VStack(alignment: .leading, spacing: AppSpacing.s) {
-            SectionHeader(title: L("studio_create_header"))
-            LazyVGrid(columns: columns, alignment: .leading, spacing: AppSpacing.s) {
-                studioButton("rectangle.3.group", "studio_collage", "studio_collage_sub") { pickingCollage = true }
-                studioButton("film.stack", "movie_title", "movie_studio_sub") { app.navigate(.movie(ids: []), in: .studio) }
-                studioButton("play.rectangle", "movie_title_slideshow", "movie_slideshow_sub") { app.navigate(.movie(ids: []), in: .studio) }
-                studioButton("doc.richtext", "pdf_title", "pdf_studio_sub") { app.navigate(.pdfFromPhotos(ids: []), in: .studio) }
+    /// Collage als große Karte mit den neuesten echten Fotos (Artefakt).
+    private var collageHero: some View {
+        let ids = Array(app.cleanupMedia.lazy.filter { $0.kind == .photo }.prefix(4).map(\.id))
+        return Button { pickingCollage = true } label: {
+            HStack(spacing: AppSpacing.m) {
+                LazyVGrid(columns: [GridItem(.fixed(50), spacing: 4), GridItem(.fixed(50), spacing: 4)], spacing: 4) {
+                    ForEach(0..<4, id: \.self) { i in
+                        Group {
+                            if i < ids.count { AssetCell(assetID: ids[i]) } else { AppColors.control }
+                        }
+                        .frame(width: 50, height: 50)
+                        .clipShape(.rect(cornerRadius: 10))
+                    }
+                }
+                .frame(width: 104, height: 104)
+                .accessibilityHidden(true)
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(key: "studio_create_header").eyebrow()
+                    Text(key: "studio_collage").font(PMFont.heading(26)).foregroundStyle(AppColors.textPrimary)
+                    Text(key: "studio_collage_sub").font(PMFont.text(.regular, 14, relativeTo: .subheadline))
+                        .foregroundStyle(AppColors.textSecondary)
+                }
+                Spacer(minLength: 0)
             }
+            .padding(20)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(AppColors.surface, in: .rect(cornerRadius: AppRadii.sheet))
+            .overlay(RoundedRectangle(cornerRadius: AppRadii.sheet).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
+            .contentShape(.rect(cornerRadius: AppRadii.sheet))
+        }
+        .buttonStyle(PMPressStyle())
+        .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("studio.create.studio_collage")
+    }
+
+    private var creationSection: some View {
+        LazyVGrid(columns: columns, alignment: .leading, spacing: AppSpacing.s) {
+            studioTile(.video, AppColors.cleanup, "movie_title", "movie_studio_sub") { app.navigate(.movie(ids: []), in: .studio) }
+                .accessibilityIdentifier("studio.create.movie_title")
+            studioTile(.slideshow, AppColors.later, "movie_title_slideshow", "movie_slideshow_sub") {
+                app.navigate(.movie(ids: []), in: .studio)
+            }
+            .accessibilityIdentifier("studio.create.movie_title_slideshow")
+            studioTile(.pdf, AppColors.keep, "pdf_title", "pdf_studio_sub") { app.navigate(.pdfFromPhotos(ids: []), in: .studio) }
+                .accessibilityIdentifier("studio.create.pdf_title")
+            studioTile(.textDoc, AppColors.accent, "remodel_pdf_editor", "pdf_editor_subtitle") { app.navigate(.pdfStudio, in: .studio) }
+                .accessibilityIdentifier("studio.pdfEditor")
+            if VNDocumentCameraViewController.isSupported {
+                studioTile(.scan, AppColors.success, "remodel_scanner", "art_scan_sub") { app.fullScreen = .scanner }
+                    .accessibilityIdentifier("studio.scanner")
+            }
+            studioTile(.gif, AppColors.accent, "tools_gif", "tools_gif_sub") { app.navigate(.tools(.gif), in: .studio) }
+                .accessibilityIdentifier("studio.tools.gif")
         }
     }
 
     private var toolsSection: some View {
         VStack(alignment: .leading, spacing: AppSpacing.s) {
-            SectionHeader(title: L("tools_header"))
-            RowGroup {
-                studioRow("arrow.down.right.and.arrow.up.left", "tools_resize", "tools_resize_sub", route: .tools(.resize), id: "studio.tools.resize")
-                SwiftUI.Divider().padding(.leading, 52)
-                studioRow("arrow.triangle.2.circlepath", "tools_convert", "tools_convert_sub", route: .tools(.convert), id: "studio.tools.convert")
-                SwiftUI.Divider().padding(.leading, 52)
-                studioRow("location.slash", "tools_location", "tools_location_sub", route: .tools(.removeLocation), id: "studio.tools.location")
-                SwiftUI.Divider().padding(.leading, 52)
-                studioRow("rectangle.stack", "tools_stitch", "tools_stitch_sub", route: .tools(.stitch), id: "studio.tools.stitch")
-                SwiftUI.Divider().padding(.leading, 52)
-                studioRow("photo.stack", "tools_gif", "tools_gif_sub", route: .tools(.gif), id: "studio.tools.gif")
-                SwiftUI.Divider().padding(.leading, 52)
-                studioRow("slider.horizontal.3", "remodel_batch_edit", "tools_resize_sub", route: .tools(.batchEdit), id: "studio.tools.batch")
-                SwiftUI.Divider().padding(.leading, 52)
-                studioRow("arrow.triangle.branch", "wf_title", "wf_studio_sub", route: .workflows, id: "studio.workflows")
-                SwiftUI.Divider().padding(.leading, 52)
-                studioRow("externaldrive", "archive_title", "archive_studio_sub", route: .archive(ids: []), id: "studio.archive")
+            Text(key: "tools_header").font(AppTypography.title3).foregroundStyle(AppColors.textPrimary)
+                .accessibilityAddTraits(.isHeader).padding(.top, 6).padding(.horizontal, 4)
+            VStack(spacing: 0) {
+                studioRow(.resize, AppColors.keep, "tools_resize", "tools_resize_sub", route: .tools(.resize), id: "studio.tools.resize")
+                studioRow(.convert, AppColors.success, "tools_convert", "tools_convert_sub", route: .tools(.convert), id: "studio.tools.convert")
+                studioRow(.locationOff, AppColors.cleanup, "tools_location", "tools_location_sub", route: .tools(.removeLocation),
+                          id: "studio.tools.location")
+                studioRow(.stitch, AppColors.later, "tools_stitch", "tools_stitch_sub", route: .tools(.stitch), id: "studio.tools.stitch")
+                studioRow(.filter, AppColors.accent, "remodel_batch_edit", "tools_batch_intro", route: .tools(.batchEdit),
+                          id: "studio.tools.batch")
+                studioRow(.series, AppColors.keep, "wf_title", "wf_studio_sub", route: .workflows, id: "studio.workflows")
+                studioRow(.folder, AppColors.success, "archive_title", "archive_studio_sub", route: .archive(ids: []),
+                          id: "studio.archive", last: true)
             }
-        }
-    }
-
-    private var documentsSection: some View {
-        VStack(alignment: .leading, spacing: AppSpacing.s) {
-            SectionHeader(title: L("kind_document"))
-            RowGroup {
-                Button { app.navigate(.pdfStudio, in: .studio) } label: {
-                    NavRow(symbol: "doc.text", title: L("remodel_pdf_editor"), subtitle: L("pdf_editor_subtitle"))
-                }
-                .buttonStyle(FeaturePressStyle())
-                .accessibilityIdentifier("studio.pdfEditor")
-                if VNDocumentCameraViewController.isSupported {
-                    SwiftUI.Divider().padding(.leading, 52)
-                    Button { app.fullScreen = .scanner } label: {
-                        NavRow(symbol: "doc.viewfinder", title: L("remodel_scanner"))
-                    }
-                    .buttonStyle(FeaturePressStyle())
-                    .accessibilityIdentifier("studio.scanner")
-                }
-            }
+            .background(AppColors.surface, in: .rect(cornerRadius: AppRadii.card))
+            .overlay(RoundedRectangle(cornerRadius: AppRadii.card).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
+            .clipShape(.rect(cornerRadius: AppRadii.card))
         }
     }
 
     private var savedSection: some View {
-        VStack(alignment: .leading, spacing: AppSpacing.s) {
-            SectionHeader(title: L("studio_saved_header"))
-            RowGroup {
-                studioRow("paintbrush", "studio_saved_header", "studio_saved_sub", route: .edits, id: "studio.saved")
+        Button { app.navigate(.edits, in: .studio) } label: {
+            HStack(spacing: 14) {
+                PMIcon(.check, size: 22).foregroundStyle(AppColors.success)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(key: "studio_saved_header").font(AppTypography.headline).foregroundStyle(AppColors.textPrimary)
+                    Text(key: "studio_saved_sub").font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
+                }
+                Spacer(minLength: AppSpacing.xs)
+                PMIcon(.chevronRight, size: 18).foregroundStyle(AppColors.textTertiary).flipsForRightToLeftLayoutDirection(true)
             }
+            .padding(.vertical, 14).padding(.horizontal, 16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(AppColors.surface, in: .rect(cornerRadius: 20))
+            .overlay(RoundedRectangle(cornerRadius: 20).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
+            .contentShape(.rect(cornerRadius: 20))
         }
+        .buttonStyle(PMPressStyle())
+        .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("studio.saved")
     }
 
     @ViewBuilder private var draftsSection: some View {
@@ -154,16 +201,54 @@ struct StudioView: View {
         }
     }
 
-    private func studioButton(_ symbol: String, _ title: String, _ subtitle: String, action: @escaping () -> Void) -> some View {
-        FeatureActionTile(symbol: symbol, title: L(title), subtitle: L(subtitle), action: action)
-            .accessibilityIdentifier("studio.create." + title)
+    private func studioTile(_ icon: PMIconName, _ tint: Color, _ title: String, _ subtitle: String,
+                            action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            VStack(alignment: .leading, spacing: AppSpacing.s) {
+                PMIcon(icon, size: 19)
+                    .foregroundStyle(tint)
+                    .frame(width: 38, height: 38)
+                    .background(PMTile.background(for: tint), in: .rect(cornerRadius: AppRadii.small))
+                Spacer(minLength: 0)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(key: title).font(PMFont.text(.semibold, 15, relativeTo: .headline)).foregroundStyle(AppColors.textPrimary)
+                    Text(key: subtitle).font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
+                }
+                .fixedSize(horizontal: false, vertical: true)
+            }
+            .padding(16)
+            .frame(maxWidth: .infinity, minHeight: 132, alignment: .topLeading)
+            .background(AppColors.surface, in: .rect(cornerRadius: AppRadii.card))
+            .overlay(RoundedRectangle(cornerRadius: AppRadii.card).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
+            .contentShape(.rect(cornerRadius: AppRadii.card))
+        }
+        .buttonStyle(PMPressStyle())
+        .accessibilityElement(children: .combine)
     }
 
-    private func studioRow(_ symbol: String, _ title: String, _ subtitle: String, route: Route, id: String) -> some View {
+    /// Werkzeug-Zeile ohne Kachel: farbiges Strich-Symbol, Titel, Untertitel, Pfeil (Artefakt).
+    private func studioRow(_ icon: PMIconName, _ tint: Color, _ title: String, _ subtitle: String, route: Route, id: String,
+                           last: Bool = false) -> some View {
         Button { app.navigate(route, in: .studio) } label: {
-            NavRow(symbol: symbol, title: L(title), subtitle: L(subtitle))
+            HStack(spacing: 14) {
+                PMIcon(icon, size: 22).foregroundStyle(tint)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(key: title).font(AppTypography.headline).foregroundStyle(AppColors.textPrimary)
+                    Text(key: subtitle).font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Spacer(minLength: AppSpacing.xs)
+                PMIcon(.chevronRight, size: 18).foregroundStyle(AppColors.textTertiary).flipsForRightToLeftLayoutDirection(true)
+            }
+            .padding(.vertical, 14).padding(.horizontal, 16)
+            .frame(maxWidth: .infinity, minHeight: 64, alignment: .leading)
+            .overlay(alignment: .bottom) {
+                if !last { Rectangle().fill(AppColors.surfaceStroke).frame(height: 1) }
+            }
+            .contentShape(.rect)
         }
-        .buttonStyle(FeaturePressStyle())
+        .buttonStyle(PMPressStyle())
+        .accessibilityElement(children: .combine)
         .accessibilityIdentifier(id)
     }
 }

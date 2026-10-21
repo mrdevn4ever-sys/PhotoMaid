@@ -46,7 +46,7 @@ struct PdfFromPhotosView: View {
                 }
             }
             Button { Task { await render() } } label: { Label(L("pdf_save"), systemImage: "doc.badge.plus") }
-                .buttonStyle(.glassProminent).disabled(ids.isEmpty || exporting)
+                .buttonStyle(.pmProminent).disabled(ids.isEmpty || exporting)
             if let exportURL { ShareLink(item: exportURL) { Label(L("pdf_share"), systemImage: "square.and.arrow.up") } }
             Text(key: "pdf_privacy").font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
         }

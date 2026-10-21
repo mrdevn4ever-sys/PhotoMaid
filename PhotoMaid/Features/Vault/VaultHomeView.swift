@@ -195,7 +195,7 @@ struct VaultHomeView: View {
                         .padding(.horizontal, AppSpacing.s)
                         .frame(minHeight: AppSpacing.minTouch)
                 }
-                .buttonStyle(.glass)
+                .buttonStyle(.pmBordered)
             }
         }
     }

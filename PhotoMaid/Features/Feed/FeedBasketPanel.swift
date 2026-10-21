@@ -50,7 +50,7 @@ struct FeedBasketPanel: View {
                 }
             }
             Button(action: openTrash) { Label(L("feed_view_basket"), systemImage: "arrow.up.forward.app") }
-                .buttonStyle(.glassProminent).frame(maxWidth: .infinity)
+                .buttonStyle(.pmProminent).frame(maxWidth: .infinity)
         }
         .padding(AppSpacing.m)
         .background(AppColors.surface, in: .rect(cornerRadius: AppRadii.card))

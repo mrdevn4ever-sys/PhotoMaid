@@ -214,7 +214,7 @@ struct CollageView: View {
                     .frame(width: AppSpacing.touch, height: AppSpacing.touch)
                     .contentShape(.circle)
             }
-            .buttonStyle(.glass)
+            .buttonStyle(.pmBordered)
             .buttonBorderShape(.circle)
             .accessibilityLabel(Text(key: "collage_add"))
             PrimaryButton(title: L("save"), symbol: "square.and.arrow.down", overMedia: true) { openSave() }

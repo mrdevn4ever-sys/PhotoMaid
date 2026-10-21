@@ -110,7 +110,7 @@ struct EditorHeader<Center: View>: View {
                 Button(action: cancel) {
                     Image(systemName: "xmark").font(.body.weight(.bold)).frame(width: AppSpacing.touch, height: AppSpacing.touch)
                 }
-                .buttonStyle(.glass)
+                .buttonStyle(.pmBordered)
                 .buttonBorderShape(.circle)
                 .accessibilityLabel(Text(key: "cancel"))
                 Spacer()
@@ -119,7 +119,7 @@ struct EditorHeader<Center: View>: View {
                 Button(action: confirm) {
                     Image(systemName: "checkmark").font(.body.weight(.bold)).frame(width: AppSpacing.touch, height: AppSpacing.touch)
                 }
-                .buttonStyle(.glassProminent)
+                .buttonStyle(.pmProminent)
                 .buttonBorderShape(.circle)
                 .tint(.yellow)
                 .disabled(!confirmEnabled)

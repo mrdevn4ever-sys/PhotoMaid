@@ -237,28 +237,31 @@ struct FeedView: View {
         .padding(.top, AppSpacing.xs)
     }
 
+    /// Artefakt: große Nummer (Bricolage 700, 18) und „von …“ (12); der Titel der Quelle nur für VoiceOver.
     private var headerPosition: some View {
-        VStack(spacing: 2) {
-            Text(verbatim: model.request.title).font(AppTypography.headline).foregroundStyle(AppColors.textPrimary)
-                .lineLimit(1)
+        VStack(spacing: 0) {
             if !model.session.items.isEmpty {
                 let p = model.session.position
-                Text(verbatim: L("feed_position", p.current, p.total))
-                    .font(AppTypography.caption).foregroundStyle(AppColors.textSecondary).monospacedDigit()
+                Text(verbatim: CountText.number(p.current)).font(PMFont.heading(18, relativeTo: .headline))
+                    .foregroundStyle(AppColors.textPrimary).monospacedDigit().lineLimit(1)
+                Text(verbatim: L("art_feed_of", CountText.number(p.total)))
+                    .font(PMFont.text(.regular, 12, relativeTo: .caption)).foregroundStyle(AppColors.textSecondary)
+                    .monospacedDigit().lineLimit(1)
+            } else {
+                Text(verbatim: model.request.title).font(AppTypography.headline).foregroundStyle(AppColors.textPrimary)
                     .lineLimit(1)
             }
         }
-        .accessibilityElement(children: .combine)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(Text(verbatim: model.session.items.isEmpty ? model.request.title :
+            model.request.title + ", " + L("feed_position", model.session.position.current, model.session.position.total)))
         .accessibilityAddTraits(.isHeader)
         .accessibilityIdentifier("feed.position")
     }
 
     @ViewBuilder private var headerLeading: some View {
-        headerButton(symbol: "xmark", label: L("close")) { model.close() }
+        headerButton(icon: .close, label: L("close")) { model.close() }
             .accessibilityIdentifier("feed.close")
-        headerButton(symbol: "cup.and.saucer", label: L("memory_break")) { showMemory = true }
-            .disabled(!model.isLoaded || model.isCommitting)
-            .accessibilityIdentifier("feed.memory")
     }
 
     @ViewBuilder private var headerTrailing: some View {
@@ -270,25 +273,51 @@ struct FeedView: View {
                     Text(key: "order_largest").tag(FeedOrder.largest)
                     Text(key: "order_random").tag(FeedOrder.random)
                 }
-            } label: { headerSymbol("arrow.up.arrow.down") }
-                .buttonStyle(.plain).glassCapsule(interactive: true)
+            } label: { headerCircle(Image(systemName: "arrow.up.arrow.down").font(.system(size: 17, weight: .semibold))) }
+                .buttonStyle(.plain)
                 .accessibilityLabel(Text(key: "order_title"))
         }
-        headerButton(symbol: "arrow.uturn.backward", label: L("undo")) { Task { await model.undo() } }
+        headerButton(icon: .cup, label: L("memory_break"), tint: AppColors.later) { showMemory = true }
+            .disabled(!model.isLoaded || model.isCommitting)
+            .accessibilityIdentifier("feed.memory")
+        headerButton(icon: .undo, label: L("undo"), tint: app.read.canUndo ? AppColors.textPrimary : AppColors.hex(0x5A534C)) {
+            Task { await model.undo() }
+        }
             .disabled(!app.read.canUndo)
             .tourTarget("feed.undo")
     }
 
-    /// A 48-point target without the additional intrinsic padding of the glass button style.
-    private func headerButton(symbol: String, label: String, action: @escaping () -> Void) -> some View {
-        Button(action: action) { headerSymbol(symbol) }
-            .buttonStyle(.plain).glassCapsule(interactive: true)
+    /// Runder 44-pt-Knopf wie im Artefakt (dunkle Fläche, feiner Rand).
+    private func headerButton(icon: PMIconName, label: String, tint: Color = AppColors.textPrimary,
+                              action: @escaping () -> Void) -> some View {
+        Button(action: action) { headerCircle(PMIcon(icon, size: 19, lineWidth: icon == .close ? 2.2 : 2).foregroundStyle(tint)) }
+            .buttonStyle(PMPressStyle())
             .accessibilityLabel(Text(verbatim: label))
     }
 
-    private func headerSymbol(_ symbol: String) -> some View {
-        Image(systemName: symbol).resizable().scaledToFit().frame(width: 21, height: 21)
-            .frame(width: AppSpacing.touch, height: AppSpacing.touch).contentShape(.circle)
+    private func headerCircle(_ content: some View) -> some View {
+        content
+            .foregroundStyle(AppColors.textPrimary)
+            .frame(width: 44, height: 44)
+            .background(AppColors.surface, in: .circle)
+            .overlay(Circle().strokeBorder(AppColors.control, lineWidth: 1))
+            .contentShape(.circle)
+    }
+
+    /// Fortschritt der Sitzung (4 pt, Bernstein).
+    private var progressBar: some View {
+        let p = model.session.position
+        let fraction = p.total > 0 ? max(0.015, Double(p.current - 1) / Double(p.total)) : 0
+        return GeometryReader { geo in
+            ZStack(alignment: .leading) {
+                Capsule().fill(AppColors.surfaceStroke)
+                Capsule().fill(AppColors.accentFill).frame(width: geo.size.width * fraction)
+            }
+        }
+        .frame(height: 4)
+        .environment(\.layoutDirection, readingDirection)
+        .animation(AppMotion.standard(reduceMotion), value: p.current)
+        .accessibilityHidden(true)
     }
 
     // MARK: Inhalt
@@ -312,16 +341,30 @@ struct FeedView: View {
                 DecisionButtons(controls: controls) { model.perform(action: $0) }
                     .padding(.horizontal, AppSpacing.pageMargin)
             }
+            progressBar.padding(.horizontal, AppSpacing.pageMargin)
             stage
-            if let a = model.currentAsset {
-                MediaInfoLine(asset: a).padding(.horizontal, AppSpacing.pageMargin)
-                if a.isVideo { FeedVideoControls(asset: a).padding(.horizontal, AppSpacing.pageMargin) }
-            }
             VStack(spacing: AppSpacing.xs) {
+                if let a = model.currentAsset {
+                    ViewThatFits(in: .horizontal) {
+                        HStack(spacing: AppSpacing.xs) {
+                            MediaInfoLine(asset: a)
+                            feedActionButtons.tourTarget("feed.actions")
+                        }
+                        VStack(alignment: .leading, spacing: 2) {
+                            MediaInfoLine(asset: a)
+                            HStack { Spacer(minLength: 0); feedActionButtons }
+                        }
+                    }
+                    if a.isVideo { FeedVideoControls(asset: a) }
+                }
                 if needsButtons && controls.placement == .belowMedia {
                     DecisionButtons(controls: controls) { model.perform(action: $0) }
                 }
-                actionBar.tourTarget("feed.actions")
+                HStack(spacing: AppSpacing.xs) {
+                    FeedGestureLegend(controls: controls)
+                    Spacer(minLength: 0)
+                    feedCounters
+                }
             }
             .padding(.horizontal, AppSpacing.pageMargin)
         }
@@ -522,41 +565,27 @@ struct FeedView: View {
 
     // MARK: Aktionsleiste (nie eine Entscheidung)
 
-    private var actionBar: some View {
-        ViewThatFits(in: .horizontal) {
-            HStack(spacing: AppSpacing.xs) {
-                feedActionButtons
-                Spacer(minLength: 0)
-                feedCounters
-            }
-            VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                feedActionButtons
-                HStack { Spacer(minLength: 0); feedCounters }
-            }
-        }
-    }
-
     private var feedActionButtons: some View {
         let asset = model.currentAsset
         let busy = model.mediaWriteBusy || model.isCommitting
         return GlassEffectContainer(spacing: 0) {
             HStack(spacing: 0) {
                 let fav = asset?.isFavorite == true
-                actionIcon(fav ? "heart.fill" : "heart", label: L(fav ? "fav_remove" : "fav_add"),
-                           tint: fav ? AppColors.cleanup : AppColors.textPrimary, enabled: asset != nil && !busy) {
+                actionIcon(fav ? "heart.fill" : "heart", icon: .heart, filled: fav, label: L(fav ? "fav_remove" : "fav_add"),
+                           tint: fav ? AppColors.cleanup : AppColors.textSecondary, enabled: asset != nil && !busy) {
                     Task { await model.toggleFavorite() }
                 }
                 .accessibilityValue(Text(key: fav ? "fav_state_on" : "fav_state_off"))
-                actionIcon("square.and.arrow.up", label: L("share"), enabled: asset != nil) {
+                actionIcon("square.and.arrow.up", icon: .share, label: L("share"), enabled: asset != nil) {
                     guard let a = asset else { return }
                     Task {
                         if let item = await MediaShare.prepare([a.id]) { shareItem = item } else { app.showError(L("share_failed")) }
                     }
                 }
-                actionIcon("rectangle.stack.badge.plus", label: L("folder_action"), enabled: asset != nil && !busy) {
+                actionIcon("rectangle.stack.badge.plus", icon: .albumAdd, label: L("folder_action"), enabled: asset != nil && !busy) {
                     model.albumSheetFor = asset
                 }
-                actionIcon("pencil", label: L("edit_action"), enabled: asset != nil && !busy) {
+                actionIcon("pencil", icon: .pencil, label: L("edit_action"), enabled: asset != nil && !busy) {
                     guard let a = asset else { return }
                     app.player.stop()
                     app.fullScreen = a.isVideo ? .videoEditor(assetID: a.id) : .editor(assetID: a.id)
@@ -572,16 +601,15 @@ struct FeedView: View {
                         Button { confirmExclude = true } label: { Label(L("excl_action"), systemImage: "eye.slash") }
                     }
                 } label: {
-                    Image(systemName: "ellipsis")
+                    PMIcon(.more, size: 20)
                         .frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch)
                         .contentShape(.rect)
                 }
                 .accessibilityLabel(Text(key: "more_actions"))
-                .foregroundStyle(AppColors.textPrimary)
+                .foregroundStyle(AppColors.textSecondary)
             }
-            .padding(.horizontal, AppSpacing.xxs)
-            .glassCapsule()
         }
+        .fixedSize(horizontal: true, vertical: false)
     }
 
     private var feedCounters: some View {
@@ -612,11 +640,11 @@ struct FeedView: View {
         .fixedSize(horizontal: true, vertical: false)
     }
 
-    private func actionIcon(_ symbol: String, label: String, tint: Color = AppColors.textPrimary, enabled: Bool,
+    private func actionIcon(_ symbol: String, icon: PMIconName, filled: Bool = false, label: String,
+                            tint: Color = AppColors.textSecondary, enabled: Bool,
                             action: @escaping () -> Void) -> some View {
         Button(action: action) {
-            Image(systemName: symbol)
-                .font(.body.weight(.medium))
+            PMIcon(icon, size: 20, filled: filled)
                 .foregroundStyle(enabled ? tint : tint.opacity(0.38))
                 .frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch)
                 .contentShape(.rect)

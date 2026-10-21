@@ -40,7 +40,7 @@ struct PdfStudioView: View {
                 editActions
                 if let saved = editor.savedURL {
                     ShareLink(item: saved) { Label(L("pdf_share"), systemImage: "square.and.arrow.up") }
-                        .buttonStyle(.borderedProminent).padding(.bottom, 8)
+                        .buttonStyle(.pmProminent).padding(.bottom, 8)
                         .accessibilityIdentifier("pdf.share")
                 }
             } else {
@@ -50,7 +50,7 @@ struct PdfStudioView: View {
                     Text(key: "pdf_files_hint")
                 } actions: {
                     Button { importing = true } label: { Label(L("pdf_files_choose"), systemImage: "folder") }
-                        .buttonStyle(.borderedProminent).controlSize(.large)
+                        .buttonStyle(.pmProminent).controlSize(.large)
                         .accessibilityIdentifier("pdf.import")
                 }
             }

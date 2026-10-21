@@ -10,20 +10,20 @@ struct CleanUpHubView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: AppSpacing.xl) {
-                FeatureHeader(title: L("tab_cleanup")) { app.navigate(.settings) }
-                reviewDestinations
+            VStack(alignment: .leading, spacing: AppSpacing.m) {
+                Text(key: "tab_cleanup").pageTitle().accessibilityAddTraits(.isHeader).padding(.top, AppSpacing.xs)
                 Picker(L("tab_cleanup"), selection: $tab) {
                     Text(key: "hub_tab_areas").tag(0)
                     Text(key: "hub_tab_collections").tag(1)
                 }
                 .pickerStyle(.segmented)
+                .controlSize(.large)
                 .accessibilityIdentifier("cleanup.sections")
                 if tab == 1 {
                     CollectionsContent()
                 } else {
                     WorkspaceColumns(accessibility: dynamicType.isAccessibilitySize) {
-                        VStack(alignment: .leading, spacing: AppSpacing.xl) { mediaArea; toolsArea }
+                        VStack(alignment: .leading, spacing: AppSpacing.m) { mediaHero; mediaArea; toolsArea }
                         analysisArea
                     }
                 }
@@ -38,86 +38,149 @@ struct CleanUpHubView: View {
 
     private var canRead: Bool { app.library.access.canRead }
 
-    private var reviewDestinations: some View {
-        LazyVGrid(columns: dynamicType.isAccessibilitySize ? [GridItem(.flexible())] :
-                    [GridItem(.adaptive(minimum: 152), spacing: AppSpacing.s)], spacing: AppSpacing.s) {
-            FeatureActionTile(symbol: "trash", title: L("basket"),
-                              subtitle: LP("items_count", app.read.basket.count), tint: AppColors.cleanup) {
-                app.navigate(.trash, in: .cleanup)
+    /// Hero „Mediathek“ (Artefakt): offene Medien und „Durchwischen“.
+    private var mediaHero: some View {
+        Button { app.open(FeedRequest(.allMedia)) } label: {
+            VStack(alignment: .leading, spacing: 14) {
+                Text(key: "hub_media_header").eyebrow()
+                HStack(alignment: .bottom, spacing: AppSpacing.s) {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(verbatim: CountText.number(app.pending.count))
+                            .font(PMFont.display(44)).tracking(-1.32).foregroundStyle(AppColors.textPrimary)
+                            .lineLimit(1).minimumScaleFactor(0.6)
+                        Text(key: "art_hub_review_label")
+                            .font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
+                    }
+                    Spacer(minLength: 0)
+                    HStack(spacing: AppSpacing.xs) {
+                        Text(key: "art_swipe_through")
+                        PMIcon(.arrowRight, size: 18, lineWidth: 2.4).flipsForRightToLeftLayoutDirection(true)
+                    }
+                    .font(PMFont.text(.bold, 16, relativeTo: .headline))
+                    .foregroundStyle(AppColors.onAccent)
+                    .padding(.horizontal, 16)
+                    .frame(minHeight: 48)
+                    .background(AppColors.accentFill, in: .rect(cornerRadius: 16))
+                }
             }
-            .accessibilityIdentifier("cleanup.trash")
-            FeatureActionTile(symbol: "clock", title: L("later"),
-                              subtitle: LP("items_count", app.read.laterRecords.count), tint: AppColors.later) {
-                app.navigate(.later, in: .cleanup)
-            }
-            .accessibilityIdentifier("cleanup.later")
+            .padding(20)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(AppColors.surface, in: .rect(cornerRadius: AppRadii.sheet))
+            .overlay(RoundedRectangle(cornerRadius: AppRadii.sheet).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
+            .contentShape(.rect(cornerRadius: AppRadii.sheet))
         }
+        .buttonStyle(PMPressStyle())
+        .disabled(!canRead)
+        .accessibilityIdentifier("cleanup.review")
     }
 
     @ViewBuilder
     private var mediaArea: some View {
         let skippedCount = app.skippedPreviewItems.count
-        VStack(alignment: .leading, spacing: AppSpacing.s) {
-            SectionHeader(title: L("hub_media_header"))
-            RowGroup {
-                media(.photos, "photo", "cat_photos", AppColors.accent)
-                SwiftUI.Divider().padding(.leading, 52)
-                media(.videos, "video", "cat_videos", AppColors.amber)
-                SwiftUI.Divider().padding(.leading, 52)
-                media(.screenshots, "camera.viewfinder", "cat_screenshots", AppColors.later)
-                SwiftUI.Divider().padding(.leading, 52)
-                link(.months, "calendar", AppColors.amber, L("months_title"), L("hub_months_sub"))
-                if skippedCount > 0 {
-                    SwiftUI.Divider().padding(.leading, 52)
-                    Button { app.retrySkippedPreviews() } label: {
-                        NavRow(symbol: "arrow.clockwise", tint: AppColors.accent, title: L("feed_retry_skipped"),
-                               subtitle: L("feed_skipped_hint"), value: CountText.number(skippedCount))
-                    }
-                    .buttonStyle(.plain)
-                    .disabled(!canRead)
-                    .accessibilityIdentifier("hub.retrySkipped")
+        RowGroup {
+            link(.months, "calendar", AppColors.accent, L("months_title"), L("hub_months_sub"))
+            SwiftUI.Divider().overlay(AppColors.surfaceStroke)
+            Button { app.navigate(.trash, in: .cleanup) } label: {
+                NavRow(symbol: "trash", tint: AppColors.cleanup, title: L("basket"), value: CountText.number(app.read.basket.count))
+            }
+            .buttonStyle(.plain)
+            .accessibilityIdentifier("cleanup.trash")
+            SwiftUI.Divider().overlay(AppColors.surfaceStroke)
+            Button { app.navigate(.later, in: .cleanup) } label: {
+                NavRow(symbol: "clock", tint: AppColors.later, title: L("later"), value: CountText.number(app.read.laterRecords.count))
+            }
+            .buttonStyle(.plain)
+            .accessibilityIdentifier("cleanup.later")
+            SwiftUI.Divider().overlay(AppColors.surfaceStroke)
+            media(.photos, "photo", "cat_photos", AppColors.keep)
+            SwiftUI.Divider().overlay(AppColors.surfaceStroke)
+            media(.videos, "video", "cat_videos", AppColors.accent)
+            SwiftUI.Divider().overlay(AppColors.surfaceStroke)
+            media(.screenshots, "camera.viewfinder", "cat_screenshots", AppColors.later)
+            if skippedCount > 0 {
+                SwiftUI.Divider().overlay(AppColors.surfaceStroke)
+                Button { app.retrySkippedPreviews() } label: {
+                    NavRow(symbol: "arrow.clockwise", tint: AppColors.accent, title: L("feed_retry_skipped"),
+                           subtitle: L("feed_skipped_hint"), value: CountText.number(skippedCount))
                 }
+                .buttonStyle(.plain)
+                .disabled(!canRead)
+                .accessibilityIdentifier("hub.retrySkipped")
             }
         }
     }
 
+    /// „Weitere Funktionen“ als Kacheln in zwei Spalten (Artefakt).
     private var toolsArea: some View {
         VStack(alignment: .leading, spacing: AppSpacing.s) {
-            SectionHeader(title: L("hub_tools_header"))
-            RowGroup {
-                link(.largeFiles, "doc.badge.arrow.up", AppColors.amber, L("large_files"),
+            Text(key: "hub_tools_header").font(AppTypography.title3).foregroundStyle(AppColors.textPrimary)
+                .accessibilityAddTraits(.isHeader).padding(.top, 6).padding(.horizontal, 4)
+            LazyVGrid(columns: dynamicType.isAccessibilitySize ? [GridItem(.flexible())] :
+                        [GridItem(.flexible(), spacing: AppSpacing.s), GridItem(.flexible(), spacing: AppSpacing.s)],
+                      spacing: AppSpacing.s) {
+                tile(.largeFiles, .bars, AppColors.cleanup, L("large_files"),
                      L("hub_large_from", SizeText.bytes(Int64(app.settings.largeFileThresholdMB) * 1_000_000)))
                     .accessibilityIdentifier("hub.large")
-                SwiftUI.Divider().padding(.leading, 52)
-                link(.duplicates, "square.on.square", AppColors.success, L("duplicates"), L("hub_dup_sub"),
+                tile(.duplicates, .duplicates, AppColors.accent, L("duplicates"), L("hub_dup_sub"),
                      badge: app.capabilities.exactDuplicates ? nil : L("pro_badge"))
                     .accessibilityIdentifier("hub.duplicates")
-                SwiftUI.Divider().padding(.leading, 52)
-                link(.series, "square.stack.3d.forward.dottedline", AppColors.accent, L("series_title"), L("hub_series_sub"),
+                tile(.series, .series, AppColors.later, L("series_title"), L("hub_series_sub"),
                      badge: app.capabilities.seriesCompare ? nil : L("pro_badge"))
-                SwiftUI.Divider().padding(.leading, 52)
-                link(.files, "folder", AppColors.amber, L("files"), L("hub_files_sub"))
+                tile(.files, .folder, AppColors.success, L("files"), L("hub_files_sub"))
                     .accessibilityIdentifier("hub.files")
-                SwiftUI.Divider().padding(.leading, 52)
-                link(.storage, "chart.bar", AppColors.accent, L("storage_overview"), nil)
+                tile(.storage, .pie, AppColors.keep, L("storage_overview"), L("art_storage_sub"))
                     .accessibilityIdentifier("hub.storage")
+                tile(.months, .calendar, AppColors.accent, L("months_title"), L("hub_months_sub"))
             }
         }
+    }
+
+    private func tile(_ route: Route, _ icon: PMIconName, _ tint: Color, _ title: String, _ subtitle: String,
+                      badge: String? = nil) -> some View {
+        Button { app.navigate(route, in: .cleanup) } label: {
+            VStack(alignment: .leading, spacing: AppSpacing.s) {
+                HStack(alignment: .top) {
+                    PMIcon(icon, size: 19)
+                        .foregroundStyle(tint)
+                        .frame(width: 38, height: 38)
+                        .background(PMTile.background(for: tint), in: .rect(cornerRadius: AppRadii.small))
+                    Spacer(minLength: 0)
+                    if let badge { BadgeText(text: badge) }
+                }
+                Spacer(minLength: 0)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(verbatim: title).font(PMFont.text(.semibold, 15, relativeTo: .headline))
+                        .foregroundStyle(AppColors.textPrimary)
+                    Text(verbatim: subtitle).font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
+                        .lineSpacing(1)
+                }
+                .fixedSize(horizontal: false, vertical: true)
+            }
+            .padding(16)
+            .frame(maxWidth: .infinity, minHeight: 132, alignment: .topLeading)
+            .background(AppColors.surface, in: .rect(cornerRadius: AppRadii.card))
+            .overlay(RoundedRectangle(cornerRadius: AppRadii.card).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
+            .contentShape(.rect(cornerRadius: AppRadii.card))
+        }
+        .buttonStyle(PMPressStyle())
+        .accessibilityElement(children: .combine)
     }
 
     @ViewBuilder private var analysisArea: some View {
         if app.settings.analysisEnabled {
             VStack(alignment: .leading, spacing: AppSpacing.s) {
-                SectionHeader(title: L("ana_header"))
+                Text(key: "ana_header").font(AppTypography.title3).foregroundStyle(AppColors.textPrimary)
+                    .accessibilityAddTraits(.isHeader).padding(.top, 6).padding(.horizontal, 4)
                 RowGroup {
                     ForEach(Array(SmartReviewKind.allCases.enumerated()), id: \.element) { i, kind in
-                        if i > 0 { SwiftUI.Divider().padding(.leading, 52) }
-                        link(.smartReview(kind), SmartReviewText.symbol(kind), AppColors.indigo, SmartReviewText.title(kind),
+                        if i > 0 { SwiftUI.Divider().overlay(AppColors.surfaceStroke) }
+                        link(.smartReview(kind), SmartReviewText.symbol(kind), AppColors.keep, SmartReviewText.title(kind),
                              SmartReviewText.subtitle(kind), badge: app.capabilities.smartReview ? nil : L("pro_badge"))
                             .accessibilityIdentifier("hub.\(kind.rawValue)")
                     }
                 }
-                Text(key: "ana_footer").font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
+                Text(key: "ana_footer").font(AppTypography.footnote).foregroundStyle(AppColors.textTertiary)
+                    .padding(.horizontal, 4)
             }
         }
     }

@@ -60,7 +60,7 @@ struct VaultLockView: View {
                         Button { Task { await unlockWithBiometrics() } } label: {
                             Label(L("vault_biometric_open", name), systemImage: name == "Touch ID" ? "touchid" : "faceid")
                         }
-                        .buttonStyle(.glass)
+                        .buttonStyle(.pmBordered)
                         .frame(minHeight: AppSpacing.minTouch)
                     }
                     Button(L("vault_forgot")) { recoverySheet = true }

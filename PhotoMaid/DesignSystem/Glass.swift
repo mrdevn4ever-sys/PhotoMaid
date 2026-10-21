@@ -1,47 +1,30 @@
 import SwiftUI
 
-// Liquid Glass – nur öffentliche iOS-26-APIs (`glassEffect`, `GlassEffectContainer`, `.glass`/`.glassProminent`).
-// Glas nur für Navigation und schwebende Bedienelemente über Medien; Listen und Fotos bleiben ohne Glas.
-// Reduce Transparency/Increase Contrast setzt das System selbst um; zusätzlich deckender Ersatz bei Reduce Transparency.
+// Experiment-Design (Artefakt): schwebende Bedienelemente sind deckende, dunkle Flächen mit feinem Rand statt
+// Liquid Glass. Die bisherigen Namen bleiben, damit alle Ansichten das neue Aussehen ohne Umbau übernehmen.
 
 struct GlassCapsuleModifier: ViewModifier {
-    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
-    @Environment(\.colorSchemeContrast) private var contrast
     var interactive = false
     var tint: Color?
     var overMedia = false
 
     func body(content: Content) -> some View {
-        if reduceTransparency || contrast == .increased {
-            content
-                .background(overMedia ? AppColors.stage : AppColors.surface, in: .capsule)
-                .overlay(Capsule().strokeBorder(AppColors.surfaceStroke))
-        } else {
-            content.glassEffect(glass, in: .capsule)
-        }
-    }
-
-    private var glass: Glass {
-        var g = Glass.regular
-        if let tint { g = g.tint(tint) }
-        return interactive ? g.interactive() : g
+        content
+            .background((tint ?? AppColors.surface).opacity(tint == nil ? 0.96 : 1), in: .capsule)
+            .overlay(Capsule().strokeBorder(tint == nil ? AppColors.control : Color.clear, lineWidth: 1))
+            .shadow(color: .black.opacity(overMedia ? 0.4 : 0.25), radius: 14, y: 6)
     }
 }
 
 struct GlassRectModifier: ViewModifier {
-    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
-    @Environment(\.colorSchemeContrast) private var contrast
     var radius: CGFloat = AppRadii.card
     var interactive = false
 
     func body(content: Content) -> some View {
-        if reduceTransparency || contrast == .increased {
-            content
-                .background(AppColors.surface, in: .rect(cornerRadius: radius))
-                .overlay(RoundedRectangle(cornerRadius: radius).strokeBorder(AppColors.surfaceStroke))
-        } else {
-            content.glassEffect(interactive ? .regular.interactive() : .regular, in: .rect(cornerRadius: radius))
-        }
+        content
+            .background(AppColors.surface.opacity(0.97), in: .rect(cornerRadius: radius))
+            .overlay(RoundedRectangle(cornerRadius: radius).strokeBorder(AppColors.control, lineWidth: 1))
+            .shadow(color: .black.opacity(0.35), radius: 18, y: 8)
     }
 }
 
@@ -57,83 +40,133 @@ extension View {
     }
 }
 
-/// Runder Glas-Button für Kopfzeilen über Medien (Schließen, Rückgängig, Mehr). Trefferfläche 48 pt.
+/// Runder Knopf (44 pt) wie im Artefakt: dunkle Fläche, feiner Rand. Trefferfläche 48 pt.
 struct GlassIconButton: View {
     let symbol: String
     let label: String
     var prominent = false
+    var tint: Color?
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
             Image(systemName: symbol)
-                .font(.body.weight(.semibold))
+                .font(.system(size: 18, weight: .semibold))
+                .foregroundStyle(prominent ? AppColors.onAccent : (tint ?? AppColors.textPrimary))
+                .frame(width: 44, height: 44)
+                .background(prominent ? AppColors.accentFill : AppColors.surface, in: .circle)
+                .overlay(Circle().strokeBorder(prominent ? Color.clear : AppColors.control, lineWidth: 1))
                 .frame(width: AppSpacing.touch, height: AppSpacing.touch)
                 .contentShape(.circle)
         }
-        .modifier(GlassButtonStyleModifier(prominent: prominent))
-        .buttonBorderShape(.circle)
+        .buttonStyle(PMPressStyle())
         .accessibilityLabel(Text(verbatim: label))
     }
 }
 
+/// Frühere Glas-Knopfstile: jetzt die Artefakt-Stile.
 struct GlassButtonStyleModifier: ViewModifier {
     let prominent: Bool
-    @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
-    @Environment(\.colorSchemeContrast) private var contrast
 
     @ViewBuilder
     func body(content: Content) -> some View {
-        if reduceTransparency || contrast == .increased {
-            if prominent { content.buttonStyle(.borderedProminent) } else { content.buttonStyle(.bordered) }
-        } else {
-            if prominent { content.buttonStyle(.glassProminent) } else { content.buttonStyle(.glass) }
-        }
+        if prominent { content.buttonStyle(.pmProminent) } else { content.buttonStyle(.pmBordered) }
     }
 }
 
-/// Hauptaktion auf ruhigem Grund (Listen, Karten): deckend, klar lesbar. Über Medien: `.glassProminent`.
+/// Gefüllter Knopf in der aktuellen Tönung (Standard: Bernstein) mit dunkler Schrift.
+struct PMProminentButtonStyle: ButtonStyle {
+    @Environment(\.isEnabled) private var isEnabled
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(PMFont.text(.bold, 16, relativeTo: .headline))
+            .foregroundStyle(AppColors.onAccent)
+            .padding(.horizontal, 18)
+            .padding(.vertical, 11)
+            .frame(minHeight: AppSpacing.minTouch)
+            .background(.tint, in: .rect(cornerRadius: 16))
+            .opacity(isEnabled ? (configuration.isPressed ? 0.85 : 1) : 0.4)
+            .contentShape(.rect(cornerRadius: 16))
+    }
+}
+
+/// Umrandeter Knopf: dunkle Fläche, Rand #2F2B28, helle Schrift.
+struct PMBorderedButtonStyle: ButtonStyle {
+    @Environment(\.isEnabled) private var isEnabled
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .font(PMFont.text(.semibold, 15, relativeTo: .subheadline))
+            .foregroundStyle(AppColors.textPrimary)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 10)
+            .frame(minHeight: AppSpacing.minTouch)
+            .background(AppColors.surface, in: .capsule)
+            .overlay(Capsule().strokeBorder(AppColors.control, lineWidth: 1))
+            .opacity(isEnabled ? (configuration.isPressed ? 0.8 : 1) : 0.4)
+            .contentShape(.capsule)
+    }
+}
+
+/// Nur Druck-Rückmeldung (Inhalt gestaltet sich selbst).
+struct PMPressStyle: ButtonStyle {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .opacity(configuration.isPressed ? 0.82 : 1)
+            .scaleEffect(configuration.isPressed && !reduceMotion ? 0.97 : 1)
+            .animation(AppMotion.open(reduceMotion), value: configuration.isPressed)
+    }
+}
+
+extension ButtonStyle where Self == PMProminentButtonStyle {
+    static var pmProminent: PMProminentButtonStyle { PMProminentButtonStyle() }
+}
+
+extension ButtonStyle where Self == PMBorderedButtonStyle {
+    static var pmBordered: PMBorderedButtonStyle { PMBorderedButtonStyle() }
+}
+
+/// Hauptaktion wie im Artefakt: 56 pt hoch, Radius 18, Bernstein (Löschen: Orange), dunkle Schrift 17/700.
 struct PrimaryButton: View {
     let title: String
     var symbol: String?
     var role: ButtonRole?
     var overMedia = false
+    var trailingArrow = false
     let action: () -> Void
+    @Environment(\.isEnabled) private var isEnabled
 
     var body: some View {
         Button(role: role, action: action) {
-            HStack(spacing: AppSpacing.xs) {
+            HStack(spacing: 10) {
                 if let symbol { Image(systemName: symbol).accessibilityHidden(true) }
                 Text(verbatim: title).multilineTextAlignment(.center)
+                if trailingArrow {
+                    Image(systemName: "arrow.right").font(.system(size: 18, weight: .bold)).accessibilityHidden(true)
+                }
             }
-            .font(AppTypography.headline)
-            .frame(maxWidth: .infinity, minHeight: AppSpacing.touch)
+            .font(AppTypography.button)
+            .foregroundStyle(role == .destructive ? AppColors.onCleanup : AppColors.onAccent)
+            .frame(maxWidth: .infinity, minHeight: 56)
+            .background(role == .destructive ? AppColors.cleanupFill : AppColors.accentFill,
+                        in: .rect(cornerRadius: AppRadii.button))
+            .opacity(isEnabled ? 1 : 0.4)
+            .contentShape(.rect(cornerRadius: AppRadii.button))
         }
-        .modifier(PrimaryStyle(overMedia: overMedia, destructive: role == .destructive))
-    }
-
-    private struct PrimaryStyle: ViewModifier {
-        let overMedia: Bool
-        let destructive: Bool
-        @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
-        @Environment(\.colorSchemeContrast) private var contrast
-
-        func body(content: Content) -> some View {
-            if overMedia && !reduceTransparency && contrast != .increased {
-                content.buttonStyle(.glassProminent).tint(destructive ? AppColors.cleanup : AppColors.accentFill)
-            } else {
-                content.buttonStyle(.borderedProminent).buttonBorderShape(.capsule)
-                    .tint(destructive ? AppColors.cleanup : AppColors.accentFill)
-            }
-        }
+        .buttonStyle(PMPressStyle())
     }
 }
 
+/// Zweite Aktion: umrandet, 52 pt, Radius 16.
 struct SecondaryButton: View {
     let title: String
     var symbol: String?
     var overMedia = false
     let action: () -> Void
+    @Environment(\.isEnabled) private var isEnabled
 
     var body: some View {
         Button(action: action) {
@@ -141,23 +174,14 @@ struct SecondaryButton: View {
                 if let symbol { Image(systemName: symbol).accessibilityHidden(true) }
                 Text(verbatim: title).multilineTextAlignment(.center)
             }
-            .font(AppTypography.headline)
-            .frame(maxWidth: .infinity, minHeight: AppSpacing.touch)
+            .font(PMFont.text(.semibold, 16, relativeTo: .headline))
+            .foregroundStyle(AppColors.textPrimary)
+            .frame(maxWidth: .infinity, minHeight: 52)
+            .background(overMedia ? AppColors.surface : Color.clear, in: .rect(cornerRadius: 16))
+            .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(AppColors.control, lineWidth: 1))
+            .opacity(isEnabled ? 1 : 0.4)
+            .contentShape(.rect(cornerRadius: 16))
         }
-        .modifier(SecondaryStyle(overMedia: overMedia))
-    }
-
-    private struct SecondaryStyle: ViewModifier {
-        let overMedia: Bool
-        @Environment(\.accessibilityReduceTransparency) private var reduceTransparency
-        @Environment(\.colorSchemeContrast) private var contrast
-
-        func body(content: Content) -> some View {
-            if overMedia && !reduceTransparency && contrast != .increased {
-                content.buttonStyle(.glass)
-            } else {
-                content.buttonStyle(.bordered).buttonBorderShape(.capsule)
-            }
-        }
+        .buttonStyle(PMPressStyle())
     }
 }

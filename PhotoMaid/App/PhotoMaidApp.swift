@@ -10,6 +10,7 @@ struct PhotoMaidApp: App {
 
     init() {
         MetricsSubscriber.shared.start()
+        ArtifactAppearance.apply()
         Diagnostics.log(.app, "launch \(AppConfig.appVersion)(\(AppConfig.buildNumber))")
     }
 

@@ -22,7 +22,7 @@ struct BackupView: View {
                 if let importSummary { Text(verbatim: importSummary) }
                 if let restorePlan {
                     Button { Task { await apply(restorePlan) } } label: { Text(key: "backup_apply") }
-                        .buttonStyle(.glassProminent)
+                        .buttonStyle(.pmProminent)
                 }
             }
             Text(key: "backup_privacy").font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)

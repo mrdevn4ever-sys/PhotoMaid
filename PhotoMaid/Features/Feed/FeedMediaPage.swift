@@ -78,12 +78,13 @@ struct FeedMediaPage: View {
             .accessibilityIdentifier(videoReady ? "feed.video.ready" :
                 (asset.isVideo && visibleImage != nil ? "feed.video.poster" : "feed.media"))
             .accessibilityHidden(!isTop)
-            .clipShape(.rect(cornerRadius: AppRadii.card))
+            .clipShape(.rect(cornerRadius: AppRadii.sheet))
+            // Artefakt: feiner Ring, beim Wischen in der Aktionsfarbe (3 pt), dazu ein weicher Schatten.
             .overlay {
-                if let intentColor {
-                    RoundedRectangle(cornerRadius: AppRadii.card).strokeBorder(intentColor, lineWidth: 3)
-                }
+                RoundedRectangle(cornerRadius: AppRadii.sheet)
+                    .strokeBorder(intentColor ?? AppColors.textPrimary.opacity(0.08), lineWidth: 3)
             }
+            .shadow(color: .black.opacity(isTop ? 0.5 : 0), radius: 25, y: 24)
             .task(id: "\(asset.id)-\(isTop)-\(retry)-\(reload)-\(Int(geo.size.width))-\(Int(geo.size.height))") { await load(size: geo.size) }
             .task(id: "\(asset.id)-gif-\(isTop)") {
                 guard isTop else { gifData = nil; return }
@@ -100,7 +101,7 @@ struct FeedMediaPage: View {
 
     private var skipButton: some View {
         Button(action: onSkip) { Text(key: "skip_without_decision").padding(.vertical, AppSpacing.xs) }
-            .buttonStyle(.glass)
+            .buttonStyle(.pmBordered)
             .accessibilityIdentifier("feed.skipUnavailable")
     }
 
@@ -136,7 +137,7 @@ struct FeedMediaPage: View {
 
     private var retryButton: some View {
         Button(action: onRetry) { Text(key: cloudFailed ? "feed_icloud_load" : "retry").padding(.vertical, AppSpacing.xs) }
-            .buttonStyle(.glass)
+            .buttonStyle(.pmBordered)
             .accessibilityIdentifier("feed.retryPreview")
     }
 

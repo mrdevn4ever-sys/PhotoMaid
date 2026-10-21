@@ -6,20 +6,20 @@ import SwiftUI
 struct TodayView: View {
     @Environment(AppModel.self) private var app
     @Environment(\.dynamicTypeSize) private var dynamicType
-    @State private var device: DeviceCapacity?
     @State private var tourStep = 0
     @State private var continueOpen = 0
     @State private var newSince = 0
+    @State private var showGames = false
 
     private var access: PhotoAccess { app.library.access }
 
     var body: some View {
         ScrollViewReader { scroller in
             ScrollView {
-                VStack(alignment: .leading, spacing: AppSpacing.xl) {
+                VStack(alignment: .leading, spacing: AppSpacing.m) {
                     header.id("today.header")
                     WorkspaceColumns(accessibility: dynamicType.isAccessibilitySize) {
-                        VStack(alignment: .leading, spacing: AppSpacing.xl) {
+                        VStack(alignment: .leading, spacing: AppSpacing.m) {
                             if !access.canRead { accessCard }
                             if access.canRead {
                                 ReviewHero(pending: app.snapshot.loaded && app.readReady ? app.pending : nil,
@@ -27,7 +27,6 @@ struct TodayView: View {
                                     app.open(FeedRequest(.allMedia))
                                 }
                                 .tourTarget("today.hero")
-                                .accessibilityIdentifier("today.review")
                                 .id("today.hero")
                             }
                             progressRows
@@ -39,27 +38,29 @@ struct TodayView: View {
                                 InfoBanner(symbol: "arrow.triangle.2.circlepath", tint: AppColors.warning, text: L("today_reconciliation"))
                             }
                         }
-                        VStack(alignment: .leading, spacing: AppSpacing.xl) {
+                        VStack(alignment: .leading, spacing: AppSpacing.m) {
                             statusGroup.tourTarget("today.status").id("today.status")
+                            PMCardRow(icon: .cup, tint: AppColors.later, tile: AppColors.pauseStroke, title: L("memory_break"),
+                                      subtitle: L("art_pause_sub"), subtitleColor: AppColors.pauseText,
+                                      background: AppColors.pauseSurface, stroke: AppColors.pauseStroke, radius: AppRadii.card) {
+                                showGames = true
+                            }
+                            .accessibilityIdentifier("today.games")
                             if access.canRead && app.readReady { QuickAccessSection().tourTarget("today.quick").id("today.quick") }
                             if app.capabilities.tier == .free, let first = app.settings.firstSeenDay, app.today > first {
-                                Button { app.navigate(.pro) } label: {
-                                    NavRow(symbol: "crown", title: L("today_pro_title"), subtitle: L("today_pro2_text"))
+                                PMCardRow(icon: .crown, tint: AppColors.accent, title: L("pro_title"), subtitle: L("pro_subtitle")) {
+                                    app.navigate(.pro)
                                 }
-                                .buttonStyle(.plain)
-                                .padding(.horizontal, AppSpacing.m)
-                                .background(AppColors.surface, in: .rect(cornerRadius: AppRadii.card))
                             }
-                            if let device { StorageLine(device: device) { app.navigate(.storage) } }
                         }
                     }
                 }
                 .padding(.horizontal, AppSpacing.pageMargin)
+                .padding(.top, AppSpacing.xs)
                 .padding(.bottom, AppSpacing.xxl)
             }
             .appPage()
             .toolbar(.hidden, for: .navigationBar)
-            .task(id: app.library.changeToken) { device = DeviceStorage.read() }
             .task(id: "\(app.pending.count)-\(app.cleanupMedia.count)-\(app.settings.continueMonth ?? "")-\(app.settings.lastSessionEnd?.timeIntervalSince1970 ?? 0)") {
                 await countProgress()
             }
@@ -70,33 +71,32 @@ struct TodayView: View {
             }
             .onChange(of: activeTourStep, initial: true) { _, step in scrollToTourTarget(step, scroller) }
             .onChange(of: app.settings.todayTourSeen) { _, seen in if !seen { tourStep = 0 } }
+            .gamesCover(isPresented: $showGames)
         }
     }
 
-    private var greeting: String {
-        let hour = Calendar.current.component(.hour, from: app.now)
-        return switch hour {
-        case 5...10: L("today_greeting_morning")
-        case 18...23, 0...4: L("today_greeting_evening")
-        default: L("today_greeting_day")
-        }
-    }
-
+    /// Kopf wie im Artefakt: nur „PhotoMaid“ (mit Tresor-Rad) und der runde Einstellungen-Knopf.
     private var header: some View {
         HStack(alignment: .bottom) {
-            VStack(alignment: .leading, spacing: 2) {
-                Text(verbatim: greeting).font(AppTypography.subheadline.weight(.semibold)).foregroundStyle(AppColors.textSecondary)
-                // Geheimer Eingang zum Tresor (E16): „PhotoMaid“ 2 Sekunden halten, das „o“ ist ein Tresor-Rad.
-                // Ohne eingerichteten Tresor passiert nichts.
-                VaultDialWordmark()
-                    .dynamicTypeSize(...DynamicTypeSize.accessibility2)
-            }
+            // Geheimer Eingang zum Tresor (E16): „PhotoMaid“ 2 Sekunden halten, das „o“ ist ein Tresor-Rad.
+            // Ohne eingerichteten Tresor passiert nichts.
+            VaultDialWordmark()
+                .dynamicTypeSize(...DynamicTypeSize.accessibility2)
             Spacer()
-            GlassIconButton(symbol: "gearshape", label: L("settings")) { app.navigate(.settings) }
-                .tourTarget("today.settings")
-                .accessibilityIdentifier("today.settings")
+            Button { app.navigate(.settings) } label: {
+                PMIcon(.gear, size: 20)
+                    .foregroundStyle(AppColors.textPrimary)
+                    .frame(width: 44, height: 44)
+                    .background(AppColors.surface, in: .circle)
+                    .overlay(Circle().strokeBorder(AppColors.control, lineWidth: 1))
+                    .contentShape(.circle)
+            }
+            .buttonStyle(PMPressStyle())
+            .accessibilityLabel(Text(key: "settings"))
+            .tourTarget("today.settings")
+            .accessibilityIdentifier("today.settings")
         }
-        .padding(.top, AppSpacing.m)
+        .padding(.top, AppSpacing.xs)
     }
 
     private var accessCard: some View {
@@ -143,46 +143,40 @@ struct TodayView: View {
     @ViewBuilder
     private var progressRows: some View {
         let month = MonthKey.parse(app.settings.continueMonth)
-        if access.canRead && ((month != nil && continueOpen > 0) || newSince > 0) {
-            RowGroup {
-                if let month, continueOpen > 0 {
-                    Button { app.open(FeedRequest(.month(month, again: false))) } label: {
-                        NavRow(symbol: "calendar", tint: AppColors.amber, title: L("today_continue_month", MonthText.title(month)),
-                               subtitle: LP("hub_pending", continueOpen))
-                    }
-                    .buttonStyle(.plain)
-                    if newSince > 0 { SwiftUI.Divider().padding(.leading, 52) }
+        if access.canRead {
+            if let month, continueOpen > 0 {
+                PMCardRow(icon: .calendar, tint: AppColors.accent, title: L("today_continue_month", MonthText.title(month)),
+                          subtitle: LP("hub_pending", continueOpen)) {
+                    app.open(FeedRequest(.month(month, again: false)))
                 }
-                if newSince > 0 {
-                    Button { app.open(FeedRequest(.newSince)) } label: {
-                        NavRow(symbol: "sparkles", title: LP("today_new_since", newSince), subtitle: L("today_new_since_sub"))
-                    }
-                    .buttonStyle(.plain)
+            }
+            if newSince > 0 {
+                PMCardRow(icon: .sparkles, tint: AppColors.accent, title: LP("today_new_since", newSince),
+                          subtitle: L("today_new_since_sub")) {
+                    app.open(FeedRequest(.newSince))
                 }
             }
         }
     }
 
+    /// Papierkorb und Später als zwei Kacheln (Artefakt), darüber ggf. „Wieder dran“.
     private var statusGroup: some View {
-        RowGroup {
+        VStack(spacing: AppSpacing.s) {
             if app.dueCount > 0 {
-                Button { app.open(FeedRequest(.due)) } label: {
-                    NavRow(symbol: "calendar.badge.clock", tint: AppColors.later, title: LP("today_due", app.dueCount))
+                PMCardRow(icon: .calendar, tint: AppColors.later, title: LP("today_due", app.dueCount)) {
+                    app.open(FeedRequest(.due))
                 }
-                .buttonStyle(.plain)
-                SwiftUI.Divider().padding(.leading, 52)
             }
-            Button { app.navigate(.trash) } label: {
-                NavRow(symbol: "trash", tint: AppColors.cleanup, title: L("basket"), value: CountText.number(app.read.basket.count))
+            HStack(spacing: AppSpacing.s) {
+                PMStackTile(icon: .trash, tint: AppColors.cleanup, value: CountText.number(app.read.basket.count),
+                            title: L("basket")) { app.navigate(.trash) }
+                    .accessibilityLabel(Text(verbatim: L("basket") + ", " + LP("items_count", app.read.basket.count)))
+                    .accessibilityIdentifier("today.trash")
+                PMStackTile(icon: .clock, tint: AppColors.later, value: CountText.number(app.read.laterRecords.count),
+                            title: L("later")) { app.navigate(.later) }
+                    .accessibilityLabel(Text(verbatim: L("later") + ", " + LP("items_count", app.read.laterRecords.count)))
+                    .accessibilityIdentifier("today.later")
             }
-            .buttonStyle(.plain)
-            .accessibilityLabel(Text(verbatim: L("basket") + ", " + LP("items_count", app.read.basket.count)))
-            SwiftUI.Divider().padding(.leading, 52)
-            Button { app.navigate(.later) } label: {
-                NavRow(symbol: "clock", tint: AppColors.later, title: L("later"), value: CountText.number(app.read.laterRecords.count))
-            }
-            .buttonStyle(.plain)
-            .accessibilityLabel(Text(verbatim: L("later") + ", " + LP("items_count", app.read.laterRecords.count)))
         }
     }
 
@@ -229,7 +223,8 @@ struct RowGroup<Content: View>: View {
     }
 }
 
-/// Hero: die nächsten echten Medien randlos oben, darunter die Zahl offener Medien und EIN großer Knopf.
+/// Hero wie im Artefakt: Etikett „Noch durchzusehen“, große Zahl, Satz, Bernstein-Knopf; oben rechts ein Fächer aus
+/// den nächsten echten Medien, der alle paar Sekunden einen Wisch andeutet (links, rechts, hoch).
 struct ReviewHero: View {
     let pending: [ItemReference]?
     let hasHistory: Bool
@@ -237,62 +232,65 @@ struct ReviewHero: View {
     let start: () -> Void
 
     var body: some View {
-        VStack(spacing: 0) {
+        VStack(alignment: .leading, spacing: 18) {
             if let pending {
                 if pending.isEmpty {
-                    HStack(spacing: AppSpacing.s) {
-                        Image(systemName: "checkmark.circle.fill").font(.title).foregroundStyle(AppColors.success)
-                            .frame(width: 48, height: 48)
-                            .background(AppColors.success.opacity(0.12), in: .rect(cornerRadius: AppRadii.small))
-                            .accessibilityHidden(true)
-                        VStack(alignment: .leading) {
-                            Text(key: "today_done_title").font(AppTypography.title)
-                            Text(key: "today_done_subtitle").font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
-                        }
-                        Spacer(minLength: 0)
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(key: "today_done_title").font(PMFont.display(34)).tracking(-0.7)
+                            .foregroundStyle(AppColors.textPrimary)
+                        Text(key: "today_done_subtitle").font(AppTypography.subheadline)
+                            .foregroundStyle(AppColors.textSecondary)
                     }
-                    .padding(AppSpacing.m)
+                    .padding(.top, 4)
                     .accessibilityElement(children: .combine)
                 } else {
-                    HStack(spacing: 2) {
-                        ForEach(Array(pending.prefix(3)), id: \.self) { ref in
-                            AssetCell(assetID: ref.localIdentifier)
-                        }
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(key: "art_today_left").eyebrow()
+                        Text(verbatim: CountText.number(pending.count))
+                            .font(AppTypography.display).tracking(-1.74)
+                            .foregroundStyle(AppColors.textPrimary)
+                            .lineLimit(1).minimumScaleFactor(0.6)
+                        Text(verbatim: L("art_today_media") + " " + L(hasHistory ? "today_continue_sub" : "today_start_sub"))
+                            .font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
+                            .frame(maxWidth: 200, alignment: .leading)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
-                    .frame(height: 168)
-                    .accessibilityHidden(true)
-                    VStack(alignment: .leading, spacing: AppSpacing.s) {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text(verbatim: LP("today_pending_count", pending.count)).font(AppTypography.title)
-                            Text(key: hasHistory ? "today_continue_sub" : "today_start_sub")
-                                .font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
+                    .padding(.top, 4)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .accessibilityElement(children: .combine)
+                    PrimaryButton(title: L(hasHistory ? "today_continue_cta" : "today_start_cta"), trailingArrow: true,
+                                  action: start)
+                        .accessibilityHint(Text(key: "today_review_hint"))
+                        .accessibilityIdentifier("today.review")
+                    if showGestures {
+                        ViewThatFits(in: .horizontal) {
+                            HStack(spacing: AppSpacing.m) { gestureChips }
+                            VStack(alignment: .leading, spacing: AppSpacing.xs) { gestureChips }
                         }
-                        .accessibilityElement(children: .combine)
-                        PrimaryButton(title: L(hasHistory ? "today_continue_cta" : "today_start_cta"), action: start)
-                            .accessibilityHint(Text(key: "today_review_hint"))
-                        if showGestures {
-                            ViewThatFits(in: .horizontal) {
-                                HStack(spacing: AppSpacing.m) { gestureChips }
-                                VStack(alignment: .leading, spacing: AppSpacing.xs) { gestureChips }
-                            }
-                            .frame(maxWidth: .infinity)
-                            .accessibilityHidden(true)
-                        }
+                        .frame(maxWidth: .infinity)
+                        .accessibilityHidden(true)
                     }
-                    .padding(AppSpacing.m)
                 }
             } else {
-                Rectangle().fill(AppColors.backgroundTint).frame(height: 168)
                 VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                    RoundedRectangle(cornerRadius: 6).fill(AppColors.backgroundTint).frame(width: 200, height: 22)
-                    RoundedRectangle(cornerRadius: 6).fill(AppColors.backgroundTint).frame(width: 260, height: 14)
-                    Capsule().fill(AppColors.backgroundTint).frame(height: AppSpacing.touch)
+                    RoundedRectangle(cornerRadius: 6).fill(AppColors.control).frame(width: 140, height: 14)
+                    RoundedRectangle(cornerRadius: 8).fill(AppColors.control).frame(width: 180, height: 52)
+                    RoundedRectangle(cornerRadius: 6).fill(AppColors.control).frame(width: 200, height: 14)
                 }
-                .padding(AppSpacing.m)
-                .accessibilityHidden(true)
+                .padding(.top, 4)
+                RoundedRectangle(cornerRadius: AppRadii.button).fill(AppColors.control).frame(height: 56)
+                    .accessibilityHidden(true)
             }
         }
+        .padding(22)
         .frame(maxWidth: .infinity, alignment: .leading)
+        .overlay(alignment: .topTrailing) {
+            if let pending, !pending.isEmpty {
+                HeroFan(ids: pending.prefix(3).map(\.localIdentifier))
+                    .padding(.top, 18).padding(.trailing, 18)
+                    .accessibilityHidden(true)
+            }
+        }
         .background(AppColors.surface)
         .clipShape(.rect(cornerRadius: AppRadii.sheet))
         .overlay(RoundedRectangle(cornerRadius: AppRadii.sheet).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
@@ -309,6 +307,201 @@ struct ReviewHero: View {
             GestureArrow(direction: d).font(.footnote.weight(.bold)).foregroundStyle(tint)
             Text(key: key).font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
         }
+    }
+}
+
+/// Fächer aus drei echten Medien (66 × 88, weißer Rand 3, gedreht −12°/10°/−2°). Die vordere Karte deutet alle 4,8 s
+/// einen Wisch an: links (Papierkorb), rechts (Später), hoch (Behalten); die hinteren schaukeln leicht.
+/// „Bewegung reduzieren“: ruhig. Nur Anzeige – nie eine Entscheidung.
+struct HeroFan: View {
+    let ids: [String]
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    struct Wiggle {
+        var x: Double = 0
+        var y: Double = 0
+        var angle: Double = 0
+    }
+
+    private struct Slot { let left: CGFloat; let rotation: Double }
+    private let slots = [Slot(left: 0, rotation: -12), Slot(left: 50, rotation: 10), Slot(left: 24, rotation: -2)]
+
+    var body: some View {
+        ZStack(alignment: .topLeading) {
+            ForEach(Array(ids.enumerated()), id: \.element) { index, id in
+                let slot = slots[min(index, slots.count - 1)]
+                card(id)
+                    .modifier(FanWiggle(slot: index, base: slot.rotation, animate: !reduceMotion))
+                    .offset(x: slot.left, y: 4)
+            }
+        }
+        .frame(width: 120, height: 110, alignment: .topLeading)
+    }
+
+    private func card(_ id: String) -> some View {
+        AssetCell(assetID: id)
+            .frame(width: 66, height: 88)
+            .clipShape(.rect(cornerRadius: 9))
+            .padding(3)
+            .background(AppColors.textPrimary, in: .rect(cornerRadius: 12))
+            .compositingGroup()
+            .shadow(color: .black.opacity(0.45), radius: 10, y: 8)
+    }
+}
+
+/// Bewegung einer Fächerkarte (Zeiten wie die CSS-Keyframes des Artefakts, Zyklus 4,8 s).
+private struct FanWiggle: ViewModifier {
+    let slot: Int
+    let base: Double
+    let animate: Bool
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        if !animate {
+            content.rotationEffect(.degrees(base))
+        } else if slot == 0 {
+            // 0–55 % Ruhe, 70 % (−3, −15°), 85 % (−11°), 100 % (−12°)
+            content.keyframeAnimator(initialValue: HeroFan.Wiggle(angle: base), repeating: true) { view, v in
+                view.rotationEffect(.degrees(v.angle)).offset(x: v.x, y: v.y)
+            } keyframes: { _ in
+                KeyframeTrack(\.angle) {
+                    LinearKeyframe(base, duration: 2.64)
+                    CubicKeyframe(base - 3, duration: 0.72)
+                    CubicKeyframe(base + 1, duration: 0.72)
+                    CubicKeyframe(base, duration: 0.72)
+                }
+                KeyframeTrack(\.x) {
+                    LinearKeyframe(0, duration: 2.64)
+                    CubicKeyframe(-3, duration: 0.72)
+                    CubicKeyframe(0, duration: 0.72)
+                    CubicKeyframe(0, duration: 0.72)
+                }
+            }
+        } else if slot == 1 {
+            // 0–55 % Ruhe, 72 % (+3, 13°), 87 % (9°), 100 % (10°)
+            content.keyframeAnimator(initialValue: HeroFan.Wiggle(angle: base), repeating: true) { view, v in
+                view.rotationEffect(.degrees(v.angle)).offset(x: v.x, y: v.y)
+            } keyframes: { _ in
+                KeyframeTrack(\.angle) {
+                    LinearKeyframe(base, duration: 2.64)
+                    CubicKeyframe(base + 3, duration: 0.816)
+                    CubicKeyframe(base - 1, duration: 0.72)
+                    CubicKeyframe(base, duration: 0.624)
+                }
+                KeyframeTrack(\.x) {
+                    LinearKeyframe(0, duration: 2.64)
+                    CubicKeyframe(3, duration: 0.816)
+                    CubicKeyframe(0, duration: 0.72)
+                    CubicKeyframe(0, duration: 0.624)
+                }
+            }
+        } else {
+            // 0–50 % Ruhe, 58 % links (Papierkorb), 66 %, 74 % rechts (Später), 82 %, 90 % hoch (Behalten), 100 %
+            content.keyframeAnimator(initialValue: HeroFan.Wiggle(angle: base), repeating: true) { view, v in
+                view.rotationEffect(.degrees(v.angle)).offset(x: v.x, y: v.y)
+            } keyframes: { _ in
+                KeyframeTrack(\.angle) {
+                    LinearKeyframe(base, duration: 2.4)
+                    CubicKeyframe(base - 5, duration: 0.384)
+                    CubicKeyframe(base, duration: 0.384)
+                    CubicKeyframe(base + 5, duration: 0.384)
+                    CubicKeyframe(base, duration: 0.384)
+                    CubicKeyframe(base, duration: 0.384)
+                    CubicKeyframe(base, duration: 0.48)
+                }
+                KeyframeTrack(\.x) {
+                    LinearKeyframe(0, duration: 2.4)
+                    CubicKeyframe(-9, duration: 0.384)
+                    CubicKeyframe(0, duration: 0.384)
+                    CubicKeyframe(9, duration: 0.384)
+                    CubicKeyframe(0, duration: 0.384)
+                    CubicKeyframe(0, duration: 0.384)
+                    CubicKeyframe(0, duration: 0.48)
+                }
+                KeyframeTrack(\.y) {
+                    LinearKeyframe(0, duration: 3.936)
+                    CubicKeyframe(-7, duration: 0.384)
+                    CubicKeyframe(0, duration: 0.48)
+                }
+            }
+        }
+    }
+}
+
+/// Karte mit Symbolkachel, Titel, Untertitel und Pfeil (Artefakt: „27 neue Fotos und Videos“, „Kurze Pause“, Pro).
+struct PMCardRow: View {
+    let icon: PMIconName
+    var tint: Color = AppColors.accent
+    var tile: Color?
+    let title: String
+    var subtitle: String?
+    var subtitleColor: Color = AppColors.textSecondary
+    var background: Color = AppColors.surface
+    var stroke: Color = AppColors.surfaceStroke
+    var radius: CGFloat = 20
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 14) {
+                PMIcon(icon, size: 20)
+                    .foregroundStyle(tint)
+                    .frame(width: 40, height: 40)
+                    .background(tile ?? PMTile.background(for: tint), in: .rect(cornerRadius: AppRadii.small))
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(verbatim: title).font(AppTypography.headline).foregroundStyle(AppColors.textPrimary)
+                        .fixedSize(horizontal: false, vertical: true)
+                    if let subtitle {
+                        Text(verbatim: subtitle).font(AppTypography.footnote).foregroundStyle(subtitleColor)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                }
+                Spacer(minLength: AppSpacing.xs)
+                PMIcon(.chevronRight, size: 18).foregroundStyle(AppColors.textTertiary)
+                    .flipsForRightToLeftLayoutDirection(true)
+            }
+            .padding(.vertical, 14)
+            .padding(.horizontal, 16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(background, in: .rect(cornerRadius: radius))
+            .overlay(RoundedRectangle(cornerRadius: radius).strokeBorder(stroke, lineWidth: 1))
+            .contentShape(.rect(cornerRadius: radius))
+        }
+        .buttonStyle(PMPressStyle())
+        .accessibilityElement(children: .combine)
+    }
+}
+
+/// Kachel mit großer Zahl (Artefakt: Papierkorb 7 · Später 0).
+struct PMStackTile: View {
+    let icon: PMIconName
+    let tint: Color
+    let value: String
+    let title: String
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            VStack(alignment: .leading, spacing: 14) {
+                PMIcon(icon, size: 20)
+                    .foregroundStyle(tint)
+                    .frame(width: 40, height: 40)
+                    .background(PMTile.background(for: tint), in: .rect(cornerRadius: AppRadii.small))
+                VStack(alignment: .leading, spacing: 0) {
+                    Text(verbatim: value).font(AppTypography.metric).foregroundStyle(AppColors.textPrimary)
+                        .lineLimit(1).minimumScaleFactor(0.6)
+                    Text(verbatim: title).font(PMFont.text(.medium, 14, relativeTo: .subheadline))
+                        .foregroundStyle(AppColors.textSecondary)
+                }
+            }
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(AppColors.surface, in: .rect(cornerRadius: AppRadii.card))
+            .overlay(RoundedRectangle(cornerRadius: AppRadii.card).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
+            .contentShape(.rect(cornerRadius: AppRadii.card))
+        }
+        .buttonStyle(PMPressStyle())
+        .accessibilityElement(children: .combine)
     }
 }
 

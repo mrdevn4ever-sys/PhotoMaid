@@ -509,7 +509,7 @@ struct VaultWorkspaceFolderBar: View {
                 }
                 Button(L("vault_new_folder"), systemImage: "folder.badge.plus") { startNewFolder() }
                     .disabled(watching)
-            }.buttonStyle(.bordered).frame(minHeight: 48)
+            }.buttonStyle(.pmBordered).frame(minHeight: 48)
         }.scrollIndicators(.hidden)
         // Gratis: je neuem Ordner ein kurzes Werbevideo (E19); mit Pro ohne.
         .confirmationDialog(L("vault_new_folder"), isPresented: $adPrompt, titleVisibility: .visible) {

@@ -24,8 +24,8 @@ struct SlideshowView: View {
             } else if finished {
                 VStack(spacing: AppSpacing.m) {
                     Text(key: "slideshow_end").font(AppTypography.title).foregroundStyle(.white)
-                    Button(L("slideshow_again")) { index = 0; finished = false; playing = true }.buttonStyle(.glassProminent)
-                    Button(L("close")) { dismiss() }.buttonStyle(.glass)
+                    Button(L("slideshow_again")) { index = 0; finished = false; playing = true }.buttonStyle(.pmProminent)
+                    Button(L("close")) { dismiss() }.buttonStyle(.pmBordered)
                 }
             } else {
                 ZStack {

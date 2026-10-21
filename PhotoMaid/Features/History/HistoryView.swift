@@ -1,72 +1,138 @@
 import PhotoMaidCore
 import SwiftUI
 
-/// Verlauf: Alle / Behalten / Bereinigt / Später. Echte Ereignisse, keine erfundenen Statistiken. Später-Liste oben.
+/// Verlauf: Alle / Behalten / Bereinigt / Später. Echte Ereignisse, keine erfundenen Statistiken.
+/// Experiment-Design: Kennzahl-Kacheln, Filter-Chips und Karten je Eintrag wie im Artefakt.
 struct HistoryView: View {
     @Environment(AppModel.self) private var app
     @State private var filter = 0
 
-    var body: some View {
-        let events = app.read.events.filter { e in
-            switch filter {
-            case 1: e.to.disposition == .kept && e.kind != .undo
-            case 2: e.kind == .cleanupConfirmed || e.kind == .reconciledMissing
-            case 3: e.to.disposition == .later && e.kind != .undo
-            default: true
-            }
+    private func matches(_ e: DecisionEvent, _ filter: Int) -> Bool {
+        switch filter {
+        case 1: e.to.disposition == .kept && e.kind != .undo
+        case 2: e.kind == .cleanupConfirmed || e.kind == .reconciledMissing
+        case 3: e.to.disposition == .later && e.kind != .undo
+        default: true
         }
+    }
+
+    var body: some View {
+        let all = app.read.events
+        let events = all.filter { matches($0, filter) }
         let entries = Array(HistoryGrouping.group(events).reversed())
         let cal = Calendar.current
         let days = Dictionary(grouping: entries) { cal.startOfDay(for: $0.primary.at) }
-        let keys = days.keys.sorted(by: >).prefix(60)
-        List {
-            Section {
-                Button { app.navigate(.later, in: .history) } label: {
-                    NavRow(symbol: "clock", tint: AppColors.later, title: L("later"), value: CountText.number(app.read.laterRecords.count))
+        let keys = Array(days.keys.sorted(by: >).prefix(60))
+        let newest = entries.first?.id
+        ScrollView {
+            VStack(alignment: .leading, spacing: AppSpacing.m) {
+                Text(key: "tab_history").pageTitle().accessibilityAddTraits(.isHeader).padding(.top, AppSpacing.xs)
+                HStack(spacing: 10) {
+                    stat(HistoryGrouping.group(all.filter { matches($0, 1) }).count, "history_kept", AppColors.keep) { filter = 1 }
+                    stat(HistoryGrouping.group(all.filter { matches($0, 2) }).count, "history_cleaned", AppColors.cleanup) { filter = 2 }
+                    stat(app.read.laterRecords.count, "history_later", AppColors.later) { app.navigate(.later, in: .history) }
                 }
-                .buttonStyle(.plain)
-                Picker("", selection: $filter) {
-                    Text(key: "history_all").tag(0)
-                    Text(key: "history_kept").tag(1)
-                    Text(key: "history_cleaned").tag(2)
-                    Text(key: "history_later").tag(3)
+                chips
+                if keys.isEmpty {
+                    if all.isEmpty {
+                        dashed(L("history_empty_title"), L("history_empty"))
+                    } else {
+                        dashed(L("history_filter_empty_title"), L("history_filter_empty"))
+                    }
                 }
-                .pickerStyle(.segmented)
-                .listRowBackground(Color.clear)
+                ForEach(keys, id: \.self) { day in
+                    let list = days[day] ?? []
+                    VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                        Text(verbatim: LP("history_day_header", list.count, DateText.complete(day), list.count))
+                            .font(PMFont.heading(18, relativeTo: .headline)).foregroundStyle(AppColors.textPrimary)
+                            .accessibilityAddTraits(.isHeader)
+                            .padding(.top, 4).padding(.horizontal, 4)
+                        ForEach(list.prefix(300)) { entry in
+                            HistoryRow(entry: entry, undo: entry.id == newest && app.read.canUndo ? {
+                                Task { _ = await app.undo() }
+                            } : nil)
+                        }
+                    }
+                }
             }
-            if keys.isEmpty {
-                if app.read.events.isEmpty {
-                    EmptyState(symbol: "clock.arrow.circlepath", title: L("history_empty_title"), message: L("history_empty"))
-                        .listRowBackground(Color.clear)
-                } else {
-                    EmptyState(symbol: "line.3.horizontal.decrease.circle", title: L("history_filter_empty_title"),
-                               message: L("history_filter_empty"))
-                        .listRowBackground(Color.clear)
-                }
-            }
-            ForEach(Array(keys), id: \.self) { day in
-                let list = days[day] ?? []
-                Section(LP("history_day_header", list.count, DateText.complete(day), list.count)) {
-                    ForEach(list.prefix(300)) { HistoryRow(entry: $0) }
-                }
-            }
+            .padding(.horizontal, AppSpacing.pageMargin)
+            .padding(.bottom, AppSpacing.xxl)
+            .frame(maxWidth: 720).frame(maxWidth: .infinity)
         }
-        .appPage().readableContent()
+        .appPage()
+        .toolbar(.hidden, for: .navigationBar)
         .navigationTitle(L("tab_history"))
         .accessibilityIdentifier("history.events")
-        .accessibilityValue(Text(verbatim: String(app.read.events.count)))
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button { Task { _ = await app.undo() } } label: { Image(systemName: "arrow.uturn.backward") }
-                    .disabled(!app.read.canUndo)
-                    .accessibilityLabel(Text(key: "undo"))
+        .accessibilityValue(Text(verbatim: String(all.count)))
+    }
+
+    private func stat(_ value: Int, _ key: String, _ tint: Color, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(verbatim: CountText.number(value)).font(PMFont.heading(28, relativeTo: .title)).foregroundStyle(tint)
+                    .lineLimit(1).minimumScaleFactor(0.5)
+                Text(key: key).font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary).lineLimit(1)
+            }
+            .padding(14)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(AppColors.surface, in: .rect(cornerRadius: 18))
+            .overlay(RoundedRectangle(cornerRadius: 18).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
+            .contentShape(.rect(cornerRadius: 18))
+        }
+        .buttonStyle(PMPressStyle())
+        .accessibilityElement(children: .combine)
+    }
+
+    private var chips: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: AppSpacing.xs) {
+                ForEach(Array(["history_all", "history_kept", "history_cleaned", "history_later"].enumerated()), id: \.offset) { i, key in
+                    PMChip(title: L(key), selected: filter == i) { filter = i }
+                }
             }
         }
+        .accessibilityIdentifier("history.filter")
+    }
+
+    private func dashed(_ title: String, _ text: String) -> some View {
+        VStack(spacing: 6) {
+            Text(verbatim: title).font(AppTypography.headline).foregroundStyle(AppColors.textPrimary)
+            Text(verbatim: text).font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
+        }
+        .multilineTextAlignment(.center)
+        .padding(.vertical, 28).padding(.horizontal, 20)
+        .frame(maxWidth: .infinity)
+        .overlay(RoundedRectangle(cornerRadius: 20).strokeBorder(AppColors.dashed, style: StrokeStyle(lineWidth: 1.5, dash: [6, 5])))
+        .accessibilityElement(children: .combine)
+    }
+}
+
+/// Auswahl-Chip (Artefakt): Kapsel 36 pt; gewählt hell mit dunkler Schrift.
+struct PMChip: View {
+    let title: String
+    let selected: Bool
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            Text(verbatim: title)
+                .font(PMFont.text(.semibold, 14, relativeTo: .subheadline))
+                .foregroundStyle(selected ? AppColors.background : AppColors.textPrimary)
+                .padding(.horizontal, 14)
+                .frame(minHeight: 36)
+                .background(selected ? AppColors.textPrimary : AppColors.surface, in: .capsule)
+                .overlay(Capsule().strokeBorder(selected ? AppColors.textPrimary : AppColors.control, lineWidth: 1))
+                .frame(minHeight: AppSpacing.minTouch)
+                .contentShape(.rect)
+        }
+        .buttonStyle(PMPressStyle())
+        .accessibilityAddTraits(selected ? [.isSelected] : [])
     }
 }
 
 struct HistoryRow: View {
     let entry: HistoryEntry
+    var undo: (() -> Void)?
 
     var body: some View {
         let e = entry.primary
@@ -80,15 +146,45 @@ struct HistoryRow: View {
             L(key)
         }
         HStack(spacing: AppSpacing.s) {
-            if e.item.provider == .photoLibrary { AssetThumbnail(assetID: e.item.localIdentifier, side: 44) }
-            Image(systemName: symbol).foregroundStyle(tint).frame(width: 24).accessibilityHidden(true)
-            VStack(alignment: .leading) {
-                Text(verbatim: text).font(AppTypography.subheadline.weight(.semibold))
-                Text(verbatim: DateText.time(e.at)).font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
+            Group {
+                if e.item.provider == .photoLibrary {
+                    AssetCell(assetID: e.item.localIdentifier)
+                } else {
+                    Image(systemName: symbol).font(.system(size: 18, weight: .medium)).foregroundStyle(tint)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(PMTile.background(for: tint))
+                }
+            }
+            .frame(width: 44, height: 54)
+            .clipShape(.rect(cornerRadius: 10))
+            .accessibilityHidden(true)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(verbatim: text).font(PMFont.text(.semibold, 15, relativeTo: .subheadline)).foregroundStyle(tint)
+                    .fixedSize(horizontal: false, vertical: true)
+                Text(verbatim: DateText.time(e.at)).font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
             }
             Spacer(minLength: 0)
+            if let undo {
+                Button(action: undo) {
+                    HStack(spacing: 6) {
+                        PMIcon(.undo, size: 14, lineWidth: 2.4)
+                        Text(key: "undo").font(PMFont.text(.semibold, 13, relativeTo: .footnote))
+                    }
+                    .foregroundStyle(AppColors.textPrimary)
+                    .padding(.horizontal, 12)
+                    .frame(minHeight: 36)
+                    .background(AppColors.background, in: .capsule)
+                    .overlay(Capsule().strokeBorder(AppColors.control, lineWidth: 1))
+                    .frame(minHeight: AppSpacing.minTouch)
+                    .contentShape(.rect)
+                }
+                .buttonStyle(PMPressStyle())
+                .accessibilityIdentifier("history.undo")
+            }
         }
-        .frame(minHeight: 56)
+        .padding(10)
+        .background(AppColors.surface, in: .rect(cornerRadius: 16))
+        .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
         .accessibilityElement(children: .combine)
     }
 

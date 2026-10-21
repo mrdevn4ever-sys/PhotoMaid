@@ -40,45 +40,78 @@ struct LibraryView: View {
         }
         .appPage()
         .safeAreaInset(edge: .top, spacing: 0) {
-            modePicker
-                .padding(.horizontal, AppSpacing.pageMargin)
-                .padding(.vertical, AppSpacing.xs)
-                .frame(maxWidth: .infinity)
-                .background(AppColors.background)
+            VStack(alignment: .leading, spacing: 14) {
+                header
+                modePicker
+            }
+            .padding(.horizontal, AppSpacing.pageMargin)
+            .padding(.top, AppSpacing.xs)
+            .padding(.bottom, AppSpacing.s)
+            .frame(maxWidth: .infinity)
+            .background(AppColors.background)
         }
         .navigationTitle(L("tab_library"))
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItemGroup(placement: .topBarTrailing) {
-                if mode == 0 {
-                    filterMenu
-                    Button(L(selecting ? "done" : "grid_select")) {
-                        selecting.toggle()
-                        if !selecting { selection = [] }
-                    }
-                }
-                Menu {
-                    Button { app.navigate(.search) } label: { Label(L("lib_search"), systemImage: "magnifyingglass") }
-                    Button { app.navigate(.selectionBasket) } label: { Label(L("org_basket"), systemImage: "basket") }
-                    Button { app.navigate(.tags) } label: { Label(L("org_tags"), systemImage: "tag") }
-                    Button { app.navigate(.hidden) } label: { Label(L("lib_hidden_title"), systemImage: "eye.slash") }
-                    Button { app.fullScreen = .slideshow(ids: visible.map(\.id)) } label: {
-                        Label(L("slideshow_start"), systemImage: "play.rectangle")
-                    }
-                    SwiftUI.Divider()
-                    Button { app.navigate(.settings) } label: { Label(L("settings"), systemImage: "gearshape") }
-                } label: {
-                    Image(systemName: "ellipsis.circle")
-                }
-                .accessibilityLabel(Text(key: "more_actions"))
-            }
-        }
+        .toolbar(.hidden, for: .navigationBar)
         .safeAreaInset(edge: .bottom) {
             if selecting && mode == 0 {
                 SelectionBar(ids: Array(selection)) { selection = []; selecting = false }
                     .padding(.bottom, AppSpacing.xs)
             }
         }
+    }
+
+    /// Kopf wie im Artefakt: „Fotos“, rechts Suche, Auswählen/Fertig und Mehr.
+    private var header: some View {
+        HStack(alignment: .bottom, spacing: AppSpacing.xs) {
+            Text(key: "tab_library").pageTitle().accessibilityAddTraits(.isHeader)
+            Spacer(minLength: 0)
+            circleButton(.search, L("lib_search")) { app.navigate(.search) }
+            if mode == 0 {
+                Button {
+                    selecting.toggle()
+                    if !selecting { selection = [] }
+                } label: {
+                    Text(key: selecting ? "done" : "grid_select")
+                        .font(PMFont.text(.semibold, 15, relativeTo: .subheadline))
+                        .foregroundStyle(selecting ? AppColors.onAccent : AppColors.textPrimary)
+                        .padding(.horizontal, 16)
+                        .frame(height: 44)
+                        .background(selecting ? AppColors.accentFill : AppColors.surface, in: .capsule)
+                        .overlay(Capsule().strokeBorder(selecting ? Color.clear : AppColors.control, lineWidth: 1))
+                        .contentShape(.capsule)
+                }
+                .buttonStyle(PMPressStyle())
+            }
+            Menu {
+                Button { app.navigate(.search) } label: { Label(L("lib_search"), systemImage: "magnifyingglass") }
+                Button { app.navigate(.selectionBasket) } label: { Label(L("org_basket"), systemImage: "basket") }
+                Button { app.navigate(.tags) } label: { Label(L("org_tags"), systemImage: "tag") }
+                Button { app.navigate(.hidden) } label: { Label(L("lib_hidden_title"), systemImage: "eye.slash") }
+                Button { app.fullScreen = .slideshow(ids: visible.map(\.id)) } label: {
+                    Label(L("slideshow_start"), systemImage: "play.rectangle")
+                }
+                SwiftUI.Divider()
+                Button { app.navigate(.settings) } label: { Label(L("settings"), systemImage: "gearshape") }
+            } label: {
+                circleLabel(.more)
+            }
+            .accessibilityLabel(Text(key: "more_actions"))
+        }
+    }
+
+    private func circleLabel(_ icon: PMIconName) -> some View {
+        PMIcon(icon, size: 19, lineWidth: 2.2)
+            .foregroundStyle(AppColors.textPrimary)
+            .frame(width: 44, height: 44)
+            .background(AppColors.surface, in: .circle)
+            .overlay(Circle().strokeBorder(AppColors.control, lineWidth: 1))
+            .contentShape(.circle)
+    }
+
+    private func circleButton(_ icon: PMIconName, _ label: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) { circleLabel(icon) }
+            .buttonStyle(PMPressStyle())
+            .accessibilityLabel(Text(verbatim: label))
     }
 
     @ViewBuilder private var modePicker: some View {
@@ -136,7 +169,17 @@ struct LibraryView: View {
                 Label(L("lib_view_aspect"), systemImage: "rectangle.grid.3x2").tag(true)
             }
         } label: {
-            Image(systemName: filter == .all ? "line.3.horizontal.decrease.circle" : "line.3.horizontal.decrease.circle.fill")
+            HStack(spacing: 6) {
+                PMIcon(.filter, size: 14, lineWidth: 2.2)
+                Text(key: "lib_filter_title").font(PMFont.text(.semibold, 13, relativeTo: .footnote))
+            }
+            .foregroundStyle(filter == .all ? AppColors.textPrimary : AppColors.onAccent)
+            .padding(.horizontal, 12)
+            .frame(height: 34)
+            .background(filter == .all ? AppColors.surface : AppColors.accentFill, in: .capsule)
+            .overlay(Capsule().strokeBorder(filter == .all ? AppColors.control : Color.clear, lineWidth: 1))
+            .frame(minHeight: AppSpacing.minTouch)
+            .contentShape(.rect)
         }
         .accessibilityLabel(Text(key: "lib_filter_title"))
         .accessibilityValue(Text(verbatim: LibraryFilterText.title(filter)))
@@ -175,18 +218,24 @@ struct LibraryView: View {
                 LoadingState(message: L("feed_loading")).frame(minHeight: 300)
             } else {
                 if byAdded {
-                    Text(key: "lib_order_added_note")
-                        .font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, AppSpacing.pageMargin)
-                } else {
-                    Picker(L("lib_sort"), selection: $level) {
-                        Text(key: "lib_level_day").tag(TimelineLevel.day)
-                        Text(key: "lib_level_month").tag(TimelineLevel.month)
-                        Text(key: "lib_level_year").tag(TimelineLevel.year)
+                    HStack(alignment: .center) {
+                        Text(key: "lib_order_added_note")
+                            .font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
+                        Spacer(minLength: AppSpacing.xs)
+                        filterMenu
                     }
-                    .pickerStyle(.segmented)
                     .padding(.horizontal, AppSpacing.pageMargin)
+                } else {
+                    HStack(spacing: AppSpacing.xs) {
+                        PMChip(title: L("lib_level_day"), selected: level == .day) { level = .day }
+                        PMChip(title: L("lib_level_month"), selected: level == .month) { level = .month }
+                        PMChip(title: L("lib_level_year"), selected: level == .year) { level = .year }
+                        Spacer(minLength: 0)
+                        filterMenu
+                    }
+                    .padding(.horizontal, AppSpacing.pageMargin)
+                    .accessibilityElement(children: .contain)
+                    .accessibilityIdentifier("library.level")
                 }
                 if filter != .all { filterChip(count: list.count) }
                 if list.isEmpty {

@@ -40,7 +40,7 @@ struct OnboardingFlow: View {
                     } label: {
                         Text(verbatim: offerLabel)
                     }
-                    .buttonStyle(.glass)
+                    .buttonStyle(.pmBordered)
                     .disabled(app.purchases.isBusy)
                 }
                 HStack {
@@ -51,7 +51,7 @@ struct OnboardingFlow: View {
                     Spacer()
                     Button(action: next) { Text(key: page == pages.count - 1 ? "privacy_allow" : "onb_next") }
                         .accessibilityIdentifier("onboarding.next")
-                        .buttonStyle(.glassProminent)
+                        .buttonStyle(.pmProminent)
                 }
                 .padding(.horizontal, AppSpacing.pageMargin)
                 .padding(.bottom, AppSpacing.m)

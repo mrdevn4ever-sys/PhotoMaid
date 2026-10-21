@@ -21,7 +21,7 @@ struct LaterView: View {
                                 app.updateSettings { $0.notificationsOptIn = app.reminders.access == .allowed }
                             }
                         }
-                        .buttonStyle(.glass)
+                        .buttonStyle(.pmBordered)
                     }
                 }
             }

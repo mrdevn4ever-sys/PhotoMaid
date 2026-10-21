@@ -38,12 +38,12 @@ struct SectionHeader: View {
     var body: some View {
         HStack(alignment: .firstTextBaseline) {
             Text(verbatim: title)
-                .font(AppTypography.title3)
+                .font(AppTypography.title)
                 .foregroundStyle(AppColors.textPrimary)
                 .accessibilityAddTraits(.isHeader)
             Spacer(minLength: AppSpacing.xs)
             if let actionTitle, let action {
-                Button(action: action) { Text(verbatim: actionTitle).font(AppTypography.subheadline.weight(.semibold)) }
+                Button(action: action) { Text(verbatim: actionTitle).font(PMFont.text(.semibold, 15, relativeTo: .subheadline)) }
                     .frame(minHeight: AppSpacing.minTouch)
                     .foregroundStyle(AppColors.accent)
             }
@@ -65,10 +65,10 @@ struct NavRow: View {
     var body: some View {
         HStack(spacing: AppSpacing.s) {
             Image(systemName: symbol)
-                .font(.title3)
+                .font(.system(size: 18, weight: .medium))
                 .foregroundStyle(tint)
                 .frame(width: 40, height: 40)
-                .background(tint.opacity(0.12), in: .rect(cornerRadius: AppRadii.small))
+                .background(PMTile.background(for: tint), in: .rect(cornerRadius: AppRadii.small))
                 .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: 2) {
                 HStack(spacing: AppSpacing.xs) {
@@ -91,17 +91,30 @@ struct NavRow: View {
             }
             Spacer(minLength: AppSpacing.xs)
             if let value, !typeSize.isAccessibilitySize {
-                Text(verbatim: value).font(AppTypography.subheadline.weight(.semibold))
+                Text(verbatim: value).font(AppTypography.subheadline)
                     .foregroundStyle(AppColors.textSecondary).monospacedDigit()
             }
             if showsChevron {
-                Image(systemName: "chevron.forward").font(.footnote.weight(.semibold))
-                    .foregroundStyle(AppColors.textSecondary).accessibilityHidden(true)
+                PMIcon(.chevronRight, size: 18).foregroundStyle(AppColors.textTertiary)
+                    .flipsForRightToLeftLayoutDirection(true)
             }
         }
+        .padding(.vertical, 8)
         .frame(minHeight: AppSpacing.touch)
         .contentShape(.rect)
         .accessibilityElement(children: .combine)
+    }
+}
+
+/// Dunkle Symbolkachel passend zur Tönung (Artefakt: #2A2418 Bernstein, #33201A Papierkorb, #262236 Später …).
+enum PMTile {
+    static func background(for tint: Color) -> Color {
+        if tint == AppColors.cleanup || tint == AppColors.cleanupFill { return AppColors.tileCleanup }
+        if tint == AppColors.later { return AppColors.tileLater }
+        if tint == AppColors.keep { return AppColors.tileKeep }
+        if tint == AppColors.success { return AppColors.tileGreen }
+        if tint == AppColors.accent { return AppColors.tileAmber }
+        return tint.opacity(0.12)
     }
 }
 
@@ -114,7 +127,7 @@ struct BadgeText: View {
         Text(verbatim: text)
             .font(.caption2.weight(.bold))
             .padding(.horizontal, 6).padding(.vertical, 2)
-            .foregroundStyle(.white)
+            .foregroundStyle(AppColors.onAccent)
             .background(tint, in: .capsule)
     }
 }
@@ -202,15 +215,28 @@ struct EmptyState: View {
     var action: (() -> Void)?
 
     var body: some View {
-        ContentUnavailableView {
-            Label { Text(verbatim: title) } icon: { Image(systemName: symbol) }
-        } description: {
-            if let message { Text(verbatim: message) }
-        } actions: {
+        VStack(spacing: AppSpacing.s) {
+            Image(systemName: symbol).font(.system(size: 26, weight: .medium)).foregroundStyle(AppColors.textTertiary)
+                .accessibilityHidden(true)
+            VStack(spacing: 6) {
+                Text(verbatim: title).font(AppTypography.headline).foregroundStyle(AppColors.textPrimary)
+                if let message {
+                    Text(verbatim: message).font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
+                }
+            }
+            .multilineTextAlignment(.center)
+            .fixedSize(horizontal: false, vertical: true)
             if let actionTitle, let action {
-                Button(action: action) { Text(verbatim: actionTitle) }.buttonStyle(.glassProminent)
+                Button(action: action) { Text(verbatim: actionTitle) }.buttonStyle(.pmProminent).padding(.top, 4)
             }
         }
+        .padding(.vertical, 40).padding(.horizontal, 20)
+        .frame(maxWidth: .infinity)
+        .overlay(RoundedRectangle(cornerRadius: AppRadii.card)
+            .strokeBorder(AppColors.dashed, style: StrokeStyle(lineWidth: 1.5, dash: [6, 5])))
+        .padding(.horizontal, AppSpacing.pageMargin)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .accessibilityElement(children: .combine)
     }
 }
 
@@ -224,7 +250,7 @@ struct ErrorState: View {
         } description: {
             Text(verbatim: message)
         } actions: {
-            if let retry { Button(action: retry) { Text(key: "retry") }.buttonStyle(.glass) }
+            if let retry { Button(action: retry) { Text(key: "retry") }.buttonStyle(.pmBordered) }
         }
     }
 }
@@ -266,7 +292,7 @@ struct ProgressPanel: View {
                 }
                 if let cancel {
                     Button(role: .cancel, action: cancel) { Text(key: "cancel") }
-                        .buttonStyle(.bordered).buttonBorderShape(.capsule)
+                        .buttonStyle(.pmBordered).buttonBorderShape(.capsule)
                 }
             }
         }

@@ -108,7 +108,7 @@ struct SmartReviewView: View {
                 Button { showMemory = true } label: {
                     Label(L("memory_break"), systemImage: "cup.and.saucer")
                 }
-                .buttonStyle(.glass)
+                .buttonStyle(.pmBordered)
                 .accessibilityIdentifier("analysis.memory")
             }
         }
@@ -121,20 +121,20 @@ struct SmartReviewView: View {
         let disabled = !isCurrent || analysis.reading
         if analysis.isRunningShown {
             Button { analysis.pause() } label: { Label(L("ana2_pause"), systemImage: "pause.fill") }
-                .buttonStyle(.glass)
+                .buttonStyle(.pmBordered)
         } else if analysis.running {
             VStack(alignment: .leading, spacing: AppSpacing.xs) {
                 HStack(spacing: AppSpacing.s) {
                     if analysis.queuePosition == nil {
                         Button { start(retry: false) } label: { Label(L("ana2_queue"), systemImage: "text.badge.plus") }
-                            .buttonStyle(.glassProminent)
+                            .buttonStyle(.pmProminent)
                             .disabled(disabled)
                     } else {
                         Button { analysis.unqueue() } label: { Label(L("ana2_unqueue"), systemImage: "xmark") }
-                            .buttonStyle(.glass)
+                            .buttonStyle(.pmBordered)
                     }
                     Button { prioritize() } label: { Label(L("ana2_first"), systemImage: "arrow.up.to.line") }
-                        .buttonStyle(.glass)
+                        .buttonStyle(.pmBordered)
                         .disabled(disabled)
                 }
                 detail(L("ana2_queue_note"))
@@ -144,11 +144,11 @@ struct SmartReviewView: View {
                 Button { start(retry: false) } label: {
                     Label(L(counts.complete > 0 ? "ana2_resume" : "ana2_start"), systemImage: "viewfinder")
                 }
-                .buttonStyle(.glassProminent)
+                .buttonStyle(.pmProminent)
                 .disabled(disabled)
                 if counts.failed > 0 {
                     Button { start(retry: true) } label: { Text(verbatim: L("ana2_retry_failed", counts.failed)) }
-                        .buttonStyle(.glass)
+                        .buttonStyle(.pmBordered)
                         .disabled(disabled)
                 }
             }
@@ -284,12 +284,12 @@ struct SmartReviewView: View {
                 HStack {
                     if analysis.page > 0 {
                         Button { analysis.previous() } label: { Label(L("ana2_previous"), systemImage: "chevron.left") }
-                            .buttonStyle(.glass)
+                            .buttonStyle(.pmBordered)
                     }
                     Spacer()
                     if analysis.canNext {
                         Button { analysis.next() } label: { Label(L("ana2_next"), systemImage: "chevron.right") }
-                            .buttonStyle(.glass)
+                            .buttonStyle(.pmBordered)
                     }
                 }
             }
@@ -307,7 +307,7 @@ struct SmartReviewView: View {
                 Label(L("ana2_swipe_all", analysis.feedIDs.count), systemImage: "rectangle.stack")
                     .frame(maxWidth: .infinity, minHeight: AppSpacing.minTouch)
             }
-            .buttonStyle(.glassProminent)
+            .buttonStyle(.pmProminent)
             .accessibilityIdentifier("analysis.swipe")
             Text(key: analysisKind == .similar ? "ana2_swipe_hint_similar" : "ana2_swipe_hint")
                 .font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)

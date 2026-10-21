@@ -168,14 +168,14 @@ struct PhotoMemoryView: View {
                       systemImage: source == .manual ? "photo.badge.plus" : "play.fill")
                     .font(.headline).frame(maxWidth: .infinity).padding(.vertical, 8)
             }
-            .buttonStyle(.glassProminent)
+            .buttonStyle(.pmProminent)
             .disabled(app.isLoadingLibrary || (source == .collection && collectionID == nil && app.library.access.canRead))
             .accessibilityIdentifier("memory.startPhotos")
             Button {
                 setup = false
                 model.startMotifs(manualMismatch: voiceOver)
             } label: { Label(L("game_setup_pairs_symbols"), systemImage: "sun.max") }
-                .buttonStyle(.glass)
+                .buttonStyle(.pmBordered)
                 .accessibilityIdentifier("memory.startMotifs")
             if model.game != nil {
                 Button(L("memory_resume")) { setup = false }
@@ -215,7 +215,7 @@ struct PhotoMemoryView: View {
                 }
             }
             .frame(maxWidth: CGFloat(layout.columns) * (dynamicType.isAccessibilitySize ? 180 : 112) + CGFloat(layout.columns - 1) * AppSpacing.xs)
-            Button(L("memory_flip")) { model.concealMismatch() }.buttonStyle(.glass)
+            Button(L("memory_flip")) { model.concealMismatch() }.buttonStyle(.pmBordered)
                 .accessibilityIdentifier("memory.flip")
                 .disabled(!game.hasMismatch).opacity(game.hasMismatch ? 1 : 0)
                 .accessibilityHidden(!game.hasMismatch)
@@ -224,9 +224,9 @@ struct PhotoMemoryView: View {
                     .font(AppTypography.title3).foregroundStyle(AppColors.success)
                     .accessibilityIdentifier("memory.finished")
                 if model.newBest { Label(L("game_new_best"), systemImage: "trophy.fill").foregroundStyle(AppColors.accent) }
-                Button(L("memory_new")) { replay() }.buttonStyle(.glassProminent)
+                Button(L("memory_new")) { replay() }.buttonStyle(.pmProminent)
             }
-            Button(L("memory_change")) { setup = true }.buttonStyle(.glass)
+            Button(L("memory_change")) { setup = true }.buttonStyle(.pmBordered)
                 .accessibilityIdentifier("memory.change")
         }
     }

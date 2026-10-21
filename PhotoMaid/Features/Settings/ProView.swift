@@ -29,7 +29,7 @@ struct ProView: View {
                 if !active {
                     offer
                     if app.purchases.isConfigured {
-                        Button(L("pro_restore")) { Task { await restore() } }.buttonStyle(.glass)
+                        Button(L("pro_restore")) { Task { await restore() } }.buttonStyle(.pmBordered)
                             .disabled(app.purchases.isBusy)
                     }
                 }
@@ -44,7 +44,7 @@ struct ProView: View {
         switch app.purchases.offer {
         case .ready(let product):
             Button { Task { await buy() } } label: { Text(verbatim: L("pro_unlock") + " · " + product.displayPrice) }
-                .buttonStyle(.glassProminent).disabled(app.purchases.isBusy)
+                .buttonStyle(.pmProminent).disabled(app.purchases.isBusy)
         case .loading:
             HStack(spacing: AppSpacing.s) {
                 ProgressView()
@@ -55,7 +55,7 @@ struct ProView: View {
                 VStack(alignment: .leading, spacing: AppSpacing.s) {
                     Label { Text(key: "pro_store_unavailable") } icon: { Image(systemName: "wifi.exclamationmark") }
                         .foregroundStyle(AppColors.textSecondary)
-                    Button(L("retry")) { Task { await app.purchases.refresh() } }.buttonStyle(.glass)
+                    Button(L("retry")) { Task { await app.purchases.refresh() } }.buttonStyle(.pmBordered)
                 }
             }
         case .notConfigured:

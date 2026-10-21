@@ -22,14 +22,17 @@ struct MediaGrid: View {
                 } header: {
                     if let header {
                         HStack {
-                            Text(verbatim: header(section.key)).font(AppTypography.headline)
+                            Text(verbatim: header(section.key)).font(PMFont.heading(19, relativeTo: .headline))
+                                .foregroundStyle(AppColors.textPrimary)
                             Spacer()
                             if selecting {
                                 let ids = Set(section.items.map(\.id))
                                 Button(L(ids.isSubset(of: selection) ? "grid_select_none" : "grid_select_all")) {
                                     if ids.isSubset(of: selection) { selection.subtract(ids) } else { selection.formUnion(ids) }
                                 }
-                                .font(AppTypography.footnote.weight(.semibold))
+                                .font(PMFont.text(.semibold, 14, relativeTo: .subheadline))
+                                .foregroundStyle(AppColors.accent)
+                                .frame(minHeight: AppSpacing.minTouch)
                             }
                         }
                         .padding(.horizontal, AppSpacing.pageMargin)

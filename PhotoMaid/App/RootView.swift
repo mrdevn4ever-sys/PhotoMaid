@@ -1,7 +1,7 @@
 import PhotoMaidCore
 import SwiftUI
 
-/// Wurzel: fünf Tabs (Heute · Fotos · Aufräumen · Studio · Verlauf) mit Liquid-Glass-Tableiste, darüber der Feed
+/// Wurzel: fünf Tabs (PhotoMaid · Fotos · Aufräumen · Studio · Verlauf) mit schwebender Artefakt-Tableiste, darüber der Feed
 /// als Vollbild-Ebene (kurzes Einblenden wie Android, ohne Animation bei „Bewegung reduzieren“).
 struct RootView: View {
     @Environment(AppModel.self) private var app
@@ -34,7 +34,7 @@ struct RootView: View {
         .overlay(alignment: .bottom) {
             if let toast = app.toast {
                 ToastView(toast: toast) { app.toast = nil }
-                    .padding(.bottom, app.feed == nil ? 72 : AppSpacing.xl)
+                    .padding(.bottom, app.feed == nil ? 104 : AppSpacing.xl)
                     .transition(.move(edge: .bottom).combined(with: .opacity))
                     .zIndex(2)
             }
@@ -44,7 +44,8 @@ struct RootView: View {
             FullScreenHost(request: request)
                 .environment(app)
         }
-        .preferredColorScheme(app.settings.appearance.colorScheme)
+        .preferredColorScheme(.dark) // Experiment-Design: immer dunkel wie das Artefakt
+        .font(AppTypography.body)
         .task {
             _ = AdsService.shared.launchNumber // Kaltstart zählen (die ersten drei Starts ohne Start-Werbung)
             await app.onForeground()
@@ -145,8 +146,15 @@ struct RootView: View {
                 stack(.history) { HistoryView() }
             }
         }
-        .tabViewStyle(.sidebarAdaptable)
+        .tabViewStyle(.tabBarOnly)
         .tint(AppColors.accent)
+        // Experiment-Design: eigene schwebende Tableiste nur auf den Startseiten der Tabs (wie im Artefakt).
+        .overlay(alignment: .bottom) {
+            if app.feed == nil && (app.paths[app.selectedTab] ?? []).isEmpty {
+                PMTabBar(selection: $app.selectedTab) { app.popToRoot($0) }
+                    .ignoresSafeArea(.all, edges: .bottom)
+            }
+        }
         .fullScreenCover(isPresented: $vault.isPresented, onDismiss: { vault.lock() }) {
             VaultRootView()
                 .environment(app)
@@ -156,7 +164,8 @@ struct RootView: View {
     private func stack<Content: View>(_ tab: AppTab, @ViewBuilder content: () -> Content) -> some View {
         NavigationStack(path: Binding(get: { app.paths[tab] ?? [] }, set: { app.paths[tab] = $0 })) {
             content()
-                .toolbar(app.feed == nil ? .automatic : .hidden, for: .tabBar)
+                .safeAreaInset(edge: .bottom, spacing: 0) { Color.clear.frame(height: 70).allowsHitTesting(false) }
+                .toolbar(.hidden, for: .tabBar)
                 .navigationDestination(for: Route.self) { RouteDestination(route: $0) }
         }
     }
@@ -253,7 +262,7 @@ struct StartupErrorView: View {
                            message: L("startup_failed_text"))
                 if let report {
                     ShareLink(item: report) { Text(key: "diag_share") }
-                        .buttonStyle(.glassProminent)
+                        .buttonStyle(.pmProminent)
                 }
             }
             .padding(AppSpacing.pageMargin)

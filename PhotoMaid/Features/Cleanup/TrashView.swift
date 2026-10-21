@@ -85,10 +85,11 @@ struct TrashView: View {
                 list
             }
         }
-        .appPage().readableContent()
+        .appPage()
         .navigationTitle(L("basket"))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            ToolbarItem(placement: .principal) { Color.clear.frame(width: 1, height: 1).accessibilityHidden(true) }
             if inSheet { ToolbarItem(placement: .confirmationAction) { Button(L("done")) { dismiss() } } }
         }
         .safeAreaInset(edge: .bottom) { bottomBar }
@@ -171,58 +172,151 @@ struct TrashView: View {
         app.navigate(.pro, in: .cleanup)
     }
 
+    /// Artefakt: oranger Titel, Tageslimit als Karte, Fotos und Videos als Raster (3 Spalten) mit Zurückholen.
     private var list: some View {
-        List {
-            Section {
-                VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                    Text(verbatim: L("basket_count", basket.count)).font(AppTypography.title)
-                    Text(key: "basket_intro").font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
-                    if photoItems.count > 1 {
-                        Picker(L("order_title"), selection: Binding(get: { app.settings.basketSort },
-                                                                     set: { s in app.updateSettings { $0.basketSort = s } })) {
-                            Text(key: "basket_sort_added").tag(BasketSort.added)
-                            Text(key: "basket_sort_taken").tag(BasketSort.taken)
-                            Text(key: "lib_sort_largest").tag(BasketSort.largest)
-                        }
-                        .pickerStyle(.segmented)
-                    }
-                    if let a = app.read.allowance, let available = a.available {
-                        Text(verbatim: L("basket_allowance", available, a.limit ?? 0))
-                            .font(AppTypography.caption.weight(.semibold))
-                            .foregroundStyle(available == 0 ? AppColors.textPrimary : AppColors.textSecondary)
-                        if available < 5 {
-                            // Gratis: einmal täglich „+100 für heute“ per Werbevideo (E19), sonst Pro.
-                            if bonusAvailable {
-                                Button(L("limit_bonus", LimitBonus.amount)) { Task { await watchBonus(retry: nil) } }
-                                    .font(AppTypography.footnote.weight(.semibold))
-                                    .disabled(bonusBusy)
-                            }
-                            Button(L("limit_soon_pro")) { openPro() }.font(AppTypography.footnote.weight(.semibold))
+        ScrollView {
+            VStack(alignment: .leading, spacing: AppSpacing.m) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(key: "basket").font(AppTypography.largeTitle).tracking(-0.8).foregroundStyle(AppColors.cleanup)
+                        .accessibilityAddTraits(.isHeader)
+                    Text(verbatim: L("basket_count", basket.count)).font(AppTypography.subheadline)
+                        .foregroundStyle(AppColors.textSecondary)
+                }
+                Text(key: "basket_intro").font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
+                if let a = app.read.allowance, let available = a.available { allowanceCard(available: available, limit: a.limit ?? 0) }
+                if photoItems.count > 1 {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: AppSpacing.xs) {
+                            sortChip(.added, "basket_sort_added")
+                            sortChip(.taken, "basket_sort_taken")
+                            sortChip(.largest, "lib_sort_largest")
                         }
                     }
                 }
-                .listRowBackground(Color.clear)
-            }
-            if !photoItems.isEmpty {
-                Section {
-                    ForEach(photoItems, id: \.item) { r in photoRow(r) }
-                } header: {
-                    Text(key: "basket_media_header")
-                } footer: {
-                    Text(key: "basket_media_footer")
+                if !photoItems.isEmpty {
+                    Text(key: "basket_media_header").font(AppTypography.title3).foregroundStyle(AppColors.textPrimary)
+                        .accessibilityAddTraits(.isHeader).padding(.top, 4).padding(.horizontal, 4)
+                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 3), spacing: 8) {
+                        ForEach(photoItems, id: \.item) { r in photoTile(r) }
+                    }
+                    Text(key: "basket_media_footer").font(AppTypography.footnote).foregroundStyle(AppColors.textTertiary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                if !fileItems.isEmpty {
+                    Text(key: "basket_files_header").font(AppTypography.title3).foregroundStyle(AppColors.textPrimary)
+                        .accessibilityAddTraits(.isHeader).padding(.top, 4).padding(.horizontal, 4)
+                    VStack(spacing: 0) {
+                        ForEach(fileItems, id: \.item) { r in fileRow(r).padding(.horizontal, AppSpacing.s) }
+                    }
+                    .background(AppColors.surface, in: .rect(cornerRadius: AppRadii.card))
+                    .overlay(RoundedRectangle(cornerRadius: AppRadii.card).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
+                    Text(key: "basket_files_footer").font(AppTypography.footnote).foregroundStyle(AppColors.textTertiary)
                 }
             }
-            if !fileItems.isEmpty {
-                Section {
-                    ForEach(fileItems, id: \.item) { r in fileRow(r) }
-                } header: {
-                    Text(key: "basket_files_header")
-                } footer: {
-                    Text(key: "basket_files_footer")
+            .padding(.horizontal, AppSpacing.pageMargin)
+            .padding(.bottom, AppSpacing.l)
+            .frame(maxWidth: 720).frame(maxWidth: .infinity)
+        }
+    }
+
+    private func sortChip(_ sort: BasketSort, _ key: String) -> some View {
+        PMChip(title: L(key), selected: app.settings.basketSort == sort) {
+            app.updateSettings { $0.basketSort = sort }
+        }
+    }
+
+    /// „Heute noch 100 von 100 möglich“ mit Balken; darunter Bonus-Video (Gratis) und Pro.
+    private func allowanceCard(available: Int, limit: Int) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Text(verbatim: L("basket_allowance", available, limit))
+                .font(PMFont.text(.semibold, 15, relativeTo: .subheadline)).foregroundStyle(AppColors.textPrimary)
+            if limit > 0 {
+                GeometryReader { geo in
+                    ZStack(alignment: .leading) {
+                        Capsule().fill(AppColors.surfaceStroke)
+                        Capsule().fill(available == 0 ? AppColors.cleanup : AppColors.success)
+                            .frame(width: geo.size.width * min(1, Double(available) / Double(limit)))
+                    }
                 }
+                .frame(height: 6)
+                .accessibilityHidden(true)
+            }
+            HStack(spacing: AppSpacing.xs) {
+                if bonusAvailable {
+                    Button(L("limit_bonus", LimitBonus.amount)) { Task { await watchBonus(retry: nil) } }
+                        .buttonStyle(.pmBordered)
+                        .disabled(bonusBusy)
+                }
+                Button { openPro() } label: {
+                    Text(key: "limit_soon_pro").foregroundStyle(AppColors.accent)
+                }
+                .buttonStyle(.pmBordered)
             }
         }
-        .listStyle(.insetGrouped)
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppColors.surface, in: .rect(cornerRadius: AppRadii.card))
+        .overlay(RoundedRectangle(cornerRadius: AppRadii.card).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
+    }
+
+    /// Kachel 3:4 (Radius 14): Antippen zeigt die Vorschau, Kreis oben rechts (de)aktiviert die Auswahl,
+    /// Pfeil unten rechts holt zurück. Größe oben links (gemessen oder „ca.“).
+    private func photoTile(_ r: ItemRecord) -> some View {
+        let a = app.asset(r.item.localIdentifier)
+        let selected = selection.contains(r.item)
+        let title = switch a?.kind {
+        case .video: L("video")
+        case .screenshot: L("screenshot")
+        default: L("photo")
+        }
+        return Button { preview = a } label: {
+            AssetCell(assetID: r.item.localIdentifier)
+                .aspectRatio(3 / 4, contentMode: .fit)
+                .opacity(selected ? 1 : 0.45)
+                .clipShape(.rect(cornerRadius: 14))
+        }
+        .buttonStyle(.plain)
+        .disabled(a == nil)
+        .accessibilityLabel(Text(verbatim: L("basket_preview_open", title)))
+        .overlay(alignment: .topLeading) {
+            Text(verbatim: SizeText.value(value(r.item)))
+                .font(PMFont.text(.bold, 11, relativeTo: .caption2)).foregroundStyle(AppColors.textPrimary)
+                .padding(.horizontal, 6).padding(.vertical, 2)
+                .background(AppColors.background.opacity(0.7), in: .rect(cornerRadius: 8))
+                .padding(6)
+                .allowsHitTesting(false)
+        }
+        .overlay(alignment: .topTrailing) {
+            Button {
+                if selected { selection.remove(r.item) } else { selection.insert(r.item) }
+            } label: {
+                Image(systemName: selected ? "checkmark.circle.fill" : "circle")
+                    .font(.system(size: 20, weight: .semibold))
+                    .foregroundStyle(selected ? AppColors.cleanup : AppColors.textPrimary)
+                    .background(Circle().fill(AppColors.background.opacity(0.6)))
+                    .frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch)
+                    .contentShape(.rect)
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(Text(verbatim: L(selected ? "selected" : "not_selected") + ": " + title))
+        }
+        .overlay(alignment: .bottomTrailing) {
+            Button { Task { await app.decide(r.item, .unmark) } } label: {
+                PMIcon(.undo, size: 14, lineWidth: 2.4)
+                    .foregroundStyle(AppColors.textPrimary)
+                    .frame(width: 30, height: 30)
+                    .background(AppColors.background.opacity(0.75), in: .circle)
+                    .frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch)
+                    .contentShape(.rect)
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel(Text(verbatim: L("put_back") + ": " + title))
+        }
+        .contextMenu {
+            Button { Task { await app.decide(r.item, .keep) } } label: { Label(L("keep"), systemImage: "checkmark") }
+            Button { Task { await app.decide(r.item, .unmark) } } label: { Label(L("put_back"), systemImage: "arrow.uturn.backward") }
+        }
     }
 
     private func photoRow(_ r: ItemRecord) -> some View {
@@ -291,7 +385,8 @@ struct TrashView: View {
             VStack(spacing: AppSpacing.xs) {
                 if !selectedPhotos.isEmpty || !selectedFiles.isEmpty {
                     Text(verbatim: L("basket_selection_size", total(selectedPhotos + selectedFiles)))
-                        .font(AppTypography.subheadline.weight(.semibold)).monospacedDigit()
+                        .font(PMFont.text(.semibold, 13, relativeTo: .footnote)).foregroundStyle(AppColors.textSecondary)
+                        .monospacedDigit()
                 }
                 if !selectedPhotos.isEmpty {
                     PrimaryButton(title: LP("basket_empty_media", selectedPhotos.count), role: .destructive) {
@@ -308,8 +403,9 @@ struct TrashView: View {
                 if running { ProgressView() }
             }
             .padding(.horizontal, AppSpacing.pageMargin)
-            .padding(.vertical, AppSpacing.xs)
-            .background(.bar)
+            .padding(.top, AppSpacing.s)
+            .padding(.bottom, AppSpacing.xs)
+            .background(AppColors.background)
         }
     }
 

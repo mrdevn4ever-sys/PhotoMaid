@@ -94,6 +94,8 @@ targets:
         # Alle 16 Sprachen des Katalogs: iOS zeigt dann unter Einstellungen › PhotoMaid › Sprache die App-Sprache.
         CFBundleLocalizations: [en, de, ar, es, fr, it, ja, ko, nl, pl, pt-PT, ro, ru, tr, uk, zh-Hans]
         UILaunchScreen: {}
+        # Experiment-Design (Artefakt): Bricolage Grotesque und Figtree (OFL), statische Instanzen.
+        UIAppFonts: [PMText-Regular.ttf, PMText-Medium.ttf, PMText-SemiBold.ttf, PMText-Bold.ttf, PMDisplay-SemiBold.ttf, PMDisplay-Bold.ttf, PMDisplay-ExtraBold.ttf, PMDisplayXL-ExtraBold.ttf]
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: false
         UISupportedInterfaceOrientations:

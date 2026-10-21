@@ -286,10 +286,10 @@ struct VaultVoiceRecorderView: View {
                     .font(.largeTitle.monospacedDigit()).accessibilityLabel(L("vault2_recorded_time"))
                 Text(L("vault2_recording_explanation")).multilineTextAlignment(.center)
                 if recorder.recording {
-                    Button(L(recorder.paused ? "vault2_resume" : "vault2_pause")) { recorder.pauseOrResume() }.buttonStyle(.bordered)
-                    Button(L("vault2_stop_save"), systemImage: "stop.fill") { recorder.stop() }.buttonStyle(.borderedProminent)
+                    Button(L(recorder.paused ? "vault2_resume" : "vault2_pause")) { recorder.pauseOrResume() }.buttonStyle(.pmBordered)
+                    Button(L("vault2_stop_save"), systemImage: "stop.fill") { recorder.stop() }.buttonStyle(.pmProminent)
                 } else {
-                    Button(L("vault2_record"), systemImage: "mic") { Task { await recorder.start(folderID: folderID) } }.buttonStyle(.borderedProminent)
+                    Button(L("vault2_record"), systemImage: "mic") { Task { await recorder.start(folderID: folderID) } }.buttonStyle(.pmProminent)
                 }
             }.padding()
             .navigationTitle(L("vault2_record"))

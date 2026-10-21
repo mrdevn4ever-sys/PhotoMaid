@@ -123,7 +123,7 @@ struct VideoEditorView: View {
         case .iCloud:
             VStack(spacing: AppSpacing.m) {
                 Text(key: "feed_icloud_only").foregroundStyle(.white)
-                Button(L("feed_icloud_load")) { Task { await model.load(app: app, allowNetwork: true) } }.buttonStyle(.glassProminent)
+                Button(L("feed_icloud_load")) { Task { await model.load(app: app, allowNetwork: true) } }.buttonStyle(.pmProminent)
             }
             .frame(maxHeight: .infinity)
         case .ready:
@@ -398,13 +398,13 @@ struct VideoTrimPanel: View {
                     Button(L("vid_cut_confirm"), systemImage: "scissors") {
                         if !model.confirmCut() { model.cutDraft = nil }
                     }
-                    .buttonStyle(.glassProminent).tint(.red)
-                    Button(L("cancel")) { model.cutDraft = nil }.buttonStyle(.glass)
+                    .buttonStyle(.pmProminent).tint(.red)
+                    Button(L("cancel")) { model.cutDraft = nil }.buttonStyle(.pmBordered)
                 }
             } else {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: AppSpacing.xs) {
-                        Button(L("vid_cut_start"), systemImage: "scissors") { model.startCut() }.buttonStyle(.glass)
+                        Button(L("vid_cut_start"), systemImage: "scissors") { model.startCut() }.buttonStyle(.pmBordered)
                         ForEach(c.cuts.indices, id: \.self) { i in
                             let cut = c.cuts[i]
                             Button {
@@ -413,7 +413,7 @@ struct VideoTrimPanel: View {
                                 Label("\(DateText.duration(Double(cut.startMs) / 1000))–\(DateText.duration(Double(cut.endMs) / 1000))",
                                       systemImage: "xmark")
                             }
-                            .buttonStyle(.glass)
+                            .buttonStyle(.pmBordered)
                         }
                     }
                     .padding(.horizontal, AppSpacing.pageMargin)
@@ -851,7 +851,7 @@ struct VideoAudioPanel: View {
                                     model.updateClip { $0.fadeInMs = ms; $0.fadeOutMs = ms }
                                 }
                             }
-                            Button(L("vid_audio_export"), systemImage: "music.note", action: exportAudio).buttonStyle(.glass)
+                            Button(L("vid_audio_export"), systemImage: "music.note", action: exportAudio).buttonStyle(.pmBordered)
                         }
                         .padding(.horizontal, AppSpacing.pageMargin)
                     }

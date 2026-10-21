@@ -124,7 +124,7 @@ private struct TourSpotlight: View {
                 }
                 Spacer()
                 Button(action: next) { Text(key: isLast ? "done" : "tour_next") }
-                    .buttonStyle(.glassProminent)
+                    .buttonStyle(.pmProminent)
             }
         }
         .padding(AppSpacing.m)
@@ -161,6 +161,8 @@ private struct TourArrow: Shape {
 @MainActor
 enum TabBarGeometry {
     static func itemFrame(index: Int) -> CGRect? {
+        // Experiment-Design: eigene schwebende Tableiste.
+        if let own = PMTabBarFrames.frames[index], own.width > 0 { return own }
         guard let bar = tabBar(), !bar.isHidden, bar.alpha > 0.01,
               let count = bar.items?.count, count > 0, (0..<count).contains(index) else { return nil }
         let frame = bar.convert(bar.bounds, to: nil)

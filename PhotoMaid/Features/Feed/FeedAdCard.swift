@@ -32,7 +32,7 @@ struct FeedAdCardView: View {
                     if canSkip {
                         Button(L("ad_skip")) { leave(direction: CGSize(width: 0, height: -1), size: geo.size) }
                             .accessibilityIdentifier("feed.ad.skip")
-                            .buttonStyle(.glass)
+                            .buttonStyle(.pmBordered)
                     } else {
                         Text(key: "ad_wait").font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
                     }

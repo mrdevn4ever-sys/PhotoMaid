@@ -45,13 +45,13 @@ struct PhotoBlocksView: View {
         HStack {
             Button { model.pause(); onChooseGame() } label: {
                 Label(L("blocks_games"), systemImage: "chevron.backward")
-            }.buttonStyle(.bordered).frame(minHeight: 44).accessibilityIdentifier("blocks.back")
+            }.buttonStyle(.pmBordered).frame(minHeight: 44).accessibilityIdentifier("blocks.back")
             Spacer(minLength: 6)
             Text(key: "blocks_title").font(.headline)
             Spacer(minLength: 6)
             if model.game.phase != .ready {
                 Button { model.pause() } label: { Image(systemName: "pause.fill").frame(width: 28, height: 28) }
-                    .buttonStyle(.bordered).frame(minWidth: 44, minHeight: 44).accessibilityLabel(L("blocks_pause"))
+                    .buttonStyle(.pmBordered).frame(minWidth: 44, minHeight: 44).accessibilityLabel(L("blocks_pause"))
                     .accessibilityIdentifier("blocks.pause")
                     .disabled(model.game.phase == .gameOver)
             }
@@ -232,7 +232,7 @@ struct PhotoBlocksView: View {
         }.font(.subheadline).frame(maxWidth: .infinity, alignment: .leading)
     }
     private var saveError: some View {
-        Button(L("blocks_save_retry")) { model.checkpoint() }.font(.footnote).buttonStyle(.bordered)
+        Button(L("blocks_save_retry")) { model.checkpoint() }.font(.footnote).buttonStyle(.pmBordered)
     }
     private func action(_ key: String, symbol: String, prominent: Bool = false,
                         perform: @escaping () -> Void) -> some View {
