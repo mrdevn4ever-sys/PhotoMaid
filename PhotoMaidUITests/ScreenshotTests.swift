@@ -102,7 +102,25 @@ final class ScreenshotTests: XCTestCase {
     private func onboarding(capture: Bool) {
         finishIntroduction(in: app, prefix: capture ? "qa_intro" : "qa_\(name)")
         let skip = app.buttons["Tutorial überspringen"].firstMatch
-        if skip.waitForExistence(timeout: 2) { skip.tap(); snap("qa_today_tour_skipped") }
+        guard skip.waitForExistence(timeout: 2) else { return }
+        guard capture else { skip.tap(); snap("qa_today_tour_skipped"); return }
+        // Rundgang einmal ganz durchgehen (Nutzer, 21.10.2026): Spiele-Schritt, Tresor-Schritt zum Schluss, Fotos-Schritt
+        // ohne „Ansehen ändert nichts“.
+        let removed = NSPredicate(format: "label CONTAINS 'Ansehen ändert nichts'")
+        var sawGames = false
+        for _ in 0..<12 {
+            XCTAssertFalse(app.staticTexts.matching(removed).firstMatch.exists)
+            if app.staticTexts["Zeit für eine Pause?"].exists { sawGames = true; snap("qa_today_tour_games") }
+            if app.staticTexts["Dein privater Tresor"].exists { snap("qa_today_tour_vault"); break }
+            let next = app.buttons["Weiter"].firstMatch
+            guard next.exists else { break }
+            next.tap()
+            settle(0.5)
+        }
+        XCTAssertTrue(sawGames, "Der Rundgang zeigt die Spiele")
+        XCTAssertTrue(app.staticTexts["Dein privater Tresor"].exists, "Der Rundgang endet mit dem Tresor")
+        app.buttons["Fertig"].firstMatch.tap()
+        snap("qa_today_tour_done")
     }
 
     // MARK: Hauptdurchgang

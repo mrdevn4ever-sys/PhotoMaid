@@ -221809,6 +221809,208 @@
         }
       }
     },
+    "tour_games_text": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "عندما تحتاج إلى استراحة من الترتيب: العب أزواج أو ثعبان الصور أو Foto Blocks بصورك الخاصة."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Wenn du eine Pause vom Aufräumen brauchst: Spiel Paare, Foto-Snake oder Foto Blocks mit deinen eigenen Fotos."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When you need a break from tidying up: play Pairs, Photo Snake or Foto Blocks with your own photos."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cuando necesites descansar de ordenar: juega a Parejas, Serpiente de fotos o Foto Blocks con tus propias fotos."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quand vous avez besoin d’une pause dans le tri : jouez à Paires, Serpent photo ou Foto Blocks avec vos propres photos."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando ti serve una pausa dal riordino: gioca a Coppie, Snake fotografico o Foto Blocks con le tue foto."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "整理の合間にひと休みしたいときは、自分の写真でペア、フォトスネーク、Foto Blocksを遊べます。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "정리하다 쉬고 싶을 때는 내 사진으로 짝맞추기, 포토 스네이크, Foto Blocks를 즐겨 보세요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Als je even pauze nodig hebt van het opruimen: speel Paren, Foto-Snake of Foto Blocks met je eigen foto’s."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gdy potrzebujesz przerwy od porządków: zagraj w Pary, Foto-Snake lub Foto Blocks ze swoimi zdjęciami."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quando precisar de uma pausa da arrumação: jogue Pares, Serpente de fotos ou Foto Blocks com as suas fotografias."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Când ai nevoie de o pauză de la ordonat: joacă Perechi, Șarpele foto sau Foto Blocks cu pozele tale."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Когда захочется отдохнуть от уборки, играйте в Пары, Фото-змейку или Foto Blocks со своими фото."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Temizliğe ara vermek istediğinde kendi fotoğraflarınla Çiftler, Fotoğraf yılanı veya Foto Blocks oyna."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Коли захочеться відпочити від прибирання, грайте в Пари, Фото-змійку чи Foto Blocks зі своїми фото."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "想从整理中歇口气时，可以用自己的照片玩配对、照片贪吃蛇或 Foto Blocks。"
+          }
+        }
+      }
+    },
+    "tour_games_title": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "هل تحتاج إلى استراحة؟"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zeit für eine Pause?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Need a break?"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Te hace falta una pausa?"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Besoin d’une pause ?"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ti serve una pausa?"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ひと休みしませんか？"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "잠깐 쉬어 갈까요?"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Even pauze?"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Czas na przerwę?"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Precisa de uma pausa?"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ai nevoie de o pauză?"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Нужна пауза?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mola zamanı mı?"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Потрібна пауза?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要休息一下吗？"
+          }
+        }
+      }
+    },
     "tour_grid_note_text": {
       "extractionState": "manual",
       "localizations": {
@@ -222421,97 +222623,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "هنا كل صورك ومقاطع الفيديو – حسب اليوم أو الشهر أو السنة، في الألبومات والمفضلة. المشاهدة لا تغيّر شيئًا."
+            "value": "هنا كل صورك ومقاطع الفيديو – حسب اليوم أو الشهر أو السنة، في الألبومات والمفضلة."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hier findest du alle Fotos und Videos – nach Tagen, Monaten oder Jahren, in Alben und Favoriten. Ansehen ändert nichts."
+            "value": "Hier findest du alle Fotos und Videos – nach Tagen, Monaten oder Jahren, in Alben und Favoriten."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Here are all your photos and videos – by day, month or year, in albums and favourites. Just looking never changes anything."
+            "value": "Here are all your photos and videos – by day, month or year, in albums and favourites."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aquí están todas tus fotos y vídeos: por día, mes o año, en álbumes y favoritos. Mirar no cambia nada."
+            "value": "Aquí están todas tus fotos y vídeos: por día, mes o año, en álbumes y favoritos."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Retrouvez ici toutes vos photos et vidéos – par jour, mois ou année, dans les albums et favoris. Regarder ne modifie rien."
+            "value": "Retrouvez ici toutes vos photos et vidéos – par jour, mois ou année, dans les albums et favoris."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Qui trovi tutte le foto e i video, per giorno, mese o anno, negli album e nei preferiti. Guardare non cambia nulla."
+            "value": "Qui trovi tutte le foto e i video, per giorno, mese o anno, negli album e nei preferiti."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "すべての写真とビデオを日・月・年別に、アルバムやお気に入りで見られます。見るだけでは何も変わりません。"
+            "value": "すべての写真とビデオを日・月・年別に、アルバムやお気に入りで見られます。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "모든 사진과 비디오를 일, 월, 연도별로, 앨범과 즐겨찾기에서 볼 수 있습니다. 보기만 해서는 아무것도 바뀌지 않습니다."
+            "value": "모든 사진과 비디오를 일, 월, 연도별로, 앨범과 즐겨찾기에서 볼 수 있습니다."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hier vind je al je foto’s en video’s – per dag, maand of jaar, in albums en favorieten. Kijken verandert niets."
+            "value": "Hier vind je al je foto’s en video’s – per dag, maand of jaar, in albums en favorieten."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tu znajdziesz wszystkie zdjęcia i filmy – według dni, miesięcy lub lat, w albumach i ulubionych. Przeglądanie niczego nie zmienia."
+            "value": "Tu znajdziesz wszystkie zdjęcia i filmy – według dni, miesięcy lub lat, w albumach i ulubionych."
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aqui estão todas as fotografias e vídeos – por dia, mês ou ano, em álbuns e favoritos. Ver não altera nada."
+            "value": "Aqui estão todas as fotografias e vídeos – por dia, mês ou ano, em álbuns e favoritos."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aici găsești toate pozele și videoclipurile – pe zile, luni sau ani, în albume și favorite. Vizualizarea nu schimbă nimic."
+            "value": "Aici găsești toate pozele și videoclipurile – pe zile, luni sau ani, în albume și favorite."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Здесь все ваши фото и видео — по дням, месяцам или годам, в альбомах и избранном. Просмотр ничего не меняет."
+            "value": "Здесь все ваши фото и видео — по дням, месяцам или годам, в альбомах и избранном."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tüm fotoğrafların ve videoların burada – güne, aya veya yıla göre, albümlerde ve favorilerde. Bakmak hiçbir şeyi değiştirmez."
+            "value": "Tüm fotoğrafların ve videoların burada – güne, aya veya yıla göre, albümlerde ve favorilerde."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Тут усі ваші фото й відео — за днями, місяцями чи роками, в альбомах і вибраному. Перегляд нічого не змінює."
+            "value": "Тут усі ваші фото й відео — за днями, місяцями чи роками, в альбомах і вибраному."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "这里有你所有的照片和视频——按日、月或年，以及相簿和个人收藏。仅查看不会改变任何内容。"
+            "value": "这里有你所有的照片和视频——按日、月或年，以及相簿和个人收藏。"
           }
         }
       }
@@ -224835,6 +225037,208 @@
           "stringUnit": {
             "state": "translated",
             "value": "更多清理方式"
+          }
+        }
+      }
+    },
+    "tour_vault_text": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "اضغط مطولًا على «PhotoMaid» في الأعلى لمدة ثانيتين لفتح الخزنة – يدور القرص داخل حرف «o». الإعداد والمزيد من الخيارات في الإعدادات."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Halte oben „PhotoMaid“ 2 Sekunden gedrückt, um den Tresor zu öffnen – das Rad im „o“ dreht sich dabei. Einrichten und weitere Optionen findest du in den Einstellungen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hold “PhotoMaid” at the top for 2 seconds to open the vault – the dial in the “o” turns. Set it up and find more options in Settings."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mantén pulsado «PhotoMaid» arriba durante 2 segundos para abrir la caja fuerte; el dial de la «o» gira. Configúrala y encuentra más opciones en Ajustes."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Maintenez « PhotoMaid » en haut pendant 2 secondes pour ouvrir le coffre – le cadran du « o » tourne. Configuration et autres options dans Paramètres."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tieni premuto «PhotoMaid» in alto per 2 secondi per aprire la cassaforte: la manopola nella «o» gira. Configurazione e altre opzioni in Impostazioni."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上部の「PhotoMaid」を2秒間長押しすると保管庫が開き、「o」のダイヤルが回ります。設定やその他のオプションは「設定」にあります。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "위쪽의 ‘PhotoMaid’를 2초 동안 길게 누르면 금고가 열리고 ‘o’ 안의 다이얼이 돌아가요. 설정과 추가 옵션은 설정에 있어요."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Houd bovenaan ‘PhotoMaid’ 2 seconden ingedrukt om de kluis te openen – de draaischijf in de ‘o’ draait mee. Instellen en meer opties vind je in Instellingen."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Przytrzymaj „PhotoMaid” u góry przez 2 sekundy, aby otworzyć sejf – pokrętło w „o” się obraca. Konfiguracja i więcej opcji w Ustawieniach."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mantenha premido «PhotoMaid» no topo durante 2 segundos para abrir o cofre – o marcador no «o» roda. Configuração e mais opções em Definições."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ține apăsat „PhotoMaid” sus timp de 2 secunde ca să deschizi seiful – discul din „o” se rotește. Configurarea și alte opțiuni sunt în Setări."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удерживайте «PhotoMaid» вверху 2 секунды, чтобы открыть сейф, — диск в букве «o» повернётся. Настройка и другие параметры — в Настройках."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kasayı açmak için üstteki “PhotoMaid” yazısına 2 saniye basılı tut – “o” harfindeki kadran döner. Kurulum ve diğer seçenekler Ayarlar’da."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Утримуйте «PhotoMaid» угорі 2 секунди, щоб відкрити сейф, — диск у літері «o» повернеться. Налаштування та інші параметри — у Налаштуваннях."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "按住顶部的“PhotoMaid”2 秒即可打开保险箱，“o”中的转盘会随之转动。设置及更多选项请前往“设置”。"
+          }
+        }
+      }
+    },
+    "tour_vault_title": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "خزنتك الخاصة"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dein privater Tresor"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your private vault"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tu caja fuerte privada"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Votre coffre-fort privé"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La tua cassaforte privata"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "あなたのプライベート保管庫"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "나만의 개인 금고"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Je privékluis"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Twój prywatny sejf"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O seu cofre privado"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seiful tău privat"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ваш личный сейф"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Özel kasan"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ваш особистий сейф"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "你的私密保险箱"
           }
         }
       }

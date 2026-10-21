@@ -346,7 +346,8 @@ import XCTest
     func test30PortraitAndExpandedWorkspaceScreens() {
         launch(light: true)
         let position = app.descendants(matching: .any)["feed.position"].firstMatch
-        XCTAssertGreaterThanOrEqual(position.frame.width, 60, "The feed title and counter must retain readable width")
+        // Experiment-Design: kompakter Zähler (Nummer über „von …“), der Titel der Quelle ist nur für VoiceOver da.
+        XCTAssertGreaterThanOrEqual(position.frame.width, 24, "The compact feed counter must keep its natural width")
         XCTAssertLessThan(position.frame.height, 70, "The counter must not wrap into a vertical column")
         XCTAssertGreaterThanOrEqual(app.buttons["feed.memory"].frame.width, 44)
         checkpoint("workspace_01_feed", app: app)

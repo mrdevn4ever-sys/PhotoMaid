@@ -48,6 +48,17 @@ Schrift und Größen. Nicht für `main` bestimmt, solange der Nutzer es nicht au
   nicht eingeschränktes Netz – Persönlicher Hotspot, Datensparmodus oder VPN galten als „kein WLAN“. Jetzt: WLAN oder
   Kabel genügt, Mobilfunk nie (`AnalysisNetwork.permitsCloud`). Neu: Wird WLAN verfügbar, setzt eine wartende
   Analyse von selbst fort (`.analysisNetworkReady`), wie die Oberfläche es verspricht.
+- **Rundgang auf der Startseite** (Nutzer, 21.10.2026): „Ansehen ändert nichts“ aus dem Fotos-Schritt entfernt
+  (alle 16 Sprachen). Neu: Schritt „Zeit für eine Pause?“ an der Karte „Kurze Pause“ (Paare, Foto-Snake, Foto Blocks
+  mit eigenen Fotos) und als letzter Schritt „Dein privater Tresor“ am Schriftzug („PhotoMaid“ 2 Sekunden halten,
+  Einrichten und Optionen in den Einstellungen). Der Tresor-Schritt entfällt bei „Eingang verstecken“, damit ein
+  neu gestarteter Rundgang den Tresor nicht verrät.
+- **Fächer im Hero bewegt sich nur sichtbar** (Watchdog-Bericht Build 21, 0x8BADF00D „Failed to terminate gracefully“,
+  Hauptthread mitten in einem Zeichendurchlauf): Der Feed liegt als Ebene über den Tabs, die Startseite bleibt darunter
+  bestehen – drei wiederholte `keyframeAnimator` zeichneten dort jedes Bild neu (auch in der Ruhephase, auch unter dem
+  Feed). Jetzt einzelne Animationen mit Pausen ohne Zeichnen, und still, sobald Feed, Vollbild, Spiele, Tresor,
+  ein anderer Tab, eine Unterseite oder der Hintergrund aktiv ist. Der Bericht stammt aus Build 21 (MetricKit liefert
+  verzögert); das Löschen von 19 Medien im mitgeschickten Protokoll gehört zu einem anderen Start von Build 24.
 - **Texte aus echten Kennungen**, wo es sie schon gab (z. B. Mitteilungs-Erklärung in „Später“, Tresor-Hinweis in den
   Einstellungen) – teils länger als die Kurzfassung im Artefakt.
 - **Funktionen bleiben erreichbar**, die das Artefakt nicht zeigt: „Code vergessen?“, Sortieren/Auswählen im Tresor,

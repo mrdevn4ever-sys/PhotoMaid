@@ -6,6 +6,7 @@ import SwiftUI
 struct TodayView: View {
     @Environment(AppModel.self) private var app
     @Environment(\.dynamicTypeSize) private var dynamicType
+    @Environment(\.scenePhase) private var scenePhase
     @State private var tourStep = 0
     @State private var continueOpen = 0
     @State private var newSince = 0
@@ -23,7 +24,7 @@ struct TodayView: View {
                             if access.canRead {
                                 ReviewHero(pending: app.snapshot.loaded && app.readReady ? app.pending : nil,
                                            hasHistory: !app.read.events.isEmpty, showGestures: !app.settings.gestureHintSeen,
-                                           goal: dailyGoal) {
+                                           goal: dailyGoal, animated: heroAnimated) {
                                     app.open(FeedRequest(.allMedia))
                                 }
                                 .tourTarget("today.hero")
@@ -47,6 +48,8 @@ struct TodayView: View {
                                 showGames = true
                             }
                             .accessibilityIdentifier("today.games")
+                            .tourTarget("today.games")
+                            .id("today.games")
                             if access.canRead && app.readReady { QuickAccessSection().tourTarget("today.quick").id("today.quick") }
                             if app.capabilities.tier == .free, let first = app.settings.firstSeenDay, app.today > first {
                                 PMCardRow(icon: .crown, tint: AppColors.accent, title: L("pro_title"), subtitle: L("pro_subtitle")) {
@@ -96,6 +99,14 @@ struct TodayView: View {
         }
     }
 
+    /// Der Fächer im Hero bewegt sich nur, solange die Startseite wirklich zu sehen ist. Der Feed liegt als Ebene über
+    /// den Tabs, die Startseite bleibt darunter bestehen: Vorher lief die Bewegung dort mit jedem Bild weiter (Hauptthread
+    /// dauernd beschäftigt, Akku/Wärme; Watchdog-Bericht Build 21 beim Beenden mitten in einem Zeichendurchlauf).
+    private var heroAnimated: Bool {
+        scenePhase == .active && app.feed == nil && app.fullScreen == nil && app.selectedTab == .today
+            && (app.paths[.today] ?? []).isEmpty && !showGames && !VaultStore.shared.isPresented
+    }
+
     /// Tagesziel im Hero (Gamification): an, solange Erfolge angezeigt werden und ein Ziel gesetzt ist.
     private var dailyGoal: (done: Int, goal: Int)? {
         guard app.settings.showAchievements, app.settings.dailyGoal > 0, app.readReady else { return nil }
@@ -142,6 +153,7 @@ struct TodayView: View {
                 // Ohne eingerichteten Tresor passiert nichts.
                 VaultDialWordmark()
                     .dynamicTypeSize(...DynamicTypeSize.accessibility2)
+                    .tourTarget("today.vault")
             }
             Spacer()
             Button { app.navigate(.settings) } label: {
@@ -241,28 +253,36 @@ struct TodayView: View {
         }
     }
 
-    // MARK: Rundgang (einmal: Heute, Status, Schnellzugriffe, Tabs)
+    // MARK: Rundgang (einmal: Heute, Status, Spiele, Schnellzugriffe, Tabs, Einstellungen, Tresor)
 
     /// Ziel sichtbar machen, bevor Spotlight und Karte darauf zeigen.
     private func scrollToTourTarget(_ step: TourStep?, _ scroller: ScrollViewProxy) {
-        // Der Kopf (Einstellungen) steht immer sichtbar oben und muss nicht gescrollt werden.
-        guard let step, case .anchor(let anchor) = step.target, anchor != "today.settings" else { return }
+        // Der Kopf (Einstellungen, „PhotoMaid“) steht immer sichtbar oben und muss nicht gescrollt werden.
+        guard let step, case .anchor(let anchor) = step.target, !["today.settings", "today.vault"].contains(anchor) else { return }
         withAnimation(.snappy) { scroller.scrollTo(anchor, anchor: .center) }
     }
 
+    /// Spiele und Tresor im Rundgang (Nutzer, 21.10.2026). Der Tresor-Schritt entfällt bei verstecktem Eingang – der
+    /// Rundgang lässt sich in der Hilfe neu starten und soll den Tresor dann nicht verraten.
     private var tourSteps: [TourStep] {
-        [TourStep(titleKey: "tour_today_hero_title", textKey: "tour_today_hero_text", target: .anchor("today.hero")),
-         TourStep(titleKey: "tour_today_status_title", textKey: "tour_today_status_text", target: .anchor("today.status")),
-         TourStep(titleKey: "tour_today_quick_title", textKey: "tour_today_quick_text", target: .anchor("today.quick")),
-         TourStep(titleKey: "tour_today_tab_title", textKey: "tour_today_tab_text",
-                  target: .tab(2, titleKey: "tab_cleanup", symbol: "square.stack.3d.up")),
-         TourStep(titleKey: "tour_lib_title", textKey: "tour_lib_text",
-                  target: .tab(1, titleKey: "tab_library", symbol: "photo.on.rectangle.angled")),
-         TourStep(titleKey: "tour_studio_title", textKey: "tour_studio_text",
-                  target: .tab(3, titleKey: "tab_studio", symbol: "paintpalette")),
-         TourStep(titleKey: "tour_history_title", textKey: "tour_history_text",
-                  target: .tab(4, titleKey: "tab_history", symbol: "clock.arrow.circlepath")),
-         TourStep(titleKey: "tour_settings_title", textKey: "tour_settings_text", target: .anchor("today.settings"))]
+        var steps: [TourStep] = [
+            TourStep(titleKey: "tour_today_hero_title", textKey: "tour_today_hero_text", target: .anchor("today.hero")),
+            TourStep(titleKey: "tour_today_status_title", textKey: "tour_today_status_text", target: .anchor("today.status")),
+            TourStep(titleKey: "tour_games_title", textKey: "tour_games_text", target: .anchor("today.games")),
+            TourStep(titleKey: "tour_today_quick_title", textKey: "tour_today_quick_text", target: .anchor("today.quick")),
+            TourStep(titleKey: "tour_today_tab_title", textKey: "tour_today_tab_text",
+                     target: .tab(2, titleKey: "tab_cleanup", symbol: "square.stack.3d.up")),
+            TourStep(titleKey: "tour_lib_title", textKey: "tour_lib_text",
+                     target: .tab(1, titleKey: "tab_library", symbol: "photo.on.rectangle.angled")),
+            TourStep(titleKey: "tour_studio_title", textKey: "tour_studio_text",
+                     target: .tab(3, titleKey: "tab_studio", symbol: "paintpalette")),
+            TourStep(titleKey: "tour_history_title", textKey: "tour_history_text",
+                     target: .tab(4, titleKey: "tab_history", symbol: "clock.arrow.circlepath")),
+            TourStep(titleKey: "tour_settings_title", textKey: "tour_settings_text", target: .anchor("today.settings"))]
+        if !VaultStore.shared.hidesEntry {
+            steps.append(TourStep(titleKey: "tour_vault_title", textKey: "tour_vault_text", target: .anchor("today.vault")))
+        }
+        return steps
     }
 
     private var activeTourStep: TourStep? {
@@ -292,6 +312,8 @@ struct ReviewHero: View {
     let showGestures: Bool
     /// Tagesziel (Gamification): heute durchgesehen und Ziel; nil = aus.
     var goal: (done: Int, goal: Int)?
+    /// Fächer bewegen (nur, solange die Startseite sichtbar ist).
+    var animated = true
     let start: () -> Void
 
     var body: some View {
@@ -350,7 +372,7 @@ struct ReviewHero: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .overlay(alignment: .topTrailing) {
             if let pending, !pending.isEmpty {
-                HeroFan(ids: pending.prefix(3).map(\.localIdentifier))
+                HeroFan(ids: pending.prefix(3).map(\.localIdentifier), animated: animated)
                     .padding(.top, 18).padding(.trailing, 18)
                     .accessibilityHidden(true)
             }
@@ -401,9 +423,10 @@ struct ReviewHero: View {
 
 /// Fächer aus drei echten Medien (66 × 88, weißer Rand 3, gedreht −12°/10°/−2°). Die vordere Karte deutet alle 4,8 s
 /// einen Wisch an: links (Papierkorb), rechts (Später), hoch (Behalten); die hinteren schaukeln leicht.
-/// „Bewegung reduzieren“: ruhig. Nur Anzeige – nie eine Entscheidung.
+/// „Bewegung reduzieren“ oder nicht sichtbar: ruhig. Nur Anzeige – nie eine Entscheidung.
 struct HeroFan: View {
     let ids: [String]
+    var animated = true
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
     struct Wiggle {
@@ -420,7 +443,7 @@ struct HeroFan: View {
             ForEach(Array(ids.enumerated()), id: \.element) { index, id in
                 let slot = slots[min(index, slots.count - 1)]
                 card(id)
-                    .modifier(FanWiggle(slot: index, base: slot.rotation, animate: !reduceMotion))
+                    .modifier(FanWiggle(slot: index, base: slot.rotation, animate: animated && !reduceMotion))
                     .offset(x: slot.left, y: 4)
             }
         }
@@ -438,81 +461,44 @@ struct HeroFan: View {
     }
 }
 
-/// Bewegung einer Fächerkarte (Zeiten wie die CSS-Keyframes des Artefakts, Zyklus 4,8 s).
+/// Bewegung einer Fächerkarte (Zeiten wie die CSS-Keyframes des Artefakts, Zyklus 4,8 s). In der Ruhe wird nichts
+/// gezeichnet: Die Schritte laufen als einzelne Animationen, dazwischen schläft die Aufgabe (ein wiederholter
+/// Keyframe-Zeitplan zeichnete jedes Bild neu, auch in der Ruhe). Ohne `animate` steht die Karte still.
 private struct FanWiggle: ViewModifier {
     let slot: Int
     let base: Double
     let animate: Bool
+    @State private var wiggle = HeroFan.Wiggle()
 
-    @ViewBuilder
     func body(content: Content) -> some View {
-        if !animate {
-            content.rotationEffect(.degrees(base))
-        } else if slot == 0 {
-            // 0–55 % Ruhe, 70 % (−3, −15°), 85 % (−11°), 100 % (−12°)
-            content.keyframeAnimator(initialValue: HeroFan.Wiggle(angle: base), repeating: true) { view, v in
-                view.rotationEffect(.degrees(v.angle)).offset(x: v.x, y: v.y)
-            } keyframes: { _ in
-                KeyframeTrack(\.angle) {
-                    LinearKeyframe(base, duration: 2.64)
-                    CubicKeyframe(base - 3, duration: 0.72)
-                    CubicKeyframe(base + 1, duration: 0.72)
-                    CubicKeyframe(base, duration: 0.72)
-                }
-                KeyframeTrack(\.x) {
-                    LinearKeyframe(0, duration: 2.64)
-                    CubicKeyframe(-3, duration: 0.72)
-                    CubicKeyframe(0, duration: 0.72)
-                    CubicKeyframe(0, duration: 0.72)
+        content
+            .rotationEffect(.degrees(base + wiggle.angle))
+            .offset(x: wiggle.x, y: wiggle.y)
+            .task(id: animate) {
+                wiggle = HeroFan.Wiggle()
+                guard animate else { return }
+                let cycle = Self.cycle(slot)
+                while !Task.isCancelled {
+                    guard (try? await Task.sleep(for: .seconds(cycle.rest))) != nil else { return }
+                    for step in cycle.steps {
+                        withAnimation(.easeInOut(duration: step.duration)) { wiggle = step.value }
+                        guard (try? await Task.sleep(for: .seconds(step.duration))) != nil else { return }
+                    }
                 }
             }
-        } else if slot == 1 {
-            // 0–55 % Ruhe, 72 % (+3, 13°), 87 % (9°), 100 % (10°)
-            content.keyframeAnimator(initialValue: HeroFan.Wiggle(angle: base), repeating: true) { view, v in
-                view.rotationEffect(.degrees(v.angle)).offset(x: v.x, y: v.y)
-            } keyframes: { _ in
-                KeyframeTrack(\.angle) {
-                    LinearKeyframe(base, duration: 2.64)
-                    CubicKeyframe(base + 3, duration: 0.816)
-                    CubicKeyframe(base - 1, duration: 0.72)
-                    CubicKeyframe(base, duration: 0.624)
-                }
-                KeyframeTrack(\.x) {
-                    LinearKeyframe(0, duration: 2.64)
-                    CubicKeyframe(3, duration: 0.816)
-                    CubicKeyframe(0, duration: 0.72)
-                    CubicKeyframe(0, duration: 0.624)
-                }
-            }
-        } else {
-            // 0–50 % Ruhe, 58 % links (Papierkorb), 66 %, 74 % rechts (Später), 82 %, 90 % hoch (Behalten), 100 %
-            content.keyframeAnimator(initialValue: HeroFan.Wiggle(angle: base), repeating: true) { view, v in
-                view.rotationEffect(.degrees(v.angle)).offset(x: v.x, y: v.y)
-            } keyframes: { _ in
-                KeyframeTrack(\.angle) {
-                    LinearKeyframe(base, duration: 2.4)
-                    CubicKeyframe(base - 5, duration: 0.384)
-                    CubicKeyframe(base, duration: 0.384)
-                    CubicKeyframe(base + 5, duration: 0.384)
-                    CubicKeyframe(base, duration: 0.384)
-                    CubicKeyframe(base, duration: 0.384)
-                    CubicKeyframe(base, duration: 0.48)
-                }
-                KeyframeTrack(\.x) {
-                    LinearKeyframe(0, duration: 2.4)
-                    CubicKeyframe(-9, duration: 0.384)
-                    CubicKeyframe(0, duration: 0.384)
-                    CubicKeyframe(9, duration: 0.384)
-                    CubicKeyframe(0, duration: 0.384)
-                    CubicKeyframe(0, duration: 0.384)
-                    CubicKeyframe(0, duration: 0.48)
-                }
-                KeyframeTrack(\.y) {
-                    LinearKeyframe(0, duration: 3.936)
-                    CubicKeyframe(-7, duration: 0.384)
-                    CubicKeyframe(0, duration: 0.48)
-                }
-            }
+    }
+
+    /// Ruhe, dann Schritte (Abweichung von der Grundlage, Dauer).
+    private static func cycle(_ slot: Int) -> (rest: Double, steps: [(value: HeroFan.Wiggle, duration: Double)]) {
+        switch slot {
+        // 0–55 % Ruhe, 70 % (−3, −15°), 85 % (−11°), 100 % (−12°)
+        case 0: (2.64, [(HeroFan.Wiggle(x: -3, angle: -3), 0.72), (HeroFan.Wiggle(angle: 1), 0.72), (HeroFan.Wiggle(), 0.72)])
+        // 0–55 % Ruhe, 72 % (+3, 13°), 87 % (9°), 100 % (10°)
+        case 1: (2.64, [(HeroFan.Wiggle(x: 3, angle: 3), 0.816), (HeroFan.Wiggle(angle: -1), 0.72), (HeroFan.Wiggle(), 0.624)])
+        // 0–50 % Ruhe, 58 % links (Papierkorb), 66 %, 74 % rechts (Später), 82 %, 90 % hoch (Behalten), 100 %
+        default: (2.4, [(HeroFan.Wiggle(x: -9, angle: -5), 0.384), (HeroFan.Wiggle(), 0.384),
+                        (HeroFan.Wiggle(x: 9, angle: 5), 0.384), (HeroFan.Wiggle(), 0.384),
+                        (HeroFan.Wiggle(y: -7), 0.384), (HeroFan.Wiggle(), 0.48)])
         }
     }
 }
