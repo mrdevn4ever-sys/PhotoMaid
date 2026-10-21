@@ -24,6 +24,8 @@ struct AppSettingsData: Codable, Equatable, Sendable {
     var showGestureHintOnOpen = false
     var gestureHintSeen = false
     var appearance: AppearanceChoice = .system
+    /// Experiment-Design: eigenes Erscheinungsbild, Standard dunkel (wie das Artefakt), hell auf Wunsch.
+    var designAppearance: AppearanceChoice = .dark
     var largeFileThresholdMB = 100
     var privacyIntroSeen = false
     /// Standardabstand beim Wisch nach rechts (Tage).
@@ -89,6 +91,7 @@ struct AppSettingsData: Codable, Equatable, Sendable {
         showGestureHintOnOpen = v(.showGestureHintOnOpen, d.showGestureHintOnOpen)
         gestureHintSeen = v(.gestureHintSeen, d.gestureHintSeen)
         appearance = v(.appearance, d.appearance)
+        designAppearance = v(.designAppearance, d.designAppearance)
         largeFileThresholdMB = v(.largeFileThresholdMB, d.largeFileThresholdMB)
         privacyIntroSeen = v(.privacyIntroSeen, d.privacyIntroSeen)
         laterDefaultDays = v(.laterDefaultDays, d.laterDefaultDays)

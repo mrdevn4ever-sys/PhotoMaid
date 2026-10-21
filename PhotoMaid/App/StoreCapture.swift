@@ -66,6 +66,7 @@ enum StoreCapture {
         }
         app.updateSettings {
             $0.appearance = ProcessInfo.processInfo.arguments.contains("-capture-light") ? .light : .dark
+            $0.designAppearance = $0.appearance
             $0.todayTourSeen = true
             $0.feedTourSeen = true
             $0.gestureHintSeen = true

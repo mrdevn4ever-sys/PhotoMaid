@@ -10,7 +10,7 @@ Schrift und Größen. Nicht für `main` bestimmt, solange der Nutzer es nicht au
   großen Zähler) und Figtree (Text; 400–700) als statische Instanzen. Größen in pt = Artefakt-px bei Standard-Textgröße,
   Dynamic Type skaliert über `relativeTo`.
 - **Farben** (`DesignSystem/Tokens.swift`): Grund `#0F0E0D`, Flächen `#1B1917`, Bernstein `#F2B24C`, Behalten `#7CC8FF`,
-  Papierkorb `#FF7A50`, Später `#C4B5FD`, Pause-Violett, Erfolg `#8FD9A8`. Nur dunkel (siehe Abweichungen).
+  Papierkorb `#FF7A50`, Später `#C4B5FD`, Pause-Violett, Erfolg `#8FD9A8`; heller Modus siehe Abweichungen.
 - **Symbole** (`PMIcon`): die Linien-Symbole des Artefakts als SVG-Pfade (`SVGPathParser`), nicht SF Symbols.
 - **Tableiste** (`PMTabBar`): schwebende Kapsel, Einträge „PhotoMaid“, Fotos, Studio, Verlauf und der runde
   Bernstein-Knopf „Aufräumen“ in der Mitte. Wie im Artefakt nur auf den fünf Startseiten; Unterseiten ohne Tableiste.
@@ -25,8 +25,10 @@ Schrift und Größen. Nicht für `main` bestimmt, solange der Nutzer es nicht au
 
 - **Begrüßung** nach Tageszeit über „PhotoMaid“ bleibt drin (Nutzer, 21.10.2026): Guten Morgen (5–11 Uhr), Guten Mittag
   (12–13), Guten Nachmittag (14–17), Guten Abend (18–4); kein „Hallo“ mehr.
-- **Erscheinungsbild** fehlt in den Einstellungen: das Artefakt-Design gibt es nur dunkel; ein Umschalter ohne Wirkung
-  wäre ein toter Knopf.
+- **Erscheinungsbild** (Nutzer, 21.10.2026): Einstellungen › Erscheinungsbild „Wie auf dem Gerät · Hell · Dunkel“,
+  Standard dunkel (eigene Einstellung `designAppearance`). Der helle Modus ist eine eigene warme Ableitung der
+  Artefakt-Farben (`AppColors.dyn(dunkel, hell)`), das Artefakt selbst zeigt nur dunkel. Editor und Medienbühnen bleiben
+  dunkel.
 - **Texte aus echten Kennungen**, wo es sie schon gab (z. B. Mitteilungs-Erklärung in „Später“, Tresor-Hinweis in den
   Einstellungen) – teils länger als die Kurzfassung im Artefakt.
 - **Funktionen bleiben erreichbar**, die das Artefakt nicht zeigt: „Code vergessen?“, Sortieren/Auswählen im Tresor,

@@ -214,8 +214,8 @@ struct VaultWorkspaceTrashView: View {
                         .font(PMFont.text(.semibold, 13, relativeTo: .footnote)).foregroundStyle(AppColors.cleanup)
                         .lineLimit(1).minimumScaleFactor(0.8)
                         .padding(.horizontal, 12).frame(minHeight: 40)
-                        .background(AppColors.hex(0x26150F), in: .capsule)
-                        .overlay(Capsule().strokeBorder(AppColors.hex(0x5A2E20), lineWidth: 1))
+                        .background(AppColors.cleanupSoft, in: .capsule)
+                        .overlay(Capsule().strokeBorder(AppColors.cleanupSoftStroke, lineWidth: 1))
                         .frame(minHeight: AppSpacing.minTouch)
                         .contentShape(.rect)
                 }

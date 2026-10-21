@@ -319,7 +319,8 @@ final class ScreenshotTests: XCTestCase {
         let gear = app.buttons["Einstellungen"].firstMatch
         guard waitFor(gear, 8, "Einstellungen-Zahnrad") else { return }
         gear.tap()
-        // Experiment-Design: nur dunkel, ohne Umschalter „Erscheinungsbild“.
+        let dark = app.buttons["settings.appearance.dark"].firstMatch
+        if waitFor(dark, 6, "Erscheinungsbild Dunkel") { dark.tap() }
         settle(1.5)
         snap("17_dark_settings")
         let done = app.buttons["Fertig"].firstMatch

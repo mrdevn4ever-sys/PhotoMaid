@@ -280,7 +280,7 @@ struct FeedView: View {
         headerButton(icon: .cup, label: L("memory_break"), tint: AppColors.later) { showMemory = true }
             .disabled(!model.isLoaded || model.isCommitting)
             .accessibilityIdentifier("feed.memory")
-        headerButton(icon: .undo, label: L("undo"), tint: app.read.canUndo ? AppColors.textPrimary : AppColors.hex(0x5A534C)) {
+        headerButton(icon: .undo, label: L("undo"), tint: app.read.canUndo ? AppColors.textPrimary : AppColors.disabled) {
             Task { await model.undo() }
         }
             .disabled(!app.read.canUndo)

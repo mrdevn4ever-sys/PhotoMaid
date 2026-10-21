@@ -44,7 +44,7 @@ struct RootView: View {
             FullScreenHost(request: request)
                 .environment(app)
         }
-        .preferredColorScheme(.dark) // Experiment-Design: immer dunkel wie das Artefakt
+        .preferredColorScheme(app.settings.designAppearance.colorScheme) // Experiment-Design: Standard dunkel
         .font(AppTypography.body)
         .task {
             _ = AdsService.shared.launchNumber // Kaltstart zählen (die ersten drei Starts ohne Start-Werbung)

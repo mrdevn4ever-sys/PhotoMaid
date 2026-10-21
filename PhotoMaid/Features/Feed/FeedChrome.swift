@@ -162,7 +162,7 @@ struct LaterPillView: View {
         }
         .padding(.leading, 4).padding(.trailing, 4)
         .background(AppColors.tileLater, in: .capsule)
-        .overlay(Capsule().strokeBorder(AppColors.hex(0x3D3460), lineWidth: 1))
+        .overlay(Capsule().strokeBorder(AppColors.pauseLine, lineWidth: 1))
         .shadow(color: .black.opacity(0.5), radius: 15, y: 12)
         .accessibilityElement(children: .combine)
         .accessibilityAction(named: Text(key: "change_date"), edit)

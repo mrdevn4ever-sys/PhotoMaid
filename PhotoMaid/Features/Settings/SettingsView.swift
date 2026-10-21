@@ -4,7 +4,7 @@ import SwiftUI
 import UIKit
 
 /// Experiment-Design: Einstellungen wie im Artefakt – Pro-Karte, gruppierte Karten mit Trennlinien, Bricolage-Titel.
-/// Das Erscheinungsbild entfällt hier: das Artefakt-Design gibt es nur dunkel (kein toter Umschalter).
+/// Erscheinungsbild wie im Artefakt als drei Segmente (Wie auf dem Gerät · Hell · Dunkel), Standard dunkel.
 struct SettingsView: View {
     @Environment(AppModel.self) private var app
     @Environment(\.purchase) private var purchase
@@ -29,6 +29,8 @@ struct SettingsView: View {
                     divider
                     laterDefault
                 }
+                heading(L("set_appearance"))
+                appearancePicker
                 heading(L("art_privacy_data"))
                 card {
                     if !VaultStore.shared.hidesEntry {
@@ -111,7 +113,7 @@ struct SettingsView: View {
                             Text(key: "pro2_f3")
                         }
                         .font(PMFont.text(.regular, 14, relativeTo: .subheadline))
-                        .foregroundStyle(AppColors.hex(0xD8D0C6))
+                        .foregroundStyle(AppColors.textMuted)
                     }
                 }
                 .multilineTextAlignment(.leading)
@@ -184,6 +186,34 @@ struct SettingsView: View {
     }
 
     // MARK: Bausteine
+
+    /// Drei Segmente in einer Fläche (Artefakt): gewählt hervorgehoben, sonst gedämpft.
+    private var appearancePicker: some View {
+        HStack(spacing: 4) {
+            ForEach([AppearanceChoice.system, .light, .dark]) { choice in
+                let selected = app.settings.designAppearance == choice
+                Button {
+                    app.updateSettings { $0.designAppearance = choice }
+                } label: {
+                    Text(key: choice == .system ? "appearance_system" : (choice == .light ? "appearance_light" : "appearance_dark"))
+                        .font(PMFont.text(.semibold, 13, relativeTo: .footnote))
+                        .foregroundStyle(selected ? AppColors.textPrimary : AppColors.textSecondary)
+                        .lineLimit(1).minimumScaleFactor(0.8)
+                        .frame(maxWidth: .infinity, minHeight: 40)
+                        .background(selected ? AppColors.control : Color.clear, in: .rect(cornerRadius: 12))
+                        .contentShape(.rect(cornerRadius: 12))
+                }
+                .buttonStyle(PMPressStyle())
+                .accessibilityAddTraits(selected ? [.isSelected] : [])
+                .accessibilityIdentifier("settings.appearance.\(choice.rawValue)")
+            }
+        }
+        .padding(4)
+        .background(AppColors.surface, in: .rect(cornerRadius: 16))
+        .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel(Text(key: "set_appearance"))
+    }
 
     private func heading(_ title: String) -> some View {
         Text(verbatim: title).font(AppTypography.title3).foregroundStyle(AppColors.textPrimary)

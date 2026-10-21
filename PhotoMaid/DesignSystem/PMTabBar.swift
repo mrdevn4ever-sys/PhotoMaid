@@ -23,7 +23,7 @@ struct PMTabBar: View {
             Capsule()
                 .fill(AppColors.surface)
                 .overlay(Capsule().strokeBorder(AppColors.control, lineWidth: 1))
-                .shadow(color: .black.opacity(0.5), radius: 15, y: 12)
+                .shadow(color: AppColors.shadow, radius: 15, y: 12)
         }
         .padding(.horizontal, 16)
         .padding(.bottom, 22)

@@ -128,11 +128,11 @@ private struct PhotoGameTile: View {
                 GridRow {
                     RoundedRectangle(cornerRadius: 10).fill(open)
                     RoundedRectangle(cornerRadius: 10).fill(closed)
-                        .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(AppColors.hex(0x3D3460), lineWidth: 1))
+                        .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(AppColors.pauseLine, lineWidth: 1))
                 }
                 GridRow {
                     RoundedRectangle(cornerRadius: 10).fill(closed)
-                        .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(AppColors.hex(0x3D3460), lineWidth: 1))
+                        .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(AppColors.pauseLine, lineWidth: 1))
                     RoundedRectangle(cornerRadius: 10).fill(open)
                 }
             }
