@@ -3,9 +3,13 @@ import SwiftUI
 
 /// Verlauf: Alle / Behalten / Bereinigt / Später. Echte Ereignisse, keine erfundenen Statistiken.
 /// Experiment-Design: Kennzahl-Kacheln, Filter-Chips und Karten je Eintrag wie im Artefakt.
+/// Zuerst nur die 10 neuesten Einträge (Nutzerwunsch 21.10.2026); ältere erst nach „Ältere Einträge anzeigen“,
+/// ihre Vorschaubilder laden erst beim Hineinscrollen (LazyVStack).
 struct HistoryView: View {
     @Environment(AppModel.self) private var app
     @State private var filter = 0
+    @State private var showOlder = false
+    private static let recentCount = 10
 
     private func matches(_ e: DecisionEvent, _ filter: Int) -> Bool {
         switch filter {
@@ -20,40 +24,45 @@ struct HistoryView: View {
         let all = app.read.events
         let events = all.filter { matches($0, filter) }
         let entries = Array(HistoryGrouping.group(events).reversed())
+        let visible = showOlder ? entries : Array(entries.prefix(Self.recentCount))
+        let olderCount = entries.count - min(entries.count, Self.recentCount)
         let cal = Calendar.current
-        let days = Dictionary(grouping: entries) { cal.startOfDay(for: $0.primary.at) }
+        let days = Dictionary(grouping: visible) { cal.startOfDay(for: $0.primary.at) }
+        let dayTotals = Dictionary(grouping: entries) { cal.startOfDay(for: $0.primary.at) }.mapValues(\.count)
         let keys = Array(days.keys.sorted(by: >).prefix(60))
         let newest = entries.first?.id
         ScrollView {
-            VStack(alignment: .leading, spacing: AppSpacing.m) {
-                Text(key: "tab_history").pageTitle().accessibilityAddTraits(.isHeader).padding(.top, AppSpacing.xs)
-                HStack(spacing: 10) {
-                    stat(HistoryGrouping.group(all.filter { matches($0, 1) }).count, "history_kept", AppColors.keep) { filter = 1 }
-                    stat(HistoryGrouping.group(all.filter { matches($0, 2) }).count, "history_cleaned", AppColors.cleanup) { filter = 2 }
-                    stat(app.read.laterRecords.count, "history_later", AppColors.later) { app.navigate(.later, in: .history) }
-                }
-                chips
-                if keys.isEmpty {
-                    if all.isEmpty {
-                        dashed(L("history_empty_title"), L("history_empty"))
-                    } else {
-                        dashed(L("history_filter_empty_title"), L("history_filter_empty"))
+            // Jede Zeile ist ein eigenes Kind des LazyVStack: Vorschaubilder laden erst, wenn sie ins Bild kommen.
+            LazyVStack(alignment: .leading, spacing: AppSpacing.xs) {
+                VStack(alignment: .leading, spacing: AppSpacing.m) {
+                    Text(key: "tab_history").pageTitle().accessibilityAddTraits(.isHeader).padding(.top, AppSpacing.xs)
+                    HStack(spacing: 10) {
+                        stat(HistoryGrouping.group(all.filter { matches($0, 1) }).count, "history_kept", AppColors.keep) { filter = 1 }
+                        stat(HistoryGrouping.group(all.filter { matches($0, 2) }).count, "history_cleaned", AppColors.cleanup) { filter = 2 }
+                        stat(app.read.laterRecords.count, "history_later", AppColors.later) { app.navigate(.later, in: .history) }
                     }
-                }
-                ForEach(keys, id: \.self) { day in
-                    let list = days[day] ?? []
-                    VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                        Text(verbatim: LP("history_day_header", list.count, DateText.complete(day), list.count))
-                            .font(PMFont.heading(18, relativeTo: .headline)).foregroundStyle(AppColors.textPrimary)
-                            .accessibilityAddTraits(.isHeader)
-                            .padding(.top, 4).padding(.horizontal, 4)
-                        ForEach(list.prefix(300)) { entry in
-                            HistoryRow(entry: entry, undo: entry.id == newest && app.read.canUndo ? {
-                                Task { _ = await app.undo() }
-                            } : nil)
+                    chips
+                    if keys.isEmpty {
+                        if all.isEmpty {
+                            dashed(L("history_empty_title"), L("history_empty"))
+                        } else {
+                            dashed(L("history_filter_empty_title"), L("history_filter_empty"))
                         }
                     }
                 }
+                ForEach(keys, id: \.self) { day in
+                    let total = dayTotals[day] ?? 0
+                    Text(verbatim: LP("history_day_header", total, DateText.complete(day), total))
+                        .font(PMFont.heading(18, relativeTo: .headline)).foregroundStyle(AppColors.textPrimary)
+                        .accessibilityAddTraits(.isHeader)
+                        .padding(.top, AppSpacing.s).padding(.horizontal, 4)
+                    ForEach((days[day] ?? []).prefix(300)) { entry in
+                        HistoryRow(entry: entry, undo: entry.id == newest && app.read.canUndo ? {
+                            Task { _ = await app.undo() }
+                        } : nil)
+                    }
+                }
+                if olderCount > 0 { olderToggle(olderCount).padding(.top, AppSpacing.xs) }
             }
             .padding(.horizontal, AppSpacing.pageMargin)
             .padding(.bottom, AppSpacing.xxl)
@@ -61,6 +70,7 @@ struct HistoryView: View {
         }
         .appPage()
         .statusBarBackdrop()
+        .onChange(of: filter) { _, _ in showOlder = false }
         .toolbar(.hidden, for: .navigationBar)
         .navigationTitle(L("tab_history"))
         .accessibilityIdentifier("history.events")
@@ -82,6 +92,28 @@ struct HistoryView: View {
         }
         .buttonStyle(PMPressStyle())
         .accessibilityElement(children: .combine)
+    }
+
+    /// Aufklapper unter den neuesten Einträgen: „Ältere Einträge anzeigen (n)“ bzw. „Weniger anzeigen“.
+    private func olderToggle(_ count: Int) -> some View {
+        Button {
+            withAnimation(.snappy) { showOlder.toggle() }
+        } label: {
+            HStack(spacing: AppSpacing.xs) {
+                Text(verbatim: showOlder ? L("history_show_less") : L("history_show_older", count))
+                PMIcon(.chevronRight, size: 16, lineWidth: 2.4)
+                    .rotationEffect(.degrees(showOlder ? -90 : 90))
+                    .accessibilityHidden(true)
+            }
+            .font(PMFont.text(.semibold, 15, relativeTo: .subheadline))
+            .foregroundStyle(AppColors.textPrimary)
+            .frame(maxWidth: .infinity, minHeight: 48)
+            .background(AppColors.surface, in: .rect(cornerRadius: 16))
+            .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
+            .contentShape(.rect(cornerRadius: 16))
+        }
+        .buttonStyle(PMPressStyle())
+        .accessibilityIdentifier("history.older")
     }
 
     private var chips: some View {

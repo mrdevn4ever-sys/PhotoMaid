@@ -14544,5 +14544,41 @@
   "tr": "Tünaydın",
   "uk": "Добрий день",
   "zh-Hans": "下午好"
+ },
+ "history_show_older": {
+  "ar": "عرض الإدخالات الأقدم (%1$lld)",
+  "de": "Ältere Einträge anzeigen (%1$lld)",
+  "en": "Show older entries (%1$lld)",
+  "es": "Mostrar entradas anteriores (%1$lld)",
+  "fr": "Afficher les entrées plus anciennes (%1$lld)",
+  "it": "Mostra voci precedenti (%1$lld)",
+  "ja": "以前の項目を表示（%1$lld）",
+  "ko": "이전 항목 보기(%1$lld)",
+  "nl": "Oudere items tonen (%1$lld)",
+  "pl": "Pokaż starsze wpisy (%1$lld)",
+  "pt-PT": "Mostrar entradas anteriores (%1$lld)",
+  "ro": "Afișează intrările mai vechi (%1$lld)",
+  "ru": "Показать более ранние записи (%1$lld)",
+  "tr": "Eski kayıtları göster (%1$lld)",
+  "uk": "Показати давніші записи (%1$lld)",
+  "zh-Hans": "显示更早的记录（%1$lld）"
+ },
+ "history_show_less": {
+  "ar": "عرض أقل",
+  "de": "Weniger anzeigen",
+  "en": "Show less",
+  "es": "Mostrar menos",
+  "fr": "Afficher moins",
+  "it": "Mostra meno",
+  "ja": "表示を減らす",
+  "ko": "간단히 보기",
+  "nl": "Minder tonen",
+  "pl": "Pokaż mniej",
+  "pt-PT": "Mostrar menos",
+  "ro": "Afișează mai puțin",
+  "ru": "Показать меньше",
+  "tr": "Daha az göster",
+  "uk": "Показати менше",
+  "zh-Hans": "收起"
  }
 }
