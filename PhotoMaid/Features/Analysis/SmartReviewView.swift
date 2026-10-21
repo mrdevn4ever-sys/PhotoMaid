@@ -194,8 +194,10 @@ struct SmartReviewView: View {
         case .comparing: return L("ana2_stage_comparing")
         case .paused: return L("ana2_stage_paused")
         case .waitingWiFi: return L("ana2_stage_wifi")
-        case .cooling: return L("ana2_stage_cooling")
-        case .thermal: return L("ana2_stage_thermal")
+        // Keine Hitzewarnung (Nutzer, 21.10.2026): Wärme drosselt nur still; alte gespeicherte Zustände zeigen „läuft“
+        // bzw. „angehalten“.
+        case .cooling: return L("ana2_stage_local")
+        case .thermal: return L("ana2_stage_paused")
         case .storageError: return L("ana2_stage_storage")
         case .privacy: return L("ana2_stage_privacy")
         case .changed: return L("ana2_stage_changed")

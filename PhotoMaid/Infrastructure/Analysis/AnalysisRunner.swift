@@ -112,8 +112,8 @@ enum AnalysisRunner {
         catch { return .storageError }
     }
 
-    /// Lokal höchstens 2, iCloud (nur WLAN) höchstens 3 Fotos gleichzeitig. Wird das iPhone warm, wird gedrosselt
-    /// bzw. gewartet und danach von selbst weitergemacht (`ThrottledWork`); nur bei „kritisch“ wird angehalten.
+    /// Lokal höchstens 2, iCloud (nur WLAN) höchstens 3 Fotos gleichzeitig. Wird das iPhone warm, wird nur gedrosselt
+    /// (`ThrottledWork` mit gedeckelter Stufe, siehe `thermalLevel`) – kein Warten, kein Anhalten, keine Warnung.
     private static func pass(indices: [Int], items: inout [AnalysisItem], counts: inout AnalysisCounts,
                              graph: inout AnalysisSimilarityGraph, db: AnalysisDatabase, cloud: Bool,
                              includeCloud: @escaping @Sendable () -> Bool, background: Bool,
@@ -185,15 +185,11 @@ enum AnalysisRunner {
         await emit(.counts(counts, stage))
     }
 
-    /// Wärmestufe des Geräts für die Drosselung.
+    /// Wärmestufe für die Drosselung. Nutzerentscheidung 21.10.2026 („keine Hitzewarnung in der gesamten App“): nie
+    /// warten, nie anhalten, nie warnen – jede erhöhte Stufe drosselt nur (halbe Parallelität mit Pause). iOS meldet
+    /// „ernst“ schon unter normaler Last; echte Überhitzung regelt das System selbst.
     static func thermalLevel() -> WorkThermalLevel {
-        switch ProcessInfo.processInfo.thermalState {
-        case .nominal: return .nominal
-        case .fair: return .fair
-        case .serious: return .serious
-        case .critical: return .critical
-        @unknown default: return .fair
-        }
+        ProcessInfo.processInfo.thermalState == .nominal ? .nominal : .fair
     }
     /// Wärme wird nicht hier, sondern über `ThrottledWork` behandelt (drosseln/warten statt abbrechen).
     /// iCloud-Schalter während des iCloud-Teils ausgeschaltet: der Lauf endet regulär (lokal ist fertig).

@@ -15,7 +15,7 @@ struct PhotoGameAnalysisStatus: View {
                 if analysis.runKind == kind {
                     SurfaceCard {
                         VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                            Text(verbatim: L(analysis.runStage == .cooling ? "ana2_stage_cooling" : "memory_analysis_running"))
+                            Text(verbatim: L("memory_analysis_running"))
                                 .font(AppTypography.footnote)
                             if let counts = analysis.countsByKind[kind], counts.total > 0 {
                                 ProgressView(value: counts.fraction)
@@ -39,7 +39,6 @@ struct PhotoGameAnalysisStatus: View {
     private func stopText(_ kind: AnalysisKind) -> String {
         switch analysis.stageByKind[kind] {
         case .waitingWiFi: L("ana2_stage_wifi")
-        case .thermal: L("ana2_stage_thermal")
         case .storageError: L("ana2_stage_storage")
         case .privacy: L("ana2_stage_privacy")
         default: L("ana2_stage_paused")
