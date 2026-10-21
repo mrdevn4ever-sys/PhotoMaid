@@ -30,6 +30,7 @@ final class VaultDeletionTests: XCTestCase {
     }
     private func tap(_ element: XCUIElement, _ name: String) {
         XCTAssertTrue(element.waitForExistence(timeout: 15), name)
+        app.settleHittable(element)
         for _ in 0..<8 where !element.isHittable { app.swipeUp() }
         XCTAssertTrue(element.isHittable, name)
         element.tap()

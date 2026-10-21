@@ -12,6 +12,21 @@ extension XCUIApplication {
     /// Die Tableiste – wie im Artefakt nur auf den fünf Startseiten sichtbar.
     var pmTabBar: XCUIElement { buttons["tab.today"].firstMatch }
 
+    /// Kurz warten, bis ein Element bedienbar ist (z. B. ein Menüeintrag, der noch einblendet). Erst danach
+    /// scrollen – ein Wischen würde ein offenes Menü schließen.
+    func settleHittable(_ element: XCUIElement, timeout: TimeInterval = 2) {
+        let deadline = Date().addingTimeInterval(timeout)
+        while element.exists && !element.isHittable && Date() < deadline { Thread.sleep(forTimeInterval: 0.2) }
+    }
+
+    /// Lazy-Raster erzeugen Einträge erst beim Scrollen: bis zur Existenz suchen (erst nach unten, dann nach oben).
+    func scrollUntilExists(_ element: XCUIElement, timeout: TimeInterval = 3) -> Bool {
+        if element.waitForExistence(timeout: timeout) { return true }
+        for _ in 0..<8 where !element.exists { swipeUp() }
+        for _ in 0..<8 where !element.exists { swipeDown() }
+        return element.exists
+    }
+
     /// Gesperrter Tresor mit PIN: rundes Ziffernfeld statt Textfeld.
     var vaultKeypad: XCUIElement { buttons["vault.key.1"].firstMatch }
 

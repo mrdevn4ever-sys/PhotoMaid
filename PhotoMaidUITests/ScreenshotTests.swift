@@ -69,7 +69,10 @@ final class ScreenshotTests: XCTestCase {
 
     private func tap(_ id: String, _ what: String) -> Bool {
         let e = element(id)
+        // Kacheln in Lazy-Rastern entstehen erst beim Scrollen (Experiment-Design).
+        _ = app.scrollUntilExists(e)
         guard waitFor(e, 10, what) else { return false }
+        app.settleHittable(e)
         for _ in 0..<6 where !e.isHittable { app.swipeUp() }
         guard e.isHittable else { XCTFail("Nicht erreichbar: \(what)"); return false }
         e.tap()

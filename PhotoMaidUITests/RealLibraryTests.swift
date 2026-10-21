@@ -33,6 +33,7 @@ final class RealLibraryTests: XCTestCase {
     }
     private func tap(_ element: XCUIElement, _ name: String, timeout: Double = 10) {
         XCTAssertTrue(element.exists || element.waitForExistence(timeout: timeout), name)
+        app.settleHittable(element)
         if !element.isHittable { scrollTo(element) }
         XCTAssertTrue(element.isHittable, name)
         element.tap()
