@@ -7,15 +7,17 @@ import PhotoMaidCore
 /// wird danach über `PhotoLibraryService` (neues Medium, Original unverändert).
 enum VideoExportJob {
     /// Bearbeitetes Einzelvideo. Nur gekürzt → ohne Neuberechnung; klappt das nicht, wird neu berechnet.
+    /// `isolated` (Tresor): der Ordner muss schon existieren (geschützte Ablage der Sitzung; nach dem Sperren wird er
+    /// nicht neu angelegt) und es gibt keinen zweiten Schreibdurchgang für Netz-Optimierung.
     static func renderEdit(asset: AVAsset, info: VideoInfo, project: VideoProject, folder: URL, baseName: String,
-                           progress: @escaping @Sendable (Double) -> Void) async throws -> URL {
+                           isolated: Bool = false, progress: @escaping @Sendable (Double) -> Void) async throws -> URL {
         guard let clip = project.clips.first else { throw VideoError.missing }
-        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        if !isolated { try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true) }
         if VideoEdit.isTrimOnly(project) {
             let fast = folder.appendingPathComponent(baseName + ".mov")
             do {
                 try await VideoWriter.passthroughTrim(asset, startMs: clip.trimStartMs, endMs: clip.trimEndMs, to: fast,
-                                                      progress: progress)
+                                                      optimizeForNetwork: !isolated, progress: progress)
                 return fast
             } catch is CancellationError {
                 throw CancellationError()
@@ -29,7 +31,8 @@ enum VideoExportJob {
         let built = try await VideoBuilder.build(input)
         let url = folder.appendingPathComponent(baseName + ".mp4")
         let bitrate = project.targetBitrate ?? VideoPlan.videoBitrate(layout, fps: built.fps, profile: project.profile)
-        try await VideoWriter.write(built, to: url, options: .init(videoBitrate: bitrate), progress: progress)
+        try await VideoWriter.write(built, to: url, options: .init(videoBitrate: bitrate, optimizeForNetwork: !isolated),
+                                    progress: progress)
         return url
     }
 
@@ -51,14 +54,15 @@ enum VideoExportJob {
     /// Film/Diashow aus mehreren Clips (gemeinsame Ausgabegröße, Übergänge, Musik).
     static func renderMovie(project: VideoProject, assets: [String: AVAsset], infos: [String: VideoInfo], frame: VSize,
                             fps: Float, musicURL: URL?, allowNetwork: Bool, folder: URL, baseName: String,
-                            progress: @escaping @Sendable (Double) -> Void) async throws -> URL {
-        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+                            isolated: Bool = false, progress: @escaping @Sendable (Double) -> Void) async throws -> URL {
+        if !isolated { try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true) }
         let input = VideoBuilder.Input(project: project, assets: assets, infos: infos, size: frame, fps: fps, forExport: true,
                                        allowNetwork: allowNetwork, musicURL: musicURL)
         let built = try await VideoBuilder.build(input)
         let url = folder.appendingPathComponent(baseName + ".mp4")
         let bitrate = project.targetBitrate ?? movieBitrate(frame, fps: built.fps, profile: project.profile)
-        try await VideoWriter.write(built, to: url, options: .init(videoBitrate: bitrate), progress: progress)
+        try await VideoWriter.write(built, to: url, options: .init(videoBitrate: bitrate, optimizeForNetwork: !isolated),
+                                    progress: progress)
         return url
     }
 

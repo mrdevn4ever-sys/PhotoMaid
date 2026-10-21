@@ -339,7 +339,8 @@ struct MarkupPanel: View {
             }
         }
         .alert(L("edit_mk_text"), isPresented: $askText) {
-            TextField(L("edit_mk_text"), text: $text)
+            // Im Tresor lernt die Tastatur keine Texte (keine Vorschläge in anderen Apps).
+            TextField(L("edit_mk_text"), text: $text).autocorrectionDisabled(model.inVault)
             Button(L("done")) {
                 let t = text.trimmingCharacters(in: .whitespacesAndNewlines)
                 guard !t.isEmpty else { return }
@@ -586,10 +587,11 @@ struct EditSaveSheet: View {
         model.setSaving(true)
         defer { working = false; model.setSaving(false) }
         if model.inVault {
+            guard let lease = model.vaultLease else { failure = L("vault_error_generic"); return }
             do {
                 let result = try await VaultEditSaver.savePhoto(itemID: model.assetID, sourceName: model.sourceName, data: data,
                                                                 recipe: model.recipe, mode: mode, removeLocation: removeLocation,
-                                                                unlimited: app.capabilities.hasProToolsAccess)
+                                                                unlimited: app.capabilities.hasProToolsAccess, lease: lease)
                 VaultStore.shared.lastEdit = result
                 Haptics.success()
                 dismiss()

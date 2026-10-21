@@ -90,6 +90,19 @@ Woche**; alles andere aus dem Plan umsetzen.
   keine Toasts außerhalb, keine Caches auf der Platte; Klartext (Video-Quelle, Export) nur in der Temp-Ablage der
   Sitzung, sofort danach gelöscht, spätestens beim Sperren. Sperren schließt den Editor; ein Export zählt als
   Bedienung (keine Inaktivitätssperre mittendrin).
+- Sicherheitsprüfung (Code-Review 21.10.2026, alle Wege der Tresor-Bearbeitung) – behoben:
+  - Sperren bricht einen laufenden Tresor-Export sofort ab (`ExportCoordinator.cancelVaultWork`); Tresor-Exporte laufen
+    nie im Hintergrund weiter, halten den Bildschirm nicht wach und zeigen keinen „App kurz wechseln“-Hinweis.
+  - Export schreibt nur in den schon angelegten geschützten Ordner der Sitzung (nach dem Sperren nie neu angelegt), ohne
+    zweiten Schreibdurchgang für Netz-Optimierung.
+  - Editor schon geschlossen, während das Video noch entschlüsselt wird: die Datei wird sofort gelöscht.
+  - „Ersetzen“ + Tresor-Papierkorb leeren: das Fotos-Original bleibt verborgen (`VaultItem.concealsOriginalID`).
+  - Inaktivitätssperre prüft der Tresor selbst und Berührungen in Betrachter/Editor verlängern die Sitzung.
+  - Bearbeitungen sind an die Sitzung beim Öffnen gebunden (nach Sperren + Öffnen nie in die neue Sitzung).
+  - Texteingaben im Tresor-Editor ohne Autokorrektur-Lernen; Sperren setzt Zähler und letztes Ergebnis zurück;
+    Videos im Betrachter werden beim Weiterblättern gelöscht; Zusammenfügen nimmt die gemessene Videolänge.
+  - Bestätigt unverändert: kein Weg in Fotos-App, Ledger/Verlauf, „Bearbeitet“, Erfolge, Toasts, Zwischenablage,
+    Spotlight; Diagnose nur Ereignisname + Fehlercode.
 - Tempo (langsamer/schneller), Schnitt, Farbe, Text, Ton und Format: Werkzeuge des Video-Editors, im Tresor über
   „Bearbeiten“. **Videos zusammenfügen** (Nutzer, 21.10.2026): im Raster mindestens zwei Videos auswählen →
   „Video zusammenfügen“ (`VaultMovieView`): Reihenfolge, Schwarzblende, Format, Qualität; derselbe Film-Export wie im

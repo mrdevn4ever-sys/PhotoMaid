@@ -40,7 +40,7 @@ public struct VaultSnapshot: Codable, Sendable, Equatable {
     public var mediaSlotsUsed: Int { media.items.count + workspace.mediaTrash.count }
 
     /// Kennungen der Originale aller Medien im Tresor, auch im Tresor-Papierkorb (für die Verbergen-Liste).
-    public var originalIDs: Set<String> { Set(allMedia.compactMap { $0.originalID ?? $0.sourceID }) }
+    public var originalIDs: Set<String> { Set(allMedia.flatMap(\.concealmentIDs)) }
 
     /// Schlüssel für die Verbergen-Liste einer Datei aus einem verbundenen Ordner (System-Datei-ID).
     public static func fileConcealmentKey(_ sourceKey: String) -> String { "file:" + sourceKey }

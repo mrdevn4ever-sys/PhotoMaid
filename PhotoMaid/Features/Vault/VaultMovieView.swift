@@ -14,6 +14,8 @@ struct VaultMovieView: View {
     @State private var editMode: EditMode = .inactive
     @State private var working = false
     @State private var failure: String?
+    /// Tresor-Sitzung beim Öffnen: Quellen und Ergebnis nur in genau dieser Sitzung.
+    @State private var lease = VaultStore.shared.editSession()
 
     init(itemIDs: [String]) {
         let items = VaultStore.shared.index.items
@@ -187,27 +189,35 @@ struct VaultMovieView: View {
     private func save() async {
         guard blockedReason == nil, let first = project.clips.first,
               let firstItem = vault.index.items.first(where: { $0.id == first.mediaId }) else { return }
+        guard let lease else { failure = L("vault_error_generic"); return }
         working = true
+        vault.beginEditWork()
         var temps: [URL] = []
         defer {
             vault.removeTempFiles(temps)
+            vault.endEditWork()
             working = false
         }
         do {
             var assets: [String: AVAsset] = [:]
             var infos: [String: VideoInfo] = [:]
             for clip in project.clips where assets[clip.mediaId] == nil {
-                guard let source = await vault.editVideoSource(clip.mediaId) else { throw EditSaveError.render }
+                guard let source = await vault.editVideoSource(clip.mediaId, lease: lease) else { throw EditSaveError.render }
                 temps.append(source.url)
                 let asset = AVURLAsset(url: source.url)
                 guard let info = await VideoSource.info(asset) else { throw EditSaveError.render }
                 assets[clip.mediaId] = asset
                 infos[clip.mediaId] = info
             }
-            let frame = MoviePlan.frame(project, first: VSize(max(2, firstItem.pixelWidth), max(2, firstItem.pixelHeight)))
-            let result = try await VaultEditSaver.saveMovie(project: project, assets: assets, infos: infos, frame: frame,
+            // Clip-Längen aus den gelesenen Videos (die gespeicherte Dauer kann fehlen).
+            let measured = project.withClips(project.clips.map { clip in
+                guard let ms = infos[clip.mediaId]?.durationMs, ms > 0 else { return clip }
+                return MoviePlan.videoClip(id: clip.id, mediaId: clip.mediaId, durationMs: ms)
+            })
+            let frame = MoviePlan.frame(measured, first: VSize(max(2, firstItem.pixelWidth), max(2, firstItem.pixelHeight)))
+            let result = try await VaultEditSaver.saveMovie(project: measured, assets: assets, infos: infos, frame: frame,
                                                             basedOn: firstItem.id,
-                                                            unlimited: app.capabilities.hasProToolsAccess)
+                                                            unlimited: app.capabilities.hasProToolsAccess, lease: lease)
             vault.lastEdit = result
             Haptics.success()
             dismiss()

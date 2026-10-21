@@ -234,7 +234,7 @@ enum VaultBackup {
                 creationMs: old.creationMs, addedMs: old.addedMs, latitude: old.latitude, longitude: old.longitude,
                 isFavorite: old.isFavorite, duration: old.duration, pixelWidth: old.pixelWidth, pixelHeight: old.pixelHeight,
                 thumbnail: old.thumbnail.flatMap { thumbnailMap[$0] }, sourceID: old.sourceID,
-                originalID: old.originalID)
+                originalID: old.originalID, concealsOriginalID: old.concealsOriginalID)
         }
         var result = VaultSnapshot()
         result.media.folders = original.media.folders.map { VaultFolder(id: mediaFolderMap[$0.id]!, name: $0.name, createdMs: $0.createdMs) }

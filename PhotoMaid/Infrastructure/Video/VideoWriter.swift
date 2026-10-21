@@ -10,6 +10,8 @@ enum VideoWriter {
         var videoBitrate: Int
         var audioOnly = false
         var fileType: AVFileType = .mp4
+        /// Aus im Tresor: kein zusätzlicher Schreibdurchgang außerhalb des vorgegebenen Ordners.
+        var optimizeForNetwork = true
     }
 
     static func write(_ built: BuiltComposition, to url: URL, options: Options,
@@ -18,7 +20,7 @@ enum VideoWriter {
         let asset = built.composition
         let reader = try AVAssetReader(asset: asset)
         let writer = try AVAssetWriter(outputURL: url, fileType: options.fileType)
-        writer.shouldOptimizeForNetworkUse = true
+        writer.shouldOptimizeForNetworkUse = options.optimizeForNetwork
         var pairs: [Pump.Pair] = []
 
         if !options.audioOnly {
@@ -99,14 +101,14 @@ enum VideoWriter {
     }
 
     /// Nur Anfang/Ende gekürzt: ohne Neuberechnung (gleiche Qualität, HDR bleibt). Schlägt das fehl, rechnet der Aufrufer neu.
-    static func passthroughTrim(_ asset: AVAsset, startMs: Int64, endMs: Int64, to url: URL,
+    static func passthroughTrim(_ asset: AVAsset, startMs: Int64, endMs: Int64, to url: URL, optimizeForNetwork: Bool = true,
                                 progress: @escaping @Sendable (Double) -> Void) async throws {
         try? FileManager.default.removeItem(at: url)
         guard let session = AVAssetExportSession(asset: asset, presetName: AVAssetExportPresetPassthrough) else {
             throw VideoError.write
         }
         session.timeRange = CMTimeRange(start: .ms(startMs), end: .ms(endMs))
-        session.shouldOptimizeForNetworkUse = true
+        session.shouldOptimizeForNetworkUse = optimizeForNetwork
         let box = UncheckedBox(session)
         let watcher = Task {
             for await state in box.value.states(updateInterval: 0.2) {

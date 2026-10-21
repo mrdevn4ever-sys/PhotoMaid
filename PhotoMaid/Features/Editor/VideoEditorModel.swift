@@ -82,6 +82,10 @@ final class VideoEditorModel {
     @ObservationIgnored private var built: BuiltComposition?
     /// Entschlüsselte Quelle in der Temp-Ablage der Sitzung (beim Schließen gelöscht, spätestens beim Sperren).
     @ObservationIgnored private var vaultSourceURL: URL?
+    /// Tresor-Sitzung beim Öffnen: gespeichert wird nur in genau diese Sitzung.
+    @ObservationIgnored private(set) var vaultLease: VaultSessionLease?
+    /// Editor schon geschlossen: eine noch laufende Entschlüsselung räumt ihre Datei selbst weg.
+    @ObservationIgnored private var stopped = false
 
     init(assetID: String, inVault: Bool = false) {
         self.assetID = assetID
@@ -109,7 +113,13 @@ final class VideoEditorModel {
         app.player.stop()
         let av: AVAsset
         if inVault {
-            guard let source = await VaultStore.shared.editVideoSource(assetID) else { loadState = .failed; return }
+            guard let lease = VaultStore.shared.editSession(),
+                  let source = await VaultStore.shared.editVideoSource(assetID, lease: lease) else { loadState = .failed; return }
+            if stopped || Task.isCancelled {
+                VaultStore.shared.removeTempFiles([source.url])
+                return
+            }
+            vaultLease = lease
             vaultSourceURL = source.url
             sourceName = source.name
             av = AVURLAsset(url: source.url)
@@ -137,6 +147,7 @@ final class VideoEditorModel {
     }
 
     func stop() {
+        stopped = true
         previewTask?.cancel()
         scrubTask?.cancel()
         player.pause()

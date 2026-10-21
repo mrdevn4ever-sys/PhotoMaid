@@ -79,7 +79,7 @@ struct PhotoEditorView: View {
             } openPro: {
                 proSheet = false
                 dismiss()
-                app.navigate(.pro)
+                if !model.inVault { app.navigate(.pro) } // Im Tresor nie in die App dahinter springen.
             }
         }
     }

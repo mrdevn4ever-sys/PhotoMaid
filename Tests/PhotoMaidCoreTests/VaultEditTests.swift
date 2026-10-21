@@ -60,4 +60,24 @@ struct VaultEditTests {
         #expect(snapshot.originalIDs == ["PH-1"])
         #expect(snapshot.mediaSlotsUsed == 2)
     }
+
+    @Test func editedCopyKeepsPhotosOriginalHiddenAfterTrashIsEmptied() throws {
+        var snapshot = VaultSnapshot(media: VaultIndex(items: [original()]))
+        let copy = VaultEdit.item(from: original(), id: "new", kind: .photo, resource: resource(), addedMs: 9,
+                                  removeLocation: false, replace: true, duration: 0, pixelWidth: 1, pixelHeight: 1,
+                                  thumbnail: nil)
+        #expect(copy.concealsOriginalID == "PH-1" && copy.concealmentIDs == ["PH-1"])
+        try snapshot.addEdited(copy, replacing: "orig", nowMs: 42)
+        snapshot.workspace.mediaTrash.removeAll() // Tresor-Papierkorb endgültig geleert
+        #expect(snapshot.originalIDs == ["PH-1"], "Das Fotos-Original bleibt verborgen, solange die Fassung im Tresor liegt")
+        // Eine Bearbeitung der Bearbeitung trägt den Schlüssel weiter.
+        let second = VaultEdit.item(from: copy, id: "new2", kind: .photo, resource: resource(), addedMs: 10,
+                                    removeLocation: false, replace: false, duration: 0, pixelWidth: 1, pixelHeight: 1,
+                                    thumbnail: nil)
+        #expect(second.concealsOriginalID == "PH-1")
+        // Ältere Einträge ohne das Feld lassen sich weiter lesen.
+        let legacy = try JSONDecoder().decode(VaultItem.self, from: JSONEncoder().encode(original()))
+        #expect(legacy.concealsOriginalID == nil)
+        #expect(legacy.concealmentIDs == ["PH-1"])
+    }
 }

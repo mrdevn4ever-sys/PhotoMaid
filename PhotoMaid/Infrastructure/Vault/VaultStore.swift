@@ -80,6 +80,8 @@ final class VaultStore {
     @ObservationIgnored private var closing = false
     /// Zählt Sperren: Ein Entsperren, das erst nach einer Sperre fertig wird, öffnet nicht.
     @ObservationIgnored private var lockCount = 0
+    /// Prüft jede Sekunde die Inaktivitätssperre – unabhängig davon, welche Ansicht (Raster, Betrachter, Editor) offen ist.
+    @ObservationIgnored private var inactivityTicker: Task<Void, Never>?
 
     var isSetUp: Bool { phase != .notSetUp }
     /// Eingang in den Einstellungen ausgeblendet; geöffnet wird dann nur über „PhotoMaid“ (Startseite) 2 Sekunden halten.
@@ -146,6 +148,12 @@ final class VaultStore {
         defer { closing = false }
         NotificationCenter.default.post(name: .vaultWillLock, object: nil)
         VaultDisclosure.cancel()
+        // Laufenden Tresor-Export (Bearbeiten, Zusammenfügen) sofort abbrechen; kein Ergebnis aus dieser Sitzung mehr.
+        ExportCoordinator.shared.cancelVaultWork()
+        inactivityTicker?.cancel()
+        inactivityTicker = nil
+        lastEdit = nil
+        editWork = 0
         lease?.revoke()
         lease = nil
         session.revoke()
@@ -177,6 +185,16 @@ final class VaultStore {
         // Laufende Aktion oder ein Werbevideo für einen neuen Ordner: gilt als Bedienung.
         if progress != nil || editWork > 0 || AdsService.shared.presenting { _ = session.touch(now: uptime); return }
         if session.requiresLock(now: uptime) { lock() }
+    }
+
+    private func startInactivityTicker() {
+        inactivityTicker?.cancel()
+        inactivityTicker = Task { [weak self] in
+            while !Task.isCancelled {
+                do { try await Task.sleep(for: .seconds(1)) } catch { return }
+                self?.checkInactivity()
+            }
+        }
     }
 
     /// Gültige Sitzung für eine Aktion aus der Ansicht (nicht bei Pflicht zum neuen Code).
@@ -266,6 +284,7 @@ final class VaultStore {
             lease = VaultSessionLease(key: key, parent: Self.temp)
             session.begin(now: uptime, timeout: Double(value.workspace.inactivitySeconds))
             phase = .unlocked
+            startInactivityTicker()
             finishPendingPurges()
             VaultCaptureRecovery.recoverSealed(store: self)
             return true
@@ -567,7 +586,7 @@ final class VaultStore {
             }
             s.workspace.mediaTrash.removeAll { ids.contains($0.id) }
         }
-        let originals = Set(restored.compactMap { $0.originalID ?? $0.sourceID })
+        let originals = Set(restored.flatMap(\.concealmentIDs))
         if !originals.isEmpty, (try? VaultConcealment.shared.conceal(originals)) == true {
             await app.applyVaultConcealment(originals)
         }
@@ -593,7 +612,7 @@ final class VaultStore {
 
     private func revealPurged(_ purged: [VaultItem], app: AppModel) {
         let stillHidden = snapshot.originalIDs
-        reveal(purged.compactMap { $0.originalID ?? $0.sourceID }.filter { !stillHidden.contains($0) }, app: app)
+        reveal(purged.flatMap(\.concealmentIDs).filter { !stillHidden.contains($0) }, app: app)
     }
 
     /// Dateien, deren Verweise schon sicher entfernt sind, physisch löschen (auch nach einem Abbruch beim nächsten
@@ -916,7 +935,7 @@ final class VaultStore {
            moveToTrash(Set(leaveVault.map(\.id)), forgetOriginals: true) {
             // Das Medium ist wieder in der Fotos-App: dort auch in PhotoMaid zeigen.
             let stillHidden = snapshot.originalIDs
-            reveal(leaveVault.compactMap { $0.originalID ?? $0.sourceID }.filter { !stillHidden.contains($0) }, app: app)
+            reveal(leaveVault.flatMap(\.concealmentIDs).filter { !stillHidden.contains($0) }, app: app)
         }
         app.reloadLibraryIfNeeded(force: true)
         return report

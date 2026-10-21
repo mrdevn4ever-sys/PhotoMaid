@@ -55,11 +55,15 @@ public struct VaultItem: Codable, Sendable, Hashable, Identifiable {
     /// PhotoMaid verborgen bleibt, auch wenn es in der Fotos-App noch liegt oder aus „Zuletzt gelöscht“ zurückkommt.
     /// Einträge aus Build 3/4 haben sie nur, solange `sourceID` gesetzt war (siehe `migrateOriginalIDs`).
     public var originalID: String?
+    /// Nur Verbergen: Kennung des Fotos-App-Originals, aus dem diese im Tresor bearbeitete Fassung entstand. Hält das
+    /// Original in PhotoMaid verborgen, solange die Fassung im Tresor liegt – auch wenn das Original selbst endgültig
+    /// aus dem Tresor gelöscht wurde. Nie für Zurücklegen oder Löschen in der Fotos-App verwendet.
+    public var concealsOriginalID: String?
 
     public init(id: String, kind: VaultMediaKind, folderID: String? = nil, resources: [VaultResource], creationMs: Int64?,
                 addedMs: Int64, latitude: Double? = nil, longitude: Double? = nil, isFavorite: Bool = false,
                 duration: Double = 0, pixelWidth: Int = 0, pixelHeight: Int = 0, thumbnail: String? = nil,
-                sourceID: String? = nil, originalID: String? = nil) {
+                sourceID: String? = nil, originalID: String? = nil, concealsOriginalID: String? = nil) {
         self.id = id
         self.kind = kind
         self.folderID = folderID
@@ -75,7 +79,11 @@ public struct VaultItem: Codable, Sendable, Hashable, Identifiable {
         self.thumbnail = thumbnail
         self.sourceID = sourceID
         self.originalID = originalID ?? sourceID
+        self.concealsOriginalID = concealsOriginalID
     }
+
+    /// Kennungen in der Fotos-App, die dieses Medium in PhotoMaid verborgen hält.
+    public var concealmentIDs: [String] { [originalID ?? sourceID, concealsOriginalID].compactMap { $0 } }
 
     /// Summe der gemessenen Dateigrößen.
     public var size: Int64 { resources.reduce(0) { $0 + $1.size } }
@@ -168,7 +176,7 @@ public struct VaultIndex: Codable, Sendable, Equatable {
     public var stillInLibrary: [String] { items.compactMap(\.sourceID) }
 
     /// Alle bekannten Kennungen der Originale in der Fotos-App (für die Verbergen-Liste).
-    public var originalIDs: Set<String> { Set(items.compactMap { $0.originalID ?? $0.sourceID }) }
+    public var originalIDs: Set<String> { Set(items.flatMap(\.concealmentIDs)) }
 
     /// Einträge älterer Fassungen: ursprüngliche Kennung aus `sourceID` übernehmen, solange sie noch bekannt ist.
     /// Fehlt beides, wird nichts geraten (keine unsichere Zuordnung zu fremden Medien).

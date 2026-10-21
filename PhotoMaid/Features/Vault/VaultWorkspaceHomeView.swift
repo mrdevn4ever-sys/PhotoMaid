@@ -55,13 +55,8 @@ struct VaultWorkspaceHomeView: View {
         .background(AppColors.background.ignoresSafeArea())
         .sheet(isPresented: $tools) { VaultWorkspaceToolsView() }
         .sheet(isPresented: $trash) { VaultWorkspaceTrashView() }
+        // Die Inaktivitätssperre prüft `VaultStore` selbst (auch unter Betrachter und Editor).
         .background(VaultActivityMonitor())
-        .task {
-            while !Task.isCancelled {
-                do { try await Task.sleep(for: .seconds(1)) } catch { return }
-                vault.checkInactivity()
-            }
-        }
         .alert(L("vault2_save_failed"), isPresented: $vault.operationFailed) {
             Button(L("ok"), role: .cancel) {}
         } message: { Text(L("vault2_operation_failed")) }
@@ -723,8 +718,11 @@ struct VaultActivityMonitor: UIViewRepresentable {
 
         override func didMoveToWindow() {
             super.didMoveToWindow()
+            // Unter einem Vollbild-Blatt (Betrachter, Editor, Zusammenfügen) nimmt UIKit diese Ansicht aus dem Fenster:
+            // der Erkenner bleibt dann am Fenster, damit auch Berührungen dort die Sitzung verlängern. Entfernt wird er
+            // erst beim Abbau der Tresor-Ansicht.
+            guard let window, recognizer?.view !== window else { return }
             detach()
-            guard let window else { return }
             let r = Recognizer(target: nil, action: nil)
             r.cancelsTouchesInView = false
             r.delaysTouchesBegan = false

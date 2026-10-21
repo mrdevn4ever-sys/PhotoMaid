@@ -85,7 +85,7 @@ struct VideoEditorView: View {
                 PrimaryButton(title: L("pro_view"), symbol: "crown") {
                     proSheet = false
                     dismiss()
-                    app.navigate(.pro)
+                    if !model.inVault { app.navigate(.pro) } // Im Tresor nie in die App dahinter springen.
                 }
                 SecondaryButton(title: L("edit_keep_editing")) { proSheet = false }
             }
@@ -101,7 +101,8 @@ struct VideoEditorView: View {
             audioFile = nil
         }
         .alert(L("edit_mk_text"), isPresented: $askText) {
-            TextField(L("edit_mk_text"), text: $text)
+            // Im Tresor lernt die Tastatur keine Texte (keine Vorschläge in anderen Apps).
+            TextField(L("edit_mk_text"), text: $text).autocorrectionDisabled(model.inVault)
             Button(L("done")) {
                 let t = text.trimmingCharacters(in: .whitespacesAndNewlines)
                 guard !t.isEmpty else { return }
@@ -314,10 +315,11 @@ struct VideoEditorView: View {
         model.saving = true
         defer { model.saving = false }
         if model.inVault {
+            guard let lease = model.vaultLease else { model.vaultFailure = L("vault_error_generic"); return }
             do {
                 _ = try await VaultEditSaver.saveFrame(itemID: model.assetID, sourceName: model.sourceName, avAsset: av,
                                                        info: info, project: model.project, sourceMs: model.playheadSourceMs,
-                                                       unlimited: app.capabilities.hasProToolsAccess)
+                                                       unlimited: app.capabilities.hasProToolsAccess, lease: lease)
                 Haptics.success()
                 vaultNotice = L("vault_edit_frame_saved")
             } catch {
@@ -1080,10 +1082,11 @@ struct VideoSaveSheet: View {
         model.saving = true
         defer { model.saving = false }
         if model.inVault {
+            guard let lease = model.vaultLease else { model.vaultFailure = L("vault_error_generic"); return }
             do {
                 let result = try await VaultEditSaver.saveVideo(itemID: model.assetID, sourceName: model.sourceName,
                                                                 avAsset: av, info: info, project: model.project, mode: mode,
-                                                                unlimited: app.capabilities.hasProToolsAccess)
+                                                                unlimited: app.capabilities.hasProToolsAccess, lease: lease)
                 VaultStore.shared.lastEdit = result
                 Haptics.success()
                 finished()

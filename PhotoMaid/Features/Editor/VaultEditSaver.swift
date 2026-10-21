@@ -9,7 +9,7 @@ import UniformTypeIdentifiers
 @MainActor
 enum VaultEditSaver {
     static func savePhoto(itemID: String, sourceName: String?, data: Data, recipe: EditRecipe, mode: SaveMode,
-                          removeLocation: Bool, unlimited: Bool) async throws -> VaultEditResult {
+                          removeLocation: Bool, unlimited: Bool, lease: VaultSessionLease) async throws -> VaultEditResult {
         let rendered = await Task.detached(priority: .userInitiated) { () -> (Data, EditFormat)? in
             guard let src = EditRenderer.source(data) else { return nil }
             let meta = EditRenderer.metadata(data)
@@ -24,52 +24,55 @@ enum VaultEditSaver {
         let name = EditNames.copyName(original: sourceName, suffix: L("edit_copy_suffix"), fileExtension: format.fileExtension)
         return try await VaultStore.shared.addEditedMedia(.data(encoded), video: false, uti: format.utType, filename: name,
                                                           basedOn: itemID, removeLocation: removeLocation,
-                                                          replace: mode == .replace, unlimited: unlimited)
+                                                          replace: mode == .replace, unlimited: unlimited, lease: lease)
     }
 
     /// Video in die geschützte Temp-Ablage der Sitzung exportieren, verschlüsselt ablegen, Klartext sofort löschen.
     static func saveVideo(itemID: String, sourceName: String?, avAsset: AVAsset, info: VideoInfo, project: VideoProject,
-                          mode: SaveMode, unlimited: Bool) async throws -> VaultEditResult {
+                          mode: SaveMode, unlimited: Bool, lease: VaultSessionLease) async throws -> VaultEditResult {
         let vault = VaultStore.shared
-        let folder = try vault.editTempFolder()
+        let folder = try vault.editTempFolder(lease: lease)
         defer { try? FileManager.default.removeItem(at: folder) }
-        vault.editWork += 1
-        defer { vault.editWork -= 1 }
+        vault.beginEditWork()
+        defer { vault.endEditWork() }
         let base = (EditNames.copyName(original: sourceName, suffix: L("edit_copy_suffix"), fileExtension: "x") as NSString)
             .deletingPathExtension
         let source = UncheckedBox(avAsset)
-        let url = try await ExportCoordinator.shared.run(title: L("vid_export_running")) { progress in
-            try await VideoExportJob.renderEdit(asset: source.value, info: info, project: project, folder: folder,
-                                                baseName: base, progress: progress)
+        let url = try await ExportCoordinator.shared.run(title: L("vid_export_running"), vaultOwned: true) { progress in
+            try lease.check()
+            return try await VideoExportJob.renderEdit(asset: source.value, info: info, project: project, folder: folder,
+                                                       baseName: base, isolated: true, progress: progress)
         }
         return try await vault.addEditedMedia(.file(url), video: true, uti: UTType.videoIdentifier(for: url),
                                               filename: url.lastPathComponent, basedOn: itemID, removeLocation: false,
-                                              replace: mode == .replace, unlimited: unlimited)
+                                              replace: mode == .replace, unlimited: unlimited, lease: lease)
     }
 
     /// Videos aus dem Tresor zu einem Film zusammenfügen (gleicher Export wie „Video zusammenfügen“ im Studio). Das
     /// Ergebnis liegt im Ordner des ersten Clips, ohne Standort; die Quellen bleiben unverändert.
     static func saveMovie(project: VideoProject, assets: [String: AVAsset], infos: [String: VideoInfo], frame: VSize,
-                          basedOn firstID: String, unlimited: Bool) async throws -> VaultEditResult {
+                          basedOn firstID: String, unlimited: Bool, lease: VaultSessionLease) async throws -> VaultEditResult {
         let vault = VaultStore.shared
-        let folder = try vault.editTempFolder()
+        let folder = try vault.editTempFolder(lease: lease)
         defer { try? FileManager.default.removeItem(at: folder) }
-        vault.editWork += 1
-        defer { vault.editWork -= 1 }
+        vault.beginEditWork()
+        defer { vault.endEditWork() }
         let boxedAssets = UncheckedBox(assets)
-        let url = try await ExportCoordinator.shared.run(title: L("movie_running")) { progress in
-            try await VideoExportJob.renderMovie(project: project, assets: boxedAssets.value, infos: infos, frame: frame,
-                                                 fps: 30, musicURL: nil, allowNetwork: false, folder: folder,
-                                                 baseName: "PhotoMaid", progress: progress)
+        let url = try await ExportCoordinator.shared.run(title: L("movie_running"), vaultOwned: true) { progress in
+            try lease.check()
+            return try await VideoExportJob.renderMovie(project: project, assets: boxedAssets.value, infos: infos,
+                                                        frame: frame, fps: 30, musicURL: nil, allowNetwork: false,
+                                                        folder: folder, baseName: "PhotoMaid", isolated: true,
+                                                        progress: progress)
         }
         return try await vault.addEditedMedia(.file(url), video: true, uti: UTType.videoIdentifier(for: url),
                                               filename: url.lastPathComponent, basedOn: firstID, removeLocation: true,
-                                              replace: false, unlimited: unlimited)
+                                              replace: false, unlimited: unlimited, lease: lease)
     }
 
     /// Standbild zur Quellzeit als neues Foto im Tresor (Aufnahmezeit = Video + Zeitpunkt).
     static func saveFrame(itemID: String, sourceName: String?, avAsset: AVAsset, info: VideoInfo, project: VideoProject,
-                          sourceMs: Int64, unlimited: Bool) async throws -> VaultEditResult {
+                          sourceMs: Int64, unlimited: Bool, lease: VaultSessionLease) async throws -> VaultEditResult {
         let source = UncheckedBox(avAsset)
         let data = await Task.detached(priority: .userInitiated) {
             await VideoExportJob.renderFrame(asset: source.value, info: info, project: project, sourceMs: sourceMs)
@@ -78,7 +81,8 @@ enum VaultEditSaver {
         let name = EditNames.copyName(original: sourceName, suffix: L("vid_frame_suffix"), fileExtension: "jpg")
         return try await VaultStore.shared.addEditedMedia(.data(data), video: false, uti: UTType.jpeg.identifier,
                                                           filename: name, basedOn: itemID, creationOffsetMs: sourceMs, frame: true,
-                                                          removeLocation: false, replace: false, unlimited: unlimited)
+                                                          removeLocation: false, replace: false, unlimited: unlimited,
+                                                          lease: lease)
     }
 
     /// Hinweistext für Fehler beim Speichern im Tresor.
@@ -88,6 +92,7 @@ enum VaultEditSaver {
         case ExportCoordinator.Failure.expired: L("export_expired")
         case ExportCoordinator.Failure.busy: L("export_busy")
         case VaultEditError.limit: L("vault_limit_reached", VaultPolicy.freeItemLimit)
+        case VaultCryptoError.authentication: L("vault_error_generic")
         default: L("edit_err_save")
         }
     }

@@ -126,6 +126,8 @@ final class EditorModel {
     private(set) var asset: MediaAsset?
     /// Dateiname des Originals im Tresor (für den Namen der Kopie).
     private(set) var sourceName: String?
+    /// Tresor-Sitzung beim Öffnen: gespeichert wird nur in genau diese Sitzung.
+    @ObservationIgnored private(set) var vaultLease: VaultSessionLease?
     private(set) var loadState: LoadState = .loading
     var recipe = EditRecipe() {
         didSet {
@@ -198,7 +200,9 @@ final class EditorModel {
         loadState = .loading
         let data: Data
         if inVault {
-            guard let source = await VaultStore.shared.editPhotoSource(assetID) else { loadState = .failed; return }
+            guard let lease = VaultStore.shared.editSession(),
+                  let source = await VaultStore.shared.editPhotoSource(assetID, lease: lease) else { loadState = .failed; return }
+            vaultLease = lease
             sourceName = source.name
             data = source.data
         } else {

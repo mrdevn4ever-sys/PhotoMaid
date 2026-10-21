@@ -25,9 +25,17 @@ enum VaultMediaPayload: Sendable {
 /// nur in den Tresor – verschlüsselt, geprüft, mit verschlüsseltem Vorschaubild. Keine Fotos-App, kein Verlauf, keine
 /// Liste „Bearbeitet“, keine Caches auf der Platte; Klartext nur in der Temp-Ablage der Sitzung (beim Sperren gelöscht).
 extension VaultStore {
+    /// Sitzung, an die eine Bearbeitung gebunden ist (beim Öffnen des Editors festgehalten). Ergebnisse gehen nur in
+    /// genau diese Sitzung – nach einer Sperre und erneutem Öffnen nie in die neue.
+    func editSession() -> VaultSessionLease? { try? requireLease() }
+
+    /// Laufende Bearbeitungs-Arbeit (zählt als Bedienung). Das Sperren setzt den Zähler zurück.
+    func beginEditWork() { editWork += 1 }
+    func endEditWork() { editWork = max(0, editWork - 1) }
+
     /// Original eines Fotos vollständig entschlüsselt in den Speicher (für den Foto-Editor) samt Dateinamen.
-    func editPhotoSource(_ id: String) async -> (data: Data, name: String)? {
-        guard let activeLease = try? requireLease(), let item = index.items.first(where: { $0.id == id }),
+    func editPhotoSource(_ id: String, lease activeLease: VaultSessionLease) async -> (data: Data, name: String)? {
+        guard accepts(activeLease), let item = index.items.first(where: { $0.id == id }),
               let resource = item.current, VaultPathRules.isComponent(resource.file) else { return nil }
         let url = Self.objects.appendingPathComponent(resource.file)
         let data = await Task.detached(priority: .userInitiated) { () -> Data? in
@@ -39,27 +47,35 @@ extension VaultStore {
     }
 
     /// Video in die Temp-Ablage der Sitzung entschlüsseln (für den Video-Editor) samt Dateinamen.
-    func editVideoSource(_ id: String) async -> (url: URL, name: String)? {
-        guard let item = index.items.first(where: { $0.id == id }), item.isVideo, let resource = item.current,
-              let url = await videoFile(item) else { return nil }
+    func editVideoSource(_ id: String, lease activeLease: VaultSessionLease) async -> (url: URL, name: String)? {
+        guard accepts(activeLease), let item = index.items.first(where: { $0.id == id }), item.isVideo,
+              let resource = item.current, let url = await videoFile(item) else { return nil }
+        guard accepts(activeLease) else {
+            removeTempFiles([url])
+            return nil
+        }
         return (url, resource.originalFilename)
     }
 
-    /// Geschützter Ordner der Sitzung für einen Export (beim Sperren gelöscht).
-    func editTempFolder() throws -> URL { try requireLease().makeDirectory() }
+    /// Geschützter Ordner der Sitzung für einen Export (beim Sperren gelöscht; danach nie neu angelegt).
+    func editTempFolder(lease activeLease: VaultSessionLease) throws -> URL {
+        guard accepts(activeLease) else { throw VaultCryptoError.authentication }
+        return try activeLease.makeDirectory()
+    }
 
     /// Bearbeitete Fassung neben dem Original ablegen: verschlüsselt schreiben, gegen den Klartext prüfen, Vorschaubild
     /// erzeugen, dann in einem Schreibvorgang übernehmen (beim Ersetzen samt Original in den Tresor-Papierkorb).
     func addEditedMedia(_ payload: VaultMediaPayload, video: Bool, uti: String, filename: String, basedOn originalID: String,
                         creationOffsetMs: Int64 = 0, frame: Bool = false, removeLocation: Bool, replace: Bool,
-                        unlimited: Bool) async throws -> VaultEditResult {
-        let activeLease = try requireLease()
+                        unlimited: Bool, lease activeLease: VaultSessionLease) async throws -> VaultEditResult {
+        guard accepts(activeLease), !needsNewCode else { throw VaultCryptoError.authentication }
+        try activeLease.check()
         guard let original = index.items.first(where: { $0.id == originalID }) else { throw VaultEditError.missing }
         guard VaultPolicy.allowed(requested: 1, existing: mediaSlotsUsed, unlimited: unlimited) == 1 else {
             throw VaultEditError.limit
         }
-        editWork += 1
-        defer { editWork -= 1 }
+        beginEditWork()
+        defer { endEditWork() }
         let objects = Self.objects, thumbs = Self.thumbs
         let written = try await Task.detached(priority: .userInitiated) {
             try await VaultEditWriter.write(payload, video: video, lease: activeLease, objects: objects, thumbs: thumbs)

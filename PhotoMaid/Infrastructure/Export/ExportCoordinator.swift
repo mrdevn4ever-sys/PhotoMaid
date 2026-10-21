@@ -15,6 +15,8 @@ final class ExportCoordinator {
 
     private(set) var title: String?
     private(set) var progress: Double = 0
+    /// Export aus dem Tresor: kein Wachhalten des Bildschirms, keine Fortsetzung im Hintergrund, Abbruch beim Sperren.
+    private(set) var vaultOwned = false
     var isBusy: Bool { title != nil }
 
     private var cancelWork: (() -> Void)?
@@ -26,20 +28,22 @@ final class ExportCoordinator {
 
     private let screenRequest = UUID()
 
-    func run<T: Sendable>(title: String,
+    func run<T: Sendable>(title: String, vaultOwned: Bool = false,
                           _ work: @escaping @Sendable (_ progress: @escaping @Sendable (Double) -> Void) async throws -> T)
         async throws -> T {
         guard self.title == nil else { throw Failure.busy }
         self.title = title
+        self.vaultOwned = vaultOwned
         progress = 0
         expired = false
-        ScreenAwake.shared.set(screenRequest, active: true)
+        if !vaultOwned { ScreenAwake.shared.set(screenRequest, active: true) }
         let coordinator = self
         let task = Task.detached(priority: .userInitiated) { () -> T in
             try await work { p in Task { @MainActor in coordinator.report(p) } }
         }
         cancelWork = { task.cancel() }
-        beginBackground(title: title)
+        // Tresor: beim Verlassen der App wird gesperrt und abgebrochen – keine Fortsetzung im Hintergrund.
+        if !vaultOwned { beginBackground(title: title) }
         defer { finish() }
         do {
             return try await withTaskCancellationHandler {
@@ -55,6 +59,9 @@ final class ExportCoordinator {
 
     func cancel() { cancelWork?() }
 
+    /// Beim Sperren des Tresors: einen laufenden Tresor-Export sofort abbrechen (kein Klartext über die Sitzung hinaus).
+    func cancelVaultWork() { if vaultOwned { cancelWork?() } }
+
     private func report(_ p: Double) {
         guard title != nil else { return }
         progress = min(1, max(0, p))
@@ -66,6 +73,7 @@ final class ExportCoordinator {
 
     private func finish() {
         title = nil
+        vaultOwned = false
         cancelWork = nil
         ScreenAwake.shared.set(screenRequest, active: false)
         if let t = continued?.value { t.setTaskCompleted(success: !expired) }
@@ -141,8 +149,11 @@ struct ExportProgressOverlay: View {
                     ProgressView(value: coordinator.progress).frame(maxWidth: 240)
                     Text(verbatim: CountText.percent(coordinator.progress)).font(AppTypography.footnote.monospacedDigit())
                         .foregroundStyle(AppColors.textSecondary)
-                    Text(key: "export_keep_open").font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
-                        .multilineTextAlignment(.center)
+                    if !coordinator.vaultOwned {
+                        // Im Tresor nicht: Verlassen der App sperrt den Tresor und bricht den Export ab.
+                        Text(key: "export_keep_open").font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
+                            .multilineTextAlignment(.center)
+                    }
                     Button(L("cancel"), role: .cancel) { coordinator.cancel() }.buttonStyle(.pmBordered)
                 }
                 .padding(AppSpacing.l)

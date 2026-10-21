@@ -233,6 +233,8 @@ private struct VaultViewerPage: View {
     let toggleChrome: () -> Void
     @State private var image: UIImage?
     @State private var player: AVPlayer?
+    /// Entschlüsselte Videodatei dieser Seite (beim Weiterblättern gelöscht, spätestens beim Sperren).
+    @State private var videoURL: URL?
     @State private var failed = false
 
     var body: some View {
@@ -266,8 +268,12 @@ private struct VaultViewerPage: View {
                 if item.isVideo {
                     image = vault.thumbnails[item.id]
                     let url = await vault.videoFile(item)
-                    guard !Task.isCancelled, vault.phase == .unlocked else { return }
+                    guard !Task.isCancelled, vault.phase == .unlocked else {
+                        if let url { vault.removeTempFiles([url]) }
+                        return
+                    }
                     if let url {
+                        videoURL = url
                         let loaded = AVPlayer(url: url)
                         player = loaded
                         activeVideoPlayer = loaded
@@ -294,6 +300,10 @@ private struct VaultViewerPage: View {
         if let player, activeVideoPlayer === player { activeVideoPlayer = nil }
         player?.replaceCurrentItem(with: nil)
         player = nil
+        if let videoURL {
+            vault.removeTempFiles([videoURL])
+            self.videoURL = nil
+        }
     }
 }
 
