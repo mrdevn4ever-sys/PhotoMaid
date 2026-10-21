@@ -34,12 +34,18 @@ struct HistoryView: View {
             // Jede Zeile ist ein eigenes Kind des LazyVStack: Vorschaubilder laden erst, wenn sie ins Bild kommen.
             LazyVStack(alignment: .leading, spacing: AppSpacing.xs) {
                 VStack(alignment: .leading, spacing: AppSpacing.m) {
-                    Text(key: "tab_history").pageTitle().accessibilityAddTraits(.isHeader).padding(.top, AppSpacing.xs)
+                    HStack(alignment: .center) {
+                        Text(key: "tab_history").pageTitle().accessibilityAddTraits(.isHeader)
+                        Spacer()
+                        if app.settings.showAchievements { achievementsChip }
+                    }
+                    .padding(.top, AppSpacing.xs)
                     HStack(spacing: 10) {
                         stat(HistoryGrouping.group(all.filter { matches($0, 1) }).count, "history_kept", AppColors.keep) { filter = 1 }
                         stat(HistoryGrouping.group(all.filter { matches($0, 2) }).count, "history_cleaned", AppColors.cleanup) { filter = 2 }
                         stat(app.read.laterRecords.count, "history_later", AppColors.later) { app.navigate(.later, in: .history) }
                     }
+                    if app.settings.showAchievements { WeekBars(progress: app.read.progress) }
                     chips
                     if keys.isEmpty {
                         if all.isEmpty {
@@ -117,6 +123,27 @@ struct HistoryView: View {
         }
         .buttonStyle(PMPressStyle())
         .accessibilityIdentifier("history.older")
+    }
+
+    /// Serie und Weg zu den Erfolgen (Gamification).
+    private var achievementsChip: some View {
+        let streak = app.read.progress.streak
+        return Button { app.navigate(.achievements, in: .history) } label: {
+            HStack(spacing: 6) {
+                PMIcon(streak > 0 ? .flame : .medal, size: 15, lineWidth: 2.2)
+                    .foregroundStyle(streak > 0 ? AppColors.cleanup : AppColors.accent)
+                Text(verbatim: streak > 0 ? CountText.number(streak) + " " + LP("ach_days_unit", streak) : L("ach_title"))
+            }
+            .font(PMFont.text(.semibold, 13, relativeTo: .footnote))
+            .foregroundStyle(AppColors.textPrimary)
+            .padding(.horizontal, 12).frame(minHeight: 36)
+            .background(AppColors.surface, in: .capsule)
+            .overlay(Capsule().strokeBorder(AppColors.control, lineWidth: 1))
+            .frame(minHeight: AppSpacing.minTouch).contentShape(.rect)
+        }
+        .buttonStyle(PMPressStyle())
+        .accessibilityHint(Text(key: "ach_open_hint"))
+        .accessibilityIdentifier("history.achievements")
     }
 
     private var chips: some View {

@@ -22,12 +22,14 @@ struct TodayView: View {
                             if !access.canRead { accessCard }
                             if access.canRead {
                                 ReviewHero(pending: app.snapshot.loaded && app.readReady ? app.pending : nil,
-                                           hasHistory: !app.read.events.isEmpty, showGestures: !app.settings.gestureHintSeen) {
+                                           hasHistory: !app.read.events.isEmpty, showGestures: !app.settings.gestureHintSeen,
+                                           goal: dailyGoal) {
                                     app.open(FeedRequest(.allMedia))
                                 }
                                 .tourTarget("today.hero")
                                 .id("today.hero")
                             }
+                            if showRecap { WeeklyRecapCard() }
                             progressRows
                             if access == .limited {
                                 InfoBanner(symbol: "photo.badge.checkmark", title: L("today_limited_title"), text: L("today_limited_text"),
@@ -94,12 +96,52 @@ struct TodayView: View {
         }
     }
 
+    /// Tagesziel im Hero (Gamification): an, solange Erfolge angezeigt werden und ein Ziel gesetzt ist.
+    private var dailyGoal: (done: Int, goal: Int)? {
+        guard app.settings.showAchievements, app.settings.dailyGoal > 0, app.readReady else { return nil }
+        return (app.read.progress.reviewedToday, app.settings.dailyGoal)
+    }
+
+    /// Wochenrückblick montags bis mittwochs, wenn es in der Vorwoche etwas gab und er nicht weggetippt wurde.
+    private var showRecap: Bool {
+        let p = app.read.progress
+        guard app.settings.showAchievements, app.readReady else { return false }
+        let week = p.previousWeek
+        let monday = ReviewProgress.monday(of: p.today)
+        return p.today <= monday.adding(days: 2) && week.reviewed > 0
+            && app.settings.recapDismissedWeek != week.monday.description
+    }
+
+    /// Flammen-Chip mit der laufenden Serie; öffnet die Erfolge.
+    private var streakChip: some View {
+        let streak = app.read.progress.streak
+        return Button { app.navigate(.achievements) } label: {
+            HStack(spacing: 4) {
+                PMIcon(.flame, size: 13, lineWidth: 2.4)
+                Text(verbatim: CountText.number(streak))
+            }
+            .font(PMFont.text(.bold, 13, relativeTo: .footnote))
+            .foregroundStyle(AppColors.cleanup)
+            .padding(.horizontal, 9).frame(minHeight: 26)
+            .background(AppColors.tileCleanup, in: .capsule)
+            .frame(minHeight: 36)
+            .contentShape(.rect)
+        }
+        .buttonStyle(PMPressStyle())
+        .accessibilityLabel(Text(verbatim: L("ach_streak") + ": " + CountText.number(streak) + " " + LP("ach_days_unit", streak)))
+        .accessibilityHint(Text(key: "ach_open_hint"))
+        .accessibilityIdentifier("today.streak")
+    }
+
     /// Kopf wie im Artefakt: Begrüßung, „PhotoMaid“ (mit Tresor-Rad) und der runde Einstellungen-Knopf.
     private var header: some View {
         HStack(alignment: .bottom) {
             VStack(alignment: .leading, spacing: 2) {
-                Text(verbatim: greeting).font(PMFont.text(.semibold, 15, relativeTo: .subheadline))
-                    .foregroundStyle(AppColors.textSecondary)
+                HStack(spacing: AppSpacing.xs) {
+                    Text(verbatim: greeting).font(PMFont.text(.semibold, 15, relativeTo: .subheadline))
+                        .foregroundStyle(AppColors.textSecondary)
+                    if app.settings.showAchievements && app.read.progress.streak > 0 { streakChip }
+                }
                 // Geheimer Eingang zum Tresor (E16): „PhotoMaid“ 2 Sekunden halten, das „o“ ist ein Tresor-Rad.
                 // Ohne eingerichteten Tresor passiert nichts.
                 VaultDialWordmark()
@@ -252,6 +294,8 @@ struct ReviewHero: View {
     let pending: [ItemReference]?
     let hasHistory: Bool
     let showGestures: Bool
+    /// Tagesziel (Gamification): heute durchgesehen und Ziel; nil = aus.
+    var goal: (done: Int, goal: Int)?
     let start: () -> Void
 
     var body: some View {
@@ -281,6 +325,7 @@ struct ReviewHero: View {
                     .padding(.top, 4)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .accessibilityElement(children: .combine)
+                    if let goal { goalBar(goal) }
                     PrimaryButton(title: L(hasHistory ? "today_continue_cta" : "today_start_cta"), trailingArrow: true,
                                   action: start)
                         .accessibilityHint(Text(key: "today_review_hint"))
@@ -317,6 +362,31 @@ struct ReviewHero: View {
         .background(AppColors.surface)
         .clipShape(.rect(cornerRadius: AppRadii.sheet))
         .overlay(RoundedRectangle(cornerRadius: AppRadii.sheet).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
+    }
+
+    /// „Tagesziel 32 von 50“ als Balken; erreicht mit Häkchen.
+    private func goalBar(_ goal: (done: Int, goal: Int)) -> some View {
+        let reached = goal.done >= goal.goal
+        return VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                Text(key: "ach_goal").font(PMFont.text(.semibold, 13, relativeTo: .footnote)).foregroundStyle(AppColors.textMuted)
+                Spacer()
+                if reached { PMIcon(.check, size: 14, lineWidth: 2.6).foregroundStyle(AppColors.success) }
+                Text(verbatim: reached ? L("ach_goal_done")
+                     : L("ach_goal_progress", CountText.number(goal.done), CountText.number(goal.goal)))
+                    .font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
+            }
+            GeometryReader { geo in
+                ZStack(alignment: .leading) {
+                    Capsule().fill(AppColors.surfaceStroke)
+                    Capsule().fill(AppColors.success)
+                        .frame(width: geo.size.width * min(1, Double(goal.done) / Double(max(1, goal.goal))))
+                }
+            }
+            .frame(height: 8)
+        }
+        .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("today.goal")
     }
 
     @ViewBuilder private var gestureChips: some View {
@@ -572,5 +642,54 @@ enum DeviceStorage {
         guard let v = try? url.resourceValues(forKeys: [.volumeTotalCapacityKey, .volumeAvailableCapacityForImportantUsageKey]),
               let total = v.volumeTotalCapacity, let available = v.volumeAvailableCapacityForImportantUsage else { return nil }
         return DeviceCapacity(totalBytes: Int64(total), availableForImportantUsageBytes: available)
+    }
+}
+
+/// Wochenrückblick (Gamification): durchgesehen, aktive Tage und neue Rekorde der Vorwoche. Wegtippbar.
+struct WeeklyRecapCard: View {
+    @Environment(AppModel.self) private var app
+
+    var body: some View {
+        let week = app.read.progress.previousWeek
+        let start = week.monday.startOfDay(in: .autoupdatingCurrent)
+        let end = week.monday.adding(days: 7).startOfDay(in: .autoupdatingCurrent)
+        let records = app.achievements.newRecords(from: start, to: end)
+        VStack(alignment: .leading, spacing: 10) {
+            HStack {
+                Text(key: "recap_title").font(PMFont.heading(18, relativeTo: .headline)).foregroundStyle(AppColors.textPrimary)
+                    .accessibilityAddTraits(.isHeader)
+                Spacer()
+                Button {
+                    app.updateSettings { $0.recapDismissedWeek = week.monday.description }
+                } label: {
+                    PMIcon(.close, size: 16, lineWidth: 2.2).foregroundStyle(AppColors.textSecondary)
+                        .frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch).contentShape(.rect)
+                }
+                .buttonStyle(PMPressStyle())
+                .padding(-10)
+                .accessibilityLabel(Text(key: "recap_hide"))
+                .accessibilityIdentifier("today.recap.hide")
+            }
+            HStack(alignment: .top, spacing: AppSpacing.xs) {
+                stat(CountText.number(week.reviewed), L("recap_reviewed"))
+                stat(CountText.number(week.activeDays), LP("recap_active_days", week.activeDays))
+                stat(CountText.number(records), LP("recap_new_records", records))
+            }
+        }
+        .padding(16)
+        .background(AppColors.warm, in: .rect(cornerRadius: 22))
+        .overlay(RoundedRectangle(cornerRadius: 22).strokeBorder(AppColors.warmStrong, lineWidth: 1))
+        .accessibilityElement(children: .contain)
+        .accessibilityIdentifier("today.recap")
+    }
+
+    private func stat(_ value: String, _ label: String) -> some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text(verbatim: value).font(PMFont.display(22, relativeTo: .title3)).foregroundStyle(AppColors.textPrimary)
+            Text(verbatim: label).font(PMFont.text(.regular, 12, relativeTo: .caption)).foregroundStyle(AppColors.textMuted)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .accessibilityElement(children: .combine)
     }
 }

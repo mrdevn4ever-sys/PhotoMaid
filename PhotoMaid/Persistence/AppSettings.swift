@@ -26,6 +26,12 @@ struct AppSettingsData: Codable, Equatable, Sendable {
     var appearance: AppearanceChoice = .system
     /// Experiment-Design: eigenes Erscheinungsbild, Standard dunkel (wie das Artefakt), hell auf Wunsch.
     var designAppearance: AppearanceChoice = .dark
+    /// Gamification (Nutzerentscheidung 21.10.2026): Serie, Tagesziel, Abzeichen-Pillen, Wochenrückblick.
+    var showAchievements = true
+    /// Tagesziel (durchgesehene Medien); 0 = aus. Standard an mit 50.
+    var dailyGoal = 50
+    /// Montag (`yyyy-MM-dd`) der Woche, deren Rückblick weggetippt wurde.
+    var recapDismissedWeek: String?
     var largeFileThresholdMB = 100
     var privacyIntroSeen = false
     /// Standardabstand beim Wisch nach rechts (Tage).
@@ -92,6 +98,9 @@ struct AppSettingsData: Codable, Equatable, Sendable {
         gestureHintSeen = v(.gestureHintSeen, d.gestureHintSeen)
         appearance = v(.appearance, d.appearance)
         designAppearance = v(.designAppearance, d.designAppearance)
+        showAchievements = v(.showAchievements, d.showAchievements)
+        dailyGoal = v(.dailyGoal, d.dailyGoal)
+        recapDismissedWeek = v(.recapDismissedWeek, d.recapDismissedWeek)
         largeFileThresholdMB = v(.largeFileThresholdMB, d.largeFileThresholdMB)
         privacyIntroSeen = v(.privacyIntroSeen, d.privacyIntroSeen)
         laterDefaultDays = v(.laterDefaultDays, d.laterDefaultDays)

@@ -99,6 +99,10 @@ struct RootView: View {
         .onChange(of: app.snapshot.loaded) { _, loaded in
             if loaded { AnalysisController.shared.resumeAfterLaunch(app: app) }
         }
+        // Gamification: neue Bestwerte und Abzeichen auch ohne Ledger-Änderung erkennen.
+        .onChange(of: app.gameScores.records) { _, _ in app.achievements.refresh(app: app) }
+        .onChange(of: app.blocks.best) { _, _ in app.achievements.refresh(app: app) }
+        .onChange(of: app.settings.dailyGoal) { _, _ in app.achievements.refresh(app: app) }
         // Tresor geschlossen: Ablagen und Löschungen darin auch im Bereich „Dateien“ abgleichen.
         .onChange(of: vault.isPresented) { _, presented in
             if !presented { Task { await app.refreshVaultConcealment() } }

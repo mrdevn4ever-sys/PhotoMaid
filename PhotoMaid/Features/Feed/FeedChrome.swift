@@ -330,6 +330,7 @@ struct SessionSummaryView: View {
                         row(.right, "summary_later", summary.later, AppColors.later)
                     }
                 }
+                if app.settings.showAchievements && summary.reviewed > 0 { progressCard }
                 if basketCount > 0 {
                     PrimaryButton(title: L("summary_view_basket", basketCount), symbol: "trash", action: openTrash)
                     Text(key: "summary_basket_hint").font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
@@ -355,6 +356,39 @@ struct SessionSummaryView: View {
             strongOffer = upsell && !app.settings.proOfferShown
             if strongOffer == true { app.updateSettings { $0.proOfferShown = true } }
         }
+    }
+
+    /// Gamification: Level-Fortschritt, Serie und Tagesziel nach der Sitzung.
+    private var progressCard: some View {
+        let p = app.read.progress
+        let level = p.level
+        return VStack(alignment: .leading, spacing: 10) {
+            HStack(alignment: .firstTextBaseline) {
+                Text(verbatim: L("ach_level") + " " + CountText.number(level.number))
+                    .font(PMFont.heading(18, relativeTo: .headline)).foregroundStyle(AppColors.textPrimary)
+                Spacer()
+                Text(verbatim: L("ach_reviewed_n", CountText.number(level.total)))
+                    .font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
+            }
+            GeometryReader { geo in
+                ZStack(alignment: .leading) {
+                    Capsule().fill(AppColors.surfaceStroke)
+                    Capsule().fill(AppColors.accentFill).frame(width: geo.size.width * level.fraction)
+                }
+            }
+            .frame(height: 8)
+            Text(verbatim: [level.remaining.map { L("ach_level_next", CountText.number($0), level.number + 1) } ?? L("ach_level_max"),
+                            p.streak > 0 ? L("ach_streak") + ": " + CountText.number(p.streak) + " " + LP("ach_days_unit", p.streak) : nil,
+                            app.settings.dailyGoal > 0 && p.reviewedToday >= app.settings.dailyGoal ? L("ach_goal_done") : nil]
+                    .compactMap { $0 }.joined(separator: " · "))
+                .font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(16)
+        .background(AppColors.surface, in: .rect(cornerRadius: 22))
+        .overlay(RoundedRectangle(cornerRadius: 22).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
+        .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("summary.progress")
     }
 
     @ViewBuilder

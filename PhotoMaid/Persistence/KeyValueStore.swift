@@ -34,6 +34,10 @@ enum StoreKeys {
     static let gameRecords = StoreKey<PhotoGameRecords>("games.personalRecords.v1") { PhotoGameRecords() }
     /// Numerical puzzle state only. No photo identifiers, thumbnail files or gallery data.
     static let blocksArchive = StoreKey<PhotoBlocksArchive>("games.blocks.v1") { .init() }
+    /// Gamification: erreichte Abzeichen mit Zeitpunkt (nil = vor Beginn der Aufzeichnung erreicht).
+    static let achievements = StoreKey<AchievementStoreState>("progress.achievements.v1") { .init() }
+    /// Zeitpunkt je Bestwert (für „Zuletzt geknackt“ und den Wochenrückblick). Nur Zahlen, keine Medien.
+    static let recordStamps = StoreKey<[String: GameRecordStamp]>("games.recordStamps.v1") { [:] }
     /// Navigation only: unavailable previews explicitly skipped by the user, never review decisions.
     static let skippedPreviews = StoreKey<Set<ItemReference>>("feed.skippedPreviews.v1") { [] }
     /// Gemessene Mediengrößen (Bytes) je `localIdentifier` + Änderungsdatum. Nur lokal, nie gesichert.

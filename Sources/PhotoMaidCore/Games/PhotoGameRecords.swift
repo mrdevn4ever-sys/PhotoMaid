@@ -44,6 +44,8 @@ public struct PhotoGameRecords: Codable, Equatable, Sendable {
 
     public func memoryBest(for category: MemoryCategory) -> Double? { memory.first { $0.category == category }?.seconds }
     public func snakeBest(for category: SnakeCategory) -> Int? { snake.first { $0.category == category }?.eaten }
+    /// Ein Rekord je Spiel (Nutzerentscheidung 21.10.2026): bester Wert über alle Snake-Varianten und Feldgrößen.
+    public var snakeOverallBest: Int? { snake.map(\.eaten).max() }
 
     /// A partial or abandoned Memory round can never produce a time record.
     @discardableResult public mutating func recordMemory(_ game: PhotoMemoryGame, seconds: Double,

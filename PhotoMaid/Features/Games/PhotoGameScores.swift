@@ -25,6 +25,13 @@ final class PhotoGameScores {
         return improved
     }
 
+    /// Speichert wie bisher je Variante, meldet aber nur einen neuen Gesamtrekord (ein Rekord je Spiel).
+    @discardableResult func recordSnakeOverall(_ game: PhotoSnakeGame, speed: PhotoSnakeSpeed, stepMode: Bool) -> Bool {
+        let previous = records.snakeOverallBest ?? 0
+        recordSnake(game, speed: speed, stepMode: stepMode)
+        return game.score > previous
+    }
+
     func retrySave() {
         do { try save(records); saveFailed = false } catch { saveFailed = true }
     }

@@ -47,18 +47,10 @@ final class PhotoSnakeModel {
         self.scores = scores ?? PhotoGameScores(); photos = PhotoGamePhotos(canUsePhotos: canUsePhotos)
     }
 
-    func menuBest(mode: PhotoSnakeGame.Mode, speed: Speed, stepMode: Bool) -> Int? {
-        // Menu overview across window sizes; active HUD keeps the existing exact grid category.
-        scores.records.snake.filter {
-            $0.category.mode == mode && $0.category.speed == speed && $0.category.stepMode == stepMode
-        }.map(\.eaten).max()
-    }
+    /// Ein Rekord je Spiel (Nutzerentscheidung 21.10.2026): Modus, Tempo, Steuerung und Feldgröße zählen nicht getrennt.
+    func menuBest(mode: PhotoSnakeGame.Mode, speed: Speed, stepMode: Bool) -> Int? { scores.records.snakeOverallBest }
 
-    var bestEaten: Int? {
-        guard let game else { return nil }
-        return scores.records.snakeBest(for: .init(mode: game.mode, speed: speed, stepMode: stepMode,
-                                                    width: game.width, height: game.height))
-    }
+    var bestEaten: Int? { scores.records.snakeOverallBest }
 
     var pictureIDs: [String] {
         if usesSavedPhotos {
@@ -160,7 +152,7 @@ final class PhotoSnakeModel {
         pause()
         guard !stepMode else { return }
         stepMode = true; newBest = false
-        if let game { newBest = scores.recordSnake(game, speed: speed, stepMode: true) }
+        if let game { newBest = scores.recordSnakeOverall(game, speed: speed, stepMode: true) }
     }
 
     func steer(_ direction: PhotoSnakeGame.Direction) {
@@ -182,7 +174,7 @@ final class PhotoSnakeModel {
         stepSerial += 1; presentationPending = true
         if game?.score != before {
             strip.append(foodPicture); nextPhoto = (nextPhoto + 1) % pictureIDs.count
-            if let game, scores.recordSnake(game, speed: speed, stepMode: stepMode) { newBest = true }
+            if let game, scores.recordSnakeOverall(game, speed: speed, stepMode: stepMode) { newBest = true }
         }
         if game?.status != .playing { pause() }
     }

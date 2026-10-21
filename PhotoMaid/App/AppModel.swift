@@ -23,6 +23,11 @@ struct LedgerReadModel: Sendable {
     var events: [DecisionEvent] = []
     var allowance: AllowanceSnapshot?
     var canUndo = false
+    /// Gamification: Fortschritt fürs Durchsehen, fertige Monate, ob „Später“ je benutzt wurde.
+    var progress: ReviewProgress = .empty
+    var monthsDone = 0
+    var monthsTotal = 0
+    var laterEverUsed = false
     /// Befehl, den „Rückgängig“ als Nächstes zurücknimmt (oberster Eintrag des Stapels).
     var undoCommandID: CommandID?
     var reconciliationNeeded: [OperationIntent] = []
@@ -51,6 +56,8 @@ final class AppModel {
     let reminders: ReminderScheduler
     let player: FeedPlayer
     let gameScores: PhotoGameScores
+    /// Abzeichen und Bestwert-Zeitpunkte (Gamification).
+    let achievements: AchievementCenter
     let memory: PhotoMemoryModel
     let snake: PhotoSnakeModel
     let blocks: PhotoBlocksModel
@@ -130,6 +137,7 @@ final class AppModel {
             try kv?.set(StoreKeys.gameRecords, records)
         }
         gameScores = scores
+        achievements = AchievementCenter(kv: kv)
         let memoryModel = PhotoMemoryModel(scores: scores)
         let snakeDirectory = qa ? nil : FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first?
             .appendingPathComponent("SnakePhotos", isDirectory: true)
@@ -462,6 +470,7 @@ final class AppModel {
         let candidates = cleanupMedia.map(\.reference).filter { !skippedPreviews.contains($0) }
         let queueRevision = queueInputsRevision
         let hiddenFiles = files.concealedReferences
+        let media = cleanupMedia
         let derived = await Task.detached(priority: .userInitiated) { () -> (LedgerReadModel, [ItemReference]) in
             // Medien und Dateien im Tresor erscheinen weder im Papierkorb noch unter „Später“ noch im Verlauf (E16).
             let concealment = VaultConcealment.shared
@@ -469,14 +478,22 @@ final class AppModel {
                 ref.provider == .photoLibrary ? concealment.isConcealed(ref.localIdentifier) : hiddenFiles.contains(ref)
             }
             let anyHidden = !concealment.isEmpty
+            let events = anyHidden ? state.events.filter { !hidden($0.item) } : state.events
+            let months = ProgressRules.months(media, date: \.creationDate, record: { state.records[$0.reference] },
+                                              timeZone: .autoupdatingCurrent)
             let view = LedgerReadModel(
                 records: state.records,
                 basket: state.records.values.filter { $0.disposition == .markedForCleanup && !(anyHidden && hidden($0.item)) }
                     .sorted { $0.item.description < $1.item.description },
                 laterRecords: state.records.values.filter { $0.disposition == .later && !(anyHidden && hidden($0.item)) },
-                events: anyHidden ? state.events.filter { !hidden($0.item) } : state.events,
+                events: events,
                 allowance: DecisionLedger.allowance(in: state, day: day, limit: limit),
                 canUndo: !state.undoStack.isEmpty,
+                progress: ReviewProgress.compute(events: events, records: state.records, today: day,
+                                                 timeZone: .autoupdatingCurrent),
+                monthsDone: months.filter { $0.state == .done }.count,
+                monthsTotal: months.count,
+                laterEverUsed: events.contains { $0.to.disposition == .later },
                 undoCommandID: state.undoStack.last?.commandID,
                 reconciliationNeeded: state.intents.values.filter { $0.state == .reconciliationRequired })
             let queue = ReviewQueues.normalQueue(candidates: candidates, records: state.records,
@@ -486,6 +503,7 @@ final class AppModel {
         guard generation == readGeneration else { return }
         read = derived.0
         readReady = true
+        achievements.refresh(app: self)
         // PhotoKit may have reloaded the library while the detached queue was
         // building. In that rare case use the latest visible media and ledger.
         if queueInputsRevision == queueRevision {

@@ -125,6 +125,18 @@ struct FeedView: View {
             withAnimation(.easeOut(duration: 0.6)) { showHints = false }
         }
         .onChange(of: reduceMotion) { _, v in model.reduceMotion = v }
+        // Gamification: leise Pillen bei jeweils 100 in dieser Sitzung und beim Erreichen des Tagesziels –
+        // nie eine Unterbrechung der Geste, nie eine Entscheidung.
+        .onChange(of: model.session.summary.reviewed) { old, new in
+            guard app.settings.showAchievements, new > old, new / 100 > old / 100 else { return }
+            app.showToast(L("feed_milestone", CountText.number(new / 100 * 100)))
+        }
+        .onChange(of: app.read.progress.reviewedToday) { old, new in
+            let goal = app.settings.dailyGoal
+            guard app.settings.showAchievements, goal > 0, old < goal, new >= goal else { return }
+            Haptics.success()
+            app.showToast(L("ach_goal_done"))
+        }
         .onChange(of: voiceOver) { _, _ in model.setSuspended(voiceOver || zoomed || showMemory) }
         .onChange(of: zoom) { _, _ in model.setSuspended(voiceOver || zoomed || showMemory) }
         .onChange(of: showMemory) { _, presented in

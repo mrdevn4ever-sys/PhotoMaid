@@ -42,6 +42,8 @@ enum Route: Hashable {
     case backup
     /// Einstellungen › Wischen & Tasten (E18).
     case feedControls
+    /// Erfolge (Gamification): Level, Serie, Tagesziel, Abzeichen.
+    case achievements
     // Von außen
     case received([URL])
 }
@@ -129,6 +131,7 @@ struct RouteDestination: View {
         case .excludedAlbums: ExcludedAlbumsView()
         case .backup: BackupView()
         case .feedControls: FeedControlsView()
+        case .achievements: AchievementsView()
         case .received(let urls): ReceivedView(urls: urls)
         }
     }

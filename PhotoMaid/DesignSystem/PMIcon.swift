@@ -7,6 +7,7 @@ enum PMIconName: CaseIterable, Sendable {
     case plus, check, heart, share, albumAdd, pencil, more, play, undo, vaultDial, lock, calendar, bell, cloud, shield
     case file, house, grid, layers, wand, history, filter, bars, duplicates, series, folder, pie, blur, similar, textDoc
     case motif, video, slideshow, pdf, scan, gif, resize, convert, locationOff, stitch, photos
+    case trophy, medal, flame, cards, snake, blocks
 
     fileprivate var glyphs: [PMGlyph] {
         switch self {
@@ -69,6 +70,14 @@ enum PMIconName: CaseIterable, Sendable {
         case .locationOff: [.path("M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12zM4 4l16 16")]
         case .stitch: [.path("M7 3h10v8H7zM7 13h10v8H7z")]
         case .photos: [.rect(3, 5, 18, 14, 3), .circle(9, 10, 1.6), .path("M21 16l-5-5-8 8")]
+        case .trophy:
+            [.path("M8 21h8M12 17v4"), .path("M7 4h10v5a5 5 0 0 1-10 0V4z"),
+             .path("M17 6h3v1.5A3.5 3.5 0 0 1 16.5 11"), .path("M7 6H4v1.5A3.5 3.5 0 0 0 7.5 11")]
+        case .medal: [.circle(12, 15, 5), .path("M8.5 10.6L6 3h4l2 4 2-4h4l-2.5 7.6")]
+        case .flame: [.path("M12 3c1 4 6 5.5 6 11a6 6 0 0 1-12 0c0-3 2-4.5 2.5-6.5C10 9 11 10 12 10c0-2.5-.5-4.5 0-7z")]
+        case .cards: [.rect(3, 6, 11, 15, 2.5), .path("M8 6V5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2h-5")]
+        case .snake: [.circle(6, 17, 3), .circle(12, 12, 3), .circle(18, 7, 3)]
+        case .blocks: [.rect(4, 4, 7, 7, 1.5), .rect(13, 4, 7, 7, 1.5), .rect(4, 13, 7, 7, 1.5), .rect(13, 13, 7, 7, 1.5)]
         }
     }
 

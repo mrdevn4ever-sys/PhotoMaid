@@ -29,6 +29,16 @@ struct SettingsView: View {
                     divider
                     laterDefault
                 }
+                heading(L("ach_title"))
+                card {
+                    toggle(L("set_achievements"), \.showAchievements, subtitle: L("set_achievements_sub"))
+                    if app.settings.showAchievements {
+                        divider
+                        dailyGoalMenu
+                        divider
+                        NavigationLink(value: Route.achievements) { row(L("ach_open")) }.buttonStyle(PMPressStyle())
+                    }
+                }
                 heading(L("set_appearance"))
                 appearancePicker
                 heading(L("art_privacy_data"))
@@ -279,6 +289,20 @@ struct SettingsView: View {
         .accessibilityHint(subtitle.map { Text(verbatim: $0) } ?? Text(verbatim: ""))
         .padding(.horizontal, 16).padding(.vertical, 12)
         .frame(minHeight: 60)
+    }
+
+    /// Tagesziel: Aus, 25, 50 oder 100 durchgesehene Medien am Tag (Standard 50).
+    private var dailyGoalMenu: some View {
+        Menu {
+            Picker(L("set_daily_goal"), selection: setting(\.dailyGoal)) {
+                Text(key: "set_goal_off").tag(0)
+                ForEach([25, 50, 100], id: \.self) { Text(verbatim: L("ach_reviewed_n", CountText.number($0))).tag($0) }
+            }
+        } label: {
+            row(L("set_daily_goal"), value: app.settings.dailyGoal > 0
+                ? L("ach_reviewed_n", CountText.number(app.settings.dailyGoal)) : L("set_goal_off"))
+        }
+        .accessibilityIdentifier("settings.daily_goal")
     }
 
     /// „Später: Standardabstand“ als Menü mit den erlaubten Abständen.
