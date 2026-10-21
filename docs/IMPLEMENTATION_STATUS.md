@@ -1,5 +1,22 @@
 # Implementierungsstatus
 
+## Aktuell: Tresor-Papierkorb leeren und Titel „PhotoMaid“ mit Tresor-Rad (21.10.2026)
+
+Branch `claude/photomaid-ios-features-z8xvio`, App-Quellstand `1d19642`:
+
+- Tresor-Papierkorb: „Alles endgültig löschen“ mit Rückfrage und Anzahl; Medien, Notizen und Dateien in einem
+  Schreibvorgang, alles oder nichts (`VaultSnapshot.emptyTrash`).
+- Startseite: Seitentitel „PhotoMaid“ statt „Heute“ (Tab bleibt „Heute“). Das erste „o“ ist ein Tresor-Rad und der
+  versteckte Eingang (2 s halten); es dreht sich nur bei eingerichtetem Tresor. Drei neue und ein geänderter Text in
+  allen 16 Sprachen.
+
+**Native CI PASS:** [Lauf 39566902823](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/39566902823)
+(`ui_tests`, `qa_case=vault`, `ui_phase=fixtures`): iOS-Build, Unit-Tests ohne Fehler, Linux-Kern **481 Tests in
+54 Suites** PASS, Tresor-UI-Tests **6/6** PASS einschließlich neuem `test40EmptyTrashAtOnceAndDialEntry` (Abbrechen
+erhält alles, Leeren, 0,6 s Halten öffnet nicht, 2,6 s Halten öffnet die Code-Eingabe). Screenshot des Tresor-Rads
+im Artefakt `simulator-fixtures-evidence` (`vault_delete_dial_title`): NOT RUN (nicht angesehen).
+Geräteabnahme: NOT RUN. TestFlight: nicht beauftragt.
+
 ## Aktuell: Analyse-Meldungen, PDF und Foto Blocks (19.10.2026)
 
 Korrekturen auf der vollständigen main-Funktionsbasis, App-Quellstand `4b3f02a`:
