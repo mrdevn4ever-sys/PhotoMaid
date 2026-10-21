@@ -291,4 +291,52 @@ final class VaultDeletionTests: XCTestCase {
         XCTAssertEqual(items("files").count, 3)
         snap("files_restored")
     }
+
+    func test40EmptyTrashAtOnceAndDialEntry() {
+        tap(app.segmentedControls.buttons["Notizen"], "empty_notes_tab")
+        let existing = Set(items("notes").map(id))
+        for i in 1...2 {
+            tap(app.buttons["Neue Notiz"], "empty_note_new_\(i)")
+            let title = app.descendants(matching: .any)["vault.note.title"].firstMatch
+            XCTAssertTrue(title.waitForExistence(timeout: 5))
+            title.tap(); title.typeText("Leeren \(i)"); snap("empty_note_title_\(i)")
+            tap(app.buttons["Fertig"], "empty_note_saved_\(i)")
+        }
+        let created = items("notes").filter { !existing.contains(id($0)) }
+        XCTAssertEqual(created.count, 2)
+        let removed = bulkTrash(created, scope: "notes")
+        tap(app.buttons["vault.workspace.more"], "empty_more")
+        tap(app.buttons["Tresor-Papierkorb"], "empty_trash_open")
+        let emptyAll = app.buttons["vault.trash.empty"]
+        tap(emptyAll, "empty_requested")
+        let alert = app.alerts.firstMatch
+        XCTAssertTrue(alert.waitForExistence(timeout: 5))
+        XCTAssertTrue(alert.staticTexts.matching(NSPredicate(format: "label CONTAINS 'unwiderruflich'")).firstMatch.exists)
+        tap(alert.buttons["Abbrechen"], "empty_cancelled")
+        for value in removed {
+            XCTAssertTrue(app.descendants(matching: .any)["vault.trash.item." + value].firstMatch.exists, "Cancel must keep everything")
+        }
+        tap(emptyAll, "empty_requested_again")
+        tap(app.alerts.firstMatch.buttons["Alles endgültig löschen"], "empty_confirmed")
+        for value in removed { gone(app.descendants(matching: .any)["vault.trash.item." + value].firstMatch) }
+        XCTAssertTrue(app.staticTexts["Der Tresor-Papierkorb ist leer."].waitForExistence(timeout: 5))
+        gone(emptyAll)
+        tap(app.buttons["Fertig"].firstMatch, "empty_trash_closed")
+        XCTAssertEqual(Set(items("notes").map(id)), existing, "Only trashed content is removed")
+
+        // Versteckter Eingang: Titel „PhotoMaid“ (Tresor-Rad im „o“) 2 Sekunden halten öffnet den gesperrten Tresor.
+        tap(app.buttons["vault.workspace.more"], "dial_more")
+        tap(app.buttons["Jetzt sperren"], "dial_locked")
+        let back = app.navigationBars.buttons.firstMatch
+        if back.waitForExistence(timeout: 5) { tap(back, "dial_settings_closed") }
+        let title = app.descendants(matching: .any)["today.title"].firstMatch
+        XCTAssertTrue(title.waitForExistence(timeout: 10))
+        XCTAssertEqual(title.label, "PhotoMaid")
+        snap("dial_title")
+        title.press(forDuration: 0.6)
+        XCTAssertFalse(app.secureTextFields.firstMatch.waitForExistence(timeout: 2), "A short press must not open the vault")
+        title.press(forDuration: 2.6)
+        XCTAssertTrue(app.secureTextFields.firstMatch.waitForExistence(timeout: 10), "Holding the title must open the vault")
+        snap("dial_opened_lock_screen")
+    }
 }

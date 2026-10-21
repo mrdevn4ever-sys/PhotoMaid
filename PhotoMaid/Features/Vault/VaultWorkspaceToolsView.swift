@@ -86,10 +86,18 @@ struct VaultWorkspaceTrashView: View {
     @State private var vault = VaultStore.shared
     @State private var error: String?
     @State private var pending: VaultTrashAction?
+    @State private var confirmEmpty = false
     var body: some View {
         NavigationStack {
             List {
                 Section { Text(L("vault2_trash_explanation")) }
+                if vault.workspace.trashCount > 0 {
+                    Section {
+                        Button(L("vault2_empty_trash"), systemImage: "trash", role: .destructive) { confirmEmpty = true }
+                            .frame(minHeight: 48)
+                            .accessibilityIdentifier("vault.trash.empty")
+                    }
+                }
                 Section(L("vault2_media")) {
                     ForEach(vault.workspace.mediaTrash) { archived in
                         if let item = try? JSONDecoder().decode(VaultItem.self, from: archived.encodedItem) {
@@ -124,6 +132,10 @@ struct VaultWorkspaceTrashView: View {
                 }
                 Button(L("cancel"), role: .cancel) { pending = nil }
             } message: { Text(L("vault2_delete_forever_warning")) }
+            .alert(L("vault2_empty_trash_title"), isPresented: $confirmEmpty) {
+                Button(L("vault2_empty_trash"), role: .destructive) { perform { try vault.emptyTrash(app: app) } }
+                Button(L("cancel"), role: .cancel) {}
+            } message: { Text(L("vault2_empty_trash_message", LP("items_count", vault.workspace.trashCount))) }
             .vaultWorkspaceError($error)
         }
     }

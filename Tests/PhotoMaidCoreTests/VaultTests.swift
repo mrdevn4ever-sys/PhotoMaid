@@ -295,6 +295,77 @@ import Foundation
         #expect(throws: VaultWorkspaceError.invalidData) { try snapshot.validate() }
     }
 
+    private func document(_ name: String) -> VaultDocument {
+        VaultDocument(name: name, objectName: UUID().uuidString, typeIdentifier: "com.adobe.pdf", byteCount: 7,
+                      sha256: String(repeating: "a", count: 64), nowMs: 1)
+    }
+
+    /// Tresor-Papierkorb mit Medien, Notiz und Datei im Papierkorb plus aktiven Inhalten, die bleiben müssen.
+    private func filledTrash() throws -> (VaultSnapshot, trashed: VaultItem, thumb: String, file: VaultDocument) {
+        let thumb = UUID().uuidString
+        let trashed = VaultItem(id: UUID().uuidString, kind: .video, resources: [res(.video)], creationMs: 1, addedMs: 1,
+                                thumbnail: thumb, originalID: "P2")
+        var snapshot = VaultSnapshot()
+        snapshot.media.items = [VaultItem(id: "live", kind: .photo, resources: [res(.photo)], creationMs: 1, addedMs: 1,
+                                          originalID: "P1")]
+        snapshot.workspace.mediaTrash = [VaultTrashedMedia(id: trashed.id, deletedMs: 2,
+                                                           encodedItem: try JSONEncoder().encode(trashed))]
+        let file = document("Weg.pdf"), kept = document("Bleibt.pdf")
+        try snapshot.workspace.addFile(file)
+        try snapshot.workspace.addFile(kept)
+        try snapshot.workspace.trash([file.id], scope: .files, nowMs: 2)
+        let gone = VaultNote(title: "Weg", nowMs: 1), stays = VaultNote(title: "Bleibt", nowMs: 1)
+        try snapshot.workspace.saveNote(gone, expectedRevision: nil, nowMs: 1)
+        try snapshot.workspace.saveNote(stays, expectedRevision: nil, nowMs: 1)
+        try snapshot.workspace.trash([gone.id], scope: .notes, nowMs: 2)
+        try snapshot.validate()
+        return (snapshot, trashed, thumb, file)
+    }
+
+    @Test func papierkorbAufEinmalLeeren() throws {
+        let (filled, trashed, thumb, file) = try filledTrash()
+        var snapshot = filled
+        #expect(snapshot.workspace.trashCount == 3)
+
+        let purged = try snapshot.emptyTrash()
+
+        #expect(purged.map(\.id) == [trashed.id])
+        #expect(snapshot.workspace.trashCount == 0)
+        #expect(snapshot.media.items.map(\.id) == ["live"])
+        #expect(snapshot.workspace.notes.map(\.title) == ["Bleibt"])
+        #expect(snapshot.workspace.files.map(\.name) == ["Bleibt.pdf"])
+        // Dateien erst nach dem gespeicherten Schnappschuss physisch löschen.
+        #expect(snapshot.workspace.pendingObjectPurges == [file.objectName, trashed.resources[0].file])
+        #expect(snapshot.workspace.pendingThumbnailPurges == [thumb])
+        #expect(snapshot.originalIDs == ["P1"]) // P2 erscheint wieder in PhotoMaid
+        #expect(snapshot.mediaSlotsUsed == 1)
+        try snapshot.validate()
+        #expect(try snapshot.emptyTrash().isEmpty) // leerer Papierkorb: nichts zu tun
+    }
+
+    @Test func papierkorbLeerenAllesOderNichts() throws {
+        let (filled, _, _, file) = try filledTrash()
+        var stored = filled
+        // Beschädigter Zustand: eine aktive Notiz verweist auf die Datei im Papierkorb.
+        var live = VaultNote(title: "Aktiv", nowMs: 3); live.attachmentIDs = [file.id]
+        stored.workspace.notes.append(live)
+        let before = stored
+        #expect(throws: VaultWorkspaceError.attachmentInUse) {
+            try VaultTransaction.update(&stored, mutate: { _ = try $0.emptyTrash() }, persist: { _ in })
+        }
+        #expect(stored == before) // nichts gelöscht, auch nicht die Notiz davor
+    }
+
+    @Test func medienEinzelnEndgueltigLoeschen() throws {
+        let (filled, trashed, _, _) = try filledTrash()
+        var snapshot = filled
+        #expect(throws: VaultWorkspaceError.notInTrash) { _ = try snapshot.purgeTrashedMedia(["live"]) }
+        #expect(try snapshot.purgeTrashedMedia([trashed.id]).map(\.id) == [trashed.id])
+        #expect(snapshot.workspace.mediaTrash.isEmpty)
+        #expect(snapshot.workspace.trashCount == 2) // Notiz und Datei bleiben im Papierkorb
+        try snapshot.validate()
+    }
+
     @Test func dateienAusVerbundenenOrdnernBleibenVerborgen() throws {
         var snapshot = VaultSnapshot()
         let doc = VaultDocument(name: "Vertrag.pdf", objectName: UUID().uuidString, typeIdentifier: "com.adobe.pdf",

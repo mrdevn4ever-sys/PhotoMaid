@@ -221378,6 +221378,309 @@
         }
       }
     },
+    "vault2_empty_trash": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "حذف الكل نهائيًا"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alles endgültig löschen"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete all permanently"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eliminar todo permanentemente"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tout supprimer définitivement"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Elimina tutto definitivamente"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "すべて完全に削除"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "모두 영구 삭제"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alles definitief verwijderen"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Usuń wszystko trwale"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apagar tudo permanentemente"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Șterge tot definitiv"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Удалить всё навсегда"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tümünü kalıcı olarak sil"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Видалити все назавжди"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "全部永久删除"
+          }
+        }
+      }
+    },
+    "vault2_empty_trash_message": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "سيُحذف كل ما في سلة الخزنة (%1$@) نهائيًا من هذه الخزنة: الصور والفيديوهات والملاحظات والملفات. لن تتغير النسخ الخارجية والاحتياطية الحالية."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alles im Tresor-Papierkorb (%1$@) wird unwiderruflich aus diesem Tresor entfernt: Fotos, Videos, Notizen und Dateien. Vorhandene externe Kopien und Backups bleiben unverändert."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Everything in vault trash (%1$@) will be permanently removed from this vault: photos, videos, notes and files. Existing external copies and backups are unchanged."
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Todo lo que hay en la papelera de la caja fuerte (%1$@) se eliminará permanentemente: fotos, vídeos, notas y archivos. Las copias externas y de seguridad no cambiarán."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tout le contenu de la corbeille du coffre (%1$@) sera définitivement supprimé de ce coffre : photos, vidéos, notes et fichiers. Les copies externes et sauvegardes existantes restent inchangées."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tutto il contenuto del cestino della cassaforte (%1$@) sarà eliminato definitivamente: foto, video, note e file. Copie esterne e backup restano invariati."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保管庫のゴミ箱にあるすべて（%1$@）をこの保管庫から完全に削除します：写真、ビデオ、メモ、ファイル。既存の外部コピーやバックアップは変更されません。"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "보관함 휴지통의 모든 항목(%1$@)이 이 보관함에서 영구 삭제됩니다: 사진, 비디오, 메모, 파일. 기존 외부 사본과 백업은 변경되지 않습니다."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alles in de kluisprullenmand (%1$@) wordt definitief uit deze kluis verwijderd: foto’s, video’s, notities en bestanden. Externe kopieën en back-ups blijven ongewijzigd."
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cała zawartość kosza sejfu (%1$@) zostanie trwale usunięta z tego sejfu: zdjęcia, filmy, notatki i pliki. Zewnętrzne kopie i kopie zapasowe pozostaną bez zmian."
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tudo o que está no lixo do cofre (%1$@) será apagado permanentemente deste cofre: fotografias, vídeos, notas e ficheiros. Cópias externas e de segurança ficam inalteradas."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tot conținutul din coșul seifului (%1$@) va fi șters definitiv din acest seif: poze, videoclipuri, notițe și fișiere. Copiile externe și de siguranță rămân neschimbate."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Всё содержимое корзины сейфа (%1$@) будет удалено из этого сейфа навсегда: фото, видео, заметки и файлы. Внешние и резервные копии останутся без изменений."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kasa çöp kutusundaki her şey (%1$@) bu kasadan kalıcı olarak silinir: fotoğraflar, videolar, notlar ve dosyalar. Mevcut dış kopyalar ve yedekler değişmez."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Увесь вміст кошика сховища (%1$@) буде видалено з цього сховища назавжди: фото, відео, нотатки й файли. Зовнішні й резервні копії залишаться без змін."
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保险库废纸篓中的所有内容（%1$@）将从此保险库永久删除：照片、视频、笔记和文件。现有外部副本和备份保持不变。"
+          }
+        }
+      }
+    },
+    "vault2_empty_trash_title": {
+      "extractionState": "manual",
+      "localizations": {
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "إفراغ سلة الخزنة؟"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tresor-Papierkorb leeren?"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Empty vault trash?"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "¿Vaciar la papelera de la caja fuerte?"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vider la corbeille du coffre ?"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Svuotare il cestino della cassaforte?"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "保管庫のゴミ箱を空にしますか？"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "보관함 휴지통을 비울까요?"
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kluisprullenmand legen?"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opróżnić kosz sejfu?"
+          }
+        },
+        "pt-PT": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Esvaziar o lixo do cofre?"
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Golești coșul seifului?"
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Очистить корзину сейфа?"
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kasa çöp kutusu boşaltılsın mı?"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Очистити кошик сховища?"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "要清空保险库废纸篓吗？"
+          }
+        }
+      }
+    },
     "vault2_trash_empty": {
       "extractionState": "manual",
       "localizations": {
@@ -226434,97 +226737,97 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "تختفي الخزنة من الإعدادات. لفتحها، اضغط مطولًا على «اليوم» أعلى شاشة البداية لمدة ثانيتين."
+            "value": "تختفي الخزنة من الإعدادات. لفتحها، اضغط مطولًا على «PhotoMaid» أعلى شاشة البداية لمدة ثانيتين – سيدور قرص الخزنة الصغير في حرف «o»."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "Der Tresor verschwindet aus den Einstellungen. Zum Öffnen hältst du auf der Startseite oben „Heute“ 2 Sekunden lang gedrückt."
+            "value": "Der Tresor verschwindet aus den Einstellungen. Zum Öffnen hältst du auf der Startseite oben „PhotoMaid“ 2 Sekunden lang gedrückt – das kleine Tresor-Rad im „o“ dreht sich dabei."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The vault disappears from Settings. To open it, press and hold “Today” at the top of the start screen for 2 seconds."
+            "value": "The vault disappears from Settings. To open it, press and hold “PhotoMaid” at the top of the start screen for 2 seconds – the small vault dial in the “o” turns."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "La caja fuerte desaparece de Ajustes. Para abrirla, mantén pulsado «Hoy» en la parte superior de la pantalla de inicio durante 2 segundos."
+            "value": "La caja fuerte desaparece de Ajustes. Para abrirla, mantén pulsado «PhotoMaid» en la parte superior de la pantalla de inicio durante 2 segundos: la pequeña rueda de la caja fuerte en la «o» girará."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Le coffre-fort disparaît des Paramètres. Pour l’ouvrir, maintiens le doigt sur « Aujourd’hui » en haut de l’écran d’accueil pendant 2 secondes."
+            "value": "Le coffre-fort disparaît des Paramètres. Pour l’ouvrir, maintiens le doigt sur « PhotoMaid » en haut de l’écran d’accueil pendant 2 secondes – la petite molette du coffre dans le « o » tourne."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "La cassaforte scompare dalle Impostazioni. Per aprirla, tieni premuto «Oggi» in alto nella schermata iniziale per 2 secondi."
+            "value": "La cassaforte scompare dalle Impostazioni. Per aprirla, tieni premuto «PhotoMaid» in alto nella schermata iniziale per 2 secondi: la piccola rotella della cassaforte nella «o» gira."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "保管庫が設定から消えます。開くには、スタート画面上部の「今日」を2秒間長押しします。"
+            "value": "保管庫が設定から消えます。開くには、スタート画面上部の「PhotoMaid」を2秒間長押しします。「o」の中の小さな金庫のダイヤルが回ります。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "금고가 설정에서 사라집니다. 열려면 시작 화면 상단의 ‘오늘’을 2초 동안 길게 누르세요."
+            "value": "금고가 설정에서 사라집니다. 열려면 시작 화면 상단의 ‘PhotoMaid’를 2초 동안 길게 누르세요. ‘o’ 안의 작은 금고 다이얼이 돌아갑니다."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "De kluis verdwijnt uit Instellingen. Houd ‘Vandaag’ bovenaan het startscherm 2 seconden ingedrukt om hem te openen."
+            "value": "De kluis verdwijnt uit Instellingen. Houd ‘PhotoMaid’ bovenaan het startscherm 2 seconden ingedrukt om hem te openen – het kleine kluiswiel in de ‘o’ draait mee."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Sejf znika z Ustawień. Aby go otworzyć, przytrzymaj „Dzisiaj” u góry ekranu startowego przez 2 sekundy."
+            "value": "Sejf znika z Ustawień. Aby go otworzyć, przytrzymaj „PhotoMaid” u góry ekranu startowego przez 2 sekundy – małe pokrętło sejfu w literze „o” się obraca."
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "O cofre desaparece das Definições. Para o abrir, mantém premido «Hoje» no topo do ecrã inicial durante 2 segundos."
+            "value": "O cofre desaparece das Definições. Para o abrir, mantém premido «PhotoMaid» no topo do ecrã inicial durante 2 segundos – o pequeno disco do cofre no «o» roda."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Seiful dispare din Setări. Pentru a-l deschide, ține apăsat „Azi” în partea de sus a ecranului de start timp de 2 secunde."
+            "value": "Seiful dispare din Setări. Pentru a-l deschide, ține apăsat „PhotoMaid” în partea de sus a ecranului de start timp de 2 secunde – rotița mică a seifului din „o” se învârte."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Сейф исчезнет из настроек. Чтобы открыть его, нажми и удерживай «Сегодня» вверху начального экрана 2 секунды."
+            "value": "Сейф исчезнет из настроек. Чтобы открыть его, нажми и удерживай «PhotoMaid» вверху начального экрана 2 секунды – маленький диск сейфа в букве «o» повернётся."
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kasa Ayarlar’dan kaybolur. Açmak için başlangıç ekranının üstündeki “Bugün”e 2 saniye basılı tut."
+            "value": "Kasa Ayarlar’dan kaybolur. Açmak için başlangıç ekranının üstündeki “PhotoMaid”e 2 saniye basılı tut – “o” harfindeki küçük kasa çarkı döner."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Сейф зникне з налаштувань. Щоб відкрити його, натисни й утримуй «Сьогодні» вгорі початкового екрана 2 секунди."
+            "value": "Сейф зникне з налаштувань. Щоб відкрити його, натисни й утримуй «PhotoMaid» вгорі початкового екрана 2 секунди – маленький диск сейфа в літері «o» повернеться."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "保险箱将从“设置”中消失。要打开它，请在开始屏幕顶部按住“今天”2 秒。"
+            "value": "保险箱将从“设置”中消失。要打开它，请在开始屏幕顶部按住“PhotoMaid”2 秒，“o”中的小保险箱转盘会随之转动。"
           }
         }
       }

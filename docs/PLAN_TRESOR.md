@@ -1,6 +1,7 @@
 # Versteckter Tresor (E16, entschieden und gebaut)
 
-Stand 10.10.2026. Entscheidungen des Inhabers: V1 Eingang „Heute“ 2 Sekunden halten (Einrichten über die
+Stand 10.10.2026, Eingang 21.10.2026. Entscheidungen des Inhabers: V1 Eingang Seitentitel „PhotoMaid“ der Startseite
+(früher „Heute“; das „o“ ist ein kleines Tresor-Rad, das sich beim Halten dreht) 2 Sekunden halten (Einrichten über die
 Einstellungen, Eintrag danach ausblendbar), V2 PIN oder Passwort wählbar plus optional Face ID/Touch ID, V3 im
 iPhone-Backup (Variante A), V4 optionaler Notfallschlüssel, V5 Free 50 Medien / Pro unbegrenzt, V6 kein Täusch-Code,
 V7 nur Wartezeit, V8 alle Teile sichern. Code: `Sources/PhotoMaidCore/Vault/Vault.swift` (Regeln, Tests in
@@ -152,6 +153,8 @@ Einbauskript des Pakets hätte VaultStore auf Build-4-Stand ersetzt und eine zwe
   (ohne Klartext-Zwischendatei). „Original entfernen“ nur nach Bestätigung und erneuter Prüfung.
 - **Tresor-Papierkorb** für Medien, Notizen, Dateien: Löschen im Tresor verschiebt dorthin; endgültig nur ausdrücklich;
   keine automatische Löschung. Medien im Papierkorb belegen weiter Plätze (Free 50) und bleiben in PhotoMaid verborgen.
+  „Alles endgültig löschen“ (21.10.2026) leert den ganzen Tresor-Papierkorb nach Rückfrage mit Anzahl in einem
+  Schreibvorgang – alles oder nichts (`VaultSnapshot.emptyTrash`).
 - Werkzeuge: Inaktivitätssperre (30 s – 10 min, Standard 2 min; jede Berührung zählt), verschlüsseltes Backup mit
   eigenem Passwort (mind. 12 Zeichen), additive Wiederherstellung (nie überschreiben).
 - Hinweis vor jedem Teilen/Export: die Kopie liegt dann außerhalb des Tresorschutzes.
@@ -165,6 +168,6 @@ Einbauskript des Pakets hätte VaultStore auf Build-4-Stand ersetzt und eine zwe
 
 1. App-Beschreibung: „Privater Tresor mit Code für Fotos und Videos“ erwähnen (Regel 2.3.1).
 2. Prüfnotizen für App Review: „Einstellungen › Privater Tresor einrichten. Danach kann der Eintrag ausgeblendet
-   werden; geöffnet wird dann durch 2 Sekunden langes Drücken auf ‚Heute‘ oben auf der Startseite.“ Test-PIN angeben.
+   werden; geöffnet wird dann durch 2 Sekunden langes Drücken auf den Titel ‚PhotoMaid‘ oben auf der Startseite.“ Test-PIN angeben.
 3. Exportkonformität: Standard-AES über Apple CryptoKit nur auf dem Gerät. `ITSAppUsesNonExemptEncryption` steht auf
    `false`; vor dem Release in App Store Connect bestätigen, dass die Ausnahme greift (sonst Wert anpassen).

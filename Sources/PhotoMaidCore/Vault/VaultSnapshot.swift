@@ -50,6 +50,29 @@ public struct VaultSnapshot: Codable, Sendable, Equatable {
         Set(workspace.files.compactMap { $0.sourceKey.map(Self.fileConcealmentKey) })
     }
 
+    /// Medien endgültig aus dem Tresor-Papierkorb entfernen. Ihre Dateien und Vorschaubilder werden nur vorgemerkt und
+    /// erst nach dem gespeicherten Schnappschuss physisch gelöscht. Liefert die entfernten Medien (deren Originale
+    /// zeigt PhotoMaid danach wieder).
+    public mutating func purgeTrashedMedia(_ ids: Set<String>) throws -> [VaultItem] {
+        let selected = workspace.mediaTrash.filter { ids.contains($0.id) }
+        guard selected.count == ids.count else { throw VaultWorkspaceError.notInTrash }
+        let items = try selected.map { try JSONDecoder().decode(VaultItem.self, from: $0.encodedItem) }
+        for item in items {
+            workspace.pendingObjectPurges.formUnion(item.resources.map(\.file).filter(VaultWorkspace.isOpaqueName))
+            if let thumb = item.thumbnail, VaultWorkspace.isOpaqueName(thumb) { workspace.pendingThumbnailPurges.insert(thumb) }
+        }
+        workspace.mediaTrash.removeAll { ids.contains($0.id) }
+        return items
+    }
+
+    /// Den ganzen Tresor-Papierkorb in einem Schritt endgültig leeren – alles oder nichts. Notizen zuerst, damit
+    /// Dateien frei werden, die nur noch an gelöschten Notizen hingen. Liefert die entfernten Medien.
+    public mutating func emptyTrash() throws -> [VaultItem] {
+        try workspace.permanentlyRemove(Set(workspace.notes.filter { $0.trashedMs != nil }.map(\.id)), scope: .notes)
+        try workspace.permanentlyRemove(Set(workspace.files.filter { $0.trashedMs != nil }.map(\.id)), scope: .files)
+        return try purgeTrashedMedia(Set(workspace.mediaTrash.map(\.id)))
+    }
+
     public func validate() throws {
         guard version == Self.currentVersion, media.version == VaultIndex.currentVersion,
               Set(media.items.map(\.id)).count == media.items.count,

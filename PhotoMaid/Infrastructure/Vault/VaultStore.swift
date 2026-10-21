@@ -78,7 +78,7 @@ final class VaultStore {
     @ObservationIgnored private var lockCount = 0
 
     var isSetUp: Bool { phase != .notSetUp }
-    /// Eingang in den Einstellungen ausgeblendet; geöffnet wird dann nur über „Heute“ 2 Sekunden halten.
+    /// Eingang in den Einstellungen ausgeblendet; geöffnet wird dann nur über „PhotoMaid“ (Startseite) 2 Sekunden halten.
     var hidesEntry: Bool { isSetUp && settings?.hideEntry == true }
     var biometryName: String? { VaultKeychain.biometryName }
     var nowMs: Int64 { Int64(Date().timeIntervalSince1970 * 1000) }
@@ -119,7 +119,7 @@ final class VaultStore {
 
     // MARK: Öffnen, Sperren, Sitzung
 
-    /// Geheimer Eingang („Heute“ 2 Sekunden halten). Ohne eingerichteten Tresor passiert nichts.
+    /// Geheimer Eingang (Titel „PhotoMaid“ der Startseite 2 Sekunden halten, `VaultDialWordmark`). Ohne eingerichteten Tresor passiert nichts.
     @discardableResult
     func openFromHiddenEntry() -> Bool {
         reloadState()
@@ -573,18 +573,21 @@ final class VaultStore {
     /// Inhaltsverzeichnis. Originale, die noch in der Fotos-App liegen, erscheinen wieder in PhotoMaid.
     func purgeMediaFromTrash(_ ids: Set<String>, app: AppModel) throws {
         var purged: [VaultItem] = []
-        try commitSnapshot { s in
-            let selected = s.workspace.mediaTrash.filter { ids.contains($0.id) }
-            guard selected.count == ids.count else { throw VaultWorkspaceError.notInTrash }
-            for archived in selected {
-                let item = try JSONDecoder().decode(VaultItem.self, from: archived.encodedItem)
-                s.workspace.pendingObjectPurges.formUnion(item.resources.map(\.file).filter(VaultWorkspace.isOpaqueName))
-                if let thumb = item.thumbnail, VaultWorkspace.isOpaqueName(thumb) { s.workspace.pendingThumbnailPurges.insert(thumb) }
-                purged.append(item)
-            }
-            s.workspace.mediaTrash.removeAll { ids.contains($0.id) }
-        }
+        try commitSnapshot { purged = try $0.purgeTrashedMedia(ids) }
         finishPendingPurges()
+        revealPurged(purged, app: app)
+    }
+
+    /// Tresor-Papierkorb ganz leeren (Medien, Notizen, Dateien) – ein Schreibvorgang, alles oder nichts. Nur nach
+    /// ausdrücklicher Bestätigung im Tresor-Papierkorb.
+    func emptyTrash(app: AppModel) throws {
+        var purged: [VaultItem] = []
+        try commitSnapshot { purged = try $0.emptyTrash() }
+        finishPendingPurges()
+        revealPurged(purged, app: app)
+    }
+
+    private func revealPurged(_ purged: [VaultItem], app: AppModel) {
         let stillHidden = snapshot.originalIDs
         reveal(purged.compactMap { $0.originalID ?? $0.sourceID }.filter { !stillHidden.contains($0) }, app: app)
     }
