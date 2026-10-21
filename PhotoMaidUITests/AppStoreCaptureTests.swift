@@ -129,11 +129,6 @@ final class AppStoreCaptureTests: XCTestCase {
         launch(page)
         if let title { XCTAssertTrue(app.navigationBars[t(title)].waitForExistence(timeout: 15), page) }
         if page == "today" { awaitCurrentTodayCounts() }
-        if page == "search" {
-            let deadline = Date().addingTimeInterval(45)
-            while app.activityIndicators.firstMatch.exists && Date() < deadline { pause(0.2) }
-            XCTAssertFalse(app.activityIndicators.firstMatch.exists,"Filename indexing must finish")
-        }
         snap(page)
         if bottom { app.swipeUp(); app.swipeUp(); snap(page + "-bottom") }
     }
@@ -241,7 +236,7 @@ final class AppStoreCaptureTests: XCTestCase {
             ("large-files","large_files",false),("duplicates","duplicates",false),("storage","storage_overview",true),
             ("files","files",false),("series","series_title",false),("collections",nil,true),
             ("blurry","ana_blurry",false),("similar","ana_similar",false),("documents","ana_documents",false),("categories","ana_categories",false),
-            ("albums",nil,false),("album",nil,false),("grid",nil,false),("favorites",nil,false),("search",nil,false),("selection",nil,false),("tags",nil,false),("hidden",nil,false),
+            ("albums",nil,false),("album",nil,false),("grid",nil,false),("favorites",nil,false),("selection",nil,false),("tags",nil,false),("hidden",nil,false),
             ("edits",nil,false),("collage",nil,false),("movie",nil,true),
             ("tools-resize",nil,true),("tools-convert",nil,true),("tools-removeLocation",nil,true),("tools-stitch",nil,true),("tools-gif",nil,true),("tools-batchEdit",nil,true),
             ("received",nil,false),("workflows",nil,true),("pdf",nil,true),("pdf-studio",nil,false),("archive",nil,true),

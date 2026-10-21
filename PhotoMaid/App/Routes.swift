@@ -20,7 +20,6 @@ enum Route: Hashable {
     case album(id: String, title: String)
     case albums
     case favorites
-    case search
     case selectionBasket
     case tags
     case hidden
@@ -112,7 +111,6 @@ struct RouteDestination: View {
         case .album(let id, let title): AlbumView(albumID: id, title: title)
         case .albums: AlbumsView()
         case .favorites: FavoritesView()
-        case .search: SearchView()
         case .selectionBasket: SelectionBasketView()
         case .tags: TagsView()
         case .hidden: HiddenView()

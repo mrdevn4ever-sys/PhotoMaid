@@ -146,7 +146,6 @@ enum StoreCapture {
             } else { return }
         case "grid": tab = .library; route = .grid(.items(ids, titleKey: "tab_library"))
         case "favorites": tab = .library; route = .favorites
-        case "search": tab = .library; route = .search
         case "selection": tab = .library; route = .selectionBasket
         case "tags": tab = .library; route = .tags
         case "hidden": tab = .library; route = .hidden

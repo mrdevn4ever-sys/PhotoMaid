@@ -34,6 +34,9 @@ Schrift und Größen. Nicht für `main` bestimmt, solange der Nutzer es nicht au
   Standard dunkel (eigene Einstellung `designAppearance`). Der helle Modus ist eine eigene warme Ableitung der
   Artefakt-Farben (`AppColors.dyn(dunkel, hell)`), das Artefakt selbst zeigt nur dunkel. Editor und Medienbühnen bleiben
   dunkel.
+- **Suche im Tab „Fotos“ entfernt** (Nutzer, 21.10.2026: „falls du kein easy fix hast entfern die suche“): Sie las
+  beim Öffnen alle Dateinamen einzeln (bei großen Mediatheken minutenlang Ladekreis), und Personennamen stellt iOS
+  Apps nicht bereit – „Ellie“ wäre auch repariert nie gefunden worden. Ordner-Suche und Schlagwörter bleiben.
 - **Texte aus echten Kennungen**, wo es sie schon gab (z. B. Mitteilungs-Erklärung in „Später“, Tresor-Hinweis in den
   Einstellungen) – teils länger als die Kurzfassung im Artefakt.
 - **Funktionen bleiben erreichbar**, die das Artefakt nicht zeigt: „Code vergessen?“, Sortieren/Auswählen im Tresor,

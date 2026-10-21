@@ -1,63 +1,6 @@
 import PhotoMaidCore
 import SwiftUI
 
-/// Suche ohne Akzente/Groß-klein, rein lokal: Dateiname, Monat/Jahr, Art, Favorit, eigene Schlagwörter und Notizen.
-struct SearchView: View {
-    @Environment(AppModel.self) private var app
-    @State private var query = ""
-    @State private var names: [String: String] = [:]
-    @State private var indexing = false
-    @State private var selection: Set<String> = []
-
-    var body: some View {
-        let tokens = SearchText.tokens(query)
-        let hits = tokens.isEmpty ? [] : app.visibleMedia.filter { SearchText.matches(tokens, fields: fields($0)) }
-        ScrollView {
-            if indexing { ProgressView().padding() }
-            if !tokens.isEmpty && hits.isEmpty && !indexing {
-                EmptyState(symbol: "magnifyingglass", title: L("lib_search_none_title"), message: L("lib_search_none_text", query))
-            } else if !hits.isEmpty {
-                MediaGrid(sections: [TimelineSection(key: TimelineKey(year: 0), items: hits)], columns: 4,
-                          selection: $selection, open: { a in
-                              let ids = hits.map(\.id)
-                              app.fullScreen = .viewer(ids: ids, index: ids.firstIndex(of: a.id) ?? 0)
-                          })
-            }
-        }
-        .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: Text(key: "lib_search_hint"))
-        .appPage()
-        .navigationTitle(L("lib_search"))
-        .task { await buildNames() }
-    }
-
-    private func fields(_ a: MediaAsset) -> [String] {
-        var f: [String] = []
-        if let n = names[a.id] { f.append(n) }
-        if let d = a.creationDate {
-            f.append(MonthText.title(MonthKey(d, timeZone: .autoupdatingCurrent)))
-            f.append(DateText.long(d))
-        }
-        f.append(MediaInfoLine.describe(a))
-        if a.isFavorite { f.append(L("lib_kw_favorite")) }
-        f.append(contentsOf: app.organize.tags(of: a.id))
-        if let note = app.organize.note(of: a.id) { f.append(note) }
-        return f
-    }
-
-    /// Dateinamen einmal lokal lesen (nur im Speicher, nie gespeichert oder übertragen).
-    private func buildNames() async {
-        guard names.isEmpty else { return }
-        indexing = true
-        let ids = app.visibleMedia.map(\.id)
-        names = await Task.detached(priority: .utility) {
-            var out: [String: String] = [:]
-            for id in ids { if let n = PhotoLibraryService.originalFilename(id) { out[id] = n } }
-            return out
-        }.value
-        indexing = false
-    }
-}
-
 /// Auswahlkorb: dauerhafter Arbeitsvorrat (≠ Papierkorb). Leeren ändert nie eine Datei, ist nie eine Entscheidung.
 struct SelectionBasketView: View {
     @Environment(AppModel.self) private var app

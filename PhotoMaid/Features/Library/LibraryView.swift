@@ -60,12 +60,12 @@ struct LibraryView: View {
         }
     }
 
-    /// Kopf wie im Artefakt: „Fotos“, rechts Suche, Auswählen/Fertig und Mehr.
+    /// Kopf wie im Artefakt: „Fotos“, rechts Auswählen/Fertig und Mehr. Die Suche ist entfernt (Nutzer, 21.10.2026):
+    /// Personennamen liefert iOS Apps nicht, und das Lesen aller Dateinamen dauerte bei großen Mediatheken Minuten.
     private var header: some View {
         HStack(alignment: .bottom, spacing: AppSpacing.xs) {
             Text(key: "tab_library").pageTitle().accessibilityAddTraits(.isHeader)
             Spacer(minLength: 0)
-            circleButton(.search, L("lib_search")) { app.navigate(.search) }
             if mode == 0 {
                 Button {
                     selecting.toggle()
@@ -83,7 +83,6 @@ struct LibraryView: View {
                 .buttonStyle(PMPressStyle())
             }
             Menu {
-                Button { app.navigate(.search) } label: { Label(L("lib_search"), systemImage: "magnifyingglass") }
                 Button { app.navigate(.selectionBasket) } label: { Label(L("org_basket"), systemImage: "basket") }
                 Button { app.navigate(.tags) } label: { Label(L("org_tags"), systemImage: "tag") }
                 Button { app.navigate(.hidden) } label: { Label(L("lib_hidden_title"), systemImage: "eye.slash") }
@@ -106,12 +105,6 @@ struct LibraryView: View {
             .background(AppColors.surface, in: .circle)
             .overlay(Circle().strokeBorder(AppColors.control, lineWidth: 1))
             .contentShape(.circle)
-    }
-
-    private func circleButton(_ icon: PMIconName, _ label: String, action: @escaping () -> Void) -> some View {
-        Button(action: action) { circleLabel(icon) }
-            .buttonStyle(PMPressStyle())
-            .accessibilityLabel(Text(verbatim: label))
     }
 
     @ViewBuilder private var modePicker: some View {
