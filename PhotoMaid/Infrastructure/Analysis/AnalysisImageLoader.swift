@@ -5,8 +5,9 @@ import Photos
 import PhotoMaidCore
 import UIKit
 
-/// PhotoKit has no per-request cellular switch. We admit cloud work only on an unmetered Wi-Fi path,
+/// PhotoKit has no per-request cellular switch. We admit cloud work only over Wi-Fi (or Ethernet), never cellular,
 /// and cancel when that changes. Photos' system settings still govern bytes during a network handover.
+/// When Wi-Fi becomes available, `.analysisNetworkReady` lets waiting analyses continue on their own.
 final class AnalysisNetwork: @unchecked Sendable {
     static let shared = AnalysisNetwork()
     private let lock = NSLock()
@@ -16,13 +17,30 @@ final class AnalysisNetwork: @unchecked Sendable {
     private init() {
         monitor.pathUpdateHandler = { [weak self] path in
             guard let self else { return }
-            self.lock.withLock {
-                self.ready = path.status == .satisfied && path.usesInterfaceType(.wifi)
-                    && !path.isExpensive && !path.isConstrained
+            let now = Self.permitsCloud(path)
+            let becameReady = self.lock.withLock { () -> Bool in
+                let was = self.ready
+                self.ready = now
+                return now && !was
             }
+            if becameReady { NotificationCenter.default.post(name: .analysisNetworkReady, object: nil) }
         }
         monitor.start(queue: DispatchQueue(label: "PhotoMaid.analysis.network", qos: .utility))
     }
+
+    /// „Nur WLAN“ = verbunden über WLAN oder Kabel, nie über Mobilfunk. Bewusst auch mit Persönlichem Hotspot,
+    /// Datensparmodus oder VPN (Tunnel „other“ über WLAN) – früher galt das als „kein WLAN“ und die Analyse wartete
+    /// trotz WLAN (Nutzer, 21.10.2026). Geladen werden ohnehin nur kleine Vorschauen.
+    static func permitsCloud(_ path: NWPath) -> Bool {
+        guard path.status == .satisfied, !path.usesInterfaceType(.cellular) else { return false }
+        if path.usesInterfaceType(.wifi) || path.usesInterfaceType(.wiredEthernet) { return true }
+        return path.availableInterfaces.contains { $0.type == .wifi || $0.type == .wiredEthernet }
+    }
+}
+
+extension Notification.Name {
+    /// WLAN ist (wieder) da: auf WLAN wartende Analysen setzen von selbst fort.
+    static let analysisNetworkReady = Notification.Name("PhotoMaid.analysisNetworkReady")
 }
 
 struct AnalysisImage: @unchecked Sendable {

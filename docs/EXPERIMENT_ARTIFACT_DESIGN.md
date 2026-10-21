@@ -40,6 +40,10 @@ Schrift und Größen. Nicht für `main` bestimmt, solange der Nutzer es nicht au
 - **Snake ohne Wärme-Sperre** (Nutzer, 21.10.2026: „Das iPhone ist nicht überhitzt“): Snake hielt bei der iOS-Wärmestufe
   „ernst“ an („Wartet, bis das iPhone abgekühlt ist“), die schon unter normaler Last gemeldet wird. Entfernt; das
   leichte Spiel läuft weiter, echte Überhitzung regelt iOS selbst. Die Drosselung der Foto-Analyse bleibt.
+- **Analyse „Warte auf WLAN“ trotz WLAN** (Nutzer, 21.10.2026): „Nur WLAN“ verlangte zusätzlich ein nicht „teures“ und
+  nicht eingeschränktes Netz – Persönlicher Hotspot, Datensparmodus oder VPN galten als „kein WLAN“. Jetzt: WLAN oder
+  Kabel genügt, Mobilfunk nie (`AnalysisNetwork.permitsCloud`). Neu: Wird WLAN verfügbar, setzt eine wartende
+  Analyse von selbst fort (`.analysisNetworkReady`), wie die Oberfläche es verspricht.
 - **Texte aus echten Kennungen**, wo es sie schon gab (z. B. Mitteilungs-Erklärung in „Später“, Tresor-Hinweis in den
   Einstellungen) – teils länger als die Kurzfassung im Artefakt.
 - **Funktionen bleiben erreichbar**, die das Artefakt nicht zeigt: „Code vergessen?“, Sortieren/Auswählen im Tresor,

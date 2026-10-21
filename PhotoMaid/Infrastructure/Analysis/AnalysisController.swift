@@ -120,6 +120,9 @@ final class AnalysisController {
             object: nil, queue: nil, using: Self.foregroundHandler(self)))
         observers.append(NotificationCenter.default.addObserver(forName: ProcessInfo.thermalStateDidChangeNotification,
             object: nil, queue: nil, using: Self.thermalHandler(self)))
+        // WLAN wieder da: eine auf WLAN wartende Analyse geht von selbst weiter (wie in der Oberfläche versprochen).
+        observers.append(NotificationCenter.default.addObserver(forName: .analysisNetworkReady,
+            object: nil, queue: nil, using: Self.thermalHandler(self)))
     }
     private nonisolated static func invalidationHandler(_ owner: AnalysisController) -> @Sendable (Notification) -> Void {
         { [weak owner] _ in Task { @MainActor in guard let owner else { return }; owner.invalidate(); owner.scopeRevision &+= 1 } }
