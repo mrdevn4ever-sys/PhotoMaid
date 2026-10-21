@@ -14,6 +14,16 @@ extension View {
     func appPage() -> some View {
         scrollContentBackground(.hidden).background(AppBackground())
     }
+
+    /// Startseiten ohne Navigationsleiste: Hinter der Statusleiste liegt der Seitengrund, damit gescrollte Inhalte
+    /// nicht mit Uhrzeit und Akku überlappen.
+    func statusBarBackdrop() -> some View {
+        safeAreaInset(edge: .top, spacing: 0) {
+            Color.clear.frame(height: 0)
+                .background(AppColors.background.ignoresSafeArea(edges: .top))
+                .accessibilityHidden(true)
+        }
+    }
 }
 
 /// Seitenkopf des Artefakts: Titel 40 pt (Bricolage 800, Laufweite −0,02 em) in der Farbe der Seite, darunter

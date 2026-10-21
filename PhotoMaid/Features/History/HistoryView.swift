@@ -60,6 +60,7 @@ struct HistoryView: View {
             .frame(maxWidth: 720).frame(maxWidth: .infinity)
         }
         .appPage()
+        .statusBarBackdrop()
         .toolbar(.hidden, for: .navigationBar)
         .navigationTitle(L("tab_history"))
         .accessibilityIdentifier("history.events")

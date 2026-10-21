@@ -17,9 +17,14 @@ struct PMTabBar: View {
         }
         .padding(.horizontal, 6)
         .frame(height: 68)
-        .background(AppColors.surface.opacity(0.94), in: .capsule)
-        .overlay(Capsule().strokeBorder(AppColors.control, lineWidth: 1))
-        .shadow(color: .black.opacity(0.5), radius: 15, y: 12)
+        // Fläche und Rand liegen hinter den Einträgen: der runde Mittelknopf ragt darüber, ohne dass die Randlinie
+        // durch ihn hindurch läuft.
+        .background {
+            Capsule()
+                .fill(AppColors.surface)
+                .overlay(Capsule().strokeBorder(AppColors.control, lineWidth: 1))
+                .shadow(color: .black.opacity(0.5), radius: 15, y: 12)
+        }
         .padding(.horizontal, 16)
         .padding(.bottom, 22)
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)

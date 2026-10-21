@@ -48,7 +48,7 @@ struct LibraryView: View {
             .padding(.top, AppSpacing.xs)
             .padding(.bottom, AppSpacing.s)
             .frame(maxWidth: .infinity)
-            .background(AppColors.background)
+            .background(AppColors.background.ignoresSafeArea(edges: .top))
         }
         .navigationTitle(L("tab_library"))
         .toolbar(.hidden, for: .navigationBar)

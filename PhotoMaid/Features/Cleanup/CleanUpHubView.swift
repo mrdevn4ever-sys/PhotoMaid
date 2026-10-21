@@ -32,6 +32,7 @@ struct CleanUpHubView: View {
             .padding(.bottom, AppSpacing.xxl)
         }
         .appPage()
+        .statusBarBackdrop()
         .toolbar(.hidden, for: .navigationBar)
         .task(id: "\(app.pending.count)-\(app.cleanupMedia.count)") { await recount() }
     }

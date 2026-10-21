@@ -39,6 +39,7 @@ struct StudioView: View {
             .padding(.bottom, AppSpacing.xxl)
         }
         .appPage()
+        .statusBarBackdrop()
         .navigationTitle(L("tab_studio"))
         .toolbar(.hidden, for: .navigationBar)
         .gamesCover(isPresented: $showGames)

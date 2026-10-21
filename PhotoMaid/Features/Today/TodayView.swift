@@ -17,7 +17,6 @@ struct TodayView: View {
         ScrollViewReader { scroller in
             ScrollView {
                 VStack(alignment: .leading, spacing: AppSpacing.m) {
-                    header.id("today.header")
                     WorkspaceColumns(accessibility: dynamicType.isAccessibilitySize) {
                         VStack(alignment: .leading, spacing: AppSpacing.m) {
                             if !access.canRead { accessCard }
@@ -60,6 +59,14 @@ struct TodayView: View {
                 .padding(.bottom, AppSpacing.xxl)
             }
             .appPage()
+            // Kopf bleibt wie eine Navigationsleiste unter der Statusleiste stehen; Inhalte scrollen darunter.
+            .safeAreaInset(edge: .top, spacing: 0) {
+                header
+                    .padding(.horizontal, AppSpacing.pageMargin)
+                    .padding(.bottom, AppSpacing.s)
+                    .frame(maxWidth: .infinity)
+                    .background(AppColors.background.ignoresSafeArea(edges: .top))
+            }
             .toolbar(.hidden, for: .navigationBar)
             .task(id: "\(app.pending.count)-\(app.cleanupMedia.count)-\(app.settings.continueMonth ?? "")-\(app.settings.lastSessionEnd?.timeIntervalSince1970 ?? 0)") {
                 await countProgress()
@@ -198,9 +205,9 @@ struct TodayView: View {
 
     /// Ziel sichtbar machen, bevor Spotlight und Karte darauf zeigen.
     private func scrollToTourTarget(_ step: TourStep?, _ scroller: ScrollViewProxy) {
-        guard let step, case .anchor(let anchor) = step.target else { return }
-        let id = anchor == "today.settings" ? "today.header" : anchor
-        withAnimation(.snappy) { scroller.scrollTo(id, anchor: .center) }
+        // Der Kopf (Einstellungen) steht immer sichtbar oben und muss nicht gescrollt werden.
+        guard let step, case .anchor(let anchor) = step.target, anchor != "today.settings" else { return }
+        withAnimation(.snappy) { scroller.scrollTo(anchor, anchor: .center) }
     }
 
     private var tourSteps: [TourStep] {
