@@ -42,5 +42,7 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
 
 - `swift test` (PhotoMaidCore, Linux): PASS
 - `android_strings_to_xcstrings.py --check`: PASS
-- Xcode-Build, Unit-Tests, UI-Tests: siehe CI-Lauf auf diesem Branch (Stand im Commit-Verlauf)
+- Xcode-Build und Unit-Tests: PASS (CI-Lauf 39584295498; TestFlight-Lauf 39586915037)
+- UI-Tests: NOT RUN abgeschlossen (CI-Lauf 39584295498 läuft)
+- TestFlight: interner Build 1.0 (21) hochgeladen und von Apple verarbeitet (21.10.2026, nur interne Tester)
 - Geräteabnahme: NOT RUN
