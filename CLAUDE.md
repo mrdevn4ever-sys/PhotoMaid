@@ -61,7 +61,8 @@ Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E19) – ni
   Einrichtungsstand einschließlich der letzten Textkorrektur mit dem vorhandenen Workflow als internen
   TestFlight-Build hochladen, vorgeschaltete Unit-Tests und Privacy-Prüfung ausführen und Apples
   Verarbeitung prüfen. Keine App-Store-Veröffentlichung oder externe Tester-Verteilung dadurch.
-- **TestFlight-Freigabe Experiment-Design (21.10.2026: „Dann testflight“):** den Stand von
+- **TestFlight-Freigaben Experiment-Design (21.10.2026: „Dann testflight“ → Build 21; „Mach“ → Folgebuild mit
+  Begrüßung nach Tageszeit, festem Kopf, Tableisten-Korrektur und Verlauf mit 10 neuesten):** jeweils den Stand von
   `claude/experiment-artifact-design` (Artefakt-Design, Begrüßung drin) mit dem vorhandenen Workflow als internen
   TestFlight-Build hochladen und Apples Verarbeitung prüfen. Keine App-Store-Veröffentlichung, keine externe Verteilung.
 - **Neuester Snake-Auftrag (18.10.2026: größere Fotos/Vogelperspektive): ausschließlich lokale und
