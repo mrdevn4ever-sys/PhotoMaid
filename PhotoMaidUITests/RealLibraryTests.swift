@@ -651,7 +651,10 @@ final class RealLibraryTests: XCTestCase {
             let cleanup = app.pmTab("Aufräumen")
             tap(cleanup, language + "_cleanup")
             hub("photos")
-            XCTAssertTrue(e("feed.stage").waitForExistence(timeout: 10))
+            // Frühere Fälle desselben Laufs können alles schon durchgesehen haben („Alles durchgesehen“) – der
+            // Feed-Kopf steht in beiden Fällen; Texte werden auf jeder der beiden Ansichten geprüft.
+            XCTAssertTrue(app.buttons.matching(identifier: "feed.close").firstMatch.waitForExistence(timeout: 10))
+            _ = e("feed.stage").waitForExistence(timeout: 3)
             snap(language + "_feed_arrows")
             assertNoPlaceholders()
             // Physical arrow rendering is reviewed in the PNGs; no locale-dependent swipe reversal.
