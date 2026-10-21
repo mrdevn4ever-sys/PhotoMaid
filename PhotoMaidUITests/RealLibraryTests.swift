@@ -111,6 +111,10 @@ final class RealLibraryTests: XCTestCase {
         snap("test_ad_close_missing")
         XCTFail("Google test ad has no accessible close control")
     }
+    /// Menüeintrag nach Beschriftung – nie der gleichnamige Tab der Tableiste („Fotos“).
+    private func menuItem(_ label: String) -> XCUIElement {
+        app.buttons.matching(NSPredicate(format: "label == %@ AND NOT (identifier BEGINSWITH 'tab.')", label)).firstMatch
+    }
     private func hub(_ id: String) {
         let target = e("hub." + id)
         scrollTo(target)
@@ -469,7 +473,7 @@ final class RealLibraryTests: XCTestCase {
         tab("Fotos")
         for filter in ["Alle", "Favoriten", "Fotos", "Videos"] {
             tap(e("library.filter"), "filter_menu_" + filter)
-            tap(app.buttons[filter].firstMatch, "filter_" + filter)
+            tap(menuItem(filter), "filter_" + filter)
             XCTAssertEqual(e("library.filter").value as? String, filter)
             if filter == "Videos" {
                 XCTAssertTrue(app.buttons.matching(identifier: "media.cell").firstMatch.waitForExistence(timeout: 10),
@@ -479,13 +483,13 @@ final class RealLibraryTests: XCTestCase {
         }
         for option in ["Alle", "Zuletzt hinzugefügt", "Quadratisch", "Seitenverhältnis"] {
             tap(e("library.filter"), "view_menu_" + option)
-            tap(app.buttons[option].firstMatch, "view_" + option)
+            tap(menuItem(option), "view_" + option)
             XCTAssertTrue(app.pmTab("Fotos").exists)
         }
         XCTAssertTrue(contains("Zuletzt hinzugefügt").exists)
         XCTAssertGreaterThan(app.buttons.matching(identifier: "media.cell").count, 0)
         tap(e("library.filter"), "filter_menu_Screenshots")
-        tap(app.buttons["Screenshots"].firstMatch, "filter_Screenshots")
+        tap(menuItem("Screenshots"), "filter_Screenshots")
         XCTAssertEqual(e("library.filter").value as? String, "Screenshots")
         XCTAssertTrue(app.buttons.matching(identifier: "media.cell").firstMatch.waitForExistence(timeout: 10),
                       "Native iOS screenshots must be visible")
@@ -496,7 +500,8 @@ final class RealLibraryTests: XCTestCase {
         ready()
         tab("Studio")
         XCTAssertFalse(app.images["crown"].exists)
-        tap(button("Collage"), "collage_picker")
+        // Experiment-Design: große Collage-Karte („Erstellen, Collage, …“).
+        tap(e("studio.create.studio_collage"), "collage_picker")
         let cells = app.buttons.matching(identifier: "picker.media")
         XCTAssertGreaterThanOrEqual(cells.count, 2)
         tap(cells.element(boundBy: 0), "collage_first_photo")
@@ -580,7 +585,12 @@ final class RealLibraryTests: XCTestCase {
             XCTAssertTrue(close.isHittable)
             XCTAssertLessThan(close.frame.midX, app.frame.midX)
             tap(close, "vault_close_" + title)
-            XCTAssertTrue(app.pmTabBar.waitForExistence(timeout: 5))
+            // Zurück auf der Seite, von der der Tresor geöffnet wurde (Einstellungen); die Tableiste steht im
+            // Experiment-Design nur auf den fünf Startseiten.
+            let gone = XCTNSPredicateExpectation(predicate: NSPredicate(format: "exists == false"),
+                                                 object: app.segmentedControls.buttons["Medien"])
+            XCTAssertEqual(XCTWaiter.wait(for: [gone], timeout: 5), .completed)
+            XCTAssertTrue(app.pmTabBar.exists || app.navigationBars.buttons.element(boundBy: 0).exists)
             XCTAssertFalse(app.secureTextFields.firstMatch.exists || app.vaultKeypad.exists, "Closing must never ask for PIN")
             snap("vault_closed_no_prompt_" + title)
             if title != "Dateien" {
