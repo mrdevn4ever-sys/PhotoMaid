@@ -30,7 +30,6 @@ struct HistoryView: View {
         let days = Dictionary(grouping: visible) { cal.startOfDay(for: $0.primary.at) }
         let dayTotals = Dictionary(grouping: entries) { cal.startOfDay(for: $0.primary.at) }.mapValues(\.count)
         let keys = Array(days.keys.sorted(by: >).prefix(60))
-        let newest = entries.first?.id
         ScrollView {
             // Jede Zeile ist ein eigenes Kind des LazyVStack: Vorschaubilder laden erst, wenn sie ins Bild kommen.
             LazyVStack(alignment: .leading, spacing: AppSpacing.xs) {
@@ -57,7 +56,11 @@ struct HistoryView: View {
                         .accessibilityAddTraits(.isHeader)
                         .padding(.top, AppSpacing.s).padding(.horizontal, 4)
                     ForEach((days[day] ?? []).prefix(300)) { entry in
-                        HistoryRow(entry: entry, undo: entry.id == newest && app.read.canUndo ? {
+                        // „Rückgängig“ nimmt immer den jüngsten noch rücknehmbaren Befehl zurück – der Knopf steht an
+                        // genau diesem Eintrag (auch bei Filtern); danach rückt er zum nächstälteren weiter.
+                        HistoryRow(entry: entry, undo: app.read.undoCommandID != nil
+                                   && (entry.primary.commandID == app.read.undoCommandID
+                                       || entry.schedule?.commandID == app.read.undoCommandID) ? {
                             Task { _ = await app.undo() }
                         } : nil)
                     }

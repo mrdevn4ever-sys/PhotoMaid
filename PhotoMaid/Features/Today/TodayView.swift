@@ -504,24 +504,26 @@ struct PMStackTile: View {
     let action: () -> Void
 
     var body: some View {
+        // Kompakt (Nutzerwunsch 21.10.2026): Symbol links, Zahl und Name daneben in einer Zeile.
         Button(action: action) {
-            VStack(alignment: .leading, spacing: 14) {
-                PMIcon(icon, size: 20)
+            HStack(spacing: AppSpacing.s) {
+                PMIcon(icon, size: 18)
                     .foregroundStyle(tint)
-                    .frame(width: 40, height: 40)
-                    .background(PMTile.background(for: tint), in: .rect(cornerRadius: AppRadii.small))
+                    .frame(width: 36, height: 36)
+                    .background(PMTile.background(for: tint), in: .rect(cornerRadius: 11))
                 VStack(alignment: .leading, spacing: 0) {
-                    Text(verbatim: value).font(AppTypography.metric).foregroundStyle(AppColors.textPrimary)
+                    Text(verbatim: value).font(PMFont.heading(20, relativeTo: .headline)).foregroundStyle(AppColors.textPrimary)
                         .lineLimit(1).minimumScaleFactor(0.6)
-                    Text(verbatim: title).font(PMFont.text(.medium, 14, relativeTo: .subheadline))
-                        .foregroundStyle(AppColors.textSecondary)
+                    Text(verbatim: title).font(PMFont.text(.medium, 13, relativeTo: .footnote))
+                        .foregroundStyle(AppColors.textSecondary).lineLimit(1)
                 }
+                Spacer(minLength: 0)
             }
-            .padding(16)
+            .padding(.horizontal, 12).padding(.vertical, 10)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(AppColors.surface, in: .rect(cornerRadius: AppRadii.card))
-            .overlay(RoundedRectangle(cornerRadius: AppRadii.card).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
-            .contentShape(.rect(cornerRadius: AppRadii.card))
+            .background(AppColors.surface, in: .rect(cornerRadius: 18))
+            .overlay(RoundedRectangle(cornerRadius: 18).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
+            .contentShape(.rect(cornerRadius: 18))
         }
         .buttonStyle(PMPressStyle())
         .accessibilityElement(children: .combine)

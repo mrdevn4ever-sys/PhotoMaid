@@ -23,6 +23,8 @@ struct LedgerReadModel: Sendable {
     var events: [DecisionEvent] = []
     var allowance: AllowanceSnapshot?
     var canUndo = false
+    /// Befehl, den „Rückgängig“ als Nächstes zurücknimmt (oberster Eintrag des Stapels).
+    var undoCommandID: CommandID?
     var reconciliationNeeded: [OperationIntent] = []
 }
 
@@ -475,6 +477,7 @@ final class AppModel {
                 events: anyHidden ? state.events.filter { !hidden($0.item) } : state.events,
                 allowance: DecisionLedger.allowance(in: state, day: day, limit: limit),
                 canUndo: !state.undoStack.isEmpty,
+                undoCommandID: state.undoStack.last?.commandID,
                 reconciliationNeeded: state.intents.values.filter { $0.state == .reconciliationRequired })
             let queue = ReviewQueues.normalQueue(candidates: candidates, records: state.records,
                                                  session: ReviewSessionID(), today: day)

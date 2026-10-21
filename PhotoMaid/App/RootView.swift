@@ -149,11 +149,17 @@ struct RootView: View {
         .tabViewStyle(.tabBarOnly)
         .tint(AppColors.accent)
         // Experiment-Design: eigene schwebende Tableiste nur auf den Startseiten der Tabs (wie im Artefakt).
-        .overlay(alignment: .bottom) {
-            if app.feed == nil && (app.paths[app.selectedTab] ?? []).isEmpty {
-                PMTabBar(selection: $app.selectedTab) { app.popToRoot($0) }
-                    .ignoresSafeArea(.all, edges: .bottom)
+        .overlay {
+            // Die Ebene reicht bis an den unteren Bildschirmrand; die Leiste steht 22 pt darüber (wie im Artefakt),
+            // statt zusätzlich über dem Home-Indikator-Bereich zu schweben.
+            ZStack(alignment: .bottom) {
+                Color.clear.allowsHitTesting(false)
+                if app.feed == nil && (app.paths[app.selectedTab] ?? []).isEmpty {
+                    PMTabBar(selection: $app.selectedTab) { app.popToRoot($0) }
+                }
             }
+            // Auch die Tastatur-Safe-Area ignorieren: die Leiste bleibt unten und rutscht nicht über die Tastatur.
+            .ignoresSafeArea(.all, edges: .bottom)
         }
         .fullScreenCover(isPresented: $vault.isPresented, onDismiss: { vault.lock() }) {
             VaultRootView()

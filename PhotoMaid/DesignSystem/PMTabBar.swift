@@ -57,10 +57,27 @@ struct PMTabBar: View {
         return Button { tap(.cleanup) } label: {
             PMIcon(.layers, size: 26, lineWidth: 2.2)
                 .foregroundStyle(AppColors.onAccent)
+                .shadow(color: .white.opacity(0.35), radius: 0, y: 1)
                 .frame(width: 60, height: 60)
-                .background(AppColors.accentFill, in: .circle)
+                .background {
+                    // Leicht gewölbt: hell oben, dunkler unten, Glanzkante oben, Schatten nach unten.
+                    Circle()
+                        .fill(LinearGradient(colors: [AppColors.hex(0xFFD58A), AppColors.accentFill, AppColors.hex(0xC8862C)],
+                                             startPoint: .top, endPoint: .bottom))
+                        .overlay(
+                            Circle().inset(by: 4.5)
+                                .strokeBorder(LinearGradient(colors: [.white.opacity(0.7), .white.opacity(0)],
+                                                             startPoint: .top, endPoint: .center), lineWidth: 1.5)
+                        )
+                        .overlay(
+                            Circle().inset(by: 4)
+                                .fill(RadialGradient(colors: [.white.opacity(0.28), .clear], center: UnitPoint(x: 0.35, y: 0.22),
+                                                     startRadius: 0, endRadius: 26))
+                        )
+                }
                 .overlay(Circle().strokeBorder(active ? AppColors.textPrimary : AppColors.background, lineWidth: 4))
-                .shadow(color: AppColors.accent.opacity(0.3), radius: 12, y: 8)
+                .shadow(color: .black.opacity(0.55), radius: 6, y: 5)
+                .shadow(color: AppColors.accent.opacity(0.35), radius: 14, y: 8)
                 .contentShape(.circle)
         }
         .buttonStyle(PMPressStyle())
