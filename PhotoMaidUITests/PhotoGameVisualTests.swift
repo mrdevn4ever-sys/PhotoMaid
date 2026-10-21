@@ -87,7 +87,9 @@ import XCTest
         board.swipeUp()
         let before = board.value as? String ?? ""
         let moving = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value != %@", before), object: board)
-        XCTAssertEqual(XCTWaiter.wait(for: [moving], timeout: 3), .completed)
+        // Großes Fenster im Simulator: Der erste Schritt kann nach dem Laden der Fotos länger dauern (beide Spielläufe
+        // am 21.10.2026 je einmal knapp über 3 s); geprüft wird, dass sich die Schlange bewegt, nicht wie schnell.
+        XCTAssertEqual(XCTWaiter.wait(for: [moving], timeout: 8), .completed)
         checkpoint("snake_simple_setup_real_photo_game", app: app)
         app.buttons["snake.pause"].tap()
         app.buttons["snake.otherGames"].tap()
@@ -411,7 +413,9 @@ import XCTest
                 for id in ["studio.tools.convert", "studio.tools.location", "studio.tools.stitch", "studio.tools.gif",
                            "studio.tools.batch", "studio.workflows", "studio.archive", "studio.pdfEditor", "studio.saved"] {
                     let control = app.buttons[id]
+                    // Experiment-Design: PDF-Editor und GIF stehen im Raster über den Werkzeugen – auch zurückblättern.
                     for _ in 0..<6 where !control.isHittable { app.swipeUp() }
+                    for _ in 0..<8 where !control.isHittable { app.swipeDown() }
                     XCTAssertTrue(control.isHittable, "Existing tool/document/saved action remains reachable: \(id)")
                     XCTAssertGreaterThanOrEqual(control.frame.height, 44)
                     if id == "studio.archive" { checkpoint("design_studio_dark_tools", app: app) }
@@ -537,7 +541,7 @@ import XCTest
         assertFullscreenSnake(board)
         let initial = board.value as? String ?? ""
         let moved = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value != %@", initial), object: board)
-        XCTAssertEqual(XCTWaiter.wait(for: [moved], timeout: 3), .completed)
+        XCTAssertEqual(XCTWaiter.wait(for: [moved], timeout: 8), .completed)
         XCUIDevice.shared.press(.home)
         app.activate()
         XCTAssertTrue(board.waitForExistence(timeout: 10))
@@ -550,6 +554,6 @@ import XCTest
         checkpoint("snake_realtime_fullscreen_paused", app: app)
         app.buttons["snake.start"].tap()
         let resumed = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value != %@", paused ?? ""), object: board)
-        XCTAssertEqual(XCTWaiter.wait(for: [resumed], timeout: 3), .completed)
+        XCTAssertEqual(XCTWaiter.wait(for: [resumed], timeout: 8), .completed)
     }
 }
