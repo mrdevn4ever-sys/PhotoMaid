@@ -59,7 +59,7 @@ Woche**; alles andere aus dem Plan umsetzen.
   übernommen, danach eine Pille (im Feed ohne Sprung).
 - **Seiten**: „Erfolge“ (Level, Serie mit Wochenpunkten, Tagesziel, Wochenbalken, Abzeichen, fertige Monate); Bestwerte
   neu (Zuletzt geknackt, Filter, Paare je Kategorie mit Medaille und Datum, Snake/Blocks je ein Rekord mit nächster
-  Medaille); „Heute“ mit Serien-Chip, Tagesziel-Balken im Hero und Wochenrückblick (Mo–Mi, wegtippbar); Verlauf mit
+  Medaille); „Heute“ mit Serien-Chip, Tagesziel-Balken im Hero und Wochenrückblick „Deine letzte Woche“ (immer da, kein X; Nutzer 21.10.2026: nur in Einstellungen › Erfolge abschaltbar); Verlauf mit
   Wochenbalken und Erfolge-Chip; Feed-Pillen bei jedem 100. Medium der Sitzung und beim Tagesziel;
   Sitzungs-Zusammenfassung mit Level, Serie und Ziel.
 - **Einstellungen**: Erfolge anzeigen (Standard an), Tagesziel Aus/25/50/100 (Standard 50).

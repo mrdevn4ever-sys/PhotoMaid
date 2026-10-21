@@ -36,6 +36,8 @@ struct SettingsView: View {
                         divider
                         dailyGoalMenu
                         divider
+                        toggle(L("set_weekly_recap"), \.showWeeklyRecap, subtitle: L("set_weekly_recap_sub"))
+                        divider
                         NavigationLink(value: Route.achievements) { row(L("ach_open")) }.buttonStyle(PMPressStyle())
                     }
                 }

@@ -30,8 +30,8 @@ struct AppSettingsData: Codable, Equatable, Sendable {
     var showAchievements = true
     /// Tagesziel (durchgesehene Medien); 0 = aus. Standard an mit 50.
     var dailyGoal = 50
-    /// Montag (`yyyy-MM-dd`) der Woche, deren Rückblick weggetippt wurde.
-    var recapDismissedWeek: String?
+    /// „Deine letzte Woche“ auf der Startseite: immer da, nur hier abschaltbar (Nutzer, 21.10.2026).
+    var showWeeklyRecap = true
     var largeFileThresholdMB = 100
     var privacyIntroSeen = false
     /// Standardabstand beim Wisch nach rechts (Tage).
@@ -100,7 +100,7 @@ struct AppSettingsData: Codable, Equatable, Sendable {
         designAppearance = v(.designAppearance, d.designAppearance)
         showAchievements = v(.showAchievements, d.showAchievements)
         dailyGoal = v(.dailyGoal, d.dailyGoal)
-        recapDismissedWeek = v(.recapDismissedWeek, d.recapDismissedWeek)
+        showWeeklyRecap = v(.showWeeklyRecap, d.showWeeklyRecap)
         largeFileThresholdMB = v(.largeFileThresholdMB, d.largeFileThresholdMB)
         privacyIntroSeen = v(.privacyIntroSeen, d.privacyIntroSeen)
         laterDefaultDays = v(.laterDefaultDays, d.laterDefaultDays)

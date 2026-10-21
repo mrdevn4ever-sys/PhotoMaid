@@ -102,14 +102,10 @@ struct TodayView: View {
         return (app.read.progress.reviewedToday, app.settings.dailyGoal)
     }
 
-    /// Wochenrückblick montags bis mittwochs, wenn es in der Vorwoche etwas gab und er nicht weggetippt wurde.
+    /// Wochenrückblick: immer sichtbar, sobald es einen Verlauf gibt (Nutzer, 21.10.2026: „soll immer dort bleiben, nie
+    /// entfernbar sein außer in den Einstellungen“). Abschalten nur über Einstellungen › Erfolge.
     private var showRecap: Bool {
-        let p = app.read.progress
-        guard app.settings.showAchievements, app.readReady else { return false }
-        let week = p.previousWeek
-        let monday = ReviewProgress.monday(of: p.today)
-        return p.today <= monday.adding(days: 2) && week.reviewed > 0
-            && app.settings.recapDismissedWeek != week.monday.description
+        app.settings.showAchievements && app.settings.showWeeklyRecap && app.readReady && !app.read.events.isEmpty
     }
 
     /// Flammen-Chip mit der laufenden Serie; öffnet die Erfolge.
@@ -645,7 +641,8 @@ enum DeviceStorage {
     }
 }
 
-/// Wochenrückblick (Gamification): durchgesehen, aktive Tage und neue Rekorde der Vorwoche. Wegtippbar.
+/// Wochenrückblick (Gamification): durchgesehen, aktive Tage und neue Rekorde der Vorwoche. Nicht wegtippbar; nur in
+/// den Einstellungen abschaltbar.
 struct WeeklyRecapCard: View {
     @Environment(AppModel.self) private var app
 
@@ -655,21 +652,8 @@ struct WeeklyRecapCard: View {
         let end = week.monday.adding(days: 7).startOfDay(in: .autoupdatingCurrent)
         let records = app.achievements.newRecords(from: start, to: end)
         VStack(alignment: .leading, spacing: 10) {
-            HStack {
-                Text(key: "recap_title").font(PMFont.heading(18, relativeTo: .headline)).foregroundStyle(AppColors.textPrimary)
-                    .accessibilityAddTraits(.isHeader)
-                Spacer()
-                Button {
-                    app.updateSettings { $0.recapDismissedWeek = week.monday.description }
-                } label: {
-                    PMIcon(.close, size: 16, lineWidth: 2.2).foregroundStyle(AppColors.textSecondary)
-                        .frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch).contentShape(.rect)
-                }
-                .buttonStyle(PMPressStyle())
-                .padding(-10)
-                .accessibilityLabel(Text(key: "recap_hide"))
-                .accessibilityIdentifier("today.recap.hide")
-            }
+            Text(key: "recap_title").font(PMFont.heading(18, relativeTo: .headline)).foregroundStyle(AppColors.textPrimary)
+                .accessibilityAddTraits(.isHeader)
             HStack(alignment: .top, spacing: AppSpacing.xs) {
                 stat(CountText.number(week.reviewed), L("recap_reviewed"))
                 stat(CountText.number(week.activeDays), LP("recap_active_days", week.activeDays))

@@ -16614,5 +16614,41 @@
   "tr": "Kare kasaya kaydedildi.",
   "uk": "Кадр збережено в сейфі.",
   "zh-Hans": "静帧已存入保险箱。"
+ },
+ "set_weekly_recap": {
+  "ar": "عرض «أسبوعك الماضي»",
+  "de": "„Deine letzte Woche“ anzeigen",
+  "en": "Show “Your last week”",
+  "es": "Mostrar «Tu última semana»",
+  "fr": "Afficher « Ta semaine passée »",
+  "it": "Mostra «La tua ultima settimana»",
+  "ja": "「先週のふりかえり」を表示",
+  "ko": "‘지난주 돌아보기’ 표시",
+  "nl": "‘Je afgelopen week’ tonen",
+  "pl": "Pokazuj „Twój ostatni tydzień”",
+  "pt-PT": "Mostrar «A tua última semana»",
+  "ro": "Afișează „Săptămâna ta trecută”",
+  "ru": "Показывать «Твоя прошлая неделя»",
+  "tr": "“Geçen haftan” kartını göster",
+  "uk": "Показувати «Твій минулий тиждень»",
+  "zh-Hans": "显示“你的上周回顾”"
+ },
+ "set_weekly_recap_sub": {
+  "ar": "دائمًا في صفحة البداية",
+  "de": "Immer auf der Startseite",
+  "en": "Always on the start page",
+  "es": "Siempre en la página de inicio",
+  "fr": "Toujours sur la page d’accueil",
+  "it": "Sempre nella pagina iniziale",
+  "ja": "スタートページに常に表示",
+  "ko": "시작 페이지에 항상 표시",
+  "nl": "Altijd op de startpagina",
+  "pl": "Zawsze na stronie startowej",
+  "pt-PT": "Sempre na página inicial",
+  "ro": "Mereu pe pagina de start",
+  "ru": "Всегда на начальной странице",
+  "tr": "Her zaman başlangıç sayfasında",
+  "uk": "Завжди на початковій сторінці",
+  "zh-Hans": "始终显示在首页"
  }
 }
