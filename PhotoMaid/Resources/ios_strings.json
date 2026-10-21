@@ -14508,5 +14508,41 @@
   "tr": "Şifreli, yalnızca bu iPhone’da.",
   "uk": "Зашифрований, лише на цьому iPhone.",
   "zh-Hans": "已加密，仅保存在这台 iPhone 上。"
+ },
+ "today_greeting_noon": {
+  "ar": "نهارك سعيد",
+  "de": "Guten Mittag",
+  "en": "Good afternoon",
+  "es": "Buen mediodía",
+  "fr": "Bonjour",
+  "it": "Buongiorno",
+  "ja": "こんにちは",
+  "ko": "좋은 점심이에요",
+  "nl": "Goedemiddag",
+  "pl": "Dzień dobry",
+  "pt-PT": "Boa tarde",
+  "ro": "Bună ziua",
+  "ru": "Добрый день",
+  "tr": "İyi öğlenler",
+  "uk": "Добрий день",
+  "zh-Hans": "中午好"
+ },
+ "today_greeting_afternoon": {
+  "ar": "طاب يومك",
+  "de": "Guten Nachmittag",
+  "en": "Good afternoon",
+  "es": "Buenas tardes",
+  "fr": "Bon après-midi",
+  "it": "Buon pomeriggio",
+  "ja": "こんにちは",
+  "ko": "좋은 오후예요",
+  "nl": "Goedemiddag",
+  "pl": "Dzień dobry",
+  "pt-PT": "Boa tarde",
+  "ro": "Bună ziua",
+  "ru": "Добрый день",
+  "tr": "Tünaydın",
+  "uk": "Добрий день",
+  "zh-Hans": "下午好"
  }
 }

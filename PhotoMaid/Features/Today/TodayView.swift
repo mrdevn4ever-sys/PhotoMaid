@@ -82,13 +82,15 @@ struct TodayView: View {
         }
     }
 
-    /// Begrüßung nach Tageszeit über „PhotoMaid“ (Nutzerwunsch 21.10.2026: bleibt drin).
+    /// Begrüßung nach Tageszeit über „PhotoMaid“ (Nutzerwunsch 21.10.2026): Morgen 5–11, Mittag 12–13,
+    /// Nachmittag 14–17, Abend 18–4 Uhr, nach der Ortszeit; aktualisiert sich mit der App-Uhr.
     private var greeting: String {
         let hour = Calendar.current.component(.hour, from: app.now)
         return switch hour {
-        case 5...10: L("today_greeting_morning")
-        case 18...23, 0...4: L("today_greeting_evening")
-        default: L("today_greeting_day")
+        case 5...11: L("today_greeting_morning")
+        case 12...13: L("today_greeting_noon")
+        case 14...17: L("today_greeting_afternoon")
+        default: L("today_greeting_evening")
         }
     }
 

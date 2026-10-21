@@ -23,7 +23,8 @@ Schrift und Größen. Nicht für `main` bestimmt, solange der Nutzer es nicht au
 
 ## Abweichungen vom Artefakt (bewusst)
 
-- **Begrüßung** („Guten Morgen“, „Hallo“, „Guten Abend“) über „PhotoMaid“ bleibt drin (Nutzer, 21.10.2026).
+- **Begrüßung** nach Tageszeit über „PhotoMaid“ bleibt drin (Nutzer, 21.10.2026): Guten Morgen (5–11 Uhr), Guten Mittag
+  (12–13), Guten Nachmittag (14–17), Guten Abend (18–4); kein „Hallo“ mehr.
 - **Erscheinungsbild** fehlt in den Einstellungen: das Artefakt-Design gibt es nur dunkel; ein Umschalter ohne Wirkung
   wäre ein toter Knopf.
 - **Texte aus echten Kennungen**, wo es sie schon gab (z. B. Mitteilungs-Erklärung in „Später“, Tresor-Hinweis in den
