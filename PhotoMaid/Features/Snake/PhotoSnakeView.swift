@@ -52,7 +52,7 @@ struct PhotoSnakeView: View {
             if model.preferences.sound { model.audio.prepare() }
             await model.gallery.restore(); model.applyGalleryChanges()
         }
-        .onAppear { restore(); model.validatePhotos(); model.updateTemperature() }
+        .onAppear { restore(); model.validatePhotos() }
         .onChange(of: model.roundID) { _, _ in if model.game != nil { setup = false } }
         .keepsScreenAwake(model.running && scenePhase == .active)
         .onDisappear { startWhenReady = false; model.pause(); model.audio.stop(); model.photos.cancelLoading() }
@@ -64,7 +64,8 @@ struct PhotoSnakeView: View {
             else { model.validatePhotos() }
         }
         .onChange(of: voiceOver) { _, enabled in if enabled { model.useStepMode() } }
-        .onReceive(NotificationCenter.default.publisher(for: ProcessInfo.thermalStateDidChangeNotification)) { _ in model.updateTemperature() }
+        // Keine Wärme-Sperre (Nutzer, 21.10.2026): iOS meldet „ernst“ schon unter normaler Last; das leichte Spiel läuft
+        // weiter, echte Überhitzung regelt iOS selbst.
         .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { note in
             if (note.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt) == AVAudioSession.InterruptionType.began.rawValue {
                 startWhenReady = false; model.pause(); model.audio.stop()
@@ -237,7 +238,7 @@ struct PhotoSnakeView: View {
             }
             .padding(8).background(.black.opacity(0.65), in: .rect(cornerRadius: 24)).padding(.horizontal, 12)
             ZStack {
-                PhotoSnakeBoard(model: model, active: scenePhase == .active && !model.tooWarm && !gallery && !settings, reduceMotion: reduceMotion)
+                PhotoSnakeBoard(model: model, active: scenePhase == .active && !gallery && !settings, reduceMotion: reduceMotion)
                     .environment(\.layoutDirection, .leftToRight)
                     .contentShape(.rect)
                     .highPriorityGesture(DragGesture(minimumDistance: 16).onEnded { gesture in
@@ -309,7 +310,7 @@ struct PhotoSnakeView: View {
                 Text(verbatim: bestLabel).font(.subheadline).monospacedDigit()
             }
             if model.newBest { Label(L("game_new_best"), systemImage: "trophy.fill").foregroundStyle(.yellow) }
-            Text(verbatim: model.tooWarm ? L("ana2_stage_cooling") : L("snake_controls_hint"))
+            Text(verbatim: L("snake_controls_hint"))
                 .multilineTextAlignment(.center).font(.subheadline).allowsHitTesting(false)
             if let error = model.photos.error { Text(verbatim: error).font(.footnote).multilineTextAlignment(.center) }
             Button {
@@ -320,7 +321,7 @@ struct PhotoSnakeView: View {
                       systemImage: model.displayedStatus != .playing ? "arrow.clockwise" : "play.fill")
             }
             .buttonStyle(SnakeActionButtonStyle(prominent: true))
-            .disabled(model.tooWarm || model.photos.isLoading).accessibilityIdentifier("snake.start")
+            .disabled(model.photos.isLoading).accessibilityIdentifier("snake.start")
             Button {
                 if model.usesSavedPhotos { openGallery() }
                 else { model.pause(); setup = true }

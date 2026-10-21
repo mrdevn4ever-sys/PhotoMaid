@@ -32,7 +32,6 @@ final class PhotoSnakeModel {
     private(set) var started = false
     private(set) var speed = Speed.normal
     private(set) var stepMode = false
-    private(set) var tooWarm = false
     private(set) var memorySuspended = false
     private(set) var strip: [String] = []
     private(set) var nextPhoto = 0
@@ -126,8 +125,8 @@ final class PhotoSnakeModel {
     }
 
     func resume() {
-        validatePhotos(); updateTemperature()
-        guard game?.status == .playing, !photos.isLoading, !tooWarm else { return }
+        validatePhotos()
+        guard game?.status == .playing, !photos.isLoading else { return }
         memorySuspended = false; started = true; running = true
     }
 
@@ -165,8 +164,6 @@ final class PhotoSnakeModel {
 
     func tick() {
         guard running else { return }
-        updateTemperature()
-        guard !tooWarm else { return }
         let before = game?.score
         stepOrigin = game
         lastEvent = game?.step() ?? .ignored
@@ -177,12 +174,6 @@ final class PhotoSnakeModel {
             if let game, scores.recordSnakeOverall(game, speed: speed, stepMode: stepMode) { newBest = true }
         }
         if game?.status != .playing { pause() }
-    }
-
-    func updateTemperature() {
-        let state = ProcessInfo.processInfo.thermalState
-        tooWarm = state == .serious || state == .critical
-        if tooWarm { pause() }
     }
 
     func validatePhotos() {

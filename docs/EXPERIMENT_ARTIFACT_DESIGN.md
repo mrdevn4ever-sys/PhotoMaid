@@ -37,6 +37,9 @@ Schrift und Größen. Nicht für `main` bestimmt, solange der Nutzer es nicht au
 - **Suche im Tab „Fotos“ entfernt** (Nutzer, 21.10.2026: „falls du kein easy fix hast entfern die suche“): Sie las
   beim Öffnen alle Dateinamen einzeln (bei großen Mediatheken minutenlang Ladekreis), und Personennamen stellt iOS
   Apps nicht bereit – „Ellie“ wäre auch repariert nie gefunden worden. Ordner-Suche und Schlagwörter bleiben.
+- **Snake ohne Wärme-Sperre** (Nutzer, 21.10.2026: „Das iPhone ist nicht überhitzt“): Snake hielt bei der iOS-Wärmestufe
+  „ernst“ an („Wartet, bis das iPhone abgekühlt ist“), die schon unter normaler Last gemeldet wird. Entfernt; das
+  leichte Spiel läuft weiter, echte Überhitzung regelt iOS selbst. Die Drosselung der Foto-Analyse bleibt.
 - **Texte aus echten Kennungen**, wo es sie schon gab (z. B. Mitteilungs-Erklärung in „Später“, Tresor-Hinweis in den
   Einstellungen) – teils länger als die Kurzfassung im Artefakt.
 - **Funktionen bleiben erreichbar**, die das Artefakt nicht zeigt: „Code vergessen?“, Sortieren/Auswählen im Tresor,
