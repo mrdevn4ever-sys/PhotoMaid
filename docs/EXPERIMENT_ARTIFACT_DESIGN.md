@@ -17,6 +17,11 @@ Schrift und Größen. Nicht für `main` bestimmt, solange der Nutzer es nicht au
 - **Startseite**: Begrüßung nach Tageszeit, darunter „PhotoMaid“ (Tresor-Rad im „o“) und Zahnrad; Hero
   „Noch durchzusehen“ mit großer Zahl und drei echten Fotos aus den noch nicht entschiedenen Medien, die leicht wackeln (Swipe-Andeutung, `keyframeAnimator`, aus bei
   „Bewegung reduzieren“). Papierkorb/Später-Kacheln, Pause-Karte, Schnellzugriffe, Pro.
+- **Zahlenschloss-Rad** (Nutzerwunsch 21.10.2026, `DesignSystem/CombinationDial.swift`): das „o“ in „PhotoMaid“ ist ein
+  Tresor-Zahlenrad (Chromrand, schwarze Skala mit Teilstrichen, Chromknopf, Bernstein-Marke). Beim 2-Sekunden-Halten
+  dreht es links über eine volle Umdrehung, rechts, links und klickt (Haptik); groß mit Zahlen 0–90 statt der
+  Schloss-Kachel auf dem Tresor-Sperrbildschirm, dort je eingegebenem Zeichen abwechselnd links/rechts um feste Winkel
+  (nie zur getippten Ziffer, damit niemand die PIN am Rad ablesen kann). „Bewegung reduzieren“: keine Drehung.
 - **Aufräumen, Studio, Verlauf, Fotos, Feed, Papierkorb, Später, Spiele, Einstellungen, Tresor** (Code-Eingabe mit rundem
   Ziffernfeld, Übersicht, Tresor-Papierkorb mit „Alles endgültig löschen“) im Artefakt-Layout.
 - Neue Texte: 16 Kennungen `art_*` in allen 16 Sprachen (`scripts/i18n/ios_strings_part18_artifact_design.py`).
@@ -71,6 +76,7 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
 - Xcode-Build und Unit-Tests: PASS (CI-Läufe 39584295498, 39597390682; TestFlight-Läufe 39586915037, 39591723238, 39598302667)
 - UI-Tests (QA-Daten): Lauf 39584295498 FAIL (2 Testhelfer-Probleme, korrigiert); Lauf 39599499410 PASS
 - Heller Modus: Xcode-Build PASS (CI-Lauf 39602173887); UI-Tests darauf NOT RUN
+- Gamification: Xcode-Build und Unit-Tests PASS (CI-Lauf 39628291349); UI-Tests darauf siehe nächster Lauf
 - TestFlight: interne Builds 1.0 (21), (22) und (23) hochgeladen und von Apple verarbeitet (21.10.2026, nur interne
   Tester); 22 mit Begrüßung nach Tageszeit, festem Kopf, Tableisten-Korrektur und Verlauf (10 neueste, Rest aufklappbar);
   23 mit tieferer Tableiste, plastischem Mittelknopf, kompakten Papierkorb/Später-Kacheln, Rückgängig am richtigen Eintrag

@@ -1,9 +1,10 @@
 import SwiftUI
 import UIKit
 
-/// Seitentitel der Startseite: „PhotoMaid“, das erste „o“ ist ein kleines Tresor-Drehrad – zugleich der versteckte
-/// Eingang zum Tresor (E16, Nutzerwunsch 21.10.2026 statt „Heute“). 2 Sekunden halten öffnet einen eingerichteten
-/// Tresor; dabei dreht sich das Rad wie ein Zahlenschloss. Ohne Tresor bleibt es ein ruhiges „o“ und nichts passiert.
+/// Seitentitel der Startseite: „PhotoMaid“, das erste „o“ ist ein kleines Zahlenschloss-Rad (`CombinationDial`) –
+/// zugleich der versteckte Eingang zum Tresor (E16, Nutzerwunsch 21.10.2026 statt „Heute“). 2 Sekunden halten öffnet
+/// einen eingerichteten Tresor; dabei dreht sich das Rad links, rechts, links und klickt wie ein Zahlenschloss.
+/// Ohne Tresor bleibt es ein ruhiges „o“ und nichts passiert.
 /// Der Markenname bleibt in jeder Sprache und Schreibrichtung gleich (links nach rechts).
 /// Experiment-Design: Maße wie im Artefakt (Bricolage 800, 40 pt; Rad 23/40 der Schriftgröße).
 struct VaultDialWordmark: View {
@@ -23,7 +24,7 @@ struct VaultDialWordmark: View {
         let dial = size * 23 / 40
         HStack(alignment: .firstTextBaseline, spacing: 0) {
             Text(verbatim: "Ph")
-            VaultDial(turn: turn)
+            CombinationDial(rotation: turn)
                 .frame(width: dial, height: dial)
                 .padding(.horizontal, size / 40)
                 // Wie ein gesetztes „o“ reicht das Rad minimal unter die Grundlinie.
@@ -56,35 +57,20 @@ struct VaultDialWordmark: View {
             return
         }
         turning = Task {
-            // Wie ein Zahlenschloss: rechts, links, rechts – zusammen knapp unter den 2 Sekunden bis zum Öffnen.
-            for (angle, seconds) in [(300.0, 0.7), (120.0, 0.6), (210.0, 0.5)] {
+            // Wie ein Zahlenschloss: links über eine volle Umdrehung, rechts, links – zusammen unter den 2 Sekunden bis
+            // zum Öffnen. Unterwegs klickt es etwa alle 30°, an jedem Richtungswechsel rastet es spürbar ein.
+            var current = 0.0
+            for (angle, seconds) in [(-400.0, 0.65), (-130.0, 0.55), (-290.0, 0.45)] {
                 if !reduceMotion { withAnimation(.easeInOut(duration: seconds)) { turn = angle } }
-                try? await Task.sleep(for: .seconds(seconds))
-                guard !Task.isCancelled else { return }
-                Haptics.tick()
+                let clicks = max(1, Int(abs(angle - current) / 30))
+                for _ in 0..<clicks {
+                    try? await Task.sleep(for: .seconds(seconds / Double(clicks)))
+                    guard !Task.isCancelled else { return }
+                    Haptics.tick()
+                }
+                current = angle
+                Haptics.threshold()
             }
         }
-    }
-}
-
-/// Das „o“ als Drehrad, Geometrie 1:1 aus dem Artefakt (Ansichtsfeld 24: Ring r 9,3 / Strich 5,4, Zeiger 2 × 3,4,
-/// Nabe r 1,4). Nur Zeichnung, keine eigene Bedienung.
-struct VaultDial: View {
-    var turn: Double
-
-    var body: some View {
-        GeometryReader { geo in
-            let s = min(geo.size.width, geo.size.height) / 24
-            ZStack {
-                Circle().stroke(lineWidth: 5.4 * s).frame(width: 18.6 * s, height: 18.6 * s)
-                RoundedRectangle(cornerRadius: s)
-                    .frame(width: 2 * s, height: 3.4 * s)
-                    .offset(y: -4.7 * s)
-                    .rotationEffect(.degrees(turn))
-                Circle().frame(width: 2.8 * s, height: 2.8 * s)
-            }
-            .frame(width: geo.size.width, height: geo.size.height)
-        }
-        .accessibilityHidden(true)
     }
 }

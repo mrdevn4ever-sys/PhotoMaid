@@ -3,16 +3,19 @@ import SwiftUI
 
 /// Sperrbildschirm: Code, auf Wunsch Face ID/Touch ID, „Code vergessen?“ mit Notfallschlüssel. Nach Fehlversuchen
 /// nur Wartezeit, nie Löschen.
-/// Experiment-Design: wie im Artefakt – Schloss-Kachel, „Privater Tresor“, Punkte und rundes Ziffernfeld (72 pt) für
-/// die PIN; ein Passwort wird weiter über die Tastatur eingegeben.
+/// Experiment-Design: wie im Artefakt – „Privater Tresor“, Punkte und rundes Ziffernfeld (72 pt) für die PIN; ein
+/// Passwort wird weiter über die Tastatur eingegeben. Statt der Schloss-Kachel ein Zahlenschloss-Rad (Nutzerwunsch
+/// 21.10.2026), das sich je Eingabe abwechselnd links und rechts dreht – um feste Winkel, nie zur getippten Ziffer.
 struct VaultLockView: View {
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var vault = VaultStore.shared
     @State private var code = ""
     @State private var message: String?
     @State private var lockedUntil: Date?
     @State private var busy = false
     @State private var recoverySheet = false
+    @State private var dialTurn = 0.0
     @FocusState private var focused: Bool
 
     private var kind: VaultCodeKind { vault.settings?.codeKind ?? .password }
@@ -26,12 +29,10 @@ struct VaultLockView: View {
                         GlassIconButton(symbol: "xmark", label: L("vault_close")) { vault.lock() }
                         Spacer()
                     }
-                    PMIcon(.lock, size: 30, lineWidth: 2.2)
-                        .foregroundStyle(AppColors.accent)
-                        .frame(width: 64, height: 64)
-                        .background(AppColors.warm, in: .rect(cornerRadius: 20))
-                        .padding(.top, 8)
-                        .accessibilityHidden(true)
+                    CombinationDial(rotation: dialTurn)
+                        .frame(width: 104, height: 104)
+                        .shadow(color: AppColors.shadow, radius: 14, y: 8)
+                        .padding(.top, 4)
                     VStack(spacing: 4) {
                         Text(key: "vault_title").font(PMFont.display(30, relativeTo: .title)).tracking(-0.6)
                             .foregroundStyle(AppColors.textPrimary)
@@ -99,6 +100,7 @@ struct VaultLockView: View {
             .navigationTitle(L("vault_title"))
             .toolbar(.hidden, for: .navigationBar)
             .sheet(isPresented: $recoverySheet) { VaultRecoveryUnlockSheet() }
+            .onChange(of: code.count) { old, new in turnDial(from: old, to: new) }
             .task {
                 refreshLockout()
                 // Face ID nur von selbst starten, wenn der Tresor wirklich sichtbar geöffnet wird (nicht beim Schließen
@@ -175,6 +177,21 @@ struct VaultLockView: View {
         .buttonStyle(PMPressStyle())
         .disabled(inputDisabled)
         .accessibilityIdentifier("vault.key." + d)
+    }
+
+    /// Je Zeichen eine Drehung, abwechselnd links und rechts (erste links); Löschen nimmt die letzte zurück, eine leere
+    /// Eingabe (falscher Code, Löschen) federt auf null. Die Winkel hängen nur von der Anzahl ab, nie vom Zeichen.
+    private func turnDial(from old: Int, to new: Int) {
+        guard !reduceMotion else { return }
+        if new == 0 {
+            withAnimation(.spring(duration: 0.55, bounce: 0.3)) { dialTurn = 0 }
+        } else if new > old {
+            let direction = new % 2 == 1 ? -1.0 : 1.0
+            withAnimation(.easeInOut(duration: 0.4)) { dialTurn += direction * 150 }
+        } else {
+            let direction = old % 2 == 1 ? -1.0 : 1.0
+            withAnimation(.easeOut(duration: 0.25)) { dialTurn -= direction * 150 }
+        }
     }
 
     private func refreshLockout() {
