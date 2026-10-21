@@ -47,13 +47,12 @@ final class VaultDeletionTests: XCTestCase {
     private func id(_ item: XCUIElement) -> String { item.identifier.components(separatedBy: ".").last! }
     private func select(_ scope: String) -> XCUIElement { app.buttons["vault.\(scope).select"] }
     private func openVault() {
-        tap(app.tabBars.buttons["Heute"], "today")
+        app.revealTabBar(); tap(app.pmTab("Heute"), "today")
         tap(app.buttons["Einstellungen"].firstMatch, "settings")
         let entry = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Privater Tresor'")).firstMatch
         tap(entry, "open")
-        if app.secureTextFields.firstMatch.waitForExistence(timeout: 2) {
-            let pin = app.secureTextFields.firstMatch
-            pin.tap(); pin.typeText("628491"); snap("pin")
+        if app.vaultKeypad.waitForExistence(timeout: 2) {
+            app.enterVaultPIN("628491"); snap("pin")
         } else {
             tap(app.buttons["Weiter"], "setup_intro")
             let fields = app.secureTextFields
@@ -334,9 +333,9 @@ final class VaultDeletionTests: XCTestCase {
         XCTAssertEqual(title.label, "PhotoMaid")
         snap("dial_title")
         title.press(forDuration: 0.6)
-        XCTAssertFalse(app.secureTextFields.firstMatch.waitForExistence(timeout: 2), "A short press must not open the vault")
+        XCTAssertFalse(app.vaultKeypad.waitForExistence(timeout: 2), "A short press must not open the vault")
         title.press(forDuration: 2.6)
-        XCTAssertTrue(app.secureTextFields.firstMatch.waitForExistence(timeout: 10), "Holding the title must open the vault")
+        XCTAssertTrue(app.vaultKeypad.waitForExistence(timeout: 10), "Holding the title must open the vault")
         snap("dial_opened_lock_screen")
     }
 }

@@ -81,9 +81,9 @@ struct ProView: View {
          Benefit(title: L("pro2_f3"), text: L("pro2_f3d"))]
     }
 
-    private func buy() async { message = text(await app.purchases.purchasePro(using: purchase)) }
-    private func restore() async { message = text(await app.purchases.restore()) }
-    private func text(_ result: PurchaseResult) -> String {
+    private func buy() async { message = Self.message(for: await app.purchases.purchasePro(using: purchase)) }
+    private func restore() async { message = Self.message(for: await app.purchases.restore()) }
+    static func message(for result: PurchaseResult) -> String {
         switch result {
         case .purchased: L("pro_msg_active")
         case .pending: L("pro_msg_pending")

@@ -12,26 +12,47 @@ struct VaultWorkspaceHomeView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            HStack {
+            // Experiment-Design: Kopf wie im Artefakt – ✕ (schließen und sperren) und ⋯ als runde Knöpfe,
+            // Titel „Privater Tresor“ mit Unterzeile, darunter die drei Reiter.
+            VStack(alignment: .leading, spacing: AppSpacing.m) {
+                HStack {
+                    GlassIconButton(symbol: "xmark", label: L("vault_close")) { vault.lock() }
+                    Spacer()
+                    Menu {
+                        Button(L("vault2_trash"), systemImage: "trash") { trash = true }
+                        Button(L("vault2_tools"), systemImage: "lock.shield") { tools = true }
+                        Button(L("vault2_lock"), systemImage: "lock.fill") { vault.lock() }
+                    } label: {
+                        PMIcon(.more, size: 20)
+                            .foregroundStyle(AppColors.textPrimary)
+                            .frame(width: 44, height: 44)
+                            .background(AppColors.surface, in: .circle)
+                            .overlay(Circle().strokeBorder(AppColors.control, lineWidth: 1))
+                            .frame(width: AppSpacing.touch, height: AppSpacing.touch)
+                            .contentShape(.circle)
+                    }
+                    .accessibilityLabel(L("more_actions"))
+                    .accessibilityIdentifier("vault.workspace.more")
+                }
+                PageHeading(title: L("vault_title"), subtitle: L("art_vault_sub"))
                 Picker(L("vault_title"), selection: $tab) {
                     Text(L("vault2_media")).tag(0)
                     Text(L("vault2_notes")).tag(1)
                     Text(L("vault2_files")).tag(2)
-                }.pickerStyle(.segmented)
-                Menu {
-                    Button(L("vault2_trash"), systemImage: "trash") { trash = true }
-                    Button(L("vault2_tools"), systemImage: "lock.shield") { tools = true }
-                    Button(L("vault2_lock"), systemImage: "lock.fill") { vault.lock() }
-                } label: { Image(systemName: "ellipsis.circle").frame(width: 48, height: 48) }
-                .accessibilityLabel(L("more_actions"))
-                .accessibilityIdentifier("vault.workspace.more")
-            }.padding(.horizontal)
+                }
+                .pickerStyle(.segmented)
+                .controlSize(.large)
+            }
+            .padding(.horizontal, AppSpacing.pageMargin)
+            .padding(.top, AppSpacing.xs)
+            .padding(.bottom, AppSpacing.xxs)
             switch tab {
             case 1: VaultNotesView()
             case 2: VaultFilesView()
             default: VaultHomeView()
             }
         }
+        .background(AppColors.background.ignoresSafeArea())
         .sheet(isPresented: $tools) { VaultWorkspaceToolsView() }
         .sheet(isPresented: $trash) { VaultWorkspaceTrashView() }
         .background(VaultActivityMonitor())
@@ -47,13 +68,37 @@ struct VaultWorkspaceHomeView: View {
     }
 }
 
-/// ✕ oben links: Tresor schließen (sperrt sofort). Auf allen drei Reitern (Medien, Notizen, Dateien) gleich.
-struct VaultCloseToolbarItem: ToolbarContent {
-    var body: some ToolbarContent {
-        ToolbarItem(placement: .topBarLeading) {
-            Button { VaultStore.shared.lock() } label: { Image(systemName: "xmark") }
-                .accessibilityLabel(Text(key: "vault_close"))
+/// Großer Bernstein-Knopf „In den Tresor legen“ (Artefakt) als Beschriftung, z. B. für ein Menü.
+struct VaultAddLabel: View {
+    var body: some View {
+        HStack(spacing: AppSpacing.xs) {
+            PMIcon(.plus, size: 20, lineWidth: 2.4).accessibilityHidden(true)
+            Text(key: "vault_add")
         }
+        .font(AppTypography.button)
+        .foregroundStyle(AppColors.onAccent)
+        .frame(maxWidth: .infinity, minHeight: 56)
+        .background(AppColors.accentFill, in: .rect(cornerRadius: AppRadii.button))
+        .contentShape(.rect(cornerRadius: AppRadii.button))
+    }
+}
+
+extension View {
+    /// Hauptaktion unten im Tresor: Seitenrand wie die Seite, über dem Grund.
+    func vaultBottomAction() -> some View {
+        padding(.horizontal, AppSpacing.pageMargin)
+            .padding(.top, AppSpacing.xs)
+            .padding(.bottom, AppSpacing.xs)
+            .background(AppColors.background.opacity(0.94))
+    }
+
+    /// Listen im Tresor: Karten wie im Artefakt (Fläche, feiner Rand), dunkler Grund.
+    func vaultListStyle() -> some View {
+        listStyle(.insetGrouped)
+            .scrollContentBackground(.hidden)
+            .background(AppColors.background)
+            .listRowBackground(AppColors.surface)
+            .tint(AppColors.accent)
     }
 }
 
@@ -110,22 +155,15 @@ struct VaultNotesView: View {
                     }
                 }
             }
+            .vaultListStyle()
             .navigationTitle(L("vault2_notes"))
+            .navigationBarTitleDisplayMode(.inline)
             .searchable(text: $query, prompt: L("vault2_search"))
             .onChange(of: query) { _, _ in selection = []; vault.touch() }
             .onChange(of: folder) { _, _ in selection = [] }
             .toolbar {
-                VaultCloseToolbarItem()
+                ToolbarItem(placement: .principal) { Color.clear.frame(width: 1, height: 1).accessibilityHidden(true) }
                 VaultSelectionToolbarItem(scope: "notes", isEmpty: notes.isEmpty, selecting: $selecting, selection: $selection)
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button(L("vault2_new_note"), systemImage: "square.and.pencil") {
-                        var note = VaultNote(nowMs: vault.nowMs); note.folderID = folder
-                        perform {
-                            try vault.saveNote(note, expectedRevision: nil)
-                            editor = vault.workspace.notes.first { $0.id == note.id }
-                        }
-                    }
-                }
             }
             .safeAreaInset(edge: .bottom) {
                 if selecting {
@@ -136,6 +174,15 @@ struct VaultNotesView: View {
                             .labelStyle(.iconOnly).frame(minWidth: 48, minHeight: 48)
                             .accessibilityIdentifier("vault.notes.trash")
                     }.padding(.horizontal).background(.regularMaterial).disabled(selection.isEmpty)
+                } else {
+                    PrimaryButton(title: L("vault2_new_note"), symbol: "square.and.pencil") {
+                        var note = VaultNote(nowMs: vault.nowMs); note.folderID = folder
+                        perform {
+                            try vault.saveNote(note, expectedRevision: nil)
+                            editor = vault.workspace.notes.first { $0.id == note.id }
+                        }
+                    }
+                    .vaultBottomAction()
                 }
             }
             .vaultTrashConfirmation($pendingDelete) { ids in
@@ -381,12 +428,14 @@ struct VaultFilesView: View {
                     }
                 }
             }
+            .vaultListStyle()
             .navigationTitle(L("vault2_files"))
+            .navigationBarTitleDisplayMode(.inline)
             .searchable(text: $query, prompt: L("vault2_search"))
             .onChange(of: query) { _, _ in selection = []; vault.touch() }
             .onChange(of: folder) { _, _ in selection = [] }
             .toolbar {
-                VaultCloseToolbarItem()
+                ToolbarItem(placement: .principal) { Color.clear.frame(width: 1, height: 1).accessibilityHidden(true) }
                 VaultSelectionToolbarItem(scope: "files", isEmpty: files.isEmpty, selecting: $selecting, selection: $selection)
                 ToolbarItem(placement: .topBarTrailing) {
                     Menu {
@@ -395,13 +444,6 @@ struct VaultFilesView: View {
                         }
                     } label: { Image(systemName: "line.3.horizontal.decrease") }
                     .accessibilityLabel(L("vault_sort"))
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Menu {
-                        Button(L("vault2_import"), systemImage: "square.and.arrow.down") { picking = true }
-                        Button(L("vault2_scan"), systemImage: "doc.viewfinder") { scanning = true }
-                        Button(L("vault2_record"), systemImage: "mic") { recording = true }
-                    } label: { Image(systemName: "plus") }.accessibilityLabel(L("vault_add"))
                 }
             }
             .safeAreaInset(edge: .bottom) {
@@ -414,6 +456,16 @@ struct VaultFilesView: View {
                         Button(L("vault2_to_trash"), systemImage: "trash", role: .destructive) { pendingDelete = selection }
                             .accessibilityIdentifier("vault.files.trash")
                     }.labelStyle(.iconOnly).padding().background(.regularMaterial).disabled(selection.isEmpty)
+                } else {
+                    Menu {
+                        Button(L("vault2_import"), systemImage: "square.and.arrow.down") { picking = true }
+                        Button(L("vault2_scan"), systemImage: "doc.viewfinder") { scanning = true }
+                        Button(L("vault2_record"), systemImage: "mic") { recording = true }
+                    } label: {
+                        VaultAddLabel()
+                    }
+                    .accessibilityLabel(L("vault_add"))
+                    .vaultBottomAction()
                 }
             }
             .vaultTrashConfirmation($pendingDelete) { trash($0) }

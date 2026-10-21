@@ -19,13 +19,13 @@ final class PhotoMaidUITests: XCTestCase {
 
     func testFiveTabsExist() {
         for tab in ["Heute", "Fotos", "Aufräumen", "Studio", "Verlauf"] {
-            XCTAssertTrue(app.tabBars.buttons[tab].waitForExistence(timeout: 5), "Tab \(tab) fehlt")
+            XCTAssertTrue(app.pmTab(tab).waitForExistence(timeout: 5), "Tab \(tab) fehlt")
         }
         checkpoint("qa_five_tabs", app: app)
     }
 
     func testStudioRoutesAreReachable() {
-        app.tabBars.buttons["Studio"].tap()
+        app.pmTab("Studio").tap()
         for key in ["studio_collage", "movie_title", "movie_title_slideshow", "pdf_title"] {
             XCTAssertTrue(app.buttons["studio.create." + key].waitForExistence(timeout: 5))
         }
@@ -36,7 +36,7 @@ final class PhotoMaidUITests: XCTestCase {
         app.buttons["Einstellungen"].firstMatch.tap()
         XCTAssertTrue(app.switches["Vibration bei Aktionen"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.switches["Favoriten schützen"].exists)
-        XCTAssertTrue(app.staticTexts["Später: Standardabstand"].exists)
+        XCTAssertTrue(app.buttons["settings.later_default"].exists)
         checkpoint("qa_settings_controls", app: app)
     }
 
@@ -54,7 +54,7 @@ final class PhotoMaidUITests: XCTestCase {
 
     /// Feed-Flow mit QA-Medien: hoch behalten, links Papierkorb, rechts später, runter zurück.
     func testFeedGesturesWithQAMedia() throws {
-        app.tabBars.buttons["Aufräumen"].tap()
+        app.pmTab("Aufräumen").tap()
         let photos = app.buttons["hub.photos"].firstMatch
         XCTAssertTrue(photos.waitForExistence(timeout: 10))
         XCTAssertTrue(photos.isEnabled)

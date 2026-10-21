@@ -3,6 +3,8 @@ import SwiftUI
 
 /// Sperrbildschirm: Code, auf Wunsch Face ID/Touch ID, „Code vergessen?“ mit Notfallschlüssel. Nach Fehlversuchen
 /// nur Wartezeit, nie Löschen.
+/// Experiment-Design: wie im Artefakt – Schloss-Kachel, „Privater Tresor“, Punkte und rundes Ziffernfeld (72 pt) für
+/// die PIN; ein Passwort wird weiter über die Tastatur eingegeben.
 struct VaultLockView: View {
     @Environment(\.scenePhase) private var scenePhase
     @State private var vault = VaultStore.shared
@@ -14,33 +16,46 @@ struct VaultLockView: View {
     @FocusState private var focused: Bool
 
     private var kind: VaultCodeKind { vault.settings?.codeKind ?? .password }
+    private var inputDisabled: Bool { busy || lockedUntil != nil }
 
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: AppSpacing.l) {
-                    Image(systemName: "lock.fill")
-                        .font(.system(size: 44, weight: .semibold))
+                VStack(spacing: 18) {
+                    HStack {
+                        GlassIconButton(symbol: "xmark", label: L("vault_close")) { vault.lock() }
+                        Spacer()
+                    }
+                    PMIcon(.lock, size: 30, lineWidth: 2.2)
                         .foregroundStyle(AppColors.accent)
-                        .padding(.top, AppSpacing.xl)
+                        .frame(width: 64, height: 64)
+                        .background(AppColors.warm, in: .rect(cornerRadius: 20))
+                        .padding(.top, 8)
                         .accessibilityHidden(true)
-                    Text(key: kind == .pin ? "vault_enter_pin" : "vault_enter_password")
-                        .font(AppTypography.title)
-                        .multilineTextAlignment(.center)
-                    SecureField(L("vault_code_enter"), text: $code)
-                        .keyboardType(kind == .pin ? .numberPad : .default)
-                        .textInputAutocapitalization(.never)
-                        .autocorrectionDisabled()
-                        .focused($focused)
-                        .submitLabel(.go)
-                        .onSubmit { Task { await unlock() } }
-                        .onChange(of: code) { _, v in
-                            if kind == .pin, v.count == VaultCodeRules.pinLength { Task { await unlock() } }
-                            if kind == .pin, v.count > VaultCodeRules.pinLength { code = String(v.prefix(VaultCodeRules.pinLength)) }
-                        }
-                        .padding(AppSpacing.s)
-                        .background(AppColors.surface, in: .rect(cornerRadius: AppRadii.small))
-                        .disabled(busy || lockedUntil != nil)
+                    VStack(spacing: 4) {
+                        Text(key: "vault_title").font(PMFont.display(30, relativeTo: .title)).tracking(-0.6)
+                            .foregroundStyle(AppColors.textPrimary)
+                            .accessibilityAddTraits(.isHeader)
+                        Text(key: kind == .pin ? "vault_enter_pin" : "vault_enter_password")
+                            .font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
+                    }
+                    .multilineTextAlignment(.center)
+                    if kind == .pin {
+                        dots
+                    } else {
+                        SecureField(L("vault_code_enter"), text: $code)
+                            .keyboardType(.default)
+                            .textInputAutocapitalization(.never)
+                            .autocorrectionDisabled()
+                            .focused($focused)
+                            .submitLabel(.go)
+                            .onSubmit { Task { await unlock() } }
+                            .font(AppTypography.body)
+                            .padding(.horizontal, 16).frame(minHeight: 52)
+                            .background(AppColors.surface, in: .rect(cornerRadius: 16))
+                            .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(AppColors.control, lineWidth: 1))
+                            .disabled(inputDisabled)
+                    }
                     TimelineView(.periodic(from: .now, by: 1)) { context in
                         if let lockedUntil, lockedUntil > context.date {
                             Text(verbatim: L("vault_locked_wait", DateText.duration(lockedUntil.timeIntervalSince(context.date).rounded(.up))))
@@ -52,33 +67,37 @@ struct VaultLockView: View {
                                 .multilineTextAlignment(.center)
                         }
                     }
-                    if kind == .password {
+                    if kind == .pin {
+                        keypad
+                    } else {
                         PrimaryButton(title: L("vault_unlock")) { Task { await unlock() } }
-                            .disabled(code.isEmpty || busy || lockedUntil != nil)
+                            .disabled(code.isEmpty || inputDisabled)
                     }
                     if vault.settings?.biometrics == true, let name = vault.biometryName {
                         Button { Task { await unlockWithBiometrics() } } label: {
-                            Label(L("vault_biometric_open", name), systemImage: name == "Touch ID" ? "touchid" : "faceid")
+                            Text(verbatim: L("vault_biometric_open", name))
+                                .font(PMFont.text(.semibold, 16, relativeTo: .body)).foregroundStyle(AppColors.accent)
+                                .padding(.horizontal, 8).frame(minHeight: AppSpacing.minTouch)
+                                .contentShape(.rect)
                         }
-                        .buttonStyle(.pmBordered)
-                        .frame(minHeight: AppSpacing.minTouch)
+                        .buttonStyle(PMPressStyle())
                     }
-                    Button(L("vault_forgot")) { recoverySheet = true }
-                        .frame(minHeight: AppSpacing.minTouch)
+                    Button { recoverySheet = true } label: {
+                        Text(key: "vault_forgot")
+                            .font(PMFont.text(.semibold, 14, relativeTo: .subheadline)).foregroundStyle(AppColors.textSecondary)
+                            .padding(.horizontal, 8).frame(minHeight: AppSpacing.minTouch)
+                            .contentShape(.rect)
+                    }
+                    .buttonStyle(PMPressStyle())
                 }
-                .padding(AppSpacing.pageMargin)
+                .padding(.horizontal, AppSpacing.pageMargin)
+                .padding(.bottom, AppSpacing.xl)
                 .frame(maxWidth: 480)
                 .frame(maxWidth: .infinity)
             }
             .appPage()
             .navigationTitle(L("vault_title"))
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button { vault.lock() } label: { Image(systemName: "xmark") }
-                        .accessibilityLabel(Text(key: "vault_close"))
-                }
-            }
+            .toolbar(.hidden, for: .navigationBar)
             .sheet(isPresented: $recoverySheet) { VaultRecoveryUnlockSheet() }
             .task {
                 refreshLockout()
@@ -92,6 +111,70 @@ struct VaultLockView: View {
                 }
             }
         }
+    }
+
+    /// Sechs Punkte (14 pt, 2-pt-Rand); gefüllt = eingegebene Ziffer.
+    private var dots: some View {
+        HStack(spacing: 14) {
+            ForEach(0..<VaultCodeRules.pinLength, id: \.self) { i in
+                Circle()
+                    .fill(i < code.count ? AppColors.textPrimary : Color.clear)
+                    .overlay(Circle().strokeBorder(i < code.count ? AppColors.textPrimary : AppColors.textTertiary, lineWidth: 2))
+                    .frame(width: 14, height: 14)
+            }
+        }
+        .padding(.vertical, 6)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(Text(verbatim: L("art_pin_progress", code.count, VaultCodeRules.pinLength)))
+        .accessibilityIdentifier("vault.pin.dots")
+    }
+
+    /// Ziffernfeld 3 × 4: 1–9, leer, 0, Löschen. Runde Tasten 72 pt, Abstand 14 × 26.
+    private var keypad: some View {
+        Grid(horizontalSpacing: 26, verticalSpacing: 14) {
+            ForEach(0..<3, id: \.self) { row in
+                GridRow {
+                    ForEach(1...3, id: \.self) { column in digit(String(row * 3 + column)) }
+                }
+            }
+            GridRow {
+                Color.clear.frame(width: 72, height: 72).accessibilityHidden(true)
+                digit("0")
+                Button {
+                    if !code.isEmpty { code.removeLast() }
+                } label: {
+                    Image(systemName: "delete.left").font(.system(size: 24, weight: .medium))
+                        .foregroundStyle(AppColors.textPrimary)
+                        .frame(width: 72, height: 72)
+                        .contentShape(.circle)
+                }
+                .buttonStyle(PMPressStyle())
+                .disabled(code.isEmpty || inputDisabled)
+                .accessibilityLabel(Text(key: "art_pin_delete"))
+                .accessibilityIdentifier("vault.key.delete")
+            }
+        }
+        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
+    }
+
+    private func digit(_ d: String) -> some View {
+        Button {
+            guard !inputDisabled, code.count < VaultCodeRules.pinLength else { return }
+            code += d
+            Haptics.tick()
+            if code.count == VaultCodeRules.pinLength { Task { await unlock() } }
+        } label: {
+            Text(verbatim: d)
+                .font(PMFont.keypad(28))
+                .foregroundStyle(AppColors.textPrimary)
+                .frame(width: 72, height: 72)
+                .background(AppColors.surface, in: .circle)
+                .overlay(Circle().strokeBorder(AppColors.control, lineWidth: 1))
+                .contentShape(.circle)
+        }
+        .buttonStyle(PMPressStyle())
+        .disabled(inputDisabled)
+        .accessibilityIdentifier("vault.key." + d)
     }
 
     private func refreshLockout() {

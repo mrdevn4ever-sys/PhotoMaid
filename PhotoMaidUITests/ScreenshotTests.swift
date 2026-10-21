@@ -76,14 +76,11 @@ final class ScreenshotTests: XCTestCase {
         return true
     }
 
-    /// Tab wechseln: iPhone = Tab-Leiste unten, iPad = Tab-Leiste oben (kein XCUI-TabBar-Typ).
+    /// Tab wechseln über die eigene Tableiste (Experiment-Design).
     private func tab(_ name: String) {
-        let bar = app.tabBars.buttons[name]
-        if bar.waitForExistence(timeout: 2) { bar.tap() }
-        else {
-            let top = app.buttons[name].firstMatch
-            if waitFor(top, 5, "Tab \(name)") { top.tap() }
-        }
+        app.revealTabBar()
+        let bar = app.pmTab(name)
+        if waitFor(bar, 5, "Tab \(name)") { bar.tap() }
         settle(0.8)
     }
 
@@ -112,7 +109,7 @@ final class ScreenshotTests: XCTestCase {
         onboarding(capture: true)
 
         // 03 Heute
-        waitFor(app.tabBars.buttons["Heute"], 10, "Heute")
+        waitFor(app.pmTab("Heute"), 10, "Heute")
         settle(2.5)
         snap("03_home")
 
@@ -319,12 +316,7 @@ final class ScreenshotTests: XCTestCase {
         let gear = app.buttons["Einstellungen"].firstMatch
         guard waitFor(gear, 8, "Einstellungen-Zahnrad") else { return }
         gear.tap()
-        let picker = app.buttons.matching(NSPredicate(format: "label BEGINSWITH 'Erscheinungsbild'")).firstMatch
-        if waitFor(picker, 6, "Erscheinungsbild") {
-            picker.tap()
-            let dark = app.buttons["Dunkel"].firstMatch
-            if dark.waitForExistence(timeout: 4) { dark.tap() }
-        }
+        // Experiment-Design: nur dunkel, ohne Umschalter „Erscheinungsbild“.
         settle(1.5)
         snap("17_dark_settings")
         let done = app.buttons["Fertig"].firstMatch

@@ -1,5 +1,34 @@
 import XCTest
 
+/// Experiment-Design: eine eigene schwebende Tableiste ersetzt die System-Tableiste (kein XCUI-TabBar-Typ).
+/// Einträge über ihre Kennung; deutsche Titel der Tests werden darauf abgebildet.
+@MainActor
+extension XCUIApplication {
+    private static let tabIDs = ["Heute": "tab.today", "PhotoMaid": "tab.today", "Fotos": "tab.library",
+                                 "Aufräumen": "tab.cleanup", "Studio": "tab.studio", "Verlauf": "tab.history"]
+
+    func pmTab(_ title: String) -> XCUIElement { buttons[Self.tabIDs[title] ?? title].firstMatch }
+
+    /// Die Tableiste – wie im Artefakt nur auf den fünf Startseiten sichtbar.
+    var pmTabBar: XCUIElement { buttons["tab.today"].firstMatch }
+
+    /// Gesperrter Tresor mit PIN: rundes Ziffernfeld statt Textfeld.
+    var vaultKeypad: XCUIElement { buttons["vault.key.1"].firstMatch }
+
+    func enterVaultPIN(_ pin: String) {
+        for digit in pin { buttons["vault.key.\(digit)"].firstMatch.tap() }
+    }
+
+    /// Unterseiten haben keine Tableiste: bei Bedarf über „Zurück“ zur Startseite des Tabs.
+    func revealTabBar() {
+        for _ in 0..<5 where !pmTabBar.exists {
+            let back = navigationBars.buttons.element(boundBy: 0)
+            guard back.exists, back.isHittable else { return }
+            back.tap()
+        }
+    }
+}
+
 @MainActor
 extension XCTestCase {
     /// Every checkpoint keeps the image AND the accessibility tree for review.
@@ -52,7 +81,7 @@ extension XCTestCase {
             next.tap()
             if page == 4 { requestedPhotos = true }
         }
-        if requestedPhotos && !app.tabBars.firstMatch.exists {
+        if requestedPhotos && !app.pmTabBar.exists {
             let system = XCUIApplication(bundleIdentifier: "com.apple.springboard")
             checkpoint(prefix + "_photos_prompt_pending", app: system)
             // Trigger XCTest's registered permission monitor without activating a home/feed control.
@@ -61,10 +90,10 @@ extension XCTestCase {
         let deadline = Date().addingTimeInterval(25)
         repeat {
             resolvePrivacyPrompts(in: app, prefix: prefix, photos: requestedPhotos)
-            if app.tabBars.firstMatch.exists { break }
+            if app.pmTabBar.exists { break }
             Thread.sleep(forTimeInterval: 0.5)
         } while Date() < deadline
-        XCTAssertTrue(app.tabBars.firstMatch.exists, "Introduction must reach Today")
+        XCTAssertTrue(app.pmTabBar.exists, "Introduction must reach Today")
         // UMP can arrive just after the root view. It is consent, not an app-open ad.
         Thread.sleep(forTimeInterval: 2)
         resolvePrivacyPrompts(in: app, prefix: prefix)

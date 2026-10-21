@@ -47,7 +47,7 @@ final class RealLibraryTests: XCTestCase {
         }
         XCTAssertTrue(element.exists && element.isHittable)
     }
-    private func tab(_ title: String) { tap(app.tabBars.buttons[title], "tab_" + title) }
+    private func tab(_ title: String) { app.revealTabBar(); tap(app.pmTab(title), "tab_" + title) }
     private func back(_ name: String) { tap(app.navigationBars.buttons.element(boundBy: 0), name) }
     private func skipTour() {
         let skip = app.buttons["Tutorial überspringen"].firstMatch
@@ -61,7 +61,7 @@ final class RealLibraryTests: XCTestCase {
         finishIntroduction(in: app, prefix: "real_launch")
         consent()
         skipTour()
-        XCTAssertTrue(app.tabBars.buttons["Heute"].waitForExistence(timeout: 15))
+        XCTAssertTrue(app.pmTab("Heute").waitForExistence(timeout: 15))
     }
     private func consent() {
         resolvePrivacyPrompts(in: app, prefix: "real_privacy")
@@ -195,7 +195,7 @@ final class RealLibraryTests: XCTestCase {
                 XCTAssertTrue(shown, "Fourth cold start must present a Google test ad")
                 closeTestAd()
             }
-            XCTAssertTrue(app.tabBars.buttons["Heute"].exists)
+            XCTAssertTrue(app.pmTab("Heute").exists)
         }
     }
 
@@ -479,7 +479,7 @@ final class RealLibraryTests: XCTestCase {
         for option in ["Alle", "Zuletzt hinzugefügt", "Quadratisch", "Seitenverhältnis"] {
             tap(e("library.filter"), "view_menu_" + option)
             tap(app.buttons[option].firstMatch, "view_" + option)
-            XCTAssertTrue(app.tabBars.buttons["Fotos"].exists)
+            XCTAssertTrue(app.pmTab("Fotos").exists)
         }
         XCTAssertTrue(contains("Zuletzt hinzugefügt").exists)
         XCTAssertGreaterThan(app.buttons.matching(identifier: "media.cell").count, 0)
@@ -524,9 +524,8 @@ final class RealLibraryTests: XCTestCase {
         tap(vault, "vault_open")
     }
     private func unlockVault() {
-        let pin = app.secureTextFields.firstMatch
-        XCTAssertTrue(pin.waitForExistence(timeout: 10))
-        pin.tap(); pin.typeText("628491")
+        XCTAssertTrue(app.vaultKeypad.waitForExistence(timeout: 10))
+        app.enterVaultPIN("628491")
         snap("vault_pin_entered")
         XCTAssertTrue(app.segmentedControls.buttons["Medien"].waitForExistence(timeout: 15))
     }
@@ -580,8 +579,8 @@ final class RealLibraryTests: XCTestCase {
             XCTAssertTrue(close.isHittable)
             XCTAssertLessThan(close.frame.midX, app.frame.midX)
             tap(close, "vault_close_" + title)
-            XCTAssertTrue(app.tabBars.firstMatch.waitForExistence(timeout: 5))
-            XCTAssertFalse(app.secureTextFields.firstMatch.exists, "Closing must never ask for PIN")
+            XCTAssertTrue(app.pmTabBar.waitForExistence(timeout: 5))
+            XCTAssertFalse(app.secureTextFields.firstMatch.exists || app.vaultKeypad.exists, "Closing must never ask for PIN")
             snap("vault_closed_no_prompt_" + title)
             if title != "Dateien" {
                 back("vault_settings_back")
@@ -612,7 +611,7 @@ final class RealLibraryTests: XCTestCase {
         XCTAssertFalse(store.allTransactions().isEmpty)
         back("pro_back"); back("pro_settings_back")
         app.terminate(); app.launch()
-        XCTAssertTrue(app.tabBars.firstMatch.waitForExistence(timeout: 15))
+        XCTAssertTrue(app.pmTabBar.waitForExistence(timeout: 15))
         XCTAssertFalse(waitForTestAd(timeout: 8))
         snap("pro_cold_start_without_ad")
         feed(allMedia: true)
@@ -634,11 +633,11 @@ final class RealLibraryTests: XCTestCase {
             app.terminate()
             app.launchArguments = ["-AppleLanguages", "(\(language))", "-AppleLocale", language]
             app.launch()
-            XCTAssertTrue(app.tabBars.firstMatch.waitForExistence(timeout: 15))
+            XCTAssertTrue(app.pmTabBar.waitForExistence(timeout: 15))
             dismissTestAdIfPresent()
             snap(language + "_today")
             assertNoPlaceholders()
-            let cleanup = app.tabBars.buttons.element(boundBy: 2)
+            let cleanup = app.pmTab("Aufräumen")
             tap(cleanup, language + "_cleanup")
             hub("photos")
             XCTAssertTrue(e("feed.stage").waitForExistence(timeout: 10))
@@ -646,7 +645,7 @@ final class RealLibraryTests: XCTestCase {
             assertNoPlaceholders()
             // Physical arrow rendering is reviewed in the PNGs; no locale-dependent swipe reversal.
             tap(app.buttons.element(matching: NSPredicate(format: "identifier == 'feed.close'")), language + "_feed_close")
-            tap(app.tabBars.buttons.element(boundBy: 0), language + "_today_tab")
+            tap(app.pmTab("Heute"), language + "_today_tab")
             tap(app.buttons["today.settings"], language + "_settings")
             let pro = e("settings.pro")
             scrollTo(pro); tap(pro, language + "_pro")

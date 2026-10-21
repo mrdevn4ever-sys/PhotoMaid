@@ -333,11 +333,11 @@ final class AppStoreCaptureTests: XCTestCase {
     private func openVault() {
         launch("vault")
         for _ in 0..<100 {
-            if app.secureTextFields.firstMatch.exists || button("onb_next").exists { break }
+            if app.vaultKeypad.exists || button("onb_next").exists { break }
             pause(0.1)
         }
-        if app.secureTextFields.firstMatch.exists {
-            let code = app.secureTextFields.firstMatch; code.tap(); code.typeText("628491")
+        if app.vaultKeypad.exists {
+            app.enterVaultPIN("628491")
         } else {
             snap("vault-setup-introduction"); tap(button("onb_next"))
             let fields = app.secureTextFields

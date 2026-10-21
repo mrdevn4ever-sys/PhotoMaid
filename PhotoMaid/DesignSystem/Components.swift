@@ -16,6 +16,26 @@ extension View {
     }
 }
 
+/// Seitenkopf des Artefakts: Titel 40 pt (Bricolage 800, Laufweite −0,02 em) in der Farbe der Seite, darunter
+/// eine Zeile Erklärung (15 pt, gedämpft).
+struct PageHeading: View {
+    let title: String
+    var color: Color = AppColors.textPrimary
+    var subtitle: String?
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(verbatim: title).font(AppTypography.largeTitle).tracking(-0.8).foregroundStyle(color)
+                .accessibilityAddTraits(.isHeader)
+            if let subtitle {
+                Text(verbatim: subtitle).font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
 /// Deckende Inhaltsfläche (kein Glas) für Karten.
 struct SurfaceCard<Content: View>: View {
     var padding: CGFloat = AppSpacing.m

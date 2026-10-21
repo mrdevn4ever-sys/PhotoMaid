@@ -41,8 +41,8 @@ struct VaultHomeView: View {
                     if vault.stillInLibraryCount > 0 { stillInPhotosBanner }
                     folderBar
                     if items.isEmpty {
-                        EmptyState(symbol: "lock.rectangle.stack", title: L(folderID == nil ? "vault_empty_title" : "vault_folder_empty"),
-                                   message: L("vault_empty_text"))
+                        EmptyState(symbol: "lock.rectangle.stack", title: L(folderID == nil ? "vault_empty_title" : "vault_folder_empty"))
+                            .padding(.horizontal, -AppSpacing.pageMargin)
                     } else {
                         grid
                     }
@@ -56,7 +56,13 @@ struct VaultHomeView: View {
             .navigationTitle(L("vault_title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { toolbar }
-            .safeAreaInset(edge: .bottom) { if selecting { selectionBar } }
+            .safeAreaInset(edge: .bottom) {
+                if selecting {
+                    selectionBar
+                } else {
+                    PrimaryButton(title: L("vault_add"), symbol: "plus") { startImport() }.vaultBottomAction()
+                }
+            }
             .overlay { progressOverlay }
             // Rückfrage erst, wenn die Auswahl ganz geschlossen ist (sonst erscheint der Dialog nicht).
             .sheet(isPresented: $picking, onDismiss: {
@@ -215,9 +221,10 @@ struct VaultHomeView: View {
     }
 
     private var grid: some View {
-        let columns = [GridItem(.adaptive(minimum: 104, maximum: 170), spacing: 2)]
+        // Artefakt: drei Spalten, 6 pt Abstand, Hochformat 3 : 4 mit Radius 12.
+        let columns = Array(repeating: GridItem(.flexible(), spacing: 6), count: 3)
         let list = items
-        return LazyVGrid(columns: columns, spacing: 2) {
+        return LazyVGrid(columns: columns, spacing: 6) {
             ForEach(Array(list.enumerated()), id: \.element.id) { index, item in
                 Button {
                     if selecting {
@@ -269,7 +276,7 @@ struct VaultHomeView: View {
 
     @ToolbarContentBuilder
     private var toolbar: some ToolbarContent {
-        VaultCloseToolbarItem()
+        ToolbarItem(placement: .principal) { Color.clear.frame(width: 1, height: 1).accessibilityHidden(true) }
         VaultSelectionToolbarItem(scope: "media", isEmpty: items.isEmpty, selecting: $selecting, selection: $selection)
         ToolbarItemGroup(placement: .topBarTrailing) {
             if !selecting {
@@ -285,8 +292,6 @@ struct VaultHomeView: View {
                     Image(systemName: "ellipsis.circle")
                 }
                 .accessibilityLabel(Text(key: "more_actions"))
-                Button { startImport() } label: { Image(systemName: "plus") }
-                    .accessibilityLabel(Text(key: "vault_add"))
             }
         }
     }
@@ -401,7 +406,7 @@ struct VaultCell: View {
                         .accessibilityHidden(true)
                 }
             }
-            .aspectRatio(1, contentMode: .fit)
+            .aspectRatio(3 / 4, contentMode: .fit)
             .overlay(alignment: .bottomLeading) {
                 if item.isVideo {
                     Text(verbatim: DateText.duration(item.duration)).monospacedDigit()
@@ -420,8 +425,8 @@ struct VaultCell: View {
                 }
             }
             .overlay { if selected { Rectangle().fill(.white.opacity(0.18)).allowsHitTesting(false) } }
-            .clipped()
-            .contentShape(.rect)
+            .clipShape(.rect(cornerRadius: 12))
+            .contentShape(.rect(cornerRadius: 12))
             .task(id: item.id) { await vault.thumbnail(item) }
             .accessibilityElement(children: .ignore)
             .accessibilityLabel(Text(verbatim: accessibilityText))

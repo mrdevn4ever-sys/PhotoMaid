@@ -3,49 +3,61 @@ import SwiftUI
 
 /// Später: fällige und kommende Wiedervorlagen in echten Datumsgruppen. Ansehen, Datum ändern, jetzt prüfen,
 /// Zurückstellung entfernen (löscht keine Datei).
+/// Experiment-Design: violetter Titel, „Jetzt ansehen (n)“, Erinnerungskarte und Karten je Medium wie im Artefakt.
 struct LaterView: View {
     @Environment(AppModel.self) private var app
     @State private var editing: ItemRecord?
 
     var body: some View {
         let groups = ReviewQueues.laterGroups(records: app.read.laterRecords, today: app.today)
-        List {
-            if !groups.isEmpty && app.reminders.access == .notDetermined {
-                Section {
+        let due = groups.first { $0.key == .due }?.items ?? []
+        ScrollView {
+            VStack(alignment: .leading, spacing: AppSpacing.m) {
+                PageHeading(title: L("later"), color: AppColors.later, subtitle: L("art_later_sub"))
+                if groups.isEmpty {
+                    VStack(spacing: 6) {
+                        Text(key: "later_empty_title").font(AppTypography.headline).foregroundStyle(AppColors.textPrimary)
+                        Text(verbatim: L("later_empty_hint")).font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
+                    }
+                    .multilineTextAlignment(.center)
+                    .padding(.vertical, 40).padding(.horizontal, 20)
+                    .frame(maxWidth: .infinity)
+                    .overlay(RoundedRectangle(cornerRadius: 22).strokeBorder(AppColors.dashed, style: StrokeStyle(lineWidth: 1.5, dash: [6, 5])))
+                    .accessibilityElement(children: .combine)
+                }
+                if !due.isEmpty {
+                    Button {
+                        app.open(FeedRequest(.items(due.map(\.item), titleKey: "feed_title_due")))
+                    } label: {
+                        Text(verbatim: L("later_review_now_count", due.count))
+                            .font(AppTypography.button).foregroundStyle(AppColors.onLater)
+                            .frame(maxWidth: .infinity, minHeight: 56)
+                            .background(AppColors.later, in: .rect(cornerRadius: AppRadii.button))
+                            .contentShape(.rect(cornerRadius: AppRadii.button))
+                    }
+                    .buttonStyle(PMPressStyle())
+                    .accessibilityIdentifier("later.review")
+                }
+                if !groups.isEmpty && app.reminders.access == .notDetermined { notifyCard }
+                ForEach(groups.indices, id: \.self) { gi in
+                    let group = groups[gi]
                     VStack(alignment: .leading, spacing: AppSpacing.xs) {
-                        Text(key: "later_notify_title").font(AppTypography.headline)
-                        Text(key: "privacy_notifications_text").font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
-                        Button(L("privacy_notifications_allow")) {
-                            Task {
-                                await app.reminders.requestAccess()
-                                app.updateSettings { $0.notificationsOptIn = app.reminders.access == .allowed }
-                            }
-                        }
-                        .buttonStyle(.pmBordered)
+                        Text(verbatim: header(group.key, group.items.count))
+                            .font(PMFont.heading(18, relativeTo: .headline)).foregroundStyle(AppColors.textPrimary)
+                            .accessibilityAddTraits(.isHeader)
+                            .padding(.top, 4).padding(.horizontal, 4)
+                        ForEach(group.items, id: \.item) { r in row(r) }
                     }
                 }
             }
-            if groups.isEmpty {
-                EmptyState(symbol: "clock", title: L("later_empty_title"), message: L("later_empty") + "\n\n" + L("later_empty_hint"))
-                    .listRowBackground(Color.clear)
-            }
-            ForEach(groups.indices, id: \.self) { gi in
-                let group = groups[gi]
-                Section {
-                    ForEach(group.items, id: \.item) { r in row(r) }
-                    if group.key == .due {
-                        Button(L("later_review_now_count", group.items.count)) {
-                            app.open(FeedRequest(.items(group.items.map(\.item), titleKey: "feed_title_due")))
-                        }
-                        .frame(minHeight: AppSpacing.minTouch)
-                    }
-                } header: {
-                    Text(verbatim: header(group.key, group.items.count))
-                }
-            }
+            .padding(.horizontal, AppSpacing.pageMargin)
+            .padding(.bottom, AppSpacing.xxl)
+            .frame(maxWidth: 720).frame(maxWidth: .infinity)
         }
         .appPage()
         .navigationTitle(L("later"))
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar { ToolbarItem(placement: .principal) { Color.clear.frame(width: 1, height: 1).accessibilityHidden(true) } }
         .sheet(item: $editing) { r in
             LaterDateSheet(today: app.today) { day in
                 Task {
@@ -54,6 +66,41 @@ struct LaterView: View {
                 }
             }
         }
+    }
+
+    /// „Erinnern, wenn es wieder dran ist?“ – violette Pausen-Karte mit Glocke.
+    private var notifyCard: some View {
+        HStack(alignment: .top, spacing: 14) {
+            PMIcon(.bell, size: 19, lineWidth: 2)
+                .foregroundStyle(AppColors.later)
+                .frame(width: 38, height: 38)
+                .background(AppColors.pauseStroke, in: .rect(cornerRadius: 12))
+                .accessibilityHidden(true)
+            VStack(alignment: .leading, spacing: AppSpacing.xs) {
+                Text(key: "later_notify_title").font(PMFont.text(.semibold, 15, relativeTo: .subheadline))
+                    .foregroundStyle(AppColors.textPrimary)
+                Text(key: "privacy_notifications_text").font(AppTypography.footnote).foregroundStyle(AppColors.pauseText)
+                    .lineSpacing(2).fixedSize(horizontal: false, vertical: true)
+                Button {
+                    Task {
+                        await app.reminders.requestAccess()
+                        app.updateSettings { $0.notificationsOptIn = app.reminders.access == .allowed }
+                    }
+                } label: {
+                    Text(key: "privacy_notifications_allow")
+                        .font(PMFont.text(.bold, 13, relativeTo: .footnote)).foregroundStyle(AppColors.onLater)
+                        .padding(.horizontal, 14).frame(minHeight: 36)
+                        .background(AppColors.later, in: .capsule)
+                        .frame(minHeight: AppSpacing.minTouch)
+                        .contentShape(.rect)
+                }
+                .buttonStyle(PMPressStyle())
+            }
+            Spacer(minLength: 0)
+        }
+        .padding(16)
+        .background(AppColors.pauseSurface, in: .rect(cornerRadius: 22))
+        .overlay(RoundedRectangle(cornerRadius: 22).strokeBorder(AppColors.pauseStroke, lineWidth: 1))
     }
 
     private func header(_ g: LaterGroup, _ n: Int) -> String {
@@ -67,6 +114,8 @@ struct LaterView: View {
         }
     }
 
+    /// Karte je Medium: Vorschau 48 × 60, Art, Termin (fällig violett), „Datum ändern“. Ansehen und Entfernen über
+    /// Tippen bzw. das Kontextmenü (und als Bedienungshilfen-Aktionen).
     private func row(_ r: ItemRecord) -> some View {
         let isPhoto = r.item.provider == .photoLibrary
         let asset = isPhoto ? app.asset(r.item.localIdentifier) : nil
@@ -81,31 +130,63 @@ struct LaterView: View {
             whenText = d == today ? L("later_due_today") : (d < today ? L("later_due_since", DayText.string(d)) : L("later_review_on", DayText.string(d)))
         } else { whenText = L("later_next_review") }
         let due = r.dueDay.map { $0 <= today } ?? false
+        let review: () -> Void = { app.open(FeedRequest(.items([r.item], titleKey: "later"))) }
+        let remove: () -> Void = { Task { await app.decide(r.item, .removeDeferral) } }
         return HStack(spacing: AppSpacing.s) {
-            if isPhoto { AssetThumbnail(assetID: r.item.localIdentifier, side: 56) }
-            else { Image(systemName: "doc").font(.title2).frame(width: 56, height: 56) }
-            VStack(alignment: .leading, spacing: 2) {
-                Text(verbatim: title).font(AppTypography.subheadline.weight(.semibold))
-                Text(verbatim: whenText).font(AppTypography.footnote).foregroundStyle(due ? AppColors.later : AppColors.textSecondary)
-            }
-            Spacer(minLength: 0)
-            Menu {
-                Button { editing = r } label: { Label(L("change_date"), systemImage: "calendar") }
-                if isPhoto {
-                    Button { app.open(FeedRequest(.items([r.item], titleKey: "later"))) } label: {
-                        Label(L("later_review_now"), systemImage: "eye")
+            Button { if isPhoto { review() } else { editing = r } } label: {
+                HStack(spacing: AppSpacing.s) {
+                    Group {
+                        if isPhoto {
+                            AssetCell(assetID: r.item.localIdentifier)
+                        } else {
+                            PMIcon(.file, size: 20).foregroundStyle(AppColors.textSecondary)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .background(AppColors.control)
+                        }
                     }
+                    .frame(width: 48, height: 60)
+                    .clipShape(.rect(cornerRadius: 10))
+                    .accessibilityHidden(true)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(verbatim: title).font(PMFont.text(.semibold, 15, relativeTo: .subheadline))
+                            .foregroundStyle(AppColors.textPrimary)
+                        Text(verbatim: whenText).font(AppTypography.footnote)
+                            .foregroundStyle(due ? AppColors.later : AppColors.textSecondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    Spacer(minLength: 0)
                 }
-                Button(role: .destructive) { Task { await app.decide(r.item, .removeDeferral) } } label: {
-                    Label(L(r.bookmarked ? "later_back_to_stack" : "later_remove"), systemImage: "calendar.badge.minus")
-                }
-            } label: {
-                Image(systemName: "ellipsis").frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch)
+                .contentShape(.rect)
             }
-            .accessibilityLabel(Text(key: "actions"))
+            .buttonStyle(PMPressStyle())
+            .accessibilityElement(children: .combine)
+            Button { editing = r } label: {
+                Text(key: "change_date")
+                    .font(PMFont.text(.semibold, 13, relativeTo: .footnote)).foregroundStyle(AppColors.textPrimary)
+                    .lineLimit(1)
+                    .padding(.horizontal, 12).frame(minHeight: 36)
+                    .background(AppColors.background, in: .capsule)
+                    .overlay(Capsule().strokeBorder(AppColors.control, lineWidth: 1))
+                    .frame(minHeight: AppSpacing.minTouch)
+                    .contentShape(.rect)
+            }
+            .buttonStyle(PMPressStyle())
+            .fixedSize()
         }
-        .frame(minHeight: 64)
-        .accessibilityElement(children: .combine)
+        .padding(10)
+        .background(AppColors.surface, in: .rect(cornerRadius: 16))
+        .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
+        .contentShape(.contextMenuPreview, .rect(cornerRadius: 16))
+        .contextMenu {
+            Button { editing = r } label: { Label(L("change_date"), systemImage: "calendar") }
+            if isPhoto {
+                Button { review() } label: { Label(L("later_review_now"), systemImage: "eye") }
+            }
+            Button(role: .destructive) { remove() } label: {
+                Label(L(r.bookmarked ? "later_back_to_stack" : "later_remove"), systemImage: "calendar.badge.minus")
+            }
+        }
+        .accessibilityAction(named: Text(verbatim: L(r.bookmarked ? "later_back_to_stack" : "later_remove"))) { remove() }
     }
 }
 
