@@ -14,7 +14,7 @@ Schrift und Größen. Nicht für `main` bestimmt, solange der Nutzer es nicht au
 - **Symbole** (`PMIcon`): die Linien-Symbole des Artefakts als SVG-Pfade (`SVGPathParser`), nicht SF Symbols.
 - **Tableiste** (`PMTabBar`): schwebende Kapsel, Einträge „PhotoMaid“, Fotos, Studio, Verlauf und der runde
   Bernstein-Knopf „Aufräumen“ in der Mitte. Wie im Artefakt nur auf den fünf Startseiten; Unterseiten ohne Tableiste.
-- **Startseite**: nur „PhotoMaid“ (Tresor-Rad im „o“) und Zahnrad; Hero „Noch durchzusehen“ mit großer Zahl und drei
+- **Startseite**: Begrüßung nach Tageszeit, darunter „PhotoMaid“ (Tresor-Rad im „o“) und Zahnrad; Hero „Noch durchzusehen“ mit großer Zahl und drei
   echten Fotos aus den noch nicht entschiedenen Medien, die leicht wackeln (Swipe-Andeutung, `keyframeAnimator`, aus bei
   „Bewegung reduzieren“). Papierkorb/Später-Kacheln, Pause-Karte, Schnellzugriffe, Pro.
 - **Aufräumen, Studio, Verlauf, Fotos, Feed, Papierkorb, Später, Spiele, Einstellungen, Tresor** (Code-Eingabe mit rundem
@@ -22,6 +22,8 @@ Schrift und Größen. Nicht für `main` bestimmt, solange der Nutzer es nicht au
 - Neue Texte: 16 Kennungen `art_*` in allen 16 Sprachen (`scripts/i18n/ios_strings_part18_artifact_design.py`).
 
 ## Abweichungen vom Artefakt (bewusst)
+
+- **Begrüßung** („Guten Morgen“, „Hallo“, „Guten Abend“) über „PhotoMaid“ bleibt drin (Nutzer, 21.10.2026).
 
 - **Erscheinungsbild** fehlt in den Einstellungen: das Artefakt-Design gibt es nur dunkel; ein Umschalter ohne Wirkung
   wäre ein toter Knopf.

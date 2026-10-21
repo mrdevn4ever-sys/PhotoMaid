@@ -75,13 +75,27 @@ struct TodayView: View {
         }
     }
 
-    /// Kopf wie im Artefakt: nur „PhotoMaid“ (mit Tresor-Rad) und der runde Einstellungen-Knopf.
+    /// Begrüßung nach Tageszeit über „PhotoMaid“ (Nutzerwunsch 21.10.2026: bleibt drin).
+    private var greeting: String {
+        let hour = Calendar.current.component(.hour, from: app.now)
+        return switch hour {
+        case 5...10: L("today_greeting_morning")
+        case 18...23, 0...4: L("today_greeting_evening")
+        default: L("today_greeting_day")
+        }
+    }
+
+    /// Kopf wie im Artefakt: Begrüßung, „PhotoMaid“ (mit Tresor-Rad) und der runde Einstellungen-Knopf.
     private var header: some View {
         HStack(alignment: .bottom) {
-            // Geheimer Eingang zum Tresor (E16): „PhotoMaid“ 2 Sekunden halten, das „o“ ist ein Tresor-Rad.
-            // Ohne eingerichteten Tresor passiert nichts.
-            VaultDialWordmark()
-                .dynamicTypeSize(...DynamicTypeSize.accessibility2)
+            VStack(alignment: .leading, spacing: 2) {
+                Text(verbatim: greeting).font(PMFont.text(.semibold, 15, relativeTo: .subheadline))
+                    .foregroundStyle(AppColors.textSecondary)
+                // Geheimer Eingang zum Tresor (E16): „PhotoMaid“ 2 Sekunden halten, das „o“ ist ein Tresor-Rad.
+                // Ohne eingerichteten Tresor passiert nichts.
+                VaultDialWordmark()
+                    .dynamicTypeSize(...DynamicTypeSize.accessibility2)
+            }
             Spacer()
             Button { app.navigate(.settings) } label: {
                 PMIcon(.gear, size: 20)
