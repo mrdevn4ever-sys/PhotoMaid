@@ -36,6 +36,29 @@ Schrift und Größen. Nicht für `main` bestimmt, solange der Nutzer es nicht au
 - Formulare tieferer Unterseiten (z. B. Tresor-Einstellungen, Hilfe) übernehmen Schrift und Farben über
   `ArtifactAppearance`, behalten aber ihr Systemlayout.
 
+## Gamification (Nutzerentscheidung 21.10.2026)
+
+Plan: https://claude.ai/artifact/QEkF2h19hvzCfdDr6gWLaQ. Entscheidungen: Bestwerte mit **einem Rekord je Spiel außer
+Paare** (Paare je Kategorie), keine Feldgrößen bei Snake und Blocks; **Tagesziel an** (Standard 50); **ein Pausentag je
+Woche**; alles andere aus dem Plan umsetzen.
+
+- **Kern** (`Sources/PhotoMaidCore/Progress/`): `ReviewProgress` zählt je lokalem Tag verschiedene durchgesehene Medien
+  (Behalten, Papierkorb, Später gleich; Rückgängig am selben Tag wird abgezogen), Serie mit einem verziehenen Tag je
+  ISO-Woche, längste Serie, Meilenstein-Zeitpunkte. `ReviewLevel` (feste Schwellen 50 … 100 000), `Achievements` (24
+  Abzeichen, nur aus echten Daten, keines für gelöschte Mengen oder Speicher), `GameMedal` (nur eigene Werte).
+- **App**: Fortschritt im Lesemodell (`LedgerReadModel.progress`), `AchievementCenter` speichert erreichte Abzeichen und
+  Bestwert-Zeitpunkte lokal (`progress.achievements.v1`, `games.recordStamps.v1`); beim ersten vollständigen Laden still
+  übernommen, danach eine Pille (im Feed ohne Sprung).
+- **Seiten**: „Erfolge“ (Level, Serie mit Wochenpunkten, Tagesziel, Wochenbalken, Abzeichen, fertige Monate); Bestwerte
+  neu (Zuletzt geknackt, Filter, Paare je Kategorie mit Medaille und Datum, Snake/Blocks je ein Rekord mit nächster
+  Medaille); „Heute“ mit Serien-Chip, Tagesziel-Balken im Hero und Wochenrückblick (Mo–Mi, wegtippbar); Verlauf mit
+  Wochenbalken und Erfolge-Chip; Feed-Pillen bei jedem 100. Medium der Sitzung und beim Tagesziel;
+  Sitzungs-Zusammenfassung mit Level, Serie und Ziel.
+- **Einstellungen**: Erfolge anzeigen (Standard an), Tagesziel Aus/25/50/100 (Standard 50).
+- Snake-Rekord jetzt über alle Feldgrößen (`PhotoGameRecords.snakeOverallBest`); gespeicherte Einzelwerte bleiben.
+- Gamification löst nie eine Entscheidung aus und belohnt kein Löschen. Texte: 105 Kennungen in 16 Sprachen
+  (`scripts/i18n/ios_strings_part19_gamification.py`).
+
 ## Regeln unverändert
 
 Gesten, Entscheidungen, Löschwege, Werbung/Einwilligung, Tageslimit und Tresor-Logik sind nicht angefasst; nur Ansicht.
@@ -43,7 +66,7 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
 
 ## Prüfstatus
 
-- `swift test` (PhotoMaidCore, Linux): PASS
+- `swift test` (PhotoMaidCore, Linux): PASS (490 Tests inkl. `ReviewProgressTests`)
 - `android_strings_to_xcstrings.py --check`: PASS
 - Xcode-Build und Unit-Tests: PASS (CI-Läufe 39584295498, 39597390682; TestFlight-Läufe 39586915037, 39591723238, 39598302667)
 - UI-Tests (QA-Daten): Lauf 39584295498 FAIL (2 Testhelfer-Probleme, korrigiert); Lauf 39599499410 PASS
