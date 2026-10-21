@@ -215,26 +215,37 @@ struct DecisionButtons: View {
     let controls: FeedControls
     let act: (FeedAction) -> Void
 
+    /// Größte Stufe, die in die Breite passt (Artefakt: 64/80 pt mit 22 pt Abstand). Fünf oder sechs Tasten waren
+    /// breiter als ein iPhone und schoben den ganzen Feed seitlich hinaus (⋯, Rückgängig, Papierkorb-Zähler außerhalb
+    /// des Bildschirms) – betraf „Tasten anzeigen: Immer“ und VoiceOver. Kleinste Stufe hält 44 pt Tippfläche.
     var body: some View {
-        HStack(spacing: 22) {
-            ForEach(controls.buttons, id: \.self) { action in button(action) }
+        ViewThatFits(in: .horizontal) {
+            row(side: 64, keep: 80, spacing: 22)
+            row(side: 56, keep: 68, spacing: 12)
+            row(side: 48, keep: 56, spacing: 8)
+            row(side: 44, keep: 48, spacing: 6)
         }
         .frame(maxWidth: .infinity)
         .environment(\.layoutDirection, .leftToRight)
     }
 
+    private func row(side: CGFloat, keep: CGFloat, spacing: CGFloat) -> some View {
+        HStack(spacing: spacing) {
+            ForEach(controls.buttons, id: \.self) { action in button(action, side: action == .keep ? keep : side) }
+        }
+    }
+
     /// Liegt die Aktion auf einer Wischrichtung, zeigt die Taste deren Pfeil (physische Richtung, nie gespiegelt),
     /// sonst ein eigenes Symbol.
-    private func button(_ action: FeedAction) -> some View {
+    private func button(_ action: FeedAction, side: CGFloat) -> some View {
         let keep = action == .keep
         let color = FeedActionText.color(action)
-        let side: CGFloat = keep ? 80 : 64
         return Button { act(action) } label: {
             Group {
                 switch action {
-                case .keep: PMIcon(.check, size: 32, lineWidth: 2.6)
-                case .trash: PMIcon(.trash, size: 26)
-                case .later: PMIcon(.clock, size: 26)
+                case .keep: PMIcon(.check, size: side * 0.4, lineWidth: 2.6)
+                case .trash: PMIcon(.trash, size: side * 0.4)
+                case .later: PMIcon(.clock, size: side * 0.4)
                 default:
                     if let d = controls.direction(of: action) { GestureArrow(direction: d).font(.title2.weight(.semibold)) }
                     else { Image(systemName: FeedActionText.symbol(action)).font(.title2.weight(.semibold)) }
