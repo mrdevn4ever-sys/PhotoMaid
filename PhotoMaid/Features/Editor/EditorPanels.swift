@@ -497,6 +497,7 @@ struct ResizePanel: View {
 }
 
 /// Speichern: Vorauswahl immer „Als Kopie speichern“. Ersetzen und „Original bearbeiten“ nur auf ausdrückliche Wahl.
+/// Im Tresor: nur Kopie oder Ersetzen (Original in den Tresor-Papierkorb), kein „Nur teilen“ – das Ergebnis bleibt dort.
 struct EditSaveSheet: View {
     @Environment(AppModel.self) private var app
     @Environment(\.dismiss) private var dismiss
@@ -506,14 +507,24 @@ struct EditSaveSheet: View {
     @State private var removeLocation = false
     @State private var working = false
     @State private var shareItem: MediaShareItem?
+    @State private var failure: String?
 
     var body: some View {
         NavigationStack {
             Form {
-                Section {
-                    option(.copy, L("edit_save_copy"), L("edit_save_copy_text"))
-                    option(.replace, L("edit_save_replace"), L("edit_save_replace_text"))
-                    option(.editOriginal, L("edit_save_original"), L("edit_save_original_text"))
+                if model.inVault {
+                    Section {
+                        option(.copy, L("vault_edit_copy"), L("edit_save_copy_text"))
+                        option(.replace, L("vault_edit_replace"), L("vault_edit_replace_text"))
+                    } footer: {
+                        Text(key: "vault_edit_private_note")
+                    }
+                } else {
+                    Section {
+                        option(.copy, L("edit_save_copy"), L("edit_save_copy_text"))
+                        option(.replace, L("edit_save_replace"), L("edit_save_replace_text"))
+                        option(.editOriginal, L("edit_save_original"), L("edit_save_original_text"))
+                    }
                 }
                 Section {
                     Toggle(L("edit_remove_location"), isOn: $removeLocation)
@@ -521,12 +532,14 @@ struct EditSaveSheet: View {
                 } footer: {
                     Text(key: "edit_remove_location_text")
                 }
-                Section {
-                    Button {
-                        Task { await shareOnly() }
-                    } label: { Label(L("edit_share_only"), systemImage: "square.and.arrow.up") }
-                } footer: {
-                    Text(key: "edit_share_only_text")
+                if !model.inVault {
+                    Section {
+                        Button {
+                            Task { await shareOnly() }
+                        } label: { Label(L("edit_share_only"), systemImage: "square.and.arrow.up") }
+                    } footer: {
+                        Text(key: "edit_share_only_text")
+                    }
                 }
                 if working {
                     ProgressView(L("edit_saving"))
@@ -537,11 +550,18 @@ struct EditSaveSheet: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button(L("cancel")) { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button(L(mode == .replace ? "edit_save_replace_action" : "edit_save_copy_action")) { Task { await save() } }
+                    Button(L(mode == .replace ? (model.inVault ? "vault_edit_replace_action" : "edit_save_replace_action")
+                             : "edit_save_copy_action")) { Task { await save() } }
                         .disabled(working)
+                        .accessibilityIdentifier("editor.save.confirm")
                 }
             }
             .sheet(item: $shareItem) { ShareSheet(items: $0.items) }
+            .alert(L("vault_title"), isPresented: Binding(get: { failure != nil }, set: { if !$0 { failure = nil } })) {
+                Button(L("ok")) { failure = nil }
+            } message: {
+                Text(verbatim: failure ?? "")
+            }
         }
         .presentationDetents([.medium, .large])
         .interactiveDismissDisabled(working)
@@ -565,6 +585,20 @@ struct EditSaveSheet: View {
         working = true
         model.setSaving(true)
         defer { working = false; model.setSaving(false) }
+        if model.inVault {
+            do {
+                let result = try await VaultEditSaver.savePhoto(itemID: model.assetID, sourceName: model.sourceName, data: data,
+                                                                recipe: model.recipe, mode: mode, removeLocation: removeLocation,
+                                                                unlimited: app.capabilities.hasProToolsAccess)
+                VaultStore.shared.lastEdit = result
+                Haptics.success()
+                dismiss()
+                finished()
+            } catch {
+                failure = VaultEditSaver.message(for: error)
+            }
+            return
+        }
         do {
             let outcome = try await EditSaver.savePhoto(app: app, assetID: model.assetID, data: data, recipe: model.recipe,
                                                         mode: mode, removeLocation: removeLocation)

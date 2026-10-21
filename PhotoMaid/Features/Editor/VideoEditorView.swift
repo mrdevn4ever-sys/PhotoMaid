@@ -20,8 +20,13 @@ struct VideoEditorView: View {
     @GestureState private var stageGestureActive = false
     @State private var askText = false
     @State private var text = ""
+    /// Kurzer Hinweis im Tresor (z. B. Standbild gespeichert); die App-Pillen liegen unter dem Tresor.
+    @State private var vaultNotice: String?
 
-    init(assetID: String) { _model = State(initialValue: VideoEditorModel(assetID: assetID)) }
+    /// `inVault`: `assetID` ist eine Kennung im Tresor; Quelle und Ergebnis bleiben im Tresor.
+    init(assetID: String, inVault: Bool = false) {
+        _model = State(initialValue: VideoEditorModel(assetID: assetID, inVault: inVault))
+    }
 
     var body: some View {
         ZStack {
@@ -41,6 +46,30 @@ struct VideoEditorView: View {
         .onDisappear { finishLayerDrag(); model.stop() }
         .onChange(of: stageGestureActive) { _, active in if !active { finishLayerDrag() } }
         .onChange(of: model.tool) { _, _ in finishLayerDrag() }
+        .onChange(of: VaultStore.shared.phase) { _, phase in
+            // Tresor gesperrt: Bearbeitung sofort schließen (die entschlüsselte Quelle wird gelöscht).
+            if model.inVault && phase != .unlocked { dismiss() }
+        }
+        .overlay(alignment: .top) {
+            if let vaultNotice {
+                Text(verbatim: vaultNotice)
+                    .font(AppTypography.footnote.weight(.semibold)).foregroundStyle(.white)
+                    .padding(.horizontal, AppSpacing.m).padding(.vertical, AppSpacing.xs)
+                    .glassCapsule()
+                    .padding(.top, 64)
+                    .transition(.opacity)
+                    .task(id: vaultNotice) {
+                        try? await Task.sleep(for: .seconds(2.5))
+                        self.vaultNotice = nil
+                    }
+            }
+        }
+        .alert(L("vault_title"), isPresented: Binding(get: { model.vaultFailure != nil },
+                                                      set: { if !$0 { model.vaultFailure = nil } })) {
+            Button(L("ok")) { model.vaultFailure = nil }
+        } message: {
+            Text(verbatim: model.vaultFailure ?? "")
+        }
         .confirmationDialog(L("edit_discard_title"), isPresented: $confirmDiscard, titleVisibility: .visible) {
             Button(L("edit_discard"), role: .destructive) { dismiss() }
             Button(L("edit_keep_editing"), role: .cancel) {}
@@ -284,6 +313,18 @@ struct VideoEditorView: View {
         guard let av = model.avAsset, let info = model.info, !model.saving else { return }
         model.saving = true
         defer { model.saving = false }
+        if model.inVault {
+            do {
+                _ = try await VaultEditSaver.saveFrame(itemID: model.assetID, sourceName: model.sourceName, avAsset: av,
+                                                       info: info, project: model.project, sourceMs: model.playheadSourceMs,
+                                                       unlimited: app.capabilities.hasProToolsAccess)
+                Haptics.success()
+                vaultNotice = L("vault_edit_frame_saved")
+            } catch {
+                model.vaultFailure = VaultEditSaver.message(for: error)
+            }
+            return
+        }
         do {
             try await VideoSaver.saveFrame(app: app, assetID: model.assetID, avAsset: av, info: info, project: model.project,
                                            sourceMs: model.playheadSourceMs)
@@ -305,7 +346,8 @@ struct VideoEditorView: View {
                 case .filter: VideoFilterPanel(model: model)
                 case .text: VideoLayerPanel(model: model) { text = L("edit_text_default"); askText = true }
                 case .speed: VideoSpeedPanel(model: model)
-                case .audio: VideoAudioPanel(model: model) { Task { await exportAudio() } }
+                // Ton als Datei verlässt den Tresor – dort nicht angeboten.
+                case .audio: VideoAudioPanel(model: model, exportAudio: model.inVault ? nil : { Task { await exportAudio() } })
                 case .format: VideoFormatPanel(model: model)
                 }
             }
@@ -820,7 +862,7 @@ struct VideoSpeedPanel: View {
 
 struct VideoAudioPanel: View {
     @Bindable var model: VideoEditorModel
-    let exportAudio: () -> Void
+    let exportAudio: (() -> Void)?
     private let fades: [Int64] = [0, 500, 1000, 2000]
 
     var body: some View {
@@ -851,7 +893,9 @@ struct VideoAudioPanel: View {
                                     model.updateClip { $0.fadeInMs = ms; $0.fadeOutMs = ms }
                                 }
                             }
-                            Button(L("vid_audio_export"), systemImage: "music.note", action: exportAudio).buttonStyle(.pmBordered)
+                            if let exportAudio {
+                                Button(L("vid_audio_export"), systemImage: "music.note", action: exportAudio).buttonStyle(.pmBordered)
+                            }
                         }
                         .padding(.horizontal, AppSpacing.pageMargin)
                     }
@@ -979,9 +1023,18 @@ struct VideoSaveSheet: View {
                         if model.hdrWillConvert { Text(key: "vid_hdr_hint_ios") }
                     }
                 }
-                Section {
-                    option(.copy, L("edit_save_copy"), L("edit_save_copy_text"))
-                    option(.replace, L("edit_save_replace"), L("edit_save_replace_text"))
+                if model.inVault {
+                    Section {
+                        option(.copy, L("vault_edit_copy"), L("edit_save_copy_text"))
+                        option(.replace, L("vault_edit_replace"), L("vault_edit_replace_text"))
+                    } footer: {
+                        Text(key: "vault_edit_private_note")
+                    }
+                } else {
+                    Section {
+                        option(.copy, L("edit_save_copy"), L("edit_save_copy_text"))
+                        option(.replace, L("edit_save_replace"), L("edit_save_replace_text"))
+                    }
                 }
             }
             .navigationTitle(L("edit_save_title"))
@@ -989,10 +1042,12 @@ struct VideoSaveSheet: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) { Button(L("cancel")) { dismiss() } }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button(L(mode == .replace ? "edit_save_replace_action" : "edit_save_copy_action")) {
+                    Button(L(mode == .replace ? (model.inVault ? "vault_edit_replace_action" : "edit_save_replace_action")
+                             : "edit_save_copy_action")) {
                         dismiss()
                         Task { await save() }
                     }
+                    .accessibilityIdentifier("editor.save.confirm")
                 }
             }
         }
@@ -1024,6 +1079,19 @@ struct VideoSaveSheet: View {
         guard let av = model.avAsset, let info = model.info else { return }
         model.saving = true
         defer { model.saving = false }
+        if model.inVault {
+            do {
+                let result = try await VaultEditSaver.saveVideo(itemID: model.assetID, sourceName: model.sourceName,
+                                                                avAsset: av, info: info, project: model.project, mode: mode,
+                                                                unlimited: app.capabilities.hasProToolsAccess)
+                VaultStore.shared.lastEdit = result
+                Haptics.success()
+                finished()
+            } catch {
+                model.vaultFailure = VaultEditSaver.message(for: error)
+            }
+            return
+        }
         do {
             let outcome = try await VideoSaver.save(app: app, assetID: model.assetID, avAsset: av, info: info,
                                                     project: model.project, mode: mode)

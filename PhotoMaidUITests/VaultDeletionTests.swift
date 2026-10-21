@@ -240,6 +240,26 @@ final class VaultDeletionTests: XCTestCase {
         snap("viewer_media_preserved")
     }
 
+    /// Bearbeiten im Tresor: Ergebnis ist ein neues Medium im Tresor (nicht in der Fotos-App, nicht unter „Bearbeitet“).
+    func test13EditPhotoInsideVaultStaysInVault() {
+        let before = items("media")
+        guard let photo = before.first(where: { $0.label.hasPrefix("Foto") }) else { return XCTFail("Missing vault photo") }
+        tap(photo, "edit_viewer_open")
+        tap(app.buttons["vault.viewer.edit"], "edit_open")
+        tap(app.buttons["editor.tool.filter"], "edit_filter_tool")
+        let mono = app.images["editor.filter.thumbnail.MONO"]
+        XCTAssertTrue(mono.waitForExistence(timeout: 30), "Filter previews must render from the vault source")
+        mono.tap()
+        snap("edit_filter_mono")
+        tap(app.buttons["Speichern"].firstMatch, "edit_save_sheet")
+        XCTAssertTrue(app.staticTexts["Als Kopie im Tresor speichern"].waitForExistence(timeout: 5))
+        XCTAssertFalse(app.buttons["Nur teilen (ohne Kopie)"].exists, "Sharing would leave the vault")
+        tap(app.buttons["editor.save.confirm"], "edit_saved")
+        XCTAssertTrue(app.descendants(matching: .any)["vault.viewer.saved"].waitForExistence(timeout: 30))
+        tap(app.buttons["vault.viewer.close"], "edit_viewer_closed")
+        XCTAssertEqual(items("media").count, before.count + 1, "The edited copy is a new vault item next to the original")
+    }
+
     func test20NotesSwipeAndSelection() {
         tap(app.segmentedControls.buttons["Notizen"], "notes_tab")
         for i in 1...3 {

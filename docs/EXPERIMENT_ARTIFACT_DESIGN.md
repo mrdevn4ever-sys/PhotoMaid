@@ -67,6 +67,20 @@ Woche**; alles andere aus dem Plan umsetzen.
 - Gamification löst nie eine Entscheidung aus und belohnt kein Löschen. Texte: 105 Kennungen in 16 Sprachen
   (`scripts/i18n/ios_strings_part19_gamification.py`).
 
+## Bild- und Videobearbeitung im Tresor (Nutzerwunsch 21.10.2026)
+
+- Im Tresor-Betrachter „Bearbeiten“ (Stift) für Fotos, Live Photos (als Standbild) und Videos: derselbe Foto- bzw.
+  Video-Editor wie außerhalb, aber mit Quelle aus dem Tresor (`VaultStore.editPhotoSource`/`editVideoSource`).
+- Speichern nur „Als Kopie im Tresor“ (Vorauswahl) oder „Kopie speichern, Original in den Tresor-Papierkorb“; kein
+  „Original bearbeiten“, kein „Nur teilen“, kein Ton-Export. Standbilder aus Videos ebenfalls in den Tresor.
+- Ergebnis: neues verschlüsseltes Medium im selben Ordner (`VaultEdit`, `VaultSnapshot.addEdited`, ein
+  Schreibvorgang; Ersetzen legt das Original im selben Schritt in den Tresor-Papierkorb), mit verschlüsseltem
+  Vorschaubild und ohne Kennung in der Fotos-App. Nie in der Fotos-App, nie in „Bearbeitet“, nie im Verlauf/Ledger,
+  keine Toasts außerhalb, keine Caches auf der Platte; Klartext (Video-Quelle, Export) nur in der Temp-Ablage der
+  Sitzung, sofort danach gelöscht, spätestens beim Sperren. Sperren schließt den Editor; ein Export zählt als
+  Bedienung (keine Inaktivitätssperre mittendrin).
+- Tests: `VaultEditTests` (Linux), UI-Test `test13EditPhotoInsideVaultStaysInVault`.
+
 ## Regeln unverändert
 
 Gesten, Entscheidungen, Löschwege, Werbung/Einwilligung, Tageslimit und Tresor-Logik sind nicht angefasst; nur Ansicht.

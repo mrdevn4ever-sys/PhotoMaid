@@ -8,8 +8,11 @@ struct VaultViewer: View {
     @Environment(AppModel.self) private var app
     @Environment(\.dismiss) private var dismiss
     @State private var vault = VaultStore.shared
-    let ids: [String]
+    @State private var ids: [String]
     @State private var index: Int
+    /// Bild- oder Videobearbeitung im Tresor (Ergebnis bleibt im Tresor).
+    @State private var editing: VaultEditTarget?
+    @State private var savedBanner: String?
     @State private var share: VaultShare?
     @State private var confirmDelete = false
     @State private var confirmRestore = false
@@ -19,7 +22,7 @@ struct VaultViewer: View {
     @State private var activeVideoPlayer: AVPlayer?
 
     init(ids: [String], start: Int) {
-        self.ids = ids
+        _ids = State(initialValue: ids)
         _index = State(initialValue: min(max(0, start), max(0, ids.count - 1)))
     }
 
@@ -68,6 +71,32 @@ struct VaultViewer: View {
         .preferredColorScheme(.dark)
         .sheet(item: $share) { item in
             ShareSheet(items: item.urls) { vault.removeTempFiles(item.urls) }
+        }
+        .fullScreenCover(item: $editing, onDismiss: showEditResult) { target in
+            Group {
+                if target.video {
+                    VideoEditorView(assetID: target.id, inVault: true)
+                } else {
+                    PhotoEditorView(assetID: target.id, inVault: true)
+                }
+            }
+            .environment(app)
+        }
+        .overlay(alignment: .top) {
+            if let savedBanner {
+                Text(verbatim: savedBanner)
+                    .font(AppTypography.footnote.weight(.semibold)).foregroundStyle(.white)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, AppSpacing.m).padding(.vertical, AppSpacing.xs)
+                    .glassCapsule()
+                    .padding(.top, 60).padding(.horizontal, AppSpacing.pageMargin)
+                    .transition(.opacity)
+                    .accessibilityIdentifier("vault.viewer.saved")
+                    .task(id: savedBanner) {
+                        try? await Task.sleep(for: .seconds(3))
+                        self.savedBanner = nil
+                    }
+            }
         }
         .alert(L("vault_delete_title", 1), isPresented: $confirmDelete) {
             Button(L("vault_delete"), role: .destructive) { deleteCurrent() }
@@ -131,12 +160,30 @@ struct VaultViewer: View {
     private var actionBar: some View {
         GlassEffectContainer(spacing: AppSpacing.s) {
             HStack(spacing: AppSpacing.l) {
+                if let item = current {
+                    GlassIconButton(symbol: "pencil", label: L("edit_action")) {
+                        activeVideoPlayer?.pause()
+                        editing = VaultEditTarget(id: item.id, video: item.isVideo)
+                    }
+                    .accessibilityIdentifier("vault.viewer.edit")
+                }
                 GlassIconButton(symbol: "square.and.arrow.up", label: L("share")) { Task { await shareCurrent() } }
                 GlassIconButton(symbol: "photo.badge.arrow.down", label: L("vault_restore")) { confirmRestore = true }
                 GlassIconButton(symbol: "trash", label: L("vault_delete")) { confirmDelete = true }
                     .accessibilityIdentifier("vault.viewer.trash")
             }
         }
+    }
+
+    /// Nach dem Speichern im Tresor-Editor die neue Fassung zeigen (beim Ersetzen an Stelle des Originals).
+    private func showEditResult() {
+        guard let result = vault.lastEdit else { return }
+        vault.lastEdit = nil
+        guard vault.index.items.contains(where: { $0.id == result.newID }) else { return }
+        ids.insert(result.newID, at: min(index + 1, ids.count))
+        if result.replaced { ids.removeAll { $0 == result.originalID } }
+        index = ids.firstIndex(of: result.newID) ?? index
+        savedBanner = L(result.replaced ? "vault_edit_replaced" : "vault_edit_saved")
     }
 
     private func shareCurrent() async {
@@ -248,4 +295,10 @@ private struct VaultViewerPage: View {
         player?.replaceCurrentItem(with: nil)
         player = nil
     }
+}
+
+/// Was im Tresor bearbeitet wird: Foto (auch Live Photo als Standbild) oder Video.
+struct VaultEditTarget: Identifiable, Hashable {
+    let id: String
+    let video: Bool
 }

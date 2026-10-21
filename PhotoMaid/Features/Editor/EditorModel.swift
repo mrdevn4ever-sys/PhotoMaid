@@ -121,7 +121,11 @@ enum AdjustParam: String, CaseIterable, Identifiable, Hashable {
 @Observable
 final class EditorModel {
     let assetID: String
+    /// Bearbeitung im Tresor: `assetID` ist dann die Kennung im Tresor; Quelle und Ergebnis bleiben im Tresor.
+    let inVault: Bool
     private(set) var asset: MediaAsset?
+    /// Dateiname des Originals im Tresor (für den Namen der Kopie).
+    private(set) var sourceName: String?
     private(set) var loadState: LoadState = .loading
     var recipe = EditRecipe() {
         didSet {
@@ -178,7 +182,10 @@ final class EditorModel {
     private(set) var previewRendering = false
     @ObservationIgnored private var gestureStart: EditRecipe?
 
-    init(assetID: String) { self.assetID = assetID }
+    init(assetID: String, inVault: Bool = false) {
+        self.assetID = assetID
+        self.inVault = inVault
+    }
 
     var hasChanges: Bool { !recipe.isIdentity }
     private var hasPendingChange: Bool { gestureStart.map { $0 != recipe } ?? false }
@@ -189,8 +196,22 @@ final class EditorModel {
 
     func load(app: AppModel, allowNetwork: Bool = true) async {
         loadState = .loading
+        let data: Data
+        if inVault {
+            guard let source = await VaultStore.shared.editPhotoSource(assetID) else { loadState = .failed; return }
+            sourceName = source.name
+            data = source.data
+        } else {
+            guard let loaded = await libraryData(app: app, allowNetwork: allowNetwork) else { return }
+            data = loaded
+        }
+        await prepare(data)
+    }
+
+    /// Original aus der Fotos-App (nur außerhalb des Tresors).
+    private func libraryData(app: AppModel, allowNetwork: Bool) async -> Data? {
         asset = app.asset(assetID)
-        guard let ph = PhotoLibraryService.phAsset(assetID) else { loadState = .failed; return }
+        guard let ph = PhotoLibraryService.phAsset(assetID) else { loadState = .failed; return nil }
         let o = PHImageRequestOptions()
         o.isNetworkAccessAllowed = allowNetwork
         o.version = .current
@@ -202,7 +223,11 @@ final class EditorModel {
                 cont.resume(returning: (data, inCloud))
             }
         }
-        guard let data = result.0 else { loadState = result.1 ? .iCloud : .failed; return }
+        guard let data = result.0 else { loadState = result.1 ? .iCloud : .failed; return nil }
+        return data
+    }
+
+    private func prepare(_ data: Data) async {
         let prepared = await Task.detached(priority: .userInitiated) { () -> (UncheckedBox<CIImage>, PxSize, UIImage?)? in
             guard let src = EditRenderer.source(data) else { return nil }
             let size = PxSize(Int(src.extent.width), Int(src.extent.height))

@@ -27,7 +27,10 @@ struct PhotoEditorView: View {
     @State private var cropHandle: CropMath.Handle?
     @State private var cropStart: NormRect?
 
-    init(assetID: String) { _model = State(initialValue: EditorModel(assetID: assetID)) }
+    /// `inVault`: `assetID` ist eine Kennung im Tresor; Quelle und Ergebnis bleiben im Tresor.
+    init(assetID: String, inVault: Bool = false) {
+        _model = State(initialValue: EditorModel(assetID: assetID, inVault: inVault))
+    }
 
     var body: some View {
         ZStack {
@@ -52,6 +55,10 @@ struct PhotoEditorView: View {
         .onChange(of: stageGestureActive) { _, active in
             // DragGesture.onEnded is not called on cancellation (e.g. a second-finger zoom).
             if !active { clearStageGesture() }
+        }
+        .onChange(of: VaultStore.shared.phase) { _, phase in
+            // Tresor gesperrt: Bearbeitung sofort schließen (das entschlüsselte Bild verlässt den Speicher).
+            if model.inVault && phase != .unlocked { dismiss() }
         }
         .task {
             await model.load(app: app)

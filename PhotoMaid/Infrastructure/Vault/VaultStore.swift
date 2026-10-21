@@ -66,6 +66,10 @@ final class VaultStore {
     private(set) var needsNewCode = false
     /// Eine Aktion ließ sich nicht speichern (Hinweis in der Ansicht; nichts wurde still verworfen).
     var operationFailed = false
+    /// Zuletzt im Tresor gespeicherte Bearbeitung (der Betrachter zeigt sie danach an und leert den Wert).
+    var lastEdit: VaultEditResult?
+    /// Laufende Bearbeitungs-Exporte im Tresor: gelten als Bedienung (keine Inaktivitätssperre mitten im Export).
+    var editWork = 0
     @ObservationIgnored private var key: VaultKey?
     @ObservationIgnored private var loadingThumbs: Set<String> = []
     @ObservationIgnored private var lease: VaultSessionLease?
@@ -171,7 +175,7 @@ final class VaultStore {
     func checkInactivity() {
         guard phase == .unlocked else { return }
         // Laufende Aktion oder ein Werbevideo für einen neuen Ordner: gilt als Bedienung.
-        if progress != nil || AdsService.shared.presenting { _ = session.touch(now: uptime); return }
+        if progress != nil || editWork > 0 || AdsService.shared.presenting { _ = session.touch(now: uptime); return }
         if session.requiresLock(now: uptime) { lock() }
     }
 

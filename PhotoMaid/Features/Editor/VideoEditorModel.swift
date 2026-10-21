@@ -41,6 +41,12 @@ final class VideoEditorModel {
     enum LoadState: Equatable { case loading, ready, failed, iCloud }
 
     let assetID: String
+    /// Bearbeitung im Tresor: `assetID` ist dann die Kennung im Tresor; Quelle und Ergebnis bleiben im Tresor.
+    let inVault: Bool
+    /// Dateiname des Originals im Tresor (für den Namen der Kopie).
+    private(set) var sourceName: String?
+    /// Fehler beim Speichern im Tresor (der Editor zeigt ihn selbst – die App-Pillen liegen unter dem Tresor).
+    var vaultFailure: String?
     private(set) var loadState: LoadState = .loading
     private(set) var asset: MediaAsset?
     private(set) var avAsset: AVAsset?
@@ -74,9 +80,12 @@ final class VideoEditorModel {
     @ObservationIgnored private var pendingScrub: Int64?
     @ObservationIgnored private var timeObserver: Any?
     @ObservationIgnored private var built: BuiltComposition?
+    /// Entschlüsselte Quelle in der Temp-Ablage der Sitzung (beim Schließen gelöscht, spätestens beim Sperren).
+    @ObservationIgnored private var vaultSourceURL: URL?
 
-    init(assetID: String) {
+    init(assetID: String, inVault: Bool = false) {
         self.assetID = assetID
+        self.inVault = inVault
         player.isMuted = true
         player.actionAtItemEnd = .pause
     }
@@ -98,11 +107,20 @@ final class VideoEditorModel {
     func load(app: AppModel, allowNetwork: Bool = true) async {
         loadState = .loading
         app.player.stop()
-        guard let a = app.library.asset(assetID), a.isVideo else { loadState = .failed; return }
-        asset = a
-        guard let av = await VideoSource.asset(assetID, allowNetwork: allowNetwork) else {
-            loadState = allowNetwork ? .failed : .iCloud
-            return
+        let av: AVAsset
+        if inVault {
+            guard let source = await VaultStore.shared.editVideoSource(assetID) else { loadState = .failed; return }
+            vaultSourceURL = source.url
+            sourceName = source.name
+            av = AVURLAsset(url: source.url)
+        } else {
+            guard let a = app.library.asset(assetID), a.isVideo else { loadState = .failed; return }
+            asset = a
+            guard let loaded = await VideoSource.asset(assetID, allowNetwork: allowNetwork) else {
+                loadState = allowNetwork ? .failed : .iCloud
+                return
+            }
+            av = loaded
         }
         guard let i = await VideoSource.info(av), i.durationMs > VideoRules.minClipMs else { loadState = .failed; return }
         avAsset = av
@@ -125,6 +143,10 @@ final class VideoEditorModel {
         if let timeObserver { player.removeTimeObserver(timeObserver) }
         timeObserver = nil
         player.replaceCurrentItem(with: nil)
+        if let vaultSourceURL {
+            VaultStore.shared.removeTempFiles([vaultSourceURL])
+            self.vaultSourceURL = nil
+        }
     }
 
     private func installObserver() {
