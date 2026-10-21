@@ -319,23 +319,6 @@ struct TrashView: View {
         }
     }
 
-    private func photoRow(_ r: ItemRecord) -> some View {
-        let a = app.asset(r.item.localIdentifier)
-        let title = switch a?.kind {
-        case .video: L("video")
-        case .screenshot: L("screenshot")
-        default: L("photo")
-        }
-        let sub = [a?.creationDate.map(DateText.abbreviated), SizeText.value(value(r.item))]
-            .compactMap { $0 }.joined(separator: " · ")
-        return row(r, title: title, subtitle: sub) {
-            Button { preview = a } label: { AssetThumbnail(assetID: r.item.localIdentifier, side: 56) }
-                .buttonStyle(.plain)
-                .disabled(a == nil)
-                .accessibilityLabel(Text(verbatim: L("basket_preview_open", title)))
-        }
-    }
-
     private func fileRow(_ r: ItemRecord) -> some View {
         let entry = app.files.entries.first { $0.reference == r.item }
         let name = entry?.name ?? (r.item.localIdentifier as NSString).lastPathComponent
