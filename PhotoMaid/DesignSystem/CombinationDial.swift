@@ -53,7 +53,7 @@ struct CombinationDial: View {
 
     private static let chrome: [Color] = [0xF4F4F2, 0x9C9C9A, 0xE6E6E4, 0x6F6F6D, 0xD8D8D6, 0x8A8A88, 0xF4F4F2].map(c)
 
-    private static func c(_ hex: UInt32) -> Color {
+    nonisolated private static func c(_ hex: UInt32) -> Color {
         Color(red: Double(hex >> 16 & 0xFF) / 255, green: Double(hex >> 8 & 0xFF) / 255, blue: Double(hex & 0xFF) / 255)
     }
 
