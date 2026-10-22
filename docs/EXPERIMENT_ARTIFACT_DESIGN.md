@@ -212,4 +212,6 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
   Tresor-Ordnerchip jetzt Bernstein. Endstand: Aufnahme-Lauf 39815031547 auf ba2973e, 5/5 Aufnahmetests PASS,
   Sichtprüfung PASS. Zwischenläufe: 39797435049 (Wisch-Pillen kaum sichtbar), 39808617005 (Standbilder nach dem
   Loslassen – simctl-Screenshot 5–15 s, Snake-Bild pausiert).
+- TestFlight: Build 1.0 (28) mit Bernstein-Tönung im Tresor (Ordner-Chip „Alle“), sonst wie Build 27 (f0d110c)
+  hochgeladen und von Apple verarbeitet (Lauf 39821456391, Unit-Tests davor PASS, 22.10.2026, nur interne Tester)
 - Geräteabnahme: NOT RUN
