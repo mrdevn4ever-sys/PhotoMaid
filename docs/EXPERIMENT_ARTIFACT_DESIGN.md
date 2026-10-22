@@ -198,5 +198,8 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
   deshalb dort feste Bilder statt laufender Szenen. Lauf 39752086857 (9bf72a4): alle vier Tests PASS, aber weiter
   ~15 s beim ersten Öffnen nach jedem Start (beim zweiten 0,6 s) – Ursache waren 19 Snake-Bilder, die einzeln aus dem
   SpriteKit-Atlas umgewandelt wurden. Jetzt 5 (Kopf in Ruhe/beim Fressen, gedreht je Richtung; drei Sorten Futter),
-  Funkeln aus Symbolen, Wiese direkt aus dem Bundle (Nachweis im nächsten Lauf)
+  Funkeln aus Symbolen, Wiese direkt aus dem Bundle. Lauf 39756306524 (858b410): alle vier Tests PASS (iPhone Blocks
+  74 s / test05 71 s, großes Fenster 106 s / 103 s); Wartezeit gesamt 29 s statt 23 s ohne Szenen, Öffnen von „Kurze
+  Pause“ 3,8 s statt 14,8 s; Screenshots: Snake-Kopf in jeder Richtung richtig gedreht, Wiese als Ebene, Standbilder
+  in „Kurze Pause“ korrekt
 - Geräteabnahme: NOT RUN
