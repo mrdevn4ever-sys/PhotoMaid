@@ -200,18 +200,20 @@ final class AppStoreCaptureTests: XCTestCase {
         case "right": CGVector(dx: 210, dy: 0)
         default: CGVector(dx: 0, dy: 230)
         }
-        if let still { try requestStill(still, delay: 1.5) }
+        // Ein simctl-Screenshot braucht auf CI mehrere Sekunden (Lauf 39808617005: 5–15 s); für das Store-Bild wird
+        // deshalb 8 s gehalten, im Clip 1,6 s.
+        if let still { try requestStill(still, delay: 1.0) }
         start.press(forDuration: 0.12, thenDragTo: start.withOffset(offset), withVelocity: XCUIGestureVelocity(rawValue: 320),
-                    thenHoldForDuration: 1.6)
+                    thenHoldForDuration: still == nil ? 1.6 : 8)
         pause(1)
         XCTAssertEqual(feedPosition(), before + (direction == "down" ? -1 : 1), "Actual feed decision/navigation must advance")
         if let still { try awaitStill(still) }
     }
-    private func requestStill(_ name: String, delay: Double) throws {
+    private func requestStill(_ name: String, delay: Double, warmup: Bool = false) throws {
         let directory = output.appendingPathComponent("control")
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
         let token = UUID().uuidString
-        let request: [String: Any] = ["operation": "still", "name": name, "token": token, "delay": delay]
+        let request: [String: Any] = ["operation": "still", "name": name, "token": token, "delay": delay, "warmup": warmup]
         try JSONSerialization.data(withJSONObject: request).write(to: directory.appendingPathComponent("request-\(token).json"), options: .atomic)
         let ack = directory.appendingPathComponent("ack-\(token).json")
         for _ in 0..<50 {
@@ -230,7 +232,9 @@ final class AppStoreCaptureTests: XCTestCase {
             if FileManager.default.fileExists(atPath: result.path) {
                 let value = try JSONSerialization.jsonObject(with: Data(contentsOf: result)) as? [String: Any]
                 XCTAssertEqual(value?["returncode"] as? Int, 0, value?["stderr"] as? String ?? "Still failed")
-                shots.append(["file": name + ".png", "language": language, "appearance": "dark", "status": "PASS"])
+                if !name.hasPrefix("warmup") {
+                    shots.append(["file": name + ".png", "language": language, "appearance": "dark", "status": "PASS"])
+                }
                 return
             }
             pause(0.1)
@@ -490,6 +494,7 @@ final class AppStoreCaptureTests: XCTestCase {
         capturePage("today")
         launch("feed"); awaitStage()
         // Behalten und Papierkorb sichtbar im Store-Bild: Screenshot mitten in der gehaltenen Geste.
+        try requestStill("warmup", delay: 0, warmup: true); try awaitStill("warmup")
         try holdSwipe("up", still: "feed-keep"); try holdSwipe("left", still: "feed-trash"); snap("feed")
         try holdSwipe("right", still: "feed-later-drag"); snap("feed-later")
         capturePage("library")
@@ -508,6 +513,12 @@ final class AppStoreCaptureTests: XCTestCase {
         prepareSnakeForStore()
         let board = e("snake.board")
         board.swipeRight(); pause(1.5)
+        // Unter Last kann ein Wisch als Tippen ankommen und das Spiel pausieren (Lauf 39808617005) – dann wie ein
+        // Mensch „Fortsetzen“ tippen und erst aufnehmen, wenn sich die Schlange wirklich bewegt.
+        if app.buttons["snake.start"].exists { tap(app.buttons["snake.start"]); pause(1.5) }
+        let moving = board.value as? String
+        pause(0.8)
+        XCTAssertNotEqual(board.value as? String, moving, "Snake must be running for the store image")
         snap("snake-play")
         tap(e("snake.play").buttons["snake.pause"]); snap("snake-pause")
         tap(e("snake.play").buttons["snake.settings"])

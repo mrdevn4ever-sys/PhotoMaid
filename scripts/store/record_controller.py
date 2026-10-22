@@ -28,9 +28,11 @@ def main():
         process=None;log=None;current=None
     stills=args.output/'stills';stills.mkdir(exist_ok=True)
     screenshots=args.output/'screenshots';screenshots.mkdir(exist_ok=True)
-    def still(name):
+    def still(name,warmup=False):
         taken=time.time()
-        result=subprocess.run(['xcrun','simctl','io',args.udid,'screenshot','--type=png',str(screenshots/(name+'.png'))],
+        # Aufwärmen: der erste simctl-Screenshot eines Laufs dauert auf CI bis ~15 s; dieser landet nicht bei den Store-Bildern.
+        target=(stills if warmup else screenshots)/(name+'.png')
+        result=subprocess.run(['xcrun','simctl','io',args.udid,'screenshot','--type=png',str(target)],
                               capture_output=True,timeout=60)
         atomic(stills/(name+'.json'),{'name':name,'requested':taken,'finished':time.time(),'returncode':result.returncode,
                                       'stderr':result.stderr.decode(errors='replace')[-500:]})
@@ -59,7 +61,7 @@ def main():
                     # meldet ihn vor dem Ziehen an und wartet danach auf stills/<name>.json.
                     delay=float(value.get('delay',0))
                     if not 0<=delay<=10:raise ValueError('Invalid still delay')
-                    threading.Timer(delay,still,args=(name,)).start()
+                    threading.Timer(delay,still,args=(name,bool(value.get('warmup')))).start()
                 else:raise ValueError('Unsupported recording operation')
                 ack={'status':'ok'}
             except Exception as error:
