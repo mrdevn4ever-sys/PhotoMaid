@@ -65,7 +65,9 @@ Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E19) – ni
   Begrüßung nach Tageszeit, festem Kopf, Tableisten-Korrektur und Verlauf mit 10 neuesten → Build 22; „Ka mach ma
   testflight“ → Folgebuild mit tieferer Tableiste, plastischem Mittelknopf, kompakten Kacheln und Rückgängig am richtigen
   Eintrag; „Testflight“ → Folgebuild mit Gamification und Zahlenschloss-Rad; „Gerne auch testflight a ende“ (22.10.2026) →
-  Folgebuild mit Tresor-Bearbeitung, Rundgang Spiele/Tresor, ohne Hitzewarnung, nach grünen Tests):** jeweils den Stand von
+  Folgebuild mit Tresor-Bearbeitung, Rundgang Spiele/Tresor, ohne Hitzewarnung, nach grünen Tests → Build 25;
+  „Testflight“ (22.10.2026) → Folgebuild mit Blocks ohne Wackeln/Hinweistext, einheitlichem Spiele-Design und
+  parallelem Foto-Laden):** jeweils den Stand von
   `claude/experiment-artifact-design` (Artefakt-Design, Begrüßung drin) mit dem vorhandenen Workflow als internen
   TestFlight-Build hochladen und Apples Verarbeitung prüfen. Keine App-Store-Veröffentlichung, keine externe Verteilung.
 - **Neuester Snake-Auftrag (18.10.2026: größere Fotos/Vogelperspektive): ausschließlich lokale und
