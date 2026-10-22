@@ -15,50 +15,50 @@
     "audio": "AAC stereo, silence",
     "source": "Actual simulator screen recording; no generated UI",
     "source_file": "01-review.mov",
-    "source_sha256": "2fb921f75eb72004b543b70b59b7b03636b962f648761018f99da150acd5e868",
-    "source_duration": 29.231667,
+    "source_sha256": "155a01395c31c4cef9d2b97532a4ea20f9979eb71c3dfce8888b2d1e3bf47949",
+    "source_duration": 28.895,
     "source_recording": {
       "name": "01-review",
-      "start": 1792681358.514199,
-      "end": 1792681410.380328,
+      "start": 1792688147.411545,
+      "end": 1792688189.7997172,
       "returncode": 0
     },
     "source_markers": [
       {
-        "time": 1792681377.072304,
-        "label": "feed",
-        "clip": "01-review"
-      },
-      {
-        "label": "keep",
-        "time": 1792681384.618599,
-        "clip": "01-review"
-      },
-      {
-        "label": "trash",
         "clip": "01-review",
-        "time": 1792681391.729157
+        "time": 1792688158.5015712,
+        "label": "feed"
       },
       {
-        "label": "later",
-        "time": 1792681398.67899,
-        "clip": "01-review"
-      },
-      {
-        "time": 1792681406.238453,
         "clip": "01-review",
-        "label": "back"
+        "time": 1792688166.587213,
+        "label": "keep"
+      },
+      {
+        "clip": "01-review",
+        "time": 1792688173.3838658,
+        "label": "trash"
+      },
+      {
+        "time": 1792688181.099654,
+        "clip": "01-review",
+        "label": "later"
+      },
+      {
+        "label": "back",
+        "time": 1792688187.288909,
+        "clip": "01-review"
       }
     ],
     "editing": {
       "source_start": 0,
-      "source_end": 29.231667,
-      "playback_speed": 1.2179861250000001,
+      "source_end": 28.895,
+      "playback_speed": 1.2039583333333332,
       "final_frame_hold_seconds": 3,
       "description": "Complete actual recording, longer demos accelerated to 24 seconds; genuine final frame held for 3 seconds"
     },
     "status": "PASS",
-    "sha256": "172ce3adadb6dc2eb1fba130ca92d975bcf983ec65b7334db671a12d0edfb37a"
+    "sha256": "64c141e26fbe84ee07e75786968a823e9b51a9a7a01fd48c89fe63eaa29e6d5a"
   },
   {
     "file": "02-photo-games.mp4",
@@ -69,9 +69,9 @@
       1920
     ],
     "fps": 30,
-    "sha256": "e5646d9257d8d951ae33f046e3c021504c02424812833e8ab7434261e0029ad9",
+    "sha256": "4bfd32e8759b42a913af9324dba4c28d845e8cfb2f64335d294d09eecb44d296",
     "poster_file": "02-photo-games-poster.png",
-    "poster_sha256": "242aa72c8b374ec6b530d2aefba53e5241e682c5f1c8cd7604af112e9e01e3bc",
+    "poster_sha256": "22137d895dad9324a0168a4604fc216b80120a36414058448d74182fc4928a70",
     "poster_time": 11,
     "poster_timecode": "00:00:11:00",
     "audio": "AAC stereo, silence",
@@ -79,27 +79,27 @@
     "sources": [
       {
         "file": "04-memory.mov",
-        "sha256": "9a3175a481b4e869b8c8b89ca87f35fe430884f7a5ff540f68799c941076efe5",
-        "duration": 20.666667,
+        "sha256": "ab400015f1fddfd87a5079788cee1f81e5d7f3eda23a97f0f758271351a3e12e",
+        "duration": 17.793333,
         "used_seconds": 8,
         "playback_speed": 1,
         "recording": {
           "name": "04-memory",
-          "start": 1792681687.179959,
-          "end": 1792681711.88022,
+          "start": 1792688423.0443132,
+          "end": 1792688445.7289011,
           "returncode": 0
         }
       },
       {
         "file": "05-snake.mov",
-        "sha256": "cd1bdad66d6c8b359bc3136cadd2b3840915ebc98bdf7eb0a4c25165a1856678",
-        "duration": 29.003333,
+        "sha256": "3dda8afc47fde6cf555f9778f715eb5a6d17c8dbd39a4a9936da8fc4479100e0",
+        "duration": 28.05,
         "used_seconds": 16,
         "playback_speed": 1,
         "recording": {
           "name": "05-snake",
-          "start": 1792681764.317466,
-          "end": 1792681797.5878038,
+          "start": 1792688485.7608771,
+          "end": 1792688516.9738271,
           "returncode": 0
         }
       }

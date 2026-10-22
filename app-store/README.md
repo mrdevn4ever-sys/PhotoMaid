@@ -1,17 +1,19 @@
 # PhotoMaid – App-Store-Einträge (Englisch)
 
-Stand **22.10.2026**, Experiment-Design (`claude/experiment-artifact-design`, Commit `64f1715`),
-aufgenommen mit dem Workflow `app-store-refresh.yml` (CI-Lauf 39797435049, `store_locales=en`,
+Stand **22.10.2026**, Experiment-Design (`claude/experiment-artifact-design`, Commit `ba2973e`),
+aufgenommen mit dem Workflow `app-store-refresh.yml` (CI-Lauf 39815031547, `store_locales=en`,
 `store_devices=iphone-large`). Alle älteren Aufnahmen (16 Sprachen, `locales/` vom 15.10. und `current/` vom
 18.10.2026) wurden auf Wunsch entfernt; sie bleiben in der Git-Historie.
 
 ## Inhalt
 
-- [`en/screenshots/`](en/screenshots): zehn Screenshots in Präsentationsreihenfolge – Start, Feed, Fotos,
-  Aufräumen, Foto-Snake, Paare, Collage, Editor (Filter), Film, Tresor.
+- [`en/screenshots/`](en/screenshots): zehn Screenshots in Präsentationsreihenfolge – Start, **Behalten** (Wisch
+  nach oben, Pille „Keep“), **Papierkorb** (Wisch nach links, Pille „Trash“), Fotos, Aufräumen, Foto-Snake, Paare,
+  Collage, Editor (Filter), Tresor. Behalten/Papierkorb sind echte Simulator-Screenshots mitten in der gehaltenen Geste.
   Native PNGs des iPhone 17 Pro Max (6,9″, **1320 × 2868**), Dark Mode, ohne Beschnitt, Verzerrung oder Hochskalierung.
 - [`en/previews/`](en/previews): zwei App-Vorschauen mit Poster
-  - `01-review.mp4` – Aufräumen per Wischen (Behalten, Papierkorb, Später, Zurück)
+  - `01-review.mp4` – Aufräumen per Wischen: langsam gezogen und kurz gehalten, Behalten, Papierkorb und Später je
+    einmal klar sichtbar, dann Zurück
   - `02-photo-games.mp4` – Paare und Foto-Snake
   Je 27 s, **886 × 1920**, 30 fps, H.264, AAC-Stereo (Stille) – innerhalb von Apples Vorgabe 15–30 s.
 - [`en/provenance.json`](en/provenance.json): Commit, Lauf, Gerät, Testergebnis (5/5 Aufnahmetests PASS) und
