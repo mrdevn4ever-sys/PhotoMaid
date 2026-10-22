@@ -71,6 +71,11 @@ Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E19) – ni
   auf den Startseiten und Standbildern in „Kurze Pause“):** jeweils den Stand von
   `claude/experiment-artifact-design` (Artefakt-Design, Begrüßung drin) mit dem vorhandenen Workflow als internen
   TestFlight-Build hochladen und Apples Verarbeitung prüfen. Keine App-Store-Veröffentlichung, keine externe Verteilung.
+- **Store-Einträge Experiment-Design (22.10.2026: „Mach mir store einträge screenshots englisch und 1-2 clips apple
+  store und lads hoch im git und lösch alle anderen store screenshots“):** englische Store-Screenshots und 1–2
+  Vorschauclips des aktuellen Stands von `claude/experiment-artifact-design` mit dem vorhandenen Aufnahme-Workflow
+  erzeugen, notwendige Actions ausführen, geprüft im Repo ablegen und alle älteren Store-Screenshots/-Vorschauen
+  (`app-store/locales`, `app-store/current`) entfernen. Kein Upload zu App Store Connect, kein Release.
 - **Neuester Snake-Auftrag (18.10.2026: größere Fotos/Vogelperspektive): ausschließlich lokale und
   statische Prüfungen. Keine GitHub Actions oder bezahlten CI-Builds starten. Für diesen Auftrag
   keine Uploads starten; ältere TestFlight-Freigaben gelten nicht für diesen neuen Umbau.**
