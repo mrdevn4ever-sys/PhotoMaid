@@ -21,8 +21,6 @@ enum PhotoBlocksPalette {
 struct PhotoBlocksBoard: View {
     let game: PhotoBlocksGame
     let image: UIImage?
-    /// Hinweis ohne Foto (lädt / kein Foto) – im Hintergrund hinter den Steinen, ändert nie die Feldgröße.
-    var notice: String?
     let onActions: ([PhotoBlocksInput.Action]) -> Void
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
@@ -38,15 +36,6 @@ struct PhotoBlocksBoard: View {
                     }
                     .animation(reduceMotion ? nil : .easeOut(duration: 0.20), value: game.revealedStrips)
                     .id(game.level) // New photos start at their carried progress; never animate backwards from 100%.
-                if let notice, game.phase != .discovered {
-                    Text(verbatim: notice)
-                        .font(.caption).foregroundStyle(.white.opacity(0.55))
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal, 16)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .allowsHitTesting(false)
-                        .accessibilityIdentifier("blocks.fallback")
-                }
                 if game.phase != .discovered {
                     Canvas { context, size in
                         let visible = !game.isPaused && game.phase != .gameOver

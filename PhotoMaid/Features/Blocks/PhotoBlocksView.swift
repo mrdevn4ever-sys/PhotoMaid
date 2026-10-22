@@ -100,7 +100,7 @@ struct PhotoBlocksView: View {
             GeometryReader { geo in
                 let width = min(geo.size.width, max(1, geo.size.height) * CGFloat(model.game.width) / CGFloat(model.game.height))
                 ZStack {
-                    PhotoBlocksBoard(game: model.game, image: model.image, notice: boardNotice, onActions: model.apply)
+                    PhotoBlocksBoard(game: model.game, image: model.image, onActions: model.apply)
                         .frame(width: width)
                         .onGeometryChange(for: CGSize.self) { $0.size } action: { size in
                             model.setDisplaySize(size, scale: displayScale, app: app)
@@ -117,15 +117,9 @@ struct PhotoBlocksView: View {
                     }
                 }.frame(maxWidth: .infinity, maxHeight: .infinity)
             }
+            // Kein Hinweistext im Spiel (Nutzer, 22.10.2026: „Der Text soll nie kommen“) – „Bilder werden vorbereitet …“
+            // erschien bei jedem Nachladen des Fotos unter dem Feld und ließ es wackeln. Ohne Foto bleibt der neutrale Grund.
         }
-    }
-
-    /// Hinweis ohne Foto im Hintergrund des Spielfelds statt darunter (Nutzer, 22.10.2026: „wackelt ab und zu“): Der
-    /// Text unter dem Feld erschien bei jedem Nachladen des Fotos (Rückkehr in die App, Änderung der Mediathek, iCloud)
-    /// und verschwand wieder – das Feld wurde kleiner und größer und rückte seitlich nach.
-    private var boardNotice: String? {
-        guard model.image == nil else { return nil }
-        return L(model.photos.isLoading ? "memory_loading" : "blocks_fallback")
     }
 
     private var hud: some View {
