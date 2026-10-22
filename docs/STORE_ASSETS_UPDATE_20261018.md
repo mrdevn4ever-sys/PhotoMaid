@@ -1,5 +1,9 @@
 # Aktualisierung der Store-Assets – 18.10.2026
 
+> **Hinweis (22.10.2026):** Die hier beschriebenen Aufnahmen (`app-store/locales`, `app-store/current`) wurden auf
+> Wunsch entfernt und durch die englischen Store-Einträge im Experiment-Design ersetzt, siehe `app-store/README.md`.
+> Sie bleiben in der Git-Historie.
+
 **Archivstand vor der Umbenennung in Paare:** Die folgenden PASS-Werte beschreiben die ursprünglichen nativen Aufnahmen. Spielbilder und Spiele-Vorschauen enthalten noch den bisherigen Namen und müssen für einen neuen Store-Upload nativ neu aufgenommen werden. Die Originale und ihre Prüfsummen bleiben erhalten. [Aktueller Namensstatus](../app-store/current/STATUS.json).
 
 **Normale iPhones: PASS. Duo: BLOCKED.** Maßgeblich sind die tatsächlich vorhandenen Dateien und

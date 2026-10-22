@@ -1,8 +1,0 @@
-{
-  "status": "REJECTED BLANK",
-  "image": "duo-default-screen.png",
-  "review_method": "Opened the actual native PNG; entire frame is black.",
-  "usage": "Diagnostic only; not a Store screenshot or app acceptance.",
-  "native_boot": "PASS",
-  "skill_export": "TIMEOUT"
-}

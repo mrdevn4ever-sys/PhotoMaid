@@ -1,0 +1,120 @@
+{
+  "locale": "en",
+  "app_store_locale": "en-US",
+  "commit": "64f1715af845f66d233d64974d08763687221138",
+  "workflow_run": "39797435049",
+  "device": {
+    "device_class": "iphone-large",
+    "name": "iPhone 17 Pro Max",
+    "os_version": "26.2",
+    "sdk": "26.5"
+  },
+  "appearance": "dark",
+  "photo_library": {
+    "count": 55,
+    "source": "app-store/media (CC0, see media/SOURCES.md)"
+  },
+  "tests": {
+    "result": "Passed",
+    "passed": 5,
+    "failed": 0,
+    "skipped": 0,
+    "cases": [
+      "test06CurrentStoreScreenshots",
+      "test10AppPreviewReview",
+      "test20AppPreviewStudio",
+      "test30AppPreviewVault",
+      "test40AppPreviewPhotoGames"
+    ],
+    "source": "AppStoreCaptureTests (xcresult summary), validated by scripts/store/assemble_refresh.py"
+  },
+  "screenshots": [
+    {
+      "file": "01-today.png",
+      "width": 1320,
+      "height": 2868,
+      "sha256": "80f05f25a38259d2085eeb7cbdd84852d0e44eff0e09ac828296182385dec7e7"
+    },
+    {
+      "file": "02-feed.png",
+      "width": 1320,
+      "height": 2868,
+      "sha256": "04d943269556c68eba3d54a8ce46606804692f5e3010b9993c4c16ab3bf760c6"
+    },
+    {
+      "file": "03-library.png",
+      "width": 1320,
+      "height": 2868,
+      "sha256": "8971a4de50253efce96e0aaf59b2aa5ce76a8c54c3710c52b0b4e9b9b8c769b8"
+    },
+    {
+      "file": "04-cleanup.png",
+      "width": 1320,
+      "height": 2868,
+      "sha256": "eecddda1f2ff8120b44036bcd38877a69655bfc5cf71a569e9c6c954ebbbf812"
+    },
+    {
+      "file": "05-snake-play.png",
+      "width": 1320,
+      "height": 2868,
+      "sha256": "87562b44c7711d348e6111a02f9df6752bf1644daa05baa4b00830bdbe59d223"
+    },
+    {
+      "file": "06-memory-play.png",
+      "width": 1320,
+      "height": 2868,
+      "sha256": "0fbb0c8d304a8fa96a83305f5e0c4d6b591026c656bfd1a3dfc4fd0c672ee7d2"
+    },
+    {
+      "file": "07-collage.png",
+      "width": 1320,
+      "height": 2868,
+      "sha256": "e6da096c7ec83a7e39b4f92ba67918cefa7ff6247aeee1f69dad8f2edfcbb01e"
+    },
+    {
+      "file": "08-editor-filter.png",
+      "width": 1320,
+      "height": 2868,
+      "sha256": "df6bf0cec1354ee11d794995e67c2b1042219471ec87e2624ba805f1616b5d31"
+    },
+    {
+      "file": "09-movie.png",
+      "width": 1320,
+      "height": 2868,
+      "sha256": "64590783a9d8f0b9b98872377a8537831884c4a1eb660a71767dce7f936e051a"
+    },
+    {
+      "file": "10-vault-media.png",
+      "width": 1320,
+      "height": 2868,
+      "sha256": "500f78ee263febc5547466c5e34660ff2daf4626b59600665551130cdfb775cd"
+    }
+  ],
+  "previews": [
+    {
+      "file": "01-review.mp4",
+      "duration": 27.0,
+      "resolution": [
+        886,
+        1920
+      ],
+      "fps": 30,
+      "sha256": "172ce3adadb6dc2eb1fba130ca92d975bcf983ec65b7334db671a12d0edfb37a"
+    },
+    {
+      "file": "02-photo-games.mp4",
+      "duration": 27.0,
+      "resolution": [
+        886,
+        1920
+      ],
+      "fps": 30,
+      "sha256": "e5646d9257d8d951ae33f046e3c021504c02424812833e8ab7434261e0029ad9"
+    }
+  ],
+  "visual_review": {
+    "status": "PASS",
+    "date": "2026-10-22",
+    "notes": "Alle 10 Screenshots und beide Clips gesichtet; Tresor-Ordnerchip „All 5“ erscheint blau statt Bernstein (echte App-Oberfläche)."
+  }
+}

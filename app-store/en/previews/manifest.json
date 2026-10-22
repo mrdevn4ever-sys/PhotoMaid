@@ -1,0 +1,110 @@
+[
+  {
+    "file": "01-review.mp4",
+    "locale": "en",
+    "duration": 27.0,
+    "resolution": [
+      886,
+      1920
+    ],
+    "fps": 30,
+    "poster_file": "01-review-poster.png",
+    "poster_sha256": "13dbf14f5c8e9976c1d83b214c4b1427ee686bcca653f018495bfbe8ead7c9df",
+    "poster_time": 1,
+    "poster_timecode": "00:00:01:00",
+    "audio": "AAC stereo, silence",
+    "source": "Actual simulator screen recording; no generated UI",
+    "source_file": "01-review.mov",
+    "source_sha256": "2fb921f75eb72004b543b70b59b7b03636b962f648761018f99da150acd5e868",
+    "source_duration": 29.231667,
+    "source_recording": {
+      "name": "01-review",
+      "start": 1792681358.514199,
+      "end": 1792681410.380328,
+      "returncode": 0
+    },
+    "source_markers": [
+      {
+        "time": 1792681377.072304,
+        "label": "feed",
+        "clip": "01-review"
+      },
+      {
+        "label": "keep",
+        "time": 1792681384.618599,
+        "clip": "01-review"
+      },
+      {
+        "label": "trash",
+        "clip": "01-review",
+        "time": 1792681391.729157
+      },
+      {
+        "label": "later",
+        "time": 1792681398.67899,
+        "clip": "01-review"
+      },
+      {
+        "time": 1792681406.238453,
+        "clip": "01-review",
+        "label": "back"
+      }
+    ],
+    "editing": {
+      "source_start": 0,
+      "source_end": 29.231667,
+      "playback_speed": 1.2179861250000001,
+      "final_frame_hold_seconds": 3,
+      "description": "Complete actual recording, longer demos accelerated to 24 seconds; genuine final frame held for 3 seconds"
+    },
+    "status": "PASS",
+    "sha256": "172ce3adadb6dc2eb1fba130ca92d975bcf983ec65b7334db671a12d0edfb37a"
+  },
+  {
+    "file": "02-photo-games.mp4",
+    "locale": "en",
+    "duration": 27.0,
+    "resolution": [
+      886,
+      1920
+    ],
+    "fps": 30,
+    "sha256": "e5646d9257d8d951ae33f046e3c021504c02424812833e8ab7434261e0029ad9",
+    "poster_file": "02-photo-games-poster.png",
+    "poster_sha256": "242aa72c8b374ec6b530d2aefba53e5241e682c5f1c8cd7604af112e9e01e3bc",
+    "poster_time": 11,
+    "poster_timecode": "00:00:11:00",
+    "audio": "AAC stereo, silence",
+    "source": "Actual memory card taps and swipe-only SpriteKit gameplay on its real clock",
+    "sources": [
+      {
+        "file": "04-memory.mov",
+        "sha256": "9a3175a481b4e869b8c8b89ca87f35fe430884f7a5ff540f68799c941076efe5",
+        "duration": 20.666667,
+        "used_seconds": 8,
+        "playback_speed": 1,
+        "recording": {
+          "name": "04-memory",
+          "start": 1792681687.179959,
+          "end": 1792681711.88022,
+          "returncode": 0
+        }
+      },
+      {
+        "file": "05-snake.mov",
+        "sha256": "cd1bdad66d6c8b359bc3136cadd2b3840915ebc98bdf7eb0a4c25165a1856678",
+        "duration": 29.003333,
+        "used_seconds": 16,
+        "playback_speed": 1,
+        "recording": {
+          "name": "05-snake",
+          "start": 1792681764.317466,
+          "end": 1792681797.5878038,
+          "returncode": 0
+        }
+      }
+    ],
+    "editing": "8s Pairs + 16s Snake at 1x; genuine final frame held for 3s",
+    "status": "PASS"
+  }
+]

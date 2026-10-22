@@ -205,4 +205,8 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
 - TestFlight: Build 1.0 (27) mit laufenden Spielszenen auf den Startseiten, Standbildern in „Kurze Pause“ und
   Rekord-Plakette (3480578) hochgeladen und von Apple verarbeitet (Lauf 39762670537, Unit-Tests davor PASS,
   22.10.2026, nur interne Tester)
+- Store-Einträge Englisch (22.10.2026): 10 Screenshots (iPhone 6,9″, 1320 × 2868) und 2 Vorschauclips (Aufräumen,
+  Fotospiele; je 27 s, 886 × 1920) im Experiment-Design unter `app-store/en/`; Aufnahme-Lauf 39797435049 auf 64f1715,
+  5/5 Aufnahmetests PASS, Sichtprüfung PASS (Tresor-Ordnerchip „All 5“ blau statt Bernstein). Alle älteren
+  Store-Aufnahmen (16 Sprachen) entfernt. Kein Upload zu App Store Connect.
 - Geräteabnahme: NOT RUN
