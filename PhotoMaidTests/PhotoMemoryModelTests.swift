@@ -65,23 +65,39 @@ import UIKit
 
     @Test func lateCancelledLoadCannotReplaceANewerRound() async throws {
         let model = PhotoMemoryModel(canUsePhotos: { _ in true })
-        var pending: CheckedContinuation<UIImage?, Never>?
+        var pending: [CheckedContinuation<UIImage?, Never>] = []
         model.startPhotos(["a", "b"]) { _ in
-            await withCheckedContinuation { pending = $0 }
+            await withCheckedContinuation { pending.append($0) }
         }
         for _ in 0..<100 {
-            if pending != nil { break }
+            if pending.count == 2 { break }
             try await Task.sleep(for: .milliseconds(5))
         }
-        let completion = try #require(pending)
+        #expect(pending.count == 2, "Both previews load at the same time")
         model.startMotifs()
         let token = model.roundID
-        completion.resume(returning: UIImage())
+        for completion in pending { completion.resume(returning: UIImage()) }
         // Give the cancelled task a chance to receive its result.
         try await Task.sleep(for: .milliseconds(20))
         #expect(!model.isLoading && model.roundID == token)
         #expect(model.photoIDs.isEmpty && model.images.isEmpty)
         #expect(model.game?.pairCount == 6)
+    }
+
+    @Test func previewsLoadInParallelAndKeepTheSelectionOrder() async throws {
+        let model = PhotoMemoryModel(canUsePhotos: { _ in true })
+        var pending: [String: CheckedContinuation<UIImage?, Never>] = [:]
+        model.startPhotos(["a", "b", "c"]) { id in
+            await withCheckedContinuation { pending[id] = $0 }
+        }
+        for _ in 0..<100 {
+            if pending.count == 3 { break }
+            try await Task.sleep(for: .milliseconds(5))
+        }
+        #expect(pending.count == 3, "All three previews are requested before any has finished")
+        for id in ["c", "b", "a"] { pending[id]?.resume(returning: UIImage()) }
+        try await settle(model)
+        #expect(model.photoIDs == ["a", "b", "c"] && model.images.count == 3)
     }
 
     @Test func losingAccessDiscardsBothTheGameAndCachedPhotos() async throws {

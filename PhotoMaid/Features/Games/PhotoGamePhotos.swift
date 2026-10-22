@@ -100,14 +100,7 @@ final class PhotoGamePhotos {
             var loaded: [String: UIImage] = [:]
             var used: [String] = []
             if wanted >= minimumCount, ids.count >= wanted {
-                for id in ids {
-                    guard !Task.isCancelled else { return }
-                    guard self.permitted([id]) else { if source != nil { continue }; break }
-                    if let image = await load(id) {
-                        loaded[id] = image; used.append(id)
-                        if used.count == wanted { break }
-                    } else if source == nil { break }
-                }
+                (loaded, used) = await self.loadConcurrently(ids, wanted: wanted, strict: source == nil, load: load)
             }
             guard !Task.isCancelled, self.loadID == token else { return }
             self.isLoading = false; self.loadingTask = nil
@@ -122,6 +115,38 @@ final class PhotoGamePhotos {
     }
 
     func cancelLoading() { loadID = UUID(); loadingTask?.cancel(); loadingTask = nil; isLoading = false }
+
+    /// Bis zu sechs Fotos gleichzeitig statt eins nach dem anderen (Nutzer, 22.10.2026: „Können wir laden
+    /// verschnellern?“) – PhotoKit lädt Vorschauen und iCloud-Fotos parallel. Die Reihenfolge der Auswahl bleibt.
+    /// `strict` (eigene Auswahl): jedes Foto ist nötig, ein Fehlschlag bricht ab. Sonst werden Fehlschläge übersprungen,
+    /// bis `wanted` Fotos da sind. Jede Kennung wird vor dem Laden geprüft (Tresor, ausgeblendet, Zugriff).
+    private func loadConcurrently(_ ids: [String], wanted: Int, strict: Bool,
+                                  load: @escaping @MainActor (String) async -> UIImage?)
+        async -> (images: [String: UIImage], used: [String]) {
+        let parallel = 6
+        let loader = UncheckedBox(load) // Hauptakteur-Closure; jeder Aufruf läuft weiter auf dem Hauptakteur.
+        var found: [(index: Int, id: String, image: UIImage)] = []
+        var failed = false
+        await withTaskGroup(of: (Int, String, UncheckedBox<UIImage>?).self) { group in
+            var next = 0, running = 0
+            while true {
+                while running < parallel, next < ids.count, found.count < wanted, !failed, !Task.isCancelled {
+                    let index = next, id = ids[index]
+                    next += 1
+                    guard permitted([id]) else { if strict { failed = true }; continue }
+                    running += 1
+                    group.addTask { (index, id, await loader.value(id).map(UncheckedBox.init)) }
+                }
+                guard running > 0, let result = await group.next() else { break }
+                running -= 1
+                if let image = result.2 { found.append((result.0, result.1, image.value)) } else if strict { failed = true }
+                if Task.isCancelled || failed || found.count >= wanted { group.cancelAll() }
+            }
+        }
+        guard !failed else { return ([:], []) }
+        let chosen = found.sorted { $0.index < $1.index }.prefix(wanted)
+        return (Dictionary(uniqueKeysWithValues: chosen.map { ($0.id, $0.image) }), chosen.map(\.id))
+    }
 
     /// Secure background window for Foto Blocks, reusing this central loader and PreviewPipeline.
     /// At most current + next are retained. iCloud downloads use Apple's existing Photos pipeline.
