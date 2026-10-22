@@ -79,11 +79,11 @@ Schrift und Größen. Nicht für `main` bestimmt, solange der Nutzer es nicht au
   statisch“, `GameShowcase.swift`): Statt einer Symbolkachel zeigt jede Startseite oben eine kleine Szene in Schleife –
   Paare (Finger tippt, Karten drehen sich, ein Fehlversuch, dann alle Paare mit Haken), Foto-Snake (Schlange aus runden
   Fotos frisst Obst und wächst, Finger wischt vor jeder Kurve), Foto Blocks (Stein fällt in die Lücke, volle Reihen
-  verschwinden, Foto wird Streifen für Streifen frei, nächster Stein links). „Kurze Pause“ zeigt dieselben Szenen
-  klein auf den Spielkarten. Rekord als Bernstein-Plakette. Nur Ansicht: gezeichnete Beispielbilder statt
+  verschwinden, Foto wird Streifen für Streifen frei, nächster Stein links). „Kurze Pause“ zeigt auf den Spielkarten
+  ein festes Bild derselben Szene. Rekord als Bernstein-Plakette. Nur Ansicht: gezeichnete Beispielbilder statt
   Mediathek-Fotos, keine Eingabe, kein Spielstand; zeichnet nur bei aktiver App, bei „Bewegung reduzieren“ ein fester
-  Moment; Richtungen nie gespiegelt. Läuft nach dem Erscheinen eine Weile (Karten 4 s, Startseite 1 min) und ruht dann
-  auf dem letzten Bild; die große Snake-Wiese liegt als feste Ebene dahinter statt in jedem Bild neu gezeichnet.
+  Moment; Richtungen nie gespiegelt. Läuft nach dem Erscheinen eine Minute und ruht dann auf dem letzten Bild; die
+  große Snake-Wiese liegt als feste Ebene dahinter statt in jedem Bild neu gezeichnet.
 - **Texte aus echten Kennungen**, wo es sie schon gab (z. B. Mitteilungs-Erklärung in „Später“, Tresor-Hinweis in den
   Einstellungen) – teils länger als die Kurzfassung im Artefakt.
 - **Funktionen bleiben erreichbar**, die das Artefakt nicht zeigt: „Code vergessen?“, Sortieren/Auswählen im Tresor,
@@ -193,5 +193,7 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
   beide FAIL (Blocks-Wisch nach links nicht erkannt, Snake bewegt sich nicht). Ursache für die Häufung: Die
   dauerhaft laufenden Szenen ließen die App für XCUITest nie zur Ruhe kommen – Wartezeiten auf „idle“ von 23 s (ohne
   Szene) auf 32–59 s, Testdauer bis fast dreifach, am längsten beim Öffnen von „Kurze Pause“ (drei Szenen, große Wiese
-  in jedem Bild). Behoben durch Ruhephase und feste Wiesen-Ebene (siehe oben); Nachweis im nächsten Lauf
+  in jedem Bild). Mit Ruhephase und fester Wiesen-Ebene (2d03d27, Lauf 39747775318): alle vier Tests PASS, Testdauer
+  Blocks 77/73 s, test05 66/67 s; Wartezeit 40,6 s, davon 14,6 s (vorher 0,9 s) beim Öffnen von „Kurze Pause“ –
+  deshalb dort jetzt feste Bilder statt laufender Szenen (Nachweis im nächsten Lauf)
 - Geräteabnahme: NOT RUN

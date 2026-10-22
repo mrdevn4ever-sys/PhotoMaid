@@ -3,7 +3,7 @@ import SwiftUI
 import UIKit
 
 /// Laufende Mini-Szene der Spiele (Nutzer, 22.10.2026: „Vielleicht mehr game-mäßig, damit klar ist, um was es geht? Zu
-/// statisch“): groß oben auf jeder Startseite, klein auf den Karten in „Kurze Pause“. Zeigt in einer Schleife, wie
+/// statisch“): groß oben auf jeder Startseite, als festes Bild auf den Karten in „Kurze Pause“. Zeigt in einer Schleife, wie
 /// gespielt wird – bei Paare werden Karten aufgedeckt und Paare gefunden, die Foto-Snake frisst und wächst um ein Foto,
 /// bei Foto Blocks verschwinden volle Reihen und legen ein Foto frei. Nur Ansicht: gezeichnete Beispielbilder statt
 /// Mediathek-Fotos, keine Eingabe, kein Spielstand. Zeichnet nur bei aktiver App; bei „Bewegung reduzieren“ steht ein
@@ -17,6 +17,9 @@ struct GameShowcase: View {
 
     let kind: Kind
     var compact = false
+    /// Aus: ein festes Bild der Szene (Karten in „Kurze Pause“ – dort bewegt sich nichts, die Bewegung zeigt die
+    /// Startseite des Spiels; laufende Szenen in den Spielknöpfen hielten die App für XCUITest dauerhaft beschäftigt).
+    var animated = true
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.scenePhase) private var scenePhase
     @State private var start = Date.now
@@ -25,11 +28,12 @@ struct GameShowcase: View {
     var body: some View {
         let art = ShowcaseArt.make(kind)
         let radius: CGFloat = compact ? 16 : 24
+        let still = reduceMotion || !animated
         TimelineView(.animation(minimumInterval: compact ? 1.0 / 20 : 1.0 / 30,
-                                paused: reduceMotion || scenePhase != .active || resting)) { timeline in
+                                paused: still || scenePhase != .active || resting)) { timeline in
             let time = max(0, timeline.date.timeIntervalSince(start))
             Canvas { context, size in
-                let scene = ShowcaseScene(size: size, compact: compact, still: reduceMotion, art: art)
+                let scene = ShowcaseScene(size: size, compact: compact, still: still, art: art)
                 switch kind {
                 case .pairs: scene.pairs(time, &context)
                 case .snake(let character, _): scene.snake(time, &context, character: character)
@@ -48,10 +52,11 @@ struct GameShowcase: View {
         .environment(\.layoutDirection, .leftToRight) // Fingerrichtungen im Spiel sind physisch, auch in RTL.
         .accessibilityHidden(true)
         .task(id: scenePhase == .active) {
-            // Läuft eine Weile nach dem Erscheinen (klein 4 s, groß 1 min) und ruht dann auf dem letzten Bild:
-            // spart Akku, und die App wird wieder ruhig. Erneutes Öffnen oder Rückkehr in die App startet sie neu.
+            // Läuft nach dem Erscheinen eine Minute und ruht dann auf dem letzten Bild: spart Akku, und die App wird
+            // wieder ruhig. Erneutes Öffnen oder Rückkehr in die App startet sie neu.
+            guard !still else { return }
             resting = false
-            try? await Task.sleep(for: .seconds(compact ? 4 : 60))
+            try? await Task.sleep(for: .seconds(60))
             if !Task.isCancelled { resting = true }
         }
     }

@@ -96,8 +96,8 @@ struct PhotoGamesView: View {
     }
 }
 
-/// Spielkarte wie im Artefakt: violette Fläche, 84-pt-Szene, Titel 22 (Bricolage 700), Untertitel 14. Die kleine Szene
-/// läuft wie auf der Startseite, damit schon hier klar ist, worum es im Spiel geht.
+/// Spielkarte wie im Artefakt: violette Fläche, 84-pt-Bild aus der Spielszene, Titel 22 (Bricolage 700), Untertitel 14.
+/// Ein festes Bild genügt hier, damit klar ist, worum es geht; die Szene läuft auf der Startseite des Spiels.
 private struct PhotoGameTile: View {
     let showcase: GameShowcase.Kind
     let title: String
@@ -105,7 +105,7 @@ private struct PhotoGameTile: View {
 
     var body: some View {
         HStack(spacing: 16) {
-            GameShowcase(kind: showcase, compact: true).frame(width: 84, height: 84)
+            GameShowcase(kind: showcase, compact: true, animated: false).frame(width: 84, height: 84)
             VStack(alignment: .leading, spacing: 4) {
                 Text(verbatim: title).font(AppTypography.title).foregroundStyle(AppColors.textPrimary)
                 Text(verbatim: subtitle).font(PMFont.text(.regular, 14, relativeTo: .subheadline))
