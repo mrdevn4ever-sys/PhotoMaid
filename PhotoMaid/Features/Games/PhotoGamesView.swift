@@ -13,6 +13,8 @@ struct PhotoGamesView: View {
     var body: some View {
         content.environment(session)
             .preferredColorScheme(gameAppearance)
+            // Bernstein-Akzent für alle Spiele, auch wenn das Fenster aus dem Feed kommt (dort erbte Paare sonst Blau).
+            .tint(AppColors.accent)
     }
 
     /// One owner for the modal's system appearance, including returning from the dark Snake scene.
