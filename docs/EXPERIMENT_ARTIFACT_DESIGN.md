@@ -172,4 +172,10 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
   Wochenrückblick fest, ohne Fotos-Suche, Hero-Fächer nur sichtbar und Feed-Tasten-Fix (ff6c674) hochgeladen und von
   Apple verarbeitet (Lauf 39698316933, Unit-Tests davor PASS, 22.10.2026, nur interne Tester). Ein erster Versuch
   (Lauf 39690300592) wurde vor dem Upload abgebrochen, um den Feed-Tasten-Fix einzuschließen.
+- Spiele-UI-Tests mit parallelem Laden (e62beb8, Lauf 39731198318): iPhone und großes Fenster PASS bis auf test40
+  (Snake bei XXXL auf Arabisch, iPhone – vorbestehend, siehe oben); test60 und test35 diesmal PASS
+- TestFlight: Build 1.0 (26) mit einheitlichem Spiele-Design, parallelem Foto-Laden, Blocks ohne Wackeln/Hinweistext
+  und Bernstein-Akzent (52d8460) hochgeladen und von Apple verarbeitet (Lauf 39733444754, Unit-Tests davor PASS,
+  22.10.2026, nur interne Tester). Ein erster Versuch (Lauf 39733054664) wurde vor dem Upload abgebrochen, um den
+  Akzent-Fix einzuschließen. Die laufenden Spielszenen (f789db1) sind noch nicht in diesem Build.
 - Geräteabnahme: NOT RUN
