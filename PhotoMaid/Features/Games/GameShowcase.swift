@@ -454,38 +454,41 @@ private struct ShowcaseScene {
     // MARK: Foto Blocks
 
     func blocks(_ time: Double, _ ctx: inout GraphicsContext) {
-        let cycle = 3.0, finale = 2.4
-        let t = still ? cycle * 2 + 1.05 : time.truncatingRemainder(dividingBy: cycle * 4 + finale)
+        let columns = 8, rows = 8
+        let cycle = 2.4, finale = 2.2
+        let t = still ? cycle * 2 + 0.8 : time.truncatingRemainder(dividingBy: cycle * 4 + finale)
         let inFinale = t >= cycle * 4
         let k = min(3, Int(t / cycle))
         let tc = inFinale ? cycle : t - Double(k) * cycle
         ctx.fill(Path(bounds), with: .color(compact ? AppColors.pauseStroke : AppColors.surface))
         let inset: CGFloat = compact ? 8 : 14
-        let cell = max(1, (size.height - 2 * inset) / 8)
-        let board = CGRect(x: (size.width - cell * 6) / 2, y: (size.height - cell * 8) / 2, width: cell * 6, height: cell * 8)
+        let cell = max(1, (size.height - 2 * inset) / CGFloat(rows))
+        let board = CGRect(x: (size.width - cell * CGFloat(columns)) / 2, y: (size.height - cell * CGFloat(rows)) / 2,
+                           width: cell * CGFloat(columns), height: cell * CGFloat(rows))
         let boardShape = Path(roundedRect: board, cornerRadius: 4)
         ctx.fill(boardShape, with: .color(PhotoBlocksPalette.ink))
 
-        // Foto wird wie im Spiel von oben freigelegt: je volle Reihe ein Streifen.
-        let strips = inFinale ? 8 : Double(2 * k) + 2 * smooth((tc - 1.55) / 0.4)
+        // Foto wird wie im Spiel von oben freigelegt; ein Streifen ist schon frei, damit man sieht, worum es geht.
+        let strips = inFinale ? 8 : 2 + 1.5 * Double(k) + 1.5 * smooth((tc - 1.25) / 0.35)
         let sinceFinale = t - cycle * 4
         let dim = inFinale ? 0.55 * (1 - smooth(sinceFinale / 0.4)) : 0.55
-        let photoOpacity = inFinale ? 1 - smooth((sinceFinale - finale + 0.45) / 0.4) : 1
-        if strips > 0, photoOpacity > 0, let image = art.boardPhoto {
+        let photoOpacity = inFinale ? 1 - smooth((sinceFinale - finale + 0.45) / 0.4) : (k == 0 && !still ? smooth(tc / 0.3) : 1)
+        if photoOpacity > 0, let image = art.boardPhoto {
             var photo = ctx
             photo.clip(to: boardShape)
-            photo.clip(to: Path(CGRect(x: board.minX, y: board.minY, width: board.width, height: board.height * CGFloat(strips) / 8)))
+            photo.clip(to: Path(CGRect(x: board.minX, y: board.minY, width: board.width,
+                                       height: board.height * CGFloat(strips) / CGFloat(rows))))
             photo.opacity = photoOpacity
             photo.drawImage(ctx.resolve(image), in: board, fill: true)
             photo.fill(Path(board), with: .color(.black.opacity(dim)))
         }
         if !inFinale {
             var grid = Path()
-            for x in 1..<6 {
+            for x in 1..<columns {
                 grid.move(to: CGPoint(x: board.minX + CGFloat(x) * cell, y: board.minY))
                 grid.addLine(to: CGPoint(x: board.minX + CGFloat(x) * cell, y: board.maxY))
             }
-            for y in 1..<8 {
+            for y in 1..<rows {
                 grid.move(to: CGPoint(x: board.minX, y: board.minY + CGFloat(y) * cell))
                 grid.addLine(to: CGPoint(x: board.maxX, y: board.minY + CGFloat(y) * cell))
             }
@@ -493,63 +496,80 @@ private struct ShowcaseScene {
         }
         ctx.stroke(boardShape, with: .color(.white.opacity(0.2)), lineWidth: 1)
 
-        if !inFinale {
-            func cellRect(_ x: Double, _ y: Double) -> CGRect {
-                CGRect(x: board.minX + CGFloat(x) * cell + 1, y: board.minY + CGFloat(y) * cell + 1, width: cell - 2, height: cell - 2)
-            }
-            let shapes = PhotoBlocksShape.playableShapes
-            let gap = [4, 0, 4, 0][k]
-            let clear = clamp01((tc - 1.3) / 0.35)
-            var layer = ctx
-            layer.clip(to: boardShape)
-            layer.opacity = 1 - clear
-            if tc < 1.65 {
-                // Zwei fast volle Reihen kommen von unten herein; die Lücke ist zwei Felder breit.
-                let rise = 2 * (1 - smooth(tc / 0.35))
-                for y in 6...7 {
-                    for x in 0..<6 where x != gap && x != gap + 1 {
-                        drawBlock(cellRect(Double(x), Double(y) + rise),
-                                  color: PhotoBlocksPalette.color(shapes[(x * 3 + y * 5 + k) % shapes.count]), in: layer)
-                    }
-                }
-            }
-            if tc >= 0.15, tc < 1.65 {
-                let direction = gap > 2 ? 1.0 : -1.0
-                let steps = tc < 0.6 ? 0 : Double(min(2, Int((tc - 0.6) / 0.14) + 1))
-                let x = 2 + direction * steps
-                let y = tc < 1.15 ? -1 + ((tc - 0.15) / 0.22).rounded(.down) : 3 + 3 * smooth((tc - 1.15) / 0.12)
-                if tc < 1.15 {
-                    // Schatten zeigt, wo der Stein landet.
-                    for dx in 0...1 {
-                        for dy in 6...7 {
-                            let ghost = Path(roundedRect: cellRect(x + Double(dx), Double(dy)), cornerRadius: max(2, cell * 0.19))
-                            layer.stroke(ghost, with: .color(.white.opacity(0.4)), style: StrokeStyle(lineWidth: 1, dash: [3, 3]))
-                        }
-                    }
-                }
-                let color = PhotoBlocksPalette.color(shapes[(k * 2 + 1) % shapes.count])
-                for dx in 0...1 { for dy in 0...1 { drawBlock(cellRect(x + Double(dx), y + Double(dy)), color: color, in: layer) } }
-            }
-            if clear > 0, clear < 1 {
-                let band = CGRect(x: board.minX, y: board.minY + 6 * cell, width: board.width, height: 2 * cell)
-                ctx.fill(Path(band), with: .color(PhotoBlocksPalette.accent.opacity((1 - clear) * 0.5)))
-            }
-            guard !compact, !still else { return }
-            // Finger rechts neben dem Feld: seitlich wischen, dann runterwischen zum Absetzen.
-            let anchor = CGPoint(x: board.maxX + max(34, (size.width - board.maxX) * 0.32), y: board.midY - cell)
-            let side = (tc - 0.42) / 0.5
-            let drop = (tc - 0.98) / 0.32
-            if side > 0, side < 1 {
-                let tip = CGPoint(x: anchor.x + (gap > 2 ? 1 : -1) * 28 * CGFloat(smooth(side / 0.7)), y: anchor.y)
-                swipeTrail(from: anchor, to: tip, opacity: bump(side), in: ctx)
-                drawHand(at: tip, side: 30, press: 0, opacity: bump(side), in: ctx)
-            } else if drop > 0, drop < 1 {
-                let tip = CGPoint(x: anchor.x, y: anchor.y + 30 * CGFloat(smooth(drop / 0.6)))
-                swipeTrail(from: anchor, to: tip, opacity: bump(drop), in: ctx)
-                drawHand(at: tip, side: 30, press: 0, opacity: bump(drop), in: ctx)
-            }
-        } else {
+        guard !inFinale else {
             celebrate(t, from: cycle * 4 + 0.2, to: cycle * 4 + finale - 0.3, in: &ctx)
+            return
+        }
+        func cellRect(_ x: Double, _ y: Double) -> CGRect {
+            CGRect(x: board.minX + CGFloat(x) * cell + 1, y: board.minY + CGFloat(y) * cell + 1, width: cell - 2, height: cell - 2)
+        }
+        let shapes = PhotoBlocksShape.playableShapes
+        let gaps = [5, 1, 5, 1]
+        let gap = gaps[k]
+        let bottom = rows - 2
+        let clear = clamp01((tc - 1.02) / 0.3)
+        var layer = ctx
+        layer.clip(to: boardShape)
+        layer.opacity = 1 - clear
+        if tc < 1.32 {
+            // Zwei fast volle Reihen kommen von unten herein; die Lücke ist zwei Felder breit.
+            let rise = 2 * (1 - smooth(tc / 0.3))
+            for y in bottom..<rows {
+                for x in 0..<columns where x != gap && x != gap + 1 {
+                    drawBlock(cellRect(Double(x), Double(y) + rise),
+                              color: PhotoBlocksPalette.color(shapes[(x * 3 + y * 5 + k) % shapes.count]), in: layer)
+                }
+            }
+        }
+        let direction = gap > 3 ? 1.0 : -1.0
+        if tc >= 0.1, tc < 1.32 {
+            let steps = tc < 0.45 ? 0 : Double(min(2, Int((tc - 0.45) / 0.12) + 1))
+            let x = 3 + direction * steps
+            let y = tc < 0.9 ? -1 + ((tc - 0.1) / 0.18).rounded(.down) : 3 + Double(bottom - 3) * smooth((tc - 0.9) / 0.1)
+            if tc < 0.9 {
+                // Schatten zeigt, wo der Stein landet.
+                for dx in 0...1 {
+                    for dy in bottom..<rows {
+                        let ghost = Path(roundedRect: cellRect(x + Double(dx), Double(dy)), cornerRadius: max(2, cell * 0.19))
+                        layer.stroke(ghost, with: .color(.white.opacity(0.4)), style: StrokeStyle(lineWidth: 1, dash: [3, 3]))
+                    }
+                }
+            }
+            let color = PhotoBlocksPalette.color(shapes[(k * 2 + 1) % shapes.count])
+            for dx in 0...1 { for dy in 0...1 { drawBlock(cellRect(x + Double(dx), y + Double(dy)), color: color, in: layer) } }
+        }
+        if clear > 0, clear < 1 {
+            let band = CGRect(x: board.minX, y: board.minY + CGFloat(bottom) * cell, width: board.width, height: 2 * cell)
+            ctx.fill(Path(band), with: .color(PhotoBlocksPalette.accent.opacity((1 - clear) * 0.5)))
+        }
+        guard !compact else { return }
+
+        // Links: der nächste Stein, wie im Spiel.
+        let box = CGRect(x: board.minX - min(70, board.minX - 8), y: board.minY + 4, width: min(56, board.minX - 16), height: 56)
+        if box.width >= 36 {
+            ctx.fill(Path(roundedRect: box, cornerRadius: 12), with: .color(AppColors.control.opacity(0.6)))
+            let next = PhotoBlocksPalette.color(shapes[(((k + 1) % 4) * 2 + 1) % shapes.count])
+            let unit = min(14, box.width / 3.2)
+            for dx in 0...1 {
+                for dy in 0...1 {
+                    drawBlock(CGRect(x: box.midX - unit + CGFloat(dx) * unit, y: box.midY - unit + CGFloat(dy) * unit,
+                                     width: unit, height: unit).insetBy(dx: 0.5, dy: 0.5), color: next, in: ctx)
+                }
+            }
+        }
+        guard !still else { return }
+        // Rechts: Finger wischt seitlich (bewegen), dann nach unten (absetzen).
+        let anchor = CGPoint(x: board.maxX + max(34, (size.width - board.maxX) * 0.32), y: board.midY - cell)
+        let side = (tc - 0.3) / 0.45
+        let drop = (tc - 0.78) / 0.27
+        if side > 0, side < 1 {
+            let tip = CGPoint(x: anchor.x + CGFloat(direction) * 28 * CGFloat(smooth(side / 0.7)), y: anchor.y)
+            swipeTrail(from: anchor, to: tip, opacity: bump(side), in: ctx)
+            drawHand(at: tip, side: 30, press: 0, opacity: bump(side), in: ctx)
+        } else if drop > 0, drop < 1 {
+            let tip = CGPoint(x: anchor.x, y: anchor.y + 30 * CGFloat(smooth(drop / 0.6)))
+            swipeTrail(from: anchor, to: tip, opacity: bump(drop), in: ctx)
+            drawHand(at: tip, side: 30, press: 0, opacity: bump(drop), in: ctx)
         }
     }
 
