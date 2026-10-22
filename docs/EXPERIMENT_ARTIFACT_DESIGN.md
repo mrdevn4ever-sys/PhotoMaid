@@ -202,4 +202,7 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
   74 s / test05 71 s, großes Fenster 106 s / 103 s); Wartezeit gesamt 29 s statt 23 s ohne Szenen, Öffnen von „Kurze
   Pause“ 3,8 s statt 14,8 s; Screenshots: Snake-Kopf in jeder Richtung richtig gedreht, Wiese als Ebene, Standbilder
   in „Kurze Pause“ korrekt
+- TestFlight: Build 1.0 (27) mit laufenden Spielszenen auf den Startseiten, Standbildern in „Kurze Pause“ und
+  Rekord-Plakette (3480578) hochgeladen und von Apple verarbeitet (Lauf 39762670537, Unit-Tests davor PASS,
+  22.10.2026, nur interne Tester)
 - Geräteabnahme: NOT RUN
