@@ -230,6 +230,11 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
   7. Tabs unter dem Feed zählen nicht nach jedem Wisch neu (`AppModel.tabRecountKey`), sondern einmal beim Schließen;
      Hero-Fächer lädt verdeckt keine neuen Vorschaubilder.
   8. GIF-Prüfung je Medium gemerkt, Info-Text erst beim Öffnen, Analyse-Treffer nur mit sichtbarer Analyse-Seite.
-  Grauer Schleier der Wischhilfe deckt jetzt den ganzen Bildschirm (9122ded). Wirkung auf die Wärme: NOT RUN
+  Grauer Schleier der Wischhilfe deckt jetzt den ganzen Bildschirm (9122ded, Lauf 39833900851 inkl. Wischhilfe-Test
+  PASS). Hitze-Stand 0b1d93a: `swift test` PASS (496 + 24), Build + Unit-Tests PASS, QA-UI-Tests PASS, Real-Library:
+  Analyse-Warteschlange, Feed/Werbekarte/Verlauf (50 schnelle Wische), Wischhilfe, Große Dateien, Studio, Tresor,
+  StoreKit, Englisch/Arabisch, Papierkorb PASS (Lauf 39837173359). test00 (Werbung/Einwilligung beim Kaltstart,
+  schon vorher wechselhaft, siehe oben) 2 × FAIL / 1 × PASS (Lauf 39853840567); test60 (Fotos: Filter) 1 × FAIL
+  (Tableiste nach Startwerbung nicht antippbar) / 1 × PASS (Lauf 39853844621). Wirkung auf die Wärme: NOT RUN
   (nur am Gerät messbar).
 - Geräteabnahme: NOT RUN
