@@ -221,7 +221,7 @@ struct VaultHomeView: View {
         Button(action: action) {
             HStack(spacing: 4) {
                 Text(verbatim: title)
-                Text(verbatim: "\(count)").foregroundStyle(selected ? .white.opacity(0.85) : AppColors.textSecondary).monospacedDigit()
+                Text(verbatim: "\(count)").foregroundStyle(selected ? AppColors.onAccent.opacity(0.7) : AppColors.textSecondary).monospacedDigit()
             }
             .font(AppTypography.subheadline.weight(.semibold))
             .padding(.horizontal, AppSpacing.s)

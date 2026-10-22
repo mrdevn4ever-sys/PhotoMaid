@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Records the real simulator in response to a narrow test-side file protocol."""
-import argparse,json,os,re,signal,subprocess,time
+import argparse,json,os,re,signal,subprocess,threading,time
 from pathlib import Path
 
 def atomic(path, value):
@@ -26,6 +26,14 @@ def main():
                 process=None;log=None;current=None
             atomic(recordings/(name+'.recording.json'),{'name':name,'start':started,'end':stopped,'returncode':finished.returncode})
         process=None;log=None;current=None
+    stills=args.output/'stills';stills.mkdir(exist_ok=True)
+    screenshots=args.output/'screenshots';screenshots.mkdir(exist_ok=True)
+    def still(name):
+        taken=time.time()
+        result=subprocess.run(['xcrun','simctl','io',args.udid,'screenshot','--type=png',str(screenshots/(name+'.png'))],
+                              capture_output=True,timeout=60)
+        atomic(stills/(name+'.json'),{'name':name,'requested':taken,'finished':time.time(),'returncode':result.returncode,
+                                      'stderr':result.stderr.decode(errors='replace')[-500:]})
     def shutdown(*_):
         stop();raise SystemExit(0)
     signal.signal(signal.SIGTERM,shutdown)
@@ -46,6 +54,12 @@ def main():
                     else:raise RuntimeError('Recording did not become ready within 45 seconds')
                     time.sleep(.5)
                 elif value['operation']=='stop':stop()
+                elif value['operation']=='still':
+                    # Echter Simulator-Screenshot mitten in einer gehaltenen Geste (z. B. Wisch-Pille „Keep“): der Test
+                    # meldet ihn vor dem Ziehen an und wartet danach auf stills/<name>.json.
+                    delay=float(value.get('delay',0))
+                    if not 0<=delay<=10:raise ValueError('Invalid still delay')
+                    threading.Timer(delay,still,args=(name,)).start()
                 else:raise ValueError('Unsupported recording operation')
                 ack={'status':'ok'}
             except Exception as error:

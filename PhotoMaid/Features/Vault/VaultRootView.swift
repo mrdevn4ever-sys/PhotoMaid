@@ -28,6 +28,8 @@ struct VaultRootView: View {
             }
         }
         .animation(.default, value: vault.phase)
+        // Bernstein wie die übrige App; ohne eigene Tönung erbten Ordner-Chips im Tresor das System-Blau.
+        .tint(AppColors.accent)
     }
 }
 

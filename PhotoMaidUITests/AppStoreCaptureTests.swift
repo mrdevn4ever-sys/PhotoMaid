@@ -186,6 +186,57 @@ final class AppStoreCaptureTests: XCTestCase {
         pause(1)
         XCTAssertEqual(feedPosition(),before + (direction == "down" ? -1 : 1), "Actual feed decision/navigation must advance")
     }
+    /// Sichtbarer Wisch wie mit dem Finger: langsam ziehen, kurz halten (Richtungs-Pille und verschobenes Foto sind zu
+    /// sehen), dann loslassen – dieselbe echte Geste und Entscheidung wie sonst. `still`: echter Simulator-Screenshot
+    /// mitten im Halten (Store-Bild „Keep“/„Trash“), aufgenommen vom Aufnahme-Controller.
+    private func holdSwipe(_ direction: String, still: String? = nil) throws {
+        let before = feedPosition()
+        XCTAssertGreaterThan(before, 0)
+        let stage = e("feed.stage")
+        let start = stage.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
+        let offset: CGVector = switch direction {
+        case "up": CGVector(dx: 0, dy: -230)
+        case "left": CGVector(dx: -210, dy: 0)
+        case "right": CGVector(dx: 210, dy: 0)
+        default: CGVector(dx: 0, dy: 230)
+        }
+        if let still { try requestStill(still, delay: 1.5) }
+        start.press(forDuration: 0.12, thenDragTo: start.withOffset(offset), withVelocity: XCUIGestureVelocity(rawValue: 320),
+                    thenHoldForDuration: 1.6)
+        pause(1)
+        XCTAssertEqual(feedPosition(), before + (direction == "down" ? -1 : 1), "Actual feed decision/navigation must advance")
+        if let still { try awaitStill(still) }
+    }
+    private func requestStill(_ name: String, delay: Double) throws {
+        let directory = output.appendingPathComponent("control")
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        let token = UUID().uuidString
+        let request: [String: Any] = ["operation": "still", "name": name, "token": token, "delay": delay]
+        try JSONSerialization.data(withJSONObject: request).write(to: directory.appendingPathComponent("request-\(token).json"), options: .atomic)
+        let ack = directory.appendingPathComponent("ack-\(token).json")
+        for _ in 0..<50 {
+            if FileManager.default.fileExists(atPath: ack.path) {
+                let value = try JSONSerialization.jsonObject(with: Data(contentsOf: ack)) as? [String: Any]
+                XCTAssertEqual(value?["status"] as? String, "ok", value?["error"] as? String ?? "Still request failed")
+                return
+            }
+            Thread.sleep(forTimeInterval: 0.02)
+        }
+        XCTFail("Recording controller did not acknowledge still \(name)")
+    }
+    private func awaitStill(_ name: String) throws {
+        let result = output.appendingPathComponent("stills/\(name).json")
+        for _ in 0..<300 {
+            if FileManager.default.fileExists(atPath: result.path) {
+                let value = try JSONSerialization.jsonObject(with: Data(contentsOf: result)) as? [String: Any]
+                XCTAssertEqual(value?["returncode"] as? Int, 0, value?["stderr"] as? String ?? "Still failed")
+                shots.append(["file": name + ".png", "language": language, "appearance": "dark", "status": "PASS"])
+                return
+            }
+            pause(0.1)
+        }
+        XCTFail("Still was not captured: \(name)")
+    }
     private func editorTool(_ tool: String) {
         let target = e("editor.tool." + tool)
         let row = e("editor.tools")
@@ -438,8 +489,9 @@ final class AppStoreCaptureTests: XCTestCase {
         waitForPhotoAccess()
         capturePage("today")
         launch("feed"); awaitStage()
-        swipeFeed("up"); swipeFeed("left"); snap("feed")
-        swipeFeed("right"); snap("feed-later")
+        // Behalten und Papierkorb sichtbar im Store-Bild: Screenshot mitten in der gehaltenen Geste.
+        try holdSwipe("up", still: "feed-keep"); try holdSwipe("left", still: "feed-trash"); snap("feed")
+        try holdSwipe("right", still: "feed-later-drag"); snap("feed-later")
         capturePage("library")
         capturePage("cleanup")
         capturePage("collage")
@@ -580,11 +632,12 @@ final class AppStoreCaptureTests: XCTestCase {
     func test10AppPreviewReview() throws {
         launch("feed"); awaitStage()
         try recording("start",name:"01-review")
-        try mark("feed"); pause(2)
-        swipeFeed("up"); pause(1); try mark("keep"); pause(2)
-        swipeFeed("left"); pause(1); try mark("trash"); pause(2)
-        swipeFeed("right"); pause(0.8); try mark("later"); pause(3)
-        swipeFeed("down"); pause(0.8); try mark("back"); pause(4)
+        // Jede Entscheidung einmal klar sichtbar: langsam ziehen, Pille „Keep“ / „Trash“ / „Later“ halten, loslassen.
+        try mark("feed"); pause(1.5)
+        try holdSwipe("up"); try mark("keep"); pause(1)
+        try holdSwipe("left"); try mark("trash"); pause(1)
+        try holdSwipe("right"); pause(0.5); try mark("later"); pause(2)
+        swipeFeed("down"); pause(0.8); try mark("back"); pause(2.5)
         try recording("stop",name:"01-review")
     }
     func test20AppPreviewStudio() throws {

@@ -9,8 +9,10 @@ from pathlib import Path
 from PIL import Image
 from assemble_assets import category
 
-HEROES = ['today', 'feed', 'library', 'cleanup', 'snake-play', 'memory-play',
-          'collage', 'editor-filter', 'movie', 'vault-media']
+# Behalten und Papierkorb als Screenshots mitten in der echten, gehaltenen Wischgeste (Nutzer, 22.10.2026: „muss
+# klar ersichtlich sein – behalten, löschen einmal mindestens“); Apple erlaubt höchstens zehn je Gerät.
+HEROES = ['today', 'feed-keep', 'feed-trash', 'library', 'cleanup', 'snake-play', 'memory-play',
+          'collage', 'editor-filter', 'vault-media']
 SIZES = {'iphone-large': {(1320, 2868), (1290, 2796), (1260, 2736)},
          'iphone-medium': {(1206, 2622), (1179, 2556)},
          'iphone-duo': {(1398, 2034), (2007, 2853)}}
