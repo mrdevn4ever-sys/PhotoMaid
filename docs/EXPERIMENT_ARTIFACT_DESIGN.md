@@ -59,6 +59,10 @@ Schrift und Größen. Nicht für `main` bestimmt, solange der Nutzer es nicht au
   Feed). Jetzt einzelne Animationen mit Pausen ohne Zeichnen, und still, sobald Feed, Vollbild, Spiele, Tresor,
   ein anderer Tab, eine Unterseite oder der Hintergrund aktiv ist. Der Bericht stammt aus Build 21 (MetricKit liefert
   verzögert); das Löschen von 19 Medien im mitgeschickten Protokoll gehört zu einem anderen Start von Build 24.
+- **Entscheidungstasten im Feed passen in die Breite** (gefunden im Real-Library-UI-Test 30, 22.10.2026): Mit „Tasten
+  anzeigen: Immer“ oder VoiceOver waren fünf Tasten (4 × 64 + 80 pt, 22 pt Abstand) breiter als ein iPhone; die Zeile
+  schob den ganzen Feed seitlich hinaus (⋯, Rückgängig, Papierkorb-Zähler bei x = 400–444 auf 402 pt). Jetzt die
+  größte Stufe, die passt (64/80 → 56/68 → 48/56 → 44/48 pt), mindestens 44 pt Tippfläche. Betraf alle Builds 21–24.
 - **Texte aus echten Kennungen**, wo es sie schon gab (z. B. Mitteilungs-Erklärung in „Später“, Tresor-Hinweis in den
   Einstellungen) – teils länger als die Kurzfassung im Artefakt.
 - **Funktionen bleiben erreichbar**, die das Artefakt nicht zeigt: „Code vergessen?“, Sortieren/Auswählen im Tresor,
@@ -139,4 +143,17 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
   Tester); 22 mit Begrüßung nach Tageszeit, festem Kopf, Tableisten-Korrektur und Verlauf (10 neueste, Rest aufklappbar);
   23 mit tieferer Tableiste, plastischem Mittelknopf, kompakten Papierkorb/Später-Kacheln, Rückgängig am richtigen Eintrag
 - TestFlight: Build 1.0 (24) mit Gamification und Zahlenschloss-Rad hochgeladen und von Apple verarbeitet (Lauf 39634177758, 21.10.2026, nur interne Tester)
+- Nacht 21./22.10.2026 (Rundgang, Hero-Fächer, Feed-Tasten, Testanpassungen):
+  - `swift test` (Linux): PASS (495 Tests); `android_strings_to_xcstrings.py --check`: PASS
+  - QA-UI-Tests mit Rundgang (Spiele- und Tresor-Schritt, kein „Ansehen ändert nichts“): PASS (7d4cea2, Lauf
+    39675285627; 0ee501d mit Feed-Tasten-Fix, Lauf 39690942458)
+  - Real-Library-UI-Tests: 9 von 11 PASS auf 0ee501d (Lauf 39690938843); FAIL test00 (Werbe-/Einwilligungsablauf beim
+    Kaltstart) und test98 (Papierkorb-Limit) – beide schon vor dieser Nacht rot. **Korrektur:** Der Lauf vom 21.10.
+    17:39 UTC (f307dd3) war nicht „bis auf einen Schritt grün“: Sieben Real-Library-Tests waren rot, die Schritte
+    zeigten wegen `continue-on-error` trotzdem grün. Davon waren sechs Testanpassungen an das Design, einer ein echter
+    Fehler (Feed-Tasten, behoben, gezielter Lauf 39690653443 PASS).
+  - Spiele-UI-Tests (891b12a, Lauf 39687137413): FAIL test40 (Snake bei XXXL auf Arabisch, iPhone – identisch auf
+    `main`, Lauf 39675303256, vorbestehend seit dabbdd7), test60 (Snake bewegt sich nicht innerhalb 8 s, beide
+    Geräte) und test35 (PDF, großes Fenster) – Snake-/PDF-Code in Lauf 222 und 224 identisch, in Lauf 222 PASS; alle
+    übrigen PASS (test30 Studio/Feed-Zähler und test05 jetzt PASS)
 - Geräteabnahme: NOT RUN
