@@ -95,8 +95,16 @@ struct DirectionPill: View {
     }
 }
 
-/// Gestenhilfe beim Öffnen – zeigt die eigene Belegung. Jede Richtung steht an ihrem Rand des Fotos (oben, unten,
-/// links, rechts), damit sie klar auseinanderliegen; bleibt `duration` Sekunden, Antippen oder Wischen blendet sie aus.
+/// Rahmen der Bühne im Feed: dort stehen die Hinweise der Gestenhilfe.
+struct FeedStageAnchorKey: PreferenceKey {
+    static var defaultValue: Anchor<CGRect>? { nil }
+    static func reduce(value: inout Anchor<CGRect>?, nextValue: () -> Anchor<CGRect>?) { value = value ?? nextValue() }
+}
+
+/// Gestenhilfe beim Öffnen – zeigt die eigene Belegung. Jede Richtung steht an ihrem Rand der Bühne (oben, unten,
+/// links, rechts), damit sie klar auseinanderliegen; der Schleier dunkelt dabei den ganzen Bildschirm ab (Kopf,
+/// Aktionsleiste, Ränder). Bleibt `duration` Sekunden, Antippen oder Wischen blendet sie aus. Schleier und Hinweise
+/// lassen jede Berührung durch – Tippen und Wischen nimmt die Bühne an (`FeedView.stageLayers`).
 struct GestureHintOverlay: View {
     /// So lange bleibt die Hilfe stehen (Sekunden), wenn nichts passiert.
     static let duration: Double = 6
@@ -105,10 +113,29 @@ struct GestureHintOverlay: View {
     /// Ab dieser Fingerstrecke (pt) gilt eine Bewegung als Wisch.
     static let dismissDistance: CGFloat = 24
     let controls: FeedControls
+    /// Rahmen der Bühne (`FeedStageAnchorKey`).
+    let stage: Anchor<CGRect>
+    @Environment(\.layoutDirection) private var readingDirection
 
     var body: some View {
+        GeometryReader { proxy in
+            let rect = proxy[stage]
+            ZStack {
+                Color.black.opacity(0.28).accessibilityHidden(true)
+                hints
+                    .environment(\.layoutDirection, readingDirection)
+                    .padding(AppSpacing.l)
+                    .frame(width: rect.width, height: rect.height)
+                    .position(x: rect.midX, y: rect.midY)
+            }
+        }
+        .ignoresSafeArea()
+        .environment(\.layoutDirection, .leftToRight)
+        .allowsHitTesting(false)
+    }
+
+    private var hints: some View {
         ZStack {
-            Color.black.opacity(0.28).ignoresSafeArea().accessibilityHidden(true)
             hint(.up, "hint_up").frame(maxHeight: .infinity, alignment: .top)
             hint(.down, "hint_down").frame(maxHeight: .infinity, alignment: .bottom)
             HStack(spacing: AppSpacing.m) {
@@ -118,8 +145,6 @@ struct GestureHintOverlay: View {
             }
             .environment(\.layoutDirection, .leftToRight)
         }
-        .padding(AppSpacing.l)
-        .contentShape(.rect)
         .accessibilityElement(children: .combine)
         .accessibilityIdentifier("feed.hints")
     }

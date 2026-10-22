@@ -97,6 +97,13 @@ struct FeedView: View {
             }
             .padding(.bottom, AppSpacing.xs)
         }
+        // Gestenhilfe: Schleier über den ganzen Bildschirm, Hinweise an den Rändern der Bühne.
+        .overlayPreferenceValue(FeedStageAnchorKey.self) { stage in
+            if showHints, let stage {
+                GestureHintOverlay(controls: controls, stage: stage)
+                    .transition(.opacity)
+            }
+        }
         .tourOverlay(step: activeTourStep, isLast: tourStep == tourSteps.count - 1) {
             if tourStep >= tourSteps.count - 1 {
                 app.updateSettings { $0.feedTourSeen = true }
@@ -438,6 +445,7 @@ struct FeedView: View {
             }
             .animation(AppMotion.standard(reduceMotion), value: model.adCard?.id)
         }
+        .anchorPreference(key: FeedStageAnchorKey.self, value: .bounds) { $0 }
         .padding(.horizontal, AppSpacing.xs)
     }
 
@@ -454,10 +462,13 @@ struct FeedView: View {
                 .padding(.top, AppSpacing.s)
                 .zIndex(2)
             if showHints {
-                GestureHintOverlay(controls: controls)
-                    .transition(.opacity)
-                    .zIndex(3)
+                // Antippen blendet die Hilfe aus. Schleier und Hinweise liegen über der ganzen Ansicht (`feedScene`)
+                // und lassen Berührungen durch – Tippen und Wischen landen wie bisher hier auf der Bühne.
+                Color.clear
+                    .contentShape(.rect)
                     .onTapGesture { hideHints() }
+                    .accessibilityHidden(true)
+                    .zIndex(3)
             }
             VStack {
                 Spacer()
