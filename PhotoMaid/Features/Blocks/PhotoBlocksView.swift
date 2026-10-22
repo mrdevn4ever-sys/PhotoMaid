@@ -49,6 +49,15 @@ struct PhotoBlocksView: View {
             Spacer(minLength: 6)
             Text(key: "blocks_title").font(.headline)
             Spacer(minLength: 6)
+            if model.game.phase != .ready, model.saveFailed {
+                // Als Knopf in der festen Kopfzeile statt unter dem Feld (verschiebt das Spielfeld nicht).
+                Button { model.checkpoint() } label: {
+                    Image(systemName: "exclamationmark.triangle.fill").frame(width: 28, height: 28)
+                }
+                .buttonStyle(.pmBordered).frame(minWidth: 44, minHeight: 44)
+                .foregroundStyle(.orange)
+                .accessibilityLabel(L("blocks_save_retry"))
+            }
             if model.game.phase != .ready {
                 Button { model.pause() } label: { Image(systemName: "pause.fill").frame(width: 28, height: 28) }
                     .buttonStyle(.pmBordered).frame(minWidth: 44, minHeight: 44).accessibilityLabel(L("blocks_pause"))
@@ -91,7 +100,7 @@ struct PhotoBlocksView: View {
             GeometryReader { geo in
                 let width = min(geo.size.width, max(1, geo.size.height) * CGFloat(model.game.width) / CGFloat(model.game.height))
                 ZStack {
-                    PhotoBlocksBoard(game: model.game, image: model.image, onActions: model.apply)
+                    PhotoBlocksBoard(game: model.game, image: model.image, notice: boardNotice, onActions: model.apply)
                         .frame(width: width)
                         .onGeometryChange(for: CGSize.self) { $0.size } action: { size in
                             model.setDisplaySize(size, scale: displayScale, app: app)
@@ -108,12 +117,15 @@ struct PhotoBlocksView: View {
                     }
                 }.frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            if model.image == nil {
-                Text(key: model.photos.isLoading ? "memory_loading" : "blocks_fallback").font(.caption).foregroundStyle(.white.opacity(0.65))
-                    .multilineTextAlignment(.center).accessibilityIdentifier("blocks.fallback")
-            }
-            if model.saveFailed { saveError }
         }
+    }
+
+    /// Hinweis ohne Foto im Hintergrund des Spielfelds statt darunter (Nutzer, 22.10.2026: „wackelt ab und zu“): Der
+    /// Text unter dem Feld erschien bei jedem Nachladen des Fotos (Rückkehr in die App, Änderung der Mediathek, iCloud)
+    /// und verschwand wieder – das Feld wurde kleiner und größer und rückte seitlich nach.
+    private var boardNotice: String? {
+        guard model.image == nil else { return nil }
+        return L(model.photos.isLoading ? "memory_loading" : "blocks_fallback")
     }
 
     private var hud: some View {
@@ -124,11 +136,14 @@ struct PhotoBlocksView: View {
                         .accessibilityIdentifier("blocks.score")
                     Text(verbatim: L("blocks_best", model.best)).font(.caption).foregroundStyle(.white.opacity(0.7))
                 }
+                // Eine Zeile je Wert: wachsende Zahlen dürfen die Kopfzeile nie höher machen (sonst rückt das Feld).
+                .lineLimit(1).minimumScaleFactor(0.6)
                 Spacer(minLength: 2)
                 VStack(alignment: .trailing, spacing: 3) {
                     Text(verbatim: L("blocks_level", model.game.level)).font(.subheadline.bold())
                     Text(verbatim: L("blocks_rows", model.game.totalRows)).font(.caption).foregroundStyle(.white.opacity(0.7))
                 }
+                .lineLimit(1).minimumScaleFactor(0.6)
                 VStack(spacing: 0) {
                     Text(key: "blocks_next").font(.caption2).foregroundStyle(.white.opacity(0.7))
                     PhotoBlocksNext(shape: model.game.next)
@@ -139,7 +154,7 @@ struct PhotoBlocksView: View {
                     Text(key: "blocks_progress")
                     Spacer()
                     Text(verbatim: "\(model.game.revealedStrips * 10)%").monospacedDigit()
-                }.font(.caption)
+                }.font(.caption).lineLimit(1).minimumScaleFactor(0.7)
                 ProgressView(value: model.game.progress).tint(PhotoBlocksPalette.accent)
                     .accessibilityLabel(L("blocks_progress"))
                     .accessibilityIdentifier("blocks.progress")
