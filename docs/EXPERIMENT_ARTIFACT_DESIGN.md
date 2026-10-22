@@ -156,4 +156,8 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
     `main`, Lauf 39675303256, vorbestehend seit dabbdd7), test60 (Snake bewegt sich nicht innerhalb 8 s, beide
     Geräte) und test35 (PDF, großes Fenster) – Snake-/PDF-Code in Lauf 222 und 224 identisch, in Lauf 222 PASS; alle
     übrigen PASS (test30 Studio/Feed-Zähler und test05 jetzt PASS)
+- TestFlight: Build 1.0 (25) mit Tresor-Bearbeitung, Rundgang Spiele/Tresor, ohne Hitzewarnung, Analyse-WLAN-Fix,
+  Wochenrückblick fest, ohne Fotos-Suche, Hero-Fächer nur sichtbar und Feed-Tasten-Fix (ff6c674) hochgeladen und von
+  Apple verarbeitet (Lauf 39698316933, Unit-Tests davor PASS, 22.10.2026, nur interne Tester). Ein erster Versuch
+  (Lauf 39690300592) wurde vor dem Upload abgebrochen, um den Feed-Tasten-Fix einzuschließen.
 - Geräteabnahme: NOT RUN
