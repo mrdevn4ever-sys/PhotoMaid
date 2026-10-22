@@ -68,10 +68,9 @@ private struct ShowcaseArt {
     var photos: [Image] = []
     var boardPhoto: Image?
     var background: Image?
-    var heads: [PhotoSnakeGame.Direction: Image] = [:]
-    var eatingHeads: [PhotoSnakeGame.Direction: Image] = [:]
+    var head: Image?
+    var eatingHead: Image?
     var food: [Image] = []
-    var sparkles: [Image] = []
     let cardBack = Image(systemName: "photo.on.rectangle.angled").resizable()
     let check = Image(systemName: "checkmark").resizable()
     let hand = Image(systemName: "hand.point.up.left.fill").resizable()
@@ -84,15 +83,14 @@ private struct ShowcaseArt {
         case .pairs:
             break
         case .snake(let character, let night):
-            art.background = Image(uiImage: SnakeArt.image(night ? "bg_forest_night" : "bg_forest_day"))
-            for direction in PhotoSnakeGame.Direction.allCases {
-                art.heads[direction] = Image(uiImage: SnakeArt.image(
-                    PhotoSnakeHeadAnimation.overheadTexture(character: character, pose: .idle, direction: direction)))
-                art.eatingHeads[direction] = Image(uiImage: SnakeArt.image(
-                    PhotoSnakeHeadAnimation.overheadTexture(character: character, pose: .eat, direction: direction)))
-            }
-            art.food = (0..<6).map { Image(uiImage: SnakeArt.image(PhotoSnakeFood.mixed.texture(score: $0))) }
-            art.sparkles = (1...4).map { Image(uiImage: SnakeArt.image(String(format: "fx_collect_%02d", $0))) }
+            // Wenige Bilder aus dem Snake-Atlas (jedes kostet eine Umwandlung): Kopf in Ruhe und beim Fressen – die
+            // vier Richtungen sind gedrehte Fassungen desselben Bildes –, drei Sorten Futter; die Wiese direkt.
+            let forest = night ? "bg_forest_night" : "bg_forest_day"
+            art.background = Image(uiImage: UIImage(named: forest) ?? SnakeArt.image(forest))
+            art.head = Image(uiImage: SnakeArt.headImage(character))
+            art.eatingHead = Image(uiImage: SnakeArt.image(
+                PhotoSnakeHeadAnimation.overheadTexture(character: character, pose: .eat, direction: .up)))
+            art.food = (0..<3).map { Image(uiImage: SnakeArt.image(PhotoSnakeFood.mixed.texture(score: $0))) }
         case .blocks:
             art.boardPhoto = Image(uiImage: ShowcasePhotos.image(0, size: CGSize(width: 150, height: 200)))
         }
@@ -425,13 +423,32 @@ private struct ShowcaseScene {
         let now = track.point(head)
         let ahead = eaten < foods.count ? foods[eaten] - head : .infinity
         let behind = eaten > 0 ? head - foods[eaten - 1] : .infinity
-        if let image = (ahead < 0.9 || behind < 0.35 ? art.eatingHeads : art.heads)[now.direction] {
-            layer.drawImage(ctx.resolve(image), in: square(place(now.point), cell * 1.25), fill: false)
+        if let image = (ahead < 0.9 || behind < 0.35) ? (art.eatingHead ?? art.head) : art.head {
+            let degrees: Double = switch now.direction {
+            case .up: 0
+            case .right: 90
+            case .down: 180
+            case .left: 270
+            }
+            var head = layer
+            let center = place(now.point)
+            head.translateBy(x: center.x, y: center.y)
+            head.rotate(by: .degrees(degrees))
+            head.drawImage(ctx.resolve(image), in: square(.zero, cell * 1.25), fill: false)
         }
-        if !still, eaten > 0, behind / speed < 0.24, !art.sparkles.isEmpty {
-            let frame = min(art.sparkles.count - 1, Int(behind / speed / 0.06))
-            layer.drawImage(ctx.resolve(art.sparkles[frame]),
-                            in: square(place(track.point(foods[eaten - 1]).point), cell * 1.6), fill: false)
+        if !still, eaten > 0, behind / speed < 0.3 {
+            // Kurzes Funkeln, wo gefressen wurde.
+            let p = behind / speed / 0.3
+            var star = ctx.resolve(art.star)
+            star.shading = .color(AppColors.accent)
+            let center = place(track.point(foods[eaten - 1]).point)
+            for index in 0..<4 {
+                let angle = Double(index) * .pi / 2 + .pi / 4
+                let radius = cell * CGFloat(0.3 + 0.5 * p)
+                layer.drawImage(star, in: square(CGPoint(x: center.x + CGFloat(cos(angle)) * radius,
+                                                         y: center.y + CGFloat(sin(angle)) * radius),
+                                                 cell * CGFloat(0.45 * (1 - p))), fill: false)
+            }
         }
 
         // Finger: wischt kurz vor jeder Kurve in die neue Richtung – so wird gesteuert.

@@ -195,5 +195,8 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
   Szene) auf 32–59 s, Testdauer bis fast dreifach, am längsten beim Öffnen von „Kurze Pause“ (drei Szenen, große Wiese
   in jedem Bild). Mit Ruhephase und fester Wiesen-Ebene (2d03d27, Lauf 39747775318): alle vier Tests PASS, Testdauer
   Blocks 77/73 s, test05 66/67 s; Wartezeit 40,6 s, davon 14,6 s (vorher 0,9 s) beim Öffnen von „Kurze Pause“ –
-  deshalb dort jetzt feste Bilder statt laufender Szenen (Nachweis im nächsten Lauf)
+  deshalb dort feste Bilder statt laufender Szenen. Lauf 39752086857 (9bf72a4): alle vier Tests PASS, aber weiter
+  ~15 s beim ersten Öffnen nach jedem Start (beim zweiten 0,6 s) – Ursache waren 19 Snake-Bilder, die einzeln aus dem
+  SpriteKit-Atlas umgewandelt wurden. Jetzt 5 (Kopf in Ruhe/beim Fressen, gedreht je Richtung; drei Sorten Futter),
+  Funkeln aus Symbolen, Wiese direkt aus dem Bundle (Nachweis im nächsten Lauf)
 - Geräteabnahme: NOT RUN
