@@ -214,4 +214,22 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
   Loslassen – simctl-Screenshot 5–15 s, Snake-Bild pausiert).
 - TestFlight: Build 1.0 (28) mit Bernstein-Tönung im Tresor (Ordner-Chip „Alle“), sonst wie Build 27 (f0d110c)
   hochgeladen und von Apple verarbeitet (Lauf 39821456391, Unit-Tests davor PASS, 22.10.2026, nur interne Tester)
+- Wärme beim Wischen (Nutzer 22.10.2026: „Handy wird sau heiß beim Wischen“; Vorgabe: Qualität und Flüssigkeit
+  bleiben, keine Hitzewarnung, kein Hitzestopp – nur unnötige Arbeit weglassen):
+  1. Hintergrundarbeit (Analyse, Größen messen, Duplikate) wartet, solange der Feed vorne ist, und läuft danach von
+     selbst weiter (`ForegroundActivity`); Papierkorb/Raster über dem Feed messen weiter. Vorher lief sie halb mit.
+  2. Karten laden ihr Bild nicht neu, wenn sie nach oben rücken und schon in voller Qualität vom iPhone geladen sind
+     (`FeedMediaPage.localFinal`); iCloud-Nachladen wie bisher.
+  3. Vorrat der nächsten Fotos in genau der angezeigten Größe (vorher 1280 px gegen bis zu 2800 px angezeigt – traf nie).
+     Beim Schließen des Feeds wird der Vorrat freigegeben.
+  4. Ziehen: nur `FeedCardMotion` liest die Fingerposition – Bühne, Gesten und Karteninhalt werden nicht mehr bis zu
+     120-mal je Sekunde neu aufgebaut.
+  5. Kartenschatten von einer Form hinter der Karte statt aus Foto/Video (gleiches Aussehen, Bühne ist deckend schwarz).
+  6. Kalender je Zeitzone zwischengespeichert (`LocalDay`), Monatsgruppen je Mediathekstand (`ProgressRules.monthGroups`)
+     statt nach jedem Wisch für alle Medien; Linux-Test `monthGroupsMatchDirectMonthsAndRespectTimeZone`.
+  7. Tabs unter dem Feed zählen nicht nach jedem Wisch neu (`AppModel.tabRecountKey`), sondern einmal beim Schließen;
+     Hero-Fächer lädt verdeckt keine neuen Vorschaubilder.
+  8. GIF-Prüfung je Medium gemerkt, Info-Text erst beim Öffnen, Analyse-Treffer nur mit sichtbarer Analyse-Seite.
+  Grauer Schleier der Wischhilfe deckt jetzt den ganzen Bildschirm (9122ded). Wirkung auf die Wärme: NOT RUN
+  (nur am Gerät messbar).
 - Geräteabnahme: NOT RUN

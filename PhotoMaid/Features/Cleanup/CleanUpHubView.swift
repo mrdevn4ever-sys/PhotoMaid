@@ -34,7 +34,10 @@ struct CleanUpHubView: View {
         .appPage()
         .statusBarBackdrop()
         .toolbar(.hidden, for: .navigationBar)
-        .task(id: "\(app.pending.count)-\(app.cleanupMedia.count)") { await recount() }
+        .task(id: app.tabRecountKey("\(app.pending.count)-\(app.cleanupMedia.count)")) {
+            guard !app.tabsCoveredByFeed else { return }
+            await recount()
+        }
     }
 
     private var canRead: Bool { app.library.access.canRead }
@@ -297,7 +300,10 @@ struct CollectionsContent: View {
                 }
             }
         }
-        .task(id: "\(app.pending.count)-\(app.cleanupMedia.count)-\(app.customCollections.count)") { await evaluate() }
+        .task(id: app.tabRecountKey("\(app.pending.count)-\(app.cleanupMedia.count)-\(app.customCollections.count)")) {
+            guard !app.tabsCoveredByFeed else { return }
+            await evaluate()
+        }
         .sheet(item: $editing) { c in
             CollectionEditor(initial: c, isNew: isNew) { saved in
                 var list = app.customCollections

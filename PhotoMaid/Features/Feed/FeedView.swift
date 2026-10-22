@@ -19,6 +19,9 @@ struct FeedView: View {
     @State private var pan: CGSize = .zero
     @State private var panBase: CGSize = .zero
     @State private var showInfo = false
+    /// Text für „Info“, erst beim Öffnen berechnet (fragt den Dateinamen bei Fotos ab) – nicht bei jeder Auswertung der
+    /// Ansicht (Wärme-Audit 22.10.2026).
+    @State private var infoMessage = ""
     @State private var showTrash = false
     @State private var showGrid = false
     @State private var confirmExclude = false
@@ -61,7 +64,7 @@ struct FeedView: View {
             .alert(L("info"), isPresented: $showInfo) {
                 Button(L("ok"), role: .cancel) {}
             } message: {
-                Text(verbatim: infoText)
+                Text(verbatim: infoMessage)
             }
             .alert(excludeTitle, isPresented: $confirmExclude) {
                 Button(L("excl_confirm_action")) {
@@ -149,8 +152,11 @@ struct FeedView: View {
         .onChange(of: showMemory) { _, presented in
             model.setSuspended(voiceOver || zoomed || presented)
             if presented { app.player.pause() }
-            setFeedActive(!presented)
+            setFeedActive(feedInFront)
         }
+        // Papierkorb/Raster über dem Feed: dort darf gemessen werden (Größen beim Löschen).
+        .onChange(of: showTrash) { _, _ in setFeedActive(feedInFront) }
+        .onChange(of: showGrid) { _, _ in setFeedActive(feedInFront) }
         .onChange(of: model.session.index) { _, _ in resetZoom() }
         .onChange(of: app.library.changeToken) { _, _ in if model.isLoaded { model.refreshWindowAssets() } }
         .onChange(of: dragging) { _, isDragging in
@@ -158,10 +164,13 @@ struct FeedView: View {
             if !isDragging, case .dragging = model.machine.phase { model.dragCancelled() }
             if !isDragging, case .directionLocked = model.machine.phase { model.dragCancelled() }
         }
-        // Solange gewischt wird, treten Analyse und Messen zurück (Netz und Rechenzeit für die Vorschauen).
-        .onAppear { setFeedActive(!showMemory) }
-        .onDisappear { app.player.stop(); setFeedActive(false) }
+        // Solange gewischt wird, warten Analyse und Messen (Rechenzeit, Netz und Wärme für die Vorschauen).
+        .onAppear { setFeedActive(feedInFront) }
+        .onDisappear { app.player.stop(); app.previews.forgetCache(); setFeedActive(false) }
     }
+
+    /// Der Feed ist vorne (kein Blatt mit eigener Arbeit darüber): Hintergrundarbeit wartet (`ForegroundActivity`).
+    private var feedInFront: Bool { !showMemory && !showTrash && !showGrid }
 
     private func setFeedActive(_ active: Bool) {
         guard active != countedAsActiveFeed else { return }
@@ -490,20 +499,18 @@ struct FeedView: View {
     private func stageMedia(_ ref: ItemReference, size: CGSize) -> some View {
         if let asset = model.assets[ref.localIdentifier] {
             let top: Bool = ref == model.current
-            FeedMediaPage(asset: asset, isTop: top, state: model.previews[ref] ?? .loading,
-                          cachedPoster: model.posters[ref],
-                          retry: model.retries[ref] ?? 0, intentColor: top ? intentColor : nil,
-                          onLoading: { model.previewLoading(ref, hasVisibleContent: $0) },
-                          onResult: { result in model.previewResult(ref, result: result) },
-                          onRetry: { model.retryPreview(ref) },
-                          onSkip: { model.skipWithoutDecision(ref) })
-                .scaleEffect(top ? zoom : underScale(size))
-                .offset(top ? CGSize(width: model.offset.width + pan.width, height: model.offset.height + pan.height) : .zero)
-                .rotationEffect(top && !reduceMotion ? .degrees(model.offset.width / 40) : .zero)
-                .opacity(top ? 1 : underOpacity(size))
-                .zIndex(top ? 1 : 0)
-                .allowsHitTesting(top)
-                .accessibilityHidden(!top)
+            FeedCardMotion(model: model, top: top, size: size, zoom: zoom, pan: pan, reduceMotion: reduceMotion) {
+                FeedMediaPage(asset: asset, isTop: top, state: model.previews[ref] ?? .loading,
+                              cachedPoster: model.posters[ref],
+                              retry: model.retries[ref] ?? 0, intentColor: top ? intentColor : nil,
+                              onLoading: { model.previewLoading(ref, hasVisibleContent: $0) },
+                              onResult: { result in model.previewResult(ref, result: result) },
+                              onRetry: { model.retryPreview(ref) },
+                              onSkip: { model.skipWithoutDecision(ref) })
+            }
+            .zIndex(top ? 1 : 0)
+            .allowsHitTesting(top)
+            .accessibilityHidden(!top)
         }
     }
 
@@ -513,14 +520,6 @@ struct FeedView: View {
         let action = controls.action(for: d)
         return action.isDecision ? FeedActionText.color(action) : nil
     }
-
-    private func reveal(_ size: CGSize) -> CGFloat {
-        min(1, max(0, hypot(model.offset.width, model.offset.height) / max(1, size.width * 0.9)))
-    }
-
-    private func underOpacity(_ size: CGSize) -> Double { Double(reveal(size)) }
-
-    private func underScale(_ size: CGSize) -> CGFloat { reduceMotion ? 1 : 0.94 + 0.06 * reveal(size) }
 
     private var dragGesture: some Gesture {
         DragGesture(minimumDistance: 6, coordinateSpace: .local)
@@ -614,7 +613,8 @@ struct FeedView: View {
                     app.fullScreen = a.isVideo ? .videoEditor(assetID: a.id) : .editor(assetID: a.id)
                 }
                 Menu {
-                    Button { showInfo = true } label: { Label(L("info"), systemImage: "info.circle") }.disabled(asset == nil)
+                    Button { infoMessage = infoText; showInfo = true } label: { Label(L("info"), systemImage: "info.circle") }
+                        .disabled(asset == nil)
                     Button { flashHints() } label: { Label(L("feed_show_hints"), systemImage: "hand.draw") }
                     Button { showTrash = true } label: { Label(L("feed_view_basket"), systemImage: "trash") }
                     if model.request.isOrderable {
@@ -716,4 +716,34 @@ struct FeedView: View {
 private struct SeriesBox: Identifiable {
     let members: [MediaAsset]
     var id: String { members.map(\.id).joined(separator: ",") }
+}
+
+/// Bewegung einer Karte beim Wischen: die obere folgt dem Finger (verschoben, leicht gedreht), die untere wächst und
+/// blendet ein. Liest als einzige Ansicht `model.offset` – jedes Bild der Fingerbewegung (bis 120 je Sekunde)
+/// berechnet nur diese Werte neu, nicht Bühne, Gesten und Karteninhalt (Wärme-Audit 22.10.2026). Werte wie zuvor.
+private struct FeedCardMotion<Content: View>: View {
+    let model: FeedViewModel
+    let top: Bool
+    let size: CGSize
+    let zoom: CGFloat
+    let pan: CGSize
+    let reduceMotion: Bool
+    let content: Content
+
+    init(model: FeedViewModel, top: Bool, size: CGSize, zoom: CGFloat, pan: CGSize, reduceMotion: Bool,
+         @ViewBuilder content: () -> Content) {
+        self.model = model; self.top = top; self.size = size
+        self.zoom = zoom; self.pan = pan; self.reduceMotion = reduceMotion
+        self.content = content()
+    }
+
+    var body: some View {
+        let offset = model.offset
+        let reveal = min(1, max(0, hypot(offset.width, offset.height) / max(1, size.width * 0.9)))
+        content
+            .scaleEffect(top ? zoom : (reduceMotion ? 1 : 0.94 + 0.06 * reveal))
+            .offset(top ? CGSize(width: offset.width + pan.width, height: offset.height + pan.height) : .zero)
+            .rotationEffect(top && !reduceMotion ? .degrees(offset.width / 40) : .zero)
+            .opacity(top ? 1 : Double(reveal))
+    }
 }

@@ -48,12 +48,17 @@ struct SmartReviewView: View {
         .appPage()
         .navigationTitle(title)
         .task(id: kind) { await analysis.select(analysisKind, app: app) }
+        .onAppear { analysis.viewAppeared() }
+        .onDisappear { analysis.viewDisappeared() }
         // Tresor geändert oder Mediathek beim Öffnen noch nicht geladen: Umfang neu bestimmen (Ergebnisse bleiben).
         .onChange(of: analysis.scopeRevision) { _, _ in
             Task { await analysis.select(analysisKind, app: app) }
         }
-        // Im Feed entschieden: entschiedene Fotos verschwinden aus der Liste.
-        .onChange(of: app.pending.count) { _, _ in if isCurrent { analysis.reload() } }
+        // Im Feed entschieden: entschiedene Fotos verschwinden aus der Liste – einmal beim Schließen des Feeds, nicht
+        // nach jedem Wisch unter dem Feed (Wärme-Audit 22.10.2026).
+        .onChange(of: app.tabRecountKey("\(app.pending.count)")) { _, _ in
+            if isCurrent, !app.tabsCoveredByFeed { analysis.reload() }
+        }
         .sheet(item: $compare) { sel in
             SeriesCompareView(members: sel.members, title: L("ana_similar"),
                               subtitle: L("ana2_similar_compare_sub", sel.members.count)) { keep in

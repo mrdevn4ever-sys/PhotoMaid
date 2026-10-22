@@ -83,6 +83,10 @@ final class AnalysisController {
     @ObservationIgnored private var sourcesRevision = -1
     @ObservationIgnored private var validScope = false
     @ObservationIgnored private var lastRefresh: TimeInterval = 0
+    /// Geöffnete Analyse-Seiten. Ohne sichtbare Seite werden die Treffer nicht neu gelesen (SQLite und Filter über alle
+    /// offenen Fotos, bis zu einmal je Sekunde während eines Laufs); beim Öffnen liest `select` sie frisch
+    /// (Wärme-Audit 22.10.2026). Zähler und Zustand laufen weiter mit.
+    @ObservationIgnored private var viewers = 0
     @ObservationIgnored private var observers: [NSObjectProtocol] = []
     @ObservationIgnored private var pauseReason: AnalysisStopReason?
     /// Nach dem Anhalten der laufenden Analyse diese starten („Jetzt zuerst“).
@@ -434,8 +438,11 @@ final class AnalysisController {
         }
     }
 
+    func viewAppeared() { viewers += 1 }
+    func viewDisappeared() { viewers = max(0, viewers - 1) }
+
     private func refreshResults(force: Bool = false, debounce: Bool = false) {
-        guard validScope else { return }
+        guard validScope, viewers > 0 else { return }
         let now = ProcessInfo.processInfo.systemUptime
         guard force || now - lastRefresh >= 1 else { return }
         lastRefresh = now

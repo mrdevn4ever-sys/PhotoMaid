@@ -20,7 +20,10 @@ struct MonthsView: View {
         }
         .appPage()
         .navigationTitle(L("months_title"))
-        .task(id: "\(app.cleanupMedia.count)-\(app.read.events.count)") { await load() }
+        .task(id: app.tabRecountKey("\(app.cleanupMedia.count)-\(app.read.events.count)")) {
+            guard !app.tabsCoveredByFeed else { return }
+            await load()
+        }
     }
 
     private func list(_ months: [MonthProgress]) -> some View {

@@ -73,7 +73,8 @@ struct TodayView: View {
                     .background(AppColors.background.ignoresSafeArea(edges: .top))
             }
             .toolbar(.hidden, for: .navigationBar)
-            .task(id: "\(app.pending.count)-\(app.cleanupMedia.count)-\(app.settings.continueMonth ?? "")-\(app.settings.lastSessionEnd?.timeIntervalSince1970 ?? 0)") {
+            .task(id: app.tabRecountKey("\(app.pending.count)-\(app.cleanupMedia.count)-\(app.settings.continueMonth ?? "")-\(app.settings.lastSessionEnd?.timeIntervalSince1970 ?? 0)")) {
+                guard !app.tabsCoveredByFeed else { return }
                 await countProgress()
             }
             .tourOverlay(step: activeTourStep, isLast: tourStep == tourSteps.count - 1) {
@@ -428,6 +429,9 @@ struct HeroFan: View {
     let ids: [String]
     var animated = true
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    /// Die Medien, die beim Verdecken zu sehen waren (Feed, anderer Tab, App im Hintergrund): Verdeckt lädt der Fächer
+    /// nach einem Wisch keine neuen Vorschaubilder; sichtbar zeigt er wieder die aktuellen (Wärme-Audit 22.10.2026).
+    @State private var frozen: [String]?
 
     struct Wiggle {
         var x: Double = 0
@@ -439,8 +443,9 @@ struct HeroFan: View {
     private let slots = [Slot(left: 0, rotation: -12), Slot(left: 50, rotation: 10), Slot(left: 24, rotation: -2)]
 
     var body: some View {
+        let shown = (animated ? nil : frozen) ?? ids
         ZStack(alignment: .topLeading) {
-            ForEach(Array(ids.enumerated()), id: \.element) { index, id in
+            ForEach(Array(shown.enumerated()), id: \.element) { index, id in
                 let slot = slots[min(index, slots.count - 1)]
                 card(id)
                     .modifier(FanWiggle(slot: index, base: slot.rotation, animate: animated && !reduceMotion))
@@ -448,6 +453,7 @@ struct HeroFan: View {
             }
         }
         .frame(width: 120, height: 110, alignment: .topLeading)
+        .onChange(of: animated, initial: true) { _, visible in frozen = visible ? nil : ids }
     }
 
     private func card(_ id: String) -> some View {

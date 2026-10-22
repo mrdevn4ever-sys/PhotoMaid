@@ -117,6 +117,32 @@ import Foundation
         #expect(MonthKey.parse("٢٠٢٦-٠٩") == MonthKey(year: 2026, month: 9)) // arabisch-indische Ziffern
     }
 
+    /// Vorberechnete Monatsgruppen (einmal je Mediathekstand) zählen genau wie die direkte Berechnung.
+    @Test func monthGroupsMatchDirectMonthsAndRespectTimeZone() {
+        let iso = ISO8601DateFormatter()
+        let edge = iso.date(from: "2026-08-31T22:30:00Z")!, jul = iso.date(from: "2026-07-10T10:00:00Z")!
+        let recs: [String: ItemRecord] = [
+            "k": ItemRecord(item: photo(1), revision: 1, disposition: .kept),
+            "r": ItemRecord(item: photo(2), revision: 1, disposition: .removed),
+            "b": ItemRecord(item: photo(3), revision: 1, disposition: .later, bookmarked: true),
+        ]
+        let items: [(String, Date?)] = [("k", edge), ("r", edge), ("b", jul), ("u", jul), ("n", nil)]
+        for id in ["Europe/Zurich", "UTC", "America/Los_Angeles", "Asia/Tokyo"] {
+            let tz = TimeZone(identifier: id)!
+            let direct = ProgressRules.months(items, date: { $0.1 }, record: { recs[$0.0] }, timeZone: tz)
+            let groups = ProgressRules.monthGroups(Array(items.indices), date: { items[$0].1 }, key: { $0 }, timeZone: tz)
+            #expect(ProgressRules.months(groups: groups, record: { recs[items[$0].0] }) == direct)
+            #expect(direct.reduce(0) { $0 + $1.total } == 4)
+        }
+        // Gleicher Zeitpunkt, anderer Monat je Zeitzone: die Kalender je Zone werden zwischengespeichert, nie vermischt.
+        let zurich = TimeZone(identifier: "Europe/Zurich")!, utc = TimeZone(identifier: "UTC")!
+        #expect(MonthKey(edge, timeZone: zurich) == MonthKey(year: 2026, month: 9))
+        #expect(MonthKey(edge, timeZone: utc) == MonthKey(year: 2026, month: 8))
+        #expect(MonthKey(edge, timeZone: zurich) == MonthKey(year: 2026, month: 9))
+        #expect(LocalDay(edge, timeZone: TimeZone(identifier: "America/Los_Angeles")!) == LocalDay(year: 2026, month: 8, day: 31))
+        #expect(LocalDay(edge, timeZone: TimeZone(identifier: "Asia/Tokyo")!) == LocalDay(year: 2026, month: 9, day: 1))
+    }
+
     @Test func orderingKeepsUnknownLastAndShuffleIsStable() {
         struct A { let id: String; let d: Date?; let size: Int64? }
         let t = Date(timeIntervalSince1970: 1_788_220_800)

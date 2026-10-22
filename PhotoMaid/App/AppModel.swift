@@ -102,6 +102,13 @@ final class AppModel {
     var selectedTab: AppTab = .today
     /// Geöffneter Entscheidungs-Feed (Vollbild über den Tabs).
     var feed: FeedRequest?
+    /// Die Tabs liegen gerade unter dem Feed (bleiben dort bestehen, sieht aber niemand).
+    var tabsCoveredByFeed: Bool { feed != nil }
+
+    /// Kennung für Neuzählungen in den Tabs (`.task(id:)`): Unter dem Feed bleibt sie stehen – nach einem Wisch wird
+    /// dort nichts neu gezählt, und die Zähler werden gar nicht erst beobachtet. Beim Schließen des Feeds ändert sie
+    /// sich, dann wird einmal gezählt (Wärme-Audit 22.10.2026). Die Aufgabe selbst prüft `tabsCoveredByFeed`.
+    func tabRecountKey(_ key: @autoclosure () -> String) -> String { feed == nil ? key() : "covered-by-feed" }
     /// Einmaliger Wunsch aus Schnellaktion/„Öffnen in“ (wird von RootView ausgewertet).
     var pendingRoute: AppRoute?
     /// Vollbild über den Tabs (Betrachter, Editor, Diashow, Scanner).
@@ -117,6 +124,11 @@ final class AppModel {
     @ObservationIgnored private var publishDebounce: Task<Void, Never>?
     @ObservationIgnored private var feedAds: FeedAdState?
     @ObservationIgnored private var publishCoalescer = ChangeCoalescer(quiet: 0.6, maxDelay: 2.5)
+    /// Stand von `cleanupMedia` (jede Zuweisung zählt hoch) für die Monatsgruppen unten.
+    @ObservationIgnored private var cleanupMediaStamp = 0
+    /// Medien je Monat (Positionen in `cleanupMedia`): hängen nur von Mediathek und Zeitzone ab – einmal je Stand
+    /// berechnet statt nach jeder Entscheidung für alle Medien (Wärme-Audit 22.10.2026).
+    @ObservationIgnored private var monthGroupsCache: (stamp: Int, zone: String, groups: [MonthKey: [Int]])?
     @ObservationIgnored private var loadedToken = -1
     /// Gestartete Mediathek-Abfragen (fortlaufend).
     @ObservationIgnored private var loadGeneration = 0
@@ -316,6 +328,7 @@ final class AppModel {
             self.snapshot = s
             self.visibleMedia = self.visibleMedia.map { updates[$0.id] ?? $0 }
             self.cleanupMedia = self.cleanupMedia.map { updates[$0.id] ?? $0 }
+            self.cleanupMediaStamp += 1
             self.blocks.refreshPhotos(app: self)
         }
     }
@@ -335,6 +348,7 @@ final class AppModel {
         let held = removedAwaitingReload
         cleanupMedia = excluded.isEmpty && held.isEmpty ? visibleMedia
             : visibleMedia.filter { !excluded.contains($0.id) && !held.contains($0.reference) }
+        cleanupMediaStamp += 1
         blocks.refreshPhotos(app: self)
         rebuildPending()
     }
@@ -471,7 +485,10 @@ final class AppModel {
         let queueRevision = queueInputsRevision
         let hiddenFiles = files.concealedReferences
         let media = cleanupMedia
-        let derived = await Task.detached(priority: .userInitiated) { () -> (LedgerReadModel, [ItemReference]) in
+        let stamp = cleanupMediaStamp, zone = TimeZone.autoupdatingCurrent.identifier
+        let cachedGroups = monthGroupsCache.flatMap { $0.stamp == stamp && $0.zone == zone ? $0.groups : nil }
+        let derived = await Task.detached(priority: .userInitiated) {
+            () -> (LedgerReadModel, [ItemReference], [MonthKey: [Int]]) in
             // Medien und Dateien im Tresor erscheinen weder im Papierkorb noch unter „Später“ noch im Verlauf (E16).
             let concealment = VaultConcealment.shared
             let hidden: (ItemReference) -> Bool = { ref in
@@ -479,8 +496,10 @@ final class AppModel {
             }
             let anyHidden = !concealment.isEmpty
             let events = anyHidden ? state.events.filter { !hidden($0.item) } : state.events
-            let months = ProgressRules.months(media, date: \.creationDate, record: { state.records[$0.reference] },
-                                              timeZone: .autoupdatingCurrent)
+            let groups = cachedGroups ?? ProgressRules.monthGroups(
+                Array(media.indices), date: { media[$0].creationDate }, key: { $0 },
+                timeZone: TimeZone(identifier: zone) ?? .autoupdatingCurrent)
+            let months = ProgressRules.months(groups: groups, record: { state.records[media[$0].reference] })
             let view = LedgerReadModel(
                 records: state.records,
                 basket: state.records.values.filter { $0.disposition == .markedForCleanup && !(anyHidden && hidden($0.item)) }
@@ -498,8 +517,9 @@ final class AppModel {
                 reconciliationNeeded: state.intents.values.filter { $0.state == .reconciliationRequired })
             let queue = ReviewQueues.normalQueue(candidates: candidates, records: state.records,
                                                  session: ReviewSessionID(), today: day)
-            return (view, queue)
+            return (view, queue, groups)
         }.value
+        if cachedGroups == nil { monthGroupsCache = (stamp, zone, derived.2) }
         guard generation == readGeneration else { return }
         read = derived.0
         readReady = true

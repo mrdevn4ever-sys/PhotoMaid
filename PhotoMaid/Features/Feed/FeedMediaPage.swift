@@ -35,6 +35,10 @@ struct FeedMediaPage: View {
     @State private var qualityFailed = false
     /// Erneuter Versuch über „!“ (ändert nichts am Prüfstand, die Vorschau bleibt stehen).
     @State private var reload = 0
+    /// Als untere Karte schon in voller Qualität vom iPhone geladen (ohne Netz). Rückt die Karte nach oben, wird
+    /// dann nicht noch einmal geladen und dekodiert – genau während der Wisch-Animation (Wärme-Audit 22.10.2026).
+    /// Fehlt die volle Qualität lokal (iCloud), lädt die oberste Karte wie bisher mit Netz nach.
+    @State private var localFinal = false
 
     var body: some View {
         GeometryReader { geo in
@@ -84,8 +88,19 @@ struct FeedMediaPage: View {
                 RoundedRectangle(cornerRadius: AppRadii.sheet)
                     .strokeBorder(intentColor ?? AppColors.textPrimary.opacity(0.08), lineWidth: 3)
             }
-            .shadow(color: .black.opacity(isTop ? 0.5 : 0), radius: 25, y: 24)
-            .task(id: "\(asset.id)-\(isTop)-\(retry)-\(reload)-\(Int(geo.size.width))-\(Int(geo.size.height))") { await load(size: geo.size) }
+            // Schatten von einer schlichten Form hinter der Karte statt aus dem Inhalt (Foto, laufendes Video): sieht
+            // gleich aus – die Karte deckt ihre abgerundete Fläche ganz ab (`AppColors.stage`) –, muss beim Wischen aber
+            // nicht bei jedem Bild aus Foto oder Video berechnet werden (Wärme-Audit 22.10.2026).
+            .background {
+                if isTop {
+                    RoundedRectangle(cornerRadius: AppRadii.sheet)
+                        .fill(AppColors.stage)
+                        .shadow(color: .black.opacity(0.5), radius: 25, y: 24)
+                }
+            }
+            .task(id: "\(asset.id)-\(isTop && !localFinal)-\(retry)-\(reload)-\(Int(geo.size.width))-\(Int(geo.size.height))") {
+                await load(size: geo.size)
+            }
             .task(id: "\(asset.id)-gif-\(isTop)") {
                 guard isTop else { gifData = nil; return }
                 if let data = await GIFPlayback.data(for: asset.id), !Task.isCancelled { gifData = data }
@@ -165,6 +180,7 @@ struct FeedMediaPage: View {
     /// automatisch die volle Qualität aus iCloud. Klappt das nicht, bleibt die Vorschau und unten rechts steht „!“.
     private func load(size: CGSize) async {
         let target = PreviewPipeline.targetSize(for: size, scale: scale)
+        let network = isTop
         onLoading(visibleImage != nil || (videoReady && app.player.itemID == asset.id))
         cloudFailed = false
         qualityFailed = false
@@ -185,7 +201,7 @@ struct FeedMediaPage: View {
                 onResult(.poster(prepared))
             }
         }
-        for await update in app.previews.progressiveImage(for: asset.id, targetSize: target, allowNetwork: isTop) {
+        for await update in app.previews.progressiveImage(for: asset.id, targetSize: target, allowNetwork: network) {
             guard !Task.isCancelled else { return }
             switch update {
             case .image(let img, let isFinal):
@@ -195,6 +211,8 @@ struct FeedMediaPage: View {
                 guard !Task.isCancelled else { return }
                 image = prepared
                 if isFinal { downloadProgress = nil }
+                // Nur eine Ladung ohne Netz merkt sich das: bei der obersten Karte würde der Wechsel die Ladung neu starten.
+                if isFinal, !network { localFinal = true }
                 shown = true
                 onResult(.poster(prepared))
             case .progress(let p):

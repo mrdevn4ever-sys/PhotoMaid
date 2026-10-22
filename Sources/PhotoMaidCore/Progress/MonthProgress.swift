@@ -83,14 +83,31 @@ public enum ProgressRules {
     /// `.removed` zählt nur, solange das Medium noch in der Liste ist (wiederhergestellt) – dann ist es wieder offen.
     public static func months<T>(_ items: [T], date: (T) -> Date?, record: (T) -> ItemRecord?,
                                  timeZone: TimeZone) -> [MonthProgress] {
-        var groups: [MonthKey: [ItemRecord?]] = [:]
+        months(groups: monthGroups(items, date: date, key: { $0 }, timeZone: timeZone), record: record)
+    }
+
+    /// Medien je Monat – hängt nur von Mediathek und Zeitzone ab, nicht von Entscheidungen. Einmal je Mediathekstand
+    /// berechnen und mit `months(groups:record:)` bei jeder Entscheidung nur noch zählen (Wärme-Audit 22.10.2026).
+    public static func monthGroups<T, Key>(_ items: [T], date: (T) -> Date?, key: (T) -> Key,
+                                           timeZone: TimeZone) -> [MonthKey: [Key]] {
+        var groups: [MonthKey: [Key]] = [:]
         for a in items {
             guard let d = date(a) else { continue }
-            groups[MonthKey(d, timeZone: timeZone), default: []].append(record(a))
+            groups[MonthKey(d, timeZone: timeZone), default: []].append(key(a))
         }
-        return groups.map { m, recs in
-            let reviewed = recs.filter { isReviewed($0) && $0?.disposition != .removed }.count
-            return MonthProgress(month: m, total: recs.count, reviewed: reviewed, later: recs.filter(isLater).count)
+        return groups
+    }
+
+    /// Fortschritt je Monat (neueste zuerst) aus vorberechneten Gruppen; gleiche Regeln wie `months(_:date:record:timeZone:)`.
+    public static func months<Key>(groups: [MonthKey: [Key]], record: (Key) -> ItemRecord?) -> [MonthProgress] {
+        groups.map { m, keys in
+            var reviewed = 0, later = 0
+            for k in keys {
+                let r = record(k)
+                if isReviewed(r) && r?.disposition != .removed { reviewed += 1 }
+                if isLater(r) { later += 1 }
+            }
+            return MonthProgress(month: m, total: keys.count, reviewed: reviewed, later: later)
         }.sorted { $0.month > $1.month }
     }
 }

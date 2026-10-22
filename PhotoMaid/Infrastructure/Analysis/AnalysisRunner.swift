@@ -113,7 +113,9 @@ enum AnalysisRunner {
     }
 
     /// Lokal höchstens 2, iCloud (nur WLAN) höchstens 3 Fotos gleichzeitig. Wird das iPhone warm, wird nur gedrosselt
-    /// (`ThrottledWork` mit gedeckelter Stufe, siehe `thermalLevel`) – kein Warten, kein Anhalten, keine Warnung.
+    /// (`ThrottledWork` mit gedeckelter Stufe, siehe `thermalLevel`) – kein Anhalten, keine Warnung. Gewartet wird nur,
+    /// solange der Feed vorne ist (`ForegroundActivity`); dabei meldet die Analyse nichts (keine Neuberechnung der
+    /// Ergebnisse unter dem Feed).
     private static func pass(indices: [Int], items: inout [AnalysisItem], counts: inout AnalysisCounts,
                              graph: inout AnalysisSimilarityGraph, db: AnalysisDatabase, cloud: Bool,
                              includeCloud: @escaping @Sendable () -> Bool, background: Bool,
@@ -126,7 +128,7 @@ enum AnalysisRunner {
             try await ThrottledWork.run(
                 indices, maxParallel: cloud ? 3 : 2, thermal: { ForegroundActivity.workLevel() },
                 beforeStart: { try Self.checkConditions(cloud: cloud, includeCloud: includeCloud) },
-                waiting: { await emit(.counts(counts, .cooling)) },
+                waiting: { if !ForegroundActivity.feedVisible { await emit(.counts(counts, .cooling)) } },
                 work: { index -> AnalysisOutput in
                     let item = queued[index]
                     try Task.checkCancellation()

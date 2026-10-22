@@ -40,7 +40,10 @@ struct QuickAccessSection: View {
                 }
             }
         }
-        .task(id: "\(app.quickAccess.map(\.key))-\(app.pending.count)-\(app.cleanupMedia.count)") { await recount() }
+        .task(id: app.tabRecountKey("\(app.quickAccess.map(\.key))-\(app.pending.count)-\(app.cleanupMedia.count)")) {
+            guard !app.tabsCoveredByFeed else { return }
+            await recount()
+        }
         .sheet(isPresented: $adding) { QuickAccessAddSheet() }
         .sheet(isPresented: $editing) { QuickAccessEditSheet() }
     }

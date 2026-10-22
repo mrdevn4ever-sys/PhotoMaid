@@ -69,9 +69,27 @@ public struct LocalDay: Hashable, Codable, Sendable, Comparable, CustomStringCon
         String(format: "%04d-%02d-%02d", year, month, day)
     }
 
-    static func gregorian(_ timeZone: TimeZone) -> Calendar {
+    /// Gregorianischer Kalender der Zeitzone – je Zeitzone einmal angelegt. Monate, Verlauf und Fortschritt rechnen
+    /// das für jedes Medium und jedes Ereignis aus; ein neuer Kalender je Aufruf kostete mehr als die Rechnung selbst
+    /// (Wärme-Audit 22.10.2026).
+    static func gregorian(_ timeZone: TimeZone) -> Calendar { GregorianCalendars.shared.calendar(timeZone) }
+}
+
+/// Kalender je Zeitzonen-Kennung. Gespeichert wird immer eine feste Zeitzone mit dieser Kennung: Ändert sich die
+/// Zeitzone des Geräts, hat `TimeZone.autoupdatingCurrent` eine neue Kennung und bekommt einen eigenen Kalender.
+private final class GregorianCalendars: @unchecked Sendable {
+    static let shared = GregorianCalendars()
+    private let lock = NSLock()
+    private var calendars: [String: Calendar] = [:]
+
+    func calendar(_ timeZone: TimeZone) -> Calendar {
+        let id = timeZone.identifier
+        lock.lock(); defer { lock.unlock() }
+        if let cal = calendars[id] { return cal }
         var cal = Calendar(identifier: .gregorian)
-        cal.timeZone = timeZone
+        cal.timeZone = TimeZone(identifier: id) ?? timeZone
+        if calendars.count >= 16 { calendars.removeAll() }
+        calendars[id] = cal
         return cal
     }
 }

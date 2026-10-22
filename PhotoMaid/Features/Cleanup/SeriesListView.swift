@@ -47,7 +47,10 @@ struct SeriesListView: View {
         }
         .appPage()
         .navigationTitle(L("series_title"))
-        .task(id: "\(app.pending.count)-\(app.cleanupMedia.count)") { await load() }
+        .task(id: app.tabRecountKey("\(app.pending.count)-\(app.cleanupMedia.count)")) {
+            guard !app.tabsCoveredByFeed else { return }
+            await load()
+        }
         .sheet(item: $open) { sel in
             SeriesCompareView(members: sel.members) { keep in Task { await confirm(sel.members, keep) } }
         }

@@ -49,8 +49,9 @@ final class PreviewPipeline {
         return o
     }
 
-    /// Keep the four-item swipe cache local and small. The *visible* image still
-    /// uses progressiveImage(), including its full-quality/iCloud loading path.
+    /// Keep the four-item swipe cache local. These are the same options as the local step of
+    /// requestProgressiveImage(), so the visible request is served from the cache. The *visible* image
+    /// still uses progressiveImage(), including its full-quality/iCloud loading path.
     /// Prefetching offscreen originals from iCloud wastes bandwidth and memory.
     nonisolated private static func cacheOptions() -> PHImageRequestOptions {
         let o = PHImageRequestOptions()
@@ -242,17 +243,11 @@ final class PreviewPipeline {
     }
 
     /// Lokale Nachbarvorschauen vorhalten; nur das sichtbare Medium darf iCloud laden.
+    /// Genau in der Größe und mit denselben Optionen wie die lokale Stufe von `progressiveImage` (PhotoKit nutzt den
+    /// Vorrat nur bei gleicher Anfrage): Früher wurde mit höchstens 1280 px vorgehalten, angezeigt aber in voller
+    /// Bühnengröße – der Vorrat traf nie, jedes Bild wurde doppelt dekodiert (Wärme-Audit 22.10.2026).
     func updateCache(window ids: [String], targetSize: CGSize) {
-        // Previews under the top card never need full-resolution bitmaps.
-        let longSide = max(targetSize.width, targetSize.height)
-        let cacheSize: CGSize
-        if longSide > 1280 {
-            let factor = 1280 / longSide
-            cacheSize = CGSize(width: max(1, (targetSize.width * factor).rounded()),
-                               height: max(1, (targetSize.height * factor).rounded()))
-        } else {
-            cacheSize = targetSize
-        }
+        let cacheSize = targetSize
         let wanted = Set(ids)
         let resetAll = cacheSize != cachedSize
         if resetAll {

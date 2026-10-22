@@ -8,12 +8,21 @@ import WebKit
 /// through the existing thumbnail/zoom pipeline; no automatic video conversion.
 @MainActor
 enum GIFPlayback {
+    /// Ob ein Medium ein GIF ist, ändert sich nicht: einmal je Medium bei Fotos nachfragen (synchrone Abfrage der
+    /// Ressourcen auf dem Hauptthread) statt bei jeder obersten Karte im Feed erneut (Wärme-Audit 22.10.2026).
+    private static var known: [String: Bool] = [:]
+
     static func isGIF(_ id: String) -> Bool {
-        guard let asset = PhotoLibraryService.phAsset(id), asset.mediaType == .image else { return false }
-        return PHAssetResource.assetResources(for: asset).contains {
+        if let cached = known[id] { return cached }
+        // Nicht gefunden wird nicht gemerkt (ein Medium kann später auftauchen, z. B. nach dem Laden der Mediathek).
+        guard let asset = PhotoLibraryService.phAsset(id) else { return false }
+        let gif = asset.mediaType == .image && PHAssetResource.assetResources(for: asset).contains {
             $0.uniformTypeIdentifier.lowercased().contains("gif") ||
             $0.originalFilename.lowercased().hasSuffix(".gif")
         }
+        if known.count >= 20_000 { known.removeAll() }
+        known[id] = gif
+        return gif
     }
 
     /// PhotoKit may need to fetch the current source from iCloud. Keep a strict byte cap:
