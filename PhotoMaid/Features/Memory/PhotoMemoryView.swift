@@ -59,18 +59,8 @@ struct PhotoMemoryView: View {
                     if scrolling, !setup, !model.isLoading { model.noteManualMismatch() }
                 }
             }
-            .navigationTitle(L("memory_title"))
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button(L("close")) { dismiss() }.accessibilityIdentifier("memory.close")
-                }
-            }
-            .toolbar {
-                if let onChooseGame {
-                    ToolbarItem(placement: .topBarTrailing) { Button(L("games_choose"), action: onChooseGame) }
-                }
-            }
+            .gameToolbar(title: L("memory_title"), closeID: "memory.close", otherGamesID: "memory.otherGames",
+                         close: { dismiss() }, otherGames: onChooseGame)
             .sheet(isPresented: $picker) {
                 StudioMediaPicker(allowsVideos: false, limit: PhotoMemoryGame.maximumPairs, minimumSelection: 2,
                                   initial: Set(model.photoIDs)) { ids in
@@ -122,12 +112,10 @@ struct PhotoMemoryView: View {
 
     private var configuration: some View {
         VStack(spacing: 20) {
-            Image(systemName: "rectangle.on.rectangle")
-                .font(.system(size: 36, weight: .medium)).foregroundStyle(AppColors.accent)
-                .frame(width: 76, height: 76)
-                .background(AppColors.accent.opacity(0.12), in: .rect(cornerRadius: 24))
-                .accessibilityHidden(true)
-            Text(key: "game_setup_pairs_intro").font(AppTypography.body).multilineTextAlignment(.center)
+            GameIntro(text: L("game_setup_pairs_intro")) {
+                Image(systemName: "rectangle.on.rectangle")
+                    .font(.system(size: 36, weight: .medium)).foregroundStyle(AppColors.accent)
+            }
             SurfaceCard {
                 VStack(alignment: .leading, spacing: 16) {
                     PhotoGameSetupField(title: L("game_setup_photos")) {
@@ -164,11 +152,10 @@ struct PhotoMemoryView: View {
                 }
             }
             Button { startChosenSource() } label: {
-                Label(L(source == .manual ? "game_setup_choose_photos" : "snake_photo_play"),
+                Label(L(source == .manual ? "game_setup_choose_photos" : "snake_start_game"),
                       systemImage: source == .manual ? "photo.badge.plus" : "play.fill")
-                    .font(.headline).frame(maxWidth: .infinity).padding(.vertical, 8)
             }
-            .buttonStyle(.pmProminent)
+            .buttonStyle(GameButtonStyle(prominent: true))
             .disabled(app.isLoadingLibrary || (source == .collection && collectionID == nil && app.library.access.canRead))
             .accessibilityIdentifier("memory.startPhotos")
             Button {
@@ -178,7 +165,7 @@ struct PhotoMemoryView: View {
                 .buttonStyle(.pmBordered)
                 .accessibilityIdentifier("memory.startMotifs")
             if model.game != nil {
-                Button(L("memory_resume")) { setup = false }
+                Button(L("memory_resume")) { setup = false }.buttonStyle(.pmBordered)
             }
         }
         .frame(maxWidth: 560).frame(maxWidth: .infinity)
@@ -224,9 +211,10 @@ struct PhotoMemoryView: View {
                     .font(AppTypography.title3).foregroundStyle(AppColors.success)
                     .accessibilityIdentifier("memory.finished")
                 if model.newBest { Label(L("game_new_best"), systemImage: "trophy.fill").foregroundStyle(AppColors.accent) }
-                Button(L("memory_new")) { replay() }.buttonStyle(.pmProminent)
+                Button { replay() } label: { Label(L("blocks_replay"), systemImage: "arrow.clockwise") }
+                    .buttonStyle(GameButtonStyle(prominent: true))
             }
-            Button(L("memory_change")) { setup = true }.buttonStyle(.pmBordered)
+            Button(L("game_setup_edit_photos")) { setup = true }.buttonStyle(.pmBordered)
                 .accessibilityIdentifier("memory.change")
         }
     }

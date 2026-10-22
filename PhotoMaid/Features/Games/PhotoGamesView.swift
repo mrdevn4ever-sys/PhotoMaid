@@ -30,7 +30,7 @@ struct PhotoGamesView: View {
         case .snake:
             PhotoSnakeView(onResults: onResults, onChooseGame: { selected = nil }, onClose: { dismiss() })
         case .blocks:
-            PhotoBlocksView(onChooseGame: { selected = nil })
+            PhotoBlocksView(onChooseGame: { selected = nil }, onClose: { dismiss() })
         case nil:
             NavigationStack {
                 ScrollView {

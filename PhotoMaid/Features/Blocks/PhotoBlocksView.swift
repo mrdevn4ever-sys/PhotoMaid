@@ -7,19 +7,24 @@ struct PhotoBlocksView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.displayScale) private var displayScale
     let onChooseGame: () -> Void
+    var onClose: () -> Void = {}
     @State private var showPhotos = false
     @State private var choosePhotos = false
     private var model: PhotoBlocksModel { app.blocks }
 
     var body: some View {
-        VStack(spacing: 10) {
-            header
-            if model.game.phase == .ready { startMenu }
-            else { play }
+        NavigationStack {
+            Group {
+                if model.game.phase == .ready { startMenu }
+                else { play.padding(.horizontal, AppSpacing.pageMargin).padding(.top, 4).padding(.bottom, 8) }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .appPage()
+            // Gleiche Kopfzeile wie Paare und Snake (Design vereinheitlicht, 22.10.2026); „blocks.back“ = Andere Spiele.
+            .gameToolbar(title: L("blocks_title"), closeID: "blocks.close", otherGamesID: "blocks.back",
+                         close: { model.pause(); onClose() }, otherGames: { model.pause(); onChooseGame() })
         }
-        .padding(.horizontal, 16).padding(.top, 4).padding(.bottom, 8)
-        .background(PhotoBlocksPalette.ink.ignoresSafeArea()).foregroundStyle(.white)
-        .tint(PhotoBlocksPalette.accent)
+        .tint(AppColors.accent)
         .sheet(isPresented: $showPhotos, onDismiss: { model.refreshPhotos(app: app); model.checkpoint() }) { photoSheet }
         .onAppear { model.attach(app: app) }
         .onDisappear { model.releaseResources() }
@@ -41,56 +46,43 @@ struct PhotoBlocksView: View {
         .keepsScreenAwake(model.game.acceptsInput && scenePhase == .active)
     }
 
-    private var header: some View {
-        HStack {
-            Button { model.pause(); onChooseGame() } label: {
-                Label(L("blocks_games"), systemImage: "chevron.backward")
-            }.buttonStyle(.pmBordered).frame(minHeight: 44).accessibilityIdentifier("blocks.back")
-            Spacer(minLength: 6)
-            Text(key: "blocks_title").font(.headline)
-            Spacer(minLength: 6)
-            if model.game.phase != .ready, model.saveFailed {
-                // Als Knopf in der festen Kopfzeile statt unter dem Feld (verschiebt das Spielfeld nicht).
-                Button { model.checkpoint() } label: {
-                    Image(systemName: "exclamationmark.triangle.fill").frame(width: 28, height: 28)
-                }
-                .buttonStyle(.pmBordered).frame(minWidth: 44, minHeight: 44)
-                .foregroundStyle(.orange)
-                .accessibilityLabel(L("blocks_save_retry"))
-            }
-            if model.game.phase != .ready {
-                Button { model.pause() } label: { Image(systemName: "pause.fill").frame(width: 28, height: 28) }
-                    .buttonStyle(.pmBordered).frame(minWidth: 44, minHeight: 44).accessibilityLabel(L("blocks_pause"))
-                    .accessibilityIdentifier("blocks.pause")
-                    .disabled(model.game.phase == .gameOver)
-            }
-        }
-    }
-
     private var startMenu: some View {
-        ScrollView {
-            VStack(spacing: 24) {
-                Image(systemName: "square.stack.3d.up.fill")
-                    .font(.system(size: 66, weight: .light)).foregroundStyle(PhotoBlocksPalette.accent)
-                    .padding(.top, 28).accessibilityHidden(true)
-                VStack(spacing: 10) {
-                    Text(key: "blocks_title").font(.system(.largeTitle, design: .rounded).bold())
-                    Text(key: "blocks_subtitle").font(.title3).foregroundStyle(.white.opacity(0.78))
-                        .multilineTextAlignment(.center)
-                    Text(verbatim: L("blocks_best", model.best)).font(.headline).monospacedDigit()
+        @Bindable var model = model
+        return ScrollView {
+            VStack(spacing: 20) {
+                GameIntro(text: L("blocks_subtitle"), best: L("blocks_best", model.best), bestIdentifier: "blocks.best") {
+                    Image(systemName: "square.stack.3d.up.fill")
+                        .font(.system(size: 34, weight: .medium)).foregroundStyle(AppColors.accent)
                 }
-                VStack(spacing: 12) {
-                    action("blocks_start", symbol: "play.fill", prominent: true) { model.start(app: app) }
-                        .accessibilityIdentifier("blocks.start")
-                    action("blocks_photos", symbol: "photo.on.rectangle") { showPhotos = true }
-                        .accessibilityIdentifier("blocks.photos")
+                SurfaceCard {
+                    VStack(alignment: .leading, spacing: 16) {
+                        PhotoGameSetupField(title: L("game_setup_photos")) {
+                            Picker(L("blocks_photo_source"), selection: $model.source) {
+                                Text(key: "blocks_random").tag(PhotoBlocksPhotos.Source.random)
+                                Text(key: "blocks_newest").tag(PhotoBlocksPhotos.Source.newest)
+                                Text(key: "blocks_favorites").tag(PhotoBlocksPhotos.Source.favorites)
+                                Text(key: "blocks_selection").tag(PhotoBlocksPhotos.Source.selection)
+                            }
+                            .pickerStyle(.menu).labelsHidden()
+                            .accessibilityIdentifier("blocks.sourceMenu")
+                            .onChange(of: model.source) { _, _ in model.refreshPhotos(app: app); model.checkpoint() }
+                        }
+                        Button { showPhotos = true } label: { Label(L("blocks_photos"), systemImage: "photo.on.rectangle") }
+                            .buttonStyle(GameButtonStyle())
+                            .accessibilityIdentifier("blocks.photos")
+                        Text(key: "blocks_photo_privacy").font(.footnote).foregroundStyle(.secondary)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .accessibilityIdentifier("blocks.photoPrivacy")
+                    }
                 }
-                gestureHelp
-                Text(key: "blocks_photo_privacy").font(.footnote).foregroundStyle(.white.opacity(0.62)).multilineTextAlignment(.center)
-                    .accessibilityIdentifier("blocks.photoPrivacy")
+                Button { model.start(app: app) } label: { Label(L("blocks_start"), systemImage: "play.fill") }
+                    .buttonStyle(GameButtonStyle(prominent: true))
+                    .accessibilityIdentifier("blocks.start")
+                gestureHelp.foregroundStyle(AppColors.textSecondary)
                 if model.saveFailed { saveError }
             }
-            .padding(22).frame(maxWidth: 500).frame(maxWidth: .infinity)
+            .padding(AppSpacing.pageMargin)
+            .frame(maxWidth: 560).frame(maxWidth: .infinity)
         }
     }
 
@@ -105,13 +97,14 @@ struct PhotoBlocksView: View {
                         .onGeometryChange(for: CGSize.self) { $0.size } action: { size in
                             model.setDisplaySize(size, scale: displayScale, app: app)
                         }
-                    if model.game.isPaused { pauseMenu.frame(maxWidth: max(1, min(360, geo.size.width - 12)), maxHeight: max(1, min(420, geo.size.height - 12))) }
-                    else if model.game.phase == .gameOver { gameOver.frame(maxWidth: max(1, min(360, geo.size.width - 12)), maxHeight: max(1, min(500, geo.size.height - 12))) }
+                    if model.game.isPaused { pauseMenu.frame(maxWidth: max(1, min(360, geo.size.width - 12)), maxHeight: max(1, min(440, geo.size.height - 12))) }
+                    else if model.game.phase == .gameOver { gameOver.frame(maxWidth: max(1, min(360, geo.size.width - 12)), maxHeight: max(1, min(520, geo.size.height - 12))) }
                     else if model.game.phase == .discovered {
                         VStack {
                             Spacer()
                             Label(L("blocks_discovered"), systemImage: "sparkles")
-                                .font(.headline).padding(14).background(.black.opacity(0.8), in: .capsule)
+                                .font(AppTypography.headline).foregroundStyle(AppColors.textPrimary)
+                                .padding(14).background(.black.opacity(0.8), in: .capsule)
                                 .padding(.bottom, 16)
                         }.allowsHitTesting(false)
                     }
@@ -122,61 +115,97 @@ struct PhotoBlocksView: View {
         }
     }
 
+    /// Spielstand als App-Karte; Pause (und ggf. „Speichern fehlgeschlagen“) als runde Knöpfe rechts – feste Höhe,
+    /// das Spielfeld darunter rückt nie.
     private var hud: some View {
         VStack(spacing: 8) {
             HStack(alignment: .center, spacing: 10) {
-                VStack(alignment: .leading, spacing: 3) {
-                    Text(verbatim: L("blocks_score", model.game.score)).font(.title3.bold())
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(verbatim: L("blocks_score", model.game.score)).font(PMFont.heading(20, relativeTo: .title3))
+                        .foregroundStyle(AppColors.textPrimary)
                         .accessibilityIdentifier("blocks.score")
-                    Text(verbatim: L("blocks_best", model.best)).font(.caption).foregroundStyle(.white.opacity(0.7))
+                    Text(verbatim: L("blocks_best", model.best)).font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
                 }
                 // Eine Zeile je Wert: wachsende Zahlen dürfen die Kopfzeile nie höher machen (sonst rückt das Feld).
                 .lineLimit(1).minimumScaleFactor(0.6)
                 Spacer(minLength: 2)
-                VStack(alignment: .trailing, spacing: 3) {
-                    Text(verbatim: L("blocks_level", model.game.level)).font(.subheadline.bold())
-                    Text(verbatim: L("blocks_rows", model.game.totalRows)).font(.caption).foregroundStyle(.white.opacity(0.7))
+                VStack(alignment: .trailing, spacing: 2) {
+                    Text(verbatim: L("blocks_level", model.game.level)).font(AppTypography.subheadline.weight(.semibold))
+                        .foregroundStyle(AppColors.textPrimary)
+                    Text(verbatim: L("blocks_rows", model.game.totalRows)).font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
                 }
                 .lineLimit(1).minimumScaleFactor(0.6)
                 VStack(spacing: 0) {
-                    Text(key: "blocks_next").font(.caption2).foregroundStyle(.white.opacity(0.7))
+                    Text(key: "blocks_next").font(.caption2).foregroundStyle(AppColors.textSecondary)
                     PhotoBlocksNext(shape: model.game.next)
                 }
+                if model.saveFailed {
+                    hudButton("exclamationmark.triangle.fill", label: L("blocks_save_retry"), tint: AppColors.warning) { model.checkpoint() }
+                }
+                hudButton("pause.fill", label: L("blocks_pause")) { model.pause() }
+                    .accessibilityIdentifier("blocks.pause")
+                    .disabled(model.game.phase == .gameOver || model.game.isPaused)
             }.monospacedDigit()
             VStack(spacing: 4) {
                 HStack {
                     Text(key: "blocks_progress")
                     Spacer()
                     Text(verbatim: "\(model.game.revealedStrips * 10)%").monospacedDigit()
-                }.font(.caption).lineLimit(1).minimumScaleFactor(0.7)
-                ProgressView(value: model.game.progress).tint(PhotoBlocksPalette.accent)
+                }
+                .font(AppTypography.caption).foregroundStyle(AppColors.textSecondary)
+                .lineLimit(1).minimumScaleFactor(0.7)
+                ProgressView(value: model.game.progress).tint(AppColors.accent)
                     .accessibilityLabel(L("blocks_progress"))
                     .accessibilityIdentifier("blocks.progress")
             }
         }
-        .padding(12).background(.white.opacity(0.055), in: .rect(cornerRadius: 16))
+        .padding(12)
+        .background(AppColors.surface, in: .rect(cornerRadius: AppRadii.card))
+        .overlay(RoundedRectangle(cornerRadius: AppRadii.card).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
+    }
+
+    private func hudButton(_ symbol: String, label: String, tint: Color = AppColors.textPrimary,
+                           action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Image(systemName: symbol).font(.system(size: 16, weight: .bold)).foregroundStyle(tint)
+                .frame(width: 44, height: 44)
+                .background(AppColors.background, in: .circle)
+                .overlay(Circle().strokeBorder(AppColors.control, lineWidth: 1))
+                .contentShape(.circle)
+        }
+        .buttonStyle(PMPressStyle())
+        .accessibilityLabel(Text(verbatim: label))
     }
 
     private var pauseMenu: some View {
-        panel {
-            Text(key: "blocks_paused").font(.title2.bold())
-            action("blocks_continue", symbol: "play.fill", prominent: true) { model.resume(app: app) }
+        GamePanel {
+            Text(key: "blocks_paused").font(AppTypography.title)
+            Button { model.resume(app: app) } label: { Label(L("blocks_continue"), systemImage: "play.fill") }
+                .buttonStyle(GameButtonStyle(prominent: true))
                 .accessibilityIdentifier("blocks.resume")
-            action("blocks_restart", symbol: "arrow.clockwise") { model.start(app: app) }
-            action("blocks_change_photos", symbol: "photo.on.rectangle") { showPhotos = true }
-            action("blocks_quit", symbol: "chevron.backward") { model.pause(); onChooseGame() }
+            Button { model.start(app: app) } label: { Label(L("blocks_restart"), systemImage: "arrow.clockwise") }
+                .buttonStyle(GameButtonStyle())
+            Button { showPhotos = true } label: { Label(L("blocks_change_photos"), systemImage: "photo.on.rectangle") }
+                .buttonStyle(GameButtonStyle())
+            Button { model.pause(); onChooseGame() } label: { Label(L("snake_other_games"), systemImage: "square.grid.2x2") }
+                .buttonStyle(.pmBordered)
         }
     }
     private var gameOver: some View {
-        panel {
-            Text(key: "blocks_over").font(.title2.bold())
-            if model.newBest { Label(L("blocks_new_best"), systemImage: "trophy.fill").foregroundStyle(PhotoBlocksPalette.accent) }
-            Text(verbatim: L("blocks_score", model.game.score)).font(.title.bold()).monospacedDigit()
-            Text(verbatim: L("blocks_level", model.game.level) + " · " + L("blocks_rows", model.game.totalRows)).font(.subheadline)
-            Text(verbatim: L("blocks_found", model.discoveredImages)).font(.subheadline)
-            action("blocks_replay", symbol: "arrow.clockwise", prominent: true) { model.start(app: app) }
-            action("blocks_change_photos", symbol: "photo.on.rectangle") { showPhotos = true }
-            action("blocks_games", symbol: "chevron.backward", perform: onChooseGame)
+        GamePanel {
+            Text(key: "blocks_over").font(AppTypography.title)
+            if model.newBest { Label(L("blocks_new_best"), systemImage: "trophy.fill").foregroundStyle(AppColors.accent) }
+            Text(verbatim: L("blocks_score", model.game.score)).font(PMFont.heading(28)).monospacedDigit()
+            Text(verbatim: L("blocks_level", model.game.level) + " · " + L("blocks_rows", model.game.totalRows))
+                .font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
+            Text(verbatim: L("blocks_found", model.discoveredImages))
+                .font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
+            Button { model.start(app: app) } label: { Label(L("blocks_replay"), systemImage: "arrow.clockwise") }
+                .buttonStyle(GameButtonStyle(prominent: true))
+            Button { showPhotos = true } label: { Label(L("blocks_change_photos"), systemImage: "photo.on.rectangle") }
+                .buttonStyle(GameButtonStyle())
+            Button { model.pause(); onChooseGame() } label: { Label(L("snake_other_games"), systemImage: "square.grid.2x2") }
+                .buttonStyle(.pmBordered)
         }.accessibilityIdentifier("blocks.gameOver")
     }
 
@@ -242,22 +271,5 @@ struct PhotoBlocksView: View {
     }
     private var saveError: some View {
         Button(L("blocks_save_retry")) { model.checkpoint() }.font(.footnote).buttonStyle(.pmBordered)
-    }
-    private func action(_ key: String, symbol: String, prominent: Bool = false,
-                        perform: @escaping () -> Void) -> some View {
-        Button(action: perform) {
-            Label(L(key), systemImage: symbol).font(.headline)
-                .frame(maxWidth: .infinity, minHeight: 48).padding(.horizontal, 12).padding(.vertical, 3)
-                .foregroundStyle(prominent ? PhotoBlocksPalette.ink : .white)
-                .background(prominent ? PhotoBlocksPalette.accent : .white.opacity(0.10), in: .rect(cornerRadius: 15))
-        }.buttonStyle(.plain)
-    }
-    private func panel<Content: View>(@ViewBuilder content: () -> Content) -> some View {
-        ViewThatFits(in: .vertical) {
-            VStack(spacing: 12, content: content).padding(22).fixedSize(horizontal: false, vertical: true)
-            ScrollView { VStack(spacing: 12, content: content).padding(22) }
-        }
-        .background(PhotoBlocksPalette.ink.opacity(0.97), in: .rect(cornerRadius: 24))
-        .overlay { RoundedRectangle(cornerRadius: 24).strokeBorder(.white.opacity(0.2), lineWidth: 1) }
     }
 }

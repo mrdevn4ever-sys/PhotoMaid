@@ -3,8 +3,9 @@ import SwiftUI
 import UIKit
 
 enum PhotoBlocksPalette {
-    static let ink = Color(red: 0.035, green: 0.06, blue: 0.085)
-    static let accent = Color(red: 0.48, green: 0.88, blue: 0.78)
+    // Spielfeldgrund und Akzent wie die App (Design vereinheitlicht, 22.10.2026); die Steinfarben bleiben.
+    static let ink = AppColors.background
+    static let accent = AppColors.accent
     static func color(_ shape: PhotoBlocksShape) -> Color {
         switch shape {
         case .pebble, .square: Color(red: 0.35, green: 0.76, blue: 0.76)

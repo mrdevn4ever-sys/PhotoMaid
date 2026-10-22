@@ -37,11 +37,11 @@ struct PhotoSnakeView: View {
     }
     var body: some View {
         ZStack {
-            forest
-            if playing, let game = model.game { play(game) }
+            // Die Wiese gehört zum Spielfeld; Start- und Einstellungsseite stehen wie Paare und Blocks auf dem App-Grund.
+            if playing, let game = model.game { forest; play(game) }
             else { menu }
         }
-        .tint(.white)
+        .tint(AppColors.accent)
         .sheet(isPresented: $gallery) { SnakeGalleryView(model: model) }
         .sheet(isPresented: $settings) { settingsSheet }
         .sheet(isPresented: $collectionPicker) {
@@ -89,29 +89,34 @@ struct PhotoSnakeView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 20) {
-                    VStack(spacing: 10) {
+                    GameIntro(text: L("game_setup_snake_intro"),
+                              best: model.menuBest(mode: mode, speed: speed, stepMode: usesStepInput).map { L("game_best_eaten", $0) }
+                                  ?? L("snake_record_empty"),
+                              bestIdentifier: "snake.menuBest") {
                         Image(uiImage: SnakeArt.headImage(model.preferences.character))
-                            .resizable().scaledToFit().frame(height: 64)
-                            .shadow(color: .black.opacity(0.18), radius: 12, y: 6).accessibilityHidden(true)
-                        Text(key: "snake_title").font(.system(.largeTitle, design: .rounded).bold())
-                        Text(verbatim: model.menuBest(mode: mode, speed: speed, stepMode: usesStepInput).map { L("game_best_eaten", $0) } ?? L("snake_record_empty"))
-                            .font(.subheadline.weight(.semibold)).monospacedDigit().accessibilityIdentifier("snake.menuBest")
+                            .resizable().scaledToFit().padding(12)
                     }
                     PhotoGameAnalysisStatus(onResults: onResults)
                     PhotoGameRecordSaveStatus()
-                    if let error = model.photos.error { Text(verbatim: error).font(.callout) }
-                    if let error = model.preferencesError { Text(verbatim: error).font(.callout) }
+                    if let error = model.photos.error {
+                        InfoBanner(symbol: "exclamationmark.triangle", tint: AppColors.warning, text: error)
+                    }
+                    if let error = model.preferencesError {
+                        InfoBanner(symbol: "exclamationmark.triangle", tint: AppColors.warning, text: error)
+                    }
                     if model.photos.isLoading {
-                        ProgressView(L("memory_loading"))
+                        LoadingState(message: L("memory_loading"))
                         Button(L("cancel")) { startWhenReady = false; model.photos.cancelLoading(); setup = true }
+                            .buttonStyle(.pmBordered)
                     } else {
                         menuConfiguration
                         Button { startPhotos() } label: { Label(L("snake_start_game"), systemImage: "play.fill") }
-                        .buttonStyle(SnakeActionButtonStyle(prominent: true))
+                        .buttonStyle(GameButtonStyle(prominent: true))
                         .disabled(model.gallery.busy || (source != .manual && app.isLoadingLibrary) ||
                                   (source == .manual && model.gallery.ids.isEmpty) || (source == .collection && collectionID == nil))
                         .accessibilityIdentifier("snake.prepare")
-                        Text(key: "snake_controls_hint").font(.subheadline).multilineTextAlignment(.center)
+                        Text(key: "snake_controls_hint").font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
+                            .multilineTextAlignment(.center)
                         menuOptions
                         Button {
                             startWhenReady = true; setup = false
@@ -124,23 +129,13 @@ struct PhotoSnakeView: View {
                         }
                     }
                 }
-                .padding(20).frame(maxWidth: 560)
-                .background((model.preferences.night ? Color(red: 0.04, green: 0.10, blue: 0.16) : Color(red: 0.04, green: 0.15, blue: 0.09)).opacity(0.94), in: .rect(cornerRadius: 30))
-                .padding(16).frame(maxWidth: .infinity)
+                .padding(AppSpacing.pageMargin)
+                .frame(maxWidth: 560).frame(maxWidth: .infinity)
             }
-            .scrollContentBackground(.hidden).background { forest }
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button(L("close"), action: close).accessibilityIdentifier("snake.close")
-                }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button { model.pause(); onChooseGame() } label: { Label(L("snake_other_games"), systemImage: "square.grid.2x2") }
-                        .labelStyle(.titleAndIcon).buttonStyle(.pmBordered).accessibilityIdentifier("snake.otherGames")
-                }
-            }
-            .toolbarBackground(.hidden, for: .navigationBar)
+            .appPage()
+            .gameToolbar(title: L("snake_title"), closeID: "snake.close", otherGamesID: "snake.otherGames",
+                         close: close, otherGames: { model.pause(); onChooseGame() })
         }
-        .background(.clear).foregroundStyle(.white)
     }
     private var menuConfiguration: some View {
         VStack(alignment: .leading, spacing: 14) {
@@ -151,13 +146,13 @@ struct PhotoSnakeView: View {
                     Text(key: "memory_source_collection").tag(Source.collection)
                     Text(key: "memory_own").tag(Source.manual)
                 }
-                .labelsHidden().frame(maxWidth: .infinity, alignment: .leading)
-                .padding(10).background(.white.opacity(0.08), in: .rect(cornerRadius: 12))
+                .labelsHidden()
                 .accessibilityIdentifier("snake.source")
             }
             if source == .manual {
                 if !model.gallery.ids.isEmpty {
-                    Text(verbatim: L("snake_gallery_count", model.gallery.ids.count)).font(.footnote).monospacedDigit()
+                    Text(verbatim: L("snake_gallery_count", model.gallery.ids.count)).font(AppTypography.footnote)
+                        .foregroundStyle(AppColors.textSecondary).monospacedDigit()
                 }
             } else {
                 if source == .collection {
@@ -172,12 +167,15 @@ struct PhotoSnakeView: View {
             Button {
                 source = .manual; openGallery()
             } label: { Label(L(photoActionLabel), systemImage: "photo.on.rectangle") }
-            .buttonStyle(SnakeActionButtonStyle())
+            .buttonStyle(GameButtonStyle())
             .disabled(model.gallery.busy).accessibilityIdentifier("snake.editPhotos")
             Text(key: "game_setup_private").font(.footnote).foregroundStyle(.secondary)
         }
-        .pickerStyle(.menu).tint(.white)
-        .padding(16).background(.white.opacity(0.07), in: .rect(cornerRadius: 18))
+        .pickerStyle(.menu)
+        .padding(AppSpacing.m)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppColors.surface, in: .rect(cornerRadius: AppRadii.card))
+        .overlay(RoundedRectangle(cornerRadius: AppRadii.card).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
     }
 
     private var photoActionLabel: String {
@@ -215,10 +213,14 @@ struct PhotoSnakeView: View {
             }
             .padding(.top, 12)
         } label: {
-            Label(L("game_setup_options"), systemImage: "slider.horizontal.3").font(.subheadline.weight(.semibold))
+            Label(L("game_setup_options"), systemImage: "slider.horizontal.3").font(AppTypography.headline)
+                .foregroundStyle(AppColors.textPrimary)
                 .accessibilityIdentifier("snake.options")
         }
-        .pickerStyle(.menu).padding(16).background(.white.opacity(0.07), in: .rect(cornerRadius: 18))
+        .pickerStyle(.menu)
+        .padding(AppSpacing.m)
+        .background(AppColors.surface, in: .rect(cornerRadius: AppRadii.card))
+        .overlay(RoundedRectangle(cornerRadius: AppRadii.card).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
     }
 
     private func play(_ game: PhotoSnakeGame) -> some View {
@@ -295,43 +297,46 @@ struct PhotoSnakeView: View {
     private var bestLabel: String { model.bestEaten.map { L("game_best_eaten", $0) } ?? L("snake_record_empty") }
 
     private var pausePanel: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 14) {
             HStack(spacing: 12) {
                 Image(uiImage: SnakeArt.headImage(model.preferences.character))
-                    .resizable().scaledToFit().frame(width: 48, height: 48).accessibilityHidden(true)
-                Text(key: "snake_title").font(.system(.title, design: .rounded).bold())
+                    .resizable().scaledToFit().frame(width: 44, height: 44).accessibilityHidden(true)
+                Text(key: "snake_title").font(AppTypography.title)
             }
             if model.started || model.displayedStatus != .playing {
                 Text(key: model.displayedStatus == .won ? "snake_won" : model.displayedStatus == .lost ? "snake_over" : "snake_pause")
-                    .font(.subheadline).foregroundStyle(.secondary)
+                    .font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
             }
             if model.displayedStatus != .playing {
-                Text(verbatim: L("snake_eaten", model.presentedScore)).font(.title2.bold()).monospacedDigit()
-                Text(verbatim: bestLabel).font(.subheadline).monospacedDigit()
+                Text(verbatim: L("snake_eaten", model.presentedScore)).font(PMFont.heading(26)).monospacedDigit()
+                Text(verbatim: bestLabel).font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary).monospacedDigit()
             }
-            if model.newBest { Label(L("game_new_best"), systemImage: "trophy.fill").foregroundStyle(.yellow) }
+            if model.newBest { Label(L("game_new_best"), systemImage: "trophy.fill").foregroundStyle(AppColors.accent) }
             Text(verbatim: L("snake_controls_hint"))
-                .multilineTextAlignment(.center).font(.subheadline).allowsHitTesting(false)
-            if let error = model.photos.error { Text(verbatim: error).font(.footnote).multilineTextAlignment(.center) }
+                .multilineTextAlignment(.center).font(AppTypography.subheadline).foregroundStyle(AppColors.textSecondary)
+                .allowsHitTesting(false)
+            if let error = model.photos.error {
+                Text(verbatim: error).font(AppTypography.footnote).foregroundStyle(AppColors.warning).multilineTextAlignment(.center)
+            }
             Button {
                 if model.displayedStatus != .playing { model.restart() }
                 model.resume()
             } label: {
-                Label(L(model.displayedStatus != .playing ? "memory_new" : model.started ? "memory_resume" : "snake_start_game"),
+                Label(L(model.displayedStatus != .playing ? "blocks_replay" : model.started ? "blocks_continue" : "snake_start_game"),
                       systemImage: model.displayedStatus != .playing ? "arrow.clockwise" : "play.fill")
             }
-            .buttonStyle(SnakeActionButtonStyle(prominent: true))
+            .buttonStyle(GameButtonStyle(prominent: true))
             .disabled(model.photos.isLoading).accessibilityIdentifier("snake.start")
             Button {
                 if model.usesSavedPhotos { openGallery() }
                 else { model.pause(); setup = true }
             } label: { Label(L(hasRoundPhotos ? "game_setup_edit_photos" : "game_setup_choose_photos"), systemImage: "photo.on.rectangle") }
-            .buttonStyle(SnakeActionButtonStyle()).accessibilityIdentifier("snake.changePhotos")
+            .buttonStyle(GameButtonStyle()).accessibilityIdentifier("snake.changePhotos")
             Button { model.pause(); onChooseGame() } label: { Label(L("snake_other_games"), systemImage: "square.grid.2x2") }
                 .buttonStyle(.pmBordered).accessibilityIdentifier("snake.otherGames")
         }
-        .padding(24).frame(maxWidth: 360)
-        .background(Color(red: 0.03, green: 0.13, blue: 0.08).opacity(0.95), in: .rect(cornerRadius: 28))
+        .padding(22).frame(maxWidth: 360)
+        .gamePanelStyle()
         .padding(24)
         // Gestures on explanatory panel space still reach the board; buttons keep their own actions.
         .simultaneousGesture(DragGesture(minimumDistance: 16).onEnded { gesture in
@@ -368,7 +373,7 @@ struct PhotoSnakeView: View {
             }
             .navigationTitle(L("settings"))
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button(L("done")) { settings = false } } }
-        }.tint(.green)
+        }.tint(AppColors.accent)
     }
     private func artButton(_ asset: String, label: String, action: @escaping () -> Void) -> some View {
         Button {
@@ -433,23 +438,5 @@ struct PhotoSnakeView: View {
         }
         startWhenReady = true; setup = true
         model.startRandom(source: selected, app: app, allowNetwork: allowNetwork, mode: mode, speed: speed, stepMode: usesStepInput)
-    }
-}
-
-/// Full-width filled actions, shared by setup and the initial/pause overlay.
-private struct SnakeActionButtonStyle: ButtonStyle {
-    var prominent = false
-    @Environment(\.isEnabled) private var enabled
-
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(.headline).multilineTextAlignment(.center)
-            .foregroundStyle(prominent ? Color(red: 0.04, green: 0.14, blue: 0.07) : .white)
-            .frame(maxWidth: .infinity, minHeight: 24)
-            .padding(.horizontal, 16).padding(.vertical, 14)
-            .background(prominent ? Color(red: 0.66, green: 0.9, blue: 0.36) : .white.opacity(0.12), in: .rect(cornerRadius: 16))
-            .overlay { RoundedRectangle(cornerRadius: 16).strokeBorder(.white.opacity(prominent ? 0.12 : 0.16), lineWidth: 1) }
-            .opacity(!enabled ? 0.42 : configuration.isPressed ? 0.78 : 1)
-            .contentShape(.rect(cornerRadius: 16))
     }
 }
