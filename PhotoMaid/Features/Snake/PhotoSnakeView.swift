@@ -89,13 +89,11 @@ struct PhotoSnakeView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 20) {
-                    GameIntro(text: L("game_setup_snake_intro"),
+                    GameIntro(showcase: .snake(model.preferences.character, night: model.preferences.night),
+                              text: L("game_setup_snake_intro"),
                               best: model.menuBest(mode: mode, speed: speed, stepMode: usesStepInput).map { L("game_best_eaten", $0) }
                                   ?? L("snake_record_empty"),
-                              bestIdentifier: "snake.menuBest") {
-                        Image(uiImage: SnakeArt.headImage(model.preferences.character))
-                            .resizable().scaledToFit().padding(12)
-                    }
+                              bestIdentifier: "snake.menuBest")
                     PhotoGameAnalysisStatus(onResults: onResults)
                     PhotoGameRecordSaveStatus()
                     if let error = model.photos.error {

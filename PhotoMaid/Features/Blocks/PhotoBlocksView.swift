@@ -50,10 +50,8 @@ struct PhotoBlocksView: View {
         @Bindable var model = model
         return ScrollView {
             VStack(spacing: 20) {
-                GameIntro(text: L("blocks_subtitle"), best: L("blocks_best", model.best), bestIdentifier: "blocks.best") {
-                    Image(systemName: "square.stack.3d.up.fill")
-                        .font(.system(size: 34, weight: .medium)).foregroundStyle(AppColors.accent)
-                }
+                GameIntro(showcase: .blocks, text: L("blocks_subtitle"), best: L("blocks_best", model.best),
+                          bestIdentifier: "blocks.best")
                 SurfaceCard {
                     VStack(alignment: .leading, spacing: 16) {
                         PhotoGameSetupField(title: L("game_setup_photos")) {

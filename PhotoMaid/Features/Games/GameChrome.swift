@@ -28,27 +28,31 @@ struct GameButtonStyle: ButtonStyle {
     }
 }
 
-/// Oben auf der Startseite: Symbolkachel, ein Satz und (falls vorhanden) der Rekord.
-struct GameIntro<Icon: View>: View {
+/// Oben auf der Startseite: laufende Spielszene (zeigt, wie gespielt wird), ein Satz und – falls vorhanden – der Rekord.
+struct GameIntro: View {
+    let showcase: GameShowcase.Kind
     let text: String
     var best: String?
     var bestIdentifier = "game.best"
-    @ViewBuilder var icon: Icon
+    @Environment(\.dynamicTypeSize) private var typeSize
 
     var body: some View {
-        VStack(spacing: AppSpacing.m) {
-            icon
-                .frame(width: 76, height: 76)
-                .background(AppColors.accent.opacity(0.12), in: .rect(cornerRadius: 24))
-                .accessibilityHidden(true)
+        VStack(spacing: 14) {
+            GameShowcase(kind: showcase)
+                .frame(height: typeSize.isAccessibilitySize ? 136 : 184)
+                .frame(maxWidth: .infinity)
             Text(verbatim: text)
-                .font(AppTypography.body).foregroundStyle(AppColors.textPrimary)
+                .font(PMFont.heading(20, relativeTo: .title3)).foregroundStyle(AppColors.textPrimary)
                 .multilineTextAlignment(.center)
+                .fixedSize(horizontal: false, vertical: true)
             if let best {
-                Text(verbatim: best)
-                    .font(AppTypography.subheadline.weight(.semibold)).foregroundStyle(AppColors.textSecondary)
-                    .monospacedDigit()
-                    .accessibilityIdentifier(bestIdentifier)
+                HStack(spacing: 6) {
+                    Image(systemName: "trophy.fill").accessibilityHidden(true)
+                    Text(verbatim: best).monospacedDigit().accessibilityIdentifier(bestIdentifier)
+                }
+                .font(AppTypography.subheadline.weight(.semibold)).foregroundStyle(AppColors.accent)
+                .padding(.horizontal, 14).padding(.vertical, 7)
+                .background(AppColors.accent.opacity(0.14), in: .capsule)
             }
         }
         .frame(maxWidth: .infinity)

@@ -68,17 +68,18 @@ struct PhotoGamesView: View {
                         PhotoGameAnalysisStatus(onResults: onResults)
                         PhotoGameRecordSaveStatus()
                         Button { selected = .memory } label: {
-                            PhotoGameTile(art: .memory, title: L("memory_title"),
+                            PhotoGameTile(showcase: .pairs, title: L("memory_title"),
                                           subtitle: L(app.memory.game?.isFinished == false ? "memory_resume" : "games_memory_description"))
                         }
                         .buttonStyle(PMPressStyle()).accessibilityIdentifier("games.memory")
                         Button { selected = .snake } label: {
-                            PhotoGameTile(art: .snake, title: L("snake_title"),
+                            PhotoGameTile(showcase: .snake(app.snake.preferences.character, night: app.snake.preferences.night),
+                                          title: L("snake_title"),
                                           subtitle: L(app.snake.game?.status == .playing ? "memory_resume" : "game_setup_snake_intro"))
                         }
                         .buttonStyle(PMPressStyle()).accessibilityIdentifier("games.snake")
                         Button { selected = .blocks } label: {
-                            PhotoGameTile(art: .blocks, title: L("blocks_title"), subtitle: L("blocks_subtitle"))
+                            PhotoGameTile(showcase: .blocks, title: L("blocks_title"), subtitle: L("blocks_subtitle"))
                         }
                         .buttonStyle(PMPressStyle()).accessibilityIdentifier("games.blocks")
                     }
@@ -95,16 +96,16 @@ struct PhotoGamesView: View {
     }
 }
 
-/// Spielkarte wie im Artefakt: violette Fläche, 84-pt-Bild, Titel 22 (Bricolage 700), Untertitel 14.
+/// Spielkarte wie im Artefakt: violette Fläche, 84-pt-Szene, Titel 22 (Bricolage 700), Untertitel 14. Die kleine Szene
+/// läuft wie auf der Startseite, damit schon hier klar ist, worum es im Spiel geht.
 private struct PhotoGameTile: View {
-    enum Art { case memory, snake, blocks }
-    let art: Art
+    let showcase: GameShowcase.Kind
     let title: String
     let subtitle: String
 
     var body: some View {
         HStack(spacing: 16) {
-            artwork.frame(width: 84, height: 84).accessibilityHidden(true)
+            GameShowcase(kind: showcase, compact: true).frame(width: 84, height: 84)
             VStack(alignment: .leading, spacing: 4) {
                 Text(verbatim: title).font(AppTypography.title).foregroundStyle(AppColors.textPrimary)
                 Text(verbatim: subtitle).font(PMFont.text(.regular, 14, relativeTo: .subheadline))
@@ -119,51 +120,6 @@ private struct PhotoGameTile: View {
         .overlay(RoundedRectangle(cornerRadius: 24).strokeBorder(AppColors.pauseStroke, lineWidth: 1))
         .contentShape(.rect(cornerRadius: 24))
         .accessibilityElement(children: .combine)
-    }
-
-    @ViewBuilder private var artwork: some View {
-        switch art {
-        case .memory:
-            let open = AppColors.keep
-            let closed = AppColors.pauseStroke
-            Grid(horizontalSpacing: 6, verticalSpacing: 6) {
-                GridRow {
-                    RoundedRectangle(cornerRadius: 10).fill(open)
-                    RoundedRectangle(cornerRadius: 10).fill(closed)
-                        .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(AppColors.pauseLine, lineWidth: 1))
-                }
-                GridRow {
-                    RoundedRectangle(cornerRadius: 10).fill(closed)
-                        .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(AppColors.pauseLine, lineWidth: 1))
-                    RoundedRectangle(cornerRadius: 10).fill(open)
-                }
-            }
-        case .snake:
-            Canvas { ctx, size in
-                let s = size.width / 84
-                ctx.fill(Path(roundedRect: CGRect(origin: .zero, size: size), cornerRadius: 16 * s), with: .color(AppColors.pauseStroke))
-                let dots: [(CGFloat, CGFloat, CGFloat, Color)] = [(22, 58, 9, AppColors.success), (34, 50, 9, AppColors.keep),
-                                                                  (46, 42, 9, AppColors.accent), (58, 34, 10, AppColors.cleanup)]
-                for (x, y, r, c) in dots {
-                    let rect = CGRect(x: (x - r) * s, y: (y - r) * s, width: 2 * r * s, height: 2 * r * s)
-                    ctx.fill(Path(ellipseIn: rect), with: .color(c))
-                    ctx.stroke(Path(ellipseIn: rect), with: .color(AppColors.textPrimary), lineWidth: 1.5 * s)
-                }
-                ctx.fill(Path(roundedRect: CGRect(x: 58 * s, y: 58 * s, width: 12 * s, height: 12 * s), cornerRadius: 6 * s),
-                         with: .color(AppColors.later))
-            }
-        case .blocks:
-            Canvas { ctx, size in
-                let s = size.width / 84
-                ctx.fill(Path(roundedRect: CGRect(origin: .zero, size: size), cornerRadius: 16 * s), with: .color(AppColors.pauseStroke))
-                let blocks: [(CGFloat, CGFloat, Color)] = [(14, 52, AppColors.cleanup), (33, 52, AppColors.accent),
-                                                          (52, 52, AppColors.keep), (33, 33, AppColors.later), (52, 14, AppColors.success)]
-                for (x, y, c) in blocks {
-                    ctx.fill(Path(roundedRect: CGRect(x: x * s, y: y * s, width: 18 * s, height: 18 * s), cornerRadius: 4 * s),
-                             with: .color(c))
-                }
-            }
-        }
     }
 }
 

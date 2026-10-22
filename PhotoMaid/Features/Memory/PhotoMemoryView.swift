@@ -112,10 +112,7 @@ struct PhotoMemoryView: View {
 
     private var configuration: some View {
         VStack(spacing: 20) {
-            GameIntro(text: L("game_setup_pairs_intro")) {
-                Image(systemName: "rectangle.on.rectangle")
-                    .font(.system(size: 36, weight: .medium)).foregroundStyle(AppColors.accent)
-            }
+            GameIntro(showcase: .pairs, text: L("game_setup_pairs_intro"))
             SurfaceCard {
                 VStack(alignment: .leading, spacing: 16) {
                     PhotoGameSetupField(title: L("game_setup_photos")) {
