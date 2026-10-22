@@ -82,7 +82,8 @@ Schrift und Größen. Nicht für `main` bestimmt, solange der Nutzer es nicht au
   verschwinden, Foto wird Streifen für Streifen frei, nächster Stein links). „Kurze Pause“ zeigt dieselben Szenen
   klein auf den Spielkarten. Rekord als Bernstein-Plakette. Nur Ansicht: gezeichnete Beispielbilder statt
   Mediathek-Fotos, keine Eingabe, kein Spielstand; zeichnet nur bei aktiver App, bei „Bewegung reduzieren“ ein fester
-  Moment; Richtungen nie gespiegelt.
+  Moment; Richtungen nie gespiegelt. Läuft nach dem Erscheinen eine Weile (Karten 4 s, Startseite 1 min) und ruht dann
+  auf dem letzten Bild; die große Snake-Wiese liegt als feste Ebene dahinter statt in jedem Bild neu gezeichnet.
 - **Texte aus echten Kennungen**, wo es sie schon gab (z. B. Mitteilungs-Erklärung in „Später“, Tresor-Hinweis in den
   Einstellungen) – teils länger als die Kurzfassung im Artefakt.
 - **Funktionen bleiben erreichbar**, die das Artefakt nicht zeigt: „Code vergessen?“, Sortieren/Auswählen im Tresor,
@@ -187,6 +188,10 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
   22.10.2026, nur interne Tester). Ein erster Versuch (Lauf 39733054664) wurde vor dem Upload abgebrochen, um den
   Akzent-Fix einzuschließen. Die laufenden Spielszenen (f789db1) sind noch nicht in diesem Build.
 - Laufende Spielszenen: Blocks-Tests + test05 auf iPhone und großem Fenster PASS (f789db1, Lauf 39735195960);
-  nach der Blocks-Überarbeitung (951e19d, Lauf 39739125820) Blocks PASS, test05 auf dem iPhone FAIL (Snake bewegt sich
-  nicht innerhalb 8 s – bekannter Wackler, Snake-Spielfeld unverändert, im Lauf davor PASS)
+  nach der Blocks-Überarbeitung (951e19d, Lauf 39739125820) Blocks PASS auf beiden, test05 iPhone FAIL / großes
+  Fenster PASS (Snake bewegt sich nicht innerhalb 8 s); 0454597 (Lauf 39742166262) iPhone beide PASS, großes Fenster
+  beide FAIL (Blocks-Wisch nach links nicht erkannt, Snake bewegt sich nicht). Ursache für die Häufung: Die
+  dauerhaft laufenden Szenen ließen die App für XCUITest nie zur Ruhe kommen – Wartezeiten auf „idle“ von 23 s (ohne
+  Szene) auf 32–59 s, Testdauer bis fast dreifach, am längsten beim Öffnen von „Kurze Pause“ (drei Szenen, große Wiese
+  in jedem Bild). Behoben durch Ruhephase und feste Wiesen-Ebene (siehe oben); Nachweis im nächsten Lauf
 - Geräteabnahme: NOT RUN

@@ -20,12 +20,13 @@ struct GameShowcase: View {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @Environment(\.scenePhase) private var scenePhase
     @State private var start = Date.now
+    @State private var resting = false
 
     var body: some View {
         let art = ShowcaseArt.make(kind)
         let radius: CGFloat = compact ? 16 : 24
         TimelineView(.animation(minimumInterval: compact ? 1.0 / 20 : 1.0 / 30,
-                                paused: reduceMotion || scenePhase != .active)) { timeline in
+                                paused: reduceMotion || scenePhase != .active || resting)) { timeline in
             let time = max(0, timeline.date.timeIntervalSince(start))
             Canvas { context, size in
                 let scene = ShowcaseScene(size: size, compact: compact, still: reduceMotion, art: art)
@@ -36,10 +37,23 @@ struct GameShowcase: View {
                 }
             }
         }
+        .background {
+            // Feste Ebene: das große Wiesenbild wird nicht in jedem Bild neu gezeichnet.
+            if let background = art.background {
+                background.resizable().scaledToFill().overlay(Color.black.opacity(0.08))
+            }
+        }
         .clipShape(.rect(cornerRadius: radius))
         .overlay { RoundedRectangle(cornerRadius: radius).strokeBorder(.white.opacity(0.08), lineWidth: 1) }
         .environment(\.layoutDirection, .leftToRight) // Fingerrichtungen im Spiel sind physisch, auch in RTL.
         .accessibilityHidden(true)
+        .task(id: scenePhase == .active) {
+            // Läuft eine Weile nach dem Erscheinen (klein 4 s, groß 1 min) und ruht dann auf dem letzten Bild:
+            // spart Akku, und die App wird wieder ruhig. Erneutes Öffnen oder Rückkehr in die App startet sie neu.
+            resting = false
+            try? await Task.sleep(for: .seconds(compact ? 4 : 60))
+            if !Task.isCancelled { resting = true }
+        }
     }
 }
 
@@ -360,12 +374,9 @@ private struct ShowcaseScene {
         let offset = (size.width - CGFloat(columns) * cell) / 2
         func place(_ p: CGPoint) -> CGPoint { CGPoint(x: offset + (p.x + 0.5) * cell, y: (p.y + 0.5) * cell) }
 
-        if let background = art.background {
-            ctx.drawImage(ctx.resolve(background), in: bounds, fill: true)
-        } else {
+        if art.background == nil { // Die Wiese liegt sonst als feste Ebene dahinter.
             ctx.fill(Path(bounds), with: .color(Color(red: 0.16, green: 0.36, blue: 0.2)))
         }
-        ctx.fill(Path(bounds), with: .color(.black.opacity(0.08)))
         var layer = ctx
         layer.opacity = still ? 1 : min(clamp01(tr / 0.35), clamp01((period - tr) / 0.35))
 
