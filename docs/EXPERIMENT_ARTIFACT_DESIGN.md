@@ -75,6 +75,14 @@ Schrift und Größen. Nicht für `main` bestimmt, solange der Nutzer es nicht au
 - **Spielfotos laden parallel** (Nutzer, 22.10.2026: „Können wir laden verschnellern?“): Paare und Snake luden ihre
   Fotos strikt nacheinander; jetzt bis zu sechs gleichzeitig (gleiche PhotoKit-Vorschau, gleiche Reihenfolge, jede
   Kennung vorher gegen Tresor/Ausgeblendet/Zugriff geprüft, Abbrechen wie bisher).
+- **Laufende Spielszenen** (Nutzer, 22.10.2026: „Vielleicht mehr game-mäßig, damit klar ist, um was es geht? Zu
+  statisch“, `GameShowcase.swift`): Statt einer Symbolkachel zeigt jede Startseite oben eine kleine Szene in Schleife –
+  Paare (Finger tippt, Karten drehen sich, ein Fehlversuch, dann alle Paare mit Haken), Foto-Snake (Schlange aus runden
+  Fotos frisst Obst und wächst, Finger wischt vor jeder Kurve), Foto Blocks (Stein fällt in die Lücke, volle Reihen
+  verschwinden, Foto wird Streifen für Streifen frei, nächster Stein links). „Kurze Pause“ zeigt dieselben Szenen
+  klein auf den Spielkarten. Rekord als Bernstein-Plakette. Nur Ansicht: gezeichnete Beispielbilder statt
+  Mediathek-Fotos, keine Eingabe, kein Spielstand; zeichnet nur bei aktiver App, bei „Bewegung reduzieren“ ein fester
+  Moment; Richtungen nie gespiegelt.
 - **Texte aus echten Kennungen**, wo es sie schon gab (z. B. Mitteilungs-Erklärung in „Später“, Tresor-Hinweis in den
   Einstellungen) – teils länger als die Kurzfassung im Artefakt.
 - **Funktionen bleiben erreichbar**, die das Artefakt nicht zeigt: „Code vergessen?“, Sortieren/Auswählen im Tresor,
@@ -178,4 +186,7 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
   und Bernstein-Akzent (52d8460) hochgeladen und von Apple verarbeitet (Lauf 39733444754, Unit-Tests davor PASS,
   22.10.2026, nur interne Tester). Ein erster Versuch (Lauf 39733054664) wurde vor dem Upload abgebrochen, um den
   Akzent-Fix einzuschließen. Die laufenden Spielszenen (f789db1) sind noch nicht in diesem Build.
+- Laufende Spielszenen: Blocks-Tests + test05 auf iPhone und großem Fenster PASS (f789db1, Lauf 39735195960);
+  nach der Blocks-Überarbeitung (951e19d, Lauf 39739125820) Blocks PASS, test05 auf dem iPhone FAIL (Snake bewegt sich
+  nicht innerhalb 8 s – bekannter Wackler, Snake-Spielfeld unverändert, im Lauf davor PASS)
 - Geräteabnahme: NOT RUN

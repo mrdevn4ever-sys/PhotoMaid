@@ -471,7 +471,8 @@ private struct ShowcaseScene {
         // Foto wird wie im Spiel von oben freigelegt; ein Streifen ist schon frei, damit man sieht, worum es geht.
         let strips = inFinale ? 8 : 2 + 1.5 * Double(k) + 1.5 * smooth((tc - 1.25) / 0.35)
         let sinceFinale = t - cycle * 4
-        let dim = inFinale ? 0.55 * (1 - smooth(sinceFinale / 0.4)) : 0.55
+        // Heller als im Spiel (0,55), damit das Foto auch in der kleinen Szene erkennbar ist.
+        let dim = inFinale ? 0.3 * (1 - smooth(sinceFinale / 0.4)) : 0.3
         let photoOpacity = inFinale ? 1 - smooth((sinceFinale - finale + 0.45) / 0.4) : (k == 0 && !still ? smooth(tc / 0.3) : 1)
         if photoOpacity > 0, let image = art.boardPhoto {
             var photo = ctx
