@@ -63,6 +63,18 @@ Schrift und Größen. Nicht für `main` bestimmt, solange der Nutzer es nicht au
   anzeigen: Immer“ oder VoiceOver waren fünf Tasten (4 × 64 + 80 pt, 22 pt Abstand) breiter als ein iPhone; die Zeile
   schob den ganzen Feed seitlich hinaus (⋯, Rückgängig, Papierkorb-Zähler bei x = 400–444 auf 402 pt). Jetzt die
   größte Stufe, die passt (64/80 → 56/68 → 48/56 → 44/48 pt), mindestens 44 pt Tippfläche. Betraf alle Builds 21–24.
+- **Foto Blocks wackelt nicht mehr** (Nutzer, 22.10.2026: „Es wackelt weil unten ein Text auftaucht“ → „Der Text soll
+  nie kommen“): Unter dem Spielfeld erschien kurz „Bilder werden vorbereitet …“ bzw. ein Speicher-Hinweis und schob
+  das Brett hoch. Der Text ist ganz entfernt; ein Speicherproblem zeigt nur ein Warnsymbol (erneut speichern) in der
+  Spielleiste oben.
+- **Einheitliches Spiele-Design** (Nutzer, 22.10.2026: „Können wir das Design vereinheitlichen“, `GameChrome.swift`):
+  Paare, Foto-Snake und Foto Blocks haben dieselbe Kopfzeile (Schließen · Spielname · Andere Spiele), dieselbe
+  Startseite (Symbolkachel, ein Satz, Rekord, Karte „Fotos“, Bernstein-Knopf „Spiel starten“), dieselben Pause- und
+  Ende-Fenster und dieselben Beschriftungen (Nochmal, Fortsetzen, Fotos ändern). Nur das Spielfeld selbst behält
+  sein Aussehen. Bernstein-Akzent für das ganze Spiele-Fenster – Paare aus dem Feed war vorher blau.
+- **Spielfotos laden parallel** (Nutzer, 22.10.2026: „Können wir laden verschnellern?“): Paare und Snake luden ihre
+  Fotos strikt nacheinander; jetzt bis zu sechs gleichzeitig (gleiche PhotoKit-Vorschau, gleiche Reihenfolge, jede
+  Kennung vorher gegen Tresor/Ausgeblendet/Zugriff geprüft, Abbrechen wie bisher).
 - **Texte aus echten Kennungen**, wo es sie schon gab (z. B. Mitteilungs-Erklärung in „Später“, Tresor-Hinweis in den
   Einstellungen) – teils länger als die Kurzfassung im Artefakt.
 - **Funktionen bleiben erreichbar**, die das Artefakt nicht zeigt: „Code vergessen?“, Sortieren/Auswählen im Tresor,
