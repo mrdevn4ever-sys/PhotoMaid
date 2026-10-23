@@ -20,7 +20,7 @@ Geräte- oder App-Store-Abnahmen.
 | 10 | Performance (Instruments), 100 Entscheidungen / 30 Videowechsel / Undo-Serien auf realem iPhone | Abnahme | QA |
 | 11 | Reale PhotoKit-Löschung mit QA-Assets, Abbruch, Fehler, iCloud-Konto | Abnahme | QA |
 | 12 | Finales App-Icon (aktuell generierter Platzhalter) | Design | Inhaber |
-| 13 | Datenschutzerklärung-URL, Privacy Labels, App-Review-Guidelines, DACH-Rechtsprüfung, Altersfreigabe, Marken-/Store-Konflikt „PhotoMaid“ | Recht/Compliance | Inhaber |
+| 13 | Datenschutzerklärung-URL, Privacy Labels, App-Review-Guidelines, DACH-Rechtsprüfung, Altersfreigabe, Marken-/Store-Konflikt „PhotoMaid“ – seit 23.10.2026 heißt die App sichtbar „Arrumo“ (iOS, Datenschutzseite); offen: Markenrecherche „Arrumo“ (Swissreg, TMview, USPTO; Klassen 9/42), Domain, App-Name und IAP-Anzeigename „Arrumo Pro“ in App Store Connect, AdMob-App „Arrumo“, Store-Bilder mit neuem Schriftzug, Android-Texte | Recht/Compliance | Inhaber |
 | 14 | String Catalog: Format-Spezifizierer interpolierter Texte von Xcode-Extraktion bestätigen lassen | Verifikation | Build auf macOS |
 | 15 | Menschliche Code-Review (PR erst auf ausdrückliche Anweisung) | Abnahme | Inhaber |
 | 16 | Video-Export auf echten Medien (HDR, Zeitlupe, 4K/60) und Hintergrund-Export (`BGContinuedProcessingTask`) | Abnahme | QA auf Gerät |
