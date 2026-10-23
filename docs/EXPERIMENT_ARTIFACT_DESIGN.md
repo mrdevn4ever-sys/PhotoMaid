@@ -237,4 +237,7 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
   schon vorher wechselhaft, siehe oben) 2 × FAIL / 1 × PASS (Lauf 39853840567); test60 (Fotos: Filter) 1 × FAIL
   (Tableiste nach Startwerbung nicht antippbar) / 1 × PASS (Lauf 39853844621). Wirkung auf die Wärme: NOT RUN
   (nur am Gerät messbar).
+- TestFlight: Build 1.0 (29) mit Wischhilfe-Schleier über den ganzen Bildschirm und den Feed-Wärme-Maßnahmen
+  (27a7fb6) hochgeladen und von Apple verarbeitet (Lauf 39902817346, Unit-Tests davor PASS, 23.10.2026, nur interne
+  Tester)
 - Geräteabnahme: NOT RUN
