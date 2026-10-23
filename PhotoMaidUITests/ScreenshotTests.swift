@@ -323,7 +323,7 @@ final class ScreenshotTests: XCTestCase {
         gear.tap()
         let pro = app.buttons["settings.pro"].firstMatch
         for _ in 0..<5 where !pro.waitForExistence(timeout: 1) { app.swipeUp() }
-        if waitFor(pro, 6, "PhotoMaid Pro in Einstellungen") {
+        if waitFor(pro, 6, "Arrumo Pro in Einstellungen") {
             pro.tap()
             settle(2)
             snap("15_pro")

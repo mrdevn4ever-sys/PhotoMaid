@@ -417,7 +417,7 @@ struct MovieView: View {
             let url = try await ExportCoordinator.shared.run(title: L("movie_running")) { progress in
                 try await VideoExportJob.renderMovie(project: p, assets: boxedAssets.value, infos: boxedInfos.value,
                                                      frame: frame, fps: 30, musicURL: selectedMusic, allowNetwork: true,
-                                                     folder: folder, baseName: "PhotoMaid", progress: progress)
+                                                     folder: folder, baseName: AppConfig.brandName, progress: progress)
             }
             let request = PhotoLibraryService.SaveRequest(fileURL: url, isVideo: true, creationDate: Date(),
                                                           latitude: nil, longitude: nil, filename: url.lastPathComponent)

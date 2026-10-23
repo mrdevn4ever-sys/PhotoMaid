@@ -137,7 +137,7 @@ enum MediaShare {
         let name = PHAssetResource.assetResources(for: asset)
             .first { $0.type == .photo || $0.type == .video }?.originalFilename ?? ""
         let stem = (name as NSString).deletingPathExtension.replacingOccurrences(of: "/", with: "_")
-        return stem.isEmpty ? "PhotoMaid-" + String(UUID().uuidString.prefix(8)) : stem
+        return stem.isEmpty ? AppConfig.brandName + "-" + String(UUID().uuidString.prefix(8)) : stem
     }
 
     private static func exportPhoto(_ box: UncheckedBox<PHAsset>, folder: URL, stem: String) async -> URL? {

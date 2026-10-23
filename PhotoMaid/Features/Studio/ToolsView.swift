@@ -398,7 +398,7 @@ struct ToolsView: View {
         let folder = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString, isDirectory: true)
         try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
         defer { try? FileManager.default.removeItem(at: folder) }
-        let url = folder.appendingPathComponent("PhotoMaid." + fileExtension)
+        let url = folder.appendingPathComponent(AppConfig.brandName + "." + fileExtension)
         try data.write(to: url, options: .atomic)
         let request = PhotoLibraryService.SaveRequest(fileURL: url, isVideo: false, creationDate: Date(), latitude: nil,
                                                       longitude: nil, filename: url.lastPathComponent)

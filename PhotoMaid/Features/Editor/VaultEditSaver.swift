@@ -62,7 +62,7 @@ enum VaultEditSaver {
             try lease.check()
             return try await VideoExportJob.renderMovie(project: project, assets: boxedAssets.value, infos: infos,
                                                         frame: frame, fps: 30, musicURL: nil, allowNetwork: false,
-                                                        folder: folder, baseName: "PhotoMaid", isolated: true,
+                                                        folder: folder, baseName: AppConfig.brandName, isolated: true,
                                                         progress: progress)
         }
         return try await vault.addEditedMedia(.file(url), video: true, uti: UTType.videoIdentifier(for: url),

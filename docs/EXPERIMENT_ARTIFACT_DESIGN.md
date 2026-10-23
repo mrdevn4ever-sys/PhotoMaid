@@ -240,4 +240,8 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
 - TestFlight: Build 1.0 (29) mit Wischhilfe-Schleier über den ganzen Bildschirm und den Feed-Wärme-Maßnahmen
   (27a7fb6) hochgeladen und von Apple verarbeitet (Lauf 39902817346, Unit-Tests davor PASS, 23.10.2026, nur interne
   Tester)
+- Umbenennung „Arrumo“ (23.10.2026): Anzeigename, Berechtigungstexte, alle 16 Sprachen (1838 + 110 Stellen),
+  Dateinamen/Ordner für PDF, Tresor-Sicherung, Diagnose, Export, Metadaten, Zahlenschloss-Schriftzug (Rad am ersten
+  „o“), StoreKit-Testnamen, UI-Test-Erwartungen. Intern bleibt „PhotoMaid“ (Bundle-ID, Daten, Schlüsselbund).
+  `swift test` PASS (496), `--check` Texte PASS.
 - Geräteabnahme: NOT RUN

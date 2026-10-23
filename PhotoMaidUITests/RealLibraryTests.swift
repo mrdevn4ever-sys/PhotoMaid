@@ -614,7 +614,7 @@ final class RealLibraryTests: XCTestCase {
         app.swipeUp()
         snap("pro_free_benefits")
         XCTAssertTrue(contains("Alles andere").exists)
-        let buy = button("PhotoMaid Pro freischalten")
+        let buy = button("Arrumo Pro freischalten")
         scrollTo(buy)
         tap(buy, "storekit_purchase")
         XCTAssertTrue(app.staticTexts["Pro ist aktiv"].waitForExistence(timeout: 20))

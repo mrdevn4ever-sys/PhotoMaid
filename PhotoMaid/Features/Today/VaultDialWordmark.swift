@@ -1,8 +1,9 @@
 import SwiftUI
 import UIKit
 
-/// Seitentitel der Startseite: „PhotoMaid“, das erste „o“ ist ein kleines Zahlenschloss-Rad (`CombinationDial`) –
-/// zugleich der versteckte Eingang zum Tresor (E16, Nutzerwunsch 21.10.2026 statt „Heute“). 2 Sekunden halten öffnet
+/// Seitentitel der Startseite: der Produktname (`AppConfig.brandName`, „Arrumo“), sein erstes „o“ ist ein kleines
+/// Zahlenschloss-Rad (`CombinationDial`) – zugleich der versteckte Eingang zum Tresor (E16, Nutzerwunsch 21.10.2026 statt
+/// „Heute“; bis 23.10.2026 im „o“ von „PhotoMaid“). 2 Sekunden halten öffnet
 /// einen eingerichteten Tresor; dabei dreht sich das Rad links, rechts, links und klickt wie ein Zahlenschloss.
 /// Ohne Tresor bleibt es ein ruhiges „o“ und nichts passiert.
 /// Der Markenname bleibt in jeder Sprache und Schreibrichtung gleich (links nach rechts).
@@ -22,14 +23,15 @@ struct VaultDialWordmark: View {
     var body: some View {
         let size = pointSize
         let dial = size * 23 / 40
+        let parts = Self.parts
         HStack(alignment: .firstTextBaseline, spacing: 0) {
-            Text(verbatim: "Ph")
+            Text(verbatim: parts.0)
             CombinationDial(rotation: turn)
                 .frame(width: dial, height: dial)
                 .padding(.horizontal, size / 40)
                 // Wie ein gesetztes „o“ reicht das Rad minimal unter die Grundlinie.
                 .alignmentGuide(.firstTextBaseline) { $0[.bottom] - size / 40 }
-            Text(verbatim: "toMaid")
+            if !parts.1.isEmpty { Text(verbatim: parts.1) }
         }
         .font(AppTypography.largeTitle)
         .tracking(-0.02 * size)
@@ -47,6 +49,13 @@ struct VaultDialWordmark: View {
         } onPressingChanged: { down in
             pressing(down)
         }
+    }
+
+    /// Name vor und nach dem ersten „o“ (das Rad steht an dessen Stelle). Ohne „o“ steht das Rad am Ende.
+    private static var parts: (String, String) {
+        let name = AppConfig.brandName
+        guard let o = name.range(of: "o") else { return (name, "") }
+        return (String(name[..<o.lowerBound]), String(name[o.upperBound...]))
     }
 
     private func pressing(_ down: Bool) {

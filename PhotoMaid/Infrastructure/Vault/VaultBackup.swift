@@ -36,7 +36,7 @@ enum VaultBackup {
         let count = 1 + objectNames.count + thumbnailNames.count
         guard count <= maxRecords else { throw VaultWorkspaceError.invalidData }
         let folder = try lease.makeDirectory()
-        let target = folder.appendingPathComponent("PhotoMaid-\(Int(Date().timeIntervalSince1970)).pmvault")
+        let target = folder.appendingPathComponent("\(AppConfig.brandName)-\(Int(Date().timeIntervalSince1970)).pmvault")
         guard FileManager.default.createFile(atPath: target.path, contents: nil,
             attributes: [.protectionKey: FileProtectionType.complete]) else { throw VaultCryptoError.io }
         let out = try FileHandle(forWritingTo: target)

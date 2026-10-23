@@ -258,7 +258,7 @@ struct ArchiveView: View {
         let stampFormatter = DateFormatter()
         stampFormatter.locale = Locale(identifier: "en_US_POSIX")
         stampFormatter.dateFormat = "yyyy-MM-dd_HH-mm"
-        let wanted = ArchivePlan.safeName(L("archive_list_file", stampFormatter.string(from: Date())), fallback: "PhotoMaid.csv")
+        let wanted = ArchivePlan.safeName(L("archive_list_file", stampFormatter.string(from: Date())), fallback: AppConfig.brandName + ".csv")
         let existing = Set((try? FileManager.default.contentsOfDirectory(atPath: folder.path)) ?? [])
         let name = ArchivePlan.uniqueName(taken: existing, wanted: wanted)
         do {

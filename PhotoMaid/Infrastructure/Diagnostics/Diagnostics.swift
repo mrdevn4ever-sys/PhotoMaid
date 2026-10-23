@@ -35,7 +35,7 @@ enum Diagnostics {
     static func makeReport(appVersion: String, build: String) async -> URL? {
         await Task.detached(priority: .utility) { () -> URL? in
             var lines: [String] = []
-            lines.append("PhotoMaid \(appVersion) (\(build))")
+            lines.append("\(AppConfig.brandName) \(appVersion) (\(build))")
             lines.append("iOS \(ProcessInfo.processInfo.operatingSystemVersionString)")
             lines.append("Erstellt: \(ISO8601DateFormatter().string(from: Date()))")
             lines.append("")
@@ -60,7 +60,7 @@ enum Diagnostics {
                     if let s = try? String(contentsOf: f, encoding: .utf8) { lines.append(s) }
                 }
             }
-            let out = FileManager.default.temporaryDirectory.appendingPathComponent("PhotoMaid-Diagnose.txt")
+            let out = FileManager.default.temporaryDirectory.appendingPathComponent(AppConfig.brandName + "-Diagnose.txt")
             do {
                 try lines.joined(separator: "\n").write(to: out, atomically: true, encoding: .utf8)
                 return out

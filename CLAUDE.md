@@ -3,6 +3,9 @@
 Native iPhone-App (iOS 26+, Swift 6 strikte Concurrency, SwiftUI + Observation, Liquid Glass).
 Funktionale Referenz: Android-App `mrdevn4ever-sys/photomaid-android` (Funktionsmatrix `docs/IOS_FUNKTIONSMATRIX.md`).
 Kein Flutter, Dart, Kotlin, React Native, keine WebView-Oberfläche, keine nachgebaute Android-Oberfläche.
+**Produktname seit 23.10.2026: „Arrumo“** (Nutzerentscheidung, Markenkonflikt „PhotoMaid“/„photoAiD“). Sichtbar nur
+`AppConfig.brandName`, `CFBundleDisplayName` und die Texte (Generator ersetzt „PhotoMaid“ → „Arrumo“). Interne Namen
+(Projekt, Module, Bundle-ID, Core Data, Schlüsselbund, `.pmvault`) bleiben „PhotoMaid“ – nie umbenennen, Daten bleiben.
 Offene/getroffene Entscheidungen: `docs/IOS_ENTSCHEIDUNGEN.md` (E1–E19) – nichts davon still ändern.
 
 ## Gesten (Standardbelegung, tatsächliche Fingerbewegung, wie Android – frei belegbar: Einstellungen › Wischen & Tasten, E18)

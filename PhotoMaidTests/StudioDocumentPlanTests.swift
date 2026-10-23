@@ -42,7 +42,7 @@ final class StudioDocumentPlanTests: XCTestCase {
         let first = try PdfServices.saveDocument(firstBytes, documentsDirectory: root)
         let second = try PdfServices.saveDocument(secondBytes, documentsDirectory: root)
         XCTAssertNotEqual(first, second, "New exports must not silently overwrite older PDFs")
-        XCTAssertEqual(first.deletingLastPathComponent().lastPathComponent, "PhotoMaid")
+        XCTAssertEqual(first.deletingLastPathComponent().lastPathComponent, AppConfig.brandName)
         XCTAssertEqual(first.pathExtension, "pdf")
         XCTAssertEqual(try Data(contentsOf: first), firstBytes)
         XCTAssertEqual(try Data(contentsOf: second), secondBytes)

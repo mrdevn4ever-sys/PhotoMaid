@@ -373,7 +373,7 @@ final class AppStoreCaptureTests: XCTestCase {
         tap(button("vault_change_code")); snap("vault-change-code-empty"); tap(button("cancel")); tap(button("done"))
         tap(app.segmentedControls.buttons[t("vault2_notes")])
         tap(button("vault2_new_note"))
-        tap(e("vault.note.title")); e("vault.note.title").typeText("PhotoMaid")
+        tap(e("vault.note.title")); e("vault.note.title").typeText("Arrumo")
         tap(button("done"))
         let notes = app.buttons.matching(NSPredicate(format:"identifier BEGINSWITH 'vault.notes.item.'"))
         XCTAssertTrue(notes.firstMatch.waitForExistence(timeout:10)); snap("vault-notes-with-note")

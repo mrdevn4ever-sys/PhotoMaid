@@ -42,7 +42,7 @@ final class PhotoMaidUITests: XCTestCase {
 
     func testProWithoutConfigurationShowsNoInventedPrice() {
         app.buttons["Einstellungen"].firstMatch.tap()
-        // Zeile fasst Titel und Status zusammen („PhotoMaid Pro, Einmalkauf“).
+        // Zeile fasst Titel und Status zusammen („Arrumo Pro, Einmalkauf“).
         let pro = app.buttons["settings.pro"].firstMatch
         // Listenzeilen außerhalb des Bildschirms existieren erst nach dem Scrollen.
         for _ in 0..<5 where !pro.waitForExistence(timeout: 1) { app.swipeUp() }

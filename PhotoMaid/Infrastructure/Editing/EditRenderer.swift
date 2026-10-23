@@ -323,7 +323,7 @@ final class EditRenderer: @unchecked Sendable {
         if removeLocation { props[kCGImagePropertyGPSDictionary as String] = nil }
         if var tiff = props[kCGImagePropertyTIFFDictionary as String] as? [String: Any] {
             tiff[kCGImagePropertyTIFFOrientation as String] = 1
-            tiff[kCGImagePropertyTIFFSoftware as String] = "PhotoMaid"
+            tiff[kCGImagePropertyTIFFSoftware as String] = AppConfig.brandName
             props[kCGImagePropertyTIFFDictionary as String] = tiff
         }
         if format != .png { props[kCGImageDestinationLossyCompressionQuality as String] = min(max(quality, 0.3), 1) }

@@ -308,7 +308,7 @@ final class VaultDeletionTests: XCTestCase {
             tap(browse, "browse_" + name)
             let local = app.descendants(matching: .any).matching(NSPredicate(format: "label IN %@", ["On My iPhone", "Auf meinem iPhone"] as NSArray)).firstMatch
             if local.waitForExistence(timeout: 8) { tap(local, "local_files_" + name) }
-            let appFolder = app.descendants(matching: .any).matching(NSPredicate(format: "label == 'PhotoMaid'")).firstMatch
+            let appFolder = app.descendants(matching: .any).matching(NSPredicate(format: "label == 'Arrumo'")).firstMatch
             if appFolder.waitForExistence(timeout: 8) { tap(appFolder, "app_folder_" + name) }
             let downloads = app.descendants(matching: .any).matching(NSPredicate(format: "label BEGINSWITH 'QA-Downloads'")).firstMatch
             if downloads.waitForExistence(timeout: 8) { tap(downloads, "qa_folder_" + name) }
@@ -369,7 +369,7 @@ final class VaultDeletionTests: XCTestCase {
         if back.waitForExistence(timeout: 5) { tap(back, "dial_settings_closed") }
         let title = app.descendants(matching: .any)["today.title"].firstMatch
         XCTAssertTrue(title.waitForExistence(timeout: 10))
-        XCTAssertEqual(title.label, "PhotoMaid")
+        XCTAssertEqual(title.label, "Arrumo")
         snap("dial_title")
         title.press(forDuration: 0.6)
         XCTAssertFalse(app.vaultKeypad.waitForExistence(timeout: 2), "A short press must not open the vault")

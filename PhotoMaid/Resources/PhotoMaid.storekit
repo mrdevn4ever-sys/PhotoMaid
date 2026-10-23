@@ -9,12 +9,12 @@
       "localizations" : [
         {
           "description" : "NUR LOKALER TEST – kein echtes Produkt",
-          "displayName" : "PhotoMaid Pro (Test)",
+          "displayName" : "Arrumo Pro (Test)",
           "locale" : "de_CH"
         }
       ],
       "productID" : "test.photomaid.pro.lifetime",
-      "referenceName" : "PhotoMaid Pro – lokaler StoreKit-Test",
+      "referenceName" : "Arrumo Pro – lokaler StoreKit-Test",
       "type" : "NonConsumable"
     }
   ],

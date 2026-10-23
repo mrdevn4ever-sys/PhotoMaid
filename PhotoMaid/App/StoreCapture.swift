@@ -140,9 +140,9 @@ enum StoreCapture {
         case "categories": route = .smartReview(.categories)
         case "albums": tab = .library; route = .albums
         case "album":
-            let options = PHFetchOptions(); options.predicate = NSPredicate(format: "title == %@", "PhotoMaid")
+            let options = PHFetchOptions(); options.predicate = NSPredicate(format: "title == %@", AppConfig.brandName)
             if let album = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: options).firstObject {
-                tab = .library; route = .album(id: album.localIdentifier, title: "PhotoMaid")
+                tab = .library; route = .album(id: album.localIdentifier, title: AppConfig.brandName)
             } else { return }
         case "grid": tab = .library; route = .grid(.items(ids, titleKey: "tab_library"))
         case "favorites": tab = .library; route = .favorites
@@ -230,7 +230,7 @@ enum StoreCapture {
                     edit.creationDate = Date(timeIntervalSince1970: 1_792_022_400 - Double(index) * 3_600)
                     edit.isFavorite = [13, 21, 25, 31, 36, 42].contains(index)
                 }
-                let album = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: "PhotoMaid")
+                let album = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: AppConfig.brandName)
                 album.addAssets(PHAsset.fetchAssets(withLocalIdentifiers: assets.filter { $0.1 <= 12 }.map(\.0), options: nil))
             }
             UserDefaults.standard.set(true, forKey: "storeCapture.arranged")

@@ -15,6 +15,9 @@ Aufruf:
                                                              # existiert in allen 16 Sprachen, kein „Android“-Text
 Die Android-Quelle wird über die Umgebungsvariable PM_ANDROID_RES gefunden (Standard: ../photomaid-android/app/src/main/res).
 Fehlt sie (z. B. in CI), wird nur ios_strings.json gegen den eingecheckten Katalog geprüft.
+
+Produktname: In den Quellen steht „PhotoMaid“ (Android, ios_strings.json). Beim Schreiben ersetzt das Skript ihn durch
+BRAND (seit 23.10.2026 „Arrumo“, Markenkonflikt mit „photoAiD“). Interne Namen (Projekt, Module, Datenbank) bleiben.
 """
 import json
 import os
@@ -38,6 +41,10 @@ LANGS = {  # Android-Ordner → iOS-Sprachkennung
 ALL = list(LANGS.values())
 # Wörter, die in iOS-Texten nicht vorkommen dürfen (Android-Begriffe). Nur für benutzte Kennungen geprüft.
 FORBIDDEN = re.compile(r"Android|Google Play|Google AdMob|AdMob|TalkBack|SD-Karte|Play Store|MediaStore", re.I)
+
+# Sichtbarer Produktname der iOS-App (ersetzt „PhotoMaid“ in allen geschriebenen Texten).
+SOURCE_BRAND = "PhotoMaid"
+BRAND = "Arrumo"
 
 FMT = re.compile(r"%(\d+\$)?(\.\d+)?([sdf])")
 
@@ -117,7 +124,7 @@ def catalog(entries: dict) -> dict:
             v = entries[key].get(lang)
             if v is None:
                 continue
-            locs[lang] = {"stringUnit": {"state": "translated", "value": v}}
+            locs[lang] = {"stringUnit": {"state": "translated", "value": v.replace(SOURCE_BRAND, BRAND)}}
         strings[key] = {"extractionState": "manual", "localizations": locs}
     return {"sourceLanguage": "en", "strings": strings, "version": "1.0"}
 

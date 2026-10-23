@@ -2,6 +2,12 @@ import Foundation
 
 /// Build-Konfiguration aus der Info.plist (Werte kommen aus Build-Einstellungen bzw. CI-Secrets, nie aus dem Repo).
 enum AppConfig {
+    /// Sichtbarer Produktname (seit 23.10.2026 „Arrumo“, vorher „PhotoMaid“ – Markenkonflikt mit „photoAiD“). Gilt für
+    /// Dateinamen, Ordner und Metadaten, die Nutzer sehen. Texte kommen aus dem Katalog (`scripts/…xcstrings.py`
+    /// ersetzt den Namen dort). Interne Namen – Projekt, Module, Datenbank, Schlüsselbund, Warteschlangen – bleiben
+    /// „PhotoMaid“, damit vorhandene Daten und der Tresor erhalten bleiben.
+    static let brandName = "Arrumo"
+
     /// Produkt-ID des Einmalkaufs „PhotoMaid Pro“ (Non-Consumable). Leer = Käufe in diesem Build nicht verfügbar.
     static var proProductID: String? { nonEmpty("PMProProductID") }
 

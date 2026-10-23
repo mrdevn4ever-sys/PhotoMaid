@@ -4,7 +4,7 @@ import XCTest
 /// Einträge über ihre Kennung; deutsche Titel der Tests werden darauf abgebildet.
 @MainActor
 extension XCUIApplication {
-    private static let tabIDs = ["Heute": "tab.today", "PhotoMaid": "tab.today", "Fotos": "tab.library",
+    private static let tabIDs = ["Heute": "tab.today", "Arrumo": "tab.today", "Fotos": "tab.library",
                                  "Aufräumen": "tab.cleanup", "Studio": "tab.studio", "Verlauf": "tab.history"]
 
     func pmTab(_ title: String) -> XCUIElement { buttons[Self.tabIDs[title] ?? title].firstMatch }

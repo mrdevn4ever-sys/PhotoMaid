@@ -86,12 +86,12 @@ targets:
     info:
       path: PhotoMaid/App/Info.plist
       properties:
-        CFBundleDisplayName: PhotoMaid
+        CFBundleDisplayName: Arrumo   # Produktname seit 23.10.2026 (interne Namen bleiben PhotoMaid)
         CFBundleDevelopmentRegion: en
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         CFBundleAllowMixedLocalizations: false
-        # Alle 16 Sprachen des Katalogs: iOS zeigt dann unter Einstellungen › PhotoMaid › Sprache die App-Sprache.
+        # Alle 16 Sprachen des Katalogs: iOS zeigt dann unter Einstellungen › Arrumo › Sprache die App-Sprache.
         CFBundleLocalizations: [en, de, ar, es, fr, it, ja, ko, nl, pl, pt-PT, ro, ru, tr, uk, zh-Hans]
         UILaunchScreen: {}
         # Experiment-Design (Artefakt): Bricolage Grotesque und Figtree (OFL), statische Instanzen.
@@ -100,12 +100,12 @@ targets:
           UIApplicationSupportsMultipleScenes: false
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait
-        NSPhotoLibraryUsageDescription: "PhotoMaid shows your photos and videos for sorting on this iPhone and only removes items you choose and confirm in the system dialog."
-        NSPhotoLibraryAddUsageDescription: "PhotoMaid saves edited copies, collages, videos and PDFs as new items in your library."
-        NSCameraUsageDescription: "PhotoMaid uses the camera only to scan documents when you tap Scan."
-        NSFaceIDUsageDescription: "PhotoMaid uses Face ID only to open content you protected with a code."
-        NSMicrophoneUsageDescription: "PhotoMaid needs microphone access for a voice note. Recording starts only when you tap."
-        NSUserTrackingUsageDescription: "The free version of PhotoMaid shows ads from Google. With your permission they can be more relevant to you. Your photos and files never go to advertisers."
+        NSPhotoLibraryUsageDescription: "Arrumo shows your photos and videos for sorting on this iPhone and only removes items you choose and confirm in the system dialog."
+        NSPhotoLibraryAddUsageDescription: "Arrumo saves edited copies, collages, videos and PDFs as new items in your library."
+        NSCameraUsageDescription: "Arrumo uses the camera only to scan documents when you tap Scan."
+        NSFaceIDUsageDescription: "Arrumo uses Face ID only to open content you protected with a code."
+        NSMicrophoneUsageDescription: "Arrumo needs microphone access for a voice note. Recording starts only when you tap."
+        NSUserTrackingUsageDescription: "The free version of Arrumo shows ads from Google. With your permission they can be more relevant to you. Your photos and files never go to advertisers."
         PHPhotoLibraryPreventAutomaticLimitedAccessAlert: true
         UIFileSharingEnabled: true
         LSSupportsOpeningDocumentsInPlace: true
