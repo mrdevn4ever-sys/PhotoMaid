@@ -243,5 +243,10 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
 - Umbenennung „Arrumo“ (23.10.2026): Anzeigename, Berechtigungstexte, alle 16 Sprachen (1838 + 110 Stellen),
   Dateinamen/Ordner für PDF, Tresor-Sicherung, Diagnose, Export, Metadaten, Zahlenschloss-Schriftzug (Rad am ersten
   „o“), StoreKit-Testnamen, UI-Test-Erwartungen. Intern bleibt „PhotoMaid“ (Bundle-ID, Daten, Schlüsselbund).
-  `swift test` PASS (496), `--check` Texte PASS.
+  `swift test` PASS (496), `--check` Texte PASS. CI f4e8d07 (Lauf 40032579480): Linux, Build, Unit-Tests, QA-UI-Tests,
+  PhotoKit-Fachtests 20/50/60/70/80/90/95/98 PASS; test10/test30 FAIL, weil die Start-Werbung nach Einwilligung/ATT
+  spät kam und die Tableiste verdeckte (wie test60 im Lauf 39853844621). UI-Tests fangen das jetzt ab (7344781):
+  alle zehn Fachtests PASS (Lauf 40045834861). test00 (4. Kaltstart muss Werbung zeigen): 1 × PASS / 3 × FAIL –
+  App-Log jeweils `app-open-load-window-expired`, d. h. Googles Testwerbung lud länger als 4 s und die App ließ sie
+  absichtlich weg (Netzwerk, nicht die Umbenennung).
 - Geräteabnahme: NOT RUN
