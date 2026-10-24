@@ -48,7 +48,12 @@ final class RealLibraryTests: XCTestCase {
         }
         XCTAssertTrue(element.exists && element.isHittable)
     }
-    private func tab(_ title: String) { app.revealTabBar(); tap(app.pmTab(title), "tab_" + title) }
+    private func tab(_ title: String) {
+        app.revealTabBar()
+        // When consent and ATT finish late, the app-open ad arrives after the start window and covers the tabs.
+        if !app.pmTab(title).isHittable, testAd != nil { closeTestAd() }
+        tap(app.pmTab(title), "tab_" + title)
+    }
     private func back(_ name: String) { tap(app.navigationBars.buttons.element(boundBy: 0), name) }
     private func skipTour() {
         let skip = app.buttons["Tutorial überspringen"].firstMatch
@@ -105,6 +110,10 @@ final class RealLibraryTests: XCTestCase {
                     snap("test_ad_closed")
                     return
                 }
+            } else if XCUIApplication(bundleIdentifier: "com.apple.springboard").alerts.firstMatch.exists {
+                // A late ATT sheet over the UMP explainer: let the permission monitor answer it.
+                app.coordinate(withNormalizedOffset: CGVector(dx: 0.98, dy: 0.02)).tap()
+                if testAd == nil { return }
             }
             Thread.sleep(forTimeInterval: 1)
         }
