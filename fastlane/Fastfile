@@ -148,6 +148,10 @@ platform :ios do
       in_house: false
     )
     metadata = File.join(project_root, "app-store/metadata")
+    # Review-Text (docs/APP_REVIEW_NOTES.md, zwischen den Linien). Legt zugleich die App-Prüfungsinformationen an –
+    # ohne sie bricht deliver bei der ersten Version mit „No data“ ab (fastlane#20538). Kontaktdaten trägt der Inhaber ein.
+    notes = File.read(File.join(project_root, "docs/APP_REVIEW_NOTES.md"), encoding: "UTF-8").split("\n---\n")[1].to_s.strip
+    UI.user_error!("App-Review-Text fehlt oder ist länger als 4000 Zeichen") if notes.empty? || notes.length > 4000
     # Neue Sprachen übernehmen bei Apple zuerst den aktuellen Namen der Hauptsprache. Ist der alte Name anderswo
     # vergeben, lehnt Apple jede neue Sprache ab (30.10.2026). Deshalb zuerst nur die Hauptsprache, dann alle.
     primary = ENV.fetch("PM_STORE_PRIMARY_LOCALE", "de-DE")
@@ -166,6 +170,7 @@ platform :ios do
           submit_for_review: false,
           automatic_release: false,
           run_precheck_before_submit: false,
+          app_review_information: { notes: notes, demo_required: false },
           force: true
         )
       end
