@@ -69,6 +69,11 @@ on:
           - test95EnglishAndArabicPlaceholdersAndArrows
           - test98TrashLimitRewardAndSizes
         default: all
+      tracking:
+        description: "Antwort im iOS-Tracking-Dialog (deny prüft Werbung bei abgelehntem Tracking)"
+        type: choice
+        options: [allow, deny]
+        default: allow
       baseline_run:
         description: "Quell-Lauf-ID für store-export oder ältere xcresult-Screenshots"
         type: string
@@ -167,6 +172,8 @@ jobs:
     name: iOS App (xcodebuild build + test)
     runs-on: macos-26
     timeout-minutes: 120
+    env:
+      PM_TRACKING: ${{ inputs.tracking || 'allow' }}
     steps:
       - uses: actions/checkout@v4
         with:

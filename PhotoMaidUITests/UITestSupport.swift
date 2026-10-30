@@ -68,14 +68,24 @@ extension XCTestCase {
         }
     }
 
+    /// CI `tracking: deny` (TEST_RUNNER_PM_TRACKING) answers the iOS tracking prompt with “Ask App Not to Track”.
+    var trackingAnswers: [String] {
+        ProcessInfo.processInfo.environment["PM_TRACKING"] == "deny"
+            ? ["Ask App Not to Track", "App-Tracking ablehnen"]
+            : ["Allow", "Erlauben", "Allow Tracking", "Tracking erlauben"]
+    }
+
     func installPermissionMonitor() {
+        let answers = trackingAnswers
         addUIInterruptionMonitor(withDescription: "Photos, ATT and consent — never deletion") { alert in
             let text = alert.label.lowercased()
             // Explicitly refuse system deletion; no generic first-button/Allow fallback.
             if text.contains("delete") || text.contains("löschen") { return false }
-            if text.contains("track"), alert.buttons["Allow"].exists {
-                alert.buttons["Allow"].tap()
-                return true
+            if text.contains("track") {
+                for title in answers where alert.buttons[title].exists {
+                    alert.buttons[title].tap()
+                    return true
+                }
             }
             for label in ["Allow Full Access", "Vollen Zugriff erlauben", "Allow Access to All Photos",
                           "Zugriff auf alle Fotos erlauben", "Allow Tracking", "Tracking erlauben",
@@ -166,7 +176,7 @@ extension XCTestCase {
                 // One snapshot: iOS 26 changes this sheet's child count while Photos thumbnails load.
                 let text = alert.debugDescription.lowercased()
                 if !text.contains("delete") && !text.contains("löschen") && (text.contains("track") || text.contains("verfolg")) {
-                    for title in ["Allow", "Erlauben", "Allow Tracking", "Tracking erlauben"] {
+                    for title in trackingAnswers {
                         let allow = alert.buttons[title]
                         if allow.exists && allow.isHittable {
                             checkpoint("\(prefix)_att_permission_\(step)", app: springboard)

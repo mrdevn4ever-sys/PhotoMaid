@@ -24,7 +24,7 @@ run_tests() {
   local mode="$1"
   shift
   set +e
-  TEST_RUNNER_SCREENSHOT_DIR="$out/$mode/screenshots" xcodebuild \
+  TEST_RUNNER_SCREENSHOT_DIR="$out/$mode/screenshots" TEST_RUNNER_PM_TRACKING="${PM_TRACKING:-allow}" xcodebuild \
     -project PhotoMaid.xcodeproj -scheme PhotoMaid \
     -destination "id=$udid" -derivedDataPath "$derived" \
     -parallel-testing-enabled NO -maximum-concurrent-test-simulator-destinations 1 \
