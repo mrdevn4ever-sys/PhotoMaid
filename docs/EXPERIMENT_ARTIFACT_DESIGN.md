@@ -255,4 +255,8 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
   das große „Q“ ist das Zahlenschloss-Rad in Versalhöhe (29/40) mit Q-Schweif; Hilfetexte nennen das Rad im „Q“.
   Werbung bei abgelehntem Tracking (Manifest ohne Tracking-Domain, c983319): Lauf 41138933419 (tracking: deny, f9f0031)
   PASS – „Ask App Not to Track“ getippt, 4. Kaltstart `app-open-presenting` nach 1,5 s.
+- Keine sichtbaren Altnamen mehr (30.10.2026, Nutzer): Datenschutz & Impressum unter https://mrdevn4ever-sys.github.io/galeriq/
+  (alte Adressen `/photomaid-website/` und `/photomaid/privacy/` leiten weiter), App-Store-URLs neu hochgeladen,
+  TestFlight-Workflow setzt die neue URL fest, Review-Text ohne früheren Namen, Android-Texte/Ordner/Dateinamen
+  GaleriQ (photomaid-android d1ef62e). Intern bleiben Bundle-ID, Produkt-ID, Projekt-, Modul- und Datenbanknamen.
 - Geräteabnahme: NOT RUN

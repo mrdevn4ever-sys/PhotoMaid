@@ -97,7 +97,8 @@ Texte und Dateien liegen im privaten Repo mrdevn4ever-sys/PhotoMaid, Branch clau
      Die Fotos verlassen das Gerät nie; Käufe laufen nur über Apple.
 4. Version 1.0 (App Store):
    - Beschreibung, Keywords, Werbetext, URLs, Copyright und die Prüfungsnotizen sind schon eingetragen – nichts
-     davon ändern.
+     davon ändern, außer: in den Prüfungsnotizen den Satz „(Former working name: PhotoMaid, still visible in the
+     bundle ID.)“ löschen.
    - App-Prüfungsinformationen: Anmeldung erforderlich → Nein. Kontakt (Vorname, Nachname, Telefon mit +41…,
      E-Mail): mich fragen und eintragen.
    - Freigabe der Version: „Diese Version manuell freigeben“.
