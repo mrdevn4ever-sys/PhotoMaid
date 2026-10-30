@@ -17,7 +17,8 @@ Die Android-Quelle wird über die Umgebungsvariable PM_ANDROID_RES gefunden (Sta
 Fehlt sie (z. B. in CI), wird nur ios_strings.json gegen den eingecheckten Katalog geprüft.
 
 Produktname: In den Quellen steht „PhotoMaid“ (Android, ios_strings.json). Beim Schreiben ersetzt das Skript ihn durch
-BRAND (seit 23.10.2026 „Arrumo“, Markenkonflikt mit „photoAiD“). Interne Namen (Projekt, Module, Datenbank) bleiben.
+BRAND (seit 30.10.2026 „GaleriQ“; 23.–30.10.2026 „Arrumo“, Konflikt mit einer gleichnamigen Play-App; vorher
+„PhotoMaid“, Markenkonflikt mit „photoAiD“). Interne Namen (Projekt, Module, Datenbank) bleiben.
 """
 import json
 import os
@@ -42,9 +43,16 @@ ALL = list(LANGS.values())
 # Wörter, die in iOS-Texten nicht vorkommen dürfen (Android-Begriffe). Nur für benutzte Kennungen geprüft.
 FORBIDDEN = re.compile(r"Android|Google Play|Google AdMob|AdMob|TalkBack|SD-Karte|Play Store|MediaStore", re.I)
 
-# Sichtbarer Produktname der iOS-App (ersetzt „PhotoMaid“ in allen geschriebenen Texten).
-SOURCE_BRAND = "PhotoMaid"
-BRAND = "Arrumo"
+# Sichtbarer Produktname der iOS-App. Ersetzt die früheren Namen in allen geschriebenen Texten: „PhotoMaid“ steht in
+# den Quellen, „Arrumo“ im eingecheckten Katalog (Rückfall ohne Android-Quelle).
+FORMER_BRANDS = ("PhotoMaid", "Arrumo")
+BRAND = "GaleriQ"
+
+
+def branded(text: str) -> str:
+    for former in FORMER_BRANDS:
+        text = text.replace(former, BRAND)
+    return text
 
 FMT = re.compile(r"%(\d+\$)?(\.\d+)?([sdf])")
 
@@ -124,7 +132,7 @@ def catalog(entries: dict) -> dict:
             v = entries[key].get(lang)
             if v is None:
                 continue
-            locs[lang] = {"stringUnit": {"state": "translated", "value": v.replace(SOURCE_BRAND, BRAND)}}
+            locs[lang] = {"stringUnit": {"state": "translated", "value": branded(v)}}
         strings[key] = {"extractionState": "manual", "localizations": locs}
     return {"sourceLanguage": "en", "strings": strings, "version": "1.0"}
 

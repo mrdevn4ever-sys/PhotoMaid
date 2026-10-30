@@ -1,8 +1,8 @@
-Arrumo hace que ordenar tu fototeca sea tan fácil como deslizar el dedo.
+GaleriQ hace que ordenar tu fototeca sea tan fácil como deslizar el dedo.
 
 DESLIZA POR TUS FOTOS Y VÍDEOS
 • Arriba: conservar
-• Izquierda: a la papelera de Arrumo – todavía no se borra nada
+• Izquierda: a la papelera de GaleriQ – todavía no se borra nada
 • Derecha: después – vuelve en 2 días
 • Abajo: volver al elemento anterior
 Solo se borra cuando vacías la papelera y confirmas el diálogo de iOS. Después, los elementos pasan a «Eliminado» en la app Fotos.
@@ -26,4 +26,4 @@ PRIVACIDAD ANTE TODO
 Sin cuenta, sin servidor propio y sin subidas. Tus fotos se quedan en tu dispositivo.
 
 GRATIS Y PRO
-Todas las herramientas son gratuitas. La versión gratuita muestra anuncios de Google y permite borrar hasta 100 elementos al día, y 100 más una vez al día tras un vídeo opcional. Arrumo Pro es una compra única: sin anuncios, borrado ilimitado y nuevas carpetas en la caja fuerte sin vídeos.
+Todas las herramientas son gratuitas. La versión gratuita muestra anuncios de Google y permite borrar hasta 100 elementos al día, y 100 más una vez al día tras un vídeo opcional. GaleriQ Pro es una compra única: sin anuncios, borrado ilimitado y nuevas carpetas en la caja fuerte sin vídeos.

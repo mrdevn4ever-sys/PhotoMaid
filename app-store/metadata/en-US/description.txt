@@ -1,8 +1,8 @@
-Arrumo makes cleaning up your photo library as easy as a swipe.
+GaleriQ makes cleaning up your photo library as easy as a swipe.
 
 SWIPE THROUGH YOUR PHOTOS AND VIDEOS
 • Up: keep
-• Left: into Arrumo's own trash – nothing is deleted yet
+• Left: into GaleriQ's own trash – nothing is deleted yet
 • Right: later – it comes back in 2 days
 • Down: back to the previous item
 Items are only deleted when you empty the trash and confirm the iOS dialog. They then go to "Recently Deleted" in the Photos app.
@@ -26,4 +26,4 @@ PRIVACY FIRST
 No account, no server of our own, no upload. Your photos stay on your device.
 
 FREE AND PRO
-All tools are free. The free version shows ads from Google and lets you delete up to 100 items a day, plus 100 more once a day after an optional video. Arrumo Pro is a one-time purchase: no ads, unlimited deleting and new vault folders without videos.
+All tools are free. The free version shows ads from Google and lets you delete up to 100 items a day, plus 100 more once a day after an optional video. GaleriQ Pro is a one-time purchase: no ads, unlimited deleting and new vault folders without videos.

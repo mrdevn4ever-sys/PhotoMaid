@@ -1,13 +1,13 @@
 import SwiftUI
 import UIKit
 
-/// Seitentitel der Startseite: der Produktname (`AppConfig.brandName`, „Arrumo“), sein erstes „o“ ist ein kleines
-/// Zahlenschloss-Rad (`CombinationDial`) – zugleich der versteckte Eingang zum Tresor (E16, Nutzerwunsch 21.10.2026 statt
-/// „Heute“; bis 23.10.2026 im „o“ von „PhotoMaid“). 2 Sekunden halten öffnet
+/// Seitentitel der Startseite: der Produktname (`AppConfig.brandName`, „GaleriQ“), sein großes „Q“ ist ein
+/// Zahlenschloss-Rad (`CombinationDial`) mit Q-Schweif (Nutzerwunsch 30.10.2026) – zugleich der versteckte Eingang zum
+/// Tresor (E16, Nutzerwunsch 21.10.2026 statt „Heute“; vorher im „o“ von „PhotoMaid“/„Arrumo“). 2 Sekunden halten öffnet
 /// einen eingerichteten Tresor; dabei dreht sich das Rad links, rechts, links und klickt wie ein Zahlenschloss.
-/// Ohne Tresor bleibt es ein ruhiges „o“ und nichts passiert.
+/// Ohne Tresor bleibt es ein ruhiges „Q“ und nichts passiert.
 /// Der Markenname bleibt in jeder Sprache und Schreibrichtung gleich (links nach rechts).
-/// Experiment-Design: Maße wie im Artefakt (Bricolage 800, 40 pt; Rad 23/40 der Schriftgröße).
+/// Experiment-Design: Bricolage 800, 40 pt; als „Q“ hat das Rad Versalhöhe (29/40), als „o“ x-Höhe (23/40).
 struct VaultDialWordmark: View {
     @Environment(\.dynamicTypeSize) private var typeSize
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -22,16 +22,26 @@ struct VaultDialWordmark: View {
 
     var body: some View {
         let size = pointSize
-        let dial = size * 23 / 40
         let parts = Self.parts
+        let dial = size * (parts.capital ? 29 : 23) / 40
         HStack(alignment: .firstTextBaseline, spacing: 0) {
-            Text(verbatim: parts.0)
+            Text(verbatim: parts.before)
             CombinationDial(rotation: turn)
                 .frame(width: dial, height: dial)
-                .padding(.horizontal, size / 40)
-                // Wie ein gesetztes „o“ reicht das Rad minimal unter die Grundlinie.
+                .overlay {
+                    if parts.capital {
+                        // Schweif des „Q“: schräg über den Rand nach rechts unten, mit Fuge in Hintergrundfarbe.
+                        ZStack {
+                            QTail().stroke(AppColors.background, style: StrokeStyle(lineWidth: size * 0.17, lineCap: .round))
+                            QTail().stroke(AppColors.textPrimary, style: StrokeStyle(lineWidth: size * 0.11, lineCap: .round))
+                        }
+                    }
+                }
+                .padding(.leading, size / 40)
+                .padding(.trailing, parts.capital ? dial * 0.2 : size / 40)
+                // Wie ein gesetzter runder Buchstabe reicht das Rad minimal unter die Grundlinie.
                 .alignmentGuide(.firstTextBaseline) { $0[.bottom] - size / 40 }
-            if !parts.1.isEmpty { Text(verbatim: parts.1) }
+            if !parts.after.isEmpty { Text(verbatim: parts.after) }
         }
         .font(AppTypography.largeTitle)
         .tracking(-0.02 * size)
@@ -51,11 +61,14 @@ struct VaultDialWordmark: View {
         }
     }
 
-    /// Name vor und nach dem ersten „o“ (das Rad steht an dessen Stelle). Ohne „o“ steht das Rad am Ende.
-    private static var parts: (String, String) {
+    /// Name vor und nach dem Buchstaben, an dessen Stelle das Rad steht: das große „Q“, sonst das erste „o“, sonst am Ende.
+    private static var parts: (before: String, after: String, capital: Bool) {
         let name = AppConfig.brandName
-        guard let o = name.range(of: "o") else { return (name, "") }
-        return (String(name[..<o.lowerBound]), String(name[o.upperBound...]))
+        if let q = name.range(of: "Q") {
+            return (String(name[..<q.lowerBound]), String(name[q.upperBound...]), true)
+        }
+        guard let o = name.range(of: "o") else { return (name, "", false) }
+        return (String(name[..<o.lowerBound]), String(name[o.upperBound...]), false)
     }
 
     private func pressing(_ down: Bool) {
@@ -81,5 +94,15 @@ struct VaultDialWordmark: View {
                 Haptics.threshold()
             }
         }
+    }
+}
+
+/// Schweif des „Q“ im Rahmen des Rads: von innen unten rechts schräg über den Rand hinaus, wie in der Schrift.
+private struct QTail: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        path.move(to: CGPoint(x: rect.minX + rect.width * 0.64, y: rect.minY + rect.height * 0.66))
+        path.addLine(to: CGPoint(x: rect.minX + rect.width * 1.06, y: rect.minY + rect.height * 1.06))
+        return path
     }
 }

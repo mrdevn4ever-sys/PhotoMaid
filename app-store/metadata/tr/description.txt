@@ -1,8 +1,8 @@
-Arrumo ile fotoğraf arşivini düzenlemek bir kaydırma kadar kolay.
+GaleriQ ile fotoğraf arşivini düzenlemek bir kaydırma kadar kolay.
 
 FOTOĞRAF VE VİDEOLARI KAYDIRARAK GEÇ
 • Yukarı: sakla
-• Sola: Arrumo çöp kutusuna – henüz hiçbir şey silinmez
+• Sola: GaleriQ çöp kutusuna – henüz hiçbir şey silinmez
 • Sağa: sonra – 2 gün sonra geri gelir
 • Aşağı: önceki öğeye dön
 Silme işlemi yalnızca çöp kutusunu boşaltıp iOS onay penceresini onayladığında yapılır. Öğeler ardından Fotoğraflar uygulamasındaki "Son Silinenler"e taşınır.
@@ -26,4 +26,4 @@ FOTOĞRAFLARINLA OYUNLAR
 Hesap yok, kendi sunucumuz yok, yükleme yok. Fotoğrafların cihazında kalır.
 
 ÜCRETSİZ VE PRO
-Tüm araçlar ücretsizdir. Ücretsiz sürüm Google reklamları gösterir ve günde 100 öğeye kadar silmene izin verir; isteğe bağlı bir videodan sonra günde bir kez 100 öğe daha. Arrumo Pro tek seferlik bir satın alımdır: reklam yok, sınırsız silme ve video izlemeden yeni kasa klasörleri.
+Tüm araçlar ücretsizdir. Ücretsiz sürüm Google reklamları gösterir ve günde 100 öğeye kadar silmene izin verir; isteğe bağlı bir videodan sonra günde bir kez 100 öğe daha. GaleriQ Pro tek seferlik bir satın alımdır: reklam yok, sınırsız silme ve video izlemeden yeni kasa klasörleri.

@@ -1,8 +1,8 @@
-Mit Arrumo räumst du deine Mediathek so einfach auf wie mit einem Wisch.
+Mit GaleriQ räumst du deine Mediathek so einfach auf wie mit einem Wisch.
 
 FOTOS UND VIDEOS PER WISCH DURCHGEHEN
 • Nach oben: behalten
-• Nach links: in den Arrumo-Papierkorb – noch wird nichts gelöscht
+• Nach links: in den GaleriQ-Papierkorb – noch wird nichts gelöscht
 • Nach rechts: später – kommt in 2 Tagen wieder
 • Nach unten: zurück zum vorherigen Medium
 Gelöscht wird erst, wenn du den Papierkorb leerst und den iOS-Dialog bestätigst. Danach liegen die Medien in „Zuletzt gelöscht“ der Fotos-App.
@@ -26,4 +26,4 @@ PRIVATSPHÄRE ZUERST
 Kein Konto, kein eigener Server, kein Upload. Deine Fotos bleiben auf deinem Gerät.
 
 GRATIS UND PRO
-Alle Werkzeuge sind gratis. Die Gratis-Version zeigt Werbung von Google und erlaubt bis zu 100 Löschungen pro Tag, einmal täglich 100 weitere nach einem freiwilligen Video. Arrumo Pro ist ein Einmalkauf: keine Werbung, unbegrenzt löschen und neue Tresor-Ordner ohne Videos.
+Alle Werkzeuge sind gratis. Die Gratis-Version zeigt Werbung von Google und erlaubt bis zu 100 Löschungen pro Tag, einmal täglich 100 weitere nach einem freiwilligen Video. GaleriQ Pro ist ein Einmalkauf: keine Werbung, unbegrenzt löschen und neue Tresor-Ordner ohne Videos.

@@ -1,6 +1,7 @@
 # PhotoMaid iOS – TestFlight ohne eigenen Mac (GitHub Actions, macOS-Runner).
 # Anleitung: docs/CI_TESTFLIGHT.md. Keine Zertifikate/Schlüssel im Repository.
 require "base64"
+require "fileutils"
 require "securerandom"
 require "shellwords"
 require "tmpdir"
@@ -146,18 +147,28 @@ platform :ios do
       is_key_content_base64: true,
       in_house: false
     )
-    deliver(
-      api_key: api_key,
-      app_identifier: ENV.fetch("PM_BUNDLE_ID"),
-      app_version: ENV.fetch("PM_STORE_VERSION", "1.0"),
-      metadata_path: File.join(project_root, "app-store/metadata"),
-      skip_binary_upload: true,
-      skip_screenshots: true,
-      skip_app_version_update: false,
-      submit_for_review: false,
-      automatic_release: false,
-      run_precheck_before_submit: false,
-      force: true
-    )
+    metadata = File.join(project_root, "app-store/metadata")
+    # Neue Sprachen übernehmen bei Apple zuerst den aktuellen Namen der Hauptsprache. Ist der alte Name anderswo
+    # vergeben, lehnt Apple jede neue Sprache ab (30.10.2026). Deshalb zuerst nur die Hauptsprache, dann alle.
+    primary = ENV.fetch("PM_STORE_PRIMARY_LOCALE", "de-DE")
+    Dir.mktmpdir do |dir|
+      FileUtils.cp_r(File.join(metadata, primary), dir)
+      FileUtils.cp(File.join(metadata, "copyright.txt"), dir)
+      [dir, metadata].each do |path|
+        deliver(
+          api_key: api_key,
+          app_identifier: ENV.fetch("PM_BUNDLE_ID"),
+          app_version: ENV.fetch("PM_STORE_VERSION", "1.0"),
+          metadata_path: path,
+          skip_binary_upload: true,
+          skip_screenshots: true,
+          skip_app_version_update: false,
+          submit_for_review: false,
+          automatic_release: false,
+          run_precheck_before_submit: false,
+          force: true
+        )
+      end
+    end
   end
 end

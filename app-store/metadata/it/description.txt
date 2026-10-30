@@ -1,8 +1,8 @@
-Con Arrumo riordinare la tua libreria foto è facile come scorrere con un dito.
+Con GaleriQ riordinare la tua libreria foto è facile come scorrere con un dito.
 
 SCORRI TRA FOTO E VIDEO
 • Su: conserva
-• Sinistra: nel cestino di Arrumo – non viene ancora eliminato nulla
+• Sinistra: nel cestino di GaleriQ – non viene ancora eliminato nulla
 • Destra: più tardi – torna tra 2 giorni
 • Giù: torna all’elemento precedente
 Si elimina solo quando svuoti il cestino e confermi la finestra di iOS. Gli elementi passano poi in «Eliminati di recente» nell’app Foto.
@@ -26,4 +26,4 @@ PRIVACY PRIMA DI TUTTO
 Nessun account, nessun server nostro, nessun caricamento. Le tue foto restano sul dispositivo.
 
 GRATIS E PRO
-Tutti gli strumenti sono gratuiti. La versione gratuita mostra pubblicità di Google e consente di eliminare fino a 100 elementi al giorno, più altri 100 una volta al giorno dopo un video facoltativo. Arrumo Pro è un acquisto unico: niente pubblicità, eliminazioni illimitate e nuove cartelle nella cassaforte senza video.
+Tutti gli strumenti sono gratuiti. La versione gratuita mostra pubblicità di Google e consente di eliminare fino a 100 elementi al giorno, più altri 100 una volta al giorno dopo un video facoltativo. GaleriQ Pro è un acquisto unico: niente pubblicità, eliminazioni illimitate e nuove cartelle nella cassaforte senza video.

@@ -1,8 +1,8 @@
-Z Arrumo porządkowanie biblioteki zdjęć jest proste jak przesunięcie palcem.
+Z GaleriQ porządkowanie biblioteki zdjęć jest proste jak przesunięcie palcem.
 
 PRZESUWAJ ZDJĘCIA I FILMY
 • W górę: zachowaj
-• W lewo: do kosza Arrumo – nic jeszcze nie jest usuwane
+• W lewo: do kosza GaleriQ – nic jeszcze nie jest usuwane
 • W prawo: później – wróci za 2 dni
 • W dół: wróć do poprzedniego elementu
 Usuwanie następuje dopiero wtedy, gdy opróżnisz kosz i potwierdzisz okno iOS. Elementy trafiają wtedy do „Ostatnio usunięte” w aplikacji Zdjęcia.
@@ -26,4 +26,4 @@ PRYWATNOŚĆ PRZEDE WSZYSTKIM
 Bez konta, bez własnego serwera, bez wysyłania. Twoje zdjęcia zostają na urządzeniu.
 
 ZA DARMO I PRO
-Wszystkie narzędzia są darmowe. Wersja bezpłatna wyświetla reklamy Google i pozwala usunąć do 100 elementów dziennie, a raz dziennie kolejne 100 po obejrzeniu opcjonalnego filmu. Arrumo Pro to jednorazowy zakup: bez reklam, bez limitu usuwania i nowe foldery w sejfie bez filmów.
+Wszystkie narzędzia są darmowe. Wersja bezpłatna wyświetla reklamy Google i pozwala usunąć do 100 elementów dziennie, a raz dziennie kolejne 100 po obejrzeniu opcjonalnego filmu. GaleriQ Pro to jednorazowy zakup: bez reklam, bez limitu usuwania i nowe foldery w sejfie bez filmów.

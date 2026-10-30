@@ -141,7 +141,7 @@ struct TodayView: View {
         .accessibilityIdentifier("today.streak")
     }
 
-    /// Kopf wie im Artefakt: Begrüßung, „PhotoMaid“ (mit Tresor-Rad) und der runde Einstellungen-Knopf.
+    /// Kopf wie im Artefakt: Begrüßung, „GaleriQ“ (Tresor-Rad als „Q“) und der runde Einstellungen-Knopf.
     private var header: some View {
         HStack(alignment: .bottom) {
             VStack(alignment: .leading, spacing: 2) {
@@ -150,7 +150,7 @@ struct TodayView: View {
                         .foregroundStyle(AppColors.textSecondary)
                     if app.settings.showAchievements && app.read.progress.streak > 0 { streakChip }
                 }
-                // Geheimer Eingang zum Tresor (E16): „PhotoMaid“ 2 Sekunden halten, das „o“ ist ein Tresor-Rad.
+                // Geheimer Eingang zum Tresor (E16): den Namen 2 Sekunden halten, das „Q“ ist ein Tresor-Rad.
                 // Ohne eingerichteten Tresor passiert nichts.
                 VaultDialWordmark()
                     .dynamicTypeSize(...DynamicTypeSize.accessibility2)

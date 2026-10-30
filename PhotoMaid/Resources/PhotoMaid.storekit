@@ -9,12 +9,12 @@
       "localizations" : [
         {
           "description" : "NUR LOKALER TEST – kein echtes Produkt",
-          "displayName" : "Arrumo Pro (Test)",
+          "displayName" : "GaleriQ Pro (Test)",
           "locale" : "de_CH"
         }
       ],
       "productID" : "test.photomaid.pro.lifetime",
-      "referenceName" : "Arrumo Pro – lokaler StoreKit-Test",
+      "referenceName" : "GaleriQ Pro – lokaler StoreKit-Test",
       "type" : "NonConsumable"
     }
   ],

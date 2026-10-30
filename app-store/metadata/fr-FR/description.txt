@@ -1,8 +1,8 @@
-Avec Arrumo, faire le tri dans votre photothèque devient aussi simple qu’un geste du doigt.
+Avec GaleriQ, faire le tri dans votre photothèque devient aussi simple qu’un geste du doigt.
 
 PARCOUREZ VOS PHOTOS ET VIDÉOS
 • Vers le haut : garder
-• Vers la gauche : dans la corbeille d’Arrumo – rien n’est encore supprimé
+• Vers la gauche : dans la corbeille de GaleriQ – rien n’est encore supprimé
 • Vers la droite : plus tard – l’élément revient dans 2 jours
 • Vers le bas : revenir à l’élément précédent
 La suppression n’a lieu que lorsque vous videz la corbeille et confirmez la fenêtre d’iOS. Les éléments vont ensuite dans « Suppressions récentes » de l’app Photos.
@@ -26,4 +26,4 @@ LA CONFIDENTIALITÉ D’ABORD
 Pas de compte, pas de serveur à nous, aucun envoi. Vos photos restent sur votre appareil.
 
 GRATUIT ET PRO
-Tous les outils sont gratuits. La version gratuite affiche des publicités Google et permet de supprimer jusqu’à 100 éléments par jour, plus 100 autres une fois par jour après une vidéo facultative. Arrumo Pro est un achat unique : sans publicité, suppressions illimitées et nouveaux dossiers du coffre-fort sans vidéo.
+Tous les outils sont gratuits. La version gratuite affiche des publicités Google et permet de supprimer jusqu’à 100 éléments par jour, plus 100 autres une fois par jour après une vidéo facultative. GaleriQ Pro est un achat unique : sans publicité, suppressions illimitées et nouveaux dossiers du coffre-fort sans vidéo.

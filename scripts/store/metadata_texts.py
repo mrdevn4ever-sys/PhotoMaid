@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""App-Store-Texte für Arrumo (16 Sprachen) im fastlane-deliver-Format schreiben und Längen prüfen.
+"""App-Store-Texte für GaleriQ (16 Sprachen) im fastlane-deliver-Format schreiben und Längen prüfen.
 
 Quelle der Wahrheit für Name, Untertitel, Keywords, Werbetext und Beschreibung je App-Store-Sprache.
 Begriffe wie in der App (Localizable.xcstrings): Tresor, Papierkorb, Später, Paare, Foto-Snake, Foto Blocks,
@@ -22,15 +22,15 @@ COPYRIGHT = "2026 Michael Spiess"
 T = {}
 
 T["en-US"] = dict(
-    name="Arrumo: Photo Cleaner & Vault",
+    name="GaleriQ: Photo Cleaner & Vault",
     subtitle="Swipe to clean up your gallery",
     keywords="storage,space,duplicates,delete,organize,album,camera roll,private,hide,collage,editor,compress",
     promo="Swipe up to keep, left to the trash, right for later. Nothing is deleted until you confirm – and your photos never leave your iPhone.",
-    description="""Arrumo makes cleaning up your photo library as easy as a swipe.
+    description="""GaleriQ makes cleaning up your photo library as easy as a swipe.
 
 SWIPE THROUGH YOUR PHOTOS AND VIDEOS
 • Up: keep
-• Left: into Arrumo's own trash – nothing is deleted yet
+• Left: into GaleriQ's own trash – nothing is deleted yet
 • Right: later – it comes back in 2 days
 • Down: back to the previous item
 Items are only deleted when you empty the trash and confirm the iOS dialog. They then go to "Recently Deleted" in the Photos app.
@@ -54,19 +54,19 @@ PRIVACY FIRST
 No account, no server of our own, no upload. Your photos stay on your device.
 
 FREE AND PRO
-All tools are free. The free version shows ads from Google and lets you delete up to 100 items a day, plus 100 more once a day after an optional video. Arrumo Pro is a one-time purchase: no ads, unlimited deleting and new vault folders without videos.""",
+All tools are free. The free version shows ads from Google and lets you delete up to 100 items a day, plus 100 more once a day after an optional video. GaleriQ Pro is a one-time purchase: no ads, unlimited deleting and new vault folders without videos.""",
 )
 
 T["de-DE"] = dict(
-    name="Arrumo: Fotos aufräumen",
+    name="GaleriQ: Fotos aufräumen",
     subtitle="Per Wisch Speicher freimachen",
     keywords="tresor,duplikate,löschen,galerie,album,bilder,video,verstecken,collage,bearbeiten,komprimieren",
     promo="Nach oben behalten, nach links in den Papierkorb, nach rechts auf später. Gelöscht wird erst nach deiner Bestätigung – und deine Fotos bleiben auf dem iPhone.",
-    description="""Mit Arrumo räumst du deine Mediathek so einfach auf wie mit einem Wisch.
+    description="""Mit GaleriQ räumst du deine Mediathek so einfach auf wie mit einem Wisch.
 
 FOTOS UND VIDEOS PER WISCH DURCHGEHEN
 • Nach oben: behalten
-• Nach links: in den Arrumo-Papierkorb – noch wird nichts gelöscht
+• Nach links: in den GaleriQ-Papierkorb – noch wird nichts gelöscht
 • Nach rechts: später – kommt in 2 Tagen wieder
 • Nach unten: zurück zum vorherigen Medium
 Gelöscht wird erst, wenn du den Papierkorb leerst und den iOS-Dialog bestätigst. Danach liegen die Medien in „Zuletzt gelöscht“ der Fotos-App.
@@ -90,19 +90,19 @@ PRIVATSPHÄRE ZUERST
 Kein Konto, kein eigener Server, kein Upload. Deine Fotos bleiben auf deinem Gerät.
 
 GRATIS UND PRO
-Alle Werkzeuge sind gratis. Die Gratis-Version zeigt Werbung von Google und erlaubt bis zu 100 Löschungen pro Tag, einmal täglich 100 weitere nach einem freiwilligen Video. Arrumo Pro ist ein Einmalkauf: keine Werbung, unbegrenzt löschen und neue Tresor-Ordner ohne Videos.""",
+Alle Werkzeuge sind gratis. Die Gratis-Version zeigt Werbung von Google und erlaubt bis zu 100 Löschungen pro Tag, einmal täglich 100 weitere nach einem freiwilligen Video. GaleriQ Pro ist ein Einmalkauf: keine Werbung, unbegrenzt löschen und neue Tresor-Ordner ohne Videos.""",
 )
 
 T["es-ES"] = dict(
-    name="Arrumo: Limpiador de fotos",
+    name="GaleriQ: Limpiador de fotos",
     subtitle="Desliza y libera espacio",
     keywords="caja fuerte,duplicados,borrar,galería,álbum,almacenamiento,privado,ocultar,collage,editor,comprimir",
     promo="Arriba para conservar, a la izquierda a la papelera, a la derecha para después. Nada se borra sin tu confirmación y tus fotos nunca salen del iPhone.",
-    description="""Arrumo hace que ordenar tu fototeca sea tan fácil como deslizar el dedo.
+    description="""GaleriQ hace que ordenar tu fototeca sea tan fácil como deslizar el dedo.
 
 DESLIZA POR TUS FOTOS Y VÍDEOS
 • Arriba: conservar
-• Izquierda: a la papelera de Arrumo – todavía no se borra nada
+• Izquierda: a la papelera de GaleriQ – todavía no se borra nada
 • Derecha: después – vuelve en 2 días
 • Abajo: volver al elemento anterior
 Solo se borra cuando vacías la papelera y confirmas el diálogo de iOS. Después, los elementos pasan a «Eliminado» en la app Fotos.
@@ -126,19 +126,19 @@ PRIVACIDAD ANTE TODO
 Sin cuenta, sin servidor propio y sin subidas. Tus fotos se quedan en tu dispositivo.
 
 GRATIS Y PRO
-Todas las herramientas son gratuitas. La versión gratuita muestra anuncios de Google y permite borrar hasta 100 elementos al día, y 100 más una vez al día tras un vídeo opcional. Arrumo Pro es una compra única: sin anuncios, borrado ilimitado y nuevas carpetas en la caja fuerte sin vídeos.""",
+Todas las herramientas son gratuitas. La versión gratuita muestra anuncios de Google y permite borrar hasta 100 elementos al día, y 100 más una vez al día tras un vídeo opcional. GaleriQ Pro es una compra única: sin anuncios, borrado ilimitado y nuevas carpetas en la caja fuerte sin vídeos.""",
 )
 
 T["fr-FR"] = dict(
-    name="Arrumo : Nettoyer vos photos",
+    name="GaleriQ : Nettoyer vos photos",
     subtitle="Un geste pour libérer l’espace",
     keywords="coffre-fort,doublons,supprimer,galerie,album,stockage,privé,cacher,collage,éditeur,compresser,vidéos",
     promo="Vers le haut pour garder, à gauche vers la corbeille, à droite pour plus tard. Rien n’est supprimé sans votre accord et vos photos restent sur l’iPhone.",
-    description="""Avec Arrumo, faire le tri dans votre photothèque devient aussi simple qu’un geste du doigt.
+    description="""Avec GaleriQ, faire le tri dans votre photothèque devient aussi simple qu’un geste du doigt.
 
 PARCOUREZ VOS PHOTOS ET VIDÉOS
 • Vers le haut : garder
-• Vers la gauche : dans la corbeille d’Arrumo – rien n’est encore supprimé
+• Vers la gauche : dans la corbeille de GaleriQ – rien n’est encore supprimé
 • Vers la droite : plus tard – l’élément revient dans 2 jours
 • Vers le bas : revenir à l’élément précédent
 La suppression n’a lieu que lorsque vous videz la corbeille et confirmez la fenêtre d’iOS. Les éléments vont ensuite dans « Suppressions récentes » de l’app Photos.
@@ -162,19 +162,19 @@ LA CONFIDENTIALITÉ D’ABORD
 Pas de compte, pas de serveur à nous, aucun envoi. Vos photos restent sur votre appareil.
 
 GRATUIT ET PRO
-Tous les outils sont gratuits. La version gratuite affiche des publicités Google et permet de supprimer jusqu’à 100 éléments par jour, plus 100 autres une fois par jour après une vidéo facultative. Arrumo Pro est un achat unique : sans publicité, suppressions illimitées et nouveaux dossiers du coffre-fort sans vidéo.""",
+Tous les outils sont gratuits. La version gratuite affiche des publicités Google et permet de supprimer jusqu’à 100 éléments par jour, plus 100 autres une fois par jour après une vidéo facultative. GaleriQ Pro est un achat unique : sans publicité, suppressions illimitées et nouveaux dossiers du coffre-fort sans vidéo.""",
 )
 
 T["it"] = dict(
-    name="Arrumo: Pulizia foto e video",
+    name="GaleriQ: Pulizia foto e video",
     subtitle="Scorri e libera spazio",
     keywords="cassaforte,duplicati,eliminare,galleria,album,memoria,privato,nascondere,collage,editor,comprimere",
     promo="Su per conservare, a sinistra nel cestino, a destra per più tardi. Nulla viene eliminato senza la tua conferma e le foto restano sul tuo iPhone.",
-    description="""Con Arrumo riordinare la tua libreria foto è facile come scorrere con un dito.
+    description="""Con GaleriQ riordinare la tua libreria foto è facile come scorrere con un dito.
 
 SCORRI TRA FOTO E VIDEO
 • Su: conserva
-• Sinistra: nel cestino di Arrumo – non viene ancora eliminato nulla
+• Sinistra: nel cestino di GaleriQ – non viene ancora eliminato nulla
 • Destra: più tardi – torna tra 2 giorni
 • Giù: torna all’elemento precedente
 Si elimina solo quando svuoti il cestino e confermi la finestra di iOS. Gli elementi passano poi in «Eliminati di recente» nell’app Foto.
@@ -198,19 +198,19 @@ PRIVACY PRIMA DI TUTTO
 Nessun account, nessun server nostro, nessun caricamento. Le tue foto restano sul dispositivo.
 
 GRATIS E PRO
-Tutti gli strumenti sono gratuiti. La versione gratuita mostra pubblicità di Google e consente di eliminare fino a 100 elementi al giorno, più altri 100 una volta al giorno dopo un video facoltativo. Arrumo Pro è un acquisto unico: niente pubblicità, eliminazioni illimitate e nuove cartelle nella cassaforte senza video.""",
+Tutti gli strumenti sono gratuiti. La versione gratuita mostra pubblicità di Google e consente di eliminare fino a 100 elementi al giorno, più altri 100 una volta al giorno dopo un video facoltativo. GaleriQ Pro è un acquisto unico: niente pubblicità, eliminazioni illimitate e nuove cartelle nella cassaforte senza video.""",
 )
 
 T["ja"] = dict(
-    name="Arrumo：写真整理・プライベート保管庫",
+    name="GaleriQ：写真整理・プライベート保管庫",
     subtitle="スワイプで容量を空ける",
     keywords="削除,重複,写真,動画,アルバム,カメラロール,非表示,プライバシー,コラージュ,編集,圧縮,スクショ,ストレージ,掃除",
     promo="上で残す、左でゴミ箱へ、右で「あとで」。確認するまで何も削除されず、写真が iPhone の外に出ることはありません。",
-    description="""Arrumo なら、写真ライブラリの整理がスワイプひとつで進みます。
+    description="""GaleriQ なら、写真ライブラリの整理がスワイプひとつで進みます。
 
 写真とビデオをスワイプで整理
 • 上：残す
-• 左：Arrumo のゴミ箱へ（まだ削除されません）
+• 左：GaleriQ のゴミ箱へ（まだ削除されません）
 • 右：あとで（2日後にもう一度表示）
 • 下：ひとつ前に戻る
 ゴミ箱を空にして iOS の確認画面で承認したときだけ削除されます。削除した項目は「写真」アプリの「最近削除した項目」に移動します。
@@ -234,19 +234,19 @@ T["ja"] = dict(
 アカウント不要、独自サーバーなし、アップロードなし。写真はデバイスの中にとどまります。
 
 無料版と Pro
-すべてのツールは無料です。無料版では Google の広告が表示され、1日に100件まで削除できます。任意の動画を見ると1日1回さらに100件追加できます。Arrumo Pro は買い切り：広告なし、削除無制限、動画なしで新しい保管庫フォルダを作成できます。""",
+すべてのツールは無料です。無料版では Google の広告が表示され、1日に100件まで削除できます。任意の動画を見ると1日1回さらに100件追加できます。GaleriQ Pro は買い切り：広告なし、削除無制限、動画なしで新しい保管庫フォルダを作成できます。""",
 )
 
 T["ko"] = dict(
-    name="Arrumo: 사진 정리 및 개인 금고",
+    name="GaleriQ: 사진 정리 및 개인 금고",
     subtitle="스와이프로 저장 공간 확보",
     keywords="삭제,용량,중복,동영상,앨범,갤러리,숨기기,비밀,콜라주,편집,압축,스크린샷,사진첩,클리너",
     promo="위로 밀면 보관, 왼쪽은 휴지통, 오른쪽은 나중에. 확인하기 전에는 아무것도 삭제되지 않으며 사진은 iPhone 밖으로 나가지 않습니다.",
-    description="""Arrumo와 함께라면 사진 보관함 정리가 스와이프 한 번으로 끝납니다.
+    description="""GaleriQ와 함께라면 사진 보관함 정리가 스와이프 한 번으로 끝납니다.
 
 사진과 비디오를 스와이프로 정리
 • 위로: 보관
-• 왼쪽: Arrumo 휴지통으로 – 아직 삭제되지 않습니다
+• 왼쪽: GaleriQ 휴지통으로 – 아직 삭제되지 않습니다
 • 오른쪽: 나중에 – 2일 후 다시 표시
 • 아래로: 이전 항목으로
 휴지통을 비우고 iOS 확인 창에서 승인할 때만 삭제됩니다. 삭제된 항목은 사진 앱의 '최근 삭제된 항목'으로 이동합니다.
@@ -270,19 +270,19 @@ T["ko"] = dict(
 계정 없음, 자체 서버 없음, 업로드 없음. 사진은 기기에만 남습니다.
 
 무료 및 Pro
-모든 도구는 무료입니다. 무료 버전에는 Google 광고가 표시되며 하루 최대 100개까지 삭제할 수 있고, 선택형 동영상을 보면 하루 한 번 100개를 더 삭제할 수 있습니다. Arrumo Pro는 한 번만 구매하면 됩니다: 광고 없음, 무제한 삭제, 동영상 없이 새 금고 폴더 만들기.""",
+모든 도구는 무료입니다. 무료 버전에는 Google 광고가 표시되며 하루 최대 100개까지 삭제할 수 있고, 선택형 동영상을 보면 하루 한 번 100개를 더 삭제할 수 있습니다. GaleriQ Pro는 한 번만 구매하면 됩니다: 광고 없음, 무제한 삭제, 동영상 없이 새 금고 폴더 만들기.""",
 )
 
 T["nl-NL"] = dict(
-    name="Arrumo: Foto's opruimen",
+    name="GaleriQ: Foto's opruimen",
     subtitle="Swipe en maak ruimte vrij",
     keywords="kluis,duplicaten,verwijderen,galerij,album,opslag,privé,verbergen,collage,bewerken,comprimeren,video",
     promo="Omhoog om te bewaren, naar links naar de prullenbak, naar rechts voor later. Er wordt niets verwijderd zonder jouw bevestiging en je foto's blijven op je iPhone.",
-    description="""Met Arrumo ruim je je fotobibliotheek zo makkelijk op als een veeg met je vinger.
+    description="""Met GaleriQ ruim je je fotobibliotheek zo makkelijk op als een veeg met je vinger.
 
 SWIPE DOOR JE FOTO'S EN VIDEO'S
 • Omhoog: bewaren
-• Links: naar de prullenbak van Arrumo – er wordt nog niets verwijderd
+• Links: naar de prullenbak van GaleriQ – er wordt nog niets verwijderd
 • Rechts: later – komt over 2 dagen terug
 • Omlaag: terug naar het vorige item
 Er wordt pas verwijderd als je de prullenbak leegt en de iOS-melding bevestigt. Daarna staan de items in 'Recent verwijderd' in de Foto's-app.
@@ -306,19 +306,19 @@ PRIVACY VOOROP
 Geen account, geen eigen server, geen upload. Je foto's blijven op je apparaat.
 
 GRATIS EN PRO
-Alle tools zijn gratis. De gratis versie toont advertenties van Google en laat je tot 100 items per dag verwijderen, plus één keer per dag 100 extra na een vrijwillige video. Arrumo Pro is een eenmalige aankoop: geen advertenties, onbeperkt verwijderen en nieuwe kluismappen zonder video's.""",
+Alle tools zijn gratis. De gratis versie toont advertenties van Google en laat je tot 100 items per dag verwijderen, plus één keer per dag 100 extra na een vrijwillige video. GaleriQ Pro is een eenmalige aankoop: geen advertenties, onbeperkt verwijderen en nieuwe kluismappen zonder video's.""",
 )
 
 T["pl"] = dict(
-    name="Arrumo: Czyszczenie zdjęć",
+    name="GaleriQ: Czyszczenie zdjęć",
     subtitle="Przesuń i zwolnij miejsce",
     keywords="sejf,duplikaty,usuwanie,galeria,album,pamięć,prywatne,ukryj,kolaż,edytor,kompresja,wideo,zrzuty",
     promo="W górę – zachowaj, w lewo – do kosza, w prawo – na później. Nic nie zostanie usunięte bez Twojego potwierdzenia, a zdjęcia nie opuszczają iPhone'a.",
-    description="""Z Arrumo porządkowanie biblioteki zdjęć jest proste jak przesunięcie palcem.
+    description="""Z GaleriQ porządkowanie biblioteki zdjęć jest proste jak przesunięcie palcem.
 
 PRZESUWAJ ZDJĘCIA I FILMY
 • W górę: zachowaj
-• W lewo: do kosza Arrumo – nic jeszcze nie jest usuwane
+• W lewo: do kosza GaleriQ – nic jeszcze nie jest usuwane
 • W prawo: później – wróci za 2 dni
 • W dół: wróć do poprzedniego elementu
 Usuwanie następuje dopiero wtedy, gdy opróżnisz kosz i potwierdzisz okno iOS. Elementy trafiają wtedy do „Ostatnio usunięte” w aplikacji Zdjęcia.
@@ -342,19 +342,19 @@ PRYWATNOŚĆ PRZEDE WSZYSTKIM
 Bez konta, bez własnego serwera, bez wysyłania. Twoje zdjęcia zostają na urządzeniu.
 
 ZA DARMO I PRO
-Wszystkie narzędzia są darmowe. Wersja bezpłatna wyświetla reklamy Google i pozwala usunąć do 100 elementów dziennie, a raz dziennie kolejne 100 po obejrzeniu opcjonalnego filmu. Arrumo Pro to jednorazowy zakup: bez reklam, bez limitu usuwania i nowe foldery w sejfie bez filmów.""",
+Wszystkie narzędzia są darmowe. Wersja bezpłatna wyświetla reklamy Google i pozwala usunąć do 100 elementów dziennie, a raz dziennie kolejne 100 po obejrzeniu opcjonalnego filmu. GaleriQ Pro to jednorazowy zakup: bez reklam, bez limitu usuwania i nowe foldery w sejfie bez filmów.""",
 )
 
 T["pt-PT"] = dict(
-    name="Arrumo: Limpar fotos e vídeos",
+    name="GaleriQ: Limpar fotos e vídeos",
     subtitle="Deslize e liberte espaço",
     keywords="cofre,duplicados,apagar,galeria,álbum,armazenamento,privado,ocultar,colagem,editor,comprimir,arrumar",
     promo="Para cima para manter, para a esquerda para o lixo, para a direita para mais tarde. Nada é apagado sem a sua confirmação e as fotos nunca saem do iPhone.",
-    description="""Com o Arrumo, arrumar a fototeca é tão fácil como deslizar o dedo.
+    description="""Com o GaleriQ, arrumar a fototeca é tão fácil como deslizar o dedo.
 
 DESLIZE PELAS SUAS FOTOS E VÍDEOS
 • Para cima: manter
-• Para a esquerda: para o lixo do Arrumo – ainda nada é apagado
+• Para a esquerda: para o lixo do GaleriQ – ainda nada é apagado
 • Para a direita: mais tarde – volta daqui a 2 dias
 • Para baixo: voltar ao elemento anterior
 Só é apagado quando esvazia o lixo e confirma a janela do iOS. Depois, os elementos passam para «Apagados recentemente» na app Fotografias.
@@ -378,19 +378,19 @@ PRIVACIDADE EM PRIMEIRO LUGAR
 Sem conta, sem servidor próprio, sem envios. As suas fotos ficam no dispositivo.
 
 GRÁTIS E PRO
-Todas as ferramentas são gratuitas. A versão gratuita mostra anúncios da Google e permite apagar até 100 elementos por dia, mais 100 uma vez por dia depois de um vídeo opcional. O Arrumo Pro é uma compra única: sem anúncios, apagar sem limites e novas pastas no cofre sem vídeos.""",
+Todas as ferramentas são gratuitas. A versão gratuita mostra anúncios da Google e permite apagar até 100 elementos por dia, mais 100 uma vez por dia depois de um vídeo opcional. O GaleriQ Pro é uma compra única: sem anúncios, apagar sem limites e novas pastas no cofre sem vídeos.""",
 )
 
 T["ro"] = dict(
-    name="Arrumo: Curățare poze",
+    name="GaleriQ: Curățare poze",
     subtitle="Glisează și eliberează spațiu",
     keywords="seif,duplicate,ștergere,galerie,album,memorie,privat,ascunde,colaj,editor,comprimare,fotografii",
     promo="În sus păstrezi, la stânga în coș, la dreapta pentru mai târziu. Nimic nu se șterge fără confirmarea ta, iar pozele nu părăsesc niciodată iPhone-ul.",
-    description="""Cu Arrumo, ordinea în biblioteca de poze e la fel de simplă ca o glisare.
+    description="""Cu GaleriQ, ordinea în biblioteca de poze e la fel de simplă ca o glisare.
 
 GLISEAZĂ PRIN POZE ȘI VIDEOCLIPURI
 • În sus: păstrează
-• La stânga: în coșul Arrumo – încă nu se șterge nimic
+• La stânga: în coșul GaleriQ – încă nu se șterge nimic
 • La dreapta: mai târziu – revine peste 2 zile
 • În jos: înapoi la elementul anterior
 Ștergerea are loc doar când golești coșul și confirmi dialogul iOS. Apoi elementele ajung în „Șterse recent” din aplicația Poze.
@@ -414,19 +414,19 @@ CONFIDENȚIALITATEA ÎNAINTE DE TOATE
 Fără cont, fără server propriu, fără încărcări. Pozele tale rămân pe dispozitiv.
 
 GRATUIT ȘI PRO
-Toate instrumentele sunt gratuite. Versiunea gratuită afișează reclame Google și îți permite să ștergi până la 100 de elemente pe zi, plus încă 100 o dată pe zi după un videoclip opțional. Arrumo Pro este o achiziție unică: fără reclame, ștergere nelimitată și dosare noi în seif fără videoclipuri.""",
+Toate instrumentele sunt gratuite. Versiunea gratuită afișează reclame Google și îți permite să ștergi până la 100 de elemente pe zi, plus încă 100 o dată pe zi după un videoclip opțional. GaleriQ Pro este o achiziție unică: fără reclame, ștergere nelimitată și dosare noi în seif fără videoclipuri.""",
 )
 
 T["ru"] = dict(
-    name="Arrumo: очистка фото и сейф",
+    name="GaleriQ: очистка фото и сейф",
     subtitle="Свайп — и память свободна",
     keywords="удаление,дубликаты,галерея,альбом,хранилище,скрыть,приватный,коллаж,редактор,сжатие,видео,уборка",
     promo="Вверх — оставить, влево — в корзину, вправо — на потом. Ничего не удаляется без вашего подтверждения, а фото никогда не покидают iPhone.",
-    description="""С Arrumo навести порядок в медиатеке так же просто, как провести пальцем.
+    description="""С GaleriQ навести порядок в медиатеке так же просто, как провести пальцем.
 
 ЛИСТАЙТЕ ФОТО И ВИДЕО СВАЙПАМИ
 • Вверх: оставить
-• Влево: в корзину Arrumo — пока ничего не удаляется
+• Влево: в корзину GaleriQ — пока ничего не удаляется
 • Вправо: позже — вернётся через 2 дня
 • Вниз: назад к предыдущему элементу
 Удаление происходит, только когда вы очищаете корзину и подтверждаете диалог iOS. Затем элементы попадают в «Недавно удаленные» в приложении «Фото».
@@ -450,19 +450,19 @@ T["ru"] = dict(
 Без аккаунта, без собственного сервера, без загрузок. Ваши фото остаются на устройстве.
 
 БЕСПЛАТНО И PRO
-Все инструменты бесплатны. В бесплатной версии показывается реклама Google и можно удалять до 100 элементов в день, а раз в день — ещё 100 после необязательного видео. Arrumo Pro — разовая покупка: без рекламы, удаление без ограничений и новые папки в сейфе без видео.""",
+Все инструменты бесплатны. В бесплатной версии показывается реклама Google и можно удалять до 100 элементов в день, а раз в день — ещё 100 после необязательного видео. GaleriQ Pro — разовая покупка: без рекламы, удаление без ограничений и новые папки в сейфе без видео.""",
 )
 
 T["tr"] = dict(
-    name="Arrumo: Fotoğraf Temizleyici",
+    name="GaleriQ: Fotoğraf Temizleyici",
     subtitle="Kaydır, yer aç, kasada sakla",
     keywords="kopya,silme,galeri,albüm,depolama,gizli,gizle,kolaj,düzenleyici,sıkıştırma,video,ekran görüntüsü",
     promo="Yukarı kaydır sakla, sola çöpe at, sağa sonraya bırak. Onaylamadan hiçbir şey silinmez ve fotoğrafların iPhone'undan asla çıkmaz.",
-    description="""Arrumo ile fotoğraf arşivini düzenlemek bir kaydırma kadar kolay.
+    description="""GaleriQ ile fotoğraf arşivini düzenlemek bir kaydırma kadar kolay.
 
 FOTOĞRAF VE VİDEOLARI KAYDIRARAK GEÇ
 • Yukarı: sakla
-• Sola: Arrumo çöp kutusuna – henüz hiçbir şey silinmez
+• Sola: GaleriQ çöp kutusuna – henüz hiçbir şey silinmez
 • Sağa: sonra – 2 gün sonra geri gelir
 • Aşağı: önceki öğeye dön
 Silme işlemi yalnızca çöp kutusunu boşaltıp iOS onay penceresini onayladığında yapılır. Öğeler ardından Fotoğraflar uygulamasındaki "Son Silinenler"e taşınır.
@@ -486,19 +486,19 @@ FOTOĞRAFLARINLA OYUNLAR
 Hesap yok, kendi sunucumuz yok, yükleme yok. Fotoğrafların cihazında kalır.
 
 ÜCRETSİZ VE PRO
-Tüm araçlar ücretsizdir. Ücretsiz sürüm Google reklamları gösterir ve günde 100 öğeye kadar silmene izin verir; isteğe bağlı bir videodan sonra günde bir kez 100 öğe daha. Arrumo Pro tek seferlik bir satın alımdır: reklam yok, sınırsız silme ve video izlemeden yeni kasa klasörleri.""",
+Tüm araçlar ücretsizdir. Ücretsiz sürüm Google reklamları gösterir ve günde 100 öğeye kadar silmene izin verir; isteğe bağlı bir videodan sonra günde bir kez 100 öğe daha. GaleriQ Pro tek seferlik bir satın alımdır: reklam yok, sınırsız silme ve video izlemeden yeni kasa klasörleri.""",
 )
 
 T["uk"] = dict(
-    name="Arrumo: очищення фото і сейф",
+    name="GaleriQ: очищення фото і сейф",
     subtitle="Свайп — і пам’ять вільна",
     keywords="видалення,дублікати,галерея,альбом,сховище,приховати,приватний,колаж,редактор,стиснення,відео",
     promo="Угору — залишити, ліворуч — у кошик, праворуч — на потім. Нічого не видаляється без вашого підтвердження, а фото ніколи не залишають iPhone.",
-    description="""З Arrumo навести лад у медіатеці так само просто, як провести пальцем.
+    description="""З GaleriQ навести лад у медіатеці так само просто, як провести пальцем.
 
 ГОРТАЙТЕ ФОТО Й ВІДЕО СВАЙПАМИ
 • Угору: залишити
-• Ліворуч: у кошик Arrumo — поки нічого не видаляється
+• Ліворуч: у кошик GaleriQ — поки нічого не видаляється
 • Праворуч: пізніше — повернеться через 2 дні
 • Донизу: назад до попереднього елемента
 Видалення відбувається лише тоді, коли ви очищаєте кошик і підтверджуєте вікно iOS. Потім елементи потрапляють до «Нещодавно видалених» у програмі «Фото».
@@ -522,19 +522,19 @@ T["uk"] = dict(
 Без облікового запису, без власного сервера, без вивантаження. Ваші фото залишаються на пристрої.
 
 БЕЗКОШТОВНО І PRO
-Усі інструменти безкоштовні. Безкоштовна версія показує рекламу Google і дозволяє видаляти до 100 елементів на день, а раз на день — ще 100 після необов’язкового відео. Arrumo Pro — разова покупка: без реклами, необмежене видалення та нові папки в сейфі без відео.""",
+Усі інструменти безкоштовні. Безкоштовна версія показує рекламу Google і дозволяє видаляти до 100 елементів на день, а раз на день — ще 100 після необов’язкового відео. GaleriQ Pro — разова покупка: без реклами, необмежене видалення та нові папки в сейфі без відео.""",
 )
 
 T["zh-Hans"] = dict(
-    name="Arrumo：照片清理与私密保险箱",
+    name="GaleriQ：照片清理与私密保险箱",
     subtitle="滑动整理，释放空间",
     keywords="相册,删除,重复,存储,隐藏,加密,拼图,编辑,压缩,视频,截图,图库,瘦身,大文件",
     promo="上滑保留，左滑放入回收站，右滑稍后再看。未经你确认不会删除任何内容，照片也永远不会离开你的 iPhone。",
-    description="""有了 Arrumo，整理照片图库就像滑动手指一样简单。
+    description="""有了 GaleriQ，整理照片图库就像滑动手指一样简单。
 
 滑动浏览照片和视频
 • 上滑：保留
-• 左滑：放入 Arrumo 回收站——此时不会删除任何内容
+• 左滑：放入 GaleriQ 回收站——此时不会删除任何内容
 • 右滑：稍后——2 天后再次出现
 • 下滑：返回上一项
 只有在你清空回收站并在 iOS 对话框中确认后才会删除。删除的项目随后会移到“照片”App 的“最近删除”中。
@@ -558,19 +558,19 @@ T["zh-Hans"] = dict(
 无需账户，没有自有服务器，不上传任何内容。你的照片始终留在设备上。
 
 免费版与 Pro
-所有工具均免费。免费版会显示 Google 广告，每天最多可删除 100 项；每天观看一次可选视频后可再删除 100 项。Arrumo Pro 为一次性购买：无广告、无限删除，无需观看视频即可新建保险箱文件夹。""",
+所有工具均免费。免费版会显示 Google 广告，每天最多可删除 100 项；每天观看一次可选视频后可再删除 100 项。GaleriQ Pro 为一次性购买：无广告、无限删除，无需观看视频即可新建保险箱文件夹。""",
 )
 
 T["ar-SA"] = dict(
-    name="Arrumo: تنظيف الصور والخزنة",
+    name="GaleriQ: تنظيف الصور والخزنة",
     subtitle="اسحب لتحرير مساحة التخزين",
     keywords="حذف,مكررة,معرض,ألبوم,خاص,إخفاء,كولاج,محرر,ضغط,فيديو,لقطات الشاشة,ترتيب",
     promo="اسحب لأعلى للاحتفاظ، ولليسار إلى سلة المهملات، ولليمين لوقت لاحق. لا يُحذف شيء دون تأكيدك، ولا تغادر صورك جهاز iPhone أبدًا.",
-    description="""مع Arrumo يصبح ترتيب مكتبة الصور سهلًا مثل سحبة إصبع.
+    description="""مع GaleriQ يصبح ترتيب مكتبة الصور سهلًا مثل سحبة إصبع.
 
 تصفّح الصور والفيديوهات بالسحب
 • لأعلى: احتفاظ
-• لليسار: إلى سلة مهملات Arrumo – لا يُحذف شيء بعد
+• لليسار: إلى سلة مهملات GaleriQ – لا يُحذف شيء بعد
 • لليمين: لاحقًا – يعود بعد يومين
 • لأسفل: الرجوع إلى العنصر السابق
 لا يتم الحذف إلا عندما تُفرغ السلة وتؤكد نافذة iOS. بعدها تنتقل العناصر إلى «المحذوفة مؤخرًا» في تطبيق الصور.
@@ -594,7 +594,7 @@ T["ar-SA"] = dict(
 بلا حساب، وبلا خادم خاص بنا، وبلا رفع. تبقى صورك على جهازك.
 
 مجاني وPro
-جميع الأدوات مجانية. تعرض النسخة المجانية إعلانات من Google وتتيح حذف ما يصل إلى 100 عنصر يوميًا، و100 عنصر إضافي مرة يوميًا بعد مشاهدة فيديو اختياري. Arrumo Pro شراء لمرة واحدة: بلا إعلانات، وحذف غير محدود، ومجلدات خزنة جديدة دون فيديوهات.""",
+جميع الأدوات مجانية. تعرض النسخة المجانية إعلانات من Google وتتيح حذف ما يصل إلى 100 عنصر يوميًا، و100 عنصر إضافي مرة يوميًا بعد مشاهدة فيديو اختياري. GaleriQ Pro شراء لمرة واحدة: بلا إعلانات، وحذف غير محدود، ومجلدات خزنة جديدة دون فيديوهات.""",
 )
 
 # In-App-Kauf (Nicht-verbrauchbar, Produkt-ID com.mrdevn4ever.photomaid.pro): Anzeigename ≤ 35, Beschreibung ≤ 55.
@@ -632,7 +632,7 @@ def check() -> list[str]:
             value = t[key]
             if len(value) > limit:
                 errors.append(f"{loc} {key}: {len(value)} > {limit}")
-            if "PhotoMaid" in value:
+            if "PhotoMaid" in value or "Arrumo" in value:
                 errors.append(f"{loc} {key}: alter Name")
         words = [w.strip() for w in t["keywords"].split(",")]
         if any(not w or w != w.strip() for w in words) or " ," in t["keywords"] or ", " in t["keywords"]:
@@ -643,8 +643,8 @@ def check() -> list[str]:
         for w in words:
             if " " not in w and w.lower() in title.replace(",", " ").replace(":", " ").split():
                 errors.append(f"{loc} keywords: '{w}' steht schon in Name/Untertitel")
-        if not t["name"].startswith("Arrumo"):
-            errors.append(f"{loc} name: beginnt nicht mit Arrumo")
+        if not t["name"].startswith("GaleriQ"):
+            errors.append(f"{loc} name: beginnt nicht mit GaleriQ")
     if set(IAP) != set(T):
         errors.append("IAP: Sprachen passen nicht")
     for loc, text in IAP.items():
@@ -675,10 +675,10 @@ def main() -> int:
         (folder / "support_url.txt").write_text(SUPPORT_URL + "\n", encoding="utf-8")
         (folder / "marketing_url.txt").write_text(MARKETING_URL + "\n", encoding="utf-8")
     (OUT / "copyright.txt").write_text(COPYRIGHT + "\n", encoding="utf-8")
-    rows = [f"| {loc} | Arrumo Pro | {text} |" for loc, text in IAP.items()]
-    (OUT / "iap-arrumo-pro.md").write_text(
-        "# In-App-Kauf „Arrumo Pro“\n\n"
-        f"Produkt-ID `{IAP_ID}` · Typ: Nicht-verbrauchbar · Referenzname: Arrumo Pro\n\n"
+    rows = [f"| {loc} | GaleriQ Pro | {text} |" for loc, text in IAP.items()]
+    (OUT / "iap-pro.md").write_text(
+        "# In-App-Kauf „GaleriQ Pro“\n\n"
+        f"Produkt-ID `{IAP_ID}` · Typ: Nicht-verbrauchbar · Referenzname: GaleriQ Pro\n\n"
         "| Sprache | Anzeigename | Beschreibung |\n|---|---|---|\n" + "\n".join(rows) + "\n",
         encoding="utf-8")
     print(f"OK: {len(T)} Sprachen nach {OUT.relative_to(ROOT)}")

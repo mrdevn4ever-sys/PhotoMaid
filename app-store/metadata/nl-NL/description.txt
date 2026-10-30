@@ -1,8 +1,8 @@
-Met Arrumo ruim je je fotobibliotheek zo makkelijk op als een veeg met je vinger.
+Met GaleriQ ruim je je fotobibliotheek zo makkelijk op als een veeg met je vinger.
 
 SWIPE DOOR JE FOTO'S EN VIDEO'S
 • Omhoog: bewaren
-• Links: naar de prullenbak van Arrumo – er wordt nog niets verwijderd
+• Links: naar de prullenbak van GaleriQ – er wordt nog niets verwijderd
 • Rechts: later – komt over 2 dagen terug
 • Omlaag: terug naar het vorige item
 Er wordt pas verwijderd als je de prullenbak leegt en de iOS-melding bevestigt. Daarna staan de items in 'Recent verwijderd' in de Foto's-app.
@@ -26,4 +26,4 @@ PRIVACY VOOROP
 Geen account, geen eigen server, geen upload. Je foto's blijven op je apparaat.
 
 GRATIS EN PRO
-Alle tools zijn gratis. De gratis versie toont advertenties van Google en laat je tot 100 items per dag verwijderen, plus één keer per dag 100 extra na een vrijwillige video. Arrumo Pro is een eenmalige aankoop: geen advertenties, onbeperkt verwijderen en nieuwe kluismappen zonder video's.
+Alle tools zijn gratis. De gratis versie toont advertenties van Google en laat je tot 100 items per dag verwijderen, plus één keer per dag 100 extra na een vrijwillige video. GaleriQ Pro is een eenmalige aankoop: geen advertenties, onbeperkt verwijderen en nieuwe kluismappen zonder video's.

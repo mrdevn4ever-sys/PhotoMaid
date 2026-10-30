@@ -1,8 +1,8 @@
-Com o Arrumo, arrumar a fototeca é tão fácil como deslizar o dedo.
+Com o GaleriQ, arrumar a fototeca é tão fácil como deslizar o dedo.
 
 DESLIZE PELAS SUAS FOTOS E VÍDEOS
 • Para cima: manter
-• Para a esquerda: para o lixo do Arrumo – ainda nada é apagado
+• Para a esquerda: para o lixo do GaleriQ – ainda nada é apagado
 • Para a direita: mais tarde – volta daqui a 2 dias
 • Para baixo: voltar ao elemento anterior
 Só é apagado quando esvazia o lixo e confirma a janela do iOS. Depois, os elementos passam para «Apagados recentemente» na app Fotografias.
@@ -26,4 +26,4 @@ PRIVACIDADE EM PRIMEIRO LUGAR
 Sem conta, sem servidor próprio, sem envios. As suas fotos ficam no dispositivo.
 
 GRÁTIS E PRO
-Todas as ferramentas são gratuitas. A versão gratuita mostra anúncios da Google e permite apagar até 100 elementos por dia, mais 100 uma vez por dia depois de um vídeo opcional. O Arrumo Pro é uma compra única: sem anúncios, apagar sem limites e novas pastas no cofre sem vídeos.
+Todas as ferramentas são gratuitas. A versão gratuita mostra anúncios da Google e permite apagar até 100 elementos por dia, mais 100 uma vez por dia depois de um vídeo opcional. O GaleriQ Pro é uma compra única: sem anúncios, apagar sem limites e novas pastas no cofre sem vídeos.

@@ -1,8 +1,8 @@
-Cu Arrumo, ordinea în biblioteca de poze e la fel de simplă ca o glisare.
+Cu GaleriQ, ordinea în biblioteca de poze e la fel de simplă ca o glisare.
 
 GLISEAZĂ PRIN POZE ȘI VIDEOCLIPURI
 • În sus: păstrează
-• La stânga: în coșul Arrumo – încă nu se șterge nimic
+• La stânga: în coșul GaleriQ – încă nu se șterge nimic
 • La dreapta: mai târziu – revine peste 2 zile
 • În jos: înapoi la elementul anterior
 Ștergerea are loc doar când golești coșul și confirmi dialogul iOS. Apoi elementele ajung în „Șterse recent” din aplicația Poze.
@@ -26,4 +26,4 @@ CONFIDENȚIALITATEA ÎNAINTE DE TOATE
 Fără cont, fără server propriu, fără încărcări. Pozele tale rămân pe dispozitiv.
 
 GRATUIT ȘI PRO
-Toate instrumentele sunt gratuite. Versiunea gratuită afișează reclame Google și îți permite să ștergi până la 100 de elemente pe zi, plus încă 100 o dată pe zi după un videoclip opțional. Arrumo Pro este o achiziție unică: fără reclame, ștergere nelimitată și dosare noi în seif fără videoclipuri.
+Toate instrumentele sunt gratuite. Versiunea gratuită afișează reclame Google și îți permite să ștergi până la 100 de elemente pe zi, plus încă 100 o dată pe zi după un videoclip opțional. GaleriQ Pro este o achiziție unică: fără reclame, ștergere nelimitată și dosare noi în seif fără videoclipuri.

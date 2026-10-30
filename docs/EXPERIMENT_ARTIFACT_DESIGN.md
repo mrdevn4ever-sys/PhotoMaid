@@ -249,4 +249,10 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
   alle zehn Fachtests PASS (Lauf 40045834861). test00 (4. Kaltstart muss Werbung zeigen): 1 × PASS / 3 × FAIL –
   App-Log jeweils `app-open-load-window-expired`, d. h. Googles Testwerbung lud länger als 4 s und die App ließ sie
   absichtlich weg (Netzwerk, nicht die Umbenennung).
+- Umbenennung „GaleriQ“ (30.10.2026, Nutzerentscheidung): „Arrumo“ ist auf Google Play als „Arrumo: Lager & Inventur“
+  (Kodalab, deutsche Beschreibung) vergeben. Generator ersetzt „PhotoMaid“ und „Arrumo“ durch „GaleriQ“ (16 Sprachen),
+  Anzeigename, Berechtigungstexte, StoreKit-Testnamen, UI-Tests, Store-Texte, Review-Text, Websites. Schriftzug:
+  das große „Q“ ist das Zahlenschloss-Rad in Versalhöhe (29/40) mit Q-Schweif; Hilfetexte nennen das Rad im „Q“.
+  Werbung bei abgelehntem Tracking (Manifest ohne Tracking-Domain, c983319): Lauf 41138933419 (tracking: deny, f9f0031)
+  PASS – „Ask App Not to Track“ getippt, 4. Kaltstart `app-open-presenting` nach 1,5 s.
 - Geräteabnahme: NOT RUN
