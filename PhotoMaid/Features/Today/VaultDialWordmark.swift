@@ -32,8 +32,8 @@ struct VaultDialWordmark: View {
                     if parts.capital {
                         // Schweif des „Q“: schräg über den Rand nach rechts unten, mit Fuge in Hintergrundfarbe.
                         ZStack {
-                            QTail().stroke(AppColors.background, style: StrokeStyle(lineWidth: size * 0.17, lineCap: .round))
-                            QTail().stroke(AppColors.textPrimary, style: StrokeStyle(lineWidth: size * 0.11, lineCap: .round))
+                            QTail().stroke(AppColors.background, style: StrokeStyle(lineWidth: size * 0.21, lineCap: .round))
+                            QTail().stroke(AppColors.textPrimary, style: StrokeStyle(lineWidth: size * 0.14, lineCap: .round))
                         }
                     }
                 }
@@ -97,12 +97,13 @@ struct VaultDialWordmark: View {
     }
 }
 
-/// Schweif des „Q“ im Rahmen des Rads: von innen unten rechts schräg über den Rand hinaus, wie in der Schrift.
+/// Schweif des „Q“ im Rahmen des Rads: kurz und kräftig, setzt am Rand unten rechts an und läuft flach nach außen –
+/// wie in der Schrift, nicht wie der Stiel einer Lupe (erste Fassung vom Rad-Inneren aus wirkte so).
 private struct QTail: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
-        path.move(to: CGPoint(x: rect.minX + rect.width * 0.64, y: rect.minY + rect.height * 0.66))
-        path.addLine(to: CGPoint(x: rect.minX + rect.width * 1.06, y: rect.minY + rect.height * 1.06))
+        path.move(to: CGPoint(x: rect.minX + rect.width * 0.72, y: rect.minY + rect.height * 0.82))
+        path.addLine(to: CGPoint(x: rect.minX + rect.width * 1.08, y: rect.minY + rect.height * 1.00))
         return path
     }
 }
