@@ -14,7 +14,7 @@ und **Handarbeit**, die nur du machen kannst. Reihenfolge: zuerst die GitHub-Abr
   (Ausnahme nur mit `allow_test_ads` für rein interne Builds).
 - **Store-Texte für 16 Sprachen:** `app-store/metadata/<Sprache>/` (Name, Untertitel, Keywords, Werbetext,
   Beschreibung, URLs), erzeugt und geprüft mit `scripts/store/metadata_texts.py`. Texte für den In-App-Kauf:
-  `app-store/metadata/iap-arrumo-pro.md`. Upload aller Texte per Workflow „Store-Texte hochladen“.
+  `app-store/metadata/iap-arrumo-pro.md`. Upload aller Texte per TestFlight-Workflow mit der Aufgabe `store-texts` (Bestätigung `TEXTE`).
 - **Websites:** `mrdevn4ever-sys.github.io` (Startseite, Android-Datenschutz) und die Datenschutzseite heißen
   Arrumo (früher PhotoMaid). `app-ads.txt` liegt auf der Domain-Wurzel.
 - **App-Review-Text:** `docs/APP_REVIEW_NOTES.md`.
@@ -29,7 +29,7 @@ Danach erledigt Claude (Auftrag „mach es“):
 1. CI mit abgelehntem Tracking (`tracking: deny`) und volle CI.
 2. Store-Screenshots und 2 Clips mit dem Schriftzug „Arrumo“ neu aufnehmen (`app-store/en`).
 3. Screenshot der Kaufseite für die Prüfung des In-App-Kaufs.
-4. Workflow „Store-Texte hochladen“ (16 Sprachen nach App Store Connect, ohne Einreichung).
+4. TestFlight-Workflow, Aufgabe `store-texts` (16 Sprachen nach App Store Connect, ohne Einreichung).
 5. Sobald die AdMob-Secrets gesetzt sind: Build 30 nach TestFlight (nur interne Tester).
 
 ## 3. Prompts für deinen Agenten

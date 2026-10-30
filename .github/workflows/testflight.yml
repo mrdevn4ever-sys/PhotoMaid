@@ -5,6 +5,11 @@ name: TestFlight
 on:
   workflow_dispatch:
     inputs:
+      task:
+        description: "testflight = Build hochladen; store-texts = nur Store-Texte aus app-store/metadata (Bestätigung TEXTE)"
+        type: choice
+        options: [testflight, store-texts]
+        default: testflight
       changelog:
         description: "Was testen? (erscheint in TestFlight unter „Was ist zu testen“)"
         type: string
@@ -32,6 +37,7 @@ permissions:
 
 jobs:
   beta:
+    if: inputs.task != 'store-texts'
     name: Archivieren, signieren, hochladen
     runs-on: macos-26
     timeout-minutes: 90
@@ -183,3 +189,45 @@ jobs:
         run: |
           security delete-keychain "$RUNNER_TEMP/photomaid-ci.keychain-db" 2>/dev/null || true
           rm -f "$RUNNER_TEMP"/AuthKey_*.p8 "$RUNNER_TEMP"/dist.p12 "$RUNNER_TEMP"/dist-legacy.p12 "$RUNNER_TEMP"/dist-key.pem "$RUNNER_TEMP"/profile.mobileprovision
+
+  # Nur Store-Texte (Name, Untertitel, Keywords, Werbetext, Beschreibung, URLs; 16 Sprachen) in die bearbeitbare
+  # Version 1.0 – kein Build, keine Bilder, keine Einreichung, kein Release.
+  store-texts:
+    if: inputs.task == 'store-texts'
+    name: Store-Texte nach App Store Connect
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    environment: testflight
+    env:
+      APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+      APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+      APP_STORE_CONNECT_API_KEY_BASE64: ${{ secrets.APP_STORE_CONNECT_API_KEY_BASE64 }}
+      PM_BUNDLE_ID: ${{ vars.PM_BUNDLE_ID || 'com.mrdevn4ever.photomaid' }}
+      PM_TEAM_ID: ${{ vars.PM_TEAM_ID || 'HUN9MS832X' }}
+      PM_STORE_VERSION: "1.0"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            app-store/metadata
+            scripts/store
+            fastlane
+      - name: Bestätigung prüfen
+        env:
+          CONFIRM_UPLOAD: ${{ inputs.confirm_upload }}
+        run: |
+          if [ "$CONFIRM_UPLOAD" != "TEXTE" ]; then
+            echo "::error::Abgebrochen: confirm_upload muss exakt TEXTE sein."; exit 1
+          fi
+          for v in APP_STORE_CONNECT_KEY_ID APP_STORE_CONNECT_ISSUER_ID APP_STORE_CONNECT_API_KEY_BASE64; do
+            [ -n "${!v}" ] || { echo "::error::Secret $v fehlt"; exit 1; }
+          done
+      - name: Texte prüfen
+        run: python3 scripts/store/metadata_texts.py --check
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+      - name: fastlane
+        run: gem install fastlane --no-document
+      - name: Hochladen
+        run: fastlane ios store_metadata
