@@ -150,7 +150,7 @@ platform :ios do
     metadata = File.join(project_root, "app-store/metadata")
     # Review-Text (docs/APP_REVIEW_NOTES.md, zwischen den Linien). Fehlen die App-Prüfungsinformationen noch, legt der erste
     # Schritt sie damit an – ohne sie bricht deliver mit „No data“ ab (fastlane#20538). Bestehende ändert Apple nur mit
-    # Kontaktname, E-Mail und Telefon; die trägt der Inhaber in App Store Connect ein, deshalb dann keine Änderung hier.
+    # vollständigem Kontakt; den trägt der Inhaber in App Store Connect ein. Ist er da, wird er unverändert mitgeschickt.
     notes = File.read(File.join(project_root, "docs/APP_REVIEW_NOTES.md"), encoding: "UTF-8").split("\n---\n")[1].to_s.strip
     UI.user_error!("App-Review-Text fehlt oder ist länger als 4000 Zeichen") if notes.empty? || notes.length > 4000
     app = Spaceship::ConnectAPI::App.find(ENV.fetch("PM_BUNDLE_ID"))
@@ -160,7 +160,18 @@ platform :ios do
     rescue StandardError
       nil
     end
-    review_information = review_detail ? nil : { notes: notes, demo_required: false }
+    contact = review_detail && {
+      first_name: review_detail.contact_first_name, last_name: review_detail.contact_last_name,
+      phone_number: review_detail.contact_phone, email_address: review_detail.contact_email
+    }
+    review_information = if review_detail.nil?
+                           { notes: notes, demo_required: false }
+                         elsif contact.values.none? { |v| v.to_s.strip.empty? }
+                           contact.merge(notes: notes, demo_required: false)
+                         else
+                           UI.important("Prüfungsnotizen unverändert: Kontakt für die App-Prüfung fehlt noch.")
+                           nil
+                         end
     # Neue Sprachen übernehmen bei Apple zuerst den aktuellen Namen der Hauptsprache. Ist der alte Name anderswo
     # vergeben, lehnt Apple jede neue Sprache ab (30.10.2026). Deshalb zuerst nur die Hauptsprache, dann alle.
     primary = ENV.fetch("PM_STORE_PRIMARY_LOCALE", "de-DE")
