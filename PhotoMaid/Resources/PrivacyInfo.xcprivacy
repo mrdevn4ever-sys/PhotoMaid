@@ -4,19 +4,17 @@
   PhotoMaid Privacy Manifest (App-Target).
   Medien, Dateinamen, Pfade, Hashes und Review-Daten verlassen das Gerät nicht.
   Werbung (E1/E19, nur Gratis): Google Mobile Ads bringt ein eigenes Manifest mit (Geräte-ID, Werbedaten,
-  Interaktion, ungefährer Standort, Diagnose). Mit Erlaubnis der iOS-Tracking-Abfrage (ATT) wird für
-  personalisierte Werbung getrackt, deshalb NSPrivacyTracking = true. App-Store-Datenschutzangaben entsprechend
-  pflegen (docs/RELEASE_BLOCKERS.md). Bei true darf die Domainliste nicht leer sein (Apple TN3181).
-  AdMob-Endpunkt laut Google: https://groups.google.com/g/google-admob-ads-sdk/c/FCH97KHK6Eg
+  Interaktion, ungefährer Standort, Diagnose) und deklariert selbst keine Tracking-Domains. Der App-Code trackt
+  nicht, deshalb NSPrivacyTracking = false ohne Domainliste (30.10.2026). Vorher stand hier
+  googleads.g.doubleclick.net als Tracking-Domain: iOS lässt Anfragen an deklarierte Tracking-Domains ohne
+  ATT-Erlaubnis scheitern (Apple, NSPrivacyTrackingDomains) – über diesen Host lädt AdMob die Anzeigen, also
+  hätte niemand ohne Tracking-Erlaubnis Werbung, Bonus oder Tresor-Ordner bekommen. Das Tracking selbst
+  regelt weiterhin die ATT-Abfrage; die App-Store-Datenschutzangaben bleiben unverändert (docs/RELEASE_BLOCKERS.md).
 -->
 <plist version="1.0">
 <dict>
 	<key>NSPrivacyTracking</key>
-	<true/>
-	<key>NSPrivacyTrackingDomains</key>
-	<array>
-		<string>googleads.g.doubleclick.net</string>
-	</array>
+	<false/>
 	<key>NSPrivacyCollectedDataTypes</key>
 	<array>
 		<dict>

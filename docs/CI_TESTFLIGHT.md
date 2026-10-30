@@ -154,7 +154,8 @@ Die Diagnose ändert keine Berechtigungsdatenbank und verwendet keine privaten P
    | `APPLE_PROVISIONING_PROFILE_BASE64` | App-Store-Profil Base64 | – |
 
    Werbung (E19): `PM_ADMOB_APP_ID`, `PM_ADMOB_APP_OPEN_ID`, `PM_ADMOB_NATIVE_ID`, `PM_ADMOB_REWARDED_ID` als Secret oder
-   Variable. Fehlen sie, nutzt der Build Googles öffentliche Test-Anzeigen (keine Einnahmen) – vor dem App Store Pflicht.
+   Variable. Fehlen sie, bricht der Workflow ab (seit 30.10.2026). Nur ein rein interner Build darf mit der Option
+   `allow_test_ads` Googles öffentliche Test-Anzeigen nutzen (keine Einnahmen, nie für den App Store).
 
    Optional können als Repository-Variablen gesetzt werden: `PM_TEAM_ID`, `PM_BUNDLE_ID`,
    `PM_PRIVACY_POLICY_URL` und `PM_PRO_PRODUCT_ID`. Der Workflow verwendet für die ersten

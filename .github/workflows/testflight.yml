@@ -13,6 +13,10 @@ on:
         description: "Vor dem Upload Unit-Tests ausführen"
         type: boolean
         default: true
+      allow_test_ads:
+        description: "Nur interne Tests: ohne echte AdMob-IDs mit Googles Testwerbung bauen (nie für den App Store)"
+        type: boolean
+        default: false
       confirm_upload:
         description: "Sicherheitsbestätigung: exakt UPLOAD eingeben"
         type: string
@@ -50,6 +54,7 @@ jobs:
       PM_ADMOB_REWARDED_ID: ${{ secrets.PM_ADMOB_REWARDED_ID || vars.PM_ADMOB_REWARDED_ID }}
       CHANGELOG: ${{ inputs.changelog }}
       RUN_TESTS: ${{ inputs.run_tests }}
+      PM_ALLOW_TEST_ADS: ${{ inputs.allow_test_ads }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -85,6 +90,18 @@ jobs:
           if [ -n "$missing" ]; then
             echo "::error::Fehlende Secrets/Variablen:$missing (siehe docs/CI_TESTFLIGHT.md)"; exit 1
           fi
+          # Werbung: ohne alle vier echten AdMob-IDs nur mit ausdrücklichem allow_test_ads (nie für den App Store).
+          ads_missing=""
+          for v in PM_ADMOB_APP_ID PM_ADMOB_APP_OPEN_ID PM_ADMOB_NATIVE_ID PM_ADMOB_REWARDED_ID; do
+            [ -z "${!v}" ] && ads_missing="$ads_missing $v"
+          done
+          if [ -n "$ads_missing" ] && [ "$PM_ALLOW_TEST_ADS" != "true" ]; then
+            echo "::error::Echte AdMob-IDs fehlen:$ads_missing. Secrets setzen oder für einen rein internen Build allow_test_ads wählen."; exit 1
+          fi
+          if [ -z "$ads_missing" ] && [[ "$PM_ADMOB_APP_ID" == ca-app-pub-3940256099942544* ]]; then
+            echo "::error::PM_ADMOB_APP_ID ist Googles Test-ID, nicht die eigene AdMob-App."; exit 1
+          fi
+          [ -z "$ads_missing" ] && echo "AdMob: echte IDs gesetzt" || echo "::warning::AdMob: Googles Testwerbung (allow_test_ads)"
       - name: Xcode wählen
         run: scripts/ci/select_xcode.sh
       - name: Werkzeuge

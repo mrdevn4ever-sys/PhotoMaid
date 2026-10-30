@@ -60,6 +60,18 @@ wurde nach der Korrektur bis zum erfolgreichen Abschluss der Apple-Verarbeitung 
   Anzeigenladen mit erlaubter und verweigerter ATT sowie zusätzliche tatsächlich kontaktierte Hosts
   müssen vor einer Geräteabnahme geprüft werden. Es wurden hier keine Anzeigenanfragen erzeugt.
 
+## Korrektur 30.10.2026: keine Werbe-Domain mehr als Tracking-Domain
+
+Laut Apple scheitern Anfragen an Domains in `NSPrivacyTrackingDomains`, solange der Nutzer Tracking nicht
+erlaubt hat ([Apple](https://developer.apple.com/documentation/bundleresources/app-privacy-configuration/nsprivacytrackingdomains)).
+Über `googleads.g.doubleclick.net` lädt AdMob die Anzeigen. Mit der Deklaration hätte also niemand ohne
+Tracking-Erlaubnis Werbung, den Tagesbonus oder neue Tresor-Ordner bekommen; die UI-Tests tippten immer
+„Erlauben“ und deckten das nicht ab. Googles eigenes Manifest deklariert keine Tracking-Domains, der App-Code
+trackt nicht. Deshalb (Nutzerfreigabe 30.10.2026): App-Manifest `NSPrivacyTracking = false` ohne Domainliste –
+gültig nach TN3181, kein ITMS-91064. Das Tracking selbst regelt weiterhin die ATT-Abfrage, die
+App-Store-Datenschutzangaben bleiben unverändert. Prüfung: CI-Schalter `tracking: deny` (UI-Tests lehnen im
+Tracking-Dialog ab, App-Log zeigt Laden/Fehler der Start-Werbung) und Gerätetest mit abgelehntem Tracking.
+
 ## Neuer TestFlight-Build 11
 
 Auf ausdrücklichen Auftrag wurde Version 1.0, Build 11 aus Commit

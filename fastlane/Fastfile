@@ -40,7 +40,13 @@ platform :ios do
     ]
     # Werbung (E19): echte AdMob-IDs nur aus Secrets/Variablen. Fehlen sie, bleiben Googles Test-IDs aus project.yml
     # (Test-Anzeigen, keine Einnahmen) – vor einer App-Store-Veröffentlichung Pflicht (docs/RELEASE_BLOCKERS.md).
-    %w[PM_ADMOB_APP_ID PM_ADMOB_APP_OPEN_ID PM_ADMOB_NATIVE_ID PM_ADMOB_REWARDED_ID].each do |key|
+    admob_keys = %w[PM_ADMOB_APP_ID PM_ADMOB_APP_OPEN_ID PM_ADMOB_NATIVE_ID PM_ADMOB_REWARDED_ID]
+    admob_missing = admob_keys.select { |key| ENV.fetch(key, "").strip.empty? }
+    if !admob_missing.empty? && ENV["PM_ALLOW_TEST_ADS"] != "true"
+      UI.user_error!("Echte AdMob-IDs fehlen (#{admob_missing.join(', ')}). Nur ein rein interner Build darf " \
+                     "mit PM_ALLOW_TEST_ADS=true Googles Testwerbung nutzen.")
+    end
+    admob_keys.each do |key|
       value = ENV.fetch(key, "").strip
       common_xcargs << "#{key}=#{value}" unless value.empty?
     end
