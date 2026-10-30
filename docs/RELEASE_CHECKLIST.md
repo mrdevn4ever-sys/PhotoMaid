@@ -15,8 +15,8 @@ und **Handarbeit**, die nur du machen kannst.
 - **Store-Texte für 16 Sprachen:** `app-store/metadata/<Sprache>/` (Name, Untertitel, Keywords, Werbetext,
   Beschreibung, URLs), erzeugt und geprüft mit `scripts/store/metadata_texts.py`. Texte für den In-App-Kauf:
   `app-store/metadata/iap-pro.md`. Upload aller Texte per TestFlight-Workflow mit der Aufgabe `store-texts` (Bestätigung `TEXTE`).
-- **Websites:** `mrdevn4ever-sys.github.io` (Startseite, Android-Datenschutz) und die Datenschutzseite heißen
-  GaleriQ (früher PhotoMaid). `app-ads.txt` liegt auf der Domain-Wurzel.
+- **Websites:** Datenschutz & Impressum unter https://mrdevn4ever-sys.github.io/galeriq/ (alte Adressen leiten
+  weiter), Startseite `mrdevn4ever-sys.github.io` mit GaleriQ. `app-ads.txt` liegt auf der Domain-Wurzel.
 - **App-Review-Text:** `docs/APP_REVIEW_NOTES.md`.
 - **Name GaleriQ** (30.10.2026, „Arrumo“ ist auf Google Play vergeben): App, 16 Sprachen, Websites; Tresor-Rad als „Q“.
 - **Werbung bei abgelehntem Tracking geprüft:** CI-Lauf 41138933419 – „Ask App Not to Track“, danach lädt und
@@ -52,7 +52,7 @@ aktiviere keine Vermittlung (Mediation). Frag mich, wenn etwas unklar ist.
 3. Datenschutz & Mitteilungen:
    - „Europäische Vorschriften“ (DSGVO): Mitteilung für die App GaleriQ erstellen, Sprachen: alle verfügbaren,
      Schaltflächen „Einwilligen“, „Nicht einwilligen“ und „Optionen verwalten“ aktivieren, Datenschutz-URL
-     https://mrdevn4ever-sys.github.io/photomaid-website/ , VERÖFFENTLICHEN.
+     https://mrdevn4ever-sys.github.io/galeriq/ , VERÖFFENTLICHEN.
    - „IDFA-Erläuterung“ (iOS): Mitteilung für GaleriQ erstellen und veröffentlichen.
    - „US-Bundesstaaten-Vorschriften“: Mitteilung für GaleriQ erstellen und veröffentlichen.
 4. Einstellungen › Kontoinformationen: Publisher-ID ablesen. Prüfe, ob sie „pub-1549279515168572“ ist
@@ -71,7 +71,7 @@ aktiviere keine Vermittlung (Mediation). Frag mich, wenn etwas unklar ist.
 
 ```
 Du arbeitest in App Store Connect für meine App mit der Bundle-ID com.mrdevn4ever.photomaid
-(neuer Name „GaleriQ“, früher PhotoMaid). NICHT zur Prüfung einreichen, NICHT veröffentlichen, keine Builds
+(App-Name „GaleriQ“). NICHT zur Prüfung einreichen, NICHT veröffentlichen, keine Builds
 löschen, Bundle-ID und SKU nicht ändern, keine Verträge, Bank- oder Steuerdaten bearbeiten.
 Texte und Dateien liegen im privaten Repo mrdevn4ever-sys/PhotoMaid, Branch claude/experiment-artifact-design.
 
@@ -83,7 +83,7 @@ Texte und Dateien liegen im privaten Repo mrdevn4ever-sys/PhotoMaid, Branch clau
      kein freier Webzugang, keine Nutzerinhalte/Chats; die App enthält Werbung (Google). Erwartet: 4+.
 2. Preise und Verfügbarkeit: Preis kostenlos. Verfügbarkeit: alle Länder AUSSER China (Festland).
 3. App-Datenschutz:
-   - Datenschutz-URL: https://mrdevn4ever-sys.github.io/photomaid-website/
+   - Datenschutz-URL: https://mrdevn4ever-sys.github.io/galeriq/
    - Datenerhebung „Ja“. Nur die Gratis-Version mit Google AdMob erhebt Daten. Eintragen:
      | Datentyp | Zwecke | Mit Nutzer verknüpft | Tracking |
      |---|---|---|---|

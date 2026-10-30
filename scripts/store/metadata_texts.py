@@ -14,8 +14,8 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 OUT = ROOT / "app-store" / "metadata"
-PRIVACY_URL = "https://mrdevn4ever-sys.github.io/photomaid-website/"
-SUPPORT_URL = "https://mrdevn4ever-sys.github.io/photomaid-website/"
+PRIVACY_URL = "https://mrdevn4ever-sys.github.io/galeriq/"
+SUPPORT_URL = "https://mrdevn4ever-sys.github.io/galeriq/"
 MARKETING_URL = "https://mrdevn4ever-sys.github.io/"
 COPYRIGHT = "2026 Michael Spiess"
 

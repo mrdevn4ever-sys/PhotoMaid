@@ -4,7 +4,7 @@ Stand 30.10.2026, Produktname GaleriQ. Höchstens 4000 Zeichen; Text zwischen de
 
 ---
 
-GaleriQ works entirely on the device. No account, no login, no own server, no cloud upload. (Former working name: PhotoMaid, still visible in the bundle ID.) Please allow Photos access (Full Access recommended; Limited Access also works). A few photos and videos in the library are enough to test.
+GaleriQ works entirely on the device. No account, no login, no own server, no cloud upload. Please allow Photos access (Full Access recommended; Limited Access also works). A few photos and videos in the library are enough to test.
 
 MAIN FEATURES
 1. Swipe to clean up (Today > "Start cleaning up"), one item at a time: up = Keep, left = GaleriQ Trash (nothing deleted), right = Later (returns after 2 days), down = previous item. Undo, favorite, share, add to album and edit sit below each item. Directions can be changed in Settings > Swipes & buttons.
