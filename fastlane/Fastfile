@@ -148,17 +148,26 @@ platform :ios do
       in_house: false
     )
     metadata = File.join(project_root, "app-store/metadata")
-    # Review-Text (docs/APP_REVIEW_NOTES.md, zwischen den Linien). Legt zugleich die App-Prüfungsinformationen an –
-    # ohne sie bricht deliver bei der ersten Version mit „No data“ ab (fastlane#20538). Kontaktdaten trägt der Inhaber ein.
+    # Review-Text (docs/APP_REVIEW_NOTES.md, zwischen den Linien). Fehlen die App-Prüfungsinformationen noch, legt der erste
+    # Schritt sie damit an – ohne sie bricht deliver mit „No data“ ab (fastlane#20538). Bestehende ändert Apple nur mit
+    # Kontaktname, E-Mail und Telefon; die trägt der Inhaber in App Store Connect ein, deshalb dann keine Änderung hier.
     notes = File.read(File.join(project_root, "docs/APP_REVIEW_NOTES.md"), encoding: "UTF-8").split("\n---\n")[1].to_s.strip
     UI.user_error!("App-Review-Text fehlt oder ist länger als 4000 Zeichen") if notes.empty? || notes.length > 4000
+    app = Spaceship::ConnectAPI::App.find(ENV.fetch("PM_BUNDLE_ID"))
+    version = app.get_edit_app_store_version(platform: Spaceship::ConnectAPI::Platform::IOS)
+    review_detail = begin
+      version&.fetch_app_store_review_detail
+    rescue StandardError
+      nil
+    end
+    review_information = review_detail ? nil : { notes: notes, demo_required: false }
     # Neue Sprachen übernehmen bei Apple zuerst den aktuellen Namen der Hauptsprache. Ist der alte Name anderswo
     # vergeben, lehnt Apple jede neue Sprache ab (30.10.2026). Deshalb zuerst nur die Hauptsprache, dann alle.
     primary = ENV.fetch("PM_STORE_PRIMARY_LOCALE", "de-DE")
     Dir.mktmpdir do |dir|
       FileUtils.cp_r(File.join(metadata, primary), dir)
       FileUtils.cp(File.join(metadata, "copyright.txt"), dir)
-      [dir, metadata].each do |path|
+      [dir, metadata].each_with_index do |path, index|
         deliver(
           api_key: api_key,
           app_identifier: ENV.fetch("PM_BUNDLE_ID"),
@@ -170,10 +179,20 @@ platform :ios do
           submit_for_review: false,
           automatic_release: false,
           run_precheck_before_submit: false,
-          app_review_information: { notes: notes, demo_required: false },
+          app_review_information: index.zero? ? review_information : nil,
           force: true
         )
       end
+    end
+    # Nachweis: was jetzt tatsächlich in App Store Connect steht.
+    info = app.fetch_edit_app_info || app.fetch_live_app_info
+    info.get_app_info_localizations.sort_by(&:locale).each do |l|
+      UI.message("App-Info #{l.locale}: #{l.name} | #{l.subtitle}")
+    end
+    version = app.get_edit_app_store_version(platform: Spaceship::ConnectAPI::Platform::IOS)
+    version.get_app_store_version_localizations.sort_by(&:locale).each do |l|
+      UI.message("Version #{l.locale}: Keywords #{l.keywords.to_s.length}, Beschreibung #{l.description.to_s.length}, " \
+                 "Werbetext #{l.promotional_text.to_s.length} Zeichen")
     end
   end
 end
