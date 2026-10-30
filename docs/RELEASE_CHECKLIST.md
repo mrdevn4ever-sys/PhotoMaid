@@ -1,7 +1,7 @@
 # GaleriQ – Release-Checkliste (Stand 30.10.2026)
 
 Drei Teile: was bereits erledigt ist, **Prompts für deinen Agenten** (Browser: AdMob, App Store Connect, GitHub)
-und **Handarbeit**, die nur du machen kannst. Reihenfolge: zuerst die GitHub-Abrechnung (blockiert alles mit CI).
+und **Handarbeit**, die nur du machen kannst.
 
 ## 1. Erledigt (Claude, 30.10.2026)
 
@@ -18,19 +18,19 @@ und **Handarbeit**, die nur du machen kannst. Reihenfolge: zuerst die GitHub-Abr
 - **Websites:** `mrdevn4ever-sys.github.io` (Startseite, Android-Datenschutz) und die Datenschutzseite heißen
   GaleriQ (früher PhotoMaid). `app-ads.txt` liegt auf der Domain-Wurzel.
 - **App-Review-Text:** `docs/APP_REVIEW_NOTES.md`.
+- **Name GaleriQ** (30.10.2026, „Arrumo“ ist auf Google Play vergeben): App, 16 Sprachen, Websites; Tresor-Rad als „Q“.
+- **Werbung bei abgelehntem Tracking geprüft:** CI-Lauf 41138933419 – „Ask App Not to Track“, danach lädt und
+  erscheint die Start-Werbung.
+- **In App Store Connect eingetragen** (TestFlight-Lauf 41141922451, von App Store Connect zurückgelesen): Name und
+  Untertitel, Beschreibung, Keywords, Werbetext, Support-/Marketing-/Datenschutz-URL und Copyright in allen 16 Sprachen;
+  App-Prüfungsinformationen mit dem Review-Text angelegt (ohne Kontakt).
 
-## 2. Blockiert: GitHub-Abrechnung
+## 2. Noch durch Claude
 
-Am 30.10.2026 startete GitHub keinen CI-Job: *„The job was not started because recent account payments have failed
-or your spending limit needs to be increased.“* Solange das so ist, gibt es keine Tests, keine neuen Store-Bilder,
-keinen Text-Upload und keinen TestFlight-Build. → **Handarbeit H1.**
-
-Danach erledigt Claude (Auftrag „mach es“):
-1. CI mit abgelehntem Tracking (`tracking: deny`) und volle CI.
+1. Volle CI auf dem GaleriQ-Stand.
 2. Store-Screenshots und 2 Clips mit dem Schriftzug „GaleriQ“ neu aufnehmen (`app-store/en`).
 3. Screenshot der Kaufseite für die Prüfung des In-App-Kaufs.
-4. TestFlight-Workflow, Aufgabe `store-texts` (16 Sprachen nach App Store Connect, ohne Einreichung).
-5. Sobald die AdMob-Secrets gesetzt sind: Build 30 nach TestFlight (nur interne Tester).
+4. Sobald die AdMob-Secrets gesetzt sind: Build 30 nach TestFlight (nur interne Tester).
 
 ## 3. Prompts für deinen Agenten
 
@@ -76,8 +76,7 @@ löschen, Bundle-ID und SKU nicht ändern, keine Verträge, Bank- oder Steuerdat
 Texte und Dateien liegen im privaten Repo mrdevn4ever-sys/PhotoMaid, Branch claude/experiment-artifact-design.
 
 1. App-Informationen:
-   - Name (Primärsprache): „GaleriQ: Photo Cleaner & Vault“ bzw. für Deutsch „GaleriQ: Fotos aufräumen“.
-     Ist der Name vergeben, melde es mir (nichts anderes eintragen).
+   - Name und Untertitel sind in allen 16 Sprachen schon eingetragen (z. B. „GaleriQ: Fotos aufräumen“) – nur prüfen.
    - Kategorie: Primär „Foto & Video“, sekundär „Dienstprogramme“.
    - Inhaltsrechte: „Nein, enthält keine Inhalte Dritter, zeigt oder greift nicht darauf zu“.
    - Altersfreigabe: Fragebogen wahrheitsgemäß – keine Gewalt, keine sexuellen Inhalte, kein Glücksspiel,
@@ -97,14 +96,11 @@ Texte und Dateien liegen im privaten Repo mrdevn4ever-sys/PhotoMaid, Branch clau
      Alles andere (Fotos, Kontakte, Kontodaten, Käufe usw.) „wird nicht erhoben“.
      Die Fotos verlassen das Gerät nie; Käufe laufen nur über Apple.
 4. Version 1.0 (App Store):
-   - Support-URL: https://mrdevn4ever-sys.github.io/photomaid-website/
-     Marketing-URL: https://mrdevn4ever-sys.github.io/
-   - Copyright: „2026 Michael Spiess“
-   - App-Prüfungsinformationen: Anmeldung erforderlich → Nein. Notizen: Text zwischen den Linien aus
-     docs/APP_REVIEW_NOTES.md unverändert einfügen. Kontakt: mich fragen (Name, Telefon, E-Mail).
+   - Beschreibung, Keywords, Werbetext, URLs, Copyright und die Prüfungsnotizen sind schon eingetragen – nichts
+     davon ändern.
+   - App-Prüfungsinformationen: Anmeldung erforderlich → Nein. Kontakt (Vorname, Nachname, Telefon mit +41…,
+     E-Mail): mich fragen und eintragen.
    - Freigabe der Version: „Diese Version manuell freigeben“.
-   - Untertitel, Beschreibung, Keywords, Werbetext: NUR falls ich dich darum bitte (normalerweise lädt sie ein
-     Workflow aus app-store/metadata hoch). Dann je Sprache aus app-store/metadata/<Sprache>/*.txt übernehmen.
 5. In-App-Käufe › Neu: Typ „Nicht-verbrauchbar“, Referenzname „GaleriQ Pro“, Produkt-ID exakt
    com.mrdevn4ever.photomaid.pro (ist sie schon vorhanden: nur prüfen und ergänzen).
    - Preis: [MEIN PREIS – frag mich], Verfügbarkeit wie die App, Familienfreigabe: [frag mich].
@@ -130,9 +126,7 @@ App Store Connect › GaleriQ › Version 1.0 › Englisch (USA) › iPhone 6,9-
 
 ## 4. Handarbeit (nur du)
 
-- [ ] **H1 GitHub-Abrechnung reparieren:** github.com › Settings › Billing and plans: fehlgeschlagene Zahlung
-      begleichen bzw. Zahlungsmittel aktualisieren und das Ausgabenlimit für Actions erhöhen. Danach Claude
-      Bescheid geben.
+- [x] **H1 GitHub-Abrechnung reparieren** (erledigt 30.10.2026).
 - [ ] **H2 Name absichern:** „GaleriQ“ direkt im App Store und in Google Play suchen, Markenrecherche (Swissreg,
       TMview, WIPO Global Brand Database; Klassen 9 und 42) und galeriq.app kaufen (am 30.10.2026 frei, .com vergeben).
 - [ ] **H3 App Store Connect, Verträge:** Vertrag „Kostenpflichtige Apps“ mit Bankkonto und Steuerformular

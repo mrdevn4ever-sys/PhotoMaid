@@ -24,5 +24,5 @@ Geräte- oder App-Store-Abnahmen.
 | 14 | String Catalog: Format-Spezifizierer interpolierter Texte von Xcode-Extraktion bestätigen lassen | Verifikation | Build auf macOS |
 | 15 | Menschliche Code-Review (PR erst auf ausdrückliche Anweisung) | Abnahme | Inhaber |
 | 16 | Video-Export auf echten Medien (HDR, Zeitlupe, 4K/60) und Hintergrund-Export (`BGContinuedProcessingTask`) | Abnahme | QA auf Gerät |
-| 18 | **GitHub-Abrechnung (30.10.2026):** CI-Jobs starten nicht („recent account payments have failed or your spending limit needs to be increased“) – keine Tests, Store-Aufnahmen, Text-Uploads oder TestFlight-Builds. Ablauf bis zum Release: [Release-Checkliste](RELEASE_CHECKLIST.md) | Konto | Inhaber |
+| 18 | ~~GitHub-Abrechnung (30.10.2026): CI-Jobs starteten nicht~~ – vom Inhaber behoben (30.10.2026). Ablauf bis zum Release: [Release-Checkliste](RELEASE_CHECKLIST.md) | Konto | Inhaber |
 | 17 | ITMS-91064 für Builds 8–10 gemeldet: alle drei Manifeste der neuen Build-11-IPA bestanden; Apple-Verarbeitung und interne Verteilung bestätigt. ATT-/Werbeverhalten auf echtem Gerät bleibt offen; [Befund](PRIVACY_MANIFEST_AUDIT.md) | Geräteverifikation | Geräteabnahme |
