@@ -1,0 +1,29 @@
+Arrumo makes cleaning up your photo library as easy as a swipe.
+
+SWIPE THROUGH YOUR PHOTOS AND VIDEOS
+• Up: keep
+• Left: into Arrumo's own trash – nothing is deleted yet
+• Right: later – it comes back in 2 days
+• Down: back to the previous item
+Items are only deleted when you empty the trash and confirm the iOS dialog. They then go to "Recently Deleted" in the Photos app.
+
+FIND WHAT TAKES UP SPACE
+• Large files and videos, sorted by size
+• Exact duplicates, photo series and screenshots
+• Go through your library month by month
+• On-device analysis suggests blurry and similar photos and photos with text – the decision is always yours
+
+PRIVATE VAULT
+Keep private photos, videos, files and notes behind a PIN or password, with optional Face ID. The content is encrypted on your iPhone.
+
+STUDIO
+Photo and video editor (saves a copy by default), collage, movie from your clips, resize and convert, remove location, GIF, PDF from photos and document scanner.
+
+GAMES WITH YOUR PHOTOS
+Take a break with Pairs, Photo Snake and Foto Blocks – played with your own pictures.
+
+PRIVACY FIRST
+No account, no server of our own, no upload. Your photos stay on your device.
+
+FREE AND PRO
+All tools are free. The free version shows ads from Google and lets you delete up to 100 items a day, plus 100 more once a day after an optional video. Arrumo Pro is a one-time purchase: no ads, unlimited deleting and new vault folders without videos.

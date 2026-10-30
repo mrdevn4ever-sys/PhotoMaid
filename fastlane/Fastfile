@@ -134,4 +134,30 @@ platform :ios do
       distribute_external: false
     )
   end
+
+  desc "Nur Store-Texte (app-store/metadata, 16 Sprachen) nach App Store Connect – kein Build, keine Bilder, keine Einreichung"
+  lane :store_metadata do
+    project_root = File.expand_path("..", __dir__)
+    sh("python3 #{File.join(project_root, 'scripts/store/metadata_texts.py').shellescape} --check")
+    api_key = app_store_connect_api_key(
+      key_id: ENV.fetch("APP_STORE_CONNECT_KEY_ID"),
+      issuer_id: ENV.fetch("APP_STORE_CONNECT_ISSUER_ID"),
+      key_content: ENV.fetch("APP_STORE_CONNECT_API_KEY_BASE64"),
+      is_key_content_base64: true,
+      in_house: false
+    )
+    deliver(
+      api_key: api_key,
+      app_identifier: ENV.fetch("PM_BUNDLE_ID"),
+      app_version: ENV.fetch("PM_STORE_VERSION", "1.0"),
+      metadata_path: File.join(project_root, "app-store/metadata"),
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      skip_app_version_update: false,
+      submit_for_review: false,
+      automatic_release: false,
+      run_precheck_before_submit: false,
+      force: true
+    )
+  end
 end
