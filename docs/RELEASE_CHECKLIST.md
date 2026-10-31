@@ -130,13 +130,12 @@ App Store Connect › GaleriQ › Version 1.0 › Englisch (USA) › iPhone 6,9-
 - [x] **H1 GitHub-Abrechnung reparieren** (erledigt 30.10.2026).
 - [ ] **H2 Name absichern:** „GaleriQ“ direkt im App Store und in Google Play suchen, Markenrecherche (Swissreg,
       TMview, WIPO Global Brand Database; Klassen 9 und 42) und galeriq.app kaufen (am 30.10.2026 frei, .com vergeben).
-- [ ] **H3 App Store Connect, Verträge:** Vertrag „Kostenpflichtige Apps“ mit Bankkonto und Steuerformular
-      (W-8BEN) – ohne ihn lädt der In-App-Kauf nicht. EU-Händlerstatus (DSA) angeben: Adresse, Telefon und E-Mail
-      werden im EU-App-Store öffentlich angezeigt.
-- [ ] **H4 Entscheidungen für Prompt B:** Preis von GaleriQ Pro, Familienfreigabe ja/nein, Kontakt für die Prüfung.
+- [x] **H3 App Store Connect, Verträge:** Vertrag „Kostenpflichtige Apps“, Bank, Steuer und EU-Händlerstatus
+      bestehen bereits aus früheren Apps (Inhaber, 31.10.2026).
+- [x] **H4 Entscheidungen:** GaleriQ Pro 4,99 € (Basis Deutschland, Schweiz manuell CHF 5.00), Familienfreigabe an,
+      Prüfungskontakt Michael Spiess (31.10.2026).
 - [ ] **H5 AdMob-Konto:** Zahlungs- und Steuerdaten, Identitätsprüfung.
-- [ ] **H6 Gerätetest Build 30:** Testkauf (Sandbox) und „Käufe wiederherstellen“; Werbung mit Tracking
-      „Erlauben“ **und** „App bitten, nicht zu tracken“; Tresor; Löschen. Eigene Werbung nie antippen.
+- [x] **H6 Gerätetest Build 30:** vom Inhaber getestet (31.10.2026).
 - [ ] **H7 Einreichen:** Version 1.0: Build 30 wählen, In-App-Kauf „GaleriQ Pro“ anhängen, „Zur Prüfung
       einreichen“. Nach der Freigabe selbst veröffentlichen.
 - [ ] **H8 Nach dem Livegang:** In AdMob die App mit dem App-Store-Eintrag verknüpfen (App-Einstellungen ›
