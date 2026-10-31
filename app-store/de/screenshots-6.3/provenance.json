@@ -1,0 +1,81 @@
+{
+ "locale": "de",
+ "app_store_locale": "de-DE",
+ "app_store_slot": "iPhone mit Dynamic Island (mittleres Display, 6,3″)",
+ "commit": "863eefe665d3056ead471c1c21d7f098f625d713",
+ "workflow_run": "41246088679",
+ "device": {
+  "device_class": "iphone-medium",
+  "name": "iPhone 17 Pro",
+  "os_version": "26.2",
+  "sdk": "26.5"
+ },
+ "appearance": "dark",
+ "screenshots": [
+  {
+   "file": "01-today.png",
+   "width": 1206,
+   "height": 2622,
+   "sha256": "4ee6432a622a6ddf9d74772dce6c0d454b6f37b55548e9c216f1d53ed1b7f593"
+  },
+  {
+   "file": "02-feed-keep.png",
+   "width": 1206,
+   "height": 2622,
+   "sha256": "ccae7904b8ee1e707eb04fc494d166fdf819c2933fd8c3472f1c7babc5f8973a"
+  },
+  {
+   "file": "03-feed-trash.png",
+   "width": 1206,
+   "height": 2622,
+   "sha256": "1891fc3f0f5163a5db45c765fc5ee24a69a32d5db3510ec046a8c6ad142a3d56"
+  },
+  {
+   "file": "04-library.png",
+   "width": 1206,
+   "height": 2622,
+   "sha256": "66edb067b8add8f574c49690ae335c90db407b4615090b8f6fe7e401db2f30a9"
+  },
+  {
+   "file": "05-cleanup.png",
+   "width": 1206,
+   "height": 2622,
+   "sha256": "2287b5118711bede9a37f540859730eba6871c51ec3dcf149bcca6ee0d72243e"
+  },
+  {
+   "file": "06-snake-play.png",
+   "width": 1206,
+   "height": 2622,
+   "sha256": "2f48db20be0989c283e42134c1027221cc5577d5f06216f67dea7c3b16c02821"
+  },
+  {
+   "file": "07-memory-play.png",
+   "width": 1206,
+   "height": 2622,
+   "sha256": "d760d953a7e8e3d96278f921866825e0d1d2e116bac5735f8a50c53364799bdf"
+  },
+  {
+   "file": "08-collage.png",
+   "width": 1206,
+   "height": 2622,
+   "sha256": "318d0aa1c8bc9102445579533751859e520b0d3f131f6015cfedb0f9247fe805"
+  },
+  {
+   "file": "09-editor-filter.png",
+   "width": 1206,
+   "height": 2622,
+   "sha256": "4ea96cae3768e86eb63fdafebe4e5cd1358f981c99933ba5ad55247897b69b2b"
+  },
+  {
+   "file": "10-vault-media.png",
+   "width": 1206,
+   "height": 2622,
+   "sha256": "aa3b5070237172e1d7af5dcd1cd9ab295484f7532765d96132f1de2c8deb6ff8"
+  }
+ ],
+ "visual_review": {
+  "status": "FAIL (1 von 10)",
+  "date": "2026-10-31",
+  "note": "02-feed-keep zeigt die Karte in Ruhe ohne Pille „Behalten“ – Standbild hat den Moment verpasst. Vor dem Hochladen neu aufnehmen (ci.yml store_locales=de, ui_phase=store-refresh)."
+ }
+}
