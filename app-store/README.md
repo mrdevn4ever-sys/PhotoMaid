@@ -1,9 +1,8 @@
-# PhotoMaid – App-Store-Einträge (Englisch)
+# GaleriQ – App-Store-Einträge (Englisch)
 
-Stand **22.10.2026**, Experiment-Design (`claude/experiment-artifact-design`, Commit `ba2973e`),
-aufgenommen mit dem Workflow `app-store-refresh.yml` (CI-Lauf 39815031547, `store_locales=en`,
-`store_devices=iphone-large`). Alle älteren Aufnahmen (16 Sprachen, `locales/` vom 15.10. und `current/` vom
-18.10.2026) wurden auf Wunsch entfernt; sie bleiben in der Git-Historie.
+Stand **31.10.2026**, Experiment-Design (`claude/experiment-artifact-design`, Commit `8a41b29`), Name **GaleriQ**
+(Schriftzug mit Tresor-Rad als „Q“), aufgenommen mit dem Workflow `app-store-refresh.yml` (CI-Lauf 41149551351,
+`store_locales=en`, `store_devices=iphone-large`, 5/5 Aufnahmetests PASS). Ältere Aufnahmen bleiben in der Git-Historie.
 
 ## Inhalt
 
@@ -20,7 +19,8 @@ aufgenommen mit dem Workflow `app-store-refresh.yml` (CI-Lauf 39815031547, `stor
   SHA-256 jeder Datei. [`en/previews/manifest.json`](en/previews/manifest.json): Schnittangaben der Clips.
 
 App Store Connect: Produktseite **en-US**, iPhone 6,9″-Bildschirm (kleinere iPhones skaliert Apple daraus).
-Nichts davon wurde zu App Store Connect hochgeladen.
+Die Bilder und Clips lädt der Inhaber bzw. sein Agent hoch (`docs/RELEASE_CHECKLIST.md`, Prompt C); die Store-Texte
+kommen aus `metadata/` über den TestFlight-Workflow (`task: store-texts`).
 
 ## Quellen
 

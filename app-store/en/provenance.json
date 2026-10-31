@@ -1,124 +1,124 @@
 {
-  "locale": "en",
-  "app_store_locale": "en-US",
-  "commit": "ba2973e640835c04c637e3030e91da64b9901166",
-  "workflow_run": "39815031547",
-  "device": {
-    "device_class": "iphone-large",
-    "name": "iPhone 17 Pro Max",
-    "os_version": "26.2",
-    "sdk": "26.5"
-  },
-  "appearance": "dark",
-  "photo_library": {
-    "count": 55,
-    "source": "app-store/media (CC0, see media/SOURCES.md)"
-  },
-  "tests": {
-    "result": "Passed",
-    "passed": 5,
-    "failed": 0,
-    "skipped": 0,
-    "cases": [
-      "test06CurrentStoreScreenshots",
-      "test10AppPreviewReview",
-      "test20AppPreviewStudio",
-      "test30AppPreviewVault",
-      "test40AppPreviewPhotoGames"
-    ],
-    "source": "AppStoreCaptureTests (xcresult summary), validated by scripts/store/assemble_refresh.py"
-  },
-  "screenshots": [
-    {
-      "file": "01-today.png",
-      "width": 1320,
-      "height": 2868,
-      "sha256": "16098f425a229dd46816d47c6f80fec3c203487835b1e07e663f52e39d38314c"
-    },
-    {
-      "file": "02-feed-keep.png",
-      "width": 1320,
-      "height": 2868,
-      "sha256": "1134e3c29bb01f49fc09667e7b4a663fe618b58dd677a962b24840c98ff35248"
-    },
-    {
-      "file": "03-feed-trash.png",
-      "width": 1320,
-      "height": 2868,
-      "sha256": "c6601b5665238cd372232fd521ec02575294a12bdc3467bd4b52b23e15d1eb4c"
-    },
-    {
-      "file": "04-library.png",
-      "width": 1320,
-      "height": 2868,
-      "sha256": "8971a4de50253efce96e0aaf59b2aa5ce76a8c54c3710c52b0b4e9b9b8c769b8"
-    },
-    {
-      "file": "05-cleanup.png",
-      "width": 1320,
-      "height": 2868,
-      "sha256": "eecddda1f2ff8120b44036bcd38877a69655bfc5cf71a569e9c6c954ebbbf812"
-    },
-    {
-      "file": "06-snake-play.png",
-      "width": 1320,
-      "height": 2868,
-      "sha256": "87f3ec7a6475f90fb4ca5ce419622ed2079e7096915fcba86d086c43ea6a192e"
-    },
-    {
-      "file": "07-memory-play.png",
-      "width": 1320,
-      "height": 2868,
-      "sha256": "f24d2e5bf721e0961c12dedf2232637b839caaeb8b38e3d39b7cca26f931d74d"
-    },
-    {
-      "file": "08-collage.png",
-      "width": 1320,
-      "height": 2868,
-      "sha256": "e6da096c7ec83a7e39b4f92ba67918cefa7ff6247aeee1f69dad8f2edfcbb01e"
-    },
-    {
-      "file": "09-editor-filter.png",
-      "width": 1320,
-      "height": 2868,
-      "sha256": "df6bf0cec1354ee11d794995e67c2b1042219471ec87e2624ba805f1616b5d31"
-    },
-    {
-      "file": "10-vault-media.png",
-      "width": 1320,
-      "height": 2868,
-      "sha256": "c88ca3577ba10629cde35ab66a71b916a4e25bcc665a91e9774009da2534b2c8"
-    }
+ "locale": "en",
+ "app_store_locale": "en-US",
+ "commit": "8a41b29ebe6db6dcd44c8a8a9332d6547a22796d",
+ "workflow_run": "41149551351",
+ "device": {
+  "device_class": "iphone-large",
+  "name": "iPhone 17 Pro Max",
+  "os_version": "26.2",
+  "sdk": "26.5"
+ },
+ "appearance": "dark",
+ "photo_library": {
+  "count": 55,
+  "source": "app-store/media (CC0, see media/SOURCES.md)"
+ },
+ "tests": {
+  "result": "Passed",
+  "passed": 5,
+  "failed": 0,
+  "skipped": 0,
+  "cases": [
+   "test06CurrentStoreScreenshots",
+   "test10AppPreviewReview",
+   "test20AppPreviewStudio",
+   "test30AppPreviewVault",
+   "test40AppPreviewPhotoGames"
   ],
-  "notes": {
-    "02-feed-keep.png": "echter Simulator-Screenshot mitten in der gehaltenen Wischgeste nach oben (Pille „Keep“)",
-    "03-feed-trash.png": "echter Simulator-Screenshot mitten in der gehaltenen Wischgeste nach links (Pille „Trash“); unten der echte Erfolgs-Hinweis der ersten Entscheidung"
+  "source": "AppStoreCaptureTests (xcresult summary), validated by scripts/store/assemble_refresh.py"
+ },
+ "screenshots": [
+  {
+   "file": "01-today.png",
+   "width": 1320,
+   "height": 2868,
+   "sha256": "0224afa056ed4159f8a59c755cc5b3d637506c864c1eb0df83b057218e9e0e91"
   },
-  "previews": [
-    {
-      "file": "01-review.mp4",
-      "duration": 27.0,
-      "resolution": [
-        886,
-        1920
-      ],
-      "fps": 30,
-      "sha256": "64c141e26fbe84ee07e75786968a823e9b51a9a7a01fd48c89fe63eaa29e6d5a"
-    },
-    {
-      "file": "02-photo-games.mp4",
-      "duration": 27.0,
-      "resolution": [
-        886,
-        1920
-      ],
-      "fps": 30,
-      "sha256": "4bfd32e8759b42a913af9324dba4c28d845e8cfb2f64335d294d09eecb44d296"
-    }
-  ],
-  "visual_review": {
-    "status": "PASS",
-    "date": "2026-10-22",
-    "notes": "Alle 10 Screenshots und beide Clips gesichtet; Keep/Trash/Later im Clip je klar sichtbar."
+  {
+   "file": "02-feed-keep.png",
+   "width": 1320,
+   "height": 2868,
+   "sha256": "6fc21fd290b73576159cc3b9c6b42e1b2f5f97b38f8aeee1243bc4b47a7bfb9a"
+  },
+  {
+   "file": "03-feed-trash.png",
+   "width": 1320,
+   "height": 2868,
+   "sha256": "5c93e1d2b77b8f6d445fd9fb075d57c54b5fdb41326270b261879cdffa502bf3"
+  },
+  {
+   "file": "04-library.png",
+   "width": 1320,
+   "height": 2868,
+   "sha256": "8911bc6727009be55169787f6235e16dad1c65c54f48060e78503a41f6a222e7"
+  },
+  {
+   "file": "05-cleanup.png",
+   "width": 1320,
+   "height": 2868,
+   "sha256": "25499534891e387a3832b5409d6d14902489acc8d22f94354bc8e7aa141888db"
+  },
+  {
+   "file": "06-snake-play.png",
+   "width": 1320,
+   "height": 2868,
+   "sha256": "1d5cd7a618073229b1e4129f18e4637bf8e5b32d83a13f19ffc54f56aedfad72"
+  },
+  {
+   "file": "07-memory-play.png",
+   "width": 1320,
+   "height": 2868,
+   "sha256": "c5c0babb42b74321bb4e79c52cb893014590c25b506a869245b8db3d35ad2b37"
+  },
+  {
+   "file": "08-collage.png",
+   "width": 1320,
+   "height": 2868,
+   "sha256": "e6da096c7ec83a7e39b4f92ba67918cefa7ff6247aeee1f69dad8f2edfcbb01e"
+  },
+  {
+   "file": "09-editor-filter.png",
+   "width": 1320,
+   "height": 2868,
+   "sha256": "df6bf0cec1354ee11d794995e67c2b1042219471ec87e2624ba805f1616b5d31"
+  },
+  {
+   "file": "10-vault-media.png",
+   "width": 1320,
+   "height": 2868,
+   "sha256": "c88ca3577ba10629cde35ab66a71b916a4e25bcc665a91e9774009da2534b2c8"
   }
+ ],
+ "notes": {
+  "02-feed-keep.png": "echter Simulator-Screenshot mitten in der gehaltenen Wischgeste nach oben (Pille „Keep“)",
+  "03-feed-trash.png": "echter Simulator-Screenshot mitten in der gehaltenen Wischgeste nach links (Pille „Trash“); unten der echte Erfolgs-Hinweis der ersten Entscheidung"
+ },
+ "previews": [
+  {
+   "file": "01-review.mp4",
+   "duration": 27.0,
+   "resolution": [
+    886,
+    1920
+   ],
+   "fps": 30,
+   "sha256": "7e5da5e5241226f518503f6ec27d6859630841e588dc346b684d1e0f07c14f15"
+  },
+  {
+   "file": "02-photo-games.mp4",
+   "duration": 27.0,
+   "resolution": [
+    886,
+    1920
+   ],
+   "fps": 30,
+   "sha256": "2156715ad45c613dd70d60f8bbfb4e51ade271c77cf1cc3f289039d2c80cd4a6"
+  }
+ ],
+ "visual_review": {
+  "status": "PASS",
+  "date": "2026-10-31",
+  "note": "Schriftzug „GaleriQ“ mit Tresor-Rad als Q auf 01-today; alle 10 Bilder und 2 Clips gesichtet, kein „PhotoMaid“/„Arrumo“ sichtbar"
+ }
 }

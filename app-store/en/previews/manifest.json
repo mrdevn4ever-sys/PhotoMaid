@@ -9,56 +9,56 @@
     ],
     "fps": 30,
     "poster_file": "01-review-poster.png",
-    "poster_sha256": "13dbf14f5c8e9976c1d83b214c4b1427ee686bcca653f018495bfbe8ead7c9df",
+    "poster_sha256": "7fd6f0a2cb0488e8aacffcf2c78dfbc1a4a078818d70308c74cc45da13e25717",
     "poster_time": 1,
     "poster_timecode": "00:00:01:00",
     "audio": "AAC stereo, silence",
     "source": "Actual simulator screen recording; no generated UI",
     "source_file": "01-review.mov",
-    "source_sha256": "155a01395c31c4cef9d2b97532a4ea20f9979eb71c3dfce8888b2d1e3bf47949",
-    "source_duration": 28.895,
+    "source_sha256": "d621e7ae035ec4316c61349d252b690603c0595f443e449ece7fd58478e40d90",
+    "source_duration": 25.86,
     "source_recording": {
       "name": "01-review",
-      "start": 1792688147.411545,
-      "end": 1792688189.7997172,
+      "start": 1793407066.179913,
+      "end": 1793407100.116894,
       "returncode": 0
     },
     "source_markers": [
       {
         "clip": "01-review",
-        "time": 1792688158.5015712,
-        "label": "feed"
+        "label": "feed",
+        "time": 1793407071.591485
       },
       {
-        "clip": "01-review",
-        "time": 1792688166.587213,
-        "label": "keep"
-      },
-      {
-        "clip": "01-review",
-        "time": 1792688173.3838658,
-        "label": "trash"
-      },
-      {
-        "time": 1792688181.099654,
-        "clip": "01-review",
-        "label": "later"
-      },
-      {
-        "label": "back",
-        "time": 1792688187.288909,
+        "label": "keep",
+        "time": 1793407078.3515182,
         "clip": "01-review"
+      },
+      {
+        "label": "trash",
+        "time": 1793407084.499422,
+        "clip": "01-review"
+      },
+      {
+        "clip": "01-review",
+        "label": "later",
+        "time": 1793407091.267379
+      },
+      {
+        "clip": "01-review",
+        "label": "back",
+        "time": 1793407097.4034538
       }
     ],
     "editing": {
       "source_start": 0,
-      "source_end": 28.895,
-      "playback_speed": 1.2039583333333332,
+      "source_end": 25.86,
+      "playback_speed": 1.0775,
       "final_frame_hold_seconds": 3,
       "description": "Complete actual recording, longer demos accelerated to 24 seconds; genuine final frame held for 3 seconds"
     },
     "status": "PASS",
-    "sha256": "64c141e26fbe84ee07e75786968a823e9b51a9a7a01fd48c89fe63eaa29e6d5a"
+    "sha256": "7e5da5e5241226f518503f6ec27d6859630841e588dc346b684d1e0f07c14f15"
   },
   {
     "file": "02-photo-games.mp4",
@@ -69,9 +69,9 @@
       1920
     ],
     "fps": 30,
-    "sha256": "4bfd32e8759b42a913af9324dba4c28d845e8cfb2f64335d294d09eecb44d296",
+    "sha256": "2156715ad45c613dd70d60f8bbfb4e51ade271c77cf1cc3f289039d2c80cd4a6",
     "poster_file": "02-photo-games-poster.png",
-    "poster_sha256": "22137d895dad9324a0168a4604fc216b80120a36414058448d74182fc4928a70",
+    "poster_sha256": "dbc953c07fb6655847901a8dd030f587a1181cb142002f702535c7e9807f954b",
     "poster_time": 11,
     "poster_timecode": "00:00:11:00",
     "audio": "AAC stereo, silence",
@@ -79,27 +79,27 @@
     "sources": [
       {
         "file": "04-memory.mov",
-        "sha256": "ab400015f1fddfd87a5079788cee1f81e5d7f3eda23a97f0f758271351a3e12e",
-        "duration": 17.793333,
+        "sha256": "daa902f4e407db65f7c5f09d2a5bc6d874f9822f8094857beb1715c4258ce766",
+        "duration": 15.416667,
         "used_seconds": 8,
         "playback_speed": 1,
         "recording": {
           "name": "04-memory",
-          "start": 1792688423.0443132,
-          "end": 1792688445.7289011,
+          "start": 1793407283.037039,
+          "end": 1793407300.927739,
           "returncode": 0
         }
       },
       {
         "file": "05-snake.mov",
-        "sha256": "3dda8afc47fde6cf555f9778f715eb5a6d17c8dbd39a4a9936da8fc4479100e0",
-        "duration": 28.05,
+        "sha256": "ff77c1d6f2e6efd6ec47bbc57adf5907902d7900d04965e3af1a8f8afb9c35fc",
+        "duration": 32.925,
         "used_seconds": 16,
         "playback_speed": 1,
         "recording": {
           "name": "05-snake",
-          "start": 1792688485.7608771,
-          "end": 1792688516.9738271,
+          "start": 1793407342.996948,
+          "end": 1793407382.928725,
           "returncode": 0
         }
       }

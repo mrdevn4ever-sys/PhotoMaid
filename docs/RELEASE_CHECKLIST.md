@@ -28,7 +28,7 @@ und **Handarbeit**, die nur du machen kannst.
 ## 2. Noch durch Claude
 
 1. Volle CI auf dem GaleriQ-Stand.
-2. Store-Screenshots und 2 Clips mit dem Schriftzug „GaleriQ“ neu aufnehmen (`app-store/en`).
+2. ~~Store-Screenshots und 2 Clips mit dem Schriftzug „GaleriQ“~~ – erledigt 31.10.2026 (`app-store/en`, Lauf 41149551351).
 3. Screenshot der Kaufseite für die Prüfung des In-App-Kaufs.
 4. ~~Build 30 nach TestFlight~~ – erledigt 31.10.2026 mit echten AdMob-IDs (Lauf 41148236350, von Apple verarbeitet).
 
