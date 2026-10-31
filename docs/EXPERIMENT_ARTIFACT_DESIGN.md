@@ -262,4 +262,8 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
 - TestFlight: Build 1.0 (30) „GaleriQ“ mit echten AdMob-IDs (Prüfschritt „AdMob: echte IDs gesetzt“), Manifest ohne
   Tracking-Domain, voller SKAdNetwork-Liste und neuer Datenschutz-URL (23e1a29) hochgeladen und von Apple verarbeitet
   (Lauf 41148236350, Unit-Tests davor PASS, Privacy-Prüfung der IPA PASS, 31.10.2026, nur interne Tester)
+- CI GaleriQ (31.10.2026): Lauf 255 (59ab41d) – Linux, Build, Unit-Tests, QA-UI-Tests und Fachtests 10/30/50/60/70/
+  80/90/95/98 PASS; test00 und test20 FAIL (Testwerbung kam nicht rechtzeitig), danach Job am 120-min-Limit
+  abgebrochen (Limit jetzt 160 min). Wiederholung Lauf 41188034931 (5e8f074): test00 und test20 PASS.
+  Store-Aufnahmen: Lauf 41149551351 (8a41b29) 5/5 PASS, nach Standbild-Timeout 30 → 120 s.
 - Geräteabnahme: NOT RUN
