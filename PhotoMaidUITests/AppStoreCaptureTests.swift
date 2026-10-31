@@ -228,7 +228,8 @@ final class AppStoreCaptureTests: XCTestCase {
     }
     private func awaitStill(_ name: String) throws {
         let result = output.appendingPathComponent("stills/\(name).json")
-        for _ in 0..<300 {
+        // Der erste simctl-Screenshot eines Laufs brauchte auf CI zuletzt über 30 s (Läufe 257/258): bis 120 s warten.
+        for _ in 0..<1200 {
             if FileManager.default.fileExists(atPath: result.path) {
                 let value = try JSONSerialization.jsonObject(with: Data(contentsOf: result)) as? [String: Any]
                 XCTAssertEqual(value?["returncode"] as? Int, 0, value?["stderr"] as? String ?? "Still failed")

@@ -32,10 +32,15 @@ def main():
         taken=time.time()
         # Aufwärmen: der erste simctl-Screenshot eines Laufs dauert auf CI bis ~15 s; dieser landet nicht bei den Store-Bildern.
         target=(stills if warmup else screenshots)/(name+'.png')
-        result=subprocess.run(['xcrun','simctl','io',args.udid,'screenshot','--type=png',str(target)],
-                              capture_output=True,timeout=60)
-        atomic(stills/(name+'.json'),{'name':name,'requested':taken,'finished':time.time(),'returncode':result.returncode,
-                                      'stderr':result.stderr.decode(errors='replace')[-500:]})
+        # Fehler und Zeitüberschreitung landen im Ergebnis, sonst stirbt der Timer-Thread still und der Test wartet ins Leere.
+        try:
+            result=subprocess.run(['xcrun','simctl','io',args.udid,'screenshot','--type=png',str(target)],
+                                  capture_output=True,timeout=110)
+            code,stderr=result.returncode,result.stderr.decode(errors='replace')[-500:]
+        except Exception as error:
+            code,stderr=-1,f'{type(error).__name__}: {error}'[-500:]
+        print(f'still {name}: {code} after {time.time()-taken:.1f} s',flush=True)
+        atomic(stills/(name+'.json'),{'name':name,'requested':taken,'finished':time.time(),'returncode':code,'stderr':stderr})
     def shutdown(*_):
         stop();raise SystemExit(0)
     signal.signal(signal.SIGTERM,shutdown)
