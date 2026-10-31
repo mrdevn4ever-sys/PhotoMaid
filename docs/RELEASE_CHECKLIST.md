@@ -30,11 +30,11 @@ und **Handarbeit**, die nur du machen kannst.
 1. Volle CI auf dem GaleriQ-Stand.
 2. Store-Screenshots und 2 Clips mit dem Schriftzug „GaleriQ“ neu aufnehmen (`app-store/en`).
 3. Screenshot der Kaufseite für die Prüfung des In-App-Kaufs.
-4. Sobald die AdMob-Secrets gesetzt sind: Build 30 nach TestFlight (nur interne Tester).
+4. ~~Build 30 nach TestFlight~~ – erledigt 31.10.2026 mit echten AdMob-IDs (Lauf 41148236350, von Apple verarbeitet).
 
 ## 3. Prompts für deinen Agenten
 
-### Prompt A – AdMob einrichten und IDs in GitHub hinterlegen
+### Prompt A – AdMob einrichten und IDs in GitHub hinterlegen (erledigt 31.10.2026)
 
 ```
 Du arbeitest in meinem Google-AdMob-Konto und in meinem GitHub-Repo mrdevn4ever-sys/PhotoMaid.

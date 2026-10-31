@@ -259,4 +259,7 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
   (alte Adressen `/photomaid-website/` und `/photomaid/privacy/` leiten weiter), App-Store-URLs neu hochgeladen,
   TestFlight-Workflow setzt die neue URL fest, Review-Text ohne früheren Namen, Android-Texte/Ordner/Dateinamen
   GaleriQ (photomaid-android d1ef62e). Intern bleiben Bundle-ID, Produkt-ID, Projekt-, Modul- und Datenbanknamen.
+- TestFlight: Build 1.0 (30) „GaleriQ“ mit echten AdMob-IDs (Prüfschritt „AdMob: echte IDs gesetzt“), Manifest ohne
+  Tracking-Domain, voller SKAdNetwork-Liste und neuer Datenschutz-URL (23e1a29) hochgeladen und von Apple verarbeitet
+  (Lauf 41148236350, Unit-Tests davor PASS, Privacy-Prüfung der IPA PASS, 31.10.2026, nur interne Tester)
 - Geräteabnahme: NOT RUN
