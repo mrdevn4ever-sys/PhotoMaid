@@ -136,7 +136,8 @@ App Store Connect › GaleriQ › Version 1.0 › Englisch (USA) › iPhone 6,9-
       Prüfungskontakt Michael Spiess (31.10.2026).
 - [ ] **H5 AdMob-Konto:** Zahlungs- und Steuerdaten, Identitätsprüfung.
 - [x] **H6 Gerätetest Build 30:** vom Inhaber getestet (31.10.2026).
-- [ ] **H7 Einreichen:** Version 1.0: Build 30 wählen, In-App-Kauf „GaleriQ Pro“ anhängen, „Zur Prüfung
-      einreichen“. Nach der Freigabe selbst veröffentlichen.
+- [x] **H7 Eingereicht** am 31.10.2026, 23:10: iOS-App 1.0 (Build 30) und GaleriQ Pro, Status „Warten auf Prüfung“
+      (Übermittlung 2bf15445-123e-4f0e-b649-33da34505532). Primärsprache jetzt Englisch (USA); Deutsch nutzt bis zu
+      eigenen Bildern die englischen. Freigabe manuell: nach Apples Zusage selbst „Veröffentlichen“.
 - [ ] **H8 Nach dem Livegang:** In AdMob die App mit dem App-Store-Eintrag verknüpfen (App-Einstellungen ›
       App-Store-Details); app-ads.txt wird dann geprüft.
