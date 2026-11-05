@@ -1,4 +1,4 @@
-# GaleriQ – Release-Checkliste (Stand 30.10.2026)
+# GaleriQ – Release-Checkliste (Stand 05.11.2026)
 
 Drei Teile: was bereits erledigt ist, **Prompts für deinen Agenten** (Browser: AdMob, App Store Connect, GitHub)
 und **Handarbeit**, die nur du machen kannst.
@@ -139,5 +139,12 @@ App Store Connect › GaleriQ › Version 1.0 › Englisch (USA) › iPhone 6,9-
 - [x] **H7 Eingereicht** am 31.10.2026, 23:10: iOS-App 1.0 (Build 30) und GaleriQ Pro, Status „Warten auf Prüfung“
       (Übermittlung 2bf15445-123e-4f0e-b649-33da34505532). Primärsprache jetzt Englisch (USA); Deutsch nutzt bis zu
       eigenen Bildern die englischen. Freigabe manuell: nach Apples Zusage selbst „Veröffentlichen“.
-- [ ] **H8 Nach dem Livegang:** In AdMob die App mit dem App-Store-Eintrag verknüpfen (App-Einstellungen ›
+- [x] **H7b Freigegeben und veröffentlicht** am 05.11.2026 (Statusverlauf App Store Connect): „Wird geprüft“ →
+      „Ausstehende Entwicklerfreigabe“ (Apple) → vom Inhaber veröffentlicht, Status „Bereit für Vertrieb“ (21:14).
+      Version 1.0 (Build 30) ist live. Ob GaleriQ Pro mit freigegeben wurde, steht nicht im Statusverlauf: im
+      Bereich „In-App-Käufe“ prüfen und den Kauf einmal im Store testen (echte Abbuchung).
+- [ ] **H8 Nach dem Livegang (jetzt fällig):** In AdMob die App mit dem App-Store-Eintrag verknüpfen (App-Einstellungen ›
       App-Store-Details); app-ads.txt wird dann geprüft.
+- [ ] **H9 Nächstes Update:** Schlüsselwörter sind fast voll (5 Zeichen frei) und nur mit neuer Version änderbar;
+      Werbetext jederzeit ohne Prüfung. App Store Connect bietet jetzt eigene iPhone-Duo-Bilder/-Vorschauen an
+      (nur mit echtem Duo-Simulator aufnehmen, siehe `docs/IPHONE_DUO_AND_GAMES.md`) und eine optionale Kopfzeile.

@@ -269,4 +269,6 @@ UI-Tests nutzen die Kennungen `tab.today|library|cleanup|studio|history` und `va
 - App Store: Version 1.0 (Build 30) mit GaleriQ Pro am 31.10.2026, 23:10 zur Prüfung übermittelt („Warten auf Prüfung“,
   Übermittlung 2bf15445-123e-4f0e-b649-33da34505532), manuelle Veröffentlichung. Screenshots en-US 6,9″ und 6,3″,
   zwei Vorschauen; Primärsprache Englisch (USA).
+- App Store: am 05.11.2026 von Apple freigegeben und vom Inhaber veröffentlicht – „Bereit für Vertrieb“, Version 1.0
+  (Build 30) ist live.
 - Geräteabnahme: vom Inhaber mit Build 30 getestet (31.10.2026)
