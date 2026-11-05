@@ -15,6 +15,8 @@ struct TrashView: View {
     @State private var confirmFiles: [ItemReference]?
     @State private var limitFor: LimitRequest?
     @State private var bonusBusy = false
+    /// Ergebnis „keine Werbung“/„vorzeitig geschlossen“ direkt am Knopf (ein Toast läge hinter dem Blatt, Nutzer 05.11.2026).
+    @State private var bonusNotice: String?
     @State private var running = false
     @State private var result: ResultMessage?
     @State private var done: CleanupDone?
@@ -114,7 +116,7 @@ struct TrashView: View {
         }
         .sheet(item: $limitFor) { req in
             LimitSheet(available: app.read.allowance?.available ?? 0, limit: app.read.allowance?.limit ?? 0, selected: req.items.count,
-                       bonus: bonusAvailable ? LimitBonus.amount : nil, bonusBusy: bonusBusy) {
+                       bonus: bonusAvailable ? LimitBonus.amount : nil, bonusBusy: bonusBusy, notice: bonusNotice) {
                 limitFor = nil
                 request(Array(req.items.prefix(app.read.allowance?.available ?? 0)), kind: req.kind)
             } openPro: {
@@ -148,11 +150,12 @@ struct TrashView: View {
     private func watchBonus(retry: LimitRequest?) async {
         guard !bonusBusy else { return }
         bonusBusy = true
+        bonusNotice = nil
         defer { bonusBusy = false }
         switch await AdsService.shared.showRewarded(app: app) {
         case .earned(let rewardID):
             guard await app.grantLimitBonus(rewardID: rewardID) else {
-                app.showToast(L("limit_bonus_unavailable"))
+                showBonusNotice(L("limit_bonus_unavailable"))
                 return
             }
             Haptics.success()
@@ -161,10 +164,16 @@ struct TrashView: View {
                 request(retry.items, kind: retry.kind)
             }
         case .dismissed:
-            app.showToast(L("limit_bonus_dismissed"))
+            showBonusNotice(L("limit_bonus_dismissed"))
         case .unavailable:
-            app.showToast(L("limit_bonus_unavailable"))
+            showBonusNotice(L("limit_bonus_unavailable"))
         }
+    }
+
+    /// Sichtbar im Limit-Blatt bzw. in der Limit-Karte und für VoiceOver angesagt.
+    private func showBonusNotice(_ text: String) {
+        bonusNotice = text
+        UIAccessibility.post(notification: .announcement, argument: text)
     }
 
     private func openPro() {
@@ -252,6 +261,9 @@ struct TrashView: View {
                     Text(key: "limit_soon_pro").foregroundStyle(AppColors.accent)
                 }
                 .buttonStyle(.pmBordered)
+            }
+            if limitFor == nil, let bonusNotice {
+                BonusNoticeText(text: bonusNotice)
             }
         }
         .padding(16)
@@ -481,6 +493,8 @@ struct LimitSheet: View {
     /// Gratis: „+n für heute“ per Werbevideo (einmal täglich); `nil` = nicht verfügbar.
     var bonus: Int? = nil
     var bonusBusy = false
+    /// Ergebnis des letzten Werbeversuchs („keine Werbung verfügbar“ …), direkt unter dem Knopf.
+    var notice: String? = nil
     let takePartial: () -> Void
     let openPro: () -> Void
     var watchBonus: () -> Void = {}
@@ -498,6 +512,7 @@ struct LimitSheet: View {
             if let bonus {
                 PrimaryButton(title: L("limit_bonus", bonus), action: watchBonus)
                     .disabled(bonusBusy)
+                if let notice { BonusNoticeText(text: notice) }
                 Text(key: "limit_bonus_note").font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
                 SecondaryButton(title: L("limit_all_with_pro", selected), action: openPro)
             } else {
@@ -510,6 +525,19 @@ struct LimitSheet: View {
         }
         .padding(AppSpacing.pageMargin)
         .presentationDetents([.medium])
+    }
+}
+
+/// Hinweis nach einem Werbeversuch ohne Freischaltung (kein Toast: der läge hinter einem Blatt).
+struct BonusNoticeText: View {
+    let text: String
+    var body: some View {
+        Label { Text(verbatim: text) } icon: { Image(systemName: "info.circle") }
+            .font(AppTypography.footnote)
+            .foregroundStyle(AppColors.accent)
+            .multilineTextAlignment(.leading)
+            .fixedSize(horizontal: false, vertical: true)
+            .accessibilityIdentifier("limit.bonusNotice")
     }
 }
 
