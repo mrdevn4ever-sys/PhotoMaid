@@ -141,9 +141,13 @@ App Store Connect › GaleriQ › Version 1.0 › Englisch (USA) › iPhone 6,9-
       eigenen Bildern die englischen. Freigabe manuell: nach Apples Zusage selbst „Veröffentlichen“.
 - [x] **H7b Freigegeben und veröffentlicht** am 05.11.2026 (Statusverlauf App Store Connect): „Wird geprüft“ →
       „Ausstehende Entwicklerfreigabe“ (Apple) → vom Inhaber veröffentlicht, Status „Bereit für Vertrieb“ (21:14).
-      Version 1.0 (Build 30) ist live. Ob GaleriQ Pro mit freigegeben wurde, steht nicht im Statusverlauf: im
-      Bereich „In-App-Käufe“ prüfen und den Kauf einmal im Store testen (echte Abbuchung).
-- [ ] **H8 Nach dem Livegang (jetzt fällig):** In AdMob die App mit dem App-Store-Eintrag verknüpfen (App-Einstellungen ›
+      Version 1.0 (Build 30) ist live (App-ID 6821165617). In-App-Kauf GaleriQ Pro ebenfalls genehmigt (Inhaber,
+      05.11.2026); Kauf einmal im Store testen (echte Abbuchung).
+- [ ] **H8 Nach dem Livegang (läuft):** Store-Verknüpfung in AdMob am 05.11.2026 angelegt; erste Prüfung meldete
+      „konnte nicht bestätigt werden“, kurz nach dem Livegang. Geprüft (05.11.2026): App Store meldet als
+      Entwickler-Website `https://mrdevn4ever-sys.github.io/` (iTunes-Lookup, us/de/ch), dort liegt `app-ads.txt` mit
+      `google.com, pub-1549279515168572, DIRECT, f08c47fec0942fa0` (HTTP 200, text/plain) – passt. Nach etwa 24 h in
+      AdMob „Nach Updates suchen“. Ursprünglicher Punkt: In AdMob die App mit dem App-Store-Eintrag verknüpfen (App-Einstellungen ›
       App-Store-Details); app-ads.txt wird dann geprüft.
 - [ ] **H9 Nächstes Update:** Schlüsselwörter sind fast voll (5 Zeichen frei) und nur mit neuer Version änderbar;
       Werbetext jederzeit ohne Prüfung. App Store Connect bietet jetzt eigene iPhone-Duo-Bilder/-Vorschauen an
