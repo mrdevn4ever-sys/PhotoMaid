@@ -152,3 +152,8 @@ App Store Connect › GaleriQ › Version 1.0 › Englisch (USA) › iPhone 6,9-
 - [ ] **H9 Nächstes Update:** Schlüsselwörter sind fast voll (5 Zeichen frei) und nur mit neuer Version änderbar;
       Werbetext jederzeit ohne Prüfung. App Store Connect bietet jetzt eigene iPhone-Duo-Bilder/-Vorschauen an
       (nur mit echtem Duo-Simulator aufnehmen, siehe `docs/IPHONE_DUO_AND_GAMES.md`) und eine optionale Kopfzeile.
+- [ ] **H10 Fix fürs nächste Update (05.11.2026):** „Werbung ansehen“ im Papierkorb wirkte tot, wenn AdMob keine Anzeige
+      lieferte (Hinweis lag als Toast hinter dem Limit-Blatt). Jetzt steht der Hinweis direkt am Knopf (`6ca134a`).
+      CI-Lauf 42110672330: `swift test` PASS, Xcode-Build + Unit-Tests PASS, UI-Tests NOT RUN (nicht Teil des
+      Standardlaufs). Hochladen der Testprotokolle FAIL: GitHub-Speicherkontingent für Artefakte voll (alte Artefakte
+      löschen oder auf Neuberechnung nach 6–12 h warten). Gerät NOT RUN. Noch kein TestFlight-Build, keine Einreichung.
