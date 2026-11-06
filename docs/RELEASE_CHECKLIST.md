@@ -143,7 +143,7 @@ App Store Connect › GaleriQ › Version 1.0 › Englisch (USA) › iPhone 6,9-
       „Ausstehende Entwicklerfreigabe“ (Apple) → vom Inhaber veröffentlicht, Status „Bereit für Vertrieb“ (21:14).
       Version 1.0 (Build 30) ist live (App-ID 6821165617). In-App-Kauf GaleriQ Pro ebenfalls genehmigt (Inhaber,
       05.11.2026); Kauf einmal im Store testen (echte Abbuchung).
-- [ ] **H8 Nach dem Livegang (läuft):** Store-Verknüpfung in AdMob am 05.11.2026 angelegt; erste Prüfung meldete
+- [ ] **H8 Nach dem Livegang (läuft):** 06.11.2026, 20:46: AdMob meldet „GaleriQ (iOS) erfolgreich bestätigt“ (app-ads.txt + Store-Verknüpfung); jetzt AdMob-App-Prüfung (meist 2–3 Tage), bis dahin eingeschränkte Anzeigenbereitstellung (Messung 06.11.: 36 Anfragen, 0 Impressionen). UMP ist in der App eingebaut; prüfen, dass die DSGVO-Mitteilung für GaleriQ unter Datenschutz & Mitteilungen veröffentlicht ist. Vorher: Store-Verknüpfung in AdMob am 05.11.2026 angelegt; erste Prüfung meldete
       „konnte nicht bestätigt werden“, kurz nach dem Livegang. Geprüft (05.11.2026): App Store meldet als
       Entwickler-Website `https://mrdevn4ever-sys.github.io/` (iTunes-Lookup, us/de/ch), dort liegt `app-ads.txt` mit
       `google.com, pub-1549279515168572, DIRECT, f08c47fec0942fa0` (HTTP 200, text/plain) – passt. Nach etwa 24 h in
