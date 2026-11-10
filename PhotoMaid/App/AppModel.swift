@@ -2,6 +2,7 @@ import Foundation
 import Observation
 import Photos
 import PhotoMaidCore
+import StoreKit
 import SwiftUI
 
 enum AppTab: String, Hashable, CaseIterable, Sendable {
@@ -922,6 +923,28 @@ final class AppModel {
         if reviewed > 0 {
             let token = PhotoLibraryService.currentChangeTokenData()
             updateSettings { $0.lastSessionEnd = Date(); $0.lastSessionChangeToken = token }
+        }
+        considerReviewPrompt(reviewed: reviewed)
+    }
+
+    /// Nach einer gelungenen Aufräum-Sitzung höchstens selten Apples Bewertungsdialog anfragen (`ReviewPromptPolicy`).
+    /// Ob er erscheint, entscheidet iOS. Nie in QA-/UI-Testläufen, nie im Tresor.
+    private func considerReviewPrompt(reviewed: Int) {
+        let args = ProcessInfo.processInfo.arguments
+        guard !isQAFixtureMode, !VaultStore.shared.isPresented,
+              !args.contains(where: { ["-qa-fixtures", "-store-capture", "-pdf-editor-fixtures", "-game-visual-tests"].contains($0) })
+        else { return }
+        var state = settings.reviewPrompt
+        let ask = ReviewPromptPolicy.sessionEnded(&state, decisions: reviewed, now: Date())
+        updateSettings { $0.reviewPrompt = state }
+        guard ask else { return }
+        Task { @MainActor in
+            // Erst wenn der Feed geschlossen und die Startseite wieder sichtbar ist.
+            try? await Task.sleep(for: .seconds(1.2))
+            guard self.feed == nil,
+                  let scene = UIApplication.shared.connectedScenes
+                    .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene else { return }
+            AppStore.requestReview(in: scene)
         }
     }
 }

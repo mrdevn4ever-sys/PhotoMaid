@@ -8,6 +8,10 @@ enum AppConfig {
     /// „PhotoMaid“, damit vorhandene Daten und der Tresor erhalten bleiben.
     static let brandName = "GaleriQ"
 
+    /// App-Store-Kennung von GaleriQ (öffentlich, seit Version 1.0). Für „GaleriQ bewerten“ in den Einstellungen.
+    static let appStoreID = "6821165617"
+    static var writeReviewURL: URL? { URL(string: "https://apps.apple.com/app/id\(appStoreID)?action=write-review") }
+
     /// Produkt-ID des Einmalkaufs „PhotoMaid Pro“ (Non-Consumable). Leer = Käufe in diesem Build nicht verfügbar.
     static var proProductID: String? { nonEmpty("PMProProductID") }
 

@@ -74,6 +74,15 @@ struct SettingsView: View {
                     .accessibilityHint(Text(key: "set_language_hint"))
                     divider
                     NavigationLink(value: Route.help) { row(L("help")) }.buttonStyle(PMPressStyle())
+                    // Bewerten jederzeit selbst (öffnet die App-Store-Seite zum Bewerten; keine eigene Abfrage).
+                    if let url = AppConfig.writeReviewURL {
+                        divider
+                        Button { UIApplication.shared.open(url) } label: {
+                            row(L("set_rate_app"), subtitle: L("set_rate_app_sub"))
+                        }
+                        .buttonStyle(PMPressStyle())
+                        .accessibilityIdentifier("settings.rate")
+                    }
                 }
                 if !VaultStore.shared.hidesEntry {
                     Text(key: "vault_hide_entry_text").font(AppTypography.footnote).foregroundStyle(AppColors.textTertiary)

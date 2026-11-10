@@ -86,6 +86,8 @@ struct AppSettingsData: Codable, Equatable, Sendable {
     var libraryAspectFit = false
     /// Tab „Fotos“: nach Aufnahmedatum (Zeitachse) oder zuletzt hinzugefügt zuerst.
     var libraryOrder: LibraryOrder = .captured
+    /// Bewertungsdialog (nur Apples System-Dialog): Zähler und Zeitpunkte, keine Medien-IDs.
+    var reviewPrompt = ReviewPromptState()
 
     init() {}
 
@@ -141,6 +143,7 @@ struct AppSettingsData: Codable, Equatable, Sendable {
         libraryFilter = v(.libraryFilter, d.libraryFilter)
         libraryAspectFit = v(.libraryAspectFit, d.libraryAspectFit)
         libraryOrder = v(.libraryOrder, d.libraryOrder)
+        reviewPrompt = v(.reviewPrompt, d.reviewPrompt)
     }
 
     /// Später-Intervall beim Wisch nach rechts (nur erlaubte Werte).
