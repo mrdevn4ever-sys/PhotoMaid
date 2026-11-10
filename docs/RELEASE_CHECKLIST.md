@@ -160,5 +160,6 @@ App Store Connect › GaleriQ › Version 1.0 › Englisch (USA) › iPhone 6,9-
       Ergänzt für 1.0.1 (10.11.2026): Store-Beschreibungen 16 Sprachen einfach formuliert (`66c588c`), Tresor kompakter
       (`5ddc404`), Bewertung über Apples Systemdialog + „GaleriQ bewerten“ in den Einstellungen (`fa635e7`).
       CI-Läufe 42765954458 und 42766807316: BLOCKED – alle Jobs (auch Linux) brachen nach 1–2 s ohne Runner und
-      ohne Log ab; typisch für GitHub-Abrechnung (Actions-Ausgabenlimit/Zahlung). Build/Tests dieser drei Commits:
-      NOT RUN. Erst nach geklärter Abrechnung erneut starten, dann TestFlight nur auf ausdrückliche Freigabe.
+      ohne Log ab (GitHub-Abrechnung; vom Inhaber freigegeben). Erneuter Lauf 42769225552 auf `31ffc9b`:
+      `swift test` (inkl. ReviewPromptTests) PASS, Texte-Prüfung 16 Sprachen PASS, Xcode-Build + Unit-Tests PASS,
+      Protokolle hochgeladen. UI-Tests und Gerät: NOT RUN. TestFlight nur auf ausdrückliche Freigabe.
