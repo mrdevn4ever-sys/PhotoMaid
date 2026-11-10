@@ -1,0 +1,1958 @@
+0000	3 aktivní dny
+0001	7 aktivních dní
+0002	Zahrány všechny tři hry
+0003	Odznaky
+0004	%1$lld z %2$lld
+0005	Hrajte v „Dejte si pauzu“
+0006	Pokračujte v procházení
+0007	Tvořte ve Studiu
+0008	dny
+0010	den
+0011	dní
+0014	Dosaženo
+0015	dne %@
+0016	Ponechat, Koš a Později se počítají stejně.
+0017	První koláž
+0018	První rozhodnutí
+0019	První film
+0020	První dokončený měsíc
+0021	První PDF
+0022	%1$@: %2$@ fotek
+0023	%1$@: %2$@ bodů
+0024	Denní cíl
+0025	Denní cíl splněn 10×
+0026	Denní cíl splněn
+0027	z %@ dnes
+0028	Vypnuto – zapněte v Nastavení.
+0029	%1$@ z %2$@
+0030	Hry
+0031	Pořádek
+0032	Prošlo
+0033	První kroky
+0034	Série
+0035	„Později“ vyprázdněno
+0036	Úroveň
+0037	Dosažena nejvyšší úroveň.
+0038	Ještě %1$@ do úrovně %2$lld.
+0039	Prošla celá knihovna
+0040	Vše zůstává v tomto iPhonu. Vypnutí: Nastavení › Zobrazovat úspěchy.
+0041	Dokončené měsíce
+0042	12 dokončených měsíců
+0043	Nový odznak: %@
+0044	Otevřít úspěchy
+0045	Otevře úspěchy
+0046	12 vyřešených dvojic
+0047	%1$@ pod %2$@ s
+0048	Zbývá %@
+0049	prošlých položek
+0050	Prošlo: %@
+0051	Série
+0052	Série 100 dní
+0053	Série 3 dní
+0054	Série 30 dní
+0055	Série 7 dní
+0056	Co už jste dokázali – jen vaše vlastní čísla.
+0057	Úspěchy
+0058	Zobrazit
+0059	Tento týden
+0060	Ponechat a další
+0061	Později
+0062	Vybrat datum na později
+0063	Zobrazit předchozí
+0064	Přesunout do koše
+0065	Reklama
+0066	Bez reklam s Pro
+0067	Další
+0068	Za chvíli můžete pokračovat …
+0069	Přidat složku
+0070	Přidáno do „%1$@“
+0071	Album se nepodařilo změnit.
+0072	Alba a složky z aplikace Fotky. Přidání do alba nemění soubory a synchronizuje se s Fotkami na iCloudu, pokud jsou zapnuté.
+0073	Vše
+0074	Krátce pokračovat na pozadí
+0075	GaleriQ využívá čas na pozadí, který iOS povoluje, bez systémové karty aktivity. Pokud čas vyprší, postup zůstane uložen a analýza pokračuje, až aplikaci znovu otevřete.
+0076	Zvířata
+0077	Dokumenty
+0078	Jídlo
+0079	Příroda
+0080	Ostatní
+0081	Lidé
+0082	Snímky obrazovky s textem
+0083	Vozidla
+0084	Fotky z iCloudu se načítají jen jako malé náhledy přes Wi-Fi. Nic se nenahrává.
+0085	Jen na iCloudu: %1$lld
+0086	Analýza obrázků je vypnutá v Nastavení.
+0087	Neanalyzováno: %1$lld
+0088	Spustit nejdřív
+0089	Porovnat (%1$lld)
+0090	Skupiny: %1$lld · Fotky: %2$lld
+0091	Zahrnout fotky z iCloudu (jen Wi-Fi)
+0092	Shody: %1$lld
+0093	Další
+0094	Pozastavit
+0095	Zpět
+0096	Analyzováno %1$lld z %2$lld
+0097	Náhled je příliš malý: %1$lld
+0098	Analyzovat potom
+0099	Probíhající analýza se nikdy neruší: „Spustit nejdřív“ ji jen pozastaví a potom sama pokračuje.
+0100	Pokračovat v analýze
+0101	Zopakovat neúspěšné (%1$lld)
+0102	Probíhá „%1$@“. Tato analýza může potom začít sama.
+0103	Hledat rozpoznaný text
+0104	Zobrazit i už rozhodnuté
+0105	Podobné snímky: %1$lld · o tom, co zůstane, rozhodujete vy
+0106	Knihovna se změnila. Pokračujte a analýza se aktualizuje.
+0107	Načítání náhledů z iCloudu …
+0108	Porovnávání podobných snímků …
+0109	Analýza dokončena.
+0110	Analýza fotek v tomto iPhonu …
+0111	Pozastaveno. Dosavadní výsledky zůstávají.
+0112	Příprava …
+0113	Analýza teď není možná. Zkuste to prosím později.
+0114	Výsledky se nepodařilo uložit. Zkontrolujte volné místo.
+0115	Čeká se na Wi-Fi kvůli načtení náhledů z iCloudu.
+0116	Spustit analýzu
+0117	Projet přejetím (%1$lld)
+0118	Nahoru ponechá, doleva do koše, doprava se zobrazí později. Klepnutím na fotku začnete u ní.
+0119	Klepnutím na skupinu ji porovnáte – nebo je přejetím projděte všechny postupně.
+0120	Nečekat
+0121	Čeká – spustí se sama, jakmile skončí „%1$@“.
+0122	Rozmazané fotky
+0123	Rozhýbané nebo neostré – seřazené podle ostrosti
+0124	Podle motivu
+0125	Lidé, zvířata, jídlo, krajina …
+0126	Fotky s textem
+0127	Snímky obrazovky, účtenky a dokumenty – s hledáním v rozpoznaném textu
+0128	Analýza probíhá jen v tomto iPhonu (Apple Vision). Výsledky jsou návrhy – rozhodujete vy ve feedu. Nic se automaticky nenahrává ani nemaže.
+0129	Analyzováno v tomto iPhonu
+0130	Podobné snímky
+0131	Fotky, které vypadají velmi podobně, vedle sebe
+0132	GaleriQ
+0133	Tmavý
+0134	Světlý
+0135	Podle zařízení
+0136	Složky podle roku a měsíce
+0137	Řadí kopie do podsložek podle data pořízení, např. „2026/10“. Vypnuto: všechny soubory jdou do jedné složky.
+0138	Vybrat složku
+0139	Vybrat jinou složku
+0140	Alba
+0141	Bajty
+0142	Složka
+0143	Název
+0144	Poznámka
+0145	SHA-256
+0146	Štítky
+0147	Pořízeno
+0148	Volno v cíli: %1$@
+0149	Volné místo v cíli: neznámé
+0150	GaleriQ zkopíruje fotky a videa do složky, kterou vyberete – například na USB disk, externí disk nebo do aplikace Soubory. Každá kopie se pak porovná s originálem bajt po bajtu. Originály zůstávají ve Fotkách a nic se nemaže.
+0151	Ověřená druhá kopie vašich fotek
+0152	Tato složka je na stejném úložišti jako vaše fotky. Druhá kopie tady nepomůže, když telefon ztratíte nebo se rozbije.
+0153	Tato složka patří jiné aplikaci, například online úložišti. Ta aplikace rozhoduje, zda soubory zůstanou v telefonu, nebo půjdou online.
+0154	Samostatné úložiště, například USB disk nebo externí disk.
+0155	Poslední běh %1$@: ověřeno %2$lld z %3$lld.
+0156	GaleriQ kontrolní seznam %1$@.csv
+0157	Kontrolní seznam uložen: %1$@
+0158	„Ověřeno“ znamená, že kopie je bajt po bajtu stejná jako originál. Nikdo nedokáže zjistit, jak dlouho úložiště vydrží – důležité věci mějte na dvou místech.
+0159	Nejdřív vyberte, co kopírovat, a cílovou složku.
+0160	Teď vyberte, co se má kopírovat.
+0161	Teď vyberte cílovou složku.
+0162	Zatím nic nevybráno
+0163	Možnosti
+0164	%1$lld už existuje
+0164:few	%1$lld už existují
+0165	%1$lld už existuje
+0166	%1$lld selhal
+0166:few	%1$lld selhaly
+0167	%1$lld selhalo
+0168	%1$lld nezkopírován
+0168:few	%1$lld nezkopírovány
+0169	%1$lld nezkopírováno
+0170	%1$lld zkopírován a ověřen
+0170:few	%1$lld zkopírovány a ověřeny
+0171	%1$lld zkopírováno a ověřeno
+0172	Co se má kopírovat?
+0173	Vybrat fotky a videa
+0174	Změnit výběr
+0175	Zrušeno
+0176	Přerušeno – částečná kopie odstraněna
+0177	Kopie se neshodovala – znovu odstraněna
+0178	Originál nelze přečíst
+0179	V cíli není místo
+0180	Cíl odmítl uložení (plný, chráněný proti zápisu nebo soubor je pro toto úložiště moc velký)
+0181	Výsledek
+0182	Kopírování a ověřování …
+0183	Kopírovat a ověřit
+0184	%1$lld soubor se zkopíruje do „%2$@“.
+0184:few	%1$lld soubory se zkopírují do „%2$@“.
+0185	%1$lld souborů se zkopíruje do „%2$@“.
+0186	Krok %1$lld · %2$@
+0187	Vaše originály zůstanou beze změny.
+0188	Kopírovat do vybrané složky a ověřit každou kopii
+0189	Zatím není vybraná žádná složka
+0190	Připojte USB disk nebo externí disk a vyberte na něm složku. Funguje i iCloud Drive a další místa v aplikaci Soubory.
+0191	Archiv
+0192	Bez data
+0193	Ověřeno: %1$@
+0194	Kam se mají kopie uložit?
+0195	Uložit také kontrolní seznam
+0196	Uloží do cílové složky tabulku (soubor CSV) s názvem, datem, velikostí a kontrolním součtem každého souboru a také s vašimi alby, štítky a poznámkami – abyste mohli kopie později zkontrolovat.
+0197	z %1$@
+0198	Dvojice, Foto had a Foto Blocks
+0199	k procházení
+0200	Fotky, kterými si ještě nejste jistí.
+0201	Nadechněte se. Vaše fotky hrají s vámi.
+0202	3 hry s vašimi vlastními fotkami
+0203	Smazat poslední číslici
+0204	Zadáno %1$lld z %2$lld číslic
+0205	Soukromí a data
+0206	Zeptá se, než oblíbená položka půjde do koše
+0207	Fotoaparátem, jako PDF
+0208	Co zabírá místo
+0209	Projet přejetím
+0210	Zbývá projít
+0211	Fotky a videa.
+0212	Šifrováno, jen v tomto iPhonu.
+0213	Zpět
+0214	Obnovit
+0215	Obnoveno
+0216	Záloha GaleriQ %1$@.json
+0217	Záloha z %1$@
+0218	Tento soubor není zálohou GaleriQ.
+0219	Otevřít zálohu …
+0220	Soubor obsahuje názvy souborů, štítky a poznámky. Uložte ho jen tam, kde chcete – například na USB disk.
+0221	Obnovení
+0222	Načte zálohu, například v novém telefonu. Fotky se znovu najdou podle názvu, velikosti a času pořízení. Co tady už bylo rozhodnuto nebo zadáno, zůstane beze změny.
+0223	Uložit zálohu …
+0224	Zálohu se nepodařilo uložit.
+0225	Zálohování
+0226	Uloží vaše data GaleriQ do malého souboru: rozhodnutí, alba, štítky, poznámky, výběrový košík, skryté položky, nastavení, postupy a předvolby. Fotky nejsou součástí.
+0227	Zálohování a obnovení
+0228	Tato záloha pochází z novější verze GaleriQ. Nejdřív GaleriQ aktualizujte.
+0229	Soubor se nepodařilo přečíst.
+0230	Koš
+0231	Dnes zbývá %1$lld z %2$lld
+0232	Trvale smazat %1$lld
+0233	Tuto akci nelze vrátit.
+0234	Trvale smazat soubory?
+0235	Odstranit %1$lld
+0236	Pak potvrďte v dialogu iOS. Fotky a videa se přesunou do „Nedávno smazaných“ v aplikaci Fotky.
+0237	Odstranit fotky a videa?
+0238	V koši: %1$lld
+0239	Trvale smazat %1$lld soubor
+0239:few	Trvale smazat %1$lld soubory
+0240	Trvale smazat %1$lld souborů
+0241	Odstranit %1$lld fotku nebo video
+0241:few	Odstranit %1$lld fotky a videa
+0242	Odstranit %1$lld fotek a videí
+0243	Tady se zobrazí vše, co jste odložili k odstranění. Přejetím fotky nebo videa doleva ho přidáte.
+0244	Koš je prázdný
+0245	Tyto soubory budou trvale smazány. Tuto akci nelze vrátit.
+0246	Soubory
+0247	Zatím nic nebylo smazáno. Klepnutím na miniaturu ji zvětšíte. Koš vyprázdněte, až budete připraveni.
+0248	iOS vás požádá o další potvrzení a přesune fotky a videa do „Nedávno smazaných“. Tam je obvykle můžete 30 dní obnovit. S Fotkami na iCloudu platí smazání na všech vašich zařízeních.
+0249	Fotky a videa
+0250	Prohlížení nemění váš výběr.
+0251	Zobrazit větší: %1$@
+0252	Výběr: %1$@
+0253	Naposledy přidané
+0254	Datum pořízení
+0255	Povolit přístup k fotkám
+0256	Nejlepší: %1$lld
+0257	Změnit fotky
+0258	Zrušit výběr
+0259	Pokračovat
+0260	Fotka odhalena!
+0261	Oblíbené
+0262	Odhalené fotky: %1$lld
+0263	Hrací plocha: přejeďte do strany, klepnutím otočíte, táhněte nebo švihněte dolů.
+0264	Táhnout dolů: rychleji · švihnout dolů: položit
+0265	Přejetím do strany posunete
+0266	Klepnutím otočíte
+0267	Jak hrát
+0268	Úroveň: %1$lld
+0269	Spravovat povolené fotky
+0270	Nový rekord!
+0271	Nejnovější fotky
+0272	Další dílek
+0273	Kolo dokončeno
+0274	Pauza
+0275	Pozastaveno
+0276	Fotky z iCloudu se stahují podle potřeby. Fotky v trezoru, skryté a vyloučené fotky zůstávají chráněné.
+0277	Zdroj obrázků
+0278	Vybrat fotky
+0279	Sloupec %1$lld, řádek %2$lld, otočení %3$lld
+0280	Postup fotky
+0281	Náhodné fotky
+0282	Hrát znovu
+0283	Začít znovu
+0284	Řady: %1$lld
+0285	Používají se jen povolené fotky. Nedostupné obrázky se nahradí neutrálním pozadím.
+0286	Uložení selhalo · Zkusit znovu
+0287	Skóre: %1$lld
+0288	Vybráno: %1$lld
+0289	Vybrat moje fotky
+0290	Spustit hru
+0291	Odstraňujte řady a odhalujte své fotky.
+0292	Foto Blocks
+0293	Zrušit
+0294	Fotky
+0295	Snímky obrazovky
+0296	Videa
+0297	Změnit
+0298	Změnit datum
+0299	Vybrat složku
+0300	Zavřít
+0301	A4 na šířku
+0302	A4 na výšku
+0303	Vytvořit kolekci
+0304	1 rok
+0305	2 roky
+0306	6 měsíců
+0307	%1$lld den
+0307:few	%1$lld dny
+0308	%1$lld dní
+0309	Rozmazaná fotka
+0310	Připraveno pro vás
+0311	Podmínka
+0312	Počítání položek …
+0313	Vaše kolekce
+0314	Vlastní kolekce jsou k dispozici s Pro. Připravené kolekce jsou zdarma.
+0315	Smazat kolekci
+0316	Vodorovný oddělovač
+0317	Svislý oddělovač
+0318	Upravit
+0319	Vlastní kolekce
+0320	Vyplnit
+0321	Zobrazit celé
+0322	Typ souboru
+0323	Vyberte kolekci a projděte odpovídající fotky a videa. Nic se automaticky nemaže.
+0324	JPEG: menší soubor, ideální ke sdílení.
+0325	Volný
+0326	Mřížka
+0327	Pás
+0328	Větší než
+0329	Tažením bílých úchytů změníte velikost. Podržte fotku a přetáhněte ji na jinou, abyste je prohodili.
+0330	Okraj
+0331	Některé fotky už nejsou k dispozici a jsou vynechány.
+0332	Vše prošlo
+0333	Starší než
+0334	Klepnutím na fotku v koláži ji změníte.
+0335	PNG: bezeztrátové a ostré, ale větší soubor.
+0336	Rámeček instantní fotky
+0337	Nahradit
+0338	Uložit koláž
+0339	Rozestupy
+0340	Náhled koláže
+0341	Vedle sebe
+0342	Shora dolů
+0343	Prohodit s další fotkou
+0344	Pozadí
+0345	Rozvržení
+0346	Fotka
+0347	Rozestupy
+0348	%1$@ větší než %2$@
+0349	%1$@ starší než %2$@
+0350	Oříznout dole
+0351	Oříznout vlevo
+0352	Oříznout vpravo
+0353	Oříznout nahoře
+0354	%1$lld položka s neznámou velikostí byla vynechána.
+0354:few	%1$lld položky s neznámou velikostí byly vynechány.
+0355	%1$lld položek s neznámou velikostí bylo vynecháno.
+0356	Co chcete zobrazit?
+0357	Uložit do alba
+0358	Uložit do Souborů
+0359	Uložit do Fotek
+0360	Přidat fotky
+0361	Poměr stran
+0362	Poměr stran %1$@
+0363	Černá
+0364	Modrá
+0365	Krémová
+0366	Vlastní barva
+0367	Zelená
+0368	Šedá
+0369	Oranžová
+0370	Růžová
+0371	Červená
+0372	Bílá
+0373	Žlutá
+0374	Album ve Fotkách
+0375	Vyberte album
+0376	iCloud Drive, Na mém iPhonu nebo USB disk
+0377	Uložit do
+0378	Fotky
+0379	Jako nový obrázek v knihovně
+0380	Odeslat bez uložení kopie do Fotek
+0381	Koláž se nepodařilo uložit. Vaše fotky jsou beze změny.
+0382	Písmo
+0383	Tažením posunete fotku v buňce, sevřením prstů ji přiblížíte.
+0384	Tažením fotky posunete. Dvěma prsty měníte velikost a otáčíte.
+0385	Velká fotka dole
+0386	Velká fotka vlevo
+0387	Velká fotka vpravo
+0388	Velká fotka nahoře
+0389	Sloupce po %1$@ fotkách
+0390	Pravidelná mřížka
+0391	Řady po %1$@ fotkách
+0392	Vaše původní fotky zůstanou beze změny. Vytvoří se nový soubor.
+0393	Fotka %1$lld
+0394	Vysoká (2048 px)
+0395	Číslo udává delší stranu. Vyšší vypadá ostřeji při přiblížení nebo tisku, ale soubor je větší.
+0396	Maximální (4096 px)
+0397	Výsledek: %1$lld × %2$lld px
+0398	Standardní (1080 px)
+0399	U pásů je číslo šířka (shora dolů) nebo výška (vedle sebe). Velmi dlouhé pásy se zmenší, aby je šlo uložit.
+0400	Otočení
+0401	Koláž uložena do „%1$@“
+0402	Koláž uložena do Souborů
+0403	Koláž uložena do Fotek
+0404	Text a nálepky
+0405	Styl
+0406	Zvětšení
+0407	Připojené složky
+0408	Sdílet diagnostiku
+0409	Zpět
+0410	Ponechat
+0411	Později
+0412	Koš
+0413	Koš: %1$lld
+0414	Otevře koš. Bez vašeho potvrzení se nic nesmaže.
+0415	Hotovo
+0416	Nejméně %1$@
+0417	Hotovo
+0418	Odhad („cca“): %1$lld – iOS jejich přesnou velikost prozradí až po stažení.
+0419	Dnes ponecháno
+0420	Soubory byly trvale smazány.
+0421	Fotky a videa jsou teď v „Nedávno smazaných“ v aplikaci Fotky. Místo se uvolní až po jejich trvalém smazání tam.
+0422	Položky, které nebyly odstraněny, zůstávají v koši GaleriQ.
+0423	Odstraněno
+0424	uvolněno
+0425	Koš vyprázdněn
+0426	Celkem uvolněno %1$@
+0427	Celkem uvolněno nejméně %1$@
+0428	Velikost %1$lld položky není známá. Není zahrnuta v součtu.
+0428:few	Velikosti %1$lld položek nejsou známé. Nejsou zahrnuty v součtu.
+0429	Velikosti %1$lld položek nejsou známé. Nejsou zahrnuty v součtu.
+0430	Hledat znovu
+0431	Porovnávání souborů …
+0432	Najděte fotky, videa a soubory s naprosto stejným obsahem. Vy vyberete, které kopie půjdou do koše.
+0433	Vybrané kopie: až %1$@. Nemusí to odpovídat uvolněnému místu. Před odstraněním kopií zkontrolujte oblíbené, alba a úpravy.
+0434	Identické soubory: %1$lld · celkem %2$@
+0435	GaleriQ porovnává obsah souborů přímo ve vašem zařízení. Obrázky, které jen vypadají podobně, se nepočítají jako identické kopie.
+0436	Stáhne chybějící originály přes Wi-Fi. Velké knihovny mohou trvat dlouho a spotřebovat hodně dat. Prohledává povolená média a připojené složky.
+0437	Stahování originálů z iCloudu…
+0438	Zahrnout originály z iCloudu
+0439	Část obsahu se nepodařilo přečíst. Nezkontrolované položky mohou obsahovat další identické kopie.
+0440	Hledání ještě není úplné
+0441	Měření velikostí …
+0442	Přesunout %1$lld kopii do koše
+0442:few	Přesunout %1$lld kopie do koše
+0443	Přesunout %1$lld kopií do koše
+0444	Nebyly nalezeny žádné identické kopie
+0445	V dostupných oblastech nebyly nalezeny žádné identické kopie.
+0446	Vybráno do koše
+0447	Připojené složky, které se nepodařilo přečíst: %1$lld.
+0448	Najít kopie
+0449	Položky, které zatím nešlo zkontrolovat: %1$lld.
+0450	Bude ponecháno
+0451	Duplicity
+0452	Upravit
+0453	Expozice
+0454	Redukce šumu
+0455	Poloměr
+0456	Práh
+0457	Volný
+0458	Originál
+0459	změněno
+0460	Upravená fotka. Podržením zobrazíte originál.
+0461	upraveno
+0462	Oblast ořezu
+0463	Oříznout
+0464	Perspektiva
+0465	Zahodit
+0466	Úprava se neuloží. Originál zůstane beze změny.
+0467	Zahodit změny?
+0468	Uloženo jako kopie
+0469	Uloženo jako kopie · %1$@
+0470	Originál ponechán · úprava byla uložena jako kopie
+0471	Originál upraven · lze vrátit v aplikaci Fotky
+0472	Originál nahrazen · je v „Nedávno smazaných“
+0473	Nezměněno – iOS nedostal povolení. Originál je beze změny.
+0474	Tato položka byla mezitím změněna, přesunuta nebo smazána. Nic nebylo uloženo.
+0475	Tuto položku nelze otevřít k úpravám.
+0476	Úpravu se nepodařilo uložit. Originál je beze změny.
+0477	Studený
+0478	Vybledlý
+0479	Mono
+0480	Noir
+0481	Originál
+0482	Sépie
+0483	Síla
+0484	Živý
+0485	Teplý
+0486	Překlopit
+0487	Velmi tučné
+0488	Tučné
+0489	Neformální
+0490	Úzké
+0491	Rukopis
+0492	Psací stroj
+0493	Klasické
+0494	Patkové
+0495	Kapitálky
+0496	Zaoblené rohy
+0497	Rovnoměrný
+0498	Rámeček uvnitř
+0499	Rámeček vně
+0500	Šířka
+0501	Barva
+0502	Detaily
+0503	Efekty
+0504	Světlo
+0505	Mixér barev
+0506	Pokračovat v úpravách
+0507	Na šířku
+0508	Odstín
+0509	Jas barvy
+0510	Sytost
+0511	Barva
+0512	Smazat
+0513	Kreslit
+0514	Duplikovat
+0515	Upravit
+0516	Emoji
+0517	Vyplněné
+0518	Posunout dopředu
+0519	Klepnutím na přidaný prvek ho posunete. Dvěma prsty měníte velikost a otáčíte.
+0520	Klepnutím vyberte text nebo nálepku a přetáhněte je, kam chcete.
+0521	Větší
+0522	Zakrýt
+0523	U „Pixelovat“ a „Rozmazat“ mohou být obrysy stále vidět. Pro text, který musí zůstat nečitelný, zvolte „Plné“.
+0524	Doporučeno pro soukromé údaje: co zakryjete, v uloženém nebo sdíleném souboru opravdu zmizí.
+0525	Vybrat
+0526	Tvary
+0527	Velikost
+0528	Menší
+0529	Nálepka
+0530	Text
+0531	Vodorovně
+0532	Obnovit perspektivu
+0533	Svisle
+0534	Na výšku
+0535	Aktualizace náhledu…
+0536	Náhled je zdarma · k uložení je potřeba Pro nebo 30minutový test
+0537	Ořez, otočení a narovnání jsou zdarma. Úpravy, filtry, velikost a zkracování videí se ukládají s Pro. Vyzkoušení je vždy zdarma.
+0538	Uložit s Pro
+0539	Rozmazat
+0540	Pixelovat
+0541	Plné (doporučeno)
+0542	Odstranit polohu
+0543	Uložená fotka nebude obsahovat místo pořízení.
+0544	Obnovit
+0545	Obnovit vše
+0546	Otočit
+0547	Uložit jako kopii
+0548	Uložit kopii
+0549	Originál zůstane beze změny.
+0550	Uložit jen ořez
+0551	Upravit originál
+0552	iOS se nejdřív zeptá. Úprava se uloží jako úprava v aplikaci Fotky – můžete ji tam kdykoli vrátit pomocí „Vrátit“.
+0553	Uložit kopii a přesunout originál do koše
+0554	Uložit kopii, originál do koše
+0555	iOS požádá o potvrzení. Originál se přesune do „Nedávno smazaných“ v aplikaci Fotky a obvykle ho tam lze 30 dní obnovit. Místo se uvolní až potom.
+0556	Uložit úpravu
+0557	Ukládání…
+0558	Šipka
+0559	Kruh
+0560	Čára
+0561	Obdélník
+0562	Jen sdílet (bez kopie)
+0563	Sdílí upravenou verzi bez uložení do galerie. Poloha se odstraní.
+0564	%1$lld px
+0565	Původní velikost
+0566	%1$lld × %2$lld → %3$lld × %4$lld px
+0567	Tato fotka už je malá. GaleriQ fotky nikdy nezvětšuje.
+0568	Šipka
+0569	Bublina
+0570	Fajfka
+0571	Kroužek
+0572	Křížek
+0573	Datumové razítko
+0574	Srdce
+0575	Jiskra
+0576	Hvězda
+0577	Upravujte jedním prstem; dvěma prsty přibližujete a posouváte.
+0578	Narovnat
+0579	Upravit
+0580	Oříznout
+0581	Filtry
+0582	Rámeček
+0583	Kreslení
+0584	Velikost
+0585	Retuš
+0586	Zkrátit
+0587	Text
+0588	Konec
+0589	%1$@ – %2$@ · %3$@ s
+0590	Začátek
+0591	Obrys
+0592	Štítek
+0593	Stín
+0594	Koláž
+0595	Převedeno
+0596	Kopie
+0597	Výřez
+0598	Snímek z videa
+0599	Film
+0600	Originál nahrazen
+0601	Změněná velikost
+0602	Vytvořeno z %1$lld fotky
+0602:few	Vytvořeno z %1$lld fotek
+0603	Vytvořeno z %1$lld fotek
+0604	Když upravíte fotku nebo uložíte koláž, film či zmenšené obrázky, výsledek se zobrazí tady.
+0605	Zatím nic upraveno
+0606	Odebrat ze seznamu
+0607	Vše, co pro vás GaleriQ uložil: upravené fotky a videa, koláže, filmy a zmenšené obrázky, nejnovější nahoře. Soubory jsou v aplikaci Fotky; tento seznam si jen pamatuje, co pochází z GaleriQ. Klepnutím na položku ji zobrazíte.
+0608	Originál tu stále je
+0609	Originál je v „Nedávno smazaných“
+0610	Už není v aplikaci Fotky
+0611	Upravené
+0612	Změnu se nepodařilo uložit.
+0613	Vyberte složku uloženou v tomto iPhonu. Složky, které jsou jen v cloudu, tu nejsou podporované.
+0614	Datum se nepodařilo uložit.
+0615	Vaše volba nebyla uložena. Zkuste to prosím znovu.
+0616	Složku se nepodařilo připojit.
+0617	Nastavení se nepodařilo uložit.
+0618	Nepovedlo se
+0619	Než použijete Zpět, počkejte, až se koš vyprázdní.
+0620	Tohle už nejde vrátit, protože jste to mezitím změnili.
+0621	Tohle teď nejde vrátit.
+0622	Vyloučit toto album
+0623	Vyloučit
+0624	Položky z tohoto alba se při úklidu přestanou zobrazovat. Nic se nemaže ani nepřesouvá. Vrátit lze v Nastavení › Vyloučená alba.
+0625	Skrýt „%1$@“ při úklidu?
+0626	„%1$@“ se při úklidu už nebude zobrazovat
+0627	Pokračuje, i když přepnete aplikaci.
+0628	Už probíhá jiný export. Počkejte prosím, až skončí.
+0629	Zrušeno. Nic nebylo uloženo.
+0630	iOS ukončil export na pozadí. Nic nebylo uloženo – spusťte ho znovu a nechte GaleriQ otevřený.
+0631	Můžete krátce přepnout do jiné aplikace. Pokud iOS čas ukončí, GaleriQ se čistě zastaví – nic napůl hotového se neuloží.
+0632	Ukládání …
+0633	Označit jako oblíbené
+0634	Stav oblíbené položky se nepodařilo změnit. Zůstává stejný.
+0635	Tato fotka je chráněna jako oblíbená.
+0636	Abyste ji mohli dát do koše, nejdřív odeberte označení oblíbené. Ochranu oblíbených můžete také vypnout v nastavení.
+0637	Toto video je chráněno jako oblíbené.
+0638	Odebrat z oblíbených
+0639	Už není označeno jako oblíbené. Přejetím doleva ho dáte do koše.
+0640	Není oblíbené
+0641	Oblíbené
+0642	Vložit do „%1$@“
+0643	Nic
+0644	Později – vybrat datum
+0645	Přidat tlačítko
+0646	Tlačítka a pořadí
+0647	Tlačítka
+0648	Pomocí „Upravit“ změníte pořadí nebo odeberete tlačítka. Až 6 tlačítek. Tlačítka dělají přesně totéž co přejetí.
+0649	Vložit do alba …
+0650	Nic se tu nemaže: „Koš“ je koš GaleriQ. Zpět vrátí každou akci, včetně „Vložit do alba“.
+0651	Bez tlačítek
+0652	Nad fotkou
+0653	Pod fotkou
+0654	Umístění
+0655	Obnovit výchozí
+0656	Nahoru ponechá, doleva do koše, doprava později, dolů zpět – s výchozími tlačítky.
+0657	Vlastní
+0658	Standardní
+0659	Přejetí
+0660	Vyberte, co dělá každý směr. „Vložit do alba“ přidá fotku do alba v aplikaci Fotky a ponechá ji. Nečinnost nikdy není rozhodnutí.
+0661	Přejetí a tlačítka
+0662	Jen s VoiceOverem / ovládáním přepínači
+0663	Vždy
+0664	Zobrazovat tlačítka
+0665	Vloženo do „%1$@“
+0666	Momentálně už nejsou žádné oblíbené k procházení.
+0667	V tomto albu už nezbývá nic k procházení.
+0668	Mezi vašimi nejnovějšími fotkami už nezbývá nic k procházení.
+0669	Mezi vašimi nejnovějšími videi už nezbývá nic k procházení.
+0670	Momentálně už nejsou žádné Live Photos k procházení.
+0671	Momentálně už nejsou žádná dlouhá videa k procházení.
+0672	Momentálně tu už není nic k procházení.
+0673	Z tohoto dne v dřívějších letech už nezbývá nic k procházení.
+0674	Momentálně už nejsou žádné fotky k procházení.
+0675	Momentálně už nejsou žádné portréty k procházení.
+0676	Pro náhodný výběr už nezbývá nic k procházení.
+0677	Momentálně už nejsou žádné snímky obrazovky k procházení.
+0678	Momentálně už nejsou žádná selfie k procházení.
+0679	Z tohoto týdne už nezbývá nic k procházení.
+0680	Momentálně už nejsou žádná videa k procházení.
+0681	V tomto iPhonu je uložen jen malý náhled. Stáhněte originál, abyste ho viděli celý.
+0682	Stáhnout z iCloudu
+0683	Originál je na iCloudu.
+0684	Znovu načte plnou kvalitu z iCloudu. Rozhodnout se můžete kdykoli i podle náhledu.
+0685	Načítání fotek a videí …
+0686	%@ v této relaci
+0687	%1$lld z %2$lld
+0688	Zkusit znovu přeskočená média
+0689	Zobrazit nápovědu k přejetí
+0690	Při přejíždění skryto, dokud je tady znovu nenačtete. Originály zůstávají beze změny.
+0691	Přeskočená média
+0692	Aktuální fotka nebo video
+0693	Uklidit
+0694	Připraveno k procházení
+0695	Nově přidané
+0696	Fotky
+0697	Snímky obrazovky
+0698	Videa
+0699	Zobrazit koš
+0700	Soubor
+0701	Typ souboru
+0702	Soubory
+0703	Vyberte složku a projděte její soubory v GaleriQ.
+0704	Zatím není připojená žádná složka
+0705	Hledat soubory …
+0706	Připojená složka není dostupná. Připojte ji znovu.
+0707	Přidat do alba
+0708	Všechna alba
+0709	Vytvořit a přidat
+0710	Zadejte krátký název alba.
+0711	Načítání alb …
+0712	Název alba
+0713	Nové album
+0714	Fotka zůstane, kde je, a objeví se i v albu – také v aplikaci Fotky a s Fotkami na iCloudu i na vašich dalších zařízeních.
+0715	Otevřít soubory
+0716	Připnout album
+0717	Připnuto
+0718	Naposledy použité
+0719	Najít album
+0720	Odepnout album
+0721	Nejlepší: %1$lld
+0722	Nejlepší čas: %1$@
+0723	Neshodné karty otáčet ručně
+0724	Nový osobní rekord!
+0725	Zatím žádný rekord
+0726	Toto kolo potřebuje nejméně %1$lld použitelných fotek z vybraného zdroje. Zvolte jiný zdroj, menší výběr nebo povolte stahování z iCloudu.
+0727	Fotky
+0728	Symboly
+0729	Vaše nové rekordy jsou k dispozici v této relaci, ale nepodařilo se je uložit. Zkuste to znovu.
+0730	Rekordy
+0731	Vzhled a zvuk
+0732	Vybrat fotky
+0733	Fotky uložené na iCloudu se načtou podle potřeby.
+0734	Změnit fotky
+0735	Upravit hru
+0736	Najděte všechny shodné fotky vlastním tempem.
+0737	Vyberte 2–18 fotek pro své dvojice.
+0738	Hrát bez fotek · 6 dvojic
+0739	Vaše fotky
+0740	Vaše původní fotky zůstanou beze změny.
+0741	Sbírejte fotky. Řiďte přejetím.
+0742	Hrát bez fotek
+0743	Standardní
+0744	Hry
+0745	Najděte dvojice s vlastními fotkami.
+0746	Koláž
+0747	Momentálně tu nejsou žádné fotky ani videa.
+0748	Není co zobrazit
+0749	Klepnutím vyberete, podržením a tažením vyberete více. Posouvání není rozhodnutí.
+0750	Přehled
+0751	Vybrat
+0752	Vše
+0753	Nic
+0754	Vybrána %1$lld
+0754:few	Vybrány %1$lld
+0755	Vybráno %1$lld
+0756	Změněno
+0757	Odstraněno
+0758	Odebráno z „Později“
+0759	Ponecháno
+0760	Změněno: ponechat
+0761	Uloženo na později
+0762	Změněno: později
+0763	Neodstraněno
+0764	Už nenalezeno
+0765	Datum nastaveno
+0766	Přesunout do koše
+0767	Změněno: koš
+0768	Vráceno
+0769	Vráceno z koše
+0770	Nápověda
+0771	Cloud
+0772	Cloudové služby jako Fotky Google mohou synchronizovat smazání do dalších zařízení. Zkontrolujte jejich nastavení. GaleriQ načítá fotky a videa z Fotek na iCloudu automaticky podle potřeby, stejně jako aplikace Fotky.
+0773	Rozhodněte se
+0774	Přejeďte nahoru pro ponechání, doleva do koše a doprava na později. Ve výchozím nastavení se vrátí za 2 dny. Tuto dobu můžete změnit v nastavení. Hned po přejetí můžete pomocí „Změnit“ zvolit jiné datum. Přejetím dolů se vrátíte bez nového rozhodnutí.
+0775	Mazání
+0776	Přejetí nikdy nic nemaže. Položky nejdřív jdou do koše GaleriQ. Teprve když to tam potvrdíte, iOS přesune fotky a videa do Nedávno smazaných.
+0777	Znovu zobrazit prohlídku a tipy
+0778	Dolů
+0779	Doleva
+0780	Doprava
+0781	Nahoru
+0782	Vše
+0783	Odstraněno
+0784	%1$@ · %2$lld záznam
+0784:few	%1$@ · %2$lld záznamy
+0785	%1$@ · %2$lld záznamů
+0786	Vaše rozhodnutí se tu zobrazí, jakmile začnete uklízet.
+0787	Zatím žádná historie
+0788	Pro tento filtr zatím nejsou žádné záznamy.
+0789	Zatím žádné záznamy
+0790	Ponecháno
+0791	Později
+0792	Zobrazit méně
+0793	Zobrazit starší záznamy (%1$lld)
+0794	%1$@ · %2$@
+0795	Identické kopie
+0796	Soubory z připojených složek
+0797	od %1$@
+0798	Knihovna
+0799	Hotovo měsíc po měsíci
+0800	Vše prošlo
+0801	%1$lld k procházení
+0801:few	%1$lld k procházení
+0802	%1$lld k procházení
+0803	Pořízené rychle po sobě
+0804	Kategorie
+0805	Kolekce
+0806	Další nástroje
+0807	Info
+0808	Poloha
+0809	%1$lld položka
+0809:few	%1$lld položky
+0810	%1$lld položek
+0811	Ponechat
+0812	Vše
+0813	Archivy
+0814	Dokumenty
+0815	Obrázky
+0816	Ostatní
+0817	PDF
+0818	Videa
+0819	Velké soubory
+0820	Větší než
+0821	Jen soubory se známou velikostí nejméně %1$lld MB. Jejich velikost se může lišit od místa uvolněného jejich smazáním.
+0822	S volbou „Optimalizovat úložiště iPhonu“ jsou tyto originály jen na iCloudu. iOS bez stažení neprozradí jejich přesnou velikost, proto ji GaleriQ odhadne podle vašich změřených fotek a videí a zobrazí jako „cca“.
+0823	Jen na iCloudu: %1$lld
+0824	v %1$lld velkém souboru
+0824:few	ve %1$lld velkých souborech
+0825	v %1$lld velkých souborech
+0826	Jen na iCloudu, velikost odhadnuta
+0827	Pokračovat v měření (zbývá: %1$lld)
+0828	Měření velikostí … %1$lld z %2$lld
+0829	Žádné odpovídající soubory
+0830	Žádný z dostupných souborů se známou velikostí není větší než %1$lld MB.
+0831	Nečitelné: %1$lld
+0832	Tyto položky jsou v tomto iPhonu, ale nepodařilo se je přečíst. V seznamu se zobrazují s odhadnutou velikostí („cca“).
+0833	Později
+0834	Zpět do balíčku
+0835	Odloženo, bez data
+0836	Připraveno k procházení od %1$@
+0837	Připraveno k procházení dnes
+0838	Přejetím fotky nebo videa doprava ho později uvidíte znovu.
+0839	Nic není uloženo na později
+0840	V příštích 7 dnech · %1$lld
+0841	Odloženo · %1$lld
+0842	Připraveno k procházení · %1$lld
+0843	Od %1$@ · %2$lld
+0844	Bez data · %1$lld
+0845	Zítra · %1$lld
+0846	Znovu za %1$lld den
+0846:few	Znovu za %1$lld dny
+0847	Znovu za %1$lld dní
+0848	Znovu za %1$lld měsíc
+0848:few	Znovu za %1$lld měsíce
+0849	Znovu za %1$lld měsíců
+0850	Znovu za 1 měsíc
+0851	Znovu za 1 týden
+0852	Znovu za %1$lld týden
+0852:few	Znovu za %1$lld týdny
+0853	Znovu za %1$lld týdnů
+0854	Vrátí se při příštím úklidu
+0855	Odloženo – najdete v Později
+0856	Připomenout, až bude čas na procházení?
+0857	Odebrat z „Později“
+0858	Projít teď
+0859	Projít teď (%1$lld)
+0860	Znovu projít %1$@
+0861	Znovu zítra
+0862	Skrýt podsložky
+0863	Tady se zobrazí fotky a videa z tohoto zařízení.
+0864	Zobrazit podsložky
+0865	Klepnutím na ♡ u fotky nebo videa ho označíte jako oblíbené. Oblíbené jsou stejné jako v aplikaci Fotky.
+0866	Zatím žádné oblíbené
+0867	Z knihovny
+0868	Vše
+0869	Filmový režim
+0870	Odebrat filtr
+0871	Upravené
+0872	Pro filtr „%1$@“ tu nic není.
+0873	Oblíbené
+0874	Panoramata
+0875	RAW
+0876	Záznamy obrazovky
+0877	Zpomalené
+0878	Časosběrné
+0879	Filtr
+0880	Uklidit toto album
+0881	Toto album momentálně nemá žádné fotky ani videa.
+0882	Vyloučit z úklidu
+0883	Vyloučeno z úklidu
+0884	Znovu zahrnout do úklidu
+0885	Hledání „%1$@“ neodpovídá žádné album.
+0886	Hledat alba …
+0887	Nejvíce položek
+0888	Naposledy aktualizované
+0889	%1$lld položka skryta v GaleriQ
+0889:few	%1$lld položky skryty v GaleriQ
+0890	%1$lld položek skryto v GaleriQ
+0891	GaleriQ je nikde nezobrazuje. Soubory jsou beze změny a jiné aplikace je dál zobrazují.
+0892	%1$lld skrytá položka
+0892:few	%1$lld skryté položky
+0893	%1$lld skrytých položek
+0894	Použijte „Skrýt v GaleriQ“ u alba, fotky nebo výběru.
+0895	Nic není skryto
+0896	Skryté
+0897	Skrýt v GaleriQ
+0898	GaleriQ je přestane zobrazovat – ve Fotkách ani při úklidu. Soubory zůstanou beze změny a v jiných aplikacích viditelné. Nejde o trezor.
+0899	Skrýt %1$lld položku v GaleriQ?
+0899:few	Skrýt %1$lld položky v GaleriQ?
+0900	Skrýt %1$lld položek v GaleriQ?
+0901	Délka
+0902	Název
+0903	Soubor RAW
+0904	Rozlišení
+0905	Velikost
+0906	Pořízeno
+0907	Typ souboru
+0908	Menší dlaždice
+0909	Dny
+0910	Větší dlaždice
+0911	Měsíce
+0912	Roky
+0913	Typy médií
+0914	Alba
+0915	Časová osa
+0916	Bez data
+0917	Naposledy přidané nahoře – v pořadí aplikace Fotky.
+0918	Uklízet odsud
+0919	Řadit
+0920	Naposledy přidané
+0921	Největší nahoře
+0922	Název
+0923	Nejnovější nahoře
+0924	Nejstarší nahoře
+0925	%1$lld podsložka
+0925:few	%1$lld podsložky
+0926	%1$lld podsložek
+0927	Přesunout do koše
+0928	Toto je oblíbená položka. „Chránit oblíbené“ je zapnuté, takže nepůjde do koše. Můžete to změnit v Nastavení.
+0929	Do koše GaleriQ – nic se nemaže. Rozhodnete se tam později.
+0930	Do koše GaleriQ – nic se nemaže. Oblíbené zůstávají („Chránit oblíbené“ je zapnuté).
+0931	Přesunout %1$lld položku do koše?
+0931:few	Přesunout %1$lld položky do koše?
+0932	Přesunout %1$lld položek do koše?
+0933	%1$lld položka je v koši GaleriQ.
+0933:few	%1$lld položky jsou v koši GaleriQ.
+0934	%1$lld položek je v koši GaleriQ.
+0935	V koši GaleriQ
+0936	%1$lld položka znovu zobrazena
+0936:few	%1$lld položky znovu zobrazeny
+0937	%1$lld položek znovu zobrazeno
+0938	Znovu zobrazit
+0939	Poměr stran
+0940	Zobrazení
+0941	Čtverec
+0942	Odstranit všech %1$lld s Pro
+0943	Podívejte se na reklamu: odstraňte dnes o %1$lld víc
+0944	Reklama byla zavřena předčasně. Nic nebylo odemčeno. Dnes to můžete zkusit znovu.
+0945	Jednou denně. Bonus platí jen dnes.
+0946	Momentálně není k dispozici žádná reklama. Nic nebylo odemčeno.
+0947	Vybráno: %2$lld. Bez Pro můžete odstranit až %1$lld denně. Vše ostatní zůstane v koši GaleriQ.
+0948	Dnes zbývá %1$lld z %2$lld
+0949	Bez limitu s Pro
+0950	Odstranit %1$lld z nich
+0951	Denní limit dosažen
+0952	Dnes zbývá %1$lld
+0953	Váš denní limit se zítra obnoví.
+0954	Fotka nebo video
+0955	Analýza dokončena
+0956	Můžete dohrát kolo, nebo si hned prohlédnout výsledky.
+0957	Analýza pokračuje
+0958	Dejte si pauzu
+0959	Fotoaparát
+0960	Karta %1$lld
+0961	Načíst fotky z iCloudu
+0962	Všechny dvojice nalezeny!
+0963	Čas: %1$@
+0964	Otočit karty zpět
+0965	Srdce
+0966	Rubem nahoru
+0967	List
+0968	Příprava obrázků…
+0969	Dvojice nalezena
+0970	Měsíc
+0971	Hora
+0972	Tahy: %1$lld
+0973	Vybrat moje fotky
+0974	%1$lld dvojic (%2$lld karet)
+0975	%1$lld / %2$lld dvojic
+0976	Obrázek %1$lld
+0977	Vybrat album nebo složku fotek
+0978	Zobrazit výsledky
+0979	Pokračovat v kole
+0980	Počet dvojic
+0981	Zdroj obrázků
+0982	Album nebo složka fotek
+0983	Oblíbené
+0984	Celá knihovna fotek
+0985	Slunce
+0986	Dvojice
+0987	Některé fotky už nejsou k dispozici nebo jsou jen na iCloudu. Vyberte jiné fotky nebo povolte jejich stažení. Fotky z trezoru nelze použít.
+0988	Akce pro %1$@
+0989	Projít znovu
+0990	Prošlo
+0991	%1$lld na později
+0991:few	%1$lld na později
+0992	%1$lld na později
+0993	Nezačato · %1$lld položka
+0993:few	Nezačato · %1$lld položky
+0994	Nezačato · %1$lld položek
+0995	Prošlo %1$lld z %2$lld
+0995:few	Prošlo %1$lld z %2$lld
+0996	Prošlo %1$lld z %2$lld
+0997	Měsíce se tu zobrazí, jakmile budou mít fotky nebo videa datum pořízení.
+0998	Zatím žádné měsíce
+0999	Jak daleko jste v každém měsíci. Položky odložené na později se počítají jako prošlé.
+1000	Podle měsíců
+1001	Další akce
+1002	Přidat
+1003	16:9 · Na šířku
+1004	4:5 · Mírně na výšku
+1005	9:16 · Na výšku
+1006	1:1 · Čtverec
+1007	Možnosti klipu %1$lld
+1008	Klip %1$lld z %2$lld
+1009	Fotka · %1$@
+1010	Klip odebrán z videa
+1011	Video · %1$@
+1012	Pomocí ⋯ klip přesunete nebo odeberete. Samotné fotky a videa zůstanou beze změny.
+1013	Prolínání do černé mezi klipy
+1014	Video se nepodařilo vytvořit. Nic nebylo uloženo a originály jsou beze změny.
+1015	Vyplnit snímek
+1016	Když má klip jiný tvar
+1017	Klipy se nikdy neroztahují: buď se zobrazí celý obraz (s černými okraji), nebo vyplní snímek a okraje se oříznou.
+1018	Celý obraz
+1019	Formát
+1020	Jako první klip
+1021	Tvar hotového videa. 9:16 vyplní displej telefonu drženého na výšku, 16:9 se hodí pro televize a počítače. „Jako první klip“ použije tvar vašeho prvního klipu.
+1022	Jemné přiblížení
+1023	Fotky se pomalu přibližují, aby nepůsobily staticky.
+1024	Posunout dřív
+1025	Posunout později
+1026	Váš vlastní soubor, přehrávaný od začátku a podle potřeby opakovaný. GaleriQ neobsahuje žádnou hudbu. Při sdílení dbejte na práva.
+1027	Vybrat zvukový soubor
+1028	Odebrat
+1029	Hlasitost hudby
+1030	Čas na fotku
+1031	Platí pro každou fotku v tomto videu. Videa se přehrávají vždy celá.
+1032	Fotky
+1033	Vybrat videa a fotky
+1034	Kvalita
+1035	Vyvážená
+1036	Vysoká (Full HD)
+1037	Vysoká a Vyvážená: až Full HD (1080p) – Vyvážená vytváří menší soubory téměř bez viditelného rozdílu. Malá: až HD (720p), nejmenší soubor, vhodný k odesílání.
+1038	Malá (HD)
+1039	Odebrat z videa
+1040	Změnit pořadí
+1041	Vytváření videa …
+1042	Uložit video
+1043	Uloženo jako nové video v knihovně. Originály zůstávají beze změny.
+1044	Fotky s jemným přiblížením a prolínáním, uložené jako video
+1045	Videa a fotky za sebou, s hudbou
+1046	Klipy
+1047	Formát
+1048	Hudba
+1049	Přechod
+1050	Spojit videa
+1051	Prezentace jako video
+1052	Přidejte alespoň dva klipy.
+1053	Celkem nejvýše 30 minut. Zkraťte klipy nebo některé odeberte.
+1054	Nejvýše 50 klipů na video.
+1055	Mezi dvěma klipy obraz krátce zčerná a pak se znovu objeví. Vypnuto: tvrdý střih. Celková délka zůstane stejná.
+1056	Vypnout zvuk
+1057	Tento soubor nelze zobrazit.
+1058	Nevybráno
+1059	Upozornění
+1060	Něco v „Později“ je dnes připraveno k procházení.
+1061	OK
+1062	GaleriQ zobrazuje vaše fotky a videa přímo v zařízení, abyste mohli uklízet. Bez účtu GaleriQ a bez serveru.
+1063	Přístup k fotkám a videím
+1064	Koupit Pro · jednorázově %1$@
+1065	Koupit Pro jednorázově
+1066	Cvičné karty. Nic se tu neukládá.
+1067	Další
+1068	Přejíždějte a třiďte bez omezení, s občasnými reklamami. Odstraňování položek má denní limit.
+1069	Začněte zdarma
+1070	Krok %1$lld z %2$lld
+1071	Vaše fotky zůstávají v zařízení. Žádný účet GaleriQ, žádné nahrávání fotek.
+1072	Položky nejdřív jdou do koše GaleriQ. Tam odstranění potvrdíte a iOS se ještě jednou zeptá, než přesune fotky a videa do Nedávno smazaných.
+1073	Co se smaže, rozhodujete vy
+1074	Projděte své fotky a videa a rozhodněte, co zůstane. Jedno přejetí po druhém, vlastním tempem.
+1075	Vaše galerie konečně v pořádku
+1076	Takhle to funguje. A teď vaše fotky.
+1077	Nahoru: ponechat. Doleva: koš. Doprava: později. Vyzkoušejte si to tady.
+1078	Přejeďte a vyberte
+1079	Největší nahoře
+1080	Nejnovější nahoře
+1081	Nejstarší nahoře
+1082	Náhodně
+1083	Pořadí
+1084	Přidat do alba
+1085	%1$lld přidána do „%2$@“.
+1085:few	%1$lld přidány do „%2$@“.
+1086	%1$lld přidáno do „%2$@“.
+1087	Název alba
+1088	Zatím žádná alba
+1089	Výběrový košík
+1090	Přidat do výběrového košíku
+1091	%1$lld přidána do výběrového košíku.
+1091:few	%1$lld přidány do výběrového košíku.
+1092	%1$lld přidáno do výběrového košíku.
+1093	Už je ve výběrovém košíku.
+1094	Vyprázdnit košík
+1095	Vyprázdní se jen košík. Fotky a videa zůstanou beze změny.
+1096	Vyprázdnit výběrový košík?
+1097	Ve „Fotkách“ něco vyberte a klepněte na ⋯ › Přidat do výběrového košíku.
+1098	Výběrový košík je prázdný
+1099	Sbírejte fotky a videa z různých měsíců a složek. Košík zůstává, dokud ho nevyprázdníte – s košem nemá nic společného.
+1100	Vyjmout z košíku
+1101	Vytvořit
+1102	%1$lld položka nenalezena (smazána nebo už není v tomto zařízení).
+1102:few	%1$lld položky nenalezeny (smazány nebo už nejsou v tomto zařízení).
+1103	%1$lld položek nenalezeno (smazány nebo už nejsou v tomto zařízení).
+1104	Odebrat ze seznamu
+1105	Nové album
+1106	Poznámka
+1107	Poznámka (jen v GaleriQ, soubor zůstane beze změny)
+1108	Uložit poznámku
+1109	Přidat
+1110	Odebrat všude
+1111	Štítek zmizí všude. Samotné fotky a videa zůstanou beze změny.
+1112	Odebrat štítek „%1$@“ všude?
+1113	Nový štítek
+1114	Odebrat štítek
+1115	u některých
+1116	Štítky
+1117	Štítky pro %1$lld položku
+1117:few	Štítky pro %1$lld položky
+1118	Štítky pro %1$lld položek
+1119	Zatím žádné štítky. Přidejte vlastní slova jako „Faktura“ nebo „Dovolená“ – GaleriQ zná jen to, co sami zadáte.
+1120	Pozastavit
+1121	Akce PDF
+1122	Spojování souborů, řazení a otáčení stránek
+1123	PDF se nepodařilo uložit.
+1124	Přidat soubory
+1125	Vybrat soubory
+1126	PDF ze souborů
+1127	Soubory se nepodařilo otevřít. Vyberte čitelná, nezamčená PDF nebo obrázky a zkuste to znovu. Vaše aktuální stránky zůstanou beze změny.
+1128	Vyberte PDF nebo obrázky ze Souborů. Spojujte, řaďte a otáčejte stránky s živým náhledem a pak uložte nové PDF.
+1129	Vyberte méně nebo menší soubory (až 100 MB na soubor, 256 MB na výběr a 500 stránek).
+1130	Vyplnit
+1131	Přizpůsobit
+1132	Vytvořit PDF
+1133	Okraj
+1134	Žádný
+1135	Normální
+1136	Úzký
+1137	Automaticky
+1138	Na šířku
+1139	Na výšku
+1140	Orientace
+1141	Posunout dřív
+1142	Posunout později
+1143	Stránka %1$lld z %2$lld
+1144	Otočit
+1145	Vybrat stránky
+1146	Papír
+1147	US Letter
+1148	Fotek na stránku
+1149	%1$lld fotka
+1149:few	%1$lld fotky
+1150	%1$lld fotek
+1151	Fotky pro PDF
+1152	Fotky se vloží znovu: poloha a další údaje o pořízení se do PDF nedostanou. Originály zůstanou beze změny.
+1153	Vytváření PDF …
+1154	Uložit jako PDF
+1155	Uloženo do „Documents/GaleriQ“ · %1$@
+1156	Sdílet PDF
+1157	Fotky jako dokument nebo kontaktní arch
+1158	Vytvořit PDF
+1159	Fotka
+1160	Kdy to chcete vidět znovu?
+1161	Počet
+1162	Odložit bez data
+1163	Samo se nevrátí. Najdete to v Později › Odloženo.
+1164	Znovu projít %1$@
+1165	Vybrat datum …
+1166	Jednotka
+1167	Přehrát
+1168	Pozice přehrávání
+1169	Tuto fotku nebo video teď nelze zobrazit.
+1170	Možná bylo přesunuto nebo ještě není úplně uloženo.
+1171	Bezplatná verze zobrazuje reklamy od Googlu. Souhlas můžete změnit v nastavení. Vaše fotky, jejich názvy, složky ani nic z nich odvozeného se nikdy nedostanou k poskytovatelům reklam. Pro je bez reklam.
+1172	Povolit přístup
+1173	Spravovat výběr
+1174	Fotky a videa
+1175	K prohlížení, třídění a odstraňování fotek a videí po vašem potvrzení.
+1176	Povolit oznámení
+1177	Volitelné: připomenutí, když je něco v „Později“ připraveno k procházení. Názvy souborů se na zamčené obrazovce nezobrazí.
+1178	Otevřít nastavení iOS
+1179	Nákupy probíhají přes App Store od Applu. GaleriQ k tomu nikdy neposílá vaše fotky, názvy ani metadata.
+1180	GaleriQ prohlíží vaše fotky, videa a povolené soubory jen ve vašem zařízení. Nepotřebujete účet a žádný server GaleriQ neexistuje. Dobré vědět: u cloudových služeb jako Fotky Google může to, co smažete, zmizet i na vašich dalších zařízeních.
+1181	Vaše soukromí na prvním místě
+1182	Zakoupeno jednorázově: bez reklam, bez denního limitu a složky trezoru bez reklam.
+1183	Žádná reklama při otevření aplikace a žádné reklamní karty mezi vašimi fotkami a videi.
+1184	Složky trezoru bez reklam
+1185	Vytvářejte nové složky v trezoru, aniž byste museli sledovat video.
+1186	Vše ostatní – úpravy, analýza, duplicity, kolekce, Studio – je zdarma pro všechny.
+1187	Vaše fotky a soubory se kontrolují a třídí jen ve vašem zařízení. Při nákupu jde Applu jen to nezbytné a kvůli reklamám v bezplatné verzi Googlu – nikdy vaše fotky, jejich názvy ani údaje z nich.
+1188	Pro je aktivní
+1189	Pro
+1190	Bez reklam
+1191	Úklid bez denního limitu
+1192	Odstraňujte, kolik chcete — bez denního limitu %1$lld.
+1193	GaleriQ Pro je teď aktivní.
+1194	Nákup se nepodařilo dokončit.
+1195	Pro tento účet nebyl nalezen žádný předchozí nákup.
+1196	Váš nákup čeká na potvrzení. Pro se odemkne po potvrzení.
+1197	Váš nákup byl obnoven.
+1198	Načítání ceny …
+1199	Vaše fotky a soubory se kontrolují a třídí jen ve vašem zařízení. Při nákupu jde Applu jen naprosté minimum – nikdy vaše fotky, jejich názvy ani nic z nich odvozeného.
+1200	Obnovit nákupy
+1201	Pro teď nelze načíst z App Storu. Zkontrolujte připojení k internetu a zkuste to znovu.
+1202	Kupte jednou. Bez předplatného.
+1203	GaleriQ Pro
+1204	Nákupy v této verzi zatím nejsou k dispozici.
+1205	Tato verze zatím není propojená s nákupy v App Storu. Všechny ostatní funkce můžete používat jako obvykle.
+1206	Odemknout GaleriQ Pro
+1207	Zobrazit GaleriQ Pro
+1208	Vrátit zpět
+1209	Přidat
+1210	Přidat zkratku
+1211	Vše prošlo
+1212	Upravit
+1213	Upravit zkratky
+1214	Prázdné
+1215	Oblíbené
+1216	Vaše oblíbené z aplikace Fotky
+1217	Album
+1218	Alba
+1219	Nejnovější fotky
+1220	Vaše nejnovější fotka (%1$lld)
+1220:few	Vaše %1$lld nejnovější fotky
+1221	Vašich %1$lld nejnovějších fotek
+1222	Nejnovější videa
+1223	Vaše nejnovější video (%1$lld)
+1223:few	Vaše %1$lld nejnovější videa
+1224	Vašich %1$lld nejnovějších videí
+1225	Limit zkratek: %1$lld. Odeberte jednu, abyste mohli přidat jinou.
+1226	Live Photos
+1227	Fotky s pohybem a zvukem
+1228	Dlouhá videa
+1229	Videa dlouhá minutu a více
+1230	Posunout dozadu: %1$@
+1231	Posunout dopředu: %1$@
+1232	Nebyla nalezena žádná alba s fotkami nebo videi.
+1233	V tento den
+1234	Pořízeno v dnešní datum v dřívějších letech
+1235	Na úvodní obrazovce
+1236	Fotky
+1237	Portréty
+1238	Fotky pořízené v režimu Portrét
+1239	Náhodně
+1240	%1$lld náhodných neprošlých fotek a videí, pokaždé znovu zamíchaných
+1241	Odebere se jen zkratka. Vaše soubory a rozhodnutí zůstanou.
+1242	Snímky obrazovky
+1243	Selfie
+1244	Z alba Selfie v aplikaci Fotky
+1245	Tento týden
+1246	Fotky a videa z tohoto kalendářního týdne
+1247	Rychlý přístup
+1248	Videa
+1249	Všechny úspěchy
+1250	%lld nejlepší časy
+1252	%lld nejlepší čas
+1253	%lld nejlepších časů
+1256	Nejnovější rekord
+1257	Bronz
+1258	Zlato
+1259	%1$@ od %2$@ · zbývá %3$@
+1260	Stříbro
+1261	Medaile porovnávají jen s vašimi vlastními výsledky – žádné žebříčky, nic neopouští zařízení.
+1262	Rekord
+1263	Vaše rekordy. Zůstávají v tomto iPhonu.
+1264	fotek
+1265	bodů
+1266	%1$@ fotky
+1268	%1$@ fotka
+1269	%1$@ fotek
+1270	%1$@ body
+1272	%1$@ bod
+1273	%1$@ bodů
+1274	aktivní dny
+1276	aktivní den
+1277	aktivních dní
+1280	nové rekordy
+1282	nový rekord
+1283	nových rekordů
+1286	prošlo
+1287	Váš poslední týden
+1288	Znovu
+1289	Hromadné úpravy
+1290	Upravit PDF
+1291	Skenovat dokumenty
+1292	Odstranit
+1293	Vybráno: %2$lld. Dnes můžete odstranit ještě %1$lld položku. Vyberte nejvýše %1$lld nebo si pořiďte GaleriQ Pro.
+1293:few	Vybráno: %2$lld. Dnes můžete odstranit ještě %1$lld položky. Vyberte nejvýše %1$lld nebo si pořiďte GaleriQ Pro.
+1294	Vybráno: %2$lld. Dnes můžete odstranit ještě %1$lld položek. Vyberte nejvýše %1$lld nebo si pořiďte GaleriQ Pro.
+1295	Zrušeno. Nic nebylo odstraněno.
+1296	Váš výběr se změnil. Zkontrolujte ho prosím znovu.
+1297	Nic nebylo odstraněno.
+1298	Výsledek zkontrolujeme při příštím otevření aplikace. Nic se znovu mazat nebude.
+1299	Denní limit dosažen
+1300	Nic neodstraněno
+1301	Štětec
+1302	Smazat oblast
+1303	Jedním prstem přetřete místo. Dvěma prsty přibližujete.
+1304	Klepněte na fotku tam, kde má být oblast. Pak ji zesvětlete, ztmavte nebo změňte její barvu.
+1305	Přechod
+1306	Kruh
+1307	Červené oči
+1308	Klepněte na červené oko. U malých obličejů nejdřív přibližte dvěma prsty. Mění se jen červená v oku.
+1309	Odebrat poslední
+1310	Velikost
+1311	Zkusit znovu
+1312	Uložit
+1313	Snímek obrazovky
+1314	Hledat
+1315	Vybráno
+1316	Porovnat sérii %1$lld fotek
+1317	Ponechat %1$lld · Koš %2$lld
+1318	Ponecháno %1$lld · %2$lld v koši
+1319	Nic se nemaže. Koš patří GaleriQ a vyprázdní se jen po vašem potvrzení.
+1320	Klepnutím na fotku ji porovnáte dole. Zaškrtnutí rozhoduje, co zůstane.
+1321	Ponechat
+1322	Ponechat
+1323	Koš
+1324	Pořízené rychle po sobě · %1$lld
+1325	Porovnat série
+1326	Zobrazovat úspěchy
+1327	Série, denní cíl, odznaky a týdenní souhrn.
+1328	Změnit souhlas s reklamami
+1329	Vzhled
+1330	Ovládání
+1331	Denní cíl
+1332	Vyloučené složky
+1333	Vypnuto
+1334	Vibrovat při akcích
+1335	Při otevření zobrazit nápovědu k přejetí
+1336	Za %1$lld den
+1336:few	Za %1$lld dny
+1337	Za %1$lld dní
+1338	Jazyk
+1339	GaleriQ používá jazyk vašeho iPhonu. Klepnutím vyberete jiný jazyk jen pro GaleriQ v části „Jazyk“ v nastavení iOS.
+1340	Později: výchozí doba
+1341	Jednorázový nákup
+1342	Chránit oblíbené
+1343	Ohodnotit GaleriQ
+1344	Opravdu nám to pomáhá – děkujeme!
+1345	Zobrazovat „Váš poslední týden“
+1346	Vždy na úvodní stránce
+1347	Nastavení
+1348	Sdílet
+1349	Tuto fotku nebo video teď nelze sdílet.
+1350	Vybrané fotky a videa teď nelze sdílet. Zkontrolujte připojení k iCloudu a zkuste to znovu.
+1351	Nepřipraveno ke sdílení: %1$lld z %2$lld (např. bez připojení k iCloudu). Nabídnuty byly jen ostatní.
+1352	Příprava … %1$lld z %2$lld
+1353	Později
+1354	Začít uklízet
+1355	Studio
+1356	Koš
+1357	cca %1$@
+1358	„cca“ = odhadnuto podle vašich změřených fotek a videí. iOS přesnou velikost originálů na iCloudu prozradí až po stažení.
+1359	Nejméně %1$@
+1360	Velikost neznámá
+1361	Další bez rozhodnutí
+1362	Přehrát znovu
+1363	Žádný
+1364	Čas na fotku
+1365	Není tu co zobrazit.
+1366	Konec prezentace
+1367	Prolínání
+1368	Opakovat
+1369	Další
+1370	Sledování nikdy není rozhodnutí. Obrazovka během prezentace zůstává zapnutá.
+1371	Pořadí
+1372	Nejstarší nahoře
+1373	Náhodně
+1374	Pozastavit
+1375	Předchozí
+1376	%1$lld s
+1377	Nastavení prezentace
+1378	Prezentace
+1379	Přechod
+1380	Přehrávat videa (bez zvuku)
+1381	Hrací plocha Foto hada
+1382	Kamera: sloupec %1$lld, řádek %2$lld. Fotka: sloupec %3$lld, řádek %4$lld.
+1383	Postavička
+1384	Klasický — pevné okraje
+1385	Další pole je volné
+1386	Přejetím po hrací ploše změníte směr.
+1387	Dolů
+1388	Skóre: %1$lld
+1389	Rychlá
+1390	Jídlo
+1391	Vybrat fotky
+1392	%lld ze 100 fotek
+1393	Posunout později
+1394	Vyberte až 100 fotek pro svého hada.
+1395	Váš výběr fotek se nepodařilo uložit ani obnovit. Zkuste to prosím znovu.
+1396	Pořadí fotek · tažením změníte
+1397	Fotka %lld
+1398	Používají se jen fotky, které vyberete. Malé kopie zůstávají v tomto iPhonu, mimo zálohu na iCloudu. Odeberte je tady a tyto kopie se smažou.
+1399	Vaše fotky
+1400	Posunout dřív
+1401	Pomalá
+1402	Haptika
+1403	Doleva
+1404	Herní režim
+1405	Noční les
+1406	Normální
+1407	Překážka přímo vpředu
+1408	Další hry
+1409	Kolo dokončeno
+1410	Pauza
+1411	Některé fotky se nepodařilo načíst. Zkontrolujte připojení pro fotky z iCloudu a zkuste to znovu.
+1412	Nejlepší: —
+1413	Pohodový — průchod okraji
+1414	Doprava
+1415	Zamíchat fotky
+1416	Zamíchání platí pro příští novou hru. Změna fotek pozastaví aktuální hru.
+1417	Zvuk
+1418	Rychlost
+1419	Spustit hru
+1420	Přejetím začnete nové kolo
+1421	Přejetím budete pokračovat
+1422	Řiďte přejetím kdekoli
+1423	Foto had
+1424	Nahoru
+1425	Pás fotek je kompletní!
+1426	Největší nahoře
+1427	Nejnovější nahoře
+1428	Nejstarší nahoře
+1429	Odpojením složky se žádné soubory nesmažou. V tomto zobrazení souborů vybíráte, ke kterým složkám má GaleriQ přístup.
+1430	Odpojit složku
+1431	Jen prohlížení
+1432	Prohlížení a mazání souborů
+1433	Nedostupné — připojte prosím znovu
+1434	Vaše uložená rozhodnutí se nepodařilo načíst. Nic nebylo změněno ani smazáno. Restartujte GaleriQ; pokud to nepomůže, sdílejte diagnostiku.
+1435	GaleriQ se nepodařilo spustit
+1436	Vaše zařízení
+1437	%1$@ volno podle iOS
+1438	Viditelné pro GaleriQ
+1439	Snímky obrazovky už jsou zahrnuté ve fotkách. Velké soubory a duplicity se nepočítají znovu. Neznámé velikosti se do součtu nezapočítají a součet je pak označen „Nejméně“.
+1440	Není viditelné pro GaleriQ
+1441	GaleriQ nemůže zkontrolovat jiné aplikace, systémové soubory, obsah v cloudu ani složky, které jste nepovolili. Pro ty se velikost nezobrazuje.
+1442	Připojené složky
+1443	Analýza úložiště zůstává ve vašem zařízení.
+1444	včetně snímků obrazovky
+1445	Přehled úložiště
+1446	Informace o úložišti teď nejsou k dispozici
+1447	z %1$@ využito
+1448	%1$lld položka · %2$@
+1448:few	%1$lld položky · %2$@
+1449	%1$lld položek · %2$@
+1450	Koláž
+1451	Koláž
+1452	Mřížka, volný styl nebo pás
+1453	Vytvořit
+1454	Koláž · %1$lld fotka
+1454:few	Koláž · %1$lld fotky
+1455	Koláž · %1$lld fotek
+1456	Smazat koncept
+1457	Koncept se odstraní. Vaše fotky zůstanou nedotčené.
+1458	Bezplatná verze uchovává 3 nejnovější koncepty.
+1459	Koncepty
+1460	Pro tuto velikost není dost paměti. Zkuste „Standardní“ nebo méně fotek.
+1461	Tvořte se svými fotkami. Vše zůstává ve vašem zařízení.
+1462	Vyberte nejvýše %1$lld.
+1463	Fotky pro koláž
+1464	Uložené
+1465	Upravené fotky, videa a koláže
+1466	Nic se nesmaže, dokud nevyprázdníte koš a nepotvrdíte to.
+1467	Pro teď hotovo
+1468	Ponecháno
+1469	Zobrazit poslední fotku nebo video
+1470	Později
+1471	Uklízejte bez denního limitu s GaleriQ Pro. Kupte jednou, bez předplatného.
+1472	O kousek uklizenější
+1473	V koši
+1474	S Pro bez denního limitu.
+1475	%1$lld odložena k odstranění.
+1475:few	%1$lld odloženy k odstranění.
+1476	%1$lld odloženo k odstranění.
+1477	Zobrazit koš (%1$lld)
+1478	Uklidit
+1479	Historie
+1480	Fotky
+1481	Studio
+1482	Dnes
+1483	Povolte GaleriQ přístup, abyste mohli prohlížet a třídit své fotky a videa.
+1484	Povolte přístup v nastavení iOS v části GaleriQ › Fotky. Vaše dosavadní rozhodnutí zůstanou uložená.
+1485	Bez přístupu k vašim fotkám a videím
+1486	Přístup k fotkám a videím
+1487	Pokračovat v úklidu
+1488	Pokračovat: %1$@
+1489	Pokračujte tam, kde jste skončili.
+1490	Zatím tu není nic dalšího k procházení.
+1491	Vše prošlo
+1492	%1$lld položka z „Později“ je připravena k procházení
+1492:few	%1$lld položky z „Později“ jsou připraveny k procházení
+1493	%1$lld položek z „Později“ je připraveno k procházení
+1494	Dobré odpoledne
+1495	Dobrý večer
+1496	Dobré ráno
+1497	Dobré poledne
+1498	Změnit přístup
+1499	GaleriQ zobrazuje jen fotky a videa, které jste povolili. Ty můžete uklízet jako obvykle.
+1500	Omezený přístup
+1501	%1$lld nová fotka nebo video
+1501:few	%1$lld nové fotky a videa
+1502	%1$lld nových fotek a videí
+1503	od vašeho posledního úklidu
+1504	Při posledním vyprazdňování koše se něco přerušilo. Pro jistotu se nic znovu nemaže.
+1505	Otevře vaše fotky a videa k úklidu
+1506	Začít uklízet
+1507	Projeďte přejetím své fotky a videa.
+1508	Úložiště zařízení
+1509	Využito %1$@ z %2$@
+1510	Upravit více fotek
+1511	Změní expozici mnoha fotek najednou.
+1512	Převést
+1513	Uloží fotky v jiném formátu souboru, např. HEIC jako JPEG pro zařízení, která HEIC neotevřou.
+1514	JPEG otevře každé zařízení. PNG zachová každý detail, ale soubory jsou větší. Fotky, které už jsou v tomto formátu, se přeskočí.
+1515	např. HEIC na JPEG, jako nové kopie
+1516	Vaše originály zůstanou beze změny – GaleriQ uloží nové kopie do knihovny.
+1517	Uložena %1$lld nová kopie.
+1517:few	Uloženy %1$lld nové kopie.
+1518	Uloženo %1$lld nových kopií.
+1519	Pod 0 fotky ztmaví, nad 0 zesvětlí.
+1520	Nepovedlo se. Vaše originály jsou beze změny.
+1521	%1$lld se nepodařilo zpracovat.
+1521:few	%1$lld se nepodařilo zpracovat.
+1522	%1$lld se nepodařilo zpracovat.
+1523	Menší soubory, ale ne každé zařízení je otevře
+1524	Otevře se na každém zařízení a v každé aplikaci
+1525	Bez ztráty kvality, ale mnohem větší soubory
+1526	Vytvořit GIF
+1527	Malý soubor – dobrý do zpráv
+1528	Ostřejší, ale větší soubor
+1529	Čas na fotku
+1530	Promění několik fotek v krátkou animaci, která se donekonečna opakuje – v pořadí pořízení.
+1531	GIFy mají nejvýše 256 barev a žádný zvuk – fotky mohou vypadat trochu zrnitě.
+1532	GIF uložen do knihovny (%1$@).
+1533	Velikost
+1534	Z fotek nebo krátké části videa
+1535	Nástroje
+1536	Odstranit polohu
+1537	Kopie vypadají přesně jako originál – odstraní se jen místo pořízení. Fotky bez polohy se přeskočí.
+1538	Kopie bez polohy, např. před sdílením
+1539	Nejdřív vyberte fotky.
+1540	Vyberte alespoň dvě fotky.
+1541	Zatím nejsou vybrané žádné fotky
+1542	Vaše originály jsou beze změny – žádné místo nebylo uvolněno.
+1543	Vybrat fotky
+1544	Vytvořit s Pro
+1545	%1$@ px
+1546	Vyvážená
+1547	Vysoká
+1548	Menší soubor
+1549	Kvalita
+1550	Nižší kvalita znamená menší soubory – u „Vyvážené“ rozdíl uvidíte jen zřídka.
+1551	%1$@ (%2$@)
+1552	Odstranit i polohu
+1553	Zmenšit
+1554	Zmenší fotky – v pixelech i velikosti souboru. Praktické pro odesílání nebo nahrávání.
+1555	Mnoho fotek najednou, jako nové kopie
+1556	Zpracování vašich souborů…
+1557	%1$@ s
+1558	Vybrán %1$lld soubor
+1558:few	Vybrány %1$lld soubory
+1559	Vybráno %1$lld souborů
+1560	Malá – stačí pro zprávy a sociální sítě
+1561	Velká – ostrá na telefonech, tabletech a počítačích
+1562	Velmi velká – téměř všechny detaily, např. pro tisk
+1563	Velikost kopií
+1564	Měří se na delší straně obrázku, v pixelech (px). Obrázky se nikdy nezvětšují ani neroztahují.
+1565	Původní velikost
+1566	Stejný počet pixelů – mění se jen formát
+1567	Změřeno: %1$@ předtím, %2$@ potom
+1568	%1$lld přeskočen (nebylo co dělat nebo jde o video).
+1568:few	%1$lld přeskočeny (nebylo co dělat nebo jde o videa).
+1569	%1$lld přeskočeno (nebylo co dělat nebo jde o videa).
+1570	Spustit
+1571	Spojit snímky obrazovky
+1572	Spojí snímky obrazovky shora dolů do jednoho dlouhého obrázku, v pořadí pořízení. Všechny dostanou šířku nejužšího obrázku – nic se neroztahuje ani nezvětšuje.
+1573	Uloženo jako nový obrázek v knihovně. Snímky obrazovky zůstávají beze změny.
+1574	Jeden pod druhým, jako jeden dlouhý obrázek
+1575	Nový formát
+1576	Nástroj
+1577	%1$lld velikost neznámá – není zahrnuta v součtu.
+1577:few	%1$lld velikosti neznámé – nejsou zahrnuty v součtu.
+1578	%1$lld velikostí neznámých – nejsou zahrnuty v součtu.
+1579	Hotovo
+1580	Označujte oblíbené, sdílejte položky nebo je přidávejte do alba. Tím je neoznačíte jako ponechané, v koši ani na později.
+1581	Oblíbené, sdílení a alba
+1582	Číslo ukazuje, kolik jste odložili. Klepnutím na něj zkontrolujete výběr a vyprázdníte koš.
+1583	Váš koš
+1584	Přejeli jste špatným směrem? Klepnutím sem vrátíte poslední rozhodnutí.
+1585	Zpět
+1586	Když si potřebujete odpočinout od úklidu: zahrajte si Dvojice, Foto hada nebo Foto Blocks s vlastními fotkami.
+1587	Potřebujete pauzu?
+1588	Není to rozhodnutí
+1589	Podívejte se, co jste ponechali, odložili nebo uložili na později. Každé rozhodnutí tu ještě můžete změnit.
+1590	Později a historie
+1591	Tady jsou všechny vaše fotky a videa – podle dnů, měsíců nebo let, v albech a oblíbených.
+1592	Všechny vaše fotky
+1593	Položky odložené na později se počítají jako prošlé – tady je stále vidíte.
+1594	Otevřete přehled jako mřížku nebo znovu projděte dokončený měsíc.
+1595	Klepnutím na měsíc projdete jen jeho neprošlé fotky a videa.
+1596	Jak daleko jste
+1597	Další
+1598	Několik fotek pořízených rychle po sobě? Porovnejte je vedle sebe a vyberte, co zůstane.
+1599	Přizpůsobte si GaleriQ a najděte tu odpovědi. Tuto prohlídku můžete kdykoli zopakovat.
+1600	Nastavení a nápověda
+1601	Přeskočit průvodce
+1602	Upravujte fotky, tvořte koláže, krátké filmy a PDF a používejte praktické nástroje. Vždy vzniknou nové soubory – originály zůstanou beze změny.
+1603	Buďte kreativní
+1604	Klepněte na „Začít uklízet“ a projeďte vše, co zbývá projít.
+1605	Začněte tady
+1606	Fotky, videa, snímky obrazovky nebo album: vytvořte si zkratky k tomu, co často uklízíte.
+1607	Vaše zkratky
+1608	Tady najdete, co jste odložili k odstranění nebo uložili na později. K odstranění dojde až po potvrzení v koši.
+1609	Koš a Později
+1610	Velké soubory, duplicitní fotky, jednotlivé měsíce a připravené kolekce: tady uklízíte krok za krokem.
+1611	Další způsoby úklidu
+1612	Podržte „GaleriQ“ nahoře 2 sekundy a otevře se trezor – kolečko v „Q“ se otočí. Nastavte ho a další možnosti najdete v Nastavení.
+1613	Váš soukromý trezor
+1614	Zpět
+1615	Den
+1615:few	Dny
+1616	Dní
+1617	Měsíc
+1617:few	Měsíce
+1618	Měsíců
+1619	Týden
+1619:few	Týdny
+1620	Týdnů
+1621	Zapnout zvuk
+1622	Přidat textový blok
+1623	Připojit soubor z trezoru
+1624	Tento soubor je stále připojen k poznámce, možná v koši trezoru. Nejdřív ho odpojte.
+1625	Přílohy
+1626	Zamknutí při nečinnosti
+1627	Trezor se na pozadí vždy zamkne. Náhledy se při přepínání aplikací zakryjí.
+1628	Šifrovaná záloha
+1629	Obsahuje média, poznámky, soubory, složky a koš trezoru. Použijte silné, samostatné heslo zálohy. Bez něj zálohu nelze obnovit.
+1630	Záloha nebyla obnovena. Heslo může být chybné, soubor poškozený, relace zamčená nebo nedostatek úložiště. Stávající obsah zůstává beze změny.
+1631	Heslo zálohy (nejméně 12 znaků)
+1632	Tučné
+1633	Odrážkový seznam
+1634	Fotoaparát není dostupný nebo přístup není povolen.
+1635	Přepnout dokončení
+1636	Kontrolní seznam
+1637	Uložená poznámka se změnila. Váš koncept ji nepřepsal. Uložte koncept jako novou poznámku, nebo zahoďte neuložené změny.
+1638	Pokračovat
+1639	Trvale smazat
+1640	Tímto se vybraný obsah z tohoto trezoru trvale odstraní. Stávající externí kopie a zálohy zůstanou beze změny.
+1641	Odpojit
+1642	Zahodit neuložené změny
+1643	Zůstane jen poslední úspěšně uložená verze. Neuložené změny budou ztraceny.
+1644	V tomto zobrazení nejsou žádné soubory.
+1645	V tomto zobrazení nejsou žádné poznámky.
+1646	Vše trvale smazat
+1647	Vše v koši trezoru (%1$@) bude z tohoto trezoru trvale odstraněno: fotky, videa, poznámky a soubory. Stávající externí kopie a zálohy zůstanou beze změny.
+1648	Vyprázdnit koš trezoru?
+1649	Exportovat zálohu
+1650	Exportovaná kopie je mimo ochranu trezoru. Jiné aplikace nebo lidé k ní mohou mít přístup podle toho, jak ji sdílíte.
+1651	Soubory
+1652	Formátování
+1653	Nadpis
+1654	Importovat soubory
+1655	Importováno: %1$lld. Neúspěšné: %2$lld.
+1656	Žádný účet a žádný server GaleriQ. Exporty a zálohy opouštějí aplikaci jen vaší výslovnou akcí.
+1657	Zamknout teď
+1658	Média
+1659	GaleriQ potřebuje přístup k mikrofonu kvůli hlasové poznámce. Nahrávání začne, až klepnete.
+1660	%1$lld min
+1661	Název
+1662	Nová poznámka
+1663	Bez interního náhledu
+1664	Tento formát tu nelze zobrazit. Soubor zůstává uložený v trezoru. Sdílení exportuje kopii mimo trezor.
+1665	Neuloženo
+1666	Poznámky
+1667	Akce nebyla úspěšně dokončena. Zkontrolujte úložiště a přístup a zkuste to znovu.
+1668	Kopie; originál může zůstat mimo
+1669	Vytvořeno v trezoru
+1670	Obnoveno ze zálohy
+1671	Originál odstraněn ze zdroje
+1672	Odstavec
+1673	Pozastavit
+1674	Připnout
+1675	Obnovit v trezoru
+1676	Nahrát hlasovou poznámku
+1677	Nahraná délka
+1678	Nahrávání začne, až klepnete. Ukládá se šifrovaně a zastaví se, když trezor zamknete nebo opustíte.
+1679	Odebrat textový blok
+1680	Odstranit originál
+1681	Nezměněný originál se ze zdroje odstraní až po ověření kopie v trezoru. Jiné kopie a koš poskytovatele souborů mohou zůstat.
+1682	Přejmenovat
+1683	Zopakujte heslo
+1684	Obnovit zálohu
+1685	Ověřená záloha se přidá jako další kopie do otevřeného trezoru. Stávající obsah se nepřepíše. Opakované importy vytvářejí další kopie.
+1686	Záloha přidána do trezoru
+1687	Pokračovat
+1688	Zkusit znovu
+1689	Uložit jako novou poznámku
+1690	Uložení selhalo
+1691	Uloženo
+1692	Skenovat dokument
+1693	Hledat v trezoru
+1694	%1$lld sekund
+1695	Naposledy změněné
+1696	Název
+1697	Největší nahoře
+1698	Zastavit a uložit
+1699	Text
+1700	Nadpis
+1701	Přesunout do koše trezoru
+1702	Nástroje trezoru
+1703	Koš trezoru
+1704	Koš trezoru je prázdný.
+1705	Tento koš patří jen trezoru. Obsah zůstává šifrovaný, dokud ho neobnovíte nebo výslovně trvale nesmažete. Nic se nemaže automaticky.
+1706	Bez názvu
+1707	Bez složky
+1708	Reklama byla zavřena předčasně. Složka nebyla vytvořena – můžete to zkusit znovu.
+1709	V bezplatné verzi potřebuje každá nová složka krátké reklamní video. S Pro se složky vytvářejí bez reklam.
+1710	Momentálně není k dispozici žádná reklama. Zkuste to později – s Pro se složky vytvářejí bez reklam.
+1711	Přehrát video a vytvořit složku
+1712	Přidat do trezoru
+1713	Vše
+1714	Trezor je šifrovaný a je součástí zálohy iPhonu. Pokud GaleriQ smažete, smaže se i trezor.
+1715	Otevřít pomocí %1$@
+1716	Otevřete svůj chráněný obsah
+1717	Váš kód funguje vždy také.
+1718	Otevírat pomocí %1$@?
+1719	Otevírat pomocí %1$@
+1720	Změnit kód
+1721	Zavřít a zamknout
+1722	Zavřít
+1723	Používejte jen číslice 0–9.
+1724	Kód
+1725	Typ kódu
+1726	Obě zadání se neshodují.
+1727	Heslo
+1728	6místný PIN
+1729	Zopakujte kód
+1730	Nejméně 6 znaků.
+1731	Přesně 6 číslic.
+1732	Tento kód je klíčem k trezoru. Zvolte takový, který ostatní neuhodnou – ideálně ne kód vašeho iPhonu.
+1733	Zvolte kód
+1734	Kód není v tomto iPhonu k dispozici (například po obnovení bez šifrované zálohy). Otevřete trezor klíčem pro obnovení.
+1735	Přesunout do koše trezoru
+1736	Smazat trezor
+1737	Trvale se smaže %1$lld položek. Pokud si je chcete ponechat, nejdřív je vraťte do aplikace Fotky.
+1738	Smazat trezor a vše v něm?
+1739	Smazat složku
+1740	Položky zůstanou v trezoru, jen bez složky.
+1741	Tento koš patří jen trezoru. Obsah zůstává šifrovaný, dokud ho neobnovíte nebo výslovně trvale nesmažete. Nic se nemaže automaticky.
+1742	Přesunout položky (%1$lld) do koše trezoru?
+1743	Uložit kopii do trezoru
+1744	Snímek uložen do trezoru.
+1745	Zůstává jen v trezoru – neobjeví se v aplikaci Fotky ani nikde jinde v GaleriQ.
+1746	Uložit kopii, originál do koše trezoru
+1747	Uložit, originál do koše trezoru
+1748	Originál můžete obnovit z koše trezoru.
+1749	Uloženo v trezoru. Originál je v koši trezoru.
+1750	Uloženo v trezoru.
+1751	Trezor je prázdný
+1752	Zadejte heslo
+1753	Zadejte PIN
+1754	Nepovedlo se. Zkuste to prosím znovu.
+1755	Tato složka je prázdná
+1756	Zvolte název, který není prázdný a ještě neexistuje.
+1757	Název složky
+1758	Zapomněli jste kód?
+1759	Nebyl nastaven žádný klíč pro obnovení. Bez kódu (nebo Face ID) trezor nelze otevřít.
+1760	Skrýt vstup
+1761	Trezor zmizí z Nastavení. Otevřete ho podržením „GaleriQ“ nahoře na úvodní obrazovce po dobu 2 sekund – malé kolečko trezoru v „Q“ se otočí.
+1762	Skrýt vstup?
+1763	Přesunout do trezoru
+1764	Zkopírují se šifrovaně a ověří. Pak se iOS zeptá, zda je smí smazat z aplikace Fotky. Tam zůstanou 30 dní v „Nedávno smazaných“.
+1765	Přesunout do trezoru: %1$lld
+1766	GaleriQ z nich vytvořil i kopie (úpravy, koláže, filmy, GIFy): %1$lld. Jsou v aplikaci Fotky a zůstanou viditelné, pokud je nepřesunete také.
+1767	iOS některé z nich z aplikace Fotky nesmazal. GaleriQ je stejně nikde jinde nezobrazuje, ale v aplikaci Fotky jsou stále vidět. Pomocí upozornění nahoře to zkuste znovu.
+1768	V trezoru: %1$lld. Odstraněno z aplikace Fotky: %2$lld.
+1769	Nepodařilo se přesunout: %1$lld (například bez připojení k iCloudu). Zůstávají v aplikaci Fotky.
+1770	Nepřesunuto: %1$lld. Bezplatná verze povoluje %2$lld položek v trezoru; Pro je neomezený.
+1771	Tip: vyprázdněte „Nedávno smazané“ v aplikaci Fotky, pokud mají zmizet i tam.
+1772	Přesunout s kopiemi (%1$lld)
+1773	Bez kopií
+1774	Fotky a videa v trezoru jsou šifrované vaším kódem a viditelné jen tady – nikde jinde v GaleriQ.
+1775	Když přidáte položky, iOS se zeptá, zda je smí smazat z aplikace Fotky. Pak zůstanou 30 dní v „Nedávno smazaných“, pokud je nevyprázdníte.
+1776	Trezor je součástí zálohy iPhonu (šifrovaně). Pokud GaleriQ smažete, trezor zmizí.
+1777	V bezplatné verzi potřebuje každá nová složka krátké reklamní video. S Pro se složky vytvářejí bez reklam.
+1778	Váš soukromý trezor
+1779	Fotka
+1780	Video
+1781	Bezplatná verze povoluje %1$lld položek v trezoru. S Pro je trezor neomezený.
+1782	Příliš mnoho pokusů. Zkuste to znovu za %1$@.
+1783	Uložit do trezoru
+1784	Přesunout
+1785	Otevřeli jste trezor klíčem pro obnovení. Teď zvolte nový kód.
+1786	Nový kód
+1787	Nová složka
+1788	Bez složky
+1789	%1$lld z %2$lld
+1790	Nechte prosím GaleriQ otevřený. Opuštění aplikace proces zastaví; nic se nesmaže.
+1791	Vytvořit klíč pro obnovení
+1792	Mám ho zapsaný
+1793	Klíč pro obnovení
+1794	26 znaků, s pomlčkami nebo bez.
+1795	Bez klíče pro obnovení je obsah ztracen, pokud zapomenete kód.
+1796	Klíč pro obnovení je nastaven. Vytvořením nového se starý stane neplatným.
+1797	Odebrat klíč pro obnovení
+1798	Vytvořit nový klíč pro obnovení
+1799	Pokračovat bez klíče pro obnovení
+1800	Bez klíče pro obnovení je obsah navždy ztracen, pokud zapomenete kód a Face ID nebude k dispozici.
+1801	Opravdu bez klíče pro obnovení?
+1802	Klíč pro obnovení
+1803	Zapište si tento klíč na papír a bezpečně ho uschovejte. Otevře trezor, pokud zapomenete kód, i na novém iPhonu. GaleriQ ho nemůže zobrazit znovu.
+1804	Klíč pro obnovení
+1805	Tento klíč nesouhlasí.
+1806	Odstraněno z aplikace Fotky: %1$lld.
+1807	Přejmenovat složku
+1808	Zpět do Fotek
+1809	Kopírovat do Fotek, ponechat v trezoru
+1810	Uloženo v aplikaci Fotky: %1$lld.
+1811	Nepodařilo se uložit: %1$lld. Zůstávají v trezoru.
+1812	Uloženo bez historie úprav: %1$lld. Úplné originály zůstávají v trezoru.
+1813	Přesunout zpět do Fotek
+1814	Uloží se jako nové položky s původním datem a polohou. Položky, které jsou stále v aplikaci Fotky, se po přesunutí zpět jednoduše znovu zobrazí.
+1815	Uložit kód
+1816	Vybrat
+1817	Nastavení trezoru
+1818	Skryté, kódem chráněné místo pro fotky a videa. Zmizí z aplikace Fotky.
+1819	Nastavit trezor
+1820	Nastavování …
+1821	Řadit
+1822	Datum přidání
+1823	Datum pořízení
+1824	Název
+1825	Velikost
+1826	Položky, které jsou stále i v aplikaci Fotky: %1$lld.
+1827	Smazat tam
+1828	Položky: %1$lld · %2$@
+1829	%1$lld z %2$lld položek · %3$@
+1830	Soukromý trezor
+1831	Otevřít
+1832	Nesprávný kód.
+1833	Uložit jen zvuk
+1834	Zvuk se nepodařilo uložit.
+1835	Ukládání zvuku
+1836	„%1$@“ uloženo.
+1837	zvuk
+1838	Odstranit
+1839	Odstranit %1$@ – %2$@? Přetáhněte červené úchyty.
+1840	Červené úseky se při uložení opravdu odstraní (celkem %1$@). Klepnutím na úsek níže ho vrátíte.
+1841	Odstranit úsek
+1842	cca %1$@
+1843	Jen hrubý odhad. Skutečnou velikost souboru uvidíte po uložení.
+1844	Zkrátili jste jen začátek a konec. Je to rychlé a kvalita obrazu zůstane jako u originálu. Pokud to toto video neumožňuje, GaleriQ ho sestaví celé znovu – což trvá o něco déle. Celková délka %1$@.
+1845	Kvůli vašim dalším změnám GaleriQ při uložení sestaví celé video znovu. Může to chvíli trvat. Celková délka %1$@.
+1846	Ukládání videa
+1847	Postupné zesílení a zeslabení
+1848	Žádné
+1849	Vyplnit
+1850	Vyplní nový formát; okraje mimo se oříznou.
+1851	Zobrazit celé video
+1852	Zobrazí celé video; volné místo vyplní černé pruhy.
+1853	Uložit snímek
+1854	Snímek uložen jako nová fotka.
+1855	snímek
+1856	Toto video má zvlášť jasné barvy (HDR). Při přepočtu se uloží s normálními barvami. Pokud ho jen zkrátíte, HDR zůstane.
+1857	Viditelné %1$@ – %2$@
+1858	Toto video nemá zvuk.
+1859	Náhled se nepodařilo vypočítat.
+1860	Úpravy videa jsou součástí Pro. Vyzkoušet můžete vše; k uložení potřebujete Pro.
+1861	Kvalita
+1862	Vyvážená (Full HD)
+1863	Nejlepší kvalita (jako originál)
+1864	Malý soubor (HD)
+1865	Odstranit zvuk
+1866	Zvuková stopa se do souboru vůbec nezapíše.
+1867	Zvuk se zrychlí nebo zpomalí se stejnou výškou tónu.
+1868	Výsledek: %1$@
+1869	Zvuk
+1870	Formát
+1871	Rychlost
+1872	Přetažením úchytů nastavíte začátek a konec.
+1873	Hlasitost
+1874	Video
+1875	Klepnutím na fotku nebo video zobrazíte nebo skryjete ovládací prvky.
+1876	Zobrazit nebo skrýt ovládací prvky
+1877	Použít postup
+1878	Upravit postup
+1879	Zatím žádné vlastní postupy. Použijte šablonu nebo vytvořte nový postup.
+1880	Na konci
+1881	Uložit a sdílet
+1882	Uložit
+1883	Jen sdílet
+1884	Formát
+1885	Jako originál
+1886	Odstranit polohu
+1887	Nejdelší strana
+1888	Název
+1889	Název souboru
+1890	Nový postup
+1891	Žádné
+1892	Kvalita
+1893	Omlouváme se, nepovedlo se.
+1894	Výsledek
+1895	Spustit
+1896	Postup probíhá …
+1897	Hotovo
+1898	Selhalo
+1899	Cíl nesplněn
+1900	Přeskočeno
+1901	Do složky „%1$@“
+1902	Uložit jako %1$@
+1903	Kvalita %1$@
+1904	Název „%1$@“
+1905	Nejdelší strana nejvýše %1$@ px (nikdy nezvětšeno)
+1906	Uložit jako nové soubory – originály zůstanou
+1907	Sdílet výsledek
+1908	Nejvýše %1$@ na fotku – upraví se kvalita a podle potřeby velikost a výsledek se změří
+1909	Videa nejvýše %1$@ na každé
+1910	Uložte několik kroků jako vlastní postup
+1911	Velikost na fotku nejvýše
+1912	Postupy
+1913	Ano
+9000	GaleriQ zobrazuje vaše fotky a videa k třídění v tomto iPhonu a odstraňuje jen položky, které vyberete a potvrdíte v systémovém dialogu.
+9001	GaleriQ ukládá upravené kopie, koláže a videa jako nové položky do vaší knihovny.
+9002	GaleriQ používá fotoaparát jen ke skenování dokumentů, když klepnete na Skenovat.
+9003	GaleriQ používá Face ID jen k otevření obsahu, který jste chránili kódem.
+9004	GaleriQ potřebuje přístup k mikrofonu kvůli hlasové poznámce. Nahrávání začne, až klepnete.
+9005	Bezplatná verze GaleriQ zobrazuje reklamy od Googlu. S vaším svolením mohou být pro vás relevantnější. Vaše fotky a soubory se nikdy nedostanou k inzerentům.
