@@ -1,5 +1,5 @@
 """Store-Texte, Paket C (10.11.2026): he, id, ms, th, vi, hi. Quelle: en-US (einfacher Stil).
-iOS-Begriffe („Zuletzt gelöscht“, Fotos-App) wie in der jeweiligen iOS-Sprache; Muttersprachler-Review nötig."""
+iOS-Begriffe („Zuletzt gelöscht“, Fotos-App) wie in der jeweiligen iOS-Sprache; KI-Sprachprüfung 10.11.2026, keine Muttersprachlerprüfung (Nutzerentscheidung)."""
 
 S = {}
 
@@ -94,7 +94,7 @@ Semua ciri boleh digunakan secara percuma. Versi percuma memaparkan iklan dan me
 )
 
 S["th"] = dict(
-    name="GaleriQ: ล้างรูปและตู้เซฟ", subtitle="ปัดเพื่อเพิ่มพื้นที่ว่าง",
+    name="GaleriQ: จัดการรูปและตู้เซฟ", subtitle="ปัดเพื่อเพิ่มพื้นที่ว่าง",
     keywords="รูปซ้ำ,ลบรูป,คลังภาพ,อัลบั้ม,พื้นที่จัดเก็บ,ส่วนตัว,ซ่อนรูป,ภาพตัดปะ,แต่งรูป,วิดีโอ,หน่วยความจำ",
     promo="ปัดขึ้นเพื่อเก็บ ปัดซ้ายลงถังขยะ ปัดขวาไว้ดูทีหลัง ไม่มีอะไรถูกลบหากคุณไม่ยืนยัน และ GaleriQ ไม่เคยอัปโหลดรูปของคุณ",
     description="""รูปเยอะเกินไป พื้นที่ไม่พอ? GaleriQ ช่วยให้คุณจัดคลังรูปได้สบาย ๆ ปัดทีละรูป

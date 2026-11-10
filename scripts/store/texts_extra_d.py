@@ -1,6 +1,6 @@
 """Store-Texte, Paket D (10.11.2026): bn-BD, gu-IN, kn-IN, ml-IN, mr-IN, or-IN, pa-IN, ta-IN, te-IN, ur-PK.
 Bewusst kürzer und einfacher; den iOS-Albumnamen „Zuletzt gelöscht“ nennen die Texte nicht (Systembegriff in diesen
-Sprachen nicht sicher belegt). NATIVE REVIEW REQUIRED für alle zehn Sprachen."""
+Sprachen nicht sicher belegt). Geprüft per KI-Sprachprüfung 10.11.2026; keine weitere Muttersprachlerprüfung (Nutzerentscheidung)."""
 
 S = {}
 
