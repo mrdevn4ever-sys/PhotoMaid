@@ -1,29 +1,22 @@
-Con GaleriQ riordinare la tua libreria foto è facile come scorrere con un dito.
+Troppe foto e poco spazio? Con GaleriQ riordini la tua libreria con calma, uno swipe alla volta.
 
-SCORRI TRA FOTO E VIDEO
-• Su: conserva
-• Sinistra: nel cestino di GaleriQ – non viene ancora eliminato nulla
-• Destra: più tardi – torna tra 2 giorni
-• Giù: torna all’elemento precedente
-Si elimina solo quando svuoti il cestino e confermi la finestra di iOS. Gli elementi passano poi in «Eliminati di recente» nell’app Foto.
+COSÌ SEMPLICE
+Scorri verso l'alto per conservare una foto. A sinistra finisce nel cestino di GaleriQ, a destra la rivedi tra qualche giorno, in basso torni indietro. Non viene eliminato nulla finché non vuoti il cestino e confermi un'altra volta. Dopo, le foto restano ancora per un po' in «Eliminati di recente», nell'app Foto.
 
-TROVA CIÒ CHE OCCUPA SPAZIO
-• File grandi e video, ordinati per dimensione
-• Duplicati esatti, serie di foto e screenshot
-• Sfoglia la libreria mese per mese
-• L’analisi sul dispositivo suggerisce foto sfocate, simili e con testo – la decisione è sempre tua
+TROVA SPAZIO SENZA PERDERE TEMPO
+GaleriQ ti mostra cosa occupa più spazio: video grandi, foto doppie, serie e vecchi screenshot. Se vuoi, scorri la libreria mese per mese, oppure lasciati suggerire foto sfocate o simili. Cosa tenere e cosa no, lo decidi sempre tu.
 
-CASSAFORTE PRIVATA
-Proteggi foto, video, file e note privati con PIN o password e, se vuoi, con Face ID. Il contenuto viene cifrato sul tuo iPhone.
+LA TUA CASSAFORTE PRIVATA
+Quello che nessun altro deve vedere lo metti nella cassaforte: foto, video, file e note, protetti dal tuo codice e, se vuoi, da Face ID. Tutto il contenuto viene cifrato sul tuo iPhone.
 
-STUDIO
-Editor di foto e video (salva una copia per impostazione predefinita), collage, filmato dai tuoi clip, ridimensiona e converti, rimuovi la posizione, GIF, PDF dalle foto e scanner di documenti.
+SPAZIO ALLA CREATIVITÀ
+Nello Studio modifichi foto e video, crei collage, realizzi piccoli filmati o trasformi le tue foto in un PDF.
 
-GIOCHI CON LE TUE FOTO
-Fai una pausa con Coppie, Snake fotografico e Foto Blocks, giocati con le tue immagini.
+UNA PAUSA?
+Coppie, Snake fotografico e Foto Blocks: tre giochini con le tue foto.
 
-PRIVACY PRIMA DI TUTTO
-Nessun account, nessun server nostro, nessun caricamento. Le tue foto restano sul dispositivo.
+SENZA ACCOUNT
+Non ti serve nessun account, e GaleriQ non carica le tue foto da nessuna parte.
 
-GRATIS E PRO
-Tutti gli strumenti sono gratuiti. La versione gratuita mostra pubblicità di Google e consente di eliminare fino a 100 elementi al giorno, più altri 100 una volta al giorno dopo un video facoltativo. GaleriQ Pro è un acquisto unico: niente pubblicità, eliminazioni illimitate e nuove cartelle nella cassaforte senza video.
+GRATIS O PRO
+Puoi usare tutte le funzioni gratis. La versione gratuita mostra pubblicità e permette di eliminare fino a 100 elementi al giorno. Con un video facoltativo ne sblocchi altri 100, una volta al giorno. GaleriQ Pro è un acquisto unico, non un abbonamento: niente pubblicità, eliminazioni illimitate e nuove cartelle nella cassaforte senza video.

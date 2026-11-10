@@ -1,29 +1,22 @@
-Z GaleriQ porządkowanie biblioteki zdjęć jest proste jak przesunięcie palcem.
+Zdjęć za dużo, a miejsca za mało? Z GaleriQ porządkujesz swoją bibliotekę bez pośpiechu – jedno przesunięcie na zdjęcie.
 
-PRZESUWAJ ZDJĘCIA I FILMY
-• W górę: zachowaj
-• W lewo: do kosza GaleriQ – nic jeszcze nie jest usuwane
-• W prawo: później – wróci za 2 dni
-• W dół: wróć do poprzedniego elementu
-Usuwanie następuje dopiero wtedy, gdy opróżnisz kosz i potwierdzisz okno iOS. Elementy trafiają wtedy do „Ostatnio usunięte” w aplikacji Zdjęcia.
+TO PROSTE
+Przesuń w górę, aby zachować zdjęcie. W lewo trafia do kosza GaleriQ, w prawo zobaczysz je znowu za kilka dni, w dół wracasz. Nic nie zostaje usunięte, dopóki nie opróżnisz kosza i nie potwierdzisz jeszcze raz. Potem zdjęcia są jeszcze jakiś czas w „Ostatnio usunięte” w aplikacji Zdjęcia.
 
-ZNAJDŹ TO, CO ZAJMUJE MIEJSCE
-• Duże pliki i filmy, posortowane według rozmiaru
-• Dokładne duplikaty, serie zdjęć i zrzuty ekranu
-• Przeglądaj bibliotekę miesiąc po miesiącu
-• Analiza na urządzeniu podpowiada rozmazane i podobne zdjęcia oraz zdjęcia z tekstem – decyzja zawsze należy do Ciebie
+ZNAJDŹ MIEJSCE BEZ DŁUGIEGO SZUKANIA
+GaleriQ pokazuje, co zajmuje najwięcej miejsca: duże filmy, powtarzające się zdjęcia, serie i stare zrzuty ekranu. Możesz też przeglądać bibliotekę miesiąc po miesiącu albo pozwolić podpowiedzieć sobie rozmazane i podobne zdjęcia. To, co zostaje, a co odchodzi, zawsze decydujesz Ty.
 
-PRYWATNY SEJF
-Chroń prywatne zdjęcia, filmy, pliki i notatki kodem PIN lub hasłem, opcjonalnie z Face ID. Zawartość jest szyfrowana na Twoim iPhonie.
+TWÓJ PRYWATNY SEJF
+To, czego nikt inny nie powinien widzieć, trzymasz w sejfie: zdjęcia, filmy, pliki i notatki, chronione Twoim kodem i opcjonalnie Face ID. Wszystko w sejfie jest szyfrowane na Twoim iPhonie.
 
-STUDIO
-Edytor zdjęć i filmów (domyślnie zapisuje kopię), kolaż, film z Twoich klipów, zmiana rozmiaru i formatu, usuwanie lokalizacji, GIF, PDF ze zdjęć i skaner dokumentów.
+CZAS NA KREATYWNOŚĆ
+W Studio edytujesz zdjęcia i filmy, tworzysz kolaże, montujesz krótkie filmy albo zmieniasz zdjęcia w PDF.
 
-GRY Z TWOIMI ZDJĘCIAMI
-Zrób sobie przerwę z grami Pary, Foto-Snake i Foto Blocks – z Twoimi własnymi zdjęciami.
+CHWILA PRZERWY?
+Pary, Foto-Snake i Foto Blocks: trzy małe gry z Twoimi własnymi zdjęciami.
 
-PRYWATNOŚĆ PRZEDE WSZYSTKIM
-Bez konta, bez własnego serwera, bez wysyłania. Twoje zdjęcia zostają na urządzeniu.
+BEZ KONTA
+Nie potrzebujesz żadnego konta, a GaleriQ nigdy nigdzie nie wysyła Twoich zdjęć.
 
-ZA DARMO I PRO
-Wszystkie narzędzia są darmowe. Wersja bezpłatna wyświetla reklamy Google i pozwala usunąć do 100 elementów dziennie, a raz dziennie kolejne 100 po obejrzeniu opcjonalnego filmu. GaleriQ Pro to jednorazowy zakup: bez reklam, bez limitu usuwania i nowe foldery w sejfie bez filmów.
+ZA DARMO ALBO PRO
+Możesz korzystać ze wszystkich funkcji bezpłatnie. Wersja bezpłatna wyświetla reklamy i pozwala usunąć do 100 elementów dziennie. Dzięki dobrowolnemu filmowi odblokowujesz raz dziennie 100 kolejnych. GaleriQ Pro to jednorazowy zakup, nie subskrypcja: bez reklam, bez limitu usuwania i nowe foldery w sejfie bez filmów.

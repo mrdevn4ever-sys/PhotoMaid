@@ -1,29 +1,22 @@
-Com o GaleriQ, arrumar a fototeca é tão fácil como deslizar o dedo.
+Demasiadas fotos e pouco espaço? Com o GaleriQ arruma a sua fototeca com calma, um gesto de cada vez.
 
-DESLIZE PELAS SUAS FOTOS E VÍDEOS
-• Para cima: manter
-• Para a esquerda: para o lixo do GaleriQ – ainda nada é apagado
-• Para a direita: mais tarde – volta daqui a 2 dias
-• Para baixo: voltar ao elemento anterior
-Só é apagado quando esvazia o lixo e confirma a janela do iOS. Depois, os elementos passam para «Apagados recentemente» na app Fotografias.
+É TÃO SIMPLES ASSIM
+Deslize para cima para manter uma foto. Para a esquerda vai para o lixo do GaleriQ, para a direita volta a vê-la dentro de alguns dias, para baixo volta atrás. Nada é apagado até esvaziar o lixo e confirmar mais uma vez. Depois, continua a encontrar as fotos por um tempo em «Apagados recentemente», na app Fotografias.
 
-ENCONTRE O QUE OCUPA ESPAÇO
-• Ficheiros grandes e vídeos, ordenados por tamanho
-• Duplicados exatos, séries de fotos e capturas de ecrã
-• Percorra a fototeca mês a mês
-• A análise no dispositivo sugere fotos desfocadas, semelhantes e com texto – a decisão é sempre sua
+ENCONTRAR ESPAÇO SEM PROCURAR MUITO
+O GaleriQ mostra o que ocupa mais espaço: vídeos grandes, fotos repetidas, séries e capturas de ecrã antigas. Se quiser, percorra a fototeca mês a mês, ou deixe sugerir fotos desfocadas e semelhantes. O que fica ou sai é sempre uma decisão sua.
 
-COFRE PRIVADO
-Guarde fotos, vídeos, ficheiros e notas privados atrás de um PIN ou palavra-passe, com Face ID opcional. O conteúdo é encriptado no seu iPhone.
+O SEU COFRE PRIVADO
+O que mais ninguém deve ver, guarda-se no cofre: fotos, vídeos, ficheiros e notas, protegidos com o seu código e, se quiser, com Face ID. Todo o conteúdo é encriptado no seu iPhone.
 
-ESTÚDIO
-Editor de fotos e vídeos (guarda uma cópia por predefinição), colagem, filme a partir dos seus clips, redimensionar e converter, remover a localização, GIF, PDF a partir de fotos e digitalizador de documentos.
+PARA SER CRIATIVO
+No Estúdio edita fotos e vídeos, cria colagens, faz pequenos filmes ou transforma fotos num PDF.
 
-JOGOS COM AS SUAS FOTOS
-Faça uma pausa com Pares, Serpente de fotos e Foto Blocks, jogados com as suas próprias imagens.
+UMA PAUSA?
+Pares, Serpente de fotos e Foto Blocks: três jogos pequenos com as suas próprias fotos.
 
-PRIVACIDADE EM PRIMEIRO LUGAR
-Sem conta, sem servidor próprio, sem envios. As suas fotos ficam no dispositivo.
+SEM CONTA
+Não precisa de nenhuma conta, e o GaleriQ nunca envia as suas fotos para lado nenhum.
 
-GRÁTIS E PRO
-Todas as ferramentas são gratuitas. A versão gratuita mostra anúncios da Google e permite apagar até 100 elementos por dia, mais 100 uma vez por dia depois de um vídeo opcional. O GaleriQ Pro é uma compra única: sem anúncios, apagar sem limites e novas pastas no cofre sem vídeos.
+GRÁTIS OU PRO
+Pode usar todas as funções gratuitamente. A versão grátis mostra publicidade e permite apagar até 100 elementos por dia. Com um vídeo opcional, desbloqueia mais 100, uma vez por dia. O GaleriQ Pro é uma compra única, não uma subscrição: sem publicidade, apagar sem limites e novas pastas no cofre sem vídeos.

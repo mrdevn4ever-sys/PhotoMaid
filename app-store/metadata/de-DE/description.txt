@@ -1,29 +1,22 @@
-Mit GaleriQ räumst du deine Mediathek so einfach auf wie mit einem Wisch.
+Zu viele Fotos und zu wenig Speicher? Mit GaleriQ räumst du deine Mediathek entspannt auf – mit einem Wisch pro Bild.
 
-FOTOS UND VIDEOS PER WISCH DURCHGEHEN
-• Nach oben: behalten
-• Nach links: in den GaleriQ-Papierkorb – noch wird nichts gelöscht
-• Nach rechts: später – kommt in 2 Tagen wieder
-• Nach unten: zurück zum vorherigen Medium
-Gelöscht wird erst, wenn du den Papierkorb leerst und den iOS-Dialog bestätigst. Danach liegen die Medien in „Zuletzt gelöscht“ der Fotos-App.
+SO EINFACH GEHT’S
+Wische nach oben, um ein Foto zu behalten. Nach links landet es im GaleriQ-Papierkorb, nach rechts siehst du es in ein paar Tagen noch einmal, und nach unten geht es zurück. Gelöscht wird erst, wenn du den Papierkorb leerst und es noch einmal bestätigst. Danach findest du die Bilder noch eine Zeit lang unter „Zuletzt gelöscht“ in der Fotos-App.
 
-FINDEN, WAS PLATZ BRAUCHT
-• Große Dateien und Videos, nach Größe sortiert
-• Exakte Duplikate, Fotoserien und Bildschirmfotos
-• Deine Mediathek Monat für Monat durchgehen
-• Die Analyse auf dem Gerät schlägt unscharfe und ähnliche Fotos sowie Fotos mit Text vor – entscheiden tust immer du
+PLATZ FINDEN, OHNE LANGE ZU SUCHEN
+GaleriQ zeigt dir, was am meisten Speicher braucht: große Videos, doppelte Fotos, Serien und alte Bildschirmfotos. Auf Wunsch gehst du deine Fotos Monat für Monat durch oder lässt dir unscharfe und ähnliche Bilder vorschlagen. Was weg soll, entscheidest immer du.
 
-PRIVATER TRESOR
-Private Fotos, Videos, Dateien und Notizen hinter PIN oder Passwort, auf Wunsch mit Face ID. Der Inhalt wird auf deinem iPhone verschlüsselt.
+DEIN PRIVATER TRESOR
+Was niemand sehen soll, legst du in den Tresor: Fotos, Videos, Dateien und Notizen, geschützt mit deinem Code und auf Wunsch mit Face ID. Die Inhalte im Tresor werden auf deinem iPhone verschlüsselt.
 
-STUDIO
-Foto- und Video-Editor (speichert standardmäßig als Kopie), Collage, Film aus deinen Clips, Größe ändern und umwandeln, Standort entfernen, GIF, PDF aus Fotos und Dokumentenscanner.
+KREATIV WERDEN
+Im Studio bearbeitest du Fotos und Videos, gestaltest Collagen, machst kleine Filme oder ein PDF aus deinen Bildern.
 
-SPIELE MIT DEINEN FOTOS
-Mach eine Pause mit Paare, Foto-Snake und Foto Blocks – gespielt mit deinen eigenen Bildern.
+ZEIT FÜR EINE PAUSE?
+Paare, Foto-Snake und Foto Blocks: drei kleine Spiele mit deinen eigenen Fotos.
 
-PRIVATSPHÄRE ZUERST
-Kein Konto, kein eigener Server, kein Upload. Deine Fotos bleiben auf deinem Gerät.
+OHNE KONTO
+Du brauchst kein Konto, und GaleriQ lädt deine Fotos nirgendwohin hoch.
 
-GRATIS UND PRO
-Alle Werkzeuge sind gratis. Die Gratis-Version zeigt Werbung von Google und erlaubt bis zu 100 Löschungen pro Tag, einmal täglich 100 weitere nach einem freiwilligen Video. GaleriQ Pro ist ein Einmalkauf: keine Werbung, unbegrenzt löschen und neue Tresor-Ordner ohne Videos.
+GRATIS ODER PRO
+Alle Funktionen kannst du kostenlos nutzen. Die Gratisversion zeigt Werbung und erlaubt bis zu 100 Löschungen pro Tag. Mit einem freiwilligen Video schaltest du einmal täglich 100 weitere frei. GaleriQ Pro ist ein einmaliger Kauf, kein Abo: keine Werbung, unbegrenzt löschen und neue Tresor-Ordner ohne Videos.

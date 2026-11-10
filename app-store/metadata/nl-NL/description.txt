@@ -1,29 +1,22 @@
-Met GaleriQ ruim je je fotobibliotheek zo makkelijk op als een veeg met je vinger.
+Te veel foto's en te weinig opslag? Met GaleriQ ruim je je bibliotheek lekker rustig op, met één swipe per keer.
 
-SWIPE DOOR JE FOTO'S EN VIDEO'S
-• Omhoog: bewaren
-• Links: naar de prullenbak van GaleriQ – er wordt nog niets verwijderd
-• Rechts: later – komt over 2 dagen terug
-• Omlaag: terug naar het vorige item
-Er wordt pas verwijderd als je de prullenbak leegt en de iOS-melding bevestigt. Daarna staan de items in 'Recent verwijderd' in de Foto's-app.
+ZO MAKKELIJK GAAT HET
+Swipe omhoog om een foto te bewaren. Naar links gaat hij naar de prullenbak van GaleriQ, naar rechts zie je hem over een paar dagen opnieuw, omlaag ga je terug. Er wordt niets verwijderd tot je de prullenbak leegt en het nog een keer bevestigt. Daarna vind je je foto's nog een tijdje terug bij 'Recent verwijderd' in de Foto's-app.
 
-VIND WAT RUIMTE INNEEMT
-• Grote bestanden en video's, gesorteerd op grootte
-• Exacte duplicaten, fotoseries en schermafbeeldingen
-• Loop je bibliotheek maand voor maand door
-• De analyse op het apparaat stelt onscherpe en vergelijkbare foto's en foto's met tekst voor – jij beslist altijd zelf
+RUIMTE VINDEN ZONDER LANG TE ZOEKEN
+GaleriQ laat zien wat de meeste ruimte inneemt: grote video's, dubbele foto's, reeksen en oude schermafbeeldingen. Je kunt ook je bibliotheek maand voor maand doorlopen, of onscherpe en gelijkende foto's laten voorstellen. Wat weg mag, bepaal jij altijd zelf.
 
-PRIVÉKLUIS
-Bewaar privéfoto's, video's, bestanden en notities achter een pincode of wachtwoord, desgewenst met Face ID. De inhoud wordt op je iPhone versleuteld.
+JOUW PRIVÉKLUIS
+Wat niemand anders mag zien, bewaar je in de kluis: foto's, video's, bestanden en notities, beveiligd met je eigen code en desgewenst met Face ID. Alles in de kluis wordt versleuteld op je iPhone.
 
-STUDIO
-Foto- en video-editor (bewaart standaard een kopie), collage, film van je clips, formaat wijzigen en omzetten, locatie verwijderen, GIF, pdf van foto's en documentscanner.
+CREATIEF AAN DE SLAG
+In Studio bewerk je foto's en video's, maak je collages, kleine films of een pdf van je foto's.
 
-SPELLEN MET JE FOTO'S
-Neem even pauze met Paren, Foto-Snake en Foto Blocks – gespeeld met je eigen foto's.
+EVEN PAUZE?
+Paren, Foto-Snake en Foto Blocks: drie kleine spelletjes met je eigen foto's.
 
-PRIVACY VOOROP
-Geen account, geen eigen server, geen upload. Je foto's blijven op je apparaat.
+GEEN ACCOUNT NODIG
+Je hebt geen account nodig, en GaleriQ stuurt je foto's nooit ergens naar op.
 
-GRATIS EN PRO
-Alle tools zijn gratis. De gratis versie toont advertenties van Google en laat je tot 100 items per dag verwijderen, plus één keer per dag 100 extra na een vrijwillige video. GaleriQ Pro is een eenmalige aankoop: geen advertenties, onbeperkt verwijderen en nieuwe kluismappen zonder video's.
+GRATIS OF PRO
+Je kunt alle functies gratis gebruiken. De gratis versie toont advertenties en laat je tot 100 items per dag verwijderen. Met een vrijwillige video ontgrendel je één keer per dag 100 extra. GaleriQ Pro is een eenmalige aankoop, geen abonnement: geen advertenties, onbeperkt verwijderen en nieuwe kluismappen zonder video's.

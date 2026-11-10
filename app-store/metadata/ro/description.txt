@@ -1,29 +1,22 @@
-Cu GaleriQ, ordinea în biblioteca de poze e la fel de simplă ca o glisare.
+Prea multe poze și prea puțin spațiu? Cu GaleriQ îți pui biblioteca în ordine în tihnă, cu o singură mișcare pe poză.
 
-GLISEAZĂ PRIN POZE ȘI VIDEOCLIPURI
-• În sus: păstrează
-• La stânga: în coșul GaleriQ – încă nu se șterge nimic
-• La dreapta: mai târziu – revine peste 2 zile
-• În jos: înapoi la elementul anterior
-Ștergerea are loc doar când golești coșul și confirmi dialogul iOS. Apoi elementele ajung în „Șterse recent” din aplicația Poze.
+ATÂT DE SIMPLU
+Glisează în sus ca să păstrezi o poză. La stânga ajunge în coșul GaleriQ, la dreapta o revezi peste câteva zile, în jos te întorci. Nu se șterge nimic până nu golești coșul și confirmi încă o dată. După aceea, pozele rămân o vreme la „Șterse recent”, în aplicația Poze.
 
-GĂSEȘTE CE OCUPĂ SPAȚIU
-• Fișiere mari și videoclipuri, sortate după mărime
-• Duplicate exacte, serii de poze și capturi de ecran
-• Parcurge biblioteca lună de lună
-• Analiza pe dispozitiv sugerează poze neclare, asemănătoare și poze cu text – decizia îți aparține mereu
+GĂSEȘTI SPAȚIU FĂRĂ SĂ CAUȚI MULT
+GaleriQ îți arată ce ocupă cel mai mult spațiu: videoclipuri mari, poze duplicate, serii și capturi de ecran vechi. Dacă vrei, parcurgi biblioteca lună de lună sau lași să ți se sugereze poze neclare și asemănătoare. Ce rămâne și ce pleacă decizi mereu tu.
 
-SEIF PRIVAT
-Păstrează poze, videoclipuri, fișiere și notițe private în spatele unui PIN sau al unei parole, opțional cu Face ID. Conținutul este criptat pe iPhone-ul tău.
+SEIFUL TĂU PRIVAT
+Ce nu trebuie să vadă nimeni altcineva pui în seif: poze, videoclipuri, fișiere și notițe, protejate cu codul tău și, dacă vrei, cu Face ID. Tot ce e în seif este criptat pe iPhone-ul tău.
 
-STUDIO
-Editor foto și video (salvează implicit o copie), colaj, film din clipurile tale, redimensionare și conversie, eliminarea locației, GIF, PDF din poze și scaner de documente.
+TIMP PENTRU CREATIVITATE
+În Studio editezi poze și videoclipuri, creezi colaje, faci filmulețe scurte sau transformi pozele într-un PDF.
 
-JOCURI CU POZELE TALE
-Ia o pauză cu Perechi, Șarpele foto și Foto Blocks – jucate cu propriile tale imagini.
+O PAUZĂ?
+Perechi, Șarpele foto și Foto Blocks: trei jocuri mici cu propriile tale poze.
 
-CONFIDENȚIALITATEA ÎNAINTE DE TOATE
-Fără cont, fără server propriu, fără încărcări. Pozele tale rămân pe dispozitiv.
+FĂRĂ CONT
+Nu ai nevoie de niciun cont, iar GaleriQ nu îți încarcă niciodată pozele nicăieri.
 
-GRATUIT ȘI PRO
-Toate instrumentele sunt gratuite. Versiunea gratuită afișează reclame Google și îți permite să ștergi până la 100 de elemente pe zi, plus încă 100 o dată pe zi după un videoclip opțional. GaleriQ Pro este o achiziție unică: fără reclame, ștergere nelimitată și dosare noi în seif fără videoclipuri.
+GRATUIT SAU PRO
+Poți folosi toate funcțiile gratuit. Versiunea gratuită are reclame și îți permite să ștergi până la 100 de elemente pe zi. Cu un videoclip opțional, mai deblochezi 100 o dată pe zi. GaleriQ Pro este o achiziție unică, nu un abonament: fără reclame, ștergere nelimitată și dosare noi în seif fără videoclipuri.

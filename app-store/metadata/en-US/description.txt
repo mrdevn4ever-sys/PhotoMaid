@@ -1,29 +1,22 @@
-GaleriQ makes cleaning up your photo library as easy as a swipe.
+Too many photos, not enough storage? GaleriQ helps you tidy up your library – one relaxed swipe at a time.
 
-SWIPE THROUGH YOUR PHOTOS AND VIDEOS
-• Up: keep
-• Left: into GaleriQ's own trash – nothing is deleted yet
-• Right: later – it comes back in 2 days
-• Down: back to the previous item
-Items are only deleted when you empty the trash and confirm the iOS dialog. They then go to "Recently Deleted" in the Photos app.
+IT'S THIS SIMPLE
+Swipe up to keep a photo. Swipe left and it goes to GaleriQ's trash, swipe right to see it again in a few days, and swipe down to go back. Nothing is deleted until you empty the trash and confirm once more. After that, you'll still find your photos under "Recently Deleted" in the Photos app for a while.
 
-FIND WHAT TAKES UP SPACE
-• Large files and videos, sorted by size
-• Exact duplicates, photo series and screenshots
-• Go through your library month by month
-• On-device analysis suggests blurry and similar photos and photos with text – the decision is always yours
+FIND SPACE, FAST
+GaleriQ shows you what's taking up the most room: big videos, duplicate photos, photo series and old screenshots. If you like, go through your library month by month, or let GaleriQ suggest blurry and similar photos for you. What goes is always your call.
 
-PRIVATE VAULT
-Keep private photos, videos, files and notes behind a PIN or password, with optional Face ID. The content is encrypted on your iPhone.
+YOUR PRIVATE VAULT
+Keep what no one else should see in the vault: photos, videos, files and notes, protected with your own code and optional Face ID. Everything inside the vault is encrypted on your iPhone.
 
-STUDIO
-Photo and video editor (saves a copy by default), collage, movie from your clips, resize and convert, remove location, GIF, PDF from photos and document scanner.
+GET CREATIVE
+In Studio you can edit photos and videos, design collages, make short movies, or turn your pictures into a PDF.
 
-GAMES WITH YOUR PHOTOS
-Take a break with Pairs, Photo Snake and Foto Blocks – played with your own pictures.
+TIME FOR A BREAK?
+Pairs, Photo Snake and Foto Blocks: three small games with your own photos.
 
-PRIVACY FIRST
-No account, no server of our own, no upload. Your photos stay on your device.
+NO ACCOUNT NEEDED
+You don't need an account, and GaleriQ never uploads your photos anywhere.
 
-FREE AND PRO
-All tools are free. The free version shows ads from Google and lets you delete up to 100 items a day, plus 100 more once a day after an optional video. GaleriQ Pro is a one-time purchase: no ads, unlimited deleting and new vault folders without videos.
+FREE OR PRO
+Every feature is free to use. The free version shows ads and lets you delete up to 100 items a day. Watch an optional video once a day to unlock 100 more. GaleriQ Pro is a one-time purchase, not a subscription: no ads, unlimited deleting, and new vault folders without watching videos.
