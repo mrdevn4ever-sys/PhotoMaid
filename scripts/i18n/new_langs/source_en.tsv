@@ -1198,7 +1198,7 @@
 1196	pro_msg_pending	Your purchase is awaiting confirmation. Pro will unlock once it’s confirmed.
 1197	pro_msg_restored	Your purchase has been restored.
 1198	pro_price_loading	Loading price …
-1199	pro_privacy_no_ads	Your photos and files are checked and sorted only on your device. For the purchase only the bare minimum goes to Google – never your photos, their names or anything derived from them.
+1199	pro_privacy_no_ads	Your photos and files are checked and sorted only on your device. For the purchase only the bare minimum goes to Apple – never your photos, their names or anything derived from them.
 1200	pro_restore	Restore purchases
 1201	pro_store_unavailable	Pro can’t be loaded from the App Store right now. Check your internet connection and try again.
 1202	pro_subtitle	Buy once. No subscription.
@@ -1914,7 +1914,7 @@
 1912	wf_title	Workflows
 1913	yes	Yes
 9000	info:NSPhotoLibraryUsageDescription	GaleriQ shows your photos and videos for sorting on this iPhone and only removes items you choose and confirm in the system dialog.
-9001	info:NSPhotoLibraryAddUsageDescription	GaleriQ saves edited copies, collages, videos and PDFs as new items in your library.
+9001	info:NSPhotoLibraryAddUsageDescription	GaleriQ saves edited copies, collages and videos as new items in your library.
 9002	info:NSCameraUsageDescription	GaleriQ uses the camera only to scan documents when you tap Scan.
 9003	info:NSFaceIDUsageDescription	GaleriQ uses Face ID only to open content you protected with a code.
 9004	info:NSMicrophoneUsageDescription	GaleriQ needs microphone access for a voice note. Recording starts only when you tap.

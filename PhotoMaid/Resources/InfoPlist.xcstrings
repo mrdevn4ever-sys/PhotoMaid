@@ -609,7 +609,7 @@
         "da": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ gemmer redigerede kopier, collager, videoer og PDF'er som nye emner i dit bibliotek."
+            "value": "GaleriQ gemmer redigerede kopier, collager og videoer som nye emner i dit bibliotek."
           }
         },
         "de": {
@@ -621,7 +621,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ saves edited copies, collages, videos and PDFs as new items in your library."
+            "value": "GaleriQ saves edited copies, collages and videos as new items in your library."
           }
         },
         "es": {
@@ -639,7 +639,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ menyimpan salinan hasil edit, kolase, video, dan PDF sebagai item baru di pustakamu."
+            "value": "GaleriQ menyimpan salinan hasil edit, kolase, dan video sebagai item baru di pustakamu."
           }
         },
         "it": {
@@ -663,7 +663,7 @@
         "nb": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ lagrer redigerte kopier, collager, videoer og PDF-er som nye elementer i biblioteket ditt."
+            "value": "GaleriQ lagrer redigerte kopier, collager og videoer som nye elementer i biblioteket ditt."
           }
         },
         "nl": {
@@ -681,7 +681,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "O GaleriQ salva cópias editadas, colagens, vídeos e PDFs como novos itens na sua biblioteca."
+            "value": "O GaleriQ salva cópias editadas, colagens e vídeos como novos itens na sua biblioteca."
           }
         },
         "pt-PT": {
@@ -705,13 +705,13 @@
         "sv": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ sparar redigerade kopior, collage, videor och PDF:er som nya objekt i ditt bibliotek."
+            "value": "GaleriQ sparar redigerade kopior, collage och videor som nya objekt i ditt bibliotek."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ บันทึกสำเนาที่แก้ไข ภาพตัดปะ วิดีโอ และ PDF เป็นรายการใหม่ในคลังของคุณ"
+            "value": "GaleriQ บันทึกสำเนาที่แก้ไข ภาพตัดปะ และวิดีโอเป็นรายการใหม่ในคลังของคุณ"
           }
         },
         "tr": {
@@ -729,7 +729,7 @@
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ lưu bản sao đã sửa, ảnh ghép, video và PDF thành mục mới trong thư viện của bạn."
+            "value": "GaleriQ lưu bản sao đã sửa, ảnh ghép và video thành mục mới trong thư viện của bạn."
           }
         },
         "zh-Hans": {
@@ -741,7 +741,7 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ 會將編輯後的副本、拼貼、影片和 PDF 作為新項目儲存到你的圖庫。"
+            "value": "GaleriQ 會將編輯後的副本、拼貼和影片作為新項目儲存到你的圖庫。"
           }
         }
       }
