@@ -1,0 +1,1900 @@
+0000	3 aktiivista päivää
+0001	7 aktiivista päivää
+0002	Kaikkia kolmea peliä pelattu
+0003	Merkit
+0004	%1$lld / %2$lld
+0005	Pelaa kohdassa ”Pidä tauko”
+0006	Jatka läpikäyntiä
+0007	Luo Studiossa
+0010	päivä
+0011	päivää
+0014	Saavutettu
+0015	%@
+0016	Säilytä, Roskakori ja Myöhemmin lasketaan samanarvoisina.
+0017	Ensimmäinen kollaasi
+0018	Ensimmäinen päätös
+0019	Ensimmäinen elokuva
+0020	Ensimmäinen kuukausi valmis
+0021	Ensimmäinen PDF
+0022	%1$@: %2$@ kuvaa
+0023	%1$@: %2$@ pistettä
+0024	Päivätavoite
+0025	Päivätavoite saavutettu 10 kertaa
+0026	Päivätavoite saavutettu
+0027	/ %@ tänään
+0028	Pois – laita päälle Asetuksissa.
+0029	%1$@ / %2$@
+0030	Pelit
+0031	Järjestys
+0032	Läpikäyty
+0033	Ensiaskeleet
+0034	Putket
+0035	”Myöhemmin” tyhjennetty
+0036	Taso
+0037	Korkein taso saavutettu.
+0038	Vielä %1$@ tasoon %2$lld.
+0039	Koko kirjasto käyty läpi
+0040	Kaikki pysyy tässä iPhonessa. Poista käytöstä: Asetukset › Näytä saavutukset.
+0041	Valmiit kuukaudet
+0042	12 kuukautta valmiina
+0043	Uusi merkki: %@
+0044	Avaa saavutukset
+0045	Avaa saavutukset
+0046	12 paria ratkaistu
+0047	%1$@ alle %2$@ s
+0048	Jäljellä %@
+0049	kohdetta käyty läpi
+0050	%@ käyty läpi
+0051	Putki
+0052	100 päivän putki
+0053	3 päivän putki
+0054	30 päivän putki
+0055	7 päivän putki
+0056	Mitä olet jo saavuttanut – vain omat lukusi.
+0057	Saavutukset
+0058	Näytä
+0059	Tällä viikolla
+0060	Säilytä ja seuraava
+0061	Myöhemmin
+0062	Valitse päivä myöhemmäksi
+0063	Näytä edellinen
+0064	Siirrä roskakoriin
+0065	Mainos
+0066	Ilman mainoksia Pron kanssa
+0067	Seuraava
+0068	Voit jatkaa pian …
+0069	Lisää kansio
+0070	Lisätty kohteeseen ”%1$@”
+0071	Albumia ei voitu muuttaa.
+0072	Albumit ja kansiot Kuvat-apista. Albumiin lisääminen ei muuta tiedostoja ja synkronoituu iCloud-kuviin, jos ne ovat käytössä.
+0073	Kaikki
+0074	Jatka hetki taustalla
+0075	GaleriQ käyttää iOS:n sallimaa taustaaikaa ilman järjestelmän toimintakorttia. Jos aika loppuu, edistyminen tallentuu ja analyysi jatkuu, kun avaat apin uudelleen.
+0076	Eläimet
+0077	Dokumentit
+0078	Ruoka
+0079	Luonto
+0080	Muut
+0081	Ihmiset
+0082	Kuvakaappaukset, joissa tekstiä
+0083	Ajoneuvot
+0084	iCloud-kuvat ladataan vain pieninä esikatseluina Wi-Fin kautta. Mitään ei lähetetä.
+0085	Vain iCloudissa: %1$lld
+0086	Kuva-analyysi on pois päältä Asetuksissa.
+0087	Ei analysoitu: %1$lld
+0088	Suorita ensin
+0089	Vertaa (%1$lld)
+0090	Ryhmät: %1$lld · Kuvat: %2$lld
+0091	Ota mukaan iCloud-kuvat (vain Wi-Fi)
+0092	Osumat: %1$lld
+0093	Seuraava
+0094	Tauko
+0095	Takaisin
+0096	%1$lld / %2$lld analysoitu
+0097	Esikatselu liian pieni: %1$lld
+0098	Analysoi sen jälkeen
+0099	Käynnissä olevaa analyysia ei koskaan peruta: ”Suorita ensin” vain keskeyttää sen, ja se jatkuu sen jälkeen itsestään.
+0100	Jatka analyysia
+0101	Yritä epäonnistuneita uudelleen (%1$lld)
+0102	”%1$@” on käynnissä. Tämä analyysi voi alkaa sen jälkeen itsestään.
+0103	Hae tunnistettua tekstiä
+0104	Näytä myös jo päätetyt
+0105	Samankaltaiset otokset: %1$lld · sinä päätät, mitä jää
+0106	Kirjasto muuttui. Jatka päivittääksesi analyysin.
+0107	Ladataan esikatseluja iCloudista …
+0108	Verrataan samankaltaisia otoksia …
+0109	Analyysi valmis.
+0110	Analysoidaan tämän iPhonen kuvia …
+0111	Keskeytetty. Tähänastiset tulokset säilyvät.
+0112	Valmistellaan …
+0113	Analyysi ei ole nyt mahdollinen. Yritä myöhemmin uudelleen.
+0114	Tuloksia ei voitu tallentaa. Tarkista vapaa tila.
+0115	Odotetaan Wi-Fiä iCloud-esikatselujen lataamiseksi.
+0116	Aloita analyysi
+0117	Pyyhkäise läpi (%1$lld)
+0118	Ylös säilyttää, vasemmalle roskakoriin, oikealle näytetään myöhemmin. Napauta kuvaa aloittaaksesi siitä.
+0119	Napauta ryhmää verrataksesi – tai pyyhkäise kaikki läpi yksi kerrallaan.
+0120	Älä odota
+0121	Odottaa – alkaa itsestään heti, kun ”%1$@” on valmis.
+0122	Epätarkat kuvat
+0123	Tärähtäneet tai epätarkat – terävyyden mukaan
+0124	Aiheen mukaan
+0125	Ihmiset, eläimet, ruoka, maisemat …
+0126	Kuvat, joissa tekstiä
+0127	Kuvakaappaukset, kuitit ja asiakirjat – haettavissa tunnistetulla tekstillä
+0128	Analyysi tehdään vain tässä iPhonessa (Apple Vision). Tulokset ovat ehdotuksia – sinä päätät syötteessä. Mitään ei lähetetä eikä poisteta automaattisesti.
+0129	Analysoitu tässä iPhonessa
+0130	Samankaltaiset otokset
+0131	Hyvin samannäköiset kuvat rinnakkain
+0132	GaleriQ
+0133	Tumma
+0134	Vaalea
+0135	Laitteen mukaan
+0136	Kansiot vuoden ja kuukauden mukaan
+0137	Lajittelee kopiot alikansioihin kuvauspäivän mukaan, esim. ”2026/10”. Pois: kaikki tiedostot menevät yhteen kansioon.
+0138	Valitse kansio
+0139	Valitse toinen kansio
+0140	Albumit
+0141	Tavut
+0142	Kansio
+0143	Nimi
+0144	Muistiinpano
+0145	SHA-256
+0146	Tunnisteet
+0147	Kuvattu
+0148	Vapaana kohteessa: %1$@
+0149	Vapaa tila kohteessa: tuntematon
+0150	GaleriQ kopioi kuvat ja videot valitsemaasi kansioon – esimerkiksi USB-tikulle, ulkoiselle levylle tai Tiedostot-appiin. Jokaista kopiota verrataan sen jälkeen alkuperäiseen tavu tavulta. Alkuperäiset pysyvät Kuvissa, eikä mitään poisteta.
+0151	Tarkistettu toinen kopio kuvistasi
+0152	Tämä kansio on samassa tallennustilassa kuin kuvasi. Toinen kopio täällä ei auta, jos puhelin katoaa tai hajoaa.
+0153	Tämä kansio kuuluu toiselle apille, esimerkiksi verkkotallennuspalvelulle. Se appi päättää, jäävätkö tiedostot puhelimeen vai siirtyvätkö ne verkkoon.
+0154	Erillinen tallennuslaite, kuten USB-tikku tai ulkoinen levy.
+0155	Edellinen suoritus %1$@: %2$lld / %3$lld tarkistettu.
+0156	GaleriQ-tarkistuslista %1$@.csv
+0157	Tarkistuslista tallennettu: %1$@
+0158	”Tarkistettu” tarkoittaa, että kopio on tavu tavulta sama kuin alkuperäinen. Kukaan ei voi tietää, kuinka kauan tallennuslaite kestää – säilytä tärkeät asiat kahdessa paikassa.
+0159	Valitse ensin kopioitavat kohteet ja kohdekansio.
+0160	Valitse nyt, mitä kopioidaan.
+0161	Valitse nyt kohdekansio.
+0162	Mitään ei ole vielä valittu
+0163	Valinnat
+0164	%1$lld oli jo olemassa
+0165	%1$lld oli jo olemassa
+0166	%1$lld epäonnistui
+0167	%1$lld epäonnistui
+0168	%1$lld ei kopioitu
+0169	%1$lld ei kopioitu
+0170	%1$lld kopioitu ja tarkistettu
+0171	%1$lld kopioitu ja tarkistettu
+0172	Mitä kopioidaan?
+0173	Valitse kuvat ja videot
+0174	Muuta valintaa
+0175	Peruttu
+0176	Keskeytyi – osittainen kopio poistettu
+0177	Kopio ei täsmännyt – poistettu
+0178	Alkuperäistä ei voi lukea
+0179	Kohteessa ei ole tilaa
+0180	Kohde kieltäytyi tallentamasta (täynnä, kirjoitussuojattu tai tiedosto liian suuri tälle tallennustilalle)
+0181	Tulos
+0182	Kopioidaan ja tarkistetaan …
+0183	Kopioi ja tarkista
+0184	%1$lld tiedosto kopioidaan kohteeseen ”%2$@”.
+0185	%1$lld tiedostoa kopioidaan kohteeseen ”%2$@”.
+0186	Vaihe %1$lld · %2$@
+0187	Alkuperäiset pysyvät ennallaan.
+0188	Kopioi valittuun kansioon ja tarkista jokainen kopio
+0189	Kansiota ei ole vielä valittu
+0190	Liitä USB-tikku tai ulkoinen levy ja valitse sieltä kansio. Myös iCloud Drive ja muut Tiedostot-apin sijainnit toimivat.
+0191	Arkisto
+0192	Ei päivää
+0193	Tarkistettu: %1$@
+0194	Minne kopiot tallennetaan?
+0195	Tallenna myös tarkistuslista
+0196	Tallentaa kohdekansioon taulukon (CSV-tiedosto), jossa on jokaisen tiedoston nimi, päivä, koko ja tarkistussumma sekä albumisi, tunnisteesi ja muistiinpanosi – jotta voit tarkistaa kopiot myöhemmin.
+0197	/ %1$@
+0198	Parit, Kuvakäärme ja Foto Blocks
+0199	läpikäytävänä
+0200	Kuvat, joista et ole vielä varma.
+0201	Hengähdä. Kuvasi pelaavat mukana.
+0202	3 peliä omilla kuvillasi
+0203	Poista viimeinen numero
+0204	%1$lld/%2$lld numeroa syötetty
+0205	Tietosuoja ja tiedot
+0206	Kysyy ennen kuin suosikki menee roskakoriin
+0207	Kameralla, PDF:nä
+0208	Mikä vie tilaa
+0209	Pyyhkäise läpi
+0210	Vielä läpikäytävänä
+0211	Kuvat ja videot.
+0212	Salattu, vain tässä iPhonessa.
+0213	Takaisin
+0214	Palauta
+0215	Palautettu
+0216	GaleriQ-varmuuskopio %1$@.json
+0217	Varmuuskopio %1$@
+0218	Tämä tiedosto ei ole GaleriQ-varmuuskopio.
+0219	Avaa varmuuskopio …
+0220	Tiedosto sisältää tiedostonimiä, tunnisteita ja muistiinpanoja. Tallenna se vain sinne, minne haluat – esimerkiksi USB-tikulle.
+0221	Palautus
+0222	Tuo varmuuskopion esimerkiksi uuteen puhelimeen. Kuvat löydetään uudelleen nimen, koon ja kuvausajan perusteella. Täällä jo päätetty tai syötetty pysyy ennallaan.
+0223	Tallenna varmuuskopio …
+0224	Varmuuskopiota ei voitu tallentaa.
+0225	Varmuuskopioi
+0226	Tallentaa GaleriQ-tietosi pieneen tiedostoon: päätökset, albumit, tunnisteet, muistiinpanot, valintakorin, piilotetut kohteet, asetukset, työnkulut ja esiasetukset. Kuvia ei sisällytetä.
+0227	Varmuuskopiointi ja palautus
+0228	Tämä varmuuskopio on GaleriQ:n uudemmasta versiosta. Päivitä GaleriQ ensin.
+0229	Tiedostoa ei voitu lukea.
+0230	Roskakori
+0231	Tänään jäljellä %1$lld / %2$lld
+0232	Poista %1$lld pysyvästi
+0233	Tätä ei voi kumota.
+0234	Poistetaanko tiedostot pysyvästi?
+0235	Poista %1$lld
+0236	Vahvista sitten iOS:n valintaikkunassa. Kuvat ja videot siirtyvät Kuvat-apin kansioon ”Äskettäin poistetut”.
+0237	Poistetaanko kuvat ja videot?
+0238	%1$lld roskakorissa
+0239	Poista %1$lld tiedosto pysyvästi
+0240	Poista %1$lld tiedostoa pysyvästi
+0241	Poista %1$lld kuva tai video
+0242	Poista %1$lld kuvaa ja videota
+0243	Tässä näkyy kaikki, minkä olet siirtänyt syrjään poistettavaksi. Pyyhkäise kuva tai video vasemmalle lisätäksesi sen.
+0244	Roskakori on tyhjä
+0245	Nämä tiedostot poistetaan pysyvästi. Tätä ei voi kumota.
+0246	Tiedostot
+0247	Mitään ei ole vielä poistettu. Napauta pikkukuvaa nähdäksesi sen isompana. Tyhjennä roskakori vasta, kun olet valmis.
+0248	iOS pyytää vielä vahvistuksen ja siirtää kuvat ja videot kansioon ”Äskettäin poistetut”. Siellä ne voi yleensä palauttaa 30 päivän ajan. iCloud-kuvien kanssa poisto koskee kaikkia laitteitasi.
+0249	Kuvat ja videot
+0250	Katsominen ei muuta valintaasi.
+0251	Näytä isompana: %1$@
+0252	Valinta: %1$@
+0253	Viimeksi lisätyt
+0254	Kuvauspäivä
+0255	Salli kuvien käyttö
+0256	Paras: %1$lld
+0257	Vaihda kuvat
+0258	Tyhjennä valinta
+0259	Jatka
+0260	Kuva paljastui!
+0261	Suosikit
+0262	Paljastetut kuvat: %1$lld
+0263	Pelilauta: pyyhkäise sivulle, napauta kääntääksesi, vedä tai sipaise alas.
+0264	Vedä alas: nopeammin · sipaise alas: pudota
+0265	Pyyhkäise sivulle siirtääksesi
+0266	Napauta kääntääksesi
+0267	Näin pelaat
+0268	Taso: %1$lld
+0269	Hallitse sallittuja kuvia
+0270	Uusi ennätys!
+0271	Uusimmat kuvat
+0272	Seuraava pala
+0273	Kierros valmis
+0274	Tauko
+0275	Tauolla
+0276	iCloud-kuvat ladataan tarvittaessa. Holvin kuvat sekä piilotetut ja poissuljetut kuvat pysyvät suojattuina.
+0277	Kuvien lähde
+0278	Valitse kuvat
+0279	Sarake %1$lld, rivi %2$lld, kierto %3$lld
+0280	Kuvan edistyminen
+0281	Satunnaiset kuvat
+0282	Pelaa uudelleen
+0283	Aloita alusta
+0284	Rivit: %1$lld
+0285	Vain sallittuja kuvia käytetään. Puuttuvat kuvat korvataan neutraalilla taustalla.
+0286	Tallennus epäonnistui · Yritä uudelleen
+0287	Pisteet: %1$lld
+0288	Valittu: %1$lld
+0289	Valitse omat kuvani
+0290	Aloita peli
+0291	Poista rivejä ja paljasta kuvasi.
+0292	Foto Blocks
+0293	Peruuta
+0294	Kuvat
+0295	Kuvakaappaukset
+0296	Videot
+0297	Muuta
+0298	Muuta päivää
+0299	Valitse kansio
+0300	Sulje
+0301	A4 vaaka
+0302	A4 pysty
+0303	Luo kokoelma
+0304	1 vuosi
+0305	2 vuotta
+0306	6 kuukautta
+0307	%1$lld päivä
+0308	%1$lld päivää
+0309	Sumennettu kuva
+0310	Valmiina sinulle
+0311	Ehto
+0312	Lasketaan kohteita …
+0313	Omat kokoelmasi
+0314	Omat kokoelmat ovat saatavilla Pron kanssa. Valmiit kokoelmat ovat ilmaisia.
+0315	Poista kokoelma
+0316	Vaakasuora jakaja
+0317	Pystysuora jakaja
+0318	Muokkaa
+0319	Oma kokoelma
+0320	Täytä
+0321	Näytä kokonaan
+0322	Tiedostotyyppi
+0323	Valitse kokoelma käydäksesi läpi siihen sopivat kuvat ja videot. Mitään ei poisteta automaattisesti.
+0324	JPEG: pienempi tiedosto, sopii jakamiseen.
+0325	Vapaa
+0326	Ruudukko
+0327	Nauha
+0328	Suurempi kuin
+0329	Muuta kokoa vetämällä valkoisia kahvoja. Pidä kuvaa painettuna ja vedä se toisen päälle vaihtaaksesi ne.
+0330	Reuna
+0331	Jotkin kuvat eivät ole enää saatavilla, ja ne jätetään pois.
+0332	Kaikki käyty läpi
+0333	Vanhempi kuin
+0334	Napauta kollaasin kuvaa vaihtaaksesi sen.
+0335	PNG: häviötön ja terävä, mutta suurempi tiedosto.
+0336	Pikakuvakehys
+0337	Korvaa
+0338	Tallenna kollaasi
+0339	Väli
+0340	Kollaasin esikatselu
+0341	Rinnakkain
+0342	Ylhäältä alas
+0343	Vaihda seuraavan kuvan kanssa
+0344	Tausta
+0345	Asettelu
+0346	Kuva
+0347	Väli
+0348	%1$@ suuremmat kuin %2$@
+0349	%1$@ vanhemmat kuin %2$@
+0350	Rajaa alhaalta
+0351	Rajaa vasemmalta
+0352	Rajaa oikealta
+0353	Rajaa ylhäältä
+0354	%1$lld kohde, jonka kokoa ei tiedetä, ohitettiin.
+0355	%1$lld kohdetta, joiden kokoa ei tiedetä, ohitettiin.
+0356	Mitä haluat katsoa?
+0357	Tallenna albumiin
+0358	Tallenna Tiedostoihin
+0359	Tallenna Kuviin
+0360	Lisää kuvia
+0361	Kuvasuhde
+0362	Kuvasuhde %1$@
+0363	Musta
+0364	Sininen
+0365	Kerma
+0366	Oma väri
+0367	Vihreä
+0368	Harmaa
+0369	Oranssi
+0370	Pinkki
+0371	Punainen
+0372	Valkoinen
+0373	Keltainen
+0374	Albumi Kuvissa
+0375	Valitse albumi
+0376	iCloud Drive, Omassa iPhonessa tai USB-tikku
+0377	Tallenna kohteeseen
+0378	Kuvat
+0379	Uutena kuvana kirjastoon
+0380	Lähetä tallentamatta kopiota Kuviin
+0381	Kollaasia ei voitu tallentaa. Kuvasi ovat ennallaan.
+0382	Fontti
+0383	Vedä siirtääksesi kuvaa solussa, nipistä zoomataksesi.
+0384	Vedä kuvia siirtääksesi niitä. Kahdella sormella muutat kokoa ja kierrät.
+0385	Iso kuva alhaalla
+0386	Iso kuva vasemmalla
+0387	Iso kuva oikealla
+0388	Iso kuva ylhäällä
+0389	%1$@ kuvan sarakkeet
+0390	Tasainen ruudukko
+0391	%1$@ kuvan rivit
+0392	Alkuperäiset kuvasi pysyvät ennallaan. Luodaan uusi tiedosto.
+0393	Kuva %1$lld
+0394	Korkea (2048 px)
+0395	Luku on pidempi sivu. Suurempi näyttää terävämmältä zoomatessa tai tulostettuna, mutta tiedosto on suurempi.
+0396	Suurin (4096 px)
+0397	Tulos: %1$lld × %2$lld px
+0398	Vakio (1080 px)
+0399	Nauhoissa luku on leveys (ylhäältä alas) tai korkeus (rinnakkain). Hyvin pitkiä nauhoja pienennetään, jotta ne voidaan tallentaa.
+0400	Kierto
+0401	Kollaasi tallennettu kohteeseen ”%1$@”
+0402	Kollaasi tallennettu Tiedostoihin
+0403	Kollaasi tallennettu Kuviin
+0404	Teksti ja tarrat
+0405	Tyyli
+0406	Zoomaus
+0407	Yhdistetyt kansiot
+0408	Jaa diagnostiikka
+0409	Takaisin
+0410	Säilytä
+0411	Myöhemmin
+0412	Roskakori
+0413	Roskakori: %1$lld
+0414	Avaa roskakorin. Mitään ei poisteta ilman vahvistustasi.
+0415	Valmis
+0416	Vähintään %1$@
+0417	Valmis
+0418	Arvioitu (”n.”): %1$lld – iOS kertoo niiden tarkan koon vasta latauksen jälkeen.
+0419	Säilytetty tänään
+0420	Tiedostot poistettiin pysyvästi.
+0421	Kuvat ja videot ovat nyt Kuvat-apin kansiossa ”Äskettäin poistetut”. Tilaa vapautuu vasta, kun ne poistetaan sieltä pysyvästi.
+0422	Kohteet, joita ei poistettu, jäävät GaleriQ-roskakoriin.
+0423	Poistettu
+0424	vapautettu
+0425	Roskakori tyhjennetty
+0426	Yhteensä vapautettu %1$@
+0427	Yhteensä vapautettu vähintään %1$@
+0428	%1$lld kohteen kokoa ei tiedetä. Sitä ei lasketa mukaan kokonaismäärään.
+0429	%1$lld kohteen kokoa ei tiedetä. Niitä ei lasketa mukaan kokonaismäärään.
+0430	Hae uudelleen
+0431	Verrataan tiedostoja …
+0432	Etsi kuvat, videot ja tiedostot, joiden sisältö on täsmälleen sama. Sinä valitset, mitkä kopiot menevät roskakoriin.
+0433	Valitut kopiot: enintään %1$@. Määrä ei välttämättä vastaa vapautuvaa tilaa. Tarkista suosikit, albumit ja muokkaukset ennen kopioiden poistamista.
+0434	Identtiset tiedostot: %1$lld · yhteensä %2$@
+0435	GaleriQ vertaa tiedostojen sisältöä suoraan laitteellasi. Samannäköisiä kuvia ei lasketa identtisiksi kopioiksi.
+0436	Lataa puuttuvat alkuperäiset Wi-Fin kautta. Suuret kirjastot voivat viedä aikaa ja kuluttaa paljon dataa. Hakee sallituista medioista ja yhdistetyistä kansioista.
+0437	Ladataan alkuperäisiä iCloudista…
+0438	Ota mukaan iCloudin alkuperäiset
+0439	Osaa sisällöstä ei voitu lukea. Tarkistamattomissa kohteissa voi olla lisää identtisiä kopioita.
+0440	Haku ei ole vielä valmis
+0441	Mitataan kokoja …
+0442	Siirrä %1$lld kopio roskakoriin
+0443	Siirrä %1$lld kopiota roskakoriin
+0444	Identtisiä kopioita ei löytynyt
+0445	Käytettävissä olevilta alueilta ei löytynyt identtisiä kopioita.
+0446	Valittu roskakoriin
+0447	%1$lld yhdistettyä kansiota ei voitu lukea.
+0448	Etsi kopiot
+0449	%1$lld kohdetta ei voitu vielä tarkistaa.
+0450	Säilytetään
+0451	Kaksoiskappaleet
+0452	Muokkaa
+0453	Valotus
+0454	Kohinanpoisto
+0455	Säde
+0456	Kynnys
+0457	Vapaa
+0458	Alkuperäinen
+0459	muutettu
+0460	Muokattu kuva. Näet alkuperäisen pitämällä painettuna.
+0461	muokattu
+0462	Rajausalue
+0463	Rajaa
+0464	Perspektiivi
+0465	Hylkää
+0466	Muokkaustasi ei tallenneta. Alkuperäinen pysyy ennallaan.
+0467	Hylätäänkö muutokset?
+0468	Tallennettu kopiona
+0469	Tallennettu kopiona · %1$@
+0470	Alkuperäinen säilytetty · muokkaus tallennettiin kopiona
+0471	Alkuperäistä muokattu · voidaan palauttaa Kuvat-apissa
+0472	Alkuperäinen korvattu · se on kansiossa ”Äskettäin poistetut”
+0473	Ei muutettu – iOS ei saanut lupaa. Alkuperäinen on ennallaan.
+0474	Tätä kohdetta on sillä välin muutettu, siirretty tai se on poistettu. Mitään ei tallennettu.
+0475	Tätä kohdetta ei voi avata muokattavaksi.
+0476	Muokkausta ei voitu tallentaa. Alkuperäinen on ennallaan.
+0477	Viileä
+0478	Haalistunut
+0479	Mono
+0480	Noir
+0481	Alkuperäinen
+0482	Seepia
+0483	Voimakkuus
+0484	Eloisa
+0485	Lämmin
+0486	Peilaa
+0487	Erittäin lihavoitu
+0488	Lihavoitu
+0489	Rento
+0490	Kapea
+0491	Käsiala
+0492	Kirjoituskone
+0493	Klassinen
+0494	Serif
+0495	Kapiteelit
+0496	Pyöristetyt kulmat
+0497	Tasainen
+0498	Reunus sisällä
+0499	Reunus ulkona
+0500	Leveys
+0501	Väri
+0502	Yksityiskohdat
+0503	Tehosteet
+0504	Valo
+0505	Värimikseri
+0506	Jatka muokkausta
+0507	Vaaka
+0508	Värisävy
+0509	Luminanssi
+0510	Kylläisyys
+0511	Väri
+0512	Poista
+0513	Piirrä
+0514	Monista
+0515	Muokkaa
+0516	Emoji
+0517	Täytetty
+0518	Tuo eteen
+0519	Napauta lisäämääsi kohdetta siirtääksesi sitä. Kahdella sormella muutat kokoa ja kierrät.
+0520	Napauta tekstiä tai tarraa valitaksesi sen ja vedä se haluamaasi kohtaan.
+0521	Suurempi
+0522	Peitä
+0523	”Pikselöi”- ja ”Sumenna”-tehosteilla ääriviivat voivat yhä näkyä. Valitse ”Peittävä” tekstille, jonka on pysyttävä lukukelvottomana.
+0524	Suositeltu yksityisille tiedoille: peittämäsi kohta katoaa oikeasti tallennetusta tai jaetusta tiedostosta.
+0525	Valitse
+0526	Muodot
+0527	Koko
+0528	Pienempi
+0529	Tarra
+0530	Teksti
+0531	Vaaka
+0532	Nollaa perspektiivi
+0533	Pysty
+0534	Pysty
+0535	Päivitetään esikatselua…
+0536	Esikatselu on ilmainen · tallentaminen vaatii Pron tai 30 minuutin kokeilun
+0537	Rajaus, kierto ja suoristus ovat ilmaisia. Säädöt, suodattimet, koko ja videoiden trimmaus tallennetaan Pron kanssa. Kokeileminen on aina ilmaista.
+0538	Tallenna Pron kanssa
+0539	Sumenna
+0540	Pikselöi
+0541	Peittävä (suositeltu)
+0542	Poista sijainti
+0543	Tallennettu kuva ei sisällä kuvauspaikkaa.
+0544	Nollaa
+0545	Nollaa kaikki
+0546	Kierrä
+0547	Tallenna kopiona
+0548	Tallenna kopio
+0549	Alkuperäinen pysyy ennallaan.
+0550	Tallenna vain rajaus
+0551	Muokkaa alkuperäistä
+0552	iOS kysyy ensin. Muokkaus tallennetaan kuten Kuvat-apin muokkaus – voit kumota sen siellä milloin tahansa valinnalla ”Palauta alkuperäinen”.
+0553	Tallenna kopio ja siirrä alkuperäinen roskakoriin
+0554	Tallenna kopio, alkuperäinen roskakoriin
+0555	iOS pyytää vahvistuksen. Alkuperäinen siirtyy Kuvat-apin kansioon ”Äskettäin poistetut”, ja sen voi yleensä palauttaa sieltä 30 päivän ajan. Tilaa vapautuu vasta sen jälkeen.
+0556	Tallenna muokkaus
+0557	Tallennetaan…
+0558	Nuoli
+0559	Ympyrä
+0560	Viiva
+0561	Suorakulmio
+0562	Vain jako (ei kopiota)
+0563	Jakaa muokatun version tallentamatta sitä galleriaan. Sijainti poistetaan.
+0564	%1$lld px
+0565	Alkuperäinen koko
+0566	%1$lld × %2$lld → %3$lld × %4$lld px
+0567	Tämä kuva on jo pieni. GaleriQ ei koskaan suurenna kuvia.
+0568	Nuoli
+0569	Puhekupla
+0570	Valintamerkki
+0571	Rengas
+0572	Rasti
+0573	Päivämääräleima
+0574	Sydän
+0575	Kipinä
+0576	Tähti
+0577	Muokkaa yhdellä sormella; kahdella zoomaat ja siirrät.
+0578	Suorista
+0579	Säädä
+0580	Rajaa
+0581	Suodattimet
+0582	Kehys
+0583	Merkintä
+0584	Koko
+0585	Retusointi
+0586	Trimmaa
+0587	Teksti
+0588	Loppu
+0589	%1$@ – %2$@ · %3$@ s
+0590	Alku
+0591	Ääriviiva
+0592	Tarra
+0593	Varjo
+0594	Kollaasi
+0595	Muunnettu
+0596	Kopio
+0597	Leike
+0598	Pysäytyskuva
+0599	Elokuva
+0600	Alkuperäinen korvattu
+0601	Kokoa muutettu
+0602	Tehty %1$lld kuvasta
+0603	Tehty %1$lld kuvasta
+0604	Kun muokkaat kuvaa tai tallennat kollaasin, elokuvan tai pienennettyjä kuvia, tulos näkyy tässä.
+0605	Mitään ei ole vielä muokattu
+0606	Poista luettelosta
+0607	Kaikki, minkä GaleriQ on tallentanut puolestasi: muokatut kuvat ja videot, kollaasit, elokuvat ja pienennetyt kuvat, uusimmat ensin. Tiedostot ovat Kuvat-apissa; tämä luettelo vain muistaa, mikä on peräisin GaleriQ:sta. Napauta kohdetta nähdäksesi sen.
+0608	Alkuperäinen on yhä tallella
+0609	Alkuperäinen on kansiossa ”Äskettäin poistetut”
+0610	Ei enää Kuvat-apissa
+0611	Muokatut
+0612	Muutosta ei voitu tallentaa.
+0613	Valitse tähän iPhoneen tallennettu kansio. Vain pilvessä olevia kansioita ei tueta tässä.
+0614	Päivää ei voitu tallentaa.
+0615	Valintaasi ei tallennettu. Yritä uudelleen.
+0616	Kansiota ei voitu yhdistää.
+0617	Asetusta ei voitu tallentaa.
+0618	Se ei onnistunut
+0619	Odota, että roskakori on tyhjennetty, ennen kuin käytät Kumoa-toimintoa.
+0620	Tätä ei voi enää kumota, koska muutit sitä sillä välin.
+0621	Tätä ei voi kumota juuri nyt.
+0622	Jätä tämä albumi pois
+0623	Jätä pois
+0624	Tämän albumin kohteet eivät enää näy siivotessa. Mitään ei poisteta eikä siirretä. Kumoa kohdassa Asetukset › Poissuljetut albumit.
+0625	Piilotetaanko ”%1$@” siivotessa?
+0626	”%1$@” ei enää näy siivotessa
+0627	Jatkuu, vaikka vaihtaisit appia.
+0628	Toinen vienti on jo käynnissä. Odota, kunnes se on valmis.
+0629	Peruttu. Mitään ei tallennettu.
+0630	iOS lopetti viennin taustalla. Mitään ei tallennettu – aloita se uudelleen ja pidä GaleriQ auki.
+0631	Voit hetkeksi vaihtaa toiseen appiin. Jos iOS lopettaa ajan, GaleriQ pysähtyy siististi – mitään keskeneräistä ei tallenneta.
+0632	Tallennetaan …
+0633	Merkitse suosikiksi
+0634	Suosikkitilaa ei voitu muuttaa. Se pysyy ennallaan.
+0635	Tämä kuva on suojattu suosikkina.
+0636	Poista ensin suosikkimerkintä siirtääksesi sen roskakoriin. Voit myös poistaa suosikkien suojauksen asetuksista.
+0637	Tämä video on suojattu suosikkina.
+0638	Poista suosikeista
+0639	Ei enää merkitty suosikiksi. Pyyhkäise vasemmalle siirtääksesi roskakoriin.
+0640	Ei suosikki
+0641	Suosikki
+0642	Laita kohteeseen ”%1$@”
+0643	Ei mitään
+0644	Myöhemmin – valitse päivä
+0645	Lisää painike
+0646	Painikkeet ja järjestys
+0647	Painikkeet
+0648	Muuta järjestystä tai poista painikkeita valinnalla ”Muokkaa”. Enintään 6 painiketta. Painikkeet tekevät täsmälleen saman kuin pyyhkäisyt.
+0649	Laita albumiin …
+0650	Täällä ei poisteta mitään: ”Roskakori” on GaleriQ-roskakori. Kumoa peruu jokaisen toiminnon, myös ”Laita albumiin”.
+0651	Ei painikkeita
+0652	Kuvan yläpuolella
+0653	Kuvan alapuolella
+0654	Sijainti
+0655	Palauta oletus
+0656	Ylös säilyttää, vasemmalle roskakoriin, oikealle myöhemmäksi, alas takaisin – oletuspainikkeilla.
+0657	Muokattu
+0658	Vakio
+0659	Pyyhkäisyt
+0660	Valitse, mitä kukin suunta tekee. ”Laita albumiin” lisää kuvan Kuvat-apin albumiin ja säilyttää sen. Tekemättä jättäminen ei ole koskaan päätös.
+0661	Pyyhkäisyt ja painikkeet
+0662	Vain VoiceOverin/kytkinohjauksen kanssa
+0663	Aina
+0664	Näytä painikkeet
+0665	Laitettu kohteeseen ”%1$@”
+0666	Läpikäytäviä suosikkeja ei ole nyt enempää.
+0667	Tässä albumissa ei ole enää läpikäytävää.
+0668	Uusimmissa kuvissasi ei ole enää läpikäytävää.
+0669	Uusimmissa videoissasi ei ole enää läpikäytävää.
+0670	Läpikäytäviä Live Photo -kuvia ei ole nyt enempää.
+0671	Läpikäytäviä pitkiä videoita ei ole nyt enempää.
+0672	Täällä ei ole nyt muuta läpikäytävää.
+0673	Tältä päivältä aiempina vuosina ei ole enää läpikäytävää.
+0674	Läpikäytäviä kuvia ei ole nyt enempää.
+0675	Läpikäytäviä muotokuvia ei ole nyt enempää.
+0676	Satunnaisessa valinnassa ei ole enää läpikäytävää.
+0677	Läpikäytäviä kuvakaappauksia ei ole nyt enempää.
+0678	Läpikäytäviä selfieitä ei ole nyt enempää.
+0679	Tältä viikolta ei ole enää läpikäytävää.
+0680	Läpikäytäviä videoita ei ole nyt enempää.
+0681	Tähän iPhoneen on tallennettu vain pieni esikatselu. Lataa alkuperäinen nähdäksesi sen kokonaan.
+0682	Lataa iCloudista
+0683	Alkuperäinen on iCloudissa.
+0684	Lataa täyden laadun iCloudista uudelleen. Voit päättää esikatselun perusteella milloin tahansa.
+0685	Ladataan kuvia ja videoita …
+0686	%@ tällä kerralla
+0687	%1$lld / %2$lld
+0688	Yritä ohitettuja uudelleen
+0689	Näytä pyyhkäisyohje
+0690	Piilotettu pyyhkäistessä, kunnes lataat ne täällä uudelleen. Alkuperäiset pysyvät ennallaan.
+0691	Ohitetut mediat
+0692	Nykyinen kuva tai video
+0693	Siivoa
+0694	Valmiina läpikäyntiin
+0695	Äskettäin lisätyt
+0696	Kuvat
+0697	Kuvakaappaukset
+0698	Videot
+0699	Näytä roskakori
+0700	Tiedosto
+0701	Tiedostotyyppi
+0702	Tiedostot
+0703	Valitse kansio käydäksesi sen tiedostot läpi GaleriQ:ssa.
+0704	Kansiota ei ole vielä yhdistetty
+0705	Hae tiedostoja …
+0706	Yhdistetty kansio ei ole käytettävissä. Yhdistä se uudelleen.
+0707	Lisää albumiin
+0708	Kaikki albumit
+0709	Luo ja lisää
+0710	Anna lyhyt albumin nimi.
+0711	Ladataan albumeja …
+0712	Albumin nimi
+0713	Uusi albumi
+0714	Kuva pysyy paikallaan ja näkyy myös albumissa – myös Kuvat-apissa ja iCloud-kuvien kanssa muilla laitteillasi.
+0715	Avaa tiedostot
+0716	Kiinnitä albumi
+0717	Kiinnitetty
+0718	Viimeksi käytetyt
+0719	Etsi albumi
+0720	Irrota albumi
+0721	Paras: %1$lld
+0722	Paras aika: %1$@
+0723	Käännä väärät parit käsin
+0724	Uusi henkilökohtainen ennätys!
+0725	Ei vielä ennätystä
+0726	Tämä kierros tarvitsee vähintään %1$lld käyttökelpoista kuvaa valitusta lähteestä. Valitse toinen lähde, pienempi valinta tai salli iCloud-lataukset.
+0727	Kuvat
+0728	Symbolit
+0729	Uudet ennätyksesi ovat käytettävissä tällä kerralla, mutta niitä ei voitu tallentaa. Yritä uudelleen.
+0730	Ennätykset
+0731	Ulkoasu ja ääni
+0732	Valitse kuvat
+0733	iCloudiin tallennetut kuvat ladataan tarvittaessa.
+0734	Vaihda kuvat
+0735	Muokkaa peliä
+0736	Löydä kaikki samat kuvat omaan tahtiisi.
+0737	Valitse pareihisi 2–18 kuvaa.
+0738	Pelaa ilman kuvia · 6 paria
+0739	Omat kuvasi
+0740	Alkuperäiset kuvasi pysyvät ennallaan.
+0741	Kerää kuvia. Ohjaa pyyhkäisemällä.
+0742	Pelaa ilman kuvia
+0743	Vakio
+0744	Pelit
+0745	Etsi pareja omilla kuvillasi.
+0746	Kollaasi
+0747	Täällä ei ole nyt kuvia eikä videoita.
+0748	Ei näytettävää
+0749	Napauta valitaksesi, paina pitkään ja vedä valitaksesi useita. Siirtäminen ei ole päätös.
+0750	Yleiskatsaus
+0751	Valitse
+0752	Kaikki
+0753	Ei mitään
+0754	%1$lld valittu
+0755	%1$lld valittu
+0756	Muutettu
+0757	Poistettu
+0758	Poistettu kohteesta ”Myöhemmin”
+0759	Säilytetty
+0760	Muutettu: säilytä
+0761	Tallennettu myöhemmäksi
+0762	Muutettu: myöhemmin
+0763	Ei poistettu
+0764	Ei enää löydy
+0765	Päivä asetettu
+0766	Siirrä roskakoriin
+0767	Muutettu: roskakori
+0768	Kumottu
+0769	Palautettu roskakorista
+0770	Ohje
+0771	Pilvi
+0772	Pilvipalvelut, kuten Google Kuvat, voivat synkronoida poistot muille laitteille. Tarkista niiden asetukset. GaleriQ lataa kuvat ja videot iCloud-kuvista automaattisesti tarvittaessa, aivan kuten Kuvat-appi.
+0773	Tee valinta
+0774	Pyyhkäise ylös säilyttääksesi, vasemmalle roskakoriin ja oikealle myöhemmäksi. Oletuksena kohde palaa 2 päivän kuluttua. Voit muuttaa tätä viivettä asetuksissa. Heti pyyhkäisyn jälkeen voit valita toisen päivän valinnalla ”Muuta”. Pyyhkäise alas palataksesi taaksepäin tekemättä uutta valintaa.
+0775	Poistaminen
+0776	Pyyhkäisy ei koskaan poista mitään. Kohteet menevät ensin GaleriQ-roskakoriin. Vasta kun vahvistat siellä, iOS siirtää kuvat ja videot kansioon Äskettäin poistetut.
+0777	Näytä esittely ja vinkit uudelleen
+0778	Alas
+0779	Vasemmalle
+0780	Oikealle
+0781	Ylös
+0782	Kaikki
+0783	Poistettu
+0784	%1$@ · %2$lld merkintä
+0785	%1$@ · %2$lld merkintää
+0786	Valintasi näkyvät täällä, kun alat siivota.
+0787	Ei vielä historiaa
+0788	Tälle suodattimelle ei ole vielä merkintöjä.
+0789	Ei vielä merkintöjä
+0790	Säilytetty
+0791	Myöhemmin
+0792	Näytä vähemmän
+0793	Näytä vanhemmat merkinnät (%1$lld)
+0794	%1$@ · %2$@
+0795	Identtiset kopiot
+0796	Tiedostot yhdistetyistä kansioista
+0797	alkaen %1$@
+0798	Kirjasto
+0799	Valmiiksi kuukausi kerrallaan
+0800	Kaikki käyty läpi
+0801	%1$lld läpikäytävänä
+0802	%1$lld läpikäytävänä
+0803	Otettu nopeasti peräkkäin
+0804	Kategoriat
+0805	Kokoelmat
+0806	Lisää työkaluja
+0807	Tiedot
+0808	Sijainti
+0809	%1$lld kohde
+0810	%1$lld kohdetta
+0811	Säilytä
+0812	Kaikki
+0813	Arkistot
+0814	Asiakirjat
+0815	Kuvat
+0816	Muut
+0817	PDF:t
+0818	Videot
+0819	Suuret tiedostot
+0820	Suurempi kuin
+0821	Vain tiedostot, joiden tunnettu koko on vähintään %1$lld Mt. Koko voi poiketa tilasta, joka vapautuu niitä poistettaessa.
+0822	Kun ”Optimoi iPhonen tallennustila” on käytössä, nämä alkuperäiset ovat vain iCloudissa. iOS ei kerro niiden tarkkaa kokoa ilman latausta, joten GaleriQ arvioi sen mitattujen kuviesi ja videoidesi perusteella ja näyttää sen merkinnällä ”n.”.
+0823	Vain iCloudissa: %1$lld
+0824	%1$lld suuressa tiedostossa
+0825	%1$lld suuressa tiedostossa
+0826	Vain iCloudissa, koko arvioitu
+0827	Jatka mittausta (läpikäymättä: %1$lld)
+0828	Mitataan kokoja … %1$lld / %2$lld
+0829	Ei vastaavia tiedostoja
+0830	Mikään käytettävissä oleva tunnetun kokoinen tiedosto ei ole yli %1$lld Mt.
+0831	Ei luettavissa: %1$lld
+0832	Nämä kohteet ovat tässä iPhonessa, mutta niitä ei voitu lukea. Luettelossa niillä on arvioitu koko (”n.”).
+0833	Myöhemmin
+0834	Takaisin pinoon
+0835	Syrjässä, ei päivää
+0836	Valmiina läpikäyntiin %1$@ alkaen
+0837	Valmiina läpikäyntiin tänään
+0838	Pyyhkäise kuva tai video oikealle nähdäksesi sen myöhemmin uudelleen.
+0839	Mitään ei ole tallennettu myöhemmäksi
+0840	Seuraavien 7 päivän aikana · %1$lld
+0841	Syrjässä · %1$lld
+0842	Valmiina läpikäyntiin · %1$lld
+0843	%1$@ alkaen · %2$lld
+0844	Ei päivää · %1$lld
+0845	Huomenna · %1$lld
+0846	Uudelleen %1$lld päivän päästä
+0847	Uudelleen %1$lld päivän päästä
+0848	Uudelleen %1$lld kuukauden päästä
+0849	Uudelleen %1$lld kuukauden päästä
+0850	Uudelleen 1 kuukauden päästä
+0851	Uudelleen 1 viikon päästä
+0852	Uudelleen %1$lld viikon päästä
+0853	Uudelleen %1$lld viikon päästä
+0854	Palaa seuraavalla siivouskerralla
+0855	Syrjässä – löydät sen kohdasta Myöhemmin
+0856	Muistutetaanko, kun on läpikäynnin aika?
+0857	Poista kohteesta ”Myöhemmin”
+0858	Käy läpi nyt
+0859	Käy läpi nyt (%1$lld)
+0860	Käy läpi uudelleen %1$@
+0861	Uudelleen huomenna
+0862	Piilota alikansiot
+0863	Tämän laitteen kuvat ja videot näkyvät täällä.
+0864	Näytä alikansiot
+0865	Napauta ♡ kuvassa tai videossa tehdäksesi siitä suosikin. Suosikit ovat samat kuin Kuvat-apissa.
+0866	Ei vielä suosikkeja
+0867	Kirjastosta
+0868	Kaikki
+0869	Elokuvatehoste
+0870	Poista suodatin
+0871	Muokatut
+0872	Suodattimella ”%1$@” täällä ei ole mitään.
+0873	Suosikit
+0874	Panoraamat
+0875	RAW
+0876	Näytön tallenteet
+0877	Hidastus
+0878	Ajastettu
+0879	Suodatin
+0880	Siivoa tämä albumi
+0881	Tässä albumissa ei ole nyt kuvia eikä videoita.
+0882	Jätä pois siivouksesta
+0883	Jätetty pois siivouksesta
+0884	Ota taas mukaan siivoukseen
+0885	Mikään albumi ei vastaa hakua ”%1$@”.
+0886	Hae albumeja …
+0887	Eniten kohteita
+0888	Viimeksi päivitetyt
+0889	%1$lld kohde piilotettu GaleriQ:ssa
+0890	%1$lld kohdetta piilotettu GaleriQ:ssa
+0891	GaleriQ ei näytä niitä missään. Tiedostot ovat ennallaan, ja muut apit näyttävät ne edelleen.
+0892	%1$lld piilotettu kohde
+0893	%1$lld piilotettua kohdetta
+0894	Käytä toimintoa ”Piilota GaleriQ:ssa” albumissa, kuvassa tai valinnassa.
+0895	Mitään ei ole piilotettu
+0896	Piilotetut
+0897	Piilota GaleriQ:ssa
+0898	GaleriQ ei enää näytä niitä – ei Kuvissa eikä siivotessa. Tiedostot pysyvät ennallaan ja näkyvät muissa apeissa. Tämä ei ole holvi.
+0899	Piilotetaanko %1$lld kohde GaleriQ:ssa?
+0900	Piilotetaanko %1$lld kohdetta GaleriQ:ssa?
+0901	Kesto
+0902	Nimi
+0903	RAW-tiedosto
+0904	Tarkkuus
+0905	Koko
+0906	Kuvattu
+0907	Tiedostotyyppi
+0908	Pienemmät ruudut
+0909	Päivät
+0910	Isommat ruudut
+0911	Kuukaudet
+0912	Vuodet
+0913	Mediatyypit
+0914	Albumit
+0915	Aikajana
+0916	Ei päivää
+0917	Viimeksi lisätyt ensin – Kuvat-apin järjestyksessä.
+0918	Siivoa tästä eteenpäin
+0919	Järjestä
+0920	Viimeksi lisätyt
+0921	Suurimmat ensin
+0922	Nimi
+0923	Uusimmat ensin
+0924	Vanhimmat ensin
+0925	%1$lld alikansio
+0926	%1$lld alikansiota
+0927	Siirrä roskakoriin
+0928	Tämä on suosikki. ”Suojaa suosikit” on päällä, joten se ei mene roskakoriin. Voit muuttaa tätä Asetuksissa.
+0929	GaleriQ-roskakoriin – mitään ei poisteta. Päätät siellä myöhemmin.
+0930	GaleriQ-roskakoriin – mitään ei poisteta. Suosikit jäävät (”Suojaa suosikit” on päällä).
+0931	Siirretäänkö %1$lld kohde roskakoriin?
+0932	Siirretäänkö %1$lld kohdetta roskakoriin?
+0933	%1$lld kohde on GaleriQ-roskakorissa.
+0934	%1$lld kohdetta on GaleriQ-roskakorissa.
+0935	GaleriQ-roskakorissa
+0936	%1$lld kohde näytetään taas
+0937	%1$lld kohdetta näytetään taas
+0938	Näytä taas
+0939	Kuvasuhde
+0940	Näkymä
+0941	Neliö
+0942	Poista kaikki %1$lld Pron kanssa
+0943	Katso mainos: poista tänään %1$lld lisää
+0944	Mainos suljettiin liian aikaisin. Mitään ei avattu. Voit yrittää uudelleen tänään.
+0945	Kerran päivässä. Bonus on voimassa vain tänään.
+0946	Mainosta ei ole nyt saatavilla. Mitään ei avattu.
+0947	Valittu: %2$lld. Ilman Prota voit poistaa enintään %1$lld päivässä. Kaikki muu jää GaleriQ-roskakoriin.
+0948	Tänään jäljellä %1$lld / %2$lld
+0949	Ei rajaa Pron kanssa
+0950	Poista näistä %1$lld
+0951	Päiväraja saavutettu
+0952	Tänään jäljellä %1$lld
+0953	Päiväkiintiösi nollautuu huomenna.
+0954	Kuva tai video
+0955	Analyysi valmis
+0956	Voit pelata kierroksen loppuun tai katsoa tulokset nyt.
+0957	Analyysi jatkuu
+0958	Pidä tauko
+0959	Kamera
+0960	Kortti %1$lld
+0961	Lataa iCloud-kuvat
+0962	Kaikki parit löydetty!
+0963	Aika: %1$@
+0964	Käännä kortit takaisin
+0965	Sydän
+0966	Kuvapuoli alaspäin
+0967	Lehti
+0968	Valmistellaan kuvia…
+0969	Pari löytyi
+0970	Kuu
+0971	Vuori
+0972	Siirrot: %1$lld
+0973	Valitse omat kuvani
+0974	%1$lld paria (%2$lld korttia)
+0975	%1$lld / %2$lld paria
+0976	Kuva %1$lld
+0977	Valitse albumi tai kuvakansio
+0978	Näytä tulokset
+0979	Jatka kierrosta
+0980	Parien määrä
+0981	Kuvien lähde
+0982	Albumi tai kuvakansio
+0983	Suosikit
+0984	Koko kuvakirjasto
+0985	Aurinko
+0986	Parit
+0987	Jotkin kuvat eivät ole enää saatavilla tai ovat vain iCloudissa. Valitse muita kuvia tai salli niiden lataus. Holvin kuvia ei voi käyttää.
+0988	Toiminnot: %1$@
+0989	Käy läpi uudelleen
+0990	Läpikäyty
+0991	%1$lld myöhemmäksi
+0992	%1$lld myöhemmäksi
+0993	Ei aloitettu · %1$lld kohde
+0994	Ei aloitettu · %1$lld kohdetta
+0995	%1$lld / %2$lld käyty läpi
+0996	%1$lld / %2$lld käyty läpi
+0997	Kuukaudet näkyvät täällä, kun kuvilla tai videoilla on kuvauspäivä.
+0998	Ei vielä kuukausia
+0999	Kuinka pitkällä olet kunkin kuukauden kanssa. Myöhemmäksi siirretyt lasketaan läpikäydyiksi.
+1000	Kuukausittain
+1001	Lisää toimintoja
+1002	Lisää
+1003	16:9 · Vaaka
+1004	4:5 · Hieman pysty
+1005	9:16 · Pysty
+1006	1:1 · Neliö
+1007	Leikkeen %1$lld valinnat
+1008	Leike %1$lld / %2$lld
+1009	Kuva · %1$@
+1010	Leike poistettu videosta
+1011	Video · %1$@
+1012	Siirrä tai poista leike ⋯-valikolla. Kuvat ja videot itse pysyvät ennallaan.
+1013	Häivytys mustaan leikkeiden välillä
+1014	Videota ei voitu luoda. Mitään ei tallennettu, ja alkuperäiset ovat ennallaan.
+1015	Täytä kuva-ala
+1016	Jos leikkeen muoto on erilainen
+1017	Leikkeitä ei koskaan venytetä: joko koko kuva näytetään (mustin reunoin) tai se täyttää kuva-alan ja reunat rajataan pois.
+1018	Koko kuva
+1019	Muoto
+1020	Kuten ensimmäinen leike
+1021	Valmiin videon muoto. 9:16 täyttää pystyssä pidetyn puhelimen näytön, 16:9 sopii televisioihin ja tietokoneisiin. ”Kuten ensimmäinen leike” käyttää ensimmäisen leikkeesi muotoa.
+1022	Pehmeä zoomaus
+1023	Kuvat zoomautuvat hitaasti, jotta ne eivät näytä staattisilta.
+1024	Siirrä aiemmaksi
+1025	Siirrä myöhemmäksi
+1026	Oma tiedostosi, toistetaan alusta ja tarvittaessa uudelleen. GaleriQ ei sisällä musiikkia. Huomioi oikeudet jakaessasi.
+1027	Valitse äänitiedosto
+1028	Poista
+1029	Musiikin äänenvoimakkuus
+1030	Aika kuvaa kohti
+1031	Koskee jokaista tämän videon kuvaa. Videot toistetaan aina kokonaan.
+1032	Kuvat
+1033	Valitse videot ja kuvat
+1034	Laatu
+1035	Tasapainoinen
+1036	Korkea (Full HD)
+1037	Korkea ja Tasapainoinen: enintään Full HD (1080p) – Tasapainoinen tekee pienempiä tiedostoja lähes ilman näkyvää eroa. Pieni: enintään HD (720p), pienin tiedosto, hyvä lähettämiseen.
+1038	Pieni (HD)
+1039	Poista videosta
+1040	Järjestä uudelleen
+1041	Luodaan videota …
+1042	Tallenna video
+1043	Tallennettu uutena videona kirjastoon. Alkuperäiset pysyvät ennallaan.
+1044	Kuvat pehmeällä zoomilla ja häivytyksillä, tallennettu videona
+1045	Videot ja kuvat peräkkäin, musiikin kanssa
+1046	Leikkeet
+1047	Muoto
+1048	Musiikki
+1049	Siirtymä
+1050	Yhdistä videot
+1051	Diaesitys videona
+1052	Lisää vähintään kaksi leikettä.
+1053	Yhteensä enintään 30 minuuttia. Lyhennä leikkeitä tai poista joitakin.
+1054	Enintään 50 leikettä videota kohti.
+1055	Kahden leikkeen välissä kuva muuttuu hetkeksi mustaksi ja palaa sitten esiin. Pois: kova leikkaus. Kokonaispituus pysyy samana.
+1056	Mykistä
+1057	Tätä tiedostoa ei voi näyttää.
+1058	Ei valittu
+1059	Huomautus
+1060	Jokin kohteessa ”Myöhemmin” on tänään valmiina läpikäyntiin.
+1061	OK
+1062	GaleriQ näyttää kuvasi ja videosi suoraan laitteellasi, jotta voit siivota. Ei GaleriQ-tiliä eikä palvelinta.
+1063	Kuvien ja videoiden käyttö
+1064	Osta Pro · %1$@ kertamaksu
+1065	Osta Pro kertamaksulla
+1066	Harjoituskortteja. Täällä ei tallenneta mitään.
+1067	Seuraava
+1068	Pyyhkäise ja järjestä rajattomasti, satunnaisten mainosten kera. Kohteiden poistamisella on päiväraja.
+1069	Aloita ilmaiseksi
+1070	Vaihe %1$lld / %2$lld
+1071	Kuvasi pysyvät laitteellasi. Ei GaleriQ-tiliä, ei kuvien lähettämistä.
+1072	Kohteet menevät ensin GaleriQ-roskakoriin. Vahvistat poiston siellä, ja iOS kysyy vielä ennen kuin siirtää kuvat ja videot kansioon Äskettäin poistetut.
+1073	Sinä päätät, mitä poistetaan
+1074	Käy kuvasi ja videosi läpi ja päätä, mitä jää. Yksi pyyhkäisy kerrallaan, omaan tahtiisi.
+1075	Galleriasi, vihdoin järjestyksessä
+1076	Näin se toimii. Nyt omat kuvasi.
+1077	Ylös: säilytä. Vasemmalle: roskakori. Oikealle: myöhemmin. Kokeile tässä.
+1078	Pyyhkäise ja valitse
+1079	Suurimmat ensin
+1080	Uusimmat ensin
+1081	Vanhimmat ensin
+1082	Sekoita
+1083	Järjestys
+1084	Lisää albumiin
+1085	%1$lld lisätty albumiin ”%2$@”.
+1086	%1$lld lisätty albumiin ”%2$@”.
+1087	Albumin nimi
+1088	Ei vielä albumeja
+1089	Valintakori
+1090	Lisää valintakoriin
+1091	%1$lld lisätty valintakoriin.
+1092	%1$lld lisätty valintakoriin.
+1093	On jo valintakorissa.
+1094	Tyhjennä kori
+1095	Vain kori tyhjennetään. Kuvat ja videot pysyvät ennallaan.
+1096	Tyhjennetäänkö valintakori?
+1097	Valitse jotain kohdassa ”Kuvat” ja napauta ⋯ › Lisää valintakoriin.
+1098	Valintakori on tyhjä
+1099	Kerää kuvia ja videoita eri kuukausista ja kansioista. Kori säilyy, kunnes tyhjennät sen – sillä ei ole mitään tekemistä roskakorin kanssa.
+1100	Poista korista
+1101	Luo
+1102	%1$lld kohde ei löytynyt (poistettu tai ei enää tällä laitteella).
+1103	%1$lld kohdetta ei löytynyt (poistettu tai ei enää tällä laitteella).
+1104	Poista luettelosta
+1105	Uusi albumi
+1106	Muistiinpano
+1107	Muistiinpano (vain GaleriQ:ssa, tiedosto pysyy ennallaan)
+1108	Tallenna muistiinpano
+1109	Lisää
+1110	Poista kaikkialta
+1111	Tunniste katoaa kaikkialta. Kuvat ja videot itse pysyvät ennallaan.
+1112	Poistetaanko tunniste ”%1$@” kaikkialta?
+1113	Uusi tunniste
+1114	Poista tunniste
+1115	joissakin
+1116	Tunnisteet
+1117	Tunnisteet %1$lld kohteelle
+1118	Tunnisteet %1$lld kohteelle
+1119	Ei vielä tunnisteita. Lisää omia sanoja, kuten ”Lasku” tai ”Loma” – GaleriQ tietää vain sen, minkä itse syötät.
+1120	Tauko
+1121	PDF-toiminnot
+1122	Yhdistä tiedostoja, järjestä ja kierrä sivuja
+1123	PDF:ää ei voitu tallentaa.
+1124	Lisää tiedostoja
+1125	Valitse tiedostot
+1126	PDF tiedostoista
+1127	Tiedostoja ei voitu avata. Valitse luettavia, lukitsemattomia PDF:iä tai kuvia ja yritä uudelleen. Nykyiset sivusi pysyvät ennallaan.
+1128	Valitse PDF:iä tai kuvia Tiedostoista. Yhdistä, järjestä ja kierrä sivuja reaaliaikaisella esikatselulla ja tallenna sitten uusi PDF.
+1129	Valitse vähemmän tai pienempiä tiedostoja (enintään 100 Mt tiedostoa kohti, 256 Mt valintaa kohti ja 500 sivua).
+1130	Täytä
+1131	Sovita
+1132	Luo PDF
+1133	Marginaali
+1134	Ei mitään
+1135	Normaali
+1136	Kapea
+1137	Automaattinen
+1138	Vaaka
+1139	Pysty
+1140	Suunta
+1141	Siirrä aiemmaksi
+1142	Siirrä myöhemmäksi
+1143	Sivu %1$lld / %2$lld
+1144	Kierrä
+1145	Valitse sivut
+1146	Paperi
+1147	US Letter
+1148	Kuvia sivulla
+1149	%1$lld kuva
+1150	%1$lld kuvaa
+1151	Kuvat PDF:ään
+1152	Kuvat upotetaan uudelleen: sijainti ja muut kuvaustiedot eivät päädy PDF:ään. Alkuperäiset pysyvät ennallaan.
+1153	Luodaan PDF:ää …
+1154	Tallenna PDF:nä
+1155	Tallennettu kohteeseen ”Documents/GaleriQ” · %1$@
+1156	Jaa PDF
+1157	Kuvat asiakirjana tai vedosarkkina
+1158	Luo PDF
+1159	Kuva
+1160	Milloin haluat nähdä sen uudelleen?
+1161	Määrä
+1162	Siirrä syrjään ilman päivää
+1163	Se ei palaa itsestään. Löydät sen kohdasta Myöhemmin › Syrjässä.
+1164	Käy läpi uudelleen %1$@
+1165	Valitse päivä …
+1166	Yksikkö
+1167	Toista
+1168	Toistokohta
+1169	Tätä kuvaa tai videota ei voi nyt näyttää.
+1170	Se on ehkä siirretty tai sitä ei ole vielä tallennettu kokonaan.
+1171	Ilmaisversio näyttää Googlen mainoksia. Voit muuttaa suostumustasi asetuksissa. Kuvasi, niiden nimet, kansiot tai mikään niistä johdettu ei koskaan päädy mainostajille. Prossa ei ole mainoksia.
+1172	Salli käyttö
+1173	Hallitse valintaa
+1174	Kuvat ja videot
+1175	Kuvien ja videoiden katsomiseen, järjestämiseen ja poistamiseen vahvistuksesi jälkeen.
+1176	Salli ilmoitukset
+1177	Valinnainen: saat muistutuksen, kun jokin kohteessa ”Myöhemmin” on valmiina läpikäyntiin. Tiedostonimiä ei näytetä lukitulla näytöllä.
+1178	Avaa iOS:n asetukset
+1179	Ostot tehdään Applen App Storen kautta. GaleriQ ei koskaan lähetä tätä varten kuviasi, nimiä tai metatietoja.
+1180	GaleriQ katsoo kuviasi, videoitasi ja sallittuja tiedostoja vain laitteellasi. Et tarvitse tiliä, eikä GaleriQ-palvelinta ole. Hyvä tietää: pilvipalveluissa, kuten Google Kuvissa, poistamasi voi kadota myös muilta laitteiltasi.
+1181	Yksityisyytesi ensin
+1182	Ostettu kerran: ei mainoksia, ei päivärajaa ja holvin kansiot ilman mainoksia.
+1183	Ei mainosta apin avautuessa eikä mainoskortteja kuviesi ja videoidesi välissä.
+1184	Holvin kansiot ilman mainoksia
+1185	Luo uusia kansioita holviin katsomatta videota.
+1186	Kaikki muu – muokkaus, analyysi, kaksoiskappaleet, kokoelmat, Studio – on ilmaista kaikille.
+1187	Kuvasi ja tiedostosi tarkistetaan ja lajitellaan vain laitteellasi. Ostoa varten Applelle menee vain välttämätön ja ilmaisversion mainoksia varten Googlelle – ei koskaan kuviasi, niiden nimiä tai niistä saatuja tietoja.
+1188	Pro on käytössä
+1189	Pro
+1190	Ei mainoksia
+1191	Siivoa ilman päivärajaa
+1192	Poista niin paljon kuin haluat — ilman %1$lld kohteen päivärajaa.
+1193	GaleriQ Pro on nyt käytössä.
+1194	Ostoa ei voitu suorittaa loppuun.
+1195	Tälle tilille ei löytynyt aiempaa ostoa.
+1196	Ostosi odottaa vahvistusta. Pro avautuu, kun osto on vahvistettu.
+1197	Ostosi on palautettu.
+1198	Ladataan hintaa …
+1199	Kuvasi ja tiedostosi tarkistetaan ja lajitellaan vain laitteellasi. Ostoa varten Applelle menee vain aivan välttämätön – ei koskaan kuviasi, niiden nimiä tai mitään niistä johdettua.
+1200	Palauta ostot
+1201	Prota ei voi nyt ladata App Storesta. Tarkista internetyhteys ja yritä uudelleen.
+1202	Osta kerran. Ei tilausta.
+1203	GaleriQ Pro
+1204	Ostot eivät ole vielä käytettävissä tässä versiossa.
+1205	Tätä versiota ei ole vielä yhdistetty App Storen ostoihin. Voit käyttää kaikkia muita ominaisuuksia tavalliseen tapaan.
+1206	Avaa GaleriQ Pro
+1207	Näytä GaleriQ Pro
+1208	Palauta
+1209	Lisää
+1210	Lisää oikotie
+1211	Kaikki käyty läpi
+1212	Muokkaa
+1213	Muokkaa oikoteitä
+1214	Tyhjä
+1215	Suosikit
+1216	Suosikkisi Kuvat-apista
+1217	Albumi
+1218	Albumit
+1219	Uusimmat kuvat
+1220	Uusin kuvasi (%1$lld)
+1221	%1$lld uusinta kuvaasi
+1222	Uusimmat videot
+1223	Uusin videosi (%1$lld)
+1224	%1$lld uusinta videotasi
+1225	Oikoteiden enimmäismäärä: %1$lld. Poista yksi lisätäksesi toisen.
+1226	Live Photo -kuvat
+1227	Kuvat, joissa on liikettä ja ääntä
+1228	Pitkät videot
+1229	Vähintään minuutin mittaiset videot
+1230	Siirrä taaksepäin: %1$@
+1231	Siirrä eteenpäin: %1$@
+1232	Albumeja, joissa on kuvia tai videoita, ei löytynyt.
+1233	Tänä päivänä
+1234	Kuvattu tämän päivän päivämääränä aiempina vuosina
+1235	Aloitusnäytöllä
+1236	Kuvat
+1237	Muotokuvat
+1238	Muotokuva-tilassa otetut kuvat
+1239	Satunnainen
+1240	%1$lld satunnaista läpikäymätöntä kuvaa ja videota, joka kerta uudelleen sekoitettuina
+1241	Vain oikotie poistetaan. Tiedostosi ja valintasi säilyvät.
+1242	Kuvakaappaukset
+1243	Selfiet
+1244	Kuvat-apin Selfiet-albumista
+1245	Tällä viikolla
+1246	Tämän kalenteriviikon kuvat ja videot
+1247	Pikakäyttö
+1248	Videot
+1249	Kaikki saavutukset
+1252	%lld paras aika
+1253	%lld parasta aikaa
+1256	Uusin ennätys
+1257	Pronssi
+1258	Kulta
+1259	%1$@ alkaen %2$@ · vielä %3$@
+1260	Hopea
+1261	Mitalit vertaavat vain omiin tuloksiisi – ei tulostaulukoita, mikään ei lähde laitteelta.
+1262	Ennätys
+1263	Ennätyksesi. Ne pysyvät tässä iPhonessa.
+1264	kuvaa
+1265	pistettä
+1268	%1$@ kuva
+1269	%1$@ kuvaa
+1272	%1$@ piste
+1273	%1$@ pistettä
+1276	aktiivinen päivä
+1277	aktiivista päivää
+1282	uusi ennätys
+1283	uutta ennätystä
+1286	käyty läpi
+1287	Viime viikkosi
+1288	Tee uudelleen
+1289	Joukkomuokkaus
+1290	Muokkaa PDF:iä
+1291	Skannaa asiakirjoja
+1292	Poista
+1293	Valittu: %2$lld. Voit poistaa tänään vielä %1$lld kohteen. Valitse enintään %1$lld tai hanki GaleriQ Pro.
+1294	Valittu: %2$lld. Voit poistaa tänään vielä %1$lld kohdetta. Valitse enintään %1$lld tai hanki GaleriQ Pro.
+1295	Peruttu. Mitään ei poistettu.
+1296	Valintasi on muuttunut. Tarkista se uudelleen.
+1297	Mitään ei poistettu.
+1298	Tarkistamme tuloksen, kun avaat apin seuraavan kerran. Mitään ei poisteta uudelleen.
+1299	Päiväraja saavutettu
+1300	Mitään ei poistettu
+1301	Sivellin
+1302	Poista alue
+1303	Maalaa kohdan päälle yhdellä sormella. Kahdella sormella zoomaat.
+1304	Napauta kuvaa kohdasta, johon alue tulee. Vaalenna, tummenna tai vaihda sen väriä sen jälkeen.
+1305	Liukuväri
+1306	Ympyrä
+1307	Punasilmäisyys
+1308	Napauta punaista silmää. Pienissä kasvoissa zoomaa ensin kahdella sormella. Vain silmän punainen väri muuttuu.
+1309	Poista viimeisin
+1310	Koko
+1311	Yritä uudelleen
+1312	Tallenna
+1313	Kuvakaappaus
+1314	Haku
+1315	Valittu
+1316	Vertaa %1$lld kuvan sarjaa
+1317	Säilytä %1$lld · Roskakori %2$lld
+1318	Säilytetty %1$lld · %2$lld roskakorissa
+1319	Mitään ei poisteta. Roskakori kuuluu GaleriQ:lle ja tyhjennetään vain, kun vahvistat sen.
+1320	Napauta kuvaa verrataksesi sitä alla. Valintamerkki ratkaisee, mitä jää.
+1321	Säilytä
+1322	Säilytä
+1323	Roskakori
+1324	Otettu nopeasti peräkkäin · %1$lld
+1325	Vertaa sarjoja
+1326	Näytä saavutukset
+1327	Putki, päivätavoite, merkit ja viikkokooste.
+1328	Muuta mainossuostumusta
+1329	Ulkoasu
+1330	Ohjaus
+1331	Päivätavoite
+1332	Poissuljetut kansiot
+1333	Pois
+1334	Värinä toiminnoissa
+1335	Näytä pyyhkäisyohje avattaessa
+1336	%1$lld päivän päästä
+1337	%1$lld päivän päästä
+1338	Kieli
+1339	GaleriQ käyttää iPhonesi kieltä. Napauta valitaksesi toisen kielen vain GaleriQ:lle iOS:n asetusten kohdassa ”Kieli”.
+1340	Myöhemmin: oletusviive
+1341	Kertaosto
+1342	Suojaa suosikit
+1343	Arvioi GaleriQ
+1344	Se auttaa meitä todella – kiitos!
+1345	Näytä ”Viime viikkosi”
+1346	Aina aloitussivulla
+1347	Asetukset
+1348	Jaa
+1349	Tätä kuvaa tai videota ei voi jakaa juuri nyt.
+1350	Valittuja kuvia ja videoita ei voi jakaa juuri nyt. Tarkista iCloud-yhteys ja yritä uudelleen.
+1351	Ei valmiina jakoon: %1$lld / %2$lld (esim. ei yhteyttä iCloudiin). Vain muut tarjottiin.
+1352	Valmistellaan … %1$lld / %2$lld
+1353	Myöhemmin
+1354	Aloita siivous
+1355	Studio
+1356	Roskakori
+1357	n. %1$@
+1358	”n.” = arvioitu mitattujen kuviesi ja videoidesi perusteella. iOS kertoo iCloud-alkuperäisten tarkan koon vasta latauksen jälkeen.
+1359	Vähintään %1$@
+1360	Koko tuntematon
+1361	Seuraava ilman valintaa
+1362	Toista uudelleen
+1363	Ei mitään
+1364	Aika kuvaa kohti
+1365	Täällä ei ole näytettävää.
+1366	Diaesitys päättyi
+1367	Ristihäivytys
+1368	Toista jatkuvasti
+1369	Seuraava
+1370	Katsominen ei ole koskaan päätös. Näyttö pysyy päällä diaesityksen ajan.
+1371	Järjestys
+1372	Vanhimmat ensin
+1373	Sekoita
+1374	Tauko
+1375	Edellinen
+1376	%1$lld s
+1377	Diaesityksen asetukset
+1378	Diaesitys
+1379	Siirtymä
+1380	Toista videot (mykistettynä)
+1381	Kuvakäärmeen pelilauta
+1382	Kamera: sarake %1$lld, rivi %2$lld. Kuva: sarake %3$lld, rivi %4$lld.
+1383	Hahmo
+1384	Klassinen — kiinteät reunat
+1385	Seuraava ruutu on vapaa
+1386	Vaihda suuntaa pyyhkäisemällä pelilaudalla.
+1387	Alas
+1388	Pisteet: %1$lld
+1389	Nopea
+1390	Ruoka
+1391	Valitse kuvat
+1392	%lld/100 kuvaa
+1393	Siirrä myöhemmäksi
+1394	Valitse käärmeellesi enintään 100 kuvaa.
+1395	Kuvavalintaasi ei voitu tallentaa tai palauttaa. Yritä uudelleen.
+1396	Kuvien järjestys · vedä järjestääksesi
+1397	Kuva %lld
+1398	Vain valitsemiasi kuvia käytetään. Pienet kopiot pysyvät tässä iPhonessa iCloud-varmuuskopion ulkopuolella. Poista ne täältä poistaaksesi nämä kopiot.
+1399	Omat kuvasi
+1400	Siirrä aiemmaksi
+1401	Hidas
+1402	Haptiikka
+1403	Vasemmalle
+1404	Pelitila
+1405	Yömetsä
+1406	Normaali
+1407	Este suoraan edessä
+1408	Muut pelit
+1409	Kierros päättyi
+1410	Tauko
+1411	Joitakin kuvia ei voitu ladata. Tarkista iCloud-kuvien yhteys ja yritä uudelleen.
+1412	Paras: —
+1413	Rento — reunojen läpi
+1414	Oikealle
+1415	Sekoita kuvat
+1416	Sekoitus koskee seuraavaa uutta peliä. Kuvien vaihtaminen keskeyttää nykyisen pelin.
+1417	Ääni
+1418	Nopeus
+1419	Aloita peli
+1420	Pyyhkäise aloittaaksesi uuden kierroksen
+1421	Pyyhkäise jatkaaksesi
+1422	Ohjaa pyyhkäisemällä missä tahansa
+1423	Kuvakäärme
+1424	Ylös
+1425	Kuvanauha valmis!
+1426	Suurimmat ensin
+1427	Uusimmat ensin
+1428	Vanhimmat ensin
+1429	Kansion yhteyden katkaiseminen ei poista tiedostoja. Tässä tiedostonäkymässä valitset, mihin kansioihin GaleriQ pääsee.
+1430	Katkaise kansion yhteys
+1431	Vain katselu
+1432	Katselu ja tiedostojen poisto
+1433	Ei käytettävissä — yhdistä uudelleen
+1434	Tallennettuja päätöksiäsi ei voitu ladata. Mitään ei muutettu eikä poistettu. Käynnistä GaleriQ uudelleen; jos se ei auta, jaa diagnostiikka.
+1435	GaleriQ ei käynnistynyt
+1436	Laitteesi
+1437	%1$@ vapaana iOS:n mukaan
+1438	Näkyy GaleriQ:lle
+1439	Kuvakaappaukset sisältyvät jo kuviin. Suuria tiedostoja ja kaksoiskappaleita ei lasketa uudelleen. Tuntemattomat koot jätetään pois kokonaismäärästä, joka merkitään silloin ”Vähintään”.
+1440	Ei näy GaleriQ:lle
+1441	GaleriQ ei voi tarkistaa muita appeja, järjestelmätiedostoja, pilvisisältöä tai kansioita, joita et ole sallinut. Niille ei näytetä kokoa.
+1442	Yhdistetyt kansiot
+1443	Tallennustilan analyysi pysyy laitteellasi.
+1444	sisältäen kuvakaappaukset
+1445	Tallennustilan yleiskatsaus
+1446	Tallennustilan tiedot eivät ole nyt saatavilla
+1447	/ %1$@ käytössä
+1448	%1$lld kohde · %2$@
+1449	%1$lld kohdetta · %2$@
+1450	Kollaasi
+1451	Kollaasi
+1452	Ruudukko, vapaa tai nauha
+1453	Luo
+1454	Kollaasi · %1$lld kuva
+1455	Kollaasi · %1$lld kuvaa
+1456	Poista luonnos
+1457	Luonnos poistetaan. Kuviisi ei kosketa.
+1458	Ilmaisversio säilyttää 3 uusinta luonnostasi.
+1459	Luonnokset
+1460	Muisti ei riitä tähän kokoon. Kokeile ”Vakio” tai vähemmän kuvia.
+1461	Luo kuvillasi. Kaikki pysyy laitteellasi.
+1462	Valitse enintään %1$lld.
+1463	Kuvat kollaasiin
+1464	Tallennetut
+1465	Muokatut kuvat, videot ja kollaasit
+1466	Mitään ei poisteta, ennen kuin tyhjennät roskakorin ja vahvistat.
+1467	Valmista toistaiseksi
+1468	Säilytetty
+1469	Näytä viimeinen kuva tai video
+1470	Myöhemmin
+1471	Siivoa ilman päivärajaa GaleriQ Prolla. Osta kerran, ei tilausta.
+1472	Vähän järjestyneempi
+1473	Roskakorissa
+1474	Ei päivärajaa Pron kanssa.
+1475	%1$lld siirretty syrjään poistettavaksi.
+1476	%1$lld siirretty syrjään poistettavaksi.
+1477	Näytä roskakori (%1$lld)
+1478	Siivoa
+1479	Historia
+1480	Kuvat
+1481	Studio
+1482	Tänään
+1483	Salli GaleriQ:lle käyttöoikeus, jotta voit katsoa ja järjestää kuviasi ja videoitasi.
+1484	Salli käyttö iOS:n asetuksissa kohdassa GaleriQ › Kuvat. Aiemmat valintasi pysyvät tallessa.
+1485	Ei pääsyä kuviisi ja videoihisi
+1486	Kuvien ja videoiden käyttö
+1487	Jatka siivousta
+1488	Jatka: %1$@
+1489	Jatka siitä, mihin jäit.
+1490	Tällä hetkellä ei ole muuta läpikäytävää.
+1491	Kaikki käyty läpi
+1492	%1$lld kohde kohteesta ”Myöhemmin” on valmiina läpikäyntiin
+1493	%1$lld kohdetta kohteesta ”Myöhemmin” on valmiina läpikäyntiin
+1494	Hyvää iltapäivää
+1495	Hyvää iltaa
+1496	Hyvää huomenta
+1497	Hyvää päivää
+1498	Muuta käyttöoikeutta
+1499	GaleriQ näyttää vain sallimasi kuvat ja videot. Voit siivota niitä tavalliseen tapaan.
+1500	Rajattu käyttö
+1501	%1$lld uusi kuva tai video
+1502	%1$lld uutta kuvaa ja videota
+1503	edellisen siivouksesi jälkeen
+1504	Jokin keskeytyi, kun roskakori viimeksi tyhjennettiin. Varmuuden vuoksi mitään ei poisteta uudelleen.
+1505	Avaa kuvasi ja videosi siivottaviksi
+1506	Aloita siivous
+1507	Pyyhkäise kuvasi ja videosi läpi.
+1508	Laitteen tallennustila
+1509	%1$@ / %2$@ käytössä
+1510	Muokkaa useita kuvia
+1511	Muuttaa monen kuvan valotusta kerralla.
+1512	Muunna
+1513	Tallentaa kuvat toisessa tiedostomuodossa, esim. HEIC JPEG:nä laitteille, jotka eivät avaa HEIC-tiedostoja.
+1514	Jokainen laite avaa JPEG:n. PNG säilyttää kaikki yksityiskohdat, mutta tiedostot ovat suurempia. Jo tässä muodossa olevat kuvat ohitetaan.
+1515	esim. HEIC JPEG:ksi, uusina kopioina
+1516	Alkuperäisesi pysyvät ennallaan – GaleriQ tallentaa uudet kopiot kirjastoon.
+1517	%1$lld uusi kopio tallennettu.
+1518	%1$lld uutta kopiota tallennettu.
+1519	Alle 0 tummentaa kuvia, yli 0 vaalentaa.
+1520	Se ei onnistunut. Alkuperäisesi ovat ennallaan.
+1521	Käsittely epäonnistui: %1$lld.
+1522	Käsittely epäonnistui: %1$lld.
+1523	Pienemmät tiedostot, mutta kaikki laitteet eivät avaa niitä
+1524	Avautuu kaikilla laitteilla ja kaikissa apeissa
+1525	Ei laatuhäviötä, mutta paljon suuremmat tiedostot
+1526	Luo GIF
+1527	Pieni tiedosto – hyvä viesteihin
+1528	Terävämpi, mutta suurempi tiedosto
+1529	Aika kuvaa kohti
+1530	Tekee useista kuvista lyhyen animaation, joka toistuu loputtomasti – kuvausjärjestyksessä.
+1531	GIF-kuvissa on enintään 256 väriä eikä ääntä – kuvat voivat näyttää hieman rakeisilta.
+1532	GIF tallennettu kirjastoon (%1$@).
+1533	Koko
+1534	Kuvista tai videon lyhyestä osasta
+1535	Työkalut
+1536	Poista sijainti
+1537	Kopiot näyttävät täsmälleen alkuperäiseltä – vain kuvauspaikka poistetaan. Kuvat, joissa ei ole sijaintia, ohitetaan.
+1538	Kopiot ilman sijaintia, esim. ennen jakamista
+1539	Valitse ensin kuvat.
+1540	Valitse vähintään kaksi kuvaa.
+1541	Kuvia ei ole vielä valittu
+1542	Alkuperäisesi ovat ennallaan – tilaa ei vapautunut.
+1543	Valitse kuvat
+1544	Luo Pron kanssa
+1545	%1$@ px
+1546	Tasapainoinen
+1547	Korkea
+1548	Pienempi tiedosto
+1549	Laatu
+1550	Pienempi laatu tarkoittaa pienempiä tiedostoja – tasolla ”Tasapainoinen” eron huomaa harvoin.
+1551	%1$@ (%2$@)
+1552	Poista myös sijainti
+1553	Pienennä
+1554	Pienentää kuvia – pikseleissä ja tiedostokoossa. Kätevä lähettämiseen tai lataamiseen verkkoon.
+1555	Monta kuvaa kerralla, uusina kopioina
+1556	Käsitellään tiedostojasi…
+1557	%1$@ s
+1558	%1$lld tiedosto valittu
+1559	%1$lld tiedostoa valittu
+1560	Pieni – riittää viesteihin ja someen
+1561	Suuri – terävä puhelimilla, tableteilla ja tietokoneilla
+1562	Erittäin suuri – lähes kaikki yksityiskohdat, esim. tulostukseen
+1563	Kopioiden koko
+1564	Mitataan kuvan pidemmältä sivulta pikseleinä (px). Kuvia ei koskaan suurenneta eikä venytetä.
+1565	Alkuperäinen koko
+1566	Sama pikselimäärä – vain muoto muuttuu
+1567	Mitattu: %1$@ ennen, %2$@ jälkeen
+1568	%1$lld ohitettu (ei tehtävää tai video).
+1569	%1$lld ohitettu (ei tehtävää tai videoita).
+1570	Aloita
+1571	Yhdistä kuvakaappaukset
+1572	Yhdistää kuvakaappaukset ylhäältä alas yhdeksi pitkäksi kuvaksi kuvausjärjestyksessä. Kaikki saavat kapeimman kuvan leveyden – mitään ei venytetä eikä suurenneta.
+1573	Tallennettu uutena kuvana kirjastoon. Kuvakaappaukset pysyvät ennallaan.
+1574	Allekkain, yhtenä pitkänä kuvana
+1575	Uusi muoto
+1576	Työkalu
+1577	%1$lld koko tuntematon – ei mukana kokonaismäärässä.
+1578	%1$lld kokoa tuntemattomia – ei mukana kokonaismäärässä.
+1579	Valmis
+1580	Merkitse suosikkeja, jaa kohteita tai lisää niitä albumiin. Tämä ei merkitse niitä säilytetyiksi, roskakoriin tai myöhemmäksi.
+1581	Suosikit, jakaminen ja albumit
+1582	Luku näyttää, kuinka paljon olet siirtänyt syrjään. Napauta sitä tarkistaaksesi valintasi ja tyhjentääksesi roskakorin.
+1583	Roskakorisi
+1584	Pyyhkäisitkö väärään suuntaan? Napauta tästä kumotaksesi viimeisimmän valinnan.
+1585	Kumoa
+1586	Kun tarvitset taukoa siivoamisesta: pelaa Pareja, Kuvakäärmettä tai Foto Blocksia omilla kuvillasi.
+1587	Tauon paikka?
+1588	Ei päätös
+1589	Katso, mitä säilytit, siirsit syrjään tai tallensit myöhemmäksi. Voit vielä muuttaa minkä tahansa päätöksen täällä.
+1590	Myöhemmin ja historia
+1591	Täällä ovat kaikki kuvasi ja videosi – päivän, kuukauden tai vuoden mukaan, albumeissa ja suosikeissa.
+1592	Kaikki kuvasi
+1593	Myöhemmäksi siirretyt lasketaan läpikäydyiksi – näet ne silti täällä.
+1594	Avaa yleiskatsaus ruudukkona tai käy valmis kuukausi läpi uudelleen.
+1595	Napauta kuukautta käydäksesi läpi vain sen läpikäymättömät kuvat ja videot.
+1596	Kuinka pitkällä olet
+1597	Seuraava
+1598	Useita kuvia nopeasti peräkkäin? Vertaa niitä rinnakkain ja valitse, mitä jää.
+1599	Tee GaleriQ:sta omasi ja löydä vastauksia täältä. Voit katsoa tämän esittelyn uudelleen milloin tahansa.
+1600	Asetukset ja ohje
+1601	Ohita esittely
+1602	Muokkaa kuvia, tee kollaaseja, lyhytelokuvia ja PDF:iä ja käytä käteviä työkaluja. Saat aina uusia tiedostoja – alkuperäiset pysyvät ennallaan.
+1603	Ole luova
+1604	Napauta ”Aloita siivous” pyyhkäistäksesi läpi kaiken, mikä on vielä läpikäymättä.
+1605	Aloita tästä
+1606	Kuvat, videot, kuvakaappaukset tai albumi: luo oikoteitä siihen, mitä siivoat usein.
+1607	Oikotiesi
+1608	Täältä löydät poistettavaksi syrjään siirretyt ja myöhemmäksi tallennetut. Poisto tapahtuu vasta, kun vahvistat sen roskakorissa.
+1609	Roskakori ja Myöhemmin
+1610	Suuret tiedostot, kaksoiskuvat, yksittäiset kuukaudet ja valmiit kokoelmat: täällä siivoat vaihe vaiheelta.
+1611	Lisää tapoja siivota
+1612	Pidä ylhäällä olevaa ”GaleriQ”-tekstiä painettuna 2 sekuntia avataksesi holvin – ”Q”:n numerolukko pyörii. Ota se käyttöön ja löydä lisää valintoja Asetuksista.
+1613	Yksityinen holvisi
+1614	Kumoa
+1615	Päivä
+1616	Päivää
+1617	Kuukausi
+1618	Kuukautta
+1619	Viikko
+1620	Viikkoa
+1621	Ääni päälle
+1622	Lisää tekstilohko
+1623	Liitä holvin tiedosto
+1624	Tämä tiedosto on yhä liitetty muistiinpanoon, ehkä holvin roskakorissa. Irrota se ensin.
+1625	Liitteet
+1626	Lukitus käyttämättömänä
+1627	Holvi lukittuu aina taustalla. Esikatselut peitetään appia vaihdettaessa.
+1628	Salattu varmuuskopio
+1629	Sisältää mediat, muistiinpanot, tiedostot, kansiot ja holvin roskakorin. Käytä vahvaa, erillistä varmuuskopion salasanaa. Ilman sitä varmuuskopiota ei voi palauttaa.
+1630	Varmuuskopiota ei palautettu. Salasana voi olla väärä, tiedosto vahingoittunut, istunto lukittu tai tallennustila riittämätön. Nykyinen sisältö on ennallaan.
+1631	Varmuuskopion salasana (vähintään 12 merkkiä)
+1632	Lihavoitu
+1633	Luettelomerkit
+1634	Kamera ei käytettävissä tai käyttöä ei sallittu.
+1635	Vaihda valmis/kesken
+1636	Tarkistuslista
+1637	Tallennettu muistiinpano muuttui. Luonnoksesi ei korvannut sitä. Tallenna luonnos uutena muistiinpanona tai hylkää tallentamattomat muutokset.
+1638	Jatka
+1639	Poista pysyvästi
+1640	Tämä poistaa valitun sisällön tästä holvista pysyvästi. Olemassa olevat ulkoiset kopiot ja varmuuskopiot pysyvät ennallaan.
+1641	Irrota
+1642	Hylkää tallentamattomat muutokset
+1643	Vain viimeisin onnistuneesti tallennettu versio jää jäljelle. Tallentamattomat muutokset menetetään.
+1644	Tässä näkymässä ei ole tiedostoja.
+1645	Tässä näkymässä ei ole muistiinpanoja.
+1646	Poista kaikki pysyvästi
+1647	Kaikki holvin roskakorissa (%1$@) poistetaan tästä holvista pysyvästi: kuvat, videot, muistiinpanot ja tiedostot. Olemassa olevat ulkoiset kopiot ja varmuuskopiot pysyvät ennallaan.
+1648	Tyhjennetäänkö holvin roskakori?
+1649	Vie varmuuskopio
+1650	Viety kopio on holvin suojauksen ulkopuolella. Muut apit tai ihmiset voivat käyttää sitä sen mukaan, miten jaat sen.
+1651	Tiedostot
+1652	Muotoilu
+1653	Otsikko
+1654	Tuo tiedostoja
+1655	Tuotu: %1$lld. Epäonnistui: %2$lld.
+1656	Ei tiliä eikä GaleriQ-palvelinta. Viennit ja varmuuskopiot lähtevät apista vain nimenomaisella toiminnollasi.
+1657	Lukitse nyt
+1658	Media
+1659	GaleriQ tarvitsee mikrofonin käyttöoikeuden äänimuistiota varten. Tallennus alkaa vasta, kun napautat.
+1660	%1$lld min
+1661	Nimi
+1662	Uusi muistiinpano
+1663	Ei sisäistä esikatselua
+1664	Tätä muotoa ei voi näyttää täällä. Tiedosto pysyy tallessa holvissa. Jakaminen vie kopion holvin ulkopuolelle.
+1665	Ei tallennettu
+1666	Muistiinpanot
+1667	Toiminto ei onnistunut. Tarkista tallennustila ja käyttöoikeudet ja yritä uudelleen.
+1668	Kopio; alkuperäinen voi jäädä ulkopuolelle
+1669	Luotu holvissa
+1670	Palautettu varmuuskopiosta
+1671	Alkuperäinen poistettu lähteestä
+1672	Kappale
+1673	Tauko
+1674	Kiinnitä
+1675	Palauta holvin sisällä
+1676	Nauhoita äänimuistio
+1677	Nauhoitettu kesto
+1678	Tallennus alkaa vasta, kun napautat. Se tallennetaan salattuna ja pysähtyy, kun lukitset holvin tai poistut siitä.
+1679	Poista tekstilohko
+1680	Poista alkuperäinen
+1681	Muuttamaton alkuperäinen poistetaan lähteestään vasta, kun holvin kopio on tarkistettu. Muut kopiot ja tiedostopalvelun roskakori voivat jäädä.
+1682	Nimeä uudelleen
+1683	Toista salasana
+1684	Palauta varmuuskopio
+1685	Tarkistettu varmuuskopio lisätään lisäkopiona avoimeen holviin. Nykyistä sisältöä ei korvata. Toistuvat tuonnit luovat lisäkopioita.
+1686	Varmuuskopio lisätty holviin
+1687	Jatka
+1688	Yritä uudelleen
+1689	Tallenna uutena muistiinpanona
+1690	Tallennus epäonnistui
+1691	Tallennettu
+1692	Skannaa asiakirja
+1693	Hae holvista
+1694	%1$lld sekuntia
+1695	Viimeksi muokatut
+1696	Nimi
+1697	Suurimmat ensin
+1698	Lopeta ja tallenna
+1699	Teksti
+1700	Otsikko
+1701	Siirrä holvin roskakoriin
+1702	Holvin työkalut
+1703	Holvin roskakori
+1704	Holvin roskakori on tyhjä.
+1705	Tämä roskakori kuuluu vain holville. Sisältö pysyy salattuna, kunnes palautat sen tai poistat sen nimenomaisesti pysyvästi. Mitään ei poisteta automaattisesti.
+1706	Nimetön
+1707	Ei kansiota
+1708	Mainos suljettiin liian aikaisin. Kansiota ei luotu – voit yrittää uudelleen.
+1709	Ilmaisversiossa jokainen uusi kansio vaatii lyhyen mainosvideon. Pron kanssa kansiot luodaan ilman mainoksia.
+1710	Mainosta ei ole nyt saatavilla. Yritä myöhemmin uudelleen – Pron kanssa kansiot luodaan ilman mainoksia.
+1711	Katso video ja luo kansio
+1712	Lisää holviin
+1713	Kaikki
+1714	Holvi on salattu ja sisältyy iPhonesi varmuuskopioon. Jos poistat GaleriQ:n, myös holvi poistetaan.
+1715	Avaa käyttäen: %1$@
+1716	Avaa suojattu sisältösi
+1717	Koodisi toimii aina myös.
+1718	Avataanko käyttäen: %1$@?
+1719	Avaa käyttäen: %1$@
+1720	Vaihda koodi
+1721	Sulje ja lukitse
+1722	Sulje
+1723	Käytä vain numeroita 0–9.
+1724	Koodi
+1725	Koodin tyyppi
+1726	Syötteet eivät täsmää.
+1727	Salasana
+1728	6-numeroinen PIN
+1729	Toista koodi
+1730	Vähintään 6 merkkiä.
+1731	Täsmälleen 6 numeroa.
+1732	Tämä koodi on holvin avain. Valitse sellainen, jota muut eivät arvaa – mieluiten ei iPhonesi pääsykoodi.
+1733	Valitse koodi
+1734	Koodi ei ole käytettävissä tässä iPhonessa (esimerkiksi palautuksen jälkeen ilman salattua varmuuskopiota). Avaa holvi palautusavaimella.
+1735	Siirrä holvin roskakoriin
+1736	Poista holvi
+1737	%1$lld kohdetta poistetaan pysyvästi. Jos haluat säilyttää ne, palauta ne ensin Kuvat-appiin.
+1738	Poistetaanko holvi ja kaikki sen sisältö?
+1739	Poista kansio
+1740	Kohteet jäävät holviin, vain ilman kansiota.
+1741	Tämä roskakori kuuluu vain holville. Sisältö pysyy salattuna, kunnes palautat sen tai poistat sen nimenomaisesti pysyvästi. Mitään ei poisteta automaattisesti.
+1742	Siirretäänkö %1$lld kohdetta holvin roskakoriin?
+1743	Tallenna kopio holviin
+1744	Pysäytyskuva tallennettu holviin.
+1745	Pysyy vain holvissa – se ei näy Kuvat-apissa eikä missään muualla GaleriQ:ssa.
+1746	Tallenna kopio, alkuperäinen holvin roskakoriin
+1747	Tallenna, alkuperäinen holvin roskakoriin
+1748	Voit palauttaa alkuperäisen holvin roskakorista.
+1749	Tallennettu holviin. Alkuperäinen on holvin roskakorissa.
+1750	Tallennettu holviin.
+1751	Holvi on tyhjä
+1752	Anna salasana
+1753	Anna PIN
+1754	Se ei onnistunut. Yritä uudelleen.
+1755	Tämä kansio on tyhjä
+1756	Valitse nimi, joka ei ole tyhjä eikä ole vielä käytössä.
+1757	Kansion nimi
+1758	Unohditko koodin?
+1759	Palautusavainta ei ole asetettu. Ilman koodia (tai Face ID:tä) holvia ei voi avata.
+1760	Piilota sisäänkäynti
+1761	Holvi katoaa Asetuksista. Avaa se pitämällä aloitusnäytön yläreunan ”GaleriQ”-tekstiä painettuna 2 sekuntia – ”Q”:n pieni holvin numerolukko pyörii.
+1762	Piilotetaanko sisäänkäynti?
+1763	Siirrä holviin
+1764	Ne kopioidaan salattuina ja tarkistetaan. Sitten iOS kysyy, saako ne poistaa Kuvat-apista. Siellä ne pysyvät 30 päivää kansiossa ”Äskettäin poistetut”.
+1765	Siirrä holviin: %1$lld
+1766	GaleriQ teki niistä myös kopioita (muokkauksia, kollaaseja, elokuvia, GIF-kuvia): %1$lld. Ne ovat Kuvat-apissa ja pysyvät näkyvissä, ellet siirrä myös niitä.
+1767	iOS ei poistanut osaa niistä Kuvat-apista. GaleriQ ei näytä niitä muualla, mutta Kuvat-apissa ne näkyvät yhä. Yritä uudelleen yläreunan huomautuksen kautta.
+1768	Holvissa: %1$lld. Poistettu Kuvat-apista: %2$lld.
+1769	Ei voitu siirtää: %1$lld (esimerkiksi ilman iCloud-yhteyttä). Ne jäävät Kuvat-appiin.
+1770	Ei siirretty: %1$lld. Ilmaisversio sallii holvissa %2$lld kohdetta; Prossa rajaa ei ole.
+1771	Vinkki: tyhjennä ”Äskettäin poistetut” Kuvat-apissa, jos niiden pitää kadota myös sieltä.
+1772	Siirrä kopioineen (%1$lld)
+1773	Ilman kopioita
+1774	Holvin kuvat ja videot salataan koodillasi ja näkyvät vain täällä – ei missään muualla GaleriQ:ssa.
+1775	Kun lisäät kohteita, iOS kysyy, saako ne poistaa Kuvat-apista. Sen jälkeen ne pysyvät 30 päivää kansiossa ”Äskettäin poistetut”, ellet tyhjennä sitä.
+1776	Holvi sisältyy iPhonesi varmuuskopioon (salattuna). Jos poistat GaleriQ:n, holvi katoaa.
+1777	Ilmaisversiossa jokainen uusi kansio vaatii lyhyen mainosvideon. Pron kanssa kansiot luodaan ilman mainoksia.
+1778	Yksityinen holvisi
+1779	Kuva
+1780	Video
+1781	Ilmaisversio sallii holvissa %1$lld kohdetta. Pron kanssa holvi on rajaton.
+1782	Liian monta yritystä. Yritä uudelleen %1$@ kuluttua.
+1783	Tallenna holviin
+1784	Siirrä
+1785	Avasit holvin palautusavaimella. Valitse nyt uusi koodi.
+1786	Uusi koodi
+1787	Uusi kansio
+1788	Ei kansiota
+1789	%1$lld / %2$lld
+1790	Pidä GaleriQ auki. Apista poistuminen pysäyttää toiminnon; mitään ei poisteta.
+1791	Luo palautusavain
+1792	Olen kirjoittanut sen muistiin
+1793	Palautusavain
+1794	26 merkkiä, väliviivoin tai ilman.
+1795	Ilman palautusavainta sisältö menetetään, jos unohdat koodisi.
+1796	Palautusavain on asetettu. Uuden luominen mitätöi vanhan.
+1797	Poista palautusavain
+1798	Luo uusi palautusavain
+1799	Jatka ilman palautusavainta
+1800	Ilman palautusavainta sisältö menetetään lopullisesti, jos unohdat koodisi eikä Face ID ole käytettävissä.
+1801	Todellako ilman palautusavainta?
+1802	Palautusavain
+1803	Kirjoita tämä avain paperille ja säilytä se turvassa. Se avaa holvin, jos unohdat koodisi, myös uudessa iPhonessa. GaleriQ ei voi näyttää sitä uudelleen.
+1804	Palautusavain
+1805	Tämä avain ei täsmää.
+1806	Poistettu Kuvat-apista: %1$lld.
+1807	Nimeä kansio uudelleen
+1808	Takaisin Kuviin
+1809	Kopioi Kuviin, säilytä holvissa
+1810	Tallennettu Kuvat-appiin: %1$lld.
+1811	Ei voitu tallentaa: %1$lld. Ne jäävät holviin.
+1812	Tallennettu ilman muokkaushistoriaa: %1$lld. Täydelliset alkuperäiset jäävät holviin.
+1813	Siirrä takaisin Kuviin
+1814	Ne tallennetaan uusina kohteina alkuperäisellä päivällä ja sijainnilla. Kohteet, jotka ovat yhä Kuvat-apissa, tulevat yksinkertaisesti taas näkyviin, kun siirrät ne takaisin.
+1815	Tallenna koodi
+1816	Valitse
+1817	Holvin asetukset
+1818	Piilotettu, koodilla suojattu paikka kuville ja videoille. Ne katoavat Kuvat-apista.
+1819	Ota holvi käyttöön
+1820	Otetaan käyttöön …
+1821	Järjestä
+1822	Lisäyspäivä
+1823	Kuvauspäivä
+1824	Nimi
+1825	Koko
+1826	%1$lld kohdetta on yhä myös Kuvat-apissa.
+1827	Poista sieltä
+1828	%1$lld kohdetta · %2$@
+1829	%1$lld/%2$lld kohdetta · %3$@
+1830	Yksityinen holvi
+1831	Avaa
+1832	Väärä koodi.
+1833	Tallenna vain ääni
+1834	Ääntä ei voitu tallentaa.
+1835	Tallennetaan ääntä
+1836	”%1$@” tallennettu.
+1837	ääni
+1838	Poista
+1839	Poistetaanko %1$@ – %2$@? Vedä punaisia kahvoja.
+1840	Punaiset osat poistetaan oikeasti tallennettaessa (yhteensä %1$@). Napauta alla olevaa osaa palauttaaksesi sen.
+1841	Poista osa
+1842	n. %1$@
+1843	Vain karkea arvio. Näet todellisen tiedostokoon tallennuksen jälkeen.
+1844	Trimmasit vain alun ja lopun. Se on nopeaa, ja kuvanlaatu pysyy alkuperäisenä. Jos tämä video ei salli sitä, GaleriQ rakentaa sen kokonaan uudelleen – mikä kestää hieman kauemmin. Kokonaispituus %1$@.
+1845	Muiden muutostesi takia GaleriQ rakentaa koko videon uudelleen tallennettaessa. Se voi kestää hetken. Kokonaispituus %1$@.
+1846	Tallennetaan videota
+1847	Häivytys sisään ja ulos
+1848	Ei mitään
+1849	Täytä
+1850	Täyttää uuden muodon; ulkopuolelle jäävät reunat rajataan pois.
+1851	Näytä koko video
+1852	Näyttää koko videon; vapaa tila muuttuu mustiksi palkeiksi.
+1853	Tallenna pysäytyskuva
+1854	Pysäytyskuva tallennettu uutena kuvana.
+1855	pysäytyskuva
+1856	Tässä videossa on erityisen kirkkaat värit (HDR). Kun se lasketaan uudelleen, se tallennetaan tavallisilla väreillä. Jos vain trimmaat sen, HDR säilyy.
+1857	Näkyvissä %1$@ – %2$@
+1858	Tässä videossa ei ole ääntä.
+1859	Esikatselua ei voitu laskea.
+1860	Videon muokkaus kuuluu Prohon. Voit kokeilla kaikkea; tallentamiseen tarvitset Pron.
+1861	Laatu
+1862	Tasapainoinen (Full HD)
+1863	Paras laatu (kuten alkuperäinen)
+1864	Pieni tiedosto (HD)
+1865	Poista ääni
+1866	Ääniraitaa ei kirjoiteta tiedostoon lainkaan.
+1867	Ääntä nopeutetaan tai hidastetaan samalla sävelkorkeudella.
+1868	Tulos: %1$@
+1869	Ääni
+1870	Muoto
+1871	Nopeus
+1872	Aseta alku ja loppu vetämällä kahvoja.
+1873	Äänenvoimakkuus
+1874	Video
+1875	Napauta kuvaa tai videota näyttääksesi tai piilottaaksesi säätimet.
+1876	Näytä tai piilota säätimet
+1877	Käytä työnkulkua
+1878	Muokkaa työnkulkua
+1879	Ei vielä omia työnkulkuja. Käytä mallia tai luo uusi työnkulku.
+1880	Lopuksi
+1881	Tallenna ja jaa
+1882	Tallenna
+1883	Vain jako
+1884	Muoto
+1885	Kuten alkuperäinen
+1886	Poista sijainti
+1887	Pisin sivu
+1888	Nimi
+1889	Tiedostonimi
+1890	Uusi työnkulku
+1891	Ei mitään
+1892	Laatu
+1893	Valitettavasti se ei onnistunut.
+1894	Tulos
+1895	Suorita
+1896	Työnkulku käynnissä …
+1897	Valmis
+1898	Epäonnistui
+1899	Tavoitetta ei saavutettu
+1900	Ohitettu
+1901	Kansioon ”%1$@”
+1902	Tallenna muodossa %1$@
+1903	Laatu %1$@
+1904	Nimi ”%1$@”
+1905	Pisin sivu enintään %1$@ px (ei koskaan suurenneta)
+1906	Tallenna uusina tiedostoina – alkuperäiset säilyvät
+1907	Jaa tulos
+1908	Enintään %1$@ kuvaa kohti – laatua ja tarvittaessa kokoa säädetään ja tulos mitataan
+1909	Videot enintään %1$@ kukin
+1910	Tallenna useita vaiheita omaksi työnkuluksi
+1911	Koko kuvaa kohti enintään
+1912	Työnkulut
+1913	Kyllä
+9000	GaleriQ näyttää kuvasi ja videosi lajittelua varten tässä iPhonessa ja poistaa vain kohteet, jotka valitset ja vahvistat järjestelmän valintaikkunassa.
+9001	GaleriQ tallentaa muokatut kopiot, kollaasit ja videot uusina kohteina kirjastoosi.
+9002	GaleriQ käyttää kameraa vain asiakirjojen skannaamiseen, kun napautat Skannaa.
+9003	GaleriQ käyttää Face ID:tä vain koodilla suojaamasi sisällön avaamiseen.
+9004	GaleriQ tarvitsee mikrofonin käyttöoikeuden äänimuistiota varten. Tallennus alkaa vasta, kun napautat.
+9005	GaleriQ:n ilmaisversio näyttää Googlen mainoksia. Luvallasi ne voivat olla sinulle osuvampia. Kuvasi ja tiedostosi eivät koskaan päädy mainostajille.
