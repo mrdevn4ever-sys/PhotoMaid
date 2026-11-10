@@ -527,6 +527,48 @@ RELEASE_NOTES = {
     "ar-SA": "أصبحت الخزنة أكثر ترتيبًا وتترك مساحة أكبر لصورك. يمكنك تقييم GaleriQ مباشرة من الإعدادات. إذا لم يتوفر أي إعلان، تظهر لك الآن رسالة قصيرة. بالإضافة إلى تحسينات صغيرة.",
 }
 
+# Werbetext ohne Pauschalversprechen „Fotos verlassen nie das iPhone“ (10.11.2026): GaleriQ lädt nichts hoch,
+# die Gratisversion zeigt aber Werbung. Überschreibt die Werte oben.
+PROMO = {
+    "en-US": "Swipe up to keep, left to the trash, right for later. Nothing is deleted until you confirm, and GaleriQ never uploads your photos.",
+    "de-DE": "Nach oben behalten, nach links in den Papierkorb, nach rechts auf später. Gelöscht wird erst nach deiner Bestätigung – und GaleriQ lädt deine Fotos nirgendwohin hoch.",
+    "es-ES": "Arriba para conservar, a la izquierda a la papelera, a la derecha para después. Nada se borra sin tu confirmación y GaleriQ nunca sube tus fotos.",
+    "fr-FR": "Vers le haut pour garder, à gauche vers la corbeille, à droite pour plus tard. Rien n’est supprimé sans votre accord et GaleriQ n’envoie jamais vos photos.",
+    "it": "Su per conservare, a sinistra nel cestino, a destra per più tardi. Nulla viene eliminato senza la tua conferma e GaleriQ non carica mai le tue foto.",
+    "ja": "上で残す、左でゴミ箱へ、右で「あとで」。確認するまで何も削除されず、GaleriQ が写真をアップロードすることもありません。",
+    "ko": "위로 밀면 보관, 왼쪽은 휴지통, 오른쪽은 나중에. 확인하기 전에는 아무것도 삭제되지 않으며 GaleriQ는 사진을 어디에도 올리지 않습니다.",
+    "nl-NL": "Omhoog om te bewaren, naar links naar de prullenbak, naar rechts voor later. Er wordt niets verwijderd zonder jouw bevestiging en GaleriQ uploadt je foto's nooit.",
+    "pl": "W górę – zachowaj, w lewo – do kosza, w prawo – na później. Nic nie zostanie usunięte bez Twojego potwierdzenia, a GaleriQ nigdzie nie wysyła Twoich zdjęć.",
+    "pt-PT": "Para cima para manter, para a esquerda para o lixo, para a direita para mais tarde. Nada é apagado sem a sua confirmação e o GaleriQ nunca envia as suas fotos.",
+    "ro": "În sus păstrezi, la stânga în coș, la dreapta pentru mai târziu. Nimic nu se șterge fără confirmarea ta, iar GaleriQ nu îți încarcă niciodată pozele.",
+    "ru": "Вверх — оставить, влево — в корзину, вправо — на потом. Ничего не удаляется без вашего подтверждения, а GaleriQ никуда не загружает ваши фото.",
+    "tr": "Yukarı kaydır sakla, sola çöpe at, sağa sonraya bırak. Onaylamadan hiçbir şey silinmez ve GaleriQ fotoğraflarını hiçbir yere yüklemez.",
+    "uk": "Угору — залишити, ліворуч — у кошик, праворуч — на потім. Нічого не видаляється без вашого підтвердження, а GaleriQ нікуди не завантажує ваші фото.",
+    "zh-Hans": "上滑保留，左滑放入回收站，右滑稍后再看。未经你确认不会删除任何内容，GaleriQ 也从不上传你的照片。",
+    "ar-SA": "اسحب لأعلى للاحتفاظ، ولليسار إلى سلة المهملات، ولليمين لوقت لاحق. لا يُحذف شيء دون تأكيدك، ولا يرفع GaleriQ صورك إلى أي مكان."
+}
+for _loc, _promo in PROMO.items():
+    T[_loc]["promo"] = _promo
+
+# Weitere Store-Sprachen aus scripts/store/texts_extra_*.py (Felder wie oben plus notes und iap).
+import importlib.util as _ilu
+for _path in sorted(pathlib.Path(__file__).resolve().parent.glob("texts_extra_*.py")):
+    _spec = _ilu.spec_from_file_location(_path.stem, _path)
+    _mod = _ilu.module_from_spec(_spec)
+    _spec.loader.exec_module(_mod)
+    for _loc, _t in _mod.S.items():
+        if _loc in T:
+            raise SystemExit(f"{_loc} doppelt ({_path.name})")
+        T[_loc] = {k: _t[k] for k in ("name", "subtitle", "keywords", "promo", "description")}
+        RELEASE_NOTES[_loc] = _t["notes"]
+        IAP[_loc] = _t["iap"]
+
+# Alle 50 Sprachen, die App Store Connect anbietet (Apple, „locale shortcodes“, Stand 2026).
+APPLE_LOCALES = ["ar-SA", "bn-BD", "ca", "zh-Hans", "zh-Hant", "hr", "cs", "da", "nl-NL", "en-AU", "en-CA", "en-GB",
+                 "en-US", "fi", "fr-FR", "fr-CA", "de-DE", "el", "gu-IN", "he", "hi", "hu", "id", "it", "ja", "kn-IN",
+                 "ko", "ms", "ml-IN", "mr-IN", "no", "or-IN", "pl", "pt-BR", "pt-PT", "pa-IN", "ro", "ru", "sk", "sl-SI",
+                 "es-MX", "es-ES", "sv", "ta-IN", "te-IN", "th", "tr", "uk", "ur-PK", "vi"]
+
 LIMITS = {"name": 30, "subtitle": 30, "keywords": 100, "promo": 170, "description": 4000}
 FILES = {"name": "name.txt", "subtitle": "subtitle.txt", "keywords": "keywords.txt",
          "promo": "promotional_text.txt", "description": "description.txt"}
@@ -534,8 +576,9 @@ FILES = {"name": "name.txt", "subtitle": "subtitle.txt", "keywords": "keywords.t
 
 def check() -> list[str]:
     errors = []
-    if len(T) != 16:
-        errors.append(f"{len(T)} Sprachen statt 16")
+    unknown = set(T) - set(APPLE_LOCALES)
+    if unknown:
+        errors.append(f"keine App-Store-Sprache: {sorted(unknown)}")
     for loc, t in T.items():
         for key, limit in LIMITS.items():
             value = t[key]

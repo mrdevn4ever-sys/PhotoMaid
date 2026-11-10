@@ -1,0 +1,1 @@
+The vault is now tidier, with more room for your photos. You can rate GaleriQ right from Settings. If no ad is available, you now see a short note instead of nothing. Plus small improvements.

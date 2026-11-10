@@ -1,0 +1,1 @@
+safe,duplikater,slett,galleri,album,lagring,privat,skjul,collage,redigering,video,minne,hvelv

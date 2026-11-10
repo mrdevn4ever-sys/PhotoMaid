@@ -1,0 +1,1 @@
+cleanup,declutter,gallery,duplicate,memory,screenshots,videos,secret,lock,folder,organizer
