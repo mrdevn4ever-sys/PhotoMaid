@@ -201,9 +201,11 @@ platform :ios do
       UI.message("App-Info #{l.locale}: #{l.name} | #{l.subtitle}")
     end
     version = app.get_edit_app_store_version(platform: Spaceship::ConnectAPI::Platform::IOS)
-    version.get_app_store_version_localizations.sort_by(&:locale).each do |l|
+    version_locs = version.get_app_store_version_localizations.sort_by(&:locale)
+    UI.message("Version #{version.version_string}: #{version_locs.length} Sprachen")
+    version_locs.each do |l|
       UI.message("Version #{l.locale}: Keywords #{l.keywords.to_s.length}, Beschreibung #{l.description.to_s.length}, " \
-                 "Werbetext #{l.promotional_text.to_s.length} Zeichen")
+                 "Werbetext #{l.promotional_text.to_s.length}, Neuerungen #{l.whats_new.to_s.length} Zeichen")
     end
   end
 end
