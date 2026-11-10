@@ -1,1 +1,1 @@
-Yukarı kaydır sakla, sola çöpe at, sağa sonraya bırak. Onaylamadan hiçbir şey silinmez ve GaleriQ fotoğraflarını hiçbir yere yüklemez.
+Saklamak için yukarı, çöpe atmak için sola, sonra bakmak için sağa kaydır. Onayın olmadan hiçbir şey silinmez. GaleriQ fotoğraflarını hiçbir yere yüklemez.

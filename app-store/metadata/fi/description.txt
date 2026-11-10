@@ -19,4 +19,4 @@ EI TILIÄ
 Et tarvitse tiliä, eikä GaleriQ koskaan lataa kuviasi minnekään.
 
 ILMAINEN TAI PRO
-Kaikkia toimintoja voi käyttää ilmaiseksi. Ilmaisversio näyttää mainoksia, ja voit poistaa enintään 100 kohdetta päivässä. Vapaaehtoisella videolla avaat kerran päivässä 100 lisää. GaleriQ Pro on kertaosto, ei tilaus: ei mainoksia, rajaton poistaminen ja uudet holvikansiot ilman videoita.
+Kaikkia toimintoja voi käyttää ilmaiseksi. Ilmaisversio näyttää mainoksia, ja voit poistaa enintään 100 kohdetta päivässä. Vapaaehtoisella videolla avaat kerran päivässä 100 lisää. GaleriQ Pro on kertaosto, ei tilaus: ei mainoksia, rajaton poistaminen ja uusien holvikansioiden luominen ilman mainosvideoiden katsomista.

@@ -238,7 +238,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0233 | `basket_confirm_files_message` | This can’t be undone. | ไม่สามารถเลิกทำได้ |
 | 0234 | `basket_confirm_files_title` | Permanently delete files? | ลบไฟล์ถาวรใช่ไหม? |
 | 0235 | `basket_confirm_media_action` | Remove %1$lld | นำออก %1$lld รายการ |
-| 0236 | `basket_confirm_media_message` | Then confirm in the iOS dialog. The photos and videos move to “Recently Deleted” in the Photos app. | จากนั้นยืนยันในหน้าต่างของ iOS รูปภาพและวิดีโอจะย้ายไปที่ “ลบล่าสุด” ในแอพรูปภาพ |
+| 0236 | `basket_confirm_media_message` | Then confirm in the iOS dialog. The photos and videos move to “Recently Deleted” in the Photos app. | จากนั้นยืนยันในหน้าต่างของ iOS รูปภาพและวิดีโอจะย้ายไปที่ “ที่ลบล่าสุด” ในแอพรูปภาพ |
 | 0237 | `basket_confirm_media_title` | Remove photos & videos? | นำรูปภาพและวิดีโอออกใช่ไหม? |
 | 0238 | `basket_count` | %1$lld in trash | ในถังขยะ %1$lld |
 | 0240 | `basket_delete_files#other` | Permanently delete %1$lld files | ลบถาวร %1$lld ไฟล์ |
@@ -248,7 +248,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0245 | `basket_files_footer` | These files will be permanently deleted. You can’t undo this. | ไฟล์เหล่านี้จะถูกลบถาวร ไม่สามารถเลิกทำได้ |
 | 0246 | `basket_files_header` | Files | ไฟล์ |
 | 0247 | `basket_intro` | Nothing has been deleted yet. Tap a thumbnail for a larger view. Empty the trash only when you’re ready. | ยังไม่มีอะไรถูกลบ แตะภาพย่อเพื่อดูขนาดใหญ่ขึ้น ล้างถังขยะเมื่อคุณพร้อมเท่านั้น |
-| 0248 | `basket_media_footer` | iOS asks you to confirm again and moves photos and videos to “Recently Deleted”. You can usually restore them there for 30 days. With iCloud Photos, deleting applies to all your devices. | iOS จะขอให้ยืนยันอีกครั้งและย้ายรูปภาพและวิดีโอไปที่ “ลบล่าสุด” โดยปกติคุณจะกู้คืนได้ที่นั่นภายใน 30 วัน หากใช้รูปภาพ iCloud การลบจะมีผลกับทุกอุปกรณ์ของคุณ |
+| 0248 | `basket_media_footer` | iOS asks you to confirm again and moves photos and videos to “Recently Deleted”. You can usually restore them there for 30 days. With iCloud Photos, deleting applies to all your devices. | iOS จะขอให้ยืนยันอีกครั้งและย้ายรูปภาพและวิดีโอไปที่ “ที่ลบล่าสุด” โดยปกติคุณจะกู้คืนได้ที่นั่นภายใน 30 วัน หากใช้รูปภาพ iCloud การลบจะมีผลกับทุกอุปกรณ์ของคุณ |
 | 0249 | `basket_media_header` | Photos & videos | รูปภาพและวิดีโอ |
 | 0250 | `basket_preview_note` | Viewing doesn’t change your selection. | การดูไม่เปลี่ยนการเลือกของคุณ |
 | 0251 | `basket_preview_open` | View larger: %1$@ | ดูขนาดใหญ่: %1$@ |
@@ -419,7 +419,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0418 | `done_estimated` | Estimated (“approx.”): %1$lld – iOS only reveals their exact size after downloading. | ประมาณการ (“ประมาณ”): %1$lld – iOS จะบอกขนาดที่แน่นอนหลังดาวน์โหลดเท่านั้น |
 | 0419 | `done_kept` | Kept today | เก็บไว้วันนี้ |
 | 0420 | `done_note_files` | The files were permanently deleted. | ไฟล์ถูกลบถาวรแล้ว |
-| 0421 | `done_note_media` | Photos and videos are now in “Recently Deleted” in the Photos app. Space is freed only once they’re permanently deleted there. | รูปภาพและวิดีโอตอนนี้อยู่ใน “ลบล่าสุด” ในแอพรูปภาพ พื้นที่จะว่างเมื่อลบถาวรที่นั่นแล้วเท่านั้น |
+| 0421 | `done_note_media` | Photos and videos are now in “Recently Deleted” in the Photos app. Space is freed only once they’re permanently deleted there. | รูปภาพและวิดีโอตอนนี้อยู่ใน “ที่ลบล่าสุด” ในแอพรูปภาพ พื้นที่จะว่างเมื่อลบถาวรที่นั่นแล้วเท่านั้น |
 | 0422 | `done_partial` | Items that weren’t removed stay in the GaleriQ trash. | รายการที่ไม่ได้นำออกยังอยู่ในถังขยะ GaleriQ |
 | 0423 | `done_removed` | Removed | นำออกแล้ว |
 | 0424 | `done_saved` | saved | ประหยัด |
@@ -468,7 +468,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0469 | `edit_done_copy_size` | Saved as a copy · %1$@ | บันทึกเป็นสำเนาแล้ว · %1$@ |
 | 0470 | `edit_done_declined` | Original kept · the edit was saved as a copy | เก็บต้นฉบับไว้ · การแก้ไขถูกบันทึกเป็นสำเนา |
 | 0471 | `edit_done_original` | Original edited · can be reverted in the Photos app | แก้ไขต้นฉบับแล้ว · ย้อนกลับได้ในแอพรูปภาพ |
-| 0472 | `edit_done_replaced` | Original replaced · it’s in “Recently Deleted” | แทนที่ต้นฉบับแล้ว · อยู่ใน “ลบล่าสุด” |
+| 0472 | `edit_done_replaced` | Original replaced · it’s in “Recently Deleted” | แทนที่ต้นฉบับแล้ว · อยู่ใน “ที่ลบล่าสุด” |
 | 0473 | `edit_err_declined` | Not changed – iOS didn’t get permission. The original is unchanged. | ไม่ได้เปลี่ยน – iOS ไม่ได้รับอนุญาต ต้นฉบับไม่เปลี่ยนแปลง |
 | 0474 | `edit_err_gone` | This item was changed, moved or deleted in the meantime. Nothing was saved. | รายการนี้ถูกเปลี่ยน ย้าย หรือลบไปในระหว่างนั้น ไม่มีอะไรถูกบันทึก |
 | 0475 | `edit_err_load` | This item can’t be opened for editing. | ไม่สามารถเปิดรายการนี้เพื่อแก้ไขได้ |
@@ -551,7 +551,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0552 | `edit_save_original_text` | iOS asks first. The edit is saved like an edit in the Photos app – you can undo it there anytime with “Revert”. | iOS จะถามก่อน การแก้ไขจะถูกบันทึกเหมือนการแก้ไขในแอพรูปภาพ – คุณสามารถเลิกทำได้ที่นั่นทุกเมื่อด้วย “ย้อนกลับ” |
 | 0553 | `edit_save_replace` | Save copy and move original to trash | บันทึกสำเนาและย้ายต้นฉบับไปถังขยะ |
 | 0554 | `edit_save_replace_action` | Save copy, original to trash | บันทึกสำเนา ต้นฉบับไปถังขยะ |
-| 0555 | `edit_save_replace_text` | iOS asks to confirm. The original goes to “Recently Deleted” in the Photos app and can usually be restored there for 30 days. Space is freed only after that. | iOS จะขอให้ยืนยัน ต้นฉบับจะไปที่ “ลบล่าสุด” ในแอพรูปภาพ และโดยปกติกู้คืนได้ที่นั่นภายใน 30 วัน พื้นที่จะว่างหลังจากนั้นเท่านั้น |
+| 0555 | `edit_save_replace_text` | iOS asks to confirm. The original goes to “Recently Deleted” in the Photos app and can usually be restored there for 30 days. Space is freed only after that. | iOS จะขอให้ยืนยัน ต้นฉบับจะไปที่ “ที่ลบล่าสุด” ในแอพรูปภาพ และโดยปกติกู้คืนได้ที่นั่นภายใน 30 วัน พื้นที่จะว่างหลังจากนั้นเท่านั้น |
 | 0556 | `edit_save_title` | Save edit | บันทึกการแก้ไข |
 | 0557 | `edit_saving` | Saving… | กำลังบันทึก… |
 | 0558 | `edit_shape_arrow` | Arrow | ลูกศร |
@@ -604,7 +604,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0606 | `edits_forget` | Remove from list | ลบออกจากรายการ |
 | 0607 | `edits_intro` | Everything GaleriQ saved for you: edited photos and videos, collages, movies and resized images, newest first. The files are in your Photos app; this list only remembers what came from GaleriQ. Tap an entry to view it. | ทุกอย่างที่ GaleriQ บันทึกให้คุณ: รูปภาพและวิดีโอที่แก้ไข ภาพตัดปะ ภาพยนตร์ และรูปที่ปรับขนาด ใหม่สุดก่อน ไฟล์อยู่ในแอพรูปภาพ รายการนี้แค่จำว่าอะไรมาจาก GaleriQ แตะรายการเพื่อดู |
 | 0608 | `edits_orig_present` | Original is still there | ต้นฉบับยังอยู่ |
-| 0609 | `edits_orig_trashed_ios` | Original is in “Recently Deleted” | ต้นฉบับอยู่ใน “ลบล่าสุด” |
+| 0609 | `edits_orig_trashed_ios` | Original is in “Recently Deleted” | ต้นฉบับอยู่ใน “ที่ลบล่าสุด” |
 | 0610 | `edits_result_gone` | No longer in the Photos app | ไม่อยู่ในแอพรูปภาพแล้ว |
 | 0611 | `edits_title` | Edited | แก้ไขแล้ว |
 | 0612 | `error_change_not_saved` | The change couldn’t be saved. | ไม่สามารถบันทึกการเปลี่ยนแปลงได้ |
@@ -770,7 +770,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0773 | `help_decide` | Make a choice | ตัดสินใจ |
 | 0774 | `help_decide_text` | Swipe up to keep, left for trash and right for later. By default, it returns in 2 days. You can change this delay in settings. Just after swiping, use “Change” to choose a different date. Swipe down to go back without making a new choice. | ปัดขึ้นเพื่อเก็บไว้ ซ้ายเพื่อไปถังขยะ และขวาเพื่อไว้ทีหลัง โดยค่าเริ่มต้นจะกลับมาใน 2 วัน คุณเปลี่ยนระยะเวลานี้ได้ในการตั้งค่า หลังปัดทันที ใช้ “เปลี่ยน” เพื่อเลือกวันอื่น ปัดลงเพื่อย้อนกลับโดยไม่ตัดสินใจใหม่ |
 | 0775 | `help_delete` | Deleting | การลบ |
-| 0776 | `help_delete_text` | Swiping never deletes anything. Items first enter GaleriQ’s trash. Only after you confirm there does iOS move photos and videos to Recently Deleted. | การปัดไม่เคยลบอะไร รายการจะเข้าถังขยะของ GaleriQ ก่อน หลังจากคุณยืนยันที่นั่นแล้วเท่านั้น iOS จึงย้ายรูปภาพและวิดีโอไปที่ ลบล่าสุด |
+| 0776 | `help_delete_text` | Swiping never deletes anything. Items first enter GaleriQ’s trash. Only after you confirm there does iOS move photos and videos to Recently Deleted. | การปัดไม่เคยลบอะไร รายการจะเข้าถังขยะของ GaleriQ ก่อน หลังจากคุณยืนยันที่นั่นแล้วเท่านั้น iOS จึงย้ายรูปภาพและวิดีโอไปที่ “ที่ลบล่าสุด” |
 | 0777 | `help_tours_again` | Show the tour and tips again | แสดงการแนะนำและเคล็ดลับอีกครั้ง |
 | 0778 | `hint_down` | Down | ลง |
 | 0779 | `hint_left` | Left | ซ้าย |
@@ -1049,7 +1049,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1069 | `onb_offer_title` | Start for free | เริ่มใช้ฟรี |
 | 1070 | `onb_progress` | Step %1$lld of %2$lld | ขั้นตอนที่ %1$lld จาก %2$lld |
 | 1071 | `onb_safe_local` | Your photos stay on your device. No GaleriQ account, no photo uploads. | รูปภาพของคุณอยู่บนอุปกรณ์ของคุณ ไม่มีบัญชี GaleriQ ไม่มีการอัปโหลดรูป |
-| 1072 | `onb_safe_text` | Items first go to GaleriQ’s trash. You confirm removal there, and iOS asks again before moving photos and videos to Recently Deleted. | รายการจะเข้าถังขยะของ GaleriQ ก่อน คุณยืนยันการนำออกที่นั่น และ iOS จะถามอีกครั้งก่อนย้ายรูปภาพและวิดีโอไปที่ ลบล่าสุด |
+| 1072 | `onb_safe_text` | Items first go to GaleriQ’s trash. You confirm removal there, and iOS asks again before moving photos and videos to Recently Deleted. | รายการจะเข้าถังขยะของ GaleriQ ก่อน คุณยืนยันการนำออกที่นั่น และ iOS จะถามอีกครั้งก่อนย้ายรูปภาพและวิดีโอไปที่ “ที่ลบล่าสุด” |
 | 1073 | `onb_safe_title` | You decide what gets deleted | คุณเป็นผู้ตัดสินใจว่าจะลบอะไร |
 | 1074 | `onb_story_text` | Go through your photos and videos and decide what stays. One swipe at a time, at your own pace. | ดูรูปภาพและวิดีโอของคุณแล้วตัดสินใจว่าจะเก็บอะไร ปัดทีละครั้ง ตามจังหวะของคุณ |
 | 1075 | `onb_story_title` | Your gallery, finally organized | คลังภาพของคุณ เป็นระเบียบเสียที |
@@ -1698,18 +1698,18 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1761 | `vault_hide_entry_text` | The vault disappears from Settings. To open it, press and hold “GaleriQ” at the top of the start screen for 2 seconds – the small vault dial in the “Q” turns. | ตู้เซฟจะหายไปจากการตั้งค่า หากต้องการเปิด ให้กดค้างที่ “GaleriQ” ด้านบนของหน้าจอเริ่มต้น 2 วินาที – แป้นหมุนตู้เซฟเล็กๆ ใน “Q” จะหมุน |
 | 1762 | `vault_hide_title` | Hide the entry? | ซ่อนทางเข้าใช่ไหม? |
 | 1763 | `vault_import_action` | Move to vault | ย้ายไปตู้เซฟ |
-| 1764 | `vault_import_confirm_text` | They are copied encrypted and verified. Then iOS asks whether they may be deleted from the Photos app. There they stay in “Recently Deleted” for 30 days. | รายการจะถูกคัดลอกแบบเข้ารหัสและตรวจสอบ จากนั้น iOS จะถามว่าลบออกจากแอพรูปภาพได้หรือไม่ ที่นั่นรายการจะอยู่ใน “ลบล่าสุด” 30 วัน |
+| 1764 | `vault_import_confirm_text` | They are copied encrypted and verified. Then iOS asks whether they may be deleted from the Photos app. There they stay in “Recently Deleted” for 30 days. | รายการจะถูกคัดลอกแบบเข้ารหัสและตรวจสอบ จากนั้น iOS จะถามว่าลบออกจากแอพรูปภาพได้หรือไม่ ที่นั่นรายการจะอยู่ใน “ที่ลบล่าสุด” 30 วัน |
 | 1765 | `vault_import_confirm_title` | Move to vault: %1$lld | ย้ายไปตู้เซฟ: %1$lld |
 | 1766 | `vault_import_copies_text` | GaleriQ also made copies of them (edits, collages, movies, GIFs): %1$lld. They are in the Photos app and stay visible unless you move them too. | GaleriQ ยังได้สร้างสำเนาของรายการเหล่านี้ (การแก้ไข ภาพตัดปะ ภาพยนตร์ GIF): %1$lld สำเนาอยู่ในแอพรูปภาพและยังมองเห็นได้ เว้นแต่คุณจะย้ายด้วย |
 | 1767 | `vault_import_declined` | iOS didn’t delete some of them from the Photos app. GaleriQ doesn’t show them anywhere else anyway, but they are still visible in the Photos app. Use the note at the top to try again. | iOS ไม่ได้ลบบางรายการออกจากแอพรูปภาพ GaleriQ ไม่แสดงรายการเหล่านั้นที่อื่นอยู่แล้ว แต่ยังมองเห็นได้ในแอพรูปภาพ ใช้ข้อความด้านบนเพื่อลองอีกครั้ง |
 | 1768 | `vault_import_done` | In the vault: %1$lld. Removed from the Photos app: %2$lld. | ในตู้เซฟ: %1$lld ลบออกจากแอพรูปภาพ: %2$lld |
 | 1769 | `vault_import_failed` | Couldn’t be moved: %1$lld (for example without a connection to iCloud). They stay in the Photos app. | ย้ายไม่ได้: %1$lld (เช่น ไม่มีการเชื่อมต่อ iCloud) รายการยังอยู่ในแอพรูปภาพ |
 | 1770 | `vault_import_limit` | Not moved: %1$lld. Free allows %2$lld items in the vault; Pro is unlimited. | ไม่ได้ย้าย: %1$lld เวอร์ชันฟรีเก็บในตู้เซฟได้ %2$lld รายการ; Pro ไม่จำกัด |
-| 1771 | `vault_import_recently_deleted` | Tip: empty “Recently Deleted” in the Photos app if they should disappear there too. | เคล็ดลับ: ล้าง “ลบล่าสุด” ในแอพรูปภาพ หากต้องการให้หายไปจากที่นั่นด้วย |
+| 1771 | `vault_import_recently_deleted` | Tip: empty “Recently Deleted” in the Photos app if they should disappear there too. | เคล็ดลับ: ล้าง “ที่ลบล่าสุด” ในแอพรูปภาพ หากต้องการให้หายไปจากที่นั่นด้วย |
 | 1772 | `vault_import_with_copies` | Move with copies (%1$lld) | ย้ายพร้อมสำเนา (%1$lld) |
 | 1773 | `vault_import_without_copies` | Without copies | ไม่รวมสำเนา |
 | 1774 | `vault_intro_1` | Photos and videos in the vault are encrypted with your code and visible only here – nowhere else in GaleriQ. | รูปภาพและวิดีโอในตู้เซฟถูกเข้ารหัสด้วยรหัสของคุณ และมองเห็นได้ที่นี่เท่านั้น – ไม่ปรากฏที่อื่นใน GaleriQ |
-| 1775 | `vault_intro_2` | When you add items, iOS asks whether they may be deleted from the Photos app. They then stay in “Recently Deleted” for 30 days unless you empty it. | เมื่อคุณเพิ่มรายการ iOS จะถามว่าลบออกจากแอพรูปภาพได้หรือไม่ จากนั้นรายการจะอยู่ใน “ลบล่าสุด” 30 วัน เว้นแต่คุณจะล้าง |
+| 1775 | `vault_intro_2` | When you add items, iOS asks whether they may be deleted from the Photos app. They then stay in “Recently Deleted” for 30 days unless you empty it. | เมื่อคุณเพิ่มรายการ iOS จะถามว่าลบออกจากแอพรูปภาพได้หรือไม่ จากนั้นรายการจะอยู่ใน “ที่ลบล่าสุด” 30 วัน เว้นแต่คุณจะล้าง |
 | 1776 | `vault_intro_3` | The vault is included in your iPhone backup (encrypted). If you delete GaleriQ, the vault is gone. | ตู้เซฟรวมอยู่ในข้อมูลสำรอง iPhone ของคุณ (เข้ารหัส) หากคุณลบ GaleriQ ตู้เซฟจะหายไป |
 | 1777 | `vault_intro_4` | In the free version, each new folder needs a short ad video. With Pro, folders are created without ads. | ในเวอร์ชันฟรี แต่ละโฟลเดอร์ใหม่ต้องดูวิดีโอโฆษณาสั้นๆ กับ Pro จะสร้างโฟลเดอร์ได้โดยไม่มีโฆษณา |
 | 1778 | `vault_intro_title` | Your private vault | ตู้เซฟส่วนตัวของคุณ |

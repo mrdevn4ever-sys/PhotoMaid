@@ -1,1 +1,1 @@
-ảnh trùng,xóa ảnh,thư viện,album,bộ nhớ,riêng tư,ẩn ảnh,ghép ảnh,chỉnh ảnh,video,chụp màn hình
+trùng,xóa,thư viện,album,bộ nhớ,riêng tư,ẩn,ghép,chỉnh,video,chụp màn hình

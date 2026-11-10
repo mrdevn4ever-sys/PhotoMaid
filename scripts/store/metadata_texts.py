@@ -76,7 +76,7 @@ OHNE KONTO
 Du brauchst kein Konto, und GaleriQ lädt deine Fotos nirgendwohin hoch.
 
 GRATIS ODER PRO
-Alle Funktionen kannst du kostenlos nutzen. Die Gratisversion zeigt Werbung und erlaubt bis zu 100 Löschungen pro Tag. Mit einem freiwilligen Video schaltest du einmal täglich 100 weitere frei. GaleriQ Pro ist ein einmaliger Kauf, kein Abo: keine Werbung, unbegrenzt löschen und neue Tresor-Ordner ohne Videos.""",
+Alle Funktionen kannst du kostenlos nutzen. Die Gratisversion zeigt Werbung und erlaubt bis zu 100 Löschungen pro Tag. Mit einem freiwilligen Video schaltest du einmal täglich 100 weitere frei. GaleriQ Pro ist ein einmaliger Kauf, kein Abo: keine Werbung, unbegrenzt löschen und neue Tresor-Ordner erstellen, ohne Werbevideos anzusehen.""",
 )
 
 T["es-ES"] = dict(
@@ -488,7 +488,7 @@ T["ar-SA"] = dict(
 # In-App-Kauf (Nicht-verbrauchbar, Produkt-ID com.mrdevn4ever.photomaid.pro): Anzeigename ≤ 35, Beschreibung ≤ 55.
 IAP_ID = "com.mrdevn4ever.photomaid.pro"
 IAP = {
-    "en-US": "No ads, unlimited deleting, free vault folders",
+    "en-US": "No ads, unlimited deletes, create vault folders freely",
     "de-DE": "Ohne Werbung, unbegrenzt löschen, Tresor-Ordner frei",
     "es-ES": "Sin anuncios, borrado ilimitado, carpetas libres",
     "fr-FR": "Sans pub, suppressions illimitées, dossiers libres",
@@ -535,14 +535,14 @@ PROMO = {
     "es-ES": "Arriba para conservar, a la izquierda a la papelera, a la derecha para después. Nada se borra sin tu confirmación y GaleriQ nunca sube tus fotos.",
     "fr-FR": "Vers le haut pour garder, à gauche vers la corbeille, à droite pour plus tard. Rien n’est supprimé sans votre accord et GaleriQ n’envoie jamais vos photos.",
     "it": "Su per conservare, a sinistra nel cestino, a destra per più tardi. Nulla viene eliminato senza la tua conferma e GaleriQ non carica mai le tue foto.",
-    "ja": "上で残す、左でゴミ箱へ、右で「あとで」。確認するまで何も削除されず、GaleriQ が写真をアップロードすることもありません。",
+    "ja": "上にスワイプして残す、左にスワイプしてゴミ箱へ、右にスワイプして「あとで」。確認するまで何も削除されず、GaleriQが写真をアップロードすることもありません。",
     "ko": "위로 밀면 보관, 왼쪽은 휴지통, 오른쪽은 나중에. 확인하기 전에는 아무것도 삭제되지 않으며 GaleriQ는 사진을 어디에도 올리지 않습니다.",
     "nl-NL": "Omhoog om te bewaren, naar links naar de prullenbak, naar rechts voor later. Er wordt niets verwijderd zonder jouw bevestiging en GaleriQ uploadt je foto's nooit.",
     "pl": "W górę – zachowaj, w lewo – do kosza, w prawo – na później. Nic nie zostanie usunięte bez Twojego potwierdzenia, a GaleriQ nigdzie nie wysyła Twoich zdjęć.",
     "pt-PT": "Para cima para manter, para a esquerda para o lixo, para a direita para mais tarde. Nada é apagado sem a sua confirmação e o GaleriQ nunca envia as suas fotos.",
     "ro": "În sus păstrezi, la stânga în coș, la dreapta pentru mai târziu. Nimic nu se șterge fără confirmarea ta, iar GaleriQ nu îți încarcă niciodată pozele.",
     "ru": "Вверх — оставить, влево — в корзину, вправо — на потом. Ничего не удаляется без вашего подтверждения, а GaleriQ никуда не загружает ваши фото.",
-    "tr": "Yukarı kaydır sakla, sola çöpe at, sağa sonraya bırak. Onaylamadan hiçbir şey silinmez ve GaleriQ fotoğraflarını hiçbir yere yüklemez.",
+    "tr": "Saklamak için yukarı, çöpe atmak için sola, sonra bakmak için sağa kaydır. Onayın olmadan hiçbir şey silinmez. GaleriQ fotoğraflarını hiçbir yere yüklemez.",
     "uk": "Угору — залишити, ліворуч — у кошик, праворуч — на потім. Нічого не видаляється без вашого підтвердження, а GaleriQ нікуди не завантажує ваші фото.",
     "zh-Hans": "上滑保留，左滑放入回收站，右滑稍后再看。未经你确认不会删除任何内容，GaleriQ 也从不上传你的照片。",
     "ar-SA": "اسحب لأعلى للاحتفاظ، ولليسار إلى سلة المهملات، ولليمين لوقت لاحق. لا يُحذف شيء دون تأكيدك، ولا يرفع GaleriQ صورك إلى أي مكان."

@@ -30,7 +30,7 @@ Ne trebaš nikakav račun, a GaleriQ nikada nikamo ne prenosi tvoje fotografije.
 BESPLATNO ILI PRO
 Sve funkcije možeš koristiti besplatno. Besplatna verzija prikazuje oglase i dopušta brisanje do 100 stavki dnevno. Uz neobavezni video jednom dnevno otključavaš još 100. GaleriQ Pro je jednokratna kupnja, a ne pretplata: bez oglasa, neograničeno brisanje i nove mape u trezoru bez gledanja videa.""",
     notes="Trezor je sada pregledniji i ostavlja više mjesta tvojim fotografijama. GaleriQ možeš ocijeniti izravno u postavkama. Ako trenutačno nema oglasa, sada vidiš kratku obavijest. Uz to manja poboljšanja.",
-    iap="Bez oglasa, neograničeno brisanje, slobodne mape",
+    iap="Bez oglasa i limita brisanja; slobodno stvaraj mape",
 )
 
 S["cs"] = dict(
@@ -40,7 +40,7 @@ S["cs"] = dict(
     description="""Příliš mnoho fotek a málo místa? S GaleriQ si v knihovně uděláte pořádek v klidu – jedna fotka, jedno přejetí.
 
 TAK JEDNODUCHÉ TO JE
-Přejetím nahoru fotku ponecháte. Doleva jde do koše GaleriQ, doprava ji uvidíte znovu za pár dní a dolů se vrátíte zpět. Nic se nesmaže, dokud koš nevysypete a ještě jednou nepotvrdíte. Potom fotky ještě nějakou dobu najdete v alba „Nedávno smazané“ v aplikaci Fotky.
+Přejetím nahoru fotku ponecháte. Doleva jde do koše GaleriQ, doprava ji uvidíte znovu za pár dní a dolů se vrátíte zpět. Nic se nesmaže, dokud koš nevysypete a ještě jednou nepotvrdíte. Potom fotky ještě nějakou dobu najdete v albu „Nedávno smazané“ v aplikaci Fotky.
 
 RYCHLE NAJDĚTE MÍSTO
 GaleriQ vám ukáže, co zabírá nejvíc místa: velká videa, duplicitní fotky, série a staré snímky obrazovky. Pokud chcete, procházejte knihovnu měsíc po měsíci, nebo si nechte navrhnout rozmazané a podobné fotky. Co zůstane a co půjde pryč, vždy rozhodujete vy.
@@ -60,7 +60,7 @@ Nepotřebujete žádný účet a GaleriQ vaše fotky nikdy nikam nenahrává.
 ZDARMA NEBO PRO
 Všechny funkce můžete používat zdarma. Bezplatná verze zobrazuje reklamy a umožňuje smazat až 100 položek denně. Volitelným videem si jednou denně odemknete dalších 100. GaleriQ Pro je jednorázový nákup, ne předplatné: bez reklam, neomezené mazání a nové složky v trezoru bez sledování videí.""",
     notes="Trezor je teď přehlednější a nechává vašim fotkám víc místa. GaleriQ můžete ohodnotit přímo v nastavení. Když zrovna není k dispozici žádná reklama, uvidíte krátké upozornění. K tomu drobná vylepšení.",
-    iap="Bez reklam, neomezené mazání, volné složky",
+    iap="Bez reklam, neomezené mazání, volná tvorba složek",
 )
 
 S["da"] = dict(
@@ -70,10 +70,10 @@ S["da"] = dict(
     description="""For mange fotos og for lidt plads? Med GaleriQ rydder du roligt op i dit bibliotek – ét swipe ad gangen.
 
 SÅ ENKELT ER DET
-Swipe op for at beholde et foto. Til venstre ryger det i GaleriQs papirkurv, til højre ser du det igen om et par dage, og ned går tilbage. Intet slettes, før du tømmer papirkurven og bekræfter én gang til. Derefter kan du stadig finde dine fotos i et stykke tid under "Senest slettet" i appen Fotos.
+Swipe op for at beholde et foto. Til venstre ryger det i GaleriQs papirkurv, til højre ser du det igen om et par dage, og et swipe ned tager dig tilbage til det forrige foto. Intet slettes, før du tømmer papirkurven og bekræfter én gang til. Derefter kan du stadig finde dine fotos i et stykke tid under "Senest slettet" i appen Fotos.
 
 FIND PLADS HURTIGT
-GaleriQ viser dig, hvad der fylder mest: store videoer, dubletter, fotoserier og gamle skærmbilleder. Hvis du vil, kan du gå dit bibliotek igennem måned for måned eller lade GaleriQ foreslå slørede og ens fotos. Hvad der bliver, og hvad der ryger, bestemmer altid du.
+GaleriQ viser dig, hvad der fylder mest: store videoer, dubletter, fotoserier og gamle skærmbilleder. Hvis du vil, kan du gå dit bibliotek igennem måned for måned eller lade GaleriQ foreslå slørede og lignende fotos. Hvad der bliver, og hvad der ryger, bestemmer altid du.
 
 DIN PRIVATE BOKS
 Det, ingen andre skal se, lægger du i boksen: fotos, videoer, filer og noter, beskyttet med din egen kode og eventuelt Face ID. Alt i boksen krypteres på din iPhone.
@@ -90,7 +90,7 @@ Du behøver ingen konto, og GaleriQ uploader aldrig dine fotos nogen steder.
 GRATIS ELLER PRO
 Alle funktioner er gratis at bruge. Gratisversionen viser reklamer og lader dig slette op til 100 emner om dagen. Med en frivillig video låser du 100 mere op én gang om dagen. GaleriQ Pro er et engangskøb, ikke et abonnement: ingen reklamer, ubegrænset sletning og nye mapper i boksen uden at se videoer.""",
     notes="Boksen er nu mere overskuelig og giver dine fotos mere plads. Du kan bedømme GaleriQ direkte under Indstillinger. Hvis der ikke er en reklame tilgængelig, ser du nu en kort besked. Plus små forbedringer.",
-    iap="Ingen reklamer, ubegrænset sletning, frie mapper",
+    iap="Reklamefri, ubegrænset sletning, opret mapper frit",
 )
 
 S["fi"] = dict(
@@ -118,9 +118,9 @@ EI TILIÄ
 Et tarvitse tiliä, eikä GaleriQ koskaan lataa kuviasi minnekään.
 
 ILMAINEN TAI PRO
-Kaikkia toimintoja voi käyttää ilmaiseksi. Ilmaisversio näyttää mainoksia, ja voit poistaa enintään 100 kohdetta päivässä. Vapaaehtoisella videolla avaat kerran päivässä 100 lisää. GaleriQ Pro on kertaosto, ei tilaus: ei mainoksia, rajaton poistaminen ja uudet holvikansiot ilman videoita.""",
+Kaikkia toimintoja voi käyttää ilmaiseksi. Ilmaisversio näyttää mainoksia, ja voit poistaa enintään 100 kohdetta päivässä. Vapaaehtoisella videolla avaat kerran päivässä 100 lisää. GaleriQ Pro on kertaosto, ei tilaus: ei mainoksia, rajaton poistaminen ja uusien holvikansioiden luominen ilman mainosvideoiden katsomista.""",
     notes="Holvi on nyt selkeämpi ja jättää kuvillesi enemmän tilaa. Voit arvioida GaleriQ:n suoraan asetuksista. Jos mainosta ei ole saatavilla, näet nyt lyhyen ilmoituksen. Lisäksi pieniä parannuksia.",
-    iap="Ei mainoksia, rajaton poisto, vapaat holvikansiot",
+    iap="Ei mainoksia tai poistorajaa. Luo kansioita vapaasti.",
 )
 
 S["el"] = dict(
@@ -148,16 +148,16 @@ S["el"] = dict(
 Δεν χρειάζεσαι λογαριασμό και το GaleriQ δεν ανεβάζει ποτέ τις φωτογραφίες σου πουθενά.
 
 ΔΩΡΕΑΝ Ή PRO
-Όλες οι λειτουργίες είναι δωρεάν. Η δωρεάν έκδοση δείχνει διαφημίσεις και επιτρέπει τη διαγραφή έως 100 στοιχείων την ημέρα. Με ένα προαιρετικό βίντεο ξεκλειδώνεις άλλα 100, μία φορά την ημέρα. Το GaleriQ Pro είναι εφάπαξ αγορά, όχι συνδρομή: χωρίς διαφημίσεις, απεριόριστη διαγραφή και νέοι φάκελοι στο θησαυροφυλάκιο χωρίς βίντεο.""",
+Όλες οι λειτουργίες είναι δωρεάν. Η δωρεάν έκδοση δείχνει διαφημίσεις και επιτρέπει τη διαγραφή έως 100 στοιχείων την ημέρα. Με ένα προαιρετικό βίντεο ξεκλειδώνεις άλλα 100, μία φορά την ημέρα. Το GaleriQ Pro είναι εφάπαξ αγορά, όχι συνδρομή: χωρίς διαφημίσεις, απεριόριστη διαγραφή και δημιουργία νέων φακέλων στο θησαυροφυλάκιο χωρίς να βλέπεις διαφημιστικά βίντεο.""",
     notes="Το θησαυροφυλάκιο είναι πλέον πιο τακτοποιημένο και αφήνει περισσότερο χώρο στις φωτογραφίες σου. Μπορείς να αξιολογήσεις το GaleriQ απευθείας από τις Ρυθμίσεις. Αν δεν υπάρχει διαθέσιμη διαφήμιση, βλέπεις τώρα ένα σύντομο μήνυμα. Και μικρές βελτιώσεις.",
-    iap="Χωρίς διαφημίσεις, απεριόριστη διαγραφή, φάκελοι",
+    iap="Χωρίς διαφημίσεις ή όριο διαγραφών· δημιουργία φακέλων",
 )
 
 S["hu"] = dict(
     name="GaleriQ: Fotótisztító és széf", subtitle="Húzd el, szabadíts fel helyet",
     keywords="duplikátum,törlés,galéria,album,tárhely,privát,elrejtés,kollázs,szerkesztő,videó,memória,képek",
     promo="Fel: megtartás, balra: kuka, jobbra: később. Semmi sem törlődik a megerősítésed nélkül, és a GaleriQ sosem tölti fel a fotóidat.",
-    description="""Túl sok fotó, túl kevés hely? A GaleriQ-val nyugodtan rendet raksz a könyvtáradban – fotóként egy húzással.
+    description="""Túl sok fotó, túl kevés hely? A GaleriQ-val nyugodtan rendet raksz a könyvtáradban – fotónként egy húzással.
 
 ENNYIRE EGYSZERŰ
 Húzd felfelé, ha meg akarsz tartani egy fotót. Balra a GaleriQ kukájába kerül, jobbra néhány nap múlva újra látod, lefelé pedig visszalépsz. Semmi sem törlődik, amíg ki nem üríted a kukát, és még egyszer meg nem erősíted. Utána a fotókat még egy ideig megtalálod a Fotók app „Nemrég törölt” albumában.
@@ -178,9 +178,9 @@ FIÓK NÉLKÜL
 Nincs szükséged fiókra, és a GaleriQ soha sehova nem tölti fel a fotóidat.
 
 INGYENES VAGY PRO
-Minden funkció ingyenesen használható. Az ingyenes verzió hirdetéseket jelenít meg, és naponta legfeljebb 100 elem törlését engedi. Egy önkéntes videóval naponta egyszer további 100-at oldasz fel. A GaleriQ Pro egyszeri vásárlás, nem előfizetés: nincs hirdetés, korlátlan törlés és új mappák a széfben videók nélkül.""",
+Minden funkció ingyenesen használható. Az ingyenes verzió hirdetéseket jelenít meg, és naponta legfeljebb 100 elem törlését engedi. Egy önkéntes videóval naponta egyszer további 100-at oldasz fel. A GaleriQ Pro egyszeri vásárlás, nem előfizetés: nincs hirdetés, korlátlan törlés és új mappák létrehozása a széfben reklámvideók megtekintése nélkül.""",
     notes="A széf mostantól áttekinthetőbb, és több helyet hagy a fotóidnak. A GaleriQ-t közvetlenül a beállításokban értékelheted. Ha éppen nincs elérhető hirdetés, most rövid üzenetet látsz. Emellett apró fejlesztések.",
-    iap="Hirdetés nélkül, korlátlan törlés, szabad mappák",
+    iap="Reklámmentes, korlátlan törlés, szabad mappalétrehozás",
 )
 
 S["no"] = dict(
@@ -190,7 +190,7 @@ S["no"] = dict(
     description="""For mange bilder og for lite plass? Med GaleriQ rydder du i biblioteket i ro og mak – ett sveip om gangen.
 
 SÅ ENKELT ER DET
-Sveip opp for å beholde et bilde. Til venstre havner det i GaleriQs papirkurv, til høyre ser du det igjen om noen dager, og ned går tilbake. Ingenting slettes før du tømmer papirkurven og bekrefter én gang til. Etterpå finner du fortsatt bildene en stund under «Nylig slettet» i Bilder-appen.
+Sveip opp for å beholde et bilde. Til venstre havner det i GaleriQs papirkurv, til høyre ser du det igjen om noen dager, og et sveip ned tar deg tilbake til det forrige bildet. Ingenting slettes før du tømmer papirkurven og bekrefter én gang til. Etterpå finner du fortsatt bildene en stund under «Nylig slettet» i Bilder-appen.
 
 FINN PLASS RASKT
 GaleriQ viser deg hva som tar mest plass: store videoer, dupliserte bilder, bildeserier og gamle skjermbilder. Hvis du vil, kan du gå gjennom biblioteket måned for måned eller la GaleriQ foreslå uskarpe og like bilder. Hva som blir og hva som går, bestemmer alltid du.
@@ -210,7 +210,7 @@ Du trenger ingen konto, og GaleriQ laster aldri opp bildene dine noe sted.
 GRATIS ELLER PRO
 Alle funksjoner er gratis å bruke. Gratisversjonen viser reklame og lar deg slette opptil 100 objekter om dagen. Med en frivillig video låser du opp 100 til én gang om dagen. GaleriQ Pro er et engangskjøp, ikke et abonnement: ingen reklame, ubegrenset sletting og nye mapper i safen uten å se videoer.""",
     notes="Safen er nå ryddigere og gir bildene dine mer plass. Du kan vurdere GaleriQ rett fra innstillingene. Hvis ingen reklame er tilgjengelig, ser du nå en kort melding. I tillegg små forbedringer.",
-    iap="Ingen reklame, ubegrenset sletting, frie mapper",
+    iap="Reklamefri, ubegrenset sletting, fri mappeoppretting",
 )
 
 S["sk"] = dict(
@@ -240,7 +240,7 @@ Nepotrebujete žiadny účet a GaleriQ vaše fotky nikdy nikam nenahráva.
 ZADARMO ALEBO PRO
 Všetky funkcie môžete používať zadarmo. Bezplatná verzia zobrazuje reklamy a umožňuje vymazať až 100 položiek denne. Dobrovoľným videom si raz denne odomknete ďalších 100. GaleriQ Pro je jednorazový nákup, nie predplatné: bez reklám, neobmedzené mazanie a nové priečinky v trezore bez sledovania videí.""",
     notes="Trezor je teraz prehľadnejší a necháva vašim fotkám viac miesta. GaleriQ môžete ohodnotiť priamo v nastaveniach. Keď práve nie je dostupná žiadna reklama, uvidíte krátke upozornenie. K tomu drobné vylepšenia.",
-    iap="Bez reklám, neobmedzené mazanie, voľné priečinky",
+    iap="Bez reklám a limitu mazania. Vytvárajte priečinky.",
 )
 
 S["sl-SI"] = dict(
@@ -270,7 +270,7 @@ Ne potrebuješ računa, GaleriQ pa tvojih fotografij nikoli ne naloži nikamor.
 BREZPLAČNO ALI PRO
 Vse funkcije lahko uporabljaš brezplačno. Brezplačna različica prikazuje oglase in omogoča brisanje do 100 elementov na dan. Z neobveznim videoposnetkom enkrat na dan odkleneš še 100. GaleriQ Pro je enkratni nakup, ne naročnina: brez oglasov, neomejeno brisanje in nove mape v sefu brez ogledovanja videoposnetkov.""",
     notes="Sef je zdaj preglednejši in tvojim fotografijam pušča več prostora. GaleriQ lahko oceniš neposredno v nastavitvah. Če oglas trenutno ni na voljo, zdaj vidiš kratko obvestilo. Poleg tega manjše izboljšave.",
-    iap="Brez oglasov, neomejeno brisanje, proste mape",
+    iap="Brez oglasov in omejitve brisanja. Ustvari mape.",
 )
 
 S["sv"] = dict(
@@ -280,7 +280,7 @@ S["sv"] = dict(
     description="""För många bilder och för lite utrymme? Med GaleriQ rensar du ditt bibliotek i lugn och ro – ett svep i taget.
 
 SÅ ENKELT ÄR DET
-Svep uppåt för att behålla en bild. Åt vänster hamnar den i GaleriQs papperskorg, åt höger ser du den igen om några dagar och nedåt går tillbaka. Inget raderas förrän du tömmer papperskorgen och bekräftar en gång till. Efteråt hittar du fortfarande bilderna ett tag under ”Senast raderade” i appen Bilder.
+Svep uppåt för att behålla en bild. Åt vänster hamnar den i GaleriQs papperskorg, åt höger ser du den igen om några dagar och ett svep nedåt tar dig tillbaka till föregående bild. Inget raderas förrän du tömmer papperskorgen och bekräftar en gång till. Efteråt hittar du fortfarande bilderna ett tag under ”Senast raderade” i appen Bilder.
 
 HITTA UTRYMME SNABBT
 GaleriQ visar vad som tar mest plats: stora videor, dubbletter, bildserier och gamla skärmbilder. Om du vill kan du gå igenom biblioteket månad för månad eller låta GaleriQ föreslå suddiga och liknande bilder. Vad som stannar och vad som åker bestämmer alltid du.
@@ -300,5 +300,5 @@ Du behöver inget konto, och GaleriQ laddar aldrig upp dina bilder någonstans.
 GRATIS ELLER PRO
 Alla funktioner är gratis att använda. Gratisversionen visar annonser och låter dig radera upp till 100 objekt per dag. Med en frivillig video låser du upp 100 till en gång per dag. GaleriQ Pro är ett engångsköp, inte en prenumeration: inga annonser, obegränsad radering och nya mappar i valvet utan att titta på videor.""",
     notes="Valvet är nu mer överskådligt och ger dina bilder mer plats. Du kan betygsätta GaleriQ direkt i inställningarna. Om ingen annons är tillgänglig ser du nu ett kort meddelande. Plus små förbättringar.",
-    iap="Inga annonser, obegränsad radering, fria mappar",
+    iap="Utan annonser, obegränsad radering, skapa mappar fritt",
 )

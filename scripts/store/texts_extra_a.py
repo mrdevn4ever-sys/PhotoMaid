@@ -28,7 +28,7 @@ _EN_PROMO = ("Swipe up to keep, left to the trash, right for later. Nothing is d
              "and GaleriQ never uploads your photos.")
 _EN_NOTES = ("The vault is now tidier, with more room for your photos. You can rate GaleriQ right from Settings. "
              "If no ad is available, you now see a short note instead of nothing. Plus small improvements.")
-_EN_IAP = "No ads, unlimited deleting, free vault folders"
+_EN_IAP = "No ads, unlimited deletes, create vault folders freely"
 
 S = {}
 
@@ -69,9 +69,9 @@ SANS COMPTE
 Vous n’avez besoin d’aucun compte, et GaleriQ ne téléverse jamais vos photos nulle part.
 
 GRATUIT OU PRO
-Toutes les fonctions sont gratuites. La version gratuite affiche de la publicité et permet de supprimer jusqu’à 100 éléments par jour. Une vidéo facultative permet d’en débloquer 100 de plus, une fois par jour. GaleriQ Pro est un achat unique, pas un abonnement : sans publicité, suppressions illimitées et nouveaux dossiers du coffre-fort sans vidéo.""",
+Toutes les fonctions sont gratuites. La version gratuite affiche de la publicité et permet de supprimer jusqu’à 100 éléments par jour. Une vidéo facultative permet d’en débloquer 100 de plus, une fois par jour. GaleriQ Pro est un achat unique, pas un abonnement : sans publicité, suppressions illimitées et création de nouveaux dossiers dans le coffre-fort sans regarder de vidéo publicitaire.""",
     notes="Le coffre-fort est maintenant plus épuré et laisse plus de place à vos photos. Vous pouvez évaluer GaleriQ directement dans les Réglages. Si aucune publicité n’est disponible, un court message s’affiche maintenant. Et quelques petites améliorations.",
-    iap="Sans pub, suppressions illimitées, dossiers libres",
+    iap="Sans pub : supprimez sans limite et créez des dossiers",
 )
 
 S["es-MX"] = dict(
@@ -101,7 +101,7 @@ No necesitas ninguna cuenta y GaleriQ nunca sube tus fotos a ningún lado.
 GRATIS O PRO
 Puedes usar todas las funciones gratis. La versión gratuita muestra anuncios y te deja borrar hasta 100 elementos al día. Con un video opcional desbloqueas 100 más, una vez al día. GaleriQ Pro es una compra única, no una suscripción: sin anuncios, borrado ilimitado y carpetas nuevas en la caja fuerte sin ver videos.""",
     notes="La caja fuerte ahora está más ordenada y deja más espacio a tus fotos. Puedes calificar GaleriQ directamente desde Configuración. Si no hay ningún anuncio disponible, ahora ves un aviso breve. Y pequeñas mejoras.",
-    iap="Sin anuncios, borrado ilimitado, carpetas libres",
+    iap="Sin anuncios: borra sin límite y crea carpetas",
 )
 
 S["pt-BR"] = dict(
@@ -131,7 +131,7 @@ Você não precisa de nenhuma conta, e o GaleriQ nunca envia suas fotos para lug
 GRÁTIS OU PRO
 Você pode usar todos os recursos de graça. A versão gratuita mostra anúncios e permite apagar até 100 itens por dia. Com um vídeo opcional, você libera mais 100, uma vez por dia. O GaleriQ Pro é uma compra única, não uma assinatura: sem anúncios, exclusão ilimitada e novas pastas no cofre sem assistir a vídeos.""",
     notes="O cofre está mais organizado e deixa mais espaço para suas fotos. Você pode avaliar o GaleriQ direto nos Ajustes. Se não houver nenhum anúncio disponível, agora aparece um aviso curto. E pequenas melhorias.",
-    iap="Sem anúncios, exclusão ilimitada, pastas livres",
+    iap="Sem anúncios: apague sem limite e crie pastas no cofre",
 )
 
 S["zh-Hant"] = dict(
@@ -159,7 +159,7 @@ GaleriQ 會告訴你哪些內容最占空間：大型影片、重複的照片、
 你不需要任何帳號，GaleriQ 也從不會把你的照片上傳到任何地方。
 
 免費或 Pro
-所有功能都可以免費使用。免費版會顯示廣告，每天最多可刪除 100 項。觀看一段選擇性影片後，每天可再解鎖 100 項。GaleriQ Pro 是一次性購買，不是訂閱：無廣告、無限刪除，不必看影片即可新增保險箱檔案夾。""",
+所有功能都可以免費使用。免費版會顯示廣告，每天最多可刪除 100 項。你可以每天自願觀看一次廣告影片，再解鎖 100 項的刪除額度。GaleriQ Pro 是一次性購買，不是訂閱：無廣告、無限刪除，不必看影片即可新增保險箱檔案夾。""",
     notes="保險箱現在更簡潔，讓照片有更多空間。你可以直接在「設定」中為 GaleriQ 評分。暫時沒有廣告時，現在會顯示一則簡短提示。另有一些小改進。",
     iap="無廣告、無限刪除、自由新增保險箱檔案夾",
 )
@@ -189,7 +189,7 @@ SENSE COMPTE
 No necessites cap compte, i GaleriQ no penja mai les teves fotos enlloc.
 
 GRATIS O PRO
-Pots fer servir totes les funcions gratis. La versió gratuïta mostra anuncis i et deixa esborrar fins a 100 elements al dia. Amb un vídeo opcional en desbloqueges 100 més, un cop al dia. GaleriQ Pro és una compra única, no una subscripció: sense anuncis, esborrat il·limitat i carpetes noves a la caixa forta sense vídeos.""",
+Pots fer servir totes les funcions gratis. La versió gratuïta mostra anuncis i et deixa esborrar fins a 100 elements al dia. Amb un vídeo opcional en desbloqueges 100 més, un cop al dia. GaleriQ Pro és una compra única, no una subscripció: sense anuncis, esborrat il·limitat i carpetes noves a la caixa forta sense haver de veure vídeos publicitaris.""",
     notes="La caixa forta ara és més endreçada i deixa més espai a les teves fotos. Pots valorar GaleriQ directament des de Configuració. Si no hi ha cap anunci disponible, ara veus un avís breu. I petites millores.",
-    iap="Sense anuncis, esborrat il·limitat, carpetes lliures",
+    iap="Sense anuncis: esborra sense límit i crea carpetes",
 )

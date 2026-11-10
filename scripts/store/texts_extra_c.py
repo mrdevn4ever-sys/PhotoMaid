@@ -60,7 +60,7 @@ Kamu tidak perlu akun, dan GaleriQ tidak pernah mengunggah fotomu ke mana pun.
 GRATIS ATAU PRO
 Semua fitur bisa dipakai gratis. Versi gratis menampilkan iklan dan memungkinkan menghapus hingga 100 item per hari. Dengan video opsional, kamu membuka 100 lagi sekali sehari. GaleriQ Pro adalah pembelian sekali, bukan langganan: tanpa iklan, hapus tanpa batas, dan folder brankas baru tanpa menonton video.""",
     notes="Brankas kini lebih rapi dan memberi lebih banyak ruang untuk fotomu. Kamu bisa memberi nilai GaleriQ langsung dari Pengaturan. Jika tidak ada iklan yang tersedia, kini muncul pemberitahuan singkat. Ditambah perbaikan kecil.",
-    iap="Tanpa iklan, hapus tanpa batas, folder bebas",
+    iap="Tanpa iklan, hapus tanpa batas, buat folder tanpa iklan",
 )
 
 S["ms"] = dict(
@@ -90,7 +90,7 @@ Anda tidak memerlukan akaun, dan GaleriQ tidak pernah memuat naik foto anda ke m
 PERCUMA ATAU PRO
 Semua ciri boleh digunakan secara percuma. Versi percuma memaparkan iklan dan membenarkan anda memadam sehingga 100 item sehari. Dengan video pilihan, anda membuka 100 lagi sekali sehari. GaleriQ Pro ialah pembelian sekali, bukan langganan: tiada iklan, padam tanpa had dan folder peti besi baharu tanpa menonton video.""",
     notes="Peti besi kini lebih kemas dan memberi lebih ruang kepada foto anda. Anda boleh menilai GaleriQ terus dari Tetapan. Jika tiada iklan tersedia, kini anda melihat makluman ringkas. Serta penambahbaikan kecil.",
-    iap="Tiada iklan, padam tanpa had, folder bebas",
+    iap="Tiada iklan, padam tanpa had, cipta folder tanpa iklan",
 )
 
 S["th"] = dict(
@@ -100,7 +100,7 @@ S["th"] = dict(
     description="""รูปเยอะเกินไป พื้นที่ไม่พอ? GaleriQ ช่วยให้คุณจัดคลังรูปได้สบาย ๆ ปัดทีละรูป
 
 ง่ายแค่นี้
-ปัดขึ้นเพื่อเก็บรูป ปัดซ้ายรูปจะไปอยู่ในถังขยะของ GaleriQ ปัดขวาจะเห็นรูปนั้นอีกครั้งในอีกไม่กี่วัน และปัดลงเพื่อย้อนกลับ ไม่มีอะไรถูกลบจนกว่าคุณจะล้างถังขยะและยืนยันอีกครั้ง หลังจากนั้นคุณยังหารูปเจอได้สักพักใน "ที่เพิ่งลบ" ในแอปรูปภาพ
+ปัดขึ้นเพื่อเก็บรูป ปัดซ้ายรูปจะไปอยู่ในถังขยะของ GaleriQ ปัดขวาจะเห็นรูปนั้นอีกครั้งในอีกไม่กี่วัน และปัดลงเพื่อย้อนกลับ ไม่มีอะไรถูกลบจนกว่าคุณจะล้างถังขยะและยืนยันอีกครั้ง หลังจากนั้นคุณยังหารูปเจอได้สักพักใน "ที่ลบล่าสุด" ในแอปรูปภาพ
 
 หาพื้นที่ว่างได้เร็ว
 GaleriQ แสดงว่าอะไรกินพื้นที่มากที่สุด เช่น วิดีโอขนาดใหญ่ รูปซ้ำ ชุดรูปถ่ายต่อเนื่อง และภาพหน้าจอเก่า ถ้าต้องการ คุณดูคลังรูปทีละเดือนได้ หรือให้ GaleriQ แนะนำรูปที่เบลอและรูปที่คล้ายกัน จะเก็บหรือลบ คุณเป็นคนตัดสินใจเสมอ
@@ -125,7 +125,7 @@ GaleriQ แสดงว่าอะไรกินพื้นที่มาก
 
 S["vi"] = dict(
     name="GaleriQ: Dọn ảnh & Két sắt", subtitle="Vuốt để giải phóng dung lượng",
-    keywords="ảnh trùng,xóa ảnh,thư viện,album,bộ nhớ,riêng tư,ẩn ảnh,ghép ảnh,chỉnh ảnh,video,chụp màn hình",
+    keywords="trùng,xóa,thư viện,album,bộ nhớ,riêng tư,ẩn,ghép,chỉnh,video,chụp màn hình",
     promo="Vuốt lên để giữ, sang trái vào thùng rác, sang phải để xem sau. Không gì bị xóa khi bạn chưa xác nhận, và GaleriQ không bao giờ tải ảnh của bạn lên.",
     description="""Quá nhiều ảnh mà dung lượng lại ít? Với GaleriQ, bạn dọn thư viện ảnh thật thong thả – mỗi ảnh một lần vuốt.
 
@@ -150,7 +150,7 @@ Bạn không cần tài khoản nào, và GaleriQ không bao giờ tải ảnh c
 MIỄN PHÍ HOẶC PRO
 Mọi tính năng đều dùng miễn phí. Bản miễn phí có quảng cáo và cho phép xóa tối đa 100 mục mỗi ngày. Xem một video tùy chọn để mở thêm 100 mục, mỗi ngày một lần. GaleriQ Pro là gói mua một lần, không phải gói đăng ký: không quảng cáo, xóa không giới hạn và tạo thư mục mới trong két sắt mà không cần xem video.""",
     notes="Két sắt giờ gọn gàng hơn và dành nhiều chỗ hơn cho ảnh của bạn. Bạn có thể đánh giá GaleriQ ngay trong phần Cài đặt. Khi không có quảng cáo, giờ bạn sẽ thấy một thông báo ngắn. Cùng một số cải tiến nhỏ.",
-    iap="Không quảng cáo, xóa không giới hạn, thư mục tự do",
+    iap="Xóa không giới hạn, tạo thư mục và không còn quảng cáo",
 )
 
 S["hi"] = dict(
@@ -180,5 +180,5 @@ GaleriQ दिखाता है कि सबसे ज़्यादा ज�
 मुफ़्त या Pro
 सभी फ़ीचर मुफ़्त में इस्तेमाल किए जा सकते हैं। मुफ़्त वर्शन में विज्ञापन दिखते हैं और रोज़ 100 आइटम तक डिलीट किए जा सकते हैं। एक वैकल्पिक वीडियो देखकर दिन में एक बार 100 और अनलॉक करें। GaleriQ Pro एक बार की ख़रीद है, सब्सक्रिप्शन नहीं: कोई विज्ञापन नहीं, असीमित डिलीट और वीडियो देखे बिना तिजोरी में नए फ़ोल्डर।""",
     notes="तिजोरी अब ज़्यादा साफ़-सुथरी है और आपकी फ़ोटो को ज़्यादा जगह देती है। आप सेटिंग्स से सीधे GaleriQ को रेटिंग दे सकते हैं। विज्ञापन उपलब्ध न होने पर अब एक छोटा संदेश दिखता है। साथ में छोटे सुधार।",
-    iap="कोई विज्ञापन नहीं, असीमित डिलीट, मुफ़्त फ़ोल्डर",
+    iap="बिना विज्ञापन, असीमित डिलीट, बिना वीडियो देखे फ़ोल्डर",
 )
