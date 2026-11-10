@@ -157,3 +157,8 @@ App Store Connect › GaleriQ › Version 1.0 › Englisch (USA) › iPhone 6,9-
       CI-Lauf 42110672330: `swift test` PASS, Xcode-Build + Unit-Tests PASS, UI-Tests NOT RUN (nicht Teil des
       Standardlaufs). Hochladen der Testprotokolle FAIL: GitHub-Speicherkontingent für Artefakte voll (alte Artefakte
       löschen oder auf Neuberechnung nach 6–12 h warten). Gerät NOT RUN. Noch kein TestFlight-Build, keine Einreichung.
+      Ergänzt für 1.0.1 (10.11.2026): Store-Beschreibungen 16 Sprachen einfach formuliert (`66c588c`), Tresor kompakter
+      (`5ddc404`), Bewertung über Apples Systemdialog + „GaleriQ bewerten“ in den Einstellungen (`fa635e7`).
+      CI-Läufe 42765954458 und 42766807316: BLOCKED – alle Jobs (auch Linux) brachen nach 1–2 s ohne Runner und
+      ohne Log ab; typisch für GitHub-Abrechnung (Actions-Ausgabenlimit/Zahlung). Build/Tests dieser drei Commits:
+      NOT RUN. Erst nach geklärter Abrechnung erneut starten, dann TestFlight nur auf ausdrückliche Freigabe.
