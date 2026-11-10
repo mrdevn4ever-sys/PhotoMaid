@@ -1,0 +1,1900 @@
+0000	3 dies actius
+0001	7 dies actius
+0002	Has jugat als tres jocs
+0003	Insígnies
+0004	%1$lld de %2$lld
+0005	Juga a «Fes una pausa»
+0006	Continua revisant
+0007	Crea a l’Estudi
+0010	dia
+0011	dies
+0014	Aconseguida
+0015	el %@
+0016	Conservar, Paperera i Més tard compten igual.
+0017	Primer collage
+0018	Primera decisió
+0019	Primera pel·lícula
+0020	Primer mes acabat
+0021	Primer PDF
+0022	%1$@: %2$@ fotos
+0023	%1$@: %2$@ punts
+0024	Objectiu diari
+0025	Objectiu diari assolit 10 vegades
+0026	Objectiu diari assolit
+0027	de %@ avui
+0028	Desactivat: activa’l a Configuració.
+0029	%1$@ de %2$@
+0030	Jocs
+0031	Ordre
+0032	Revisat
+0033	Primers passos
+0034	Ratxes
+0035	«Més tard» buidat
+0036	Nivell
+0037	Has arribat al nivell màxim.
+0038	%1$@ més fins al nivell %2$lld.
+0039	Tota la fototeca revisada
+0040	Tot es queda en aquest iPhone. Per desactivar-ho: Configuració › Mostrar els èxits.
+0041	Mesos acabats
+0042	12 mesos acabats
+0043	Insígnia nova: %@
+0044	Obrir els èxits
+0045	Obre els èxits
+0046	12 parelles resoltes
+0047	%1$@ en menys de %2$@ s
+0048	En falten %@
+0049	elements revisats
+0050	%@ revisats
+0051	Ratxa
+0052	Ratxa de 100 dies
+0053	Ratxa de 3 dies
+0054	Ratxa de 30 dies
+0055	Ratxa de 7 dies
+0056	El que ja has aconseguit: només les teves pròpies xifres.
+0057	Èxits
+0058	Veure
+0059	Aquesta setmana
+0060	Conservar i següent
+0061	Més tard
+0062	Triar una data per a més tard
+0063	Veure l’anterior
+0064	Moure a la paperera
+0065	Anunci
+0066	Sense anuncis amb Pro
+0067	Següent
+0068	Aviat podràs continuar…
+0069	Afegir una carpeta
+0070	Afegit a «%1$@»
+0071	No s’ha pogut canviar l’àlbum.
+0072	Àlbums i carpetes de l’app Fotos. Afegir a un àlbum no canvia els fitxers i se sincronitza amb Fotos d’iCloud si està activat.
+0073	Tot
+0074	Continuar una estona en segon pla
+0075	GaleriQ fa servir el temps en segon pla que permet l’iOS, sense cap targeta d’activitat del sistema. Si s’acaba el temps, el progrés queda desat i l’anàlisi continua quan tornes a obrir l’app.
+0076	Animals
+0077	Documents
+0078	Menjar
+0079	Natura
+0080	Altres
+0081	Persones
+0082	Captures amb text
+0083	Vehicles
+0084	Les fotos d’iCloud només es carreguen com a previsualitzacions petites per Wi-Fi. No es penja res.
+0085	Només a iCloud: %1$lld
+0086	L’anàlisi d’imatges està desactivada a Configuració.
+0087	No analitzades: %1$lld
+0088	Executar primer
+0089	Comparar (%1$lld)
+0090	Grups: %1$lld · Fotos: %2$lld
+0091	Incloure les fotos d’iCloud (només Wi-Fi)
+0092	Coincidències: %1$lld
+0093	Següent
+0094	Pausa
+0095	Enrere
+0096	%1$lld de %2$lld analitzades
+0097	Previsualització massa petita: %1$lld
+0098	Analitzar després
+0099	L’anàlisi en curs no es cancel·la mai: «Executar primer» només la posa en pausa, i després continua sola.
+0100	Continuar l’anàlisi
+0101	Tornar a provar les fallides (%1$lld)
+0102	«%1$@» s’està executant. Aquesta anàlisi pot començar sola després.
+0103	Cercar el text reconegut
+0104	Mostrar també els ja decidits
+0105	Preses semblants: %1$lld · tu decideixes què es queda
+0106	La fototeca ha canviat. Continua per actualitzar l’anàlisi.
+0107	Carregant previsualitzacions d’iCloud…
+0108	Comparant preses semblants…
+0109	Anàlisi completada.
+0110	Analitzant les fotos d’aquest iPhone…
+0111	En pausa. Els resultats obtinguts es conserven.
+0112	Preparant…
+0113	Ara no es pot fer l’anàlisi. Torna-ho a provar més tard.
+0114	No s’han pogut desar els resultats. Comprova l’espai lliure.
+0115	Esperant la Wi-Fi per carregar les previsualitzacions d’iCloud.
+0116	Iniciar l’anàlisi
+0117	Lliscar per tots (%1$lld)
+0118	Amunt conserva, a l’esquerra a la paperera, a la dreta torna més tard. Toca una foto per començar per ella.
+0119	Toca un grup per comparar-lo, o llisca per tots un rere l’altre.
+0120	No esperar
+0121	En espera: començarà sola quan acabi «%1$@».
+0122	Fotos borroses
+0123	Mogudes o desenfocades, ordenades per nitidesa
+0124	Per tema
+0125	Persones, animals, menjar, paisatges…
+0126	Fotos amb text
+0127	Captures, tiquets i documents, amb cerca pel text reconegut
+0128	L’anàlisi només es fa en aquest iPhone (Apple Vision). Els resultats són suggeriments: tu decideixes al feed. No es penja ni s’esborra res automàticament.
+0129	Analitzat en aquest iPhone
+0130	Preses semblants
+0131	Fotos molt semblants, una al costat de l’altra
+0132	GaleriQ
+0133	Fosc
+0134	Clar
+0135	Com el dispositiu
+0136	Carpetes per any i mes
+0137	Ordena les còpies en subcarpetes per data de presa, p. ex. «2026/10». Desactivat: tots els fitxers van a una sola carpeta.
+0138	Triar la carpeta
+0139	Triar una altra carpeta
+0140	Àlbums
+0141	Bytes
+0142	Carpeta
+0143	Nom
+0144	Nota
+0145	SHA-256
+0146	Etiquetes
+0147	Data de presa
+0148	Lliure a la destinació: %1$@
+0149	Espai lliure a la destinació: desconegut
+0150	GaleriQ copia fotos i vídeos a una carpeta que tries, per exemple en un llapis USB, un disc extern o a l’app Fitxers. Després, cada còpia es compara byte a byte amb l’original. Els originals es queden a Fotos i no s’esborra res.
+0151	Una segona còpia comprovada de les teves fotos
+0152	Aquesta carpeta és al mateix emmagatzematge que les teves fotos. Una segona còpia aquí no ajuda si perds el telèfon o s’espatlla.
+0153	Aquesta carpeta pertany a una altra app, com ara un servei d’emmagatzematge en línia. Aquesta app decideix si els fitxers es queden al telèfon o van al núvol.
+0154	Un dispositiu d’emmagatzematge separat, com ara un llapis USB o un disc extern.
+0155	Última execució el %1$@: %2$lld de %3$lld comprovats.
+0156	Llista de comprovació de GaleriQ %1$@.csv
+0157	Llista de comprovació desada: %1$@
+0158	«Comprovat» vol dir que la còpia és idèntica a l’original, byte a byte. Ningú no pot saber quant durarà un dispositiu d’emmagatzematge: guarda el que és important en dos llocs.
+0159	Primer tria què vols copiar i una carpeta de destinació.
+0160	Ara tria què s’ha de copiar.
+0161	Ara tria una carpeta de destinació.
+0162	Encara no has triat res
+0163	Opcions
+0164	%1$lld ja hi era
+0165	%1$lld ja hi eren
+0166	%1$lld ha fallat
+0167	%1$lld han fallat
+0168	%1$lld no copiat
+0169	%1$lld no copiats
+0170	%1$lld copiat i comprovat
+0171	%1$lld copiats i comprovats
+0172	Què s’ha de copiar?
+0173	Triar fotos i vídeos
+0174	Canviar la selecció
+0175	Cancel·lat
+0176	Interromput: s’ha eliminat la còpia parcial
+0177	La còpia no coincidia: s’ha tornat a eliminar
+0178	No es pot llegir l’original
+0179	No queda espai a la destinació
+0180	La destinació no l’ha volgut desar (plena, protegida contra escriptura o fitxer massa gran per a aquest emmagatzematge)
+0181	Resultat
+0182	Copiant i comprovant…
+0183	Copiar i comprovar
+0184	Es copia %1$lld fitxer a «%2$@».
+0185	Es copien %1$lld fitxers a «%2$@».
+0186	Pas %1$lld · %2$@
+0187	Els originals es queden tal com són.
+0188	Copiar a una carpeta triada i verificar cada còpia
+0189	Encara no has triat cap carpeta
+0190	Connecta un llapis USB o un disc extern i tria-hi una carpeta. També funcionen l’iCloud Drive i altres ubicacions de l’app Fitxers.
+0191	Arxiu
+0192	Sense data
+0193	Comprovat: %1$@
+0194	On han d’anar les còpies?
+0195	Desar també una llista de comprovació
+0196	Desa una taula (fitxer CSV) a la carpeta de destinació amb el nom, la data, la mida i la suma de verificació de cada fitxer, a més dels teus àlbums, etiquetes i notes, perquè puguis comprovar les còpies més endavant.
+0197	de %1$@
+0198	Parelles, Serp de fotos i Foto Blocks
+0199	per revisar
+0200	Fotos de les quals encara no estàs segur.
+0201	Respira. Les teves fotos també juguen.
+0202	3 jocs amb les teves pròpies fotos
+0203	Esborrar l’últim dígit
+0204	%1$lld de %2$lld dígits introduïts
+0205	Privadesa i dades
+0206	Pregunta abans que un preferit vagi a la paperera
+0207	Amb la càmera, com a PDF
+0208	Què ocupa espai
+0209	Lliscar per tots
+0210	Pendent de revisar
+0211	Fotos i vídeos.
+0212	Xifrada, només en aquest iPhone.
+0213	Enrere
+0214	Restaurar
+0215	Restaurada
+0216	Còpia de seguretat de GaleriQ %1$@.json
+0217	Còpia de seguretat del %1$@
+0218	Aquest fitxer no és una còpia de seguretat de GaleriQ.
+0219	Obrir una còpia…
+0220	El fitxer conté noms de fitxers, etiquetes i notes. Desa’l només on vulguis, per exemple en un llapis USB.
+0221	Restaurar
+0222	Recupera una còpia de seguretat, per exemple en un telèfon nou. Les fotos es tornen a trobar pel nom, la mida i l’hora de presa. El que ja s’hagi decidit o introduït aquí es queda com està.
+0223	Desar una còpia…
+0224	No s’ha pogut desar la còpia de seguretat.
+0225	Fer una còpia
+0226	Desa les teves dades de GaleriQ en un fitxer petit: decisions, àlbums, etiquetes, notes, cistella de selecció, elements amagats, configuració, fluxos de treball i predefinits. No inclou cap foto.
+0227	Còpia de seguretat i restauració
+0228	Aquesta còpia és d’una versió més nova de GaleriQ. Primer actualitza GaleriQ.
+0229	No s’ha pogut llegir el fitxer.
+0230	Paperera
+0231	Avui en queden %1$lld de %2$lld
+0232	Esborrar %1$lld definitivament
+0233	No es pot desfer.
+0234	Esborrar els fitxers definitivament?
+0235	Eliminar %1$lld
+0236	Després confirma-ho al diàleg de l’iOS. Les fotos i els vídeos passen a «Eliminat recentment» a l’app Fotos.
+0237	Eliminar fotos i vídeos?
+0238	%1$lld a la paperera
+0239	Esborrar %1$lld fitxer definitivament
+0240	Esborrar %1$lld fitxers definitivament
+0241	Eliminar %1$lld foto o vídeo
+0242	Eliminar %1$lld fotos i vídeos
+0243	Aquí apareix tot el que has apartat per eliminar. Llisca una foto o un vídeo cap a l’esquerra per afegir-lo.
+0244	La paperera és buida
+0245	Aquests fitxers s’esborraran definitivament. No es pot desfer.
+0246	Fitxers
+0247	Encara no s’ha esborrat res. Toca una miniatura per veure-la més gran. Buida la paperera només quan estiguis a punt.
+0248	L’iOS et demana una altra confirmació i mou les fotos i els vídeos a «Eliminat recentment». Normalment els pots recuperar allà durant 30 dies. Amb Fotos d’iCloud, l’eliminació s’aplica a tots els teus dispositius.
+0249	Fotos i vídeos
+0250	Mirar-ho no canvia la selecció.
+0251	Veure més gran: %1$@
+0252	Selecció: %1$@
+0253	Afegits recentment
+0254	Data de presa
+0255	Permetre l’accés a les fotos
+0256	Millor: %1$lld
+0257	Canviar les fotos
+0258	Esborrar la selecció
+0259	Reprendre
+0260	Foto descoberta!
+0261	Preferits
+0262	Fotos descobertes: %1$lld
+0263	Tauler: llisca de costat, toca per girar, arrossega o llisca ràpid avall.
+0264	Arrossega avall: més ràpid · llisca ràpid avall: col·locar
+0265	Llisca de costat per moure
+0266	Toca per girar
+0267	Com es juga
+0268	Nivell: %1$lld
+0269	Gestionar les fotos permeses
+0270	Nou rècord!
+0271	Fotos més noves
+0272	Següent peça
+0273	Ronda acabada
+0274	Pausa
+0275	En pausa
+0276	Les fotos d’iCloud es baixen quan cal. Les fotos de la caixa forta, les amagades i les excloses es mantenen protegides.
+0277	Origen de les imatges
+0278	Triar fotos
+0279	Columna %1$lld, fila %2$lld, gir %3$lld
+0280	Progrés de la foto
+0281	Fotos aleatòries
+0282	Tornar a jugar
+0283	Reiniciar
+0284	Files: %1$lld
+0285	Només es fan servir fotos permeses. Les imatges no disponibles se substitueixen per un fons neutre.
+0286	No s’ha pogut desar · Torna-ho a provar
+0287	Puntuació: %1$lld
+0288	Seleccionades: %1$lld
+0289	Triar les meves fotos
+0290	Començar a jugar
+0291	Elimina files i descobreix les teves fotos.
+0292	Foto Blocks
+0293	Cancel·lar
+0294	Fotos
+0295	Captures de pantalla
+0296	Vídeos
+0297	Canviar
+0298	Canviar la data
+0299	Triar la carpeta
+0300	Tancar
+0301	A4 horitzontal
+0302	A4 vertical
+0303	Crear una col·lecció
+0304	1 any
+0305	2 anys
+0306	6 mesos
+0307	%1$lld dia
+0308	%1$lld dies
+0309	Foto difuminada
+0310	Preparades per a tu
+0311	Condició
+0312	Comptant elements…
+0313	Les teves col·leccions
+0314	Les col·leccions personalitzades estan disponibles amb Pro. Les col·leccions preparades són gratuïtes.
+0315	Eliminar la col·lecció
+0316	Separador horitzontal
+0317	Separador vertical
+0318	Editar
+0319	Col·lecció personalitzada
+0320	Omplir
+0321	Mostrar sencera
+0322	Tipus de fitxer
+0323	Tria una col·lecció per revisar les fotos i els vídeos que hi encaixen. No s’esborra res automàticament.
+0324	JPEG: fitxer més petit, ideal per compartir.
+0325	Lliure
+0326	Quadrícula
+0327	Tira
+0328	Més gran que
+0329	Arrossega les nanses blanques per canviar la mida. Mantén premuda una foto i arrossega-la sobre una altra per intercanviar-les.
+0330	Vora
+0331	Algunes fotos ja no estan disponibles i s’ometen.
+0332	Tot revisat
+0333	Més antic que
+0334	Toca una foto del collage per canviar-la.
+0335	PNG: sense pèrdua i nítid, però el fitxer és més gran.
+0336	Marc de foto instantània
+0337	Substituir
+0338	Desar el collage
+0339	Espaiat
+0340	Previsualització del collage
+0341	Una al costat de l’altra
+0342	De dalt a baix
+0343	Intercanviar amb la foto següent
+0344	Fons
+0345	Disposició
+0346	Foto
+0347	Espaiat
+0348	%1$@ més grans que %2$@
+0349	%1$@ més antics que %2$@
+0350	Retallar a baix
+0351	Retallar a l’esquerra
+0352	Retallar a la dreta
+0353	Retallar a dalt
+0354	S’ha omès %1$lld element amb una mida desconeguda.
+0355	S’han omès %1$lld elements amb mides desconegudes.
+0356	Què vols veure?
+0357	Desar en un àlbum
+0358	Desar a Fitxers
+0359	Desar a Fotos
+0360	Afegir fotos
+0361	Relació d’aspecte
+0362	Relació d’aspecte %1$@
+0363	Negre
+0364	Blau
+0365	Crema
+0366	Color personalitzat
+0367	Verd
+0368	Gris
+0369	Taronja
+0370	Rosa
+0371	Vermell
+0372	Blanc
+0373	Groc
+0374	Àlbum a Fotos
+0375	Tria un àlbum
+0376	iCloud Drive, Al meu iPhone o un llapis USB
+0377	Desar a
+0378	Fotos
+0379	Com a imatge nova a la fototeca
+0380	Enviar sense desar cap còpia a Fotos
+0381	No s’ha pogut desar el collage. Les teves fotos no han canviat.
+0382	Tipus de lletra
+0383	Arrossega per moure la foto dins la cel·la, pessiga per fer zoom.
+0384	Arrossega les fotos per moure-les. Amb dos dits en canvies la mida i les gires.
+0385	Foto gran a baix
+0386	Foto gran a l’esquerra
+0387	Foto gran a la dreta
+0388	Foto gran a dalt
+0389	Columnes de %1$@ fotos
+0390	Quadrícula uniforme
+0391	Files de %1$@ fotos
+0392	Les fotos originals no canvien. Es crea un fitxer nou.
+0393	Foto %1$lld
+0394	Alta (2048 px)
+0395	El número és el costat més llarg. Com més alt, més nítid es veu en ampliar o imprimir, però el fitxer és més gran.
+0396	Màxima (4096 px)
+0397	Resultat: %1$lld × %2$lld px
+0398	Estàndard (1080 px)
+0399	En les tires, el número és l’amplada (de dalt a baix) o l’alçada (una al costat de l’altra). Les tires molt llargues es redueixen perquè es puguin desar.
+0400	Gir
+0401	Collage desat a «%1$@»
+0402	Collage desat a Fitxers
+0403	Collage desat a Fotos
+0404	Text i adhesius
+0405	Estil
+0406	Zoom
+0407	Carpetes connectades
+0408	Compartir el diagnòstic
+0409	Enrere
+0410	Conservar
+0411	Més tard
+0412	Paperera
+0413	Paperera: %1$lld
+0414	Obre la paperera. No s’esborra res sense la teva confirmació.
+0415	Fet
+0416	Com a mínim %1$@
+0417	Fet
+0418	Estimat («aprox.»): %1$lld. L’iOS només en revela la mida exacta després de baixar-los.
+0419	Conservats avui
+0420	Els fitxers s’han esborrat definitivament.
+0421	Les fotos i els vídeos ara són a «Eliminat recentment» a l’app Fotos. L’espai només s’allibera quan s’esborren definitivament d’allà.
+0422	Els elements que no s’han eliminat es queden a la paperera de GaleriQ.
+0423	Eliminats
+0424	alliberats
+0425	Paperera buidada
+0426	%1$@ alliberats en total
+0427	Com a mínim %1$@ alliberats en total
+0428	La mida de %1$lld element és desconeguda. No s’inclou al total.
+0429	Les mides de %1$lld elements són desconegudes. No s’inclouen al total.
+0430	Tornar a cercar
+0431	Comparant fitxers…
+0432	Troba fotos, vídeos i fitxers amb exactament el mateix contingut. Tu tries quines còpies van a la paperera.
+0433	Còpies seleccionades: fins a %1$@. Pot no coincidir amb l’espai alliberat. Revisa els preferits, els àlbums i les edicions abans d’eliminar còpies.
+0434	Fitxers idèntics: %1$lld · %2$@ en total
+0435	GaleriQ compara el contingut dels fitxers directament al dispositiu. Les imatges que s’assemblen no compten com a còpies idèntiques.
+0436	Baixa els originals que falten per Wi-Fi. Les fototeques grans poden trigar i gastar moltes dades. Cerca als elements permesos i a les carpetes connectades.
+0437	Baixant els originals d’iCloud…
+0438	Incloure els originals d’iCloud
+0439	No s’ha pogut llegir part del contingut. Els elements no comprovats poden contenir més còpies idèntiques.
+0440	La cerca encara no és completa
+0441	Mesurant les mides…
+0442	Moure %1$lld còpia a la paperera
+0443	Moure %1$lld còpies a la paperera
+0444	No s’han trobat còpies idèntiques
+0445	No s’han trobat còpies idèntiques a les zones accessibles.
+0446	Seleccionat per a la paperera
+0447	No s’han pogut llegir %1$lld carpetes connectades.
+0448	Cercar còpies
+0449	Encara no s’han pogut comprovar %1$lld elements.
+0450	Es conservarà
+0451	Duplicats
+0452	Editar
+0453	Exposició
+0454	Reducció de soroll
+0455	Radi
+0456	Llindar
+0457	Lliure
+0458	Original
+0459	modificat
+0460	Foto editada. Mantén premut per veure l’original.
+0461	editat
+0462	Àrea de retall
+0463	Retallar
+0464	Perspectiva
+0465	Descartar
+0466	L’edició no es desarà. L’original es queda com està.
+0467	Descartar els canvis?
+0468	Desat com a còpia
+0469	Desat com a còpia · %1$@
+0470	Original conservat · l’edició s’ha desat com a còpia
+0471	Original editat · es pot revertir a l’app Fotos
+0472	Original substituït · és a «Eliminat recentment»
+0473	Sense canvis: l’iOS no ha obtingut permís. L’original no ha canviat.
+0474	Mentrestant aquest element s’ha canviat, mogut o esborrat. No s’ha desat res.
+0475	Aquest element no es pot obrir per editar-lo.
+0476	No s’ha pogut desar l’edició. L’original no ha canviat.
+0477	Fred
+0478	Esvaït
+0479	Mono
+0480	Noir
+0481	Original
+0482	Sèpia
+0483	Intensitat
+0484	Viu
+0485	Càlid
+0486	Invertir
+0487	Molt gruixuda
+0488	Negreta
+0489	Informal
+0490	Estreta
+0491	Manuscrita
+0492	Màquina d’escriure
+0493	Clàssica
+0494	Serif
+0495	Versaletes
+0496	Cantonades arrodonides
+0497	Uniforme
+0498	Vora a dins
+0499	Vora a fora
+0500	Amplada
+0501	Color
+0502	Detall
+0503	Efectes
+0504	Llum
+0505	Mesclador de colors
+0506	Continuar editant
+0507	Horitzontal
+0508	To
+0509	Luminància
+0510	Saturació
+0511	Color
+0512	Eliminar
+0513	Dibuixar
+0514	Duplicar
+0515	Editar
+0516	Emoji
+0517	Ple
+0518	Portar al davant
+0519	Toca un element afegit per moure’l. Amb dos dits en canvies la mida i el gires.
+0520	Toca un text o un adhesiu per seleccionar-lo i arrossega’l on vulguis.
+0521	Més gran
+0522	Tapar
+0523	Amb «Pixelar» i «Desenfocar» encara es poden veure contorns. Per a text que ha de ser il·legible, tria «Opac».
+0524	Recomanat per a dades privades: el que tapes desapareix de debò al fitxer desat o compartit.
+0525	Seleccionar
+0526	Formes
+0527	Mida
+0528	Més petit
+0529	Adhesiu
+0530	Text
+0531	Horitzontal
+0532	Restablir la perspectiva
+0533	Vertical
+0534	Vertical
+0535	Actualitzant la previsualització…
+0536	La previsualització és gratuïta · per desar cal Pro o la prova de 30 minuts
+0537	Retallar, girar i redreçar és gratuït. Els ajustos, els filtres, la mida i el retall de vídeos es desen amb Pro. Provar-los és sempre gratuït.
+0538	Desar amb Pro
+0539	Desenfocar
+0540	Pixelar
+0541	Opac (recomanat)
+0542	Eliminar la ubicació
+0543	La foto desada no inclourà on es va fer.
+0544	Restablir
+0545	Restablir-ho tot
+0546	Girar
+0547	Desar com a còpia
+0548	Desar la còpia
+0549	L’original no canvia.
+0550	Desar només el retall
+0551	Editar l’original
+0552	L’iOS pregunta primer. L’edició es desa com una edició de l’app Fotos: la pots desfer allà quan vulguis amb «Revertir».
+0553	Desar una còpia i moure l’original a la paperera
+0554	Desar la còpia, l’original a la paperera
+0555	L’iOS demana confirmació. L’original va a «Eliminat recentment» a l’app Fotos i normalment s’hi pot recuperar durant 30 dies. L’espai s’allibera després.
+0556	Desar l’edició
+0557	Desant…
+0558	Fletxa
+0559	Cercle
+0560	Línia
+0561	Rectangle
+0562	Només compartir (sense còpia)
+0563	Comparteix la versió editada sense desar-la a la galeria. S’elimina la ubicació.
+0564	%1$lld px
+0565	Mida original
+0566	%1$lld × %2$lld → %3$lld × %4$lld px
+0567	Aquesta foto ja és petita. GaleriQ mai no amplia les fotos.
+0568	Fletxa
+0569	Bafarada
+0570	Marca de verificació
+0571	Anella
+0572	Creu
+0573	Segell de data
+0574	Cor
+0575	Espurna
+0576	Estrella
+0577	Edita amb un dit; amb dos dits fas zoom i desplaces.
+0578	Redreçar
+0579	Ajustar
+0580	Retallar
+0581	Filtres
+0582	Marc
+0583	Marques
+0584	Mida
+0585	Retocar
+0586	Retallar
+0587	Text
+0588	Final
+0589	%1$@ – %2$@ · %3$@ s
+0590	Inici
+0591	Contorn
+0592	Etiqueta
+0593	Ombra
+0594	Collage
+0595	Convertit
+0596	Còpia
+0597	Retall
+0598	Fotograma
+0599	Pel·lícula
+0600	Original substituït
+0601	Mida canviada
+0602	Fet amb %1$lld foto
+0603	Fet amb %1$lld fotos
+0604	Quan editis una foto o desis un collage, una pel·lícula o imatges redimensionades, el resultat apareixerà aquí.
+0605	Encara no has editat res
+0606	Treure de la llista
+0607	Tot el que GaleriQ ha desat per a tu: fotos i vídeos editats, collages, pel·lícules i imatges redimensionades, primer el més nou. Els fitxers són a l’app Fotos; aquesta llista només recorda què ve de GaleriQ. Toca una entrada per veure-la.
+0608	L’original encara hi és
+0609	L’original és a «Eliminat recentment»
+0610	Ja no és a l’app Fotos
+0611	Editats
+0612	No s’ha pogut desar el canvi.
+0613	Tria una carpeta desada en aquest iPhone. Aquí no es poden fer servir carpetes que només són al núvol.
+0614	No s’ha pogut desar la data.
+0615	No s’ha desat la teva decisió. Torna-ho a provar.
+0616	No s’ha pogut connectar la carpeta.
+0617	No s’ha pogut desar l’ajust.
+0618	No ha funcionat
+0619	Espera que la paperera s’acabi de buidar abans de fer servir Desfer.
+0620	Ja no es pot desfer perquè ho has canviat mentrestant.
+0621	Ara no es pot desfer.
+0622	Excloure aquest àlbum
+0623	Excloure
+0624	Els elements d’aquest àlbum deixaran d’aparèixer en endreçar. No s’esborra ni es mou res. Es pot desfer a Configuració › Àlbums exclosos.
+0625	Amagar «%1$@» en endreçar?
+0626	«%1$@» ja no apareixerà en endreçar
+0627	Continua encara que canviïs d’app.
+0628	Ja hi ha una altra exportació en curs. Espera que acabi.
+0629	Cancel·lat. No s’ha desat res.
+0630	L’iOS ha aturat l’exportació en segon pla. No s’ha desat res: torna-la a iniciar i deixa GaleriQ obert.
+0631	Pots canviar una estona a una altra app. Si l’iOS esgota el temps, GaleriQ s’atura correctament: no es desa res a mitges.
+0632	Desant…
+0633	Marcar com a preferit
+0634	No s’ha pogut canviar l’estat de preferit. Es queda igual.
+0635	Aquesta foto està protegida com a preferida.
+0636	Primer treu la marca de preferit per posar-la a la paperera. També pots desactivar la protecció de preferits a la configuració.
+0637	Aquest vídeo està protegit com a preferit.
+0638	Treure dels preferits
+0639	Ja no està marcat com a preferit. Llisca cap a l’esquerra per posar-lo a la paperera.
+0640	No és preferit
+0641	Preferit
+0642	Posar a «%1$@»
+0643	Res
+0644	Més tard: triar la data
+0645	Afegir un botó
+0646	Botons i ordre
+0647	Botons
+0648	Fes servir «Editar» per canviar l’ordre o treure botons. Fins a 6 botons. Els botons fan exactament el mateix que els lliscaments.
+0649	Posar en un àlbum…
+0650	Aquí no s’esborra res: «Paperera» és la paperera de GaleriQ. Desfer reverteix totes les accions, també «Posar en un àlbum».
+0651	Sense botons
+0652	Sobre la foto
+0653	Sota la foto
+0654	Posició
+0655	Restaurar el valor per defecte
+0656	Amunt conserva, a l’esquerra a la paperera, a la dreta més tard, avall torna enrere, amb els botons per defecte.
+0657	Personalitzat
+0658	Estàndard
+0659	Lliscaments
+0660	Tria què fa cada direcció. «Posar en un àlbum» afegeix la foto a un àlbum de l’app Fotos i la conserva. No fer res mai no és una decisió.
+0661	Lliscaments i botons
+0662	Només amb VoiceOver/Control per botó
+0663	Sempre
+0664	Mostrar els botons
+0665	Posat a «%1$@»
+0666	Ara no queden més preferits per revisar.
+0667	No queda res per revisar en aquest àlbum.
+0668	No queda res per revisar entre les teves fotos més recents.
+0669	No queda res per revisar entre els teus vídeos més recents.
+0670	Ara no queden més Live Photos per revisar.
+0671	Ara no queden més vídeos llargs per revisar.
+0672	Ara no hi ha res més per revisar aquí.
+0673	No queda res per revisar d’aquest dia en anys anteriors.
+0674	Ara no queden més fotos per revisar.
+0675	Ara no queden més retrats per revisar.
+0676	No queda res per revisar en una selecció aleatòria.
+0677	Ara no queden més captures de pantalla per revisar.
+0678	Ara no queden més selfies per revisar.
+0679	No queda res per revisar d’aquesta setmana.
+0680	Ara no queden més vídeos per revisar.
+0681	En aquest iPhone només hi ha una previsualització petita. Baixa l’original per veure’l sencer.
+0682	Baixar d’iCloud
+0683	L’original és a iCloud.
+0684	Torna a carregar la qualitat completa d’iCloud. Pots decidir amb la previsualització en qualsevol moment.
+0685	Carregant fotos i vídeos…
+0686	%@ en aquesta sessió
+0687	%1$lld de %2$lld
+0688	Tornar a provar els elements omesos
+0689	Mostrar l’ajuda per lliscar
+0690	Amagats en lliscar fins que els tornis a carregar aquí. Els originals no canvien.
+0691	Elements omesos
+0692	Foto o vídeo actual
+0693	Endreçar
+0694	Llestos per revisar
+0695	Afegits fa poc
+0696	Fotos
+0697	Captures de pantalla
+0698	Vídeos
+0699	Veure la paperera
+0700	Fitxer
+0701	Tipus de fitxer
+0702	Fitxers
+0703	Tria una carpeta per revisar-ne els fitxers a GaleriQ.
+0704	Encara no hi ha cap carpeta connectada
+0705	Cercar fitxers…
+0706	Una carpeta connectada no està disponible. Torna-la a connectar.
+0707	Afegir a un àlbum
+0708	Tots els àlbums
+0709	Crear i afegir
+0710	Escriu un nom d’àlbum curt.
+0711	Carregant àlbums…
+0712	Nom de l’àlbum
+0713	Àlbum nou
+0714	La foto es queda on és i també apareix a l’àlbum, a l’app Fotos i, amb Fotos d’iCloud, als teus altres dispositius.
+0715	Obrir fitxers
+0716	Fixar l’àlbum
+0717	Fixat
+0718	Usats recentment
+0719	Cercar un àlbum
+0720	Deixar de fixar l’àlbum
+0721	Millor: %1$lld
+0722	Millor temps: %1$@
+0723	Girar les cartes no coincidents a mà
+0724	Nou rècord personal!
+0725	Encara no hi ha rècord
+0726	Aquesta ronda necessita com a mínim %1$lld fotos utilitzables de l’origen triat. Tria un altre origen, una selecció més petita o permet les baixades d’iCloud.
+0727	Fotos
+0728	Símbols
+0729	Els teus nous rècords estan disponibles en aquesta sessió, però no s’han pogut desar. Torna-ho a provar.
+0730	Rècords
+0731	Aspecte i so
+0732	Triar fotos
+0733	Les fotos desades a iCloud es carreguen quan cal.
+0734	Canviar les fotos
+0735	Personalitzar el joc
+0736	Troba totes les fotos iguals al teu ritme.
+0737	Tria de 2 a 18 fotos per a les parelles.
+0738	Jugar sense fotos · 6 parelles
+0739	Les teves fotos
+0740	Les fotos originals no canvien.
+0741	Recull fotos. Llisca per dirigir.
+0742	Jugar sense fotos
+0743	Estàndard
+0744	Jocs
+0745	Troba parelles amb les teves pròpies fotos.
+0746	Collage
+0747	Ara no hi ha fotos ni vídeos aquí.
+0748	No hi ha res per mostrar
+0749	Toca per seleccionar; mantén premut i arrossega per seleccionar-ne diversos. Moure no és una decisió.
+0750	Visió general
+0751	Seleccionar
+0752	Tot
+0753	Cap
+0754	%1$lld seleccionat
+0755	%1$lld seleccionats
+0756	Canviat
+0757	Eliminat
+0758	Tret de «Més tard»
+0759	Conservat
+0760	Canviat: conservar
+0761	Desat per a més tard
+0762	Canviat: més tard
+0763	No eliminat
+0764	Ja no es troba
+0765	Data fixada
+0766	Moure a la paperera
+0767	Canviat: paperera
+0768	Desfet
+0769	Tornat de la paperera
+0770	Ajuda
+0771	Núvol
+0772	Els serveis al núvol com Google Fotos poden sincronitzar les eliminacions amb altres dispositius. Revisa’n la configuració. GaleriQ carrega automàticament fotos i vídeos de Fotos d’iCloud quan cal, igual que l’app Fotos.
+0773	Decidir
+0774	Llisca amunt per conservar, a l’esquerra per a la paperera i a la dreta per a més tard. Per defecte, torna al cap de 2 dies. Pots canviar aquest termini a la configuració. Just després de lliscar, fes servir «Canviar» per triar una altra data. Llisca avall per tornar enrere sense prendre cap decisió nova.
+0775	Esborrar
+0776	Lliscar mai no esborra res. Primer els elements van a la paperera de GaleriQ. Només quan ho confirmes allà, l’iOS mou les fotos i els vídeos a Eliminat recentment.
+0777	Tornar a mostrar el recorregut i els consells
+0778	Avall
+0779	Esquerra
+0780	Dreta
+0781	Amunt
+0782	Tot
+0783	Eliminats
+0784	%1$@ · %2$lld entrada
+0785	%1$@ · %2$lld entrades
+0786	Les teves decisions apareixeran aquí quan comencis a endreçar.
+0787	Encara no hi ha historial
+0788	Encara no hi ha entrades per a aquest filtre.
+0789	Encara no hi ha entrades
+0790	Conservats
+0791	Més tard
+0792	Mostrar-ne menys
+0793	Mostrar entrades més antigues (%1$lld)
+0794	%1$@ · %2$@
+0795	Còpies idèntiques
+0796	Fitxers de carpetes connectades
+0797	a partir de %1$@
+0798	Fototeca
+0799	Acaba mes a mes
+0800	Tot revisat
+0801	%1$lld per revisar
+0802	%1$lld per revisar
+0803	Fetes una rere l’altra
+0804	Categories
+0805	Col·leccions
+0806	Més eines
+0807	Informació
+0808	Ubicació
+0809	%1$lld element
+0810	%1$lld elements
+0811	Conservar
+0812	Tot
+0813	Arxius comprimits
+0814	Documents
+0815	Imatges
+0816	Altres
+0817	PDF
+0818	Vídeos
+0819	Fitxers grans
+0820	Més gran que
+0821	Només fitxers amb una mida coneguda d’almenys %1$lld MB. La mida pot ser diferent de l’espai que s’allibera en esborrar-los.
+0822	Amb «Optimitzar l’emmagatzematge de l’iPhone», aquests originals només són a iCloud. L’iOS no en revela la mida exacta sense baixar-los, així que GaleriQ l’estima a partir de les fotos i els vídeos mesurats i la mostra com a «aprox.».
+0823	Només a iCloud: %1$lld
+0824	en %1$lld fitxer gran
+0825	en %1$lld fitxers grans
+0826	Només a iCloud, mida estimada
+0827	Continuar mesurant (pendents: %1$lld)
+0828	Mesurant les mides… %1$lld de %2$lld
+0829	Cap fitxer coincident
+0830	Cap dels fitxers accessibles amb mida coneguda supera els %1$lld MB.
+0831	No llegibles: %1$lld
+0832	Aquests elements són en aquest iPhone, però no s’han pogut llegir. A la llista apareixen amb una mida estimada («aprox.»).
+0833	Més tard
+0834	Tornar a la pila
+0835	Apartat, sense data
+0836	Llest per revisar des del %1$@
+0837	Llest per revisar avui
+0838	Llisca una foto o un vídeo cap a la dreta per tornar-lo a veure més tard.
+0839	No hi ha res desat per a més tard
+0840	En els pròxims 7 dies · %1$lld
+0841	Apartats · %1$lld
+0842	Llestos per revisar · %1$lld
+0843	Des del %1$@ · %2$lld
+0844	Sense data · %1$lld
+0845	Demà · %1$lld
+0846	Torna d’aquí a %1$lld dia
+0847	Torna d’aquí a %1$lld dies
+0848	Torna d’aquí a %1$lld mes
+0849	Torna d’aquí a %1$lld mesos
+0850	Torna d’aquí a 1 mes
+0851	Torna d’aquí a 1 setmana
+0852	Torna d’aquí a %1$lld setmana
+0853	Torna d’aquí a %1$lld setmanes
+0854	Tornarà la pròxima vegada que endrecis
+0855	Apartat: el trobaràs a Més tard
+0856	Vols un recordatori quan toqui revisar?
+0857	Treure de «Més tard»
+0858	Revisar ara
+0859	Revisar ara (%1$lld)
+0860	Tornar a revisar el %1$@
+0861	Torna demà
+0862	Amagar les subcarpetes
+0863	Aquí apareixen les fotos i els vídeos d’aquest dispositiu.
+0864	Mostrar les subcarpetes
+0865	Toca ♡ en una foto o un vídeo per fer-lo preferit. Els preferits són els mateixos que a l’app Fotos.
+0866	Encara no hi ha preferits
+0867	De la fototeca
+0868	Tot
+0869	Cinema
+0870	Treure el filtre
+0871	Editats
+0872	No hi ha res per al filtre «%1$@».
+0873	Preferits
+0874	Panoràmiques
+0875	RAW
+0876	Gravacions de pantalla
+0877	Càmera lenta
+0878	Time-lapse
+0879	Filtre
+0880	Endreçar aquest àlbum
+0881	Ara aquest àlbum no té fotos ni vídeos.
+0882	Excloure de l’endreçament
+0883	Exclòs de l’endreçament
+0884	Tornar a incloure a l’endreçament
+0885	Cap àlbum coincideix amb «%1$@».
+0886	Cercar àlbums…
+0887	Més elements
+0888	Actualitzats recentment
+0889	%1$lld element amagat a GaleriQ
+0890	%1$lld elements amagats a GaleriQ
+0891	GaleriQ no els mostra enlloc. Els fitxers no canvien i les altres apps els continuen mostrant.
+0892	%1$lld element amagat
+0893	%1$lld elements amagats
+0894	Fes servir «Amagar a GaleriQ» en un àlbum, una foto o una selecció.
+0895	No hi ha res amagat
+0896	Amagats
+0897	Amagar a GaleriQ
+0898	GaleriQ deixarà de mostrar-los, ni a Fotos ni en endreçar. Els fitxers no canvien i continuen visibles en altres apps. Això no és una caixa forta.
+0899	Amagar %1$lld element a GaleriQ?
+0900	Amagar %1$lld elements a GaleriQ?
+0901	Durada
+0902	Nom
+0903	Fitxer RAW
+0904	Resolució
+0905	Mida
+0906	Data de presa
+0907	Tipus de fitxer
+0908	Miniatures més petites
+0909	Dies
+0910	Miniatures més grans
+0911	Mesos
+0912	Anys
+0913	Tipus de contingut
+0914	Àlbums
+0915	Cronologia
+0916	Sense data
+0917	Afegits recentment primer, en l’ordre de l’app Fotos.
+0918	Endreçar a partir d’aquí
+0919	Ordenar
+0920	Afegits recentment
+0921	Més grans primer
+0922	Nom
+0923	Més nous primer
+0924	Més antics primer
+0925	%1$lld subcarpeta
+0926	%1$lld subcarpetes
+0927	Moure a la paperera
+0928	És un preferit. «Protegir els preferits» està activat, així que no va a la paperera. Ho pots canviar a Configuració.
+0929	A la paperera de GaleriQ: no s’esborra res. Ja hi decidiràs més tard.
+0930	A la paperera de GaleriQ: no s’esborra res. Els preferits es queden («Protegir els preferits» està activat).
+0931	Moure %1$lld element a la paperera?
+0932	Moure %1$lld elements a la paperera?
+0933	%1$lld element és a la paperera de GaleriQ.
+0934	%1$lld elements són a la paperera de GaleriQ.
+0935	A la paperera de GaleriQ
+0936	%1$lld element tornat a mostrar
+0937	%1$lld elements tornats a mostrar
+0938	Tornar a mostrar
+0939	Relació d’aspecte
+0940	Visualització
+0941	Quadrat
+0942	Eliminar-los tots (%1$lld) amb Pro
+0943	Mira un anunci: elimina’n %1$lld més avui
+0944	L’anunci s’ha tancat abans d’hora. No s’ha desbloquejat res. Ho pots tornar a provar avui.
+0945	Un cop al dia. La bonificació només és vàlida avui.
+0946	Ara no hi ha cap anunci disponible. No s’ha desbloquejat res.
+0947	Seleccionats: %2$lld. Sense Pro, pots eliminar fins a %1$lld al dia. La resta es queda a la paperera de GaleriQ.
+0948	Avui en queden %1$lld de %2$lld
+0949	Sense límit amb Pro
+0950	Eliminar-ne %1$lld
+0951	Límit diari assolit
+0952	Avui en queden %1$lld
+0953	El límit diari es reinicia demà.
+0954	Foto o vídeo
+0955	Anàlisi acabada
+0956	Pots acabar la ronda o veure ara els resultats.
+0957	L’anàlisi continua
+0958	Fes una pausa
+0959	Càmera
+0960	Carta %1$lld
+0961	Carregar fotos d’iCloud
+0962	Has trobat totes les parelles!
+0963	Temps: %1$@
+0964	Tornar a girar les cartes
+0965	Cor
+0966	Cap per avall
+0967	Fulla
+0968	Preparant les imatges…
+0969	Parella trobada
+0970	Lluna
+0971	Muntanya
+0972	Moviments: %1$lld
+0973	Triar les meves fotos
+0974	%1$lld parelles (%2$lld cartes)
+0975	%1$lld / %2$lld parelles
+0976	Imatge %1$lld
+0977	Triar un àlbum o una carpeta de fotos
+0978	Veure els resultats
+0979	Reprendre la ronda
+0980	Nombre de parelles
+0981	Origen de les imatges
+0982	Àlbum o carpeta de fotos
+0983	Preferits
+0984	Tota la fototeca
+0985	Sol
+0986	Parelles
+0987	Algunes fotos ja no estan disponibles o només són a iCloud. Tria altres fotos o permet-ne la baixada. Les fotos de la caixa forta no es poden fer servir.
+0988	Accions per a %1$@
+0989	Tornar a revisar
+0990	Revisat
+0991	%1$lld per a més tard
+0992	%1$lld per a més tard
+0993	No començat · %1$lld element
+0994	No començat · %1$lld elements
+0995	%1$lld de %2$lld revisat
+0996	%1$lld de %2$lld revisats
+0997	Els mesos apareixen aquí quan les fotos o els vídeos tenen data de presa.
+0998	Encara no hi ha mesos
+0999	Fins on has arribat en cada mes. Els elements apartats per a més tard compten com a revisats.
+1000	Per mesos
+1001	Més accions
+1002	Afegir
+1003	16:9 · Horitzontal
+1004	4:5 · Una mica alt
+1005	9:16 · Vertical
+1006	1:1 · Quadrat
+1007	Opcions del clip %1$lld
+1008	Clip %1$lld de %2$lld
+1009	Foto · %1$@
+1010	Clip tret del vídeo
+1011	Vídeo · %1$@
+1012	Fes servir ⋯ per moure o treure un clip. Les fotos i els vídeos no canvien.
+1013	Fos a negre entre clips
+1014	No s’ha pogut crear el vídeo. No s’ha desat res i els originals no han canviat.
+1015	Omplir el quadre
+1016	Si un clip té una forma diferent
+1017	Els clips mai no s’estiren: o es mostra tota la imatge (amb vores negres) o omple el quadre i se’n retallen les vores.
+1018	Tota la imatge
+1019	Format
+1020	Com el primer clip
+1021	Forma del vídeo acabat. El 9:16 omple la pantalla d’un telèfon en vertical, el 16:9 va bé per a televisors i ordinadors. «Com el primer clip» fa servir la forma del primer clip.
+1022	Zoom suau
+1023	Les fotos s’amplien lentament perquè no semblin estàtiques.
+1024	Moure abans
+1025	Moure després
+1026	El teu propi fitxer, reproduït des del principi i repetit si cal. GaleriQ no inclou música. Tingues en compte els drets quan comparteixis.
+1027	Triar un fitxer d’àudio
+1028	Treure
+1029	Volum de la música
+1030	Temps per foto
+1031	S’aplica a cada foto d’aquest vídeo. Els vídeos sempre es reprodueixen sencers.
+1032	Fotos
+1033	Triar vídeos i fotos
+1034	Qualitat
+1035	Equilibrada
+1036	Alta (Full HD)
+1037	Alta i Equilibrada: fins a Full HD (1080p). Equilibrada fa fitxers més petits gairebé sense diferència visible. Petita: fins a HD (720p), el fitxer més petit, bo per enviar.
+1038	Petita (HD)
+1039	Treure del vídeo
+1040	Reordenar
+1041	Creant el vídeo…
+1042	Desar el vídeo
+1043	Desat com a vídeo nou a la fototeca. Els originals no canvien.
+1044	Fotos amb zoom suau i fosos, desades com a vídeo
+1045	Vídeos i fotos en seqüència, amb música
+1046	Clips
+1047	Format
+1048	Música
+1049	Transició
+1050	Combinar vídeos
+1051	Presentació com a vídeo
+1052	Afegeix com a mínim dos clips.
+1053	Com a màxim 30 minuts en total. Escurça clips o treu-ne alguns.
+1054	Com a màxim 50 clips per vídeo.
+1055	Entre dos clips, la imatge es torna negra un moment i després reapareix. Desactivat: tall sec. La durada total no canvia.
+1056	Desactivar el so
+1057	Aquest fitxer no es pot mostrar.
+1058	No seleccionat
+1059	Avís
+1060	Hi ha alguna cosa a «Més tard» llesta per revisar avui.
+1061	D’acord
+1062	GaleriQ mostra les teves fotos i vídeos directament al dispositiu perquè puguis endreçar. Sense compte de GaleriQ ni servidor.
+1063	Accés a fotos i vídeos
+1064	Comprar Pro · %1$@ un sol cop
+1065	Comprar Pro un sol cop
+1066	Cartes de pràctica. Aquí no es desa res.
+1067	Següent
+1068	Llisca i organitza sense límits, amb algun anunci. Eliminar elements té un límit diari.
+1069	Comença gratis
+1070	Pas %1$lld de %2$lld
+1071	Les teves fotos es queden al dispositiu. Sense compte de GaleriQ i sense penjar fotos.
+1072	Primer, els elements van a la paperera de GaleriQ. Allà confirmes l’eliminació, i l’iOS torna a preguntar abans de moure les fotos i els vídeos a Eliminat recentment.
+1073	Tu decideixes què s’esborra
+1074	Revisa les teves fotos i vídeos i decideix què es queda. Un lliscament cada vegada, al teu ritme.
+1075	La teva galeria, per fi endreçada
+1076	Així funciona. Ara, les teves fotos.
+1077	Amunt: conservar. Esquerra: paperera. Dreta: més tard. Prova-ho aquí.
+1078	Llisca i tria
+1079	Més grans primer
+1080	Més nous primer
+1081	Més antics primer
+1082	Aleatori
+1083	Ordre
+1084	Afegir a un àlbum
+1085	%1$lld afegit a «%2$@».
+1086	%1$lld afegits a «%2$@».
+1087	Nom de l’àlbum
+1088	Encara no hi ha àlbums
+1089	Cistella de selecció
+1090	Afegir a la cistella de selecció
+1091	%1$lld afegit a la cistella de selecció.
+1092	%1$lld afegits a la cistella de selecció.
+1093	Ja és a la cistella de selecció.
+1094	Buidar la cistella
+1095	Només es buida la cistella. Les fotos i els vídeos no canvien.
+1096	Buidar la cistella de selecció?
+1097	A «Fotos», selecciona alguna cosa i toca ⋯ › Afegir a la cistella de selecció.
+1098	La cistella de selecció és buida
+1099	Recull fotos i vídeos de mesos i carpetes diferents. La cistella es manté fins que la buides i no té res a veure amb la paperera.
+1100	Treure de la cistella
+1101	Crear
+1102	No s’ha trobat %1$lld element (esborrat o ja no és en aquest dispositiu).
+1103	No s’han trobat %1$lld elements (esborrats o ja no són en aquest dispositiu).
+1104	Treure de la llista
+1105	Àlbum nou
+1106	Nota
+1107	Nota (només a GaleriQ; el fitxer no canvia)
+1108	Desar la nota
+1109	Afegir
+1110	Eliminar de tot arreu
+1111	L’etiqueta desapareix de tot arreu. Les fotos i els vídeos no canvien.
+1112	Eliminar l’etiqueta «%1$@» de tot arreu?
+1113	Etiqueta nova
+1114	Treure l’etiqueta
+1115	en alguns
+1116	Etiquetes
+1117	Etiquetes per a %1$lld element
+1118	Etiquetes per a %1$lld elements
+1119	Encara no hi ha etiquetes. Afegeix les teves paraules, com ara «Factura» o «Vacances»: GaleriQ només sap el que hi escrius tu.
+1120	Pausa
+1121	Accions del PDF
+1122	Combina fitxers, reordena i gira pàgines
+1123	No s’ha pogut desar el PDF.
+1124	Afegir fitxers
+1125	Triar fitxers
+1126	PDF a partir de fitxers
+1127	No s’han pogut obrir els fitxers. Tria PDF o imatges llegibles i sense bloqueig i torna-ho a provar. Les pàgines actuals no canvien.
+1128	Tria PDF o imatges de Fitxers. Combina, reordena i gira pàgines amb previsualització en directe i després desa un PDF nou.
+1129	Tria menys fitxers o fitxers més petits (fins a 100 MB per fitxer, 256 MB per selecció i 500 pàgines).
+1130	Omplir
+1131	Ajustar
+1132	Crear un PDF
+1133	Marge
+1134	Cap
+1135	Normal
+1136	Estret
+1137	Automàtica
+1138	Horitzontal
+1139	Vertical
+1140	Orientació
+1141	Moure abans
+1142	Moure després
+1143	Pàgina %1$lld de %2$lld
+1144	Girar
+1145	Seleccionar pàgines
+1146	Paper
+1147	Carta EUA
+1148	Fotos per pàgina
+1149	%1$lld foto
+1150	%1$lld fotos
+1151	Fotos per al PDF
+1152	Les fotos s’incrusten de nou: la ubicació i altres dades de presa no van al PDF. Els originals no canvien.
+1153	Creant el PDF…
+1154	Desar com a PDF
+1155	Desat a «Documents/GaleriQ» · %1$@
+1156	Compartir el PDF
+1157	Fotos com a document o full de contactes
+1158	Crear un PDF
+1159	Foto
+1160	Quan la vols tornar a veure?
+1161	Quantitat
+1162	Apartar sense data
+1163	No tornarà sola. La trobaràs a Més tard › Apartats.
+1164	Tornar a revisar el %1$@
+1165	Triar la data…
+1166	Unitat
+1167	Reproduir
+1168	Posició de reproducció
+1169	Ara no es pot mostrar aquesta foto o vídeo.
+1170	Pot ser que s’hagi mogut o que encara no s’hagi desat del tot.
+1171	La versió gratuïta mostra anuncis de Google. Pots canviar el consentiment a la configuració. Les teves fotos, els seus noms, carpetes o qualsevol cosa que se’n derivi mai no van als proveïdors d’anuncis. Pro no té anuncis.
+1172	Permetre l’accés
+1173	Gestionar la selecció
+1174	Fotos i vídeos
+1175	Per veure, organitzar i eliminar fotos i vídeos després de la teva confirmació.
+1176	Permetre les notificacions
+1177	Opcional: rep un recordatori quan alguna cosa de «Més tard» estigui llesta per revisar. Els noms dels fitxers no apareixen a la pantalla bloquejada.
+1178	Obrir la configuració de l’iOS
+1179	Les compres fan servir l’App Store d’Apple. GaleriQ mai no envia per a això les teves fotos, noms ni metadades.
+1180	GaleriQ mira les teves fotos, vídeos i fitxers permesos només al dispositiu. No et cal cap compte i no hi ha cap servidor de GaleriQ. Bo de saber: amb serveis al núvol com Google Fotos, el que esborres també pot desaparèixer dels teus altres dispositius.
+1181	La teva privadesa és el primer
+1182	Comprat un sol cop: sense anuncis, sense límit diari i carpetes de la caixa forta sense anuncis.
+1183	Cap anunci en obrir l’app i cap targeta d’anunci entre les teves fotos i vídeos.
+1184	Carpetes de la caixa forta sense anuncis
+1185	Crea carpetes noves a la caixa forta sense haver de mirar cap vídeo.
+1186	Tota la resta (edició, anàlisi, duplicats, col·leccions, Estudi) és gratuïta per a tothom.
+1187	Les teves fotos i fitxers es revisen i s’ordenen només al dispositiu. Per a la compra només va a Apple el necessari, i per als anuncis de la versió gratuïta, a Google: mai les teves fotos, els seus noms ni dades que se’n derivin.
+1188	Pro està actiu
+1189	Pro
+1190	Sense anuncis
+1191	Endreçar sense límit diari
+1192	Elimina tant com vulguis, sense el límit diari de %1$lld.
+1193	GaleriQ Pro ja està actiu.
+1194	No s’ha pogut completar la compra.
+1195	No s’ha trobat cap compra anterior per a aquest compte.
+1196	La compra està pendent de confirmació. Pro es desbloquejarà quan es confirmi.
+1197	S’ha restaurat la compra.
+1198	Carregant el preu…
+1199	Les teves fotos i fitxers es revisen i s’ordenen només al dispositiu. Per a la compra només va a Apple el mínim imprescindible, mai les teves fotos, els seus noms ni res que se’n derivi.
+1200	Restaurar les compres
+1201	Ara no es pot carregar Pro des de l’App Store. Comprova la connexió a internet i torna-ho a provar.
+1202	Un sol pagament. Sense subscripció.
+1203	GaleriQ Pro
+1204	Les compres encara no estan disponibles en aquesta versió.
+1205	Aquesta versió encara no està connectada a les compres de l’App Store. Pots fer servir totes les altres funcions com sempre.
+1206	Desbloquejar GaleriQ Pro
+1207	Veure GaleriQ Pro
+1208	Recuperar
+1209	Afegir
+1210	Afegir una drecera
+1211	Tot revisat
+1212	Editar
+1213	Editar les dreceres
+1214	Buit
+1215	Preferits
+1216	Els teus preferits de l’app Fotos
+1217	Àlbum
+1218	Àlbums
+1219	Fotos més recents
+1220	La teva foto més recent (%1$lld)
+1221	Les teves %1$lld fotos més recents
+1222	Vídeos més recents
+1223	El teu vídeo més recent (%1$lld)
+1224	Els teus %1$lld vídeos més recents
+1225	Límit de dreceres: %1$lld. Treu-ne una per afegir-ne una altra.
+1226	Live Photos
+1227	Fotos amb moviment i so
+1228	Vídeos llargs
+1229	Vídeos d’un minut o més
+1230	Moure enrere: %1$@
+1231	Moure endavant: %1$@
+1232	No s’han trobat àlbums amb fotos o vídeos.
+1233	Tal dia com avui
+1234	Fetes en la data d’avui en anys anteriors
+1235	A la pantalla d’inici
+1236	Fotos
+1237	Retrats
+1238	Fotos fetes en mode Retrat
+1239	Aleatori
+1240	%1$lld fotos i vídeos pendents a l’atzar, barrejats cada vegada
+1241	Només es treu la drecera. Els teus fitxers i decisions es mantenen.
+1242	Captures de pantalla
+1243	Selfies
+1244	De l’àlbum Selfies de l’app Fotos
+1245	Aquesta setmana
+1246	Fotos i vídeos d’aquesta setmana
+1247	Accés ràpid
+1248	Vídeos
+1249	Tots els èxits
+1252	%lld millor temps
+1253	%lld millors temps
+1256	Últim rècord
+1257	Bronze
+1258	Or
+1259	%1$@ a partir de %2$@ · en falten %3$@
+1260	Plata
+1261	Les medalles només comparen amb els teus propis resultats: sense classificacions i res no surt del dispositiu.
+1262	Rècord
+1263	Els teus rècords. Es queden en aquest iPhone.
+1264	fotos
+1265	punts
+1268	%1$@ foto
+1269	%1$@ fotos
+1272	%1$@ punt
+1273	%1$@ punts
+1276	dia actiu
+1277	dies actius
+1282	rècord nou
+1283	rècords nous
+1286	revisats
+1287	La teva última setmana
+1288	Refer
+1289	Edició per lots
+1290	Editar PDF
+1291	Escanejar documents
+1292	Eliminar
+1293	Seleccionats: %2$lld. Avui encara pots eliminar %1$lld element més. Selecciona’n fins a %1$lld o aconsegueix GaleriQ Pro.
+1294	Seleccionats: %2$lld. Avui encara pots eliminar %1$lld elements més. Selecciona’n fins a %1$lld o aconsegueix GaleriQ Pro.
+1295	Cancel·lat. No s’ha eliminat res.
+1296	La selecció ha canviat. Revisa-la de nou.
+1297	No s’ha eliminat res.
+1298	Comprovarem el resultat la pròxima vegada que obris l’app. No es tornarà a esborrar res.
+1299	Límit diari assolit
+1300	No s’ha eliminat res
+1301	Pinzell
+1302	Eliminar l’àrea
+1303	Pinta sobre la zona amb un dit. Amb dos dits fas zoom.
+1304	Toca la foto on ha d’anar l’àrea. Després aclareix-la, enfosqueix-la o canvia’n el color.
+1305	Degradat
+1306	Cercle
+1307	Ulls vermells
+1308	Toca un ull vermell. En cares petites, primer amplia amb dos dits. Només canvia el vermell de l’ull.
+1309	Eliminar l’últim
+1310	Mida
+1311	Tornar-ho a provar
+1312	Desar
+1313	Captura de pantalla
+1314	Cercar
+1315	Seleccionat
+1316	Comparar una sèrie de %1$lld fotos
+1317	Conservar %1$lld · Paperera %2$lld
+1318	Conservades %1$lld · %2$lld a la paperera
+1319	No s’esborra res. La paperera és de GaleriQ i només es buida quan ho confirmes.
+1320	Toca una foto per comparar-la a sota. La marca decideix què es queda.
+1321	Conservar
+1322	Conservar
+1323	Paperera
+1324	Fetes una rere l’altra · %1$lld
+1325	Comparar sèries
+1326	Mostrar els èxits
+1327	Ratxa, objectiu diari, insígnies i resum setmanal.
+1328	Canviar el consentiment d’anuncis
+1329	Aspecte
+1330	Controls
+1331	Objectiu diari
+1332	Carpetes excloses
+1333	Desactivat
+1334	Vibrar en les accions
+1335	Mostrar l’ajuda per lliscar en obrir
+1336	D’aquí a %1$lld dia
+1337	D’aquí a %1$lld dies
+1338	Idioma
+1339	GaleriQ fa servir l’idioma de l’iPhone. Toca per triar un altre idioma només per a GaleriQ a «Idioma», a la configuració de l’iOS.
+1340	Més tard: termini per defecte
+1341	Compra única
+1342	Protegir els preferits
+1343	Valorar GaleriQ
+1344	Ens ajuda molt. Gràcies!
+1345	Mostrar «La teva última setmana»
+1346	Sempre a la pàgina d’inici
+1347	Configuració
+1348	Compartir
+1349	Ara no es pot compartir aquesta foto o vídeo.
+1350	Ara no es poden compartir les fotos i els vídeos seleccionats. Comprova la connexió amb iCloud i torna-ho a provar.
+1351	No preparats per compartir: %1$lld de %2$lld (p. ex. sense connexió amb iCloud). Només s’han ofert els altres.
+1352	Preparant… %1$lld de %2$lld
+1353	Més tard
+1354	Començar a endreçar
+1355	Estudi
+1356	Paperera
+1357	aprox. %1$@
+1358	«aprox.» = estimat a partir de les fotos i els vídeos mesurats. L’iOS només revela la mida exacta dels originals d’iCloud després de baixar-los.
+1359	Com a mínim %1$@
+1360	Mida desconeguda
+1361	Següent sense decidir
+1362	Tornar a reproduir
+1363	Cap
+1364	Temps per foto
+1365	Aquí no hi ha res per mostrar.
+1366	Final de la presentació
+1367	Fos encadenat
+1368	Repetir
+1369	Següent
+1370	Mirar mai no és una decisió. La pantalla es manté encesa durant la presentació.
+1371	Ordre
+1372	Més antics primer
+1373	Aleatori
+1374	Pausa
+1375	Anterior
+1376	%1$lld s
+1377	Configuració de la presentació
+1378	Presentació
+1379	Transició
+1380	Reproduir vídeos (sense so)
+1381	Tauler de Serp de fotos
+1382	Càmera: columna %1$lld, fila %2$lld. Foto: columna %3$lld, fila %4$lld.
+1383	Personatge
+1384	Clàssic: vores sòlides
+1385	La casella següent és lliure
+1386	Llisca sobre el tauler per canviar de direcció.
+1387	Avall
+1388	Puntuació: %1$lld
+1389	Ràpida
+1390	Menjar
+1391	Triar fotos
+1392	%lld de 100 fotos
+1393	Moure després
+1394	Tria fins a 100 fotos per a la teva serp.
+1395	No s’ha pogut desar o recuperar la selecció de fotos. Torna-ho a provar.
+1396	Ordre de les fotos · arrossega per reordenar
+1397	Foto %lld
+1398	Només es fan servir les fotos que tries. Les còpies petites es queden en aquest iPhone, fora de la còpia de seguretat d’iCloud. Treu-les aquí per esborrar aquestes còpies.
+1399	Les teves fotos
+1400	Moure abans
+1401	Lenta
+1402	Vibració
+1403	Esquerra
+1404	Mode de joc
+1405	Bosc de nit
+1406	Normal
+1407	Obstacle just al davant
+1408	Altres jocs
+1409	Ronda acabada
+1410	Pausa
+1411	No s’han pogut carregar algunes fotos. Comprova la connexió per a les fotos d’iCloud i torna-ho a provar.
+1412	Millor: —
+1413	Relaxat: travessa les vores
+1414	Dreta
+1415	Barrejar les fotos
+1416	La barreja s’aplica a la pròxima partida nova. Canviar les fotos posa en pausa la partida actual.
+1417	So
+1418	Velocitat
+1419	Començar a jugar
+1420	Llisca per a una ronda nova
+1421	Llisca per continuar
+1422	Llisca on vulguis per dirigir
+1423	Serp de fotos
+1424	Amunt
+1425	Tira de fotos completa!
+1426	Més grans primer
+1427	Més nous primer
+1428	Més antics primer
+1429	Desconnectar una carpeta no esborra cap fitxer. En aquesta vista de fitxers tries a quines carpetes pot accedir GaleriQ.
+1430	Desconnectar la carpeta
+1431	Només visualitzar
+1432	Visualitzar i esborrar fitxers
+1433	No disponible: torna-la a connectar
+1434	No s’han pogut carregar les decisions desades. No s’ha canviat ni esborrat res. Reinicia GaleriQ; si no funciona, comparteix el diagnòstic.
+1435	GaleriQ no s’ha pogut iniciar
+1436	El teu dispositiu
+1437	%1$@ lliures segons l’iOS
+1438	Visible per a GaleriQ
+1439	Les captures de pantalla ja s’inclouen a les fotos. Els fitxers grans i els duplicats no es tornen a comptar. Les mides desconegudes queden fora del total, que llavors es marca amb «Com a mínim».
+1440	No visible per a GaleriQ
+1441	GaleriQ no pot comprovar altres apps, fitxers del sistema, contingut al núvol ni carpetes que no has permès. Per a aquests no es mostra cap mida.
+1442	Carpetes connectades
+1443	L’anàlisi de l’emmagatzematge es queda al dispositiu.
+1444	incloses les captures de pantalla
+1445	Resum de l’emmagatzematge
+1446	Ara no hi ha informació de l’emmagatzematge disponible
+1447	de %1$@ en ús
+1448	%1$lld element · %2$@
+1449	%1$lld elements · %2$@
+1450	Collage
+1451	Collage
+1452	Quadrícula, lliure o tira
+1453	Crear
+1454	Collage · %1$lld foto
+1455	Collage · %1$lld fotos
+1456	Eliminar l’esborrany
+1457	S’elimina l’esborrany. Les teves fotos no es toquen.
+1458	La versió gratuïta conserva els 3 esborranys més recents.
+1459	Esborranys
+1460	No hi ha prou memòria per a aquesta mida. Prova «Estàndard» o menys fotos.
+1461	Crea amb les teves fotos. Tot es queda al dispositiu.
+1462	Selecciona’n com a màxim %1$lld.
+1463	Fotos per al collage
+1464	Desat
+1465	Fotos i vídeos editats i collages
+1466	No s’esborra res fins que buides la paperera i ho confirmes.
+1467	Per ara, fet
+1468	Conservats
+1469	Veure l’última foto o vídeo
+1470	Més tard
+1471	Endreça sense límit diari amb GaleriQ Pro. Un sol pagament, sense subscripció.
+1472	Una mica més endreçat
+1473	A la paperera
+1474	Sense límit diari amb Pro.
+1475	%1$lld apartat per eliminar.
+1476	%1$lld apartats per eliminar.
+1477	Veure la paperera (%1$lld)
+1478	Endreçar
+1479	Historial
+1480	Fotos
+1481	Estudi
+1482	Avui
+1483	Permet l’accés a GaleriQ per poder veure i organitzar les teves fotos i vídeos.
+1484	Permet l’accés a la configuració de l’iOS, a GaleriQ › Fotos. Les teves decisions anteriors es mantindran desades.
+1485	Sense accés a les teves fotos i vídeos
+1486	Accés a fotos i vídeos
+1487	Continuar endreçant
+1488	Continuar: %1$@
+1489	Continua on ho vas deixar.
+1490	Per ara no hi ha res més per revisar.
+1491	Tot revisat
+1492	%1$lld element de «Més tard» està llest per revisar
+1493	%1$lld elements de «Més tard» estan llestos per revisar
+1494	Bona tarda
+1495	Bon vespre
+1496	Bon dia
+1497	Bon migdia
+1498	Canviar l’accés
+1499	GaleriQ només mostra les fotos i els vídeos que has permès. Els pots endreçar com sempre.
+1500	Accés limitat
+1501	%1$lld foto o vídeo nou
+1502	%1$lld fotos i vídeos nous
+1503	des de l’últim endreçament
+1504	L’última vegada que es va buidar la paperera s’hi va interrompre alguna cosa. Per seguretat, no es torna a esborrar res.
+1505	Obre les teves fotos i vídeos per endreçar-los
+1506	Començar a endreçar
+1507	Llisca per les teves fotos i vídeos.
+1508	Emmagatzematge del dispositiu
+1509	%1$@ de %2$@ en ús
+1510	Editar diverses fotos
+1511	Canvia l’exposició de moltes fotos alhora.
+1512	Convertir
+1513	Desa fotos en un altre format de fitxer, p. ex. HEIC com a JPEG per a dispositius que no obren HEIC.
+1514	Tots els dispositius obren JPEG. PNG conserva tots els detalls, però els fitxers són més grans. Les fotos que ja tenen aquest format s’ometen.
+1515	p. ex. HEIC a JPEG, com a còpies noves
+1516	Els originals no canvien: GaleriQ desa còpies noves a la fototeca.
+1517	%1$lld còpia nova desada.
+1518	%1$lld còpies noves desades.
+1519	Per sota de 0 enfosqueix les fotos; per sobre de 0, les aclareix.
+1520	No ha funcionat. Els originals no han canviat.
+1521	No s’ha pogut processar %1$lld.
+1522	No s’han pogut processar %1$lld.
+1523	Fitxers més petits, però no tots els dispositius els poden obrir
+1524	S’obre en tots els dispositius i apps
+1525	Sense pèrdua de qualitat, però fitxers molt més grans
+1526	Crear un GIF
+1527	Fitxer petit: ideal per a missatges
+1528	Més nítid, però fitxer més gran
+1529	Temps per foto
+1530	Converteix diverses fotos en una animació curta que es repeteix sense fi, en l’ordre en què es van fer.
+1531	Els GIF tenen com a màxim 256 colors i no tenen so: les fotos poden semblar una mica granulades.
+1532	GIF desat a la fototeca (%1$@).
+1533	Mida
+1534	De fotos o d’un fragment curt d’un vídeo
+1535	Eines
+1536	Eliminar la ubicació
+1537	Les còpies són exactament iguals que l’original: només s’elimina el lloc on es va fer la foto. Les fotos sense ubicació s’ometen.
+1538	Còpies sense la ubicació, p. ex. abans de compartir
+1539	Primer tria fotos.
+1540	Tria com a mínim dues fotos.
+1541	Encara no has triat cap foto
+1542	Els originals no han canviat: no s’ha alliberat espai.
+1543	Triar fotos
+1544	Crear amb Pro
+1545	%1$@ px
+1546	Equilibrada
+1547	Alta
+1548	Fitxer més petit
+1549	Qualitat
+1550	Menys qualitat vol dir fitxers més petits: amb «Equilibrada» rarament hi veuràs diferència.
+1551	%1$@ (%2$@)
+1552	Eliminar també la ubicació
+1553	Fer més petit
+1554	Fa les fotos més petites, en píxels i en mida de fitxer. Pràctic per enviar o penjar.
+1555	Moltes fotos alhora, com a còpies noves
+1556	Treballant amb els teus fitxers…
+1557	%1$@ s
+1558	%1$lld fitxer seleccionat
+1559	%1$lld fitxers seleccionats
+1560	Petita: suficient per a missatges i xarxes socials
+1561	Gran: nítida en telèfons, tauletes i ordinadors
+1562	Molt gran: gairebé tots els detalls, p. ex. per imprimir
+1563	Mida de les còpies
+1564	Es mesura pel costat més llarg de la imatge, en píxels (px). Les imatges mai no s’amplien ni s’estiren.
+1565	Mida original
+1566	Mateix nombre de píxels: només canvia el format
+1567	Mesurat: %1$@ abans, %2$@ després
+1568	%1$lld omès (res a fer o és un vídeo).
+1569	%1$lld omesos (res a fer o són vídeos).
+1570	Començar
+1571	Unir captures de pantalla
+1572	Uneix captures de pantalla de dalt a baix en una sola imatge llarga, en l’ordre en què es van fer. Totes prenen l’amplada de la imatge més estreta: no s’estira ni s’amplia res.
+1573	Desat com a imatge nova a la fototeca. Les captures no canvien.
+1574	Una sota l’altra, en una sola imatge llarga
+1575	Format nou
+1576	Eina
+1577	%1$lld mida desconeguda: no s’inclou al total.
+1578	%1$lld mides desconegudes: no s’inclouen al total.
+1579	Fet
+1580	Marca preferits, comparteix elements o afegeix-los a un àlbum. Això no els marca com a conservats, a la paperera ni per a més tard.
+1581	Preferits, compartir i àlbums
+1582	El número mostra quant n’has apartat. Toca’l per revisar la selecció i buidar la paperera.
+1583	La teva paperera
+1584	Has lliscat cap al costat equivocat? Toca aquí per desfer l’última decisió.
+1585	Desfer
+1586	Quan necessitis un descans d’endreçar: juga a Parelles, Serp de fotos o Foto Blocks amb les teves pròpies fotos.
+1587	Necessites una pausa?
+1588	No és una decisió
+1589	Mira què has conservat, apartat o desat per a més tard. Aquí encara pots canviar qualsevol decisió.
+1590	Més tard i historial
+1591	Aquí tens totes les teves fotos i vídeos: per dia, mes o any, en àlbums i preferits.
+1592	Totes les teves fotos
+1593	Els elements apartats per a més tard compten com a revisats; aquí encara els veus.
+1594	Obre la visió general en quadrícula o torna a revisar un mes acabat.
+1595	Toca un mes per revisar només les fotos i els vídeos pendents.
+1596	Fins on has arribat
+1597	Següent
+1598	Diverses fotos fetes una rere l’altra? Compara-les una al costat de l’altra i tria què es queda.
+1599	Personalitza GaleriQ i troba-hi respostes. Pots tornar a fer aquest recorregut quan vulguis.
+1600	Configuració i ajuda
+1601	Ometre el tutorial
+1602	Edita fotos, fes collages, pel·lícules curtes i PDF, i fes servir eines pràctiques. Sempre obtens fitxers nous: els originals es queden com són.
+1603	Sigues creatiu
+1604	Toca «Començar a endreçar» per lliscar per tot el que queda per revisar.
+1605	Comença aquí
+1606	Fotos, vídeos, captures de pantalla o un àlbum: crea dreceres al que endreces sovint.
+1607	Les teves dreceres
+1608	Aquí trobes el que has apartat per eliminar o desat per a més tard. Només s’elimina quan ho confirmes a la paperera.
+1609	Paperera i Més tard
+1610	Fitxers grans, fotos duplicades, mesos concrets i col·leccions preparades: aquí endreces pas a pas.
+1611	Més maneres d’endreçar
+1612	Mantén premut «GaleriQ» a dalt durant 2 segons per obrir la caixa forta: la roda del «Q» gira. Configura-la i troba més opcions a Configuració.
+1613	La teva caixa forta privada
+1614	Desfer
+1615	Dia
+1616	Dies
+1617	Mes
+1618	Mesos
+1619	Setmana
+1620	Setmanes
+1621	Activar el so
+1622	Afegir un bloc de text
+1623	Adjuntar un fitxer de la caixa forta
+1624	Aquest fitxer encara està adjunt a una nota, potser a la paperera de la caixa forta. Primer desadjunta’l.
+1625	Adjunts
+1626	Bloqueig per inactivitat
+1627	La caixa forta sempre es bloqueja en segon pla. Les previsualitzacions es tapen en canviar d’app.
+1628	Còpia de seguretat xifrada
+1629	Inclou contingut multimèdia, notes, fitxers, carpetes i la paperera de la caixa forta. Fes servir una contrasenya de còpia forta i diferent. Sense ella, la còpia no es pot restaurar.
+1630	No s’ha restaurat la còpia. Pot ser que la contrasenya sigui incorrecta, el fitxer estigui malmès, la sessió estigui bloquejada o no hi hagi prou espai. El contingut existent no canvia.
+1631	Contrasenya de la còpia (com a mínim 12 caràcters)
+1632	Negreta
+1633	Llista de pics
+1634	Càmera no disponible o accés no permès.
+1635	Marcar com a fet o pendent
+1636	Llista de verificació
+1637	La nota desada ha canviat. L’esborrany no l’ha sobreescrit. Desa l’esborrany com a nota nova o descarta els canvis no desats.
+1638	Continuar
+1639	Esborrar definitivament
+1640	Això elimina definitivament el contingut seleccionat d’aquesta caixa forta. Les còpies externes i les còpies de seguretat existents no canvien.
+1641	Desadjuntar
+1642	Descartar els canvis no desats
+1643	Només es conservarà l’última versió desada correctament. Els canvis no desats es perdran.
+1644	No hi ha fitxers en aquesta vista.
+1645	No hi ha notes en aquesta vista.
+1646	Esborrar-ho tot definitivament
+1647	Tot el que hi ha a la paperera de la caixa forta (%1$@) s’eliminarà definitivament d’aquesta caixa forta: fotos, vídeos, notes i fitxers. Les còpies externes i les còpies de seguretat existents no canvien.
+1648	Buidar la paperera de la caixa forta?
+1649	Exportar la còpia
+1650	La còpia exportada queda fora de la protecció de la caixa forta. Altres apps o persones hi poden accedir segons com la comparteixis.
+1651	Fitxers
+1652	Format
+1653	Encapçalament
+1654	Importar fitxers
+1655	Importats: %1$lld. Fallits: %2$lld.
+1656	Sense compte i sense servidor de GaleriQ. Les exportacions i les còpies de seguretat només surten de l’app per una acció explícita teva.
+1657	Bloquejar ara
+1658	Multimèdia
+1659	GaleriQ necessita accés al micròfon per a una nota de veu. La gravació només comença quan toques.
+1660	%1$lld min
+1661	Nom
+1662	Nota nova
+1663	Sense previsualització interna
+1664	Aquest format no es pot mostrar aquí. El fitxer es queda desat a la caixa forta. Compartir exporta una còpia fora de la caixa forta.
+1665	No desat
+1666	Notes
+1667	L’acció no s’ha completat correctament. Comprova l’espai i l’accés i torna-ho a provar.
+1668	Còpia; l’original pot quedar a fora
+1669	Creat a la caixa forta
+1670	Restaurat d’una còpia de seguretat
+1671	Original eliminat de l’origen
+1672	Paràgraf
+1673	Pausa
+1674	Fixar
+1675	Recuperar dins la caixa forta
+1676	Gravar una nota de veu
+1677	Durada gravada
+1678	La gravació només comença quan toques. Es desa xifrada i s’atura quan bloqueges la caixa forta o en surts.
+1679	Treure el bloc de text
+1680	Eliminar l’original
+1681	Només després de verificar la còpia de la caixa forta s’eliminarà l’original sense canvis del seu origen. Poden quedar altres còpies i la paperera del proveïdor de fitxers.
+1682	Canviar el nom
+1683	Repeteix la contrasenya
+1684	Restaurar una còpia
+1685	La còpia verificada s’afegeix com a còpia addicional a la caixa forta oberta. El contingut existent no se sobreescriu. Les importacions repetides creen còpies addicionals.
+1686	Còpia afegida a la caixa forta
+1687	Reprendre
+1688	Tornar-ho a provar
+1689	Desar com a nota nova
+1690	No s’ha pogut desar
+1691	Desat
+1692	Escanejar un document
+1693	Cercar a la caixa forta
+1694	%1$lld segons
+1695	Modificats recentment
+1696	Nom
+1697	Més grans primer
+1698	Aturar i desar
+1699	Text
+1700	Títol
+1701	Moure a la paperera de la caixa forta
+1702	Eines de la caixa forta
+1703	Paperera de la caixa forta
+1704	La paperera de la caixa forta és buida.
+1705	Aquesta paperera només pertany a la caixa forta. El contingut es manté xifrat fins que el recuperes o l’esborres definitivament de manera explícita. No s’esborra res automàticament.
+1706	Sense títol
+1707	Sense carpeta
+1708	L’anunci s’ha tancat abans d’hora. No s’ha creat cap carpeta; ho pots tornar a provar.
+1709	A la versió gratuïta, cada carpeta nova necessita un vídeo publicitari curt. Amb Pro, les carpetes es creen sense anuncis.
+1710	Ara no hi ha cap anunci disponible. Torna-ho a provar més tard; amb Pro, les carpetes es creen sense anuncis.
+1711	Mirar el vídeo i crear la carpeta
+1712	Afegir a la caixa forta
+1713	Tot
+1714	La caixa forta està xifrada i s’inclou a la còpia de seguretat de l’iPhone. Si esborres GaleriQ, també s’esborra la caixa forta.
+1715	Obrir amb %1$@
+1716	Obre el teu contingut protegit
+1717	El codi sempre funciona igualment.
+1718	Obrir amb %1$@?
+1719	Obrir amb %1$@
+1720	Canviar el codi
+1721	Tancar i bloquejar
+1722	Tancar
+1723	Fes servir només els dígits 0–9.
+1724	Codi
+1725	Tipus de codi
+1726	Les dues entrades no coincideixen.
+1727	Contrasenya
+1728	PIN de 6 dígits
+1729	Repeteix el codi
+1730	Com a mínim 6 caràcters.
+1731	Exactament 6 dígits.
+1732	Aquest codi és la clau de la caixa forta. Tria’n un que els altres no endevinin; millor que no sigui el codi de l’iPhone.
+1733	Tria un codi
+1734	El codi no està disponible en aquest iPhone (per exemple, després de restaurar sense una còpia xifrada). Obre la caixa forta amb la clau de recuperació.
+1735	Moure a la paperera de la caixa forta
+1736	Eliminar la caixa forta
+1737	S’esborraran definitivament %1$lld elements. Si els vols conservar, primer torna’ls a l’app Fotos.
+1738	Eliminar la caixa forta i tot el que conté?
+1739	Eliminar la carpeta
+1740	Els elements es queden a la caixa forta, però sense carpeta.
+1741	Aquesta paperera només pertany a la caixa forta. El contingut es manté xifrat fins que el recuperes o l’esborres definitivament de manera explícita. No s’esborra res automàticament.
+1742	Moure %1$lld elements a la paperera de la caixa forta?
+1743	Desar una còpia a la caixa forta
+1744	Fotograma desat a la caixa forta.
+1745	Es queda només a la caixa forta: no apareixerà a l’app Fotos ni enlloc més de GaleriQ.
+1746	Desar una còpia, l’original a la paperera de la caixa forta
+1747	Desar, l’original a la paperera de la caixa forta
+1748	Pots recuperar l’original des de la paperera de la caixa forta.
+1749	Desat a la caixa forta. L’original és a la paperera de la caixa forta.
+1750	Desat a la caixa forta.
+1751	La caixa forta és buida
+1752	Introdueix la contrasenya
+1753	Introdueix el PIN
+1754	No ha funcionat. Torna-ho a provar.
+1755	Aquesta carpeta és buida
+1756	Tria un nom que no sigui buit i que encara no existeixi.
+1757	Nom de la carpeta
+1758	Has oblidat el codi?
+1759	No s’ha configurat cap clau de recuperació. Sense el codi (o Face ID), la caixa forta no es pot obrir.
+1760	Amagar l’accés
+1761	La caixa forta desapareix de Configuració. Per obrir-la, mantén premut «GaleriQ» a dalt de la pantalla d’inici durant 2 segons: la petita roda de la caixa forta del «Q» gira.
+1762	Amagar l’accés?
+1763	Moure a la caixa forta
+1764	Es copien xifrats i es verifiquen. Després l’iOS pregunta si es poden esborrar de l’app Fotos. Allà es queden 30 dies a «Eliminat recentment».
+1765	Moure a la caixa forta: %1$lld
+1766	GaleriQ també n’ha fet còpies (edicions, collages, pel·lícules, GIF): %1$lld. Són a l’app Fotos i continuen visibles si no les mous també.
+1767	L’iOS no n’ha esborrat alguns de l’app Fotos. GaleriQ igualment no els mostra enlloc més, però encara són visibles a l’app Fotos. Fes servir l’avís de dalt per tornar-ho a provar.
+1768	A la caixa forta: %1$lld. Eliminats de l’app Fotos: %2$lld.
+1769	No s’han pogut moure: %1$lld (per exemple, sense connexió amb iCloud). Es queden a l’app Fotos.
+1770	No moguts: %1$lld. La versió gratuïta permet %2$lld elements a la caixa forta; Pro és il·limitat.
+1771	Consell: buida «Eliminat recentment» a l’app Fotos si també han de desaparèixer d’allà.
+1772	Moure amb les còpies (%1$lld)
+1773	Sense les còpies
+1774	Les fotos i els vídeos de la caixa forta es xifren amb el teu codi i només són visibles aquí, enlloc més de GaleriQ.
+1775	Quan afegeixes elements, l’iOS pregunta si es poden esborrar de l’app Fotos. Després es queden 30 dies a «Eliminat recentment», tret que el buidis.
+1776	La caixa forta s’inclou a la còpia de seguretat de l’iPhone (xifrada). Si esborres GaleriQ, la caixa forta desapareix.
+1777	A la versió gratuïta, cada carpeta nova necessita un vídeo publicitari curt. Amb Pro, les carpetes es creen sense anuncis.
+1778	La teva caixa forta privada
+1779	Foto
+1780	Vídeo
+1781	La versió gratuïta permet %1$lld elements a la caixa forta. Amb Pro, la caixa forta és il·limitada.
+1782	Massa intents. Torna-ho a provar d’aquí a %1$@.
+1783	Desar a la caixa forta
+1784	Moure
+1785	Has obert la caixa forta amb la clau de recuperació. Tria ara un codi nou.
+1786	Codi nou
+1787	Carpeta nova
+1788	Sense carpeta
+1789	%1$lld de %2$lld
+1790	Deixa GaleriQ obert. Si surts de l’app, el procés s’atura; no s’esborra res.
+1791	Crear una clau de recuperació
+1792	Ja l’he anotada
+1793	Clau de recuperació
+1794	26 caràcters, amb guions o sense.
+1795	Sense clau de recuperació, el contingut es perd si oblides el codi.
+1796	Hi ha una clau de recuperació configurada. Si en crees una de nova, l’antiga deixa de ser vàlida.
+1797	Eliminar la clau de recuperació
+1798	Crear una clau de recuperació nova
+1799	Continuar sense clau de recuperació
+1800	Sense clau de recuperació, el contingut es perd per sempre si oblides el codi i Face ID no està disponible.
+1801	Segur que vols continuar sense clau de recuperació?
+1802	Clau de recuperació
+1803	Anota aquesta clau en un paper i guarda-la en un lloc segur. Obre la caixa forta si oblides el codi, també en un iPhone nou. GaleriQ no la pot tornar a mostrar.
+1804	Clau de recuperació
+1805	Aquesta clau no coincideix.
+1806	Eliminats de l’app Fotos: %1$lld.
+1807	Canviar el nom de la carpeta
+1808	Tornar a Fotos
+1809	Copiar a Fotos i conservar a la caixa forta
+1810	Desats a l’app Fotos: %1$lld.
+1811	No s’han pogut desar: %1$lld. Es queden a la caixa forta.
+1812	Desats sense l’historial d’edició: %1$lld. Els originals complets es queden a la caixa forta.
+1813	Tornar a moure a Fotos
+1814	Es desen com a elements nous amb la data i la ubicació originals. Els elements que encara són a l’app Fotos simplement tornen a ser visibles quan els hi tornes.
+1815	Desar el codi
+1816	Seleccionar
+1817	Configuració de la caixa forta
+1818	Lloc amagat i protegit amb codi per a fotos i vídeos. Desapareixen de l’app Fotos.
+1819	Configurar la caixa forta
+1820	Configurant…
+1821	Ordenar
+1822	Data d’addició
+1823	Data de presa
+1824	Nom
+1825	Mida
+1826	%1$lld elements també són encara a l’app Fotos.
+1827	Esborrar-los d’allà
+1828	%1$lld elements · %2$@
+1829	%1$lld de %2$lld elements · %3$@
+1830	Caixa forta privada
+1831	Obrir
+1832	Codi incorrecte.
+1833	Desar només el so
+1834	No s’ha pogut desar el so.
+1835	Desant el so
+1836	«%1$@» desat.
+1837	so
+1838	Eliminar
+1839	Eliminar %1$@ – %2$@? Arrossega les nanses vermelles.
+1840	Les seccions vermelles s’eliminen de debò en desar (total %1$@). Toca una secció a sota per recuperar-la.
+1841	Eliminar una secció
+1842	aprox. %1$@
+1843	Només és una estimació aproximada. Veuràs la mida real del fitxer després de desar.
+1844	Només has retallat l’inici i el final. És ràpid i la qualitat d’imatge es manté com a l’original. Si aquest vídeo no ho permet, GaleriQ el reconstrueix sencer, cosa que triga una mica més. Durada total %1$@.
+1845	Pels altres canvis, GaleriQ reconstrueix tot el vídeo en desar. Pot trigar una mica. Durada total %1$@.
+1846	Desant el vídeo
+1847	Fosa d’entrada i de sortida
+1848	Cap
+1849	Omplir
+1850	Omple el format nou; les vores de fora es retallen.
+1851	Mostrar tot el vídeo
+1852	Mostra tot el vídeo; l’espai lliure es converteix en franges negres.
+1853	Desar un fotograma
+1854	Fotograma desat com a foto nova.
+1855	fotograma
+1856	Aquest vídeo té colors especialment brillants (HDR). Quan es recalcula, es desa amb colors normals. Si només el retalles, es manté l’HDR.
+1857	Visible %1$@ – %2$@
+1858	Aquest vídeo no té so.
+1859	No s’ha pogut calcular la previsualització.
+1860	L’edició de vídeo forma part de Pro. Ho pots provar tot; per desar, et cal Pro.
+1861	Qualitat
+1862	Equilibrada (Full HD)
+1863	Màxima qualitat (com l’original)
+1864	Fitxer petit (HD)
+1865	Eliminar el so
+1866	La pista de so no s’escriu al fitxer.
+1867	El so s’accelera o s’alenteix mantenint el mateix to.
+1868	Resultat: %1$@
+1869	So
+1870	Format
+1871	Velocitat
+1872	Arrossega les nanses per fixar l’inici i el final.
+1873	Volum
+1874	Vídeo
+1875	Toca la foto o el vídeo per mostrar o amagar els controls.
+1876	Mostrar o amagar els controls
+1877	Aplicar el flux de treball
+1878	Editar el flux de treball
+1879	Encara no tens fluxos de treball propis. Fes servir una plantilla o crea’n un de nou.
+1880	Al final
+1881	Desar i compartir
+1882	Desar
+1883	Només compartir
+1884	Format
+1885	Com l’original
+1886	Eliminar la ubicació
+1887	Costat més llarg
+1888	Nom
+1889	Nom del fitxer
+1890	Flux de treball nou
+1891	Cap
+1892	Qualitat
+1893	Ho sentim, no ha funcionat.
+1894	Resultat
+1895	Executar
+1896	Flux de treball en curs…
+1897	Fet
+1898	Ha fallat
+1899	Objectiu no assolit
+1900	Omès
+1901	A la carpeta «%1$@»
+1902	Desar com a %1$@
+1903	Qualitat %1$@
+1904	Nom «%1$@»
+1905	Costat més llarg com a màxim %1$@ px (mai ampliat)
+1906	Desar com a fitxers nous: els originals es queden
+1907	Compartir el resultat
+1908	Com a màxim %1$@ per foto: s’ajusten la qualitat i, si cal, la mida, i es mesura el resultat
+1909	Vídeos de com a màxim %1$@ cadascun
+1910	Desa diversos passos com a flux de treball propi
+1911	Mida màxima per foto
+1912	Fluxos de treball
+1913	Sí
+9000	GaleriQ mostra les teves fotos i vídeos per ordenar-los en aquest iPhone i només elimina els elements que tries i confirmes al diàleg del sistema.
+9001	GaleriQ desa còpies editades, collages i vídeos com a elements nous a la fototeca.
+9002	GaleriQ només fa servir la càmera per escanejar documents quan toques Escanejar.
+9003	GaleriQ només fa servir Face ID per obrir el contingut que has protegit amb un codi.
+9004	GaleriQ necessita accés al micròfon per a una nota de veu. La gravació només comença quan toques.
+9005	La versió gratuïta de GaleriQ mostra anuncis de Google. Amb el teu permís poden ser més rellevants per a tu. Les teves fotos i fitxers mai no van als anunciants.
