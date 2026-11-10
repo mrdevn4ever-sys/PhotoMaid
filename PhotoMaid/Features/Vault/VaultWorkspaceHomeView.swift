@@ -14,10 +14,18 @@ struct VaultWorkspaceHomeView: View {
         VStack(spacing: 0) {
             // Experiment-Design: Kopf wie im Artefakt – ✕ (schließen und sperren) und ⋯ als runde Knöpfe,
             // Titel „Privater Tresor“ mit Unterzeile, darunter die drei Reiter.
-            VStack(alignment: .leading, spacing: AppSpacing.m) {
-                HStack {
+            // Kompakt (Nutzer, 11.11.2026: „zu viel Fläche mit Knöpfen“): ✕, Titel mit Unterzeile und ⋯ in einer Zeile.
+            VStack(alignment: .leading, spacing: AppSpacing.s) {
+                HStack(spacing: AppSpacing.s) {
                     GlassIconButton(symbol: "xmark", label: L("vault_close")) { vault.lock() }
-                    Spacer()
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(key: "vault_title").font(PMFont.heading(22, relativeTo: .title2))
+                            .foregroundStyle(AppColors.textPrimary).lineLimit(1).minimumScaleFactor(0.7)
+                            .accessibilityAddTraits(.isHeader)
+                        Text(key: "art_vault_sub").font(AppTypography.footnote)
+                            .foregroundStyle(AppColors.textSecondary).lineLimit(1).minimumScaleFactor(0.8)
+                    }
+                    Spacer(minLength: 0)
                     Menu {
                         Button(L("vault2_trash"), systemImage: "trash") { trash = true }
                         Button(L("vault2_tools"), systemImage: "lock.shield") { tools = true }
@@ -34,14 +42,12 @@ struct VaultWorkspaceHomeView: View {
                     .accessibilityLabel(L("more_actions"))
                     .accessibilityIdentifier("vault.workspace.more")
                 }
-                PageHeading(title: L("vault_title"), subtitle: L("art_vault_sub"))
                 Picker(L("vault_title"), selection: $tab) {
                     Text(L("vault2_media")).tag(0)
                     Text(L("vault2_notes")).tag(1)
                     Text(L("vault2_files")).tag(2)
                 }
                 .pickerStyle(.segmented)
-                .controlSize(.large)
             }
             .padding(.horizontal, AppSpacing.pageMargin)
             .padding(.top, AppSpacing.xs)

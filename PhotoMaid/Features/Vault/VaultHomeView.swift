@@ -38,7 +38,7 @@ struct VaultHomeView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: AppSpacing.m) {
+                VStack(alignment: .leading, spacing: AppSpacing.s) {
                     summary
                     if vault.stillInLibraryCount > 0 { stillInPhotosBanner }
                     folderBar
@@ -56,13 +56,13 @@ struct VaultHomeView: View {
             // Einträge älterer Fassungen und eine beschädigte Verbergen-Liste beim Öffnen abgleichen.
             .task { await vault.syncConcealment(app: app) }
             .navigationTitle(L("vault_title"))
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar { toolbar }
+            // Kompakt: Auswählen und ⋯ stehen in der Zeile mit der Anzahl statt in einer eigenen Leiste.
+            .toolbar(.hidden, for: .navigationBar)
             .safeAreaInset(edge: .bottom) {
                 if selecting {
                     selectionBar
                 } else {
-                    PrimaryButton(title: L("vault_add"), symbol: "plus") { startImport() }.vaultBottomAction()
+                    addButton
                 }
             }
             .overlay { progressOverlay }
@@ -173,9 +173,59 @@ struct VaultHomeView: View {
         HStack(spacing: AppSpacing.xs) {
             Image(systemName: "lock.fill").foregroundStyle(AppColors.accent).accessibilityHidden(true)
             Text(verbatim: summaryText).font(AppTypography.footnote).foregroundStyle(AppColors.textSecondary)
+                .lineLimit(1).minimumScaleFactor(0.8)
             Spacer(minLength: 0)
+            Button(L(selecting ? "done" : "vault_select")) {
+                selecting.toggle()
+                selection = []
+            }
+            .font(AppTypography.subheadline.weight(.semibold))
+            .foregroundStyle(AppColors.accent)
+            .frame(minHeight: AppSpacing.minTouch)
+            .disabled(!selecting && items.isEmpty)
+            .accessibilityIdentifier("vault.media.select")
+            if !selecting { moreMenu }
         }
-        .padding(.top, AppSpacing.s)
+        .padding(.top, AppSpacing.xxs)
+    }
+
+    /// Sortieren und Tresor-Einstellungen (vorher in der Navigationsleiste).
+    private var moreMenu: some View {
+        Menu {
+            Picker(L("vault_sort"), selection: Binding(get: { sort }, set: { vault.setSort($0) })) {
+                Text(key: "vault_sort_captured").tag(VaultSort.captured)
+                Text(key: "vault_sort_added").tag(VaultSort.added)
+                Text(key: "vault_sort_name").tag(VaultSort.name)
+                Text(key: "vault_sort_size").tag(VaultSort.size)
+            }
+            Button { settingsSheet = true } label: { Label(L("vault_settings"), systemImage: "gearshape") }
+        } label: {
+            Image(systemName: "ellipsis.circle").font(.system(size: 20, weight: .semibold))
+                .foregroundStyle(AppColors.accent)
+                .frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch)
+                .contentShape(.rect)
+        }
+        .accessibilityLabel(Text(key: "more_actions"))
+    }
+
+    /// „In den Tresor legen“ als kompakte Kapsel unten rechts statt als breiter Balken.
+    private var addButton: some View {
+        HStack {
+            Spacer()
+            Button { startImport() } label: {
+                Label(L("vault_add"), systemImage: "plus")
+                    .font(PMFont.text(.bold, 16, relativeTo: .headline))
+                    .foregroundStyle(AppColors.onAccent)
+                    .padding(.horizontal, 18)
+                    .frame(minHeight: AppSpacing.touch)
+                    .background(AppColors.accentFill, in: .capsule)
+                    .contentShape(.capsule)
+            }
+            .buttonStyle(PMPressStyle())
+            .shadow(color: .black.opacity(0.35), radius: 12, y: 4)
+        }
+        .padding(.horizontal, AppSpacing.pageMargin)
+        .padding(.bottom, AppSpacing.xs)
     }
 
     private var summaryText: String {
@@ -206,28 +256,39 @@ struct VaultHomeView: View {
                             Button(role: .destructive) { deletingFolder = f } label: { Label(L("vault_delete_folder"), systemImage: "trash") }
                         }
                 }
+                // Nur Symbol (Beschriftung für VoiceOver und Tests bleibt „Neuer Ordner“).
                 Button { startNewFolder() } label: {
-                    Label(L("vault_new_folder"), systemImage: "folder.badge.plus")
-                        .font(AppTypography.subheadline.weight(.semibold))
-                        .padding(.horizontal, AppSpacing.s)
+                    Image(systemName: "folder.badge.plus").font(.system(size: 15, weight: .semibold))
+                        .foregroundStyle(AppColors.textPrimary)
+                        .frame(width: 44, height: 36)
+                        .background(AppColors.surface, in: .capsule)
+                        .overlay(Capsule().strokeBorder(AppColors.control, lineWidth: 1))
                         .frame(minHeight: AppSpacing.minTouch)
+                        .contentShape(.rect)
                 }
-                .buttonStyle(.pmBordered)
+                .buttonStyle(PMPressStyle())
+                .accessibilityLabel(L("vault_new_folder"))
             }
         }
     }
 
+    /// Kompakte Ordner-Kapsel: 36 pt sichtbar, 44 pt Tippfläche.
     private func chip(title: String, count: Int, selected: Bool, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             HStack(spacing: 4) {
-                Text(verbatim: title)
+                Text(verbatim: title).foregroundStyle(selected ? AppColors.onAccent : AppColors.textPrimary)
                 Text(verbatim: "\(count)").foregroundStyle(selected ? AppColors.onAccent.opacity(0.7) : AppColors.textSecondary).monospacedDigit()
             }
             .font(AppTypography.subheadline.weight(.semibold))
-            .padding(.horizontal, AppSpacing.s)
+            .lineLimit(1)
+            .padding(.horizontal, 14)
+            .frame(minHeight: 36)
+            .background(selected ? AppColors.accentFill : AppColors.surface, in: .capsule)
+            .overlay { if !selected { Capsule().strokeBorder(AppColors.control, lineWidth: 1) } }
             .frame(minHeight: AppSpacing.minTouch)
+            .contentShape(.rect)
         }
-        .modifier(GlassButtonStyleModifier(prominent: selected))
+        .buttonStyle(PMPressStyle())
         .accessibilityAddTraits(selected ? .isSelected : [])
     }
 
@@ -282,28 +343,6 @@ struct VaultHomeView: View {
         case .earned: newFolder = true
         case .dismissed: notice = L("vault_ad_folder_dismissed")
         case .unavailable: notice = L("vault_ad_folder_unavailable")
-        }
-    }
-
-    @ToolbarContentBuilder
-    private var toolbar: some ToolbarContent {
-        ToolbarItem(placement: .principal) { Color.clear.frame(width: 1, height: 1).accessibilityHidden(true) }
-        VaultSelectionToolbarItem(scope: "media", isEmpty: items.isEmpty, selecting: $selecting, selection: $selection)
-        ToolbarItemGroup(placement: .topBarTrailing) {
-            if !selecting {
-                Menu {
-                    Picker(L("vault_sort"), selection: Binding(get: { sort }, set: { vault.setSort($0) })) {
-                        Text(key: "vault_sort_captured").tag(VaultSort.captured)
-                        Text(key: "vault_sort_added").tag(VaultSort.added)
-                        Text(key: "vault_sort_name").tag(VaultSort.name)
-                        Text(key: "vault_sort_size").tag(VaultSort.size)
-                    }
-                    Button { settingsSheet = true } label: { Label(L("vault_settings"), systemImage: "gearshape") }
-                } label: {
-                    Image(systemName: "ellipsis.circle")
-                }
-                .accessibilityLabel(Text(key: "more_actions"))
-            }
         }
     }
 
