@@ -208,7 +208,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0203 | `art_pin_delete` | Delete last digit | Xóa chữ số cuối |
 | 0204 | `art_pin_progress` | %1$lld of %2$lld digits entered | Đã nhập %1$lld / %2$lld chữ số |
 | 0205 | `art_privacy_data` | Privacy & data | Quyền riêng tư & dữ liệu |
-| 0206 | `art_protect_fav_sub` | Asks before a favorite goes to the trash | Hỏi trước khi mục yêu thích vào thùng rác |
+| 0206 | `art_protect_fav_sub` | Asks before a favorite goes to the trash | Hỏi trước khi mục ưa thích vào thùng rác |
 | 0207 | `art_scan_sub` | With the camera, as a PDF | Bằng camera, dưới dạng PDF |
 | 0208 | `art_storage_sub` | What takes up space | Thứ gì chiếm dung lượng |
 | 0209 | `art_swipe_through` | Swipe through | Vuốt qua |
@@ -430,7 +430,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0430 | `dup_again` | Search again | Tìm lại |
 | 0431 | `dup_checking` | Comparing files … | Đang so sánh tệp … |
 | 0432 | `dup_explain` | Find photos, videos and files with exactly the same content. You choose which copies go to the trash. | Tìm ảnh, video và tệp có nội dung giống hệt nhau. Bạn chọn bản sao nào vào thùng rác. |
-| 0433 | `dup_footer` | Selected copies: up to %1$@. This may not equal the space freed. Check favorites, albums and edits before removing copies. | Bản sao đã chọn: tối đa %1$@. Con số này có thể khác với dung lượng được giải phóng. Hãy kiểm tra mục yêu thích, album và bản chỉnh sửa trước khi xóa bản sao. |
+| 0433 | `dup_footer` | Selected copies: up to %1$@. This may not equal the space freed. Check favorites, albums and edits before removing copies. | Bản sao đã chọn: tối đa %1$@. Con số này có thể khác với dung lượng được giải phóng. Hãy kiểm tra mục ưa thích, album và bản chỉnh sửa trước khi xóa bản sao. |
 | 0434 | `dup_header` | Identical files: %1$lld · %2$@ total | Tệp giống hệt: %1$lld · tổng %2$@ |
 | 0435 | `dup_how` | GaleriQ compares file contents directly on your device. Similar-looking images don’t count as identical copies. | GaleriQ so sánh nội dung tệp ngay trên thiết bị của bạn. Ảnh trông giống nhau không được tính là bản sao giống hệt. |
 | 0436 | `dup_icloud_hint` | Downloads missing originals over Wi-Fi. Large libraries can take time and use a lot of data. Searches permitted media and connected folders. | Tải bản gốc còn thiếu qua Wi-Fi. Thư viện lớn có thể mất thời gian và tốn nhiều dữ liệu. Tìm trong phương tiện được phép và thư mục đã kết nối. |
@@ -453,7 +453,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0454 | `edit_adj_noise` | Noise reduction | Giảm nhiễu |
 | 0455 | `edit_adj_sharpen_radius` | Radius | Bán kính |
 | 0456 | `edit_adj_sharpen_threshold` | Threshold | Ngưỡng |
-| 0457 | `edit_aspect_free` | Free | Miễn phí |
+| 0457 | `edit_aspect_free` | Free | Tự do |
 | 0458 | `edit_aspect_original` | Original | Gốc |
 | 0459 | `edit_changed` | changed | đã thay đổi |
 | 0460 | `edit_compare_hint` | Edited photo. Touch and hold to see the original. | Ảnh đã sửa. Chạm và giữ để xem bản gốc. |
@@ -1180,7 +1180,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1205 | `pro_unavailable_detail` | This version isn’t connected to App Store purchases yet. You can use all other features as usual. | Phiên bản này chưa kết nối với mua hàng trên App Store. Bạn vẫn có thể dùng mọi tính năng khác như bình thường. |
 | 1206 | `pro_unlock` | Unlock GaleriQ Pro | Mở khóa GaleriQ Pro |
 | 1207 | `pro_view` | View GaleriQ Pro | Xem GaleriQ Pro |
-| 1208 | `put_back` | Put back | Đặt lại |
+| 1208 | `put_back` | Put back | Đưa trở lại |
 | 1209 | `qa_add` | Add | Thêm |
 | 1210 | `qa_add_title` | Add shortcut | Thêm lối tắt |
 | 1211 | `qa_all_done` | All reviewed | Đã xem lại hết |
@@ -1213,8 +1213,8 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1240 | `qa_random_sub` | %1$lld random open photos and videos, reshuffled every time | %1$lld ảnh và video chưa xem lại ngẫu nhiên, xáo lại mỗi lần |
 | 1241 | `qa_remove_note` | Only the shortcut is removed. Your files and choices are kept. | Chỉ lối tắt bị xóa. Tệp và lựa chọn của bạn vẫn được giữ. |
 | 1242 | `qa_screenshots` | Screenshots | Ảnh chụp màn hình |
-| 1243 | `qa_selfies` | Selfies | Selfie |
-| 1244 | `qa_selfies_sub` | From the Selfies album in the Photos app | Từ album Selfie trong ứng dụng Ảnh |
+| 1243 | `qa_selfies` | Selfies | Ảnh selfie |
+| 1244 | `qa_selfies_sub` | From the Selfies album in the Photos app | Từ album Ảnh selfie trong ứng dụng Ảnh |
 | 1245 | `qa_this_week` | This week | Tuần này |
 | 1246 | `qa_this_week_sub` | Photos and videos from this calendar week | Ảnh và video trong tuần này |
 | 1247 | `qa_title` | Quick access | Truy cập nhanh |
@@ -1224,7 +1224,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1256 | `rec_latest` | Latest record | Kỷ lục mới nhất |
 | 1257 | `rec_medal_bronze` | Bronze | Đồng |
 | 1258 | `rec_medal_gold` | Gold | Vàng |
-| 1259 | `rec_medal_next` | %1$@ from %2$@ · %3$@ to go | %1$@ / %2$@ · còn %3$@ |
+| 1259 | `rec_medal_next` | %1$@ from %2$@ · %3$@ to go | %1$@ khi đạt %2$@ · còn %3$@ |
 | 1260 | `rec_medal_silver` | Silver | Bạc |
 | 1261 | `rec_note` | Medals only compare with your own results – no leaderboards, nothing leaves the device. | Huy chương chỉ so với kết quả của chính bạn – không có bảng xếp hạng, không có gì rời khỏi thiết bị. |
 | 1262 | `rec_record` | Record | Kỷ lục |
@@ -1309,7 +1309,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1359 | `size_at_least` | At least %1$@ | Ít nhất %1$@ |
 | 1360 | `size_unknown` | Size unknown | Không rõ kích thước |
 | 1361 | `skip_without_decision` | Next without choosing | Tiếp mà không chọn |
-| 1362 | `slideshow_again` | Play again | Chơi lại |
+| 1362 | `slideshow_again` | Play again | Phát lại |
 | 1363 | `slideshow_cut` | None | Không |
 | 1364 | `slideshow_duration` | Time per photo | Thời gian mỗi ảnh |
 | 1365 | `slideshow_empty` | Nothing to show here. | Không có gì để hiển thị ở đây. |
@@ -1532,7 +1532,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1592 | `tour_lib_title` | All your photos | Tất cả ảnh của bạn |
 | 1593 | `tour_months_later_text` | Items set aside for later count as reviewed – you still see them here. | Các mục để sau được tính là đã xem lại – bạn vẫn thấy chúng ở đây. |
 | 1594 | `tour_months_more_text` | Open the overview as a grid or review a finished month again. | Mở tổng quan dạng lưới hoặc xem lại một tháng đã xong. |
-| 1595 | `tour_months_row_text` | Tap a month to review only its open photos and videos. | Chạm vào một tháng để chỉ xem lại ảnh và video còn mở của tháng đó. |
+| 1595 | `tour_months_row_text` | Tap a month to review only its open photos and videos. | Chạm vào một tháng để chỉ xem những ảnh và video của tháng đó mà bạn chưa xem lại. |
 | 1596 | `tour_months_row_title` | How far you are | Bạn đã đi được bao xa |
 | 1597 | `tour_next` | Next | Tiếp |
 | 1598 | `tour_series_text` | Several photos taken in quick succession? Compare them side by side and choose what stays. | Chụp nhiều ảnh liên tiếp nhanh? So sánh chúng cạnh nhau và chọn ảnh giữ lại. |
@@ -1569,7 +1569,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1632 | `vault2_bold` | Bold | Đậm |
 | 1633 | `vault2_bullet` | Bullet list | Danh sách dấu đầu dòng |
 | 1634 | `vault2_camera_permission` | Camera unavailable or access not allowed. | Camera không khả dụng hoặc chưa được cho phép truy cập. |
-| 1635 | `vault2_check` | Toggle completion | Đánh dấu hoàn thành |
+| 1635 | `vault2_check` | Toggle completion | Đổi trạng thái hoàn thành |
 | 1636 | `vault2_checklist` | Checklist | Danh sách kiểm tra |
 | 1637 | `vault2_conflict` | The saved note changed. Your draft did not overwrite it. Save your draft as a new note or discard unsaved changes. | Ghi chú đã lưu đã thay đổi. Bản nháp của bạn không ghi đè lên nó. Hãy lưu bản nháp thành ghi chú mới hoặc bỏ các thay đổi chưa lưu. |
 | 1638 | `vault2_continue` | Continue | Tiếp tục |

@@ -439,7 +439,7 @@
 0454	Pengurangan derau
 0455	Radius
 0456	Ambang
-0457	Gratis
+0457	Bebas
 0458	Asli
 0459	diubah
 0460	Foto hasil edit. Sentuh dan tahan untuk melihat aslinya.
@@ -1196,11 +1196,11 @@
 1237	Potret
 1238	Foto yang diambil dengan mode Potret
 1239	Acak
-1240	%1$lld foto dan video terbuka acak, diacak ulang setiap kali
+1240	%1$lld foto dan video acak yang belum ditinjau, diacak ulang setiap kali
 1241	Hanya pintasan yang dihapus. File dan pilihanmu tetap disimpan.
 1242	Tangkapan layar
-1243	Swafoto
-1244	Dari album Swafoto di app Foto
+1243	Selfie
+1244	Dari album Selfie di app Foto
 1245	Minggu ini
 1246	Foto dan video dari minggu kalender ini
 1247	Akses cepat
@@ -1295,7 +1295,7 @@
 1359	Setidaknya %1$@
 1360	Ukuran tidak diketahui
 1361	Berikutnya tanpa memilih
-1362	Main lagi
+1362	Putar lagi
 1363	Tidak ada
 1364	Waktu per foto
 1365	Tidak ada yang ditampilkan di sini.
@@ -1423,10 +1423,10 @@
 1490	Tidak ada lagi yang perlu ditinjau untuk saat ini.
 1491	Semua sudah ditinjau
 1493	%1$lld item dari “Nanti” siap ditinjau
-1494	Selamat siang
+1494	Selamat sore
 1495	Selamat malam
 1496	Selamat pagi
-1497	Selamat sore
+1497	Selamat siang
 1498	Ubah akses
 1499	GaleriQ hanya menampilkan foto dan video yang kamu izinkan. Kamu bisa merapikannya seperti biasa.
 1500	Akses terbatas
@@ -1518,7 +1518,7 @@
 1592	Semua fotomu
 1593	Item yang disisihkan untuk nanti dihitung sudah ditinjau – kamu tetap melihatnya di sini.
 1594	Buka ringkasan sebagai kisi atau tinjau lagi bulan yang sudah selesai.
-1595	Ketuk bulan untuk meninjau hanya foto dan video yang masih terbuka di bulan itu.
+1595	Ketuk bulan untuk meninjau hanya foto dan video yang belum ditinjau di bulan itu.
 1596	Sejauh mana kamu
 1597	Berikutnya
 1598	Beberapa foto diambil berturut-turut cepat? Bandingkan berdampingan dan pilih mana yang tetap.
@@ -1535,7 +1535,7 @@
 1609	Sampah & Nanti
 1610	File besar, foto duplikat, bulan tertentu, dan koleksi siap pakai: di sinilah kamu merapikan langkah demi langkah.
 1611	Cara lain untuk merapikan
-1612	Tahan “GaleriQ” di bagian atas selama 2 detik untuk membuka brankas – putaran di “Q” berputar. Atur brankas dan temukan opsi lain di Pengaturan.
+1612	Tahan “GaleriQ” di bagian atas selama 2 detik untuk membuka brankas – cakram di “Q” berputar. Atur brankas dan temukan opsi lain di Pengaturan.
 1613	Brankas pribadimu
 1614	Urungkan
 1616	Hari
@@ -1681,7 +1681,7 @@
 1758	Lupa kode?
 1759	Kunci pemulihan belum diatur. Tanpa kode (atau Face ID), brankas tidak dapat dibuka.
 1760	Sembunyikan pintu masuk
-1761	Brankas hilang dari Pengaturan. Untuk membukanya, tekan dan tahan “GaleriQ” di bagian atas layar awal selama 2 detik – putaran kecil brankas di “Q” berputar.
+1761	Brankas hilang dari Pengaturan. Untuk membukanya, tekan dan tahan “GaleriQ” di bagian atas layar awal selama 2 detik – cakram kecil brankas di “Q” berputar.
 1762	Sembunyikan pintu masuk?
 1763	Pindahkan ke brankas
 1764	Item disalin terenkripsi dan diperiksa. Lalu iOS bertanya apakah boleh dihapus dari app Foto. Di sana item tetap di “Baru Dihapus” selama 30 hari.

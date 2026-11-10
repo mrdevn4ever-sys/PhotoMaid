@@ -255,10 +255,10 @@
 0258	Limpar seleção
 0259	Continuar
 0260	Foto revelada!
-0261	Favoritas
+0261	Favoritos
 0262	Fotos reveladas: %1$lld
-0263	Tabuleiro: deslize para os lados, toque para girar, arraste ou dê um toque rápido para baixo.
-0264	Arrastar para baixo: mais rápido · toque rápido para baixo: encaixar
+0263	Tabuleiro: deslize para os lados, toque para girar, arraste ou deslize rapidamente para baixo.
+0264	Arrastar para baixo: mais rápido · deslizar rapidamente para baixo: encaixar
 0265	Deslize para os lados para mover
 0266	Toque para girar
 0267	Como jogar
@@ -451,7 +451,7 @@
 0454	Redução de ruído
 0455	Raio
 0456	Limiar
-0457	Grátis
+0457	Livre
 0458	Original
 0459	alterado
 0460	Foto editada. Toque e segure para ver o original.
@@ -627,15 +627,15 @@
 0630	O iOS encerrou a exportação em segundo plano. Nada foi salvo – comece de novo e mantenha o GaleriQ aberto.
 0631	Você pode trocar rapidamente para outro app. Se o iOS encerrar o tempo, o GaleriQ para de forma limpa – nada pela metade é salvo.
 0632	Salvando …
-0633	Marcar como favorita
-0634	Não foi possível alterar o status de favorita. Ele continua o mesmo.
+0633	Marcar como favorito
+0634	Não foi possível alterar o status de favorito. Ele continua o mesmo.
 0635	Esta foto está protegida como favorita.
-0636	Remova primeiro a marca de favorita para colocá-la na lixeira. Você também pode desativar a proteção de favoritas nos ajustes.
+0636	Remova primeiro a marca de favorito para colocar o item na lixeira. Você também pode desativar a proteção de favoritos nos ajustes.
 0637	Este vídeo está protegido como favorito.
-0638	Remover das favoritas
-0639	Não está mais marcada como favorita. Deslize para a esquerda para colocá-la na lixeira.
-0640	Não é favorita
-0641	Favorita
+0638	Remover dos Favoritos
+0639	Não está mais nos Favoritos. Deslize para a esquerda para colocar o item na lixeira.
+0640	Não está nos Favoritos
+0641	Favorito
 0642	Colocar em “%1$@”
 0643	Nada
 0644	Depois – escolher data
@@ -660,7 +660,7 @@
 0663	Sempre
 0664	Mostrar botões
 0665	Colocar em “%1$@”
-0666	Não há mais favoritas para revisar agora.
+0666	Não há mais favoritos para revisar agora.
 0667	Não há mais nada para revisar neste álbum.
 0668	Não há mais nada para revisar entre suas fotos mais recentes.
 0669	Não há mais nada para revisar entre seus vídeos mais recentes.
@@ -821,7 +821,7 @@
 0824	em %1$lld arquivo grande
 0825	em %1$lld arquivos grandes
 0826	Só no iCloud, tamanho estimado
-0827	Continuar medindo (abertos: %1$lld)
+0827	Continuar medindo (pendentes: %1$lld)
 0828	Medindo tamanhos … %1$lld de %2$lld
 0829	Nenhum arquivo correspondente
 0830	Nenhum dos arquivos acessíveis com tamanho conhecido é maior que %1$lld MB.
@@ -859,15 +859,15 @@
 0862	Ocultar subpastas
 0863	Fotos e vídeos deste aparelho aparecem aqui.
 0864	Mostrar subpastas
-0865	Toque em ♡ numa foto ou vídeo para torná-lo favorito. As favoritas são as mesmas do app Fotos.
-0866	Ainda sem favoritas
+0865	Toque em ♡ numa foto ou vídeo para torná-lo favorito. Os Favoritos são os mesmos do app Fotos.
+0866	Ainda sem favoritos
 0867	Da biblioteca
 0868	Tudo
 0869	Cinematográfico
 0870	Remover filtro
 0871	Editadas
 0872	Nada aqui para o filtro “%1$@”.
-0873	Favoritas
+0873	Favoritos
 0874	Panoramas
 0875	RAW
 0876	Gravações de tela
@@ -922,9 +922,9 @@
 0925	%1$lld subpasta
 0926	%1$lld subpastas
 0927	Mover para a lixeira
-0928	Esta é uma favorita. “Proteger favoritas” está ativado, então ela fica fora da lixeira. Você pode mudar isso em Ajustes.
+0928	Este item está nos Favoritos. “Proteger favoritos” está ativado, então ele fica fora da lixeira. Você pode mudar isso em Ajustes.
 0929	Para a lixeira do GaleriQ – nada é apagado. Você decide lá depois.
-0930	Para a lixeira do GaleriQ – nada é apagado. As favoritas ficam (“Proteger favoritas” está ativado).
+0930	Para a lixeira do GaleriQ – nada é apagado. Os favoritos ficam (“Proteger favoritos” está ativado).
 0931	Mover %1$lld item para a lixeira?
 0932	Mover %1$lld itens para a lixeira?
 0933	%1$lld item está na lixeira do GaleriQ.
@@ -977,7 +977,7 @@
 0980	Número de pares
 0981	Origem das imagens
 0982	Álbum ou pasta de fotos
-0983	Favoritas
+0983	Favoritos
 0984	Biblioteca de fotos inteira
 0985	Sol
 0986	Pares
@@ -1209,8 +1209,8 @@
 1212	Editar
 1213	Editar atalhos
 1214	Vazio
-1215	Favoritas
-1216	Suas favoritas do app Fotos
+1215	Favoritos
+1216	Seus favoritos do app Fotos
 1217	Álbum
 1218	Álbuns
 1219	Fotos mais recentes
@@ -1234,7 +1234,7 @@
 1237	Retratos
 1238	Fotos tiradas no modo Retrato
 1239	Aleatório
-1240	%1$lld fotos e vídeos abertos aleatórios, embaralhados a cada vez
+1240	%1$lld fotos e vídeos aleatórios ainda não revisados, embaralhados a cada vez
 1241	Só o atalho é removido. Seus arquivos e escolhas são mantidos.
 1242	Capturas de tela
 1243	Selfies
@@ -1249,7 +1249,7 @@
 1256	Último recorde
 1257	Bronze
 1258	Ouro
-1259	%1$@ de %2$@ · faltam %3$@
+1259	%1$@ a partir de %2$@ · faltam %3$@
 1260	Prata
 1261	As medalhas só comparam com seus próprios resultados – sem ranking, nada sai do aparelho.
 1262	Recorde
@@ -1320,7 +1320,7 @@
 1339	O GaleriQ usa o idioma do seu iPhone. Toque para escolher outro idioma só para o GaleriQ em “Idioma” nos Ajustes do iOS.
 1340	Depois: prazo padrão
 1341	Compra única
-1342	Proteger favoritas
+1342	Proteger favoritos
 1343	Avaliar o GaleriQ
 1344	Isso nos ajuda muito – obrigado!
 1345	Mostrar “Sua última semana”
@@ -1340,7 +1340,7 @@
 1359	Pelo menos %1$@
 1360	Tamanho desconhecido
 1361	Próxima sem escolher
-1362	Jogar de novo
+1362	Reproduzir de novo
 1363	Nenhuma
 1364	Tempo por foto
 1365	Nada para mostrar aqui.
@@ -1558,8 +1558,8 @@
 1577	%1$lld tamanho desconhecido – não incluído no total.
 1578	%1$lld tamanhos desconhecidos – não incluídos no total.
 1579	OK
-1580	Marque favoritas, compartilhe itens ou adicione-os a um álbum. Isso não os marca como mantidos, na lixeira ou guardados para depois.
-1581	Favoritas, compartilhamento e álbuns
+1580	Marque favoritos, compartilhe itens ou adicione-os a um álbum. Isso não os marca como mantidos, na lixeira ou guardados para depois.
+1581	Favoritos, compartilhamento e álbuns
 1582	O número mostra quanto você separou. Toque nele para revisar sua seleção e esvaziar a lixeira.
 1583	Sua lixeira
 1584	Deslizou para o lado errado? Toque aqui para desfazer sua última escolha.
@@ -1569,7 +1569,7 @@
 1588	Não é uma decisão
 1589	Veja o que você manteve, separou ou guardou para depois. Você ainda pode mudar qualquer decisão aqui.
 1590	Depois e histórico
-1591	Aqui estão todas as suas fotos e vídeos – por dia, mês ou ano, em álbuns e favoritas.
+1591	Aqui estão todas as suas fotos e vídeos – por dia, mês ou ano, em álbuns e favoritos.
 1592	Todas as suas fotos
 1593	Itens deixados para depois contam como revisados – você ainda os vê aqui.
 1594	Abra a visão geral em grade ou revise de novo um mês concluído.
@@ -1898,3 +1898,30 @@
 9003	O GaleriQ usa o Face ID só para abrir conteúdo que você protegeu com um código.
 9004	O GaleriQ precisa de acesso ao microfone para uma nota de voz. A gravação só começa quando você toca.
 9005	A versão grátis do GaleriQ mostra anúncios do Google. Com a sua permissão, eles podem ser mais relevantes para você. Suas fotos e arquivos nunca vão para anunciantes.
+0185:many	%1$lld de arquivos serão copiados para “%2$@”.
+0240:many	Apagar %1$lld de arquivos permanentemente
+0242:many	Remover %1$lld de fotos e vídeos
+0355:many	%1$lld de itens de tamanho desconhecido foram ignorados.
+0429:many	Os tamanhos de %1$lld de itens são desconhecidos. Eles não entram no total.
+0443:many	Mover %1$lld de cópias para a lixeira
+0785:many	%1$@ · %2$lld de registros
+0810:many	%1$lld de itens
+0825:many	em %1$lld de arquivos grandes
+0890:many	%1$lld de itens ocultos no GaleriQ
+0893:many	%1$lld de itens ocultos
+0900:many	Ocultar %1$lld de itens no GaleriQ?
+0926:many	%1$lld de subpastas
+0932:many	Mover %1$lld de itens para a lixeira?
+0934:many	%1$lld de itens estão na lixeira do GaleriQ.
+0937:many	%1$lld de itens mostrados de novo
+0994:many	Não iniciado · %1$lld de itens
+1103:many	%1$lld de itens não encontrados (apagados ou não estão mais neste aparelho).
+1118:many	Etiquetas de %1$lld de itens
+1267	%1$@ de fotos
+1271	%1$@ de pontos
+1449:many	%1$lld de itens · %2$@
+1493:many	%1$lld de itens de “Depois” estão prontos para revisar
+1502:many	%1$lld de novas fotos e vídeos
+1518:many	%1$lld de novas cópias salvas.
+1559:many	%1$lld de arquivos selecionados
+1578:many	%1$lld de tamanhos desconhecidos – não incluídos no total.

@@ -270,7 +270,7 @@
 0273	Runden er færdig
 0274	Pause
 0275	Sat på pause
-0276	iCloud-fotos hentes efter behov. Boks, skjulte og udelukkede fotos forbliver beskyttede.
+0276	iCloud-fotos hentes efter behov. Fotos i boksen samt skjulte og udelukkede fotos forbliver beskyttede.
 0277	Billedkilde
 0278	Vælg fotos
 0279	Kolonne %1$lld, række %2$lld, rotation %3$lld
@@ -451,7 +451,7 @@
 0454	Støjreduktion
 0455	Radius
 0456	Tærskel
-0457	Gratis
+0457	Frit
 0458	Original
 0459	ændret
 0460	Redigeret foto. Hold fingeren på for at se originalen.
@@ -546,7 +546,7 @@
 0549	Originalen forbliver uændret.
 0550	Gem kun beskæringen
 0551	Rediger original
-0552	iOS spørger først. Redigeringen gemmes som en redigering i appen Fotos – du kan altid fortryde den der med “Vend tilbage”.
+0552	iOS spørger først. Redigeringen gemmes som en redigering i appen Fotos – du kan altid fortryde den der med “Tilbagestil”.
 0553	Gem kopi, og flyt originalen til papirkurven
 0554	Gem kopi, original i papirkurven
 0555	iOS beder om bekræftelse. Originalen havner i “Senest slettet” i appen Fotos og kan normalt gendannes der i 30 dage. Pladsen frigøres først derefter.
@@ -682,10 +682,10 @@
 0685	Indlæser fotos og videoer …
 0686	%@ i denne session
 0687	%1$lld af %2$lld
-0688	Prøv overspringede medier igen
+0688	Prøv oversprungne medier igen
 0689	Vis swipehjælp
 0690	Skjult under swipe, indtil du indlæser dem igen her. Originalerne er uændrede.
-0691	Overspringede medier
+0691	Oversprungne medier
 0692	Aktuelt foto eller video
 0693	Ryd op
 0694	Klar til gennemgang
@@ -872,7 +872,7 @@
 0875	RAW
 0876	Skærmoptagelser
 0877	Slowmotion
-0878	Time-lapse
+0878	Tidsforløb
 0879	Filter
 0880	Ryd op i dette album
 0881	Dette album har ingen fotos eller videoer lige nu.
@@ -1009,9 +1009,9 @@
 1012	Brug ⋯ til at flytte eller fjerne et klip. Selve fotos og videoer forbliver uændrede.
 1013	Ton til sort mellem klip
 1014	Videoen kunne ikke oprettes. Intet blev gemt, og originalerne er uændrede.
-1015	Udfyld billedet
+1015	Udfyld rammen
 1016	Hvis et klip har en anden form
-1017	Klip strækkes aldrig: enten vises hele billedet (med sorte kanter), eller det udfylder billedet, og kanterne skæres af.
+1017	Klip strækkes aldrig: enten vises hele billedet (med sorte kanter), eller det udfylder rammen, og kanterne skæres af.
 1018	Hele billedet
 1019	Format
 1020	Som første klip
@@ -1234,7 +1234,7 @@
 1237	Portrætter
 1238	Fotos taget i portrættilstand
 1239	Tilfældig
-1240	%1$lld tilfældige åbne fotos og videoer, blandet på ny hver gang
+1240	%1$lld tilfældige fotos og videoer, der endnu ikke er gennemgået, blandet på ny hver gang
 1241	Kun genvejen fjernes. Dine filer og valg bevares.
 1242	Skærmbilleder
 1243	Selfies
@@ -1249,7 +1249,7 @@
 1256	Seneste rekord
 1257	Bronze
 1258	Guld
-1259	%1$@ af %2$@ · %3$@ tilbage
+1259	%1$@ fra %2$@ · %3$@ tilbage
 1260	Sølv
 1261	Medaljer sammenlignes kun med dine egne resultater – ingen ranglister, intet forlader enheden.
 1262	Rekord
@@ -1340,7 +1340,7 @@
 1359	Mindst %1$@
 1360	Ukendt størrelse
 1361	Næste uden at vælge
-1362	Spil igen
+1362	Afspil igen
 1363	Ingen
 1364	Tid pr. foto
 1365	Intet at vise her.
@@ -1383,7 +1383,7 @@
 1402	Haptik
 1403	Venstre
 1404	Spiltilstand
-1405	Nataskov
+1405	Natskov
 1406	Normal
 1407	Forhindring lige forude
 1408	Andre spil
@@ -1470,7 +1470,7 @@
 1489	Fortsæt, hvor du slap.
 1490	Der er ikke mere at gennemgå lige nu.
 1491	Alt gennemgået
-1492	%1$lld emne fra “Senere” er klar til gennemgang
+1492	%1$lld emne fra “Senere” er klart til gennemgang
 1493	%1$lld emner fra “Senere” er klar til gennemgang
 1494	God eftermiddag
 1495	God aften
@@ -1573,7 +1573,7 @@
 1592	Alle dine fotos
 1593	Emner, der er lagt til side til senere, tæller som gennemgået – du ser dem stadig her.
 1594	Åbn oversigten som gitter, eller gennemgå en færdig måned igen.
-1595	Tryk på en måned for kun at gennemgå dens åbne fotos og videoer.
+1595	Tryk på en måned for kun at gennemgå dens fotos og videoer, der endnu ikke er gennemgået.
 1596	Hvor langt du er nået
 1597	Næste
 1598	Flere fotos taget hurtigt efter hinanden? Sammenlign dem side om side, og vælg, hvad der bliver.
@@ -1745,7 +1745,7 @@
 1764	De kopieres krypteret og kontrolleres. Derefter spørger iOS, om de må slettes fra appen Fotos. Der bliver de i “Senest slettet” i 30 dage.
 1765	Flyt til boksen: %1$lld
 1766	GaleriQ har også lavet kopier af dem (redigeringer, collager, film, GIF'er): %1$lld. De ligger i appen Fotos og er stadig synlige, medmindre du også flytter dem.
-1767	iOS slettede ikke nogle af dem fra appen Fotos. GaleriQ viser dem alligevel ikke andre steder, men de er stadig synlige i appen Fotos. Brug meddelelsen øverst for at prøve igen.
+1767	iOS slettede ikke alle emnerne fra appen Fotos. De resterende emner vises ikke andre steder i GaleriQ, men de er stadig synlige i appen Fotos. Brug meddelelsen øverst for at prøve igen.
 1768	I boksen: %1$lld. Fjernet fra appen Fotos: %2$lld.
 1769	Kunne ikke flyttes: %1$lld (f.eks. uden forbindelse til iCloud). De bliver i appen Fotos.
 1770	Ikke flyttet: %1$lld. Gratisversionen tillader %2$lld emner i boksen; med Pro er der ingen grænse.

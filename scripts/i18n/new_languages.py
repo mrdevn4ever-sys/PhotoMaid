@@ -40,6 +40,8 @@ LANGS = {
     "or": ("ଓଡ଼ିଆ", {"one"}), "pa": ("ਪੰਜਾਬੀ", {"one"}), "ta": ("தமிழ்", {"one"}), "te": ("తెలుగు", {"one"}),
     "ur": ("اردو", {"one"}),
 }
+# Erlaubte, aber nicht verpflichtende Formen (CLDR: „many“ für ganze Millionen, z. B. „1 milhão de fotos“).
+OPTIONAL = {"pt-BR": {"many"}, "ca": {"many"}}
 FORMS = ("zero", "one", "two", "few", "many", "other")
 SPEC = re.compile(r"%(?:\d+\$)?(?:lld|ld|d|@|f|\.\d+f|%)")
 INFO_KEYS = ["NSPhotoLibraryUsageDescription", "NSPhotoLibraryAddUsageDescription", "NSCameraUsageDescription",
@@ -151,7 +153,7 @@ def check(langs):
                 allowed = set().union(*(specs(en[x]) for x in bases[base]))
                 if not set(specs(t)) <= allowed:
                     problems.append(f"{lang} {k}: Platzhalter {specs(t)} ≠ {sorted(allowed)}")
-                if k.split("#")[1] not in need:
+                if k.split("#")[1] not in need | OPTIONAL.get(lang, set()):
                     problems.append(f"{lang} {k}: Form wird in {lang} nicht verwendet")
             elif specs(t) != specs(en[k]):
                 problems.append(f"{lang} {k}: Platzhalter {specs(t)} ≠ {specs(en[k])}")

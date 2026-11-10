@@ -284,7 +284,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0273 | `blocks_over` | Round complete | Runden er færdig |
 | 0274 | `blocks_pause` | Pause | Pause |
 | 0275 | `blocks_paused` | Paused | Sat på pause |
-| 0276 | `blocks_photo_privacy` | iCloud photos download when needed. Vault, hidden and excluded photos stay protected. | iCloud-fotos hentes efter behov. Boks, skjulte og udelukkede fotos forbliver beskyttede. |
+| 0276 | `blocks_photo_privacy` | iCloud photos download when needed. Vault, hidden and excluded photos stay protected. | iCloud-fotos hentes efter behov. Fotos i boksen samt skjulte og udelukkede fotos forbliver beskyttede. |
 | 0277 | `blocks_photo_source` | Picture source | Billedkilde |
 | 0278 | `blocks_photos` | Choose photos | Vælg fotos |
 | 0279 | `blocks_position` | Column %1$lld, row %2$lld, rotation %3$lld | Kolonne %1$lld, række %2$lld, rotation %3$lld |
@@ -465,7 +465,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0454 | `edit_adj_noise` | Noise reduction | Støjreduktion |
 | 0455 | `edit_adj_sharpen_radius` | Radius | Radius |
 | 0456 | `edit_adj_sharpen_threshold` | Threshold | Tærskel |
-| 0457 | `edit_aspect_free` | Free | Gratis |
+| 0457 | `edit_aspect_free` | Free | Frit |
 | 0458 | `edit_aspect_original` | Original | Original |
 | 0459 | `edit_changed` | changed | ændret |
 | 0460 | `edit_compare_hint` | Edited photo. Touch and hold to see the original. | Redigeret foto. Hold fingeren på for at se originalen. |
@@ -560,7 +560,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0549 | `edit_save_copy_text` | The original stays unchanged. | Originalen forbliver uændret. |
 | 0550 | `edit_save_geometry_only` | Save crop only | Gem kun beskæringen |
 | 0551 | `edit_save_original` | Edit original | Rediger original |
-| 0552 | `edit_save_original_text` | iOS asks first. The edit is saved like an edit in the Photos app – you can undo it there anytime with “Revert”. | iOS spørger først. Redigeringen gemmes som en redigering i appen Fotos – du kan altid fortryde den der med “Vend tilbage”. |
+| 0552 | `edit_save_original_text` | iOS asks first. The edit is saved like an edit in the Photos app – you can undo it there anytime with “Revert”. | iOS spørger først. Redigeringen gemmes som en redigering i appen Fotos – du kan altid fortryde den der med “Tilbagestil”. |
 | 0553 | `edit_save_replace` | Save copy and move original to trash | Gem kopi, og flyt originalen til papirkurven |
 | 0554 | `edit_save_replace_action` | Save copy, original to trash | Gem kopi, original i papirkurven |
 | 0555 | `edit_save_replace_text` | iOS asks to confirm. The original goes to “Recently Deleted” in the Photos app and can usually be restored there for 30 days. Space is freed only after that. | iOS beder om bekræftelse. Originalen havner i “Senest slettet” i appen Fotos og kan normalt gendannes der i 30 dage. Pladsen frigøres først derefter. |
@@ -696,10 +696,10 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0685 | `feed_loading` | Loading photos and videos … | Indlæser fotos og videoer … |
 | 0686 | `feed_milestone` | %@ in this session | %@ i denne session |
 | 0687 | `feed_position` | %1$lld of %2$lld | %1$lld af %2$lld |
-| 0688 | `feed_retry_skipped` | Retry skipped media | Prøv overspringede medier igen |
+| 0688 | `feed_retry_skipped` | Retry skipped media | Prøv oversprungne medier igen |
 | 0689 | `feed_show_hints` | Show swipe help | Vis swipehjælp |
 | 0690 | `feed_skipped_hint` | Hidden while swiping until you reload them here. Originals stay unchanged. | Skjult under swipe, indtil du indlæser dem igen her. Originalerne er uændrede. |
-| 0691 | `feed_skipped_title` | Skipped media | Overspringede medier |
+| 0691 | `feed_skipped_title` | Skipped media | Oversprungne medier |
 | 0692 | `feed_stage` | Current photo or video | Aktuelt foto eller video |
 | 0693 | `feed_title_all` | Clean up | Ryd op |
 | 0694 | `feed_title_due` | Ready to review | Klar til gennemgang |
@@ -886,7 +886,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0875 | `lib_filter_raw` | RAW | RAW |
 | 0876 | `lib_filter_screenrec` | Screen recordings | Skærmoptagelser |
 | 0877 | `lib_filter_slowmo` | Slo-mo | Slowmotion |
-| 0878 | `lib_filter_timelapse` | Time-lapse | Time-lapse |
+| 0878 | `lib_filter_timelapse` | Time-lapse | Tidsforløb |
 | 0879 | `lib_filter_title` | Filter | Filter |
 | 0880 | `lib_folder_cleanup` | Clean up this album | Ryd op i dette album |
 | 0881 | `lib_folder_empty` | This album has no photos or videos right now. | Dette album har ingen fotos eller videoer lige nu. |
@@ -1023,9 +1023,9 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1012 | `movie_clips_note` | Use ⋯ to move or remove a clip. The photos and videos themselves stay unchanged. | Brug ⋯ til at flytte eller fjerne et klip. Selve fotos og videoer forbliver uændrede. |
 | 1013 | `movie_fade_black` | Fade to black between clips | Ton til sort mellem klip |
 | 1014 | `movie_failed` | The video could not be created. Nothing was saved and the originals are unchanged. | Videoen kunne ikke oprettes. Intet blev gemt, og originalerne er uændrede. |
-| 1015 | `movie_fit_fill` | Fill frame | Udfyld billedet |
+| 1015 | `movie_fit_fill` | Fill frame | Udfyld rammen |
 | 1016 | `movie_fit_label` | If a clip has a different shape | Hvis et klip har en anden form |
-| 1017 | `movie_fit_note` | Clips are never stretched: either the whole picture is shown (with black edges) or it fills the frame and the edges are cut off. | Klip strækkes aldrig: enten vises hele billedet (med sorte kanter), eller det udfylder billedet, og kanterne skæres af. |
+| 1017 | `movie_fit_note` | Clips are never stretched: either the whole picture is shown (with black edges) or it fills the frame and the edges are cut off. | Klip strækkes aldrig: enten vises hele billedet (med sorte kanter), eller det udfylder rammen, og kanterne skæres af. |
 | 1018 | `movie_fit_whole` | Whole picture | Hele billedet |
 | 1019 | `movie_format` | Format | Format |
 | 1020 | `movie_format_first` | Like first clip | Som første klip |
@@ -1248,7 +1248,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1237 | `qa_portraits` | Portraits | Portrætter |
 | 1238 | `qa_portraits_sub` | Photos taken in Portrait mode | Fotos taget i portrættilstand |
 | 1239 | `qa_random` | Random | Tilfældig |
-| 1240 | `qa_random_sub` | %1$lld random open photos and videos, reshuffled every time | %1$lld tilfældige åbne fotos og videoer, blandet på ny hver gang |
+| 1240 | `qa_random_sub` | %1$lld random open photos and videos, reshuffled every time | %1$lld tilfældige fotos og videoer, der endnu ikke er gennemgået, blandet på ny hver gang |
 | 1241 | `qa_remove_note` | Only the shortcut is removed. Your files and choices are kept. | Kun genvejen fjernes. Dine filer og valg bevares. |
 | 1242 | `qa_screenshots` | Screenshots | Skærmbilleder |
 | 1243 | `qa_selfies` | Selfies | Selfies |
@@ -1263,7 +1263,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1256 | `rec_latest` | Latest record | Seneste rekord |
 | 1257 | `rec_medal_bronze` | Bronze | Bronze |
 | 1258 | `rec_medal_gold` | Gold | Guld |
-| 1259 | `rec_medal_next` | %1$@ from %2$@ · %3$@ to go | %1$@ af %2$@ · %3$@ tilbage |
+| 1259 | `rec_medal_next` | %1$@ from %2$@ · %3$@ to go | %1$@ fra %2$@ · %3$@ tilbage |
 | 1260 | `rec_medal_silver` | Silver | Sølv |
 | 1261 | `rec_note` | Medals only compare with your own results – no leaderboards, nothing leaves the device. | Medaljer sammenlignes kun med dine egne resultater – ingen ranglister, intet forlader enheden. |
 | 1262 | `rec_record` | Record | Rekord |
@@ -1354,7 +1354,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1359 | `size_at_least` | At least %1$@ | Mindst %1$@ |
 | 1360 | `size_unknown` | Size unknown | Ukendt størrelse |
 | 1361 | `skip_without_decision` | Next without choosing | Næste uden at vælge |
-| 1362 | `slideshow_again` | Play again | Spil igen |
+| 1362 | `slideshow_again` | Play again | Afspil igen |
 | 1363 | `slideshow_cut` | None | Ingen |
 | 1364 | `slideshow_duration` | Time per photo | Tid pr. foto |
 | 1365 | `slideshow_empty` | Nothing to show here. | Intet at vise her. |
@@ -1397,7 +1397,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1402 | `snake_haptics` | Haptics | Haptik |
 | 1403 | `snake_left` | Left | Venstre |
 | 1404 | `snake_mode` | Game mode | Spiltilstand |
-| 1405 | `snake_night` | Night forest | Nataskov |
+| 1405 | `snake_night` | Night forest | Natskov |
 | 1406 | `snake_normal` | Normal | Normal |
 | 1407 | `snake_obstacle` | Obstacle directly ahead | Forhindring lige forude |
 | 1408 | `snake_other_games` | Other games | Andre spil |
@@ -1484,7 +1484,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1489 | `today_continue_sub` | Pick up where you left off. | Fortsæt, hvor du slap. |
 | 1490 | `today_done_subtitle` | There’s nothing else to review for now. | Der er ikke mere at gennemgå lige nu. |
 | 1491 | `today_done_title` | All reviewed | Alt gennemgået |
-| 1492 | `today_due#one` | %1$lld item from “Later” is ready to review | %1$lld emne fra “Senere” er klar til gennemgang |
+| 1492 | `today_due#one` | %1$lld item from “Later” is ready to review | %1$lld emne fra “Senere” er klart til gennemgang |
 | 1493 | `today_due#other` | %1$lld items from “Later” are ready to review | %1$lld emner fra “Senere” er klar til gennemgang |
 | 1494 | `today_greeting_afternoon` | Good afternoon | God eftermiddag |
 | 1495 | `today_greeting_evening` | Good evening | God aften |
@@ -1587,7 +1587,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1592 | `tour_lib_title` | All your photos | Alle dine fotos |
 | 1593 | `tour_months_later_text` | Items set aside for later count as reviewed – you still see them here. | Emner, der er lagt til side til senere, tæller som gennemgået – du ser dem stadig her. |
 | 1594 | `tour_months_more_text` | Open the overview as a grid or review a finished month again. | Åbn oversigten som gitter, eller gennemgå en færdig måned igen. |
-| 1595 | `tour_months_row_text` | Tap a month to review only its open photos and videos. | Tryk på en måned for kun at gennemgå dens åbne fotos og videoer. |
+| 1595 | `tour_months_row_text` | Tap a month to review only its open photos and videos. | Tryk på en måned for kun at gennemgå dens fotos og videoer, der endnu ikke er gennemgået. |
 | 1596 | `tour_months_row_title` | How far you are | Hvor langt du er nået |
 | 1597 | `tour_next` | Next | Næste |
 | 1598 | `tour_series_text` | Several photos taken in quick succession? Compare them side by side and choose what stays. | Flere fotos taget hurtigt efter hinanden? Sammenlign dem side om side, og vælg, hvad der bliver. |
@@ -1759,7 +1759,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1764 | `vault_import_confirm_text` | They are copied encrypted and verified. Then iOS asks whether they may be deleted from the Photos app. There they stay in “Recently Deleted” for 30 days. | De kopieres krypteret og kontrolleres. Derefter spørger iOS, om de må slettes fra appen Fotos. Der bliver de i “Senest slettet” i 30 dage. |
 | 1765 | `vault_import_confirm_title` | Move to vault: %1$lld | Flyt til boksen: %1$lld |
 | 1766 | `vault_import_copies_text` | GaleriQ also made copies of them (edits, collages, movies, GIFs): %1$lld. They are in the Photos app and stay visible unless you move them too. | GaleriQ har også lavet kopier af dem (redigeringer, collager, film, GIF'er): %1$lld. De ligger i appen Fotos og er stadig synlige, medmindre du også flytter dem. |
-| 1767 | `vault_import_declined` | iOS didn’t delete some of them from the Photos app. GaleriQ doesn’t show them anywhere else anyway, but they are still visible in the Photos app. Use the note at the top to try again. | iOS slettede ikke nogle af dem fra appen Fotos. GaleriQ viser dem alligevel ikke andre steder, men de er stadig synlige i appen Fotos. Brug meddelelsen øverst for at prøve igen. |
+| 1767 | `vault_import_declined` | iOS didn’t delete some of them from the Photos app. GaleriQ doesn’t show them anywhere else anyway, but they are still visible in the Photos app. Use the note at the top to try again. | iOS slettede ikke alle emnerne fra appen Fotos. De resterende emner vises ikke andre steder i GaleriQ, men de er stadig synlige i appen Fotos. Brug meddelelsen øverst for at prøve igen. |
 | 1768 | `vault_import_done` | In the vault: %1$lld. Removed from the Photos app: %2$lld. | I boksen: %1$lld. Fjernet fra appen Fotos: %2$lld. |
 | 1769 | `vault_import_failed` | Couldn’t be moved: %1$lld (for example without a connection to iCloud). They stay in the Photos app. | Kunne ikke flyttes: %1$lld (f.eks. uden forbindelse til iCloud). De bliver i appen Fotos. |
 | 1770 | `vault_import_limit` | Not moved: %1$lld. Free allows %2$lld items in the vault; Pro is unlimited. | Ikke flyttet: %1$lld. Gratisversionen tillader %2$lld emner i boksen; med Pro er der ingen grænse. |

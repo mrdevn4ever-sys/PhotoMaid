@@ -194,7 +194,7 @@
 0203	Xóa chữ số cuối
 0204	Đã nhập %1$lld / %2$lld chữ số
 0205	Quyền riêng tư & dữ liệu
-0206	Hỏi trước khi mục yêu thích vào thùng rác
+0206	Hỏi trước khi mục ưa thích vào thùng rác
 0207	Bằng camera, dưới dạng PDF
 0208	Thứ gì chiếm dung lượng
 0209	Vuốt qua
@@ -416,7 +416,7 @@
 0430	Tìm lại
 0431	Đang so sánh tệp …
 0432	Tìm ảnh, video và tệp có nội dung giống hệt nhau. Bạn chọn bản sao nào vào thùng rác.
-0433	Bản sao đã chọn: tối đa %1$@. Con số này có thể khác với dung lượng được giải phóng. Hãy kiểm tra mục yêu thích, album và bản chỉnh sửa trước khi xóa bản sao.
+0433	Bản sao đã chọn: tối đa %1$@. Con số này có thể khác với dung lượng được giải phóng. Hãy kiểm tra mục ưa thích, album và bản chỉnh sửa trước khi xóa bản sao.
 0434	Tệp giống hệt: %1$lld · tổng %2$@
 0435	GaleriQ so sánh nội dung tệp ngay trên thiết bị của bạn. Ảnh trông giống nhau không được tính là bản sao giống hệt.
 0436	Tải bản gốc còn thiếu qua Wi-Fi. Thư viện lớn có thể mất thời gian và tốn nhiều dữ liệu. Tìm trong phương tiện được phép và thư mục đã kết nối.
@@ -439,7 +439,7 @@
 0454	Giảm nhiễu
 0455	Bán kính
 0456	Ngưỡng
-0457	Miễn phí
+0457	Tự do
 0458	Gốc
 0459	đã thay đổi
 0460	Ảnh đã sửa. Chạm và giữ để xem bản gốc.
@@ -1166,7 +1166,7 @@
 1205	Phiên bản này chưa kết nối với mua hàng trên App Store. Bạn vẫn có thể dùng mọi tính năng khác như bình thường.
 1206	Mở khóa GaleriQ Pro
 1207	Xem GaleriQ Pro
-1208	Đặt lại
+1208	Đưa trở lại
 1209	Thêm
 1210	Thêm lối tắt
 1211	Đã xem lại hết
@@ -1199,8 +1199,8 @@
 1240	%1$lld ảnh và video chưa xem lại ngẫu nhiên, xáo lại mỗi lần
 1241	Chỉ lối tắt bị xóa. Tệp và lựa chọn của bạn vẫn được giữ.
 1242	Ảnh chụp màn hình
-1243	Selfie
-1244	Từ album Selfie trong ứng dụng Ảnh
+1243	Ảnh selfie
+1244	Từ album Ảnh selfie trong ứng dụng Ảnh
 1245	Tuần này
 1246	Ảnh và video trong tuần này
 1247	Truy cập nhanh
@@ -1210,7 +1210,7 @@
 1256	Kỷ lục mới nhất
 1257	Đồng
 1258	Vàng
-1259	%1$@ / %2$@ · còn %3$@
+1259	%1$@ khi đạt %2$@ · còn %3$@
 1260	Bạc
 1261	Huy chương chỉ so với kết quả của chính bạn – không có bảng xếp hạng, không có gì rời khỏi thiết bị.
 1262	Kỷ lục
@@ -1295,7 +1295,7 @@
 1359	Ít nhất %1$@
 1360	Không rõ kích thước
 1361	Tiếp mà không chọn
-1362	Chơi lại
+1362	Phát lại
 1363	Không
 1364	Thời gian mỗi ảnh
 1365	Không có gì để hiển thị ở đây.
@@ -1518,7 +1518,7 @@
 1592	Tất cả ảnh của bạn
 1593	Các mục để sau được tính là đã xem lại – bạn vẫn thấy chúng ở đây.
 1594	Mở tổng quan dạng lưới hoặc xem lại một tháng đã xong.
-1595	Chạm vào một tháng để chỉ xem lại ảnh và video còn mở của tháng đó.
+1595	Chạm vào một tháng để chỉ xem những ảnh và video của tháng đó mà bạn chưa xem lại.
 1596	Bạn đã đi được bao xa
 1597	Tiếp
 1598	Chụp nhiều ảnh liên tiếp nhanh? So sánh chúng cạnh nhau và chọn ảnh giữ lại.
@@ -1555,7 +1555,7 @@
 1632	Đậm
 1633	Danh sách dấu đầu dòng
 1634	Camera không khả dụng hoặc chưa được cho phép truy cập.
-1635	Đánh dấu hoàn thành
+1635	Đổi trạng thái hoàn thành
 1636	Danh sách kiểm tra
 1637	Ghi chú đã lưu đã thay đổi. Bản nháp của bạn không ghi đè lên nó. Hãy lưu bản nháp thành ghi chú mới hoặc bỏ các thay đổi chưa lưu.
 1638	Tiếp tục

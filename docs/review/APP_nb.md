@@ -284,7 +284,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0273 | `blocks_over` | Round complete | Runden er ferdig |
 | 0274 | `blocks_pause` | Pause | Pause |
 | 0275 | `blocks_paused` | Paused | Satt på pause |
-| 0276 | `blocks_photo_privacy` | iCloud photos download when needed. Vault, hidden and excluded photos stay protected. | iCloud-bilder lastes ned ved behov. Safe, skjulte og utelatte bilder forblir beskyttet. |
+| 0276 | `blocks_photo_privacy` | iCloud photos download when needed. Vault, hidden and excluded photos stay protected. | iCloud-bilder lastes ned ved behov. Bilder i safen samt skjulte og utelatte bilder forblir beskyttet. |
 | 0277 | `blocks_photo_source` | Picture source | Bildekilde |
 | 0278 | `blocks_photos` | Choose photos | Velg bilder |
 | 0279 | `blocks_position` | Column %1$lld, row %2$lld, rotation %3$lld | Kolonne %1$lld, rad %2$lld, rotasjon %3$lld |
@@ -465,7 +465,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0454 | `edit_adj_noise` | Noise reduction | Støyreduksjon |
 | 0455 | `edit_adj_sharpen_radius` | Radius | Radius |
 | 0456 | `edit_adj_sharpen_threshold` | Threshold | Terskel |
-| 0457 | `edit_aspect_free` | Free | Gratis |
+| 0457 | `edit_aspect_free` | Free | Fritt |
 | 0458 | `edit_aspect_original` | Original | Original |
 | 0459 | `edit_changed` | changed | endret |
 | 0460 | `edit_compare_hint` | Edited photo. Touch and hold to see the original. | Redigert bilde. Hold inne for å se originalen. |
@@ -670,7 +670,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0659 | `fc_swipes` | Swipes | Sveip |
 | 0660 | `fc_swipes_footer` | Choose what each direction does. “Put in album” adds the photo to an album in the Photos app and keeps it. Doing nothing is never a decision. | Velg hva hver retning gjør. «Legg i album» legger bildet i et album i Bilder-appen og beholder det. Å ikke gjøre noe er aldri en beslutning. |
 | 0661 | `fc_title` | Swipes & buttons | Sveip og knapper |
-| 0662 | `fc_vis_accessibility` | Only with VoiceOver/Switch Control | Bare med VoiceOver/Brytertilgang |
+| 0662 | `fc_vis_accessibility` | Only with VoiceOver/Switch Control | Bare med VoiceOver/Bryterkontroll |
 | 0663 | `fc_vis_always` | Always | Alltid |
 | 0664 | `fc_visibility` | Show buttons | Vis knapper |
 | 0665 | `feed_album_done` | Put in “%1$@” | Legg i «%1$@» |
@@ -886,7 +886,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0875 | `lib_filter_raw` | RAW | RAW |
 | 0876 | `lib_filter_screenrec` | Screen recordings | Skjermopptak |
 | 0877 | `lib_filter_slowmo` | Slo-mo | Sakte film |
-| 0878 | `lib_filter_timelapse` | Time-lapse | Tidsforkortet |
+| 0878 | `lib_filter_timelapse` | Time-lapse | Tidsforløp |
 | 0879 | `lib_filter_title` | Filter | Filter |
 | 0880 | `lib_folder_cleanup` | Clean up this album | Rydd opp i dette albumet |
 | 0881 | `lib_folder_empty` | This album has no photos or videos right now. | Dette albumet har ingen bilder eller videoer akkurat nå. |
@@ -1023,9 +1023,9 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1012 | `movie_clips_note` | Use ⋯ to move or remove a clip. The photos and videos themselves stay unchanged. | Bruk ⋯ for å flytte eller fjerne et klipp. Selve bildene og videoene forblir uendret. |
 | 1013 | `movie_fade_black` | Fade to black between clips | Ton til svart mellom klippene |
 | 1014 | `movie_failed` | The video could not be created. Nothing was saved and the originals are unchanged. | Videoen kunne ikke opprettes. Ingenting ble lagret, og originalene er uendret. |
-| 1015 | `movie_fit_fill` | Fill frame | Fyll bildet |
+| 1015 | `movie_fit_fill` | Fill frame | Fyll rammen |
 | 1016 | `movie_fit_label` | If a clip has a different shape | Hvis et klipp har en annen form |
-| 1017 | `movie_fit_note` | Clips are never stretched: either the whole picture is shown (with black edges) or it fills the frame and the edges are cut off. | Klipp strekkes aldri: enten vises hele bildet (med svarte kanter), eller det fyller bildet og kantene beskjæres. |
+| 1017 | `movie_fit_note` | Clips are never stretched: either the whole picture is shown (with black edges) or it fills the frame and the edges are cut off. | Klipp strekkes aldri: enten vises hele bildet (med svarte kanter), eller det fyller rammen og kantene beskjæres. |
 | 1018 | `movie_fit_whole` | Whole picture | Hele bildet |
 | 1019 | `movie_format` | Format | Format |
 | 1020 | `movie_format_first` | Like first clip | Som første klipp |
@@ -1067,7 +1067,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1056 | `mute` | Turn sound off | Slå av lyd |
 | 1057 | `no_viewer` | This file can’t be shown. | Denne filen kan ikke vises. |
 | 1058 | `not_selected` | Not selected | Ikke valgt |
-| 1059 | `notice` | Note | Notat |
+| 1059 | `notice` | Note | Merk |
 | 1060 | `notif_due_body` | Something in “Later” is ready to review today. | Noe i «Senere» er klart til gjennomgang i dag. |
 | 1061 | `ok` | OK | OK |
 | 1062 | `onb_access_text` | GaleriQ shows your photos and videos directly on your device so you can clean up. No GaleriQ account or server. | GaleriQ viser bildene og videoene dine direkte på enheten slik at du kan rydde. Ingen GaleriQ-konto eller server. |
@@ -1248,7 +1248,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1237 | `qa_portraits` | Portraits | Portretter |
 | 1238 | `qa_portraits_sub` | Photos taken in Portrait mode | Bilder tatt i portrettmodus |
 | 1239 | `qa_random` | Random | Tilfeldig |
-| 1240 | `qa_random_sub` | %1$lld random open photos and videos, reshuffled every time | %1$lld tilfeldige åpne bilder og videoer, blandet på nytt hver gang |
+| 1240 | `qa_random_sub` | %1$lld random open photos and videos, reshuffled every time | %1$lld tilfeldige bilder og videoer som du ikke har gått gjennom, blandet på nytt hver gang |
 | 1241 | `qa_remove_note` | Only the shortcut is removed. Your files and choices are kept. | Bare snarveien fjernes. Filene og valgene dine beholdes. |
 | 1242 | `qa_screenshots` | Screenshots | Skjermbilder |
 | 1243 | `qa_selfies` | Selfies | Selfier |
@@ -1263,7 +1263,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1256 | `rec_latest` | Latest record | Siste rekord |
 | 1257 | `rec_medal_bronze` | Bronze | Bronse |
 | 1258 | `rec_medal_gold` | Gold | Gull |
-| 1259 | `rec_medal_next` | %1$@ from %2$@ · %3$@ to go | %1$@ av %2$@ · %3$@ igjen |
+| 1259 | `rec_medal_next` | %1$@ from %2$@ · %3$@ to go | %1$@ fra %2$@ · %3$@ igjen |
 | 1260 | `rec_medal_silver` | Silver | Sølv |
 | 1261 | `rec_note` | Medals only compare with your own results – no leaderboards, nothing leaves the device. | Medaljer sammenlignes bare med dine egne resultater – ingen ledertavler, ingenting forlater enheten. |
 | 1262 | `rec_record` | Record | Rekord |
@@ -1354,7 +1354,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1359 | `size_at_least` | At least %1$@ | Minst %1$@ |
 | 1360 | `size_unknown` | Size unknown | Ukjent størrelse |
 | 1361 | `skip_without_decision` | Next without choosing | Neste uten å velge |
-| 1362 | `slideshow_again` | Play again | Spill igjen |
+| 1362 | `slideshow_again` | Play again | Spill av igjen |
 | 1363 | `slideshow_cut` | None | Ingen |
 | 1364 | `slideshow_duration` | Time per photo | Tid per bilde |
 | 1365 | `slideshow_empty` | Nothing to show here. | Ingenting å vise her. |
@@ -1587,7 +1587,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1592 | `tour_lib_title` | All your photos | Alle bildene dine |
 | 1593 | `tour_months_later_text` | Items set aside for later count as reviewed – you still see them here. | Elementer lagt til side til senere teller som gått gjennom – du ser dem fortsatt her. |
 | 1594 | `tour_months_more_text` | Open the overview as a grid or review a finished month again. | Åpne oversikten som rutenett eller gå gjennom en ferdig måned igjen. |
-| 1595 | `tour_months_row_text` | Tap a month to review only its open photos and videos. | Trykk på en måned for å gå gjennom bare de åpne bildene og videoene i den. |
+| 1595 | `tour_months_row_text` | Tap a month to review only its open photos and videos. | Trykk på en måned for å gå gjennom bare månedens bilder og videoer som du ennå ikke har gått gjennom. |
 | 1596 | `tour_months_row_title` | How far you are | Hvor langt du har kommet |
 | 1597 | `tour_next` | Next | Neste |
 | 1598 | `tour_series_text` | Several photos taken in quick succession? Compare them side by side and choose what stays. | Flere bilder tatt raskt etter hverandre? Sammenlign dem side om side og velg hva som blir. |
@@ -1759,7 +1759,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1764 | `vault_import_confirm_text` | They are copied encrypted and verified. Then iOS asks whether they may be deleted from the Photos app. There they stay in “Recently Deleted” for 30 days. | De kopieres kryptert og kontrolleres. Deretter spør iOS om de kan slettes fra Bilder-appen. Der blir de liggende i «Nylig slettet» i 30 dager. |
 | 1765 | `vault_import_confirm_title` | Move to vault: %1$lld | Flytt til safen: %1$lld |
 | 1766 | `vault_import_copies_text` | GaleriQ also made copies of them (edits, collages, movies, GIFs): %1$lld. They are in the Photos app and stay visible unless you move them too. | GaleriQ har også laget kopier av dem (redigeringer, collager, filmer, GIF-er): %1$lld. De ligger i Bilder-appen og er fortsatt synlige med mindre du flytter dem også. |
-| 1767 | `vault_import_declined` | iOS didn’t delete some of them from the Photos app. GaleriQ doesn’t show them anywhere else anyway, but they are still visible in the Photos app. Use the note at the top to try again. | iOS slettet ikke noen av dem fra Bilder-appen. GaleriQ viser dem uansett ikke andre steder, men de er fortsatt synlige i Bilder-appen. Bruk meldingen øverst for å prøve igjen. |
+| 1767 | `vault_import_declined` | iOS didn’t delete some of them from the Photos app. GaleriQ doesn’t show them anywhere else anyway, but they are still visible in the Photos app. Use the note at the top to try again. | iOS slettet ikke alle elementene fra Bilder-appen. De gjenværende elementene vises ikke noe annet sted i GaleriQ, men de er fortsatt synlige i Bilder-appen. Bruk meldingen øverst for å prøve igjen. |
 | 1768 | `vault_import_done` | In the vault: %1$lld. Removed from the Photos app: %2$lld. | I safen: %1$lld. Fjernet fra Bilder-appen: %2$lld. |
 | 1769 | `vault_import_failed` | Couldn’t be moved: %1$lld (for example without a connection to iCloud). They stay in the Photos app. | Kunne ikke flyttes: %1$lld (f.eks. uten forbindelse til iCloud). De blir i Bilder-appen. |
 | 1770 | `vault_import_limit` | Not moved: %1$lld. Free allows %2$lld items in the vault; Pro is unlimited. | Ikke flyttet: %1$lld. Gratisversjonen tillater %2$lld elementer i safen; med Pro er det ubegrenset. |

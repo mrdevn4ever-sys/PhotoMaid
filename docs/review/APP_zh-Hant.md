@@ -242,7 +242,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0237 | `basket_confirm_media_title` | Remove photos & videos? | 要移除照片和影片嗎？ |
 | 0238 | `basket_count` | %1$lld in trash | 垃圾桶中有 %1$lld 項 |
 | 0240 | `basket_delete_files#other` | Permanently delete %1$lld files | 永久刪除 %1$lld 個檔案 |
-| 0242 | `basket_empty_media#other` | Remove %1$lld photos and videos | 移除 %1$lld 張照片和影片 |
+| 0242 | `basket_empty_media#other` | Remove %1$lld photos and videos | 移除 %1$lld 項照片和影片 |
 | 0243 | `basket_empty_message` | Everything you set aside for removal appears here. Swipe a photo or video left to add it. | 你準備移除的所有內容都會出現在這裡。將照片或影片向左滑即可加入。 |
 | 0244 | `basket_empty_title` | Your trash is empty | 你的垃圾桶是空的 |
 | 0245 | `basket_files_footer` | These files will be permanently deleted. You can’t undo this. | 這些檔案將被永久刪除。此動作無法還原。 |
@@ -272,7 +272,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0269 | `blocks_manage_access` | Manage allowed photos | 管理允許的照片 |
 | 0270 | `blocks_new_best` | New best! | 新紀錄！ |
 | 0271 | `blocks_newest` | Newest photos | 最新的照片 |
-| 0272 | `blocks_next` | Next | 下一步 |
+| 0272 | `blocks_next` | Next | 下一個 |
 | 0273 | `blocks_over` | Round complete | 本回合完成 |
 | 0274 | `blocks_pause` | Pause | 暫停 |
 | 0275 | `blocks_paused` | Paused | 已暫停 |
@@ -291,7 +291,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0288 | `blocks_selected` | Selected: %1$lld | 已選擇：%1$lld |
 | 0289 | `blocks_selection` | Choose my photos | 選擇我的照片 |
 | 0290 | `blocks_start` | Start game | 開始遊戲 |
-| 0291 | `blocks_subtitle` | Clear rows and discover your photos. | 消除行數，揭曉你的照片。 |
+| 0291 | `blocks_subtitle` | Clear rows and discover your photos. | 消除整行，揭曉你的照片。 |
 | 0292 | `blocks_title` | Foto Blocks | Foto Blocks |
 | 0293 | `cancel` | Cancel | 取消 |
 | 0294 | `cat_photos` | Photos | 照片 |
@@ -453,7 +453,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0454 | `edit_adj_noise` | Noise reduction | 降噪 |
 | 0455 | `edit_adj_sharpen_radius` | Radius | 半徑 |
 | 0456 | `edit_adj_sharpen_threshold` | Threshold | 臨界值 |
-| 0457 | `edit_aspect_free` | Free | 免費 |
+| 0457 | `edit_aspect_free` | Free | 任意形式 |
 | 0458 | `edit_aspect_original` | Original | 原始 |
 | 0459 | `edit_changed` | changed | 已更改 |
 | 0460 | `edit_compare_hint` | Edited photo. Touch and hold to see the original. | 已編輯的照片。按住即可查看原始照片。 |
@@ -790,7 +790,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0794 | `history_with_day` | %1$@ · %2$@ | %1$@ · %2$@ |
 | 0795 | `hub_dup_sub` | Identical copies | 相同的副本 |
 | 0796 | `hub_files_sub` | Files from connected folders | 已連接檔案夾中的檔案 |
-| 0797 | `hub_large_from` | from %1$@ | 來自 %1$@ |
+| 0797 | `hub_large_from` | from %1$@ | 至少 %1$@ |
 | 0798 | `hub_media_header` | Library | 圖庫 |
 | 0799 | `hub_months_sub` | Get done month by month | 一個月一個月完成 |
 | 0800 | `hub_nothing_pending` | All reviewed | 全部整理完畢 |
@@ -944,7 +944,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0961 | `memory_cloud` | Load iCloud photos | 載入 iCloud 照片 |
 | 0962 | `memory_done` | All pairs found! | 所有配對都找到了！ |
 | 0963 | `memory_elapsed` | Time: %1$@ | 時間：%1$@ |
-| 0964 | `memory_flip` | Turn cards over | 翻開卡片 |
+| 0964 | `memory_flip` | Turn cards over | 翻回卡片 |
 | 0965 | `memory_heart` | Heart | 愛心 |
 | 0966 | `memory_hidden` | Face down | 背面朝上 |
 | 0967 | `memory_leaf` | Leaf | 葉子 |
@@ -1104,7 +1104,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1128 | `pdf_files_hint` | Choose PDFs or images from Files. Combine, reorder and rotate pages with a live preview, then save a new PDF. | 從「檔案」選擇 PDF 或圖片。透過即時預覽合併、重新排序和旋轉頁面，然後儲存為新的 PDF。 |
 | 1129 | `pdf_files_large` | Choose fewer or smaller files (up to 100 MB per file, 256 MB per selection and 500 pages). | 請選擇較少或較小的檔案（每個檔案最多 100 MB，每次選擇最多 256 MB 和 500 頁）。 |
 | 1130 | `pdf_fill` | Fill | 填滿 |
-| 1131 | `pdf_fit` | Fit | 符合 |
+| 1131 | `pdf_fit` | Fit | 顯示完整 |
 | 1132 | `pdf_from_selection` | Create PDF | 建立 PDF |
 | 1133 | `pdf_margin` | Margin | 邊界 |
 | 1134 | `pdf_margin_none` | None | 無 |
@@ -1224,7 +1224,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1256 | `rec_latest` | Latest record | 最新紀錄 |
 | 1257 | `rec_medal_bronze` | Bronze | 銅牌 |
 | 1258 | `rec_medal_gold` | Gold | 金牌 |
-| 1259 | `rec_medal_next` | %1$@ from %2$@ · %3$@ to go | %1$@，共 %2$@ · 還差 %3$@ |
+| 1259 | `rec_medal_next` | %1$@ from %2$@ · %3$@ to go | %1$@ 需達 %2$@ · 還差 %3$@ |
 | 1260 | `rec_medal_silver` | Silver | 銀牌 |
 | 1261 | `rec_note` | Medals only compare with your own results – no leaderboards, nothing leaves the device. | 獎牌只和你自己的成績比較 – 沒有排行榜，任何內容都不會離開裝置。 |
 | 1262 | `rec_record` | Record | 紀錄 |
@@ -1309,7 +1309,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1359 | `size_at_least` | At least %1$@ | 至少 %1$@ |
 | 1360 | `size_unknown` | Size unknown | 大小未知 |
 | 1361 | `skip_without_decision` | Next without choosing | 不選擇，看下一張 |
-| 1362 | `slideshow_again` | Play again | 再玩一次 |
+| 1362 | `slideshow_again` | Play again | 再播放一次 |
 | 1363 | `slideshow_cut` | None | 無 |
 | 1364 | `slideshow_duration` | Time per photo | 每張照片的時間 |
 | 1365 | `slideshow_empty` | Nothing to show here. | 這裡沒有可顯示的內容。 |
@@ -1444,7 +1444,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1498 | `today_limited_action` | Change access | 更改取用權限 |
 | 1499 | `today_limited_text` | GaleriQ only shows the photos and videos you’ve allowed. You can clean these up as usual. | GaleriQ 只會顯示你允許的照片和影片。你可以照常整理它們。 |
 | 1500 | `today_limited_title` | Limited access | 有限取用 |
-| 1502 | `today_new_since#other` | %1$lld new photos and videos | %1$lld 張新照片和影片 |
+| 1502 | `today_new_since#other` | %1$lld new photos and videos | %1$lld 項新照片和影片 |
 | 1503 | `today_new_since_sub` | since your last cleanup | 自上次整理以來 |
 | 1504 | `today_reconciliation` | Something was interrupted the last time the trash was emptied. To be safe, nothing is deleted again. | 上次清空垃圾桶時有中斷。為了安全，不會再次刪除任何內容。 |
 | 1505 | `today_review_hint` | Opens your photos and videos for cleanup | 打開你的照片和影片進行整理 |

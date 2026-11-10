@@ -284,7 +284,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0273 | `blocks_over` | Round complete | Omgången klar |
 | 0274 | `blocks_pause` | Pause | Pausa |
 | 0275 | `blocks_paused` | Paused | Pausat |
-| 0276 | `blocks_photo_privacy` | iCloud photos download when needed. Vault, hidden and excluded photos stay protected. | iCloud-bilder hämtas vid behov. Valv, dolda och undantagna bilder förblir skyddade. |
+| 0276 | `blocks_photo_privacy` | iCloud photos download when needed. Vault, hidden and excluded photos stay protected. | iCloud-bilder hämtas vid behov. Bilder i valvet samt dolda och undantagna bilder förblir skyddade. |
 | 0277 | `blocks_photo_source` | Picture source | Bildkälla |
 | 0278 | `blocks_photos` | Choose photos | Välj bilder |
 | 0279 | `blocks_position` | Column %1$lld, row %2$lld, rotation %3$lld | Kolumn %1$lld, rad %2$lld, rotation %3$lld |
@@ -465,7 +465,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0454 | `edit_adj_noise` | Noise reduction | Brusreducering |
 | 0455 | `edit_adj_sharpen_radius` | Radius | Radie |
 | 0456 | `edit_adj_sharpen_threshold` | Threshold | Tröskel |
-| 0457 | `edit_aspect_free` | Free | Gratis |
+| 0457 | `edit_aspect_free` | Free | Fritt |
 | 0458 | `edit_aspect_original` | Original | Original |
 | 0459 | `edit_changed` | changed | ändrad |
 | 0460 | `edit_compare_hint` | Edited photo. Touch and hold to see the original. | Redigerad bild. Håll ned för att se originalet. |
@@ -531,7 +531,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0520 | `edit_mk_hint_ios` | Tap a text or sticker to select it, then drag it where you want it. | Tryck på en text eller dekal för att markera den och dra den sedan dit du vill. |
 | 0521 | `edit_mk_larger` | Larger | Större |
 | 0522 | `edit_mk_redact` | Cover | Täck |
-| 0523 | `edit_mk_redact_hint` | With “Pixelate” and “Blur” outlines may still show. For text that must stay unreadable, choose “Solid”. | Med ”Pixla” och ”Sudda” kan konturer fortfarande synas. För text som måste bli oläslig väljer du ”Heltäckande”. |
+| 0523 | `edit_mk_redact_hint` | With “Pixelate” and “Blur” outlines may still show. For text that must stay unreadable, choose “Solid”. | Med ”Pixla” och ”Oskärpa” kan konturer fortfarande synas. För text som måste bli oläslig väljer du ”Heltäckande”. |
 | 0524 | `edit_mk_redact_solid_hint` | Recommended for private details: whatever you cover is really gone in the saved or shared file. | Rekommenderas för privata detaljer: det du täcker är verkligen borta i den sparade eller delade filen. |
 | 0525 | `edit_mk_select` | Select | Markera |
 | 0526 | `edit_mk_shape` | Shapes | Former |
@@ -547,7 +547,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0536 | `edit_pro_hint` | Preview is free · saving needs Pro or the 30-minute test | Förhandsvisning är gratis · att spara kräver Pro eller 30-minuterstestet |
 | 0537 | `edit_pro_text` | Cropping, rotating and straightening are free. Adjustments, filters, size and video trimming save with Pro. Trying them out is always free. | Beskära, rotera och räta upp är gratis. Justeringar, filter, storlek och videoklippning sparas med Pro. Att prova är alltid gratis. |
 | 0538 | `edit_pro_title` | Save with Pro | Spara med Pro |
-| 0539 | `edit_redact_blur` | Blur | Sudda |
+| 0539 | `edit_redact_blur` | Blur | Oskärpa |
 | 0540 | `edit_redact_pixelate` | Pixelate | Pixla |
 | 0541 | `edit_redact_solid` | Solid (recommended) | Heltäckande (rekommenderas) |
 | 0542 | `edit_remove_location` | Remove location | Ta bort plats |
@@ -560,7 +560,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0549 | `edit_save_copy_text` | The original stays unchanged. | Originalet förblir oförändrat. |
 | 0550 | `edit_save_geometry_only` | Save crop only | Spara bara beskärningen |
 | 0551 | `edit_save_original` | Edit original | Redigera originalet |
-| 0552 | `edit_save_original_text` | iOS asks first. The edit is saved like an edit in the Photos app – you can undo it there anytime with “Revert”. | iOS frågar först. Redigeringen sparas som en redigering i appen Bilder – du kan när som helst ångra den där med ”Återställ”. |
+| 0552 | `edit_save_original_text` | iOS asks first. The edit is saved like an edit in the Photos app – you can undo it there anytime with “Revert”. | iOS frågar först. Redigeringen sparas som en redigering i appen Bilder – du kan när som helst ångra den där med ”Återgå”. |
 | 0553 | `edit_save_replace` | Save copy and move original to trash | Spara kopia och flytta originalet till papperskorgen |
 | 0554 | `edit_save_replace_action` | Save copy, original to trash | Spara kopia, original i papperskorgen |
 | 0555 | `edit_save_replace_text` | iOS asks to confirm. The original goes to “Recently Deleted” in the Photos app and can usually be restored there for 30 days. Space is freed only after that. | iOS ber om bekräftelse. Originalet hamnar i ”Nyligen raderade” i appen Bilder och kan oftast återställas där i 30 dagar. Utrymmet frigörs först därefter. |
@@ -670,7 +670,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0659 | `fc_swipes` | Swipes | Svep |
 | 0660 | `fc_swipes_footer` | Choose what each direction does. “Put in album” adds the photo to an album in the Photos app and keeps it. Doing nothing is never a decision. | Välj vad varje riktning gör. ”Lägg i album” lägger till bilden i ett album i appen Bilder och behåller den. Att inte göra något är aldrig ett beslut. |
 | 0661 | `fc_title` | Swipes & buttons | Svep och knappar |
-| 0662 | `fc_vis_accessibility` | Only with VoiceOver/Switch Control | Bara med VoiceOver/Brytarstyrning |
+| 0662 | `fc_vis_accessibility` | Only with VoiceOver/Switch Control | Bara med VoiceOver/Reglagestyrning |
 | 0663 | `fc_vis_always` | Always | Alltid |
 | 0664 | `fc_visibility` | Show buttons | Visa knappar |
 | 0665 | `feed_album_done` | Put in “%1$@” | Lägg i ”%1$@” |
@@ -877,7 +877,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0866 | `lib_fav_empty_title` | No favourites yet | Inga favoriter ännu |
 | 0867 | `lib_feed_title` | From the library | Från biblioteket |
 | 0868 | `lib_filter_all` | All | Alla |
-| 0869 | `lib_filter_cinematic` | Cinematic | Filmiskt |
+| 0869 | `lib_filter_cinematic` | Cinematic | Cinematiskt |
 | 0870 | `lib_filter_clear` | Remove filter | Ta bort filter |
 | 0871 | `lib_filter_edited` | Edited | Redigerade |
 | 0872 | `lib_filter_empty` | Nothing here for the filter “%1$@”. | Inget här för filtret ”%1$@”. |
@@ -885,8 +885,8 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0874 | `lib_filter_panoramas` | Panoramas | Panoramabilder |
 | 0875 | `lib_filter_raw` | RAW | RAW |
 | 0876 | `lib_filter_screenrec` | Screen recordings | Skärminspelningar |
-| 0877 | `lib_filter_slowmo` | Slo-mo | Slow motion |
-| 0878 | `lib_filter_timelapse` | Time-lapse | Time-lapse |
+| 0877 | `lib_filter_slowmo` | Slo-mo | Slowmotion |
+| 0878 | `lib_filter_timelapse` | Time-lapse | Uppsnabbat |
 | 0879 | `lib_filter_title` | Filter | Filter |
 | 0880 | `lib_folder_cleanup` | Clean up this album | Rensa det här albumet |
 | 0881 | `lib_folder_empty` | This album has no photos or videos right now. | Det här albumet har inga bilder eller videor just nu. |
@@ -1067,7 +1067,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1056 | `mute` | Turn sound off | Stäng av ljud |
 | 1057 | `no_viewer` | This file can’t be shown. | Den här filen kan inte visas. |
 | 1058 | `not_selected` | Not selected | Inte markerad |
-| 1059 | `notice` | Note | Anteckning |
+| 1059 | `notice` | Note | Observera |
 | 1060 | `notif_due_body` | Something in “Later” is ready to review today. | Något i ”Senare” är redo att gå igenom i dag. |
 | 1061 | `ok` | OK | OK |
 | 1062 | `onb_access_text` | GaleriQ shows your photos and videos directly on your device so you can clean up. No GaleriQ account or server. | GaleriQ visar dina bilder och videor direkt på enheten så att du kan rensa. Inget GaleriQ-konto eller server. |
@@ -1248,7 +1248,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1237 | `qa_portraits` | Portraits | Porträtt |
 | 1238 | `qa_portraits_sub` | Photos taken in Portrait mode | Bilder tagna i porträttläge |
 | 1239 | `qa_random` | Random | Slumpvis |
-| 1240 | `qa_random_sub` | %1$lld random open photos and videos, reshuffled every time | %1$lld slumpvisa öppna bilder och videor, blandade på nytt varje gång |
+| 1240 | `qa_random_sub` | %1$lld random open photos and videos, reshuffled every time | %1$lld slumpvis valda bilder och videor som du inte gått igenom, blandade på nytt varje gång |
 | 1241 | `qa_remove_note` | Only the shortcut is removed. Your files and choices are kept. | Bara genvägen tas bort. Dina filer och val behålls. |
 | 1242 | `qa_screenshots` | Screenshots | Skärmavbilder |
 | 1243 | `qa_selfies` | Selfies | Selfies |
@@ -1263,7 +1263,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1256 | `rec_latest` | Latest record | Senaste rekord |
 | 1257 | `rec_medal_bronze` | Bronze | Brons |
 | 1258 | `rec_medal_gold` | Gold | Guld |
-| 1259 | `rec_medal_next` | %1$@ from %2$@ · %3$@ to go | %1$@ av %2$@ · %3$@ kvar |
+| 1259 | `rec_medal_next` | %1$@ from %2$@ · %3$@ to go | %1$@ från %2$@ · %3$@ kvar |
 | 1260 | `rec_medal_silver` | Silver | Silver |
 | 1261 | `rec_note` | Medals only compare with your own results – no leaderboards, nothing leaves the device. | Medaljerna jämförs bara med dina egna resultat – inga topplistor, inget lämnar enheten. |
 | 1262 | `rec_record` | Record | Rekord |
@@ -1587,7 +1587,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1592 | `tour_lib_title` | All your photos | Alla dina bilder |
 | 1593 | `tour_months_later_text` | Items set aside for later count as reviewed – you still see them here. | Objekt som lagts undan till senare räknas som genomgångna – du ser dem fortfarande här. |
 | 1594 | `tour_months_more_text` | Open the overview as a grid or review a finished month again. | Öppna översikten som rutnät eller gå igenom en färdig månad igen. |
-| 1595 | `tour_months_row_text` | Tap a month to review only its open photos and videos. | Tryck på en månad för att bara gå igenom dess öppna bilder och videor. |
+| 1595 | `tour_months_row_text` | Tap a month to review only its open photos and videos. | Tryck på en månad för att bara gå igenom dess bilder och videor som du inte har gått igenom än. |
 | 1596 | `tour_months_row_title` | How far you are | Hur långt du har kommit |
 | 1597 | `tour_next` | Next | Nästa |
 | 1598 | `tour_series_text` | Several photos taken in quick succession? Compare them side by side and choose what stays. | Flera bilder tagna i snabb följd? Jämför dem sida vid sida och välj vad som blir kvar. |
@@ -1759,7 +1759,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1764 | `vault_import_confirm_text` | They are copied encrypted and verified. Then iOS asks whether they may be deleted from the Photos app. There they stay in “Recently Deleted” for 30 days. | De kopieras krypterat och kontrolleras. Sedan frågar iOS om de får raderas från appen Bilder. Där ligger de kvar i ”Nyligen raderade” i 30 dagar. |
 | 1765 | `vault_import_confirm_title` | Move to vault: %1$lld | Flytta till valvet: %1$lld |
 | 1766 | `vault_import_copies_text` | GaleriQ also made copies of them (edits, collages, movies, GIFs): %1$lld. They are in the Photos app and stay visible unless you move them too. | GaleriQ har också gjort kopior av dem (redigeringar, collage, filmer, GIF:ar): %1$lld. De finns i appen Bilder och syns fortfarande om du inte flyttar dem också. |
-| 1767 | `vault_import_declined` | iOS didn’t delete some of them from the Photos app. GaleriQ doesn’t show them anywhere else anyway, but they are still visible in the Photos app. Use the note at the top to try again. | iOS raderade inte några av dem från appen Bilder. GaleriQ visar dem ändå inte någon annanstans, men de syns fortfarande i appen Bilder. Använd meddelandet högst upp för att försöka igen. |
+| 1767 | `vault_import_declined` | iOS didn’t delete some of them from the Photos app. GaleriQ doesn’t show them anywhere else anyway, but they are still visible in the Photos app. Use the note at the top to try again. | iOS raderade inte alla objekten från appen Bilder. De som är kvar visas inte någon annanstans i GaleriQ, men de syns fortfarande i appen Bilder. Använd meddelandet högst upp för att försöka igen. |
 | 1768 | `vault_import_done` | In the vault: %1$lld. Removed from the Photos app: %2$lld. | I valvet: %1$lld. Borttagna från appen Bilder: %2$lld. |
 | 1769 | `vault_import_failed` | Couldn’t be moved: %1$lld (for example without a connection to iCloud). They stay in the Photos app. | Kunde inte flyttas: %1$lld (t.ex. utan anslutning till iCloud). De stannar i appen Bilder. |
 | 1770 | `vault_import_limit` | Not moved: %1$lld. Free allows %2$lld items in the vault; Pro is unlimited. | Inte flyttade: %1$lld. Gratisversionen tillåter %2$lld objekt i valvet; med Pro är det obegränsat. |

@@ -270,7 +270,7 @@
 0273	Omgången klar
 0274	Pausa
 0275	Pausat
-0276	iCloud-bilder hämtas vid behov. Valv, dolda och undantagna bilder förblir skyddade.
+0276	iCloud-bilder hämtas vid behov. Bilder i valvet samt dolda och undantagna bilder förblir skyddade.
 0277	Bildkälla
 0278	Välj bilder
 0279	Kolumn %1$lld, rad %2$lld, rotation %3$lld
@@ -451,7 +451,7 @@
 0454	Brusreducering
 0455	Radie
 0456	Tröskel
-0457	Gratis
+0457	Fritt
 0458	Original
 0459	ändrad
 0460	Redigerad bild. Håll ned för att se originalet.
@@ -517,7 +517,7 @@
 0520	Tryck på en text eller dekal för att markera den och dra den sedan dit du vill.
 0521	Större
 0522	Täck
-0523	Med ”Pixla” och ”Sudda” kan konturer fortfarande synas. För text som måste bli oläslig väljer du ”Heltäckande”.
+0523	Med ”Pixla” och ”Oskärpa” kan konturer fortfarande synas. För text som måste bli oläslig väljer du ”Heltäckande”.
 0524	Rekommenderas för privata detaljer: det du täcker är verkligen borta i den sparade eller delade filen.
 0525	Markera
 0526	Former
@@ -533,7 +533,7 @@
 0536	Förhandsvisning är gratis · att spara kräver Pro eller 30-minuterstestet
 0537	Beskära, rotera och räta upp är gratis. Justeringar, filter, storlek och videoklippning sparas med Pro. Att prova är alltid gratis.
 0538	Spara med Pro
-0539	Sudda
+0539	Oskärpa
 0540	Pixla
 0541	Heltäckande (rekommenderas)
 0542	Ta bort plats
@@ -546,7 +546,7 @@
 0549	Originalet förblir oförändrat.
 0550	Spara bara beskärningen
 0551	Redigera originalet
-0552	iOS frågar först. Redigeringen sparas som en redigering i appen Bilder – du kan när som helst ångra den där med ”Återställ”.
+0552	iOS frågar först. Redigeringen sparas som en redigering i appen Bilder – du kan när som helst ångra den där med ”Återgå”.
 0553	Spara kopia och flytta originalet till papperskorgen
 0554	Spara kopia, original i papperskorgen
 0555	iOS ber om bekräftelse. Originalet hamnar i ”Nyligen raderade” i appen Bilder och kan oftast återställas där i 30 dagar. Utrymmet frigörs först därefter.
@@ -656,7 +656,7 @@
 0659	Svep
 0660	Välj vad varje riktning gör. ”Lägg i album” lägger till bilden i ett album i appen Bilder och behåller den. Att inte göra något är aldrig ett beslut.
 0661	Svep och knappar
-0662	Bara med VoiceOver/Brytarstyrning
+0662	Bara med VoiceOver/Reglagestyrning
 0663	Alltid
 0664	Visa knappar
 0665	Lägg i ”%1$@”
@@ -863,7 +863,7 @@
 0866	Inga favoriter ännu
 0867	Från biblioteket
 0868	Alla
-0869	Filmiskt
+0869	Cinematiskt
 0870	Ta bort filter
 0871	Redigerade
 0872	Inget här för filtret ”%1$@”.
@@ -871,8 +871,8 @@
 0874	Panoramabilder
 0875	RAW
 0876	Skärminspelningar
-0877	Slow motion
-0878	Time-lapse
+0877	Slowmotion
+0878	Uppsnabbat
 0879	Filter
 0880	Rensa det här albumet
 0881	Det här albumet har inga bilder eller videor just nu.
@@ -1053,7 +1053,7 @@
 1056	Stäng av ljud
 1057	Den här filen kan inte visas.
 1058	Inte markerad
-1059	Anteckning
+1059	Observera
 1060	Något i ”Senare” är redo att gå igenom i dag.
 1061	OK
 1062	GaleriQ visar dina bilder och videor direkt på enheten så att du kan rensa. Inget GaleriQ-konto eller server.
@@ -1234,7 +1234,7 @@
 1237	Porträtt
 1238	Bilder tagna i porträttläge
 1239	Slumpvis
-1240	%1$lld slumpvisa öppna bilder och videor, blandade på nytt varje gång
+1240	%1$lld slumpvis valda bilder och videor som du inte gått igenom, blandade på nytt varje gång
 1241	Bara genvägen tas bort. Dina filer och val behålls.
 1242	Skärmavbilder
 1243	Selfies
@@ -1249,7 +1249,7 @@
 1256	Senaste rekord
 1257	Brons
 1258	Guld
-1259	%1$@ av %2$@ · %3$@ kvar
+1259	%1$@ från %2$@ · %3$@ kvar
 1260	Silver
 1261	Medaljerna jämförs bara med dina egna resultat – inga topplistor, inget lämnar enheten.
 1262	Rekord
@@ -1573,7 +1573,7 @@
 1592	Alla dina bilder
 1593	Objekt som lagts undan till senare räknas som genomgångna – du ser dem fortfarande här.
 1594	Öppna översikten som rutnät eller gå igenom en färdig månad igen.
-1595	Tryck på en månad för att bara gå igenom dess öppna bilder och videor.
+1595	Tryck på en månad för att bara gå igenom dess bilder och videor som du inte har gått igenom än.
 1596	Hur långt du har kommit
 1597	Nästa
 1598	Flera bilder tagna i snabb följd? Jämför dem sida vid sida och välj vad som blir kvar.
@@ -1745,7 +1745,7 @@
 1764	De kopieras krypterat och kontrolleras. Sedan frågar iOS om de får raderas från appen Bilder. Där ligger de kvar i ”Nyligen raderade” i 30 dagar.
 1765	Flytta till valvet: %1$lld
 1766	GaleriQ har också gjort kopior av dem (redigeringar, collage, filmer, GIF:ar): %1$lld. De finns i appen Bilder och syns fortfarande om du inte flyttar dem också.
-1767	iOS raderade inte några av dem från appen Bilder. GaleriQ visar dem ändå inte någon annanstans, men de syns fortfarande i appen Bilder. Använd meddelandet högst upp för att försöka igen.
+1767	iOS raderade inte alla objekten från appen Bilder. De som är kvar visas inte någon annanstans i GaleriQ, men de syns fortfarande i appen Bilder. Använd meddelandet högst upp för att försöka igen.
 1768	I valvet: %1$lld. Borttagna från appen Bilder: %2$lld.
 1769	Kunde inte flyttas: %1$lld (t.ex. utan anslutning till iCloud). De stannar i appen Bilder.
 1770	Inte flyttade: %1$lld. Gratisversionen tillåter %2$lld objekt i valvet; med Pro är det obegränsat.

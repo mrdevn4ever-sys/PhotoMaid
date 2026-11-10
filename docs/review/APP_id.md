@@ -453,7 +453,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0454 | `edit_adj_noise` | Noise reduction | Pengurangan derau |
 | 0455 | `edit_adj_sharpen_radius` | Radius | Radius |
 | 0456 | `edit_adj_sharpen_threshold` | Threshold | Ambang |
-| 0457 | `edit_aspect_free` | Free | Gratis |
+| 0457 | `edit_aspect_free` | Free | Bebas |
 | 0458 | `edit_aspect_original` | Original | Asli |
 | 0459 | `edit_changed` | changed | diubah |
 | 0460 | `edit_compare_hint` | Edited photo. Touch and hold to see the original. | Foto hasil edit. Sentuh dan tahan untuk melihat aslinya. |
@@ -1210,11 +1210,11 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1237 | `qa_portraits` | Portraits | Potret |
 | 1238 | `qa_portraits_sub` | Photos taken in Portrait mode | Foto yang diambil dengan mode Potret |
 | 1239 | `qa_random` | Random | Acak |
-| 1240 | `qa_random_sub` | %1$lld random open photos and videos, reshuffled every time | %1$lld foto dan video terbuka acak, diacak ulang setiap kali |
+| 1240 | `qa_random_sub` | %1$lld random open photos and videos, reshuffled every time | %1$lld foto dan video acak yang belum ditinjau, diacak ulang setiap kali |
 | 1241 | `qa_remove_note` | Only the shortcut is removed. Your files and choices are kept. | Hanya pintasan yang dihapus. File dan pilihanmu tetap disimpan. |
 | 1242 | `qa_screenshots` | Screenshots | Tangkapan layar |
-| 1243 | `qa_selfies` | Selfies | Swafoto |
-| 1244 | `qa_selfies_sub` | From the Selfies album in the Photos app | Dari album Swafoto di app Foto |
+| 1243 | `qa_selfies` | Selfies | Selfie |
+| 1244 | `qa_selfies_sub` | From the Selfies album in the Photos app | Dari album Selfie di app Foto |
 | 1245 | `qa_this_week` | This week | Minggu ini |
 | 1246 | `qa_this_week_sub` | Photos and videos from this calendar week | Foto dan video dari minggu kalender ini |
 | 1247 | `qa_title` | Quick access | Akses cepat |
@@ -1309,7 +1309,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1359 | `size_at_least` | At least %1$@ | Setidaknya %1$@ |
 | 1360 | `size_unknown` | Size unknown | Ukuran tidak diketahui |
 | 1361 | `skip_without_decision` | Next without choosing | Berikutnya tanpa memilih |
-| 1362 | `slideshow_again` | Play again | Main lagi |
+| 1362 | `slideshow_again` | Play again | Putar lagi |
 | 1363 | `slideshow_cut` | None | Tidak ada |
 | 1364 | `slideshow_duration` | Time per photo | Waktu per foto |
 | 1365 | `slideshow_empty` | Nothing to show here. | Tidak ada yang ditampilkan di sini. |
@@ -1437,10 +1437,10 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1490 | `today_done_subtitle` | There’s nothing else to review for now. | Tidak ada lagi yang perlu ditinjau untuk saat ini. |
 | 1491 | `today_done_title` | All reviewed | Semua sudah ditinjau |
 | 1493 | `today_due#other` | %1$lld items from “Later” are ready to review | %1$lld item dari “Nanti” siap ditinjau |
-| 1494 | `today_greeting_afternoon` | Good afternoon | Selamat siang |
+| 1494 | `today_greeting_afternoon` | Good afternoon | Selamat sore |
 | 1495 | `today_greeting_evening` | Good evening | Selamat malam |
 | 1496 | `today_greeting_morning` | Good morning | Selamat pagi |
-| 1497 | `today_greeting_noon` | Good afternoon | Selamat sore |
+| 1497 | `today_greeting_noon` | Good afternoon | Selamat siang |
 | 1498 | `today_limited_action` | Change access | Ubah akses |
 | 1499 | `today_limited_text` | GaleriQ only shows the photos and videos you’ve allowed. You can clean these up as usual. | GaleriQ hanya menampilkan foto dan video yang kamu izinkan. Kamu bisa merapikannya seperti biasa. |
 | 1500 | `today_limited_title` | Limited access | Akses terbatas |
@@ -1532,7 +1532,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1592 | `tour_lib_title` | All your photos | Semua fotomu |
 | 1593 | `tour_months_later_text` | Items set aside for later count as reviewed – you still see them here. | Item yang disisihkan untuk nanti dihitung sudah ditinjau – kamu tetap melihatnya di sini. |
 | 1594 | `tour_months_more_text` | Open the overview as a grid or review a finished month again. | Buka ringkasan sebagai kisi atau tinjau lagi bulan yang sudah selesai. |
-| 1595 | `tour_months_row_text` | Tap a month to review only its open photos and videos. | Ketuk bulan untuk meninjau hanya foto dan video yang masih terbuka di bulan itu. |
+| 1595 | `tour_months_row_text` | Tap a month to review only its open photos and videos. | Ketuk bulan untuk meninjau hanya foto dan video yang belum ditinjau di bulan itu. |
 | 1596 | `tour_months_row_title` | How far you are | Sejauh mana kamu |
 | 1597 | `tour_next` | Next | Berikutnya |
 | 1598 | `tour_series_text` | Several photos taken in quick succession? Compare them side by side and choose what stays. | Beberapa foto diambil berturut-turut cepat? Bandingkan berdampingan dan pilih mana yang tetap. |
@@ -1549,7 +1549,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1609 | `tour_today_status_title` | Trash & Later | Sampah & Nanti |
 | 1610 | `tour_today_tab_text` | Large files, duplicate photos, single months and ready-made collections: this is where you tidy up step by step. | File besar, foto duplikat, bulan tertentu, dan koleksi siap pakai: di sinilah kamu merapikan langkah demi langkah. |
 | 1611 | `tour_today_tab_title` | More ways to clean up | Cara lain untuk merapikan |
-| 1612 | `tour_vault_text` | Hold “GaleriQ” at the top for 2 seconds to open the vault – the dial in the “Q” turns. Set it up and find more options in Settings. | Tahan “GaleriQ” di bagian atas selama 2 detik untuk membuka brankas – putaran di “Q” berputar. Atur brankas dan temukan opsi lain di Pengaturan. |
+| 1612 | `tour_vault_text` | Hold “GaleriQ” at the top for 2 seconds to open the vault – the dial in the “Q” turns. Set it up and find more options in Settings. | Tahan “GaleriQ” di bagian atas selama 2 detik untuk membuka brankas – cakram di “Q” berputar. Atur brankas dan temukan opsi lain di Pengaturan. |
 | 1613 | `tour_vault_title` | Your private vault | Brankas pribadimu |
 | 1614 | `undo` | Undo | Urungkan |
 | 1616 | `unit_days#other` | Days | Hari |
@@ -1695,7 +1695,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1758 | `vault_forgot` | Forgot code? | Lupa kode? |
 | 1759 | `vault_forgot_none` | No recovery key was set up. Without the code (or Face ID), the vault can’t be opened. | Kunci pemulihan belum diatur. Tanpa kode (atau Face ID), brankas tidak dapat dibuka. |
 | 1760 | `vault_hide_entry` | Hide entry | Sembunyikan pintu masuk |
-| 1761 | `vault_hide_entry_text` | The vault disappears from Settings. To open it, press and hold “GaleriQ” at the top of the start screen for 2 seconds – the small vault dial in the “Q” turns. | Brankas hilang dari Pengaturan. Untuk membukanya, tekan dan tahan “GaleriQ” di bagian atas layar awal selama 2 detik – putaran kecil brankas di “Q” berputar. |
+| 1761 | `vault_hide_entry_text` | The vault disappears from Settings. To open it, press and hold “GaleriQ” at the top of the start screen for 2 seconds – the small vault dial in the “Q” turns. | Brankas hilang dari Pengaturan. Untuk membukanya, tekan dan tahan “GaleriQ” di bagian atas layar awal selama 2 detik – cakram kecil brankas di “Q” berputar. |
 | 1762 | `vault_hide_title` | Hide the entry? | Sembunyikan pintu masuk? |
 | 1763 | `vault_import_action` | Move to vault | Pindahkan ke brankas |
 | 1764 | `vault_import_confirm_text` | They are copied encrypted and verified. Then iOS asks whether they may be deleted from the Photos app. There they stay in “Recently Deleted” for 30 days. | Item disalin terenkripsi dan diperiksa. Lalu iOS bertanya apakah boleh dihapus dari app Foto. Di sana item tetap di “Baru Dihapus” selama 30 hari. |

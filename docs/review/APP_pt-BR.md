@@ -193,6 +193,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0182 | `archive_running` | Copying and checking … | Copiando e verificando … |
 | 0183 | `archive_start` | Copy and check | Copiar e verificar |
 | 0184 | `archive_step_copy#one` | %1$lld file is copied to “%2$@”. | %1$lld arquivo será copiado para “%2$@”. |
+| 0185:many | `archive_step_copy#many` | – | %1$lld de arquivos serão copiados para “%2$@”. |
 | 0185 | `archive_step_copy#other` | %1$lld files are copied to “%2$@”. | %1$lld arquivos serão copiados para “%2$@”. |
 | 0186 | `archive_step_header` | Step %1$lld · %2$@ | Etapa %1$lld · %2$@ |
 | 0187 | `archive_step_originals` | Your originals stay as they are. | Seus originais continuam como estão. |
@@ -248,8 +249,10 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0237 | `basket_confirm_media_title` | Remove photos & videos? | Remover fotos e vídeos? |
 | 0238 | `basket_count` | %1$lld in trash | %1$lld na lixeira |
 | 0239 | `basket_delete_files#one` | Permanently delete %1$lld file | Apagar %1$lld arquivo permanentemente |
+| 0240:many | `basket_delete_files#many` | – | Apagar %1$lld de arquivos permanentemente |
 | 0240 | `basket_delete_files#other` | Permanently delete %1$lld files | Apagar %1$lld arquivos permanentemente |
 | 0241 | `basket_empty_media#one` | Remove %1$lld photo or video | Remover %1$lld foto ou vídeo |
+| 0242:many | `basket_empty_media#many` | – | Remover %1$lld de fotos e vídeos |
 | 0242 | `basket_empty_media#other` | Remove %1$lld photos and videos | Remover %1$lld fotos e vídeos |
 | 0243 | `basket_empty_message` | Everything you set aside for removal appears here. Swipe a photo or video left to add it. | Tudo o que você separou para remover aparece aqui. Deslize uma foto ou vídeo para a esquerda para adicioná-lo. |
 | 0244 | `basket_empty_title` | Your trash is empty | Sua lixeira está vazia |
@@ -269,10 +272,10 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0258 | `blocks_clear_selection` | Clear selection | Limpar seleção |
 | 0259 | `blocks_continue` | Resume | Continuar |
 | 0260 | `blocks_discovered` | Photo discovered! | Foto revelada! |
-| 0261 | `blocks_favorites` | Favorites | Favoritas |
+| 0261 | `blocks_favorites` | Favorites | Favoritos |
 | 0262 | `blocks_found` | Photos discovered: %1$lld | Fotos reveladas: %1$lld |
-| 0263 | `blocks_gestures` | Board: swipe sideways, tap to rotate, drag or flick down. | Tabuleiro: deslize para os lados, toque para girar, arraste ou dê um toque rápido para baixo. |
-| 0264 | `blocks_hint_drop` | Drag down: faster · flick down: place | Arrastar para baixo: mais rápido · toque rápido para baixo: encaixar |
+| 0263 | `blocks_gestures` | Board: swipe sideways, tap to rotate, drag or flick down. | Tabuleiro: deslize para os lados, toque para girar, arraste ou deslize rapidamente para baixo. |
+| 0264 | `blocks_hint_drop` | Drag down: faster · flick down: place | Arrastar para baixo: mais rápido · deslizar rapidamente para baixo: encaixar |
 | 0265 | `blocks_hint_move` | Swipe sideways to move | Deslize para os lados para mover |
 | 0266 | `blocks_hint_rotate` | Tap to rotate | Toque para girar |
 | 0267 | `blocks_how` | How to play | Como jogar |
@@ -363,6 +366,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0352 | `col_trim_right` | Trim right | Cortar à direita |
 | 0353 | `col_trim_top` | Trim top | Cortar em cima |
 | 0354 | `col_unknown_hint#one` | %1$lld item with an unknown size was skipped. | %1$lld item de tamanho desconhecido foi ignorado. |
+| 0355:many | `col_unknown_hint#many` | – | %1$lld de itens de tamanho desconhecido foram ignorados. |
 | 0355 | `col_unknown_hint#other` | %1$lld items with unknown sizes were skipped. | %1$lld itens de tamanho desconhecido foram ignorados. |
 | 0356 | `col_what` | What would you like to view? | O que você quer ver? |
 | 0357 | `collage_action_album` | Save to album | Salvar no álbum |
@@ -437,6 +441,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0426 | `done_total` | %1$@ saved in total | %1$@ economizados no total |
 | 0427 | `done_total_at_least` | At least %1$@ saved in total | Pelo menos %1$@ economizados no total |
 | 0428 | `done_unknown#one` | The size of %1$lld item is unknown. It isn’t included in the total. | O tamanho de %1$lld item é desconhecido. Ele não entra no total. |
+| 0429:many | `done_unknown#many` | – | Os tamanhos de %1$lld de itens são desconhecidos. Eles não entram no total. |
 | 0429 | `done_unknown#other` | The sizes of %1$lld items are unknown. They aren’t included in the total. | Os tamanhos de %1$lld itens são desconhecidos. Eles não entram no total. |
 | 0430 | `dup_again` | Search again | Buscar de novo |
 | 0431 | `dup_checking` | Comparing files … | Comparando arquivos … |
@@ -451,6 +456,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0440 | `dup_incomplete_title` | Search is still incomplete | A busca ainda está incompleta |
 | 0441 | `dup_measuring` | Measuring sizes … | Medindo tamanhos … |
 | 0442 | `dup_move#one` | Move %1$lld copy to trash | Mover %1$lld cópia para a lixeira |
+| 0443:many | `dup_move#many` | – | Mover %1$lld de cópias para a lixeira |
 | 0443 | `dup_move#other` | Move %1$lld copies to trash | Mover %1$lld cópias para a lixeira |
 | 0444 | `dup_none` | No identical copies found | Nenhuma cópia idêntica encontrada |
 | 0445 | `dup_none_message` | No identical copies were found in the accessible areas. | Nenhuma cópia idêntica foi encontrada nas áreas acessíveis. |
@@ -465,7 +471,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0454 | `edit_adj_noise` | Noise reduction | Redução de ruído |
 | 0455 | `edit_adj_sharpen_radius` | Radius | Raio |
 | 0456 | `edit_adj_sharpen_threshold` | Threshold | Limiar |
-| 0457 | `edit_aspect_free` | Free | Grátis |
+| 0457 | `edit_aspect_free` | Free | Livre |
 | 0458 | `edit_aspect_original` | Original | Original |
 | 0459 | `edit_changed` | changed | alterado |
 | 0460 | `edit_compare_hint` | Edited photo. Touch and hold to see the original. | Foto editada. Toque e segure para ver o original. |
@@ -641,15 +647,15 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0630 | `export_expired` | iOS ended the export in the background. Nothing was saved – start it again and keep GaleriQ open. | O iOS encerrou a exportação em segundo plano. Nada foi salvo – comece de novo e mantenha o GaleriQ aberto. |
 | 0631 | `export_keep_open` | You can briefly switch to another app. If iOS ends the time, GaleriQ stops cleanly – nothing half-finished is saved. | Você pode trocar rapidamente para outro app. Se o iOS encerrar o tempo, o GaleriQ para de forma limpa – nada pela metade é salvo. |
 | 0632 | `export_running` | Saving … | Salvando … |
-| 0633 | `fav_add` | Mark as favorite | Marcar como favorita |
-| 0634 | `fav_failed` | The favorite status couldn’t be changed. It remains the same. | Não foi possível alterar o status de favorita. Ele continua o mesmo. |
+| 0633 | `fav_add` | Mark as favorite | Marcar como favorito |
+| 0634 | `fav_failed` | The favorite status couldn’t be changed. It remains the same. | Não foi possível alterar o status de favorito. Ele continua o mesmo. |
 | 0635 | `fav_protected_photo` | This photo is protected as a favorite. | Esta foto está protegida como favorita. |
-| 0636 | `fav_protected_text` | Remove the favorite mark first to put it in the trash. You can also turn off favorite protection in settings. | Remova primeiro a marca de favorita para colocá-la na lixeira. Você também pode desativar a proteção de favoritas nos ajustes. |
+| 0636 | `fav_protected_text` | Remove the favorite mark first to put it in the trash. You can also turn off favorite protection in settings. | Remova primeiro a marca de favorito para colocar o item na lixeira. Você também pode desativar a proteção de favoritos nos ajustes. |
 | 0637 | `fav_protected_video` | This video is protected as a favorite. | Este vídeo está protegido como favorito. |
-| 0638 | `fav_remove` | Remove from favorites | Remover das favoritas |
-| 0639 | `fav_removed_hint` | No longer marked as a favorite. Swipe left to put it in the trash. | Não está mais marcada como favorita. Deslize para a esquerda para colocá-la na lixeira. |
-| 0640 | `fav_state_off` | Not a favorite | Não é favorita |
-| 0641 | `fav_state_on` | Favorite | Favorita |
+| 0638 | `fav_remove` | Remove from favorites | Remover dos Favoritos |
+| 0639 | `fav_removed_hint` | No longer marked as a favorite. Swipe left to put it in the trash. | Não está mais nos Favoritos. Deslize para a esquerda para colocar o item na lixeira. |
+| 0640 | `fav_state_off` | Not a favorite | Não está nos Favoritos |
+| 0641 | `fav_state_on` | Favorite | Favorito |
 | 0642 | `fc_action_album` | Put in “%1$@” | Colocar em “%1$@” |
 | 0643 | `fc_action_none` | Nothing | Nada |
 | 0644 | `fc_action_pick_date` | Later – choose date | Depois – escolher data |
@@ -674,7 +680,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0663 | `fc_vis_always` | Always | Sempre |
 | 0664 | `fc_visibility` | Show buttons | Mostrar botões |
 | 0665 | `feed_album_done` | Put in “%1$@” | Colocar em “%1$@” |
-| 0666 | `feed_empty_favorites` | There are no more favourites to review right now. | Não há mais favoritas para revisar agora. |
+| 0666 | `feed_empty_favorites` | There are no more favourites to review right now. | Não há mais favoritos para revisar agora. |
 | 0667 | `feed_empty_folder` | There’s nothing left to review in this album. | Não há mais nada para revisar neste álbum. |
 | 0668 | `feed_empty_latest_photos` | There’s nothing left to review among your latest photos. | Não há mais nada para revisar entre suas fotos mais recentes. |
 | 0669 | `feed_empty_latest_videos` | There’s nothing left to review among your latest videos. | Não há mais nada para revisar entre seus vídeos mais recentes. |
@@ -793,6 +799,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0782 | `history_all` | All | Tudo |
 | 0783 | `history_cleaned` | Removed | Removidos |
 | 0784 | `history_day_header#one` | %1$@ · %2$lld entry | %1$@ · %2$lld registro |
+| 0785:many | `history_day_header#many` | – | %1$@ · %2$lld de registros |
 | 0785 | `history_day_header#other` | %1$@ · %2$lld entries | %1$@ · %2$lld registros |
 | 0786 | `history_empty` | Your choices appear here once you start cleaning up. | Suas escolhas aparecem aqui quando você começar a limpar. |
 | 0787 | `history_empty_title` | No history yet | Ainda sem histórico |
@@ -818,6 +825,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0807 | `info` | Info | Informações |
 | 0808 | `info_location` | Location | Localização |
 | 0809 | `items_count#one` | %1$lld item | %1$lld item |
+| 0810:many | `items_count#many` | – | %1$lld de itens |
 | 0810 | `items_count#other` | %1$lld items | %1$lld itens |
 | 0811 | `keep` | Keep | Manter |
 | 0812 | `kind_all` | All | Tudo |
@@ -833,9 +841,10 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0822 | `large_icloud_footer` | With “Optimize iPhone Storage”, these originals are only in iCloud. iOS doesn’t reveal their exact size without downloading them, so GaleriQ estimates it from your measured photos and videos and shows it as “approx.”. | Com “Otimizar Armazenamento do iPhone”, esses originais estão só no iCloud. O iOS não informa o tamanho exato sem baixá-los, então o GaleriQ o estima a partir das suas fotos e vídeos medidos e mostra como “aprox.”. |
 | 0823 | `large_icloud_header` | Only in iCloud: %1$lld | Só no iCloud: %1$lld |
 | 0824 | `large_in_files#one` | in %1$lld large file | em %1$lld arquivo grande |
+| 0825:many | `large_in_files#many` | – | em %1$lld de arquivos grandes |
 | 0825 | `large_in_files#other` | in %1$lld large files | em %1$lld arquivos grandes |
 | 0826 | `large_in_icloud_a11y` | Only in iCloud, size estimated | Só no iCloud, tamanho estimado |
-| 0827 | `large_measure_resume` | Continue measuring (open: %1$lld) | Continuar medindo (abertos: %1$lld) |
+| 0827 | `large_measure_resume` | Continue measuring (open: %1$lld) | Continuar medindo (pendentes: %1$lld) |
 | 0828 | `large_measuring` | Measuring sizes … %1$lld of %2$lld | Medindo tamanhos … %1$lld de %2$lld |
 | 0829 | `large_none` | No matching files | Nenhum arquivo correspondente |
 | 0830 | `large_none_message` | None of the accessible files with a known size is larger than %1$lld MB. | Nenhum dos arquivos acessíveis com tamanho conhecido é maior que %1$lld MB. |
@@ -873,15 +882,15 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0862 | `lib_collapse` | Hide subfolders | Ocultar subpastas |
 | 0863 | `lib_empty_text` | Photos and videos on this device appear here. | Fotos e vídeos deste aparelho aparecem aqui. |
 | 0864 | `lib_expand` | Show subfolders | Mostrar subpastas |
-| 0865 | `lib_fav_empty_text` | Tap ♡ on a photo or video to make it a favourite. Favourites are the same as in the Photos app. | Toque em ♡ numa foto ou vídeo para torná-lo favorito. As favoritas são as mesmas do app Fotos. |
-| 0866 | `lib_fav_empty_title` | No favourites yet | Ainda sem favoritas |
+| 0865 | `lib_fav_empty_text` | Tap ♡ on a photo or video to make it a favourite. Favourites are the same as in the Photos app. | Toque em ♡ numa foto ou vídeo para torná-lo favorito. Os Favoritos são os mesmos do app Fotos. |
+| 0866 | `lib_fav_empty_title` | No favourites yet | Ainda sem favoritos |
 | 0867 | `lib_feed_title` | From the library | Da biblioteca |
 | 0868 | `lib_filter_all` | All | Tudo |
 | 0869 | `lib_filter_cinematic` | Cinematic | Cinematográfico |
 | 0870 | `lib_filter_clear` | Remove filter | Remover filtro |
 | 0871 | `lib_filter_edited` | Edited | Editadas |
 | 0872 | `lib_filter_empty` | Nothing here for the filter “%1$@”. | Nada aqui para o filtro “%1$@”. |
-| 0873 | `lib_filter_favorites` | Favourites | Favoritas |
+| 0873 | `lib_filter_favorites` | Favourites | Favoritos |
 | 0874 | `lib_filter_panoramas` | Panoramas | Panoramas |
 | 0875 | `lib_filter_raw` | RAW | RAW |
 | 0876 | `lib_filter_screenrec` | Screen recordings | Gravações de tela |
@@ -898,9 +907,11 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0887 | `lib_folders_sort_count` | Most items | Mais itens |
 | 0888 | `lib_folders_sort_recent` | Recently updated | Atualizados recentemente |
 | 0889 | `lib_hidden_done#one` | %1$lld item hidden in GaleriQ | %1$lld item oculto no GaleriQ |
+| 0890:many | `lib_hidden_done#many` | – | %1$lld de itens ocultos no GaleriQ |
 | 0890 | `lib_hidden_done#other` | %1$lld items hidden in GaleriQ | %1$lld itens ocultos no GaleriQ |
 | 0891 | `lib_hidden_intro` | GaleriQ doesn’t show these anywhere. The files are unchanged and other apps still show them. | O GaleriQ não os mostra em lugar nenhum. Os arquivos não são alterados e outros apps ainda os mostram. |
 | 0892 | `lib_hidden_media#one` | %1$lld hidden item | %1$lld item oculto |
+| 0893:many | `lib_hidden_media#many` | – | %1$lld de itens ocultos |
 | 0893 | `lib_hidden_media#other` | %1$lld hidden items | %1$lld itens ocultos |
 | 0894 | `lib_hidden_none_text` | Use “Hide in GaleriQ” on an album, a photo or a selection. | Use “Ocultar no GaleriQ” num álbum, numa foto ou numa seleção. |
 | 0895 | `lib_hidden_none_title` | Nothing hidden | Nada oculto |
@@ -908,6 +919,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0897 | `lib_hide` | Hide in GaleriQ | Ocultar no GaleriQ |
 | 0898 | `lib_hide_text` | GaleriQ will no longer show them – not under Photos and not during cleanup. The files stay unchanged and remain visible in other apps. This is not a safe. | O GaleriQ não os mostrará mais – nem em Fotos nem durante a limpeza. Os arquivos não são alterados e continuam visíveis em outros apps. Isto não é um cofre. |
 | 0899 | `lib_hide_title#one` | Hide %1$lld item in GaleriQ? | Ocultar %1$lld item no GaleriQ? |
+| 0900:many | `lib_hide_title#many` | – | Ocultar %1$lld de itens no GaleriQ? |
 | 0900 | `lib_hide_title#other` | Hide %1$lld items in GaleriQ? | Ocultar %1$lld itens no GaleriQ? |
 | 0901 | `lib_info_duration` | Duration | Duração |
 | 0902 | `lib_info_name` | Name | Nome |
@@ -934,17 +946,21 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0923 | `lib_sort_newest` | Newest first | Mais recentes primeiro |
 | 0924 | `lib_sort_oldest` | Oldest first | Mais antigas primeiro |
 | 0925 | `lib_subfolders#one` | %1$lld subfolder | %1$lld subpasta |
+| 0926:many | `lib_subfolders#many` | – | %1$lld de subpastas |
 | 0926 | `lib_subfolders#other` | %1$lld subfolders | %1$lld subpastas |
 | 0927 | `lib_trash_action` | Move to trash | Mover para a lixeira |
-| 0928 | `lib_trash_fav_protected` | This is a favourite. “Protect favourites” is on, so it stays out of the trash. You can change this in Settings. | Esta é uma favorita. “Proteger favoritas” está ativado, então ela fica fora da lixeira. Você pode mudar isso em Ajustes. |
+| 0928 | `lib_trash_fav_protected` | This is a favourite. “Protect favourites” is on, so it stays out of the trash. You can change this in Settings. | Este item está nos Favoritos. “Proteger favoritos” está ativado, então ele fica fora da lixeira. Você pode mudar isso em Ajustes. |
 | 0929 | `lib_trash_text` | Into the GaleriQ trash – nothing is deleted. You decide there later. | Para a lixeira do GaleriQ – nada é apagado. Você decide lá depois. |
-| 0930 | `lib_trash_text_fav` | Into the GaleriQ trash – nothing is deleted. Favourites stay (“Protect favourites” is on). | Para a lixeira do GaleriQ – nada é apagado. As favoritas ficam (“Proteger favoritas” está ativado). |
+| 0930 | `lib_trash_text_fav` | Into the GaleriQ trash – nothing is deleted. Favourites stay (“Protect favourites” is on). | Para a lixeira do GaleriQ – nada é apagado. Os favoritos ficam (“Proteger favoritos” está ativado). |
 | 0931 | `lib_trash_title#one` | Move %1$lld item to the trash? | Mover %1$lld item para a lixeira? |
+| 0932:many | `lib_trash_title#many` | – | Mover %1$lld de itens para a lixeira? |
 | 0932 | `lib_trash_title#other` | Move %1$lld items to the trash? | Mover %1$lld itens para a lixeira? |
 | 0933 | `lib_trashed#one` | %1$lld item is in the GaleriQ trash. | %1$lld item está na lixeira do GaleriQ. |
+| 0934:many | `lib_trashed#many` | – | %1$lld de itens estão na lixeira do GaleriQ. |
 | 0934 | `lib_trashed#other` | %1$lld items are in the GaleriQ trash. | %1$lld itens estão na lixeira do GaleriQ. |
 | 0935 | `lib_trashed_one` | In the GaleriQ trash | Na lixeira do GaleriQ |
 | 0936 | `lib_unhidden#one` | %1$lld item shown again | %1$lld item mostrado de novo |
+| 0937:many | `lib_unhidden#many` | – | %1$lld de itens mostrados de novo |
 | 0937 | `lib_unhidden#other` | %1$lld items shown again | %1$lld itens mostrados de novo |
 | 0938 | `lib_unhide` | Show again | Mostrar de novo |
 | 0939 | `lib_view_aspect` | Aspect ratio | Proporção |
@@ -991,7 +1007,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0980 | `memory_size` | Number of pairs | Número de pares |
 | 0981 | `memory_source` | Picture source | Origem das imagens |
 | 0982 | `memory_source_collection` | Album or photo folder | Álbum ou pasta de fotos |
-| 0983 | `memory_source_favorites` | Favorites | Favoritas |
+| 0983 | `memory_source_favorites` | Favorites | Favoritos |
 | 0984 | `memory_source_library` | Entire photo library | Biblioteca de fotos inteira |
 | 0985 | `memory_sun` | Sun | Sol |
 | 0986 | `memory_title` | Pairs | Pares |
@@ -1002,6 +1018,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0991 | `month_later#one` | %1$lld for later | %1$lld para depois |
 | 0992 | `month_later#other` | %1$lld for later | %1$lld para depois |
 | 0993 | `month_not_started#one` | Not started · %1$lld item | Não iniciado · %1$lld item |
+| 0994:many | `month_not_started#many` | – | Não iniciado · %1$lld de itens |
 | 0994 | `month_not_started#other` | Not started · %1$lld items | Não iniciado · %1$lld itens |
 | 0995 | `month_progress#one` | %1$lld of %2$lld reviewed | %1$lld de %2$lld revisado |
 | 0996 | `month_progress#other` | %1$lld of %2$lld reviewed | %1$lld de %2$lld revisados |
@@ -1111,6 +1128,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1100 | `org_basket_remove` | Take out of basket | Tirar da cesta |
 | 1101 | `org_create` | Create | Criar |
 | 1102 | `org_missing#one` | %1$lld item not found (deleted or no longer on this device). | %1$lld item não encontrado (apagado ou não está mais neste aparelho). |
+| 1103:many | `org_missing#many` | – | %1$lld de itens não encontrados (apagados ou não estão mais neste aparelho). |
 | 1103 | `org_missing#other` | %1$lld items not found (deleted or no longer on this device). | %1$lld itens não encontrados (apagados ou não estão mais neste aparelho). |
 | 1104 | `org_missing_remove` | Remove from list | Remover da lista |
 | 1105 | `org_new_album` | New album | Novo álbum |
@@ -1126,6 +1144,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1115 | `org_tag_state_some` | on some | em alguns |
 | 1116 | `org_tags` | Tags | Etiquetas |
 | 1117 | `org_tags_for#one` | Tags for %1$lld item | Etiquetas de %1$lld item |
+| 1118:many | `org_tags_for#many` | – | Etiquetas de %1$lld de itens |
 | 1118 | `org_tags_for#other` | Tags for %1$lld items | Etiquetas de %1$lld itens |
 | 1119 | `org_tags_none` | No tags yet. Add your own words like “Invoice” or “Holiday” – GaleriQ only knows what you enter yourself. | Ainda sem etiquetas. Adicione suas próprias palavras, como “Nota fiscal” ou “Férias” – o GaleriQ só sabe o que você mesmo digitar. |
 | 1120 | `pause` | Pause | Pausar |
@@ -1223,8 +1242,8 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1212 | `qa_edit` | Edit | Editar |
 | 1213 | `qa_edit_title` | Edit shortcuts | Editar atalhos |
 | 1214 | `qa_empty` | Empty | Vazio |
-| 1215 | `qa_favorites` | Favourites | Favoritas |
-| 1216 | `qa_favorites_sub` | Your favourites from the Photos app | Suas favoritas do app Fotos |
+| 1215 | `qa_favorites` | Favourites | Favoritos |
+| 1216 | `qa_favorites_sub` | Your favourites from the Photos app | Seus favoritos do app Fotos |
 | 1217 | `qa_folder` | Album | Álbum |
 | 1218 | `qa_folders_header` | Albums | Álbuns |
 | 1219 | `qa_latest_photos` | Latest photos | Fotos mais recentes |
@@ -1248,7 +1267,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1237 | `qa_portraits` | Portraits | Retratos |
 | 1238 | `qa_portraits_sub` | Photos taken in Portrait mode | Fotos tiradas no modo Retrato |
 | 1239 | `qa_random` | Random | Aleatório |
-| 1240 | `qa_random_sub` | %1$lld random open photos and videos, reshuffled every time | %1$lld fotos e vídeos abertos aleatórios, embaralhados a cada vez |
+| 1240 | `qa_random_sub` | %1$lld random open photos and videos, reshuffled every time | %1$lld fotos e vídeos aleatórios ainda não revisados, embaralhados a cada vez |
 | 1241 | `qa_remove_note` | Only the shortcut is removed. Your files and choices are kept. | Só o atalho é removido. Seus arquivos e escolhas são mantidos. |
 | 1242 | `qa_screenshots` | Screenshots | Capturas de tela |
 | 1243 | `qa_selfies` | Selfies | Selfies |
@@ -1263,15 +1282,17 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1256 | `rec_latest` | Latest record | Último recorde |
 | 1257 | `rec_medal_bronze` | Bronze | Bronze |
 | 1258 | `rec_medal_gold` | Gold | Ouro |
-| 1259 | `rec_medal_next` | %1$@ from %2$@ · %3$@ to go | %1$@ de %2$@ · faltam %3$@ |
+| 1259 | `rec_medal_next` | %1$@ from %2$@ · %3$@ to go | %1$@ a partir de %2$@ · faltam %3$@ |
 | 1260 | `rec_medal_silver` | Silver | Prata |
 | 1261 | `rec_note` | Medals only compare with your own results – no leaderboards, nothing leaves the device. | As medalhas só comparam com seus próprios resultados – sem ranking, nada sai do aparelho. |
 | 1262 | `rec_record` | Record | Recorde |
 | 1263 | `rec_sub` | Your records. They stay on this iPhone. | Seus recordes. Eles ficam neste iPhone. |
 | 1264 | `rec_unit_photos` | photos | fotos |
 | 1265 | `rec_unit_points` | points | pontos |
+| 1267 | `rec_value_photos#many` | %1$@ photos | %1$@ de fotos |
 | 1268 | `rec_value_photos#one` | %1$@ photo | %1$@ foto |
 | 1269 | `rec_value_photos#other` | %1$@ photos | %1$@ fotos |
+| 1271 | `rec_value_points#many` | %1$@ points | %1$@ de pontos |
 | 1272 | `rec_value_points#one` | %1$@ point | %1$@ ponto |
 | 1273 | `rec_value_points#other` | %1$@ points | %1$@ pontos |
 | 1276 | `recap_active_days#one` | active day | dia ativo |
@@ -1334,7 +1355,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1339 | `set_language_hint` | GaleriQ uses your iPhone’s language. Tap to choose a different language just for GaleriQ under “Language” in iOS Settings. | O GaleriQ usa o idioma do seu iPhone. Toque para escolher outro idioma só para o GaleriQ em “Idioma” nos Ajustes do iOS. |
 | 1340 | `set_later_default` | Later: default delay | Depois: prazo padrão |
 | 1341 | `set_pro_once` | One-time purchase | Compra única |
-| 1342 | `set_protect_favorites` | Protect favorites | Proteger favoritas |
+| 1342 | `set_protect_favorites` | Protect favorites | Proteger favoritos |
 | 1343 | `set_rate_app` | Rate GaleriQ | Avaliar o GaleriQ |
 | 1344 | `set_rate_app_sub` | It really helps us – thank you! | Isso nos ajuda muito – obrigado! |
 | 1345 | `set_weekly_recap` | Show “Your last week” | Mostrar “Sua última semana” |
@@ -1354,7 +1375,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1359 | `size_at_least` | At least %1$@ | Pelo menos %1$@ |
 | 1360 | `size_unknown` | Size unknown | Tamanho desconhecido |
 | 1361 | `skip_without_decision` | Next without choosing | Próxima sem escolher |
-| 1362 | `slideshow_again` | Play again | Jogar de novo |
+| 1362 | `slideshow_again` | Play again | Reproduzir de novo |
 | 1363 | `slideshow_cut` | None | Nenhuma |
 | 1364 | `slideshow_duration` | Time per photo | Tempo por foto |
 | 1365 | `slideshow_empty` | Nothing to show here. | Nada para mostrar aqui. |
@@ -1441,6 +1462,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1446 | `storage_unavailable` | Storage info isn’t available right now | Informações de armazenamento indisponíveis agora |
 | 1447 | `storage_used_of` | of %1$@ used | de %1$@ usados |
 | 1448 | `storage_value_items#one` | %1$lld item · %2$@ | %1$lld item · %2$@ |
+| 1449:many | `storage_value_items#many` | – | %1$lld de itens · %2$@ |
 | 1449 | `storage_value_items#other` | %1$lld items · %2$@ | %1$lld itens · %2$@ |
 | 1450 | `studio_collage` | Collage | Colagem |
 | 1451 | `studio_collage_file` | Collage | Colagem |
@@ -1485,6 +1507,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1490 | `today_done_subtitle` | There’s nothing else to review for now. | Não há mais nada para revisar por enquanto. |
 | 1491 | `today_done_title` | All reviewed | Tudo revisado |
 | 1492 | `today_due#one` | %1$lld item from “Later” is ready to review | %1$lld item de “Depois” está pronto para revisar |
+| 1493:many | `today_due#many` | – | %1$lld de itens de “Depois” estão prontos para revisar |
 | 1493 | `today_due#other` | %1$lld items from “Later” are ready to review | %1$lld itens de “Depois” estão prontos para revisar |
 | 1494 | `today_greeting_afternoon` | Good afternoon | Boa tarde |
 | 1495 | `today_greeting_evening` | Good evening | Boa noite |
@@ -1494,6 +1517,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1499 | `today_limited_text` | GaleriQ only shows the photos and videos you’ve allowed. You can clean these up as usual. | O GaleriQ só mostra as fotos e vídeos que você permitiu. Você pode limpá-los normalmente. |
 | 1500 | `today_limited_title` | Limited access | Acesso limitado |
 | 1501 | `today_new_since#one` | %1$lld new photo or video | %1$lld nova foto ou vídeo |
+| 1502:many | `today_new_since#many` | – | %1$lld de novas fotos e vídeos |
 | 1502 | `today_new_since#other` | %1$lld new photos and videos | %1$lld novas fotos e vídeos |
 | 1503 | `today_new_since_sub` | since your last cleanup | desde a sua última limpeza |
 | 1504 | `today_reconciliation` | Something was interrupted the last time the trash was emptied. To be safe, nothing is deleted again. | Algo foi interrompido da última vez que a lixeira foi esvaziada. Por segurança, nada é apagado de novo. |
@@ -1510,6 +1534,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1515 | `tools_convert_sub` | e.g. HEIC to JPEG, as new copies | por exemplo HEIC para JPEG, como novas cópias |
 | 1516 | `tools_copies_note` | Your originals stay unchanged – GaleriQ saves new copies in your library. | Seus originais não são alterados – o GaleriQ salva novas cópias na sua biblioteca. |
 | 1517 | `tools_done#one` | %1$lld new copy saved. | %1$lld nova cópia salva. |
+| 1518:many | `tools_done#many` | – | %1$lld de novas cópias salvas. |
 | 1518 | `tools_done#other` | %1$lld new copies saved. | %1$lld novas cópias salvas. |
 | 1519 | `tools_exposure_note` | Below 0 makes photos darker, above 0 brighter. | Abaixo de 0 escurece as fotos, acima de 0 clareia. |
 | 1520 | `tools_failed` | That didn’t work. Your originals are unchanged. | Isso não funcionou. Seus originais não foram alterados. |
@@ -1551,6 +1576,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1556 | `tools_running` | Working on your files… | Processando seus arquivos… |
 | 1557 | `tools_seconds_value` | %1$@ s | %1$@ s |
 | 1558 | `tools_selected#one` | %1$lld file selected | %1$lld arquivo selecionado |
+| 1559:many | `tools_selected#many` | – | %1$lld de arquivos selecionados |
 | 1559 | `tools_selected#other` | %1$lld files selected | %1$lld arquivos selecionados |
 | 1560 | `tools_size_1080_hint` | Small – enough for messages and social media | Pequeno – suficiente para mensagens e redes sociais |
 | 1561 | `tools_size_2048_hint` | Large – sharp on phones, tablets and computers | Grande – nítido em celulares, tablets e computadores |
@@ -1570,10 +1596,11 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1575 | `tools_target_format` | New format | Novo formato |
 | 1576 | `tools_tool_label` | Tool | Ferramenta |
 | 1577 | `tools_unknown#one` | %1$lld size unknown – not included in the total. | %1$lld tamanho desconhecido – não incluído no total. |
+| 1578:many | `tools_unknown#many` | – | %1$lld de tamanhos desconhecidos – não incluídos no total. |
 | 1578 | `tools_unknown#other` | %1$lld sizes unknown – not included in the total. | %1$lld tamanhos desconhecidos – não incluídos no total. |
 | 1579 | `tour_done` | Done | OK |
-| 1580 | `tour_feed_actions_text` | Mark favorites, share items or add them to an album. This doesn’t mark them as kept, trashed or saved for later. | Marque favoritas, compartilhe itens ou adicione-os a um álbum. Isso não os marca como mantidos, na lixeira ou guardados para depois. |
-| 1581 | `tour_feed_actions_title` | Favorites, sharing and albums | Favoritas, compartilhamento e álbuns |
+| 1580 | `tour_feed_actions_text` | Mark favorites, share items or add them to an album. This doesn’t mark them as kept, trashed or saved for later. | Marque favoritos, compartilhe itens ou adicione-os a um álbum. Isso não os marca como mantidos, na lixeira ou guardados para depois. |
+| 1581 | `tour_feed_actions_title` | Favorites, sharing and albums | Favoritos, compartilhamento e álbuns |
 | 1582 | `tour_feed_basket_text` | The number shows how much you’ve set aside. Tap it to review your selection and empty the trash. | O número mostra quanto você separou. Toque nele para revisar sua seleção e esvaziar a lixeira. |
 | 1583 | `tour_feed_basket_title` | Your trash | Sua lixeira |
 | 1584 | `tour_feed_undo_text` | Swiped the wrong way? Tap here to undo your last choice. | Deslizou para o lado errado? Toque aqui para desfazer sua última escolha. |
@@ -1583,7 +1610,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1588 | `tour_grid_note_title` | Not a decision | Não é uma decisão |
 | 1589 | `tour_history_text` | See what you kept, set aside or saved for later. You can still change any decision here. | Veja o que você manteve, separou ou guardou para depois. Você ainda pode mudar qualquer decisão aqui. |
 | 1590 | `tour_history_title` | Later & history | Depois e histórico |
-| 1591 | `tour_lib_text` | Here are all your photos and videos – by day, month or year, in albums and favourites. | Aqui estão todas as suas fotos e vídeos – por dia, mês ou ano, em álbuns e favoritas. |
+| 1591 | `tour_lib_text` | Here are all your photos and videos – by day, month or year, in albums and favourites. | Aqui estão todas as suas fotos e vídeos – por dia, mês ou ano, em álbuns e favoritos. |
 | 1592 | `tour_lib_title` | All your photos | Todas as suas fotos |
 | 1593 | `tour_months_later_text` | Items set aside for later count as reviewed – you still see them here. | Itens deixados para depois contam como revisados – você ainda os vê aqui. |
 | 1594 | `tour_months_more_text` | Open the overview as a grid or review a finished month again. | Abra a visão geral em grade ou revise de novo um mês concluído. |

@@ -228,7 +228,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0223 | `backup_save_button` | Save backup … | บันทึกข้อมูลสำรอง … |
 | 0224 | `backup_save_failed` | The backup couldn’t be saved. | ไม่สามารถบันทึกข้อมูลสำรองได้ |
 | 0225 | `backup_save_header` | Back up | สำรองข้อมูล |
-| 0226 | `backup_save_text` | Saves your GaleriQ data in a small file: decisions, albums, tags, notes, selection basket, hidden items, settings, workflows and presets. No photos are included. | บันทึกข้อมูล GaleriQ ของคุณเป็นไฟล์เล็กๆ: การตัดสินใจ อัลบั้ม แท็ก โน้ต ตะกร้าที่เลือก รายการที่ซ่อน การตั้งค่า เวิร์กโฟลว์ และค่าที่ตั้งไว้ ไม่มีรูปภาพรวมอยู่ |
+| 0226 | `backup_save_text` | Saves your GaleriQ data in a small file: decisions, albums, tags, notes, selection basket, hidden items, settings, workflows and presets. No photos are included. | บันทึกข้อมูล GaleriQ ของคุณเป็นไฟล์เล็กๆ: การตัดสินใจ อัลบั้ม แท็ก โน้ต ตะกร้ารายการที่เลือก รายการที่ซ่อน การตั้งค่า เวิร์กโฟลว์ และค่าที่ตั้งไว้ ไม่มีรูปภาพรวมอยู่ |
 | 0227 | `backup_title` | Back up and restore | สำรองและกู้คืน |
 | 0228 | `backup_too_new` | This backup comes from a newer version of GaleriQ. Please update GaleriQ first. | ข้อมูลสำรองนี้มาจาก GaleriQ เวอร์ชันที่ใหม่กว่า โปรดอัปเดต GaleriQ ก่อน |
 | 0229 | `backup_unreadable` | The file couldn’t be read. | ไม่สามารถอ่านไฟล์ได้ |
@@ -453,7 +453,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0454 | `edit_adj_noise` | Noise reduction | ลดสัญญาณรบกวน |
 | 0455 | `edit_adj_sharpen_radius` | Radius | รัศมี |
 | 0456 | `edit_adj_sharpen_threshold` | Threshold | เกณฑ์ |
-| 0457 | `edit_aspect_free` | Free | ฟรี |
+| 0457 | `edit_aspect_free` | Free | อิสระ |
 | 0458 | `edit_aspect_original` | Original | ต้นฉบับ |
 | 0459 | `edit_changed` | changed | เปลี่ยนแล้ว |
 | 0460 | `edit_compare_hint` | Edited photo. Touch and hold to see the original. | รูปที่แก้ไขแล้ว แตะค้างไว้เพื่อดูต้นฉบับ |
@@ -491,7 +491,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0492 | `edit_font_mono` | Typewriter | เครื่องพิมพ์ดีด |
 | 0493 | `edit_font_sans` | Classic | คลาสสิก |
 | 0494 | `edit_font_serif` | Serif | มีเชิง |
-| 0495 | `edit_font_smallcaps` | Small caps | ตัวพิมพ์ใหญ่เล็ก |
+| 0495 | `edit_font_smallcaps` | Small caps | ตัวพิมพ์ใหญ่ขนาดเล็ก |
 | 0496 | `edit_frame_corner` | Rounded corners | มุมโค้งมน |
 | 0497 | `edit_frame_even` | Even | เท่ากัน |
 | 0498 | `edit_frame_inside` | Border inside | ขอบด้านใน |
@@ -548,7 +548,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0549 | `edit_save_copy_text` | The original stays unchanged. | ต้นฉบับไม่เปลี่ยนแปลง |
 | 0550 | `edit_save_geometry_only` | Save crop only | บันทึกเฉพาะการครอบตัด |
 | 0551 | `edit_save_original` | Edit original | แก้ไขต้นฉบับ |
-| 0552 | `edit_save_original_text` | iOS asks first. The edit is saved like an edit in the Photos app – you can undo it there anytime with “Revert”. | iOS จะถามก่อน การแก้ไขจะถูกบันทึกเหมือนการแก้ไขในแอพรูปภาพ – คุณสามารถเลิกทำได้ที่นั่นทุกเมื่อด้วย “ย้อนกลับ” |
+| 0552 | `edit_save_original_text` | iOS asks first. The edit is saved like an edit in the Photos app – you can undo it there anytime with “Revert”. | iOS จะถามก่อน การแก้ไขจะถูกบันทึกเหมือนการแก้ไขในแอพรูปภาพ – คุณสามารถเลิกทำได้ที่นั่นทุกเมื่อด้วย “แปลงกลับ” |
 | 0553 | `edit_save_replace` | Save copy and move original to trash | บันทึกสำเนาและย้ายต้นฉบับไปถังขยะ |
 | 0554 | `edit_save_replace_action` | Save copy, original to trash | บันทึกสำเนา ต้นฉบับไปถังขยะ |
 | 0555 | `edit_save_replace_text` | iOS asks to confirm. The original goes to “Recently Deleted” in the Photos app and can usually be restored there for 30 days. Space is freed only after that. | iOS จะขอให้ยืนยัน ต้นฉบับจะไปที่ “ที่ลบล่าสุด” ในแอพรูปภาพ และโดยปกติกู้คืนได้ที่นั่นภายใน 30 วัน พื้นที่จะว่างหลังจากนั้นเท่านั้น |
@@ -813,7 +813,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0819 | `large_files` | Large files | ไฟล์ขนาดใหญ่ |
 | 0820 | `large_filter` | Larger than | ใหญ่กว่า |
 | 0821 | `large_footnote` | Only files with a known size of at least %1$lld MB. Their size may differ from the space freed when you delete them. | เฉพาะไฟล์ที่ทราบขนาดอย่างน้อย %1$lld MB ขนาดอาจต่างจากพื้นที่ที่ว่างขึ้นเมื่อลบ |
-| 0822 | `large_icloud_footer` | With “Optimize iPhone Storage”, these originals are only in iCloud. iOS doesn’t reveal their exact size without downloading them, so GaleriQ estimates it from your measured photos and videos and shows it as “approx.”. | เมื่อเปิด “ปรับพื้นที่จัดเก็บ iPhone ให้เหมาะสม” ต้นฉบับเหล่านี้จะอยู่ใน iCloud เท่านั้น iOS ไม่บอกขนาดที่แน่นอนหากไม่ดาวน์โหลด GaleriQ จึงประมาณจากรูปภาพและวิดีโอที่วัดแล้วและแสดงเป็น “ประมาณ” |
+| 0822 | `large_icloud_footer` | With “Optimize iPhone Storage”, these originals are only in iCloud. iOS doesn’t reveal their exact size without downloading them, so GaleriQ estimates it from your measured photos and videos and shows it as “approx.”. | เมื่อเปิด “ปรับพื้นที่จัดเก็บข้อมูล iPhone” ต้นฉบับเหล่านี้จะอยู่ใน iCloud เท่านั้น iOS ไม่บอกขนาดที่แน่นอนหากไม่ดาวน์โหลด GaleriQ จึงประมาณจากรูปภาพและวิดีโอที่วัดแล้วและแสดงเป็น “ประมาณ” |
 | 0823 | `large_icloud_header` | Only in iCloud: %1$lld | อยู่ใน iCloud เท่านั้น: %1$lld |
 | 0825 | `large_in_files#other` | in %1$lld large files | ใน %1$lld ไฟล์ขนาดใหญ่ |
 | 0826 | `large_in_icloud_a11y` | Only in iCloud, size estimated | อยู่ใน iCloud เท่านั้น ขนาดโดยประมาณ |
@@ -864,7 +864,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0874 | `lib_filter_panoramas` | Panoramas | พาโนรามา |
 | 0875 | `lib_filter_raw` | RAW | RAW |
 | 0876 | `lib_filter_screenrec` | Screen recordings | การบันทึกหน้าจอ |
-| 0877 | `lib_filter_slowmo` | Slo-mo | สโลว์โม |
+| 0877 | `lib_filter_slowmo` | Slo-mo | สโลว์โมชั่น |
 | 0878 | `lib_filter_timelapse` | Time-lapse | ไทม์แลปส์ |
 | 0879 | `lib_filter_title` | Filter | ตัวกรอง |
 | 0880 | `lib_folder_cleanup` | Clean up this album | จัดระเบียบอัลบั้มนี้ |
@@ -1065,15 +1065,15 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1086 | `org_added_to_album#other` | %1$lld added to “%2$@”. | เพิ่ม %1$lld รายการไปที่ “%2$@” แล้ว |
 | 1087 | `org_album_name` | Album name | ชื่ออัลบั้ม |
 | 1088 | `org_albums_empty_title` | No albums yet | ยังไม่มีอัลบั้ม |
-| 1089 | `org_basket` | Selection basket | ตะกร้าที่เลือก |
-| 1090 | `org_basket_add` | Add to selection basket | เพิ่มลงตะกร้าที่เลือก |
-| 1092 | `org_basket_added#other` | %1$lld added to the selection basket. | เพิ่ม %1$lld รายการลงตะกร้าที่เลือกแล้ว |
-| 1093 | `org_basket_already` | Already in the selection basket. | อยู่ในตะกร้าที่เลือกแล้ว |
+| 1089 | `org_basket` | Selection basket | ตะกร้ารายการที่เลือก |
+| 1090 | `org_basket_add` | Add to selection basket | เพิ่มลงตะกร้ารายการที่เลือก |
+| 1092 | `org_basket_added#other` | %1$lld added to the selection basket. | เพิ่ม %1$lld รายการลงตะกร้ารายการที่เลือกแล้ว |
+| 1093 | `org_basket_already` | Already in the selection basket. | อยู่ในตะกร้ารายการที่เลือกแล้ว |
 | 1094 | `org_basket_clear` | Empty basket | ล้างตะกร้า |
 | 1095 | `org_basket_clear_text` | Only the basket is emptied. The photos and videos stay unchanged. | ล้างเฉพาะตะกร้า รูปภาพและวิดีโอไม่เปลี่ยนแปลง |
-| 1096 | `org_basket_clear_title` | Empty the selection basket? | ล้างตะกร้าที่เลือกใช่ไหม? |
-| 1097 | `org_basket_empty_text` | In “Photos”, select something and tap ⋯ › Add to selection basket. | ใน “รูปภาพ” เลือกบางอย่างแล้วแตะ ⋯ › เพิ่มลงตะกร้าที่เลือก |
-| 1098 | `org_basket_empty_title` | The selection basket is empty | ตะกร้าที่เลือกว่างเปล่า |
+| 1096 | `org_basket_clear_title` | Empty the selection basket? | ล้างตะกร้ารายการที่เลือกใช่ไหม? |
+| 1097 | `org_basket_empty_text` | In “Photos”, select something and tap ⋯ › Add to selection basket. | ใน “รูปภาพ” เลือกบางอย่างแล้วแตะ ⋯ › เพิ่มลงตะกร้ารายการที่เลือก |
+| 1098 | `org_basket_empty_title` | The selection basket is empty | ตะกร้ารายการที่เลือกว่างเปล่า |
 | 1099 | `org_basket_intro` | Collect photos and videos from different months and folders. The basket stays until you empty it – it has nothing to do with the trash. | รวบรวมรูปภาพและวิดีโอจากเดือนและโฟลเดอร์ต่างๆ ตะกร้าจะอยู่จนกว่าคุณจะล้าง – ไม่เกี่ยวกับถังขยะ |
 | 1100 | `org_basket_remove` | Take out of basket | นำออกจากตะกร้า |
 | 1101 | `org_create` | Create | สร้าง |
@@ -1568,7 +1568,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1631 | `vault2_backup_password` | Backup password (at least 12 characters) | รหัสผ่านสำรอง (อย่างน้อย 12 ตัวอักษร) |
 | 1632 | `vault2_bold` | Bold | ตัวหนา |
 | 1633 | `vault2_bullet` | Bullet list | รายการสัญลักษณ์แสดงหัวข้อย่อย |
-| 1634 | `vault2_camera_permission` | Camera unavailable or access not allowed. | ไม่มีกล้องหรือไม่ได้รับอนุญาตให้เข้าถึง |
+| 1634 | `vault2_camera_permission` | Camera unavailable or access not allowed. | กล้องไม่พร้อมใช้งานหรือไม่ได้รับอนุญาตให้เข้าถึง |
 | 1635 | `vault2_check` | Toggle completion | สลับสถานะเสร็จสิ้น |
 | 1636 | `vault2_checklist` | Checklist | รายการตรวจสอบ |
 | 1637 | `vault2_conflict` | The saved note changed. Your draft did not overwrite it. Save your draft as a new note or discard unsaved changes. | โน้ตที่บันทึกไว้เปลี่ยนไป ฉบับร่างของคุณไม่ได้เขียนทับ บันทึกฉบับร่างเป็นโน้ตใหม่หรือละทิ้งการเปลี่ยนแปลงที่ยังไม่บันทึก |
@@ -1801,7 +1801,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1864 | `vid_profile_small` | Small file (HD) | ไฟล์เล็ก (HD) |
 | 1865 | `vid_remove_audio` | Remove sound | นำเสียงออก |
 | 1866 | `vid_remove_audio_text` | The sound track is not written into the file at all. | แทร็กเสียงจะไม่ถูกเขียนลงไฟล์เลย |
-| 1867 | `vid_speed_hint` | The sound is sped up or slowed down with the same pitch. | เสียงจะเร็วขึ้นหรือช้าลงโดยระดับเสียงเท่าเดิม |
+| 1867 | `vid_speed_hint` | The sound is sped up or slowed down with the same pitch. | เสียงจะเร็วขึ้นหรือช้าลงโดยความสูงต่ำของเสียงไม่เปลี่ยนแปลง |
 | 1868 | `vid_speed_result` | Result: %1$@ | ผลลัพธ์: %1$@ |
 | 1869 | `vid_tab_audio` | Sound | เสียง |
 | 1870 | `vid_tab_format` | Format | รูปแบบ |

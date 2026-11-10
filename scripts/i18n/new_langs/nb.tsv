@@ -270,7 +270,7 @@
 0273	Runden er ferdig
 0274	Pause
 0275	Satt på pause
-0276	iCloud-bilder lastes ned ved behov. Safe, skjulte og utelatte bilder forblir beskyttet.
+0276	iCloud-bilder lastes ned ved behov. Bilder i safen samt skjulte og utelatte bilder forblir beskyttet.
 0277	Bildekilde
 0278	Velg bilder
 0279	Kolonne %1$lld, rad %2$lld, rotasjon %3$lld
@@ -451,7 +451,7 @@
 0454	Støyreduksjon
 0455	Radius
 0456	Terskel
-0457	Gratis
+0457	Fritt
 0458	Original
 0459	endret
 0460	Redigert bilde. Hold inne for å se originalen.
@@ -656,7 +656,7 @@
 0659	Sveip
 0660	Velg hva hver retning gjør. «Legg i album» legger bildet i et album i Bilder-appen og beholder det. Å ikke gjøre noe er aldri en beslutning.
 0661	Sveip og knapper
-0662	Bare med VoiceOver/Brytertilgang
+0662	Bare med VoiceOver/Bryterkontroll
 0663	Alltid
 0664	Vis knapper
 0665	Legg i «%1$@»
@@ -872,7 +872,7 @@
 0875	RAW
 0876	Skjermopptak
 0877	Sakte film
-0878	Tidsforkortet
+0878	Tidsforløp
 0879	Filter
 0880	Rydd opp i dette albumet
 0881	Dette albumet har ingen bilder eller videoer akkurat nå.
@@ -1009,9 +1009,9 @@
 1012	Bruk ⋯ for å flytte eller fjerne et klipp. Selve bildene og videoene forblir uendret.
 1013	Ton til svart mellom klippene
 1014	Videoen kunne ikke opprettes. Ingenting ble lagret, og originalene er uendret.
-1015	Fyll bildet
+1015	Fyll rammen
 1016	Hvis et klipp har en annen form
-1017	Klipp strekkes aldri: enten vises hele bildet (med svarte kanter), eller det fyller bildet og kantene beskjæres.
+1017	Klipp strekkes aldri: enten vises hele bildet (med svarte kanter), eller det fyller rammen og kantene beskjæres.
 1018	Hele bildet
 1019	Format
 1020	Som første klipp
@@ -1053,7 +1053,7 @@
 1056	Slå av lyd
 1057	Denne filen kan ikke vises.
 1058	Ikke valgt
-1059	Notat
+1059	Merk
 1060	Noe i «Senere» er klart til gjennomgang i dag.
 1061	OK
 1062	GaleriQ viser bildene og videoene dine direkte på enheten slik at du kan rydde. Ingen GaleriQ-konto eller server.
@@ -1234,7 +1234,7 @@
 1237	Portretter
 1238	Bilder tatt i portrettmodus
 1239	Tilfeldig
-1240	%1$lld tilfeldige åpne bilder og videoer, blandet på nytt hver gang
+1240	%1$lld tilfeldige bilder og videoer som du ikke har gått gjennom, blandet på nytt hver gang
 1241	Bare snarveien fjernes. Filene og valgene dine beholdes.
 1242	Skjermbilder
 1243	Selfier
@@ -1249,7 +1249,7 @@
 1256	Siste rekord
 1257	Bronse
 1258	Gull
-1259	%1$@ av %2$@ · %3$@ igjen
+1259	%1$@ fra %2$@ · %3$@ igjen
 1260	Sølv
 1261	Medaljer sammenlignes bare med dine egne resultater – ingen ledertavler, ingenting forlater enheten.
 1262	Rekord
@@ -1340,7 +1340,7 @@
 1359	Minst %1$@
 1360	Ukjent størrelse
 1361	Neste uten å velge
-1362	Spill igjen
+1362	Spill av igjen
 1363	Ingen
 1364	Tid per bilde
 1365	Ingenting å vise her.
@@ -1573,7 +1573,7 @@
 1592	Alle bildene dine
 1593	Elementer lagt til side til senere teller som gått gjennom – du ser dem fortsatt her.
 1594	Åpne oversikten som rutenett eller gå gjennom en ferdig måned igjen.
-1595	Trykk på en måned for å gå gjennom bare de åpne bildene og videoene i den.
+1595	Trykk på en måned for å gå gjennom bare månedens bilder og videoer som du ennå ikke har gått gjennom.
 1596	Hvor langt du har kommet
 1597	Neste
 1598	Flere bilder tatt raskt etter hverandre? Sammenlign dem side om side og velg hva som blir.
@@ -1745,7 +1745,7 @@
 1764	De kopieres kryptert og kontrolleres. Deretter spør iOS om de kan slettes fra Bilder-appen. Der blir de liggende i «Nylig slettet» i 30 dager.
 1765	Flytt til safen: %1$lld
 1766	GaleriQ har også laget kopier av dem (redigeringer, collager, filmer, GIF-er): %1$lld. De ligger i Bilder-appen og er fortsatt synlige med mindre du flytter dem også.
-1767	iOS slettet ikke noen av dem fra Bilder-appen. GaleriQ viser dem uansett ikke andre steder, men de er fortsatt synlige i Bilder-appen. Bruk meldingen øverst for å prøve igjen.
+1767	iOS slettet ikke alle elementene fra Bilder-appen. De gjenværende elementene vises ikke noe annet sted i GaleriQ, men de er fortsatt synlige i Bilder-appen. Bruk meldingen øverst for å prøve igjen.
 1768	I safen: %1$lld. Fjernet fra Bilder-appen: %2$lld.
 1769	Kunne ikke flyttes: %1$lld (f.eks. uten forbindelse til iCloud). De blir i Bilder-appen.
 1770	Ikke flyttet: %1$lld. Gratisversjonen tillater %2$lld elementer i safen; med Pro er det ubegrenset.
