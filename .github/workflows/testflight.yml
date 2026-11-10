@@ -204,7 +204,7 @@ jobs:
       APP_STORE_CONNECT_API_KEY_BASE64: ${{ secrets.APP_STORE_CONNECT_API_KEY_BASE64 }}
       PM_BUNDLE_ID: ${{ vars.PM_BUNDLE_ID || 'com.mrdevn4ever.photomaid' }}
       PM_TEAM_ID: ${{ vars.PM_TEAM_ID || 'HUN9MS832X' }}
-      PM_STORE_VERSION: "1.0"
+      PM_STORE_VERSION: "1.0.1"
     steps:
       - uses: actions/checkout@v4
         with:
