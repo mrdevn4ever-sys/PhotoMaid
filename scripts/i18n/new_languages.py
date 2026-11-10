@@ -185,7 +185,7 @@ def merge():
                 locs.pop(lang, None)  # Form wird in dieser Sprache nicht gebraucht
             elif "en" in locs:
                 locs[lang] = {"stringUnit": {"state": "needs_review", "value": locs["en"]["stringUnit"]["value"]}}
-        for key in [k for k in tr if k not in cat["strings"]]:  # zusätzliche Mengenformen (few/two/…)
+        for key in [k for k in tr if k not in cat["strings"] and not k.startswith("info:")]:  # zusätzliche Mengenformen (few/two/…)
             cat["strings"][key] = {"extractionState": "manual",
                                    "localizations": {lang: {"stringUnit": {"state": "translated", "value": tr[key]}}}}
         for k in INFO_KEYS:

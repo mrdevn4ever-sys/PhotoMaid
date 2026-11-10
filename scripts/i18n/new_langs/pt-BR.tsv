@@ -1,0 +1,1900 @@
+0000	3 dias ativos
+0001	7 dias ativos
+0002	Os três jogos jogados
+0003	Insígnias
+0004	%1$lld de %2$lld
+0005	Jogue em Faça uma pausa
+0006	Continue revisando
+0007	Crie no Estúdio
+0010	dia
+0011	dias
+0014	Conquistado
+0015	em %@
+0016	Manter, Lixeira e Depois contam igualmente.
+0017	Primeira colagem
+0018	Primeira decisão
+0019	Primeiro filme
+0020	Primeiro mês concluído
+0021	Primeiro PDF
+0022	%1$@: %2$@ fotos
+0023	%1$@: %2$@ pontos
+0024	Meta diária
+0025	Meta diária atingida 10×
+0026	Meta diária atingida
+0027	de %@ hoje
+0028	Desativado – ative em Ajustes.
+0029	%1$@ de %2$@
+0030	Jogos
+0031	Organização
+0032	Revisadas
+0033	Primeiros passos
+0034	Sequências
+0035	“Depois” zerado
+0036	Nível
+0037	Nível máximo alcançado.
+0038	Faltam %1$@ para o nível %2$lld.
+0039	Biblioteca inteira revisada
+0040	Tudo fica neste iPhone. Para desativar: Ajustes › Mostrar conquistas.
+0041	Meses concluídos
+0042	12 meses concluídos
+0043	Nova insígnia: %@
+0044	Abrir conquistas
+0045	Abre as conquistas
+0046	12 pares resolvidos
+0047	%1$@ em menos de %2$@ s
+0048	Faltam %@
+0049	itens revisados
+0050	%@ revisados
+0051	Sequência
+0052	Sequência de 100 dias
+0053	Sequência de 3 dias
+0054	Sequência de 30 dias
+0055	Sequência de 7 dias
+0056	O que você já conquistou – só os seus próprios números.
+0057	Conquistas
+0058	Ver
+0059	Esta semana
+0060	Manter e próxima
+0061	Depois
+0062	Escolher uma data para depois
+0063	Ver anterior
+0064	Mover para a lixeira
+0065	Anúncio
+0066	Fique sem anúncios com o Pro
+0067	Avançar
+0068	Você poderá continuar em instantes …
+0069	Adicionar pasta
+0070	Adicionado a “%1$@”
+0071	Não foi possível alterar o álbum.
+0072	Álbuns e pastas do app Fotos. Adicionar a um álbum não altera os arquivos e sincroniza com as Fotos do iCloud, se estiverem ativadas.
+0073	Tudo
+0074	Continuar brevemente em segundo plano
+0075	O GaleriQ usa o tempo em segundo plano permitido pelo iOS, sem um cartão de atividade do sistema. Se o tempo acabar, o progresso fica salvo e a análise continua quando você reabrir o app.
+0076	Animais
+0077	Documentos
+0078	Comida
+0079	Natureza
+0080	Outros
+0081	Pessoas
+0082	Capturas de tela com texto
+0083	Veículos
+0084	Fotos do iCloud só são carregadas como pequenas prévias via Wi-Fi. Nada é enviado.
+0085	Só no iCloud: %1$lld
+0086	A análise de imagens está desativada em Ajustes.
+0087	Não analisadas: %1$lld
+0088	Executar esta primeiro
+0089	Comparar (%1$lld)
+0090	Grupos: %1$lld · Fotos: %2$lld
+0091	Incluir fotos do iCloud (só via Wi-Fi)
+0092	Resultados: %1$lld
+0093	Avançar
+0094	Pausar
+0095	Voltar
+0096	%1$lld de %2$lld analisadas
+0097	Prévia pequena demais: %1$lld
+0098	Analisar depois
+0099	A análise em andamento nunca é cancelada: “Executar esta primeiro” apenas a pausa, e ela continua sozinha depois.
+0100	Continuar análise
+0101	Tentar de novo as falhas (%1$lld)
+0102	“%1$@” está em andamento. Esta análise pode começar sozinha depois.
+0103	Buscar texto reconhecido
+0104	Mostrar também as já decididas
+0105	Fotos parecidas: %1$lld · você decide o que fica
+0106	A biblioteca mudou. Continue para atualizar a análise.
+0107	Carregando prévias do iCloud …
+0108	Comparando fotos parecidas …
+0109	Análise concluída.
+0110	Analisando fotos neste iPhone …
+0111	Pausada. Os resultados até agora foram mantidos.
+0112	Preparando …
+0113	A análise não é possível agora. Tente novamente mais tarde.
+0114	Não foi possível salvar os resultados. Verifique o espaço livre.
+0115	Aguardando Wi-Fi para carregar prévias do iCloud.
+0116	Iniciar análise
+0117	Deslizar por elas (%1$lld)
+0118	Para cima mantém, para a esquerda vai para a lixeira, para a direita mostra de novo depois. Toque numa foto para começar por ela.
+0119	Toque num grupo para compará-lo – ou deslize por todos, um após o outro.
+0120	Não esperar
+0121	Aguardando – começa sozinha assim que “%1$@” terminar.
+0122	Fotos desfocadas
+0123	Tremidas ou fora de foco – ordenadas por nitidez
+0124	Por assunto
+0125	Pessoas, animais, comida, paisagens …
+0126	Fotos com texto
+0127	Capturas de tela, recibos e documentos – pesquisáveis pelo texto reconhecido
+0128	A análise acontece só neste iPhone (Apple Vision). Os resultados são sugestões – você decide no feed. Nada é enviado nem apagado automaticamente.
+0129	Analisado neste iPhone
+0130	Fotos parecidas
+0131	Fotos muito semelhantes, lado a lado
+0132	GaleriQ
+0133	Escuro
+0134	Claro
+0135	Igual ao aparelho
+0136	Pastas por ano e mês
+0137	Organiza as cópias em subpastas pela data de captura, por exemplo “2026/10”. Desativado: todos os arquivos vão para uma pasta.
+0138	Escolher pasta
+0139	Escolher outra pasta
+0140	Álbuns
+0141	Bytes
+0142	Pasta
+0143	Nome
+0144	Nota
+0145	SHA-256
+0146	Etiquetas
+0147	Capturada em
+0148	Livre no destino: %1$@
+0149	Espaço livre no destino: desconhecido
+0150	O GaleriQ copia fotos e vídeos para uma pasta que você escolher – por exemplo, num pendrive, num disco externo ou no app Arquivos. Cada cópia é depois comparada byte a byte com o original. Seus originais ficam no Fotos e nada é apagado.
+0151	Uma segunda cópia verificada das suas fotos
+0152	Esta pasta está no mesmo armazenamento que suas fotos. Uma segunda cópia ali não ajuda se o celular for perdido ou quebrar.
+0153	Esta pasta pertence a outro app, como um serviço de armazenamento online. Esse app decide se os arquivos ficam no celular ou vão para a nuvem.
+0154	Um dispositivo de armazenamento separado, como um pendrive ou disco externo.
+0155	Última execução em %1$@: %2$lld de %3$lld verificados.
+0156	Lista de verificação GaleriQ %1$@.csv
+0157	Lista de verificação salva: %1$@
+0158	“Verificado” significa que a cópia é idêntica ao original, byte a byte. Ninguém consegue prever quanto tempo um dispositivo de armazenamento vai durar – guarde o que é importante em dois lugares.
+0159	Primeiro escolha o que copiar e uma pasta de destino.
+0160	Agora escolha o que deve ser copiado.
+0161	Agora escolha uma pasta de destino.
+0162	Nada escolhido ainda
+0163	Opções
+0164	%1$lld já estava lá
+0165	%1$lld já estavam lá
+0166	%1$lld falhou
+0167	%1$lld falharam
+0168	%1$lld não copiado
+0169	%1$lld não copiados
+0170	%1$lld copiado e verificado
+0171	%1$lld copiados e verificados
+0172	O que deve ser copiado?
+0173	Escolher fotos e vídeos
+0174	Alterar seleção
+0175	Cancelado
+0176	Interrompido – cópia parcial removida
+0177	A cópia não confere – removida novamente
+0178	O original não pode ser lido
+0179	Sem espaço no destino
+0180	O destino recusou salvar (cheio, protegido contra gravação ou arquivo grande demais para esse armazenamento)
+0181	Resultado
+0182	Copiando e verificando …
+0183	Copiar e verificar
+0184	%1$lld arquivo será copiado para “%2$@”.
+0185	%1$lld arquivos serão copiados para “%2$@”.
+0186	Etapa %1$lld · %2$@
+0187	Seus originais continuam como estão.
+0188	Copiar para uma pasta escolhida e verificar cada cópia
+0189	Nenhuma pasta escolhida ainda
+0190	Conecte um pendrive ou disco externo e escolha uma pasta nele. O iCloud Drive e outros locais do app Arquivos também funcionam.
+0191	Arquivar
+0192	Sem data
+0193	Verificado: %1$@
+0194	Para onde vão as cópias?
+0195	Salvar também uma lista de verificação
+0196	Salva uma tabela (arquivo CSV) na pasta de destino com nome, data, tamanho e soma de verificação de cada arquivo, além dos seus álbuns, etiquetas e notas – para você conferir as cópias depois.
+0197	de %1$@
+0198	Pares, Cobrinha de fotos e Foto Blocks
+0199	para revisar
+0200	Fotos sobre as quais você ainda está em dúvida.
+0201	Respire fundo. Suas fotos entram no jogo.
+0202	3 jogos com suas próprias fotos
+0203	Apagar último dígito
+0204	%1$lld de %2$lld dígitos digitados
+0205	Privacidade e dados
+0206	Pergunta antes de um favorito ir para a lixeira
+0207	Com a câmera, como PDF
+0208	O que ocupa espaço
+0209	Deslizar
+0210	Ainda para revisar
+0211	Fotos e vídeos.
+0212	Criptografado, só neste iPhone.
+0213	Voltar
+0214	Restaurar
+0215	Restaurado
+0216	Backup GaleriQ %1$@.json
+0217	Backup de %1$@
+0218	Este arquivo não é um backup do GaleriQ.
+0219	Abrir backup …
+0220	O arquivo contém nomes de arquivos, etiquetas e notas. Salve-o só onde você quiser – num pendrive, por exemplo.
+0221	Restaurar
+0222	Traz um backup de volta, por exemplo num celular novo. As fotos são encontradas de novo por nome, tamanho e data de captura. O que já foi decidido ou inserido aqui continua como está.
+0223	Salvar backup …
+0224	Não foi possível salvar o backup.
+0225	Fazer backup
+0226	Salva seus dados do GaleriQ num pequeno arquivo: decisões, álbuns, etiquetas, notas, cesta de seleção, itens ocultos, ajustes, fluxos e predefinições. Nenhuma foto é incluída.
+0227	Backup e restauração
+0228	Este backup vem de uma versão mais nova do GaleriQ. Atualize o GaleriQ primeiro.
+0229	Não foi possível ler o arquivo.
+0230	Lixeira
+0231	Restam %1$lld de %2$lld hoje
+0232	Apagar %1$lld permanentemente
+0233	Isso não pode ser desfeito.
+0234	Apagar arquivos permanentemente?
+0235	Remover %1$lld
+0236	Depois confirme no diálogo do iOS. As fotos e vídeos vão para “Apagados” no app Fotos.
+0237	Remover fotos e vídeos?
+0238	%1$lld na lixeira
+0239	Apagar %1$lld arquivo permanentemente
+0240	Apagar %1$lld arquivos permanentemente
+0241	Remover %1$lld foto ou vídeo
+0242	Remover %1$lld fotos e vídeos
+0243	Tudo o que você separou para remover aparece aqui. Deslize uma foto ou vídeo para a esquerda para adicioná-lo.
+0244	Sua lixeira está vazia
+0245	Estes arquivos serão apagados permanentemente. Não é possível desfazer.
+0246	Arquivos
+0247	Nada foi apagado ainda. Toque numa miniatura para ver maior. Esvazie a lixeira só quando estiver pronto.
+0248	O iOS pede outra confirmação e move fotos e vídeos para “Apagados”. Normalmente você pode restaurá-los lá por 30 dias. Com as Fotos do iCloud, a exclusão vale para todos os seus aparelhos.
+0249	Fotos e vídeos
+0250	Visualizar não altera sua seleção.
+0251	Ver maior: %1$@
+0252	Seleção: %1$@
+0253	Adicionadas recentemente
+0254	Data de captura
+0255	Permitir acesso às fotos
+0256	Recorde: %1$lld
+0257	Trocar fotos
+0258	Limpar seleção
+0259	Continuar
+0260	Foto revelada!
+0261	Favoritas
+0262	Fotos reveladas: %1$lld
+0263	Tabuleiro: deslize para os lados, toque para girar, arraste ou dê um toque rápido para baixo.
+0264	Arrastar para baixo: mais rápido · toque rápido para baixo: encaixar
+0265	Deslize para os lados para mover
+0266	Toque para girar
+0267	Como jogar
+0268	Nível: %1$lld
+0269	Gerenciar fotos permitidas
+0270	Novo recorde!
+0271	Fotos mais recentes
+0272	Avançar
+0273	Rodada concluída
+0274	Pausar
+0275	Pausado
+0276	Fotos do iCloud são baixadas quando necessário. Cofre, fotos ocultas e excluídas continuam protegidas.
+0277	Origem das imagens
+0278	Escolher fotos
+0279	Coluna %1$lld, linha %2$lld, rotação %3$lld
+0280	Progresso das fotos
+0281	Fotos aleatórias
+0282	Jogar de novo
+0283	Reiniciar
+0284	Linhas: %1$lld
+0285	Só fotos permitidas são usadas. Imagens indisponíveis são substituídas por um fundo neutro.
+0286	Falha ao salvar · Tentar de novo
+0287	Pontos: %1$lld
+0288	Selecionadas: %1$lld
+0289	Escolher minhas fotos
+0290	Iniciar jogo
+0291	Limpe linhas e revele suas fotos.
+0292	Foto Blocks
+0293	Cancelar
+0294	Fotos
+0295	Capturas de tela
+0296	Vídeos
+0297	Alterar
+0298	Alterar data
+0299	Escolher pasta
+0300	Fechar
+0301	A4 paisagem
+0302	A4 retrato
+0303	Criar coleção
+0304	1 ano
+0305	2 anos
+0306	6 meses
+0307	%1$lld dia
+0308	%1$lld dias
+0309	Foto desfocada
+0310	Prontas para você
+0311	Condição
+0312	Contando itens …
+0313	Suas coleções
+0314	Coleções personalizadas estão disponíveis com o Pro. Coleções prontas são gratuitas.
+0315	Apagar coleção
+0316	Divisória horizontal
+0317	Divisória vertical
+0318	Editar
+0319	Coleção personalizada
+0320	Preencher
+0321	Mostrar inteira
+0322	Tipo de arquivo
+0323	Escolha uma coleção para revisar fotos e vídeos correspondentes. Nada é apagado automaticamente.
+0324	JPEG: arquivo menor, ideal para compartilhar.
+0325	Livre
+0326	Grade
+0327	Faixa
+0328	Maior que
+0329	Arraste as alças brancas para redimensionar. Mantenha uma foto pressionada e arraste-a sobre outra para trocar.
+0330	Borda
+0331	Algumas fotos não estão mais disponíveis e ficaram de fora.
+0332	Tudo revisado
+0333	Mais antigas que
+0334	Toque numa foto da colagem para trocá-la.
+0335	PNG: sem perdas e nítido, mas arquivo maior.
+0336	Moldura de foto instantânea
+0337	Substituir
+0338	Salvar colagem
+0339	Espaçamento
+0340	Prévia da colagem
+0341	Lado a lado
+0342	De cima para baixo
+0343	Trocar com a próxima foto
+0344	Fundo
+0345	Layout
+0346	Foto
+0347	Espaçamento
+0348	%1$@ maiores que %2$@
+0349	%1$@ mais antigas que %2$@
+0350	Cortar embaixo
+0351	Cortar à esquerda
+0352	Cortar à direita
+0353	Cortar em cima
+0354	%1$lld item de tamanho desconhecido foi ignorado.
+0355	%1$lld itens de tamanho desconhecido foram ignorados.
+0356	O que você quer ver?
+0357	Salvar no álbum
+0358	Salvar em Arquivos
+0359	Salvar em Fotos
+0360	Adicionar fotos
+0361	Proporção
+0362	Proporção %1$@
+0363	Preto
+0364	Azul
+0365	Creme
+0366	Cor personalizada
+0367	Verde
+0368	Cinza
+0369	Laranja
+0370	Rosa
+0371	Vermelho
+0372	Branco
+0373	Amarelo
+0374	Álbum no Fotos
+0375	Escolher um álbum
+0376	iCloud Drive, No meu iPhone ou um pendrive
+0377	Salvar em
+0378	Fotos
+0379	Como uma nova imagem na sua biblioteca
+0380	Enviar sem salvar uma cópia no Fotos
+0381	Não foi possível salvar a colagem. Suas fotos não foram alteradas.
+0382	Fonte
+0383	Arraste para mover a foto na célula, faça pinça para ampliar.
+0384	Arraste as fotos para movê-las. Dois dedos redimensionam e giram.
+0385	Foto grande embaixo
+0386	Foto grande à esquerda
+0387	Foto grande à direita
+0388	Foto grande em cima
+0389	Colunas de %1$@ fotos
+0390	Grade uniforme
+0391	Linhas de %1$@ fotos
+0392	Suas fotos originais não são alteradas. Um novo arquivo é criado.
+0393	Foto %1$lld
+0394	Alta (2048 px)
+0395	O número é o lado maior. Mais alto fica mais nítido ao ampliar ou imprimir, mas o arquivo fica maior.
+0396	Máxima (4096 px)
+0397	Resultado: %1$lld × %2$lld px
+0398	Padrão (1080 px)
+0399	Em faixas, o número é a largura (de cima para baixo) ou a altura (lado a lado). Faixas muito longas são reduzidas para poderem ser salvas.
+0400	Rotação
+0401	Colagem salva em “%1$@”
+0402	Colagem salva em Arquivos
+0403	Colagem salva em Fotos
+0404	Texto e adesivos
+0405	Estilo
+0406	Zoom
+0407	Pastas conectadas
+0408	Compartilhar diagnóstico
+0409	Voltar
+0410	Manter
+0411	Depois
+0412	Lixeira
+0413	Lixeira: %1$lld
+0414	Abre a lixeira. Nada é apagado sem a sua confirmação.
+0415	OK
+0416	Pelo menos %1$@
+0417	OK
+0418	Estimado (“aprox.”): %1$lld – o iOS só informa o tamanho exato depois do download.
+0419	Mantidas hoje
+0420	Os arquivos foram apagados permanentemente.
+0421	As fotos e vídeos agora estão em “Apagados” no app Fotos. O espaço só é liberado quando forem apagados permanentemente lá.
+0422	Os itens que não foram removidos continuam na lixeira do GaleriQ.
+0423	Removidos
+0424	economizados
+0425	Lixeira esvaziada
+0426	%1$@ economizados no total
+0427	Pelo menos %1$@ economizados no total
+0428	O tamanho de %1$lld item é desconhecido. Ele não entra no total.
+0429	Os tamanhos de %1$lld itens são desconhecidos. Eles não entram no total.
+0430	Buscar de novo
+0431	Comparando arquivos …
+0432	Encontre fotos, vídeos e arquivos com exatamente o mesmo conteúdo. Você escolhe quais cópias vão para a lixeira.
+0433	Cópias selecionadas: até %1$@. Isso pode não ser igual ao espaço liberado. Confira favoritos, álbuns e edições antes de remover cópias.
+0434	Arquivos idênticos: %1$lld · %2$@ no total
+0435	O GaleriQ compara o conteúdo dos arquivos diretamente no seu aparelho. Imagens parecidas não contam como cópias idênticas.
+0436	Baixa originais ausentes via Wi-Fi. Bibliotecas grandes podem demorar e usar muitos dados. Busca nas mídias permitidas e nas pastas conectadas.
+0437	Baixando originais do iCloud…
+0438	Incluir originais do iCloud
+0439	Parte do conteúdo não pôde ser lida. Itens não verificados podem conter mais cópias idênticas.
+0440	A busca ainda está incompleta
+0441	Medindo tamanhos …
+0442	Mover %1$lld cópia para a lixeira
+0443	Mover %1$lld cópias para a lixeira
+0444	Nenhuma cópia idêntica encontrada
+0445	Nenhuma cópia idêntica foi encontrada nas áreas acessíveis.
+0446	Selecionadas para a lixeira
+0447	Não foi possível ler %1$lld pastas conectadas.
+0448	Encontrar cópias
+0449	%1$lld itens ainda não puderam ser verificados.
+0450	Serão mantidas
+0451	Duplicatas
+0452	Editar
+0453	Exposição
+0454	Redução de ruído
+0455	Raio
+0456	Limiar
+0457	Grátis
+0458	Original
+0459	alterado
+0460	Foto editada. Toque e segure para ver o original.
+0461	editada
+0462	Área de corte
+0463	Cortar
+0464	Perspectiva
+0465	Descartar
+0466	Sua edição não será salva. O original fica como está.
+0467	Descartar alterações?
+0468	Salva como cópia
+0469	Salva como cópia · %1$@
+0470	Original mantido · a edição foi salva como cópia
+0471	Original editado · pode ser revertido no app Fotos
+0472	Original substituído · está em “Apagados”
+0473	Não alterado – o iOS não recebeu permissão. O original não foi alterado.
+0474	Este item foi alterado, movido ou apagado enquanto isso. Nada foi salvo.
+0475	Este item não pode ser aberto para edição.
+0476	Não foi possível salvar a edição. O original não foi alterado.
+0477	Frio
+0478	Desbotado
+0479	Mono
+0480	Noir
+0481	Original
+0482	Sépia
+0483	Intensidade
+0484	Vívido
+0485	Quente
+0486	Espelhar
+0487	Pesada
+0488	Negrito
+0489	Descontraída
+0490	Estreita
+0491	Manuscrita
+0492	Máquina de escrever
+0493	Clássica
+0494	Serifada
+0495	Versaletes
+0496	Cantos arredondados
+0497	Uniforme
+0498	Borda interna
+0499	Borda externa
+0500	Largura
+0501	Cor
+0502	Detalhe
+0503	Efeitos
+0504	Luz
+0505	Mixer de cores
+0506	Continuar editando
+0507	Paisagem
+0508	Matiz
+0509	Luminância
+0510	Saturação
+0511	Cor
+0512	Apagar
+0513	Desenhar
+0514	Duplicar
+0515	Editar
+0516	Emoji
+0517	Preenchido
+0518	Trazer para frente
+0519	Toque em algo que você adicionou para movê-lo. Dois dedos redimensionam e giram.
+0520	Toque num texto ou adesivo para selecioná-lo e arraste-o para onde quiser.
+0521	Maior
+0522	Cobrir
+0523	Com “Pixelar” e “Desfocar”, os contornos ainda podem aparecer. Para texto que deve ficar ilegível, escolha “Sólido”.
+0524	Recomendado para detalhes privados: o que você cobre some de verdade no arquivo salvo ou compartilhado.
+0525	Selecionar
+0526	Formas
+0527	Tamanho
+0528	Menor
+0529	Adesivo
+0530	Texto
+0531	Horizontal
+0532	Redefinir perspectiva
+0533	Vertical
+0534	Retrato
+0535	Atualizando prévia…
+0536	A prévia é grátis · salvar exige o Pro ou o teste de 30 minutos
+0537	Cortar, girar e endireitar são grátis. Ajustes, filtros, tamanho e corte de vídeo são salvos com o Pro. Experimentar é sempre grátis.
+0538	Salvar com o Pro
+0539	Desfocar
+0540	Pixelar
+0541	Sólido (recomendado)
+0542	Remover localização
+0543	A foto salva não incluirá onde foi tirada.
+0544	Redefinir
+0545	Redefinir tudo
+0546	Girar
+0547	Salvar como cópia
+0548	Salvar cópia
+0549	O original não é alterado.
+0550	Salvar só o corte
+0551	Editar original
+0552	O iOS pergunta antes. A edição é salva como uma edição no app Fotos – você pode desfazê-la lá a qualquer momento com “Reverter”.
+0553	Salvar cópia e mover original para a lixeira
+0554	Salvar cópia, original na lixeira
+0555	O iOS pede confirmação. O original vai para “Apagados” no app Fotos e normalmente pode ser restaurado lá por 30 dias. O espaço só é liberado depois disso.
+0556	Salvar edição
+0557	Salvando…
+0558	Seta
+0559	Círculo
+0560	Linha
+0561	Retângulo
+0562	Só compartilhar (sem cópia)
+0563	Compartilha a versão editada sem salvá-la na sua galeria. A localização é removida.
+0564	%1$lld px
+0565	Tamanho original
+0566	%1$lld × %2$lld → %3$lld × %4$lld px
+0567	Esta foto já é pequena. O GaleriQ nunca amplia fotos.
+0568	Seta
+0569	Balão de fala
+0570	Visto
+0571	Anel
+0572	Xis
+0573	Carimbo de data
+0574	Coração
+0575	Brilho
+0576	Estrela
+0577	Edite com um dedo; use dois dedos para ampliar e mover.
+0578	Endireitar
+0579	Ajustar
+0580	Cortar
+0581	Filtros
+0582	Moldura
+0583	Marcação
+0584	Tamanho
+0585	Retocar
+0586	Cortar
+0587	Texto
+0588	Fim
+0589	%1$@ – %2$@ · %3$@ s
+0590	Início
+0591	Contorno
+0592	Etiqueta
+0593	Sombra
+0594	Colagem
+0595	Convertido
+0596	Cópia
+0597	Recorte
+0598	Quadro estático
+0599	Filme
+0600	Original substituído
+0601	Redimensionado
+0602	Feito com %1$lld foto
+0603	Feito com %1$lld fotos
+0604	Quando você edita uma foto ou salva uma colagem, um filme ou imagens redimensionadas, o resultado aparece aqui.
+0605	Nada editado ainda
+0606	Remover da lista
+0607	Tudo o que o GaleriQ salvou para você: fotos e vídeos editados, colagens, filmes e imagens redimensionadas, os mais novos primeiro. Os arquivos estão no app Fotos; esta lista só lembra o que veio do GaleriQ. Toque num item para vê-lo.
+0608	O original ainda está lá
+0609	O original está em “Apagados”
+0610	Não está mais no app Fotos
+0611	Editados
+0612	Não foi possível salvar a alteração.
+0613	Escolha uma pasta armazenada neste iPhone. Pastas que estão só na nuvem não são compatíveis aqui.
+0614	Não foi possível salvar a data.
+0615	Sua escolha não foi salva. Tente novamente.
+0616	Não foi possível conectar a pasta.
+0617	Não foi possível salvar o ajuste.
+0618	Isso não funcionou
+0619	Espere a lixeira terminar de esvaziar antes de usar Desfazer.
+0620	Isso não pode mais ser desfeito porque você alterou o item enquanto isso.
+0621	Isso não pode ser desfeito agora.
+0622	Excluir este álbum
+0623	Excluir
+0624	Os itens deste álbum não aparecerão mais durante a limpeza. Nada é apagado nem movido. Desfaça em Ajustes › Álbuns excluídos.
+0625	Ocultar “%1$@” durante a limpeza?
+0626	“%1$@” não aparecerá mais durante a limpeza
+0627	Continua rodando se você trocar de app.
+0628	Outra exportação já está em andamento. Espere até ela terminar.
+0629	Cancelado. Nada foi salvo.
+0630	O iOS encerrou a exportação em segundo plano. Nada foi salvo – comece de novo e mantenha o GaleriQ aberto.
+0631	Você pode trocar rapidamente para outro app. Se o iOS encerrar o tempo, o GaleriQ para de forma limpa – nada pela metade é salvo.
+0632	Salvando …
+0633	Marcar como favorita
+0634	Não foi possível alterar o status de favorita. Ele continua o mesmo.
+0635	Esta foto está protegida como favorita.
+0636	Remova primeiro a marca de favorita para colocá-la na lixeira. Você também pode desativar a proteção de favoritas nos ajustes.
+0637	Este vídeo está protegido como favorito.
+0638	Remover das favoritas
+0639	Não está mais marcada como favorita. Deslize para a esquerda para colocá-la na lixeira.
+0640	Não é favorita
+0641	Favorita
+0642	Colocar em “%1$@”
+0643	Nada
+0644	Depois – escolher data
+0645	Adicionar botão
+0646	Botões e ordem
+0647	Botões
+0648	Use “Editar” para mudar a ordem ou remover botões. Até 6 botões. Os botões fazem exatamente o mesmo que os gestos.
+0649	Colocar no álbum …
+0650	Nada é apagado aqui: “Lixeira” é a lixeira do GaleriQ. Desfazer reverte cada ação, inclusive “Colocar no álbum”.
+0651	Sem botões
+0652	Acima da foto
+0653	Abaixo da foto
+0654	Posição
+0655	Restaurar padrão
+0656	Para cima mantém, para a esquerda vai para a lixeira, para a direita é depois, para baixo volta – com os botões padrão.
+0657	Personalizado
+0658	Padrão
+0659	Gestos
+0660	Escolha o que cada direção faz. “Colocar no álbum” adiciona a foto a um álbum do app Fotos e a mantém. Não fazer nada nunca é uma decisão.
+0661	Gestos e botões
+0662	Só com VoiceOver/Controle Assistivo
+0663	Sempre
+0664	Mostrar botões
+0665	Colocar em “%1$@”
+0666	Não há mais favoritas para revisar agora.
+0667	Não há mais nada para revisar neste álbum.
+0668	Não há mais nada para revisar entre suas fotos mais recentes.
+0669	Não há mais nada para revisar entre seus vídeos mais recentes.
+0670	Não há mais Live Photos para revisar agora.
+0671	Não há mais vídeos longos para revisar agora.
+0672	Não há mais nada para revisar aqui agora.
+0673	Não há mais nada para revisar deste dia em anos anteriores.
+0674	Não há mais fotos para revisar agora.
+0675	Não há mais retratos para revisar agora.
+0676	Não há mais nada para revisar numa seleção aleatória.
+0677	Não há mais capturas de tela para revisar agora.
+0678	Não há mais selfies para revisar agora.
+0679	Não há mais nada para revisar desta semana.
+0680	Não há mais vídeos para revisar agora.
+0681	Só uma pequena prévia está guardada neste iPhone. Baixe o original para vê-lo completo.
+0682	Baixar do iCloud
+0683	O original está no iCloud.
+0684	Carrega de novo a qualidade total do iCloud. Você pode decidir com a prévia a qualquer momento.
+0685	Carregando fotos e vídeos …
+0686	%@ nesta sessão
+0687	%1$lld de %2$lld
+0688	Tentar de novo as mídias puladas
+0689	Mostrar ajuda dos gestos
+0690	Ocultas ao deslizar até você recarregá-las aqui. Os originais não são alterados.
+0691	Mídias puladas
+0692	Foto ou vídeo atual
+0693	Limpar
+0694	Prontas para revisar
+0695	Adicionadas recentemente
+0696	Fotos
+0697	Capturas de tela
+0698	Vídeos
+0699	Ver lixeira
+0700	Arquivo
+0701	Tipo de arquivo
+0702	Arquivos
+0703	Escolha uma pasta para revisar os arquivos dela no GaleriQ.
+0704	Nenhuma pasta conectada ainda
+0705	Buscar arquivos …
+0706	Uma pasta conectada está indisponível. Conecte-a novamente.
+0707	Adicionar ao álbum
+0708	Todos os álbuns
+0709	Criar e adicionar
+0710	Digite um nome curto para o álbum.
+0711	Carregando álbuns …
+0712	Nome do álbum
+0713	Novo álbum
+0714	A foto fica onde está e também aparece no álbum – no app Fotos também e, com as Fotos do iCloud, nos seus outros aparelhos.
+0715	Abrir arquivos
+0716	Fixar álbum
+0717	Fixados
+0718	Usados recentemente
+0719	Encontrar álbum
+0720	Desafixar álbum
+0721	Recorde: %1$lld
+0722	Melhor tempo: %1$@
+0723	Esconder pares errados manualmente
+0724	Novo recorde pessoal!
+0725	Ainda sem recorde
+0726	Esta rodada precisa de pelo menos %1$lld fotos utilizáveis da origem escolhida. Escolha outra origem, uma seleção menor ou permita downloads do iCloud.
+0727	Fotos
+0728	Símbolos
+0729	Seus novos recordes valem nesta sessão, mas não puderam ser salvos. Tente novamente.
+0730	Recordes
+0731	Visual e som
+0732	Escolher fotos
+0733	Fotos guardadas no iCloud são carregadas quando necessário.
+0734	Trocar fotos
+0735	Personalizar jogo
+0736	Encontre todas as fotos iguais no seu ritmo.
+0737	Escolha de 2 a 18 fotos para os seus pares.
+0738	Jogar sem fotos · 6 pares
+0739	Suas fotos
+0740	Suas fotos originais não são alteradas.
+0741	Colete fotos. Deslize para guiar.
+0742	Jogar sem fotos
+0743	Padrão
+0744	Jogos
+0745	Encontre pares com suas próprias fotos.
+0746	Colagem
+0747	Não há fotos nem vídeos aqui agora.
+0748	Nada para mostrar
+0749	Toque para selecionar; toque e segure e arraste para selecionar vários. Mover não é uma decisão.
+0750	Visão geral
+0751	Selecionar
+0752	Tudo
+0753	Nenhum
+0754	%1$lld selecionado
+0755	%1$lld selecionados
+0756	Alterado
+0757	Removido
+0758	Removido de “Depois”
+0759	Mantido
+0760	Alterado: manter
+0761	Guardado para depois
+0762	Alterado: depois
+0763	Não removido
+0764	Não encontrado mais
+0765	Data definida
+0766	Mover para a lixeira
+0767	Alterado: lixeira
+0768	Desfeito
+0769	Tirado da lixeira
+0770	Ajuda
+0771	Nuvem
+0772	Serviços de nuvem como o Google Fotos podem sincronizar exclusões com outros aparelhos. Confira os ajustes deles. O GaleriQ carrega fotos e vídeos das Fotos do iCloud automaticamente quando necessário, como o app Fotos.
+0773	Faça uma escolha
+0774	Deslize para cima para manter, para a esquerda para a lixeira e para a direita para depois. Por padrão, volta em 2 dias. Você pode mudar esse prazo nos ajustes. Logo depois de deslizar, use “Alterar” para escolher outra data. Deslize para baixo para voltar sem fazer uma nova escolha.
+0775	Apagar
+0776	Deslizar nunca apaga nada. Os itens vão primeiro para a lixeira do GaleriQ. Só depois que você confirmar lá o iOS move fotos e vídeos para Apagados.
+0777	Mostrar o tour e as dicas de novo
+0778	Para baixo
+0779	Esquerda
+0780	Direita
+0781	Para cima
+0782	Tudo
+0783	Removidos
+0784	%1$@ · %2$lld registro
+0785	%1$@ · %2$lld registros
+0786	Suas escolhas aparecem aqui quando você começar a limpar.
+0787	Ainda sem histórico
+0788	Ainda não há registros para este filtro.
+0789	Ainda sem registros
+0790	Mantidos
+0791	Depois
+0792	Mostrar menos
+0793	Mostrar registros mais antigos (%1$lld)
+0794	%1$@ · %2$@
+0795	Cópias idênticas
+0796	Arquivos de pastas conectadas
+0797	de %1$@
+0798	Biblioteca
+0799	Concluir mês a mês
+0800	Tudo revisado
+0801	%1$lld para revisar
+0802	%1$lld para revisar
+0803	Tiradas em sequência rápida
+0804	Categorias
+0805	Coleções
+0806	Mais ferramentas
+0807	Informações
+0808	Localização
+0809	%1$lld item
+0810	%1$lld itens
+0811	Manter
+0812	Tudo
+0813	Arquivos compactados
+0814	Documentos
+0815	Imagens
+0816	Outros
+0817	PDFs
+0818	Vídeos
+0819	Arquivos grandes
+0820	Maiores que
+0821	Só arquivos com tamanho conhecido de pelo menos %1$lld MB. O tamanho pode diferir do espaço liberado ao apagá-los.
+0822	Com “Otimizar Armazenamento do iPhone”, esses originais estão só no iCloud. O iOS não informa o tamanho exato sem baixá-los, então o GaleriQ o estima a partir das suas fotos e vídeos medidos e mostra como “aprox.”.
+0823	Só no iCloud: %1$lld
+0824	em %1$lld arquivo grande
+0825	em %1$lld arquivos grandes
+0826	Só no iCloud, tamanho estimado
+0827	Continuar medindo (abertos: %1$lld)
+0828	Medindo tamanhos … %1$lld de %2$lld
+0829	Nenhum arquivo correspondente
+0830	Nenhum dos arquivos acessíveis com tamanho conhecido é maior que %1$lld MB.
+0831	Não legíveis: %1$lld
+0832	Estes itens estão neste iPhone, mas não puderam ser lidos. Na lista, aparecem com tamanho estimado (“aprox.”).
+0833	Depois
+0834	De volta à pilha
+0835	Deixado de lado, sem data
+0836	Pronto para revisar desde %1$@
+0837	Pronto para revisar hoje
+0838	Deslize uma foto ou vídeo para a direita para vê-lo de novo depois.
+0839	Nada guardado para depois
+0840	Nos próximos 7 dias · %1$lld
+0841	Deixados de lado · %1$lld
+0842	Prontos para revisar · %1$lld
+0843	A partir de %1$@ · %2$lld
+0844	Sem data · %1$lld
+0845	Amanhã · %1$lld
+0846	De novo em %1$lld dia
+0847	De novo em %1$lld dias
+0848	De novo em %1$lld mês
+0849	De novo em %1$lld meses
+0850	De novo em 1 mês
+0851	De novo em 1 semana
+0852	De novo em %1$lld semana
+0853	De novo em %1$lld semanas
+0854	Volta na próxima vez que você limpar
+0855	Deixado de lado – encontre em Depois
+0856	Avisar quando for hora de revisar?
+0857	Remover de “Depois”
+0858	Revisar agora
+0859	Revisar agora (%1$lld)
+0860	Revisar de novo em %1$@
+0861	De novo amanhã
+0862	Ocultar subpastas
+0863	Fotos e vídeos deste aparelho aparecem aqui.
+0864	Mostrar subpastas
+0865	Toque em ♡ numa foto ou vídeo para torná-lo favorito. As favoritas são as mesmas do app Fotos.
+0866	Ainda sem favoritas
+0867	Da biblioteca
+0868	Tudo
+0869	Cinematográfico
+0870	Remover filtro
+0871	Editadas
+0872	Nada aqui para o filtro “%1$@”.
+0873	Favoritas
+0874	Panoramas
+0875	RAW
+0876	Gravações de tela
+0877	Câmera lenta
+0878	Time-lapse
+0879	Filtro
+0880	Limpar este álbum
+0881	Este álbum não tem fotos nem vídeos agora.
+0882	Excluir da limpeza
+0883	Excluído da limpeza
+0884	Incluir na limpeza de novo
+0885	Nenhum álbum corresponde a “%1$@”.
+0886	Buscar álbuns …
+0887	Mais itens
+0888	Atualizados recentemente
+0889	%1$lld item oculto no GaleriQ
+0890	%1$lld itens ocultos no GaleriQ
+0891	O GaleriQ não os mostra em lugar nenhum. Os arquivos não são alterados e outros apps ainda os mostram.
+0892	%1$lld item oculto
+0893	%1$lld itens ocultos
+0894	Use “Ocultar no GaleriQ” num álbum, numa foto ou numa seleção.
+0895	Nada oculto
+0896	Ocultos
+0897	Ocultar no GaleriQ
+0898	O GaleriQ não os mostrará mais – nem em Fotos nem durante a limpeza. Os arquivos não são alterados e continuam visíveis em outros apps. Isto não é um cofre.
+0899	Ocultar %1$lld item no GaleriQ?
+0900	Ocultar %1$lld itens no GaleriQ?
+0901	Duração
+0902	Nome
+0903	Arquivo RAW
+0904	Resolução
+0905	Tamanho
+0906	Capturada em
+0907	Tipo de arquivo
+0908	Miniaturas menores
+0909	Dias
+0910	Miniaturas maiores
+0911	Meses
+0912	Anos
+0913	Tipos de mídia
+0914	Álbuns
+0915	Linha do tempo
+0916	Sem data
+0917	Adicionadas recentemente primeiro – na ordem do app Fotos.
+0918	Limpar a partir daqui
+0919	Ordenar
+0920	Adicionadas recentemente
+0921	Maiores primeiro
+0922	Nome
+0923	Mais recentes primeiro
+0924	Mais antigas primeiro
+0925	%1$lld subpasta
+0926	%1$lld subpastas
+0927	Mover para a lixeira
+0928	Esta é uma favorita. “Proteger favoritas” está ativado, então ela fica fora da lixeira. Você pode mudar isso em Ajustes.
+0929	Para a lixeira do GaleriQ – nada é apagado. Você decide lá depois.
+0930	Para a lixeira do GaleriQ – nada é apagado. As favoritas ficam (“Proteger favoritas” está ativado).
+0931	Mover %1$lld item para a lixeira?
+0932	Mover %1$lld itens para a lixeira?
+0933	%1$lld item está na lixeira do GaleriQ.
+0934	%1$lld itens estão na lixeira do GaleriQ.
+0935	Na lixeira do GaleriQ
+0936	%1$lld item mostrado de novo
+0937	%1$lld itens mostrados de novo
+0938	Mostrar de novo
+0939	Proporção
+0940	Visualização
+0941	Quadrado
+0942	Remover todos os %1$lld com o Pro
+0943	Assista a um anúncio: remova mais %1$lld hoje
+0944	O anúncio foi fechado antes do fim. Nada foi desbloqueado. Você pode tentar de novo hoje.
+0945	Uma vez por dia. O bônus vale só hoje.
+0946	Nenhum anúncio disponível agora. Nada foi desbloqueado.
+0947	Selecionados: %2$lld. Sem o Pro, você pode remover até %1$lld por dia. O resto fica na lixeira do GaleriQ.
+0948	Restam %1$lld de %2$lld hoje
+0949	Sem limite com o Pro
+0950	Remover %1$lld destes
+0951	Limite diário atingido
+0952	Restam %1$lld hoje
+0953	Seu limite diário recomeça amanhã.
+0954	Foto ou vídeo
+0955	Análise concluída
+0956	Você pode terminar sua rodada ou ver os resultados agora.
+0957	A análise continua
+0958	Faça uma pausa
+0959	Câmera
+0960	Carta %1$lld
+0961	Carregar fotos do iCloud
+0962	Todos os pares encontrados!
+0963	Tempo: %1$@
+0964	Virar cartas
+0965	Coração
+0966	Virada para baixo
+0967	Folha
+0968	Preparando imagens…
+0969	Par encontrado
+0970	Lua
+0971	Montanha
+0972	Jogadas: %1$lld
+0973	Escolher minhas fotos
+0974	%1$lld pares (%2$lld cartas)
+0975	%1$lld / %2$lld pares
+0976	Imagem %1$lld
+0977	Escolher álbum ou pasta de fotos
+0978	Ver resultados
+0979	Continuar rodada
+0980	Número de pares
+0981	Origem das imagens
+0982	Álbum ou pasta de fotos
+0983	Favoritas
+0984	Biblioteca de fotos inteira
+0985	Sol
+0986	Pares
+0987	Algumas fotos não estão mais disponíveis ou estão só no iCloud. Escolha outras fotos ou permita o download delas. Fotos do cofre não podem ser usadas.
+0988	Ações para %1$@
+0989	Revisar de novo
+0990	Revisadas
+0991	%1$lld para depois
+0992	%1$lld para depois
+0993	Não iniciado · %1$lld item
+0994	Não iniciado · %1$lld itens
+0995	%1$lld de %2$lld revisado
+0996	%1$lld de %2$lld revisados
+0997	Os meses aparecem aqui quando fotos ou vídeos tiverem data de captura.
+0998	Ainda sem meses
+0999	Quanto você já avançou em cada mês. Itens deixados para depois contam como revisados.
+1000	Por mês
+1001	Mais ações
+1002	Adicionar
+1003	16:9 · Paisagem
+1004	4:5 · Levemente alto
+1005	9:16 · Retrato
+1006	1:1 · Quadrado
+1007	Opções do clipe %1$lld
+1008	Clipe %1$lld de %2$lld
+1009	Foto · %1$@
+1010	Clipe removido do vídeo
+1011	Vídeo · %1$@
+1012	Use ⋯ para mover ou remover um clipe. As fotos e vídeos em si não são alterados.
+1013	Escurecer entre os clipes
+1014	Não foi possível criar o vídeo. Nada foi salvo e os originais não foram alterados.
+1015	Preencher quadro
+1016	Se um clipe tiver outro formato
+1017	Os clipes nunca são esticados: ou a imagem inteira é mostrada (com bordas pretas), ou ela preenche o quadro e as bordas são cortadas.
+1018	Imagem inteira
+1019	Formato
+1020	Como o primeiro clipe
+1021	Formato do vídeo final. 9:16 preenche a tela de um celular na vertical, 16:9 combina com TVs e computadores. “Como o primeiro clipe” usa o formato do seu primeiro clipe.
+1022	Zoom suave
+1023	As fotos se aproximam devagar para não parecerem paradas.
+1024	Mover para antes
+1025	Mover para depois
+1026	Seu próprio arquivo, tocado do início e repetido se necessário. O GaleriQ não inclui músicas. Atenção aos direitos ao compartilhar.
+1027	Escolher um arquivo de áudio
+1028	Remover
+1029	Volume da música
+1030	Tempo por foto
+1031	Vale para todas as fotos deste vídeo. Vídeos sempre tocam na duração completa.
+1032	Fotos
+1033	Escolher vídeos e fotos
+1034	Qualidade
+1035	Equilibrada
+1036	Alta (Full HD)
+1037	Alta e Equilibrada: até Full HD (1080p) – Equilibrada gera arquivos menores quase sem diferença visível. Pequena: até HD (720p), o menor arquivo, bom para enviar.
+1038	Pequena (HD)
+1039	Remover do vídeo
+1040	Reordenar
+1041	Criando vídeo …
+1042	Salvar vídeo
+1043	Salvo como novo vídeo na sua biblioteca. Os originais não são alterados.
+1044	Fotos com zoom suave e transições, salvas como vídeo
+1045	Vídeos e fotos em sequência, com música
+1046	Clipes
+1047	Formato
+1048	Música
+1049	Transição
+1050	Juntar vídeos
+1051	Apresentação como vídeo
+1052	Adicione pelo menos dois clipes.
+1053	No máximo 30 minutos no total. Encurte ou remova alguns clipes.
+1054	No máximo 50 clipes por vídeo.
+1055	Entre dois clipes a imagem fica preta por um instante e depois volta aos poucos. Desativado: corte seco. A duração total continua igual.
+1056	Desativar som
+1057	Este arquivo não pode ser mostrado.
+1058	Não selecionado
+1059	Nota
+1060	Algo em “Depois” está pronto para revisar hoje.
+1061	OK
+1062	O GaleriQ mostra suas fotos e vídeos diretamente no seu aparelho para você organizar. Sem conta nem servidor do GaleriQ.
+1063	Acesso a fotos e vídeos
+1064	Comprar Pro · %1$@ uma vez
+1065	Comprar Pro uma vez
+1066	Cartas de treino. Nada é salvo aqui.
+1067	Avançar
+1068	Deslize e organize sem limites, com anúncios ocasionais. Remover itens tem um limite diário.
+1069	Começar grátis
+1070	Etapa %1$lld de %2$lld
+1071	Suas fotos ficam no seu aparelho. Sem conta do GaleriQ, sem envio de fotos.
+1072	Os itens vão primeiro para a lixeira do GaleriQ. Você confirma a remoção lá, e o iOS pergunta de novo antes de mover fotos e vídeos para Apagados.
+1073	Você decide o que é apagado
+1074	Passe por suas fotos e vídeos e decida o que fica. Um gesto de cada vez, no seu ritmo.
+1075	Sua galeria, finalmente organizada
+1076	É assim que funciona. Agora com as suas fotos.
+1077	Para cima: manter. Esquerda: lixeira. Direita: depois. Experimente aqui.
+1078	Deslize e escolha
+1079	Maiores primeiro
+1080	Mais recentes primeiro
+1081	Mais antigas primeiro
+1082	Aleatório
+1083	Ordem
+1084	Adicionar ao álbum
+1085	%1$lld adicionado a “%2$@”.
+1086	%1$lld adicionados a “%2$@”.
+1087	Nome do álbum
+1088	Ainda sem álbuns
+1089	Cesta de seleção
+1090	Adicionar à cesta de seleção
+1091	%1$lld adicionado à cesta de seleção.
+1092	%1$lld adicionados à cesta de seleção.
+1093	Já está na cesta de seleção.
+1094	Esvaziar cesta
+1095	Só a cesta é esvaziada. As fotos e vídeos não são alterados.
+1096	Esvaziar a cesta de seleção?
+1097	Em “Fotos”, selecione algo e toque em ⋯ › Adicionar à cesta de seleção.
+1098	A cesta de seleção está vazia
+1099	Reúna fotos e vídeos de meses e pastas diferentes. A cesta fica até você esvaziá-la – ela não tem nada a ver com a lixeira.
+1100	Tirar da cesta
+1101	Criar
+1102	%1$lld item não encontrado (apagado ou não está mais neste aparelho).
+1103	%1$lld itens não encontrados (apagados ou não estão mais neste aparelho).
+1104	Remover da lista
+1105	Novo álbum
+1106	Nota
+1107	Nota (só no GaleriQ, o arquivo não é alterado)
+1108	Salvar nota
+1109	Adicionar
+1110	Remover de todos
+1111	A etiqueta some de todos os lugares. As fotos e vídeos em si não são alterados.
+1112	Remover a etiqueta “%1$@” de todos?
+1113	Nova etiqueta
+1114	Remover etiqueta
+1115	em alguns
+1116	Etiquetas
+1117	Etiquetas de %1$lld item
+1118	Etiquetas de %1$lld itens
+1119	Ainda sem etiquetas. Adicione suas próprias palavras, como “Nota fiscal” ou “Férias” – o GaleriQ só sabe o que você mesmo digitar.
+1120	Pausar
+1121	Ações de PDF
+1122	Juntar arquivos, reordenar e girar páginas
+1123	Não foi possível salvar o PDF.
+1124	Adicionar arquivos
+1125	Escolher arquivos
+1126	PDF a partir de arquivos
+1127	Não foi possível abrir os arquivos. Escolha PDFs ou imagens legíveis e desbloqueados e tente de novo. Suas páginas atuais não foram alteradas.
+1128	Escolha PDFs ou imagens em Arquivos. Junte, reordene e gire páginas com prévia ao vivo e salve um novo PDF.
+1129	Escolha menos arquivos ou arquivos menores (até 100 MB por arquivo, 256 MB por seleção e 500 páginas).
+1130	Preencher
+1131	Ajustar
+1132	Criar PDF
+1133	Margem
+1134	Nenhuma
+1135	Normal
+1136	Estreita
+1137	Automática
+1138	Paisagem
+1139	Retrato
+1140	Orientação
+1141	Mover para antes
+1142	Mover para depois
+1143	Página %1$lld de %2$lld
+1144	Girar
+1145	Selecionar páginas
+1146	Papel
+1147	Carta (EUA)
+1148	Fotos por página
+1149	%1$lld foto
+1150	%1$lld fotos
+1151	Fotos para o PDF
+1152	As fotos são incorporadas de novo: localização e outros dados de captura não vão para o PDF. Os originais não são alterados.
+1153	Criando PDF …
+1154	Salvar como PDF
+1155	Salvo em “Documentos/GaleriQ” · %1$@
+1156	Compartilhar PDF
+1157	Fotos como documento ou folha de contatos
+1158	Criar PDF
+1159	Foto
+1160	Quando você quer ver de novo?
+1161	Número
+1162	Deixar de lado sem data
+1163	Não volta sozinho. Você o encontra em Depois › Deixados de lado.
+1164	Revisar de novo em %1$@
+1165	Escolher data …
+1166	Unidade
+1167	Reproduzir
+1168	Posição de reprodução
+1169	Esta foto ou vídeo não pode ser mostrado agora.
+1170	Talvez tenha sido movido ou ainda não esteja totalmente salvo.
+1171	A versão grátis mostra anúncios do Google. Você pode alterar seu consentimento nos ajustes. Suas fotos, os nomes delas, pastas ou qualquer coisa derivada delas nunca vão para provedores de anúncios. O Pro não tem anúncios.
+1172	Permitir acesso
+1173	Gerenciar seleção
+1174	Fotos e vídeos
+1175	Para ver, organizar e remover fotos e vídeos após a sua confirmação.
+1176	Permitir notificações
+1177	Opcional: receba um lembrete quando algo em “Depois” estiver pronto para revisar. Nomes de arquivos não aparecem na tela bloqueada.
+1178	Abrir Ajustes do iOS
+1179	As compras usam a App Store da Apple. O GaleriQ nunca envia suas fotos, nomes ou metadados para isso.
+1180	O GaleriQ analisa suas fotos, vídeos e arquivos permitidos só no seu aparelho. Você não precisa de conta e não há servidor do GaleriQ. Bom saber: com serviços de nuvem como o Google Fotos, o que você apagar também pode sumir nos seus outros aparelhos.
+1181	Sua privacidade vem primeiro
+1182	Comprado uma vez: sem anúncios, sem limite diário e pastas do cofre sem anúncios.
+1183	Nenhum anúncio ao abrir o app e nenhum cartão de anúncio entre suas fotos e vídeos.
+1184	Pastas do cofre sem anúncios
+1185	Crie novas pastas no cofre sem assistir a um vídeo.
+1186	Todo o resto – edição, análise, duplicatas, coleções, Estúdio – é grátis para todos.
+1187	Suas fotos e arquivos são verificados e organizados só no seu aparelho. Na compra, só o necessário vai para a Apple e, para anúncios na versão grátis, para o Google – nunca suas fotos, os nomes delas ou detalhes delas.
+1188	O Pro está ativo
+1189	Pro
+1190	Sem anúncios
+1191	Limpe sem limite diário
+1192	Remova quanto quiser — sem o limite diário de %1$lld.
+1193	O GaleriQ Pro agora está ativo.
+1194	Não foi possível concluir a compra.
+1195	Nenhuma compra anterior foi encontrada para esta conta.
+1196	Sua compra aguarda confirmação. O Pro será desbloqueado assim que for confirmada.
+1197	Sua compra foi restaurada.
+1198	Carregando preço …
+1199	Suas fotos e arquivos são verificados e organizados só no seu aparelho. Na compra, só o mínimo necessário vai para o Google – nunca suas fotos, os nomes delas ou algo derivado delas.
+1200	Restaurar compras
+1201	Não foi possível carregar o Pro da App Store agora. Verifique sua conexão com a internet e tente de novo.
+1202	Compre uma vez. Sem assinatura.
+1203	GaleriQ Pro
+1204	Compras ainda não estão disponíveis nesta versão.
+1205	Esta versão ainda não está conectada às compras da App Store. Você pode usar todos os outros recursos normalmente.
+1206	Desbloquear GaleriQ Pro
+1207	Ver GaleriQ Pro
+1208	Devolver
+1209	Adicionar
+1210	Adicionar atalho
+1211	Tudo revisado
+1212	Editar
+1213	Editar atalhos
+1214	Vazio
+1215	Favoritas
+1216	Suas favoritas do app Fotos
+1217	Álbum
+1218	Álbuns
+1219	Fotos mais recentes
+1220	Sua foto mais recente (%1$lld)
+1221	Suas %1$lld fotos mais recentes
+1222	Vídeos mais recentes
+1223	Seu vídeo mais recente (%1$lld)
+1224	Seus %1$lld vídeos mais recentes
+1225	Limite de atalhos: %1$lld. Remova um para adicionar outro.
+1226	Live Photos
+1227	Fotos com movimento e som
+1228	Vídeos longos
+1229	Vídeos de um minuto ou mais
+1230	Mover para trás: %1$@
+1231	Mover para frente: %1$@
+1232	Nenhum álbum com fotos ou vídeos encontrado.
+1233	Neste dia
+1234	Tiradas na data de hoje em anos anteriores
+1235	Na tela inicial
+1236	Fotos
+1237	Retratos
+1238	Fotos tiradas no modo Retrato
+1239	Aleatório
+1240	%1$lld fotos e vídeos abertos aleatórios, embaralhados a cada vez
+1241	Só o atalho é removido. Seus arquivos e escolhas são mantidos.
+1242	Capturas de tela
+1243	Selfies
+1244	Do álbum Selfies do app Fotos
+1245	Esta semana
+1246	Fotos e vídeos desta semana
+1247	Acesso rápido
+1248	Vídeos
+1249	Todas as conquistas
+1252	%lld melhor tempo
+1253	%lld melhores tempos
+1256	Último recorde
+1257	Bronze
+1258	Ouro
+1259	%1$@ de %2$@ · faltam %3$@
+1260	Prata
+1261	As medalhas só comparam com seus próprios resultados – sem ranking, nada sai do aparelho.
+1262	Recorde
+1263	Seus recordes. Eles ficam neste iPhone.
+1264	fotos
+1265	pontos
+1268	%1$@ foto
+1269	%1$@ fotos
+1272	%1$@ ponto
+1273	%1$@ pontos
+1276	dia ativo
+1277	dias ativos
+1282	novo recorde
+1283	novos recordes
+1286	revisadas
+1287	Sua última semana
+1288	Refazer
+1289	Edição em lote
+1290	Editar PDFs
+1291	Digitalizar documentos
+1292	Remover
+1293	Selecionados: %2$lld. Você pode remover mais %1$lld item hoje. Selecione até %1$lld ou adquira o GaleriQ Pro.
+1294	Selecionados: %2$lld. Você pode remover mais %1$lld itens hoje. Selecione até %1$lld ou adquira o GaleriQ Pro.
+1295	Cancelado. Nada foi removido.
+1296	Sua seleção mudou. Confira de novo.
+1297	Nada foi removido.
+1298	Vamos conferir o resultado na próxima vez que você abrir o app. Nada será apagado de novo.
+1299	Limite diário atingido
+1300	Nada removido
+1301	Pincel
+1302	Apagar área
+1303	Pinte sobre o ponto com um dedo. Dois dedos ampliam.
+1304	Toque na foto onde a área deve ficar. Depois clareie, escureça ou mude a cor dela.
+1305	Gradiente
+1306	Círculo
+1307	Olhos vermelhos
+1308	Toque num olho vermelho. Em rostos pequenos, amplie antes com dois dedos. Só o vermelho do olho muda.
+1309	Remover último
+1310	Tamanho
+1311	Tentar de novo
+1312	Salvar
+1313	Captura de tela
+1314	Buscar
+1315	Selecionadas
+1316	Comparar série de %1$lld fotos
+1317	Manter %1$lld · Lixeira %2$lld
+1318	%1$lld mantidas · %2$lld na lixeira
+1319	Nada é apagado. A lixeira é do GaleriQ e só é esvaziada quando você confirma.
+1320	Toque numa foto para compará-la abaixo. A marca de seleção decide o que fica.
+1321	Manter
+1322	Manter
+1323	Lixeira
+1324	Tiradas em sequência rápida · %1$lld
+1325	Comparar séries
+1326	Mostrar conquistas
+1327	Sequência, meta diária, insígnias e resumo semanal.
+1328	Alterar consentimento de anúncios
+1329	Aparência
+1330	Controles
+1331	Meta diária
+1332	Pastas excluídas
+1333	Desativado
+1334	Vibrar nas ações
+1335	Mostrar ajuda dos gestos ao abrir
+1336	Em %1$lld dia
+1337	Em %1$lld dias
+1338	Idioma
+1339	O GaleriQ usa o idioma do seu iPhone. Toque para escolher outro idioma só para o GaleriQ em “Idioma” nos Ajustes do iOS.
+1340	Depois: prazo padrão
+1341	Compra única
+1342	Proteger favoritas
+1343	Avaliar o GaleriQ
+1344	Isso nos ajuda muito – obrigado!
+1345	Mostrar “Sua última semana”
+1346	Sempre na página inicial
+1347	Ajustes
+1348	Compartilhar
+1349	Esta foto ou vídeo não pode ser compartilhado agora.
+1350	As fotos e vídeos selecionados não podem ser compartilhados agora. Verifique a conexão com o iCloud e tente de novo.
+1351	Não prontos para compartilhar: %1$lld de %2$lld (por exemplo, sem conexão com o iCloud). Só os outros foram oferecidos.
+1352	Preparando … %1$lld de %2$lld
+1353	Depois
+1354	Começar a limpar
+1355	Estúdio
+1356	Lixeira
+1357	aprox. %1$@
+1358	“aprox.” = estimado a partir das suas fotos e vídeos medidos. O iOS só informa o tamanho exato de originais do iCloud depois do download.
+1359	Pelo menos %1$@
+1360	Tamanho desconhecido
+1361	Próxima sem escolher
+1362	Jogar de novo
+1363	Nenhuma
+1364	Tempo por foto
+1365	Nada para mostrar aqui.
+1366	Fim da apresentação
+1367	Dissolver
+1368	Repetir
+1369	Avançar
+1370	Assistir nunca é uma decisão. A tela fica ligada durante a apresentação.
+1371	Ordem
+1372	Mais antigas primeiro
+1373	Aleatório
+1374	Pausar
+1375	Anterior
+1376	%1$lld s
+1377	Ajustes da apresentação
+1378	Apresentação
+1379	Transição
+1380	Reproduzir vídeos (sem som)
+1381	Tabuleiro da Cobrinha de fotos
+1382	Câmera: coluna %1$lld, linha %2$lld. Foto: coluna %3$lld, linha %4$lld.
+1383	Personagem
+1384	Clássico — bordas sólidas
+1385	A próxima casa está livre
+1386	Deslize no tabuleiro para mudar de direção.
+1387	Para baixo
+1388	Pontos: %1$lld
+1389	Rápida
+1390	Comida
+1391	Escolher fotos
+1392	%lld de 100 fotos
+1393	Mover para depois
+1394	Escolha até 100 fotos para sua cobrinha.
+1395	Não foi possível salvar ou restaurar sua seleção de fotos. Tente novamente.
+1396	Ordem das fotos · arraste para reordenar
+1397	Foto %lld
+1398	Só as fotos escolhidas são usadas. Cópias pequenas ficam neste iPhone, fora do backup do iCloud. Remova-as aqui para apagar essas cópias.
+1399	Suas fotos
+1400	Mover para antes
+1401	Lenta
+1402	Vibração
+1403	Esquerda
+1404	Modo de jogo
+1405	Floresta à noite
+1406	Normal
+1407	Obstáculo logo à frente
+1408	Outros jogos
+1409	Rodada terminada
+1410	Pausar
+1411	Algumas fotos não puderam ser carregadas. Verifique sua conexão para fotos do iCloud e tente de novo.
+1412	Recorde: —
+1413	Tranquilo — atravessa as bordas
+1414	Direita
+1415	Embaralhar fotos
+1416	Embaralhar vale para o próximo jogo novo. Trocar fotos pausa o jogo atual.
+1417	Som
+1418	Velocidade
+1419	Iniciar jogo
+1420	Deslize para uma nova rodada
+1421	Deslize para continuar
+1422	Deslize em qualquer lugar para guiar
+1423	Cobrinha de fotos
+1424	Para cima
+1425	Faixa de fotos completa!
+1426	Maiores primeiro
+1427	Mais recentes primeiro
+1428	Mais antigas primeiro
+1429	Desconectar uma pasta não apaga nenhum arquivo. Você escolhe nesta visualização de arquivos quais pastas o GaleriQ pode acessar.
+1430	Desconectar pasta
+1431	Só visualizar
+1432	Ver e apagar arquivos
+1433	Indisponível — conecte novamente
+1434	Não foi possível carregar suas decisões salvas. Nada foi alterado nem apagado. Reinicie o GaleriQ; se não ajudar, compartilhe o diagnóstico.
+1435	O GaleriQ não conseguiu iniciar
+1436	Seu aparelho
+1437	%1$@ livres segundo o iOS
+1438	Visível para o GaleriQ
+1439	As capturas de tela já estão incluídas nas fotos. Arquivos grandes e duplicatas não são contados de novo. Tamanhos desconhecidos ficam fora do total, que então é marcado como “Pelo menos”.
+1440	Não visível para o GaleriQ
+1441	O GaleriQ não pode verificar outros apps, arquivos do sistema, conteúdo na nuvem ou pastas que você não permitiu. Nenhum tamanho é mostrado para eles.
+1442	Pastas conectadas
+1443	A análise de armazenamento fica no seu aparelho.
+1444	incluindo capturas de tela
+1445	Visão geral do armazenamento
+1446	Informações de armazenamento indisponíveis agora
+1447	de %1$@ usados
+1448	%1$lld item · %2$@
+1449	%1$lld itens · %2$@
+1450	Colagem
+1451	Colagem
+1452	Grade, livre ou faixa
+1453	Criar
+1454	Colagem · %1$lld foto
+1455	Colagem · %1$lld fotos
+1456	Apagar rascunho
+1457	O rascunho é removido. Suas fotos não são tocadas.
+1458	A versão grátis guarda seus 3 rascunhos mais recentes.
+1459	Rascunhos
+1460	Memória insuficiente para este tamanho. Tente “Padrão” ou menos fotos.
+1461	Crie com suas fotos. Tudo fica no seu aparelho.
+1462	Selecione no máximo %1$lld.
+1463	Fotos para a colagem
+1464	Salvos
+1465	Fotos, vídeos e colagens editados
+1466	Nada é apagado até você esvaziar a lixeira e confirmar.
+1467	Pronto por agora
+1468	Mantidas
+1469	Ver última foto ou vídeo
+1470	Depois
+1471	Limpe sem limite diário com o GaleriQ Pro. Compre uma vez, sem assinatura.
+1472	Um pouco mais organizado
+1473	Na lixeira
+1474	Sem limite diário com o Pro.
+1475	%1$lld separado para remover.
+1476	%1$lld separados para remover.
+1477	Ver lixeira (%1$lld)
+1478	Limpar
+1479	Histórico
+1480	Fotos
+1481	Estúdio
+1482	Hoje
+1483	Permita o acesso do GaleriQ para ver e organizar suas fotos e vídeos.
+1484	Permita o acesso nos Ajustes do iOS em GaleriQ › Fotos. Suas escolhas anteriores continuam salvas.
+1485	Sem acesso às suas fotos e vídeos
+1486	Acesso a fotos e vídeos
+1487	Continuar limpando
+1488	Continuar: %1$@
+1489	Continue de onde parou.
+1490	Não há mais nada para revisar por enquanto.
+1491	Tudo revisado
+1492	%1$lld item de “Depois” está pronto para revisar
+1493	%1$lld itens de “Depois” estão prontos para revisar
+1494	Boa tarde
+1495	Boa noite
+1496	Bom dia
+1497	Boa tarde
+1498	Alterar acesso
+1499	O GaleriQ só mostra as fotos e vídeos que você permitiu. Você pode limpá-los normalmente.
+1500	Acesso limitado
+1501	%1$lld nova foto ou vídeo
+1502	%1$lld novas fotos e vídeos
+1503	desde a sua última limpeza
+1504	Algo foi interrompido da última vez que a lixeira foi esvaziada. Por segurança, nada é apagado de novo.
+1505	Abre suas fotos e vídeos para limpar
+1506	Começar a limpar
+1507	Deslize pelas suas fotos e vídeos.
+1508	Armazenamento do aparelho
+1509	%1$@ de %2$@ usados
+1510	Editar várias fotos
+1511	Altera a exposição de muitas fotos de uma vez.
+1512	Converter
+1513	Salva fotos em outro formato de arquivo, por exemplo HEIC como JPEG para aparelhos que não abrem HEIC.
+1514	Todo aparelho abre JPEG. PNG mantém todos os detalhes, mas os arquivos ficam maiores. Fotos que já estão nesse formato são puladas.
+1515	por exemplo HEIC para JPEG, como novas cópias
+1516	Seus originais não são alterados – o GaleriQ salva novas cópias na sua biblioteca.
+1517	%1$lld nova cópia salva.
+1518	%1$lld novas cópias salvas.
+1519	Abaixo de 0 escurece as fotos, acima de 0 clareia.
+1520	Isso não funcionou. Seus originais não foram alterados.
+1521	%1$lld não pôde ser processada.
+1522	%1$lld não puderam ser processadas.
+1523	Arquivos menores, mas nem todo aparelho consegue abri-los
+1524	Abre em qualquer aparelho e em qualquer app
+1525	Sem perda de qualidade, mas arquivos bem maiores
+1526	Criar GIF
+1527	Arquivo pequeno – bom para mensagens
+1528	Mais nítido, mas arquivo maior
+1529	Tempo por foto
+1530	Transforma várias fotos numa animação curta que se repete sem fim – na ordem em que foram tiradas.
+1531	GIFs têm no máximo 256 cores e não têm som – as fotos podem parecer um pouco granuladas.
+1532	GIF salvo na sua biblioteca (%1$@).
+1533	Tamanho
+1534	De fotos ou de um trecho curto de vídeo
+1535	Ferramentas
+1536	Remover localização
+1537	As cópias ficam idênticas ao original – só o lugar onde a foto foi tirada é removido. Fotos sem localização são puladas.
+1538	Cópias sem localização, por exemplo antes de compartilhar
+1539	Escolha as fotos primeiro.
+1540	Escolha pelo menos duas fotos.
+1541	Nenhuma foto escolhida ainda
+1542	Seus originais não foram alterados – nenhum espaço foi liberado.
+1543	Escolher fotos
+1544	Criar com o Pro
+1545	%1$@ px
+1546	Equilibrada
+1547	Alta
+1548	Arquivo menor
+1549	Qualidade
+1550	Qualidade menor significa arquivos menores – em “Equilibrada” você raramente verá diferença.
+1551	%1$@ (%2$@)
+1552	Remover também a localização
+1553	Reduzir
+1554	Reduz fotos – em pixels e em tamanho de arquivo. Prático para enviar ou fazer upload.
+1555	Muitas fotos de uma vez, como novas cópias
+1556	Processando seus arquivos…
+1557	%1$@ s
+1558	%1$lld arquivo selecionado
+1559	%1$lld arquivos selecionados
+1560	Pequeno – suficiente para mensagens e redes sociais
+1561	Grande – nítido em celulares, tablets e computadores
+1562	Muito grande – quase todos os detalhes, por exemplo para imprimir
+1563	Tamanho das cópias
+1564	Medido no lado maior da imagem, em pixels (px). As imagens nunca são ampliadas nem esticadas.
+1565	Tamanho original
+1566	Mesmo número de pixels – só o formato muda
+1567	Medido: %1$@ antes, %2$@ depois
+1568	%1$lld pulado (nada a fazer ou é um vídeo).
+1569	%1$lld pulados (nada a fazer ou vídeos).
+1570	Iniciar
+1571	Juntar capturas de tela
+1572	Junta capturas de tela de cima para baixo numa imagem longa, na ordem em que foram feitas. Todas ficam com a largura da imagem mais estreita – nada é esticado nem ampliado.
+1573	Salva como nova imagem na sua biblioteca. As capturas de tela não são alteradas.
+1574	Uma embaixo da outra, numa imagem longa
+1575	Novo formato
+1576	Ferramenta
+1577	%1$lld tamanho desconhecido – não incluído no total.
+1578	%1$lld tamanhos desconhecidos – não incluídos no total.
+1579	OK
+1580	Marque favoritas, compartilhe itens ou adicione-os a um álbum. Isso não os marca como mantidos, na lixeira ou guardados para depois.
+1581	Favoritas, compartilhamento e álbuns
+1582	O número mostra quanto você separou. Toque nele para revisar sua seleção e esvaziar a lixeira.
+1583	Sua lixeira
+1584	Deslizou para o lado errado? Toque aqui para desfazer sua última escolha.
+1585	Desfazer
+1586	Quando precisar de uma pausa da arrumação: jogue Pares, Cobrinha de fotos ou Foto Blocks com suas próprias fotos.
+1587	Precisa de uma pausa?
+1588	Não é uma decisão
+1589	Veja o que você manteve, separou ou guardou para depois. Você ainda pode mudar qualquer decisão aqui.
+1590	Depois e histórico
+1591	Aqui estão todas as suas fotos e vídeos – por dia, mês ou ano, em álbuns e favoritas.
+1592	Todas as suas fotos
+1593	Itens deixados para depois contam como revisados – você ainda os vê aqui.
+1594	Abra a visão geral em grade ou revise de novo um mês concluído.
+1595	Toque num mês para revisar só as fotos e vídeos em aberto dele.
+1596	Quanto você já avançou
+1597	Avançar
+1598	Várias fotos tiradas em sequência rápida? Compare-as lado a lado e escolha o que fica.
+1599	Deixe o GaleriQ do seu jeito e encontre respostas aqui. Você pode fazer este tour de novo a qualquer momento.
+1600	Ajustes e ajuda
+1601	Pular tutorial
+1602	Edite fotos, faça colagens, filmes curtos e PDFs e use ferramentas práticas. Você sempre recebe arquivos novos – seus originais ficam como estão.
+1603	Solte a criatividade
+1604	Toque em “Começar a limpar” para deslizar por tudo o que falta revisar.
+1605	Comece aqui
+1606	Fotos, vídeos, capturas de tela ou um álbum: crie atalhos para o que você limpa com frequência.
+1607	Seus atalhos
+1608	Encontre aqui os itens separados para remover ou guardados para depois. A remoção só acontece depois que você confirma na lixeira.
+1609	Lixeira e Depois
+1610	Arquivos grandes, fotos duplicadas, meses individuais e coleções prontas: aqui você arruma passo a passo.
+1611	Mais formas de limpar
+1612	Segure “GaleriQ” no topo por 2 segundos para abrir o cofre – o disco no “Q” gira. Configure-o e encontre mais opções em Ajustes.
+1613	Seu cofre privado
+1614	Desfazer
+1615	Dia
+1616	Dias
+1617	Mês
+1618	Meses
+1619	Semana
+1620	Semanas
+1621	Ativar som
+1622	Adicionar bloco de texto
+1623	Anexar um arquivo do cofre
+1624	Este arquivo ainda está anexado a uma nota, talvez na lixeira do cofre. Desanexe-o primeiro.
+1625	Anexos
+1626	Bloqueio por inatividade
+1627	O cofre sempre se bloqueia em segundo plano. As prévias ficam cobertas ao trocar de app.
+1628	Backup criptografado
+1629	Inclui mídias, notas, arquivos, pastas e a lixeira do cofre. Use uma senha de backup forte e separada. Sem ela, o backup não pode ser restaurado.
+1630	Backup não restaurado. A senha pode estar errada, o arquivo danificado, a sessão bloqueada ou o armazenamento insuficiente. O conteúdo existente não foi alterado.
+1631	Senha do backup (pelo menos 12 caracteres)
+1632	Negrito
+1633	Lista com marcadores
+1634	Câmera indisponível ou acesso não permitido.
+1635	Marcar/desmarcar como concluído
+1636	Lista de tarefas
+1637	A nota salva foi alterada. Seu rascunho não a substituiu. Salve o rascunho como nova nota ou descarte as alterações não salvas.
+1638	Continuar
+1639	Apagar permanentemente
+1640	Isso remove permanentemente o conteúdo selecionado deste cofre. Cópias externas e backups existentes não são alterados.
+1641	Desanexar
+1642	Descartar alterações não salvas
+1643	Só a última versão salva com sucesso permanecerá. As alterações não salvas serão perdidas.
+1644	Nenhum arquivo nesta visualização.
+1645	Nenhuma nota nesta visualização.
+1646	Apagar tudo permanentemente
+1647	Tudo na lixeira do cofre (%1$@) será removido permanentemente deste cofre: fotos, vídeos, notas e arquivos. Cópias externas e backups existentes não são alterados.
+1648	Esvaziar a lixeira do cofre?
+1649	Exportar backup
+1650	A cópia exportada fica fora da proteção do cofre. Outros apps ou pessoas podem acessá-la conforme a sua escolha de compartilhamento.
+1651	Arquivos
+1652	Formatação
+1653	Título
+1654	Importar arquivos
+1655	Importados: %1$lld. Com falha: %2$lld.
+1656	Sem conta e sem servidor do GaleriQ. Exportações e backups só saem do app por uma ação explícita sua.
+1657	Bloquear agora
+1658	Mídias
+1659	O GaleriQ precisa de acesso ao microfone para uma nota de voz. A gravação só começa quando você toca.
+1660	%1$lld min
+1661	Nome
+1662	Nova nota
+1663	Sem prévia interna
+1664	Este formato não pode ser exibido aqui. O arquivo continua guardado no cofre. Compartilhar exporta uma cópia para fora do cofre.
+1665	Não salvo
+1666	Notas
+1667	A ação não foi concluída. Verifique o espaço de armazenamento e o acesso e tente de novo.
+1668	Cópia; o original pode continuar fora
+1669	Criado no cofre
+1670	Restaurado do backup
+1671	Original removido da origem
+1672	Parágrafo
+1673	Pausar
+1674	Fixar
+1675	Restaurar dentro do cofre
+1676	Gravar nota de voz
+1677	Duração gravada
+1678	A gravação só começa quando você toca. Ela é guardada criptografada e para quando você bloqueia ou sai do cofre.
+1679	Remover bloco de texto
+1680	Remover original
+1681	Só depois de verificar a cópia do cofre o original inalterado é removido da origem. Outras cópias e a lixeira do provedor de arquivos podem continuar existindo.
+1682	Renomear
+1683	Repetir senha
+1684	Restaurar backup
+1685	O backup verificado é adicionado como cópia extra ao cofre aberto. O conteúdo existente não é substituído. Importações repetidas criam cópias adicionais.
+1686	Backup adicionado ao cofre
+1687	Continuar
+1688	Tentar de novo
+1689	Salvar como nova nota
+1690	Falha ao salvar
+1691	Salvo
+1692	Digitalizar documento
+1693	Buscar no cofre
+1694	%1$lld segundos
+1695	Modificados recentemente
+1696	Nome
+1697	Maiores primeiro
+1698	Parar e salvar
+1699	Texto
+1700	Título
+1701	Mover para a lixeira do cofre
+1702	Ferramentas do cofre
+1703	Lixeira do cofre
+1704	A lixeira do cofre está vazia.
+1705	Esta lixeira pertence só ao cofre. O conteúdo fica criptografado até você restaurá-lo ou apagá-lo permanentemente de forma explícita. Nada é apagado automaticamente.
+1706	Sem título
+1707	Sem pasta
+1708	O anúncio foi fechado antes do fim. Nenhuma pasta foi criada – você pode tentar de novo.
+1709	Na versão grátis, cada nova pasta exige um vídeo curto de anúncio. Com o Pro, as pastas são criadas sem anúncios.
+1710	Nenhum anúncio disponível agora. Tente mais tarde – com o Pro, as pastas são criadas sem anúncios.
+1711	Assistir vídeo e criar pasta
+1712	Adicionar ao cofre
+1713	Tudo
+1714	O cofre é criptografado e incluído no backup do seu iPhone. Se você apagar o GaleriQ, o cofre também será apagado.
+1715	Abrir com %1$@
+1716	Abra seu conteúdo protegido
+1717	Seu código também funciona sempre.
+1718	Abrir com %1$@?
+1719	Abrir com %1$@
+1720	Alterar código
+1721	Fechar e bloquear
+1722	Fechar
+1723	Use só os dígitos 0–9.
+1724	Código
+1725	Tipo de código
+1726	As duas entradas não coincidem.
+1727	Senha
+1728	PIN de 6 dígitos
+1729	Repetir código
+1730	Pelo menos 6 caracteres.
+1731	Exatamente 6 dígitos.
+1732	Este código é a chave do cofre. Escolha um que outras pessoas não adivinhem – de preferência diferente do código do seu iPhone.
+1733	Escolha um código
+1734	O código não está disponível neste iPhone (por exemplo, após restaurar sem um backup criptografado). Abra o cofre com sua chave de recuperação.
+1735	Mover para a lixeira do cofre
+1736	Apagar cofre
+1737	%1$lld itens serão apagados permanentemente. Devolva-os primeiro ao app Fotos se quiser mantê-los.
+1738	Apagar o cofre e tudo o que há nele?
+1739	Apagar pasta
+1740	Os itens continuam no cofre, só que sem pasta.
+1741	Esta lixeira pertence só ao cofre. O conteúdo fica criptografado até você restaurá-lo ou apagá-lo permanentemente de forma explícita. Nada é apagado automaticamente.
+1742	Mover %1$lld itens para a lixeira do cofre?
+1743	Salvar cópia no cofre
+1744	Quadro salvo no cofre.
+1745	Fica só no cofre – não aparece no app Fotos nem em nenhum outro lugar do GaleriQ.
+1746	Salvar cópia, original na lixeira do cofre
+1747	Salvar, original na lixeira do cofre
+1748	Você pode restaurar o original a partir da lixeira do cofre.
+1749	Salvo no cofre. O original está na lixeira do cofre.
+1750	Salvo no cofre.
+1751	O cofre está vazio
+1752	Digite a senha
+1753	Digite o PIN
+1754	Isso não funcionou. Tente novamente.
+1755	Esta pasta está vazia
+1756	Escolha um nome que não esteja vazio e que ainda não exista.
+1757	Nome da pasta
+1758	Esqueceu o código?
+1759	Nenhuma chave de recuperação foi configurada. Sem o código (ou Face ID), o cofre não pode ser aberto.
+1760	Ocultar entrada
+1761	O cofre some dos Ajustes. Para abri-lo, mantenha pressionado “GaleriQ” no topo da tela inicial por 2 segundos – o pequeno disco do cofre no “Q” gira.
+1762	Ocultar a entrada?
+1763	Mover para o cofre
+1764	Eles são copiados de forma criptografada e verificados. Depois o iOS pergunta se podem ser apagados do app Fotos. Lá eles ficam em “Apagados” por 30 dias.
+1765	Mover para o cofre: %1$lld
+1766	O GaleriQ também fez cópias deles (edições, colagens, filmes, GIFs): %1$lld. Elas estão no app Fotos e continuam visíveis, a menos que você as mova também.
+1767	O iOS não apagou alguns deles do app Fotos. O GaleriQ não os mostra em nenhum outro lugar, mas eles ainda aparecem no app Fotos. Use o aviso no topo para tentar de novo.
+1768	No cofre: %1$lld. Removidos do app Fotos: %2$lld.
+1769	Não puderam ser movidos: %1$lld (por exemplo, sem conexão com o iCloud). Eles continuam no app Fotos.
+1770	Não movidos: %1$lld. A versão grátis permite %2$lld itens no cofre; com o Pro é ilimitado.
+1771	Dica: esvazie “Apagados” no app Fotos se eles também devem sumir de lá.
+1772	Mover com cópias (%1$lld)
+1773	Sem cópias
+1774	Fotos e vídeos no cofre são criptografados com o seu código e só aparecem aqui – em nenhum outro lugar do GaleriQ.
+1775	Quando você adiciona itens, o iOS pergunta se eles podem ser apagados do app Fotos. Eles ficam então em “Apagados” por 30 dias, a menos que você esvazie.
+1776	O cofre está incluído no backup do seu iPhone (criptografado). Se você apagar o GaleriQ, o cofre some.
+1777	Na versão grátis, cada nova pasta exige um vídeo curto de anúncio. Com o Pro, as pastas são criadas sem anúncios.
+1778	Seu cofre privado
+1779	Foto
+1780	Vídeo
+1781	A versão grátis permite %1$lld itens no cofre. Com o Pro o cofre é ilimitado.
+1782	Tentativas demais. Tente de novo em %1$@.
+1783	Salvar no cofre
+1784	Mover
+1785	Você abriu o cofre com a chave de recuperação. Escolha um novo código agora.
+1786	Novo código
+1787	Nova pasta
+1788	Sem pasta
+1789	%1$lld de %2$lld
+1790	Mantenha o GaleriQ aberto. Sair do app interrompe o processo; nada é apagado.
+1791	Criar chave de recuperação
+1792	Já anotei
+1793	Chave de recuperação
+1794	26 caracteres, com ou sem hífens.
+1795	Sem chave de recuperação, o conteúdo se perde se você esquecer seu código.
+1796	Uma chave de recuperação está configurada. Criar uma nova invalida a antiga.
+1797	Remover chave de recuperação
+1798	Criar nova chave de recuperação
+1799	Continuar sem chave de recuperação
+1800	Sem chave de recuperação, o conteúdo se perde para sempre se você esquecer seu código e o Face ID não estiver disponível.
+1801	Continuar mesmo sem chave de recuperação?
+1802	Chave de recuperação
+1803	Anote esta chave em papel e guarde-a em segurança. Ela abre o cofre se você esquecer seu código, também num iPhone novo. O GaleriQ não pode mostrá-la de novo.
+1804	Chave de recuperação
+1805	Esta chave não confere.
+1806	Removidos do app Fotos: %1$lld.
+1807	Renomear pasta
+1808	De volta ao Fotos
+1809	Copiar para o Fotos, manter no cofre
+1810	Salvos no app Fotos: %1$lld.
+1811	Não puderam ser salvos: %1$lld. Eles continuam no cofre.
+1812	Salvos sem o histórico de edição: %1$lld. Os originais completos continuam no cofre.
+1813	Devolver ao Fotos
+1814	Eles são salvos como novos itens com a data e o local originais. Itens que ainda estão no app Fotos simplesmente voltam a aparecer quando você os devolve.
+1815	Salvar código
+1816	Selecionar
+1817	Ajustes do cofre
+1818	Lugar oculto e protegido por código para fotos e vídeos. Eles somem do app Fotos.
+1819	Configurar cofre
+1820	Configurando …
+1821	Ordenar
+1822	Data de adição
+1823	Data de captura
+1824	Nome
+1825	Tamanho
+1826	%1$lld itens ainda estão no app Fotos também.
+1827	Apagar lá
+1828	%1$lld itens · %2$@
+1829	%1$lld de %2$lld itens · %3$@
+1830	Cofre privado
+1831	Abrir
+1832	Código errado.
+1833	Salvar só o som
+1834	Não foi possível salvar o som.
+1835	Salvando som
+1836	“%1$@” salvo.
+1837	som
+1838	Remover
+1839	Remover %1$@ – %2$@? Arraste as alças vermelhas.
+1840	As partes vermelhas são removidas de verdade ao salvar (total %1$@). Toque numa parte abaixo para trazê-la de volta.
+1841	Remover trecho
+1842	aprox. %1$@
+1843	Só uma estimativa aproximada. Você verá o tamanho real do arquivo depois de salvar.
+1844	Você só cortou o início e o fim. Isso é rápido e a qualidade da imagem fica como no original. Se este vídeo não permitir, o GaleriQ o refaz por completo – o que leva um pouco mais. Duração total %1$@.
+1845	Por causa das suas outras alterações, o GaleriQ refaz o vídeo inteiro ao salvar. Isso pode levar um momento. Duração total %1$@.
+1846	Salvando vídeo
+1847	Aparecer e sumir aos poucos
+1848	Nenhum
+1849	Preencher
+1850	Preenche o novo formato; as bordas de fora são cortadas.
+1851	Mostrar vídeo inteiro
+1852	Mostra o vídeo inteiro; o espaço livre vira faixas pretas.
+1853	Salvar imagem estática
+1854	Imagem salva como nova foto.
+1855	imagem
+1856	Este vídeo tem cores especialmente brilhantes (HDR). Quando é recalculado, é salvo com cores normais. Se você só cortá-lo, o HDR é mantido.
+1857	Visível %1$@ – %2$@
+1858	Este vídeo não tem som.
+1859	Não foi possível calcular a prévia.
+1860	A edição de vídeo faz parte do Pro. Você pode experimentar tudo; para salvar, precisa do Pro.
+1861	Qualidade
+1862	Equilibrada (Full HD)
+1863	Melhor qualidade (como o original)
+1864	Arquivo pequeno (HD)
+1865	Remover som
+1866	A faixa de som nem é gravada no arquivo.
+1867	O som é acelerado ou desacelerado com o mesmo tom.
+1868	Resultado: %1$@
+1869	Som
+1870	Formato
+1871	Velocidade
+1872	Arraste as alças para definir o início e o fim.
+1873	Volume
+1874	Vídeo
+1875	Toque na foto ou no vídeo para mostrar ou ocultar os controles.
+1876	Mostrar ou ocultar controles
+1877	Aplicar fluxo
+1878	Editar fluxo
+1879	Ainda não há fluxos seus. Use um modelo ou crie um novo fluxo.
+1880	No final
+1881	Salvar e compartilhar
+1882	Salvar
+1883	Só compartilhar
+1884	Formato
+1885	Como o original
+1886	Remover localização
+1887	Lado maior
+1888	Nome
+1889	Nome do arquivo
+1890	Novo fluxo
+1891	Nenhum
+1892	Qualidade
+1893	Desculpe, isso não funcionou.
+1894	Resultado
+1895	Executar
+1896	Fluxo em andamento …
+1897	Concluído
+1898	Falhou
+1899	Meta não atingida
+1900	Pulado
+1901	Na pasta “%1$@”
+1902	Salvar como %1$@
+1903	Qualidade %1$@
+1904	Nome “%1$@”
+1905	Lado maior no máximo %1$@ px (nunca ampliado)
+1906	Salvar como novos arquivos – os originais ficam
+1907	Compartilhar o resultado
+1908	No máximo %1$@ por foto – a qualidade e, se preciso, o tamanho são ajustados e o resultado é medido
+1909	Vídeos com no máximo %1$@ cada
+1910	Salve várias etapas como seu próprio fluxo
+1911	Tamanho máximo por foto
+1912	Fluxos
+1913	Sim
+9000	O GaleriQ mostra suas fotos e vídeos para organizar neste iPhone e só remove os itens que você escolher e confirmar no diálogo do sistema.
+9001	O GaleriQ salva cópias editadas, colagens, vídeos e PDFs como novos itens na sua biblioteca.
+9002	O GaleriQ usa a câmera só para digitalizar documentos quando você toca em Digitalizar.
+9003	O GaleriQ usa o Face ID só para abrir conteúdo que você protegeu com um código.
+9004	O GaleriQ precisa de acesso ao microfone para uma nota de voz. A gravação só começa quando você toca.
+9005	A versão grátis do GaleriQ mostra anúncios do Google. Com a sua permissão, eles podem ser mais relevantes para você. Suas fotos e arquivos nunca vão para anunciantes.
