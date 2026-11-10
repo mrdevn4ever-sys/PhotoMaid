@@ -163,3 +163,6 @@ App Store Connect › GaleriQ › Version 1.0 › Englisch (USA) › iPhone 6,9-
       ohne Log ab (GitHub-Abrechnung; vom Inhaber freigegeben). Erneuter Lauf 42769225552 auf `31ffc9b`:
       `swift test` (inkl. ReviewPromptTests) PASS, Texte-Prüfung 16 Sprachen PASS, Xcode-Build + Unit-Tests PASS,
       Protokolle hochgeladen. UI-Tests und Gerät: NOT RUN. TestFlight nur auf ausdrückliche Freigabe.
+      TestFlight 1.0.1 (31) am 10.11.2026 (Freigabe Inhaber „Teatflight“): Lauf 42773302311 auf `a0067d4`, Unit-Tests
+      PASS, Archiv/Signierung PASS, Upload PASS, Apple-Verarbeitung abgeschlossen, an interne Tester verteilt; echte
+      AdMob-IDs. Geräteabnahme durch den Inhaber offen. Store-Texte (16 Sprachen) noch NICHT hochgeladen, keine Einreichung.
