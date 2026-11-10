@@ -168,3 +168,7 @@ App Store Connect › GaleriQ › Version 1.0 › Englisch (USA) › iPhone 6,9-
       AdMob-IDs. Geräteabnahme durch den Inhaber offen. Store-Texte (16 Sprachen) noch NICHT hochgeladen, keine Einreichung.
       Gerätetest 1.0.1 (31) durch den Inhaber (10.11.2026): Tresor kompakt PASS, „GaleriQ bewerten“ PASS; Werbehinweis am
       Knopf NOT RUN auf dem Gerät (kein Fall ohne Werbung verfügbar; Test: Flugmodus, dann „Werbung ansehen“).
+      App Store Connect 10.11.2026 (Freigabe Inhaber „1.01 in connect machen und texte hochladen“): Lauf 42799301642
+      (`835f2ab`) hat Version 1.0.1 angelegt und Beschreibung, Neuerungen, Name, Untertitel, Keywords, Werbetext in
+      16 Sprachen hochgeladen (Nachweis im Log: Beschreibungslängen = neue Texte). Kein Build zugeordnet, nicht eingereicht.
+      Offen (Inhaber): in Version 1.0.1 Build 31 wählen und zur Prüfung einreichen.
