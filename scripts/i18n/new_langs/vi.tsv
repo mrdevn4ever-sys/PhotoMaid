@@ -1,0 +1,1842 @@
+0000	3 ngày hoạt động
+0001	7 ngày hoạt động
+0002	Đã chơi cả ba trò chơi
+0003	Huy hiệu
+0004	%1$lld / %2$lld
+0005	Chơi trong Nghỉ một chút
+0006	Tiếp tục xem lại
+0007	Sáng tạo trong Studio
+0011	ngày
+0014	Đã đạt
+0015	vào %@
+0016	Giữ, Thùng rác và Để sau đều được tính như nhau.
+0017	Ảnh ghép đầu tiên
+0018	Quyết định đầu tiên
+0019	Phim đầu tiên
+0020	Hoàn thành tháng đầu tiên
+0021	PDF đầu tiên
+0022	%1$@: %2$@ ảnh
+0023	%1$@: %2$@ điểm
+0024	Mục tiêu hằng ngày
+0025	Đạt mục tiêu hằng ngày 10×
+0026	Đã đạt mục tiêu hằng ngày
+0027	trên %@ hôm nay
+0028	Đang tắt – bật trong Cài đặt.
+0029	%1$@ / %2$@
+0030	Trò chơi
+0031	Sắp xếp
+0032	Đã xem lại
+0033	Những bước đầu
+0034	Chuỗi ngày
+0035	Đã dọn hết “Để sau”
+0036	Cấp độ
+0037	Đã đạt cấp cao nhất.
+0038	Còn %1$@ nữa để lên cấp %2$lld.
+0039	Đã xem lại toàn bộ thư viện
+0040	Mọi thứ chỉ ở trên iPhone này. Để tắt: Cài đặt › Hiện thành tích.
+0041	Tháng đã hoàn thành
+0042	Hoàn thành 12 tháng
+0043	Huy hiệu mới: %@
+0044	Mở thành tích
+0045	Mở thành tích
+0046	Giải 12 cặp
+0047	%1$@ dưới %2$@ giây
+0048	Còn %@
+0049	mục đã xem lại
+0050	Đã xem lại %@
+0051	Chuỗi ngày
+0052	Chuỗi 100 ngày
+0053	Chuỗi 3 ngày
+0054	Chuỗi 30 ngày
+0055	Chuỗi 7 ngày
+0056	Những gì bạn đã đạt được – chỉ là con số của riêng bạn.
+0057	Thành tích
+0058	Xem
+0059	Tuần này
+0060	Giữ và tiếp
+0061	Để sau
+0062	Chọn ngày cho để sau
+0063	Xem mục trước
+0064	Chuyển vào thùng rác
+0065	Quảng cáo
+0066	Không quảng cáo với Pro
+0067	Tiếp
+0068	Bạn có thể tiếp tục sau giây lát …
+0069	Thêm thư mục
+0070	Đã thêm vào “%1$@”
+0071	Không thể thay đổi album.
+0072	Album và thư mục từ ứng dụng Ảnh. Thêm vào album không thay đổi tệp và sẽ đồng bộ với Ảnh iCloud nếu đang bật.
+0073	Tất cả
+0074	Tiếp tục một lúc trong nền
+0075	GaleriQ dùng thời gian chạy nền mà iOS cho phép, không có thẻ hoạt động hệ thống. Nếu hết thời gian, tiến trình vẫn được lưu và việc phân tích tiếp tục khi bạn mở lại ứng dụng.
+0076	Động vật
+0077	Tài liệu
+0078	Đồ ăn
+0079	Thiên nhiên
+0080	Khác
+0081	Con người
+0082	Ảnh chụp màn hình có chữ
+0083	Phương tiện
+0084	Ảnh iCloud chỉ được tải dưới dạng bản xem trước nhỏ qua Wi-Fi. Không có gì được tải lên.
+0085	Chỉ trên iCloud: %1$lld
+0086	Phân tích hình ảnh đang tắt trong Cài đặt.
+0087	Chưa phân tích: %1$lld
+0088	Chạy cái này trước
+0089	So sánh (%1$lld)
+0090	Nhóm: %1$lld · Ảnh: %2$lld
+0091	Bao gồm ảnh iCloud (chỉ qua Wi-Fi)
+0092	Kết quả khớp: %1$lld
+0093	Tiếp
+0094	Tạm dừng
+0095	Quay lại
+0096	Đã phân tích %1$lld / %2$lld
+0097	Bản xem trước quá nhỏ: %1$lld
+0098	Phân tích sau
+0099	Phân tích đang chạy không bao giờ bị hủy: “Chạy cái này trước” chỉ tạm dừng nó, sau đó nó tự tiếp tục.
+0100	Tiếp tục phân tích
+0101	Thử lại mục lỗi (%1$lld)
+0102	“%1$@” đang chạy. Phân tích này có thể tự bắt đầu sau đó.
+0103	Tìm chữ đã nhận dạng
+0104	Hiện cả mục đã quyết định
+0105	Ảnh tương tự: %1$lld · bạn quyết định giữ lại gì
+0106	Thư viện đã thay đổi. Tiếp tục để cập nhật phân tích.
+0107	Đang tải bản xem trước từ iCloud …
+0108	Đang so sánh ảnh tương tự …
+0109	Phân tích xong.
+0110	Đang phân tích ảnh trên iPhone này …
+0111	Đã tạm dừng. Kết quả đến nay vẫn được giữ.
+0112	Đang chuẩn bị …
+0113	Hiện không thể phân tích. Vui lòng thử lại sau.
+0114	Không thể lưu kết quả. Hãy kiểm tra dung lượng trống.
+0115	Đang chờ Wi-Fi để tải bản xem trước iCloud.
+0116	Bắt đầu phân tích
+0117	Vuốt qua từng ảnh (%1$lld)
+0118	Lên để giữ, trái để chuyển vào thùng rác, phải để xem lại sau. Chạm vào một ảnh để bắt đầu từ đó.
+0119	Chạm vào một nhóm để so sánh – hoặc vuốt qua tất cả lần lượt.
+0120	Không chờ
+0121	Đang chờ – tự bắt đầu ngay khi “%1$@” xong.
+0122	Ảnh bị mờ
+0123	Bị rung hoặc lệch nét – sắp xếp theo độ nét
+0124	Theo chủ đề
+0125	Con người, động vật, đồ ăn, phong cảnh …
+0126	Ảnh có chữ
+0127	Ảnh chụp màn hình, hóa đơn và tài liệu – tìm được bằng chữ đã nhận dạng
+0128	Phân tích chỉ chạy trên iPhone này (Apple Vision). Kết quả chỉ là gợi ý – bạn quyết định trong luồng ảnh. Không có gì được tự động tải lên hoặc xóa.
+0129	Phân tích trên iPhone này
+0130	Ảnh tương tự
+0131	Những ảnh trông rất giống nhau, đặt cạnh nhau
+0132	GaleriQ
+0133	Tối
+0134	Sáng
+0135	Theo thiết bị
+0136	Thư mục theo năm và tháng
+0137	Xếp các bản sao vào thư mục con theo ngày chụp, ví dụ “2026/10”. Tắt: mọi tệp vào một thư mục.
+0138	Chọn thư mục
+0139	Chọn thư mục khác
+0140	Album
+0141	Byte
+0142	Thư mục
+0143	Tên
+0144	Ghi chú
+0145	SHA-256
+0146	Thẻ
+0147	Ngày chụp
+0148	Dung lượng trống ở đích: %1$@
+0149	Dung lượng trống ở đích: không rõ
+0150	GaleriQ sao chép ảnh và video vào thư mục bạn chọn – ví dụ trên USB, ổ cứng ngoài hoặc trong ứng dụng Tệp. Sau đó mỗi bản sao được so sánh từng byte với bản gốc. Bản gốc của bạn vẫn ở trong Ảnh và không có gì bị xóa.
+0151	Bản sao thứ hai đã kiểm tra của ảnh của bạn
+0152	Thư mục này nằm trên cùng bộ nhớ với ảnh của bạn. Bản sao thứ hai ở đó sẽ không giúp được nếu điện thoại bị mất hoặc hỏng.
+0153	Thư mục này thuộc về ứng dụng khác, như dịch vụ lưu trữ trực tuyến. Ứng dụng đó quyết định tệp ở lại trên điện thoại hay lên mạng.
+0154	Thiết bị lưu trữ riêng, như USB hoặc ổ cứng ngoài.
+0155	Lần chạy gần nhất %1$@: đã kiểm tra %2$lld / %3$lld.
+0156	Danh sách kiểm tra GaleriQ %1$@.csv
+0157	Đã lưu danh sách kiểm tra: %1$@
+0158	“Đã kiểm tra” nghĩa là bản sao giống hệt bản gốc, từng byte một. Không ai biết chắc thiết bị lưu trữ dùng được bao lâu – hãy giữ những thứ quan trọng ở hai nơi.
+0159	Trước tiên hãy chọn nội dung cần sao chép và thư mục đích.
+0160	Bây giờ hãy chọn nội dung cần sao chép.
+0161	Bây giờ hãy chọn thư mục đích.
+0162	Chưa chọn gì
+0163	Tùy chọn
+0165	%1$lld đã có sẵn
+0167	%1$lld bị lỗi
+0169	%1$lld chưa sao chép
+0171	%1$lld đã sao chép và kiểm tra
+0172	Sao chép những gì?
+0173	Chọn ảnh và video
+0174	Thay đổi lựa chọn
+0175	Đã hủy
+0176	Bị gián đoạn – đã xóa bản sao dở dang
+0177	Bản sao không khớp – đã xóa lại
+0178	Không đọc được bản gốc
+0179	Hết dung lượng ở đích
+0180	Đích từ chối lưu (đầy, chống ghi hoặc tệp quá lớn cho bộ nhớ này)
+0181	Kết quả
+0182	Đang sao chép và kiểm tra …
+0183	Sao chép và kiểm tra
+0185	%1$lld tệp sẽ được sao chép vào “%2$@”.
+0186	Bước %1$lld · %2$@
+0187	Bản gốc của bạn vẫn giữ nguyên.
+0188	Sao chép vào thư mục đã chọn và kiểm tra từng bản sao
+0189	Chưa chọn thư mục
+0190	Cắm USB hoặc ổ cứng ngoài và chọn một thư mục trên đó. iCloud Drive và các vị trí khác trong ứng dụng Tệp cũng dùng được.
+0191	Lưu trữ
+0192	Không có ngày
+0193	Đã kiểm tra: %1$@
+0194	Bản sao sẽ được lưu ở đâu?
+0195	Lưu thêm danh sách kiểm tra
+0196	Lưu một bảng (tệp CSV) trong thư mục đích với tên, ngày, kích thước và mã kiểm tra của từng tệp, cùng album, thẻ và ghi chú của bạn – để bạn kiểm tra bản sao sau này.
+0197	trên %1$@
+0198	Ghép cặp, Rắn ảnh và Foto Blocks
+0199	cần xem lại
+0200	Những ảnh bạn vẫn còn phân vân.
+0201	Hít thở sâu. Ảnh của bạn cùng chơi.
+0202	3 trò chơi với ảnh của chính bạn
+0203	Xóa chữ số cuối
+0204	Đã nhập %1$lld / %2$lld chữ số
+0205	Quyền riêng tư & dữ liệu
+0206	Hỏi trước khi mục yêu thích vào thùng rác
+0207	Bằng camera, dưới dạng PDF
+0208	Thứ gì chiếm dung lượng
+0209	Vuốt qua
+0210	Còn cần xem lại
+0211	Ảnh & video.
+0212	Đã mã hóa, chỉ trên iPhone này.
+0213	Quay lại
+0214	Khôi phục
+0215	Đã khôi phục
+0216	Bản sao lưu GaleriQ %1$@.json
+0217	Bản sao lưu từ %1$@
+0218	Tệp này không phải bản sao lưu GaleriQ.
+0219	Mở bản sao lưu …
+0220	Tệp chứa tên tệp, thẻ và ghi chú. Chỉ lưu ở nơi bạn muốn – ví dụ trên USB.
+0221	Khôi phục
+0222	Nạp lại bản sao lưu, ví dụ trên điện thoại mới. Ảnh được tìm lại theo tên, kích thước và thời gian chụp. Những gì đã quyết định hoặc đã nhập ở đây vẫn giữ nguyên.
+0223	Lưu bản sao lưu …
+0224	Không thể lưu bản sao lưu.
+0225	Sao lưu
+0226	Lưu dữ liệu GaleriQ của bạn trong một tệp nhỏ: quyết định, album, thẻ, ghi chú, giỏ chọn, mục ẩn, cài đặt, quy trình và mẫu cài sẵn. Không bao gồm ảnh nào.
+0227	Sao lưu và khôi phục
+0228	Bản sao lưu này đến từ phiên bản GaleriQ mới hơn. Vui lòng cập nhật GaleriQ trước.
+0229	Không thể đọc tệp.
+0230	Thùng rác
+0231	Còn %1$lld / %2$lld hôm nay
+0232	Xóa vĩnh viễn %1$lld
+0233	Không thể hoàn tác thao tác này.
+0234	Xóa vĩnh viễn các tệp?
+0235	Xóa %1$lld
+0236	Sau đó xác nhận trong hộp thoại iOS. Ảnh và video sẽ chuyển vào “Đã xóa gần đây” trong ứng dụng Ảnh.
+0237	Xóa ảnh & video?
+0238	%1$lld trong thùng rác
+0240	Xóa vĩnh viễn %1$lld tệp
+0242	Xóa %1$lld ảnh và video
+0243	Mọi thứ bạn để riêng để xóa đều hiện ở đây. Vuốt ảnh hoặc video sang trái để thêm vào.
+0244	Thùng rác của bạn trống
+0245	Các tệp này sẽ bị xóa vĩnh viễn. Bạn không thể hoàn tác.
+0246	Tệp
+0247	Chưa có gì bị xóa. Chạm vào ảnh thu nhỏ để xem lớn hơn. Chỉ dọn thùng rác khi bạn đã sẵn sàng.
+0248	iOS sẽ yêu cầu bạn xác nhận lại và chuyển ảnh, video vào “Đã xóa gần đây”. Thường bạn có thể khôi phục chúng ở đó trong 30 ngày. Với Ảnh iCloud, việc xóa áp dụng cho mọi thiết bị của bạn.
+0249	Ảnh & video
+0250	Xem không làm thay đổi lựa chọn của bạn.
+0251	Xem lớn hơn: %1$@
+0252	Lựa chọn: %1$@
+0253	Mới thêm
+0254	Ngày chụp
+0255	Cho phép truy cập ảnh
+0256	Cao nhất: %1$lld
+0257	Đổi ảnh
+0258	Bỏ chọn
+0259	Tiếp tục
+0260	Đã lộ ảnh!
+0261	Mục ưa thích
+0262	Ảnh đã lộ: %1$lld
+0263	Bảng: vuốt ngang, chạm để xoay, kéo hoặc hất xuống.
+0264	Kéo xuống: nhanh hơn · hất xuống: thả ngay
+0265	Vuốt ngang để di chuyển
+0266	Chạm để xoay
+0267	Cách chơi
+0268	Cấp độ: %1$lld
+0269	Quản lý ảnh được phép
+0270	Kỷ lục mới!
+0271	Ảnh mới nhất
+0272	Tiếp
+0273	Hoàn thành lượt
+0274	Tạm dừng
+0275	Đã tạm dừng
+0276	Ảnh iCloud được tải khi cần. Ảnh trong két sắt, ảnh ẩn và ảnh bị loại trừ vẫn được bảo vệ.
+0277	Nguồn ảnh
+0278	Chọn ảnh
+0279	Cột %1$lld, hàng %2$lld, xoay %3$lld
+0280	Tiến độ ảnh
+0281	Ảnh ngẫu nhiên
+0282	Chơi lại
+0283	Bắt đầu lại
+0284	Hàng: %1$lld
+0285	Chỉ dùng ảnh được phép. Ảnh không có sẵn được thay bằng nền trung tính.
+0286	Lưu thất bại · Thử lại
+0287	Điểm: %1$lld
+0288	Đã chọn: %1$lld
+0289	Chọn ảnh của tôi
+0290	Bắt đầu chơi
+0291	Xóa hàng và làm lộ ảnh của bạn.
+0292	Foto Blocks
+0293	Hủy
+0294	Ảnh
+0295	Ảnh chụp màn hình
+0296	Video
+0297	Thay đổi
+0298	Đổi ngày
+0299	Chọn thư mục
+0300	Đóng
+0301	A4 ngang
+0302	A4 dọc
+0303	Tạo bộ sưu tập
+0304	1 năm
+0305	2 năm
+0306	6 tháng
+0308	%1$lld ngày
+0309	Ảnh bị mờ
+0310	Sẵn sàng cho bạn
+0311	Điều kiện
+0312	Đang đếm mục …
+0313	Bộ sưu tập của bạn
+0314	Bộ sưu tập tùy chỉnh có trong Pro. Bộ sưu tập có sẵn thì miễn phí.
+0315	Xóa bộ sưu tập
+0316	Đường chia ngang
+0317	Đường chia dọc
+0318	Sửa
+0319	Bộ sưu tập tùy chỉnh
+0320	Lấp đầy
+0321	Hiện toàn bộ
+0322	Loại tệp
+0323	Chọn một bộ sưu tập để xem lại ảnh và video phù hợp. Không có gì bị xóa tự động.
+0324	JPEG: tệp nhỏ hơn, lý tưởng để chia sẻ.
+0325	Tự do
+0326	Lưới
+0327	Dải
+0328	Lớn hơn
+0329	Kéo các tay cầm màu trắng để đổi kích thước. Giữ một ảnh và kéo lên ảnh khác để hoán đổi.
+0330	Viền
+0331	Một số ảnh không còn nữa nên đã bị bỏ qua.
+0332	Đã xem lại hết
+0333	Cũ hơn
+0334	Chạm vào một ảnh trong ảnh ghép để thay đổi.
+0335	PNG: không mất chất lượng và sắc nét, nhưng tệp lớn hơn.
+0336	Khung ảnh lấy liền
+0337	Thay thế
+0338	Lưu ảnh ghép
+0339	Khoảng cách
+0340	Xem trước ảnh ghép
+0341	Cạnh nhau
+0342	Trên xuống dưới
+0343	Hoán đổi với ảnh tiếp theo
+0344	Nền
+0345	Bố cục
+0346	Ảnh
+0347	Khoảng cách
+0348	%1$@ lớn hơn %2$@
+0349	%1$@ cũ hơn %2$@
+0350	Cắt dưới
+0351	Cắt trái
+0352	Cắt phải
+0353	Cắt trên
+0355	Đã bỏ qua %1$lld mục không rõ kích thước.
+0356	Bạn muốn xem gì?
+0357	Lưu vào album
+0358	Lưu vào Tệp
+0359	Lưu vào Ảnh
+0360	Thêm ảnh
+0361	Tỷ lệ khung hình
+0362	Tỷ lệ khung hình %1$@
+0363	Đen
+0364	Xanh dương
+0365	Kem
+0366	Màu tùy chỉnh
+0367	Xanh lá
+0368	Xám
+0369	Cam
+0370	Hồng
+0371	Đỏ
+0372	Trắng
+0373	Vàng
+0374	Album trong Ảnh
+0375	Chọn album
+0376	iCloud Drive, Trên iPhone hoặc USB
+0377	Lưu vào
+0378	Ảnh
+0379	Thành ảnh mới trong thư viện
+0380	Gửi mà không lưu bản sao vào Ảnh
+0381	Không thể lưu ảnh ghép. Ảnh của bạn không thay đổi.
+0382	Phông chữ
+0383	Kéo để di chuyển ảnh trong ô, chụm để thu phóng.
+0384	Kéo ảnh để di chuyển. Hai ngón để đổi kích thước và xoay.
+0385	Ảnh lớn ở dưới
+0386	Ảnh lớn bên trái
+0387	Ảnh lớn bên phải
+0388	Ảnh lớn ở trên
+0389	Cột %1$@ ảnh
+0390	Lưới đều
+0391	Hàng %1$@ ảnh
+0392	Ảnh gốc của bạn không thay đổi. Một tệp mới sẽ được tạo.
+0393	Ảnh %1$lld
+0394	Cao (2048 px)
+0395	Con số là cạnh dài hơn. Càng cao càng nét khi phóng to hoặc in, nhưng tệp càng lớn.
+0396	Tối đa (4096 px)
+0397	Kết quả: %1$lld × %2$lld px
+0398	Tiêu chuẩn (1080 px)
+0399	Với dải, con số là chiều rộng (trên xuống dưới) hoặc chiều cao (cạnh nhau). Dải quá dài sẽ được thu nhỏ để có thể lưu.
+0400	Xoay
+0401	Đã lưu ảnh ghép vào “%1$@”
+0402	Đã lưu ảnh ghép vào Tệp
+0403	Đã lưu ảnh ghép vào Ảnh
+0404	Chữ & nhãn dán
+0405	Kiểu
+0406	Thu phóng
+0407	Thư mục đã kết nối
+0408	Chia sẻ dữ liệu chẩn đoán
+0409	Quay lại
+0410	Giữ
+0411	Để sau
+0412	Thùng rác
+0413	Thùng rác: %1$lld
+0414	Mở thùng rác. Không có gì bị xóa khi chưa có xác nhận của bạn.
+0415	Xong
+0416	Ít nhất %1$@
+0417	Xong
+0418	Ước tính (“khoảng”): %1$lld – iOS chỉ cho biết kích thước chính xác sau khi tải về.
+0419	Đã giữ hôm nay
+0420	Các tệp đã bị xóa vĩnh viễn.
+0421	Ảnh và video giờ nằm trong “Đã xóa gần đây” trong ứng dụng Ảnh. Dung lượng chỉ được giải phóng khi chúng bị xóa vĩnh viễn ở đó.
+0422	Các mục chưa xóa vẫn ở trong thùng rác GaleriQ.
+0423	Đã xóa
+0424	đã tiết kiệm
+0425	Đã dọn thùng rác
+0426	Tổng cộng đã tiết kiệm %1$@
+0427	Tổng cộng đã tiết kiệm ít nhất %1$@
+0429	Không rõ kích thước của %1$lld mục. Chúng không được tính vào tổng.
+0430	Tìm lại
+0431	Đang so sánh tệp …
+0432	Tìm ảnh, video và tệp có nội dung giống hệt nhau. Bạn chọn bản sao nào vào thùng rác.
+0433	Bản sao đã chọn: tối đa %1$@. Con số này có thể khác với dung lượng được giải phóng. Hãy kiểm tra mục yêu thích, album và bản chỉnh sửa trước khi xóa bản sao.
+0434	Tệp giống hệt: %1$lld · tổng %2$@
+0435	GaleriQ so sánh nội dung tệp ngay trên thiết bị của bạn. Ảnh trông giống nhau không được tính là bản sao giống hệt.
+0436	Tải bản gốc còn thiếu qua Wi-Fi. Thư viện lớn có thể mất thời gian và tốn nhiều dữ liệu. Tìm trong phương tiện được phép và thư mục đã kết nối.
+0437	Đang tải bản gốc iCloud…
+0438	Bao gồm bản gốc iCloud
+0439	Không đọc được một số nội dung. Các mục chưa kiểm tra có thể còn bản sao giống hệt.
+0440	Tìm kiếm vẫn chưa đầy đủ
+0441	Đang đo kích thước …
+0443	Chuyển %1$lld bản sao vào thùng rác
+0444	Không tìm thấy bản sao giống hệt
+0445	Không tìm thấy bản sao giống hệt trong các vùng có thể truy cập.
+0446	Đã chọn cho thùng rác
+0447	Không đọc được %1$lld thư mục đã kết nối.
+0448	Tìm bản sao
+0449	Chưa kiểm tra được %1$lld mục.
+0450	Sẽ được giữ
+0451	Trùng lặp
+0452	Sửa
+0453	Phơi sáng
+0454	Giảm nhiễu
+0455	Bán kính
+0456	Ngưỡng
+0457	Miễn phí
+0458	Gốc
+0459	đã thay đổi
+0460	Ảnh đã sửa. Chạm và giữ để xem bản gốc.
+0461	đã sửa
+0462	Vùng cắt
+0463	Cắt
+0464	Phối cảnh
+0465	Bỏ
+0466	Chỉnh sửa của bạn sẽ không được lưu. Bản gốc vẫn giữ nguyên.
+0467	Bỏ các thay đổi?
+0468	Đã lưu thành bản sao
+0469	Đã lưu thành bản sao · %1$@
+0470	Đã giữ bản gốc · chỉnh sửa được lưu thành bản sao
+0471	Đã sửa bản gốc · có thể hoàn nguyên trong ứng dụng Ảnh
+0472	Đã thay bản gốc · nó nằm trong “Đã xóa gần đây”
+0473	Không thay đổi – iOS không được cấp quyền. Bản gốc không thay đổi.
+0474	Mục này đã bị thay đổi, di chuyển hoặc xóa trong lúc đó. Không có gì được lưu.
+0475	Không thể mở mục này để chỉnh sửa.
+0476	Không thể lưu chỉnh sửa. Bản gốc không thay đổi.
+0477	Mát
+0478	Phai màu
+0479	Đơn sắc
+0480	Noir
+0481	Gốc
+0482	Nâu đỏ
+0483	Cường độ
+0484	Sống động
+0485	Ấm
+0486	Lật
+0487	Rất đậm
+0488	Đậm
+0489	Thoải mái
+0490	Hẹp
+0491	Viết tay
+0492	Máy đánh chữ
+0493	Cổ điển
+0494	Có chân
+0495	Chữ hoa nhỏ
+0496	Bo góc
+0497	Đều
+0498	Viền bên trong
+0499	Viền bên ngoài
+0500	Độ rộng
+0501	Màu
+0502	Chi tiết
+0503	Hiệu ứng
+0504	Ánh sáng
+0505	Trộn màu
+0506	Tiếp tục sửa
+0507	Ngang
+0508	Sắc độ
+0509	Độ sáng
+0510	Độ bão hòa
+0511	Màu
+0512	Xóa
+0513	Vẽ
+0514	Nhân bản
+0515	Sửa
+0516	Biểu tượng cảm xúc
+0517	Tô đầy
+0518	Đưa lên trước
+0519	Chạm vào thứ bạn đã thêm để di chuyển. Hai ngón để đổi kích thước và xoay.
+0520	Chạm vào chữ hoặc nhãn dán để chọn, rồi kéo đến nơi bạn muốn.
+0521	Lớn hơn
+0522	Che
+0523	Với “Làm mờ ô vuông” và “Làm mờ”, đường nét vẫn có thể lộ ra. Với chữ cần phải không đọc được, hãy chọn “Đặc”.
+0524	Khuyên dùng cho chi tiết riêng tư: những gì bạn che sẽ thật sự biến mất trong tệp được lưu hoặc chia sẻ.
+0525	Chọn
+0526	Hình dạng
+0527	Kích thước
+0528	Nhỏ hơn
+0529	Nhãn dán
+0530	Chữ
+0531	Ngang
+0532	Đặt lại phối cảnh
+0533	Dọc
+0534	Dọc
+0535	Đang cập nhật bản xem trước…
+0536	Xem trước miễn phí · lưu cần Pro hoặc dùng thử 30 phút
+0537	Cắt, xoay và làm thẳng miễn phí. Điều chỉnh, bộ lọc, kích thước và cắt video được lưu với Pro. Dùng thử luôn miễn phí.
+0538	Lưu với Pro
+0539	Làm mờ
+0540	Làm mờ ô vuông
+0541	Đặc (khuyên dùng)
+0542	Xóa vị trí
+0543	Ảnh được lưu sẽ không chứa nơi chụp.
+0544	Đặt lại
+0545	Đặt lại tất cả
+0546	Xoay
+0547	Lưu thành bản sao
+0548	Lưu bản sao
+0549	Bản gốc không thay đổi.
+0550	Chỉ lưu phần cắt
+0551	Sửa bản gốc
+0552	iOS sẽ hỏi trước. Chỉnh sửa được lưu như chỉnh sửa trong ứng dụng Ảnh – bạn có thể hoàn tác ở đó bất cứ lúc nào bằng “Hoàn nguyên”.
+0553	Lưu bản sao và chuyển bản gốc vào thùng rác
+0554	Lưu bản sao, bản gốc vào thùng rác
+0555	iOS sẽ yêu cầu xác nhận. Bản gốc chuyển vào “Đã xóa gần đây” trong ứng dụng Ảnh và thường có thể khôi phục ở đó trong 30 ngày. Dung lượng chỉ được giải phóng sau đó.
+0556	Lưu chỉnh sửa
+0557	Đang lưu…
+0558	Mũi tên
+0559	Hình tròn
+0560	Đường thẳng
+0561	Hình chữ nhật
+0562	Chỉ chia sẻ (không có bản sao)
+0563	Chia sẻ bản đã sửa mà không lưu vào thư viện. Vị trí sẽ bị xóa.
+0564	%1$lld px
+0565	Kích thước gốc
+0566	%1$lld × %2$lld → %3$lld × %4$lld px
+0567	Ảnh này đã nhỏ. GaleriQ không bao giờ phóng to ảnh.
+0568	Mũi tên
+0569	Bong bóng thoại
+0570	Dấu tích
+0571	Vòng tròn
+0572	Dấu nhân
+0573	Dấu ngày
+0574	Trái tim
+0575	Lấp lánh
+0576	Ngôi sao
+0577	Sửa bằng một ngón; dùng hai ngón để thu phóng và di chuyển.
+0578	Làm thẳng
+0579	Điều chỉnh
+0580	Cắt
+0581	Bộ lọc
+0582	Khung
+0583	Đánh dấu
+0584	Kích thước
+0585	Chỉnh sửa chi tiết
+0586	Cắt video
+0587	Chữ
+0588	Kết thúc
+0589	%1$@ – %2$@ · %3$@ giây
+0590	Bắt đầu
+0591	Viền chữ
+0592	Nhãn
+0593	Bóng
+0594	Ảnh ghép
+0595	Đã chuyển đổi
+0596	Bản sao
+0597	Tách nền
+0598	Khung hình tĩnh
+0599	Phim
+0600	Đã thay bản gốc
+0601	Đã đổi kích thước
+0603	Tạo từ %1$lld ảnh
+0604	Khi bạn sửa ảnh hoặc lưu ảnh ghép, phim hay ảnh đã đổi kích thước, kết quả sẽ hiện ở đây.
+0605	Chưa sửa gì
+0606	Xóa khỏi danh sách
+0607	Mọi thứ GaleriQ đã lưu cho bạn: ảnh và video đã sửa, ảnh ghép, phim và ảnh đã đổi kích thước, mới nhất trước. Các tệp nằm trong ứng dụng Ảnh; danh sách này chỉ ghi nhớ những gì đến từ GaleriQ. Chạm vào một mục để xem.
+0608	Bản gốc vẫn còn
+0609	Bản gốc nằm trong “Đã xóa gần đây”
+0610	Không còn trong ứng dụng Ảnh
+0611	Đã sửa
+0612	Không thể lưu thay đổi.
+0613	Chọn thư mục được lưu trên iPhone này. Thư mục chỉ có trên đám mây không được hỗ trợ ở đây.
+0614	Không thể lưu ngày.
+0615	Lựa chọn của bạn chưa được lưu. Vui lòng thử lại.
+0616	Không thể kết nối thư mục.
+0617	Không thể lưu cài đặt.
+0618	Không thành công
+0619	Hãy đợi thùng rác dọn xong rồi mới dùng Hoàn tác.
+0620	Không thể hoàn tác nữa vì bạn đã thay đổi nó trong lúc đó.
+0621	Hiện không thể hoàn tác.
+0622	Loại trừ album này
+0623	Loại trừ
+0624	Các mục trong album này sẽ không còn xuất hiện khi dọn dẹp. Không có gì bị xóa hoặc di chuyển. Hoàn tác trong Cài đặt › Album bị loại trừ.
+0625	Ẩn “%1$@” khi dọn dẹp?
+0626	“%1$@” sẽ không còn xuất hiện khi dọn dẹp
+0627	Vẫn chạy nếu bạn chuyển ứng dụng.
+0628	Một lần xuất khác đang chạy. Vui lòng đợi đến khi xong.
+0629	Đã hủy. Không có gì được lưu.
+0630	iOS đã dừng việc xuất trong nền. Không có gì được lưu – hãy bắt đầu lại và giữ GaleriQ mở.
+0631	Bạn có thể chuyển nhanh sang ứng dụng khác. Nếu iOS hết thời gian, GaleriQ dừng gọn gàng – không lưu gì dở dang.
+0632	Đang lưu …
+0633	Đánh dấu là mục ưa thích
+0634	Không thể thay đổi trạng thái ưa thích. Nó vẫn như cũ.
+0635	Ảnh này được bảo vệ vì là mục ưa thích.
+0636	Hãy bỏ dấu ưa thích trước để cho vào thùng rác. Bạn cũng có thể tắt bảo vệ mục ưa thích trong cài đặt.
+0637	Video này được bảo vệ vì là mục ưa thích.
+0638	Xóa khỏi mục ưa thích
+0639	Không còn là mục ưa thích. Vuốt sang trái để cho vào thùng rác.
+0640	Không phải mục ưa thích
+0641	Mục ưa thích
+0642	Đưa vào “%1$@”
+0643	Không làm gì
+0644	Để sau – chọn ngày
+0645	Thêm nút
+0646	Nút và thứ tự
+0647	Nút
+0648	Dùng “Sửa” để đổi thứ tự hoặc xóa nút. Tối đa 6 nút. Nút làm đúng như các thao tác vuốt.
+0649	Đưa vào album …
+0650	Ở đây không có gì bị xóa: “Thùng rác” là thùng rác GaleriQ. Hoàn tác đảo ngược mọi thao tác, kể cả “Đưa vào album”.
+0651	Không có nút
+0652	Phía trên ảnh
+0653	Phía dưới ảnh
+0654	Vị trí
+0655	Khôi phục mặc định
+0656	Lên để giữ, trái vào thùng rác, phải để sau, xuống để quay lại – với các nút mặc định.
+0657	Tùy chỉnh
+0658	Tiêu chuẩn
+0659	Thao tác vuốt
+0660	Chọn hành động cho từng hướng. “Đưa vào album” thêm ảnh vào một album trong ứng dụng Ảnh và giữ lại ảnh. Không làm gì thì không bao giờ là một quyết định.
+0661	Vuốt & nút
+0662	Chỉ với VoiceOver/Điều khiển công tắc
+0663	Luôn luôn
+0664	Hiện nút
+0665	Đưa vào “%1$@”
+0666	Hiện không còn mục ưa thích nào để xem lại.
+0667	Không còn gì để xem lại trong album này.
+0668	Không còn gì để xem lại trong số ảnh mới nhất của bạn.
+0669	Không còn gì để xem lại trong số video mới nhất của bạn.
+0670	Hiện không còn Live Photos nào để xem lại.
+0671	Hiện không còn video dài nào để xem lại.
+0672	Hiện không còn gì khác để xem lại ở đây.
+0673	Không còn gì để xem lại từ ngày này trong những năm trước.
+0674	Hiện không còn ảnh nào để xem lại.
+0675	Hiện không còn ảnh chân dung nào để xem lại.
+0676	Không còn gì để xem lại trong lựa chọn ngẫu nhiên.
+0677	Hiện không còn ảnh chụp màn hình nào để xem lại.
+0678	Hiện không còn ảnh selfie nào để xem lại.
+0679	Không còn gì để xem lại từ tuần này.
+0680	Hiện không còn video nào để xem lại.
+0681	Chỉ có bản xem trước nhỏ được lưu trên iPhone này. Tải bản gốc để xem đầy đủ.
+0682	Tải từ iCloud
+0683	Bản gốc nằm trên iCloud.
+0684	Tải lại chất lượng đầy đủ từ iCloud. Bạn có thể quyết định dựa trên bản xem trước bất cứ lúc nào.
+0685	Đang tải ảnh và video …
+0686	%@ trong phiên này
+0687	%1$lld / %2$lld
+0688	Thử lại phương tiện đã bỏ qua
+0689	Hiện hướng dẫn vuốt
+0690	Bị ẩn khi vuốt cho đến khi bạn tải lại ở đây. Bản gốc không thay đổi.
+0691	Phương tiện đã bỏ qua
+0692	Ảnh hoặc video hiện tại
+0693	Dọn dẹp
+0694	Sẵn sàng xem lại
+0695	Mới thêm
+0696	Ảnh
+0697	Ảnh chụp màn hình
+0698	Video
+0699	Xem thùng rác
+0700	Tệp
+0701	Loại tệp
+0702	Tệp
+0703	Chọn một thư mục để xem lại các tệp trong GaleriQ.
+0704	Chưa kết nối thư mục nào
+0705	Tìm tệp …
+0706	Một thư mục đã kết nối không khả dụng. Hãy kết nối lại.
+0707	Thêm vào album
+0708	Tất cả album
+0709	Tạo và thêm
+0710	Nhập tên album ngắn.
+0711	Đang tải album …
+0712	Tên album
+0713	Album mới
+0714	Ảnh vẫn ở nguyên chỗ và đồng thời xuất hiện trong album – cả trong ứng dụng Ảnh và, với Ảnh iCloud, trên các thiết bị khác của bạn.
+0715	Mở tệp
+0716	Ghim album
+0717	Đã ghim
+0718	Dùng gần đây
+0719	Tìm album
+0720	Bỏ ghim album
+0721	Cao nhất: %1$lld
+0722	Thời gian tốt nhất: %1$@
+0723	Tự úp lại thẻ không khớp
+0724	Kỷ lục cá nhân mới!
+0725	Chưa có kỷ lục
+0726	Lượt này cần ít nhất %1$lld ảnh dùng được từ nguồn đã chọn. Hãy chọn nguồn khác, lựa chọn nhỏ hơn hoặc cho phép tải từ iCloud.
+0727	Ảnh
+0728	Biểu tượng
+0729	Kỷ lục mới của bạn có hiệu lực trong phiên này nhưng không thể lưu. Hãy thử lại.
+0730	Điểm cao
+0731	Giao diện & âm thanh
+0732	Chọn ảnh
+0733	Ảnh lưu trên iCloud được tải khi cần.
+0734	Đổi ảnh
+0735	Tùy chỉnh trò chơi
+0736	Tìm tất cả các ảnh giống nhau theo nhịp của bạn.
+0737	Chọn 2–18 ảnh cho các cặp của bạn.
+0738	Chơi không dùng ảnh · 6 cặp
+0739	Ảnh của bạn
+0740	Ảnh gốc của bạn không thay đổi.
+0741	Thu thập ảnh. Vuốt để điều khiển.
+0742	Chơi không dùng ảnh
+0743	Tiêu chuẩn
+0744	Trò chơi
+0745	Tìm các cặp bằng ảnh của chính bạn.
+0746	Ảnh ghép
+0747	Hiện không có ảnh hoặc video nào ở đây.
+0748	Không có gì để hiển thị
+0749	Chạm để chọn, nhấn giữ và kéo để chọn nhiều. Di chuyển không phải là quyết định.
+0750	Tổng quan
+0751	Chọn
+0752	Tất cả
+0753	Không
+0755	Đã chọn %1$lld
+0756	Đã thay đổi
+0757	Đã xóa
+0758	Đã xóa khỏi “Để sau”
+0759	Đã giữ
+0760	Đã đổi: giữ
+0761	Đã lưu để sau
+0762	Đã đổi: để sau
+0763	Chưa xóa
+0764	Không còn tìm thấy
+0765	Đã đặt ngày
+0766	Chuyển vào thùng rác
+0767	Đã đổi: thùng rác
+0768	Đã hoàn tác
+0769	Đã lấy lại từ thùng rác
+0770	Trợ giúp
+0771	Đám mây
+0772	Các dịch vụ đám mây như Google Photos có thể đồng bộ việc xóa sang thiết bị khác. Hãy kiểm tra cài đặt của chúng. GaleriQ tự động tải ảnh và video từ Ảnh iCloud khi cần, giống như ứng dụng Ảnh.
+0773	Đưa ra lựa chọn
+0774	Vuốt lên để giữ, sang trái để vào thùng rác và sang phải để xem sau. Mặc định, mục sẽ quay lại sau 2 ngày. Bạn có thể đổi khoảng thời gian này trong cài đặt. Ngay sau khi vuốt, dùng “Thay đổi” để chọn ngày khác. Vuốt xuống để quay lại mà không đưa ra lựa chọn mới.
+0775	Xóa
+0776	Vuốt không bao giờ xóa gì cả. Các mục vào thùng rác GaleriQ trước. Chỉ sau khi bạn xác nhận ở đó, iOS mới chuyển ảnh và video vào Đã xóa gần đây.
+0777	Hiện lại hướng dẫn và mẹo
+0778	Xuống
+0779	Trái
+0780	Phải
+0781	Lên
+0782	Tất cả
+0783	Đã xóa
+0785	%1$@ · %2$lld mục
+0786	Lựa chọn của bạn sẽ hiện ở đây khi bạn bắt đầu dọn dẹp.
+0787	Chưa có lịch sử
+0788	Chưa có mục nào cho bộ lọc này.
+0789	Chưa có mục nào
+0790	Đã giữ
+0791	Để sau
+0792	Hiện ít hơn
+0793	Hiện mục cũ hơn (%1$lld)
+0794	%1$@ · %2$@
+0795	Bản sao giống hệt
+0796	Tệp từ thư mục đã kết nối
+0797	từ %1$@
+0798	Thư viện
+0799	Hoàn thành từng tháng
+0800	Đã xem lại hết
+0802	%1$lld cần xem lại
+0803	Chụp liên tiếp nhanh
+0804	Danh mục
+0805	Bộ sưu tập
+0806	Thêm công cụ
+0807	Thông tin
+0808	Vị trí
+0810	%1$lld mục
+0811	Giữ
+0812	Tất cả
+0813	Tệp nén
+0814	Tài liệu
+0815	Hình ảnh
+0816	Khác
+0817	PDF
+0818	Video
+0819	Tệp lớn
+0820	Lớn hơn
+0821	Chỉ các tệp có kích thước đã biết từ %1$lld MB trở lên. Kích thước có thể khác với dung lượng được giải phóng khi xóa.
+0822	Với “Tối ưu hóa dung lượng iPhone”, các bản gốc này chỉ có trên iCloud. iOS không cho biết kích thước chính xác nếu không tải về, nên GaleriQ ước tính từ ảnh và video đã đo của bạn và hiển thị là “khoảng”.
+0823	Chỉ trên iCloud: %1$lld
+0825	trong %1$lld tệp lớn
+0826	Chỉ trên iCloud, kích thước ước tính
+0827	Tiếp tục đo (còn: %1$lld)
+0828	Đang đo kích thước … %1$lld / %2$lld
+0829	Không có tệp phù hợp
+0830	Không có tệp nào có thể truy cập với kích thước đã biết lớn hơn %1$lld MB.
+0831	Không đọc được: %1$lld
+0832	Các mục này ở trên iPhone này nhưng không đọc được. Trong danh sách, chúng hiện với kích thước ước tính (“khoảng”).
+0833	Để sau
+0834	Trở lại hàng chờ
+0835	Để riêng, không có ngày
+0836	Sẵn sàng xem lại từ %1$@
+0837	Sẵn sàng xem lại hôm nay
+0838	Vuốt ảnh hoặc video sang phải để xem lại sau.
+0839	Chưa lưu gì để sau
+0840	Trong 7 ngày tới · %1$lld
+0841	Để riêng · %1$lld
+0842	Sẵn sàng xem lại · %1$lld
+0843	Từ %1$@ · %2$lld
+0844	Không có ngày · %1$lld
+0845	Ngày mai · %1$lld
+0847	Xem lại sau %1$lld ngày
+0849	Xem lại sau %1$lld tháng
+0850	Xem lại sau 1 tháng
+0851	Xem lại sau 1 tuần
+0853	Xem lại sau %1$lld tuần
+0854	Quay lại lần dọn dẹp tới
+0855	Đã để riêng – tìm trong Để sau
+0856	Nhắc bạn khi đến lúc xem lại?
+0857	Xóa khỏi “Để sau”
+0858	Xem lại ngay
+0859	Xem lại ngay (%1$lld)
+0860	Xem lại vào %1$@
+0861	Xem lại ngày mai
+0862	Ẩn thư mục con
+0863	Ảnh và video trên thiết bị này sẽ hiện ở đây.
+0864	Hiện thư mục con
+0865	Chạm ♡ trên ảnh hoặc video để đánh dấu ưa thích. Mục ưa thích giống với trong ứng dụng Ảnh.
+0866	Chưa có mục ưa thích
+0867	Từ thư viện
+0868	Tất cả
+0869	Điện ảnh
+0870	Bỏ bộ lọc
+0871	Đã sửa
+0872	Không có gì cho bộ lọc “%1$@”.
+0873	Mục ưa thích
+0874	Ảnh toàn cảnh
+0875	RAW
+0876	Bản ghi màn hình
+0877	Quay chậm
+0878	Tua nhanh thời gian
+0879	Bộ lọc
+0880	Dọn album này
+0881	Album này hiện không có ảnh hoặc video.
+0882	Loại khỏi dọn dẹp
+0883	Đã loại khỏi dọn dẹp
+0884	Đưa vào dọn dẹp lại
+0885	Không có album nào khớp với “%1$@”.
+0886	Tìm album …
+0887	Nhiều mục nhất
+0888	Cập nhật gần đây
+0890	Đã ẩn %1$lld mục trong GaleriQ
+0891	GaleriQ không hiển thị chúng ở bất kỳ đâu. Tệp không thay đổi và các ứng dụng khác vẫn hiển thị chúng.
+0893	%1$lld mục bị ẩn
+0894	Dùng “Ẩn trong GaleriQ” trên album, ảnh hoặc một lựa chọn.
+0895	Không có gì bị ẩn
+0896	Đã ẩn
+0897	Ẩn trong GaleriQ
+0898	GaleriQ sẽ không hiển thị chúng nữa – không trong Ảnh và không khi dọn dẹp. Tệp không thay đổi và vẫn hiển thị trong ứng dụng khác. Đây không phải là két sắt.
+0900	Ẩn %1$lld mục trong GaleriQ?
+0901	Thời lượng
+0902	Tên
+0903	Tệp RAW
+0904	Độ phân giải
+0905	Kích thước
+0906	Ngày chụp
+0907	Loại tệp
+0908	Ô nhỏ hơn
+0909	Ngày
+0910	Ô lớn hơn
+0911	Tháng
+0912	Năm
+0913	Loại phương tiện
+0914	Album
+0915	Dòng thời gian
+0916	Không có ngày
+0917	Mới thêm trước – theo thứ tự của ứng dụng Ảnh.
+0918	Dọn dẹp từ đây
+0919	Sắp xếp
+0920	Mới thêm
+0921	Lớn nhất trước
+0922	Tên
+0923	Mới nhất trước
+0924	Cũ nhất trước
+0926	%1$lld thư mục con
+0927	Chuyển vào thùng rác
+0928	Đây là mục ưa thích. “Bảo vệ mục ưa thích” đang bật nên nó không vào thùng rác. Bạn có thể đổi điều này trong Cài đặt.
+0929	Vào thùng rác GaleriQ – không có gì bị xóa. Bạn quyết định sau ở đó.
+0930	Vào thùng rác GaleriQ – không có gì bị xóa. Mục ưa thích được giữ lại (“Bảo vệ mục ưa thích” đang bật).
+0932	Chuyển %1$lld mục vào thùng rác?
+0934	%1$lld mục đang ở trong thùng rác GaleriQ.
+0935	Trong thùng rác GaleriQ
+0937	Đã hiện lại %1$lld mục
+0938	Hiện lại
+0939	Tỷ lệ khung hình
+0940	Chế độ xem
+0941	Vuông
+0942	Xóa cả %1$lld với Pro
+0943	Xem quảng cáo: xóa thêm %1$lld hôm nay
+0944	Quảng cáo bị đóng sớm. Chưa mở khóa gì. Bạn có thể thử lại hôm nay.
+0945	Mỗi ngày một lần. Phần thưởng chỉ có hiệu lực hôm nay.
+0946	Hiện không có quảng cáo. Chưa mở khóa gì.
+0947	Đã chọn: %2$lld. Không có Pro, bạn có thể xóa tối đa %1$lld mỗi ngày. Phần còn lại vẫn ở trong thùng rác GaleriQ.
+0948	Còn %1$lld / %2$lld hôm nay
+0949	Không giới hạn với Pro
+0950	Xóa %1$lld trong số này
+0951	Đã đạt giới hạn hằng ngày
+0952	Còn %1$lld hôm nay
+0953	Hạn mức hằng ngày sẽ đặt lại vào ngày mai.
+0954	Ảnh hoặc video
+0955	Phân tích xong
+0956	Bạn có thể chơi hết lượt hoặc xem kết quả ngay.
+0957	Phân tích vẫn tiếp tục
+0958	Nghỉ một chút
+0959	Camera
+0960	Thẻ %1$lld
+0961	Tải ảnh iCloud
+0962	Đã tìm thấy tất cả các cặp!
+0963	Thời gian: %1$@
+0964	Lật thẻ
+0965	Trái tim
+0966	Úp xuống
+0967	Chiếc lá
+0968	Đang chuẩn bị hình…
+0969	Đã tìm thấy cặp
+0970	Mặt trăng
+0971	Ngọn núi
+0972	Lượt đi: %1$lld
+0973	Chọn ảnh của tôi
+0974	%1$lld cặp (%2$lld thẻ)
+0975	%1$lld / %2$lld cặp
+0976	Hình %1$lld
+0977	Chọn album hoặc thư mục ảnh
+0978	Xem kết quả
+0979	Tiếp tục lượt chơi
+0980	Số cặp
+0981	Nguồn ảnh
+0982	Album hoặc thư mục ảnh
+0983	Mục ưa thích
+0984	Toàn bộ thư viện ảnh
+0985	Mặt trời
+0986	Ghép cặp
+0987	Một số ảnh không còn nữa hoặc chỉ có trên iCloud. Hãy chọn ảnh khác hoặc cho phép tải về. Không thể dùng ảnh trong két sắt.
+0988	Thao tác cho %1$@
+0989	Xem lại lần nữa
+0990	Đã xem lại
+0992	%1$lld để sau
+0994	Chưa bắt đầu · %1$lld mục
+0996	Đã xem lại %1$lld / %2$lld
+0997	Các tháng sẽ hiện ở đây khi ảnh hoặc video có ngày chụp.
+0998	Chưa có tháng nào
+0999	Bạn đã đi được bao xa trong mỗi tháng. Các mục để sau được tính là đã xem lại.
+1000	Theo tháng
+1001	Thêm thao tác
+1002	Thêm
+1003	16:9 · Ngang
+1004	4:5 · Hơi cao
+1005	9:16 · Dọc
+1006	1:1 · Vuông
+1007	Tùy chọn cho đoạn %1$lld
+1008	Đoạn %1$lld / %2$lld
+1009	Ảnh · %1$@
+1010	Đã xóa đoạn khỏi video
+1011	Video · %1$@
+1012	Dùng ⋯ để di chuyển hoặc xóa một đoạn. Bản thân ảnh và video không thay đổi.
+1013	Chuyển màn qua màu đen giữa các đoạn
+1014	Không thể tạo video. Không có gì được lưu và bản gốc không thay đổi.
+1015	Lấp đầy khung
+1016	Nếu một đoạn có hình dạng khác
+1017	Các đoạn không bao giờ bị kéo giãn: hoặc hiện toàn bộ hình (có viền đen), hoặc lấp đầy khung và cắt bớt phần viền.
+1018	Toàn bộ hình
+1019	Định dạng
+1020	Như đoạn đầu tiên
+1021	Hình dạng của video hoàn chỉnh. 9:16 lấp đầy màn hình điện thoại cầm dọc, 16:9 hợp với TV và máy tính. “Như đoạn đầu tiên” dùng hình dạng của đoạn đầu tiên.
+1022	Thu phóng nhẹ
+1023	Ảnh từ từ phóng to để không trông tĩnh.
+1024	Chuyển lên trước
+1025	Chuyển ra sau
+1026	Tệp của riêng bạn, phát từ đầu và lặp lại nếu cần. GaleriQ không kèm nhạc. Hãy lưu ý bản quyền khi chia sẻ.
+1027	Chọn tệp âm thanh
+1028	Xóa
+1029	Âm lượng nhạc
+1030	Thời gian mỗi ảnh
+1031	Áp dụng cho mọi ảnh trong video này. Video luôn phát đủ thời lượng.
+1032	Ảnh
+1033	Chọn video và ảnh
+1034	Chất lượng
+1035	Cân bằng
+1036	Cao (Full HD)
+1037	Cao và Cân bằng: tối đa Full HD (1080p) – Cân bằng tạo tệp nhỏ hơn mà gần như không thấy khác biệt. Nhỏ: tối đa HD (720p), tệp nhỏ nhất, phù hợp để gửi.
+1038	Nhỏ (HD)
+1039	Xóa khỏi video
+1040	Sắp xếp lại
+1041	Đang tạo video …
+1042	Lưu video
+1043	Đã lưu thành video mới trong thư viện. Bản gốc không thay đổi.
+1044	Ảnh với hiệu ứng thu phóng nhẹ và chuyển cảnh, lưu thành video
+1045	Video và ảnh nối tiếp nhau, có nhạc
+1046	Đoạn
+1047	Định dạng
+1048	Nhạc
+1049	Chuyển cảnh
+1050	Ghép video
+1051	Trình chiếu thành video
+1052	Thêm ít nhất hai đoạn.
+1053	Tổng cộng tối đa 30 phút. Hãy rút ngắn hoặc xóa bớt đoạn.
+1054	Tối đa 50 đoạn mỗi video.
+1055	Giữa hai đoạn, hình ảnh tối đen một chút rồi hiện dần trở lại. Tắt: cắt thẳng. Tổng thời lượng không đổi.
+1056	Tắt âm thanh
+1057	Không thể hiển thị tệp này.
+1058	Chưa chọn
+1059	Ghi chú
+1060	Có mục trong “Để sau” sẵn sàng xem lại hôm nay.
+1061	OK
+1062	GaleriQ hiển thị ảnh và video ngay trên thiết bị của bạn để bạn dọn dẹp. Không có tài khoản hay máy chủ GaleriQ.
+1063	Truy cập ảnh và video
+1064	Mua Pro · %1$@ một lần
+1065	Mua Pro một lần
+1066	Thẻ luyện tập. Không có gì được lưu ở đây.
+1067	Tiếp
+1068	Vuốt và sắp xếp không giới hạn, thỉnh thoảng có quảng cáo. Việc xóa có giới hạn hằng ngày.
+1069	Bắt đầu miễn phí
+1070	Bước %1$lld / %2$lld
+1071	Ảnh của bạn ở lại trên thiết bị. Không có tài khoản GaleriQ, không tải ảnh lên.
+1072	Các mục vào thùng rác GaleriQ trước. Bạn xác nhận việc xóa ở đó, và iOS hỏi lại trước khi chuyển ảnh và video vào Đã xóa gần đây.
+1073	Bạn quyết định thứ gì bị xóa
+1074	Xem qua ảnh và video và quyết định giữ lại gì. Mỗi lần một cú vuốt, theo nhịp của bạn.
+1075	Thư viện của bạn, cuối cùng cũng gọn gàng
+1076	Cách dùng là vậy. Giờ đến lượt ảnh của bạn.
+1077	Lên: giữ. Trái: thùng rác. Phải: để sau. Thử ở đây.
+1078	Vuốt và chọn
+1079	Lớn nhất trước
+1080	Mới nhất trước
+1081	Cũ nhất trước
+1082	Ngẫu nhiên
+1083	Thứ tự
+1084	Thêm vào album
+1086	Đã thêm %1$lld vào “%2$@”.
+1087	Tên album
+1088	Chưa có album
+1089	Giỏ chọn
+1090	Thêm vào giỏ chọn
+1092	Đã thêm %1$lld vào giỏ chọn.
+1093	Đã có trong giỏ chọn.
+1094	Làm trống giỏ
+1095	Chỉ giỏ được làm trống. Ảnh và video không thay đổi.
+1096	Làm trống giỏ chọn?
+1097	Trong “Ảnh”, chọn nội dung rồi chạm ⋯ › Thêm vào giỏ chọn.
+1098	Giỏ chọn trống
+1099	Gom ảnh và video từ các tháng và thư mục khác nhau. Giỏ được giữ cho đến khi bạn làm trống – không liên quan gì đến thùng rác.
+1100	Lấy ra khỏi giỏ
+1101	Tạo
+1103	Không tìm thấy %1$lld mục (đã xóa hoặc không còn trên thiết bị này).
+1104	Xóa khỏi danh sách
+1105	Album mới
+1106	Ghi chú
+1107	Ghi chú (chỉ trong GaleriQ, tệp không thay đổi)
+1108	Lưu ghi chú
+1109	Thêm
+1110	Xóa ở mọi nơi
+1111	Thẻ biến mất ở mọi nơi. Bản thân ảnh và video không thay đổi.
+1112	Xóa thẻ “%1$@” ở mọi nơi?
+1113	Thẻ mới
+1114	Xóa thẻ
+1115	trên một số mục
+1116	Thẻ
+1118	Thẻ cho %1$lld mục
+1119	Chưa có thẻ. Thêm từ của riêng bạn như “Hóa đơn” hoặc “Kỳ nghỉ” – GaleriQ chỉ biết những gì bạn tự nhập.
+1120	Tạm dừng
+1121	Thao tác PDF
+1122	Ghép tệp, sắp xếp lại và xoay trang
+1123	Không thể lưu PDF.
+1124	Thêm tệp
+1125	Chọn tệp
+1126	PDF từ tệp
+1127	Không thể mở các tệp. Hãy chọn PDF hoặc hình ảnh đọc được, không bị khóa, rồi thử lại. Các trang hiện tại của bạn không thay đổi.
+1128	Chọn PDF hoặc hình ảnh từ Tệp. Ghép, sắp xếp lại và xoay trang với bản xem trước trực tiếp, rồi lưu thành PDF mới.
+1129	Hãy chọn ít tệp hơn hoặc tệp nhỏ hơn (tối đa 100 MB mỗi tệp, 256 MB mỗi lựa chọn và 500 trang).
+1130	Lấp đầy
+1131	Vừa khít
+1132	Tạo PDF
+1133	Lề
+1134	Không
+1135	Bình thường
+1136	Hẹp
+1137	Tự động
+1138	Ngang
+1139	Dọc
+1140	Hướng
+1141	Chuyển lên trước
+1142	Chuyển ra sau
+1143	Trang %1$lld / %2$lld
+1144	Xoay
+1145	Chọn trang
+1146	Giấy
+1147	US Letter
+1148	Số ảnh mỗi trang
+1150	%1$lld ảnh
+1151	Ảnh cho PDF
+1152	Ảnh được nhúng lại: vị trí và dữ liệu chụp khác không vào PDF. Bản gốc không thay đổi.
+1153	Đang tạo PDF …
+1154	Lưu thành PDF
+1155	Đã lưu vào “Tài liệu/GaleriQ” · %1$@
+1156	Chia sẻ PDF
+1157	Ảnh thành tài liệu hoặc bảng ảnh thu nhỏ
+1158	Tạo PDF
+1159	Ảnh
+1160	Bạn muốn xem lại khi nào?
+1161	Số lượng
+1162	Để riêng không có ngày
+1163	Mục này sẽ không tự quay lại. Bạn sẽ tìm thấy nó trong Để sau › Để riêng.
+1164	Xem lại vào %1$@
+1165	Chọn ngày …
+1166	Đơn vị
+1167	Phát
+1168	Vị trí phát
+1169	Hiện không thể hiển thị ảnh hoặc video này.
+1170	Có thể nó đã bị di chuyển hoặc chưa được lưu đầy đủ.
+1171	Phiên bản miễn phí hiển thị quảng cáo từ Google. Bạn có thể thay đổi sự đồng ý trong cài đặt. Ảnh của bạn, tên ảnh, thư mục hay bất cứ thứ gì suy ra từ chúng không bao giờ được gửi cho bên quảng cáo. Pro không có quảng cáo.
+1172	Cho phép truy cập
+1173	Quản lý lựa chọn
+1174	Ảnh & video
+1175	Để xem, sắp xếp và xóa ảnh, video sau khi bạn xác nhận.
+1176	Cho phép thông báo
+1177	Tùy chọn: nhận lời nhắc khi có mục trong “Để sau” sẵn sàng xem lại. Tên tệp không hiện trên màn hình khóa.
+1178	Mở Cài đặt iOS
+1179	Việc mua dùng App Store của Apple. GaleriQ không bao giờ gửi ảnh, tên hay siêu dữ liệu của bạn cho việc này.
+1180	GaleriQ chỉ xem ảnh, video và tệp được phép trên thiết bị của bạn. Bạn không cần tài khoản và không có máy chủ GaleriQ. Lưu ý: với dịch vụ đám mây như Google Photos, những gì bạn xóa cũng có thể biến mất trên các thiết bị khác.
+1181	Quyền riêng tư của bạn là trên hết
+1182	Mua một lần: không quảng cáo, không giới hạn hằng ngày và thư mục két sắt không quảng cáo.
+1183	Không có quảng cáo khi mở ứng dụng và không có thẻ quảng cáo giữa ảnh và video của bạn.
+1184	Thư mục két sắt không quảng cáo
+1185	Tạo thư mục mới trong két sắt mà không cần xem video.
+1186	Mọi thứ khác – chỉnh sửa, phân tích, trùng lặp, bộ sưu tập, Studio – đều miễn phí cho mọi người.
+1187	Ảnh và tệp của bạn chỉ được kiểm tra và sắp xếp trên thiết bị. Khi mua, chỉ những gì cần thiết được gửi cho Apple, và cho quảng cáo ở bản miễn phí là Google – không bao giờ là ảnh, tên ảnh hay chi tiết từ chúng.
+1188	Pro đang hoạt động
+1189	Pro
+1190	Không quảng cáo
+1191	Dọn dẹp không giới hạn hằng ngày
+1192	Xóa bao nhiêu tùy thích — không có giới hạn hằng ngày %1$lld.
+1193	GaleriQ Pro hiện đã hoạt động.
+1194	Không thể hoàn tất giao dịch mua.
+1195	Không tìm thấy giao dịch mua trước đây cho tài khoản này.
+1196	Giao dịch mua đang chờ xác nhận. Pro sẽ mở khóa khi được xác nhận.
+1197	Giao dịch mua của bạn đã được khôi phục.
+1198	Đang tải giá …
+1199	Ảnh và tệp của bạn chỉ được kiểm tra và sắp xếp trên thiết bị. Khi mua, chỉ những gì tối thiểu cần thiết được gửi cho Google – không bao giờ là ảnh, tên ảnh hay bất cứ thứ gì suy ra từ chúng.
+1200	Khôi phục giao dịch mua
+1201	Hiện không thể tải Pro từ App Store. Hãy kiểm tra kết nối Internet và thử lại.
+1202	Mua một lần. Không đăng ký.
+1203	GaleriQ Pro
+1204	Phiên bản này chưa hỗ trợ mua hàng.
+1205	Phiên bản này chưa kết nối với mua hàng trên App Store. Bạn vẫn có thể dùng mọi tính năng khác như bình thường.
+1206	Mở khóa GaleriQ Pro
+1207	Xem GaleriQ Pro
+1208	Đặt lại
+1209	Thêm
+1210	Thêm lối tắt
+1211	Đã xem lại hết
+1212	Sửa
+1213	Sửa lối tắt
+1214	Trống
+1215	Mục ưa thích
+1216	Mục ưa thích từ ứng dụng Ảnh
+1217	Album
+1218	Album
+1219	Ảnh mới nhất
+1221	%1$lld ảnh mới nhất của bạn
+1222	Video mới nhất
+1224	%1$lld video mới nhất của bạn
+1225	Giới hạn lối tắt: %1$lld. Xóa một cái để thêm cái khác.
+1226	Live Photos
+1227	Ảnh có chuyển động và âm thanh
+1228	Video dài
+1229	Video từ một phút trở lên
+1230	Lùi lại: %1$@
+1231	Tiến lên: %1$@
+1232	Không tìm thấy album có ảnh hoặc video.
+1233	Ngày này
+1234	Chụp vào ngày hôm nay trong những năm trước
+1235	Trên màn hình chính
+1236	Ảnh
+1237	Chân dung
+1238	Ảnh chụp ở chế độ Chân dung
+1239	Ngẫu nhiên
+1240	%1$lld ảnh và video chưa xem lại ngẫu nhiên, xáo lại mỗi lần
+1241	Chỉ lối tắt bị xóa. Tệp và lựa chọn của bạn vẫn được giữ.
+1242	Ảnh chụp màn hình
+1243	Selfie
+1244	Từ album Selfie trong ứng dụng Ảnh
+1245	Tuần này
+1246	Ảnh và video trong tuần này
+1247	Truy cập nhanh
+1248	Video
+1249	Tất cả thành tích
+1253	%lld thời gian tốt nhất
+1256	Kỷ lục mới nhất
+1257	Đồng
+1258	Vàng
+1259	%1$@ / %2$@ · còn %3$@
+1260	Bạc
+1261	Huy chương chỉ so với kết quả của chính bạn – không có bảng xếp hạng, không có gì rời khỏi thiết bị.
+1262	Kỷ lục
+1263	Kỷ lục của bạn. Chúng ở lại trên iPhone này.
+1264	ảnh
+1265	điểm
+1269	%1$@ ảnh
+1273	%1$@ điểm
+1277	ngày hoạt động
+1283	kỷ lục mới
+1286	đã xem lại
+1287	Tuần vừa qua của bạn
+1288	Làm lại
+1289	Sửa hàng loạt
+1290	Sửa PDF
+1291	Quét tài liệu
+1292	Xóa
+1294	Đã chọn: %2$lld. Hôm nay bạn có thể xóa thêm %1$lld mục. Hãy chọn tối đa %1$lld hoặc mua GaleriQ Pro.
+1295	Đã hủy. Không có gì bị xóa.
+1296	Lựa chọn của bạn đã thay đổi. Vui lòng kiểm tra lại.
+1297	Không có gì bị xóa.
+1298	Chúng tôi sẽ kiểm tra kết quả lần tới bạn mở ứng dụng. Sẽ không có gì bị xóa lại.
+1299	Đã đạt giới hạn hằng ngày
+1300	Không có gì bị xóa
+1301	Cọ
+1302	Xóa vùng
+1303	Tô lên chỗ đó bằng một ngón. Hai ngón để thu phóng.
+1304	Chạm vào ảnh tại vị trí cần chỉnh. Sau đó làm sáng, làm tối hoặc đổi màu vùng đó.
+1305	Chuyển màu
+1306	Hình tròn
+1307	Mắt đỏ
+1308	Chạm vào mắt bị đỏ. Với khuôn mặt nhỏ, hãy phóng to bằng hai ngón trước. Chỉ màu đỏ trong mắt thay đổi.
+1309	Xóa cái cuối
+1310	Kích thước
+1311	Thử lại
+1312	Lưu
+1313	Ảnh chụp màn hình
+1314	Tìm kiếm
+1315	Đã chọn
+1316	So sánh chuỗi %1$lld ảnh
+1317	Giữ %1$lld · Thùng rác %2$lld
+1318	Đã giữ %1$lld · %2$lld trong thùng rác
+1319	Không có gì bị xóa. Thùng rác thuộc về GaleriQ và chỉ được dọn khi bạn xác nhận.
+1320	Chạm vào một ảnh để so sánh bên dưới. Dấu tích quyết định ảnh nào được giữ.
+1321	Giữ
+1322	Giữ
+1323	Thùng rác
+1324	Chụp liên tiếp nhanh · %1$lld
+1325	So sánh chuỗi ảnh
+1326	Hiện thành tích
+1327	Chuỗi ngày, mục tiêu hằng ngày, huy hiệu và tổng kết tuần.
+1328	Thay đổi sự đồng ý quảng cáo
+1329	Giao diện
+1330	Điều khiển
+1331	Mục tiêu hằng ngày
+1332	Thư mục bị loại trừ
+1333	Tắt
+1334	Rung khi thao tác
+1335	Hiện hướng dẫn vuốt khi mở
+1337	Sau %1$lld ngày
+1338	Ngôn ngữ
+1339	GaleriQ dùng ngôn ngữ của iPhone. Chạm để chọn ngôn ngữ khác chỉ cho GaleriQ trong “Ngôn ngữ” ở Cài đặt iOS.
+1340	Để sau: thời gian mặc định
+1341	Mua một lần
+1342	Bảo vệ mục ưa thích
+1343	Đánh giá GaleriQ
+1344	Điều đó thật sự giúp chúng tôi – cảm ơn bạn!
+1345	Hiện “Tuần vừa qua của bạn”
+1346	Luôn ở trang bắt đầu
+1347	Cài đặt
+1348	Chia sẻ
+1349	Hiện không thể chia sẻ ảnh hoặc video này.
+1350	Hiện không thể chia sẻ ảnh và video đã chọn. Hãy kiểm tra kết nối với iCloud và thử lại.
+1351	Chưa sẵn sàng chia sẻ: %1$lld / %2$lld (ví dụ không có kết nối iCloud). Chỉ các mục còn lại được đưa ra.
+1352	Đang chuẩn bị … %1$lld / %2$lld
+1353	Để sau
+1354	Bắt đầu dọn dẹp
+1355	Studio
+1356	Thùng rác
+1357	khoảng %1$@
+1358	“khoảng” = ước tính từ ảnh và video đã đo của bạn. iOS chỉ cho biết kích thước chính xác của bản gốc iCloud sau khi tải về.
+1359	Ít nhất %1$@
+1360	Không rõ kích thước
+1361	Tiếp mà không chọn
+1362	Chơi lại
+1363	Không
+1364	Thời gian mỗi ảnh
+1365	Không có gì để hiển thị ở đây.
+1366	Kết thúc trình chiếu
+1367	Mờ chéo
+1368	Lặp lại
+1369	Tiếp
+1370	Xem không bao giờ là một quyết định. Màn hình luôn bật trong khi trình chiếu.
+1371	Thứ tự
+1372	Cũ nhất trước
+1373	Ngẫu nhiên
+1374	Tạm dừng
+1375	Trước
+1376	%1$lld giây
+1377	Cài đặt trình chiếu
+1378	Trình chiếu
+1379	Chuyển cảnh
+1380	Phát video (tắt tiếng)
+1381	Bảng Rắn ảnh
+1382	Camera: cột %1$lld, hàng %2$lld. Ảnh: cột %3$lld, hàng %4$lld.
+1383	Nhân vật
+1384	Cổ điển — tường cứng
+1385	Ô tiếp theo trống
+1386	Vuốt trên bảng để đổi hướng.
+1387	Xuống
+1388	Điểm: %1$lld
+1389	Nhanh
+1390	Thức ăn
+1391	Chọn ảnh
+1392	%lld / 100 ảnh
+1393	Chuyển ra sau
+1394	Chọn tối đa 100 ảnh cho con rắn của bạn.
+1395	Không thể lưu hoặc khôi phục lựa chọn ảnh. Vui lòng thử lại.
+1396	Thứ tự ảnh · kéo để sắp xếp lại
+1397	Ảnh %lld
+1398	Chỉ dùng ảnh bạn đã chọn. Bản sao nhỏ ở lại trên iPhone này, ngoài bản sao lưu iCloud. Xóa chúng ở đây để xóa các bản sao này.
+1399	Ảnh của bạn
+1400	Chuyển lên trước
+1401	Chậm
+1402	Phản hồi xúc giác
+1403	Trái
+1404	Chế độ chơi
+1405	Rừng đêm
+1406	Bình thường
+1407	Có vật cản ngay phía trước
+1408	Trò chơi khác
+1409	Lượt chơi kết thúc
+1410	Tạm dừng
+1411	Không tải được một số ảnh. Hãy kiểm tra kết nối cho ảnh iCloud và thử lại.
+1412	Cao nhất: —
+1413	Thư thả — đi xuyên tường
+1414	Phải
+1415	Xáo trộn ảnh
+1416	Xáo trộn áp dụng cho ván mới tiếp theo. Đổi ảnh sẽ tạm dừng ván hiện tại.
+1417	Âm thanh
+1418	Tốc độ
+1419	Bắt đầu chơi
+1420	Vuốt để chơi lượt mới
+1421	Vuốt để tiếp tục
+1422	Vuốt ở bất kỳ đâu để điều khiển
+1423	Rắn ảnh
+1424	Lên
+1425	Hoàn thành dải ảnh!
+1426	Lớn nhất trước
+1427	Mới nhất trước
+1428	Cũ nhất trước
+1429	Ngắt kết nối thư mục không xóa tệp nào. Bạn chọn thư mục mà GaleriQ được truy cập trong chế độ xem tệp này.
+1430	Ngắt kết nối thư mục
+1431	Chỉ xem
+1432	Xem và xóa tệp
+1433	Không khả dụng — hãy kết nối lại
+1434	Không tải được các quyết định đã lưu. Không có gì bị thay đổi hay xóa. Hãy khởi động lại GaleriQ; nếu vẫn không được, hãy chia sẻ dữ liệu chẩn đoán.
+1435	GaleriQ không khởi động được
+1436	Thiết bị của bạn
+1437	Còn trống %1$@ theo iOS
+1438	GaleriQ nhìn thấy
+1439	Ảnh chụp màn hình đã được tính trong ảnh. Tệp lớn và mục trùng lặp không được tính lại. Kích thước không rõ không được tính vào tổng, khi đó tổng được ghi là “Ít nhất”.
+1440	GaleriQ không nhìn thấy
+1441	GaleriQ không thể kiểm tra ứng dụng khác, tệp hệ thống, nội dung đám mây hoặc thư mục bạn chưa cho phép. Không hiển thị kích thước cho những mục này.
+1442	Thư mục đã kết nối
+1443	Phân tích dung lượng chỉ diễn ra trên thiết bị của bạn.
+1444	bao gồm ảnh chụp màn hình
+1445	Tổng quan dung lượng
+1446	Hiện không có thông tin dung lượng
+1447	đã dùng trên %1$@
+1449	%1$lld mục · %2$@
+1450	Ảnh ghép
+1451	Ảnh ghép
+1452	Lưới, tự do hoặc dải
+1453	Tạo
+1455	Ảnh ghép · %1$lld ảnh
+1456	Xóa bản nháp
+1457	Bản nháp sẽ bị xóa. Ảnh của bạn không bị ảnh hưởng.
+1458	Bản miễn phí giữ 3 bản nháp gần nhất của bạn.
+1459	Bản nháp
+1460	Không đủ bộ nhớ cho kích thước này. Hãy thử “Tiêu chuẩn” hoặc ít ảnh hơn.
+1461	Sáng tạo với ảnh của bạn. Mọi thứ ở lại trên thiết bị.
+1462	Chọn tối đa %1$lld.
+1463	Ảnh cho ảnh ghép
+1464	Đã lưu
+1465	Ảnh, video và ảnh ghép đã sửa
+1466	Không có gì bị xóa cho đến khi bạn dọn thùng rác và xác nhận.
+1467	Tạm thế đã
+1468	Đã giữ
+1469	Xem ảnh hoặc video cuối
+1470	Để sau
+1471	Dọn dẹp không giới hạn hằng ngày với GaleriQ Pro. Mua một lần, không đăng ký.
+1472	Gọn gàng hơn một chút
+1473	Trong thùng rác
+1474	Không giới hạn hằng ngày với Pro.
+1476	Đã để riêng %1$lld mục để xóa.
+1477	Xem thùng rác (%1$lld)
+1478	Dọn dẹp
+1479	Lịch sử
+1480	Ảnh
+1481	Studio
+1482	Hôm nay
+1483	Cho phép GaleriQ truy cập để bạn xem và sắp xếp ảnh, video.
+1484	Cho phép truy cập trong Cài đặt iOS tại GaleriQ › Ảnh. Các lựa chọn trước đây của bạn vẫn được lưu.
+1485	Không có quyền truy cập ảnh và video
+1486	Truy cập ảnh và video
+1487	Tiếp tục dọn dẹp
+1488	Tiếp tục: %1$@
+1489	Tiếp tục từ chỗ bạn đã dừng.
+1490	Hiện không còn gì để xem lại.
+1491	Đã xem lại hết
+1493	%1$lld mục từ “Để sau” sẵn sàng xem lại
+1494	Chào buổi chiều
+1495	Chào buổi tối
+1496	Chào buổi sáng
+1497	Chào buổi chiều
+1498	Thay đổi quyền truy cập
+1499	GaleriQ chỉ hiển thị ảnh và video bạn đã cho phép. Bạn có thể dọn dẹp chúng như bình thường.
+1500	Truy cập giới hạn
+1502	%1$lld ảnh và video mới
+1503	kể từ lần dọn dẹp trước
+1504	Lần dọn thùng rác trước đã bị gián đoạn. Để an toàn, sẽ không xóa gì lại.
+1505	Mở ảnh và video của bạn để dọn dẹp
+1506	Bắt đầu dọn dẹp
+1507	Vuốt qua ảnh và video của bạn.
+1508	Dung lượng thiết bị
+1509	Đã dùng %1$@ / %2$@
+1510	Sửa nhiều ảnh
+1511	Thay đổi độ phơi sáng của nhiều ảnh cùng lúc.
+1512	Chuyển đổi
+1513	Lưu ảnh ở định dạng tệp khác, ví dụ HEIC thành JPEG cho thiết bị không mở được HEIC.
+1514	Mọi thiết bị đều mở được JPEG. PNG giữ mọi chi tiết nhưng tệp lớn hơn. Ảnh đã ở định dạng này sẽ bị bỏ qua.
+1515	ví dụ HEIC sang JPEG, thành bản sao mới
+1516	Bản gốc không thay đổi – GaleriQ lưu bản sao mới trong thư viện.
+1518	Đã lưu %1$lld bản sao mới.
+1519	Dưới 0 làm ảnh tối hơn, trên 0 làm sáng hơn.
+1520	Không thành công. Bản gốc của bạn không thay đổi.
+1522	%1$lld mục không xử lý được.
+1523	Tệp nhỏ hơn, nhưng không phải thiết bị nào cũng mở được
+1524	Mở được trên mọi thiết bị và ứng dụng
+1525	Không mất chất lượng, nhưng tệp lớn hơn nhiều
+1526	Tạo GIF
+1527	Tệp nhỏ – phù hợp để nhắn tin
+1528	Nét hơn, nhưng tệp lớn hơn
+1529	Thời gian mỗi ảnh
+1530	Biến nhiều ảnh thành một hoạt ảnh ngắn lặp lại mãi – theo thứ tự chụp.
+1531	GIF có tối đa 256 màu và không có âm thanh – ảnh có thể hơi sạn.
+1532	Đã lưu GIF vào thư viện (%1$@).
+1533	Kích thước
+1534	Từ ảnh hoặc một đoạn video ngắn
+1535	Công cụ
+1536	Xóa vị trí
+1537	Bản sao trông giống hệt bản gốc – chỉ nơi chụp ảnh bị xóa. Ảnh không có vị trí sẽ bị bỏ qua.
+1538	Bản sao không có vị trí, ví dụ trước khi chia sẻ
+1539	Hãy chọn ảnh trước.
+1540	Chọn ít nhất hai ảnh.
+1541	Chưa chọn ảnh nào
+1542	Bản gốc không thay đổi – chưa giải phóng dung lượng nào.
+1543	Chọn ảnh
+1544	Tạo với Pro
+1545	%1$@ px
+1546	Cân bằng
+1547	Cao
+1548	Tệp nhỏ hơn
+1549	Chất lượng
+1550	Chất lượng thấp hơn nghĩa là tệp nhỏ hơn – ở mức “Cân bằng” hiếm khi thấy khác biệt.
+1551	%1$@ (%2$@)
+1552	Xóa cả vị trí
+1553	Thu nhỏ
+1554	Thu nhỏ ảnh – cả số điểm ảnh lẫn kích thước tệp. Tiện để gửi hoặc tải lên.
+1555	Nhiều ảnh cùng lúc, thành bản sao mới
+1556	Đang xử lý tệp của bạn…
+1557	%1$@ giây
+1559	Đã chọn %1$lld tệp
+1560	Nhỏ – đủ cho tin nhắn và mạng xã hội
+1561	Lớn – nét trên điện thoại, máy tính bảng và máy tính
+1562	Rất lớn – gần như mọi chi tiết, ví dụ để in
+1563	Kích thước bản sao
+1564	Đo theo cạnh dài hơn của ảnh, tính bằng điểm ảnh (px). Ảnh không bao giờ bị phóng to hay kéo giãn.
+1565	Kích thước gốc
+1566	Cùng số điểm ảnh – chỉ đổi định dạng
+1567	Đã đo: trước %1$@, sau %2$@
+1569	Đã bỏ qua %1$lld (không cần xử lý hoặc là video).
+1570	Bắt đầu
+1571	Ghép ảnh chụp màn hình
+1572	Ghép ảnh chụp màn hình từ trên xuống dưới thành một ảnh dài, theo thứ tự chụp. Tất cả có chiều rộng của ảnh hẹp nhất – không có gì bị kéo giãn hay phóng to.
+1573	Đã lưu thành ảnh mới trong thư viện. Ảnh chụp màn hình không thay đổi.
+1574	Xếp chồng từ trên xuống, thành một ảnh dài
+1575	Định dạng mới
+1576	Công cụ
+1578	%1$lld kích thước không rõ – không tính vào tổng.
+1579	Xong
+1580	Đánh dấu ưa thích, chia sẻ hoặc thêm vào album. Việc này không đánh dấu chúng là đã giữ, vào thùng rác hay để sau.
+1581	Ưa thích, chia sẻ và album
+1582	Con số cho biết bạn đã để riêng bao nhiêu. Chạm vào để xem lại lựa chọn và dọn thùng rác.
+1583	Thùng rác của bạn
+1584	Vuốt nhầm hướng? Chạm vào đây để hoàn tác lựa chọn cuối.
+1585	Hoàn tác
+1586	Khi cần nghỉ tay khỏi việc dọn dẹp: chơi Ghép cặp, Rắn ảnh hoặc Foto Blocks với ảnh của chính bạn.
+1587	Cần nghỉ ngơi?
+1588	Không phải là quyết định
+1589	Xem những gì bạn đã giữ, để riêng hoặc để sau. Bạn vẫn có thể thay đổi mọi quyết định ở đây.
+1590	Để sau & lịch sử
+1591	Đây là tất cả ảnh và video của bạn – theo ngày, tháng hoặc năm, trong album và mục ưa thích.
+1592	Tất cả ảnh của bạn
+1593	Các mục để sau được tính là đã xem lại – bạn vẫn thấy chúng ở đây.
+1594	Mở tổng quan dạng lưới hoặc xem lại một tháng đã xong.
+1595	Chạm vào một tháng để chỉ xem lại ảnh và video còn mở của tháng đó.
+1596	Bạn đã đi được bao xa
+1597	Tiếp
+1598	Chụp nhiều ảnh liên tiếp nhanh? So sánh chúng cạnh nhau và chọn ảnh giữ lại.
+1599	Biến GaleriQ thành của riêng bạn và tìm câu trả lời ở đây. Bạn có thể xem lại hướng dẫn này bất cứ lúc nào.
+1600	Cài đặt & trợ giúp
+1601	Bỏ qua hướng dẫn
+1602	Sửa ảnh, làm ảnh ghép, phim ngắn và PDF, cùng các công cụ tiện dụng. Bạn luôn nhận được tệp mới – bản gốc giữ nguyên.
+1603	Sáng tạo
+1604	Chạm “Bắt đầu dọn dẹp” để vuốt qua mọi thứ còn cần xem lại.
+1605	Bắt đầu ở đây
+1606	Ảnh, video, ảnh chụp màn hình hoặc album: tạo lối tắt đến những gì bạn hay dọn.
+1607	Lối tắt của bạn
+1608	Tìm ở đây các mục đã để riêng để xóa hoặc lưu để sau. Việc xóa chỉ xảy ra sau khi bạn xác nhận trong thùng rác.
+1609	Thùng rác & Để sau
+1610	Tệp lớn, ảnh trùng lặp, từng tháng và bộ sưu tập có sẵn: đây là nơi bạn dọn dẹp từng bước.
+1611	Thêm cách dọn dẹp
+1612	Giữ “GaleriQ” ở trên cùng trong 2 giây để mở két sắt – vòng xoay trong chữ “Q” sẽ quay. Thiết lập và tìm thêm tùy chọn trong Cài đặt.
+1613	Két sắt riêng của bạn
+1614	Hoàn tác
+1616	Ngày
+1618	Tháng
+1620	Tuần
+1621	Bật âm thanh
+1622	Thêm khối văn bản
+1623	Đính kèm tệp từ két sắt
+1624	Tệp này vẫn đang đính kèm vào một ghi chú, có thể trong thùng rác két sắt. Hãy gỡ đính kèm trước.
+1625	Tệp đính kèm
+1626	Khóa khi không hoạt động
+1627	Két sắt luôn khóa khi ở chế độ nền. Bản xem trước được che khi chuyển ứng dụng.
+1628	Bản sao lưu mã hóa
+1629	Bao gồm phương tiện, ghi chú, tệp, thư mục và thùng rác két sắt. Hãy dùng mật khẩu sao lưu mạnh và riêng. Không có nó, bản sao lưu không thể khôi phục.
+1630	Chưa khôi phục bản sao lưu. Có thể mật khẩu sai, tệp bị hỏng, phiên bị khóa hoặc không đủ dung lượng. Nội dung hiện có không thay đổi.
+1631	Mật khẩu sao lưu (ít nhất 12 ký tự)
+1632	Đậm
+1633	Danh sách dấu đầu dòng
+1634	Camera không khả dụng hoặc chưa được cho phép truy cập.
+1635	Đánh dấu hoàn thành
+1636	Danh sách kiểm tra
+1637	Ghi chú đã lưu đã thay đổi. Bản nháp của bạn không ghi đè lên nó. Hãy lưu bản nháp thành ghi chú mới hoặc bỏ các thay đổi chưa lưu.
+1638	Tiếp tục
+1639	Xóa vĩnh viễn
+1640	Thao tác này xóa vĩnh viễn nội dung đã chọn khỏi két sắt. Bản sao bên ngoài và bản sao lưu hiện có không thay đổi.
+1641	Gỡ đính kèm
+1642	Bỏ thay đổi chưa lưu
+1643	Chỉ phiên bản đã lưu thành công gần nhất được giữ lại. Thay đổi chưa lưu sẽ mất.
+1644	Không có tệp nào trong chế độ xem này.
+1645	Không có ghi chú nào trong chế độ xem này.
+1646	Xóa vĩnh viễn tất cả
+1647	Mọi thứ trong thùng rác két sắt (%1$@) sẽ bị xóa vĩnh viễn khỏi két sắt: ảnh, video, ghi chú và tệp. Bản sao bên ngoài và bản sao lưu hiện có không thay đổi.
+1648	Dọn thùng rác két sắt?
+1649	Xuất bản sao lưu
+1650	Bản sao đã xuất nằm ngoài sự bảo vệ của két sắt. Ứng dụng hoặc người khác có thể truy cập tùy theo lựa chọn chia sẻ của bạn.
+1651	Tệp
+1652	Định dạng
+1653	Tiêu đề
+1654	Nhập tệp
+1655	Đã nhập: %1$lld. Lỗi: %2$lld.
+1656	Không có tài khoản và không có máy chủ GaleriQ. Bản xuất và bản sao lưu chỉ rời ứng dụng khi bạn chủ động thực hiện.
+1657	Khóa ngay
+1658	Phương tiện
+1659	GaleriQ cần quyền truy cập micrô để ghi âm ghi chú. Chỉ bắt đầu ghi khi bạn chạm.
+1660	%1$lld phút
+1661	Tên
+1662	Ghi chú mới
+1663	Không có bản xem trước nội bộ
+1664	Không thể hiển thị định dạng này ở đây. Tệp vẫn được lưu trong két sắt. Chia sẻ sẽ xuất một bản sao ra ngoài két sắt.
+1665	Chưa lưu
+1666	Ghi chú
+1667	Thao tác chưa hoàn tất. Hãy kiểm tra dung lượng và quyền truy cập rồi thử lại.
+1668	Bản sao; bản gốc có thể vẫn ở bên ngoài
+1669	Tạo trong két sắt
+1670	Khôi phục từ bản sao lưu
+1671	Đã xóa bản gốc khỏi nguồn
+1672	Đoạn văn
+1673	Tạm dừng
+1674	Ghim
+1675	Khôi phục trong két sắt
+1676	Ghi âm ghi chú
+1677	Thời lượng đã ghi
+1678	Chỉ bắt đầu ghi khi bạn chạm. Bản ghi được lưu mã hóa và dừng khi bạn khóa hoặc rời két sắt.
+1679	Xóa khối văn bản
+1680	Xóa bản gốc
+1681	Chỉ sau khi kiểm tra bản sao trong két sắt, bản gốc không thay đổi mới bị xóa khỏi nguồn. Các bản sao khác và thùng rác của nhà cung cấp tệp có thể vẫn còn.
+1682	Đổi tên
+1683	Nhập lại mật khẩu
+1684	Khôi phục bản sao lưu
+1685	Bản sao lưu đã kiểm tra được thêm vào két sắt đang mở như một bản sao bổ sung. Nội dung hiện có không bị ghi đè. Nhập nhiều lần sẽ tạo thêm bản sao.
+1686	Đã thêm bản sao lưu vào két sắt
+1687	Tiếp tục
+1688	Thử lại
+1689	Lưu thành ghi chú mới
+1690	Lưu thất bại
+1691	Đã lưu
+1692	Quét tài liệu
+1693	Tìm trong két sắt
+1694	%1$lld giây
+1695	Sửa gần đây
+1696	Tên
+1697	Lớn nhất trước
+1698	Dừng và lưu
+1699	Văn bản
+1700	Tiêu đề
+1701	Chuyển vào thùng rác két sắt
+1702	Công cụ két sắt
+1703	Thùng rác két sắt
+1704	Thùng rác két sắt trống.
+1705	Thùng rác này chỉ thuộc về két sắt. Nội dung vẫn được mã hóa cho đến khi bạn khôi phục hoặc chủ động xóa vĩnh viễn. Không có gì bị xóa tự động.
+1706	Không có tiêu đề
+1707	Không có thư mục
+1708	Quảng cáo bị đóng sớm. Chưa tạo thư mục nào – bạn có thể thử lại.
+1709	Ở bản miễn phí, mỗi thư mục mới cần xem một video quảng cáo ngắn. Với Pro, thư mục được tạo không cần quảng cáo.
+1710	Hiện không có quảng cáo. Hãy thử lại sau – với Pro, thư mục được tạo không cần quảng cáo.
+1711	Xem video và tạo thư mục
+1712	Thêm vào két sắt
+1713	Tất cả
+1714	Két sắt được mã hóa và có trong bản sao lưu iPhone. Nếu bạn xóa GaleriQ, két sắt cũng bị xóa.
+1715	Mở bằng %1$@
+1716	Mở nội dung được bảo vệ
+1717	Mã của bạn cũng luôn dùng được.
+1718	Mở bằng %1$@?
+1719	Mở bằng %1$@
+1720	Đổi mã
+1721	Đóng và khóa
+1722	Đóng
+1723	Chỉ dùng chữ số 0–9.
+1724	Mã
+1725	Loại mã
+1726	Hai lần nhập không khớp.
+1727	Mật khẩu
+1728	PIN 6 chữ số
+1729	Nhập lại mã
+1730	Ít nhất 6 ký tự.
+1731	Đúng 6 chữ số.
+1732	Mã này là chìa khóa của két sắt. Hãy chọn mã người khác khó đoán – tốt nhất không trùng mật mã iPhone.
+1733	Chọn mã
+1734	Mã không có sẵn trên iPhone này (ví dụ sau khi khôi phục mà không có bản sao lưu mã hóa). Hãy mở két sắt bằng khóa khôi phục.
+1735	Chuyển vào thùng rác két sắt
+1736	Xóa két sắt
+1737	%1$lld mục sẽ bị xóa vĩnh viễn. Hãy đưa chúng về ứng dụng Ảnh trước nếu muốn giữ lại.
+1738	Xóa két sắt và mọi thứ bên trong?
+1739	Xóa thư mục
+1740	Các mục vẫn ở trong két sắt, chỉ không còn thư mục.
+1741	Thùng rác này chỉ thuộc về két sắt. Nội dung vẫn được mã hóa cho đến khi bạn khôi phục hoặc chủ động xóa vĩnh viễn. Không có gì bị xóa tự động.
+1742	Chuyển %1$lld mục vào thùng rác két sắt?
+1743	Lưu bản sao trong két sắt
+1744	Đã lưu khung hình trong két sắt.
+1745	Chỉ ở trong két sắt – không hiện trong ứng dụng Ảnh hay bất kỳ đâu khác trong GaleriQ.
+1746	Lưu bản sao, bản gốc vào thùng rác két sắt
+1747	Lưu, bản gốc vào thùng rác két sắt
+1748	Bạn có thể khôi phục bản gốc từ thùng rác két sắt.
+1749	Đã lưu trong két sắt. Bản gốc nằm trong thùng rác két sắt.
+1750	Đã lưu trong két sắt.
+1751	Két sắt trống
+1752	Nhập mật khẩu
+1753	Nhập PIN
+1754	Không thành công. Vui lòng thử lại.
+1755	Thư mục này trống
+1756	Hãy chọn tên không để trống và chưa tồn tại.
+1757	Tên thư mục
+1758	Quên mã?
+1759	Chưa thiết lập khóa khôi phục. Không có mã (hoặc Face ID), két sắt không thể mở.
+1760	Ẩn lối vào
+1761	Két sắt biến mất khỏi Cài đặt. Để mở, nhấn giữ “GaleriQ” ở đầu màn hình bắt đầu trong 2 giây – vòng xoay nhỏ của két sắt trong chữ “Q” sẽ quay.
+1762	Ẩn lối vào?
+1763	Chuyển vào két sắt
+1764	Chúng được sao chép có mã hóa và được kiểm tra. Sau đó iOS hỏi có được xóa khỏi ứng dụng Ảnh không. Ở đó chúng nằm trong “Đã xóa gần đây” 30 ngày.
+1765	Chuyển vào két sắt: %1$lld
+1766	GaleriQ cũng đã tạo bản sao của chúng (bản sửa, ảnh ghép, phim, GIF): %1$lld. Các bản này nằm trong ứng dụng Ảnh và vẫn hiển thị trừ khi bạn cũng chuyển chúng.
+1767	iOS chưa xóa một số mục khỏi ứng dụng Ảnh. GaleriQ không hiển thị chúng ở nơi nào khác, nhưng chúng vẫn hiện trong ứng dụng Ảnh. Dùng thông báo ở trên để thử lại.
+1768	Trong két sắt: %1$lld. Đã xóa khỏi ứng dụng Ảnh: %2$lld.
+1769	Không chuyển được: %1$lld (ví dụ không có kết nối iCloud). Chúng vẫn ở trong ứng dụng Ảnh.
+1770	Chưa chuyển: %1$lld. Bản miễn phí cho phép %2$lld mục trong két sắt; Pro không giới hạn.
+1771	Mẹo: dọn “Đã xóa gần đây” trong ứng dụng Ảnh nếu muốn chúng biến mất cả ở đó.
+1772	Chuyển kèm bản sao (%1$lld)
+1773	Không kèm bản sao
+1774	Ảnh và video trong két sắt được mã hóa bằng mã của bạn và chỉ hiện ở đây – không ở đâu khác trong GaleriQ.
+1775	Khi bạn thêm mục, iOS hỏi có được xóa chúng khỏi ứng dụng Ảnh không. Sau đó chúng nằm trong “Đã xóa gần đây” 30 ngày, trừ khi bạn dọn nó.
+1776	Két sắt có trong bản sao lưu iPhone (đã mã hóa). Nếu bạn xóa GaleriQ, két sắt sẽ mất.
+1777	Ở bản miễn phí, mỗi thư mục mới cần xem một video quảng cáo ngắn. Với Pro, thư mục được tạo không cần quảng cáo.
+1778	Két sắt riêng của bạn
+1779	Ảnh
+1780	Video
+1781	Bản miễn phí cho phép %1$lld mục trong két sắt. Với Pro, két sắt không giới hạn.
+1782	Thử quá nhiều lần. Hãy thử lại sau %1$@.
+1783	Lưu vào két sắt
+1784	Di chuyển
+1785	Bạn đã mở két sắt bằng khóa khôi phục. Hãy chọn mã mới ngay bây giờ.
+1786	Mã mới
+1787	Thư mục mới
+1788	Không có thư mục
+1789	%1$lld / %2$lld
+1790	Vui lòng giữ GaleriQ mở. Rời ứng dụng sẽ dừng quá trình; không có gì bị xóa.
+1791	Tạo khóa khôi phục
+1792	Tôi đã ghi lại
+1793	Khóa khôi phục
+1794	26 ký tự, có hoặc không có dấu gạch ngang.
+1795	Không có khóa khôi phục, nội dung sẽ mất nếu bạn quên mã.
+1796	Đã thiết lập khóa khôi phục. Tạo khóa mới sẽ làm khóa cũ mất hiệu lực.
+1797	Xóa khóa khôi phục
+1798	Tạo khóa khôi phục mới
+1799	Tiếp tục không có khóa khôi phục
+1800	Không có khóa khôi phục, nội dung sẽ mất vĩnh viễn nếu bạn quên mã và không dùng được Face ID.
+1801	Thật sự không dùng khóa khôi phục?
+1802	Khóa khôi phục
+1803	Hãy ghi khóa này ra giấy và cất giữ an toàn. Nó mở được két sắt nếu bạn quên mã, kể cả trên iPhone mới. GaleriQ không thể hiển thị lại.
+1804	Khóa khôi phục
+1805	Khóa này không khớp.
+1806	Đã xóa khỏi ứng dụng Ảnh: %1$lld.
+1807	Đổi tên thư mục
+1808	Trả về Ảnh
+1809	Sao chép vào Ảnh, giữ trong két sắt
+1810	Đã lưu vào ứng dụng Ảnh: %1$lld.
+1811	Không lưu được: %1$lld. Chúng vẫn ở trong két sắt.
+1812	Đã lưu mà không có lịch sử chỉnh sửa: %1$lld. Bản gốc đầy đủ vẫn ở trong két sắt.
+1813	Chuyển lại về Ảnh
+1814	Chúng được lưu thành mục mới với ngày và vị trí gốc. Các mục vẫn còn trong ứng dụng Ảnh chỉ đơn giản hiện lại khi bạn chuyển về.
+1815	Lưu mã
+1816	Chọn
+1817	Cài đặt két sắt
+1818	Nơi ẩn, được bảo vệ bằng mã cho ảnh và video. Chúng biến mất khỏi ứng dụng Ảnh.
+1819	Thiết lập két sắt
+1820	Đang thiết lập …
+1821	Sắp xếp
+1822	Ngày thêm
+1823	Ngày chụp
+1824	Tên
+1825	Kích thước
+1826	%1$lld mục vẫn còn trong ứng dụng Ảnh.
+1827	Xóa ở đó
+1828	%1$lld mục · %2$@
+1829	%1$lld / %2$lld mục · %3$@
+1830	Két sắt riêng
+1831	Mở
+1832	Sai mã.
+1833	Chỉ lưu âm thanh
+1834	Không thể lưu âm thanh.
+1835	Đang lưu âm thanh
+1836	Đã lưu “%1$@”.
+1837	âm thanh
+1838	Xóa
+1839	Xóa %1$@ – %2$@? Kéo các tay cầm màu đỏ.
+1840	Các đoạn màu đỏ sẽ thật sự bị xóa khi lưu (tổng %1$@). Chạm vào một đoạn bên dưới để lấy lại.
+1841	Xóa đoạn
+1842	khoảng %1$@
+1843	Chỉ là ước tính sơ bộ. Bạn sẽ thấy kích thước thật sau khi lưu.
+1844	Bạn chỉ cắt phần đầu và cuối. Việc này nhanh và chất lượng hình giữ như bản gốc. Nếu video này không cho phép, GaleriQ sẽ dựng lại toàn bộ – lâu hơn một chút. Tổng thời lượng %1$@.
+1845	Do các thay đổi khác của bạn, GaleriQ sẽ dựng lại toàn bộ video khi lưu. Việc này có thể mất một lúc. Tổng thời lượng %1$@.
+1846	Đang lưu video
+1847	Hiện dần và mờ dần
+1848	Không
+1849	Lấp đầy
+1850	Lấp đầy định dạng mới; phần viền bên ngoài bị cắt.
+1851	Hiện toàn bộ video
+1852	Hiện toàn bộ video; khoảng trống thành dải đen.
+1853	Lưu ảnh tĩnh
+1854	Đã lưu ảnh tĩnh thành ảnh mới.
+1855	ảnh tĩnh
+1856	Video này có màu đặc biệt sáng (HDR). Khi được tính lại, video được lưu với màu thường. Nếu bạn chỉ cắt, HDR vẫn được giữ.
+1857	Hiển thị %1$@ – %2$@
+1858	Video này không có âm thanh.
+1859	Không thể tính bản xem trước.
+1860	Chỉnh sửa video thuộc Pro. Bạn có thể thử mọi thứ; để lưu, bạn cần Pro.
+1861	Chất lượng
+1862	Cân bằng (Full HD)
+1863	Chất lượng tốt nhất (như bản gốc)
+1864	Tệp nhỏ (HD)
+1865	Xóa âm thanh
+1866	Rãnh âm thanh hoàn toàn không được ghi vào tệp.
+1867	Âm thanh được tăng hoặc giảm tốc với cao độ không đổi.
+1868	Kết quả: %1$@
+1869	Âm thanh
+1870	Định dạng
+1871	Tốc độ
+1872	Kéo các tay cầm để đặt điểm đầu và cuối.
+1873	Âm lượng
+1874	Video
+1875	Chạm vào ảnh hoặc video để hiện hoặc ẩn điều khiển.
+1876	Hiện hoặc ẩn điều khiển
+1877	Áp dụng quy trình
+1878	Sửa quy trình
+1879	Chưa có quy trình của riêng bạn. Hãy dùng mẫu hoặc tạo quy trình mới.
+1880	Ở cuối
+1881	Lưu và chia sẻ
+1882	Lưu
+1883	Chỉ chia sẻ
+1884	Định dạng
+1885	Như bản gốc
+1886	Xóa vị trí
+1887	Cạnh dài nhất
+1888	Tên
+1889	Tên tệp
+1890	Quy trình mới
+1891	Không
+1892	Chất lượng
+1893	Rất tiếc, không thành công.
+1894	Kết quả
+1895	Chạy
+1896	Quy trình đang chạy …
+1897	Xong
+1898	Lỗi
+1899	Chưa đạt mục tiêu
+1900	Đã bỏ qua
+1901	Vào thư mục “%1$@”
+1902	Lưu thành %1$@
+1903	Chất lượng %1$@
+1904	Tên “%1$@”
+1905	Cạnh dài nhất tối đa %1$@ px (không bao giờ phóng to)
+1906	Lưu thành tệp mới – bản gốc giữ nguyên
+1907	Chia sẻ kết quả
+1908	Tối đa %1$@ mỗi ảnh – chất lượng và, nếu cần, kích thước được điều chỉnh và kết quả được đo
+1909	Mỗi video tối đa %1$@
+1910	Lưu nhiều bước thành quy trình của riêng bạn
+1911	Kích thước tối đa mỗi ảnh
+1912	Quy trình
+1913	Có
+9000	GaleriQ hiển thị ảnh và video của bạn để sắp xếp trên iPhone này và chỉ xóa những mục bạn chọn và xác nhận trong hộp thoại hệ thống.
+9001	GaleriQ lưu bản sao đã sửa, ảnh ghép, video và PDF thành mục mới trong thư viện của bạn.
+9002	GaleriQ chỉ dùng camera để quét tài liệu khi bạn chạm Quét.
+9003	GaleriQ chỉ dùng Face ID để mở nội dung bạn đã bảo vệ bằng mã.
+9004	GaleriQ cần quyền truy cập micrô để ghi âm ghi chú. Chỉ bắt đầu ghi khi bạn chạm.
+9005	Bản miễn phí của GaleriQ hiển thị quảng cáo từ Google. Nếu bạn cho phép, quảng cáo có thể phù hợp hơn với bạn. Ảnh và tệp của bạn không bao giờ được gửi cho nhà quảng cáo.
