@@ -166,3 +166,5 @@ App Store Connect › GaleriQ › Version 1.0 › Englisch (USA) › iPhone 6,9-
       TestFlight 1.0.1 (31) am 10.11.2026 (Freigabe Inhaber „Teatflight“): Lauf 42773302311 auf `a0067d4`, Unit-Tests
       PASS, Archiv/Signierung PASS, Upload PASS, Apple-Verarbeitung abgeschlossen, an interne Tester verteilt; echte
       AdMob-IDs. Geräteabnahme durch den Inhaber offen. Store-Texte (16 Sprachen) noch NICHT hochgeladen, keine Einreichung.
+      Gerätetest 1.0.1 (31) durch den Inhaber (10.11.2026): Tresor kompakt PASS, „GaleriQ bewerten“ PASS; Werbehinweis am
+      Knopf NOT RUN auf dem Gerät (kein Fall ohne Werbung verfügbar; Test: Flugmodus, dann „Werbung ansehen“).
