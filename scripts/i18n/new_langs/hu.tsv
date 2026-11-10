@@ -1,0 +1,1900 @@
+0000	3 aktív nap
+0001	7 aktív nap
+0002	Mindhárom játékkal játszottál
+0003	Jelvények
+0004	%1$lld / %2$lld
+0005	Játssz a „Tarts szünetet” részben
+0006	Folytasd az átnézést
+0007	Alkoss a Stúdióban
+0010	nap
+0011	nap
+0014	Elérve
+0015	%@
+0016	A Megtartás, a Kuka és a Később egyformán számít.
+0017	Első kollázs
+0018	Első döntés
+0019	Első film
+0020	Első hónap kész
+0021	Első PDF
+0022	%1$@: %2$@ fotó
+0023	%1$@: %2$@ pont
+0024	Napi cél
+0025	Napi cél 10× teljesítve
+0026	Napi cél teljesítve
+0027	/ %@ ma
+0028	Ki – kapcsold be a Beállításokban.
+0029	%1$@ / %2$@
+0030	Játékok
+0031	Rend
+0032	Átnézve
+0033	Első lépések
+0034	Sorozatok
+0035	„Később” kiürítve
+0036	Szint
+0037	Elérted a legmagasabb szintet.
+0038	Még %1$@ a(z) %2$lld. szintig.
+0039	Az egész könyvtár átnézve
+0040	Minden ezen az iPhone-on marad. Kikapcsolás: Beállítások › Eredmények megjelenítése.
+0041	Kész hónapok
+0042	12 hónap kész
+0043	Új jelvény: %@
+0044	Eredmények megnyitása
+0045	Megnyitja az eredményeket
+0046	12 pár megoldva
+0047	%1$@ %2$@ mp alatt
+0048	Még %@
+0049	elem átnézve
+0050	%@ átnézve
+0051	Sorozat
+0052	100 napos sorozat
+0053	3 napos sorozat
+0054	30 napos sorozat
+0055	7 napos sorozat
+0056	Amit már elértél – csak a saját számaid.
+0057	Eredmények
+0058	Megtekintés
+0059	Ezen a héten
+0060	Megtartás és tovább
+0061	Később
+0062	Dátum választása későbbre
+0063	Előző megtekintése
+0064	Áthelyezés a kukába
+0065	Hirdetés
+0066	Hirdetések nélkül a Próval
+0067	Tovább
+0068	Hamarosan folytathatod …
+0069	Mappa hozzáadása
+0070	Hozzáadva ehhez: „%1$@”
+0071	Az album nem módosítható.
+0072	Albumok és mappák a Fotók appból. Az albumba helyezés nem módosítja a fájlokat, és szinkronizálódik az iCloud-fotókkal, ha be vannak kapcsolva.
+0073	Összes
+0074	Rövid folytatás a háttérben
+0075	A GaleriQ az iOS által engedélyezett háttéridőt használja, rendszerszintű tevékenységkártya nélkül. Ha lejár az idő, a haladás mentve marad, és az elemzés az app újbóli megnyitásakor folytatódik.
+0076	Állatok
+0077	Dokumentumok
+0078	Étel
+0079	Természet
+0080	Egyéb
+0081	Emberek
+0082	Képernyőképek szöveggel
+0083	Járművek
+0084	Az iCloud-fotók csak kis előnézetként töltődnek be Wi-Fin keresztül. Semmi sem kerül feltöltésre.
+0085	Csak iCloudban: %1$lld
+0086	A képelemzés ki van kapcsolva a Beállításokban.
+0087	Nem elemzett: %1$lld
+0088	Futtatás előbb
+0089	Összehasonlítás (%1$lld)
+0090	Csoportok: %1$lld · Fotók: %2$lld
+0091	iCloud-fotókkal együtt (csak Wi-Fi)
+0092	Találatok: %1$lld
+0093	Tovább
+0094	Szünet
+0095	Vissza
+0096	%1$lld / %2$lld elemezve
+0097	Túl kicsi előnézet: %1$lld
+0098	Elemzés utána
+0099	A futó elemzés sosem szakad meg: a „Futtatás előbb” csak szünetelteti, utána magától folytatódik.
+0100	Elemzés folytatása
+0101	Sikertelenek újra (%1$lld)
+0102	A(z) „%1$@” fut. Ez az elemzés utána magától elindulhat.
+0103	Keresés a felismert szövegben
+0104	A már eldöntöttek is
+0105	Hasonló felvételek: %1$lld · te döntöd el, mi marad
+0106	A könyvtár megváltozott. Folytasd az elemzés frissítéséhez.
+0107	Előnézetek betöltése az iCloudból …
+0108	Hasonló felvételek összehasonlítása …
+0109	Az elemzés kész.
+0110	Fotók elemzése ezen az iPhone-on …
+0111	Szüneteltetve. Az eddigi eredmények megmaradnak.
+0112	Előkészítés …
+0113	Az elemzés most nem lehetséges. Próbáld újra később.
+0114	Az eredmények nem menthetők. Ellenőrizd a szabad tárhelyet.
+0115	Várakozás Wi-Fire az iCloud-előnézetek betöltéséhez.
+0116	Elemzés indítása
+0117	Végighúzás (%1$lld)
+0118	Fel: megtartás, balra: kuka, jobbra: később újra. Koppints egy fotóra, hogy onnan kezdd.
+0119	Koppints egy csoportra az összehasonlításhoz – vagy húzd végig mindet egymás után.
+0120	Ne várjon
+0121	Várakozik – magától indul, amint a(z) „%1$@” kész.
+0122	Elmosódott fotók
+0123	Bemozdult vagy életlen – élesség szerint rendezve
+0124	Téma szerint
+0125	Emberek, állatok, étel, tájak …
+0126	Szöveges fotók
+0127	Képernyőképek, blokkok és dokumentumok – a felismert szövegben kereshetők
+0128	Az elemzés csak ezen az iPhone-on fut (Apple Vision). Az eredmények javaslatok – a hírfolyamban te döntesz. Semmi sem töltődik fel és semmi sem törlődik automatikusan.
+0129	Ezen az iPhone-on elemezve
+0130	Hasonló felvételek
+0131	Nagyon hasonló fotók egymás mellett
+0132	GaleriQ
+0133	Sötét
+0134	Világos
+0135	Eszköz szerint
+0136	Mappák év és hónap szerint
+0137	A másolatokat a készítés dátuma szerint almappákba rendezi, pl. „2026/10”. Ki: minden fájl egy mappába kerül.
+0138	Mappa kiválasztása
+0139	Másik mappa kiválasztása
+0140	Albumok
+0141	Bájt
+0142	Mappa
+0143	Név
+0144	Jegyzet
+0145	SHA-256
+0146	Címkék
+0147	Készült
+0148	Szabad hely a célon: %1$@
+0149	Szabad hely a célon: ismeretlen
+0150	A GaleriQ a fotókat és videókat egy általad választott mappába másolja – például pendrive-ra, külső meghajtóra vagy a Fájlok appba. Ezután minden másolatot bájtról bájtra összevet az eredetivel. Az eredetik a Fotókban maradnak, és semmi sem törlődik.
+0151	Ellenőrzött második másolat a fotóidról
+0152	Ez a mappa ugyanazon a tárhelyen van, mint a fotóid. Itt egy második másolat nem segít, ha a telefon elveszik vagy tönkremegy.
+0153	Ez a mappa egy másik apphoz tartozik, például egy online tárhelyszolgáltatáshoz. Az az app dönti el, hogy a fájlok a telefonon maradnak-e vagy online kerülnek.
+0154	Külön tárolóeszköz, például pendrive vagy külső meghajtó.
+0155	Legutóbbi futás %1$@: %3$lld közül %2$lld ellenőrizve.
+0156	GaleriQ ellenőrzőlista %1$@.csv
+0157	Ellenőrzőlista mentve: %1$@
+0158	Az „Ellenőrizve” azt jelenti, hogy a másolat bájtról bájtra azonos az eredetivel. Senki sem tudja, meddig bírja egy tárolóeszköz – a fontos dolgokat tartsd két helyen.
+0159	Először válaszd ki, mit másolsz, és a célmappát.
+0160	Most válaszd ki, mit kell másolni.
+0161	Most válaszd ki a célmappát.
+0162	Még semmi sincs kiválasztva
+0163	Beállítások
+0164	%1$lld már megvolt
+0165	%1$lld már megvolt
+0166	%1$lld sikertelen
+0167	%1$lld sikertelen
+0168	%1$lld nincs másolva
+0169	%1$lld nincs másolva
+0170	%1$lld másolva és ellenőrizve
+0171	%1$lld másolva és ellenőrizve
+0172	Mit kell másolni?
+0173	Fotók és videók kiválasztása
+0174	Kijelölés módosítása
+0175	Megszakítva
+0176	Megszakadt – a részleges másolat eltávolítva
+0177	A másolat nem egyezett – újra eltávolítva
+0178	Az eredeti nem olvasható
+0179	Nincs hely a célon
+0180	A cél megtagadta a mentést (megtelt, írásvédett, vagy a fájl túl nagy ehhez a tárhelyhez)
+0181	Eredmény
+0182	Másolás és ellenőrzés …
+0183	Másolás és ellenőrzés
+0184	%1$lld fájl másolása ide: „%2$@”.
+0185	%1$lld fájl másolása ide: „%2$@”.
+0186	%1$lld. lépés · %2$@
+0187	Az eredetik változatlanok maradnak.
+0188	Másolás választott mappába, minden másolat ellenőrzésével
+0189	Még nincs kiválasztott mappa
+0190	Csatlakoztass egy pendrive-ot vagy külső meghajtót, és válassz rajta mappát. Az iCloud Drive és a Fájlok app más helyei is működnek.
+0191	Archiválás
+0192	Nincs dátum
+0193	Ellenőrizve: %1$@
+0194	Hová kerüljenek a másolatok?
+0195	Ellenőrzőlista mentése is
+0196	Egy táblázatot (CSV-fájlt) ment a célmappába minden fájl nevével, dátumával, méretével és ellenőrzőösszegével, valamint az albumaiddal, címkéiddel és jegyzeteiddel – hogy később ellenőrizhesd a másolatokat.
+0197	/ %1$@
+0198	Párok, Fotókígyó és Foto Blocks
+0199	átnézendő
+0200	Fotók, amelyekben még nem vagy biztos.
+0201	Vegyél egy mély levegőt. A fotóid is játszanak.
+0202	3 játék a saját fotóiddal
+0203	Utolsó számjegy törlése
+0204	%2$lld számjegyből %1$lld megadva
+0205	Adatvédelem és adatok
+0206	Rákérdez, mielőtt egy kedvenc a kukába kerül
+0207	Kamerával, PDF-ként
+0208	Mi foglal helyet
+0209	Végighúzás
+0210	Még átnézendő
+0211	Fotók és videók.
+0212	Titkosítva, csak ezen az iPhone-on.
+0213	Vissza
+0214	Visszaállítás
+0215	Visszaállítva
+0216	GaleriQ biztonsági mentés %1$@.json
+0217	Biztonsági mentés: %1$@
+0218	Ez a fájl nem GaleriQ biztonsági mentés.
+0219	Biztonsági mentés megnyitása …
+0220	A fájl fájlneveket, címkéket és jegyzeteket tartalmaz. Csak oda mentsd, ahová szeretnéd – például pendrive-ra.
+0221	Visszaállítás
+0222	Behoz egy biztonsági mentést, például új telefonon. A fotók név, méret és készítési idő alapján újra megtalálhatók. Ami itt már el van döntve vagy be van írva, az változatlan marad.
+0223	Biztonsági mentés mentése …
+0224	A biztonsági mentés nem menthető.
+0225	Mentés
+0226	A GaleriQ-adataidat egy kis fájlba menti: döntések, albumok, címkék, jegyzetek, válogatókosár, rejtett elemek, beállítások, munkafolyamatok és sablonok. Fotókat nem tartalmaz.
+0227	Mentés és visszaállítás
+0228	Ez a mentés a GaleriQ egy újabb verziójából származik. Előbb frissítsd a GaleriQ-t.
+0229	A fájl nem olvasható.
+0230	Kuka
+0231	Ma még %1$lld / %2$lld
+0232	%1$lld végleges törlése
+0233	Ez nem vonható vissza.
+0234	Végleg törlöd a fájlokat?
+0235	%1$lld eltávolítása
+0236	Ezután erősítsd meg az iOS párbeszédablakában. A fotók és videók a Fotók app „Nemrég törölt” albumába kerülnek.
+0237	Eltávolítod a fotókat és videókat?
+0238	%1$lld a kukában
+0239	%1$lld fájl végleges törlése
+0240	%1$lld fájl végleges törlése
+0241	%1$lld fotó vagy videó eltávolítása
+0242	%1$lld fotó és videó eltávolítása
+0243	Itt jelenik meg minden, amit eltávolításra félretettél. Húzz balra egy fotót vagy videót a hozzáadáshoz.
+0244	A kukád üres
+0245	Ezek a fájlok véglegesen törlődnek. Ez nem vonható vissza.
+0246	Fájlok
+0247	Még semmi sem törlődött. Koppints egy bélyegképre a nagyobb nézethez. Csak akkor ürítsd a kukát, ha készen állsz.
+0248	Az iOS újra megerősítést kér, és a fotókat és videókat a „Nemrég törölt” albumba helyezi. Ott általában 30 napig visszaállíthatók. iCloud-fotókkal a törlés minden eszközödre érvényes.
+0249	Fotók és videók
+0250	A megtekintés nem módosítja a kijelölést.
+0251	Nagyobb nézet: %1$@
+0252	Kijelölés: %1$@
+0253	Nemrég hozzáadva
+0254	Készítés dátuma
+0255	Fotókhoz való hozzáférés engedélyezése
+0256	Legjobb: %1$lld
+0257	Fotók módosítása
+0258	Kijelölés törlése
+0259	Folytatás
+0260	Fotó felfedve!
+0261	Kedvencek
+0262	Felfedett fotók: %1$lld
+0263	Tábla: húzd oldalra, koppints a forgatáshoz, húzd vagy pöccintsd lefelé.
+0264	Lefelé húzás: gyorsabb · lefelé pöccintés: lerakás
+0265	Oldalra húzással mozgatod
+0266	Koppintással forgatod
+0267	Játékszabály
+0268	Szint: %1$lld
+0269	Engedélyezett fotók kezelése
+0270	Új rekord!
+0271	Legújabb fotók
+0272	Következő elem
+0273	A kör véget ért
+0274	Szünet
+0275	Szüneteltetve
+0276	Az iCloud-fotók szükség esetén letöltődnek. A széfben lévő, a rejtett és a kizárt fotók védve maradnak.
+0277	Képforrás
+0278	Fotók kiválasztása
+0279	%1$lld. oszlop, %2$lld. sor, forgatás: %3$lld
+0280	Fotó haladása
+0281	Véletlen fotók
+0282	Újra
+0283	Újrakezdés
+0284	Sorok: %1$lld
+0285	Csak engedélyezett fotók használhatók. Az elérhetetlen képeket semleges háttér váltja fel.
+0286	A mentés sikertelen · Próbáld újra
+0287	Pontszám: %1$lld
+0288	Kijelölve: %1$lld
+0289	Saját fotóim kiválasztása
+0290	Játék indítása
+0291	Tüntess el sorokat, és fedd fel a fotóidat.
+0292	Foto Blocks
+0293	Mégse
+0294	Fotók
+0295	Képernyőképek
+0296	Videók
+0297	Módosítás
+0298	Dátum módosítása
+0299	Mappa kiválasztása
+0300	Bezárás
+0301	A4 fekvő
+0302	A4 álló
+0303	Gyűjtemény létrehozása
+0304	1 év
+0305	2 év
+0306	6 hónap
+0307	%1$lld nap
+0308	%1$lld nap
+0309	Elmosott fotó
+0310	Neked előkészítve
+0311	Feltétel
+0312	Elemek számolása …
+0313	Saját gyűjteményeid
+0314	Saját gyűjtemények a Próval érhetők el. A kész gyűjtemények ingyenesek.
+0315	Gyűjtemény törlése
+0316	Vízszintes elválasztó
+0317	Függőleges elválasztó
+0318	Szerkesztés
+0319	Saját gyűjtemény
+0320	Kitöltés
+0321	Teljes kép
+0322	Fájltípus
+0323	Válassz egy gyűjteményt az illeszkedő fotók és videók átnézéséhez. Semmi sem törlődik automatikusan.
+0324	JPEG: kisebb fájl, ideális megosztáshoz.
+0325	Szabad
+0326	Rács
+0327	Csík
+0328	Nagyobb, mint
+0329	A fehér fogantyúkat húzva méretezhetsz. Tarts lenyomva egy fotót, és húzd egy másikra a cseréhez.
+0330	Szegély
+0331	Néhány fotó már nem érhető el, ezért kimarad.
+0332	Minden átnézve
+0333	Régebbi, mint
+0334	Koppints egy fotóra a kollázsban a cseréjéhez.
+0335	PNG: veszteségmentes és éles, de nagyobb fájl.
+0336	Instant fotókeret
+0337	Csere
+0338	Kollázs mentése
+0339	Térköz
+0340	Kollázs előnézete
+0341	Egymás mellett
+0342	Fentről lefelé
+0343	Csere a következő fotóval
+0344	Háttér
+0345	Elrendezés
+0346	Fotó
+0347	Térköz
+0348	%1$@: nagyobb, mint %2$@
+0349	%1$@: régebbi, mint %2$@
+0350	Vágás alul
+0351	Vágás balra
+0352	Vágás jobbra
+0353	Vágás felül
+0354	%1$lld ismeretlen méretű elem kimaradt.
+0355	%1$lld ismeretlen méretű elem kimaradt.
+0356	Mit szeretnél megnézni?
+0357	Mentés albumba
+0358	Mentés a Fájlokba
+0359	Mentés a Fotókba
+0360	Fotók hozzáadása
+0361	Képarány
+0362	Képarány: %1$@
+0363	Fekete
+0364	Kék
+0365	Krém
+0366	Saját szín
+0367	Zöld
+0368	Szürke
+0369	Narancs
+0370	Rózsaszín
+0371	Piros
+0372	Fehér
+0373	Sárga
+0374	Album a Fotókban
+0375	Válassz albumot
+0376	iCloud Drive, Saját iPhone vagy pendrive
+0377	Mentés ide
+0378	Fotók
+0379	Új képként a könyvtáradba
+0380	Küldés másolat Fotókba mentése nélkül
+0381	A kollázs nem menthető. A fotóid változatlanok.
+0382	Betűtípus
+0383	Húzd a fotót a cellán belüli mozgatáshoz, csippentéssel nagyíthatsz.
+0384	Húzd a fotókat a mozgatáshoz. Két ujjal méretezel és forgatsz.
+0385	Nagy fotó alul
+0386	Nagy fotó balra
+0387	Nagy fotó jobbra
+0388	Nagy fotó felül
+0389	Oszlopok %1$@ fotóval
+0390	Egyenletes rács
+0391	Sorok %1$@ fotóval
+0392	Az eredeti fotóid változatlanok maradnak. Új fájl jön létre.
+0393	%1$lld. fotó
+0394	Magas (2048 px)
+0395	A szám a hosszabbik oldal. Nagyobb érték élesebb nagyításkor vagy nyomtatáskor, de nagyobb a fájl.
+0396	Maximális (4096 px)
+0397	Eredmény: %1$lld × %2$lld px
+0398	Normál (1080 px)
+0399	Csíkoknál a szám a szélesség (fentről lefelé) vagy a magasság (egymás mellett). A nagyon hosszú csíkok kicsinyítve lesznek, hogy menthetők legyenek.
+0400	Forgatás
+0401	Kollázs mentve ide: „%1$@”
+0402	Kollázs mentve a Fájlokba
+0403	Kollázs mentve a Fotókba
+0404	Szöveg és matricák
+0405	Stílus
+0406	Nagyítás
+0407	Csatlakoztatott mappák
+0408	Diagnosztika megosztása
+0409	Vissza
+0410	Megtartás
+0411	Később
+0412	Kuka
+0413	Kuka: %1$lld
+0414	Megnyitja a kukát. A megerősítésed nélkül semmi sem törlődik.
+0415	Kész
+0416	Legalább %1$@
+0417	Kész
+0418	Becsült („kb.”): %1$lld – a pontos méretüket az iOS csak letöltés után árulja el.
+0419	Ma megtartva
+0420	A fájlok véglegesen törlődtek.
+0421	A fotók és videók most a Fotók app „Nemrég törölt” albumában vannak. Hely csak akkor szabadul fel, ha ott véglegesen törlöd őket.
+0422	Az el nem távolított elemek a GaleriQ kukájában maradnak.
+0423	Eltávolítva
+0424	felszabadítva
+0425	Kuka kiürítve
+0426	Összesen %1$@ felszabadítva
+0427	Összesen legalább %1$@ felszabadítva
+0428	%1$lld elem mérete ismeretlen. Nem szerepel az összegben.
+0429	%1$lld elem mérete ismeretlen. Nem szerepelnek az összegben.
+0430	Új keresés
+0431	Fájlok összehasonlítása …
+0432	Keresd meg a pontosan azonos tartalmú fotókat, videókat és fájlokat. Te választod ki, melyik másolat kerül a kukába.
+0433	Kijelölt másolatok: legfeljebb %1$@. Ez eltérhet a felszabaduló helytől. Másolatok eltávolítása előtt ellenőrizd a kedvenceket, albumokat és szerkesztéseket.
+0434	Azonos fájlok: %1$lld · összesen %2$@
+0435	A GaleriQ közvetlenül az eszközödön hasonlítja össze a fájlok tartalmát. A csak hasonló képek nem számítanak azonos másolatnak.
+0436	A hiányzó eredetiket Wi-Fin tölti le. Nagy könyvtáraknál ez sokáig tarthat és sok adatot használhat. Az engedélyezett médiában és a csatlakoztatott mappákban keres.
+0437	iCloud-eredetik letöltése…
+0438	iCloud-eredetikkel együtt
+0439	A tartalom egy része nem olvasható. A nem ellenőrzött elemek további azonos másolatokat tartalmazhatnak.
+0440	A keresés még nem teljes
+0441	Méretek mérése …
+0442	%1$lld másolat kukába helyezése
+0443	%1$lld másolat kukába helyezése
+0444	Nincs azonos másolat
+0445	Az elérhető területeken nem található azonos másolat.
+0446	Kukába jelölve
+0447	%1$lld csatlakoztatott mappa nem olvasható.
+0448	Másolatok keresése
+0449	%1$lld elemet még nem sikerült ellenőrizni.
+0450	Megmarad
+0451	Ismétlődések
+0452	Szerkesztés
+0453	Expozíció
+0454	Zajcsökkentés
+0455	Sugár
+0456	Küszöb
+0457	Szabad
+0458	Eredeti
+0459	módosítva
+0460	Szerkesztett fotó. Tartsd lenyomva az eredeti megtekintéséhez.
+0461	szerkesztett
+0462	Vágási terület
+0463	Vágás
+0464	Perspektíva
+0465	Elvetés
+0466	A szerkesztés nem lesz mentve. Az eredeti változatlan marad.
+0467	Elveted a módosításokat?
+0468	Mentve másolatként
+0469	Mentve másolatként · %1$@
+0470	Eredeti megtartva · a szerkesztés másolatként mentve
+0471	Eredeti szerkesztve · a Fotók appban visszaállítható
+0472	Eredeti lecserélve · a „Nemrég törölt” albumban van
+0473	Nincs módosítás – az iOS nem kapott engedélyt. Az eredeti változatlan.
+0474	Ezt az elemet közben módosították, áthelyezték vagy törölték. Semmi sem lett mentve.
+0475	Ez az elem nem nyitható meg szerkesztésre.
+0476	A szerkesztés nem menthető. Az eredeti változatlan.
+0477	Hideg
+0478	Fakó
+0479	Mono
+0480	Noir
+0481	Eredeti
+0482	Szépia
+0483	Erősség
+0484	Élénk
+0485	Meleg
+0486	Tükrözés
+0487	Extra félkövér
+0488	Félkövér
+0489	Laza
+0490	Keskeny
+0491	Kézírás
+0492	Írógép
+0493	Klasszikus
+0494	Talpas
+0495	Kiskapitális
+0496	Lekerekített sarkok
+0497	Egyenletes
+0498	Szegély belül
+0499	Szegély kívül
+0500	Szélesség
+0501	Szín
+0502	Részletek
+0503	Effektusok
+0504	Fény
+0505	Színkeverő
+0506	Szerkesztés folytatása
+0507	Fekvő
+0508	Színárnyalat
+0509	Fénysűrűség
+0510	Telítettség
+0511	Szín
+0512	Törlés
+0513	Rajzolás
+0514	Kettőzés
+0515	Szerkesztés
+0516	Emoji
+0517	Kitöltött
+0518	Előrehozás
+0519	Koppints egy hozzáadott elemre a mozgatásához. Két ujjal méretezel és forgatsz.
+0520	Koppints egy szövegre vagy matricára a kijelöléshez, majd húzd oda, ahová szeretnéd.
+0521	Nagyobb
+0522	Takarás
+0523	A „Pixelezés” és az „Elmosás” esetén a körvonalak még látszhatnak. Az olvashatatlannak szánt szöveghez válaszd a „Teli” lehetőséget.
+0524	Személyes adatokhoz ajánlott: amit letakarsz, az a mentett vagy megosztott fájlból valóban eltűnik.
+0525	Kijelölés
+0526	Alakzatok
+0527	Méret
+0528	Kisebb
+0529	Matrica
+0530	Szöveg
+0531	Vízszintes
+0532	Perspektíva visszaállítása
+0533	Függőleges
+0534	Álló
+0535	Előnézet frissítése…
+0536	Az előnézet ingyenes · a mentéshez Pro vagy a 30 perces próba kell
+0537	A vágás, forgatás és kiegyenesítés ingyenes. A beállítások, szűrők, méret és videóvágás Próval menthetők. Kipróbálni mindig ingyenes.
+0538	Mentés Próval
+0539	Elmosás
+0540	Pixelezés
+0541	Teli (ajánlott)
+0542	Hely eltávolítása
+0543	A mentett fotó nem tartalmazza, hol készült.
+0544	Visszaállítás
+0545	Minden visszaállítása
+0546	Forgatás
+0547	Mentés másolatként
+0548	Másolat mentése
+0549	Az eredeti változatlan marad.
+0550	Csak a vágás mentése
+0551	Eredeti szerkesztése
+0552	Az iOS előbb rákérdez. A szerkesztés a Fotók app szerkesztéseihez hasonlóan mentődik – ott bármikor visszavonhatod a „Visszaállítás” gombbal.
+0553	Másolat mentése és az eredeti kukába helyezése
+0554	Másolat mentése, eredeti a kukába
+0555	Az iOS megerősítést kér. Az eredeti a Fotók app „Nemrég törölt” albumába kerül, ahonnan általában 30 napig visszaállítható. Hely csak utána szabadul fel.
+0556	Szerkesztés mentése
+0557	Mentés…
+0558	Nyíl
+0559	Kör
+0560	Vonal
+0561	Téglalap
+0562	Csak megosztás (másolat nélkül)
+0563	Megosztja a szerkesztett változatot anélkül, hogy a galériába mentené. A hely eltávolításra kerül.
+0564	%1$lld px
+0565	Eredeti méret
+0566	%1$lld × %2$lld → %3$lld × %4$lld px
+0567	Ez a fotó már kicsi. A GaleriQ sosem nagyít fel fotókat.
+0568	Nyíl
+0569	Szövegbuborék
+0570	Pipa
+0571	Gyűrű
+0572	Kereszt
+0573	Dátumbélyegző
+0574	Szív
+0575	Csillogás
+0576	Csillag
+0577	Egy ujjal szerkesztesz; két ujjal nagyítasz és mozgatsz.
+0578	Kiegyenesítés
+0579	Igazítás
+0580	Vágás
+0581	Szűrők
+0582	Keret
+0583	Jelölés
+0584	Méret
+0585	Retusálás
+0586	Vágás
+0587	Szöveg
+0588	Vége
+0589	%1$@ – %2$@ · %3$@ mp
+0590	Eleje
+0591	Körvonal
+0592	Címke
+0593	Árnyék
+0594	Kollázs
+0595	Konvertálva
+0596	Másolat
+0597	Kivágás
+0598	Állókép
+0599	Film
+0600	Eredeti lecserélve
+0601	Átméretezve
+0602	%1$lld fotóból készült
+0603	%1$lld fotóból készült
+0604	Ha szerkesztesz egy fotót, vagy kollázst, filmet vagy kicsinyített képeket mentesz, az eredmény itt jelenik meg.
+0605	Még semmi sincs szerkesztve
+0606	Eltávolítás a listából
+0607	Minden, amit a GaleriQ elmentett neked: szerkesztett fotók és videók, kollázsok, filmek és kicsinyített képek, a legújabbak elöl. A fájlok a Fotók appban vannak; ez a lista csak megjegyzi, mi származik a GaleriQ-ból. Koppints egy bejegyzésre a megtekintéshez.
+0608	Az eredeti még megvan
+0609	Az eredeti a „Nemrég törölt” albumban van
+0610	Már nincs a Fotók appban
+0611	Szerkesztett
+0612	A módosítás nem menthető.
+0613	Válassz egy ezen az iPhone-on tárolt mappát. A csak felhőben lévő mappák itt nem támogatottak.
+0614	A dátum nem menthető.
+0615	A döntésed nem mentődött. Próbáld újra.
+0616	A mappa nem csatlakoztatható.
+0617	A beállítás nem menthető.
+0618	Ez nem sikerült
+0619	Várd meg, amíg a kuka kiürül, mielőtt a Visszavonást használod.
+0620	Ez már nem vonható vissza, mert közben módosítottad.
+0621	Ez most nem vonható vissza.
+0622	Album kizárása
+0623	Kizárás
+0624	Az album elemei nem jelennek meg többé rendrakáskor. Semmi sem törlődik és semmi sem mozdul. Visszavonás: Beállítások › Kizárt albumok.
+0625	Elrejted a(z) „%1$@” albumot rendrakáskor?
+0626	A(z) „%1$@” nem jelenik meg többé rendrakáskor
+0627	Akkor is fut, ha appot váltasz.
+0628	Már fut egy másik exportálás. Várd meg, amíg befejeződik.
+0629	Megszakítva. Semmi sem lett mentve.
+0630	Az iOS leállította az exportálást a háttérben. Semmi sem lett mentve – indítsd újra, és hagyd nyitva a GaleriQ-t.
+0631	Rövid időre átválthatsz egy másik appra. Ha az iOS lejártatja az időt, a GaleriQ szabályosan leáll – félkész semmi sem mentődik.
+0632	Mentés …
+0633	Kedvencnek jelölés
+0634	A kedvenc állapot nem módosítható. Változatlan marad.
+0635	Ez a fotó kedvencként védett.
+0636	Előbb vedd le a kedvenc jelölést, hogy a kukába tehesd. A kedvencek védelmét a beállításokban ki is kapcsolhatod.
+0637	Ez a videó kedvencként védett.
+0638	Eltávolítás a kedvencek közül
+0639	Már nem kedvenc. Húzd balra, hogy a kukába tedd.
+0640	Nem kedvenc
+0641	Kedvenc
+0642	Ide: „%1$@”
+0643	Semmi
+0644	Később – dátum választása
+0645	Gomb hozzáadása
+0646	Gombok és sorrend
+0647	Gombok
+0648	A „Szerkesztés” gombbal módosíthatod a sorrendet vagy eltávolíthatsz gombokat. Legfeljebb 6 gomb. A gombok pontosan ugyanazt teszik, mint a húzások.
+0649	Albumba helyezés …
+0650	Itt semmi sem törlődik: a „Kuka” a GaleriQ kukája. A Visszavonás minden műveletet visszafordít, az „Albumba helyezés”-t is.
+0651	Nincsenek gombok
+0652	A fotó felett
+0653	A fotó alatt
+0654	Elhelyezés
+0655	Alapértelmezés visszaállítása
+0656	Fel: megtartás, balra: kuka, jobbra: később, le: vissza – az alapértelmezett gombokkal.
+0657	Egyéni
+0658	Normál
+0659	Húzások
+0660	Válaszd ki, mit tegyen egy-egy irány. Az „Albumba helyezés” a Fotók app egyik albumába teszi a fotót, és megtartja. A semmittevés sosem döntés.
+0661	Húzások és gombok
+0662	Csak VoiceOverrel/Kapcsolóvezérléssel
+0663	Mindig
+0664	Gombok megjelenítése
+0665	Elhelyezve ide: „%1$@”
+0666	Most nincs több átnézendő kedvenc.
+0667	Ebben az albumban nincs több átnézendő.
+0668	A legújabb fotóid között nincs több átnézendő.
+0669	A legújabb videóid között nincs több átnézendő.
+0670	Most nincs több átnézendő Live Photo.
+0671	Most nincs több átnézendő hosszú videó.
+0672	Itt most nincs más átnézendő.
+0673	E nap korábbi éveiből nincs több átnézendő.
+0674	Most nincs több átnézendő fotó.
+0675	Most nincs több átnézendő portré.
+0676	A véletlen válogatásban nincs több átnézendő.
+0677	Most nincs több átnézendő képernyőkép.
+0678	Most nincs több átnézendő szelfi.
+0679	Erről a hétről nincs több átnézendő.
+0680	Most nincs több átnézendő videó.
+0681	Ezen az iPhone-on csak egy kis előnézet van. Töltsd le az eredetit a teljes megtekintéshez.
+0682	Letöltés az iCloudból
+0683	Az eredeti az iCloudban van.
+0684	Újra betölti a teljes minőséget az iCloudból. Az előnézet alapján bármikor dönthetsz.
+0685	Fotók és videók betöltése …
+0686	%@ ebben a munkamenetben
+0687	%1$lld / %2$lld
+0688	Kihagyott elemek újrapróbálása
+0689	Húzási súgó megjelenítése
+0690	Húzáskor rejtve, amíg itt újra be nem töltöd őket. Az eredetik változatlanok.
+0691	Kihagyott elemek
+0692	Aktuális fotó vagy videó
+0693	Rendrakás
+0694	Átnézésre kész
+0695	Újonnan hozzáadva
+0696	Fotók
+0697	Képernyőképek
+0698	Videók
+0699	Kuka megtekintése
+0700	Fájl
+0701	Fájltípus
+0702	Fájlok
+0703	Válassz egy mappát, hogy a fájljait a GaleriQ-ban nézd át.
+0704	Még nincs csatlakoztatott mappa
+0705	Fájlok keresése …
+0706	Egy csatlakoztatott mappa nem érhető el. Csatlakoztasd újra.
+0707	Hozzáadás albumhoz
+0708	Összes album
+0709	Létrehozás és hozzáadás
+0710	Adj meg egy rövid albumnevet.
+0711	Albumok betöltése …
+0712	Album neve
+0713	Új album
+0714	A fotó a helyén marad, és az albumban is megjelenik – a Fotók appban is, iCloud-fotókkal pedig a többi eszközödön is.
+0715	Fájlok megnyitása
+0716	Album rögzítése
+0717	Rögzítve
+0718	Nemrég használt
+0719	Album keresése
+0720	Album rögzítésének feloldása
+0721	Legjobb: %1$lld
+0722	Legjobb idő: %1$@
+0723	Nem egyező kártyák kézi visszafordítása
+0724	Új egyéni rekord!
+0725	Még nincs rekord
+0726	Ehhez a körhöz legalább %1$lld használható fotó kell a kiválasztott forrásból. Válassz másik forrást, kisebb válogatást, vagy engedélyezd az iCloud-letöltéseket.
+0727	Fotók
+0728	Szimbólumok
+0729	Az új rekordjaid ebben a munkamenetben elérhetők, de nem sikerült menteni őket. Próbáld újra.
+0730	Rekordok
+0731	Megjelenés és hang
+0732	Fotók kiválasztása
+0733	Az iCloudban tárolt fotók szükség esetén töltődnek be.
+0734	Fotók módosítása
+0735	Játék testreszabása
+0736	Találd meg az összes egyező fotót a saját tempódban.
+0737	Válassz 2–18 fotót a párjaidhoz.
+0738	Játék fotók nélkül · 6 pár
+0739	A fotóid
+0740	Az eredeti fotóid változatlanok maradnak.
+0741	Gyűjts fotókat. Húzással irányítasz.
+0742	Játék fotók nélkül
+0743	Normál
+0744	Játékok
+0745	Keress párokat a saját fotóiddal.
+0746	Kollázs
+0747	Itt most nincsenek fotók vagy videók.
+0748	Nincs mit megjeleníteni
+0749	Koppints a kijelöléshez, tartsd lenyomva és húzd több elem kijelöléséhez. A mozgatás nem döntés.
+0750	Áttekintés
+0751	Kijelölés
+0752	Összes
+0753	Egyik sem
+0754	%1$lld kijelölve
+0755	%1$lld kijelölve
+0756	Módosítva
+0757	Eltávolítva
+0758	Eltávolítva a „Később” közül
+0759	Megtartva
+0760	Módosítva: megtartás
+0761	Későbbre mentve
+0762	Módosítva: később
+0763	Nem lett eltávolítva
+0764	Már nem található
+0765	Dátum beállítva
+0766	Áthelyezés a kukába
+0767	Módosítva: kuka
+0768	Visszavonva
+0769	Visszatéve a kukából
+0770	Súgó
+0771	Felhő
+0772	A felhőszolgáltatások, például a Google Fotók, más eszközökre is szinkronizálhatják a törléseket. Ellenőrizd a beállításaikat. A GaleriQ szükség esetén automatikusan betölti a fotókat és videókat az iCloud-fotókból, ahogy a Fotók app is.
+0773	Döntés
+0774	Húzd felfelé a megtartáshoz, balra a kukához és jobbra a későbbhez. Alapértelmezés szerint 2 nap múlva jön vissza. Ezt a késleltetést a beállításokban módosíthatod. Közvetlenül a húzás után a „Módosítás” gombbal másik dátumot választhatsz. Húzd lefelé, hogy új döntés nélkül visszalépj.
+0775	Törlés
+0776	A húzás soha semmit nem töröl. Az elemek először a GaleriQ kukájába kerülnek. Csak ha ott megerősíted, akkor helyezi át az iOS a fotókat és videókat a Nemrég törölt albumba.
+0777	A bemutató és a tippek újbóli megjelenítése
+0778	Le
+0779	Balra
+0780	Jobbra
+0781	Fel
+0782	Összes
+0783	Eltávolítva
+0784	%1$@ · %2$lld bejegyzés
+0785	%1$@ · %2$lld bejegyzés
+0786	A döntéseid itt jelennek meg, amint elkezdesz rendet rakni.
+0787	Még nincs előzmény
+0788	Ehhez a szűrőhöz még nincsenek bejegyzések.
+0789	Még nincsenek bejegyzések
+0790	Megtartva
+0791	Később
+0792	Kevesebb
+0793	Régebbi bejegyzések (%1$lld)
+0794	%1$@ · %2$@
+0795	Azonos másolatok
+0796	Fájlok csatlakoztatott mappákból
+0797	min. %1$@
+0798	Könyvtár
+0799	Hónapról hónapra kész
+0800	Minden átnézve
+0801	%1$lld átnézendő
+0802	%1$lld átnézendő
+0803	Gyors egymásutánban készült
+0804	Kategóriák
+0805	Gyűjtemények
+0806	További eszközök
+0807	Infó
+0808	Hely
+0809	%1$lld elem
+0810	%1$lld elem
+0811	Megtartás
+0812	Összes
+0813	Archívumok
+0814	Dokumentumok
+0815	Képek
+0816	Egyéb
+0817	PDF-ek
+0818	Videók
+0819	Nagy fájlok
+0820	Nagyobb, mint
+0821	Csak a legalább %1$lld MB ismert méretű fájlok. A méretük eltérhet a törlésükkel felszabaduló helytől.
+0822	Az „iPhone-tárhely optimalizálása” beállítással ezek az eredetik csak az iCloudban vannak. Az iOS letöltés nélkül nem árulja el a pontos méretüket, ezért a GaleriQ a lemért fotóid és videóid alapján becsüli meg, és „kb.” jelöléssel mutatja.
+0823	Csak iCloudban: %1$lld
+0824	%1$lld nagy fájlban
+0825	%1$lld nagy fájlban
+0826	Csak iCloudban, becsült méret
+0827	Mérés folytatása (hátra: %1$lld)
+0828	Méretek mérése … %1$lld / %2$lld
+0829	Nincs megfelelő fájl
+0830	Egyik elérhető, ismert méretű fájl sem nagyobb %1$lld MB-nál.
+0831	Nem olvasható: %1$lld
+0832	Ezek az elemek ezen az iPhone-on vannak, de nem sikerült beolvasni őket. A listában becsült mérettel („kb.”) jelennek meg.
+0833	Később
+0834	Vissza a pakliba
+0835	Félretéve, dátum nélkül
+0836	Átnézésre kész ekkortól: %1$@
+0837	Ma átnézésre kész
+0838	Húzz jobbra egy fotót vagy videót, hogy később újra lásd.
+0839	Semmi sincs későbbre mentve
+0840	A következő 7 napban · %1$lld
+0841	Félretéve · %1$lld
+0842	Átnézésre kész · %1$lld
+0843	Ekkortól: %1$@ · %2$lld
+0844	Nincs dátum · %1$lld
+0845	Holnap · %1$lld
+0846	Újra %1$lld nap múlva
+0847	Újra %1$lld nap múlva
+0848	Újra %1$lld hónap múlva
+0849	Újra %1$lld hónap múlva
+0850	Újra 1 hónap múlva
+0851	Újra 1 hét múlva
+0852	Újra %1$lld hét múlva
+0853	Újra %1$lld hét múlva
+0854	A következő rendrakáskor visszajön
+0855	Félretéve – a Később alatt találod
+0856	Emlékeztessünk, ha itt az ideje átnézni?
+0857	Eltávolítás a „Később” közül
+0858	Átnézés most
+0859	Átnézés most (%1$lld)
+0860	Újra átnézés: %1$@
+0861	Újra holnap
+0862	Almappák elrejtése
+0863	Itt jelennek meg az eszköz fotói és videói.
+0864	Almappák megjelenítése
+0865	Koppints a ♡ ikonra egy fotón vagy videón, hogy kedvenccé tedd. A kedvencek ugyanazok, mint a Fotók appban.
+0866	Még nincsenek kedvencek
+0867	A könyvtárból
+0868	Összes
+0869	Filmes
+0870	Szűrő eltávolítása
+0871	Szerkesztett
+0872	Itt nincs semmi a(z) „%1$@” szűrőhöz.
+0873	Kedvencek
+0874	Panorámák
+0875	RAW
+0876	Képernyőfelvételek
+0877	Lassított
+0878	Gyorsított
+0879	Szűrő
+0880	Album rendrakása
+0881	Ebben az albumban most nincsenek fotók vagy videók.
+0882	Kizárás a rendrakásból
+0883	Kizárva a rendrakásból
+0884	Újra bevonás a rendrakásba
+0885	Egy album sem felel meg ennek: „%1$@”.
+0886	Albumok keresése …
+0887	Legtöbb elem
+0888	Nemrég frissítve
+0889	%1$lld elem elrejtve a GaleriQ-ban
+0890	%1$lld elem elrejtve a GaleriQ-ban
+0891	A GaleriQ sehol sem jeleníti meg őket. A fájlok változatlanok, és más appok továbbra is mutatják őket.
+0892	%1$lld rejtett elem
+0893	%1$lld rejtett elem
+0894	Használd az „Elrejtés a GaleriQ-ban” funkciót egy albumon, fotón vagy kijelölésen.
+0895	Semmi sincs elrejtve
+0896	Rejtett
+0897	Elrejtés a GaleriQ-ban
+0898	A GaleriQ többé nem jeleníti meg őket – sem a Fotók alatt, sem rendrakáskor. A fájlok változatlanok, és más appokban láthatók maradnak. Ez nem széf.
+0899	Elrejtesz %1$lld elemet a GaleriQ-ban?
+0900	Elrejtesz %1$lld elemet a GaleriQ-ban?
+0901	Időtartam
+0902	Név
+0903	RAW-fájl
+0904	Felbontás
+0905	Méret
+0906	Készült
+0907	Fájltípus
+0908	Kisebb csempék
+0909	Napok
+0910	Nagyobb csempék
+0911	Hónapok
+0912	Évek
+0913	Médiatípusok
+0914	Albumok
+0915	Idővonal
+0916	Nincs dátum
+0917	A nemrég hozzáadottak elöl – a Fotók app sorrendjében.
+0918	Rendrakás innen
+0919	Rendezés
+0920	Nemrég hozzáadva
+0921	Legnagyobb elöl
+0922	Név
+0923	Legújabb elöl
+0924	Legrégebbi elöl
+0925	%1$lld almappa
+0926	%1$lld almappa
+0927	Áthelyezés a kukába
+0928	Ez egy kedvenc. A „Kedvencek védelme” be van kapcsolva, így nem kerül a kukába. Ezt a Beállításokban módosíthatod.
+0929	A GaleriQ kukájába – semmi sem törlődik. Ott később döntesz.
+0930	A GaleriQ kukájába – semmi sem törlődik. A kedvencek maradnak (a „Kedvencek védelme” be van kapcsolva).
+0931	Áthelyezel %1$lld elemet a kukába?
+0932	Áthelyezel %1$lld elemet a kukába?
+0933	%1$lld elem van a GaleriQ kukájában.
+0934	%1$lld elem van a GaleriQ kukájában.
+0935	A GaleriQ kukájában
+0936	%1$lld elem újra látható
+0937	%1$lld elem újra látható
+0938	Megjelenítés újra
+0939	Képarány
+0940	Nézet
+0941	Négyzet
+0942	Mind a(z) %1$lld eltávolítása Próval
+0943	Nézz meg egy hirdetést: ma még %1$lld eltávolítása
+0944	A hirdetést túl korán bezártad. Semmi sem lett feloldva. Ma még újra próbálhatod.
+0945	Naponta egyszer. A bónusz csak ma érvényes.
+0946	Most nincs elérhető hirdetés. Semmi sem lett feloldva.
+0947	Kijelölve: %2$lld. Pro nélkül naponta legfeljebb %1$lld eltávolítás lehetséges. Minden más a GaleriQ kukájában marad.
+0948	Ma még %1$lld / %2$lld
+0949	Nincs korlát a Próval
+0950	%1$lld eltávolítása ezek közül
+0951	Elérted a napi korlátot
+0952	Ma még %1$lld
+0953	A napi kereted holnap újraindul.
+0954	Fotó vagy videó
+0955	Az elemzés kész
+0956	Befejezheted a kört, vagy most megnézheted az eredményeket.
+0957	Az elemzés folytatódik
+0958	Tarts szünetet
+0959	Kamera
+0960	%1$lld. kártya
+0961	iCloud-fotók betöltése
+0962	Minden pár megvan!
+0963	Idő: %1$@
+0964	Kártyák visszafordítása
+0965	Szív
+0966	Lefordítva
+0967	Levél
+0968	Képek előkészítése…
+0969	Pár megtalálva
+0970	Hold
+0971	Hegy
+0972	Lépések: %1$lld
+0973	Saját fotóim kiválasztása
+0974	%1$lld pár (%2$lld kártya)
+0975	%1$lld / %2$lld pár
+0976	%1$lld. kép
+0977	Album vagy fotómappa választása
+0978	Eredmények megtekintése
+0979	Kör folytatása
+0980	Párok száma
+0981	Képforrás
+0982	Album vagy fotómappa
+0983	Kedvencek
+0984	Teljes fotókönyvtár
+0985	Nap
+0986	Párok
+0987	Néhány fotó már nem érhető el, vagy csak az iCloudban van. Válassz más fotókat, vagy engedélyezd a letöltésüket. A széfben lévő fotók nem használhatók.
+0988	Műveletek: %1$@
+0989	Újbóli átnézés
+0990	Átnézve
+0991	%1$lld későbbre
+0992	%1$lld későbbre
+0993	Nincs elkezdve · %1$lld elem
+0994	Nincs elkezdve · %1$lld elem
+0995	%1$lld / %2$lld átnézve
+0996	%1$lld / %2$lld átnézve
+0997	A hónapok itt jelennek meg, amint a fotóknak vagy videóknak van készítési dátuma.
+0998	Még nincsenek hónapok
+0999	Hol tartasz az egyes hónapokban. A későbbre félretett elemek átnézettnek számítanak.
+1000	Hónapok szerint
+1001	További műveletek
+1002	Hozzáadás
+1003	16:9 · Fekvő
+1004	4:5 · Kissé álló
+1005	9:16 · Álló
+1006	1:1 · Négyzet
+1007	A(z) %1$lld. klip beállításai
+1008	%2$lld klipből a(z) %1$lld.
+1009	Fotó · %1$@
+1010	Klip eltávolítva a videóból
+1011	Videó · %1$@
+1012	A ⋯ gombbal mozgathatsz vagy eltávolíthatsz egy klipet. Maguk a fotók és videók változatlanok maradnak.
+1013	Elsötétítés a klipek között
+1014	A videó nem hozható létre. Semmi sem lett mentve, az eredetik változatlanok.
+1015	Képkocka kitöltése
+1016	Ha egy klip más alakú
+1017	A klipeket sosem nyújtjuk: vagy a teljes kép látszik (fekete szélekkel), vagy kitölti a képkockát, és a szélek levágódnak.
+1018	Teljes kép
+1019	Formátum
+1020	Mint az első klip
+1021	A kész videó alakja. A 9:16 kitölti az állva tartott telefon képernyőjét, a 16:9 tévékhez és számítógépekhez illik. A „Mint az első klip” az első klip alakját használja.
+1022	Lágy nagyítás
+1023	A fotók lassan ráközelítenek, hogy ne hassanak statikusnak.
+1024	Előrébb
+1025	Hátrébb
+1026	A saját fájlod, az elejétől lejátszva és szükség esetén ismételve. A GaleriQ nem tartalmaz zenét. Megosztáskor ügyelj a jogokra.
+1027	Hangfájl kiválasztása
+1028	Eltávolítás
+1029	Zene hangereje
+1030	Idő fotónként
+1031	A videó minden fotójára érvényes. A videók mindig teljes hosszban játszódnak le.
+1032	Fotók
+1033	Videók és fotók kiválasztása
+1034	Minőség
+1035	Kiegyensúlyozott
+1036	Magas (Full HD)
+1037	Magas és Kiegyensúlyozott: legfeljebb Full HD (1080p) – a Kiegyensúlyozott kisebb fájlokat készít szinte látható különbség nélkül. Kicsi: legfeljebb HD (720p), a legkisebb fájl, küldéshez ideális.
+1038	Kicsi (HD)
+1039	Eltávolítás a videóból
+1040	Átrendezés
+1041	Videó létrehozása …
+1042	Videó mentése
+1043	Új videóként mentve a könyvtáradba. Az eredetik változatlanok maradnak.
+1044	Fotók lágy nagyítással és áttűnésekkel, videóként mentve
+1045	Videók és fotók egymás után, zenével
+1046	Klipek
+1047	Formátum
+1048	Zene
+1049	Áttűnés
+1050	Videók összefűzése
+1051	Diavetítés videóként
+1052	Adj hozzá legalább két klipet.
+1053	Összesen legfeljebb 30 perc. Rövidíts klipeket, vagy távolíts el néhányat.
+1054	Videónként legfeljebb 50 klip.
+1055	Két klip között a kép rövid időre elsötétül, majd újra megjelenik. Ki: éles vágás. A teljes hossz nem változik.
+1056	Hang kikapcsolása
+1057	Ez a fájl nem jeleníthető meg.
+1058	Nincs kijelölve
+1059	Megjegyzés
+1060	A „Később” egyik eleme ma átnézésre kész.
+1061	OK
+1062	A GaleriQ közvetlenül az eszközödön mutatja a fotóidat és videóidat, hogy rendet rakhass. Nincs GaleriQ-fiók és nincs szerver.
+1063	Hozzáférés a fotókhoz és videókhoz
+1064	Pro vásárlása · egyszeri %1$@
+1065	Pro egyszeri megvásárlása
+1066	Gyakorlókártyák. Itt semmi sem mentődik.
+1067	Tovább
+1068	Húzz és rendszerezz korlátlanul, időnként hirdetésekkel. Az elemek eltávolításának napi korlátja van.
+1069	Kezdd ingyen
+1070	%1$lld. lépés / %2$lld
+1071	A fotóid az eszközödön maradnak. Nincs GaleriQ-fiók, nincs fotófeltöltés.
+1072	Az elemek először a GaleriQ kukájába kerülnek. Ott megerősíted az eltávolítást, és az iOS még egyszer rákérdez, mielőtt a fotókat és videókat a Nemrég törölt albumba helyezi.
+1073	Te döntöd el, mi törlődik
+1074	Nézd át a fotóidat és videóidat, és döntsd el, mi marad. Egyszerre egy húzással, a saját tempódban.
+1075	A galériád, végre rendben
+1076	Így működik. Most jöhetnek a fotóid.
+1077	Fel: megtartás. Balra: kuka. Jobbra: később. Próbáld ki itt.
+1078	Húzz és dönts
+1079	Legnagyobb elöl
+1080	Legújabb elöl
+1081	Legrégebbi elöl
+1082	Keverés
+1083	Sorrend
+1084	Hozzáadás albumhoz
+1085	%1$lld hozzáadva ide: „%2$@”.
+1086	%1$lld hozzáadva ide: „%2$@”.
+1087	Album neve
+1088	Még nincsenek albumok
+1089	Válogatókosár
+1090	Hozzáadás a válogatókosárhoz
+1091	%1$lld hozzáadva a válogatókosárhoz.
+1092	%1$lld hozzáadva a válogatókosárhoz.
+1093	Már a válogatókosárban van.
+1094	Kosár ürítése
+1095	Csak a kosár ürül ki. A fotók és videók változatlanok maradnak.
+1096	Kiüríted a válogatókosarat?
+1097	A „Fotók” alatt jelölj ki valamit, és koppints a ⋯ › Hozzáadás a válogatókosárhoz lehetőségre.
+1098	A válogatókosár üres
+1099	Gyűjts fotókat és videókat különböző hónapokból és mappákból. A kosár addig marad, amíg ki nem üríted – semmi köze a kukához.
+1100	Kivétel a kosárból
+1101	Létrehozás
+1102	%1$lld elem nem található (törölve vagy már nincs ezen az eszközön).
+1103	%1$lld elem nem található (törölve vagy már nincs ezen az eszközön).
+1104	Eltávolítás a listából
+1105	Új album
+1106	Jegyzet
+1107	Jegyzet (csak a GaleriQ-ban, a fájl változatlan marad)
+1108	Jegyzet mentése
+1109	Hozzáadás
+1110	Eltávolítás mindenhonnan
+1111	A címke mindenhonnan eltűnik. Maguk a fotók és videók változatlanok maradnak.
+1112	Eltávolítod a(z) „%1$@” címkét mindenhonnan?
+1113	Új címke
+1114	Címke eltávolítása
+1115	néhányon
+1116	Címkék
+1117	Címkék %1$lld elemhez
+1118	Címkék %1$lld elemhez
+1119	Még nincsenek címkék. Adj hozzá saját szavakat, például „Számla” vagy „Nyaralás” – a GaleriQ csak azt tudja, amit te beírsz.
+1120	Szünet
+1121	PDF-műveletek
+1122	Fájlok összefűzése, oldalak átrendezése és forgatása
+1123	A PDF nem menthető.
+1124	Fájlok hozzáadása
+1125	Fájlok kiválasztása
+1126	PDF fájlokból
+1127	A fájlok nem nyithatók meg. Válassz olvasható, nem zárolt PDF-eket vagy képeket, és próbáld újra. A jelenlegi oldalaid változatlanok.
+1128	Válassz PDF-eket vagy képeket a Fájlokból. Fűzd össze, rendezd és forgasd az oldalakat élő előnézettel, majd ments el egy új PDF-et.
+1129	Válassz kevesebb vagy kisebb fájlt (fájlonként legfeljebb 100 MB, kijelölésenként 256 MB és 500 oldal).
+1130	Kitöltés
+1131	Igazítás
+1132	PDF létrehozása
+1133	Margó
+1134	Nincs
+1135	Normál
+1136	Keskeny
+1137	Automatikus
+1138	Fekvő
+1139	Álló
+1140	Tájolás
+1141	Előrébb
+1142	Hátrébb
+1143	%1$lld. oldal / %2$lld
+1144	Forgatás
+1145	Oldalak kijelölése
+1146	Papír
+1147	US Letter
+1148	Fotók oldalanként
+1149	%1$lld fotó
+1150	%1$lld fotó
+1151	Fotók a PDF-hez
+1152	A fotók újra beágyazódnak: a hely és más felvételi adatok nem kerülnek a PDF-be. Az eredetik változatlanok maradnak.
+1153	PDF létrehozása …
+1154	Mentés PDF-ként
+1155	Mentve ide: „Documents/GaleriQ” · %1$@
+1156	PDF megosztása
+1157	Fotók dokumentumként vagy indexképként
+1158	PDF létrehozása
+1159	Fotó
+1160	Mikor szeretnéd újra látni?
+1161	Szám
+1162	Félretétel dátum nélkül
+1163	Magától nem jön vissza. A Később › Félretéve alatt találod.
+1164	Újra átnézés: %1$@
+1165	Dátum választása …
+1166	Egység
+1167	Lejátszás
+1168	Lejátszási pozíció
+1169	Ez a fotó vagy videó most nem jeleníthető meg.
+1170	Lehet, hogy áthelyezték, vagy még nincs teljesen mentve.
+1171	Az ingyenes verzió a Google hirdetéseit jeleníti meg. A hozzájárulásodat a beállításokban módosíthatod. A fotóid, a nevük, a mappák vagy bármi, ami belőlük származik, sosem jut el a hirdetési szolgáltatókhoz. A Pro hirdetésmentes.
+1172	Hozzáférés engedélyezése
+1173	Kijelölés kezelése
+1174	Fotók és videók
+1175	A fotók és videók megtekintéséhez, rendszerezéséhez és – megerősítésed után – eltávolításához.
+1176	Értesítések engedélyezése
+1177	Nem kötelező: emlékeztetőt kapsz, ha a „Később” valamelyik eleme átnézésre kész. A fájlnevek nem jelennek meg a zárolási képernyőn.
+1178	iOS-beállítások megnyitása
+1179	A vásárlások az Apple App Store-ján keresztül történnek. A GaleriQ ehhez sosem küldi el a fotóidat, neveket vagy metaadatokat.
+1180	A GaleriQ csak az eszközödön nézi a fotóidat, videóidat és engedélyezett fájljaidat. Nem kell fiók, és nincs GaleriQ-szerver. Jó tudni: felhőszolgáltatásoknál, például a Google Fotóknál, amit törölsz, a többi eszközödről is eltűnhet.
+1181	Első a magánszférád
+1182	Egyszer megvásárolva: nincs hirdetés, nincs napi korlát, és a széf mappái hirdetés nélkül.
+1183	Nincs hirdetés az app megnyitásakor, és nincsenek hirdetéskártyák a fotóid és videóid között.
+1184	Széfmappák hirdetés nélkül
+1185	Hozz létre új mappákat a széfben videó megnézése nélkül.
+1186	Minden más – szerkesztés, elemzés, ismétlődések, gyűjtemények, Stúdió – mindenkinek ingyenes.
+1187	A fotóidat és fájljaidat csak az eszközödön ellenőrzi és rendezi. A vásárláshoz csak a szükséges adat kerül az Apple-hez, az ingyenes verzió hirdetéseihez pedig a Google-hoz – a fotóid, a nevük vagy a belőlük származó adatok sosem.
+1188	A Pro aktív
+1189	Pro
+1190	Nincsenek hirdetések
+1191	Rendrakás napi korlát nélkül
+1192	Távolíts el annyit, amennyit akarsz — a napi %1$lld-es korlát nélkül.
+1193	A GaleriQ Pro mostantól aktív.
+1194	A vásárlás nem fejezhető be.
+1195	Ehhez a fiókhoz nem található korábbi vásárlás.
+1196	A vásárlásod megerősítésre vár. A Pro a megerősítés után oldódik fel.
+1197	A vásárlásod visszaállítva.
+1198	Ár betöltése …
+1199	A fotóidat és fájljaidat csak az eszközödön ellenőrzi és rendezi. A vásárláshoz csak a feltétlenül szükséges kerül az Apple-hez – a fotóid, a nevük vagy bármi belőlük származó sosem.
+1200	Vásárlások visszaállítása
+1201	A Pro most nem tölthető be az App Store-ból. Ellenőrizd az internetkapcsolatot, és próbáld újra.
+1202	Egyszeri vásárlás. Nincs előfizetés.
+1203	GaleriQ Pro
+1204	A vásárlások ebben a verzióban még nem érhetők el.
+1205	Ez a verzió még nincs összekötve az App Store-vásárlásokkal. Minden más funkciót a szokásos módon használhatsz.
+1206	GaleriQ Pro feloldása
+1207	GaleriQ Pro megtekintése
+1208	Visszatétel
+1209	Hozzáadás
+1210	Parancsikon hozzáadása
+1211	Minden átnézve
+1212	Szerkesztés
+1213	Parancsikonok szerkesztése
+1214	Üres
+1215	Kedvencek
+1216	Kedvenceid a Fotók appból
+1217	Album
+1218	Albumok
+1219	Legújabb fotók
+1220	A legújabb fotód (%1$lld)
+1221	A %1$lld legújabb fotód
+1222	Legújabb videók
+1223	A legújabb videód (%1$lld)
+1224	A %1$lld legújabb videód
+1225	Parancsikonkorlát: %1$lld. Távolíts el egyet, hogy újat adhass hozzá.
+1226	Live Photók
+1227	Fotók mozgással és hanggal
+1228	Hosszú videók
+1229	Legalább egyperces videók
+1230	Hátrébb: %1$@
+1231	Előrébb: %1$@
+1232	Nem található fotókat vagy videókat tartalmazó album.
+1233	Ezen a napon
+1234	A mai dátumon készült a korábbi években
+1235	A kezdőképernyőn
+1236	Fotók
+1237	Portrék
+1238	Portré módban készült fotók
+1239	Véletlen
+1240	%1$lld véletlen, még át nem nézett fotó és videó, minden alkalommal újrakeverve
+1241	Csak a parancsikon törlődik. A fájljaid és döntéseid megmaradnak.
+1242	Képernyőképek
+1243	Szelfik
+1244	A Fotók app Szelfik albumából
+1245	Ezen a héten
+1246	Fotók és videók erről a naptári hétről
+1247	Gyors elérés
+1248	Videók
+1249	Összes eredmény
+1252	%lld legjobb idő
+1253	%lld legjobb idő
+1256	Legutóbbi rekord
+1257	Bronz
+1258	Arany
+1259	%1$@: min. %2$@ · még %3$@
+1260	Ezüst
+1261	Az érmek csak a saját eredményeiddel vetnek össze – nincs ranglista, semmi sem hagyja el az eszközt.
+1262	Rekord
+1263	A rekordjaid. Ezen az iPhone-on maradnak.
+1264	fotó
+1265	pont
+1268	%1$@ fotó
+1269	%1$@ fotó
+1272	%1$@ pont
+1273	%1$@ pont
+1276	aktív nap
+1277	aktív nap
+1282	új rekord
+1283	új rekord
+1286	átnézve
+1287	Az elmúlt heted
+1288	Ismét
+1289	Csoportos szerkesztés
+1290	PDF-ek szerkesztése
+1291	Dokumentumok beolvasása
+1292	Eltávolítás
+1293	Kijelölve: %2$lld. Ma még %1$lld elemet távolíthatsz el. Jelölj ki legfeljebb %1$lld elemet, vagy szerezd be a GaleriQ Prót.
+1294	Kijelölve: %2$lld. Ma még %1$lld elemet távolíthatsz el. Jelölj ki legfeljebb %1$lld elemet, vagy szerezd be a GaleriQ Prót.
+1295	Megszakítva. Semmi sem lett eltávolítva.
+1296	A kijelölésed megváltozott. Ellenőrizd újra.
+1297	Semmi sem lett eltávolítva.
+1298	Az eredményt az app következő megnyitásakor ellenőrizzük. Semmi sem törlődik újra.
+1299	Elérted a napi korlátot
+1300	Semmi sem lett eltávolítva
+1301	Ecset
+1302	Terület törlése
+1303	Egy ujjal fesd át a helyet. Két ujjal nagyítasz.
+1304	Koppints a fotón oda, ahol a terület legyen. Utána világosítsd, sötétítsd vagy változtasd meg a színét.
+1305	Színátmenet
+1306	Kör
+1307	Vörösszem
+1308	Koppints egy vörös szemre. Kis arcoknál előbb nagyíts két ujjal. Csak a szem vörös színe változik.
+1309	Utolsó eltávolítása
+1310	Méret
+1311	Újra
+1312	Mentés
+1313	Képernyőkép
+1314	Keresés
+1315	Kijelölve
+1316	%1$lld fotós sorozat összehasonlítása
+1317	Megtartás: %1$lld · Kuka: %2$lld
+1318	Megtartva: %1$lld · %2$lld a kukában
+1319	Semmi sem törlődik. A kuka a GaleriQ-é, és csak a megerősítésedre ürül.
+1320	Koppints egy fotóra, hogy lent összehasonlítsd. A pipa dönti el, mi marad.
+1321	Megtartás
+1322	Megtartás
+1323	Kuka
+1324	Gyors egymásutánban készült · %1$lld
+1325	Sorozatok összehasonlítása
+1326	Eredmények megjelenítése
+1327	Sorozat, napi cél, jelvények és heti összefoglaló.
+1328	Hirdetési hozzájárulás módosítása
+1329	Megjelenés
+1330	Vezérlés
+1331	Napi cél
+1332	Kizárt mappák
+1333	Ki
+1334	Rezgés műveleteknél
+1335	Húzási súgó megnyitáskor
+1336	%1$lld nap múlva
+1337	%1$lld nap múlva
+1338	Nyelv
+1339	A GaleriQ az iPhone nyelvét használja. Koppints, ha csak a GaleriQ-hoz szeretnél más nyelvet választani az iOS-beállítások „Nyelv” pontjában.
+1340	Később: alapértelmezett késleltetés
+1341	Egyszeri vásárlás
+1342	Kedvencek védelme
+1343	GaleriQ értékelése
+1344	Nagyon sokat segít – köszönjük!
+1345	„Az elmúlt heted” megjelenítése
+1346	Mindig a kezdőoldalon
+1347	Beállítások
+1348	Megosztás
+1349	Ez a fotó vagy videó most nem osztható meg.
+1350	A kijelölt fotók és videók most nem oszthatók meg. Ellenőrizd az iCloud-kapcsolatot, és próbáld újra.
+1351	Nem áll készen a megosztásra: %2$lld közül %1$lld (pl. nincs iCloud-kapcsolat). Csak a többit kínáltuk fel.
+1352	Előkészítés … %1$lld / %2$lld
+1353	Később
+1354	Rendrakás indítása
+1355	Stúdió
+1356	Kuka
+1357	kb. %1$@
+1358	„kb.” = a lemért fotóid és videóid alapján becsült érték. Az iCloud-eredetik pontos méretét az iOS csak letöltés után árulja el.
+1359	Legalább %1$@
+1360	Ismeretlen méret
+1361	Tovább döntés nélkül
+1362	Lejátszás újra
+1363	Nincs
+1364	Idő fotónként
+1365	Itt nincs mit megjeleníteni.
+1366	A diavetítés vége
+1367	Áttűnés
+1368	Ismétlés
+1369	Tovább
+1370	A nézés sosem döntés. A képernyő a diavetítés alatt bekapcsolva marad.
+1371	Sorrend
+1372	Legrégebbi elöl
+1373	Keverés
+1374	Szünet
+1375	Előző
+1376	%1$lld mp
+1377	Diavetítés beállításai
+1378	Diavetítés
+1379	Áttűnés
+1380	Videók lejátszása (némítva)
+1381	Fotókígyó táblája
+1382	Kamera: %1$lld. oszlop, %2$lld. sor. Fotó: %3$lld. oszlop, %4$lld. sor.
+1383	Figura
+1384	Klasszikus — szilárd falak
+1385	A következő mező szabad
+1386	Húzz a táblán az irányváltáshoz.
+1387	Le
+1388	Pontszám: %1$lld
+1389	Gyors
+1390	Eleség
+1391	Fotók kiválasztása
+1392	%lld / 100 fotó
+1393	Hátrébb
+1394	Válassz legfeljebb 100 fotót a kígyódhoz.
+1395	A fotóválasztásodat nem sikerült menteni vagy visszaállítani. Próbáld újra.
+1396	Fotók sorrendje · húzással rendezheted
+1397	%lld. fotó
+1398	Csak az általad kiválasztott fotók használhatók. A kis másolatok ezen az iPhone-on maradnak, az iCloud-mentésen kívül. Itt távolítsd el őket, hogy ezek a másolatok törlődjenek.
+1399	A fotóid
+1400	Előrébb
+1401	Lassú
+1402	Haptika
+1403	Balra
+1404	Játékmód
+1405	Éjszakai erdő
+1406	Normál
+1407	Akadály közvetlenül elöl
+1408	Más játékok
+1409	A kör véget ért
+1410	Szünet
+1411	Néhány fotó nem tölthető be. Ellenőrizd az iCloud-fotók kapcsolatát, és próbáld újra.
+1412	Legjobb: —
+1413	Laza — átjárás a széleken
+1414	Jobbra
+1415	Fotók keverése
+1416	A keverés a következő új játékra vonatkozik. A fotók módosítása szünetelteti az aktuális játékot.
+1417	Hang
+1418	Sebesség
+1419	Játék indítása
+1420	Húzz egy új körhöz
+1421	Húzz a folytatáshoz
+1422	Bárhol húzva irányíthatsz
+1423	Fotókígyó
+1424	Fel
+1425	A fotócsík elkészült!
+1426	Legnagyobb elöl
+1427	Legújabb elöl
+1428	Legrégebbi elöl
+1429	Egy mappa leválasztása nem töröl fájlokat. Ebben a fájlnézetben választod ki, mely mappákhoz férhet hozzá a GaleriQ.
+1430	Mappa leválasztása
+1431	Csak megtekintés
+1432	Megtekintés és fájltörlés
+1433	Nem érhető el — csatlakoztasd újra
+1434	A mentett döntéseidet nem sikerült betölteni. Semmi sem változott és semmi sem törlődött. Indítsd újra a GaleriQ-t; ha ez nem segít, oszd meg a diagnosztikát.
+1435	A GaleriQ nem tudott elindulni
+1436	Az eszközöd
+1437	%1$@ szabad az iOS szerint
+1438	Látható a GaleriQ számára
+1439	A képernyőképek már benne vannak a fotókban. A nagy fájlokat és az ismétlődéseket nem számoljuk újra. Az ismeretlen méretek kimaradnak az összegből, amely ekkor „Legalább” jelölést kap.
+1440	Nem látható a GaleriQ számára
+1441	A GaleriQ nem tudja ellenőrizni más appokat, rendszerfájlokat, felhőtartalmat vagy az általad nem engedélyezett mappákat. Ezekhez nem jelenik meg méret.
+1442	Csatlakoztatott mappák
+1443	A tárhelyelemzés az eszközödön marad.
+1444	a képernyőképekkel együtt
+1445	Tárhely-áttekintés
+1446	A tárhelyadatok most nem érhetők el
+1447	/ %1$@ foglalt
+1448	%1$lld elem · %2$@
+1449	%1$lld elem · %2$@
+1450	Kollázs
+1451	Kollázs
+1452	Rács, szabad vagy csík
+1453	Alkotás
+1454	Kollázs · %1$lld fotó
+1455	Kollázs · %1$lld fotó
+1456	Piszkozat törlése
+1457	A piszkozat törlődik. A fotóid érintetlenek maradnak.
+1458	Az ingyenes verzió a 3 legutóbbi piszkozatodat őrzi meg.
+1459	Piszkozatok
+1460	Nincs elég memória ehhez a mérethez. Próbáld a „Normál” beállítást vagy kevesebb fotót.
+1461	Alkoss a fotóiddal. Minden az eszközödön marad.
+1462	Legfeljebb %1$lld kijelölése.
+1463	Fotók a kollázshoz
+1464	Mentett
+1465	Szerkesztett fotók, videók és kollázsok
+1466	Semmi sem törlődik, amíg ki nem üríted a kukát és meg nem erősíted.
+1467	Egyelőre kész
+1468	Megtartva
+1469	Utolsó fotó vagy videó megtekintése
+1470	Később
+1471	Rendrakás napi korlát nélkül a GaleriQ Próval. Egyszeri vásárlás, nincs előfizetés.
+1472	Egy kicsit rendezettebb
+1473	A kukában
+1474	Napi korlát nélkül a Próval.
+1475	%1$lld eltávolításra félretéve.
+1476	%1$lld eltávolításra félretéve.
+1477	Kuka megtekintése (%1$lld)
+1478	Rendrakás
+1479	Előzmények
+1480	Fotók
+1481	Stúdió
+1482	Ma
+1483	Engedélyezd a GaleriQ hozzáférését, hogy megtekinthesd és rendszerezhesd a fotóidat és videóidat.
+1484	Engedélyezd a hozzáférést az iOS-beállításokban: GaleriQ › Fotók. A korábbi döntéseid mentve maradnak.
+1485	Nincs hozzáférés a fotóidhoz és videóidhoz
+1486	Hozzáférés a fotókhoz és videókhoz
+1487	Rendrakás folytatása
+1488	Folytatás: %1$@
+1489	Folytasd ott, ahol abbahagytad.
+1490	Egyelőre nincs más átnézendő.
+1491	Minden átnézve
+1492	%1$lld elem a „Később” közül átnézésre kész
+1493	%1$lld elem a „Később” közül átnézésre kész
+1494	Szép délutánt
+1495	Jó estét
+1496	Jó reggelt
+1497	Jó napot
+1498	Hozzáférés módosítása
+1499	A GaleriQ csak az általad engedélyezett fotókat és videókat mutatja. Ezeken a szokásos módon rakhatsz rendet.
+1500	Korlátozott hozzáférés
+1501	%1$lld új fotó vagy videó
+1502	%1$lld új fotó és videó
+1503	a legutóbbi rendrakás óta
+1504	A kuka legutóbbi ürítésekor valami megszakadt. A biztonság kedvéért semmi sem törlődik újra.
+1505	Megnyitja a fotóidat és videóidat rendrakásra
+1506	Rendrakás indítása
+1507	Húzd végig a fotóidat és videóidat.
+1508	Eszköztárhely
+1509	%1$@ / %2$@ foglalt
+1510	Több fotó szerkesztése
+1511	Sok fotó expozícióját módosítja egyszerre.
+1512	Konvertálás
+1513	Más fájlformátumban menti a fotókat, pl. HEIC-et JPEG-ként a HEIC-et megnyitni nem tudó eszközökhöz.
+1514	A JPEG-et minden eszköz megnyitja. A PNG minden részletet megőriz, de nagyobbak a fájlok. A már ilyen formátumú fotók kimaradnak.
+1515	pl. HEIC-ből JPEG, új másolatként
+1516	Az eredetijeid változatlanok maradnak – a GaleriQ új másolatokat ment a könyvtáradba.
+1517	%1$lld új másolat mentve.
+1518	%1$lld új másolat mentve.
+1519	0 alatt sötétebbek, 0 felett világosabbak lesznek a fotók.
+1520	Ez nem sikerült. Az eredetijeid változatlanok.
+1521	%1$lld nem dolgozható fel.
+1522	%1$lld nem dolgozható fel.
+1523	Kisebb fájlok, de nem minden eszköz nyitja meg őket
+1524	Minden eszközön és appban megnyílik
+1525	Nincs minőségvesztés, de jóval nagyobb fájlok
+1526	GIF létrehozása
+1527	Kis fájl – üzenetekhez jó
+1528	Élesebb, de nagyobb fájl
+1529	Idő fotónként
+1530	Több fotóból rövid, végtelenül ismétlődő animációt készít – a készítés sorrendjében.
+1531	A GIF legfeljebb 256 színű és hangtalan – a fotók kissé szemcsésnek tűnhetnek.
+1532	GIF mentve a könyvtáradba (%1$@).
+1533	Méret
+1534	Fotókból vagy egy videó rövid részéből
+1535	Eszközök
+1536	Hely eltávolítása
+1537	A másolatok pontosan úgy néznek ki, mint az eredeti – csak a készítés helye törlődik. A hely nélküli fotók kimaradnak.
+1538	Másolatok hely nélkül, pl. megosztás előtt
+1539	Előbb válassz fotókat.
+1540	Válassz legalább két fotót.
+1541	Még nincs kiválasztott fotó
+1542	Az eredetijeid változatlanok – nem szabadult fel hely.
+1543	Fotók kiválasztása
+1544	Létrehozás Próval
+1545	%1$@ px
+1546	Kiegyensúlyozott
+1547	Magas
+1548	Kisebb fájl
+1549	Minőség
+1550	Alacsonyabb minőség kisebb fájlokat jelent – a „Kiegyensúlyozott” szinten ritkán látsz különbséget.
+1551	%1$@ (%2$@)
+1552	A hely eltávolítása is
+1553	Kicsinyítés
+1554	Kicsinyíti a fotókat – pixelben és fájlméretben. Küldéshez vagy feltöltéshez praktikus.
+1555	Sok fotó egyszerre, új másolatként
+1556	A fájljaid feldolgozása…
+1557	%1$@ mp
+1558	%1$lld fájl kijelölve
+1559	%1$lld fájl kijelölve
+1560	Kicsi – elég üzenetekhez és közösségi médiához
+1561	Nagy – éles telefonon, tableten és számítógépen
+1562	Nagyon nagy – szinte minden részlet, pl. nyomtatáshoz
+1563	A másolatok mérete
+1564	A kép hosszabbik oldalán mérve, pixelben (px). A képek sosem nagyítódnak fel és nem torzulnak.
+1565	Eredeti méret
+1566	Ugyanannyi pixel – csak a formátum változik
+1567	Mérve: előtte %1$@, utána %2$@
+1568	%1$lld kimaradt (nincs teendő, vagy videó).
+1569	%1$lld kimaradt (nincs teendő, vagy videók).
+1570	Indítás
+1571	Képernyőképek összefűzése
+1572	A képernyőképeket fentről lefelé egyetlen hosszú képpé fűzi a készítés sorrendjében. Mindegyik a legkeskenyebb kép szélességét kapja – semmi sem nyúlik meg és nem nagyítódik.
+1573	Új képként mentve a könyvtáradba. A képernyőképek változatlanok maradnak.
+1574	Egymás alatt, egyetlen hosszú képként
+1575	Új formátum
+1576	Eszköz
+1577	%1$lld ismeretlen méret – nem szerepel az összegben.
+1578	%1$lld ismeretlen méret – nem szerepelnek az összegben.
+1579	Kész
+1580	Jelölj kedvenceket, oszd meg az elemeket vagy tedd albumba őket. Ettől nem lesznek megtartottnak, kukába tettnek vagy későbbinek jelölve.
+1581	Kedvencek, megosztás és albumok
+1582	A szám mutatja, mennyit tettél félre. Koppints rá a kijelölésed átnézéséhez és a kuka ürítéséhez.
+1583	A kukád
+1584	Rossz irányba húztad? Koppints ide az utolsó döntésed visszavonásához.
+1585	Visszavonás
+1586	Ha szünet kell a rendrakásból: játssz Párokat, Fotókígyót vagy Foto Blockst a saját fotóiddal.
+1587	Szünet kellene?
+1588	Nem döntés
+1589	Nézd meg, mit tartottál meg, tettél félre vagy mentettél későbbre. Itt még bármelyik döntést módosíthatod.
+1590	Később és előzmények
+1591	Itt van minden fotód és videód – nap, hónap vagy év szerint, albumokban és a kedvencek között.
+1592	Minden fotód
+1593	A későbbre félretett elemek átnézettnek számítanak – itt továbbra is látod őket.
+1594	Nyisd meg az áttekintést rácsként, vagy nézz át újra egy kész hónapot.
+1595	Koppints egy hónapra, hogy csak a még át nem nézett fotóit és videóit nézd át.
+1596	Hol tartasz
+1597	Tovább
+1598	Több fotó gyors egymásutánban? Hasonlítsd össze őket egymás mellett, és válaszd ki, mi marad.
+1599	Szabd testre a GaleriQ-t, és itt találsz válaszokat. Ezt a bemutatót bármikor újra megnézheted.
+1600	Beállítások és súgó
+1601	Bemutató kihagyása
+1602	Szerkessz fotókat, készíts kollázsokat, rövidfilmeket és PDF-eket, és használj praktikus eszközöket. Mindig új fájlokat kapsz – az eredetik változatlanok maradnak.
+1603	Légy kreatív
+1604	Koppints a „Rendrakás indítása” gombra, hogy végighúzd mindazt, ami még átnézendő.
+1605	Kezdd itt
+1606	Fotók, videók, képernyőképek vagy egy album: hozz létre parancsikonokat ahhoz, amit gyakran rendezel.
+1607	A parancsikonjaid
+1608	Itt találod, amit eltávolításra félretettél vagy későbbre mentettél. Az eltávolítás csak a kukában adott megerősítésed után történik meg.
+1609	Kuka és Később
+1610	Nagy fájlok, ismétlődő fotók, egyes hónapok és kész gyűjtemények: itt lépésről lépésre rakhatsz rendet.
+1611	További rendrakási lehetőségek
+1612	Tartsd lenyomva 2 másodpercig a fenti „GaleriQ” feliratot a széf megnyitásához – a „Q” számzára elfordul. Állítsd be, és további lehetőségeket a Beállításokban találsz.
+1613	A privát széfed
+1614	Visszavonás
+1615	Nap
+1616	Nap
+1617	Hónap
+1618	Hónap
+1619	Hét
+1620	Hét
+1621	Hang bekapcsolása
+1622	Szövegblokk hozzáadása
+1623	Széffájl csatolása
+1624	Ez a fájl még egy jegyzethez van csatolva, talán a széf kukájában. Előbb válaszd le.
+1625	Mellékletek
+1626	Zárolás inaktivitáskor
+1627	A széf a háttérben mindig zárolódik. Appváltáskor az előnézetek takarva vannak.
+1628	Titkosított biztonsági mentés
+1629	Tartalmazza a médiát, jegyzeteket, fájlokat, mappákat és a széf kukáját. Használj erős, külön biztonsági mentési jelszót. Nélküle a mentés nem állítható vissza.
+1630	A mentés nem lett visszaállítva. Lehet, hogy hibás a jelszó, sérült a fájl, zárolt a munkamenet, vagy nincs elég tárhely. A meglévő tartalom változatlan.
+1631	Biztonsági mentési jelszó (legalább 12 karakter)
+1632	Félkövér
+1633	Felsorolás
+1634	A kamera nem érhető el, vagy a hozzáférés nincs engedélyezve.
+1635	Kész/nincs kész váltása
+1636	Ellenőrzőlista
+1637	A mentett jegyzet megváltozott. A piszkozatod nem írta felül. Mentsd a piszkozatot új jegyzetként, vagy vesd el a nem mentett módosításokat.
+1638	Folytatás
+1639	Végleges törlés
+1640	Ez véglegesen eltávolítja a kijelölt tartalmat ebből a széfből. A meglévő külső másolatok és biztonsági mentések változatlanok maradnak.
+1641	Leválasztás
+1642	Nem mentett módosítások elvetése
+1643	Csak az utolsó sikeresen mentett változat marad meg. A nem mentett módosítások elvesznek.
+1644	Ebben a nézetben nincsenek fájlok.
+1645	Ebben a nézetben nincsenek jegyzetek.
+1646	Összes végleges törlése
+1647	A széf kukájában lévő minden tartalom (%1$@) véglegesen eltávolításra kerül ebből a széfből: fotók, videók, jegyzetek és fájlok. A meglévő külső másolatok és biztonsági mentések változatlanok maradnak.
+1648	Kiüríted a széf kukáját?
+1649	Biztonsági mentés exportálása
+1650	Az exportált másolat a széf védelmén kívül van. Más appok vagy személyek a megosztás módjától függően hozzáférhetnek.
+1651	Fájlok
+1652	Formázás
+1653	Címsor
+1654	Fájlok importálása
+1655	Importálva: %1$lld. Sikertelen: %2$lld.
+1656	Nincs fiók és nincs GaleriQ-szerver. Az exportok és mentések csak a kifejezett műveleteddel hagyják el az appot.
+1657	Zárolás most
+1658	Média
+1659	A GaleriQ-nak mikrofon-hozzáférés kell a hangjegyzethez. A felvétel csak koppintásra indul.
+1660	%1$lld perc
+1661	Név
+1662	Új jegyzet
+1663	Nincs belső előnézet
+1664	Ez a formátum itt nem jeleníthető meg. A fájl a széfben tárolva marad. A megosztás a széfen kívülre exportál egy másolatot.
+1665	Nincs mentve
+1666	Jegyzetek
+1667	A művelet nem fejeződött be sikeresen. Ellenőrizd a tárhelyet és a hozzáférést, majd próbáld újra.
+1668	Másolat; az eredeti kint maradhat
+1669	A széfben létrehozva
+1670	Biztonsági mentésből visszaállítva
+1671	Eredeti eltávolítva a forrásból
+1672	Bekezdés
+1673	Szünet
+1674	Rögzítés
+1675	Visszaállítás a széfen belül
+1676	Hangjegyzet rögzítése
+1677	Rögzített időtartam
+1678	A felvétel csak koppintásra indul. Titkosítva tárolódik, és leáll, ha zárolod vagy elhagyod a széfet.
+1679	Szövegblokk eltávolítása
+1680	Eredeti eltávolítása
+1681	A változatlan eredeti csak a széfbeli másolat ellenőrzése után törlődik a forrásból. Más másolatok és a fájlszolgáltató kukája megmaradhatnak.
+1682	Átnevezés
+1683	Jelszó ismét
+1684	Biztonsági mentés visszaállítása
+1685	Az ellenőrzött mentés további másolatként kerül a megnyitott széfbe. A meglévő tartalom nem íródik felül. Az ismételt importálás további másolatokat hoz létre.
+1686	Mentés hozzáadva a széfhez
+1687	Folytatás
+1688	Újra
+1689	Mentés új jegyzetként
+1690	A mentés sikertelen
+1691	Mentve
+1692	Dokumentum beolvasása
+1693	Keresés a széfben
+1694	%1$lld másodperc
+1695	Nemrég módosítva
+1696	Név
+1697	Legnagyobb elöl
+1698	Leállítás és mentés
+1699	Szöveg
+1700	Cím
+1701	Áthelyezés a széf kukájába
+1702	Széfeszközök
+1703	A széf kukája
+1704	A széf kukája üres.
+1705	Ez a kuka csak a széfhez tartozik. A tartalom titkosítva marad, amíg vissza nem állítod vagy kifejezetten véglegesen nem törlöd. Semmi sem törlődik automatikusan.
+1706	Névtelen
+1707	Nincs mappa
+1708	A hirdetést túl korán bezártad. Nem jött létre mappa – próbáld újra.
+1709	Az ingyenes verzióban minden új mappához egy rövid reklámvideó kell. A Próval a mappák hirdetés nélkül jönnek létre.
+1710	Most nincs elérhető hirdetés. Próbáld újra később – a Próval a mappák hirdetés nélkül jönnek létre.
+1711	Videó megnézése és mappa létrehozása
+1712	Hozzáadás a széfhez
+1713	Összes
+1714	A széf titkosított, és része az iPhone biztonsági mentésének. Ha törlöd a GaleriQ-t, a széf is törlődik.
+1715	Megnyitás ezzel: %1$@
+1716	A védett tartalmad megnyitása
+1717	A kódod mindig működik.
+1718	Megnyitás ezzel: %1$@?
+1719	Megnyitás ezzel: %1$@
+1720	Kód módosítása
+1721	Bezárás és zárolás
+1722	Bezárás
+1723	Csak 0–9 számjegyeket használj.
+1724	Kód
+1725	Kód típusa
+1726	A két bevitel nem egyezik.
+1727	Jelszó
+1728	6 jegyű PIN
+1729	Kód ismét
+1730	Legalább 6 karakter.
+1731	Pontosan 6 számjegy.
+1732	Ez a kód a széf kulcsa. Olyat válassz, amit mások nem találnak ki – lehetőleg ne az iPhone-od jelkódját.
+1733	Válassz kódot
+1734	A kód nem érhető el ezen az iPhone-on (például titkosított mentés nélküli visszaállítás után). Nyisd meg a széfet a helyreállítási kulccsal.
+1735	Áthelyezés a széf kukájába
+1736	Széf törlése
+1737	%1$lld elem véglegesen törlődik. Ha meg szeretnéd tartani őket, előbb tedd vissza őket a Fotók appba.
+1738	Törlöd a széfet és mindent, ami benne van?
+1739	Mappa törlése
+1740	Az elemek a széfben maradnak, csak mappa nélkül.
+1741	Ez a kuka csak a széfhez tartozik. A tartalom titkosítva marad, amíg vissza nem állítod vagy kifejezetten véglegesen nem törlöd. Semmi sem törlődik automatikusan.
+1742	Áthelyezel %1$lld elemet a széf kukájába?
+1743	Másolat mentése a széfbe
+1744	Állókép mentve a széfbe.
+1745	Csak a széfben marad – nem jelenik meg a Fotók appban és a GaleriQ más részein sem.
+1746	Másolat mentése, eredeti a széf kukájába
+1747	Mentés, eredeti a széf kukájába
+1748	Az eredetit visszaállíthatod a széf kukájából.
+1749	Mentve a széfbe. Az eredeti a széf kukájában van.
+1750	Mentve a széfbe.
+1751	A széf üres
+1752	Jelszó megadása
+1753	PIN megadása
+1754	Ez nem sikerült. Próbáld újra.
+1755	Ez a mappa üres
+1756	Olyan nevet válassz, amely nem üres és még nem létezik.
+1757	Mappa neve
+1758	Elfelejtetted a kódot?
+1759	Nincs beállítva helyreállítási kulcs. A kód (vagy a Face ID) nélkül a széf nem nyitható meg.
+1760	Bejárat elrejtése
+1761	A széf eltűnik a Beállításokból. A megnyitásához tartsd lenyomva 2 másodpercig a kezdőképernyő tetején lévő „GaleriQ” feliratot – a „Q” kis széf-számzára elfordul.
+1762	Elrejted a bejáratot?
+1763	Áthelyezés a széfbe
+1764	Titkosítva másolódnak és ellenőrződnek. Utána az iOS megkérdezi, törölhetők-e a Fotók appból. Ott 30 napig a „Nemrég törölt” albumban maradnak.
+1765	Áthelyezés a széfbe: %1$lld
+1766	A GaleriQ másolatokat is készített róluk (szerkesztések, kollázsok, filmek, GIF-ek): %1$lld. Ezek a Fotók appban vannak, és láthatók maradnak, hacsak őket is át nem helyezed.
+1767	Az iOS néhányat nem törölt közülük a Fotók appból. A GaleriQ máshol amúgy sem mutatja őket, de a Fotók appban még láthatók. A fenti megjegyzéssel próbáld újra.
+1768	A széfben: %1$lld. Eltávolítva a Fotók appból: %2$lld.
+1769	Nem helyezhető át: %1$lld (például iCloud-kapcsolat nélkül). A Fotók appban maradnak.
+1770	Nem lett áthelyezve: %1$lld. Az ingyenes verzió %2$lld elemet enged a széfben; a Pro korlátlan.
+1771	Tipp: ürítsd ki a „Nemrég törölt” albumot a Fotók appban, ha ott is el kell tűnniük.
+1772	Áthelyezés másolatokkal (%1$lld)
+1773	Másolatok nélkül
+1774	A széfben lévő fotók és videók a kódoddal titkosítva vannak, és csak itt láthatók – a GaleriQ máshol nem mutatja őket.
+1775	Elemek hozzáadásakor az iOS megkérdezi, törölhetők-e a Fotók appból. Ezután 30 napig a „Nemrég törölt” albumban maradnak, hacsak ki nem üríted.
+1776	A széf része az iPhone biztonsági mentésének (titkosítva). Ha törlöd a GaleriQ-t, a széf eltűnik.
+1777	Az ingyenes verzióban minden új mappához egy rövid reklámvideó kell. A Próval a mappák hirdetés nélkül jönnek létre.
+1778	A privát széfed
+1779	Fotó
+1780	Videó
+1781	Az ingyenes verzió %1$lld elemet enged a széfben. A Próval a széf korlátlan.
+1782	Túl sok próbálkozás. Próbáld újra %1$@ múlva.
+1783	Mentés a széfbe
+1784	Áthelyezés
+1785	A széfet a helyreállítási kulccsal nyitottad meg. Most válassz új kódot.
+1786	Új kód
+1787	Új mappa
+1788	Nincs mappa
+1789	%1$lld / %2$lld
+1790	Hagyd nyitva a GaleriQ-t. Az appból kilépve a folyamat leáll; semmi sem törlődik.
+1791	Helyreállítási kulcs létrehozása
+1792	Felírtam
+1793	Helyreállítási kulcs
+1794	26 karakter, kötőjelekkel vagy anélkül.
+1795	Helyreállítási kulcs nélkül a tartalom elvész, ha elfelejted a kódot.
+1796	Be van állítva helyreállítási kulcs. Új létrehozásával a régi érvényét veszti.
+1797	Helyreállítási kulcs eltávolítása
+1798	Új helyreállítási kulcs létrehozása
+1799	Folytatás helyreállítási kulcs nélkül
+1800	Helyreállítási kulcs nélkül a tartalom végleg elvész, ha elfelejted a kódot, és a Face ID nem érhető el.
+1801	Biztosan helyreállítási kulcs nélkül?
+1802	Helyreállítási kulcs
+1803	Írd fel ezt a kulcsot papírra, és tartsd biztonságban. Megnyitja a széfet, ha elfelejted a kódot, új iPhone-on is. A GaleriQ nem tudja újra megmutatni.
+1804	Helyreállítási kulcs
+1805	Ez a kulcs nem egyezik.
+1806	Eltávolítva a Fotók appból: %1$lld.
+1807	Mappa átnevezése
+1808	Vissza a Fotókba
+1809	Másolás a Fotókba, a széfben is marad
+1810	Mentve a Fotók appba: %1$lld.
+1811	Nem menthető: %1$lld. A széfben maradnak.
+1812	Szerkesztési előzmények nélkül mentve: %1$lld. A teljes eredetik a széfben maradnak.
+1813	Visszahelyezés a Fotókba
+1814	Új elemekként mentődnek az eredeti dátummal és hellyel. A Fotók appban még meglévő elemek egyszerűen újra láthatóvá válnak, amikor visszahelyezed őket.
+1815	Kód mentése
+1816	Kijelölés
+1817	Széf beállításai
+1818	Rejtett, kóddal védett hely fotóknak és videóknak. Eltűnnek a Fotók appból.
+1819	Széf beállítása
+1820	Beállítás …
+1821	Rendezés
+1822	Hozzáadás dátuma
+1823	Készítés dátuma
+1824	Név
+1825	Méret
+1826	%1$lld elem még a Fotók appban is megvan.
+1827	Törlés onnan
+1828	%1$lld elem · %2$@
+1829	%2$lld elemből %1$lld · %3$@
+1830	Privát széf
+1831	Megnyitás
+1832	Hibás kód.
+1833	Csak a hang mentése
+1834	A hang nem menthető.
+1835	Hang mentése
+1836	„%1$@” mentve.
+1837	hang
+1838	Eltávolítás
+1839	Eltávolítod: %1$@ – %2$@? Húzd a piros fogantyúkat.
+1840	A piros szakaszok mentéskor valóban eltávolításra kerülnek (összesen %1$@). Koppints alább egy szakaszra a visszahozásához.
+1841	Szakasz eltávolítása
+1842	kb. %1$@
+1843	Csak durva becslés. A valódi fájlméretet mentés után látod.
+1844	Csak az elejét és a végét vágtad le. Ez gyors, és a képminőség az eredetivel azonos marad. Ha a videó ezt nem teszi lehetővé, a GaleriQ teljesen újraépíti – ez kicsit tovább tart. Teljes hossz: %1$@.
+1845	A többi módosításod miatt a GaleriQ mentéskor a teljes videót újraépíti. Ez eltarthat egy ideig. Teljes hossz: %1$@.
+1846	Videó mentése
+1847	Be- és kiúsztatás
+1848	Nincs
+1849	Kitöltés
+1850	Kitölti az új formátumot; a kívül eső szélek levágódnak.
+1851	Teljes videó megjelenítése
+1852	A teljes videót mutatja; a szabad hely fekete sávokká válik.
+1853	Állókép mentése
+1854	Állókép mentve új fotóként.
+1855	állókép
+1856	Ennek a videónak különösen világos színei vannak (HDR). Újraszámoláskor normál színekkel mentődik. Ha csak vágod, a HDR megmarad.
+1857	Látható: %1$@ – %2$@
+1858	Ennek a videónak nincs hangja.
+1859	Az előnézet nem számítható ki.
+1860	A videószerkesztés a Pro része. Mindent kipróbálhatsz; a mentéshez Pro kell.
+1861	Minőség
+1862	Kiegyensúlyozott (Full HD)
+1863	Legjobb minőség (mint az eredeti)
+1864	Kis fájl (HD)
+1865	Hang eltávolítása
+1866	A hangsáv egyáltalán nem kerül a fájlba.
+1867	A hang ugyanazzal a hangmagassággal gyorsul vagy lassul.
+1868	Eredmény: %1$@
+1869	Hang
+1870	Formátum
+1871	Sebesség
+1872	A kezdet és a vég beállításához húzd a fogantyúkat.
+1873	Hangerő
+1874	Videó
+1875	Koppints a fotóra vagy videóra a vezérlők megjelenítéséhez vagy elrejtéséhez.
+1876	Vezérlők megjelenítése vagy elrejtése
+1877	Munkafolyamat alkalmazása
+1878	Munkafolyamat szerkesztése
+1879	Még nincs saját munkafolyamatod. Használj sablont, vagy hozz létre újat.
+1880	A végén
+1881	Mentés és megosztás
+1882	Mentés
+1883	Csak megosztás
+1884	Formátum
+1885	Mint az eredeti
+1886	Hely eltávolítása
+1887	Leghosszabb oldal
+1888	Név
+1889	Fájlnév
+1890	Új munkafolyamat
+1891	Nincs
+1892	Minőség
+1893	Sajnos ez nem sikerült.
+1894	Eredmény
+1895	Futtatás
+1896	Munkafolyamat fut …
+1897	Kész
+1898	Sikertelen
+1899	A cél nem teljesült
+1900	Kihagyva
+1901	Mappába: „%1$@”
+1902	Mentés %1$@ formátumban
+1903	Minőség: %1$@
+1904	Név: „%1$@”
+1905	Leghosszabb oldal legfeljebb %1$@ px (sosem nagyítva)
+1906	Mentés új fájlokként – az eredetik maradnak
+1907	Eredmény megosztása
+1908	Legfeljebb %1$@ fotónként – a minőség és szükség esetén a méret igazodik, az eredmény mérve
+1909	Videók egyenként legfeljebb %1$@
+1910	Több lépés mentése saját munkafolyamatként
+1911	Fotónkénti méret legfeljebb
+1912	Munkafolyamatok
+1913	Igen
+9000	A GaleriQ ezen az iPhone-on rendezéshez mutatja a fotóidat és videóidat, és csak azokat az elemeket távolítja el, amelyeket kiválasztasz és a rendszer párbeszédablakában megerősítesz.
+9001	A GaleriQ a szerkesztett másolatokat, kollázsokat és videókat új elemként menti a könyvtáradba.
+9002	A GaleriQ a kamerát csak dokumentumok beolvasására használja, amikor a Beolvasás gombra koppintasz.
+9003	A GaleriQ a Face ID-t csak a kóddal védett tartalom megnyitására használja.
+9004	A GaleriQ-nak mikrofon-hozzáférés kell a hangjegyzethez. A felvétel csak koppintásra indul.
+9005	A GaleriQ ingyenes verziója a Google hirdetéseit jeleníti meg. Az engedélyeddel ezek relevánsabbak lehetnek számodra. A fotóid és fájljaid sosem jutnak el a hirdetőkhöz.
