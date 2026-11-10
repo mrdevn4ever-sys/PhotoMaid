@@ -1486,8 +1486,8 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1491 | `today_done_title` | All reviewed | அனைத்தும் பார்வையிடப்பட்டன |
 | 1492 | `today_due#one` | %1$lld item from “Later” is ready to review | “பிறகு”-இலிருந்து %1$lld உருப்படி பார்வையிடத் தயாராக உள்ளது |
 | 1493 | `today_due#other` | %1$lld items from “Later” are ready to review | “பிறகு”-இலிருந்து %1$lld உருப்படிகள் பார்வையிடத் தயாராக உள்ளன |
-| 1494 | `today_greeting_afternoon` | Good afternoon | மாலை வணக்கம் |
-| 1495 | `today_greeting_evening` | Good evening | இனிய மாலை |
+| 1494 | `today_greeting_afternoon` | Good afternoon | மதிய வணக்கம் |
+| 1495 | `today_greeting_evening` | Good evening | மாலை வணக்கம் |
 | 1496 | `today_greeting_morning` | Good morning | காலை வணக்கம் |
 | 1497 | `today_greeting_noon` | Good afternoon | மதிய வணக்கம் |
 | 1498 | `today_limited_action` | Change access | அணுகலை மாற்று |
