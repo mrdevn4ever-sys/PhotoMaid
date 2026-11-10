@@ -1,0 +1,1900 @@
+0000	3 aktiva dagar
+0001	7 aktiva dagar
+0002	Alla tre spelen spelade
+0003	Märken
+0004	%1$lld av %2$lld
+0005	Spela i Ta en paus
+0006	Fortsätt gå igenom
+0007	Skapa i Studio
+0010	dag
+0011	dagar
+0014	Uppnått
+0015	den %@
+0016	Behåll, Papperskorg och Senare räknas lika.
+0017	Första collaget
+0018	Första beslutet
+0019	Första filmen
+0020	Första månaden klar
+0021	Första PDF:en
+0022	%1$@: %2$@ bilder
+0023	%1$@: %2$@ poäng
+0024	Dagsmål
+0025	Dagsmål nått 10×
+0026	Dagsmål nått
+0027	av %@ i dag
+0028	Av – slå på i Inställningar.
+0029	%1$@ av %2$@
+0030	Spel
+0031	Ordning
+0032	Genomgånget
+0033	Första stegen
+0034	Sviter
+0035	”Senare” tömd
+0036	Nivå
+0037	Högsta nivån nådd.
+0038	%1$@ kvar till nivå %2$lld.
+0039	Hela biblioteket genomgånget
+0040	Allt stannar på den här iPhonen. Stäng av: Inställningar › Visa prestationer.
+0041	Klara månader
+0042	12 månader klara
+0043	Nytt märke: %@
+0044	Öppna prestationer
+0045	Öppnar prestationer
+0046	12 par lösta
+0047	%1$@ på under %2$@ s
+0048	%@ kvar
+0049	objekt genomgångna
+0050	%@ genomgångna
+0051	Svit
+0052	100 dagar i rad
+0053	3 dagar i rad
+0054	30 dagar i rad
+0055	7 dagar i rad
+0056	Det du redan har uppnått – bara dina egna siffror.
+0057	Prestationer
+0058	Visa
+0059	Den här veckan
+0060	Behåll och nästa
+0061	Senare
+0062	Välj datum för senare
+0063	Visa föregående
+0064	Flytta till papperskorgen
+0065	Annons
+0066	Bli reklamfri med Pro
+0067	Nästa
+0068	Du kan fortsätta strax …
+0069	Lägg till mapp
+0070	Tillagt i ”%1$@”
+0071	Albumet kunde inte ändras.
+0072	Album och mappar från appen Bilder. Att lägga till i ett album ändrar inte filerna och synkas med iCloud-bilder om det är på.
+0073	Alla
+0074	Fortsätt en kort stund i bakgrunden
+0075	GaleriQ använder den bakgrundstid som iOS tillåter, utan systemets aktivitetskort. Om tiden tar slut sparas förloppet och analysen fortsätter när du öppnar appen igen.
+0076	Djur
+0077	Dokument
+0078	Mat
+0079	Natur
+0080	Övrigt
+0081	Personer
+0082	Skärmavbilder med text
+0083	Fordon
+0084	iCloud-bilder läses bara in som små förhandsvisningar via wifi. Inget laddas upp.
+0085	Bara i iCloud: %1$lld
+0086	Bildanalys är avstängd i Inställningar.
+0087	Inte analyserade: %1$lld
+0088	Kör den här först
+0089	Jämför (%1$lld)
+0090	Grupper: %1$lld · Bilder: %2$lld
+0091	Ta med iCloud-bilder (bara via wifi)
+0092	Träffar: %1$lld
+0093	Nästa
+0094	Pausa
+0095	Tillbaka
+0096	%1$lld av %2$lld analyserade
+0097	För liten förhandsvisning: %1$lld
+0098	Analysera efteråt
+0099	En pågående analys avbryts aldrig: ”Kör den här först” pausar den bara, och den fortsätter sedan av sig själv.
+0100	Fortsätt analysen
+0101	Försök igen med misslyckade (%1$lld)
+0102	”%1$@” pågår. Den här analysen kan starta av sig själv efteråt.
+0103	Sök i igenkänd text
+0104	Visa även redan beslutade
+0105	Liknande bilder: %1$lld · du bestämmer vad som blir kvar
+0106	Biblioteket har ändrats. Fortsätt för att uppdatera analysen.
+0107	Läser in förhandsvisningar från iCloud …
+0108	Jämför liknande bilder …
+0109	Analysen är klar.
+0110	Analyserar bilder på den här iPhonen …
+0111	Pausad. Resultaten hittills sparas.
+0112	Förbereder …
+0113	Analys är inte möjlig just nu. Försök igen senare.
+0114	Resultaten kunde inte sparas. Kontrollera ledigt utrymme.
+0115	Väntar på wifi för att läsa in förhandsvisningar från iCloud.
+0116	Starta analys
+0117	Svep igenom (%1$lld)
+0118	Upp behåller, vänster flyttar till papperskorgen, höger visar den igen senare. Tryck på en bild för att börja där.
+0119	Tryck på en grupp för att jämföra den – eller svep igenom alla i tur och ordning.
+0120	Vänta inte
+0121	Väntar – startar av sig själv så snart ”%1$@” är klar.
+0122	Suddiga bilder
+0123	Skakiga eller ur fokus – sorterade efter skärpa
+0124	Efter motiv
+0125	Personer, djur, mat, landskap …
+0126	Bilder med text
+0127	Skärmavbilder, kvitton och dokument – sökbara via igenkänd text
+0128	Analysen körs bara på den här iPhonen (Apple Vision). Resultaten är förslag – du bestämmer i flödet. Inget laddas upp eller raderas automatiskt.
+0129	Analyserat på den här iPhonen
+0130	Liknande bilder
+0131	Bilder som ser väldigt lika ut, sida vid sida
+0132	GaleriQ
+0133	Mörkt
+0134	Ljust
+0135	Som enheten
+0136	Mappar per år och månad
+0137	Sorterar kopiorna i undermappar efter tagningsdatum, t.ex. ”2026/10”. Av: alla filer hamnar i en mapp.
+0138	Välj mapp
+0139	Välj en annan mapp
+0140	Album
+0141	Byte
+0142	Mapp
+0143	Namn
+0144	Anteckning
+0145	SHA-256
+0146	Taggar
+0147	Tagen
+0148	Ledigt på målet: %1$@
+0149	Ledigt utrymme på målet: okänt
+0150	GaleriQ kopierar bilder och videor till en mapp du väljer – till exempel på ett USB-minne, en extern disk eller i appen Filer. Varje kopia jämförs sedan byte för byte med originalet. Dina original stannar i Bilder och inget raderas.
+0151	En kontrollerad andra kopia av dina bilder
+0152	Den här mappen ligger på samma lagring som dina bilder. En andra kopia där hjälper inte om telefonen försvinner eller går sönder.
+0153	Den här mappen tillhör en annan app, till exempel en molntjänst. Den appen bestämmer om filerna stannar på telefonen eller hamnar online.
+0154	En separat lagringsenhet, som ett USB-minne eller en extern disk.
+0155	Senast körd %1$@: %2$lld av %3$lld kontrollerade.
+0156	GaleriQ kontrollista %1$@.csv
+0157	Kontrollista sparad: %1$@
+0158	”Kontrollerad” betyder att kopian är identisk med originalet, byte för byte. Ingen kan veta hur länge en lagringsenhet håller – förvara viktiga saker på två ställen.
+0159	Välj först vad som ska kopieras och en målmapp.
+0160	Välj nu vad som ska kopieras.
+0161	Välj nu en målmapp.
+0162	Inget valt ännu
+0163	Alternativ
+0164	%1$lld fanns redan
+0165	%1$lld fanns redan
+0166	%1$lld misslyckades
+0167	%1$lld misslyckades
+0168	%1$lld inte kopierad
+0169	%1$lld inte kopierade
+0170	%1$lld kopierad och kontrollerad
+0171	%1$lld kopierade och kontrollerade
+0172	Vad ska kopieras?
+0173	Välj bilder och videor
+0174	Ändra urval
+0175	Avbrutet
+0176	Avbrutet – ofullständig kopia borttagen
+0177	Kopian stämde inte – borttagen igen
+0178	Originalet kan inte läsas
+0179	Inget utrymme kvar på målet
+0180	Målet vägrade spara (fullt, skrivskyddat eller filen är för stor för den här lagringen)
+0181	Resultat
+0182	Kopierar och kontrollerar …
+0183	Kopiera och kontrollera
+0184	%1$lld fil kopieras till ”%2$@”.
+0185	%1$lld filer kopieras till ”%2$@”.
+0186	Steg %1$lld · %2$@
+0187	Dina original förblir som de är.
+0188	Kopiera till en vald mapp och kontrollera varje kopia
+0189	Ingen mapp vald ännu
+0190	Anslut ett USB-minne eller en extern disk och välj en mapp på den. iCloud Drive och andra platser i appen Filer fungerar också.
+0191	Arkiv
+0192	Inget datum
+0193	Kontrollerad: %1$@
+0194	Vart ska kopiorna?
+0195	Spara även en kontrollista
+0196	Sparar en tabell (CSV-fil) i målmappen med varje fils namn, datum, storlek och kontrollsumma, plus dina album, taggar och anteckningar – så att du kan kontrollera kopiorna senare.
+0197	av %1$@
+0198	Par, Bildorm och Foto Blocks
+0199	att gå igenom
+0200	Bilder du fortfarande är osäker på.
+0201	Andas ut. Dina bilder spelar med.
+0202	3 spel med dina egna bilder
+0203	Radera sista siffran
+0204	%1$lld av %2$lld siffror angivna
+0205	Integritet och data
+0206	Frågar innan en favorit hamnar i papperskorgen
+0207	Med kameran, som PDF
+0208	Vad som tar plats
+0209	Svep igenom
+0210	Kvar att gå igenom
+0211	Bilder och videor.
+0212	Krypterat, bara på den här iPhonen.
+0213	Tillbaka
+0214	Återställ
+0215	Återställt
+0216	GaleriQ-säkerhetskopia %1$@.json
+0217	Säkerhetskopia från %1$@
+0218	Den här filen är inte en säkerhetskopia från GaleriQ.
+0219	Öppna säkerhetskopia …
+0220	Filen innehåller filnamn, taggar och anteckningar. Spara den bara där du vill – på ett USB-minne, till exempel.
+0221	Återställ
+0222	Läser in en säkerhetskopia, till exempel på en ny telefon. Bilderna hittas igen via namn, storlek och tagningstid. Det som redan är beslutat eller inmatat här förblir som det är.
+0223	Spara säkerhetskopia …
+0224	Säkerhetskopian kunde inte sparas.
+0225	Säkerhetskopiera
+0226	Sparar dina GaleriQ-data i en liten fil: beslut, album, taggar, anteckningar, urvalskorg, dolda objekt, inställningar, arbetsflöden och förinställningar. Inga bilder ingår.
+0227	Säkerhetskopiera och återställ
+0228	Den här säkerhetskopian kommer från en nyare version av GaleriQ. Uppdatera GaleriQ först.
+0229	Filen kunde inte läsas.
+0230	Papperskorg
+0231	%1$lld av %2$lld kvar i dag
+0232	Radera %1$lld permanent
+0233	Det här går inte att ångra.
+0234	Radera filer permanent?
+0235	Ta bort %1$lld
+0236	Bekräfta sedan i iOS-dialogen. Bilderna och videorna flyttas till ”Nyligen raderade” i appen Bilder.
+0237	Ta bort bilder och videor?
+0238	%1$lld i papperskorgen
+0239	Radera %1$lld fil permanent
+0240	Radera %1$lld filer permanent
+0241	Ta bort %1$lld bild eller video
+0242	Ta bort %1$lld bilder och videor
+0243	Allt du lagt undan för borttagning visas här. Svep en bild eller video åt vänster för att lägga till den.
+0244	Papperskorgen är tom
+0245	Filerna raderas permanent. Det går inte att ångra.
+0246	Filer
+0247	Inget har raderats ännu. Tryck på en miniatyr för en större vy. Töm papperskorgen först när du är redo.
+0248	iOS ber dig bekräfta igen och flyttar bilder och videor till ”Nyligen raderade”. Där kan du oftast återställa dem i 30 dagar. Med iCloud-bilder gäller raderingen alla dina enheter.
+0249	Bilder och videor
+0250	Att titta ändrar inte ditt urval.
+0251	Visa större: %1$@
+0252	Urval: %1$@
+0253	Nyligen tillagda
+0254	Tagningsdatum
+0255	Tillåt bildåtkomst
+0256	Bästa: %1$lld
+0257	Byt bilder
+0258	Rensa urval
+0259	Fortsätt
+0260	Bild avslöjad!
+0261	Favoriter
+0262	Avslöjade bilder: %1$lld
+0263	Spelplan: svep åt sidan, tryck för att rotera, dra eller snärta nedåt.
+0264	Dra nedåt: snabbare · snärta nedåt: släpp
+0265	Svep åt sidan för att flytta
+0266	Tryck för att rotera
+0267	Så spelar du
+0268	Nivå: %1$lld
+0269	Hantera tillåtna bilder
+0270	Nytt rekord!
+0271	Nyaste bilderna
+0272	Nästa
+0273	Omgången klar
+0274	Pausa
+0275	Pausat
+0276	iCloud-bilder hämtas vid behov. Valv, dolda och undantagna bilder förblir skyddade.
+0277	Bildkälla
+0278	Välj bilder
+0279	Kolumn %1$lld, rad %2$lld, rotation %3$lld
+0280	Bildförlopp
+0281	Slumpade bilder
+0282	Spela igen
+0283	Börja om
+0284	Rader: %1$lld
+0285	Bara tillåtna bilder används. Bilder som inte är tillgängliga ersätts med en neutral bakgrund.
+0286	Det gick inte att spara · Försök igen
+0287	Poäng: %1$lld
+0288	Valda: %1$lld
+0289	Välj mina bilder
+0290	Starta spelet
+0291	Rensa rader och avslöja dina bilder.
+0292	Foto Blocks
+0293	Avbryt
+0294	Bilder
+0295	Skärmavbilder
+0296	Videor
+0297	Ändra
+0298	Ändra datum
+0299	Välj mapp
+0300	Stäng
+0301	A4 liggande
+0302	A4 stående
+0303	Skapa samling
+0304	1 år
+0305	2 år
+0306	6 månader
+0307	%1$lld dag
+0308	%1$lld dagar
+0309	Suddig bild
+0310	Klart för dig
+0311	Villkor
+0312	Räknar objekt …
+0313	Dina samlingar
+0314	Egna samlingar finns med Pro. Färdiga samlingar är gratis.
+0315	Radera samling
+0316	Vågrät avdelare
+0317	Lodrät avdelare
+0318	Redigera
+0319	Egen samling
+0320	Fyll
+0321	Visa hela
+0322	Filtyp
+0323	Välj en samling för att gå igenom matchande bilder och videor. Inget raderas automatiskt.
+0324	JPEG: mindre fil, perfekt för delning.
+0325	Fritt
+0326	Rutnät
+0327	Remsa
+0328	Större än
+0329	Dra i de vita handtagen för att ändra storlek. Håll på en bild och dra den till en annan för att byta plats.
+0330	Kant
+0331	Några bilder finns inte längre och utelämnas.
+0332	Allt genomgånget
+0333	Äldre än
+0334	Tryck på en bild i collaget för att byta den.
+0335	PNG: förlustfri och skarp, men större fil.
+0336	Polaroidram
+0337	Ersätt
+0338	Spara collage
+0339	Avstånd
+0340	Förhandsvisning av collage
+0341	Sida vid sida
+0342	Uppifrån och ned
+0343	Byt plats med nästa bild
+0344	Bakgrund
+0345	Layout
+0346	Bild
+0347	Avstånd
+0348	%1$@ större än %2$@
+0349	%1$@ äldre än %2$@
+0350	Beskär nederkant
+0351	Beskär vänster
+0352	Beskär höger
+0353	Beskär överkant
+0354	%1$lld objekt med okänd storlek hoppades över.
+0355	%1$lld objekt med okänd storlek hoppades över.
+0356	Vad vill du visa?
+0357	Spara i album
+0358	Spara i Filer
+0359	Spara i Bilder
+0360	Lägg till bilder
+0361	Bildformat
+0362	Bildformat %1$@
+0363	Svart
+0364	Blå
+0365	Gräddvit
+0366	Egen färg
+0367	Grön
+0368	Grå
+0369	Orange
+0370	Rosa
+0371	Röd
+0372	Vit
+0373	Gul
+0374	Album i Bilder
+0375	Välj ett album
+0376	iCloud Drive, På min iPhone eller ett USB-minne
+0377	Spara i
+0378	Bilder
+0379	Som en ny bild i ditt bibliotek
+0380	Skicka utan att spara en kopia i Bilder
+0381	Collaget kunde inte sparas. Dina bilder är oförändrade.
+0382	Typsnitt
+0383	Dra för att flytta bilden i rutan, nyp för att zooma.
+0384	Dra bilderna för att flytta dem. Två fingrar ändrar storlek och roterar.
+0385	Stor bild nederst
+0386	Stor bild till vänster
+0387	Stor bild till höger
+0388	Stor bild överst
+0389	Kolumner med %1$@ bilder
+0390	Jämnt rutnät
+0391	Rader med %1$@ bilder
+0392	Dina originalbilder ändras inte. En ny fil skapas.
+0393	Bild %1$lld
+0394	Hög (2048 px)
+0395	Talet är den längre sidan. Högre ser skarpare ut vid zoom eller utskrift, men filen blir större.
+0396	Max (4096 px)
+0397	Resultat: %1$lld × %2$lld px
+0398	Standard (1080 px)
+0399	För remsor är talet bredden (uppifrån och ned) eller höjden (sida vid sida). Mycket långa remsor förminskas så att de kan sparas.
+0400	Rotation
+0401	Collaget sparades i ”%1$@”
+0402	Collaget sparades i Filer
+0403	Collaget sparades i Bilder
+0404	Text och dekaler
+0405	Stil
+0406	Zoom
+0407	Anslutna mappar
+0408	Dela diagnostik
+0409	Tillbaka
+0410	Behåll
+0411	Senare
+0412	Papperskorg
+0413	Papperskorg: %1$lld
+0414	Öppnar papperskorgen. Inget raderas utan din bekräftelse.
+0415	Klar
+0416	Minst %1$@
+0417	Klar
+0418	Uppskattat (”ca”): %1$lld – iOS visar den exakta storleken först efter hämtning.
+0419	Behållna i dag
+0420	Filerna har raderats permanent.
+0421	Bilderna och videorna ligger nu i ”Nyligen raderade” i appen Bilder. Utrymmet frigörs först när de raderas permanent där.
+0422	Objekt som inte togs bort stannar i GaleriQ-papperskorgen.
+0423	Borttaget
+0424	sparat
+0425	Papperskorgen tömd
+0426	%1$@ sparat totalt
+0427	Minst %1$@ sparat totalt
+0428	Storleken på %1$lld objekt är okänd. Den räknas inte med i summan.
+0429	Storleken på %1$lld objekt är okänd. De räknas inte med i summan.
+0430	Sök igen
+0431	Jämför filer …
+0432	Hitta bilder, videor och filer med exakt samma innehåll. Du väljer vilka kopior som hamnar i papperskorgen.
+0433	Valda kopior: upp till %1$@. Det motsvarar inte nödvändigtvis frigjort utrymme. Kontrollera favoriter, album och redigeringar innan du tar bort kopior.
+0434	Identiska filer: %1$lld · %2$@ totalt
+0435	GaleriQ jämför filinnehållet direkt på din enhet. Bilder som ser likadana ut räknas inte som identiska kopior.
+0436	Hämtar saknade original via wifi. Stora bibliotek kan ta tid och använda mycket data. Söker i tillåtna medier och anslutna mappar.
+0437	Hämtar original från iCloud…
+0438	Ta med original från iCloud
+0439	En del innehåll kunde inte läsas. Okontrollerade objekt kan innehålla fler identiska kopior.
+0440	Sökningen är inte klar ännu
+0441	Mäter storlekar …
+0442	Flytta %1$lld kopia till papperskorgen
+0443	Flytta %1$lld kopior till papperskorgen
+0444	Inga identiska kopior hittades
+0445	Inga identiska kopior hittades i de tillgängliga områdena.
+0446	Valda för papperskorgen
+0447	%1$lld anslutna mappar kunde inte läsas.
+0448	Hitta kopior
+0449	%1$lld objekt kunde inte kontrolleras ännu.
+0450	Behålls
+0451	Dubbletter
+0452	Redigera
+0453	Exponering
+0454	Brusreducering
+0455	Radie
+0456	Tröskel
+0457	Gratis
+0458	Original
+0459	ändrad
+0460	Redigerad bild. Håll ned för att se originalet.
+0461	redigerad
+0462	Beskärningsområde
+0463	Beskär
+0464	Perspektiv
+0465	Släng
+0466	Din redigering sparas inte. Originalet förblir som det är.
+0467	Släng ändringarna?
+0468	Sparad som kopia
+0469	Sparad som kopia · %1$@
+0470	Originalet behållet · redigeringen sparades som kopia
+0471	Originalet redigerat · kan återställas i appen Bilder
+0472	Originalet ersatt · det ligger i ”Nyligen raderade”
+0473	Inte ändrat – iOS fick inte behörighet. Originalet är oförändrat.
+0474	Objektet har ändrats, flyttats eller raderats under tiden. Inget sparades.
+0475	Det här objektet kan inte öppnas för redigering.
+0476	Redigeringen kunde inte sparas. Originalet är oförändrat.
+0477	Kall
+0478	Blekt
+0479	Mono
+0480	Noir
+0481	Original
+0482	Sepia
+0483	Styrka
+0484	Livfull
+0485	Varm
+0486	Spegelvänd
+0487	Kraftig
+0488	Fet
+0489	Avslappnad
+0490	Smal
+0491	Handstil
+0492	Skrivmaskin
+0493	Klassisk
+0494	Serif
+0495	Kapitäler
+0496	Rundade hörn
+0497	Jämn
+0498	Ram inuti
+0499	Ram utanför
+0500	Bredd
+0501	Färg
+0502	Detalj
+0503	Effekter
+0504	Ljus
+0505	Färgmixer
+0506	Fortsätt redigera
+0507	Liggande
+0508	Nyans
+0509	Luminans
+0510	Mättnad
+0511	Färg
+0512	Radera
+0513	Rita
+0514	Duplicera
+0515	Redigera
+0516	Emoji
+0517	Fylld
+0518	Flytta framåt
+0519	Tryck på något du lagt till för att flytta det. Två fingrar ändrar storlek och roterar.
+0520	Tryck på en text eller dekal för att markera den och dra den sedan dit du vill.
+0521	Större
+0522	Täck
+0523	Med ”Pixla” och ”Sudda” kan konturer fortfarande synas. För text som måste bli oläslig väljer du ”Heltäckande”.
+0524	Rekommenderas för privata detaljer: det du täcker är verkligen borta i den sparade eller delade filen.
+0525	Markera
+0526	Former
+0527	Storlek
+0528	Mindre
+0529	Dekal
+0530	Text
+0531	Vågrät
+0532	Återställ perspektiv
+0533	Lodrät
+0534	Stående
+0535	Uppdaterar förhandsvisning…
+0536	Förhandsvisning är gratis · att spara kräver Pro eller 30-minuterstestet
+0537	Beskära, rotera och räta upp är gratis. Justeringar, filter, storlek och videoklippning sparas med Pro. Att prova är alltid gratis.
+0538	Spara med Pro
+0539	Sudda
+0540	Pixla
+0541	Heltäckande (rekommenderas)
+0542	Ta bort plats
+0543	Den sparade bilden innehåller inte var den togs.
+0544	Återställ
+0545	Återställ allt
+0546	Rotera
+0547	Spara som kopia
+0548	Spara kopia
+0549	Originalet förblir oförändrat.
+0550	Spara bara beskärningen
+0551	Redigera originalet
+0552	iOS frågar först. Redigeringen sparas som en redigering i appen Bilder – du kan när som helst ångra den där med ”Återställ”.
+0553	Spara kopia och flytta originalet till papperskorgen
+0554	Spara kopia, original i papperskorgen
+0555	iOS ber om bekräftelse. Originalet hamnar i ”Nyligen raderade” i appen Bilder och kan oftast återställas där i 30 dagar. Utrymmet frigörs först därefter.
+0556	Spara redigering
+0557	Sparar…
+0558	Pil
+0559	Cirkel
+0560	Linje
+0561	Rektangel
+0562	Bara dela (ingen kopia)
+0563	Delar den redigerade versionen utan att spara den i ditt galleri. Platsen tas bort.
+0564	%1$lld px
+0565	Originalstorlek
+0566	%1$lld × %2$lld → %3$lld × %4$lld px
+0567	Den här bilden är redan liten. GaleriQ förstorar aldrig bilder.
+0568	Pil
+0569	Pratbubbla
+0570	Bock
+0571	Ring
+0572	Kryss
+0573	Datumstämpel
+0574	Hjärta
+0575	Gnistor
+0576	Stjärna
+0577	Redigera med ett finger; använd två fingrar för att zooma och panorera.
+0578	Räta upp
+0579	Justera
+0580	Beskär
+0581	Filter
+0582	Ram
+0583	Märkning
+0584	Storlek
+0585	Retuschera
+0586	Klipp
+0587	Text
+0588	Slut
+0589	%1$@ – %2$@ · %3$@ s
+0590	Start
+0591	Kontur
+0592	Etikett
+0593	Skugga
+0594	Collage
+0595	Konverterad
+0596	Kopia
+0597	Utklipp
+0598	Stillbild
+0599	Film
+0600	Original ersatt
+0601	Storleksändrad
+0602	Gjord av %1$lld bild
+0603	Gjord av %1$lld bilder
+0604	När du redigerar en bild eller sparar ett collage, en film eller storleksändrade bilder visas resultatet här.
+0605	Inget redigerat ännu
+0606	Ta bort från listan
+0607	Allt GaleriQ har sparat åt dig: redigerade bilder och videor, collage, filmer och storleksändrade bilder, nyaste först. Filerna finns i appen Bilder; listan kommer bara ihåg vad som kom från GaleriQ. Tryck på en post för att visa den.
+0608	Originalet finns kvar
+0609	Originalet ligger i ”Nyligen raderade”
+0610	Finns inte längre i appen Bilder
+0611	Redigerat
+0612	Ändringen kunde inte sparas.
+0613	Välj en mapp som finns på den här iPhonen. Mappar som bara finns i molnet stöds inte här.
+0614	Datumet kunde inte sparas.
+0615	Ditt val sparades inte. Försök igen.
+0616	Mappen kunde inte anslutas.
+0617	Inställningen kunde inte sparas.
+0618	Det fungerade inte
+0619	Vänta tills papperskorgen har tömts innan du använder Ångra.
+0620	Det går inte längre att ångra eftersom du har ändrat det under tiden.
+0621	Det går inte att ångra just nu.
+0622	Undanta det här albumet
+0623	Undanta
+0624	Objekt i det här albumet visas inte längre när du rensar. Inget raderas eller flyttas. Ångra i Inställningar › Undantagna album.
+0625	Dölj ”%1$@” när du rensar?
+0626	”%1$@” visas inte längre när du rensar
+0627	Fortsätter om du byter app.
+0628	En annan export pågår redan. Vänta tills den är klar.
+0629	Avbrutet. Inget sparades.
+0630	iOS avslutade exporten i bakgrunden. Inget sparades – starta igen och håll GaleriQ öppen.
+0631	Du kan kort byta till en annan app. Om iOS avslutar tiden stoppar GaleriQ snyggt – inget halvfärdigt sparas.
+0632	Sparar …
+0633	Markera som favorit
+0634	Favoritstatusen kunde inte ändras. Den förblir densamma.
+0635	Den här bilden är skyddad som favorit.
+0636	Ta först bort favoritmarkeringen för att lägga den i papperskorgen. Du kan också stänga av favoritskyddet i inställningarna.
+0637	Den här videon är skyddad som favorit.
+0638	Ta bort från favoriter
+0639	Inte längre markerad som favorit. Svep åt vänster för att lägga den i papperskorgen.
+0640	Inte en favorit
+0641	Favorit
+0642	Lägg i ”%1$@”
+0643	Ingenting
+0644	Senare – välj datum
+0645	Lägg till knapp
+0646	Knappar och ordning
+0647	Knappar
+0648	Använd ”Redigera” för att ändra ordning eller ta bort knappar. Upp till 6 knappar. Knapparna gör exakt samma sak som sveptagen.
+0649	Lägg i album …
+0650	Inget raderas här: ”Papperskorg” är GaleriQ-papperskorgen. Ångra återställer varje åtgärd, även ”Lägg i album”.
+0651	Inga knappar
+0652	Ovanför bilden
+0653	Under bilden
+0654	Placering
+0655	Återställ standard
+0656	Upp behåller, vänster till papperskorgen, höger är senare, ned går tillbaka – med standardknapparna.
+0657	Anpassad
+0658	Standard
+0659	Svep
+0660	Välj vad varje riktning gör. ”Lägg i album” lägger till bilden i ett album i appen Bilder och behåller den. Att inte göra något är aldrig ett beslut.
+0661	Svep och knappar
+0662	Bara med VoiceOver/Brytarstyrning
+0663	Alltid
+0664	Visa knappar
+0665	Lägg i ”%1$@”
+0666	Det finns inga fler favoriter att gå igenom just nu.
+0667	Det finns inget kvar att gå igenom i det här albumet.
+0668	Det finns inget kvar att gå igenom bland dina senaste bilder.
+0669	Det finns inget kvar att gå igenom bland dina senaste videor.
+0670	Det finns inga fler Live Photos att gå igenom just nu.
+0671	Det finns inga fler långa videor att gå igenom just nu.
+0672	Det finns inget mer att gå igenom här just nu.
+0673	Det finns inget kvar att gå igenom från den här dagen tidigare år.
+0674	Det finns inga fler bilder att gå igenom just nu.
+0675	Det finns inga fler porträtt att gå igenom just nu.
+0676	Det finns inget kvar att gå igenom i ett slumpmässigt urval.
+0677	Det finns inga fler skärmavbilder att gå igenom just nu.
+0678	Det finns inga fler selfies att gå igenom just nu.
+0679	Det finns inget kvar att gå igenom från den här veckan.
+0680	Det finns inga fler videor att gå igenom just nu.
+0681	Bara en liten förhandsvisning finns på den här iPhonen. Hämta originalet för att se det helt.
+0682	Hämta från iCloud
+0683	Originalet finns i iCloud.
+0684	Läser in full kvalitet från iCloud igen. Du kan när som helst bestämma utifrån förhandsvisningen.
+0685	Läser in bilder och videor …
+0686	%@ under den här sessionen
+0687	%1$lld av %2$lld
+0688	Försök igen med överhoppade medier
+0689	Visa svephjälp
+0690	Dolda vid svep tills du läser in dem här igen. Originalen är oförändrade.
+0691	Överhoppade medier
+0692	Aktuell bild eller video
+0693	Rensa
+0694	Redo att gå igenom
+0695	Nyligen tillagda
+0696	Bilder
+0697	Skärmavbilder
+0698	Videor
+0699	Visa papperskorgen
+0700	Fil
+0701	Filtyp
+0702	Filer
+0703	Välj en mapp för att gå igenom dess filer i GaleriQ.
+0704	Ingen mapp ansluten ännu
+0705	Sök filer …
+0706	En ansluten mapp är inte tillgänglig. Anslut den igen.
+0707	Lägg till i album
+0708	Alla album
+0709	Skapa och lägg till
+0710	Ange ett kort albumnamn.
+0711	Läser in album …
+0712	Albumnamn
+0713	Nytt album
+0714	Bilden stannar där den är och visas även i albumet – även i appen Bilder och, med iCloud-bilder, på dina andra enheter.
+0715	Öppna filer
+0716	Fäst album
+0717	Fästa
+0718	Senast använda
+0719	Hitta album
+0720	Lossa album
+0721	Bästa: %1$lld
+0722	Bästa tid: %1$@
+0723	Vänd tillbaka felaktiga par manuellt
+0724	Nytt personbästa!
+0725	Inget rekord ännu
+0726	Den här omgången behöver minst %1$lld användbara bilder från den valda källan. Välj en annan källa, ett mindre urval eller tillåt hämtning från iCloud.
+0727	Bilder
+0728	Symboler
+0729	Dina nya rekord gäller för den här sessionen men kunde inte sparas. Försök igen.
+0730	Topplista
+0731	Utseende och ljud
+0732	Välj bilder
+0733	Bilder som finns i iCloud läses in vid behov.
+0734	Byt bilder
+0735	Anpassa spelet
+0736	Hitta alla matchande bilder i din egen takt.
+0737	Välj 2–18 bilder för dina par.
+0738	Spela utan bilder · 6 par
+0739	Dina bilder
+0740	Dina originalbilder förblir oförändrade.
+0741	Samla bilder. Svep för att styra.
+0742	Spela utan bilder
+0743	Standard
+0744	Spel
+0745	Hitta par med dina egna bilder.
+0746	Collage
+0747	Det finns inga bilder eller videor här just nu.
+0748	Inget att visa
+0749	Tryck för att markera, håll ned och dra för att markera flera. Att flytta är inget beslut.
+0750	Översikt
+0751	Markera
+0752	Alla
+0753	Ingen
+0754	%1$lld markerad
+0755	%1$lld markerade
+0756	Ändrat
+0757	Borttaget
+0758	Borttaget från ”Senare”
+0759	Behållet
+0760	Ändrat: behåll
+0761	Sparat till senare
+0762	Ändrat: senare
+0763	Inte borttaget
+0764	Hittas inte längre
+0765	Datum angivet
+0766	Flytta till papperskorgen
+0767	Ändrat: papperskorg
+0768	Ångrat
+0769	Tillbakalagt från papperskorgen
+0770	Hjälp
+0771	Moln
+0772	Molntjänster som Google Foto kan synka raderingar till andra enheter. Kontrollera deras inställningar. GaleriQ läser in bilder och videor från iCloud-bilder automatiskt vid behov, precis som appen Bilder.
+0773	Gör ett val
+0774	Svep uppåt för att behålla, åt vänster för papperskorgen och åt höger för senare. Som standard kommer det tillbaka om 2 dagar. Du kan ändra tiden i inställningarna. Direkt efter svepet kan du välja ett annat datum med ”Ändra”. Svep nedåt för att gå tillbaka utan att göra ett nytt val.
+0775	Radera
+0776	Att svepa raderar aldrig något. Objekten hamnar först i GaleriQ-papperskorgen. Först när du bekräftar där flyttar iOS bilder och videor till Nyligen raderade.
+0777	Visa rundturen och tipsen igen
+0778	Ned
+0779	Vänster
+0780	Höger
+0781	Upp
+0782	Alla
+0783	Borttagna
+0784	%1$@ · %2$lld post
+0785	%1$@ · %2$lld poster
+0786	Dina val visas här när du börjar rensa.
+0787	Ingen historik ännu
+0788	Det finns inga poster för det här filtret ännu.
+0789	Inga poster ännu
+0790	Behållna
+0791	Senare
+0792	Visa färre
+0793	Visa äldre poster (%1$lld)
+0794	%1$@ · %2$@
+0795	Identiska kopior
+0796	Filer från anslutna mappar
+0797	från %1$@
+0798	Bibliotek
+0799	Bli klar månad för månad
+0800	Allt genomgånget
+0801	%1$lld att gå igenom
+0802	%1$lld att gå igenom
+0803	Tagna i snabb följd
+0804	Kategorier
+0805	Samlingar
+0806	Fler verktyg
+0807	Info
+0808	Plats
+0809	%1$lld objekt
+0810	%1$lld objekt
+0811	Behåll
+0812	Alla
+0813	Arkiv
+0814	Dokument
+0815	Bilder
+0816	Övrigt
+0817	PDF:er
+0818	Videor
+0819	Stora filer
+0820	Större än
+0821	Bara filer med känd storlek på minst %1$lld MB. Storleken kan skilja sig från utrymmet som frigörs när du raderar dem.
+0822	Med ”Optimera iPhone-lagring” finns dessa original bara i iCloud. iOS visar inte deras exakta storlek utan att hämta dem, så GaleriQ uppskattar den utifrån dina uppmätta bilder och videor och visar den som ”ca”.
+0823	Bara i iCloud: %1$lld
+0824	i %1$lld stor fil
+0825	i %1$lld stora filer
+0826	Bara i iCloud, uppskattad storlek
+0827	Fortsätt mäta (kvar: %1$lld)
+0828	Mäter storlekar … %1$lld av %2$lld
+0829	Inga matchande filer
+0830	Ingen av de tillgängliga filerna med känd storlek är större än %1$lld MB.
+0831	Inte läsbara: %1$lld
+0832	De här objekten finns på den här iPhonen men kunde inte läsas. I listan visas de med uppskattad storlek (”ca”).
+0833	Senare
+0834	Tillbaka till högen
+0835	Undanlagt, inget datum
+0836	Redo att gå igenom sedan %1$@
+0837	Redo att gå igenom i dag
+0838	Svep en bild eller video åt höger för att se den igen senare.
+0839	Inget sparat till senare
+0840	Kommande 7 dagar · %1$lld
+0841	Undanlagt · %1$lld
+0842	Redo att gå igenom · %1$lld
+0843	Från %1$@ · %2$lld
+0844	Inget datum · %1$lld
+0845	I morgon · %1$lld
+0846	Igen om %1$lld dag
+0847	Igen om %1$lld dagar
+0848	Igen om %1$lld månad
+0849	Igen om %1$lld månader
+0850	Igen om 1 månad
+0851	Igen om 1 vecka
+0852	Igen om %1$lld vecka
+0853	Igen om %1$lld veckor
+0854	Tillbaka nästa gång du rensar
+0855	Undanlagt – finns under Senare
+0856	Påminna dig när det är dags att gå igenom?
+0857	Ta bort från ”Senare”
+0858	Gå igenom nu
+0859	Gå igenom nu (%1$lld)
+0860	Gå igenom igen den %1$@
+0861	Igen i morgon
+0862	Dölj undermappar
+0863	Bilder och videor på den här enheten visas här.
+0864	Visa undermappar
+0865	Tryck på ♡ på en bild eller video för att göra den till favorit. Favoriterna är desamma som i appen Bilder.
+0866	Inga favoriter ännu
+0867	Från biblioteket
+0868	Alla
+0869	Filmiskt
+0870	Ta bort filter
+0871	Redigerade
+0872	Inget här för filtret ”%1$@”.
+0873	Favoriter
+0874	Panoramabilder
+0875	RAW
+0876	Skärminspelningar
+0877	Slow motion
+0878	Time-lapse
+0879	Filter
+0880	Rensa det här albumet
+0881	Det här albumet har inga bilder eller videor just nu.
+0882	Undanta från rensning
+0883	Undantaget från rensning
+0884	Ta med i rensning igen
+0885	Inget album matchar ”%1$@”.
+0886	Sök album …
+0887	Flest objekt
+0888	Nyligen uppdaterade
+0889	%1$lld objekt dolt i GaleriQ
+0890	%1$lld objekt dolda i GaleriQ
+0891	GaleriQ visar dem ingenstans. Filerna är oförändrade och andra appar visar dem fortfarande.
+0892	%1$lld dolt objekt
+0893	%1$lld dolda objekt
+0894	Använd ”Dölj i GaleriQ” på ett album, en bild eller ett urval.
+0895	Inget dolt
+0896	Dolda
+0897	Dölj i GaleriQ
+0898	GaleriQ visar dem inte längre – varken under Bilder eller vid rensning. Filerna förblir oförändrade och syns fortfarande i andra appar. Det här är inget valv.
+0899	Dölja %1$lld objekt i GaleriQ?
+0900	Dölja %1$lld objekt i GaleriQ?
+0901	Längd
+0902	Namn
+0903	RAW-fil
+0904	Upplösning
+0905	Storlek
+0906	Tagen
+0907	Filtyp
+0908	Mindre rutor
+0909	Dagar
+0910	Större rutor
+0911	Månader
+0912	År
+0913	Medietyper
+0914	Album
+0915	Tidslinje
+0916	Inget datum
+0917	Nyligen tillagda först – i samma ordning som appen Bilder.
+0918	Rensa härifrån
+0919	Sortera
+0920	Nyligen tillagda
+0921	Största först
+0922	Namn
+0923	Nyaste först
+0924	Äldsta först
+0925	%1$lld undermapp
+0926	%1$lld undermappar
+0927	Flytta till papperskorgen
+0928	Det här är en favorit. ”Skydda favoriter” är på, så den hålls utanför papperskorgen. Du kan ändra det i Inställningar.
+0929	Till GaleriQ-papperskorgen – inget raderas. Du bestämmer där senare.
+0930	Till GaleriQ-papperskorgen – inget raderas. Favoriter stannar (”Skydda favoriter” är på).
+0931	Flytta %1$lld objekt till papperskorgen?
+0932	Flytta %1$lld objekt till papperskorgen?
+0933	%1$lld objekt ligger i GaleriQ-papperskorgen.
+0934	%1$lld objekt ligger i GaleriQ-papperskorgen.
+0935	I GaleriQ-papperskorgen
+0936	%1$lld objekt visas igen
+0937	%1$lld objekt visas igen
+0938	Visa igen
+0939	Bildformat
+0940	Vy
+0941	Kvadrat
+0942	Ta bort alla %1$lld med Pro
+0943	Titta på en annons: ta bort %1$lld till i dag
+0944	Annonsen stängdes i förtid. Inget låstes upp. Du kan försöka igen i dag.
+0945	En gång per dag. Bonusen gäller bara i dag.
+0946	Ingen annons finns tillgänglig just nu. Inget låstes upp.
+0947	Valda: %2$lld. Utan Pro kan du ta bort upp till %1$lld per dag. Resten stannar i GaleriQ-papperskorgen.
+0948	%1$lld av %2$lld kvar i dag
+0949	Ingen gräns med Pro
+0950	Ta bort %1$lld av dessa
+0951	Dagsgränsen nådd
+0952	%1$lld kvar i dag
+0953	Din dagliga kvot återställs i morgon.
+0954	Bild eller video
+0955	Analysen är klar
+0956	Du kan spela klart omgången eller visa resultaten nu.
+0957	Analysen fortsätter
+0958	Ta en paus
+0959	Kamera
+0960	Kort %1$lld
+0961	Läs in iCloud-bilder
+0962	Alla par hittade!
+0963	Tid: %1$@
+0964	Vänd korten
+0965	Hjärta
+0966	Med baksidan upp
+0967	Löv
+0968	Förbereder bilder…
+0969	Par hittat
+0970	Måne
+0971	Berg
+0972	Drag: %1$lld
+0973	Välj mina bilder
+0974	%1$lld par (%2$lld kort)
+0975	%1$lld/%2$lld par
+0976	Bild %1$lld
+0977	Välj album eller bildmapp
+0978	Visa resultat
+0979	Fortsätt omgången
+0980	Antal par
+0981	Bildkälla
+0982	Album eller bildmapp
+0983	Favoriter
+0984	Hela bildbiblioteket
+0985	Sol
+0986	Par
+0987	Några bilder finns inte längre eller bara i iCloud. Välj andra bilder eller tillåt hämtning. Bilder i valvet kan inte användas.
+0988	Åtgärder för %1$@
+0989	Gå igenom igen
+0990	Genomgånget
+0991	%1$lld till senare
+0992	%1$lld till senare
+0993	Inte påbörjad · %1$lld objekt
+0994	Inte påbörjad · %1$lld objekt
+0995	%1$lld av %2$lld genomgånget
+0996	%1$lld av %2$lld genomgångna
+0997	Månader visas här när bilder eller videor har ett tagningsdatum.
+0998	Inga månader ännu
+0999	Hur långt du har kommit i varje månad. Objekt som lagts undan till senare räknas som genomgångna.
+1000	Per månad
+1001	Fler åtgärder
+1002	Lägg till
+1003	16:9 · Liggande
+1004	4:5 · Lite högt
+1005	9:16 · Stående
+1006	1:1 · Kvadrat
+1007	Alternativ för klipp %1$lld
+1008	Klipp %1$lld av %2$lld
+1009	Bild · %1$@
+1010	Klippet togs bort från videon
+1011	Video · %1$@
+1012	Använd ⋯ för att flytta eller ta bort ett klipp. Själva bilderna och videorna förblir oförändrade.
+1013	Tona till svart mellan klippen
+1014	Videon kunde inte skapas. Inget sparades och originalen är oförändrade.
+1015	Fyll bildrutan
+1016	Om ett klipp har en annan form
+1017	Klipp sträcks aldrig ut: antingen visas hela bilden (med svarta kanter) eller så fyller den bildrutan och kanterna beskärs.
+1018	Hela bilden
+1019	Format
+1020	Som första klippet
+1021	Den färdiga videons form. 9:16 fyller en upprättstående telefonskärm, 16:9 passar tv och datorer. ”Som första klippet” använder formen på ditt första klipp.
+1022	Mjuk zoom
+1023	Bilderna zoomar in långsamt så att de inte ser stillastående ut.
+1024	Flytta tidigare
+1025	Flytta senare
+1026	Din egen fil, spelas från början och upprepas vid behov. GaleriQ innehåller ingen musik. Tänk på rättigheterna när du delar.
+1027	Välj en ljudfil
+1028	Ta bort
+1029	Musikvolym
+1030	Tid per bild
+1031	Gäller varje bild i den här videon. Videor spelas alltid i full längd.
+1032	Bilder
+1033	Välj videor och bilder
+1034	Kvalitet
+1035	Balanserad
+1036	Hög (Full HD)
+1037	Hög och Balanserad: upp till Full HD (1080p) – Balanserad ger mindre filer med knappt synlig skillnad. Liten: upp till HD (720p), minsta filen, bra för att skicka.
+1038	Liten (HD)
+1039	Ta bort från videon
+1040	Ändra ordning
+1041	Skapar video …
+1042	Spara video
+1043	Sparad som ny video i ditt bibliotek. Originalen förblir oförändrade.
+1044	Bilder med mjuk zoom och övertoningar, sparade som video
+1045	Videor och bilder i följd, med musik
+1046	Klipp
+1047	Format
+1048	Musik
+1049	Övergång
+1050	Kombinera videor
+1051	Bildspel som video
+1052	Lägg till minst två klipp.
+1053	Högst 30 minuter totalt. Korta klippen eller ta bort några.
+1054	Högst 50 klipp per video.
+1055	Mellan två klipp blir bilden kort svart och tonar sedan in igen. Av: hårt klipp. Den totala längden förblir densamma.
+1056	Stäng av ljud
+1057	Den här filen kan inte visas.
+1058	Inte markerad
+1059	Anteckning
+1060	Något i ”Senare” är redo att gå igenom i dag.
+1061	OK
+1062	GaleriQ visar dina bilder och videor direkt på enheten så att du kan rensa. Inget GaleriQ-konto eller server.
+1063	Åtkomst till bilder och videor
+1064	Köp Pro · %1$@ en gång
+1065	Köp Pro en gång
+1066	Övningskort. Inget sparas här.
+1067	Nästa
+1068	Svep och sortera utan gränser, med annonser ibland. Borttagning har en daglig gräns.
+1069	Börja gratis
+1070	Steg %1$lld av %2$lld
+1071	Dina bilder stannar på din enhet. Inget GaleriQ-konto, ingen bilduppladdning.
+1072	Objekt hamnar först i GaleriQ-papperskorgen. Där bekräftar du borttagningen, och iOS frågar igen innan bilder och videor flyttas till Nyligen raderade.
+1073	Du bestämmer vad som raderas
+1074	Gå igenom dina bilder och videor och bestäm vad som blir kvar. Ett svep i taget, i din egen takt.
+1075	Ditt galleri, äntligen i ordning
+1076	Så funkar det. Nu till dina bilder.
+1077	Upp: behåll. Vänster: papperskorg. Höger: senare. Prova här.
+1078	Svep och välj
+1079	Största först
+1080	Nyaste först
+1081	Äldsta först
+1082	Blanda
+1083	Ordning
+1084	Lägg till i album
+1085	%1$lld lades till i ”%2$@”.
+1086	%1$lld lades till i ”%2$@”.
+1087	Albumnamn
+1088	Inga album ännu
+1089	Urvalskorg
+1090	Lägg i urvalskorgen
+1091	%1$lld lades i urvalskorgen.
+1092	%1$lld lades i urvalskorgen.
+1093	Finns redan i urvalskorgen.
+1094	Töm korgen
+1095	Bara korgen töms. Bilderna och videorna förblir oförändrade.
+1096	Töm urvalskorgen?
+1097	I ”Bilder” markerar du något och trycker på ⋯ › Lägg i urvalskorgen.
+1098	Urvalskorgen är tom
+1099	Samla bilder och videor från olika månader och mappar. Korgen finns kvar tills du tömmer den – den har inget med papperskorgen att göra.
+1100	Ta ur korgen
+1101	Skapa
+1102	%1$lld objekt hittades inte (raderat eller inte längre på den här enheten).
+1103	%1$lld objekt hittades inte (raderade eller inte längre på den här enheten).
+1104	Ta bort från listan
+1105	Nytt album
+1106	Anteckning
+1107	Anteckning (bara i GaleriQ, filen förblir oförändrad)
+1108	Spara anteckning
+1109	Lägg till
+1110	Ta bort överallt
+1111	Taggen försvinner överallt. Själva bilderna och videorna förblir oförändrade.
+1112	Ta bort taggen ”%1$@” överallt?
+1113	Ny tagg
+1114	Ta bort tagg
+1115	på vissa
+1116	Taggar
+1117	Taggar för %1$lld objekt
+1118	Taggar för %1$lld objekt
+1119	Inga taggar ännu. Lägg till egna ord som ”Faktura” eller ”Semester” – GaleriQ känner bara till det du själv anger.
+1120	Pausa
+1121	PDF-åtgärder
+1122	Kombinera filer, ändra ordning och rotera sidor
+1123	PDF:en kunde inte sparas.
+1124	Lägg till filer
+1125	Välj filer
+1126	PDF från filer
+1127	Filerna kunde inte öppnas. Välj läsbara, olåsta PDF:er eller bilder och försök igen. Dina nuvarande sidor är oförändrade.
+1128	Välj PDF:er eller bilder från Filer. Kombinera, ändra ordning och rotera sidor med direkt förhandsvisning och spara sedan en ny PDF.
+1129	Välj färre eller mindre filer (upp till 100 MB per fil, 256 MB per urval och 500 sidor).
+1130	Fyll
+1131	Anpassa
+1132	Skapa PDF
+1133	Marginal
+1134	Ingen
+1135	Normal
+1136	Smal
+1137	Automatisk
+1138	Liggande
+1139	Stående
+1140	Orientering
+1141	Flytta tidigare
+1142	Flytta senare
+1143	Sida %1$lld av %2$lld
+1144	Rotera
+1145	Markera sidor
+1146	Papper
+1147	US Letter
+1148	Bilder per sida
+1149	%1$lld bild
+1150	%1$lld bilder
+1151	Bilder till PDF:en
+1152	Bilderna bäddas in på nytt: plats och andra tagningsdata följer inte med till PDF:en. Originalen förblir oförändrade.
+1153	Skapar PDF …
+1154	Spara som PDF
+1155	Sparad i ”Dokument/GaleriQ” · %1$@
+1156	Dela PDF
+1157	Bilder som dokument eller kontaktark
+1158	Skapa PDF
+1159	Bild
+1160	När vill du se den igen?
+1161	Antal
+1162	Lägg undan utan datum
+1163	Den kommer inte tillbaka av sig själv. Du hittar den under Senare › Undanlagt.
+1164	Gå igenom igen den %1$@
+1165	Välj datum …
+1166	Enhet
+1167	Spela
+1168	Uppspelningsposition
+1169	Den här bilden eller videon kan inte visas just nu.
+1170	Den kan ha flyttats eller inte sparats helt ännu.
+1171	Gratisversionen visar annonser från Google. Du kan ändra ditt samtycke i inställningarna. Dina bilder, deras namn, mappar eller något som härleds från dem går aldrig till annonsleverantörer. Pro har inga annonser.
+1172	Tillåt åtkomst
+1173	Hantera urval
+1174	Bilder och videor
+1175	För att visa, sortera och ta bort bilder och videor efter din bekräftelse.
+1176	Tillåt notiser
+1177	Valfritt: få en påminnelse när något i ”Senare” är redo att gå igenom. Filnamn visas inte på låsskärmen.
+1178	Öppna iOS-inställningar
+1179	Köp sker via Apples App Store. GaleriQ skickar aldrig dina bilder, namn eller metadata för detta.
+1180	GaleriQ tittar på dina bilder, videor och tillåtna filer bara på din enhet. Du behöver inget konto och det finns ingen GaleriQ-server. Bra att veta: med molntjänster som Google Foto kan det du raderar försvinna även på dina andra enheter.
+1181	Din integritet går först
+1182	Köpt en gång: inga annonser, ingen daglig gräns och valvmappar utan annonser.
+1183	Ingen annons när du öppnar appen och inga annonskort mellan dina bilder och videor.
+1184	Valvmappar utan annonser
+1185	Skapa nya mappar i valvet utan att titta på en video.
+1186	Allt annat – redigering, analys, dubbletter, samlingar, Studio – är gratis för alla.
+1187	Dina bilder och filer kontrolleras och sorteras bara på din enhet. Vid köpet går bara det nödvändiga till Apple, och för annonser i gratisversionen till Google – aldrig dina bilder, deras namn eller detaljer från dem.
+1188	Pro är aktivt
+1189	Pro
+1190	Inga annonser
+1191	Rensa utan daglig gräns
+1192	Ta bort så mycket du vill — utan den dagliga gränsen på %1$lld.
+1193	GaleriQ Pro är nu aktivt.
+1194	Köpet kunde inte slutföras.
+1195	Inget tidigare köp hittades för det här kontot.
+1196	Ditt köp väntar på bekräftelse. Pro låses upp när det bekräftats.
+1197	Ditt köp har återställts.
+1198	Läser in pris …
+1199	Dina bilder och filer kontrolleras och sorteras bara på din enhet. Vid köpet går bara det allra nödvändigaste till Google – aldrig dina bilder, deras namn eller något som härleds från dem.
+1200	Återställ köp
+1201	Pro kan inte läsas in från App Store just nu. Kontrollera internetanslutningen och försök igen.
+1202	Köp en gång. Ingen prenumeration.
+1203	GaleriQ Pro
+1204	Köp är inte tillgängliga i den här versionen ännu.
+1205	Den här versionen är inte ansluten till köp i App Store ännu. Du kan använda alla andra funktioner som vanligt.
+1206	Lås upp GaleriQ Pro
+1207	Visa GaleriQ Pro
+1208	Lägg tillbaka
+1209	Lägg till
+1210	Lägg till genväg
+1211	Allt genomgånget
+1212	Redigera
+1213	Redigera genvägar
+1214	Tom
+1215	Favoriter
+1216	Dina favoriter från appen Bilder
+1217	Album
+1218	Album
+1219	Senaste bilderna
+1220	Din senaste bild (%1$lld)
+1221	Dina %1$lld senaste bilder
+1222	Senaste videorna
+1223	Din senaste video (%1$lld)
+1224	Dina %1$lld senaste videor
+1225	Gräns för genvägar: %1$lld. Ta bort en för att lägga till en annan.
+1226	Live Photos
+1227	Bilder med rörelse och ljud
+1228	Långa videor
+1229	Videor på en minut eller längre
+1230	Flytta bakåt: %1$@
+1231	Flytta framåt: %1$@
+1232	Inga album med bilder eller videor hittades.
+1233	Den här dagen
+1234	Tagna på dagens datum tidigare år
+1235	På startskärmen
+1236	Bilder
+1237	Porträtt
+1238	Bilder tagna i porträttläge
+1239	Slumpvis
+1240	%1$lld slumpvisa öppna bilder och videor, blandade på nytt varje gång
+1241	Bara genvägen tas bort. Dina filer och val behålls.
+1242	Skärmavbilder
+1243	Selfies
+1244	Från albumet Selfies i appen Bilder
+1245	Den här veckan
+1246	Bilder och videor från den här kalenderveckan
+1247	Snabbåtkomst
+1248	Videor
+1249	Alla prestationer
+1252	%lld bästa tid
+1253	%lld bästa tider
+1256	Senaste rekord
+1257	Brons
+1258	Guld
+1259	%1$@ av %2$@ · %3$@ kvar
+1260	Silver
+1261	Medaljerna jämförs bara med dina egna resultat – inga topplistor, inget lämnar enheten.
+1262	Rekord
+1263	Dina rekord. De stannar på den här iPhonen.
+1264	bilder
+1265	poäng
+1268	%1$@ bild
+1269	%1$@ bilder
+1272	%1$@ poäng
+1273	%1$@ poäng
+1276	aktiv dag
+1277	aktiva dagar
+1282	nytt rekord
+1283	nya rekord
+1286	genomgångna
+1287	Din senaste vecka
+1288	Gör om
+1289	Massredigering
+1290	Redigera PDF:er
+1291	Skanna dokument
+1292	Ta bort
+1293	Valda: %2$lld. Du kan ta bort %1$lld objekt till i dag. Välj högst %1$lld eller skaffa GaleriQ Pro.
+1294	Valda: %2$lld. Du kan ta bort %1$lld objekt till i dag. Välj högst %1$lld eller skaffa GaleriQ Pro.
+1295	Avbrutet. Inget togs bort.
+1296	Ditt urval har ändrats. Kontrollera det igen.
+1297	Inget togs bort.
+1298	Vi kontrollerar resultatet nästa gång du öppnar appen. Inget raderas igen.
+1299	Dagsgränsen nådd
+1300	Inget borttaget
+1301	Pensel
+1302	Radera område
+1303	Måla över stället med ett finger. Två fingrar zoomar.
+1304	Tryck på bilden där området ska vara. Gör det sedan ljusare, mörkare eller ändra färgen.
+1305	Toning
+1306	Cirkel
+1307	Röda ögon
+1308	Tryck på ett rött öga. Vid små ansikten zoomar du först in med två fingrar. Bara det röda i ögat ändras.
+1309	Ta bort senaste
+1310	Storlek
+1311	Försök igen
+1312	Spara
+1313	Skärmavbild
+1314	Sök
+1315	Markerade
+1316	Jämför serie med %1$lld bilder
+1317	Behåll %1$lld · Papperskorg %2$lld
+1318	%1$lld behållna · %2$lld i papperskorgen
+1319	Inget raderas. Papperskorgen tillhör GaleriQ och töms bara när du bekräftar.
+1320	Tryck på en bild för att jämföra den nedan. Bocken avgör vad som blir kvar.
+1321	Behåll
+1322	Behåll
+1323	Papperskorg
+1324	Tagna i snabb följd · %1$lld
+1325	Jämför serier
+1326	Visa prestationer
+1327	Svit, dagsmål, märken och veckosammanfattning.
+1328	Ändra annonssamtycke
+1329	Utseende
+1330	Reglage
+1331	Dagsmål
+1332	Undantagna mappar
+1333	Av
+1334	Vibrera vid åtgärder
+1335	Visa svephjälp vid öppning
+1336	Om %1$lld dag
+1337	Om %1$lld dagar
+1338	Språk
+1339	GaleriQ använder din iPhones språk. Tryck för att välja ett annat språk bara för GaleriQ under ”Språk” i iOS-inställningarna.
+1340	Senare: standardtid
+1341	Engångsköp
+1342	Skydda favoriter
+1343	Betygsätt GaleriQ
+1344	Det hjälper oss verkligen – tack!
+1345	Visa ”Din senaste vecka”
+1346	Alltid på startsidan
+1347	Inställningar
+1348	Dela
+1349	Den här bilden eller videon kan inte delas just nu.
+1350	De valda bilderna och videorna kan inte delas just nu. Kontrollera anslutningen till iCloud och försök igen.
+1351	Inte redo att delas: %1$lld av %2$lld (t.ex. ingen anslutning till iCloud). Bara de övriga erbjöds.
+1352	Förbereder … %1$lld av %2$lld
+1353	Senare
+1354	Börja rensa
+1355	Studio
+1356	Papperskorg
+1357	ca %1$@
+1358	”ca” = uppskattat utifrån dina uppmätta bilder och videor. iOS visar den exakta storleken på iCloud-original först efter hämtning.
+1359	Minst %1$@
+1360	Okänd storlek
+1361	Nästa utan att välja
+1362	Spela igen
+1363	Ingen
+1364	Tid per bild
+1365	Inget att visa här.
+1366	Bildspelet är slut
+1367	Övertoning
+1368	Upprepa
+1369	Nästa
+1370	Att titta är aldrig ett beslut. Skärmen förblir på under bildspelet.
+1371	Ordning
+1372	Äldsta först
+1373	Blanda
+1374	Pausa
+1375	Föregående
+1376	%1$lld s
+1377	Inställningar för bildspel
+1378	Bildspel
+1379	Övergång
+1380	Spela upp videor (utan ljud)
+1381	Spelplan för Bildorm
+1382	Kamera: kolumn %1$lld, rad %2$lld. Bild: kolumn %3$lld, rad %4$lld.
+1383	Figur
+1384	Klassisk — fasta kanter
+1385	Nästa ruta är fri
+1386	Svep på spelplanen för att byta riktning.
+1387	Ned
+1388	Poäng: %1$lld
+1389	Snabb
+1390	Mat
+1391	Välj bilder
+1392	%lld av 100 bilder
+1393	Flytta senare
+1394	Välj upp till 100 bilder till din orm.
+1395	Ditt bildurval kunde inte sparas eller återställas. Försök igen.
+1396	Bildordning · dra för att ändra ordning
+1397	Bild %lld
+1398	Bara dina valda bilder används. Små kopior stannar på den här iPhonen, utanför iCloud-säkerhetskopian. Ta bort dem här för att radera kopiorna.
+1399	Dina bilder
+1400	Flytta tidigare
+1401	Långsam
+1402	Haptik
+1403	Vänster
+1404	Spelläge
+1405	Nattskog
+1406	Normal
+1407	Hinder rakt fram
+1408	Andra spel
+1409	Omgången slut
+1410	Pausa
+1411	Några bilder kunde inte läsas in. Kontrollera anslutningen för iCloud-bilder och försök igen.
+1412	Bästa: —
+1413	Avslappnad — genom kanterna
+1414	Höger
+1415	Blanda bilder
+1416	Blandningen gäller nästa nya spel. Att byta bilder pausar det pågående spelet.
+1417	Ljud
+1418	Hastighet
+1419	Starta spelet
+1420	Svep för en ny omgång
+1421	Svep för att fortsätta
+1422	Svep var som helst för att styra
+1423	Bildorm
+1424	Upp
+1425	Bildremsan klar!
+1426	Största först
+1427	Nyaste först
+1428	Äldsta först
+1429	Att koppla från en mapp raderar inga filer. Du väljer i den här filvyn vilka mappar GaleriQ får komma åt.
+1430	Koppla från mapp
+1431	Bara visa
+1432	Visa och radera filer
+1433	Inte tillgänglig — anslut igen
+1434	Dina sparade beslut kunde inte läsas in. Inget har ändrats eller raderats. Starta om GaleriQ; hjälper det inte, dela diagnostiken.
+1435	GaleriQ kunde inte starta
+1436	Din enhet
+1437	%1$@ ledigt enligt iOS
+1438	Synligt för GaleriQ
+1439	Skärmavbilder ingår redan i bilder. Stora filer och dubbletter räknas inte igen. Okända storlekar utelämnas ur summan, som då markeras med ”Minst”.
+1440	Inte synligt för GaleriQ
+1441	GaleriQ kan inte kontrollera andra appar, systemfiler, molninnehåll eller mappar du inte har tillåtit. Ingen storlek visas för dessa.
+1442	Anslutna mappar
+1443	Lagringsanalysen stannar på din enhet.
+1444	inklusive skärmavbilder
+1445	Lagringsöversikt
+1446	Lagringsinformation är inte tillgänglig just nu
+1447	av %1$@ använt
+1448	%1$lld objekt · %2$@
+1449	%1$lld objekt · %2$@
+1450	Collage
+1451	Collage
+1452	Rutnät, fritt eller remsa
+1453	Skapa
+1454	Collage · %1$lld bild
+1455	Collage · %1$lld bilder
+1456	Radera utkast
+1457	Utkastet tas bort. Dina bilder påverkas inte.
+1458	Gratisversionen behåller dina 3 senaste utkast.
+1459	Utkast
+1460	Inte tillräckligt med minne för den här storleken. Prova ”Standard” eller färre bilder.
+1461	Skapa med dina bilder. Allt stannar på din enhet.
+1462	Välj högst %1$lld.
+1463	Bilder till collaget
+1464	Sparat
+1465	Redigerade bilder, videor och collage
+1466	Inget raderas förrän du tömmer papperskorgen och bekräftar.
+1467	Klart för nu
+1468	Behållna
+1469	Visa senaste bild eller video
+1470	Senare
+1471	Rensa utan daglig gräns med GaleriQ Pro. Köp en gång, ingen prenumeration.
+1472	Lite mer ordning
+1473	I papperskorgen
+1474	Ingen daglig gräns med Pro.
+1475	%1$lld undanlagd för borttagning.
+1476	%1$lld undanlagda för borttagning.
+1477	Visa papperskorgen (%1$lld)
+1478	Rensa
+1479	Historik
+1480	Bilder
+1481	Studio
+1482	I dag
+1483	Ge GaleriQ åtkomst så att du kan visa och sortera dina bilder och videor.
+1484	Tillåt åtkomst i iOS-inställningarna under GaleriQ › Bilder. Dina tidigare val förblir sparade.
+1485	Ingen åtkomst till dina bilder och videor
+1486	Åtkomst till bilder och videor
+1487	Fortsätt rensa
+1488	Fortsätt: %1$@
+1489	Fortsätt där du slutade.
+1490	Det finns inget mer att gå igenom just nu.
+1491	Allt genomgånget
+1492	%1$lld objekt från ”Senare” är redo att gå igenom
+1493	%1$lld objekt från ”Senare” är redo att gå igenom
+1494	God eftermiddag
+1495	God kväll
+1496	God morgon
+1497	God eftermiddag
+1498	Ändra åtkomst
+1499	GaleriQ visar bara de bilder och videor du har tillåtit. Du kan rensa dem som vanligt.
+1500	Begränsad åtkomst
+1501	%1$lld ny bild eller video
+1502	%1$lld nya bilder och videor
+1503	sedan din senaste rensning
+1504	Något avbröts förra gången papperskorgen tömdes. För säkerhets skull raderas inget igen.
+1505	Öppnar dina bilder och videor för rensning
+1506	Börja rensa
+1507	Svep igenom dina bilder och videor.
+1508	Enhetens lagring
+1509	%1$@ av %2$@ använt
+1510	Redigera flera bilder
+1511	Ändrar exponeringen för många bilder på en gång.
+1512	Konvertera
+1513	Sparar bilder i ett annat filformat, t.ex. HEIC som JPEG för enheter som inte kan öppna HEIC.
+1514	Alla enheter kan öppna JPEG. PNG behåller alla detaljer, men filerna blir större. Bilder som redan har det här formatet hoppas över.
+1515	t.ex. HEIC till JPEG, som nya kopior
+1516	Dina original förblir oförändrade – GaleriQ sparar nya kopior i ditt bibliotek.
+1517	%1$lld ny kopia sparad.
+1518	%1$lld nya kopior sparade.
+1519	Under 0 gör bilderna mörkare, över 0 ljusare.
+1520	Det fungerade inte. Dina original är oförändrade.
+1521	%1$lld kunde inte bearbetas.
+1522	%1$lld kunde inte bearbetas.
+1523	Mindre filer, men inte alla enheter kan öppna dem
+1524	Öppnas på alla enheter och i alla appar
+1525	Ingen kvalitetsförlust, men mycket större filer
+1526	Skapa GIF
+1527	Liten fil – bra för meddelanden
+1528	Skarpare, men större fil
+1529	Tid per bild
+1530	Gör flera bilder till en kort animation som upprepas i oändlighet – i den ordning de togs.
+1531	GIF:ar har högst 256 färger och inget ljud – bilderna kan se lite korniga ut.
+1532	GIF sparad i ditt bibliotek (%1$@).
+1533	Storlek
+1534	Från bilder eller en kort del av en video
+1535	Verktyg
+1536	Ta bort plats
+1537	Kopiorna ser exakt ut som originalet – bara platsen där bilden togs tas bort. Bilder utan plats hoppas över.
+1538	Kopior utan plats, t.ex. innan du delar
+1539	Välj bilder först.
+1540	Välj minst två bilder.
+1541	Inga bilder valda ännu
+1542	Dina original är oförändrade – inget utrymme frigjordes.
+1543	Välj bilder
+1544	Skapa med Pro
+1545	%1$@ px
+1546	Balanserad
+1547	Hög
+1548	Mindre fil
+1549	Kvalitet
+1550	Lägre kvalitet ger mindre filer – vid ”Balanserad” ser du sällan någon skillnad.
+1551	%1$@ (%2$@)
+1552	Ta även bort plats
+1553	Förminska
+1554	Gör bilder mindre – i pixlar och filstorlek. Praktiskt för att skicka eller ladda upp.
+1555	Många bilder på en gång, som nya kopior
+1556	Bearbetar dina filer…
+1557	%1$@ s
+1558	%1$lld fil vald
+1559	%1$lld filer valda
+1560	Liten – räcker för meddelanden och sociala medier
+1561	Stor – skarp på telefoner, surfplattor och datorer
+1562	Mycket stor – nästan alla detaljer, t.ex. för utskrift
+1563	Kopiornas storlek
+1564	Mäts på bildens längre sida, i pixlar (px). Bilder förstoras eller sträcks aldrig.
+1565	Originalstorlek
+1566	Samma antal pixlar – bara formatet ändras
+1567	Uppmätt: %1$@ före, %2$@ efter
+1568	%1$lld överhoppad (inget att göra eller en video).
+1569	%1$lld överhoppade (inget att göra eller videor).
+1570	Starta
+1571	Sätt ihop skärmavbilder
+1572	Sätter ihop skärmavbilder uppifrån och ned till en lång bild, i den ordning de togs. Alla får samma bredd som den smalaste bilden – inget sträcks eller förstoras.
+1573	Sparad som ny bild i ditt bibliotek. Skärmavbilderna förblir oförändrade.
+1574	Under varandra, som en lång bild
+1575	Nytt format
+1576	Verktyg
+1577	%1$lld storlek okänd – inte med i summan.
+1578	%1$lld storlekar okända – inte med i summan.
+1579	Klar
+1580	Markera favoriter, dela objekt eller lägg till dem i ett album. Det markerar dem inte som behållna, i papperskorgen eller sparade till senare.
+1581	Favoriter, delning och album
+1582	Siffran visar hur mycket du har lagt undan. Tryck på den för att gå igenom ditt urval och tömma papperskorgen.
+1583	Din papperskorg
+1584	Svepte du fel? Tryck här för att ångra ditt senaste val.
+1585	Ångra
+1586	När du behöver en paus från rensandet: spela Par, Bildorm eller Foto Blocks med dina egna bilder.
+1587	Behöver du en paus?
+1588	Inget beslut
+1589	Se vad du har behållit, lagt undan eller sparat till senare. Du kan fortfarande ändra alla beslut här.
+1590	Senare och historik
+1591	Här finns alla dina bilder och videor – per dag, månad eller år, i album och favoriter.
+1592	Alla dina bilder
+1593	Objekt som lagts undan till senare räknas som genomgångna – du ser dem fortfarande här.
+1594	Öppna översikten som rutnät eller gå igenom en färdig månad igen.
+1595	Tryck på en månad för att bara gå igenom dess öppna bilder och videor.
+1596	Hur långt du har kommit
+1597	Nästa
+1598	Flera bilder tagna i snabb följd? Jämför dem sida vid sida och välj vad som blir kvar.
+1599	Gör GaleriQ till ditt eget och hitta svar här. Du kan ta den här rundturen igen när som helst.
+1600	Inställningar och hjälp
+1601	Hoppa över guiden
+1602	Redigera bilder, gör collage, kortfilmer och PDF:er och använd smarta verktyg. Du får alltid nya filer – dina original förblir som de är.
+1603	Var kreativ
+1604	Tryck på ”Börja rensa” för att svepa igenom allt som återstår.
+1605	Börja här
+1606	Bilder, videor, skärmavbilder eller ett album: skapa genvägar till det du ofta rensar.
+1607	Dina genvägar
+1608	Här hittar du objekt som lagts undan för borttagning eller sparats till senare. Borttagning sker först när du bekräftar i papperskorgen.
+1609	Papperskorg och Senare
+1610	Stora filer, dubblettbilder, enskilda månader och färdiga samlingar: här städar du steg för steg.
+1611	Fler sätt att rensa
+1612	Håll på ”GaleriQ” högst upp i 2 sekunder för att öppna valvet – ratten i ”Q” vrids. Ställ in det och hitta fler alternativ i Inställningar.
+1613	Ditt privata valv
+1614	Ångra
+1615	Dag
+1616	Dagar
+1617	Månad
+1618	Månader
+1619	Vecka
+1620	Veckor
+1621	Slå på ljud
+1622	Lägg till textblock
+1623	Bifoga en valvfil
+1624	Den här filen är fortfarande bifogad till en anteckning, kanske i valvets papperskorg. Koppla loss den först.
+1625	Bilagor
+1626	Lås vid inaktivitet
+1627	Valvet låses alltid i bakgrunden. Förhandsvisningar döljs när du byter app.
+1628	Krypterad säkerhetskopia
+1629	Innehåller medier, anteckningar, filer, mappar och valvets papperskorg. Använd ett starkt, separat lösenord för säkerhetskopian. Utan det kan säkerhetskopian inte återställas.
+1630	Säkerhetskopian återställdes inte. Lösenordet kan vara fel, filen skadad, sessionen låst eller lagringen otillräcklig. Befintligt innehåll är oförändrat.
+1631	Lösenord för säkerhetskopia (minst 12 tecken)
+1632	Fet
+1633	Punktlista
+1634	Kameran är inte tillgänglig eller åtkomst är inte tillåten.
+1635	Markera som klar/inte klar
+1636	Checklista
+1637	Den sparade anteckningen har ändrats. Ditt utkast skrev inte över den. Spara utkastet som en ny anteckning eller släng osparade ändringar.
+1638	Fortsätt
+1639	Radera permanent
+1640	Detta tar bort det markerade innehållet permanent från valvet. Befintliga externa kopior och säkerhetskopior är oförändrade.
+1641	Koppla loss
+1642	Släng osparade ändringar
+1643	Bara den senast sparade versionen blir kvar. Osparade ändringar går förlorade.
+1644	Inga filer i den här vyn.
+1645	Inga anteckningar i den här vyn.
+1646	Radera allt permanent
+1647	Allt i valvets papperskorg (%1$@) tas bort permanent från valvet: bilder, videor, anteckningar och filer. Befintliga externa kopior och säkerhetskopior är oförändrade.
+1648	Töm valvets papperskorg?
+1649	Exportera säkerhetskopia
+1650	Den exporterade kopian ligger utanför valvets skydd. Andra appar eller personer kan komma åt den beroende på hur du delar den.
+1651	Filer
+1652	Formatering
+1653	Rubrik
+1654	Importera filer
+1655	Importerade: %1$lld. Misslyckade: %2$lld.
+1656	Inget konto och ingen GaleriQ-server. Exporter och säkerhetskopior lämnar appen bara genom en uttrycklig åtgärd från dig.
+1657	Lås nu
+1658	Medier
+1659	GaleriQ behöver åtkomst till mikrofonen för en röstanteckning. Inspelningen startar först när du trycker.
+1660	%1$lld min
+1661	Namn
+1662	Ny anteckning
+1663	Ingen intern förhandsvisning
+1664	Det här formatet kan inte visas här. Filen förblir lagrad i valvet. Att dela exporterar en kopia utanför valvet.
+1665	Inte sparad
+1666	Anteckningar
+1667	Åtgärden slutfördes inte. Kontrollera lagringsutrymme och åtkomst och försök igen.
+1668	Kopia; originalet kan finnas kvar utanför
+1669	Skapat i valvet
+1670	Återställt från säkerhetskopia
+1671	Originalet borttaget från källan
+1672	Stycke
+1673	Pausa
+1674	Fäst
+1675	Återställ i valvet
+1676	Spela in röstanteckning
+1677	Inspelad längd
+1678	Inspelningen startar först när du trycker. Den lagras krypterad och stoppas när du låser eller lämnar valvet.
+1679	Ta bort textblock
+1680	Ta bort originalet
+1681	Först när valvkopian är kontrollerad tas det oförändrade originalet bort från källan. Andra kopior och filleverantörens papperskorg kan finnas kvar.
+1682	Byt namn
+1683	Upprepa lösenordet
+1684	Återställ säkerhetskopia
+1685	Den kontrollerade säkerhetskopian läggs till som en extra kopia i det öppna valvet. Befintligt innehåll skrivs inte över. Upprepade importer skapar fler kopior.
+1686	Säkerhetskopian lades till i valvet
+1687	Fortsätt
+1688	Försök igen
+1689	Spara som ny anteckning
+1690	Det gick inte att spara
+1691	Sparat
+1692	Skanna dokument
+1693	Sök i valvet
+1694	%1$lld sekunder
+1695	Nyligen ändrade
+1696	Namn
+1697	Största först
+1698	Stoppa och spara
+1699	Text
+1700	Titel
+1701	Flytta till valvets papperskorg
+1702	Valvverktyg
+1703	Valvets papperskorg
+1704	Valvets papperskorg är tom.
+1705	Den här papperskorgen tillhör bara valvet. Innehållet förblir krypterat tills du återställer det eller uttryckligen raderar det permanent. Inget raderas automatiskt.
+1706	Utan titel
+1707	Ingen mapp
+1708	Annonsen stängdes i förtid. Ingen mapp skapades – du kan försöka igen.
+1709	I gratisversionen kräver varje ny mapp en kort annonsvideo. Med Pro skapas mappar utan annonser.
+1710	Ingen annons finns tillgänglig just nu. Försök igen senare – med Pro skapas mappar utan annonser.
+1711	Titta på video och skapa mapp
+1712	Lägg till i valvet
+1713	Alla
+1714	Valvet är krypterat och ingår i din iPhone-säkerhetskopia. Om du raderar GaleriQ raderas även valvet.
+1715	Öppna med %1$@
+1716	Öppna ditt skyddade innehåll
+1717	Din kod fungerar alltid också.
+1718	Öppna med %1$@?
+1719	Öppna med %1$@
+1720	Byt kod
+1721	Stäng och lås
+1722	Stäng
+1723	Använd bara siffrorna 0–9.
+1724	Kod
+1725	Typ av kod
+1726	De två inmatningarna stämmer inte överens.
+1727	Lösenord
+1728	6-siffrig PIN-kod
+1729	Upprepa koden
+1730	Minst 6 tecken.
+1731	Exakt 6 siffror.
+1732	Den här koden är nyckeln till valvet. Välj en som andra inte gissar – helst inte din iPhone-lösenkod.
+1733	Välj en kod
+1734	Koden är inte tillgänglig på den här iPhonen (t.ex. efter återställning utan krypterad säkerhetskopia). Öppna valvet med din återställningsnyckel.
+1735	Flytta till valvets papperskorg
+1736	Radera valvet
+1737	%1$lld objekt raderas permanent. Lägg tillbaka dem i appen Bilder först om du vill behålla dem.
+1738	Radera valvet och allt i det?
+1739	Radera mapp
+1740	Objekten stannar i valvet, bara utan mapp.
+1741	Den här papperskorgen tillhör bara valvet. Innehållet förblir krypterat tills du återställer det eller uttryckligen raderar det permanent. Inget raderas automatiskt.
+1742	Flytta %1$lld objekt till valvets papperskorg?
+1743	Spara kopia i valvet
+1744	Bildrutan sparades i valvet.
+1745	Stannar bara i valvet – visas inte i appen Bilder eller någon annanstans i GaleriQ.
+1746	Spara kopia, original i valvets papperskorg
+1747	Spara, original i valvets papperskorg
+1748	Du kan återställa originalet från valvets papperskorg.
+1749	Sparat i valvet. Originalet ligger i valvets papperskorg.
+1750	Sparat i valvet.
+1751	Valvet är tomt
+1752	Ange lösenord
+1753	Ange PIN-kod
+1754	Det fungerade inte. Försök igen.
+1755	Mappen är tom
+1756	Välj ett namn som inte är tomt och som inte redan finns.
+1757	Mappnamn
+1758	Glömt koden?
+1759	Ingen återställningsnyckel har ställts in. Utan koden (eller Face ID) kan valvet inte öppnas.
+1760	Dölj ingången
+1761	Valvet försvinner från Inställningar. Öppna det genom att hålla på ”GaleriQ” högst upp på startskärmen i 2 sekunder – den lilla valvratten i ”Q” vrids.
+1762	Dölja ingången?
+1763	Flytta till valvet
+1764	De kopieras krypterat och kontrolleras. Sedan frågar iOS om de får raderas från appen Bilder. Där ligger de kvar i ”Nyligen raderade” i 30 dagar.
+1765	Flytta till valvet: %1$lld
+1766	GaleriQ har också gjort kopior av dem (redigeringar, collage, filmer, GIF:ar): %1$lld. De finns i appen Bilder och syns fortfarande om du inte flyttar dem också.
+1767	iOS raderade inte några av dem från appen Bilder. GaleriQ visar dem ändå inte någon annanstans, men de syns fortfarande i appen Bilder. Använd meddelandet högst upp för att försöka igen.
+1768	I valvet: %1$lld. Borttagna från appen Bilder: %2$lld.
+1769	Kunde inte flyttas: %1$lld (t.ex. utan anslutning till iCloud). De stannar i appen Bilder.
+1770	Inte flyttade: %1$lld. Gratisversionen tillåter %2$lld objekt i valvet; med Pro är det obegränsat.
+1771	Tips: töm ”Nyligen raderade” i appen Bilder om de ska försvinna även där.
+1772	Flytta med kopior (%1$lld)
+1773	Utan kopior
+1774	Bilder och videor i valvet krypteras med din kod och syns bara här – ingen annanstans i GaleriQ.
+1775	När du lägger till objekt frågar iOS om de får raderas från appen Bilder. De ligger sedan kvar i ”Nyligen raderade” i 30 dagar om du inte tömmer den.
+1776	Valvet ingår i din iPhone-säkerhetskopia (krypterat). Om du raderar GaleriQ försvinner valvet.
+1777	I gratisversionen kräver varje ny mapp en kort annonsvideo. Med Pro skapas mappar utan annonser.
+1778	Ditt privata valv
+1779	Bild
+1780	Video
+1781	Gratisversionen tillåter %1$lld objekt i valvet. Med Pro är valvet obegränsat.
+1782	För många försök. Försök igen om %1$@.
+1783	Spara i valvet
+1784	Flytta
+1785	Du öppnade valvet med återställningsnyckeln. Välj en ny kod nu.
+1786	Ny kod
+1787	Ny mapp
+1788	Ingen mapp
+1789	%1$lld av %2$lld
+1790	Håll GaleriQ öppet. Om du lämnar appen stoppas processen; inget raderas.
+1791	Skapa återställningsnyckel
+1792	Jag har skrivit ned den
+1793	Återställningsnyckel
+1794	26 tecken, med eller utan bindestreck.
+1795	Utan återställningsnyckel går innehållet förlorat om du glömmer koden.
+1796	En återställningsnyckel är inställd. Om du skapar en ny blir den gamla ogiltig.
+1797	Ta bort återställningsnyckel
+1798	Skapa ny återställningsnyckel
+1799	Fortsätt utan återställningsnyckel
+1800	Utan återställningsnyckel går innehållet förlorat för alltid om du glömmer koden och Face ID inte är tillgängligt.
+1801	Verkligen utan återställningsnyckel?
+1802	Återställningsnyckel
+1803	Skriv ned nyckeln på papper och förvara den säkert. Den öppnar valvet om du glömmer koden, även på en ny iPhone. GaleriQ kan inte visa den igen.
+1804	Återställningsnyckel
+1805	Nyckeln stämmer inte.
+1806	Borttagna från appen Bilder: %1$lld.
+1807	Byt namn på mapp
+1808	Tillbaka till Bilder
+1809	Kopiera till Bilder, behåll i valvet
+1810	Sparade i appen Bilder: %1$lld.
+1811	Kunde inte sparas: %1$lld. De stannar i valvet.
+1812	Sparade utan redigeringshistorik: %1$lld. De fullständiga originalen stannar i valvet.
+1813	Flytta tillbaka till Bilder
+1814	De sparas som nya objekt med originaldatum och originalplats. Objekt som fortfarande finns i appen Bilder blir helt enkelt synliga igen när du flyttar tillbaka dem.
+1815	Spara kod
+1816	Markera
+1817	Valvinställningar
+1818	Dold, kodskyddad plats för bilder och videor. De försvinner från appen Bilder.
+1819	Ställ in valvet
+1820	Ställer in …
+1821	Sortera
+1822	Datum tillagt
+1823	Tagningsdatum
+1824	Namn
+1825	Storlek
+1826	%1$lld objekt finns också kvar i appen Bilder.
+1827	Radera där
+1828	%1$lld objekt · %2$@
+1829	%1$lld av %2$lld objekt · %3$@
+1830	Privat valv
+1831	Öppna
+1832	Fel kod.
+1833	Spara bara ljudet
+1834	Ljudet kunde inte sparas.
+1835	Sparar ljud
+1836	”%1$@” sparad.
+1837	ljud
+1838	Ta bort
+1839	Ta bort %1$@ – %2$@? Dra i de röda handtagen.
+1840	Röda avsnitt tas verkligen bort när du sparar (totalt %1$@). Tryck på ett avsnitt nedan för att ta tillbaka det.
+1841	Ta bort avsnitt
+1842	ca %1$@
+1843	Bara en grov uppskattning. Den verkliga filstorleken ser du efter sparandet.
+1844	Du har bara klippt början och slutet. Det går snabbt och bildkvaliteten förblir som i originalet. Om videon inte tillåter det bygger GaleriQ om den helt – det tar lite längre tid. Total längd %1$@.
+1845	På grund av dina andra ändringar bygger GaleriQ om hela videon när du sparar. Det kan ta en stund. Total längd %1$@.
+1846	Sparar video
+1847	Tona in och ut
+1848	Ingen
+1849	Fyll
+1850	Fyller det nya formatet; kanter utanför beskärs.
+1851	Visa hela videon
+1852	Visar hela videon; tomt utrymme blir svarta fält.
+1853	Spara stillbild
+1854	Stillbilden sparades som ny bild.
+1855	stillbild
+1856	Den här videon har särskilt ljusstarka färger (HDR). När den beräknas om sparas den med normala färger. Om du bara klipper den behålls HDR.
+1857	Synligt %1$@ – %2$@
+1858	Den här videon har inget ljud.
+1859	Förhandsvisningen kunde inte beräknas.
+1860	Videoredigering ingår i Pro. Du kan prova allt; för att spara behöver du Pro.
+1861	Kvalitet
+1862	Balanserad (Full HD)
+1863	Bästa kvalitet (som originalet)
+1864	Liten fil (HD)
+1865	Ta bort ljud
+1866	Ljudspåret skrivs inte alls in i filen.
+1867	Ljudet snabbas upp eller saktas ned med samma tonhöjd.
+1868	Resultat: %1$@
+1869	Ljud
+1870	Format
+1871	Hastighet
+1872	Dra i handtagen för att ange start och slut.
+1873	Volym
+1874	Video
+1875	Tryck på bilden eller videon för att visa eller dölja reglagen.
+1876	Visa eller dölj reglage
+1877	Använd arbetsflöde
+1878	Redigera arbetsflöde
+1879	Inga egna arbetsflöden ännu. Använd en mall eller skapa ett nytt arbetsflöde.
+1880	I slutet
+1881	Spara och dela
+1882	Spara
+1883	Bara dela
+1884	Format
+1885	Som originalet
+1886	Ta bort plats
+1887	Längsta sidan
+1888	Namn
+1889	Filnamn
+1890	Nytt arbetsflöde
+1891	Inget
+1892	Kvalitet
+1893	Tyvärr, det fungerade inte.
+1894	Resultat
+1895	Kör
+1896	Arbetsflödet körs …
+1897	Klart
+1898	Misslyckades
+1899	Målet nåddes inte
+1900	Överhoppat
+1901	Till mappen ”%1$@”
+1902	Spara som %1$@
+1903	Kvalitet %1$@
+1904	Namn ”%1$@”
+1905	Längsta sidan högst %1$@ px (förstoras aldrig)
+1906	Spara som nya filer – originalen blir kvar
+1907	Dela resultatet
+1908	Högst %1$@ per bild – kvaliteten och vid behov storleken justeras och resultatet mäts
+1909	Videor högst %1$@ var
+1910	Spara flera steg som ditt eget arbetsflöde
+1911	Storlek per bild högst
+1912	Arbetsflöden
+1913	Ja
+9000	GaleriQ visar dina bilder och videor för sortering på den här iPhonen och tar bara bort objekt som du väljer och bekräftar i systemdialogen.
+9001	GaleriQ sparar redigerade kopior, collage, videor och PDF:er som nya objekt i ditt bibliotek.
+9002	GaleriQ använder kameran bara för att skanna dokument när du trycker på Skanna.
+9003	GaleriQ använder Face ID bara för att öppna innehåll som du har skyddat med en kod.
+9004	GaleriQ behöver åtkomst till mikrofonen för en röstanteckning. Inspelningen startar först när du trycker.
+9005	Gratisversionen av GaleriQ visar annonser från Google. Med ditt tillstånd kan de bli mer relevanta för dig. Dina bilder och filer går aldrig till annonsörer.
