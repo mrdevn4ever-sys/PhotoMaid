@@ -12,7 +12,7 @@ Umwandlung:
 Aufruf:
   python3 scripts/android_strings_to_xcstrings.py            # schreiben
   python3 scripts/android_strings_to_xcstrings.py --check    # nur prüfen (CI): jede in Swift benutzte Kennung
-                                                             # existiert in allen 16 Sprachen, kein „Android“-Text
+                                                             # existiert in allen 45 App-Sprachen, kein „Android“-Text
 Die Android-Quelle wird über die Umgebungsvariable PM_ANDROID_RES gefunden (Standard: ../photomaid-android/app/src/main/res).
 Fehlt sie (z. B. in CI), wird nur ios_strings.json gegen den eingecheckten Katalog geprüft.
 
@@ -124,11 +124,13 @@ def read_ios():
     return strings, j.get("_infoPlist", {})
 
 
-def catalog(entries: dict) -> dict:
+def catalog(entries: dict, languages=None) -> dict:
+    if languages is None:
+        languages = sorted({lang for values in entries.values() for lang in values})
     strings = {}
     for key in sorted(entries):
         locs = {}
-        for lang in ALL:
+        for lang in languages:
             v = entries[key].get(lang)
             if v is None:
                 continue
@@ -172,16 +174,33 @@ def plural_forms(entries, key):
 def main():
     check = "--check" in sys.argv
     android = read_android()
-    ios, info = read_ios()
+    ios, ios_info = read_ios()
+    existing = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {"strings": {}}
+    existing_merged = {
+        k: {l: u["stringUnit"]["value"] for l, u in v.get("localizations", {}).items() if "stringUnit" in u}
+        for k, v in existing["strings"].items()
+    }
     if android:
         merged = {k: dict(v) for k, v in android.items()}
+        # Die 29 TSV-Sprachen sind nicht in Android. Beim Aktualisieren der 16 Legacy-Sprachen erhalten.
+        for k, values in existing_merged.items():
+            for lang, value in values.items():
+                if lang not in ALL:
+                    merged.setdefault(k, {})[lang] = value
     else:
-        existing = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {"strings": {}}
-        merged = {k: {l: u["stringUnit"]["value"] for l, u in v.get("localizations", {}).items()}
-                  for k, v in existing["strings"].items()}
+        merged = existing_merged
     for k, v in ios.items():
         merged.setdefault(k, {}).update(v)
 
+    info = {k: dict(v) for k, v in ios_info.items()}
+    if OUT_INFO.exists():
+        existing_info = json.loads(OUT_INFO.read_text(encoding="utf-8"))
+        for k, entry in existing_info.get("strings", {}).items():
+            for lang, unit in entry.get("localizations", {}).items():
+                if lang not in ALL and "stringUnit" in unit:
+                    info.setdefault(k, {})[lang] = unit["stringUnit"]["value"]
+
+    catalog_languages = sorted({lang for values in merged.values() for lang in values})
     problems = []
     for k, v in ios.items():
         missing = [l for l in ALL if l not in v]
@@ -193,7 +212,7 @@ def main():
             problems.append(f"Kennung fehlt: {k}")
             continue
         for f in forms:
-            missing = [l for l in ALL if l not in merged[f]]
+            missing = [l for l in catalog_languages if l not in merged[f]]
             # Mengenformen: nur „other“ muss in jeder Sprache vorhanden sein.
             if f.endswith(("#zero", "#one", "#two", "#few", "#many")):
                 continue
@@ -203,18 +222,20 @@ def main():
                 if FORBIDDEN.search(merged[f].get(l, "")):
                     problems.append(f"{f} ({l}) enthält Android-Begriff – in ios_strings.json ersetzen: {merged[f][l]!r}")
 
-    if check:
-        if problems:
-            print("\n".join(problems))
-            sys.exit(1)
-        print(f"OK: {len(used_keys(merged))} benutzte Kennungen, {len(merged)} Einträge, 16 Sprachen")
-        return
-    OUT.write_text(json.dumps(catalog(merged), ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    if info:
-        OUT_INFO.write_text(json.dumps(catalog(info), ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    print(f"{OUT.relative_to(ROOT)}: {len(merged)} Einträge")
+    info_languages = sorted({lang for values in info.values() for lang in values})
+    if info_languages != catalog_languages:
+        problems.append(f"InfoPlist-Sprachen {info_languages} ≠ Katalogsprachen {catalog_languages}")
+
     if problems:
-        print("Hinweise:\n" + "\n".join(problems[:200]))
+        print("\n".join(problems))
+        sys.exit(1)
+    if check:
+        print(f"OK: {len(used_keys(merged))} benutzte Kennungen, {len(merged)} Einträge, {len(catalog_languages)} Sprachen")
+        return
+    OUT.write_text(json.dumps(catalog(merged, catalog_languages), ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    if info:
+        OUT_INFO.write_text(json.dumps(catalog(info, catalog_languages), ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    print(f"{OUT.relative_to(ROOT)}: {len(merged)} Einträge, {len(catalog_languages)} Sprachen")
 
 
 if __name__ == "__main__":

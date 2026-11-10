@@ -206,7 +206,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | చెక్‌లిస్ట్ కూడా సేవ్ చేయండి |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | గమ్య ఫోల్డర్‌లో ఒక టేబుల్ (CSV ఫైల్) సేవ్ చేస్తుంది: ప్రతి ఫైల్ పేరు, తేదీ, పరిమాణం, చెక్‌సమ్, అలాగే మీ ఆల్బమ్‌లు, ట్యాగ్‌లు, నోట్‌లు – తర్వాత కాపీలను తనిఖీ చేయడానికి. |
 | 0197 | `art_feed_of` | of %1$@ | %1$@లో |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | జతలు, ఫోటో స్నేక్, Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | జతలు, ఫోటో స్నేక్, Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | సమీక్షించాల్సినవి |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | మీకు ఇంకా ఖచ్చితంగా తెలియని ఫోటోలు. |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | కాసేపు ఊపిరి తీసుకోండి. మీ ఫోటోలు కూడా ఆటలో పాల్గొంటాయి. |
@@ -271,7 +271,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0260 | `blocks_discovered` | Photo discovered! | ఫోటో బయటపడింది! |
 | 0261 | `blocks_favorites` | Favorites | ఇష్టమైనవి |
 | 0262 | `blocks_found` | Photos discovered: %1$lld | బయటపడిన ఫోటోలు: %1$lld |
-| 0263 | `blocks_gestures` | Board: swipe sideways, tap to rotate, drag or flick down. | బోర్డ్: పక్కకు స్వైప్ చేయండి, తిప్పడానికి ట్యాప్ చేయండి, కిందికి లాగండి లేదా విదిలించండి. |
+| 0263 | `blocks_gestures` | Board: swipe sideways, tap to rotate, drag or flick down. | బోర్డ్: పక్కకు స్వైప్ చేయండి, తిప్పడానికి ట్యాప్ చేయండి, కిందికి లాగండి లేదా కిందికి ఫ్లిక్ చేయండి. |
 | 0264 | `blocks_hint_drop` | Drag down: faster · flick down: place | కిందికి లాగండి: వేగంగా · కిందికి విదిలించండి: ఉంచండి |
 | 0265 | `blocks_hint_move` | Swipe sideways to move | కదపడానికి పక్కకు స్వైప్ చేయండి |
 | 0266 | `blocks_hint_rotate` | Tap to rotate | తిప్పడానికి ట్యాప్ చేయండి |
@@ -744,12 +744,12 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0733 | `game_setup_cloud_note` | Photos stored in iCloud load when needed. | iCloudలో నిల్వ ఉన్న ఫోటోలు అవసరమైనప్పుడు లోడ్ అవుతాయి. |
 | 0734 | `game_setup_edit_photos` | Change photos | ఫోటోలు మార్చండి |
 | 0735 | `game_setup_options` | Customize game | గేమ్‌ను మీకు నచ్చినట్లు మార్చండి |
-| 0736 | `game_setup_pairs_intro` | Find all matching photos at your own pace. | మీ వేగంతో సరిపోయే అన్ని ఫోటోలను కనుగొనండి. |
+| 0736 | `game_setup_pairs_intro` | Find all matching photos at your own pace. | సరిపోయే అన్ని ఫోటోలను మీకు నచ్చిన వేగంతో కనుగొనండి. |
 | 0737 | `game_setup_pairs_manual` | Choose 2–18 photos for your pairs. | మీ జతల కోసం 2–18 ఫోటోలు ఎంచుకోండి. |
 | 0738 | `game_setup_pairs_symbols` | Play without photos · 6 pairs | ఫోటోలు లేకుండా ఆడండి · 6 జతలు |
 | 0739 | `game_setup_photos` | Your photos | మీ ఫోటోలు |
 | 0740 | `game_setup_private` | Your original photos stay unchanged. | మీ ఒరిజినల్ ఫోటోలు మారవు. |
-| 0741 | `game_setup_snake_intro` | Collect photos. Swipe to steer. | ఫోటోలను సేకరించండి. దిశ కోసం స్వైప్ చేయండి. |
+| 0741 | `game_setup_snake_intro` | Collect photos. Swipe to steer. | ఫోటోలను సేకరించండి. దిశను మార్చడానికి స్వైప్ చేయండి. |
 | 0742 | `game_setup_without_photos` | Play without photos | ఫోటోలు లేకుండా ఆడండి |
 | 0743 | `game_standard` | Standard | ప్రామాణికం |
 | 0744 | `games_choose` | Games | గేమ్‌లు |
@@ -1486,7 +1486,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1491 | `today_done_title` | All reviewed | అన్నీ సమీక్షించారు |
 | 1492 | `today_due#one` | %1$lld item from “Later” is ready to review | “తర్వాత” నుండి %1$lld అంశం సమీక్షకు సిద్ధంగా ఉంది |
 | 1493 | `today_due#other` | %1$lld items from “Later” are ready to review | “తర్వాత” నుండి %1$lld అంశాలు సమీక్షకు సిద్ధంగా ఉన్నాయి |
-| 1494 | `today_greeting_afternoon` | Good afternoon | శుభ మధ్యాహ్నం |
+| 1494 | `today_greeting_afternoon` | Good afternoon | శుభ అపరాహ్నం |
 | 1495 | `today_greeting_evening` | Good evening | శుభ సాయంత్రం |
 | 1496 | `today_greeting_morning` | Good morning | శుభోదయం |
 | 1497 | `today_greeting_noon` | Good afternoon | శుభ మధ్యాహ్నం |

@@ -200,7 +200,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | Lưu thêm danh sách kiểm tra |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | Lưu một bảng (tệp CSV) trong thư mục đích với tên, ngày, kích thước và mã kiểm tra của từng tệp, cùng album, thẻ và ghi chú của bạn – để bạn kiểm tra bản sao sau này. |
 | 0197 | `art_feed_of` | of %1$@ | trên %1$@ |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | Ghép cặp, Rắn ảnh và Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | Ghép cặp, Rắn ảnh và Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | cần xem lại |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | Những ảnh bạn vẫn còn phân vân. |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | Hít thở sâu. Ảnh của bạn cùng chơi. |
@@ -944,7 +944,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0961 | `memory_cloud` | Load iCloud photos | Tải ảnh iCloud |
 | 0962 | `memory_done` | All pairs found! | Đã tìm thấy tất cả các cặp! |
 | 0963 | `memory_elapsed` | Time: %1$@ | Thời gian: %1$@ |
-| 0964 | `memory_flip` | Turn cards over | Lật thẻ |
+| 0964 | `memory_flip` | Turn cards over | Úp lại thẻ |
 | 0965 | `memory_heart` | Heart | Trái tim |
 | 0966 | `memory_hidden` | Face down | Úp xuống |
 | 0967 | `memory_leaf` | Leaf | Chiếc lá |
@@ -1036,7 +1036,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1056 | `mute` | Turn sound off | Tắt âm thanh |
 | 1057 | `no_viewer` | This file can’t be shown. | Không thể hiển thị tệp này. |
 | 1058 | `not_selected` | Not selected | Chưa chọn |
-| 1059 | `notice` | Note | Ghi chú |
+| 1059 | `notice` | Note | Lưu ý |
 | 1060 | `notif_due_body` | Something in “Later” is ready to review today. | Có mục trong “Để sau” sẵn sàng xem lại hôm nay. |
 | 1061 | `ok` | OK | OK |
 | 1062 | `onb_access_text` | GaleriQ shows your photos and videos directly on your device so you can clean up. No GaleriQ account or server. | GaleriQ hiển thị ảnh và video ngay trên thiết bị của bạn để bạn dọn dẹp. Không có tài khoản hay máy chủ GaleriQ. |
@@ -1171,7 +1171,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1196 | `pro_msg_pending` | Your purchase is awaiting confirmation. Pro will unlock once it’s confirmed. | Giao dịch mua đang chờ xác nhận. Pro sẽ mở khóa khi được xác nhận. |
 | 1197 | `pro_msg_restored` | Your purchase has been restored. | Giao dịch mua của bạn đã được khôi phục. |
 | 1198 | `pro_price_loading` | Loading price … | Đang tải giá … |
-| 1199 | `pro_privacy_no_ads` | Your photos and files are checked and sorted only on your device. For the purchase only the bare minimum goes to Google – never your photos, their names or anything derived from them. | Ảnh và tệp của bạn chỉ được kiểm tra và sắp xếp trên thiết bị. Khi mua, chỉ những gì tối thiểu cần thiết được gửi cho Google – không bao giờ là ảnh, tên ảnh hay bất cứ thứ gì suy ra từ chúng. |
+| 1199 | `pro_privacy_no_ads` | Your photos and files are checked and sorted only on your device. For the purchase only the bare minimum goes to Apple – never your photos, their names or anything derived from them. | Ảnh và tệp của bạn chỉ được kiểm tra và sắp xếp trên thiết bị. Khi mua, chỉ những gì tối thiểu cần thiết được gửi cho Apple – không bao giờ là ảnh, tên ảnh hay bất cứ thứ gì suy ra từ chúng. |
 | 1200 | `pro_restore` | Restore purchases | Khôi phục giao dịch mua |
 | 1201 | `pro_store_unavailable` | Pro can’t be loaded from the App Store right now. Check your internet connection and try again. | Hiện không thể tải Pro từ App Store. Hãy kiểm tra kết nối Internet và thử lại. |
 | 1202 | `pro_subtitle` | Buy once. No subscription. | Mua một lần. Không đăng ký. |
@@ -1440,7 +1440,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1494 | `today_greeting_afternoon` | Good afternoon | Chào buổi chiều |
 | 1495 | `today_greeting_evening` | Good evening | Chào buổi tối |
 | 1496 | `today_greeting_morning` | Good morning | Chào buổi sáng |
-| 1497 | `today_greeting_noon` | Good afternoon | Chào buổi chiều |
+| 1497 | `today_greeting_noon` | Good afternoon | Chào buổi trưa |
 | 1498 | `today_limited_action` | Change access | Thay đổi quyền truy cập |
 | 1499 | `today_limited_text` | GaleriQ only shows the photos and videos you’ve allowed. You can clean these up as usual. | GaleriQ chỉ hiển thị ảnh và video bạn đã cho phép. Bạn có thể dọn dẹp chúng như bình thường. |
 | 1500 | `today_limited_title` | Limited access | Truy cập giới hạn |
@@ -1849,7 +1849,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1912 | `wf_title` | Workflows | Quy trình |
 | 1913 | `yes` | Yes | Có |
 | 9000 | `info:NSPhotoLibraryUsageDescription` | GaleriQ shows your photos and videos for sorting on this iPhone and only removes items you choose and confirm in the system dialog. | GaleriQ hiển thị ảnh và video của bạn để sắp xếp trên iPhone này và chỉ xóa những mục bạn chọn và xác nhận trong hộp thoại hệ thống. |
-| 9001 | `info:NSPhotoLibraryAddUsageDescription` | GaleriQ saves edited copies, collages, videos and PDFs as new items in your library. | GaleriQ lưu bản sao đã sửa, ảnh ghép, video và PDF thành mục mới trong thư viện của bạn. |
+| 9001 | `info:NSPhotoLibraryAddUsageDescription` | GaleriQ saves edited copies, collages and videos as new items in your library. | GaleriQ lưu bản sao đã sửa, ảnh ghép và video thành mục mới trong thư viện của bạn. |
 | 9002 | `info:NSCameraUsageDescription` | GaleriQ uses the camera only to scan documents when you tap Scan. | GaleriQ chỉ dùng camera để quét tài liệu khi bạn chạm Quét. |
 | 9003 | `info:NSFaceIDUsageDescription` | GaleriQ uses Face ID only to open content you protected with a code. | GaleriQ chỉ dùng Face ID để mở nội dung bạn đã bảo vệ bằng mã. |
 | 9004 | `info:NSMicrophoneUsageDescription` | GaleriQ needs microphone access for a voice note. Recording starts only when you tap. | GaleriQ cần quyền truy cập micrô để ghi âm ghi chú. Chỉ bắt đầu ghi khi bạn chạm. |

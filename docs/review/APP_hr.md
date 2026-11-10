@@ -212,7 +212,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | Spremi i kontrolni popis |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | Sprema tablicu (CSV datoteku) u odredišnu mapu s nazivom, datumom, veličinom i kontrolnim zbrojem svake datoteke te tvojim albumima, oznakama i bilješkama – da kopije možeš provjeriti kasnije. |
 | 0197 | `art_feed_of` | of %1$@ | od %1$@ |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | Parovi, Foto-zmija i Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | Parovi, Foto-zmija i Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | za pregled |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | Fotografije u koje još nisi siguran. |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | Udahni. Tvoje fotografije igraju s tobom. |
@@ -250,7 +250,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0233 | `basket_confirm_files_message` | This can’t be undone. | Ovo se ne može poništiti. |
 | 0234 | `basket_confirm_files_title` | Permanently delete files? | Trajno izbrisati datoteke? |
 | 0235 | `basket_confirm_media_action` | Remove %1$lld | Ukloni %1$lld |
-| 0236 | `basket_confirm_media_message` | Then confirm in the iOS dialog. The photos and videos move to “Recently Deleted” in the Photos app. | Zatim potvrdi u iOS dijalogu. Fotografije i videozapisi prelaze u „Nedavno izbrisano” u aplikaciji Fotografije. |
+| 0236 | `basket_confirm_media_message` | Then confirm in the iOS dialog. The photos and videos move to “Recently Deleted” in the Photos app. | Zatim potvrdite u dijaloškom okviru sustava iOS. Fotografije i videozapisi premještaju se u „Nedavno obrisano” u aplikaciji Foto. |
 | 0237 | `basket_confirm_media_title` | Remove photos & videos? | Ukloniti fotografije i videozapise? |
 | 0238 | `basket_count` | %1$lld in trash | U smeću: %1$lld |
 | 0239 | `basket_delete_files#one` | Permanently delete %1$lld file | Trajno izbriši %1$lld datoteku |
@@ -491,7 +491,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0468 | `edit_done_copy` | Saved as a copy | Spremljeno kao kopija |
 | 0469 | `edit_done_copy_size` | Saved as a copy · %1$@ | Spremljeno kao kopija · %1$@ |
 | 0470 | `edit_done_declined` | Original kept · the edit was saved as a copy | Original zadržan · izmjena je spremljena kao kopija |
-| 0471 | `edit_done_original` | Original edited · can be reverted in the Photos app | Original uređen · može se vratiti u aplikaciji Fotografije |
+| 0471 | `edit_done_original` | Original edited · can be reverted in the Photos app | Izvornik uređen · vraćanje moguće u aplikaciji Foto |
 | 0472 | `edit_done_replaced` | Original replaced · it’s in “Recently Deleted” | Original zamijenjen · nalazi se u „Nedavno izbrisano” |
 | 0473 | `edit_err_declined` | Not changed – iOS didn’t get permission. The original is unchanged. | Nije promijenjeno – iOS nije dobio dopuštenje. Original je nepromijenjen. |
 | 0474 | `edit_err_gone` | This item was changed, moved or deleted in the meantime. Nothing was saved. | Ova je stavka u međuvremenu promijenjena, premještena ili izbrisana. Ništa nije spremljeno. |
@@ -572,7 +572,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0549 | `edit_save_copy_text` | The original stays unchanged. | Original ostaje nepromijenjen. |
 | 0550 | `edit_save_geometry_only` | Save crop only | Spremi samo obrezivanje |
 | 0551 | `edit_save_original` | Edit original | Uredi original |
-| 0552 | `edit_save_original_text` | iOS asks first. The edit is saved like an edit in the Photos app – you can undo it there anytime with “Revert”. | iOS najprije pita. Izmjena se sprema kao izmjena u aplikaciji Fotografije – ondje je u svakom trenutku možeš poništiti s „Vrati”. |
+| 0552 | `edit_save_original_text` | iOS asks first. The edit is saved like an edit in the Photos app – you can undo it there anytime with “Revert”. | U aplikaciji Foto otvorite uređenu stavku, dodirnite „…”, a zatim „Vrati”. |
 | 0553 | `edit_save_replace` | Save copy and move original to trash | Spremi kopiju i premjesti original u smeće |
 | 0554 | `edit_save_replace_action` | Save copy, original to trash | Spremi kopiju, original u smeće |
 | 0555 | `edit_save_replace_text` | iOS asks to confirm. The original goes to “Recently Deleted” in the Photos app and can usually be restored there for 30 days. Space is freed only after that. | iOS traži potvrdu. Original ide u „Nedavno izbrisano” u aplikaciji Fotografije i ondje se obično može vratiti 30 dana. Prostor se oslobađa tek nakon toga. |
@@ -683,7 +683,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0659 | `fc_swipes` | Swipes | Povlačenja |
 | 0660 | `fc_swipes_footer` | Choose what each direction does. “Put in album” adds the photo to an album in the Photos app and keeps it. Doing nothing is never a decision. | Odaberi što radi svaki smjer. „Stavi u album” dodaje fotografiju u album u aplikaciji Fotografije i zadržava je. Neradnja nikad nije odluka. |
 | 0661 | `fc_title` | Swipes & buttons | Povlačenja i tipke |
-| 0662 | `fc_vis_accessibility` | Only with VoiceOver/Switch Control | Samo uz VoiceOver/Upravljanje prekidačem |
+| 0662 | `fc_vis_accessibility` | Only with VoiceOver/Switch Control | Samo uz VoiceOver/Kontrolu prekidača |
 | 0663 | `fc_vis_always` | Always | Uvijek |
 | 0664 | `fc_visibility` | Show buttons | Prikaži tipke |
 | 0665 | `feed_album_done` | Put in “%1$@” | Stavljeno u „%1$@” |
@@ -847,7 +847,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0819 | `large_files` | Large files | Velike datoteke |
 | 0820 | `large_filter` | Larger than | Veće od |
 | 0821 | `large_footnote` | Only files with a known size of at least %1$lld MB. Their size may differ from the space freed when you delete them. | Samo datoteke poznate veličine od najmanje %1$lld MB. Njihova veličina može se razlikovati od prostora koji se oslobodi brisanjem. |
-| 0822 | `large_icloud_footer` | With “Optimize iPhone Storage”, these originals are only in iCloud. iOS doesn’t reveal their exact size without downloading them, so GaleriQ estimates it from your measured photos and videos and shows it as “approx.”. | Uz „Optimiziraj pohranu iPhonea” ovi su originali samo u iCloudu. iOS ne otkriva njihovu točnu veličinu bez preuzimanja pa je GaleriQ procjenjuje na temelju tvojih izmjerenih fotografija i videozapisa i prikazuje kao „pribl.”. |
+| 0822 | `large_icloud_footer` | With “Optimize iPhone Storage”, these originals are only in iCloud. iOS doesn’t reveal their exact size without downloading them, so GaleriQ estimates it from your measured photos and videos and shows it as “approx.”. | Uz „Optimiziraj memoriju iPhonea” ovdje može biti potrebno manje prostora nego što je prikazano. |
 | 0823 | `large_icloud_header` | Only in iCloud: %1$lld | Samo u iCloudu: %1$lld |
 | 0824 | `large_in_files#one` | in %1$lld large file | u %1$lld velikoj datoteci |
 | 0825:few | `large_in_files#few` | – | u %1$lld velike datoteke |
@@ -898,7 +898,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0866 | `lib_fav_empty_title` | No favourites yet | Još nema omiljenih |
 | 0867 | `lib_feed_title` | From the library | Iz medijateke |
 | 0868 | `lib_filter_all` | All | Sve |
-| 0869 | `lib_filter_cinematic` | Cinematic | Kinematografski |
+| 0869 | `lib_filter_cinematic` | Cinematic | Filmski |
 | 0870 | `lib_filter_clear` | Remove filter | Ukloni filtar |
 | 0871 | `lib_filter_edited` | Edited | Uređeno |
 | 0872 | `lib_filter_empty` | Nothing here for the filter “%1$@”. | Za filtar „%1$@” ovdje nema ničega. |
@@ -906,8 +906,8 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0874 | `lib_filter_panoramas` | Panoramas | Panorame |
 | 0875 | `lib_filter_raw` | RAW | RAW |
 | 0876 | `lib_filter_screenrec` | Screen recordings | Snimanja zaslona |
-| 0877 | `lib_filter_slowmo` | Slo-mo | Usporeno |
-| 0878 | `lib_filter_timelapse` | Time-lapse | Ubrzano |
+| 0877 | `lib_filter_slowmo` | Slo-mo | Usporena snimka |
+| 0878 | `lib_filter_timelapse` | Time-lapse | Ubrzana snimka |
 | 0879 | `lib_filter_title` | Filter | Filtar |
 | 0880 | `lib_folder_cleanup` | Clean up this album | Raščisti ovaj album |
 | 0881 | `lib_folder_empty` | This album has no photos or videos right now. | Ovaj album trenutačno nema fotografija ni videozapisa. |

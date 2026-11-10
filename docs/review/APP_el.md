@@ -206,7 +206,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | Αποθήκευση και λίστας ελέγχου |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | Αποθηκεύει έναν πίνακα (αρχείο CSV) στον φάκελο προορισμού με όνομα, ημερομηνία, μέγεθος και άθροισμα ελέγχου κάθε αρχείου, καθώς και τα άλμπουμ, τις ετικέτες και τις σημειώσεις σου – για να ελέγξεις τα αντίγραφα αργότερα. |
 | 0197 | `art_feed_of` | of %1$@ | από %1$@ |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | Ζευγάρια, Φιδάκι φωτογραφιών και Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | Ζευγάρια, Φιδάκι φωτογραφιών και Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | για έλεγχο |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | Φωτογραφίες για τις οποίες δεν είσαι σίγουρος ακόμη. |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | Πάρε μια ανάσα. Οι φωτογραφίες σου παίζουν μαζί. |
@@ -548,7 +548,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0537 | `edit_pro_text` | Cropping, rotating and straightening are free. Adjustments, filters, size and video trimming save with Pro. Trying them out is always free. | Η περικοπή, η περιστροφή και η ευθυγράμμιση είναι δωρεάν. Ρυθμίσεις, φίλτρα, μέγεθος και περικοπή βίντεο αποθηκεύονται με Pro. Η δοκιμή είναι πάντα δωρεάν. |
 | 0538 | `edit_pro_title` | Save with Pro | Αποθήκευση με Pro |
 | 0539 | `edit_redact_blur` | Blur | Θόλωμα |
-| 0540 | `edit_redact_pixelate` | Pixelate | Pixel |
+| 0540 | `edit_redact_pixelate` | Pixelate | Πιξελοποίηση |
 | 0541 | `edit_redact_solid` | Solid (recommended) | Συμπαγές (προτείνεται) |
 | 0542 | `edit_remove_location` | Remove location | Αφαίρεση τοποθεσίας |
 | 0543 | `edit_remove_location_text` | The saved photo won’t include where it was taken. | Η αποθηκευμένη φωτογραφία δεν θα περιέχει το σημείο λήψης. |

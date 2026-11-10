@@ -136,7 +136,7 @@ platform :ios do
     )
   end
 
-  desc "Nur Store-Texte (app-store/metadata, 16 Sprachen) nach App Store Connect – kein Build, keine Bilder, keine Einreichung"
+  desc "Nur Store-Texte (app-store/metadata, 50 Locales) nach App Store Connect – kein Build, keine Bilder, keine Einreichung"
   lane :store_metadata do
     project_root = File.expand_path("..", __dir__)
     sh("python3 #{File.join(project_root, 'scripts/store/metadata_texts.py').shellescape} --check")
@@ -195,17 +195,46 @@ platform :ios do
         )
       end
     end
-    # Nachweis: was jetzt tatsächlich in App Store Connect steht.
+    # Nachweis: exakt die angeforderte Version, alle 50 Locales und alle hochgeladenen Feldwerte zurücklesen.
+    expected_version = ENV.fetch("PM_STORE_VERSION")
+    expected_locales = Dir.children(metadata).select { |name| File.directory?(File.join(metadata, name)) }.sort
+    read_expected = lambda { |locale, filename| File.read(File.join(metadata, locale, filename), encoding: "UTF-8").strip }
+
     info = app.fetch_edit_app_info || app.fetch_live_app_info
-    info.get_app_info_localizations.sort_by(&:locale).each do |l|
-      UI.message("App-Info #{l.locale}: #{l.name} | #{l.subtitle}")
+    info_locs = info.get_app_info_localizations.sort_by(&:locale)
+    errors = []
+    actual_info_locales = info_locs.map(&:locale).sort
+    errors << "App-Info-Locales #{actual_info_locales.inspect} != #{expected_locales.inspect}" if actual_info_locales != expected_locales
+    info_locs.each do |loc|
+      expected = {
+        name: read_expected.call(loc.locale, "name.txt"),
+        subtitle: read_expected.call(loc.locale, "subtitle.txt"),
+        privacy_policy_url: read_expected.call(loc.locale, "privacy_url.txt")
+      }
+      expected.each do |field, value|
+        actual = loc.public_send(field).to_s.strip
+        errors << "App-Info #{loc.locale} #{field}: #{actual.inspect} != #{value.inspect}" if actual != value
+      end
     end
+
     version = app.get_edit_app_store_version(platform: Spaceship::ConnectAPI::Platform::IOS)
+    UI.user_error!("Keine bearbeitbare iOS-Version in App Store Connect") if version.nil?
+    errors << "Version #{version.version_string.inspect} != #{expected_version.inspect}" if version.version_string != expected_version
     version_locs = version.get_app_store_version_localizations.sort_by(&:locale)
-    UI.message("Version #{version.version_string}: #{version_locs.length} Sprachen")
-    version_locs.each do |l|
-      UI.message("Version #{l.locale}: Keywords #{l.keywords.to_s.length}, Beschreibung #{l.description.to_s.length}, " \
-                 "Werbetext #{l.promotional_text.to_s.length}, Neuerungen #{l.whats_new.to_s.length} Zeichen")
+    actual_version_locales = version_locs.map(&:locale).sort
+    errors << "Version-Locales #{actual_version_locales.inspect} != #{expected_locales.inspect}" if actual_version_locales != expected_locales
+    version_fields = {
+      keywords: "keywords.txt", description: "description.txt", promotional_text: "promotional_text.txt",
+      whats_new: "release_notes.txt", support_url: "support_url.txt", marketing_url: "marketing_url.txt"
+    }
+    version_locs.each do |loc|
+      version_fields.each do |field, filename|
+        expected = read_expected.call(loc.locale, filename)
+        actual = loc.public_send(field).to_s.strip
+        errors << "Version #{loc.locale} #{field}: #{actual.inspect} != #{expected.inspect}" if actual != expected
+      end
     end
+    UI.user_error!("App-Store-Readback fehlgeschlagen:\n" + errors.join("\n")) unless errors.empty?
+    UI.success("App-Store-Readback PASS: Version #{expected_version}, #{expected_locales.length} Locales, alle Felder identisch")
   end
 end

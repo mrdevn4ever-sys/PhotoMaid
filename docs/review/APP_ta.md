@@ -206,7 +206,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | சரிபார்ப்புப் பட்டியலையும் சேமி |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | இலக்குக் கோப்புறையில் ஒரு அட்டவணையைச் (CSV கோப்பு) சேமிக்கிறது: ஒவ்வொரு கோப்பின் பெயர், தேதி, அளவு, செக்சம் மற்றும் உங்கள் ஆல்பங்கள், குறிச்சொற்கள், குறிப்புகள் – பின்னர் நகல்களைச் சரிபார்க்க. |
 | 0197 | `art_feed_of` | of %1$@ | %1$@-இல் |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | ஜோடிகள், போட்டோ ஸ்நேக் மற்றும் Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | ஜோடிகள், போட்டோ ஸ்நேக் மற்றும் Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | பார்வையிட |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | இன்னும் உறுதியாகத் தெரியாத புகைப்படங்கள். |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | சற்று ஓய்வெடுங்கள். உங்கள் புகைப்படங்களும் கூட விளையாடும். |
@@ -271,7 +271,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0260 | `blocks_discovered` | Photo discovered! | புகைப்படம் வெளிப்பட்டது! |
 | 0261 | `blocks_favorites` | Favorites | பிடித்தவை |
 | 0262 | `blocks_found` | Photos discovered: %1$lld | வெளிப்பட்ட புகைப்படங்கள்: %1$lld |
-| 0263 | `blocks_gestures` | Board: swipe sideways, tap to rotate, drag or flick down. | பலகை: பக்கவாட்டில் ஸ்வைப் செய்யுங்கள், சுழற்ற தட்டுங்கள், கீழே இழுங்கள் அல்லது சுண்டுங்கள். |
+| 0263 | `blocks_gestures` | Board: swipe sideways, tap to rotate, drag or flick down. | பலகை: பக்கவாட்டில் ஸ்வைப் செய்யுங்கள், சுழற்றத் தட்டுங்கள், கீழே இழுங்கள் அல்லது கீழ்நோக்கிச் சுண்டுங்கள். |
 | 0264 | `blocks_hint_drop` | Drag down: faster · flick down: place | கீழே இழு: வேகமாக · கீழே சுண்டு: வை |
 | 0265 | `blocks_hint_move` | Swipe sideways to move | நகர்த்தப் பக்கவாட்டில் ஸ்வைப் செய்யுங்கள் |
 | 0266 | `blocks_hint_rotate` | Tap to rotate | சுழற்றத் தட்டுங்கள் |
@@ -744,12 +744,12 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0733 | `game_setup_cloud_note` | Photos stored in iCloud load when needed. | iCloud-இல் சேமித்த புகைப்படங்கள் தேவைப்படும்போது ஏற்றப்படும். |
 | 0734 | `game_setup_edit_photos` | Change photos | புகைப்படங்களை மாற்று |
 | 0735 | `game_setup_options` | Customize game | விளையாட்டைத் தனிப்பயனாக்கு |
-| 0736 | `game_setup_pairs_intro` | Find all matching photos at your own pace. | உங்கள் வேகத்தில் பொருந்தும் அனைத்துப் புகைப்படங்களையும் கண்டறியுங்கள். |
+| 0736 | `game_setup_pairs_intro` | Find all matching photos at your own pace. | பொருந்தும் அனைத்துப் புகைப்படங்களையும் உங்கள் சொந்த வேகத்தில் கண்டறியுங்கள். |
 | 0737 | `game_setup_pairs_manual` | Choose 2–18 photos for your pairs. | உங்கள் ஜோடிகளுக்கு 2–18 புகைப்படங்களைத் தேர்ந்தெடுங்கள். |
 | 0738 | `game_setup_pairs_symbols` | Play without photos · 6 pairs | புகைப்படங்கள் இல்லாமல் விளையாடு · 6 ஜோடிகள் |
 | 0739 | `game_setup_photos` | Your photos | உங்கள் புகைப்படங்கள் |
 | 0740 | `game_setup_private` | Your original photos stay unchanged. | உங்கள் அசல் புகைப்படங்கள் மாறாமல் இருக்கும். |
-| 0741 | `game_setup_snake_intro` | Collect photos. Swipe to steer. | புகைப்படங்களைச் சேகரியுங்கள். திசைக்கு ஸ்வைப் செய்யுங்கள். |
+| 0741 | `game_setup_snake_intro` | Collect photos. Swipe to steer. | புகைப்படங்களைச் சேகரியுங்கள். திசையை மாற்ற ஸ்வைப் செய்யுங்கள். |
 | 0742 | `game_setup_without_photos` | Play without photos | புகைப்படங்கள் இல்லாமல் விளையாடு |
 | 0743 | `game_standard` | Standard | நிலையானது |
 | 0744 | `games_choose` | Games | விளையாட்டுகள் |
@@ -1486,7 +1486,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1491 | `today_done_title` | All reviewed | அனைத்தும் பார்வையிடப்பட்டன |
 | 1492 | `today_due#one` | %1$lld item from “Later” is ready to review | “பிறகு”-இலிருந்து %1$lld உருப்படி பார்வையிடத் தயாராக உள்ளது |
 | 1493 | `today_due#other` | %1$lld items from “Later” are ready to review | “பிறகு”-இலிருந்து %1$lld உருப்படிகள் பார்வையிடத் தயாராக உள்ளன |
-| 1494 | `today_greeting_afternoon` | Good afternoon | மதிய வணக்கம் |
+| 1494 | `today_greeting_afternoon` | Good afternoon | பிற்பகல் வணக்கம் |
 | 1495 | `today_greeting_evening` | Good evening | மாலை வணக்கம் |
 | 1496 | `today_greeting_morning` | Good morning | காலை வணக்கம் |
 | 1497 | `today_greeting_noon` | Good afternoon | மதிய வணக்கம் |

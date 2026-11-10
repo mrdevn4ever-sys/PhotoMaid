@@ -12,7 +12,7 @@ Zielsprache als `nummer:few<TAB>text` (Nummer = irgendeine Form derselben Kennun
     python3 scripts/i18n/new_languages.py review lang …     # Prüfdatei docs/review/APP_<lang>.md
 
 Nicht benutzte Kennungen bekommen in neuen Sprachen den englischen Text (nie eine rohe Kennung auf dem Bildschirm).
-Die 16 bisherigen Sprachen und `android_strings_to_xcstrings.py` bleiben unberührt.
+Die 16 bisherigen Sprachen bleiben die Legacy-Quelle; der Merge ergänzt die 29 TSV-Sprachen zum vollständigen 45-Sprachen-Katalog.
 """
 from __future__ import annotations
 
@@ -42,6 +42,8 @@ LANGS = {
 }
 # Erlaubte, aber nicht verpflichtende Formen (CLDR: „many“ für ganze Millionen, z. B. „1 milhão de fotos“).
 OPTIONAL = {"pt-BR": {"many"}, "ca": {"many"}}
+LEGACY_LANGS = {"en", "de", "ar", "es", "fr", "it", "ja", "ko", "nl", "pl", "pt-PT", "ro", "ru", "tr", "uk", "zh-Hans"}
+EXPECTED_LANGS = LEGACY_LANGS | set(LANGS)
 FORMS = ("zero", "one", "two", "few", "many", "other")
 SPEC = re.compile(r"%(?:\d+\$)?(?:lld|ld|d|@|f|\.\d+f|%)")
 INFO_KEYS = ["NSPhotoLibraryUsageDescription", "NSPhotoLibraryAddUsageDescription", "NSCameraUsageDescription",
@@ -128,9 +130,11 @@ def specs(text):
     return sorted(s for s in SPEC.findall(text) if s != "%%")
 
 
-def check(langs):
+def check(langs, verify_catalog=True):
     rows = read_source()
     en = {k: t for _, k, t in rows}
+    catalog = load_catalog() if verify_catalog else None
+    info_catalog = load_catalog(INFOPLIST) if verify_catalog else None
     bases = {}
     for k in en:
         if "#" in k:
@@ -150,31 +154,54 @@ def check(langs):
         for k, t in tr.items():
             base = k.split("#")[0]
             if "#" in k:
-                allowed = set().union(*(specs(en[x]) for x in bases[base]))
-                if not set(specs(t)) <= allowed:
-                    problems.append(f"{lang} {k}: Platzhalter {specs(t)} ≠ {sorted(allowed)}")
+                expected = {tuple(specs(en[x])) for x in bases[base]}
+                if tuple(specs(t)) not in expected:
+                    problems.append(f"{lang} {k}: Platzhalter {specs(t)} ∉ {sorted(expected)}")
                 if k.split("#")[1] not in need | OPTIONAL.get(lang, set()):
                     problems.append(f"{lang} {k}: Form wird in {lang} nicht verwendet")
             elif specs(t) != specs(en[k]):
                 problems.append(f"{lang} {k}: Platzhalter {specs(t)} ≠ {specs(en[k])}")
             if re.search(r"photomaid|arrumo", t, re.I):
                 problems.append(f"{lang} {k}: alter Name")
+        if verify_catalog:
+            for key, text in tr.items():
+                if key.startswith("info:"):
+                    source = info_catalog["strings"].get(key[5:], {})
+                else:
+                    source = catalog["strings"].get(key, {})
+                unit = source.get("localizations", {}).get(lang, {}).get("stringUnit", {})
+                if unit.get("value") != text or unit.get("state") != "translated":
+                    problems.append(f"{lang} {key}: TSV/Katalog-Abweichung")
+            display = info_catalog["strings"].get("CFBundleDisplayName", {}).get("localizations", {}).get(lang, {}).get("stringUnit", {})
+            if display.get("value") != "GaleriQ" or display.get("state") != "translated":
+                problems.append(f"{lang} CFBundleDisplayName: nicht exakt GaleriQ/translated")
         if missing:
             problems.append(f"{lang}: {len(missing)} fehlen (z. B. {', '.join(missing[:5])})")
         report += problems
         print(f"{lang:8} {len(tr):5} Texte  {'OK' if not problems else f'{len(problems)} Probleme'}")
         if not problems:
             complete.append(lang)
+    if verify_catalog:
+        cat_langs = {l for entry in catalog["strings"].values() for l in entry.get("localizations", {})}
+        info_langs = {l for entry in info_catalog["strings"].values() for l in entry.get("localizations", {})}
+        project_text = (ROOT / "project.yml").read_text(encoding="utf-8")
+        match = re.search(r"CFBundleLocalizations: \[([^\]]*)\]", project_text)
+        project_langs = {x.strip() for x in match.group(1).split(",")} if match else set()
+        for label, actual in (("Localizable", cat_langs), ("InfoPlist", info_langs), ("project.yml", project_langs)):
+            if actual != EXPECTED_LANGS:
+                report.append(f"{label}: Sprachen {sorted(actual)} ≠ erwartet {sorted(EXPECTED_LANGS)}")
+                complete = []
     if report:
         print("\n".join(report[:200]))
     return complete
 
 
 def merge():
-    complete = check(sorted(p.stem for p in DIR.glob("*.tsv") if p.stem in LANGS))
-    if not complete:
-        print("Keine vollständige Sprache.")
-        return
+    targets = sorted(LANGS)
+    complete = check(targets, verify_catalog=False)
+    if set(complete) != set(targets):
+        missing = sorted(set(targets) - set(complete))
+        raise SystemExit(f"Merge abgebrochen; unvollständig oder fehlerhaft: {', '.join(missing)}")
     cat = load_catalog()
     info = load_catalog(INFOPLIST)
     for lang in complete:
@@ -249,7 +276,10 @@ if __name__ == "__main__":
     if cmd == "export":
         export()
     elif cmd == "check":
-        ok = check(args or sorted(p.stem for p in DIR.glob("*.tsv") if p.stem in LANGS))
+        targets = args or sorted(LANGS)
+        complete = check(targets)
+        if set(complete) != set(targets):
+            sys.exit(1)
     elif cmd == "merge":
         merge()
     elif cmd == "review":

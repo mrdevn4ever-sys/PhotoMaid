@@ -206,7 +206,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | Desar també una llista de comprovació |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | Desa una taula (fitxer CSV) a la carpeta de destinació amb el nom, la data, la mida i la suma de verificació de cada fitxer, a més dels teus àlbums, etiquetes i notes, perquè puguis comprovar les còpies més endavant. |
 | 0197 | `art_feed_of` | of %1$@ | de %1$@ |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | Parelles, Serp de fotos i Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | Parelles, Serp de fotos i Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | per revisar |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | Fotos de les quals encara no estàs segur. |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | Respira. Les teves fotos també juguen. |
@@ -256,7 +256,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0245 | `basket_files_footer` | These files will be permanently deleted. You can’t undo this. | Aquests fitxers s’esborraran definitivament. No es pot desfer. |
 | 0246 | `basket_files_header` | Files | Fitxers |
 | 0247 | `basket_intro` | Nothing has been deleted yet. Tap a thumbnail for a larger view. Empty the trash only when you’re ready. | Encara no s’ha esborrat res. Toca una miniatura per veure-la més gran. Buida la paperera només quan estiguis a punt. |
-| 0248 | `basket_media_footer` | iOS asks you to confirm again and moves photos and videos to “Recently Deleted”. You can usually restore them there for 30 days. With iCloud Photos, deleting applies to all your devices. | L’iOS et demana una altra confirmació i mou les fotos i els vídeos a «Eliminat recentment». Normalment els pots recuperar allà durant 30 dies. Amb Fotos d’iCloud, l’eliminació s’aplica a tots els teus dispositius. |
+| 0248 | `basket_media_footer` | iOS asks you to confirm again and moves photos and videos to “Recently Deleted”. You can usually restore them there for 30 days. With iCloud Photos, deleting applies to all your devices. | L’iOS et demana una altra confirmació i mou les fotos i els vídeos a «Eliminat recentment». Normalment els pots recuperar allà durant 30 dies. Amb Fotos a l’iCloud, l’eliminació s’aplica a tots els teus dispositius. |
 | 0249 | `basket_media_header` | Photos & videos | Fotos i vídeos |
 | 0250 | `basket_preview_note` | Viewing doesn’t change your selection. | Mirar-ho no canvia la selecció. |
 | 0251 | `basket_preview_open` | View larger: %1$@ | Veure més gran: %1$@ |
@@ -269,7 +269,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0258 | `blocks_clear_selection` | Clear selection | Esborrar la selecció |
 | 0259 | `blocks_continue` | Resume | Reprendre |
 | 0260 | `blocks_discovered` | Photo discovered! | Foto descoberta! |
-| 0261 | `blocks_favorites` | Favorites | Preferits |
+| 0261 | `blocks_favorites` | Favorites | Favorits |
 | 0262 | `blocks_found` | Photos discovered: %1$lld | Fotos descobertes: %1$lld |
 | 0263 | `blocks_gestures` | Board: swipe sideways, tap to rotate, drag or flick down. | Tauler: llisca de costat, toca per girar, arrossega o llisca ràpid avall. |
 | 0264 | `blocks_hint_drop` | Drag down: faster · flick down: place | Arrossega avall: més ràpid · llisca ràpid avall: col·locar |
@@ -560,7 +560,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0549 | `edit_save_copy_text` | The original stays unchanged. | L’original no canvia. |
 | 0550 | `edit_save_geometry_only` | Save crop only | Desar només el retall |
 | 0551 | `edit_save_original` | Edit original | Editar l’original |
-| 0552 | `edit_save_original_text` | iOS asks first. The edit is saved like an edit in the Photos app – you can undo it there anytime with “Revert”. | L’iOS pregunta primer. L’edició es desa com una edició de l’app Fotos: la pots desfer allà quan vulguis amb «Revertir». |
+| 0552 | `edit_save_original_text` | iOS asks first. The edit is saved like an edit in the Photos app – you can undo it there anytime with “Revert”. | L’iOS pregunta primer. L’edició es desa com una edició de l’app Fotos: la pots desfer allà quan vulguis amb «Reverteix». |
 | 0553 | `edit_save_replace` | Save copy and move original to trash | Desar una còpia i moure l’original a la paperera |
 | 0554 | `edit_save_replace_action` | Save copy, original to trash | Desar la còpia, l’original a la paperera |
 | 0555 | `edit_save_replace_text` | iOS asks to confirm. The original goes to “Recently Deleted” in the Photos app and can usually be restored there for 30 days. Space is freed only after that. | L’iOS demana confirmació. L’original va a «Eliminat recentment» a l’app Fotos i normalment s’hi pot recuperar durant 30 dies. L’espai s’allibera després. |
@@ -991,7 +991,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0980 | `memory_size` | Number of pairs | Nombre de parelles |
 | 0981 | `memory_source` | Picture source | Origen de les imatges |
 | 0982 | `memory_source_collection` | Album or photo folder | Àlbum o carpeta de fotos |
-| 0983 | `memory_source_favorites` | Favorites | Preferits |
+| 0983 | `memory_source_favorites` | Favorites | Favorits |
 | 0984 | `memory_source_library` | Entire photo library | Tota la fototeca |
 | 0985 | `memory_sun` | Sun | Sol |
 | 0986 | `memory_title` | Pairs | Parelles |

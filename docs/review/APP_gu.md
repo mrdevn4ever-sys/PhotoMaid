@@ -206,7 +206,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | ચેકલિસ્ટ પણ સાચવો |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | ગંતવ્ય ફોલ્ડરમાં એક કોષ્ટક (CSV ફાઇલ) સાચવે છે જેમાં દરેક ફાઇલનું નામ, તારીખ, કદ અને ચેકસમ, સાથે તમારા આલ્બમ, ટૅગ અને નોંધો હોય છે – જેથી તમે પછી નકલો ચકાસી શકો. |
 | 0197 | `art_feed_of` | of %1$@ | %1$@ માંથી |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | જોડી, ફોટો સ્નેક અને Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | જોડી, ફોટો સ્નેક અને Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | જોવાના |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | એવા ફોટા જેના વિશે તમે હજી નક્કી નથી કર્યું. |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | એક ઊંડો શ્વાસ લો. તમારા ફોટા પણ સાથે રમે છે. |
@@ -244,7 +244,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0233 | `basket_confirm_files_message` | This can’t be undone. | આ પૂર્વવત્ કરી શકાતું નથી. |
 | 0234 | `basket_confirm_files_title` | Permanently delete files? | ફાઇલો કાયમ માટે ડિલીટ કરવી છે? |
 | 0235 | `basket_confirm_media_action` | Remove %1$lld | %1$lld દૂર કરો |
-| 0236 | `basket_confirm_media_message` | Then confirm in the iOS dialog. The photos and videos move to “Recently Deleted” in the Photos app. | પછી iOS સંવાદમાં પુષ્ટિ કરો. ફોટા અને વીડિયો ફોટો ઍપના “તાજેતરમાં ડિલીટ કરેલ” માં જાય છે. |
+| 0236 | `basket_confirm_media_message` | Then confirm in the iOS dialog. The photos and videos move to “Recently Deleted” in the Photos app. | પછી iOS સંવાદમાં પુષ્ટિ કરો. ફોટા અને વીડિયો ફોટોસ ઍપના “તાજેતરમાં ડિલીટ કરેલ” માં જાય છે. |
 | 0237 | `basket_confirm_media_title` | Remove photos & videos? | ફોટા અને વીડિયો દૂર કરવા છે? |
 | 0238 | `basket_count` | %1$lld in trash | ટ્રેશમાં %1$lld |
 | 0239 | `basket_delete_files#one` | Permanently delete %1$lld file | %1$lld ફાઇલ કાયમ માટે ડિલીટ કરો |
@@ -429,7 +429,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0418 | `done_estimated` | Estimated (“approx.”): %1$lld – iOS only reveals their exact size after downloading. | અંદાજિત (“આશરે”): %1$lld – iOS તેમનું ચોક્કસ કદ ડાઉનલોડ પછી જ જણાવે છે. |
 | 0419 | `done_kept` | Kept today | આજે રાખેલા |
 | 0420 | `done_note_files` | The files were permanently deleted. | ફાઇલો કાયમ માટે ડિલીટ થઈ ગઈ. |
-| 0421 | `done_note_media` | Photos and videos are now in “Recently Deleted” in the Photos app. Space is freed only once they’re permanently deleted there. | ફોટા અને વીડિયો હવે ફોટો ઍપના “તાજેતરમાં ડિલીટ કરેલ” માં છે. ત્યાંથી પણ કાયમ માટે ડિલીટ થાય ત્યારે જ જગ્યા ખાલી થાય છે. |
+| 0421 | `done_note_media` | Photos and videos are now in “Recently Deleted” in the Photos app. Space is freed only once they’re permanently deleted there. | ફોટા અને વીડિયો હવે ફોટોસ ઍપના “તાજેતરમાં ડિલીટ કરેલ” માં છે. ત્યાંથી પણ કાયમ માટે ડિલીટ થાય ત્યારે જ જગ્યા ખાલી થાય છે. |
 | 0422 | `done_partial` | Items that weren’t removed stay in the GaleriQ trash. | જે આઇટમ દૂર ન થઈ તે GaleriQ ટ્રેશમાં રહે છે. |
 | 0423 | `done_removed` | Removed | દૂર કરેલ |
 | 0424 | `done_saved` | saved | બચાવેલ |
@@ -560,7 +560,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0549 | `edit_save_copy_text` | The original stays unchanged. | મૂળ બદલાશે નહીં. |
 | 0550 | `edit_save_geometry_only` | Save crop only | ફક્ત ક્રૉપ સાચવો |
 | 0551 | `edit_save_original` | Edit original | મૂળમાં ફેરફાર કરો |
-| 0552 | `edit_save_original_text` | iOS asks first. The edit is saved like an edit in the Photos app – you can undo it there anytime with “Revert”. | iOS પહેલાં પૂછે છે. ફેરફાર ફોટો ઍપના ફેરફાર જેમ સચવાય છે – ત્યાં તમે ગમે ત્યારે “મૂળ પર પાછા જાઓ” થી તેને દૂર કરી શકો છો. |
+| 0552 | `edit_save_original_text` | iOS asks first. The edit is saved like an edit in the Photos app – you can undo it there anytime with “Revert”. | iOS પહેલાં પૂછે છે. ફેરફાર ફોટોસ ઍપના ફેરફાર જેમ સચવાય છે – ત્યાં તમે ગમે ત્યારે “અસલ પર રિવર્ટ” થી તેને દૂર કરી શકો છો. |
 | 0553 | `edit_save_replace` | Save copy and move original to trash | નકલ સાચવો અને મૂળ ટ્રેશમાં ખસેડો |
 | 0554 | `edit_save_replace_action` | Save copy, original to trash | નકલ સાચવો, મૂળ ટ્રેશમાં |
 | 0555 | `edit_save_replace_text` | iOS asks to confirm. The original goes to “Recently Deleted” in the Photos app and can usually be restored there for 30 days. Space is freed only after that. | iOS પુષ્ટિ માગે છે. મૂળ ફોટો ઍપના “તાજેતરમાં ડિલીટ કરેલ” માં જાય છે અને સામાન્ય રીતે ત્યાંથી 30 દિવસ સુધી પુનઃસ્થાપિત થઈ શકે છે. જગ્યા ત્યાર પછી જ ખાલી થાય છે. |
@@ -877,7 +877,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0866 | `lib_fav_empty_title` | No favourites yet | હજી કોઈ મનપસંદ નથી |
 | 0867 | `lib_feed_title` | From the library | લાઇબ્રેરીમાંથી |
 | 0868 | `lib_filter_all` | All | બધા |
-| 0869 | `lib_filter_cinematic` | Cinematic | સિનેમેટિક |
+| 0869 | `lib_filter_cinematic` | Cinematic | સિનેમૅટિક |
 | 0870 | `lib_filter_clear` | Remove filter | ફિલ્ટર દૂર કરો |
 | 0871 | `lib_filter_edited` | Edited | ફેરફાર કરેલા |
 | 0872 | `lib_filter_empty` | Nothing here for the filter “%1$@”. | ફિલ્ટર “%1$@” માટે અહીં કંઈ નથી. |
@@ -1252,7 +1252,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1241 | `qa_remove_note` | Only the shortcut is removed. Your files and choices are kept. | ફક્ત શૉર્ટકટ દૂર થાય છે. તમારી ફાઇલો અને પસંદગીઓ રહે છે. |
 | 1242 | `qa_screenshots` | Screenshots | સ્ક્રીનશૉટ |
 | 1243 | `qa_selfies` | Selfies | સેલ્ફી |
-| 1244 | `qa_selfies_sub` | From the Selfies album in the Photos app | ફોટો ઍપના સેલ્ફી આલ્બમમાંથી |
+| 1244 | `qa_selfies_sub` | From the Selfies album in the Photos app | ફોટોસ ઍપના સેલ્ફી આલ્બમમાંથી |
 | 1245 | `qa_this_week` | This week | આ અઠવાડિયે |
 | 1246 | `qa_this_week_sub` | Photos and videos from this calendar week | આ કૅલેન્ડર અઠવાડિયાના ફોટા અને વીડિયો |
 | 1247 | `qa_title` | Quick access | ઝડપી ઍક્સેસ |
@@ -1486,10 +1486,10 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1491 | `today_done_title` | All reviewed | બધું જોઈ લીધું |
 | 1492 | `today_due#one` | %1$lld item from “Later” is ready to review | “પછી” માંથી %1$lld આઇટમ જોવા માટે તૈયાર છે |
 | 1493 | `today_due#other` | %1$lld items from “Later” are ready to review | “પછી” માંથી %1$lld આઇટમ જોવા માટે તૈયાર છે |
-| 1494 | `today_greeting_afternoon` | Good afternoon | શુભ બપોર |
+| 1494 | `today_greeting_afternoon` | Good afternoon | શુભ અપરાહ્ન |
 | 1495 | `today_greeting_evening` | Good evening | શુભ સાંજ |
 | 1496 | `today_greeting_morning` | Good morning | સુપ્રભાત |
-| 1497 | `today_greeting_noon` | Good afternoon | શુભ બપોર |
+| 1497 | `today_greeting_noon` | Good afternoon | શુભ મધ્યાહ્ન |
 | 1498 | `today_limited_action` | Change access | ઍક્સેસ બદલો |
 | 1499 | `today_limited_text` | GaleriQ only shows the photos and videos you’ve allowed. You can clean these up as usual. | GaleriQ ફક્ત તમે મંજૂર કરેલા ફોટા અને વીડિયો બતાવે છે. તેમને તમે હંમેશની જેમ સાફ કરી શકો છો. |
 | 1500 | `today_limited_title` | Limited access | મર્યાદિત ઍક્સેસ |
@@ -1756,18 +1756,18 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1761 | `vault_hide_entry_text` | The vault disappears from Settings. To open it, press and hold “GaleriQ” at the top of the start screen for 2 seconds – the small vault dial in the “Q” turns. | વૉલ્ટ સેટિંગ્સમાંથી ગાયબ થાય છે. તેને ખોલવા શરૂઆતની સ્ક્રીન પર ઉપરના “GaleriQ” ને 2 સેકન્ડ દબાવી રાખો – “Q” માંનું વૉલ્ટનું નાનું ડાયલ ફરે છે. |
 | 1762 | `vault_hide_title` | Hide the entry? | પ્રવેશ છુપાવવો છે? |
 | 1763 | `vault_import_action` | Move to vault | વૉલ્ટમાં ખસેડો |
-| 1764 | `vault_import_confirm_text` | They are copied encrypted and verified. Then iOS asks whether they may be deleted from the Photos app. There they stay in “Recently Deleted” for 30 days. | તેમને એન્ક્રિપ્ટ કરીને કૉપિ અને ચકાસવામાં આવે છે. પછી iOS પૂછે છે કે શું તેમને ફોટો ઍપમાંથી ડિલીટ કરી શકાય. ત્યાં તે 30 દિવસ “તાજેતરમાં ડિલીટ કરેલ” માં રહે છે. |
+| 1764 | `vault_import_confirm_text` | They are copied encrypted and verified. Then iOS asks whether they may be deleted from the Photos app. There they stay in “Recently Deleted” for 30 days. | તેમને એન્ક્રિપ્ટ કરીને કૉપિ અને ચકાસવામાં આવે છે. પછી iOS પૂછે છે કે શું તેમને ફોટોસ ઍપમાંથી ડિલીટ કરી શકાય. ત્યાં તે 30 દિવસ “તાજેતરમાં ડિલીટ કરેલ” માં રહે છે. |
 | 1765 | `vault_import_confirm_title` | Move to vault: %1$lld | વૉલ્ટમાં ખસેડો: %1$lld |
 | 1766 | `vault_import_copies_text` | GaleriQ also made copies of them (edits, collages, movies, GIFs): %1$lld. They are in the Photos app and stay visible unless you move them too. | GaleriQ એ તેમની નકલો પણ બનાવી હતી (ફેરફારો, કોલાજ, મૂવી, GIF): %1$lld. તે ફોટો ઍપમાં છે અને તમે તેમને પણ ન ખસેડો ત્યાં સુધી દેખાતી રહેશે. |
-| 1767 | `vault_import_declined` | iOS didn’t delete some of them from the Photos app. GaleriQ doesn’t show them anywhere else anyway, but they are still visible in the Photos app. Use the note at the top to try again. | iOS એ તેમાંથી કેટલીક ફોટો ઍપમાંથી ડિલીટ કરી નથી. GaleriQ તેમને બીજે ક્યાંય બતાવતું નથી, પણ ફોટો ઍપમાં તે હજી દેખાય છે. ફરી પ્રયાસ કરવા ઉપરની સૂચના વાપરો. |
+| 1767 | `vault_import_declined` | iOS didn’t delete some of them from the Photos app. GaleriQ doesn’t show them anywhere else anyway, but they are still visible in the Photos app. Use the note at the top to try again. | iOS એ તેમાંથી અમુકને ફોટોસ ઍપમાંથી ડિલીટ કર્યા નથી. GaleriQ તેમને બીજે ક્યાંય બતાવતું નથી, પણ તે ફોટોસ ઍપમાં હજી દેખાય છે. ફરી પ્રયાસ કરવા ઉપરની સૂચના વાપરો. |
 | 1768 | `vault_import_done` | In the vault: %1$lld. Removed from the Photos app: %2$lld. | વૉલ્ટમાં: %1$lld. ફોટો ઍપમાંથી દૂર કરી: %2$lld. |
 | 1769 | `vault_import_failed` | Couldn’t be moved: %1$lld (for example without a connection to iCloud). They stay in the Photos app. | ખસેડી શકાઈ નથી: %1$lld (દા.ત. iCloud સાથે કનેક્શન વિના). તે ફોટો ઍપમાં રહે છે. |
 | 1770 | `vault_import_limit` | Not moved: %1$lld. Free allows %2$lld items in the vault; Pro is unlimited. | ખસેડી નથી: %1$lld. મફત વર્ઝન વૉલ્ટમાં %2$lld આઇટમની મંજૂરી આપે છે; Pro અમર્યાદિત છે. |
-| 1771 | `vault_import_recently_deleted` | Tip: empty “Recently Deleted” in the Photos app if they should disappear there too. | ટિપ: જો તેમને ત્યાંથી પણ ગાયબ થવું હોય તો ફોટો ઍપમાં “તાજેતરમાં ડિલીટ કરેલ” ખાલી કરો. |
+| 1771 | `vault_import_recently_deleted` | Tip: empty “Recently Deleted” in the Photos app if they should disappear there too. | ટિપ: જો તેમને ત્યાંથી પણ ગાયબ થવું હોય તો ફોટોસ ઍપમાં “તાજેતરમાં ડિલીટ કરેલ” ખાલી કરો. |
 | 1772 | `vault_import_with_copies` | Move with copies (%1$lld) | નકલો સાથે ખસેડો (%1$lld) |
 | 1773 | `vault_import_without_copies` | Without copies | નકલો વિના |
 | 1774 | `vault_intro_1` | Photos and videos in the vault are encrypted with your code and visible only here – nowhere else in GaleriQ. | વૉલ્ટના ફોટા અને વીડિયો તમારા કોડથી એન્ક્રિપ્ટેડ છે અને ફક્ત અહીં જ દેખાય છે – GaleriQ માં બીજે ક્યાંય નહીં. |
-| 1775 | `vault_intro_2` | When you add items, iOS asks whether they may be deleted from the Photos app. They then stay in “Recently Deleted” for 30 days unless you empty it. | આઇટમ ઉમેરતી વખતે iOS પૂછે છે કે શું તેમને ફોટો ઍપમાંથી ડિલીટ કરી શકાય. પછી તમે ખાલી ન કરો ત્યાં સુધી તે 30 દિવસ “તાજેતરમાં ડિલીટ કરેલ” માં રહે છે. |
+| 1775 | `vault_intro_2` | When you add items, iOS asks whether they may be deleted from the Photos app. They then stay in “Recently Deleted” for 30 days unless you empty it. | આઇટમ ઉમેરતી વખતે iOS પૂછે છે કે શું તેમને ફોટોસ ઍપમાંથી ડિલીટ કરી શકાય. પછી તમે ખાલી ન કરો ત્યાં સુધી તે 30 દિવસ “તાજેતરમાં ડિલીટ કરેલ” માં રહે છે. |
 | 1776 | `vault_intro_3` | The vault is included in your iPhone backup (encrypted). If you delete GaleriQ, the vault is gone. | વૉલ્ટ તમારા iPhone બૅકઅપમાં સામેલ છે (એન્ક્રિપ્ટેડ). તમે GaleriQ ડિલીટ કરો તો વૉલ્ટ જતું રહે છે. |
 | 1777 | `vault_intro_4` | In the free version, each new folder needs a short ad video. With Pro, folders are created without ads. | મફત વર્ઝનમાં દરેક નવા ફોલ્ડર માટે ટૂંકો જાહેરાત વીડિયો જોઈએ. Pro સાથે ફોલ્ડર જાહેરાત વિના બને છે. |
 | 1778 | `vault_intro_title` | Your private vault | તમારું ખાનગી વૉલ્ટ |

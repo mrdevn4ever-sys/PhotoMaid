@@ -206,7 +206,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | ಪರಿಶೀಲನಾ ಪಟ್ಟಿಯನ್ನೂ ಉಳಿಸಿ |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | ಗಮ್ಯ ಫೋಲ್ಡರ್‌ನಲ್ಲಿ ಒಂದು ಟೇಬಲ್ (CSV ಫೈಲ್) ಉಳಿಸುತ್ತದೆ, ಅದರಲ್ಲಿ ಪ್ರತಿ ಫೈಲ್‌ನ ಹೆಸರು, ದಿನಾಂಕ, ಗಾತ್ರ ಮತ್ತು ಚೆಕ್‌ಸಮ್, ಜೊತೆಗೆ ನಿಮ್ಮ ಆಲ್ಬಮ್‌ಗಳು, ಟ್ಯಾಗ್‌ಗಳು ಮತ್ತು ಟಿಪ್ಪಣಿಗಳು ಇರುತ್ತವೆ – ಇದರಿಂದ ನಂತರ ಪ್ರತಿಗಳನ್ನು ಪರಿಶೀಲಿಸಬಹುದು. |
 | 0197 | `art_feed_of` | of %1$@ | %1$@ ರಲ್ಲಿ |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | ಜೋಡಿಗಳು, ಫೋಟೋ ಸ್ನೇಕ್ ಮತ್ತು Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | ಜೋಡಿಗಳು, ಫೋಟೋ ಸ್ನೇಕ್ ಮತ್ತು Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | ಪರಿಶೀಲಿಸಲು |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | ನಿಮಗೆ ಇನ್ನೂ ಖಚಿತವಿಲ್ಲದ ಫೋಟೋಗಳು. |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | ಒಂದು ಉಸಿರು ತೆಗೆದುಕೊಳ್ಳಿ. ನಿಮ್ಮ ಫೋಟೋಗಳೂ ಜೊತೆಗೆ ಆಡುತ್ತವೆ. |
@@ -271,7 +271,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0260 | `blocks_discovered` | Photo discovered! | ಫೋಟೋ ಅನಾವರಣಗೊಂಡಿದೆ! |
 | 0261 | `blocks_favorites` | Favorites | ಮೆಚ್ಚಿನವು |
 | 0262 | `blocks_found` | Photos discovered: %1$lld | ಅನಾವರಣಗೊಂಡ ಫೋಟೋಗಳು: %1$lld |
-| 0263 | `blocks_gestures` | Board: swipe sideways, tap to rotate, drag or flick down. | ಬೋರ್ಡ್: ಪಕ್ಕಕ್ಕೆ ಸ್ವೈಪ್ ಮಾಡಿ, ತಿರುಗಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ, ಕೆಳಗೆ ಎಳೆಯಿರಿ ಅಥವಾ ಫ್ಲಿಕ್ ಮಾಡಿ. |
+| 0263 | `blocks_gestures` | Board: swipe sideways, tap to rotate, drag or flick down. | ಬೋರ್ಡ್: ಪಕ್ಕಕ್ಕೆ ಸ್ವೈಪ್ ಮಾಡಿ, ತಿರುಗಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ, ಕೆಳಗೆ ಎಳೆಯಿರಿ ಅಥವಾ ಕೆಳಗೆ ಫ್ಲಿಕ್ ಮಾಡಿ. |
 | 0264 | `blocks_hint_drop` | Drag down: faster · flick down: place | ಕೆಳಗೆ ಎಳೆಯಿರಿ: ವೇಗವಾಗಿ · ಕೆಳಗೆ ಫ್ಲಿಕ್: ಇರಿಸಿ |
 | 0265 | `blocks_hint_move` | Swipe sideways to move | ಸರಿಸಲು ಪಕ್ಕಕ್ಕೆ ಸ್ವೈಪ್ ಮಾಡಿ |
 | 0266 | `blocks_hint_rotate` | Tap to rotate | ತಿರುಗಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ |

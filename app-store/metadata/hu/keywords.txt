@@ -1,1 +1,1 @@
-duplikátum,törlés,galéria,album,tárhely,privát,elrejtés,kollázs,szerkesztő,videó,memória,képek
+duplikátum,törlés,galéria,album,tárhely,privát,elrejtés,kollázs,szerkesztő,videó,memória

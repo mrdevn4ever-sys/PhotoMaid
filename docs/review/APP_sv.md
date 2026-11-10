@@ -206,7 +206,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | Spara även en kontrollista |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | Sparar en tabell (CSV-fil) i målmappen med varje fils namn, datum, storlek och kontrollsumma, plus dina album, taggar och anteckningar – så att du kan kontrollera kopiorna senare. |
 | 0197 | `art_feed_of` | of %1$@ | av %1$@ |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | Par, Bildorm och Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | Par, Bildorm och Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | att gå igenom |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | Bilder du fortfarande är osäker på. |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | Andas ut. Dina bilder spelar med. |
@@ -244,7 +244,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0233 | `basket_confirm_files_message` | This can’t be undone. | Det här går inte att ångra. |
 | 0234 | `basket_confirm_files_title` | Permanently delete files? | Radera filer permanent? |
 | 0235 | `basket_confirm_media_action` | Remove %1$lld | Ta bort %1$lld |
-| 0236 | `basket_confirm_media_message` | Then confirm in the iOS dialog. The photos and videos move to “Recently Deleted” in the Photos app. | Bekräfta sedan i iOS-dialogen. Bilderna och videorna flyttas till ”Nyligen raderade” i appen Bilder. |
+| 0236 | `basket_confirm_media_message` | Then confirm in the iOS dialog. The photos and videos move to “Recently Deleted” in the Photos app. | Bekräfta sedan i iOS-dialogrutan. Bilder och videor flyttas till ”Senast raderade” i appen Bilder. |
 | 0237 | `basket_confirm_media_title` | Remove photos & videos? | Ta bort bilder och videor? |
 | 0238 | `basket_count` | %1$lld in trash | %1$lld i papperskorgen |
 | 0239 | `basket_delete_files#one` | Permanently delete %1$lld file | Radera %1$lld fil permanent |
@@ -1207,7 +1207,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1196 | `pro_msg_pending` | Your purchase is awaiting confirmation. Pro will unlock once it’s confirmed. | Ditt köp väntar på bekräftelse. Pro låses upp när det bekräftats. |
 | 1197 | `pro_msg_restored` | Your purchase has been restored. | Ditt köp har återställts. |
 | 1198 | `pro_price_loading` | Loading price … | Läser in pris … |
-| 1199 | `pro_privacy_no_ads` | Your photos and files are checked and sorted only on your device. For the purchase only the bare minimum goes to Google – never your photos, their names or anything derived from them. | Dina bilder och filer kontrolleras och sorteras bara på din enhet. Vid köpet går bara det allra nödvändigaste till Google – aldrig dina bilder, deras namn eller något som härleds från dem. |
+| 1199 | `pro_privacy_no_ads` | Your photos and files are checked and sorted only on your device. For the purchase only the bare minimum goes to Apple – never your photos, their names or anything derived from them. | Dina bilder och filer kontrolleras och sorteras bara på din enhet. Vid köpet går bara det allra nödvändigaste till Apple – aldrig dina bilder, deras namn eller något som härleds från dem. |
 | 1200 | `pro_restore` | Restore purchases | Återställ köp |
 | 1201 | `pro_store_unavailable` | Pro can’t be loaded from the App Store right now. Check your internet connection and try again. | Pro kan inte läsas in från App Store just nu. Kontrollera internetanslutningen och försök igen. |
 | 1202 | `pro_subtitle` | Buy once. No subscription. | Köp en gång. Ingen prenumeration. |
@@ -1907,7 +1907,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1912 | `wf_title` | Workflows | Arbetsflöden |
 | 1913 | `yes` | Yes | Ja |
 | 9000 | `info:NSPhotoLibraryUsageDescription` | GaleriQ shows your photos and videos for sorting on this iPhone and only removes items you choose and confirm in the system dialog. | GaleriQ visar dina bilder och videor för sortering på den här iPhonen och tar bara bort objekt som du väljer och bekräftar i systemdialogen. |
-| 9001 | `info:NSPhotoLibraryAddUsageDescription` | GaleriQ saves edited copies, collages, videos and PDFs as new items in your library. | GaleriQ sparar redigerade kopior, collage, videor och PDF:er som nya objekt i ditt bibliotek. |
+| 9001 | `info:NSPhotoLibraryAddUsageDescription` | GaleriQ saves edited copies, collages and videos as new items in your library. | GaleriQ sparar redigerade kopior, collage och videor som nya objekt i ditt bibliotek. |
 | 9002 | `info:NSCameraUsageDescription` | GaleriQ uses the camera only to scan documents when you tap Scan. | GaleriQ använder kameran bara för att skanna dokument när du trycker på Skanna. |
 | 9003 | `info:NSFaceIDUsageDescription` | GaleriQ uses Face ID only to open content you protected with a code. | GaleriQ använder Face ID bara för att öppna innehåll som du har skyddat med en kod. |
 | 9004 | `info:NSMicrophoneUsageDescription` | GaleriQ needs microphone access for a voice note. Recording starts only when you tap. | GaleriQ behöver åtkomst till mikrofonen för en röstanteckning. Inspelningen startar först när du trycker. |

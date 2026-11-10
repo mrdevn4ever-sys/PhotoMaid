@@ -242,7 +242,7 @@
 0245	Aquests fitxers s’esborraran definitivament. No es pot desfer.
 0246	Fitxers
 0247	Encara no s’ha esborrat res. Toca una miniatura per veure-la més gran. Buida la paperera només quan estiguis a punt.
-0248	L’iOS et demana una altra confirmació i mou les fotos i els vídeos a «Eliminat recentment». Normalment els pots recuperar allà durant 30 dies. Amb Fotos d’iCloud, l’eliminació s’aplica a tots els teus dispositius.
+0248	L’iOS et demana una altra confirmació i mou les fotos i els vídeos a «Eliminat recentment». Normalment els pots recuperar allà durant 30 dies. Amb Fotos a l’iCloud, l’eliminació s’aplica a tots els teus dispositius.
 0249	Fotos i vídeos
 0250	Mirar-ho no canvia la selecció.
 0251	Veure més gran: %1$@
@@ -255,7 +255,7 @@
 0258	Esborrar la selecció
 0259	Reprendre
 0260	Foto descoberta!
-0261	Preferits
+0261	Favorits
 0262	Fotos descobertes: %1$lld
 0263	Tauler: llisca de costat, toca per girar, arrossega o llisca ràpid avall.
 0264	Arrossega avall: més ràpid · llisca ràpid avall: col·locar
@@ -546,7 +546,7 @@
 0549	L’original no canvia.
 0550	Desar només el retall
 0551	Editar l’original
-0552	L’iOS pregunta primer. L’edició es desa com una edició de l’app Fotos: la pots desfer allà quan vulguis amb «Revertir».
+0552	L’iOS pregunta primer. L’edició es desa com una edició de l’app Fotos: la pots desfer allà quan vulguis amb «Reverteix».
 0553	Desar una còpia i moure l’original a la paperera
 0554	Desar la còpia, l’original a la paperera
 0555	L’iOS demana confirmació. L’original va a «Eliminat recentment» a l’app Fotos i normalment s’hi pot recuperar durant 30 dies. L’espai s’allibera després.
@@ -977,7 +977,7 @@
 0980	Nombre de parelles
 0981	Origen de les imatges
 0982	Àlbum o carpeta de fotos
-0983	Preferits
+0983	Favorits
 0984	Tota la fototeca
 0985	Sol
 0986	Parelles

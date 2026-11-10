@@ -206,7 +206,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | Tallenna myös tarkistuslista |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | Tallentaa kohdekansioon taulukon (CSV-tiedosto), jossa on jokaisen tiedoston nimi, päivä, koko ja tarkistussumma sekä albumisi, tunnisteesi ja muistiinpanosi – jotta voit tarkistaa kopiot myöhemmin. |
 | 0197 | `art_feed_of` | of %1$@ | / %1$@ |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | Parit, Kuvakäärme ja Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | Parit, Kuvakäärme ja Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | läpikäytävänä |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | Kuvat, joista et ole vielä varma. |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | Hengähdä. Kuvasi pelaavat mukana. |
@@ -1604,7 +1604,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1609 | `tour_today_status_title` | Trash & Later | Roskakori ja Myöhemmin |
 | 1610 | `tour_today_tab_text` | Large files, duplicate photos, single months and ready-made collections: this is where you tidy up step by step. | Suuret tiedostot, kaksoiskuvat, yksittäiset kuukaudet ja valmiit kokoelmat: täällä siivoat vaihe vaiheelta. |
 | 1611 | `tour_today_tab_title` | More ways to clean up | Lisää tapoja siivota |
-| 1612 | `tour_vault_text` | Hold “GaleriQ” at the top for 2 seconds to open the vault – the dial in the “Q” turns. Set it up and find more options in Settings. | Pidä ylhäällä olevaa ”GaleriQ”-tekstiä painettuna 2 sekuntia avataksesi holvin – ”Q”:n numerolukko pyörii. Ota se käyttöön ja löydä lisää valintoja Asetuksista. |
+| 1612 | `tour_vault_text` | Hold “GaleriQ” at the top for 2 seconds to open the vault – the dial in the “Q” turns. Set it up and find more options in Settings. | Pidä ylhäällä olevaa ”GaleriQ”-tekstiä painettuna 2 sekuntia avataksesi holvin – ”Q”:n valintakiekko pyörii. Ota se käyttöön ja löydä lisää valintoja Asetuksista. |
 | 1613 | `tour_vault_title` | Your private vault | Yksityinen holvisi |
 | 1614 | `undo` | Undo | Kumoa |
 | 1615 | `unit_days#one` | Day | Päivä |
@@ -1753,7 +1753,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1758 | `vault_forgot` | Forgot code? | Unohditko koodin? |
 | 1759 | `vault_forgot_none` | No recovery key was set up. Without the code (or Face ID), the vault can’t be opened. | Palautusavainta ei ole asetettu. Ilman koodia (tai Face ID:tä) holvia ei voi avata. |
 | 1760 | `vault_hide_entry` | Hide entry | Piilota sisäänkäynti |
-| 1761 | `vault_hide_entry_text` | The vault disappears from Settings. To open it, press and hold “GaleriQ” at the top of the start screen for 2 seconds – the small vault dial in the “Q” turns. | Holvi katoaa Asetuksista. Avaa se pitämällä aloitusnäytön yläreunan ”GaleriQ”-tekstiä painettuna 2 sekuntia – ”Q”:n pieni holvin numerolukko pyörii. |
+| 1761 | `vault_hide_entry_text` | The vault disappears from Settings. To open it, press and hold “GaleriQ” at the top of the start screen for 2 seconds – the small vault dial in the “Q” turns. | Holvi katoaa Asetuksista. Avaa se pitämällä aloitusnäytön yläreunan ”GaleriQ”-tekstiä painettuna 2 sekuntia – ”Q”:n pieni holvin valintakiekko pyörii. |
 | 1762 | `vault_hide_title` | Hide the entry? | Piilotetaanko sisäänkäynti? |
 | 1763 | `vault_import_action` | Move to vault | Siirrä holviin |
 | 1764 | `vault_import_confirm_text` | They are copied encrypted and verified. Then iOS asks whether they may be deleted from the Photos app. There they stay in “Recently Deleted” for 30 days. | Ne kopioidaan salattuina ja tarkistetaan. Sitten iOS kysyy, saako ne poistaa Kuvat-apista. Siellä ne pysyvät 30 päivää kansiossa ”Äskettäin poistetut”. |

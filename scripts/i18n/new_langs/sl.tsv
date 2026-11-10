@@ -857,7 +857,7 @@
 0824:few	v %1$lld velikih datotekah
 0825	v %1$lld velikih datotekah
 0826	Samo v iCloudu, velikost ocenjena
-0827	Nadaljuj merjenje (odprto: %1$lld)
+0827	Nadaljuj merjenje (še za pregled: %1$lld)
 0828	Merjenje velikosti … %1$lld od %2$lld
 0829	Ni ustreznih datotek
 0830	Nobena dostopna datoteka znane velikosti ni večja od %1$lld MB.

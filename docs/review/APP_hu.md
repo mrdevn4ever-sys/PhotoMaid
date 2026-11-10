@@ -206,7 +206,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | Ellenőrzőlista mentése is |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | Egy táblázatot (CSV-fájlt) ment a célmappába minden fájl nevével, dátumával, méretével és ellenőrzőösszegével, valamint az albumaiddal, címkéiddel és jegyzeteiddel – hogy később ellenőrizhesd a másolatokat. |
 | 0197 | `art_feed_of` | of %1$@ | / %1$@ |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | Párok, Fotókígyó és Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | Párok, Fotókígyó és Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | átnézendő |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | Fotók, amelyekben még nem vagy biztos. |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | Vegyél egy mély levegőt. A fotóid is játszanak. |
@@ -1604,7 +1604,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1609 | `tour_today_status_title` | Trash & Later | Kuka és Később |
 | 1610 | `tour_today_tab_text` | Large files, duplicate photos, single months and ready-made collections: this is where you tidy up step by step. | Nagy fájlok, ismétlődő fotók, egyes hónapok és kész gyűjtemények: itt lépésről lépésre rakhatsz rendet. |
 | 1611 | `tour_today_tab_title` | More ways to clean up | További rendrakási lehetőségek |
-| 1612 | `tour_vault_text` | Hold “GaleriQ” at the top for 2 seconds to open the vault – the dial in the “Q” turns. Set it up and find more options in Settings. | Tartsd lenyomva 2 másodpercig a fenti „GaleriQ” feliratot a széf megnyitásához – a „Q” számzára elfordul. Állítsd be, és további lehetőségeket a Beállításokban találsz. |
+| 1612 | `tour_vault_text` | Hold “GaleriQ” at the top for 2 seconds to open the vault – the dial in the “Q” turns. Set it up and find more options in Settings. | Tartsd lenyomva 2 másodpercig a fenti „GaleriQ” feliratot a széf megnyitásához – a „Q”-ban lévő tárcsa elfordul. Állítsd be, és további lehetőségeket a Beállításokban találsz. |
 | 1613 | `tour_vault_title` | Your private vault | A privát széfed |
 | 1614 | `undo` | Undo | Visszavonás |
 | 1615 | `unit_days#one` | Day | Nap |
@@ -1753,7 +1753,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1758 | `vault_forgot` | Forgot code? | Elfelejtetted a kódot? |
 | 1759 | `vault_forgot_none` | No recovery key was set up. Without the code (or Face ID), the vault can’t be opened. | Nincs beállítva helyreállítási kulcs. A kód (vagy a Face ID) nélkül a széf nem nyitható meg. |
 | 1760 | `vault_hide_entry` | Hide entry | Bejárat elrejtése |
-| 1761 | `vault_hide_entry_text` | The vault disappears from Settings. To open it, press and hold “GaleriQ” at the top of the start screen for 2 seconds – the small vault dial in the “Q” turns. | A széf eltűnik a Beállításokból. A megnyitásához tartsd lenyomva 2 másodpercig a kezdőképernyő tetején lévő „GaleriQ” feliratot – a „Q” kis széf-számzára elfordul. |
+| 1761 | `vault_hide_entry_text` | The vault disappears from Settings. To open it, press and hold “GaleriQ” at the top of the start screen for 2 seconds – the small vault dial in the “Q” turns. | A széf eltűnik a Beállításokból. A megnyitásához tartsd lenyomva 2 másodpercig a kezdőképernyő tetején lévő „GaleriQ” feliratot – a „Q”-ban lévő kis széftárcsa elfordul. |
 | 1762 | `vault_hide_title` | Hide the entry? | Elrejted a bejáratot? |
 | 1763 | `vault_import_action` | Move to vault | Áthelyezés a széfbe |
 | 1764 | `vault_import_confirm_text` | They are copied encrypted and verified. Then iOS asks whether they may be deleted from the Photos app. There they stay in “Recently Deleted” for 30 days. | Titkosítva másolódnak és ellenőrződnek. Utána az iOS megkérdezi, törölhetők-e a Fotók appból. Ott 30 napig a „Nemrég törölt” albumban maradnak. |

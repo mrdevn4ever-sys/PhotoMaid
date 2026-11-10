@@ -207,7 +207,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | Salvar também uma lista de verificação |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | Salva uma tabela (arquivo CSV) na pasta de destino com nome, data, tamanho e soma de verificação de cada arquivo, além dos seus álbuns, etiquetas e notas – para você conferir as cópias depois. |
 | 0197 | `art_feed_of` | of %1$@ | de %1$@ |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | Pares, Cobrinha de fotos e Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | Pares, Cobrinha de fotos e Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | para revisar |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | Fotos sobre as quais você ainda está em dúvida. |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | Respire fundo. Suas fotos entram no jogo. |
@@ -283,11 +283,11 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0269 | `blocks_manage_access` | Manage allowed photos | Gerenciar fotos permitidas |
 | 0270 | `blocks_new_best` | New best! | Novo recorde! |
 | 0271 | `blocks_newest` | Newest photos | Fotos mais recentes |
-| 0272 | `blocks_next` | Next | Avançar |
+| 0272 | `blocks_next` | Next | Próxima peça |
 | 0273 | `blocks_over` | Round complete | Rodada concluída |
 | 0274 | `blocks_pause` | Pause | Pausar |
 | 0275 | `blocks_paused` | Paused | Pausado |
-| 0276 | `blocks_photo_privacy` | iCloud photos download when needed. Vault, hidden and excluded photos stay protected. | Fotos do iCloud são baixadas quando necessário. Cofre, fotos ocultas e excluídas continuam protegidas. |
+| 0276 | `blocks_photo_privacy` | iCloud photos download when needed. Vault, hidden and excluded photos stay protected. | Fotos do iCloud são baixadas quando necessário. Fotos no cofre, ocultas e excluídas continuam protegidas. |
 | 0277 | `blocks_photo_source` | Picture source | Origem das imagens |
 | 0278 | `blocks_photos` | Choose photos | Escolher fotos |
 | 0279 | `blocks_position` | Column %1$lld, row %2$lld, rotation %3$lld | Coluna %1$lld, linha %2$lld, rotação %3$lld |
@@ -812,7 +812,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0794 | `history_with_day` | %1$@ · %2$@ | %1$@ · %2$@ |
 | 0795 | `hub_dup_sub` | Identical copies | Cópias idênticas |
 | 0796 | `hub_files_sub` | Files from connected folders | Arquivos de pastas conectadas |
-| 0797 | `hub_large_from` | from %1$@ | de %1$@ |
+| 0797 | `hub_large_from` | from %1$@ | a partir de %1$@ |
 | 0798 | `hub_media_header` | Library | Biblioteca |
 | 0799 | `hub_months_sub` | Get done month by month | Concluir mês a mês |
 | 0800 | `hub_nothing_pending` | All reviewed | Tudo revisado |
@@ -1226,7 +1226,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1196 | `pro_msg_pending` | Your purchase is awaiting confirmation. Pro will unlock once it’s confirmed. | Sua compra aguarda confirmação. O Pro será desbloqueado assim que for confirmada. |
 | 1197 | `pro_msg_restored` | Your purchase has been restored. | Sua compra foi restaurada. |
 | 1198 | `pro_price_loading` | Loading price … | Carregando preço … |
-| 1199 | `pro_privacy_no_ads` | Your photos and files are checked and sorted only on your device. For the purchase only the bare minimum goes to Google – never your photos, their names or anything derived from them. | Suas fotos e arquivos são verificados e organizados só no seu aparelho. Na compra, só o mínimo necessário vai para o Google – nunca suas fotos, os nomes delas ou algo derivado delas. |
+| 1199 | `pro_privacy_no_ads` | Your photos and files are checked and sorted only on your device. For the purchase only the bare minimum goes to Apple – never your photos, their names or anything derived from them. | Suas fotos e arquivos são verificados e organizados só no seu aparelho. Na compra, só o mínimo necessário vai para a Apple – nunca suas fotos, os nomes delas ou algo derivado delas. |
 | 1200 | `pro_restore` | Restore purchases | Restaurar compras |
 | 1201 | `pro_store_unavailable` | Pro can’t be loaded from the App Store right now. Check your internet connection and try again. | Não foi possível carregar o Pro da App Store agora. Verifique sua conexão com a internet e tente de novo. |
 | 1202 | `pro_subtitle` | Buy once. No subscription. | Compre uma vez. Sem assinatura. |
@@ -1934,7 +1934,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1912 | `wf_title` | Workflows | Fluxos |
 | 1913 | `yes` | Yes | Sim |
 | 9000 | `info:NSPhotoLibraryUsageDescription` | GaleriQ shows your photos and videos for sorting on this iPhone and only removes items you choose and confirm in the system dialog. | O GaleriQ mostra suas fotos e vídeos para organizar neste iPhone e só remove os itens que você escolher e confirmar no diálogo do sistema. |
-| 9001 | `info:NSPhotoLibraryAddUsageDescription` | GaleriQ saves edited copies, collages, videos and PDFs as new items in your library. | O GaleriQ salva cópias editadas, colagens, vídeos e PDFs como novos itens na sua biblioteca. |
+| 9001 | `info:NSPhotoLibraryAddUsageDescription` | GaleriQ saves edited copies, collages and videos as new items in your library. | O GaleriQ salva cópias editadas, colagens e vídeos como novos itens na sua biblioteca. |
 | 9002 | `info:NSCameraUsageDescription` | GaleriQ uses the camera only to scan documents when you tap Scan. | O GaleriQ usa a câmera só para digitalizar documentos quando você toca em Digitalizar. |
 | 9003 | `info:NSFaceIDUsageDescription` | GaleriQ uses Face ID only to open content you protected with a code. | O GaleriQ usa o Face ID só para abrir conteúdo que você protegeu com um código. |
 | 9004 | `info:NSMicrophoneUsageDescription` | GaleriQ needs microphone access for a voice note. Recording starts only when you tap. | O GaleriQ precisa de acesso ao microfone para uma nota de voz. A gravação só começa quando você toca. |

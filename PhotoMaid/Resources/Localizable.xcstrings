@@ -64989,7 +64989,7 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "الأزواج وثعبان الصور ومكعبات الصور"
+            "value": "أزواج وثعبان الصور وFoto Blocks"
           }
         },
         "bn": {
@@ -65031,13 +65031,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pairs, Photo Snake and Photo Blocks"
+            "value": "Pairs, Photo Snake and Foto Blocks"
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Parejas, Foto Snake y Foto Blocks"
+            "value": "Parejas, Serpiente de fotos y Foto Blocks"
           }
         },
         "fi": {
@@ -65049,7 +65049,7 @@
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Paires, Photo Snake et Photo Blocks"
+            "value": "Paires, Serpent photo et Foto Blocks"
           }
         },
         "gu": {
@@ -65091,13 +65091,13 @@
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Coppie, Foto Snake e Foto Blocks"
+            "value": "Coppie, Snake fotografico e Foto Blocks"
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "ペア、フォトスネーク、フォトブロック"
+            "value": "ペア、フォトスネーク、Foto Blocks"
           }
         },
         "kn": {
@@ -65109,7 +65109,7 @@
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "짝 맞추기, 포토 스네이크, 포토 블록"
+            "value": "짝맞추기, 포토 스네이크, Foto Blocks"
           }
         },
         "ml": {
@@ -65157,7 +65157,7 @@
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pary, Foto Snake i Foto Blocks"
+            "value": "Pary, Foto-Snake i Foto Blocks"
           }
         },
         "pt-BR": {
@@ -65169,19 +65169,19 @@
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pares, Foto Snake e Foto Blocks"
+            "value": "Pares, Serpente de fotos e Foto Blocks"
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Perechi, Foto Snake și Foto Blocks"
+            "value": "Perechi, Șarpele foto și Foto Blocks"
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "Пары, Фото-змейка и Фото-блоки"
+            "value": "Пары, Фото-змейка и Foto Blocks"
           }
         },
         "sk": {
@@ -65223,13 +65223,13 @@
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Eşler, Foto Yılan ve Foto Bloklar"
+            "value": "Çiftler, Fotoğraf yılanı ve Foto Blocks"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Пари, Фото-змійка та Фото-блоки"
+            "value": "Пари, Фото-змійка та Foto Blocks"
           }
         },
         "ur": {
@@ -65247,7 +65247,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "配对、照片贪吃蛇和照片方块"
+            "value": "配对、照片贪吃蛇和 Foto Blocks"
           }
         },
         "zh-Hant": {
@@ -91310,7 +91310,7 @@
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "তারপর iOS ডায়ালগে নিশ্চিত করুন। ফটো ও ভিডিও ফটো অ্যাপের “সম্প্রতি মুছে ফেলা”-তে চলে যায়।"
+            "value": "তারপর iOS ডায়ালগে নিশ্চিত করুন। ফটো ও ভিডিও ছবি অ্যাপের “সম্প্রতি ডিলিট করা হয়েছে”-তে চলে যায়।"
           }
         },
         "ca": {
@@ -91328,7 +91328,7 @@
         "da": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bekræft derefter i iOS-dialogen. Fotos og videoer flyttes til “Senest slettet” i appen Fotos."
+            "value": "Bekræft derefter i iOS-dialogen. Fotos og videoer flyttes til “Slettet for nylig” i appen Fotos."
           }
         },
         "de": {
@@ -91370,7 +91370,7 @@
         "gu": {
           "stringUnit": {
             "state": "translated",
-            "value": "પછી iOS સંવાદમાં પુષ્ટિ કરો. ફોટા અને વીડિયો ફોટો ઍપના “તાજેતરમાં ડિલીટ કરેલ” માં જાય છે."
+            "value": "પછી iOS સંવાદમાં પુષ્ટિ કરો. ફોટા અને વીડિયો ફોટોસ ઍપના “તાજેતરમાં ડિલીટ કરેલ” માં જાય છે."
           }
         },
         "he": {
@@ -91382,13 +91382,13 @@
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "फिर iOS डायलॉग में पुष्टि करें। फ़ोटो और वीडियो तस्वीरें ऐप के “हाल ही में डिलीट किए गए” में चले जाते हैं।"
+            "value": "फिर iOS डायलॉग में पुष्टि करें। फ़ोटो और वीडियो तस्वीर ऐप के “हाल ही में डिलीट किए गए” में चले जाते हैं।"
           }
         },
         "hr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Zatim potvrdi u iOS dijalogu. Fotografije i videozapisi prelaze u „Nedavno izbrisano” u aplikaciji Fotografije."
+            "value": "Zatim potvrdite u dijaloškom okviru sustava iOS. Fotografije i videozapisi premještaju se u „Nedavno obrisano” u aplikaciji Foto."
           }
         },
         "hu": {
@@ -91436,7 +91436,7 @@
         "mr": {
           "stringUnit": {
             "state": "translated",
-            "value": "मग iOS संवादात पुष्टी करा. फोटो आणि व्हिडिओ फोटो अ‍ॅपच्या “अलीकडे डिलीट केलेले” मध्ये जातात."
+            "value": "मग iOS संवादात पुष्टी करा. फोटो आणि व्हिडिओ छायाचित्र ॲपच्या “अलीकडे हटवलेले” मध्ये जातात."
           }
         },
         "ms": {
@@ -91466,7 +91466,7 @@
         "pa": {
           "stringUnit": {
             "state": "translated",
-            "value": "ਫਿਰ iOS ਡਾਇਲਾਗ ਵਿੱਚ ਪੁਸ਼ਟੀ ਕਰੋ। ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਫ਼ੋਟੋਆਂ ਐਪ ਦੇ “ਹਾਲ ਹੀ ਵਿੱਚ ਮਿਟਾਏ ਗਏ” ਵਿੱਚ ਚਲੇ ਜਾਂਦੇ ਹਨ।"
+            "value": "ਫਿਰ iOS ਡਾਇਲਾਗ ਵਿੱਚ ਪੁਸ਼ਟੀ ਕਰੋ। ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਤਸਵੀਰਾਂ ਐਪ ਦੇ “ਹਾਲ ਹੀ ਵਿੱਚ ਡਿਲੀਟ” ਵਿੱਚ ਚਲੇ ਜਾਂਦੇ ਹਨ।"
           }
         },
         "pl": {
@@ -91514,7 +91514,7 @@
         "sv": {
           "stringUnit": {
             "state": "translated",
-            "value": "Bekräfta sedan i iOS-dialogen. Bilderna och videorna flyttas till ”Nyligen raderade” i appen Bilder."
+            "value": "Bekräfta sedan i iOS-dialogrutan. Bilder och videor flyttas till ”Senast raderade” i appen Bilder."
           }
         },
         "ta": {
@@ -95093,13 +95093,13 @@
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS আবার নিশ্চিত করতে বলে এবং ফটো ও ভিডিও “সম্প্রতি মুছে ফেলা”-তে সরায়। সেখান থেকে সাধারণত ৩০ দিন পর্যন্ত পুনরুদ্ধার করা যায়। iCloud ফটো চালু থাকলে মুছে ফেলা আপনার সব ডিভাইসে প্রযোজ্য।"
+            "value": "iOS আবার নিশ্চিত করতে বলে এবং ফটো ও ভিডিও “সম্প্রতি ডিলিট করা হয়েছে”-তে সরায়। সেখান থেকে সাধারণত ৩০ দিন পর্যন্ত পুনরুদ্ধার করা যায়। iCloud ছবি চালু থাকলে মুছে ফেলা আপনার সব ডিভাইসে প্রযোজ্য।"
           }
         },
         "ca": {
           "stringUnit": {
             "state": "translated",
-            "value": "L’iOS et demana una altra confirmació i mou les fotos i els vídeos a «Eliminat recentment». Normalment els pots recuperar allà durant 30 dies. Amb Fotos d’iCloud, l’eliminació s’aplica a tots els teus dispositius."
+            "value": "L’iOS et demana una altra confirmació i mou les fotos i els vídeos a «Eliminat recentment». Normalment els pots recuperar allà durant 30 dies. Amb Fotos a l’iCloud, l’eliminació s’aplica a tots els teus dispositius."
           }
         },
         "cs": {
@@ -95111,7 +95111,7 @@
         "da": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS beder dig bekræfte igen og flytter fotos og videoer til “Senest slettet”. Der kan du normalt gendanne dem i 30 dage. Med iCloud-fotos gælder sletningen på alle dine enheder."
+            "value": "iOS beder dig bekræfte igen og flytter fotos og videoer til “Slettet for nylig”. Der kan du normalt gendanne dem i 30 dage. Med iCloud-fotos gælder sletningen på alle dine enheder."
           }
         },
         "de": {
@@ -95165,7 +95165,7 @@
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS फिर से पुष्टि माँगता है और फ़ोटो व वीडियो को “हाल ही में डिलीट किए गए” में ले जाता है। वहाँ से आप आमतौर पर 30 दिन तक उन्हें रीस्टोर कर सकते हैं। iCloud तस्वीरें के साथ डिलीट करना आपके सभी डिवाइस पर लागू होता है।"
+            "value": "iOS फिर से पुष्टि माँगता है और फ़ोटो व वीडियो को “हाल ही में डिलीट किए गए” में ले जाता है। वहाँ से आप आमतौर पर 30 दिन तक उन्हें रीस्टोर कर सकते हैं। iCloud तस्वीर के साथ डिलीट करना आपके सभी डिवाइस पर लागू होता है।"
           }
         },
         "hr": {
@@ -95219,7 +95219,7 @@
         "mr": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS पुन्हा पुष्टी मागते आणि फोटो व व्हिडिओ “अलीकडे डिलीट केलेले” मध्ये हलवते. तिथून तुम्ही सहसा 30 दिवस ते पुनर्संचयित करू शकता. iCloud फोटोसह डिलीट करणे तुमच्या सर्व डिव्हाइसवर लागू होते."
+            "value": "iOS पुन्हा पुष्टी मागते आणि फोटो व व्हिडिओ “अलीकडे हटवलेले” मध्ये हलवते. तिथून तुम्ही सहसा 30 दिवस ते पुनर्संचयित करू शकता. iCloud छायाचित्रेसह डिलीट करणे तुमच्या सर्व डिव्हाइसवर लागू होते."
           }
         },
         "ms": {
@@ -95249,7 +95249,7 @@
         "pa": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS ਦੁਬਾਰਾ ਪੁਸ਼ਟੀ ਮੰਗਦਾ ਹੈ ਅਤੇ ਫ਼ੋਟੋਆਂ ਤੇ ਵੀਡੀਓ ਨੂੰ “ਹਾਲ ਹੀ ਵਿੱਚ ਮਿਟਾਏ ਗਏ” ਵਿੱਚ ਲੈ ਜਾਂਦਾ ਹੈ। ਉੱਥੋਂ ਤੁਸੀਂ ਆਮ ਤੌਰ ’ਤੇ 30 ਦਿਨਾਂ ਤੱਕ ਉਨ੍ਹਾਂ ਨੂੰ ਬਹਾਲ ਕਰ ਸਕਦੇ ਹੋ। iCloud ਫ਼ੋਟੋਆਂ ਨਾਲ ਮਿਟਾਉਣਾ ਤੁਹਾਡੀਆਂ ਸਾਰੀਆਂ ਡਿਵਾਈਸਾਂ ਉੱਤੇ ਲਾਗੂ ਹੁੰਦਾ ਹੈ।"
+            "value": "iOS ਦੁਬਾਰਾ ਪੁਸ਼ਟੀ ਮੰਗਦਾ ਹੈ ਅਤੇ ਫ਼ੋਟੋਆਂ ਤੇ ਵੀਡੀਓ ਨੂੰ “ਹਾਲ ਹੀ ਵਿੱਚ ਡਿਲੀਟ” ਵਿੱਚ ਲੈ ਜਾਂਦਾ ਹੈ। ਉੱਥੋਂ ਤੁਸੀਂ ਆਮ ਤੌਰ ’ਤੇ 30 ਦਿਨਾਂ ਤੱਕ ਉਨ੍ਹਾਂ ਨੂੰ ਬਹਾਲ ਕਰ ਸਕਦੇ ਹੋ। iCloud ਤਸਵੀਰਾਂ ਨਾਲ ਮਿਟਾਉਣਾ ਤੁਹਾਡੀਆਂ ਸਾਰੀਆਂ ਡਿਵਾਈਸਾਂ ਉੱਤੇ ਲਾਗੂ ਹੁੰਦਾ ਹੈ।"
           }
         },
         "pl": {
@@ -99591,7 +99591,7 @@
         "ca": {
           "stringUnit": {
             "state": "translated",
-            "value": "Preferits"
+            "value": "Favorits"
           }
         },
         "cs": {
@@ -99843,7 +99843,7 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "個人收藏"
+            "value": "喜好項目"
           }
         }
       }
@@ -100518,7 +100518,7 @@
         "kn": {
           "stringUnit": {
             "state": "translated",
-            "value": "ಬೋರ್ಡ್: ಪಕ್ಕಕ್ಕೆ ಸ್ವೈಪ್ ಮಾಡಿ, ತಿರುಗಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ, ಕೆಳಗೆ ಎಳೆಯಿರಿ ಅಥವಾ ಫ್ಲಿಕ್ ಮಾಡಿ."
+            "value": "ಬೋರ್ಡ್: ಪಕ್ಕಕ್ಕೆ ಸ್ವೈಪ್ ಮಾಡಿ, ತಿರುಗಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ, ಕೆಳಗೆ ಎಳೆಯಿರಿ ಅಥವಾ ಕೆಳಗೆ ಫ್ಲಿಕ್ ಮಾಡಿ."
           }
         },
         "ko": {
@@ -100530,7 +100530,7 @@
         "ml": {
           "stringUnit": {
             "state": "translated",
-            "value": "ബോർഡ്: വശത്തേക്ക് സ്വൈപ്പ് ചെയ്യുക, തിരിക്കാൻ ടാപ്പ് ചെയ്യുക, താഴേക്ക് വലിക്കുക അല്ലെങ്കിൽ ഫ്ലിക്ക് ചെയ്യുക."
+            "value": "ബോർഡ്: വശത്തേക്ക് സ്വൈപ്പ് ചെയ്യുക, തിരിക്കാൻ ടാപ്പ് ചെയ്യുക, താഴേക്ക് വലിക്കുക അല്ലെങ്കിൽ താഴേക്ക് ഫ്ലിക്ക് ചെയ്യുക."
           }
         },
         "mr": {
@@ -100560,7 +100560,7 @@
         "or": {
           "stringUnit": {
             "state": "translated",
-            "value": "ବୋର୍ଡ: ପାର୍ଶ୍ୱକୁ ସ୍ୱାଇପ୍ କରନ୍ତୁ, ଘୁରାଇବାକୁ ଟାପ୍ କରନ୍ତୁ, ତଳକୁ ଟାଣନ୍ତୁ କିମ୍ବା ଝଟକା ଦିଅନ୍ତୁ।"
+            "value": "ବୋର୍ଡ: ପାର୍ଶ୍ୱକୁ ସ୍ୱାଇପ୍ କରନ୍ତୁ, ଘୁରାଇବାକୁ ଟାପ୍ କରନ୍ତୁ, ତଳକୁ ଟାଣନ୍ତୁ କିମ୍ବା ତଳକୁ ଝଟକା ଦିଅନ୍ତୁ।"
           }
         },
         "pa": {
@@ -100620,13 +100620,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "பலகை: பக்கவாட்டில் ஸ்வைப் செய்யுங்கள், சுழற்ற தட்டுங்கள், கீழே இழுங்கள் அல்லது சுண்டுங்கள்."
+            "value": "பலகை: பக்கவாட்டில் ஸ்வைப் செய்யுங்கள், சுழற்றத் தட்டுங்கள், கீழே இழுங்கள் அல்லது கீழ்நோக்கிச் சுண்டுங்கள்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "బోర్డ్: పక్కకు స్వైప్ చేయండి, తిప్పడానికి ట్యాప్ చేయండి, కిందికి లాగండి లేదా విదిలించండి."
+            "value": "బోర్డ్: పక్కకు స్వైప్ చేయండి, తిప్పడానికి ట్యాప్ చేయండి, కిందికి లాగండి లేదా కిందికి ఫ్లిక్ చేయండి."
           }
         },
         "th": {
@@ -103053,7 +103053,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Avançar"
+            "value": "Próxima peça"
           }
         },
         "pt-PT": {
@@ -104153,7 +104153,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Fotos do iCloud são baixadas quando necessário. Cofre, fotos ocultas e excluídas continuam protegidas."
+            "value": "Fotos do iCloud são baixadas quando necessário. Fotos no cofre, ocultas e excluídas continuam protegidas."
           }
         },
         "pt-PT": {
@@ -104243,7 +104243,7 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "iCloud 照片會在需要時下載。保險箱、隱藏和排除的照片仍受保護。"
+            "value": "iCloud 照片會在需要時下載。保險箱中的照片、隱藏的照片和已排除的照片仍受保護。"
           }
         }
       }
@@ -149287,7 +149287,7 @@
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "ফটো ও ভিডিও এখন ফটো অ্যাপের “সম্প্রতি মুছে ফেলা”-তে আছে। সেখান থেকেও স্থায়ীভাবে মুছলে তবেই জায়গা খালি হয়।"
+            "value": "ফটো ও ভিডিও এখন ছবি অ্যাপের “সম্প্রতি ডিলিট করা হয়েছে”-তে আছে। সেখান থেকেও স্থায়ীভাবে মুছলে তবেই জায়গা খালি হয়।"
           }
         },
         "ca": {
@@ -149347,7 +149347,7 @@
         "gu": {
           "stringUnit": {
             "state": "translated",
-            "value": "ફોટા અને વીડિયો હવે ફોટો ઍપના “તાજેતરમાં ડિલીટ કરેલ” માં છે. ત્યાંથી પણ કાયમ માટે ડિલીટ થાય ત્યારે જ જગ્યા ખાલી થાય છે."
+            "value": "ફોટા અને વીડિયો હવે ફોટોસ ઍપના “તાજેતરમાં ડિલીટ કરેલ” માં છે. ત્યાંથી પણ કાયમ માટે ડિલીટ થાય ત્યારે જ જગ્યા ખાલી થાય છે."
           }
         },
         "he": {
@@ -149359,7 +149359,7 @@
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "फ़ोटो और वीडियो अब तस्वीरें ऐप के “हाल ही में डिलीट किए गए” में हैं। जगह तभी खाली होती है जब वहाँ से भी स्थायी रूप से डिलीट हों।"
+            "value": "फ़ोटो और वीडियो अब तस्वीर ऐप के “हाल ही में डिलीट किए गए” में हैं। जगह तभी खाली होती है जब वहाँ से भी स्थायी रूप से डिलीट हों।"
           }
         },
         "hr": {
@@ -149413,7 +149413,7 @@
         "mr": {
           "stringUnit": {
             "state": "translated",
-            "value": "फोटो आणि व्हिडिओ आता फोटो अ‍ॅपच्या “अलीकडे डिलीट केलेले” मध्ये आहेत. तिथूनही कायमचे डिलीट झाल्यावरच जागा मोकळी होते."
+            "value": "फोटो आणि व्हिडिओ आता छायाचित्र ॲपच्या “अलीकडे हटवलेले” मध्ये आहेत. तिथूनही कायमचे डिलीट झाल्यावरच जागा मोकळी होते."
           }
         },
         "ms": {
@@ -149443,7 +149443,7 @@
         "pa": {
           "stringUnit": {
             "state": "translated",
-            "value": "ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਹੁਣ ਫ਼ੋਟੋਆਂ ਐਪ ਦੇ “ਹਾਲ ਹੀ ਵਿੱਚ ਮਿਟਾਏ ਗਏ” ਵਿੱਚ ਹਨ। ਥਾਂ ਤਾਂ ਹੀ ਖਾਲੀ ਹੁੰਦੀ ਹੈ ਜਦੋਂ ਉੱਥੋਂ ਵੀ ਪੱਕੇ ਤੌਰ ’ਤੇ ਮਿਟਾਏ ਜਾਣ।"
+            "value": "ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਹੁਣ ਤਸਵੀਰਾਂ ਐਪ ਦੇ “ਹਾਲ ਹੀ ਵਿੱਚ ਡਿਲੀਟ” ਵਿੱਚ ਹਨ। ਥਾਂ ਤਾਂ ਹੀ ਖਾਲੀ ਹੁੰਦੀ ਹੈ ਜਦੋਂ ਉੱਥੋਂ ਵੀ ਪੱਕੇ ਤੌਰ ’ਤੇ ਮਿਟਾਏ ਜਾਣ।"
           }
         },
         "pl": {
@@ -151605,7 +151605,7 @@
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$lldটি আইটেমের আকার অজানা। এগুলো মোটে অন্তর্ভুক্ত নয়।"
+            "value": "%1$lldটি আইটেমের আকার অজানা। এটি মোটের মধ্যে অন্তর্ভুক্ত নয়।"
           }
         },
         "ca": {
@@ -174782,7 +174782,7 @@
         "hr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Original uređen · može se vratiti u aplikaciji Fotografije"
+            "value": "Izvornik uređen · vraćanje moguće u aplikaciji Foto"
           }
         },
         "hu": {
@@ -174926,7 +174926,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "แก้ไขต้นฉบับแล้ว · ย้อนกลับได้ในแอพรูปภาพ"
+            "value": "แก้ไขต้นฉบับแล้ว · แปลงกลับได้ในแอปรูปภาพ"
           }
         },
         "tr": {
@@ -204159,7 +204159,7 @@
         "el": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pixel"
+            "value": "Πιξελοποίηση"
           }
         },
         "en": {
@@ -208529,13 +208529,13 @@
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS আগে জিজ্ঞেস করে। সম্পাদনাটি ফটো অ্যাপের সম্পাদনার মতো সংরক্ষিত হয় – সেখানে “মূলে ফিরুন” দিয়ে যেকোনো সময় ফেরাতে পারেন।"
+            "value": "iOS আগে জিজ্ঞেস করে। সম্পাদনাটি ছবি অ্যাপের সম্পাদনার মতো সংরক্ষিত হয় – সেখানে “আসলে রিভার্ট করুন” দিয়ে যেকোনো সময় ফেরাতে পারেন।"
           }
         },
         "ca": {
           "stringUnit": {
             "state": "translated",
-            "value": "L’iOS pregunta primer. L’edició es desa com una edició de l’app Fotos: la pots desfer allà quan vulguis amb «Revertir»."
+            "value": "L’iOS pregunta primer. L’edició es desa com una edició de l’app Fotos: la pots desfer allà quan vulguis amb «Reverteix»."
           }
         },
         "cs": {
@@ -208547,7 +208547,7 @@
         "da": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS spørger først. Redigeringen gemmes som en redigering i appen Fotos – du kan altid fortryde den der med “Tilbagestil”."
+            "value": "iOS spørger først. Redigeringen gemmes som en redigering i appen Fotos – du kan altid fortryde den der med “Tilbage til original”."
           }
         },
         "de": {
@@ -208589,7 +208589,7 @@
         "gu": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS પહેલાં પૂછે છે. ફેરફાર ફોટો ઍપના ફેરફાર જેમ સચવાય છે – ત્યાં તમે ગમે ત્યારે “મૂળ પર પાછા જાઓ” થી તેને દૂર કરી શકો છો."
+            "value": "iOS પહેલાં પૂછે છે. ફેરફાર ફોટોસ ઍપના ફેરફાર જેમ સચવાય છે – ત્યાં તમે ગમે ત્યારે “અસલ પર રિવર્ટ” થી તેને દૂર કરી શકો છો."
           }
         },
         "he": {
@@ -208601,13 +208601,13 @@
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS पहले पूछता है। एडिट तस्वीरें ऐप के एडिट की तरह सहेजा जाता है – आप वहाँ कभी भी “मूल पर वापस जाएँ” से उसे हटा सकते हैं।"
+            "value": "iOS पहले पूछता है। एडिट तस्वीर ऐप के एडिट की तरह सहेजा जाता है – आप वहाँ कभी भी “मूल पर वापस जाएँ” से उसे हटा सकते हैं।"
           }
         },
         "hr": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS najprije pita. Izmjena se sprema kao izmjena u aplikaciji Fotografije – ondje je u svakom trenutku možeš poništiti s „Vrati”."
+            "value": "U aplikaciji Foto otvorite uređenu stavku, dodirnite „…”, a zatim „Vrati”."
           }
         },
         "hu": {
@@ -208655,7 +208655,7 @@
         "mr": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS आधी विचारते. संपादन फोटो अ‍ॅपमधील संपादनासारखे जतन होते – तिथे तुम्ही कधीही “मूळवर परत” ने ते पूर्ववत करू शकता."
+            "value": "iOS आधी विचारते. संपादन छायाचित्र ॲपमधील संपादनासारखे जतन होते – तिथे तुम्ही कधीही “मूळ स्वरूपात पूर्वस्थितीत आणा” ने ते पूर्ववत करू शकता."
           }
         },
         "ms": {
@@ -208685,7 +208685,7 @@
         "pa": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS ਪਹਿਲਾਂ ਪੁੱਛਦਾ ਹੈ। ਸੋਧ ਫ਼ੋਟੋਆਂ ਐਪ ਵਿੱਚ ਕੀਤੀ ਸੋਧ ਵਾਂਗ ਸੰਭਾਲੀ ਜਾਂਦੀ ਹੈ – ਤੁਸੀਂ ਇਸ ਨੂੰ ਉੱਥੇ ਕਦੇ ਵੀ “ਵਾਪਸ ਮੂਲ ’ਤੇ” ਨਾਲ ਵਾਪਸ ਲੈ ਸਕਦੇ ਹੋ।"
+            "value": "iOS ਪਹਿਲਾਂ ਪੁੱਛਦਾ ਹੈ। ਸੋਧ ਤਸਵੀਰਾਂ ਐਪ ਵਿੱਚ ਕੀਤੀ ਸੋਧ ਵਾਂਗ ਸੰਭਾਲੀ ਜਾਂਦੀ ਹੈ – ਤੁਸੀਂ ਇਸ ਨੂੰ ਉੱਥੇ ਕਦੇ ਵੀ “ਮੂਲ ’ਤੇ ਰਿਵਰਟ ਕਰੋ” ਨਾਲ ਵਾਪਸ ਲੈ ਸਕਦੇ ਹੋ।"
           }
         },
         "pl": {
@@ -208787,7 +208787,7 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS 會先詢問。編輯會像在「照片」App 中編輯一樣儲存 – 你隨時可以在那裡用「回復」還原。"
+            "value": "iOS 會先詢問。編輯會像在「照片」App 中編輯一樣儲存 – 你隨時可以在那裡用「回復原狀」還原。"
           }
         }
       }
@@ -245005,7 +245005,7 @@
         "hr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Samo uz VoiceOver/Upravljanje prekidačem"
+            "value": "Samo uz VoiceOver/Kontrolu prekidača"
           }
         },
         "hu": {
@@ -245017,7 +245017,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "Hanya dengan VoiceOver/Kontrol Alih"
+            "value": "Hanya dengan VoiceOver/Kontrol Pengalihan"
           }
         },
         "it": {
@@ -245149,7 +245149,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "เฉพาะกับ VoiceOver/การควบคุมด้วยสวิตช์"
+            "value": "เฉพาะกับ VoiceOver/การควบคุมสวิตช์"
           }
         },
         "tr": {
@@ -267962,13 +267962,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "உங்கள் வேகத்தில் பொருந்தும் அனைத்துப் புகைப்படங்களையும் கண்டறியுங்கள்."
+            "value": "பொருந்தும் அனைத்துப் புகைப்படங்களையும் உங்கள் சொந்த வேகத்தில் கண்டறியுங்கள்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "మీ వేగంతో సరిపోయే అన్ని ఫోటోలను కనుగొనండి."
+            "value": "సరిపోయే అన్ని ఫోటోలను మీకు నచ్చిన వేగంతో కనుగొనండి."
           }
         },
         "th": {
@@ -269337,13 +269337,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "புகைப்படங்களைச் சேகரியுங்கள். திசைக்கு ஸ்வைப் செய்யுங்கள்."
+            "value": "புகைப்படங்களைச் சேகரியுங்கள். திசையை மாற்ற ஸ்வைப் செய்யுங்கள்."
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "ఫోటోలను సేకరించండి. దిశ కోసం స్వైప్ చేయండి."
+            "value": "ఫోటోలను సేకరించండి. దిశను మార్చడానికి స్వైప్ చేయండి."
           }
         },
         "th": {
@@ -288853,7 +288853,7 @@
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "dari %1$@"
+            "value": "mulai dari %1$@"
           }
         },
         "it": {
@@ -288931,7 +288931,7 @@
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "de %1$@"
+            "value": "a partir de %1$@"
           }
         },
         "pt-PT": {
@@ -288985,7 +288985,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "จาก %1$@"
+            "value": "ตั้งแต่ %1$@"
           }
         },
         "tr": {
@@ -296193,7 +296193,7 @@
         "hr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Uz „Optimiziraj pohranu iPhonea” ovi su originali samo u iCloudu. iOS ne otkriva njihovu točnu veličinu bez preuzimanja pa je GaleriQ procjenjuje na temelju tvojih izmjerenih fotografija i videozapisa i prikazuje kao „pribl.”."
+            "value": "Uz „Optimiziraj memoriju iPhonea” ovdje može biti potrebno manje prostora nego što je prikazano."
           }
         },
         "hu": {
@@ -298342,7 +298342,7 @@
         "sl": {
           "stringUnit": {
             "state": "translated",
-            "value": "Nadaljuj merjenje (odprto: %1$lld)"
+            "value": "Nadaljuj merjenje (še za pregled: %1$lld)"
           }
         },
         "sv": {
@@ -311698,7 +311698,7 @@
         "gu": {
           "stringUnit": {
             "state": "translated",
-            "value": "સિનેમેટિક"
+            "value": "સિનેમૅટિક"
           }
         },
         "he": {
@@ -311716,7 +311716,7 @@
         "hr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Kinematografski"
+            "value": "Filmski"
           }
         },
         "hu": {
@@ -313916,7 +313916,7 @@
         "hr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Usporeno"
+            "value": "Usporena snimka"
           }
         },
         "hu": {
@@ -314191,7 +314191,7 @@
         "hr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ubrzano"
+            "value": "Ubrzana snimka"
           }
         },
         "hu": {
@@ -347605,7 +347605,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "พลิกการ์ด"
+            "value": "คว่ำการ์ด"
           }
         },
         "tr": {
@@ -347629,7 +347629,7 @@
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Lật thẻ"
+            "value": "Úp lại thẻ"
           }
         },
         "zh-Hans": {
@@ -353989,7 +353989,7 @@
         "ca": {
           "stringUnit": {
             "state": "translated",
-            "value": "Preferits"
+            "value": "Favorits"
           }
         },
         "cs": {
@@ -354241,7 +354241,7 @@
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "個人收藏"
+            "value": "喜好項目"
           }
         }
       }
@@ -378980,7 +378980,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "โน้ต"
+            "value": "หมายเหตุ"
           }
         },
         "tr": {
@@ -379004,7 +379004,7 @@
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ghi chú"
+            "value": "Lưu ý"
           }
         },
         "zh-Hans": {
@@ -455725,7 +455725,7 @@
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "ফটো অ্যাপের সেলফি অ্যালবাম থেকে"
+            "value": "ছবি অ্যাপের সেলফি অ্যালবাম থেকে"
           }
         },
         "ca": {
@@ -455785,7 +455785,7 @@
         "gu": {
           "stringUnit": {
             "state": "translated",
-            "value": "ફોટો ઍપના સેલ્ફી આલ્બમમાંથી"
+            "value": "ફોટોસ ઍપના સેલ્ફી આલ્બમમાંથી"
           }
         },
         "he": {
@@ -455797,7 +455797,7 @@
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "तस्वीरें ऐप के सेल्फ़ी एल्बम से"
+            "value": "तस्वीर ऐप के सेल्फ़ी एल्बम से"
           }
         },
         "hr": {
@@ -455851,7 +455851,7 @@
         "mr": {
           "stringUnit": {
             "state": "translated",
-            "value": "फोटो अ‍ॅपच्या सेल्फी अल्बममधून"
+            "value": "छायाचित्र ॲपच्या सेल्फी अल्बममधून"
           }
         },
         "ms": {
@@ -455881,7 +455881,7 @@
         "pa": {
           "stringUnit": {
             "state": "translated",
-            "value": "ਫ਼ੋਟੋਆਂ ਐਪ ਦੀ ਸੈਲਫ਼ੀਆਂ ਐਲਬਮ ਤੋਂ"
+            "value": "ਤਸਵੀਰਾਂ ਐਪ ਦੀ ਸੈਲਫ਼ੀਆਂ ਐਲਬਮ ਤੋਂ"
           }
         },
         "pl": {
@@ -459382,7 +459382,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "%1$@ จาก %2$@ · อีก %3$@"
+            "value": "%1$@ ตั้งแต่ %2$@ · เหลืออีก %3$@"
           }
         },
         "tr": {
@@ -556782,7 +556782,7 @@
         "gu": {
           "stringUnit": {
             "state": "translated",
-            "value": "શુભ બપોર"
+            "value": "શુભ અપરાહ્ન"
           }
         },
         "he": {
@@ -556794,7 +556794,7 @@
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "शुभ दोपहर"
+            "value": "शुभ अपराह्न"
           }
         },
         "hr": {
@@ -556848,7 +556848,7 @@
         "mr": {
           "stringUnit": {
             "state": "translated",
-            "value": "शुभ दुपार"
+            "value": "शुभ अपराह्न"
           }
         },
         "ms": {
@@ -556878,7 +556878,7 @@
         "pa": {
           "stringUnit": {
             "state": "translated",
-            "value": "ਸ਼ੁਭ ਦੁਪਹਿਰ"
+            "value": "ਬਾਅਦ ਦੁਪਹਿਰ ਦੀਆਂ ਸ਼ੁਭਕਾਮਨਾਵਾਂ"
           }
         },
         "pl": {
@@ -556932,13 +556932,13 @@
         "ta": {
           "stringUnit": {
             "state": "translated",
-            "value": "மதிய வணக்கம்"
+            "value": "பிற்பகல் வணக்கம்"
           }
         },
         "te": {
           "stringUnit": {
             "state": "translated",
-            "value": "శుభ మధ్యాహ్నం"
+            "value": "శుభ అపరాహ్నం"
           }
         },
         "th": {
@@ -557882,7 +557882,7 @@
         "gu": {
           "stringUnit": {
             "state": "translated",
-            "value": "શુભ બપોર"
+            "value": "શુભ મધ્યાહ્ન"
           }
         },
         "he": {
@@ -557894,7 +557894,7 @@
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "शुभ दोपहर"
+            "value": "शुभ मध्याह्न"
           }
         },
         "hr": {
@@ -557948,7 +557948,7 @@
         "mr": {
           "stringUnit": {
             "state": "translated",
-            "value": "शुभ दुपार"
+            "value": "शुभ मध्यान्ह"
           }
         },
         "ms": {
@@ -558044,7 +558044,7 @@
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "สวัสดีตอนบ่าย"
+            "value": "สวัสดีตอนเที่ยง"
           }
         },
         "tr": {
@@ -558068,7 +558068,7 @@
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Chào buổi chiều"
+            "value": "Chào buổi trưa"
           }
         },
         "zh-Hans": {
@@ -598541,7 +598541,7 @@
         "fi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Pidä ylhäällä olevaa ”GaleriQ”-tekstiä painettuna 2 sekuntia avataksesi holvin – ”Q”:n numerolukko pyörii. Ota se käyttöön ja löydä lisää valintoja Asetuksista."
+            "value": "Pidä ylhäällä olevaa ”GaleriQ”-tekstiä painettuna 2 sekuntia avataksesi holvin – ”Q”:n valintakiekko pyörii. Ota se käyttöön ja löydä lisää valintoja Asetuksista."
           }
         },
         "fr": {
@@ -598577,7 +598577,7 @@
         "hu": {
           "stringUnit": {
             "state": "translated",
-            "value": "Tartsd lenyomva 2 másodpercig a fenti „GaleriQ” feliratot a széf megnyitásához – a „Q” számzára elfordul. Állítsd be, és további lehetőségeket a Beállításokban találsz."
+            "value": "Tartsd lenyomva 2 másodpercig a fenti „GaleriQ” feliratot a széf megnyitásához – a „Q”-ban lévő tárcsa elfordul. Állítsd be, és további lehetőségeket a Beállításokban találsz."
           }
         },
         "id": {
@@ -640880,7 +640880,7 @@
         "da": {
           "stringUnit": {
             "state": "translated",
-            "value": "Boksen forsvinder fra Indstillinger. Du åbner den ved at holde på “GaleriQ” øverst på startskærmen i 2 sekunder – den lille boksknap i “Q” drejer."
+            "value": "Boksen forsvinder fra Indstillinger. Du åbner den ved at trykke og holde på “GaleriQ” øverst på startskærmen i 2 sekunder – den lille drejeskive til boksen i “Q” drejer."
           }
         },
         "de": {
@@ -640910,7 +640910,7 @@
         "fi": {
           "stringUnit": {
             "state": "translated",
-            "value": "Holvi katoaa Asetuksista. Avaa se pitämällä aloitusnäytön yläreunan ”GaleriQ”-tekstiä painettuna 2 sekuntia – ”Q”:n pieni holvin numerolukko pyörii."
+            "value": "Holvi katoaa Asetuksista. Avaa se pitämällä aloitusnäytön yläreunan ”GaleriQ”-tekstiä painettuna 2 sekuntia – ”Q”:n pieni holvin valintakiekko pyörii."
           }
         },
         "fr": {
@@ -640946,7 +640946,7 @@
         "hu": {
           "stringUnit": {
             "state": "translated",
-            "value": "A széf eltűnik a Beállításokból. A megnyitásához tartsd lenyomva 2 másodpercig a kezdőképernyő tetején lévő „GaleriQ” feliratot – a „Q” kis széf-számzára elfordul."
+            "value": "A széf eltűnik a Beállításokból. A megnyitásához tartsd lenyomva 2 másodpercig a kezdőképernyő tetején lévő „GaleriQ” feliratot – a „Q”-ban lévő kis széftárcsa elfordul."
           }
         },
         "id": {
@@ -641687,7 +641687,7 @@
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "এগুলো এনক্রিপ্ট করে কপি ও যাচাই করা হয়। তারপর iOS জিজ্ঞেস করে ফটো অ্যাপ থেকে এগুলো মোছা যাবে কি না। সেখানে এগুলো ৩০ দিন “সম্প্রতি মুছে ফেলা”-তে থাকে।"
+            "value": "এগুলো এনক্রিপ্ট করে কপি ও যাচাই করা হয়। তারপর iOS জিজ্ঞেস করে ছবি অ্যাপ থেকে এগুলো মোছা যাবে কি না। সেখানে এগুলো ৩০ দিন “সম্প্রতি ডিলিট করা হয়েছে”-তে থাকে।"
           }
         },
         "ca": {
@@ -641747,7 +641747,7 @@
         "gu": {
           "stringUnit": {
             "state": "translated",
-            "value": "તેમને એન્ક્રિપ્ટ કરીને કૉપિ અને ચકાસવામાં આવે છે. પછી iOS પૂછે છે કે શું તેમને ફોટો ઍપમાંથી ડિલીટ કરી શકાય. ત્યાં તે 30 દિવસ “તાજેતરમાં ડિલીટ કરેલ” માં રહે છે."
+            "value": "તેમને એન્ક્રિપ્ટ કરીને કૉપિ અને ચકાસવામાં આવે છે. પછી iOS પૂછે છે કે શું તેમને ફોટોસ ઍપમાંથી ડિલીટ કરી શકાય. ત્યાં તે 30 દિવસ “તાજેતરમાં ડિલીટ કરેલ” માં રહે છે."
           }
         },
         "he": {
@@ -641759,7 +641759,7 @@
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "इन्हें एन्क्रिप्ट करके कॉपी और जाँचा जाता है। फिर iOS पूछता है कि क्या इन्हें तस्वीरें ऐप से डिलीट किया जा सकता है। वहाँ ये 30 दिन “हाल ही में डिलीट किए गए” में रहते हैं।"
+            "value": "इन्हें एन्क्रिप्ट करके कॉपी और जाँचा जाता है। फिर iOS पूछता है कि क्या इन्हें तस्वीर ऐप से डिलीट किया जा सकता है। वहाँ ये 30 दिन “हाल ही में डिलीट किए गए” में रहते हैं।"
           }
         },
         "hr": {
@@ -641813,7 +641813,7 @@
         "mr": {
           "stringUnit": {
             "state": "translated",
-            "value": "त्या एन्क्रिप्ट करून कॉपी आणि तपासल्या जातात. मग iOS विचारते की त्या फोटो अ‍ॅपमधून डिलीट करता येतील का. तिथे त्या 30 दिवस “अलीकडे डिलीट केलेले” मध्ये राहतात."
+            "value": "त्या एन्क्रिप्ट करून कॉपी आणि तपासल्या जातात. मग iOS विचारते की त्या छायाचित्र ॲपमधून डिलीट करता येतील का. तिथे त्या 30 दिवस “अलीकडे हटवलेले” मध्ये राहतात."
           }
         },
         "ms": {
@@ -641843,7 +641843,7 @@
         "pa": {
           "stringUnit": {
             "state": "translated",
-            "value": "ਇਨ੍ਹਾਂ ਨੂੰ ਇਨਕ੍ਰਿਪਟ ਕਰਕੇ ਕਾਪੀ ਅਤੇ ਪੁਸ਼ਟੀ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। ਫਿਰ iOS ਪੁੱਛਦਾ ਹੈ ਕਿ ਕੀ ਇਨ੍ਹਾਂ ਨੂੰ ਫ਼ੋਟੋਆਂ ਐਪ ਤੋਂ ਮਿਟਾਇਆ ਜਾ ਸਕਦਾ ਹੈ। ਉੱਥੇ ਇਹ 30 ਦਿਨਾਂ ਤੱਕ “ਹਾਲ ਹੀ ਵਿੱਚ ਮਿਟਾਏ ਗਏ” ਵਿੱਚ ਰਹਿੰਦੀਆਂ ਹਨ।"
+            "value": "ਇਨ੍ਹਾਂ ਨੂੰ ਇਨਕ੍ਰਿਪਟ ਕਰਕੇ ਕਾਪੀ ਅਤੇ ਪੁਸ਼ਟੀ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। ਫਿਰ iOS ਪੁੱਛਦਾ ਹੈ ਕਿ ਕੀ ਇਨ੍ਹਾਂ ਨੂੰ ਤਸਵੀਰਾਂ ਐਪ ਤੋਂ ਮਿਟਾਇਆ ਜਾ ਸਕਦਾ ਹੈ। ਉੱਥੇ ਇਹ 30 ਦਿਨਾਂ ਤੱਕ “ਹਾਲ ਹੀ ਵਿੱਚ ਡਿਲੀਟ” ਵਿੱਚ ਰਹਿੰਦੀਆਂ ਹਨ।"
           }
         },
         "pl": {
@@ -642512,7 +642512,7 @@
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS এগুলোর কিছু ফটো অ্যাপ থেকে মোছেনি। GaleriQ এগুলো এমনিতেও অন্য কোথাও দেখায় না, তবে ফটো অ্যাপে এগুলো এখনো দেখা যায়। আবার চেষ্টা করতে উপরের বার্তাটি ব্যবহার করুন।"
+            "value": "iOS এগুলোর কিছু আইটেম ছবি অ্যাপ থেকে মোছেনি। GaleriQ এগুলো এমনিতেও অন্য কোথাও দেখায় না, তবে এগুলো ছবি অ্যাপে এখনো দেখা যায়। আবার চেষ্টা করতে উপরের বার্তাটি ব্যবহার করুন।"
           }
         },
         "ca": {
@@ -642572,7 +642572,7 @@
         "gu": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS એ તેમાંથી કેટલીક ફોટો ઍપમાંથી ડિલીટ કરી નથી. GaleriQ તેમને બીજે ક્યાંય બતાવતું નથી, પણ ફોટો ઍપમાં તે હજી દેખાય છે. ફરી પ્રયાસ કરવા ઉપરની સૂચના વાપરો."
+            "value": "iOS એ તેમાંથી અમુકને ફોટોસ ઍપમાંથી ડિલીટ કર્યા નથી. GaleriQ તેમને બીજે ક્યાંય બતાવતું નથી, પણ તે ફોટોસ ઍપમાં હજી દેખાય છે. ફરી પ્રયાસ કરવા ઉપરની સૂચના વાપરો."
           }
         },
         "he": {
@@ -642584,7 +642584,7 @@
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS ने इनमें से कुछ तस्वीरें ऐप से डिलीट नहीं कीं। GaleriQ इन्हें वैसे भी कहीं और नहीं दिखाता, लेकिन तस्वीरें ऐप में ये अभी भी दिखती हैं। फिर कोशिश करने के लिए ऊपर की सूचना इस्तेमाल करें।"
+            "value": "iOS ने इनमें से कुछ आइटम तस्वीर ऐप से डिलीट नहीं किए। GaleriQ इन्हें वैसे भी कहीं और नहीं दिखाता, लेकिन ये तस्वीर ऐप में अभी भी दिखाई देते हैं। फिर कोशिश करने के लिए ऊपर दी गई सूचना का इस्तेमाल करें।"
           }
         },
         "hr": {
@@ -642638,7 +642638,7 @@
         "mr": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS ने त्यांपैकी काही फोटो अ‍ॅपमधून डिलीट केल्या नाहीत. GaleriQ त्या इतरत्र दाखवत नाहीच, पण फोटो अ‍ॅपमध्ये त्या अजूनही दिसतात. पुन्हा प्रयत्न करण्यासाठी वरची सूचना वापरा."
+            "value": "iOS ने त्यांपैकी काही आयटम छायाचित्र ॲपमधून डिलीट केले नाहीत. GaleriQ ते इतरत्र दाखवत नाहीच, पण ते छायाचित्र ॲपमध्ये अजूनही दिसतात. पुन्हा प्रयत्न करण्यासाठी वरची सूचना वापरा."
           }
         },
         "ms": {
@@ -642668,7 +642668,7 @@
         "pa": {
           "stringUnit": {
             "state": "translated",
-            "value": "iOS ਨੇ ਇਨ੍ਹਾਂ ਵਿੱਚੋਂ ਕੁਝ ਨੂੰ ਫ਼ੋਟੋਆਂ ਐਪ ਤੋਂ ਨਹੀਂ ਮਿਟਾਇਆ। GaleriQ ਇਨ੍ਹਾਂ ਨੂੰ ਉਂਝ ਵੀ ਹੋਰ ਕਿਤੇ ਨਹੀਂ ਦਿਖਾਉਂਦਾ, ਪਰ ਇਹ ਫ਼ੋਟੋਆਂ ਐਪ ਵਿੱਚ ਹਾਲੇ ਵੀ ਦਿਸਦੀਆਂ ਹਨ। ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰਨ ਲਈ ਉੱਪਰਲਾ ਸੁਨੇਹਾ ਵਰਤੋ।"
+            "value": "iOS ਨੇ ਇਨ੍ਹਾਂ ਵਿੱਚੋਂ ਕੁਝ ਨੂੰ ਤਸਵੀਰਾਂ ਐਪ ਤੋਂ ਨਹੀਂ ਮਿਟਾਇਆ। GaleriQ ਇਨ੍ਹਾਂ ਨੂੰ ਉਂਝ ਵੀ ਹੋਰ ਕਿਤੇ ਨਹੀਂ ਦਿਖਾਉਂਦਾ, ਪਰ ਇਹ ਤਸਵੀਰਾਂ ਐਪ ਵਿੱਚ ਹਾਲੇ ਵੀ ਦਿਸਦੀਆਂ ਹਨ। ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰਨ ਲਈ ਉੱਪਰਲਾ ਸੁਨੇਹਾ ਵਰਤੋ।"
           }
         },
         "pl": {
@@ -643612,7 +643612,7 @@
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "টিপ: এগুলো সেখান থেকেও উধাও করতে চাইলে ফটো অ্যাপে “সম্প্রতি মুছে ফেলা” খালি করুন।"
+            "value": "টিপ: এগুলো সেখান থেকেও উধাও করতে চাইলে ছবি অ্যাপে “সম্প্রতি ডিলিট করা হয়েছে” খালি করুন।"
           }
         },
         "ca": {
@@ -643672,7 +643672,7 @@
         "gu": {
           "stringUnit": {
             "state": "translated",
-            "value": "ટિપ: જો તેમને ત્યાંથી પણ ગાયબ થવું હોય તો ફોટો ઍપમાં “તાજેતરમાં ડિલીટ કરેલ” ખાલી કરો."
+            "value": "ટિપ: જો તેમને ત્યાંથી પણ ગાયબ થવું હોય તો ફોટોસ ઍપમાં “તાજેતરમાં ડિલીટ કરેલ” ખાલી કરો."
           }
         },
         "he": {
@@ -643684,7 +643684,7 @@
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "सुझाव: अगर इन्हें वहाँ से भी गायब होना है, तो तस्वीरें ऐप में “हाल ही में डिलीट किए गए” खाली करें।"
+            "value": "सुझाव: अगर इन्हें वहाँ से भी गायब होना है, तो तस्वीर ऐप में “हाल ही में डिलीट किए गए” खाली करें।"
           }
         },
         "hr": {
@@ -643738,7 +643738,7 @@
         "mr": {
           "stringUnit": {
             "state": "translated",
-            "value": "टीप: त्या तिथूनही नाहीशा व्हाव्यात असे वाटत असल्यास फोटो अ‍ॅपमधील “अलीकडे डिलीट केलेले” रिकामे करा."
+            "value": "टीप: त्या तिथूनही नाहीशा व्हाव्यात असे वाटत असल्यास छायाचित्र ॲपमधील “अलीकडे हटवलेले” रिकामे करा."
           }
         },
         "ms": {
@@ -643768,7 +643768,7 @@
         "pa": {
           "stringUnit": {
             "state": "translated",
-            "value": "ਸੁਝਾਅ: ਜੇ ਇਹ ਉੱਥੋਂ ਵੀ ਗ਼ਾਇਬ ਹੋਣੀਆਂ ਚਾਹੀਦੀਆਂ ਹਨ, ਤਾਂ ਫ਼ੋਟੋਆਂ ਐਪ ਵਿੱਚ “ਹਾਲ ਹੀ ਵਿੱਚ ਮਿਟਾਏ ਗਏ” ਖਾਲੀ ਕਰੋ।"
+            "value": "ਸੁਝਾਅ: ਜੇ ਇਹ ਉੱਥੋਂ ਵੀ ਗ਼ਾਇਬ ਹੋਣੀਆਂ ਚਾਹੀਦੀਆਂ ਹਨ, ਤਾਂ ਤਸਵੀਰਾਂ ਐਪ ਵਿੱਚ “ਹਾਲ ਹੀ ਵਿੱਚ ਡਿਲੀਟ” ਖਾਲੀ ਕਰੋ।"
           }
         },
         "pl": {
@@ -644712,7 +644712,7 @@
         "bn": {
           "stringUnit": {
             "state": "translated",
-            "value": "আইটেম যোগ করলে iOS জিজ্ঞেস করে ফটো অ্যাপ থেকে এগুলো মোছা যাবে কি না। তারপর আপনি খালি না করলে এগুলো ৩০ দিন “সম্প্রতি মুছে ফেলা”-তে থাকে।"
+            "value": "আইটেম যোগ করলে iOS জিজ্ঞেস করে ছবি অ্যাপ থেকে এগুলো মোছা যাবে কি না। তারপর আপনি খালি না করলে এগুলো ৩০ দিন “সম্প্রতি ডিলিট করা হয়েছে”-তে থাকে।"
           }
         },
         "ca": {
@@ -644772,7 +644772,7 @@
         "gu": {
           "stringUnit": {
             "state": "translated",
-            "value": "આઇટમ ઉમેરતી વખતે iOS પૂછે છે કે શું તેમને ફોટો ઍપમાંથી ડિલીટ કરી શકાય. પછી તમે ખાલી ન કરો ત્યાં સુધી તે 30 દિવસ “તાજેતરમાં ડિલીટ કરેલ” માં રહે છે."
+            "value": "આઇટમ ઉમેરતી વખતે iOS પૂછે છે કે શું તેમને ફોટોસ ઍપમાંથી ડિલીટ કરી શકાય. પછી તમે ખાલી ન કરો ત્યાં સુધી તે 30 દિવસ “તાજેતરમાં ડિલીટ કરેલ” માં રહે છે."
           }
         },
         "he": {
@@ -644784,7 +644784,7 @@
         "hi": {
           "stringUnit": {
             "state": "translated",
-            "value": "आइटम जोड़ने पर iOS पूछता है कि क्या उन्हें तस्वीरें ऐप से डिलीट किया जा सकता है। फिर वे 30 दिन “हाल ही में डिलीट किए गए” में रहते हैं, जब तक आप उसे खाली न करें।"
+            "value": "आइटम जोड़ने पर iOS पूछता है कि क्या उन्हें तस्वीर ऐप से डिलीट किया जा सकता है। फिर वे 30 दिन “हाल ही में डिलीट किए गए” में रहते हैं, जब तक आप उसे खाली न करें।"
           }
         },
         "hr": {
@@ -644838,7 +644838,7 @@
         "mr": {
           "stringUnit": {
             "state": "translated",
-            "value": "आयटम जोडल्यावर iOS विचारते की ते फोटो अ‍ॅपमधून डिलीट करता येतील का. मग तुम्ही रिकामे न केल्यास ते 30 दिवस “अलीकडे डिलीट केलेले” मध्ये राहतात."
+            "value": "आयटम जोडल्यावर iOS विचारते की ते छायाचित्र ॲपमधून डिलीट करता येतील का. मग तुम्ही रिकामे न केल्यास ते 30 दिवस “अलीकडे हटवलेले” मध्ये राहतात."
           }
         },
         "ms": {
@@ -644868,7 +644868,7 @@
         "pa": {
           "stringUnit": {
             "state": "translated",
-            "value": "ਜਦੋਂ ਤੁਸੀਂ ਆਈਟਮਾਂ ਜੋੜਦੇ ਹੋ, ਤਾਂ iOS ਪੁੱਛਦਾ ਹੈ ਕਿ ਕੀ ਇਨ੍ਹਾਂ ਨੂੰ ਫ਼ੋਟੋਆਂ ਐਪ ਤੋਂ ਮਿਟਾਇਆ ਜਾ ਸਕਦਾ ਹੈ। ਫਿਰ ਇਹ 30 ਦਿਨਾਂ ਤੱਕ “ਹਾਲ ਹੀ ਵਿੱਚ ਮਿਟਾਏ ਗਏ” ਵਿੱਚ ਰਹਿੰਦੀਆਂ ਹਨ, ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ ਉਸ ਨੂੰ ਖਾਲੀ ਨਹੀਂ ਕਰਦੇ।"
+            "value": "ਜਦੋਂ ਤੁਸੀਂ ਆਈਟਮਾਂ ਜੋੜਦੇ ਹੋ, ਤਾਂ iOS ਪੁੱਛਦਾ ਹੈ ਕਿ ਕੀ ਇਨ੍ਹਾਂ ਨੂੰ ਤਸਵੀਰਾਂ ਐਪ ਤੋਂ ਮਿਟਾਇਆ ਜਾ ਸਕਦਾ ਹੈ। ਫਿਰ ਇਹ 30 ਦਿਨਾਂ ਤੱਕ “ਹਾਲ ਹੀ ਵਿੱਚ ਡਿਲੀਟ” ਵਿੱਚ ਰਹਿੰਦੀਆਂ ਹਨ, ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ ਉਸ ਨੂੰ ਖਾਲੀ ਨਹੀਂ ਕਰਦੇ।"
           }
         },
         "pl": {

@@ -236,7 +236,7 @@
 0233	Ovo se ne može poništiti.
 0234	Trajno izbrisati datoteke?
 0235	Ukloni %1$lld
-0236	Zatim potvrdi u iOS dijalogu. Fotografije i videozapisi prelaze u „Nedavno izbrisano” u aplikaciji Fotografije.
+0236	Zatim potvrdite u dijaloškom okviru sustava iOS. Fotografije i videozapisi premještaju se u „Nedavno obrisano” u aplikaciji Foto.
 0237	Ukloniti fotografije i videozapise?
 0238	U smeću: %1$lld
 0239	Trajno izbriši %1$lld datoteku
@@ -477,7 +477,7 @@
 0468	Spremljeno kao kopija
 0469	Spremljeno kao kopija · %1$@
 0470	Original zadržan · izmjena je spremljena kao kopija
-0471	Original uređen · može se vratiti u aplikaciji Fotografije
+0471	Izvornik uređen · vraćanje moguće u aplikaciji Foto
 0472	Original zamijenjen · nalazi se u „Nedavno izbrisano”
 0473	Nije promijenjeno – iOS nije dobio dopuštenje. Original je nepromijenjen.
 0474	Ova je stavka u međuvremenu promijenjena, premještena ili izbrisana. Ništa nije spremljeno.
@@ -558,7 +558,7 @@
 0549	Original ostaje nepromijenjen.
 0550	Spremi samo obrezivanje
 0551	Uredi original
-0552	iOS najprije pita. Izmjena se sprema kao izmjena u aplikaciji Fotografije – ondje je u svakom trenutku možeš poništiti s „Vrati”.
+0552	U aplikaciji Foto otvorite uređenu stavku, dodirnite „…”, a zatim „Vrati”.
 0553	Spremi kopiju i premjesti original u smeće
 0554	Spremi kopiju, original u smeće
 0555	iOS traži potvrdu. Original ide u „Nedavno izbrisano” u aplikaciji Fotografije i ondje se obično može vratiti 30 dana. Prostor se oslobađa tek nakon toga.
@@ -669,7 +669,7 @@
 0659	Povlačenja
 0660	Odaberi što radi svaki smjer. „Stavi u album” dodaje fotografiju u album u aplikaciji Fotografije i zadržava je. Neradnja nikad nije odluka.
 0661	Povlačenja i tipke
-0662	Samo uz VoiceOver/Upravljanje prekidačem
+0662	Samo uz VoiceOver/Kontrolu prekidača
 0663	Uvijek
 0664	Prikaži tipke
 0665	Stavljeno u „%1$@”
@@ -832,7 +832,7 @@
 0819	Velike datoteke
 0820	Veće od
 0821	Samo datoteke poznate veličine od najmanje %1$lld MB. Njihova veličina može se razlikovati od prostora koji se oslobodi brisanjem.
-0822	Uz „Optimiziraj pohranu iPhonea” ovi su originali samo u iCloudu. iOS ne otkriva njihovu točnu veličinu bez preuzimanja pa je GaleriQ procjenjuje na temelju tvojih izmjerenih fotografija i videozapisa i prikazuje kao „pribl.”.
+0822	Uz „Optimiziraj memoriju iPhonea” ovdje može biti potrebno manje prostora nego što je prikazano.
 0823	Samo u iCloudu: %1$lld
 0824	u %1$lld velikoj datoteci
 0824:few	u %1$lld velike datoteke
@@ -883,7 +883,7 @@
 0866	Još nema omiljenih
 0867	Iz medijateke
 0868	Sve
-0869	Kinematografski
+0869	Filmski
 0870	Ukloni filtar
 0871	Uređeno
 0872	Za filtar „%1$@” ovdje nema ničega.
@@ -891,8 +891,8 @@
 0874	Panorame
 0875	RAW
 0876	Snimanja zaslona
-0877	Usporeno
-0878	Ubrzano
+0877	Usporena snimka
+0878	Ubrzana snimka
 0879	Filtar
 0880	Raščisti ovaj album
 0881	Ovaj album trenutačno nema fotografija ni videozapisa.

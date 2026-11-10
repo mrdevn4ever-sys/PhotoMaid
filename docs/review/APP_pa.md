@@ -206,7 +206,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | ਜਾਂਚ-ਸੂਚੀ ਵੀ ਸੰਭਾਲੋ |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | ਮੰਜ਼ਿਲ ਫ਼ੋਲਡਰ ਵਿੱਚ ਇੱਕ ਸਾਰਣੀ (CSV ਫ਼ਾਈਲ) ਸੰਭਾਲਦਾ ਹੈ ਜਿਸ ਵਿੱਚ ਹਰ ਫ਼ਾਈਲ ਦਾ ਨਾਮ, ਤਾਰੀਖ, ਆਕਾਰ ਅਤੇ ਚੈੱਕਸਮ, ਨਾਲ ਹੀ ਤੁਹਾਡੀਆਂ ਐਲਬਮਾਂ, ਟੈਗ ਅਤੇ ਨੋਟ ਹੁੰਦੇ ਹਨ – ਤਾਂ ਜੋ ਤੁਸੀਂ ਬਾਅਦ ਵਿੱਚ ਕਾਪੀਆਂ ਜਾਂਚ ਸਕੋ। |
 | 0197 | `art_feed_of` | of %1$@ | %1$@ ਵਿੱਚੋਂ |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | ਜੋੜੀਆਂ, ਫ਼ੋਟੋ ਸਨੇਕ ਅਤੇ Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | ਜੋੜੀਆਂ, ਫ਼ੋਟੋ ਸਨੇਕ ਅਤੇ Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | ਦੇਖਣ ਲਈ |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | ਉਹ ਫ਼ੋਟੋਆਂ ਜਿਨ੍ਹਾਂ ਬਾਰੇ ਤੁਸੀਂ ਹਾਲੇ ਤੈਅ ਨਹੀਂ ਕੀਤਾ। |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | ਡੂੰਘਾ ਸਾਹ ਲਓ। ਤੁਹਾਡੀਆਂ ਫ਼ੋਟੋਆਂ ਵੀ ਨਾਲ ਖੇਡਦੀਆਂ ਹਨ। |
@@ -244,7 +244,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0233 | `basket_confirm_files_message` | This can’t be undone. | ਇਸਨੂੰ ਵਾਪਸ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ। |
 | 0234 | `basket_confirm_files_title` | Permanently delete files? | ਫ਼ਾਈਲਾਂ ਪੱਕੇ ਤੌਰ ’ਤੇ ਮਿਟਾਉਣੀਆਂ ਹਨ? |
 | 0235 | `basket_confirm_media_action` | Remove %1$lld | %1$lld ਹਟਾਓ |
-| 0236 | `basket_confirm_media_message` | Then confirm in the iOS dialog. The photos and videos move to “Recently Deleted” in the Photos app. | ਫਿਰ iOS ਡਾਇਲਾਗ ਵਿੱਚ ਪੁਸ਼ਟੀ ਕਰੋ। ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਫ਼ੋਟੋਆਂ ਐਪ ਦੇ “ਹਾਲ ਹੀ ਵਿੱਚ ਮਿਟਾਏ ਗਏ” ਵਿੱਚ ਚਲੇ ਜਾਂਦੇ ਹਨ। |
+| 0236 | `basket_confirm_media_message` | Then confirm in the iOS dialog. The photos and videos move to “Recently Deleted” in the Photos app. | ਫਿਰ iOS ਡਾਇਲਾਗ ਵਿੱਚ ਪੁਸ਼ਟੀ ਕਰੋ। ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਤਸਵੀਰਾਂ ਐਪ ਦੇ “ਹਾਲ ਹੀ ਵਿੱਚ ਡਿਲੀਟ” ਵਿੱਚ ਚਲੇ ਜਾਂਦੇ ਹਨ। |
 | 0237 | `basket_confirm_media_title` | Remove photos & videos? | ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਹਟਾਉਣੇ ਹਨ? |
 | 0238 | `basket_count` | %1$lld in trash | ਰੱਦੀ ਵਿੱਚ %1$lld |
 | 0239 | `basket_delete_files#one` | Permanently delete %1$lld file | %1$lld ਫ਼ਾਈਲ ਪੱਕੇ ਤੌਰ ’ਤੇ ਮਿਟਾਓ |
@@ -256,7 +256,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0245 | `basket_files_footer` | These files will be permanently deleted. You can’t undo this. | ਇਹ ਫ਼ਾਈਲਾਂ ਪੱਕੇ ਤੌਰ ’ਤੇ ਮਿਟਾਈਆਂ ਜਾਣਗੀਆਂ। ਇਸਨੂੰ ਵਾਪਸ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ। |
 | 0246 | `basket_files_header` | Files | ਫ਼ਾਈਲਾਂ |
 | 0247 | `basket_intro` | Nothing has been deleted yet. Tap a thumbnail for a larger view. Empty the trash only when you’re ready. | ਹਾਲੇ ਕੁਝ ਵੀ ਮਿਟਾਇਆ ਨਹੀਂ ਗਿਆ। ਵੱਡਾ ਦੇਖਣ ਲਈ ਥੰਬਨੇਲ ਉੱਤੇ ਟੈਪ ਕਰੋ। ਰੱਦੀ ਤਾਂ ਹੀ ਖਾਲੀ ਕਰੋ ਜਦੋਂ ਤੁਸੀਂ ਤਿਆਰ ਹੋਵੋ। |
-| 0248 | `basket_media_footer` | iOS asks you to confirm again and moves photos and videos to “Recently Deleted”. You can usually restore them there for 30 days. With iCloud Photos, deleting applies to all your devices. | iOS ਦੁਬਾਰਾ ਪੁਸ਼ਟੀ ਮੰਗਦਾ ਹੈ ਅਤੇ ਫ਼ੋਟੋਆਂ ਤੇ ਵੀਡੀਓ ਨੂੰ “ਹਾਲ ਹੀ ਵਿੱਚ ਮਿਟਾਏ ਗਏ” ਵਿੱਚ ਲੈ ਜਾਂਦਾ ਹੈ। ਉੱਥੋਂ ਤੁਸੀਂ ਆਮ ਤੌਰ ’ਤੇ 30 ਦਿਨਾਂ ਤੱਕ ਉਨ੍ਹਾਂ ਨੂੰ ਬਹਾਲ ਕਰ ਸਕਦੇ ਹੋ। iCloud ਫ਼ੋਟੋਆਂ ਨਾਲ ਮਿਟਾਉਣਾ ਤੁਹਾਡੀਆਂ ਸਾਰੀਆਂ ਡਿਵਾਈਸਾਂ ਉੱਤੇ ਲਾਗੂ ਹੁੰਦਾ ਹੈ। |
+| 0248 | `basket_media_footer` | iOS asks you to confirm again and moves photos and videos to “Recently Deleted”. You can usually restore them there for 30 days. With iCloud Photos, deleting applies to all your devices. | iOS ਦੁਬਾਰਾ ਪੁਸ਼ਟੀ ਮੰਗਦਾ ਹੈ ਅਤੇ ਫ਼ੋਟੋਆਂ ਤੇ ਵੀਡੀਓ ਨੂੰ “ਹਾਲ ਹੀ ਵਿੱਚ ਡਿਲੀਟ” ਵਿੱਚ ਲੈ ਜਾਂਦਾ ਹੈ। ਉੱਥੋਂ ਤੁਸੀਂ ਆਮ ਤੌਰ ’ਤੇ 30 ਦਿਨਾਂ ਤੱਕ ਉਨ੍ਹਾਂ ਨੂੰ ਬਹਾਲ ਕਰ ਸਕਦੇ ਹੋ। iCloud ਤਸਵੀਰਾਂ ਨਾਲ ਮਿਟਾਉਣਾ ਤੁਹਾਡੀਆਂ ਸਾਰੀਆਂ ਡਿਵਾਈਸਾਂ ਉੱਤੇ ਲਾਗੂ ਹੁੰਦਾ ਹੈ। |
 | 0249 | `basket_media_header` | Photos & videos | ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ |
 | 0250 | `basket_preview_note` | Viewing doesn’t change your selection. | ਦੇਖਣ ਨਾਲ ਤੁਹਾਡੀ ਚੋਣ ਨਹੀਂ ਬਦਲਦੀ। |
 | 0251 | `basket_preview_open` | View larger: %1$@ | ਵੱਡਾ ਦੇਖੋ: %1$@ |
@@ -429,7 +429,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0418 | `done_estimated` | Estimated (“approx.”): %1$lld – iOS only reveals their exact size after downloading. | ਅੰਦਾਜ਼ਨ (“ਲਗਭਗ”): %1$lld – iOS ਉਨ੍ਹਾਂ ਦਾ ਸਹੀ ਆਕਾਰ ਡਾਊਨਲੋਡ ਤੋਂ ਬਾਅਦ ਹੀ ਦੱਸਦਾ ਹੈ। |
 | 0419 | `done_kept` | Kept today | ਅੱਜ ਰੱਖੇ |
 | 0420 | `done_note_files` | The files were permanently deleted. | ਫ਼ਾਈਲਾਂ ਪੱਕੇ ਤੌਰ ’ਤੇ ਮਿਟ ਗਈਆਂ। |
-| 0421 | `done_note_media` | Photos and videos are now in “Recently Deleted” in the Photos app. Space is freed only once they’re permanently deleted there. | ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਹੁਣ ਫ਼ੋਟੋਆਂ ਐਪ ਦੇ “ਹਾਲ ਹੀ ਵਿੱਚ ਮਿਟਾਏ ਗਏ” ਵਿੱਚ ਹਨ। ਥਾਂ ਤਾਂ ਹੀ ਖਾਲੀ ਹੁੰਦੀ ਹੈ ਜਦੋਂ ਉੱਥੋਂ ਵੀ ਪੱਕੇ ਤੌਰ ’ਤੇ ਮਿਟਾਏ ਜਾਣ। |
+| 0421 | `done_note_media` | Photos and videos are now in “Recently Deleted” in the Photos app. Space is freed only once they’re permanently deleted there. | ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਹੁਣ ਤਸਵੀਰਾਂ ਐਪ ਦੇ “ਹਾਲ ਹੀ ਵਿੱਚ ਡਿਲੀਟ” ਵਿੱਚ ਹਨ। ਥਾਂ ਤਾਂ ਹੀ ਖਾਲੀ ਹੁੰਦੀ ਹੈ ਜਦੋਂ ਉੱਥੋਂ ਵੀ ਪੱਕੇ ਤੌਰ ’ਤੇ ਮਿਟਾਏ ਜਾਣ। |
 | 0422 | `done_partial` | Items that weren’t removed stay in the GaleriQ trash. | ਜੋ ਆਈਟਮਾਂ ਨਹੀਂ ਹਟੀਆਂ, ਉਹ GaleriQ ਰੱਦੀ ਵਿੱਚ ਰਹਿੰਦੀਆਂ ਹਨ। |
 | 0423 | `done_removed` | Removed | ਹਟਾਏ ਗਏ |
 | 0424 | `done_saved` | saved | ਬਚਾਏ |
@@ -560,7 +560,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0549 | `edit_save_copy_text` | The original stays unchanged. | ਮੂਲ ਬਿਨਾਂ ਬਦਲੇ ਰਹਿੰਦਾ ਹੈ। |
 | 0550 | `edit_save_geometry_only` | Save crop only | ਸਿਰਫ਼ ਕ੍ਰੌਪ ਸੰਭਾਲੋ |
 | 0551 | `edit_save_original` | Edit original | ਮੂਲ ਨੂੰ ਸੋਧੋ |
-| 0552 | `edit_save_original_text` | iOS asks first. The edit is saved like an edit in the Photos app – you can undo it there anytime with “Revert”. | iOS ਪਹਿਲਾਂ ਪੁੱਛਦਾ ਹੈ। ਸੋਧ ਫ਼ੋਟੋਆਂ ਐਪ ਵਿੱਚ ਕੀਤੀ ਸੋਧ ਵਾਂਗ ਸੰਭਾਲੀ ਜਾਂਦੀ ਹੈ – ਤੁਸੀਂ ਇਸ ਨੂੰ ਉੱਥੇ ਕਦੇ ਵੀ “ਵਾਪਸ ਮੂਲ ’ਤੇ” ਨਾਲ ਵਾਪਸ ਲੈ ਸਕਦੇ ਹੋ। |
+| 0552 | `edit_save_original_text` | iOS asks first. The edit is saved like an edit in the Photos app – you can undo it there anytime with “Revert”. | iOS ਪਹਿਲਾਂ ਪੁੱਛਦਾ ਹੈ। ਸੋਧ ਤਸਵੀਰਾਂ ਐਪ ਵਿੱਚ ਕੀਤੀ ਸੋਧ ਵਾਂਗ ਸੰਭਾਲੀ ਜਾਂਦੀ ਹੈ – ਤੁਸੀਂ ਇਸ ਨੂੰ ਉੱਥੇ ਕਦੇ ਵੀ “ਮੂਲ ’ਤੇ ਰਿਵਰਟ ਕਰੋ” ਨਾਲ ਵਾਪਸ ਲੈ ਸਕਦੇ ਹੋ। |
 | 0553 | `edit_save_replace` | Save copy and move original to trash | ਕਾਪੀ ਸੰਭਾਲੋ ਅਤੇ ਮੂਲ ਨੂੰ ਰੱਦੀ ਵਿੱਚ ਭੇਜੋ |
 | 0554 | `edit_save_replace_action` | Save copy, original to trash | ਕਾਪੀ ਸੰਭਾਲੋ, ਮੂਲ ਰੱਦੀ ਵਿੱਚ |
 | 0555 | `edit_save_replace_text` | iOS asks to confirm. The original goes to “Recently Deleted” in the Photos app and can usually be restored there for 30 days. Space is freed only after that. | iOS ਪੁਸ਼ਟੀ ਲਈ ਪੁੱਛਦਾ ਹੈ। ਮੂਲ ਫ਼ੋਟੋਆਂ ਐਪ ਦੇ “ਹਾਲ ਹੀ ਵਿੱਚ ਮਿਟਾਏ ਗਏ” ਵਿੱਚ ਜਾਂਦਾ ਹੈ ਅਤੇ ਆਮ ਤੌਰ ’ਤੇ ਉੱਥੋਂ 30 ਦਿਨਾਂ ਤੱਕ ਵਾਪਸ ਲਿਆਂਦਾ ਜਾ ਸਕਦਾ ਹੈ। ਥਾਂ ਉਸ ਤੋਂ ਬਾਅਦ ਹੀ ਖਾਲੀ ਹੁੰਦੀ ਹੈ। |
@@ -1252,7 +1252,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1241 | `qa_remove_note` | Only the shortcut is removed. Your files and choices are kept. | ਸਿਰਫ਼ ਸ਼ਾਰਟਕੱਟ ਹਟਦਾ ਹੈ। ਤੁਹਾਡੀਆਂ ਫ਼ਾਈਲਾਂ ਅਤੇ ਚੋਣਾਂ ਰਹਿੰਦੀਆਂ ਹਨ। |
 | 1242 | `qa_screenshots` | Screenshots | ਸਕ੍ਰੀਨਸ਼ਾਟ |
 | 1243 | `qa_selfies` | Selfies | ਸੈਲਫ਼ੀਆਂ |
-| 1244 | `qa_selfies_sub` | From the Selfies album in the Photos app | ਫ਼ੋਟੋਆਂ ਐਪ ਦੀ ਸੈਲਫ਼ੀਆਂ ਐਲਬਮ ਤੋਂ |
+| 1244 | `qa_selfies_sub` | From the Selfies album in the Photos app | ਤਸਵੀਰਾਂ ਐਪ ਦੀ ਸੈਲਫ਼ੀਆਂ ਐਲਬਮ ਤੋਂ |
 | 1245 | `qa_this_week` | This week | ਇਹ ਹਫ਼ਤਾ |
 | 1246 | `qa_this_week_sub` | Photos and videos from this calendar week | ਇਸ ਕੈਲੰਡਰ ਹਫ਼ਤੇ ਦੀਆਂ ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ |
 | 1247 | `qa_title` | Quick access | ਤੇਜ਼ ਪਹੁੰਚ |
@@ -1486,7 +1486,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1491 | `today_done_title` | All reviewed | ਸਭ ਦੀ ਸਮੀਖਿਆ ਹੋ ਗਈ |
 | 1492 | `today_due#one` | %1$lld item from “Later” is ready to review | “ਬਾਅਦ ਵਿੱਚ” ਦੀ %1$lld ਆਈਟਮ ਸਮੀਖਿਆ ਲਈ ਤਿਆਰ ਹੈ |
 | 1493 | `today_due#other` | %1$lld items from “Later” are ready to review | “ਬਾਅਦ ਵਿੱਚ” ਦੀਆਂ %1$lld ਆਈਟਮਾਂ ਸਮੀਖਿਆ ਲਈ ਤਿਆਰ ਹਨ |
-| 1494 | `today_greeting_afternoon` | Good afternoon | ਸ਼ੁਭ ਦੁਪਹਿਰ |
+| 1494 | `today_greeting_afternoon` | Good afternoon | ਬਾਅਦ ਦੁਪਹਿਰ ਦੀਆਂ ਸ਼ੁਭਕਾਮਨਾਵਾਂ |
 | 1495 | `today_greeting_evening` | Good evening | ਸ਼ੁਭ ਸ਼ਾਮ |
 | 1496 | `today_greeting_morning` | Good morning | ਸ਼ੁਭ ਸਵੇਰ |
 | 1497 | `today_greeting_noon` | Good afternoon | ਸ਼ੁਭ ਦੁਪਹਿਰ |
@@ -1756,18 +1756,18 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1761 | `vault_hide_entry_text` | The vault disappears from Settings. To open it, press and hold “GaleriQ” at the top of the start screen for 2 seconds – the small vault dial in the “Q” turns. | ਵੌਲਟ ਸੈਟਿੰਗਾਂ ਵਿੱਚੋਂ ਗ਼ਾਇਬ ਹੋ ਜਾਂਦਾ ਹੈ। ਇਸ ਨੂੰ ਖੋਲ੍ਹਣ ਲਈ, ਸ਼ੁਰੂਆਤੀ ਸਕ੍ਰੀਨ ਦੇ ਉੱਪਰ “GaleriQ” ਨੂੰ 2 ਸਕਿੰਟ ਦਬਾ ਕੇ ਰੱਖੋ – “Q” ਵਿਚਲਾ ਛੋਟਾ ਵੌਲਟ ਡਾਇਲ ਘੁੰਮਦਾ ਹੈ। |
 | 1762 | `vault_hide_title` | Hide the entry? | ਕੀ ਐਂਟਰੀ ਲੁਕਾਉਣੀ ਹੈ? |
 | 1763 | `vault_import_action` | Move to vault | ਵੌਲਟ ਵਿੱਚ ਭੇਜੋ |
-| 1764 | `vault_import_confirm_text` | They are copied encrypted and verified. Then iOS asks whether they may be deleted from the Photos app. There they stay in “Recently Deleted” for 30 days. | ਇਨ੍ਹਾਂ ਨੂੰ ਇਨਕ੍ਰਿਪਟ ਕਰਕੇ ਕਾਪੀ ਅਤੇ ਪੁਸ਼ਟੀ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। ਫਿਰ iOS ਪੁੱਛਦਾ ਹੈ ਕਿ ਕੀ ਇਨ੍ਹਾਂ ਨੂੰ ਫ਼ੋਟੋਆਂ ਐਪ ਤੋਂ ਮਿਟਾਇਆ ਜਾ ਸਕਦਾ ਹੈ। ਉੱਥੇ ਇਹ 30 ਦਿਨਾਂ ਤੱਕ “ਹਾਲ ਹੀ ਵਿੱਚ ਮਿਟਾਏ ਗਏ” ਵਿੱਚ ਰਹਿੰਦੀਆਂ ਹਨ। |
+| 1764 | `vault_import_confirm_text` | They are copied encrypted and verified. Then iOS asks whether they may be deleted from the Photos app. There they stay in “Recently Deleted” for 30 days. | ਇਨ੍ਹਾਂ ਨੂੰ ਇਨਕ੍ਰਿਪਟ ਕਰਕੇ ਕਾਪੀ ਅਤੇ ਪੁਸ਼ਟੀ ਕੀਤਾ ਜਾਂਦਾ ਹੈ। ਫਿਰ iOS ਪੁੱਛਦਾ ਹੈ ਕਿ ਕੀ ਇਨ੍ਹਾਂ ਨੂੰ ਤਸਵੀਰਾਂ ਐਪ ਤੋਂ ਮਿਟਾਇਆ ਜਾ ਸਕਦਾ ਹੈ। ਉੱਥੇ ਇਹ 30 ਦਿਨਾਂ ਤੱਕ “ਹਾਲ ਹੀ ਵਿੱਚ ਡਿਲੀਟ” ਵਿੱਚ ਰਹਿੰਦੀਆਂ ਹਨ। |
 | 1765 | `vault_import_confirm_title` | Move to vault: %1$lld | ਵੌਲਟ ਵਿੱਚ ਭੇਜੋ: %1$lld |
 | 1766 | `vault_import_copies_text` | GaleriQ also made copies of them (edits, collages, movies, GIFs): %1$lld. They are in the Photos app and stay visible unless you move them too. | GaleriQ ਨੇ ਇਨ੍ਹਾਂ ਦੀਆਂ ਕਾਪੀਆਂ ਵੀ ਬਣਾਈਆਂ ਸਨ (ਸੋਧਾਂ, ਕੋਲਾਜ, ਮੂਵੀਆਂ, GIF): %1$lld। ਇਹ ਫ਼ੋਟੋਆਂ ਐਪ ਵਿੱਚ ਹਨ ਅਤੇ ਦਿਸਦੀਆਂ ਰਹਿਣਗੀਆਂ, ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ ਇਨ੍ਹਾਂ ਨੂੰ ਵੀ ਨਹੀਂ ਭੇਜਦੇ। |
-| 1767 | `vault_import_declined` | iOS didn’t delete some of them from the Photos app. GaleriQ doesn’t show them anywhere else anyway, but they are still visible in the Photos app. Use the note at the top to try again. | iOS ਨੇ ਇਨ੍ਹਾਂ ਵਿੱਚੋਂ ਕੁਝ ਨੂੰ ਫ਼ੋਟੋਆਂ ਐਪ ਤੋਂ ਨਹੀਂ ਮਿਟਾਇਆ। GaleriQ ਇਨ੍ਹਾਂ ਨੂੰ ਉਂਝ ਵੀ ਹੋਰ ਕਿਤੇ ਨਹੀਂ ਦਿਖਾਉਂਦਾ, ਪਰ ਇਹ ਫ਼ੋਟੋਆਂ ਐਪ ਵਿੱਚ ਹਾਲੇ ਵੀ ਦਿਸਦੀਆਂ ਹਨ। ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰਨ ਲਈ ਉੱਪਰਲਾ ਸੁਨੇਹਾ ਵਰਤੋ। |
+| 1767 | `vault_import_declined` | iOS didn’t delete some of them from the Photos app. GaleriQ doesn’t show them anywhere else anyway, but they are still visible in the Photos app. Use the note at the top to try again. | iOS ਨੇ ਇਨ੍ਹਾਂ ਵਿੱਚੋਂ ਕੁਝ ਨੂੰ ਤਸਵੀਰਾਂ ਐਪ ਤੋਂ ਨਹੀਂ ਮਿਟਾਇਆ। GaleriQ ਇਨ੍ਹਾਂ ਨੂੰ ਉਂਝ ਵੀ ਹੋਰ ਕਿਤੇ ਨਹੀਂ ਦਿਖਾਉਂਦਾ, ਪਰ ਇਹ ਤਸਵੀਰਾਂ ਐਪ ਵਿੱਚ ਹਾਲੇ ਵੀ ਦਿਸਦੀਆਂ ਹਨ। ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰਨ ਲਈ ਉੱਪਰਲਾ ਸੁਨੇਹਾ ਵਰਤੋ। |
 | 1768 | `vault_import_done` | In the vault: %1$lld. Removed from the Photos app: %2$lld. | ਵੌਲਟ ਵਿੱਚ: %1$lld। ਫ਼ੋਟੋਆਂ ਐਪ ਤੋਂ ਹਟਾਈਆਂ: %2$lld। |
 | 1769 | `vault_import_failed` | Couldn’t be moved: %1$lld (for example without a connection to iCloud). They stay in the Photos app. | ਭੇਜੀਆਂ ਨਹੀਂ ਜਾ ਸਕੀਆਂ: %1$lld (ਜਿਵੇਂ iCloud ਨਾਲ ਕਨੈਕਸ਼ਨ ਤੋਂ ਬਿਨਾਂ)। ਇਹ ਫ਼ੋਟੋਆਂ ਐਪ ਵਿੱਚ ਰਹਿੰਦੀਆਂ ਹਨ। |
 | 1770 | `vault_import_limit` | Not moved: %1$lld. Free allows %2$lld items in the vault; Pro is unlimited. | ਨਹੀਂ ਭੇਜੀਆਂ: %1$lld। ਮੁਫ਼ਤ ਵਰਜ਼ਨ ਵਿੱਚ ਵੌਲਟ ਵਿੱਚ %2$lld ਆਈਟਮਾਂ ਦੀ ਇਜਾਜ਼ਤ ਹੈ; Pro ਵਿੱਚ ਕੋਈ ਸੀਮਾ ਨਹੀਂ। |
-| 1771 | `vault_import_recently_deleted` | Tip: empty “Recently Deleted” in the Photos app if they should disappear there too. | ਸੁਝਾਅ: ਜੇ ਇਹ ਉੱਥੋਂ ਵੀ ਗ਼ਾਇਬ ਹੋਣੀਆਂ ਚਾਹੀਦੀਆਂ ਹਨ, ਤਾਂ ਫ਼ੋਟੋਆਂ ਐਪ ਵਿੱਚ “ਹਾਲ ਹੀ ਵਿੱਚ ਮਿਟਾਏ ਗਏ” ਖਾਲੀ ਕਰੋ। |
+| 1771 | `vault_import_recently_deleted` | Tip: empty “Recently Deleted” in the Photos app if they should disappear there too. | ਸੁਝਾਅ: ਜੇ ਇਹ ਉੱਥੋਂ ਵੀ ਗ਼ਾਇਬ ਹੋਣੀਆਂ ਚਾਹੀਦੀਆਂ ਹਨ, ਤਾਂ ਤਸਵੀਰਾਂ ਐਪ ਵਿੱਚ “ਹਾਲ ਹੀ ਵਿੱਚ ਡਿਲੀਟ” ਖਾਲੀ ਕਰੋ। |
 | 1772 | `vault_import_with_copies` | Move with copies (%1$lld) | ਕਾਪੀਆਂ ਸਮੇਤ ਭੇਜੋ (%1$lld) |
 | 1773 | `vault_import_without_copies` | Without copies | ਕਾਪੀਆਂ ਤੋਂ ਬਿਨਾਂ |
 | 1774 | `vault_intro_1` | Photos and videos in the vault are encrypted with your code and visible only here – nowhere else in GaleriQ. | ਵੌਲਟ ਵਿਚਲੀਆਂ ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਤੁਹਾਡੇ ਕੋਡ ਨਾਲ ਇਨਕ੍ਰਿਪਟਡ ਹਨ ਅਤੇ ਸਿਰਫ਼ ਇੱਥੇ ਦਿਸਦੀਆਂ ਹਨ – GaleriQ ਵਿੱਚ ਹੋਰ ਕਿਤੇ ਨਹੀਂ। |
-| 1775 | `vault_intro_2` | When you add items, iOS asks whether they may be deleted from the Photos app. They then stay in “Recently Deleted” for 30 days unless you empty it. | ਜਦੋਂ ਤੁਸੀਂ ਆਈਟਮਾਂ ਜੋੜਦੇ ਹੋ, ਤਾਂ iOS ਪੁੱਛਦਾ ਹੈ ਕਿ ਕੀ ਇਨ੍ਹਾਂ ਨੂੰ ਫ਼ੋਟੋਆਂ ਐਪ ਤੋਂ ਮਿਟਾਇਆ ਜਾ ਸਕਦਾ ਹੈ। ਫਿਰ ਇਹ 30 ਦਿਨਾਂ ਤੱਕ “ਹਾਲ ਹੀ ਵਿੱਚ ਮਿਟਾਏ ਗਏ” ਵਿੱਚ ਰਹਿੰਦੀਆਂ ਹਨ, ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ ਉਸ ਨੂੰ ਖਾਲੀ ਨਹੀਂ ਕਰਦੇ। |
+| 1775 | `vault_intro_2` | When you add items, iOS asks whether they may be deleted from the Photos app. They then stay in “Recently Deleted” for 30 days unless you empty it. | ਜਦੋਂ ਤੁਸੀਂ ਆਈਟਮਾਂ ਜੋੜਦੇ ਹੋ, ਤਾਂ iOS ਪੁੱਛਦਾ ਹੈ ਕਿ ਕੀ ਇਨ੍ਹਾਂ ਨੂੰ ਤਸਵੀਰਾਂ ਐਪ ਤੋਂ ਮਿਟਾਇਆ ਜਾ ਸਕਦਾ ਹੈ। ਫਿਰ ਇਹ 30 ਦਿਨਾਂ ਤੱਕ “ਹਾਲ ਹੀ ਵਿੱਚ ਡਿਲੀਟ” ਵਿੱਚ ਰਹਿੰਦੀਆਂ ਹਨ, ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ ਉਸ ਨੂੰ ਖਾਲੀ ਨਹੀਂ ਕਰਦੇ। |
 | 1776 | `vault_intro_3` | The vault is included in your iPhone backup (encrypted). If you delete GaleriQ, the vault is gone. | ਵੌਲਟ ਤੁਹਾਡੇ iPhone ਬੈਕਅੱਪ ਵਿੱਚ (ਇਨਕ੍ਰਿਪਟਡ) ਸ਼ਾਮਲ ਹੈ। ਜੇ ਤੁਸੀਂ GaleriQ ਮਿਟਾਉਂਦੇ ਹੋ, ਤਾਂ ਵੌਲਟ ਖ਼ਤਮ ਹੋ ਜਾਂਦਾ ਹੈ। |
 | 1777 | `vault_intro_4` | In the free version, each new folder needs a short ad video. With Pro, folders are created without ads. | ਮੁਫ਼ਤ ਵਰਜ਼ਨ ਵਿੱਚ ਹਰ ਨਵੇਂ ਫ਼ੋਲਡਰ ਲਈ ਇੱਕ ਛੋਟੀ ਇਸ਼ਤਿਹਾਰ ਵੀਡੀਓ ਚਾਹੀਦੀ ਹੈ। Pro ਨਾਲ ਫ਼ੋਲਡਰ ਬਿਨਾਂ ਇਸ਼ਤਿਹਾਰਾਂ ਦੇ ਬਣਦੇ ਹਨ। |
 | 1778 | `vault_intro_title` | Your private vault | ਤੁਹਾਡਾ ਨਿੱਜੀ ਵੌਲਟ |

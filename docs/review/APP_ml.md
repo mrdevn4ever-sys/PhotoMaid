@@ -206,7 +206,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | ഒരു ചെക്ക്‌ലിസ്റ്റും സംരക്ഷിക്കുക |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | ലക്ഷ്യ ഫോൾഡറിൽ ഒരു പട്ടിക (CSV ഫയൽ) സംരക്ഷിക്കുന്നു, അതിൽ ഓരോ ഫയലിന്റെയും പേര്, തീയതി, വലുപ്പം, ചെക്ക്‌സം എന്നിവയും നിങ്ങളുടെ ആൽബങ്ങൾ, ടാഗുകൾ, കുറിപ്പുകൾ എന്നിവയും ഉണ്ടാകും – പിന്നീട് പകർപ്പുകൾ പരിശോധിക്കാൻ. |
 | 0197 | `art_feed_of` | of %1$@ | %1$@-ൽ |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | ജോഡികൾ, ഫോട്ടോ സ്നേക്ക്, Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | ജോഡികൾ, ഫോട്ടോ സ്നേക്ക്, Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | പരിശോധിക്കാൻ |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | നിങ്ങൾക്ക് ഇപ്പോഴും ഉറപ്പില്ലാത്ത ഫോട്ടോകൾ. |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | ഒന്ന് ശ്വാസമെടുക്കൂ. നിങ്ങളുടെ ഫോട്ടോകളും കൂടെ കളിക്കും. |
@@ -271,7 +271,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0260 | `blocks_discovered` | Photo discovered! | ഫോട്ടോ വെളിപ്പെട്ടു! |
 | 0261 | `blocks_favorites` | Favorites | പ്രിയപ്പെട്ടവ |
 | 0262 | `blocks_found` | Photos discovered: %1$lld | വെളിപ്പെട്ട ഫോട്ടോകൾ: %1$lld |
-| 0263 | `blocks_gestures` | Board: swipe sideways, tap to rotate, drag or flick down. | ബോർഡ്: വശത്തേക്ക് സ്വൈപ്പ് ചെയ്യുക, തിരിക്കാൻ ടാപ്പ് ചെയ്യുക, താഴേക്ക് വലിക്കുക അല്ലെങ്കിൽ ഫ്ലിക്ക് ചെയ്യുക. |
+| 0263 | `blocks_gestures` | Board: swipe sideways, tap to rotate, drag or flick down. | ബോർഡ്: വശത്തേക്ക് സ്വൈപ്പ് ചെയ്യുക, തിരിക്കാൻ ടാപ്പ് ചെയ്യുക, താഴേക്ക് വലിക്കുക അല്ലെങ്കിൽ താഴേക്ക് ഫ്ലിക്ക് ചെയ്യുക. |
 | 0264 | `blocks_hint_drop` | Drag down: faster · flick down: place | താഴേക്ക് വലിക്കുക: വേഗത്തിൽ · താഴേക്ക് ഫ്ലിക്ക്: വയ്ക്കുക |
 | 0265 | `blocks_hint_move` | Swipe sideways to move | നീക്കാൻ വശത്തേക്ക് സ്വൈപ്പ് ചെയ്യുക |
 | 0266 | `blocks_hint_rotate` | Tap to rotate | തിരിക്കാൻ ടാപ്പ് ചെയ്യുക |

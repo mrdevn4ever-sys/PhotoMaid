@@ -206,7 +206,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | ଏକ ଚେକଲିଷ୍ଟ ମଧ୍ୟ ସେଭ୍ କରନ୍ତୁ |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | ଗନ୍ତବ୍ୟ ଫୋଲ୍ଡରରେ ଏକ ସାରଣୀ (CSV ଫାଇଲ୍) ସେଭ୍ କରେ, ଯେଉଁଥିରେ ପ୍ରତ୍ୟେକ ଫାଇଲ୍‌ର ନାମ, ତାରିଖ, ଆକାର ଓ ଚେକସମ୍, ସହିତ ଆପଣଙ୍କ ଆଲବମ୍, ଟ୍ୟାଗ୍ ଓ ନୋଟ୍ ଥାଏ – ଯାହାଦ୍ୱାରା ପରେ କପିଗୁଡ଼ିକ ଯାଞ୍ଚ କରିପାରିବେ। |
 | 0197 | `art_feed_of` | of %1$@ | %1$@ ମଧ୍ୟରୁ |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | ଯୋଡ଼ି, ଫଟୋ ସ୍ନେକ ଓ Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | ଯୋଡ଼ି, ଫଟୋ ସ୍ନେକ ଓ Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | ସମୀକ୍ଷା ପାଇଁ |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | ଯେଉଁ ଫଟୋ ବିଷୟରେ ଆପଣ ଏବେ ବି ନିଶ୍ଚିତ ନୁହନ୍ତି। |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | ଟିକେ ନିଶ୍ୱାସ ନିଅନ୍ତୁ। ଆପଣଙ୍କ ଫଟୋ ମଧ୍ୟ ସାଥିରେ ଖେଳିବେ। |
@@ -271,7 +271,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0260 | `blocks_discovered` | Photo discovered! | ଫଟୋ ଉନ୍ମୋଚିତ! |
 | 0261 | `blocks_favorites` | Favorites | ପସନ୍ଦର |
 | 0262 | `blocks_found` | Photos discovered: %1$lld | ଉନ୍ମୋଚିତ ଫଟୋ: %1$lld |
-| 0263 | `blocks_gestures` | Board: swipe sideways, tap to rotate, drag or flick down. | ବୋର୍ଡ: ପାର୍ଶ୍ୱକୁ ସ୍ୱାଇପ୍ କରନ୍ତୁ, ଘୁରାଇବାକୁ ଟାପ୍ କରନ୍ତୁ, ତଳକୁ ଟାଣନ୍ତୁ କିମ୍ବା ଝଟକା ଦିଅନ୍ତୁ। |
+| 0263 | `blocks_gestures` | Board: swipe sideways, tap to rotate, drag or flick down. | ବୋର୍ଡ: ପାର୍ଶ୍ୱକୁ ସ୍ୱାଇପ୍ କରନ୍ତୁ, ଘୁରାଇବାକୁ ଟାପ୍ କରନ୍ତୁ, ତଳକୁ ଟାଣନ୍ତୁ କିମ୍ବା ତଳକୁ ଝଟକା ଦିଅନ୍ତୁ। |
 | 0264 | `blocks_hint_drop` | Drag down: faster · flick down: place | ତଳକୁ ଟାଣନ୍ତୁ: ଦ୍ରୁତ · ତଳକୁ ଝଟକା: ରଖନ୍ତୁ |
 | 0265 | `blocks_hint_move` | Swipe sideways to move | ଘୁଞ୍ଚାଇବାକୁ ପାର୍ଶ୍ୱକୁ ସ୍ୱାଇପ୍ କରନ୍ତୁ |
 | 0266 | `blocks_hint_rotate` | Tap to rotate | ଘୁରାଇବାକୁ ଟାପ୍ କରନ୍ତୁ |

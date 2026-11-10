@@ -218,7 +218,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | Shrani tudi kontrolni seznam |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | V ciljno mapo shrani tabelo (datoteko CSV) z imenom, datumom, velikostjo in kontrolno vsoto vsake datoteke ter s tvojimi albumi, oznakami in zapiski – da lahko kopije pozneje preveriš. |
 | 0197 | `art_feed_of` | of %1$@ | od %1$@ |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | Pari, Foto kača in Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | Pari, Foto kača in Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | za pregled |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | Fotografije, glede katerih še nisi prepričan. |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | Zadihaj. Tvoje fotografije igrajo s tabo. |
@@ -871,7 +871,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0825:two | `large_in_files#two` | – | v %1$lld velikih datotekah |
 | 0825 | `large_in_files#other` | in %1$lld large files | v %1$lld velikih datotekah |
 | 0826 | `large_in_icloud_a11y` | Only in iCloud, size estimated | Samo v iCloudu, velikost ocenjena |
-| 0827 | `large_measure_resume` | Continue measuring (open: %1$lld) | Nadaljuj merjenje (odprto: %1$lld) |
+| 0827 | `large_measure_resume` | Continue measuring (open: %1$lld) | Nadaljuj merjenje (še za pregled: %1$lld) |
 | 0828 | `large_measuring` | Measuring sizes … %1$lld of %2$lld | Merjenje velikosti … %1$lld od %2$lld |
 | 0829 | `large_none` | No matching files | Ni ustreznih datotek |
 | 0830 | `large_none_message` | None of the accessible files with a known size is larger than %1$lld MB. | Nobena dostopna datoteka znane velikosti ni večja od %1$lld MB. |

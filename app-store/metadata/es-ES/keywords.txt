@@ -1,1 +1,1 @@
-caja fuerte,duplicados,borrar,galería,álbum,almacenamiento,privado,ocultar,collage,editor,comprimir
+caja fuerte,duplicados,borrar,galería,álbum,almacenamiento,privado,ocultar,collage,editor

@@ -206,7 +206,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | چیک لسٹ بھی محفوظ کریں |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | منزل کے فولڈر میں ایک ٹیبل (CSV فائل) محفوظ کرتا ہے جس میں ہر فائل کا نام، تاریخ، سائز اور چیک سم، نیز آپ کے البمز، ٹیگز اور نوٹس ہوتے ہیں – تاکہ آپ بعد میں کاپیاں جانچ سکیں۔ |
 | 0197 | `art_feed_of` | of %1$@ | %1$@ میں سے |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | جوڑیاں، فوٹو اسنیک اور Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | جوڑیاں، فوٹو اسنیک اور Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | جائزے کے لیے |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | وہ تصاویر جن کے بارے میں آپ ابھی طے نہیں کر پائے۔ |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | گہری سانس لیں۔ آپ کی تصاویر بھی ساتھ کھیلتی ہیں۔ |

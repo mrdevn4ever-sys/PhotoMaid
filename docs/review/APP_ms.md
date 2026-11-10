@@ -200,7 +200,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | Simpan juga senarai semak |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | Menyimpan jadual (fail CSV) dalam folder destinasi dengan nama, tarikh, saiz dan hasil tambah semak setiap fail, serta album, tag dan nota anda – supaya anda boleh menyemak salinan kemudian. |
 | 0197 | `art_feed_of` | of %1$@ | daripada %1$@ |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | Pasangan, Ular Foto dan Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | Pasangan, Ular Foto dan Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | untuk disemak |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | Foto yang anda masih belum pasti. |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | Tarik nafas. Foto anda turut bermain. |

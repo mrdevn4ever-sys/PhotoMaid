@@ -212,7 +212,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | לשמור גם רשימת בדיקה |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | שומר טבלה (קובץ CSV) בתיקיית היעד עם השם, התאריך, הגודל וסכום הביקורת של כל קובץ, וגם את האלבומים, התגיות וההערות שלך – כדי שאפשר יהיה לבדוק את העותקים בהמשך. |
 | 0197 | `art_feed_of` | of %1$@ | מתוך %1$@ |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | זוגות, נחש תמונות ו-Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | זוגות, נחש תמונות ו-Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | לסקירה |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | תמונות שעדיין לא החלטת לגביהן. |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | לנשום עמוק. התמונות שלך משחקות איתך. |

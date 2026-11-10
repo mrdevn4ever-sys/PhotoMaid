@@ -186,14 +186,21 @@ jobs:
             Tests
             scripts
             fastlane
+            app-store
       - name: Xcode wählen (neuestes stabiles)
         run: scripts/ci/select_xcode.sh
       - name: XcodeGen
         run: |
           brew install xcodegen
           xcodegen generate
-      - name: Texte prüfen (alle Kennungen in 16 Sprachen)
-        run: python3 scripts/android_strings_to_xcstrings.py --check
+      - name: Texte prüfen (45 App-Sprachen, 50 Store-Locales)
+        env:
+          PM_ANDROID_RES: /nonexistent
+        run: |
+          python3 scripts/android_strings_to_xcstrings.py --check
+          python3 scripts/i18n/new_languages.py check
+          python3 scripts/store/metadata_texts.py --check
+          ruby -c fastlane/Fastfile
       - name: Simulator wählen
         id: sim
         env:
