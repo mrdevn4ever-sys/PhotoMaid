@@ -10,6 +10,24 @@
             "value": "GaleriQ"
           }
         },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ"
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ"
+          }
+        },
         "da": {
           "stringUnit": {
             "state": "translated",
@@ -17,6 +35,12 @@
           }
         },
         "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ"
+          }
+        },
+        "el": {
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ"
@@ -34,7 +58,43 @@
             "value": "GaleriQ"
           }
         },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ"
+          }
+        },
         "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ"
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ"
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ"
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ"
+          }
+        },
+        "hu": {
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ"
@@ -58,7 +118,31 @@
             "value": "GaleriQ"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ"
+          }
+        },
         "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ"
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ"
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ"
+          }
+        },
+        "ms": {
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ"
@@ -71,6 +155,18 @@
           }
         },
         "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ"
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ"
+          }
+        },
+        "pa": {
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ"
@@ -106,7 +202,31 @@
             "value": "GaleriQ"
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ"
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ"
+          }
+        },
         "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ"
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ"
+          }
+        },
+        "te": {
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ"
@@ -125,6 +245,12 @@
           }
         },
         "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ"
+          }
+        },
+        "ur": {
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ"
@@ -159,6 +285,24 @@
             "value": "يستخدم GaleriQ الكاميرا فقط لمسح المستندات عندما تضغط «مسح»."
           }
         },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ ক্যামেরা শুধু তখনই নথি স্ক্যান করতে ব্যবহার করে যখন আপনি স্ক্যান-এ ট্যাপ করেন।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ només fa servir la càmera per escanejar documents quan toques Escanejar."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ používá fotoaparát jen ke skenování dokumentů, když klepnete na Skenovat."
+          }
+        },
         "da": {
           "stringUnit": {
             "state": "translated",
@@ -169,6 +313,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ nutzt die Kamera nur zum Scannen von Dokumenten, wenn du auf „Scannen“ tippst."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Το GaleriQ χρησιμοποιεί την κάμερα μόνο για σάρωση εγγράφων όταν πατάς Σάρωση."
           }
         },
         "en": {
@@ -183,10 +333,46 @@
             "value": "GaleriQ usa la cámara solo para escanear documentos cuando tocas «Escanear»."
           }
         },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ käyttää kameraa vain asiakirjojen skannaamiseen, kun napautat Skannaa."
+          }
+        },
         "fr": {
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ utilise l’appareil photo uniquement pour numériser des documents lorsque vous touchez « Numériser »."
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "તમે સ્કૅન પર ટૅપ કરો ત્યારે જ GaleriQ દસ્તાવેજો સ્કૅન કરવા કૅમેરા વાપરે છે."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ משתמשת במצלמה רק כדי לסרוק מסמכים כשמקישים על „סריקה”."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ कैमरे का उपयोग सिर्फ़ तब दस्तावेज़ स्कैन करने के लिए करता है जब आप स्कैन पर टैप करते हैं।"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ koristi kameru samo za skeniranje dokumenata kad dodirneš Skeniraj."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A GaleriQ a kamerát csak dokumentumok beolvasására használja, amikor a Beolvasás gombra koppintasz."
           }
         },
         "id": {
@@ -207,10 +393,34 @@
             "value": "GaleriQは「スキャン」をタップしたときだけ、書類のスキャンにカメラを使います。"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ನೀವು ಸ್ಕ್ಯಾನ್ ಟ್ಯಾಪ್ ಮಾಡಿದಾಗ ಮಾತ್ರ GaleriQ ದಾಖಲೆಗಳನ್ನು ಸ್ಕ್ಯಾನ್ ಮಾಡಲು ಕ್ಯಾಮೆರಾ ಬಳಸುತ್ತದೆ."
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ는 '스캔'을 탭할 때만 문서 스캔에 카메라를 사용합니다."
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "നിങ്ങൾ സ്കാൻ ടാപ്പ് ചെയ്യുമ്പോൾ പ്രമാണങ്ങൾ സ്കാൻ ചെയ്യാൻ മാത്രമാണ് GaleriQ ക്യാമറ ഉപയോഗിക്കുന്നത്."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "तुम्ही स्कॅन वर टॅप केल्यावरच GaleriQ दस्तऐवज स्कॅन करण्यासाठी कॅमेरा वापरते."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ menggunakan kamera hanya untuk mengimbas dokumen apabila anda mengetik Imbas."
           }
         },
         "nb": {
@@ -223,6 +433,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ gebruikt de camera alleen om documenten te scannen als je op ‘Scan’ tikt."
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ଆପଣ ସ୍କାନ୍‌ରେ ଟାପ୍ କଲେ ହିଁ GaleriQ ଡକ୍ୟୁମେଣ୍ଟ ସ୍କାନ୍ କରିବାକୁ କ୍ୟାମେରା ବ୍ୟବହାର କରେ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ ਕੈਮਰਾ ਸਿਰਫ਼ ਉਦੋਂ ਦਸਤਾਵੇਜ਼ ਸਕੈਨ ਕਰਨ ਲਈ ਵਰਤਦਾ ਹੈ ਜਦੋਂ ਤੁਸੀਂ ਸਕੈਨ ਉੱਤੇ ਟੈਪ ਕਰਦੇ ਹੋ।"
           }
         },
         "pl": {
@@ -255,10 +477,34 @@
             "value": "GaleriQ использует камеру только для сканирования документов, когда вы нажимаете «Сканировать»."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ používa fotoaparát len na skenovanie dokumentov, keď klepnete na Skenovať."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ uporablja kamero samo za skeniranje dokumentov, ko tapneš Skeniraj."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ använder kameran bara för att skanna dokument när du trycker på Skanna."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "நீங்கள் ஸ்கேன் என்பதைத் தட்டும்போது ஆவணங்களை ஸ்கேன் செய்ய மட்டுமே GaleriQ கேமராவைப் பயன்படுத்துகிறது."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "మీరు స్కాన్ ట్యాప్ చేసినప్పుడు డాక్యుమెంట్‌లను స్కాన్ చేయడానికి మాత్రమే GaleriQ కెమెరాను వాడుతుంది."
           }
         },
         "th": {
@@ -277,6 +523,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ використовує камеру лише для сканування документів, коли ви торкаєтеся «Сканувати»."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ کیمرہ صرف تب دستاویزات اسکین کرنے کے لیے استعمال کرتا ہے جب آپ اسکین پر ٹیپ کرتے ہیں۔"
           }
         },
         "vi": {
@@ -308,6 +560,24 @@
             "value": "يستخدم GaleriQ بصمة الوجه فقط لفتح المحتوى الذي حميته برمز."
           }
         },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ Face ID শুধু সেই বিষয়বস্তু খুলতে ব্যবহার করে যা আপনি কোড দিয়ে সুরক্ষিত করেছেন।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ només fa servir Face ID per obrir el contingut que has protegit amb un codi."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ používá Face ID jen k otevření obsahu, který jste chránili kódem."
+          }
+        },
         "da": {
           "stringUnit": {
             "state": "translated",
@@ -318,6 +588,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ nutzt Face ID nur, um Inhalte zu öffnen, die du mit einem Code geschützt hast."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Το GaleriQ χρησιμοποιεί το Face ID μόνο για να ανοίξει περιεχόμενο που προστάτεψες με κωδικό."
           }
         },
         "en": {
@@ -332,10 +608,46 @@
             "value": "GaleriQ usa Face ID solo para abrir el contenido que protegiste con un código."
           }
         },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ käyttää Face ID:tä vain koodilla suojaamasi sisällön avaamiseen."
+          }
+        },
         "fr": {
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ utilise Face ID uniquement pour ouvrir le contenu que tu as protégé par un code."
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "તમે કોડથી સુરક્ષિત કરેલી સામગ્રી ખોલવા માટે જ GaleriQ Face ID વાપરે છે."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ משתמשת ב-Face ID רק כדי לפתוח תוכן שהגנת עליו בקוד."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ Face ID का उपयोग सिर्फ़ उस सामग्री को खोलने के लिए करता है जिसे आपने कोड से सुरक्षित किया है।"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ koristi Face ID samo za otvaranje sadržaja koji si zaštitio kôdom."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A GaleriQ a Face ID-t csak a kóddal védett tartalom megnyitására használja."
           }
         },
         "id": {
@@ -356,10 +668,34 @@
             "value": "GaleriQは、コードで保護したコンテンツを開くためだけにFace IDを使用します。"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ನೀವು ಕೋಡ್‌ನಿಂದ ರಕ್ಷಿಸಿದ ವಿಷಯವನ್ನು ತೆರೆಯಲು ಮಾತ್ರ GaleriQ Face ID ಬಳಸುತ್ತದೆ."
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ는 코드로 보호한 콘텐츠를 열 때만 Face ID를 사용해요."
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "നിങ്ങൾ കോഡ് ഉപയോഗിച്ച് സംരക്ഷിച്ച ഉള്ളടക്കം തുറക്കാൻ മാത്രമാണ് GaleriQ Face ID ഉപയോഗിക്കുന്നത്."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "तुम्ही कोडने संरक्षित केलेला मजकूर उघडण्यासाठीच GaleriQ Face ID वापरते."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ menggunakan Face ID hanya untuk membuka kandungan yang anda lindungi dengan kod."
           }
         },
         "nb": {
@@ -372,6 +708,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ gebruikt Face ID alleen om inhoud te openen die je met een code hebt beveiligd."
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ଆପଣ କୋଡ୍ ସହ ସୁରକ୍ଷିତ କରିଥିବା ବିଷୟବସ୍ତୁ ଖୋଲିବା ପାଇଁ ହିଁ GaleriQ Face ID ବ୍ୟବହାର କରେ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ Face ID ਸਿਰਫ਼ ਉਹ ਸਮੱਗਰੀ ਖੋਲ੍ਹਣ ਲਈ ਵਰਤਦਾ ਹੈ ਜਿਸ ਨੂੰ ਤੁਸੀਂ ਕੋਡ ਨਾਲ ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਹੈ।"
           }
         },
         "pl": {
@@ -404,10 +752,34 @@
             "value": "GaleriQ использует Face ID только для открытия содержимого, защищённого кодом."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ používa Face ID len na otvorenie obsahu, ktorý ste chránili kódom."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ uporablja Face ID samo za odpiranje vsebine, ki si jo zaščitil s kodo."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ använder Face ID bara för att öppna innehåll som du har skyddat med en kod."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "நீங்கள் குறியீட்டால் பாதுகாத்த உள்ளடக்கத்தைத் திறக்க மட்டுமே GaleriQ Face ID-ஐப் பயன்படுத்துகிறது."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "మీరు కోడ్‌తో రక్షించిన కంటెంట్‌ను తెరవడానికి మాత్రమే GaleriQ Face IDని వాడుతుంది."
           }
         },
         "th": {
@@ -426,6 +798,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ використовує Face ID лише для відкриття вмісту, захищеного кодом."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ Face ID صرف اس مواد کو کھولنے کے لیے استعمال کرتا ہے جسے آپ نے کوڈ سے محفوظ کیا ہے۔"
           }
         },
         "vi": {
@@ -457,6 +835,24 @@
             "value": "يحتاج GaleriQ إلى الميكروفون لملاحظة صوتية. لا يبدأ التسجيل إلا عند الضغط."
           }
         },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ভয়েস নোটের জন্য GaleriQ-এর মাইক্রোফোন অ্যাক্সেস দরকার। আপনি ট্যাপ করলেই কেবল রেকর্ডিং শুরু হয়।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ necessita accés al micròfon per a una nota de veu. La gravació només comença quan toques."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ potřebuje přístup k mikrofonu kvůli hlasové poznámce. Nahrávání začne, až klepnete."
+          }
+        },
         "da": {
           "stringUnit": {
             "state": "translated",
@@ -467,6 +863,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Für eine Sprachnotiz braucht GaleriQ Zugriff auf das Mikrofon. Die Aufnahme beginnt nur nach deinem Tippen."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Το GaleriQ χρειάζεται πρόσβαση στο μικρόφωνο για φωνητική σημείωση. Η εγγραφή ξεκινά μόνο όταν πατήσεις."
           }
         },
         "en": {
@@ -481,10 +883,46 @@
             "value": "GaleriQ necesita el micrófono para una nota de voz. La grabación empieza solo al tocar."
           }
         },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ tarvitsee mikrofonin käyttöoikeuden äänimuistiota varten. Tallennus alkaa vasta, kun napautat."
+          }
+        },
         "fr": {
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ a besoin du microphone pour une note vocale. L’enregistrement commence uniquement à votre demande."
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "વૉઇસ નોંધ માટે GaleriQ ને માઇક્રોફોન ઍક્સેસ જોઈએ. તમે ટૅપ કરો ત્યારે જ રેકોર્ડિંગ શરૂ થાય છે."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ צריכה גישה למיקרופון בשביל הערה קולית. ההקלטה מתחילה רק כשמקישים."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "वॉइस नोट के लिए GaleriQ को माइक्रोफ़ोन एक्सेस चाहिए। रिकॉर्डिंग तभी शुरू होती है जब आप टैप करें।"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ treba pristup mikrofonu za glasovnu bilješku. Snimanje počinje tek kad dodirneš."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A GaleriQ-nak mikrofon-hozzáférés kell a hangjegyzethez. A felvétel csak koppintásra indul."
           }
         },
         "id": {
@@ -505,10 +943,34 @@
             "value": "音声メモにはマイクへのアクセスが必要です。タップしたときだけ録音を開始します。"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ಧ್ವನಿ ಟಿಪ್ಪಣಿಗಾಗಿ GaleriQ ಗೆ ಮೈಕ್ರೋಫೋನ್ ಪ್ರವೇಶ ಬೇಕು. ನೀವು ಟ್ಯಾಪ್ ಮಾಡಿದಾಗ ಮಾತ್ರ ರೆಕಾರ್ಡಿಂಗ್ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ."
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "음성 메모를 위해 마이크 접근이 필요합니다. 탭해야 녹음이 시작됩니다."
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "വോയ്‌സ് നോട്ടിനായി GaleriQ-ന് മൈക്രോഫോൺ ആക്‌സസ് വേണം. നിങ്ങൾ ടാപ്പ് ചെയ്യുമ്പോൾ മാത്രമേ റെക്കോർഡിംഗ് ആരംഭിക്കൂ."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "व्हॉइस नोंदीसाठी GaleriQ ला मायक्रोफोन ॲक्सेस हवा. तुम्ही टॅप केल्यावरच रेकॉर्डिंग सुरू होते."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ memerlukan akses mikrofon untuk nota suara. Rakaman hanya bermula apabila anda mengetik."
           }
         },
         "nb": {
@@ -521,6 +983,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ heeft microfoontoegang nodig voor een spraaknotitie. Opname begint alleen na je tik."
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ଭଏସ୍ ନୋଟ୍ ପାଇଁ GaleriQକୁ ମାଇକ୍ରୋଫୋନ୍ ଆକ୍ସେସ୍ ଦରକାର। ଆପଣ ଟାପ୍ କଲେ ହିଁ ରେକର୍ଡିଂ ଆରମ୍ଭ ହୁଏ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ਵੌਇਸ ਨੋਟ ਲਈ GaleriQ ਨੂੰ ਮਾਈਕ੍ਰੋਫ਼ੋਨ ਪਹੁੰਚ ਚਾਹੀਦੀ ਹੈ। ਰਿਕਾਰਡਿੰਗ ਸਿਰਫ਼ ਤੁਹਾਡੇ ਟੈਪ ਕਰਨ ’ਤੇ ਸ਼ੁਰੂ ਹੁੰਦੀ ਹੈ।"
           }
         },
         "pl": {
@@ -553,10 +1027,34 @@
             "value": "Для голосовой заметки GaleriQ нужен микрофон. Запись начинается только по нажатию."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ potrebuje prístup k mikrofónu kvôli hlasovej poznámke. Nahrávanie sa začne, až keď klepnete."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ potrebuje dostop do mikrofona za glasovni zapisek. Snemanje se začne šele, ko tapneš."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ behöver åtkomst till mikrofonen för en röstanteckning. Inspelningen startar först när du trycker."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "குரல் குறிப்புக்கு GaleriQ-க்கு மைக்ரோஃபோன் அணுகல் தேவை. நீங்கள் தட்டும்போது மட்டுமே பதிவு தொடங்கும்."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "వాయిస్ నోట్ కోసం GaleriQకి మైక్రోఫోన్ యాక్సెస్ అవసరం. మీరు ట్యాప్ చేసినప్పుడు మాత్రమే రికార్డింగ్ ప్రారంభమవుతుంది."
           }
         },
         "th": {
@@ -575,6 +1073,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Для голосової нотатки GaleriQ потрібен мікрофон. Запис починається лише після натискання."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "وائس نوٹ کے لیے GaleriQ کو مائیکروفون تک رسائی چاہیے۔ ریکارڈنگ تب ہی شروع ہوتی ہے جب آپ ٹیپ کریں۔"
           }
         },
         "vi": {
@@ -606,6 +1110,24 @@
             "value": "يحفظ GaleriQ النسخ المعدّلة والمجمّعات ومقاطع الفيديو كعناصر جديدة في مكتبتك."
           }
         },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ সম্পাদিত কপি, কোলাজ ও ভিডিও আপনার লাইব্রেরিতে নতুন আইটেম হিসেবে সংরক্ষণ করে।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ desa còpies editades, collages i vídeos com a elements nous a la fototeca."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ ukládá upravené kopie, koláže a videa jako nové položky do vaší knihovny."
+          }
+        },
         "da": {
           "stringUnit": {
             "state": "translated",
@@ -616,6 +1138,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ speichert bearbeitete Kopien, Collagen und Videos als neue Medien in deiner Mediathek."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Το GaleriQ αποθηκεύει επεξεργασμένα αντίγραφα, κολάζ και βίντεο ως νέα στοιχεία στη βιβλιοθήκη σου."
           }
         },
         "en": {
@@ -630,10 +1158,46 @@
             "value": "GaleriQ guarda copias editadas, collages y vídeos como elementos nuevos en tu fototeca."
           }
         },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ tallentaa muokatut kopiot, kollaasit ja videot uusina kohteina kirjastoosi."
+          }
+        },
         "fr": {
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ enregistre les copies modifiées, collages et vidéos comme nouveaux éléments dans votre photothèque."
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ ફેરફાર કરેલી નકલો, કોલાજ અને વીડિયો તમારી લાઇબ્રેરીમાં નવી આઇટમ તરીકે સાચવે છે."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ שומרת עותקים ערוכים, קולאז׳ים וסרטונים כפריטים חדשים בספרייה שלך."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ एडिट की गई कॉपी, कोलाज और वीडियो को आपकी लाइब्रेरी में नए आइटम के रूप में सहेजता है।"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ sprema uređene kopije, kolaže i videozapise kao nove stavke u tvoju medijateku."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A GaleriQ a szerkesztett másolatokat, kollázsokat és videókat új elemként menti a könyvtáradba."
           }
         },
         "id": {
@@ -654,10 +1218,34 @@
             "value": "GaleriQは編集したコピー、コラージュ、ビデオを新しい項目としてライブラリに保存します。"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ ಎಡಿಟ್ ಮಾಡಿದ ಪ್ರತಿಗಳು, ಕೊಲಾಜ್‌ಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳನ್ನು ನಿಮ್ಮ ಲೈಬ್ರರಿಯಲ್ಲಿ ಹೊಸ ಐಟಂಗಳಾಗಿ ಉಳಿಸುತ್ತದೆ."
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ는 편집한 사본, 콜라주, 비디오를 보관함에 새 항목으로 저장합니다."
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ എഡിറ്റ് ചെയ്ത പകർപ്പുകൾ, കൊളാഷുകൾ, വീഡിയോകൾ എന്നിവ നിങ്ങളുടെ ലൈബ്രറിയിൽ പുതിയ ഇനങ്ങളായി സംരക്ഷിക്കുന്നു."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ संपादित प्रती, कोलाज आणि व्हिडिओ तुमच्या लायब्ररीत नवीन आयटम म्हणून जतन करते."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ menyimpan salinan disunting, kolaj dan video sebagai item baharu dalam pustaka anda."
           }
         },
         "nb": {
@@ -670,6 +1258,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ bewaart bewerkte kopieën, collages en video’s als nieuwe items in je bibliotheek."
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ ଏଡିଟ୍ ହୋଇଥିବା କପି, କୋଲାଜ୍ ଓ ଭିଡିଓକୁ ଆପଣଙ୍କ ଲାଇବ୍ରେରୀରେ ନୂଆ ଆଇଟମ୍ ଭାବେ ସେଭ୍ କରେ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ ਸੋਧੀਆਂ ਕਾਪੀਆਂ, ਕੋਲਾਜ ਅਤੇ ਵੀਡੀਓ ਨੂੰ ਤੁਹਾਡੀ ਲਾਇਬ੍ਰੇਰੀ ਵਿੱਚ ਨਵੀਆਂ ਆਈਟਮਾਂ ਵਜੋਂ ਸੰਭਾਲਦਾ ਹੈ।"
           }
         },
         "pl": {
@@ -702,10 +1302,34 @@
             "value": "GaleriQ сохраняет отредактированные копии, коллажи и видео как новые объекты в медиатеке."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ ukladá upravené kópie, koláže a videá ako nové položky do vašej knižnice."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ shrani urejene kopije, kolaže in videoposnetke kot nove elemente v tvojo knjižnico."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ sparar redigerade kopior, collage och videor som nya objekt i ditt bibliotek."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ திருத்திய நகல்கள், கொலாஜ்கள், வீடியோக்களை உங்கள் நூலகத்தில் புதிய உருப்படிகளாகச் சேமிக்கிறது."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ ఎడిట్ చేసిన కాపీలు, కొలాజ్‌లు, వీడియోలను మీ లైబ్రరీలో కొత్త అంశాలుగా సేవ్ చేస్తుంది."
           }
         },
         "th": {
@@ -724,6 +1348,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ зберігає відредаговані копії, колажі й відео як нові об’єкти у вашій медіатеці."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ ترمیم شدہ کاپیاں، کولاج اور ویڈیوز آپ کی لائبریری میں نئے آئٹمز کے طور پر محفوظ کرتا ہے۔"
           }
         },
         "vi": {
@@ -755,6 +1385,24 @@
             "value": "يعرض GaleriQ صورك ومقاطع الفيديو للفرز على هذا الـ iPhone ولا يزيل إلا ما تختاره وتؤكده في نافذة النظام."
           }
         },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ সাজানোর জন্য আপনার ফটো ও ভিডিও এই iPhone-এ দেখায় এবং শুধু সেই আইটেমগুলো সরায় যা আপনি বেছে নেন ও সিস্টেম ডায়ালগে নিশ্চিত করেন।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ mostra les teves fotos i vídeos per ordenar-los en aquest iPhone i només elimina els elements que tries i confirmes al diàleg del sistema."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ zobrazuje vaše fotky a videa k třídění v tomto iPhonu a odstraňuje jen položky, které vyberete a potvrdíte v systémovém dialogu."
+          }
+        },
         "da": {
           "stringUnit": {
             "state": "translated",
@@ -765,6 +1413,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ zeigt deine Fotos und Videos zum Sortieren auf diesem iPhone und entfernt nur, was du auswählst und im Systemdialog bestätigst."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Το GaleriQ εμφανίζει τις φωτογραφίες και τα βίντεό σου για ταξινόμηση σε αυτό το iPhone και αφαιρεί μόνο στοιχεία που επιλέγεις και επιβεβαιώνεις στο παράθυρο του συστήματος."
           }
         },
         "en": {
@@ -779,10 +1433,46 @@
             "value": "GaleriQ muestra tus fotos y vídeos para ordenarlos en este iPhone y solo elimina lo que eliges y confirmas en el cuadro del sistema."
           }
         },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ näyttää kuvasi ja videosi lajittelua varten tässä iPhonessa ja poistaa vain kohteet, jotka valitset ja vahvistat järjestelmän valintaikkunassa."
+          }
+        },
         "fr": {
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ affiche vos photos et vidéos pour les trier sur cet iPhone et ne supprime que ce que vous choisissez et confirmez dans la fenêtre du système."
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ આ iPhone પર ગોઠવવા માટે તમારા ફોટા અને વીડિયો બતાવે છે અને ફક્ત તમે પસંદ કરેલી અને સિસ્ટમ સંવાદમાં પુષ્ટિ કરેલી આઇટમ જ દૂર કરે છે."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ מציגה את התמונות והסרטונים שלך למיון ב-iPhone הזה ומסירה רק פריטים שבחרת ואישרת בחלון המערכת."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ इस iPhone पर छाँटने के लिए आपकी फ़ोटो और वीडियो दिखाता है और सिर्फ़ वही आइटम हटाता है जिन्हें आप चुनते हैं और सिस्टम डायलॉग में पुष्टि करते हैं।"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ prikazuje tvoje fotografije i videozapise za razvrstavanje na ovom iPhoneu i uklanja samo stavke koje odabereš i potvrdiš u dijaloškom okviru sustava."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A GaleriQ ezen az iPhone-on rendezéshez mutatja a fotóidat és videóidat, és csak azokat az elemeket távolítja el, amelyeket kiválasztasz és a rendszer párbeszédablakában megerősítesz."
           }
         },
         "id": {
@@ -803,10 +1493,34 @@
             "value": "GaleriQはこのiPhoneで写真とビデオを整理するために表示し、あなたが選んでシステムの確認で承認したものだけを削除します。"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ ವಿಂಗಡಿಸಲು ನಿಮ್ಮ ಫೋಟೋಗಳು ಮತ್ತು ವೀಡಿಯೊಗಳನ್ನು ಈ iPhone ನಲ್ಲಿ ತೋರಿಸುತ್ತದೆ ಮತ್ತು ನೀವು ಆಯ್ಕೆಮಾಡಿ ಸಿಸ್ಟಮ್ ಡೈಲಾಗ್‌ನಲ್ಲಿ ದೃಢೀಕರಿಸಿದ ಐಟಂಗಳನ್ನು ಮಾತ್ರ ತೆಗೆದುಹಾಕುತ್ತದೆ."
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ는 이 iPhone에서 정리할 수 있도록 사진과 비디오를 보여 주며, 직접 선택하고 시스템 대화상자에서 확인한 항목만 제거합니다."
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ഈ iPhone-ൽ അടുക്കുന്നതിനായി GaleriQ നിങ്ങളുടെ ഫോട്ടോകളും വീഡിയോകളും കാണിക്കുന്നു, നിങ്ങൾ തിരഞ്ഞെടുത്ത് സിസ്റ്റം ഡയലോഗിൽ സ്ഥിരീകരിക്കുന്ന ഇനങ്ങൾ മാത്രം നീക്കം ചെയ്യുന്നു."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ या iPhone वर लावण्यासाठी तुमचे फोटो आणि व्हिडिओ दाखवते आणि फक्त तुम्ही निवडलेले आणि सिस्टम संवादात पुष्टी केलेले आयटमच काढते."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ menunjukkan foto dan video anda untuk diisih pada iPhone ini dan hanya membuang item yang anda pilih dan sahkan dalam dialog sistem."
           }
         },
         "nb": {
@@ -819,6 +1533,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ toont je foto’s en video’s om ze op deze iPhone te sorteren en verwijdert alleen wat jij kiest en in het systeemvenster bevestigt."
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ ସଜାଇବା ପାଇଁ ଆପଣଙ୍କ ଫଟୋ ଓ ଭିଡିଓ ଏହି iPhoneରେ ଦେଖାଏ ଏବଂ କେବଳ ସେହି ଆଇଟମ୍ ହଟାଏ ଯାହା ଆପଣ ବାଛନ୍ତି ଓ ସିଷ୍ଟମ୍ ଡାଏଲଗ୍‌ରେ ନିଶ୍ଚିତ କରନ୍ତି।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ ਤੁਹਾਡੀਆਂ ਫ਼ੋਟੋਆਂ ਅਤੇ ਵੀਡੀਓ ਨੂੰ ਛਾਂਟਣ ਲਈ ਇਸ iPhone ਉੱਤੇ ਦਿਖਾਉਂਦਾ ਹੈ ਅਤੇ ਸਿਰਫ਼ ਉਹੀ ਆਈਟਮਾਂ ਹਟਾਉਂਦਾ ਹੈ ਜੋ ਤੁਸੀਂ ਚੁਣਦੇ ਹੋ ਅਤੇ ਸਿਸਟਮ ਡਾਇਲਾਗ ਵਿੱਚ ਪੁਸ਼ਟੀ ਕਰਦੇ ਹੋ।"
           }
         },
         "pl": {
@@ -851,10 +1577,34 @@
             "value": "GaleriQ показывает ваши фото и видео для сортировки на этом iPhone и удаляет только то, что вы выбрали и подтвердили в окне системы."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ zobrazuje vaše fotky a videá na triedenie v tomto iPhone a odstraňuje len položky, ktoré vyberiete a potvrdíte v systémovom dialógu."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ prikazuje tvoje fotografije in videoposnetke za razvrščanje v tem iPhonu in odstrani le elemente, ki jih izbereš in potrdiš v sistemskem pogovornem oknu."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ visar dina bilder och videor för sortering på den här iPhonen och tar bara bort objekt som du väljer och bekräftar i systemdialogen."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ வரிசைப்படுத்துவதற்காக உங்கள் புகைப்படங்களையும் வீடியோக்களையும் இந்த iPhone-இல் காட்டுகிறது, நீங்கள் தேர்ந்தெடுத்து சிஸ்டம் உரையாடலில் உறுதிப்படுத்தும் உருப்படிகளை மட்டுமே அகற்றுகிறது."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ అమర్చడం కోసం మీ ఫోటోలు, వీడియోలను ఈ iPhoneలో చూపిస్తుంది, మీరు ఎంచుకుని సిస్టమ్ డైలాగ్‌లో నిర్ధారించిన అంశాలను మాత్రమే తీసివేస్తుంది."
           }
         },
         "th": {
@@ -873,6 +1623,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ показує ваші фото й відео для сортування на цьому iPhone і видаляє лише те, що ви виберете й підтвердите у вікні системи."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ اس iPhone پر ترتیب دینے کے لیے آپ کی تصاویر اور ویڈیوز دکھاتا ہے اور صرف وہی آئٹمز ہٹاتا ہے جو آپ منتخب کرتے ہیں اور سسٹم ڈائیلاگ میں تصدیق کرتے ہیں۔"
           }
         },
         "vi": {
@@ -904,6 +1660,24 @@
             "value": "تعرض النسخة المجانية من GaleriQ إعلانات من Google. بإذنك يمكن أن تكون أكثر ملاءمة لك. لا تُرسل صورك وملفاتك أبدًا إلى المعلنين."
           }
         },
+        "bn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ-এর বিনামূল্যের সংস্করণ Google-এর বিজ্ঞাপন দেখায়। আপনার অনুমতিতে সেগুলো আপনার জন্য আরও প্রাসঙ্গিক হতে পারে। আপনার ফটো ও ফাইল কখনো বিজ্ঞাপনদাতাদের কাছে যায় না।"
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "La versió gratuïta de GaleriQ mostra anuncis de Google. Amb el teu permís poden ser més rellevants per a tu. Les teves fotos i fitxers mai no van als anunciants."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bezplatná verze GaleriQ zobrazuje reklamy od Googlu. S vaším svolením mohou být pro vás relevantnější. Vaše fotky a soubory se nikdy nedostanou k inzerentům."
+          }
+        },
         "da": {
           "stringUnit": {
             "state": "translated",
@@ -914,6 +1688,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Die Gratis-Version von GaleriQ zeigt Werbung von Google. Mit deiner Erlaubnis kann sie besser zu dir passen. Deine Fotos und Dateien gehen nie an Werbeanbieter."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Η δωρεάν έκδοση του GaleriQ εμφανίζει διαφημίσεις της Google. Με την άδειά σου μπορεί να είναι πιο σχετικές για σένα. Οι φωτογραφίες και τα αρχεία σου δεν πηγαίνουν ποτέ σε διαφημιστές."
           }
         },
         "en": {
@@ -928,10 +1708,46 @@
             "value": "La versión gratuita de GaleriQ muestra anuncios de Google. Con tu permiso pueden ser más relevantes para ti. Tus fotos y archivos nunca van a los anunciantes."
           }
         },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ:n ilmaisversio näyttää Googlen mainoksia. Luvallasi ne voivat olla sinulle osuvampia. Kuvasi ja tiedostosi eivät koskaan päädy mainostajille."
+          }
+        },
         "fr": {
           "stringUnit": {
             "state": "translated",
             "value": "La version gratuite de GaleriQ affiche des publicités de Google. Avec ton autorisation, elles peuvent mieux te correspondre. Tes photos et fichiers ne sont jamais transmis aux annonceurs."
+          }
+        },
+        "gu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ નું મફત વર્ઝન Google ની જાહેરાતો બતાવે છે. તમારી મંજૂરીથી તે તમારા માટે વધુ સુસંગત બની શકે છે. તમારા ફોટા અને ફાઇલો ક્યારેય જાહેરાતકર્તાઓને જતાં નથી."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "הגרסה החינמית של GaleriQ מציגה פרסומות של Google. באישורך הן יכולות להיות רלוונטיות יותר עבורך. התמונות והקבצים שלך אף פעם לא עוברים למפרסמים."
+          }
+        },
+        "hi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ का मुफ़्त वर्शन Google के विज्ञापन दिखाता है। आपकी अनुमति से वे आपके लिए ज़्यादा प्रासंगिक हो सकते हैं। आपकी फ़ोटो और फ़ाइलें कभी विज्ञापनदाताओं को नहीं जातीं।"
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Besplatna verzija GaleriQ-a prikazuje Googleove oglase. Uz tvoje dopuštenje mogu biti relevantniji za tebe. Tvoje fotografije i datoteke nikad ne idu oglašivačima."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A GaleriQ ingyenes verziója a Google hirdetéseit jeleníti meg. Az engedélyeddel ezek relevánsabbak lehetnek számodra. A fotóid és fájljaid sosem jutnak el a hirdetőkhöz."
           }
         },
         "id": {
@@ -952,10 +1768,34 @@
             "value": "GaleriQの無料版にはGoogleの広告が表示されます。許可すると、より関心に合った広告になります。写真やファイルが広告主に送られることはありません。"
           }
         },
+        "kn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ ನ ಉಚಿತ ಆವೃತ್ತಿ Google ನ ಜಾಹೀರಾತುಗಳನ್ನು ತೋರಿಸುತ್ತದೆ. ನಿಮ್ಮ ಅನುಮತಿಯೊಂದಿಗೆ ಅವು ನಿಮಗೆ ಹೆಚ್ಚು ಸಂಬಂಧಿತವಾಗಬಹುದು. ನಿಮ್ಮ ಫೋಟೋಗಳು ಮತ್ತು ಫೈಲ್‌ಗಳು ಎಂದಿಗೂ ಜಾಹೀರಾತುದಾರರಿಗೆ ಹೋಗುವುದಿಲ್ಲ."
+          }
+        },
         "ko": {
           "stringUnit": {
             "state": "translated",
             "value": "GaleriQ 무료 버전에는 Google 광고가 표시돼요. 허용하면 더 관련성 높은 광고를 볼 수 있어요. 사진과 파일은 광고주에게 절대 전달되지 않아요."
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ-ന്റെ സൗജന്യ പതിപ്പ് Google-ന്റെ പരസ്യങ്ങൾ കാണിക്കുന്നു. നിങ്ങളുടെ അനുമതിയോടെ അവ നിങ്ങൾക്ക് കൂടുതൽ പ്രസക്തമാകാം. നിങ്ങളുടെ ഫോട്ടോകളും ഫയലുകളും ഒരിക്കലും പരസ്യദാതാക്കളിലേക്ക് പോകില്ല."
+          }
+        },
+        "mr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ ची विनामूल्य आवृत्ती Google च्या जाहिराती दाखवते. तुमच्या परवानगीने त्या तुमच्यासाठी अधिक संबंधित होऊ शकतात. तुमचे फोटो आणि फाइल्स कधीही जाहिरातदारांकडे जात नाहीत."
+          }
+        },
+        "ms": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Versi percuma GaleriQ memaparkan iklan daripada Google. Dengan kebenaran anda, iklan boleh menjadi lebih relevan kepada anda. Foto dan fail anda tidak pernah dihantar kepada pengiklan."
           }
         },
         "nb": {
@@ -968,6 +1808,18 @@
           "stringUnit": {
             "state": "translated",
             "value": "De gratis versie van GaleriQ toont advertenties van Google. Met je toestemming passen ze beter bij je. Je foto’s en bestanden gaan nooit naar adverteerders."
+          }
+        },
+        "or": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQର ମାଗଣା ସଂସ୍କରଣ Googleର ବିଜ୍ଞାପନ ଦେଖାଏ। ଆପଣଙ୍କ ଅନୁମତି ସହ ସେଗୁଡ଼ିକ ଆପଣଙ୍କ ପାଇଁ ଅଧିକ ପ୍ରାସଙ୍ଗିକ ହୋଇପାରେ। ଆପଣଙ୍କ ଫଟୋ ଓ ଫାଇଲ୍ କେବେ ବିଜ୍ଞାପନଦାତାଙ୍କ ପାଖକୁ ଯାଏ ନାହିଁ।"
+          }
+        },
+        "pa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ ਦਾ ਮੁਫ਼ਤ ਵਰਜ਼ਨ Google ਦੇ ਇਸ਼ਤਿਹਾਰ ਦਿਖਾਉਂਦਾ ਹੈ। ਤੁਹਾਡੀ ਇਜਾਜ਼ਤ ਨਾਲ ਇਹ ਤੁਹਾਡੇ ਲਈ ਵਧੇਰੇ ਢੁਕਵੇਂ ਹੋ ਸਕਦੇ ਹਨ। ਤੁਹਾਡੀਆਂ ਫ਼ੋਟੋਆਂ ਅਤੇ ਫ਼ਾਈਲਾਂ ਕਦੇ ਵੀ ਇਸ਼ਤਿਹਾਰ ਦੇਣ ਵਾਲਿਆਂ ਕੋਲ ਨਹੀਂ ਜਾਂਦੀਆਂ।"
           }
         },
         "pl": {
@@ -1000,10 +1852,34 @@
             "value": "Бесплатная версия GaleriQ показывает рекламу Google. С твоего разрешения она может лучше тебе подходить. Твои фото и файлы никогда не передаются рекламодателям."
           }
         },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bezplatná verzia GaleriQ zobrazuje reklamy od Googlu. S vaším súhlasom môžu byť pre vás relevantnejšie. Vaše fotky a súbory sa nikdy nedostanú k inzerentom."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brezplačna različica GaleriQ prikazuje Googlove oglase. S tvojim dovoljenjem so lahko zate bolj relevantni. Tvoje fotografije in datoteke nikoli ne gredo oglaševalcem."
+          }
+        },
         "sv": {
           "stringUnit": {
             "state": "translated",
             "value": "Gratisversionen av GaleriQ visar annonser från Google. Med ditt tillstånd kan de bli mer relevanta för dig. Dina bilder och filer går aldrig till annonsörer."
+          }
+        },
+        "ta": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ-இன் இலவசப் பதிப்பு Google-இன் விளம்பரங்களைக் காட்டுகிறது. உங்கள் அனுமதியுடன் அவை உங்களுக்கு மிகவும் பொருத்தமானவையாக இருக்கலாம். உங்கள் புகைப்படங்களும் கோப்புகளும் ஒருபோதும் விளம்பரதாரர்களிடம் செல்லாது."
+          }
+        },
+        "te": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ ఉచిత వెర్షన్ Google ప్రకటనలను చూపిస్తుంది. మీ అనుమతితో అవి మీకు మరింత సంబంధితంగా ఉండవచ్చు. మీ ఫోటోలు, ఫైళ్లు ఎప్పుడూ ప్రకటనదారులకు వెళ్లవు."
           }
         },
         "th": {
@@ -1022,6 +1898,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Безкоштовна версія GaleriQ показує рекламу Google. З твого дозволу вона може краще тобі пасувати. Твої фото й файли ніколи не передаються рекламодавцям."
+          }
+        },
+        "ur": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GaleriQ کا مفت ورژن Google کے اشتہارات دکھاتا ہے۔ آپ کی اجازت سے یہ آپ کے لیے زیادہ متعلقہ ہو سکتے ہیں۔ آپ کی تصاویر اور فائلیں کبھی مشتہرین کو نہیں جاتیں۔"
           }
         },
         "vi": {
