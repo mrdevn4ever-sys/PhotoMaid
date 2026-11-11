@@ -28,3 +28,9 @@ Schaltersteuerung (Switch Control), „Zurücksetzen/Original“ in der Fotos-Ap
 
 Mengenformen: Sprachen mit CLDR-„many“ für ganze Millionen (pt-BR, ca) dürfen `:many`-Zeilen haben
 (`OPTIONAL` in `new_languages.py`).
+
+## Gerätename (iPad seit 1.1)
+
+Die App ersetzt auf dem iPad „iPhone“ durch „iPad“ (`Strings.forDevice`). Deshalb „iPhone“ möglichst **ungebeugt**
+schreiben („auf diesem iPhone“ statt mit angehängter Endung). Wo die Sprache eine Endung verlangt, die gebeugte Form
+samt iPad-Entsprechung in `Strings.inflected` eintragen (bisher Polnisch und Türkisch).

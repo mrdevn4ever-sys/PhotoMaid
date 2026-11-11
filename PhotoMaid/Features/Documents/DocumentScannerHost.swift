@@ -35,6 +35,11 @@ struct DocumentScannerHost: UIViewControllerRepresentable {
                 share.completionWithItemsHandler = { [weak self] _, _, _, _ in
                     Task { @MainActor in self?.app.fullScreen = nil }
                 }
+                // iPad: das Teilen-Fenster braucht einen Anker, sonst bricht UIKit ab.
+                share.popoverPresentationController?.sourceView = controller.view
+                share.popoverPresentationController?.sourceRect = CGRect(x: controller.view.bounds.midX,
+                                                                         y: controller.view.bounds.midY, width: 1, height: 1)
+                share.popoverPresentationController?.permittedArrowDirections = []
                 controller.present(share, animated: true)
                 app.showToast(L("pdf_saved"))
                 return

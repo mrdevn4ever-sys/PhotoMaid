@@ -28,6 +28,8 @@ struct PMTabBar: View {
                 .overlay(Capsule().strokeBorder(AppColors.control, lineWidth: 1))
                 .shadow(color: AppColors.shadow, radius: 15, y: 12)
         }
+        // Breite Fenster (iPad, aufgeklapptes Duo): die Kapsel bleibt handlich und steht mittig.
+        .frame(maxWidth: 520)
         .padding(.horizontal, 16)
         .padding(.bottom, 22)
         .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
