@@ -105,7 +105,7 @@ targets:
           - UIInterfaceOrientationPortraitUpsideDown
           - UIInterfaceOrientationLandscapeLeft
           - UIInterfaceOrientationLandscapeRight
-        NSPhotoLibraryUsageDescription: "GaleriQ shows your photos and videos for sorting on this iPhone and only removes items you choose and confirm in the system dialog."
+        NSPhotoLibraryUsageDescription: "GaleriQ shows your photos and videos for sorting on this device and only removes items you choose and confirm in the system dialog."
         NSPhotoLibraryAddUsageDescription: "GaleriQ saves edited copies, collages and videos as new items in your library."
         NSCameraUsageDescription: "GaleriQ uses the camera only to scan documents when you tap Scan."
         NSFaceIDUsageDescription: "GaleriQ uses Face ID only to open content you protected with a code."

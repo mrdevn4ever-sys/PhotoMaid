@@ -752,145 +752,145 @@
         "ar": {
           "stringUnit": {
             "state": "translated",
-            "value": "يعرض GaleriQ صورك ومقاطع الفيديو للفرز على هذا الـ iPhone ولا يزيل إلا ما تختاره وتؤكده في نافذة النظام."
+            "value": "يعرض GaleriQ صورك ومقاطع الفيديو للفرز على جهازك ولا يزيل إلا ما تختاره وتؤكده في نافذة النظام."
           }
         },
         "da": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ viser dine fotos og videoer til sortering på denne iPhone og fjerner kun emner, du vælger og bekræfter i systemdialogen."
+            "value": "GaleriQ viser dine fotos og videoer til sortering på din enhed og fjerner kun emner, du vælger og bekræfter i systemdialogen."
           }
         },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ zeigt deine Fotos und Videos zum Sortieren auf diesem iPhone und entfernt nur, was du auswählst und im Systemdialog bestätigst."
+            "value": "GaleriQ zeigt deine Fotos und Videos zum Sortieren auf deinem Gerät und entfernt nur, was du auswählst und im Systemdialog bestätigst."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ shows your photos and videos for sorting on this iPhone and only removes items you choose and confirm in the system dialog."
+            "value": "GaleriQ shows your photos and videos for sorting on this device and only removes items you choose and confirm in the system dialog."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ muestra tus fotos y vídeos para ordenarlos en este iPhone y solo elimina lo que eliges y confirmas en el cuadro del sistema."
+            "value": "GaleriQ muestra tus fotos y vídeos para ordenarlos en este dispositivo y solo elimina lo que eliges y confirmas en el cuadro del sistema."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ affiche vos photos et vidéos pour les trier sur cet iPhone et ne supprime que ce que vous choisissez et confirmez dans la fenêtre du système."
+            "value": "GaleriQ affiche vos photos et vidéos pour les trier sur cet appareil et ne supprime que ce que vous choisissez et confirmez dans la fenêtre du système."
           }
         },
         "id": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ menampilkan foto dan videomu untuk dirapikan di iPhone ini dan hanya menghapus item yang kamu pilih dan konfirmasi di dialog sistem."
+            "value": "GaleriQ menampilkan foto dan videomu untuk dirapikan di perangkat ini dan hanya menghapus item yang kamu pilih dan konfirmasi di dialog sistem."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ mostra foto e video da ordinare su questo iPhone e rimuove solo ciò che scegli e confermi nella finestra di sistema."
+            "value": "GaleriQ mostra foto e video da ordinare su questo dispositivo e rimuove solo ciò che scegli e confermi nella finestra di sistema."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQはこのiPhoneで写真とビデオを整理するために表示し、あなたが選んでシステムの確認で承認したものだけを削除します。"
+            "value": "GaleriQはこのデバイスで写真とビデオを整理するために表示し、あなたが選んでシステムの確認で承認したものだけを削除します。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ는 이 iPhone에서 정리할 수 있도록 사진과 비디오를 보여 주며, 직접 선택하고 시스템 대화상자에서 확인한 항목만 제거합니다."
+            "value": "GaleriQ는 이 기기에서 정리할 수 있도록 사진과 비디오를 보여 주며, 직접 선택하고 시스템 대화상자에서 확인한 항목만 제거합니다."
           }
         },
         "nb": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ viser bildene og videoene dine for sortering på denne iPhonen og fjerner bare elementer du velger og bekrefter i systemdialogen."
+            "value": "GaleriQ viser bildene og videoene dine for sortering på denne enheten og fjerner bare elementer du velger og bekrefter i systemdialogen."
           }
         },
         "nl": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ toont je foto’s en video’s om ze op deze iPhone te sorteren en verwijdert alleen wat jij kiest en in het systeemvenster bevestigt."
+            "value": "GaleriQ toont je foto’s en video’s om ze op dit apparaat te sorteren en verwijdert alleen wat jij kiest en in het systeemvenster bevestigt."
           }
         },
         "pl": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ pokazuje Twoje zdjęcia i filmy do porządkowania na tym iPhonie i usuwa tylko to, co wybierzesz i potwierdzisz w oknie systemu."
+            "value": "GaleriQ pokazuje Twoje zdjęcia i filmy do porządkowania na tym urządzeniu i usuwa tylko to, co wybierzesz i potwierdzisz w oknie systemu."
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "O GaleriQ mostra suas fotos e vídeos para organizar neste iPhone e só remove os itens que você escolher e confirmar no diálogo do sistema."
+            "value": "O GaleriQ mostra suas fotos e vídeos para organizar neste aparelho e só remove os itens que você escolher e confirmar no diálogo do sistema."
           }
         },
         "pt-PT": {
           "stringUnit": {
             "state": "translated",
-            "value": "O GaleriQ mostra as suas fotografias e vídeos para os organizar neste iPhone e só remove o que escolher e confirmar na janela do sistema."
+            "value": "O GaleriQ mostra as suas fotografias e vídeos para os organizar neste dispositivo e só remove o que escolher e confirmar na janela do sistema."
           }
         },
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ îți arată pozele și videoclipurile pentru sortare pe acest iPhone și elimină doar ce alegi și confirmi în dialogul sistemului."
+            "value": "GaleriQ îți arată pozele și videoclipurile pentru sortare pe acest dispozitiv și elimină doar ce alegi și confirmi în dialogul sistemului."
           }
         },
         "ru": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ показывает ваши фото и видео для сортировки на этом iPhone и удаляет только то, что вы выбрали и подтвердили в окне системы."
+            "value": "GaleriQ показывает ваши фото и видео для сортировки на этом устройстве и удаляет только то, что вы выбрали и подтвердили в окне системы."
           }
         },
         "sv": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ visar dina bilder och videor för sortering på den här iPhonen och tar bara bort objekt som du väljer och bekräftar i systemdialogen."
+            "value": "GaleriQ visar dina bilder och videor för sortering på den här enheten och tar bara bort objekt som du väljer och bekräftar i systemdialogen."
           }
         },
         "th": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ แสดงรูปภาพและวิดีโอของคุณเพื่อจัดระเบียบบน iPhone เครื่องนี้ และนำออกเฉพาะรายการที่คุณเลือกและยืนยันในหน้าต่างของระบบ"
+            "value": "GaleriQ แสดงรูปภาพและวิดีโอของคุณเพื่อจัดระเบียบบนอุปกรณ์เครื่องนี้ และนำออกเฉพาะรายการที่คุณเลือกและยืนยันในหน้าต่างของระบบ"
           }
         },
         "tr": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ, bu iPhone’da sıralaman için fotoğraflarını ve videolarını gösterir; yalnızca seçip sistem penceresinde onayladıklarını kaldırır."
+            "value": "GaleriQ, bu aygıtta sıralaman için fotoğraflarını ve videolarını gösterir; yalnızca seçip sistem penceresinde onayladıklarını kaldırır."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ показує ваші фото й відео для сортування на цьому iPhone і видаляє лише те, що ви виберете й підтвердите у вікні системи."
+            "value": "GaleriQ показує ваші фото й відео для сортування на цьому пристрої і видаляє лише те, що ви виберете й підтвердите у вікні системи."
           }
         },
         "vi": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ hiển thị ảnh và video của bạn để sắp xếp trên iPhone này và chỉ xóa những mục bạn chọn và xác nhận trong hộp thoại hệ thống."
+            "value": "GaleriQ hiển thị ảnh và video của bạn để sắp xếp trên thiết bị này và chỉ xóa những mục bạn chọn và xác nhận trong hộp thoại hệ thống."
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ 会在此 iPhone 上显示你的照片和视频以便整理，并且只会移除你选择并在系统对话框中确认的项目。"
+            "value": "GaleriQ 会在此设备上显示你的照片和视频以便整理，并且只会移除你选择并在系统对话框中确认的项目。"
           }
         },
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "GaleriQ 會在這部 iPhone 上顯示你的照片和影片以便整理，並只移除你選擇並在系統對話框中確認的項目。"
+            "value": "GaleriQ 會在這部裝置上顯示你的照片和影片以便整理，並只移除你選擇並在系統對話框中確認的項目。"
           }
         }
       }
