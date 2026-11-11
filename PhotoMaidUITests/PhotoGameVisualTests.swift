@@ -410,6 +410,11 @@ import XCTest
                 let back = app.navigationBars.buttons.element(boundBy: 0)
                 XCTAssertTrue(back.exists, "Styled root header must retain destination navigation and Back")
                 back.tap()
+                // Seltene Werkzeuge (PDF aus Dateien, Abläufe, Auslagern) liegen eingeklappt unter „Weitere Funktionen“.
+                let more = app.buttons["studio.more"]
+                for _ in 0..<6 where !more.isHittable { app.swipeUp() }
+                XCTAssertTrue(more.isHittable)
+                more.tap()
                 for id in ["studio.tools.convert", "studio.tools.location", "studio.tools.stitch", "studio.tools.gif",
                            "studio.tools.batch", "studio.workflows", "studio.archive", "studio.pdfEditor", "studio.saved"] {
                     let control = app.buttons[id]

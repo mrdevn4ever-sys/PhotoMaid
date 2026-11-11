@@ -9,6 +9,14 @@ struct LargeFilesView: View {
     @Environment(AppModel.self) private var app
     @State private var measuring = SizeMeasuring.shared
     @State private var threshold: Int = 100
+    @State private var shrink: ShrinkTarget?
+
+    /// Video, das verkleinert werden soll (gemessene Größe nur, wenn sie wirklich gemessen ist).
+    private struct ShrinkTarget: Identifiable {
+        let asset: MediaAsset
+        let bytes: Int64?
+        var id: String { asset.id }
+    }
 
     private static let choices = [25, 50, 100, 250, 500, 1000]
 
@@ -49,6 +57,10 @@ struct LargeFilesView: View {
         return s
     }
 
+    private func target(_ e: Entry) -> ShrinkTarget {
+        ShrinkTarget(asset: e.asset, bytes: e.size.isApproximate ? nil : e.size.bytes)
+    }
+
     var body: some View {
         let limit = Int64(threshold) * 1_000_000
         let s = summarize(openCandidates, limit: limit)
@@ -84,6 +96,7 @@ struct LargeFilesView: View {
                         Label(L("today_start_cta"), systemImage: "rectangle.stack")
                     }
                     ForEach(large, id: \.asset.id) { e in
+                        HStack(spacing: 0) {
                         Button {
                             let refs = large.map(\.asset.reference)
                             app.open(FeedRequest(.items(Array(refs.drop(while: { $0 != e.asset.reference })), titleKey: "large_files")))
@@ -105,6 +118,35 @@ struct LargeFilesView: View {
                             }
                         }
                         .buttonStyle(.plain)
+                        if e.asset.isVideo {
+                            Button { shrink = target(e) } label: {
+                                Image(systemName: "arrow.down.right.and.arrow.up.left")
+                                    .font(.system(size: 15, weight: .semibold))
+                                    .foregroundStyle(AppColors.accent)
+                                    .frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch)
+                                    .contentShape(.rect)
+                            }
+                            .buttonStyle(.borderless)
+                            .accessibilityLabel(Text(key: "tools_resize"))
+                            .accessibilityIdentifier("large.shrink")
+                        }
+                        }
+                        // Verkleinern statt entfernen: neue kleinere Datei, das Original bleibt (außer auf ausdrückliche Wahl).
+                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                            if e.asset.isVideo {
+                                Button { shrink = target(e) } label: {
+                                    Label(L("tools_resize"), systemImage: "arrow.down.right.and.arrow.up.left")
+                                }
+                                .tint(AppColors.accent)
+                            }
+                        }
+                        .contextMenu {
+                            if e.asset.isVideo {
+                                Button { shrink = target(e) } label: {
+                                    Label(L("tools_resize"), systemImage: "arrow.down.right.and.arrow.up.left")
+                                }
+                            }
+                        }
                     }
                 } header: {
                     Text(verbatim: SizeText.value(SizeSum(large.map(\.size)).value) + " " + LP("large_in_files", large.count))
@@ -141,6 +183,9 @@ struct LargeFilesView: View {
         }
         .appPage()
         .navigationTitle(L("large_files"))
+        .sheet(item: $shrink) { t in
+            VideoShrinkSheet(asset: t.asset, originalBytes: t.bytes).environment(app)
+        }
         .onAppear { threshold = app.settings.largeFileThresholdMB }
         .onChange(of: threshold) { _, v in app.updateSettings { $0.largeFileThresholdMB = v } }
         .task(id: app.cleanupMedia.count) {

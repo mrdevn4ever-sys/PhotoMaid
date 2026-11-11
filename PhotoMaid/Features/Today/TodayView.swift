@@ -11,6 +11,7 @@ struct TodayView: View {
     @State private var continueOpen = 0
     @State private var newSince = 0
     @State private var showGames = false
+    @State private var suggestions: [AnalysisKind: Int] = [:]
 
     private var access: PhotoAccess { app.library.access }
 
@@ -32,6 +33,7 @@ struct TodayView: View {
                             }
                             if showRecap { WeeklyRecapCard() }
                             progressRows
+                            suggestionRows
                             if access == .limited {
                                 InfoBanner(symbol: "photo.badge.checkmark", title: L("today_limited_title"), text: L("today_limited_text"),
                                            actionTitle: L("today_limited_action")) { app.library.presentLimitedLibraryPicker() }
@@ -77,6 +79,10 @@ struct TodayView: View {
             .task(id: app.tabRecountKey("\(app.pending.count)-\(app.cleanupMedia.count)-\(app.settings.continueMonth ?? "")-\(app.settings.lastSessionEnd?.timeIntervalSince1970 ?? 0)")) {
                 guard !app.tabsCoveredByFeed else { return }
                 await countProgress()
+            }
+            .task(id: app.tabRecountKey("s-\(app.pending.count)-\(app.mediaRevision)-\(app.settings.analysisEnabled)")) {
+                guard !app.tabsCoveredByFeed, access.canRead else { return }
+                suggestions = await AnalysisController.shared.suggestionCounts(app: app)
             }
             .tourOverlay(step: activeTourStep, isLast: tourStep == tourSteps.count - 1) {
                 if tourStep >= tourSteps.count - 1 { app.updateSettings { $0.todayTourSeen = true } } else { tourStep += 1 }
@@ -213,6 +219,26 @@ struct TodayView: View {
         }.value
         continueOpen = c
         newSince = n
+    }
+
+    /// Vorschläge aus der gespeicherten Bildanalyse (11/2026): nur Hinweise mit Trefferzahl, öffnen die jeweilige
+    /// Ansicht unter „Aufräumen“. Entschieden wird dort wie immer vom Nutzer.
+    @ViewBuilder
+    private var suggestionRows: some View {
+        if access.canRead {
+            if let n = suggestions[.blurry], n > 0 {
+                PMCardRow(icon: .blur, tint: AppColors.keep, title: L("ana_blurry"), subtitle: L("ana2_matches", n)) {
+                    app.navigate(.smartReview(.blurry), in: .cleanup)
+                }
+                .accessibilityIdentifier("today.suggest.blurry")
+            }
+            if let n = suggestions[.similar], n > 0 {
+                PMCardRow(icon: .similar, tint: AppColors.keep, title: L("ana_similar"), subtitle: L("ana2_matches", n)) {
+                    app.navigate(.smartReview(.similar), in: .cleanup)
+                }
+                .accessibilityIdentifier("today.suggest.similar")
+            }
+        }
     }
 
     @ViewBuilder

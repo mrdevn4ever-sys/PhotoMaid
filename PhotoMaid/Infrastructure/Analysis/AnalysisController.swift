@@ -508,6 +508,33 @@ final class AnalysisController {
                                groups: AnalysisGroupPage(groups: [], include: include, page: 0, pageSize: groupsPerPage))
     }
 
+    // MARK: Vorschläge für die Startseite
+
+    /// Trefferzahlen noch offener Medien für die Vorschlagskarten (unscharf: Fotos, ähnlich: Gruppen). Nur gespeicherte
+    /// Ergebnisse – startet nie eine Analyse; ohne gelaufene Analyse leer. Vorschläge, nie eine Entscheidung (E7).
+    func suggestionCounts(app: AppModel) async -> [AnalysisKind: Int] {
+        attach(app)
+        guard app.settings.analysisEnabled, app.capabilities.smartReview, ensureScope(app) else { return [:] }
+        let sources = sources
+        let open = Set(app.pending.map(\.localIdentifier))
+        let read = try? await Task.detached(priority: .utility) { () -> [AnalysisKind: (count: Int, ids: [String])] in
+            var out: [AnalysisKind: (count: Int, ids: [String])] = [:]
+            for kind in [AnalysisKind.blurry, .similar] {
+                let d = try Self.readDisplay(sources: sources, kind: kind, query: "", category: nil, page: 0, open: open)
+                guard d.counts.complete > 0 else { continue }
+                out[kind] = kind == .similar ? (d.groups.total, d.groups.all.flatMap { $0 }) : (d.results.total, d.results.all)
+            }
+            return out
+        }.value
+        var counts: [AnalysisKind: Int] = [:]
+        for (kind, found) in read ?? [:] where found.count > 0 {
+            // Nichts zeigen, wenn Treffer inzwischen im Tresor verborgen sind (wie `apply`).
+            guard VaultConcealment.shared.visible(found.ids, id: { $0 }).count == found.ids.count else { continue }
+            counts[kind] = found.count
+        }
+        return counts
+    }
+
     // MARK: Silent, bounded background time
 
     private func updateBackgroundTime() {

@@ -9,6 +9,8 @@ struct StudioView: View {
     @State private var pickingCollage = false
     @State private var draftToDelete: CollageProject?
     @State private var showGames = false
+    /// Selten gebrauchte Werkzeuge (Abläufe, Auslagern, PDF aus Dateien) stehen eingeklappt unter „Weitere Funktionen“.
+    @State private var showMoreTools = false
 
     private var columns: [GridItem] {
         typeSize.isAccessibilitySize ? [GridItem(.flexible())] :
@@ -112,8 +114,6 @@ struct StudioView: View {
             .accessibilityIdentifier("studio.create.movie_title_slideshow")
             studioTile(.pdf, AppColors.keep, "pdf_title", "pdf_studio_sub") { app.navigate(.pdfFromPhotos(ids: []), in: .studio) }
                 .accessibilityIdentifier("studio.create.pdf_title")
-            studioTile(.textDoc, AppColors.accent, "remodel_pdf_editor", "pdf_editor_subtitle") { app.navigate(.pdfStudio, in: .studio) }
-                .accessibilityIdentifier("studio.pdfEditor")
             if VNDocumentCameraViewController.isSupported {
                 studioTile(.scan, AppColors.success, "remodel_scanner", "art_scan_sub") { app.fullScreen = .scanner }
                     .accessibilityIdentifier("studio.scanner")
@@ -135,9 +135,14 @@ struct StudioView: View {
                 studioRow(.stitch, AppColors.later, "tools_stitch", "tools_stitch_sub", route: .tools(.stitch), id: "studio.tools.stitch")
                 studioRow(.filter, AppColors.accent, "remodel_batch_edit", "tools_batch_intro", route: .tools(.batchEdit),
                           id: "studio.tools.batch")
-                studioRow(.series, AppColors.keep, "wf_title", "wf_studio_sub", route: .workflows, id: "studio.workflows")
-                studioRow(.folder, AppColors.success, "archive_title", "archive_studio_sub", route: .archive(ids: []),
-                          id: "studio.archive", last: true)
+                moreToolsToggle
+                if showMoreTools {
+                    studioRow(.textDoc, AppColors.accent, "remodel_pdf_editor", "pdf_editor_subtitle", route: .pdfStudio,
+                              id: "studio.pdfEditor")
+                    studioRow(.series, AppColors.keep, "wf_title", "wf_studio_sub", route: .workflows, id: "studio.workflows")
+                    studioRow(.folder, AppColors.success, "archive_title", "archive_studio_sub", route: .archive(ids: []),
+                              id: "studio.archive", last: true)
+                }
             }
             .background(AppColors.surface, in: .rect(cornerRadius: AppRadii.card))
             .overlay(RoundedRectangle(cornerRadius: AppRadii.card).strokeBorder(AppColors.surfaceStroke, lineWidth: 1))
@@ -225,6 +230,30 @@ struct StudioView: View {
         }
         .buttonStyle(PMPressStyle())
         .accessibilityElement(children: .combine)
+    }
+
+    /// „Weitere Funktionen“ auf- und zuklappen (11/2026: seltene Werkzeuge treten zurück, bleiben aber erreichbar).
+    private var moreToolsToggle: some View {
+        Button { withAnimation(.snappy) { showMoreTools.toggle() } } label: {
+            HStack(spacing: 14) {
+                PMIcon(.more, size: 22).foregroundStyle(AppColors.textSecondary)
+                Text(key: "hub_tools_header").font(AppTypography.headline).foregroundStyle(AppColors.textPrimary)
+                Spacer(minLength: AppSpacing.xs)
+                Image(systemName: "chevron.down").font(.system(size: 14, weight: .semibold))
+                    .foregroundStyle(AppColors.textTertiary)
+                    .rotationEffect(.degrees(showMoreTools ? 180 : 0))
+                    .accessibilityHidden(true)
+            }
+            .padding(.vertical, 14).padding(.horizontal, 16)
+            .frame(maxWidth: .infinity, minHeight: 56, alignment: .leading)
+            .overlay(alignment: .bottom) {
+                if showMoreTools { Rectangle().fill(AppColors.surfaceStroke).frame(height: 1) }
+            }
+            .contentShape(.rect)
+        }
+        .buttonStyle(PMPressStyle())
+        .accessibilityIdentifier("studio.more")
+        .accessibilityValue(Text(verbatim: showMoreTools ? "1" : "0"))
     }
 
     /// Werkzeug-Zeile ohne Kachel: farbiges Strich-Symbol, Titel, Untertitel, Pfeil (Artefakt).
