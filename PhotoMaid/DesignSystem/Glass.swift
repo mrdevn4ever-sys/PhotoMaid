@@ -150,11 +150,13 @@ struct PrimaryButton: View {
             }
             .font(AppTypography.button)
             .foregroundStyle(role == .destructive ? AppColors.onCleanup : AppColors.onAccent)
-            .frame(maxWidth: .infinity, minHeight: 56)
+            // Breite Fenster (iPad, aufgeklapptes Duo): die Hauptaktion bleibt handlich und steht mittig.
+            .frame(maxWidth: 560, minHeight: 56)
             .background(role == .destructive ? AppColors.cleanupFill : AppColors.accentFill,
                         in: .rect(cornerRadius: AppRadii.button))
             .opacity(isEnabled ? 1 : 0.4)
             .contentShape(.rect(cornerRadius: AppRadii.button))
+            .frame(maxWidth: .infinity)
         }
         .buttonStyle(PMPressStyle())
     }

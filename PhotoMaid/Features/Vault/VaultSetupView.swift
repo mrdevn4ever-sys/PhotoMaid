@@ -28,7 +28,8 @@ struct VaultSetupView: View {
                     content
                 }
                 .padding(AppSpacing.pageMargin)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(maxWidth: 640, alignment: .leading)
+                .frame(maxWidth: .infinity)
             }
             .appPage()
             .scrollDismissesKeyboard(.interactively)

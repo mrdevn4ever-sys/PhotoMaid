@@ -35,7 +35,9 @@ struct RootView: View {
         .overlay(alignment: .bottom) {
             if let toast = app.toast {
                 ToastView(toast: toast) { app.toast = nil }
-                    .padding(.bottom, app.feed == nil ? 104 : AppSpacing.xl)
+                    .frame(maxWidth: 560)
+                    // Im Feed über der unteren Zeile (Rückgängig, Papierkorb-Zähler) – nie darauf.
+                    .padding(.bottom, app.feed == nil ? 104 : 84)
                     .transition(.move(edge: .bottom).combined(with: .opacity))
                     .zIndex(2)
             }
