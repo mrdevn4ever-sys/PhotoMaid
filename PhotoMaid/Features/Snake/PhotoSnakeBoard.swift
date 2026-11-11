@@ -132,12 +132,19 @@ final class PhotoSnakeScene: SKScene {
         MainActor.assumeIsolated { frame(currentTime) }
     }
 
+    private var wasRunning = false
+    private var graceUntil = 0.0
+
     private func frame(_ time: Double) {
         guard let game = model.game else { return }
         let elapsed = previousTime.map { max(0, time - $0) } ?? 0
         previousTime = time
+        // Direkt nach dem Start (Aufbau der Szene, erste Texturen) darf ein langsames Bild die Runde nicht sofort
+        // wieder anhalten: eine Sekunde Schonfrist, in der nur gebremst wird (dt ist ohnehin gedeckelt).
+        if !model.running { wasRunning = false }
+        else if !wasRunning { wasRunning = true; graceUntil = time + 1 }
         // No bulk catch-up after interruptions; pause instead of advancing unseen game steps.
-        if elapsed > 0.3 { model.pause(); return }
+        if elapsed > 0.3 && !(model.running && time <= graceUntil) { model.pause("frame-gap"); return }
         let dt = min(elapsed, 1.0 / 20)
         animationTime += dt
         if round != model.roundID {

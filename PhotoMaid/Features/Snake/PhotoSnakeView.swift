@@ -55,12 +55,12 @@ struct PhotoSnakeView: View {
         .onAppear { restore(); model.validatePhotos() }
         .onChange(of: model.roundID) { _, _ in if model.game != nil { setup = false } }
         .keepsScreenAwake(model.running && scenePhase == .active)
-        .onDisappear { startWhenReady = false; model.pause(); model.audio.stop(); model.photos.cancelLoading() }
+        .onDisappear { startWhenReady = false; model.pause("disappear"); model.audio.stop(); model.photos.cancelLoading() }
         .onChange(of: model.photos.isLoading) { _, loading in
             if !loading && model.photos.error != nil { startWhenReady = false }
         }
         .onChange(of: scenePhase) { _, phase in
-            if phase != .active { startWhenReady = false; model.pause(); model.audio.stop() }
+            if phase != .active { startWhenReady = false; model.pause("scene"); model.audio.stop() }
             else { model.validatePhotos() }
         }
         .onChange(of: voiceOver) { _, enabled in if enabled { model.useStepMode() } }
@@ -68,7 +68,7 @@ struct PhotoSnakeView: View {
         // weiter, echte Überhitzung regelt iOS selbst.
         .onReceive(NotificationCenter.default.publisher(for: AVAudioSession.interruptionNotification)) { note in
             if (note.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt) == AVAudioSession.InterruptionType.began.rawValue {
-                startWhenReady = false; model.pause(); model.audio.stop()
+                startWhenReady = false; model.pause("audio"); model.audio.stop()
             }
         }
         .onReceive(NotificationCenter.default.publisher(for: .analysisVisibilityChanged)) { _ in model.validatePhotos() }
@@ -235,7 +235,7 @@ struct PhotoSnakeView: View {
                     // Keep the words Score and Record visible instead of ambiguous bare numbers.
                     VStack(alignment: .leading, spacing: 4) { scoreText; bestText }.monospacedDigit()
                         // Größer als normal, aber gedeckelt: das Spielfeld behält den größten Teil des Fensters.
-                        .dynamicTypeSize(...DynamicTypeSize.accessibility1)
+                        .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
                 }
             }
             .padding(8).background(.black.opacity(0.65), in: .rect(cornerRadius: 24)).padding(.horizontal, 12)

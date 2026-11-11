@@ -126,12 +126,16 @@ final class PhotoSnakeModel {
 
     func resume() {
         validatePhotos()
-        guard game?.status == .playing, !photos.isLoading else { return }
+        guard game?.status == .playing, !photos.isLoading else { Diagnostics.log(.app, "snake-resume-refused"); return }
         memorySuspended = false; started = true; running = true
+        Diagnostics.log(.app, "snake-running")
     }
 
-    func pause() { running = false }
-    func memoryWarning() { pause(); audio.stop(); memorySuspended = true }
+    func pause(_ reason: String = "-") {
+        if running { Diagnostics.log(.app, "snake-pause " + reason) }
+        running = false
+    }
+    func memoryWarning() { pause("memory"); audio.stop(); memorySuspended = true }
 
     func updateViewport(width: Double, height: Double) {
         let next = PhotoSnakeViewport(width: width, height: height)
@@ -148,7 +152,7 @@ final class PhotoSnakeModel {
         steer(direction)
     }
     func useStepMode() {
-        pause()
+        pause("step-mode")
         guard !stepMode else { return }
         stepMode = true; newBest = false
         if let game { newBest = scores.recordSnakeOverall(game, speed: speed, stepMode: true) }

@@ -90,7 +90,7 @@ struct RootView: View {
                 if vault.isPresented { PrivacyCover.show() }
                 app.player.pause()
             }
-            if phase != .active { app.snake.pause(); app.memory.setTimingActive(false) }
+            if phase != .active { app.snake.pause("root-scene"); app.memory.setTimingActive(false) }
         }
         .onChange(of: app.library.changeToken) { _, _ in app.reloadLibraryIfNeeded() }
         .onChange(of: app.library.access) { _, _ in validateGamePhotos() }

@@ -824,7 +824,8 @@ final class AppModel {
         guard !basket.isEmpty else { return nil }
         await refreshSizeEstimator()
         let assets = basket.filter { $0.item.provider == .photoLibrary }.compactMap { asset($0.item.localIdentifier) }
-        let measured = await sizes(assets)
+        // Nur bereits Gemessenes: beim Durchwischen ruht das Messen (Wärme), der Rest ist „ca.“ (E17).
+        let measured = await sizer.cachedSizes(assets)
         var sum = SizeSum()
         for record in basket {
             if record.item.provider == .photoLibrary {
