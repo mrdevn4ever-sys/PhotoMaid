@@ -818,6 +818,30 @@ final class AppModel {
 
     // MARK: Größen
 
+    /// Summe des GaleriQ-Papierkorbs für den Zähler im Feed: gemessen, sonst geschätzt („ca.“, E17). Leer = `nil`.
+    func basketSize() async -> SizeValue? {
+        let basket = read.basket
+        guard !basket.isEmpty else { return nil }
+        await refreshSizeEstimator()
+        let assets = basket.filter { $0.item.provider == .photoLibrary }.compactMap { asset($0.item.localIdentifier) }
+        let measured = await sizes(assets)
+        var sum = SizeSum()
+        for record in basket {
+            if record.item.provider == .photoLibrary {
+                if let a = asset(record.item.localIdentifier) {
+                    sum.add(sizeValue(a, measured: measured[a.id]))
+                } else {
+                    sum.add(SizeValue.of(.unknown, estimate: estimator.estimate(EstimateInput(kind: .photo))))
+                }
+            } else {
+                let entry = files.entries.first { $0.reference == record.item }
+                sum.add(SizeValue.of(entry?.size ?? .unknown,
+                                     estimate: estimator.estimate(entry?.estimateInput ?? EstimateInput(kind: .file))))
+            }
+        }
+        return sum.value
+    }
+
     func size(_ asset: MediaAsset) async -> KnownSize { await sizer.size(of: asset) }
 
     /// Gemessene Größen (gespeichert oder neu, parallel gemessen). Unbekannt bleibt unbekannt, nie 0.

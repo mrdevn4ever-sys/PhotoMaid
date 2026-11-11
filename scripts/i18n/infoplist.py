@@ -20,7 +20,7 @@ S = {
  "PhotoMaid показує ваші фото й відео для сортування на цьому iPhone і видаляє лише те, що ви виберете й підтвердите у вікні системи.",
  "PhotoMaid 会在此 iPhone 上显示你的照片和视频以便整理，并且只会移除你选择并在系统对话框中确认的项目。"),
 "NSPhotoLibraryAddUsageDescription": T(
- "PhotoMaid saves edited copies, collages, videos and PDFs as new items in your library.",
+ "PhotoMaid saves edited copies, collages and videos as new items in your library.",
  "PhotoMaid speichert bearbeitete Kopien, Collagen und Videos als neue Medien in deiner Mediathek.",
  "يحفظ PhotoMaid النسخ المعدّلة والمجمّعات ومقاطع الفيديو كعناصر جديدة في مكتبتك.",
  "PhotoMaid guarda copias editadas, collages y vídeos como elementos nuevos en tu fototeca.",

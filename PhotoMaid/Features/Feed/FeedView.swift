@@ -23,6 +23,7 @@ struct FeedView: View {
     /// Ansicht (Wärme-Audit 22.10.2026).
     @State private var infoMessage = ""
     @State private var showTrash = false
+    @State private var basketSize: SizeValue?
     @State private var showGrid = false
     @State private var confirmExclude = false
     @State private var shareItem: MediaShareItem?
@@ -134,6 +135,7 @@ struct FeedView: View {
             Diagnostics.log(.feed, "hints-auto-hidden")
             withAnimation(.easeOut(duration: 0.6)) { showHints = false }
         }
+        .task(id: app.read.basket.map(\.item)) { basketSize = await app.basketSize() }
         .onChange(of: reduceMotion) { _, v in model.reduceMotion = v }
         // Gamification: leise Pillen bei jeweils 100 in dieser Sitzung und beim Erreichen des Tagesziels –
         // nie eine Unterbrechung der Geste, nie eine Entscheidung.
@@ -308,6 +310,13 @@ struct FeedView: View {
         headerButton(icon: .cup, label: L("memory_break"), tint: AppColors.later) { showMemory = true }
             .disabled(!model.isLoaded || model.isCommitting)
             .accessibilityIdentifier("feed.memory")
+        // Während des Wischens sitzt „Rückgängig“ unten links (Daumen); ohne Medium (Zusammenfassung, leer) hier oben.
+        if !undoAtBottom { undoButton }
+    }
+
+    private var undoAtBottom: Bool { model.isLoaded && !model.session.items.isEmpty && !model.session.isFinished }
+
+    private var undoButton: some View {
         headerButton(icon: .undo, label: L("undo"), tint: app.read.canUndo ? AppColors.textPrimary : AppColors.disabled) {
             Task { await model.undo() }
         }
@@ -389,7 +398,7 @@ struct FeedView: View {
                     DecisionButtons(controls: controls) { model.perform(action: $0) }
                 }
                 HStack(spacing: AppSpacing.xs) {
-                    FeedGestureLegend(controls: controls)
+                    undoButton
                     Spacer(minLength: 0)
                     feedCounters
                 }
@@ -656,7 +665,7 @@ struct FeedView: View {
                 .disabled(busy)
                 .accessibilityLabel(Text(verbatim: L("series_button", series.count)))
             }
-            TrashChip(count: app.read.basket.count) { showTrash = true }
+            TrashChip(count: app.read.basket.count, size: basketSize) { showTrash = true }
                 .accessibilityIdentifier("feed.dock")
                 .tourTarget("feed.basket")
         }

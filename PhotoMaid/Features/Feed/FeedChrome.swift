@@ -214,6 +214,8 @@ struct NoticePill: View {
 /// Papierkorb-Zähler unten rechts im Feed.
 struct TrashChip: View {
     let count: Int
+    /// Größe des Papierkorbs (gemessen oder „ca.“); `nil`, solange leer oder noch nicht berechnet.
+    var size: SizeValue? = nil
     let action: () -> Void
 
     var body: some View {
@@ -222,6 +224,12 @@ struct TrashChip: View {
                 Image(systemName: "trash").foregroundStyle(AppColors.cleanup)
                 Text(verbatim: CountText.number(count)).font(AppTypography.subheadline.weight(.semibold)).monospacedDigit()
                     .lineLimit(1).fixedSize(horizontal: true, vertical: false)
+                if let size, count > 0 {
+                    Text(verbatim: "· " + SizeText.value(size))
+                        .font(AppTypography.subheadline).monospacedDigit()
+                        .foregroundStyle(AppColors.textSecondary)
+                        .lineLimit(1).fixedSize(horizontal: true, vertical: false)
+                }
             }
             .foregroundStyle(AppColors.textPrimary)
             .padding(.horizontal, AppSpacing.s)
@@ -229,7 +237,7 @@ struct TrashChip: View {
         }
         .buttonStyle(.plain)
         .glassCapsule(interactive: true)
-        .accessibilityLabel(Text(verbatim: L("dock_count", count)))
+        .accessibilityLabel(Text(verbatim: L("dock_count", count) + (size.map { count > 0 ? ", " + SizeText.value($0) : "" } ?? "")))
         .accessibilityHint(Text(key: "dock_hint"))
     }
 }
@@ -285,26 +293,6 @@ struct DecisionButtons: View {
         }
         .buttonStyle(PMPressStyle())
         .accessibilityLabel(Text(verbatim: FeedActionText.accessibility(action)))
-    }
-}
-
-/// Legende unter dem Feed (Artefakt): „↑ Behalten · ← Papierkorb · → Später · ↓ Zurück“ – nach eigener Belegung.
-struct FeedGestureLegend: View {
-    let controls: FeedControls
-
-    var body: some View {
-        let parts: [(String, SwipeDirection)] = [("↑", .up), ("←", .left), ("→", .right), ("↓", .down)]
-        let text = parts.compactMap { part -> String? in
-            let a = controls.action(for: part.1)
-            if case .nothing = a { return nil }
-            return part.0 + " " + FeedActionText.title(a)
-        }.joined(separator: " · ")
-        Text(verbatim: text)
-            .font(PMFont.text(.regular, 12, relativeTo: .caption))
-            .foregroundStyle(AppColors.textTertiary)
-            .lineLimit(1).minimumScaleFactor(0.75)
-            .environment(\.layoutDirection, .leftToRight)
-            .accessibilityHidden(true)
     }
 }
 
