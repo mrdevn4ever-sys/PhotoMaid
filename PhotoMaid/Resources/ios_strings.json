@@ -16794,5 +16794,41 @@
   "tr": "Fotoğrafların ve dosyaların yalnızca cihazında incelenir ve sıralanır. Satın alma için Apple’a yalnızca gerekenler gider – asla fotoğrafların, adları veya onlardan elde edilen bilgiler değil.",
   "uk": "Ваші фото й файли перевіряються та сортуються лише на пристрої. Для покупки Apple отримує тільки найнеобхідніше – ніколи ваші фото, їхні назви чи дані з них.",
   "zh-Hans": "你的照片和文件只在设备上检查和整理。为了购买，只会把最必要的信息发给 Apple——绝不会发送你的照片、照片名称或由其得出的信息。"
+ },
+ "studio_video_shrink": {
+  "ar": "تصغير الفيديو",
+  "de": "Video verkleinern",
+  "en": "Make video smaller",
+  "es": "Reducir vídeo",
+  "fr": "Réduire une vidéo",
+  "it": "Riduci video",
+  "ja": "ビデオを小さくする",
+  "ko": "비디오 용량 줄이기",
+  "nl": "Video verkleinen",
+  "pl": "Zmniejsz wideo",
+  "pt-PT": "Reduzir vídeo",
+  "ro": "Micșorează videoclipul",
+  "ru": "Уменьшить видео",
+  "tr": "Videoyu küçült",
+  "uk": "Зменшити відео",
+  "zh-Hans": "缩小视频"
+ },
+ "studio_video_shrink_sub": {
+  "ar": "نسخة أصغر، ويبقى الأصل",
+  "de": "Kleinere Kopie, das Original bleibt",
+  "en": "Smaller copy, the original stays",
+  "es": "Copia más pequeña, el original se conserva",
+  "fr": "Copie plus légère, l’original est conservé",
+  "it": "Copia più piccola, l’originale resta",
+  "ja": "小さいコピーを作成、オリジナルは残ります",
+  "ko": "더 작은 사본을 만들고 원본은 유지됩니다",
+  "nl": "Kleinere kopie, het origineel blijft",
+  "pl": "Mniejsza kopia, oryginał zostaje",
+  "pt-PT": "Cópia mais pequena, o original mantém-se",
+  "ro": "Copie mai mică, originalul rămâne",
+  "ru": "Копия меньшего размера, оригинал остаётся",
+  "tr": "Daha küçük kopya, orijinal kalır",
+  "uk": "Менша копія, оригінал залишається",
+  "zh-Hans": "生成较小的副本，原件保留"
  }
 }

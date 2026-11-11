@@ -11,22 +11,26 @@ struct StudioMediaPicker: View {
     let initial: Set<String>
     let completion: ([String]) -> Void
     let secureGame: Bool
+    /// Nur Videos anbieten (Studio › Video verkleinern).
+    let videosOnly: Bool
     @State private var selection: Set<String>
     @State private var visibilityToken = UUID()
 
     init(allowsVideos: Bool, limit: Int, minimumSelection: Int = 1, initial: Set<String> = [],
-         secureGame: Bool = false, completion: @escaping ([String]) -> Void) {
+         secureGame: Bool = false, videosOnly: Bool = false, completion: @escaping ([String]) -> Void) {
         self.allowsVideos = allowsVideos
         self.limit = limit
         self.minimumSelection = minimumSelection
         self.initial = initial
         self.completion = completion
         self.secureGame = secureGame
+        self.videosOnly = videosOnly
         _selection = State(initialValue: initial)
     }
 
     private var media: [MediaAsset] {
         if secureGame { return scenePhase == .active ? PhotoGamePhotos.gameCandidates(app: app) : [] }
+        if videosOnly { return app.visibleMedia.filter(\.isVideo) }
         return app.visibleMedia.filter { allowsVideos || !$0.isVideo }
     }
 

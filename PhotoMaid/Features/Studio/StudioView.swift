@@ -7,6 +7,16 @@ struct StudioView: View {
     @Environment(\.dynamicTypeSize) private var typeSize
     @State private var drafts: [CollageProject] = []
     @State private var pickingCollage = false
+    @State private var pickingShrink = false
+    @State private var pendingShrink: MediaAsset?
+    @State private var shrinkTarget: ShrinkPick?
+
+    private struct ShrinkPick: Identifiable {
+        let asset: MediaAsset
+        /// Gemessene Größe; `nil` = nicht messbar (z. B. nur in iCloud).
+        let bytes: Int64?
+        var id: String { asset.id }
+    }
     @State private var draftToDelete: CollageProject?
     @State private var showGames = false
     /// Selten gebrauchte Werkzeuge (Abläufe, Auslagern, PDF aus Dateien) stehen eingeklappt unter „Weitere Funktionen“.
@@ -50,6 +60,21 @@ struct StudioView: View {
                 StudioHandoff.shared.ids = ids
                 app.navigate(.collage(draftID: nil), in: .studio)
             }
+        }
+        .sheet(isPresented: $pickingShrink, onDismiss: {
+            guard let asset = pendingShrink else { return }
+            pendingShrink = nil
+            Task {
+                let size = await app.sizes([asset])[asset.id]
+                shrinkTarget = ShrinkPick(asset: asset, bytes: size?.bytes)
+            }
+        }) {
+            StudioMediaPicker(allowsVideos: true, limit: 1, videosOnly: true) { ids in
+                pendingShrink = ids.first.flatMap { app.asset($0) }
+            }
+        }
+        .sheet(item: $shrinkTarget) { pick in
+            VideoShrinkSheet(asset: pick.asset, originalBytes: pick.bytes).environment(app)
         }
         .onAppear { drafts = app.kv?.get(StoreKeys.collageDrafts) ?? [] }
         .confirmationDialog(L("studio_draft_delete"), isPresented: Binding(get: { draftToDelete != nil },
@@ -129,6 +154,9 @@ struct StudioView: View {
                 .accessibilityAddTraits(.isHeader).padding(.top, 6).padding(.horizontal, 4)
             VStack(spacing: 0) {
                 studioRow(.resize, AppColors.keep, "tools_resize", "tools_resize_sub", route: .tools(.resize), id: "studio.tools.resize")
+                // Wie jede andere Bearbeitung im Studio erreichbar (Nutzer, 11.11.2026): ein Video wählen, dann verkleinern.
+                studioRow(.video, AppColors.cleanup, "studio_video_shrink", "studio_video_shrink_sub", route: nil,
+                          id: "studio.tools.videoShrink") { pickingShrink = true }
                 studioRow(.convert, AppColors.success, "tools_convert", "tools_convert_sub", route: .tools(.convert), id: "studio.tools.convert")
                 studioRow(.locationOff, AppColors.cleanup, "tools_location", "tools_location_sub", route: .tools(.removeLocation),
                           id: "studio.tools.location")
@@ -257,9 +285,11 @@ struct StudioView: View {
     }
 
     /// Werkzeug-Zeile ohne Kachel: farbiges Strich-Symbol, Titel, Untertitel, Pfeil (Artefakt).
-    private func studioRow(_ icon: PMIconName, _ tint: Color, _ title: String, _ subtitle: String, route: Route, id: String,
-                           last: Bool = false) -> some View {
-        Button { app.navigate(route, in: .studio) } label: {
+    private func studioRow(_ icon: PMIconName, _ tint: Color, _ title: String, _ subtitle: String, route: Route?, id: String,
+                           last: Bool = false, action: (() -> Void)? = nil) -> some View {
+        Button {
+            if let route { app.navigate(route, in: .studio) } else { action?() }
+        } label: {
             HStack(spacing: 14) {
                 PMIcon(icon, size: 22).foregroundStyle(tint)
                 VStack(alignment: .leading, spacing: 2) {
