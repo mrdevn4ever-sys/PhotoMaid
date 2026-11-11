@@ -257,8 +257,11 @@ import XCTest
                 // Wait through the real automatic flip. Tap only if the viewport requires manual flipping.
                 let concealed = XCTNSPredicateExpectation(predicate: NSPredicate(format: "enabled == true"), object: a)
                 if XCTWaiter.wait(for: [concealed], timeout: 2) != .completed {
+                    // Auf einem langsamen Simulator kann das automatische Umdrehen länger als 2 s dauern; dann gibt es
+                    // keinen Knopf, und die Karte wird kurz darauf von selbst wieder verdeckt.
                     let flip = app.buttons["memory.flip"]
-                    XCTAssertTrue(flip.isEnabled); flip.tap()
+                    if flip.exists { flip.tap() }
+                    else { XCTAssertEqual(XCTWaiter.wait(for: [concealed], timeout: 10), .completed) }
                 }
             }
         }

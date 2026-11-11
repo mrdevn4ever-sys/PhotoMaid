@@ -132,6 +132,14 @@ final class PhotoSnakeScene: SKScene {
         MainActor.assumeIsolated { frame(currentTime) }
     }
 
+    /// Ab dieser Lücke zwischen zwei Bildern gilt die Runde als unterbrochen. Im UI-Test hält jede Abfrage der
+    /// Bedienelemente die App länger an als 0,3 s – dort großzügiger, sonst pausiert der Test das Spiel selbst.
+    private static let gapLimit: Double = {
+        #if QA_FIXTURES && targetEnvironment(simulator)
+        if ProcessInfo.processInfo.arguments.contains("-game-visual-tests") { return 5 }
+        #endif
+        return 0.3
+    }()
     private var wasRunning = false
     private var graceUntil = 0.0
 
@@ -144,7 +152,7 @@ final class PhotoSnakeScene: SKScene {
         if !model.running { wasRunning = false }
         else if !wasRunning { wasRunning = true; graceUntil = time + 1 }
         // No bulk catch-up after interruptions; pause instead of advancing unseen game steps.
-        if elapsed > 0.3 && !(model.running && time <= graceUntil) { model.pause("frame-gap"); return }
+        if elapsed > Self.gapLimit && !(model.running && time <= graceUntil) { model.pause("frame-gap"); return }
         let dt = min(elapsed, 1.0 / 20)
         animationTime += dt
         if round != model.roundID {
