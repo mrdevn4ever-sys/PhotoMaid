@@ -553,13 +553,19 @@ final class AppStoreCaptureTests: XCTestCase {
         tap(e("memory.close"))
         prepareSnakeForStore()
         let board = e("snake.board")
-        board.swipeRight(); pause(1.5)
-        // Unter Last kann ein Wisch als Tippen ankommen und das Spiel pausieren (Lauf 39808617005) – dann wie ein
-        // Mensch „Fortsetzen“ tippen und erst aufnehmen, wenn sich die Schlange wirklich bewegt.
-        if app.buttons["snake.start"].exists { tap(app.buttons["snake.start"]); pause(1.5) }
-        let moving = board.value as? String
-        pause(0.8)
-        XCTAssertNotEqual(board.value as? String, moving, "Snake must be running for the store image")
+        let startingValue = board.value as? String
+        var snakeMoved = false
+        for _ in 0..<3 where !snakeMoved {
+            board.swipeRight(); pause(0.4)
+            // Under CI load a swipe can be interpreted as a tap and pause the round. Resume and retry the
+            // genuine gesture, then poll the accessibility value instead of assuming one fixed frame interval.
+            if app.buttons["snake.start"].exists { tap(app.buttons["snake.start"]); pause(0.4) }
+            for _ in 0..<20 {
+                pause(0.25)
+                if board.value as? String != startingValue { snakeMoved = true; break }
+            }
+        }
+        XCTAssertTrue(snakeMoved, "Snake must visibly advance before the store image")
         snap("snake-play")
         tap(e("snake.play").buttons["snake.pause"]); snap("snake-pause")
         tap(e("snake.play").buttons["snake.settings"])
