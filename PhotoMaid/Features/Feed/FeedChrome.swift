@@ -237,7 +237,8 @@ struct TrashChip: View {
         }
         .buttonStyle(.plain)
         .glassCapsule(interactive: true)
-        .accessibilityLabel(Text(verbatim: L("dock_count", count) + (size.map { count > 0 ? ", " + SizeText.value($0) : "" } ?? "")))
+        .accessibilityLabel(Text(verbatim: L("dock_count", count)))
+        .accessibilityValue(Text(verbatim: size.map { count > 0 ? SizeText.value($0) : "" } ?? ""))
         .accessibilityHint(Text(key: "dock_hint"))
     }
 }

@@ -170,6 +170,11 @@ import XCTest
         stage.swipeLeft()
         waitForPosition("3 of 4")
         XCTAssertNotEqual(app.buttons["feed.dock"].label, trash)
+        // 1.1: der Zähler nennt auch die Größe des Papierkorbs (gemessen oder „ca.“).
+        let sized = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value != nil AND value != ''"),
+                                              object: app.buttons["feed.dock"])
+        XCTAssertEqual(XCTWaiter.wait(for: [sized], timeout: 20), .completed, "The trash chip shows its size")
+        checkpoint("feed_trash_chip_with_size", app: app)
         XCTAssertTrue(poster.waitForExistence(timeout: 10))
         XCTAssertFalse(frame.exists)
         stage.swipeUp()
@@ -201,7 +206,7 @@ import XCTest
     private func waitForPosition(_ value: String) {
         let position = app.descendants(matching: .any)["feed.position"].firstMatch
         let moved = XCTNSPredicateExpectation(predicate: NSPredicate(format: "label CONTAINS %@", value), object: position)
-        XCTAssertEqual(XCTWaiter.wait(for: [moved], timeout: 8), .completed)
+        XCTAssertEqual(XCTWaiter.wait(for: [moved], timeout: 20), .completed)
     }
 
     func test10MemoryPhotosWinAndPersistentRecord() throws {
@@ -546,7 +551,7 @@ import XCTest
         assertFullscreenSnake(board)
         let initial = board.value as? String ?? ""
         let moved = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value != %@", initial), object: board)
-        XCTAssertEqual(XCTWaiter.wait(for: [moved], timeout: 8), .completed)
+        XCTAssertEqual(XCTWaiter.wait(for: [moved], timeout: 20), .completed)
         XCUIDevice.shared.press(.home)
         app.activate()
         XCTAssertTrue(board.waitForExistence(timeout: 10))

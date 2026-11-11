@@ -234,6 +234,8 @@ struct PhotoSnakeView: View {
                 if dynamicType.isAccessibilitySize {
                     // Keep the words Score and Record visible instead of ambiguous bare numbers.
                     VStack(alignment: .leading, spacing: 4) { scoreText; bestText }.monospacedDigit()
+                        // Größer als normal, aber gedeckelt: das Spielfeld behält den größten Teil des Fensters.
+                        .dynamicTypeSize(...DynamicTypeSize.accessibility1)
                 }
             }
             .padding(8).background(.black.opacity(0.65), in: .rect(cornerRadius: 24)).padding(.horizontal, 12)
