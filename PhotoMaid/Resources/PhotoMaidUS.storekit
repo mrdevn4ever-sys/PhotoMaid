@@ -1,0 +1,32 @@
+{
+  "identifier" : "1A56C901-7BC4-41BD-85C7-3EAC2C1E7C42",
+  "nonRenewingSubscriptions" : [ ],
+  "products" : [
+    {
+      "displayPrice" : "3.99",
+      "familyShareable" : false,
+      "internalID" : "A91D3E62",
+      "localizations" : [
+        {
+          "description" : "LOCAL TEST ONLY — not a live product",
+          "displayName" : "GaleriQ Pro (Test)",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "test.photomaid.pro.lifetime",
+      "referenceName" : "GaleriQ Pro — US Store creative test",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_askToBuyEnabled" : false,
+    "_billingIssuesEnabled" : false,
+    "_disableDialogs" : false,
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [ ]
+  },
+  "subscriptionGroups" : [ ],
+  "version" : { "major" : 4, "minor" : 0 }
+}

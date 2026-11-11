@@ -23,7 +23,9 @@ final class AppStoreCaptureTests: XCTestCase {
         try FileManager.default.createDirectory(at: output.appendingPathComponent("screenshots"), withIntermediateDirectories: true)
         continueAfterFailure = false
         installPermissionMonitor()
-        store = try SKTestSession(configurationFileNamed: "PhotoMaid")
+        // Match the Store creative's visible currency to its storefront. The app still reads
+        // Product.displayPrice from StoreKit; this is a simulator-only configuration, never a hard-coded price.
+        store = try SKTestSession(configurationFileNamed: language == "en" ? "PhotoMaidUS" : "PhotoMaid")
         store.disableDialogs = true
         if name.contains("test00") || name.contains("test06") { store.resetToDefaultState(); try store.clearTransactions() }
     }
@@ -82,7 +84,8 @@ final class AppStoreCaptureTests: XCTestCase {
         try? FileManager.default.removeItem(at:navigation.appendingPathComponent("hello"))
         app?.terminate()
         app = XCUIApplication()
-        app.launchArguments = ["-store-capture", "-store-page", page, "-store-navigation", output.appendingPathComponent("navigation").path, "-AppleLanguages", "(\(language))", "-AppleLocale", language]
+        let locale = language == "en" ? "en_US" : language
+        app.launchArguments = ["-store-capture", "-store-page", page, "-store-navigation", output.appendingPathComponent("navigation").path, "-AppleLanguages", "(\(language))", "-AppleLocale", locale]
         app.launch()
         if page != "introduction", XCUIApplication(bundleIdentifier:"com.apple.springboard").buttons["Allow Full Access"].exists { resolvePrivacyPrompts(in: app, prefix:"store-permissions", photos:true) }
         // Introduction can render before UIKit assigns the key window, so its
@@ -502,11 +505,17 @@ final class AppStoreCaptureTests: XCTestCase {
         swipeFeed("left"); pause(1)
         capturePage("trash")
         capturePage("library")
-        // Keep the top-level hub, its lower category section and genuine detail pages for the final composite.
-        capturePage("cleanup", bottom: true)
+        // Capture the hub and then one deliberate scroll where the two promised tools are fully visible.
+        launch("cleanup")
+        snap("cleanup")
+        app.swipeUp(); pause(1)
+        snap("cleanup-tools")
         capturePage("duplicates", title: "duplicates")
         capturePage("large-files", title: "large_files")
-        capturePage("months")
+        launch("months")
+        let monthsDone = button("tour_done")
+        if monthsDone.waitForExistence(timeout: 5) { tap(monthsDone) }
+        snap("months")
         capturePage("collage")
         capturePage("studio")
         launch("editor")
