@@ -416,7 +416,7 @@ final class AppStoreCaptureTests: XCTestCase {
         pause(1)
     }
     private func vaultItems() -> XCUIElementQuery { app.buttons.matching(NSPredicate(format:"identifier BEGINSWITH 'vault.media.item.'")) }
-    private func captureVault() throws {
+    private func captureVault(deleteOriginals: Bool = false) throws {
         openVault()
         if vaultItems().count == 0 {
             tap(button("vault_add"))
@@ -428,22 +428,39 @@ final class AppStoreCaptureTests: XCTestCase {
             let springboard = XCUIApplication(bundleIdentifier:"com.apple.springboard")
             let alert = springboard.alerts.firstMatch
             XCTAssertTrue(alert.waitForExistence(timeout:60))
-            for _ in 0..<4 {
-                guard alert.exists else { break }
-                let cancel = alert.buttons.matching(NSPredicate(format:"label IN %@",["Don't Allow","Don’t Allow","Don't Delete","Don’t Delete","Cancel","Nicht erlauben","Nicht löschen","Abbrechen"] as NSArray)).firstMatch
-                XCTAssertTrue(cancel.waitForExistence(timeout:3),"Only decline system deletion")
-                pause(0.5) // the first tap can otherwise coincide with the system alert's entrance
-                cancel.tap()
-                if alert.waitForNonExistence(timeout:3) { break }
+            if deleteOriginals {
+                let confirm = alert.buttons.allElementsBoundByIndex.first { element in
+                    let label = element.label.lowercased()
+                    return (label.contains("delete") || label.contains("löschen"))
+                        && !label.contains("don't") && !label.contains("don’t") && !label.contains("nicht")
+                }
+                let delete = try XCTUnwrap(confirm, "The disposable Store fixture must expose the real iOS delete confirmation")
+                pause(0.5)
+                delete.tap()
+                XCTAssertTrue(alert.waitForNonExistence(timeout: 10), "Confirmed system deletion must finish")
+            } else {
+                for _ in 0..<4 {
+                    guard alert.exists else { break }
+                    let cancel = alert.buttons.matching(NSPredicate(format:"label IN %@",["Don't Allow","Don’t Allow","Don't Delete","Don’t Delete","Cancel","Nicht erlauben","Nicht löschen","Abbrechen"] as NSArray)).firstMatch
+                    XCTAssertTrue(cancel.waitForExistence(timeout:3),"Only decline system deletion")
+                    pause(0.5) // the first tap can otherwise coincide with the system alert's entrance
+                    cancel.tap()
+                    if alert.waitForNonExistence(timeout:3) { break }
+                }
+                XCTAssertFalse(alert.exists,"System deletion dialog must be dismissed by declining")
             }
-            XCTAssertFalse(alert.exists,"System deletion dialog must be dismissed by declining")
             let notice = app.alerts.buttons[t("ok")]
             if notice.waitForExistence(timeout:15) {
                 tap(notice)
                 XCTAssertTrue(app.alerts.firstMatch.waitForNonExistence(timeout:5))
             }
         }
-        XCTAssertEqual(vaultItems().count,5); snap("vault-media")
+        XCTAssertEqual(vaultItems().count,5)
+        if deleteOriginals {
+            XCTAssertTrue(button("vault_still_in_photos_action").waitForNonExistence(timeout: 20),
+                          "Vault creative must not imply protected originals while copies remain in Photos")
+        }
+        snap("vault-media")
         tap(vaultItems().firstMatch); snap("vault-viewer")
         tap(app.buttons["vault.viewer.close"])
         tap(app.segmentedControls.buttons[t("vault2_notes")]); snap("vault-notes")
@@ -530,7 +547,7 @@ final class AppStoreCaptureTests: XCTestCase {
         editorTool("markup"); snap("editor-markup")
         capturePage("movie")
         capturePage("pro", title: "pro_title", bottom: true)
-        try captureVault()
+        try captureVault(deleteOriginals: true)
         try prepareMemoryForStore()
         snap("memory-play")
         tap(e("memory.close"))

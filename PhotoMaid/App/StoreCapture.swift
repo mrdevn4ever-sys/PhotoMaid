@@ -227,7 +227,12 @@ enum StoreCapture {
                 for (id, index) in assets {
                     guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [id], options: nil).firstObject else { continue }
                     let edit = PHAssetChangeRequest(for: asset)
-                    edit.creationDate = Date(timeIntervalSince1970: 1_792_022_400 - Double(index) * 3_600)
+                    // Spread the real imported fixtures across four genuine month groups. This edits only metadata in
+                    // the disposable capture library and lets the real MonthsView demonstrate its actual grouping.
+                    let monthBucket = (index - 1) / 14
+                    edit.creationDate = Date(timeIntervalSince1970: 1_792_022_400
+                                             - Double(monthBucket) * 35 * 86_400
+                                             - Double((index - 1) % 14) * 3_600)
                     edit.isFavorite = [13, 21, 25, 31, 36, 42].contains(index)
                 }
                 let album = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: AppConfig.brandName)
