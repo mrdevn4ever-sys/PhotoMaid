@@ -120,14 +120,17 @@ struct LargeFilesView: View {
                         .buttonStyle(.plain)
                         if e.asset.isVideo {
                             Button { shrink = target(e) } label: {
-                                Image(systemName: "arrow.down.right.and.arrow.up.left")
-                                    .font(.system(size: 15, weight: .semibold))
+                                // Mit Wort statt nur Symbol (Nutzer, 11.11.2026: die Funktion war nicht zu finden).
+                                Label(L("tools_resize"), systemImage: "arrow.down.right.and.arrow.up.left")
+                                    .font(AppTypography.footnote.weight(.semibold))
+                                    .lineLimit(1).fixedSize(horizontal: true, vertical: false)
                                     .foregroundStyle(AppColors.accent)
-                                    .frame(width: AppSpacing.minTouch, height: AppSpacing.minTouch)
-                                    .contentShape(.rect)
+                                    .padding(.horizontal, AppSpacing.s)
+                                    .frame(minHeight: AppSpacing.minTouch)
+                                    .background(AppColors.accent.opacity(0.14), in: .capsule)
+                                    .contentShape(.capsule)
                             }
                             .buttonStyle(.borderless)
-                            .accessibilityLabel(Text(key: "tools_resize"))
                             .accessibilityIdentifier("large.shrink")
                         }
                         }
