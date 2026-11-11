@@ -81,6 +81,7 @@ final class ScreenshotTests: XCTestCase {
 
     /// Tab wechseln über die eigene Tableiste (Experiment-Design).
     private func tab(_ name: String) {
+        if name == "Verlauf" { app.openHistory(); settle(0.8); return }
         app.revealTabBar()
         let bar = app.pmTab(name)
         if waitFor(bar, 5, "Tab \(name)") { bar.tap() }

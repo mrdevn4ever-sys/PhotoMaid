@@ -43,7 +43,7 @@ struct HistoryView: View {
                     HStack(spacing: 10) {
                         stat(HistoryGrouping.group(all.filter { matches($0, 1) }).count, "history_kept", AppColors.keep) { filter = 1 }
                         stat(HistoryGrouping.group(all.filter { matches($0, 2) }).count, "history_cleaned", AppColors.cleanup) { filter = 2 }
-                        stat(app.read.laterRecords.count, "history_later", AppColors.later) { app.navigate(.later, in: .history) }
+                        stat(app.read.laterRecords.count, "history_later", AppColors.later) { app.navigate(.later, in: .cleanup) }
                     }
                     if app.settings.showAchievements { WeekBars(progress: app.read.progress) }
                     chips
@@ -80,8 +80,9 @@ struct HistoryView: View {
         .appPage()
         .statusBarBackdrop()
         .onChange(of: filter) { _, _ in showOlder = false }
-        .toolbar(.hidden, for: .navigationBar)
         .navigationTitle(L("tab_history"))
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar { ToolbarItem(placement: .principal) { Color.clear.frame(width: 1, height: 1).accessibilityHidden(true) } }
         .accessibilityIdentifier("history.events")
         .accessibilityValue(Text(verbatim: String(all.count)))
     }
@@ -128,7 +129,7 @@ struct HistoryView: View {
     /// Serie und Weg zu den Erfolgen (Gamification).
     private var achievementsChip: some View {
         let streak = app.read.progress.streak
-        return Button { app.navigate(.achievements, in: .history) } label: {
+        return Button { app.navigate(.achievements, in: .cleanup) } label: {
             HStack(spacing: 6) {
                 PMIcon(streak > 0 ? .flame : .medal, size: 15, lineWidth: 2.2)
                     .foregroundStyle(streak > 0 ? AppColors.cleanup : AppColors.accent)

@@ -6,7 +6,7 @@ import StoreKit
 import SwiftUI
 
 enum AppTab: String, Hashable, CaseIterable, Sendable {
-    case today, library, cleanup, studio, history
+    case today, library, cleanup, studio
 }
 
 enum CleanupRunResult: Sendable {

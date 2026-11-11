@@ -18,7 +18,7 @@ final class PhotoMaidUITests: XCTestCase {
     }
 
     func testFiveTabsExist() {
-        for tab in ["Heute", "Fotos", "Aufräumen", "Studio", "Verlauf"] {
+        for tab in ["Heute", "Fotos", "Start", "Aufräumen", "Studio"] {
             XCTAssertTrue(app.pmTab(tab).waitForExistence(timeout: 5), "Tab \(tab) fehlt")
         }
         checkpoint("qa_five_tabs", app: app)

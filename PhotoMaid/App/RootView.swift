@@ -1,7 +1,8 @@
 import PhotoMaidCore
 import SwiftUI
 
-/// Wurzel: fünf Tabs (PhotoMaid · Fotos · Aufräumen · Studio · Verlauf) mit schwebender Artefakt-Tableiste, darüber der Feed
+/// Wurzel: vier Tabs (GaleriQ · Fotos · Aufräumen · Studio) und der Mittelknopf „Aufräumen starten“ (11/2026;
+/// „Verlauf“ liegt unter Aufräumen) mit schwebender Artefakt-Tableiste, darüber der Feed
 /// als Vollbild-Ebene (kurzes Einblenden wie Android, ohne Animation bei „Bewegung reduzieren“).
 struct RootView: View {
     @Environment(AppModel.self) private var app
@@ -140,14 +141,11 @@ struct RootView: View {
             Tab(L("tab_library"), systemImage: "photo.on.rectangle.angled", value: AppTab.library) {
                 stack(.library) { LibraryView() }
             }
-            Tab(L("tab_cleanup"), systemImage: "square.stack.3d.up", value: AppTab.cleanup) {
+            Tab(L("tab_cleanup"), systemImage: "sparkles", value: AppTab.cleanup) {
                 stack(.cleanup) { CleanUpHubView() }
             }
             Tab(L("tab_studio"), systemImage: "paintpalette", value: AppTab.studio) {
                 stack(.studio) { StudioView() }
-            }
-            Tab(L("tab_history"), systemImage: "clock.arrow.circlepath", value: AppTab.history) {
-                stack(.history) { HistoryView() }
             }
         }
         .tabViewStyle(.tabBarOnly)
@@ -159,7 +157,7 @@ struct RootView: View {
             ZStack(alignment: .bottom) {
                 Color.clear.allowsHitTesting(false)
                 if app.feed == nil && (app.paths[app.selectedTab] ?? []).isEmpty {
-                    PMTabBar(selection: $app.selectedTab) { app.popToRoot($0) }
+                    PMTabBar(selection: $app.selectedTab, reselect: { app.popToRoot($0) }, start: startReview)
                 }
             }
             // Auch die Tastatur-Safe-Area ignorieren: die Leiste bleibt unten und rutscht nicht über die Tastatur.
@@ -178,6 +176,17 @@ struct RootView: View {
                 .toolbar(.hidden, for: .tabBar)
                 .navigationDestination(for: Route.self) { RouteDestination(route: $0) }
         }
+    }
+
+    /// Mittelknopf: genau derselbe Weg wie „Jetzt aufräumen“ auf der Startseite – öffnet nur den Feed, entscheidet nichts.
+    /// Ohne Zugriff zeigt die Startseite die Zugriffskarte; ist nichts mehr offen, öffnet sich „Aufräumen“.
+    private func startReview() {
+        guard app.library.access.canRead else { app.popToRoot(.today); app.selectedTab = .today; return }
+        if app.readReady && app.pending.isEmpty && app.dueCount == 0 {
+            app.popToRoot(.cleanup); app.selectedTab = .cleanup
+            return
+        }
+        app.open(FeedRequest(.allMedia))
     }
 
     /// Einstiege öffnen nur Ansichten – nie eine Entscheidung, nie ein Löschen, nie ein Start ohne Tipp.

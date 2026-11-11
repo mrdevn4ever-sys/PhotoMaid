@@ -41,7 +41,7 @@ struct TodayView: View {
                             }
                         }
                         VStack(alignment: .leading, spacing: AppSpacing.m) {
-                            statusGroup.tourTarget("today.status").id("today.status")
+                            statusGroup
                             PMCardRow(icon: .cup, tint: AppColors.later, tile: AppColors.pauseStroke, title: L("memory_break"),
                                       subtitle: L("art_pause_sub"), subtitleColor: AppColors.pauseText,
                                       background: AppColors.pauseSurface, stroke: AppColors.pauseStroke, radius: AppRadii.card) {
@@ -51,6 +51,7 @@ struct TodayView: View {
                             .tourTarget("today.games")
                             .id("today.games")
                             if access.canRead && app.readReady { QuickAccessSection().tourTarget("today.quick").id("today.quick") }
+                            vaultCard
                             if app.capabilities.tier == .free, let first = app.settings.firstSeenDay, app.today > first {
                                 PMCardRow(icon: .crown, tint: AppColors.accent, title: L("pro_title"), subtitle: L("pro_subtitle")) {
                                     app.navigate(.pro)
@@ -233,24 +234,24 @@ struct TodayView: View {
         }
     }
 
-    /// Papierkorb und Später als zwei Kacheln (Artefakt), darüber ggf. „Wieder dran“.
-    private var statusGroup: some View {
-        VStack(spacing: AppSpacing.s) {
-            if app.dueCount > 0 {
-                PMCardRow(icon: .calendar, tint: AppColors.later, title: LP("today_due", app.dueCount)) {
-                    app.open(FeedRequest(.due))
-                }
+    /// „Wieder dran“ (fällige Später-Medien). Papierkorb und Später selbst liegen seit 11/2026 nur noch unter
+    /// „Aufräumen“ (ein fester Ort, Nutzerentscheidung).
+    @ViewBuilder private var statusGroup: some View {
+        if app.dueCount > 0 {
+            PMCardRow(icon: .calendar, tint: AppColors.later, title: LP("today_due", app.dueCount)) {
+                app.open(FeedRequest(.due))
             }
-            HStack(spacing: AppSpacing.s) {
-                PMStackTile(icon: .trash, tint: AppColors.cleanup, value: CountText.number(app.read.basket.count),
-                            title: L("basket")) { app.navigate(.trash) }
-                    .accessibilityLabel(Text(verbatim: L("basket") + ", " + LP("items_count", app.read.basket.count)))
-                    .accessibilityIdentifier("today.trash")
-                PMStackTile(icon: .clock, tint: AppColors.later, value: CountText.number(app.read.laterRecords.count),
-                            title: L("later")) { app.navigate(.later) }
-                    .accessibilityLabel(Text(verbatim: L("later") + ", " + LP("items_count", app.read.laterRecords.count)))
-                    .accessibilityIdentifier("today.later")
+        }
+    }
+
+    /// Sichtbarer Einstieg in den Tresor (11/2026). Entfällt mit „Eingang ausblenden“ – dann bleibt nur das lange
+    /// Drücken auf den Schriftzug.
+    @ViewBuilder private var vaultCard: some View {
+        if !VaultStore.shared.hidesEntry {
+            PMCardRow(icon: .lock, tint: AppColors.accent, title: L("vault_title"), subtitle: L("art_vault_sub")) {
+                VaultStore.shared.present()
             }
+            .accessibilityIdentifier("today.vaultCard")
         }
     }
 
@@ -268,17 +269,14 @@ struct TodayView: View {
     private var tourSteps: [TourStep] {
         var steps: [TourStep] = [
             TourStep(titleKey: "tour_today_hero_title", textKey: "tour_today_hero_text", target: .anchor("today.hero")),
-            TourStep(titleKey: "tour_today_status_title", textKey: "tour_today_status_text", target: .anchor("today.status")),
             TourStep(titleKey: "tour_games_title", textKey: "tour_games_text", target: .anchor("today.games")),
             TourStep(titleKey: "tour_today_quick_title", textKey: "tour_today_quick_text", target: .anchor("today.quick")),
             TourStep(titleKey: "tour_today_tab_title", textKey: "tour_today_tab_text",
-                     target: .tab(2, titleKey: "tab_cleanup", symbol: "square.stack.3d.up")),
+                     target: .tab(3, titleKey: "tab_cleanup", symbol: "sparkles")),
             TourStep(titleKey: "tour_lib_title", textKey: "tour_lib_text",
                      target: .tab(1, titleKey: "tab_library", symbol: "photo.on.rectangle.angled")),
             TourStep(titleKey: "tour_studio_title", textKey: "tour_studio_text",
-                     target: .tab(3, titleKey: "tab_studio", symbol: "paintpalette")),
-            TourStep(titleKey: "tour_history_title", textKey: "tour_history_text",
-                     target: .tab(4, titleKey: "tab_history", symbol: "clock.arrow.circlepath")),
+                     target: .tab(4, titleKey: "tab_studio", symbol: "paintpalette")),
             TourStep(titleKey: "tour_settings_title", textKey: "tour_settings_text", target: .anchor("today.settings"))]
         if !VaultStore.shared.hidesEntry {
             steps.append(TourStep(titleKey: "tour_vault_title", textKey: "tour_vault_text", target: .anchor("today.vault")))

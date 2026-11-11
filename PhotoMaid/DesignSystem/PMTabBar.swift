@@ -1,19 +1,22 @@
 import SwiftUI
 
 /// Schwebende Tableiste des Artefakts: Kapsel 68 pt (Abstand 16 seitlich, 22 unten), vier Einträge und in der Mitte
-/// der runde Bernstein-Knopf „Aufräumen“ (60 pt, ragt über die Leiste). Ersetzt die System-Tableiste.
+/// der runde Bernstein-Knopf (60 pt, ragt über die Leiste). Seit 11/2026 ist der Knopf kein Tab mehr: er startet das
+/// Durchwischen (wie „Jetzt aufräumen“); die Liste „Aufräumen“ ist ein normaler Tab. Ersetzt die System-Tableiste.
 struct PMTabBar: View {
     @Binding var selection: AppTab
     /// Erneutes Tippen auf den aktiven Tab: zurück zur ersten Seite (wie die System-Tableiste).
     let reselect: (AppTab) -> Void
+    /// Mittelknopf: Durchwischen starten (öffnet nur den Feed, nie eine Entscheidung).
+    let start: () -> Void
 
     var body: some View {
         HStack(spacing: 0) {
             item(.today, icon: .house, title: L("app_name"), index: 0)
             item(.library, icon: .grid, title: L("tab_library"), index: 1)
             center
-            item(.studio, icon: .wand, title: L("tab_studio"), index: 3)
-            item(.history, icon: .history, title: L("tab_history"), index: 4)
+            item(.cleanup, icon: .sparkles, title: L("tab_cleanup"), index: 3)
+            item(.studio, icon: .wand, title: L("tab_studio"), index: 4)
         }
         .padding(.horizontal, 6)
         .frame(height: 68)
@@ -53,8 +56,7 @@ struct PMTabBar: View {
     }
 
     private var center: some View {
-        let active = selection == .cleanup
-        return Button { tap(.cleanup) } label: {
+        return Button(action: start) {
             PMIcon(.layers, size: 26, lineWidth: 2.2)
                 .foregroundStyle(AppColors.onAccent)
                 .shadow(color: .white.opacity(0.35), radius: 0, y: 1)
@@ -75,7 +77,7 @@ struct PMTabBar: View {
                                                      startRadius: 0, endRadius: 26))
                         )
                 }
-                .overlay(Circle().strokeBorder(active ? AppColors.textPrimary : AppColors.background, lineWidth: 4))
+                .overlay(Circle().strokeBorder(AppColors.background, lineWidth: 4))
                 .shadow(color: .black.opacity(0.55), radius: 6, y: 5)
                 .shadow(color: AppColors.accent.opacity(0.35), radius: 14, y: 8)
                 .contentShape(.circle)
@@ -83,9 +85,8 @@ struct PMTabBar: View {
         .buttonStyle(PMPressStyle())
         .frame(maxWidth: .infinity)
         .offset(y: -15)
-        .accessibilityLabel(Text(key: "tab_cleanup"))
-        .accessibilityAddTraits(active ? [.isSelected] : [])
-        .accessibilityIdentifier("tab.cleanup")
+        .accessibilityLabel(Text(key: "today_start_cta"))
+        .accessibilityIdentifier("tab.start")
         .onGeometryChange(for: CGRect.self) { $0.frame(in: .global) } action: { PMTabBarFrames.frames[2] = $0 }
     }
 }

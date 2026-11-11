@@ -98,7 +98,7 @@ enum StoreCapture {
             app.selectedTab = .library; return
         case "cleanup": app.selectedTab = .cleanup; return
         case "studio": app.selectedTab = .studio; return
-        case "history": app.selectedTab = .history; return
+        case "history": app.popToRoot(.cleanup); app.navigate(.history, in: .cleanup); return
         case "feed-failures":
             app.selectedTab = .cleanup
             let videos = Array(app.visibleMedia.filter(\.isVideo).prefix(2))

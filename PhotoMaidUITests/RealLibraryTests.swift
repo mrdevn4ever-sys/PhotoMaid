@@ -49,6 +49,12 @@ final class RealLibraryTests: XCTestCase {
         XCTAssertTrue(element.exists && element.isHittable)
     }
     private func tab(_ title: String) {
+        if title == "Verlauf" {
+            app.revealTabBar()
+            if !app.pmTab("Aufräumen").isHittable, testAd != nil { closeTestAd() }
+            app.openHistory()
+            return
+        }
         app.revealTabBar()
         // When consent and ATT finish late, the app-open ad arrives after the start window and covers the tabs.
         if !app.pmTab(title).isHittable, testAd != nil { closeTestAd() }

@@ -7,6 +7,7 @@ enum Route: Hashable {
     // Aufräumen
     case trash
     case later
+    case history
     case months
     case largeFiles
     case duplicates
@@ -99,6 +100,7 @@ struct RouteDestination: View {
         switch route {
         case .trash: TrashView()
         case .later: LaterView()
+        case .history: HistoryView()
         case .months: MonthsView()
         case .largeFiles: LargeFilesView()
         case .duplicates: DuplicatesView()

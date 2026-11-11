@@ -5,11 +5,21 @@ import XCTest
 @MainActor
 extension XCUIApplication {
     private static let tabIDs = ["Heute": "tab.today", "GaleriQ": "tab.today", "Fotos": "tab.library",
-                                 "Aufräumen": "tab.cleanup", "Studio": "tab.studio", "Verlauf": "tab.history"]
+                                 "Aufräumen": "tab.cleanup", "Studio": "tab.studio", "Start": "tab.start"]
+
+    /// „Verlauf“ ist seit 11/2026 kein Tab mehr, sondern eine Zeile unter „Aufräumen“.
+    func openHistory() {
+        revealTabBar()
+        let cleanup = pmTab("Aufräumen")
+        if cleanup.waitForExistence(timeout: 5) { cleanup.tap() }
+        let row = buttons["cleanup.history"].firstMatch
+        for _ in 0..<4 where !(row.exists && row.isHittable) { swipeUp() }
+        if row.waitForExistence(timeout: 5) { row.tap() }
+    }
 
     func pmTab(_ title: String) -> XCUIElement { buttons[Self.tabIDs[title] ?? title].firstMatch }
 
-    /// Die Tableiste – wie im Artefakt nur auf den fünf Startseiten sichtbar.
+    /// Die Tableiste – wie im Artefakt nur auf den Startseiten der Tabs sichtbar.
     var pmTabBar: XCUIElement { buttons["tab.today"].firstMatch }
 
     /// Kurz warten, bis ein Element bedienbar ist (z. B. ein Menüeintrag, der noch einblendet). Erst danach

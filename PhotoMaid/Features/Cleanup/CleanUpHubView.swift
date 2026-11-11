@@ -96,6 +96,12 @@ struct CleanUpHubView: View {
             .buttonStyle(.plain)
             .accessibilityIdentifier("cleanup.later")
             SwiftUI.Divider().overlay(AppColors.surfaceStroke)
+            Button { app.navigate(.history, in: .cleanup) } label: {
+                NavRow(symbol: "clock.arrow.circlepath", tint: AppColors.keep, title: L("tab_history"))
+            }
+            .buttonStyle(.plain)
+            .accessibilityIdentifier("cleanup.history")
+            SwiftUI.Divider().overlay(AppColors.surfaceStroke)
             media(.photos, "photo", "cat_photos", AppColors.keep)
             SwiftUI.Divider().overlay(AppColors.surfaceStroke)
             media(.videos, "video", "cat_videos", AppColors.accent)
