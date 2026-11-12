@@ -41,11 +41,15 @@ struct AdaptiveWorkspace<Primary: View, Controls: View>: View {
 
     var body: some View {
         GeometryReader { geo in
+            // Nebeneinander nur im Querformat: im Hochformat (iPad, aufgeklapptes Duo) klebte das Bild sonst links und
+            // die Werkzeugleiste wurde rechts abgeschnitten – dort wie am iPhone: Bild oben, Werkzeuge unten.
             let wide = AppWorkspace.isWide(geo.size, accessibility: dynamicType.isAccessibilitySize)
+                && geo.size.width > geo.size.height
             let layout = wide ? AnyLayout(HStackLayout(spacing: AppSpacing.l)) : AnyLayout(VStackLayout(spacing: AppSpacing.s))
             layout {
                 primary.frame(maxWidth: .infinity, maxHeight: .infinity)
                 controls.frame(width: wide ? min(controlsWidth, geo.size.width * 0.38) : nil)
+                    .frame(maxWidth: wide ? nil : 720)
             }
         }
     }
