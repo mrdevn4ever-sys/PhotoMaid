@@ -1,8 +1,8 @@
 {
  "locale": "en",
  "app_store_locale": "en-US",
- "commit": "8a41b29ebe6db6dcd44c8a8a9332d6547a22796d",
- "workflow_run": "41149551351",
+ "commit": "57d29e874fb12f4dd29f07bb28e29d757fa422d0",
+ "workflow_run": "43124627615",
  "device": {
   "device_class": "iphone-large",
   "name": "iPhone 17 Pro Max",
@@ -33,43 +33,43 @@
    "file": "01-today.png",
    "width": 1320,
    "height": 2868,
-   "sha256": "0224afa056ed4159f8a59c755cc5b3d637506c864c1eb0df83b057218e9e0e91"
+   "sha256": "e42f42b59bd94265ef689f36ac73f56ab7b9fd4bd28233eae7975ce3617f1d0b"
   },
   {
    "file": "02-feed-keep.png",
    "width": 1320,
    "height": 2868,
-   "sha256": "6fc21fd290b73576159cc3b9c6b42e1b2f5f97b38f8aeee1243bc4b47a7bfb9a"
+   "sha256": "701131fc7d62816e331897083336e1f8cebbe61ee2be780a873e082992782032"
   },
   {
    "file": "03-feed-trash.png",
    "width": 1320,
    "height": 2868,
-   "sha256": "5c93e1d2b77b8f6d445fd9fb075d57c54b5fdb41326270b261879cdffa502bf3"
+   "sha256": "400b0d04a750272e5edda20e205b36ad74161e9514a6d7219e6a946b83adca37"
   },
   {
    "file": "04-library.png",
    "width": 1320,
    "height": 2868,
-   "sha256": "8911bc6727009be55169787f6235e16dad1c65c54f48060e78503a41f6a222e7"
+   "sha256": "14bbca77c310fef16df4e408989890e2cfb174c095e7a6d01bcda4193903520e"
   },
   {
    "file": "05-cleanup.png",
    "width": 1320,
    "height": 2868,
-   "sha256": "25499534891e387a3832b5409d6d14902489acc8d22f94354bc8e7aa141888db"
+   "sha256": "7662f3b0d1778121d82a3e48e64212b799ca57b66a89328eb23faa7ebc4e726c"
   },
   {
    "file": "06-snake-play.png",
    "width": 1320,
    "height": 2868,
-   "sha256": "1d5cd7a618073229b1e4129f18e4637bf8e5b32d83a13f19ffc54f56aedfad72"
+   "sha256": "e50d87cda347ac11ff008349ad1a9ab86365a3f0270192df0f96c624911cbb2d"
   },
   {
    "file": "07-memory-play.png",
    "width": 1320,
    "height": 2868,
-   "sha256": "c5c0babb42b74321bb4e79c52cb893014590c25b506a869245b8db3d35ad2b37"
+   "sha256": "a462c19a53599718246d2a94686e41a55a39e088c5a9c2176704b2f36e208db1"
   },
   {
    "file": "08-collage.png",
@@ -87,7 +87,7 @@
    "file": "10-vault-media.png",
    "width": 1320,
    "height": 2868,
-   "sha256": "c88ca3577ba10629cde35ab66a71b916a4e25bcc665a91e9774009da2534b2c8"
+   "sha256": "b8ba21ec357c9d8d022e84d2caebe4bfde466eba70d63b8985ba71b7639f4d59"
   }
  ],
  "notes": {
@@ -118,7 +118,7 @@
  ],
  "visual_review": {
   "status": "PASS",
-  "date": "2026-10-31",
-  "note": "Schriftzug „GaleriQ“ mit Tresor-Rad als Q auf 01-today; alle 10 Bilder und 2 Clips gesichtet, kein „PhotoMaid“/„Arrumo“ sichtbar"
+  "date": "2026-11-12",
+  "note": "1.1: zehn Bilder je Gerät als Übersicht gesichtet (iPhone 6,9″, 6,3″, iPad 13″); neue Leiste Heute · Fotos · Start · Aufräumen · Studio. Die zwei Vorschauclips stammen noch aus Lauf 41149551351 (alte Leiste) und sind nicht neu aufgenommen."
  }
 }

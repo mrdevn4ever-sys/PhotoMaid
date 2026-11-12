@@ -2,8 +2,8 @@
  "locale": "en",
  "app_store_locale": "en-US",
  "app_store_slot": "iPhone mit Dynamic Island (mittleres Display, 6,3″)",
- "commit": "f8da6e47bd6186c5648cace0476bcf9f293085e3",
- "workflow_run": "41241184987",
+ "commit": "57d29e874fb12f4dd29f07bb28e29d757fa422d0",
+ "workflow_run": "43124627615",
  "device": {
   "device_class": "iphone-medium",
   "name": "iPhone 17 Pro",
@@ -16,43 +16,43 @@
    "file": "01-today.png",
    "width": 1206,
    "height": 2622,
-   "sha256": "db28ea60c263472913ac2570ef269cca954788b3188228e41ea9147e2d5af768"
+   "sha256": "98980a986ba7a54033560f57bea74c893bd8b94bee52ffe3df90a8125f365912"
   },
   {
    "file": "02-feed-keep.png",
    "width": 1206,
    "height": 2622,
-   "sha256": "e565c29160e7159b289f08e51c5b60a20f73f9041c0c29393a79a12f3556da62"
+   "sha256": "819c2c760707dd6e6e56635d4d659616359de065a88a21ceb3dd4b0e095bb95e"
   },
   {
    "file": "03-feed-trash.png",
    "width": 1206,
    "height": 2622,
-   "sha256": "9f798bd484ae8a2f8dc9f94c435f41b254990764877ffd64208e4ce94f79d9fe"
+   "sha256": "d3b676b19e456df7e79cf8700919003c21f5bd37af283b86301f027527439fca"
   },
   {
    "file": "04-library.png",
    "width": 1206,
    "height": 2622,
-   "sha256": "6d707d2080bbfd3292b029ff43328792ce1b2048f49dc48402e3c54f87ca86a5"
+   "sha256": "9e21662d964ed9472e8bad7835b04a7b2deb5aef8235b8c3659c8b99c3f91d31"
   },
   {
    "file": "05-cleanup.png",
    "width": 1206,
    "height": 2622,
-   "sha256": "2663d172f228811e17641d1f1d90cca605b605da6545a45e22766bcda58471d9"
+   "sha256": "4c0eba3e4e34fbce6526fda339305734ed7c2083d444d7bfd59d031e7944762e"
   },
   {
    "file": "06-snake-play.png",
    "width": 1206,
    "height": 2622,
-   "sha256": "704511931a0e7b27bdce6b125d0e80f80e8c8b865b20a1c77ceeb47bc7a4afc8"
+   "sha256": "ee99a804045fcef54eed413decb9fc7c605ea66a84a96cc71fd5378aae7be396"
   },
   {
    "file": "07-memory-play.png",
    "width": 1206,
    "height": 2622,
-   "sha256": "2ca3aec8d79941f215f533fd579d35ad844d4371335c8d60f68f2ff1dc922218"
+   "sha256": "ffdae57c0947b1be9892f20a94a615951bf07e332b1d32ed430a2764c5dd892c"
   },
   {
    "file": "08-collage.png",
@@ -70,12 +70,12 @@
    "file": "10-vault-media.png",
    "width": 1206,
    "height": 2622,
-   "sha256": "54ae57162e2d42dbe64849bc0f17524654572c1a57267b8372efd7b5933d52a5"
+   "sha256": "bf1d54de874267e2f498f27104c449b11b7934af8def039e4bfea03ccafce0fb"
   }
  ],
  "visual_review": {
   "status": "PASS",
-  "date": "2026-10-31",
-  "note": "gleiche zehn Motive wie 6,9″, Schriftzug GaleriQ, kein alter Name"
+  "date": "2026-11-12",
+  "note": "Übersicht der zehn Bilder gesichtet"
  }
 }

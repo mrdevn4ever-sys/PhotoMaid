@@ -1,0 +1,81 @@
+{
+ "locale": "en",
+ "app_store_locale": "en-US",
+ "app_store_slot": "iPad 13″",
+ "commit": "a747bb6027f66cf399d77f6e77b49dac65a61792",
+ "workflow_run": "43133442327",
+ "device": {
+  "device_class": "ipad",
+  "name": "iPad Pro 13-inch (M5) (16GB)",
+  "os_version": "26.2",
+  "sdk": "26.5"
+ },
+ "appearance": "dark",
+ "screenshots": [
+  {
+   "file": "01-today.png",
+   "width": 2064,
+   "height": 2752,
+   "sha256": "a03c09d4c6b7504e796615d5a5487c3c43b698bee2b478cbd1ab11bd3f5afd26"
+  },
+  {
+   "file": "02-feed-keep.png",
+   "width": 2064,
+   "height": 2752,
+   "sha256": "2741f0bf0e486e1126dc27a75c467963ab10692c45647daf2c5c694886bd3978"
+  },
+  {
+   "file": "03-feed-trash.png",
+   "width": 2064,
+   "height": 2752,
+   "sha256": "d0f96ffcb2b7d72b3d5124b593fc95db8c9e0968b61a834ac8b78f38b504f690"
+  },
+  {
+   "file": "04-library.png",
+   "width": 2064,
+   "height": 2752,
+   "sha256": "614ca51d43809ec57259f2a5e29c2dd0b59cd7943f044aae6c54561f7dbca621"
+  },
+  {
+   "file": "05-cleanup.png",
+   "width": 2064,
+   "height": 2752,
+   "sha256": "c828131d16fc02211256e077c5a206d5d12c59558b5888687444055f68038c89"
+  },
+  {
+   "file": "06-snake-play.png",
+   "width": 2064,
+   "height": 2752,
+   "sha256": "965fae609d896bbfb5050edff0cbe6ebda6f6e4511116e920d9db8dc11e2b563"
+  },
+  {
+   "file": "07-memory-play.png",
+   "width": 2064,
+   "height": 2752,
+   "sha256": "7557af48ff338afb132323eae9bee0a15fe88ca640f5197e69cc08a0cb506354"
+  },
+  {
+   "file": "08-collage.png",
+   "width": 2064,
+   "height": 2752,
+   "sha256": "a3725bcbd93ff608a47de297a015761dfee5b7366f0d808acfa2663063fe0f7d"
+  },
+  {
+   "file": "09-editor-filter.png",
+   "width": 2064,
+   "height": 2752,
+   "sha256": "e6490e3e6cd6139feb966131c5148a29320871e6b181d2c5681066ce7bfbd9fe"
+  },
+  {
+   "file": "10-vault-media.png",
+   "width": 2064,
+   "height": 2752,
+   "sha256": "012733e876e2a651f101c992c6de21dce3301f92b082dcba5f41fc3f451c8ef1"
+  }
+ ],
+ "visual_review": {
+  "status": "PASS",
+  "date": "2026-11-12",
+  "note": "Übersicht der zehn Bilder gesichtet; Editor im Hochformat mit Werkzeugen unten, Texte „iPad“"
+ }
+}
