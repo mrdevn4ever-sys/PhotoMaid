@@ -12,7 +12,7 @@ def run(*args):
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument('device', choices=['iphone-large', 'iphone-medium', 'iphone-duo'])
+    p.add_argument('device', choices=['iphone-large', 'iphone-medium', 'iphone-duo', 'ipad'])
     p.add_argument('report', type=Path)
     a = p.parse_args()
     types = json.loads(run('xcrun', 'simctl', 'list', 'devicetypes', '-j'))['devicetypes']
@@ -27,6 +27,12 @@ def main():
         assert candidates, 'BLOCKED: no available iOS 27.1+ runtime'
         runtime = max(candidates, key=lambda r: tuple(map(int, r['version'].split('.'))))
         device = matches[0]
+    elif a.device == 'ipad':
+        # App Store verlangt für iPad-Apps 13-Zoll-Bilder (2064 × 2752 bzw. 2048 × 2732).
+        pads = sorted((t for t in types if t['name'].startswith('iPad Pro 13-inch')), key=lambda t: t['name'])
+        assert pads, 'BLOCKED: no iPad Pro 13-inch simulator device type'
+        device = pads[-1]
+        runtime = next(r for r in runtimes if r['isAvailable'] and r['name'] == 'iOS 26.2')
     else:
         name = 'iPhone 17 Pro Max' if a.device == 'iphone-large' else 'iPhone 17 Pro'
         device = next(t for t in types if t['name'] == name)

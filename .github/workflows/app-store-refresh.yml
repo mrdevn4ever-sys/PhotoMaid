@@ -40,7 +40,7 @@ jobs:
           locales=available if os.environ['REQUESTED']=='all' else os.environ['REQUESTED'].split(',')
           devices=os.environ['DEVICES'].split(',')
           assert locales and len(locales)==len(set(locales)) and all(x in available for x in locales)
-          assert devices and len(devices)==len(set(devices)) and set(devices)<={'iphone-large','iphone-medium','iphone-duo'}
+          assert devices and len(devices)==len(set(devices)) and set(devices)<={'iphone-large','iphone-medium','iphone-duo','ipad'}
           assert 'iphone-duo' not in devices or devices==['iphone-duo'], 'Duo requires its own Xcode27 runner batch'
           matrix={'include':[{'locale':l,'device':d} for l in locales for d in devices]}
           with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('matrix='+json.dumps(matrix)+'\n')

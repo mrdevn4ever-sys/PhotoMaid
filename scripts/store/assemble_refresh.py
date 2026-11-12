@@ -15,7 +15,8 @@ HEROES = ['today', 'feed-keep', 'feed-trash', 'library', 'cleanup', 'snake-play'
           'collage', 'editor-filter', 'vault-media']
 SIZES = {'iphone-large': {(1320, 2868), (1290, 2796), (1260, 2736)},
          'iphone-medium': {(1206, 2622), (1179, 2556)},
-         'iphone-duo': {(1398, 2034), (2007, 2853)}}
+         'iphone-duo': {(1398, 2034), (2007, 2853)},
+         'ipad': {(2064, 2752), (2048, 2732)}}
 
 
 def digest(path):
@@ -45,6 +46,7 @@ def validate(summary, inventory, photos, device, device_class):
         assert all(tuple(map(int, c['device']['osVersion'].split('.'))) >= (27, 1) for c in configurations)
     else:
         assert not device['actual_duo']
+        assert ('iPad' in device['name']) == (device_class == 'ipad'), device['name']
 
 
 def main():
