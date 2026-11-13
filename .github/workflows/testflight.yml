@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       task:
-        description: "testflight = Build hochladen; store-texts = nur Store-Texte aus app-store/metadata (Bestätigung TEXTE)"
+        description: "testflight = Build hochladen; store-texts = nur Store-Texte (Bestätigung TEXTE); status = TestFlight-Stand prüfen und neuesten Build den internen Gruppen geben (Bestätigung STATUS)"
         type: choice
-        options: [testflight, store-texts]
+        options: [testflight, store-texts, status]
         default: testflight
       changelog:
         description: "Was testen? (erscheint in TestFlight unter „Was ist zu testen“)"
@@ -37,7 +37,7 @@ permissions:
 
 jobs:
   beta:
-    if: inputs.task != 'store-texts'
+    if: inputs.task == 'testflight'
     name: Archivieren, signieren, hochladen
     runs-on: macos-26
     timeout-minutes: 90
@@ -232,3 +232,36 @@ jobs:
         run: gem install fastlane --no-document
       - name: Hochladen
         run: fastlane ios store_metadata
+
+  # Nur Stand ansehen und den neuesten verarbeiteten Build den INTERNEN Testgruppen zuordnen – kein Build, kein Upload,
+  # keine externe Verteilung, keine Einreichung.
+  status:
+    if: inputs.task == 'status'
+    name: TestFlight-Stand
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    environment: testflight
+    env:
+      APP_STORE_CONNECT_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+      APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+      APP_STORE_CONNECT_API_KEY_BASE64: ${{ secrets.APP_STORE_CONNECT_API_KEY_BASE64 }}
+      PM_BUNDLE_ID: ${{ vars.PM_BUNDLE_ID || 'com.mrdevn4ever.photomaid' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            fastlane
+      - name: Bestätigung prüfen
+        env:
+          CONFIRM_UPLOAD: ${{ inputs.confirm_upload }}
+        run: |
+          if [ "$CONFIRM_UPLOAD" != "STATUS" ]; then
+            echo "::error::Abgebrochen: confirm_upload muss exakt STATUS sein."; exit 1
+          fi
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+      - name: fastlane
+        run: gem install fastlane --no-document
+      - name: Stand prüfen
+        run: fastlane ios testflight_status

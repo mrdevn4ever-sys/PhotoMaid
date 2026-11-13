@@ -136,6 +136,43 @@ platform :ios do
     )
   end
 
+  desc "TestFlight-Stand: neueste Builds mit Verarbeitungs-/Teststatus und Gruppen; neuesten gültigen Build intern zuordnen"
+  lane :testflight_status do
+    app_store_connect_api_key(
+      key_id: ENV.fetch("APP_STORE_CONNECT_KEY_ID"),
+      issuer_id: ENV.fetch("APP_STORE_CONNECT_ISSUER_ID"),
+      key_content: ENV.fetch("APP_STORE_CONNECT_API_KEY_BASE64"),
+      is_key_content_base64: true,
+      in_house: false
+    )
+    app = Spaceship::ConnectAPI::App.find(ENV.fetch("PM_BUNDLE_ID"))
+    UI.user_error!("App nicht gefunden") unless app
+    builds = Spaceship::ConnectAPI::Build.all(app_id: app.id, sort: "-uploadedDate", limit: 6,
+                                              includes: "buildBetaDetail,preReleaseVersion")
+    builds.each do |b|
+      d = b.build_beta_detail
+      groups = (b.get_beta_groups rescue []).map(&:name)
+      UI.message("BUILD #{b.app_version} (#{b.version}) hochgeladen=#{b.uploaded_date} verarbeitung=#{b.processing_state} " \
+                 "intern=#{d&.internal_build_state} extern=#{d&.external_build_state} abgelaufen=#{b.expired} " \
+                 "verschluesselung=#{b.uses_non_exempt_encryption.inspect} gruppen=#{groups.join('|')}")
+    end
+    internal = app.get_beta_groups.select(&:is_internal_group)
+    internal.each do |g|
+      all = g.respond_to?(:has_access_to_all_builds) ? g.has_access_to_all_builds : "?"
+      testers = (Spaceship::ConnectAPI::BetaTester.all(filter: { betaGroups: g.id }).count rescue "?")
+      UI.message("GRUPPE #{g.name} intern=true alle_builds=#{all} tester=#{testers}")
+    end
+    latest = builds.find { |b| b.processing_state == "VALID" && !b.expired }
+    if latest && !internal.empty?
+      begin
+        latest.add_beta_groups(beta_groups: internal)
+        UI.success("Build #{latest.app_version} (#{latest.version}) den internen Gruppen zugeordnet")
+      rescue => e
+        UI.important("Zuordnung nicht möglich: #{e.message}")
+      end
+    end
+  end
+
   desc "Nur Store-Texte (app-store/metadata, 16 Sprachen) nach App Store Connect – kein Build, keine Bilder, keine Einreichung"
   lane :store_metadata do
     project_root = File.expand_path("..", __dir__)
