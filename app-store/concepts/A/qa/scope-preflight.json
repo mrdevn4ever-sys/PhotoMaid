@@ -1,0 +1,18 @@
+{
+  "time": "2026-11-15T23:05:00.400875+01:00",
+  "repo": "mrdevn4ever-sys/photomaid",
+  "branch": "hermes/store-concept-a-en",
+  "base_branch": "claude/galeriq-localization-1-0-1-bgpw9u",
+  "base_sha": "583eb804a81401aa2010996875b35d05afc61539",
+  "protected_remote_refs_before_push": {
+    "refs/heads/claude/galeriq-localization-1-0-1-bgpw9u": "583eb804a81401aa2010996875b35d05afc61539",
+    "refs/heads/main": "a2d2a85e1173128c2101e8583ebbfabe065f3222"
+  },
+  "actions_authorized": true,
+  "app_store_connect_upload_authorized": false,
+  "PR_or_merge_authorized": false,
+  "locales": [
+    "en-US"
+  ],
+  "existing_store_media_protected": true
+}

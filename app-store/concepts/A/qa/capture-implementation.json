@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "scope": "Fresh genuine en-US Concept A capture implementation; no historical screenshots reused",
+  "worktree": "F:/GaleriQ-store-concept-a-en-v1",
+  "branch": "hermes/store-concept-a-en",
+  "baselineCommit": "583eb804a81401aa2010996875b35d05afc61539",
+  "appVersion": "1.0.1",
+  "status": {
+    "implementation": "COMPLETE",
+    "staticSyntaxAndSourceContractChecks": "PASS",
+    "nativeSwiftBuild": "NOT RUN",
+    "nativeXCTest": "NOT RUN",
+    "nativeScreenshotGeneration": "NOT RUN",
+    "nativeVisualQA": "NOT RUN",
+    "nativeBlocker": "Windows host has neither swift nor xcodebuild; native build, tests and visual acceptance belong to the parent macOS workflow. Syntax-parser success is not a Swift type-check or an iOS runtime pass."
+  },
+  "modifiedSourceFiles": [
+    {
+      "path": "PhotoMaid/App/StoreCapture.swift",
+      "sha256": "9a97612772a5e3586a284e66aa3e0a385f2ad3d647a50a6525d5a3eb007cd491",
+      "changes": [
+        "Explicit -store-concept-a opt-in inside the existing QA_FIXTURES && targetEnvironment(simulator) compile guard",
+        "Filename-to-real-PhotoKit-ID source selection for feed, collage and editor; real production routes for the other pages",
+        "Independent Concept A metadata arrangement; the legacy 55-photo path and game-source arrangement bodies remain unchanged",
+        "Twenty-four pretty photos span twelve actual creation-date months, December 2025 through November 2026, two photos per month; series photos share September 18 with two-second spacing",
+        "Read-only app-state observation through the existing navigation file bridge; observation does not navigate, start scans or mutate models/results/sizes/entitlements",
+        "First actual PhotoKit inventory exported to Documents/store-concept-a-library.json before vault removals",
+        "Offscreen ImageRenderer export of the original VaultDialWordmark, including its original CombinationDial and private QTail"
+      ]
+    },
+    {
+      "path": "PhotoMaidUITests/AppStoreCaptureTests.swift",
+      "sha256": "fb854e2ced67352a276a61d5e839e9db90352cbe85444fb8ad79fc98b377d903",
+      "changes": [
+        "Added test07ConceptAStoreScreenshots and genuine-UI capture helpers",
+        "Existing eight legacy test method bodies preserved, verified against the exact baseline after normalizing line endings",
+        "Existing launch, snap and holdSwipe helpers extended with backward-compatible defaults; only test07 adds the concept flag",
+        "Uses the recorder fixture-screenshot operation once after real onboarding, Photos access and Today navigation",
+        "Checks actual PhotoKit inventory, original filenames, unique IDs, image dimensions, fresh ledger and fresh vault; no total-photo-count literal",
+        "Checks complete real duplicate scan, actual pair IDs/hash/measured bytes, and measured large video rows above 100000000 bytes, never estimates",
+        "Checks native bounds for all three game cards and populated months, genuine series comparison, loaded collage, selected Warm filter and completed editor preview",
+        "Captures the real SpringBoard deletion dialog, cancels trash deletion, then independently checks preservation of both PhotoKit originals",
+        "Sets up and imports five chosen pretty photos through the real vault UI; explicitly confirms system deletion in the disposable simulator, checks absent originals in PhotoKit, actual vault resources/thumbnails and absence of the warning",
+        "Captures the optional real own-code vault lock screen; does not claim a cryptographic or biometric security test"
+      ]
+    }
+  ],
+  "createdReport": "app-store/concepts/A/qa/capture-implementation.json",
+  "performedGitActions": ["read-only status", "read-only branch/HEAD lookup", "read-only baseline show", "read-only diff checks"],
+  "notPerformed": ["commit", "push", "branch switch", "GitHub Actions dispatch", "PR", "merge", "App Store Connect upload", "TestFlight upload", "production view or feature changes", "edits to parent-owned workflow/recorder/generator/renderer files"],
+  "integration": {
+    "testSelector": "PhotoMaidUITests/AppStoreCaptureTests/test07ConceptAStoreScreenshots",
+    "captureMode": "concept-a",
+    "workflow": ".github/workflows/app-store-refresh.yml on the isolated branch; parent dispatch only",
+    "build": "Build the app and UI-test targets in Debug with QA_FIXTURES, Swift 6, for the genuine iPhone 17 simulator; do not pass -qa-fixtures, -game-visual-tests or synthetic scan/game flags",
+    "environment": {
+      "STORE_CAPTURE_LOCALE": "en",
+      "STORE_CAPTURE_DIR": "Shared writable capture output directory used by both simulator app and UI-test runner",
+      "requiredDevice": "iPhone 17, portrait, native 1206x2622",
+      "systemLanguageAndRegion": "en-US",
+      "statusBar": "Parent workflow must supply actual simulator 9:41 and full-battery override",
+      "reduceMotion": "Off; test asserts the actual accessibility setting is false before the held tilted drag"
+    },
+    "freshness": "Use a newly emptied disposable Photos library AND fresh app persistence/keychain/output. test07 intentionally fails on old decisions, an already configured vault, non-CA/default/legacy media, duplicate fixture filenames, missing imported originals or an unsuccessful setup export.",
+    "fixtures": {
+      "requiredPhotos": [
+        "CA_01_clutter_blur.jpg",
+        "CA_02_clutter_shake.jpg",
+        "CA_03_clutter_dark.jpg",
+        "CA_10_duplicate_a.jpg",
+        "CA_11_duplicate_b.jpg",
+        "CA_20_series_01.jpg through CA_20_series_06.jpg",
+        "CA_30_pretty_01.jpg through CA_30_pretty_24.jpg"
+      ],
+      "duplicates": "The two duplicate files must be byte-identical but imported as two distinct PhotoKit assets. No other byte-identical pretty pairs are expected; the test requires one actual duplicate group containing precisely those two IDs.",
+      "videos": "At least two actual imported CA_40_large_*.mp4 videos, each genuinely over 100 MB. Their UI measurements are awaited for up to 300 seconds. No fixture byte size is inserted into app state or expected display text.",
+      "totalCount": "Dynamically fetched from PhotoKit. No new test assumes 55, 37 or 38 library items.",
+      "metadataScope": "Only creationDate/isFavorite of the actual CA_ assets and the recorder's exact native screenshot are edited in the disposable simulator. Original image/video resource bytes are never modified by StoreCapture."
+    },
+    "nativeScreenshotRecorder": {
+      "operation": "fixture-screenshot",
+      "name": "concept-a-native-library",
+      "calledAfter": "Actual introduction, full Photos access and launch(today)",
+      "requiredBehavior": "Capture the real simulator screen to stills/concept-a-native-library.png and import that exact file with simctl addmedia; acknowledge status=ok only after both operations finish",
+      "photoKitOriginalFilename": "concept-a-native-library.png",
+      "subtypeCaveat": "simctl addmedia may classify an authentic OS screenshot as an ordinary photo. The actual isScreenshot value is recorded, not falsified or assumed; the test checks the real imported filename and native pixel dimensions."
+    },
+    "navigationObservation": {
+      "request": {"page": "concept-a-evidence", "token": "fresh UUID string"},
+      "response": "navigation/ack-<token>.json with page, token, status=ready and evidence object; does not change the visible route",
+      "uiTestEvidence": "concept-a-evidence.json retains checkpoint observations of the actual inventory, selections, ledger, scanner, measured sizes, months/series and vault state",
+      "initialInventory": "Documents/store-concept-a-library.json contains count, photoCount, videoCount, sourceFiles, assets and arrangedIDs; parent capture.sh copies it to concept-a-library.json"
+    },
+    "logoExport": {
+      "appPNG": "Documents/store-concept-a-wordmark.png",
+      "appMetadata": "Documents/store-concept-a-wordmark.json",
+      "sharedPNG": "screenshots/concept-a-logo.png",
+      "parentCopy": "branding/native-wordmark.png and branding/native-wordmark.json",
+      "renderer": "SwiftUI ImageRenderer(VaultDialWordmark().padding(8)); native component at .large Dynamic Type, dark traits, en_US, left-to-right; renderer scale 8; no drawn replacement Q",
+      "alpha": "Transparent internal native master is intentional. Parent must compose final Store exports as RGB without alpha.",
+      "metadata": "Actual pixel width/height, rendererScale, appVersion and canonical component identifiers"
+    },
+    "heldSwipe": "Existing holdSwipe/recorder helpers are used for an actual left drag of (-150,-20) points on CA_01_clutter_blur.jpg, held 25 seconds. The native FeedMediaTransform rotates from live drag offset, not baked image bytes. After warmup, the test requires recorder completion before heldAt+24 seconds and a genuine feed advance. Recorder timings outside this bound fail rather than accepting a released/non-tilted frame.",
+    "later": "The real production pill lasts four seconds. test07 takes a native XCUIScreenshot before slow full-tree translation queries, asserts it remains present, then persists that untouched capture through snap(). No pill lifetime or UI text is changed.",
+    "vaultRemoval": "Only the five selected CA_30_pretty_01..05 originals are confirmed for deletion after real vault import. This removes them from the main Photos library; iOS Recently Deleted retention still applies. The earlier trash dialog is always cancelled."
+  },
+  "nativeOutputContract": {
+    "screenCount": 13,
+    "additionalNativeLogoCount": 1,
+    "directory": "screenshots",
+    "screenDimensions": [1206, 2622],
+    "files": [
+      {"file": "concept-a-swipe.png", "evidence": "Real held tilted left drag on the imported blur photo; recorder timing and actual feed advance"},
+      {"file": "concept-a-duplicates.png", "evidence": "Completed real exact-duplicate scan, both intentional pair IDs, actual bytes/hash, both thumbnail buttons and size summary within native bounds"},
+      {"file": "concept-a-large-files.png", "evidence": "Native rows for both measured >100 MB videos, exact formatted sizes and no empty state"},
+      {"file": "concept-a-trash.png", "evidence": "Exactly two actual trash decisions, two real preview tiles and the shipped Remove control"},
+      {"file": "concept-a-delete-confirm.png", "evidence": "Actual SpringBoard PhotoKit deletion dialog for two items, then Cancel/Don't Delete and independent PhotoKit preservation check"},
+      {"file": "concept-a-vault.png", "evidence": "Five genuine selected imported photos, loaded vault thumbnails/resources, original IDs absent from main PhotoKit library and still-in-Photos warning absent"},
+      {"file": "concept-a-vault-locked.png", "evidence": "Real app-owned PIN/code screen and complete keypad; optional contract item implemented"},
+      {"file": "concept-a-later.png", "evidence": "Real Again in 2 days / Change pill, actual right-swipe advance and persisted two-day due date"},
+      {"file": "concept-a-months.png", "evidence": "Actual twelve-month grouping, at least two photos per month, tour dismissed and at least six complete visible rows"},
+      {"file": "concept-a-analysis.png", "evidence": "Actual chronological six-photo SeriesListView -> SeriesCompareView, real Keep 5 / Trash 1 in-sheet selection; Cancel preserves the exact two-item trash. This is NOT a Vision blur or semantic-similarity result."},
+      {"file": "concept-a-collage.png", "evidence": "Real pretty photos 01..04, native collage placements and Save enabled only after all real sources load"},
+      {"file": "concept-a-editor.png", "evidence": "Real pretty photo 08, genuinely selected Warm filter, enabled Undo and completed preview wait"},
+      {"file": "concept-a-games.png", "evidence": "All three complete native Pairs / Photo Snake / Foto Blocks cards checked by existing accessibility IDs and native bounds"},
+      {"file": "concept-a-logo.png", "evidence": "Additional canonical native-component export; not a 1206x2622 screen and not a redrawn letter"}
+    ],
+    "runtimeStatusForEveryEntry": "NOT RUN on this Windows host; no PNG capture pass is asserted by this implementation report"
+  },
+  "sourceConflictsNotChanged": [
+    {
+      "source": "PhotoMaid/Resources/Localizable.xcstrings: basket_empty_media#other; PhotoMaid/Features/Cleanup/TrashView.swift:378-390",
+      "finding": "The exact shipped English button is Remove 2 photos and videos, not the shortened brief text Remove 2 photos.",
+      "handling": "The test asserts the shipped catalog value. No label injection or production string change. Parent must not describe the screenshot as containing a different exact caption."
+    },
+    {
+      "source": "PhotoMaid/Features/Cleanup/DuplicatesView.swift:42-48; Localizable.xcstrings: dup_header",
+      "finding": "The shipped header says total but receives the sum of extraCopiesBytes, not the combined byte size of every copy. The screenshot also retains the real selected-copy size/footer caveat.",
+      "handling": "The observer and assertions reflect the actual production view and measured values, without modifying it. Do not turn that header into a claim about full-pair total bytes or guaranteed freed storage."
+    },
+    {
+      "source": "PhotoMaid/Resources/Localizable.xcstrings: blocks_title",
+      "finding": "The shipped English game title is Foto Blocks.",
+      "handling": "Capture the original native card, with no English-title replacement."
+    }
+  ],
+  "verification": {
+    "treeSitterSwiftSyntax": {"status": "PASS", "files": 2, "errors": 0, "qualification": "Grammar parse only, not Apple Swift compilation"},
+    "gitDiffCheck": "PASS for the two allowed Swift files",
+    "legacyUITestBodies": {
+      "status": "PASS",
+      "comparison": "Source bodies compared against the exact baseline with line endings normalized",
+      "count": 8,
+      "methods": ["test00EveryPageInDarkMode", "test01DetailPagesInDarkMode", "test05PrepareMediaForPreviews", "test06CurrentStoreScreenshots", "test40AppPreviewPhotoGames", "test10AppPreviewReview", "test20AppPreviewStudio", "test30AppPreviewVault"],
+      "runtime": "NOT RUN"
+    },
+    "legacyArrangementBodies": {"status": "PASS", "methods": ["arrangeImportedPhotos", "arrangeGameSources"]},
+    "newEnglishCatalogKeys": {"status": "PASS", "count": 37, "check": "Every referenced t()/button() literal in the new Concept A section exists with an English stringUnit"},
+    "newCountAssumptions": {"status": "PASS", "check": "No 55 literal in the new Concept A test/helper section"},
+    "metadataPlan": {"status": "PASS", "check": "Programmatic date-plan check found twelve month groups with two pretty photos each and 24 unique pretty-photo date labels"},
+    "outputNames": {"status": "PASS", "check": "Parsed expected output contract: thirteen unique native screen names plus one logo"},
+    "branchAndHEAD": "Verified unchanged: hermes/store-concept-a-en at the exact baseline commit"
+  },
+  "openNativeCompileAndRuntimeRisks": [
+    "An actual Xcode build is still required to type-check Swift 6 actor isolation, PhotoKit async changes closures, heterogeneous evidence dictionaries and ImageRenderer/UITraitCollection API binding. No Windows syntax parser can certify these.",
+    "Native XCUITest must validate iOS AX aggregation for duplicate member buttons/headers/footers, month row labels, nested series toggles, collage placement labels and StudioMediaPicker date/type labels. Fix capture locators, not production UI, if the runtime differs.",
+    "System deletion copy/button exposure is required to be actual en-US SpringBoard with the requested count. The code deliberately has no generic first-button or Allow fallback. A different system UI must fail for inspection.",
+    "All three game cards, all five vault cells and the selected duplicate group must really fit the iPhone 17. Bounds checks are implemented, but actual image paint, clipping, overlap and final visual quality remain native visual-QA gates.",
+    "The held-swipe capture has a strict real-time completion bound; a slow simctl screenshot after warmup fails rather than accepting a released image. The transient Later capture likewise fails if its unmodified production pill expires before capture.",
+    "ImageRenderer must be visually checked on macOS for the original registered font, mechanical dial, private Q tail, correct dark color and transparent-master behavior. Nonzero PNG dimensions alone do not certify logo pixels.",
+    "Importing the two byte-identical source files must produce two distinct PhotoKit IDs. The native scan and measured >100 MB video results must pass; missing results cannot be replaced with synthetic groups, estimates or edited captions.",
+    "The series capture proves chronological grouping/comparison only. The vault screen proves the exercised UI/import/removal state only; neither is an AI-quality or security/Face ID test."
+  ],
+  "authoritativeSourcesRead": [
+    "CLAUDE.md",
+    "project.yml",
+    "PhotoMaid/App/RootView.swift and existing StoreCapture integration",
+    "PhotoMaid/App/AppModel.swift and PhotoMaid/App/FeedRequest.swift",
+    "PhotoMaid/Features/Feed/FeedView.swift:418-438, 740-747; FeedMediaPage.swift; FeedChrome.swift:167-194, 312-339; FeedViewModel.swift:630-640",
+    "PhotoMaid/Features/Cleanup/DuplicatesView.swift; DuplicateScanner.swift; DuplicatePhotoReader.swift; LargeFilesView.swift; TrashView.swift; SeriesListView.swift",
+    "PhotoMaid/Infrastructure/PhotoLibrary/SizeMeasuring.swift and MediaSizer.swift",
+    "PhotoMaid/Features/Feed/SeriesCompareView.swift; PhotoMaid/Features/Months/MonthsView.swift",
+    "PhotoMaid/Features/Studio/StudioMediaPicker.swift; CollageView.swift; CollageCanvas.swift",
+    "PhotoMaid/Features/Editor/PhotoEditorView.swift and EditorPanels.swift:139-177",
+    "PhotoMaid/Features/Games/PhotoGamesView.swift:70-84; Today/QuickAccessSection.swift",
+    "PhotoMaid/Features/Vault/VaultSetupView.swift; VaultHomeView.swift:69-107, 238-246, 295-323, 407-419; VaultWorkspaceHomeView.swift; VaultLockView.swift; Infrastructure/Vault/VaultStore.swift",
+    "PhotoMaid/Features/Today/VaultDialWordmark.swift:11-109; PhotoMaid/DesignSystem/CombinationDial.swift; Tokens.swift",
+    "PhotoMaid/Resources/Localizable.xcstrings English catalog",
+    "PhotoMaidUITests/UITestSupport.swift, including the interruption monitor that refuses deletion",
+    "Sources/PhotoMaidCore/Duplicates/DuplicateFinder.swift; Cleanup/SizeInventory.swift; Decisions/DecisionModel.swift; Progress/MonthProgress.swift; Later/LaterPlanning.swift; Vault/Vault.swift",
+    "Parent-owned scripts/store/record_controller.py and scripts/store/capture.sh were read for integration only, not edited"
+  ]
+}

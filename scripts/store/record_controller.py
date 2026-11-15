@@ -60,6 +60,20 @@ def main():
                         time.sleep(.1)
                     else:raise RuntimeError('Recording did not become ready within 45 seconds')
                     time.sleep(.5)
+                elif value['operation']=='fixture-screenshot':
+                    # Only this task's disposable library may receive the actual running-app
+                    # screenshot. Never draw a screenshot fixture or substitute fabricated UI.
+                    if name != 'concept-a-native-library':
+                        raise ValueError('Unexpected native fixture name')
+                    target=stills/(name+'.png')
+                    if target.exists():raise ValueError('Native screenshot fixture already exists')
+                    subprocess.run(['xcrun','simctl','io',args.udid,'screenshot','--type=png',str(target)],
+                                   check=True,capture_output=True,timeout=110)
+                    subprocess.run(['xcrun','simctl','addmedia',args.udid,str(target)],
+                                   check=True,capture_output=True,timeout=45)
+                    atomic(stills/(name+'.fixture.json'),{'method':'real simctl screenshot then addmedia',
+                           'file':target.name,'sha256':__import__('hashlib').sha256(target.read_bytes()).hexdigest(),
+                           'bytes':target.stat().st_size,'imported':True})
                 elif value['operation']=='stop':stop()
                 elif value['operation']=='still':
                     # Echter Simulator-Screenshot mitten in einer gehaltenen Geste (z. B. Wisch-Pille „Keep“): der Test

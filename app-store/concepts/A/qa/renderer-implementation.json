@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "implementation_status": "IMPLEMENTED; native production render intentionally NOT_RUN",
+  "owned_files": ["scripts/store/render_concept_a.py", "app-store/concepts/A/design.json", "app-store/concepts/A/qa/renderer-implementation.json"],
+  "dependencies": {"python": ">=3.10", "pillow": ">=10.4 with ImageCms/LittleCMS", "tested_python": "3.11.15", "tested_pillow": "12.3.0", "other_packages": []},
+  "usage": {
+    "environment_windows": {"TEMP": "F:/HermesTemp", "TMP": "F:/HermesTemp", "TMPDIR": "F:/HermesTemp", "PYTHONDONTWRITEBYTECODE": "1"},
+    "self_test": "python scripts/store/render_concept_a.py --self-test",
+    "layout_only": "python scripts/store/render_concept_a.py --check-layout",
+    "provenance_schema_stdout": "python scripts/store/render_concept_a.py --print-provenance-schema",
+    "source_crop_layout_preflight": "python scripts/store/render_concept_a.py --sources <fresh-source-root> --expected-commit <exact-capture-commit-40hex> --expected-workflow-run <run-id-string> --validate-only",
+    "render": "python scripts/store/render_concept_a.py --sources <fresh-source-root> --expected-commit <exact-capture-commit-40hex> --expected-workflow-run <run-id-string> --expected-workflow-url <exact-GitHub-run-url> --output <NEW-external-en-US-directory>",
+    "design_override": "Optional --design <parent-prepared-design.json>. Fonts always resolve to this worktree's bundled app fonts. No other locale is accepted.",
+    "exit_codes": {"0": "Selected scope PASS; --check-layout/self-test do not certify native sources", "2": "BLOCKED / fail closed"},
+    "write_policy": "Checks/preflight create no files. Full render creates only the explicit NEW output directory after source/crop/font/composition pixel gates pass. Existing output directories are rejected, even if empty. No overwriting, automatic deletion, downloads, fallback capture search, Git operations, Actions, browser or publication. A later disk/encoding failure may leave a partial directory without a completion manifest; retain it and select a new output path."
+  },
+  "parent_provenance_interface": {
+    "file": "<fresh-source-root>/capture_provenance.json",
+    "format": "Parent-standard snake_case, not an alternate renderer-owned provenance file. Complete machine-readable JSON Schema is printed by --print-provenance-schema. Additional actual CI/test/device metadata is allowed and retained.",
+    "root_required": ["schema_version", "status", "fresh_capture", "locale", "app_language", "base_commit", "commit", "workflow_run", "workflow_url", "capture_summary", "device", "outputs", "branding"],
+    "fixed_values": {"schema_version": 1, "status": "PASS", "fresh_capture": true, "locale": "en-US", "app_language": "en", "base_commit": "583eb804a81401aa2010996875b35d05afc61539", "device.name": "iPhone 17 Pro"},
+    "identity": "commit must exactly equal the independently supplied full lowercase 40-hex --expected-commit; workflow_run is a positive numeric STRING exactly matching --expected-workflow-run. workflow_url must identify that same GitHub run, and optionally equal --expected-workflow-url. The fresh tested capture commit is independent from base_commit and is NOT forced to equal the base SHA.",
+    "capture_summary": {"result": "Passed", "passedTests": 1, "failedTests": 0, "skippedTests": 0, "additional_actual_fields": "allowed"},
+    "outputs_record_required": {"file": "canonical screenshots/concept-a-*.png path", "sha256": "literal lowercase 64-hex hash of original file bytes", "width": 1206, "height": 2622, "mode": ["RGB", "RGBA"], "opaque": true},
+    "branding_record_required": {"file": "branding/native-wordmark.png", "sha256": "literal lowercase 64-hex hash of original native-component PNG"},
+    "branding_pixels": "Actual transparent RGBA VaultDialWordmark, lightForeground for the light marketing surface, including mechanical-wheel Q and tail. The renderer only trims its native transparent alpha bounds, contains without upscaling and composites original pixels. No wordmark typesetting, Q drawing or reuse of old manually rendered branding.",
+    "required_source_count": 13,
+    "required_source_count_detail": "Twelve canonical screenshot PNGs plus one transparent native wordmark; optional vault-locked capture adds one only when its inset is enabled. Extra captures in the parent's artifact/provenance are never substituted.",
+    "checks": "Every required file must exist inside the artifact root with matching SHA, dimensions, mode and true opacity. Reject path traversal, symlink escapes, duplicate JSON keys/records, blank screenshots, rotated EXIF, wrong locale/run/commit/device, failed/skipped tests or missing source/crop approval. Actual CI identity/test authenticity and semantic source QA remain independently verified by the parent, not inferred from an unsigned JSON claim."
+  },
+  "parent_design_fields_after_source_vision_QA": {
+    "sourceVisualQA": "Set approved=true, provenanceSHA256=hash of the exact capture_provenance.json bytes, commit, workflowRun, reviewer and nonempty notes. Confirm nativeWordmarkComponent=VaultDialWordmark, nativeWordmarkForeground=lightForeground and nativeStatusBar 9:41/fullBattery/dynamicIsland/dark. Initial approval is deliberately false.",
+    "slots_primarySourceSHA256": "For all ten slots, bind primarySourceSHA256 to the actual original primary source hash.",
+    "slots_primaryProtectedRects": "For all ten slots, replace null with at least one [left,top,right,bottom] source-pixel rectangle covering the primary proof that must remain visible. Include all essential claim evidence/buttons. Status-bar source rect [0,0,1206,200] is additionally protected automatically. Insets AND their shadow envelopes must not overlap mapped protected evidence.",
+    "insets": "For each enabled inset, replace crop=null with the actual QA-approved integer original-source rectangle and cropSourceSHA256=null with its exact original source hash. Required inset IDs: large-file-results, native-system-confirmation, again-in-two-days, real-analysis-results. Crop the whole native evidence, never reconstruct controls/text. Inset crop top must be >=200 to exclude a second native status bar/Dynamic Island. No native pixel is upscaled.",
+    "optional_lock": "Optional native locked-vault inset is disabled, never a fallback. Enable only with its fresh capture/provenance entry and approved SHA-bound crop.",
+    "target_boxes": "Parent may reposition/resize a native inset's targetBox after actual source QA if needed to preserve primary evidence and complete dialog/pill content. Shared headline/subtitle/logo containers, 70 px margins and the common full-phone frame/size/position remain unchanged."
+  },
+  "layout_contract": {
+    "surface": "Continuous very soft ice-blue #E0EFF9 -> #EAF4FB smoothstep gradient; black app-ink, left-aligned Sentence case copy. No horizon through the phone, centered SaaS hero, slogan, slide numerals or invented result/award/user-count overlays.",
+    "full_phone": {"source_crop": [0, 0, 1206, 2622], "screen_box": [201, 760, 1005, 2508], "frame_box": [193, 752, 1013, 2516], "native_scale": "2/3 exactly", "rotation": 0},
+    "fonts": "Bundled PMDisplay-Bold (Bricolage) and PMText-Medium/Bold (Figtree), never fallback/system approximations.",
+    "type_rule": "Measure actual glyph bboxes. Try all allowed word-boundary wraps at preferred size, then decrement by 1 px; headline/subtitle <=2 lines, no truncation/copy rewrite/stretch. Headline preferred 112 px/floor 84 px, subtitles preferred 52 px/floor 46 px. If no layout fits at the floor: BLOCKED.",
+    "gesture_overlay": "Only slide 1: large marketing Keep-up #1B6FA8, Trash-left #C4441A, Later-right #6347D0 arrows and labels outside the native phone. Physical gesture semantics are never mirrored.",
+    "future_localization": "Only en-US now. Long-language/RTL layout and shaping rules are documented in design.json localizationRule; no translated assets are generated."
+  },
+  "color_and_pixel_proof": {
+    "native_inputs": "Opaque native RGB/RGBA may carry sRGB or Display P3/other valid RGB ICC. Preserve original file hashes and ICC. Tagged inputs are normalized with Pillow ImageCms/LittleCMS, relative-colorimetric intent, flags=0, to an embedded sRGB profile BEFORE original crop/resampling. Native alpha is preserved. Untagged RGB is explicitly interpreted as sRGB; parent must confirm that assumption, not silently strip a P3 tag upstream.",
+    "per_layer_manifest": "Original source/SHA/mode/ICC, normalized pixel-buffer SHA and transform metadata, exact original crop, target geometry, nominal/effective native scale, one known LANCZOS resample, mask SHA, actual compared/occluded pixel counts and zero-difference masked source/output SHAs. Exact comparison runs before export and again on reopened lossless PNGs.",
+    "comparison_scope": "Compare every visible, fully opaque native interior against the defined ICC-normalized known resample. Only outer 4x-antialiased rounded-mask edges and explicitly counted later inset/shadow occlusions are excluded. Native transparent wordmark pixels are compared against the exact original-alpha composite. At least 50% of the phone's opaque interior remains directly comparable; focal insets compare all their opaque interior. Protected primary evidence may not be occluded.",
+    "truth_limit": "These checks prove rendering fidelity, not the factual meaning/content of a screenshot; parent source vision QA must verify real dupe/large-file/blur results, measured sizes, entire OS dialog/pill, months population, rights/no real people or third-party branding, and no unsupported claims."
+  },
+  "planned_exports_after_parent_gates": {
+    "pngs": "Exactly 01-...png through 10-...png, en-US only, 1206x2622 RGB/no alpha, embedded sRGB ICC; no existing images copied or replaced.",
+    "overview": {"file": "00-overview.jpg", "slots": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "rows": 1, "size": [2630, 564]},
+    "search_preview": {"file": "00-search-preview.jpg", "slots": [1, 2, 3], "rows": 1, "size": [390, 276], "tile_size": [112, 244], "meaning": "Logical-phone search-row scale, no fabricated Store chrome"},
+    "manifest": "render-manifest.json records source, renderer/design/font/output hashes, every native layer/crop/scale/ICC/pixel proof, text lines/sizes/glyph bboxes and common-layout QA. Human final visual acceptance remains NOT_RUN until parent inspects actual exports."
+  },
+  "verification_performed": {
+    "self_test": {"status": "PASS", "checks": 43, "scope": "Memory-only rectangles, actual bundled-font layout, provenance-contract/failure injections, RGB/sRGB PNG+JPEG encoding, ICC normalization/alpha, mask, native pixel corruption and inset/shadow occlusion checks", "native_captures_used": false, "files_written": []},
+    "layout_only": {"status": "PASS", "slots": 10, "headline_sizes": [111, 112, 112, 112, 112, 112, 112, 112, 112, 112], "subtitle_sizes_slots_4_10": [52, 52], "glyph_bboxes_inside_containers": true},
+    "missing_provenance_negative_CLI_test": {"status": "PASS", "actual_renderer_exit": 2, "output_directory_created": false},
+    "provenance_machine_schema": {"status": "PASS", "draft": "2020-12", "parent_format_contract": "Validated against the standardized parent fields, including a fresh commit different from base_commit"},
+    "actual_native_render": "NOT_RUN: fresh parent-CI captures/provenance and parent-approved source rectangles are not available to this implementation task",
+    "actual_Display_P3_capture_integration": "NOT_RUN: the generic tagged-RGB ICC normalization path is exercised with an embedded sRGB test profile; parent must verify actual captured P3 inputs and transform records",
+    "human_final_visual_QA": "NOT_RUN"
+  },
+  "open_integration_questions": [
+    "What are the fresh artifact root, exact tested capture commit, workflow_run and workflow_url? Use the new run's identity, never substitute base_commit.",
+    "After actual source vision QA, what are the SHA-bound focus crops and protected primary evidence rectangles? Defaults deliberately remain null and block production rendering.",
+    "Should the optional native locked-vault inset be enabled, and do any inset targetBoxes need moving to keep both the native primary proof and native inset completely readable?",
+    "Are all non-sRGB native files correctly ICC-tagged, and are any untagged native files genuinely sRGB? Keep original ICC/file hashes intact.",
+    "After the first actual render, does parent full-size + 390 px search-preview QA approve native wordmark, complete phone, real result/dialog/pill focus, and all exact copy?"
+  ]
+}

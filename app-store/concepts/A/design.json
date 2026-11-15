@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "concept": "A",
+  "direction": "Space to Breathe",
+  "locale": "en-US",
+  "canvas": {"width": 1206, "height": 2622, "safeMargin": 70},
+  "background": {"top": "#E0EFF9", "bottom": "#EAF4FB", "interpolation": "smoothstep"},
+  "colors": {"ink": "#1C1916", "subtitle": "#1C1916", "keep": "#1B6FA8", "trash": "#C4441A", "later": "#6347D0"},
+  "tokenReferences": {
+    "file": "PhotoMaid/DesignSystem/Tokens.swift",
+    "sky_tint": "AppColors.tileKeep.light = #E0EFF9",
+    "keep": "AppColors.keep.light = #1B6FA8",
+    "trash": "AppColors.cleanup.light = #C4441A",
+    "later": "AppColors.later.light = #6347D0"
+  },
+  "fonts": {
+    "headline": {"path": "PhotoMaid/Resources/Fonts/PMDisplay-Bold.ttf", "preferredSize": 112, "minimumSize": 84, "step": 1, "maxLines": 2, "lineGap": 12},
+    "subtitle": {"path": "PhotoMaid/Resources/Fonts/PMText-Medium.ttf", "preferredSize": 52, "minimumSize": 46, "step": 1, "maxLines": 2, "lineGap": 8},
+    "gesture": {"path": "PhotoMaid/Resources/Fonts/PMText-Bold.ttf", "preferredSize": 52, "minimumSize": 46, "step": 1, "maxLines": 1, "lineGap": 0}
+  },
+  "layout": {
+    "alignment": "left",
+    "wordmarkBox": [70, 78, 406, 200],
+    "headlineBox": [70, 248, 1136, 532],
+    "subtitleBox": [70, 560, 1136, 708],
+    "device": {"screenBox": [201, 760, 1005, 2508], "screenRadius": 98, "frameWidth": 8, "frameColor": "#242322", "shadowBlur": 20, "shadowOffset": [0, 12], "shadowAlpha": 38},
+    "insetStyle": {"radius": 30, "shadowBlur": 16, "shadowOffset": [0, 10], "shadowAlpha": 48},
+    "gestures": [
+      {"action": "Keep", "direction": "up", "color": "keep", "arrowBox": [70, 564, 154, 638], "labelBox": [70, 656, 368, 724]},
+      {"action": "Trash", "direction": "left", "color": "trash", "arrowBox": [454, 564, 538, 638], "labelBox": [454, 656, 752, 724]},
+      {"action": "Later", "direction": "right", "color": "later", "arrowBox": [838, 564, 922, 638], "labelBox": [838, 656, 1136, 724]}
+    ]
+  },
+  "sourceGate": {
+    "provenanceFile": "capture_provenance.json",
+    "appLanguage": "en",
+    "nativeSize": [1206, 2622],
+    "minimumInsetTop": 200,
+    "wordmarkSource": "branding/native-wordmark.png",
+    "wordmarkComponent": "VaultDialWordmark",
+    "wordmarkForeground": "lightForeground",
+    "requireVisualQA": true,
+    "requireProtectedNativeRects": true,
+    "normalizeNativeICCToSRGB": true
+  },
+  "sourceVisualQA": {
+    "approved": false,
+    "provenanceSHA256": null,
+    "commit": null,
+    "workflowRun": null,
+    "reviewer": null,
+    "notes": null,
+    "nativeWordmarkComponent": "VaultDialWordmark",
+    "nativeWordmarkForeground": "lightForeground",
+    "nativeStatusBar": {"time": "9:41", "fullBattery": true, "dynamicIsland": true, "appearance": "dark"}
+  },
+  "slots": [
+    {"id": 1, "file": "01-swipe.png", "headline": "Swipe the clutter. Keep the memories.", "subtitle": null, "primary": "screenshots/concept-a-swipe.png", "primarySourceSHA256": null, "primaryProtectedRects": null, "gestures": true, "insets": [], "evidence": "Native photo clutter in an actual held swipe; no renderer photo rotation."},
+    {"id": 2, "file": "02-duplicates-large-files.png", "headline": "Find duplicates. Spot large files.", "subtitle": null, "primary": "screenshots/concept-a-duplicates.png", "primarySourceSHA256": null, "primaryProtectedRects": null, "gestures": false, "insets": [
+      {"id": "large-file-results", "source": "screenshots/concept-a-large-files.png", "crop": null, "cropSourceSHA256": null, "targetBox": [80, 1620, 1126, 2190], "enabled": true, "required": true, "evidence": "Include measured sizes and real large-video results; no tool-icon tiles."}
+    ], "evidence": "An actual duplicate pair remains unobscured on the primary phone."},
+    {"id": 3, "file": "03-delete-confirmation.png", "headline": "Nothing deletes without you.", "subtitle": null, "primary": "screenshots/concept-a-trash.png", "primarySourceSHA256": null, "primaryProtectedRects": null, "gestures": false, "insets": [
+      {"id": "native-system-confirmation", "source": "screenshots/concept-a-delete-confirm.png", "crop": null, "cropSourceSHA256": null, "targetBox": [100, 1440, 1106, 2140], "enabled": true, "required": true, "evidence": "The whole genuine iOS confirmation dialog, including its buttons, as one unretouched rectangular crop."}
+    ], "evidence": "Keep the real trash Remove 2 photos action visible on the primary phone."},
+    {"id": 4, "file": "04-vault.png", "headline": "Private photos. Locked away.", "subtitle": "Encrypted vault, protected by your own code and Face ID.", "primary": "screenshots/concept-a-vault.png", "primarySourceSHA256": null, "primaryProtectedRects": null, "gestures": false, "insets": [
+      {"id": "optional-native-lock", "source": "screenshots/concept-a-vault-locked.png", "crop": null, "cropSourceSHA256": null, "targetBox": [120, 1580, 1086, 2190], "enabled": false, "required": false, "evidence": "Optional genuine locked-vault UI crop, only after source QA. Disabled sources are never substituted or required."}
+    ], "evidence": "Real encrypted vault state; no contrary originals-remain warning hidden by a crop."},
+    {"id": 5, "file": "05-later.png", "headline": "Unsure? Choose later.", "subtitle": null, "primary": "screenshots/concept-a-later.png", "primarySourceSHA256": null, "primaryProtectedRects": null, "gestures": false, "insets": [
+      {"id": "again-in-two-days", "source": "screenshots/concept-a-later.png", "crop": null, "cropSourceSHA256": null, "targetBox": [100, 1950, 1106, 2180], "enabled": true, "required": true, "evidence": "The entire native Again in 2 days · Change pill; never reset this text in marketing type."}
+    ], "evidence": "Actual deferred decision and its native reminder pill."},
+    {"id": 6, "file": "06-months.png", "headline": "One month. A fresh start.", "subtitle": null, "primary": "screenshots/concept-a-months.png", "primarySourceSHA256": null, "primaryProtectedRects": null, "gestures": false, "insets": [], "evidence": "A well-populated native month list, not a large empty state."},
+    {"id": 7, "file": "07-analysis.png", "headline": "Blurry or similar? Take a closer look.", "subtitle": null, "primary": "screenshots/concept-a-analysis.png", "primarySourceSHA256": null, "primaryProtectedRects": null, "gestures": false, "insets": [
+      {"id": "real-analysis-results", "source": "screenshots/concept-a-analysis.png", "crop": null, "cropSourceSHA256": null, "targetBox": [80, 1490, 1126, 2160], "enabled": true, "required": true, "evidence": "Actual series or blur results with real photos, not empty tiles."}
+    ], "evidence": "No additional slogan, including Find. Review. Decide."},
+    {"id": 8, "file": "08-collage.png", "headline": "Make a collage. Keep the moment.", "subtitle": null, "primary": "screenshots/concept-a-collage.png", "primarySourceSHA256": null, "primaryProtectedRects": null, "gestures": false, "insets": [], "evidence": "A real collage of fixture photos."},
+    {"id": 9, "file": "09-editor.png", "headline": "A new look. Your own photo.", "subtitle": null, "primary": "screenshots/concept-a-editor.png", "primarySourceSHA256": null, "primaryProtectedRects": null, "gestures": false, "insets": [], "evidence": "A real photo in the native editor."},
+    {"id": 10, "file": "10-games.png", "headline": "A small break. Your photos play.", "subtitle": "Free with ads. GaleriQ Pro: one purchase, no subscription.", "primary": "screenshots/concept-a-games.png", "primarySourceSHA256": null, "primaryProtectedRects": null, "gestures": false, "insets": [], "evidence": "Real photo games; the full business-model subtitle stays readable at no less than 46 px."}
+  ],
+  "previews": {"overview": {"file": "00-overview.jpg", "slotIds": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "columns": 10, "tileWidth": 241, "gap": 20, "margin": 20}, "search": {"file": "00-search-preview.jpg", "slotIds": [1, 2, 3], "columns": 3, "tileWidth": 112, "gap": 11, "margin": 16, "description": "390 px-wide phone-search row, logical pixels; first three screenshots, no invented App Store chrome."}},
+  "localizationRule": {"renderNow": ["en-US"], "futureOnly": "For an approved future locale, retain the shared 70 px safe margins and full-device geometry. Rewrap at word boundaries, then decrement font size by 1 px down to the declared floor; at most two headline/subtitle lines. If it still fails, stop for an approved layout revision, never rewrite, truncate, condense or stretch copy. RTL requires a shaping-capable engine (RAQM), start-aligned marketing text, and separate source/crop QA; native pixels, the LTR native wordmark, and physical Keep-up/Trash-left/Later-right gesture semantics must never be mirrored. No translations or other locale exports are implemented here."}
+}

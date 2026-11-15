@@ -2,6 +2,7 @@
 import Photos
 import PhotoMaidCore
 import SwiftUI
+import UIKit
 
 /// Navigation shortcuts for the disposable App Store capture simulator only.
 /// Uses the real PhotoKit library, persistence, analysis and editors. No fake results or purchases.
@@ -10,6 +11,11 @@ enum StoreCapture {
     static var enabled: Bool { ProcessInfo.processInfo.arguments.contains("-store-capture") }
     private static var openedInitialPage = false
     private static var navigationTask: Task<Void, Never>?
+    private static var conceptAEnabled: Bool { enabled && ProcessInfo.processInfo.arguments.contains("-store-concept-a") }
+    private static var conceptAArrangedIDs: Set<String> = []
+    private static var conceptAErrors: [String] = []
+    private static var conceptASelection: [String: Any] = [:]
+    private static var conceptALogo: [String: Any] = [:]
 
     static func openRequestedPage(in app: AppModel) async {
         guard enabled, !openedInitialPage else { return }
@@ -42,6 +48,15 @@ enum StoreCapture {
                       let page = command["page"], let token = command["token"],
                       UUID(uuidString: token) != nil, token != lastToken else { continue }
                 lastToken = token
+                // Read-only observation while XCTest operates the visible page; never navigate away from a scan.
+                if conceptAEnabled, page == "concept-a-evidence" {
+                    let result: [String: Any] = ["page": page, "token": token, "status": "ready",
+                                                 "evidence": await conceptAEvidence(in: app)]
+                    if let data = try? JSONSerialization.data(withJSONObject: result, options: [.sortedKeys]) {
+                        try? data.write(to: directory.appendingPathComponent("ack-" + token + ".json"), options: .atomic)
+                    }
+                    continue
+                }
                 app.feed = nil
                 app.fullScreen = nil
                 if VaultStore.shared.isPresented { VaultStore.shared.lock() }
@@ -78,7 +93,16 @@ enum StoreCapture {
             if PHPhotoLibrary.authorizationStatus(for: .readWrite) == .notDetermined { await app.library.requestAccess() }
             await arrangeGameSources()
         }
-        await arrangeImportedPhotos()
+        if conceptAEnabled {
+            // Concept A is not the legacy 55-photo archive. Never run its arrangement here.
+            await arrangeConceptAImportedPhotos()
+            if conceptALogo.isEmpty {
+                do { try exportConceptAWordmark() }
+                catch { conceptAErrors.append("Native wordmark export: \(error)") }
+            }
+        } else {
+            await arrangeImportedPhotos()
+        }
         try? await Task.sleep(for: .milliseconds(700)) // let the real PhotoKit change notification settle
         app.reloadLibraryIfNeeded(force: true)
         // PhotoKit loads asynchronously. Routes must receive real identifiers after that read completes.
@@ -87,6 +111,11 @@ enum StoreCapture {
         }
         let photos = app.visibleMedia.filter { !$0.isVideo }
         let ids = photos.map(\.id)
+        if page.hasPrefix("concept-a-") {
+            guard conceptAEnabled else { return }
+            await openConceptAPage(page, in: app)
+            return
+        }
         var tab: AppTab = .cleanup
         let route: Route?
         switch page {
@@ -178,6 +207,250 @@ enum StoreCapture {
             withAnimation { app.navigate(route, in: tab) }
             try? await Task.sleep(for: .milliseconds(600))
         }
+    }
+
+    /// Public original filename; never a synthetic ID or a private resource property.
+    private static func originalFilename(_ asset: PHAsset) -> String? {
+        let resources = PHAssetResource.assetResources(for: asset)
+        return (resources.first { $0.type == .photo || $0.type == .video } ?? resources.first)?.originalFilename
+    }
+
+    // MARK: Fresh Concept A — navigation/source selection only; all decisions/imports/scans use the UI.
+    private static func openConceptAPage(_ page: String, in app: AppModel) async {
+        conceptASelection = ["page": page, "assetIDs": [String](), "sourceFiles": [String]()]
+        var byFilename: [String: [String]] = [:]
+        let all = PHAsset.fetchAssets(with: nil)
+        for index in 0..<all.count {
+            let asset = all.object(at: index)
+            if let filename = originalFilename(asset) { byFilename[filename, default: []].append(asset.localIdentifier) }
+        }
+        func select(_ filenames: [String]) -> [MediaAsset]? {
+            var selected: [MediaAsset] = []
+            for filename in filenames {
+                guard let matches = byFilename[filename], matches.count == 1,
+                      let asset = app.visibleMedia.first(where: { $0.id == matches[0] }) else {
+                    conceptAErrors.append("\(page): expected one visible imported asset named \(filename)")
+                    return nil
+                }
+                selected.append(asset)
+            }
+            conceptASelection = ["page": page, "assetIDs": selected.map(\.id), "sourceFiles": filenames,
+                                 "accessibilityValues": selected.map(MediaInfoLine.describe)]
+            return selected
+        }
+        var tab: AppTab = .cleanup
+        let route: Route?
+        switch page {
+        case "concept-a-library":
+            app.updateSettings { $0.libraryFilter = .all }; app.selectedTab = .library; return
+        case "concept-a-feed":
+            guard let selected = select(["CA_01_clutter_blur.jpg", "concept-a-native-library.png",
+                                         "CA_30_pretty_06.jpg", "CA_30_pretty_07.jpg", "CA_30_pretty_08.jpg"]) else { return }
+            app.open(FeedRequest(.items(selected.map(\.reference), titleKey: "feed_title_all"))); return
+        case "concept-a-editor":
+            guard let selected = select(["CA_30_pretty_08.jpg"]), let asset = selected.first else { return }
+            app.fullScreen = .editor(assetID: asset.id); return
+        case "concept-a-collage":
+            guard let selected = select((1...4).map { String(format: "CA_30_pretty_%02d.jpg", $0) }) else { return }
+            StudioHandoff.shared.ids = selected.map(\.id); tab = .studio; route = .collage(draftID: nil)
+        case "concept-a-vault": VaultStore.shared.present(); return
+        case "concept-a-trash": route = .trash
+        case "concept-a-duplicates": route = .duplicates
+        case "concept-a-large-files": route = .largeFiles
+        case "concept-a-months": route = .months
+        case "concept-a-analysis": route = .series
+        default: conceptAErrors.append("Unknown Concept A page: \(page)"); return
+        }
+        app.selectedTab = tab
+        if let route {
+            try? await Task.sleep(for: .milliseconds(600))
+            withAnimation { app.navigate(route, in: tab) }
+            try? await Task.sleep(for: .milliseconds(600))
+        }
+    }
+
+    /// Public PhotoKit metadata edits only, restricted to CA assets in the disposable simulator.
+    /// New arrivals (the recorder's real OS screenshot) are arranged independently on the next navigation.
+    private static func arrangeConceptAImportedPhotos() async {
+        guard PHPhotoLibrary.authorizationStatus(for: .readWrite) == .authorized else {
+            conceptAErrors.append("Concept A requires actual full PhotoKit access"); return
+        }
+        let all = PHAsset.fetchAssets(with: nil)
+        var sources: [(id: String, filename: String)] = []
+        for index in 0..<all.count {
+            let asset = all.object(at: index)
+            guard let filename = originalFilename(asset),
+                  filename.hasPrefix("CA_") || filename == "concept-a-native-library.png" else { continue }
+            sources.append((asset.localIdentifier, filename))
+        }
+        sources.sort { $0.filename < $1.filename }
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+        var edits: [(String, Date, Bool)] = []
+        for (rank, source) in sources.enumerated() where !conceptAArrangedIDs.contains(source.id) {
+            var bucket = rank % 12, day = 1 + rank % 24, second = 60 * rank
+            if source.filename.hasPrefix("CA_20_series_"),
+               let number = Int(source.filename.dropFirst("CA_20_series_".count).prefix(2)) {
+                // Genuine SeriesListView grouping by capture time; not an invented Vision/similarity result.
+                bucket = 2; day = 18; second = 2 * (number - 1)
+            } else if source.filename.hasPrefix("CA_30_pretty_"),
+                      let number = Int(source.filename.dropFirst("CA_30_pretty_".count).prefix(2)) {
+                bucket = (number - 1) % 12; day = 10 + (number - 1) / 12; second = 0
+            } else if source.filename == "concept-a-native-library.png" {
+                bucket = 0; day = 13; second = 0
+            }
+            guard let anchor = calendar.date(from: DateComponents(year: 2026, month: 11, day: day, hour: 12)),
+                  let date = calendar.date(byAdding: .month, value: -bucket, to: anchor),
+                  let taken = calendar.date(byAdding: .second, value: second, to: date) else { continue }
+            edits.append((source.id, taken, source.filename == "CA_30_pretty_08.jpg"))
+        }
+        guard !edits.isEmpty else { return }
+        let changes = edits // Only Sendable values cross PhotoKit's changes block.
+        do {
+            try await PHPhotoLibrary.shared().performChanges { @Sendable in
+                for (id, date, favorite) in changes {
+                    guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [id], options: nil).firstObject else { continue }
+                    let edit = PHAssetChangeRequest(for: asset)
+                    edit.creationDate = date; edit.isFavorite = favorite
+                }
+            }
+            conceptAArrangedIDs.formUnion(changes.map(\.0))
+        } catch {
+            conceptAErrors.append("Concept A PhotoKit arrangement: \(error)")
+            Diagnostics.error(.app, "store-concept-a-library-arrangement", error)
+        }
+    }
+
+    /// Offscreen export of the ORIGINAL wordmark, including CombinationDial and its original private QTail.
+    /// No overlay, extra window, retouching, replacement letter or visible debug control.
+    private static func exportConceptAWordmark() throws {
+        guard conceptAEnabled else { return }
+        let content = VaultDialWordmark().padding(8)
+            .environment(\.dynamicTypeSize, .large).environment(\.colorScheme, .light)
+            .environment(\.locale, Locale(identifier: "en_US")).environment(\.layoutDirection, .leftToRight)
+        let renderer = ImageRenderer(content: content)
+        renderer.scale = 8
+        renderer.isOpaque = false // Internal native master only. Final Store exports must be RGB.
+        var image: UIImage?
+        UITraitCollection(userInterfaceStyle: .light).performAsCurrent { image = renderer.uiImage }
+        guard let image, let cg = image.cgImage, let data = image.pngData() else { throw CocoaError(.fileWriteUnknown) }
+        let documents = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask,
+                                                    appropriateFor: nil, create: true)
+        try data.write(to: documents.appendingPathComponent("store-concept-a-wordmark.png"), options: .atomic)
+        conceptALogo = ["exported": true, "component": "VaultDialWordmark", "dialComponent": "CombinationDial",
+                        "source": "PhotoMaid/Features/Today/VaultDialWordmark.swift", "width": cg.width, "height": cg.height,
+                        "rendererScale": renderer.scale, "transparentInternalMaster": true, "appVersion": AppConfig.appVersion,
+                        "foreground": "lightForeground", "colorScheme": "light"]
+        try JSONSerialization.data(withJSONObject: conceptALogo, options: [.prettyPrinted, .sortedKeys])
+            .write(to: documents.appendingPathComponent("store-concept-a-wordmark.json"), options: .atomic)
+        let arguments = ProcessInfo.processInfo.arguments
+        if let index = arguments.firstIndex(of: "-store-navigation"), arguments.indices.contains(index + 1) {
+            let root = URL(fileURLWithPath: arguments[index + 1], isDirectory: true).deletingLastPathComponent()
+            let screenshots = root.appendingPathComponent("screenshots", isDirectory: true)
+            try FileManager.default.createDirectory(at: screenshots, withIntermediateDirectories: true)
+            try data.write(to: screenshots.appendingPathComponent("concept-a-logo.png"), options: .atomic)
+        }
+    }
+
+    /// Read-only evidence: never starts work or writes models, measurements, scan results or entitlements.
+    private static func conceptAEvidence(in app: AppModel) async -> [String: Any] {
+        let all = PHAsset.fetchAssets(with: nil)
+        var inventory: [[String: Any]] = []
+        for index in 0..<all.count {
+            let asset = all.object(at: index)
+            var row: [String: Any] = ["id": asset.localIdentifier, "filename": originalFilename(asset) ?? "",
+                                      "isVideo": asset.mediaType == .video,
+                                      "isScreenshot": asset.mediaSubtypes.contains(.photoScreenshot),
+                                      "pixelWidth": asset.pixelWidth, "pixelHeight": asset.pixelHeight,
+                                      "duration": asset.duration, "favorite": asset.isFavorite]
+            if let date = asset.creationDate { row["creationDate"] = date.timeIntervalSince1970 }
+            if let media = app.asset(asset.localIdentifier) { row["accessibilityValue"] = MediaInfoLine.describe(media) }
+            inventory.append(row)
+        }
+        inventory.sort { ($0["filename"] as? String ?? "") < ($1["filename"] as? String ?? "") }
+        // Retain the first actual inventory (after the recorder import), before intentional vault removals.
+        if let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let file = documents.appendingPathComponent("store-concept-a-library.json")
+            if !FileManager.default.fileExists(atPath: file.path) {
+                let library: [String: Any] = ["count": inventory.count,
+                    "photoCount": inventory.filter { $0["isVideo"] as? Bool == false }.count,
+                    "videoCount": inventory.filter { $0["isVideo"] as? Bool == true }.count,
+                    "sourceFiles": inventory.compactMap { $0["filename"] as? String }, "assets": inventory,
+                    "arrangedIDs": conceptAArrangedIDs.sorted(), "source": "actual PhotoKit fetch; original resources unchanged"]
+                do {
+                    try JSONSerialization.data(withJSONObject: library, options: [.prettyPrinted, .sortedKeys])
+                        .write(to: file, options: .atomic)
+                } catch { conceptAErrors.append("Concept A native library inventory export: \(error)") }
+            }
+        }
+        let records = await app.sizer.records(for: app.cleanupMedia) // Cache read, NOT a measurement.
+        let measurements: [[String: Any]] = records.keys.sorted().compactMap { id in
+            guard let record = records[id] else { return nil }
+            var row: [String: Any] = ["id": id, "state": record.state.rawValue]
+            if let bytes = record.bytes { row["bytes"] = bytes; row["sizeText"] = SizeText.bytes(bytes) }
+            return row
+        }
+        let scanner = DuplicateScanner.shared
+        var duplicates: [String: Any] = ["running": scanner.isRunning, "failed": scanner.failed,
+                                          "hasResult": scanner.result != nil]
+        if let result = scanner.result {
+            let groups: [[String: Any]] = result.groups.map { group in
+                ["assetIDs": group.members.map(\.localIdentifier), "sha256": group.sha256,
+                 "sizeEach": group.sizeEach, "extraCopiesBytes": group.extraCopiesBytes]
+            }
+            let extra = result.groups.reduce(Int64(0)) { $0 + $1.extraCopiesBytes }
+            let selected = result.groups.reduce(Int64(0)) { $0 + $1.selectedBytes(scanner.selection[$1.id] ?? []) }
+            duplicates["complete"] = result.isComplete
+            duplicates["groups"] = groups
+            duplicates["header"] = L("dup_header", result.groups.reduce(0) { $0 + $1.members.count }, SizeText.bytes(extra))
+            duplicates["footer"] = L("dup_footer", SizeText.bytes(selected))
+            duplicates["unchecked"] = result.uncheckedCount
+        }
+        let pending = Set(app.pending.map(\.localIdentifier))
+        var largeRows: [[String: Any]] = []
+        for asset in app.cleanupMedia {
+            guard pending.contains(asset.id), let record = SizeMeasuring.shared.records[asset.id],
+                  record.isCurrent(modified: asset.modificationDate), record.state == .known,
+                  let bytes = record.bytes, bytes >= Int64(app.settings.largeFileThresholdMB) * 1_000_000 else { continue }
+            largeRows.append(["id": asset.id, "isVideo": asset.isVideo, "bytes": bytes,
+                              "sizeText": SizeText.bytes(bytes), "accessibilityValue": MediaInfoLine.describe(asset)])
+        }
+        largeRows.sort { ($0["bytes"] as? Int64 ?? 0) > ($1["bytes"] as? Int64 ?? 0) }
+        let monthProgress = ProgressRules.months(app.cleanupMedia, date: \.creationDate,
+                                               record: { app.read.records[$0.reference] }, timeZone: .autoupdatingCurrent)
+        let months: [[String: Any]] = monthProgress.map {
+            ["month": $0.month.description, "title": MonthText.title($0.month),
+             "total": $0.total, "reviewed": $0.reviewed, "later": $0.later]
+        }
+        let seriesCandidates = app.cleanupMedia.filter { !$0.isVideo && pending.contains($0.id) }
+        let series = PhotoSeries.groups(seriesCandidates.map {
+            PhotoSeries.Member(id: $0.id, group: $0.kind == .screenshot ? "screenshots" : "camera", takenAt: $0.creationDate)
+        })
+        let decisions: [[String: Any]] = app.read.records.values.map { record in
+            var row: [String: Any] = ["id": record.item.localIdentifier, "disposition": record.disposition.rawValue,
+                                      "revision": record.revision]
+            if let day = record.dueDay { row["dueDay"] = day.description }
+            return row
+        }
+        let vault = VaultStore.shared
+        let vaultRows: [[String: Any]] = vault.index.items.map { item in
+            ["id": item.id, "originalID": item.originalID ?? "", "sourceID": item.sourceID ?? "",
+             "sourceFiles": item.resources.map(\.originalFilename),
+             "measuredBytes": item.resources.reduce(Int64(0)) { $0 + $1.size },
+             "thumbnailReady": vault.thumbnails[item.id] != nil]
+        }
+        return ["locale": Locale.current.identifier, "appVersion": AppConfig.appVersion,
+                "fixtureMode": app.isQAFixtureMode, "readReady": app.readReady, "libraryLoaded": app.snapshot.loaded,
+                "reduceMotion": UIAccessibility.isReduceMotionEnabled, "setupErrors": conceptAErrors,
+                "inventory": inventory, "selection": conceptASelection, "measurements": measurements,
+                "duplicates": duplicates, "largeFiles": largeRows, "largeMeasuring": SizeMeasuring.shared.running,
+                "largeThresholdMB": app.settings.largeFileThresholdMB, "months": months, "series": series,
+                "monthsTourSeen": app.settings.monthsTourSeen, "decisions": decisions,
+                "basketIDs": app.read.basket.map(\.item.localIdentifier), "eventCount": app.read.events.count,
+                "defaultLaterText": LaterText.inInterval(app.settings.laterInterval),
+                "twoDaysDueDay": LaterInterval.defaultQuick.dueDay(from: app.today).description, "logo": conceptALogo,
+                "vault": ["setUp": vault.isSetUp, "items": vaultRows, "stillInPhotos": vault.stillInLibraryCount,
+                           "unlocked": vault.phase == .unlocked, "importing": vault.progress != nil]]
     }
 
     /// A bounded PhotoKit fixture for source-selection tests, restricted to explicitly labelled synthetic QA assets.
