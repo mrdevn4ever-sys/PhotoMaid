@@ -10,7 +10,7 @@ import hashlib
 import io
 import json
 from pathlib import Path
-from PIL import Image, ImageCms
+from PIL import Image, ImageChops, ImageCms, ImageDraw, ImageStat
 
 COPY = [
     'Swipe the clutter. Keep the memories.', 'Find duplicates. Spot large files.',
@@ -51,8 +51,50 @@ def profile(path):
                 'icc_description': description, 'icc_sha256': hashlib.sha256(raw).hexdigest()}
 
 
+def verify_pixels(final, sources, layer, later_layers, inset_style):
+    """Independent equality check: actual original pixels, not manifest assertions.
+
+    Conservatively omit rounded edges and later inset/shadow rectangles. Wordmark
+    glyphs are compared where original alpha is fully opaque; never redraw text.
+    """
+    with Image.open(sources / layer['originalSource']) as original:
+        original.load()
+        alpha = original.getchannel('A') if original.mode == 'RGBA' else None
+        rgb = original.convert('RGB')
+        raw_icc = original.info.get('icc_profile')
+        if raw_icc:
+            rgb = ImageCms.profileToProfile(rgb, ImageCms.ImageCmsProfile(io.BytesIO(raw_icc)),
+                                           ImageCms.createProfile('sRGB'), outputMode='RGB',
+                                           renderingIntent=ImageCms.Intent.RELATIVE_COLORIMETRIC, flags=0)
+        box = layer['targetGeometry']
+        size = (box[2] - box[0], box[3] - box[1])
+        expected = rgb.crop(layer['crop']).resize(size, Image.Resampling.LANCZOS)
+        mask = Image.new('L', size, 0)
+        if layer['id'] == 'native-wordmark':
+            need(alpha is not None, 'Original wordmark lost its actual alpha')
+            mask = alpha.crop(layer['crop']).resize(size, Image.Resampling.LANCZOS).point(lambda value: 255 if value == 255 else 0)
+        else:
+            # Strictly internal pixels only; no reliance on renderer's round-mask code.
+            radius = 98 if layer['id'] == 'full-phone' else inset_style['radius']
+            ImageDraw.Draw(mask).rectangle((radius, radius, size[0] - radius - 1, size[1] - radius - 1), fill=255)
+        for above in later_layers:
+            obstacle = above['targetGeometry']
+            margin = 4 * inset_style['shadowBlur'] + max(map(abs, inset_style['shadowOffset']))
+            ImageDraw.Draw(mask).rectangle((obstacle[0] - box[0] - margin, obstacle[1] - box[1] - margin,
+                                           obstacle[2] - box[0] + margin, obstacle[3] - box[1] + margin), fill=0)
+        pixels = mask.histogram()[255]
+        need(pixels > 100, 'Insufficient independently comparable native interior')
+        difference = ImageChops.difference(final.crop(box), expected)
+        difference = Image.composite(difference, Image.new('RGB', size), mask)
+        need(difference.getbbox() is None, f"Independent native pixel mismatch: {layer['id']}")
+        return pixels
+
+
 def audit(render, sources, expected_commit, expected_run):
     manifest = load(render / 'render-manifest.json')
+    design_path = Path(manifest['design']['path'])
+    need(digest(design_path) == manifest['design']['sha256'], 'Actual reviewed design file drift')
+    design = load(design_path)
     provenance = load(sources / 'capture_provenance.json')
     need(provenance['status'] == 'PASS' and provenance['fresh_capture'] is True, 'Fresh native capture PASS is required')
     need(provenance['commit'] == expected_commit and provenance['workflow_run'] == expected_run, 'Independently pinned native run/SHA mismatch')
@@ -95,30 +137,46 @@ def audit(render, sources, expected_commit, expected_run):
         need(len(phones) == 1 and phones[0]['crop'] == [0, 0, 1206, 2622], 'Missing complete native phone')
         phone_boxes.append(phones[0]['targetGeometry'])
         need(any(layer['id'] == 'native-wordmark' and layer['originalSource'] == 'branding/native-wordmark.png' for layer in layers), 'Missing original native wordmark pixels')
-        for layer in layers:
+        independent_pixels = 0
+        with Image.open(path) as reopened:
+            reopened.load()
+            final = reopened.copy()
+        for layer_index, layer in enumerate(layers):
             need(layer['sourceSHA256'] == native[layer['originalSource']]['sha256'], 'Layer uses unbound source hash')
             need(max(layer['effectiveNativeScaleXY']) <= 1.0, 'Native pixel upscaling')
             proof = layer['pixelQA']
             need(proof['status'] == 'PASS' and proof['comparedPixels'] > 0 and proof['maxChannelDifference'] == 0
                  and proof['maskedKnownResampleSHA256'] == proof['maskedOutputSHA256'], 'Native pixel equality proof failed')
+            independent_pixels += verify_pixels(final, sources, layer, layers[layer_index + 1:], design['layout']['insetStyle'])
         layout = row['layoutQA']
         need(layout['status'] == 'PASS' and layout['protectedPrimaryEvidenceUnobscured'] is True
              and layout['allTextBBoxesInsideContainers'] is True and layout['nativeUpscaling'] is False
              and layout['secondDynamicIsland'] is False, 'Per-file composition gate failed')
-        checked.append({'slot': index, 'file': row['file'], 'sha256': row['sha256'], **meta, 'native_layers_verified': len(layers)})
+        checked.append({'slot': index, 'file': row['file'], 'sha256': row['sha256'], **meta,
+                        'native_layers_verified': len(layers), 'independently_compared_native_pixels': independent_pixels})
         hashes.append(row['sha256'])
     need(len(set(hashes)) == 10 and all(box == phone_boxes[0] for box in phone_boxes), 'Duplicate final image or inconsistent complete-phone geometry')
     need(manifest['layoutQA']['overviewRows'] == 1 and manifest['layoutQA']['overviewSlots'] == list(range(1, 11)), 'Overview must contain all ten in one row')
     need(manifest['layoutQA']['searchSlots'] == [1, 2, 3], 'Search-preview order mismatch')
+    need({row['file'] for row in manifest['previews']} == {'00-overview.jpg', '00-search-preview.jpg'}, 'Exactly both named previews required')
     for row in manifest['previews']:
         path = render / row['file']
         need(digest(path) == row['sha256'], 'Preview hash drift')
         meta = profile(path)
         need(meta['format'] == 'JPEG' and row['rows'] == 1, 'Preview must be one actual horizontal JPEG row')
+        expected_ids = list(range(1, 11)) if row['kind'] == 'overview' else [1, 2, 3]
+        need(row['slotIds'] == expected_ids and [cell['slot'] for cell in row['cells']] == expected_ids, 'Preview membership/order drift')
+        with Image.open(path) as preview:
+            for cell in row['cells']:
+                box = cell['targetGeometry']
+                with Image.open(render / rows[cell['slot'] - 1]['file']) as image:
+                    reference = image.resize((box[2] - box[0], box[3] - box[1]), Image.Resampling.LANCZOS)
+                mean_difference = ImageStat.Stat(ImageChops.difference(preview.crop(box), reference)).mean
+                need(max(mean_difference) < 4, 'Preview cells do not match actual numbered exports (JPEG tolerance)')
     return {'schema_version': 1, 'technical_export_status': 'PASS', 'workflow_run': expected_run,
             'commit': expected_commit, 'locale': 'en-US', 'png_count': len(checked), 'images': checked,
             'preview_count': len(manifest['previews']), 'uniform_phone_box': phone_boxes[0],
-            'native_pixels': 'PASS against ICC-normalized known resamples',
+            'native_pixels': 'PASS, independently compared to ICC-normalized original native files; outer alpha edges excluded',
             'human_final_visual_acceptance': 'NOT RUN by this automatic auditor',
             'security_runtime_conversion_or_store_upload_acceptance': 'NOT RUN'}
 

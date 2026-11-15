@@ -50,8 +50,17 @@ enum StoreCapture {
                 lastToken = token
                 // Read-only observation while XCTest operates the visible page; never navigate away from a scan.
                 if conceptAEnabled, page == "concept-a-evidence" {
-                    let result: [String: Any] = ["page": page, "token": token, "status": "ready",
-                                                 "evidence": await conceptAEvidence(in: app)]
+                    let evidence = await conceptAEvidence(in: app)
+                    var result: [String: Any] = ["page": page, "token": token, "status": "ready", "evidence": evidence]
+                    // JSONSerialization can raise an Objective-C exception for a Swift
+                    // struct in an Any graph. Reject that wire shape before encoding.
+                    if !JSONSerialization.isValidJSONObject(result) {
+                        let invalid = evidence.keys.filter {
+                            !JSONSerialization.isValidJSONObject(["value": evidence[$0]!])
+                        }.sorted()
+                        result = ["page": page, "token": token, "status": "error",
+                                  "error": "Non-JSON read-only evidence fields: " + invalid.joined(separator: ", ")]
+                    }
                     if let data = try? JSONSerialization.data(withJSONObject: result, options: [.sortedKeys]) {
                         try? data.write(to: directory.appendingPathComponent("ack-" + token + ".json"), options: .atomic)
                     }
@@ -425,7 +434,7 @@ enum StoreCapture {
         let seriesCandidates = app.cleanupMedia.filter { !$0.isVideo && pending.contains($0.id) }
         let series = PhotoSeries.groups(seriesCandidates.map {
             PhotoSeries.Member(id: $0.id, group: $0.kind == .screenshot ? "screenshots" : "camera", takenAt: $0.creationDate)
-        })
+        }).map { $0.map(\.id) } // Observe actual group IDs as JSON primitives, never serialize Member structs.
         let decisions: [[String: Any]] = app.read.records.values.map { record in
             var row: [String: Any] = ["id": record.item.localIdentifier, "disposition": record.disposition.rawValue,
                                       "revision": record.revision]

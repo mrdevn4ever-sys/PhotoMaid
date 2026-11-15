@@ -592,10 +592,12 @@ final class AppStoreCaptureTests: XCTestCase {
         let ack = navigation.appendingPathComponent("ack-" + token + ".json")
         let deadline = Date().addingTimeInterval(30)
         while !FileManager.default.fileExists(atPath: ack.path), Date() < deadline { pause(0.1) }
+        XCTAssertTrue(FileManager.default.fileExists(atPath: ack.path),
+                      "Read-only native evidence acknowledgement timed out at \(checkpoint); no source state is assumed")
         let result = try XCTUnwrap(try JSONSerialization.jsonObject(with: Data(contentsOf: ack)) as? [String: Any])
         XCTAssertEqual(result["page"] as? String, "concept-a-evidence")
         XCTAssertEqual(result["token"] as? String, token)
-        XCTAssertEqual(result["status"] as? String, "ready")
+        XCTAssertEqual(result["status"] as? String, "ready", result["error"] as? String ?? "Native observation must succeed")
         let evidence = try XCTUnwrap(result["evidence"] as? [String: Any])
         XCTAssertEqual(evidence["setupErrors"] as? [String], [], "Native capture setup must not silently fall back")
         XCTAssertEqual(evidence["fixtureMode"] as? Bool, false, "Never use the synthetic in-memory QA library")

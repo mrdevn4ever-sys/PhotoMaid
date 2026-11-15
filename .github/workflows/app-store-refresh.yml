@@ -67,6 +67,11 @@ jobs:
         run: |
           set -euo pipefail
           python3 scripts/android_strings_to_xcstrings.py --check
+          mkdir -p "$RUNNER_TEMP/concept-a-wire"
+          cp scripts/store/verify_concept_a_wire.swift "$RUNNER_TEMP/concept-a-wire/main.swift"
+          swiftc Sources/PhotoMaidCore/Organize/PhotoSeries.swift "$RUNNER_TEMP/concept-a-wire/main.swift" \
+            -o "$RUNNER_TEMP/concept-a-wire/verify-json-wire"
+          "$RUNNER_TEMP/concept-a-wire/verify-json-wire" > "$RUNNER_TEMP/store-capture/json-wire-unit.txt"
           xcodegen generate
           if ! xcodebuild -project PhotoMaid.xcodeproj -scheme PhotoMaid \
             -destination 'generic/platform=iOS Simulator' -derivedDataPath "$RUNNER_TEMP/store-build" \
@@ -127,6 +132,7 @@ jobs:
             ${{ runner.temp }}/store-capture/branding
             ${{ runner.temp }}/store-capture/stills
             ${{ runner.temp }}/store-capture/control/*.json
+            ${{ runner.temp }}/store-capture/navigation/*.json
             ${{ runner.temp }}/store-capture/*.json
             ${{ runner.temp }}/store-capture/*.log
             ${{ runner.temp }}/store-capture/*.txt
