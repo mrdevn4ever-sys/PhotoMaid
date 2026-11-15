@@ -268,6 +268,9 @@ struct CollageView: View {
     /// Vorschaubilder (aufrecht) – Größe passend zur Zahl der Fotos, nie die Originale im Speicher.
     private func loadSources() async {
         guard let p = model.project else { return }
+        #if QA_FIXTURES && targetEnvironment(simulator)
+        StoreCapture.observeCollageSources(projectIDs: p.items.map(\.mediaId), loadedIDs: [], missingIDs: [])
+        #endif
         let n = p.items.count
         let edge: CGFloat = n <= 4 ? 1400 : (n <= 9 ? 1000 : 700)
         for id in p.items.map(\.mediaId) where model.sources[id] == nil && !model.missing.contains(id) {
@@ -279,6 +282,10 @@ struct CollageView: View {
                 model.setSource(nil, for: id)
             }
         }
+        #if QA_FIXTURES && targetEnvironment(simulator)
+        StoreCapture.observeCollageSources(projectIDs: p.items.map(\.mediaId),
+                                          loadedIDs: Array(model.sources.keys), missingIDs: Array(model.missing))
+        #endif
     }
 
     /// Auswahl aus dem Picker übernehmen: vorhandene Fotos behalten ihre Lage, neue kommen dazu, abgewählte gehen.

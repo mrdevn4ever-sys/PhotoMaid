@@ -16,6 +16,32 @@ enum StoreCapture {
     private static var conceptAErrors: [String] = []
     private static var conceptASelection: [String: Any] = [:]
     private static var conceptALogo: [String: Any] = [:]
+    private static var conceptASeriesPreview: [String: Any] = [:]
+    private static var conceptACollageSources: [String: Any] = [:]
+
+    /// Read-only reports of the actual view's completed image assignments, never setters.
+    static func observeSeriesPreview(assetID: String, imageReady: Bool) {
+        guard conceptAEnabled else { return }
+        conceptASeriesPreview = ["assetID": assetID, "imageReady": imageReady]
+    }
+
+    static func observeCollageSources(projectIDs: [String], loadedIDs: [String], missingIDs: [String]) {
+        guard conceptAEnabled else { return }
+        conceptACollageSources = ["projectIDs": projectIDs, "loadedIDs": loadedIDs.sorted(), "missingIDs": missingIDs.sorted()]
+    }
+
+    private static func conceptANativeListViewport() -> [String: Double] {
+        guard let window = UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene })
+            .flatMap({ $0.windows }).first(where: { $0.isKeyWindow }) else { return [:] }
+        @MainActor func lists(in view: UIView) -> [UICollectionView] {
+            guard !view.isHidden, view.alpha > 0 else { return [] }
+            return (view as? UICollectionView).map { [$0] } ?? view.subviews.flatMap { lists(in: $0) }
+        }
+        guard let list = lists(in: window).filter({ $0.bounds.height > 300 && $0.contentSize.height > $0.bounds.height })
+            .max(by: { $0.bounds.width * $0.bounds.height < $1.bounds.width * $1.bounds.height }) else { return [:] }
+        let rect = list.convert(list.bounds.inset(by: list.adjustedContentInset), to: window).intersection(window.bounds)
+        return ["x": Double(rect.minX), "y": Double(rect.minY), "width": Double(rect.width), "height": Double(rect.height)]
+    }
 
     static func openRequestedPage(in app: AppModel) async {
         guard enabled, !openedInitialPage else { return }
@@ -454,6 +480,8 @@ enum StoreCapture {
                 "inventory": inventory, "selection": conceptASelection, "measurements": measurements,
                 "duplicates": duplicates, "largeFiles": largeRows, "largeMeasuring": SizeMeasuring.shared.running,
                 "largeThresholdMB": app.settings.largeFileThresholdMB, "months": months, "series": series,
+                "seriesPreview": conceptASeriesPreview, "collageSources": conceptACollageSources,
+                "nativeListViewport": conceptANativeListViewport(),
                 "monthsTourSeen": app.settings.monthsTourSeen, "decisions": decisions,
                 "basketIDs": app.read.basket.map(\.item.localIdentifier), "eventCount": app.read.events.count,
                 "defaultLaterText": LaterText.inInterval(app.settings.laterInterval),

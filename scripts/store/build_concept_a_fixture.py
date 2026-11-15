@@ -44,10 +44,16 @@ def main() -> None:
     for row in photos:
         assert row['license'] == 'CC0-1.0', row['file']
         assert digest(source / row['file']) == row['sha256'], row['file']
+    visual_allowlist_path = source.parent / 'concepts/A/qa/fixture-source-allowlist.json'
+    visual_allowlist = json.loads(visual_allowlist_path.read_text(encoding='utf-8'))
+    approved = {row['source']: row['sha256'] for row in visual_allowlist['approved'] if row['verdict'] == 'PASS'}
+    assert visual_allowlist['status'] == 'PASS_SELECTED_SUBSET_ONLY'
+    assert len(approved) == visual_allowlist['approved_count'] == 16
     inventory: list[dict] = []
 
     def add(name: str, number: int, category: str, transform=None, details: str = 'Unchanged source bytes') -> Path:
         row = by_number[number]
+        assert approved.get(row['file']) == row['sha256'], 'Unapproved visual source: ' + row['file']
         src, dst = source / row['file'], output / name
         if transform is None:
             shutil.copyfile(src, dst)
@@ -68,13 +74,15 @@ def main() -> None:
 
     # Deliberately challenging real photo-fixture pixels, never marketing retouching
     # of app screens or injected analysis results. Derivatives are declared below.
-    add('CA_01_clutter_blur.jpg', 55, 'clutter-blurry',
+    add('CA_01_clutter_blur.jpg', 5, 'clutter-blurry',
         lambda image: image.filter(ImageFilter.GaussianBlur(26)),
         'CC0 photo-fixture derivative: pronounced 26px optical defocus; no upscale')
-    add('CA_02_clutter_shake.jpg', 55, 'clutter-challenging',
+    add('CA_02_clutter_shake.jpg', 10, 'clutter-challenging',
         lambda image: image.filter(ImageFilter.GaussianBlur(18)),
         'CC0 photo-fixture derivative: pronounced 18px defocus; no upscale')
-    add('CA_03_clutter_dark.jpg', 54, 'clutter-dark')
+    add('CA_03_clutter_dark.jpg', 5, 'clutter-dark',
+        lambda image: ImageEnhance.Brightness(image).enhance(0.25),
+        'CC0 photo-fixture derivative: underexposed flower photo, brightness factor 0.25; no upscale')
     add('CA_10_duplicate_a.jpg', 38, 'exact-duplicate')
     add('CA_11_duplicate_b.jpg', 38, 'exact-duplicate')
     assert digest(output / 'CA_10_duplicate_a.jpg') == digest(output / 'CA_11_duplicate_b.jpg')
@@ -85,17 +93,31 @@ def main() -> None:
             return ImageEnhance.Brightness(crop).enhance(0.98 + index * 0.008)
         add(f'CA_20_series_{index + 1:02d}.jpg', 36, 'near-similar-series', variation,
             f'Fixture derivative: crop inset {index * 5}px; exposure factor {0.98 + index * 0.008:.3f}; no upscale')
-    # Exclude beaches with small people, aerial streets/vehicles and bridge crowds.
-    pretty_sources = [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 17, 19, 24, 28, 29, 30, 31, 32, 33, 35, 42]
-    assert len(pretty_sources) == len(set(pretty_sources)) == 24
+    # Only individually reviewed original hashes. The deliberate duplicate source
+    # is excluded here so that the real scanner finds exactly the intended pair.
+    pretty_sources = [5, 10, 1, 4, 6, 7, 9, 13, 17, 28, 29, 31, 33, 35, 36]
+    assert len(pretty_sources) == len(set(pretty_sources)) == 15
     for index, number in enumerate(pretty_sources, 1):
         add(f'CA_30_pretty_{index:02d}.jpg', number, 'pretty')
+    # Nine distinct edited copies from the same approved nature originals complete
+    # the two-per-month library. These are declared fixture photos, not invented UI.
+    for offset, number in enumerate([5, 10, 1, 4, 6, 7, 13, 17, 35]):
+        inset, exposure = 48 + offset * 7, 1.04 + offset * 0.005
+        def pretty_variation(image, inset=inset, exposure=exposure):
+            return ImageEnhance.Brightness(image.crop((inset, inset, image.width - inset, image.height - inset))).enhance(exposure)
+        add(f'CA_30_pretty_{16 + offset:02d}.jpg', number, 'pretty-derivative', pretty_variation,
+            f'CC0 fixture derivative: crop inset {inset}px; exposure factor {exposure:.3f}; no upscale')
+    by_hash: dict[str, list[str]] = {}
+    for row in inventory:
+        by_hash.setdefault(row['sha256'], []).append(row['file'])
+    assert [sorted(names) for names in by_hash.values() if len(names) > 1] == [['CA_10_duplicate_a.jpg', 'CA_11_duplicate_b.jpg']]
 
     if not args.skip_videos:
         ffmpeg, ffprobe = shutil.which('ffmpeg'), shutil.which('ffprobe')
         assert ffmpeg and ffprobe, 'ffmpeg and ffprobe must be installed before the native capture job'
         for index in range(args.video_count):
             row = by_number[[13, 35][index]]
+            assert approved.get(row['file']) == row['sha256'], 'Unapproved video-source photo: ' + row['file']
             name = f'CA_40_large_{index + 1:02d}.mp4'
             temporary = output / f'CA_40_large_{index + 1:02d}.encoding.mp4'
             # A nature-photo film-grain clip is genuinely encoded and decodable. High-detail
@@ -131,6 +153,9 @@ def main() -> None:
     report = {'schema_version': 1, 'purpose': 'Disposable genuine PhotoKit library for GaleriQ concept A en-US capture',
               'status': 'IMAGES_ONLY_NOT_CAPTURE_READY' if args.skip_videos else 'PASS',
               'source_manifest_sha256': digest(manifest_file), 'source_library_verified': len(photos),
+              'visual_source_gate': {'status': 'PASS', 'allowlist_sha256': digest(visual_allowlist_path),
+                                     'approved_original_count': len(approved),
+                                     'all_used_sources_approved': all(approved.get(row['source']) == row['source_sha256'] for row in inventory)},
               'images': image_count, 'videos': video_count,
               'native_screenshot_fixture': 'Added during the UI test by real simctl screenshot + addmedia, not generated here',
               'records': inventory}

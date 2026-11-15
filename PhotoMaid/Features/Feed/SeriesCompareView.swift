@@ -102,12 +102,18 @@ struct LargePreview: View {
             }
             .frame(width: geo.size.width, height: geo.size.height)
             .task(id: assetID) {
+                #if QA_FIXTURES && targetEnvironment(simulator)
+                StoreCapture.observeSeriesPreview(assetID: assetID, imageReady: false)
+                #endif
                 let size = PreviewPipeline.targetSize(for: geo.size, scale: scale)
                 if case .image(let img) = await app.previews.image(for: assetID, targetSize: size) {
                     image = img
                 } else {
                     image = await ThumbnailLoader.shared.image(assetID, size: CGSize(width: 600, height: 600))
                 }
+                #if QA_FIXTURES && targetEnvironment(simulator)
+                StoreCapture.observeSeriesPreview(assetID: assetID, imageReady: image != nil)
+                #endif
             }
         }
         .accessibilityHidden(true)

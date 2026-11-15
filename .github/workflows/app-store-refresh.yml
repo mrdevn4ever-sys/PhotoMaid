@@ -42,6 +42,7 @@ jobs:
             Tests
             scripts
             app-store/media
+            app-store/concepts/A/qa
       - name: Guard the exact branch, baseline and en-US-only scope
         run: |
           set -euo pipefail

@@ -61,6 +61,9 @@ def main():
         errors.append('The exact concept-A capture test must pass once with no failures or skips')
     if not (fixture.get('status') == 'PASS' and fixture.get('images') == 35 and fixture.get('videos') == 2):
         errors.append('The prepared real PhotoKit input library is incomplete')
+    visual_gate = fixture.get('visual_source_gate', {})
+    if not (visual_gate.get('status') == 'PASS' and visual_gate.get('all_used_sources_approved') is True):
+        errors.append('The actual fixture uses no fully approved visual-source allowlist')
     videos = [row for row in fixture.get('records', []) if row.get('media_type') == 'video']
     if len(videos) != 2 or not all(row.get('bytes', 0) > 100_000_000 and row.get('video', {}).get('full_decode') == 'PASS' for row in videos):
         errors.append('Two genuinely measured and fully decoded large-video files are required')
@@ -121,6 +124,7 @@ def main():
               'branch': environment['GITHUB_REF_NAME'], 'captured_at': datetime.datetime.now(datetime.timezone.utc).isoformat(),
               'app': app_metadata, 'device': device, 'capture_summary': summary,
               'fixture_manifest_sha256': digest(root / 'fixture-manifest.json') if fixture else None,
+              'fixture_visual_source_gate': visual_gate,
               'required_native_screens': required_files, 'outputs': outputs, 'branding': branding,
               'native_visual_acceptance': 'NOT RUN', 'store_export_acceptance': 'NOT RUN',
               'real_device_or_security_acceptance': 'NOT RUN', 'errors': errors}

@@ -97,6 +97,14 @@ def audit(render, sources, expected_commit, expected_run):
     design = load(design_path)
     provenance = load(sources / 'capture_provenance.json')
     need(provenance['status'] == 'PASS' and provenance['fresh_capture'] is True, 'Fresh native capture PASS is required')
+    fixture = load(sources / 'fixture-manifest.json')
+    need(digest(sources / 'fixture-manifest.json') == provenance['fixture_manifest_sha256'], 'Actual PhotoKit input manifest hash drift')
+    allowlist_path = Path(__file__).resolve().parents[2] / 'app-store/concepts/A/qa/fixture-source-allowlist.json'
+    approved = {row['source']: row['sha256'] for row in load(allowlist_path)['approved'] if row['verdict'] == 'PASS'}
+    visual_gate = provenance.get('fixture_visual_source_gate', {})
+    need(visual_gate.get('status') == 'PASS' and visual_gate.get('all_used_sources_approved') is True
+         and visual_gate.get('allowlist_sha256') == digest(allowlist_path), 'Native capture is not from the visually approved fixture subset')
+    need(fixture['visual_source_gate'] == visual_gate and all(approved.get(row['source']) == row['source_sha256'] for row in fixture['records']), 'A rejected/unknown original was included in the actual native fixture')
     need(provenance['commit'] == expected_commit and provenance['workflow_run'] == expected_run, 'Independently pinned native run/SHA mismatch')
     need(provenance['locale'] == 'en-US' and provenance['app_language'] == 'en', 'Only en-US is authorized')
     need(manifest['sourceGate']['provenance'] == provenance, 'Render manifest is not bound to the exact fresh source provenance')
@@ -176,6 +184,7 @@ def audit(render, sources, expected_commit, expected_run):
     return {'schema_version': 1, 'technical_export_status': 'PASS', 'workflow_run': expected_run,
             'commit': expected_commit, 'locale': 'en-US', 'png_count': len(checked), 'images': checked,
             'preview_count': len(manifest['previews']), 'uniform_phone_box': phone_boxes[0],
+            'fixture_visual_source_allowlist_sha256': digest(allowlist_path),
             'native_pixels': 'PASS, independently compared to ICC-normalized original native files; outer alpha edges excluded',
             'human_final_visual_acceptance': 'NOT RUN by this automatic auditor',
             'security_runtime_conversion_or_store_upload_acceptance': 'NOT RUN'}

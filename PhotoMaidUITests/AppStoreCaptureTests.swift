@@ -1,6 +1,7 @@
 import XCTest
 import StoreKitTest
 import ImageIO
+import Vision
 
 /// Marketing capture, only invoked by app-store-assets.yml. Uses imported CC0 photos and actual app state.
 @MainActor
@@ -720,15 +721,36 @@ final class AppStoreCaptureTests: XCTestCase {
         swipeFeed("left") // Second real Trash decision, on the actual imported native screenshot.
         try conceptARequireStage(try conceptAAsset("CA_30_pretty_06.jpg", in: initial))
         let beforeLater = feedPosition()
+        let feedBounds = app.frame
         e("feed.stage").swipeRight()
         let pill = e("later.pill")
         XCTAssertTrue(pill.waitForExistence(timeout: 2))
+        let pillReadyDeadline = Date().addingTimeInterval(1)
+        while (!feedBounds.contains(pill.frame) || !pill.isHittable), Date() < pillReadyDeadline { pause(0.05) }
+        let pillFrame = pill.frame
         let pillLabel = pill.label
+        XCTAssertTrue(feedBounds.contains(pillFrame) && pill.isHittable, "Require the actual pill onscreen, not just an offscreen accessibility node")
         // Capture BEFORE the slower full-tree/translation queries in snap(). Never extend the real four-second pill.
         let laterScreenshot = XCUIScreen.main.screenshot()
-        XCTAssertTrue(pill.exists, "The actual saved-date pill must still be visible at capture")
+        try laterScreenshot.pngRepresentation.write(to: output.appendingPathComponent("stills/concept-a-later-timing.png"), options: .atomic)
         XCTAssertTrue(pillLabel.contains(String(format: t("later_in_days_again#other"), Int64(2))))
-        XCTAssertTrue(pillLabel.contains(t("change")))
+        // SwiftUI's combined element exposes the date as its label and the edit
+        // action separately, so that label does not include the visible Button text.
+        // Prove Change from the actual native pixels instead of altering production AX.
+        let laterImage = try XCTUnwrap(laterScreenshot.image.cgImage)
+        let nativeScale = CGFloat(laterImage.width) / feedBounds.width
+        let pillPixels = CGRect(x: (pillFrame.minX - feedBounds.minX) * nativeScale,
+                                y: (pillFrame.minY - feedBounds.minY) * nativeScale,
+                                width: pillFrame.width * nativeScale, height: pillFrame.height * nativeScale).integral
+        let pillImage = try XCTUnwrap(laterImage.cropping(to: pillPixels))
+        let request = VNRecognizeTextRequest()
+        request.recognitionLevel = .accurate
+        request.recognitionLanguages = ["en-US"]
+        request.usesLanguageCorrection = false
+        try VNImageRequestHandler(cgImage: pillImage, options: [:]).perform([request])
+        let visiblePillText = (request.results ?? []).compactMap { $0.topCandidates(1).first?.string }.joined(separator: "\n")
+        try visiblePillText.write(to: output.appendingPathComponent("concept-a-later-visible-text.txt"), atomically: true, encoding: .utf8)
+        XCTAssertTrue(visiblePillText.localizedCaseInsensitiveContains(t("change")), "Actual native pill pixels must show Change: \(visiblePillText)")
         XCTAssertEqual(feedPosition(), beforeLater + 1, "The actual right-swipe decision must advance")
         snap("concept-a-later", settle: 0, captured: laterScreenshot)
         try conceptARequireStage(try conceptAAsset("CA_30_pretty_07.jpg", in: initial))
@@ -867,11 +889,36 @@ final class AppStoreCaptureTests: XCTestCase {
         let months = try XCTUnwrap(state["months"] as? [[String: Any]])
         XCTAssertGreaterThanOrEqual(months.count, 12, "Twenty-four real pretty photos must fill twelve real month groups")
         XCTAssertTrue(months.allSatisfy { ($0["total"] as? Int ?? 0) >= 2 })
+        let titles = try months.map { try XCTUnwrap($0["title"] as? String) }
         var visibleMonths = 0
-        for month in months {
-            let title = try XCTUnwrap(month["title"] as? String)
-            let row = app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", title)).firstMatch
-            if conceptAFullyVisible(row) { visibleMonths += 1 }
+        for attempt in 0..<7 {
+            let listState = try conceptAObserve("months-native-viewport-\(attempt)")
+            let box = try XCTUnwrap(listState["nativeListViewport"] as? [String: Double])
+            var viewport = CGRect(x: try XCTUnwrap(box["x"]), y: try XCTUnwrap(box["y"]),
+                                  width: try XCTUnwrap(box["width"]), height: try XCTUnwrap(box["height"]))
+            XCTAssertFalse(viewport.isEmpty)
+            // Exclude a genuinely pinned year header as well as native adjusted insets.
+            for header in app.staticTexts.matching(NSPredicate(format: "label MATCHES '^[0-9]{4}$'")).allElementsBoundByIndex {
+                let frame = header.frame
+                if frame.minY <= viewport.minY + 1, frame.maxY > viewport.minY {
+                    let bottom = viewport.maxY
+                    viewport.origin.y = frame.maxY
+                    viewport.size.height = max(0, bottom - frame.maxY)
+                }
+            }
+            visibleMonths = 0
+            for title in titles {
+                let cell = app.cells.containing(NSPredicate(format: "label BEGINSWITH %@", title)).firstMatch
+                guard cell.exists, !cell.frame.isEmpty, viewport.contains(cell.frame) else { continue }
+                let menu = cell.buttons[String(format: t("month_actions"), title)].firstMatch
+                if menu.exists, viewport.contains(menu.frame) { visibleMonths += 1 }
+            }
+            if visibleMonths >= 6 { break }
+            // Actual bounded scrolling; never shrink rows or inject month entries.
+            let list = app.collectionViews.firstMatch
+            list.coordinate(withNormalizedOffset: CGVector(dx: 0.94, dy: 0.70)).press(forDuration: 0.05,
+                thenDragTo: list.coordinate(withNormalizedOffset: CGVector(dx: 0.94, dy: 0.56)))
+            pause(0.3)
         }
         XCTAssertGreaterThanOrEqual(visibleMonths, 6, "The phone must show a filled list, not one or two rows above empty space")
         snap("concept-a-months")
@@ -891,7 +938,10 @@ final class AppStoreCaptureTests: XCTestCase {
         tap(toggles.element(boundBy: 0)) // A real in-sheet selection, NOT a committed ledger decision.
         XCTAssertEqual(toggles.element(boundBy: 0).value as? String, t("series_state_trash"))
         conceptARequireVisible(app.buttons[String(format: t("series_confirm"), Int64(5), Int64(1))].firstMatch, "Actual Keep 5 / Trash 1 comparison choice")
-        XCTAssertTrue(app.progressIndicators.firstMatch.waitForNonExistence(timeout: 45), "The full-size real preview must finish loading")
+        _ = try conceptAWait("series-large-preview-loaded", timeout: 60) { state in
+            let preview = state["seriesPreview"] as? [String: Any] ?? [:]
+            return preview["imageReady"] as? Bool == true && seriesIDs.contains(preview["assetID"] as? String ?? "")
+        }
         snap("concept-a-analysis")
         tap(button("cancel")) // Do not add a third Trash decision.
         let after = try conceptAObserve("series-cancelled-no-extra-decisions")
@@ -907,7 +957,14 @@ final class AppStoreCaptureTests: XCTestCase {
         XCTAssertTrue(save.waitForExistence(timeout: 45))
         let deadline = Date().addingTimeInterval(60)
         while !save.isEnabled, Date() < deadline { pause(0.2) }
-        XCTAssertTrue(save.isEnabled, "CollageView enables Save only after every genuine source has loaded")
+        XCTAssertTrue(save.isEnabled, "The normal collage loading attempts must finish")
+        let expectedCollageIDs = Set(try (1...4).map { try conceptAID(String(format: "CA_30_pretty_%02d.jpg", $0), in: initial) })
+        _ = try conceptAWait("collage-four-originals-loaded", timeout: 60) { state in
+            let source = state["collageSources"] as? [String: Any] ?? [:]
+            return Set(source["projectIDs"] as? [String] ?? []) == expectedCollageIDs
+                && expectedCollageIDs.isSubset(of: Set(source["loadedIDs"] as? [String] ?? []))
+                && source["missingIDs"] as? [String] == []
+        }
         conceptARequireVisible(app.descendants(matching: .any).matching(NSPredicate(format: "label == %@", t("col_stage"))).firstMatch, "Real four-photo collage canvas")
         for index in 1...4 {
             conceptARequireVisible(app.descendants(matching: .any).matching(NSPredicate(format: "label == %@", String(format: t("collage_photo_n"), Int64(index)))).firstMatch, "Each imported photo's native collage placement")

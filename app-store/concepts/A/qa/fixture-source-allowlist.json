@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "status": "PASS_SELECTED_SUBSET_ONLY",
+  "review_scope": "Each selected original individually reviewed with vision for visible people/body parts, third-party marks and private text. No concrete excluded content found in these 16; dark, hidden or unresolved subpixel detail is not guaranteed absent.",
+  "selection_policy": "Exclude every FAIL or BLOCKED original from the reviewed 28-source set. Declared photo-fixture derivatives may only use the approved original hashes below. This is not approval of all 55 inherited originals.",
+  "source_review_receipts": {
+    "fixture-visual-even.json": "See local QA evidence; 14 original file reviews including crops",
+    "fixture-visual-odd.json": "See local QA evidence; 14 original file reviews including crops"
+  },
+  "approved_count": 16,
+  "approved": [
+    {"source":"01-chalets-on-a-wooded-slope-unsplash.jpg","sha256":"a06bdb2ec865896619d74ba9a79326c27c432200eaf8cbe31ea81754ac650d8d","verdict":"PASS"},
+    {"source":"04-mountain-peak-under-clouds-unsplash.jpg","sha256":"801ef4c75861f8a1bfd806c881ee556afe45eb15963f66e94cc5379dcf2d4a1a","verdict":"PASS"},
+    {"source":"05-beautiful-flower-on-pebbles-unsplash.jpg","sha256":"b91c587fb5e1a0a3266db05e74feb6c88cc60ba22c342f59175685401a707ca7","verdict":"PASS"},
+    {"source":"06-sharp-mountain-ridge-against-blue-sky-unsplash.jpg","sha256":"0e7e3de6e963f78fd72dff7fe648d7c5771044975e8a48c13659db561b587561","verdict":"PASS"},
+    {"source":"07-mountain-reflection-in-a-lake-unsplash.jpg","sha256":"ed3fc9ede9d025fd15a5d7b894e4c71cd9e44a459d23f3cf280699769813a224","verdict":"PASS"},
+    {"source":"09-orange-trees-by-a-frozen-lake-unsplash.jpg","sha256":"414acadf3b76c50e9509c6a568805f1d4785c6c3c011e5b882ac360cc0b14854","verdict":"PASS"},
+    {"source":"10-kyoto-botanical-garden-kyoto-japan-unsplash.jpg","sha256":"edba5173545318e2765a3e0dde59588326919d3e137affc2e9eb9c85cecbd2d0","verdict":"PASS"},
+    {"source":"13-yosemite-national-park-united-states-unsplash-ipc2-b7e4q4.jpg","sha256":"3d9621c212f88ed24cefd85632cb99364a4cead01cc0670a7a77b9617b1d4ea6","verdict":"PASS"},
+    {"source":"17-green-cascade-in-bridal-veil-falls-unsplash.jpg","sha256":"3a13b56722d31a4e3c2ce31ced49d50a4a6a0633a3dd42c0ebf14e03d0fd086b","verdict":"PASS"},
+    {"source":"28-twilight-hour-in-the-desert-unsplash.jpg","sha256":"76ca6d43eba3f3f099ff124d777e7e265e965fe669a000b313c66e01ca387ab8","verdict":"PASS"},
+    {"source":"29-a-blue-sky-above-white-snow-unsplash.jpg","sha256":"6588396644c343bae7e424796c06dfb2b11ff392ce10f662ab98acd1c48a2999","verdict":"PASS"},
+    {"source":"31-green-mountains-over-clouds-unsplash.jpg","sha256":"e89cdcfc6c6dcccfb2ebd8ec0d650be5fa03c93d0a4b9e0436de0a28823fabb1","verdict":"PASS"},
+    {"source":"33-sun-sky-and-sea-unsplash.jpg","sha256":"cadf4ffbe47dba88100e615a96f3120f092b24a45e188ebc5a284219c540f1d8","verdict":"PASS"},
+    {"source":"35-small-waterfall-in-a-forest-unsplash.jpg","sha256":"a536a97ec8d2650db0d4974750c79e693e3b7a2f3e1bf6901181482253210fb3","verdict":"PASS"},
+    {"source":"36-waterfalls-in-iceland-unsplash-laqilfrd3bo.jpg","sha256":"13842298b457f6be42b6e3fdde70f4ea6f7d96cae52245e58d7eaa08a9c6f53b","verdict":"PASS"},
+    {"source":"38-fall-maple-tree-unsplash.jpg","sha256":"74fb4acf929ef8c1380d82496d6cc25625b5652c9a1d6f82c00fca13474d6e40","verdict":"PASS"}
+  ],
+  "excluded_source_numbers": [2,3,11,12,14,19,24,30,32,42,54,55]
+}
