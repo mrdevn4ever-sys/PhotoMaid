@@ -1,46 +1,41 @@
-# Prompt: Wettbewerbs-Recherche und Konzept für die App-Store-Präsentation von GaleriQ
+# Prompt: Der perfekte App-Store-Eintrag für GaleriQ
 
 Alles unterhalb der Linie in Hermes einfügen.
 
 ---
 
-Du erarbeitest ein **Konzept** dafür, wie die iPhone-App **GaleriQ** im Apple App Store präsentiert wird: Screenshots, App-Vorschau-Video, Reihenfolge, Texte auf den Bildern und visuelles System. Antworte auf Deutsch. **Nur Recherche und Konzept, nichts umsetzen und nichts hochladen.**
+Ziel: **ein perfekter, vollständiger App-Store-Eintrag für GaleriQ – in allen 50 Store-Sprachen gleichzeitig, auf dem Niveau der besten Apps im Store und von Apple selbst.** Keine Stufen, keine „zuerst nur Englisch“, keine Varianten zur Auswahl ohne klare Empfehlung. Du lieferst **ein** fertiges, durchdachtes Konzept, das komplett so umgesetzt werden kann. Antworte auf Deutsch.
 
 ## Die App (Fakten, nichts dazuerfinden)
-- GaleriQ, App-ID 6821165617, Kategorie Foto & Video, 4+, iPhone-only (iOS 26+), kostenlos mit Werbung, „GaleriQ Pro“ als Einmalkauf (kein Abo).
-- Store-Seiten: https://apps.apple.com/us/app/galeriq-photo-cleaner-vault/id6821165617 und https://apps.apple.com/de/app/galeriq-fotos-aufr%C3%A4umen/id6821165617
-- Kern: Fotos und Videos aufräumen per Wischen (hoch = behalten, links = GaleriQ-Papierkorb, rechts = später, runter = zurück). Gelöscht wird erst nach Bestätigung im Papierkorb **und** im iOS-Dialog (landet in „Zuletzt gelöscht“).
-- Weitere Funktionen: Duplikate (identische Dateien), ähnliche Aufnahmen und Serien, große Dateien, Monatsübersicht, Analyse auf dem Gerät (Apple Vision: unscharf, Motive, Fotos mit Text), privater **Tresor** (verschlüsselt, Code/Face ID, Notizen, Dateien), Studio (Bearbeiten, Collagen, Filme aus Clips, PDF, GIF, Formate umwandeln, Standort entfernen), drei Spiele mit eigenen Fotos (Paare, Foto Snake, Foto Blocks), Erfolge.
-- Datenschutz: kein Konto, kein Server, keine Foto-Uploads; Werbung nur in der Gratisversion (Google AdMob, Einwilligung zuerst).
-- Schriftzug: Das „Q“ ist ein Tresor-Zahlenrad. Interne Namen „PhotoMaid“ nie nach außen zeigen.
-- 50 Store-Sprachen, 45 App-Sprachen.
+- GaleriQ, App-ID 6821165617, Foto & Video, 4+, iPhone-only (iOS 26+), kostenlos mit Werbung, „GaleriQ Pro“ als Einmalkauf (kein Abo).
+- Store-Seiten: https://apps.apple.com/us/app/galeriq-photo-cleaner-vault/id6821165617 · https://apps.apple.com/de/app/galeriq-fotos-aufr%C3%A4umen/id6821165617
+- Kern: Fotos und Videos per Wischen aufräumen (hoch = behalten, links = GaleriQ-Papierkorb, rechts = später, runter = zurück). Gelöscht wird erst nach Bestätigung im Papierkorb **und** im iOS-Dialog („Zuletzt gelöscht“).
+- Weitere Funktionen: Duplikate, ähnliche Aufnahmen und Serien, große Dateien, Monatsübersicht, Analyse auf dem Gerät (unscharf, Motive, Fotos mit Text), privater verschlüsselter **Tresor** (Code/Face ID, Notizen, Dateien), Studio (Bearbeiten, Collagen, Filme, PDF, GIF, Format umwandeln, Standort entfernen), drei Spiele mit eigenen Fotos (Paare, Foto Snake, Foto Blocks).
+- Datenschutz: kein Konto, kein Server, keine Foto-Uploads; Werbung nur in der Gratisversion.
+- Schriftzug: Das „Q“ ist ein Tresor-Zahlenrad. Interne Namen („PhotoMaid“) nie zeigen.
+- 50 Store-Sprachen, 45 App-Sprachen (regionale Store-Varianten wie en-GB, es-MX, fr-CA nutzen die passende App-Sprache).
 
-## Ist-Zustand
-- 10 Screenshots (Maximum) im Pflichtformat 1206 × 2622 px, reine UI-Aufnahmen ohne große Überschriften, nur dunkles UI, alle Sprachen zeigen bisher dieselben englischen Bilder.
-- Reihenfolge: Start → Behalten → Papierkorb → … → Spiele (2 Bilder) → Tresor (Platz 10).
-- 2 Vorschauvideos vorhanden (886 × 1920, 27 s), aber nicht aktiv.
-- Ein früheres Audit liegt im Repo bzw. beim Nutzer vor; die Kernaussagen: großer Hook fehlt, Tresor zu spät, Spiele zu prominent, Duplikate/große Dateien kaum sichtbar, Lokalisierung fehlt.
+## Ist-Zustand (Schwächen)
+10 reine UI-Screenshots ohne Überschriften, nur dunkel, in allen Sprachen dieselben englischen Bilder; Tresor erst auf Platz 10, Spiele zu prominent, Duplikate/große Dateien kaum sichtbar; Vorschauvideos inaktiv; Support-URL zeigt aufs Impressum; keine Barrierefreiheitsangaben.
 
-## Recherche-Auftrag
-1. **Top-Apps der Kategorie** (US und DE, aktuell): die erfolgreichsten Foto-Cleaner, Speicher-Cleaner und Foto-Tresor-Apps, z. B. Swipewipe, Cleanup, Clever Cleaner, CleanMy Phone, Photo Purge, Gallery Vault, Private Photo Vault, Slidebox – ergänze die tatsächlich aktuellen Top-Titel aus den Charts. Mindestens 10 Apps.
-2. **Apple selbst als Vorbild:** wie Apple seine eigenen Apps präsentiert (z. B. Fotos, Freeform, Pixelmator/Final Cut für iPad, Journal), was Apple im „Today“-Tab und bei „App des Tages“ hervorhebt, sowie Apples offizielle Richtlinien: https://developer.apple.com/app-store/product-page, Screenshot- und Preview-Spezifikationen, Product Page Optimization, Custom Product Pages und die 2026 eingeführten Header-/Search-Creatives.
-3. Je App erfassen: Reihenfolge der Bildaussagen, Überschriften (Wortzahl, Ton), Hintergrund und Farbe, Gerätrahmen ja/nein, wie stark die echte UI im Bild ist, Video ja/nein und Inhalt der ersten 3 Sekunden, Lokalisierung, Sicherheits-/Datenschutz-Botschaften, Umgang mit Abo/Preis.
-4. Was davon wirkt nachweislich (Quellen: Apple, seriöse ASO-Studien)? Klar trennen zwischen **belegt** und **Einschätzung**.
+## Recherche (Grundlage, kurz halten)
+- Die aktuellen Top-Apps der Kategorie (Foto-Cleaner, Speicher-Cleaner, Foto-Tresor) in US und DE – mindestens 10 – und wie Apple die eigenen Apps präsentiert, plus Apples Richtlinien (Product Page, Screenshot-/Preview-Spezifikationen, Product Page Optimization, Custom Product Pages, Header-/Search-Creatives 2026).
+- Daraus: was nachweislich wirkt (Quellen) – kurz als Tabelle mit Links.
 
-## Gewünschtes Ergebnis
-1. **Wettbewerbs-Tabelle** (≥ 10 Apps + Apple-Beispiele) mit Links und den Punkten aus 3.
-2. **3 Konzeptvarianten** mit unterschiedlichem Schwerpunkt, z. B. „Aufräumen zuerst“, „Privatsphäre/Tresor zuerst“, „Kontrolle & Sicherheit zuerst“. Pro Variante:
-   - Reihenfolge von 8–10 Screenshots: Überschrift DE + EN (max. 2 kurze Zeilen), welcher echte App-Screen, was groß/zugeschnitten gezeigt wird, Begründung.
-   - Visuelles System: Farben (vom Icon und den App-Aktionsfarben ableiten), Schrift, Layout, Gerätrahmen, hell/dunkel, Text sicher für lange Sprachen (Deutsch, Finnisch) und RTL (Arabisch, Hebräisch, Urdu).
-   - Storyboard für **ein** App-Vorschau-Video (15–30 s, stumm verständlich, Posterbild).
-3. **Empfehlung**: welche Variante zuerst, welche als A/B-Test (Product Page Optimization), welche als Custom Product Page (z. B. Tresor, Spiele/Kreativ).
-4. **Lokalisierungsplan**: welche Sprachen zuerst eigene Bilder bekommen und wie die Überschriften für alle 50 Locales technisch erzeugt werden können.
-5. **Nicht-Bild-Hebel** kurz: Untertitel/Werbetext, Icon (nur testen, nicht umbauen), Support- und Landingpage, Barrierefreiheitsangaben.
-6. Optional: einfache Skizzen/Mockups der ersten 3 Bilder je Variante (z. B. als HTML oder Bild), klar als Entwurf markiert.
+## Lieferumfang: der fertige Eintrag
+1. **Screenshot-Set (10 Bilder, 1206 × 2622 px)** – feste Reihenfolge, je Bild: Aussage, Überschrift, welcher echte App-Screen in welchem Zustand und mit welchen neutralen Beispielmotiven, Zuschnitt/Vergrößerung, Begründung.
+2. **Überschriften für alle 50 Locales** – vollständig ausformuliert als Tabelle (Locale × Bild), muttersprachlich natürlich, kurz genug für das Layout, Begriffe passend zur App (z. B. Papierkorb, Tresor, Spielnamen wie in der App; „Foto Blocks“ unverändert). RTL-Sprachen (ar, he, ur) mit gespiegeltem Layout, Gestenpfeile **nicht** gespiegelt.
+3. **Visuelles System** – exakte Farbwerte (aus Icon und App-Aktionsfarben), Schriften, Raster/Abstände, Geräteeinbettung, Hintergründe, Regeln für lange Sprachen (Deutsch, Finnisch, Ungarisch) und für asiatische Schriften. So genau, dass eine Vorlage direkt gebaut werden kann.
+4. **App-Vorschau** – ein Video (15–30 s) mit Sekunden-Storyboard, stumm verständlich, Posterbild, Texteinblendungen für alle 50 Locales.
+5. **Zusatzseiten** – Custom Product Pages (z. B. Tresor/Privatsphäre, Kreativ & Spiele) mit eigener Bildfolge, und ein konkreter A/B-Test-Plan für die Hauptseite.
+6. **Texte** – Prüfung und, wo besser, Neuvorschlag für Name, Untertitel, Werbetext und Keywords in allen 50 Locales (Apple-Limits einhalten), konsistent mit den Bildern.
+7. **Rest des Eintrags** – Support- und Landingpage-Inhalt (Gliederung + Texte), Barrierefreiheitsangaben (nur was nach Test zutrifft), Icon (nur Testvorschlag, kein Umbau).
+8. **Produktionsplan** – wie alle 50 Sprachen in einem Durchgang technisch erzeugt werden (echte App-Screens pro Sprache aus dem Simulator + Vorlage mit Überschriften), mit Prüfschritten (Textlänge, Abschneiden, RTL, Lesbarkeit) – so, dass alles auf einmal fertig wird.
+9. **Mockups** der 10 Bilder für Englisch und Deutsch (HTML oder Bild), klar als Entwurf markiert.
 
 ## Regeln
-- Keine erfundenen Zahlen oder Auszeichnungen (keine „Nr. 1“, „Millionen Nutzer“, Sterne, „X GB frei“ ohne echten Beleg). Keine Funktionen versprechen, die die App nicht hat; keine „KI löscht automatisch“-Aussagen – die App entscheidet nie selbst.
-- Keine fremden Marken, Logos oder Screenshots anderer Apps in eigenen Entwürfen; nur zur Analyse verlinken.
-- Keine privaten oder echten Personenfotos als Motive; nur neutrale Beispielmotive vorschlagen.
-- Nichts in App Store Connect ändern, nichts hochladen, nichts einreichen, keine Screenshots im Repo ersetzen. Keine Zugangsdaten nutzen oder anfordern.
-- Am Ende: kurze Zusammenfassung mit den 5 wichtigsten Entscheidungen, die der Nutzer treffen muss, und Quellenliste.
+- Keine erfundenen Zahlen oder Auszeichnungen („Nr. 1“, „Millionen Nutzer“, Sterne, „X GB frei“). Keine Funktionen versprechen, die es nicht gibt; die App löscht nie selbst.
+- Keine fremden Marken, Logos oder Fremd-Screenshots in eigenen Entwürfen; Wettbewerber nur verlinken.
+- Keine echten Personenfotos als Motive, nur neutrale Beispielmotive.
+- Nichts in App Store Connect ändern, nichts hochladen oder einreichen, keine Screenshots im Repo ersetzen, keine Zugangsdaten nutzen. Ergebnis ist das vollständige Konzept zur Freigabe durch den Nutzer.
+- Am Ende: eine Seite Zusammenfassung + Quellenliste.
