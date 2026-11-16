@@ -665,17 +665,24 @@ final class AppStoreCaptureTests: XCTestCase {
         // Genuine device accessibility setting, not a painted/modified alert.
         // This disposable simulator starts without a personal Settings account.
         let preferences = XCUIApplication(bundleIdentifier: "com.apple.Preferences")
+        preferences.launchArguments = ["-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
         preferences.launch()
-        for title in ["Accessibility", "Display & Text Size"] {
-            let row = preferences.staticTexts[title].firstMatch
+        var actualSettingsLabels: [String] = []
+        // The preceding native failure proved this disposable device's system
+        // language was German, even though the target app itself was en-US.
+        // Resolve the observed labels across roles; do not assume StaticText.
+        for labels in [["Accessibility", "Bedienungshilfen"], ["Display & Text Size", "Anzeige & Textgröße"]] {
+            let row = preferences.descendants(matching: .any).matching(NSPredicate(format: "label IN %@", labels as NSArray)).firstMatch
             for _ in 0..<8 {
                 if row.exists && row.isHittable { break }
                 preferences.swipeUp(); pause(0.4)
             }
-            XCTAssertTrue(row.exists && row.isHittable, "Native Settings route unavailable: \(title)")
+            try preferences.debugDescription.write(to: output.appendingPathComponent("settings-route-\(actualSettingsLabels.count).txt"), atomically: true, encoding: .utf8)
+            XCTAssertTrue(row.exists && row.isHittable, "Native Settings route unavailable: \(labels)")
+            actualSettingsLabels.append(row.label)
             row.tap(); pause(0.5)
         }
-        let transparency = preferences.switches.matching(NSPredicate(format: "label CONTAINS[c] 'Reduce Transparency'")).firstMatch
+        let transparency = preferences.switches.matching(NSPredicate(format: "label CONTAINS[c] 'Reduce Transparency' OR label CONTAINS[c] 'Transparenz reduzieren'")).firstMatch
         for _ in 0..<8 {
             if transparency.exists && transparency.isHittable { break }
             preferences.swipeUp(); pause(0.4)
@@ -684,6 +691,7 @@ final class AppStoreCaptureTests: XCTestCase {
         if transparency.value as? String == "0" { transparency.tap(); pause(0.5) }
         XCTAssertEqual(transparency.value as? String, "1")
         let settingsProof: [String: Any] = ["path": ["Accessibility", "Display & Text Size", "Reduce Transparency"],
+                                          "actualNavigationLabels": actualSettingsLabels, "actualSwitchLabel": transparency.label,
                                           "actualSwitchValue": transparency.value as? String ?? "unknown",
                                           "method": "real native Settings UI, not a private defaults key"]
         try JSONSerialization.data(withJSONObject: settingsProof, options: [.prettyPrinted, .sortedKeys])
