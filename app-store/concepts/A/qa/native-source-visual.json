@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "workflow_run": "43777081132",
+  "capture_commit": "c6ffd6c4a6279b8fadb2395069f415e84e53370e",
+  "reviewer": "Hermes parent, individual vision-tool review of all twelve required full native captures and original native wordmark",
+  "status": "PASS_WITH_OBSERVATIONS",
+  "visual_rejections": [],
+  "method": "All required screenshots reviewed separately. Capture provenance, actual successful run, original hashes, real fixture source allowlist and native loaded-state assertions verified independently. Screenshot observations do not establish security or conversion acceptance.",
+  "screens": [
+    {
+      "source": "screenshots/concept-a-swipe.png",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "findings": [
+        "Actual strongly defocused neutral flower card tilted during held left swipe; native TRASH feedback visible.",
+        "The genuine next card is the running app's imported screenshot. Its miniature status glyphs are part of real photo content, not an artificial second island. Only one device status area is to be drawn by preserving the native source; no synthetic island is allowed."
+      ],
+      "sha256": "72a6eb992f13f5a0f50655f3609aac4f230ba5094a568bb62b8aaedee50c3e16",
+      "individually_reviewed": true
+    },
+    {
+      "source": "screenshots/concept-a-duplicates.png",
+      "status": "PASS",
+      "findings": [
+        "Actual identical forest-photo pair, one Will be kept and one Selected for trash.",
+        "Native header says Identical files: 2 · 2.3 MB total. The value is extra-copy bytes; do not interpret it as combined file size or promised freed space.",
+        "Keep the complete pair, its labels, result header, native caveat and final decision control unobscured."
+      ],
+      "sha256": "928ca36bd06ef7bea6ba4fac756b6e76dc9f118ac89446be50d4617f195e22ea",
+      "individually_reviewed": true
+    },
+    {
+      "source": "screenshots/concept-a-large-files.png",
+      "status": "PASS",
+      "findings": [
+        "Two actual 12-second video results with measured 285.4 MB and 276.7 MB, native displayed sum 562.1 MB.",
+        "Use the two complete real result rows and sizes as the focus, not generic tool tiles. No guaranteed freed-space claim."
+      ],
+      "sha256": "5c46c0b7ce88a554e37d0a8335d4d59043df1a0171deb42fc8f81f93bc49e0e7",
+      "individually_reviewed": true
+    },
+    {
+      "source": "screenshots/concept-a-trash.png",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "findings": [
+        "Exactly two selected photos: genuine imported GaleriQ screenshot and defocused neutral flower photo.",
+        "Native CTA is Remove 2 photos and videos, not the brief's Remove 2 photos; preserve and disclose the difference.",
+        "The long scrollable iCloud footnote is partially clipped by the original fixed action area in this pre-confirmation source. No text correction, masking or invented continuation is allowed. Prefer the actual complete system-confirmation screenshot itself for slot03, rather than shrinking its entire tall dialog or placing a crop over the two trash thumbnails."
+      ],
+      "sha256": "246a924cfcd9a39501b45c2605fce4f9967f3aa760f35cd8f9d3a4ff63658b1a",
+      "individually_reviewed": true
+    },
+    {
+      "source": "screenshots/concept-a-delete-confirm.png",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "findings": [
+        "Actual complete iOS dialog: Allow “GaleriQ” to delete 2 photos?; These photos will be deleted from the library. They will be in Recently Deleted for 30 days.; Don’t Allow; Delete.",
+        "Use the whole unretouched native screenshot as the full-phone primary for slot03: the large genuine dialog, Trash heading/count and underlying original action are kept in their actual native relation. No separately rebuilt dialog, status area or hidden source warning.",
+        "Native confirmation was cancelled after capture. Nothing was deleted by the renderer. The underlying generic CTA retains and videos."
+      ],
+      "sha256": "edb77a0e60d6ebdb2f155735982b302fb34e24ac570f7330570c6ffe85848d1e",
+      "individually_reviewed": true
+    },
+    {
+      "source": "screenshots/concept-a-vault.png",
+      "status": "PASS",
+      "findings": [
+        "Five rendered neutral flower/landscape thumbnails, Private vault, Media, All 5 and Add to vault controls visible.",
+        "No originals-remain warning, PIN, recovery secret, tour or debug overlay visible. Runtime separately checked originals removal in disposable simulator library.",
+        "Face ID support is backed by baseline source, not exercised by this capture or certified as secure."
+      ],
+      "sha256": "4218b08c8b7c922179e859b374e287b3d6355c0a8ee972852cabe7366a75a15b",
+      "individually_reviewed": true
+    },
+    {
+      "source": "screenshots/concept-a-later.png",
+      "status": "PASS",
+      "findings": [
+        "Actual transient native pill is fully rendered: label Again in 2 days plus separate Change button, not a literal middle-dot string.",
+        "Saved screenshot and native Vision OCR prove the transient pixels. Do not use the later .txt AX dump to infer this saved moment.",
+        "Only a complete unretouched pill crop, no reset text, prolongation or synthetic button."
+      ],
+      "sha256": "13494284c4b13b0b18900af357ecb60dbdaffe7f6178d5933b0d446d78a70690",
+      "individually_reviewed": true
+    },
+    {
+      "source": "screenshots/concept-a-months.png",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "findings": [
+        "Six complete native month rows and six visible menus: November through June 2026, with actual counts/progress.",
+        "Additional May row starts below them and is partially offscreen. Do not count it as complete or reconstruct it. No empty state or tour."
+      ],
+      "sha256": "2f89b63bb2ae76450f55f557c34aedf9286e55687885f91d516bddcb1a72dea1",
+      "individually_reviewed": true
+    },
+    {
+      "source": "screenshots/concept-a-analysis.png",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "findings": [
+        "Actual loaded mountain/waterfall preview, real chronological series Taken in quick succession · 6, Keep 5 · Trash 1.",
+        "Four complete thumbnails and an intentionally clipped fifth in the native horizontal scroller. The sixth is offscreen, not a failed load.",
+        "Focus the real visible thumbnail row without changing count, checkmarks or the native partial rightmost tile. Preserve primary photo evidence above/below the focus, series header, original thumbnail row, confirmation and safety footer.",
+        "Native helper says compare it below although large preview is above; preserve it. No AI ranking or best-photo claim."
+      ],
+      "sha256": "a3caba713e7bd439ecdfe6d488db0d32db4559727917830d4f8c1a24e7305930",
+      "individually_reviewed": true
+    },
+    {
+      "source": "screenshots/concept-a-collage.png",
+      "status": "PASS",
+      "findings": [
+        "Four actual loaded neutral flower/landscape photos in complete 2x2 collage; Tools, plus and Save all visible. No placeholder or error."
+      ],
+      "sha256": "41cc29c6810d82dcaea4142aad5b493491d618cc960fac71015b29f5e5941648",
+      "individually_reviewed": true
+    },
+    {
+      "source": "screenshots/concept-a-editor.png",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "findings": [
+        "Real landscape preview; Warm visibly selected; actual undo/redo, Strength 100, Crop/Adjust/Filters/Retouch and accept controls visible.",
+        "A next optional filter peeks in from the horizontal scroller. The selected Warm item and all relevant controls are complete. Runtime separately verified the applied editing state."
+      ],
+      "sha256": "a051ce7aed4b3b4a668210ddc26e8d32b5ffaf9815641f5cd7cfba00dfa1285b",
+      "individually_reviewed": true
+    },
+    {
+      "source": "screenshots/concept-a-games.png",
+      "status": "PASS",
+      "findings": [
+        "All three native game cards fully visible: Pairs, Photo Snake, Foto Blocks, with original descriptions and navigation.",
+        "The cards contain actual native stand-image previews, not captured live gameplay. Do not claim movement or independent game acceptance from them."
+      ],
+      "sha256": "53a248d390bc00d61ca1b6af955ddfebc12e56bbb4a7af1fe5b4dffcc777190c",
+      "individually_reviewed": true
+    }
+  ],
+  "branding": {
+    "source": "branding/native-wordmark.png",
+    "status": "PASS",
+    "findings": [
+      "Visible GaleriQ wordmark with original mechanical dial-Q and complete Q-tail; no clipped glyphs.",
+      "Component metadata and compiled ImageRenderer export prove canonical VaultDialWordmark/CombinationDial origin and lightForeground, not image inference alone.",
+      "Actual 1280x512 RGBA source has alpha extrema 0/255 and original hash binding; dark native lettering is intended for the light composition."
+    ],
+    "sha256": "513d63a0fffe1213d48c6101c0b57d5ebcf50518758edb6643c3bfc00a7af9b9",
+    "individually_reviewed": true
+  },
+  "brief_conformance_observations": [
+    {
+      "criterion": "Exact native Remove 2 photos wording",
+      "status": "BLOCKED",
+      "actual": "Remove 2 photos and videos",
+      "reason": "Unchanged production copy. Retouching or silently deleting the suffix is forbidden; a production copy change is outside this creative scope."
+    },
+    {
+      "criterion": "Exact literal Again in 2 days · Change pill string",
+      "status": "OBSERVATION",
+      "actual": "Again in 2 days label and separate Change button",
+      "reason": "Genuine native layout is preserved instead of forcing a fictitious combined label."
+    }
+  ],
+  "outside_acceptance": [
+    "Face ID operation and security audit",
+    "real physical-device validation",
+    "conversion uplift",
+    "other languages",
+    "App Store Connect or release"
+  ],
+  "provenance_sha256": "86d228e9451dbc6f018e94c2bc9894fd6203aa7e3dd256e0c4eda4b99b4ac217",
+  "reviewed_required_screen_count": 12,
+  "unused_optional_locked_capture_reviewed": false,
+  "brief_exact_native_cta_status": "BLOCKED_WITH_UNCHANGED_PRODUCTION_COPY"
+}

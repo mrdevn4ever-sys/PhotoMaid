@@ -1,0 +1,154 @@
+{
+  "status": "PASS",
+  "checks": 43,
+  "passed": [
+    "design-contract",
+    "ten-font-layouts",
+    "all-headlines-max-two-lines-and-floor",
+    "all-subtitles-max-two-lines-and-46px-floor",
+    "stepwise-font-reduction-exercised",
+    "impossible-copy-rejected-at-floor",
+    "invalid-crop-rejected",
+    "null-parent-crop-rejected",
+    "contain-does-not-upscale",
+    "phone-native-proportion-exact",
+    "rounded-mask-antialias-outer-edge-only",
+    "native-known-resample-pixel-equality",
+    "original-alpha-wordmark-path-pixel-proof",
+    "one-native-pixel-corruption-rejected",
+    "native-upscale-rejected",
+    "native-inset-shadow-occlusion-accounted",
+    "in-memory-RGB-no-alpha-sRGB-PNG",
+    "in-memory-preview-JPEG-RGB-sRGB",
+    "parent-provenance-schema-contract",
+    "fresh-capture-commit-distinct-from-base-accepted",
+    "provenance-commit-mismatch-rejected",
+    "provenance-workflow_run-mismatch-rejected",
+    "provenance-workflow_url-mismatch-rejected",
+    "provenance-locale-mismatch-rejected",
+    "provenance-app_language-mismatch-rejected",
+    "provenance-fresh_capture-mismatch-rejected",
+    "provenance-status-mismatch-rejected",
+    "provenance-base_commit-mismatch-rejected",
+    "missing-native-provenance-record-rejected",
+    "skipped-capture-test-rejected",
+    "ICC-normalization-defined-and-alpha-preserved",
+    "malformed-ICC-rejected-not-silently-ignored",
+    "unset-parent-source-vision-approval-rejected",
+    "stale-parent-source-vision-provenance-rejected",
+    "native-source-hash-mismatch-rejected-before-decode",
+    "missing-source-directory-rejected",
+    "duplicate-JSON-provenance-keys-rejected",
+    "malformed-literal-commit-rejected",
+    "malformed-literal-run-rejected",
+    "independent-workflow-url-mismatch-rejected",
+    "changed-copy-rejected",
+    "overview-all-ten-one-horizontal-row",
+    "search-first-three-390px-wide"
+  ],
+  "nativeCapturesUsed": false,
+  "filesWritten": [],
+  "note": "In-memory rectangles/font/schema tests only. Actual native SourceGate and final rendering remain for parent CI.",
+  "fontLayouts": [
+    {
+      "slot": 1,
+      "headlineSize": 111,
+      "headlineLines": [
+        "Swipe the clutter.",
+        "Keep the memories."
+      ],
+      "subtitleSize": null
+    },
+    {
+      "slot": 2,
+      "headlineSize": 112,
+      "headlineLines": [
+        "Find duplicates.",
+        "Spot large files."
+      ],
+      "subtitleSize": null
+    },
+    {
+      "slot": 3,
+      "headlineSize": 112,
+      "headlineLines": [
+        "Nothing deletes",
+        "without you."
+      ],
+      "subtitleSize": null
+    },
+    {
+      "slot": 4,
+      "headlineSize": 112,
+      "headlineLines": [
+        "Private photos.",
+        "Locked away."
+      ],
+      "subtitleSize": 52
+    },
+    {
+      "slot": 5,
+      "headlineSize": 112,
+      "headlineLines": [
+        "Unsure?",
+        "Choose later."
+      ],
+      "subtitleSize": null
+    },
+    {
+      "slot": 6,
+      "headlineSize": 112,
+      "headlineLines": [
+        "One month.",
+        "A fresh start."
+      ],
+      "subtitleSize": null
+    },
+    {
+      "slot": 7,
+      "headlineSize": 112,
+      "headlineLines": [
+        "Blurry or similar?",
+        "Take a closer look."
+      ],
+      "subtitleSize": null
+    },
+    {
+      "slot": 8,
+      "headlineSize": 112,
+      "headlineLines": [
+        "Make a collage.",
+        "Keep the moment."
+      ],
+      "subtitleSize": null
+    },
+    {
+      "slot": 9,
+      "headlineSize": 112,
+      "headlineLines": [
+        "A new look.",
+        "Your own photo."
+      ],
+      "subtitleSize": null
+    },
+    {
+      "slot": 10,
+      "headlineSize": 112,
+      "headlineLines": [
+        "A small break.",
+        "Your photos play."
+      ],
+      "subtitleSize": 52
+    }
+  ],
+  "previewGeometry": {
+    "overview": [
+      2630,
+      564
+    ],
+    "search": [
+      390,
+      276
+    ]
+  }
+}

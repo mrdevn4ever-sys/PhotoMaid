@@ -68,12 +68,19 @@ def verify_pixels(final, sources, layer, later_layers, inset_style):
                                            renderingIntent=ImageCms.Intent.RELATIVE_COLORIMETRIC, flags=0)
         box = layer['targetGeometry']
         size = (box[2] - box[0], box[3] - box[1])
-        expected = rgb.crop(layer['crop']).resize(size, Image.Resampling.LANCZOS)
-        mask = Image.new('L', size, 0)
+        # Pillow resizes RGBA through premultiplied alpha. Discarding alpha before
+        # filtering contaminates even pixels whose resampled alpha becomes 255.
+        # Reproduce the documented original-alpha transform independently, not
+        # the renderer's expected buffer or its asserted hash.
         if layer['id'] == 'native-wordmark':
             need(alpha is not None, 'Original wordmark lost its actual alpha')
-            mask = alpha.crop(layer['crop']).resize(size, Image.Resampling.LANCZOS).point(lambda value: 255 if value == 255 else 0)
+            rgb.putalpha(alpha)
+            tile = rgb.crop(layer['crop']).resize(size, Image.Resampling.LANCZOS)
+            expected = tile.convert('RGB')
+            mask = tile.getchannel('A').point(lambda value: 255 if value == 255 else 0)
         else:
+            expected = rgb.crop(layer['crop']).resize(size, Image.Resampling.LANCZOS)
+            mask = Image.new('L', size, 0)
             # Strictly internal pixels only; no reliance on renderer's round-mask code.
             radius = 98 if layer['id'] == 'full-phone' else inset_style['radius']
             ImageDraw.Draw(mask).rectangle((radius, radius, size[0] - radius - 1, size[1] - radius - 1), fill=255)

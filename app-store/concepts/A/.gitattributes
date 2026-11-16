@@ -1,0 +1,5 @@
+# Keep Concept A configuration, source proofs and media byte/hash stable.
+*.json -text
+*.txt -text
+*.png binary
+*.jpg binary

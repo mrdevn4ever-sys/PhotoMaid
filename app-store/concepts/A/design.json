@@ -16,7 +16,7 @@
   "fonts": {
     "headline": {"path": "PhotoMaid/Resources/Fonts/PMDisplay-Bold.ttf", "preferredSize": 112, "minimumSize": 84, "step": 1, "maxLines": 2, "lineGap": 12},
     "subtitle": {"path": "PhotoMaid/Resources/Fonts/PMText-Medium.ttf", "preferredSize": 52, "minimumSize": 46, "step": 1, "maxLines": 2, "lineGap": 8},
-    "gesture": {"path": "PhotoMaid/Resources/Fonts/PMText-Bold.ttf", "preferredSize": 52, "minimumSize": 46, "step": 1, "maxLines": 1, "lineGap": 0}
+    "gesture": {"path": "PhotoMaid/Resources/Fonts/PMText-Bold.ttf", "preferredSize": 72, "minimumSize": 60, "step": 1, "maxLines": 1, "lineGap": 0}
   },
   "layout": {
     "alignment": "left",
@@ -24,7 +24,7 @@
     "headlineBox": [70, 248, 1136, 532],
     "subtitleBox": [70, 560, 1136, 708],
     "device": {"screenBox": [201, 760, 1005, 2508], "screenRadius": 98, "frameWidth": 8, "frameColor": "#242322", "shadowBlur": 20, "shadowOffset": [0, 12], "shadowAlpha": 38},
-    "insetStyle": {"radius": 30, "shadowBlur": 16, "shadowOffset": [0, 10], "shadowAlpha": 48},
+    "insetStyle": {"radius": 24, "shadowBlur": 8, "shadowOffset": [0, 6], "shadowAlpha": 48},
     "gestures": [
       {"action": "Keep", "direction": "up", "color": "keep", "arrowBox": [70, 564, 154, 638], "labelBox": [70, 656, 368, 724]},
       {"action": "Trash", "direction": "left", "color": "trash", "arrowBox": [454, 564, 538, 638], "labelBox": [454, 656, 752, 724]},
@@ -44,37 +44,321 @@
     "normalizeNativeICCToSRGB": true
   },
   "sourceVisualQA": {
-    "approved": false,
-    "provenanceSHA256": null,
-    "commit": null,
-    "workflowRun": null,
-    "reviewer": null,
-    "notes": null,
+    "approved": true,
+    "provenanceSHA256": "86d228e9451dbc6f018e94c2bc9894fd6203aa7e3dd256e0c4eda4b99b4ac217",
+    "commit": "c6ffd6c4a6279b8fadb2395069f415e84e53370e",
+    "workflowRun": "43777081132",
+    "reviewer": "Hermes parent, individual vision-tool review of all twelve required full native captures and original native wordmark",
+    "notes": "All12 required native screens and canonical wordmark individually reviewed; exact hashes and successful native run verified. See F:/HermesOutput/GaleriQ/concept-a-en-v1/qa/native-source-visual.json. Native CTA remains Remove 2 photos and videos (exact brief wording BLOCKED by unchanged production copy); no retouch. Source03 is whole genuine system-confirmation screenshot, not a synthetic dialog crop. Later is a native label plus Change button. Native partial scroll items are preserved; Face ID/security/conversion not accepted.",
     "nativeWordmarkComponent": "VaultDialWordmark",
     "nativeWordmarkForeground": "lightForeground",
-    "nativeStatusBar": {"time": "9:41", "fullBattery": true, "dynamicIsland": true, "appearance": "dark"}
+    "nativeStatusBar": {
+      "time": "9:41",
+      "fullBattery": true,
+      "dynamicIsland": true,
+      "appearance": "dark"
+    }
   },
   "slots": [
-    {"id": 1, "file": "01-swipe.png", "headline": "Swipe the clutter. Keep the memories.", "subtitle": null, "primary": "screenshots/concept-a-swipe.png", "primarySourceSHA256": null, "primaryProtectedRects": null, "gestures": true, "insets": [], "evidence": "Native photo clutter in an actual held swipe; no renderer photo rotation."},
-    {"id": 2, "file": "02-duplicates-large-files.png", "headline": "Find duplicates. Spot large files.", "subtitle": null, "primary": "screenshots/concept-a-duplicates.png", "primarySourceSHA256": null, "primaryProtectedRects": null, "gestures": false, "insets": [
-      {"id": "large-file-results", "source": "screenshots/concept-a-large-files.png", "crop": null, "cropSourceSHA256": null, "targetBox": [80, 1620, 1126, 2190], "enabled": true, "required": true, "evidence": "Include measured sizes and real large-video results; no tool-icon tiles."}
-    ], "evidence": "An actual duplicate pair remains unobscured on the primary phone."},
-    {"id": 3, "file": "03-delete-confirmation.png", "headline": "Nothing deletes without you.", "subtitle": null, "primary": "screenshots/concept-a-trash.png", "primarySourceSHA256": null, "primaryProtectedRects": null, "gestures": false, "insets": [
-      {"id": "native-system-confirmation", "source": "screenshots/concept-a-delete-confirm.png", "crop": null, "cropSourceSHA256": null, "targetBox": [100, 1440, 1106, 2140], "enabled": true, "required": true, "evidence": "The whole genuine iOS confirmation dialog, including its buttons, as one unretouched rectangular crop."}
-    ], "evidence": "Keep the real trash Remove 2 photos action visible on the primary phone."},
-    {"id": 4, "file": "04-vault.png", "headline": "Private photos. Locked away.", "subtitle": "Encrypted vault, protected by your own code and Face ID.", "primary": "screenshots/concept-a-vault.png", "primarySourceSHA256": null, "primaryProtectedRects": null, "gestures": false, "insets": [
-      {"id": "optional-native-lock", "source": "screenshots/concept-a-vault-locked.png", "crop": null, "cropSourceSHA256": null, "targetBox": [120, 1580, 1086, 2190], "enabled": false, "required": false, "evidence": "Optional genuine locked-vault UI crop, only after source QA. Disabled sources are never substituted or required."}
-    ], "evidence": "Real encrypted vault state; no contrary originals-remain warning hidden by a crop."},
-    {"id": 5, "file": "05-later.png", "headline": "Unsure? Choose later.", "subtitle": null, "primary": "screenshots/concept-a-later.png", "primarySourceSHA256": null, "primaryProtectedRects": null, "gestures": false, "insets": [
-      {"id": "again-in-two-days", "source": "screenshots/concept-a-later.png", "crop": null, "cropSourceSHA256": null, "targetBox": [100, 1950, 1106, 2180], "enabled": true, "required": true, "evidence": "The entire native Again in 2 days · Change pill; never reset this text in marketing type."}
-    ], "evidence": "Actual deferred decision and its native reminder pill."},
-    {"id": 6, "file": "06-months.png", "headline": "One month. A fresh start.", "subtitle": null, "primary": "screenshots/concept-a-months.png", "primarySourceSHA256": null, "primaryProtectedRects": null, "gestures": false, "insets": [], "evidence": "A well-populated native month list, not a large empty state."},
-    {"id": 7, "file": "07-analysis.png", "headline": "Blurry or similar? Take a closer look.", "subtitle": null, "primary": "screenshots/concept-a-analysis.png", "primarySourceSHA256": null, "primaryProtectedRects": null, "gestures": false, "insets": [
-      {"id": "real-analysis-results", "source": "screenshots/concept-a-analysis.png", "crop": null, "cropSourceSHA256": null, "targetBox": [80, 1490, 1126, 2160], "enabled": true, "required": true, "evidence": "Actual series or blur results with real photos, not empty tiles."}
-    ], "evidence": "No additional slogan, including Find. Review. Decide."},
-    {"id": 8, "file": "08-collage.png", "headline": "Make a collage. Keep the moment.", "subtitle": null, "primary": "screenshots/concept-a-collage.png", "primarySourceSHA256": null, "primaryProtectedRects": null, "gestures": false, "insets": [], "evidence": "A real collage of fixture photos."},
-    {"id": 9, "file": "09-editor.png", "headline": "A new look. Your own photo.", "subtitle": null, "primary": "screenshots/concept-a-editor.png", "primarySourceSHA256": null, "primaryProtectedRects": null, "gestures": false, "insets": [], "evidence": "A real photo in the native editor."},
-    {"id": 10, "file": "10-games.png", "headline": "A small break. Your photos play.", "subtitle": "Free with ads. GaleriQ Pro: one purchase, no subscription.", "primary": "screenshots/concept-a-games.png", "primarySourceSHA256": null, "primaryProtectedRects": null, "gestures": false, "insets": [], "evidence": "Real photo games; the full business-model subtitle stays readable at no less than 46 px."}
+    {
+      "id": 1,
+      "file": "01-swipe.png",
+      "headline": "Swipe the clutter. Keep the memories.",
+      "subtitle": null,
+      "primary": "screenshots/concept-a-swipe.png",
+      "primarySourceSHA256": "72a6eb992f13f5a0f50655f3609aac4f230ba5094a568bb62b8aaedee50c3e16",
+      "primaryProtectedRects": [
+        [
+          10,
+          210,
+          1196,
+          2600
+        ]
+      ],
+      "gestures": true,
+      "insets": [],
+      "evidence": "Native photo clutter in an actual held swipe; no renderer photo rotation."
+    },
+    {
+      "id": 2,
+      "file": "02-duplicates-large-files.png",
+      "headline": "Find duplicates. Spot large files.",
+      "subtitle": null,
+      "primary": "screenshots/concept-a-large-files.png",
+      "primarySourceSHA256": "5c46c0b7ce88a554e37d0a8335d4d59043df1a0171deb42fc8f81f93bc49e0e7",
+      "primaryProtectedRects": [
+        [
+          0,
+          200,
+          1206,
+          1650
+        ]
+      ],
+      "gestures": false,
+      "insets": [
+        {
+          "id": "duplicate-results",
+          "source": "screenshots/concept-a-duplicates.png",
+          "crop": [
+            0,
+            1560,
+            1206,
+            2300
+          ],
+          "cropSourceSHA256": "928ca36bd06ef7bea6ba4fac756b6e76dc9f118ac89446be50d4617f195e22ea",
+          "targetBox": [
+            245,
+            1900,
+            961,
+            2470
+          ],
+          "enabled": true,
+          "required": true,
+          "evidence": "Whole actual duplicate-result group: Identical files header, both real identical photos and selection labels, complete native selected-copy size caveat. No partial text scraps and no guarantee of freed space. Placed only over primary Large files empty lower area."
+        }
+      ],
+      "evidence": "Complete genuine Large files screen with its own native title, threshold, native size caveat and both measured video rows. Real duplicate-result group is enlarged only over the empty lower phone area; header, both photos, selection labels and the entire original size caveat remain together. Focus including shadow stays strictly inside the native screen width, so every segment of the common full-phone frame remains visible."
+    },
+    {
+      "id": 3,
+      "file": "03-delete-confirmation.png",
+      "headline": "Nothing deletes without you.",
+      "subtitle": null,
+      "primary": "screenshots/concept-a-delete-confirm.png",
+      "primarySourceSHA256": "edb77a0e60d6ebdb2f155735982b302fb34e24ac570f7330570c6ffe85848d1e",
+      "primaryProtectedRects": [
+        [
+          0,
+          200,
+          1206,
+          2610
+        ]
+      ],
+      "gestures": false,
+      "insets": [],
+      "evidence": "The complete actual native iOS confirmation is already large inside the same full-phone geometry. Preserve the native Trash underlay, count, generic Remove 2 photos and videos action and whole system dialog together; no rebuilt/retouched dialog and no separate inset hiding trash thumbnails."
+    },
+    {
+      "id": 4,
+      "file": "04-vault.png",
+      "headline": "Private photos. Locked away.",
+      "subtitle": "Encrypted vault, protected by your own code and Face ID.",
+      "primary": "screenshots/concept-a-vault.png",
+      "primarySourceSHA256": "4218b08c8b7c922179e859b374e287b3d6355c0a8ee972852cabe7366a75a15b",
+      "primaryProtectedRects": [
+        [
+          0,
+          200,
+          1206,
+          2610
+        ]
+      ],
+      "gestures": false,
+      "insets": [
+        {
+          "id": "optional-native-lock",
+          "source": "screenshots/concept-a-vault-locked.png",
+          "crop": null,
+          "cropSourceSHA256": null,
+          "targetBox": [
+            120,
+            1580,
+            1086,
+            2190
+          ],
+          "enabled": false,
+          "required": false,
+          "evidence": "Optional genuine locked-vault UI crop, only after source QA. Disabled sources are never substituted or required."
+        }
+      ],
+      "evidence": "Real encrypted vault state; no contrary originals-remain warning hidden by a crop."
+    },
+    {
+      "id": 5,
+      "file": "05-later.png",
+      "headline": "Unsure? Choose later.",
+      "subtitle": null,
+      "primary": "screenshots/concept-a-later.png",
+      "primarySourceSHA256": "13494284c4b13b0b18900af357ecb60dbdaffe7f6178d5933b0d446d78a70690",
+      "primaryProtectedRects": [
+        [
+          20,
+          235,
+          1180,
+          390
+        ],
+        [
+          34,
+          426,
+          1173,
+          1000
+        ],
+        [
+          34,
+          1580,
+          1173,
+          2580
+        ]
+      ],
+      "gestures": false,
+      "insets": [
+        {
+          "id": "again-in-two-days",
+          "source": "screenshots/concept-a-later.png",
+          "crop": [
+            280,
+            1895,
+            928,
+            2085
+          ],
+          "cropSourceSHA256": "13494284c4b13b0b18900af357ecb60dbdaffe7f6178d5933b0d446d78a70690",
+          "targetBox": [
+            100,
+            1500,
+            1106,
+            1730
+          ],
+          "enabled": true,
+          "required": true,
+          "evidence": "The entire native Again in 2 days · Change pill; never reset this text in marketing type."
+        }
+      ],
+      "evidence": "Actual deferred decision and its native reminder pill."
+    },
+    {
+      "id": 6,
+      "file": "06-months.png",
+      "headline": "One month. A fresh start.",
+      "subtitle": null,
+      "primary": "screenshots/concept-a-months.png",
+      "primarySourceSHA256": "2f89b63bb2ae76450f55f557c34aedf9286e55687885f91d516bddcb1a72dea1",
+      "primaryProtectedRects": [
+        [
+          0,
+          200,
+          1206,
+          2610
+        ]
+      ],
+      "gestures": false,
+      "insets": [],
+      "evidence": "A well-populated native month list, not a large empty state."
+    },
+    {
+      "id": 7,
+      "file": "07-analysis.png",
+      "headline": "Blurry or similar? Take a closer look.",
+      "subtitle": null,
+      "primary": "screenshots/concept-a-analysis.png",
+      "primarySourceSHA256": "a3caba713e7bd439ecdfe6d488db0d32db4559727917830d4f8c1a24e7305930",
+      "primaryProtectedRects": [
+        [
+          40,
+          220,
+          1165,
+          490
+        ],
+        [
+          138,
+          515,
+          1068,
+          870
+        ],
+        [
+          138,
+          1500,
+          1068,
+          1756
+        ],
+        [
+          40,
+          1775,
+          1206,
+          2495
+        ]
+      ],
+      "gestures": false,
+      "insets": [
+        {
+          "id": "real-analysis-results",
+          "source": "screenshots/concept-a-analysis.png",
+          "crop": [
+            48,
+            1775,
+            804,
+            2035
+          ],
+          "cropSourceSHA256": "a3caba713e7bd439ecdfe6d488db0d32db4559727917830d4f8c1a24e7305930",
+          "targetBox": [
+            245,
+            1420,
+            961,
+            1690
+          ],
+          "enabled": true,
+          "required": true,
+          "evidence": "Three complete actual series thumbnails from the same native scroller, enlarged without any fabricated checkmark or count. Whole primary series count, original row, confirmation and safety text remain visible; full hardware frame is unobscured."
+        }
+      ],
+      "evidence": "No additional slogan, including Find. Review. Decide. Focus including shadow stays strictly inside the native screen width, so every segment of the common full-phone frame remains visible."
+    },
+    {
+      "id": 8,
+      "file": "08-collage.png",
+      "headline": "Make a collage. Keep the moment.",
+      "subtitle": null,
+      "primary": "screenshots/concept-a-collage.png",
+      "primarySourceSHA256": "41cc29c6810d82dcaea4142aad5b493491d618cc960fac71015b29f5e5941648",
+      "primaryProtectedRects": [
+        [
+          0,
+          200,
+          1206,
+          2610
+        ]
+      ],
+      "gestures": false,
+      "insets": [],
+      "evidence": "A real collage of fixture photos."
+    },
+    {
+      "id": 9,
+      "file": "09-editor.png",
+      "headline": "A new look. Your own photo.",
+      "subtitle": null,
+      "primary": "screenshots/concept-a-editor.png",
+      "primarySourceSHA256": "a051ce7aed4b3b4a668210ddc26e8d32b5ffaf9815641f5cd7cfba00dfa1285b",
+      "primaryProtectedRects": [
+        [
+          0,
+          200,
+          1206,
+          2610
+        ]
+      ],
+      "gestures": false,
+      "insets": [],
+      "evidence": "A real photo in the native editor."
+    },
+    {
+      "id": 10,
+      "file": "10-games.png",
+      "headline": "A small break. Your photos play.",
+      "subtitle": "Free with ads. GaleriQ Pro: one purchase, no subscription.",
+      "primary": "screenshots/concept-a-games.png",
+      "primarySourceSHA256": "53a248d390bc00d61ca1b6af955ddfebc12e56bbb4a7af1fe5b4dffcc777190c",
+      "primaryProtectedRects": [
+        [
+          0,
+          200,
+          1206,
+          2610
+        ]
+      ],
+      "gestures": false,
+      "insets": [],
+      "evidence": "Real photo games; the full business-model subtitle stays readable at no less than 46 px."
+    }
   ],
   "previews": {"overview": {"file": "00-overview.jpg", "slotIds": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], "columns": 10, "tileWidth": 241, "gap": 20, "margin": 20}, "search": {"file": "00-search-preview.jpg", "slotIds": [1, 2, 3], "columns": 3, "tileWidth": 112, "gap": 11, "margin": 16, "description": "390 px-wide phone-search row, logical pixels; first three screenshots, no invented App Store chrome."}},
   "localizationRule": {"renderNow": ["en-US"], "futureOnly": "For an approved future locale, retain the shared 70 px safe margins and full-device geometry. Rewrap at word boundaries, then decrement font size by 1 px down to the declared floor; at most two headline/subtitle lines. If it still fails, stop for an approved layout revision, never rewrite, truncate, condense or stretch copy. RTL requires a shaping-capable engine (RAQM), start-aligned marketing text, and separate source/crop QA; native pixels, the LTR native wordmark, and physical Keep-up/Trash-left/Later-right gesture semantics must never be mirrored. No translations or other locale exports are implemented here."}

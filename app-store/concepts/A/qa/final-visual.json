@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "scope": "Final visual/render acceptance within unchanged production UI; not full exact-native-copy conformance, owner approval, security or conversion certification",
+  "status": "PASS_WITH_OBSERVATIONS",
+  "blockers": [],
+  "workflow_run": "43777081132",
+  "capture_commit": "c6ffd6c4a6279b8fadb2395069f415e84e53370e",
+  "render_candidate": "render-r3",
+  "provenance_sha256": "86d228e9451dbc6f018e94c2bc9894fd6203aa7e3dd256e0c4eda4b99b4ac217",
+  "design_sha256": "71ca17cc901dd8224c9cb5fc4dff398ee83b08fcea37a854c77ffe9465e1bc2d",
+  "images": [
+    {
+      "slot": 1,
+      "file": "01-swipe.png",
+      "sha256": "989805903afab47e1e76fe291e41cfb79792675ede4ec46a70e2c989839463c5",
+      "full_size_reviewed": true,
+      "search_scale_reviewed": true,
+      "search_scale_tile_width": 112,
+      "full_size_review_basis": "Individually vision-reviewed render-r2 image; actual decoded RGB bytes verified identical to current r3 file, despite new encoded ICC/hash metadata",
+      "decoded_RGB_sha256": "e5cae970a6a99fa8ca789b3032bbab3aca2b7d5168f7a8659334950aba667f69",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "observations": [
+        "Exact headline, mechanical native Q, large correct gesture directions/colors and actually tilted defocused card. Native in-app counters preserved; no marketing pagination or repeated slogan."
+      ],
+      "small_scale_finding": "PASS: exact main headline legible and feature distinguishable; complete unobscured phone silhouette. Tiny native figures/body text are not asserted legible at112px."
+    },
+    {
+      "slot": 2,
+      "file": "02-duplicates-large-files.png",
+      "sha256": "018c550b97a317ad2737a1aebf23cae533a2acc5980f98aa345ae9d4ce88421e",
+      "full_size_reviewed": true,
+      "search_scale_reviewed": true,
+      "search_scale_tile_width": 112,
+      "full_size_review_basis": "Direct actual render-r3 image vision review",
+      "decoded_RGB_sha256": "bcf2b0aae6b954edb7efe22da8569c1c129e0e6ad4b9ad94a15cd3112f34012e",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "observations": [
+        "Direct actual r3 vision PASS: whole native Large files header, threshold, both measured video rows and caveat complete. Native duplicate group, two actual identical photos, selection labels and entire caveat clear in the previously empty lower area. No text fragments or phone-frame occlusion."
+      ],
+      "small_scale_finding": "PASS: exact main headline legible and feature distinguishable; complete unobscured phone silhouette. Tiny native figures/body text are not asserted legible at112px."
+    },
+    {
+      "slot": 3,
+      "file": "03-delete-confirmation.png",
+      "sha256": "5eaebfa39b5fb5283d8ab51493167f1b2b64e9a7a50e5a54213724fe98b8ee6c",
+      "full_size_reviewed": true,
+      "search_scale_reviewed": true,
+      "search_scale_tile_width": 112,
+      "full_size_review_basis": "Individually vision-reviewed render-r2 image; actual decoded RGB bytes verified identical to current r3 file, despite new encoded ICC/hash metadata",
+      "decoded_RGB_sha256": "f59d9f50ed37f79a5693de97a0e148343d92b414f7b3372a0eab86c14dbfd31c",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "observations": [
+        "Whole genuine system dialog and both actions are clearly readable in complete phone; underlying actual trash and generic action preserved.",
+        "Exact brief native CTA remains unmet: actual Remove 2 photos and videos, requested Remove 2 photos. No UI retouch."
+      ],
+      "small_scale_finding": "PASS: exact main headline legible and feature distinguishable; complete unobscured phone silhouette. Tiny native figures/body text are not asserted legible at112px."
+    },
+    {
+      "slot": 4,
+      "file": "04-vault.png",
+      "sha256": "d31150c0ac56b55a8722300deca364f0690c6a7833c6b4f60fd9c00a1cf3cae4",
+      "full_size_reviewed": true,
+      "search_scale_reviewed": true,
+      "search_scale_tile_width": 112,
+      "full_size_review_basis": "Individually vision-reviewed render-r2 image; actual decoded RGB bytes verified identical to current r3 file, despite new encoded ICC/hash metadata",
+      "decoded_RGB_sha256": "e3e268027339f9860dc548e3dba105505280baca6dcf43fd03e875fba112cccb",
+      "status": "PASS",
+      "observations": [
+        "Exact two-line headline and exact own code and Face ID subtitle, five neutral loaded vault thumbnails and complete visible controls. No originals-remain warning. Security/Face ID not certified by image."
+      ],
+      "small_scale_finding": "PASS: exact main headline legible and feature distinguishable; complete unobscured phone silhouette. Tiny native figures/body text are not asserted legible at112px."
+    },
+    {
+      "slot": 5,
+      "file": "05-later.png",
+      "sha256": "88e53594ec963460525cf76c8de13fa52928b21d0a780df013a8f16dbee18d23",
+      "full_size_reviewed": true,
+      "search_scale_reviewed": true,
+      "search_scale_tile_width": 112,
+      "full_size_review_basis": "Direct actual render-r3 image vision review",
+      "decoded_RGB_sha256": "136973aca0f319dbd8166320852b8df8ad3d0f6a9e15d589fcb291f99f37873f",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "observations": [
+        "Direct actual r3 vision PASS: full actual reminder label plus Change button in both original and truthful native focus crop. No essential controls or physical frame hidden."
+      ],
+      "small_scale_finding": "PASS: exact main headline legible and feature distinguishable; complete unobscured phone silhouette. Tiny native figures/body text are not asserted legible at112px."
+    },
+    {
+      "slot": 6,
+      "file": "06-months.png",
+      "sha256": "ccbc0ac2acdeeea1ab0e5b0cc1d0e5936a83a3c2a4dda41c46413d18d4e1d569",
+      "full_size_reviewed": true,
+      "search_scale_reviewed": true,
+      "search_scale_tile_width": 112,
+      "full_size_review_basis": "Individually vision-reviewed render-r2 image; actual decoded RGB bytes verified identical to current r3 file, despite new encoded ICC/hash metadata",
+      "decoded_RGB_sha256": "4637a33d58e58b379b3fee362654d3bc3312f5fea5f65da0f6f1a82546bc15dc",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "observations": [
+        "Exact month headline; six complete month rows and menus; native partial May continuation is not counted as complete. No tour or dominant empty state."
+      ],
+      "small_scale_finding": "PASS: exact main headline legible and feature distinguishable; complete unobscured phone silhouette. Tiny native figures/body text are not asserted legible at112px."
+    },
+    {
+      "slot": 7,
+      "file": "07-analysis.png",
+      "sha256": "a00aad8b71dcc60a8adae43571cbf8a145f70683d90a546a9e1137e3f33eb8fe",
+      "full_size_reviewed": true,
+      "search_scale_reviewed": true,
+      "search_scale_tile_width": 112,
+      "full_size_review_basis": "Direct actual render-r3 image vision review",
+      "decoded_RGB_sha256": "e438f2791840ef7e7ba49093e014cb47f37d4307208f7b280c344571b1f018af",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "observations": [
+        "Direct actual r3 vision PASS: three complete genuine focus thumbnails inside screen, original four-plus-partial native scroller unchanged, six-series label and Keep5Trash1/safety footer clear, whole physical frame visible. No AI ranking or closing slogan."
+      ],
+      "small_scale_finding": "PASS: exact main headline legible and feature distinguishable; complete unobscured phone silhouette. Tiny native figures/body text are not asserted legible at112px."
+    },
+    {
+      "slot": 8,
+      "file": "08-collage.png",
+      "sha256": "1720dff4a1cec31ec8735f1235d58a14684c25f65905b7a6ba823d69aa20e9b2",
+      "full_size_reviewed": true,
+      "search_scale_reviewed": true,
+      "search_scale_tile_width": 112,
+      "full_size_review_basis": "Individually vision-reviewed render-r2 image; actual decoded RGB bytes verified identical to current r3 file, despite new encoded ICC/hash metadata",
+      "decoded_RGB_sha256": "00953574b4ed4f72566fbe27b7ba50ab033a3d6b0db13c2f299c8d2ba0f9c910",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "observations": [
+        "Exact collage headline; four actual loaded neutral photos, full canvas and Tools/plus/Save controls visible. No foreign logo or person within photo content.",
+        "A vision response conditionally flagged the own brand if all logos were forbidden. The user explicitly REQUIRES canonical GaleriQ branding and forbids FOREIGN logos only, so this conditional false-positive is resolved as PASS."
+      ],
+      "small_scale_finding": "PASS: exact main headline legible and feature distinguishable; complete unobscured phone silhouette. Tiny native figures/body text are not asserted legible at112px."
+    },
+    {
+      "slot": 9,
+      "file": "09-editor.png",
+      "sha256": "c465b85fe99e8d669de2223f635eb8f61915ef0561acbb159b24ab79f64e63c8",
+      "full_size_reviewed": true,
+      "search_scale_reviewed": true,
+      "search_scale_tile_width": 112,
+      "full_size_review_basis": "Individually vision-reviewed render-r2 image; actual decoded RGB bytes verified identical to current r3 file, despite new encoded ICC/hash metadata",
+      "decoded_RGB_sha256": "af5ff24c6de20f44a0fdb7b8884bb3392e84854eaded12e0627632b43fa5bf63",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "observations": [
+        "Exact editor headline; actual Warm selected, full relevant controls, Strength100 and native optional horizontal next-filter peek."
+      ],
+      "small_scale_finding": "PASS: exact main headline legible and feature distinguishable; complete unobscured phone silhouette. Tiny native figures/body text are not asserted legible at112px."
+    },
+    {
+      "slot": 10,
+      "file": "10-games.png",
+      "sha256": "1e7612a9d03c3779bdb8f990a064bb20508ce28cc80917a9189c54b380777e64",
+      "full_size_reviewed": true,
+      "search_scale_reviewed": true,
+      "search_scale_tile_width": 112,
+      "full_size_review_basis": "Individually vision-reviewed render-r2 image; actual decoded RGB bytes verified identical to current r3 file, despite new encoded ICC/hash metadata",
+      "decoded_RGB_sha256": "aa3c841d9a3177ce54d48d857bb38fae788dc6eafdd41cbeed36fb4cd06b32de",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "observations": [
+        "Exact games headline and exact two-line Free with ads / one purchase / no subscription subtitle; all three actual native stand-image game cards visible. Not live gameplay acceptance."
+      ],
+      "small_scale_finding": "PASS: exact main headline legible and feature distinguishable; complete unobscured phone silhouette. Tiny native figures/body text are not asserted legible at112px."
+    }
+  ],
+  "previews": [
+    {
+      "file": "00-overview.jpg",
+      "sha256": "8e31bc0411a8a8343afdab95d4db7b1be136118394dc04b930d2f9d4a682b588",
+      "reviewed": true,
+      "status": "PASS",
+      "finding": "Actual one-row all-ten overview: correct order, equal full phones with all physical frame segments visible, consistent original wordmark and continuous ice-blue; no marketing pagination or repeated slogan."
+    },
+    {
+      "file": "00-search-preview.jpg",
+      "sha256": "96fba3aa2372cedba5f4fe9284c524b1d559bf0c74a7788c94ad743edf6beaf9",
+      "reviewed": true,
+      "status": "PASS",
+      "finding": "Actual390px row: first3 ordered exactly, all3 headlines legible, all3 whole phones, no frame/lens collision; fine MB/OS prompt text too small for reliable reading."
+    }
+  ],
+  "individual_image_count": 10,
+  "whole_phone_frame_gate": "PASS; actual fully opaque frame pixels independently checked across all ten, not only equal geometry metadata",
+  "brief_conformance": {
+    "all_ten_exact_marketing_headlines": "PASS",
+    "vault_exact_own_code_subtitle": "PASS",
+    "games_exact_business_model_subtitle": "PASS",
+    "native_remove_2_photos_exact_copy": "BLOCKED: native production CTA remains Remove 2 photos and videos; no production-copy authorization and no UI retouch allowed",
+    "native_reminder_literal_middle_dot": "OBSERVATION: actual native label plus separate Change button, preserved"
+  },
+  "notes": [
+    "Bild03: Native CTA unverändert „Remove 2 photos and videos“ statt „Remove 2 photos“. Exakter Brief-Wortlaut: BLOCKED durch unveränderte Produktionscopy; keine UI-Retusche oder Katalogänderung. Die echte Systemfrage nennt ausdrücklich „2 photos“.",
+    "Die Later-Pille besteht nativ aus „Again in 2 days“ und einem separaten „Change“-Button; ein künstlicher Mittelpunkt oder kombinierter Text wurde nicht erzeugt.",
+    "Monate: sechs vollständige Zeilen; die nächste Mai-Zeile beginnt nativ angeschnitten. Editor-Filter und Serienreihe bleiben echte horizontale Scrollbereiche; im Analyse-Fokus werden drei echte Thumbnails vergrößert, nicht alle sechs als sichtbar ausgegeben.",
+    "Der native Duplikatheader „2.3 MB total“ bezeichnet extra-copy bytes, nicht die Summe beider Dateien und keine garantierte Speicherfreigabe. Die echten Größen-/Speicherplatzvorbehalte bleiben sichtbar.",
+    "Spielebild zeigt die drei echten nativen Spielkarten/Standbild-Vorschauen, keine Abnahme laufenden Gameplays.",
+    "112px-Suchskalierung: Headlines und Feature-Reihenfolge lesbar. Feine MB-Zahlen, OS-Dialogtexte und Zusatzzeilen sind dort nicht zuverlässig lesbar; die vollständigen Inhalte wurden separat in den großen Bildern geprüft.",
+    "Bildmotive stammen ausschließlich aus der hashgebundenen Auswahl von16 einzeln geprüften CC0-Originalen; keine pauschale Freigabe aller55 Originalfotos.",
+    "Face ID und eigener Tresor-Code sind durch den gepinnten App-Quellstand belegt; diese Bildproduktion ist keine zusätzliche Face-ID-, Kryptografie-, reale-Geräte- oder Conversion-Abnahme."
+  ],
+  "owner_concept_approval": "WAITING FOR FEEDBACK; not perfect until explicit owner approval",
+  "other_languages": "NOT RUN; en-US only",
+  "App_Store_Connect_submission_release_PR_merge": "NOT RUN"
+}

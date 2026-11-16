@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "controls": [
+    {
+      "control": "real_older_render_technical_report",
+      "rejected": true,
+      "actual_error": "Final PNG differs from actual technical or visual review",
+      "archive_created": false
+    },
+    {
+      "control": "real_failed_native_run",
+      "rejected": true,
+      "actual_error": "Actual native workflow has not passed",
+      "archive_created": false
+    }
+  ]
+}

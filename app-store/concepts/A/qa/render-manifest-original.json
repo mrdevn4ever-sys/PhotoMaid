@@ -1,0 +1,4351 @@
+{
+  "schemaVersion": 1,
+  "concept": "A",
+  "locale": "en-US",
+  "size": [
+    1206,
+    2622
+  ],
+  "renderer": {
+    "path": "scripts/store/render_concept_a.py",
+    "sha256": "d0c2f37e2b2940a861e7d949be5b7032ba3f9768fe0b0df86e6bbb1705550905",
+    "pillowVersion": "12.3.0",
+    "pythonVersion": "3.11.15"
+  },
+  "design": {
+    "path": "F:\\GaleriQ-store-concept-a-en-v1\\app-store\\concepts\\A\\design.json",
+    "logicalPath": "app-store/concepts/A/design.json",
+    "sha256": "71ca17cc901dd8224c9cb5fc4dff398ee83b08fcea37a854c77ffe9465e1bc2d"
+  },
+  "sourceGate": {
+    "status": "PASS",
+    "passedTest": true,
+    "sourceRoot": "F:\\HermesOutput\\GaleriQ\\concept-a-en-v1\\native-run-43777081132-attempt-1",
+    "provenanceSHA256": "86d228e9451dbc6f018e94c2bc9894fd6203aa7e3dd256e0c4eda4b99b4ac217",
+    "provenance": {
+      "schema_version": 1,
+      "status": "PASS",
+      "fresh_capture": true,
+      "locale": "en-US",
+      "app_language": "en",
+      "platform": "iOS Simulator",
+      "base_commit": "583eb804a81401aa2010996875b35d05afc61539",
+      "commit": "c6ffd6c4a6279b8fadb2395069f415e84e53370e",
+      "workflow_run": "43777081132",
+      "run_attempt": "1",
+      "workflow_url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/43777081132",
+      "branch": "hermes/store-concept-a-en",
+      "captured_at": "2026-11-16T00:15:21.227995+00:00",
+      "app": {
+        "CFBundleDisplayName": "GaleriQ",
+        "CFBundleShortVersionString": "1.0.1",
+        "CFBundleVersion": "2",
+        "CFBundleIdentifier": "com.mrdevn4ever.photomaid"
+      },
+      "device": {
+        "device_class": "iphone-medium",
+        "name": "iPhone 17 Pro",
+        "device_type": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+        "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+        "os_version": "26.2",
+        "sdk": "26.5",
+        "udid": "92C52839-CEFE-457E-A4EC-3E28B504B72A",
+        "actual_duo": false
+      },
+      "capture_summary": {
+        "devicesAndConfigurations": [
+          {
+            "device": {
+              "architecture": "arm64",
+              "deviceId": "92C52839-CEFE-457E-A4EC-3E28B504B72A",
+              "deviceName": "PhotoMaid Store Current",
+              "modelName": "iPhone 17 Pro",
+              "osBuildNumber": "23C54",
+              "osVersion": "26.2",
+              "platform": "iOS Simulator"
+            },
+            "expectedFailures": 0,
+            "failedTests": 0,
+            "passedTests": 1,
+            "skippedTests": 0,
+            "testPlanConfiguration": {
+              "configurationId": "1",
+              "configurationName": "Test Scheme Action"
+            }
+          }
+        ],
+        "environmentDescription": "PhotoMaid · Built with macOS 26.7.2",
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "finishTime": 1794788074.881,
+        "passedTests": 1,
+        "result": "Passed",
+        "skippedTests": 0,
+        "startTime": 1794787552.899,
+        "statistics": [],
+        "testFailures": [],
+        "title": "Test - PhotoMaid",
+        "topInsights": [],
+        "totalTestCount": 1
+      },
+      "fixture_manifest_sha256": "b11e031565871153d56249d424c5b37d44b951aa183ed8c0e8e4305bb0d57c0f",
+      "fixture_visual_source_gate": {
+        "status": "PASS",
+        "allowlist_sha256": "7082260ee0e09e7bab94a278728ee93fa0ca74ed14592bda0f79785b4627ed55",
+        "approved_original_count": 16,
+        "all_used_sources_approved": true
+      },
+      "required_native_screens": [
+        "concept-a-swipe.png",
+        "concept-a-duplicates.png",
+        "concept-a-large-files.png",
+        "concept-a-trash.png",
+        "concept-a-delete-confirm.png",
+        "concept-a-vault.png",
+        "concept-a-later.png",
+        "concept-a-months.png",
+        "concept-a-analysis.png",
+        "concept-a-collage.png",
+        "concept-a-editor.png",
+        "concept-a-games.png"
+      ],
+      "outputs": [
+        {
+          "file": "screenshots/concept-a-analysis.png",
+          "sha256": "a3caba713e7bd439ecdfe6d488db0d32db4559727917830d4f8c1a24e7305930",
+          "bytes": 2363292,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-collage.png",
+          "sha256": "41cc29c6810d82dcaea4142aad5b493491d618cc960fac71015b29f5e5941648",
+          "bytes": 2271603,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-delete-confirm.png",
+          "sha256": "edb77a0e60d6ebdb2f155735982b302fb34e24ac570f7330570c6ffe85848d1e",
+          "bytes": 433316,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-duplicates.png",
+          "sha256": "928ca36bd06ef7bea6ba4fac756b6e76dc9f118ac89446be50d4617f195e22ea",
+          "bytes": 464616,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-editor.png",
+          "sha256": "a051ce7aed4b3b4a668210ddc26e8d32b5ffaf9815641f5cd7cfba00dfa1285b",
+          "bytes": 2447775,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-games.png",
+          "sha256": "53a248d390bc00d61ca1b6af955ddfebc12e56bbb4a7af1fe5b4dffcc777190c",
+          "bytes": 309610,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-large-files.png",
+          "sha256": "5c46c0b7ce88a554e37d0a8335d4d59043df1a0171deb42fc8f81f93bc49e0e7",
+          "bytes": 285171,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-later.png",
+          "sha256": "13494284c4b13b0b18900af357ecb60dbdaffe7f6178d5933b0d446d78a70690",
+          "bytes": 4122183,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-months.png",
+          "sha256": "2f89b63bb2ae76450f55f557c34aedf9286e55687885f91d516bddcb1a72dea1",
+          "bytes": 183223,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-swipe.png",
+          "sha256": "72a6eb992f13f5a0f50655f3609aac4f230ba5094a568bb62b8aaedee50c3e16",
+          "bytes": 1155247,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGBA",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-trash.png",
+          "sha256": "246a924cfcd9a39501b45c2605fce4f9967f3aa760f35cd8f9d3a4ff63658b1a",
+          "bytes": 444231,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-vault-locked.png",
+          "sha256": "a6b295ae303a7368bafa91950a47d39b57eadc4a182a9f32e965bf6657e085e5",
+          "bytes": 301688,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-vault.png",
+          "sha256": "4218b08c8b7c922179e859b374e287b3d6355c0a8ee972852cabe7366a75a15b",
+          "bytes": 1419401,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        }
+      ],
+      "branding": {
+        "file": "branding/native-wordmark.png",
+        "sha256": "513d63a0fffe1213d48c6101c0b57d5ebcf50518758edb6643c3bfc00a7af9b9",
+        "bytes": 124072,
+        "width": 1280,
+        "height": 512,
+        "mode": "RGBA",
+        "opaque": false,
+        "icc_embedded": false,
+        "icc_description": null
+      },
+      "native_visual_acceptance": "NOT RUN",
+      "store_export_acceptance": "NOT RUN",
+      "real_device_or_security_acceptance": "NOT RUN",
+      "errors": []
+    },
+    "note": "Offline artifact/hash/explicit QA gate. Parent independently verifies CI run/commit/test and image content; not cryptographic CI attestation."
+  },
+  "originalSources": [
+    {
+      "path": "branding/native-wordmark.png",
+      "sha256": "513d63a0fffe1213d48c6101c0b57d5ebcf50518758edb6643c3bfc00a7af9b9",
+      "size": [
+        1280,
+        512
+      ],
+      "mode": "RGBA",
+      "ICC": {
+        "embedded": false,
+        "sha256": null,
+        "description": null,
+        "png_sRGB_rendering_intent": 0,
+        "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+      },
+      "colorManagement": {
+        "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+        "operation": "Native PNG sRGB declaration preserved, no color conversion",
+        "inputICC": {
+          "embedded": false,
+          "sha256": null,
+          "description": null,
+          "png_sRGB_rendering_intent": 0,
+          "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+        },
+        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "renderingIntent": "RELATIVE_COLORIMETRIC",
+        "flags": 0,
+        "normalizedMode": "RGBA",
+        "normalizedPixelSHA256": "f2db130198f256af809c516c4389d526b2bc9c7121c23d62623f572ed33b6f2a",
+        "nativeAlphaPreserved": true,
+        "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+      },
+      "provenance": {
+        "file": "branding/native-wordmark.png",
+        "sha256": "513d63a0fffe1213d48c6101c0b57d5ebcf50518758edb6643c3bfc00a7af9b9",
+        "bytes": 124072,
+        "width": 1280,
+        "height": 512,
+        "mode": "RGBA",
+        "opaque": false,
+        "icc_embedded": false,
+        "icc_description": null
+      }
+    },
+    {
+      "path": "screenshots/concept-a-analysis.png",
+      "sha256": "a3caba713e7bd439ecdfe6d488db0d32db4559727917830d4f8c1a24e7305930",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "ICC": {
+        "embedded": false,
+        "sha256": null,
+        "description": null,
+        "png_sRGB_rendering_intent": 0,
+        "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+      },
+      "colorManagement": {
+        "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+        "operation": "Native PNG sRGB declaration preserved, no color conversion",
+        "inputICC": {
+          "embedded": false,
+          "sha256": null,
+          "description": null,
+          "png_sRGB_rendering_intent": 0,
+          "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+        },
+        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "renderingIntent": "RELATIVE_COLORIMETRIC",
+        "flags": 0,
+        "normalizedMode": "RGB",
+        "normalizedPixelSHA256": "856be1fa8c06bd26842c5a56c503062aaeec275591eeccea752d77e41ce06341",
+        "nativeAlphaPreserved": false,
+        "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+      },
+      "provenance": {
+        "file": "screenshots/concept-a-analysis.png",
+        "sha256": "a3caba713e7bd439ecdfe6d488db0d32db4559727917830d4f8c1a24e7305930",
+        "bytes": 2363292,
+        "width": 1206,
+        "height": 2622,
+        "mode": "RGB",
+        "opaque": true,
+        "icc_embedded": false,
+        "icc_description": null
+      }
+    },
+    {
+      "path": "screenshots/concept-a-collage.png",
+      "sha256": "41cc29c6810d82dcaea4142aad5b493491d618cc960fac71015b29f5e5941648",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "ICC": {
+        "embedded": false,
+        "sha256": null,
+        "description": null,
+        "png_sRGB_rendering_intent": 0,
+        "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+      },
+      "colorManagement": {
+        "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+        "operation": "Native PNG sRGB declaration preserved, no color conversion",
+        "inputICC": {
+          "embedded": false,
+          "sha256": null,
+          "description": null,
+          "png_sRGB_rendering_intent": 0,
+          "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+        },
+        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "renderingIntent": "RELATIVE_COLORIMETRIC",
+        "flags": 0,
+        "normalizedMode": "RGB",
+        "normalizedPixelSHA256": "984723acf1d39e6e747f03adbe723da79aa256f2bbf20a67ec9327547f0f2517",
+        "nativeAlphaPreserved": false,
+        "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+      },
+      "provenance": {
+        "file": "screenshots/concept-a-collage.png",
+        "sha256": "41cc29c6810d82dcaea4142aad5b493491d618cc960fac71015b29f5e5941648",
+        "bytes": 2271603,
+        "width": 1206,
+        "height": 2622,
+        "mode": "RGB",
+        "opaque": true,
+        "icc_embedded": false,
+        "icc_description": null
+      }
+    },
+    {
+      "path": "screenshots/concept-a-delete-confirm.png",
+      "sha256": "edb77a0e60d6ebdb2f155735982b302fb34e24ac570f7330570c6ffe85848d1e",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "ICC": {
+        "embedded": false,
+        "sha256": null,
+        "description": null,
+        "png_sRGB_rendering_intent": 0,
+        "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+      },
+      "colorManagement": {
+        "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+        "operation": "Native PNG sRGB declaration preserved, no color conversion",
+        "inputICC": {
+          "embedded": false,
+          "sha256": null,
+          "description": null,
+          "png_sRGB_rendering_intent": 0,
+          "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+        },
+        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "renderingIntent": "RELATIVE_COLORIMETRIC",
+        "flags": 0,
+        "normalizedMode": "RGB",
+        "normalizedPixelSHA256": "5fa152e7af2c3e0f3ff1d6162e699da4800494340c58d4217b576c022a8eb027",
+        "nativeAlphaPreserved": false,
+        "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+      },
+      "provenance": {
+        "file": "screenshots/concept-a-delete-confirm.png",
+        "sha256": "edb77a0e60d6ebdb2f155735982b302fb34e24ac570f7330570c6ffe85848d1e",
+        "bytes": 433316,
+        "width": 1206,
+        "height": 2622,
+        "mode": "RGB",
+        "opaque": true,
+        "icc_embedded": false,
+        "icc_description": null
+      }
+    },
+    {
+      "path": "screenshots/concept-a-duplicates.png",
+      "sha256": "928ca36bd06ef7bea6ba4fac756b6e76dc9f118ac89446be50d4617f195e22ea",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "ICC": {
+        "embedded": false,
+        "sha256": null,
+        "description": null,
+        "png_sRGB_rendering_intent": 0,
+        "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+      },
+      "colorManagement": {
+        "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+        "operation": "Native PNG sRGB declaration preserved, no color conversion",
+        "inputICC": {
+          "embedded": false,
+          "sha256": null,
+          "description": null,
+          "png_sRGB_rendering_intent": 0,
+          "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+        },
+        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "renderingIntent": "RELATIVE_COLORIMETRIC",
+        "flags": 0,
+        "normalizedMode": "RGB",
+        "normalizedPixelSHA256": "e3c7a4d7337b340c2c9991f9682b9a98a3ca78a7fba744911e67b31225db70aa",
+        "nativeAlphaPreserved": false,
+        "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+      },
+      "provenance": {
+        "file": "screenshots/concept-a-duplicates.png",
+        "sha256": "928ca36bd06ef7bea6ba4fac756b6e76dc9f118ac89446be50d4617f195e22ea",
+        "bytes": 464616,
+        "width": 1206,
+        "height": 2622,
+        "mode": "RGB",
+        "opaque": true,
+        "icc_embedded": false,
+        "icc_description": null
+      }
+    },
+    {
+      "path": "screenshots/concept-a-editor.png",
+      "sha256": "a051ce7aed4b3b4a668210ddc26e8d32b5ffaf9815641f5cd7cfba00dfa1285b",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "ICC": {
+        "embedded": false,
+        "sha256": null,
+        "description": null,
+        "png_sRGB_rendering_intent": 0,
+        "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+      },
+      "colorManagement": {
+        "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+        "operation": "Native PNG sRGB declaration preserved, no color conversion",
+        "inputICC": {
+          "embedded": false,
+          "sha256": null,
+          "description": null,
+          "png_sRGB_rendering_intent": 0,
+          "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+        },
+        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "renderingIntent": "RELATIVE_COLORIMETRIC",
+        "flags": 0,
+        "normalizedMode": "RGB",
+        "normalizedPixelSHA256": "090efef144318a33e90d483b3bb17e79846a11861a782587b37ecb1537e4112b",
+        "nativeAlphaPreserved": false,
+        "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+      },
+      "provenance": {
+        "file": "screenshots/concept-a-editor.png",
+        "sha256": "a051ce7aed4b3b4a668210ddc26e8d32b5ffaf9815641f5cd7cfba00dfa1285b",
+        "bytes": 2447775,
+        "width": 1206,
+        "height": 2622,
+        "mode": "RGB",
+        "opaque": true,
+        "icc_embedded": false,
+        "icc_description": null
+      }
+    },
+    {
+      "path": "screenshots/concept-a-games.png",
+      "sha256": "53a248d390bc00d61ca1b6af955ddfebc12e56bbb4a7af1fe5b4dffcc777190c",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "ICC": {
+        "embedded": false,
+        "sha256": null,
+        "description": null,
+        "png_sRGB_rendering_intent": 0,
+        "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+      },
+      "colorManagement": {
+        "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+        "operation": "Native PNG sRGB declaration preserved, no color conversion",
+        "inputICC": {
+          "embedded": false,
+          "sha256": null,
+          "description": null,
+          "png_sRGB_rendering_intent": 0,
+          "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+        },
+        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "renderingIntent": "RELATIVE_COLORIMETRIC",
+        "flags": 0,
+        "normalizedMode": "RGB",
+        "normalizedPixelSHA256": "149e6867a139689d262717dbe410f7cbcc4c708524425cba95e71cfbc680b440",
+        "nativeAlphaPreserved": false,
+        "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+      },
+      "provenance": {
+        "file": "screenshots/concept-a-games.png",
+        "sha256": "53a248d390bc00d61ca1b6af955ddfebc12e56bbb4a7af1fe5b4dffcc777190c",
+        "bytes": 309610,
+        "width": 1206,
+        "height": 2622,
+        "mode": "RGB",
+        "opaque": true,
+        "icc_embedded": false,
+        "icc_description": null
+      }
+    },
+    {
+      "path": "screenshots/concept-a-large-files.png",
+      "sha256": "5c46c0b7ce88a554e37d0a8335d4d59043df1a0171deb42fc8f81f93bc49e0e7",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "ICC": {
+        "embedded": false,
+        "sha256": null,
+        "description": null,
+        "png_sRGB_rendering_intent": 0,
+        "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+      },
+      "colorManagement": {
+        "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+        "operation": "Native PNG sRGB declaration preserved, no color conversion",
+        "inputICC": {
+          "embedded": false,
+          "sha256": null,
+          "description": null,
+          "png_sRGB_rendering_intent": 0,
+          "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+        },
+        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "renderingIntent": "RELATIVE_COLORIMETRIC",
+        "flags": 0,
+        "normalizedMode": "RGB",
+        "normalizedPixelSHA256": "add76480e232451e422a181c1d7aadce4501816dac434a060196213933580aed",
+        "nativeAlphaPreserved": false,
+        "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+      },
+      "provenance": {
+        "file": "screenshots/concept-a-large-files.png",
+        "sha256": "5c46c0b7ce88a554e37d0a8335d4d59043df1a0171deb42fc8f81f93bc49e0e7",
+        "bytes": 285171,
+        "width": 1206,
+        "height": 2622,
+        "mode": "RGB",
+        "opaque": true,
+        "icc_embedded": false,
+        "icc_description": null
+      }
+    },
+    {
+      "path": "screenshots/concept-a-later.png",
+      "sha256": "13494284c4b13b0b18900af357ecb60dbdaffe7f6178d5933b0d446d78a70690",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "ICC": {
+        "embedded": false,
+        "sha256": null,
+        "description": null,
+        "png_sRGB_rendering_intent": 0,
+        "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+      },
+      "colorManagement": {
+        "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+        "operation": "Native PNG sRGB declaration preserved, no color conversion",
+        "inputICC": {
+          "embedded": false,
+          "sha256": null,
+          "description": null,
+          "png_sRGB_rendering_intent": 0,
+          "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+        },
+        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "renderingIntent": "RELATIVE_COLORIMETRIC",
+        "flags": 0,
+        "normalizedMode": "RGB",
+        "normalizedPixelSHA256": "20cbdddc462b9f9640c1dc917d77b129199e1f9233c6848283278692dbb518b9",
+        "nativeAlphaPreserved": false,
+        "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+      },
+      "provenance": {
+        "file": "screenshots/concept-a-later.png",
+        "sha256": "13494284c4b13b0b18900af357ecb60dbdaffe7f6178d5933b0d446d78a70690",
+        "bytes": 4122183,
+        "width": 1206,
+        "height": 2622,
+        "mode": "RGB",
+        "opaque": true,
+        "icc_embedded": false,
+        "icc_description": null
+      }
+    },
+    {
+      "path": "screenshots/concept-a-months.png",
+      "sha256": "2f89b63bb2ae76450f55f557c34aedf9286e55687885f91d516bddcb1a72dea1",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "ICC": {
+        "embedded": false,
+        "sha256": null,
+        "description": null,
+        "png_sRGB_rendering_intent": 0,
+        "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+      },
+      "colorManagement": {
+        "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+        "operation": "Native PNG sRGB declaration preserved, no color conversion",
+        "inputICC": {
+          "embedded": false,
+          "sha256": null,
+          "description": null,
+          "png_sRGB_rendering_intent": 0,
+          "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+        },
+        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "renderingIntent": "RELATIVE_COLORIMETRIC",
+        "flags": 0,
+        "normalizedMode": "RGB",
+        "normalizedPixelSHA256": "81f18f5c7b045af6f7d33e40620dfee25c4745610cc3d125e4c8de0a5f772d6e",
+        "nativeAlphaPreserved": false,
+        "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+      },
+      "provenance": {
+        "file": "screenshots/concept-a-months.png",
+        "sha256": "2f89b63bb2ae76450f55f557c34aedf9286e55687885f91d516bddcb1a72dea1",
+        "bytes": 183223,
+        "width": 1206,
+        "height": 2622,
+        "mode": "RGB",
+        "opaque": true,
+        "icc_embedded": false,
+        "icc_description": null
+      }
+    },
+    {
+      "path": "screenshots/concept-a-swipe.png",
+      "sha256": "72a6eb992f13f5a0f50655f3609aac4f230ba5094a568bb62b8aaedee50c3e16",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGBA",
+      "ICC": {
+        "embedded": false,
+        "sha256": null,
+        "description": null,
+        "png_sRGB_rendering_intent": 0,
+        "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+      },
+      "colorManagement": {
+        "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+        "operation": "Native PNG sRGB declaration preserved, no color conversion",
+        "inputICC": {
+          "embedded": false,
+          "sha256": null,
+          "description": null,
+          "png_sRGB_rendering_intent": 0,
+          "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+        },
+        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "renderingIntent": "RELATIVE_COLORIMETRIC",
+        "flags": 0,
+        "normalizedMode": "RGBA",
+        "normalizedPixelSHA256": "2c834f17fa5112e66e863fa8f11f0b5aa4920f796636e2cfee66efa59bd59e4e",
+        "nativeAlphaPreserved": true,
+        "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+      },
+      "provenance": {
+        "file": "screenshots/concept-a-swipe.png",
+        "sha256": "72a6eb992f13f5a0f50655f3609aac4f230ba5094a568bb62b8aaedee50c3e16",
+        "bytes": 1155247,
+        "width": 1206,
+        "height": 2622,
+        "mode": "RGBA",
+        "opaque": true,
+        "icc_embedded": false,
+        "icc_description": null
+      }
+    },
+    {
+      "path": "screenshots/concept-a-trash.png",
+      "sha256": "246a924cfcd9a39501b45c2605fce4f9967f3aa760f35cd8f9d3a4ff63658b1a",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "ICC": {
+        "embedded": false,
+        "sha256": null,
+        "description": null,
+        "png_sRGB_rendering_intent": 0,
+        "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+      },
+      "colorManagement": {
+        "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+        "operation": "Native PNG sRGB declaration preserved, no color conversion",
+        "inputICC": {
+          "embedded": false,
+          "sha256": null,
+          "description": null,
+          "png_sRGB_rendering_intent": 0,
+          "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+        },
+        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "renderingIntent": "RELATIVE_COLORIMETRIC",
+        "flags": 0,
+        "normalizedMode": "RGB",
+        "normalizedPixelSHA256": "5767793fb58f28e9d61f2efa2ed45c007a686a164d2af7060da07e94b53b502b",
+        "nativeAlphaPreserved": false,
+        "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+      },
+      "provenance": {
+        "file": "screenshots/concept-a-trash.png",
+        "sha256": "246a924cfcd9a39501b45c2605fce4f9967f3aa760f35cd8f9d3a4ff63658b1a",
+        "bytes": 444231,
+        "width": 1206,
+        "height": 2622,
+        "mode": "RGB",
+        "opaque": true,
+        "icc_embedded": false,
+        "icc_description": null
+      }
+    },
+    {
+      "path": "screenshots/concept-a-vault.png",
+      "sha256": "4218b08c8b7c922179e859b374e287b3d6355c0a8ee972852cabe7366a75a15b",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "ICC": {
+        "embedded": false,
+        "sha256": null,
+        "description": null,
+        "png_sRGB_rendering_intent": 0,
+        "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+      },
+      "colorManagement": {
+        "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+        "operation": "Native PNG sRGB declaration preserved, no color conversion",
+        "inputICC": {
+          "embedded": false,
+          "sha256": null,
+          "description": null,
+          "png_sRGB_rendering_intent": 0,
+          "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+        },
+        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "renderingIntent": "RELATIVE_COLORIMETRIC",
+        "flags": 0,
+        "normalizedMode": "RGB",
+        "normalizedPixelSHA256": "c7b54a9e764539b76ea7f6e6dbe58b5e32c32d22b0666919d0b40c9830298fe5",
+        "nativeAlphaPreserved": false,
+        "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+      },
+      "provenance": {
+        "file": "screenshots/concept-a-vault.png",
+        "sha256": "4218b08c8b7c922179e859b374e287b3d6355c0a8ee972852cabe7366a75a15b",
+        "bytes": 1419401,
+        "width": 1206,
+        "height": 2622,
+        "mode": "RGB",
+        "opaque": true,
+        "icc_embedded": false,
+        "icc_description": null
+      }
+    }
+  ],
+  "sourceVisualQA": {
+    "approved": true,
+    "provenanceSHA256": "86d228e9451dbc6f018e94c2bc9894fd6203aa7e3dd256e0c4eda4b99b4ac217",
+    "commit": "c6ffd6c4a6279b8fadb2395069f415e84e53370e",
+    "workflowRun": "43777081132",
+    "reviewer": "Hermes parent, individual vision-tool review of all twelve required full native captures and original native wordmark",
+    "notes": "All12 required native screens and canonical wordmark individually reviewed; exact hashes and successful native run verified. See F:/HermesOutput/GaleriQ/concept-a-en-v1/qa/native-source-visual.json. Native CTA remains Remove 2 photos and videos (exact brief wording BLOCKED by unchanged production copy); no retouch. Source03 is whole genuine system-confirmation screenshot, not a synthetic dialog crop. Later is a native label plus Change button. Native partial scroll items are preserved; Face ID/security/conversion not accepted.",
+    "nativeWordmarkComponent": "VaultDialWordmark",
+    "nativeWordmarkForeground": "lightForeground",
+    "nativeStatusBar": {
+      "time": "9:41",
+      "fullBattery": true,
+      "dynamicIsland": true,
+      "appearance": "dark"
+    }
+  },
+  "fonts": {
+    "headline": {
+      "relativePath": "PhotoMaid/Resources/Fonts/PMDisplay-Bold.ttf",
+      "sha256": "dbf287d9cb6eb6fc790118d672b3ffe7088628e9116223eafe28bc1c10cfbaf4",
+      "family": "PMDisplay",
+      "style": "Bold"
+    },
+    "subtitle": {
+      "relativePath": "PhotoMaid/Resources/Fonts/PMText-Medium.ttf",
+      "sha256": "c36c607dbca923c9b7403e71663ceb343bfa920ca046e8029e7e23f6398343e0",
+      "family": "PMText",
+      "style": "Medium"
+    },
+    "gesture": {
+      "relativePath": "PhotoMaid/Resources/Fonts/PMText-Bold.ttf",
+      "sha256": "920566f44b29a706a83c61ba44a1d14945fa68f6869da8f183aec8c8a96955d5",
+      "family": "PMText",
+      "style": "Bold"
+    }
+  },
+  "ICC": {
+    "embedded": true,
+    "colorSpace": "sRGB",
+    "sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+    "description": "sRGB built-in"
+  },
+  "outputs": [
+    {
+      "file": "01-swipe.png",
+      "sha256": "989805903afab47e1e76fe291e41cfb79792675ede4ec46a70e2c989839463c5",
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "alpha": false,
+      "format": "PNG",
+      "ICC": {
+        "colorSpace": "sRGB",
+        "embedded": true,
+        "sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561"
+      },
+      "slot": 1,
+      "headline": {
+        "text": "Swipe the clutter. Keep the memories.",
+        "lines": [
+          "Swipe the clutter.",
+          "Keep the memories."
+        ],
+        "fontSize": 111,
+        "minimumSize": 84,
+        "preferredSize": 112,
+        "lineAdvance": 146,
+        "origins": [
+          [
+            70,
+            226
+          ],
+          [
+            70,
+            372
+          ]
+        ],
+        "lineBBoxes": [
+          [
+            70,
+            248,
+            1011,
+            349
+          ],
+          [
+            70,
+            394,
+            1133,
+            495
+          ]
+        ],
+        "textBBox": [
+          70,
+          248,
+          1133,
+          495
+        ],
+        "container": [
+          70,
+          248,
+          1136,
+          532
+        ],
+        "shrinkSteps": 1
+      },
+      "subtitle": null,
+      "gestures": [
+        {
+          "action": "Keep",
+          "direction": "up",
+          "color": "keep",
+          "arrowBox": [
+            70,
+            564,
+            154,
+            638
+          ],
+          "labelBox": [
+            70,
+            656,
+            368,
+            724
+          ],
+          "textPlan": {
+            "text": "Keep",
+            "lines": [
+              "Keep"
+            ],
+            "fontSize": 72,
+            "minimumSize": 60,
+            "preferredSize": 72,
+            "lineAdvance": 87,
+            "origins": [
+              [
+                70,
+                638
+              ]
+            ],
+            "lineBBoxes": [
+              [
+                70,
+                656,
+                238,
+                721
+              ]
+            ],
+            "textBBox": [
+              70,
+              656,
+              238,
+              721
+            ],
+            "container": [
+              70,
+              656,
+              368,
+              724
+            ],
+            "shrinkSteps": 0
+          }
+        },
+        {
+          "action": "Trash",
+          "direction": "left",
+          "color": "trash",
+          "arrowBox": [
+            454,
+            564,
+            538,
+            638
+          ],
+          "labelBox": [
+            454,
+            656,
+            752,
+            724
+          ],
+          "textPlan": {
+            "text": "Trash",
+            "lines": [
+              "Trash"
+            ],
+            "fontSize": 72,
+            "minimumSize": 60,
+            "preferredSize": 72,
+            "lineAdvance": 87,
+            "origins": [
+              [
+                454,
+                638
+              ]
+            ],
+            "lineBBoxes": [
+              [
+                454,
+                656,
+                636,
+                708
+              ]
+            ],
+            "textBBox": [
+              454,
+              656,
+              636,
+              708
+            ],
+            "container": [
+              454,
+              656,
+              752,
+              724
+            ],
+            "shrinkSteps": 0
+          }
+        },
+        {
+          "action": "Later",
+          "direction": "right",
+          "color": "later",
+          "arrowBox": [
+            838,
+            564,
+            922,
+            638
+          ],
+          "labelBox": [
+            838,
+            656,
+            1136,
+            724
+          ],
+          "textPlan": {
+            "text": "Later",
+            "lines": [
+              "Later"
+            ],
+            "fontSize": 72,
+            "minimumSize": 60,
+            "preferredSize": 72,
+            "lineAdvance": 87,
+            "origins": [
+              [
+                838,
+                638
+              ]
+            ],
+            "lineBBoxes": [
+              [
+                838,
+                656,
+                1010,
+                708
+              ]
+            ],
+            "textBBox": [
+              838,
+              656,
+              1010,
+              708
+            ],
+            "container": [
+              838,
+              656,
+              1136,
+              724
+            ],
+            "shrinkSteps": 0
+          }
+        }
+      ],
+      "nativeLayers": [
+        {
+          "id": "native-wordmark",
+          "originalSource": "branding/native-wordmark.png",
+          "sourceSHA256": "513d63a0fffe1213d48c6101c0b57d5ebcf50518758edb6643c3bfc00a7af9b9",
+          "sourceSize": [
+            1280,
+            512
+          ],
+          "sourceMode": "RGBA",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            76,
+            124,
+            1222,
+            404
+          ],
+          "targetGeometry": [
+            70,
+            78,
+            406,
+            160
+          ],
+          "nativeScale": 0.2931937172774869,
+          "effectiveNativeScaleXY": [
+            0.2931937172774869,
+            0.29285714285714287
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGBA",
+            "normalizedPixelSHA256": "f2db130198f256af809c516c4389d526b2bc9c7121c23d62623f572ed33b6f2a",
+            "nativeAlphaPreserved": true,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "original native wordmark alpha",
+          "maskSHA256": "8326f0a9216f2f38ea215e5ba01a554a41963db86563742520c97695a1d2ed83",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 15392,
+            "opaqueInteriorPixels": 15392,
+            "occludedByLaterInsetOrShadowPixels": 0,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "7f822eb4b5b8dc60a31a4ce3131022dd32317c4ef466c63803a0f8121959322e",
+            "maskedOutputSHA256": "7f822eb4b5b8dc60a31a4ce3131022dd32317c4ef466c63803a0f8121959322e",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        },
+        {
+          "id": "full-phone",
+          "originalSource": "screenshots/concept-a-swipe.png",
+          "sourceSHA256": "72a6eb992f13f5a0f50655f3609aac4f230ba5094a568bb62b8aaedee50c3e16",
+          "sourceSize": [
+            1206,
+            2622
+          ],
+          "sourceMode": "RGBA",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            0,
+            0,
+            1206,
+            2622
+          ],
+          "targetGeometry": [
+            201,
+            760,
+            1005,
+            2508
+          ],
+          "nativeScale": 0.6666666666666666,
+          "effectiveNativeScaleXY": [
+            0.6666666666666666,
+            0.6666666666666666
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGBA",
+            "normalizedPixelSHA256": "2c834f17fa5112e66e863fa8f11f0b5aa4920f796636e2cfee66efa59bd59e4e",
+            "nativeAlphaPreserved": true,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "outer rounded mask, 4x antialiased",
+          "maskSHA256": "e57a503a465c4ad562d09d9408a5c63aa6878d0c9d6090f9aee43b0a11605f81",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 1396208,
+            "opaqueInteriorPixels": 1396208,
+            "occludedByLaterInsetOrShadowPixels": 0,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "0cd9d40c89e34f2c14eccb36995e619ce8fc1909021ab75d6386704850d306b6",
+            "maskedOutputSHA256": "0cd9d40c89e34f2c14eccb36995e619ce8fc1909021ab75d6386704850d306b6",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        }
+      ],
+      "protectedEvidence": {
+        "primary": "screenshots/concept-a-swipe.png",
+        "protectedSourceRects": [
+          [
+            0,
+            0,
+            1206,
+            200
+          ],
+          [
+            10,
+            210,
+            1196,
+            2600
+          ]
+        ],
+        "protectedOutputRects": [
+          [
+            201,
+            760,
+            1005,
+            894
+          ],
+          [
+            207,
+            900,
+            999,
+            2494
+          ]
+        ],
+        "insets": []
+      },
+      "layoutQA": {
+        "status": "PASS",
+        "safeMargin": 70,
+        "headlineMaxLines": 2,
+        "subtitleMaxLines": 2,
+        "fullPhoneScreenBox": [
+          201,
+          760,
+          1005,
+          2508
+        ],
+        "fullPhoneCrop": [
+          0,
+          0,
+          1206,
+          2622
+        ],
+        "phoneAspectExact": true,
+        "nativeUpscaling": false,
+        "secondDynamicIsland": false,
+        "protectedPrimaryEvidenceUnobscured": true,
+        "allTextBBoxesInsideContainers": true
+      }
+    },
+    {
+      "file": "02-duplicates-large-files.png",
+      "sha256": "018c550b97a317ad2737a1aebf23cae533a2acc5980f98aa345ae9d4ce88421e",
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "alpha": false,
+      "format": "PNG",
+      "ICC": {
+        "colorSpace": "sRGB",
+        "embedded": true,
+        "sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561"
+      },
+      "slot": 2,
+      "headline": {
+        "text": "Find duplicates. Spot large files.",
+        "lines": [
+          "Find duplicates.",
+          "Spot large files."
+        ],
+        "fontSize": 112,
+        "minimumSize": 84,
+        "preferredSize": 112,
+        "lineAdvance": 148,
+        "origins": [
+          [
+            70,
+            227
+          ],
+          [
+            70,
+            375
+          ]
+        ],
+        "lineBBoxes": [
+          [
+            70,
+            248,
+            922,
+            351
+          ],
+          [
+            70,
+            396,
+            904,
+            500
+          ]
+        ],
+        "textBBox": [
+          70,
+          248,
+          922,
+          500
+        ],
+        "container": [
+          70,
+          248,
+          1136,
+          532
+        ],
+        "shrinkSteps": 0
+      },
+      "subtitle": null,
+      "gestures": [],
+      "nativeLayers": [
+        {
+          "id": "native-wordmark",
+          "originalSource": "branding/native-wordmark.png",
+          "sourceSHA256": "513d63a0fffe1213d48c6101c0b57d5ebcf50518758edb6643c3bfc00a7af9b9",
+          "sourceSize": [
+            1280,
+            512
+          ],
+          "sourceMode": "RGBA",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            76,
+            124,
+            1222,
+            404
+          ],
+          "targetGeometry": [
+            70,
+            78,
+            406,
+            160
+          ],
+          "nativeScale": 0.2931937172774869,
+          "effectiveNativeScaleXY": [
+            0.2931937172774869,
+            0.29285714285714287
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGBA",
+            "normalizedPixelSHA256": "f2db130198f256af809c516c4389d526b2bc9c7121c23d62623f572ed33b6f2a",
+            "nativeAlphaPreserved": true,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "original native wordmark alpha",
+          "maskSHA256": "8326f0a9216f2f38ea215e5ba01a554a41963db86563742520c97695a1d2ed83",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 15392,
+            "opaqueInteriorPixels": 15392,
+            "occludedByLaterInsetOrShadowPixels": 0,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "7f822eb4b5b8dc60a31a4ce3131022dd32317c4ef466c63803a0f8121959322e",
+            "maskedOutputSHA256": "7f822eb4b5b8dc60a31a4ce3131022dd32317c4ef466c63803a0f8121959322e",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        },
+        {
+          "id": "full-phone",
+          "originalSource": "screenshots/concept-a-large-files.png",
+          "sourceSHA256": "5c46c0b7ce88a554e37d0a8335d4d59043df1a0171deb42fc8f81f93bc49e0e7",
+          "sourceSize": [
+            1206,
+            2622
+          ],
+          "sourceMode": "RGB",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            0,
+            0,
+            1206,
+            2622
+          ],
+          "targetGeometry": [
+            201,
+            760,
+            1005,
+            2508
+          ],
+          "nativeScale": 0.6666666666666666,
+          "effectiveNativeScaleXY": [
+            0.6666666666666666,
+            0.6666666666666666
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGB",
+            "normalizedPixelSHA256": "add76480e232451e422a181c1d7aadce4501816dac434a060196213933580aed",
+            "nativeAlphaPreserved": false,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "outer rounded mask, 4x antialiased",
+          "maskSHA256": "e57a503a465c4ad562d09d9408a5c63aa6878d0c9d6090f9aee43b0a11605f81",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 1040720,
+            "opaqueInteriorPixels": 1396208,
+            "occludedByLaterInsetOrShadowPixels": 355488,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "aaac9fce11c99b26c429dab412fef299c586aa680d4e0028367d6c0f92fb4010",
+            "maskedOutputSHA256": "aaac9fce11c99b26c429dab412fef299c586aa680d4e0028367d6c0f92fb4010",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        },
+        {
+          "id": "duplicate-results",
+          "originalSource": "screenshots/concept-a-duplicates.png",
+          "sourceSHA256": "928ca36bd06ef7bea6ba4fac756b6e76dc9f118ac89446be50d4617f195e22ea",
+          "sourceSize": [
+            1206,
+            2622
+          ],
+          "sourceMode": "RGB",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            0,
+            1560,
+            1206,
+            2300
+          ],
+          "targetGeometry": [
+            245,
+            1965,
+            961,
+            2404
+          ],
+          "nativeScale": 0.593698175787728,
+          "effectiveNativeScaleXY": [
+            0.593698175787728,
+            0.5932432432432433
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGB",
+            "normalizedPixelSHA256": "e3c7a4d7337b340c2c9991f9682b9a98a3ca78a7fba744911e67b31225db70aa",
+            "nativeAlphaPreserved": false,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "outer rounded mask, 4x antialiased",
+          "maskSHA256": "7d22bba7c059bcae52c60f24d129e0491fef5bcd5d8682bcfd27263257f593c3",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 313604,
+            "opaqueInteriorPixels": 313604,
+            "occludedByLaterInsetOrShadowPixels": 0,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "f211dbd73ea64e80c67c9631cb9ea55176709e9fb53f971fa28610bc4b1be8fc",
+            "maskedOutputSHA256": "f211dbd73ea64e80c67c9631cb9ea55176709e9fb53f971fa28610bc4b1be8fc",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        }
+      ],
+      "protectedEvidence": {
+        "primary": "screenshots/concept-a-large-files.png",
+        "protectedSourceRects": [
+          [
+            0,
+            0,
+            1206,
+            200
+          ],
+          [
+            0,
+            200,
+            1206,
+            1650
+          ]
+        ],
+        "protectedOutputRects": [
+          [
+            201,
+            760,
+            1005,
+            894
+          ],
+          [
+            201,
+            893,
+            1005,
+            1860
+          ]
+        ],
+        "insets": [
+          {
+            "id": "duplicate-results",
+            "source": "screenshots/concept-a-duplicates.png",
+            "crop": [
+              0,
+              1560,
+              1206,
+              2300
+            ],
+            "target": [
+              245,
+              1965,
+              961,
+              2404
+            ],
+            "nativeScale": 0.593698175787728,
+            "requestedBox": [
+              245,
+              1900,
+              961,
+              2470
+            ],
+            "effectBox": [
+              219,
+              1945,
+              987,
+              2436
+            ]
+          }
+        ]
+      },
+      "layoutQA": {
+        "status": "PASS",
+        "safeMargin": 70,
+        "headlineMaxLines": 2,
+        "subtitleMaxLines": 2,
+        "fullPhoneScreenBox": [
+          201,
+          760,
+          1005,
+          2508
+        ],
+        "fullPhoneCrop": [
+          0,
+          0,
+          1206,
+          2622
+        ],
+        "phoneAspectExact": true,
+        "nativeUpscaling": false,
+        "secondDynamicIsland": false,
+        "protectedPrimaryEvidenceUnobscured": true,
+        "allTextBBoxesInsideContainers": true
+      }
+    },
+    {
+      "file": "03-delete-confirmation.png",
+      "sha256": "5eaebfa39b5fb5283d8ab51493167f1b2b64e9a7a50e5a54213724fe98b8ee6c",
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "alpha": false,
+      "format": "PNG",
+      "ICC": {
+        "colorSpace": "sRGB",
+        "embedded": true,
+        "sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561"
+      },
+      "slot": 3,
+      "headline": {
+        "text": "Nothing deletes without you.",
+        "lines": [
+          "Nothing deletes",
+          "without you."
+        ],
+        "fontSize": 112,
+        "minimumSize": 84,
+        "preferredSize": 112,
+        "lineAdvance": 148,
+        "origins": [
+          [
+            70,
+            227
+          ],
+          [
+            70,
+            375
+          ]
+        ],
+        "lineBBoxes": [
+          [
+            70,
+            248,
+            931,
+            352
+          ],
+          [
+            70,
+            396,
+            744,
+            500
+          ]
+        ],
+        "textBBox": [
+          70,
+          248,
+          931,
+          500
+        ],
+        "container": [
+          70,
+          248,
+          1136,
+          532
+        ],
+        "shrinkSteps": 0
+      },
+      "subtitle": null,
+      "gestures": [],
+      "nativeLayers": [
+        {
+          "id": "native-wordmark",
+          "originalSource": "branding/native-wordmark.png",
+          "sourceSHA256": "513d63a0fffe1213d48c6101c0b57d5ebcf50518758edb6643c3bfc00a7af9b9",
+          "sourceSize": [
+            1280,
+            512
+          ],
+          "sourceMode": "RGBA",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            76,
+            124,
+            1222,
+            404
+          ],
+          "targetGeometry": [
+            70,
+            78,
+            406,
+            160
+          ],
+          "nativeScale": 0.2931937172774869,
+          "effectiveNativeScaleXY": [
+            0.2931937172774869,
+            0.29285714285714287
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGBA",
+            "normalizedPixelSHA256": "f2db130198f256af809c516c4389d526b2bc9c7121c23d62623f572ed33b6f2a",
+            "nativeAlphaPreserved": true,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "original native wordmark alpha",
+          "maskSHA256": "8326f0a9216f2f38ea215e5ba01a554a41963db86563742520c97695a1d2ed83",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 15392,
+            "opaqueInteriorPixels": 15392,
+            "occludedByLaterInsetOrShadowPixels": 0,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "7f822eb4b5b8dc60a31a4ce3131022dd32317c4ef466c63803a0f8121959322e",
+            "maskedOutputSHA256": "7f822eb4b5b8dc60a31a4ce3131022dd32317c4ef466c63803a0f8121959322e",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        },
+        {
+          "id": "full-phone",
+          "originalSource": "screenshots/concept-a-delete-confirm.png",
+          "sourceSHA256": "edb77a0e60d6ebdb2f155735982b302fb34e24ac570f7330570c6ffe85848d1e",
+          "sourceSize": [
+            1206,
+            2622
+          ],
+          "sourceMode": "RGB",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            0,
+            0,
+            1206,
+            2622
+          ],
+          "targetGeometry": [
+            201,
+            760,
+            1005,
+            2508
+          ],
+          "nativeScale": 0.6666666666666666,
+          "effectiveNativeScaleXY": [
+            0.6666666666666666,
+            0.6666666666666666
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGB",
+            "normalizedPixelSHA256": "5fa152e7af2c3e0f3ff1d6162e699da4800494340c58d4217b576c022a8eb027",
+            "nativeAlphaPreserved": false,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "outer rounded mask, 4x antialiased",
+          "maskSHA256": "e57a503a465c4ad562d09d9408a5c63aa6878d0c9d6090f9aee43b0a11605f81",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 1396208,
+            "opaqueInteriorPixels": 1396208,
+            "occludedByLaterInsetOrShadowPixels": 0,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "017d4fed6cd498efdffe33111df587b774cb58913d6cbfbd1c1b75e7a64d5b4f",
+            "maskedOutputSHA256": "017d4fed6cd498efdffe33111df587b774cb58913d6cbfbd1c1b75e7a64d5b4f",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        }
+      ],
+      "protectedEvidence": {
+        "primary": "screenshots/concept-a-delete-confirm.png",
+        "protectedSourceRects": [
+          [
+            0,
+            0,
+            1206,
+            200
+          ],
+          [
+            0,
+            200,
+            1206,
+            2610
+          ]
+        ],
+        "protectedOutputRects": [
+          [
+            201,
+            760,
+            1005,
+            894
+          ],
+          [
+            201,
+            893,
+            1005,
+            2500
+          ]
+        ],
+        "insets": []
+      },
+      "layoutQA": {
+        "status": "PASS",
+        "safeMargin": 70,
+        "headlineMaxLines": 2,
+        "subtitleMaxLines": 2,
+        "fullPhoneScreenBox": [
+          201,
+          760,
+          1005,
+          2508
+        ],
+        "fullPhoneCrop": [
+          0,
+          0,
+          1206,
+          2622
+        ],
+        "phoneAspectExact": true,
+        "nativeUpscaling": false,
+        "secondDynamicIsland": false,
+        "protectedPrimaryEvidenceUnobscured": true,
+        "allTextBBoxesInsideContainers": true
+      }
+    },
+    {
+      "file": "04-vault.png",
+      "sha256": "d31150c0ac56b55a8722300deca364f0690c6a7833c6b4f60fd9c00a1cf3cae4",
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "alpha": false,
+      "format": "PNG",
+      "ICC": {
+        "colorSpace": "sRGB",
+        "embedded": true,
+        "sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561"
+      },
+      "slot": 4,
+      "headline": {
+        "text": "Private photos. Locked away.",
+        "lines": [
+          "Private photos.",
+          "Locked away."
+        ],
+        "fontSize": 112,
+        "minimumSize": 84,
+        "preferredSize": 112,
+        "lineAdvance": 148,
+        "origins": [
+          [
+            70,
+            227
+          ],
+          [
+            70,
+            375
+          ]
+        ],
+        "lineBBoxes": [
+          [
+            70,
+            248,
+            889,
+            351
+          ],
+          [
+            70,
+            399,
+            799,
+            500
+          ]
+        ],
+        "textBBox": [
+          70,
+          248,
+          889,
+          500
+        ],
+        "container": [
+          70,
+          248,
+          1136,
+          532
+        ],
+        "shrinkSteps": 0
+      },
+      "subtitle": {
+        "text": "Encrypted vault, protected by your own code and Face ID.",
+        "lines": [
+          "Encrypted vault, protected by",
+          "your own code and Face ID."
+        ],
+        "fontSize": 52,
+        "minimumSize": 46,
+        "preferredSize": 52,
+        "lineAdvance": 71,
+        "origins": [
+          [
+            70,
+            547
+          ],
+          [
+            70,
+            618
+          ]
+        ],
+        "lineBBoxes": [
+          [
+            70,
+            560,
+            770,
+            609
+          ],
+          [
+            70,
+            631,
+            717,
+            680
+          ]
+        ],
+        "textBBox": [
+          70,
+          560,
+          770,
+          680
+        ],
+        "container": [
+          70,
+          560,
+          1136,
+          708
+        ],
+        "shrinkSteps": 0
+      },
+      "gestures": [],
+      "nativeLayers": [
+        {
+          "id": "native-wordmark",
+          "originalSource": "branding/native-wordmark.png",
+          "sourceSHA256": "513d63a0fffe1213d48c6101c0b57d5ebcf50518758edb6643c3bfc00a7af9b9",
+          "sourceSize": [
+            1280,
+            512
+          ],
+          "sourceMode": "RGBA",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            76,
+            124,
+            1222,
+            404
+          ],
+          "targetGeometry": [
+            70,
+            78,
+            406,
+            160
+          ],
+          "nativeScale": 0.2931937172774869,
+          "effectiveNativeScaleXY": [
+            0.2931937172774869,
+            0.29285714285714287
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGBA",
+            "normalizedPixelSHA256": "f2db130198f256af809c516c4389d526b2bc9c7121c23d62623f572ed33b6f2a",
+            "nativeAlphaPreserved": true,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "original native wordmark alpha",
+          "maskSHA256": "8326f0a9216f2f38ea215e5ba01a554a41963db86563742520c97695a1d2ed83",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 15392,
+            "opaqueInteriorPixels": 15392,
+            "occludedByLaterInsetOrShadowPixels": 0,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "7f822eb4b5b8dc60a31a4ce3131022dd32317c4ef466c63803a0f8121959322e",
+            "maskedOutputSHA256": "7f822eb4b5b8dc60a31a4ce3131022dd32317c4ef466c63803a0f8121959322e",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        },
+        {
+          "id": "full-phone",
+          "originalSource": "screenshots/concept-a-vault.png",
+          "sourceSHA256": "4218b08c8b7c922179e859b374e287b3d6355c0a8ee972852cabe7366a75a15b",
+          "sourceSize": [
+            1206,
+            2622
+          ],
+          "sourceMode": "RGB",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            0,
+            0,
+            1206,
+            2622
+          ],
+          "targetGeometry": [
+            201,
+            760,
+            1005,
+            2508
+          ],
+          "nativeScale": 0.6666666666666666,
+          "effectiveNativeScaleXY": [
+            0.6666666666666666,
+            0.6666666666666666
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGB",
+            "normalizedPixelSHA256": "c7b54a9e764539b76ea7f6e6dbe58b5e32c32d22b0666919d0b40c9830298fe5",
+            "nativeAlphaPreserved": false,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "outer rounded mask, 4x antialiased",
+          "maskSHA256": "e57a503a465c4ad562d09d9408a5c63aa6878d0c9d6090f9aee43b0a11605f81",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 1396208,
+            "opaqueInteriorPixels": 1396208,
+            "occludedByLaterInsetOrShadowPixels": 0,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "4c2492dfbb82031b2fd1bd17ae5a2cfd97e8bda7fc9f9141f60f2bb0a42e9b45",
+            "maskedOutputSHA256": "4c2492dfbb82031b2fd1bd17ae5a2cfd97e8bda7fc9f9141f60f2bb0a42e9b45",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        }
+      ],
+      "protectedEvidence": {
+        "primary": "screenshots/concept-a-vault.png",
+        "protectedSourceRects": [
+          [
+            0,
+            0,
+            1206,
+            200
+          ],
+          [
+            0,
+            200,
+            1206,
+            2610
+          ]
+        ],
+        "protectedOutputRects": [
+          [
+            201,
+            760,
+            1005,
+            894
+          ],
+          [
+            201,
+            893,
+            1005,
+            2500
+          ]
+        ],
+        "insets": []
+      },
+      "layoutQA": {
+        "status": "PASS",
+        "safeMargin": 70,
+        "headlineMaxLines": 2,
+        "subtitleMaxLines": 2,
+        "fullPhoneScreenBox": [
+          201,
+          760,
+          1005,
+          2508
+        ],
+        "fullPhoneCrop": [
+          0,
+          0,
+          1206,
+          2622
+        ],
+        "phoneAspectExact": true,
+        "nativeUpscaling": false,
+        "secondDynamicIsland": false,
+        "protectedPrimaryEvidenceUnobscured": true,
+        "allTextBBoxesInsideContainers": true
+      }
+    },
+    {
+      "file": "05-later.png",
+      "sha256": "88e53594ec963460525cf76c8de13fa52928b21d0a780df013a8f16dbee18d23",
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "alpha": false,
+      "format": "PNG",
+      "ICC": {
+        "colorSpace": "sRGB",
+        "embedded": true,
+        "sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561"
+      },
+      "slot": 5,
+      "headline": {
+        "text": "Unsure? Choose later.",
+        "lines": [
+          "Unsure?",
+          "Choose later."
+        ],
+        "fontSize": 112,
+        "minimumSize": 84,
+        "preferredSize": 112,
+        "lineAdvance": 148,
+        "origins": [
+          [
+            70,
+            220
+          ],
+          [
+            70,
+            368
+          ]
+        ],
+        "lineBBoxes": [
+          [
+            70,
+            248,
+            508,
+            327
+          ],
+          [
+            70,
+            392,
+            779,
+            475
+          ]
+        ],
+        "textBBox": [
+          70,
+          248,
+          779,
+          475
+        ],
+        "container": [
+          70,
+          248,
+          1136,
+          532
+        ],
+        "shrinkSteps": 0
+      },
+      "subtitle": null,
+      "gestures": [],
+      "nativeLayers": [
+        {
+          "id": "native-wordmark",
+          "originalSource": "branding/native-wordmark.png",
+          "sourceSHA256": "513d63a0fffe1213d48c6101c0b57d5ebcf50518758edb6643c3bfc00a7af9b9",
+          "sourceSize": [
+            1280,
+            512
+          ],
+          "sourceMode": "RGBA",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            76,
+            124,
+            1222,
+            404
+          ],
+          "targetGeometry": [
+            70,
+            78,
+            406,
+            160
+          ],
+          "nativeScale": 0.2931937172774869,
+          "effectiveNativeScaleXY": [
+            0.2931937172774869,
+            0.29285714285714287
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGBA",
+            "normalizedPixelSHA256": "f2db130198f256af809c516c4389d526b2bc9c7121c23d62623f572ed33b6f2a",
+            "nativeAlphaPreserved": true,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "original native wordmark alpha",
+          "maskSHA256": "8326f0a9216f2f38ea215e5ba01a554a41963db86563742520c97695a1d2ed83",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 15392,
+            "opaqueInteriorPixels": 15392,
+            "occludedByLaterInsetOrShadowPixels": 0,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "7f822eb4b5b8dc60a31a4ce3131022dd32317c4ef466c63803a0f8121959322e",
+            "maskedOutputSHA256": "7f822eb4b5b8dc60a31a4ce3131022dd32317c4ef466c63803a0f8121959322e",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        },
+        {
+          "id": "full-phone",
+          "originalSource": "screenshots/concept-a-later.png",
+          "sourceSHA256": "13494284c4b13b0b18900af357ecb60dbdaffe7f6178d5933b0d446d78a70690",
+          "sourceSize": [
+            1206,
+            2622
+          ],
+          "sourceMode": "RGB",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            0,
+            0,
+            1206,
+            2622
+          ],
+          "targetGeometry": [
+            201,
+            760,
+            1005,
+            2508
+          ],
+          "nativeScale": 0.6666666666666666,
+          "effectiveNativeScaleXY": [
+            0.6666666666666666,
+            0.6666666666666666
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGB",
+            "normalizedPixelSHA256": "20cbdddc462b9f9640c1dc917d77b129199e1f9233c6848283278692dbb518b9",
+            "nativeAlphaPreserved": false,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "outer rounded mask, 4x antialiased",
+          "maskSHA256": "e57a503a465c4ad562d09d9408a5c63aa6878d0c9d6090f9aee43b0a11605f81",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 1243336,
+            "opaqueInteriorPixels": 1396208,
+            "occludedByLaterInsetOrShadowPixels": 152872,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "3d48358820128c2d81e41e2fd726630b78cf2f449450656558cfa9380502cd82",
+            "maskedOutputSHA256": "3d48358820128c2d81e41e2fd726630b78cf2f449450656558cfa9380502cd82",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        },
+        {
+          "id": "again-in-two-days",
+          "originalSource": "screenshots/concept-a-later.png",
+          "sourceSHA256": "13494284c4b13b0b18900af357ecb60dbdaffe7f6178d5933b0d446d78a70690",
+          "sourceSize": [
+            1206,
+            2622
+          ],
+          "sourceMode": "RGB",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            280,
+            1895,
+            928,
+            2085
+          ],
+          "targetGeometry": [
+            279,
+            1520,
+            927,
+            1710
+          ],
+          "nativeScale": 1.0,
+          "effectiveNativeScaleXY": [
+            1.0,
+            1.0
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGB",
+            "normalizedPixelSHA256": "20cbdddc462b9f9640c1dc917d77b129199e1f9233c6848283278692dbb518b9",
+            "nativeAlphaPreserved": false,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "outer rounded mask, 4x antialiased",
+          "maskSHA256": "71e9dab6add1018700692e0c9f04a2fe262cf96dda50304e97cae3eac4cc4496",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 122400,
+            "opaqueInteriorPixels": 122400,
+            "occludedByLaterInsetOrShadowPixels": 0,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "0f5c20cb6f602ddd99ff831de661855779eb613793f6d449a3ea9fe1ab167a92",
+            "maskedOutputSHA256": "0f5c20cb6f602ddd99ff831de661855779eb613793f6d449a3ea9fe1ab167a92",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        }
+      ],
+      "protectedEvidence": {
+        "primary": "screenshots/concept-a-later.png",
+        "protectedSourceRects": [
+          [
+            0,
+            0,
+            1206,
+            200
+          ],
+          [
+            20,
+            235,
+            1180,
+            390
+          ],
+          [
+            34,
+            426,
+            1173,
+            1000
+          ],
+          [
+            34,
+            1580,
+            1173,
+            2580
+          ]
+        ],
+        "protectedOutputRects": [
+          [
+            201,
+            760,
+            1005,
+            894
+          ],
+          [
+            214,
+            916,
+            988,
+            1020
+          ],
+          [
+            223,
+            1044,
+            983,
+            1427
+          ],
+          [
+            223,
+            1813,
+            983,
+            2480
+          ]
+        ],
+        "insets": [
+          {
+            "id": "again-in-two-days",
+            "source": "screenshots/concept-a-later.png",
+            "crop": [
+              280,
+              1895,
+              928,
+              2085
+            ],
+            "target": [
+              279,
+              1520,
+              927,
+              1710
+            ],
+            "nativeScale": 1.0,
+            "requestedBox": [
+              100,
+              1500,
+              1106,
+              1730
+            ],
+            "effectBox": [
+              253,
+              1500,
+              953,
+              1742
+            ]
+          }
+        ]
+      },
+      "layoutQA": {
+        "status": "PASS",
+        "safeMargin": 70,
+        "headlineMaxLines": 2,
+        "subtitleMaxLines": 2,
+        "fullPhoneScreenBox": [
+          201,
+          760,
+          1005,
+          2508
+        ],
+        "fullPhoneCrop": [
+          0,
+          0,
+          1206,
+          2622
+        ],
+        "phoneAspectExact": true,
+        "nativeUpscaling": false,
+        "secondDynamicIsland": false,
+        "protectedPrimaryEvidenceUnobscured": true,
+        "allTextBBoxesInsideContainers": true
+      }
+    },
+    {
+      "file": "06-months.png",
+      "sha256": "ccbc0ac2acdeeea1ab0e5b0cc1d0e5936a83a3c2a4dda41c46413d18d4e1d569",
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "alpha": false,
+      "format": "PNG",
+      "ICC": {
+        "colorSpace": "sRGB",
+        "embedded": true,
+        "sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561"
+      },
+      "slot": 6,
+      "headline": {
+        "text": "One month. A fresh start.",
+        "lines": [
+          "One month.",
+          "A fresh start."
+        ],
+        "fontSize": 112,
+        "minimumSize": 84,
+        "preferredSize": 112,
+        "lineAdvance": 148,
+        "origins": [
+          [
+            70,
+            224
+          ],
+          [
+            70,
+            372
+          ]
+        ],
+        "lineBBoxes": [
+          [
+            70,
+            248,
+            693,
+            331
+          ],
+          [
+            70,
+            396,
+            773,
+            479
+          ]
+        ],
+        "textBBox": [
+          70,
+          248,
+          773,
+          479
+        ],
+        "container": [
+          70,
+          248,
+          1136,
+          532
+        ],
+        "shrinkSteps": 0
+      },
+      "subtitle": null,
+      "gestures": [],
+      "nativeLayers": [
+        {
+          "id": "native-wordmark",
+          "originalSource": "branding/native-wordmark.png",
+          "sourceSHA256": "513d63a0fffe1213d48c6101c0b57d5ebcf50518758edb6643c3bfc00a7af9b9",
+          "sourceSize": [
+            1280,
+            512
+          ],
+          "sourceMode": "RGBA",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            76,
+            124,
+            1222,
+            404
+          ],
+          "targetGeometry": [
+            70,
+            78,
+            406,
+            160
+          ],
+          "nativeScale": 0.2931937172774869,
+          "effectiveNativeScaleXY": [
+            0.2931937172774869,
+            0.29285714285714287
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGBA",
+            "normalizedPixelSHA256": "f2db130198f256af809c516c4389d526b2bc9c7121c23d62623f572ed33b6f2a",
+            "nativeAlphaPreserved": true,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "original native wordmark alpha",
+          "maskSHA256": "8326f0a9216f2f38ea215e5ba01a554a41963db86563742520c97695a1d2ed83",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 15392,
+            "opaqueInteriorPixels": 15392,
+            "occludedByLaterInsetOrShadowPixels": 0,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "7f822eb4b5b8dc60a31a4ce3131022dd32317c4ef466c63803a0f8121959322e",
+            "maskedOutputSHA256": "7f822eb4b5b8dc60a31a4ce3131022dd32317c4ef466c63803a0f8121959322e",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        },
+        {
+          "id": "full-phone",
+          "originalSource": "screenshots/concept-a-months.png",
+          "sourceSHA256": "2f89b63bb2ae76450f55f557c34aedf9286e55687885f91d516bddcb1a72dea1",
+          "sourceSize": [
+            1206,
+            2622
+          ],
+          "sourceMode": "RGB",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            0,
+            0,
+            1206,
+            2622
+          ],
+          "targetGeometry": [
+            201,
+            760,
+            1005,
+            2508
+          ],
+          "nativeScale": 0.6666666666666666,
+          "effectiveNativeScaleXY": [
+            0.6666666666666666,
+            0.6666666666666666
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGB",
+            "normalizedPixelSHA256": "81f18f5c7b045af6f7d33e40620dfee25c4745610cc3d125e4c8de0a5f772d6e",
+            "nativeAlphaPreserved": false,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "outer rounded mask, 4x antialiased",
+          "maskSHA256": "e57a503a465c4ad562d09d9408a5c63aa6878d0c9d6090f9aee43b0a11605f81",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 1396208,
+            "opaqueInteriorPixels": 1396208,
+            "occludedByLaterInsetOrShadowPixels": 0,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "3a9ba1d93172dbfcbad5869f4d1c10f32d275aea2e62a4eba981d388dfc9d66c",
+            "maskedOutputSHA256": "3a9ba1d93172dbfcbad5869f4d1c10f32d275aea2e62a4eba981d388dfc9d66c",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        }
+      ],
+      "protectedEvidence": {
+        "primary": "screenshots/concept-a-months.png",
+        "protectedSourceRects": [
+          [
+            0,
+            0,
+            1206,
+            200
+          ],
+          [
+            0,
+            200,
+            1206,
+            2610
+          ]
+        ],
+        "protectedOutputRects": [
+          [
+            201,
+            760,
+            1005,
+            894
+          ],
+          [
+            201,
+            893,
+            1005,
+            2500
+          ]
+        ],
+        "insets": []
+      },
+      "layoutQA": {
+        "status": "PASS",
+        "safeMargin": 70,
+        "headlineMaxLines": 2,
+        "subtitleMaxLines": 2,
+        "fullPhoneScreenBox": [
+          201,
+          760,
+          1005,
+          2508
+        ],
+        "fullPhoneCrop": [
+          0,
+          0,
+          1206,
+          2622
+        ],
+        "phoneAspectExact": true,
+        "nativeUpscaling": false,
+        "secondDynamicIsland": false,
+        "protectedPrimaryEvidenceUnobscured": true,
+        "allTextBBoxesInsideContainers": true
+      }
+    },
+    {
+      "file": "07-analysis.png",
+      "sha256": "a00aad8b71dcc60a8adae43571cbf8a145f70683d90a546a9e1137e3f33eb8fe",
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "alpha": false,
+      "format": "PNG",
+      "ICC": {
+        "colorSpace": "sRGB",
+        "embedded": true,
+        "sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561"
+      },
+      "slot": 7,
+      "headline": {
+        "text": "Blurry or similar? Take a closer look.",
+        "lines": [
+          "Blurry or similar?",
+          "Take a closer look."
+        ],
+        "fontSize": 112,
+        "minimumSize": 84,
+        "preferredSize": 112,
+        "lineAdvance": 148,
+        "origins": [
+          [
+            70,
+            227
+          ],
+          [
+            70,
+            375
+          ]
+        ],
+        "lineBBoxes": [
+          [
+            70,
+            248,
+            987,
+            352
+          ],
+          [
+            70,
+            399,
+            1059,
+            482
+          ]
+        ],
+        "textBBox": [
+          70,
+          248,
+          1059,
+          482
+        ],
+        "container": [
+          70,
+          248,
+          1136,
+          532
+        ],
+        "shrinkSteps": 0
+      },
+      "subtitle": null,
+      "gestures": [],
+      "nativeLayers": [
+        {
+          "id": "native-wordmark",
+          "originalSource": "branding/native-wordmark.png",
+          "sourceSHA256": "513d63a0fffe1213d48c6101c0b57d5ebcf50518758edb6643c3bfc00a7af9b9",
+          "sourceSize": [
+            1280,
+            512
+          ],
+          "sourceMode": "RGBA",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            76,
+            124,
+            1222,
+            404
+          ],
+          "targetGeometry": [
+            70,
+            78,
+            406,
+            160
+          ],
+          "nativeScale": 0.2931937172774869,
+          "effectiveNativeScaleXY": [
+            0.2931937172774869,
+            0.29285714285714287
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGBA",
+            "normalizedPixelSHA256": "f2db130198f256af809c516c4389d526b2bc9c7121c23d62623f572ed33b6f2a",
+            "nativeAlphaPreserved": true,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "original native wordmark alpha",
+          "maskSHA256": "8326f0a9216f2f38ea215e5ba01a554a41963db86563742520c97695a1d2ed83",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 15392,
+            "opaqueInteriorPixels": 15392,
+            "occludedByLaterInsetOrShadowPixels": 0,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "7f822eb4b5b8dc60a31a4ce3131022dd32317c4ef466c63803a0f8121959322e",
+            "maskedOutputSHA256": "7f822eb4b5b8dc60a31a4ce3131022dd32317c4ef466c63803a0f8121959322e",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        },
+        {
+          "id": "full-phone",
+          "originalSource": "screenshots/concept-a-analysis.png",
+          "sourceSHA256": "a3caba713e7bd439ecdfe6d488db0d32db4559727917830d4f8c1a24e7305930",
+          "sourceSize": [
+            1206,
+            2622
+          ],
+          "sourceMode": "RGB",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            0,
+            0,
+            1206,
+            2622
+          ],
+          "targetGeometry": [
+            201,
+            760,
+            1005,
+            2508
+          ],
+          "nativeScale": 0.6666666666666666,
+          "effectiveNativeScaleXY": [
+            0.6666666666666666,
+            0.6666666666666666
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGB",
+            "normalizedPixelSHA256": "856be1fa8c06bd26842c5a56c503062aaeec275591eeccea752d77e41ce06341",
+            "nativeAlphaPreserved": false,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "outer rounded mask, 4x antialiased",
+          "maskSHA256": "e57a503a465c4ad562d09d9408a5c63aa6878d0c9d6090f9aee43b0a11605f81",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 1185856,
+            "opaqueInteriorPixels": 1396208,
+            "occludedByLaterInsetOrShadowPixels": 210352,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "e0c57a4d67eb3cbb692f3deadcac4dc15ae47bf835daa3ee373c3e3407899bb7",
+            "maskedOutputSHA256": "e0c57a4d67eb3cbb692f3deadcac4dc15ae47bf835daa3ee373c3e3407899bb7",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        },
+        {
+          "id": "real-analysis-results",
+          "originalSource": "screenshots/concept-a-analysis.png",
+          "sourceSHA256": "a3caba713e7bd439ecdfe6d488db0d32db4559727917830d4f8c1a24e7305930",
+          "sourceSize": [
+            1206,
+            2622
+          ],
+          "sourceMode": "RGB",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            48,
+            1775,
+            804,
+            2035
+          ],
+          "targetGeometry": [
+            245,
+            1432,
+            961,
+            1678
+          ],
+          "nativeScale": 0.9470899470899471,
+          "effectiveNativeScaleXY": [
+            0.9470899470899471,
+            0.9461538461538461
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGB",
+            "normalizedPixelSHA256": "856be1fa8c06bd26842c5a56c503062aaeec275591eeccea752d77e41ce06341",
+            "nativeAlphaPreserved": false,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "outer rounded mask, 4x antialiased",
+          "maskSHA256": "bdc67beb791e88dc48d673732e94679268f192e7caeee830af4c70f30bec4879",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 175416,
+            "opaqueInteriorPixels": 175416,
+            "occludedByLaterInsetOrShadowPixels": 0,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "238c95f1aba4df99e30550cfc577a745c2779a575c4cf012f0d105190457370d",
+            "maskedOutputSHA256": "238c95f1aba4df99e30550cfc577a745c2779a575c4cf012f0d105190457370d",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        }
+      ],
+      "protectedEvidence": {
+        "primary": "screenshots/concept-a-analysis.png",
+        "protectedSourceRects": [
+          [
+            0,
+            0,
+            1206,
+            200
+          ],
+          [
+            40,
+            220,
+            1165,
+            490
+          ],
+          [
+            138,
+            515,
+            1068,
+            870
+          ],
+          [
+            138,
+            1500,
+            1068,
+            1756
+          ],
+          [
+            40,
+            1775,
+            1206,
+            2495
+          ]
+        ],
+        "protectedOutputRects": [
+          [
+            201,
+            760,
+            1005,
+            894
+          ],
+          [
+            227,
+            906,
+            978,
+            1087
+          ],
+          [
+            293,
+            1103,
+            913,
+            1340
+          ],
+          [
+            293,
+            1760,
+            913,
+            1931
+          ],
+          [
+            227,
+            1943,
+            1005,
+            2424
+          ]
+        ],
+        "insets": [
+          {
+            "id": "real-analysis-results",
+            "source": "screenshots/concept-a-analysis.png",
+            "crop": [
+              48,
+              1775,
+              804,
+              2035
+            ],
+            "target": [
+              245,
+              1432,
+              961,
+              1678
+            ],
+            "nativeScale": 0.9470899470899471,
+            "requestedBox": [
+              245,
+              1420,
+              961,
+              1690
+            ],
+            "effectBox": [
+              219,
+              1412,
+              987,
+              1710
+            ]
+          }
+        ]
+      },
+      "layoutQA": {
+        "status": "PASS",
+        "safeMargin": 70,
+        "headlineMaxLines": 2,
+        "subtitleMaxLines": 2,
+        "fullPhoneScreenBox": [
+          201,
+          760,
+          1005,
+          2508
+        ],
+        "fullPhoneCrop": [
+          0,
+          0,
+          1206,
+          2622
+        ],
+        "phoneAspectExact": true,
+        "nativeUpscaling": false,
+        "secondDynamicIsland": false,
+        "protectedPrimaryEvidenceUnobscured": true,
+        "allTextBBoxesInsideContainers": true
+      }
+    },
+    {
+      "file": "08-collage.png",
+      "sha256": "1720dff4a1cec31ec8735f1235d58a14684c25f65905b7a6ba823d69aa20e9b2",
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "alpha": false,
+      "format": "PNG",
+      "ICC": {
+        "colorSpace": "sRGB",
+        "embedded": true,
+        "sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561"
+      },
+      "slot": 8,
+      "headline": {
+        "text": "Make a collage. Keep the moment.",
+        "lines": [
+          "Make a collage.",
+          "Keep the moment."
+        ],
+        "fontSize": 112,
+        "minimumSize": 84,
+        "preferredSize": 112,
+        "lineAdvance": 148,
+        "origins": [
+          [
+            70,
+            224
+          ],
+          [
+            70,
+            372
+          ]
+        ],
+        "lineBBoxes": [
+          [
+            70,
+            248,
+            897,
+            349
+          ],
+          [
+            70,
+            396,
+            1059,
+            496
+          ]
+        ],
+        "textBBox": [
+          70,
+          248,
+          1059,
+          496
+        ],
+        "container": [
+          70,
+          248,
+          1136,
+          532
+        ],
+        "shrinkSteps": 0
+      },
+      "subtitle": null,
+      "gestures": [],
+      "nativeLayers": [
+        {
+          "id": "native-wordmark",
+          "originalSource": "branding/native-wordmark.png",
+          "sourceSHA256": "513d63a0fffe1213d48c6101c0b57d5ebcf50518758edb6643c3bfc00a7af9b9",
+          "sourceSize": [
+            1280,
+            512
+          ],
+          "sourceMode": "RGBA",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            76,
+            124,
+            1222,
+            404
+          ],
+          "targetGeometry": [
+            70,
+            78,
+            406,
+            160
+          ],
+          "nativeScale": 0.2931937172774869,
+          "effectiveNativeScaleXY": [
+            0.2931937172774869,
+            0.29285714285714287
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGBA",
+            "normalizedPixelSHA256": "f2db130198f256af809c516c4389d526b2bc9c7121c23d62623f572ed33b6f2a",
+            "nativeAlphaPreserved": true,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "original native wordmark alpha",
+          "maskSHA256": "8326f0a9216f2f38ea215e5ba01a554a41963db86563742520c97695a1d2ed83",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 15392,
+            "opaqueInteriorPixels": 15392,
+            "occludedByLaterInsetOrShadowPixels": 0,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "7f822eb4b5b8dc60a31a4ce3131022dd32317c4ef466c63803a0f8121959322e",
+            "maskedOutputSHA256": "7f822eb4b5b8dc60a31a4ce3131022dd32317c4ef466c63803a0f8121959322e",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        },
+        {
+          "id": "full-phone",
+          "originalSource": "screenshots/concept-a-collage.png",
+          "sourceSHA256": "41cc29c6810d82dcaea4142aad5b493491d618cc960fac71015b29f5e5941648",
+          "sourceSize": [
+            1206,
+            2622
+          ],
+          "sourceMode": "RGB",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            0,
+            0,
+            1206,
+            2622
+          ],
+          "targetGeometry": [
+            201,
+            760,
+            1005,
+            2508
+          ],
+          "nativeScale": 0.6666666666666666,
+          "effectiveNativeScaleXY": [
+            0.6666666666666666,
+            0.6666666666666666
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGB",
+            "normalizedPixelSHA256": "984723acf1d39e6e747f03adbe723da79aa256f2bbf20a67ec9327547f0f2517",
+            "nativeAlphaPreserved": false,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "outer rounded mask, 4x antialiased",
+          "maskSHA256": "e57a503a465c4ad562d09d9408a5c63aa6878d0c9d6090f9aee43b0a11605f81",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 1396208,
+            "opaqueInteriorPixels": 1396208,
+            "occludedByLaterInsetOrShadowPixels": 0,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "203261b6632b1e684aff9994bd762a1228f4606c0c038c2b60fbb965ab3e0cc6",
+            "maskedOutputSHA256": "203261b6632b1e684aff9994bd762a1228f4606c0c038c2b60fbb965ab3e0cc6",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        }
+      ],
+      "protectedEvidence": {
+        "primary": "screenshots/concept-a-collage.png",
+        "protectedSourceRects": [
+          [
+            0,
+            0,
+            1206,
+            200
+          ],
+          [
+            0,
+            200,
+            1206,
+            2610
+          ]
+        ],
+        "protectedOutputRects": [
+          [
+            201,
+            760,
+            1005,
+            894
+          ],
+          [
+            201,
+            893,
+            1005,
+            2500
+          ]
+        ],
+        "insets": []
+      },
+      "layoutQA": {
+        "status": "PASS",
+        "safeMargin": 70,
+        "headlineMaxLines": 2,
+        "subtitleMaxLines": 2,
+        "fullPhoneScreenBox": [
+          201,
+          760,
+          1005,
+          2508
+        ],
+        "fullPhoneCrop": [
+          0,
+          0,
+          1206,
+          2622
+        ],
+        "phoneAspectExact": true,
+        "nativeUpscaling": false,
+        "secondDynamicIsland": false,
+        "protectedPrimaryEvidenceUnobscured": true,
+        "allTextBBoxesInsideContainers": true
+      }
+    },
+    {
+      "file": "09-editor.png",
+      "sha256": "c465b85fe99e8d669de2223f635eb8f61915ef0561acbb159b24ab79f64e63c8",
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "alpha": false,
+      "format": "PNG",
+      "ICC": {
+        "colorSpace": "sRGB",
+        "embedded": true,
+        "sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561"
+      },
+      "slot": 9,
+      "headline": {
+        "text": "A new look. Your own photo.",
+        "lines": [
+          "A new look.",
+          "Your own photo."
+        ],
+        "fontSize": 112,
+        "minimumSize": 84,
+        "preferredSize": 112,
+        "lineAdvance": 148,
+        "origins": [
+          [
+            70,
+            224
+          ],
+          [
+            70,
+            372
+          ]
+        ],
+        "lineBBoxes": [
+          [
+            70,
+            248,
+            685,
+            331
+          ],
+          [
+            70,
+            396,
+            956,
+            496
+          ]
+        ],
+        "textBBox": [
+          70,
+          248,
+          956,
+          496
+        ],
+        "container": [
+          70,
+          248,
+          1136,
+          532
+        ],
+        "shrinkSteps": 0
+      },
+      "subtitle": null,
+      "gestures": [],
+      "nativeLayers": [
+        {
+          "id": "native-wordmark",
+          "originalSource": "branding/native-wordmark.png",
+          "sourceSHA256": "513d63a0fffe1213d48c6101c0b57d5ebcf50518758edb6643c3bfc00a7af9b9",
+          "sourceSize": [
+            1280,
+            512
+          ],
+          "sourceMode": "RGBA",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            76,
+            124,
+            1222,
+            404
+          ],
+          "targetGeometry": [
+            70,
+            78,
+            406,
+            160
+          ],
+          "nativeScale": 0.2931937172774869,
+          "effectiveNativeScaleXY": [
+            0.2931937172774869,
+            0.29285714285714287
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGBA",
+            "normalizedPixelSHA256": "f2db130198f256af809c516c4389d526b2bc9c7121c23d62623f572ed33b6f2a",
+            "nativeAlphaPreserved": true,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "original native wordmark alpha",
+          "maskSHA256": "8326f0a9216f2f38ea215e5ba01a554a41963db86563742520c97695a1d2ed83",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 15392,
+            "opaqueInteriorPixels": 15392,
+            "occludedByLaterInsetOrShadowPixels": 0,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "7f822eb4b5b8dc60a31a4ce3131022dd32317c4ef466c63803a0f8121959322e",
+            "maskedOutputSHA256": "7f822eb4b5b8dc60a31a4ce3131022dd32317c4ef466c63803a0f8121959322e",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        },
+        {
+          "id": "full-phone",
+          "originalSource": "screenshots/concept-a-editor.png",
+          "sourceSHA256": "a051ce7aed4b3b4a668210ddc26e8d32b5ffaf9815641f5cd7cfba00dfa1285b",
+          "sourceSize": [
+            1206,
+            2622
+          ],
+          "sourceMode": "RGB",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            0,
+            0,
+            1206,
+            2622
+          ],
+          "targetGeometry": [
+            201,
+            760,
+            1005,
+            2508
+          ],
+          "nativeScale": 0.6666666666666666,
+          "effectiveNativeScaleXY": [
+            0.6666666666666666,
+            0.6666666666666666
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGB",
+            "normalizedPixelSHA256": "090efef144318a33e90d483b3bb17e79846a11861a782587b37ecb1537e4112b",
+            "nativeAlphaPreserved": false,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "outer rounded mask, 4x antialiased",
+          "maskSHA256": "e57a503a465c4ad562d09d9408a5c63aa6878d0c9d6090f9aee43b0a11605f81",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 1396208,
+            "opaqueInteriorPixels": 1396208,
+            "occludedByLaterInsetOrShadowPixels": 0,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "fdd27fb1ebaef439d4f20516c2561a49ed4d7e918c93bc6bd21dd54e55fb0e23",
+            "maskedOutputSHA256": "fdd27fb1ebaef439d4f20516c2561a49ed4d7e918c93bc6bd21dd54e55fb0e23",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        }
+      ],
+      "protectedEvidence": {
+        "primary": "screenshots/concept-a-editor.png",
+        "protectedSourceRects": [
+          [
+            0,
+            0,
+            1206,
+            200
+          ],
+          [
+            0,
+            200,
+            1206,
+            2610
+          ]
+        ],
+        "protectedOutputRects": [
+          [
+            201,
+            760,
+            1005,
+            894
+          ],
+          [
+            201,
+            893,
+            1005,
+            2500
+          ]
+        ],
+        "insets": []
+      },
+      "layoutQA": {
+        "status": "PASS",
+        "safeMargin": 70,
+        "headlineMaxLines": 2,
+        "subtitleMaxLines": 2,
+        "fullPhoneScreenBox": [
+          201,
+          760,
+          1005,
+          2508
+        ],
+        "fullPhoneCrop": [
+          0,
+          0,
+          1206,
+          2622
+        ],
+        "phoneAspectExact": true,
+        "nativeUpscaling": false,
+        "secondDynamicIsland": false,
+        "protectedPrimaryEvidenceUnobscured": true,
+        "allTextBBoxesInsideContainers": true
+      }
+    },
+    {
+      "file": "10-games.png",
+      "sha256": "1e7612a9d03c3779bdb8f990a064bb20508ce28cc80917a9189c54b380777e64",
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "alpha": false,
+      "format": "PNG",
+      "ICC": {
+        "colorSpace": "sRGB",
+        "embedded": true,
+        "sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561"
+      },
+      "slot": 10,
+      "headline": {
+        "text": "A small break. Your photos play.",
+        "lines": [
+          "A small break.",
+          "Your photos play."
+        ],
+        "fontSize": 112,
+        "minimumSize": 84,
+        "preferredSize": 112,
+        "lineAdvance": 148,
+        "origins": [
+          [
+            70,
+            224
+          ],
+          [
+            70,
+            372
+          ]
+        ],
+        "lineBBoxes": [
+          [
+            70,
+            248,
+            826,
+            331
+          ],
+          [
+            70,
+            396,
+            1013,
+            497
+          ]
+        ],
+        "textBBox": [
+          70,
+          248,
+          1013,
+          497
+        ],
+        "container": [
+          70,
+          248,
+          1136,
+          532
+        ],
+        "shrinkSteps": 0
+      },
+      "subtitle": {
+        "text": "Free with ads. GaleriQ Pro: one purchase, no subscription.",
+        "lines": [
+          "Free with ads. GaleriQ Pro:",
+          "one purchase, no subscription."
+        ],
+        "fontSize": 52,
+        "minimumSize": 46,
+        "preferredSize": 52,
+        "lineAdvance": 71,
+        "origins": [
+          [
+            70,
+            548
+          ],
+          [
+            70,
+            619
+          ]
+        ],
+        "lineBBoxes": [
+          [
+            70,
+            560,
+            689,
+            601
+          ],
+          [
+            70,
+            631,
+            779,
+            680
+          ]
+        ],
+        "textBBox": [
+          70,
+          560,
+          779,
+          680
+        ],
+        "container": [
+          70,
+          560,
+          1136,
+          708
+        ],
+        "shrinkSteps": 0
+      },
+      "gestures": [],
+      "nativeLayers": [
+        {
+          "id": "native-wordmark",
+          "originalSource": "branding/native-wordmark.png",
+          "sourceSHA256": "513d63a0fffe1213d48c6101c0b57d5ebcf50518758edb6643c3bfc00a7af9b9",
+          "sourceSize": [
+            1280,
+            512
+          ],
+          "sourceMode": "RGBA",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            76,
+            124,
+            1222,
+            404
+          ],
+          "targetGeometry": [
+            70,
+            78,
+            406,
+            160
+          ],
+          "nativeScale": 0.2931937172774869,
+          "effectiveNativeScaleXY": [
+            0.2931937172774869,
+            0.29285714285714287
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGBA",
+            "normalizedPixelSHA256": "f2db130198f256af809c516c4389d526b2bc9c7121c23d62623f572ed33b6f2a",
+            "nativeAlphaPreserved": true,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "original native wordmark alpha",
+          "maskSHA256": "8326f0a9216f2f38ea215e5ba01a554a41963db86563742520c97695a1d2ed83",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 15392,
+            "opaqueInteriorPixels": 15392,
+            "occludedByLaterInsetOrShadowPixels": 0,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "7f822eb4b5b8dc60a31a4ce3131022dd32317c4ef466c63803a0f8121959322e",
+            "maskedOutputSHA256": "7f822eb4b5b8dc60a31a4ce3131022dd32317c4ef466c63803a0f8121959322e",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        },
+        {
+          "id": "full-phone",
+          "originalSource": "screenshots/concept-a-games.png",
+          "sourceSHA256": "53a248d390bc00d61ca1b6af955ddfebc12e56bbb4a7af1fe5b4dffcc777190c",
+          "sourceSize": [
+            1206,
+            2622
+          ],
+          "sourceMode": "RGB",
+          "sourceICC": {
+            "embedded": false,
+            "sha256": null,
+            "description": null,
+            "png_sRGB_rendering_intent": 0,
+            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+          },
+          "crop": [
+            0,
+            0,
+            1206,
+            2622
+          ],
+          "targetGeometry": [
+            201,
+            760,
+            1005,
+            2508
+          ],
+          "nativeScale": 0.6666666666666666,
+          "effectiveNativeScaleXY": [
+            0.6666666666666666,
+            0.6666666666666666
+          ],
+          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+          "rotationDegrees": 0,
+          "colorManagement": {
+            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
+            "operation": "Native PNG sRGB declaration preserved, no color conversion",
+            "inputICC": {
+              "embedded": false,
+              "sha256": null,
+              "description": null,
+              "png_sRGB_rendering_intent": 0,
+              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
+            },
+            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "renderingIntent": "RELATIVE_COLORIMETRIC",
+            "flags": 0,
+            "normalizedMode": "RGB",
+            "normalizedPixelSHA256": "149e6867a139689d262717dbe410f7cbcc4c708524425cba95e71cfbc680b440",
+            "nativeAlphaPreserved": false,
+            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
+          },
+          "colorOperations": [
+            "Native PNG sRGB declaration preserved, no color conversion"
+          ],
+          "mask": "outer rounded mask, 4x antialiased",
+          "maskSHA256": "e57a503a465c4ad562d09d9408a5c63aa6878d0c9d6090f9aee43b0a11605f81",
+          "pixelQA": {
+            "status": "PASS",
+            "comparedPixels": 1396208,
+            "opaqueInteriorPixels": 1396208,
+            "occludedByLaterInsetOrShadowPixels": 0,
+            "maxChannelDifference": 0,
+            "maskedKnownResampleSHA256": "d42fac866cc2e2580badf11c87e76af37e5616f24c2589b136beb377e0389144",
+            "maskedOutputSHA256": "d42fac866cc2e2580badf11c87e76af37e5616f24c2589b136beb377e0389144",
+            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
+          }
+        }
+      ],
+      "protectedEvidence": {
+        "primary": "screenshots/concept-a-games.png",
+        "protectedSourceRects": [
+          [
+            0,
+            0,
+            1206,
+            200
+          ],
+          [
+            0,
+            200,
+            1206,
+            2610
+          ]
+        ],
+        "protectedOutputRects": [
+          [
+            201,
+            760,
+            1005,
+            894
+          ],
+          [
+            201,
+            893,
+            1005,
+            2500
+          ]
+        ],
+        "insets": []
+      },
+      "layoutQA": {
+        "status": "PASS",
+        "safeMargin": 70,
+        "headlineMaxLines": 2,
+        "subtitleMaxLines": 2,
+        "fullPhoneScreenBox": [
+          201,
+          760,
+          1005,
+          2508
+        ],
+        "fullPhoneCrop": [
+          0,
+          0,
+          1206,
+          2622
+        ],
+        "phoneAspectExact": true,
+        "nativeUpscaling": false,
+        "secondDynamicIsland": false,
+        "protectedPrimaryEvidenceUnobscured": true,
+        "allTextBBoxesInsideContainers": true
+      }
+    }
+  ],
+  "previews": [
+    {
+      "file": "00-overview.jpg",
+      "sha256": "8e31bc0411a8a8343afdab95d4db7b1be136118394dc04b930d2f9d4a682b588",
+      "width": 2630,
+      "height": 564,
+      "mode": "RGB",
+      "alpha": false,
+      "format": "JPEG",
+      "ICC": {
+        "colorSpace": "sRGB",
+        "embedded": true,
+        "sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561"
+      },
+      "slotIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "rows": 1,
+      "columns": 10,
+      "cells": [
+        {
+          "slot": 1,
+          "targetGeometry": [
+            20,
+            20,
+            261,
+            544
+          ]
+        },
+        {
+          "slot": 2,
+          "targetGeometry": [
+            281,
+            20,
+            522,
+            544
+          ]
+        },
+        {
+          "slot": 3,
+          "targetGeometry": [
+            542,
+            20,
+            783,
+            544
+          ]
+        },
+        {
+          "slot": 4,
+          "targetGeometry": [
+            803,
+            20,
+            1044,
+            544
+          ]
+        },
+        {
+          "slot": 5,
+          "targetGeometry": [
+            1064,
+            20,
+            1305,
+            544
+          ]
+        },
+        {
+          "slot": 6,
+          "targetGeometry": [
+            1325,
+            20,
+            1566,
+            544
+          ]
+        },
+        {
+          "slot": 7,
+          "targetGeometry": [
+            1586,
+            20,
+            1827,
+            544
+          ]
+        },
+        {
+          "slot": 8,
+          "targetGeometry": [
+            1847,
+            20,
+            2088,
+            544
+          ]
+        },
+        {
+          "slot": 9,
+          "targetGeometry": [
+            2108,
+            20,
+            2349,
+            544
+          ]
+        },
+        {
+          "slot": 10,
+          "targetGeometry": [
+            2369,
+            20,
+            2610,
+            544
+          ]
+        }
+      ],
+      "tileSize": [
+        241,
+        524
+      ],
+      "kind": "overview"
+    },
+    {
+      "file": "00-search-preview.jpg",
+      "sha256": "96fba3aa2372cedba5f4fe9284c524b1d559bf0c74a7788c94ad743edf6beaf9",
+      "width": 390,
+      "height": 276,
+      "mode": "RGB",
+      "alpha": false,
+      "format": "JPEG",
+      "ICC": {
+        "colorSpace": "sRGB",
+        "embedded": true,
+        "sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561"
+      },
+      "slotIds": [
+        1,
+        2,
+        3
+      ],
+      "rows": 1,
+      "columns": 3,
+      "cells": [
+        {
+          "slot": 1,
+          "targetGeometry": [
+            16,
+            16,
+            128,
+            260
+          ]
+        },
+        {
+          "slot": 2,
+          "targetGeometry": [
+            139,
+            16,
+            251,
+            260
+          ]
+        },
+        {
+          "slot": 3,
+          "targetGeometry": [
+            262,
+            16,
+            374,
+            260
+          ]
+        }
+      ],
+      "tileSize": [
+        112,
+        244
+      ],
+      "kind": "search"
+    }
+  ],
+  "layoutQA": {
+    "status": "PASS",
+    "pngCount": 10,
+    "identicalFullPhoneGeometry": true,
+    "screenBox": [
+      201,
+      760,
+      1005,
+      2508
+    ],
+    "frameBox": [
+      193,
+      752,
+      1013,
+      2516
+    ],
+    "backgroundColors": {
+      "top": "#E0EFF9",
+      "bottom": "#EAF4FB",
+      "interpolation": "smoothstep"
+    },
+    "overviewSlots": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "overviewRows": 1,
+    "searchSlots": [
+      1,
+      2,
+      3
+    ],
+    "nativePixelComparison": "PASS",
+    "background": "Continuous smooth ice-blue gradient; no horizon/split; no page numerals or slogan",
+    "finalHumanVisualQA": "NOT_RUN: parent must inspect full-size exports and both previews before delivery"
+  },
+  "localizationRule": {
+    "renderNow": [
+      "en-US"
+    ],
+    "futureOnly": "For an approved future locale, retain the shared 70 px safe margins and full-device geometry. Rewrap at word boundaries, then decrement font size by 1 px down to the declared floor; at most two headline/subtitle lines. If it still fails, stop for an approved layout revision, never rewrite, truncate, condense or stretch copy. RTL requires a shaping-capable engine (RAQM), start-aligned marketing text, and separate source/crop QA; native pixels, the LTR native wordmark, and physical Keep-up/Trash-left/Later-right gesture semantics must never be mirrored. No translations or other locale exports are implemented here."
+  }
+}

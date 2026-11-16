@@ -28,8 +28,8 @@ SIZE = (1206, 2622)
 RESAMPLE = Image.Resampling.LANCZOS
 COPY = (
     ("Swipe the clutter. Keep the memories.", None, "swipe"),
-    ("Find duplicates. Spot large files.", None, "duplicates"),
-    ("Nothing deletes without you.", None, "trash"),
+    ("Find duplicates. Spot large files.", None, "large-files"),
+    ("Nothing deletes without you.", None, "delete-confirm"),
     ("Private photos. Locked away.", "Encrypted vault, protected by your own code and Face ID.", "vault"),
     ("Unsure? Choose later.", None, "later"),
     ("One month. A fresh start.", None, "months"),
@@ -206,9 +206,12 @@ def validate_provenance(value: dict, expected_commit: str, expected_run: str, ex
     return rows
 
 
-def profile_info(raw: bytes | None) -> dict:
+def profile_info(raw: bytes | None, png_srgb_intent: int | None = None) -> dict:
     if not raw:
-        return {"embedded": False, "sha256": None, "description": None, "interpretation": "Untagged native RGB interpreted as sRGB; parent must confirm in visualQA notes"}
+        return {"embedded": False, "sha256": None, "description": None,
+                "png_sRGB_rendering_intent": png_srgb_intent,
+                "interpretation": "Native PNG declares sRGB; no ICC conversion needed" if png_srgb_intent is not None else
+                                  "Untagged native RGB interpreted as sRGB; parent must confirm in visualQA notes"}
     try:
         profile = ImageCms.ImageCmsProfile(io.BytesIO(raw))
         description = ImageCms.getProfileDescription(profile).strip()
@@ -222,7 +225,7 @@ def profile_info(raw: bytes | None) -> dict:
 
 def normalize_native(image: Image.Image, raw_icc: bytes | None) -> tuple[Image.Image, dict]:
     """Define the audited transform stage BEFORE crops/resampling; preserve native alpha."""
-    info = profile_info(raw_icc)
+    info = profile_info(raw_icc, image.info.get("srgb"))
     alpha = image.getchannel("A") if image.mode == "RGBA" else None
     rgb = image.convert("RGB")
     if raw_icc:
@@ -235,7 +238,9 @@ def normalize_native(image: Image.Image, raw_icc: bytes | None) -> tuple[Image.I
     if alpha is not None:
         rgb.putalpha(alpha)
     return rgb, {"stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
-                 "operation": "Pillow ImageCms.profileToProfile" if raw_icc else "Untagged RGB interpreted as sRGB, no color conversion",
+                 "operation": "Pillow ImageCms.profileToProfile" if raw_icc else
+                              ("Native PNG sRGB declaration preserved, no color conversion" if image.info.get("srgb") is not None else
+                               "Untagged RGB interpreted as sRGB, no color conversion"),
                  "inputICC": info, "outputICC_SHA256": digest(srgb_profile()), "renderingIntent": "RELATIVE_COLORIMETRIC", "flags": 0,
                  "normalizedMode": rgb.mode, "normalizedPixelSHA256": digest(rgb.tobytes()),
                  "nativeAlphaPreserved": alpha is not None, "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"}
@@ -277,7 +282,7 @@ class SourceGate:
             with Image.open(io.BytesIO(raw)) as native:
                 native.load()
                 need(native.getexif().get(274, 1) == 1, f"EXIF rotation is not permitted: {relative}")
-                info = profile_info(native.info.get("icc_profile"))
+                info = profile_info(native.info.get("icc_profile"), native.info.get("srgb"))
                 original_mode = native.mode
                 for field, actual in (("width", native.width), ("height", native.height), ("mode", original_mode)):
                     if field in row:
@@ -318,7 +323,9 @@ def validate_design(design: dict) -> None:
     slots = design["slots"]
     need(isinstance(slots, list) and len(slots) == 10, "Exactly ten slots are required")
     filenames: set[str] = set()
-    required_insets = {2: ("large-file-results", "large-files"), 3: ("native-system-confirmation", "delete-confirm"),
+    # Slot 3 uses the whole genuine system-confirmation capture as its primary.
+    # The tall native dialog therefore needs no extra crop over the trash photos.
+    required_insets = {2: ("duplicate-results", "duplicates"),
                        5: ("again-in-two-days", "later"), 7: ("real-analysis-results", "analysis")}
     for i, (slot, expected) in enumerate(zip(slots, COPY), 1):
         need(type(slot["id"]) is int and slot["id"] == i and normalized_copy(slot["headline"]) == expected[0] and

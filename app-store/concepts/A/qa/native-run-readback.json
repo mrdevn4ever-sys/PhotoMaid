@@ -1,0 +1,161 @@
+{
+  "run": {
+    "conclusion": "success",
+    "createdAt": "2026-11-15T23:51:48Z",
+    "databaseId": 43777081132,
+    "event": "workflow_dispatch",
+    "headBranch": "hermes/store-concept-a-en",
+    "headSha": "c6ffd6c4a6279b8fadb2395069f415e84e53370e",
+    "jobs": [
+      {
+        "completedAt": "2026-11-16T00:15:46Z",
+        "conclusion": "success",
+        "databaseId": 133005699868,
+        "name": "Fresh 1.0.1 app, genuine library and English evidence",
+        "startedAt": "2026-11-15T23:51:51Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-11-15T23:51:53Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-11-15T23:51:52Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-15T23:52:00Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "startedAt": "2026-11-15T23:51:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-15T23:52:00Z",
+            "conclusion": "success",
+            "name": "Guard the exact branch, baseline and en-US-only scope",
+            "number": 3,
+            "startedAt": "2026-11-15T23:52:00Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-15T23:52:56Z",
+            "conclusion": "success",
+            "name": "Select the existing native toolchain",
+            "number": 4,
+            "startedAt": "2026-11-15T23:52:00Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-15T23:57:48Z",
+            "conclusion": "success",
+            "name": "Build current app and capture test without Apple credentials",
+            "number": 5,
+            "startedAt": "2026-11-15T23:52:56Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-15T23:58:12Z",
+            "conclusion": "success",
+            "name": "Generate hash-verified CC0 clutter, identical photos, series and actual large videos",
+            "number": 6,
+            "startedAt": "2026-11-15T23:57:48Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-16T00:05:16Z",
+            "conclusion": "success",
+            "name": "Create and clean only a new disposable real iPhone simulator",
+            "number": 7,
+            "startedAt": "2026-11-15T23:58:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-16T00:15:16Z",
+            "conclusion": "success",
+            "name": "Capture real swipes, finished results, trash confirmation, vault and creative tools",
+            "number": 8,
+            "startedAt": "2026-11-16T00:05:16Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-16T00:15:21Z",
+            "conclusion": "success",
+            "name": "Bind actual sources, test result and native logo to this exact run and SHA",
+            "number": 9,
+            "startedAt": "2026-11-16T00:15:17Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-16T00:15:27Z",
+            "conclusion": "success",
+            "name": "Preserve native evidence even on failure; no production media replacement",
+            "number": 10,
+            "startedAt": "2026-11-16T00:15:21Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-16T00:15:36Z",
+            "conclusion": "success",
+            "name": "Delete only this task's disposable simulator",
+            "number": 11,
+            "startedAt": "2026-11-16T00:15:27Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-16T00:15:38Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v4",
+            "number": 22,
+            "startedAt": "2026-11-16T00:15:36Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-16T00:15:42Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 23,
+            "startedAt": "2026-11-16T00:15:38Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/43777081132/job/133005699868"
+      }
+    ],
+    "status": "completed",
+    "updatedAt": "2026-11-16T00:15:47Z",
+    "url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/43777081132"
+  },
+  "watch_returncode": 0,
+  "native_build_or_test_pass": true,
+  "final_creative_or_security_acceptance": "NOT RUN",
+  "evidence_download": "PASS",
+  "artifacts": {
+    "total_count": 1,
+    "artifacts": [
+      {
+        "id": 14186903983,
+        "node_id": "MDg6QXJ0aWZhY3QxNDE4NjkwMzk4Mw==",
+        "name": "galeriq-concept-a-en-US-native-43777081132-attempt-1",
+        "size_in_bytes": 26270555,
+        "url": "https://api.github.com/repos/mrdevn4ever-sys/PhotoMaid/actions/artifacts/14186903983",
+        "archive_download_url": "https://api.github.com/repos/mrdevn4ever-sys/PhotoMaid/actions/artifacts/14186903983/zip",
+        "expired": false,
+        "digest": "sha256:d0dea690beb4e059eafd76acfa385c457e5cda9b51a20b784088422f02a6ec75",
+        "created_at": "2026-11-16T00:15:27Z",
+        "updated_at": "2026-11-16T00:15:27Z",
+        "expires_at": "2026-11-23T00:15:22Z",
+        "workflow_run": {
+          "id": 43777081132,
+          "repository_id": 1393715825,
+          "head_repository_id": 1393715825,
+          "head_branch": "hermes/store-concept-a-en",
+          "head_sha": "c6ffd6c4a6279b8fadb2395069f415e84e53370e"
+        }
+      }
+    ]
+  },
+  "evidence_path": "F:\\HermesOutput\\GaleriQ\\concept-a-en-v1\\native-run-43777081132-attempt-1",
+  "artifact_id": 14186903983
+}

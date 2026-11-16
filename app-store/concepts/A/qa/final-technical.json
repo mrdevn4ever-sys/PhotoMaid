@@ -1,0 +1,171 @@
+{
+  "schema_version": 1,
+  "technical_export_status": "PASS",
+  "workflow_run": "43777081132",
+  "commit": "c6ffd6c4a6279b8fadb2395069f415e84e53370e",
+  "locale": "en-US",
+  "png_count": 10,
+  "images": [
+    {
+      "slot": 1,
+      "file": "01-swipe.png",
+      "sha256": "989805903afab47e1e76fe291e41cfb79792675ede4ec46a70e2c989839463c5",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 953439
+    },
+    {
+      "slot": 2,
+      "file": "02-duplicates-large-files.png",
+      "sha256": "018c550b97a317ad2737a1aebf23cae533a2acc5980f98aa345ae9d4ce88421e",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+      "native_layers_verified": 3,
+      "independently_compared_native_pixels": 920963
+    },
+    {
+      "slot": 3,
+      "file": "03-delete-confirmation.png",
+      "sha256": "5eaebfa39b5fb5283d8ab51493167f1b2b64e9a7a50e5a54213724fe98b8ee6c",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 953439
+    },
+    {
+      "slot": 4,
+      "file": "04-vault.png",
+      "sha256": "d31150c0ac56b55a8722300deca364f0690c6a7833c6b4f60fd9c00a1cf3cae4",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 953439
+    },
+    {
+      "slot": 5,
+      "file": "05-later.png",
+      "sha256": "88e53594ec963460525cf76c8de13fa52928b21d0a780df013a8f16dbee18d23",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+      "native_layers_verified": 3,
+      "independently_compared_native_pixels": 876303
+    },
+    {
+      "slot": 6,
+      "file": "06-months.png",
+      "sha256": "ccbc0ac2acdeeea1ab0e5b0cc1d0e5936a83a3c2a4dda41c46413d18d4e1d569",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 953439
+    },
+    {
+      "slot": 7,
+      "file": "07-analysis.png",
+      "sha256": "a00aad8b71dcc60a8adae43571cbf8a145f70683d90a546a9e1137e3f33eb8fe",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+      "native_layers_verified": 3,
+      "independently_compared_native_pixels": 889319
+    },
+    {
+      "slot": 8,
+      "file": "08-collage.png",
+      "sha256": "1720dff4a1cec31ec8735f1235d58a14684c25f65905b7a6ba823d69aa20e9b2",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 953439
+    },
+    {
+      "slot": 9,
+      "file": "09-editor.png",
+      "sha256": "c465b85fe99e8d669de2223f635eb8f61915ef0561acbb159b24ab79f64e63c8",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 953439
+    },
+    {
+      "slot": 10,
+      "file": "10-games.png",
+      "sha256": "1e7612a9d03c3779bdb8f990a064bb20508ce28cc80917a9189c54b380777e64",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 953439
+    }
+  ],
+  "preview_count": 2,
+  "uniform_phone_box": [
+    201,
+    760,
+    1005,
+    2508
+  ],
+  "fixture_visual_source_allowlist_sha256": "7082260ee0e09e7bab94a278728ee93fa0ca74ed14592bda0f79785b4627ed55",
+  "native_pixels": "PASS, independently compared to ICC-normalized original native files; outer alpha edges excluded",
+  "human_final_visual_acceptance": "NOT RUN by this automatic auditor",
+  "security_runtime_conversion_or_store_upload_acceptance": "NOT RUN"
+}
