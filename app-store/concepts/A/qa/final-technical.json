@@ -69,7 +69,7 @@
     {
       "slot": 5,
       "file": "05-later.png",
-      "sha256": "88e53594ec963460525cf76c8de13fa52928b21d0a780df013a8f16dbee18d23",
+      "sha256": "5079afe8e5fcfe625ee836d772694896eb36096c95cda08cbcf38a5275a8514f",
       "size": [
         1206,
         2622
@@ -78,8 +78,8 @@
       "format": "PNG",
       "icc_description": "sRGB built-in",
       "icc_sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
-      "native_layers_verified": 3,
-      "independently_compared_native_pixels": 876303
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 953439
     },
     {
       "slot": 6,
@@ -99,7 +99,7 @@
     {
       "slot": 7,
       "file": "07-analysis.png",
-      "sha256": "a00aad8b71dcc60a8adae43571cbf8a145f70683d90a546a9e1137e3f33eb8fe",
+      "sha256": "4026d91a10ff9f4069f01e6842b5beaa722ed8889c4ce9af9eab88bd70bf7a26",
       "size": [
         1206,
         2622
@@ -108,8 +108,8 @@
       "format": "PNG",
       "icc_description": "sRGB built-in",
       "icc_sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
-      "native_layers_verified": 3,
-      "independently_compared_native_pixels": 889319
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 953439
     },
     {
       "slot": 8,

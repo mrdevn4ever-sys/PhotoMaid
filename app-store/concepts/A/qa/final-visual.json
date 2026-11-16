@@ -5,9 +5,9 @@
   "blockers": [],
   "workflow_run": "43777081132",
   "capture_commit": "c6ffd6c4a6279b8fadb2395069f415e84e53370e",
-  "render_candidate": "render-r3",
+  "render_candidate": "en-US v2: only overlays05/07 removed",
   "provenance_sha256": "86d228e9451dbc6f018e94c2bc9894fd6203aa7e3dd256e0c4eda4b99b4ac217",
-  "design_sha256": "71ca17cc901dd8224c9cb5fc4dff398ee83b08fcea37a854c77ffe9465e1bc2d",
+  "design_sha256": "0459f20daf722c4cb936667177de63123b9b46989cf4339d1edf82d8efe5dfaa",
   "images": [
     {
       "slot": 1,
@@ -16,7 +16,7 @@
       "full_size_reviewed": true,
       "search_scale_reviewed": true,
       "search_scale_tile_width": 112,
-      "full_size_review_basis": "Individually vision-reviewed render-r2 image; actual decoded RGB bytes verified identical to current r3 file, despite new encoded ICC/hash metadata",
+      "full_size_review_basis": "Previously individually reviewed v1 file; entire PNG bytes verified identical in v2",
       "decoded_RGB_sha256": "e5cae970a6a99fa8ca789b3032bbab3aca2b7d5168f7a8659334950aba667f69",
       "status": "PASS_WITH_OBSERVATIONS",
       "observations": [
@@ -31,7 +31,7 @@
       "full_size_reviewed": true,
       "search_scale_reviewed": true,
       "search_scale_tile_width": 112,
-      "full_size_review_basis": "Direct actual render-r3 image vision review",
+      "full_size_review_basis": "Previously individually reviewed v1 file; entire PNG bytes verified identical in v2",
       "decoded_RGB_sha256": "bcf2b0aae6b954edb7efe22da8569c1c129e0e6ad4b9ad94a15cd3112f34012e",
       "status": "PASS_WITH_OBSERVATIONS",
       "observations": [
@@ -46,7 +46,7 @@
       "full_size_reviewed": true,
       "search_scale_reviewed": true,
       "search_scale_tile_width": 112,
-      "full_size_review_basis": "Individually vision-reviewed render-r2 image; actual decoded RGB bytes verified identical to current r3 file, despite new encoded ICC/hash metadata",
+      "full_size_review_basis": "Previously individually reviewed v1 file; entire PNG bytes verified identical in v2",
       "decoded_RGB_sha256": "f59d9f50ed37f79a5693de97a0e148343d92b414f7b3372a0eab86c14dbfd31c",
       "status": "PASS_WITH_OBSERVATIONS",
       "observations": [
@@ -62,7 +62,7 @@
       "full_size_reviewed": true,
       "search_scale_reviewed": true,
       "search_scale_tile_width": 112,
-      "full_size_review_basis": "Individually vision-reviewed render-r2 image; actual decoded RGB bytes verified identical to current r3 file, despite new encoded ICC/hash metadata",
+      "full_size_review_basis": "Previously individually reviewed v1 file; entire PNG bytes verified identical in v2",
       "decoded_RGB_sha256": "e3e268027339f9860dc548e3dba105505280baca6dcf43fd03e875fba112cccb",
       "status": "PASS",
       "observations": [
@@ -73,15 +73,15 @@
     {
       "slot": 5,
       "file": "05-later.png",
-      "sha256": "88e53594ec963460525cf76c8de13fa52928b21d0a780df013a8f16dbee18d23",
+      "sha256": "5079afe8e5fcfe625ee836d772694896eb36096c95cda08cbcf38a5275a8514f",
       "full_size_reviewed": true,
       "search_scale_reviewed": true,
       "search_scale_tile_width": 112,
-      "full_size_review_basis": "Direct actual render-r3 image vision review",
-      "decoded_RGB_sha256": "136973aca0f319dbd8166320852b8df8ad3d0f6a9e15d589fcb291f99f37873f",
-      "status": "PASS_WITH_OBSERVATIONS",
+      "full_size_review_basis": "Direct v2 vision-tool review plus direct112px review",
+      "decoded_RGB_sha256": null,
+      "status": "PASS",
       "observations": [
-        "Direct actual r3 vision PASS: full actual reminder label plus Change button in both original and truthful native focus crop. No essential controls or physical frame hidden."
+        "Added magnified pill and its backplate removed; exactly one original native reminder pill remains. Original photo, native controls, headline and full phone preserved."
       ],
       "small_scale_finding": "PASS: exact main headline legible and feature distinguishable; complete unobscured phone silhouette. Tiny native figures/body text are not asserted legible at112px."
     },
@@ -92,7 +92,7 @@
       "full_size_reviewed": true,
       "search_scale_reviewed": true,
       "search_scale_tile_width": 112,
-      "full_size_review_basis": "Individually vision-reviewed render-r2 image; actual decoded RGB bytes verified identical to current r3 file, despite new encoded ICC/hash metadata",
+      "full_size_review_basis": "Previously individually reviewed v1 file; entire PNG bytes verified identical in v2",
       "decoded_RGB_sha256": "4637a33d58e58b379b3fee362654d3bc3312f5fea5f65da0f6f1a82546bc15dc",
       "status": "PASS_WITH_OBSERVATIONS",
       "observations": [
@@ -103,15 +103,15 @@
     {
       "slot": 7,
       "file": "07-analysis.png",
-      "sha256": "a00aad8b71dcc60a8adae43571cbf8a145f70683d90a546a9e1137e3f33eb8fe",
+      "sha256": "4026d91a10ff9f4069f01e6842b5beaa722ed8889c4ce9af9eab88bd70bf7a26",
       "full_size_reviewed": true,
       "search_scale_reviewed": true,
       "search_scale_tile_width": 112,
-      "full_size_review_basis": "Direct actual render-r3 image vision review",
-      "decoded_RGB_sha256": "e438f2791840ef7e7ba49093e014cb47f37d4307208f7b280c344571b1f018af",
-      "status": "PASS_WITH_OBSERVATIONS",
+      "full_size_review_basis": "Direct v2 vision-tool review plus direct112px review",
+      "decoded_RGB_sha256": null,
+      "status": "PASS",
       "observations": [
-        "Direct actual r3 vision PASS: three complete genuine focus thumbnails inside screen, original four-plus-partial native scroller unchanged, six-series label and Keep5Trash1/safety footer clear, whole physical frame visible. No AI ranking or closing slogan."
+        "Added magnified three-photo strip removed; original comparison photo, native lower thumbnails and Keep5/Trash1 action preserved. No duplicated UI."
       ],
       "small_scale_finding": "PASS: exact main headline legible and feature distinguishable; complete unobscured phone silhouette. Tiny native figures/body text are not asserted legible at112px."
     },
@@ -122,7 +122,7 @@
       "full_size_reviewed": true,
       "search_scale_reviewed": true,
       "search_scale_tile_width": 112,
-      "full_size_review_basis": "Individually vision-reviewed render-r2 image; actual decoded RGB bytes verified identical to current r3 file, despite new encoded ICC/hash metadata",
+      "full_size_review_basis": "Previously individually reviewed v1 file; entire PNG bytes verified identical in v2",
       "decoded_RGB_sha256": "00953574b4ed4f72566fbe27b7ba50ab033a3d6b0db13c2f299c8d2ba0f9c910",
       "status": "PASS_WITH_OBSERVATIONS",
       "observations": [
@@ -138,7 +138,7 @@
       "full_size_reviewed": true,
       "search_scale_reviewed": true,
       "search_scale_tile_width": 112,
-      "full_size_review_basis": "Individually vision-reviewed render-r2 image; actual decoded RGB bytes verified identical to current r3 file, despite new encoded ICC/hash metadata",
+      "full_size_review_basis": "Previously individually reviewed v1 file; entire PNG bytes verified identical in v2",
       "decoded_RGB_sha256": "af5ff24c6de20f44a0fdb7b8884bb3392e84854eaded12e0627632b43fa5bf63",
       "status": "PASS_WITH_OBSERVATIONS",
       "observations": [
@@ -153,7 +153,7 @@
       "full_size_reviewed": true,
       "search_scale_reviewed": true,
       "search_scale_tile_width": 112,
-      "full_size_review_basis": "Individually vision-reviewed render-r2 image; actual decoded RGB bytes verified identical to current r3 file, despite new encoded ICC/hash metadata",
+      "full_size_review_basis": "Previously individually reviewed v1 file; entire PNG bytes verified identical in v2",
       "decoded_RGB_sha256": "aa3c841d9a3177ce54d48d857bb38fae788dc6eafdd41cbeed36fb4cd06b32de",
       "status": "PASS_WITH_OBSERVATIONS",
       "observations": [
@@ -165,17 +165,17 @@
   "previews": [
     {
       "file": "00-overview.jpg",
-      "sha256": "8e31bc0411a8a8343afdab95d4db7b1be136118394dc04b930d2f9d4a682b588",
+      "sha256": "e2f01dfbe9974bac18f0acf20f06e3933b346d15d4ae6c13ef188937df43c54f",
       "reviewed": true,
       "status": "PASS",
-      "finding": "Actual one-row all-ten overview: correct order, equal full phones with all physical frame segments visible, consistent original wordmark and continuous ice-blue; no marketing pagination or repeated slogan."
+      "finding": "Direct actual v2 overview review: ten complete phones in one row;05/07 show no duplicated added UI."
     },
     {
       "file": "00-search-preview.jpg",
       "sha256": "96fba3aa2372cedba5f4fe9284c524b1d559bf0c74a7788c94ad743edf6beaf9",
       "reviewed": true,
       "status": "PASS",
-      "finding": "Actual390px row: first3 ordered exactly, all3 headlines legible, all3 whole phones, no frame/lens collision; fine MB/OS prompt text too small for reliable reading."
+      "finding": "Actual search-preview bytes identical to already reviewed v1; first3 unchanged."
     }
   ],
   "individual_image_count": 10,
@@ -188,9 +188,12 @@
     "native_reminder_literal_middle_dot": "OBSERVATION: actual native label plus separate Change button, preserved"
   },
   "notes": [
+    "Revisionv2: In Bild05 die zusätzliche große Again-in-2-days/Change-Pille samt Hinterleger und Schatten entfernt; nur die echte native kleine Pille bleibt.",
+    "Revisionv2: In Bild07 den zusätzlichen vergrößerten Dreierstreifen entfernt; nur der echte Screenshot mit originaler Thumbnail-Reihe und Keep5/Trash1-Button bleibt.",
+    "Die anderen acht PNGs und die erste-Dreier-Suchvorschau sind byteidentisch zu v1; Unterschiede in05/07 liegen ausschließlich im früheren Overlay-/Schattenbereich.",
+    "Keine neue native Aufnahme: unveränderte echte Quellen von Commitc6ffd6c4a6279b8fadb2395069f415e84e53370e, Run43777081132. Keine Änderungen an Produktions-UI oder App-Funktionen.",
     "Bild03: Native CTA unverändert „Remove 2 photos and videos“ statt „Remove 2 photos“. Exakter Brief-Wortlaut: BLOCKED durch unveränderte Produktionscopy; keine UI-Retusche oder Katalogänderung. Die echte Systemfrage nennt ausdrücklich „2 photos“.",
     "Die Later-Pille besteht nativ aus „Again in 2 days“ und einem separaten „Change“-Button; ein künstlicher Mittelpunkt oder kombinierter Text wurde nicht erzeugt.",
-    "Monate: sechs vollständige Zeilen; die nächste Mai-Zeile beginnt nativ angeschnitten. Editor-Filter und Serienreihe bleiben echte horizontale Scrollbereiche; im Analyse-Fokus werden drei echte Thumbnails vergrößert, nicht alle sechs als sichtbar ausgegeben.",
     "Der native Duplikatheader „2.3 MB total“ bezeichnet extra-copy bytes, nicht die Summe beider Dateien und keine garantierte Speicherfreigabe. Die echten Größen-/Speicherplatzvorbehalte bleiben sichtbar.",
     "Spielebild zeigt die drei echten nativen Spielkarten/Standbild-Vorschauen, keine Abnahme laufenden Gameplays.",
     "112px-Suchskalierung: Headlines und Feature-Reihenfolge lesbar. Feine MB-Zahlen, OS-Dialogtexte und Zusatzzeilen sind dort nicht zuverlässig lesbar; die vollständigen Inhalte wurden separat in den großen Bildern geprüft.",
@@ -199,5 +202,6 @@
   ],
   "owner_concept_approval": "WAITING FOR FEEDBACK; not perfect until explicit owner approval",
   "other_languages": "NOT RUN; en-US only",
-  "App_Store_Connect_submission_release_PR_merge": "NOT RUN"
+  "App_Store_Connect_submission_release_PR_merge": "NOT RUN",
+  "revision_request": "Remove only added duplicate overlays05/07; retain native UI and all other images"
 }

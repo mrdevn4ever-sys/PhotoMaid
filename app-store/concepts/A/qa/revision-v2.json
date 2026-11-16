@@ -1,0 +1,94 @@
+{
+  "status": "PASS",
+  "changed_slots": [
+    5,
+    7
+  ],
+  "unchanged_png_count": 8,
+  "changes_confined_to_removed_overlay_and_its_shadow": true,
+  "original_native_controls_retained": true,
+  "images": [
+    {
+      "slot": 1,
+      "file": "01-swipe.png",
+      "byte_identical_to_v1": true,
+      "difference_bbox": null,
+      "sha256": "989805903afab47e1e76fe291e41cfb79792675ede4ec46a70e2c989839463c5"
+    },
+    {
+      "slot": 2,
+      "file": "02-duplicates-large-files.png",
+      "byte_identical_to_v1": true,
+      "difference_bbox": null,
+      "sha256": "018c550b97a317ad2737a1aebf23cae533a2acc5980f98aa345ae9d4ce88421e"
+    },
+    {
+      "slot": 3,
+      "file": "03-delete-confirmation.png",
+      "byte_identical_to_v1": true,
+      "difference_bbox": null,
+      "sha256": "5eaebfa39b5fb5283d8ab51493167f1b2b64e9a7a50e5a54213724fe98b8ee6c"
+    },
+    {
+      "slot": 4,
+      "file": "04-vault.png",
+      "byte_identical_to_v1": true,
+      "difference_bbox": null,
+      "sha256": "d31150c0ac56b55a8722300deca364f0690c6a7833c6b4f60fd9c00a1cf3cae4"
+    },
+    {
+      "slot": 5,
+      "file": "05-later.png",
+      "byte_identical_to_v1": false,
+      "difference_bbox": [
+        261,
+        1508,
+        945,
+        1734
+      ],
+      "sha256": "5079afe8e5fcfe625ee836d772694896eb36096c95cda08cbcf38a5275a8514f"
+    },
+    {
+      "slot": 6,
+      "file": "06-months.png",
+      "byte_identical_to_v1": true,
+      "difference_bbox": null,
+      "sha256": "ccbc0ac2acdeeea1ab0e5b0cc1d0e5936a83a3c2a4dda41c46413d18d4e1d569"
+    },
+    {
+      "slot": 7,
+      "file": "07-analysis.png",
+      "byte_identical_to_v1": false,
+      "difference_bbox": [
+        233,
+        1420,
+        973,
+        1702
+      ],
+      "sha256": "4026d91a10ff9f4069f01e6842b5beaa722ed8889c4ce9af9eab88bd70bf7a26"
+    },
+    {
+      "slot": 8,
+      "file": "08-collage.png",
+      "byte_identical_to_v1": true,
+      "difference_bbox": null,
+      "sha256": "1720dff4a1cec31ec8735f1235d58a14684c25f65905b7a6ba823d69aa20e9b2"
+    },
+    {
+      "slot": 9,
+      "file": "09-editor.png",
+      "byte_identical_to_v1": true,
+      "difference_bbox": null,
+      "sha256": "c465b85fe99e8d669de2223f635eb8f61915ef0561acbb159b24ab79f64e63c8"
+    },
+    {
+      "slot": 10,
+      "file": "10-games.png",
+      "byte_identical_to_v1": true,
+      "difference_bbox": null,
+      "sha256": "1e7612a9d03c3779bdb8f990a064bb20508ce28cc80917a9189c54b380777e64"
+    }
+  ],
+  "search_preview_byte_identical": true,
+  "v1_zip_unchanged_sha256": "6b7d071bff327442d7c01d90cd65cf9b80d24f0d3bd2dc197d5625b65ee1940c"
+}

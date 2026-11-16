@@ -1,4 +1,4 @@
-GaleriQ – Konzept A „Space to Breathe“ – en-US – v1
+GaleriQ – Konzept A „Space to Breathe“ – en-US – v2
 
 Inhalt
 10 verlustfreie PNGs, 1206 × 2622 Pixel, 8-Bit-RGB, kein Alpha, eingebettetes sRGB.
@@ -17,9 +17,9 @@ Workflow-URL: https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/43777081
 Quellenartefakt-ID: 14186903983
 Originalquellen lokal archiviert: F:\HermesOutput\GaleriQ\concept-a-en-v1\native-run-43777081132-attempt-1
 Provenienzdatei SHA256: 86d228e9451dbc6f018e94c2bc9894fd6203aa7e3dd256e0c4eda4b99b4ac217
-Render-Design SHA256: 71ca17cc901dd8224c9cb5fc4dff398ee83b08fcea37a854c77ffe9465e1bc2d
+Render-Design SHA256: 0459f20daf722c4cb936667177de63123b9b46989cf4339d1edf82d8efe5dfaa
 Renderer: scripts/store/render_concept_a.py
-Renderer SHA256: d0c2f37e2b2940a861e7d949be5b7032ba3f9768fe0b0df86e6bbb1705550905
+Renderer SHA256: ea8c5cd8dd405c7cca23a3fa2c3a2a2aa25284b469862c8a25db4b0f5d741be8
 Renderumgebung: Python 3.11.15, Pillow 12.3.0.
 Verworfene Aufnahme-Runs: 43770703076, 43772843048 (fehlgeschlagen; keine Finalquellen).
 
@@ -56,9 +56,12 @@ Nicht ausgeführt: App Store Connect, Einreichung, Release, PR oder Merge.
 Bestehende Store-Medien und andere Branches wurden nicht ersetzt.
 
 Beobachtungen / unveränderte Original-UI
+- Revisionv2: In Bild05 die zusätzliche große Again-in-2-days/Change-Pille samt Hinterleger und Schatten entfernt; nur die echte native kleine Pille bleibt.
+- Revisionv2: In Bild07 den zusätzlichen vergrößerten Dreierstreifen entfernt; nur der echte Screenshot mit originaler Thumbnail-Reihe und Keep5/Trash1-Button bleibt.
+- Die anderen acht PNGs und die erste-Dreier-Suchvorschau sind byteidentisch zu v1; Unterschiede in05/07 liegen ausschließlich im früheren Overlay-/Schattenbereich.
+- Keine neue native Aufnahme: unveränderte echte Quellen von Commitc6ffd6c4a6279b8fadb2395069f415e84e53370e, Run43777081132. Keine Änderungen an Produktions-UI oder App-Funktionen.
 - Bild03: Native CTA unverändert „Remove 2 photos and videos“ statt „Remove 2 photos“. Exakter Brief-Wortlaut: BLOCKED durch unveränderte Produktionscopy; keine UI-Retusche oder Katalogänderung. Die echte Systemfrage nennt ausdrücklich „2 photos“.
 - Die Later-Pille besteht nativ aus „Again in 2 days“ und einem separaten „Change“-Button; ein künstlicher Mittelpunkt oder kombinierter Text wurde nicht erzeugt.
-- Monate: sechs vollständige Zeilen; die nächste Mai-Zeile beginnt nativ angeschnitten. Editor-Filter und Serienreihe bleiben echte horizontale Scrollbereiche; im Analyse-Fokus werden drei echte Thumbnails vergrößert, nicht alle sechs als sichtbar ausgegeben.
 - Der native Duplikatheader „2.3 MB total“ bezeichnet extra-copy bytes, nicht die Summe beider Dateien und keine garantierte Speicherfreigabe. Die echten Größen-/Speicherplatzvorbehalte bleiben sichtbar.
 - Spielebild zeigt die drei echten nativen Spielkarten/Standbild-Vorschauen, keine Abnahme laufenden Gameplays.
 - 112px-Suchskalierung: Headlines und Feature-Reihenfolge lesbar. Feine MB-Zahlen, OS-Dialogtexte und Zusatzzeilen sind dort nicht zuverlässig lesbar; die vollständigen Inhalte wurden separat in den großen Bildern geprüft.

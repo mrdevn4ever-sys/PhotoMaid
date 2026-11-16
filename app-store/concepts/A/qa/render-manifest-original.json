@@ -8,14 +8,14 @@
   ],
   "renderer": {
     "path": "scripts/store/render_concept_a.py",
-    "sha256": "d0c2f37e2b2940a861e7d949be5b7032ba3f9768fe0b0df86e6bbb1705550905",
+    "sha256": "ea8c5cd8dd405c7cca23a3fa2c3a2a2aa25284b469862c8a25db4b0f5d741be8",
     "pillowVersion": "12.3.0",
     "pythonVersion": "3.11.15"
   },
   "design": {
     "path": "F:\\GaleriQ-store-concept-a-en-v1\\app-store\\concepts\\A\\design.json",
     "logicalPath": "app-store/concepts/A/design.json",
-    "sha256": "71ca17cc901dd8224c9cb5fc4dff398ee83b08fcea37a854c77ffe9465e1bc2d"
+    "sha256": "0459f20daf722c4cb936667177de63123b9b46989cf4339d1edf82d8efe5dfaa"
   },
   "sourceGate": {
     "status": "PASS",
@@ -298,7 +298,7 @@
           "png_sRGB_rendering_intent": 0,
           "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
         },
-        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
         "renderingIntent": "RELATIVE_COLORIMETRIC",
         "flags": 0,
         "normalizedMode": "RGBA",
@@ -343,7 +343,7 @@
           "png_sRGB_rendering_intent": 0,
           "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
         },
-        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
         "renderingIntent": "RELATIVE_COLORIMETRIC",
         "flags": 0,
         "normalizedMode": "RGB",
@@ -388,7 +388,7 @@
           "png_sRGB_rendering_intent": 0,
           "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
         },
-        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
         "renderingIntent": "RELATIVE_COLORIMETRIC",
         "flags": 0,
         "normalizedMode": "RGB",
@@ -433,7 +433,7 @@
           "png_sRGB_rendering_intent": 0,
           "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
         },
-        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
         "renderingIntent": "RELATIVE_COLORIMETRIC",
         "flags": 0,
         "normalizedMode": "RGB",
@@ -478,7 +478,7 @@
           "png_sRGB_rendering_intent": 0,
           "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
         },
-        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
         "renderingIntent": "RELATIVE_COLORIMETRIC",
         "flags": 0,
         "normalizedMode": "RGB",
@@ -523,7 +523,7 @@
           "png_sRGB_rendering_intent": 0,
           "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
         },
-        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
         "renderingIntent": "RELATIVE_COLORIMETRIC",
         "flags": 0,
         "normalizedMode": "RGB",
@@ -568,7 +568,7 @@
           "png_sRGB_rendering_intent": 0,
           "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
         },
-        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
         "renderingIntent": "RELATIVE_COLORIMETRIC",
         "flags": 0,
         "normalizedMode": "RGB",
@@ -613,7 +613,7 @@
           "png_sRGB_rendering_intent": 0,
           "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
         },
-        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
         "renderingIntent": "RELATIVE_COLORIMETRIC",
         "flags": 0,
         "normalizedMode": "RGB",
@@ -658,7 +658,7 @@
           "png_sRGB_rendering_intent": 0,
           "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
         },
-        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
         "renderingIntent": "RELATIVE_COLORIMETRIC",
         "flags": 0,
         "normalizedMode": "RGB",
@@ -703,7 +703,7 @@
           "png_sRGB_rendering_intent": 0,
           "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
         },
-        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
         "renderingIntent": "RELATIVE_COLORIMETRIC",
         "flags": 0,
         "normalizedMode": "RGB",
@@ -748,7 +748,7 @@
           "png_sRGB_rendering_intent": 0,
           "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
         },
-        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
         "renderingIntent": "RELATIVE_COLORIMETRIC",
         "flags": 0,
         "normalizedMode": "RGBA",
@@ -793,7 +793,7 @@
           "png_sRGB_rendering_intent": 0,
           "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
         },
-        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
         "renderingIntent": "RELATIVE_COLORIMETRIC",
         "flags": 0,
         "normalizedMode": "RGB",
@@ -838,7 +838,7 @@
           "png_sRGB_rendering_intent": 0,
           "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
         },
-        "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+        "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
         "renderingIntent": "RELATIVE_COLORIMETRIC",
         "flags": 0,
         "normalizedMode": "RGB",
@@ -899,7 +899,8 @@
     "embedded": true,
     "colorSpace": "sRGB",
     "sha256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
-    "description": "sRGB built-in"
+    "description": "sRGB built-in",
+    "reusedFromPriorExport": "F:\\HermesOutput\\GaleriQ\\concept-a-en-v1\\render-r3\\01-swipe.png"
   },
   "outputs": [
     {
@@ -1175,7 +1176,7 @@
               "png_sRGB_rendering_intent": 0,
               "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
             },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
             "renderingIntent": "RELATIVE_COLORIMETRIC",
             "flags": 0,
             "normalizedMode": "RGBA",
@@ -1244,7 +1245,7 @@
               "png_sRGB_rendering_intent": 0,
               "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
             },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
             "renderingIntent": "RELATIVE_COLORIMETRIC",
             "flags": 0,
             "normalizedMode": "RGBA",
@@ -1435,7 +1436,7 @@
               "png_sRGB_rendering_intent": 0,
               "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
             },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
             "renderingIntent": "RELATIVE_COLORIMETRIC",
             "flags": 0,
             "normalizedMode": "RGBA",
@@ -1504,7 +1505,7 @@
               "png_sRGB_rendering_intent": 0,
               "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
             },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
             "renderingIntent": "RELATIVE_COLORIMETRIC",
             "flags": 0,
             "normalizedMode": "RGB",
@@ -1573,7 +1574,7 @@
               "png_sRGB_rendering_intent": 0,
               "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
             },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
             "renderingIntent": "RELATIVE_COLORIMETRIC",
             "flags": 0,
             "normalizedMode": "RGB",
@@ -1794,7 +1795,7 @@
               "png_sRGB_rendering_intent": 0,
               "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
             },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
             "renderingIntent": "RELATIVE_COLORIMETRIC",
             "flags": 0,
             "normalizedMode": "RGBA",
@@ -1863,7 +1864,7 @@
               "png_sRGB_rendering_intent": 0,
               "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
             },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
             "renderingIntent": "RELATIVE_COLORIMETRIC",
             "flags": 0,
             "normalizedMode": "RGB",
@@ -2101,7 +2102,7 @@
               "png_sRGB_rendering_intent": 0,
               "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
             },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
             "renderingIntent": "RELATIVE_COLORIMETRIC",
             "flags": 0,
             "normalizedMode": "RGBA",
@@ -2170,7 +2171,7 @@
               "png_sRGB_rendering_intent": 0,
               "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
             },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
             "renderingIntent": "RELATIVE_COLORIMETRIC",
             "flags": 0,
             "normalizedMode": "RGB",
@@ -2253,7 +2254,7 @@
     },
     {
       "file": "05-later.png",
-      "sha256": "88e53594ec963460525cf76c8de13fa52928b21d0a780df013a8f16dbee18d23",
+      "sha256": "5079afe8e5fcfe625ee836d772694896eb36096c95cda08cbcf38a5275a8514f",
       "width": 1206,
       "height": 2622,
       "mode": "RGB",
@@ -2361,7 +2362,7 @@
               "png_sRGB_rendering_intent": 0,
               "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
             },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
             "renderingIntent": "RELATIVE_COLORIMETRIC",
             "flags": 0,
             "normalizedMode": "RGBA",
@@ -2430,7 +2431,7 @@
               "png_sRGB_rendering_intent": 0,
               "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
             },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
             "renderingIntent": "RELATIVE_COLORIMETRIC",
             "flags": 0,
             "normalizedMode": "RGB",
@@ -2445,81 +2446,12 @@
           "maskSHA256": "e57a503a465c4ad562d09d9408a5c63aa6878d0c9d6090f9aee43b0a11605f81",
           "pixelQA": {
             "status": "PASS",
-            "comparedPixels": 1243336,
+            "comparedPixels": 1396208,
             "opaqueInteriorPixels": 1396208,
-            "occludedByLaterInsetOrShadowPixels": 152872,
-            "maxChannelDifference": 0,
-            "maskedKnownResampleSHA256": "3d48358820128c2d81e41e2fd726630b78cf2f449450656558cfa9380502cd82",
-            "maskedOutputSHA256": "3d48358820128c2d81e41e2fd726630b78cf2f449450656558cfa9380502cd82",
-            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
-          }
-        },
-        {
-          "id": "again-in-two-days",
-          "originalSource": "screenshots/concept-a-later.png",
-          "sourceSHA256": "13494284c4b13b0b18900af357ecb60dbdaffe7f6178d5933b0d446d78a70690",
-          "sourceSize": [
-            1206,
-            2622
-          ],
-          "sourceMode": "RGB",
-          "sourceICC": {
-            "embedded": false,
-            "sha256": null,
-            "description": null,
-            "png_sRGB_rendering_intent": 0,
-            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
-          },
-          "crop": [
-            280,
-            1895,
-            928,
-            2085
-          ],
-          "targetGeometry": [
-            279,
-            1520,
-            927,
-            1710
-          ],
-          "nativeScale": 1.0,
-          "effectiveNativeScaleXY": [
-            1.0,
-            1.0
-          ],
-          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
-          "rotationDegrees": 0,
-          "colorManagement": {
-            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
-            "operation": "Native PNG sRGB declaration preserved, no color conversion",
-            "inputICC": {
-              "embedded": false,
-              "sha256": null,
-              "description": null,
-              "png_sRGB_rendering_intent": 0,
-              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
-            },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
-            "renderingIntent": "RELATIVE_COLORIMETRIC",
-            "flags": 0,
-            "normalizedMode": "RGB",
-            "normalizedPixelSHA256": "20cbdddc462b9f9640c1dc917d77b129199e1f9233c6848283278692dbb518b9",
-            "nativeAlphaPreserved": false,
-            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
-          },
-          "colorOperations": [
-            "Native PNG sRGB declaration preserved, no color conversion"
-          ],
-          "mask": "outer rounded mask, 4x antialiased",
-          "maskSHA256": "71e9dab6add1018700692e0c9f04a2fe262cf96dda50304e97cae3eac4cc4496",
-          "pixelQA": {
-            "status": "PASS",
-            "comparedPixels": 122400,
-            "opaqueInteriorPixels": 122400,
             "occludedByLaterInsetOrShadowPixels": 0,
             "maxChannelDifference": 0,
-            "maskedKnownResampleSHA256": "0f5c20cb6f602ddd99ff831de661855779eb613793f6d449a3ea9fe1ab167a92",
-            "maskedOutputSHA256": "0f5c20cb6f602ddd99ff831de661855779eb613793f6d449a3ea9fe1ab167a92",
+            "maskedKnownResampleSHA256": "a7861ab211ffd2ad83859054dbef10a4509eade3581293b677478dafbb72a464",
+            "maskedOutputSHA256": "a7861ab211ffd2ad83859054dbef10a4509eade3581293b677478dafbb72a464",
             "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
           }
         }
@@ -2578,37 +2510,7 @@
             2480
           ]
         ],
-        "insets": [
-          {
-            "id": "again-in-two-days",
-            "source": "screenshots/concept-a-later.png",
-            "crop": [
-              280,
-              1895,
-              928,
-              2085
-            ],
-            "target": [
-              279,
-              1520,
-              927,
-              1710
-            ],
-            "nativeScale": 1.0,
-            "requestedBox": [
-              100,
-              1500,
-              1106,
-              1730
-            ],
-            "effectBox": [
-              253,
-              1500,
-              953,
-              1742
-            ]
-          }
-        ]
+        "insets": []
       },
       "layoutQA": {
         "status": "PASS",
@@ -2744,7 +2646,7 @@
               "png_sRGB_rendering_intent": 0,
               "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
             },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
             "renderingIntent": "RELATIVE_COLORIMETRIC",
             "flags": 0,
             "normalizedMode": "RGBA",
@@ -2813,7 +2715,7 @@
               "png_sRGB_rendering_intent": 0,
               "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
             },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
             "renderingIntent": "RELATIVE_COLORIMETRIC",
             "flags": 0,
             "normalizedMode": "RGB",
@@ -2896,7 +2798,7 @@
     },
     {
       "file": "07-analysis.png",
-      "sha256": "a00aad8b71dcc60a8adae43571cbf8a145f70683d90a546a9e1137e3f33eb8fe",
+      "sha256": "4026d91a10ff9f4069f01e6842b5beaa722ed8889c4ce9af9eab88bd70bf7a26",
       "width": 1206,
       "height": 2622,
       "mode": "RGB",
@@ -3004,7 +2906,7 @@
               "png_sRGB_rendering_intent": 0,
               "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
             },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
             "renderingIntent": "RELATIVE_COLORIMETRIC",
             "flags": 0,
             "normalizedMode": "RGBA",
@@ -3073,7 +2975,7 @@
               "png_sRGB_rendering_intent": 0,
               "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
             },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
             "renderingIntent": "RELATIVE_COLORIMETRIC",
             "flags": 0,
             "normalizedMode": "RGB",
@@ -3088,81 +2990,12 @@
           "maskSHA256": "e57a503a465c4ad562d09d9408a5c63aa6878d0c9d6090f9aee43b0a11605f81",
           "pixelQA": {
             "status": "PASS",
-            "comparedPixels": 1185856,
+            "comparedPixels": 1396208,
             "opaqueInteriorPixels": 1396208,
-            "occludedByLaterInsetOrShadowPixels": 210352,
-            "maxChannelDifference": 0,
-            "maskedKnownResampleSHA256": "e0c57a4d67eb3cbb692f3deadcac4dc15ae47bf835daa3ee373c3e3407899bb7",
-            "maskedOutputSHA256": "e0c57a4d67eb3cbb692f3deadcac4dc15ae47bf835daa3ee373c3e3407899bb7",
-            "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
-          }
-        },
-        {
-          "id": "real-analysis-results",
-          "originalSource": "screenshots/concept-a-analysis.png",
-          "sourceSHA256": "a3caba713e7bd439ecdfe6d488db0d32db4559727917830d4f8c1a24e7305930",
-          "sourceSize": [
-            1206,
-            2622
-          ],
-          "sourceMode": "RGB",
-          "sourceICC": {
-            "embedded": false,
-            "sha256": null,
-            "description": null,
-            "png_sRGB_rendering_intent": 0,
-            "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
-          },
-          "crop": [
-            48,
-            1775,
-            804,
-            2035
-          ],
-          "targetGeometry": [
-            245,
-            1432,
-            961,
-            1678
-          ],
-          "nativeScale": 0.9470899470899471,
-          "effectiveNativeScaleXY": [
-            0.9470899470899471,
-            0.9461538461538461
-          ],
-          "resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
-          "rotationDegrees": 0,
-          "colorManagement": {
-            "stage": "native ICC -> RGB sRGB (alpha preserved) -> original crop -> proportional LANCZOS -> outer mask",
-            "operation": "Native PNG sRGB declaration preserved, no color conversion",
-            "inputICC": {
-              "embedded": false,
-              "sha256": null,
-              "description": null,
-              "png_sRGB_rendering_intent": 0,
-              "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
-            },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
-            "renderingIntent": "RELATIVE_COLORIMETRIC",
-            "flags": 0,
-            "normalizedMode": "RGB",
-            "normalizedPixelSHA256": "856be1fa8c06bd26842c5a56c503062aaeec275591eeccea752d77e41ce06341",
-            "nativeAlphaPreserved": false,
-            "pixelProofReference": "This exact normalized pixel buffer before crop/resampling"
-          },
-          "colorOperations": [
-            "Native PNG sRGB declaration preserved, no color conversion"
-          ],
-          "mask": "outer rounded mask, 4x antialiased",
-          "maskSHA256": "bdc67beb791e88dc48d673732e94679268f192e7caeee830af4c70f30bec4879",
-          "pixelQA": {
-            "status": "PASS",
-            "comparedPixels": 175416,
-            "opaqueInteriorPixels": 175416,
             "occludedByLaterInsetOrShadowPixels": 0,
             "maxChannelDifference": 0,
-            "maskedKnownResampleSHA256": "238c95f1aba4df99e30550cfc577a745c2779a575c4cf012f0d105190457370d",
-            "maskedOutputSHA256": "238c95f1aba4df99e30550cfc577a745c2779a575c4cf012f0d105190457370d",
+            "maskedKnownResampleSHA256": "807cb725e22234da7019ec5676a5991bb1f9ae3fe99f03070e062fb62fd8bd90",
+            "maskedOutputSHA256": "807cb725e22234da7019ec5676a5991bb1f9ae3fe99f03070e062fb62fd8bd90",
             "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."
           }
         }
@@ -3233,37 +3066,7 @@
             2424
           ]
         ],
-        "insets": [
-          {
-            "id": "real-analysis-results",
-            "source": "screenshots/concept-a-analysis.png",
-            "crop": [
-              48,
-              1775,
-              804,
-              2035
-            ],
-            "target": [
-              245,
-              1432,
-              961,
-              1678
-            ],
-            "nativeScale": 0.9470899470899471,
-            "requestedBox": [
-              245,
-              1420,
-              961,
-              1690
-            ],
-            "effectBox": [
-              219,
-              1412,
-              987,
-              1710
-            ]
-          }
-        ]
+        "insets": []
       },
       "layoutQA": {
         "status": "PASS",
@@ -3399,7 +3202,7 @@
               "png_sRGB_rendering_intent": 0,
               "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
             },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
             "renderingIntent": "RELATIVE_COLORIMETRIC",
             "flags": 0,
             "normalizedMode": "RGBA",
@@ -3468,7 +3271,7 @@
               "png_sRGB_rendering_intent": 0,
               "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
             },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
             "renderingIntent": "RELATIVE_COLORIMETRIC",
             "flags": 0,
             "normalizedMode": "RGB",
@@ -3659,7 +3462,7 @@
               "png_sRGB_rendering_intent": 0,
               "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
             },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
             "renderingIntent": "RELATIVE_COLORIMETRIC",
             "flags": 0,
             "normalizedMode": "RGBA",
@@ -3728,7 +3531,7 @@
               "png_sRGB_rendering_intent": 0,
               "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
             },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
             "renderingIntent": "RELATIVE_COLORIMETRIC",
             "flags": 0,
             "normalizedMode": "RGB",
@@ -3966,7 +3769,7 @@
               "png_sRGB_rendering_intent": 0,
               "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
             },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
             "renderingIntent": "RELATIVE_COLORIMETRIC",
             "flags": 0,
             "normalizedMode": "RGBA",
@@ -4035,7 +3838,7 @@
               "png_sRGB_rendering_intent": 0,
               "interpretation": "Native PNG declares sRGB; no ICC conversion needed"
             },
-            "outputICC_SHA256": "51e1ef88cca8c49ff5e9dc29fae17f4dba7a5edbabd9fadd605bc64071533561",
+            "outputICC_SHA256": "613381e226717ba53279deabdb77dd467f3fc08b63566d4bffbffb49b10e349d",
             "renderingIntent": "RELATIVE_COLORIMETRIC",
             "flags": 0,
             "normalizedMode": "RGB",
@@ -4120,7 +3923,7 @@
   "previews": [
     {
       "file": "00-overview.jpg",
-      "sha256": "8e31bc0411a8a8343afdab95d4db7b1be136118394dc04b930d2f9d4a682b588",
+      "sha256": "e2f01dfbe9974bac18f0acf20f06e3933b346d15d4ae6c13ef188937df43c54f",
       "width": 2630,
       "height": 564,
       "mode": "RGB",

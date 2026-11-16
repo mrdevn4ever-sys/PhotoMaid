@@ -201,29 +201,8 @@
         ]
       ],
       "gestures": false,
-      "insets": [
-        {
-          "id": "again-in-two-days",
-          "source": "screenshots/concept-a-later.png",
-          "crop": [
-            280,
-            1895,
-            928,
-            2085
-          ],
-          "cropSourceSHA256": "13494284c4b13b0b18900af357ecb60dbdaffe7f6178d5933b0d446d78a70690",
-          "targetBox": [
-            100,
-            1500,
-            1106,
-            1730
-          ],
-          "enabled": true,
-          "required": true,
-          "evidence": "The entire native Again in 2 days · Change pill; never reset this text in marketing type."
-        }
-      ],
-      "evidence": "Actual deferred decision and its native reminder pill."
+      "insets": [],
+      "evidence": "Original complete native screenshot only; retain its real controls and thumbnails once, with no added focus crop, duplicated pill or extra comparison strip."
     },
     {
       "id": 6,
@@ -278,29 +257,8 @@
         ]
       ],
       "gestures": false,
-      "insets": [
-        {
-          "id": "real-analysis-results",
-          "source": "screenshots/concept-a-analysis.png",
-          "crop": [
-            48,
-            1775,
-            804,
-            2035
-          ],
-          "cropSourceSHA256": "a3caba713e7bd439ecdfe6d488db0d32db4559727917830d4f8c1a24e7305930",
-          "targetBox": [
-            245,
-            1420,
-            961,
-            1690
-          ],
-          "enabled": true,
-          "required": true,
-          "evidence": "Three complete actual series thumbnails from the same native scroller, enlarged without any fabricated checkmark or count. Whole primary series count, original row, confirmation and safety text remain visible; full hardware frame is unobscured."
-        }
-      ],
-      "evidence": "No additional slogan, including Find. Review. Decide. Focus including shadow stays strictly inside the native screen width, so every segment of the common full-phone frame remains visible."
+      "insets": [],
+      "evidence": "Original complete native screenshot only; retain its real controls and thumbnails once, with no added focus crop, duplicated pill or extra comparison strip."
     },
     {
       "id": 8,

@@ -1,8 +1,8 @@
 {
   "status": "PASS",
-  "archive": "F:\\HermesOutput\\GaleriQ\\GaleriQ-Konzept-A-en-US-v1.zip",
-  "archive_sha256": "6b7d071bff327442d7c01d90cd65cf9b80d24f0d3bd2dc197d5625b65ee1940c",
-  "archive_bytes": 8627003,
+  "archive": "F:\\HermesOutput\\GaleriQ\\GaleriQ-Konzept-A-en-US-v2.zip",
+  "archive_sha256": "2a26c9a8d3d6e7315afba756466d0d137f49467746094d33928930476af0cb94",
+  "archive_bytes": 8795116,
   "member_count": 13,
   "members": [
     {
@@ -27,8 +27,8 @@
     },
     {
       "file": "en-US/05-later.png",
-      "sha256": "88e53594ec963460525cf76c8de13fa52928b21d0a780df013a8f16dbee18d23",
-      "bytes": 1925683
+      "sha256": "5079afe8e5fcfe625ee836d772694896eb36096c95cda08cbcf38a5275a8514f",
+      "bytes": 2055523
     },
     {
       "file": "en-US/06-months.png",
@@ -37,8 +37,8 @@
     },
     {
       "file": "en-US/07-analysis.png",
-      "sha256": "a00aad8b71dcc60a8adae43571cbf8a145f70683d90a546a9e1137e3f33eb8fe",
-      "bytes": 1237427
+      "sha256": "4026d91a10ff9f4069f01e6842b5beaa722ed8889c4ce9af9eab88bd70bf7a26",
+      "bytes": 1276166
     },
     {
       "file": "en-US/08-collage.png",
@@ -57,8 +57,8 @@
     },
     {
       "file": "00-overview.jpg",
-      "sha256": "8e31bc0411a8a8343afdab95d4db7b1be136118394dc04b930d2f9d4a682b588",
-      "bytes": 402901
+      "sha256": "e2f01dfbe9974bac18f0acf20f06e3933b346d15d4ae6c13ef188937df43c54f",
+      "bytes": 402442
     },
     {
       "file": "00-search-preview.jpg",
@@ -67,13 +67,13 @@
     },
     {
       "file": "README.txt",
-      "sha256": "03ee7227341102a22fd370e29e772cc34d7c8676b8fff1c73381cc8dee44701d",
-      "bytes": 5331
+      "sha256": "0fd4acfc05d701f55d74a1d34b7432ab6d4aaaca52e0aee38f02d9b1bbd1ce51",
+      "bytes": 5746
     }
   ],
   "workflow_run": "43777081132",
   "capture_commit": "c6ffd6c4a6279b8fadb2395069f415e84e53370e",
-  "technical_report_sha256": "932770540be3d1be8d493d529119f62984e395b23359e48279dde5dbc07b4ce8",
-  "visual_report_sha256": "a5613c3bba1234f82fc2480ad3c0091d39123f757615b22716e08d27e02de6e6",
+  "technical_report_sha256": "04a806a612680e30367812e04894405ffe6535b2e4148edec474b29e4b8db3fc",
+  "visual_report_sha256": "545c4f43bdca66154eb6796a4f13816d445a94979db66605fddf82ada81407e4",
   "external_publication": "NOT RUN; local lossless delivery archive only"
 }

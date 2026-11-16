@@ -1,8 +1,10 @@
 {
   "status": "PASS",
-  "checks": 43,
+  "checks": 45,
   "passed": [
     "design-contract",
+    "removed-duplicate-overlay-slot-5-rejected",
+    "removed-duplicate-overlay-slot-7-rejected",
     "ten-font-layouts",
     "all-headlines-max-two-lines-and-floor",
     "all-subtitles-max-two-lines-and-46px-floor",

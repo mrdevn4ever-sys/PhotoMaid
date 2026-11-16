@@ -1,9 +1,9 @@
-# Concept A en-US v1: delivery context
+# Concept A en-US v2: delivery context
 
 This folder contains the packaged asset layout: ten PNGs under en-US/ plus
 root JPEG previews and README.txt. qa/render-manifest-original.json is the
 unaltered original renderer report for the flat source render directory
-F:/HermesOutput/GaleriQ/concept-a-en-v1/render-r3/; its bare output filenames
+F:/HermesOutput/GaleriQ/concept-a-en-v2/render/; its bare output filenames
 are relative to that original directory, not to this packaged layout.
 qa/delivery-archive-verification.json binds the actual en-US/ package paths.
 
@@ -23,8 +23,8 @@ are not implied. Stop for feedback before localization.
 
 Reproduce from the repository root with the genuine original artifact:
 
-    python scripts/store/render_concept_a.py --sources F:/HermesOutput/GaleriQ/concept-a-en-v1/native-run-43777081132-attempt-1 --output F:/HermesOutput/GaleriQ/concept-a-en-v1/reproduced --expected-commit c6ffd6c4a6279b8fadb2395069f415e84e53370e --expected-workflow-run 43777081132 --expected-workflow-url https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/43777081132
+    python scripts/store/render_concept_a.py --sources F:/HermesOutput/GaleriQ/concept-a-en-v1/native-run-43777081132-attempt-1 --output F:/HermesOutput/GaleriQ/concept-a-en-v1/reproduced --expected-commit c6ffd6c4a6279b8fadb2395069f415e84e53370e --expected-workflow-run 43777081132 --expected-workflow-url https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/43777081132 --reuse-icc-from F:/HermesOutput/GaleriQ/concept-a-en-v1/render-r3/01-swipe.png
 
 Use a new output directory; do not overwrite accepted exports. Run the
 independent auditor and repeat final visual review before packaging changed
-images.
+images. Revisionv2 removes only overlays05/07; all eight other PNGs are byte-identical to v1.

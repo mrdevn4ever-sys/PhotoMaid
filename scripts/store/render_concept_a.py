@@ -325,8 +325,9 @@ def validate_design(design: dict) -> None:
     filenames: set[str] = set()
     # Slot 3 uses the whole genuine system-confirmation capture as its primary.
     # The tall native dialog therefore needs no extra crop over the trash photos.
-    required_insets = {2: ("duplicate-results", "duplicates"),
-                       5: ("again-in-two-days", "later"), 7: ("real-analysis-results", "analysis")}
+    # Owner revision v2: slots 5 and 7 use only their whole genuine screenshot.
+    # Do not repeat controls/thumbnails already present in the original UI.
+    required_insets = {2: ("duplicate-results", "duplicates")}
     for i, (slot, expected) in enumerate(zip(slots, COPY), 1):
         need(type(slot["id"]) is int and slot["id"] == i and normalized_copy(slot["headline"]) == expected[0] and
              normalized_copy(slot["subtitle"]) == expected[1], f"Exact sentence-case copy / order changed at slot {i}")
@@ -720,7 +721,7 @@ def public_text_plan(plan: dict | None) -> dict | None:
 
 
 def render_all(design: dict, design_path: Path, gate: SourceGate, fonts: dict, texts: list[dict],
-               branding: dict, prepared: list[dict], output: Path) -> dict:
+               branding: dict, prepared: list[dict], output: Path, reuse_icc_from: Path | None = None) -> dict:
     need(not output.exists(), f"Output already exists; nothing is overwritten/deleted: {output}")
     resolved = output.resolve()
     need(not resolved.is_relative_to(gate.root) and not gate.root.is_relative_to(resolved), "Output and native-source trees must be separate")
@@ -731,7 +732,13 @@ def render_all(design: dict, design_path: Path, gate: SourceGate, fonts: dict, t
         image, layers = render_one(design, slot, text, source_plan, branding, gate)
         images.append(image)
         layer_sets.append(layers)
-    icc = srgb_profile()
+    if reuse_icc_from is None:
+        icc = srgb_profile()
+    else:
+        with Image.open(reuse_icc_from) as prior:
+            need(prior.format == "PNG" and prior.mode == "RGB" and prior.size == SIZE, "Profile reuse requires a real prior full-size RGB PNG")
+            icc = prior.info.get("icc_profile")
+        need(isinstance(icc, bytes) and "srgb" in profile_info(icc)["description"].lower(), "Prior export must contain a valid sRGB ICC")
     previews = {kind: preview_image(design, images, kind) for kind in ("overview", "search")}
     output.mkdir(parents=True, exist_ok=False)
     exported = []
@@ -761,7 +768,8 @@ def render_all(design: dict, design_path: Path, gate: SourceGate, fonts: dict, t
                                      "ICC": s.icc, "colorManagement": s.color_management, "provenance": s.provenance} for s in sorted(gate.loaded.values(), key=lambda x: x.path)],
                 "sourceVisualQA": design["sourceVisualQA"],
                 "fonts": {kind: {k: v for k, v in data.items() if k != "path"} for kind, data in fonts.items()},
-                "ICC": {"embedded": True, "colorSpace": "sRGB", "sha256": digest(icc), "description": profile_info(icc)["description"]},
+                "ICC": {"embedded": True, "colorSpace": "sRGB", "sha256": digest(icc), "description": profile_info(icc)["description"],
+                        "reusedFromPriorExport": str(reuse_icc_from.resolve()) if reuse_icc_from else None},
                 "outputs": exported, "previews": preview_records,
                 "layoutQA": {"status": "PASS", "pngCount": len(pngs), "identicalFullPhoneGeometry": True,
                              "screenBox": design["layout"]["device"]["screenBox"],
@@ -795,6 +803,10 @@ def self_test(design: dict, fonts: dict) -> dict:
         raise GateError(f"Self-test did not reject: {name}")
 
     check("design-contract", lambda: validate_design(design))
+    for removed_slot in (5, 7):
+        duplicate_overlay = copy.deepcopy(design)
+        duplicate_overlay["slots"][removed_slot - 1]["insets"] = [{"enabled": True}]
+        rejected(f"removed-duplicate-overlay-slot-{removed_slot}-rejected", lambda candidate=duplicate_overlay: validate_design(candidate))
     plans = layout_plan(design, fonts)
     check("ten-font-layouts", lambda: need(len(plans) == 10, "layout count"))
     check("all-headlines-max-two-lines-and-floor", lambda: need(all(len(p["headline"]["lines"]) <= 2 and p["headline"]["fontSize"] >= 84 for p in plans), "headline layout"))
@@ -903,6 +915,7 @@ def main(argv: list[str] | None = None) -> int:
     modes.add_argument("--validate-only", action="store_true", help="Full source/crop/layout gates, but no render/output")
     parser.add_argument("--sources", type=Path, help="Fresh native artifact root containing capture_provenance.json")
     parser.add_argument("--output", type=Path, help="NEW directory outside repo and source tree; no overwrite/deletion")
+    parser.add_argument("--reuse-icc-from", type=Path, help="Reuse a previous export's embedded sRGB ICC so unchanged PNGs stay byte-identical")
     parser.add_argument("--expected-commit", help="Independent exact lowercase 40-hex captured commit (not inferred from provenance)")
     parser.add_argument("--expected-workflow-run", help="Independent exact GitHub workflow run ID string")
     parser.add_argument("--expected-workflow-url", help="Optional independently pinned exact GitHub capture run URL (run ID is always checked)")
@@ -929,7 +942,7 @@ def main(argv: list[str] | None = None) -> int:
             if args.validate_only:
                 result = {"status": "PASS", "scope": "source-provenance-crop-and-layout-gates", "sourceCount": len(gate.loaded), "slots": len(texts), "filesWritten": [], "nativePixelsAndFinalExports": "NOT_RUN"}
             else:
-                result = render_all(design, args.design, gate, fonts, texts, branding, prepared, args.output)
+                result = render_all(design, args.design, gate, fonts, texts, branding, prepared, args.output, args.reuse_icc_from)
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
     except (GateError, KeyError, TypeError, OSError, json.JSONDecodeError, UnicodeError) as exc:

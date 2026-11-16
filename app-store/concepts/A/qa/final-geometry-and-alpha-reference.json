@@ -33,7 +33,7 @@
     {
       "slot": 5,
       "file": "05-later.png",
-      "sha256": "88e53594ec963460525cf76c8de13fa52928b21d0a780df013a8f16dbee18d23",
+      "sha256": "5079afe8e5fcfe625ee836d772694896eb36096c95cda08cbcf38a5275a8514f",
       "fully_opaque_phone_frame_pixels_verified": 37896,
       "max_frame_channel_difference": 0
     },
@@ -47,7 +47,7 @@
     {
       "slot": 7,
       "file": "07-analysis.png",
-      "sha256": "a00aad8b71dcc60a8adae43571cbf8a145f70683d90a546a9e1137e3f33eb8fe",
+      "sha256": "4026d91a10ff9f4069f01e6842b5beaa722ed8889c4ce9af9eab88bd70bf7a26",
       "fully_opaque_phone_frame_pixels_verified": 37896,
       "max_frame_channel_difference": 0
     },
