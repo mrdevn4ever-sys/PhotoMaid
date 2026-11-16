@@ -405,7 +405,7 @@ enum StoreCapture {
             inventory.append(row)
         }
         inventory.sort { ($0["filename"] as? String ?? "") < ($1["filename"] as? String ?? "") }
-        // Retain the first actual inventory (after the recorder import), before intentional vault removals.
+        // Retain the first actual stock-only inventory, before intentional vault removals.
         if let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let file = documents.appendingPathComponent("store-concept-a-library.json")
             if !FileManager.default.fileExists(atPath: file.path) {

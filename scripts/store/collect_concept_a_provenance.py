@@ -12,6 +12,7 @@ from pathlib import Path
 from PIL import Image, ImageCms
 
 BASE_SHA = '583eb804a81401aa2010996875b35d05afc61539'
+MEDIA_POLICY = 'approved-stock-photos-and-videos-no-app-screenshots'
 REQUIRED = ('swipe', 'duplicates', 'large-files', 'trash', 'delete-confirm', 'vault',
             'later', 'later-swipe', 'months', 'analysis', 'collage', 'editor', 'games')
 
@@ -36,6 +37,42 @@ def image_record(path, root):
         return {'file': path.relative_to(root).as_posix(), 'sha256': digest(path),
                 'bytes': path.stat().st_size, 'width': image.width, 'height': image.height,
                 'mode': image.mode, 'opaque': opaque, 'icc_embedded': bool(profile), 'icc_description': description}
+
+
+def audit_sample_media(library, fixture):
+    """Check actual PhotoKit resources, not only the screenshot subtype flag.
+
+    simctl can import a screen PNG as an ordinary photo, so exact fixture-name
+    equality and a screenshot-free allowlisted input set are both required.
+    """
+    errors = []
+    assets = library.get('assets', [])
+    rows = fixture.get('records', [])
+    expected = {Path(row['file']).name: row for row in rows}
+    names = [row.get('filename') for row in assets]
+    if fixture.get('sample_media_policy') != MEDIA_POLICY:
+        errors.append('Fixture must explicitly exclude nested app/UI screenshots')
+    if not assets or len(expected) != len(rows) or len(set(names)) != len(names) or set(names) != set(expected):
+        errors.append('Actual PhotoKit library must exactly equal the approved photo/video fixture, with no extra app screenshot')
+    if any(row.get('isScreenshot') is not False for row in assets):
+        errors.append('Actual PhotoKit library contains screenshot or unknown-subtype assets')
+    if any(not isinstance(name, str) or not name.startswith('CA_') or name.lower().endswith('.png')
+           or 'screenshot' in name.lower() or 'native-library' in name.lower() for name in names):
+        errors.append('App/UI screenshot filename found in the actual sample library')
+    for asset in assets:
+        record = expected.get(asset.get('filename'))
+        if record and asset.get('isVideo') is not (record['media_type'] == 'video'):
+            errors.append('Actual PhotoKit media type disagrees with imported stock fixture')
+    photos = sum(row.get('isVideo') is False for row in assets)
+    videos = sum(row.get('isVideo') is True for row in assets)
+    if (photos, videos) != (fixture.get('images'), fixture.get('videos')):
+        errors.append('Actual stock-only PhotoKit photo/video counts disagree with fixture')
+    if (library.get('count'), library.get('photoCount'), library.get('videoCount')) != (len(assets), photos, videos):
+        errors.append('Actual exported PhotoKit inventory counters disagree with its resource rows')
+    return {'status': 'FAIL' if errors else 'PASS', 'policy': MEDIA_POLICY,
+            'actual_asset_count': len(assets), 'actual_photo_count': photos, 'actual_video_count': videos,
+            'actual_screenshot_subtype_count': sum(row.get('isScreenshot') is True for row in assets),
+            'fixture_filename_set_exact': set(names) == set(expected), 'errors': errors}
 
 
 def main():
@@ -95,14 +132,13 @@ def main():
     branding = image_record(logo, root) if logo.is_file() else None
     if branding is None:
         errors.append('Missing native export of the app-owned canonical wordmark')
-    actual_screenshot = root / 'stills/concept-a-native-library.fixture.json'
-    if not actual_screenshot.is_file():
-        errors.append('Missing genuine simctl screenshot + PhotoKit import receipt')
-    else:
-        receipt = load('stills/concept-a-native-library.fixture.json')
-        path = root / 'stills' / receipt.get('file', '_missing_')
-        if not (receipt.get('imported') is True and path.is_file() and digest(path) == receipt.get('sha256')):
-            errors.append('Native screenshot-fixture receipt failed exact-file readback')
+    library = load('concept-a-library.json')
+    media_audit = audit_sample_media(library, fixture)
+    errors.extend(media_audit['errors'])
+    if (root / 'stills/concept-a-native-library.fixture.json').exists():
+        errors.append('Current stock-only capture must not import an app/UI screenshot into PhotoKit')
+    if library:
+        media_audit['actual_library_sha256'] = digest(root / 'concept-a-library.json')
     environment = {name: os.environ.get(name) for name in ('GITHUB_SHA', 'GITHUB_RUN_ID', 'GITHUB_REPOSITORY', 'GITHUB_REF_NAME')}
     if not all(environment.values()) or environment['GITHUB_REF_NAME'] != 'hermes/store-concept-a-en':
         errors.append('Actual GitHub exact-run/branch provenance is absent or wrong')
@@ -125,6 +161,7 @@ def main():
               'app': app_metadata, 'device': device, 'capture_summary': summary,
               'fixture_manifest_sha256': digest(root / 'fixture-manifest.json') if fixture else None,
               'fixture_visual_source_gate': visual_gate,
+              'sample_media_policy': MEDIA_POLICY, 'sample_media_audit': media_audit,
               'required_native_screens': required_files, 'outputs': outputs, 'branding': branding,
               'native_visual_acceptance': 'NOT RUN', 'store_export_acceptance': 'NOT RUN',
               'real_device_or_security_acceptance': 'NOT RUN', 'errors': errors}

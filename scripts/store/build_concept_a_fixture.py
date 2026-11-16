@@ -157,7 +157,8 @@ def main() -> None:
                                      'approved_original_count': len(approved),
                                      'all_used_sources_approved': all(approved.get(row['source']) == row['source_sha256'] for row in inventory)},
               'images': image_count, 'videos': video_count,
-              'native_screenshot_fixture': 'Added during the UI test by real simctl screenshot + addmedia, not generated here',
+              'native_screenshot_fixture': 'Excluded by owner: no app/UI screenshot is imported as photo media',
+              'sample_media_policy': 'approved-stock-photos-and-videos-no-app-screenshots',
               'records': inventory}
     (output / 'fixture-manifest.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({key: value for key, value in report.items() if key != 'records'}, ensure_ascii=False))

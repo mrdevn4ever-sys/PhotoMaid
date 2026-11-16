@@ -668,10 +668,11 @@ final class AppStoreCaptureTests: XCTestCase {
         launch("today")
         conceptARequireVisible(e("today.title"), "Actual canonical GaleriQ wordmark")
         XCTAssertTrue(e("today.quick.photos").exists)
-        // Parent's recorder captures THIS native screen and imports precisely that file through simctl addmedia.
-        try recording("fixture-screenshot", name: "concept-a-native-library")
-        try conceptAAssertPNG(output.appendingPathComponent("stills/concept-a-native-library.png"))
-        launch("concept-a-library") // Reload PhotoKit and arrange the newly imported OS screenshot as well.
+        // Owner policy: no app/UI screenshot may appear as a photo, including
+        // the next card, small thumbnails, delete previews, collages or games.
+        // Import only the hash-allowlisted stock-photo/video fixture; never add
+        // a captured screen to PhotoKit in this current Concept A route.
+        launch("concept-a-library")
         let initial = try conceptAWait("initial-library") { ($0["readReady"] as? Bool == true) && ($0["libraryLoaded"] as? Bool == true) }
         XCTAssertEqual(initial["locale"] as? String, "en_US")
         XCTAssertEqual(initial["appVersion"] as? String, "1.0.1")
@@ -683,7 +684,11 @@ final class AppStoreCaptureTests: XCTestCase {
         let names = inventory.compactMap { $0["filename"] as? String }
         XCTAssertFalse(names.isEmpty)
         XCTAssertEqual(names.count, Set(names).count, "Do not import duplicate fixture filenames")
-        XCTAssertTrue(names.allSatisfy { $0.hasPrefix("CA_") || $0 == "concept-a-native-library.png" }, "No default or legacy archive photos")
+        XCTAssertTrue(names.allSatisfy { $0.hasPrefix("CA_") }, "Only the approved photo/video fixture, no app screenshots or legacy archive photos")
+        XCTAssertTrue(inventory.allSatisfy { $0["isScreenshot"] as? Bool == false }, "No screenshot assets anywhere in the capture library")
+        XCTAssertFalse(names.contains { $0.lowercased().hasSuffix(".png") || $0.localizedCaseInsensitiveContains("screenshot") || $0.localizedCaseInsensitiveContains("native-library") })
+        XCTAssertEqual(inventory.filter { $0["isVideo"] as? Bool == false }.count, 35)
+        XCTAssertEqual(inventory.filter { $0["isVideo"] as? Bool == true }.count, 2)
         for filename in ["CA_01_clutter_blur.jpg", "CA_02_clutter_shake.jpg", "CA_03_clutter_dark.jpg",
                          "CA_10_duplicate_a.jpg", "CA_11_duplicate_b.jpg"]
             + (1...6).map({ String(format: "CA_20_series_%02d.jpg", $0) })
@@ -692,10 +697,6 @@ final class AppStoreCaptureTests: XCTestCase {
             XCTAssertEqual(asset["isVideo"] as? Bool, false)
             XCTAssertGreaterThan(asset["pixelWidth"] as? Int ?? 0, 0)
         }
-        let nativeScreenshot = try conceptAAsset("concept-a-native-library.png", in: initial)
-        XCTAssertEqual(nativeScreenshot["pixelWidth"] as? Int, 1206)
-        XCTAssertEqual(nativeScreenshot["pixelHeight"] as? Int, 2622)
-        // simctl may import a genuine OS screenshot as a plain photo. Record its REAL subtype; never fake it.
         XCTAssertGreaterThanOrEqual(inventory.filter { ($0["isVideo"] as? Bool == true) && ($0["filename"] as? String ?? "").hasPrefix("CA_40_large_") }.count, 2)
         let logo = try XCTUnwrap(initial["logo"] as? [String: Any])
         XCTAssertEqual(logo["exported"] as? Bool, true)
@@ -777,7 +778,7 @@ final class AppStoreCaptureTests: XCTestCase {
         swipeFeed("up")
         let trashPhotoFiles = ["CA_01_clutter_blur.jpg", "CA_30_pretty_24.jpg"]
         let trashIDs = Set(try trashPhotoFiles.map { try conceptAID($0, in: initial) })
-        XCTAssertFalse(trashIDs.contains(try conceptAID("concept-a-native-library.png", in: initial)), "Do not preview an app screenshot over Delete")
+        XCTAssertFalse(names.contains("concept-a-native-library.png"), "No app screenshot may exist in this sample library or appear over Delete")
         for filename in trashPhotoFiles {
             let photo = try conceptAAsset(filename, in: initial)
             XCTAssertEqual(photo["isVideo"] as? Bool, false, "Deletion preview must contain actual neutral photos")
