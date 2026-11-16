@@ -662,6 +662,33 @@ final class AppStoreCaptureTests: XCTestCase {
     /// Fresh simulator only. No purchase, model, size, scan-result, or decision fixture is installed.
     func test07ConceptAStoreScreenshots() throws {
         XCTAssertEqual(language, "en", "Concept A is a new en-US master, not a localization/historical-source job")
+        // Genuine device accessibility setting, not a painted/modified alert.
+        // This disposable simulator starts without a personal Settings account.
+        let preferences = XCUIApplication(bundleIdentifier: "com.apple.Preferences")
+        preferences.launch()
+        for title in ["Accessibility", "Display & Text Size"] {
+            let row = preferences.staticTexts[title].firstMatch
+            for _ in 0..<8 {
+                if row.exists && row.isHittable { break }
+                preferences.swipeUp(); pause(0.4)
+            }
+            XCTAssertTrue(row.exists && row.isHittable, "Native Settings route unavailable: \(title)")
+            row.tap(); pause(0.5)
+        }
+        let transparency = preferences.switches.matching(NSPredicate(format: "label CONTAINS[c] 'Reduce Transparency'")).firstMatch
+        for _ in 0..<8 {
+            if transparency.exists && transparency.isHittable { break }
+            preferences.swipeUp(); pause(0.4)
+        }
+        XCTAssertTrue(transparency.exists && transparency.isHittable)
+        if transparency.value as? String == "0" { transparency.tap(); pause(0.5) }
+        XCTAssertEqual(transparency.value as? String, "1")
+        let settingsProof: [String: Any] = ["path": ["Accessibility", "Display & Text Size", "Reduce Transparency"],
+                                          "actualSwitchValue": transparency.value as? String ?? "unknown",
+                                          "method": "real native Settings UI, not a private defaults key"]
+        try JSONSerialization.data(withJSONObject: settingsProof, options: [.prettyPrinted, .sortedKeys])
+            .write(to: output.appendingPathComponent("concept-a-system-settings.json"), options: .atomic)
+        preferences.terminate()
         launch("introduction")
         for _ in 0..<5 { tap(e("onboarding.next")) }
         waitForPhotoAccess()
@@ -677,6 +704,7 @@ final class AppStoreCaptureTests: XCTestCase {
         XCTAssertEqual(initial["locale"] as? String, "en_US")
         XCTAssertEqual(initial["appVersion"] as? String, "1.0.1")
         XCTAssertEqual(initial["reduceMotion"] as? Bool, false, "Native drag tilt must not be disabled by Reduce Motion")
+        XCTAssertEqual(initial["reduceTransparency"] as? Bool, true, "Require the real device setting for the clean system confirmation")
         XCTAssertEqual(initial["eventCount"] as? Int, 0, "Use fresh persistent app data, not another capture's decisions")
         XCTAssertEqual(initial["basketIDs"] as? [String], [])
         XCTAssertEqual((initial["vault"] as? [String: Any])?["setUp"] as? Bool, false)
@@ -708,9 +736,15 @@ final class AppStoreCaptureTests: XCTestCase {
         launch("concept-a-feed"); awaitStage()
         let feedState = try conceptAObserve("feed-selected-originals")
         let feedSelection = try XCTUnwrap(feedState["selection"] as? [String: Any])
-        XCTAssertEqual(feedSelection["sourceFiles"] as? [String], ["CA_01_clutter_blur.jpg", "CA_30_pretty_24.jpg",
+        XCTAssertEqual(feedSelection["sourceFiles"] as? [String], ["CA_30_pretty_23.jpg", "CA_30_pretty_24.jpg",
                                                                "CA_30_pretty_06.jpg", "CA_30_pretty_07.jpg", "CA_30_pretty_08.jpg"])
-        try conceptARequireStage(try conceptAAsset("CA_01_clutter_blur.jpg", in: initial))
+        let sharpHero = try conceptAAsset("CA_30_pretty_23.jpg", in: initial)
+        try conceptARequireStage(sharpHero)
+        let sceneProof: [String: Any] = ["schema": 1, "reduceTransparency": initial["reduceTransparency"] as? Bool ?? false,
+                                       "sourceFiles": feedSelection["sourceFiles"] as? [String] ?? [],
+                                       "heroAssetID": sharpHero["id"] as? String ?? ""]
+        try JSONSerialization.data(withJSONObject: sceneProof, options: [.prettyPrinted, .sortedKeys])
+            .write(to: output.appendingPathComponent("concept-a-v3-scenes.json"), options: .atomic)
         try requestStill("warmup-concept-a", delay: 0, warmup: true); try awaitStill("warmup-concept-a")
         let heldAt = Date().timeIntervalSince1970
         // A real left drag supplies FeedMediaTransform's native offset.width / 40 rotation. No baked photo rotation.
@@ -776,7 +810,7 @@ final class AppStoreCaptureTests: XCTestCase {
         XCTAssertTrue(activeSwipeText.localizedCaseInsensitiveContains("Later"), "Actual upper-photo swipe badge must show Later, not just its static footer: \(activeSwipeText)")
         try conceptARequireStage(try conceptAAsset("CA_30_pretty_07.jpg", in: initial))
         swipeFeed("up")
-        let trashPhotoFiles = ["CA_01_clutter_blur.jpg", "CA_30_pretty_24.jpg"]
+        let trashPhotoFiles = ["CA_30_pretty_23.jpg", "CA_30_pretty_24.jpg"]
         let trashIDs = Set(try trashPhotoFiles.map { try conceptAID($0, in: initial) })
         XCTAssertFalse(names.contains("concept-a-native-library.png"), "No app screenshot may exist in this sample library or appear over Delete")
         for filename in trashPhotoFiles {
@@ -796,11 +830,11 @@ final class AppStoreCaptureTests: XCTestCase {
         try captureConceptAScans(initial: initial)
         try captureConceptAMonthsAndSeries(initial: initial, trashIDs: trashIDs)
         try captureConceptACreativeTools(initial: initial)
-        captureConceptAGames()
+        try captureConceptAGames()
         try captureConceptAVault(initial: initial)
         let expected = ["concept-a-swipe", "concept-a-duplicates", "concept-a-large-files", "concept-a-trash",
                         "concept-a-delete-confirm", "concept-a-vault", "concept-a-vault-locked", "concept-a-later", "concept-a-later-swipe",
-                        "concept-a-months", "concept-a-analysis", "concept-a-collage", "concept-a-editor", "concept-a-games"]
+                        "concept-a-months", "concept-a-analysis", "concept-a-collage", "concept-a-editor", "concept-a-games", "concept-a-games-menu"]
         for name in expected { try conceptAAssertPNG(output.appendingPathComponent("screenshots/\(name).png")) }
         XCTAssertEqual(Set(shots.map { $0["file"] ?? "" }), Set((expected + ["concept-a-logo"]).map { $0 + ".png" }))
     }
@@ -831,11 +865,58 @@ final class AppStoreCaptureTests: XCTestCase {
         conceptARequireVisible(app.buttons[removeTitle].firstMatch, "Actual Remove 2 photos and videos control")
         XCTAssertEqual(app.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", t("basket_preview_open").components(separatedBy: "%").first!)).count, 2)
         snap("concept-a-trash")
+        let captureBounds = app.frame
         tap(app.buttons[removeTitle].firstMatch)
         let confirm = String(format: t("basket_confirm_media_action"), Int64(2))
         tap(app.buttons[confirm].firstMatch) // App confirmation first; the following one must belong to SpringBoard.
         let alert = try conceptASystemDeleteAlert(expectedCount: 2)
-        snap("concept-a-delete-confirm")
+        XCTAssertEqual(state["reduceTransparency"] as? Bool, true)
+        // Wait for the real PhotoKit photo preview and the actual alert animation.
+        // Keep the original native pixels; the app's legitimate busy spinner below
+        // the dialog is excluded only by the user's common bottom-cropped phone.
+        pause(3)
+        let dialogFrame = alert.frame
+        var settled = XCUIScreen.main.screenshot()
+        let image = try XCTUnwrap(settled.image.cgImage)
+        let scale = CGFloat(image.width) / captureBounds.width
+        let nativeRect = CGRect(x: (dialogFrame.minX - captureBounds.minX) * scale,
+                                y: (dialogFrame.minY - captureBounds.minY) * scale,
+                                width: dialogFrame.width * scale, height: dialogFrame.height * scale).integral
+        XCTAssertTrue(CGRect(x: 0, y: 0, width: CGFloat(image.width), height: CGFloat(image.height)).contains(nativeRect))
+        XCTAssertLessThan(nativeRect.width, CGFloat(image.width) * 0.95, "Use the actual alert frame, not its whole host screen")
+        func cropPNG(_ shot: XCUIScreenshot) throws -> Data {
+            let cg = try XCTUnwrap(shot.image.cgImage)
+            let crop = try XCTUnwrap(cg.cropping(to: nativeRect))
+            let data = NSMutableData()
+            let destination = try XCTUnwrap(CGImageDestinationCreateWithData(data as CFMutableData, "public.png" as CFString, 1, nil))
+            CGImageDestinationAddImage(destination, crop, nil)
+            XCTAssertTrue(CGImageDestinationFinalize(destination))
+            return data as Data
+        }
+        var previousPNG = try cropPNG(settled)
+        var previousShot = settled
+        var consecutiveStable = 0
+        for _ in 0..<16 {
+            pause(0.5)
+            let candidate = XCUIScreen.main.screenshot()
+            let candidatePNG = try cropPNG(candidate)
+            consecutiveStable = candidatePNG == previousPNG ? consecutiveStable + 1 : 0
+            previousShot = settled
+            settled = candidate
+            previousPNG = candidatePNG
+            if consecutiveStable >= 3 { break }
+        }
+        XCTAssertGreaterThanOrEqual(consecutiveStable, 3, "Actual system dialog/photo crop must stop changing before capture")
+        try previousShot.pngRepresentation.write(to: output.appendingPathComponent("stills/concept-a-delete-confirm-before.png"), options: .atomic)
+        let dialogProof: [String: Any] = ["nativeRect": [Int(nativeRect.minX), Int(nativeRect.minY), Int(nativeRect.maxX), Int(nativeRect.maxY)],
+                                         "screenPixels": [image.width, image.height], "consecutiveStableSamples": consecutiveStable,
+                                         "reduceTransparency": state["reduceTransparency"] as? Bool ?? false,
+                                         "previousSource": "stills/concept-a-delete-confirm-before.png",
+                                         "finalSource": "screenshots/concept-a-delete-confirm.png",
+                                         "appBusyIndicatorRetouched": false]
+        try JSONSerialization.data(withJSONObject: dialogProof, options: [.prettyPrinted, .sortedKeys])
+            .write(to: output.appendingPathComponent("concept-a-delete-confirm-frame.json"), options: .atomic)
+        snap("concept-a-delete-confirm", settle: 0, captured: settled)
         try XCUIApplication(bundleIdentifier: "com.apple.springboard").debugDescription
             .write(to: output.appendingPathComponent("screenshots/concept-a-delete-confirm-system.txt"), atomically: true, encoding: .utf8)
         let cancel = alert.buttons.matching(NSPredicate(format: "label IN %@", ["Don't Allow", "Don’t Allow", "Don't Delete", "Don’t Delete", "Cancel"] as NSArray)).firstMatch
@@ -1012,7 +1093,7 @@ final class AppStoreCaptureTests: XCTestCase {
         snap("concept-a-editor")
     }
 
-    private func captureConceptAGames() {
+    private func captureConceptAGames() throws {
         launch("today")
         tap(e("today.games"))
         let cards = [e("games.memory"), e("games.snake"), e("games.blocks")]
@@ -1025,8 +1106,48 @@ final class AppStoreCaptureTests: XCTestCase {
         for (index, card) in cards.enumerated() {
             conceptARequireVisible(card, "Complete native game card \(index + 1), including Foto Blocks")
         }
-        snap("concept-a-games")
-        tap(e("games.close"))
+        snap("concept-a-games-menu") // Preserve all three real cards as additional evidence.
+        tap(e("games.memory"))
+        tap(e("memory.startPhotos"))
+        XCTAssertTrue(e("memory.card.0").waitForExistence(timeout: 45))
+        let board = app.buttons.matching(NSPredicate(format: "identifier BEGINSWITH 'memory.card.'"))
+        XCTAssertEqual(board.count, 24)
+        let unseen = board.allElementsBoundByIndex.map(\.identifier)
+        var known: [String: [String]] = [:]
+        var solved: Set<String> = []
+        // Only learn a card's identity AFTER an ordinary user tap reveals it.
+        // Same real-play algorithm as the legacy preview, without its fixture route.
+        for cardID in unseen {
+            if solved.count >= 6 { break }
+            if solved.contains(cardID) { continue }
+            let card = app.buttons[cardID]
+            if card.isEnabled { card.tap() }
+            var number = photoNumber(card)
+            if number.isEmpty {
+                pause(1.4); card.tap(); number = photoNumber(card)
+            }
+            XCTAssertFalse(number.isEmpty, "Never inspect a hidden card/deck or inject matches")
+            if known[number]?.contains(cardID) != true { known[number, default: []].append(cardID) }
+            if let pair = known[number], pair.count == 2 {
+                let first = app.buttons[pair[0]], second = app.buttons[pair[1]]
+                if first.isEnabled { first.tap() }
+                if second.isEnabled { second.tap() }
+                XCTAssertTrue((first.value as? String ?? "").hasPrefix(t("memory_matched")))
+                XCTAssertTrue((second.value as? String ?? "").hasPrefix(t("memory_matched")))
+                solved.formUnion(pair); known.removeValue(forKey: number)
+            } else { pause(1.4) }
+        }
+        XCTAssertGreaterThanOrEqual(solved.count, 6)
+        XCTAssertFalse(e("memory.finished").exists, "No fake victory or best result")
+        pause(2)
+        let roundProof: [String: Any] = ["cardCount": board.count, "matchedCardIDs": solved.sorted(),
+                                        "matchedPrefix": t("memory_matched"),
+                                        "matchedValues": solved.sorted().map { app.buttons[$0].value as? String ?? "" },
+                                        "finished": e("memory.finished").exists, "source": "actual library-photo round through native taps"]
+        try JSONSerialization.data(withJSONObject: roundProof, options: [.prettyPrinted, .sortedKeys])
+            .write(to: output.appendingPathComponent("concept-a-games-round.json"), options: .atomic)
+        snap("concept-a-games") // A genuine, filled photo board instead of a half-empty menu.
+        tap(e("memory.close"))
     }
 
     private func captureConceptAVault(initial: [String: Any]) throws {

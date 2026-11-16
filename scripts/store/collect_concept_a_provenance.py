@@ -13,8 +13,9 @@ from PIL import Image, ImageCms
 
 BASE_SHA = '583eb804a81401aa2010996875b35d05afc61539'
 MEDIA_POLICY = 'approved-stock-photos-and-videos-no-app-screenshots'
+V3_SCENE_POLICY = 'sharp-stock-hero-opaque-confirmation-filled-photo-game'
 REQUIRED = ('swipe', 'duplicates', 'large-files', 'trash', 'delete-confirm', 'vault',
-            'later', 'later-swipe', 'months', 'analysis', 'collage', 'editor', 'games')
+            'later', 'later-swipe', 'months', 'analysis', 'collage', 'editor', 'games', 'games-menu')
 
 
 def digest(path):
@@ -73,6 +74,82 @@ def audit_sample_media(library, fixture):
             'actual_asset_count': len(assets), 'actual_photo_count': photos, 'actual_video_count': videos,
             'actual_screenshot_subtype_count': sum(row.get('isScreenshot') is True for row in assets),
             'fixture_filename_set_exact': set(names) == set(expected), 'errors': errors}
+
+
+def audit_v3_scenes(root, fixture):
+    """Read real device/selection/round receipts and independently compare alert pixels.
+
+    Visual acceptance of opacity, a recognizable hero, filled board and the final
+    viewport remains separate. A stable crop is not a substitute for visual QA.
+    """
+    root = Path(root)
+    errors, bindings = [], {}
+
+    def load(name):
+        try:
+            path = root / name
+            value = json.loads(path.read_text(encoding='utf-8'))
+            bindings[name] = digest(path)
+            return value
+        except (OSError, ValueError) as error:
+            errors.append(f'{name}: {type(error).__name__}: {error}')
+            return {}
+
+    scene = load('concept-a-v3-scenes.json')
+    settings = load('concept-a-system-settings.json')
+    dialog = load('concept-a-delete-confirm-frame.json')
+    game = load('concept-a-games-round.json')
+    library = load('concept-a-library.json')
+    hero = 'CA_30_pretty_23.jpg'
+    hero_id = next((row.get('id') for row in library.get('assets', []) if row.get('filename') == hero), None)
+    expected_selection = [hero, 'CA_30_pretty_24.jpg', 'CA_30_pretty_06.jpg',
+                          'CA_30_pretty_07.jpg', 'CA_30_pretty_08.jpg']
+    if not (hero_id and scene.get('heroAssetID') == hero_id and scene.get('sourceFiles') == expected_selection
+            and any(Path(row['file']).name == hero for row in fixture.get('records', []))):
+        errors.append('The real first swipe card must be the selected sharp approved stock photo, not blur or an app screen')
+    if not (scene.get('reduceTransparency') is True and settings.get('actualSwitchValue') == '1'
+            and dialog.get('reduceTransparency') is True):
+        errors.append('Real native Settings switch and observed app accessibility state must both enable Reduce Transparency')
+    rect = dialog.get('nativeRect', [])
+    valid_rect = (isinstance(rect, list) and len(rect) == 4 and all(type(n) is int for n in rect)
+                  and 0 <= rect[0] < rect[2] <= 1206 and 0 <= rect[1] < rect[3] <= 2622
+                  and rect[2] - rect[0] < 1206 * 0.95)
+    if not (valid_rect and dialog.get('screenPixels') == [1206, 2622]
+            and type(dialog.get('consecutiveStableSamples')) is int and dialog['consecutiveStableSamples'] >= 3
+            and dialog.get('appBusyIndicatorRetouched') is False):
+        errors.append('Require actual native alert geometry and three unchanged crop samples; do not retouch the app spinner')
+    stable = False
+    sources = ('stills/concept-a-delete-confirm-before.png', 'screenshots/concept-a-delete-confirm.png')
+    if dialog.get('previousSource') != sources[0] or dialog.get('finalSource') != sources[1]:
+        errors.append('Dialog pixel proof must name its actual previous and final full-screen sources')
+    if valid_rect:
+        try:
+            with Image.open(root / sources[0]) as before, Image.open(root / sources[1]) as after:
+                if before.size != (1206, 2622) or after.size != before.size:
+                    errors.append('Dialog stability sources must retain complete native dimensions')
+                else:
+                    stable = (before.crop(rect).convert('RGBA').tobytes() == after.crop(rect).convert('RGBA').tobytes()
+                              and before.info.get('icc_profile') == after.info.get('icc_profile'))
+                    if not stable:
+                        errors.append('The actual final dialog pixels differ from its last stable native sample')
+            bindings.update({name: digest(root / name) for name in sources})
+        except (OSError, ValueError) as error:
+            errors.append(f'Actual dialog stability files: {type(error).__name__}: {error}')
+    ids, values, prefix = game.get('matchedCardIDs', []), game.get('matchedValues', []), game.get('matchedPrefix')
+    if not (game.get('cardCount') == 24 and isinstance(ids, list) and len(ids) >= 6 and len(set(ids)) == len(ids)
+            and isinstance(values, list) and len(values) == len(ids) and isinstance(prefix, str) and prefix
+            and all(isinstance(value, str) and value.startswith(prefix) for value in values)
+            and game.get('finished') is False and game.get('source') == 'actual library-photo round through native taps'):
+        errors.append('Require a real 24-card library-photo round with at least three genuinely matched pairs and no fake victory')
+    for name in ('screenshots/concept-a-swipe.png', 'screenshots/concept-a-games.png', 'screenshots/concept-a-games-menu.png'):
+        if (root / name).is_file():
+            bindings[name] = digest(root / name)
+        else:
+            errors.append('Missing actual v3 native scene: ' + name)
+    return {'status': 'FAIL' if errors else 'PASS', 'policy': V3_SCENE_POLICY, 'source_bindings': bindings,
+            'hero_filename': hero if hero_id else None, 'actual_dialog_native_rect': rect,
+            'dialog_last_crop_pixel_equal': stable, 'actual_matched_card_count': len(ids),
+            'visual_opacity_hero_clarity_game_fill_and_final_spinner_acceptance': 'NOT RUN', 'errors': errors}
 
 
 def main():
@@ -139,6 +216,8 @@ def main():
         errors.append('Current stock-only capture must not import an app/UI screenshot into PhotoKit')
     if library:
         media_audit['actual_library_sha256'] = digest(root / 'concept-a-library.json')
+    scene_audit = audit_v3_scenes(root, fixture)
+    errors.extend(scene_audit['errors'])
     environment = {name: os.environ.get(name) for name in ('GITHUB_SHA', 'GITHUB_RUN_ID', 'GITHUB_REPOSITORY', 'GITHUB_REF_NAME')}
     if not all(environment.values()) or environment['GITHUB_REF_NAME'] != 'hermes/store-concept-a-en':
         errors.append('Actual GitHub exact-run/branch provenance is absent or wrong')
@@ -162,6 +241,7 @@ def main():
               'fixture_manifest_sha256': digest(root / 'fixture-manifest.json') if fixture else None,
               'fixture_visual_source_gate': visual_gate,
               'sample_media_policy': MEDIA_POLICY, 'sample_media_audit': media_audit,
+              'native_scene_policy': V3_SCENE_POLICY, 'native_scene_audit': scene_audit,
               'required_native_screens': required_files, 'outputs': outputs, 'branding': branding,
               'native_visual_acceptance': 'NOT RUN', 'store_export_acceptance': 'NOT RUN',
               'real_device_or_security_acceptance': 'NOT RUN', 'errors': errors}

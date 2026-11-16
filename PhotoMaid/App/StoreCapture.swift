@@ -281,7 +281,7 @@ enum StoreCapture {
         case "concept-a-feed":
             // The deletion confirmation must preview photos, not a screenshot
             // of GaleriQ that could be mistaken for deleting the application.
-            guard let selected = select(["CA_01_clutter_blur.jpg", "CA_30_pretty_24.jpg",
+            guard let selected = select(["CA_30_pretty_23.jpg", "CA_30_pretty_24.jpg",
                                          "CA_30_pretty_06.jpg", "CA_30_pretty_07.jpg", "CA_30_pretty_08.jpg"]) else { return }
             app.open(FeedRequest(.items(selected.map(\.reference), titleKey: "feed_title_all"))); return
         case "concept-a-editor":
@@ -478,7 +478,8 @@ enum StoreCapture {
         }
         return ["locale": Locale.current.identifier, "appVersion": AppConfig.appVersion,
                 "fixtureMode": app.isQAFixtureMode, "readReady": app.readReady, "libraryLoaded": app.snapshot.loaded,
-                "reduceMotion": UIAccessibility.isReduceMotionEnabled, "setupErrors": conceptAErrors,
+                "reduceMotion": UIAccessibility.isReduceMotionEnabled, "reduceTransparency": UIAccessibility.isReduceTransparencyEnabled,
+                "setupErrors": conceptAErrors,
                 "inventory": inventory, "selection": conceptASelection, "measurements": measurements,
                 "duplicates": duplicates, "largeFiles": largeRows, "largeMeasuring": SizeMeasuring.shared.running,
                 "largeThresholdMB": app.settings.largeFileThresholdMB, "months": months, "series": series,
