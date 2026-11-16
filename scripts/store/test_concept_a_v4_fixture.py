@@ -274,6 +274,27 @@ class RegistryTests(TempCase):
         with self.assertRaises(ValueError):
             collector.validate_fixture_metadata(report, self.registry, self.allowlist, sha(self.source / 'manifest.json'), sha(self.allow_path))
 
+    def test_collage_input_crops_are_declared_portraits_without_resize(self):
+        output = self.root / 'portrait-inputs'
+        report = image_manifest(self.source, self.allow_path, output)
+        originals = {row['capture_role']: row for row in self.registry['photos']}
+        rows = {row['file']: row for row in report['records']}
+        for index, role in enumerate((5, 10, 1, 4), 1):
+            row = rows[f'CA_30_pretty_{index:02d}.jpg']
+            original = originals[role]
+            unit = min(original['width'] // 4, original['height'] // 5)
+            w, h = unit * 4, unit * 5
+            left, top = (original['width'] - w) // 2, (original['height'] - h) // 2
+            self.assertEqual(row['source_crop'], [left, top, left + w, top + h])
+            self.assertEqual(row['size'], [w, h])
+            self.assertEqual(row['category'], 'pretty-collage-portrait')
+            self.assertIn('no resize or upscale', row['adaptation'])
+            self.assertNotEqual(row['sha256'], original['sha256'])
+        self.assertEqual(builder.collage_portrait_rect(400, 500), [0, 0, 400, 500])
+        for dims in ((True, 500), (400.0, 500), (0, 500), (3, 4)):
+            with self.assertRaises(ValueError):
+                builder.collage_portrait_rect(*dims)
+
     def test_two_videos_required_and_small_source_cannot_be_upscaled(self):
         for value in (0, 1, True, '2'):
             with self.assertRaises(ValueError):
@@ -307,6 +328,20 @@ class FixtureMetadataTests(TempCase):
         self.assertEqual(len(self.validate()), 37)
         with self.assertRaises(ValueError):
             collector.verify_fixture_files(self.output, self.fixture, self.validate(), self.source)
+
+    def test_collage_crop_metadata_cannot_be_missing_coerced_or_forged(self):
+        for key, value in (('source_crop', None), ('source_crop', [0, 0, 20, 25]),
+                           ('source_crop', [78.0, 1, 306, 286]), ('source_crop', [True, 1, 306, 286]),
+                           ('size', [230, 285]), ('category', 'pretty')):
+            data = copy.deepcopy(self.fixture)
+            row = next(row for row in data['records'] if row['file'] == 'CA_30_pretty_01.jpg')
+            row[key] = value
+            with self.subTest(key=key, value=value), self.assertRaisesRegex(ValueError, 'centered 4:5'):
+                self.validate(data)
+        data = copy.deepcopy(self.fixture)
+        data['records'][0]['source_crop'] = [0, 0, 20, 25]
+        with self.assertRaisesRegex(ValueError, 'unexpected collage crop'):
+            self.validate(data)
 
     def test_wrong_asset_count_extra_missing_duplicate_rejected(self):
         for kind in ('extra', 'missing', 'duplicate', 'images-bool', 'videos-float'):
@@ -557,9 +592,23 @@ class ProofGateTests(TempCase):
         for index, name in enumerate(names):
             Image.new('RGB', (1206, 2622), (index, 17, 31)).save(directory / name, pnginfo=info)
         self.assertEqual(len(collector.validate_native_screens(self.root)), 20)
+        # Synthetic pixel rectangles test only the intentional complete-screen
+        # restoration exception. Full native acceptance still requires both real
+        # action/ordered publication/photo-pixel proofs in audit_editor_pair.
+        after = directory / 'concept-a-v4-editor-after.png'
+        redo = directory / 'concept-a-v4-editor-redo.png'
+        undo = directory / 'concept-a-v4-editor-undo.png'
+        original_redo, original_undo = redo.read_bytes(), undo.read_bytes()
+        redo.write_bytes(after.read_bytes())
+        self.assertEqual(len(collector.validate_native_screens(self.root)), 20)
+        undo.write_bytes(after.read_bytes())
+        with self.assertRaisesRegex(ValueError, 'Unrelated required native screen'):
+            collector.validate_native_screens(self.root)
+        undo.write_bytes(original_undo)
+        redo.write_bytes(original_redo)
         target = directory / collector.NEW_SCREENS[-1]
         target.write_bytes((directory / names[0]).read_bytes())
-        with self.assertRaisesRegex(ValueError, 'unique file hash'):
+        with self.assertRaisesRegex(ValueError, 'Unrelated required native screen'):
             collector.validate_native_screens(self.root)
         Image.new('RGBA', (1206, 2622), (1, 2, 3, 1)).save(target, pnginfo=info)
         with self.assertRaisesRegex(ValueError, 'opaque native'):

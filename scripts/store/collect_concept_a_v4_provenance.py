@@ -216,6 +216,21 @@ def validate_fixture_metadata(fixture, registry, allowlist, manifest_sha, allowl
         sha = hash_literal(row.get('sha256'), name + '.sha256')
         size = row.get('size')
         need(type(size) is list and len(size) == 2 and all(type(n) is int and n > 0 for n in size), name + ': actual dimensions required')
+        collage_inputs = {f'CA_30_pretty_{index:02d}.jpg' for index in range(1, 5)}
+        if name in collage_inputs:
+            # Independently reconstruct the input crop from approved original
+            # dimensions. These are real PhotoKit photos, never modified UI.
+            unit = min(original['width'] // 4, original['height'] // 5)
+            w, h = 4 * unit, 5 * unit
+            left, top = (original['width'] - w) // 2, (original['height'] - h) // 2
+            crop = row.get('source_crop')
+            need(unit > 0 and type(crop) is list and len(crop) == 4
+                 and all(type(value) is int for value in crop)
+                 and crop == [left, top, left + w, top + h]
+                 and size == [w, h] and row.get('category') == 'pretty-collage-portrait',
+                 name + ': declared genuine centered 4:5 original-photo crop required')
+        else:
+            need('source_crop' not in row, name + ': unexpected collage crop metadata')
         media_type = 'video' if name.endswith('.mp4') else 'image'
         need(row.get('media_type') == media_type, name + ': wrong actual media type')
         if media_type == 'video':
@@ -296,7 +311,17 @@ def validate_native_screens(root):
         need((width, height, depth) == (1206, 2622, 8) and color in (2, 6)
              and row['mode'] in ('RGB', 'RGBA') and row['opaque'] is True, name + ': 8-bit opaque native RGB/RGBA 1206x2622 required')
         rows.append(row)
-    need(len({row['sha256'] for row in rows}) == len(rows), 'Every legacy and new required native screen must have a unique file hash')
+    # After and Redo intentionally restore the same real Warm UI. With the status
+    # bar pinned, their complete PNG bytes may also be equal; that is not evidence
+    # of a substituted source. audit_editor_pair independently requires both actual
+    # captures/actions, ordered readbacks, newer publication generations and equal
+    # photo pixels. Every unrelated source state must still remain distinct.
+    by_hash = {}
+    for row in rows:
+        by_hash.setdefault(row['sha256'], []).append(row['file'])
+    repeatable = {'screenshots/concept-a-v4-editor-after.png', 'screenshots/concept-a-v4-editor-redo.png'}
+    need(all(len(names) == 1 or set(names) == repeatable for names in by_hash.values()),
+         'Unrelated required native screen states unexpectedly share a file hash')
     return {row['file']: row for row in rows}
 
 

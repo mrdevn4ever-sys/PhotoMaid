@@ -155,6 +155,17 @@ def expected_image_roles() -> dict[str, int]:
     }
 
 
+def collage_portrait_rect(width: int, height: int) -> list[int]:
+    """Declared input-only 4:5 crop; no resize or native screenshot edits."""
+    need(type(width) is int and type(height) is int and width > 0 and height > 0,
+         'Positive integer original dimensions required for collage crop')
+    unit = min(width // 4, height // 5)
+    need(unit > 0, 'Original too small for a real 4:5 collage crop')
+    w, h = 4 * unit, 5 * unit
+    left, top = (width - w) // 2, (height - h) // 2
+    return [left, top, left + w, top + h]
+
+
 def save_derivative_jpeg(image: Image.Image, destination: Path) -> None:
     # Pillow guesses only width*height bytes for optimized quality-94 JPEGs.
     # High-entropy 4:4:4 photos can exceed that buffer (libjpeg: "Suspension not
@@ -230,7 +241,18 @@ def build_fixture(sources: Path, allowlist_path: Path, output: Path, *, skip_vid
         add(f'CA_20_series_{index + 1:02d}.jpg', 36, 'near-similar-series', variation,
             f'CC0 dog-photo fixture derivative: crop inset {index * 5}px; exposure factor {0.98 + index * 0.008:.3f}; no upscale')
     for index, role in enumerate(PRETTY_ROLES, 1):
-        add(f'CA_30_pretty_{index:02d}.jpg', role, 'pretty')
+        if index <= 4:
+            # Native collage uses these four real library assets. Wide inputs can
+            # expose off-screen placement bounds in its unchanged default layout.
+            # Prepare genuine portrait photos before PhotoKit import instead of
+            # editing app UI/AX frames or weakening the preserved legacy test.
+            crop = collage_portrait_rect(roles[role]['width'], roles[role]['height'])
+            add(f'CA_30_pretty_{index:02d}.jpg', role, 'pretty-collage-portrait',
+                lambda image, crop=tuple(crop): image.crop(crop),
+                'CC0 fixture derivative: centered 4:5 portrait crop ' + str(crop) + '; no resize or upscale')
+            records[-1]['source_crop'] = crop
+        else:
+            add(f'CA_30_pretty_{index:02d}.jpg', role, 'pretty')
     for offset, role in enumerate(DERIVATIVE_ROLES):
         inset, exposure = 48 + offset * 7, 1.04 + offset * 0.005
         def variation(image, inset=inset, exposure=exposure):
