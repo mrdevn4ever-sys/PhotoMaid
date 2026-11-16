@@ -126,7 +126,8 @@ def editor_metadata_control():
             'renderGeneration': 3, 'publishedRenderGeneration': 3,
             'sourceOriginalPixelWidth': 384, 'sourceOriginalPixelHeight': 288,
             'publishedPreviewPixelWidth': 384, 'publishedPreviewPixelHeight': 288,
-            'publicationOrigin': 'renderAssignment',
+            'publicationOrigin': 'renderAssignment', 'publishedFilter': 'warm',
+            'publishedFilterStrength': 1, 'publishedIsIdentity': False,
             'pixelHashFormat': 'SHA256 of assigned RGBA8 CGImage packed pixel rows; stride padding excluded'}
 
 
@@ -484,7 +485,9 @@ class ProofGateTests(TempCase):
         observation = editor_metadata_control()
         state = {'fixtureMode': False, 'setupErrors': [], 'readReady': True, 'libraryLoaded': True, 'editorV4': observation}
         log = [{'checkpoint': name + '-capture-readback', 'state': state}]
-        row = {'file': screen, 'screenshotSHA256': sha(self.root / screen), 'editorV4': observation,
+        row = {'file': screen, 'screenshotSHA256': sha(self.root / screen),
+               'editorV4': {key: observation[key] for key in collector.EDITOR_CORE_FIELDS},
+               'editorObservation': copy.deepcopy(observation),
                'stageAX': ax('editor.stage', {'x': 9, 'y': 100, 'width': 384, 'height': 400}),
                'photoAXFrame': {'x': 9, 'y': 156, 'width': 384, 'height': 288},
                'photoNativeFrame': {'x': 29, 'y': 470, 'width': 1148, 'height': 860},
@@ -559,6 +562,36 @@ class ProofGateTests(TempCase):
             with self.assertRaises(ValueError):
                 collector.safe_file(self.root, value)
 
+    def test_v4_qa_base_and_vault_retain_every_legacy_native_gate(self):
+        source = (builder.REPO_ROOT / 'PhotoMaidUITests/AppStoreCaptureTests.swift').read_text(encoding='utf-8')
+        def method(signature):
+            start = source.index(signature)
+            end = source.index('\n    }\n', start) + len('\n    }')
+            return source[start:end]
+        legacy_signature = '    func test07ConceptAStoreScreenshots() throws {'
+        base_signature = '    private func captureConceptAV4BaseScreenshots() throws {'
+        legacy, base = method(legacy_signature), method(base_signature)
+        restored_base = base.replace(base_signature, legacy_signature, 1).replace(
+            'try captureConceptAV4Vault(initial: initial)', 'try captureConceptAVault(initial: initial)', 1)
+        self.assertEqual(restored_base, legacy)
+        vault_signature = '    private func captureConceptAVault(initial: [String: Any]) throws {'
+        new_signature = '    private func captureConceptAV4Vault(initial: [String: Any]) throws {'
+        original_intro = ('        XCTAssertTrue(button("onb_next").waitForExistence(timeout: 20), "Fresh vault must be set up through its actual UI")\n'
+                          '        tap(button("onb_next"))\n'
+                          '        let fields = app.secureTextFields\n'
+                          '        XCTAssertEqual(fields.count, 2)')
+        restored_vault = method(new_signature).replace(new_signature, vault_signature, 1).replace(
+            '        let fields = try conceptAV4AdvanceVaultIntro()', original_intro, 1)
+        self.assertEqual(restored_vault, method(vault_signature))
+        readiness = method('    private func conceptAV4AdvanceVaultIntro() throws -> XCUIElementQuery {')
+        for required in ('for attempt in 0..<2', 'fields.count == 0', 'intro.exists',
+                         'waitForExistence(timeout: 15)', 'fields.count == 2',
+                         'conceptAV4Tap(next)', 'conceptAV4Write(proof', 'proof["status"] = "FAIL"'):
+            self.assertIn(required, readiness)
+        test = method('    func test08ConceptAV4StoreScreenshots() throws {')
+        self.assertEqual(test.count('try captureConceptAV4BaseScreenshots()'), 1)
+        self.assertNotIn('try test07ConceptAStoreScreenshots()', test)
+
     def test_requested_recipe_is_not_published_pixel_evidence(self):
         control = editor_metadata_control()
         self.assertEqual(collector.validate_editor_observation({'editorV4': control}, control['assetID']), control)
@@ -572,6 +605,37 @@ class ProofGateTests(TempCase):
                 with self.assertRaises(ValueError):
                     collector.validate_editor_observation({'editorV4': data}, control['assetID'])
 
+    def test_native_editor_core_projection_and_rich_readback_are_separate(self):
+        rich = editor_metadata_control()
+        rich.update(publishedFilter='warm', publishedFilterStrength=1, publishedIsIdentity=False, tool='adjust')
+        expected = ('assetID', 'loadState', 'originalReady', 'previewReady', 'rendering', 'requestedRecipeHash',
+                    'publishedRecipeHash', 'renderGeneration', 'publishedRenderGeneration', 'publishedFilter',
+                    'publishedFilterStrength', 'publishedIsIdentity', 'sourceOriginalPixelSHA256', 'publishedPreviewPixelSHA256')
+        self.assertEqual(collector.EDITOR_CORE_FIELDS, expected)
+        core = {key: rich[key] for key in expected}
+        row = {'editorV4': core, 'editorObservation': copy.deepcopy(rich)}
+        self.assertEqual(collector.validate_editor_checkpoint_observation(row, {'editorV4': rich}, rich['assetID']), rich)
+        for kind in ('full-in-core', 'missing-core', 'extra-core', 'core-hash', 'core-bool-as-int', 'missing-rich', 'rich-pixels', 'rich-diagnostics'):
+            data = copy.deepcopy(row)
+            if kind == 'full-in-core':
+                data['editorV4'] = copy.deepcopy(rich)
+            elif kind == 'missing-core':
+                data['editorV4'].pop('publishedRecipeHash')
+            elif kind == 'extra-core':
+                data['editorV4']['tool'] = 'adjust'
+            elif kind == 'core-hash':
+                data['editorV4']['publishedPreviewPixelSHA256'] = 'f' * 64
+            elif kind == 'core-bool-as-int':
+                data['editorV4']['previewReady'] = 1
+            elif kind == 'missing-rich':
+                data.pop('editorObservation')
+            elif kind == 'rich-pixels':
+                data['editorObservation']['publishedPreviewPixelSHA256'] = 'f' * 64
+            else:
+                data['editorObservation']['tool'] = 'filter'
+            with self.subTest(kind=kind), self.assertRaises(ValueError):
+                collector.validate_editor_checkpoint_observation(data, {'editorV4': rich}, rich['assetID'])
+
     def test_snapshot_must_be_real_ready_and_bound_to_log_in_order(self):
         state = {'fixtureMode': False, 'setupErrors': [], 'readReady': True, 'libraryLoaded': True, 'eventCount': 1}
         log = [{'checkpoint': 'unit-control', 'state': state}]
@@ -582,6 +646,33 @@ class ProofGateTests(TempCase):
             data = {**state, key: value}
             with self.assertRaises(ValueError):
                 collector.observed_snapshot([{'checkpoint': 'unit-invalid', 'state': data}], data)
+
+    def test_named_editor_cancel_occurrence_can_repeat_redo_state(self):
+        # UNIT CONTROL ONLY: no native source/provenance acceptance is created.
+        ready = {'fixtureMode': False, 'setupErrors': [], 'readReady': True, 'libraryLoaded': True}
+        baseline, restored = {**ready, 'unitState': 'before'}, {**ready, 'unitState': 'restored'}
+        name = 'v4-editor-save-options-cancelled'
+        log = [{'checkpoint': 'unit-baseline', 'state': baseline},
+               {'checkpoint': 'unit-redo-ready', 'state': copy.deepcopy(restored)},
+               {'checkpoint': 'concept-a-v4-editor-redo-capture-readback', 'state': copy.deepcopy(restored)},
+               {'checkpoint': name, 'state': copy.deepcopy(restored)}]
+        self.assertEqual(collector.observed_snapshot(log, restored, minimum=1), 1)
+        final = collector.observed_named_snapshot(log, restored, name, minimum=1, label='editor.afterState')
+        self.assertEqual(final, 3)
+        self.assertTrue(all(a < b for a, b in zip([0, 2, final], [2, final])))
+        for kind in ('missing-cancel', 'reordered-cancel', 'wrong-state', 'unready-cancel'):
+            rows, state = copy.deepcopy(log), copy.deepcopy(restored)
+            if kind == 'missing-cancel':
+                rows[-1]['checkpoint'] = 'unit-other'
+            elif kind == 'reordered-cancel':
+                rows.insert(1, rows.pop())
+            elif kind == 'wrong-state':
+                state['unitState'] = 'different'
+            else:
+                rows[-1]['state']['readReady'] = False
+            redo_index = next(i for i, row in enumerate(rows) if row['checkpoint'] == 'concept-a-v4-editor-redo-capture-readback')
+            with self.subTest(kind=kind), self.assertRaises(ValueError):
+                collector.observed_named_snapshot(rows, state, name, minimum=redo_index + 1, label='editor.afterState')
 
     def test_native_screen_header_hash_uniqueness_and_opacity(self):
         directory = self.root / 'screenshots'

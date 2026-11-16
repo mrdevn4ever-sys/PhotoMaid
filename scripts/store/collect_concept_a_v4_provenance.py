@@ -50,6 +50,11 @@ OPTIONAL_WARM = 'concept-a-v4-editor-filter-selected.png'
 MEDIA_POLICY = 'approved-stock-photos-and-videos-no-app-screenshots'
 BRANCH = 'hermes/store-concept-a-en'
 DEFAULT_CAPTURE_TEST = 'AppStoreCaptureTests/test08ConceptAV4StoreScreenshots'
+EDITOR_CORE_FIELDS = (
+    'assetID', 'loadState', 'originalReady', 'previewReady', 'rendering', 'requestedRecipeHash',
+    'publishedRecipeHash', 'renderGeneration', 'publishedRenderGeneration', 'publishedFilter',
+    'publishedFilterStrength', 'publishedIsIdentity', 'sourceOriginalPixelSHA256', 'publishedPreviewPixelSHA256',
+)
 
 
 def need(condition, message):
@@ -410,6 +415,16 @@ def observed_snapshot(log, state, *, minimum=0, label='snapshot'):
     return matches[0]
 
 
+def observed_named_snapshot(log, state, name, *, minimum=0, label='snapshot'):
+    """Bind the actual named occurrence, not an earlier byte-equal state."""
+    index, actual = checkpoint(log, name)
+    need(type(state) is dict and state == actual, label + ': state differs from the actual named checkpoint')
+    need(index >= minimum, label + ': named checkpoint is not in actual required order')
+    need(observed_snapshot(log, state, minimum=index, label=label) == index,
+         label + ': named checkpoint does not bind this exact ready native snapshot')
+    return index
+
+
 def rect(value, label):
     need(type(value) is dict and set(value) == {'x', 'y', 'width', 'height'}
          and all(type(value[key]) in (float, int) and math.isfinite(value[key]) for key in value)
@@ -599,12 +614,25 @@ def validate_editor_observation(state, asset_id):
     return observation
 
 
+def validate_editor_checkpoint_observation(row, state, asset_id):
+    """Bind native test08's exact core projection AND its separate rich readback."""
+    observation = validate_editor_observation(state, asset_id)
+    need(type(row.get('editorObservation')) is dict and row['editorObservation'] == observation,
+         'Editor screenshot must bind its exact full successful native publication readback')
+    core = row.get('editorV4')
+    need(type(core) is dict and set(core) == set(EDITOR_CORE_FIELDS),
+         'Editor screenshot requires the exact native fourteen-field core projection')
+    need(all(key in observation and type(core[key]) is type(observation[key]) and core[key] == observation[key]
+             for key in EDITOR_CORE_FIELDS),
+         'Editor core publication projection differs from the actual rich native readback')
+    return observation
+
+
 def editor_checkpoint(root, row, name, screens, log, asset_id, asset, screen_frame):
     source = 'screenshots/' + name + '.png'
     sha = screenshot_binding(root, row, source, screens)
     index, state = checkpoint(log, name + '-capture-readback')
-    observation = validate_editor_observation(state, asset_id)
-    need(row.get('editorV4') == observation, 'Editor screenshot must bind its exact successful native publication readback')
+    observation = validate_editor_checkpoint_observation(row, state, asset_id)
     stage = validate_ax(row.get('stageAX'), 'editor.stageAX')
     need(stage.get('identifier') == 'editor.stage', 'Actual editor stage AX required')
     stage_box = rect(stage['frame'], 'editor.stage.frame')
@@ -672,7 +700,8 @@ def audit_editor_pair(root, screens, library):
     log = load_evidence(root)
     baseline, final = proof.get('beforeState'), proof.get('afterState')
     baseline_index = observed_snapshot(log, baseline, label='editor.beforeState')
-    final_index = observed_snapshot(log, final, minimum=baseline_index + 1, label='editor.afterState')
+    final_index = observed_named_snapshot(log, final, 'v4-editor-save-options-cancelled',
+                                          minimum=baseline_index + 1, label='editor.afterState')
     verify_preservation(baseline, final, set())
     month_proof = builder.load_json(safe_file(root, 'month-progress-proof.json'))
     screen_frame = rect(month_proof.get('geometry', {}).get('screenAXFrame'), 'actual common screenAXFrame')

@@ -991,15 +991,15 @@ final class AppStoreCaptureTests: XCTestCase {
 
     // MARK: Additive Concept A V4 evidence (QA UI test only)
 
-    /// Select ONLY this test in the V4 workflow. Calling the unchanged scenario is not a second XCTest run.
+    /// Select ONLY this test in the V4 workflow; retain all legacy scenarios and helpers unchanged.
     /// Evidence schemas are versioned independently from the creative version; all objects are JSON primitives.
     func test08ConceptAV4StoreScreenshots() throws {
-        try test07ConceptAStoreScreenshots()
         do {
             try conceptAV4Require(isConceptAV4 && language == "en", "V4 requires its explicit en-US test selector")
+            try captureConceptAV4BaseScreenshots()
             let initial = try XCTUnwrap(conceptAEvidenceLog.first {
                 $0["checkpoint"] as? String == "initial-library"
-            }?["state"] as? [String: Any], "Retain the actual initial 35-photo/two-video inventory from test07")
+            }?["state"] as? [String: Any], "Retain the actual initial 35-photo/two-video inventory from the complete base scenario")
             try captureConceptAV4Months(initial: initial)
             try captureConceptAV4Editor(initial: initial)
             for name in ["months", "editor-before", "editor-filter-selected", "editor-after", "editor-undo",
@@ -1014,6 +1014,368 @@ final class AppStoreCaptureTests: XCTestCase {
             try? conceptAV4Write(failure, to: "concept-a-v4-failure.json")
             throw error
         }
+    }
+
+    // V4 forks only QA orchestration; all legacy method/helper bodies remain byte-for-byte equivalent.
+    // Its base scenario is otherwise the unchanged test07 sequence, including every native gate.
+    private func captureConceptAV4BaseScreenshots() throws {
+        XCTAssertEqual(language, "en", "Concept A is a new en-US master, not a localization/historical-source job")
+        // Genuine device accessibility setting, not a painted/modified alert.
+        // This disposable simulator starts without a personal Settings account.
+        let preferences = XCUIApplication(bundleIdentifier: "com.apple.Preferences")
+        preferences.launchArguments = ["-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
+        preferences.launch()
+        var actualSettingsLabels: [String] = []
+        // The preceding native failure proved this disposable device's system
+        // language was German, even though the target app itself was en-US.
+        // Resolve the observed labels across roles; do not assume StaticText.
+        for labels in [["Accessibility", "Bedienungshilfen"], ["Display & Text Size", "Anzeige & Textgröße"]] {
+            let row = preferences.descendants(matching: .any).matching(NSPredicate(format: "label IN %@", labels as NSArray)).firstMatch
+            for _ in 0..<8 {
+                if row.exists && row.isHittable { break }
+                preferences.swipeUp(); pause(0.4)
+            }
+            try preferences.debugDescription.write(to: output.appendingPathComponent("settings-route-\(actualSettingsLabels.count).txt"), atomically: true, encoding: .utf8)
+            XCTAssertTrue(row.exists && row.isHittable, "Native Settings route unavailable: \(labels)")
+            actualSettingsLabels.append(row.label)
+            row.tap(); pause(0.5)
+        }
+        let transparency = preferences.switches.matching(NSPredicate(format: "label CONTAINS[c] 'Reduce Transparency' OR label CONTAINS[c] 'Transparenz reduzieren'")).firstMatch
+        for _ in 0..<8 {
+            if transparency.exists && transparency.isHittable { break }
+            preferences.swipeUp(); pause(0.4)
+        }
+        XCTAssertTrue(transparency.exists && transparency.isHittable)
+        try preferences.debugDescription.write(to: output.appendingPathComponent("settings-reduce-transparency-before.txt"), atomically: true, encoding: .utf8)
+        try preferences.screenshot().pngRepresentation.write(to: output.appendingPathComponent("settings-reduce-transparency-before.png"))
+        let switchFrame = transparency.frame
+        var targetedToggleTap = false
+        var switchTapAttempts: [[String: Any]] = []
+        // C13 retained an observed OFF->OFF no-op. Its AX tree exposes an
+        // actual 63pt nested switch inside a 330pt row proxy: tap that leaf.
+        // Reacquire and retry only a freshly observed OFF state, never ON.
+        for attempt in 0..<3 {
+            let beforeValue = transparency.value as? String ?? "unknown"
+            if beforeValue == "1" { break }
+            XCTAssertEqual(beforeValue, "0", "Do not blindly toggle an unknown Settings state")
+            guard beforeValue == "0" else { break }
+            let nestedToggle = transparency.switches.firstMatch
+            let useLeaf = nestedToggle.exists && nestedToggle.isHittable
+            let target = useLeaf ? nestedToggle : transparency
+            let targetFrame = target.frame
+            let tapStarted = Date().timeIntervalSince1970
+            if useLeaf {
+                target.tap()
+            } else {
+                // Retain the observed trailing-control fallback, never row center.
+                target.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap()
+                targetedToggleTap = true
+            }
+            let tapFinished = Date().timeIntervalSince1970
+            let observed = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == '1'"), object: transparency)
+            let observedResult = XCTWaiter.wait(for: [observed], timeout: 8)
+            let afterValue = transparency.value as? String ?? "unknown"
+            switchTapAttempts.append(["attempt": attempt, "beforeValue": beforeValue, "afterValue": afterValue,
+                                      "target": useLeaf ? "nested native Switch.tap" : "row-relative trailing toggle",
+                                      "targetFrame": ["x": targetFrame.minX, "y": targetFrame.minY,
+                                                      "width": targetFrame.width, "height": targetFrame.height],
+                                      "tapStarted": tapStarted, "tapFinished": tapFinished,
+                                      "waitResult": observedResult.rawValue])
+            // Save the actual result of each input before deciding whether to retry.
+            try preferences.debugDescription.write(to: output.appendingPathComponent("settings-reduce-transparency-attempt-\(attempt).txt"), atomically: true, encoding: .utf8)
+            try preferences.screenshot().pngRepresentation.write(to: output.appendingPathComponent("settings-reduce-transparency-attempt-\(attempt).png"))
+            try JSONSerialization.data(withJSONObject: switchTapAttempts, options: [.prettyPrinted, .sortedKeys])
+                .write(to: output.appendingPathComponent("settings-reduce-transparency-attempts.json"), options: .atomic)
+            if observedResult == .completed && afterValue == "1" { break }
+        }
+        let enabled = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == '1'"), object: transparency)
+        let enabledResult = XCTWaiter.wait(for: [enabled], timeout: 8)
+        // Retain the real failing surface and proof before any final assertion.
+        try preferences.debugDescription.write(to: output.appendingPathComponent("settings-reduce-transparency-after.txt"), atomically: true, encoding: .utf8)
+        try preferences.screenshot().pngRepresentation.write(to: output.appendingPathComponent("settings-reduce-transparency-after.png"))
+        let settingsProof: [String: Any] = ["path": ["Accessibility", "Display & Text Size", "Reduce Transparency"],
+                                          "actualNavigationLabels": actualSettingsLabels, "actualSwitchLabel": transparency.label,
+                                          "actualSwitchValue": transparency.value as? String ?? "unknown",
+                                          "actualSwitchFrame": ["x": switchFrame.minX, "y": switchFrame.minY, "width": switchFrame.width, "height": switchFrame.height],
+                                          "targetedTrailingToggleTap": targetedToggleTap,
+                                          "toggleTapAttempts": switchTapAttempts,
+                                          "method": "real native Settings UI leaf control with bounded observed-OFF retries, not private defaults"]
+        try JSONSerialization.data(withJSONObject: settingsProof, options: [.prettyPrinted, .sortedKeys])
+            .write(to: output.appendingPathComponent("concept-a-system-settings.json"), options: .atomic)
+        XCTAssertEqual(enabledResult, .completed, "Require observed native Reduce Transparency state, not input delivery alone")
+        XCTAssertEqual(transparency.value as? String, "1")
+        preferences.terminate()
+        launch("introduction")
+        for _ in 0..<5 { tap(e("onboarding.next")) }
+        waitForPhotoAccess()
+        launch("today")
+        conceptARequireVisible(e("today.title"), "Actual canonical GaleriQ wordmark")
+        XCTAssertTrue(e("today.quick.photos").exists)
+        // Owner policy: no app/UI screenshot may appear as a photo, including
+        // the next card, small thumbnails, delete previews, collages or games.
+        // Import only the hash-allowlisted stock-photo/video fixture; never add
+        // a captured screen to PhotoKit in this current Concept A route.
+        launch("concept-a-library")
+        let initial = try conceptAWait("initial-library") { ($0["readReady"] as? Bool == true) && ($0["libraryLoaded"] as? Bool == true) }
+        XCTAssertEqual(initial["locale"] as? String, "en_US")
+        XCTAssertEqual(initial["appVersion"] as? String, "1.0.1")
+        XCTAssertEqual(initial["reduceMotion"] as? Bool, false, "Native drag tilt must not be disabled by Reduce Motion")
+        XCTAssertEqual(initial["reduceTransparency"] as? Bool, true, "Require the real device setting for the clean system confirmation")
+        XCTAssertEqual(initial["eventCount"] as? Int, 0, "Use fresh persistent app data, not another capture's decisions")
+        XCTAssertEqual(initial["basketIDs"] as? [String], [])
+        XCTAssertEqual((initial["vault"] as? [String: Any])?["setUp"] as? Bool, false)
+        let inventory = try XCTUnwrap(initial["inventory"] as? [[String: Any]])
+        let names = inventory.compactMap { $0["filename"] as? String }
+        XCTAssertFalse(names.isEmpty)
+        XCTAssertEqual(names.count, Set(names).count, "Do not import duplicate fixture filenames")
+        XCTAssertTrue(names.allSatisfy { $0.hasPrefix("CA_") }, "Only the approved photo/video fixture, no app screenshots or legacy archive photos")
+        XCTAssertTrue(inventory.allSatisfy { $0["isScreenshot"] as? Bool == false }, "No screenshot assets anywhere in the capture library")
+        XCTAssertFalse(names.contains { $0.lowercased().hasSuffix(".png") || $0.localizedCaseInsensitiveContains("screenshot") || $0.localizedCaseInsensitiveContains("native-library") })
+        XCTAssertEqual(inventory.filter { $0["isVideo"] as? Bool == false }.count, 35)
+        XCTAssertEqual(inventory.filter { $0["isVideo"] as? Bool == true }.count, 2)
+        for filename in ["CA_01_clutter_blur.jpg", "CA_02_clutter_shake.jpg", "CA_03_clutter_dark.jpg",
+                         "CA_10_duplicate_a.jpg", "CA_11_duplicate_b.jpg"]
+            + (1...6).map({ String(format: "CA_20_series_%02d.jpg", $0) })
+            + (1...24).map({ String(format: "CA_30_pretty_%02d.jpg", $0) }) {
+            let asset = try conceptAAsset(filename, in: initial)
+            XCTAssertEqual(asset["isVideo"] as? Bool, false)
+            XCTAssertGreaterThan(asset["pixelWidth"] as? Int ?? 0, 0)
+        }
+        XCTAssertGreaterThanOrEqual(inventory.filter { ($0["isVideo"] as? Bool == true) && ($0["filename"] as? String ?? "").hasPrefix("CA_40_large_") }.count, 2)
+        let logo = try XCTUnwrap(initial["logo"] as? [String: Any])
+        XCTAssertEqual(logo["exported"] as? Bool, true)
+        XCTAssertEqual(logo["component"] as? String, "VaultDialWordmark")
+        XCTAssertEqual(logo["dialComponent"] as? String, "CombinationDial")
+        try conceptAAssertPNG(output.appendingPathComponent("screenshots/concept-a-logo.png"), screen: false)
+        shots.append(["file": "concept-a-logo.png", "language": language, "appearance": "dark", "status": "PASS", "kind": "native-component"])
+
+        launch("concept-a-feed"); awaitStage()
+        let feedState = try conceptAObserve("feed-selected-originals")
+        let feedSelection = try XCTUnwrap(feedState["selection"] as? [String: Any])
+        XCTAssertEqual(feedSelection["sourceFiles"] as? [String], ["CA_30_pretty_23.jpg", "CA_30_pretty_24.jpg",
+                                                               "CA_30_pretty_06.jpg", "CA_30_pretty_07.jpg", "CA_30_pretty_08.jpg"])
+        let sharpHero = try conceptAAsset("CA_30_pretty_23.jpg", in: initial)
+        try conceptARequireStage(sharpHero)
+        let sceneProof: [String: Any] = ["schema": 1, "reduceTransparency": initial["reduceTransparency"] as? Bool ?? false,
+                                       "sourceFiles": feedSelection["sourceFiles"] as? [String] ?? [],
+                                       "heroAssetID": sharpHero["id"] as? String ?? ""]
+        try JSONSerialization.data(withJSONObject: sceneProof, options: [.prettyPrinted, .sortedKeys])
+            .write(to: output.appendingPathComponent("concept-a-v3-scenes.json"), options: .atomic)
+        try requestStill("warmup-concept-a", delay: 0, warmup: true); try awaitStill("warmup-concept-a")
+        let heldAt = Date().timeIntervalSince1970
+        // A real left drag supplies FeedMediaTransform's native offset.width / 40 rotation. No baked photo rotation.
+        try holdSwipe("left", still: "concept-a-swipe", offset: CGVector(dx: -150, dy: -20), holdDuration: 25)
+        let held = try XCTUnwrap(try JSONSerialization.jsonObject(with: Data(contentsOf: output.appendingPathComponent("stills/concept-a-swipe.json"))) as? [String: Any])
+        XCTAssertGreaterThanOrEqual(held["requested"] as? Double ?? 0, heldAt)
+        XCTAssertLessThan(held["finished"] as? Double ?? .infinity, heldAt + 24, "Recorder must finish while the finger is still down")
+        try conceptARequireStage(try conceptAAsset("CA_30_pretty_24.jpg", in: initial))
+        swipeFeed("left") // Second real Trash decision on a neutral photo, never on an app screenshot.
+        try conceptARequireStage(try conceptAAsset("CA_30_pretty_06.jpg", in: initial))
+        let beforeLater = feedPosition()
+        let feedBounds = app.frame
+        // Warm the public Vision recognizer BEFORE the real transient window.
+        // Cold OCR initialization must not consume a four-second native pill.
+        let recognitionWarmup = VNRecognizeTextRequest()
+        recognitionWarmup.recognitionLevel = .accurate
+        recognitionWarmup.recognitionLanguages = ["en-US"]
+        recognitionWarmup.usesLanguageCorrection = false
+        let warmupImage = try XCTUnwrap(XCUIScreen.main.screenshot().image.cgImage)
+        try VNImageRequestHandler(cgImage: warmupImage, options: [:]).perform([recognitionWarmup])
+        // Owner revision: show the genuine rightward drag and native Later badge,
+        // not only the reminder after committing. Never redraw or overlay the UI.
+        let laterHeldAt = Date().timeIntervalSince1970
+        let laterScreenshot = try XCTUnwrap(try holdSwipe("right", still: "concept-a-later-swipe",
+                                                        offset: CGVector(dx: 150, dy: -20), holdDuration: 25,
+                                                        captureAfterRelease: true))
+        // C9 proved the native decision advanced, but its normal AX post-check
+        // consumed the four-second pill. Inspect the already-saved real pixels,
+        // not an expired accessibility node. Do not extend any production timer.
+        try laterScreenshot.pngRepresentation.write(to: output.appendingPathComponent("stills/concept-a-later-timing.png"), options: .atomic)
+        let laterImage = try XCTUnwrap(laterScreenshot.image.cgImage)
+        let request = VNRecognizeTextRequest()
+        request.recognitionLevel = .accurate
+        request.recognitionLanguages = ["en-US"]
+        request.usesLanguageCorrection = false
+        try VNImageRequestHandler(cgImage: laterImage, options: [:]).perform([request])
+        let visiblePillText = (request.results ?? []).compactMap { $0.topCandidates(1).first?.string }.joined(separator: "\n")
+        try visiblePillText.write(to: output.appendingPathComponent("concept-a-later-visible-text.txt"), atomically: true, encoding: .utf8)
+        let dateText = String(format: t("later_in_days_again#other"), Int64(2))
+        let dateObservation = try XCTUnwrap((request.results ?? []).first {
+            $0.topCandidates(1).first?.string.localizedCaseInsensitiveContains(dateText) == true
+        }, "Actual saved native reminder must visibly show its unchanged two-day date")
+        let changeObservation = try XCTUnwrap((request.results ?? []).first {
+            $0.topCandidates(1).first?.string.localizedCaseInsensitiveContains(t("change")) == true
+        }, "Actual saved native reminder must visibly show Change")
+        func textPixelRect(_ observation: VNRecognizedTextObservation) -> CGRect {
+            let box = observation.boundingBox
+            return CGRect(x: box.minX * CGFloat(laterImage.width), y: (1 - box.maxY) * CGFloat(laterImage.height),
+                          width: box.width * CGFloat(laterImage.width), height: box.height * CGFloat(laterImage.height))
+        }
+        let pillPixels = textPixelRect(dateObservation).union(textPixelRect(changeObservation)).insetBy(dx: -18, dy: -18).integral
+        let nativeImageBounds = CGRect(x: 0, y: 0, width: CGFloat(laterImage.width), height: CGFloat(laterImage.height))
+        XCTAssertTrue(nativeImageBounds.contains(pillPixels), "The actual reminder text and surrounding margin must be wholly onscreen")
+        XCTAssertTrue(visiblePillText.localizedCaseInsensitiveContains(dateText), "Actual native reminder pixels must show the two-day date")
+        XCTAssertTrue(visiblePillText.localizedCaseInsensitiveContains(t("change")), "Actual native pill pixels must show Change: \(visiblePillText)")
+        XCTAssertEqual(feedPosition(), beforeLater + 1, "The actual right-swipe decision must advance")
+        snap("concept-a-later", settle: 0, captured: laterScreenshot)
+        let laterHeld = try XCTUnwrap(try JSONSerialization.jsonObject(with: Data(contentsOf: output.appendingPathComponent("stills/concept-a-later-swipe.json"))) as? [String: Any])
+        XCTAssertGreaterThanOrEqual(laterHeld["requested"] as? Double ?? 0, laterHeldAt)
+        XCTAssertLessThan(laterHeld["finished"] as? Double ?? .infinity, laterHeldAt + 24, "Later screenshot must finish while the finger is still down")
+        let laterHeldURL = output.appendingPathComponent("screenshots/concept-a-later-swipe.png")
+        let laterHeldSource = try XCTUnwrap(CGImageSourceCreateWithURL(laterHeldURL as CFURL, nil))
+        let laterHeldImage = try XCTUnwrap(CGImageSourceCreateImageAtIndex(laterHeldSource, 0, nil))
+        // Only inspect the upper photo area: the static footer also says Later
+        // and must not accidentally satisfy the active swipe-badge requirement.
+        let activeBadgeArea = try XCTUnwrap(laterHeldImage.cropping(to: CGRect(x: 0, y: 250, width: 1206, height: 1000)))
+        let swipeRequest = VNRecognizeTextRequest()
+        swipeRequest.recognitionLevel = .accurate
+        swipeRequest.recognitionLanguages = ["en-US"]
+        swipeRequest.usesLanguageCorrection = false
+        try VNImageRequestHandler(cgImage: activeBadgeArea, options: [:]).perform([swipeRequest])
+        let activeSwipeText = (swipeRequest.results ?? []).compactMap { $0.topCandidates(1).first?.string }.joined(separator: "\n")
+        try activeSwipeText.write(to: output.appendingPathComponent("concept-a-later-swipe-visible-text.txt"), atomically: true, encoding: .utf8)
+        XCTAssertTrue(activeSwipeText.localizedCaseInsensitiveContains("Later"), "Actual upper-photo swipe badge must show Later, not just its static footer: \(activeSwipeText)")
+        try conceptARequireStage(try conceptAAsset("CA_30_pretty_07.jpg", in: initial))
+        swipeFeed("up")
+        let trashPhotoFiles = ["CA_30_pretty_23.jpg", "CA_30_pretty_24.jpg"]
+        let trashIDs = Set(try trashPhotoFiles.map { try conceptAID($0, in: initial) })
+        XCTAssertFalse(names.contains("concept-a-native-library.png"), "No app screenshot may exist in this sample library or appear over Delete")
+        for filename in trashPhotoFiles {
+            let photo = try conceptAAsset(filename, in: initial)
+            XCTAssertEqual(photo["isVideo"] as? Bool, false, "Deletion preview must contain actual neutral photos")
+        }
+        let decisions = try conceptAWait("actual-swipe-decisions") { Set($0["basketIDs"] as? [String] ?? []) == trashIDs }
+        let rows = try XCTUnwrap(decisions["decisions"] as? [[String: Any]])
+        let laterID = try conceptAID("CA_30_pretty_06.jpg", in: initial)
+        let later = try XCTUnwrap(rows.first { $0["id"] as? String == laterID })
+        XCTAssertEqual(later["disposition"] as? String, "later")
+        XCTAssertEqual(later["dueDay"] as? String, decisions["twoDaysDueDay"] as? String)
+        let keepID = try conceptAID("CA_30_pretty_07.jpg", in: initial)
+        XCTAssertEqual(rows.first { $0["id"] as? String == keepID }?["disposition"] as? String, "kept")
+
+        try captureConceptATrash(trashIDs: trashIDs)
+        try captureConceptAScans(initial: initial)
+        try captureConceptAMonthsAndSeries(initial: initial, trashIDs: trashIDs)
+        try captureConceptACreativeTools(initial: initial)
+        try captureConceptAGames()
+        try captureConceptAV4Vault(initial: initial)
+        let expected = ["concept-a-swipe", "concept-a-duplicates", "concept-a-large-files", "concept-a-trash",
+                        "concept-a-delete-confirm", "concept-a-vault", "concept-a-vault-locked", "concept-a-later", "concept-a-later-swipe",
+                        "concept-a-months", "concept-a-analysis", "concept-a-collage", "concept-a-editor", "concept-a-games", "concept-a-games-menu"]
+        for name in expected { try conceptAAssertPNG(output.appendingPathComponent("screenshots/\(name).png")) }
+        XCTAssertEqual(Set(shots.map { $0["file"] ?? "" }), Set((expected + ["concept-a-logo"]).map { $0 + ".png" }))
+    }
+
+    private func captureConceptAV4Vault(initial: [String: Any]) throws {
+        launch("concept-a-vault")
+        let fields = try conceptAV4AdvanceVaultIntro()
+        fields.element(boundBy: 0).tap(); fields.element(boundBy: 0).typeText("628491")
+        fields.element(boundBy: 1).tap(); fields.element(boundBy: 1).typeText("628491")
+        tap(button("onb_next"))
+        let face = app.switches.matching(NSPredicate(format: "label CONTAINS 'Face ID'")).firstMatch
+        if face.exists {
+            // Own-code native capture, not a claim that simulator Face ID was security-tested.
+            if face.value as? String == "1" { face.coordinate(withNormalizedOffset: CGVector(dx: 0.92, dy: 0.5)).tap() }
+            tap(button("onb_next"))
+        }
+        // No screenshot, log or fixture exports a recovery key. Skip it via the real setup choice.
+        tap(button("vault_recovery_skip"))
+        tap(app.alerts.buttons[t("vault_recovery_skip")].firstMatch)
+        let hidden = app.switches[t("vault_hide_entry")]
+        if hidden.value as? String == "1" { hidden.coordinate(withNormalizedOffset: CGVector(dx: 0.92, dy: 0.5)).tap() }
+        tap(button("vault_setup_finish"))
+        XCTAssertTrue(app.segmentedControls.buttons[t("vault2_media")].waitForExistence(timeout: 45))
+        XCTAssertEqual(vaultItems().count, 0, "Never reuse another run's private media")
+        tap(button("vault_add"))
+        let filenames = (1...5).map { String(format: "CA_30_pretty_%02d.jpg", $0) }
+        let originalIDs = Set(try filenames.map { try conceptAID($0, in: initial) })
+        for filename in filenames {
+            let source = try conceptAAsset(filename, in: initial)
+            let description = try XCTUnwrap(source["accessibilityValue"] as? String)
+            // The production picker deliberately exposes a date/type label, not filenames. Metadata dates are unique.
+            let cell = app.buttons.matching(NSPredicate(format: "identifier == 'picker.media' AND label == %@", description)).firstMatch
+            if !cell.waitForExistence(timeout: 5) {
+                for _ in 0..<10 where !cell.exists { app.swipeUp() }
+                for _ in 0..<10 where !cell.exists { app.swipeDown() }
+            }
+            tap(cell)
+            XCTAssertTrue(cell.isSelected, "Actually select the imported pretty original: \(filename)")
+        }
+        tap(button("done"))
+        tap(app.alerts.buttons[t("vault_import_action")].firstMatch)
+        let system = try conceptASystemDeleteAlert(expectedCount: filenames.count)
+        let delete = system.buttons.matching(NSPredicate(format: "label BEGINSWITH[c] 'Delete'")).firstMatch
+        XCTAssertTrue(delete.isHittable)
+        pause(0.5); delete.tap() // Explicitly authorized ONLY for this disposable simulator's five imported originals.
+        XCTAssertTrue(system.waitForNonExistence(timeout: 30))
+        let notice = app.alerts.buttons[t("ok")].firstMatch
+        XCTAssertTrue(notice.waitForExistence(timeout: 120), "Require the actual completed import report")
+        tap(notice)
+        let moved = try conceptAWait("vault-real-import-and-original-removal", timeout: 120) { state in
+            let vault = state["vault"] as? [String: Any] ?? [:]
+            let items = vault["items"] as? [[String: Any]] ?? []
+            let liveIDs = Set((state["inventory"] as? [[String: Any]] ?? []).compactMap { $0["id"] as? String })
+            return vault["importing"] as? Bool == false && vault["stillInPhotos"] as? Int == 0
+                && items.count == filenames.count && items.allSatisfy { $0["thumbnailReady"] as? Bool == true }
+                && liveIDs.isDisjoint(with: originalIDs)
+        }
+        let vault = try XCTUnwrap(moved["vault"] as? [String: Any])
+        let items = try XCTUnwrap(vault["items"] as? [[String: Any]])
+        XCTAssertEqual(vault["unlocked"] as? Bool, true)
+        XCTAssertEqual(Set(items.compactMap { $0["originalID"] as? String }), originalIDs)
+        XCTAssertEqual(Set(items.flatMap { $0["sourceFiles"] as? [String] ?? [] }), Set(filenames))
+        XCTAssertTrue(items.allSatisfy { (($0["measuredBytes"] as? NSNumber)?.int64Value ?? 0) > 0 && $0["sourceID"] as? String == "" })
+        let initialCount = try XCTUnwrap(initial["inventory"] as? [[String: Any]]).count
+        XCTAssertEqual((moved["inventory"] as? [[String: Any]])?.count, initialCount - filenames.count)
+        XCTAssertEqual(vaultItems().count, filenames.count)
+        for cell in vaultItems().allElementsBoundByIndex { conceptARequireVisible(cell, "Genuine loaded vault media") }
+        XCTAssertTrue(button("vault_still_in_photos_action").waitForNonExistence(timeout: 20), "Never crop away the original-still-in-Photos warning")
+        XCTAssertFalse(app.alerts.firstMatch.exists)
+        snap("concept-a-vault")
+        tap(button("vault_close"))
+        launch("concept-a-vault")
+        XCTAssertTrue(app.vaultKeypad.waitForExistence(timeout: 20))
+        conceptARequireVisible(e("vault.pin.dots"), "Real native own-code lock screen")
+        for digit in 0...9 { conceptARequireVisible(e("vault.key.\(digit)"), "Complete native keypad") }
+        XCTAssertFalse(vaultItems().firstMatch.exists)
+        snap("concept-a-vault-locked")
+        tap(button("vault_close"))
+    }
+
+    private func conceptAV4AdvanceVaultIntro() throws -> XCUIElementQuery {
+        // Real UI only. C2 returned from a delivered Next tap before two fields existed.
+        // Never change the production wizard, legacy test07 or its helpers to hide that failure.
+        let intro = app.staticTexts[t("vault_intro_title")].firstMatch
+        let fields = app.secureTextFields
+        try conceptAV4Require(intro.waitForExistence(timeout: 20) && fields.count == 0,
+                             "A fresh real Vault introduction, not a reused configured vault, is required")
+        var attempts: [[String: Any]] = []
+        var proof: [String: Any] = ["schema": 1, "kind": "concept-a-v4-vault-ui-readiness", "status": "IN_PROGRESS",
+                                    "source": "actual native Next taps and observed secure-field existence; no setup state injection",
+                                    "attempts": attempts]
+        try conceptAV4Write(proof, to: "concept-a-v4-vault-ui-readiness.json")
+        for attempt in 0..<2 {
+            let next = button("onb_next")
+            try conceptAV4Require(intro.exists && fields.count == 0 && conceptAFullyVisible(next)
+                                 && next.isEnabled && next.isHittable,
+                                 "Retry Next only on the actual unchanged introduction, never on a partially opened code page")
+            let before = try conceptAV4Still("concept-a-v4-vault-next-\(attempt + 1)-before", directory: "stills")
+            let action = try conceptAV4Tap(next)
+            let ready = fields.element(boundBy: 1).waitForExistence(timeout: 15)
+                && fields.element(boundBy: 0).exists && fields.count == 2
+            let after = try conceptAV4Still("concept-a-v4-vault-next-\(attempt + 1)-after", directory: "stills")
+            attempts.append(["attempt": attempt + 1, "action": action, "beforeScreenshot": before,
+                             "afterScreenshot": after, "actualSecureFieldCount": fields.count,
+                             "bothFieldsExist": ready, "introStillExists": intro.exists])
+            proof["attempts"] = attempts
+            proof["status"] = ready ? "PASS" : "IN_PROGRESS"
+            try conceptAV4Write(proof, to: "concept-a-v4-vault-ui-readiness.json")
+            if ready { return fields } // No field value or recovery key is captured in this receipt.
+        }
+        proof["status"] = "FAIL"
+        try conceptAV4Write(proof, to: "concept-a-v4-vault-ui-readiness.json")
+        throw NSError(domain: "GaleriQConceptAV4", code: 3,
+                      userInfo: [NSLocalizedDescriptionKey: "Two real vault code fields did not appear after bounded observed-intro Next taps"])
     }
 
     private func conceptAV4Require(_ condition: Bool, _ message: String) throws {
