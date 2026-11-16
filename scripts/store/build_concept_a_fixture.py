@@ -48,7 +48,7 @@ def main() -> None:
     visual_allowlist = json.loads(visual_allowlist_path.read_text(encoding='utf-8'))
     approved = {row['source']: row['sha256'] for row in visual_allowlist['approved'] if row['verdict'] == 'PASS'}
     assert visual_allowlist['status'] == 'PASS_SELECTED_SUBSET_ONLY'
-    assert len(approved) == visual_allowlist['approved_count'] == 16
+    assert len(approved) == visual_allowlist['approved_count'] == 15
     inventory: list[dict] = []
 
     def add(name: str, number: int, category: str, transform=None, details: str = 'Unchanged source bytes') -> Path:
@@ -95,17 +95,19 @@ def main() -> None:
             f'Fixture derivative: crop inset {index * 5}px; exposure factor {0.98 + index * 0.008:.3f}; no upscale')
     # Only individually reviewed original hashes. The deliberate duplicate source
     # is excluded here so that the real scanner finds exactly the intended pair.
-    pretty_sources = [5, 10, 1, 4, 6, 7, 9, 13, 17, 28, 29, 31, 33, 35, 36]
-    assert len(pretty_sources) == len(set(pretty_sources)) == 15
+    pretty_sources = [5, 10, 1, 4, 6, 7, 9, 13, 28, 29, 31, 33, 35, 36]
+    assert len(pretty_sources) == len(set(pretty_sources)) == 14
     for index, number in enumerate(pretty_sources, 1):
         add(f'CA_30_pretty_{index:02d}.jpg', number, 'pretty')
-    # Nine distinct edited copies from the same approved nature originals complete
+    # Ten distinct edited copies from the same approved nature originals complete
     # the two-per-month library. These are declared fixture photos, not invented UI.
-    for offset, number in enumerate([5, 10, 1, 4, 6, 7, 13, 17, 35]):
+    # Keep hero23 a sharp flower and next24 a mountain reflection, not the
+    # unresolved original17. Both are derived before import, never UI retouches.
+    for offset, number in enumerate([5, 10, 1, 4, 6, 7, 13, 35, 5, 7]):
         inset, exposure = 48 + offset * 7, 1.04 + offset * 0.005
         def pretty_variation(image, inset=inset, exposure=exposure):
             return ImageEnhance.Brightness(image.crop((inset, inset, image.width - inset, image.height - inset))).enhance(exposure)
-        add(f'CA_30_pretty_{16 + offset:02d}.jpg', number, 'pretty-derivative', pretty_variation,
+        add(f'CA_30_pretty_{15 + offset:02d}.jpg', number, 'pretty-derivative', pretty_variation,
             f'CC0 fixture derivative: crop inset {inset}px; exposure factor {exposure:.3f}; no upscale')
     by_hash: dict[str, list[str]] = {}
     for row in inventory:
