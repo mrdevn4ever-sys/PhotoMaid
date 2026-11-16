@@ -1526,10 +1526,19 @@ final class AppStoreCaptureTests: XCTestCase {
         try conceptAV4Require((asset["pixelWidth"] as? Int ?? 0) > 0 && (asset["pixelHeight"] as? Int ?? 0) > 0,
                              "Retain actual source dimensions from the initial inventory")
         let before = try conceptAV4Wait("v4-stage-before-keep-\(index)") { state in
-            let readyMedia = asset["isVideo"] as? Bool == true
-                ? self.e("feed.video.ready").exists || self.e("feed.video.poster").exists : self.e("feed.media").exists
+            // C3 displayed the actual photo but SwiftUI omitted feed.media from AX.
+            // Require its real assigned poster AND session readiness, not that child ID.
+            guard let media = state["feedV4"] as? [String: Any], media["assetID"] as? String == id,
+                  (media["isVideo"] as? Bool) == (asset["isVideo"] as? Bool),
+                  media["loadState"] as? String == "ready", media["isLoaded"] as? Bool == true,
+                  media["isCommitting"] as? Bool == false, media["previewState"] as? String == "ready",
+                  media["sessionPreviewReady"] as? Bool == true, media["posterAssigned"] as? Bool == true,
+                  (media["posterPixelWidth"] as? Int ?? 0) > 0, (media["posterPixelHeight"] as? Int ?? 0) > 0,
+                  (media["posterProviderByteCount"] as? Int ?? 0) > 0,
+                  let pixels = media["posterPixelDataSHA256"] as? String,
+                  pixels.range(of: "^[0-9a-f]{64}$", options: .regularExpression) != nil else { return false }
             return self.e("feed.stage").exists && self.e("feed.stage").value as? String == metadata
-                && !self.e("feed.preview.loading").exists && !self.e("feed.preview.failed").exists && readyMedia
+                && !self.e("feed.preview.loading").exists && !self.e("feed.preview.failed").exists
                 && (state["inventory"] as? [[String: Any]] ?? []).contains { $0["id"] as? String == id }
         }
         let oldRows = try XCTUnwrap(before["decisions"] as? [[String: Any]])
@@ -1554,6 +1563,7 @@ final class AppStoreCaptureTests: XCTestCase {
         return ["action": "feed.stage.swipeUp", "filename": filename, "assetID": id, "asset": asset,
                 "stageAX": stageAX, "identityMatchCount": matches.count, "identityMethod": "unique actual AX date/type/duration in complete PhotoKit inventory; dimensions from matched initial asset",
                 "started": started, "finished": finished, "before": before, "after": after,
+                "feedObservation": try XCTUnwrap(before["feedV4"] as? [String: Any]),
                 "beforeScreenshot": beforeScreen, "afterScreenshot": afterScreen]
     }
 

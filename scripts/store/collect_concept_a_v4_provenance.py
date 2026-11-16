@@ -511,6 +511,33 @@ def audit_month_geometry(geometry, rows):
     return screen
 
 
+def validate_feed_observation(state, asset):
+    """C4 actual assigned poster/session readback, not a fragile SwiftUI child ID."""
+    observation = state.get('feedV4')
+    need(type(observation) is dict and observation.get('assetID') == asset.get('id')
+         and type(observation.get('isVideo')) is bool and observation['isVideo'] is asset.get('isVideo'),
+         'Feed readiness must bind the exact actual PhotoKit asset and media type')
+    need(observation.get('loadState') == 'ready' and observation.get('previewState') == 'ready',
+         'Actual current feed preview/session must be ready')
+    for key in ('isLoaded', 'sessionPreviewReady', 'posterAssigned'):
+        need(observation.get(key) is True, 'Actual assigned feed poster/session required: ' + key)
+    need(observation.get('isCommitting') is False, 'Feed must not still be committing a previous card')
+    for key in ('posterPixelWidth', 'posterPixelHeight', 'posterProviderByteCount'):
+        need(type(observation.get(key)) is int and observation[key] > 0, 'Real assigned poster dimensions/bytes required: ' + key)
+    hash_literal(observation.get('posterPixelDataSHA256'), 'feed.posterPixelDataSHA256')
+    need(observation.get('source') == 'FeedViewModel.posters[current] supplied as FeedMediaPage.cachedPoster'
+         and observation.get('pixelHashFormat') == 'SHA256 of assigned poster CGImage data-provider bytes; row padding included',
+         'Feed receipt must describe the actual assigned poster, not invented screenshot-pixel identity')
+    return observation
+
+
+def validate_feed_checkpoint_observation(action, state, asset):
+    observation = validate_feed_observation(state, asset)
+    receipt = validate_feed_observation({'feedV4': action.get('feedObservation')}, asset)
+    need(receipt == observation, 'Keep receipt must bind its exact actual successful feed publication readback')
+    return observation
+
+
 def audit_month_progress(root, screens, library):
     proof = builder.load_json(safe_file(root, 'month-progress-proof.json'))
     proof_header(proof, 'concept-a-v4-month-progress')
@@ -549,6 +576,7 @@ def audit_month_progress(root, screens, library):
         need(all(type(action.get(key)) in (int, float) and math.isfinite(action[key]) and action[key] > 0 for key in ('started', 'finished'))
              and action['started'] <= action['finished'], 'Native month swipe timing is absent/malformed')
         action_start = observed_snapshot(log, action.get('before'), minimum=last, label='Keep.before')
+        validate_feed_checkpoint_observation(action, action['before'], initial[asset_id])
         action_end = observed_snapshot(log, action.get('after'), minimum=action_start + 1, label='Keep.after')
         need(action_end <= finish, 'Native month Keep occurred outside its actual proof interval')
         previous = decision_map(action['before']).get(asset_id)

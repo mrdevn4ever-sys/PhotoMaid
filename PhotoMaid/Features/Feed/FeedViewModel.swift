@@ -3,6 +3,9 @@ import Observation
 import PhotoMaidCore
 import SwiftUI
 import UIKit
+#if QA_FIXTURES && targetEnvironment(simulator)
+import CryptoKit
+#endif
 
 enum PreviewState: Equatable, Sendable { case loading, ready, failed }
 enum FeedPreviewResult { case poster(UIImage), videoFrame, unavailable }
@@ -84,6 +87,54 @@ final class FeedViewModel {
     @ObservationIgnored private var pillTask: Task<Void, Never>?
     @ObservationIgnored private var noticeTask: Task<Void, Never>?
 
+#if QA_FIXTURES && targetEnvironment(simulator)
+    // Read-only C4 evidence. Register only a model whose real load completed:
+    // SwiftUI can construct and discard additional State initial values.
+    private static weak var storeCaptureV4Model: FeedViewModel?
+
+    private static var storeCaptureV4Enabled: Bool {
+        let arguments = ProcessInfo.processInfo.arguments
+        return arguments.contains("-store-capture") && arguments.contains("-store-concept-a")
+    }
+
+    /// Observe the actual ready session and its assigned poster, which FeedView
+    /// supplies to FeedMediaPage.cachedPoster. Never load, replace or mark media ready.
+    static var storeCaptureV4Observation: [String: Any] {
+        guard storeCaptureV4Enabled, let model = storeCaptureV4Model,
+              model.app.feed?.id == model.request.id else { return [:] }
+        guard model.isLoaded, let ref = model.current, let asset = model.currentAsset else {
+            return ["loadState": "notReady"]
+        }
+        let previewState: String
+        switch model.previews[ref] {
+        case .ready?: previewState = "ready"
+        case .loading?: previewState = "loading"
+        case .failed?: previewState = "failed"
+        case nil: previewState = "missing"
+        }
+        let poster = model.posters[ref]
+        let sessionReady = model.session.isPreviewReady(ref)
+        var result: [String: Any] = [
+            "assetID": ref.localIdentifier, "isVideo": asset.isVideo,
+            "isLoaded": model.isLoaded, "isCommitting": model.isCommitting,
+            "previewState": previewState, "sessionPreviewReady": sessionReady,
+            "posterAssigned": poster != nil,
+            "source": "FeedViewModel.posters[current] supplied as FeedMediaPage.cachedPoster",
+            "pixelHashFormat": "SHA256 of assigned poster CGImage data-provider bytes; row padding included",
+        ]
+        var readablePoster = false
+        if let cg = poster?.cgImage, cg.width > 0, cg.height > 0,
+           let data = cg.dataProvider?.data, CFDataGetLength(data) > 0 {
+            result["posterPixelWidth"] = cg.width
+            result["posterPixelHeight"] = cg.height
+            result["posterProviderByteCount"] = CFDataGetLength(data)
+            result["posterPixelDataSHA256"] = SHA256.hash(data: data as Data).map { String(format: "%02x", $0) }.joined()
+            readablePoster = true
+        }
+        result["loadState"] = previewState == "ready" && sessionReady && readablePoster && !model.isCommitting ? "ready" : "notReady"
+        return result
+    }
+#endif
     init(request: FeedRequest, app: AppModel) {
         self.request = request
         self.app = app
@@ -172,6 +223,11 @@ final class FeedViewModel {
         rebuildSeries()
         isLoaded = true
         refreshWindow()
+#if QA_FIXTURES && targetEnvironment(simulator)
+        if Self.storeCaptureV4Enabled, !Task.isCancelled, app.feed?.id == request.id {
+            Self.storeCaptureV4Model = self
+        }
+#endif
     }
 
     nonisolated static func matches(_ a: MediaAsset, _ c: MediaCategory) -> Bool {

@@ -592,6 +592,66 @@ class ProofGateTests(TempCase):
         self.assertEqual(test.count('try captureConceptAV4BaseScreenshots()'), 1)
         self.assertNotIn('try test07ConceptAStoreScreenshots()', test)
 
+    def test_feed_readiness_requires_actual_assigned_same_asset_poster_and_session(self):
+        # UNIT CONTRACT ONLY; no native capture or readiness PASS is fabricated.
+        asset = {'id': 'unit-asset', 'isVideo': False}
+        observation = {'assetID': asset['id'], 'isVideo': False, 'isLoaded': True, 'isCommitting': False,
+                       'previewState': 'ready', 'sessionPreviewReady': True, 'posterAssigned': True,
+                       'loadState': 'ready', 'posterPixelWidth': 384, 'posterPixelHeight': 288,
+                       'posterProviderByteCount': 384 * 288 * 4, 'posterPixelDataSHA256': 'a' * 64,
+                       'source': 'FeedViewModel.posters[current] supplied as FeedMediaPage.cachedPoster',
+                       'pixelHashFormat': 'SHA256 of assigned poster CGImage data-provider bytes; row padding included'}
+        self.assertEqual(collector.validate_feed_observation({'feedV4': observation}, asset), observation)
+        self.assertEqual(collector.validate_feed_checkpoint_observation(
+            {'feedObservation': copy.deepcopy(observation)}, {'feedV4': observation}, asset), observation)
+        video = {**observation, 'isVideo': True}
+        self.assertEqual(collector.validate_feed_observation({'feedV4': video}, {**asset, 'isVideo': True}), video)
+        for key, value in (('assetID', 'other'), ('isVideo', True), ('isVideo', 0), ('isLoaded', False),
+                           ('isLoaded', 1), ('isCommitting', True), ('isCommitting', 0), ('previewState', 'loading'),
+                           ('loadState', 'notReady'), ('sessionPreviewReady', False), ('posterAssigned', False),
+                           ('posterPixelWidth', True), ('posterPixelHeight', 0), ('posterProviderByteCount', -1),
+                           ('posterPixelDataSHA256', 'ABC'), ('source', 'guessed pixels'), ('pixelHashFormat', 'screenshot')):
+            with self.subTest(key=key, value=value):
+                bad = {**observation, key: value}
+                with self.assertRaises(ValueError):
+                    collector.validate_feed_observation({'feedV4': bad}, asset)
+                with self.assertRaises(ValueError):
+                    collector.validate_feed_checkpoint_observation({'feedObservation': bad}, {'feedV4': observation}, asset)
+        changed = {**observation, 'posterPixelDataSHA256': 'b' * 64}
+        with self.assertRaisesRegex(ValueError, 'exact actual successful feed publication'):
+            collector.validate_feed_checkpoint_observation({'feedObservation': changed}, {'feedV4': observation}, asset)
+        for key in observation:
+            with self.subTest(missing=key):
+                bad = dict(observation); bad.pop(key)
+                with self.assertRaises(ValueError):
+                    collector.validate_feed_observation({'feedV4': bad}, asset)
+
+    def test_feed_observer_is_qa_only_registered_after_real_load_and_never_sets_ready(self):
+        source = (builder.REPO_ROOT / 'PhotoMaid/Features/Feed/FeedViewModel.swift').read_text(encoding='utf-8')
+        start = source.index('    // Read-only C4 evidence.')
+        end = source.index('#endif', start)
+        observer = source[start:end]
+        self.assertIn('private static weak var storeCaptureV4Model: FeedViewModel?', observer)
+        self.assertIn('model.app.feed?.id == model.request.id else { return [:] }', observer)
+        self.assertIn('model.session.isPreviewReady(ref)', observer)
+        self.assertIn('let poster = model.posters[ref]', observer)
+        self.assertIn('SHA256.hash(data: data as Data)', observer)
+        for forbidden in ('markPreviewReady(', 'previewResult(', 'PHAssetChangeRequest', 'model.posters[ref] =', 'model.previews[ref] ='):
+            self.assertNotIn(forbidden, observer)
+        init = source[source.index('    init(request: FeedRequest, app: AppModel) {'):source.index('    #if DEBUG')]
+        self.assertNotIn('storeCaptureV4Model', init)
+        load = source[source.index('    func load() async {'):source.index('    nonisolated static func matches(')]
+        self.assertIn('if Self.storeCaptureV4Enabled, !Task.isCancelled, app.feed?.id == request.id {', load)
+        self.assertLess(load.index('isLoaded = true'), load.index('Self.storeCaptureV4Model = self'))
+        self.assertEqual(source.count('Self.storeCaptureV4Model = self'), 1)
+        test = (builder.REPO_ROOT / 'PhotoMaidUITests/AppStoreCaptureTests.swift').read_text(encoding='utf-8')
+        keep = test[test.index('    private func conceptAV4Keep('):test.index('    private func conceptAV4MonthGeometry(')]
+        self.assertNotIn('self.e("feed.media").exists', keep)
+        for required in ('state["feedV4"]', 'media["assetID"]', 'media["sessionPreviewReady"]', 'media["posterPixelDataSHA256"]',
+                         'self.e("feed.stage").value as? String == metadata', '!self.e("feed.preview.loading").exists',
+                         '!self.e("feed.preview.failed").exists', 'e("feed.stage").swipeUp()', '"feedObservation"'):
+            self.assertIn(required, keep)
+
     def test_requested_recipe_is_not_published_pixel_evidence(self):
         control = editor_metadata_control()
         self.assertEqual(collector.validate_editor_observation({'editorV4': control}, control['assetID']), control)
