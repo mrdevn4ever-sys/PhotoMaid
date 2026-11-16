@@ -715,6 +715,38 @@ def editor_checkpoint(root, row, name, screens, log, asset_id, asset, screen_fra
     return observation, index, crop, hashlib.sha256(actual_crop).hexdigest(), bindings
 
 
+def validate_editor_pair_publications(observations):
+    """Validate actual published neutral/Warm restoration; raw identity stays separate."""
+    need(type(observations) is dict and set(observations) == {'before', 'filterSelection', 'after', 'undo', 'redo'},
+         'Exactly the five actual editor publication checkpoints are required')
+    original, warm, undo, redo = (observations[label] for label in ('before', 'after', 'undo', 'redo'))
+    asset_id = original.get('assetID')
+    need(type(asset_id) is str and bool(asset_id), 'Actual editor asset identity required')
+    for observation in observations.values():
+        validate_editor_observation({'editorV4': observation}, asset_id)
+        need(observation.get('publicationOrigin') == 'renderAssignment' and observation['publishedRenderGeneration'] > 0,
+             'Every comparison checkpoint must bind a successful current real render assignment, not the transient raw original')
+    need(all(observation['sourceOriginalPixelSHA256'] == original['sourceOriginalPixelSHA256']
+             and (observation['sourceOriginalPixelWidth'], observation['sourceOriginalPixelHeight'])
+             == (original['sourceOriginalPixelWidth'], original['sourceOriginalPixelHeight']) for observation in observations.values()), 'Every editor state must retain the same actually assigned original pixel buffer')
+    for observation in (original, undo):
+        need(observation.get('publishedFilter') == 'original' and observation.get('publishedIsIdentity') is True,
+             'Before/Undo must publish the actual neutral Original recipe; raw-decoder equality is not a render contract')
+    for observation in (warm, redo, observations['filterSelection']):
+        strength = observation.get('publishedFilterStrength')
+        need(observation.get('publishedFilter') == 'warm' and observation.get('publishedIsIdentity') is False
+             and type(strength) in (int, float) and strength == 1 and observation.get('publicationOrigin') == 'renderAssignment', 'Warm must be a real successful nonidentity publication at the observed default strength 100')
+    need(original['publishedPreviewPixelSHA256'] == undo['publishedPreviewPixelSHA256']
+         and original['publishedRecipeHash'] == undo['publishedRecipeHash']
+         and warm['publishedPreviewPixelSHA256'] == redo['publishedPreviewPixelSHA256'] == observations['filterSelection']['publishedPreviewPixelSHA256']
+         and warm['publishedRecipeHash'] == redo['publishedRecipeHash'] == observations['filterSelection']['publishedRecipeHash']
+         and warm['publishedPreviewPixelSHA256'] != original['publishedPreviewPixelSHA256']
+         and warm['publishedRecipeHash'] != original['publishedRecipeHash'], 'Actual Undo/Redo must restore the original/Warm pixel and recipe hashes')
+    generations = [observations[label]['publishedRenderGeneration'] for label in ('before', 'after', 'undo', 'redo')]
+    need(all(a < b for a, b in zip(generations, generations[1:])), 'Successful preview publications must advance real generations across Warm/Undo/Redo')
+    return original, warm, undo, redo
+
+
 def audit_editor_pair(root, screens, library):
     proof = builder.load_json(safe_file(root, 'editor-pair-proof.json'))
     proof_header(proof, 'concept-a-v4-editor-pair')
@@ -742,25 +774,7 @@ def audit_editor_pair(root, screens, library):
         bindings.update(sources)
     order = [baseline_index] + [indices[key] for key in names] + [final_index]
     need(all(a < b for a, b in zip(order, order[1:])), 'Actual editor publications/capture readbacks must be in real Original/Warm/Undo/Redo order')
-    original, warm, undo, redo = (observations[label] for label in ('before', 'after', 'undo', 'redo'))
-    need(all(observation['sourceOriginalPixelSHA256'] == original['sourceOriginalPixelSHA256']
-             and (observation['sourceOriginalPixelWidth'], observation['sourceOriginalPixelHeight'])
-             == (original['sourceOriginalPixelWidth'], original['sourceOriginalPixelHeight']) for observation in observations.values()), 'Every editor state must retain the same actually assigned original pixel buffer')
-    for observation in (original, undo):
-        need(observation.get('publishedFilter') == 'original' and observation.get('publishedIsIdentity') is True
-             and observation['publishedPreviewPixelSHA256'] == observation['sourceOriginalPixelSHA256'], 'Before/Undo must publish the true unedited Original pixel buffer, not a requested recipe')
-    for observation in (warm, redo, observations['filterSelection']):
-        strength = observation.get('publishedFilterStrength')
-        need(observation.get('publishedFilter') == 'warm' and observation.get('publishedIsIdentity') is False
-             and type(strength) in (int, float) and strength == 1 and observation.get('publicationOrigin') == 'renderAssignment', 'Warm must be a real successful nonidentity publication at the observed default strength 100')
-    need(original['publishedPreviewPixelSHA256'] == undo['publishedPreviewPixelSHA256']
-         and original['publishedRecipeHash'] == undo['publishedRecipeHash']
-         and warm['publishedPreviewPixelSHA256'] == redo['publishedPreviewPixelSHA256'] == observations['filterSelection']['publishedPreviewPixelSHA256']
-         and warm['publishedRecipeHash'] == redo['publishedRecipeHash'] == observations['filterSelection']['publishedRecipeHash']
-         and warm['publishedPreviewPixelSHA256'] != original['publishedPreviewPixelSHA256']
-         and warm['publishedRecipeHash'] != original['publishedRecipeHash'], 'Actual Undo/Redo must restore the original/Warm pixel and recipe hashes')
-    generations = [observations[label]['publishedRenderGeneration'] for label in ('before', 'after', 'undo', 'redo')]
-    need(all(a < b for a, b in zip(generations, generations[1:])), 'Successful preview publications must advance real generations across Warm/Undo/Redo')
+    original, warm, undo, redo = validate_editor_pair_publications(observations)
     need(all(crops[key] == crops['before'] for key in ('after', 'undo', 'redo'))
          and checkpoints['before']['stageAX'] == checkpoints['after']['stageAX']
          and crop_hashes['before'] == crop_hashes['undo'] and crop_hashes['after'] == crop_hashes['redo']

@@ -1704,19 +1704,23 @@ final class AppStoreCaptureTests: XCTestCase {
                                       recipeHash: String? = nil, pixelHash: String? = nil) throws -> [String: Any] {
         let state = try conceptAV4Wait(checkpoint) { state in
             guard let editor = state["editorV4"] as? [String: Any], editor["assetID"] as? String == assetID,
-                  editor["loadState"] as? String == "ready", editor["originalReady"] as? Bool == true,
-                  editor["previewReady"] as? Bool == true, editor["rendering"] as? Bool == false,
+                  editor["loadState"] as? String == "ready", editor["modelLoadState"] as? String == "ready",
+                  editor["originalReady"] as? Bool == true, editor["previewReady"] as? Bool == true,
+                  editor["previewAssigned"] as? Bool == true, editor["publicationMatchesRequest"] as? Bool == true,
+                  editor["publicationOrigin"] as? String == "renderAssignment",
+                  editor["rendering"] as? Bool == false, editor["previewRendering"] as? Bool == false,
+                  editor["dirty"] as? Bool == false, editor["comparing"] as? Bool == false,
+                  let errors = editor["errors"] as? [String], errors.isEmpty,
                   let requested = editor["requestedRecipeHash"] as? String,
                   let published = editor["publishedRecipeHash"] as? String, requested == published,
-                  let generation = editor["renderGeneration"] as? Int, generation >= 0,
+                  let generation = editor["renderGeneration"] as? Int, generation > 0,
                   editor["publishedRenderGeneration"] as? Int == generation,
                   editor["publishedIsIdentity"] as? Bool == identity, editor["publishedFilter"] as? String == filter,
                   let original = editor["sourceOriginalPixelSHA256"] as? String,
                   let preview = editor["publishedPreviewPixelSHA256"] as? String else { return false }
             let hashes = [requested, published, original, preview]
             guard hashes.allSatisfy({ $0.range(of: "^[0-9a-f]{64}$", options: .regularExpression) != nil }),
-                  !identity || original == preview,
-                  identity || (editor["publishedFilterStrength"] as? Double == 1 && original != preview),
+                  identity || editor["publishedFilterStrength"] as? Double == 1,
                   recipeHash == nil || published == recipeHash, pixelHash == nil || preview == pixelHash else { return false }
             return self.e("editor.stage").exists && !self.e("editor.preview.rendering").exists
         }
@@ -1802,8 +1806,8 @@ final class AppStoreCaptureTests: XCTestCase {
         let before = try conceptAV4EditorReady("v4-editor-original-adjust", assetID: id, identity: true, filter: "original")
         let selection = try XCTUnwrap(try conceptAObserve("v4-editor-same-original")["selection"] as? [String: Any])
         try conceptAV4Require(selection["assetIDs"] as? [String] == [id] && selection["sourceFiles"] as? [String] == ["CA_30_pretty_08.jpg"], "Native editor route must select exactly the inventoried original")
-        // The real default tool is Crop. Switching to Adjust legitimately republishes an
-        // identical identity image, so compare actual recipe/pixels and allow that real generation.
+        // The loaded editor already selects Adjust. Bind the actual published neutral
+        // render as Before; its pixels need not equal the separately retained raw original.
         let originalStable = ["assetID", "requestedRecipeHash", "publishedRecipeHash", "publishedIsIdentity",
                               "sourceOriginalPixelSHA256", "publishedPreviewPixelSHA256"]
         for key in originalStable {
@@ -1832,6 +1836,7 @@ final class AppStoreCaptureTests: XCTestCase {
         try conceptAV4Require(try conceptAV4JSON(filtered) == conceptAV4JSON(after), "Return to matched Adjust layout without changing the applied recipe")
         try conceptAV4Require(after["sourceOriginalPixelSHA256"] as? String == before["sourceOriginalPixelSHA256"] as? String
                              && after["publishedRecipeHash"] as? String != before["publishedRecipeHash"] as? String
+                             && after["publishedPreviewPixelSHA256"] as? String != before["publishedPreviewPixelSHA256"] as? String
                              && (after["renderGeneration"] as? Int ?? -1) > (before["renderGeneration"] as? Int ?? -1), "Warm must publish a genuinely new render of the same original")
         try conceptAV4Require(e("editor.undo").isEnabled && !e("editor.redo").isEnabled, "The genuine Warm edit must enable Undo only")
         let afterScreen = try conceptAV4EditorShot("concept-a-v4-editor-after", asset: asset, editor: after, tool: "adjust")

@@ -131,6 +131,21 @@ def editor_metadata_control():
             'pixelHashFormat': 'SHA256 of assigned RGBA8 CGImage packed pixel rows; stride padding excluded'}
 
 
+def editor_pair_publication_control():
+    """UNIT CONTRACT ONLY: distinct raw/neutral pixel strings, not native evidence."""
+    observations = {}
+    for label, generation in (('before', 3), ('filterSelection', 4), ('after', 4), ('undo', 5), ('redo', 6)):
+        neutral = label in ('before', 'undo')
+        row = editor_metadata_control()
+        row.update(publishedFilter='original' if neutral else 'warm', publishedIsIdentity=neutral,
+                   publishedPreviewPixelSHA256=('b' if neutral else 'd') * 64,
+                   requestedRecipeHash=('c' if neutral else 'e') * 64,
+                   publishedRecipeHash=('c' if neutral else 'e') * 64,
+                   renderGeneration=generation, publishedRenderGeneration=generation)
+        observations[label] = row
+    return observations
+
+
 class TempCase(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix='galeriq-v4-unit-', dir=tempfile.gettempdir())
@@ -664,6 +679,87 @@ class ProofGateTests(TempCase):
                 data[key] = value
                 with self.assertRaises(ValueError):
                     collector.validate_editor_observation({'editorV4': data}, control['assetID'])
+
+    def test_neutral_render_baseline_keeps_raw_original_separate(self):
+        data = editor_pair_publication_control()
+        before = data['before']
+        self.assertNotEqual(before['sourceOriginalPixelSHA256'], before['publishedPreviewPixelSHA256'])
+        result = collector.validate_editor_pair_publications(data)
+        self.assertEqual(result, tuple(data[key] for key in ('before', 'after', 'undo', 'redo')))
+        # An actual neutral graph MAY be byte-equal to raw, but this is not required.
+        for row in data.values():
+            row['sourceOriginalPixelSHA256'] = before['publishedPreviewPixelSHA256']
+        collector.validate_editor_pair_publications(data)
+
+    def test_neutral_pair_rejects_transient_raw_assignment_and_zero_generation(self):
+        for label in ('before', 'undo'):
+            for kind in ('originalAssignment', 'zero-generation'):
+                data = editor_pair_publication_control()
+                if kind == 'originalAssignment':
+                    data[label]['publicationOrigin'] = 'originalAssignment'
+                else:
+                    data[label]['renderGeneration'] = data[label]['publishedRenderGeneration'] = 0
+                with self.subTest(label=label, kind=kind), self.assertRaises(ValueError):
+                    collector.validate_editor_pair_publications(data)
+
+    def test_editor_pair_rejects_changed_raw_source_asset_or_dimensions(self):
+        for key, value in (('sourceOriginalPixelSHA256', 'f' * 64), ('sourceOriginalPixelWidth', 385),
+                           ('sourceOriginalPixelHeight', 289), ('assetID', 'other-unit-asset')):
+            for label in ('filterSelection', 'after', 'undo', 'redo'):
+                data = editor_pair_publication_control()
+                data[label][key] = value
+                with self.subTest(key=key, label=label), self.assertRaises(ValueError):
+                    collector.validate_editor_pair_publications(data)
+
+    def test_editor_pair_requires_exact_neutral_and_warm_undo_redo_restoration(self):
+        for label in ('undo', 'redo', 'filterSelection'):
+            for kind in ('pixel', 'recipe'):
+                data = editor_pair_publication_control()
+                if kind == 'pixel':
+                    # Undo must restore the rendered Before, not its raw source.
+                    data[label]['publishedPreviewPixelSHA256'] = data[label]['sourceOriginalPixelSHA256']
+                else:
+                    data[label]['requestedRecipeHash'] = data[label]['publishedRecipeHash'] = 'f' * 64
+                with self.subTest(label=label, kind=kind), self.assertRaises(ValueError):
+                    collector.validate_editor_pair_publications(data)
+        data = editor_pair_publication_control()
+        for label in ('filterSelection', 'after', 'redo'):
+            data[label]['publishedPreviewPixelSHA256'] = data['before']['publishedPreviewPixelSHA256']
+        with self.assertRaises(ValueError):
+            collector.validate_editor_pair_publications(data)
+
+    def test_editor_pair_rejects_stale_busy_or_wrong_neutral_publication(self):
+        for key, value in (('publishedRenderGeneration', 2), ('previewAssigned', False), ('rendering', True),
+                           ('errors', ['UNIT TEST ERROR']), ('publishedIsIdentity', False), ('publishedFilter', 'warm')):
+            data = editor_pair_publication_control()
+            data['before'][key] = value
+            with self.subTest(key=key), self.assertRaises(ValueError):
+                collector.validate_editor_pair_publications(data)
+        data = editor_pair_publication_control()
+        data['undo']['renderGeneration'] = data['undo']['publishedRenderGeneration'] = data['after']['renderGeneration']
+        with self.assertRaises(ValueError):
+            collector.validate_editor_pair_publications(data)
+
+    def test_native_editor_wait_binds_real_neutral_render_not_raw_hash_equality(self):
+        source = (builder.REPO_ROOT / 'PhotoMaidUITests/AppStoreCaptureTests.swift').read_text(encoding='utf-8')
+        start = source.index('    private func conceptAV4EditorReady(')
+        end = source.index('    /// Canonical actual screenshot pixel buffer', start)
+        ready = source[start:end]
+        self.assertNotIn('original == preview', ready)
+        self.assertNotIn('original != preview', ready)
+        for required in ('editor["publicationOrigin"] as? String == "renderAssignment"',
+                         'editor["previewAssigned"] as? Bool == true', 'editor["publicationMatchesRequest"] as? Bool == true',
+                         'editor["modelLoadState"] as? String == "ready"', 'errors.isEmpty', 'generation > 0',
+                         'requested == published', 'editor["publishedRenderGeneration"] as? Int == generation',
+                         'editor["publishedIsIdentity"] as? Bool == identity', 'pixelHash == nil || preview == pixelHash'):
+            self.assertIn(required, ready)
+        capture = source[source.index('    private func captureConceptAV4Editor('):source.index('    private func conceptASystemDeleteAlert(')]
+        self.assertIn('conceptAV4JSON(filtered) == conceptAV4JSON(after)', capture)
+        self.assertIn('after["publishedPreviewPixelSHA256"] as? String != before["publishedPreviewPixelSHA256"] as? String', capture)
+        self.assertIn('pixelHash: before["publishedPreviewPixelSHA256"] as? String', capture)
+        self.assertIn('pixelHash: after["publishedPreviewPixelSHA256"] as? String', capture)
+        self.assertIn('undoScreen["photoPixelSHA256"] as? String == beforeScreen["photoPixelSHA256"] as? String', capture)
+        self.assertIn('redoScreen["photoPixelSHA256"] as? String == afterScreen["photoPixelSHA256"] as? String', capture)
 
     def test_native_editor_core_projection_and_rich_readback_are_separate(self):
         rich = editor_metadata_control()
