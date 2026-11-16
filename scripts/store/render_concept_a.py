@@ -27,26 +27,33 @@ DEFAULT_DESIGN = ROOT / "app-store/concepts/A/design.json"
 SIZE = (1206, 2622)
 RESAMPLE = Image.Resampling.LANCZOS
 COPY = (
-    ("Swipe the clutter. Keep the memories.", None, "swipe"),
-    ("Find duplicates. Spot large files.", None, "large-files"),
-    ("Nothing deletes without you.", None, "delete-confirm"),
+    ("Swipe the clutter. Keep the memories.", "Keep, trash or decide later.", "swipe"),
+    ("Spot large files. Find duplicates.", "Find extra copies and space-hungry files.", "large-files"),
+    ("Nothing deletes without you.", "Review first. You make the final call.", "delete-confirm"),
     ("Private photos. Locked away.", "Encrypted vault, protected by your own code and Face ID.", "vault"),
-    ("Unsure? Choose later.", None, "later"),
-    ("One month. A fresh start.", None, "months"),
-    ("Blurry or similar? Take a closer look.", None, "analysis"),
-    ("Make a collage. Keep the moment.", None, "collage"),
-    ("A new look. Your own photo.", None, "editor"),
+    ("Unsure? Choose later.", "Swipe right. Come back to it later.", "later"),
+    ("One month. A fresh start.", "Sort your library, one month at a time.", "months"),
+    ("Blurry or similar? Take a closer look.", "Compare your shots. Choose what stays.", "analysis"),
+    ("Make a collage. Keep the moment.", "Bring your favorite moments together.", "collage"),
+    ("A new look. Your own photo.", "Add a new look to a photo you love.", "editor"),
     ("A small break. Your photos play.", "Free with ads. GaleriQ Pro: one purchase, no subscription.", "games"),
 )
 WORDMARK = "branding/native-wordmark.png"
 CAPTURES = {f"screenshots/concept-a-{s}.png" for s in
             ("swipe", "duplicates", "large-files", "trash", "delete-confirm", "vault",
-             "vault-locked", "later", "months", "analysis", "collage", "editor", "games")}
+             "vault-locked", "later", "later-swipe", "months", "analysis", "collage", "editor", "games")}
 SHA = re.compile(r"[0-9a-f]{64}\Z")
 COMMIT = re.compile(r"[0-9a-f]{40}\Z")
 RUN = re.compile(r"[1-9][0-9]*\Z")
 BASE_COMMIT = "583eb804a81401aa2010996875b35d05afc61539"
-RUN_URL = re.compile(r"https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+/actions/runs/([1-9][0-9]*)(?:/attempts/[1-9][0-9]*)?\Z")
+RUN_URL = re.compile(r"https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+/actions/runs/([1-9][0-9]*)(?:/attempts/([1-9][0-9]*))?\Z")
+V2_SCREEN = (201, 760, 1005, 2508)  # Actual v2 export, not an assumed device size.
+INSETS = {2: ("duplicate-results", "duplicates", {"duplicate-pair", "selection-labels"}),
+          3: ("system-dialog", "delete-confirm", {"system-dialog"}),
+          7: ("series-decision", "analysis", {"series", "keep5-trash1"})}
+V3_REVIEW = {"stockOnlyEveryMediaTile", "sharpRecognizableFirstPhoto", "opaqueSystemDialogNoUnderlyingHome",
+             "noLoadingSpinner", "heldRightwardLater", "filledNativePairsBoard", "nativeKeep5Trash1", "completeDuplicatePair"}
+V3_SCENE_POLICY = "sharp-stock-hero-opaque-confirmation-filled-photo-game"
 
 
 class GateError(ValueError):
@@ -91,6 +98,14 @@ def integer(value: Any, label: str, minimum: int = 0) -> int:
     return value
 
 
+def canonical_run_attempt(value: Any, label: str) -> int:
+    # GITHUB_RUN_ATTEMPT is a string; API readbacks use integers. No coercive repair.
+    need((type(value) is int and value > 0) or
+         (type(value) is str and RUN.fullmatch(value) is not None),
+         f"{label}: canonical positive run attempt required (integer or numeric string)")
+    return int(value)
+
+
 def rect(value: Any, label: str, bounds: tuple[int, int] = SIZE) -> tuple[int, int, int, int]:
     need(isinstance(value, (list, tuple)) and len(value) == 4, f"{label}: explicit [left,top,right,bottom] required")
     need(all(type(x) is int for x in value), f"{label}: only integer source/output pixels are allowed")
@@ -126,6 +141,54 @@ def contained_geometry(source_size: tuple[int, int], target: tuple | list) -> tu
     return (x, y, x + w, y + h), scale
 
 
+def viewport_geometry(box: tuple | list, crop: tuple | list) -> dict:
+    """Full resample target is never confused with its canvas intersection."""
+    visible = (max(0, box[0]), max(0, box[1]), min(SIZE[0], box[2]), min(SIZE[1], box[3]))
+    need(visible[0] < visible[2] and visible[1] < visible[3], "Native layer misses the viewport")
+    local = (visible[0] - box[0], visible[1] - box[1], visible[2] - box[0], visible[3] - box[1])
+    return {"visibleGeometry": list(visible), "visibleLocalRect": list(local),
+            "visibleSourceBounds": [crop[0] + local[0] * wh(crop)[0] / wh(box)[0],
+                                    crop[1] + local[1] * wh(crop)[1] / wh(box)[1],
+                                    crop[0] + local[2] * wh(crop)[0] / wh(box)[0],
+                                    crop[1] + local[3] * wh(crop)[1] / wh(box)[1]],
+            "viewportClipPixels": {"left": local[0], "top": local[1],
+                                   "right": wh(box)[0] - local[2], "bottom": wh(box)[1] - local[3]}}
+
+
+def inset_geometry(crop: tuple | list, inset: dict) -> tuple[tuple[int, int, int, int], float]:
+    target, scale = contained_geometry(wh(crop), inset["targetBox"])
+    if inset["verticalAnchor"] == "bottom":
+        target = (target[0], inset["targetBox"][3] - wh(target)[1], target[2], inset["targetBox"][3])
+    return target, scale
+
+
+def viewport_mask(box: tuple | list) -> Image.Image:
+    geometry = viewport_geometry(box, (0, 0, *wh(box)))
+    mask = Image.new("L", wh(box), 0)
+    local = geometry["visibleLocalRect"]
+    mask.paste(255, local)
+    return mask
+
+
+def phone_geometry(design: dict) -> dict:
+    device = design["layout"]["device"]
+    screen = device["screenBox"]
+    need(isinstance(screen, list) and len(screen) == 4 and all(type(n) is int for n in screen), "Explicit full target screen box required")
+    w, h = wh(screen)
+    scale = w / SIZE[0]
+    need(0 < scale <= 1 and abs(h - SIZE[1] * scale) <= 0.5, "Phone must use known proportional resampling, <=0.5 px rounding, no upscale")
+    frame = expanded(screen, integer(device["frameWidth"], "frameWidth", 1))
+    need(70 <= frame[0] < frame[2] <= SIZE[0] - 70 and 70 <= frame[1] < SIZE[1] < screen[3],
+         "v3 requires visible top/left/right frame, with intentional bottom-only screen clipping")
+    ratios = [w / wh(V2_SCREEN)[0], h / wh(V2_SCREEN)[1]]
+    need(all(1.15 <= ratio <= 1.20 for ratio in ratios), "v3 phone must be 15-20% larger than the actual v2 export")
+    need(device.get("viewportClip") == "bottom-only" and device.get("v2ReferenceScreenBox") == list(V2_SCREEN), "Explicit v3 clipping and actual v2 reference required")
+    return {"fullTargetGeometry": list(screen), **viewport_geometry(screen, (0, 0, *SIZE)),
+            "fullFrameGeometry": list(frame), "visibleFrameGeometry": viewport_geometry(frame, (0, 0, *wh(frame)))["visibleGeometry"],
+            "nativeScale": scale, "sizeRelativeToV2XY": ratios,
+            "resampleRoundingXY": [0, h - SIZE[1] * scale], "clipping": "bottom-only", "completePhoneVisible": False}
+
+
 def safe_asset(root: Path, relative: str) -> Path:
     need(isinstance(relative, str) and "\\" not in relative, "Asset paths must use canonical relative forward slashes")
     rel = PurePosixPath(relative)
@@ -144,11 +207,13 @@ def provenance_schema() -> dict:
                                  "mode": {"enum": ["RGB", "RGBA"]}, "opaque": {"const": True}}}
     return {"$schema": "https://json-schema.org/draft/2020-12/schema", "title": "Parent Concept A capture_provenance.json v1",
             "type": "object", "required": ["schema_version", "status", "fresh_capture", "locale", "app_language", "base_commit", "commit",
-                                              "workflow_run", "workflow_url", "capture_summary", "device", "outputs", "branding"],
+                                              "workflow_run", "run_attempt", "workflow_url", "capture_summary", "device", "outputs", "branding"],
             "properties": {"schema_version": {"const": 1}, "status": {"const": "PASS"}, "fresh_capture": {"const": True},
                            "locale": {"const": "en-US"}, "app_language": {"const": "en"}, "base_commit": {"const": BASE_COMMIT},
                            "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
                            "workflow_run": {"type": "string", "pattern": "^[1-9][0-9]*$"},
+                           "run_attempt": {"anyOf": [{"type": "integer", "minimum": 1},
+                                                       {"type": "string", "pattern": "^[1-9][0-9]*$", "not": {"pattern": "[^0-9]"}}]},
                            "workflow_url": {"type": "string", "pattern": "^" + RUN_URL.pattern.replace("\\Z", "$")},
                            "capture_summary": {"type": "object", "required": ["result", "passedTests", "failedTests", "skippedTests"],
                                                "properties": {"result": {"const": "Passed"}, "passedTests": {"const": 1},
@@ -157,23 +222,28 @@ def provenance_schema() -> dict:
                            "outputs": {"type": "array", "minItems": 12, "items": screenshot},
                            "branding": {"type": "object", "required": ["file", "sha256"], "properties": {
                                "file": {"const": WORDMARK}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}}},
-            "$comment": "Runtime also enforces independent --expected-commit/--expected-workflow-run pins, URL/run consistency, every canonical required source, image/hash/metadata agreement and SHA-bound parent visual/crop QA in design.json. New capture commit is independent from base_commit; it is NOT forced to equal the base."}
+            "$comment": "Runtime also enforces independent --expected-commit/--expected-workflow-run/--expected-run-attempt pins, URL/run/attempt consistency, every canonical required source, image/hash/metadata agreement and SHA-bound parent visual/crop QA in design.json. New capture commit is independent from base_commit; it is NOT forced to equal the base."}
 
 
-def validate_provenance(value: dict, expected_commit: str, expected_run: str, expected_workflow_url: str | None = None) -> dict[str, dict]:
+def validate_provenance(value: dict, expected_commit: str, expected_run: str, expected_attempt: int | str,
+                        expected_workflow_url: str | None = None) -> dict[str, dict]:
     need(bool(COMMIT.fullmatch(expected_commit)), "--expected-commit must be the literal full lowercase 40-hex CI commit")
     need(bool(RUN.fullmatch(expected_run)), "--expected-workflow-run must be the literal positive numeric run ID string")
+    attempt = canonical_run_attempt(expected_attempt, "--expected-run-attempt")
     required = {"schema_version", "status", "fresh_capture", "locale", "app_language", "base_commit", "commit",
-                "workflow_run", "workflow_url", "capture_summary", "device", "outputs", "branding"}
+                "workflow_run", "run_attempt", "workflow_url", "capture_summary", "device", "outputs", "branding"}
     need(isinstance(value, dict) and required <= value.keys(), f"Parent capture provenance requires {sorted(required)}")
     need(type(value["schema_version"]) is int and value["schema_version"] == 1, "Unsupported parent provenance version")
     need(value["status"] == "PASS" and value["fresh_capture"] is True, "Fresh native capture PASS required")
     for name, expected in (("commit", expected_commit), ("workflow_run", expected_run), ("base_commit", BASE_COMMIT),
                            ("locale", "en-US"), ("app_language", "en")):
         need(value[name] == expected, f"SourceGate {name} mismatch: expected {expected!r}, found {value[name]!r}")
+    need(canonical_run_attempt(value["run_attempt"], "provenance.run_attempt") == attempt,
+         "SourceGate run_attempt differs from independent --expected-run-attempt")
     url = value["workflow_url"]
     match = RUN_URL.fullmatch(url) if isinstance(url, str) else None
     need(match is not None and match.group(1) == expected_run, "workflow_url must be the exact GitHub capture run URL")
+    need(match.group(2) is None or match.group(2) == str(attempt), "workflow_url attempt differs from independent --expected-run-attempt")
     if expected_workflow_url is not None:
         need(url == expected_workflow_url, "Independent --expected-workflow-url mismatch")
     summary = value["capture_summary"]
@@ -258,14 +328,15 @@ class NativeSource:
 
 
 class SourceGate:
-    def __init__(self, root: Path, commit: str, run: str, workflow_url: str | None = None):
+    def __init__(self, root: Path, commit: str, run: str, expected_attempt: int | str, workflow_url: str | None = None):
         need(root.is_dir(), f"Native artifact directory is missing: {root}; no substitute sources are allowed")
         self.root = root.resolve()
         provenance_path = safe_asset(self.root, "capture_provenance.json")
         provenance_raw = provenance_path.read_bytes()
         self.provenance = json.loads(provenance_raw.decode("utf-8"), object_pairs_hook=unique_object)
         self.provenance_sha256 = digest(provenance_raw)
-        self.rows = validate_provenance(self.provenance, commit, run, workflow_url)
+        self.rows = validate_provenance(self.provenance, commit, run, expected_attempt, workflow_url)
+        self.expected_attempt = canonical_run_attempt(expected_attempt, "--expected-run-attempt")
         self.loaded: dict[str, NativeSource] = {}
 
     def load(self, relative: str) -> NativeSource:
@@ -312,6 +383,10 @@ def normalized_copy(text: str | None) -> str | None:
 
 def validate_design(design: dict) -> None:
     need(design.get("schemaVersion") == 1 and design.get("locale") == "en-US", "Only concept A v1 en-US is implemented")
+    native_revision = design.get("nativeRevision")
+    need(type(native_revision) is int and native_revision == 3 and design.get("creativeRevision") == design.get("layoutRevision") == 3, "This renderer requires the explicit v3 creative/layout/native contract")
+    need(design.get("sampleMediaPolicy") == "approved-stock-photos-and-videos-no-app-screenshots", "Screenshot-free actual stock library is mandatory")
+    need(design.get("nativeScenePolicy") == V3_SCENE_POLICY, "v3 requires actual sharp stock hero, opaque iOS dialog and filled Photo Pairs board")
     need(design.get("concept") == "A" and design["canvas"] == {"width": 1206, "height": 2622, "safeMargin": 70}, "Fixed canvas / shared 70 px margins required")
     need(design["layout"]["alignment"] == "left", "Left-aligned Concept A, not a centered hero")
     need(design["background"] == {"top": "#E0EFF9", "bottom": "#EAF4FB", "interpolation": "smoothstep"}, "Continuous ice-blue background contract changed")
@@ -323,27 +398,25 @@ def validate_design(design: dict) -> None:
     slots = design["slots"]
     need(isinstance(slots, list) and len(slots) == 10, "Exactly ten slots are required")
     filenames: set[str] = set()
-    # Slot 3 uses the whole genuine system-confirmation capture as its primary.
-    # The tall native dialog therefore needs no extra crop over the trash photos.
-    # Owner revision v2: slots 5 and 7 use only their whole genuine screenshot.
-    # Do not repeat controls/thumbnails already present in the original UI.
-    required_insets = {2: ("duplicate-results", "duplicates")}
+    # Latest owner brief explicitly authorizes exactly these three native details.
     for i, (slot, expected) in enumerate(zip(slots, COPY), 1):
         need(type(slot["id"]) is int and slot["id"] == i and normalized_copy(slot["headline"]) == expected[0] and
              normalized_copy(slot["subtitle"]) == expected[1], f"Exact sentence-case copy / order changed at slot {i}")
-        need(slot["primary"] == f"screenshots/concept-a-{expected[2]}.png", f"Wrong native primary at slot {i}")
+        expected_primary = ("screenshots/concept-a-later-swipe.png" if i == 5 and native_revision == 3
+                            else f"screenshots/concept-a-{expected[2]}.png")
+        need(slot["primary"] == expected_primary, f"Wrong native primary at slot {i}")
         need(bool(re.fullmatch(fr"{i:02d}-[a-z0-9-]+\.png", slot["file"])) and slot["file"] not in filenames, f"Invalid/duplicate output filename at slot {i}")
         filenames.add(slot["file"])
         need(slot["gestures"] is (i == 1), "Only slot 1 has the three marketing gesture arrows")
         insets = slot["insets"]
-        need(isinstance(insets, list) and len(insets) <= 1, "One focal inset at most per full phone")
-        if i in required_insets:
-            name, source = required_insets[i]
+        need(isinstance(insets, list) and len(insets) <= 1, "One focal inset at most per phone")
+        if i in INSETS:
+            name, source, evidence = INSETS[i]
             need(len(insets) == 1 and insets[0]["id"] == name and insets[0]["source"] == f"screenshots/concept-a-{source}.png" and
                  insets[0]["enabled"] is True and insets[0]["required"] is True, f"Required truthful native inset missing in slot {i}")
-        elif i == 4:
-            need(len(insets) == 1 and insets[0]["source"] == "screenshots/concept-a-vault-locked.png" and
-                 insets[0]["required"] is False and type(insets[0]["enabled"]) is bool, "Only the native lock inset is optional")
+            need(isinstance(insets[0].get("cropEvidenceRects"), dict) and set(insets[0]["cropEvidenceRects"]) == evidence,
+                 f"Complete parent-bound native evidence fields required at slot {i}")
+            need(insets[0].get("verticalAnchor") == ("bottom" if i in (3, 7) else "center"), "Exact inset anchoring required to avoid duplicate lower controls")
         else:
             need(not insets, f"Unexpected secondary focus in slot {i}")
     for kind, filename in (("headline", "PMDisplay-Bold.ttf"), ("subtitle", "PMText-Medium.ttf"), ("gesture", "PMText-Bold.ttf")):
@@ -364,6 +437,9 @@ def validate_design(design: dict) -> None:
         for field in ("tileWidth", "gap", "margin"):
             integer(preview[field], f"preview {kind}.{field}", 1)
         need(preview["tileWidth"] <= 1206, "Preview upscaling forbidden")
+        if kind == "search":
+            need(2 * preview["margin"] + columns * preview["tileWidth"] + (columns - 1) * preview["gap"] == 390,
+                 "Search preview must be exactly 390 pixels wide")
 
 
 def font_files(design: dict) -> dict[str, dict]:
@@ -415,6 +491,16 @@ def fit_text(text: str, box: tuple | list, spec: dict, font_path: str) -> dict:
     raise GateError(f"Text cannot fit in <= {spec['maxLines']} lines at floor {spec['minimumSize']} px: {text!r}")
 
 
+def inset_style(design: dict, layer_id: str) -> dict:
+    if layer_id in ("series-decision", "system-dialog"):
+        style_key = "seriesInsetStyle" if layer_id == "series-decision" else "dialogInsetStyle"
+        style = design["layout"].get(style_key)
+        need(style == {"radius": 0, "shadowBlur": 0, "shadowOffset": [0, 0], "shadowAlpha": 0},
+             "Full-width series focus must be flat and shadow-free; no exposed underlying UI gutter")
+        return style
+    return design["layout"]["insetStyle"]
+
+
 def layout_plan(design: dict, fonts: dict) -> list[dict]:
     layout = design["layout"]
     safe = (70, 70, SIZE[0] - 70, SIZE[1] - 70)
@@ -424,11 +510,10 @@ def layout_plan(design: dict, fonts: dict) -> list[dict]:
     for i, box in enumerate(header_boxes):
         need(all(not overlaps(box, other) for other in header_boxes[i + 1:]), "Header containers overlap")
     device = layout["device"]
-    screen = rect(device["screenBox"], "full native phone")
-    need(wh(screen)[0] * SIZE[1] == wh(screen)[1] * SIZE[0] and wh(screen)[0] <= SIZE[0], "Full phone must retain exact native aspect and never upscale")
-    frame = expanded(screen, integer(device["frameWidth"], "frameWidth", 1))
-    need(inside(frame, safe) and all(not overlaps(frame, box) for box in header_boxes), "Phone frame/header/safe-margin collision")
-    for style in (device, layout["insetStyle"]):
+    geometry = phone_geometry(design)
+    screen, frame = geometry["fullTargetGeometry"], geometry["fullFrameGeometry"]
+    need(all(not overlaps(frame, box) for box in header_boxes), "Phone frame/header collision")
+    for style in (device, layout["insetStyle"], inset_style(design, "series-decision")):
         integer(style["shadowBlur"], "shadowBlur")
         need(type(style["shadowAlpha"]) is int and 0 <= style["shadowAlpha"] <= 96, "Quiet bounded shadow alpha required")
         need(isinstance(style["shadowOffset"], list) and len(style["shadowOffset"]) == 2 and
@@ -448,29 +533,74 @@ def layout_plan(design: dict, fonts: dict) -> list[dict]:
                 arrow = rect(gesture["arrowBox"], "gesture arrow")
                 label = rect(gesture["labelBox"], "gesture label")
                 need(inside(arrow, safe) and inside(label, safe) and not overlaps(arrow, label), "Gesture outside safe area / overlaps label")
-                need(all(not overlaps(b, frame) and all(not overlaps(b, h) for h in header_boxes[:2]) for b in (arrow, label)), "Gesture obscures native phone or heading")
+                need(all(not overlaps(b, frame) and all(not overlaps(b, h) for h in header_boxes) for b in (arrow, label)), "Gesture obscures native phone or marketing copy")
                 item["gestures"].append({**gesture, "textPlan": fit_text(gesture["action"], label, design["fonts"]["gesture"], fonts["gesture"]["path"])})
         for inset in slot["insets"]:
             if inset["enabled"]:
                 target = rect(inset["targetBox"], f"slot {slot['id']} inset target")
-                need(inside(target, safe) and overlaps(target, screen), "Inset must stay safe and overlap the full phone")
+                need(inside(target, (70, 70, SIZE[0] - 70, SIZE[1])) and inside(target, geometry["visibleGeometry"]), "Whole inset must remain entirely inside the visible screen; only its shadow may clip at the bottom")
                 need(all(not overlaps(target, box) for box in header_boxes), "Inset covers marketing text or native wordmark")
         result.append(item)
     return result
+
+
+def verify_sample_media_policy(gate: SourceGate) -> dict:
+    """Independently read actual native PhotoKit evidence for the no-screen rule."""
+    from collect_concept_a_provenance import MEDIA_POLICY, audit_sample_media
+    need(gate.provenance.get("sample_media_policy") == MEDIA_POLICY, "Current artwork requires a screenshot-free actual sample library")
+    recorded = gate.provenance.get("sample_media_audit", {})
+    need(recorded.get("status") == "PASS" and recorded.get("fixture_filename_set_exact") is True,
+         "Native no-screenshot library audit must pass")
+    library_raw = safe_asset(gate.root, "concept-a-library.json").read_bytes()
+    fixture_raw = safe_asset(gate.root, "fixture-manifest.json").read_bytes()
+    need(digest(library_raw) == recorded.get("actual_library_sha256"), "Actual PhotoKit inventory hash changed")
+    need(digest(fixture_raw) == gate.provenance.get("fixture_manifest_sha256"), "Actual fixture manifest hash changed")
+    actual = audit_sample_media(json.loads(library_raw, object_pairs_hook=unique_object),
+                                json.loads(fixture_raw, object_pairs_hook=unique_object))
+    need(actual["status"] == "PASS", f"App screenshot or non-approved media in actual capture library: {actual['errors']}")
+    need((actual["actual_asset_count"], actual["actual_photo_count"], actual["actual_video_count"]) == (37, 35, 2),
+         "Exactly 35 approved stock photos and two real videos required")
+    need(not (gate.root / "stills/concept-a-native-library.fixture.json").exists(), "Old app-screenshot fixture is never a final source")
+    need(all(actual[key] == recorded.get(key) for key in ("actual_asset_count", "actual_photo_count", "actual_video_count",
+                                                        "actual_screenshot_subtype_count", "fixture_filename_set_exact")),
+         "Native library audit differs from its actual resources")
+    return actual
+
+
+def verify_native_scene_policy(gate: SourceGate) -> dict:
+    """Recompute the parent collector's actual scene/hash evidence, fail closed."""
+    need(gate.provenance.get("native_scene_policy") == V3_SCENE_POLICY and
+         gate.provenance.get("native_scene_audit", {}).get("status") == "PASS", "Actual v3 native scene policy/audit must PASS; old green C6 is not final")
+    try:
+        from collect_concept_a_provenance import V3_SCENE_POLICY as policy, audit_v3_scenes
+    except ImportError as exc:
+        raise GateError("Parent collector's audit_v3_scenes is required before final rendering") from exc
+    need(policy == V3_SCENE_POLICY, "Collector scene-policy constant differs")
+    fixture = read_json(safe_asset(gate.root, "fixture-manifest.json"))
+    actual = audit_v3_scenes(gate.root, fixture)
+    need(actual.get("status") == "PASS" and actual == gate.provenance["native_scene_audit"],
+         "Actual v3 hero/dialog-stability/game scene evidence or hashes differ from provenance")
+    return actual
 
 
 def prepare_sources(design: dict, gate: SourceGate) -> tuple[dict, list[dict]]:
     """Load ALL current required files before considering any layout/render output."""
     for relative in sorted((CAPTURES - {"screenshots/concept-a-vault-locked.png"}) | {WORDMARK}):
         gate.load(relative)
-    review = design.get("sourceVisualQA", {})
+    verify_sample_media_policy(gate)
+    verify_native_scene_policy(gate)
+    review = design.get("finalSourceVisualQA", {})
     need(review.get("approved") is True and review.get("provenanceSHA256") == gate.provenance_sha256 and
          review.get("commit") == gate.provenance["commit"] and review.get("workflowRun") == gate.provenance["workflow_run"] and
+         canonical_run_attempt(review.get("runAttempt"), "source visual QA runAttempt") == gate.expected_attempt and
          all(isinstance(review.get(k), str) and review[k].strip() for k in ("reviewer", "notes")),
-         "Parent must approve sourceVisualQA in design.json, bound to the fresh provenance SHA, commit and workflowRun")
+         "Parent must approve finalSourceVisualQA in design.json, bound to ONE new fresh provenance SHA, commit, workflowRun and runAttempt")
+    need(set(review.get("requirements", {})) == V3_REVIEW and all(value is True for value in review["requirements"].values()),
+         "Every v3 source-visual requirement must be actually reviewed, not inherited from v2")
     need(review.get("nativeWordmarkComponent") == "VaultDialWordmark" and review.get("nativeWordmarkForeground") == "lightForeground" and
          review.get("nativeStatusBar") == {"time": "9:41", "fullBattery": True, "dynamicIsland": True, "appearance": "dark"},
          "Parent visual QA must confirm original native wordmark and native status-bar appearance")
+
     wordmark = gate.load(WORDMARK)
     wordmark_crop = wordmark.image.getchannel("A").getbbox()
     need(wordmark_crop is not None, "Empty native wordmark")
@@ -480,7 +610,9 @@ def prepare_sources(design: dict, gate: SourceGate) -> tuple[dict, list[dict]]:
     wordmark_box = (x, y, x + wh(wordmark_box)[0], y + wh(wordmark_box)[1])
     branding = {"source": WORDMARK, "crop": list(wordmark_crop), "target": list(wordmark_box), "nativeScale": scale}
     screen = tuple(design["layout"]["device"]["screenBox"])
-    scale = wh(screen)[0] / SIZE[0]
+    geometry = phone_geometry(design)
+    scale = geometry["nativeScale"]
+    scale_x, scale_y = wh(screen)[0] / SIZE[0], wh(screen)[1] / SIZE[1]
     prepared = []
     for slot in design["slots"]:
         native = gate.load(slot["primary"])
@@ -489,8 +621,10 @@ def prepare_sources(design: dict, gate: SourceGate) -> tuple[dict, list[dict]]:
         need(isinstance(regions, list) and bool(regions), f"Parent source-vision QA must supply primaryProtectedRects at slot {slot['id']}")
         regions = [rect(r, f"slot {slot['id']} protected native evidence") for r in regions]
         protected = [(0, 0, 1206, 200)] + regions
-        mapped = [(screen[0] + math.floor(r[0] * scale), screen[1] + math.floor(r[1] * scale),
-                   screen[0] + math.ceil(r[2] * scale), screen[1] + math.ceil(r[3] * scale)) for r in protected]
+        mapped = [(screen[0] + math.floor(r[0] * scale_x), screen[1] + math.floor(r[1] * scale_y),
+                   screen[0] + math.ceil(r[2] * scale_x), screen[1] + math.ceil(r[3] * scale_y)) for r in protected]
+        need(all(inside(r, geometry["visibleGeometry"]) for r in mapped),
+             f"Bottom viewport clip hides parent-protected primary evidence at slot {slot['id']}; recapture/review, never silently drop protection")
         insets = []
         for inset in slot["insets"]:
             if not inset["enabled"]:
@@ -499,19 +633,67 @@ def prepare_sources(design: dict, gate: SourceGate) -> tuple[dict, list[dict]]:
             crop = rect(inset["crop"], f"Parent approved crop for {inset['id']}", source.image.size)
             need(crop[1] >= design["sourceGate"]["minimumInsetTop"], "Inset includes status bar / risks a second Dynamic Island")
             need(inset.get("cropSourceSHA256") == source.sha256, f"Crop must bind exact current source SHA-256: {inset['id']}")
-            target, native_scale = contained_geometry(wh(crop), inset["targetBox"])
-            style = design["layout"]["insetStyle"]
-            effect = expanded(target, style["shadowBlur"] * 3 + 2, style["shadowOffset"])
+            evidence = {name: list(rect(value, f"{inset['id']} / {name}")) for name, value in inset["cropEvidenceRects"].items()}
+            need(all(inside(value, crop) for value in evidence.values()), f"Inset omits required whole native evidence: {inset['id']}")
+            native_rect = None
+            if slot["id"] == 3:
+                native_rect = read_native_rect_evidence(gate.root, inset["nativeRectEvidence"])
+                need(native_rect["file"] == "concept-a-delete-confirm-frame.json" and native_rect["jsonPointer"] == "/nativeRect"
+                     and native_rect["format"] == "xyxy" and native_rect["coordinateScale"] == 1
+                     and native_rect["sha256"] == gate.provenance["native_scene_audit"]["source_bindings"][native_rect["file"]]
+                     and native_rect["nativePixelRect"] == gate.provenance["native_scene_audit"]["actual_dialog_native_rect"],
+                     "Dialog crop must bind the exact actual v3 scene-audited native frame JSON")
+                need(evidence["system-dialog"] == native_rect["nativePixelRect"] and inside(evidence["system-dialog"], crop),
+                     "Inset must contain the entire actual JSON-bound native system-dialog frame")
+            target, native_scale = inset_geometry(crop, inset)
+            need(native_scale > max(scale_x, scale_y), f"Inset is not actually enlarged relative to the main phone: {inset['id']}")
+            if inset["id"] in ("series-decision", "system-dialog"):
+                need((target[0], target[2]) == (screen[0], screen[2]), "Series/dialog focus must cover both native screen edges; no underlying UI gutter")
+            style = inset_style(design, inset["id"])
+            effect = target if style["shadowAlpha"] == 0 else expanded(target, style["shadowBlur"] * 3 + 2, style["shadowOffset"])
             effect = (min(target[0], effect[0]), min(target[1], effect[1]), max(target[2], effect[2]), max(target[3], effect[3]))
             need(all(not overlaps(effect, focus) for focus in mapped), f"Inset/shadow covers parent-protected primary evidence: slot {slot['id']} / {inset['id']}")
-            need(inside(effect, (0, 0, *SIZE)), "Inset shadow would be clipped at canvas edge")
+            visible_effect = (effect[0], effect[1], effect[2], min(effect[3], SIZE[1]))
+            need(inside(effect, screen) and inside(visible_effect, geometry["visibleGeometry"])
+                 and effect[1] >= screen[1] + design["layout"]["device"]["screenRadius"],
+                 "Inset/shadow may not cross the visible top/left/right hardware frame")
             need(all(not overlaps(effect, design["layout"][key]) for key in ("wordmarkBox", "headlineBox", "subtitleBox")), "Inset shadow covers header")
             need(all(not overlaps(effect, other["effectBox"]) for other in insets), "Native insets/shadows may not obscure one another")
             insets.append({"id": inset["id"], "source": inset["source"], "crop": list(crop), "target": list(target),
-                           "nativeScale": native_scale, "requestedBox": inset["targetBox"], "effectBox": effect})
+                           "nativeScale": native_scale, "magnificationRelativeToPhone": native_scale / scale,
+                           "cropEvidenceRects": evidence, "nativeRectEvidence": native_rect,
+                           "requestedBox": inset["targetBox"], "verticalAnchor": inset["verticalAnchor"],
+                           "effectBox": list(effect), "visibleEffectBox": list(visible_effect),
+                           "shadowViewportClip": "bottom-only" if effect[3] > SIZE[1] else "none"})
         prepared.append({"primary": slot["primary"], "protectedSourceRects": [list(r) for r in protected],
                          "protectedOutputRects": [list(r) for r in mapped], "insets": insets})
     return branding, prepared
+
+
+def read_native_rect_evidence(root: Path, binding: dict) -> dict:
+    """Read the actual capture's frame JSON; never guess a dialog rectangle."""
+    keys(binding, {"file", "sha256", "jsonPointer", "format", "coordinateScale"}, label="nativeRectEvidence")
+    need(isinstance(binding["file"], str) and binding["file"].endswith(".json") and
+         isinstance(binding["sha256"], str) and bool(SHA.fullmatch(binding["sha256"])), "Actual native frame JSON path/hash are pending")
+    raw = safe_asset(root, binding["file"]).read_bytes()
+    need(digest(raw) == binding["sha256"], "Actual native frame evidence hash drift")
+    value = json.loads(raw, object_pairs_hook=unique_object)
+    pointer = binding["jsonPointer"]
+    need(isinstance(pointer, str) and pointer.startswith("/"), "Explicit native frame JSON pointer required")
+    for token in pointer[1:].split("/"):
+        token = token.replace("~1", "/").replace("~0", "~")
+        value = value[int(token)] if isinstance(value, list) else value[token]
+    fmt, scale = binding["format"], binding["coordinateScale"]
+    need(fmt in ("xywh", "xyxy") and type(scale) in (int, float) and math.isfinite(scale) and 0 < scale <= 3,
+         "Native frame coordinates require explicit xywh/xyxy and scale (points=3, pixels=1)")
+    if isinstance(value, dict):
+        value = [value[k] for k in (("x", "y", "width", "height") if fmt == "xywh" else ("left", "top", "right", "bottom"))]
+    need(isinstance(value, list) and len(value) == 4 and all(type(n) in (int, float) and math.isfinite(n) for n in value), "Native JSON frame must be four actual finite coordinates")
+    a, b, c, d = value
+    if fmt == "xywh":
+        c, d = a + c, b + d
+    native = list(rect([math.floor(a * scale), math.floor(b * scale), math.ceil(c * scale), math.ceil(d * scale)], "Actual JSON system-dialog frame"))
+    return {**binding, "nativePixelRect": native}
 
 
 def rounded_mask(size: tuple[int, int], radius: int) -> Image.Image:
@@ -563,6 +745,9 @@ def native_layer(canvas: Image.Image, source: NativeSource, crop: tuple | list, 
                  scale: float, radius: int, style: dict | None, layer_id: str) -> PixelLayer:
     # Defined ICC normalization, then one original crop and known LANCZOS resample. No UI edits.
     need(wh(target)[0] <= wh(crop)[0] and wh(target)[1] <= wh(crop)[1], "Native resolution exceeded")
+    need(type(scale) in (int, float) and math.isfinite(scale) and 0 < scale <= 1 and
+         all(abs(actual - original * scale) <= 0.5 + 1e-9 for actual, original in zip(wh(target), wh(crop))),
+         "Native aspect may differ only by <=0.5px documented proportional integer rounding")
     tile = source.image.crop(crop)
     if tile.size != wh(target):
         tile = tile.resize(wh(target), RESAMPLE)
@@ -580,6 +765,7 @@ def native_layer(canvas: Image.Image, source: NativeSource, crop: tuple | list, 
         occlusion = ImageChops.lighter(occlusion, place_mask(mask, target))
         expected = tile
         canvas.paste(tile, target[:2], mask)
+    viewport = viewport_mask(target)
     desc = {"id": layer_id, "originalSource": source.path, "sourceSHA256": source.sha256, "sourceSize": list(source.image.size),
             "sourceMode": source.original_mode, "sourceICC": source.icc, "crop": list(crop), "targetGeometry": list(target),
             "nativeScale": scale, "effectiveNativeScaleXY": [wh(target)[0] / wh(crop)[0], wh(target)[1] / wh(crop)[1]],
@@ -587,7 +773,9 @@ def native_layer(canvas: Image.Image, source: NativeSource, crop: tuple | list, 
             "rotationDegrees": 0, "colorManagement": source.color_management,
             "colorOperations": [source.color_management["operation"]] if source.color_management else [],
             "mask": "original native wordmark alpha" if is_wordmark else "outer rounded mask, 4x antialiased",
-            "maskSHA256": digest(mask.tobytes())}
+            "maskSHA256": digest(mask.tobytes()), **viewport_geometry(target, crop),
+            "viewportMaskSHA256": digest(viewport.tobytes()),
+            "visibleMaskSHA256": digest(ImageChops.multiply(mask, viewport).tobytes())}
     return PixelLayer(desc, expected, mask, occlusion, is_wordmark)
 
 
@@ -598,13 +786,20 @@ def verify_native_pixels(canvas: Image.Image, layers: list[PixelLayer]) -> list[
         box = layer.description["targetGeometry"]
         # The alpha-edged wordmark compares to its exact original-alpha composite, not opaque RGB.
         eligible = layer.mask.point(lambda v: 255 if (v > 0 if layer.wordmark else v == 255) else 0)
+        full_opaque_count = eligible.histogram()[255]
+        eligible = ImageChops.multiply(eligible, viewport_mask(box))
         opaque_count = eligible.histogram()[255]
         need(opaque_count > 0, "No verifiable native interior pixels")
         for above in layers[i + 1:]:
             blocker = above.occlusion.crop(box).point(lambda v: 255 if v else 0)
             eligible = ImageChops.subtract(eligible, blocker)
         visible_count = eligible.histogram()[255]
-        need(visible_count >= opaque_count * (0.5 if layer.description["id"] == "full-phone" else 1), "Native evidence is excessively occluded")
+        # The explicitly requested whole tall dialog repeats SAME-source evidence.
+        # Account for its real occlusion; never lower equality or omit more pixels.
+        same_dialog = any(above.description["id"] == "system-dialog" and
+                          above.description["originalSource"] == layer.description["originalSource"] for above in layers[i + 1:])
+        minimum_visible = (0.25 if same_dialog else 0.5) if layer.description["id"] == "full-phone" else 1
+        need(visible_count >= opaque_count * minimum_visible, "Native evidence is excessively occluded")
         actual = canvas.crop(box).convert("RGB")
         difference = ImageChops.difference(actual, layer.expected)
         difference = Image.composite(difference, Image.new("RGB", difference.size), eligible)
@@ -612,11 +807,32 @@ def verify_native_pixels(canvas: Image.Image, layers: list[PixelLayer]) -> list[
         ref = Image.composite(layer.expected, Image.new("RGB", layer.expected.size), eligible)
         got = Image.composite(actual, Image.new("RGB", actual.size), eligible)
         proofs.append({**layer.description, "pixelQA": {"status": "PASS", "comparedPixels": visible_count,
-                       "opaqueInteriorPixels": opaque_count, "occludedByLaterInsetOrShadowPixels": opaque_count - visible_count,
+                       "opaqueInteriorPixels": opaque_count, "fullTargetOpaqueInteriorPixels": full_opaque_count,
+                       "offCanvasOpaqueInteriorPixels": full_opaque_count - opaque_count,
+                       "occludedByLaterInsetOrShadowPixels": opaque_count - visible_count,
+                       "minimumVisibleViewportFraction": minimum_visible,
                        "maxChannelDifference": 0, "maskedKnownResampleSHA256": digest(ref.tobytes()),
                        "maskedOutputSHA256": digest(got.tobytes()),
-                       "method": "Exact equality; rounded alpha edge excluded; later inset/shadow occlusion explicitly excluded. Wordmark uses exact original-alpha composite."}})
+                       "method": "Exact equality over the explicitly visible viewport mask; off-canvas pixels are not claimed visible. Rounded alpha edge and actual later inset/shadow occlusion excluded. Wordmark uses exact original-alpha composite."}})
     return proofs
+
+
+def verify_frame_pixels(canvas: Image.Image, design: dict) -> dict:
+    """Every fully opaque, visible hardware-ring pixel, no occlusion exemption."""
+    geometry = phone_geometry(design)
+    device = design["layout"]["device"]
+    screen, frame = geometry["fullTargetGeometry"], geometry["fullFrameGeometry"]
+    outer = place_mask(rounded_mask(wh(frame), device["screenRadius"] + device["frameWidth"]), frame)
+    inner = place_mask(rounded_mask(wh(screen), device["screenRadius"]), screen)
+    eligible = ImageChops.multiply(outer.point(lambda n: 255 if n == 255 else 0), inner.point(lambda n: 255 if n == 0 else 0))
+    count = eligible.histogram()[255]
+    need(count > 1000, "No actual visible hardware ring to verify")
+    expected = Image.new("RGB", SIZE, device["frameColor"])
+    diff = Image.composite(ImageChops.difference(canvas, expected), Image.new("RGB", SIZE), eligible)
+    need(diff.getbbox() is None, "Visible hardware-frame pixels changed or are covered")
+    return {"status": "PASS", "comparedPixels": count, "maxChannelDifference": 0,
+            "visibleFrameMaskSHA256": digest(eligible.tobytes()), "topLeftRightVisible": True,
+            "bottomIntentionallyClipped": True, "geometry": geometry}
 
 
 def draw_text(canvas: Image.Image, plan: dict, color: str) -> None:
@@ -662,8 +878,10 @@ def render_one(design: dict, slot: dict, text: dict, prepared: dict, branding: d
         draw_text(canvas, gesture["textPlan"], color)
     layers.append(native_layer(canvas, gate.load(slot["primary"]), (0, 0, *SIZE), screen, wh(screen)[0] / SIZE[0], device["screenRadius"], None, "full-phone"))
     for inset in prepared["insets"]:
-        layers.append(native_layer(canvas, gate.load(inset["source"]), inset["crop"], inset["target"], inset["nativeScale"], layout["insetStyle"]["radius"], layout["insetStyle"], inset["id"]))
+        style = inset_style(design, inset["id"])
+        layers.append(native_layer(canvas, gate.load(inset["source"]), inset["crop"], inset["target"], inset["nativeScale"], style["radius"], style, inset["id"]))
     verify_native_pixels(canvas, layers)
+    verify_frame_pixels(canvas, design)
     return canvas, layers
 
 
@@ -704,6 +922,7 @@ def preview_image(design: dict, images: list[Image.Image], kind: str) -> tuple[I
     height = round(SIZE[1] * width / SIZE[0])
     margin, gap = spec["margin"], spec["gap"]
     sheet = Image.new("RGB", (2 * margin + len(ids) * width + (len(ids) - 1) * gap, height + 2 * margin), design["background"]["top"])
+    need(kind != "search" or sheet.width == 390, "Search preview must be exactly 390 pixels wide")
     cells = []
     for index, slot_id in enumerate(ids):
         x, y = margin + index * (width + gap), margin
@@ -747,9 +966,10 @@ def render_all(design: dict, design_path: Path, gate: SourceGate, fonts: dict, t
         record.update({"slot": slot["id"], "headline": public_text_plan(text["headline"]), "subtitle": public_text_plan(text["subtitle"]),
                        "gestures": [{**g, "textPlan": public_text_plan(g["textPlan"])} for g in text["gestures"]],
                        "nativeLayers": verify_native_pixels(reopened, layers), "protectedEvidence": source_plan,
+                       "framePixelQA": verify_frame_pixels(reopened, design),
                        "layoutQA": {"status": "PASS", "safeMargin": 70, "headlineMaxLines": 2, "subtitleMaxLines": 2,
-                                    "fullPhoneScreenBox": design["layout"]["device"]["screenBox"], "fullPhoneCrop": [0, 0, *SIZE],
-                                    "phoneAspectExact": True, "nativeUpscaling": False, "secondDynamicIsland": False,
+                                    "phoneGeometry": phone_geometry(design), "originalNativeCrop": [0, 0, *SIZE],
+                                    "phoneProportionalWithinHalfPixel": True, "nativeUpscaling": False, "secondDynamicIsland": False,
                                     "protectedPrimaryEvidenceUnobscured": True, "allTextBBoxesInsideContainers": True}})
         exported.append(record)
     preview_records = []
@@ -758,20 +978,26 @@ def render_all(design: dict, design_path: Path, gate: SourceGate, fonts: dict, t
         preview_records.append({**record, **geometry, "kind": kind})
     pngs = sorted(p.name for p in output.glob("*.png"))
     need(pngs == sorted(slot["file"] for slot in design["slots"]) and len(pngs) == 10, "Exactly the requested ten numbered PNGs must exist")
-    manifest = {"schemaVersion": 1, "concept": "A", "locale": "en-US", "size": list(SIZE),
+    manifest = {"schemaVersion": 1, "creativeRevision": 3, "layoutRevision": 3, "nativeRevision": 3,
+                "runAttempt": gate.expected_attempt,
+                "sampleMediaPolicy": design["sampleMediaPolicy"], "capturePolicy": "single-new-green-stock-only-run",
+                "nativeScenePolicy": design["nativeScenePolicy"],
+                "concept": "A", "locale": "en-US", "size": list(SIZE),
                 "renderer": {"path": "scripts/store/render_concept_a.py", "sha256": digest(Path(__file__).read_bytes()),
                              "pillowVersion": Image.__version__, "pythonVersion": sys.version.split()[0]},
                 "design": {"path": str(design_path.resolve()), "logicalPath": "app-store/concepts/A/design.json", "sha256": digest(design_path.read_bytes())},
                 "sourceGate": {"status": "PASS", "passedTest": True, "sourceRoot": str(gate.root), "provenanceSHA256": gate.provenance_sha256, "provenance": gate.provenance,
+                               "expectedRunAttempt": gate.expected_attempt,
                                "note": "Offline artifact/hash/explicit QA gate. Parent independently verifies CI run/commit/test and image content; not cryptographic CI attestation."},
                 "originalSources": [{"path": s.path, "sha256": s.sha256, "size": list(s.image.size), "mode": s.original_mode,
                                      "ICC": s.icc, "colorManagement": s.color_management, "provenance": s.provenance} for s in sorted(gate.loaded.values(), key=lambda x: x.path)],
-                "sourceVisualQA": design["sourceVisualQA"],
+                "sourceVisualQA": design["finalSourceVisualQA"],
                 "fonts": {kind: {k: v for k, v in data.items() if k != "path"} for kind, data in fonts.items()},
                 "ICC": {"embedded": True, "colorSpace": "sRGB", "sha256": digest(icc), "description": profile_info(icc)["description"],
                         "reusedFromPriorExport": str(reuse_icc_from.resolve()) if reuse_icc_from else None},
                 "outputs": exported, "previews": preview_records,
-                "layoutQA": {"status": "PASS", "pngCount": len(pngs), "identicalFullPhoneGeometry": True,
+                "layoutQA": {"status": "PASS", "pngCount": len(pngs), "identicalFullTargetAndVisiblePhoneGeometry": True,
+                             "phoneGeometry": phone_geometry(design), "requiredInsetSlots": [2, 3, 7], "subtitleCount": 10,
                              "screenBox": design["layout"]["device"]["screenBox"],
                              "frameBox": list(expanded(design["layout"]["device"]["screenBox"], design["layout"]["device"]["frameWidth"])),
                              "backgroundColors": design["background"],
@@ -803,7 +1029,22 @@ def self_test(design: dict, fonts: dict) -> dict:
         raise GateError(f"Self-test did not reject: {name}")
 
     check("design-contract", lambda: validate_design(design))
-    for removed_slot in (5, 7):
+    wrong_media_policy = copy.deepcopy(design)
+    wrong_media_policy["sampleMediaPolicy"] = "allow-app-screenshots"
+    rejected("wrong-sample-media-policy-rejected", lambda: validate_design(wrong_media_policy))
+    # Schema-only failure; never creates native-looking source data or files.
+    from types import SimpleNamespace
+    rejected("no-media-policy-native-proof-rejected", lambda: verify_sample_media_policy(SimpleNamespace(provenance={})))
+    rejected("old-green-capture-without-v3-scene-proof-rejected", lambda: verify_native_scene_policy(SimpleNamespace(provenance={})))
+    held_later_design = copy.deepcopy(design)
+    held_later_design["nativeRevision"] = 3
+    held_later_design["slots"][4]["primary"] = "screenshots/concept-a-later-swipe.png"
+    check("v3-requires-genuine-held-later-primary", lambda: validate_design(held_later_design))
+    for wrong_later in ("later", "swipe"):
+        incorrect = copy.deepcopy(held_later_design)
+        incorrect["slots"][4]["primary"] = f"screenshots/concept-a-{wrong_later}.png"
+        rejected(f"v3-{wrong_later}-is-not-held-later", lambda candidate=incorrect: validate_design(candidate))
+    for removed_slot in (4, 5, 6, 8, 9, 10):
         duplicate_overlay = copy.deepcopy(design)
         duplicate_overlay["slots"][removed_slot - 1]["insets"] = [{"enabled": True}]
         rejected(f"removed-duplicate-overlay-slot-{removed_slot}-rejected", lambda candidate=duplicate_overlay: validate_design(candidate))
@@ -816,7 +1057,16 @@ def self_test(design: dict, fonts: dict) -> dict:
     rejected("invalid-crop-rejected", lambda: rect((0, 0, 1207, 2622), "test crop"))
     rejected("null-parent-crop-rejected", lambda: rect(None, "test unset crop"))
     check("contain-does-not-upscale", lambda: need(contained_geometry((80, 40), (70, 70, 1070, 1070))[0] == (530, 550, 610, 590), "native contain"))
-    check("phone-native-proportion-exact", lambda: need(804 * 2622 == 1748 * 1206, "native ratio"))
+    check("v3-phone-proportional-rounding-and-bottom-only-clip", lambda: phone_geometry(design))
+    for name, box in (("old-full-visible-v2", list(V2_SCREEN)), ("left-clipped", [-9, 844, 935, 2896]),
+                      ("top-clipped", [131, -1, 1075, 2051]), ("stretched", [131, 844, 1075, 2900])):
+        bad = copy.deepcopy(design)
+        bad["layout"]["device"]["screenBox"] = box
+        rejected(name + "-rejected", lambda candidate=bad: phone_geometry(candidate))
+    for number in (2, 3, 7):
+        bad = copy.deepcopy(design)
+        bad["slots"][number - 1]["insets"][0]["enabled"] = False
+        rejected(f"required-v3-inset-{number}-cannot-be-disabled", lambda candidate=bad: validate_design(candidate))
     mask = rounded_mask((160, 320), 24)
     check("rounded-mask-antialias-outer-edge-only", lambda: need(mask.getpixel((80, 160)) == 255 and mask.getpixel((0, 0)) == 0 and any(0 < i < 255 and n for i, n in enumerate(mask.histogram())), "AA mask"))
     canvas = Image.new("RGB", SIZE, (224, 239, 249))
@@ -832,6 +1082,13 @@ def self_test(design: dict, fonts: dict) -> dict:
     corrupt = canvas.copy()
     corrupt.putpixel((350, 1000), (200, 20, 20))
     rejected("one-native-pixel-corruption-rejected", lambda: verify_native_pixels(corrupt, [layer]))
+    clipped_canvas = Image.new("RGB", SIZE, (224, 239, 249))
+    clipped = native_layer(clipped_canvas, source, (0, 0, 320, 640), (300, 2400, 460, 2720), 0.5, 24, None, "clipped-rectangle-unit-only")
+    check("clipped-visible-native-known-resample-equality", lambda: verify_native_pixels(clipped_canvas, [clipped]))
+    check("full-vs-visible-mask-coordinates-explicit", lambda: need(clipped.description["visibleGeometry"] == [300, 2400, 460, 2622]
+          and clipped.description["viewportClipPixels"] == {"left": 0, "top": 0, "right": 0, "bottom": 98}, "clipped geometry"))
+    clipped_canvas.putpixel((350, 2621), (200, 20, 20))
+    rejected("one-visible-bottom-row-pixel-corruption-rejected", lambda: verify_native_pixels(clipped_canvas, [clipped]))
     rejected("native-upscale-rejected", lambda: native_layer(canvas, source, (0, 0, 320, 640), (0, 0, 640, 1280), 2.0, 24, None, "bad-upscale"))
     layer.description["id"] = "full-phone"
     inset_source = NativeSource("inset-rectangle-not-ui", "0" * 64, Image.new("RGB", (80, 40), (180, 110, 70)), "RGB", {}, {})
@@ -849,10 +1106,10 @@ def self_test(design: dict, fonts: dict) -> dict:
     rows = [{"file": name, "sha256": "0" * 64, "width": 1206, "height": 2622, "mode": "RGBA", "opaque": True}
             for name in sorted(CAPTURES - {"screenshots/concept-a-vault-locked.png"})]
     provenance = {"schema_version": 1, "status": "PASS", "fresh_capture": True, "locale": "en-US", "app_language": "en",
-                  "base_commit": BASE_COMMIT, "commit": "a" * 40, "workflow_run": "1", "workflow_url": "https://github.com/test/rectangles/actions/runs/1",
+                  "base_commit": BASE_COMMIT, "commit": "a" * 40, "workflow_run": "1", "run_attempt": "1", "workflow_url": "https://github.com/test/rectangles/actions/runs/1",
                   "device": {"name": "iPhone 17 Pro"}, "capture_summary": {"result": "Passed", "passedTests": 1, "failedTests": 0, "skippedTests": 0},
                   "outputs": rows, "branding": {"file": WORDMARK, "sha256": "0" * 64}}
-    validate = lambda data: validate_provenance(data, "a" * 40, "1")
+    validate = lambda data: validate_provenance(data, "a" * 40, "1", "1")
     check("parent-provenance-schema-contract", lambda: validate(provenance))
     check("fresh-capture-commit-distinct-from-base-accepted", lambda: need(provenance["commit"] != BASE_COMMIT and bool(validate(provenance)), "commit handling"))
     for field, bad in (("commit", "b" * 40), ("workflow_run", "2"), ("workflow_url", "https://github.com/test/rectangles/actions/runs/2"),
@@ -875,20 +1132,29 @@ def self_test(design: dict, fonts: dict) -> dict:
           transform["outputICC_SHA256"] == digest(icc), "ICC normalization"))
     rejected("malformed-ICC-rejected-not-silently-ignored", lambda: normalize_native(rgba, b"not-an-ICC-profile"))
     from unittest.mock import Mock, patch
-    review_gate = Mock(provenance_sha256="c" * 64, provenance={"commit": "a" * 40, "workflow_run": "1"}, load=lambda name: source)
-    rejected("unset-parent-source-vision-approval-rejected", lambda: prepare_sources(design, review_gate))
+    review_gate = Mock(provenance_sha256="c" * 64, provenance={"commit": "a" * 40, "workflow_run": "1", "run_attempt": "1"}, expected_attempt=1, load=lambda name: source)
     stale_review = copy.deepcopy(design)
-    stale_review["sourceVisualQA"].update(approved=True, provenanceSHA256="d" * 64, commit="a" * 40, workflowRun="1", reviewer="UNIT TEST ONLY", notes="No native UI approval")
-    rejected("stale-parent-source-vision-provenance-rejected", lambda: prepare_sources(stale_review, review_gate))
+    stale_review["finalSourceVisualQA"].update(approved=True, provenanceSHA256="d" * 64, commit="a" * 40, workflowRun="1", runAttempt=1, reviewer="UNIT TEST ONLY", notes="No native UI approval")
+    # Keep negative fixtures explicit even after the real design is approved.
+    unapproved_review = copy.deepcopy(stale_review)
+    unapproved_review["finalSourceVisualQA"].update(approved=False, provenanceSHA256="c" * 64)
+    # Isolate REVIEW negatives so the earlier media/scene gates cannot satisfy them.
+    # Schema mocks only; no files, native captures or approval are produced.
+    with patch(__name__ + ".verify_sample_media_policy", return_value={}), patch(__name__ + ".verify_native_scene_policy", return_value={}):
+        rejected("unset-parent-source-vision-approval-rejected", lambda: prepare_sources(unapproved_review, review_gate))
+        rejected("stale-parent-source-vision-provenance-rejected", lambda: prepare_sources(stale_review, review_gate))
+        stale_review["finalSourceVisualQA"]["provenanceSHA256"] = "c" * 64
+        stale_review["finalSourceVisualQA"]["requirements"]["noLoadingSpinner"] = False
+        rejected("unreviewed-v3-source-scene-requirements-rejected", lambda: prepare_sources(stale_review, review_gate))
     isolated_gate = SourceGate.__new__(SourceGate)
     isolated_gate.root, isolated_gate.rows, isolated_gate.loaded = ROOT, {"test.png": {"sha256": "0" * 64}}, {}
     with patch(__name__ + ".safe_asset", return_value=Mock(read_bytes=lambda: b"rectangle-test-bytes-not-ui")):
         rejected("native-source-hash-mismatch-rejected-before-decode", lambda: isolated_gate.load("test.png"))
-    rejected("missing-source-directory-rejected", lambda: SourceGate(ROOT / "__unit_test_absent_sources__", "a" * 40, "1"))
+    rejected("missing-source-directory-rejected", lambda: SourceGate(ROOT / "__unit_test_absent_sources__", "a" * 40, "1", "1"))
     rejected("duplicate-JSON-provenance-keys-rejected", lambda: json.loads('{"commit":"a","commit":"b"}', object_pairs_hook=unique_object))
-    rejected("malformed-literal-commit-rejected", lambda: validate_provenance(provenance, "a" * 39, "1"))
-    rejected("malformed-literal-run-rejected", lambda: validate_provenance(provenance, "a" * 40, "01"))
-    rejected("independent-workflow-url-mismatch-rejected", lambda: validate_provenance(provenance, "a" * 40, "1", "https://github.com/another/repo/actions/runs/1"))
+    rejected("malformed-literal-commit-rejected", lambda: validate_provenance(provenance, "a" * 39, "1", "1"))
+    rejected("malformed-literal-run-rejected", lambda: validate_provenance(provenance, "a" * 40, "01", "1"))
+    rejected("independent-workflow-url-mismatch-rejected", lambda: validate_provenance(provenance, "a" * 40, "1", "1", "https://github.com/another/repo/actions/runs/1"))
     changed = copy.deepcopy(design)
     changed["slots"][0]["headline"] = "SWIPE THE CLUTTER. KEEP THE MEMORIES."
     rejected("changed-copy-rejected", lambda: validate_design(changed))
@@ -918,6 +1184,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--reuse-icc-from", type=Path, help="Reuse a previous export's embedded sRGB ICC so unchanged PNGs stay byte-identical")
     parser.add_argument("--expected-commit", help="Independent exact lowercase 40-hex captured commit (not inferred from provenance)")
     parser.add_argument("--expected-workflow-run", help="Independent exact GitHub workflow run ID string")
+    parser.add_argument("--expected-run-attempt", help="Required independent positive capture attempt; never inferred from provenance")
     parser.add_argument("--expected-workflow-url", help="Optional independently pinned exact GitHub capture run URL (run ID is always checked)")
     args = parser.parse_args(argv)
     try:
@@ -934,10 +1201,10 @@ def main(argv: list[str] | None = None) -> int:
             result = {"status": "PASS", "scope": "geometry-and-fonts-only", "slots": len(texts), "sourceGate": "NOT_RUN", "filesWritten": [],
                       "texts": [{"slot": p["slot"], "headline": public_text_plan(p["headline"]), "subtitle": public_text_plan(p["subtitle"])} for p in texts]}
         else:
-            need(args.sources is not None and args.expected_commit is not None and args.expected_workflow_run is not None,
-                 "Render/validate requires --sources, --expected-commit and --expected-workflow-run; no defaults/legacy fallback")
+            need(args.sources is not None and args.expected_commit is not None and args.expected_workflow_run is not None and args.expected_run_attempt is not None,
+                 "Render/validate requires --sources, --expected-commit, --expected-workflow-run and --expected-run-attempt; no defaults/legacy fallback")
             need(args.validate_only or args.output is not None, "Render requires an explicit NEW --output directory")
-            gate = SourceGate(args.sources, args.expected_commit, args.expected_workflow_run, args.expected_workflow_url)
+            gate = SourceGate(args.sources, args.expected_commit, args.expected_workflow_run, args.expected_run_attempt, args.expected_workflow_url)
             branding, prepared = prepare_sources(design, gate)
             if args.validate_only:
                 result = {"status": "PASS", "scope": "source-provenance-crop-and-layout-gates", "sourceCount": len(gate.loaded), "slots": len(texts), "filesWritten": [], "nativePixelsAndFinalExports": "NOT_RUN"}

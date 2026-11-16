@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "status": "PASS_WITH_OBSERVATIONS",
+  "workflow_run": "43865738891",
+  "capture_commit": "8ffdc943d8a3cc57ad8212320a0fea586609c6da",
+  "run_attempt": 1,
+  "provenance_sha256": "81adf152ac1a9c42b74fb1971362f40b67fc919d036c3d0afe27fae85031f730",
+  "reviewer": "Hermes parent via individual vision tool review of actual C14native sources",
+  "created_utc": "2026-11-16T12:54:08.785280+00:00",
+  "screens": [
+    {
+      "source": "screenshots/concept-a-swipe.png",
+      "sha256": "c21cd35dc77f4692655f173535bb4e0d6708d6b1d1745f395fffa8bfd4eea5c3",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "individually_reviewed": true,
+      "findings": [
+        "Recognizable detailed orange flower; held-left displaced/tilted card with native Trash badge; exposed mountain-reflection next card contains no nested UI/person/watermark. Genuine left-edge clipping remains unchanged."
+      ]
+    },
+    {
+      "source": "screenshots/concept-a-large-files.png",
+      "sha256": "3db7a70bd7192b0303018de13ab8d518b3d868d6338ae28cd4ece5652af71541",
+      "status": "PASS",
+      "individually_reviewed": true,
+      "findings": [
+        "Two real12second video rows measured285.4MB and276.7MB; genuine562.1MB summary and full measured-size caveat. Loaded neutral landscape thumbnails, no nested UI/person/watermark."
+      ]
+    },
+    {
+      "source": "screenshots/concept-a-duplicates.png",
+      "sha256": "26d7900680a84a2f583a6501878ba0e21b3f4dafd6caedebabb59d4c61514dce",
+      "status": "PASS",
+      "individually_reviewed": true,
+      "findings": [
+        "Real identical autumn-tree pair, original Selected for trash/Will be kept labels. No nested UI/person/watermark. Complete-pair inset crop requires independent literal-crop review before binding."
+      ],
+      "crop_review": "Actual literal [74,1600,770,2070] reviewedPASS: completeIdenticalfiles2header, wholepair/bothlabels, noneighborwarning/clippedtext; actualscale~.902/downsample."
+    },
+    {
+      "source": "screenshots/concept-a-delete-confirm.png",
+      "sha256": "f65fc540ea693f8b8c67b51490dfcdf17eb43606adbebef392faf945580c1fc0",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "individually_reviewed": true,
+      "findings": [
+        "Actual complete opaque dark iOS Delete2photos panel/photo/Don’tAllow/Delete; no home translucency or nested screenshot. Native frame[123,696,1083,2010]; reviewed continuouscrop[110,682,1096,2024]. Raw external spinner[573,2436,633,2496] is below common final nativeviewporty2272; never retouched."
+      ]
+    },
+    {
+      "source": "screenshots/concept-a-vault.png",
+      "sha256": "4218b08c8b7c922179e859b374e287b3d6355c0a8ee972852cabe7366a75a15b",
+      "status": "PASS",
+      "individually_reviewed": true,
+      "findings": [
+        "Five loaded flower/landscape photos; no still-in-Photos warning, no nested UI/person/watermark. Native header/media intact; common requested viewport omits bottom Add button. No security/FaceIDruntime certification."
+      ]
+    },
+    {
+      "source": "screenshots/concept-a-later-swipe.png",
+      "sha256": "d14e04c0889b209f416deb43378a62d6556bd51829f716fc199caf51ff826bfb",
+      "status": "PASS",
+      "individually_reviewed": true,
+      "findings": [
+        "Actual appearance: right-shifted clockwise-tilted landscape with active upper→Later badge. Both visible photograph regions neutral/no nestedUI/person/watermark. Live-held timing verified separately from saved recorder timestamps."
+      ]
+    },
+    {
+      "source": "screenshots/concept-a-months.png",
+      "sha256": "d383dd3736d7b28185bb5199cdc3f9d63d3158789d4d656b82cae27a19157708",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "individually_reviewed": true,
+      "findings": [
+        "Real populated month list; full native capture six complete rows+menus, natural partial May continuation. Common enlarged bottom-cropped final viewport has FIVE complete rows/menus November–July, not six; June continuation begins belowclip. No tour/empty/loading state."
+      ]
+    },
+    {
+      "source": "screenshots/concept-a-analysis.png",
+      "sha256": "e07ccc894ffa1ff9d1a11198b834dfb03ca450e5b0bf42a9b29775fbc0cae8b8",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "individually_reviewed": true,
+      "findings": [
+        "Real loaded native landscape preview, seriescount6, four complete visible thumbnails plus naturally partial fifth/sixth offscreen, actual Keep5·Trash1 button. Initial Vision prompt over-required allsixsimultaneous/wholelargepreview; correct brief asks contiguous actual visible series+decision crop. Re-review literal crop pending; do not silently convert original scopedFAIL toPASS. No nested UI/person/watermark visible."
+      ],
+      "initial_review_status": "FAIL_ON_OVERSTRICT_ALL_SIX_SIMULTANEOUS_PROMPT",
+      "scope_resolution": "Independent literal-crop re-review of actual [54,1775,1152,2622] PASS_WITH_OBSERVATIONS: correct owner brief asks one continuous enlarged VISIBLE native series strip+Keep5Trash1, not allsixsimultaneous/wholelargepreview. Fourwholethumbs+partialfifth/sixthoffscreen retained. Completeinstructions/button/safetytext, nofakeaddedthumbs.",
+      "crop_individually_reviewed": true
+    },
+    {
+      "source": "screenshots/concept-a-collage.png",
+      "sha256": "18095266a20710ef64ecf9a4e1339b82890bcf6458267d904fec3c9ff14abf30",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "individually_reviewed": true,
+      "findings": [
+        "All four real neutral flower/landscape photos loaded in2x2canvas; no nestedUI/person/watermark. Canvas/title/Tools kept by common viewport; bottom plus/Save intentionally outside common finalviewport."
+      ]
+    },
+    {
+      "source": "screenshots/concept-a-editor.png",
+      "sha256": "a051ce7aed4b3b4a668210ddc26e8d32b5ffaf9815641f5cd7cfba00dfa1285b",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "individually_reviewed": true,
+      "findings": [
+        "Loaded landscape, selectedWarm borderedthumbnail/name and brightUndo/Accept. No nestedUI/person/watermark. Natural nextfilterpeek retained; common viewport clips slider/bottomtoolrow, decisivephoto/Warm/Undo/Accept remain."
+      ]
+    },
+    {
+      "source": "screenshots/concept-a-games.png",
+      "sha256": "8e34d32631665fe27b8f3b4dbc4c415755af69418aee01d802d1e8fe1416af75",
+      "status": "PASS",
+      "individually_reviewed": true,
+      "findings": [
+        "Realfilled24card/4x6Pairsboard, sixmatchedcards/3pairs visiblewithgreenchecks,18nativegoldbacks notemptyplaceholders; nofakevictory. Exposedneutralnaturephotos no nestedUI/person/watermark."
+      ]
+    },
+    {
+      "source": "screenshots/concept-a-games-menu.png",
+      "sha256": "53a248d390bc00d61ca1b6af955ddfebc12e56bbb4a7af1fe5b4dffcc777190c",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "individually_reviewed": true,
+      "findings": [
+        "Threecompleteactualmenu cards Pairs/PhotoSnake/FotoBlocks withloadednativeillustratedstandpreviews. Largeemptylowerarea meansNOTfinal10; actualplayedboardusedinstead. No inferredgameplayfrommenu."
+      ]
+    },
+    {
+      "source": "screenshots/concept-a-later.png",
+      "sha256": "13494284c4b13b0b18900af357ecb60dbdaffe7f6178d5933b0d446d78a70690",
+      "status": "PASS",
+      "individually_reviewed": true,
+      "findings": [
+        "Actualnextcard4of5, fullyvisibleAgainin2daysandseparateChangebutton; no loading/nestedUI/person/watermark. Auxpostcommitproofonly, notheld05primary."
+      ]
+    },
+    {
+      "source": "screenshots/concept-a-trash.png",
+      "sha256": "4042615d3fd6da6f5534e8c6818ff9a0b057901a00385a0fb7e711023049a4d9",
+      "status": "PASS_WITH_OBSERVATIONS",
+      "individually_reviewed": true,
+      "findings": [
+        "Twoactualneutralphotos mountainreflection+flower, no nestedAppScreenshots/person/watermark. RealgenericRemove2photosandvideosCTA preserved; nothingdeletedclaimcorrect. NativeiCloudfootnotecontinuationclippedbyoriginalactionbar; unusedforfinal03(whichusesfullactualsystemdialog)."
+      ]
+    }
+  ],
+  "reviewed_required_screen_count": 14,
+  "required_screen_count": 14,
+  "branding": {
+    "source": "branding/native-wordmark.png",
+    "sha256": "513d63a0fffe1213d48c6101c0b57d5ebcf50518758edb6643c3bfc00a7af9b9",
+    "status": "PASS",
+    "individually_reviewed": true,
+    "findings": [
+      "OriginalGaleriQmechanicalvaultdialQ+completetail; darknativeinkforlightbackground; no clippedglyph/foreignbranding. NativeRGBAandcomponentorigin separatelybound."
+    ]
+  },
+  "final_export_acceptance": "NOT RUN",
+  "outside_acceptance": [
+    "Real device",
+    "FaceID/security certification",
+    "Conversion",
+    "Other locales",
+    "ASC upload/submission"
+  ],
+  "approved": true,
+  "completed_utc": "2026-11-16T13:00:07.526032+00:00",
+  "native_burst": {
+    "frame_count": 16,
+    "selected_real_frame": 1,
+    "actual_date_and_change_visible": true,
+    "all_ocr_after_acquisition": true
+  },
+  "visual_rejections": [],
+  "observations": [
+    "Raw03externalspinner below commonnativeviewporty2272, notretouched; literalopaquecompletepanelcropverified.",
+    "Finalcommonbottomcrop exposesfivecompletemonthrows, notsix; intentionallyomitsbottomAdd/Save/Tool/Changephotos controls in some images. Decisivemain evidence remains and finalfilesmuststillbevisuallyreviewed.",
+    "Series nativehorizontalclip is retained, no sixvisiblethumbnailclaim."
+  ]
+}

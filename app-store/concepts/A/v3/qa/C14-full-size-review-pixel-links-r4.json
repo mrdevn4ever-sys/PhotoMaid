@@ -1,0 +1,96 @@
+{
+  "status": "PASS",
+  "verified_count": 10,
+  "images": [
+    {
+      "slot": 1,
+      "file": "01-swipe.png",
+      "reviewed_full_size_actual": "render-final-C14-r2/01-swipe.png",
+      "final_file_sha256": "14aba98a14d645f6e363cbe69dd29bb8851e65172eae6cb50654902e8eb7d67d",
+      "final_and_reviewed_pixel_sha256": "ca07ef3f105e3e6c14a3e221063d72831c78934493c6f0bfb26ce57dcd882934",
+      "pixels_byte_equal": true,
+      "file_bytes_may_differ": "Fresh ICC creation-time header only; actual source RGB identical. Final-file hashes bind final report."
+    },
+    {
+      "slot": 2,
+      "file": "02-duplicates-large-files.png",
+      "reviewed_full_size_actual": "render-final-C14-r1/02-duplicates-large-files.png",
+      "final_file_sha256": "2721ef8ca021d3686b9ca9c558fdfe70fa7695e4760a516881e194f7dc400253",
+      "final_and_reviewed_pixel_sha256": "6ca4e64f0129bbaf04ad7015745039d2c877be179738c9e4f48df2342e3e1964",
+      "pixels_byte_equal": true,
+      "file_bytes_may_differ": "Fresh ICC creation-time header only; actual source RGB identical. Final-file hashes bind final report."
+    },
+    {
+      "slot": 3,
+      "file": "03-delete-confirmation.png",
+      "reviewed_full_size_actual": "render-final-C14-r3/03-delete-confirmation.png",
+      "final_file_sha256": "dda64a4a10d459283218fe4714eaacb86ae4968a20d87179bf51cdc19a025e9e",
+      "final_and_reviewed_pixel_sha256": "4eb047de7f64b4d0665d2816bb10670c6bcaa50f461a99042935f342b5613534",
+      "pixels_byte_equal": true,
+      "file_bytes_may_differ": "Fresh ICC creation-time header only; actual source RGB identical. Final-file hashes bind final report."
+    },
+    {
+      "slot": 4,
+      "file": "04-vault.png",
+      "reviewed_full_size_actual": "render-final-C14-r1/04-vault.png",
+      "final_file_sha256": "c04b816dbfd0ffda3b81e3c19f0d7f3b0106a44c3065f2f64464c4d0f4ee186c",
+      "final_and_reviewed_pixel_sha256": "3f4c09bc8575e6de96b4982ec525b4813f22fc2e2fb0b2a028adc96526f78d36",
+      "pixels_byte_equal": true,
+      "file_bytes_may_differ": "Fresh ICC creation-time header only; actual source RGB identical. Final-file hashes bind final report."
+    },
+    {
+      "slot": 5,
+      "file": "05-later.png",
+      "reviewed_full_size_actual": "render-final-C14-r2/05-later.png",
+      "final_file_sha256": "7ce31608b7fd28f8e6daed9faaf85e701f6dd46631bedd8f8a34334056521061",
+      "final_and_reviewed_pixel_sha256": "bd21e0b1a41414fcb01a841061ade91c8afecddd5afb282161ec14006e4f12df",
+      "pixels_byte_equal": true,
+      "file_bytes_may_differ": "Fresh ICC creation-time header only; actual source RGB identical. Final-file hashes bind final report."
+    },
+    {
+      "slot": 6,
+      "file": "06-months.png",
+      "reviewed_full_size_actual": "render-final-C14-r1/06-months.png",
+      "final_file_sha256": "0eeea2b898848a0faad3383efe4b46618f997a45dfe6e081477cb361303bfe13",
+      "final_and_reviewed_pixel_sha256": "6509da94d77409d6f0c522e5dcfa733ae07c87c70e6eade5ce0ab9ccd0f6a8c0",
+      "pixels_byte_equal": true,
+      "file_bytes_may_differ": "Fresh ICC creation-time header only; actual source RGB identical. Final-file hashes bind final report."
+    },
+    {
+      "slot": 7,
+      "file": "07-analysis.png",
+      "reviewed_full_size_actual": "render-final-C14-r1/07-analysis.png",
+      "final_file_sha256": "4fffaf0f451a62948f491a4d6a225d370c96475666fb623e696676777492d3fb",
+      "final_and_reviewed_pixel_sha256": "b2683de0520932f404f8524831cfc0610b58f347c270542a38afcb517208f7ad",
+      "pixels_byte_equal": true,
+      "file_bytes_may_differ": "Fresh ICC creation-time header only; actual source RGB identical. Final-file hashes bind final report."
+    },
+    {
+      "slot": 8,
+      "file": "08-collage.png",
+      "reviewed_full_size_actual": "render-final-C14-r1/08-collage.png",
+      "final_file_sha256": "003fa09069b8cbd0af5af0db6885b63d721137c77e55a0d3cacdf789215ae140",
+      "final_and_reviewed_pixel_sha256": "36267714092d7c4b2aa4f475cecb54dcabe5a027e91dd9a7de7f50173f72d714",
+      "pixels_byte_equal": true,
+      "file_bytes_may_differ": "Fresh ICC creation-time header only; actual source RGB identical. Final-file hashes bind final report."
+    },
+    {
+      "slot": 9,
+      "file": "09-editor.png",
+      "reviewed_full_size_actual": "render-final-C14-r1/09-editor.png",
+      "final_file_sha256": "193f2d4ada9e27a5273faab527cf5589b6611f862c2a7b120ca8e78cb0830f67",
+      "final_and_reviewed_pixel_sha256": "0f0db69424d8f74bf5b44d8b9ca92791f596180ff6f7800c25da424232d7ee74",
+      "pixels_byte_equal": true,
+      "file_bytes_may_differ": "Fresh ICC creation-time header only; actual source RGB identical. Final-file hashes bind final report."
+    },
+    {
+      "slot": 10,
+      "file": "10-games.png",
+      "reviewed_full_size_actual": "render-final-C14-r1/10-games.png",
+      "final_file_sha256": "076f7b6600b871e76707ddb5510bf60248c3f52d4705742d3a99ae3781e365f6",
+      "final_and_reviewed_pixel_sha256": "d13f064848f6fb2296ec555e3988e70a42d0a4aa3c6f4f32cd5e86fe5c9204b8",
+      "pixels_byte_equal": true,
+      "file_bytes_may_differ": "Fresh ICC creation-time header only; actual source RGB identical. Final-file hashes bind final report."
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "status": "PASS",
+  "render_manifest_sha256": "1bd6ea04ca07516486f5256c59cda17338e320110e1ef6e32b294a52857e5651",
+  "check_count": 23,
+  "expected_rejections": 18,
+  "results": [
+    {
+      "case": "actual-C14-source-preparation-with-exact-clean-dialog",
+      "result": "PASS",
+      "kind": "positive"
+    },
+    {
+      "case": "dialog-one-pixel-left-gutter",
+      "result": "PASS",
+      "kind": "expected_rejection",
+      "actual_error": "Series/dialog focus must cover both native screen edges; no underlying UI gutter"
+    },
+    {
+      "case": "dialog-one-pixel-right-gutter",
+      "result": "PASS",
+      "kind": "expected_rejection",
+      "actual_error": "Series/dialog focus must cover both native screen edges; no underlying UI gutter"
+    },
+    {
+      "case": "dialog-rounded-marketing-mask",
+      "result": "PASS",
+      "kind": "expected_rejection",
+      "actual_error": "Full-width series focus must be flat and shadow-free; no exposed underlying UI gutter"
+    },
+    {
+      "case": "dialog-added-shadow",
+      "result": "PASS",
+      "kind": "expected_rejection",
+      "actual_error": "Full-width series focus must be flat and shadow-free; no exposed underlying UI gutter"
+    },
+    {
+      "case": "dialog-crop-misses-last-native-row",
+      "result": "PASS",
+      "kind": "expected_rejection",
+      "actual_error": "Inset omits required whole native evidence: system-dialog"
+    },
+    {
+      "case": "independent-dialog-style-radius",
+      "result": "PASS",
+      "kind": "expected_rejection",
+      "actual_error": "Series focus must close the full visible screen width without gutter/shadow"
+    },
+    {
+      "case": "independent-dialog-style-shadowBlur",
+      "result": "PASS",
+      "kind": "expected_rejection",
+      "actual_error": "Series focus must close the full visible screen width without gutter/shadow"
+    },
+    {
+      "case": "independent-dialog-style-shadowAlpha",
+      "result": "PASS",
+      "kind": "expected_rejection",
+      "actual_error": "Series focus must close the full visible screen width without gutter/shadow"
+    },
+    {
+      "case": "other-inset-styles-unchanged",
+      "result": "PASS",
+      "kind": "positive"
+    },
+    {
+      "case": "actual-final-native-wordmark-native-reference",
+      "result": "PASS",
+      "kind": "positive"
+    },
+    {
+      "case": "actual-native-wordmark-one-pixel-corruption",
+      "result": "PASS",
+      "kind": "expected_rejection",
+      "actual_error": "Independent native pixel mismatch: native-wordmark"
+    },
+    {
+      "case": "actual-final-full-phone-native-reference",
+      "result": "PASS",
+      "kind": "positive"
+    },
+    {
+      "case": "actual-full-phone-one-pixel-corruption",
+      "result": "PASS",
+      "kind": "expected_rejection",
+      "actual_error": "Independent native pixel mismatch: full-phone"
+    },
+    {
+      "case": "actual-preview-layout-order-and-pixels",
+      "result": "PASS",
+      "kind": "positive"
+    },
+    {
+      "case": "two-row-overview-metadata",
+      "result": "PASS",
+      "kind": "expected_rejection",
+      "actual_error": "Preview manifest geometry differs from SHA-bound design"
+    },
+    {
+      "case": "reversed-search-spatial-order",
+      "result": "PASS",
+      "kind": "expected_rejection",
+      "actual_error": "Preview manifest geometry differs from SHA-bound design"
+    },
+    {
+      "case": "wrong-search-canvas",
+      "result": "PASS",
+      "kind": "expected_rejection",
+      "actual_error": "Preview manifest geometry differs from SHA-bound design"
+    },
+    {
+      "case": "malformed-independent-attempt-None",
+      "result": "PASS",
+      "kind": "expected_rejection",
+      "actual_error": "independent test attempt: canonical positive run attempt required (integer or numeric string)"
+    },
+    {
+      "case": "malformed-independent-attempt-0",
+      "result": "PASS",
+      "kind": "expected_rejection",
+      "actual_error": "independent test attempt: canonical positive run attempt required (integer or numeric string)"
+    },
+    {
+      "case": "malformed-independent-attempt--1",
+      "result": "PASS",
+      "kind": "expected_rejection",
+      "actual_error": "independent test attempt: canonical positive run attempt required (integer or numeric string)"
+    },
+    {
+      "case": "malformed-independent-attempt-'01'",
+      "result": "PASS",
+      "kind": "expected_rejection",
+      "actual_error": "independent test attempt: canonical positive run attempt required (integer or numeric string)"
+    },
+    {
+      "case": "malformed-independent-attempt-'1.0'",
+      "result": "PASS",
+      "kind": "expected_rejection",
+      "actual_error": "independent test attempt: canonical positive run attempt required (integer or numeric string)"
+    }
+  ],
+  "actual_native_inputs_unchanged": true,
+  "mutations": "Isolated deepcopy/in-memory ONLY; never saved as native evidence."
+}

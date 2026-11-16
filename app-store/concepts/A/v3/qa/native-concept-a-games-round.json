@@ -1,0 +1,22 @@
+{
+  "cardCount" : 24,
+  "finished" : false,
+  "matchedCardIDs" : [
+    "memory.card.11",
+    "memory.card.2",
+    "memory.card.3",
+    "memory.card.4",
+    "memory.card.7",
+    "memory.card.9"
+  ],
+  "matchedPrefix" : "Pair found",
+  "matchedValues" : [
+    "Pair found, Picture 1",
+    "Pair found, Picture 9",
+    "Pair found, Picture 4",
+    "Pair found, Picture 9",
+    "Pair found, Picture 4",
+    "Pair found, Picture 1"
+  ],
+  "source" : "actual library-photo round through native taps"
+}

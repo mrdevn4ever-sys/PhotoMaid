@@ -1,0 +1,1001 @@
+{
+  "schema_version": 1,
+  "creative_revision": 3,
+  "technical_export_status": "PASS",
+  "workflow_run": "43865738891",
+  "run_attempt": 1,
+  "commit": "8ffdc943d8a3cc57ad8212320a0fea586609c6da",
+  "locale": "en-US",
+  "png_count": 10,
+  "images": [
+    {
+      "slot": 1,
+      "file": "01-swipe.png",
+      "sha256": "14aba98a14d645f6e363cbe69dd29bb8851e65172eae6cb50654902e8eb7d67d",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "4a33e622ad15da6d3617fbd3f692e91f84dca63d6137fd7e451f94a31728364a",
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 1687598,
+      "visible_hardware_frame_pixels_verified": 38692,
+      "phone_geometry": {
+        "fullTargetGeometry": [
+          131,
+          844,
+          1075,
+          2896
+        ],
+        "visibleGeometry": [
+          131,
+          844,
+          1075,
+          2622
+        ],
+        "visibleLocalRect": [
+          0,
+          0,
+          944,
+          1778
+        ],
+        "visibleSourceBounds": [
+          0.0,
+          0.0,
+          1206.0,
+          2271.8888888888887
+        ],
+        "viewportClipPixels": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 274
+        },
+        "fullFrameGeometry": [
+          122,
+          835,
+          1084,
+          2905
+        ],
+        "visibleFrameGeometry": [
+          122,
+          835,
+          1084,
+          2622
+        ],
+        "nativeScale": 0.7827529021558872,
+        "sizeRelativeToV2XY": [
+          1.1741293532338308,
+          1.173913043478261
+        ],
+        "resampleRoundingXY": [
+          0,
+          -0.37810945273622565
+        ],
+        "clipping": "bottom-only",
+        "completePhoneVisible": false
+      }
+    },
+    {
+      "slot": 2,
+      "file": "02-duplicates-large-files.png",
+      "sha256": "2721ef8ca021d3686b9ca9c558fdfe70fa7695e4760a516881e194f7dc400253",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "4a33e622ad15da6d3617fbd3f692e91f84dca63d6137fd7e451f94a31728364a",
+      "native_layers_verified": 3,
+      "independently_compared_native_pixels": 1679026,
+      "visible_hardware_frame_pixels_verified": 38692,
+      "phone_geometry": {
+        "fullTargetGeometry": [
+          131,
+          844,
+          1075,
+          2896
+        ],
+        "visibleGeometry": [
+          131,
+          844,
+          1075,
+          2622
+        ],
+        "visibleLocalRect": [
+          0,
+          0,
+          944,
+          1778
+        ],
+        "visibleSourceBounds": [
+          0.0,
+          0.0,
+          1206.0,
+          2271.8888888888887
+        ],
+        "viewportClipPixels": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 274
+        },
+        "fullFrameGeometry": [
+          122,
+          835,
+          1084,
+          2905
+        ],
+        "visibleFrameGeometry": [
+          122,
+          835,
+          1084,
+          2622
+        ],
+        "nativeScale": 0.7827529021558872,
+        "sizeRelativeToV2XY": [
+          1.1741293532338308,
+          1.173913043478261
+        ],
+        "resampleRoundingXY": [
+          0,
+          -0.37810945273622565
+        ],
+        "clipping": "bottom-only",
+        "completePhoneVisible": false
+      }
+    },
+    {
+      "slot": 3,
+      "file": "03-delete-confirmation.png",
+      "sha256": "dda64a4a10d459283218fe4714eaacb86ae4968a20d87179bf51cdc19a025e9e",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "4a33e622ad15da6d3617fbd3f692e91f84dca63d6137fd7e451f94a31728364a",
+      "native_layers_verified": 3,
+      "independently_compared_native_pixels": 1687598,
+      "visible_hardware_frame_pixels_verified": 38692,
+      "phone_geometry": {
+        "fullTargetGeometry": [
+          131,
+          844,
+          1075,
+          2896
+        ],
+        "visibleGeometry": [
+          131,
+          844,
+          1075,
+          2622
+        ],
+        "visibleLocalRect": [
+          0,
+          0,
+          944,
+          1778
+        ],
+        "visibleSourceBounds": [
+          0.0,
+          0.0,
+          1206.0,
+          2271.8888888888887
+        ],
+        "viewportClipPixels": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 274
+        },
+        "fullFrameGeometry": [
+          122,
+          835,
+          1084,
+          2905
+        ],
+        "visibleFrameGeometry": [
+          122,
+          835,
+          1084,
+          2622
+        ],
+        "nativeScale": 0.7827529021558872,
+        "sizeRelativeToV2XY": [
+          1.1741293532338308,
+          1.173913043478261
+        ],
+        "resampleRoundingXY": [
+          0,
+          -0.37810945273622565
+        ],
+        "clipping": "bottom-only",
+        "completePhoneVisible": false
+      }
+    },
+    {
+      "slot": 4,
+      "file": "04-vault.png",
+      "sha256": "c04b816dbfd0ffda3b81e3c19f0d7f3b0106a44c3065f2f64464c4d0f4ee186c",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "4a33e622ad15da6d3617fbd3f692e91f84dca63d6137fd7e451f94a31728364a",
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 1687598,
+      "visible_hardware_frame_pixels_verified": 38692,
+      "phone_geometry": {
+        "fullTargetGeometry": [
+          131,
+          844,
+          1075,
+          2896
+        ],
+        "visibleGeometry": [
+          131,
+          844,
+          1075,
+          2622
+        ],
+        "visibleLocalRect": [
+          0,
+          0,
+          944,
+          1778
+        ],
+        "visibleSourceBounds": [
+          0.0,
+          0.0,
+          1206.0,
+          2271.8888888888887
+        ],
+        "viewportClipPixels": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 274
+        },
+        "fullFrameGeometry": [
+          122,
+          835,
+          1084,
+          2905
+        ],
+        "visibleFrameGeometry": [
+          122,
+          835,
+          1084,
+          2622
+        ],
+        "nativeScale": 0.7827529021558872,
+        "sizeRelativeToV2XY": [
+          1.1741293532338308,
+          1.173913043478261
+        ],
+        "resampleRoundingXY": [
+          0,
+          -0.37810945273622565
+        ],
+        "clipping": "bottom-only",
+        "completePhoneVisible": false
+      }
+    },
+    {
+      "slot": 5,
+      "file": "05-later.png",
+      "sha256": "7ce31608b7fd28f8e6daed9faaf85e701f6dd46631bedd8f8a34334056521061",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "4a33e622ad15da6d3617fbd3f692e91f84dca63d6137fd7e451f94a31728364a",
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 1687598,
+      "visible_hardware_frame_pixels_verified": 38692,
+      "phone_geometry": {
+        "fullTargetGeometry": [
+          131,
+          844,
+          1075,
+          2896
+        ],
+        "visibleGeometry": [
+          131,
+          844,
+          1075,
+          2622
+        ],
+        "visibleLocalRect": [
+          0,
+          0,
+          944,
+          1778
+        ],
+        "visibleSourceBounds": [
+          0.0,
+          0.0,
+          1206.0,
+          2271.8888888888887
+        ],
+        "viewportClipPixels": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 274
+        },
+        "fullFrameGeometry": [
+          122,
+          835,
+          1084,
+          2905
+        ],
+        "visibleFrameGeometry": [
+          122,
+          835,
+          1084,
+          2622
+        ],
+        "nativeScale": 0.7827529021558872,
+        "sizeRelativeToV2XY": [
+          1.1741293532338308,
+          1.173913043478261
+        ],
+        "resampleRoundingXY": [
+          0,
+          -0.37810945273622565
+        ],
+        "clipping": "bottom-only",
+        "completePhoneVisible": false
+      }
+    },
+    {
+      "slot": 6,
+      "file": "06-months.png",
+      "sha256": "0eeea2b898848a0faad3383efe4b46618f997a45dfe6e081477cb361303bfe13",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "4a33e622ad15da6d3617fbd3f692e91f84dca63d6137fd7e451f94a31728364a",
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 1687598,
+      "visible_hardware_frame_pixels_verified": 38692,
+      "phone_geometry": {
+        "fullTargetGeometry": [
+          131,
+          844,
+          1075,
+          2896
+        ],
+        "visibleGeometry": [
+          131,
+          844,
+          1075,
+          2622
+        ],
+        "visibleLocalRect": [
+          0,
+          0,
+          944,
+          1778
+        ],
+        "visibleSourceBounds": [
+          0.0,
+          0.0,
+          1206.0,
+          2271.8888888888887
+        ],
+        "viewportClipPixels": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 274
+        },
+        "fullFrameGeometry": [
+          122,
+          835,
+          1084,
+          2905
+        ],
+        "visibleFrameGeometry": [
+          122,
+          835,
+          1084,
+          2622
+        ],
+        "nativeScale": 0.7827529021558872,
+        "sizeRelativeToV2XY": [
+          1.1741293532338308,
+          1.173913043478261
+        ],
+        "resampleRoundingXY": [
+          0,
+          -0.37810945273622565
+        ],
+        "clipping": "bottom-only",
+        "completePhoneVisible": false
+      }
+    },
+    {
+      "slot": 7,
+      "file": "07-analysis.png",
+      "sha256": "4fffaf0f451a62948f491a4d6a225d370c96475666fb623e696676777492d3fb",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "4a33e622ad15da6d3617fbd3f692e91f84dca63d6137fd7e451f94a31728364a",
+      "native_layers_verified": 3,
+      "independently_compared_native_pixels": 1687598,
+      "visible_hardware_frame_pixels_verified": 38692,
+      "phone_geometry": {
+        "fullTargetGeometry": [
+          131,
+          844,
+          1075,
+          2896
+        ],
+        "visibleGeometry": [
+          131,
+          844,
+          1075,
+          2622
+        ],
+        "visibleLocalRect": [
+          0,
+          0,
+          944,
+          1778
+        ],
+        "visibleSourceBounds": [
+          0.0,
+          0.0,
+          1206.0,
+          2271.8888888888887
+        ],
+        "viewportClipPixels": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 274
+        },
+        "fullFrameGeometry": [
+          122,
+          835,
+          1084,
+          2905
+        ],
+        "visibleFrameGeometry": [
+          122,
+          835,
+          1084,
+          2622
+        ],
+        "nativeScale": 0.7827529021558872,
+        "sizeRelativeToV2XY": [
+          1.1741293532338308,
+          1.173913043478261
+        ],
+        "resampleRoundingXY": [
+          0,
+          -0.37810945273622565
+        ],
+        "clipping": "bottom-only",
+        "completePhoneVisible": false
+      }
+    },
+    {
+      "slot": 8,
+      "file": "08-collage.png",
+      "sha256": "003fa09069b8cbd0af5af0db6885b63d721137c77e55a0d3cacdf789215ae140",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "4a33e622ad15da6d3617fbd3f692e91f84dca63d6137fd7e451f94a31728364a",
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 1687598,
+      "visible_hardware_frame_pixels_verified": 38692,
+      "phone_geometry": {
+        "fullTargetGeometry": [
+          131,
+          844,
+          1075,
+          2896
+        ],
+        "visibleGeometry": [
+          131,
+          844,
+          1075,
+          2622
+        ],
+        "visibleLocalRect": [
+          0,
+          0,
+          944,
+          1778
+        ],
+        "visibleSourceBounds": [
+          0.0,
+          0.0,
+          1206.0,
+          2271.8888888888887
+        ],
+        "viewportClipPixels": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 274
+        },
+        "fullFrameGeometry": [
+          122,
+          835,
+          1084,
+          2905
+        ],
+        "visibleFrameGeometry": [
+          122,
+          835,
+          1084,
+          2622
+        ],
+        "nativeScale": 0.7827529021558872,
+        "sizeRelativeToV2XY": [
+          1.1741293532338308,
+          1.173913043478261
+        ],
+        "resampleRoundingXY": [
+          0,
+          -0.37810945273622565
+        ],
+        "clipping": "bottom-only",
+        "completePhoneVisible": false
+      }
+    },
+    {
+      "slot": 9,
+      "file": "09-editor.png",
+      "sha256": "193f2d4ada9e27a5273faab527cf5589b6611f862c2a7b120ca8e78cb0830f67",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "4a33e622ad15da6d3617fbd3f692e91f84dca63d6137fd7e451f94a31728364a",
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 1687598,
+      "visible_hardware_frame_pixels_verified": 38692,
+      "phone_geometry": {
+        "fullTargetGeometry": [
+          131,
+          844,
+          1075,
+          2896
+        ],
+        "visibleGeometry": [
+          131,
+          844,
+          1075,
+          2622
+        ],
+        "visibleLocalRect": [
+          0,
+          0,
+          944,
+          1778
+        ],
+        "visibleSourceBounds": [
+          0.0,
+          0.0,
+          1206.0,
+          2271.8888888888887
+        ],
+        "viewportClipPixels": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 274
+        },
+        "fullFrameGeometry": [
+          122,
+          835,
+          1084,
+          2905
+        ],
+        "visibleFrameGeometry": [
+          122,
+          835,
+          1084,
+          2622
+        ],
+        "nativeScale": 0.7827529021558872,
+        "sizeRelativeToV2XY": [
+          1.1741293532338308,
+          1.173913043478261
+        ],
+        "resampleRoundingXY": [
+          0,
+          -0.37810945273622565
+        ],
+        "clipping": "bottom-only",
+        "completePhoneVisible": false
+      }
+    },
+    {
+      "slot": 10,
+      "file": "10-games.png",
+      "sha256": "076f7b6600b871e76707ddb5510bf60248c3f52d4705742d3a99ae3781e365f6",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "4a33e622ad15da6d3617fbd3f692e91f84dca63d6137fd7e451f94a31728364a",
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 1687598,
+      "visible_hardware_frame_pixels_verified": 38692,
+      "phone_geometry": {
+        "fullTargetGeometry": [
+          131,
+          844,
+          1075,
+          2896
+        ],
+        "visibleGeometry": [
+          131,
+          844,
+          1075,
+          2622
+        ],
+        "visibleLocalRect": [
+          0,
+          0,
+          944,
+          1778
+        ],
+        "visibleSourceBounds": [
+          0.0,
+          0.0,
+          1206.0,
+          2271.8888888888887
+        ],
+        "viewportClipPixels": {
+          "left": 0,
+          "top": 0,
+          "right": 0,
+          "bottom": 274
+        },
+        "fullFrameGeometry": [
+          122,
+          835,
+          1084,
+          2905
+        ],
+        "visibleFrameGeometry": [
+          122,
+          835,
+          1084,
+          2622
+        ],
+        "nativeScale": 0.7827529021558872,
+        "sizeRelativeToV2XY": [
+          1.1741293532338308,
+          1.173913043478261
+        ],
+        "resampleRoundingXY": [
+          0,
+          -0.37810945273622565
+        ],
+        "clipping": "bottom-only",
+        "completePhoneVisible": false
+      }
+    }
+  ],
+  "preview_count": 2,
+  "uniform_phone_box": [
+    131,
+    844,
+    1075,
+    2896
+  ],
+  "fixture_visual_source_allowlist_sha256": "c8c932c1ca56a40c97736337114bda64782d00efe5b432685d600567c4f49755",
+  "phone_geometry": {
+    "fullTargetGeometry": [
+      131,
+      844,
+      1075,
+      2896
+    ],
+    "visibleGeometry": [
+      131,
+      844,
+      1075,
+      2622
+    ],
+    "visibleLocalRect": [
+      0,
+      0,
+      944,
+      1778
+    ],
+    "visibleSourceBounds": [
+      0.0,
+      0.0,
+      1206.0,
+      2271.8888888888887
+    ],
+    "viewportClipPixels": {
+      "left": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 274
+    },
+    "fullFrameGeometry": [
+      122,
+      835,
+      1084,
+      2905
+    ],
+    "visibleFrameGeometry": [
+      122,
+      835,
+      1084,
+      2622
+    ],
+    "nativeScale": 0.7827529021558872,
+    "sizeRelativeToV2XY": [
+      1.1741293532338308,
+      1.173913043478261
+    ],
+    "resampleRoundingXY": [
+      0,
+      -0.37810945273622565
+    ],
+    "clipping": "bottom-only",
+    "completePhoneVisible": false
+  },
+  "required_inset_slots": [
+    2,
+    3,
+    7
+  ],
+  "subtitle_count": 10,
+  "stock_library": {
+    "policy": "approved-stock-photos-and-videos-no-app-screenshots",
+    "actual_library_sha256": "1c4a91348a0ca1173ec58dbfb93c0c89f9de3bc5f18a9d71656388bd24611483",
+    "actual_asset_count": 37,
+    "actual_photo_count": 35,
+    "actual_video_count": 2,
+    "actual_screenshot_subtype_count": 0
+  },
+  "native_scene_policy": "sharp-stock-hero-opaque-confirmation-filled-photo-game",
+  "native_scene_audit": {
+    "status": "PASS",
+    "policy": "sharp-stock-hero-opaque-confirmation-filled-photo-game",
+    "source_bindings": {
+      "concept-a-v3-scenes.json": "eb64d161d4cc4c7682350bfef7a2e949f4a310efd80b6c730b08bbd9638c2c61",
+      "concept-a-system-settings.json": "2851cb14bd2b443ba19654488dad57d4d9b82bf1beb11882969b035adcb8f4fc",
+      "concept-a-delete-confirm-frame.json": "c4c8f1b3e67c654fc18c037c22a5dd0ba77a69b8253543faaae9f6c6b1a530ba",
+      "concept-a-games-round.json": "8e0c03eafdc7a417c0174231b1fe7af3de4e7f65ca86f0e25634f02b44318525",
+      "concept-a-library.json": "1c4a91348a0ca1173ec58dbfb93c0c89f9de3bc5f18a9d71656388bd24611483",
+      "stills/concept-a-delete-confirm-before.png": "5b1aa208b55437ce3ba00f52dcb3b38f3490744d684319c4eea65576954706c9",
+      "screenshots/concept-a-delete-confirm.png": "f65fc540ea693f8b8c67b51490dfcdf17eb43606adbebef392faf945580c1fc0",
+      "screenshots/concept-a-swipe.png": "c21cd35dc77f4692655f173535bb4e0d6708d6b1d1745f395fffa8bfd4eea5c3",
+      "screenshots/concept-a-games.png": "8e34d32631665fe27b8f3b4dbc4c415755af69418aee01d802d1e8fe1416af75",
+      "screenshots/concept-a-games-menu.png": "53a248d390bc00d61ca1b6af955ddfebc12e56bbb4a7af1fe5b4dffcc777190c"
+    },
+    "hero_filename": "CA_30_pretty_23.jpg",
+    "actual_dialog_native_rect": [
+      123,
+      696,
+      1083,
+      2010
+    ],
+    "dialog_last_crop_pixel_equal": true,
+    "actual_matched_card_count": 6,
+    "visual_opacity_hero_clarity_game_fill_and_final_spinner_acceptance": "NOT RUN",
+    "errors": []
+  },
+  "render_manifest_sha256": "1bd6ea04ca07516486f5256c59cda17338e320110e1ef6e32b294a52857e5651",
+  "design_sha256": "090ae1dfe695bf9027ced52ad69940a77c6be295d509f449556eb202d9d22a49",
+  "provenance_sha256": "81adf152ac1a9c42b74fb1971362f40b67fc919d036c3d0afe27fae85031f730",
+  "previews": [
+    {
+      "kind": "overview",
+      "file": "00-overview.jpg",
+      "width": 2630,
+      "height": 564,
+      "rows": 1,
+      "columns": 10,
+      "slotIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "tileSize": [
+        241,
+        524
+      ],
+      "cells": [
+        {
+          "slot": 1,
+          "targetGeometry": [
+            20,
+            20,
+            261,
+            544
+          ]
+        },
+        {
+          "slot": 2,
+          "targetGeometry": [
+            281,
+            20,
+            522,
+            544
+          ]
+        },
+        {
+          "slot": 3,
+          "targetGeometry": [
+            542,
+            20,
+            783,
+            544
+          ]
+        },
+        {
+          "slot": 4,
+          "targetGeometry": [
+            803,
+            20,
+            1044,
+            544
+          ]
+        },
+        {
+          "slot": 5,
+          "targetGeometry": [
+            1064,
+            20,
+            1305,
+            544
+          ]
+        },
+        {
+          "slot": 6,
+          "targetGeometry": [
+            1325,
+            20,
+            1566,
+            544
+          ]
+        },
+        {
+          "slot": 7,
+          "targetGeometry": [
+            1586,
+            20,
+            1827,
+            544
+          ]
+        },
+        {
+          "slot": 8,
+          "targetGeometry": [
+            1847,
+            20,
+            2088,
+            544
+          ]
+        },
+        {
+          "slot": 9,
+          "targetGeometry": [
+            2108,
+            20,
+            2349,
+            544
+          ]
+        },
+        {
+          "slot": 10,
+          "targetGeometry": [
+            2369,
+            20,
+            2610,
+            544
+          ]
+        }
+      ],
+      "sha256": "a9c6feda10565daf5a562ea5dfb84db6d775181ac3af89fbd3dfc41ef0fffff4",
+      "max_mean_channel_difference": 1.6878701973329955
+    },
+    {
+      "kind": "search",
+      "file": "00-search-preview.jpg",
+      "width": 390,
+      "height": 276,
+      "rows": 1,
+      "columns": 3,
+      "slotIds": [
+        1,
+        2,
+        3
+      ],
+      "tileSize": [
+        112,
+        244
+      ],
+      "cells": [
+        {
+          "slot": 1,
+          "targetGeometry": [
+            16,
+            16,
+            128,
+            260
+          ]
+        },
+        {
+          "slot": 2,
+          "targetGeometry": [
+            139,
+            16,
+            251,
+            260
+          ]
+        },
+        {
+          "slot": 3,
+          "targetGeometry": [
+            262,
+            16,
+            374,
+            260
+          ]
+        }
+      ],
+      "sha256": "e432c53717724374b176e8c8573434ccac881d34bee262d10eb9fc7a8fd941d5",
+      "max_mean_channel_difference": 2.0286153395784545
+    }
+  ],
+  "native_pixels": "PASS, independently compared to ICC-normalized original native files; outer alpha edges excluded",
+  "human_final_visual_acceptance": "NOT RUN by this automatic auditor",
+  "security_runtime_conversion_or_store_upload_acceptance": "NOT RUN"
+}

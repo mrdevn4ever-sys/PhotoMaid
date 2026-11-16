@@ -1,0 +1,312 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "fresh_capture": true,
+  "locale": "en-US",
+  "app_language": "en",
+  "platform": "iOS Simulator",
+  "base_commit": "583eb804a81401aa2010996875b35d05afc61539",
+  "commit": "8ffdc943d8a3cc57ad8212320a0fea586609c6da",
+  "workflow_run": "43865738891",
+  "run_attempt": "1",
+  "workflow_url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/43865738891",
+  "branch": "hermes/store-concept-a-en",
+  "captured_at": "2026-11-16T12:43:11.045554+00:00",
+  "app": {
+    "CFBundleDisplayName": "GaleriQ",
+    "CFBundleShortVersionString": "1.0.1",
+    "CFBundleVersion": "2",
+    "CFBundleIdentifier": "com.mrdevn4ever.photomaid"
+  },
+  "device": {
+    "device_class": "iphone-medium",
+    "name": "iPhone 17 Pro",
+    "device_type": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+    "os_version": "26.2",
+    "sdk": "26.5",
+    "udid": "DC6F75A6-DCF4-43B4-953B-645940B6BE09",
+    "actual_duo": false
+  },
+  "capture_summary": {
+    "devicesAndConfigurations": [
+      {
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "DC6F75A6-DCF4-43B4-953B-645940B6BE09",
+          "deviceName": "PhotoMaid Store Current",
+          "modelName": "iPhone 17 Pro",
+          "osBuildNumber": "23C54",
+          "osVersion": "26.2",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 1,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ],
+    "environmentDescription": "PhotoMaid · Built with macOS 26.7.2",
+    "expectedFailures": 0,
+    "failedTests": 0,
+    "finishTime": 1794832951.25,
+    "passedTests": 1,
+    "result": "Passed",
+    "skippedTests": 0,
+    "startTime": 1794832374.477,
+    "statistics": [],
+    "testFailures": [],
+    "title": "Test - PhotoMaid",
+    "topInsights": [],
+    "totalTestCount": 1
+  },
+  "fixture_manifest_sha256": "fdcc90be4597e5c099ae73e4caa794174104db1814836ea23f0e1193c3a167dc",
+  "fixture_visual_source_gate": {
+    "status": "PASS",
+    "allowlist_sha256": "c8c932c1ca56a40c97736337114bda64782d00efe5b432685d600567c4f49755",
+    "approved_original_count": 15,
+    "all_used_sources_approved": true
+  },
+  "sample_media_policy": "approved-stock-photos-and-videos-no-app-screenshots",
+  "sample_media_audit": {
+    "status": "PASS",
+    "policy": "approved-stock-photos-and-videos-no-app-screenshots",
+    "actual_asset_count": 37,
+    "actual_photo_count": 35,
+    "actual_video_count": 2,
+    "actual_screenshot_subtype_count": 0,
+    "fixture_filename_set_exact": true,
+    "errors": [],
+    "actual_library_sha256": "1c4a91348a0ca1173ec58dbfb93c0c89f9de3bc5f18a9d71656388bd24611483"
+  },
+  "native_scene_policy": "sharp-stock-hero-opaque-confirmation-filled-photo-game",
+  "native_scene_audit": {
+    "status": "PASS",
+    "policy": "sharp-stock-hero-opaque-confirmation-filled-photo-game",
+    "source_bindings": {
+      "concept-a-v3-scenes.json": "eb64d161d4cc4c7682350bfef7a2e949f4a310efd80b6c730b08bbd9638c2c61",
+      "concept-a-system-settings.json": "2851cb14bd2b443ba19654488dad57d4d9b82bf1beb11882969b035adcb8f4fc",
+      "concept-a-delete-confirm-frame.json": "c4c8f1b3e67c654fc18c037c22a5dd0ba77a69b8253543faaae9f6c6b1a530ba",
+      "concept-a-games-round.json": "8e0c03eafdc7a417c0174231b1fe7af3de4e7f65ca86f0e25634f02b44318525",
+      "concept-a-library.json": "1c4a91348a0ca1173ec58dbfb93c0c89f9de3bc5f18a9d71656388bd24611483",
+      "stills/concept-a-delete-confirm-before.png": "5b1aa208b55437ce3ba00f52dcb3b38f3490744d684319c4eea65576954706c9",
+      "screenshots/concept-a-delete-confirm.png": "f65fc540ea693f8b8c67b51490dfcdf17eb43606adbebef392faf945580c1fc0",
+      "screenshots/concept-a-swipe.png": "c21cd35dc77f4692655f173535bb4e0d6708d6b1d1745f395fffa8bfd4eea5c3",
+      "screenshots/concept-a-games.png": "8e34d32631665fe27b8f3b4dbc4c415755af69418aee01d802d1e8fe1416af75",
+      "screenshots/concept-a-games-menu.png": "53a248d390bc00d61ca1b6af955ddfebc12e56bbb4a7af1fe5b4dffcc777190c"
+    },
+    "hero_filename": "CA_30_pretty_23.jpg",
+    "actual_dialog_native_rect": [
+      123,
+      696,
+      1083,
+      2010
+    ],
+    "dialog_last_crop_pixel_equal": true,
+    "actual_matched_card_count": 6,
+    "visual_opacity_hero_clarity_game_fill_and_final_spinner_acceptance": "NOT RUN",
+    "errors": []
+  },
+  "required_native_screens": [
+    "concept-a-swipe.png",
+    "concept-a-duplicates.png",
+    "concept-a-large-files.png",
+    "concept-a-trash.png",
+    "concept-a-delete-confirm.png",
+    "concept-a-vault.png",
+    "concept-a-later.png",
+    "concept-a-later-swipe.png",
+    "concept-a-months.png",
+    "concept-a-analysis.png",
+    "concept-a-collage.png",
+    "concept-a-editor.png",
+    "concept-a-games.png",
+    "concept-a-games-menu.png"
+  ],
+  "outputs": [
+    {
+      "file": "screenshots/concept-a-analysis.png",
+      "sha256": "e07ccc894ffa1ff9d1a11198b834dfb03ca450e5b0bf42a9b29775fbc0cae8b8",
+      "bytes": 2363201,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-collage.png",
+      "sha256": "18095266a20710ef64ecf9a4e1339b82890bcf6458267d904fec3c9ff14abf30",
+      "bytes": 2271062,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-delete-confirm.png",
+      "sha256": "f65fc540ea693f8b8c67b51490dfcdf17eb43606adbebef392faf945580c1fc0",
+      "bytes": 1324126,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-duplicates.png",
+      "sha256": "26d7900680a84a2f583a6501878ba0e21b3f4dafd6caedebabb59d4c61514dce",
+      "bytes": 464166,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-editor.png",
+      "sha256": "a051ce7aed4b3b4a668210ddc26e8d32b5ffaf9815641f5cd7cfba00dfa1285b",
+      "bytes": 2447775,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-games-menu.png",
+      "sha256": "53a248d390bc00d61ca1b6af955ddfebc12e56bbb4a7af1fe5b4dffcc777190c",
+      "bytes": 309610,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-games.png",
+      "sha256": "8e34d32631665fe27b8f3b4dbc4c415755af69418aee01d802d1e8fe1416af75",
+      "bytes": 763957,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-large-files.png",
+      "sha256": "3db7a70bd7192b0303018de13ab8d518b3d868d6338ae28cd4ece5652af71541",
+      "bytes": 284667,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-later-swipe.png",
+      "sha256": "d14e04c0889b209f416deb43378a62d6556bd51829f716fc199caf51ff826bfb",
+      "bytes": 3888738,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGBA",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-later.png",
+      "sha256": "13494284c4b13b0b18900af357ecb60dbdaffe7f6178d5933b0d446d78a70690",
+      "bytes": 4122183,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-months.png",
+      "sha256": "d383dd3736d7b28185bb5199cdc3f9d63d3158789d4d656b82cae27a19157708",
+      "bytes": 181691,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-swipe.png",
+      "sha256": "c21cd35dc77f4692655f173535bb4e0d6708d6b1d1745f395fffa8bfd4eea5c3",
+      "bytes": 2975677,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGBA",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-trash.png",
+      "sha256": "4042615d3fd6da6f5534e8c6818ff9a0b057901a00385a0fb7e711023049a4d9",
+      "bytes": 756963,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-vault-locked.png",
+      "sha256": "a6b295ae303a7368bafa91950a47d39b57eadc4a182a9f32e965bf6657e085e5",
+      "bytes": 301688,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-vault.png",
+      "sha256": "4218b08c8b7c922179e859b374e287b3d6355c0a8ee972852cabe7366a75a15b",
+      "bytes": 1419401,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    }
+  ],
+  "branding": {
+    "file": "branding/native-wordmark.png",
+    "sha256": "513d63a0fffe1213d48c6101c0b57d5ebcf50518758edb6643c3bfc00a7af9b9",
+    "bytes": 124072,
+    "width": 1280,
+    "height": 512,
+    "mode": "RGBA",
+    "opaque": false,
+    "icc_embedded": false,
+    "icc_description": null
+  },
+  "native_visual_acceptance": "NOT RUN",
+  "store_export_acceptance": "NOT RUN",
+  "real_device_or_security_acceptance": "NOT RUN",
+  "errors": []
+}

@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "creative_revision": 3,
+  "status": "PASS_WITH_OBSERVATIONS",
+  "blockers": [],
+  "render_manifest_sha256": "1bd6ea04ca07516486f5256c59cda17338e320110e1ef6e32b294a52857e5651",
+  "design_sha256": "090ae1dfe695bf9027ced52ad69940a77c6be295d509f449556eb202d9d22a49",
+  "provenance_sha256": "81adf152ac1a9c42b74fb1971362f40b67fc919d036c3d0afe27fae85031f730",
+  "workflow_run": "43865738891",
+  "commit": "8ffdc943d8a3cc57ad8212320a0fea586609c6da",
+  "run_attempt": 1,
+  "reviewer": "Hermes parent, individualactualVisionfull-size/small-scaleandpreviewreview; independentpixelverificationseparate",
+  "images": [
+    {
+      "file": "01-swipe.png",
+      "sha256": "14aba98a14d645f6e363cbe69dd29bb8851e65172eae6cb50654902e8eb7d67d",
+      "slot": 1,
+      "full_size_reviewed": true,
+      "search_scale_reviewed": true,
+      "status": "PASS",
+      "full_size_notes": "Recognizablesharporangeflower/realTrashheldbadge,nextlandscape,no nestedmedia;actualapprovedpaleblueAlookconfirmedaftermyearlierpaletteprompterror.",
+      "full_size_pixel_link": {
+        "slot": 1,
+        "file": "01-swipe.png",
+        "reviewed_full_size_actual": "render-final-C14-r2/01-swipe.png",
+        "final_file_sha256": "14aba98a14d645f6e363cbe69dd29bb8851e65172eae6cb50654902e8eb7d67d",
+        "final_and_reviewed_pixel_sha256": "ca07ef3f105e3e6c14a3e221063d72831c78934493c6f0bfb26ce57dcd882934",
+        "pixels_byte_equal": true,
+        "file_bytes_may_differ": "Fresh ICC creation-time header only; actual source RGB identical. Final-file hashes bind final report."
+      },
+      "search_scale_notes": "PASSheadline/sharpflower/Trashgesture/brand,strongfocus,nospinnerorclipping.",
+      "small_view_file": "F:\\HermesOutput\\GaleriQ\\concept-a-en-v3\\qa\\C14-small-views-r4\\01-swipe.png"
+    },
+    {
+      "file": "02-duplicates-large-files.png",
+      "sha256": "2721ef8ca021d3686b9ca9c558fdfe70fa7695e4760a516881e194f7dc400253",
+      "slot": 2,
+      "full_size_reviewed": true,
+      "search_scale_reviewed": true,
+      "status": "PASS",
+      "full_size_notes": "CompleteactualmeasuredLargefilesrows+caveat;ONEcompleteactualduplicatetreepair/dispositionlabels;sourcephotoUIunmodified.",
+      "full_size_pixel_link": {
+        "slot": 2,
+        "file": "02-duplicates-large-files.png",
+        "reviewed_full_size_actual": "render-final-C14-r1/02-duplicates-large-files.png",
+        "final_file_sha256": "2721ef8ca021d3686b9ca9c558fdfe70fa7695e4760a516881e194f7dc400253",
+        "final_and_reviewed_pixel_sha256": "6ca4e64f0129bbaf04ad7015745039d2c877be179738c9e4f48df2342e3e1964",
+        "pixels_byte_equal": true,
+        "file_bytes_may_differ": "Fresh ICC creation-time header only; actual source RGB identical. Final-file hashes bind final report."
+      },
+      "search_scale_notes": "PASSheadlineandoneorange-treepairrecognizable;realUIbodyrequiresfullsize.",
+      "small_view_file": "F:\\HermesOutput\\GaleriQ\\concept-a-en-v3\\qa\\C14-small-views-r4\\02-duplicates-large-files.png"
+    },
+    {
+      "file": "03-delete-confirmation.png",
+      "sha256": "dda64a4a10d459283218fe4714eaacb86ae4968a20d87179bf51cdc19a025e9e",
+      "slot": 3,
+      "full_size_reviewed": true,
+      "search_scale_reviewed": true,
+      "status": "PASS_WITH_OBSERVATIONS",
+      "full_size_notes": "Initialr1/r2failedrealoutside-panelstrips. Exactnativeframecrop[123,696,1083,2010],fullscreenspanflatstyle,r3fullactualimagePASS. Completeopaqueactualdialog/photo/buttons,nospinner/homebleed;tinynativeroundedoutercornersonly. R4pixelsidenticaltoacceptedr3.",
+      "full_size_pixel_link": {
+        "slot": 3,
+        "file": "03-delete-confirmation.png",
+        "reviewed_full_size_actual": "render-final-C14-r3/03-delete-confirmation.png",
+        "final_file_sha256": "dda64a4a10d459283218fe4714eaacb86ae4968a20d87179bf51cdc19a025e9e",
+        "final_and_reviewed_pixel_sha256": "4eb047de7f64b4d0665d2816bb10670c6bcaa50f461a99042935f342b5613534",
+        "pixels_byte_equal": true,
+        "file_bytes_may_differ": "Fresh ICC creation-time header only; actual source RGB identical. Final-file hashes bind final report."
+      },
+      "search_scale_notes": "PASSheadline/oneopaquecompleteconfirmdialog/photo/buttons,nogutterfragments/homebleed/spinner.",
+      "small_view_file": "F:\\HermesOutput\\GaleriQ\\concept-a-en-v3\\qa\\C14-small-views-r4\\03-delete-confirmation.png"
+    },
+    {
+      "file": "04-vault.png",
+      "sha256": "c04b816dbfd0ffda3b81e3c19f0d7f3b0106a44c3065f2f64464c4d0f4ee186c",
+      "slot": 4,
+      "full_size_reviewed": true,
+      "search_scale_reviewed": true,
+      "status": "PASS_WITH_OBSERVATIONS",
+      "full_size_notes": "All5neutralvaultphotosloaded/nowarning;exactowncodeFaceIDsubtitleintact. Nocertificationclaimed;commoncropomitsAdd.",
+      "full_size_pixel_link": {
+        "slot": 4,
+        "file": "04-vault.png",
+        "reviewed_full_size_actual": "render-final-C14-r1/04-vault.png",
+        "final_file_sha256": "c04b816dbfd0ffda3b81e3c19f0d7f3b0106a44c3065f2f64464c4d0f4ee186c",
+        "final_and_reviewed_pixel_sha256": "3f4c09bc8575e6de96b4982ec525b4813f22fc2e2fb0b2a028adc96526f78d36",
+        "pixels_byte_equal": true,
+        "file_bytes_may_differ": "Fresh ICC creation-time header only; actual source RGB identical. Final-file hashes bind final report."
+      },
+      "search_scale_notes": "PASSheadlineandfilledvault;nativebody/exactFaceIDcopyreviewedatfullsize.",
+      "small_view_file": "F:\\HermesOutput\\GaleriQ\\concept-a-en-v3\\qa\\C14-small-views-r4\\04-vault.png"
+    },
+    {
+      "file": "05-later.png",
+      "sha256": "7ce31608b7fd28f8e6daed9faaf85e701f6dd46631bedd8f8a34334056521061",
+      "slot": 5,
+      "full_size_reviewed": true,
+      "search_scale_reviewed": true,
+      "status": "PASS",
+      "full_size_notes": "Realvisiblerightshift/clockwisetiltandactiveupperLaterbadge;noaddedinset/pill. AppearancePASSafterstrict-provenanceprompterrorclarified;nativetiming/persistenceindependentlyPASS.",
+      "full_size_pixel_link": {
+        "slot": 5,
+        "file": "05-later.png",
+        "reviewed_full_size_actual": "render-final-C14-r2/05-later.png",
+        "final_file_sha256": "7ce31608b7fd28f8e6daed9faaf85e701f6dd46631bedd8f8a34334056521061",
+        "final_and_reviewed_pixel_sha256": "bd21e0b1a41414fcb01a841061ade91c8afecddd5afb282161ec14006e4f12df",
+        "pixels_byte_equal": true,
+        "file_bytes_may_differ": "Fresh ICC creation-time header only; actual source RGB identical. Final-file hashes bind final report."
+      },
+      "search_scale_notes": "PASSheadline/righttiltandupperLaterbadge,noaddedpill/inset.",
+      "small_view_file": "F:\\HermesOutput\\GaleriQ\\concept-a-en-v3\\qa\\C14-small-views-r4\\05-later.png"
+    },
+    {
+      "file": "06-months.png",
+      "sha256": "0eeea2b898848a0faad3383efe4b46618f997a45dfe6e081477cb361303bfe13",
+      "slot": 6,
+      "full_size_reviewed": true,
+      "search_scale_reviewed": true,
+      "status": "PASS_WITH_OBSERVATIONS",
+      "full_size_notes": "PopulatedBymonthlist:fivecompleteNovember–Julyrows/menus;naturalJunepartialbelowcommoncrop. NothumbnailphotosvisibleinthefinalUI,nocontamination/tour.",
+      "full_size_pixel_link": {
+        "slot": 6,
+        "file": "06-months.png",
+        "reviewed_full_size_actual": "render-final-C14-r1/06-months.png",
+        "final_file_sha256": "0eeea2b898848a0faad3383efe4b46618f997a45dfe6e081477cb361303bfe13",
+        "final_and_reviewed_pixel_sha256": "6509da94d77409d6f0c522e5dcfa733ae07c87c70e6eade5ce0ab9ccd0f6a8c0",
+        "pixels_byte_equal": true,
+        "file_bytes_may_differ": "Fresh ICC creation-time header only; actual source RGB identical. Final-file hashes bind final report."
+      },
+      "search_scale_notes": "PASSheadline/populatedorganizedmonths,noleer/tour/spinner;fivefullrows+naturalpartialJune.",
+      "small_view_file": "F:\\HermesOutput\\GaleriQ\\concept-a-en-v3\\qa\\C14-small-views-r4\\06-months.png"
+    },
+    {
+      "file": "07-analysis.png",
+      "sha256": "4fffaf0f451a62948f491a4d6a225d370c96475666fb623e696676777492d3fb",
+      "slot": 7,
+      "full_size_reviewed": true,
+      "search_scale_reviewed": true,
+      "status": "PASS_WITH_OBSERVATIONS",
+      "full_size_notes": "Singlecontinuousactualvisibleseries/wholeKeep5Trash1+safetytext. Fourwholethumbnails/naturalpartialfifth/sixthoffscreen;cleanfullwidthgutters.Noall6simultaneousclaim.",
+      "full_size_pixel_link": {
+        "slot": 7,
+        "file": "07-analysis.png",
+        "reviewed_full_size_actual": "render-final-C14-r1/07-analysis.png",
+        "final_file_sha256": "4fffaf0f451a62948f491a4d6a225d370c96475666fb623e696676777492d3fb",
+        "final_and_reviewed_pixel_sha256": "b2683de0520932f404f8524831cfc0610b58f347c270542a38afcb517208f7ad",
+        "pixels_byte_equal": true,
+        "file_bytes_may_differ": "Fresh ICC creation-time header only; actual source RGB identical. Final-file hashes bind final report."
+      },
+      "search_scale_notes": "PASSheadline/photo+onecontinuousseries/Keep5Trash1focus,nogutterfragments/straymarks.",
+      "small_view_file": "F:\\HermesOutput\\GaleriQ\\concept-a-en-v3\\qa\\C14-small-views-r4\\07-analysis.png"
+    },
+    {
+      "file": "08-collage.png",
+      "sha256": "003fa09069b8cbd0af5af0db6885b63d721137c77e55a0d3cacdf789215ae140",
+      "slot": 8,
+      "full_size_reviewed": true,
+      "search_scale_reviewed": true,
+      "status": "PASS_WITH_OBSERVATIONS",
+      "full_size_notes": "Fourgenuinelyloadedneutralphotos/2x2collage,completecanvas+Tools;nativebottomSave/Addoutsideintentionalcommoncrop.",
+      "full_size_pixel_link": {
+        "slot": 8,
+        "file": "08-collage.png",
+        "reviewed_full_size_actual": "render-final-C14-r1/08-collage.png",
+        "final_file_sha256": "003fa09069b8cbd0af5af0db6885b63d721137c77e55a0d3cacdf789215ae140",
+        "final_and_reviewed_pixel_sha256": "36267714092d7c4b2aa4f475cecb54dcabe5a027e91dd9a7de7f50173f72d714",
+        "pixels_byte_equal": true,
+        "file_bytes_may_differ": "Fresh ICC creation-time header only; actual source RGB identical. Final-file hashes bind final report."
+      },
+      "search_scale_notes": "PASSheadline/filled4photocollagegrid,noblanktiles/loading.",
+      "small_view_file": "F:\\HermesOutput\\GaleriQ\\concept-a-en-v3\\qa\\C14-small-views-r4\\08-collage.png"
+    },
+    {
+      "file": "09-editor.png",
+      "sha256": "193f2d4ada9e27a5273faab527cf5589b6611f862c2a7b120ca8e78cb0830f67",
+      "slot": 9,
+      "full_size_reviewed": true,
+      "search_scale_reviewed": true,
+      "status": "PASS_WITH_OBSERVATIONS",
+      "full_size_notes": "Loadedwarmlandscape,selectedWarm+Undo/Acceptintact;commoncropclipsbottomslider/toolbar.Noruntimeundoabilityclaimbasedonstillalone.",
+      "full_size_pixel_link": {
+        "slot": 9,
+        "file": "09-editor.png",
+        "reviewed_full_size_actual": "render-final-C14-r1/09-editor.png",
+        "final_file_sha256": "193f2d4ada9e27a5273faab527cf5589b6611f862c2a7b120ca8e78cb0830f67",
+        "final_and_reviewed_pixel_sha256": "0f0db69424d8f74bf5b44d8b9ca92791f596180ff6f7800c25da424232d7ee74",
+        "pixels_byte_equal": true,
+        "file_bytes_may_differ": "Fresh ICC creation-time header only; actual source RGB identical. Final-file hashes bind final report."
+      },
+      "search_scale_notes": "PASSheadline/warmlandscape/editorcontrols,nocollision/contamination.",
+      "small_view_file": "F:\\HermesOutput\\GaleriQ\\concept-a-en-v3\\qa\\C14-small-views-r4\\09-editor.png"
+    },
+    {
+      "file": "10-games.png",
+      "sha256": "076f7b6600b871e76707ddb5510bf60248c3f52d4705742d3a99ae3781e365f6",
+      "slot": 10,
+      "full_size_reviewed": true,
+      "search_scale_reviewed": true,
+      "status": "PASS_WITH_OBSERVATIONS",
+      "full_size_notes": "Filledactual24card4x6Pairsboard/6matchedcards3pairs/18backs,3of12pairs/Moves8/nofakevictory. ExactFreewithads/onepurchase/nosubscriptioncopyintact.",
+      "full_size_pixel_link": {
+        "slot": 10,
+        "file": "10-games.png",
+        "reviewed_full_size_actual": "render-final-C14-r1/10-games.png",
+        "final_file_sha256": "076f7b6600b871e76707ddb5510bf60248c3f52d4705742d3a99ae3781e365f6",
+        "final_and_reviewed_pixel_sha256": "d13f064848f6fb2296ec555e3988e70a42d0a4aa3c6f4f32cd5e86fe5c9204b8",
+        "pixels_byte_equal": true,
+        "file_bytes_may_differ": "Fresh ICC creation-time header only; actual source RGB identical. Final-file hashes bind final report."
+      },
+      "search_scale_notes": "PASSheadline/filled24cardboard+unclippedtwo-linemonetizationtext,nofakevictory.",
+      "small_view_file": "F:\\HermesOutput\\GaleriQ\\concept-a-en-v3\\qa\\C14-small-views-r4\\10-games.png"
+    }
+  ],
+  "previews": [
+    {
+      "file": "00-overview.jpg",
+      "sha256": "a9c6feda10565daf5a562ea5dfb84db6d775181ac3af89fbd3dfc41ef0fffff4",
+      "reviewed": true,
+      "status": "PASS",
+      "notes": "Alltenexactorder1x10/consistentphones/nativeQ/paleblueA/shortsubtitles,insetsonly2/3/7,05none/10filled;noactualvisualblocker."
+    },
+    {
+      "file": "00-search-preview.jpg",
+      "sha256": "e432c53717724374b176e8c8573434ccac881d34bee262d10eb9fc7a8fd941d5",
+      "reviewed": true,
+      "status": "PASS",
+      "notes": "Actual390pxfirstthreelefttoright/strongheadlines/onepair02/completecleanopaque03/nospinner/no marketingclipping."
+    }
+  ],
+  "notes": [
+    "Alltennativephones17.4%larger/sameposition,bottom-onlyclippedby274targetpx;notfullUIvisibility.",
+    "NativeUI/samplemediaunretouched;wholeinitialPhotoKitlibrary35photos+2realvideos/15approvedoriginals,zeroappScreenshotmedia.",
+    "Actual14requiredsources+nativewordmarkindividuallyreviewed.SourceC14only,exactattempt1,1nativepassed/0failed/0skipped.",
+    "01palettepromptand05still-onlyprovenancepromptmistakescorrectedwithoutvisualchanges.03realgutterFAILcorrectedusingexactcontinuousnativepanelcrop,notpainting.",
+    "ActualRGBvisualpixelsreusedonlywhereprogrammaticallybyteequal;PNGICCcreationtimemetadatachangedbetweeninternalrenders.FinalQAandpackagebindfinalfilehashes.",
+    "Small112pxviewtargetsheadline/focusrecognition,nottinybodytextlegibility;fullsizecopyreviewseparate.",
+    "NoFaceID/security/realdevice/conversion/otherlanguage/ASCacceptance."
+  ],
+  "source_visual_report_sha256": "eea0a42dac91de133d477713fbccef7cc9c61b251a9dbb4b0f5e7d70e296ef95",
+  "full_size_review_pixel_links_sha256": "e369a037eb1bccaf82db909eb57cf37829870e729b1b15ae8f9a7631bea1e734",
+  "completed_utc": "2026-11-16T13:35:21.770591+00:00",
+  "full_size_review_count": 10,
+  "search_scale_review_count": 10,
+  "preview_review_count": 2,
+  "final_regressions_sha256": "384dbe0940b374a9539175411e75fa96ce2112a9a1709b4ecb97f11b99de621c"
+}

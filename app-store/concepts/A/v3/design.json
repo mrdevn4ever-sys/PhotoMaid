@@ -1,0 +1,647 @@
+{
+  "schemaVersion": 1,
+  "concept": "A",
+  "direction": "Space to Breathe",
+  "locale": "en-US",
+  "canvas": {
+    "width": 1206,
+    "height": 2622,
+    "safeMargin": 70
+  },
+  "background": {
+    "top": "#E0EFF9",
+    "bottom": "#EAF4FB",
+    "interpolation": "smoothstep"
+  },
+  "colors": {
+    "ink": "#1C1916",
+    "subtitle": "#1C1916",
+    "keep": "#1B6FA8",
+    "trash": "#C4441A",
+    "later": "#6347D0"
+  },
+  "tokenReferences": {
+    "file": "PhotoMaid/DesignSystem/Tokens.swift",
+    "sky_tint": "AppColors.tileKeep.light = #E0EFF9",
+    "keep": "AppColors.keep.light = #1B6FA8",
+    "trash": "AppColors.cleanup.light = #C4441A",
+    "later": "AppColors.later.light = #6347D0"
+  },
+  "fonts": {
+    "headline": {
+      "path": "PhotoMaid/Resources/Fonts/PMDisplay-Bold.ttf",
+      "preferredSize": 112,
+      "minimumSize": 84,
+      "step": 1,
+      "maxLines": 2,
+      "lineGap": 12
+    },
+    "subtitle": {
+      "path": "PhotoMaid/Resources/Fonts/PMText-Medium.ttf",
+      "preferredSize": 52,
+      "minimumSize": 46,
+      "step": 1,
+      "maxLines": 2,
+      "lineGap": 8
+    },
+    "gesture": {
+      "path": "PhotoMaid/Resources/Fonts/PMText-Bold.ttf",
+      "preferredSize": 72,
+      "minimumSize": 60,
+      "step": 1,
+      "maxLines": 1,
+      "lineGap": 0
+    }
+  },
+  "layout": {
+    "alignment": "left",
+    "wordmarkBox": [
+      70,
+      78,
+      406,
+      200
+    ],
+    "headlineBox": [
+      70,
+      248,
+      1136,
+      532
+    ],
+    "subtitleBox": [
+      70,
+      560,
+      1136,
+      708
+    ],
+    "device": {
+      "screenBox": [
+        131,
+        844,
+        1075,
+        2896
+      ],
+      "screenRadius": 115,
+      "frameWidth": 9,
+      "frameColor": "#242322",
+      "shadowBlur": 20,
+      "shadowOffset": [
+        0,
+        12
+      ],
+      "shadowAlpha": 38,
+      "viewportClip": "bottom-only",
+      "v2ReferenceScreenBox": [
+        201,
+        760,
+        1005,
+        2508
+      ]
+    },
+    "insetStyle": {
+      "radius": 24,
+      "shadowBlur": 2,
+      "shadowOffset": [
+        0,
+        2
+      ],
+      "shadowAlpha": 32
+    },
+    "seriesInsetStyle": {
+      "radius": 0,
+      "shadowBlur": 0,
+      "shadowOffset": [
+        0,
+        0
+      ],
+      "shadowAlpha": 0
+    },
+    "gestures": [
+      {
+        "action": "Keep",
+        "direction": "up",
+        "color": "keep",
+        "arrowBox": [
+          70,
+          734,
+          124,
+          788
+        ],
+        "labelBox": [
+          144,
+          724,
+          370,
+          808
+        ]
+      },
+      {
+        "action": "Trash",
+        "direction": "left",
+        "color": "trash",
+        "arrowBox": [
+          454,
+          734,
+          508,
+          788
+        ],
+        "labelBox": [
+          528,
+          724,
+          754,
+          808
+        ]
+      },
+      {
+        "action": "Later",
+        "direction": "right",
+        "color": "later",
+        "arrowBox": [
+          838,
+          734,
+          892,
+          788
+        ],
+        "labelBox": [
+          912,
+          724,
+          1136,
+          808
+        ]
+      }
+    ],
+    "dialogInsetStyle": {
+      "radius": 0,
+      "shadowBlur": 0,
+      "shadowOffset": [
+        0,
+        0
+      ],
+      "shadowAlpha": 0
+    }
+  },
+  "sourceGate": {
+    "provenanceFile": "capture_provenance.json",
+    "appLanguage": "en",
+    "nativeSize": [
+      1206,
+      2622
+    ],
+    "minimumInsetTop": 200,
+    "wordmarkSource": "branding/native-wordmark.png",
+    "wordmarkComponent": "VaultDialWordmark",
+    "wordmarkForeground": "lightForeground",
+    "requireVisualQA": true,
+    "requireProtectedNativeRects": true,
+    "normalizeNativeICCToSRGB": true
+  },
+  "slots": [
+    {
+      "id": 1,
+      "file": "01-swipe.png",
+      "headline": "Swipe the clutter. Keep the memories.",
+      "subtitle": "Keep, trash or decide later.",
+      "primary": "screenshots/concept-a-swipe.png",
+      "primarySourceSHA256": "c21cd35dc77f4692655f173535bb4e0d6708d6b1d1745f395fffa8bfd4eea5c3",
+      "primaryProtectedRects": [
+        [
+          52,
+          205,
+          1154,
+          397
+        ],
+        [
+          460,
+          454,
+          748,
+          575
+        ],
+        [
+          0,
+          540,
+          518,
+          1155
+        ],
+        [
+          52,
+          1400,
+          730,
+          2100
+        ]
+      ],
+      "gestures": true,
+      "insets": [],
+      "evidence": "Actual held swipe with sharp recognizable stock starting photo and stock-only next/back cards. Never app screenshots as sample media."
+    },
+    {
+      "id": 2,
+      "file": "02-duplicates-large-files.png",
+      "headline": "Spot large files. Find duplicates.",
+      "subtitle": "Find extra copies and space-hungry files.",
+      "primary": "screenshots/concept-a-large-files.png",
+      "primarySourceSHA256": "3db7a70bd7192b0303018de13ab8d518b3d868d6338ae28cd4ece5652af71541",
+      "primaryProtectedRects": [
+        [
+          40,
+          175,
+          760,
+          330
+        ],
+        [
+          40,
+          440,
+          1166,
+          1614
+        ]
+      ],
+      "gestures": false,
+      "insets": [
+        {
+          "id": "duplicate-results",
+          "source": "screenshots/concept-a-duplicates.png",
+          "crop": [
+            74,
+            1600,
+            770,
+            2070
+          ],
+          "cropSourceSHA256": "26d7900680a84a2f583a6501878ba0e21b3f4dafd6caedebabb59d4c61514dce",
+          "cropEvidenceRects": {
+            "duplicate-pair": [
+              135,
+              1750,
+              630,
+              1967
+            ],
+            "selection-labels": [
+              96,
+              1983,
+              620,
+              2018
+            ]
+          },
+          "targetBox": [
+            224,
+            2124,
+            982,
+            2548
+          ],
+          "enabled": true,
+          "required": true,
+          "evidence": "One continuous original native crop, all decisive evidence together. Parent must bind actual source/crop after review; no stitched UI, fake labels or native upscaling.",
+          "verticalAnchor": "center"
+        }
+      ],
+      "evidence": "Actual measured large-video rows and native caveat remain visible. One real whole duplicate pair and disposition labels, no cut-off text. All inset/shadow pixels stay inside the visible phone."
+    },
+    {
+      "id": 3,
+      "file": "03-delete-confirmation.png",
+      "headline": "Nothing deletes without you.",
+      "subtitle": "Review first. You make the final call.",
+      "primary": "screenshots/concept-a-delete-confirm.png",
+      "primarySourceSHA256": "f65fc540ea693f8b8c67b51490dfcdf17eb43606adbebef392faf945580c1fc0",
+      "primaryProtectedRects": [
+        [
+          54,
+          200,
+          700,
+          620
+        ]
+      ],
+      "gestures": false,
+      "insets": [
+        {
+          "id": "system-dialog",
+          "source": "screenshots/concept-a-delete-confirm.png",
+          "crop": [
+            123,
+            696,
+            1083,
+            2010
+          ],
+          "cropSourceSHA256": "f65fc540ea693f8b8c67b51490dfcdf17eb43606adbebef392faf945580c1fc0",
+          "cropEvidenceRects": {
+            "system-dialog": [
+              123,
+              696,
+              1083,
+              2010
+            ]
+          },
+          "targetBox": [
+            131,
+            1240,
+            1075,
+            2622
+          ],
+          "enabled": true,
+          "required": true,
+          "evidence": "One continuous original native crop, all decisive evidence together. Parent must bind actual source/crop after review; no stitched UI, fake labels or native upscaling.",
+          "nativeRectEvidence": {
+            "file": "concept-a-delete-confirm-frame.json",
+            "sha256": "c4c8f1b3e67c654fc18c037c22a5dd0ba77a69b8253543faaae9f6c6b1a530ba",
+            "jsonPointer": "/nativeRect",
+            "format": "xyxy",
+            "coordinateScale": 1
+          },
+          "verticalAnchor": "bottom"
+        }
+      ],
+      "evidence": "New actual opaque iOS confirmation with no visible loading spinner or translucent home screen. One enlarged whole dialog with original title, message, preview and BOTH buttons, bound to actual frame JSON. Never retouch native pixels."
+    },
+    {
+      "id": 4,
+      "file": "04-vault.png",
+      "headline": "Private photos. Locked away.",
+      "subtitle": "Encrypted vault, protected by your own code and Face ID.",
+      "primary": "screenshots/concept-a-vault.png",
+      "primarySourceSHA256": "4218b08c8b7c922179e859b374e287b3d6355c0a8ee972852cabe7366a75a15b",
+      "primaryProtectedRects": [
+        [
+          60,
+          216,
+          1146,
+          796
+        ],
+        [
+          60,
+          843,
+          1146,
+          1794
+        ]
+      ],
+      "gestures": false,
+      "insets": [],
+      "evidence": "Real encrypted vault state; no contrary originals-remain warning hidden by a crop."
+    },
+    {
+      "id": 5,
+      "file": "05-later.png",
+      "headline": "Unsure? Choose later.",
+      "subtitle": "Swipe right. Come back to it later.",
+      "primary": "screenshots/concept-a-later-swipe.png",
+      "primarySourceSHA256": "d14e04c0889b209f416deb43378a62d6556bd51829f716fc199caf51ff826bfb",
+      "primaryProtectedRects": [
+        [
+          52,
+          205,
+          1154,
+          397
+        ],
+        [
+          465,
+          456,
+          742,
+          572
+        ],
+        [
+          52,
+          600,
+          1206,
+          2160
+        ]
+      ],
+      "gestures": false,
+      "insets": [],
+      "evidence": "Actual held rightward Later swipe with native active badge; no reminder or duplicate focus crop."
+    },
+    {
+      "id": 6,
+      "file": "06-months.png",
+      "headline": "One month. A fresh start.",
+      "subtitle": "Sort your library, one month at a time.",
+      "primary": "screenshots/concept-a-months.png",
+      "primarySourceSHA256": "d383dd3736d7b28185bb5199cdc3f9d63d3158789d4d656b82cae27a19157708",
+      "primaryProtectedRects": [
+        [
+          48,
+          186,
+          1158,
+          650
+        ],
+        [
+          48,
+          822,
+          1158,
+          2232
+        ]
+      ],
+      "gestures": false,
+      "insets": [],
+      "evidence": "A well-populated native month list, not a large empty state."
+    },
+    {
+      "id": 7,
+      "file": "07-analysis.png",
+      "headline": "Blurry or similar? Take a closer look.",
+      "subtitle": "Compare your shots. Choose what stays.",
+      "primary": "screenshots/concept-a-analysis.png",
+      "primarySourceSHA256": "e07ccc894ffa1ff9d1a11198b834dfb03ca450e5b0bf42a9b29775fbc0cae8b8",
+      "primaryProtectedRects": [
+        [
+          54,
+          200,
+          1152,
+          482
+        ],
+        [
+          138,
+          515,
+          1068,
+          1290
+        ]
+      ],
+      "gestures": false,
+      "insets": [
+        {
+          "id": "series-decision",
+          "source": "screenshots/concept-a-analysis.png",
+          "crop": [
+            54,
+            1775,
+            1152,
+            2622
+          ],
+          "cropSourceSHA256": "e07ccc894ffa1ff9d1a11198b834dfb03ca450e5b0bf42a9b29775fbc0cae8b8",
+          "cropEvidenceRects": {
+            "series": [
+              60,
+              1792,
+              1152,
+              2020
+            ],
+            "keep5-trash1": [
+              60,
+              2186,
+              1146,
+              2355
+            ]
+          },
+          "targetBox": [
+            131,
+            1810,
+            1075,
+            2622
+          ],
+          "enabled": true,
+          "required": true,
+          "evidence": "One continuous original native crop, all decisive evidence together. Parent must bind actual source/crop after review; no stitched UI, fake labels or native upscaling.",
+          "verticalAnchor": "bottom"
+        }
+      ],
+      "evidence": "Actual series and original Keep 5 · Trash 1 button together. Latest brief explicitly authorizes one enlarged real crop, superseding v2 no-inset rule."
+    },
+    {
+      "id": 8,
+      "file": "08-collage.png",
+      "headline": "Make a collage. Keep the moment.",
+      "subtitle": "Bring your favorite moments together.",
+      "primary": "screenshots/concept-a-collage.png",
+      "primarySourceSHA256": "18095266a20710ef64ecf9a4e1339b82890bcf6458267d904fec3c9ff14abf30",
+      "primaryProtectedRects": [
+        [
+          48,
+          70,
+          1146,
+          318
+        ],
+        [
+          60,
+          471,
+          1146,
+          1828
+        ]
+      ],
+      "gestures": false,
+      "insets": [],
+      "evidence": "A real collage of fixture photos."
+    },
+    {
+      "id": 9,
+      "file": "09-editor.png",
+      "headline": "A new look. Your own photo.",
+      "subtitle": "Add a new look to a photo you love.",
+      "primary": "screenshots/concept-a-editor.png",
+      "primarySourceSHA256": "a051ce7aed4b3b4a668210ddc26e8d32b5ffaf9815641f5cd7cfba00dfa1285b",
+      "primaryProtectedRects": [
+        [
+          54,
+          186,
+          1152,
+          397
+        ],
+        [
+          40,
+          432,
+          1166,
+          1840
+        ],
+        [
+          744,
+          1875,
+          937,
+          2122
+        ]
+      ],
+      "gestures": false,
+      "insets": [],
+      "evidence": "A real photo in the native editor."
+    },
+    {
+      "id": 10,
+      "file": "10-games.png",
+      "headline": "A small break. Your photos play.",
+      "subtitle": "Free with ads. GaleriQ Pro: one purchase, no subscription.",
+      "primary": "screenshots/concept-a-games.png",
+      "primarySourceSHA256": "8e34d32631665fe27b8f3b4dbc4c415755af69418aee01d802d1e8fe1416af75",
+      "primaryProtectedRects": [
+        [
+          40,
+          180,
+          1166,
+          616
+        ],
+        [
+          52,
+          649,
+          1154,
+          2163
+        ]
+      ],
+      "gestures": false,
+      "insets": [],
+      "evidence": "Actual filled native Photo Pairs board, NOT the small three-card games menu with a large empty lower area. Parent must capture/review this real state. Business-model subtitle stays exact."
+    }
+  ],
+  "previews": {
+    "overview": {
+      "file": "00-overview.jpg",
+      "slotIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "columns": 10,
+      "tileWidth": 241,
+      "gap": 20,
+      "margin": 20
+    },
+    "search": {
+      "file": "00-search-preview.jpg",
+      "slotIds": [
+        1,
+        2,
+        3
+      ],
+      "columns": 3,
+      "tileWidth": 112,
+      "gap": 11,
+      "margin": 16,
+      "description": "390 px-wide phone-search row, logical pixels; first three screenshots, no invented App Store chrome."
+    }
+  },
+  "localizationRule": {
+    "renderNow": [
+      "en-US"
+    ],
+    "futureOnly": "For an approved future locale, retain the shared 70 px safe margins and common v3 phone geometry with intentional bottom-only viewport clipping. Rewrap at word boundaries, then decrement font size by 1 px down to the declared floor; at most two headline/subtitle lines. If it still fails, stop for an approved layout revision, never rewrite, truncate, condense or stretch copy. RTL requires a shaping-capable engine (RAQM), start-aligned marketing text, and separate source/crop QA; native pixels, the LTR native wordmark, and physical Keep-up/Trash-left/Later-right gesture semantics must never be mirrored. No translations or other locale exports are implemented here."
+  },
+  "creativeRevision": 3,
+  "layoutRevision": 3,
+  "nativeScenePolicy": "sharp-stock-hero-opaque-confirmation-filled-photo-game",
+  "nativeRevision": 3,
+  "sampleMediaPolicy": "approved-stock-photos-and-videos-no-app-screenshots",
+  "finalSourceVisualQA": {
+    "approved": true,
+    "provenanceSHA256": "81adf152ac1a9c42b74fb1971362f40b67fc919d036c3d0afe27fae85031f730",
+    "commit": "8ffdc943d8a3cc57ad8212320a0fea586609c6da",
+    "workflowRun": "43865738891",
+    "reviewer": "Hermes parent, individual actual C14 native-image/crop Vision QA plus native provenance/timing/fixture verification",
+    "notes": "ActualC14 only/14requiredsources+nativewordmark individuallyreviewed. NeutralwholePhotoKit37resourceinventory/15approvedoriginals, sharpflowerhero; realopaquecompleteiOSdialog. Rawexternalspinner2436..2496excludedONLYbycommonbottomviewport~2272; neverretouched. 05genuinelyheldrightLatergesture/recordertiming assertionspassed; aux16-frameburstselectedrealframe1date+Change afterallcapture. Real24cardPairs3matchedpairs/noVictory. 07continuousactualvisibleseries+completeKeep5Trash1; native4whole+partial5th/6thoffscreenhonest. Finalcommonviewport5completemonthrows andsomebottomcontrolsclippedasrequested; no full-UIclaim. Finalvisual/export/ZIP acceptance separate. Source reportqa/C14-native-source-visual.json.",
+    "nativeWordmarkComponent": "VaultDialWordmark",
+    "nativeWordmarkForeground": "lightForeground",
+    "nativeStatusBar": {
+      "time": "9:41",
+      "fullBattery": true,
+      "dynamicIsland": true,
+      "appearance": "dark"
+    },
+    "requirements": {
+      "stockOnlyEveryMediaTile": true,
+      "sharpRecognizableFirstPhoto": true,
+      "opaqueSystemDialogNoUnderlyingHome": true,
+      "noLoadingSpinner": true,
+      "heldRightwardLater": true,
+      "filledNativePairsBoard": true,
+      "nativeKeep5Trash1": true,
+      "completeDuplicatePair": true
+    },
+    "runAttempt": 1
+  }
+}

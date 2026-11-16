@@ -1,0 +1,17 @@
+{
+  "appBusyIndicatorRetouched" : false,
+  "consecutiveStableSamples" : 3,
+  "finalSource" : "screenshots\/concept-a-delete-confirm.png",
+  "nativeRect" : [
+    123,
+    696,
+    1083,
+    2010
+  ],
+  "previousSource" : "stills\/concept-a-delete-confirm-before.png",
+  "reduceTransparency" : true,
+  "screenPixels" : [
+    1206,
+    2622
+  ]
+}

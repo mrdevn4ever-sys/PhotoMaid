@@ -1,0 +1,38 @@
+{
+  "actualNavigationLabels" : [
+    "Accessibility",
+    "Display & Text Size"
+  ],
+  "actualSwitchFrame" : {
+    "height" : 28,
+    "width" : 330,
+    "x" : 36,
+    "y" : 419
+  },
+  "actualSwitchLabel" : "Reduce Transparency",
+  "actualSwitchValue" : "1",
+  "method" : "real native Settings UI leaf control with bounded observed-OFF retries, not private defaults",
+  "path" : [
+    "Accessibility",
+    "Display & Text Size",
+    "Reduce Transparency"
+  ],
+  "targetedTrailingToggleTap" : false,
+  "toggleTapAttempts" : [
+    {
+      "afterValue" : "1",
+      "attempt" : 0,
+      "beforeValue" : "0",
+      "tapFinished" : 1794832437.4970798,
+      "tapStarted" : 1794832436.083765,
+      "target" : "nested native Switch.tap",
+      "targetFrame" : {
+        "height" : 28,
+        "width" : 63,
+        "x" : 305,
+        "y" : 418.99999872843426
+      },
+      "waitResult" : 1
+    }
+  ]
+}

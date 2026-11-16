@@ -1,0 +1,81 @@
+{
+  "status": "PASS",
+  "archive": "F:\\HermesOutput\\GaleriQ\\concept-a-en-v3\\GaleriQ-Konzept-A-en-US-v3.zip",
+  "archive_sha256": "c2798e60f05744f1ce3189c95256c0dabe04c2af8abc9fc862743a206b3e24e7",
+  "archive_bytes": 12648709,
+  "member_count": 13,
+  "members": [
+    {
+      "file": "en-US/01-swipe.png",
+      "sha256": "14aba98a14d645f6e363cbe69dd29bb8851e65172eae6cb50654902e8eb7d67d",
+      "bytes": 1722830
+    },
+    {
+      "file": "en-US/02-duplicates-large-files.png",
+      "sha256": "2721ef8ca021d3686b9ca9c558fdfe70fa7695e4760a516881e194f7dc400253",
+      "bytes": 580269
+    },
+    {
+      "file": "en-US/03-delete-confirmation.png",
+      "sha256": "dda64a4a10d459283218fe4714eaacb86ae4968a20d87179bf51cdc19a025e9e",
+      "bytes": 1321067
+    },
+    {
+      "file": "en-US/04-vault.png",
+      "sha256": "c04b816dbfd0ffda3b81e3c19f0d7f3b0106a44c3065f2f64464c4d0f4ee186c",
+      "bytes": 985661
+    },
+    {
+      "file": "en-US/05-later.png",
+      "sha256": "7ce31608b7fd28f8e6daed9faaf85e701f6dd46631bedd8f8a34334056521061",
+      "bytes": 2283240
+    },
+    {
+      "file": "en-US/06-months.png",
+      "sha256": "0eeea2b898848a0faad3383efe4b46618f997a45dfe6e081477cb361303bfe13",
+      "bytes": 265562
+    },
+    {
+      "file": "en-US/07-analysis.png",
+      "sha256": "4fffaf0f451a62948f491a4d6a225d370c96475666fb623e696676777492d3fb",
+      "bytes": 1346730
+    },
+    {
+      "file": "en-US/08-collage.png",
+      "sha256": "003fa09069b8cbd0af5af0db6885b63d721137c77e55a0d3cacdf789215ae140",
+      "bytes": 1433621
+    },
+    {
+      "file": "en-US/09-editor.png",
+      "sha256": "193f2d4ada9e27a5273faab527cf5589b6611f862c2a7b120ca8e78cb0830f67",
+      "bytes": 1613077
+    },
+    {
+      "file": "en-US/10-games.png",
+      "sha256": "076f7b6600b871e76707ddb5510bf60248c3f52d4705742d3a99ae3781e365f6",
+      "bytes": 705738
+    },
+    {
+      "file": "00-overview.jpg",
+      "sha256": "a9c6feda10565daf5a562ea5dfb84db6d775181ac3af89fbd3dfc41ef0fffff4",
+      "bytes": 479839
+    },
+    {
+      "file": "00-search-preview.jpg",
+      "sha256": "e432c53717724374b176e8c8573434ccac881d34bee262d10eb9fc7a8fd941d5",
+      "bytes": 43334
+    },
+    {
+      "file": "README.txt",
+      "sha256": "6234d3ea6336d7827b0617aec83419ce2dec7a9f2ab282278c3392e07330ce1a",
+      "bytes": 8532
+    }
+  ],
+  "workflow_run": "43865738891",
+  "run_attempt": 1,
+  "capture_commit": "8ffdc943d8a3cc57ad8212320a0fea586609c6da",
+  "native_readback_sha256": "c84bf6c5711f65a41d4e20565ec6cf342d77d7e2352218dd79360cc0bf821c10",
+  "technical_report_sha256": "049dac1986c5e458ada93ea40f65c1e5481a627f2f1ef9950936130411b898d4",
+  "visual_report_sha256": "caa96504b37264307fd595576c9286448820daa49a1207b8633a2574d67a9eec",
+  "external_publication": "NOT RUN; local lossless delivery archive only"
+}
