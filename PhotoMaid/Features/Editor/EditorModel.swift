@@ -5,6 +5,9 @@ import Photos
 import PhotoMaidCore
 import UIKit
 import SwiftUI
+#if QA_FIXTURES && targetEnvironment(simulator)
+import CryptoKit
+#endif
 
 enum EditorTool: String, CaseIterable, Identifiable, Hashable {
     case crop, adjust, filter, retouch, markup, frame, resize
@@ -183,10 +186,161 @@ final class EditorModel {
     @ObservationIgnored private var dirty = false
     private(set) var previewRendering = false
     @ObservationIgnored private var gestureStart: EditRecipe?
+#if QA_FIXTURES && targetEnvironment(simulator)
+
+    // Observation only: no UI, recipe, source, task or render-scheduler writes.
+    // A weak reference never extends the actual editor model's lifetime.
+    private static weak var storeCaptureV4Model: EditorModel?
+    @ObservationIgnored private var storeCaptureV4OriginalPixels: StoreCaptureV4Pixels?
+    @ObservationIgnored private var storeCaptureV4Published: StoreCaptureV4Publication?
+
+    private struct StoreCaptureV4Pixels {
+        let imageID: ObjectIdentifier
+        let sha256: String
+        let width: Int
+        let height: Int
+        let bitmapInfo: UInt32
+    }
+
+    private struct StoreCaptureV4Publication {
+        let imageID: ObjectIdentifier
+        let recipe: EditRecipe
+        let recipeHash: String
+        let generation: Int
+        let pixels: StoreCaptureV4Pixels?
+        let origin: String
+    }
+
+    private static var storeCaptureV4Enabled: Bool {
+        let arguments = ProcessInfo.processInfo.arguments
+        return arguments.contains("-store-capture") && arguments.contains("-store-concept-a")
+    }
+
+    /// JSON primitives from real assignments only. Unpublished fields are absent,
+    /// rather than fabricated defaults; disabled/deallocated editors return no report.
+    static var storeCaptureV4Observation: [String: Any] {
+        guard storeCaptureV4Enabled, let model = storeCaptureV4Model else { return [:] }
+        guard !model.inVault else {
+            return ["loadState": "notReady", "error": "The active editor is not a PhotoKit editor"]
+        }
+        let requestedHash = storeCaptureV4RecipeHash(model.previewRecipe)
+        let originalPixels = model.storeCaptureV4OriginalPixels
+        let originalReady = model.original.map { ObjectIdentifier($0) == originalPixels?.imageID } == true
+        let published = model.storeCaptureV4Published
+        let previewAssigned = model.preview.map { ObjectIdentifier($0) == published?.imageID } == true
+        let currentPublication = published.map {
+            !$0.recipeHash.isEmpty && $0.recipeHash == requestedHash && $0.generation == model.renderGeneration
+        } ?? false
+        let busy = model.rendering || model.previewRendering || model.dirty
+        let previewReady = previewAssigned && published?.pixels != nil && currentPublication && !busy
+        let modelLoadState: String
+        switch model.loadState {
+        case .loading: modelLoadState = "loading"
+        case .ready: modelLoadState = "ready"
+        case .iCloud: modelLoadState = "iCloud"
+        case .failed: modelLoadState = "failed"
+        }
+        let ready = model.loadState == .ready && originalReady && previewReady
+        var result: [String: Any] = [
+            "assetID": model.assetID, "loadState": ready ? "ready" : (model.loadState == .ready ? "notReady" : modelLoadState),
+            "originalReady": originalReady, "previewReady": previewReady, "rendering": model.rendering,
+            "requestedRecipeHash": requestedHash, "renderGeneration": model.renderGeneration,
+            "modelLoadState": modelLoadState, "previewRendering": model.previewRendering, "dirty": model.dirty,
+            "previewAssigned": previewAssigned, "publicationMatchesRequest": currentPublication,
+            "tool": model.tool.rawValue, "comparing": model.comparing,
+            "pixelHashFormat": "SHA256 of assigned RGBA8 CGImage packed pixel rows; stride padding excluded",
+        ]
+        var errors: [String] = []
+        if requestedHash.isEmpty { errors.append("Requested recipe could not be encoded as sorted-key JSON") }
+        if let originalPixels {
+            result["sourceOriginalPixelSHA256"] = originalPixels.sha256
+            result["sourceOriginalPixelWidth"] = originalPixels.width
+            result["sourceOriginalPixelHeight"] = originalPixels.height
+            result["sourceOriginalBitmapInfo"] = originalPixels.bitmapInfo
+        } else if model.original != nil {
+            errors.append("Original assignment has no readable RGBA8 CGImage pixel buffer")
+        }
+        if let published {
+            result["publishedRecipeHash"] = published.recipeHash
+            result["publishedRenderGeneration"] = published.generation
+            result["publishedFilter"] = published.recipe.isIdentity || published.recipe.filter == .none || published.recipe.filterIntensity <= 0.001
+                ? "original" : published.recipe.filter.rawValue.lowercased()
+            let strength = Double(published.recipe.filterIntensity)
+            if strength.isFinite { result["publishedFilterStrength"] = strength }
+            else { errors.append("Published filter strength is not a finite JSON number") }
+            result["publishedIsIdentity"] = published.recipe.isIdentity
+            result["publicationOrigin"] = published.origin
+            if published.recipeHash.isEmpty { errors.append("Published recipe could not be encoded as sorted-key JSON") }
+            if let pixels = published.pixels {
+                result["publishedPreviewPixelSHA256"] = pixels.sha256
+                result["publishedPreviewPixelWidth"] = pixels.width
+                result["publishedPreviewPixelHeight"] = pixels.height
+                result["publishedPreviewBitmapInfo"] = pixels.bitmapInfo
+            } else { errors.append("Preview assignment has no readable RGBA8 CGImage pixel buffer") }
+            if !currentPublication && !busy { errors.append("No successful preview assignment matches the current request") }
+        } else { errors.append("No successful preview image assignment has been observed") }
+        result["errors"] = errors
+        return result
+    }
+
+    private static func storeCaptureV4RecipeHash(_ recipe: EditRecipe) -> String {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.sortedKeys]
+        guard let data = try? encoder.encode(recipe) else { return "" }
+        return SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined()
+    }
+
+    /// Both paths already use EditRenderer.cgImage's RGBA8 output. Hash the exact
+    /// channel bytes, not PNG/JPEG metadata or uninitialised row-stride padding.
+    /// Never redraw/normalise an image or substitute an identity hash on mismatch.
+    private static func storeCaptureV4Pixels(_ image: UIImage) -> StoreCaptureV4Pixels? {
+        guard let cg = image.cgImage, cg.width > 0, cg.height > 0,
+              cg.bitsPerComponent == 8, cg.bitsPerPixel == 32,
+              let data = cg.dataProvider?.data, let bytes = CFDataGetBytePtr(data) else { return nil }
+        let packedRowBytes = cg.width * 4
+        guard cg.bytesPerRow >= packedRowBytes,
+              CFDataGetLength(data) >= (cg.height - 1) * cg.bytesPerRow + packedRowBytes else { return nil }
+        return withExtendedLifetime(data) {
+            var digest = SHA256()
+            for row in 0..<cg.height {
+                digest.update(bufferPointer: UnsafeRawBufferPointer(start: bytes.advanced(by: row * cg.bytesPerRow),
+                                                                   count: packedRowBytes))
+            }
+            return StoreCaptureV4Pixels(imageID: ObjectIdentifier(image),
+                                        sha256: digest.finalize().map { String(format: "%02x", $0) }.joined(),
+                                        width: cg.width, height: cg.height, bitmapInfo: cg.bitmapInfo.rawValue)
+        }
+    }
+
+    private func storeCaptureV4ObserveInitialImages() {
+        guard Self.storeCaptureV4Enabled, !inVault else { return }
+        storeCaptureV4OriginalPixels = original.flatMap { Self.storeCaptureV4Pixels($0) }
+        storeCaptureV4Published = nil
+        if let preview {
+            // prepare assigns the unprocessed original, NOT the current requested
+            // recipe (which may already contain edits). This value is metadata only.
+            storeCaptureV4ObservePublication(preview, recipe: EditRecipe(), generation: renderGeneration, origin: "originalAssignment")
+        }
+    }
+
+    private func storeCaptureV4ObservePublication(_ image: UIImage, recipe: EditRecipe, generation: Int, origin: String) {
+        guard Self.storeCaptureV4Enabled, !inVault else { return }
+        let pixels = storeCaptureV4OriginalPixels.flatMap { $0.imageID == ObjectIdentifier(image) ? $0 : nil }
+            ?? Self.storeCaptureV4Pixels(image)
+        storeCaptureV4Published = StoreCaptureV4Publication(imageID: ObjectIdentifier(image), recipe: recipe,
+                                                          recipeHash: Self.storeCaptureV4RecipeHash(recipe),
+                                                          generation: generation, pixels: pixels, origin: origin)
+    }
+#endif
 
     init(assetID: String, inVault: Bool = false) {
         self.assetID = assetID
         self.inVault = inVault
+#if QA_FIXTURES && targetEnvironment(simulator)
+        // SwiftUI may construct a disposable State initial value while retaining
+        // the loaded model. Such an unused initializer must not displace it.
+        if Self.storeCaptureV4Enabled, Self.storeCaptureV4Model == nil { Self.storeCaptureV4Model = self }
+#endif
     }
 
     var hasChanges: Bool { !recipe.isIdentity }
@@ -198,6 +352,13 @@ final class EditorModel {
 
     func load(app: AppModel, allowNetwork: Bool = true) async {
         loadState = .loading
+#if QA_FIXTURES && targetEnvironment(simulator)
+        if Self.storeCaptureV4Enabled {
+            Self.storeCaptureV4Model = self
+            storeCaptureV4OriginalPixels = nil
+            storeCaptureV4Published = nil
+        }
+#endif
         let data: Data
         if inVault {
             guard let lease = VaultStore.shared.editSession(),
@@ -245,6 +406,9 @@ final class EditorModel {
         fullSize = prepared.1
         original = prepared.2
         preview = prepared.2
+#if QA_FIXTURES && targetEnvironment(simulator)
+        storeCaptureV4ObserveInitialImages()
+#endif
         landscape = fullSize.width >= fullSize.height
         loadState = .ready
         schedulePreview()
@@ -411,6 +575,13 @@ final class EditorModel {
             }.value
             guard let self else { return }
             if generation == self.renderGeneration, let image { self.preview = image }
+#if QA_FIXTURES && targetEnvironment(simulator)
+            // Same predicate immediately after the unchanged production assignment;
+            // no await or state transition can turn a failed/stale render into evidence.
+            if generation == self.renderGeneration, let image, self.preview === image {
+                self.storeCaptureV4ObservePublication(image, recipe: r, generation: generation, origin: "renderAssignment")
+            }
+#endif
             self.rendering = false
             if self.dirty { self.dirty = false; self.schedulePreview() }
             else { self.previewRendering = false }

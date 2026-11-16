@@ -1,0 +1,471 @@
+{
+  "schema_version": 1,
+  "creative_revision": 4,
+  "purpose": "15 individually licensed and full-photo visually approved originals for the 35-photo/2-real-video GaleriQ v4 disposable native capture fixture. Source role numbers are logical capture roles, not original photo names.",
+  "photos": [
+    {
+      "file": "v4-01-prague-main-railway-station-ceiling-lights.jpg",
+      "capture_role": 1,
+      "source": "https://commons.wikimedia.org/wiki/File:Prague_Main_Railway_Station_Ceiling_Lights.jpg",
+      "author": "AVDLCZ",
+      "license": "CC0-1.0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 1920,
+      "height": 1280,
+      "original_width": 6795,
+      "original_height": 4530,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Prague_Main_Railway_Station_Ceiling_Lights.jpg/1920px-Prague_Main_Railway_Station_Ceiling_Lights.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sha256": "bdc1479aff8e61913fc40edf00f1ef2b162772745e842465420ebd1c48ac74aa",
+      "capture_category": "travel-architecture",
+      "source_acquisition": "Proportional1920pxWikimediaAPIthumbnail,noaddedcrop/upscale;canonicallicensemetadataretained."
+    },
+    {
+      "file": "v4-04-american-breakfast-1.jpg",
+      "capture_role": 4,
+      "source": "https://commons.wikimedia.org/wiki/File:American_Breakfast_1.jpg",
+      "author": "Boonlert",
+      "license": "CC0-1.0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 1920,
+      "height": 1080,
+      "original_width": 4000,
+      "original_height": 2250,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/American_Breakfast_1.jpg/1920px-American_Breakfast_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sha256": "28a14a73b44c22b3fd256f76b35b58c9f1c80fbfa4cdbce41975d1bde549c1f8",
+      "capture_category": "food",
+      "source_acquisition": "Proportional1920pxWikimediaAPIthumbnail,noaddedcrop/upscale;canonicallicensemetadataretained."
+    },
+    {
+      "file": "v4-05-munchkin-cat-2-cropped.jpg",
+      "capture_role": 5,
+      "source": "https://commons.wikimedia.org/wiki/File:Munchkin_cat_2_(cropped).jpg",
+      "author": "Tasy Hong",
+      "license": "CC0-1.0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 1920,
+      "height": 1622,
+      "original_width": 3419,
+      "original_height": 2888,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Munchkin_cat_2_%28cropped%29.jpg/1920px-Munchkin_cat_2_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sha256": "75087bb00dad59688f8f1c928b1aa5dbe304a5181f5a0c87d6a6a74c8b2606f7",
+      "capture_category": "pet-cat",
+      "source_acquisition": "Proportional1920pxWikimediaAPIthumbnail,noaddedcrop/upscale;canonicallicensemetadataretained."
+    },
+    {
+      "file": "06-sharp-mountain-ridge-against-blue-sky-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Sharp mountain ridge against blue sky (Unsplash).jpg",
+      "author": "Giovanni Corte giovanicort",
+      "source": "https://commons.wikimedia.org/wiki/File:Sharp_mountain_ridge_against_blue_sky_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Sharp_mountain_ridge_against_blue_sky_%28Unsplash%29.jpg/1920px-Sharp_mountain_ridge_against_blue_sky_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/0/03/Sharp_mountain_ridge_against_blue_sky_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2560,
+      "bytes": 1059625,
+      "sha256": "0e7e3de6e963f78fd72dff7fe648d7c5771044975e8a48c13659db561b587561",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      },
+      "capture_role": 6,
+      "capture_category": "travel-nature",
+      "source_acquisition": "Byte-identicalreuseofC14individuallyVQAapprovedoriginal"
+    },
+    {
+      "file": "07-mountain-reflection-in-a-lake-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Mountain reflection in a lake (Unsplash).jpg",
+      "author": "Gabriel Santiago gabrielssantiago",
+      "source": "https://commons.wikimedia.org/wiki/File:Mountain_reflection_in_a_lake_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Mountain_reflection_in_a_lake_%28Unsplash%29.jpg/1920px-Mountain_reflection_in_a_lake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Mountain_reflection_in_a_lake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 1777672,
+      "sha256": "ed3fc9ede9d025fd15a5d7b894e4c71cd9e44a459d23f3cf280699769813a224",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      },
+      "capture_role": 7,
+      "capture_category": "travel-nature",
+      "source_acquisition": "Byte-identicalreuseofC14individuallyVQAapprovedoriginal"
+    },
+    {
+      "file": "09-orange-trees-by-a-frozen-lake-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Orange trees by a frozen lake (Unsplash).jpg",
+      "author": "Federico Beccari federize",
+      "source": "https://commons.wikimedia.org/wiki/File:Orange_trees_by_a_frozen_lake_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Orange_trees_by_a_frozen_lake_%28Unsplash%29.jpg/1920px-Orange_trees_by_a_frozen_lake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/7/76/Orange_trees_by_a_frozen_lake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2850,
+      "bytes": 2425363,
+      "sha256": "414acadf3b76c50e9509c6a568805f1d4785c6c3c011e5b882ac360cc0b14854",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      },
+      "capture_role": 9,
+      "capture_category": "travel-nature",
+      "source_acquisition": "Byte-identicalreuseofC14individuallyVQAapprovedoriginal"
+    },
+    {
+      "file": "v4-10-shadow-of-bicycle-frame.jpg",
+      "capture_role": 10,
+      "source": "https://commons.wikimedia.org/wiki/File:Shadow_of_bicycle_frame.jpg",
+      "author": "NonNerd",
+      "license": "CC0-1.0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 1920,
+      "height": 1440,
+      "original_width": 4320,
+      "original_height": 3240,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Shadow_of_bicycle_frame.jpg/1920px-Shadow_of_bicycle_frame.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sha256": "70fc2cf1bd8e958a60531d4ee2964c87880e08a473d137a0f15b4b404cb00d4a",
+      "capture_category": "everyday",
+      "source_acquisition": "Proportional1920pxWikimediaAPIthumbnail,noaddedcrop/upscale;canonicallicensemetadataretained."
+    },
+    {
+      "file": "v4-13-coffee-in-bangalore.jpg",
+      "capture_role": 13,
+      "source": "https://commons.wikimedia.org/wiki/File:Coffee_in_Bangalore.jpg",
+      "author": "Shyamal L.",
+      "license": "CC0-1.0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 1920,
+      "height": 1852,
+      "original_width": 2506,
+      "original_height": 2417,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Coffee_in_Bangalore.jpg/1920px-Coffee_in_Bangalore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sha256": "84c0f78d75a31ae1a32e75afb0b816598b4a122606c1c194a9425cf47956f1d0",
+      "capture_category": "everyday-coffee",
+      "source_acquisition": "Proportional1920pxWikimediaAPIthumbnail,noaddedcrop/upscale;canonicallicensemetadataretained."
+    },
+    {
+      "file": "28-twilight-hour-in-the-desert-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Twilight Hour in the Desert (Unsplash).jpg",
+      "author": "Charles Black divewithchuck",
+      "source": "https://commons.wikimedia.org/wiki/File:Twilight_Hour_in_the_Desert_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Twilight_Hour_in_the_Desert_%28Unsplash%29.jpg/1920px-Twilight_Hour_in_the_Desert_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/0/07/Twilight_Hour_in_the_Desert_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 604088,
+      "sha256": "76ca6d43eba3f3f099ff124d777e7e265e965fe669a000b313c66e01ca387ab8",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      },
+      "capture_role": 28,
+      "capture_category": "travel-nature",
+      "source_acquisition": "Byte-identicalreuseofC14individuallyVQAapprovedoriginal"
+    },
+    {
+      "file": "29-a-blue-sky-above-white-snow-unsplash.jpg",
+      "group": "beautiful",
+      "title": "A blue sky above white snow (Unsplash).jpg",
+      "author": "Drew Hays drew_hays",
+      "source": "https://commons.wikimedia.org/wiki/File:A_blue_sky_above_white_snow_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/A_blue_sky_above_white_snow_%28Unsplash%29.jpg/1920px-A_blue_sky_above_white_snow_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/e/ef/A_blue_sky_above_white_snow_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 1092281,
+      "sha256": "6588396644c343bae7e424796c06dfb2b11ff392ce10f662ab98acd1c48a2999",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      },
+      "capture_role": 29,
+      "capture_category": "travel-nature",
+      "source_acquisition": "Byte-identicalreuseofC14individuallyVQAapprovedoriginal"
+    },
+    {
+      "file": "31-green-mountains-over-clouds-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Green mountains over clouds (Unsplash).jpg",
+      "author": "Ricky Paulus rickypaulus",
+      "source": "https://commons.wikimedia.org/wiki/File:Green_mountains_over_clouds_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Green_mountains_over_clouds_%28Unsplash%29.jpg/1920px-Green_mountains_over_clouds_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/4/40/Green_mountains_over_clouds_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2400,
+      "bytes": 658893,
+      "sha256": "e89cdcfc6c6dcccfb2ebd8ec0d650be5fa03c93d0a4b9e0436de0a28823fabb1",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      },
+      "capture_role": 31,
+      "capture_category": "travel-nature",
+      "source_acquisition": "Byte-identicalreuseofC14individuallyVQAapprovedoriginal"
+    },
+    {
+      "file": "33-sun-sky-and-sea-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Sun, sky and sea (Unsplash).jpg",
+      "author": "Mink Mingle minkmingle",
+      "source": "https://commons.wikimedia.org/wiki/File:Sun,_sky_and_sea_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Sun%2C_sky_and_sea_%28Unsplash%29.jpg/1920px-Sun%2C_sky_and_sea_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Sun%2C_sky_and_sea_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 1277197,
+      "sha256": "cadf4ffbe47dba88100e615a96f3120f092b24a45e188ebc5a284219c540f1d8",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      },
+      "capture_role": 33,
+      "capture_category": "travel-nature",
+      "source_acquisition": "Byte-identicalreuseofC14individuallyVQAapprovedoriginal"
+    },
+    {
+      "file": "35-small-waterfall-in-a-forest-unsplash.jpg",
+      "group": "beautiful",
+      "title": "Small waterfall in a forest (Unsplash).jpg",
+      "author": "Mark Basarab ignitedit",
+      "source": "https://commons.wikimedia.org/wiki/File:Small_waterfall_in_a_forest_(Unsplash).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Small_waterfall_in_a_forest_%28Unsplash%29.jpg/1920px-Small_waterfall_in_a_forest_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Small_waterfall_in_a_forest_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 1920,
+      "height": 2880,
+      "bytes": 1307384,
+      "sha256": "a536a97ec8d2650db0d4974750c79e693e3b7a2f3e1bf6901181482253210fb3",
+      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
+      "license_evidence": {
+        "LicenseShortName": {
+          "value": "CC0",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "LicenseUrl": {
+          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source": "commons-desc-page"
+        },
+        "UsageTerms": {
+          "value": "Creative Commons Zero, Public Domain Dedication",
+          "source": "commons-desc-page"
+        },
+        "Copyrighted": {
+          "value": "True",
+          "source": "commons-desc-page",
+          "hidden": ""
+        },
+        "AttributionRequired": {
+          "value": "false",
+          "source": "commons-desc-page",
+          "hidden": ""
+        }
+      },
+      "capture_role": 35,
+      "capture_category": "travel-nature",
+      "source_acquisition": "Byte-identicalreuseofC14individuallyVQAapprovedoriginal"
+    },
+    {
+      "file": "v4-36-golden-retriever-adult.jpg",
+      "capture_role": 36,
+      "source": "https://commons.wikimedia.org/wiki/File:Golden_Retriever_adult.jpg",
+      "author": "Johan Spaedtke",
+      "license": "CC0-1.0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 1920,
+      "height": 1281,
+      "original_width": 5488,
+      "original_height": 3662,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Golden_Retriever_adult.jpg/1920px-Golden_Retriever_adult.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sha256": "2fdd7b90330f1ba8f4cb845fc539dd39d955b7ca77d260161be6afbf69ed6591",
+      "capture_category": "pet-dog",
+      "source_acquisition": "Proportional1920pxWikimediaAPIthumbnail,noaddedcrop/upscale;canonicallicensemetadataretained."
+    },
+    {
+      "file": "v4-38-breakfast-today.jpg",
+      "capture_role": 38,
+      "source": "https://commons.wikimedia.org/wiki/File:Breakfast_today.jpg",
+      "author": "Sparcity",
+      "license": "CC0-1.0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 1920,
+      "height": 1337,
+      "original_width": 3299,
+      "original_height": 2297,
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Breakfast_today.jpg/1920px-Breakfast_today.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sha256": "1c0972e59ddb745358e117fc2b6b85ef442cd28081c16b074c26a0b407115f15",
+      "capture_category": "food-duplicate",
+      "source_acquisition": "Proportional1920pxWikimediaAPIthumbnail,noaddedcrop/upscale;canonicallicensemetadataretained."
+    }
+  ]
+}

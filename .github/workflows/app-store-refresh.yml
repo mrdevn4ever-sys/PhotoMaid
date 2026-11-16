@@ -1,5 +1,5 @@
 # Branch-scoped capture iteration. No release, App Store Connect, PR or automatic trigger.
-name: GaleriQ – Concept A en-US native capture v1
+name: GaleriQ – Concept A en-US native capture v4
 on:
   workflow_dispatch:
     inputs:
@@ -24,7 +24,7 @@ jobs:
     timeout-minutes: 65
     env:
       CAPTURE_LOCALE: en
-      CAPTURE_MODE: concept-a
+      CAPTURE_MODE: concept-a-v4
       STORE_DEVICE: iphone-medium
       CONCEPT_BASE_SHA: 583eb804a81401aa2010996875b35d05afc61539
       REQUESTED_LOCALES: ${{ inputs.locales }}
@@ -43,6 +43,7 @@ jobs:
             scripts
             app-store/media
             app-store/concepts/A/qa
+            app-store/concepts/A/v4-source-media
       - name: Guard the exact branch, baseline and en-US-only scope
         run: |
           set -euo pipefail
@@ -85,8 +86,9 @@ jobs:
       - name: Generate hash-verified CC0 clutter, identical photos, series and actual large videos
         run: |
           set -euo pipefail
-          "$RUNNER_TEMP/store-python/bin/python" scripts/store/build_concept_a_fixture.py \
-            --sources app-store/media --output "$RUNNER_TEMP/concept-a-fixture"
+          "$RUNNER_TEMP/store-python/bin/python" scripts/store/build_concept_a_v4_fixture.py \
+            --sources app-store/concepts/A/v4-source-media \
+            --allowlist app-store/concepts/A/qa/v4-fixture-source-allowlist.json --output "$RUNNER_TEMP/concept-a-fixture"
           cp "$RUNNER_TEMP/concept-a-fixture/fixture-manifest.json" "$RUNNER_TEMP/store-capture/fixture-manifest.json"
       - name: Create and clean only a new disposable real iPhone simulator
         id: sim
@@ -122,12 +124,15 @@ jobs:
       - name: Bind actual sources, test result and native logo to this exact run and SHA
         if: always()
         run: |
-          "$RUNNER_TEMP/store-python/bin/python" scripts/store/collect_concept_a_provenance.py "$RUNNER_TEMP/store-capture"
+          "$RUNNER_TEMP/store-python/bin/python" scripts/store/collect_concept_a_v4_provenance.py "$RUNNER_TEMP/store-capture" \
+            --sources app-store/concepts/A/v4-source-media \
+            --allowlist app-store/concepts/A/qa/v4-fixture-source-allowlist.json \
+            --fixture-root "$RUNNER_TEMP/concept-a-fixture"
       - name: Preserve native evidence even on failure; no production media replacement
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: galeriq-concept-a-en-US-native-${{ github.run_id }}-attempt-${{ github.run_attempt }}
+          name: galeriq-concept-a-v4-en-US-native-${{ github.run_id }}-attempt-${{ github.run_attempt }}
           path: |
             ${{ runner.temp }}/store-capture/screenshots
             ${{ runner.temp }}/store-capture/branding

@@ -2,6 +2,7 @@ import XCTest
 import StoreKitTest
 import ImageIO
 import Vision
+import CryptoKit
 
 /// Marketing capture, only invoked by app-store-assets.yml. Uses imported CC0 photos and actual app state.
 @MainActor
@@ -13,7 +14,8 @@ final class AppStoreCaptureTests: XCTestCase {
     private var localized: Bundle!
     private var shots: [[String: String]] = []
     private var clip: String?
-    private var isConceptA: Bool { name.contains("test07ConceptAStoreScreenshots") }
+    private var isConceptA: Bool { name.contains("test07ConceptAStoreScreenshots") || isConceptAV4 }
+    private var isConceptAV4: Bool { name.contains("test08ConceptAV4StoreScreenshots") }
     private var conceptAEvidenceLog: [[String: Any]] = []
 
     override func setUp() async throws {
@@ -985,6 +987,560 @@ final class AppStoreCaptureTests: XCTestCase {
                         "concept-a-months", "concept-a-analysis", "concept-a-collage", "concept-a-editor", "concept-a-games", "concept-a-games-menu"]
         for name in expected { try conceptAAssertPNG(output.appendingPathComponent("screenshots/\(name).png")) }
         XCTAssertEqual(Set(shots.map { $0["file"] ?? "" }), Set((expected + ["concept-a-logo"]).map { $0 + ".png" }))
+    }
+
+    // MARK: Additive Concept A V4 evidence (QA UI test only)
+
+    /// Select ONLY this test in the V4 workflow. Calling the unchanged scenario is not a second XCTest run.
+    /// Evidence schemas are versioned independently from the creative version; all objects are JSON primitives.
+    func test08ConceptAV4StoreScreenshots() throws {
+        try test07ConceptAStoreScreenshots()
+        do {
+            try conceptAV4Require(isConceptAV4 && language == "en", "V4 requires its explicit en-US test selector")
+            let initial = try XCTUnwrap(conceptAEvidenceLog.first {
+                $0["checkpoint"] as? String == "initial-library"
+            }?["state"] as? [String: Any], "Retain the actual initial 35-photo/two-video inventory from test07")
+            try captureConceptAV4Months(initial: initial)
+            try captureConceptAV4Editor(initial: initial)
+            for name in ["months", "editor-before", "editor-filter-selected", "editor-after", "editor-undo",
+                         "editor-redo", "editor-copy-default"] {
+                try conceptAAssertPNG(output.appendingPathComponent("screenshots/concept-a-v4-\(name).png"))
+            }
+        } catch {
+            // Preserve the real failing UI before surfacing a throwing V4 gate. No fallback source is accepted.
+            try? conceptAV4Still("concept-a-v4-failure", directory: "stills")
+            let failure: [String: Any] = ["schema": 1, "status": "FAIL", "error": String(describing: error),
+                                         "lastObservation": conceptAEvidenceLog.last ?? [:]]
+            try? conceptAV4Write(failure, to: "concept-a-v4-failure.json")
+            throw error
+        }
+    }
+
+    private func conceptAV4Require(_ condition: Bool, _ message: String) throws {
+        guard condition else {
+            throw NSError(domain: "GaleriQConceptAV4", code: 1, userInfo: [NSLocalizedDescriptionKey: message])
+        }
+    }
+
+    private func conceptAV4JSON(_ value: Any) throws -> Data {
+        try conceptAV4Require(JSONSerialization.isValidJSONObject(value), "V4 evidence must contain only valid JSON primitives")
+        return try JSONSerialization.data(withJSONObject: value, options: [.prettyPrinted, .sortedKeys])
+    }
+
+    private func conceptAV4Write(_ value: [String: Any], to path: String) throws {
+        try conceptAV4JSON(value).write(to: output.appendingPathComponent(path), options: .atomic)
+    }
+
+    private func conceptAV4Rect(_ rect: CGRect) -> [String: Double] {
+        ["x": Double(rect.minX), "y": Double(rect.minY), "width": Double(rect.width), "height": Double(rect.height)]
+    }
+
+    private func conceptAV4AX(_ element: XCUIElement) -> [String: Any] {
+        ["identifier": element.identifier, "label": element.label, "value": element.value as? String ?? "",
+         "elementType": element.elementType.rawValue, "frame": conceptAV4Rect(element.frame),
+         "exists": element.exists, "enabled": element.isEnabled, "hittable": element.isHittable, "selected": element.isSelected]
+    }
+
+    private func conceptAV4SHA(_ data: Data) -> String {
+        SHA256.hash(data: data).map { String(format: "%02x", $0) }.joined()
+    }
+
+    @discardableResult
+    private func conceptAV4Still(_ name: String, directory: String = "stills", shot: XCUIScreenshot? = nil) throws -> String {
+        let folder = output.appendingPathComponent(directory, isDirectory: true)
+        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        let screenshot = shot ?? XCUIScreen.main.screenshot()
+        try screenshot.pngRepresentation.write(to: folder.appendingPathComponent(name + ".png"), options: .atomic)
+        try app.debugDescription.write(to: folder.appendingPathComponent(name + ".txt"), atomically: true, encoding: .utf8)
+        return directory + "/" + name + ".png"
+    }
+
+    @discardableResult
+    private func conceptAV4Tap(_ element: XCUIElement) throws -> [String: Any] {
+        try conceptAV4Require(element.exists && element.isHittable && element.isEnabled, "Real V4 tap unavailable: \(element)")
+        let target = conceptAV4AX(element)
+        let started = Date().timeIntervalSince1970
+        element.tap()
+        let finished = Date().timeIntervalSince1970
+        pause(0.3)
+        return ["action": "tap", "targetAX": target, "started": started, "finished": finished]
+    }
+
+    /// conceptAObserve has a 30s acknowledgement bound. Reserve that budget so no new request can
+    /// extend a V4 render/ledger/publication poll past its 60s wall-clock budget (never an unbounded retry).
+    private func conceptAV4Wait(_ checkpoint: String, until ready: ([String: Any]) -> Bool) throws -> [String: Any] {
+        let deadline = Date().addingTimeInterval(60)
+        var state = try conceptAObserve(checkpoint)
+        while !ready(state), Date().addingTimeInterval(30.3) < deadline {
+            pause(0.3)
+            state = try conceptAObserve(checkpoint)
+        }
+        try conceptAV4Require(ready(state) && Date() <= deadline, "60s bounded real-state gate failed: \(checkpoint)")
+        return state
+    }
+
+    private func conceptAV4SortedRows(_ state: [String: Any], _ key: String, excluding ids: Set<String> = []) throws -> [[String: Any]] {
+        let rows = try XCTUnwrap(state[key] as? [[String: Any]], "Missing actual \(key)")
+        let observedIDs = try rows.map { try XCTUnwrap($0["id"] as? String) }
+        try conceptAV4Require(Set(observedIDs).count == rows.count, "Ambiguous duplicate IDs in \(key)")
+        return rows.filter { !ids.contains($0["id"] as? String ?? "") }.sorted {
+            ($0["id"] as? String ?? "") < ($1["id"] as? String ?? "")
+        }
+    }
+
+    /// Compare complete observed records, not just totals. Only the named extra Keep decisions may change.
+    private func conceptAV4Preserved(_ before: [String: Any], _ after: [String: Any], keptIDs: Set<String>) throws {
+        try conceptAV4Require(try conceptAV4JSON(conceptAV4SortedRows(before, "inventory")) ==
+                             conceptAV4JSON(conceptAV4SortedRows(after, "inventory")), "V4 must not create, remove or alter PhotoKit inventory")
+        let oldBasket = try XCTUnwrap(before["basketIDs"] as? [String])
+        let newBasket = try XCTUnwrap(after["basketIDs"] as? [String])
+        try conceptAV4Require(oldBasket.sorted() == newBasket.sorted(), "Preserve both real trash decisions")
+        try conceptAV4Require(try conceptAV4JSON(conceptAV4SortedRows(before, "decisions", excluding: keptIDs)) ==
+                             conceptAV4JSON(conceptAV4SortedRows(after, "decisions", excluding: keptIDs)), "Unrelated decisions/revisions/due dates must remain identical")
+        let oldCount = try XCTUnwrap(before["eventCount"] as? Int)
+        let newCount = try XCTUnwrap(after["eventCount"] as? Int)
+        try conceptAV4Require(newCount == oldCount + keptIDs.count, "One and only one ledger event per actual upward Keep")
+        let decisions = try XCTUnwrap(after["decisions"] as? [[String: Any]])
+        for id in keptIDs {
+            try conceptAV4Require(decisions.first { $0["id"] as? String == id }?["disposition"] as? String == "kept", "Missing committed Keep: \(id)")
+        }
+    }
+
+    private func conceptAV4Month(_ key: String, in state: [String: Any]) throws -> [String: Any] {
+        let rows = try XCTUnwrap(state["months"] as? [[String: Any]])
+        let matches = rows.filter { $0["month"] as? String == key }
+        try conceptAV4Require(matches.count == 1, "Require one actual month row for \(key)")
+        return try XCTUnwrap(matches.first)
+    }
+
+    private func conceptAV4MonthStatus(_ row: [String: Any]) throws -> String {
+        let total = try XCTUnwrap(row["total"] as? Int)
+        let reviewed = try XCTUnwrap(row["reviewed"] as? Int)
+        try conceptAV4Require(total > 0 && (0...total).contains(reviewed), "Invalid observed month progress")
+        if reviewed == total { return t("month_done") }
+        if reviewed == 0 { return String(format: t("month_not_started#" + (total == 1 ? "one" : "other")), Int64(total)) }
+        return String(format: t("month_progress#" + (total == 1 ? "one" : "other")), Int64(reviewed), Int64(total))
+    }
+
+    private func conceptAV4MonthCell(_ row: [String: Any]) throws -> XCUIElement {
+        let title = try XCTUnwrap(row["title"] as? String)
+        // Use the actual observed title prefix; SwiftUI combines visible title and status on the row button.
+        let cells = app.cells.containing(NSPredicate(format: "label BEGINSWITH %@", title))
+        try conceptAV4Require(cells.count == 1, "Actual complete month cell must be unambiguous: \(title)")
+        return cells.firstMatch
+    }
+
+    private func conceptAV4MonthPublished(_ key: String, reviewed: Int, total: Int) throws -> [String: Any] {
+        try conceptAV4Wait("v4-month-published-" + key) { state in
+            guard !self.e("feed.close").exists, self.app.navigationBars[self.t("months_title")].exists,
+                  let months = state["months"] as? [[String: Any]],
+                  let row = months.first(where: { $0["month"] as? String == key }),
+                  row["reviewed"] as? Int == reviewed, row["total"] as? Int == total,
+                  let title = row["title"] as? String, let status = try? self.conceptAV4MonthStatus(row) else { return false }
+            let cells = self.app.cells.containing(NSPredicate(format: "label BEGINSWITH %@", title))
+            guard cells.count == 1 else { return false }
+            return cells.firstMatch.descendants(matching: .any).allElementsBoundByIndex.contains { $0.label.contains(status) }
+                || cells.firstMatch.label.contains(status)
+        }
+    }
+
+    private func conceptAV4OpenMonth(_ row: [String: Any]) throws -> [String: Any] {
+        let cell = try conceptAV4MonthCell(row)
+        let title = try XCTUnwrap(row["title"] as? String)
+        let buttons = cell.buttons.matching(NSPredicate(format: "label BEGINSWITH %@", title))
+        try conceptAV4Require(buttons.count == 1, "Tap the real month row, not its actions menu")
+        return try conceptAV4Tap(buttons.firstMatch)
+    }
+
+    private func conceptAV4Keep(_ filename: String, initial: [String: Any], baseline: [String: Any],
+                               keptIDs: inout Set<String>, index: Int) throws -> [String: Any] {
+        let asset = try conceptAAsset(filename, in: initial)
+        let id = try XCTUnwrap(asset["id"] as? String)
+        let metadata = try XCTUnwrap(asset["accessibilityValue"] as? String)
+        let inventory = try XCTUnwrap(baseline["inventory"] as? [[String: Any]])
+        let matches = inventory.filter { $0["accessibilityValue"] as? String == metadata }
+        try conceptAV4Require(matches.count == 1 && matches.first?["id"] as? String == id,
+                             "Stage identity must match exactly one actual inventory entry, never a guessed ID/dimension")
+        try conceptAV4Require((asset["pixelWidth"] as? Int ?? 0) > 0 && (asset["pixelHeight"] as? Int ?? 0) > 0,
+                             "Retain actual source dimensions from the initial inventory")
+        let before = try conceptAV4Wait("v4-stage-before-keep-\(index)") { state in
+            let readyMedia = asset["isVideo"] as? Bool == true
+                ? self.e("feed.video.ready").exists || self.e("feed.video.poster").exists : self.e("feed.media").exists
+            return self.e("feed.stage").exists && self.e("feed.stage").value as? String == metadata
+                && !self.e("feed.preview.loading").exists && !self.e("feed.preview.failed").exists && readyMedia
+                && (state["inventory"] as? [[String: Any]] ?? []).contains { $0["id"] as? String == id }
+        }
+        let oldRows = try XCTUnwrap(before["decisions"] as? [[String: Any]])
+        try conceptAV4Require(oldRows.first { $0["id"] as? String == id }?["disposition"] as? String == nil
+                             || oldRows.first { $0["id"] as? String == id }?["disposition"] as? String == "undecided", "Only review a genuinely undecided asset")
+        let stageAX = conceptAV4AX(e("feed.stage"))
+        let prefix = String(format: "concept-a-v4-month-keep-%02d", index)
+        let beforeScreen = try conceptAV4Still(prefix + "-before")
+        let started = Date().timeIntervalSince1970
+        // Raw genuine gesture: the last asset cannot advance feedPosition, so swipeFeed is intentionally NOT used.
+        e("feed.stage").swipeUp()
+        let finished = Date().timeIntervalSince1970
+        keptIDs.insert(id)
+        let expectedIDs = keptIDs
+        let after = try conceptAV4Wait("v4-committed-keep-\(index)") { state in
+            let rows = state["decisions"] as? [[String: Any]] ?? []
+            return expectedIDs.allSatisfy { id in rows.contains { $0["id"] as? String == id && $0["disposition"] as? String == "kept" } }
+                && state["eventCount"] as? Int == (baseline["eventCount"] as? Int ?? -1) + expectedIDs.count
+        }
+        let afterScreen = try conceptAV4Still(prefix + "-after")
+        try conceptAV4Preserved(baseline, after, keptIDs: keptIDs)
+        return ["action": "feed.stage.swipeUp", "filename": filename, "assetID": id, "asset": asset,
+                "stageAX": stageAX, "identityMatchCount": matches.count, "identityMethod": "unique actual AX date/type/duration in complete PhotoKit inventory; dimensions from matched initial asset",
+                "started": started, "finished": finished, "before": before, "after": after,
+                "beforeScreenshot": beforeScreen, "afterScreenshot": afterScreen]
+    }
+
+    private func conceptAV4MonthGeometry(_ keys: [String], roles: [String]) throws -> [String: Any] {
+        let screen = try XCTUnwrap(XCUIScreen.main.screenshot().image.cgImage)
+        try conceptAV4Require(screen.width == 1206 && screen.height == 2622, "V4 crop gate is pinned to the actual medium iPhone source")
+        let scale = CGFloat(screen.width) / app.frame.width
+        let crop = CGRect(x: app.frame.minX, y: app.frame.minY, width: app.frame.width, height: 2263 / scale)
+        for attempt in 0..<8 {
+            let state = try conceptAObserve("v4-month-viewport-\(attempt)")
+            let box = try XCTUnwrap(state["nativeListViewport"] as? [String: Double])
+            var viewport = CGRect(x: try XCTUnwrap(box["x"]), y: try XCTUnwrap(box["y"]),
+                                  width: try XCTUnwrap(box["width"]), height: try XCTUnwrap(box["height"]))
+            let adjustedViewport = viewport
+            for header in app.staticTexts.matching(NSPredicate(format: "label MATCHES '^[0-9]{4}$'")).allElementsBoundByIndex {
+                let frame = header.frame
+                if frame.minY <= viewport.minY + 1 && frame.maxY > viewport.minY {
+                    let bottom = viewport.maxY
+                    viewport.origin.y = frame.maxY
+                    viewport.size.height = max(0, bottom - frame.maxY)
+                }
+            }
+            viewport = viewport.intersection(app.frame).intersection(crop)
+            try conceptAV4Require(!viewport.isEmpty && !viewport.isNull, "Real adjusted list viewport must intersect the common phone crop")
+            var rows: [[String: Any]] = []
+            var union = CGRect.null
+            for (index, key) in keys.enumerated() {
+                let row = try conceptAV4Month(key, in: state)
+                let title = try XCTUnwrap(row["title"] as? String)
+                let cells = app.cells.containing(NSPredicate(format: "label BEGINSWITH %@", title))
+                guard cells.count == 1 else { continue }
+                let cell = cells.firstMatch
+                let menu = cell.buttons[String(format: t("month_actions"), title)].firstMatch
+                guard menu.exists, !cell.frame.isEmpty else { continue }
+                union = union.union(cell.frame).union(menu.frame)
+                let status = try conceptAV4MonthStatus(row)
+                let labels = ([cell.label] + cell.descendants(matching: .any).allElementsBoundByIndex.map(\.label)).joined(separator: "\n")
+                guard viewport.contains(cell.frame), viewport.contains(menu.frame), menu.isHittable, labels.contains(status) else { continue }
+                var record = row
+                record["role"] = roles[index]
+                record["visibleStatus"] = status
+                record["actualAXText"] = labels
+                record["cellAX"] = conceptAV4AX(cell)
+                record["menuAX"] = conceptAV4AX(menu)
+                record["cellNativeFrame"] = conceptAV4Rect(CGRect(x: (cell.frame.minX - app.frame.minX) * scale,
+                    y: (cell.frame.minY - app.frame.minY) * scale, width: cell.frame.width * scale, height: cell.frame.height * scale))
+                record["menuNativeFrame"] = conceptAV4Rect(CGRect(x: (menu.frame.minX - app.frame.minX) * scale,
+                    y: (menu.frame.minY - app.frame.minY) * scale, width: menu.frame.width * scale, height: menu.frame.height * scale))
+                rows.append(record)
+            }
+            if rows.count == keys.count {
+                return ["nativeListViewport": conceptAV4Rect(adjustedViewport), "unobscuredViewport": conceptAV4Rect(viewport),
+                        "screenAXFrame": conceptAV4Rect(app.frame), "screenPixels": [screen.width, screen.height],
+                        "commonPhoneNativeVisibleRect": [0, 0, screen.width, 2263], "nativeVisibleYMax": 2263,
+                        "completeCellsAndMenus": rows.count, "scrollAttempts": attempt, "rows": rows]
+            }
+            if !union.isNull { try conceptAV4Require(union.height <= viewport.height, "Three complete rows cannot fit; do not shrink or manufacture them") }
+            let shift: CGFloat = union.isNull ? -36 : (union.minY < viewport.minY ? viewport.minY + 6 - union.minY : viewport.maxY - 6 - union.maxY)
+            let list = app.collectionViews.firstMatch
+            try conceptAV4Require(list.exists && list.isHittable, "Real months list must accept a bounded user scroll")
+            let start = list.coordinate(withNormalizedOffset: CGVector(dx: 0.94, dy: 0.55))
+            start.press(forDuration: 0.05, thenDragTo: start.withOffset(CGVector(dx: 0, dy: max(-80, min(80, shift)))))
+            pause(0.3)
+        }
+        throw NSError(domain: "GaleriQConceptAV4", code: 2, userInfo: [NSLocalizedDescriptionKey: "Three complete native status cells and menus did not fit above native Y=2263 after eight real scrolls"])
+    }
+
+    private func captureConceptAV4Months(initial: [String: Any]) throws {
+        launch("concept-a-months")
+        let before = try conceptAObserve("v4-months-before-additional-keeps")
+        let initialInventory = try XCTUnwrap(initial["inventory"] as? [[String: Any]])
+        let inventory = try XCTUnwrap(before["inventory"] as? [[String: Any]])
+        let removed = Set(try (1...5).map { try conceptAID(String(format: "CA_30_pretty_%02d.jpg", $0), in: initial) })
+        try conceptAV4Require(Set(inventory.compactMap { $0["id"] as? String }) ==
+                             Set(initialInventory.compactMap { $0["id"] as? String }).subtracting(removed), "Only test07's real five vault-original removals may precede V4")
+        try conceptAV4Require(try conceptAV4JSON(conceptAV4SortedRows(initial, "inventory", excluding: removed)) ==
+                             conceptAV4JSON(conceptAV4SortedRows(before, "inventory")), "All surviving initial filenames, dates, media types and dimensions must remain unchanged")
+        let rows = try XCTUnwrap(before["months"] as? [[String: Any]])
+        let keys = rows.compactMap { $0["month"] as? String }.sorted(by: >).prefix(3)
+        try conceptAV4Require(Array(keys) == ["2026-11", "2026-10", "2026-09"], "Preserve the actual top-three metadata month roles")
+        for (key, total) in [("2026-10", 2), ("2026-11", 3), ("2026-09", 8)] {
+            let row = try conceptAV4Month(key, in: before)
+            try conceptAV4Require(row["total"] as? Int == total && row["reviewed"] as? Int == 0 && row["later"] as? Int == 0, "Unexpected genuine post-vault baseline for \(key)")
+            _ = try conceptAV4MonthPublished(key, reviewed: 0, total: total)
+        }
+        var proof: [String: Any] = ["schema": 1, "kind": "concept-a-v4-month-progress", "status": "IN_PROGRESS",
+                                    "initialInventory": initialInventory, "before": before, "actions": [[String: Any]](),
+                                    "navigationActions": [[String: Any]](), "source": "screenshots/concept-a-v4-months.png"]
+        try conceptAV4Write(proof, to: "month-progress-proof.json")
+        var actions: [[String: Any]] = []
+        var navigation: [[String: Any]] = []
+        var keptIDs: Set<String> = []
+        navigation.append(try conceptAV4OpenMonth(conceptAV4Month("2026-10", in: before)))
+        for filename in ["CA_30_pretty_14.jpg", "CA_02_clutter_shake.jpg"] {
+            actions.append(try conceptAV4Keep(filename, initial: initial, baseline: before, keptIDs: &keptIDs, index: actions.count + 1))
+            proof["actions"] = actions; proof["navigationActions"] = navigation
+            try conceptAV4Write(proof, to: "month-progress-proof.json")
+        }
+        navigation.append(try conceptAV4Tap(e("feed.close"))) // Real close: permit the production MonthsView task to recount.
+        let complete = try conceptAV4MonthPublished("2026-10", reviewed: 2, total: 2)
+        proof["afterCompleteMonth"] = complete
+        navigation.append(try conceptAV4OpenMonth(conceptAV4Month("2026-11", in: complete)))
+        actions.append(try conceptAV4Keep("CA_40_large_02.mp4", initial: initial, baseline: before, keptIDs: &keptIDs, index: 3))
+        proof["actions"] = actions; proof["navigationActions"] = navigation
+        try conceptAV4Write(proof, to: "month-progress-proof.json")
+        navigation.append(try conceptAV4Tap(e("feed.close")))
+        let after = try conceptAV4MonthPublished("2026-11", reviewed: 1, total: 3)
+        _ = try conceptAV4MonthPublished("2026-10", reviewed: 2, total: 2)
+        _ = try conceptAV4MonthPublished("2026-09", reviewed: 0, total: 8)
+        try conceptAV4Preserved(before, after, keptIDs: keptIDs)
+        let oldMonths = rows.filter { !["2026-10", "2026-11"].contains($0["month"] as? String ?? "") }
+        let newMonths = try XCTUnwrap(after["months"] as? [[String: Any]]).filter { !["2026-10", "2026-11"].contains($0["month"] as? String ?? "") }
+        try conceptAV4Require(try conceptAV4JSON(oldMonths) == conceptAV4JSON(newMonths), "Every unrelated month, including untouched September, must remain identical")
+        let geometry = try conceptAV4MonthGeometry(["2026-11", "2026-10", "2026-09"], roles: ["partial", "complete", "untouched"])
+        let shot = XCUIScreen.main.screenshot()
+        snap("concept-a-v4-months", settle: 0, captured: shot) // Never overwrite concept-a-months.png.
+        proof["status"] = "PASS"; proof["after"] = after; proof["geometry"] = geometry
+        proof["navigationActions"] = navigation; proof["actionFiles"] = actions.compactMap { $0["filename"] as? String }
+        proof["actionAssetIDs"] = actions.compactMap { $0["assetID"] as? String }; proof["keptAssetIDs"] = keptIDs.sorted()
+        proof["screenshotSHA256"] = conceptAV4SHA(shot.pngRepresentation)
+        proof["preservation"] = ["inventoryUnchanged": true, "basketIDsUnchanged": true, "unrelatedDecisionsUnchanged": true,
+                                  "unrelatedMonthsUnchanged": true, "additionalLedgerEvents": keptIDs.count]
+        try conceptAV4Write(proof, to: "month-progress-proof.json")
+    }
+
+    /// Compare only the agreed publication schema. Extra read-only diagnostics (for example the selected
+    /// tool) legitimately change between Filters and Adjust and must not masquerade as a new render.
+    private func conceptAV4EditorCore(_ observation: [String: Any]) throws -> [String: Any] {
+        let keys = ["assetID", "loadState", "originalReady", "previewReady", "rendering", "requestedRecipeHash",
+                    "publishedRecipeHash", "renderGeneration", "publishedRenderGeneration", "publishedFilter",
+                    "publishedFilterStrength", "publishedIsIdentity", "sourceOriginalPixelSHA256", "publishedPreviewPixelSHA256"]
+        var core: [String: Any] = [:]
+        for key in keys { core[key] = try XCTUnwrap(observation[key], "Missing actual editorV4.\(key)") }
+        return core
+    }
+
+    private func conceptAV4EditorReady(_ checkpoint: String, assetID: String, identity: Bool, filter: String,
+                                      recipeHash: String? = nil, pixelHash: String? = nil) throws -> [String: Any] {
+        let state = try conceptAV4Wait(checkpoint) { state in
+            guard let editor = state["editorV4"] as? [String: Any], editor["assetID"] as? String == assetID,
+                  editor["loadState"] as? String == "ready", editor["originalReady"] as? Bool == true,
+                  editor["previewReady"] as? Bool == true, editor["rendering"] as? Bool == false,
+                  let requested = editor["requestedRecipeHash"] as? String,
+                  let published = editor["publishedRecipeHash"] as? String, requested == published,
+                  let generation = editor["renderGeneration"] as? Int, generation >= 0,
+                  editor["publishedRenderGeneration"] as? Int == generation,
+                  editor["publishedIsIdentity"] as? Bool == identity, editor["publishedFilter"] as? String == filter,
+                  let original = editor["sourceOriginalPixelSHA256"] as? String,
+                  let preview = editor["publishedPreviewPixelSHA256"] as? String else { return false }
+            let hashes = [requested, published, original, preview]
+            guard hashes.allSatisfy({ $0.range(of: "^[0-9a-f]{64}$", options: .regularExpression) != nil }),
+                  !identity || original == preview,
+                  identity || (editor["publishedFilterStrength"] as? Double == 1 && original != preview),
+                  recipeHash == nil || published == recipeHash, pixelHash == nil || preview == pixelHash else { return false }
+            return self.e("editor.stage").exists && !self.e("editor.preview.rendering").exists
+        }
+        return try conceptAV4EditorCore(XCTUnwrap(state["editorV4"] as? [String: Any]))
+    }
+
+    /// Canonical actual screenshot pixel buffer, not a re-encoded PNG/claimed rendering flag.
+    private func conceptAV4PixelSHA(_ image: CGImage, rect: CGRect) throws -> String {
+        let crop = try XCTUnwrap(image.cropping(to: rect))
+        var pixels = Data(count: crop.width * crop.height * 4)
+        let drawn = pixels.withUnsafeMutableBytes { buffer -> Bool in
+            guard let context = CGContext(data: buffer.baseAddress, width: crop.width, height: crop.height, bitsPerComponent: 8,
+                                          bytesPerRow: crop.width * 4, space: CGColorSpaceCreateDeviceRGB(),
+                                          bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return false }
+            context.draw(crop, in: CGRect(x: 0, y: 0, width: crop.width, height: crop.height))
+            return true
+        }
+        try conceptAV4Require(drawn, "Must decode the actual saved screenshot photo pixels")
+        return conceptAV4SHA(pixels)
+    }
+
+    private func conceptAV4EditorShot(_ name: String, asset: [String: Any], editor: [String: Any], tool: String) throws -> [String: Any] {
+        let stage = e("editor.stage")
+        let frame = stage.frame
+        try conceptAV4Require(stage.exists && !frame.isEmpty && app.frame.contains(frame) && e("editor.tool." + tool).isSelected,
+                             "Actual selected tool and complete editor.stage must be visible")
+        let width = CGFloat(try XCTUnwrap(asset["pixelWidth"] as? Int))
+        let height = CGFloat(try XCTUnwrap(asset["pixelHeight"] as? Int))
+        try conceptAV4Require(width > 0 && height > 0, "Photo fit must derive from actual original dimensions")
+        let fit = min(frame.width / width, frame.height / height)
+        let photo = CGRect(x: frame.midX - width * fit / 2, y: frame.midY - height * fit / 2, width: width * fit, height: height * fit)
+        var samples: [[String: Any]] = []
+        var lastHash = ""
+        var finalShot: XCUIScreenshot?
+        var nativeRect = CGRect.zero
+        // Two consecutive immutable native stills must agree in the real aspect-fit photo area.
+        for index in 0..<6 {
+            let started = Date().timeIntervalSince1970
+            let shot = XCUIScreen.main.screenshot()
+            let finished = Date().timeIntervalSince1970
+            let image = try XCTUnwrap(shot.image.cgImage)
+            let scale = CGFloat(image.width) / app.frame.width
+            nativeRect = CGRect(x: (photo.minX - app.frame.minX) * scale, y: (photo.minY - app.frame.minY) * scale,
+                                width: photo.width * scale, height: photo.height * scale).insetBy(dx: 2, dy: 2).integral
+            try conceptAV4Require(CGRect(x: 0, y: 0, width: image.width, height: image.height).contains(nativeRect) && !nativeRect.isEmpty,
+                                 "Actual fitted photo crop must remain within its native screenshot")
+            let hash = try conceptAV4PixelSHA(image, rect: nativeRect)
+            let path = try conceptAV4Still(name + "-stability-\(index)", shot: shot)
+            samples.append(["file": path, "captureStarted": started, "captureFinished": finished,
+                            "photoPixelSHA256": hash, "screenshotSHA256": conceptAV4SHA(shot.pngRepresentation)])
+            if hash == lastHash { finalShot = shot; break }
+            lastHash = hash
+            pause(0.35)
+        }
+        let shot = try XCTUnwrap(finalShot, "Actual photo area did not become stable in six real stills")
+        try conceptAV4Require(stage.frame == frame, "Editor stage geometry changed while capturing")
+        let observed = try conceptAObserve(name + "-capture-readback")
+        let observation = try XCTUnwrap(observed["editorV4"] as? [String: Any])
+        let readback = try conceptAV4EditorCore(observation)
+        try conceptAV4Require(try conceptAV4JSON(editor) == conceptAV4JSON(readback), "Published source/recipe/generation changed during the actual still pair")
+        snap(name, settle: 0, captured: shot)
+        return ["file": "screenshots/" + name + ".png", "screenshotSHA256": conceptAV4SHA(shot.pngRepresentation),
+                "photoPixelSHA256": try XCTUnwrap(samples.last?["photoPixelSHA256"] as? String),
+                "editorV4": readback, "editorObservation": observation, "stageAX": conceptAV4AX(stage), "photoAXFrame": conceptAV4Rect(photo),
+                "photoNativeFrame": conceptAV4Rect(nativeRect), "selectedToolAX": conceptAV4AX(e("editor.tool." + tool)),
+                "undoAX": conceptAV4AX(e("editor.undo")), "redoAX": conceptAV4AX(e("editor.redo")),
+                "stability": ["method": "two consecutive real native photo-area RGBA8 pixel hashes", "samples": samples, "consecutiveEqualSamples": 2]]
+    }
+
+    private func captureConceptAV4Editor(initial: [String: Any]) throws {
+        let asset = try conceptAAsset("CA_30_pretty_08.jpg", in: initial)
+        let id = try XCTUnwrap(asset["id"] as? String)
+        let baseline = try conceptAObserve("v4-editor-inventory-before")
+        launch("concept-a-editor") // Existing native route constructs a fresh EditorModel for the SAME real source.
+        var actions: [[String: Any]] = []
+        var checkpoints: [String: Any] = [:]
+        var proof: [String: Any] = ["schema": 1, "kind": "concept-a-v4-editor-pair", "status": "IN_PROGRESS",
+                                    "assetID": id, "filename": "CA_30_pretty_08.jpg", "asset": asset,
+                                    "beforeState": baseline, "matchedTool": "adjust", "actions": actions, "checkpoints": checkpoints]
+        try conceptAV4Write(proof, to: "editor-pair-proof.json")
+        let original = try conceptAV4EditorReady("v4-editor-original-loaded", assetID: id, identity: true, filter: "original")
+        actions.append(try conceptAV4Tap(e("editor.tool.adjust")))
+        let before = try conceptAV4EditorReady("v4-editor-original-adjust", assetID: id, identity: true, filter: "original")
+        let selection = try XCTUnwrap(try conceptAObserve("v4-editor-same-original")["selection"] as? [String: Any])
+        try conceptAV4Require(selection["assetIDs"] as? [String] == [id] && selection["sourceFiles"] as? [String] == ["CA_30_pretty_08.jpg"], "Native editor route must select exactly the inventoried original")
+        // The real default tool is Crop. Switching to Adjust legitimately republishes an
+        // identical identity image, so compare actual recipe/pixels and allow that real generation.
+        let originalStable = ["assetID", "requestedRecipeHash", "publishedRecipeHash", "publishedIsIdentity",
+                              "sourceOriginalPixelSHA256", "publishedPreviewPixelSHA256"]
+        for key in originalStable {
+            try conceptAV4Require(try conceptAV4JSON([key: try XCTUnwrap(original[key])]) ==
+                                  conceptAV4JSON([key: try XCTUnwrap(before[key])]), "Selecting Adjust must preserve identity recipe/pixels: \(key)")
+        }
+        try conceptAV4Require((before["renderGeneration"] as? Int ?? -1) >= (original["renderGeneration"] as? Int ?? 0),
+                              "The real Crop-to-Adjust publication generation must not go backwards")
+        try conceptAV4Require(!e("editor.undo").isEnabled && !e("editor.redo").isEnabled, "Require a fresh unedited model, not test07's Warm history")
+        checkpoints["before"] = try conceptAV4EditorShot("concept-a-v4-editor-before", asset: asset, editor: before, tool: "adjust")
+        proof["checkpoints"] = checkpoints; proof["actions"] = actions
+        try conceptAV4Write(proof, to: "editor-pair-proof.json")
+
+        actions.append(try conceptAV4Tap(e("editor.tool.filter")))
+        _ = try conceptAV4Wait("v4-editor-filter-thumbnails") { _ in self.e("editor.filter.thumbnail.NONE").exists }
+        let warm = button("edit_filter_warm")
+        actions.append(try conceptAV4Tap(warm)) // No recipe, exposure or filter-strength injection.
+        let filtered = try conceptAV4EditorReady("v4-editor-warm-published", assetID: id, identity: false, filter: "warm")
+        let strength = app.descendants(matching: .any).matching(NSPredicate(format: "label == %@ AND value == '100'", t("edit_filter_strength"))).firstMatch
+        try conceptAV4Require(warm.isSelected && strength.exists && conceptAFullyVisible(strength), "The actual selected Warm filter and native Strength=100 must be visible")
+        var filterScreen = try conceptAV4EditorShot("concept-a-v4-editor-filter-selected", asset: asset, editor: filtered, tool: "filter")
+        filterScreen["warmAX"] = conceptAV4AX(warm); filterScreen["strengthAX"] = conceptAV4AX(strength)
+        checkpoints["filterSelection"] = filterScreen
+        actions.append(try conceptAV4Tap(e("editor.tool.adjust")))
+        let after = try conceptAV4EditorReady("v4-editor-warm-matched-adjust", assetID: id, identity: false, filter: "warm")
+        try conceptAV4Require(try conceptAV4JSON(filtered) == conceptAV4JSON(after), "Return to matched Adjust layout without changing the applied recipe")
+        try conceptAV4Require(after["sourceOriginalPixelSHA256"] as? String == before["sourceOriginalPixelSHA256"] as? String
+                             && after["publishedRecipeHash"] as? String != before["publishedRecipeHash"] as? String
+                             && (after["renderGeneration"] as? Int ?? -1) > (before["renderGeneration"] as? Int ?? -1), "Warm must publish a genuinely new render of the same original")
+        try conceptAV4Require(e("editor.undo").isEnabled && !e("editor.redo").isEnabled, "The genuine Warm edit must enable Undo only")
+        let afterScreen = try conceptAV4EditorShot("concept-a-v4-editor-after", asset: asset, editor: after, tool: "adjust")
+        let beforeScreen = try XCTUnwrap(checkpoints["before"] as? [String: Any])
+        try conceptAV4Require(try conceptAV4JSON(beforeScreen["stageAX"] as? [String: Any] ?? [:]) ==
+                             conceptAV4JSON(afterScreen["stageAX"] as? [String: Any] ?? [:]), "Before/after editor.stage AX frame and layout must match")
+        try conceptAV4Require(try conceptAV4JSON(beforeScreen["photoNativeFrame"] as? [String: Any] ?? [:]) ==
+                             conceptAV4JSON(afterScreen["photoNativeFrame"] as? [String: Any] ?? [:]), "Matched comparison must show precisely the same native photo rectangle")
+        try conceptAV4Require(beforeScreen["photoPixelSHA256"] as? String != afterScreen["photoPixelSHA256"] as? String,
+                             "Warm must also change the actual captured photo pixels, not just the observed model")
+        checkpoints["after"] = afterScreen
+        proof["checkpoints"] = checkpoints; proof["actions"] = actions
+        try conceptAV4Write(proof, to: "editor-pair-proof.json")
+
+        actions.append(try conceptAV4Tap(e("editor.undo")))
+        let undo = try conceptAV4EditorReady("v4-editor-real-undo", assetID: id, identity: true, filter: "original",
+            recipeHash: before["publishedRecipeHash"] as? String, pixelHash: before["publishedPreviewPixelSHA256"] as? String)
+        try conceptAV4Require(undo["sourceOriginalPixelSHA256"] as? String == before["sourceOriginalPixelSHA256"] as? String
+                             && (undo["renderGeneration"] as? Int ?? -1) > (after["renderGeneration"] as? Int ?? -1)
+                             && !e("editor.undo").isEnabled && e("editor.redo").isEnabled, "Actual Undo must restore original pixels/identity and enable Redo")
+        let undoScreen = try conceptAV4EditorShot("concept-a-v4-editor-undo", asset: asset, editor: undo, tool: "adjust")
+        try conceptAV4Require(undoScreen["photoPixelSHA256"] as? String == beforeScreen["photoPixelSHA256"] as? String,
+                             "The actual Undo still must restore the original comparison photo pixels")
+        checkpoints["undo"] = undoScreen
+        proof["checkpoints"] = checkpoints; proof["actions"] = actions
+        try conceptAV4Write(proof, to: "editor-pair-proof.json")
+        actions.append(try conceptAV4Tap(e("editor.redo")))
+        let redo = try conceptAV4EditorReady("v4-editor-real-redo", assetID: id, identity: false, filter: "warm",
+            recipeHash: after["publishedRecipeHash"] as? String, pixelHash: after["publishedPreviewPixelSHA256"] as? String)
+        try conceptAV4Require(redo["sourceOriginalPixelSHA256"] as? String == before["sourceOriginalPixelSHA256"] as? String
+                             && (redo["renderGeneration"] as? Int ?? -1) > (undo["renderGeneration"] as? Int ?? -1)
+                             && e("editor.undo").isEnabled && !e("editor.redo").isEnabled, "Actual Redo must restore Warm pixels/recipe and enable Undo")
+        let redoScreen = try conceptAV4EditorShot("concept-a-v4-editor-redo", asset: asset, editor: redo, tool: "adjust")
+        try conceptAV4Require(redoScreen["photoPixelSHA256"] as? String == afterScreen["photoPixelSHA256"] as? String,
+                             "The actual Redo still must restore the Warm comparison photo pixels")
+        checkpoints["redo"] = redoScreen
+        proof["checkpoints"] = checkpoints; proof["actions"] = actions
+        try conceptAV4Write(proof, to: "editor-pair-proof.json")
+
+        let save = button("save")
+        try conceptAV4Require(save.identifier != "editor.save.confirm", "Open only the real editor header Save, never execute an export")
+        actions.append(try conceptAV4Tap(save))
+        let bar = app.navigationBars[t("edit_save_title")].firstMatch
+        _ = try conceptAV4Wait("v4-editor-real-save-options") { _ in bar.exists && self.e("editor.save.confirm").exists }
+        let options = [button("edit_save_copy"), button("edit_save_replace"), button("edit_save_original")]
+        for _ in 0..<2 {
+            if options.allSatisfy(conceptAFullyVisible) { break }
+            let target = conceptAV4AX(bar)
+            let started = Date().timeIntervalSince1970
+            // Expand the actual medium native sheet by its real navigation bar; never change a presentation detent in code.
+            bar.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).press(forDuration: 0.05,
+                thenDragTo: app.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.15)))
+            actions.append(["action": "native save sheet expand drag", "targetAX": target,
+                            "started": started, "finished": Date().timeIntervalSince1970])
+            pause(0.4)
+        }
+        try conceptAV4Require(options.allSatisfy(conceptAFullyVisible) && options[0].isSelected
+                             && !options[1].isSelected && !options[2].isSelected, "Copy must be the untouched real default; Replace and Edit original must be visibly unselected")
+        try conceptAV4Require(e("editor.save.confirm").label == t("edit_save_copy_action"), "Real confirmation action must still say Save copy")
+        let copyShot = XCUIScreen.main.screenshot()
+        snap("concept-a-v4-editor-copy-default", settle: 0, captured: copyShot)
+        checkpoints["copyDefault"] = ["file": "screenshots/concept-a-v4-editor-copy-default.png",
+            "screenshotSHA256": conceptAV4SHA(copyShot.pngRepresentation), "underlyingEditorCheckpoint": "redo",
+            "optionsAX": options.map(conceptAV4AX), "confirmationAX": conceptAV4AX(e("editor.save.confirm")),
+            "defaultSelectionUntouched": true, "saveExecuted": false]
+        proof["checkpoints"] = checkpoints; proof["actions"] = actions
+        try conceptAV4Write(proof, to: "editor-pair-proof.json")
+        actions.append(try conceptAV4Tap(bar.buttons[t("cancel")].firstMatch))
+        let final = try conceptAV4Wait("v4-editor-save-options-cancelled") { _ in !bar.exists && self.e("editor.stage").exists }
+        try conceptAV4Preserved(baseline, final, keptIDs: [])
+        let cancelled = try conceptAV4EditorReady("v4-editor-warm-after-save-cancel", assetID: id, identity: false, filter: "warm",
+            recipeHash: after["publishedRecipeHash"] as? String, pixelHash: after["publishedPreviewPixelSHA256"] as? String)
+        try conceptAV4Require(try conceptAV4JSON(redo) == conceptAV4JSON(cancelled), "Cancelling save options must not edit or republish the photo")
+        proof["status"] = "PASS"; proof["actions"] = actions; proof["afterState"] = final
+        proof["sourceOriginalPixelSHA256"] = before["sourceOriginalPixelSHA256"]
+        proof["beforePreviewPixelSHA256"] = before["publishedPreviewPixelSHA256"]
+        proof["afterPreviewPixelSHA256"] = after["publishedPreviewPixelSHA256"]
+        proof["beforeRecipeHash"] = before["publishedRecipeHash"]; proof["afterRecipeHash"] = after["publishedRecipeHash"]
+        proof["saveCancelled"] = true; proof["noAssetCreated"] = true
+        proof["preservation"] = ["inventoryUnchanged": true, "basketIDsUnchanged": true, "allDecisionsUnchanged": true, "additionalLedgerEvents": 0]
+        try conceptAV4Write(proof, to: "editor-pair-proof.json")
     }
 
     private func conceptASystemDeleteAlert(expectedCount: Int) throws -> XCUIElement {

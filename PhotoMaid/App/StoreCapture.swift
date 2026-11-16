@@ -484,6 +484,7 @@ enum StoreCapture {
                 "duplicates": duplicates, "largeFiles": largeRows, "largeMeasuring": SizeMeasuring.shared.running,
                 "largeThresholdMB": app.settings.largeFileThresholdMB, "months": months, "series": series,
                 "seriesPreview": conceptASeriesPreview, "collageSources": conceptACollageSources,
+                "editorV4": EditorModel.storeCaptureV4Observation,
                 "nativeListViewport": conceptANativeListViewport(),
                 "monthsTourSeen": app.settings.monthsTourSeen, "decisions": decisions,
                 "basketIDs": app.read.basket.map(\.item.localIdentifier), "eventCount": app.read.events.count,

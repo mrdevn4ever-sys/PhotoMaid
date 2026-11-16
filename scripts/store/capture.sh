@@ -29,6 +29,9 @@ elif [ "$CAPTURE_MODE" = refresh-screenshots ]; then
 elif [ "$CAPTURE_MODE" = concept-a ]; then
   [ "$CAPTURE_LOCALE" = en ] || { printf '%s\n' 'Concept A is en-US only'; exit 2; }
   cases=(-only-testing:PhotoMaidUITests/AppStoreCaptureTests/test07ConceptAStoreScreenshots)
+elif [ "$CAPTURE_MODE" = concept-a-v4 ]; then
+  [ "$CAPTURE_LOCALE" = en ] || { printf '%s\n' 'Concept A v4 is en-US only'; exit 2; }
+  cases=(-only-testing:PhotoMaidUITests/AppStoreCaptureTests/test08ConceptAV4StoreScreenshots)
 fi
 set +e
 TEST_RUNNER_STORE_CAPTURE_LOCALE="$CAPTURE_LOCALE" TEST_RUNNER_STORE_CAPTURE_DIR="$out" xcodebuild \
@@ -42,7 +45,7 @@ status=$?
 set -e
 container=$(xcrun simctl get_app_container "$udid" com.mrdevn4ever.photomaid data)
 [ ! -f "$container/Documents/store-library.json" ] || cp "$container/Documents/store-library.json" "$out/library.json"
-if [ "$CAPTURE_MODE" = concept-a ]; then
+if [ "$CAPTURE_MODE" = concept-a ] || [ "$CAPTURE_MODE" = concept-a-v4 ]; then
   mkdir -p "$out/branding"
   [ ! -f "$container/Documents/store-concept-a-wordmark.png" ] || cp "$container/Documents/store-concept-a-wordmark.png" "$out/branding/native-wordmark.png"
   [ ! -f "$container/Documents/store-concept-a-wordmark.json" ] || cp "$container/Documents/store-concept-a-wordmark.json" "$out/branding/native-wordmark.json"
