@@ -216,45 +216,81 @@ final class AppStoreCaptureTests: XCTestCase {
         if let still { try requestStill(still, delay: 1.0) }
         start.press(forDuration: 0.12, thenDragTo: start.withOffset(offset), withVelocity: XCUIGestureVelocity(rawValue: 320),
                     thenHoldForDuration: holdDuration ?? (still == nil ? 1.6 : 8))
-        // A real Later receipt is scheduled asynchronously after feed advancement.
-        // One immediate frame can be too early; AX waits can be too late. Observe
-        // bounded actual native pixels without altering the real four-second timer.
+        // Native rapid burst first, offline OCR after. Failed C12 left a measured
+        // 4.08-second gap between frames while synchronous Vision occupied the
+        // four-second receipt window. No OCR, PNG encoding, disk I/O or AX in burst.
         var releasedScreenshot: XCUIScreenshot?
         if captureAfterRelease {
+            let acquisitionStarted = Date().timeIntervalSince1970
             let deadline = Date().addingTimeInterval(6)
-            let expectedDate = String(format: t("later_in_days_again#other"), Int64(2))
-            var captureStarted = Date().timeIntervalSince1970
-            var captureFinished = captureStarted
-            var frames: [[String: Any]] = []
-            var visible = false
+            var nativeFrames: [(shot: XCUIScreenshot, start: TimeInterval, finish: TimeInterval)] = []
             repeat {
-                captureStarted = Date().timeIntervalSince1970
+                let started = Date().timeIntervalSince1970
                 let shot = XCUIScreen.main.screenshot()
-                captureFinished = Date().timeIntervalSince1970
-                releasedScreenshot = shot
-                let frameIndex = frames.count
+                let finished = Date().timeIntervalSince1970
+                nativeFrames.append((shot: shot, start: started, finish: finished))
+                Thread.sleep(forTimeInterval: 0.05)
+            } while Date() < deadline && nativeFrames.count < 128
+            let acquisitionFinished = Date().timeIntervalSince1970
+            var captureStarted = nativeFrames.last!.start
+            var captureFinished = nativeFrames.last!.finish
+            releasedScreenshot = nativeFrames.last!.shot
+            var frames: [[String: Any]] = []
+            // Preserve every actual frame and its original capture times BEFORE OCR.
+            for (index, frame) in nativeFrames.enumerated() {
                 if let still {
-                    try shot.pngRepresentation.write(to: output.appendingPathComponent("stills/\(still)-after-release-frame-\(frameIndex).png"), options: .atomic)
+                    try frame.shot.pngRepresentation.write(to: output.appendingPathComponent("stills/\(still)-after-release-frame-\(index).png"), options: .atomic)
                 }
-                let actualImage = try XCTUnwrap(shot.image.cgImage)
+                frames.append(["index": index, "captureStarted": frame.start, "captureFinished": frame.finish,
+                               "ocrPerformed": false])
+            }
+            let analysisStarted = Date().timeIntervalSince1970
+            let expectedDate = String(format: t("later_in_days_again#other"), Int64(2))
+            var visible = false
+            var selectedFrameIndex: Int?
+            func writeReadinessProof() throws {
+                if let still {
+                    let timing: [String: Any] = ["method": "six-second actual native screenshot burst, then offline Vision before AX reads",
+                                                 "captureStarted": captureStarted, "captureFinished": captureFinished,
+                                                 "acquisitionStarted": acquisitionStarted, "acquisitionFinished": acquisitionFinished,
+                                                 "analysisStarted": analysisStarted, "frames": frames,
+                                                 "selectedFrameIndex": selectedFrameIndex.map { $0 as Any } ?? NSNull(),
+                                                 "actualDateAndChangeVisible": visible, "deadlineSeconds": 6,
+                                                 "ocrAfterAllCaptures": true, "realTransientLifetimeUnchanged": true]
+                    guard JSONSerialization.isValidJSONObject(timing) else {
+                        throw NSError(domain: "GaleriQStoreCapture", code: 1,
+                                      userInfo: [NSLocalizedDescriptionKey: "Capture evidence must contain only JSON primitives"])
+                    }
+                    try JSONSerialization.data(withJSONObject: timing, options: [.prettyPrinted, .sortedKeys])
+                        .write(to: output.appendingPathComponent("stills/\(still)-after-release.json"), options: .atomic)
+                }
+            }
+            try writeReadinessProof()
+            // Read immutable captured pixels, never the now-later live UI state.
+            for (index, frame) in nativeFrames.enumerated() {
+                let actualImage = try XCTUnwrap(frame.shot.image.cgImage)
                 let readiness = VNRecognizeTextRequest()
                 readiness.recognitionLevel = .accurate
                 readiness.recognitionLanguages = ["en-US"]
                 readiness.usesLanguageCorrection = false
+                let recognitionStarted = Date().timeIntervalSince1970
                 try VNImageRequestHandler(cgImage: actualImage, options: [:]).perform([readiness])
+                let recognitionFinished = Date().timeIntervalSince1970
                 let actualText = (readiness.results ?? []).compactMap { $0.topCandidates(1).first?.string }.joined(separator: "\n")
                 visible = actualText.localizedCaseInsensitiveContains(expectedDate) && actualText.localizedCaseInsensitiveContains(t("change"))
-                frames.append(["index": frameIndex, "captureStarted": captureStarted, "captureFinished": captureFinished,
-                               "recognizedText": actualText, "actualDateAndChangeVisible": visible])
-                if !visible { Thread.sleep(forTimeInterval: 0.05) }
-            } while !visible && Date() < deadline
-            if let still {
-                let timing: [String: Any] = ["method": "bounded real native screenshot pixel readiness after gesture, before AX reads",
-                                             "captureStarted": captureStarted, "captureFinished": captureFinished,
-                                             "frames": frames, "actualDateAndChangeVisible": visible, "deadlineSeconds": 6,
-                                             "realTransientLifetimeUnchanged": true]
-                try JSONSerialization.data(withJSONObject: timing, options: [.prettyPrinted, .sortedKeys])
-                    .write(to: output.appendingPathComponent("stills/\(still)-after-release.json"), options: .atomic)
+                frames[index]["ocrPerformed"] = true
+                frames[index]["recognitionStarted"] = recognitionStarted
+                frames[index]["recognitionFinished"] = recognitionFinished
+                frames[index]["recognizedText"] = actualText
+                frames[index]["actualDateAndChangeVisible"] = visible
+                if visible {
+                    selectedFrameIndex = index
+                    releasedScreenshot = frame.shot
+                    captureStarted = frame.start
+                    captureFinished = frame.finish
+                }
+                try writeReadinessProof()
+                if visible { break }
             }
         }
         pause(1)
