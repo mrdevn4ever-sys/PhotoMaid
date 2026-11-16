@@ -722,7 +722,10 @@ final class AppStoreCaptureTests: XCTestCase {
         try conceptARequireStage(try conceptAAsset("CA_30_pretty_06.jpg", in: initial))
         let beforeLater = feedPosition()
         let feedBounds = app.frame
-        e("feed.stage").swipeRight()
+        // Owner revision: show the genuine rightward drag and native Later badge,
+        // not only the reminder after committing. Never redraw or overlay the UI.
+        let laterHeldAt = Date().timeIntervalSince1970
+        try holdSwipe("right", still: "concept-a-later-swipe", offset: CGVector(dx: 150, dy: -20), holdDuration: 25)
         let pill = e("later.pill")
         XCTAssertTrue(pill.waitForExistence(timeout: 2))
         let pillReadyDeadline = Date().addingTimeInterval(1)
@@ -753,6 +756,23 @@ final class AppStoreCaptureTests: XCTestCase {
         XCTAssertTrue(visiblePillText.localizedCaseInsensitiveContains(t("change")), "Actual native pill pixels must show Change: \(visiblePillText)")
         XCTAssertEqual(feedPosition(), beforeLater + 1, "The actual right-swipe decision must advance")
         snap("concept-a-later", settle: 0, captured: laterScreenshot)
+        let laterHeld = try XCTUnwrap(try JSONSerialization.jsonObject(with: Data(contentsOf: output.appendingPathComponent("stills/concept-a-later-swipe.json"))) as? [String: Any])
+        XCTAssertGreaterThanOrEqual(laterHeld["requested"] as? Double ?? 0, laterHeldAt)
+        XCTAssertLessThan(laterHeld["finished"] as? Double ?? .infinity, laterHeldAt + 24, "Later screenshot must finish while the finger is still down")
+        let laterHeldURL = output.appendingPathComponent("screenshots/concept-a-later-swipe.png")
+        let laterHeldSource = try XCTUnwrap(CGImageSourceCreateWithURL(laterHeldURL as CFURL, nil))
+        let laterHeldImage = try XCTUnwrap(CGImageSourceCreateImageAtIndex(laterHeldSource, 0, nil))
+        // Only inspect the upper photo area: the static footer also says Later
+        // and must not accidentally satisfy the active swipe-badge requirement.
+        let activeBadgeArea = try XCTUnwrap(laterHeldImage.cropping(to: CGRect(x: 0, y: 250, width: 1206, height: 1000)))
+        let swipeRequest = VNRecognizeTextRequest()
+        swipeRequest.recognitionLevel = .accurate
+        swipeRequest.recognitionLanguages = ["en-US"]
+        swipeRequest.usesLanguageCorrection = false
+        try VNImageRequestHandler(cgImage: activeBadgeArea, options: [:]).perform([swipeRequest])
+        let activeSwipeText = (swipeRequest.results ?? []).compactMap { $0.topCandidates(1).first?.string }.joined(separator: "\n")
+        try activeSwipeText.write(to: output.appendingPathComponent("concept-a-later-swipe-visible-text.txt"), atomically: true, encoding: .utf8)
+        XCTAssertTrue(activeSwipeText.localizedCaseInsensitiveContains("Later"), "Actual upper-photo swipe badge must show Later, not just its static footer: \(activeSwipeText)")
         try conceptARequireStage(try conceptAAsset("CA_30_pretty_07.jpg", in: initial))
         swipeFeed("up")
         let trashIDs = Set(try ["CA_01_clutter_blur.jpg", "concept-a-native-library.png"].map { try conceptAID($0, in: initial) })
@@ -772,7 +792,7 @@ final class AppStoreCaptureTests: XCTestCase {
         captureConceptAGames()
         try captureConceptAVault(initial: initial)
         let expected = ["concept-a-swipe", "concept-a-duplicates", "concept-a-large-files", "concept-a-trash",
-                        "concept-a-delete-confirm", "concept-a-vault", "concept-a-vault-locked", "concept-a-later",
+                        "concept-a-delete-confirm", "concept-a-vault", "concept-a-vault-locked", "concept-a-later", "concept-a-later-swipe",
                         "concept-a-months", "concept-a-analysis", "concept-a-collage", "concept-a-editor", "concept-a-games"]
         for name in expected { try conceptAAssertPNG(output.appendingPathComponent("screenshots/\(name).png")) }
         XCTAssertEqual(Set(shots.map { $0["file"] ?? "" }), Set((expected + ["concept-a-logo"]).map { $0 + ".png" }))

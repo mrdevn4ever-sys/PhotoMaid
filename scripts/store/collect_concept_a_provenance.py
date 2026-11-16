@@ -13,7 +13,7 @@ from PIL import Image, ImageCms
 
 BASE_SHA = '583eb804a81401aa2010996875b35d05afc61539'
 REQUIRED = ('swipe', 'duplicates', 'large-files', 'trash', 'delete-confirm', 'vault',
-            'later', 'months', 'analysis', 'collage', 'editor', 'games')
+            'later', 'later-swipe', 'months', 'analysis', 'collage', 'editor', 'games')
 
 
 def digest(path):
