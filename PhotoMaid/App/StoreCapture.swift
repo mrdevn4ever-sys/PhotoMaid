@@ -279,7 +279,9 @@ enum StoreCapture {
         case "concept-a-library":
             app.updateSettings { $0.libraryFilter = .all }; app.selectedTab = .library; return
         case "concept-a-feed":
-            guard let selected = select(["CA_01_clutter_blur.jpg", "concept-a-native-library.png",
+            // The deletion confirmation must preview photos, not a screenshot
+            // of GaleriQ that could be mistaken for deleting the application.
+            guard let selected = select(["CA_01_clutter_blur.jpg", "CA_30_pretty_24.jpg",
                                          "CA_30_pretty_06.jpg", "CA_30_pretty_07.jpg", "CA_30_pretty_08.jpg"]) else { return }
             app.open(FeedRequest(.items(selected.map(\.reference), titleKey: "feed_title_all"))); return
         case "concept-a-editor":

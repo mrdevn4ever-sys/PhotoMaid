@@ -707,7 +707,7 @@ final class AppStoreCaptureTests: XCTestCase {
         launch("concept-a-feed"); awaitStage()
         let feedState = try conceptAObserve("feed-selected-originals")
         let feedSelection = try XCTUnwrap(feedState["selection"] as? [String: Any])
-        XCTAssertEqual(feedSelection["sourceFiles"] as? [String], ["CA_01_clutter_blur.jpg", "concept-a-native-library.png",
+        XCTAssertEqual(feedSelection["sourceFiles"] as? [String], ["CA_01_clutter_blur.jpg", "CA_30_pretty_24.jpg",
                                                                "CA_30_pretty_06.jpg", "CA_30_pretty_07.jpg", "CA_30_pretty_08.jpg"])
         try conceptARequireStage(try conceptAAsset("CA_01_clutter_blur.jpg", in: initial))
         try requestStill("warmup-concept-a", delay: 0, warmup: true); try awaitStill("warmup-concept-a")
@@ -717,8 +717,8 @@ final class AppStoreCaptureTests: XCTestCase {
         let held = try XCTUnwrap(try JSONSerialization.jsonObject(with: Data(contentsOf: output.appendingPathComponent("stills/concept-a-swipe.json"))) as? [String: Any])
         XCTAssertGreaterThanOrEqual(held["requested"] as? Double ?? 0, heldAt)
         XCTAssertLessThan(held["finished"] as? Double ?? .infinity, heldAt + 24, "Recorder must finish while the finger is still down")
-        try conceptARequireStage(nativeScreenshot)
-        swipeFeed("left") // Second real Trash decision, on the actual imported native screenshot.
+        try conceptARequireStage(try conceptAAsset("CA_30_pretty_24.jpg", in: initial))
+        swipeFeed("left") // Second real Trash decision on a neutral photo, never on an app screenshot.
         try conceptARequireStage(try conceptAAsset("CA_30_pretty_06.jpg", in: initial))
         let beforeLater = feedPosition()
         let feedBounds = app.frame
@@ -775,7 +775,13 @@ final class AppStoreCaptureTests: XCTestCase {
         XCTAssertTrue(activeSwipeText.localizedCaseInsensitiveContains("Later"), "Actual upper-photo swipe badge must show Later, not just its static footer: \(activeSwipeText)")
         try conceptARequireStage(try conceptAAsset("CA_30_pretty_07.jpg", in: initial))
         swipeFeed("up")
-        let trashIDs = Set(try ["CA_01_clutter_blur.jpg", "concept-a-native-library.png"].map { try conceptAID($0, in: initial) })
+        let trashPhotoFiles = ["CA_01_clutter_blur.jpg", "CA_30_pretty_24.jpg"]
+        let trashIDs = Set(try trashPhotoFiles.map { try conceptAID($0, in: initial) })
+        XCTAssertFalse(trashIDs.contains(try conceptAID("concept-a-native-library.png", in: initial)), "Do not preview an app screenshot over Delete")
+        for filename in trashPhotoFiles {
+            let photo = try conceptAAsset(filename, in: initial)
+            XCTAssertEqual(photo["isVideo"] as? Bool, false, "Deletion preview must contain actual neutral photos")
+        }
         let decisions = try conceptAWait("actual-swipe-decisions") { Set($0["basketIDs"] as? [String] ?? []) == trashIDs }
         let rows = try XCTUnwrap(decisions["decisions"] as? [[String: Any]])
         let laterID = try conceptAID("CA_30_pretty_06.jpg", in: initial)
