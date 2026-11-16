@@ -216,16 +216,42 @@ final class AppStoreCaptureTests: XCTestCase {
         if let still { try requestStill(still, delay: 1.0) }
         start.press(forDuration: 0.12, thenDragTo: start.withOffset(offset), withVelocity: XCUIGestureVelocity(rawValue: 320),
                     thenHoldForDuration: holdDuration ?? (still == nil ? 1.6 : 8))
-        // Preserve a genuine transient AFTER release, before post-gesture AX
-        // reads consume its real lifetime. Default legacy capture behaviour stays.
+        // A real Later receipt is scheduled asynchronously after feed advancement.
+        // One immediate frame can be too early; AX waits can be too late. Observe
+        // bounded actual native pixels without altering the real four-second timer.
         var releasedScreenshot: XCUIScreenshot?
         if captureAfterRelease {
-            let captureStarted = Date().timeIntervalSince1970
-            releasedScreenshot = XCUIScreen.main.screenshot()
-            let captureFinished = Date().timeIntervalSince1970
+            let deadline = Date().addingTimeInterval(6)
+            let expectedDate = String(format: t("later_in_days_again#other"), Int64(2))
+            var captureStarted = Date().timeIntervalSince1970
+            var captureFinished = captureStarted
+            var frames: [[String: Any]] = []
+            var visible = false
+            repeat {
+                captureStarted = Date().timeIntervalSince1970
+                let shot = XCUIScreen.main.screenshot()
+                captureFinished = Date().timeIntervalSince1970
+                releasedScreenshot = shot
+                let frameIndex = frames.count
+                if let still {
+                    try shot.pngRepresentation.write(to: output.appendingPathComponent("stills/\(still)-after-release-frame-\(frameIndex).png"), options: .atomic)
+                }
+                let actualImage = try XCTUnwrap(shot.image.cgImage)
+                let readiness = VNRecognizeTextRequest()
+                readiness.recognitionLevel = .accurate
+                readiness.recognitionLanguages = ["en-US"]
+                readiness.usesLanguageCorrection = false
+                try VNImageRequestHandler(cgImage: actualImage, options: [:]).perform([readiness])
+                let actualText = (readiness.results ?? []).compactMap { $0.topCandidates(1).first?.string }.joined(separator: "\n")
+                visible = actualText.localizedCaseInsensitiveContains(expectedDate) && actualText.localizedCaseInsensitiveContains(t("change"))
+                frames.append(["index": frameIndex, "captureStarted": captureStarted, "captureFinished": captureFinished,
+                               "recognizedText": actualText, "actualDateAndChangeVisible": visible])
+                if !visible { Thread.sleep(forTimeInterval: 0.05) }
+            } while !visible && Date() < deadline
             if let still {
-                let timing: [String: Any] = ["method": "native XCUIScreen immediately after real gesture returns, before AX reads",
+                let timing: [String: Any] = ["method": "bounded real native screenshot pixel readiness after gesture, before AX reads",
                                              "captureStarted": captureStarted, "captureFinished": captureFinished,
+                                             "frames": frames, "actualDateAndChangeVisible": visible, "deadlineSeconds": 6,
                                              "realTransientLifetimeUnchanged": true]
                 try JSONSerialization.data(withJSONObject: timing, options: [.prettyPrinted, .sortedKeys])
                     .write(to: output.appendingPathComponent("stills/\(still)-after-release.json"), options: .atomic)
@@ -800,6 +826,14 @@ final class AppStoreCaptureTests: XCTestCase {
         try conceptARequireStage(try conceptAAsset("CA_30_pretty_06.jpg", in: initial))
         let beforeLater = feedPosition()
         let feedBounds = app.frame
+        // Warm the public Vision recognizer BEFORE the real transient window.
+        // Cold OCR initialization must not consume a four-second native pill.
+        let recognitionWarmup = VNRecognizeTextRequest()
+        recognitionWarmup.recognitionLevel = .accurate
+        recognitionWarmup.recognitionLanguages = ["en-US"]
+        recognitionWarmup.usesLanguageCorrection = false
+        let warmupImage = try XCTUnwrap(XCUIScreen.main.screenshot().image.cgImage)
+        try VNImageRequestHandler(cgImage: warmupImage, options: [:]).perform([recognitionWarmup])
         // Owner revision: show the genuine rightward drag and native Later badge,
         // not only the reminder after committing. Never redraw or overlay the UI.
         let laterHeldAt = Date().timeIntervalSince1970
