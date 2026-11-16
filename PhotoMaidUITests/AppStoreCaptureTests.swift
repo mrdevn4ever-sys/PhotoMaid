@@ -771,28 +771,60 @@ final class AppStoreCaptureTests: XCTestCase {
         try preferences.screenshot().pngRepresentation.write(to: output.appendingPathComponent("settings-reduce-transparency-before.png"))
         let switchFrame = transparency.frame
         var targetedToggleTap = false
-        if transparency.value as? String == "0" {
-            // The prior native event hit (201,433): the whole-row AX center,
-            // outside the visible trailing switch. Use its observed AX frame.
-            transparency.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap()
-            targetedToggleTap = true
+        var switchTapAttempts: [[String: Any]] = []
+        // C13 retained an observed OFF->OFF no-op. Its AX tree exposes an
+        // actual 63pt nested switch inside a 330pt row proxy: tap that leaf.
+        // Reacquire and retry only a freshly observed OFF state, never ON.
+        for attempt in 0..<3 {
+            let beforeValue = transparency.value as? String ?? "unknown"
+            if beforeValue == "1" { break }
+            XCTAssertEqual(beforeValue, "0", "Do not blindly toggle an unknown Settings state")
+            guard beforeValue == "0" else { break }
+            let nestedToggle = transparency.switches.firstMatch
+            let useLeaf = nestedToggle.exists && nestedToggle.isHittable
+            let target = useLeaf ? nestedToggle : transparency
+            let targetFrame = target.frame
+            let tapStarted = Date().timeIntervalSince1970
+            if useLeaf {
+                target.tap()
+            } else {
+                // Retain the observed trailing-control fallback, never row center.
+                target.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap()
+                targetedToggleTap = true
+            }
+            let tapFinished = Date().timeIntervalSince1970
+            let observed = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == '1'"), object: transparency)
+            let observedResult = XCTWaiter.wait(for: [observed], timeout: 8)
+            let afterValue = transparency.value as? String ?? "unknown"
+            switchTapAttempts.append(["attempt": attempt, "beforeValue": beforeValue, "afterValue": afterValue,
+                                      "target": useLeaf ? "nested native Switch.tap" : "row-relative trailing toggle",
+                                      "targetFrame": ["x": targetFrame.minX, "y": targetFrame.minY,
+                                                      "width": targetFrame.width, "height": targetFrame.height],
+                                      "tapStarted": tapStarted, "tapFinished": tapFinished,
+                                      "waitResult": observedResult.rawValue])
+            // Save the actual result of each input before deciding whether to retry.
+            try preferences.debugDescription.write(to: output.appendingPathComponent("settings-reduce-transparency-attempt-\(attempt).txt"), atomically: true, encoding: .utf8)
+            try preferences.screenshot().pngRepresentation.write(to: output.appendingPathComponent("settings-reduce-transparency-attempt-\(attempt).png"))
+            try JSONSerialization.data(withJSONObject: switchTapAttempts, options: [.prettyPrinted, .sortedKeys])
+                .write(to: output.appendingPathComponent("settings-reduce-transparency-attempts.json"), options: .atomic)
+            if observedResult == .completed && afterValue == "1" { break }
         }
         let enabled = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == '1'"), object: transparency)
         let enabledResult = XCTWaiter.wait(for: [enabled], timeout: 8)
-        // Retain the real failing surface before a brittle assertion can abort.
+        // Retain the real failing surface and proof before any final assertion.
         try preferences.debugDescription.write(to: output.appendingPathComponent("settings-reduce-transparency-after.txt"), atomically: true, encoding: .utf8)
         try preferences.screenshot().pngRepresentation.write(to: output.appendingPathComponent("settings-reduce-transparency-after.png"))
-        XCTAssertEqual(enabledResult, .completed, "Require observed native Reduce Transparency state, not input delivery alone")
-        XCTAssertEqual(transparency.value as? String, "1")
         let settingsProof: [String: Any] = ["path": ["Accessibility", "Display & Text Size", "Reduce Transparency"],
                                           "actualNavigationLabels": actualSettingsLabels, "actualSwitchLabel": transparency.label,
                                           "actualSwitchValue": transparency.value as? String ?? "unknown",
                                           "actualSwitchFrame": ["x": switchFrame.minX, "y": switchFrame.minY, "width": switchFrame.width, "height": switchFrame.height],
                                           "targetedTrailingToggleTap": targetedToggleTap,
-                                          "tapNormalizedOffset": ["dx": 0.9, "dy": 0.5],
-                                          "method": "real native Settings UI, not a private defaults key"]
+                                          "toggleTapAttempts": switchTapAttempts,
+                                          "method": "real native Settings UI leaf control with bounded observed-OFF retries, not private defaults"]
         try JSONSerialization.data(withJSONObject: settingsProof, options: [.prettyPrinted, .sortedKeys])
             .write(to: output.appendingPathComponent("concept-a-system-settings.json"), options: .atomic)
+        XCTAssertEqual(enabledResult, .completed, "Require observed native Reduce Transparency state, not input delivery alone")
+        XCTAssertEqual(transparency.value as? String, "1")
         preferences.terminate()
         launch("introduction")
         for _ in 0..<5 { tap(e("onboarding.next")) }
