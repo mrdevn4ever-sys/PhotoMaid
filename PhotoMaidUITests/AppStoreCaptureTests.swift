@@ -197,8 +197,9 @@ final class AppStoreCaptureTests: XCTestCase {
     /// Sichtbarer Wisch wie mit dem Finger: langsam ziehen, kurz halten (Richtungs-Pille und verschobenes Foto sind zu
     /// sehen), dann loslassen – dieselbe echte Geste und Entscheidung wie sonst. `still`: echter Simulator-Screenshot
     /// mitten im Halten (Store-Bild „Keep“/„Trash“), aufgenommen vom Aufnahme-Controller.
+    @discardableResult
     private func holdSwipe(_ direction: String, still: String? = nil, offset customOffset: CGVector? = nil,
-                           holdDuration: TimeInterval? = nil) throws {
+                           holdDuration: TimeInterval? = nil, captureAfterRelease: Bool = false) throws -> XCUIScreenshot? {
         let before = feedPosition()
         XCTAssertGreaterThan(before, 0)
         let stage = e("feed.stage")
@@ -215,9 +216,25 @@ final class AppStoreCaptureTests: XCTestCase {
         if let still { try requestStill(still, delay: 1.0) }
         start.press(forDuration: 0.12, thenDragTo: start.withOffset(offset), withVelocity: XCUIGestureVelocity(rawValue: 320),
                     thenHoldForDuration: holdDuration ?? (still == nil ? 1.6 : 8))
+        // Preserve a genuine transient AFTER release, before post-gesture AX
+        // reads consume its real lifetime. Default legacy capture behaviour stays.
+        var releasedScreenshot: XCUIScreenshot?
+        if captureAfterRelease {
+            let captureStarted = Date().timeIntervalSince1970
+            releasedScreenshot = XCUIScreen.main.screenshot()
+            let captureFinished = Date().timeIntervalSince1970
+            if let still {
+                let timing: [String: Any] = ["method": "native XCUIScreen immediately after real gesture returns, before AX reads",
+                                             "captureStarted": captureStarted, "captureFinished": captureFinished,
+                                             "realTransientLifetimeUnchanged": true]
+                try JSONSerialization.data(withJSONObject: timing, options: [.prettyPrinted, .sortedKeys])
+                    .write(to: output.appendingPathComponent("stills/\(still)-after-release.json"), options: .atomic)
+            }
+        }
         pause(1)
         XCTAssertEqual(feedPosition(), before + (direction == "down" ? -1 : 1), "Actual feed decision/navigation must advance")
         if let still { try awaitStill(still) }
+        return releasedScreenshot
     }
     private func requestStill(_ name: String, delay: Double, warmup: Bool = false) throws {
         let directory = output.appendingPathComponent("control")
@@ -786,34 +803,37 @@ final class AppStoreCaptureTests: XCTestCase {
         // Owner revision: show the genuine rightward drag and native Later badge,
         // not only the reminder after committing. Never redraw or overlay the UI.
         let laterHeldAt = Date().timeIntervalSince1970
-        try holdSwipe("right", still: "concept-a-later-swipe", offset: CGVector(dx: 150, dy: -20), holdDuration: 25)
-        let pill = e("later.pill")
-        XCTAssertTrue(pill.waitForExistence(timeout: 2))
-        let pillReadyDeadline = Date().addingTimeInterval(1)
-        while (!feedBounds.contains(pill.frame) || !pill.isHittable), Date() < pillReadyDeadline { pause(0.05) }
-        let pillFrame = pill.frame
-        let pillLabel = pill.label
-        XCTAssertTrue(feedBounds.contains(pillFrame) && pill.isHittable, "Require the actual pill onscreen, not just an offscreen accessibility node")
-        // Capture BEFORE the slower full-tree/translation queries in snap(). Never extend the real four-second pill.
-        let laterScreenshot = XCUIScreen.main.screenshot()
+        let laterScreenshot = try XCTUnwrap(try holdSwipe("right", still: "concept-a-later-swipe",
+                                                        offset: CGVector(dx: 150, dy: -20), holdDuration: 25,
+                                                        captureAfterRelease: true))
+        // C9 proved the native decision advanced, but its normal AX post-check
+        // consumed the four-second pill. Inspect the already-saved real pixels,
+        // not an expired accessibility node. Do not extend any production timer.
         try laterScreenshot.pngRepresentation.write(to: output.appendingPathComponent("stills/concept-a-later-timing.png"), options: .atomic)
-        XCTAssertTrue(pillLabel.contains(String(format: t("later_in_days_again#other"), Int64(2))))
-        // SwiftUI's combined element exposes the date as its label and the edit
-        // action separately, so that label does not include the visible Button text.
-        // Prove Change from the actual native pixels instead of altering production AX.
         let laterImage = try XCTUnwrap(laterScreenshot.image.cgImage)
-        let nativeScale = CGFloat(laterImage.width) / feedBounds.width
-        let pillPixels = CGRect(x: (pillFrame.minX - feedBounds.minX) * nativeScale,
-                                y: (pillFrame.minY - feedBounds.minY) * nativeScale,
-                                width: pillFrame.width * nativeScale, height: pillFrame.height * nativeScale).integral
-        let pillImage = try XCTUnwrap(laterImage.cropping(to: pillPixels))
         let request = VNRecognizeTextRequest()
         request.recognitionLevel = .accurate
         request.recognitionLanguages = ["en-US"]
         request.usesLanguageCorrection = false
-        try VNImageRequestHandler(cgImage: pillImage, options: [:]).perform([request])
+        try VNImageRequestHandler(cgImage: laterImage, options: [:]).perform([request])
         let visiblePillText = (request.results ?? []).compactMap { $0.topCandidates(1).first?.string }.joined(separator: "\n")
         try visiblePillText.write(to: output.appendingPathComponent("concept-a-later-visible-text.txt"), atomically: true, encoding: .utf8)
+        let dateText = String(format: t("later_in_days_again#other"), Int64(2))
+        let dateObservation = try XCTUnwrap((request.results ?? []).first {
+            $0.topCandidates(1).first?.string.localizedCaseInsensitiveContains(dateText) == true
+        }, "Actual saved native reminder must visibly show its unchanged two-day date")
+        let changeObservation = try XCTUnwrap((request.results ?? []).first {
+            $0.topCandidates(1).first?.string.localizedCaseInsensitiveContains(t("change")) == true
+        }, "Actual saved native reminder must visibly show Change")
+        func textPixelRect(_ observation: VNRecognizedTextObservation) -> CGRect {
+            let box = observation.boundingBox
+            return CGRect(x: box.minX * CGFloat(laterImage.width), y: (1 - box.maxY) * CGFloat(laterImage.height),
+                          width: box.width * CGFloat(laterImage.width), height: box.height * CGFloat(laterImage.height))
+        }
+        let pillPixels = textPixelRect(dateObservation).union(textPixelRect(changeObservation)).insetBy(dx: -18, dy: -18).integral
+        let nativeImageBounds = CGRect(x: 0, y: 0, width: CGFloat(laterImage.width), height: CGFloat(laterImage.height))
+        XCTAssertTrue(nativeImageBounds.contains(pillPixels), "The actual reminder text and surrounding margin must be wholly onscreen")
+        XCTAssertTrue(visiblePillText.localizedCaseInsensitiveContains(dateText), "Actual native reminder pixels must show the two-day date")
         XCTAssertTrue(visiblePillText.localizedCaseInsensitiveContains(t("change")), "Actual native pill pixels must show Change: \(visiblePillText)")
         XCTAssertEqual(feedPosition(), beforeLater + 1, "The actual right-swipe decision must advance")
         snap("concept-a-later", settle: 0, captured: laterScreenshot)

@@ -135,6 +135,7 @@ jobs:
             ${{ runner.temp }}/store-capture/control/*.json
             ${{ runner.temp }}/store-capture/navigation/*.json
             ${{ runner.temp }}/store-capture/*.json
+            ${{ runner.temp }}/store-capture/*.png
             ${{ runner.temp }}/store-capture/*.log
             ${{ runner.temp }}/store-capture/*.txt
             ${{ runner.temp }}/store-capture/diagnostics
