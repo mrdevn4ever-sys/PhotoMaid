@@ -688,11 +688,29 @@ final class AppStoreCaptureTests: XCTestCase {
             preferences.swipeUp(); pause(0.4)
         }
         XCTAssertTrue(transparency.exists && transparency.isHittable)
-        if transparency.value as? String == "0" { transparency.tap(); pause(0.5) }
+        try preferences.debugDescription.write(to: output.appendingPathComponent("settings-reduce-transparency-before.txt"), atomically: true, encoding: .utf8)
+        try preferences.screenshot().pngRepresentation.write(to: output.appendingPathComponent("settings-reduce-transparency-before.png"))
+        let switchFrame = transparency.frame
+        var targetedToggleTap = false
+        if transparency.value as? String == "0" {
+            // The prior native event hit (201,433): the whole-row AX center,
+            // outside the visible trailing switch. Use its observed AX frame.
+            transparency.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap()
+            targetedToggleTap = true
+        }
+        let enabled = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == '1'"), object: transparency)
+        let enabledResult = XCTWaiter.wait(for: [enabled], timeout: 8)
+        // Retain the real failing surface before a brittle assertion can abort.
+        try preferences.debugDescription.write(to: output.appendingPathComponent("settings-reduce-transparency-after.txt"), atomically: true, encoding: .utf8)
+        try preferences.screenshot().pngRepresentation.write(to: output.appendingPathComponent("settings-reduce-transparency-after.png"))
+        XCTAssertEqual(enabledResult, .completed, "Require observed native Reduce Transparency state, not input delivery alone")
         XCTAssertEqual(transparency.value as? String, "1")
         let settingsProof: [String: Any] = ["path": ["Accessibility", "Display & Text Size", "Reduce Transparency"],
                                           "actualNavigationLabels": actualSettingsLabels, "actualSwitchLabel": transparency.label,
                                           "actualSwitchValue": transparency.value as? String ?? "unknown",
+                                          "actualSwitchFrame": ["x": switchFrame.minX, "y": switchFrame.minY, "width": switchFrame.width, "height": switchFrame.height],
+                                          "targetedTrailingToggleTap": targetedToggleTap,
+                                          "tapNormalizedOffset": ["dx": 0.9, "dy": 0.5],
                                           "method": "real native Settings UI, not a private defaults key"]
         try JSONSerialization.data(withJSONObject: settingsProof, options: [.prettyPrinted, .sortedKeys])
             .write(to: output.appendingPathComponent("concept-a-system-settings.json"), options: .atomic)
