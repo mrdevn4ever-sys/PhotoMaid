@@ -136,7 +136,8 @@ final class PhotoSnakeScene: SKScene {
     /// Bedienelemente die App länger an als 0,3 s – dort großzügiger, sonst pausiert der Test das Spiel selbst.
     private static let gapLimit: Double = {
         #if QA_FIXTURES && targetEnvironment(simulator)
-        if ProcessInfo.processInfo.arguments.contains("-game-visual-tests") { return 5 }
+        let args = ProcessInfo.processInfo.arguments
+        if args.contains("-game-visual-tests") || args.contains("-store-capture") { return 5 }
         #endif
         return 0.3
     }()
