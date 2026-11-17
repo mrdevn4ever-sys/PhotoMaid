@@ -1,0 +1,25 @@
+{
+  "status": "NO_CONCRETE_BLOCKER_IN_REVIEWED_RUNTIME_SCOPE",
+  "delegation": "deleg_877a01bd",
+  "scope": "Corrected retained-native-evidence helper and both exception consumers; excludes creative/source/final VQA",
+  "verified_by_parent": "Both consumers already exercised on actual final export and exact source data; independent technical audit/8 real-export negatives PASS",
+  "review_reported_tests": {
+    "retained_normal": 15,
+    "retained_optimized": 15,
+    "consumer_exception_normal": 13,
+    "consumer_exception_optimized": 13
+  },
+  "parent_followup": "Combined115-test suites found four negative-fixture error-message masks: live workflowException reached strict C5 pin check before ordinary UNAPPROVED/Historical/VQA. ONLY test fixture now explicitly removes the optional exception in V4StructuralTests; the separate C5ExceptionStructuralTests retains actual calibrated exception. No consumer/collector/helper/approval/native changes. Real full matrix rerun required.",
+  "runtime_fingerprints": {
+    "scripts/store/concept_a_v4_c5_exception.py": "72fc9a01aa26c26143ff9b30d188cdecdf6e932b918b8b861525231e2e28d0b0",
+    "scripts/store/collect_concept_a_v4_provenance.py": "07140536e2462754957f7ce295278ee21e8c0c04f5d0e7fd2db387c84a5d43e8",
+    "scripts/store/render_concept_a_v4.py": "eb26edac18bf41bc32b62424e9352409791f175ecb15ae751c4a5af53acbaa56",
+    "scripts/store/audit_concept_a_v4.py": "5ab374371aa9724855eb0fe090333be41b04681bb1600165c39b3f73c4de774c"
+  },
+  "actual_workflow_conclusion": "failure",
+  "native_recollection": false,
+  "local_native_mp4_redecode": "NOT RUN",
+  "local_CI_or_Plist_recollection": "NOT RUN",
+  "normal_green_gates_unchanged": true,
+  "original_failed_report_preserved": true
+}

@@ -1,0 +1,48 @@
+{
+  "status": "PASS_DEFAULT_AND_FEATURE_MANUAL_ONLY_NO_PAGES",
+  "default_branch": "main",
+  "default_commit": "a2d2a85e1173128c2101e8583ebbfabe065f3222",
+  "has_pages": false,
+  "main_workflow_count": 6,
+  "main_workflows": [
+    {
+      "path": ".github/workflows/app-store-assets.yml",
+      "blob_sha": "7ed5173e9f2cf5f77d4a94472912e49319208e8b",
+      "sha256": "2da6351fa42efe6e9470538a5025fefe082c2cb9114ab6dfd41ec96faac57a65",
+      "trigger": "on:\n  workflow_call:\n    inputs:\n      locales:\n        type: string\n        default: en\n      capture:\n        type: string\n        default: all\n  workflow_dispatch:\n    inputs:\n      locales:\n        description: 'all oder Sprachen mit Komma (z. B. en,de,ar)'\n        type: string\n        default: en\n      capture:\n        description: 'Aufnahmen'\n        type: choice\n        options: [all, screenshots, previews]\n        default: all\n"
+    },
+    {
+      "path": ".github/workflows/app-store-export.yml",
+      "blob_sha": "eedaa210f1e6890f631827af02c866c5bfe97cd6",
+      "sha256": "aaf0aa7d938e1b3d969f122144dc1efb2b5f403e289febe969e5a40060fe4003",
+      "trigger": "on:\n  workflow_call:\n    inputs:\n      source_run:\n        type: string\n        required: true\n      locales:\n        type: string\n        default: en\n  workflow_dispatch:\n    inputs:\n      source_run:\n        description: 'Lauf-ID mit bestandenen nativen Vorschau-Tests und Quellenartefakten'\n        type: string\n        required: true\n      locales:\n        description: 'all oder Sprachen mit Komma'\n        type: string\n        default: en\n"
+    },
+    {
+      "path": ".github/workflows/app-store-refresh.yml",
+      "blob_sha": "6e47b3b4aaa9aeb42864a554caa2471beb7a93ac",
+      "sha256": "80e07a9b71c6a2f655be35a1d734e664ff77e4e73c8c7a572a74bd8247143419",
+      "trigger": "on:\n  workflow_call:\n    inputs:\n      locales:\n        type: string\n        default: en\n      devices:\n        type: string\n        default: iphone-large,iphone-medium\n  workflow_dispatch:\n    inputs:\n      locales:\n        description: 'all oder Sprachcodes mit Komma'\n        type: string\n        default: en\n      devices:\n        description: 'iphone-large,iphone-medium; iphone-duo nur bei echtem SDK/Simulator'\n        type: string\n        default: iphone-large,iphone-medium\n"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "blob_sha": "abcfda75e03296d6a730351ac098785720d1b473",
+      "sha256": "b9e99f8cbe2348ae27e41a5a39556ecd9b1ecd61d91c5d435530d595a90eb318",
+      "trigger": "on:\n  workflow_dispatch:\n    inputs:\n      duo_probe:\n        description: \"Nur Xcode-/SDK-/iPhone-Duo-Simulator-Verfügbarkeit prüfen\"\n        type: boolean\n        default: false\n      duo_runner:\n        description: \"Duo-Probe: bisheriger Runner oder neuer Xcode-27-Preview-Runner\"\n        type: choice\n        options: [macos-26, xcode-27]\n        default: macos-26\n      duo_setup_runtime:\n        description: \"Auf Xcode-27-Runner die offizielle iOS-27.1-Runtime für Duo installieren\"\n        type: boolean\n        default: false\n      store_locales:\n        description: \"App-Store-Aufnahmen statt QA: all oder Kommaliste (leer = normale CI)\"\n        type: string\n        default: \"\"\n      store_devices:\n        description: \"Für store-refresh: iphone-large,iphone-medium; Duo nur mit echtem Simulator\"\n        type: string\n        default: iphone-large,iphone-medium\n      ui_tests:\n        description: \"UI-Tests und Screenshots ausführen (länger)\"\n        type: boolean\n        default: false\n      native_capture:\n        description: \"Nur die native iOS-Screenshot-Aufnahme untersuchen (kein App-Build)\"\n        type: boolean\n        default: false\n      qa_case:\n        description: \"QA-Oberflächen: alle, Tresor, Medienlöschung, Fotoeditor oder Spiele und breite Fenster\"\n        type: choice\n        options: [all, vault, vault-media, editor, games]\n        default: all\n      games_case:\n        description: \"Optional: Blocks + Spiele-Setup (blocks), feed oder PhotoGameVisualTests-Methode\"\n        type: string\n        default: \"\"\n      sim_runtime:\n        description: \"iOS-Runtime (26.2 für StoreKit Test; 26.5 hat Apples CLI-Konfigurationsfehler)\"\n        type: choice\n        options: [latest, \"26.2\"]\n        default: \"26.2\"\n      ui_phase:\n        description: \"UI-Durchlauf (gezielte Wiederholung nach der ersten Gesamtprüfung)\"\n        type: choice\n        options: [all, fixtures, real, start, store-screenshots, store-previews, store-export, store-refresh]\n        default: all\n      ui_case:\n        description: \"PhotoKit-Fachtest (all = vollständige Prüfung; Pro prüft auch die Tresor-Voraussetzung)\"\n        type: choice\n        options:\n          - all\n          - test10AnalysisQueueProgressAndGrid\n          - test20FiftyFastSwipesAdAndDirections\n          - test30GestureHelpAndCustomControls\n          - test50LargeDuplicatesAndStorage\n          - test60LibraryFiltersSortAndAspect\n          - test70StudioFreeTools\n          - test80VaultPINCloseAllTabsAndFreeFolder\n          - test90ProStoreKitPurchaseNoAdsAndFolder\n          - test95EnglishAndArabicPlaceholdersAndArrows\n          - test98TrashLimitRewardAndSizes\n        default: all\n      baseline_run:\n        description: \"Quell-Lauf-ID für store-export oder ältere xcresult-Screenshots\"\n        type: string\n        default: \"\"\n      collect_run:\n        description: \"Nur vorhandene UI-Belege aufteilen (Lauf-ID; keine App-Tests)\"\n        type: string\n        default: \"\"\n      collect_artifact:\n        description: \"Vorhandenes Belegartefakt für collect_run\"\n        type: string\n        default: simulator-ui-evidence\n\n"
+    },
+    {
+      "path": ".github/workflows/simulator-screenshot.yml",
+      "blob_sha": "e74cb3c10bdf53c5caba67cb87f022403830b1ee",
+      "sha256": "73b0de77502772753a7674f65fda47afa039ac6834afd68448afa682a1def9f3",
+      "trigger": "on:\n  workflow_dispatch:\n    inputs:\n      sim_runtime:\n        type: choice\n        options: [latest, \"26.2\"]\n        default: latest\n  workflow_call:\n    inputs:\n      sim_runtime:\n        type: string\n        default: latest\n\n"
+    },
+    {
+      "path": ".github/workflows/testflight.yml",
+      "blob_sha": "02f303a09a41c339251f4cfe5ece6a4b09163132",
+      "sha256": "bf91ba425d6db94693542a16fd18e6066a573d5c7033266e52a91339444ecff5",
+      "trigger": "on:\n  workflow_dispatch:\n    inputs:\n      changelog:\n        description: \"Was testen? (erscheint in TestFlight unter „Was ist zu testen“)\"\n        type: string\n        default: \"Interner Testbuild\"\n      run_tests:\n        description: \"Vor dem Upload Unit-Tests ausführen\"\n        type: boolean\n        default: true\n      confirm_upload:\n        description: \"Sicherheitsbestätigung: exakt UPLOAD eingeben\"\n        type: string\n        required: true\n        default: \"\"\n\n"
+    }
+  ],
+  "feature_workflows_report": "qa/c5-v4-branch-publication-preflight-01.json",
+  "no_automatic_trigger_discovered": true,
+  "scope": "Read-only prerequisite, not authorization for dispatch/rerun"
+}

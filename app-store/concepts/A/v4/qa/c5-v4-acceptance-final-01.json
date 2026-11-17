@@ -1,0 +1,70 @@
+{
+  "status": "PASS_LOCAL_ACCEPTANCE_READY_FOR_OWN_BRANCH_PUBLICATION",
+  "recorded_utc": "2026-11-17T11:31:35.760345+00:00",
+  "native_capture": {
+    "workflowRun": "43949822336",
+    "runAttempt": 1,
+    "commit": "90da2494af7dbeffe8c8694ee33f42c4f3ac78f0",
+    "native_tests": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    "actual_workflow_conclusion": "failure",
+    "authorization": "C5 retained-native-evidence exception; no new run"
+  },
+  "gates": {
+    "source_visual": "PASS",
+    "all_ten_full_and_small": "PASS",
+    "both_previews": "PASS",
+    "independent_pixels_ICC_frame": "PASS",
+    "actual_export_negative_controls": 8,
+    "local_contract_tests_per_mode": 115,
+    "contract_normal": "PASS",
+    "contract_optimized": "PASS",
+    "independent_runtime_review": "NO_CONCRETE_BLOCKER_IN_REVIEWED_SCOPE",
+    "zip13_members_crc_hash_bytes": "PASS",
+    "old631_store_files_and4_archives": "PASS"
+  },
+  "evidence": {
+    "c5-postcapture-revalidation.json": "c02cfa0a20b2816e281331af07f6eecb1e3225231370be555cc0c0910d90150d",
+    "c5-postcapture-workflow-exception.json": "5e14c68e2cbf33a2895841c617439eabfa50cd07b7ca7266b0aefd639df9bda3",
+    "c5-final-independent-runtime-review-01.json": "439f849dc6088e56fc3fe8cb44f0d6f5e789bc6f7ce98c34d403f755669df698",
+    "c5-parent-all-contract-tests-final-04.json": "38257b0321c17f16a842e4b415b00978cc5425d3ce90360a85094c51366bbfb1",
+    "c5-v4-technical-export-02.json": "f3c68abe37a5ccd523c94fe8753a58a10a8618dc09732d845d6ea4fc4f51fc1c",
+    "c5-v4-final-visual-qa-02.json": "fbc7d542928331b9d3c018120ce1017564a87b943a5b3b907ae09519cebb4fc1",
+    "c5-v4-final-negative-controls-02.json": "36beca468ac049716b37b90382e1eefe62f9ce47c1c0906d1fa65f0ff08ac2dc",
+    "c5-v4-package-integrity-02.json": "f9a0f1838f0927aa0cabd2d4d5be95f826269d24f759768dafb182521d89947e",
+    "c5-final-protected-deliveries-02.json": "2dc024e49c6ff8987c86d8710362e64f3f32161bb4b2ef46e304d79d7838539b"
+  },
+  "archive": {
+    "file": "GaleriQ-Concept-A-en-US-V4-C5.zip",
+    "sha256": "45d2c318e875d6fbb1d1c44c1429feeb62dec3a0e094f4dc53c2cd3c3de5c957",
+    "members": 13
+  },
+  "honest_NOT_RUN": [
+    "Local re-decode/bytecheck of the exact native MP4 encodes: original encoded files were not exported",
+    "Fresh native app/CI/Plist collection"
+  ],
+  "test_fixture_followup": {
+    "changed_only": "scripts/store/test_concept_a_v4_render.py",
+    "change": "V4StructuralTests explicitly removes captureBinding.workflowException from its own test copy; independent C5ExceptionStructuralTests keeps actual exception. No production gate changes.",
+    "preserved_failed_matrix_reports": [
+      "c5-parent-all-contract-tests-final-02.json",
+      "c5-parent-all-contract-tests-final-03.json"
+    ],
+    "resolution": "115/115 normal and115/115 optimized, zero fail/error/skip in final04; first30 ordinary-gate tests additionally passed in both modes"
+  },
+  "fourth_visual_disclosure": "Actual native rounded dialog corner backdrop includes gray glyph fragments; source-faithfulness and complete opaque panel were independently established and explicitly preserved, not retouched.",
+  "branch_publication": "NOT RUN",
+  "delivered": false,
+  "protected_actions_not_taken": [
+    "PR",
+    "merge",
+    "new native run",
+    "ASC",
+    "release",
+    "localization"
+  ],
+  "stop_after_delivery": "Feedback pause"
+}

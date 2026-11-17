@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "status": "OWNER_AUTHORIZED_TARGETED_C5_REVALIDATION_NOT_SOURCE_ACCEPTANCE",
+  "recorded_utc": "2026-11-17T09:37:37.752718+00:00",
+  "user_response": "Weiter",
+  "quoted_offer": "Die C5-Aufnahmen sind gesichert, der native Test ist bestanden. Für die Verwendung trotz rotem Gesamtlauf fehlt deine ausdrückliche Freigabe: „C5 verwenden“. Damit wäre die gezielte Validator-Korrektur und anschließende unabhängige Prüfung erlaubt – ohne neuen Aufnahmelauf. Bis dahin bleibt V4 pausiert.",
+  "run": "43949822336",
+  "attempt": 1,
+  "capture_commit": "90da2494af7dbeffe8c8694ee33f42c4f3ac78f0",
+  "failed_workflow_exception_authorized": true,
+  "additional_native_run_authorized": false,
+  "workflow_conclusion_preserved": "failure",
+  "source_approval": false,
+  "raw_artifact_manifest": "qa/c5-original-artifact-immutable-snapshot.json",
+  "derived_sources": "F:/HermesOutput/GaleriQ/concept-a-en-v4/revalidated-C5-43949822336-attempt-1/sources",
+  "restrictions": [
+    "No native capture/dispatch/rerun",
+    "No PR/merge/ASC/localization",
+    "Preserve v1/v2/v3/final archives",
+    "Do not edit raw C5 evidence",
+    "Independent real revalidation and source/final VQA required"
+  ]
+}

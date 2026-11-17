@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "status": "PASS_REAL_EXPORT_NEGATIVE_CONTROLS",
+  "controls": [
+    {
+      "name": "one actual final native-photo pixel changed in memory",
+      "status": "PASS_REJECTED",
+      "actual_error": "Independent original native pixel mismatch: full-phone"
+    },
+    {
+      "name": "one actual final visible hardware-frame pixel changed in memory",
+      "status": "PASS_REJECTED",
+      "actual_error": "Visible hardware frame pixels obscured/changed"
+    },
+    {
+      "name": "one actual native wordmark pixel changed in memory",
+      "status": "PASS_REJECTED",
+      "actual_error": "Independent original native pixel mismatch: native-wordmark"
+    },
+    {
+      "name": "horizontal overview falsely asserts two rows",
+      "status": "PASS_REJECTED",
+      "actual_error": "Preview manifest geometry differs from SHA-bound design"
+    },
+    {
+      "name": "search preview falsely reverses spatial first and third cells",
+      "status": "PASS_REJECTED",
+      "actual_error": "Preview manifest geometry differs from SHA-bound design"
+    },
+    {
+      "name": "unknown design key",
+      "status": "PASS_REJECTED",
+      "actual_error": "Missing/unknown V4 design fields"
+    },
+    {
+      "name": "wrong literal capture attempt",
+      "status": "PASS_REJECTED",
+      "actual_error": "C5 exception cannot authorize another run/attempt/SHA"
+    },
+    {
+      "name": "obsolete unqualified local-validation receipt scope",
+      "status": "PASS_REJECTED",
+      "actual_error": "Require separately bound actual corrected LOCAL report"
+    }
+  ],
+  "control_count": 8,
+  "render_manifest_sha256": "cef158c4c195438b27231519bd59aaed7b5988bb2205f394340b57032f70ad1d",
+  "scope": "Actual export inputs; one-pixel changes only in RAM, no forged native image or source write",
+  "actual_workflow_conclusion": "failure"
+}

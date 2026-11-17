@@ -1,0 +1,89 @@
+{
+  "status": "READ_ONLY_PREFLIGHT_NOT_PUBLICATION",
+  "live_refs": {
+    "refs/heads/claude/galeriq-localization-1-0-1-bgpw9u": "583eb804a81401aa2010996875b35d05afc61539",
+    "refs/heads/hermes/store-concept-a-en": "90da2494af7dbeffe8c8694ee33f42c4f3ac78f0",
+    "refs/heads/main": "a2d2a85e1173128c2101e8583ebbfabe065f3222"
+  },
+  "protected_refs": {
+    "refs/heads/main": "a2d2a85e1173128c2101e8583ebbfabe065f3222",
+    "refs/heads/claude/galeriq-localization-1-0-1-bgpw9u": "583eb804a81401aa2010996875b35d05afc61539"
+  },
+  "local_workflows": [
+    {
+      "file": "app-store-assets.yml",
+      "trigger": "on:\n  workflow_call:\n    inputs:\n      locales:\n        type: string\n        default: en\n      capture:\n        type: string\n        default: all\n  workflow_dispatch:\n    inputs:\n      locales:\n        description: 'all oder Sprachen mit Komma (z. B. en,de,ar)'\n        type: string\n        default: en\n      capture:\n        description: 'Aufnahmen'\n        type: choice\n        options: [all, screenshots, previews]\n        default: all\n",
+      "sha256": "4a948954fbf1a47d82c032e45e8e54d1430ad791869e9f77d38e9fd9b65a8abe"
+    },
+    {
+      "file": "app-store-export.yml",
+      "trigger": "on:\n  workflow_call:\n    inputs:\n      source_run:\n        type: string\n        required: true\n      locales:\n        type: string\n        default: en\n  workflow_dispatch:\n    inputs:\n      source_run:\n        description: 'Lauf-ID mit bestandenen nativen Vorschau-Tests und Quellenartefakten'\n        type: string\n        required: true\n      locales:\n        description: 'all oder Sprachen mit Komma'\n        type: string\n        default: en\n",
+      "sha256": "116946d129641a11edc16cc2233c17109036d53b65d8327376390c0132b7be1b"
+    },
+    {
+      "file": "app-store-refresh.yml",
+      "trigger": "on:\n  workflow_dispatch:\n    inputs:\n      locales:\n        description: 'This iteration accepts en only; no other languages are produced.'\n        type: string\n        default: en\n      devices:\n        description: 'This iteration accepts iphone-medium only (native 1206 x 2622).'\n        type: string\n        default: iphone-medium\n",
+      "sha256": "bbce8cd9c79f569d09a1bae893e4513df37c7367a5307c286d0575daf9f9fc2d"
+    },
+    {
+      "file": "ci.yml",
+      "trigger": "on:\n  workflow_dispatch:\n    inputs:\n      duo_probe:\n        description: \"Nur Xcode-/SDK-/iPhone-Duo-Simulator-Verfügbarkeit prüfen\"\n        type: boolean\n        default: false\n      duo_runner:\n        description: \"Duo-Probe: bisheriger Runner oder neuer Xcode-27-Preview-Runner\"\n        type: choice\n        options: [macos-26, xcode-27]\n        default: macos-26\n      duo_setup_runtime:\n        description: \"Auf Xcode-27-Runner die offizielle iOS-27.1-Runtime für Duo installieren\"\n        type: boolean\n        default: false\n      store_locales:\n        description: \"App-Store-Aufnahmen statt QA: all oder Kommaliste (leer = normale CI)\"\n        type: string\n        default: \"\"\n      store_devices:\n        description: \"Für store-refresh: iphone-large,iphone-medium; Duo nur mit echtem Simulator\"\n        type: string\n        default: iphone-large,iphone-medium\n      ui_tests:\n        description: \"UI-Tests und Screenshots ausführen (länger)\"\n        type: boolean\n        default: false\n      native_capture:\n        description: \"Nur die native iOS-Screenshot-Aufnahme untersuchen (kein App-Build)\"\n        type: boolean\n        default: false\n      qa_case:\n        description: \"QA-Oberflächen: alle, Tresor, Medienlöschung, Fotoeditor oder Spiele und breite Fenster\"\n        type: choice\n        options: [all, vault, vault-media, editor, games]\n        default: all\n      games_case:\n        description: \"Optional: Blocks + Spiele-Setup (blocks), feed oder PhotoGameVisualTests-Methode\"\n        type: string\n        default: \"\"\n      sim_runtime:\n        description: \"iOS-Runtime (26.2 für StoreKit Test; 26.5 hat Apples CLI-Konfigurationsfehler)\"\n        type: choice\n        options: [latest, \"26.2\"]\n        default: \"26.2\"\n      ui_phase:\n        description: \"UI-Durchlauf (gezielte Wiederholung nach der ersten Gesamtprüfung)\"\n        type: choice\n        options: [all, fixtures, real, start, store-screenshots, store-previews, store-export, store-refresh]\n        default: all\n      ui_case:\n        description: \"PhotoKit-Fachtest (all = vollständige Prüfung; Pro prüft auch die Tresor-Voraussetzung)\"\n        type: choice\n        options:\n          - all\n          - test10AnalysisQueueProgressAndGrid\n          - test20FiftyFastSwipesAdAndDirections\n          - test30GestureHelpAndCustomControls\n          - test50LargeDuplicatesAndStorage\n          - test60LibraryFiltersSortAndAspect\n          - test70StudioFreeTools\n          - test80VaultPINCloseAllTabsAndFreeFolder\n          - test90ProStoreKitPurchaseNoAdsAndFolder\n          - test95EnglishAndArabicPlaceholdersAndArrows\n          - test98TrashLimitRewardAndSizes\n        default: all\n      tracking:\n        description: \"Antwort im iOS-Tracking-Dialog (deny prüft Werbung bei abgelehntem Tracking)\"\n        type: choice\n        options: [allow, deny]\n        default: allow\n      baseline_run:\n        description: \"Quell-Lauf-ID für store-export oder ältere xcresult-Screenshots\"\n        type: string\n        default: \"\"\n      collect_run:\n        description: \"Nur vorhandene UI-Belege aufteilen (Lauf-ID; keine App-Tests)\"\n        type: string\n        default: \"\"\n      collect_artifact:\n        description: \"Vorhandenes Belegartefakt für collect_run\"\n        type: string\n        default: simulator-ui-evidence\n\n",
+      "sha256": "6da550d214847f37b5bd611951787ab8a473bdc5c598bef5a79afd57650f0ddb"
+    },
+    {
+      "file": "simulator-screenshot.yml",
+      "trigger": "on:\n  workflow_dispatch:\n    inputs:\n      sim_runtime:\n        type: choice\n        options: [latest, \"26.2\"]\n        default: latest\n  workflow_call:\n    inputs:\n      sim_runtime:\n        type: string\n        default: latest\n\n",
+      "sha256": "ee1b5f5753366ec09d33a8f1548756ab1cc2850c85dff599c15dc28438d17801"
+    },
+    {
+      "file": "testflight.yml",
+      "trigger": "on:\n  workflow_dispatch:\n    inputs:\n      task:\n        description: \"testflight = Build hochladen; store-texts = nur Store-Texte aus app-store/metadata (Bestätigung TEXTE)\"\n        type: choice\n        options: [testflight, store-texts]\n        default: testflight\n      changelog:\n        description: \"Was testen? (erscheint in TestFlight unter „Was ist zu testen“)\"\n        type: string\n        default: \"Interner Testbuild\"\n      run_tests:\n        description: \"Vor dem Upload Unit-Tests ausführen\"\n        type: boolean\n        default: true\n      allow_test_ads:\n        description: \"Nur interne Tests: ohne echte AdMob-IDs mit Googles Testwerbung bauen (nie für den App Store)\"\n        type: boolean\n        default: false\n      confirm_upload:\n        description: \"Sicherheitsbestätigung: exakt UPLOAD eingeben\"\n        type: string\n        required: true\n        default: \"\"\n\n",
+      "sha256": "4bee6bfede938a7f0b5077c13e87ba889fc4b93c241648bba4034f6ded0eaee2"
+    }
+  ],
+  "registered_workflows": [
+    {
+      "id": 389136989,
+      "name": "App Store – Dark Mode Assets",
+      "path": ".github/workflows/app-store-assets.yml",
+      "state": "active"
+    },
+    {
+      "id": 389136990,
+      "name": "App Store – vorhandene Vorschauen exportieren",
+      "path": ".github/workflows/app-store-export.yml",
+      "state": "active"
+    },
+    {
+      "id": 389136991,
+      "name": "App Store – aktueller Spiel- und Bildsatz",
+      "path": ".github/workflows/app-store-refresh.yml",
+      "state": "active"
+    },
+    {
+      "id": 369508046,
+      "name": "CI",
+      "path": ".github/workflows/ci.yml",
+      "state": "active"
+    },
+    {
+      "id": 386887286,
+      "name": "PhotoMaid games – isolated native QA",
+      "path": ".github/workflows/duo-qa-once.yml",
+      "state": "active"
+    },
+    {
+      "id": 389136992,
+      "name": "Nativen Simulator-Screenshot prüfen",
+      "path": ".github/workflows/simulator-screenshot.yml",
+      "state": "active"
+    },
+    {
+      "id": 380318608,
+      "name": "TestFlight",
+      "path": ".github/workflows/testflight.yml",
+      "state": "active"
+    }
+  ],
+  "scope": "Push only own branch after independent final code review; no PR/merge/dispatch/rerun/ASC/localization"
+}

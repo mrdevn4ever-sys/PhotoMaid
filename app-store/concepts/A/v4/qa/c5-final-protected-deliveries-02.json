@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "scope": "Unchanged protected historical store media/archives and actual new13-member ZIP only",
+  "reference": "qa/protected-deliveries-parent-C3-01.json",
+  "groups": {
+    "existing_store": 631,
+    "archive": 4
+  },
+  "mismatches": [],
+  "new_archive_sha256": "45d2c318e875d6fbb1d1c44c1429feeb62dec3a0e094f4dc53c2cd3c3de5c957",
+  "new_archive_crc": "PASS",
+  "new_archive_member_count": 13
+}

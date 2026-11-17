@@ -1,0 +1,609 @@
+{
+  "schema_version": 2,
+  "module_version": "concept-a-v4/1",
+  "creative_revision": 4,
+  "technical_export_status": "PASS",
+  "workflow_run": "43949822336",
+  "run_attempt": 1,
+  "commit": "90da2494af7dbeffe8c8694ee33f42c4f3ac78f0",
+  "locale": "en-US",
+  "png_count": 10,
+  "images": [
+    {
+      "slot": 1,
+      "file": "01-swipe.png",
+      "sha256": "c4bfff214cded4704ccca2b1a4af38a3d24d2cc03cccc7879b7a9506ba6ee9a8",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "af0fc385222822d3b4adb631c75125c3adb59e73354537eec0894d37510b8dec",
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 1687598,
+      "visible_hardware_frame_pixels_verified": 38692,
+      "creative_composite": null
+    },
+    {
+      "slot": 2,
+      "file": "02-duplicates-large-files.png",
+      "sha256": "f56b1292424420a18c853a0516e7de037e9b0f03147bd0c207dfa0f4e394705b",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "af0fc385222822d3b4adb631c75125c3adb59e73354537eec0894d37510b8dec",
+      "native_layers_verified": 3,
+      "independently_compared_native_pixels": 1681498,
+      "visible_hardware_frame_pixels_verified": 38692,
+      "creative_composite": null
+    },
+    {
+      "slot": 3,
+      "file": "03-similar-shots.png",
+      "sha256": "4184bb2863d7c224aa9dfd649fd5e805bf611267b42148f67f2726ef72be3321",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "af0fc385222822d3b4adb631c75125c3adb59e73354537eec0894d37510b8dec",
+      "native_layers_verified": 3,
+      "independently_compared_native_pixels": 1687598,
+      "visible_hardware_frame_pixels_verified": 38692,
+      "creative_composite": null
+    },
+    {
+      "slot": 4,
+      "file": "04-delete-confirmation.png",
+      "sha256": "219acfe8c267e6a0a38426ff8947bf76c13037f8336532b318d269a7236baf5e",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "af0fc385222822d3b4adb631c75125c3adb59e73354537eec0894d37510b8dec",
+      "native_layers_verified": 3,
+      "independently_compared_native_pixels": 1687598,
+      "visible_hardware_frame_pixels_verified": 38692,
+      "creative_composite": null
+    },
+    {
+      "slot": 5,
+      "file": "05-vault.png",
+      "sha256": "955d71e5488d1450ee207c7e2cec2f1e0e98244fb150d27dae42d83acf200715",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "af0fc385222822d3b4adb631c75125c3adb59e73354537eec0894d37510b8dec",
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 1687598,
+      "visible_hardware_frame_pixels_verified": 38692,
+      "creative_composite": null
+    },
+    {
+      "slot": 6,
+      "file": "06-later.png",
+      "sha256": "39181a8a6b9e8d0fefa99be74aeb45a996423c30e4a196364e5494a95c2fa35d",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "af0fc385222822d3b4adb631c75125c3adb59e73354537eec0894d37510b8dec",
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 1687598,
+      "visible_hardware_frame_pixels_verified": 38692,
+      "creative_composite": null
+    },
+    {
+      "slot": 7,
+      "file": "07-month-progress.png",
+      "sha256": "d7107acfb2c18a54418c84e67de07f104ac55136bebbc0eb97d914a4d721502a",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "af0fc385222822d3b4adb631c75125c3adb59e73354537eec0894d37510b8dec",
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 1687598,
+      "visible_hardware_frame_pixels_verified": 38692,
+      "creative_composite": null
+    },
+    {
+      "slot": 8,
+      "file": "08-collage.png",
+      "sha256": "1b47aba091a5f06004eac9baa7591c4f12226c10418d68f5347705e778917312",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "af0fc385222822d3b4adb631c75125c3adb59e73354537eec0894d37510b8dec",
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 1687598,
+      "visible_hardware_frame_pixels_verified": 38692,
+      "creative_composite": null
+    },
+    {
+      "slot": 9,
+      "file": "09-editor-comparison.png",
+      "sha256": "81250d859322dcda47e9eb978f4192907a6acc090394707f8962394376a18069",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "af0fc385222822d3b4adb631c75125c3adb59e73354537eec0894d37510b8dec",
+      "native_layers_verified": 4,
+      "independently_compared_native_pixels": 1296386,
+      "visible_hardware_frame_pixels_verified": 38692,
+      "creative_composite": "creative-composite-photo-comparison"
+    },
+    {
+      "slot": 10,
+      "file": "10-photo-pairs.png",
+      "sha256": "3e3bd869901a94cdd63b4ba3a08979956dea60c40ada09843edd52594a99d48a",
+      "size": [
+        1206,
+        2622
+      ],
+      "mode": "RGB",
+      "format": "PNG",
+      "icc_description": "sRGB built-in",
+      "icc_sha256": "af0fc385222822d3b4adb631c75125c3adb59e73354537eec0894d37510b8dec",
+      "native_layers_verified": 2,
+      "independently_compared_native_pixels": 1687598,
+      "visible_hardware_frame_pixels_verified": 38692,
+      "creative_composite": null
+    }
+  ],
+  "preview_count": 2,
+  "previews": [
+    {
+      "kind": "overview",
+      "file": "00-overview.jpg",
+      "width": 2630,
+      "height": 564,
+      "rows": 1,
+      "columns": 10,
+      "slotIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "tileSize": [
+        241,
+        524
+      ],
+      "cells": [
+        {
+          "slot": 1,
+          "targetGeometry": [
+            20,
+            20,
+            261,
+            544
+          ]
+        },
+        {
+          "slot": 2,
+          "targetGeometry": [
+            281,
+            20,
+            522,
+            544
+          ]
+        },
+        {
+          "slot": 3,
+          "targetGeometry": [
+            542,
+            20,
+            783,
+            544
+          ]
+        },
+        {
+          "slot": 4,
+          "targetGeometry": [
+            803,
+            20,
+            1044,
+            544
+          ]
+        },
+        {
+          "slot": 5,
+          "targetGeometry": [
+            1064,
+            20,
+            1305,
+            544
+          ]
+        },
+        {
+          "slot": 6,
+          "targetGeometry": [
+            1325,
+            20,
+            1566,
+            544
+          ]
+        },
+        {
+          "slot": 7,
+          "targetGeometry": [
+            1586,
+            20,
+            1827,
+            544
+          ]
+        },
+        {
+          "slot": 8,
+          "targetGeometry": [
+            1847,
+            20,
+            2088,
+            544
+          ]
+        },
+        {
+          "slot": 9,
+          "targetGeometry": [
+            2108,
+            20,
+            2349,
+            544
+          ]
+        },
+        {
+          "slot": 10,
+          "targetGeometry": [
+            2369,
+            20,
+            2610,
+            544
+          ]
+        }
+      ],
+      "sha256": "4511d09770d6bd37086462c60dab0f6f594135bba309c3d76157a0aeb4eb7522",
+      "max_mean_channel_difference": 1.7013160812137722
+    },
+    {
+      "kind": "search",
+      "file": "00-search-preview.jpg",
+      "width": 390,
+      "height": 276,
+      "rows": 1,
+      "columns": 3,
+      "slotIds": [
+        1,
+        2,
+        3
+      ],
+      "tileSize": [
+        112,
+        244
+      ],
+      "cells": [
+        {
+          "slot": 1,
+          "targetGeometry": [
+            16,
+            16,
+            128,
+            260
+          ]
+        },
+        {
+          "slot": 2,
+          "targetGeometry": [
+            139,
+            16,
+            251,
+            260
+          ]
+        },
+        {
+          "slot": 3,
+          "targetGeometry": [
+            262,
+            16,
+            374,
+            260
+          ]
+        }
+      ],
+      "sha256": "64efe89fbc2aa8b002bb5c4ab6d6532406e2fda2a41c8a8d449fe85cc6eb1907",
+      "max_mean_channel_difference": 2.1754976580796255
+    }
+  ],
+  "uniform_phone_box": [
+    131,
+    844,
+    1075,
+    2896
+  ],
+  "phone_geometry": {
+    "fullTargetGeometry": [
+      131,
+      844,
+      1075,
+      2896
+    ],
+    "visibleGeometry": [
+      131,
+      844,
+      1075,
+      2622
+    ],
+    "visibleLocalRect": [
+      0,
+      0,
+      944,
+      1778
+    ],
+    "visibleSourceBounds": [
+      0.0,
+      0.0,
+      1206.0,
+      2271.8888888888887
+    ],
+    "viewportClipPixels": {
+      "left": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 274
+    },
+    "fullFrameGeometry": [
+      122,
+      835,
+      1084,
+      2905
+    ],
+    "visibleFrameGeometry": [
+      122,
+      835,
+      1084,
+      2622
+    ],
+    "nativeScale": 0.7827529021558872,
+    "sizeRelativeToV2XY": [
+      1.1741293532338308,
+      1.173913043478261
+    ],
+    "resampleRoundingXY": [
+      0,
+      -0.37810945273622565
+    ],
+    "clipping": "bottom-only",
+    "completePhoneVisible": false
+  },
+  "required_inset_slots": [
+    2,
+    3,
+    4
+  ],
+  "editor_comparison_slot": 9,
+  "source_evidence": {
+    "stockLibrary": {
+      "policy": "approved-stock-photos-and-videos-no-app-screenshots",
+      "actual_library_sha256": "93e9ed901596288b5309cdc824189a4e62d1a0d2aa6cf079d82750636c28e21d",
+      "actual_asset_count": 37,
+      "actual_photo_count": 35,
+      "actual_video_count": 2,
+      "actual_screenshot_subtype_count": 0
+    },
+    "legacySceneAudit": {
+      "status": "PASS",
+      "policy": "sharp-stock-hero-opaque-confirmation-filled-photo-game",
+      "source_bindings": {
+        "concept-a-v3-scenes.json": "32b8d60594dc7241a7307e27593d5225fe6894fc55d81f70cdba3e25f7071962",
+        "concept-a-system-settings.json": "0209efe11a36ab464941b36c07d4552e60abd019b7e489d3a11dd4779d35f4a7",
+        "concept-a-delete-confirm-frame.json": "c4c8f1b3e67c654fc18c037c22a5dd0ba77a69b8253543faaae9f6c6b1a530ba",
+        "concept-a-games-round.json": "5c697f495a09aae50086f11a91a8b966323922d519ef99b467efe66d4fdf6bdf",
+        "concept-a-library.json": "93e9ed901596288b5309cdc824189a4e62d1a0d2aa6cf079d82750636c28e21d",
+        "stills/concept-a-delete-confirm-before.png": "1ac5a5cebfcc29f27fe51c3600056e8c60a08dfe4b29dbdcb0863f2d80e8ffbd",
+        "screenshots/concept-a-delete-confirm.png": "a96e765f783bac4675a268d1ba2f00eaf5a317d304cc196cc00fc059900664fb",
+        "screenshots/concept-a-swipe.png": "2672737e92b18313ae7ad38ec02390d73542cca32a99b33321d74d48f61b69a0",
+        "screenshots/concept-a-games.png": "70cc0143b54093977b995b6a33975386e55b3b088b8a49054b01d21ce75f10f1",
+        "screenshots/concept-a-games-menu.png": "53a248d390bc00d61ca1b6af955ddfebc12e56bbb4a7af1fe5b4dffcc777190c"
+      },
+      "hero_filename": "CA_30_pretty_23.jpg",
+      "actual_dialog_native_rect": [
+        123,
+        696,
+        1083,
+        2010
+      ],
+      "dialog_last_crop_pixel_equal": true,
+      "actual_matched_card_count": 6,
+      "visual_opacity_hero_clarity_game_fill_and_final_spinner_acceptance": "NOT RUN",
+      "errors": []
+    },
+    "monthProgress": {
+      "status": "PASS",
+      "schema_validation": "STRICT_ACTUAL_TEST08_SCHEMA_1",
+      "source_bindings": {
+        "screenshots/concept-a-v4-months.png": "e124ffb2f0df650f5c2f7d48d29f9ad3cdce4a54d66014b79392511d7b765d11",
+        "stills/concept-a-v4-month-keep-01-before.png": "3e4ad9e5a2ca5020d3a79adb01a1dcf049d6fe70f13ff4322ed2c404b753a6ed",
+        "stills/concept-a-v4-month-keep-01-after.png": "9dcacea0ad359e0dfffae493452763dd2eb0d6f8d0847ffc7904533ac7cb195f",
+        "stills/concept-a-v4-month-keep-02-before.png": "9dcacea0ad359e0dfffae493452763dd2eb0d6f8d0847ffc7904533ac7cb195f",
+        "stills/concept-a-v4-month-keep-02-after.png": "8dd834a2c94d09b1a21ed5665e3557e355ee8198c387a098e6a6d0c9b88db2d9",
+        "stills/concept-a-v4-month-keep-03-before.png": "c73fec28f85e089c22ded09a217319e5bdde9c8f490678e2edda1ad00d44f9cb",
+        "stills/concept-a-v4-month-keep-03-after.png": "8930864a42f90c7ea6f2af043a765874a83d817022f0c810456661aa35db3fba"
+      },
+      "proof_sha256": "fff6d346ed61211d553603e82f76c7444787ce28654cb1b5159db0840c2fe0f1",
+      "observation_log_sha256": "37bd4c8ebae0c3a7b0f84da6ff14df6c571ddca98a498d49a64799e18862a8d3",
+      "completed_month": "2026-10",
+      "partial_month": "2026-11",
+      "untouched_month": "2026-09",
+      "actual_decision_actions": 3,
+      "native_visual_acceptance": "NOT RUN"
+    },
+    "editorPair": {
+      "status": "PASS",
+      "schema_validation": "STRICT_ACTUAL_TEST08_SCHEMA_1",
+      "asset_id": "688A7605-F36D-4A0D-A102-112D4B7749AA/L0/001",
+      "filename": "CA_30_pretty_08.jpg",
+      "source_bindings": {
+        "screenshots/concept-a-v4-editor-before.png": "5d3618a9889ca13bd1bd9dbac22e1ac54a47acc6a3e0d2a05bd2de9fdf85934a",
+        "stills/concept-a-v4-editor-before-stability-0.png": "5d3618a9889ca13bd1bd9dbac22e1ac54a47acc6a3e0d2a05bd2de9fdf85934a",
+        "stills/concept-a-v4-editor-before-stability-1.png": "5d3618a9889ca13bd1bd9dbac22e1ac54a47acc6a3e0d2a05bd2de9fdf85934a",
+        "screenshots/concept-a-v4-editor-filter-selected.png": "d0758c84492b83e79b09414522b10ba87e50afa0d1b610ee4c9ba555eb0a1235",
+        "stills/concept-a-v4-editor-filter-selected-stability-0.png": "d0758c84492b83e79b09414522b10ba87e50afa0d1b610ee4c9ba555eb0a1235",
+        "stills/concept-a-v4-editor-filter-selected-stability-1.png": "d0758c84492b83e79b09414522b10ba87e50afa0d1b610ee4c9ba555eb0a1235",
+        "screenshots/concept-a-v4-editor-after.png": "67f7bf4d2a46698f307621eab71c19bb188c27344ea6cb18471f3e8ffa42beea",
+        "stills/concept-a-v4-editor-after-stability-0.png": "67f7bf4d2a46698f307621eab71c19bb188c27344ea6cb18471f3e8ffa42beea",
+        "stills/concept-a-v4-editor-after-stability-1.png": "67f7bf4d2a46698f307621eab71c19bb188c27344ea6cb18471f3e8ffa42beea",
+        "screenshots/concept-a-v4-editor-undo.png": "5d3618a9889ca13bd1bd9dbac22e1ac54a47acc6a3e0d2a05bd2de9fdf85934a",
+        "stills/concept-a-v4-editor-undo-stability-0.png": "5d3618a9889ca13bd1bd9dbac22e1ac54a47acc6a3e0d2a05bd2de9fdf85934a",
+        "stills/concept-a-v4-editor-undo-stability-1.png": "5d3618a9889ca13bd1bd9dbac22e1ac54a47acc6a3e0d2a05bd2de9fdf85934a",
+        "screenshots/concept-a-v4-editor-redo.png": "67f7bf4d2a46698f307621eab71c19bb188c27344ea6cb18471f3e8ffa42beea",
+        "stills/concept-a-v4-editor-redo-stability-0.png": "67f7bf4d2a46698f307621eab71c19bb188c27344ea6cb18471f3e8ffa42beea",
+        "stills/concept-a-v4-editor-redo-stability-1.png": "67f7bf4d2a46698f307621eab71c19bb188c27344ea6cb18471f3e8ffa42beea",
+        "screenshots/concept-a-v4-editor-copy-default.png": "239f715a34579c453230e52d475daca099d40240b08a3bf913c9ed2323649416"
+      },
+      "proof_sha256": "d42af70bc0832b5899d99e0b756b2faa005960dbc5615e77e25b41953f63549b",
+      "observation_log_sha256": "37bd4c8ebae0c3a7b0f84da6ff14df6c571ddca98a498d49a64799e18862a8d3",
+      "published_preview_pixel_hashes": {
+        "before": "546e52e7278e426c0225e385a058dc744459c38cbbd927ae9229bc693fec85b3",
+        "filterSelection": "2519100b7171d15012d9cdb6e57df9abca7445366691072ea36c90bfb1d9fcc1",
+        "after": "2519100b7171d15012d9cdb6e57df9abca7445366691072ea36c90bfb1d9fcc1",
+        "undo": "546e52e7278e426c0225e385a058dc744459c38cbbd927ae9229bc693fec85b3",
+        "redo": "2519100b7171d15012d9cdb6e57df9abca7445366691072ea36c90bfb1d9fcc1"
+      },
+      "published_generations": {
+        "before": 3,
+        "filterSelection": 4,
+        "after": 4,
+        "undo": 5,
+        "redo": 6
+      },
+      "independent_native_photo_crop_hashes": {
+        "before": "dce02128d2de06dbba55c89c58bf2b52bb1d9d862127d8f9d07cd64aaafe60c9",
+        "filterSelection": "216c19d82c1424d0119d48cba2df4a1298d792b9057dc9973d1d9ff9ddaeb307",
+        "after": "0c665a9027114ee3cf24a51eac5052eca651f024608da612ae77d7093a9a0b7a",
+        "undo": "dce02128d2de06dbba55c89c58bf2b52bb1d9d862127d8f9d07cd64aaafe60c9",
+        "redo": "0c665a9027114ee3cf24a51eac5052eca651f024608da612ae77d7093a9a0b7a"
+      },
+      "actual_native_photo_crop_equality": "PASS",
+      "copy_default_selected": true,
+      "save_cancelled_without_export": true,
+      "native_visual_acceptance": "NOT RUN"
+    },
+    "exactAttemptAPI": {
+      "workflow_run": "43949822336",
+      "run_attempt": "1",
+      "commit": "90da2494af7dbeffe8c8694ee33f42c4f3ac78f0",
+      "branch": "hermes/store-concept-a-en",
+      "repository": "mrdevn4ever-sys/PhotoMaid",
+      "actual_api_run_attempt": 1,
+      "complete_jobs": 1,
+      "actual_workflow_conclusion": "failure",
+      "workflow_success": false,
+      "failed_postcapture_step": {
+        "number": 9,
+        "name": "Bind actual sources, test result and native logo to this exact run and SHA"
+      },
+      "status": "OWNER_AUTHORIZED_EXCEPTION",
+      "readback_sha256": "83d970ee192bf3d5e04bd71308055f38f82ca527db235d5c08da78b2c52f7807",
+      "owner_exception": {
+        "kind": "owner-authorized-C5-postcapture-workflow-exception",
+        "receipt": {
+          "file": "qa/c5-postcapture-workflow-exception.json",
+          "sha256": "5e14c68e2cbf33a2895841c617439eabfa50cd07b7ca7266b0aefd639df9bda3"
+        },
+        "authorization": {
+          "file": "qa/c5-owner-decision-20261117.json",
+          "sha256": "dd3f90ce02fed8b611bf3ac7159c06faf63b6ac48ba4cdcf632177836c48a5c5"
+        },
+        "original_inventory": {
+          "file": "qa/c5-original-artifact-immutable-snapshot.json",
+          "sha256": "88a4a267eb7686cfb7dbf0480da037ce67b0440d06483e0042305be3aa50dde1"
+        },
+        "original_errors": [
+          "native_screens: ValueError: Unrelated required native screen states unexpectedly share a file hash",
+          "month_progress: ValueError: Proof does not bind an independently inventoried required source",
+          "editor_pair: ValueError: Proof does not bind an independently inventoried required source"
+        ],
+        "original_files_verified": 228,
+        "unchanged_derived_inputs_verified": 227,
+        "original_provenance_sha256": "b916d032f001dc2691c7ec45ac2511827fcec350d24d6c0e4215830af5507d50",
+        "corrected_provenance_sha256": "c02cfa0a20b2816e281331af07f6eecb1e3225231370be555cc0c0910d90150d",
+        "local_data_status": "PASS",
+        "workflow_conclusion": "failure",
+        "source_or_final_visual_approval_granted": false
+      }
+    },
+    "sourceManifestSHA256": "84b08e1dd43024ab198d3241269eb5761f66ccd137e377a88e03c4c2f3b83a48",
+    "fixtureAllowlistSHA256": "cabb0ac048e57740cfce4bb82380a92313fa5d0d7a2d8c5aa3069f95d0d1c52e"
+  },
+  "actual_workflow_conclusion": "failure",
+  "owner_exception": {
+    "kind": "owner-authorized-C5-postcapture-workflow-exception",
+    "receipt": {
+      "file": "qa/c5-postcapture-workflow-exception.json",
+      "sha256": "5e14c68e2cbf33a2895841c617439eabfa50cd07b7ca7266b0aefd639df9bda3"
+    },
+    "authorization": {
+      "file": "qa/c5-owner-decision-20261117.json",
+      "sha256": "dd3f90ce02fed8b611bf3ac7159c06faf63b6ac48ba4cdcf632177836c48a5c5"
+    },
+    "original_inventory": {
+      "file": "qa/c5-original-artifact-immutable-snapshot.json",
+      "sha256": "88a4a267eb7686cfb7dbf0480da037ce67b0440d06483e0042305be3aa50dde1"
+    },
+    "original_errors": [
+      "native_screens: ValueError: Unrelated required native screen states unexpectedly share a file hash",
+      "month_progress: ValueError: Proof does not bind an independently inventoried required source",
+      "editor_pair: ValueError: Proof does not bind an independently inventoried required source"
+    ],
+    "original_files_verified": 228,
+    "unchanged_derived_inputs_verified": 227,
+    "original_provenance_sha256": "b916d032f001dc2691c7ec45ac2511827fcec350d24d6c0e4215830af5507d50",
+    "corrected_provenance_sha256": "c02cfa0a20b2816e281331af07f6eecb1e3225231370be555cc0c0910d90150d",
+    "local_data_status": "PASS",
+    "workflow_conclusion": "failure",
+    "source_or_final_visual_approval_granted": false
+  },
+  "render_manifest_sha256": "cef158c4c195438b27231519bd59aaed7b5988bb2205f394340b57032f70ad1d",
+  "design_sha256": "6b1656bfd3cf9a799e66b16d83722f2edcc9ba855e29814cefca01bdf4c1edcc",
+  "provenance_sha256": "c02cfa0a20b2816e281331af07f6eecb1e3225231370be555cc0c0910d90150d",
+  "auditor_sha256": "5ab374371aa9724855eb0fe090333be41b04681bb1600165c39b3f73c4de774c",
+  "native_pixels": "PASS, independently reconstructed from ICC-normalized originals; only actual alpha/viewport/disclosed composite occlusion excluded",
+  "human_final_visual_acceptance": "NOT RUN",
+  "native_capture_by_this_auditor": "NOT RUN",
+  "security_runtime_conversion_or_store_upload_acceptance": "NOT RUN"
+}

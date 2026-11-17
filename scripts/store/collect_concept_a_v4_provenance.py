@@ -47,6 +47,12 @@ NEW_SCREENS = (
     'concept-a-v4-editor-undo.png', 'concept-a-v4-editor-redo.png', 'concept-a-v4-editor-copy-default.png',
 )
 OPTIONAL_WARM = 'concept-a-v4-editor-filter-selected.png'
+# Exact two-member groups only; membership is never itself evidence of a capture.
+EDITOR_DUPLICATE_PAIRS = {
+    'legacy-warm/filter-selection': ('screenshots/concept-a-editor.png', 'screenshots/' + OPTIONAL_WARM),
+    'before/undo': ('screenshots/concept-a-v4-editor-before.png', 'screenshots/concept-a-v4-editor-undo.png'),
+    'after/redo': ('screenshots/concept-a-v4-editor-after.png', 'screenshots/concept-a-v4-editor-redo.png'),
+}
 MEDIA_POLICY = 'approved-stock-photos-and-videos-no-app-screenshots'
 BRANCH = 'hermes/store-concept-a-en'
 DEFAULT_CAPTURE_TEST = 'AppStoreCaptureTests/test08ConceptAV4StoreScreenshots'
@@ -316,18 +322,28 @@ def validate_native_screens(root):
         need((width, height, depth) == (1206, 2622, 8) and color in (2, 6)
              and row['mode'] in ('RGB', 'RGBA') and row['opaque'] is True, name + ': 8-bit opaque native RGB/RGBA 1206x2622 required')
         rows.append(row)
-    # After and Redo intentionally restore the same real Warm UI. With the status
-    # bar pinned, their complete PNG bytes may also be equal; that is not evidence
-    # of a substituted source. audit_editor_pair independently requires both actual
-    # captures/actions, ordered readbacks, newer publication generations and equal
-    # photo pixels. Every unrelated source state must still remain distinct.
+    screens = {row['file']: row for row in rows}
+    # No name-only exception: duplicate captures must independently re-prove the
+    # unchanged strict editor audit AND their separate action/capture receipts.
+    audit_native_screen_duplicates(root, screens)
+    return screens
+
+
+def validate_native_duplicate_groups(screens):
+    """Structural membership check only, NOT native evidence acceptance."""
     by_hash = {}
-    for row in rows:
-        by_hash.setdefault(row['sha256'], []).append(row['file'])
-    repeatable = {'screenshots/concept-a-v4-editor-after.png', 'screenshots/concept-a-v4-editor-redo.png'}
-    need(all(len(names) == 1 or set(names) == repeatable for names in by_hash.values()),
-         'Unrelated required native screen states unexpectedly share a file hash')
-    return {row['file']: row for row in rows}
+    for name, row in screens.items():
+        need(type(row) is dict and row.get('file') == name, 'Native screen inventory key/file mismatch')
+        by_hash.setdefault(hash_literal(row.get('sha256'), name), []).append(name)
+    groups = []
+    for sha, names in by_hash.items():
+        if len(names) == 1:
+            continue
+        matches = [label for label, pair in EDITOR_DUPLICATE_PAIRS.items()
+                   if len(names) == 2 and set(names) == set(pair)]
+        need(len(matches) == 1, 'Unrelated required native screen states unexpectedly share a file hash')
+        groups.append({'pair': matches[0], 'files': list(EDITOR_DUPLICATE_PAIRS[matches[0]]), 'sha256': sha})
+    return groups
 
 
 def validate_source_bindings(root, proof, required):
@@ -829,6 +845,168 @@ def audit_editor_pair(root, screens, library):
             'published_generations': {key: value['publishedRenderGeneration'] for key, value in observations.items()},
             'independent_native_photo_crop_hashes': crop_hashes, 'actual_native_photo_crop_equality': 'PASS',
             'copy_default_selected': True, 'save_cancelled_without_export': True, 'native_visual_acceptance': 'NOT RUN'}
+
+
+def validate_editor_duplicate_receipts(proof, log, captures):
+    """Check receipt structure/order; alone this does NOT prove native pixels."""
+    labels = ('before', 'filterSelection', 'after', 'undo', 'redo')
+    ready_names = ('v4-editor-original-adjust', 'v4-editor-warm-published', 'v4-editor-warm-matched-adjust',
+                   'v4-editor-real-undo', 'v4-editor-real-redo')
+    stems = ('before', 'filter-selected', 'after', 'undo', 'redo')
+    names = ['concept-a-v4-editor-' + stem for stem in stems]
+    actions, rows = proof.get('actions'), proof.get('checkpoints')
+    need(type(actions) is list and 8 <= len(actions) <= 10 and type(rows) is dict,
+         'Duplicate states require separate actual editor action/capture receipts')
+    last_time = 0
+    for action in actions:
+        kind = 'native save sheet expand drag' if action.get('action') == 'native save sheet expand drag' else 'tap'
+        validate_action(action, 'duplicate.editor.action', kind=kind)
+        need(last_time <= action['started'], 'Duplicate editor action receipts are out of order')
+        last_time = action['finished']
+    for index, target in ((0, 'editor.tool.adjust'), (1, 'editor.tool.filter'), (2, 'editor.filter.thumbnail.WARM'),
+                          (3, 'editor.tool.adjust'), (4, 'editor.undo'), (5, 'editor.redo')):
+        need(actions[index]['targetAX'].get('identifier') == target, 'Wrong actual duplicate-state action receipt')
+    need(type(captures) is list and all(type(row) is dict and type(row.get('file')) is str for row in captures),
+         'Actual native screenshot capture receipt list required')
+    files = [row['file'] for row in captures]
+    need(len(set(files)) == len(files), 'Repeated filename is not a separate native capture receipt')
+    receipt_indices = []
+    for name in ['concept-a-editor'] + names:
+        need(files.count(name + '.png') == 1, 'Missing actual native capture receipt: ' + name)
+        index = files.index(name + '.png')
+        receipt = captures[index]
+        need(receipt.get('status') == 'PASS' and receipt.get('language') == 'en'
+             and receipt.get('appearance') == 'dark' and 'kind' not in receipt,
+             'Wrong actual native full-screen capture receipt: ' + name)
+        receipt_indices.append(index)
+    need(all(a < b for a, b in zip(receipt_indices, receipt_indices[1:])), 'Native duplicate capture receipts are out of order')
+    baseline = observed_snapshot(log, proof.get('beforeState'), label='duplicate.editor.beforeState')
+    previous, observations, result = baseline, {}, {}
+    for offset, (label, name, ready_name, action_index) in enumerate(zip(labels, names, ready_names, (0, 2, 3, 4, 5)), 1):
+        row = rows.get(label)
+        need(type(row) is dict and row.get('file') == 'screenshots/' + name + '.png', 'Wrong duplicate editor checkpoint filename')
+        ready_index, ready = checkpoint(log, ready_name)
+        capture_index, state = checkpoint(log, name + '-capture-readback')
+        need(previous < ready_index < capture_index, 'Duplicate publication/capture readbacks are missing or out of order')
+        observation = validate_editor_checkpoint_observation(row, state, proof.get('assetID'))
+        need(validate_editor_observation(ready, proof.get('assetID')) == observation,
+             'Duplicate capture differs from its successful current publication')
+        samples = row.get('stability', {}).get('samples')
+        need(type(samples) is list and 2 <= len(samples) <= 6, 'Separate ordered native stability captures required for duplicates')
+        finished = actions[action_index]['finished']
+        for number, sample in enumerate(samples):
+            need(type(sample) is dict and sample.get('file') == f'stills/{name}-stability-{number}.png'
+                 and all(type(sample.get(key)) in (int, float) and math.isfinite(sample[key]) and sample[key] > 0
+                         for key in ('captureStarted', 'captureFinished'))
+                 and finished <= sample['captureStarted'] <= sample['captureFinished'],
+                 'Duplicate capture receipt is missing, reused, or outside its actual action interval')
+            hash_literal(sample.get('screenshotSHA256'), 'duplicate.sample.screenshotSHA256')
+            finished = sample['captureFinished']
+        need(finished < actions[action_index + 1]['started']
+             and row.get('screenshotSHA256') == samples[-1]['screenshotSHA256'],
+             'Duplicate capture must finish before the next action and bind its actual final still')
+        result[label] = {'publication_index': ready_index, 'capture_readback_index': capture_index,
+                         'capture_receipt_index': receipt_indices[offset], 'action_index': action_index,
+                         'action_started': actions[action_index]['started'], 'action_finished': actions[action_index]['finished'],
+                         'capture_started': samples[0]['captureStarted'], 'capture_finished': finished,
+                         'published_generation': observation['publishedRenderGeneration']}
+        previous, observations[label] = capture_index, observation
+    validate_editor_pair_publications(observations)
+    return result
+
+
+def validate_legacy_warm_duplicate(proof, log):
+    """Bind the legacy publication itself, not just the newer Warm screenshot."""
+    index, state = checkpoint(log, 'editor-original-selected')
+    baseline = observed_snapshot(log, proof.get('beforeState'), label='duplicate.editor.beforeState')
+    new_index, current = checkpoint(log, 'concept-a-v4-editor-filter-selected-capture-readback')
+    need(index < baseline < new_index, 'Legacy/new Warm publication readbacks must be separate and ordered')
+    asset_id = proof.get('assetID')
+    observations = [validate_editor_observation(row, asset_id) for row in (state, current)]
+    for row, observation in zip((state, current), observations):
+        selection = row.get('selection', {})
+        strength = observation.get('publishedFilterStrength')
+        need(selection.get('page') == 'concept-a-editor' and selection.get('assetIDs') == [asset_id]
+             and selection.get('sourceFiles') == [proof.get('filename')] == ['CA_30_pretty_08.jpg']
+             and observation.get('tool') == 'filter' and observation.get('publicationOrigin') == 'renderAssignment'
+             and observation['publishedRenderGeneration'] > 0 and observation.get('publishedFilter') == 'warm'
+             and observation.get('publishedIsIdentity') is False and type(strength) in (int, float) and strength == 1,
+             'Legacy/new Warm must each be the real selected same-asset current successful Warm publication')
+    fields = ('sourceOriginalPixelSHA256', 'sourceOriginalPixelWidth', 'sourceOriginalPixelHeight',
+              'requestedRecipeHash', 'publishedRecipeHash', 'publishedPreviewPixelSHA256',
+              'publishedPreviewPixelWidth', 'publishedPreviewPixelHeight', 'publishedFilterStrength')
+    need(all(observations[0][key] == observations[1][key] for key in fields),
+         'Legacy/new Warm source, recipe, strength or published pixels differ')
+    return {'readback_indices': [index, new_index],
+            'published_generations': [row['publishedRenderGeneration'] for row in observations],
+            'published_preview_pixel_sha256': observations[0]['publishedPreviewPixelSHA256']}
+
+
+def validate_warm_duplicate_actions(text):
+    """Read the two real XCTest route/filter/Warm actions (legacy has no JSON tap)."""
+    patterns = (r'Checking existence of `"store\.capture\.concept-a-editor" Window`',
+                r'Tap "editor\.tool\.filter" Button', r'Tap "editor\.filter\.thumbnail\.WARM" Button')
+    receipts = []
+    for pattern in patterns:
+        matches = []
+        for line, value in enumerate(text.splitlines(), 1):
+            match = re.fullmatch(r'\s*t =\s+([0-9]+(?:\.[0-9]+)?)s ' + pattern, value)
+            if match:
+                matches.append({'test_log_line': line, 'elapsed_seconds': float(match.group(1))})
+        need(len(matches) == 2, 'Separate legacy/new XCTest editor route/filter/Warm action receipts required')
+        receipts.append(matches)
+    ordered = [receipts[kind][occurrence] for occurrence in (0, 1) for kind in (0, 1, 2)]
+    need(all(a['test_log_line'] < b['test_log_line'] and a['elapsed_seconds'] < b['elapsed_seconds']
+             for a, b in zip(ordered, ordered[1:])), 'Legacy/new XCTest Warm actions are out of order')
+    return {'legacy': [rows[0] for rows in receipts], 'filterSelection': [rows[1] for rows in receipts]}
+
+
+def audit_native_screen_duplicates(root, screens):
+    """Read-only. Accept only named pairs proven from this root's real evidence.
+
+    screens is the file->image_record mapping independently inventoried from root.
+    No supplied PASS/allowlist/exception flag can replace audit_editor_pair. This
+    subgate does not change workflow/API acceptance or write capture_provenance.
+    """
+    groups = validate_native_duplicate_groups(screens)
+    if not groups:
+        return {'status': 'PASS', 'duplicate_pairs': []}
+    library = builder.load_json(safe_file(root, 'concept-a-library.json'))
+    editor_audit = audit_editor_pair(root, screens, library)  # retain every existing strict gate
+    proof = builder.load_json(safe_file(root, 'editor-pair-proof.json'))
+    log = load_evidence(root)
+    capture_file = safe_file(root, 'test08ConceptAV4StoreScreenshots-screens.json')
+    captures = json.loads(capture_file.read_text(encoding='utf-8'), object_pairs_hook=builder._unique_object,
+                          parse_constant=lambda value: (_ for _ in ()).throw(ValueError('Nonfinite capture receipt JSON: ' + value)))
+    receipts = validate_editor_duplicate_receipts(proof, log, captures)
+    warm, warm_actions = None, None
+    if any(group['pair'] == 'legacy-warm/filter-selection' for group in groups):
+        warm = validate_legacy_warm_duplicate(proof, log)
+        warm_actions = validate_warm_duplicate_actions(safe_file(root, 'tests.log').read_text(encoding='utf-8'))
+    for group in groups:
+        pixels = []
+        for name in group['files']:
+            path = safe_file(root, name)
+            need(digest(path) == group['sha256'], 'Duplicate source differs from its actual inventory hash')
+            with Image.open(path) as image:
+                pixels.append(image.convert('RGBA').tobytes())
+        need(pixels[0] == pixels[1], 'Named duplicate pair has different independently decoded screen pixels')
+        group['decoded_screen_rgba_sha256'] = hashlib.sha256(pixels[0]).hexdigest()
+        if group['pair'] == 'legacy-warm/filter-selection':
+            group['publication'] = warm
+            group['actions'] = warm_actions
+            group['captures'] = ['concept-a-editor.png', OPTIONAL_WARM]
+        else:
+            labels = group['pair'].split('/')
+            group['receipts'] = {label: receipts[label] for label in labels}
+        group['status'] = 'PASS'
+    bindings = {name: digest(safe_file(root, name)) for name in
+                ('editor-pair-proof.json', 'concept-a-evidence.json', 'test08ConceptAV4StoreScreenshots-screens.json')}
+    if warm is not None:
+        bindings['tests.log'] = digest(safe_file(root, 'tests.log'))
+    return {'status': 'PASS', 'duplicate_pairs': groups, 'source_bindings': bindings,
+            'strict_editor_pair_audit': editor_audit, 'native_visual_acceptance': 'NOT RUN',
+            'workflow_acceptance': 'NOT EVALUATED; duplicate subgate only'}
 
 
 def _preserve(root, stem, raw):

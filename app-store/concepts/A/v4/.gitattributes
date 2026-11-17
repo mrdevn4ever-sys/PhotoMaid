@@ -1,0 +1,4 @@
+# Preserve V4 proof/package member bytes across Windows checkouts.
+*.md -text
+*.log -text
+*.zip binary

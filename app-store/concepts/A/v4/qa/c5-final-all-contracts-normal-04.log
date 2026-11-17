@@ -1,0 +1,8 @@
+STRUCTURAL positive actual-data report: {"report_kind": "C5-targeted-postcapture-revalidation", "status": "PASS", "scope": "C5-retained-native-evidence-and-local-revalidation", "build_seconds": 16.875}
+{"tests_run": 115, "failures": 0, "errors": 0, "skipped": 0, "success": true}
+
+...................................................................................................................
+----------------------------------------------------------------------
+Ran 115 tests in 191.926s
+
+OK

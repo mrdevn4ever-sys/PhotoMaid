@@ -146,6 +146,52 @@ def editor_pair_publication_control():
     return observations
 
 
+def editor_duplicate_contract_control():
+    """IN-MEMORY STRUCTURAL CONTROL ONLY; never a native proof or capture PASS."""
+    observations = editor_pair_publication_control()
+    ready = {'fixtureMode': False, 'setupErrors': [], 'readReady': True, 'libraryLoaded': True}
+    selection = {'page': 'concept-a-editor', 'assetIDs': [observations['before']['assetID']],
+                 'sourceFiles': ['CA_30_pretty_08.jpg']}
+    for label, observation in observations.items():
+        observation['tool'] = 'filter' if label == 'filterSelection' else 'adjust'
+    legacy = {**ready, 'selection': copy.deepcopy(selection), 'editorV4': copy.deepcopy(observations['filterSelection'])}
+    baseline = {**ready, 'unit_test_only': 'STRUCTURAL baseline, not actual native evidence'}
+    log = [{'checkpoint': 'editor-original-selected', 'state': legacy},
+           {'checkpoint': 'v4-editor-inventory-before', 'state': baseline}]
+    targets = ('editor.tool.adjust', 'editor.tool.filter', 'editor.filter.thumbnail.WARM', 'editor.tool.adjust',
+               'editor.undo', 'editor.redo', 'unit-save', 'unit-cancel')
+    actions = [{'action': 'tap', 'started': 10.0 + 10 * index, 'finished': 11.0 + 10 * index,
+                'targetAX': {'identifier': target, 'exists': True, 'enabled': True, 'hittable': True,
+                             'frame': {'x': 10, 'y': 20, 'width': 40, 'height': 40}}} for index, target in enumerate(targets)]
+    proof = {'purpose': 'UNIT CONTRACT ONLY; no native status or provenance is emitted',
+             'assetID': observations['before']['assetID'], 'filename': 'CA_30_pretty_08.jpg',
+             'beforeState': baseline, 'actions': actions, 'checkpoints': {}}
+    captures = [{'file': 'concept-a-editor.png', 'status': 'PASS', 'language': 'en', 'appearance': 'dark',
+                 'purpose': 'STRUCTURAL receipt fields only; no actual capture'}]
+    config = (('before', 'before', 'v4-editor-original-adjust', 0),
+              ('filterSelection', 'filter-selected', 'v4-editor-warm-published', 2),
+              ('after', 'after', 'v4-editor-warm-matched-adjust', 3),
+              ('undo', 'undo', 'v4-editor-real-undo', 4), ('redo', 'redo', 'v4-editor-real-redo', 5))
+    for label, stem, checkpoint, action_index in config:
+        name = 'concept-a-v4-editor-' + stem
+        observation = observations[label]
+        state = {**ready, 'selection': copy.deepcopy(selection), 'editorV4': copy.deepcopy(observation)}
+        log.extend([{'checkpoint': checkpoint, 'state': copy.deepcopy(state)},
+                    {'checkpoint': name + '-capture-readback', 'state': copy.deepcopy(state)}])
+        sha_value = hashlib.sha256(('UNIT CONTRACT ONLY ' + label).encode()).hexdigest()
+        row = {'file': 'screenshots/' + name + '.png', 'screenshotSHA256': sha_value,
+               'editorV4': {key: observation[key] for key in collector.EDITOR_CORE_FIELDS},
+               'editorObservation': copy.deepcopy(observation),
+               'stability': {'samples': [{'file': f'stills/{name}-stability-{index}.png',
+                                         'captureStarted': actions[action_index]['finished'] + 1 + index,
+                                         'captureFinished': actions[action_index]['finished'] + 1.25 + index,
+                                         'screenshotSHA256': sha_value} for index in range(2)]}}
+        proof['checkpoints'][label] = row
+        captures.append({'file': name + '.png', 'status': 'PASS', 'language': 'en', 'appearance': 'dark',
+                         'purpose': 'STRUCTURAL receipt fields only; no actual capture'})
+    return proof, log, captures
+
+
 class TempCase(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix='galeriq-v4-unit-', dir=tempfile.gettempdir())
@@ -475,6 +521,189 @@ class StrictRunAndSummaryTests(unittest.TestCase):
             collector.validate_capture_summary(summary_control(), data)
         with self.assertRaises(ValueError):
             collector.validate_capture_summary(summary_control(), {'testNodes': []})
+
+
+class NativeDuplicateContractTests(unittest.TestCase):
+    """STRUCTURAL ONLY. No files here are accepted as native evidence."""
+    def setUp(self):
+        self.proof, self.log, self.captures = editor_duplicate_contract_control()
+
+    def test_only_three_explicit_two_member_groups_are_candidates(self):
+        self.assertEqual(set(collector.EDITOR_DUPLICATE_PAIRS),
+                         {'before/undo', 'after/redo', 'legacy-warm/filter-selection'})
+        screens = {}
+        for index, pair in enumerate(collector.EDITOR_DUPLICATE_PAIRS.values()):
+            sha_value = hashlib.sha256(f'UNIT GROUP {index}'.encode()).hexdigest()
+            for name in pair:
+                screens[name] = {'file': name, 'sha256': sha_value}
+        groups = collector.validate_native_duplicate_groups(screens)
+        self.assertEqual({row['pair'] for row in groups}, set(collector.EDITOR_DUPLICATE_PAIRS))
+        self.assertTrue(all('status' not in row for row in groups))  # no native PASS from names
+
+    def test_third_state_and_unrelated_groups_remain_rejected(self):
+        for label, pair in collector.EDITOR_DUPLICATE_PAIRS.items():
+            for third in ('screenshots/concept-a-trash.png', 'screenshots/concept-a-v4-editor-copy-default.png'):
+                screens = {name: {'file': name, 'sha256': 'a' * 64} for name in (*pair, third)}
+                with self.subTest(pair=label, third=third), self.assertRaisesRegex(ValueError, 'Unrelated required native screen'):
+                    collector.validate_native_duplicate_groups(screens)
+        pair = ('screenshots/concept-a-swipe.png', 'screenshots/concept-a-trash.png')
+        with self.assertRaisesRegex(ValueError, 'Unrelated required native screen'):
+            collector.validate_native_duplicate_groups({name: {'file': name, 'sha256': 'b' * 64} for name in pair})
+
+    def test_group_hashes_and_inventory_keys_are_literal(self):
+        for row in ({'file': 'other.png', 'sha256': 'a' * 64}, {'file': 'unit.png', 'sha256': 'A' * 64},
+                    {'file': 'unit.png'}, {'file': 'unit.png', 'sha256': True}):
+            with self.subTest(row=row), self.assertRaises(ValueError):
+                collector.validate_native_duplicate_groups({'unit.png': row})
+
+    def test_ordered_separate_action_capture_contract_only(self):
+        result = collector.validate_editor_duplicate_receipts(self.proof, self.log, self.captures)
+        self.assertEqual(set(result), {'before', 'filterSelection', 'after', 'undo', 'redo'})
+        self.assertLess(result['before']['capture_finished'], result['undo']['action_started'])
+        self.assertLess(result['after']['published_generation'], result['redo']['published_generation'])
+
+    def test_wrong_missing_repeated_and_reordered_capture_receipts_rejected(self):
+        for kind in ('missing', 'wrong-file', 'repeated', 'reordered', 'failed', 'wrong-language', 'wrong-appearance', 'component'):
+            captures = copy.deepcopy(self.captures)
+            if kind == 'missing':
+                captures.pop(4)
+            elif kind == 'wrong-file':
+                captures[4]['file'] = 'unrelated.png'
+            elif kind == 'repeated':
+                captures.append(copy.deepcopy(captures[4]))
+            elif kind == 'reordered':
+                captures[3], captures[4] = captures[4], captures[3]
+            else:
+                key, value = {'failed': ('status', 'FAIL'), 'wrong-language': ('language', 'de'),
+                              'wrong-appearance': ('appearance', 'light'), 'component': ('kind', 'native-component')}[kind]
+                captures[4][key] = value
+            with self.subTest(kind=kind), self.assertRaises(ValueError):
+                collector.validate_editor_duplicate_receipts(self.proof, self.log, captures)
+
+    def test_wrong_missing_and_out_of_order_native_actions_rejected(self):
+        for kind in ('missing', 'wrong-target', 'reordered', 'stale-time', 'unhittable', 'bool-time'):
+            proof = copy.deepcopy(self.proof)
+            actions = proof['actions']
+            if kind == 'missing':
+                actions.pop(4)
+            elif kind == 'wrong-target':
+                actions[4]['targetAX']['identifier'] = 'editor.redo'
+            elif kind == 'reordered':
+                actions[4], actions[5] = actions[5], actions[4]
+            elif kind == 'stale-time':
+                actions[4]['started'] = actions[3]['started']
+            elif kind == 'unhittable':
+                actions[4]['targetAX']['hittable'] = False
+            else:
+                actions[4]['started'] = True
+            with self.subTest(kind=kind), self.assertRaises(ValueError):
+                collector.validate_editor_duplicate_receipts(proof, self.log, self.captures)
+
+    def test_separate_captures_must_be_between_their_own_actions(self):
+        for kind in ('before-action', 'after-next-action', 'reused-still', 'missing-still', 'reordered-stills', 'wrong-final-hash', 'bool-time'):
+            proof = copy.deepcopy(self.proof)
+            row = proof['checkpoints']['undo']
+            samples = row['stability']['samples']
+            if kind == 'before-action':
+                samples[0]['captureStarted'] = 2
+            elif kind == 'after-next-action':
+                samples[-1]['captureFinished'] = 61
+            elif kind == 'reused-still':
+                samples[0]['file'] = proof['checkpoints']['before']['stability']['samples'][0]['file']
+            elif kind == 'missing-still':
+                samples.pop()
+            elif kind == 'reordered-stills':
+                samples[0], samples[1] = samples[1], samples[0]
+            elif kind == 'wrong-final-hash':
+                row['screenshotSHA256'] = 'f' * 64
+            else:
+                samples[0]['captureStarted'] = True
+            with self.subTest(kind=kind), self.assertRaises(ValueError):
+                collector.validate_editor_duplicate_receipts(proof, self.log, self.captures)
+
+    def test_named_ready_and_capture_readbacks_cannot_be_missing_reused_or_reordered(self):
+        for kind in ('missing', 'reordered', 'unready', 'wrong-state', 'wrong-publication'):
+            log = copy.deepcopy(self.log)
+            index = next(i for i, row in enumerate(log) if row['checkpoint'] == 'concept-a-v4-editor-undo-capture-readback')
+            if kind == 'missing':
+                log[index]['checkpoint'] = 'unit-unrelated'
+            elif kind == 'reordered':
+                log.insert(3, log.pop(index))
+            elif kind == 'unready':
+                log[index]['state']['readReady'] = False
+            elif kind == 'wrong-state':
+                log[index]['state']['editorV4']['publishedPreviewPixelSHA256'] = 'f' * 64
+            else:
+                log[index - 1]['state']['editorV4']['publishedPreviewPixelSHA256'] = 'f' * 64
+            with self.subTest(kind=kind), self.assertRaises(ValueError):
+                collector.validate_editor_duplicate_receipts(self.proof, log, self.captures)
+
+    def test_coherently_changed_asset_recipe_pixels_generation_and_unready_fail(self):
+        for key, value in (('assetID', 'other-unit-asset'), ('sourceOriginalPixelSHA256', 'f' * 64),
+                           ('publishedPreviewPixelSHA256', 'f' * 64), ('publishedRecipeHash', 'f' * 64),
+                           ('publishedRenderGeneration', 4), ('previewAssigned', False), ('publicationOrigin', 'originalAssignment')):
+            proof, log = copy.deepcopy(self.proof), copy.deepcopy(self.log)
+            row = proof['checkpoints']['undo']
+            row['editorObservation'][key] = value
+            if key in row['editorV4']:
+                row['editorV4'][key] = value
+            for entry in log:
+                if entry['checkpoint'] in ('v4-editor-real-undo', 'concept-a-v4-editor-undo-capture-readback'):
+                    entry['state']['editorV4'][key] = value
+            with self.subTest(key=key), self.assertRaises(ValueError):
+                collector.validate_editor_duplicate_receipts(proof, log, self.captures)
+
+    def test_legacy_and_new_warm_must_bind_actual_same_publication(self):
+        result = collector.validate_legacy_warm_duplicate(self.proof, self.log)
+        self.assertLess(*result['readback_indices'])
+        for key, value in (('assetID', 'other-unit-asset'), ('sourceOriginalPixelSHA256', 'f' * 64),
+                           ('sourceOriginalPixelWidth', 385), ('publishedPreviewPixelSHA256', 'f' * 64),
+                           ('requestedRecipeHash', 'f' * 64), ('publishedRecipeHash', 'f' * 64),
+                           ('publishedFilterStrength', True), ('publishedRenderGeneration', 0),
+                           ('loadState', 'notReady'), ('previewAssigned', False), ('tool', 'adjust')):
+            for occurrence in (0, next(i for i, row in enumerate(self.log)
+                                      if row['checkpoint'] == 'concept-a-v4-editor-filter-selected-capture-readback')):
+                log = copy.deepcopy(self.log)
+                log[occurrence]['state']['editorV4'][key] = value
+                with self.subTest(key=key, occurrence=occurrence), self.assertRaises(ValueError):
+                    collector.validate_legacy_warm_duplicate(self.proof, log)
+
+    def test_legacy_warm_selection_readback_order_and_readiness_required(self):
+        for kind in ('missing', 'reordered', 'unready', 'wrong-file', 'wrong-selection', 'wrong-page'):
+            log = copy.deepcopy(self.log)
+            if kind == 'missing':
+                log[0]['checkpoint'] = 'unrelated'
+            elif kind == 'reordered':
+                log.append(log.pop(0))
+            elif kind == 'unready':
+                log[0]['state']['readReady'] = False
+            else:
+                key, value = {'wrong-file': ('sourceFiles', ['other.jpg']), 'wrong-selection': ('assetIDs', ['other']),
+                              'wrong-page': ('page', 'concept-a-collage')}[kind]
+                log[0]['state']['selection'][key] = value
+            with self.subTest(kind=kind), self.assertRaises(ValueError):
+                collector.validate_legacy_warm_duplicate(self.proof, log)
+
+    def test_xctest_legacy_and_new_warm_actions_are_distinct_and_ordered(self):
+        operations = ('Checking existence of `"store.capture.concept-a-editor" Window`',
+                      'Tap "editor.tool.filter" Button', 'Tap "editor.filter.thumbnail.WARM" Button')
+        lines = [f'    t = {index + 1}.00s {operation}' for index, operation in enumerate(operations * 2)]
+        text = 'UNIT STRUCTURAL LOG TEXT ONLY, NOT NATIVE EVIDENCE\n' + '\n'.join(lines)
+        self.assertEqual(len(collector.validate_warm_duplicate_actions(text)['legacy']), 3)
+        for kind in ('missing', 'wrong-action', 'repeated', 'reordered', 'reversed-time'):
+            changed = list(lines)
+            if kind == 'missing':
+                changed.pop(2)
+            elif kind == 'wrong-action':
+                changed[2] = changed[2].replace('Tap ', 'Find the ')
+            elif kind == 'repeated':
+                changed.append(changed[2])
+            elif kind == 'reordered':
+                changed[2], changed[3] = changed[3], changed[2]
+            else:
+                changed[-1] = changed[-1].replace('6.00s', '0.00s')
+            with self.subTest(kind=kind), self.assertRaises(ValueError):
+                collector.validate_warm_duplicate_actions('\n'.join(changed))
 
 
 class ProofGateTests(TempCase):
@@ -839,15 +1068,15 @@ class ProofGateTests(TempCase):
         for index, name in enumerate(names):
             Image.new('RGB', (1206, 2622), (index, 17, 31)).save(directory / name, pnginfo=info)
         self.assertEqual(len(collector.validate_native_screens(self.root)), 20)
-        # Synthetic pixel rectangles test only the intentional complete-screen
-        # restoration exception. Full native acceptance still requires both real
-        # action/ordered publication/photo-pixel proofs in audit_editor_pair.
+        # Plain rectangles cannot prove separate native captures. Even an exact
+        # named pair must fail without the real independent editor/receipt audit.
         after = directory / 'concept-a-v4-editor-after.png'
         redo = directory / 'concept-a-v4-editor-redo.png'
         undo = directory / 'concept-a-v4-editor-undo.png'
         original_redo, original_undo = redo.read_bytes(), undo.read_bytes()
         redo.write_bytes(after.read_bytes())
-        self.assertEqual(len(collector.validate_native_screens(self.root)), 20)
+        with self.assertRaisesRegex(ValueError, 'Missing/out-of-root evidence'):
+            collector.validate_native_screens(self.root)
         undo.write_bytes(after.read_bytes())
         with self.assertRaisesRegex(ValueError, 'Unrelated required native screen'):
             collector.validate_native_screens(self.root)

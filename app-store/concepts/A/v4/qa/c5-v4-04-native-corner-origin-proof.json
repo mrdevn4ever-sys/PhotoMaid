@@ -1,0 +1,38 @@
+{
+  "status": "EXACT_SOURCE_PIXELS_NOT_POSTPROCESS_REMNANTS",
+  "actual_source": "screenshots/concept-a-delete-confirm.png",
+  "source_sha256": "a96e765f783bac4675a268d1ba2f00eaf5a317d304cc196cc00fc059900664fb",
+  "crop": [
+    123,
+    696,
+    1083,
+    2010
+  ],
+  "target": [
+    131,
+    1292,
+    1075,
+    2584
+  ],
+  "known_resample": "Pillow LANCZOS, one proportional contain; <=0.5 px per-axis integer rounding",
+  "independent_technical_audit": "qa/c5-v4-technical-export-02.json",
+  "native_layer_mask": "outer rounded mask, 4x antialiased",
+  "exact_native_pixel_qa": {
+    "status": "PASS",
+    "comparedPixels": 1219648,
+    "opaqueInteriorPixels": 1219648,
+    "fullTargetOpaqueInteriorPixels": 1219648,
+    "offCanvasOpaqueInteriorPixels": 0,
+    "occludedByLaterInsetOrShadowPixels": 0,
+    "minimumVisibleViewportFraction": 1,
+    "maxChannelDifference": 0,
+    "maskedKnownResampleSHA256": "640b9d2667928dfe50492a55473851c6a52448ab6ec40b1c61395661b8e89f27",
+    "maskedOutputSHA256": "640b9d2667928dfe50492a55473851c6a52448ab6ec40b1c61395661b8e89f27",
+    "method": "Exact visible native equality; only actual alpha, bottom viewport and declared native/marketing occlusion excluded"
+  },
+  "native_header_count_bottom_native_y": 555,
+  "source_first_instruction_top_native_y": 616,
+  "source_first_instruction_top_output_y": 1326.086956521739,
+  "enlarged_native_panel_top_output_y": 1292,
+  "interpretation": "All gray corner glyphs within flat inset bounds are the unedited original screenshot backdrop outside true native rounded panel corners. Primary instruction starts at output1326.6 but is completely covered by the opaque rectangle crop. Must preserve actual native rounded-corner pixels, not paint these pixels away. Final visual review must distinguish these from added UI strips."
+}

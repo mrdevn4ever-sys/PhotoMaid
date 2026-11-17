@@ -1,0 +1,2851 @@
+{
+  "schema_version": 2,
+  "status": "PASS",
+  "fresh_capture": true,
+  "locale": "en-US",
+  "app_language": "en",
+  "platform": "iOS Simulator",
+  "base_commit": "583eb804a81401aa2010996875b35d05afc61539",
+  "commit": "90da2494af7dbeffe8c8694ee33f42c4f3ac78f0",
+  "workflow_run": "43949822336",
+  "run_attempt": "1",
+  "workflow_url": "https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/43949822336",
+  "branch": "hermes/store-concept-a-en",
+  "captured_at": "2026-11-16T21:03:31.554274+00:00",
+  "app": {
+    "CFBundleDisplayName": "GaleriQ",
+    "CFBundleShortVersionString": "1.0.1",
+    "CFBundleVersion": "2",
+    "CFBundleIdentifier": "com.mrdevn4ever.photomaid"
+  },
+  "device": {
+    "device_class": "iphone-medium",
+    "name": "iPhone 17 Pro",
+    "device_type": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+    "os_version": "26.2",
+    "sdk": "26.5",
+    "udid": "A614236E-BB6A-43FD-8517-937A87B6CB77",
+    "actual_duo": false
+  },
+  "capture_summary": {
+    "devicesAndConfigurations": [
+      {
+        "device": {
+          "architecture": "arm64",
+          "deviceId": "A614236E-BB6A-43FD-8517-937A87B6CB77",
+          "deviceName": "PhotoMaid Store Current",
+          "modelName": "iPhone 17 Pro",
+          "osBuildNumber": "23C54",
+          "osVersion": "26.2",
+          "platform": "iOS Simulator"
+        },
+        "expectedFailures": 0,
+        "failedTests": 0,
+        "passedTests": 1,
+        "skippedTests": 0,
+        "testPlanConfiguration": {
+          "configurationId": "1",
+          "configurationName": "Test Scheme Action"
+        }
+      }
+    ],
+    "environmentDescription": "PhotoMaid · Built with macOS 26.7.2",
+    "expectedFailures": 0,
+    "failedTests": 0,
+    "finishTime": 1794862940.446,
+    "passedTests": 1,
+    "result": "Passed",
+    "skippedTests": 0,
+    "startTime": 1794862015.597,
+    "statistics": [],
+    "testFailures": [],
+    "title": "Test - PhotoMaid",
+    "topInsights": [],
+    "totalTestCount": 1
+  },
+  "fixture_manifest_sha256": "d9ba50a8299fe7f0ff0abc0066c39fa3f24fabcc68a041d919306fd2a5aa27d4",
+  "fixture_visual_source_gate": {
+    "status": "PASS",
+    "allowlist_status": "PASS_SELECTED_SUBSET_ONLY",
+    "allowlist_sha256": "cabb0ac048e57740cfce4bb82380a92313fa5d0d7a2d8c5aa3069f95d0d1c52e",
+    "approved_original_count": 15,
+    "all_used_sources_approved": true
+  },
+  "sample_media_policy": "approved-stock-photos-and-videos-no-app-screenshots",
+  "sample_media_audit": {
+    "status": "PASS",
+    "policy": "approved-stock-photos-and-videos-no-app-screenshots",
+    "actual_asset_count": 37,
+    "actual_photo_count": 35,
+    "actual_video_count": 2,
+    "actual_screenshot_subtype_count": 0,
+    "fixture_filename_set_exact": true,
+    "errors": [],
+    "actual_library_sha256": "93e9ed901596288b5309cdc824189a4e62d1a0d2aa6cf079d82750636c28e21d"
+  },
+  "native_scene_policy": "v4-mixed-approved-originals-real-month-progress-published-editor-pair",
+  "native_scene_audit": {
+    "status": "PASS",
+    "policy": "sharp-stock-hero-opaque-confirmation-filled-photo-game",
+    "source_bindings": {
+      "concept-a-v3-scenes.json": "32b8d60594dc7241a7307e27593d5225fe6894fc55d81f70cdba3e25f7071962",
+      "concept-a-system-settings.json": "0209efe11a36ab464941b36c07d4552e60abd019b7e489d3a11dd4779d35f4a7",
+      "concept-a-delete-confirm-frame.json": "c4c8f1b3e67c654fc18c037c22a5dd0ba77a69b8253543faaae9f6c6b1a530ba",
+      "concept-a-games-round.json": "5c697f495a09aae50086f11a91a8b966323922d519ef99b467efe66d4fdf6bdf",
+      "concept-a-library.json": "93e9ed901596288b5309cdc824189a4e62d1a0d2aa6cf079d82750636c28e21d",
+      "stills/concept-a-delete-confirm-before.png": "1ac5a5cebfcc29f27fe51c3600056e8c60a08dfe4b29dbdcb0863f2d80e8ffbd",
+      "screenshots/concept-a-delete-confirm.png": "a96e765f783bac4675a268d1ba2f00eaf5a317d304cc196cc00fc059900664fb",
+      "screenshots/concept-a-swipe.png": "2672737e92b18313ae7ad38ec02390d73542cca32a99b33321d74d48f61b69a0",
+      "screenshots/concept-a-games.png": "70cc0143b54093977b995b6a33975386e55b3b088b8a49054b01d21ce75f10f1",
+      "screenshots/concept-a-games-menu.png": "53a248d390bc00d61ca1b6af955ddfebc12e56bbb4a7af1fe5b4dffcc777190c"
+    },
+    "hero_filename": "CA_30_pretty_23.jpg",
+    "actual_dialog_native_rect": [
+      123,
+      696,
+      1083,
+      2010
+    ],
+    "dialog_last_crop_pixel_equal": true,
+    "actual_matched_card_count": 6,
+    "visual_opacity_hero_clarity_game_fill_and_final_spinner_acceptance": "NOT RUN",
+    "errors": []
+  },
+  "required_native_screens": [
+    "concept-a-swipe.png",
+    "concept-a-duplicates.png",
+    "concept-a-large-files.png",
+    "concept-a-trash.png",
+    "concept-a-delete-confirm.png",
+    "concept-a-vault.png",
+    "concept-a-later.png",
+    "concept-a-later-swipe.png",
+    "concept-a-months.png",
+    "concept-a-analysis.png",
+    "concept-a-collage.png",
+    "concept-a-editor.png",
+    "concept-a-games.png",
+    "concept-a-games-menu.png",
+    "concept-a-v4-months.png",
+    "concept-a-v4-editor-before.png",
+    "concept-a-v4-editor-after.png",
+    "concept-a-v4-editor-undo.png",
+    "concept-a-v4-editor-redo.png",
+    "concept-a-v4-editor-copy-default.png"
+  ],
+  "outputs": [
+    {
+      "file": "screenshots/concept-a-swipe.png",
+      "sha256": "2672737e92b18313ae7ad38ec02390d73542cca32a99b33321d74d48f61b69a0",
+      "bytes": 2323131,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGBA",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-duplicates.png",
+      "sha256": "d0622fa0587b724214d39743844517a346fbcc8e8335f68cb916580c088ed124",
+      "bytes": 427705,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-large-files.png",
+      "sha256": "d630839f160b9a6dff5334e4b322b8df52cfeb1f1e9af020e53bf0a52dde335c",
+      "bytes": 293939,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-trash.png",
+      "sha256": "f974f69bcc23b63c2ff0565fedda0cff216aecad0f6ef86531db979b607d81c7",
+      "bytes": 765815,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-delete-confirm.png",
+      "sha256": "a96e765f783bac4675a268d1ba2f00eaf5a317d304cc196cc00fc059900664fb",
+      "bytes": 1044744,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-vault.png",
+      "sha256": "2c379e0a66ea81c48eaf23a5b00cc9e020568b6acd3f7b23c07dcb75424ef2d7",
+      "bytes": 1353683,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-later.png",
+      "sha256": "13494284c4b13b0b18900af357ecb60dbdaffe7f6178d5933b0d446d78a70690",
+      "bytes": 4122183,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-later-swipe.png",
+      "sha256": "d14e04c0889b209f416deb43378a62d6556bd51829f716fc199caf51ff826bfb",
+      "bytes": 3888738,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGBA",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-months.png",
+      "sha256": "d383dd3736d7b28185bb5199cdc3f9d63d3158789d4d656b82cae27a19157708",
+      "bytes": 181691,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-analysis.png",
+      "sha256": "c359f0ea07c8172fcc78f121c95dfe5db634fd299ca3a19965045027699863da",
+      "bytes": 2328783,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-collage.png",
+      "sha256": "455621b64deecc9ec01a29f4a5fd3e8cb9d42fc208cf3f572ec426a3badeae4d",
+      "bytes": 2076827,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-editor.png",
+      "sha256": "d0758c84492b83e79b09414522b10ba87e50afa0d1b610ee4c9ba555eb0a1235",
+      "bytes": 2659911,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-games.png",
+      "sha256": "70cc0143b54093977b995b6a33975386e55b3b088b8a49054b01d21ce75f10f1",
+      "bytes": 829772,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-games-menu.png",
+      "sha256": "53a248d390bc00d61ca1b6af955ddfebc12e56bbb4a7af1fe5b4dffcc777190c",
+      "bytes": 309610,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-v4-months.png",
+      "sha256": "e124ffb2f0df650f5c2f7d48d29f9ad3cdce4a54d66014b79392511d7b765d11",
+      "bytes": 180773,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-v4-editor-before.png",
+      "sha256": "5d3618a9889ca13bd1bd9dbac22e1ac54a47acc6a3e0d2a05bd2de9fdf85934a",
+      "bytes": 2201205,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-v4-editor-after.png",
+      "sha256": "67f7bf4d2a46698f307621eab71c19bb188c27344ea6cb18471f3e8ffa42beea",
+      "bytes": 2422403,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-v4-editor-undo.png",
+      "sha256": "5d3618a9889ca13bd1bd9dbac22e1ac54a47acc6a3e0d2a05bd2de9fdf85934a",
+      "bytes": 2201205,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-v4-editor-redo.png",
+      "sha256": "67f7bf4d2a46698f307621eab71c19bb188c27344ea6cb18471f3e8ffa42beea",
+      "bytes": 2422403,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-v4-editor-copy-default.png",
+      "sha256": "239f715a34579c453230e52d475daca099d40240b08a3bf913c9ed2323649416",
+      "bytes": 1578259,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    },
+    {
+      "file": "screenshots/concept-a-v4-editor-filter-selected.png",
+      "sha256": "d0758c84492b83e79b09414522b10ba87e50afa0d1b610ee4c9ba555eb0a1235",
+      "bytes": 2659911,
+      "width": 1206,
+      "height": 2622,
+      "mode": "RGB",
+      "opaque": true,
+      "icc_embedded": false,
+      "icc_description": null
+    }
+  ],
+  "branding": {
+    "file": "branding/native-wordmark.png",
+    "sha256": "513d63a0fffe1213d48c6101c0b57d5ebcf50518758edb6643c3bfc00a7af9b9",
+    "bytes": 124072,
+    "width": 1280,
+    "height": 512,
+    "mode": "RGBA",
+    "opaque": false,
+    "icc_embedded": false,
+    "icc_description": null
+  },
+  "native_visual_acceptance": "NOT RUN",
+  "store_export_acceptance": "NOT RUN",
+  "real_device_or_security_acceptance": "NOT RUN",
+  "errors": [],
+  "creative_revision": 4,
+  "v4_native_scene_policy": "v4-mixed-approved-originals-real-month-progress-published-editor-pair",
+  "base_c14_provenance": {
+    "status": "PASS",
+    "exit_code": 0,
+    "file": "capture_provenance.base-c14-5b3aed84f63ab8e9103609da2b06e7276be3bb8a924d504b91a87b33ae6091f8.json",
+    "sha256": "5b3aed84f63ab8e9103609da2b06e7276be3bb8a924d504b91a87b33ae6091f8",
+    "collector_sha256": "85d443c36c18e2018efa12c385a037fe5f2d64265f9ce6ed7be6057775016896",
+    "previous_canonical": null
+  },
+  "base_c14_native_scene_policy": "sharp-stock-hero-opaque-confirmation-filled-photo-game",
+  "v4_audits": {
+    "literal_run_pins": {
+      "status": "PASS",
+      "workflow_run": "43949822336",
+      "run_attempt": "1",
+      "commit": "90da2494af7dbeffe8c8694ee33f42c4f3ac78f0",
+      "branch": "hermes/store-concept-a-en",
+      "repository": "mrdevn4ever-sys/PhotoMaid"
+    },
+    "capture_test": {
+      "status": "PASS",
+      "test": "AppStoreCaptureTests/test08ConceptAV4StoreScreenshots",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0
+    },
+    "fixture_manifest": {
+      "schema_version": 2,
+      "creative_revision": 4,
+      "purpose": "Separate v4 disposable stock PhotoKit fixture: cat, meals, everyday, coffee, dog, travel and nature originals",
+      "status": "PASS",
+      "source_manifest_sha256": "84b08e1dd43024ab198d3241269eb5761f66ccd137e377a88e03c4c2f3b83a48",
+      "source_library_verified": 15,
+      "visual_source_gate": {
+        "status": "PASS",
+        "allowlist_status": "PASS_SELECTED_SUBSET_ONLY",
+        "allowlist_sha256": "cabb0ac048e57740cfce4bb82380a92313fa5d0d7a2d8c5aa3069f95d0d1c52e",
+        "approved_original_count": 15,
+        "all_used_sources_approved": true
+      },
+      "images": 35,
+      "videos": 2,
+      "native_screenshot_fixture": "Excluded by owner: no app/UI screenshot is imported as photo media",
+      "sample_media_policy": "approved-stock-photos-and-videos-no-app-screenshots",
+      "records": [
+        {
+          "file": "CA_01_clutter_blur.jpg",
+          "category": "clutter-blurry",
+          "media_type": "image",
+          "sha256": "45197907a9b220c45ca86e2a47d2f5f24b0da8df9fb86981b3b6ab1123281c06",
+          "bytes": 255229,
+          "size": [
+            1920,
+            1622
+          ],
+          "capture_role": 5,
+          "source": "v4-05-munchkin-cat-2-cropped.jpg",
+          "source_sha256": "75087bb00dad59688f8f1c928b1aa5dbe304a5181f5a0c87d6a6a74c8b2606f7",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Munchkin_cat_2_(cropped).jpg",
+          "author": "Tasy Hong",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1622,
+          "adaptation": "CC0 cat-photo fixture derivative: 26px defocus; no upscale"
+        },
+        {
+          "file": "CA_02_clutter_shake.jpg",
+          "category": "clutter-challenging",
+          "media_type": "image",
+          "sha256": "ac14cf02b312e125b4b91f65b036385084b342fa2da89d3962ade4c9193a5208",
+          "bytes": 213708,
+          "size": [
+            1920,
+            1440
+          ],
+          "capture_role": 10,
+          "source": "v4-10-shadow-of-bicycle-frame.jpg",
+          "source_sha256": "70fc2cf1bd8e958a60531d4ee2964c87880e08a473d137a0f15b4b404cb00d4a",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Shadow_of_bicycle_frame.jpg",
+          "author": "NonNerd",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1440,
+          "adaptation": "CC0 everyday-photo fixture derivative: 18px defocus; no upscale"
+        },
+        {
+          "file": "CA_03_clutter_dark.jpg",
+          "category": "clutter-dark",
+          "media_type": "image",
+          "sha256": "2c33cea462c2180740e222fa96c0e47289590620dbfee0d0afe0848dfb5d7b9a",
+          "bytes": 352590,
+          "size": [
+            1920,
+            1622
+          ],
+          "capture_role": 5,
+          "source": "v4-05-munchkin-cat-2-cropped.jpg",
+          "source_sha256": "75087bb00dad59688f8f1c928b1aa5dbe304a5181f5a0c87d6a6a74c8b2606f7",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Munchkin_cat_2_(cropped).jpg",
+          "author": "Tasy Hong",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1622,
+          "adaptation": "CC0 cat-photo fixture derivative: brightness factor 0.25; no upscale"
+        },
+        {
+          "file": "CA_10_duplicate_a.jpg",
+          "category": "exact-duplicate",
+          "media_type": "image",
+          "sha256": "1c0972e59ddb745358e117fc2b6b85ef442cd28081c16b074c26a0b407115f15",
+          "bytes": 468588,
+          "size": [
+            1920,
+            1337
+          ],
+          "capture_role": 38,
+          "source": "v4-38-breakfast-today.jpg",
+          "source_sha256": "1c0972e59ddb745358e117fc2b6b85ef442cd28081c16b074c26a0b407115f15",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Breakfast_today.jpg",
+          "author": "Sparcity",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1337,
+          "adaptation": "Unchanged source bytes"
+        },
+        {
+          "file": "CA_11_duplicate_b.jpg",
+          "category": "exact-duplicate",
+          "media_type": "image",
+          "sha256": "1c0972e59ddb745358e117fc2b6b85ef442cd28081c16b074c26a0b407115f15",
+          "bytes": 468588,
+          "size": [
+            1920,
+            1337
+          ],
+          "capture_role": 38,
+          "source": "v4-38-breakfast-today.jpg",
+          "source_sha256": "1c0972e59ddb745358e117fc2b6b85ef442cd28081c16b074c26a0b407115f15",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Breakfast_today.jpg",
+          "author": "Sparcity",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1337,
+          "adaptation": "Unchanged source bytes"
+        },
+        {
+          "file": "CA_20_series_01.jpg",
+          "category": "near-similar-series",
+          "media_type": "image",
+          "sha256": "6f3a43f24d4cde23078091c348582bc48ed7f2bccd9b99dd156f181b9e4b0799",
+          "bytes": 962017,
+          "size": [
+            1920,
+            1281
+          ],
+          "capture_role": 36,
+          "source": "v4-36-golden-retriever-adult.jpg",
+          "source_sha256": "2fdd7b90330f1ba8f4cb845fc539dd39d955b7ca77d260161be6afbf69ed6591",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Golden_Retriever_adult.jpg",
+          "author": "Johan Spaedtke",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1281,
+          "adaptation": "CC0 dog-photo fixture derivative: crop inset 0px; exposure factor 0.980; no upscale"
+        },
+        {
+          "file": "CA_20_series_02.jpg",
+          "category": "near-similar-series",
+          "media_type": "image",
+          "sha256": "3913f051dfc0b389dcf0c0ddf51188f4e0a50df7a99f3f4fe636bc326c88eff1",
+          "bytes": 1203348,
+          "size": [
+            1910,
+            1271
+          ],
+          "capture_role": 36,
+          "source": "v4-36-golden-retriever-adult.jpg",
+          "source_sha256": "2fdd7b90330f1ba8f4cb845fc539dd39d955b7ca77d260161be6afbf69ed6591",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Golden_Retriever_adult.jpg",
+          "author": "Johan Spaedtke",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1281,
+          "adaptation": "CC0 dog-photo fixture derivative: crop inset 5px; exposure factor 0.988; no upscale"
+        },
+        {
+          "file": "CA_20_series_03.jpg",
+          "category": "near-similar-series",
+          "media_type": "image",
+          "sha256": "2aaa634c81af0958e8faf34868c8fadd06cfce8045fcfccefc1bae0af2cd400a",
+          "bytes": 1187719,
+          "size": [
+            1900,
+            1261
+          ],
+          "capture_role": 36,
+          "source": "v4-36-golden-retriever-adult.jpg",
+          "source_sha256": "2fdd7b90330f1ba8f4cb845fc539dd39d955b7ca77d260161be6afbf69ed6591",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Golden_Retriever_adult.jpg",
+          "author": "Johan Spaedtke",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1281,
+          "adaptation": "CC0 dog-photo fixture derivative: crop inset 10px; exposure factor 0.996; no upscale"
+        },
+        {
+          "file": "CA_20_series_04.jpg",
+          "category": "near-similar-series",
+          "media_type": "image",
+          "sha256": "1c442347b1233ac607e9a5a96f91804258149689dd63511ea027a5c91d502a10",
+          "bytes": 1144784,
+          "size": [
+            1890,
+            1251
+          ],
+          "capture_role": 36,
+          "source": "v4-36-golden-retriever-adult.jpg",
+          "source_sha256": "2fdd7b90330f1ba8f4cb845fc539dd39d955b7ca77d260161be6afbf69ed6591",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Golden_Retriever_adult.jpg",
+          "author": "Johan Spaedtke",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1281,
+          "adaptation": "CC0 dog-photo fixture derivative: crop inset 15px; exposure factor 1.004; no upscale"
+        },
+        {
+          "file": "CA_20_series_05.jpg",
+          "category": "near-similar-series",
+          "media_type": "image",
+          "sha256": "70cf490128d766a67d5bc192e5b2d447de7683ce11fe0a6ece3a8cfcb2a0a357",
+          "bytes": 1171023,
+          "size": [
+            1880,
+            1241
+          ],
+          "capture_role": 36,
+          "source": "v4-36-golden-retriever-adult.jpg",
+          "source_sha256": "2fdd7b90330f1ba8f4cb845fc539dd39d955b7ca77d260161be6afbf69ed6591",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Golden_Retriever_adult.jpg",
+          "author": "Johan Spaedtke",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1281,
+          "adaptation": "CC0 dog-photo fixture derivative: crop inset 20px; exposure factor 1.012; no upscale"
+        },
+        {
+          "file": "CA_20_series_06.jpg",
+          "category": "near-similar-series",
+          "media_type": "image",
+          "sha256": "e3515dd14c95b3decac575556e657c43a4c42d09b418f9399e817780a37bcd5c",
+          "bytes": 1124980,
+          "size": [
+            1870,
+            1231
+          ],
+          "capture_role": 36,
+          "source": "v4-36-golden-retriever-adult.jpg",
+          "source_sha256": "2fdd7b90330f1ba8f4cb845fc539dd39d955b7ca77d260161be6afbf69ed6591",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Golden_Retriever_adult.jpg",
+          "author": "Johan Spaedtke",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1281,
+          "adaptation": "CC0 dog-photo fixture derivative: crop inset 25px; exposure factor 1.020; no upscale"
+        },
+        {
+          "file": "CA_30_pretty_01.jpg",
+          "category": "pretty-collage-portrait",
+          "media_type": "image",
+          "sha256": "e932a921f9a58c1bbb6304568d14bb8aca1531014e58f68fc4523923bb55244d",
+          "bytes": 537596,
+          "size": [
+            1296,
+            1620
+          ],
+          "capture_role": 5,
+          "source": "v4-05-munchkin-cat-2-cropped.jpg",
+          "source_sha256": "75087bb00dad59688f8f1c928b1aa5dbe304a5181f5a0c87d6a6a74c8b2606f7",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Munchkin_cat_2_(cropped).jpg",
+          "author": "Tasy Hong",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1622,
+          "adaptation": "CC0 fixture derivative: centered 4:5 portrait crop [312, 1, 1608, 1621]; no resize or upscale",
+          "source_crop": [
+            312,
+            1,
+            1608,
+            1621
+          ]
+        },
+        {
+          "file": "CA_30_pretty_02.jpg",
+          "category": "pretty-collage-portrait",
+          "media_type": "image",
+          "sha256": "2a4238fa3a5b7ae3d9050118711fbcfe148b145d96209b73d780c4e736b5a006",
+          "bytes": 346262,
+          "size": [
+            1152,
+            1440
+          ],
+          "capture_role": 10,
+          "source": "v4-10-shadow-of-bicycle-frame.jpg",
+          "source_sha256": "70fc2cf1bd8e958a60531d4ee2964c87880e08a473d137a0f15b4b404cb00d4a",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Shadow_of_bicycle_frame.jpg",
+          "author": "NonNerd",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1440,
+          "adaptation": "CC0 fixture derivative: centered 4:5 portrait crop [384, 0, 1536, 1440]; no resize or upscale",
+          "source_crop": [
+            384,
+            0,
+            1536,
+            1440
+          ]
+        },
+        {
+          "file": "CA_30_pretty_03.jpg",
+          "category": "pretty-collage-portrait",
+          "media_type": "image",
+          "sha256": "68d2ce2f9e70ae78bf409f9bf709ddc0ff2f6394d55e006a353228f626569976",
+          "bytes": 255934,
+          "size": [
+            1024,
+            1280
+          ],
+          "capture_role": 1,
+          "source": "v4-01-prague-main-railway-station-ceiling-lights.jpg",
+          "source_sha256": "bdc1479aff8e61913fc40edf00f1ef2b162772745e842465420ebd1c48ac74aa",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Prague_Main_Railway_Station_Ceiling_Lights.jpg",
+          "author": "AVDLCZ",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1280,
+          "adaptation": "CC0 fixture derivative: centered 4:5 portrait crop [448, 0, 1472, 1280]; no resize or upscale",
+          "source_crop": [
+            448,
+            0,
+            1472,
+            1280
+          ]
+        },
+        {
+          "file": "CA_30_pretty_04.jpg",
+          "category": "pretty-collage-portrait",
+          "media_type": "image",
+          "sha256": "86838d4efe315fdc0f261116babf0469b9f568d6b531806f8de71257ff5df2f7",
+          "bytes": 329761,
+          "size": [
+            864,
+            1080
+          ],
+          "capture_role": 4,
+          "source": "v4-04-american-breakfast-1.jpg",
+          "source_sha256": "28a14a73b44c22b3fd256f76b35b58c9f1c80fbfa4cdbce41975d1bde549c1f8",
+          "source_url": "https://commons.wikimedia.org/wiki/File:American_Breakfast_1.jpg",
+          "author": "Boonlert",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1080,
+          "adaptation": "CC0 fixture derivative: centered 4:5 portrait crop [528, 0, 1392, 1080]; no resize or upscale",
+          "source_crop": [
+            528,
+            0,
+            1392,
+            1080
+          ]
+        },
+        {
+          "file": "CA_30_pretty_05.jpg",
+          "category": "pretty",
+          "media_type": "image",
+          "sha256": "0e7e3de6e963f78fd72dff7fe648d7c5771044975e8a48c13659db561b587561",
+          "bytes": 1059625,
+          "size": [
+            1920,
+            2560
+          ],
+          "capture_role": 6,
+          "source": "06-sharp-mountain-ridge-against-blue-sky-unsplash.jpg",
+          "source_sha256": "0e7e3de6e963f78fd72dff7fe648d7c5771044975e8a48c13659db561b587561",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Sharp_mountain_ridge_against_blue_sky_(Unsplash).jpg",
+          "author": "Giovanni Corte giovanicort",
+          "license": "CC0-1.0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "source_width": 1920,
+          "source_height": 2560,
+          "adaptation": "Unchanged source bytes"
+        },
+        {
+          "file": "CA_30_pretty_06.jpg",
+          "category": "pretty",
+          "media_type": "image",
+          "sha256": "ed3fc9ede9d025fd15a5d7b894e4c71cd9e44a459d23f3cf280699769813a224",
+          "bytes": 1777672,
+          "size": [
+            1920,
+            2880
+          ],
+          "capture_role": 7,
+          "source": "07-mountain-reflection-in-a-lake-unsplash.jpg",
+          "source_sha256": "ed3fc9ede9d025fd15a5d7b894e4c71cd9e44a459d23f3cf280699769813a224",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Mountain_reflection_in_a_lake_(Unsplash).jpg",
+          "author": "Gabriel Santiago gabrielssantiago",
+          "license": "CC0-1.0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "source_width": 1920,
+          "source_height": 2880,
+          "adaptation": "Unchanged source bytes"
+        },
+        {
+          "file": "CA_30_pretty_07.jpg",
+          "category": "pretty",
+          "media_type": "image",
+          "sha256": "414acadf3b76c50e9509c6a568805f1d4785c6c3c011e5b882ac360cc0b14854",
+          "bytes": 2425363,
+          "size": [
+            1920,
+            2850
+          ],
+          "capture_role": 9,
+          "source": "09-orange-trees-by-a-frozen-lake-unsplash.jpg",
+          "source_sha256": "414acadf3b76c50e9509c6a568805f1d4785c6c3c011e5b882ac360cc0b14854",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Orange_trees_by_a_frozen_lake_(Unsplash).jpg",
+          "author": "Federico Beccari federize",
+          "license": "CC0-1.0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "source_width": 1920,
+          "source_height": 2850,
+          "adaptation": "Unchanged source bytes"
+        },
+        {
+          "file": "CA_30_pretty_08.jpg",
+          "category": "pretty",
+          "media_type": "image",
+          "sha256": "84c0f78d75a31ae1a32e75afb0b816598b4a122606c1c194a9425cf47956f1d0",
+          "bytes": 949812,
+          "size": [
+            1920,
+            1852
+          ],
+          "capture_role": 13,
+          "source": "v4-13-coffee-in-bangalore.jpg",
+          "source_sha256": "84c0f78d75a31ae1a32e75afb0b816598b4a122606c1c194a9425cf47956f1d0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Coffee_in_Bangalore.jpg",
+          "author": "Shyamal L.",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1852,
+          "adaptation": "Unchanged source bytes"
+        },
+        {
+          "file": "CA_30_pretty_09.jpg",
+          "category": "pretty",
+          "media_type": "image",
+          "sha256": "76ca6d43eba3f3f099ff124d777e7e265e965fe669a000b313c66e01ca387ab8",
+          "bytes": 604088,
+          "size": [
+            1920,
+            2880
+          ],
+          "capture_role": 28,
+          "source": "28-twilight-hour-in-the-desert-unsplash.jpg",
+          "source_sha256": "76ca6d43eba3f3f099ff124d777e7e265e965fe669a000b313c66e01ca387ab8",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Twilight_Hour_in_the_Desert_(Unsplash).jpg",
+          "author": "Charles Black divewithchuck",
+          "license": "CC0-1.0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "source_width": 1920,
+          "source_height": 2880,
+          "adaptation": "Unchanged source bytes"
+        },
+        {
+          "file": "CA_30_pretty_10.jpg",
+          "category": "pretty",
+          "media_type": "image",
+          "sha256": "6588396644c343bae7e424796c06dfb2b11ff392ce10f662ab98acd1c48a2999",
+          "bytes": 1092281,
+          "size": [
+            1920,
+            2880
+          ],
+          "capture_role": 29,
+          "source": "29-a-blue-sky-above-white-snow-unsplash.jpg",
+          "source_sha256": "6588396644c343bae7e424796c06dfb2b11ff392ce10f662ab98acd1c48a2999",
+          "source_url": "https://commons.wikimedia.org/wiki/File:A_blue_sky_above_white_snow_(Unsplash).jpg",
+          "author": "Drew Hays drew_hays",
+          "license": "CC0-1.0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "source_width": 1920,
+          "source_height": 2880,
+          "adaptation": "Unchanged source bytes"
+        },
+        {
+          "file": "CA_30_pretty_11.jpg",
+          "category": "pretty",
+          "media_type": "image",
+          "sha256": "e89cdcfc6c6dcccfb2ebd8ec0d650be5fa03c93d0a4b9e0436de0a28823fabb1",
+          "bytes": 658893,
+          "size": [
+            1920,
+            2400
+          ],
+          "capture_role": 31,
+          "source": "31-green-mountains-over-clouds-unsplash.jpg",
+          "source_sha256": "e89cdcfc6c6dcccfb2ebd8ec0d650be5fa03c93d0a4b9e0436de0a28823fabb1",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Green_mountains_over_clouds_(Unsplash).jpg",
+          "author": "Ricky Paulus rickypaulus",
+          "license": "CC0-1.0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "source_width": 1920,
+          "source_height": 2400,
+          "adaptation": "Unchanged source bytes"
+        },
+        {
+          "file": "CA_30_pretty_12.jpg",
+          "category": "pretty",
+          "media_type": "image",
+          "sha256": "cadf4ffbe47dba88100e615a96f3120f092b24a45e188ebc5a284219c540f1d8",
+          "bytes": 1277197,
+          "size": [
+            1920,
+            2880
+          ],
+          "capture_role": 33,
+          "source": "33-sun-sky-and-sea-unsplash.jpg",
+          "source_sha256": "cadf4ffbe47dba88100e615a96f3120f092b24a45e188ebc5a284219c540f1d8",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Sun,_sky_and_sea_(Unsplash).jpg",
+          "author": "Mink Mingle minkmingle",
+          "license": "CC0-1.0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "source_width": 1920,
+          "source_height": 2880,
+          "adaptation": "Unchanged source bytes"
+        },
+        {
+          "file": "CA_30_pretty_13.jpg",
+          "category": "pretty",
+          "media_type": "image",
+          "sha256": "a536a97ec8d2650db0d4974750c79e693e3b7a2f3e1bf6901181482253210fb3",
+          "bytes": 1307384,
+          "size": [
+            1920,
+            2880
+          ],
+          "capture_role": 35,
+          "source": "35-small-waterfall-in-a-forest-unsplash.jpg",
+          "source_sha256": "a536a97ec8d2650db0d4974750c79e693e3b7a2f3e1bf6901181482253210fb3",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Small_waterfall_in_a_forest_(Unsplash).jpg",
+          "author": "Mark Basarab ignitedit",
+          "license": "CC0-1.0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "source_width": 1920,
+          "source_height": 2880,
+          "adaptation": "Unchanged source bytes"
+        },
+        {
+          "file": "CA_30_pretty_14.jpg",
+          "category": "pretty",
+          "media_type": "image",
+          "sha256": "2fdd7b90330f1ba8f4cb845fc539dd39d955b7ca77d260161be6afbf69ed6591",
+          "bytes": 666303,
+          "size": [
+            1920,
+            1281
+          ],
+          "capture_role": 36,
+          "source": "v4-36-golden-retriever-adult.jpg",
+          "source_sha256": "2fdd7b90330f1ba8f4cb845fc539dd39d955b7ca77d260161be6afbf69ed6591",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Golden_Retriever_adult.jpg",
+          "author": "Johan Spaedtke",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1281,
+          "adaptation": "Unchanged source bytes"
+        },
+        {
+          "file": "CA_30_pretty_15.jpg",
+          "category": "pretty-derivative",
+          "media_type": "image",
+          "sha256": "0fa6ce0b61b2c63e8051ffa10074e522caf3221fb90dc5d4487ab145da033ab0",
+          "bytes": 569160,
+          "size": [
+            1824,
+            1526
+          ],
+          "capture_role": 5,
+          "source": "v4-05-munchkin-cat-2-cropped.jpg",
+          "source_sha256": "75087bb00dad59688f8f1c928b1aa5dbe304a5181f5a0c87d6a6a74c8b2606f7",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Munchkin_cat_2_(cropped).jpg",
+          "author": "Tasy Hong",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1622,
+          "adaptation": "CC0 fixture derivative: crop inset 48px; exposure factor 1.040; no upscale"
+        },
+        {
+          "file": "CA_30_pretty_16.jpg",
+          "category": "pretty-derivative",
+          "media_type": "image",
+          "sha256": "d4cbaa4dbe7d5b8b4cdcc5cdcef76c44409bc79624d0fbb6dbcedea1bc7f0c8a",
+          "bytes": 663076,
+          "size": [
+            1810,
+            1330
+          ],
+          "capture_role": 10,
+          "source": "v4-10-shadow-of-bicycle-frame.jpg",
+          "source_sha256": "70fc2cf1bd8e958a60531d4ee2964c87880e08a473d137a0f15b4b404cb00d4a",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Shadow_of_bicycle_frame.jpg",
+          "author": "NonNerd",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1440,
+          "adaptation": "CC0 fixture derivative: crop inset 55px; exposure factor 1.045; no upscale"
+        },
+        {
+          "file": "CA_30_pretty_17.jpg",
+          "category": "pretty-derivative",
+          "media_type": "image",
+          "sha256": "1fbf8bb30cb34edbf97f38c3b993169187aa99a49491e53625ea5352930185da",
+          "bytes": 560736,
+          "size": [
+            1796,
+            1156
+          ],
+          "capture_role": 1,
+          "source": "v4-01-prague-main-railway-station-ceiling-lights.jpg",
+          "source_sha256": "bdc1479aff8e61913fc40edf00f1ef2b162772745e842465420ebd1c48ac74aa",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Prague_Main_Railway_Station_Ceiling_Lights.jpg",
+          "author": "AVDLCZ",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1280,
+          "adaptation": "CC0 fixture derivative: crop inset 62px; exposure factor 1.050; no upscale"
+        },
+        {
+          "file": "CA_30_pretty_18.jpg",
+          "category": "pretty-derivative",
+          "media_type": "image",
+          "sha256": "beb96d471c298772a9bf3bae0be267bb5153f4eca9f76c1743f41a63e6453ae5",
+          "bytes": 597234,
+          "size": [
+            1782,
+            942
+          ],
+          "capture_role": 4,
+          "source": "v4-04-american-breakfast-1.jpg",
+          "source_sha256": "28a14a73b44c22b3fd256f76b35b58c9f1c80fbfa4cdbce41975d1bde549c1f8",
+          "source_url": "https://commons.wikimedia.org/wiki/File:American_Breakfast_1.jpg",
+          "author": "Boonlert",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1080,
+          "adaptation": "CC0 fixture derivative: crop inset 69px; exposure factor 1.055; no upscale"
+        },
+        {
+          "file": "CA_30_pretty_19.jpg",
+          "category": "pretty-derivative",
+          "media_type": "image",
+          "sha256": "5731a71e075d11cd647c039704394c43db1e16fbf1ea75822b37a3bed58d9139",
+          "bytes": 1766103,
+          "size": [
+            1768,
+            2408
+          ],
+          "capture_role": 6,
+          "source": "06-sharp-mountain-ridge-against-blue-sky-unsplash.jpg",
+          "source_sha256": "0e7e3de6e963f78fd72dff7fe648d7c5771044975e8a48c13659db561b587561",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Sharp_mountain_ridge_against_blue_sky_(Unsplash).jpg",
+          "author": "Giovanni Corte giovanicort",
+          "license": "CC0-1.0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "source_width": 1920,
+          "source_height": 2560,
+          "adaptation": "CC0 fixture derivative: crop inset 76px; exposure factor 1.060; no upscale"
+        },
+        {
+          "file": "CA_30_pretty_20.jpg",
+          "category": "pretty-derivative",
+          "media_type": "image",
+          "sha256": "825451dff11691b7553847efb6f7a17cb14a92172dd5880008910c7b396b8195",
+          "bytes": 2572278,
+          "size": [
+            1754,
+            2714
+          ],
+          "capture_role": 7,
+          "source": "07-mountain-reflection-in-a-lake-unsplash.jpg",
+          "source_sha256": "ed3fc9ede9d025fd15a5d7b894e4c71cd9e44a459d23f3cf280699769813a224",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Mountain_reflection_in_a_lake_(Unsplash).jpg",
+          "author": "Gabriel Santiago gabrielssantiago",
+          "license": "CC0-1.0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "source_width": 1920,
+          "source_height": 2880,
+          "adaptation": "CC0 fixture derivative: crop inset 83px; exposure factor 1.065; no upscale"
+        },
+        {
+          "file": "CA_30_pretty_21.jpg",
+          "category": "pretty-derivative",
+          "media_type": "image",
+          "sha256": "424f610c0426acea29132531115d1c6e4d5565cee7327ccb4e3adca417109472",
+          "bytes": 1534619,
+          "size": [
+            1740,
+            1672
+          ],
+          "capture_role": 13,
+          "source": "v4-13-coffee-in-bangalore.jpg",
+          "source_sha256": "84c0f78d75a31ae1a32e75afb0b816598b4a122606c1c194a9425cf47956f1d0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Coffee_in_Bangalore.jpg",
+          "author": "Shyamal L.",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1852,
+          "adaptation": "CC0 fixture derivative: crop inset 90px; exposure factor 1.070; no upscale"
+        },
+        {
+          "file": "CA_30_pretty_22.jpg",
+          "category": "pretty-derivative",
+          "media_type": "image",
+          "sha256": "80c6589fbe9a24270e96e58cafacd5bab4af56780fb47beafad527cf7acbd68e",
+          "bytes": 1937336,
+          "size": [
+            1726,
+            2686
+          ],
+          "capture_role": 35,
+          "source": "35-small-waterfall-in-a-forest-unsplash.jpg",
+          "source_sha256": "a536a97ec8d2650db0d4974750c79e693e3b7a2f3e1bf6901181482253210fb3",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Small_waterfall_in_a_forest_(Unsplash).jpg",
+          "author": "Mark Basarab ignitedit",
+          "license": "CC0-1.0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "source_width": 1920,
+          "source_height": 2880,
+          "adaptation": "CC0 fixture derivative: crop inset 97px; exposure factor 1.075; no upscale"
+        },
+        {
+          "file": "CA_30_pretty_23.jpg",
+          "category": "pretty-derivative",
+          "media_type": "image",
+          "sha256": "f45d6c07920cf4db54592f571b9bce094939cebcd08ded80a9074fd0fe96de26",
+          "bytes": 516625,
+          "size": [
+            1712,
+            1414
+          ],
+          "capture_role": 5,
+          "source": "v4-05-munchkin-cat-2-cropped.jpg",
+          "source_sha256": "75087bb00dad59688f8f1c928b1aa5dbe304a5181f5a0c87d6a6a74c8b2606f7",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Munchkin_cat_2_(cropped).jpg",
+          "author": "Tasy Hong",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1622,
+          "adaptation": "CC0 fixture derivative: crop inset 104px; exposure factor 1.080; no upscale"
+        },
+        {
+          "file": "CA_30_pretty_24.jpg",
+          "category": "pretty-derivative",
+          "media_type": "image",
+          "sha256": "a33d9c237eb025953da37dc6ebbe2f0920ea7902c4e154355206f348a1fabb44",
+          "bytes": 2436367,
+          "size": [
+            1698,
+            2658
+          ],
+          "capture_role": 7,
+          "source": "07-mountain-reflection-in-a-lake-unsplash.jpg",
+          "source_sha256": "ed3fc9ede9d025fd15a5d7b894e4c71cd9e44a459d23f3cf280699769813a224",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Mountain_reflection_in_a_lake_(Unsplash).jpg",
+          "author": "Gabriel Santiago gabrielssantiago",
+          "license": "CC0-1.0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "source_width": 1920,
+          "source_height": 2880,
+          "adaptation": "CC0 fixture derivative: crop inset 111px; exposure factor 1.085; no upscale"
+        },
+        {
+          "file": "CA_40_large_01.mp4",
+          "category": "large-video",
+          "media_type": "video",
+          "sha256": "71352887bd62cd5b6f1d3f6de332d88fbfcb246df36abb9ea90abf3e3d38c580",
+          "bytes": 283493010,
+          "size": [
+            1920,
+            1080
+          ],
+          "capture_role": 13,
+          "source": "v4-13-coffee-in-bangalore.jpg",
+          "source_sha256": "84c0f78d75a31ae1a32e75afb0b816598b4a122606c1c194a9425cf47956f1d0",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Coffee_in_Bangalore.jpg",
+          "author": "Shyamal L.",
+          "license": "CC0-1.0",
+          "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "source_width": 1920,
+          "source_height": 1852,
+          "adaptation": "Real encoded silent CC0-photo clip with film grain; no upscale, padding, or fake size",
+          "video": {
+            "width": 1920,
+            "height": 1080,
+            "codec": "h264",
+            "duration": 12.0,
+            "full_decode": "PASS",
+            "audio_streams": 0,
+            "frame_rate": "24/1"
+          }
+        },
+        {
+          "file": "CA_40_large_02.mp4",
+          "category": "large-video",
+          "media_type": "video",
+          "sha256": "17f20cab0e259f81b67ad7d790add5e7c9bb98f3819f7eec57731b568e64fade",
+          "bytes": 284561439,
+          "size": [
+            1920,
+            1080
+          ],
+          "capture_role": 35,
+          "source": "35-small-waterfall-in-a-forest-unsplash.jpg",
+          "source_sha256": "a536a97ec8d2650db0d4974750c79e693e3b7a2f3e1bf6901181482253210fb3",
+          "source_url": "https://commons.wikimedia.org/wiki/File:Small_waterfall_in_a_forest_(Unsplash).jpg",
+          "author": "Mark Basarab ignitedit",
+          "license": "CC0-1.0",
+          "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "source_width": 1920,
+          "source_height": 2880,
+          "adaptation": "Real encoded silent CC0-photo clip with film grain; no upscale, padding, or fake size",
+          "video": {
+            "width": 1920,
+            "height": 1080,
+            "codec": "h264",
+            "duration": 12.0,
+            "full_decode": "PASS",
+            "audio_streams": 0,
+            "frame_rate": "24/1"
+          }
+        }
+      ]
+    },
+    "original_sources": {
+      "status": "PASS",
+      "verified_originals": 15,
+      "source_manifest_sha256": "84b08e1dd43024ab198d3241269eb5761f66ccd137e377a88e03c4c2f3b83a48",
+      "allowlist_sha256": "cabb0ac048e57740cfce4bb82380a92313fa5d0d7a2d8c5aa3069f95d0d1c52e"
+    },
+    "fixture_records": {
+      "status": "PASS",
+      "actual_records": 37,
+      "filename_set_exact": true,
+      "all_source_fields_bound": true
+    },
+    "fixture_files": {
+      "status": "PASS",
+      "actual_files": 37,
+      "images": 35,
+      "videos": 2,
+      "independent_video_full_decode": "PASS"
+    },
+    "captured_fixture_manifest_bytes": {
+      "status": "PASS",
+      "sha256": "d9ba50a8299fe7f0ff0abc0066c39fa3f24fabcc68a041d919306fd2a5aa27d4"
+    },
+    "native_screens": {
+      "status": "PASS",
+      "required_count": 21,
+      "outputs": [
+        {
+          "file": "screenshots/concept-a-swipe.png",
+          "sha256": "2672737e92b18313ae7ad38ec02390d73542cca32a99b33321d74d48f61b69a0",
+          "bytes": 2323131,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGBA",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-duplicates.png",
+          "sha256": "d0622fa0587b724214d39743844517a346fbcc8e8335f68cb916580c088ed124",
+          "bytes": 427705,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-large-files.png",
+          "sha256": "d630839f160b9a6dff5334e4b322b8df52cfeb1f1e9af020e53bf0a52dde335c",
+          "bytes": 293939,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-trash.png",
+          "sha256": "f974f69bcc23b63c2ff0565fedda0cff216aecad0f6ef86531db979b607d81c7",
+          "bytes": 765815,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-delete-confirm.png",
+          "sha256": "a96e765f783bac4675a268d1ba2f00eaf5a317d304cc196cc00fc059900664fb",
+          "bytes": 1044744,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-vault.png",
+          "sha256": "2c379e0a66ea81c48eaf23a5b00cc9e020568b6acd3f7b23c07dcb75424ef2d7",
+          "bytes": 1353683,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-later.png",
+          "sha256": "13494284c4b13b0b18900af357ecb60dbdaffe7f6178d5933b0d446d78a70690",
+          "bytes": 4122183,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-later-swipe.png",
+          "sha256": "d14e04c0889b209f416deb43378a62d6556bd51829f716fc199caf51ff826bfb",
+          "bytes": 3888738,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGBA",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-months.png",
+          "sha256": "d383dd3736d7b28185bb5199cdc3f9d63d3158789d4d656b82cae27a19157708",
+          "bytes": 181691,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-analysis.png",
+          "sha256": "c359f0ea07c8172fcc78f121c95dfe5db634fd299ca3a19965045027699863da",
+          "bytes": 2328783,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-collage.png",
+          "sha256": "455621b64deecc9ec01a29f4a5fd3e8cb9d42fc208cf3f572ec426a3badeae4d",
+          "bytes": 2076827,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-editor.png",
+          "sha256": "d0758c84492b83e79b09414522b10ba87e50afa0d1b610ee4c9ba555eb0a1235",
+          "bytes": 2659911,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-games.png",
+          "sha256": "70cc0143b54093977b995b6a33975386e55b3b088b8a49054b01d21ce75f10f1",
+          "bytes": 829772,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-games-menu.png",
+          "sha256": "53a248d390bc00d61ca1b6af955ddfebc12e56bbb4a7af1fe5b4dffcc777190c",
+          "bytes": 309610,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-v4-months.png",
+          "sha256": "e124ffb2f0df650f5c2f7d48d29f9ad3cdce4a54d66014b79392511d7b765d11",
+          "bytes": 180773,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-v4-editor-before.png",
+          "sha256": "5d3618a9889ca13bd1bd9dbac22e1ac54a47acc6a3e0d2a05bd2de9fdf85934a",
+          "bytes": 2201205,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-v4-editor-after.png",
+          "sha256": "67f7bf4d2a46698f307621eab71c19bb188c27344ea6cb18471f3e8ffa42beea",
+          "bytes": 2422403,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-v4-editor-undo.png",
+          "sha256": "5d3618a9889ca13bd1bd9dbac22e1ac54a47acc6a3e0d2a05bd2de9fdf85934a",
+          "bytes": 2201205,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-v4-editor-redo.png",
+          "sha256": "67f7bf4d2a46698f307621eab71c19bb188c27344ea6cb18471f3e8ffa42beea",
+          "bytes": 2422403,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-v4-editor-copy-default.png",
+          "sha256": "239f715a34579c453230e52d475daca099d40240b08a3bf913c9ed2323649416",
+          "bytes": 1578259,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        },
+        {
+          "file": "screenshots/concept-a-v4-editor-filter-selected.png",
+          "sha256": "d0758c84492b83e79b09414522b10ba87e50afa0d1b610ee4c9ba555eb0a1235",
+          "bytes": 2659911,
+          "width": 1206,
+          "height": 2622,
+          "mode": "RGB",
+          "opaque": true,
+          "icc_embedded": false,
+          "icc_description": null
+        }
+      ]
+    },
+    "actual_library": {
+      "arrangedIDs": [
+        "06278217-FF48-4EAF-B87B-126C9CF2C98B/L0/001",
+        "09EA389B-1617-42E8-9F9E-7C938E3DF26D/L0/001",
+        "0C5177DD-A5C0-47E3-BC4E-350427AF544C/L0/001",
+        "1C789045-643E-4548-8E76-7F7F99C7E3A7/L0/001",
+        "2255124C-9451-4AE4-B840-3B3C8BF826BD/L0/001",
+        "245A079B-1260-4B39-9057-74CA81F3A946/L0/001",
+        "24CA38AD-FE69-4118-BA93-BADE24AC36FD/L0/001",
+        "290F8B3C-CFB5-4BD4-9855-74FAC6AF300B/L0/001",
+        "2AA400B0-3F9E-457D-B0E9-089EFC50E861/L0/001",
+        "2BCA537A-30E5-4B34-8D65-B1C8E8FCB54B/L0/001",
+        "2E76C4C0-3EE5-4DD3-9F1D-20062E06B3E4/L0/001",
+        "56A57B4E-27A0-4B37-B5C8-5D92083792B4/L0/001",
+        "58C2021B-5891-4550-9810-8CACE2A89DC8/L0/001",
+        "649B1167-742E-42AF-B2E5-5EF0AAC0E5F6/L0/001",
+        "6661F0A1-F7FA-438E-8323-5D64834A1EE5/L0/001",
+        "680BF16C-50BA-4E60-83A9-7B2B1FEA59C6/L0/001",
+        "683743D2-F511-4760-8E89-89866D6638CA/L0/001",
+        "688A7605-F36D-4A0D-A102-112D4B7749AA/L0/001",
+        "6BC800B1-B32F-4810-A031-6A2263F679EE/L0/001",
+        "77BF39C2-F8A0-463D-8FF1-8AC7B3BCE54A/L0/001",
+        "7F836870-5F8D-47CC-B92E-43A820CDAD27/L0/001",
+        "889CB769-C752-4CDC-A4EB-F863B59488E5/L0/001",
+        "8B401B33-DC76-440B-B586-026581915753/L0/001",
+        "940FF36D-1B09-467F-940D-A39CA8CE6143/L0/001",
+        "9FFDB742-6A24-46CB-BE35-3F92BEE15C78/L0/001",
+        "A1D5E15D-BF93-4E8D-A0BE-FB9838FA7CCD/L0/001",
+        "A7EA58B9-F46B-4E11-94F2-4DAF3A8DD592/L0/001",
+        "AA60F7C1-94A1-484E-805A-89C3EFD256F7/L0/001",
+        "B44E51AF-7DAD-4FDA-B347-165B8DA59D8F/L0/001",
+        "C073F14B-8D0F-4DF5-B950-55DAAAAA61B4/L0/001",
+        "D19EF504-5732-46BA-87CE-3851F9D7C971/L0/001",
+        "D9064AF7-DC88-45FC-910D-03A088AE33FE/L0/001",
+        "DA44522C-B9F7-4956-9E92-C47600D8195A/L0/001",
+        "DB8A40EC-7A6E-4C45-AC28-AF1360DEB9D6/L0/001",
+        "DE91203C-CD08-4F17-83F8-032040091E3E/L0/001",
+        "EB2D3D74-4CF6-4A6B-B3C0-45EFDBBA50E1/L0/001",
+        "FE88D4F8-144F-46B9-8488-0B84E002370C/L0/001"
+      ],
+      "assets": [
+        {
+          "accessibilityValue": "November 1, 2026 · Photo",
+          "creationDate": 1793534400,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_01_clutter_blur.jpg",
+          "id": "77BF39C2-F8A0-463D-8FF1-8AC7B3BCE54A/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1622,
+          "pixelWidth": 1920
+        },
+        {
+          "accessibilityValue": "October 2, 2026 · Photo",
+          "creationDate": 1790942460,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_02_clutter_shake.jpg",
+          "id": "649B1167-742E-42AF-B2E5-5EF0AAC0E5F6/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1440,
+          "pixelWidth": 1920
+        },
+        {
+          "accessibilityValue": "September 3, 2026 · Photo",
+          "creationDate": 1788436920,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_03_clutter_dark.jpg",
+          "id": "680BF16C-50BA-4E60-83A9-7B2B1FEA59C6/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1622,
+          "pixelWidth": 1920
+        },
+        {
+          "accessibilityValue": "August 4, 2026 · Photo",
+          "creationDate": 1785844980,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_10_duplicate_a.jpg",
+          "id": "940FF36D-1B09-467F-940D-A39CA8CE6143/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1337,
+          "pixelWidth": 1920
+        },
+        {
+          "accessibilityValue": "July 5, 2026 · Photo",
+          "creationDate": 1783253040,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_11_duplicate_b.jpg",
+          "id": "683743D2-F511-4760-8E89-89866D6638CA/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1337,
+          "pixelWidth": 1920
+        },
+        {
+          "accessibilityValue": "September 18, 2026 · Photo",
+          "creationDate": 1789732800,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_20_series_01.jpg",
+          "id": "EB2D3D74-4CF6-4A6B-B3C0-45EFDBBA50E1/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1281,
+          "pixelWidth": 1920
+        },
+        {
+          "accessibilityValue": "September 18, 2026 · Photo",
+          "creationDate": 1789732802,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_20_series_02.jpg",
+          "id": "DB8A40EC-7A6E-4C45-AC28-AF1360DEB9D6/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1271,
+          "pixelWidth": 1910
+        },
+        {
+          "accessibilityValue": "September 18, 2026 · Photo",
+          "creationDate": 1789732804,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_20_series_03.jpg",
+          "id": "C073F14B-8D0F-4DF5-B950-55DAAAAA61B4/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1261,
+          "pixelWidth": 1900
+        },
+        {
+          "accessibilityValue": "September 18, 2026 · Photo",
+          "creationDate": 1789732806,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_20_series_04.jpg",
+          "id": "0C5177DD-A5C0-47E3-BC4E-350427AF544C/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1251,
+          "pixelWidth": 1890
+        },
+        {
+          "accessibilityValue": "September 18, 2026 · Photo",
+          "creationDate": 1789732808,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_20_series_05.jpg",
+          "id": "7F836870-5F8D-47CC-B92E-43A820CDAD27/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1241,
+          "pixelWidth": 1880
+        },
+        {
+          "accessibilityValue": "September 18, 2026 · Photo",
+          "creationDate": 1789732810,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_20_series_06.jpg",
+          "id": "2AA400B0-3F9E-457D-B0E9-089EFC50E861/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1231,
+          "pixelWidth": 1870
+        },
+        {
+          "accessibilityValue": "November 10, 2026 · Photo",
+          "creationDate": 1794312000,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_01.jpg",
+          "id": "A1D5E15D-BF93-4E8D-A0BE-FB9838FA7CCD/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1620,
+          "pixelWidth": 1296
+        },
+        {
+          "accessibilityValue": "October 10, 2026 · Photo",
+          "creationDate": 1791633600,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_02.jpg",
+          "id": "2255124C-9451-4AE4-B840-3B3C8BF826BD/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1440,
+          "pixelWidth": 1152
+        },
+        {
+          "accessibilityValue": "September 10, 2026 · Photo",
+          "creationDate": 1789041600,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_03.jpg",
+          "id": "D19EF504-5732-46BA-87CE-3851F9D7C971/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1280,
+          "pixelWidth": 1024
+        },
+        {
+          "accessibilityValue": "August 10, 2026 · Photo",
+          "creationDate": 1786363200,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_04.jpg",
+          "id": "6661F0A1-F7FA-438E-8323-5D64834A1EE5/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1080,
+          "pixelWidth": 864
+        },
+        {
+          "accessibilityValue": "July 10, 2026 · Photo",
+          "creationDate": 1783684800,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_05.jpg",
+          "id": "6BC800B1-B32F-4810-A031-6A2263F679EE/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 2560,
+          "pixelWidth": 1920
+        },
+        {
+          "accessibilityValue": "June 10, 2026 · Photo",
+          "creationDate": 1781092800,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_06.jpg",
+          "id": "FE88D4F8-144F-46B9-8488-0B84E002370C/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 2880,
+          "pixelWidth": 1920
+        },
+        {
+          "accessibilityValue": "May 10, 2026 · Photo",
+          "creationDate": 1778414400,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_07.jpg",
+          "id": "56A57B4E-27A0-4B37-B5C8-5D92083792B4/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 2850,
+          "pixelWidth": 1920
+        },
+        {
+          "accessibilityValue": "April 10, 2026 · Photo",
+          "creationDate": 1775822400,
+          "duration": 0,
+          "favorite": true,
+          "filename": "CA_30_pretty_08.jpg",
+          "id": "688A7605-F36D-4A0D-A102-112D4B7749AA/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1852,
+          "pixelWidth": 1920
+        },
+        {
+          "accessibilityValue": "March 10, 2026 · Photo",
+          "creationDate": 1773144000,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_09.jpg",
+          "id": "09EA389B-1617-42E8-9F9E-7C938E3DF26D/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 2880,
+          "pixelWidth": 1920
+        },
+        {
+          "accessibilityValue": "February 10, 2026 · Photo",
+          "creationDate": 1770724800,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_10.jpg",
+          "id": "B44E51AF-7DAD-4FDA-B347-165B8DA59D8F/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 2880,
+          "pixelWidth": 1920
+        },
+        {
+          "accessibilityValue": "January 10, 2026 · Photo",
+          "creationDate": 1768046400,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_11.jpg",
+          "id": "58C2021B-5891-4550-9810-8CACE2A89DC8/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 2400,
+          "pixelWidth": 1920
+        },
+        {
+          "accessibilityValue": "December 10, 2025 · Photo",
+          "creationDate": 1765368000,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_12.jpg",
+          "id": "2BCA537A-30E5-4B34-8D65-B1C8E8FCB54B/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 2880,
+          "pixelWidth": 1920
+        },
+        {
+          "accessibilityValue": "November 11, 2026 · Photo",
+          "creationDate": 1794398400,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_13.jpg",
+          "id": "245A079B-1260-4B39-9057-74CA81F3A946/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 2880,
+          "pixelWidth": 1920
+        },
+        {
+          "accessibilityValue": "October 11, 2026 · Photo",
+          "creationDate": 1791720000,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_14.jpg",
+          "id": "9FFDB742-6A24-46CB-BE35-3F92BEE15C78/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1281,
+          "pixelWidth": 1920
+        },
+        {
+          "accessibilityValue": "September 11, 2026 · Photo",
+          "creationDate": 1789128000,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_15.jpg",
+          "id": "06278217-FF48-4EAF-B87B-126C9CF2C98B/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1526,
+          "pixelWidth": 1824
+        },
+        {
+          "accessibilityValue": "August 11, 2026 · Photo",
+          "creationDate": 1786449600,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_16.jpg",
+          "id": "DE91203C-CD08-4F17-83F8-032040091E3E/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1330,
+          "pixelWidth": 1810
+        },
+        {
+          "accessibilityValue": "July 11, 2026 · Photo",
+          "creationDate": 1783771200,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_17.jpg",
+          "id": "AA60F7C1-94A1-484E-805A-89C3EFD256F7/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1156,
+          "pixelWidth": 1796
+        },
+        {
+          "accessibilityValue": "June 11, 2026 · Photo",
+          "creationDate": 1781179200,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_18.jpg",
+          "id": "8B401B33-DC76-440B-B586-026581915753/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 942,
+          "pixelWidth": 1782
+        },
+        {
+          "accessibilityValue": "May 11, 2026 · Photo",
+          "creationDate": 1778500800,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_19.jpg",
+          "id": "A7EA58B9-F46B-4E11-94F2-4DAF3A8DD592/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 2408,
+          "pixelWidth": 1768
+        },
+        {
+          "accessibilityValue": "April 11, 2026 · Photo",
+          "creationDate": 1775908800,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_20.jpg",
+          "id": "290F8B3C-CFB5-4BD4-9855-74FAC6AF300B/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 2714,
+          "pixelWidth": 1754
+        },
+        {
+          "accessibilityValue": "March 11, 2026 · Photo",
+          "creationDate": 1773230400,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_21.jpg",
+          "id": "1C789045-643E-4548-8E76-7F7F99C7E3A7/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1672,
+          "pixelWidth": 1740
+        },
+        {
+          "accessibilityValue": "February 11, 2026 · Photo",
+          "creationDate": 1770811200,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_22.jpg",
+          "id": "2E76C4C0-3EE5-4DD3-9F1D-20062E06B3E4/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 2686,
+          "pixelWidth": 1726
+        },
+        {
+          "accessibilityValue": "January 11, 2026 · Photo",
+          "creationDate": 1768132800,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_23.jpg",
+          "id": "24CA38AD-FE69-4118-BA93-BADE24AC36FD/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 1414,
+          "pixelWidth": 1712
+        },
+        {
+          "accessibilityValue": "December 11, 2025 · Photo",
+          "creationDate": 1765454400,
+          "duration": 0,
+          "favorite": false,
+          "filename": "CA_30_pretty_24.jpg",
+          "id": "DA44522C-B9F7-4956-9E92-C47600D8195A/L0/001",
+          "isScreenshot": false,
+          "isVideo": false,
+          "pixelHeight": 2658,
+          "pixelWidth": 1698
+        },
+        {
+          "accessibilityValue": "December 12, 2025 · Video · 0:12",
+          "creationDate": 1765542900,
+          "duration": 12,
+          "favorite": false,
+          "filename": "CA_40_large_01.mp4",
+          "id": "889CB769-C752-4CDC-A4EB-F863B59488E5/L0/001",
+          "isScreenshot": false,
+          "isVideo": true,
+          "pixelHeight": 1080,
+          "pixelWidth": 1920
+        },
+        {
+          "accessibilityValue": "November 13, 2026 · Video · 0:12",
+          "creationDate": 1794573360,
+          "duration": 12,
+          "favorite": false,
+          "filename": "CA_40_large_02.mp4",
+          "id": "D9064AF7-DC88-45FC-910D-03A088AE33FE/L0/001",
+          "isScreenshot": false,
+          "isVideo": true,
+          "pixelHeight": 1080,
+          "pixelWidth": 1920
+        }
+      ],
+      "count": 37,
+      "photoCount": 35,
+      "source": "actual PhotoKit fetch; original resources unchanged",
+      "sourceFiles": [
+        "CA_01_clutter_blur.jpg",
+        "CA_02_clutter_shake.jpg",
+        "CA_03_clutter_dark.jpg",
+        "CA_10_duplicate_a.jpg",
+        "CA_11_duplicate_b.jpg",
+        "CA_20_series_01.jpg",
+        "CA_20_series_02.jpg",
+        "CA_20_series_03.jpg",
+        "CA_20_series_04.jpg",
+        "CA_20_series_05.jpg",
+        "CA_20_series_06.jpg",
+        "CA_30_pretty_01.jpg",
+        "CA_30_pretty_02.jpg",
+        "CA_30_pretty_03.jpg",
+        "CA_30_pretty_04.jpg",
+        "CA_30_pretty_05.jpg",
+        "CA_30_pretty_06.jpg",
+        "CA_30_pretty_07.jpg",
+        "CA_30_pretty_08.jpg",
+        "CA_30_pretty_09.jpg",
+        "CA_30_pretty_10.jpg",
+        "CA_30_pretty_11.jpg",
+        "CA_30_pretty_12.jpg",
+        "CA_30_pretty_13.jpg",
+        "CA_30_pretty_14.jpg",
+        "CA_30_pretty_15.jpg",
+        "CA_30_pretty_16.jpg",
+        "CA_30_pretty_17.jpg",
+        "CA_30_pretty_18.jpg",
+        "CA_30_pretty_19.jpg",
+        "CA_30_pretty_20.jpg",
+        "CA_30_pretty_21.jpg",
+        "CA_30_pretty_22.jpg",
+        "CA_30_pretty_23.jpg",
+        "CA_30_pretty_24.jpg",
+        "CA_40_large_01.mp4",
+        "CA_40_large_02.mp4"
+      ],
+      "videoCount": 2
+    },
+    "sample_media": {
+      "status": "PASS",
+      "policy": "approved-stock-photos-and-videos-no-app-screenshots",
+      "actual_asset_count": 37,
+      "actual_photo_count": 35,
+      "actual_video_count": 2,
+      "actual_screenshot_subtype_count": 0,
+      "fixture_filename_set_exact": true,
+      "errors": []
+    },
+    "month_progress": {
+      "status": "PASS",
+      "schema_validation": "STRICT_ACTUAL_TEST08_SCHEMA_1",
+      "source_bindings": {
+        "screenshots/concept-a-v4-months.png": "e124ffb2f0df650f5c2f7d48d29f9ad3cdce4a54d66014b79392511d7b765d11",
+        "stills/concept-a-v4-month-keep-01-before.png": "3e4ad9e5a2ca5020d3a79adb01a1dcf049d6fe70f13ff4322ed2c404b753a6ed",
+        "stills/concept-a-v4-month-keep-01-after.png": "9dcacea0ad359e0dfffae493452763dd2eb0d6f8d0847ffc7904533ac7cb195f",
+        "stills/concept-a-v4-month-keep-02-before.png": "9dcacea0ad359e0dfffae493452763dd2eb0d6f8d0847ffc7904533ac7cb195f",
+        "stills/concept-a-v4-month-keep-02-after.png": "8dd834a2c94d09b1a21ed5665e3557e355ee8198c387a098e6a6d0c9b88db2d9",
+        "stills/concept-a-v4-month-keep-03-before.png": "c73fec28f85e089c22ded09a217319e5bdde9c8f490678e2edda1ad00d44f9cb",
+        "stills/concept-a-v4-month-keep-03-after.png": "8930864a42f90c7ea6f2af043a765874a83d817022f0c810456661aa35db3fba"
+      },
+      "proof_sha256": "fff6d346ed61211d553603e82f76c7444787ce28654cb1b5159db0840c2fe0f1",
+      "observation_log_sha256": "37bd4c8ebae0c3a7b0f84da6ff14df6c571ddca98a498d49a64799e18862a8d3",
+      "completed_month": "2026-10",
+      "partial_month": "2026-11",
+      "untouched_month": "2026-09",
+      "actual_decision_actions": 3,
+      "native_visual_acceptance": "NOT RUN"
+    },
+    "editor_pair": {
+      "status": "PASS",
+      "schema_validation": "STRICT_ACTUAL_TEST08_SCHEMA_1",
+      "asset_id": "688A7605-F36D-4A0D-A102-112D4B7749AA/L0/001",
+      "filename": "CA_30_pretty_08.jpg",
+      "source_bindings": {
+        "screenshots/concept-a-v4-editor-before.png": "5d3618a9889ca13bd1bd9dbac22e1ac54a47acc6a3e0d2a05bd2de9fdf85934a",
+        "stills/concept-a-v4-editor-before-stability-0.png": "5d3618a9889ca13bd1bd9dbac22e1ac54a47acc6a3e0d2a05bd2de9fdf85934a",
+        "stills/concept-a-v4-editor-before-stability-1.png": "5d3618a9889ca13bd1bd9dbac22e1ac54a47acc6a3e0d2a05bd2de9fdf85934a",
+        "screenshots/concept-a-v4-editor-filter-selected.png": "d0758c84492b83e79b09414522b10ba87e50afa0d1b610ee4c9ba555eb0a1235",
+        "stills/concept-a-v4-editor-filter-selected-stability-0.png": "d0758c84492b83e79b09414522b10ba87e50afa0d1b610ee4c9ba555eb0a1235",
+        "stills/concept-a-v4-editor-filter-selected-stability-1.png": "d0758c84492b83e79b09414522b10ba87e50afa0d1b610ee4c9ba555eb0a1235",
+        "screenshots/concept-a-v4-editor-after.png": "67f7bf4d2a46698f307621eab71c19bb188c27344ea6cb18471f3e8ffa42beea",
+        "stills/concept-a-v4-editor-after-stability-0.png": "67f7bf4d2a46698f307621eab71c19bb188c27344ea6cb18471f3e8ffa42beea",
+        "stills/concept-a-v4-editor-after-stability-1.png": "67f7bf4d2a46698f307621eab71c19bb188c27344ea6cb18471f3e8ffa42beea",
+        "screenshots/concept-a-v4-editor-undo.png": "5d3618a9889ca13bd1bd9dbac22e1ac54a47acc6a3e0d2a05bd2de9fdf85934a",
+        "stills/concept-a-v4-editor-undo-stability-0.png": "5d3618a9889ca13bd1bd9dbac22e1ac54a47acc6a3e0d2a05bd2de9fdf85934a",
+        "stills/concept-a-v4-editor-undo-stability-1.png": "5d3618a9889ca13bd1bd9dbac22e1ac54a47acc6a3e0d2a05bd2de9fdf85934a",
+        "screenshots/concept-a-v4-editor-redo.png": "67f7bf4d2a46698f307621eab71c19bb188c27344ea6cb18471f3e8ffa42beea",
+        "stills/concept-a-v4-editor-redo-stability-0.png": "67f7bf4d2a46698f307621eab71c19bb188c27344ea6cb18471f3e8ffa42beea",
+        "stills/concept-a-v4-editor-redo-stability-1.png": "67f7bf4d2a46698f307621eab71c19bb188c27344ea6cb18471f3e8ffa42beea",
+        "screenshots/concept-a-v4-editor-copy-default.png": "239f715a34579c453230e52d475daca099d40240b08a3bf913c9ed2323649416"
+      },
+      "proof_sha256": "d42af70bc0832b5899d99e0b756b2faa005960dbc5615e77e25b41953f63549b",
+      "observation_log_sha256": "37bd4c8ebae0c3a7b0f84da6ff14df6c571ddca98a498d49a64799e18862a8d3",
+      "published_preview_pixel_hashes": {
+        "before": "546e52e7278e426c0225e385a058dc744459c38cbbd927ae9229bc693fec85b3",
+        "filterSelection": "2519100b7171d15012d9cdb6e57df9abca7445366691072ea36c90bfb1d9fcc1",
+        "after": "2519100b7171d15012d9cdb6e57df9abca7445366691072ea36c90bfb1d9fcc1",
+        "undo": "546e52e7278e426c0225e385a058dc744459c38cbbd927ae9229bc693fec85b3",
+        "redo": "2519100b7171d15012d9cdb6e57df9abca7445366691072ea36c90bfb1d9fcc1"
+      },
+      "published_generations": {
+        "before": 3,
+        "filterSelection": 4,
+        "after": 4,
+        "undo": 5,
+        "redo": 6
+      },
+      "independent_native_photo_crop_hashes": {
+        "before": "dce02128d2de06dbba55c89c58bf2b52bb1d9d862127d8f9d07cd64aaafe60c9",
+        "filterSelection": "216c19d82c1424d0119d48cba2df4a1298d792b9057dc9973d1d9ff9ddaeb307",
+        "after": "0c665a9027114ee3cf24a51eac5052eca651f024608da612ae77d7093a9a0b7a",
+        "undo": "dce02128d2de06dbba55c89c58bf2b52bb1d9d862127d8f9d07cd64aaafe60c9",
+        "redo": "0c665a9027114ee3cf24a51eac5052eca651f024608da612ae77d7093a9a0b7a"
+      },
+      "actual_native_photo_crop_equality": "PASS",
+      "copy_default_selected": true,
+      "save_cancelled_without_export": true,
+      "native_visual_acceptance": "NOT RUN"
+    },
+    "exact_attempt_api": {
+      "status": "NOT RUN",
+      "reason": "Exact-attempt API completion/jobs readback is a separate post-run gate; no API success is inferred"
+    }
+  },
+  "collected_at": "2026-11-16T21:03:44.335739+00:00",
+  "exact_api_run_acceptance": "NOT RUN",
+  "report_kind": "C5-targeted-postcapture-revalidation",
+  "postcapture_revalidation": {
+    "schema_version": 1,
+    "kind": "C5-only-immutable-PASS-native-gate-retention",
+    "scope": "C5-retained-native-evidence-and-local-revalidation",
+    "fresh_native_collection": false,
+    "scope_definition": "Available-data checks plus SHA-bound retained native PASS gates; not a rerun of all native gates",
+    "recomputed_local_gates": [
+      "actual_library",
+      "capture_test",
+      "editor_pair",
+      "fixture_manifest",
+      "fixture_records",
+      "literal_run_pins",
+      "month_progress",
+      "native_screens",
+      "original_sources",
+      "sample_media"
+    ],
+    "native_timestamps_retained": {
+      "captured_at": "2026-11-16T21:03:31.554274+00:00",
+      "collected_at": "2026-11-16T21:03:44.335739+00:00"
+    },
+    "actual_workflow_conclusion": "failure",
+    "workflow_success": false,
+    "original_provenance_sha256": "b916d032f001dc2691c7ec45ac2511827fcec350d24d6c0e4215830af5507d50",
+    "original_provenance": {
+      "file": "native-run-43949822336-attempt-1/capture_provenance.json",
+      "sha256": "b916d032f001dc2691c7ec45ac2511827fcec350d24d6c0e4215830af5507d50"
+    },
+    "original_errors": [
+      "native_screens: ValueError: Unrelated required native screen states unexpectedly share a file hash",
+      "month_progress: ValueError: Proof does not bind an independently inventoried required source",
+      "editor_pair: ValueError: Proof does not bind an independently inventoried required source"
+    ],
+    "immutable_inventory": {
+      "original_files_verified": 228,
+      "unchanged_derived_inputs_verified": 227,
+      "original_provenance_sha256": "b916d032f001dc2691c7ec45ac2511827fcec350d24d6c0e4215830af5507d50"
+    },
+    "owner_authorization_sha256": "dd3f90ce02fed8b611bf3ac7159c06faf63b6ac48ba4cdcf632177836c48a5c5",
+    "inherited_gate_code": {
+      "capture_commit": "90da2494af7dbeffe8c8694ee33f42c4f3ac78f0",
+      "inherited_function_ast_sha256": {
+        "verify_fixture_files": "ce1813ddc04d9a59ebd7c7b4d7220a40026c084e678d322046bdd1596ef986a7",
+        "_same_manifest_bytes": "c1b1a68d54827618660c53134a74ba79de245eb2ff8db1e7f8075f2f791fa68d",
+        "validate_fixture_metadata": "90b414fe5479f923dbbdf91d2157e060d86e47076f36434d776c4c63e6434fc8",
+        "run_legacy": "1327ff925dc71df97a0f92147a4e423d8e52376bb265d08a1647a3724038f370",
+        "collect": "aef0de49dbb4d75bb5dd7ba57516c34e5d062077f6988ca8da55184b476ff644",
+        "validate_exact_attempt_readback": "1912b870da708afb88e3ea564a963554e16a3a358124db7889e357000e09b809"
+      },
+      "legacy_collector_sha256": "85d443c36c18e2018efa12c385a037fe5f2d64265f9ce6ed7be6057775016896"
+    },
+    "native_header_fields_preserved": [
+      "fresh_capture",
+      "locale",
+      "app_language",
+      "platform",
+      "base_commit",
+      "commit",
+      "workflow_run",
+      "run_attempt",
+      "workflow_url",
+      "branch",
+      "captured_at",
+      "app",
+      "device",
+      "capture_summary",
+      "fixture_manifest_sha256",
+      "fixture_visual_source_gate",
+      "sample_media_policy",
+      "sample_media_audit",
+      "native_scene_audit",
+      "branding"
+    ],
+    "native_header_sha256": "c46978b0698bcd3f58dbf95897fb69df44595493238ae5f43a82f6871847ba33",
+    "fixture_root": "F:/HermesOutput/GaleriQ/concept-a-en-v4/qa/fixture-v4-c2",
+    "captured_fixture_manifest_sha256": "d9ba50a8299fe7f0ff0abc0066c39fa3f24fabcc68a041d919306fd2a5aa27d4",
+    "local_prepared_fixture_manifest_sha256": "f4c833c1ddf89552fa8f07a117ec18e01be109be7416d252d0e2cfb5105fe82f",
+    "local_prepared_manifest_differences": [
+      {
+        "path": "/records/35/bytes",
+        "native": 283493010,
+        "local": 283492746
+      },
+      {
+        "path": "/records/35/sha256",
+        "native": "71352887bd62cd5b6f1d3f6de332d88fbfcb246df36abb9ea90abf3e3d38c580",
+        "local": "7721a321585914c270ca5085b6167a2abe37152c7d66c7a20c7acacc50f9d02d"
+      },
+      {
+        "path": "/records/36/bytes",
+        "native": 284561439,
+        "local": 284558950
+      },
+      {
+        "path": "/records/36/sha256",
+        "native": "17f20cab0e259f81b67ad7d790add5e7c9bb98f3819f7eec57731b568e64fade",
+        "local": "3ed72367cd28e31debe9bc795fb75aa0bd88e776a4cefc792aff12ed960e83ef"
+      }
+    ],
+    "retained_native_gates": {
+      "base_c14_provenance": {
+        "source": {
+          "file": "native-run-43949822336-attempt-1/capture_provenance.base-c14-5b3aed84f63ab8e9103609da2b06e7276be3bb8a924d504b91a87b33ae6091f8.json",
+          "sha256": "5b3aed84f63ab8e9103609da2b06e7276be3bb8a924d504b91a87b33ae6091f8"
+        },
+        "result": {
+          "status": "PASS",
+          "exit_code": 0,
+          "file": "capture_provenance.base-c14-5b3aed84f63ab8e9103609da2b06e7276be3bb8a924d504b91a87b33ae6091f8.json",
+          "sha256": "5b3aed84f63ab8e9103609da2b06e7276be3bb8a924d504b91a87b33ae6091f8",
+          "collector_sha256": "85d443c36c18e2018efa12c385a037fe5f2d64265f9ce6ed7be6057775016896",
+          "previous_canonical": null
+        },
+        "local_rerun": "NOT RUN"
+      },
+      "fixture_files": {
+        "source": {
+          "file": "native-run-43949822336-attempt-1/capture_provenance.json",
+          "sha256": "b916d032f001dc2691c7ec45ac2511827fcec350d24d6c0e4215830af5507d50"
+        },
+        "result": {
+          "status": "PASS",
+          "actual_files": 37,
+          "images": 35,
+          "videos": 2,
+          "independent_video_full_decode": "PASS"
+        },
+        "local_rerun": "NOT RUN"
+      },
+      "captured_fixture_manifest_bytes": {
+        "source": {
+          "file": "native-run-43949822336-attempt-1/capture_provenance.json",
+          "sha256": "b916d032f001dc2691c7ec45ac2511827fcec350d24d6c0e4215830af5507d50"
+        },
+        "result": {
+          "status": "PASS",
+          "sha256": "d9ba50a8299fe7f0ff0abc0066c39fa3f24fabcc68a041d919306fd2a5aa27d4"
+        },
+        "local_rerun": "NOT RUN"
+      }
+    },
+    "local_35_image_bytechecks": {
+      "status": "PASS",
+      "actual_files": 35,
+      "native_bytes_exact": true,
+      "independent_original_photo_pixels_exact": true,
+      "files": {
+        "CA_01_clutter_blur.jpg": {
+          "sha256": "45197907a9b220c45ca86e2a47d2f5f24b0da8df9fb86981b3b6ab1123281c06",
+          "bytes": 255229,
+          "size": [
+            1920,
+            1622
+          ],
+          "decoded_rgb_sha256": "bd7228bb98ad09cca4b933d24cb1039ae39b9ee898b7f33922d94f46dc0e4a69",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_02_clutter_shake.jpg": {
+          "sha256": "ac14cf02b312e125b4b91f65b036385084b342fa2da89d3962ade4c9193a5208",
+          "bytes": 213708,
+          "size": [
+            1920,
+            1440
+          ],
+          "decoded_rgb_sha256": "e55657495578ad12f79c560d8b7bf3c6e47c52bcddbc3cdb017636660758f6f2",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_03_clutter_dark.jpg": {
+          "sha256": "2c33cea462c2180740e222fa96c0e47289590620dbfee0d0afe0848dfb5d7b9a",
+          "bytes": 352590,
+          "size": [
+            1920,
+            1622
+          ],
+          "decoded_rgb_sha256": "95b49926fd8abf987fb36fd85bf741b273c2fc0d6f13644398d96a1d53515df6",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_10_duplicate_a.jpg": {
+          "sha256": "1c0972e59ddb745358e117fc2b6b85ef442cd28081c16b074c26a0b407115f15",
+          "bytes": 468588,
+          "size": [
+            1920,
+            1337
+          ],
+          "decoded_rgb_sha256": "4912c6472562abb462770f9ac195beabf040d196edf588d71e152f6c04607b91",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_11_duplicate_b.jpg": {
+          "sha256": "1c0972e59ddb745358e117fc2b6b85ef442cd28081c16b074c26a0b407115f15",
+          "bytes": 468588,
+          "size": [
+            1920,
+            1337
+          ],
+          "decoded_rgb_sha256": "4912c6472562abb462770f9ac195beabf040d196edf588d71e152f6c04607b91",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_20_series_01.jpg": {
+          "sha256": "6f3a43f24d4cde23078091c348582bc48ed7f2bccd9b99dd156f181b9e4b0799",
+          "bytes": 962017,
+          "size": [
+            1920,
+            1281
+          ],
+          "decoded_rgb_sha256": "3ba98b6069494c430f85af96fa9df8d497ca09f04e3a849b71821d37dfbbdfb6",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_20_series_02.jpg": {
+          "sha256": "3913f051dfc0b389dcf0c0ddf51188f4e0a50df7a99f3f4fe636bc326c88eff1",
+          "bytes": 1203348,
+          "size": [
+            1910,
+            1271
+          ],
+          "decoded_rgb_sha256": "fc80507abb179955e7309f92acce3ac7933855385e38e9fdcbd1a2394621fa8a",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_20_series_03.jpg": {
+          "sha256": "2aaa634c81af0958e8faf34868c8fadd06cfce8045fcfccefc1bae0af2cd400a",
+          "bytes": 1187719,
+          "size": [
+            1900,
+            1261
+          ],
+          "decoded_rgb_sha256": "4ba8c5d521e1bc07000b5afc01ac68d61c8a44515b81da9b0e1ac061d0e5b9e3",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_20_series_04.jpg": {
+          "sha256": "1c442347b1233ac607e9a5a96f91804258149689dd63511ea027a5c91d502a10",
+          "bytes": 1144784,
+          "size": [
+            1890,
+            1251
+          ],
+          "decoded_rgb_sha256": "17e9fd9ab357a5d72824c5d02907940ff711853e78b95af8a476db37fab73964",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_20_series_05.jpg": {
+          "sha256": "70cf490128d766a67d5bc192e5b2d447de7683ce11fe0a6ece3a8cfcb2a0a357",
+          "bytes": 1171023,
+          "size": [
+            1880,
+            1241
+          ],
+          "decoded_rgb_sha256": "6709488c9d649e825ff745e17b299588b304c981959beae37a50e01fc302ccac",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_20_series_06.jpg": {
+          "sha256": "e3515dd14c95b3decac575556e657c43a4c42d09b418f9399e817780a37bcd5c",
+          "bytes": 1124980,
+          "size": [
+            1870,
+            1231
+          ],
+          "decoded_rgb_sha256": "b5afbd159431de62b536907ea06af08ed347f2672047b862314eab0fce04bcf3",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_30_pretty_01.jpg": {
+          "sha256": "e932a921f9a58c1bbb6304568d14bb8aca1531014e58f68fc4523923bb55244d",
+          "bytes": 537596,
+          "size": [
+            1296,
+            1620
+          ],
+          "decoded_rgb_sha256": "19908c7c54962877d8f6b93ec279d722653bf29074ac59bb8573d36c86f23733",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": [
+            312,
+            1,
+            1608,
+            1621
+          ]
+        },
+        "CA_30_pretty_02.jpg": {
+          "sha256": "2a4238fa3a5b7ae3d9050118711fbcfe148b145d96209b73d780c4e736b5a006",
+          "bytes": 346262,
+          "size": [
+            1152,
+            1440
+          ],
+          "decoded_rgb_sha256": "e254bf89cfcad13d59493cd0fad605323f98b0f81e6e095a32b4d593e9eade10",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": [
+            384,
+            0,
+            1536,
+            1440
+          ]
+        },
+        "CA_30_pretty_03.jpg": {
+          "sha256": "68d2ce2f9e70ae78bf409f9bf709ddc0ff2f6394d55e006a353228f626569976",
+          "bytes": 255934,
+          "size": [
+            1024,
+            1280
+          ],
+          "decoded_rgb_sha256": "8f13e589227bfb112c4f921edc1046775780ab993f708567128091c6c25a949f",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": [
+            448,
+            0,
+            1472,
+            1280
+          ]
+        },
+        "CA_30_pretty_04.jpg": {
+          "sha256": "86838d4efe315fdc0f261116babf0469b9f568d6b531806f8de71257ff5df2f7",
+          "bytes": 329761,
+          "size": [
+            864,
+            1080
+          ],
+          "decoded_rgb_sha256": "1d8e43dec42d7e2825511289357c77b4d0c7e1d3dc88d4561204645a7a24ddf1",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": [
+            528,
+            0,
+            1392,
+            1080
+          ]
+        },
+        "CA_30_pretty_05.jpg": {
+          "sha256": "0e7e3de6e963f78fd72dff7fe648d7c5771044975e8a48c13659db561b587561",
+          "bytes": 1059625,
+          "size": [
+            1920,
+            2560
+          ],
+          "decoded_rgb_sha256": "e9085372fd2d834c6166e3959af7ad1b068744a5e754fdd47654f738eb44c79f",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_30_pretty_06.jpg": {
+          "sha256": "ed3fc9ede9d025fd15a5d7b894e4c71cd9e44a459d23f3cf280699769813a224",
+          "bytes": 1777672,
+          "size": [
+            1920,
+            2880
+          ],
+          "decoded_rgb_sha256": "6da2d54653f0ec1bf4515d453dbeb87c778db2dc6007eba65f33e763c69dd2e5",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_30_pretty_07.jpg": {
+          "sha256": "414acadf3b76c50e9509c6a568805f1d4785c6c3c011e5b882ac360cc0b14854",
+          "bytes": 2425363,
+          "size": [
+            1920,
+            2850
+          ],
+          "decoded_rgb_sha256": "a92756db5a9ca56dbee4b9e811dd138949900a81903b0206cf1200168bf73668",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_30_pretty_08.jpg": {
+          "sha256": "84c0f78d75a31ae1a32e75afb0b816598b4a122606c1c194a9425cf47956f1d0",
+          "bytes": 949812,
+          "size": [
+            1920,
+            1852
+          ],
+          "decoded_rgb_sha256": "102bb8813ab242487d6c0a9cdfdda0370e0261dd926b10f098c53102e3c90405",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_30_pretty_09.jpg": {
+          "sha256": "76ca6d43eba3f3f099ff124d777e7e265e965fe669a000b313c66e01ca387ab8",
+          "bytes": 604088,
+          "size": [
+            1920,
+            2880
+          ],
+          "decoded_rgb_sha256": "203f99c90323c5196b4857a68618e8aa00822e12549a3ea2eb00ebf2bd14ff17",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_30_pretty_10.jpg": {
+          "sha256": "6588396644c343bae7e424796c06dfb2b11ff392ce10f662ab98acd1c48a2999",
+          "bytes": 1092281,
+          "size": [
+            1920,
+            2880
+          ],
+          "decoded_rgb_sha256": "ccd65fda19bf54092551e0780f6c8d3edb72683a96cb7901ef18e91ae9336911",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_30_pretty_11.jpg": {
+          "sha256": "e89cdcfc6c6dcccfb2ebd8ec0d650be5fa03c93d0a4b9e0436de0a28823fabb1",
+          "bytes": 658893,
+          "size": [
+            1920,
+            2400
+          ],
+          "decoded_rgb_sha256": "ed2dec9493a3ca5f249a32c884b49f04d092a599f9ad6cdb0ace40e77f7d121f",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_30_pretty_12.jpg": {
+          "sha256": "cadf4ffbe47dba88100e615a96f3120f092b24a45e188ebc5a284219c540f1d8",
+          "bytes": 1277197,
+          "size": [
+            1920,
+            2880
+          ],
+          "decoded_rgb_sha256": "7b7bc95887199d0613a7e00336c16dd6a21643436d86ea3c1d00ca5f1edf528b",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_30_pretty_13.jpg": {
+          "sha256": "a536a97ec8d2650db0d4974750c79e693e3b7a2f3e1bf6901181482253210fb3",
+          "bytes": 1307384,
+          "size": [
+            1920,
+            2880
+          ],
+          "decoded_rgb_sha256": "d76e2dbad846ca7c4d68b61137dc55ab3d57b66dadec870a5f6b711c0f93fd40",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_30_pretty_14.jpg": {
+          "sha256": "2fdd7b90330f1ba8f4cb845fc539dd39d955b7ca77d260161be6afbf69ed6591",
+          "bytes": 666303,
+          "size": [
+            1920,
+            1281
+          ],
+          "decoded_rgb_sha256": "afb3de0d44c99bc9bad0c792c1f801e4eeda6dfa88e1cd54dd9f3e610ccecbb8",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_30_pretty_15.jpg": {
+          "sha256": "0fa6ce0b61b2c63e8051ffa10074e522caf3221fb90dc5d4487ab145da033ab0",
+          "bytes": 569160,
+          "size": [
+            1824,
+            1526
+          ],
+          "decoded_rgb_sha256": "a5f57ca8a679c5ee9b8d8f4f1d4fc71b166be4e8aa5e76648c4ceb2f1f2f6d99",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_30_pretty_16.jpg": {
+          "sha256": "d4cbaa4dbe7d5b8b4cdcc5cdcef76c44409bc79624d0fbb6dbcedea1bc7f0c8a",
+          "bytes": 663076,
+          "size": [
+            1810,
+            1330
+          ],
+          "decoded_rgb_sha256": "89ed3ae48544dbcb7df4a8550527183c23e72134b04564d8e9abd707b4f05dd3",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_30_pretty_17.jpg": {
+          "sha256": "1fbf8bb30cb34edbf97f38c3b993169187aa99a49491e53625ea5352930185da",
+          "bytes": 560736,
+          "size": [
+            1796,
+            1156
+          ],
+          "decoded_rgb_sha256": "80df8856866ac7e4a6a86dc66e9da57fdcb2e5951beff4295336574c71cae8c7",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_30_pretty_18.jpg": {
+          "sha256": "beb96d471c298772a9bf3bae0be267bb5153f4eca9f76c1743f41a63e6453ae5",
+          "bytes": 597234,
+          "size": [
+            1782,
+            942
+          ],
+          "decoded_rgb_sha256": "c0be0c76376fe976ebf39777047dfa40fe7278e7f4c52443ba769323929f5a42",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_30_pretty_19.jpg": {
+          "sha256": "5731a71e075d11cd647c039704394c43db1e16fbf1ea75822b37a3bed58d9139",
+          "bytes": 1766103,
+          "size": [
+            1768,
+            2408
+          ],
+          "decoded_rgb_sha256": "9050f7c3bfbada2cdf77e467db0a95ab2c29abbf6dff8616a17f78b5ff594627",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_30_pretty_20.jpg": {
+          "sha256": "825451dff11691b7553847efb6f7a17cb14a92172dd5880008910c7b396b8195",
+          "bytes": 2572278,
+          "size": [
+            1754,
+            2714
+          ],
+          "decoded_rgb_sha256": "aa3cc67a4622f19e9b86ab13e0a57686633019a23207114c2633bb437b86691e",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_30_pretty_21.jpg": {
+          "sha256": "424f610c0426acea29132531115d1c6e4d5565cee7327ccb4e3adca417109472",
+          "bytes": 1534619,
+          "size": [
+            1740,
+            1672
+          ],
+          "decoded_rgb_sha256": "7789448fd4d6e836312f7767b7e7099372fbc4c7506760234b09c27b2dee1451",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_30_pretty_22.jpg": {
+          "sha256": "80c6589fbe9a24270e96e58cafacd5bab4af56780fb47beafad527cf7acbd68e",
+          "bytes": 1937336,
+          "size": [
+            1726,
+            2686
+          ],
+          "decoded_rgb_sha256": "6f1700955b93fba3c38c8b470389d1e8037f1a4ea2ecf0b812316fd380633aa5",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_30_pretty_23.jpg": {
+          "sha256": "f45d6c07920cf4db54592f571b9bce094939cebcd08ded80a9074fd0fe96de26",
+          "bytes": 516625,
+          "size": [
+            1712,
+            1414
+          ],
+          "decoded_rgb_sha256": "610b4aabd0ecdd5a7d9dfb95c58d0429ece6e50466879370175ac511ae92eebf",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        },
+        "CA_30_pretty_24.jpg": {
+          "sha256": "a33d9c237eb025953da37dc6ebbe2f0920ea7902c4e154355206f348a1fabb44",
+          "bytes": 2436367,
+          "size": [
+            1698,
+            2658
+          ],
+          "decoded_rgb_sha256": "fd9e55f09664a7e577e117ae8b58c5563797a35ec3d7043aba0292e7c6083a2f",
+          "original_photo_recipe_pixels_equal": true,
+          "source_crop": null
+        }
+      }
+    },
+    "local_15_original_checks": {
+      "status": "PASS",
+      "actual_originals": 15,
+      "full_decode": "PASS",
+      "files": {
+        "v4-01-prague-main-railway-station-ceiling-lights.jpg": {
+          "sha256": "bdc1479aff8e61913fc40edf00f1ef2b162772745e842465420ebd1c48ac74aa",
+          "bytes": 318278,
+          "size": [
+            1920,
+            1280
+          ],
+          "license": "CC0-1.0"
+        },
+        "v4-04-american-breakfast-1.jpg": {
+          "sha256": "28a14a73b44c22b3fd256f76b35b58c9f1c80fbfa4cdbce41975d1bde549c1f8",
+          "bytes": 351535,
+          "size": [
+            1920,
+            1080
+          ],
+          "license": "CC0-1.0"
+        },
+        "v4-05-munchkin-cat-2-cropped.jpg": {
+          "sha256": "75087bb00dad59688f8f1c928b1aa5dbe304a5181f5a0c87d6a6a74c8b2606f7",
+          "bytes": 372413,
+          "size": [
+            1920,
+            1622
+          ],
+          "license": "CC0-1.0"
+        },
+        "06-sharp-mountain-ridge-against-blue-sky-unsplash.jpg": {
+          "sha256": "0e7e3de6e963f78fd72dff7fe648d7c5771044975e8a48c13659db561b587561",
+          "bytes": 1059625,
+          "size": [
+            1920,
+            2560
+          ],
+          "license": "CC0-1.0"
+        },
+        "07-mountain-reflection-in-a-lake-unsplash.jpg": {
+          "sha256": "ed3fc9ede9d025fd15a5d7b894e4c71cd9e44a459d23f3cf280699769813a224",
+          "bytes": 1777672,
+          "size": [
+            1920,
+            2880
+          ],
+          "license": "CC0-1.0"
+        },
+        "09-orange-trees-by-a-frozen-lake-unsplash.jpg": {
+          "sha256": "414acadf3b76c50e9509c6a568805f1d4785c6c3c011e5b882ac360cc0b14854",
+          "bytes": 2425363,
+          "size": [
+            1920,
+            2850
+          ],
+          "license": "CC0-1.0"
+        },
+        "v4-10-shadow-of-bicycle-frame.jpg": {
+          "sha256": "70fc2cf1bd8e958a60531d4ee2964c87880e08a473d137a0f15b4b404cb00d4a",
+          "bytes": 406512,
+          "size": [
+            1920,
+            1440
+          ],
+          "license": "CC0-1.0"
+        },
+        "v4-13-coffee-in-bangalore.jpg": {
+          "sha256": "84c0f78d75a31ae1a32e75afb0b816598b4a122606c1c194a9425cf47956f1d0",
+          "bytes": 949812,
+          "size": [
+            1920,
+            1852
+          ],
+          "license": "CC0-1.0"
+        },
+        "28-twilight-hour-in-the-desert-unsplash.jpg": {
+          "sha256": "76ca6d43eba3f3f099ff124d777e7e265e965fe669a000b313c66e01ca387ab8",
+          "bytes": 604088,
+          "size": [
+            1920,
+            2880
+          ],
+          "license": "CC0-1.0"
+        },
+        "29-a-blue-sky-above-white-snow-unsplash.jpg": {
+          "sha256": "6588396644c343bae7e424796c06dfb2b11ff392ce10f662ab98acd1c48a2999",
+          "bytes": 1092281,
+          "size": [
+            1920,
+            2880
+          ],
+          "license": "CC0-1.0"
+        },
+        "31-green-mountains-over-clouds-unsplash.jpg": {
+          "sha256": "e89cdcfc6c6dcccfb2ebd8ec0d650be5fa03c93d0a4b9e0436de0a28823fabb1",
+          "bytes": 658893,
+          "size": [
+            1920,
+            2400
+          ],
+          "license": "CC0-1.0"
+        },
+        "33-sun-sky-and-sea-unsplash.jpg": {
+          "sha256": "cadf4ffbe47dba88100e615a96f3120f092b24a45e188ebc5a284219c540f1d8",
+          "bytes": 1277197,
+          "size": [
+            1920,
+            2880
+          ],
+          "license": "CC0-1.0"
+        },
+        "35-small-waterfall-in-a-forest-unsplash.jpg": {
+          "sha256": "a536a97ec8d2650db0d4974750c79e693e3b7a2f3e1bf6901181482253210fb3",
+          "bytes": 1307384,
+          "size": [
+            1920,
+            2880
+          ],
+          "license": "CC0-1.0"
+        },
+        "v4-36-golden-retriever-adult.jpg": {
+          "sha256": "2fdd7b90330f1ba8f4cb845fc539dd39d955b7ca77d260161be6afbf69ed6591",
+          "bytes": 666303,
+          "size": [
+            1920,
+            1281
+          ],
+          "license": "CC0-1.0"
+        },
+        "v4-38-breakfast-today.jpg": {
+          "sha256": "1c0972e59ddb745358e117fc2b6b85ef442cd28081c16b074c26a0b407115f15",
+          "bytes": 468588,
+          "size": [
+            1920,
+            1337
+          ],
+          "license": "CC0-1.0"
+        }
+      }
+    },
+    "local_prepared_video_file_checks": {
+      "status": "PASS",
+      "scope": "local prepared file hash/size only; NOT captured native MP4s",
+      "native_capture_byte_identity": false,
+      "full_decode_recheck": "NOT RUN",
+      "files": {
+        "CA_40_large_01.mp4": {
+          "sha256": "7721a321585914c270ca5085b6167a2abe37152c7d66c7a20c7acacc50f9d02d",
+          "bytes": 283492746
+        },
+        "CA_40_large_02.mp4": {
+          "sha256": "3ed72367cd28e31debe9bc795fb75aa0bd88e776a4cefc792aff12ed960e83ef",
+          "bytes": 284558950
+        }
+      }
+    },
+    "local_videos_match_native_capture": false,
+    "native_encoded_video_byte_recheck": "NOT RUN",
+    "native_encoded_video_full_decode_recheck": "NOT RUN",
+    "native_app_plist_recheck": "NOT RUN",
+    "native_ci_metadata_recollection": "NOT RUN",
+    "source_or_final_visual_approval_granted": false
+  }
+}

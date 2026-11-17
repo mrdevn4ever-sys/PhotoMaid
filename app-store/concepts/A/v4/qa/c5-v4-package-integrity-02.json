@@ -1,0 +1,30 @@
+{
+  "status": "PASS_13_FILE_ZIP_INTEGRITY_PENDING_FINAL_CODE_REVIEW_AND_BRANCH_READBACK",
+  "archive": "F:/HermesOutput/GaleriQ/concept-a-en-v4/GaleriQ-Concept-A-en-US-V4-C5.zip",
+  "archive_sha256": "45d2c318e875d6fbb1d1c44c1429feeb62dec3a0e094f4dc53c2cd3c3de5c957",
+  "archive_bytes": 11279173,
+  "member_count": 13,
+  "members": {
+    "en-US/01-swipe.png": "c4bfff214cded4704ccca2b1a4af38a3d24d2cc03cccc7879b7a9506ba6ee9a8",
+    "en-US/02-duplicates-large-files.png": "f56b1292424420a18c853a0516e7de037e9b0f03147bd0c207dfa0f4e394705b",
+    "en-US/03-similar-shots.png": "4184bb2863d7c224aa9dfd649fd5e805bf611267b42148f67f2726ef72be3321",
+    "en-US/04-delete-confirmation.png": "219acfe8c267e6a0a38426ff8947bf76c13037f8336532b318d269a7236baf5e",
+    "en-US/05-vault.png": "955d71e5488d1450ee207c7e2cec2f1e0e98244fb150d27dae42d83acf200715",
+    "en-US/06-later.png": "39181a8a6b9e8d0fefa99be74aeb45a996423c30e4a196364e5494a95c2fa35d",
+    "en-US/07-month-progress.png": "d7107acfb2c18a54418c84e67de07f104ac55136bebbc0eb97d914a4d721502a",
+    "en-US/08-collage.png": "1b47aba091a5f06004eac9baa7591c4f12226c10418d68f5347705e778917312",
+    "en-US/09-editor-comparison.png": "81250d859322dcda47e9eb978f4192907a6acc090394707f8962394376a18069",
+    "en-US/10-photo-pairs.png": "3e3bd869901a94cdd63b4ba3a08979956dea60c40ada09843edd52594a99d48a",
+    "00-overview.jpg": "4511d09770d6bd37086462c60dab0f6f594135bba309c3d76157a0aeb4eb7522",
+    "00-search-preview.jpg": "64efe89fbc2aa8b002bb5c4ab6d6532406e2fda2a41c8a8d449fe85cc6eb1907",
+    "README.md": "88f2705be1fca2a64889b844fc882a6da03f06a65ef8bdfa54e0794224540b66"
+  },
+  "crc": "PASS",
+  "byte_equality_with_technical_visual_reviewed_files": "PASS",
+  "native_run": "43949822336",
+  "attempt": 1,
+  "actual_workflow_conclusion": "failure",
+  "final_code_review": "PENDING_deleg_877a01bd",
+  "branch_readback": "NOT RUN",
+  "delivered": false
+}

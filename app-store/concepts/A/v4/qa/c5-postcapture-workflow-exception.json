@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "kind": "owner-authorized-C5-postcapture-workflow-exception",
+  "workflowRun": "43949822336",
+  "runAttempt": 1,
+  "commit": "90da2494af7dbeffe8c8694ee33f42c4f3ac78f0",
+  "branch": "hermes/store-concept-a-en",
+  "actualWorkflowConclusion": "failure",
+  "ownerAuthorization": {
+    "file": "qa/c5-owner-decision-20261117.json",
+    "sha256": "dd3f90ce02fed8b611bf3ac7159c06faf63b6ac48ba4cdcf632177836c48a5c5"
+  },
+  "originalInventory": {
+    "file": "qa/c5-original-artifact-immutable-snapshot.json",
+    "sha256": "88a4a267eb7686cfb7dbf0480da037ce67b0440d06483e0042305be3aa50dde1"
+  },
+  "originalProvenanceSHA256": "b916d032f001dc2691c7ec45ac2511827fcec350d24d6c0e4215830af5507d50",
+  "originalErrors": [
+    "native_screens: ValueError: Unrelated required native screen states unexpectedly share a file hash",
+    "month_progress: ValueError: Proof does not bind an independently inventoried required source",
+    "editor_pair: ValueError: Proof does not bind an independently inventoried required source"
+  ],
+  "exactAttemptReadback": {
+    "file": "run-43949822336-readback.json",
+    "sha256": "83d970ee192bf3d5e04bd71308055f38f82ca527db235d5c08da78b2c52f7807"
+  },
+  "correctedCollector": {
+    "file": "capture_provenance.json",
+    "sha256": "c02cfa0a20b2816e281331af07f6eecb1e3225231370be555cc0c0910d90150d",
+    "scope": "C5-retained-native-evidence-and-local-revalidation",
+    "fixtureRoot": "F:/HermesOutput/GaleriQ/concept-a-en-v4/qa/fixture-v4-c2",
+    "codeSHA256": {
+      "scripts/store/collect_concept_a_v4_provenance.py": "07140536e2462754957f7ce295278ee21e8c0c04f5d0e7fd2db387c84a5d43e8",
+      "scripts/store/collect_concept_a_provenance.py": "85d443c36c18e2018efa12c385a037fe5f2d64265f9ce6ed7be6057775016896",
+      "scripts/store/build_concept_a_v4_fixture.py": "630d72d15a1bb292a9f9b52b1952be22cb5d23d11d940bd6b54bc6cdf4b7bcf1",
+      "scripts/store/concept_a_v4_c5_exception.py": "72fc9a01aa26c26143ff9b30d188cdecdf6e932b918b8b861525231e2e28d0b0"
+    },
+    "auditsSHA256": "7754e869d1154e254d93e284008e864afbfd670a0d2cc980b9de2f3d49014a39",
+    "sourceHashesSHA256": "05302a9991d2016777eae8f06d306380a57f95a0450bd9edf5305feb675b3821"
+  }
+}

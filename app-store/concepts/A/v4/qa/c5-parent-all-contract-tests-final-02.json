@@ -1,0 +1,33 @@
+{
+  "status": "FAIL",
+  "scope": "Actual final local contracts only, not native capture or VQA",
+  "suites": [
+    "test_concept_a_v4_fixture",
+    "test_concept_a_v4_render",
+    "test_concept_a_v4_c5_retained"
+  ],
+  "runs": [
+    {
+      "tests_run": 115,
+      "failures": 4,
+      "errors": 0,
+      "skipped": 0,
+      "success": false,
+      "mode": "normal",
+      "exit_code": 1,
+      "duration_seconds": 197.953,
+      "log": "F:/HermesOutput/GaleriQ/concept-a-en-v4/qa/c5-final-all-contracts-normal-02.log"
+    },
+    {
+      "tests_run": 115,
+      "failures": 4,
+      "errors": 0,
+      "skipped": 0,
+      "success": false,
+      "mode": "optimized",
+      "exit_code": 1,
+      "duration_seconds": 197.953,
+      "log": "F:/HermesOutput/GaleriQ/concept-a-en-v4/qa/c5-final-all-contracts-optimized-02.log"
+    }
+  ]
+}

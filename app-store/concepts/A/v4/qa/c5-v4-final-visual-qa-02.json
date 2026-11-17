@@ -1,0 +1,230 @@
+{
+  "schema": 1,
+  "status": "PASS_ALL_TEN_FULL_AND_SMALL_AND_BOTH_PREVIEWS",
+  "run": "43949822336",
+  "attempt": 1,
+  "capture_commit": "90da2494af7dbeffe8c8694ee33f42c4f3ac78f0",
+  "actual_workflow_conclusion": "failure",
+  "render_root": "F:/HermesOutput/GaleriQ/concept-a-en-v4/render-c5-v4-02",
+  "technical_report": {
+    "file": "qa/c5-v4-technical-export-02.json",
+    "sha256": "f3c68abe37a5ccd523c94fe8753a58a10a8618dc09732d845d6ea4fc4f51fc1c"
+  },
+  "images": [
+    {
+      "slot": 1,
+      "file": "01-swipe.png",
+      "final_sha256": "c4bfff214cded4704ccca2b1a4af38a3d24d2cc03cccc7879b7a9506ba6ee9a8",
+      "original_reviewed_sha256": "0789bac641b939a0d89e4ad4595e9bf56c78b0c598420897fa8337ff6532ae1f",
+      "exact_rgb_pixels_equal_to_reviewed_first_render": true,
+      "final_rgb_pixel_sha256": "f96d55a8b3a867ee5bace6124528b18c12276a32fd4ad6121076a27c23328a64",
+      "small_file": "F:/HermesOutput/GaleriQ/concept-a-en-v4/qa/final-v4-small/01-swipe.png",
+      "small_sha256": "42eb25157c513b27cf42ab7503f207bc85ce3cce91b985657f00652336fa2154",
+      "small_size": [
+        302,
+        657
+      ],
+      "full_size_visual": "PASS",
+      "full_size_review_method": "actual first-render full file, then exact final RGB equality linkage",
+      "small_size_visual": "PASS",
+      "review_observation": "Sharp cat and genuine held Trash swipe; correct gesture legend."
+    },
+    {
+      "slot": 2,
+      "file": "02-duplicates-large-files.png",
+      "final_sha256": "f56b1292424420a18c853a0516e7de037e9b0f03147bd0c207dfa0f4e394705b",
+      "original_reviewed_sha256": "126ea06599985ff653a0c7de70231687029b9b23a5b6848f45516318e02222fa",
+      "exact_rgb_pixels_equal_to_reviewed_first_render": false,
+      "final_rgb_pixel_sha256": "4e1c5973e822f2d15a465dcbefeafe7e136ae92c3a507fa3db2988e5a4cd8d60",
+      "small_file": "F:/HermesOutput/GaleriQ/concept-a-en-v4/qa/final-v4-small/02-duplicates-large-files.png",
+      "small_sha256": "e8c9215a0de6c553ce7e86c12e5a963d7741ac236ccef76015b96a58b7818db3",
+      "small_size": [
+        302,
+        657
+      ],
+      "full_size_visual": "PASS",
+      "full_size_review_method": "actual final full file",
+      "small_size_visual": "PASS",
+      "review_observation": "Corrected clean native card join; two video rows/caveats and real duplicate pair/selection labels."
+    },
+    {
+      "slot": 3,
+      "file": "03-similar-shots.png",
+      "final_sha256": "4184bb2863d7c224aa9dfd649fd5e805bf611267b42148f67f2726ef72be3321",
+      "original_reviewed_sha256": "26544c4824056194c499e9c5dcd5c48a937b0d2b33d32d0fb824b6e5fca39c18",
+      "exact_rgb_pixels_equal_to_reviewed_first_render": true,
+      "final_rgb_pixel_sha256": "23bd2a0957c89e1b5f54fc0b29eab7363629f254f3f811123999d129a7b5cce7",
+      "small_file": "F:/HermesOutput/GaleriQ/concept-a-en-v4/qa/final-v4-small/03-similar-shots.png",
+      "small_sha256": "5a7833ad291ea78f2643cf437cc9c66b87cd30fdc07b63e028d2530857e65114",
+      "small_size": [
+        302,
+        657
+      ],
+      "full_size_visual": "PASS",
+      "full_size_review_method": "actual first-render full file, then exact final RGB equality linkage",
+      "small_size_visual": "PASS",
+      "review_observation": "Genuine visible horizontal series, complete Keep 5 / Trash 1 and disclaimer."
+    },
+    {
+      "slot": 4,
+      "file": "04-delete-confirmation.png",
+      "final_sha256": "219acfe8c267e6a0a38426ff8947bf76c13037f8336532b318d269a7236baf5e",
+      "original_reviewed_sha256": "f03bff813bcbf479b3d16c2dcb58559799c3e64f7da3de0cbd824fa73ae71065",
+      "exact_rgb_pixels_equal_to_reviewed_first_render": false,
+      "final_rgb_pixel_sha256": "e28d24b9712731acd883ae85ffd7f0ffe16a699ec6b633cb82fd90c812e0af98",
+      "small_file": "F:/HermesOutput/GaleriQ/concept-a-en-v4/qa/final-v4-small/04-delete-confirmation.png",
+      "small_sha256": "8eaaf21a188f95af2180ce4cec21da3ba84126c8a55fc9a94b34b432347e8bde",
+      "small_size": [
+        302,
+        657
+      ],
+      "full_size_visual": "PASS",
+      "full_size_review_method": "actual final full file",
+      "small_size_visual": "PASS",
+      "review_observation": "Complete opaque native panel/photo/both buttons. Gray glyph fragments are preserved original native rounded-corner backdrop, not extra UI strip or translucency; no retouch. Tiny native orange button edge below follows intentional bottom crop."
+    },
+    {
+      "slot": 5,
+      "file": "05-vault.png",
+      "final_sha256": "955d71e5488d1450ee207c7e2cec2f1e0e98244fb150d27dae42d83acf200715",
+      "original_reviewed_sha256": "71e40613342d13cda7df28bf6b24d7eecb828bed8a094291e5e9285b870c16ab",
+      "exact_rgb_pixels_equal_to_reviewed_first_render": true,
+      "final_rgb_pixel_sha256": "9e9ebeb1674f68133bd18a93f7aaa4f939466435fa324b19697bdb7052b491a8",
+      "small_file": "F:/HermesOutput/GaleriQ/concept-a-en-v4/qa/final-v4-small/05-vault.png",
+      "small_sha256": "da795d5ff77b5d54645a9ca8544ec8db53cdd7ace0cfc9956578a433c23868dd",
+      "small_size": [
+        302,
+        657
+      ],
+      "full_size_visual": "PASS",
+      "full_size_review_method": "actual first-render full file, then exact final RGB equality linkage",
+      "small_size_visual": "PASS",
+      "review_observation": "Five actual varied stock photos, no originals-remain warning; exact code/Face-ID subtitle; not security certification."
+    },
+    {
+      "slot": 6,
+      "file": "06-later.png",
+      "final_sha256": "39181a8a6b9e8d0fefa99be74aeb45a996423c30e4a196364e5494a95c2fa35d",
+      "original_reviewed_sha256": "bcbfd2405f5c4002db4e5c4766779c0b8f7822b02d2b7e44a1bd4478b3f26781",
+      "exact_rgb_pixels_equal_to_reviewed_first_render": true,
+      "final_rgb_pixel_sha256": "ef0d858eb1e11b79325af9fb3a1422a7c61ebb78555399efd02c52837f7e3ea5",
+      "small_file": "F:/HermesOutput/GaleriQ/concept-a-en-v4/qa/final-v4-small/06-later.png",
+      "small_sha256": "91878f48e559a4e8e5faf87f8189647326fc52a49cd8debfb6a6212f2adaced0",
+      "small_size": [
+        302,
+        657
+      ],
+      "full_size_visual": "PASS",
+      "full_size_review_method": "actual first-render full file, then exact final RGB equality linkage",
+      "small_size_visual": "PASS",
+      "review_observation": "Real right-tilted Later card, active native badge; no additional inset/pill."
+    },
+    {
+      "slot": 7,
+      "file": "07-month-progress.png",
+      "final_sha256": "d7107acfb2c18a54418c84e67de07f104ac55136bebbc0eb97d914a4d721502a",
+      "original_reviewed_sha256": "1a7a15b65e0b20c46da45a721b27cbc425534253db092d00e2d90547b08f5f69",
+      "exact_rgb_pixels_equal_to_reviewed_first_render": true,
+      "final_rgb_pixel_sha256": "a9cb8e78e5655c3c867169e991ac8fa2703be51a9eeec002e92a0a605781e289",
+      "small_file": "F:/HermesOutput/GaleriQ/concept-a-en-v4/qa/final-v4-small/07-month-progress.png",
+      "small_sha256": "25849f7a2dca09bab01a3a596b372816775d25c0597d1bd31415d5f673216b64",
+      "small_size": [
+        302,
+        657
+      ],
+      "full_size_visual": "PASS",
+      "full_size_review_method": "actual first-render full file, then exact final RGB equality linkage",
+      "small_size_visual": "PASS",
+      "review_observation": "Whole partial November, complete October, untouched September rows and ellipsis controls."
+    },
+    {
+      "slot": 8,
+      "file": "08-collage.png",
+      "final_sha256": "1b47aba091a5f06004eac9baa7591c4f12226c10418d68f5347705e778917312",
+      "original_reviewed_sha256": "de202902b454a9743fa00575e4698b620bfab3ca1ba715f745687d6a7f1bd3a6",
+      "exact_rgb_pixels_equal_to_reviewed_first_render": true,
+      "final_rgb_pixel_sha256": "61720330c2a4c77757ced1f5fc4f13ed0379151fe2e2c6db9d7e57c0d15727cd",
+      "small_file": "F:/HermesOutput/GaleriQ/concept-a-en-v4/qa/final-v4-small/08-collage.png",
+      "small_sha256": "4059135a11368c83fe93d3d4b3b978b72145a5eec4c8c6e6b26cefc760c1289a",
+      "small_size": [
+        302,
+        657
+      ],
+      "full_size_visual": "PASS",
+      "full_size_review_method": "actual first-render full file, then exact final RGB equality linkage",
+      "small_size_visual": "PASS",
+      "review_observation": "Four loaded pet/everyday/travel-architecture/food native collage panes."
+    },
+    {
+      "slot": 9,
+      "file": "09-editor-comparison.png",
+      "final_sha256": "81250d859322dcda47e9eb978f4192907a6acc090394707f8962394376a18069",
+      "original_reviewed_sha256": "deb59d74c4ba527e86805e1463edb54fc62861a464752b4b5c11c57f22440a17",
+      "exact_rgb_pixels_equal_to_reviewed_first_render": true,
+      "final_rgb_pixel_sha256": "9c63fd4ba6deae7fa10e1415209eec6e721bceb2618df55db4354e02a60b4865",
+      "small_file": "F:/HermesOutput/GaleriQ/concept-a-en-v4/qa/final-v4-small/09-editor-comparison.png",
+      "small_sha256": "fe2b90e5c6241eb99133ab39ee26acb5ed1e829edd092151a4a203a93174ce5a",
+      "small_size": [
+        302,
+        657
+      ],
+      "full_size_visual": "PASS",
+      "full_size_review_method": "actual first-render full file, then exact final RGB equality linkage",
+      "small_size_visual": "PASS",
+      "review_observation": "Explicit Photo comparison / Original / Warm marketing panel with real same-asset matched native photo crops and preserved native controls."
+    },
+    {
+      "slot": 10,
+      "file": "10-photo-pairs.png",
+      "final_sha256": "3e3bd869901a94cdd63b4ba3a08979956dea60c40ada09843edd52594a99d48a",
+      "original_reviewed_sha256": "8e03dc4f2f56fd5ecc760d78dbfe16c47988121ed28db6b93f304a3d2bb53498",
+      "exact_rgb_pixels_equal_to_reviewed_first_render": true,
+      "final_rgb_pixel_sha256": "9d7e026b972570f14522852cec3a7da38e6ac275c11a3e166a0f221554e1b555",
+      "small_file": "F:/HermesOutput/GaleriQ/concept-a-en-v4/qa/final-v4-small/10-photo-pairs.png",
+      "small_sha256": "8ad8c24abe904f6414710650f43e7020586dcb6ec8089b96c770c158e788a875",
+      "small_size": [
+        302,
+        657
+      ],
+      "full_size_visual": "PASS",
+      "full_size_review_method": "actual first-render full file, then exact final RGB equality linkage",
+      "small_size_visual": "PASS",
+      "review_observation": "Complete native 24-card in-progress Pairs board; correct English game caption, no fake victory."
+    }
+  ],
+  "image_count": 10,
+  "preview_count": 2,
+  "previews": [
+    {
+      "file": "00-overview.jpg",
+      "sha256": "4511d09770d6bd37086462c60dab0f6f594135bba309c3d76157a0aeb4eb7522",
+      "visual": "PASS",
+      "review_method": "actual final preview file"
+    },
+    {
+      "file": "00-search-preview.jpg",
+      "sha256": "64efe89fbc2aa8b002bb5c4ab6d6532406e2fda2a41c8a8d449fe85cc6eb1907",
+      "visual": "PASS",
+      "review_method": "actual final preview file"
+    }
+  ],
+  "preserved_visual_failures": [
+    {
+      "render": "render-c5-v4-01",
+      "slot": 2,
+      "finding": "Inset truncated native card lower rounding; layout corrected."
+    },
+    {
+      "render": "render-c5-v4-01",
+      "slot": 4,
+      "finding": "Underlying-primary instruction exposed above inset; moved same native crop up."
+    },
+    {
+      "render": "render-c5-v4-02",
+      "slot": 4,
+      "finding": "Initial too-broad no-gray-glyph prompt flagged real native corner backdrop; actual source-corner inspection and independent1.2M-pixel audit established source-faithfulness. Re-reviewed full and small under actual no-retouch contract; disclosed bits remain."
+    }
+  ],
+  "final_code_review": "PENDING_deleg_877a01bd",
+  "delivery_status": "NOT_DELIVERED"
+}
