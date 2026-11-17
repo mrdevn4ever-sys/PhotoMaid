@@ -502,7 +502,9 @@ final class AppStoreCaptureTests: XCTestCase {
         capturePage("trash")
         launch("duplicates")
         tap(button("dup_start"))
-        XCTAssertTrue(e("duplicates.complete").waitForExistence(timeout: 120), "The real duplicate scan must finish")
+        // Fertig, sobald „Erneut suchen“ erscheint (mit Fund gibt es keine Leer-Kennung).
+        XCTAssertTrue(button("dup_again").waitForExistence(timeout: 120), "The real duplicate scan must finish")
+        XCTAssertFalse(e("duplicates.complete").exists, "The fixture contains one real identical pair")
         snap("duplicates")
         capturePage("library")
         capturePage("cleanup")
