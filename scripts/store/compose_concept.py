@@ -46,7 +46,7 @@ def font(locale, role, size):
     if s == 'latin':
         name = {'head': 'PMDisplay-Bold.ttf', 'sub': 'PMText-Medium.ttf', 'gesture': 'PMText-Bold.ttf'}[role]
         return ImageFont.truetype(str(FONTS / name), size)
-    want = ('Bold', 'Semibold', 'W7', 'Heavy') if role in ('head', 'gesture') else ('Medium', 'Regular', 'W4', 'W3')
+    want = ('Bold', 'Semibold', 'W7', 'W6', 'Heavy') if role in ('head', 'gesture') else ('Medium', 'Regular', 'W4', 'W3')
     for path in SYSTEM[s]:
         if not Path(path).exists():
             continue
