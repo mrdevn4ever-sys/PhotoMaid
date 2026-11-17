@@ -115,6 +115,7 @@ jobs:
             scripts
             fastlane
             app-store/media
+            app-store/concept
       - name: Xcode und Aufnahme-Werkzeuge
         run: |
           set -euo pipefail
@@ -215,6 +216,9 @@ jobs:
               "$RUNNER_TEMP/store-capture" "$RUNNER_TEMP/store-assets" --locale "$CAPTURE_LOCALE"
           fi
           "$RUNNER_TEMP/store-python/bin/python" scripts/store/make_review.py "$RUNNER_TEMP/store-assets"
+          # Concept A (11/2026): Store-Bilder mit hellem Rahmen, Überschrift und echtem Schriftzug aus derselben Aufnahme.
+          (cd scripts/store && "$RUNNER_TEMP/store-python/bin/python" compose_concept.py "$RUNNER_TEMP/store-assets" \
+            --locale "$CAPTURE_LOCALE" --device "$STORE_DEVICE")
       - uses: actions/upload-artifact@v4
         if: always()
         with:

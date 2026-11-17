@@ -1,0 +1,30 @@
+{
+ "note": "Concept A (Space to Breathe) für 1.1. Überschrift: genau die angegebenen Zeilen (kein Umbruch). Nur Aussagen, die die App einlöst.",
+ "slots": [
+  {"id": "swipe", "source": "feed-trash"},
+  {"id": "duplicates", "source": "duplicates"},
+  {"id": "vault", "source": "vault-media"},
+  {"id": "decide", "source": "trash"},
+  {"id": "later", "source": "feed-later"},
+  {"id": "collage", "source": "collage"},
+  {"id": "editor", "source": "editor-look"},
+  {"id": "pairs", "source": "memory-play"},
+  {"id": "today", "source": "today"},
+  {"id": "snake", "source": "snake-play"}
+ ],
+ "locales": {
+  "en": {
+   "gestures": {"keep": "Keep", "trash": "Trash", "later": "Later"},
+   "swipe": {"head": ["Swipe the clutter.", "Keep the memories."], "sub": "Keep, trash or decide later."},
+   "duplicates": {"head": ["Find duplicates.", "Free up space."], "sub": "Identical copies, side by side."},
+   "vault": {"head": ["Private photos.", "Locked away."], "sub": "An encrypted vault with your own code."},
+   "decide": {"head": ["You decide what", "gets deleted."], "sub": "Nothing is deleted until you confirm."},
+   "later": {"head": ["Not sure yet?", "Decide later."], "sub": "It comes back when you are ready."},
+   "collage": {"head": ["Make a collage.", "With your photos."], "sub": "Grid, freeform or strip."},
+   "editor": {"head": ["Try a new look.", "Keep the original."], "sub": "Edits are saved as a separate copy."},
+   "pairs": {"head": ["Take a break.", "Play a little."], "sub": "Match pairs with your own photos."},
+   "today": {"head": ["A little every day.", "See your progress."], "sub": "A daily goal that fits your pace."},
+   "snake": {"head": ["Photo Snake.", "With your own photos."], "sub": "Swipe to steer."}
+  }
+ }
+}

@@ -498,6 +498,12 @@ final class AppStoreCaptureTests: XCTestCase {
         try requestStill("warmup", delay: 0, warmup: true); try awaitStill("warmup")
         try holdSwipe("up", still: "feed-keep"); try holdSwipe("left", still: "feed-trash"); snap("feed")
         try holdSwipe("right", still: "feed-later-drag"); snap("feed-later")
+        // Concept A (11/2026): GaleriQ-Papierkorb mit der echten Entscheidung von eben, echte Duplikat-Suche.
+        capturePage("trash")
+        launch("duplicates")
+        tap(button("dup_start"))
+        XCTAssertTrue(e("duplicates.complete").waitForExistence(timeout: 120), "The real duplicate scan must finish")
+        snap("duplicates")
         capturePage("library")
         capturePage("cleanup")
         capturePage("collage")
@@ -505,6 +511,8 @@ final class AppStoreCaptureTests: XCTestCase {
         launch("editor")
         XCTAssertTrue(e("editor.stage").waitForExistence(timeout: 30))
         editorTool("filter"); snap("editor-filter")
+        // Ein echter, deutlich sichtbarer Look (nur Vorschau, Original bleibt).
+        tap(e("editor.filter.thumbnail.MONO")); snap("editor-look")
         editorTool("markup"); snap("editor-markup")
         capturePage("movie")
         try captureVault()
@@ -553,7 +561,7 @@ final class AppStoreCaptureTests: XCTestCase {
         var known: [String: [String]] = [:]
         var solved: Set<String> = []
         for cardID in unseen {
-            if solved.count >= 6 { break }
+            if solved.count >= 16 { break }
             if solved.contains(cardID) { continue }
             let card = app.buttons[cardID]
             if card.isEnabled { card.tap() }
@@ -581,7 +589,7 @@ final class AppStoreCaptureTests: XCTestCase {
                 pause(1.4)
             }
         }
-        XCTAssertGreaterThanOrEqual(solved.count, 6, "Store images must show pairs actually found in this round")
+        XCTAssertGreaterThanOrEqual(solved.count, 16, "Store images must show pairs actually found in this round")
         XCTAssertFalse(e("memory.finished").exists, "No unearned victory or best time is presented")
     }
 

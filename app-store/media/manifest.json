@@ -7,291 +7,116 @@
   },
   "photos": [
     {
-      "file": "01-chalets-on-a-wooded-slope-unsplash.jpg",
+      "file": "01-golden-retriever-portrait.jpg",
       "group": "beautiful",
-      "title": "Chalets on a wooded slope (Unsplash).jpg",
-      "author": "Adam Gil adamcgil",
-      "source": "https://commons.wikimedia.org/wiki/File:Chalets_on_a_wooded_slope_(Unsplash).jpg",
-      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Chalets_on_a_wooded_slope_%28Unsplash%29.jpg/1920px-Chalets_on_a_wooded_slope_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "original": "https://upload.wikimedia.org/wikipedia/commons/1/14/Chalets_on_a_wooded_slope_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "title": "Golden_Retriever_adult.jpg",
+      "author": "Johan Spaedtke",
+      "source": "https://commons.wikimedia.org/wiki/File:Golden_Retriever_adult.jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Golden_Retriever_adult.jpg/1920px-Golden_Retriever_adult.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "license": "CC0-1.0",
-      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "width": 1920,
-      "height": 2868,
-      "bytes": 1561864,
-      "sha256": "a06bdb2ec865896619d74ba9a79326c27c432200eaf8cbe31ea81754ac650d8d",
-      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
-      "license_evidence": {
-        "LicenseShortName": {
-          "value": "CC0",
-          "source": "commons-desc-page",
-          "hidden": ""
-        },
-        "LicenseUrl": {
-          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-          "source": "commons-desc-page"
-        },
-        "UsageTerms": {
-          "value": "Creative Commons Zero, Public Domain Dedication",
-          "source": "commons-desc-page"
-        },
-        "Copyrighted": {
-          "value": "True",
-          "source": "commons-desc-page",
-          "hidden": ""
-        },
-        "AttributionRequired": {
-          "value": "false",
-          "source": "commons-desc-page",
-          "hidden": ""
-        }
-      }
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 961,
+      "height": 1281,
+      "bytes": 378176,
+      "sha256": "27bf4b432ce1b044937ae549263f67431860f30b91bfbddd4cbe1a93b32df664",
+      "adaptations": "Hochformat-Ausschnitt (840, 0, 1801, 1281) aus dem CC0-Original (nur beschnitten, nicht vergrößert), JPEG neu kodiert.",
+      "concept_a_source_sha256": "2fdd7b90330f1ba8f4cb845fc539dd39d955b7ca77d260161be6afbf69ed6591"
     },
     {
-      "file": "02-flat-mountain-over-a-lake-unsplash.jpg",
+      "file": "02-munchkin-cat-portrait.jpg",
       "group": "beautiful",
-      "title": "Flat mountain over a lake (Unsplash).jpg",
-      "author": "Cameron Kirby ckirby",
-      "source": "https://commons.wikimedia.org/wiki/File:Flat_mountain_over_a_lake_(Unsplash).jpg",
-      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Flat_mountain_over_a_lake_%28Unsplash%29.jpg/1920px-Flat_mountain_over_a_lake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "original": "https://upload.wikimedia.org/wikipedia/commons/b/b7/Flat_mountain_over_a_lake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "title": "Munchkin_cat_2_(cropped).jpg",
+      "author": "Tasy Hong",
+      "source": "https://commons.wikimedia.org/wiki/File:Munchkin_cat_2_(cropped).jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Munchkin_cat_2_%28cropped%29.jpg/1920px-Munchkin_cat_2_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "license": "CC0-1.0",
-      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "width": 1920,
-      "height": 2880,
-      "bytes": 733431,
-      "sha256": "d4883c17e3df1b8843112951ef0f93f50742287744e0ea6a01f8f7520ddcb2ce",
-      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
-      "license_evidence": {
-        "LicenseShortName": {
-          "value": "CC0",
-          "source": "commons-desc-page",
-          "hidden": ""
-        },
-        "LicenseUrl": {
-          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-          "source": "commons-desc-page"
-        },
-        "UsageTerms": {
-          "value": "Creative Commons Zero, Public Domain Dedication",
-          "source": "commons-desc-page"
-        },
-        "Copyrighted": {
-          "value": "True",
-          "source": "commons-desc-page",
-          "hidden": ""
-        },
-        "AttributionRequired": {
-          "value": "false",
-          "source": "commons-desc-page",
-          "hidden": ""
-        }
-      }
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "width": 1216,
+      "height": 1622,
+      "bytes": 313840,
+      "sha256": "6fbdf6e742aee122f4a4bf06e9493ca282f1d172a528c669f3081e4cef07ff6d",
+      "adaptations": "Hochformat-Ausschnitt (560, 0, 1776, 1622) aus dem CC0-Original (nur beschnitten, nicht vergrößert), JPEG neu kodiert.",
+      "concept_a_source_sha256": "75087bb00dad59688f8f1c928b1aa5dbe304a5181f5a0c87d6a6a74c8b2606f7"
     },
     {
-      "file": "03-snowy-mountains-heather-lake-unsplash.jpg",
+      "file": "03-coffee-in-bangalore.jpg",
       "group": "beautiful",
-      "title": "Snowy mountains, Heather Lake (Unsplash).jpg",
-      "author": "Austin Smart austinsmart",
-      "source": "https://commons.wikimedia.org/wiki/File:Snowy_mountains,_Heather_Lake_(Unsplash).jpg",
-      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Snowy_mountains%2C_Heather_Lake_%28Unsplash%29.jpg/1920px-Snowy_mountains%2C_Heather_Lake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "original": "https://upload.wikimedia.org/wikipedia/commons/2/26/Snowy_mountains%2C_Heather_Lake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "title": "Coffee_in_Bangalore.jpg",
+      "author": "Shyamal L.",
+      "source": "https://commons.wikimedia.org/wiki/File:Coffee_in_Bangalore.jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Coffee_in_Bangalore.jpg/1920px-Coffee_in_Bangalore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "license": "CC0-1.0",
-      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
       "width": 1920,
-      "height": 2560,
-      "bytes": 2193298,
-      "sha256": "581ed5b3f40b2dede4be273822f514a6b6cba3e367ec6ecc93105d715cbaaaa3",
-      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
-      "license_evidence": {
-        "LicenseShortName": {
-          "value": "CC0",
-          "source": "commons-desc-page",
-          "hidden": ""
-        },
-        "LicenseUrl": {
-          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-          "source": "commons-desc-page"
-        },
-        "UsageTerms": {
-          "value": "Creative Commons Zero, Public Domain Dedication",
-          "source": "commons-desc-page"
-        },
-        "Copyrighted": {
-          "value": "True",
-          "source": "commons-desc-page",
-          "hidden": ""
-        },
-        "AttributionRequired": {
-          "value": "false",
-          "source": "commons-desc-page",
-          "hidden": ""
-        }
-      }
+      "height": 1852,
+      "bytes": 949812,
+      "sha256": "84c0f78d75a31ae1a32e75afb0b816598b4a122606c1c194a9425cf47956f1d0",
+      "adaptations": "Keine. Bytegleich mit app-store/concepts/A/v4-source-media (Branch hermes/store-concept-a-en).",
+      "concept_a_source_sha256": "84c0f78d75a31ae1a32e75afb0b816598b4a122606c1c194a9425cf47956f1d0"
     },
     {
-      "file": "04-mountain-peak-under-clouds-unsplash.jpg",
+      "file": "04-american-breakfast.jpg",
       "group": "beautiful",
-      "title": "Mountain peak under clouds (Unsplash).jpg",
-      "author": "Simon Caspersen nomisnu7",
-      "source": "https://commons.wikimedia.org/wiki/File:Mountain_peak_under_clouds_(Unsplash).jpg",
-      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/Mountain_peak_under_clouds_%28Unsplash%29.jpg/1920px-Mountain_peak_under_clouds_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "original": "https://upload.wikimedia.org/wikipedia/commons/2/26/Mountain_peak_under_clouds_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "title": "American_Breakfast_1.jpg",
+      "author": "Boonlert",
+      "source": "https://commons.wikimedia.org/wiki/File:American_Breakfast_1.jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/American_Breakfast_1.jpg/1920px-American_Breakfast_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "license": "CC0-1.0",
-      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
       "width": 1920,
-      "height": 2741,
-      "bytes": 1751994,
-      "sha256": "801ef4c75861f8a1bfd806c881ee556afe45eb15963f66e94cc5379dcf2d4a1a",
-      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
-      "license_evidence": {
-        "LicenseShortName": {
-          "value": "CC0",
-          "source": "commons-desc-page",
-          "hidden": ""
-        },
-        "LicenseUrl": {
-          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-          "source": "commons-desc-page"
-        },
-        "UsageTerms": {
-          "value": "Creative Commons Zero, Public Domain Dedication",
-          "source": "commons-desc-page"
-        },
-        "Copyrighted": {
-          "value": "True",
-          "source": "commons-desc-page",
-          "hidden": ""
-        },
-        "AttributionRequired": {
-          "value": "false",
-          "source": "commons-desc-page",
-          "hidden": ""
-        }
-      }
+      "height": 1080,
+      "bytes": 351535,
+      "sha256": "28a14a73b44c22b3fd256f76b35b58c9f1c80fbfa4cdbce41975d1bde549c1f8",
+      "adaptations": "Keine. Bytegleich mit app-store/concepts/A/v4-source-media (Branch hermes/store-concept-a-en).",
+      "concept_a_source_sha256": "28a14a73b44c22b3fd256f76b35b58c9f1c80fbfa4cdbce41975d1bde549c1f8"
     },
     {
-      "file": "05-beautiful-flower-on-pebbles-unsplash.jpg",
+      "file": "05-prague-station-ceiling-lights.jpg",
       "group": "beautiful",
-      "title": "Beautiful flower on pebbles (Unsplash).jpg",
-      "author": "Markus Spiske markusspiske",
-      "source": "https://commons.wikimedia.org/wiki/File:Beautiful_flower_on_pebbles_(Unsplash).jpg",
-      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Beautiful_flower_on_pebbles_%28Unsplash%29.jpg/1920px-Beautiful_flower_on_pebbles_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "original": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Beautiful_flower_on_pebbles_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "title": "Prague_Main_Railway_Station_Ceiling_Lights.jpg",
+      "author": "AVDLCZ",
+      "source": "https://commons.wikimedia.org/wiki/File:Prague_Main_Railway_Station_Ceiling_Lights.jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Prague_Main_Railway_Station_Ceiling_Lights.jpg/1920px-Prague_Main_Railway_Station_Ceiling_Lights.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "license": "CC0-1.0",
-      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
       "width": 1920,
-      "height": 2880,
-      "bytes": 1278091,
-      "sha256": "b91c587fb5e1a0a3266db05e74feb6c88cc60ba22c342f59175685401a707ca7",
-      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
-      "license_evidence": {
-        "LicenseShortName": {
-          "value": "CC0",
-          "source": "commons-desc-page",
-          "hidden": ""
-        },
-        "LicenseUrl": {
-          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-          "source": "commons-desc-page"
-        },
-        "UsageTerms": {
-          "value": "Creative Commons Zero, Public Domain Dedication",
-          "source": "commons-desc-page"
-        },
-        "Copyrighted": {
-          "value": "True",
-          "source": "commons-desc-page",
-          "hidden": ""
-        },
-        "AttributionRequired": {
-          "value": "false",
-          "source": "commons-desc-page",
-          "hidden": ""
-        }
-      }
+      "height": 1280,
+      "bytes": 318278,
+      "sha256": "bdc1479aff8e61913fc40edf00f1ef2b162772745e842465420ebd1c48ac74aa",
+      "adaptations": "Keine. Bytegleich mit app-store/concepts/A/v4-source-media (Branch hermes/store-concept-a-en).",
+      "concept_a_source_sha256": "bdc1479aff8e61913fc40edf00f1ef2b162772745e842465420ebd1c48ac74aa"
     },
     {
-      "file": "06-sharp-mountain-ridge-against-blue-sky-unsplash.jpg",
+      "file": "06-breakfast-today.jpg",
       "group": "beautiful",
-      "title": "Sharp mountain ridge against blue sky (Unsplash).jpg",
-      "author": "Giovanni Corte giovanicort",
-      "source": "https://commons.wikimedia.org/wiki/File:Sharp_mountain_ridge_against_blue_sky_(Unsplash).jpg",
-      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Sharp_mountain_ridge_against_blue_sky_%28Unsplash%29.jpg/1920px-Sharp_mountain_ridge_against_blue_sky_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "original": "https://upload.wikimedia.org/wikipedia/commons/0/03/Sharp_mountain_ridge_against_blue_sky_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "title": "Breakfast_today.jpg",
+      "author": "Sparcity",
+      "source": "https://commons.wikimedia.org/wiki/File:Breakfast_today.jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Breakfast_today.jpg/1920px-Breakfast_today.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "license": "CC0-1.0",
-      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
       "width": 1920,
-      "height": 2560,
-      "bytes": 1059625,
-      "sha256": "0e7e3de6e963f78fd72dff7fe648d7c5771044975e8a48c13659db561b587561",
-      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
-      "license_evidence": {
-        "LicenseShortName": {
-          "value": "CC0",
-          "source": "commons-desc-page",
-          "hidden": ""
-        },
-        "LicenseUrl": {
-          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-          "source": "commons-desc-page"
-        },
-        "UsageTerms": {
-          "value": "Creative Commons Zero, Public Domain Dedication",
-          "source": "commons-desc-page"
-        },
-        "Copyrighted": {
-          "value": "True",
-          "source": "commons-desc-page",
-          "hidden": ""
-        },
-        "AttributionRequired": {
-          "value": "false",
-          "source": "commons-desc-page",
-          "hidden": ""
-        }
-      }
+      "height": 1337,
+      "bytes": 468588,
+      "sha256": "1c0972e59ddb745358e117fc2b6b85ef442cd28081c16b074c26a0b407115f15",
+      "adaptations": "Keine. Bytegleich mit app-store/concepts/A/v4-source-media (Branch hermes/store-concept-a-en).",
+      "concept_a_source_sha256": "1c0972e59ddb745358e117fc2b6b85ef442cd28081c16b074c26a0b407115f15"
     },
     {
-      "file": "07-mountain-reflection-in-a-lake-unsplash.jpg",
+      "file": "07-breakfast-today-copy.jpg",
       "group": "beautiful",
-      "title": "Mountain reflection in a lake (Unsplash).jpg",
-      "author": "Gabriel Santiago gabrielssantiago",
-      "source": "https://commons.wikimedia.org/wiki/File:Mountain_reflection_in_a_lake_(Unsplash).jpg",
-      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Mountain_reflection_in_a_lake_%28Unsplash%29.jpg/1920px-Mountain_reflection_in_a_lake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "original": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Mountain_reflection_in_a_lake_%28Unsplash%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "title": "Breakfast_today.jpg",
+      "author": "Sparcity",
+      "source": "https://commons.wikimedia.org/wiki/File:Breakfast_today.jpg",
+      "download": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5c/Breakfast_today.jpg/1920px-Breakfast_today.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
       "license": "CC0-1.0",
-      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
       "width": 1920,
-      "height": 2880,
-      "bytes": 1777672,
-      "sha256": "ed3fc9ede9d025fd15a5d7b894e4c71cd9e44a459d23f3cf280699769813a224",
-      "adaptations": "None. Wikimedia proportional thumbnail; no crop, blur or upscale.",
-      "license_evidence": {
-        "LicenseShortName": {
-          "value": "CC0",
-          "source": "commons-desc-page",
-          "hidden": ""
-        },
-        "LicenseUrl": {
-          "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-          "source": "commons-desc-page"
-        },
-        "UsageTerms": {
-          "value": "Creative Commons Zero, Public Domain Dedication",
-          "source": "commons-desc-page"
-        },
-        "Copyrighted": {
-          "value": "True",
-          "source": "commons-desc-page",
-          "hidden": ""
-        },
-        "AttributionRequired": {
-          "value": "false",
-          "source": "commons-desc-page",
-          "hidden": ""
-        }
-      }
+      "height": 1337,
+      "bytes": 468588,
+      "sha256": "1c0972e59ddb745358e117fc2b6b85ef442cd28081c16b074c26a0b407115f15",
+      "adaptations": "Bytegleiche Kopie von 06 – echtes Duplikat für die Duplikat-Suche.",
+      "concept_a_source_sha256": "1c0972e59ddb745358e117fc2b6b85ef442cd28081c16b074c26a0b407115f15"
     },
     {
       "file": "08-winter-cake-unsplash.jpg",
@@ -2261,5 +2086,6 @@
         }
       }
     }
-  ]
+  ],
+  "concept_a_2026_11": "01–07 ersetzt durch CC0-Motive aus Concept A (Haustiere, Essen, Reise); 07 ist bytegleiche Kopie von 06."
 }

@@ -1,0 +1,166 @@
+#!/usr/bin/env python3
+"""Store-Bilder im Stil „Concept A – Space to Breathe“ aus echten nativen Aufnahmen setzen.
+
+Marketing-Ebene (heller Grund, Schriftzug, Überschrift, Unterzeile, Gerätekontur) und App-Ebene bleiben getrennt:
+die App-Aufnahme wird nur proportional verkleinert (nie vergrößert, nie verzerrt, nie retuschiert) und unten
+angeschnitten. Der Schriftzug stammt aus der echten Startseiten-Aufnahme derselben Sprache und desselben Geräts.
+Ausgabe in exakt Apples Maßen des Geräts (gleich der nativen Aufnahme), RGB ohne Alpha.
+"""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
+
+from wordmark_from_today import extract as extract_wordmark
+
+ROOT = Path(__file__).resolve().parents[2]
+FONTS = ROOT / 'PhotoMaid/Resources/Fonts'
+INK = (0x1C, 0x19, 0x16)
+SKY_TOP, SKY_BOTTOM = (0xE0, 0xEF, 0xF9), (0xEA, 0xF4, 0xFB)
+GESTURE = {'keep': (0x1B, 0x6F, 0xA8), 'trash': (0xC4, 0x44, 0x1A), 'later': (0x63, 0x47, 0xD0)}
+RTL = {'ar', 'he'}
+# Schriften der App für lateinische Schrift; für andere Schriften die Systemschrift des macOS-Runners.
+SYSTEM = {
+    'cyrillic': ['/System/Library/Fonts/SFNS.ttf', '/System/Library/Fonts/Helvetica.ttc'],
+    'ar': ['/System/Library/Fonts/SFArabic.ttf', '/System/Library/Fonts/GeezaPro.ttc'],
+    'ja': ['/System/Library/Fonts/ヒラギノ角ゴシック W7.ttc', '/System/Library/Fonts/Hiragino Sans GB.ttc'],
+    'ko': ['/System/Library/Fonts/AppleSDGothicNeo.ttc'],
+    'zh-Hans': ['/System/Library/Fonts/PingFang.ttc', '/System/Library/Fonts/Hiragino Sans GB.ttc'],
+    'zh-Hant': ['/System/Library/Fonts/PingFang.ttc'],
+    'th': ['/System/Library/Fonts/Thonburi.ttc'],
+}
+
+
+def script_of(locale):
+    if locale in ('ru', 'uk'): return 'cyrillic'
+    return locale if locale in SYSTEM else 'latin'
+
+
+def font(locale, role, size):
+    s = script_of(locale)
+    if s == 'latin':
+        name = {'head': 'PMDisplay-Bold.ttf', 'sub': 'PMText-Medium.ttf', 'gesture': 'PMText-Bold.ttf'}[role]
+        return ImageFont.truetype(str(FONTS / name), size)
+    for path in SYSTEM[s]:
+        if Path(path).exists():
+            return ImageFont.truetype(path, size)
+    raise SystemExit(f'BLOCKED: keine Schrift für {locale}')
+
+
+def gradient(w, h):
+    im = Image.new('RGB', (w, h))
+    d = ImageDraw.Draw(im)
+    for y in range(h):
+        t = y / (h - 1); t = t * t * (3 - 2 * t)
+        d.line([(0, y), (w, y)], fill=tuple(round(a + (b - a) * t) for a, b in zip(SKY_TOP, SKY_BOTTOM)))
+    return im
+
+
+def fitted(draw, lines, locale, role, size, minimum, width):
+    """Größte Schrift, bei der jede vorgegebene Zeile in die Breite passt (Zeilen werden nie umbrochen)."""
+    for s in range(size, minimum - 1, -2):
+        f = font(locale, role, s)
+        if all(draw.textlength(l, font=f) <= width for l in lines):
+            return f
+    raise SystemExit(f'Text zu lang für {locale}: {lines!r}')
+
+
+def arrow(draw, box, direction, color):
+    x0, y0, x1, y1 = box
+    cx, cy, w = (x0 + x1) / 2, (y0 + y1) / 2, (x1 - x0)
+    head, shaft = w * 0.5, w * 0.18
+    pts = {'up': [(cx, y0), (x1, y0 + head), (cx + shaft, y0 + head), (cx + shaft, y1), (cx - shaft, y1), (cx - shaft, y0 + head), (x0, y0 + head)]}
+    base = pts['up']
+    if direction == 'left': base = [(x0 + (p[1] - y0), y0 + (p[0] - x0)) for p in base]
+    if direction == 'right': base = [(x1 - (p[1] - y0), y0 + (p[0] - x0)) for p in base]
+    draw.polygon(base, fill=color)
+
+
+def compose(native, today, slot, locale, device, out):
+    src = Image.open(native).convert('RGB')
+    W, H = src.size
+    tablet = device == 'ipad'
+    u = W / (1700 if tablet else 1206)
+    rtl = locale in RTL
+    im = gradient(W, H)
+    d = ImageDraw.Draw(im, 'RGBA')
+    m = round(70 * u)
+    # Schriftzug: echte Pixel, nur verkleinert, falls größer als vorgesehen.
+    wm = extract_wordmark(today)
+    target_h = round(110 * u)
+    if wm.height > target_h:
+        wm = wm.resize((round(wm.width * target_h / wm.height), target_h), Image.LANCZOS)
+    wx = W - m - wm.width if rtl else m
+    im.paste(wm, (wx, round(78 * u)), wm)
+    y = round(78 * u) + max(wm.height, round(90 * u)) + round(50 * u)
+    head = slot['head']
+    fh = fitted(d, head, locale, 'head', round(112 * u), round(70 * u), W - 2 * m)
+    for line in head:
+        x = W - m - d.textlength(line, font=fh) if rtl else m
+        d.text((x, y), line, font=fh, fill=INK)
+        y += round(fh.size * 1.16)
+    if slot.get('sub'):
+        y += round(14 * u)
+        fs = fitted(d, [slot['sub']], locale, 'sub', round(52 * u), round(34 * u), W - 2 * m)
+        x = W - m - d.textlength(slot['sub'], font=fs) if rtl else m
+        d.text((x, y), slot['sub'], font=fs, fill=INK)
+        y += round(fs.size * 1.3)
+    if slot.get('gestures'):
+        y += round(26 * u)
+        fg = font(locale, 'gesture', round(68 * u))
+        col = (W - 2 * m) / 3
+        for i, (key, direction) in enumerate((('keep', 'up'), ('trash', 'left'), ('later', 'right'))):
+            # Pfeile zeigen die echte Fingerrichtung, auch in RTL nie gespiegelt.
+            x = m + i * col
+            a = round(54 * u)
+            arrow(d, (x, y + round(14 * u), x + a, y + round(14 * u) + a), direction, GESTURE[key])
+            d.text((x + a + round(14 * u), y), slot['gestures'][key], font=fg, fill=GESTURE[key])
+        y += round(84 * u)
+    top = y + round(64 * u)
+    # Gerät: native Aufnahme proportional verkleinert, unten angeschnitten.
+    width = round(W * (0.80 if tablet else 0.78))
+    scale = width / W
+    assert scale <= 1
+    shot = src.resize((width, round(H * scale)), Image.LANCZOS)
+    radius = round((60 if tablet else 140) * u * scale)
+    frame = round(9 * u)
+    x0 = (W - width) // 2
+    shadow = Image.new('L', (W, H), 0)
+    ImageDraw.Draw(shadow).rounded_rectangle([x0 - frame, top - frame + round(12 * u), x0 + width + frame, H + radius], radius + frame, fill=70)
+    im.paste((0, 0, 0), (0, 0), shadow.filter(ImageFilter.GaussianBlur(20 * u)))
+    ImageDraw.Draw(im).rounded_rectangle([x0 - frame, top - frame, x0 + width + frame, H + radius], radius + frame, fill=(0x24, 0x23, 0x22))
+    mask = Image.new('L', shot.size, 0)
+    ImageDraw.Draw(mask).rounded_rectangle([0, 0, shot.width - 1, shot.height - 1 + radius], radius, fill=255)
+    im.paste(shot, (x0, top), mask)
+    assert im.size == (W, H) and im.mode == 'RGB'
+    im.save(out, optimize=True)
+
+
+def main():
+    p = argparse.ArgumentParser()
+    p.add_argument('assets', type=Path, help='Ausgabe von assemble_refresh.py (all-pages/…)')
+    p.add_argument('--locale', required=True)
+    p.add_argument('--device', required=True)
+    p.add_argument('--texts', type=Path, default=ROOT / 'app-store/concept/headlines.json')
+    a = p.parse_args()
+    texts = json.loads(a.texts.read_text())
+    slots, words = texts['slots'], texts['locales'].get(a.locale) or texts['locales']['en']
+    pages = {f.stem: f for f in (a.assets / 'all-pages').glob('*/*.png')}
+    out = a.assets / 'concept'
+    out.mkdir(exist_ok=True)
+    rows = []
+    for i, slot in enumerate(slots, 1):
+        text = dict(words[slot['id']])
+        if slot['id'] == 'swipe': text['gestures'] = words['gestures']
+        target = out / f"{i:02}-{slot['id']}.png"
+        compose(pages[slot['source']], pages['today'], text, a.locale, a.device, target)
+        rows.append({'file': target.name, 'native_source': slot['source'],
+                     'sha256': hashlib.sha256(target.read_bytes()).hexdigest()})
+    (out / 'concept.json').write_text(json.dumps({'locale': a.locale, 'device': a.device, 'images': rows}, indent=1) + '\n')
+    print('PASS: concept', a.locale, a.device, len(rows))
+
+
+if __name__ == '__main__':
+    main()

@@ -12,8 +12,8 @@ from PIL import Image, ImageDraw, ImageFont, ImageOps
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / 'docs/photo-blocks-20261018'
 STATES = json.loads((OUT/'engine-states.json').read_text())
-PHOTOS = [ROOT/'app-store/media/01-chalets-on-a-wooded-slope-unsplash.jpg',
-          ROOT/'app-store/media/07-mountain-reflection-in-a-lake-unsplash.jpg']
+PHOTOS = [ROOT/'app-store/media/12-wasserauen-schweiz-unsplash.jpg',
+          ROOT/'app-store/media/09-orange-trees-by-a-frozen-lake-unsplash.jpg']
 COLORS = ['#59c2c2', '#bfa3e8', '#f0a67a', '#add07a', '#6ea8e8', '#e888a8']
 SCALE = 2
 def font(size, bold=False):
