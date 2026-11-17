@@ -78,7 +78,7 @@ def arrow(draw, box, direction, color):
     draw.polygon(base, fill=color)
 
 
-def compose(native, today, slot, locale, device, out):
+def compose(native, today, slot, locale, device, out, all_heads=None, all_subs=None):
     src = Image.open(native).convert('RGB')
     W, H = src.size
     tablet = device == 'ipad'
@@ -96,25 +96,26 @@ def compose(native, today, slot, locale, device, out):
     im.paste(wm, (wx, round(78 * u)), wm)
     y = round(78 * u) + max(wm.height, round(90 * u)) + round(50 * u)
     head = slot['head']
-    fh = fitted(d, head, locale, 'head', round(112 * u), round(70 * u), W - 2 * m)
+    # Eine Schriftgröße für alle zehn Bilder einer Sprache (ruhiges, einheitliches Bild).
+    fh = fitted(d, all_heads or head, locale, 'head', round(112 * u), round(70 * u), W - 2 * m)
     for line in head:
         x = W - m - d.textlength(line, font=fh) if rtl else m
         d.text((x, y), line, font=fh, fill=INK)
         y += round(fh.size * 1.16)
     if slot.get('sub'):
         y += round(14 * u)
-        fs = fitted(d, [slot['sub']], locale, 'sub', round(52 * u), round(34 * u), W - 2 * m)
+        fs = fitted(d, all_subs or [slot['sub']], locale, 'sub', round(52 * u), round(34 * u), W - 2 * m)
         x = W - m - d.textlength(slot['sub'], font=fs) if rtl else m
         d.text((x, y), slot['sub'], font=fs, fill=INK)
         y += round(fs.size * 1.3)
     if slot.get('gestures'):
         y += round(26 * u)
-        fg = font(locale, 'gesture', round(68 * u))
         col = (W - 2 * m) / 3
+        a = round(54 * u)
+        fg = fitted(d, list(slot['gestures'].values()), locale, 'gesture', round(68 * u), round(36 * u), col - a - round(30 * u))
         for i, (key, direction) in enumerate((('keep', 'up'), ('trash', 'left'), ('later', 'right'))):
             # Pfeile zeigen die echte Fingerrichtung, auch in RTL nie gespiegelt.
             x = m + i * col
-            a = round(54 * u)
             arrow(d, (x, y + round(14 * u), x + a, y + round(14 * u) + a), direction, GESTURE[key])
             d.text((x + a + round(14 * u), y), slot['gestures'][key], font=fg, fill=GESTURE[key])
         y += round(84 * u)
@@ -155,7 +156,9 @@ def main():
         text = dict(words[slot['id']])
         if slot['id'] == 'swipe': text['gestures'] = words['gestures']
         target = out / f"{i:02}-{slot['id']}.png"
-        compose(pages[slot['source']], pages['today'], text, a.locale, a.device, target)
+        heads = [l for s in slots for l in words[s['id']]['head']]
+        subs = [words[s['id']]['sub'] for s in slots]
+        compose(pages[slot['source']], pages['today'], text, a.locale, a.device, target, heads, subs)
         rows.append({'file': target.name, 'native_source': slot['source'],
                      'sha256': hashlib.sha256(target.read_bytes()).hexdigest()})
     (out / 'concept.json').write_text(json.dumps({'locale': a.locale, 'device': a.device, 'images': rows}, indent=1) + '\n')
