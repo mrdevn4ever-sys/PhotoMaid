@@ -130,6 +130,7 @@ jobs:
           fi
           command -v xcodegen >/dev/null || brew install xcodegen
           command -v ffmpeg >/dev/null || brew install ffmpeg
+          brew list libraqm >/dev/null 2>&1 || brew install libraqm  # Arabische Textformung für die Store-Überschriften
           python3 -m venv "$RUNNER_TEMP/store-python"
           "$RUNNER_TEMP/store-python/bin/pip" -q install pillow
           xcodegen generate

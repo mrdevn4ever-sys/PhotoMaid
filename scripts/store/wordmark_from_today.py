@@ -5,8 +5,11 @@ Nur Pixel der App: Helligkeit über dem Seitengrund wird zur Deckkraft, gefärbt
 from PIL import Image
 
 
-def extract(path, ink=(0x1C, 0x19, 0x16)):
+def extract(path, ink=(0x1C, 0x19, 0x16), rtl=False):
     im = Image.open(path).convert('RGB')
+    if rtl:
+        # In Arabisch steht der Schriftzug oben rechts: gespiegelt suchen, danach zurückspiegeln.
+        im = im.transpose(Image.FLIP_LEFT_RIGHT)
     w, h = im.size
     gray = im.convert('L')
     bg = sorted(gray.crop((0, int(h * 0.02), int(w * 0.05), int(h * 0.15))).get_flattened_data())[0x80]
@@ -40,7 +43,8 @@ def extract(path, ink=(0x1C, 0x19, 0x16)):
             if i - start > best[1] - best[0]: best = (start, i)
             start = None
     out = out.crop((0, best[0], out.width, best[1]))
-    return out.crop(out.getchannel('A').point(lambda v: 255 if v > 24 else 0).getbbox())
+    out = out.crop(out.getchannel('A').point(lambda v: 255 if v > 24 else 0).getbbox())
+    return out.transpose(Image.FLIP_LEFT_RIGHT) if rtl else out
 
 
 if __name__ == '__main__':

@@ -7,6 +7,7 @@ angeschnitten. Der Schriftzug stammt aus der echten Startseiten-Aufnahme derselb
 Ausgabe in exakt Apples Maßen des Geräts (gleich der nativen Aufnahme), RGB ohne Alpha.
 """
 import argparse
+import functools
 import hashlib
 import json
 from pathlib import Path
@@ -21,6 +22,7 @@ INK = (0x1C, 0x19, 0x16)
 SKY_TOP, SKY_BOTTOM = (0xE0, 0xEF, 0xF9), (0xEA, 0xF4, 0xFB)
 GESTURE = {'keep': (0x1B, 0x6F, 0xA8), 'trash': (0xC4, 0x44, 0x1A), 'later': (0x63, 0x47, 0xD0)}
 RTL = {'ar', 'he'}
+TEXT_OPTS = {'ar': {'direction': 'rtl', 'language': 'ar'}}
 # Schriften der App für lateinische Schrift; für andere Schriften die Systemschrift des macOS-Runners.
 SYSTEM = {
     'cyrillic': ['/System/Library/Fonts/SFNS.ttf', '/System/Library/Fonts/Helvetica.ttc'],
@@ -38,14 +40,28 @@ def script_of(locale):
     return locale if locale in SYSTEM else 'latin'
 
 
+@functools.lru_cache(maxsize=None)
 def font(locale, role, size):
     s = script_of(locale)
     if s == 'latin':
         name = {'head': 'PMDisplay-Bold.ttf', 'sub': 'PMText-Medium.ttf', 'gesture': 'PMText-Bold.ttf'}[role]
         return ImageFont.truetype(str(FONTS / name), size)
+    want = ('Bold', 'Semibold', 'W7', 'Heavy') if role in ('head', 'gesture') else ('Medium', 'Regular', 'W4', 'W3')
     for path in SYSTEM[s]:
-        if Path(path).exists():
-            return ImageFont.truetype(path, size)
+        if not Path(path).exists():
+            continue
+        faces = []
+        for index in range(32):
+            try: faces.append(ImageFont.truetype(path, size, index=index))
+            except OSError: break
+        for style in want:
+            for f in faces:
+                if f.getname()[1].replace(' ', '') == style and (s != 'zh-Hans' or 'SC' in f.getname()[0]) and (s != 'zh-Hant' or 'TC' in f.getname()[0]):
+                    return f
+        f = faces[0]
+        try: f.set_variation_by_name(want[0])  # variable Systemschrift (SF)
+        except Exception: pass
+        return f
     raise SystemExit(f'BLOCKED: keine Schrift für {locale}')
 
 
@@ -62,7 +78,7 @@ def fitted(draw, lines, locale, role, size, minimum, width):
     """Größte Schrift, bei der jede vorgegebene Zeile in die Breite passt (Zeilen werden nie umbrochen)."""
     for s in range(size, minimum - 1, -2):
         f = font(locale, role, s)
-        if all(draw.textlength(l, font=f) <= width for l in lines):
+        if all(draw.textlength(l, font=f, **TEXT_OPTS.get(locale, {})) <= width for l in lines):
             return f
     raise SystemExit(f'Text zu lang für {locale}: {lines!r}')
 
@@ -79,6 +95,10 @@ def arrow(draw, box, direction, color):
 
 
 def compose(native, today, slot, locale, device, out, all_heads=None, all_subs=None):
+    if locale in TEXT_OPTS:
+        # Arabisch braucht echte Textformung (verbundene Buchstaben, rechts nach links).
+        from PIL import features
+        if not features.check('raqm'): raise SystemExit('BLOCKED: libraqm fehlt (Arabisch würde unverbunden gesetzt)')
     src = Image.open(native).convert('RGB')
     W, H = src.size
     tablet = device == 'ipad'
@@ -88,7 +108,7 @@ def compose(native, today, slot, locale, device, out, all_heads=None, all_subs=N
     d = ImageDraw.Draw(im, 'RGBA')
     m = round(70 * u)
     # Schriftzug: echte Pixel, nur verkleinert, falls größer als vorgesehen.
-    wm = extract_wordmark(today)
+    wm = extract_wordmark(today, rtl=rtl)
     target_h = round(110 * u)
     if wm.height > target_h:
         wm = wm.resize((round(wm.width * target_h / wm.height), target_h), Image.LANCZOS)
@@ -99,14 +119,14 @@ def compose(native, today, slot, locale, device, out, all_heads=None, all_subs=N
     # Eine Schriftgröße für alle zehn Bilder einer Sprache (ruhiges, einheitliches Bild).
     fh = fitted(d, all_heads or head, locale, 'head', round(112 * u), round(70 * u), W - 2 * m)
     for line in head:
-        x = W - m - d.textlength(line, font=fh) if rtl else m
-        d.text((x, y), line, font=fh, fill=INK)
+        x = W - m - d.textlength(line, font=fh, **TEXT_OPTS.get(locale, {})) if rtl else m
+        d.text((x, y), line, font=fh, fill=INK, **TEXT_OPTS.get(locale, {}))
         y += round(fh.size * 1.16)
     if slot.get('sub'):
         y += round(14 * u)
         fs = fitted(d, all_subs or [slot['sub']], locale, 'sub', round(52 * u), round(34 * u), W - 2 * m)
-        x = W - m - d.textlength(slot['sub'], font=fs) if rtl else m
-        d.text((x, y), slot['sub'], font=fs, fill=INK)
+        x = W - m - d.textlength(slot['sub'], font=fs, **TEXT_OPTS.get(locale, {})) if rtl else m
+        d.text((x, y), slot['sub'], font=fs, fill=INK, **TEXT_OPTS.get(locale, {}))
         y += round(fs.size * 1.3)
     if slot.get('gestures'):
         y += round(26 * u)
@@ -115,9 +135,20 @@ def compose(native, today, slot, locale, device, out, all_heads=None, all_subs=N
         fg = fitted(d, list(slot['gestures'].values()), locale, 'gesture', round(68 * u), round(36 * u), col - a - round(30 * u))
         for i, (key, direction) in enumerate((('keep', 'up'), ('trash', 'left'), ('later', 'right'))):
             # Pfeile zeigen die echte Fingerrichtung, auch in RTL nie gespiegelt.
-            x = m + i * col
-            arrow(d, (x, y + round(14 * u), x + a, y + round(14 * u) + a), direction, GESTURE[key])
-            d.text((x + a + round(14 * u), y), slot['gestures'][key], font=fg, fill=GESTURE[key])
+            opts = TEXT_OPTS.get(locale, {})
+            label = slot['gestures'][key]
+            tw = d.textlength(label, font=fg, **opts)
+            box = d.textbbox((0, 0), label, font=fg, **opts)
+            ay = y + (box[1] + box[3]) / 2 - a / 2  # Pfeil mittig zur Schrift
+            gap = round(14 * u)
+            if rtl:  # Lesereihenfolge von rechts: Spalten gespiegelt, Pfeil rechts vom Wort
+                x1 = W - m - i * col
+                arrow(d, (x1 - a, ay, x1, ay + a), direction, GESTURE[key])
+                d.text((x1 - a - gap - tw, y), label, font=fg, fill=GESTURE[key], **opts)
+            else:
+                x = m + i * col
+                arrow(d, (x, ay, x + a, ay + a), direction, GESTURE[key])
+                d.text((x + a + gap, y), label, font=fg, fill=GESTURE[key], **opts)
         y += round(84 * u)
     top = y + round(64 * u)
     # Gerät: native Aufnahme proportional verkleinert, unten angeschnitten.
