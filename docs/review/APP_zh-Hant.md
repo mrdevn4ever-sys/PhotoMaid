@@ -200,7 +200,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | 同時儲存檢查清單 |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | 在目的地檔案夾中儲存一份表格（CSV 檔），包含每個檔案的名稱、日期、大小和校驗碼，以及你的相簿、標籤和備註 – 方便日後檢查副本。 |
 | 0197 | `art_feed_of` | of %1$@ | 共 %1$@ |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | 配對、照片貪食蛇和 Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | 配對、照片貪食蛇和 Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | 待整理 |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | 你還拿不定主意的照片。 |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | 深呼吸。讓你的照片陪你玩。 |
@@ -261,7 +261,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0258 | `blocks_clear_selection` | Clear selection | 清除選擇 |
 | 0259 | `blocks_continue` | Resume | 繼續 |
 | 0260 | `blocks_discovered` | Photo discovered! | 照片揭曉！ |
-| 0261 | `blocks_favorites` | Favorites | 個人收藏 |
+| 0261 | `blocks_favorites` | Favorites | 喜好項目 |
 | 0262 | `blocks_found` | Photos discovered: %1$lld | 已揭曉照片：%1$lld |
 | 0263 | `blocks_gestures` | Board: swipe sideways, tap to rotate, drag or flick down. | 棋盤：左右滑動移動，點一下旋轉，拖移或向下快速滑動。 |
 | 0264 | `blocks_hint_drop` | Drag down: faster · flick down: place | 向下拖移：加速 · 向下快速滑動：直接落下 |
@@ -276,7 +276,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0273 | `blocks_over` | Round complete | 本回合完成 |
 | 0274 | `blocks_pause` | Pause | 暫停 |
 | 0275 | `blocks_paused` | Paused | 已暫停 |
-| 0276 | `blocks_photo_privacy` | iCloud photos download when needed. Vault, hidden and excluded photos stay protected. | iCloud 照片會在需要時下載。保險箱、隱藏和排除的照片仍受保護。 |
+| 0276 | `blocks_photo_privacy` | iCloud photos download when needed. Vault, hidden and excluded photos stay protected. | iCloud 照片會在需要時下載。保險箱中的照片、隱藏的照片和已排除的照片仍受保護。 |
 | 0277 | `blocks_photo_source` | Picture source | 圖片來源 |
 | 0278 | `blocks_photos` | Choose photos | 選擇照片 |
 | 0279 | `blocks_position` | Column %1$lld, row %2$lld, rotation %3$lld | 第 %1$lld 欄，第 %2$lld 列，旋轉 %3$lld |
@@ -548,7 +548,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0549 | `edit_save_copy_text` | The original stays unchanged. | 原始檔保持不變。 |
 | 0550 | `edit_save_geometry_only` | Save crop only | 只儲存裁切 |
 | 0551 | `edit_save_original` | Edit original | 編輯原始檔 |
-| 0552 | `edit_save_original_text` | iOS asks first. The edit is saved like an edit in the Photos app – you can undo it there anytime with “Revert”. | iOS 會先詢問。編輯會像在「照片」App 中編輯一樣儲存 – 你隨時可以在那裡用「回復」還原。 |
+| 0552 | `edit_save_original_text` | iOS asks first. The edit is saved like an edit in the Photos app – you can undo it there anytime with “Revert”. | iOS 會先詢問。編輯會像在「照片」App 中編輯一樣儲存 – 你隨時可以在那裡用「回復原狀」還原。 |
 | 0553 | `edit_save_replace` | Save copy and move original to trash | 儲存副本並將原始檔移到垃圾桶 |
 | 0554 | `edit_save_replace_action` | Save copy, original to trash | 儲存副本，原始檔移到垃圾桶 |
 | 0555 | `edit_save_replace_text` | iOS asks to confirm. The original goes to “Recently Deleted” in the Photos app and can usually be restored there for 30 days. Space is freed only after that. | iOS 會請你確認。原始檔會移到「照片」App 的「最近刪除」，通常 30 天內可在那裡復原。之後才會釋放空間。 |
@@ -963,7 +963,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0980 | `memory_size` | Number of pairs | 配對數量 |
 | 0981 | `memory_source` | Picture source | 圖片來源 |
 | 0982 | `memory_source_collection` | Album or photo folder | 相簿或照片檔案夾 |
-| 0983 | `memory_source_favorites` | Favorites | 個人收藏 |
+| 0983 | `memory_source_favorites` | Favorites | 喜好項目 |
 | 0984 | `memory_source_library` | Entire photo library | 整個照片圖庫 |
 | 0985 | `memory_sun` | Sun | 太陽 |
 | 0986 | `memory_title` | Pairs | 配對 |
@@ -1171,7 +1171,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1196 | `pro_msg_pending` | Your purchase is awaiting confirmation. Pro will unlock once it’s confirmed. | 你的購買正在等待確認。確認後將解鎖 Pro。 |
 | 1197 | `pro_msg_restored` | Your purchase has been restored. | 已恢復你的購買項目。 |
 | 1198 | `pro_price_loading` | Loading price … | 正在載入價格 … |
-| 1199 | `pro_privacy_no_ads` | Your photos and files are checked and sorted only on your device. For the purchase only the bare minimum goes to Google – never your photos, their names or anything derived from them. | 你的照片和檔案只在你的裝置上檢查和整理。購買時只會向 Google 傳送最少的必要資訊 – 絕不包含你的照片、照片名稱或從中衍生的任何內容。 |
+| 1199 | `pro_privacy_no_ads` | Your photos and files are checked and sorted only on your device. For the purchase only the bare minimum goes to Apple – never your photos, their names or anything derived from them. | 你的照片和檔案只在你的裝置上檢查和整理。購買時只會向 Apple 傳送最少的必要資訊 – 絕不包含你的照片、照片名稱或從中衍生的任何內容。 |
 | 1200 | `pro_restore` | Restore purchases | 恢復購買項目 |
 | 1201 | `pro_store_unavailable` | Pro can’t be loaded from the App Store right now. Check your internet connection and try again. | 目前無法從 App Store 載入 Pro。請檢查網路連線後再試一次。 |
 | 1202 | `pro_subtitle` | Buy once. No subscription. | 一次購買，無需訂閱。 |
@@ -1849,7 +1849,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1912 | `wf_title` | Workflows | 工作流程 |
 | 1913 | `yes` | Yes | 是 |
 | 9000 | `info:NSPhotoLibraryUsageDescription` | GaleriQ shows your photos and videos for sorting on this iPhone and only removes items you choose and confirm in the system dialog. | GaleriQ 會在這部 iPhone 上顯示你的照片和影片以便整理，並只移除你選擇並在系統對話框中確認的項目。 |
-| 9001 | `info:NSPhotoLibraryAddUsageDescription` | GaleriQ saves edited copies, collages, videos and PDFs as new items in your library. | GaleriQ 會將編輯後的副本、拼貼、影片和 PDF 作為新項目儲存到你的圖庫。 |
+| 9001 | `info:NSPhotoLibraryAddUsageDescription` | GaleriQ saves edited copies, collages and videos as new items in your library. | GaleriQ 會將編輯後的副本、拼貼和影片作為新項目儲存到你的圖庫。 |
 | 9002 | `info:NSCameraUsageDescription` | GaleriQ uses the camera only to scan documents when you tap Scan. | 只有在你點一下「掃描」時，GaleriQ 才會使用相機掃描文件。 |
 | 9003 | `info:NSFaceIDUsageDescription` | GaleriQ uses Face ID only to open content you protected with a code. | GaleriQ 只會用 Face ID 打開你用密碼保護的內容。 |
 | 9004 | `info:NSMicrophoneUsageDescription` | GaleriQ needs microphone access for a voice note. Recording starts only when you tap. | GaleriQ 需要取用麥克風來錄製語音備忘錄。只有在你點一下時才會開始錄音。 |

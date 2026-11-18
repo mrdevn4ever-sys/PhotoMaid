@@ -206,7 +206,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | Gem også en tjekliste |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | Gemmer en tabel (CSV-fil) i destinationsmappen med hver fils navn, dato, størrelse og kontrolsum samt dine albummer, tags og noter – så du kan kontrollere kopierne senere. |
 | 0197 | `art_feed_of` | of %1$@ | af %1$@ |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | Par, Fotoslange og Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | Par, Fotoslange og Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | at gennemgå |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | Fotos, du stadig er i tvivl om. |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | Træk vejret. Dine fotos spiller med. |
@@ -244,7 +244,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0233 | `basket_confirm_files_message` | This can’t be undone. | Dette kan ikke fortrydes. |
 | 0234 | `basket_confirm_files_title` | Permanently delete files? | Slet filer permanent? |
 | 0235 | `basket_confirm_media_action` | Remove %1$lld | Fjern %1$lld |
-| 0236 | `basket_confirm_media_message` | Then confirm in the iOS dialog. The photos and videos move to “Recently Deleted” in the Photos app. | Bekræft derefter i iOS-dialogen. Fotos og videoer flyttes til “Senest slettet” i appen Fotos. |
+| 0236 | `basket_confirm_media_message` | Then confirm in the iOS dialog. The photos and videos move to “Recently Deleted” in the Photos app. | Bekræft derefter i iOS-dialogen. Fotos og videoer flyttes til “Slettet for nylig” i appen Fotos. |
 | 0237 | `basket_confirm_media_title` | Remove photos & videos? | Fjern fotos og videoer? |
 | 0238 | `basket_count` | %1$lld in trash | %1$lld i papirkurven |
 | 0239 | `basket_delete_files#one` | Permanently delete %1$lld file | Slet %1$lld fil permanent |
@@ -256,7 +256,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0245 | `basket_files_footer` | These files will be permanently deleted. You can’t undo this. | Disse filer slettes permanent. Det kan ikke fortrydes. |
 | 0246 | `basket_files_header` | Files | Filer |
 | 0247 | `basket_intro` | Nothing has been deleted yet. Tap a thumbnail for a larger view. Empty the trash only when you’re ready. | Intet er slettet endnu. Tryk på et miniaturebillede for en større visning. Tøm først papirkurven, når du er klar. |
-| 0248 | `basket_media_footer` | iOS asks you to confirm again and moves photos and videos to “Recently Deleted”. You can usually restore them there for 30 days. With iCloud Photos, deleting applies to all your devices. | iOS beder dig bekræfte igen og flytter fotos og videoer til “Senest slettet”. Der kan du normalt gendanne dem i 30 dage. Med iCloud-fotos gælder sletningen på alle dine enheder. |
+| 0248 | `basket_media_footer` | iOS asks you to confirm again and moves photos and videos to “Recently Deleted”. You can usually restore them there for 30 days. With iCloud Photos, deleting applies to all your devices. | iOS beder dig bekræfte igen og flytter fotos og videoer til “Slettet for nylig”. Der kan du normalt gendanne dem i 30 dage. Med iCloud-fotos gælder sletningen på alle dine enheder. |
 | 0249 | `basket_media_header` | Photos & videos | Fotos og videoer |
 | 0250 | `basket_preview_note` | Viewing doesn’t change your selection. | At se ændrer ikke dit valg. |
 | 0251 | `basket_preview_open` | View larger: %1$@ | Vis større: %1$@ |
@@ -560,7 +560,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0549 | `edit_save_copy_text` | The original stays unchanged. | Originalen forbliver uændret. |
 | 0550 | `edit_save_geometry_only` | Save crop only | Gem kun beskæringen |
 | 0551 | `edit_save_original` | Edit original | Rediger original |
-| 0552 | `edit_save_original_text` | iOS asks first. The edit is saved like an edit in the Photos app – you can undo it there anytime with “Revert”. | iOS spørger først. Redigeringen gemmes som en redigering i appen Fotos – du kan altid fortryde den der med “Tilbagestil”. |
+| 0552 | `edit_save_original_text` | iOS asks first. The edit is saved like an edit in the Photos app – you can undo it there anytime with “Revert”. | iOS spørger først. Redigeringen gemmes som en redigering i appen Fotos – du kan altid fortryde den der med “Tilbage til original”. |
 | 0553 | `edit_save_replace` | Save copy and move original to trash | Gem kopi, og flyt originalen til papirkurven |
 | 0554 | `edit_save_replace_action` | Save copy, original to trash | Gem kopi, original i papirkurven |
 | 0555 | `edit_save_replace_text` | iOS asks to confirm. The original goes to “Recently Deleted” in the Photos app and can usually be restored there for 30 days. Space is freed only after that. | iOS beder om bekræftelse. Originalen havner i “Senest slettet” i appen Fotos og kan normalt gendannes der i 30 dage. Pladsen frigøres først derefter. |
@@ -1207,7 +1207,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1196 | `pro_msg_pending` | Your purchase is awaiting confirmation. Pro will unlock once it’s confirmed. | Dit køb venter på bekræftelse. Pro låses op, så snart det er bekræftet. |
 | 1197 | `pro_msg_restored` | Your purchase has been restored. | Dit køb er gendannet. |
 | 1198 | `pro_price_loading` | Loading price … | Indlæser pris … |
-| 1199 | `pro_privacy_no_ads` | Your photos and files are checked and sorted only on your device. For the purchase only the bare minimum goes to Google – never your photos, their names or anything derived from them. | Dine fotos og filer kontrolleres og sorteres kun på din enhed. Ved købet går kun det allermest nødvendige til Google – aldrig dine fotos, deres navne eller noget afledt af dem. |
+| 1199 | `pro_privacy_no_ads` | Your photos and files are checked and sorted only on your device. For the purchase only the bare minimum goes to Apple – never your photos, their names or anything derived from them. | Dine fotos og filer kontrolleres og sorteres kun på din enhed. Ved købet går kun det allermest nødvendige til Apple – aldrig dine fotos, deres navne eller noget afledt af dem. |
 | 1200 | `pro_restore` | Restore purchases | Gendan køb |
 | 1201 | `pro_store_unavailable` | Pro can’t be loaded from the App Store right now. Check your internet connection and try again. | Pro kan ikke indlæses fra App Store lige nu. Tjek din internetforbindelse, og prøv igen. |
 | 1202 | `pro_subtitle` | Buy once. No subscription. | Køb én gang. Intet abonnement. |
@@ -1753,7 +1753,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1758 | `vault_forgot` | Forgot code? | Glemt koden? |
 | 1759 | `vault_forgot_none` | No recovery key was set up. Without the code (or Face ID), the vault can’t be opened. | Der er ikke oprettet nogen gendannelsesnøgle. Uden koden (eller Face ID) kan boksen ikke åbnes. |
 | 1760 | `vault_hide_entry` | Hide entry | Skjul indgangen |
-| 1761 | `vault_hide_entry_text` | The vault disappears from Settings. To open it, press and hold “GaleriQ” at the top of the start screen for 2 seconds – the small vault dial in the “Q” turns. | Boksen forsvinder fra Indstillinger. Du åbner den ved at holde på “GaleriQ” øverst på startskærmen i 2 sekunder – den lille boksknap i “Q” drejer. |
+| 1761 | `vault_hide_entry_text` | The vault disappears from Settings. To open it, press and hold “GaleriQ” at the top of the start screen for 2 seconds – the small vault dial in the “Q” turns. | Boksen forsvinder fra Indstillinger. Du åbner den ved at trykke og holde på “GaleriQ” øverst på startskærmen i 2 sekunder – den lille drejeskive til boksen i “Q” drejer. |
 | 1762 | `vault_hide_title` | Hide the entry? | Skjul indgangen? |
 | 1763 | `vault_import_action` | Move to vault | Flyt til boksen |
 | 1764 | `vault_import_confirm_text` | They are copied encrypted and verified. Then iOS asks whether they may be deleted from the Photos app. There they stay in “Recently Deleted” for 30 days. | De kopieres krypteret og kontrolleres. Derefter spørger iOS, om de må slettes fra appen Fotos. Der bliver de i “Senest slettet” i 30 dage. |
@@ -1907,7 +1907,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1912 | `wf_title` | Workflows | Arbejdsgange |
 | 1913 | `yes` | Yes | Ja |
 | 9000 | `info:NSPhotoLibraryUsageDescription` | GaleriQ shows your photos and videos for sorting on this iPhone and only removes items you choose and confirm in the system dialog. | GaleriQ viser dine fotos og videoer til sortering på denne iPhone og fjerner kun emner, du vælger og bekræfter i systemdialogen. |
-| 9001 | `info:NSPhotoLibraryAddUsageDescription` | GaleriQ saves edited copies, collages, videos and PDFs as new items in your library. | GaleriQ gemmer redigerede kopier, collager, videoer og PDF'er som nye emner i dit bibliotek. |
+| 9001 | `info:NSPhotoLibraryAddUsageDescription` | GaleriQ saves edited copies, collages and videos as new items in your library. | GaleriQ gemmer redigerede kopier, collager og videoer som nye emner i dit bibliotek. |
 | 9002 | `info:NSCameraUsageDescription` | GaleriQ uses the camera only to scan documents when you tap Scan. | GaleriQ bruger kun kameraet til at scanne dokumenter, når du trykker på Scan. |
 | 9003 | `info:NSFaceIDUsageDescription` | GaleriQ uses Face ID only to open content you protected with a code. | GaleriQ bruger kun Face ID til at åbne indhold, du har beskyttet med en kode. |
 | 9004 | `info:NSMicrophoneUsageDescription` | GaleriQ needs microphone access for a voice note. Recording starts only when you tap. | GaleriQ skal have adgang til mikrofonen for at optage en talenote. Optagelsen starter først, når du trykker. |

@@ -87,6 +87,12 @@ jobs:
         run: |
           python3 -m unittest discover -s scripts/ci -p 'test_check_privacy_manifests.py' -v
           python3 scripts/ci/check_privacy_manifests.py PhotoMaid/Resources/PrivacyInfo.xcprivacy
+      - name: App-Texte prüfen (45 Sprachen)
+        env:
+          PM_ANDROID_RES: /nonexistent
+        run: |
+          python3 scripts/android_strings_to_xcstrings.py --check
+          python3 scripts/i18n/new_languages.py check
       - name: Pflicht-Secrets vorhanden?
         run: |
           missing=""

@@ -200,7 +200,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | บันทึกรายการตรวจสอบด้วย |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | บันทึกตาราง (ไฟล์ CSV) ในโฟลเดอร์ปลายทาง พร้อมชื่อ วันที่ ขนาด และค่าตรวจสอบของแต่ละไฟล์ รวมถึงอัลบั้ม แท็ก และโน้ตของคุณ – เพื่อให้ตรวจสอบสำเนาได้ภายหลัง |
 | 0197 | `art_feed_of` | of %1$@ | จาก %1$@ |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | จับคู่ งูรูปภาพ และ Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | จับคู่ งูรูปภาพ และ Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | รอตรวจดู |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | รูปที่คุณยังลังเลอยู่ |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | หายใจลึกๆ ให้รูปภาพของคุณมาเล่นด้วย |
@@ -467,7 +467,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0468 | `edit_done_copy` | Saved as a copy | บันทึกเป็นสำเนาแล้ว |
 | 0469 | `edit_done_copy_size` | Saved as a copy · %1$@ | บันทึกเป็นสำเนาแล้ว · %1$@ |
 | 0470 | `edit_done_declined` | Original kept · the edit was saved as a copy | เก็บต้นฉบับไว้ · การแก้ไขถูกบันทึกเป็นสำเนา |
-| 0471 | `edit_done_original` | Original edited · can be reverted in the Photos app | แก้ไขต้นฉบับแล้ว · ย้อนกลับได้ในแอพรูปภาพ |
+| 0471 | `edit_done_original` | Original edited · can be reverted in the Photos app | แก้ไขต้นฉบับแล้ว · แปลงกลับได้ในแอปรูปภาพ |
 | 0472 | `edit_done_replaced` | Original replaced · it’s in “Recently Deleted” | แทนที่ต้นฉบับแล้ว · อยู่ใน “ที่ลบล่าสุด” |
 | 0473 | `edit_err_declined` | Not changed – iOS didn’t get permission. The original is unchanged. | ไม่ได้เปลี่ยน – iOS ไม่ได้รับอนุญาต ต้นฉบับไม่เปลี่ยนแปลง |
 | 0474 | `edit_err_gone` | This item was changed, moved or deleted in the meantime. Nothing was saved. | รายการนี้ถูกเปลี่ยน ย้าย หรือลบไปในระหว่างนั้น ไม่มีอะไรถูกบันทึก |
@@ -657,7 +657,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0659 | `fc_swipes` | Swipes | การปัด |
 | 0660 | `fc_swipes_footer` | Choose what each direction does. “Put in album” adds the photo to an album in the Photos app and keeps it. Doing nothing is never a decision. | เลือกว่าแต่ละทิศทางจะทำอะไร “ใส่ในอัลบั้ม” จะเพิ่มรูปลงอัลบั้มในแอพรูปภาพและเก็บรูปไว้ การไม่ทำอะไรไม่นับเป็นการตัดสินใจ |
 | 0661 | `fc_title` | Swipes & buttons | การปัดและปุ่ม |
-| 0662 | `fc_vis_accessibility` | Only with VoiceOver/Switch Control | เฉพาะกับ VoiceOver/การควบคุมด้วยสวิตช์ |
+| 0662 | `fc_vis_accessibility` | Only with VoiceOver/Switch Control | เฉพาะกับ VoiceOver/การควบคุมสวิตช์ |
 | 0663 | `fc_vis_always` | Always | ตลอด |
 | 0664 | `fc_visibility` | Show buttons | แสดงปุ่ม |
 | 0665 | `feed_album_done` | Put in “%1$@” | ใส่ใน “%1$@” |
@@ -790,7 +790,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0794 | `history_with_day` | %1$@ · %2$@ | %1$@ · %2$@ |
 | 0795 | `hub_dup_sub` | Identical copies | สำเนาที่เหมือนกัน |
 | 0796 | `hub_files_sub` | Files from connected folders | ไฟล์จากโฟลเดอร์ที่เชื่อมต่อ |
-| 0797 | `hub_large_from` | from %1$@ | จาก %1$@ |
+| 0797 | `hub_large_from` | from %1$@ | ตั้งแต่ %1$@ |
 | 0798 | `hub_media_header` | Library | คลัง |
 | 0799 | `hub_months_sub` | Get done month by month | ทำให้เสร็จทีละเดือน |
 | 0800 | `hub_nothing_pending` | All reviewed | ตรวจดูครบแล้ว |
@@ -944,7 +944,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0961 | `memory_cloud` | Load iCloud photos | โหลดรูปภาพ iCloud |
 | 0962 | `memory_done` | All pairs found! | พบครบทุกคู่แล้ว! |
 | 0963 | `memory_elapsed` | Time: %1$@ | เวลา: %1$@ |
-| 0964 | `memory_flip` | Turn cards over | พลิกการ์ด |
+| 0964 | `memory_flip` | Turn cards over | คว่ำการ์ด |
 | 0965 | `memory_heart` | Heart | หัวใจ |
 | 0966 | `memory_hidden` | Face down | คว่ำอยู่ |
 | 0967 | `memory_leaf` | Leaf | ใบไม้ |
@@ -1036,7 +1036,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1056 | `mute` | Turn sound off | ปิดเสียง |
 | 1057 | `no_viewer` | This file can’t be shown. | ไม่สามารถแสดงไฟล์นี้ได้ |
 | 1058 | `not_selected` | Not selected | ไม่ได้เลือก |
-| 1059 | `notice` | Note | โน้ต |
+| 1059 | `notice` | Note | หมายเหตุ |
 | 1060 | `notif_due_body` | Something in “Later” is ready to review today. | มีรายการใน “ไว้ทีหลัง” ที่พร้อมตรวจดูวันนี้ |
 | 1061 | `ok` | OK | ตกลง |
 | 1062 | `onb_access_text` | GaleriQ shows your photos and videos directly on your device so you can clean up. No GaleriQ account or server. | GaleriQ แสดงรูปภาพและวิดีโอของคุณบนอุปกรณ์โดยตรงเพื่อให้คุณจัดระเบียบ ไม่มีบัญชีหรือเซิร์ฟเวอร์ของ GaleriQ |
@@ -1171,7 +1171,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1196 | `pro_msg_pending` | Your purchase is awaiting confirmation. Pro will unlock once it’s confirmed. | การซื้อของคุณกำลังรอการยืนยัน Pro จะปลดล็อกเมื่อได้รับการยืนยัน |
 | 1197 | `pro_msg_restored` | Your purchase has been restored. | กู้คืนการซื้อของคุณแล้ว |
 | 1198 | `pro_price_loading` | Loading price … | กำลังโหลดราคา … |
-| 1199 | `pro_privacy_no_ads` | Your photos and files are checked and sorted only on your device. For the purchase only the bare minimum goes to Google – never your photos, their names or anything derived from them. | รูปภาพและไฟล์ของคุณถูกตรวจสอบและจัดเรียงบนอุปกรณ์ของคุณเท่านั้น สำหรับการซื้อ จะส่งเฉพาะสิ่งที่จำเป็นที่สุดไปยัง Google – ไม่เคยส่งรูปภาพ ชื่อรูป หรือสิ่งใดที่ได้มาจากรูป |
+| 1199 | `pro_privacy_no_ads` | Your photos and files are checked and sorted only on your device. For the purchase only the bare minimum goes to Apple – never your photos, their names or anything derived from them. | รูปภาพและไฟล์ของคุณถูกตรวจสอบและจัดเรียงบนอุปกรณ์ของคุณเท่านั้น สำหรับการซื้อ จะส่งเฉพาะสิ่งที่จำเป็นที่สุดไปยัง Apple – ไม่เคยส่งรูปภาพ ชื่อรูป หรือสิ่งใดที่ได้มาจากรูป |
 | 1200 | `pro_restore` | Restore purchases | กู้คืนการซื้อ |
 | 1201 | `pro_store_unavailable` | Pro can’t be loaded from the App Store right now. Check your internet connection and try again. | ไม่สามารถโหลด Pro จาก App Store ได้ในขณะนี้ ตรวจสอบการเชื่อมต่ออินเทอร์เน็ตแล้วลองอีกครั้ง |
 | 1202 | `pro_subtitle` | Buy once. No subscription. | ซื้อครั้งเดียว ไม่ต้องสมัครสมาชิก |
@@ -1224,7 +1224,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1256 | `rec_latest` | Latest record | สถิติล่าสุด |
 | 1257 | `rec_medal_bronze` | Bronze | ทองแดง |
 | 1258 | `rec_medal_gold` | Gold | ทอง |
-| 1259 | `rec_medal_next` | %1$@ from %2$@ · %3$@ to go | %1$@ จาก %2$@ · อีก %3$@ |
+| 1259 | `rec_medal_next` | %1$@ from %2$@ · %3$@ to go | %1$@ ตั้งแต่ %2$@ · เหลืออีก %3$@ |
 | 1260 | `rec_medal_silver` | Silver | เงิน |
 | 1261 | `rec_note` | Medals only compare with your own results – no leaderboards, nothing leaves the device. | เหรียญเปรียบเทียบกับผลงานของคุณเองเท่านั้น – ไม่มีกระดานอันดับ ไม่มีอะไรออกจากอุปกรณ์ |
 | 1262 | `rec_record` | Record | สถิติ |
@@ -1440,7 +1440,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1494 | `today_greeting_afternoon` | Good afternoon | สวัสดีตอนบ่าย |
 | 1495 | `today_greeting_evening` | Good evening | สวัสดีตอนเย็น |
 | 1496 | `today_greeting_morning` | Good morning | สวัสดีตอนเช้า |
-| 1497 | `today_greeting_noon` | Good afternoon | สวัสดีตอนบ่าย |
+| 1497 | `today_greeting_noon` | Good afternoon | สวัสดีตอนเที่ยง |
 | 1498 | `today_limited_action` | Change access | เปลี่ยนการเข้าถึง |
 | 1499 | `today_limited_text` | GaleriQ only shows the photos and videos you’ve allowed. You can clean these up as usual. | GaleriQ แสดงเฉพาะรูปภาพและวิดีโอที่คุณอนุญาต คุณจัดระเบียบได้ตามปกติ |
 | 1500 | `today_limited_title` | Limited access | การเข้าถึงแบบจำกัด |
@@ -1849,7 +1849,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1912 | `wf_title` | Workflows | เวิร์กโฟลว์ |
 | 1913 | `yes` | Yes | ใช่ |
 | 9000 | `info:NSPhotoLibraryUsageDescription` | GaleriQ shows your photos and videos for sorting on this iPhone and only removes items you choose and confirm in the system dialog. | GaleriQ แสดงรูปภาพและวิดีโอของคุณเพื่อจัดระเบียบบน iPhone เครื่องนี้ และนำออกเฉพาะรายการที่คุณเลือกและยืนยันในหน้าต่างของระบบ |
-| 9001 | `info:NSPhotoLibraryAddUsageDescription` | GaleriQ saves edited copies, collages, videos and PDFs as new items in your library. | GaleriQ บันทึกสำเนาที่แก้ไข ภาพตัดปะ วิดีโอ และ PDF เป็นรายการใหม่ในคลังของคุณ |
+| 9001 | `info:NSPhotoLibraryAddUsageDescription` | GaleriQ saves edited copies, collages and videos as new items in your library. | GaleriQ บันทึกสำเนาที่แก้ไข ภาพตัดปะ และวิดีโอเป็นรายการใหม่ในคลังของคุณ |
 | 9002 | `info:NSCameraUsageDescription` | GaleriQ uses the camera only to scan documents when you tap Scan. | GaleriQ ใช้กล้องเพื่อสแกนเอกสารเมื่อคุณแตะ สแกน เท่านั้น |
 | 9003 | `info:NSFaceIDUsageDescription` | GaleriQ uses Face ID only to open content you protected with a code. | GaleriQ ใช้ Face ID เพื่อเปิดเนื้อหาที่คุณปกป้องด้วยรหัสเท่านั้น |
 | 9004 | `info:NSMicrophoneUsageDescription` | GaleriQ needs microphone access for a voice note. Recording starts only when you tap. | GaleriQ ต้องการเข้าถึงไมโครโฟนสำหรับโน้ตเสียง การบันทึกจะเริ่มเมื่อคุณแตะเท่านั้น |

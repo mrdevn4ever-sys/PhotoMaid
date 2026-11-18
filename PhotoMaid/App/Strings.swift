@@ -44,16 +44,31 @@ enum Strings {
     static func forDevice(_ text: String) -> String {
         guard isPad, text.contains("iPhon") else { return text }
         var t = text
-        for (from, to) in inflected { t = t.replacingOccurrences(of: from, with: to) }
+        for (from, to) in inflectedForms { t = t.replacingOccurrences(of: from, with: to) }
         return t.replacingOccurrences(of: "iPhone", with: "iPad")
     }
 
-    /// Gebeugte Formen (Polnisch, Türkisch) vor der allgemeinen Ersetzung; längere Formen zuerst.
-    private static let inflected: [(String, String)] = [
-        ("iPhonie", "iPadzie"), ("iPhone’a", "iPada"),
-        ("iPhone’daki", "iPad’deki"), ("iPhone’dan", "iPad’den"), ("iPhone’da", "iPad’de"), ("iPhone'da", "iPad'de"),
-        ("iPhone’umda", "iPad’imde"), ("iPhone’unun", "iPad’inin"), ("iPhone’un", "iPad’in"),
+    /// Gebeugte Formen je Sprache vor der allgemeinen Ersetzung; längere Formen zuerst. Gleiche Endungen bedeuten
+    /// je Sprache anderes (fi „iPhonen“ → „iPadin“, sv/nb „iPhonen“ → „iPaden“), daher nach App-Sprache getrennt.
+    private static let inflected: [String: [(String, String)]] = [
+        "pl": [("iPhonie", "iPadzie"), ("iPhone’a", "iPada")],
+        "tr": [("iPhone’daki", "iPad’deki"), ("iPhone’dan", "iPad’den"), ("iPhone’da", "iPad’de"), ("iPhone'da", "iPad'de"),
+               ("iPhone’umda", "iPad’imde"), ("iPhone’unun", "iPad’inin"), ("iPhone’un", "iPad’in")],
+        "cs": [("iPhonu", "iPadu")],
+        "sk": [("iPhonu", "iPadu")],
+        "sl": [("iPhonu", "iPadu"), ("iPhona", "iPada")],
+        "hr": [("iPhonea", "iPada"), ("iPhoneu", "iPadu")],
+        "fi": [("iPhonessa", "iPadissa"), ("iPhonesi", "iPadisi"), ("iPhoneen", "iPadiin"), ("iPhonen", "iPadin")],
+        "hu": [("iPhone-od", "iPad-ed"), ("iPhone-on", "iPad-en")],
+        "sv": [("iPhonen", "iPaden")],
+        "nb": [("iPhonen", "iPaden")],
+        "ko": [("iPhone이", "iPad가")],
     ]
+    private static let inflectedForms: [(String, String)] = {
+        let code = language
+        let base = String(code.split(separator: "-").first ?? Substring(code))
+        return inflected[code] ?? inflected[base] ?? []
+    }()
 
     /// Tatsächlich verwendete Sprache der App (nicht nur die Gerätesprache).
     static var language: String { Bundle.main.preferredLocalizations.first ?? "en" }

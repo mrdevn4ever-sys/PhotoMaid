@@ -266,11 +266,11 @@
 0269	Gerenciar fotos permitidas
 0270	Novo recorde!
 0271	Fotos mais recentes
-0272	Avançar
+0272	Próxima peça
 0273	Rodada concluída
 0274	Pausar
 0275	Pausado
-0276	Fotos do iCloud são baixadas quando necessário. Cofre, fotos ocultas e excluídas continuam protegidas.
+0276	Fotos do iCloud são baixadas quando necessário. Fotos no cofre, ocultas e excluídas continuam protegidas.
 0277	Origem das imagens
 0278	Escolher fotos
 0279	Coluna %1$lld, linha %2$lld, rotação %3$lld
@@ -791,7 +791,7 @@
 0794	%1$@ · %2$@
 0795	Cópias idênticas
 0796	Arquivos de pastas conectadas
-0797	de %1$@
+0797	a partir de %1$@
 0798	Biblioteca
 0799	Concluir mês a mês
 0800	Tudo revisado
@@ -1256,8 +1256,10 @@
 1263	Seus recordes. Eles ficam neste iPhone.
 1264	fotos
 1265	pontos
+1267	%1$@ de fotos
 1268	%1$@ foto
 1269	%1$@ fotos
+1271	%1$@ de pontos
 1272	%1$@ ponto
 1273	%1$@ pontos
 1276	dia ativo
@@ -1919,8 +1921,6 @@
 0994:many	Não iniciado · %1$lld de itens
 1103:many	%1$lld de itens não encontrados (apagados ou não estão mais neste aparelho).
 1118:many	Etiquetas de %1$lld de itens
-1267	%1$@ de fotos
-1271	%1$@ de pontos
 1449:many	%1$lld de itens · %2$@
 1493:many	%1$lld de itens de “Depois” estão prontos para revisar
 1502:many	%1$lld de novas fotos e vídeos

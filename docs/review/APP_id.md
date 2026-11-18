@@ -200,7 +200,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | Simpan juga daftar periksa |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | Menyimpan tabel (file CSV) di folder tujuan berisi nama, tanggal, ukuran, dan checksum setiap file, plus album, tag, dan catatanmu – agar kamu bisa memeriksa salinan nanti. |
 | 0197 | `art_feed_of` | of %1$@ | dari %1$@ |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | Pasangan, Ular Foto, dan Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | Pasangan, Ular Foto, dan Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | untuk ditinjau |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | Foto yang masih membuatmu ragu. |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | Tarik napas. Fotomu ikut bermain. |
@@ -657,7 +657,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0659 | `fc_swipes` | Swipes | Geseran |
 | 0660 | `fc_swipes_footer` | Choose what each direction does. “Put in album” adds the photo to an album in the Photos app and keeps it. Doing nothing is never a decision. | Pilih apa yang dilakukan setiap arah. “Masukkan ke album” menambahkan foto ke album di app Foto dan menyimpannya. Tidak melakukan apa-apa tidak pernah dianggap keputusan. |
 | 0661 | `fc_title` | Swipes & buttons | Geseran & tombol |
-| 0662 | `fc_vis_accessibility` | Only with VoiceOver/Switch Control | Hanya dengan VoiceOver/Kontrol Alih |
+| 0662 | `fc_vis_accessibility` | Only with VoiceOver/Switch Control | Hanya dengan VoiceOver/Kontrol Pengalihan |
 | 0663 | `fc_vis_always` | Always | Selalu |
 | 0664 | `fc_visibility` | Show buttons | Tampilkan tombol |
 | 0665 | `feed_album_done` | Put in “%1$@” | Masukkan ke “%1$@” |
@@ -790,7 +790,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0794 | `history_with_day` | %1$@ · %2$@ | %1$@ · %2$@ |
 | 0795 | `hub_dup_sub` | Identical copies | Salinan identik |
 | 0796 | `hub_files_sub` | Files from connected folders | File dari folder tersambung |
-| 0797 | `hub_large_from` | from %1$@ | dari %1$@ |
+| 0797 | `hub_large_from` | from %1$@ | mulai dari %1$@ |
 | 0798 | `hub_media_header` | Library | Pustaka |
 | 0799 | `hub_months_sub` | Get done month by month | Selesaikan bulan demi bulan |
 | 0800 | `hub_nothing_pending` | All reviewed | Semua sudah ditinjau |
@@ -1171,7 +1171,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1196 | `pro_msg_pending` | Your purchase is awaiting confirmation. Pro will unlock once it’s confirmed. | Pembelianmu menunggu konfirmasi. Pro akan terbuka setelah dikonfirmasi. |
 | 1197 | `pro_msg_restored` | Your purchase has been restored. | Pembelianmu telah dipulihkan. |
 | 1198 | `pro_price_loading` | Loading price … | Memuat harga … |
-| 1199 | `pro_privacy_no_ads` | Your photos and files are checked and sorted only on your device. For the purchase only the bare minimum goes to Google – never your photos, their names or anything derived from them. | Foto dan file-mu hanya diperiksa dan diurutkan di perangkatmu. Untuk pembelian, hanya yang benar-benar diperlukan dikirim ke Google – tidak pernah fotomu, namanya, atau apa pun yang berasal darinya. |
+| 1199 | `pro_privacy_no_ads` | Your photos and files are checked and sorted only on your device. For the purchase only the bare minimum goes to Apple – never your photos, their names or anything derived from them. | Foto dan file-mu hanya diperiksa dan diurutkan di perangkatmu. Untuk pembelian, hanya yang benar-benar diperlukan dikirim ke Apple – tidak pernah fotomu, namanya, atau apa pun yang berasal darinya. |
 | 1200 | `pro_restore` | Restore purchases | Pulihkan pembelian |
 | 1201 | `pro_store_unavailable` | Pro can’t be loaded from the App Store right now. Check your internet connection and try again. | Pro tidak dapat dimuat dari App Store saat ini. Periksa koneksi internetmu dan coba lagi. |
 | 1202 | `pro_subtitle` | Buy once. No subscription. | Sekali beli. Tanpa langganan. |
@@ -1849,7 +1849,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1912 | `wf_title` | Workflows | Alur kerja |
 | 1913 | `yes` | Yes | Ya |
 | 9000 | `info:NSPhotoLibraryUsageDescription` | GaleriQ shows your photos and videos for sorting on this iPhone and only removes items you choose and confirm in the system dialog. | GaleriQ menampilkan foto dan videomu untuk dirapikan di iPhone ini dan hanya menghapus item yang kamu pilih dan konfirmasi di dialog sistem. |
-| 9001 | `info:NSPhotoLibraryAddUsageDescription` | GaleriQ saves edited copies, collages, videos and PDFs as new items in your library. | GaleriQ menyimpan salinan hasil edit, kolase, video, dan PDF sebagai item baru di pustakamu. |
+| 9001 | `info:NSPhotoLibraryAddUsageDescription` | GaleriQ saves edited copies, collages and videos as new items in your library. | GaleriQ menyimpan salinan hasil edit, kolase, dan video sebagai item baru di pustakamu. |
 | 9002 | `info:NSCameraUsageDescription` | GaleriQ uses the camera only to scan documents when you tap Scan. | GaleriQ memakai kamera hanya untuk memindai dokumen saat kamu mengetuk Pindai. |
 | 9003 | `info:NSFaceIDUsageDescription` | GaleriQ uses Face ID only to open content you protected with a code. | GaleriQ memakai Face ID hanya untuk membuka konten yang kamu lindungi dengan kode. |
 | 9004 | `info:NSMicrophoneUsageDescription` | GaleriQ needs microphone access for a voice note. Recording starts only when you tap. | GaleriQ butuh akses mikrofon untuk catatan suara. Perekaman baru dimulai saat kamu mengetuk. |

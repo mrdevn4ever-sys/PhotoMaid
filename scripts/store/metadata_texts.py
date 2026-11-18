@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""App-Store-Texte für GaleriQ (16 Sprachen) im fastlane-deliver-Format schreiben und Längen prüfen.
+"""App-Store-Texte für GaleriQ (50 Locales) im fastlane-deliver-Format schreiben und Längen prüfen.
 
 Quelle der Wahrheit für Name, Untertitel, Keywords, Werbetext und Beschreibung je App-Store-Sprache.
 Begriffe wie in der App (Localizable.xcstrings): Tresor, Papierkorb, Später, Paare, Foto-Snake, Foto Blocks,
@@ -386,7 +386,7 @@ GaleriQ en çok yer kaplayanları gösterir: büyük videolar, aynı fotoğrafla
 Başka kimsenin görmemesi gerekenleri kasana koyarsın: fotoğraflar, videolar, dosyalar ve notlar; kendi kodunla, istersen Face ID ile korunur. Kasadaki her şey iPhone'unda şifrelenir.
 
 YARATICI OLMA ZAMANI
-Stüdyo'da fotoğraf ve videolarını düzenler, kolajlar yaparsın, kısa filmler çeker ya da fotoğraflarını PDF'e çevirirsin.
+Stüdyo'da fotoğraf ve videolarını düzenlersin, kolajlar yaparsın, kısa filmler oluşturursun ya da fotoğraflarını PDF'e çevirirsin.
 
 ARA VERME ZAMANI MI?
 Çiftler, Fotoğraf yılanı ve Foto Blocks: kendi fotoğraflarınla oynayabileceğin üç küçük oyun.
@@ -435,7 +435,7 @@ T["zh-Hans"] = dict(
     description="""照片太多，空间不够？有了 GaleriQ，你可以轻松整理，每次只需一个滑动动作。
 
 就是这么简单
-上滑保留一张照片，左滑放入 GaleriQ 回收站，右滑则几天后再看一次，下滑回到上一张。只有在清空回收站并再次确认后，才会真正删除。之后你还能在"照片"App 的"最近删除"里找到它们一段时间。
+上滑保留一张照片，左滑放入 GaleriQ 回收站，右滑则几天后再看一次，下滑回到上一张。只有在清空回收站并再次确认后，才会真正删除。之后你还能在“照片”App 的“最近删除”里找到它们一段时间。
 
 轻松找到占用空间的内容
 GaleriQ 会告诉你哪些内容占用空间最多：大视频、重复的照片、连拍系列和旧截图。你也可以按月浏览图库，或者看看它推荐的模糊、相似照片。留下还是删除，始终由你决定。
@@ -563,6 +563,38 @@ for _path in sorted(pathlib.Path(__file__).resolve().parent.glob("texts_extra_*.
         RELEASE_NOTES[_loc] = _t["notes"]
         IAP[_loc] = _t["iap"]
 
+# Der Prüfauftrag setzt für das Keyword-Feld zusätzlich zur Apple-Zeichengrenze eine strengere
+# UTF-8-Grenze von 100 Bytes. Nur vorhandene, nachrangige Begriffe wurden entfernt.
+KEYWORD_BYTE_OVERRIDES = {
+    "es-ES": "caja fuerte,duplicados,borrar,galería,álbum,almacenamiento,privado,ocultar,collage,editor",
+    "fr-FR": "coffre-fort,doublons,supprimer,galerie,album,stockage,privé,cacher,collage,éditeur,compresser",
+    "ja": "削除,重複,写真,動画,アルバム,カメラロール,非表示,プライバシー,編集",
+    "ko": "삭제,용량,중복,동영상,앨범,갤러리,숨기기,비밀,콜라주,편집,압축,사진첩",
+    "nl-NL": "kluis,duplicaten,verwijderen,galerij,album,opslag,privé,verbergen,collage,bewerken,comprimeren",
+    "pt-PT": "cofre,duplicados,apagar,galeria,álbum,armazenamento,privado,ocultar,colagem,editor,comprimir",
+    "ru": "удаление,дубликаты,галерея,альбом,хранилище,скрыть",
+    "tr": "kopya,silme,galeri,albüm,depolama,gizli,gizle,kolaj,düzenleyici,sıkıştırma,video",
+    "uk": "видалення,дублікати,галерея,альбом,сховище,приховати",
+    "ar-SA": "حذف,مكررة,معرض,ألبوم,خاص,إخفاء,كولاج,محرر,ضغط,فيديو",
+    "el": "θησαυροφυλάκιο,διπλότυπα,διαγραφή,άλμπουμ,ιδιωτικό",
+    "hu": "duplikátum,törlés,galéria,album,tárhely,privát,elrejtés,kollázs,szerkesztő,videó,memória",
+    "he": "כפולים,מחיקה,גלריה,אלבום,אחסון,פרטי,הסתרה,קולאז׳,עורך",
+    "th": "รูปซ้ำ,ลบรูป,คลังภาพ,อัลบั้ม,ส่วนตัว",
+    "hi": "डुप्लिकेट,डिलीट,गैलरी,एल्बम,स्टोरेज",
+    "bn-BD": "ডুপ্লিকেট,মুছুন,গ্যালারি,অ্যালবাম",
+    "gu-IN": "ડુપ્લિકેટ,ડિલીટ,ગેલેરી,આલ્બમ,સ્ટોરેજ",
+    "kn-IN": "ನಕಲು,ಅಳಿಸಿ,ಗ್ಯಾಲರಿ,ಆಲ್ಬಮ್,ಸಂಗ್ರಹಣೆ",
+    "ml-IN": "ഡ്യൂപ്ലിക്കേറ്റ്,ഡിലീറ്റ്,ഗാലറി",
+    "mr-IN": "डुप्लिकेट,डिलीट,गॅलरी,अल्बम,स्टोरेज",
+    "or-IN": "ଡୁପ୍ଲିକେଟ,ଡିଲିଟ,ଗ୍ୟାଲେରୀ,ଆଲବମ,କୋଲାଜ",
+    "pa-IN": "ਡੁਪਲੀਕੇਟ,ਮਿਟਾਓ,ਗੈਲਰੀ,ਐਲਬਮ,ਸਟੋਰੇਜ",
+    "ta-IN": "நகல்,நீக்கு,கேலரி,ஆல்பம்,சேமிப்பகம்",
+    "te-IN": "నకలు,తొలగించు,గ్యాలరీ,ఆల్బమ్,దాచు",
+    "ur-PK": "ڈپلیکیٹ,حذف,گیلری,البم,اسٹوریج,نجی,چھپائیں,کولاج,ویڈیو",
+}
+for _loc, _keywords in KEYWORD_BYTE_OVERRIDES.items():
+    T[_loc]["keywords"] = _keywords
+
 # Alle 50 Sprachen, die App Store Connect anbietet (Apple, „locale shortcodes“, Stand 2026).
 APPLE_LOCALES = ["ar-SA", "bn-BD", "ca", "zh-Hans", "zh-Hant", "hr", "cs", "da", "nl-NL", "en-AU", "en-CA", "en-GB",
                  "en-US", "fi", "fr-FR", "fr-CA", "de-DE", "el", "gu-IN", "he", "hi", "hu", "id", "it", "ja", "kn-IN",
@@ -572,19 +604,67 @@ APPLE_LOCALES = ["ar-SA", "bn-BD", "ca", "zh-Hans", "zh-Hant", "hr", "cs", "da",
 LIMITS = {"name": 30, "subtitle": 30, "keywords": 100, "promo": 170, "description": 4000}
 FILES = {"name": "name.txt", "subtitle": "subtitle.txt", "keywords": "keywords.txt",
          "promo": "promotional_text.txt", "description": "description.txt"}
+FORBIDDEN_NAMES = ("photomaid", "arrumo")
+
+
+def iap_markdown() -> str:
+    rows = [f"| {loc} | GaleriQ Pro | {text} |" for loc, text in IAP.items()]
+    return ("# In-App-Kauf „GaleriQ Pro“\n\n"
+            f"Produkt-ID `{IAP_ID}` · Typ: Nicht-verbrauchbar · Referenzname: GaleriQ Pro\n\n"
+            "| Sprache | Anzeigename | Beschreibung |\n|---|---|---|\n" + "\n".join(rows) + "\n")
+
+
+def expected_tree() -> dict[str, str]:
+    expected = {}
+    for loc, text in T.items():
+        for key, filename in FILES.items():
+            expected[f"{loc}/{filename}"] = text[key] + "\n"
+        expected[f"{loc}/release_notes.txt"] = RELEASE_NOTES[loc] + "\n"
+        expected[f"{loc}/privacy_url.txt"] = PRIVACY_URL + "\n"
+        expected[f"{loc}/support_url.txt"] = SUPPORT_URL + "\n"
+        expected[f"{loc}/marketing_url.txt"] = MARKETING_URL + "\n"
+    expected["copyright.txt"] = COPYRIGHT + "\n"
+    expected["iap-pro.md"] = iap_markdown()
+    return expected
+
+
+def check_deploy_tree() -> list[str]:
+    errors = []
+    expected = expected_tree()
+    actual = {p.relative_to(OUT).as_posix() for p in OUT.rglob("*") if p.is_file()} if OUT.exists() else set()
+    missing = set(expected) - actual
+    extra = actual - set(expected)
+    if missing:
+        errors.append(f"Deploy-Baum: Dateien fehlen: {sorted(missing)}")
+    if extra:
+        errors.append(f"Deploy-Baum: zusätzliche Dateien: {sorted(extra)}")
+    for rel in sorted(set(expected) & actual):
+        try:
+            value = (OUT / rel).read_text(encoding="utf-8")
+        except UnicodeError as exc:
+            errors.append(f"Deploy-Baum {rel}: kein gültiges UTF-8 ({exc})")
+            continue
+        if value != expected[rel]:
+            errors.append(f"Deploy-Baum {rel}: Inhalt weicht vom Generator ab")
+    return errors
 
 
 def check() -> list[str]:
     errors = []
     unknown = set(T) - set(APPLE_LOCALES)
+    missing_locales = set(APPLE_LOCALES) - set(T)
     if unknown:
         errors.append(f"keine App-Store-Sprache: {sorted(unknown)}")
+    if missing_locales:
+        errors.append(f"App-Store-Sprachen fehlen: {sorted(missing_locales)}")
     for loc, t in T.items():
         for key, limit in LIMITS.items():
             value = t[key]
             if len(value) > limit:
-                errors.append(f"{loc} {key}: {len(value)} > {limit}")
-            if "PhotoMaid" in value or "Arrumo" in value:
+                errors.append(f"{loc} {key}: {len(value)} Zeichen > {limit}")
+            if key == "keywords" and len(value.encode("utf-8")) > 100:
+                errors.append(f"{loc} keywords: {len(value.encode('utf-8'))} UTF-8-Bytes > 100")
+            if any(name in value.casefold() for name in FORBIDDEN_NAMES):
                 errors.append(f"{loc} {key}: alter Name")
         words = [w.strip() for w in t["keywords"].split(",")]
         if any(not w or w != w.strip() for w in words) or " ," in t["keywords"] or ", " in t["keywords"]:
@@ -600,13 +680,16 @@ def check() -> list[str]:
     if set(RELEASE_NOTES) != set(T):
         errors.append("Neuerungen: Sprachen passen nicht")
     for loc, text in RELEASE_NOTES.items():
-        if not text.strip() or len(text) > 4000 or "PhotoMaid" in text:
+        if (not text.strip() or len(text) > 4000
+                or any(name in text.casefold() for name in FORBIDDEN_NAMES)):
             errors.append(f"Neuerungen {loc}: leer, zu lang oder alter Name")
     if set(IAP) != set(T):
         errors.append("IAP: Sprachen passen nicht")
     for loc, text in IAP.items():
         if len(text) > 55:
             errors.append(f"IAP {loc}: {len(text)} > 55")
+        if any(name in text.casefold() for name in FORBIDDEN_NAMES):
+            errors.append(f"IAP {loc}: alter Name")
     return errors
 
 
@@ -615,6 +698,8 @@ def main() -> int:
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
     errors = check()
+    if args.check:
+        errors += check_deploy_tree()
     for loc, t in T.items():
         print(f"{loc:8} name {len(t['name']):2}  subtitle {len(t['subtitle']):2}  keywords {len(t['keywords']):3}  "
               f"promo {len(t['promo']):3}  description {len(t['description']):4}")
@@ -633,12 +718,11 @@ def main() -> int:
         (folder / "support_url.txt").write_text(SUPPORT_URL + "\n", encoding="utf-8")
         (folder / "marketing_url.txt").write_text(MARKETING_URL + "\n", encoding="utf-8")
     (OUT / "copyright.txt").write_text(COPYRIGHT + "\n", encoding="utf-8")
-    rows = [f"| {loc} | GaleriQ Pro | {text} |" for loc, text in IAP.items()]
-    (OUT / "iap-pro.md").write_text(
-        "# In-App-Kauf „GaleriQ Pro“\n\n"
-        f"Produkt-ID `{IAP_ID}` · Typ: Nicht-verbrauchbar · Referenzname: GaleriQ Pro\n\n"
-        "| Sprache | Anzeigename | Beschreibung |\n|---|---|---|\n" + "\n".join(rows) + "\n",
-        encoding="utf-8")
+    (OUT / "iap-pro.md").write_text(iap_markdown(), encoding="utf-8")
+    post_errors = check_deploy_tree()
+    if post_errors:
+        print("\n".join(post_errors), file=sys.stderr)
+        return 1
     print(f"OK: {len(T)} Sprachen nach {OUT.relative_to(ROOT)}")
     return 0
 

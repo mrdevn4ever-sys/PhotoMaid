@@ -230,7 +230,7 @@
 0233	Dette kan ikke fortrydes.
 0234	Slet filer permanent?
 0235	Fjern %1$lld
-0236	Bekræft derefter i iOS-dialogen. Fotos og videoer flyttes til “Senest slettet” i appen Fotos.
+0236	Bekræft derefter i iOS-dialogen. Fotos og videoer flyttes til “Slettet for nylig” i appen Fotos.
 0237	Fjern fotos og videoer?
 0238	%1$lld i papirkurven
 0239	Slet %1$lld fil permanent
@@ -242,7 +242,7 @@
 0245	Disse filer slettes permanent. Det kan ikke fortrydes.
 0246	Filer
 0247	Intet er slettet endnu. Tryk på et miniaturebillede for en større visning. Tøm først papirkurven, når du er klar.
-0248	iOS beder dig bekræfte igen og flytter fotos og videoer til “Senest slettet”. Der kan du normalt gendanne dem i 30 dage. Med iCloud-fotos gælder sletningen på alle dine enheder.
+0248	iOS beder dig bekræfte igen og flytter fotos og videoer til “Slettet for nylig”. Der kan du normalt gendanne dem i 30 dage. Med iCloud-fotos gælder sletningen på alle dine enheder.
 0249	Fotos og videoer
 0250	At se ændrer ikke dit valg.
 0251	Vis større: %1$@
@@ -546,7 +546,7 @@
 0549	Originalen forbliver uændret.
 0550	Gem kun beskæringen
 0551	Rediger original
-0552	iOS spørger først. Redigeringen gemmes som en redigering i appen Fotos – du kan altid fortryde den der med “Tilbagestil”.
+0552	iOS spørger først. Redigeringen gemmes som en redigering i appen Fotos – du kan altid fortryde den der med “Tilbage til original”.
 0553	Gem kopi, og flyt originalen til papirkurven
 0554	Gem kopi, original i papirkurven
 0555	iOS beder om bekræftelse. Originalen havner i “Senest slettet” i appen Fotos og kan normalt gendannes der i 30 dage. Pladsen frigøres først derefter.
@@ -1739,7 +1739,7 @@
 1758	Glemt koden?
 1759	Der er ikke oprettet nogen gendannelsesnøgle. Uden koden (eller Face ID) kan boksen ikke åbnes.
 1760	Skjul indgangen
-1761	Boksen forsvinder fra Indstillinger. Du åbner den ved at holde på “GaleriQ” øverst på startskærmen i 2 sekunder – den lille boksknap i “Q” drejer.
+1761	Boksen forsvinder fra Indstillinger. Du åbner den ved at trykke og holde på “GaleriQ” øverst på startskærmen i 2 sekunder – den lille drejeskive til boksen i “Q” drejer.
 1762	Skjul indgangen?
 1763	Flyt til boksen
 1764	De kopieres krypteret og kontrolleres. Derefter spørger iOS, om de må slettes fra appen Fotos. Der bliver de i “Senest slettet” i 30 dage.

@@ -206,7 +206,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 0195 | `archive_write_list` | Also save a checklist | Lagre også en sjekkliste |
 | 0196 | `archive_write_list_note` | Saves a table (CSV file) in the destination folder with each file’s name, date, size and checksum, plus your albums, tags and notes – so you can check the copies later. | Lagrer en tabell (CSV-fil) i målmappen med hver fils navn, dato, størrelse og kontrollsum, i tillegg til albumene, etikettene og notatene dine – slik at du kan kontrollere kopiene senere. |
 | 0197 | `art_feed_of` | of %1$@ | av %1$@ |
-| 0198 | `art_games_list` | Pairs, Photo Snake and Photo Blocks | Par, Bildeslange og Foto Blocks |
+| 0198 | `art_games_list` | Pairs, Photo Snake and Foto Blocks | Par, Bildeslange og Foto Blocks |
 | 0199 | `art_hub_review_label` | to review | å gå gjennom |
 | 0200 | `art_later_sub` | Photos you’re still unsure about. | Bilder du fortsatt er usikker på. |
 | 0201 | `art_pause_intro` | Take a breath. Your photos play along. | Pust ut. Bildene dine er med. |
@@ -1207,7 +1207,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1196 | `pro_msg_pending` | Your purchase is awaiting confirmation. Pro will unlock once it’s confirmed. | Kjøpet ditt venter på bekreftelse. Pro låses opp når det er bekreftet. |
 | 1197 | `pro_msg_restored` | Your purchase has been restored. | Kjøpet ditt er gjenopprettet. |
 | 1198 | `pro_price_loading` | Loading price … | Laster inn pris … |
-| 1199 | `pro_privacy_no_ads` | Your photos and files are checked and sorted only on your device. For the purchase only the bare minimum goes to Google – never your photos, their names or anything derived from them. | Bildene og filene dine kontrolleres og sorteres bare på enheten din. Ved kjøp går bare det aller nødvendigste til Google – aldri bildene dine, navnene på dem eller noe som er avledet fra dem. |
+| 1199 | `pro_privacy_no_ads` | Your photos and files are checked and sorted only on your device. For the purchase only the bare minimum goes to Apple – never your photos, their names or anything derived from them. | Bildene og filene dine kontrolleres og sorteres bare på enheten din. Ved kjøp går bare det aller nødvendigste til Apple – aldri bildene dine, navnene på dem eller noe som er avledet fra dem. |
 | 1200 | `pro_restore` | Restore purchases | Gjenopprett kjøp |
 | 1201 | `pro_store_unavailable` | Pro can’t be loaded from the App Store right now. Check your internet connection and try again. | Pro kan ikke lastes inn fra App Store akkurat nå. Sjekk internettforbindelsen og prøv igjen. |
 | 1202 | `pro_subtitle` | Buy once. No subscription. | Kjøp én gang. Ingen abonnement. |
@@ -1907,7 +1907,7 @@ Jede Zeile: Nummer · englische Quelle · Übersetzung. Bitte als muttersprachli
 | 1912 | `wf_title` | Workflows | Arbeidsflyter |
 | 1913 | `yes` | Yes | Ja |
 | 9000 | `info:NSPhotoLibraryUsageDescription` | GaleriQ shows your photos and videos for sorting on this iPhone and only removes items you choose and confirm in the system dialog. | GaleriQ viser bildene og videoene dine for sortering på denne iPhonen og fjerner bare elementer du velger og bekrefter i systemdialogen. |
-| 9001 | `info:NSPhotoLibraryAddUsageDescription` | GaleriQ saves edited copies, collages, videos and PDFs as new items in your library. | GaleriQ lagrer redigerte kopier, collager, videoer og PDF-er som nye elementer i biblioteket ditt. |
+| 9001 | `info:NSPhotoLibraryAddUsageDescription` | GaleriQ saves edited copies, collages and videos as new items in your library. | GaleriQ lagrer redigerte kopier, collager og videoer som nye elementer i biblioteket ditt. |
 | 9002 | `info:NSCameraUsageDescription` | GaleriQ uses the camera only to scan documents when you tap Scan. | GaleriQ bruker kameraet bare til å skanne dokumenter når du trykker på Skann. |
 | 9003 | `info:NSFaceIDUsageDescription` | GaleriQ uses Face ID only to open content you protected with a code. | GaleriQ bruker Face ID bare til å åpne innhold du har beskyttet med en kode. |
 | 9004 | `info:NSMicrophoneUsageDescription` | GaleriQ needs microphone access for a voice note. Recording starts only when you tap. | GaleriQ trenger tilgang til mikrofonen for et talenotat. Opptaket starter først når du trykker. |
