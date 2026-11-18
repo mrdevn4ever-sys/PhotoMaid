@@ -1274,6 +1274,2239 @@
     ],
     "sub": "轻扫控制方向。"
    }
+  },
+  "pt-BR": {
+   "gestures": {
+    "keep": "Manter",
+    "trash": "Lixeira",
+    "later": "Depois"
+   },
+   "swipe": {
+    "head": [
+     "Deslize a bagunça.",
+     "Guarde as memórias."
+    ],
+    "sub": "Manter, lixeira ou depois."
+   },
+   "duplicates": {
+    "head": [
+     "Encontre duplicatas.",
+     "Libere espaço."
+    ],
+    "sub": "Cópias idênticas, lado a lado."
+   },
+   "vault": {
+    "head": [
+     "Fotos privadas.",
+     "Bem guardadas."
+    ],
+    "sub": "Um cofre criptografado com seu próprio código."
+   },
+   "decide": {
+    "head": [
+     "Você decide o que",
+     "é apagado."
+    ],
+    "sub": "Nada é apagado até você confirmar."
+   },
+   "later": {
+    "head": [
+     "Ainda em dúvida?",
+     "Decida depois."
+    ],
+    "sub": "Volta quando você estiver pronto."
+   },
+   "collage": {
+    "head": [
+     "Faça uma colagem.",
+     "Com suas fotos."
+    ],
+    "sub": "Grade, livre ou em faixa."
+   },
+   "editor": {
+    "head": [
+     "Experimente um novo visual.",
+     "O original fica."
+    ],
+    "sub": "As edições são salvas como cópia."
+   },
+   "pairs": {
+    "head": [
+     "Faça uma pausa.",
+     "Jogue um pouco."
+    ],
+    "sub": "Encontre pares com suas fotos."
+   },
+   "today": {
+    "head": [
+     "Um pouco todo dia.",
+     "Veja seu progresso."
+    ],
+    "sub": "Uma meta diária no seu ritmo."
+   },
+   "snake": {
+    "head": [
+     "Cobrinha de fotos.",
+     "Com suas próprias fotos."
+    ],
+    "sub": "Deslize para guiar."
+   }
+  },
+  "zh-Hant": {
+   "gestures": {
+    "keep": "保留",
+    "trash": "垃圾桶",
+    "later": "稍後"
+   },
+   "swipe": {
+    "head": [
+     "輕掃整理雜亂，",
+     "留住美好回憶。"
+    ],
+    "sub": "保留、垃圾桶或稍後。"
+   },
+   "duplicates": {
+    "head": [
+     "找出重複照片，",
+     "釋放儲存空間。"
+    ],
+    "sub": "相同副本並排比較。"
+   },
+   "vault": {
+    "head": [
+     "私密照片，",
+     "安全上鎖。"
+    ],
+    "sub": "以你自己的密碼加密的保險箱。"
+   },
+   "decide": {
+    "head": [
+     "要刪除什麼，",
+     "由你決定。"
+    ],
+    "sub": "確認之前不會刪除任何內容。"
+   },
+   "later": {
+    "head": [
+     "還沒決定？",
+     "稍後再說。"
+    ],
+    "sub": "準備好時會再出現。"
+   },
+   "collage": {
+    "head": [
+     "用你的照片",
+     "製作拼貼。"
+    ],
+    "sub": "格狀、自由或長條。"
+   },
+   "editor": {
+    "head": [
+     "試試新風格，",
+     "原始照片保留。"
+    ],
+    "sub": "編輯會另存為副本。"
+   },
+   "pairs": {
+    "head": [
+     "休息一下，",
+     "玩一會兒。"
+    ],
+    "sub": "用你自己的照片配對。"
+   },
+   "today": {
+    "head": [
+     "每天整理一點，",
+     "看見你的進度。"
+    ],
+    "sub": "依你的步調設定每日目標。"
+   },
+   "snake": {
+    "head": [
+     "照片貪食蛇，",
+     "用你自己的照片。"
+    ],
+    "sub": "滑動控制方向。"
+   }
+  },
+  "id": {
+   "gestures": {
+    "keep": "Simpan",
+    "trash": "Sampah",
+    "later": "Nanti"
+   },
+   "swipe": {
+    "head": [
+     "Geser kekacauannya.",
+     "Simpan kenangannya."
+    ],
+    "sub": "Simpan, sampah, atau nanti."
+   },
+   "duplicates": {
+    "head": [
+     "Temukan duplikat.",
+     "Kosongkan ruang."
+    ],
+    "sub": "Salinan identik, berdampingan."
+   },
+   "vault": {
+    "head": [
+     "Foto pribadi.",
+     "Terkunci aman."
+    ],
+    "sub": "Brankas terenkripsi dengan kodemu sendiri."
+   },
+   "decide": {
+    "head": [
+     "Kamu yang memutuskan",
+     "apa yang dihapus."
+    ],
+    "sub": "Tidak ada yang dihapus sebelum kamu konfirmasi."
+   },
+   "later": {
+    "head": [
+     "Belum yakin?",
+     "Putuskan nanti."
+    ],
+    "sub": "Muncul lagi saat kamu siap."
+   },
+   "collage": {
+    "head": [
+     "Buat kolase.",
+     "Dengan fotomu."
+    ],
+    "sub": "Kisi, bebas, atau strip."
+   },
+   "editor": {
+    "head": [
+     "Coba tampilan baru.",
+     "Aslinya tetap ada."
+    ],
+    "sub": "Hasil edit disimpan sebagai salinan."
+   },
+   "pairs": {
+    "head": [
+     "Istirahat sejenak.",
+     "Main sebentar."
+    ],
+    "sub": "Cari pasangan dengan fotomu sendiri."
+   },
+   "today": {
+    "head": [
+     "Sedikit setiap hari.",
+     "Lihat kemajuanmu."
+    ],
+    "sub": "Target harian sesuai ritmemu."
+   },
+   "snake": {
+    "head": [
+     "Ular Foto.",
+     "Dengan fotomu sendiri."
+    ],
+    "sub": "Geser untuk mengarahkan."
+   }
+  },
+  "vi": {
+   "gestures": {
+    "keep": "Giữ",
+    "trash": "Thùng rác",
+    "later": "Để sau"
+   },
+   "swipe": {
+    "head": [
+     "Vuốt bỏ bừa bộn.",
+     "Giữ lại kỷ niệm."
+    ],
+    "sub": "Giữ, thùng rác hoặc để sau."
+   },
+   "duplicates": {
+    "head": [
+     "Tìm ảnh trùng lặp.",
+     "Giải phóng dung lượng."
+    ],
+    "sub": "Các bản sao giống hệt, đặt cạnh nhau."
+   },
+   "vault": {
+    "head": [
+     "Ảnh riêng tư.",
+     "Khóa an toàn."
+    ],
+    "sub": "Két mã hóa bằng mã của riêng bạn."
+   },
+   "decide": {
+    "head": [
+     "Bạn quyết định",
+     "điều gì bị xóa."
+    ],
+    "sub": "Không có gì bị xóa cho đến khi bạn xác nhận."
+   },
+   "later": {
+    "head": [
+     "Chưa chắc chắn?",
+     "Quyết định sau."
+    ],
+    "sub": "Ảnh sẽ quay lại khi bạn sẵn sàng."
+   },
+   "collage": {
+    "head": [
+     "Tạo ảnh ghép.",
+     "Từ ảnh của bạn."
+    ],
+    "sub": "Lưới, tự do hoặc dải."
+   },
+   "editor": {
+    "head": [
+     "Thử một phong cách mới.",
+     "Ảnh gốc vẫn còn."
+    ],
+    "sub": "Chỉnh sửa được lưu thành bản sao."
+   },
+   "pairs": {
+    "head": [
+     "Nghỉ ngơi một chút.",
+     "Chơi một lát."
+    ],
+    "sub": "Tìm cặp bằng ảnh của chính bạn."
+   },
+   "today": {
+    "head": [
+     "Mỗi ngày một chút.",
+     "Xem tiến độ của bạn."
+    ],
+    "sub": "Mục tiêu hằng ngày theo nhịp của bạn."
+   },
+   "snake": {
+    "head": [
+     "Rắn Ảnh.",
+     "Với ảnh của chính bạn."
+    ],
+    "sub": "Vuốt để điều khiển."
+   }
+  },
+  "th": {
+   "gestures": {
+    "keep": "เก็บไว้",
+    "trash": "ถังขยะ",
+    "later": "ไว้ทีหลัง"
+   },
+   "swipe": {
+    "head": [
+     "ปัดความรก",
+     "เก็บความทรงจำ"
+    ],
+    "sub": "เก็บไว้ ถังขยะ หรือไว้ทีหลัง"
+   },
+   "duplicates": {
+    "head": [
+     "ค้นหารูปซ้ำ",
+     "เพิ่มพื้นที่ว่าง"
+    ],
+    "sub": "สำเนาที่เหมือนกันวางเทียบกัน"
+   },
+   "vault": {
+    "head": [
+     "รูปส่วนตัว",
+     "ล็อกไว้อย่างปลอดภัย"
+    ],
+    "sub": "ตู้เซฟเข้ารหัสด้วยรหัสของคุณเอง"
+   },
+   "decide": {
+    "head": [
+     "คุณเป็นคนเลือก",
+     "ว่าจะลบอะไร"
+    ],
+    "sub": "ไม่มีอะไรถูกลบจนกว่าคุณจะยืนยัน"
+   },
+   "later": {
+    "head": [
+     "ยังไม่แน่ใจ?",
+     "ตัดสินใจทีหลัง"
+    ],
+    "sub": "จะกลับมาเมื่อคุณพร้อม"
+   },
+   "collage": {
+    "head": [
+     "ทำภาพคอลลาจ",
+     "จากรูปของคุณ"
+    ],
+    "sub": "ตาราง อิสระ หรือแถบ"
+   },
+   "editor": {
+    "head": [
+     "ลองลุคใหม่",
+     "ต้นฉบับยังอยู่"
+    ],
+    "sub": "การแก้ไขจะบันทึกเป็นสำเนา"
+   },
+   "pairs": {
+    "head": [
+     "พักสักหน่อย",
+     "เล่นสักนิด"
+    ],
+    "sub": "จับคู่ด้วยรูปของคุณเอง"
+   },
+   "today": {
+    "head": [
+     "ทีละนิดทุกวัน",
+     "ดูความคืบหน้า"
+    ],
+    "sub": "เป้าหมายรายวันตามจังหวะของคุณ"
+   },
+   "snake": {
+    "head": [
+     "งูรูปภาพ",
+     "ด้วยรูปของคุณเอง"
+    ],
+    "sub": "ปัดเพื่อบังคับทิศทาง"
+   }
+  },
+  "sv": {
+   "gestures": {
+    "keep": "Behåll",
+    "trash": "Papperskorg",
+    "later": "Senare"
+   },
+   "swipe": {
+    "head": [
+     "Svep bort röran.",
+     "Spara minnena."
+    ],
+    "sub": "Behåll, papperskorg eller senare."
+   },
+   "duplicates": {
+    "head": [
+     "Hitta dubbletter.",
+     "Frigör utrymme."
+    ],
+    "sub": "Identiska kopior sida vid sida."
+   },
+   "vault": {
+    "head": [
+     "Privata bilder.",
+     "Väl inlåsta."
+    ],
+    "sub": "Ett krypterat valv med din egen kod."
+   },
+   "decide": {
+    "head": [
+     "Du bestämmer vad",
+     "som raderas."
+    ],
+    "sub": "Inget raderas innan du bekräftar."
+   },
+   "later": {
+    "head": [
+     "Inte säker än?",
+     "Bestäm senare."
+    ],
+    "sub": "Den kommer tillbaka när du är redo."
+   },
+   "collage": {
+    "head": [
+     "Gör ett collage.",
+     "Med dina bilder."
+    ],
+    "sub": "Rutnät, fritt eller remsa."
+   },
+   "editor": {
+    "head": [
+     "Testa en ny look.",
+     "Originalet finns kvar."
+    ],
+    "sub": "Ändringar sparas som en kopia."
+   },
+   "pairs": {
+    "head": [
+     "Ta en paus.",
+     "Spela en stund."
+    ],
+    "sub": "Hitta par med dina egna bilder."
+   },
+   "today": {
+    "head": [
+     "Lite varje dag.",
+     "Se dina framsteg."
+    ],
+    "sub": "Ett dagsmål i din takt."
+   },
+   "snake": {
+    "head": [
+     "Fotoorm.",
+     "Med dina egna bilder."
+    ],
+    "sub": "Svep för att styra."
+   }
+  },
+  "da": {
+   "gestures": {
+    "keep": "Behold",
+    "trash": "Papirkurv",
+    "later": "Senere"
+   },
+   "swipe": {
+    "head": [
+     "Swipe rodet væk.",
+     "Behold minderne."
+    ],
+    "sub": "Behold, papirkurv eller senere."
+   },
+   "duplicates": {
+    "head": [
+     "Find dubletter.",
+     "Frigør plads."
+    ],
+    "sub": "Identiske kopier side om side."
+   },
+   "vault": {
+    "head": [
+     "Private fotos.",
+     "Låst sikkert inde."
+    ],
+    "sub": "En krypteret boks med din egen kode."
+   },
+   "decide": {
+    "head": [
+     "Du bestemmer, hvad",
+     "der slettes."
+    ],
+    "sub": "Intet slettes, før du bekræfter."
+   },
+   "later": {
+    "head": [
+     "Ikke sikker endnu?",
+     "Beslut senere."
+    ],
+    "sub": "Det kommer igen, når du er klar."
+   },
+   "collage": {
+    "head": [
+     "Lav en collage.",
+     "Med dine fotos."
+    ],
+    "sub": "Gitter, frit eller strimmel."
+   },
+   "editor": {
+    "head": [
+     "Prøv et nyt look.",
+     "Originalen bliver."
+    ],
+    "sub": "Ændringer gemmes som en kopi."
+   },
+   "pairs": {
+    "head": [
+     "Hold en pause.",
+     "Spil lidt."
+    ],
+    "sub": "Find par med dine egne fotos."
+   },
+   "today": {
+    "head": [
+     "Lidt hver dag.",
+     "Se dine fremskridt."
+    ],
+    "sub": "Et dagligt mål i dit tempo."
+   },
+   "snake": {
+    "head": [
+     "Fotoslange.",
+     "Med dine egne fotos."
+    ],
+    "sub": "Swipe for at styre."
+   }
+  },
+  "nb": {
+   "gestures": {
+    "keep": "Behold",
+    "trash": "Papirkurv",
+    "later": "Senere"
+   },
+   "swipe": {
+    "head": [
+     "Sveip bort rotet.",
+     "Behold minnene."
+    ],
+    "sub": "Behold, papirkurv eller senere."
+   },
+   "duplicates": {
+    "head": [
+     "Finn duplikater.",
+     "Frigjør plass."
+    ],
+    "sub": "Identiske kopier side om side."
+   },
+   "vault": {
+    "head": [
+     "Private bilder.",
+     "Trygt låst inne."
+    ],
+    "sub": "En kryptert safe med din egen kode."
+   },
+   "decide": {
+    "head": [
+     "Du bestemmer hva",
+     "som slettes."
+    ],
+    "sub": "Ingenting slettes før du bekrefter."
+   },
+   "later": {
+    "head": [
+     "Usikker ennå?",
+     "Bestem senere."
+    ],
+    "sub": "Det kommer tilbake når du er klar."
+   },
+   "collage": {
+    "head": [
+     "Lag en collage.",
+     "Med dine bilder."
+    ],
+    "sub": "Rutenett, fritt eller stripe."
+   },
+   "editor": {
+    "head": [
+     "Prøv et nytt uttrykk.",
+     "Originalen blir."
+    ],
+    "sub": "Endringer lagres som en kopi."
+   },
+   "pairs": {
+    "head": [
+     "Ta en pause.",
+     "Spill litt."
+    ],
+    "sub": "Finn par med dine egne bilder."
+   },
+   "today": {
+    "head": [
+     "Litt hver dag.",
+     "Se fremgangen din."
+    ],
+    "sub": "Et dagsmål i ditt tempo."
+   },
+   "snake": {
+    "head": [
+     "Fotoslange.",
+     "Med dine egne bilder."
+    ],
+    "sub": "Sveip for å styre."
+   }
+  },
+  "ca": {
+   "gestures": {
+    "keep": "Conservar",
+    "trash": "Paperera",
+    "later": "Més tard"
+   },
+   "swipe": {
+    "head": [
+     "Llisca el desordre.",
+     "Guarda els records."
+    ],
+    "sub": "Conservar, paperera o més tard."
+   },
+   "duplicates": {
+    "head": [
+     "Troba duplicats.",
+     "Allibera espai."
+    ],
+    "sub": "Còpies idèntiques, una al costat de l’altra."
+   },
+   "vault": {
+    "head": [
+     "Fotos privades.",
+     "Ben guardades."
+    ],
+    "sub": "Una caixa forta xifrada amb el teu codi."
+   },
+   "decide": {
+    "head": [
+     "Tu decideixes què",
+     "s’elimina."
+    ],
+    "sub": "No s’elimina res fins que ho confirmis."
+   },
+   "later": {
+    "head": [
+     "Encara no ho saps?",
+     "Decideix-ho després."
+    ],
+    "sub": "Tornarà quan estiguis a punt."
+   },
+   "collage": {
+    "head": [
+     "Fes un collage.",
+     "Amb les teves fotos."
+    ],
+    "sub": "Quadrícula, lliure o tira."
+   },
+   "editor": {
+    "head": [
+     "Prova un aspecte nou.",
+     "L’original es manté."
+    ],
+    "sub": "Les edicions es desen com a còpia."
+   },
+   "pairs": {
+    "head": [
+     "Fes una pausa.",
+     "Juga una mica."
+    ],
+    "sub": "Troba parelles amb les teves fotos."
+   },
+   "today": {
+    "head": [
+     "Una mica cada dia.",
+     "Mira el teu progrés."
+    ],
+    "sub": "Un objectiu diari al teu ritme."
+   },
+   "snake": {
+    "head": [
+     "Serp de fotos.",
+     "Amb les teves fotos."
+    ],
+    "sub": "Llisca per dirigir."
+   }
+  },
+  "cs": {
+   "gestures": {
+    "keep": "Ponechat",
+    "trash": "Koš",
+    "later": "Později"
+   },
+   "swipe": {
+    "head": [
+     "Odsuňte nepořádek.",
+     "Uchovejte vzpomínky."
+    ],
+    "sub": "Ponechat, koš nebo později."
+   },
+   "duplicates": {
+    "head": [
+     "Najděte duplikáty.",
+     "Uvolněte místo."
+    ],
+    "sub": "Stejné kopie vedle sebe."
+   },
+   "vault": {
+    "head": [
+     "Soukromé fotky.",
+     "Bezpečně zamčené."
+    ],
+    "sub": "Šifrovaný trezor s vaším vlastním kódem."
+   },
+   "decide": {
+    "head": [
+     "Vy rozhodujete,",
+     "co se smaže."
+    ],
+    "sub": "Nic se nesmaže, dokud to nepotvrdíte."
+   },
+   "later": {
+    "head": [
+     "Ještě nevíte?",
+     "Rozhodněte později."
+    ],
+    "sub": "Vrátí se, až budete připraveni."
+   },
+   "collage": {
+    "head": [
+     "Vytvořte koláž.",
+     "Z vlastních fotek."
+    ],
+    "sub": "Mřížka, volně nebo pruh."
+   },
+   "editor": {
+    "head": [
+     "Zkuste nový vzhled.",
+     "Originál zůstane."
+    ],
+    "sub": "Úpravy se uloží jako kopie."
+   },
+   "pairs": {
+    "head": [
+     "Dejte si pauzu.",
+     "Zahrajte si."
+    ],
+    "sub": "Hledejte dvojice ve svých fotkách."
+   },
+   "today": {
+    "head": [
+     "Každý den kousek.",
+     "Sledujte pokrok."
+    ],
+    "sub": "Denní cíl ve vašem tempu."
+   },
+   "snake": {
+    "head": [
+     "Foto-had.",
+     "S vlastními fotkami."
+    ],
+    "sub": "Řiďte přejetím prstem."
+   }
+  },
+  "sk": {
+   "gestures": {
+    "keep": "Ponechať",
+    "trash": "Kôš",
+    "later": "Neskôr"
+   },
+   "swipe": {
+    "head": [
+     "Odsuňte neporiadok.",
+     "Zachovajte spomienky."
+    ],
+    "sub": "Ponechať, kôš alebo neskôr."
+   },
+   "duplicates": {
+    "head": [
+     "Nájdite duplikáty.",
+     "Uvoľnite miesto."
+    ],
+    "sub": "Rovnaké kópie vedľa seba."
+   },
+   "vault": {
+    "head": [
+     "Súkromné fotky.",
+     "Bezpečne zamknuté."
+    ],
+    "sub": "Šifrovaný trezor s vaším vlastným kódom."
+   },
+   "decide": {
+    "head": [
+     "Vy rozhodujete,",
+     "čo sa vymaže."
+    ],
+    "sub": "Nič sa nevymaže, kým to nepotvrdíte."
+   },
+   "later": {
+    "head": [
+     "Ešte neviete?",
+     "Rozhodnite neskôr."
+    ],
+    "sub": "Vráti sa, keď budete pripravení."
+   },
+   "collage": {
+    "head": [
+     "Vytvorte koláž.",
+     "Z vlastných fotiek."
+    ],
+    "sub": "Mriežka, voľne alebo pás."
+   },
+   "editor": {
+    "head": [
+     "Skúste nový vzhľad.",
+     "Originál zostane."
+    ],
+    "sub": "Úpravy sa uložia ako kópia."
+   },
+   "pairs": {
+    "head": [
+     "Dajte si prestávku.",
+     "Zahrajte si."
+    ],
+    "sub": "Hľadajte dvojice vo svojich fotkách."
+   },
+   "today": {
+    "head": [
+     "Každý deň kúsok.",
+     "Sledujte pokrok."
+    ],
+    "sub": "Denný cieľ vo vašom tempe."
+   },
+   "snake": {
+    "head": [
+     "Foto-had.",
+     "S vlastnými fotkami."
+    ],
+    "sub": "Riaďte potiahnutím prsta."
+   }
+  },
+  "sl": {
+   "gestures": {
+    "keep": "Obdrži",
+    "trash": "Koš",
+    "later": "Pozneje"
+   },
+   "swipe": {
+    "head": [
+     "Odrini nered.",
+     "Ohrani spomine."
+    ],
+    "sub": "Obdrži, koš ali pozneje."
+   },
+   "duplicates": {
+    "head": [
+     "Poišči dvojnike.",
+     "Sprosti prostor."
+    ],
+    "sub": "Enake kopije druga ob drugi."
+   },
+   "vault": {
+    "head": [
+     "Zasebne fotografije.",
+     "Varno zaklenjene."
+    ],
+    "sub": "Šifriran sef s tvojo kodo."
+   },
+   "decide": {
+    "head": [
+     "Ti odločaš,",
+     "kaj se izbriše."
+    ],
+    "sub": "Nič se ne izbriše, dokler ne potrdiš."
+   },
+   "later": {
+    "head": [
+     "Še nisi prepričan?",
+     "Odloči se pozneje."
+    ],
+    "sub": "Vrne se, ko boš pripravljen."
+   },
+   "collage": {
+    "head": [
+     "Ustvari kolaž.",
+     "S svojimi fotografijami."
+    ],
+    "sub": "Mreža, prosto ali trak."
+   },
+   "editor": {
+    "head": [
+     "Preizkusi nov videz.",
+     "Izvirnik ostane."
+    ],
+    "sub": "Urejanja se shranijo kot kopija."
+   },
+   "pairs": {
+    "head": [
+     "Vzemi si odmor.",
+     "Malo se poigraj."
+    ],
+    "sub": "Poišči pare s svojimi fotografijami."
+   },
+   "today": {
+    "head": [
+     "Vsak dan malo.",
+     "Spremljaj napredek."
+    ],
+    "sub": "Dnevni cilj v tvojem tempu."
+   },
+   "snake": {
+    "head": [
+     "Foto kača.",
+     "S tvojimi fotografijami."
+    ],
+    "sub": "Podrsaj za usmerjanje."
+   }
+  },
+  "hr": {
+   "gestures": {
+    "keep": "Zadrži",
+    "trash": "Smeće",
+    "later": "Kasnije"
+   },
+   "swipe": {
+    "head": [
+     "Odgurni nered.",
+     "Sačuvaj uspomene."
+    ],
+    "sub": "Zadrži, smeće ili kasnije."
+   },
+   "duplicates": {
+    "head": [
+     "Pronađi duplikate.",
+     "Oslobodi prostor."
+    ],
+    "sub": "Iste kopije jedna uz drugu."
+   },
+   "vault": {
+    "head": [
+     "Privatne fotografije.",
+     "Sigurno zaključane."
+    ],
+    "sub": "Šifrirani sef s tvojim kodom."
+   },
+   "decide": {
+    "head": [
+     "Ti odlučuješ",
+     "što se briše."
+    ],
+    "sub": "Ništa se ne briše dok ne potvrdiš."
+   },
+   "later": {
+    "head": [
+     "Još nisi siguran?",
+     "Odluči kasnije."
+    ],
+    "sub": "Vratit će se kad budeš spreman."
+   },
+   "collage": {
+    "head": [
+     "Napravi kolaž.",
+     "Od svojih fotografija."
+    ],
+    "sub": "Mreža, slobodno ili traka."
+   },
+   "editor": {
+    "head": [
+     "Isprobaj novi izgled.",
+     "Original ostaje."
+    ],
+    "sub": "Izmjene se spremaju kao kopija."
+   },
+   "pairs": {
+    "head": [
+     "Napravi pauzu.",
+     "Malo se igraj."
+    ],
+    "sub": "Pronađi parove sa svojim fotografijama."
+   },
+   "today": {
+    "head": [
+     "Svaki dan pomalo.",
+     "Prati svoj napredak."
+    ],
+    "sub": "Dnevni cilj tvojim tempom."
+   },
+   "snake": {
+    "head": [
+     "Foto zmija.",
+     "S tvojim fotografijama."
+    ],
+    "sub": "Povuci prstom za upravljanje."
+   }
+  },
+  "hu": {
+   "gestures": {
+    "keep": "Megtartás",
+    "trash": "Kuka",
+    "later": "Később"
+   },
+   "swipe": {
+    "head": [
+     "Söpörd el a rendetlenséget.",
+     "Őrizd meg az emlékeket."
+    ],
+    "sub": "Megtartás, kuka vagy később."
+   },
+   "duplicates": {
+    "head": [
+     "Keresd meg a duplikátumokat.",
+     "Szabadíts fel helyet."
+    ],
+    "sub": "Azonos másolatok egymás mellett."
+   },
+   "vault": {
+    "head": [
+     "Privát fotók.",
+     "Biztonságban elzárva."
+    ],
+    "sub": "Titkosított széf saját kóddal."
+   },
+   "decide": {
+    "head": [
+     "Te döntöd el,",
+     "mi törlődik."
+    ],
+    "sub": "Semmi sem törlődik, amíg nem erősíted meg."
+   },
+   "later": {
+    "head": [
+     "Még nem biztos?",
+     "Dönts később."
+    ],
+    "sub": "Visszatér, amikor készen állsz."
+   },
+   "collage": {
+    "head": [
+     "Készíts kollázst.",
+     "A saját fotóidból."
+    ],
+    "sub": "Rács, szabad vagy csík."
+   },
+   "editor": {
+    "head": [
+     "Próbálj ki új stílust.",
+     "Az eredeti megmarad."
+    ],
+    "sub": "A szerkesztések másolatként mentődnek."
+   },
+   "pairs": {
+    "head": [
+     "Tarts egy kis szünetet.",
+     "Játssz egy kicsit."
+    ],
+    "sub": "Keress párokat a saját fotóidból."
+   },
+   "today": {
+    "head": [
+     "Minden nap egy kicsit.",
+     "Kövesd a haladásod."
+    ],
+    "sub": "Napi cél a saját tempódban."
+   },
+   "snake": {
+    "head": [
+     "Fotókígyó.",
+     "A saját fotóiddal."
+    ],
+    "sub": "Csúsztass az irányításhoz."
+   }
+  },
+  "fi": {
+   "gestures": {
+    "keep": "Säilytä",
+    "trash": "Roskakori",
+    "later": "Myöhemmin"
+   },
+   "swipe": {
+    "head": [
+     "Pyyhkäise sotku pois.",
+     "Säilytä muistot."
+    ],
+    "sub": "Säilytä, roskakori tai myöhemmin."
+   },
+   "duplicates": {
+    "head": [
+     "Löydä kaksoiskappaleet.",
+     "Vapauta tilaa."
+    ],
+    "sub": "Identtiset kopiot rinnakkain."
+   },
+   "vault": {
+    "head": [
+     "Yksityiset kuvat.",
+     "Turvassa lukossa."
+    ],
+    "sub": "Salattu holvi omalla koodillasi."
+   },
+   "decide": {
+    "head": [
+     "Sinä päätät,",
+     "mitä poistetaan."
+    ],
+    "sub": "Mitään ei poisteta ennen vahvistustasi."
+   },
+   "later": {
+    "head": [
+     "Etkö ole varma?",
+     "Päätä myöhemmin."
+    ],
+    "sub": "Palaa, kun olet valmis."
+   },
+   "collage": {
+    "head": [
+     "Tee kollaasi.",
+     "Omista kuvistasi."
+    ],
+    "sub": "Ruudukko, vapaa tai nauha."
+   },
+   "editor": {
+    "head": [
+     "Kokeile uutta tyyliä.",
+     "Alkuperäinen säilyy."
+    ],
+    "sub": "Muokkaukset tallentuvat kopiona."
+   },
+   "pairs": {
+    "head": [
+     "Pidä tauko.",
+     "Pelaa hetki."
+    ],
+    "sub": "Etsi pareja omista kuvistasi."
+   },
+   "today": {
+    "head": [
+     "Vähän joka päivä.",
+     "Seuraa edistymistä."
+    ],
+    "sub": "Päivätavoite omaan tahtiisi."
+   },
+   "snake": {
+    "head": [
+     "Kuvakäärme.",
+     "Omilla kuvillasi."
+    ],
+    "sub": "Ohjaa pyyhkäisemällä."
+   }
+  },
+  "el": {
+   "gestures": {
+    "keep": "Διατήρηση",
+    "trash": "Κάδος",
+    "later": "Αργότερα"
+   },
+   "swipe": {
+    "head": [
+     "Σάρωσε την ακαταστασία.",
+     "Κράτα τις αναμνήσεις."
+    ],
+    "sub": "Κράτα, κάδος ή αργότερα."
+   },
+   "duplicates": {
+    "head": [
+     "Βρες διπλότυπα.",
+     "Ελευθέρωσε χώρο."
+    ],
+    "sub": "Ίδια αντίγραφα δίπλα δίπλα."
+   },
+   "vault": {
+    "head": [
+     "Ιδιωτικές φωτογραφίες.",
+     "Κλειδωμένες με ασφάλεια."
+    ],
+    "sub": "Κρυπτογραφημένο χρηματοκιβώτιο με δικό σου κωδικό."
+   },
+   "decide": {
+    "head": [
+     "Εσύ αποφασίζεις",
+     "τι διαγράφεται."
+    ],
+    "sub": "Τίποτα δεν διαγράφεται πριν επιβεβαιώσεις."
+   },
+   "later": {
+    "head": [
+     "Δεν είσαι σίγουρος;",
+     "Αποφάσισε αργότερα."
+    ],
+    "sub": "Επιστρέφει όταν είσαι έτοιμος."
+   },
+   "collage": {
+    "head": [
+     "Φτιάξε κολάζ.",
+     "Με τις φωτογραφίες σου."
+    ],
+    "sub": "Πλέγμα, ελεύθερο ή λωρίδα."
+   },
+   "editor": {
+    "head": [
+     "Δοκίμασε νέο στιλ.",
+     "Το πρωτότυπο μένει."
+    ],
+    "sub": "Οι αλλαγές αποθηκεύονται ως αντίγραφο."
+   },
+   "pairs": {
+    "head": [
+     "Κάνε ένα διάλειμμα.",
+     "Παίξε λίγο."
+    ],
+    "sub": "Βρες ζευγάρια με τις φωτογραφίες σου."
+   },
+   "today": {
+    "head": [
+     "Λίγο κάθε μέρα.",
+     "Δες την πρόοδό σου."
+    ],
+    "sub": "Ημερήσιος στόχος στον ρυθμό σου."
+   },
+   "snake": {
+    "head": [
+     "Φιδάκι φωτογραφιών.",
+     "Με τις δικές σου φωτογραφίες."
+    ],
+    "sub": "Σάρωσε για να κατευθύνεις."
+   }
+  },
+  "ms": {
+   "gestures": {
+    "keep": "Simpan",
+    "trash": "Sampah",
+    "later": "Nanti"
+   },
+   "swipe": {
+    "head": [
+     "Leret kekacauan.",
+     "Simpan kenangan."
+    ],
+    "sub": "Simpan, sampah atau kemudian."
+   },
+   "duplicates": {
+    "head": [
+     "Cari pendua.",
+     "Kosongkan ruang."
+    ],
+    "sub": "Salinan serupa, sebelah-menyebelah."
+   },
+   "vault": {
+    "head": [
+     "Foto peribadi.",
+     "Dikunci selamat."
+    ],
+    "sub": "Peti besi disulitkan dengan kod anda sendiri."
+   },
+   "decide": {
+    "head": [
+     "Anda yang tentukan",
+     "apa yang dipadam."
+    ],
+    "sub": "Tiada apa dipadam sehingga anda sahkan."
+   },
+   "later": {
+    "head": [
+     "Belum pasti?",
+     "Tentukan kemudian."
+    ],
+    "sub": "Ia kembali apabila anda bersedia."
+   },
+   "collage": {
+    "head": [
+     "Buat kolaj.",
+     "Dengan foto anda."
+    ],
+    "sub": "Grid, bebas atau jalur."
+   },
+   "editor": {
+    "head": [
+     "Cuba gaya baharu.",
+     "Asal kekal."
+    ],
+    "sub": "Suntingan disimpan sebagai salinan."
+   },
+   "pairs": {
+    "head": [
+     "Berehat sebentar.",
+     "Main sekejap."
+    ],
+    "sub": "Padankan pasangan dengan foto anda."
+   },
+   "today": {
+    "head": [
+     "Sedikit setiap hari.",
+     "Lihat kemajuan anda."
+    ],
+    "sub": "Matlamat harian mengikut rentak anda."
+   },
+   "snake": {
+    "head": [
+     "Ular Foto.",
+     "Dengan foto anda sendiri."
+    ],
+    "sub": "Leret untuk mengemudi."
+   }
+  },
+  "he": {
+   "gestures": {
+    "keep": "שמירה",
+    "trash": "פח",
+    "later": "מאוחר יותר"
+   },
+   "swipe": {
+    "head": [
+     "החליקו את הבלגן.",
+     "שמרו את הזיכרונות."
+    ],
+    "sub": "שמירה, פח או אחר כך."
+   },
+   "duplicates": {
+    "head": [
+     "מצאו כפילויות.",
+     "פנו מקום."
+    ],
+    "sub": "עותקים זהים זה לצד זה."
+   },
+   "vault": {
+    "head": [
+     "תמונות פרטיות.",
+     "נעולות היטב."
+    ],
+    "sub": "כספת מוצפנת עם קוד משלכם."
+   },
+   "decide": {
+    "head": [
+     "אתם מחליטים",
+     "מה יימחק."
+    ],
+    "sub": "שום דבר לא נמחק עד שתאשרו."
+   },
+   "later": {
+    "head": [
+     "עוד לא בטוחים?",
+     "החליטו אחר כך."
+    ],
+    "sub": "זה יחזור כשתהיו מוכנים."
+   },
+   "collage": {
+    "head": [
+     "צרו קולאז׳.",
+     "מהתמונות שלכם."
+    ],
+    "sub": "רשת, חופשי או רצועה."
+   },
+   "editor": {
+    "head": [
+     "נסו מראה חדש.",
+     "המקור נשאר."
+    ],
+    "sub": "העריכות נשמרות כעותק."
+   },
+   "pairs": {
+    "head": [
+     "קחו הפסקה.",
+     "שחקו קצת."
+    ],
+    "sub": "מצאו זוגות עם התמונות שלכם."
+   },
+   "today": {
+    "head": [
+     "קצת בכל יום.",
+     "ראו את ההתקדמות."
+    ],
+    "sub": "יעד יומי בקצב שלכם."
+   },
+   "snake": {
+    "head": [
+     "נחש תמונות.",
+     "עם התמונות שלכם."
+    ],
+    "sub": "החליקו כדי לכוון."
+   }
+  },
+  "ur": {
+   "gestures": {
+    "keep": "رکھیں",
+    "trash": "ردی",
+    "later": "بعد میں"
+   },
+   "swipe": {
+    "head": [
+     "بکھراؤ ہٹائیں،",
+     "یادیں سنبھالیں۔"
+    ],
+    "sub": "رکھیں، ردی یا بعد میں۔"
+   },
+   "duplicates": {
+    "head": [
+     "ڈپلیکیٹ تلاش کریں،",
+     "جگہ خالی کریں۔"
+    ],
+    "sub": "ایک جیسی کاپیاں ساتھ ساتھ۔"
+   },
+   "vault": {
+    "head": [
+     "نجی تصاویر،",
+     "محفوظ تالے میں۔"
+    ],
+    "sub": "آپ کے اپنے کوڈ والا خفیہ سیف۔"
+   },
+   "decide": {
+    "head": [
+     "کیا حذف ہو،",
+     "یہ آپ طے کریں۔"
+    ],
+    "sub": "تصدیق تک کچھ حذف نہیں ہوتا۔"
+   },
+   "later": {
+    "head": [
+     "ابھی یقین نہیں؟",
+     "بعد میں فیصلہ کریں۔"
+    ],
+    "sub": "تیار ہونے پر واپس آئے گی۔"
+   },
+   "collage": {
+    "head": [
+     "کولاج بنائیں،",
+     "اپنی تصاویر سے۔"
+    ],
+    "sub": "گرڈ، آزاد یا پٹی۔"
+   },
+   "editor": {
+    "head": [
+     "نیا انداز آزمائیں،",
+     "اصل محفوظ رہے۔"
+    ],
+    "sub": "ترامیم الگ کاپی کے طور پر محفوظ۔"
+   },
+   "pairs": {
+    "head": [
+     "ذرا وقفہ لیں،",
+     "تھوڑا کھیلیں۔"
+    ],
+    "sub": "اپنی تصاویر سے جوڑے ملائیں۔"
+   },
+   "today": {
+    "head": [
+     "ہر دن تھوڑا سا،",
+     "اپنی پیش رفت دیکھیں۔"
+    ],
+    "sub": "آپ کی رفتار سے روزانہ ہدف۔"
+   },
+   "snake": {
+    "head": [
+     "فوٹو سانپ،",
+     "آپ کی اپنی تصاویر سے۔"
+    ],
+    "sub": "سمت کے لیے سوائپ کریں۔"
+   }
+  },
+  "hi": {
+   "gestures": {
+    "keep": "रखें",
+    "trash": "ट्रैश",
+    "later": "बाद में"
+   },
+   "swipe": {
+    "head": [
+     "बिखराव हटाएँ,",
+     "यादें सँभालें।"
+    ],
+    "sub": "रखें, ट्रैश या बाद में।"
+   },
+   "duplicates": {
+    "head": [
+     "डुप्लिकेट ढूँढें,",
+     "जगह खाली करें।"
+    ],
+    "sub": "एक जैसी कॉपी साथ-साथ।"
+   },
+   "vault": {
+    "head": [
+     "निजी फ़ोटो,",
+     "सुरक्षित ताले में।"
+    ],
+    "sub": "आपके अपने कोड वाली एन्क्रिप्टेड तिजोरी।"
+   },
+   "decide": {
+    "head": [
+     "क्या हटेगा,",
+     "यह आप तय करें।"
+    ],
+    "sub": "आपकी पुष्टि तक कुछ नहीं हटता।"
+   },
+   "later": {
+    "head": [
+     "अभी तय नहीं?",
+     "बाद में फ़ैसला करें।"
+    ],
+    "sub": "तैयार होने पर फिर दिखेगी।"
+   },
+   "collage": {
+    "head": [
+     "कोलाज बनाएँ,",
+     "अपनी फ़ोटो से।"
+    ],
+    "sub": "ग्रिड, फ़्री या स्ट्रिप।"
+   },
+   "editor": {
+    "head": [
+     "नया लुक आज़माएँ,",
+     "मूल बना रहे।"
+    ],
+    "sub": "बदलाव अलग कॉपी में सेव होते हैं।"
+   },
+   "pairs": {
+    "head": [
+     "थोड़ा ब्रेक लें,",
+     "थोड़ा खेलें।"
+    ],
+    "sub": "अपनी फ़ोटो से जोड़ियाँ मिलाएँ।"
+   },
+   "today": {
+    "head": [
+     "हर दिन थोड़ा,",
+     "अपनी प्रगति देखें।"
+    ],
+    "sub": "आपकी रफ़्तार से रोज़ का लक्ष्य।"
+   },
+   "snake": {
+    "head": [
+     "फ़ोटो स्नेक,",
+     "आपकी अपनी फ़ोटो से।"
+    ],
+    "sub": "दिशा के लिए स्वाइप करें।"
+   }
+  },
+  "mr": {
+   "gestures": {
+    "keep": "ठेवा",
+    "trash": "ट्रॅश",
+    "later": "नंतर"
+   },
+   "swipe": {
+    "head": [
+     "पसारा हटवा,",
+     "आठवणी जपा."
+    ],
+    "sub": "ठेवा, कचरा किंवा नंतर."
+   },
+   "duplicates": {
+    "head": [
+     "डुप्लिकेट शोधा,",
+     "जागा मोकळी करा."
+    ],
+    "sub": "सारख्या प्रती शेजारी."
+   },
+   "vault": {
+    "head": [
+     "खाजगी फोटो,",
+     "सुरक्षित कुलूपात."
+    ],
+    "sub": "तुमच्या कोडची एन्क्रिप्टेड तिजोरी."
+   },
+   "decide": {
+    "head": [
+     "काय हटवायचे,",
+     "ते तुम्ही ठरवा."
+    ],
+    "sub": "तुम्ही पुष्टी करेपर्यंत काहीही हटत नाही."
+   },
+   "later": {
+    "head": [
+     "अजून ठरले नाही?",
+     "नंतर ठरवा."
+    ],
+    "sub": "तुम्ही तयार असाल तेव्हा परत येईल."
+   },
+   "collage": {
+    "head": [
+     "कोलाज बनवा,",
+     "तुमच्या फोटोंनी."
+    ],
+    "sub": "ग्रिड, मुक्त किंवा पट्टी."
+   },
+   "editor": {
+    "head": [
+     "नवा लूक वापरून पाहा,",
+     "मूळ तसेच राहते."
+    ],
+    "sub": "बदल वेगळ्या प्रतीत जतन होतात."
+   },
+   "pairs": {
+    "head": [
+     "थोडी विश्रांती घ्या,",
+     "थोडे खेळा."
+    ],
+    "sub": "तुमच्या फोटोंनी जोड्या जुळवा."
+   },
+   "today": {
+    "head": [
+     "रोज थोडे,",
+     "तुमची प्रगती पाहा."
+    ],
+    "sub": "तुमच्या वेगाने रोजचे लक्ष्य."
+   },
+   "snake": {
+    "head": [
+     "फोटो स्नेक,",
+     "तुमच्याच फोटोंनी."
+    ],
+    "sub": "दिशेसाठी स्वाइप करा."
+   }
+  },
+  "bn": {
+   "gestures": {
+    "keep": "রাখুন",
+    "trash": "ট্র্যাশ",
+    "later": "পরে"
+   },
+   "swipe": {
+    "head": [
+     "এলোমেলো সরান,",
+     "স্মৃতি রাখুন।"
+    ],
+    "sub": "রাখুন, ট্র্যাশ বা পরে।"
+   },
+   "duplicates": {
+    "head": [
+     "ডুপ্লিকেট খুঁজুন,",
+     "জায়গা খালি করুন।"
+    ],
+    "sub": "একই কপি পাশাপাশি।"
+   },
+   "vault": {
+    "head": [
+     "ব্যক্তিগত ছবি,",
+     "নিরাপদে তালাবন্ধ।"
+    ],
+    "sub": "আপনার নিজের কোডে এনক্রিপ্টেড ভল্ট।"
+   },
+   "decide": {
+    "head": [
+     "কী মুছবে,",
+     "তা আপনিই ঠিক করুন।"
+    ],
+    "sub": "নিশ্চিত না করা পর্যন্ত কিছুই মোছে না।"
+   },
+   "later": {
+    "head": [
+     "এখনও নিশ্চিত নন?",
+     "পরে ঠিক করুন।"
+    ],
+    "sub": "আপনি প্রস্তুত হলে আবার আসবে।"
+   },
+   "collage": {
+    "head": [
+     "কোলাজ বানান,",
+     "আপনার ছবি দিয়ে।"
+    ],
+    "sub": "গ্রিড, মুক্ত বা স্ট্রিপ।"
+   },
+   "editor": {
+    "head": [
+     "নতুন লুক চেষ্টা করুন,",
+     "আসলটি থাকে।"
+    ],
+    "sub": "সম্পাদনা আলাদা কপিতে সেভ হয়।"
+   },
+   "pairs": {
+    "head": [
+     "একটু বিরতি নিন,",
+     "একটু খেলুন।"
+    ],
+    "sub": "নিজের ছবি দিয়ে জোড়া মেলান।"
+   },
+   "today": {
+    "head": [
+     "প্রতিদিন একটু,",
+     "অগ্রগতি দেখুন।"
+    ],
+    "sub": "আপনার গতিতে দৈনিক লক্ষ্য।"
+   },
+   "snake": {
+    "head": [
+     "ফটো স্নেক,",
+     "আপনার নিজের ছবি দিয়ে।"
+    ],
+    "sub": "দিক বদলাতে সোয়াইপ করুন।"
+   }
+  },
+  "gu": {
+   "gestures": {
+    "keep": "રાખો",
+    "trash": "ટ્રેશ",
+    "later": "પછી"
+   },
+   "swipe": {
+    "head": [
+     "ગડબડ દૂર કરો,",
+     "યાદો સાચવો."
+    ],
+    "sub": "રાખો, ટ્રેશ અથવા પછી."
+   },
+   "duplicates": {
+    "head": [
+     "ડુપ્લિકેટ શોધો,",
+     "જગ્યા ખાલી કરો."
+    ],
+    "sub": "સરખી નકલો બાજુ-બાજુમાં."
+   },
+   "vault": {
+    "head": [
+     "ખાનગી ફોટા,",
+     "સુરક્ષિત તાળામાં."
+    ],
+    "sub": "તમારા કોડવાળી એન્ક્રિપ્ટેડ તિજોરી."
+   },
+   "decide": {
+    "head": [
+     "શું કાઢવું,",
+     "તે તમે નક્કી કરો."
+    ],
+    "sub": "તમે પુષ્ટિ ન કરો ત્યાં સુધી કંઈ નીકળતું નથી."
+   },
+   "later": {
+    "head": [
+     "હજુ નક્કી નથી?",
+     "પછી નક્કી કરો."
+    ],
+    "sub": "તમે તૈયાર હશો ત્યારે પાછું આવશે."
+   },
+   "collage": {
+    "head": [
+     "કોલાજ બનાવો,",
+     "તમારા ફોટાથી."
+    ],
+    "sub": "ગ્રિડ, મુક્ત અથવા પટ્ટી."
+   },
+   "editor": {
+    "head": [
+     "નવો લૂક અજમાવો,",
+     "મૂળ યથાવત રહે."
+    ],
+    "sub": "ફેરફાર અલગ નકલમાં સેવ થાય છે."
+   },
+   "pairs": {
+    "head": [
+     "થોડો વિરામ લો,",
+     "થોડું રમો."
+    ],
+    "sub": "તમારા ફોટાથી જોડી મેળવો."
+   },
+   "today": {
+    "head": [
+     "રોજ થોડું,",
+     "તમારી પ્રગતિ જુઓ."
+    ],
+    "sub": "તમારી ઝડપે રોજનું લક્ષ્ય."
+   },
+   "snake": {
+    "head": [
+     "ફોટો સ્નેક,",
+     "તમારા પોતાના ફોટાથી."
+    ],
+    "sub": "દિશા માટે સ્વાઇપ કરો."
+   }
+  },
+  "pa": {
+   "gestures": {
+    "keep": "ਰੱਖੋ",
+    "trash": "ਰੱਦੀ",
+    "later": "ਬਾਅਦ ਵਿੱਚ"
+   },
+   "swipe": {
+    "head": [
+     "ਖਿਲਾਰਾ ਹਟਾਓ,",
+     "ਯਾਦਾਂ ਸਾਂਭੋ।"
+    ],
+    "sub": "ਰੱਖੋ, ਰੱਦੀ ਜਾਂ ਬਾਅਦ ਵਿੱਚ।"
+   },
+   "duplicates": {
+    "head": [
+     "ਡੁਪਲੀਕੇਟ ਲੱਭੋ,",
+     "ਥਾਂ ਖਾਲੀ ਕਰੋ।"
+    ],
+    "sub": "ਇੱਕੋ ਜਿਹੀਆਂ ਕਾਪੀਆਂ ਨਾਲ-ਨਾਲ।"
+   },
+   "vault": {
+    "head": [
+     "ਨਿੱਜੀ ਫ਼ੋਟੋਆਂ,",
+     "ਸੁਰੱਖਿਅਤ ਤਾਲੇ ਵਿੱਚ।"
+    ],
+    "sub": "ਤੁਹਾਡੇ ਆਪਣੇ ਕੋਡ ਵਾਲੀ ਇਨਕ੍ਰਿਪਟਡ ਤਿਜੋਰੀ।"
+   },
+   "decide": {
+    "head": [
+     "ਕੀ ਮਿਟੇਗਾ,",
+     "ਇਹ ਤੁਸੀਂ ਤੈਅ ਕਰੋ।"
+    ],
+    "sub": "ਪੁਸ਼ਟੀ ਤੱਕ ਕੁਝ ਨਹੀਂ ਮਿਟਦਾ।"
+   },
+   "later": {
+    "head": [
+     "ਅਜੇ ਪੱਕਾ ਨਹੀਂ?",
+     "ਬਾਅਦ ਵਿੱਚ ਫ਼ੈਸਲਾ ਕਰੋ।"
+    ],
+    "sub": "ਤਿਆਰ ਹੋਣ ਤੇ ਮੁੜ ਆਵੇਗੀ।"
+   },
+   "collage": {
+    "head": [
+     "ਕੋਲਾਜ ਬਣਾਓ,",
+     "ਆਪਣੀਆਂ ਫ਼ੋਟੋਆਂ ਨਾਲ।"
+    ],
+    "sub": "ਗ੍ਰਿਡ, ਖੁੱਲ੍ਹਾ ਜਾਂ ਪੱਟੀ।"
+   },
+   "editor": {
+    "head": [
+     "ਨਵਾਂ ਰੂਪ ਅਜ਼ਮਾਓ,",
+     "ਅਸਲ ਬਣੀ ਰਹੇ।"
+    ],
+    "sub": "ਬਦਲਾਅ ਵੱਖਰੀ ਕਾਪੀ ਵਿੱਚ ਸੇਵ ਹੁੰਦੇ ਹਨ।"
+   },
+   "pairs": {
+    "head": [
+     "ਥੋੜ੍ਹਾ ਆਰਾਮ ਕਰੋ,",
+     "ਥੋੜ੍ਹਾ ਖੇਡੋ।"
+    ],
+    "sub": "ਆਪਣੀਆਂ ਫ਼ੋਟੋਆਂ ਨਾਲ ਜੋੜੇ ਮਿਲਾਓ।"
+   },
+   "today": {
+    "head": [
+     "ਹਰ ਰੋਜ਼ ਥੋੜ੍ਹਾ,",
+     "ਆਪਣੀ ਤਰੱਕੀ ਵੇਖੋ।"
+    ],
+    "sub": "ਤੁਹਾਡੀ ਰਫ਼ਤਾਰ ਨਾਲ ਰੋਜ਼ਾਨਾ ਟੀਚਾ।"
+   },
+   "snake": {
+    "head": [
+     "ਫ਼ੋਟੋ ਸਨੇਕ,",
+     "ਤੁਹਾਡੀਆਂ ਆਪਣੀਆਂ ਫ਼ੋਟੋਆਂ ਨਾਲ।"
+    ],
+    "sub": "ਦਿਸ਼ਾ ਲਈ ਸਵਾਈਪ ਕਰੋ।"
+   }
+  },
+  "or": {
+   "gestures": {
+    "keep": "ରଖନ୍ତୁ",
+    "trash": "ଟ୍ରାସ",
+    "later": "ପରେ"
+   },
+   "swipe": {
+    "head": [
+     "ଅଗଣା ହଟାନ୍ତୁ,",
+     "ସ୍ମୃତି ରଖନ୍ତୁ।"
+    ],
+    "sub": "ରଖନ୍ତୁ, ଟ୍ରାସ୍ ବା ପରେ।"
+   },
+   "duplicates": {
+    "head": [
+     "ଡୁପ୍ଲିକେଟ୍ ଖୋଜନ୍ତୁ,",
+     "ସ୍ଥାନ ଖାଲି କରନ୍ତୁ।"
+    ],
+    "sub": "ସମାନ କପି ପାଖାପାଖି।"
+   },
+   "vault": {
+    "head": [
+     "ବ୍ୟକ୍ତିଗତ ଫଟୋ,",
+     "ସୁରକ୍ଷିତ ତାଲାରେ।"
+    ],
+    "sub": "ଆପଣଙ୍କ ନିଜ କୋଡ୍ ସହ ଏନକ୍ରିପ୍ଟେଡ୍ ଭଲ୍ଟ।"
+   },
+   "decide": {
+    "head": [
+     "କଣ ହଟିବ,",
+     "ତାହା ଆପଣ ସ୍ଥିର କରନ୍ତୁ।"
+    ],
+    "sub": "ନିଶ୍ଚିତ ନକରିବା ପର୍ଯ୍ୟନ୍ତ କିଛି ହଟେ ନାହିଁ।"
+   },
+   "later": {
+    "head": [
+     "ଏବେ ନିଶ୍ଚିତ ନୁହେଁ?",
+     "ପରେ ସ୍ଥିର କରନ୍ତୁ।"
+    ],
+    "sub": "ପ୍ରସ୍ତୁତ ହେଲେ ପୁଣି ଆସିବ।"
+   },
+   "collage": {
+    "head": [
+     "କୋଲାଜ୍ ତିଆରି କରନ୍ତୁ,",
+     "ଆପଣଙ୍କ ଫଟୋରେ।"
+    ],
+    "sub": "ଗ୍ରିଡ୍, ମୁକ୍ତ ବା ଷ୍ଟ୍ରିପ୍।"
+   },
+   "editor": {
+    "head": [
+     "ନୂଆ ଲୁକ୍ ଚେଷ୍ଟା କରନ୍ତୁ,",
+     "ମୂଳ ରହିଥାଏ।"
+    ],
+    "sub": "ସମ୍ପାଦନା ଅଲଗା କପିରେ ସେଭ୍ ହୁଏ।"
+   },
+   "pairs": {
+    "head": [
+     "ଟିକେ ବିରତି ନିଅନ୍ତୁ,",
+     "ଟିକେ ଖେଳନ୍ତୁ।"
+    ],
+    "sub": "ନିଜ ଫଟୋରେ ଯୋଡ଼ି ମିଳାନ୍ତୁ।"
+   },
+   "today": {
+    "head": [
+     "ପ୍ରତିଦିନ ଟିକେ,",
+     "ଅଗ୍ରଗତି ଦେଖନ୍ତୁ।"
+    ],
+    "sub": "ଆପଣଙ୍କ ଗତିରେ ଦୈନିକ ଲକ୍ଷ୍ୟ।"
+   },
+   "snake": {
+    "head": [
+     "ଫଟୋ ସ୍ନେକ୍,",
+     "ଆପଣଙ୍କ ନିଜ ଫଟୋରେ।"
+    ],
+    "sub": "ଦିଗ ପାଇଁ ସ୍ୱାଇପ୍ କରନ୍ତୁ।"
+   }
+  },
+  "ta": {
+   "gestures": {
+    "keep": "வைத்திரு",
+    "trash": "குப்பை",
+    "later": "பிறகு"
+   },
+   "swipe": {
+    "head": [
+     "குழப்பத்தை நீக்கு,",
+     "நினைவுகளை வை."
+    ],
+    "sub": "வை, குப்பை அல்லது பிறகு."
+   },
+   "duplicates": {
+    "head": [
+     "நகல்களைக் கண்டறி,",
+     "இடத்தை விடுவி."
+    ],
+    "sub": "ஒரே மாதிரி நகல்கள் அருகருகே."
+   },
+   "vault": {
+    "head": [
+     "தனிப்பட்ட படங்கள்,",
+     "பாதுகாப்பாகப் பூட்டியவை."
+    ],
+    "sub": "உங்கள் குறியீட்டுடன் மறைகுறியாக்கப்பட்ட பெட்டகம்."
+   },
+   "decide": {
+    "head": [
+     "எது நீக்கப்படும்",
+     "என்பது உங்கள் முடிவு."
+    ],
+    "sub": "உறுதிசெய்யும் வரை எதுவும் நீக்கப்படாது."
+   },
+   "later": {
+    "head": [
+     "இன்னும் தெரியவில்லையா?",
+     "பிறகு முடிவெடு."
+    ],
+    "sub": "நீங்கள் தயாரானதும் மீண்டும் வரும்."
+   },
+   "collage": {
+    "head": [
+     "கொலாஜ் உருவாக்கு,",
+     "உங்கள் படங்களால்."
+    ],
+    "sub": "கட்டம், சுதந்திரம் அல்லது பட்டை."
+   },
+   "editor": {
+    "head": [
+     "புதிய தோற்றம் முயல்க,",
+     "அசல் அப்படியே."
+    ],
+    "sub": "திருத்தங்கள் தனி நகலாகச் சேமிக்கப்படும்."
+   },
+   "pairs": {
+    "head": [
+     "சற்று ஓய்வெடு,",
+     "கொஞ்சம் விளையாடு."
+    ],
+    "sub": "உங்கள் படங்களால் ஜோடிகளைப் பொருத்து."
+   },
+   "today": {
+    "head": [
+     "தினமும் கொஞ்சம்,",
+     "முன்னேற்றம் பார்."
+    ],
+    "sub": "உங்கள் வேகத்தில் தினசரி இலக்கு."
+   },
+   "snake": {
+    "head": [
+     "புகைப்படப் பாம்பு,",
+     "உங்கள் படங்களுடன்."
+    ],
+    "sub": "திசைக்கு ஸ்வைப் செய்."
+   }
+  },
+  "te": {
+   "gestures": {
+    "keep": "ఉంచండి",
+    "trash": "ట్రాష్",
+    "later": "తర్వాత"
+   },
+   "swipe": {
+    "head": [
+     "గందరగోళాన్ని తీసేయండి,",
+     "జ్ఞాపకాలను ఉంచండి."
+    ],
+    "sub": "ఉంచండి, ట్రాష్ లేదా తర్వాత."
+   },
+   "duplicates": {
+    "head": [
+     "నకిలీలను కనుగొనండి,",
+     "స్థలం ఖాళీ చేయండి."
+    ],
+    "sub": "ఒకే రకమైన కాపీలు పక్కపక్కనే."
+   },
+   "vault": {
+    "head": [
+     "ప్రైవేట్ ఫోటోలు,",
+     "సురక్షితంగా లాక్."
+    ],
+    "sub": "మీ స్వంత కోడ్‌తో ఎన్‌క్రిప్ట్ చేసిన వాల్ట్."
+   },
+   "decide": {
+    "head": [
+     "ఏది తొలగించాలో",
+     "మీరే నిర్ణయిస్తారు."
+    ],
+    "sub": "మీరు నిర్ధారించే వరకు ఏదీ తొలగించబడదు."
+   },
+   "later": {
+    "head": [
+     "ఇంకా తెలియదా?",
+     "తర్వాత నిర్ణయించండి."
+    ],
+    "sub": "మీరు సిద్ధమైనప్పుడు మళ్లీ వస్తుంది."
+   },
+   "collage": {
+    "head": [
+     "కొలాజ్ చేయండి,",
+     "మీ ఫోటోలతో."
+    ],
+    "sub": "గ్రిడ్, స్వేచ్ఛ లేదా స్ట్రిప్."
+   },
+   "editor": {
+    "head": [
+     "కొత్త లుక్ ప్రయత్నించండి,",
+     "అసలు అలాగే ఉంటుంది."
+    ],
+    "sub": "మార్పులు వేరే కాపీగా సేవ్ అవుతాయి."
+   },
+   "pairs": {
+    "head": [
+     "కొంచెం విరామం,",
+     "కాస్త ఆడండి."
+    ],
+    "sub": "మీ ఫోటోలతో జతలు కలపండి."
+   },
+   "today": {
+    "head": [
+     "రోజూ కొంచెం,",
+     "మీ పురోగతి చూడండి."
+    ],
+    "sub": "మీ వేగంలో రోజువారీ లక్ష్యం."
+   },
+   "snake": {
+    "head": [
+     "ఫోటో స్నేక్,",
+     "మీ స్వంత ఫోటోలతో."
+    ],
+    "sub": "దిశ కోసం స్వైప్ చేయండి."
+   }
+  },
+  "kn": {
+   "gestures": {
+    "keep": "ಇರಿಸಿ",
+    "trash": "ಕಸದ ಬುಟ್ಟಿ",
+    "later": "ನಂತರ"
+   },
+   "swipe": {
+    "head": [
+     "ಗೊಂದಲ ತೆಗೆಯಿರಿ,",
+     "ನೆನಪುಗಳನ್ನು ಉಳಿಸಿ."
+    ],
+    "sub": "ಉಳಿಸಿ, ಕಸ ಅಥವಾ ನಂತರ."
+   },
+   "duplicates": {
+    "head": [
+     "ನಕಲುಗಳನ್ನು ಹುಡುಕಿ,",
+     "ಜಾಗ ಮುಕ್ತಗೊಳಿಸಿ."
+    ],
+    "sub": "ಒಂದೇ ರೀತಿಯ ನಕಲುಗಳು ಪಕ್ಕಪಕ್ಕ."
+   },
+   "vault": {
+    "head": [
+     "ಖಾಸಗಿ ಫೋಟೋಗಳು,",
+     "ಸುರಕ್ಷಿತ ಬೀಗದಲ್ಲಿ."
+    ],
+    "sub": "ನಿಮ್ಮದೇ ಕೋಡ್‌ನ ಎನ್‌ಕ್ರಿಪ್ಟ್ ಮಾಡಿದ ತಿಜೋರಿ."
+   },
+   "decide": {
+    "head": [
+     "ಏನು ಅಳಿಸಬೇಕು",
+     "ಎಂದು ನೀವೇ ನಿರ್ಧರಿಸಿ."
+    ],
+    "sub": "ನೀವು ದೃಢೀಕರಿಸುವವರೆಗೆ ಏನೂ ಅಳಿಯುವುದಿಲ್ಲ."
+   },
+   "later": {
+    "head": [
+     "ಇನ್ನೂ ಖಚಿತವಿಲ್ಲವೇ?",
+     "ನಂತರ ನಿರ್ಧರಿಸಿ."
+    ],
+    "sub": "ನೀವು ಸಿದ್ಧರಾದಾಗ ಮತ್ತೆ ಬರುತ್ತದೆ."
+   },
+   "collage": {
+    "head": [
+     "ಕೊಲಾಜ್ ಮಾಡಿ,",
+     "ನಿಮ್ಮ ಫೋಟೋಗಳಿಂದ."
+    ],
+    "sub": "ಗ್ರಿಡ್, ಮುಕ್ತ ಅಥವಾ ಪಟ್ಟಿ."
+   },
+   "editor": {
+    "head": [
+     "ಹೊಸ ಲುಕ್ ಪ್ರಯತ್ನಿಸಿ,",
+     "ಮೂಲ ಉಳಿಯುತ್ತದೆ."
+    ],
+    "sub": "ಬದಲಾವಣೆಗಳು ಪ್ರತ್ಯೇಕ ನಕಲಾಗಿ ಉಳಿಯುತ್ತವೆ."
+   },
+   "pairs": {
+    "head": [
+     "ಸ್ವಲ್ಪ ವಿರಾಮ,",
+     "ಸ್ವಲ್ಪ ಆಟ."
+    ],
+    "sub": "ನಿಮ್ಮ ಫೋಟೋಗಳಿಂದ ಜೋಡಿ ಹೊಂದಿಸಿ."
+   },
+   "today": {
+    "head": [
+     "ಪ್ರತಿದಿನ ಸ್ವಲ್ಪ,",
+     "ಪ್ರಗತಿ ನೋಡಿ."
+    ],
+    "sub": "ನಿಮ್ಮ ವೇಗದ ದೈನಂದಿನ ಗುರಿ."
+   },
+   "snake": {
+    "head": [
+     "ಫೋಟೋ ಸ್ನೇಕ್,",
+     "ನಿಮ್ಮದೇ ಫೋಟೋಗಳಿಂದ."
+    ],
+    "sub": "ದಿಕ್ಕಿಗೆ ಸ್ವೈಪ್ ಮಾಡಿ."
+   }
+  },
+  "ml": {
+   "gestures": {
+    "keep": "സൂക്ഷിക്കുക",
+    "trash": "ട്രാഷ്",
+    "later": "പിന്നീട്"
+   },
+   "swipe": {
+    "head": [
+     "അലങ്കോലം നീക്കൂ,",
+     "ഓർമ്മകൾ സൂക്ഷിക്കൂ."
+    ],
+    "sub": "സൂക്ഷിക്കുക, ട്രാഷ് അല്ലെങ്കിൽ പിന്നീട്."
+   },
+   "duplicates": {
+    "head": [
+     "ഡ്യൂപ്ലിക്കേറ്റുകൾ കണ്ടെത്തൂ,",
+     "സ്ഥലം ഒഴിവാക്കൂ."
+    ],
+    "sub": "ഒരേപോലുള്ള പകർപ്പുകൾ അടുത്തടുത്ത്."
+   },
+   "vault": {
+    "head": [
+     "സ്വകാര്യ ഫോട്ടോകൾ,",
+     "സുരക്ഷിതമായി പൂട്ടി."
+    ],
+    "sub": "നിങ്ങളുടെ കോഡുള്ള എൻക്രിപ്റ്റ് ചെയ്ത വോൾട്ട്."
+   },
+   "decide": {
+    "head": [
+     "എന്ത് ഇല്ലാതാക്കണം",
+     "എന്ന് നിങ്ങൾ തീരുമാനിക്കും."
+    ],
+    "sub": "സ്ഥിരീകരിക്കും വരെ ഒന്നും ഇല്ലാതാകില്ല."
+   },
+   "later": {
+    "head": [
+     "ഇനിയും ഉറപ്പില്ലേ?",
+     "പിന്നീട് തീരുമാനിക്കൂ."
+    ],
+    "sub": "നിങ്ങൾ തയ്യാറാകുമ്പോൾ തിരികെ വരും."
+   },
+   "collage": {
+    "head": [
+     "കൊളാഷ് ഉണ്ടാക്കൂ,",
+     "നിങ്ങളുടെ ഫോട്ടോകളാൽ."
+    ],
+    "sub": "ഗ്രിഡ്, സ്വതന്ത്രം അല്ലെങ്കിൽ സ്ട്രിപ്പ്."
+   },
+   "editor": {
+    "head": [
+     "പുതിയ ലുക്ക് പരീക്ഷിക്കൂ,",
+     "ഒറിജിനൽ നിലനിൽക്കും."
+    ],
+    "sub": "മാറ്റങ്ങൾ പ്രത്യേക പകർപ്പായി സേവ് ചെയ്യും."
+   },
+   "pairs": {
+    "head": [
+     "ഒരു ഇടവേള എടുക്കൂ,",
+     "അൽപം കളിക്കൂ."
+    ],
+    "sub": "നിങ്ങളുടെ ഫോട്ടോകളാൽ ജോടി ചേർക്കൂ."
+   },
+   "today": {
+    "head": [
+     "ദിവസവും അൽപം,",
+     "പുരോഗതി കാണൂ."
+    ],
+    "sub": "നിങ്ങളുടെ വേഗത്തിൽ ദിവസ ലക്ഷ്യം."
+   },
+   "snake": {
+    "head": [
+     "ഫോട്ടോ സ്നേക്ക്,",
+     "നിങ്ങളുടെ ഫോട്ടോകളോടെ."
+    ],
+    "sub": "ദിശയ്ക്ക് സ്വൈപ്പ് ചെയ്യൂ."
+   }
   }
  }
 }

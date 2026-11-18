@@ -36,8 +36,9 @@ jobs:
         run: |
           python3 - <<'PY'
           import json,os
-          available=['ar','de','en','es','fr','it','ja','ko','nl','pl','pt-PT','ro','ru','tr','uk','zh-Hans']
-          locales=available if os.environ['REQUESTED']=='all' else os.environ['REQUESTED'].split(',')
+          available=['ar','de','en','es','fr','it','ja','ko','nl','pl','pt-PT','ro','ru','tr','uk','zh-Hans','da','id','nb','pt-BR','sv','th','vi','zh-Hant','bn','ca','cs','el','fi','gu','he','hi','hr','hu','kn','ml','mr','ms','or','pa','sk','sl','ta','te','ur']
+          # 'new29' = die 29 Sprachen, die 1.1 seit dem Zusammenführen zusätzlich hat (Store-Bilder 11/2026).
+          locales=available if os.environ['REQUESTED']=='all' else (available[16:] if os.environ['REQUESTED']=='new29' else os.environ['REQUESTED'].split(','))
           devices=os.environ['DEVICES'].split(',')
           assert locales and len(locales)==len(set(locales)) and all(x in available for x in locales)
           assert devices and len(devices)==len(set(devices)) and set(devices)<={'iphone-large','iphone-medium','iphone-duo','ipad'}

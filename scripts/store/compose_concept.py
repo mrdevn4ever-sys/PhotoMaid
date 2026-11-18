@@ -21,23 +21,56 @@ FONTS = ROOT / 'PhotoMaid/Resources/Fonts'
 INK = (0x1C, 0x19, 0x16)
 SKY_TOP, SKY_BOTTOM = (0xE0, 0xEF, 0xF9), (0xEA, 0xF4, 0xFB)
 GESTURE = {'keep': (0x1B, 0x6F, 0xA8), 'trash': (0xC4, 0x44, 0x1A), 'later': (0x63, 0x47, 0xD0)}
-RTL = {'ar', 'he'}
-TEXT_OPTS = {'ar': {'direction': 'rtl', 'language': 'ar'}}
-# Schriften der App für lateinische Schrift; für andere Schriften die Systemschrift des macOS-Runners.
+RTL = {'ar', 'he', 'ur'}
+TEXT_OPTS = {'ar': {'direction': 'rtl', 'language': 'ar'}, 'he': {'direction': 'rtl', 'language': 'he'},
+             'ur': {'direction': 'rtl', 'language': 'ur'}}
+# Schriften der App für lateinische Schrift (wenn sie alle Zeichen hat); sonst die Systemschrift des macOS-Runners.
+# Dateinamen statt fester Pfade: gesucht wird in den System-Schriftordnern (auch „Supplemental“).
 SYSTEM = {
-    'cyrillic': ['/System/Library/Fonts/SFNS.ttf', '/System/Library/Fonts/Helvetica.ttc'],
-    'ar': ['/System/Library/Fonts/SFArabic.ttf', '/System/Library/Fonts/GeezaPro.ttc'],
-    'ja': ['/System/Library/Fonts/ヒラギノ角ゴシック W7.ttc', '/System/Library/Fonts/Hiragino Sans GB.ttc'],
-    'ko': ['/System/Library/Fonts/AppleSDGothicNeo.ttc'],
-    'zh-Hans': ['/System/Library/Fonts/PingFang.ttc', '/System/Library/Fonts/Hiragino Sans GB.ttc'],
-    'zh-Hant': ['/System/Library/Fonts/PingFang.ttc'],
-    'th': ['/System/Library/Fonts/Thonburi.ttc'],
+    'sf': ['SFNS.ttf', 'Helvetica.ttc'],
+    'ar': ['SFArabic.ttf', 'GeezaPro.ttc'],
+    'ur': ['SFArabic.ttf', 'GeezaPro.ttc'],
+    'he': ['SFHebrew.ttf', 'ArialHB.ttc'],
+    'ja': ['ヒラギノ角ゴシック W7.ttc', 'Hiragino Sans GB.ttc'],
+    'ko': ['AppleSDGothicNeo.ttc'],
+    'zh-Hans': ['PingFang.ttc', 'Hiragino Sans GB.ttc'],
+    'zh-Hant': ['PingFang.ttc', 'Hiragino Sans CNS.ttc'],
+    'th': ['Thonburi.ttc', 'SFThai.ttf'],
+    'hi': ['Kohinoor.ttc', 'ITFDevanagari.ttc', 'DevanagariMT.ttc'],
+    'mr': ['Kohinoor.ttc', 'ITFDevanagari.ttc', 'DevanagariMT.ttc'],
+    'bn': ['KohinoorBangla.ttc', 'Bangla Sangam MN.ttc'],
+    'gu': ['KohinoorGujarati.ttc', 'Gujarati Sangam MN.ttc'],
+    'te': ['KohinoorTelugu.ttc', 'Telugu Sangam MN.ttc'],
+    'pa': ['MuktaMahee.ttc', 'Gurmukhi Sangam MN.ttc', 'GurmukhiMN.ttc'],
+    'ta': ['Tamil Sangam MN.ttc', 'TamilMN.ttc'],
+    'kn': ['Kannada Sangam MN.ttc', 'NotoSansKannada.ttc', 'KannadaMN.ttc'],
+    'ml': ['Malayalam Sangam MN.ttc', 'MalayalamMN.ttc'],
+    'or': ['Oriya Sangam MN.ttc', 'NotoSansOriya.ttc', 'OriyaMN.ttc'],
 }
+FONT_DIRS = [Path('/System/Library/Fonts'), Path('/System/Library/Fonts/Supplemental'), Path('/Library/Fonts')]
+WORDS = {}  # Sprache -> alle Texte (für die Zeichenprüfung)
 
 
+def covers(path, text):
+    f = ImageFont.truetype(str(path), 40)
+    missing = f.getmask('\U0010FFFD').getbbox(), bytes(f.getmask('\U0010FFFD'))
+    return all(ch.isspace() or (f.getmask(ch).getbbox(), bytes(f.getmask(ch))) != missing for ch in set(text))
+
+
+@functools.lru_cache(maxsize=None)
 def script_of(locale):
-    if locale in ('ru', 'uk'): return 'cyrillic'
-    return locale if locale in SYSTEM else 'latin'
+    if locale in SYSTEM: return locale
+    text = WORDS.get(locale, '')
+    return 'latin' if all(covers(FONTS / n, text) for n in ('PMDisplay-Bold.ttf', 'PMText-Medium.ttf', 'PMText-Bold.ttf')) else 'sf'
+
+
+def find_font(name):
+    for d in FONT_DIRS:
+        if (d / name).exists(): return d / name
+    for d in FONT_DIRS:
+        hits = sorted(d.rglob(name)) if d.exists() else []
+        if hits: return hits[0]
+    return None
 
 
 @functools.lru_cache(maxsize=None)
@@ -47,22 +80,24 @@ def font(locale, role, size):
         name = {'head': 'PMDisplay-Bold.ttf', 'sub': 'PMText-Medium.ttf', 'gesture': 'PMText-Bold.ttf'}[role]
         return ImageFont.truetype(str(FONTS / name), size)
     want = ('Bold', 'Semibold', 'W7', 'W6', 'Heavy') if role in ('head', 'gesture') else ('Medium', 'Regular', 'W4', 'W3')
-    for path in SYSTEM[s]:
-        if not Path(path).exists():
+    for name in SYSTEM[s]:
+        path = find_font(name)
+        if path is None:
             continue
+        path = str(path)
         faces = []
         for index in range(32):
             try: faces.append(ImageFont.truetype(path, size, index=index))
             except OSError: break
         for style in want:
             for f in faces:
-                if f.getname()[1].replace(' ', '') == style and (s != 'zh-Hans' or 'SC' in f.getname()[0]) and (s != 'zh-Hant' or 'TC' in f.getname()[0]):
+                if f.getname()[1].replace(' ', '') == style and (s != 'zh-Hans' or any(x in f.getname()[0] for x in ('SC', 'GB'))) and (s != 'zh-Hant' or any(x in f.getname()[0] for x in ('TC', 'CNS'))):
                     return f
         f = faces[0]
         try: f.set_variation_by_name(want[0])  # variable Systemschrift (SF)
         except Exception: pass
         return f
-    raise SystemExit(f'BLOCKED: keine Schrift für {locale}')
+    raise SystemExit(f'BLOCKED: keine Schrift für {locale} ({SYSTEM[s]})')
 
 
 def gradient(w, h):
@@ -95,10 +130,10 @@ def arrow(draw, box, direction, color):
 
 
 def compose(native, today, slot, locale, device, out, all_heads=None, all_subs=None):
-    if locale in TEXT_OPTS:
+    if locale in TEXT_OPTS or script_of(locale) in ('hi', 'mr', 'bn', 'gu', 'te', 'pa', 'ta', 'kn', 'ml', 'or', 'th'):
         # Arabisch braucht echte Textformung (verbundene Buchstaben, rechts nach links).
         from PIL import features
-        if not features.check('raqm'): raise SystemExit('BLOCKED: libraqm fehlt (Arabisch würde unverbunden gesetzt)')
+        if not features.check('raqm'): raise SystemExit('BLOCKED: libraqm fehlt (Schrift würde ohne Textformung gesetzt)')
     src = Image.open(native).convert('RGB')
     W, H = src.size
     tablet = device == 'ipad'
@@ -179,6 +214,7 @@ def main():
     a = p.parse_args()
     texts = json.loads(a.texts.read_text())
     slots, words = texts['slots'], texts['locales'].get(a.locale) or texts['locales']['en']
+    WORDS[a.locale] = json.dumps(words, ensure_ascii=False)
     pages = {f.stem: f for f in (a.assets / 'all-pages').glob('*/*.png')}
     out = a.assets / 'concept'
     out.mkdir(exist_ok=True)
