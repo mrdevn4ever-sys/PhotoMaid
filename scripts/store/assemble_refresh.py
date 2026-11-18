@@ -43,6 +43,16 @@ def validate(summary, inventory, photos, device, device_class):
         assert all(tuple(map(int, c['device']['osVersion'].split('.'))) >= (27, 1) for c in configurations)
     else:
         assert not device['actual_duo']
+        if device['sdk'].split('.')[0] == '27':
+            # Reject a rebranded 17 Pro/Max or a Duo-only 27.1 runtime.
+            expected_name = 'iPhone 18 Pro Max' if device_class == 'iphone-large' else 'iPhone 18 Pro'
+            assert device['name'] == expected_name
+            assert device['device_type'] == 'com.apple.CoreSimulator.SimDeviceType.' + expected_name.replace(' ', '-')
+            assert device['os_version'] == '27.2' and device['runtime'] == 'com.apple.CoreSimulator.SimRuntime.iOS-27-2'
+            assert tuple(map(int, device['sdk'].split('.'))) >= (27, 2)
+            configurations = summary['devicesAndConfigurations']
+            assert configurations and all(c['device']['modelName'] == expected_name and
+                                          c['device']['osVersion'] == '27.2' for c in configurations)
 
 
 def main():
@@ -60,6 +70,8 @@ def main():
     device = json.loads((a.source / 'device.json').read_text())
     validate(summary, inventory, photos, device, a.device)
     sizes = SIZES[a.device]
+    if a.device != 'iphone-duo' and device['sdk'].split('.')[0] == '27':
+        sizes = {(1320, 2868)} if a.device == 'iphone-large' else {(1206, 2622)}
     if a.device == 'iphone-duo' and device.get('display_role') == 'inner':
         sizes = {(2007, 2853)}
     a.destination.mkdir(parents=True, exist_ok=True)

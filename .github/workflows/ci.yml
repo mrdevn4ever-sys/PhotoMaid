@@ -9,11 +9,6 @@ on:
         description: "Nur Xcode-/SDK-/iPhone-Duo-Simulator-Verfügbarkeit prüfen"
         type: boolean
         default: false
-      duo_runner:
-        description: "Duo-Probe: bisheriger Runner oder neuer Xcode-27-Preview-Runner"
-        type: choice
-        options: [macos-26, xcode-27]
-        default: macos-26
       duo_setup_runtime:
         description: "Auf Xcode-27-Runner die offizielle iOS-27.1-Runtime für Duo installieren"
         type: boolean
@@ -44,10 +39,10 @@ on:
         type: string
         default: ""
       sim_runtime:
-        description: "iOS-Runtime (26.2 für StoreKit Test; 26.5 hat Apples CLI-Konfigurationsfehler)"
+        description: "iOS-Runtime auf Xcode 27 (27.1 unterstützt nur iPhone Duo)"
         type: choice
-        options: [latest, "26.2"]
-        default: "26.2"
+        options: [latest, "27.2", "27.0"]
+        default: latest
       ui_phase:
         description: "UI-Durchlauf (gezielte Wiederholung nach der ersten Gesamtprüfung)"
         type: choice
@@ -95,7 +90,7 @@ jobs:
   duo-environment:
     if: inputs.duo_probe
     name: iPhone Duo – Xcode und Simulator prüfen
-    runs-on: ${{ inputs.duo_runner || 'macos-26' }}
+    runs-on: xcode-27
     timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
@@ -105,7 +100,7 @@ jobs:
             scripts
       - name: Duo-Werkzeuge untersuchen
         env:
-          PM_PROBE_XCODE: ${{ inputs.duo_runner == 'xcode-27' && '27.1' || '' }}
+          PM_PROBE_XCODE: '27.1'
         run: scripts/ci/duo_environment.sh
       - name: Offizielle Duo-Runtime und öffentliche Bedienwerkzeuge vorbereiten
         if: inputs.duo_setup_runtime
@@ -165,7 +160,7 @@ jobs:
   ios:
     if: inputs.collect_run == '' && !inputs.native_capture && !inputs.duo_probe && inputs.store_locales == ''
     name: iOS App (xcodebuild build + test)
-    runs-on: macos-26
+    runs-on: xcode-27
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4

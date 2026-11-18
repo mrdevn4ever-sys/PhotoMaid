@@ -21,6 +21,8 @@ def audit_device(root, code, device_class, photos):
     assert len(shots) >= 20
     originals = {}
     sizes = {(2007, 2853)} if device_class == 'iphone-duo' and provenance['device'].get('display_role') == 'inner' else SIZES[device_class]
+    if device_class != 'iphone-duo' and provenance['device']['sdk'].split('.')[0] == '27':
+        sizes = {(1320, 2868)} if device_class == 'iphone-large' else {(1206, 2622)}
     for row in shots:
         path = root / 'all-pages' / row['file']
         assert row['locale'] == code and digest(path) == row['sha256']
