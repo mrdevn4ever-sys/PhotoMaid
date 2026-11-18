@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Guard against green workflows masking skipped/failed native captures or fake Duo attribution."""
+import json
+import tempfile
 import unittest
+from pathlib import Path
+from assemble_assets import capture_device_name
 from assemble_refresh import validate, validate_native_screenshot
 from PIL import Image
 
@@ -39,6 +43,47 @@ class CaptureEvidenceTests(unittest.TestCase):
         validate(self.summary | {'passedTests': 1}, self.inventory, self.photos, device, 'iphone-medium')
         with self.assertRaises(AssertionError):
             validate(self.summary, self.inventory, self.photos, device, 'iphone-medium')
+
+    def test_xcode_27_requires_matching_iphone_18_and_native_xctest_report(self):
+        for device_class, name, count in [('iphone-large', 'iPhone 18 Pro Max', 5),
+                                          ('iphone-medium', 'iPhone 18 Pro', 1)]:
+            with self.subTest(device_class=device_class):
+                device = {'device_class': device_class, 'actual_duo': False, 'name': name,
+                          'device_type': 'com.apple.CoreSimulator.SimDeviceType.' + name.replace(' ', '-'),
+                          'runtime': 'com.apple.CoreSimulator.SimRuntime.iOS-27-2',
+                          'os_version': '27.2', 'sdk': '27.2'}
+                summary = self.summary | {'passedTests': count, 'devicesAndConfigurations': [
+                    {'device': {'modelName': name, 'osVersion': '27.2'}}]}
+                validate(summary, self.inventory, self.photos, device, device_class)
+                for changed in [device | {'name': 'iPhone 17 Pro Max'},
+                                device | {'runtime': 'com.apple.CoreSimulator.SimRuntime.iOS-27-1'},
+                                device | {'sdk': '27.1'},
+                                device | {'device_type': 'com.apple.CoreSimulator.SimDeviceType.iPad-mini'}]:
+                    with self.assertRaises(AssertionError):
+                        validate(summary, self.inventory, self.photos, changed, device_class)
+                mismatched = summary | {'devicesAndConfigurations': [
+                    {'device': {'modelName': 'iPhone 17 Pro Max', 'osVersion': '27.2'}}]}
+                with self.assertRaises(AssertionError):
+                    validate(mismatched, self.inventory, self.photos, device, device_class)
+
+    def test_asset_provenance_must_use_reported_native_model(self):
+        summary = self.summary | {'devicesAndConfigurations': [
+            {'device': {'modelName': 'iPhone 18 Pro Max', 'osVersion': '27.2'}}]}
+        device = {'device_class': 'iphone-large', 'name': 'iPhone 18 Pro Max',
+                  'device_type': 'com.apple.CoreSimulator.SimDeviceType.iPhone-18-Pro-Max',
+                  'runtime': 'com.apple.CoreSimulator.SimRuntime.iOS-27-2',
+                  'os_version': '27.2', 'sdk': '27.2'}
+        with tempfile.TemporaryDirectory() as temp:
+            source = Path(temp)
+            with self.assertRaisesRegex(AssertionError, 'missing its simulator device report'):
+                capture_device_name(source, summary, False)
+            self.assertEqual(capture_device_name(source, None, True),
+                             'unknown (legacy capture without model report)')
+            (source / 'device.json').write_text(json.dumps(device))
+            self.assertEqual(capture_device_name(source, summary, False), 'iPhone 18 Pro Max')
+            with self.assertRaises(AssertionError):
+                capture_device_name(source, self.summary | {'devicesAndConfigurations': [
+                    {'device': {'modelName': 'iPhone 17 Pro Max', 'osVersion': '27.2'}}]}, False)
 
     def test_duo_requires_genuine_native_result_and_supported_runtime(self):
         device = {'device_class': 'iphone-duo', 'actual_duo': True, 'name': 'iPhone Duo',

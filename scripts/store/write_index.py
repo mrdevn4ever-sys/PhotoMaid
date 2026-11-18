@@ -18,7 +18,8 @@ def main():
   review_path=locale/'review/manifest.json';review=json.loads(review_path.read_text())if review_path.exists()else[]
   reviewed=bool(review)and all(item['review']=='PASS'for item in review)
   provenance=json.loads((locale/'provenance.json').read_text())
-  text=f'# {info["name_de"]} – PhotoMaid\n\nApp Store Connect: `{info["app_store_locale"]}` · Dark Mode · iPhone 17 Pro Max.\n\n'
+  device=provenance['device'];device=device['name'] if isinstance(device,dict) else device
+  text=f'# {info["name_de"]} – PhotoMaid\n\nApp Store Connect: `{info["app_store_locale"]}` · Dark Mode · {device}.\n\n'
   text+=f'{len(screenshots)} unveränderte native Seitenaufnahmen, {len(selected)} Bilder in der Store-Auswahl, {len(videos)} Vorschauvideos. Sichtprüfung: **{"PASS" if reviewed else "ausstehend"}**.\n\n'
   text+=f'[Aufnahmelauf {provenance["workflow_run"]}](https://github.com/mrdevn4ever-sys/PhotoMaid/actions/runs/{provenance["workflow_run"]}) · [Herkunft und Testergebnis](provenance.json) · [Prüfbögen](review/).\n\n'
   text+='## Vorschlag für die Store-Seite\n\nDie Originaldatei öffnet sich beim Anklicken. Apple erlaubt bis zu zehn Screenshots pro Gerätegröße und Lokalisierung.\n\n'

@@ -20,6 +20,24 @@ def category(name):
     if name.startswith('history'): return '08-history'
     return '05-studio'
 
+def capture_device_name(source, summary, preview_only):
+    device_path = source / 'device.json'
+    if device_path.exists():
+        device = json.loads(device_path.read_text())
+        assert device['device_class'] == 'iphone-large' and device['name'] == 'iPhone 18 Pro Max'
+        assert device['device_type'] == 'com.apple.CoreSimulator.SimDeviceType.iPhone-18-Pro-Max'
+        assert device['os_version'] == '27.2' and device['runtime'] == 'com.apple.CoreSimulator.SimRuntime.iOS-27-2'
+        assert tuple(map(int, device['sdk'].split('.'))) >= (27, 2) and device['sdk'].split('.')[0] == '27'
+        configurations = summary['devicesAndConfigurations']
+        assert configurations and all(c['device']['modelName'] == device['name'] and
+                                      c['device']['osVersion'] == device['os_version'] for c in configurations)
+        return device['name']
+    # Older exported recordings predate device.json; never claim a model without evidence.
+    assert preview_only, 'BLOCKED: native capture is missing its simulator device report'
+    configurations = (summary or {}).get('devicesAndConfigurations', [])
+    names = {c['device']['modelName'] for c in configurations}
+    return names.pop() if len(names) == 1 else 'unknown (legacy capture without model report)'
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('source', type=Path)
@@ -38,9 +56,11 @@ def main():
     summary_path = args.source / 'summary.json'
     summary = json.loads(summary_path.read_text()) if summary_path.exists() else None
     preview_only = args.mode == 'previews'
+    device_path = args.source / 'device.json'
+    captured_device = capture_device_name(args.source, summary, preview_only)
     provenance = {
         'locale': args.locale, 'commit': os.environ.get('GITHUB_SHA'), 'workflow_run': os.environ.get('GITHUB_RUN_ID'),
-        'device': 'iPhone 17 Pro Max', 'mode': 'dark', 'capture': args.mode,
+        'device': captured_device, 'mode': 'dark', 'capture': args.mode,
         'media_manifest': 'app-store/media/manifest.json', 'actual_library': inventory,
         'data': 'Real PhotoKit, Core Data, analysis and encrypted vault; no QA fixtures', 'capture_summary': summary,
     }
@@ -56,7 +76,8 @@ def main():
         for path in sorted((args.source / 'screenshots').glob('*.png')):
             with Image.open(path) as image:
                 width, height = image.size
-                assert (width, height) in [(1320, 2868), (1290, 2796), (1260, 2736)], (path, width, height)
+                sizes = {(1320, 2868)} if device_path.exists() else {(1320, 2868), (1290, 2796), (1260, 2736)}
+                assert (width, height) in sizes, (path, width, height)
                 if 'A' in image.getbands(): assert image.getchannel('A').getextrema() == (255, 255)
             group = category(path.stem)
             directory = allshots / group; directory.mkdir(exist_ok=True)

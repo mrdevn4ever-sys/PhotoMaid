@@ -43,7 +43,7 @@ jobs:
           PY
   build:
     name: Gemeinsamer Simulator-Testbuild
-    runs-on: macos-26
+    runs-on: xcode-27
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
@@ -76,7 +76,7 @@ jobs:
   capture:
     needs: [plan, build]
     name: Dark Mode – ${{ matrix.locale }}
-    runs-on: macos-26
+    runs-on: xcode-27
     timeout-minutes: 90
     strategy:
       fail-fast: false
@@ -105,9 +105,8 @@ jobs:
         id: sim
         run: |
           set -euo pipefail
-          runtime=$(xcrun simctl list runtimes -j | python3 -c 'import sys,json; print(next(x["identifier"] for x in json.load(sys.stdin)["runtimes"] if x["isAvailable"] and x["name"]=="iOS 26.2"))')
-          device=$(xcrun simctl list devicetypes -j | python3 -c 'import sys,json; print(next(x["identifier"] for x in json.load(sys.stdin)["devicetypes"] if x["name"]=="iPhone 17 Pro Max"))')
-          udid=$(xcrun simctl create "PhotoMaid Store $CAPTURE_LOCALE" "$device" "$runtime")
+          python3 scripts/store/create_capture_simulator.py iphone-large "$RUNNER_TEMP/device.json"
+          udid=$(python3 -c 'import json,sys;print(json.load(open(sys.argv[1]))["udid"])' "$RUNNER_TEMP/device.json")
           echo "udid=$udid" >> "$GITHUB_OUTPUT"
           xcrun simctl boot "$udid"
           xcrun simctl bootstatus "$udid" -b
@@ -134,6 +133,8 @@ jobs:
           mkdir -p "$RUNNER_TEMP/store-build"
           tar -xzf "$RUNNER_TEMP/shared-store-build/store-build.tar.gz" -C "$RUNNER_TEMP/store-build"
           cp "$RUNNER_TEMP/shared-store-build/store-build.log" "$RUNNER_TEMP/store-build.log"
+          mkdir -p "$RUNNER_TEMP/store-capture"
+          cp "$RUNNER_TEMP/device.json" "$RUNNER_TEMP/store-capture/device.json"
           xcrun simctl install "$UDID" "$RUNNER_TEMP/store-build/Build/Products/Debug-iphonesimulator/PhotoMaid.app"
           xcrun simctl privacy "$UDID" grant photos com.mrdevn4ever.photomaid
       - name: Echte Dark-Mode-Seiten und Vorschauen aufnehmen

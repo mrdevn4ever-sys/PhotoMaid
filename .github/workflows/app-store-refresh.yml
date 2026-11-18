@@ -47,7 +47,7 @@ jobs:
           PY
   build:
     name: Aktuellen Simulator-Build kompilieren
-    runs-on: ${{ contains(inputs.devices, 'iphone-duo') && 'xcode-27' || 'macos-26' }}
+    runs-on: xcode-27
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
@@ -92,7 +92,7 @@ jobs:
   capture:
     name: Aktuell – ${{ matrix.locale }} – ${{ matrix.device }}
     needs: [plan, build]
-    runs-on: ${{ contains(inputs.devices, 'iphone-duo') && 'xcode-27' || 'macos-26' }}
+    runs-on: xcode-27
     timeout-minutes: 60
     strategy:
       fail-fast: false
