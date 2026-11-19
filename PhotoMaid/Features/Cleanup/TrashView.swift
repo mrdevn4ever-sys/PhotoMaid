@@ -5,6 +5,9 @@ import SwiftUI
 /// Fotos/Videos und Dateien werden getrennt bestätigt. Tageslimit wird VOR der Systembestätigung erklärt.
 struct TrashView: View {
     @Environment(AppModel.self) private var app
+    @Environment(\.horizontalSizeClass) private var sizeClass
+    /// iPad/breite Fenster: größere Vorschauen in mehr Spalten statt drei winziger.
+    private var wide: Bool { sizeClass == .regular }
     @Environment(\.dismiss) private var dismiss
     var inSheet = false
 
@@ -206,7 +209,8 @@ struct TrashView: View {
                 if !photoItems.isEmpty {
                     Text(key: "basket_media_header").font(AppTypography.title3).foregroundStyle(AppColors.textPrimary)
                         .accessibilityAddTraits(.isHeader).padding(.top, 4).padding(.horizontal, 4)
-                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 3), spacing: 8) {
+                    LazyVGrid(columns: wide ? [GridItem(.adaptive(minimum: 170, maximum: 260), spacing: 8)]
+                                     : Array(repeating: GridItem(.flexible(), spacing: 8), count: 3), spacing: 8) {
                         ForEach(photoItems, id: \.item) { r in photoTile(r) }
                     }
                     Text(key: "basket_media_footer").font(AppTypography.footnote).foregroundStyle(AppColors.textTertiary)

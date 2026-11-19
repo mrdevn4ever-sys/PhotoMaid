@@ -17,10 +17,23 @@ extension XCUIApplication {
         if row.waitForExistence(timeout: 5) { row.tap() }
     }
 
-    func pmTab(_ title: String) -> XCUIElement { buttons[Self.tabIDs[title] ?? title].firstMatch }
+    /// iPhone: eigene Leiste (Kennungen). iPad: Apples Tab-Leiste – dort nach Position (GaleriQ, Fotos, Aufräumen,
+    /// Studio, Jetzt aufräumen), weil die Beschriftung von der Sprache abhängt.
+    private static let tabOrder = ["tab.today", "tab.library", "tab.cleanup", "tab.studio", "tab.start"]
 
-    /// Die Tableiste – wie im Artefakt nur auf den Startseiten der Tabs sichtbar.
-    var pmTabBar: XCUIElement { buttons["tab.today"].firstMatch }
+    func pmTab(_ title: String) -> XCUIElement {
+        let id = Self.tabIDs[title] ?? title
+        let own = buttons[id].firstMatch
+        if own.exists || tabBars.count == 0 { return own }
+        guard let index = Self.tabOrder.firstIndex(of: id) else { return own }
+        return tabBars.firstMatch.buttons.element(boundBy: index)
+    }
+
+    /// Die Tableiste – auf dem iPhone nur auf den Startseiten der Tabs sichtbar, auf dem iPad Apples Leiste.
+    var pmTabBar: XCUIElement {
+        let own = buttons["tab.today"].firstMatch
+        return own.exists || tabBars.count == 0 ? own : tabBars.firstMatch
+    }
 
     /// Kurz warten, bis ein Element bedienbar ist (z. B. ein Menüeintrag, der noch einblendet). Erst danach
     /// scrollen – ein Wischen würde ein offenes Menü schließen.

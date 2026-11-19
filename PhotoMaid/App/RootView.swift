@@ -37,7 +37,7 @@ struct RootView: View {
                 ToastView(toast: toast) { app.toast = nil }
                     .frame(maxWidth: 560)
                     // Im Feed über der unteren Zeile (Rückgängig, Papierkorb-Zähler) – nie darauf.
-                    .padding(.bottom, app.feed == nil ? 104 : 84)
+                    .padding(.bottom, app.feed == nil ? (isPad ? 24 : 104) : 84)
                     .transition(.move(edge: .bottom).combined(with: .opacity))
                     .zIndex(2)
             }
@@ -133,24 +133,43 @@ struct RootView: View {
         app.settings.onboardingVersion >= OnboardingFlow.version && AdsService.shared.allowed(app)
     }
 
+    /// iPad (Nutzerentscheidung 11/2026): Apples Navigation – Tabs oben, zur Seitenleiste aufklappbar; „Jetzt aufräumen“
+    /// ist dort ein eigener Eintrag statt des runden Mittelknopfs. Das iPhone behält die eigene Leiste unten.
+    private var isPad: Bool { UIDevice.current.userInterfaceIdiom == .pad }
+
+    private enum RootTab: Hashable { case app(AppTab), start }
+
     private var tabs: some View {
         @Bindable var app = app
         @Bindable var vault = vault
-        return TabView(selection: $app.selectedTab) {
-            Tab(L("tab_today"), systemImage: "house", value: AppTab.today) {
+        let selection = Binding<RootTab>(
+            get: { .app(app.selectedTab) },
+            set: { value in
+                switch value {
+                case .app(let tab): app.selectedTab = tab
+                case .start: startReview() // öffnet nur den Feed, entscheidet nichts; die Auswahl bleibt beim Tab
+                }
+            })
+        return TabView(selection: selection) {
+            Tab(L("tab_today"), systemImage: "house", value: RootTab.app(.today)) {
                 stack(.today) { TodayView() }
             }
-            Tab(L("tab_library"), systemImage: "photo.on.rectangle.angled", value: AppTab.library) {
+            Tab(L("tab_library"), systemImage: "photo.on.rectangle.angled", value: RootTab.app(.library)) {
                 stack(.library) { LibraryView() }
             }
-            Tab(L("tab_cleanup"), systemImage: "sparkles", value: AppTab.cleanup) {
+            Tab(L("tab_cleanup"), systemImage: "sparkles", value: RootTab.app(.cleanup)) {
                 stack(.cleanup) { CleanUpHubView() }
             }
-            Tab(L("tab_studio"), systemImage: "paintpalette", value: AppTab.studio) {
+            Tab(L("tab_studio"), systemImage: "paintpalette", value: RootTab.app(.studio)) {
                 stack(.studio) { StudioView() }
             }
+            if isPad {
+                Tab(L("today_start_cta"), systemImage: "rectangle.stack", value: RootTab.start) {
+                    Color.clear
+                }
+            }
         }
-        .tabViewStyle(.tabBarOnly)
+        .modifier(RootTabStyle(pad: isPad))
         .tint(AppColors.accent)
         // Experiment-Design: eigene schwebende Tableiste nur auf den Startseiten der Tabs (wie im Artefakt).
         .overlay {
@@ -158,7 +177,7 @@ struct RootView: View {
             // statt zusätzlich über dem Home-Indikator-Bereich zu schweben.
             ZStack(alignment: .bottom) {
                 Color.clear.allowsHitTesting(false)
-                if app.feed == nil && (app.paths[app.selectedTab] ?? []).isEmpty {
+                if !isPad && app.feed == nil && (app.paths[app.selectedTab] ?? []).isEmpty {
                     PMTabBar(selection: $app.selectedTab, reselect: { app.popToRoot($0) }, start: startReview)
                 }
             }
@@ -174,8 +193,8 @@ struct RootView: View {
     private func stack<Content: View>(_ tab: AppTab, @ViewBuilder content: () -> Content) -> some View {
         NavigationStack(path: Binding(get: { app.paths[tab] ?? [] }, set: { app.paths[tab] = $0 })) {
             content()
-                .safeAreaInset(edge: .bottom, spacing: 0) { Color.clear.frame(height: 70).allowsHitTesting(false) }
-                .toolbar(.hidden, for: .tabBar)
+                .safeAreaInset(edge: .bottom, spacing: 0) { Color.clear.frame(height: isPad ? 0 : 70).allowsHitTesting(false) }
+                .toolbar(isPad ? .automatic : .hidden, for: .tabBar)
                 .navigationDestination(for: Route.self) { RouteDestination(route: $0) }
         }
     }
@@ -289,5 +308,13 @@ struct StartupErrorView: View {
             .padding(AppSpacing.pageMargin)
         }
         .task { report = await Diagnostics.makeReport(appVersion: AppConfig.appVersion, build: AppConfig.buildNumber) }
+    }
+}
+
+/// iPad: Tabs oben bzw. Seitenleiste (Apple-Standard); iPhone: nur die eigene schwebende Leiste.
+private struct RootTabStyle: ViewModifier {
+    let pad: Bool
+    func body(content: Content) -> some View {
+        if pad { content.tabViewStyle(.sidebarAdaptable) } else { content.tabViewStyle(.tabBarOnly) }
     }
 }

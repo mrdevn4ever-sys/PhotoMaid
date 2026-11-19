@@ -304,6 +304,10 @@ struct TodayView: View {
             TourStep(titleKey: "tour_studio_title", textKey: "tour_studio_text",
                      target: .tab(4, titleKey: "tab_studio", symbol: "paintpalette")),
             TourStep(titleKey: "tour_settings_title", textKey: "tour_settings_text", target: .anchor("today.settings"))]
+        // iPad: Apples Tab-Leiste oben erklärt sich selbst; die Schritte zeigen auf die Leiste unten des iPhones.
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            steps.removeAll { if case .tab = $0.target { true } else { false } }
+        }
         if !VaultStore.shared.hidesEntry {
             steps.append(TourStep(titleKey: "tour_vault_title", textKey: "tour_vault_text", target: .anchor("today.vault")))
         }

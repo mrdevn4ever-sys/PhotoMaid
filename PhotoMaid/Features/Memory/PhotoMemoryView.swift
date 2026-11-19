@@ -169,10 +169,13 @@ struct PhotoMemoryView: View {
     }
 
     private func board(_ game: PhotoMemoryGame, viewport: CGSize) -> some View {
+        // Große Fenster (iPad): Karten wachsen mit, statt klein oben zu kleben.
+        let roomy = viewport.width >= 700 && viewport.height >= 700
+        let cardLimit: Double = roomy ? 240 : 112
         let layout = PhotoMemoryBoardLayout(cards: game.cards.count,
-            width: min(900, viewport.width) - AppSpacing.pageMargin * 2,
+            width: min(roomy ? 1400 : 900, viewport.width) - AppSpacing.pageMargin * 2,
             availableHeight: viewport.height - 225 - analysisHeight,
-            accessibility: dynamicType.isAccessibilitySize)
+            accessibility: dynamicType.isAccessibilitySize, maximumCard: cardLimit)
         return VStack(spacing: AppSpacing.m) {
             ViewThatFits(in: .horizontal) {
                 HStack {
@@ -198,7 +201,7 @@ struct PhotoMemoryView: View {
                     cardButton(card, game: game).frame(height: layout.cardHeight)
                 }
             }
-            .frame(maxWidth: CGFloat(layout.columns) * (dynamicType.isAccessibilitySize ? 180 : 112) + CGFloat(layout.columns - 1) * AppSpacing.xs)
+            .frame(maxWidth: CGFloat(layout.columns) * CGFloat(dynamicType.isAccessibilitySize ? max(180, cardLimit) : cardLimit) + CGFloat(layout.columns - 1) * AppSpacing.xs)
             Button(L("memory_flip")) { model.concealMismatch() }.buttonStyle(.pmBordered)
                 .accessibilityIdentifier("memory.flip")
                 .disabled(!game.hasMismatch).opacity(game.hasMismatch ? 1 : 0)

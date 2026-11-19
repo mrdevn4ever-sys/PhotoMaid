@@ -67,6 +67,7 @@ struct DuplicatesView: View {
                 Text(key: "error_title").foregroundStyle(AppColors.cleanup)
             }
         }
+        .readableContent(maximum: 820) // iPad: lesbare Breite statt über das ganze Fenster gezogen
         .appPage()
         .navigationTitle(L("duplicates"))
     }

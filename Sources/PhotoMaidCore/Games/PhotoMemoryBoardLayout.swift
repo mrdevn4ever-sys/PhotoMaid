@@ -7,7 +7,8 @@ public struct PhotoMemoryBoardLayout: Equatable, Sendable {
     public let height: Double
     public let requiresScrolling: Bool
 
-    public init(cards: Int, width: Double, availableHeight: Double, accessibility: Bool = false) {
+    /// `maximumCard`: größte Kartenhöhe (iPhone 112 pt; auf großen Fenstern wie dem iPad darf das Spielfeld die Fläche füllen).
+    public init(cards: Int, width: Double, availableHeight: Double, accessibility: Bool = false, maximumCard: Double = 112) {
         let count = max(1, cards), gap = 8.0
         let width = max(44, width), available = max(44, availableHeight)
         let maximum = min(count, accessibility ? 2 : min(6, max(1, Int((width + gap) / (44 + gap)))))
@@ -15,7 +16,7 @@ public struct PhotoMemoryBoardLayout: Equatable, Sendable {
         for cols in 1...maximum {
             let rows = (count + cols - 1) / cols
             let cellWidth = (width - Double(cols - 1) * gap) / Double(cols)
-            let preferred = min(accessibility ? 180 : 112, cellWidth * 1.08)
+            let preferred = min(accessibility ? max(180, maximumCard) : maximumCard, cellWidth * 1.08)
             let cellHeight = max(44, min(preferred, (available - Double(rows - 1) * gap) / Double(rows)))
             let total = Double(rows) * cellHeight + Double(rows - 1) * gap
             let fits = total <= available + 0.5
