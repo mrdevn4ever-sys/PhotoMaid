@@ -3,6 +3,11 @@ name: Store-Bilder neu setzen (ohne neue Aufnahme)
 # Liest app-store/concept/recompose.tsv (Lauf-ID, Sprache, Gerät), lädt die Aufnahme-Artefakte dieser Läufe und setzt
 # mit scripts/store/compose_concept.py neu. Keine neue Aufnahme, kein Upload zu App Store Connect.
 on:
+  workflow_call:
+    inputs:
+      devices:
+        type: string
+        default: iphone-large,iphone-medium
   workflow_dispatch:
     inputs:
       devices:

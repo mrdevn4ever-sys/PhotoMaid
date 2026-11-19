@@ -51,7 +51,7 @@ on:
       ui_phase:
         description: "UI-Durchlauf (gezielte Wiederholung nach der ersten Gesamtprüfung)"
         type: choice
-        options: [all, fixtures, real, start, store-screenshots, store-previews, store-export, store-refresh]
+        options: [all, fixtures, real, start, store-screenshots, store-previews, store-export, store-refresh, store-recompose]
         default: all
       ui_case:
         description: "PhotoKit-Fachtest (all = vollständige Prüfung; Pro prüft auch die Tresor-Voraussetzung)"
@@ -125,7 +125,7 @@ jobs:
           name: duo-environment
           path: duo-environment/
   app-store:
-    if: inputs.store_locales != '' && inputs.ui_phase != 'store-export' && inputs.ui_phase != 'store-refresh'
+    if: inputs.store_locales != '' && inputs.ui_phase != 'store-export' && inputs.ui_phase != 'store-refresh' && inputs.ui_phase != 'store-recompose'
     uses: ./.github/workflows/app-store-assets.yml
     with:
       locales: ${{ inputs.store_locales }}
@@ -135,6 +135,14 @@ jobs:
     uses: ./.github/workflows/app-store-refresh.yml
     with:
       locales: ${{ inputs.store_locales }}
+      devices: ${{ inputs.store_devices }}
+  app-store-recompose:
+    if: inputs.store_locales != '' && inputs.ui_phase == 'store-recompose'
+    uses: ./.github/workflows/store-recompose.yml
+    permissions:
+      contents: read
+      actions: read
+    with:
       devices: ${{ inputs.store_devices }}
   app-store-export:
     if: inputs.store_locales != '' && inputs.ui_phase == 'store-export'
