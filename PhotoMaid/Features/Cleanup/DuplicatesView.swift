@@ -9,6 +9,9 @@ struct DuplicatesView: View {
     @Environment(AppModel.self) private var app
     @State private var scanner = DuplicateScanner.shared
     @AppStorage("duplicates.includeCloud") private var includeCloud = false
+    @Environment(\.horizontalSizeClass) private var sizeClass
+    /// iPad: größere Vorschauen, damit man die Kopien wirklich vergleichen kann.
+    private var thumb: CGFloat { sizeClass == .regular ? 140 : 72 }
 
     var body: some View {
         List {
@@ -91,9 +94,9 @@ struct DuplicatesView: View {
                     } label: {
                         VStack(spacing: 4) {
                             if m.provider == .photoLibrary {
-                                AssetThumbnail(assetID: m.localIdentifier, side: 72)
+                                AssetThumbnail(assetID: m.localIdentifier, side: thumb)
                             } else {
-                                Image(systemName: "doc").font(.title).frame(width: 72, height: 72)
+                                Image(systemName: "doc").font(.title).frame(width: thumb, height: thumb)
                             }
                             Text(key: trash ? "dup_selected_trash" : "dup_will_keep")
                                 .font(.caption2.weight(.semibold))

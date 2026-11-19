@@ -15,7 +15,7 @@ def extract(path, ink=(0x1C, 0x19, 0x16), rtl=False):
     bg = sorted(gray.crop((0, int(h * 0.02), int(w * 0.05), int(h * 0.15))).get_flattened_data())[0x80]
     tablet = w / h > 0.6
     # Schriftzug steht oben links; auf dem iPad beginnt rechts daneben schon die erste Karte.
-    top, bottom = int(h * 0.02), int(h * (0.09 if tablet else 0.17))
+    top, bottom = int(h * 0.02), int(h * (0.16 if tablet else 0.17))
     left, right = 0, int(w * (0.25 if tablet else 0.5))
     # Zeilen mit hellen Pixeln (Weiß des Schriftzugs, nicht das graue Grußwort) zu Bändern zusammenfassen.
     rows = [any(gray.getpixel((x, y)) > 215 for x in range(left, right, 2)) for y in range(top, bottom)]
