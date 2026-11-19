@@ -1,0 +1,56 @@
+name: Store-Bilder neu setzen (ohne neue Aufnahme)
+# Setzt die Concept-A-Rahmen auf bereits vorhandene, geprüfte native Aufnahmen neu (z. B. andere Quelle für ein Motiv).
+# Liest app-store/concept/recompose.tsv (Lauf-ID, Sprache, Gerät), lädt die Aufnahme-Artefakte dieser Läufe und setzt
+# mit scripts/store/compose_concept.py neu. Keine neue Aufnahme, kein Upload zu App Store Connect.
+on:
+  workflow_dispatch:
+    inputs:
+      devices:
+        description: 'Geräteklassen (Komma): iphone-large,iphone-medium,ipad'
+        type: string
+        default: iphone-large,iphone-medium
+permissions:
+  contents: read
+  actions: read
+jobs:
+  recompose:
+    runs-on: macos-26
+    timeout-minutes: 180
+    env:
+      GH_TOKEN: ${{ github.token }}
+      DEVICES: ${{ inputs.devices }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            app-store/concept
+            scripts/store
+            PhotoMaid/Resources/Fonts
+      - name: Werkzeuge
+        run: |
+          set -euo pipefail
+          brew list libraqm >/dev/null 2>&1 || brew install libraqm
+          python3 -m venv "$RUNNER_TEMP/py"
+          "$RUNNER_TEMP/py/bin/pip" -q install pillow
+      - name: Aufnahmen laden und neu setzen
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/recomposed"; mkdir -p "$out"
+          while IFS=$'\t' read -r run locale device; do
+            case ",$DEVICES," in *",$device,"*) ;; *) continue;; esac
+            work="$RUNNER_TEMP/w/$locale/$device"; mkdir -p "$work"
+            name="store-current-$locale-$device-assets"
+            for try in 1 2 3; do
+              gh run download "$run" -R "$GITHUB_REPOSITORY" -n "$name" -D "$work" && break || sleep 10
+            done
+            rm -rf "$work/concept"
+            (cd scripts/store && "$RUNNER_TEMP/py/bin/python" compose_concept.py "$work" --locale "$locale" --device "$device")
+            mkdir -p "$out/$locale/$device"
+            cp "$work"/concept/*.png "$work/concept/concept.json" "$out/$locale/$device/"
+            rm -rf "$work"
+          done < app-store/concept/recompose.tsv
+          find "$out" -name '*.png' | wc -l
+      - uses: actions/upload-artifact@v4
+        with:
+          name: store-concept-recomposed
+          path: ${{ runner.temp }}/recomposed
