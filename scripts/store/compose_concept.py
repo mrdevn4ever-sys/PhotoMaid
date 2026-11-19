@@ -153,16 +153,26 @@ def compose(native, today, slot, locale, device, out, all_heads=None, all_subs=N
     head = slot['head']
     # Eine Schriftgröße für alle zehn Bilder einer Sprache (ruhiges, einheitliches Bild).
     fh = fitted(d, all_heads or head, locale, 'head', round(112 * u), round(70 * u), W - 2 * m)
+    opts = TEXT_OPTS.get(locale, {})
+    # Zeilen nach der echten Tintenhöhe setzen: Thai und indische Schriften haben Zeichen über und unter der Zeile,
+    # die sich bei festem Zeilenabstand mit der Nachbarzeile überlagern würden.
+    floor = y - round(fh.size * 0.2)
     for line in head:
-        x = W - m - d.textlength(line, font=fh, **TEXT_OPTS.get(locale, {})) if rtl else m
-        d.text((x, y), line, font=fh, fill=INK, **TEXT_OPTS.get(locale, {}))
+        top, bottom = d.textbbox((0, 0), line, font=fh, **opts)[1::2]
+        y = max(y, floor - top + round(6 * u))
+        x = W - m - d.textlength(line, font=fh, **opts) if rtl else m
+        d.text((x, y), line, font=fh, fill=INK, **opts)
+        floor = y + bottom
         y += round(fh.size * 1.16)
     if slot.get('sub'):
         y += round(14 * u)
         fs = fitted(d, all_subs or [slot['sub']], locale, 'sub', round(52 * u), round(34 * u), W - 2 * m)
-        x = W - m - d.textlength(slot['sub'], font=fs, **TEXT_OPTS.get(locale, {})) if rtl else m
-        d.text((x, y), slot['sub'], font=fs, fill=INK, **TEXT_OPTS.get(locale, {}))
-        y += round(fs.size * 1.3)
+        top, bottom = d.textbbox((0, 0), slot['sub'], font=fs, **opts)[1::2]
+        y = max(y, floor - top + round(14 * u))
+        x = W - m - d.textlength(slot['sub'], font=fs, **opts) if rtl else m
+        d.text((x, y), slot['sub'], font=fs, fill=INK, **opts)
+        floor = y + bottom
+        y = max(y + round(fs.size * 1.3), floor + round(10 * u))
     if slot.get('gestures'):
         y += round(26 * u)
         col = (W - 2 * m) / 3
