@@ -34,7 +34,7 @@ SYSTEM = {
     'ja': ['ヒラギノ角ゴシック W7.ttc', 'Hiragino Sans GB.ttc'],
     'ko': ['AppleSDGothicNeo.ttc'],
     'zh-Hans': ['PingFang.ttc', 'Hiragino Sans GB.ttc'],
-    'zh-Hant': ['PingFang.ttc', 'Hiragino Sans CNS.ttc'],
+    'zh-Hant': ['PingFang.ttc', 'Hiragino Sans CNS.ttc', 'STHeiti Medium.ttc', 'Hiragino Sans GB.ttc'],
     'th': ['Thonburi.ttc', 'SFThai.ttf'],
     'hi': ['Kohinoor.ttc', 'ITFDevanagari.ttc', 'DevanagariMT.ttc'],
     'mr': ['Kohinoor.ttc', 'ITFDevanagari.ttc', 'DevanagariMT.ttc'],
@@ -82,7 +82,7 @@ def font(locale, role, size):
     want = ('Bold', 'Semibold', 'W7', 'W6', 'Heavy') if role in ('head', 'gesture') else ('Medium', 'Regular', 'W4', 'W3')
     for name in SYSTEM[s]:
         path = find_font(name)
-        if path is None:
+        if path is None or (WORDS.get(locale) and not covers(path, WORDS[locale])):
             continue
         path = str(path)
         faces = []
@@ -91,7 +91,7 @@ def font(locale, role, size):
             except OSError: break
         for style in want:
             for f in faces:
-                if f.getname()[1].replace(' ', '') == style and (s != 'zh-Hans' or any(x in f.getname()[0] for x in ('SC', 'GB'))) and (s != 'zh-Hant' or any(x in f.getname()[0] for x in ('TC', 'CNS'))):
+                if f.getname()[1].replace(' ', '') == style and (s != 'zh-Hans' or any(x in f.getname()[0] for x in ('SC', 'GB'))) and (s != 'zh-Hant' or any(x in f.getname()[0] for x in ('TC', 'CNS', 'Heiti', 'GB'))):
                     return f
         f = faces[0]
         try: f.set_variation_by_name(want[0])  # variable Systemschrift (SF)
@@ -214,7 +214,7 @@ def main():
     a = p.parse_args()
     texts = json.loads(a.texts.read_text())
     slots, words = texts['slots'], texts['locales'].get(a.locale) or texts['locales']['en']
-    WORDS[a.locale] = json.dumps(words, ensure_ascii=False)
+    WORDS[a.locale] = ''.join(''.join(v['head']) + v['sub'] for k, v in words.items() if k != 'gestures') + ''.join(words['gestures'].values())
     pages = {f.stem: f for f in (a.assets / 'all-pages').glob('*/*.png')}
     out = a.assets / 'concept'
     out.mkdir(exist_ok=True)
