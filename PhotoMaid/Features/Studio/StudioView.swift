@@ -22,9 +22,15 @@ struct StudioView: View {
     /// Selten gebrauchte Werkzeuge (Abläufe, Auslagern, PDF aus Dateien) stehen eingeklappt unter „Weitere Funktionen“.
     @State private var showMoreTools = false
 
+    @Environment(\.horizontalSizeClass) private var sizeClass
     private var columns: [GridItem] {
-        typeSize.isAccessibilitySize ? [GridItem(.flexible())] :
-            [GridItem(.adaptive(minimum: 152), spacing: AppSpacing.s)]
+        if typeSize.isAccessibilitySize { return [GridItem(.flexible())] }
+        // iPad: die Kacheln teilen sich die ganze Breite (eine Reihe), statt klein links zu stehen.
+        if sizeClass == .regular {
+            let count = VNDocumentCameraViewController.isSupported ? 5 : 4
+            return Array(repeating: GridItem(.flexible(), spacing: AppSpacing.s), count: count)
+        }
+        return [GridItem(.adaptive(minimum: 152), spacing: AppSpacing.s)]
     }
 
     var body: some View {
